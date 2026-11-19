@@ -8,7 +8,7 @@ from itertools import product
 
 import pytest
 
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef, canonicalize, semantic_hash
 from rawlsing_next.pre553_s04_observed_research import (
     S04KnowledgeError, ask_s04_common_risk_predictor_evidence,
     ask_s04_exact_condition, receive_s04_i03_research,
@@ -44,7 +44,7 @@ def test_f4_native_true_three_way_kept_pre_field_forge():
     assert p["raw_fully_resolved_joint_n"] == 4
     assert p["fact_ref"] == native_result.facts[0].ref.as_dict()
     assert p["native_fact_target_domain_identity"] == native_result.facts[0].target_domain_identity
-    assert p["full_query_target_topology"] == q.target_arity_and_topology
+    assert p["full_query_target_topology"] == canonicalize(q.target_arity_and_topology)
     assert p["source_scope_mode"] == "SINGLE_UNIVERSE"
     assert p["measure_kind"] == "RAW"
     assert p["risk_set_type"] == native_result.facts[0].risk_set_type
