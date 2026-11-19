@@ -1,90 +1,132 @@
-# SRC04 SQLite-free construction cut
+# SRC04 SQLite-free cut — native contract repair
 
 ## Verdict
 
-**Executable isolated cut complete.** The normal sourcefree path now writes typed
-Parquet with streaming identity/coverage reconciliation, deterministic hashes
-and Parquet footer checks. It does **not** build `.i02-proof.sqlite` and does
-not run the synchronous read-back audit. The old SQLite path remains only as an
-explicit separate audit in the parity test.
+Scoped executable cut remains isolated from the running Wave 1 tree and
+worktree. Three intake gaps are repaired as follows.
 
 - Base: `bf59f7d708ea250445234776de318ddf620be6ea`
-- Frozen writer/reader tree:
-  `MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree`
-- Reviewed compact runner:
-  `b3dd74d16c71f9f63b10510af041ec83a1b5c3de`
-- No edit to the active candidate tree; PIDs 11521/11526 were not touched.
-- No source file, original respondent data or staging was read.
-- No source launch, giant benchmark, or DHIKR work.
+- Previous cut: `f317ebbd795b83a746906eb84abc101d595c3ad7`
+- New return: this directory.
 
-## Files
+## 1. No stale legacy logical claim
 
-- `streaming_estate.py` — normal sourcefree writer and fresh reader.
-- `test_streaming_cut.py` — smallest sourcefree old/new parity and refusals.
-- `sqlite_free_wiring.patch` — exact isolated descendant patch for
-  `single_pass_handoff.py` (route normal and resume calls to the new writer).
-- `evidence_metrics.json` — measured old/new fixture split.
-- `test.out` — focused test output.
+`_new_roots` no longer copies `expected.logical`, `release` or `replay`.
+A supplied legacy `ExternalI02Roots` is refused with:
 
-## Normal path
+`LEGACY_EXPECTED_ROOT_UNVERIFIABLE__VERSIONED_STREAM_IDENTITY_REQUIRED`
 
-`write_streaming_estate()`:
+The new identity is derived from the validated stream and member/footer
+content:
 
-1. consumes the 13 typed family streams once;
-2. writes bounded Parquet row groups through the existing typed Parquet writer;
-3. rejects duplicate exact refs through a compact temporary dbm identity index and rejects family census mismatch;
-4. checks all required families and event-locator count;
-5. hashes members and checks each Parquet footer row count;
-6. writes an atomically unpublished staging directory and a deterministic
-   stream proof manifest;
-7. publishes only after ordinary invariants pass.
+- new `logical` from manifest, family counts, member hashes and proof version;
+- new `replay` includes that logical identity;
+- new `release` includes the logical identity;
+- existing old `physical` is never claimed equal.
 
-No SQLite connection, no `.i02-proof.sqlite`, no `.s2b-direct-stage` full proof,
-and no synchronous Parquet body read-back are used in this normal path.
+Changed legal input produces changed logical and replay roots. Exact restore
+produces the same new roots. A stale old supplied root cannot authorize changed
+bytes.
 
-`verify_streaming_estate()` fresh-reads the new proof schema, checks the exact
-manifest hash, roots, members, family footers and locator footer, and requires a
-live current/authorization callback. It does not read source bytes.
+## 2. Existing native first consumer
 
-## Physical proof version
+`open_stream_native_estate()` validates the versioned stream proof, then returns
+the **existing `VerifiedDirectEstate` object** assembled through a narrow
+proof-reader boundary. The existing methods are used unchanged for:
 
-The old physical root is a byte hash of the SQLite certificate; it cannot be
-reproduced without that file. The cut therefore explicitly uses:
+- `iter_family()` typed row reconstruction;
+- `select_events()` actual public row/selector path;
+- current/revocation callback on each materializing call.
 
-- proof schema: `ANVIL_STREAM_C11_ESTATE@1`
-- proof version: `STREAM_TYPED_IDENTITY_COVERAGE@1`
-- new physical root binding: stream proof hash
-- `legacy_i02` recorded separately when an independently held old root is
-  supplied.
+No second reader engine and no second body corpus are introduced. The legacy
+`VerifiedDirectEstate` constructor and old estates remain valid and untouched.
 
-When `expected_i02` is supplied, the test proves the **logical** root is equal
-to old I02. The new physical root is not claimed equal. Existing old estates
-remain readable by the unchanged legacy reader; the new reader reads the new
-schema.
+The isolated wiring patch routes both normal and resume calls in
+`single_pass_handoff.py` to the new writer and passes the existing progress
+callback. The active runner/tree is not edited.
 
-## Focused parity
+## 3. Separate strict audit
 
-The test uses the existing 5-row sourcefree fixture only.
+`audit_stream_estate.py` and `audit_stream_estate()` perform a separate
+read-only invocation against an already written estate. The audit:
 
-- old/new family counts equal;
-- each Parquet member byte-equal old vs new;
-- logical identity equal when old expected roots supplied;
-- old legacy reader still opens old estate;
-- new fresh reader opens new estate with exact roots/counts;
+- uses the same versioned proof boundary and existing `iter_family()` path;
+- requires an independently supplied manifest SHA and roots;
+- checks exact family counts;
+- makes no writes and does not rebuild Parquet;
+- does not call the old writer as an audit substitute.
+
+Test invokes it in a separate process and verifies the estate manifest is
+byte-unchanged.
+
+## Progress
+
+The new writer emits timestamped phases through the existing runner progress
+callback:
+
+- `stream_start`
+- `family_written` with processed/expected aggregates
+- `footers_verified`
+- `published`
+- `reopened_validation`
+- `audit_complete`
+
+The patch passes `progress=progress` for both write and resume, so the existing
+supervisor-visible stderr JSON stream carries phase and aggregate counts. No
+live runner file was edited.
+
+## Refusals and parity
+
+Focused 5-row sourcefree tests prove:
+
+- old/new family counts and all Parquet member bytes equal;
+- new versioned roots differ from legacy roots by declaration, never equality;
+- changed legal input produces changed new logical/replay roots;
+- exact restore produces identical new roots;
+- stale supplied legacy roots refused;
 - duplicate exact ref refused;
 - dropped family/object census refused;
-- locator-count mismatch refused;
+- locator mismatch refused;
 - revoked current callback refused;
-- `sqlite3.connect` patched to fail during normal new writer and no `.sqlite`
-  appears under the new root.
+- old legacy reader still reads old estate;
+- native `select_events()` row/selector path works on new estate;
+- `sqlite3.connect` patched to fail in normal writer, no `.sqlite` under new
+  root;
+- audit runs separately and does not rewrite the estate.
 
-Measured fixture split (`evidence_metrics.json`):
+Tests: **4 passed in 3.50 s**.
 
-```json
-{"new_bytes":357449,"new_seconds":0.072488,"old_bytes":356685,"old_seconds":0.189664,"read_back_audit":false,"sqlite_proof_built":false}
+Measured fixture run:
+`{"old_seconds":0.193897,"new_seconds":0.078576,"old_bytes":356679,"new_bytes":356442,"new_proof_scratch_bytes":27436,"sqlite_proof_built":false,"read_back_audit":false}`
+
+Proof scratch in normal path is a temporary compact dbm ref index plus staging
+Parquet; it is removed before publication. No SQLite proof is built. Retained
+bytes are not proof scratch and are not used as a performance claim.
+
+## Residual
+
+Full legacy **physical** identity is not reconstructed because it is the byte
+hash of the SQLite certificate. The exact safe scoped route is versioned stream
+identity with logical/replay identities derived from actual content. A legacy
+`expected_i02` is refused rather than copied. This is the remaining precise
+residual; no parity is claimed.
+
+## Existing caller command (not run here)
+
+```bash
+MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py \
+  --mode run \
+  --candidate-tree evidence/anvil-src04-candidate-31rqm9z_/candidate \
+  --candidate-patch OWNER/WORKER_RETURNS/ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_20261118/candidate.patch \
+  --config IMPLEMENTER/WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/inputs/SRC04/source.config.repaired.v2.json \
+  --runtime-config MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json \
+  --binding-dir MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118 \
+  --work-root <owner-private-work> \
+  --authorized-source-launch
 ```
 
-The tiny fixture is evidence for the cut, not a full-scale performance claim.
+Patch pins: candidate patch SHA `ffa4520f…`, base config SHA `5e107de4…`, runtime
+config SHA `dd5cf699…`, canonical `ba886d87…`. Not launched.
 
 ## Commands
 
@@ -96,27 +138,8 @@ python3 -B -m pytest -q -o addopts='' -p no:cacheprovider \
   IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_CONSTRUCTION_20261118/test_streaming_cut.py
 ```
 
-Wiring patch:
+Files: `streaming_estate.py`, `audit_stream_estate.py`,
+`sqlite_free_wiring.patch`, `evidence_metrics.json`, `test.out`.
 
-```bash
-patch -p1 < /path/to/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_CONSTRUCTION_20261118/sqlite_free_wiring.patch
-```
-
-The patch is an isolated descendant; it was not applied to the active tree or
-product. The new module must be present beside the patched runner.
-
-## Boundaries retained
-
-- Compact checkpoint/resume remains in the runner; its spool is not rebuilt or
-  read as a second corpus.
-- Expected I02 is checked when supplied; Q2, current/revocation, exact evidence
-  and replay are not weakened.
-- The old SQLite path remains callable as explicit audit, not normal path.
-- No new analytical engine, no second durable object corpus, no equivalent full
-  SQLite under another name, no whole-object graph.
-- No source rights, science, protected refs, grants or live selection changes.
-
-**Remaining limitation:** without an independently supplied legacy `expected_i02`,
-the normal path records the explicit stream proof schema and new physical root;
-it does not pretend the SQLite byte hash is reproducible. This is a versioned
-proof change, not an equality claim.
+No live Wave 1 tree, worktree, artifacts, source, PIDs 11521/11526, product,
+science, grants, protected refs, or DHIKR were touched.

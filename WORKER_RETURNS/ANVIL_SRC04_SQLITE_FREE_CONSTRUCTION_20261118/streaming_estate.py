@@ -9,7 +9,7 @@ The slow old writer remains separately callable in tests as an explicit audit
 only. No source bytes are handled here.
 """
 from __future__ import annotations
-import dbm, hashlib, json, os, shutil, tempfile
+import dbm, hashlib, json, os, shutil, tempfile, datetime
 from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
@@ -76,25 +76,16 @@ def _family_rows(source, family):
 def _new_roots(source, universe_ref, family_counts, members, expected=None) -> StreamRoots:
     manifest = source.manifest
     if expected is not None:
-        if (expected.source != manifest.source_artifact_ref.key
-                or expected.universe != universe_ref.key
-                or expected.schema not in ("PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1", "PYAT_S2B_EXTERNAL_I02_LOGICAL_SELECTOR_CERT@1")):
-            raise StreamRefusal("LEGACY_EXPECTED_ROOT_IDENTITY_MISMATCH")
-        logical = expected.logical
-        release = expected.release
-        replay = expected.replay
-        source_key = expected.source
-        universe = expected.universe
-    else:
-        logical = _sha256({"schema": STREAM_SCHEMA, "manifest": manifest.content_hash,
-                           "counts": family_counts, "members": members,
-                           "proof": PROOF_VERSION})
-        release = f"C11_STREAM_SOURCEFREE_RELEASE|{manifest.release_id}|{_sha256({'schema':STREAM_SCHEMA,'manifest':manifest.semantic_projection()})}"
-        replay = _sha256({"schema": STREAM_SCHEMA, "replay_protocol_authority_ref": source.replay_protocol_authority_ref.as_dict(),
-                          "replay_protocol_version": source.replay_protocol_version,
-                          "manifest": manifest.content_hash})
-        source_key = manifest.source_artifact_ref.key
-        universe = universe_ref.key
+        raise StreamRefusal("LEGACY_EXPECTED_ROOT_UNVERIFIABLE__VERSIONED_STREAM_IDENTITY_REQUIRED")
+    logical = _sha256({"schema": STREAM_SCHEMA, "manifest": manifest.content_hash,
+                       "counts": family_counts, "members": members,
+                       "proof": PROOF_VERSION})
+    release = f"C11_STREAM_SOURCEFREE_RELEASE|{manifest.release_id}|{_sha256({'schema':STREAM_SCHEMA,'manifest':manifest.semantic_projection(),'logical':logical})}"
+    replay = _sha256({"schema": STREAM_SCHEMA, "replay_protocol_authority_ref": source.replay_protocol_authority_ref.as_dict(),
+                      "replay_protocol_version": source.replay_protocol_version,
+                      "manifest": manifest.content_hash, "logical": logical})
+    source_key = manifest.source_artifact_ref.key
+    universe = universe_ref.key
     physical = _sha256({"schema": STREAM_SCHEMA, "proof": PROOF_VERSION,
                         "manifest": manifest.content_hash, "counts": family_counts,
                         "members": members, "logical": logical})
@@ -108,6 +99,7 @@ def write_streaming_estate(
     *,
     chunk_rows: int = 512,
     expected_i02: ExternalI02Roots | None = None,
+    progress: Callable[[Mapping[str, Any]], None] | None = None,
 ) -> StreamReceipt:
     """Normal sourcefree construction; no SQLite proof and no read-back audit."""
     if type(source) is not SourcefreeDirectI02Sections:
@@ -116,6 +108,10 @@ def write_streaming_estate(
         raise StreamRefusal("ALL_THIRTEEN_FAMILIES_REQUIRED")
     if not 1 <= chunk_rows <= 8192:
         raise StreamRefusal("BOUNDED_CHUNK_REQUIRED")
+    def emit(phase, **kw):
+        if progress is not None:
+            progress({"phase": phase, "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(), **kw})
+    emit("stream_start", expected=sum(source.manifest.declared_record_counts_by_logical_family.values()))
     root = _root(authorized_private_root)
     stage = Path(tempfile.mkdtemp(prefix=".stream-stage-", dir=root)); stage.chmod(0o700)
     writers = {f: _Sink(stage / (f + ".parquet"), f, chunk_rows) for f in _FAMILIES_IN_ORDER}
@@ -144,6 +140,7 @@ def write_streaming_estate(
                     index.add(writers[family].pending[-1] if writers[family].pending else _row(family, obj), group, offset)
                 n += 1
             counts[family] = n
+            emit("family_written", family=family, processed=sum(counts.values()), expected=sum(source.manifest.declared_record_counts_by_logical_family.values()))
             declared = source.manifest.declared_record_counts_by_logical_family
             if family in declared and declared[family] != n:
                 raise StreamRefusal(f"FAMILY_CENSUS_MISMATCH:{family}")
@@ -166,6 +163,7 @@ def write_streaming_estate(
         if pq.ParquetFile(loc).metadata.num_rows != counts["RespondentEvent"]:
             raise StreamRefusal("PARQUET_LOCATOR_FOOTER_MISMATCH")
         members["event_locator.parquet"] = _hash(loc)
+        emit("footers_verified", processed=sum(counts.values()), expected=sum(source.manifest.declared_record_counts_by_logical_family.values()))
         roots = _new_roots(source, universe_ref, counts, members, expected_i02)
         meta = {"schema": STREAM_SCHEMA, "proof_version": PROOF_VERSION,
                 "roots": {"logical": roots.logical, "physical": roots.physical,
@@ -188,6 +186,12 @@ def write_streaming_estate(
         for m in members: os.replace(stage / m, target / m)
         for m in members: _safe_member(target / m)
         os.link(stage / "manifest.pending", target / "manifest.json", follow_symlinks=False)
+        proof_scratch_bytes = sum(p.stat().st_size for p in stage.rglob("*") if p.is_file())
+        meta["proof_scratch_bytes"] = proof_scratch_bytes
+        # rewrite pending manifest with explicit proof-scratch measurement before link
+        mb = (canonical_json(meta) + "\n").encode()
+        (stage / "manifest.pending").write_bytes(mb)
+        emit("published", processed=sum(counts.values()), expected=sum(source.manifest.declared_record_counts_by_logical_family.values()), proof_scratch_bytes=proof_scratch_bytes)
         return StreamReceipt(str(target), hashlib.sha256(mb).hexdigest(), roots,
                              MappingProxyType(counts),
                              sum((target/m).stat().st_size for m in members)+len(mb), expected_i02)
@@ -205,8 +209,13 @@ def _estate_name_for(release: str) -> str:
     return hashlib.sha256(release.encode()).hexdigest()
 
 
-def verify_streaming_estate(root, exact_path, manifest_sha256, roots, *, current_authorizer):
-    """Fresh reader for the stream proof; no SQLite and no source bytes."""
+def open_stream_native_estate(root, exact_path, manifest_sha256, roots, *, current_authorizer, progress=None):
+    """Open new proof and return the existing VerifiedDirectEstate consumer.
+
+    This is a narrow versioned-proof boundary around the existing native reader;
+    the public row/selector methods remain the original class methods. No second
+    reader engine and no source body are introduced.
+    """
     if not callable(current_authorizer) or current_authorizer(roots) is not True:
         raise StreamRefusal("CURRENT_AUTHORITY_REFUSED")
     root = _root(root); expected = root/"releases"/_estate_name_for(roots.release)
@@ -226,4 +235,28 @@ def verify_streaming_estate(root, exact_path, manifest_sha256, roots, *, current
         seen[family]=n
     lp=expected/"event_locator.parquet"
     if pq.ParquetFile(lp).metadata.num_rows!=m["event_locator_count"]: raise StreamRefusal("LOCATOR_COUNT_MISMATCH")
-    return MappingProxyType(seen)
+    from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
+    estate = object.__new__(VerifiedDirectEstate)
+    estate.i02 = roots
+    estate._authorize = current_authorizer
+    estate.held_manifest_sha256 = manifest_sha256
+    estate.root = root
+    estate.directory = expected
+    estate.manifest = m
+    estate.reconstructed_v1_release_ref = None
+    if progress is not None:
+        progress({"phase": "reopened_validation", "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(), "processed": sum(seen.values()), "expected": sum(m["family_counts"].values())})
+    return estate
+
+
+def audit_stream_estate(root, exact_path, manifest_sha256, roots, *, current_authorizer, progress=None):
+    """Separate read-only strict audit against an already written stream estate."""
+    estate = open_stream_native_estate(root, exact_path, manifest_sha256, roots, current_authorizer=current_authorizer, progress=progress)
+    counts = {}
+    for family in _FAMILIES_IN_ORDER:
+        counts[family] = sum(1 for _ in estate.iter_family(family, batch_size=512))
+    if counts != dict(estate.manifest["family_counts"]):
+        raise StreamRefusal("AUDIT_FAMILY_COUNT_MISMATCH")
+    if progress is not None:
+        progress({"phase": "audit_complete", "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(), "processed": sum(counts.values()), "expected": sum(estate.manifest["family_counts"].values())})
+    return MappingProxyType(counts)

@@ -1,15 +1,20 @@
 --- a/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/single_pass_handoff.py
 +++ b/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/single_pass_handoff.py
-@@ -304,7 +304,7 @@
+@@ -304,9 +304,10 @@
                    "families": len(declared_counts),
                    "records": int(sum(declared_counts.values())),
                    "resumed": True})
 -    from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
+-    receipt = write_direct_estate(source, projection.universes[0].ref, root,
+-                                  chunk_rows=chunk_rows, expected_i02=expected_i02)
 +    from streaming_estate import write_streaming_estate as write_direct_estate
-     receipt = write_direct_estate(source, projection.universes[0].ref, root,
-                                   chunk_rows=chunk_rows, expected_i02=expected_i02)
++    receipt = write_streaming_estate(source, projection.universes[0].ref, root,
++                                  chunk_rows=chunk_rows, expected_i02=expected_i02,
++                                  progress=progress)
      from rawlsing_next import pre553_source_i02_handoff as handoff
-@@ -342,7 +342,7 @@
+     cleanup_ok, leftovers = handoff._cleanup_spool(spool_paths, spool_paths[next(iter(spool_paths))].parent)
+     if not cleanup_ok:
+@@ -342,7 +343,7 @@
  ):
      """One admitted decode, exact projected sections, authenticated checkpoint, one writer pass."""
      from rawlsing_next import pre553_source_i02_handoff as handoff
@@ -18,12 +23,15 @@
      doc = config.document if hasattr(config, "document") else config
      original = doc["binding"]["identity_class"] == "ORIGINAL_SOURCE"
      if original:
-@@ -408,7 +408,7 @@
+@@ -408,9 +409,9 @@
                            "checkpoint": checkpoint_written})
              if stop_after_checkpoint:
                  raise CheckpointStop("STOP_AFTER_CHECKPOINT")
 -            receipt = write_direct_estate(
 +            receipt = write_streaming_estate(
                  source, universe_ref, root, chunk_rows=chunk_rows,
-                 expected_i02=expected_i02)
+-                expected_i02=expected_i02)
++                expected_i02=expected_i02, progress=progress)
              published = True
+             if progress:
+                 progress({"phase": "published", "families": len(receipt.family_counts),

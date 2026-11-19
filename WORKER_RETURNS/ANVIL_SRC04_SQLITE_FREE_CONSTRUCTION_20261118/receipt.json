@@ -1,48 +1,57 @@
 {
+  "audit_separate_readonly": true,
   "base": "bf59f7d708ea250445234776de318ddf620be6ea",
   "compact_runner": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 5224,
-      "sha256": "2ce78c3392d46052c62fef4de9c96f30b4e0e8ce573f3d267ae167d89853f25e"
+      "bytes": 5906,
+      "sha256": "9fdecd9dc09d869f8d08c944734e2d969b41f85cfaea3d1ea07cc346d46d4ac3"
+    },
+    "audit_stream_estate.py": {
+      "bytes": 1047,
+      "sha256": "e0af78ae5bbad08bd8a9579582d3d520c8204d49fb0642353b11160f42464b01"
     },
     "evidence_metrics.json": {
-      "bytes": 169,
-      "sha256": "f1b1e9c8b70aef613a3b2e4a9755f60ade886c27bc3b53351560fc63d1467a5b"
+      "bytes": 202,
+      "sha256": "95b195041a48a13f050628025b76fabf285703066253d88ab87928631a01192b"
     },
     "sqlite_free_wiring.patch": {
-      "bytes": 1687,
-      "sha256": "84fa47e56c8aac664c9506052709f70d574ddb4854b3230d2ed7461fb9ec904a"
+      "bytes": 2220,
+      "sha256": "e4a2de742d157ebcca102a88d14c098cfd61874b9d2f7208caf619a10b017ec6"
     },
     "streaming_estate.py": {
-      "bytes": 11227,
-      "sha256": "efc04f2cf2e112ed7050dafe2511a6aea20a9292a35166bf99d2ea4b4f81b783"
+      "bytes": 13692,
+      "sha256": "983d6d91c8a3482badc755a770828f96f07a045b932f4c96684d28ca807c77da"
     },
     "test.out": {
       "bytes": 98,
-      "sha256": "8caef620c24c87fc31f2bed7d9c4db0816d6e4a6e38fa264601fc1a00925ca54"
+      "sha256": "99934b3c93ebae378b02afd7aa8b5e6775579625afe20a8ffc16008cd540fe68"
     },
     "test_streaming_cut.py": {
-      "bytes": 5880,
-      "sha256": "16cb6cf1f2e92049ad91d9cf45f9081e2f29578ebbc99d0aa4dc9b954684b71d"
+      "bytes": 8508,
+      "sha256": "a17c31957b8c89171d768aa274bf98c57be54b066e4f2ef09358604b528fb01c"
     }
   },
-  "focused_tests": "2 passed in 2.40 s",
+  "focused_tests": "4 passed in 3.50 s",
   "frozen_writer_reader": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
-  "legacy_reader_reads_old_estate": true,
-  "limits": [
-    "No original source or staging read",
-    "No active candidate tree edit",
-    "No product edits",
-    "No giant benchmark",
-    "Expected old I02 logical equality is proven when supplied; new physical proof schema otherwise",
-    "Old SQLite path remains explicit audit only"
-  ],
-  "logical_identity_when_expected_supplied": true,
-  "new_reader_fresh_reads_new_estate": true,
+  "legacy_expected_root_policy": "REFUSED_AS_UNVERIFIABLE",
+  "metrics": {
+    "new_bytes": 356442,
+    "new_proof_scratch_bytes": 27436,
+    "new_seconds": 0.07857638702262193,
+    "old_bytes": 356679,
+    "old_seconds": 0.193896988988854,
+    "read_back_audit": false,
+    "sqlite_proof_built": false
+  },
+  "native_reader": "existing VerifiedDirectEstate methods via object-level versioned proof boundary",
+  "new_logical_and_replay_derived_from_content": true,
   "normal_path_sqlite_proof_built": false,
   "physical_proof_schema": "ANVIL_STREAM_C11_ESTATE@1",
+  "previous_cut": "f317ebbd795b83a746906eb84abc101d595c3ad7",
+  "progress_callback": true,
   "read_back_audit_in_normal_path": false,
+  "residual": "Legacy physical root is SQLite byte hash; new versioned stream physical root is not claimed equal. Legacy expected logical/release/replay is refused rather than copied.",
   "schema": "ANVIL_SRC04_SQLITE_FREE_CONSTRUCTION_RECEIPT@1",
-  "status": "EXECUTABLE_SCOPED_CUT_WITH_VERSIONED_STREAM_PROOF"
+  "status": "EXECUTABLE_SCOPED_CUT_VERSIONED_STREAM_PROOF__LEGACY_EXPECTED_REFUSED"
 }
