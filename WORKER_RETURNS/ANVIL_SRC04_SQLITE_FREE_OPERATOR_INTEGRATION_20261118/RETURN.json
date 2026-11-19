@@ -157,9 +157,11 @@
       "schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
       "status": "PRODUCER_REFUSED"
     },
+    "common_supervisor_sourcefree_cli": "NOT_EXECUTED__COMMON_WITNESS_REQUIRES_SRC04_CONFIG",
     "decode_trap": true,
     "new_output_private": "/private/.../new-private",
     "old_checkpoint_preserved": true,
+    "remaining": "common supervisor still source-specific; sourcefree old/new-root direct boundary passes, sourcefree CLI supervisor not proven",
     "sourcefree_cli_supervisor": "NOT_EXECUTED__COMMON_WITNESS_IS_SRC04_CONFIGURED; direct sourcefree resume used the reviewed single-pass boundary",
     "sourcefree_old_new_root": "OLD_NEW_ROOT_RESUME_PASS"
   },
@@ -190,7 +192,7 @@
     "reader_counts_equal": true,
     "reader_digests_equal": true
   },
-  "status": "SHARDED_INDEX_REPAIR_GREEN__CHECKPOINT_RESUME_GREEN__SOURCEFREE_ONLY",
+  "status": "RESUME_ROOT_FIXED__DIRECT_SOURCEFREE_PASS__SOURCEFREE_CLI_SUPERVISOR_UNPROVEN",
   "tests": {
     "actual_sourcefree_reader": "PASS",
     "cut": "....                                                                     [100%]\n4 passed in 3.92s",
