@@ -27,6 +27,10 @@ from rawlsing_next.pre553_empirical_objects import (
 from rawlsing_next.pre553_s04_observed_research import (
     S04ObservedKnowledge, S04KnowledgeError, SAMPLE_GRADE, UNISSUED,
 )
+from rawlsing_next.pre553_interpretation_qualification import (
+    InterpretationQualificationError, S04InterpretationCurrent,
+    refuse_positive_uninterpreted_support,
+)
 
 CONTRACT = "S04_GENERAL_SOURCE_EXACT_JOINT_PROJECTION@1.0.0"
 SCIENTIFIC_GRADE = "SINGLE_ACTUAL_I03_FULL_JOINT__RAW_SAMPLE_ONLY__NO_NEW_ISSUER"
@@ -94,6 +98,7 @@ class S04GeneralJointWorkspace:
         max_filter_cache_entries: int = 128,
         max_cached_row_ids: int = 65_536,
         current_guard: Callable[[], Any] | None = None,
+        interpretation_current: S04InterpretationCurrent | None = None,
     ) -> None:
         if type(knowledge) is not S04ObservedKnowledge:
             raise S04GeneralAlgebraError("actual S04 knowledge object required")
@@ -106,11 +111,23 @@ class S04GeneralJointWorkspace:
             raise S04GeneralAlgebraError("positive finite resource budgets required")
         if current_guard is not None and not callable(current_guard):
             raise S04GeneralAlgebraError("CURRENT guard must be callable or absent")
+        if (interpretation_current is not None
+                and type(interpretation_current) is not S04InterpretationCurrent):
+            raise S04GeneralAlgebraError("real interpretation-current guard or none required")
+        self._interpretation_current = interpretation_current
         self._current_guard = current_guard
         self._check_current()
         self._knowledge = knowledge
         self._material = knowledge.material()
         m = self._material
+        if self._interpretation_current is not None:
+            from rawlsing_next.pre553_empirical_objects import exact_ref
+            try:
+                self._interpretation_current.assert_bound_to(
+                    exact_ref(m.get("response_semantics_ref"), "S04 response semantics")
+                )
+            except InterpretationQualificationError as exc:
+                raise S04GeneralAlgebraError(str(exc)) from exc
         if (m.get("contract") != "S04_SOURCE_EXACT_OBSERVED_KNOWLEDGE@1.0.0"
                 or m.get("source_scope_mode") != "SINGLE_UNIVERSE"
                 or m.get("measure_kind") != "RAW"
@@ -168,6 +185,12 @@ class S04GeneralJointWorkspace:
                 raise S04GeneralAlgebraError("duplicate or alien joint cell")
             seen.add(key)
             n = row["raw_count"]
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=cell, raw_support=n, consumer="S04-general",
+                )
+            except InterpretationQualificationError as exc:
+                raise S04GeneralAlgebraError(str(exc)) from exc
             if row.get("cell_state") != (
                 "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
             ):
@@ -238,6 +261,10 @@ class S04GeneralJointWorkspace:
         return rows
 
     def _check_current(self) -> None:
+        if self._interpretation_current is not None:
+            # Physical observation CURRENT and mapping/version CURRENT are
+            # distinct. Every cached query must recheck both.
+            self._interpretation_current.check_current()
         if self._current_guard is not None:
             # A callback is not an issuer. Native integration binds the
             # actual VerifiedDirectEstate._live guard, which can revoke.
@@ -306,6 +333,15 @@ class S04GeneralJointWorkspace:
             "source_response_semantics_ref": m["response_semantics_ref"],
             "original_source_authenticity": m["source_authenticity"],
             "independent_original_source_issuer": None,
+            "interpretation_version_ref": (
+                self._interpretation_current.expected_ref.as_dict()
+                if self._interpretation_current else None
+            ),
+            "interpretation_current_check": (
+                "BOUND_EXACT_RESPONSE_SEMANTICS_PRE_POST__NO_SOURCE_ISSUER"
+                if self._interpretation_current else
+                "INTERPRETATION_CURRENT_UNVERIFIED"
+            ),
             "source_current_check": (
                 "BOUND_GUARD_PRE_POST__NOT_SOURCE_ISSUANCE" if self._current_guard
                 else "OFFLINE_SOURCE_CURRENT_UNVERIFIED"
