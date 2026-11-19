@@ -9,6 +9,12 @@
 - Underlying November 19 mandate: **BUILD THE ORGANISM**—integrated embodied, relational, historically self-reconstituting software; LLM as semantic construction machinery; provisional science is not an engineering prohibition; preserve material world, independent Others, PYAT-conditioned adults and open child; do not regress into isolated experiments or validation-first paralysis.
 - This bank preserves the actual R1 return without implying that the next work phase has been authorized now.
 
+## Source code now preserved directly in ORACLE
+
+**ACTUAL R1 SOURCE CODE IS NOW COMMITTED TO ORACLE GITHUB.** [36 individual source/test/document/receipt files](https://github.com/maidiu/rawlsing/tree/79dbbbc6a998739c6d8d782e8e73df7d297d6934/SEAM/ORACLE/UM_SOROK_ORGANISM_R1/), code commit `79dbbbc6a998739c6d8d782e8e73df7d297d6934`; [ORACLE/21 source read-first](https://github.com/maidiu/rawlsing/blob/3ec4817845c644ca84a8a8e08910ac489f5b1a15/SEAM/ORACLE/21_UM_SOROK_R1_GITHUB_SOURCE_CODE_READ_FIRST.md). Original ZIP incl. binary demo SQLite remains in ChatGPT Library. This is code BANKING, not protected P2/P3/P6 integration, independent receiving or scientific promotion.
+
+The existing [ORACLE research PR #1159](https://github.com/maidiu/rawlsing/pull/1159) now contains the actual runnable R1 code, not only its abstract findings. The unpacked original source files and all test files are GitHub-addressable. Original ZIP SHA-256 and the generated binary demo database remain in the Library; the GitHub code is a faithful *text-source* bank, not a claimed byte-identical ZIP upload.
+
 ## What exists as code vs what does not
 
 A single stand-alone, locally executable Python standard-library + SQLite research program was produced with three independent fictional actors (mother, father, Nadia), bodily/need gates, variable acquired functional forms and projects, a time-indexed iceberg read, situated recruitment through acquired links/scope, separate current tip, actor-specific accessible experience, provisional changes to forms AND *recruitment pathways*, compressed ordinary life, world-owned independent joint/one-sided effects and institutions, and a durable event hash chain/cold reopening.

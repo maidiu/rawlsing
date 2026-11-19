@@ -1,3 +1,5 @@
+**ACTUAL R1 SOURCE CODE IS NOW COMMITTED TO ORACLE GITHUB.** [36 individual source/test/document/receipt files](https://github.com/maidiu/rawlsing/tree/79dbbbc6a998739c6d8d782e8e73df7d297d6934/SEAM/ORACLE/UM_SOROK_ORGANISM_R1/), code commit `79dbbbc6a998739c6d8d782e8e73df7d297d6934`; [ORACLE/21 source read-first](https://github.com/maidiu/rawlsing/blob/3ec4817845c644ca84a8a8e08910ac489f5b1a15/SEAM/ORACLE/21_UM_SOROK_R1_GITHUB_SOURCE_CODE_READ_FIRST.md). Original ZIP incl. binary demo SQLite remains in ChatGPT Library. This is code BANKING, not protected P2/P3/P6 integration, independent receiving or scientific promotion.
+
 > **UM-SOROK R1 research organism bank (candidate, 2026-11-19):** [ORACLE #1159](https://github.com/maidiu/rawlsing/pull/1159) and [32 R1 evidence/priority bank](32_UM_SOROK_CONSTITUTIVE_ORGANISM_R1_ORACLE_BANK_AND_USER_PRIORITY_20261119.md) record 24/24 author-tested local whole-organism software, exact source archive SHA, sourcefree limits, and the principal's instruction **integrate later**. This is not a protected acceptance or R40. The canonical PROGRAMMA opening oath remains first-binding.
 
 # PROGRAMMA SOROK — current guide navigation
