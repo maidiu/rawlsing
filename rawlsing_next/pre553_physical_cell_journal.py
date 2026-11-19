@@ -320,7 +320,43 @@ def read_physical_cells(
             )
 
 
+
+
+def reproject_sourcefree_c11_from_physical_journal(
+    receipt: PhysicalCellJournalReceipt,
+    *,
+    authorized_private_root: str | Path,
+    projection: "GovernedC11Projection",
+):
+    """Reuse exact old physical bytes under a NEW externally governed mapping.
+
+    This intentionally uses the accepted C11 projection/validator, never
+    another invented interpreter. It is currently a sourcefree small-estate
+    engineering path, NOT the bounded production 100k-row writer or a method
+    for original-source retention without additional permission.
+    """
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        ExactPhysicalCellStream, GovernedC11Projection,
+        build_validated_source_backed_c11_release_from_stream,
+    )
+    if (type(receipt) is not PhysicalCellJournalReceipt
+            or not isinstance(projection, GovernedC11Projection)
+            or projection.expected_source_sha256 != receipt.source_sha256):
+        raise PhysicalCellJournalError(
+            "exact source-matched independently issued governed projection required"
+        )
+    stream = ExactPhysicalCellStream(
+        source_sha256=receipt.source_sha256,
+        row_count=receipt.row_count,
+        decoder_metadata_digest=receipt.source_metadata_digest,
+        cell_iter_factory=lambda: read_physical_cells(
+            receipt, authorized_private_root=authorized_private_root,
+        ),
+    )
+    return build_validated_source_backed_c11_release_from_stream(stream, projection)
+
 __all__ = [
     "SCHEMA", "PhysicalCellJournal", "PhysicalCellJournalReceipt",
     "PhysicalCellJournalError", "read_physical_cells",
+    "reproject_sourcefree_c11_from_physical_journal",
 ]
