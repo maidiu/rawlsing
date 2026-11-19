@@ -215,3 +215,59 @@ def test_original_source_rights_never_promoted_by_arbitrary_requery():
     assert x["no_cross_fact_or_cross_risk_pooling"]
     assert "COMPARATIVE_DETERMINICITY_METRIC_NOT_ISSUED" in x["unissued"]
     assert x["source_release_ref"] == knowledge.material()["release_ref"]
+
+
+def test_five_axis_actual_native_joint_projects_any_conditional_subcube():
+    # Five *actual* native variables; not a hardcoded 3-axis research engine.
+    from itertools import product
+    from rawlsing_next.tests import test_pre553_empirical_query as native
+
+    rows = [
+        {
+            "id": f"R{a}{b}{c}{d}",
+            "responses": {
+                "A": a, "B": b, "C": c, "D": d,
+                "E": a ^ b ^ c ^ d,
+            },
+        }
+        for a, b, c, d in product((0, 1), repeat=4)
+    ]
+    source = native._build_source(
+        "S04-GENERAL-5-AXIS", rows, question_namespace="GEN-5-VARS",
+    )
+    qauth = native._query_authority("S04-GENERAL-5-AXIS")
+    predicate = native._branch_predicate(source, qauth)
+    query = native._query(
+        source, qauth, predicate, ("A", "B", "C", "D", "E"),
+        tag="general-five-way",
+    )
+    original = native._run(source, qauth, predicate, query)
+    assert original.facts[0].typed_state == "SUPPORTED"
+    knowledge = receive_s04_i03_research(query=query, execution=original)
+    workspace = S04GeneralJointWorkspace(
+        knowledge=knowledge, expected_knowledge_ref=knowledge.ref,
+    )
+    assert workspace.query(
+        S04Projection((4,), {0: "0", 1: "0", 2: "0", 3: "0"})
+    ).material()["complete_output_cells"] == [
+        {
+            "output_states": ["0"],
+            "raw_count": 1,
+            "raw_fraction_of_selected_full_cases": {"$exact_fraction": [1, 1]},
+            "cell_state": "OBSERVED_POSITIVE",
+        },
+        {
+            "output_states": ["1"],
+            "raw_count": 0,
+            "raw_fraction_of_selected_full_cases": {"$exact_fraction": [0, 1]},
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        },
+    ]
+    out = workspace.query(S04Projection((2, 3, 4), {0: "0", 1: "0"}))
+    assert out.material()["raw_selected_full_case_n"] == 4
+    assert len(out.material()["complete_output_cells"]) == 8
+    assert sum(row["raw_count"] for row in out.material()["complete_output_cells"]) == 4
+    assert workspace.query(
+        S04Projection((0, 1, 2, 3), {4: "1"})
+    ).material()["raw_selected_full_case_n"] == 8
+    assert workspace.cache_stats()["filter_cache_hits"] > 0
