@@ -422,3 +422,24 @@ def test_no_duplicate_question_position_can_masquerade_as_three_independent_dime
     )
     with pytest.raises(FF01GenericIngressError, match="duplicate target ref"):
         _domain(duplicate)
+
+
+def test_held_positive_low_support_is_conserved_but_never_promoted_to_ff01_joint():
+    _, _, _, query, result = _case(tag="FF01-HELD-LOW-SUPPORT")
+    actual = result.facts[0]
+    held = EmpiricalFact(
+        typed_state="LOW_SUPPORT",
+        authority_snapshot_refs=actual.authority_snapshot_refs,
+        dependency_refs=actual.dependency_refs,
+        producer_replay_locator_or_reference_root=actual.producer_replay_locator_or_reference_root,
+        **dict(actual.semantic_fields),
+    )
+    received = _receive(query, replace(result, facts=(held,)))
+    m = received.semantic_projection()
+    assert m["producer_state"] == "LOW_SUPPORT"
+    assert m["producer_state"] != "SUPPORTED"
+    assert m["raw_fully_resolved_joint_n"] == 4
+    assert m["held_observed_n_if_nonpositive"] == 4
+    assert m["complete_cells"] == []
+    assert m["conditioned_complete_case_support"] == []
+    assert m["zero_means"] == "NO_ZERO_INFERENCE_FROM_NONPOSITIVE_PRODUCER_STATE"
