@@ -119,6 +119,11 @@ def test_current_revoked_between_dynamic_questions_refuses_stale_science(
         with pytest.raises(DirectEstateError, match="current source"):
             dynamic.ask(S04DynamicQuestion(queries[1].ref, pred.ref))
         assert dynamic.stats()["original_native_i03_queries_executed"] == 1
+        # The old sourcefree S04 full joint is still physically in memory.
+        # It must not grant NEW analytical answers after source CURRENT
+        # was revoked, including an answer obtainable entirely from cache.
+        with pytest.raises(DirectEstateError, match="current source"):
+            first.joint_workspace.query(S04Projection((0,), {}))
     assert not list(Path(root).glob(".s2c-native-i03-*"))
 
 
