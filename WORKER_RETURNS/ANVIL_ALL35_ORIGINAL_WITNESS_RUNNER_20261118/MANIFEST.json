@@ -4,8 +4,8 @@
   "compact_spool_tested": true,
   "files": {
     "CALLER_README.md": {
-      "bytes": 4532,
-      "sha256": "2d9e27ceff017da5019115e61efb781890350b6e3aca29a47e428d6ee994c882"
+      "sha256": "019f038cff020043626efee695012e09683f3c703e852fbcd30ca3e1cbdb93d7",
+      "bytes": 5456
     },
     "CURRENT_GUARD_TEST.json": {
       "bytes": 68,
@@ -220,20 +220,24 @@
       "sha256": "61075d0d19b2d1d83831324b683fc78cf8f9a776ddf83ca06dd3b0301f93a13f"
     },
     "witness_caller.py": {
-      "bytes": 27578,
-      "sha256": "9f288b4a085c9bc4a5495e2d779a23011af3c971ced5f1a3976ac249481866b7"
+      "sha256": "580cf8cc0cf957420f418f210c5e1bf2a47955d84c1f0e96362b5ab7110e2bef",
+      "bytes": 28677
     },
     "witness_runner.py": {
       "bytes": 13940,
       "sha256": "b91cef44077b7496007f55246e489eb08f96262ffcd0c46a146040ff115785ed"
     },
     "test_witness_integration_guards.py": {
-      "bytes": 3494,
-      "sha256": "8cbfea415426978167a85bd713e06e7eb77818942c176946045c48c70795285b"
+      "sha256": "f3c9ceb7738e54435b62aad683ce8237ac0b8f35e743d5d2dd27fe94c159be1e",
+      "bytes": 4955
     },
     "HOSTILE_INTEGRATION_REPAIR.md": {
-      "bytes": 2607,
-      "sha256": "f56c82abaccb24bc03e5e8c55cccc7c070ec894b40dc7be8164462e84817e7ef"
+      "sha256": "7d4ac5480d61dc26f46482b8368c3e354b9dab770863d5f8aaa681cd80944dfe",
+      "bytes": 3578
+    },
+    "run_sourcefree_checks.sh": {
+      "sha256": "d134a22fdb7c50edde45297bb255b46aad80301614782ca48126e7d07ae1ac61",
+      "bytes": 1872
     }
   },
   "free_space_blocker": {
@@ -249,13 +253,17 @@
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_MANIFEST@4",
   "single_pass": true,
   "source_bytes_in_git": false,
-  "source_read_performed": true,
+  "source_read_performed": false,
   "sourcefree_only": true,
   "sourcefree_rehearsal": true,
-  "status": "HOSTILE_AUTHOR_INTEGRATION_REPAIR__RUNTIME_NOT_RUN__SOURCE_NATIVE_NOT_LAUNCHED",
+  "status": "SECOND_HOSTILE_AUTHOR_REPAIR__SUPERVISOR_FILE_LOGGED_MONITOR_SAFE__NEW_TESTS_NOT_RUN",
   "b3dd_historical_status": "COMPACT_PARITY_REVIEWED__CALLER_DEFECTS_REPAIRED__HEADROOM_CLEARED",
   "b3dd_parent": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
   "new_test_execution": "NOT_RUN",
   "independent_review": "NOT_RUN",
-  "protected_receiving": "NOT_PERFORMED"
+  "protected_receiving": "NOT_PERFORMED",
+  "b3dd_manifest_ambiguous_source_read_performed": true,
+  "sourcefree_fixture_file_read_performed": true,
+  "original_src04_source_opened": false,
+  "previous_author_repair_head": "35c2953759e7b52f2a7922cff5c1a3c505fc7f14"
 }

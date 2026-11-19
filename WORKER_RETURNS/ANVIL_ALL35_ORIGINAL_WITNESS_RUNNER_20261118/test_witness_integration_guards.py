@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Offline fail-closed guards: no original data, no source path opened."""
 import sys, tempfile, types, unittest
+from unittest import mock
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE))
@@ -48,6 +49,33 @@ class GuardTests(unittest.TestCase):
             w._enforce_src04_reference({**ok,"RespondentEvent":0},w.ACCEPTED["release_hash"])
         with self.assertRaises(w.CallerRefusal):
             w._enforce_src04_reference(ok,"0"*64)
+        with self.assertRaises(w.CallerRefusal) as context:
+            w._enforce_src04_reference(
+                {"RespondentEvent":ok["RespondentEvent"]},w.ACCEPTED["release_hash"])
+        self.assertEqual(context.exception.code,"SRC04_ACCEPTED_FAMILIES_MISSING")
+
+    def test_no_pipe_backpressure_with_large_child_stderr(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            child=w._spawn_logged(
+                [sys.executable,"-c",
+                 "import sys;sys.stderr.write('x'*262144);print('DONE')"],
+                root,"producer")
+            with mock.patch.object(w,"_sample",return_value=None):
+                self.assertIsNone(w._watch_child(child,root,[]))
+            self.assertEqual(child.returncode,0)
+            self.assertEqual((root/"producer.stderr").stat().st_size,262144)
+            self.assertIn("DONE",(root/"producer.stdout").read_text())
+
+    def test_monitor_failure_kills_and_reaps_subprocess(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            child=w._spawn_logged(
+                [sys.executable,"-c","import time;time.sleep(20)"],root,"producer")
+            with mock.patch.object(w,"_sample",side_effect=RuntimeError("monitor")):
+                abort=w._watch_child(child,root,[])
+            self.assertEqual(abort,"MONITOR_FAILURE:RuntimeError")
+            self.assertIsNotNone(child.poll())
 
     def test_current_revocation_and_locator_scope(self):
         req=types.SimpleNamespace(decision_ref="decision",source_id="SRC04",

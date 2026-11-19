@@ -284,8 +284,7 @@ def producer(args) -> int:
         "issued_workload": False,
     }
     (root / "producer_receipt.json").write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
-    (root / "producer.stdout").write_text("")
-    (root / "producer.stderr").write_text("")
+    # The supervisor owns child stdout/stderr log files: never truncate them here.
     print(json.dumps({"status": "PRODUCER_COMMITTED", "path": receipt.path, "single_pass": True}))
     return 0
 
@@ -308,9 +307,14 @@ def _resume_existing_root(checkpoint: Path, work: Path) -> Path:
 
 def _enforce_src04_reference(counts: Mapping[str, int], release_hash: str) -> None:
     """SRC04 exact historical reference gate, not a generic writer requirement."""
-    differences = {k: {"actual": counts.get(k), "accepted": v}
-                   for k, v in ACCEPTED.items()
-                   if k in counts and counts.get(k) != v}
+    expected = {"RespondentEvent": ACCEPTED["RespondentEvent"],
+                "EmpiricalCoordinateFact": ACCEPTED["EmpiricalCoordinateFact"]}
+    missing = sorted(k for k in expected if k not in counts)
+    if missing:
+        raise CallerRefusal("SRC04_ACCEPTED_FAMILIES_MISSING", ",".join(missing))
+    differences = {k: {"actual": counts[k], "accepted": v}
+                   for k, v in expected.items()
+                   if type(counts[k]) is not int or counts[k] != v}
     if differences:
         raise CallerRefusal("SRC04_ACCEPTED_COUNTS_DIFFER",
                             json.dumps(differences, sort_keys=True))
@@ -420,6 +424,47 @@ def _sample(pid: int, root: Path, samples: list[dict[str, Any]]) -> str | None:
     return None
 
 
+def _spawn_logged(argv: list[str], root: Path, role: str) -> subprocess.Popen:
+    """No unread PIPE backpressure; file-backed logs with bounded memory."""
+    if role not in ("producer", "reader"):
+        raise CallerRefusal("SUPERVISOR_LOG_ROLE_INVALID")
+    root = Path(root)
+    with (root / (role + ".stdout")).open("w", encoding="utf-8") as stdout:
+        with (root / (role + ".stderr")).open("w", encoding="utf-8") as stderr:
+            return subprocess.Popen(
+                argv, cwd=str(HERE), stdout=stdout, stderr=stderr,
+                text=True, start_new_session=True)
+
+
+def _watch_child(child: subprocess.Popen, root: Path,
+                 samples: list[dict[str, Any]]) -> str | None:
+    """A broken resource monitor must terminate/reap its process group."""
+    abort = None
+    try:
+        while child.poll() is None:
+            time.sleep(0.25)
+            try:
+                abort = _sample(child.pid, root, samples)
+            except Exception as exc:
+                abort = "MONITOR_FAILURE:" + type(exc).__name__
+            if abort:
+                try:
+                    os.killpg(child.pid, signal.SIGTERM)
+                except ProcessLookupError:
+                    pass
+                break
+    finally:
+        try:
+            child.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(child.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            child.wait(timeout=10)
+    return abort
+
+
 def _grant_source_path(binding_dir: Path) -> str:
     doc = json.loads((binding_dir / "fixtures/SRC04_FULL_SOURCE_GRANT.json").read_text())
     source = doc.get("source_path")
@@ -435,7 +480,11 @@ def supervisor(args) -> int:
     if args.runtime_config is None:
         raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_RUN")
     work = Path(args.work_root).absolute()
+    if work.is_symlink():
+        raise CallerRefusal("WORK_ROOT_SYMLINK_REFUSED")
     work.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if work.stat().st_mode & 0o077:
+        raise CallerRefusal("WORK_ROOT_PERMISSION_REFUSED")
     if args.resume_checkpoint:
         root = _resume_existing_root(args.resume_checkpoint, work)
     else:
@@ -455,20 +504,9 @@ def supervisor(args) -> int:
                  if args.resume_checkpoint else []))
     samples: list[dict[str, Any]] = []
     started = time.monotonic()
-    producer = subprocess.Popen([*base, "producer", *common,
-                                 "--authorized-source-launch"], cwd=str(HERE),
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                                text=True, start_new_session=True)
-    abort = None
-    while producer.poll() is None:
-        time.sleep(0.25)
-        abort = _sample(producer.pid, root, samples)
-        if abort:
-            os.killpg(producer.pid, signal.SIGTERM)
-            break
-    out, err = producer.communicate(timeout=30)
-    (root / "producer.stdout").write_text(out)
-    (root / "producer.stderr").write_text(err)
+    producer = _spawn_logged([*base, "producer", *common,
+                              "--authorized-source-launch"], root, "producer")
+    abort = _watch_child(producer, root, samples)
     if abort:
         result = {"schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
                   "status": "ABORTED", "abort": abort,
@@ -488,19 +526,8 @@ def supervisor(args) -> int:
         (root / "supervisor_receipt.json").write_text(json.dumps(result, indent=2) + "\n")
         print(json.dumps(result))
         return producer.returncode
-    reader = subprocess.Popen([*base, "reader", *common], cwd=str(HERE),
-                              stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                              text=True, start_new_session=True)
-    abort = None
-    while reader.poll() is None:
-        time.sleep(0.25)
-        abort = _sample(reader.pid, root, samples)
-        if abort:
-            os.killpg(reader.pid, signal.SIGTERM)
-            break
-    rout, rerr = reader.communicate(timeout=30)
-    (root / "reader.stdout").write_text(rout)
-    (root / "reader.stderr").write_text(rerr)
+    reader = _spawn_logged([*base, "reader", *common], root, "reader")
+    abort = _watch_child(reader, root, samples)
     result = {"schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
               "status": "COMPLETE" if reader.returncode == 0 and not abort else "READER_FAILED",
               "producer_exit": producer.returncode, "reader_exit": reader.returncode,

@@ -20,3 +20,20 @@ The pinned core writer/source C11 product and existing q217 hold/177 response+3 
 **Next executable:** on an authorized local sourcefree checkout, run the new test plus caller checkpoint interruption→supervisor resume with exact original work root and wrong-root/denied-current negatives. Independent reviewer must validate that same cut before any SRC04 original-source run; external source owner and host/lease permission are separately required. No parallel plan or physics redesign.
 
 `ANVIL_SRC04_HOSTILE_AUTHOR_REPAIR_CANDIDATE__NEW_TESTS_NOT_RUN__SOURCE_NATIVE_NOT_LAUNCHED__INDEPENDENT_REVIEW_PENDING__PROTECTED_HOLD`
+
+## Second hostile review: supervisor liveness + historical grade
+
+A source progress stream could fill the unread Popen PIPEs and hang the
+supervisor indefinitely. Producer also truncated the log paths, and the
+reference helper silently omitted an absent event/coordinate family.
+The repaired caller uses file-backed logs and a kill/reap-on-monitor-error
+helper; exact SRC04 parity requires both expected family counts and the
+reference release. Unit tests exercise over-pipe-capacity child output,
+monitor failure reaping and missing-count refusals. A new offline runner
+pins exact HEAD and all witness manifest file digests before tests.
+The prior manifest's ambiguous source_read_performed=true referred to
+sourcefree fixture activity; explicit original SRC04 access remains FALSE.
+
+These are **author source modifications only**. No new test execution,
+true same-supervisor checkpoint resume, native SRC04 source read,
+independent G5 or protected receiving occurred.

@@ -58,3 +58,19 @@ CURRENT checks.
 No actual original SRC04 source launch or real resumed writer has been carried out
 for this patch; the old three green sourcefree tests apply to b3dd only. New tests
 are authored but unexecuted and independent receiving remains held.
+
+## Second hostile author repair — offline sourcefree entrypoint
+
+The original caller used undrained PIPEs for potentially large producer/reader
+progress messages; at the operating SRC04 scale this can deadlock. The
+supervisor now writes logs directly to private files and never loses them by
+child-side truncation. Monitor failure terminates and reaps the process group,
+rather than leaving an unsupervised producer; missing reference-count families
+now fail closed. The manifest now distinguishes sourcefree fixture reads from
+original SRC04 source access.
+
+Run `run_sourcefree_checks.sh` on the exact repaired Git worktree with the
+`EXPECTED_ANVIL_HEAD` environment variable set to the 40-character head.
+It checks the manifest file hashes and executes stdlib-only offline tests.
+**It never launches an original source read.** These new author-side tests
+are not claimed passing until a real local receipt is returned.
