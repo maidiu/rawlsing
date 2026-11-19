@@ -193,6 +193,9 @@ class S04DynamicResearchSession:
                 if self._interpretation_resolver else
                 "INTERPRETATION_CURRENT_UNVERIFIED"
             ),
+            "mapping_edition_dependencies": (
+                "NEEDS_C11_SOURCE_ISSUED_MAPPING_VERSION_REF_IN_QUERY_AND_FACT"
+            ),
             "scientific_rank_or_original_source_authority": None,
         }
 
