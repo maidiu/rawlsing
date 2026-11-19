@@ -11,7 +11,7 @@ Private SRC16 paths/config/grant bytes are accepted only from environment and
 are never printed.
 """
 from __future__ import annotations
-import argparse, dataclasses, hashlib, importlib.util, json, os, sys
+import argparse, dataclasses, hashlib, importlib.util, json, os, sys, tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -54,8 +54,14 @@ def _load_resolver(binding_dir: Path):
     return mod.ExactSrc16Resolver(binding_path), binding_path
 
 def src16_metadata() -> dict:
+    from source_adapter import Profile
     binding_dir=Path(os.environ['ANVIL_SRC16_GRANT_DIR']).absolute()
     cfg_path=Path(os.environ['ANVIL_SRC16_CONFIG']).absolute()
+    grant=json.loads((binding_dir/'SRC16.construction.grant.json').read_text())
+    td=tempfile.TemporaryDirectory(prefix='src16-profile-')
+    pp=Path(td.name)/'profile.private.json';pp.write_text(json.dumps({'kind':'src16','config':str(cfg_path),'binding_dir':str(binding_dir),'source_path':grant['source_path']},sort_keys=True)+'\n')
+    prof=Profile(pp); decision=prof.resolve_before_source(); cfg=prof.config; req=prof.request
+    # The remaining checks use the actual adapter, not a standalone copy.
     cfg=load_source_config(cfg_path)
     file_sha=sha(cfg_path); canonical=canonical_config_hash(cfg)
     if file_sha!='1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7':
@@ -67,25 +73,13 @@ def src16_metadata() -> dict:
     d=cfg.document
     if (d['binding']['row_count'],len(d['physical_slots']),len(d['response_slots']),len(d['coordinate_slots']),len(d['weight_slots']))!=(1613,216,157,2,0):
         raise Refusal('SRC16_CONFIG_SHAPE_DRIFT')
-    resolver,binding_path=_load_resolver(binding_dir)
-    req=resolver.request
-    if (req.source_id,req.source_sha256,req.purpose,req.consumer_use)!=( 'SRC16','e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204','FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY','EXISTING_PRE553_SOURCE_BACKED_C11'):
-        raise Refusal('SRC16_BINDING_SCOPE_DRIFT')
-    if req.metadata_freeze_refs != (d['identity']['metadata_witness_ref'],):
-        # Normalize exact mapping/ref comparison without exposing values.
-        from rawlsing_next.pre553_empirical_objects import ExactRef
-        if tuple(ExactRef(**x) if isinstance(x,dict) else x for x in req.metadata_freeze_refs) != (ExactRef(**d['identity']['metadata_witness_ref']),):
-            raise Refusal('SRC16_METADATA_REF_DRIFT')
-    decision=resolver.resolve_current(req)
-    if decision.currentness!='CURRENT_GRANTED' or decision.revocation_ref is not None:
-        raise Refusal('SRC16_CURRENT_OR_REVOCATION_REFUSED')
     negatives=[]
     for name,other in (
         ('other_source',dataclasses.replace(req,source_id='SRC15')),
         ('analysis_purpose',dataclasses.replace(req,purpose='ANALYSIS')),
         ('incorrect_scope',dataclasses.replace(req,semantic_use_scope=('ANALYSIS_ONLY',))),
     ):
-        try: resolver.resolve_current(other)
+        try: prof.resolver.resolve_current(other)
         except Exception as exc: negatives.append({'case':name,'refused':True,'code':str(exc)})
         else: negatives.append({'case':name,'refused':False,'code':'NOT_REFUSED'})
     return {'status':'SRC16_METADATA_ADMISSION_PASS','source_id':'SRC16','config_file_sha256':file_sha,

@@ -1,12 +1,12 @@
 {
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4339,
-      "sha256": "9ceaba56fbc324b6a2aadbe55b705079bfc68ee106f1684f8743149b30faabbc"
+      "bytes": 5221,
+      "sha256": "6f6ee49a24da59aa0d590c13f00284457c68c802eaa7283204748569a430c338"
     },
     "common.patch": {
-      "bytes": 15277,
-      "sha256": "b2acea83c04d04b4873e84b99c5689bed509a379d6e7c40bb9f8429a1ae1494c"
+      "bytes": 15315,
+      "sha256": "ffc08e6578cb3ed1fa88685154460c0d4bce53e7b29e9867a9a12c665a6889c3"
     },
     "common/source_adapter.py": {
       "bytes": 3338,
@@ -21,16 +21,16 @@
       "sha256": "d70de4b9a82f0434833fcf998181a98bd045f37558b39270f22522c2f4e003dd"
     },
     "common/sqlite_free_witness.py": {
-      "bytes": 35088,
-      "sha256": "6bf571cdcc041fd3b3635707cbf85ad30bb8d2fe6c177f8d34d31a4fd5577556"
+      "bytes": 35126,
+      "sha256": "128bd9704d55e6541cc40b66af1e4cca3dfad714652ee49d2fb9f3208bf9e2d1"
     },
     "common/streaming_estate.py": {
       "bytes": 15161,
       "sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
     },
     "generic_cli.py": {
-      "bytes": 8072,
-      "sha256": "e710f28e44fe854e4f24cf2013edc26772f157bdb5f7b0dadc0da06ae4318c5d"
+      "bytes": 7656,
+      "sha256": "fb1e4f62cab6bb952c167eff8629354c0479ac7c38a45b5cb6aeac2eb0589259"
     },
     "keyed_adapter_receipts.json": {
       "bytes": 1436,
@@ -39,6 +39,14 @@
     "keyed_adapter_supervisor.out": {
       "bytes": 367,
       "sha256": "ed9bb1147741b0170488f6114a8f4f0c79d0c43fcb3078d0333f3778420b1847"
+    },
+    "sourcefree_native_chunk.out": {
+      "bytes": 367,
+      "sha256": "6b23d2e32ff16a23ee3ba98f52fb77e14b2dcd73294326c1154b3bc4e8d25b7f"
+    },
+    "sourcefree_native_chunk_receipts.json": {
+      "bytes": 1355,
+      "sha256": "bd7ffe24956427f15e581c0d62d8be3efc28faffd064adc8799515da18e53d0f"
     },
     "sourcefree_supervisor.out": {
       "bytes": 367,
@@ -55,7 +63,17 @@
     "src16_metadata_test.out": {
       "bytes": 826,
       "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
+    },
+    "src16_native_metadata.out": {
+      "bytes": 826,
+      "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
     }
+  },
+  "native_chunk_policy": {
+    "corrected_file": "common/sqlite_free_witness.py",
+    "defect": "adapter branch hardcoded chunk_rows=2",
+    "real_src16_adapter": 512,
+    "test_only_sourcefree": 2
   },
   "native_source": {
     "keyed_resume_proven": false,
@@ -69,6 +87,7 @@
   "schema": "ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER@1",
   "sourcefree_supervised": {
     "distinct_pids": true,
+    "elapsed": 1.7461587350117043,
     "family_counts": {
       "AuthoritySnapshot": 7,
       "EmpiricalCoordinateFact": 6,
@@ -79,14 +98,18 @@
       "RoutingEligibilityFact": 6,
       "WeightMeasureFact": 0
     },
+    "free_min": 38117892096,
     "producer_exit": 0,
-    "producer_pid": 77002,
+    "producer_pid": 79174,
     "reader_exit": 0,
-    "reader_pid": 77010,
+    "reader_pid": 79182,
+    "rss_peak": 100450304,
+    "samples": 6,
     "sqlite_present": false,
     "status": "COMPLETE"
   },
   "src16_metadata": {
+    "actual_adapter_profile_resolution": true,
     "common_producer_denial": "ENFORCED_BEFORE_DECODE",
     "config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
     "config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
@@ -106,5 +129,5 @@
     "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
     "status": "PASS"
   },
-  "status": "KEYED_COMMON_SUPERVISOR_PASS__SRC16_METADATA_AND_DENIAL_PASS__NATIVE_INITIAL_READY_INPUT__KEYED_RESUME_RESIDUAL"
+  "status": "NATIVE_CHUNK_512_CORRECTED__SOURCEFREE_2_PASS__SRC16_ADAPTER_METADATA_PASS__NATIVE_READY_INPUT__KEYED_RESUME_RESIDUAL"
 }
