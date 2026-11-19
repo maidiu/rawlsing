@@ -393,6 +393,29 @@ def _read(knowledge: S04ObservedKnowledge) -> dict[str, Any]:
     m = knowledge.material()
     if knowledge.ref.content_hash != semantic_hash(m):
         raise S04KnowledgeError("S04 knowledge identity invalid")
+    # A content hash alone does not attest source interpretation. The direct
+    # F1/F2 conditioner and comparative candidate-table readers must perform
+    # the same fail-closed positive-unknown check as I03->S04 reception and
+    # the general joint workspace. Otherwise a self-rehashed S04 object can
+    # bypass both and turn an unmapped code into an observed distribution.
+    rows = m.get("complete_cells")
+    if not isinstance(rows, list):
+        raise S04KnowledgeError("S04 retained source cells malformed")
+    if m.get("state") == "SUPPORTED_SAMPLE_DESCRIPTIVE":
+        for row in rows:
+            if (not isinstance(row, dict)
+                    or not isinstance(row.get("cell"), list)
+                    or type(row.get("raw_count")) is not int):
+                raise S04KnowledgeError("S04 retained source cell malformed")
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=row["cell"], raw_support=row["raw_count"],
+                    consumer="S04-conditioned",
+                )
+            except InterpretationQualificationError as exc:
+                raise S04KnowledgeError(str(exc)) from exc
+    elif rows:
+        raise S04KnowledgeError("held S04 must not publish complete observed cells")
     return m
 
 
