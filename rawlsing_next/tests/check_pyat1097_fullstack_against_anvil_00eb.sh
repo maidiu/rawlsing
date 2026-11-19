@@ -37,6 +37,9 @@ files=(
   rawlsing_next/pre553_distinct_cold_s04_batch.py
   rawlsing_next/pre553_s04_general_joint_algebra.py
   rawlsing_next/pre553_s04_dynamic_research.py
+  rawlsing_next/pre553_interpretation_qualification.py
+  rawlsing_next/tests/test_pre553_interpretation_qualification.py
+  rawlsing_next/tests/test_pre553_interpretation_native_replay.py
   rawlsing_next/tests/test_pre553_s04_observed_research.py
   rawlsing_next/tests/test_pre553_s04_i05_reception.py
   rawlsing_next/tests/test_pre553_s04_ff01_read_conservation.py
