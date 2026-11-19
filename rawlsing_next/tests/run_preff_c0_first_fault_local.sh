@@ -20,6 +20,7 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
 case "$COURT" in
   C0_PHYSICAL)
     tests=(rawlsing_next/tests/test_preff_c0_raw_preservation.py
+           rawlsing_next/tests/test_preff_c0_physical_journal.py
            rawlsing_next/tests/test_pyat960_s1e_source_i02.py)
     ;;
   C1_PREDICATE_I05)
@@ -37,6 +38,7 @@ case "$COURT" in
     ;;
   C0_ALL_SMALL)
     tests=(rawlsing_next/tests/test_preff_c0_raw_preservation.py
+           rawlsing_next/tests/test_preff_c0_physical_journal.py
            rawlsing_next/tests/test_preff_c0_interpretation_seams.py
            rawlsing_next/tests/test_preff_c0_dhikr_first_consumer.py
            rawlsing_next/tests/test_pyat960_s1e_source_i02.py
