@@ -50,52 +50,48 @@
   },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 3846,
-      "sha256": "3bc4f6892f08740b934d77c930f7efed33afd84e6ae6c1f3b1fcf60d71eda0d8"
+      "bytes": 4754,
+      "sha256": "3f6078dd1ce41566c196ff0c3f14ae0324fda10c9002198d8063327aed9e9ddb"
     },
     "common.patch": {
-      "bytes": 15819,
-      "sha256": "0b108bd0734137d458f6a5683949057798d0f1ae799780d285c0a6abd18da4bf"
+      "bytes": 16121,
+      "sha256": "8123f9f7b509937ddc585d996a22b80b1f71a508c63155fc0ad47e7fa7957ad9"
     },
-    "common/declared_missing_mapping.py": {
-      "bytes": 11580,
-      "sha256": "3421afb6f41bcf9cde21ee5bf74e0a9c85c09bd8a3c6352e7bbc44d92ee7d4b0"
+    "common/handoff_raw_lane.patch": {
+      "bytes": 3680,
+      "sha256": "3f40601e50cb6f4953bafc7c0012523d7e8f2dec6a4cf7ac4b0442a0634ef075"
     },
-    "common/gap_census.py": {
-      "bytes": 5310,
-      "sha256": "b6a38e210038b2d9ef0500716d84d3481a275cd7a390f54c192406231289734d"
+    "common/i03_consumer_guard_compare.py": {
+      "bytes": 2341,
+      "sha256": "d9dea276ae553260f90799eb33c4c5e8588053d39c3c8c9b20a0d1568f56a032"
     },
-    "common/mapped_slot_precheck.py": {
-      "bytes": 5515,
-      "sha256": "20836568963fd60a439e3df174709d531c5e969719c06dd1705e71359a6a99aa"
+    "common/i03_consumer_guard_test.py": {
+      "bytes": 7490,
+      "sha256": "ca5e7336612ac75c5fe6a79a627250e2ce8b5ff17192dbe16f5ff21eeed342e4"
     },
-    "common/source_adapter.py": {
-      "bytes": 3338,
-      "sha256": "81c42b916e7f2983e55bc03ed271ca6cfb5d52ec593d5f95cfa3474061a443d3"
+    "common/pre553_query_predicate.worker.py": {
+      "bytes": 24761,
+      "sha256": "7f22f515d541af33e7b529b0635092c69f2555b0ebb284141e3ffededfce7a3e"
     },
-    "common/sourcefree_fixture.py": {
-      "bytes": 421,
-      "sha256": "466b7995f5d7abf12e7d580c54e7d750a4da4b27f6cf4e255e75c7259ef95cfe"
+    "common/pre553_source_i02_handoff.worker.py": {
+      "bytes": 59183,
+      "sha256": "c32d62e93ce28354e90fafb3befab97b203bf589d3f05441d4661254bd555514"
+    },
+    "common/query_predicate_guard.patch": {
+      "bytes": 1193,
+      "sha256": "ee47777d4386567866570635c66d90a347c7e76050dd9ee6ff2b1e81381d6ad6"
+    },
+    "common/shared_raw_lane_test.py": {
+      "bytes": 10270,
+      "sha256": "a9f7e5e297b6ee05895c62c2247810e1f8fb16d13993792f3d89f3a5af9b0d5b"
     },
     "common/sqlite_free_single_pass.py": {
-      "bytes": 22158,
-      "sha256": "f72220d3add9f4fff5c8ee66f416d3fb9b6df053d15fca2c1d5216fd956bef4f"
+      "bytes": 22200,
+      "sha256": "5340e04642e7ca1aff1daadb2aba071face7c36f352ef66f24b1e1485d66e3c0"
     },
     "common/sqlite_free_witness.py": {
       "bytes": 35126,
-      "sha256": "6fbdfcd92108656cc099e3b3ea5365fea06cbfc2a0bb2bf4e9396a43b9eedb4d"
-    },
-    "common/streaming_estate.py": {
-      "bytes": 15161,
-      "sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
-    },
-    "common/synthetic_declared_missing_witness.py": {
-      "bytes": 3726,
-      "sha256": "4739c4cbe383b302b26fbee2bb2704c8417e97df8614dfb325c0fd684ea3518a"
-    },
-    "common/synthetic_mapping_witness.py": {
-      "bytes": 3902,
-      "sha256": "4fc31f8f5ab584b07ae8dab5811f6be51541c78746fdf8e1f94c142868dfdfa1"
+      "sha256": "df903d89e77411eae46903fb5041be148f7ed4bf6aa1becd62fbb956a680a957"
     },
     "declared_missing_overlay_admission.out": {
       "bytes": 250,
@@ -105,9 +101,29 @@
       "bytes": 1022,
       "sha256": "7b237b2f780518b06f410241ce1165ce481c35612871a9f6eb28b7de22c78af1"
     },
-    "generic_cli.py": {
-      "bytes": 7656,
-      "sha256": "fb1e4f62cab6bb952c167eff8629354c0479ac7c38a45b5cb6aeac2eb0589259"
+    "gss_census_local_verify.out": {
+      "bytes": 1022,
+      "sha256": "7b237b2f780518b06f410241ce1165ce481c35612871a9f6eb28b7de22c78af1"
+    },
+    "i03_consumer_after.out": {
+      "bytes": 3161,
+      "sha256": "9e2184b462c2ec25bec0c761d5084a407e6e9c7ce0dd5dde79103d7fa912784e"
+    },
+    "i03_consumer_before.out": {
+      "bytes": 3171,
+      "sha256": "bce69e0c2e7e10869d1a964179a2c5838c2238ff190824344642398163b8bc11"
+    },
+    "i03_consumer_guard_compare.out": {
+      "bytes": 6815,
+      "sha256": "1d9412d42f81bb64d219d04816da9baa86493c3299e23d6cc9cffb9375e0174d"
+    },
+    "keyed_adapter_receipts.json": {
+      "bytes": 1436,
+      "sha256": "d5499e339cb56d8f674cc6b6759f98ebd7212ee62720c32717263fc921380e4e"
+    },
+    "shared_raw_lane_test.out": {
+      "bytes": 1119,
+      "sha256": "1d7da9c6e6c85eb94cccc252326153fbeba01028998e3739aaacb598393fd815"
     },
     "sourcefree_precheck_receipts.json": {
       "bytes": 1344,
@@ -116,6 +132,10 @@
     "sourcefree_precheck_test.out": {
       "bytes": 366,
       "sha256": "9dd01476e962a9b37d5a8581b1296866d5c9a40bf5c590535b84a1c8f7261fec"
+    },
+    "sourcefree_test.out": {
+      "bytes": 793,
+      "sha256": "d58cb1bfe194e688f4353d2c37fdab30d4ae08e99bf66cad78834b4f5deb5f14"
     },
     "src16_age_refusal.out": {
       "bytes": 165,
@@ -133,6 +153,10 @@
       "bytes": 826,
       "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
     },
+    "src16_metadata_test.out": {
+      "bytes": 826,
+      "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
+    },
     "synthetic_declared_missing_witness.out": {
       "bytes": 471,
       "sha256": "37eb6d7abb3cb900bd8e7173d4e39534f160ea4ae0175c35f67e3da242f41713"
@@ -142,18 +166,86 @@
       "sha256": "2b96468bd1aa1b8934db6e0e89cbeb9f6f5b7f3df6aa2ace3d37e4af1ca9fac2"
     }
   },
+  "frozen_candidate_tree_edited": false,
+  "frozen_runtime_edited": false,
+  "gss_census_local_verify": {
+    "declared_missing_range_cells": 40592,
+    "declared_missing_range_rules": 243,
+    "duplicate_slots": 0,
+    "missing_slots": 0,
+    "observed_storage_cells_left_unresolved": 18105,
+    "raw_tokens_published": false,
+    "remaining_unresolved_cells": 18105,
+    "source_reopened": false,
+    "status": "PASS"
+  },
+  "i03_guard": {
+    "ast_prepass": false,
+    "extra_full_pass": false,
+    "implementation": "leaf-local _refuse_unresolved_value_leaf",
+    "known_missing_unchanged": true,
+    "mapped_parity_denominator_risk_replay": true,
+    "mixed_after": {
+      "detail": "UNRESOLVED_CONDITION_MEMBER",
+      "raw_denominator": 0,
+      "risk_count": 0
+    },
+    "mixed_before": {
+      "raw_denominator": 1,
+      "risk_count": 2,
+      "typed_state": "UNRESOLVED"
+    },
+    "mixed_bypass_reproduced": true,
+    "simple_positive_and_not_held": true,
+    "standalone_diagnostic_allowed": true,
+    "status": "PASS"
+  },
+  "i03_not_witness": {
+    "dta": {
+      "leaf": false,
+      "red": true
+    },
+    "fixture_promoted": false,
+    "guard_invented": false,
+    "sav": {
+      "leaf": false,
+      "red": true
+    },
+    "saved_condition": "TYPED_RESPONSE_STATE with saved event authority and NOT",
+    "saved_predicate_evaluator": "_pre553_query_predicate._eval_predicate",
+    "seam": [
+      "_pre553_query_predicate.py:326-343",
+      "_pre553_query_predicate.py:434-442"
+    ],
+    "status": "RUNNABLE_RED"
+  },
+  "i05_batch": {
+    "field_forge_or_prev3_claimed": false,
+    "handoffs_inspected": [
+      "pre553_prepared_saved_i03.PreparedI03Session.execute_i05",
+      "pre553_saved_c11_admission.SavedC11Admission.execute_i05"
+    ],
+    "remaining_join": "pre553_discovery_exact.py:862-870/1027-1028 maps UNRESOLVED to UNAVAILABLE/EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "route": "execute_exact_bounded_discovery -> execute_empirical_query",
+    "status": "PENDING_NOT_EXECUTED"
+  },
   "native_source": {
     "age_mapping": "EXACT_OBSERVED_TOKENS_REQUIRED",
     "keyed_resume_proven": false,
     "status": "READY_INPUT_NOT_RERUN_AFTER_OVERLAY"
   },
+  "no_bytecode": true,
   "no_new_grant_or_scope": true,
   "no_new_native_source_scan": true,
+  "no_new_source_scan": true,
   "no_original_source_read_by_worker": true,
   "no_private_paths_published": true,
   "no_raw_tokens_published": true,
+  "no_real_data_read": true,
   "no_respondent_records_published": true,
   "no_sav_modification": true,
+  "no_sav_open": true,
+  "no_source_or_gss_retry": true,
   "no_sqlite": true,
   "observed_value_decision": {
     "class": "PhysicalMissingState.OBSERVED_STORAGE_VALUE",
@@ -170,7 +262,48 @@
     "respondent_rows_emitted": false,
     "synthetic_status": "PASS"
   },
+  "private_overlay_in_git": false,
+  "raw_lane": {
+    "cold_reopen": true,
+    "invalid_physical_refused": true,
+    "mapped_matched_records": true,
+    "raw_witness_typed_token": true,
+    "state_counts": {
+      "INVALID_UNRESOLVED": 1,
+      "MISSING": 1,
+      "SUBSTANTIVE_RESPONSE": "mapped"
+    },
+    "status": "PASS",
+    "two_shapes": [
+      "SAV",
+      "DTA"
+    ]
+  },
   "schema": "ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER@1",
+  "shared_raw_lane": {
+    "cold_reopen": true,
+    "dta_state_counts": {
+      "INVALID_UNRESOLVED": 1,
+      "MISSING": 1,
+      "SUBSTANTIVE_RESPONSE": 2
+    },
+    "fixtures": [
+      "SAV_3row_declared_missing",
+      "DTA_4row_extended_missing"
+    ],
+    "invalid_physical_input_refused": true,
+    "mapped_matched_rows": true,
+    "patch": "common/handoff_raw_lane.patch",
+    "raw_witness_mapping_typed_token": true,
+    "sav_state_counts": {
+      "INVALID_UNRESOLVED": 1,
+      "MISSING": 1,
+      "SUBSTANTIVE_RESPONSE": 1
+    },
+    "source_read_performed": false,
+    "status": "PASS_SOURCEFREE",
+    "worker_module": "common/pre553_source_i02_handoff.worker.py"
+  },
   "sourcefree_supervised": {
     "distinct_pids": true,
     "family_counts": {
@@ -201,7 +334,7 @@
     "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
     "status": "SRC16_METADATA_ADMISSION_PASS"
   },
-  "status": "DECLARED_MISSING_OVERLAY_BUILT__40592_RANGE_CELLS_COVERED__18105_OBSERVED_RESIDUAL__PRIVATE_OVERLAY_NOT_IN_GIT",
+  "status": "SOURCE_NEUTRAL_RAW_LANE_PASS__I03_LEAF_GUARD_MIXED_RED_GREEN_PASS__I05_BATCH_PENDING",
   "synthetic_declared_missing": {
     "checks": "synthetic_declared_missing_witness.out",
     "status": "PASS"

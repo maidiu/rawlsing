@@ -1,101 +1,114 @@
-# SRC16 declared-missing overlay and residual observed cells
+# Source-neutral raw lane + I03 leaf guard — R4 mixed-predicate closure
 
-## Census received
+## Scope
 
-The authorized aggregate census completed:
+Sourcefree only.  The frozen runtime/candidate trees and all real source data
+remain read-only.  The authored handoff and predicate guard are isolated copies
+under this return, with executable `-U0` patches.  No `.sav` was opened and no
+survey was launched.
 
-- 126 response slots;
-- 58,697 unmapped cells;
-- 40,592 `FORMAT_USER_MISSING_RANGE`;
-- 18,105 `OBSERVED_STORAGE_VALUE`;
-- zero missing or duplicate mapped positions.
+## Raw construction lane (preserved)
 
-No new native source scan was performed by this worker.  No raw token or
-respondent record was printed, committed, or included in this handoff.
+The shared construction-only raw lane remains:
 
-## Declared-missing repair
+- unmapped observed storage -> `INVALID_UNRESOLVED`;
+- source-declared missing -> `MISSING`;
+- exact raw value in the existing `$raw_physical_value` witness;
+- existing declared occurrence topology copied, not guessed;
+- no substantive promotion, canonical recoding, or new authority.
 
-`common/declared_missing_mapping.py` deterministically reads the completed
-private census and the pinned config.  It materializes **only**
-`FORMAT_USER_MISSING_RANGE` cells, preserving:
+Two differently shaped sourcefree fixtures (SAV and DTA) were written and
+cold-reopened through the saved first reader.  Mapped matched records retain
+their exact semantic signatures.  Invalid physical state still refuses.
 
-- the exact source missing declaration (`kind=range`, exact `lo`/`hi`); and
-- the existing `FORMAT_USER_MISSING_RANGE` physical state.
+## I03 guard (R4)
 
-Each rule uses the existing typed `MISSING` response state, retains the raw
-source token, keeps `canonical_value: null`, and copies the exact scalar
-occurrence topology.  No authority is added.
+The prior guard had an exact bypass: a whole-AST diagnostic exemption let a
+mixed predicate pass an unrelated value-dependent leaf.  R4 replaces it with a
+**leaf-local** guard in the existing predicate evaluator:
 
-Private aggregate coverage replay:
+`_refuse_unresolved_value_leaf(event, node)`
 
-- declared-missing range cells covered: **40,592 / 40,592**;
-- exact range rules: **243** across **121** slots;
-- observed storage cells left explicitly unresolved: **18,105**;
-- remaining unresolved cells: **18,105**;
-- other mapped cells touched: **0**;
-- coverage replay: **PASS**;
-- overlay SHA-256: `3e107fb0fcec7c94a4e50be7b614a6351ced3cca3cd8f836e1e6886fc0f5ce42`.
+It is called only while the existing leaf already iterates its selected saved
+events.  It:
 
-The overlay itself is private and is not in Git.  The only published values are
-counts and digests.
+- refuses `INVALID_UNRESOLVED` for a value-dependent response-state or
+  response-value leaf;
+- allows only that individual explicit `INVALID_UNRESOLVED` state leaf;
+- does not recurse the AST before evaluation and does not perform a second
+  full query pass;
+- uses the same existing question/component/occurrence event selection as the
+  guarded leaf;
+- raises existing `EmpiricalQueryResolutionError`, which the existing I03
+  consumer converts to its normal typed negative/hold fact.
 
-## Observed-value class requiring a decision
+The mixed predicate reproduced the exact bypass and is now held:
 
-Exact class: `PhysicalMissingState.OBSERVED_STORAGE_VALUE`, **18,105 cells** in
-126 response slots.  These were not made substantive merely because a raw value
-exists.  No rule was added for them; the overlay leaves them unresolved.  This
-is the exact remaining mapping decision class.
+`AND(INVALID_UNRESOLVED state diagnostic, NOT(SUBSTANTIVE_RESPONSE))`
 
-No source token values were emitted to logs, model context, or Git.
+## Actual saved native first-consumer evidence
 
-## Synthetic positive/refusal
+`i03_consumer_before.out` / `i03_consumer_after.out` were produced through
+`write_direct_estate` and `CarrierNeutralResearchExecutor.execute_i03` on the
+cold saved estate, not through `_eval_predicate` or selector filtering alone.
 
-`synthetic_declared_missing_witness.py` uses synthetic cells only:
+| case | before | after |
+|---|---|---|
+| unmapped NOT | denominator 1, risk 2, `UNRESOLVED` | denominator 0, risk 0, guard hold |
+| unmapped positive | `SUPPORTED`, denominator 1 | denominator 0, risk 0, guard hold |
+| mixed diagnostic + NOT | denominator 1, risk 2, `UNRESOLVED` | denominator 0, risk 0, guard hold |
+| standalone diagnostic | denominator 1, risk 2, `UNRESOLVED` | identical, allowed |
+| known missing NOT | denominator 1, risk 2, `UNRESOLVED` | identical, still distinct |
+| mapped NOT | denominator 0, risk 2, `ZERO_SUPPORT` | identical, replay and risk unchanged |
 
-- declared range token -> `MISSING` rule: **YES**;
-- observed token not made substantive: **YES**;
-- observed token not dropped: **YES**;
-- no authority expansion: **YES**;
-- provenance pinned: **YES**;
-- one synthetic positive and one refusal path: **PASS**.
+`i03_consumer_guard_compare.out`: **PASS**, including mixed before RED, mixed
+after hold, positive/NOT holds, standalone diagnostic parity, known-missing
+parity, and mapped denominator/risk/replay parity.
 
-Output: `synthetic_declared_missing_witness.out`.
+## I05/Batch status
 
-## Metadata admission and provenance
+Inspected `pre553_prepared_saved_i03.PreparedI03Session.execute_i05` and
+`SavedC11Admission.execute_i05`.  Both route to the existing
+`execute_exact_bounded_discovery`; that owner calls `execute_empirical_query`
+(guard included) per candidate.  I05/Batch was **not exercised** here.
 
-Base pinned metadata admission still passes through the actual source adapter:
+The exact remaining join is in `pre553_discovery_exact.py`: an I03
+`UNRESOLVED` fact is currently mapped by `_terminal_fact_class` (lines 862-870)
+to `UNAVAILABLE` / `EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY` (lines
+1027-1028), which conflates unresolved with missing/authority.  That is a
+terminal-state/join decision beyond this narrow I03 guard cut.  No Field Forge
+or PRE-V3 qualification is claimed.
 
-- config file `1106de3e…`, canonical `c26e8e71…`;
-- source SHA `e368fc0f…`;
-- 1,613 rows / 216 physical / 157 response / 2 coordinates / 0 weights;
-- `CURRENT_GRANTED`, no revocation;
-- exact source-scope negative cases refused;
-- source read: false.
+## Private GSS census verification
 
-The private overlay records the base config file/canonical hashes, census hash,
-source SHA, `authority_expansion: false`, and `source_reopened: false`.
-A private candidate config built by appending these 243 rules loads through
-`load_source_config` with 157 response slots.  Candidate admission passes; its
-file digest is private and is not published.  No source was opened for this
-test.
+`gss_census_local_verify.out` replayed the completed private aggregate census
+without source access:
 
-## Remaining state
-
-- 40,592 declared source-missing cells now have exact typed overlay rules.
-- 18,105 observed-storage cells remain explicitly unresolved and need an exact
-  decision; they are not substantive by existence.
-- The private overlay is not yet applied to the public pinned config because it
-  is data-derived and must remain outside Git.
-- Native SRC16 was not launched or rerun.  No new grant, scope, wave, Q2/science,
-  protected write, or DHIKR was added.
+- 40,592 declared-missing range cells covered;
+- 18,105 observed-storage cells remain unresolved;
+- 243 exact range rules;
+- missing/duplicate mapped positions: 0;
+- coverage replay: PASS;
+- no raw tokens published.
 
 ## Files
 
-- `common/declared_missing_mapping.py`
-- `common/synthetic_declared_missing_witness.py`
-- `declared_missing_replay.out`
-- `declared_missing_overlay_admission.out`
-- `synthetic_declared_missing_witness.out`
-- `src16_metadata_declared_missing.out`
-- `src16_age_refusal.out`
+- `common/pre553_source_i02_handoff.worker.py`
+- `common/handoff_raw_lane.patch`
+- `common/pre553_query_predicate.worker.py`
+- `common/query_predicate_guard.patch`
+- `common/shared_raw_lane_test.py`
+- `common/i03_consumer_guard_test.py`
+- `common/i03_consumer_guard_compare.py`
+- `common/sqlite_free_single_pass.py`
+- `common/sqlite_free_witness.py`
+- `common.patch`
+- `shared_raw_lane_test.out`
+- `i03_consumer_before.out`
+- `i03_consumer_after.out`
+- `i03_consumer_guard_compare.out`
+- `gss_census_local_verify.out`
 - `receipt.json`
+
+No bytecode, private overlay, raw tokens, real source, GSS retry, new corpus,
+protected edit, second backend, or DHIKR was added.

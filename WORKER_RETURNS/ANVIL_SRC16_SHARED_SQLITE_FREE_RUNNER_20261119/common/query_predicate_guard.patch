@@ -1,0 +1,28 @@
+--- rawlsing_next/_pre553_query_predicate.py
++++ rawlsing_next/_pre553_query_predicate.py
+@@ -174,0 +175,19 @@
++
++def _refuse_unresolved_value_leaf(event: Any, node: Mapping[str, Any]) -> None:
++    """Leaf-local guard: unresolved is not Boolean false/true support.
++
++    Only a leaf that explicitly asks for INVALID_UNRESOLVED may inspect it.
++    An unrelated diagnostic leaf in a mixed AND/OR/NOT cannot exempt this leaf.
++    """
++    if str(event.typed_state) != "INVALID_UNRESOLVED":
++        return
++    if node.get("leaf_type") == "TYPED_RESPONSE_STATE" and node.get("typed_state") == "INVALID_UNRESOLVED":
++        return
++    if (node.get("leaf_type") == "SURVEY_RESPONSE_EVENT"
++            and node.get("operator") == "STATE_EQ"
++            and node.get("typed_state") == "INVALID_UNRESOLVED"):
++        return
++    raise EmpiricalQueryResolutionError(
++        "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
++    )
++
+@@ -264,0 +284 @@
++            _refuse_unresolved_value_leaf(event, node)
+@@ -295,0 +316 @@
++            _refuse_unresolved_value_leaf(event, node)
+@@ -337,0 +359 @@
++            _refuse_unresolved_value_leaf(event, node)

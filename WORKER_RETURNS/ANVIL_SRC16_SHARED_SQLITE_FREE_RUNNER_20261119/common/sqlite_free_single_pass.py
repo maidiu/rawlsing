@@ -379,8 +379,8 @@ def build_single_pass(
         # instead of failing on the first cell of a later full run.
         from mapped_slot_precheck import aggregate_mapped_slots
         coverage = aggregate_mapped_slots(doc, incidence.iter_cells(batch_size))
-        if not coverage["precheck_passed"]:
-            raise handoff.SourceI02Refusal("UNBOUND_MAPPED_SLOTS", coverage)
+        if coverage["missing_slot_count"] or coverage["duplicate_slot_count"]:
+            raise handoff.SourceI02Refusal("MAPPED_SLOT_COVERAGE_DEFECT", coverage)
         row_native_keys = row_native_keys_from_transport(
             config, incidence=incidence, batch_size=batch_size)
         projection = handoff.build_governed_c11_projection(

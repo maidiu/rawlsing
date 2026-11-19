@@ -1,5 +1,5 @@
---- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_single_pass.py	2026-11-19 01:28:59
-+++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_single_pass.py	2026-11-19 03:37:36
+--- /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_single_pass.py	2026-11-19 01:28:59
++++ /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_single_pass.py	2026-11-19 09:31:14
 @@ -350,6 +350,7 @@
  ):
      """One admitted decode, exact projected sections, authenticated checkpoint, one writer pass."""
@@ -17,8 +17,8 @@
 +        # instead of failing on the first cell of a later full run.
 +        from mapped_slot_precheck import aggregate_mapped_slots
 +        coverage = aggregate_mapped_slots(doc, incidence.iter_cells(batch_size))
-+        if not coverage["precheck_passed"]:
-+            raise handoff.SourceI02Refusal("UNBOUND_MAPPED_SLOTS", coverage)
++        if coverage["missing_slot_count"] or coverage["duplicate_slot_count"]:
++            raise handoff.SourceI02Refusal("MAPPED_SLOT_COVERAGE_DEFECT", coverage)
 +        row_native_keys = row_native_keys_from_transport(
 +            config, incidence=incidence, batch_size=batch_size)
          projection = handoff.build_governed_c11_projection(
@@ -37,8 +37,8 @@
              manifest, source, declared_counts, _absences = handoff._manifest_and_sections(
                  projection=projection, incidence=incidence,
                  spool_paths=actual_paths, counts=counts,
---- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py	2026-11-19 02:26:55
-+++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_witness.py	2026-11-19 03:37:36
+--- /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py	2026-11-19 02:26:55
++++ /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_witness.py	2026-11-19 09:31:14
 @@ -20,10 +20,11 @@
  from typing import Any, Mapping
 
@@ -48,7 +48,7 @@
  FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
  FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
 -SINGLE_PASS_SHA = "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e"
-+SINGLE_PASS_SHA = "f72220d3add9f4fff5c8ee66f416d3fb9b6df053d15fca2c1d5216fd956bef4f"
++SINGLE_PASS_SHA = "5340e04642e7ca1aff1daadb2aba071face7c36f352ef66f24b1e1485d66e3c0"
  STREAMING_ESTATE_SHA = "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
  RAM_CAP = 6 * 1024**3
  COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
