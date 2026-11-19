@@ -2,16 +2,16 @@
   "actual_caller_available": true,
   "files": {
     "CALLER_README.md": {
-      "bytes": 2186,
-      "sha256": "870a8eaee4532e3f5330761b7dfc639efd6dc9cc23799768047b3fdc56f8923d"
+      "bytes": 2267,
+      "sha256": "85a5f02eab051dc4eb757a2aeb872b14c7ac8203938a4afb609494fc9fea5457"
     },
     "DRY_OUTPUT.txt": {
-      "bytes": 592,
-      "sha256": "e7286025510dfaa8055dc9f290616e1a5c08363010d91db67ac45cad7d421bd6"
+      "bytes": 159,
+      "sha256": "e346540ef87981cada34dde90dd194253c584fb796f37436d05f8305bf7f3c9b"
     },
     "DRY_RUN/WITNESS_PLAN.json": {
-      "bytes": 3121,
-      "sha256": "cf9c5804dcf6fa2d3f31f3b16d7e23dcc525f71963a0a9d754327074c710fc94"
+      "bytes": 171,
+      "sha256": "37a3ec3a9382789bd39c3a8d5381c70c84e1185c1c69e736ec5c08575262f985"
     },
     "OVERLAY_BLOCKER.md": {
       "bytes": 713,
@@ -53,6 +53,34 @@
       "bytes": 135,
       "sha256": "0cf5a72e9f0accbe307925d72b651df55969132e9d2b3534a0d6939e2138719c"
     },
+    "REHEARSAL_SINGLE_PASS/PRODUCER.json": {
+      "bytes": 1730,
+      "sha256": "a8d516315b3cbb9c8de7a3500c97981c1ac8c7d12a84ea9ead0a6057176af04d"
+    },
+    "REHEARSAL_SINGLE_PASS/PRODUCER.out": {
+      "bytes": 33,
+      "sha256": "f2c1a9d24273e16d537f0e143b958ec7211092d4bc9c9f1854372b7fbb800780"
+    },
+    "REHEARSAL_SINGLE_PASS/PROGRESS.txt": {
+      "bytes": 150,
+      "sha256": "3335afcb19be534af3012d73d11f5630de1f4bc206a268e3e80d95c45d6971b3"
+    },
+    "REHEARSAL_SINGLE_PASS/READER.json": {
+      "bytes": 500,
+      "sha256": "b6831ffa6465e684600ed7780ad3b1455486de1ae2a1a38135c0b531464e7d8f"
+    },
+    "REHEARSAL_SINGLE_PASS/READER.out": {
+      "bytes": 419,
+      "sha256": "bf1252ca536d7bbf1aafce69669d29f82f5ad629dc8a0bb12d99144298c4c2dd"
+    },
+    "REHEARSAL_SINGLE_PASS/WRONG_ROOT.json": {
+      "bytes": 59,
+      "sha256": "b870553f6bd7ecb9b2ede1bc0ab105d11181dba36c03a6236139db5bc6388255"
+    },
+    "REHEARSAL_SINGLE_PASS/WRONG_ROOT.out": {
+      "bytes": 51,
+      "sha256": "4dce3f9544b47bb04b2df8f29aa97f024a5da87e4fb7deba76a54e32c63ecbad"
+    },
     "REPLAY.txt": {
       "bytes": 853,
       "sha256": "5cd48c8618974670f06fd3d2583e59b8a48d1f892c8423e041a7e7995f8f544b"
@@ -70,8 +98,8 @@
       "sha256": "444c4f89c3060f81869c9b04186e857c79e4205e4143f7f1c0ccc0cf36d8edd9"
     },
     "RETURN.json": {
-      "bytes": 8715,
-      "sha256": "c70b254fd1af1002d6665882824871bf78190d81b356e867ea56a2806c0e84c2"
+      "bytes": 11318,
+      "sha256": "c6a702c5504f7bcb46759b90a0983eb6c0a0503aaf11f52195964feb1fb88afa"
     },
     "SRC04_WITNESS_SCOPE.json": {
       "bytes": 4347,
@@ -85,18 +113,31 @@
       "bytes": 1998,
       "sha256": "bdcb48cde5bd2f36b5a3d7126cfbb00a446c6e8a11397870a4b458a1bb317e7e"
     },
+    "single_pass_handoff.py": {
+      "bytes": 4186,
+      "sha256": "da1f5d082d33df381bf8f21fdde28a5864d5d6b0de2e21e1182f8cdadb6ec3b8"
+    },
+    "single_pass_rehearsal.py": {
+      "bytes": 2797,
+      "sha256": "c8c024ea3b1f4a607846537c8f50745019a70397b2e55b98c3596901fb4cec13"
+    },
     "test_witness_runner.py": {
       "bytes": 1433,
       "sha256": "61075d0d19b2d1d83831324b683fc78cf8f9a776ddf83ca06dd3b0301f93a13f"
     },
     "witness_caller.py": {
-      "bytes": 23073,
-      "sha256": "3cd627343e211a13ec21324a487a9645d74fc47a66dfd5a30c8a52735258e1fb"
+      "bytes": 23088,
+      "sha256": "7cf236db5894bc157e604f9e3393bdb894e26db9218c9c5c7c60131043be058a"
     },
     "witness_runner.py": {
-      "bytes": 13902,
-      "sha256": "afedf66411c19cbdba9cd8ecc5ae89b51d70a0f26c642fb666f48f9c4c9e5c2c"
+      "bytes": 13940,
+      "sha256": "b91cef44077b7496007f55246e489eb08f96262ffcd0c46a146040ff115785ed"
     }
+  },
+  "free_space_blocker": {
+    "available_bytes": 15569469440,
+    "blocker": "CURRENT_FREE_SPACE_BELOW_SINGLE_PASS_FLOOR",
+    "required_bytes": 26907826727
   },
   "native_sink_direct": true,
   "one_authorized_admitted_decode": true,
@@ -104,7 +145,9 @@
   "product_edits": false,
   "runtime_overlay_bytes_available": false,
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_MANIFEST@4",
+  "single_pass": true,
   "source_bytes_in_git": false,
   "source_read_performed": true,
-  "status": "POST_ALIGNMENT_RUNTIME_CONFIG_READY"
+  "sourcefree_rehearsal": true,
+  "status": "SINGLE_PASS_WITNESS_READY__FREE_SPACE_BLOCKER"
 }

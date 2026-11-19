@@ -25,9 +25,9 @@ DEFAULT_CONFIG_PIN = HERE / "SRC04_WITNESS_SCOPE.json"
 PINNED_BINDING_SHA = "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0"
 PINNED_CANDIDATE_PATCH = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
 PINNED_CANDIDATE_SOURCE_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
-COMPLETED_512K_BYTES = int(3.08 * 1024**3)
-Q2_SPOOL_RESERVE = 1024**3
-STAGING_BUDGET = COMPLETED_512K_BYTES + Q2_SPOOL_RESERVE
+R3_TERMINAL_STAGE_BYTES = 26678480536
+R3_DUPLICATE_JOURNAL_BYTES = 8360588401
+STAGING_BUDGET = R3_TERMINAL_STAGE_BYTES - R3_DUPLICATE_JOURNAL_BYTES
 DISK_FLOOR = STAGING_BUDGET + 8 * 1024**3
 RAM_CAP = 6 * 1024**3
 ACCEPTED = {
@@ -239,8 +239,8 @@ def preflight(*, candidate_tree: Path, config_path: Path, config_pin: Path,
         },
         "resources": {
             "ram_cap_bytes": RAM_CAP,
-            "completed_512x600_bytes": COMPLETED_512K_BYTES,
-            "q2_spool_reserve_bytes": Q2_SPOOL_RESERVE,
+            "r3_terminal_stage_bytes": R3_TERMINAL_STAGE_BYTES,
+            "r3_duplicate_journal_bytes": R3_DUPLICATE_JOURNAL_BYTES,
             "staging_budget_bytes": STAGING_BUDGET,
             "disk_floor_bytes": DISK_FLOOR,
             "available_bytes": free,

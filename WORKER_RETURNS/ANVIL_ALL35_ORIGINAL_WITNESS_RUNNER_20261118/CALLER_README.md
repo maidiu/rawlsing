@@ -26,7 +26,7 @@ The candidate tree must hash as `pre553_source_i02_handoff.py = 6ab7cb50…` and
 
 1. Supervisor verifies candidate/patch hashes and opens a unique private root.
 2. Producer verifies exact grant/request, q217 hold and 177/3 scoped config before source decode.
-3. Producer uses the candidate construction-only entry with the native `SourceSavedBodySink` directly; the existing `SourceI02BodyTee` supplies its transport census. No adapter.
+3. Producer uses localized `single_pass_handoff.py`: one admitted decode, exact projected sections, and the existing `write_direct_estate` directly. It removes the duplicate replay body journal and explicit first I02 pass; it does not change the core writer.
 4. Supervisor reaps producer, checks 6 GiB process-tree RSS and live free-space floor, then starts a fresh reader.
 5. If the exact `ba886d877…` runtime overlay is absent, the caller refuses before source with `RUNTIME_OVERLAY_REQUIRED_FOR_RUN`; base v2 stops at slot 176 q716withoutmorocco.
 6. Reader checks producer is gone, opens exact held roots/manifest with a real grant-scope callback (not allow-all), records family counts, identity/routing digests, release-ref comparison and precise differences from the accepted historical receipt.

@@ -16,8 +16,12 @@
     "base_config_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
     "final_runtime_config": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json",
     "final_runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
-    "final_runtime_config_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421"
+    "final_runtime_config_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421",
+    "free_space_available": 15569469440,
+    "free_space_required": 26907826727,
+    "single_pass_module": "single_pass_handoff.py"
   },
+  "actual_source_launch": false,
   "added_rule_counts": {
     "q715incomedeciles": 4,
     "q715withoutmorocco": 303,
@@ -77,6 +81,11 @@
   "defect_repaired": "REMOVED_BODY_SINK_ADAPTER__NATIVE_SOURCESAVEDBODYSINK_DIRECT__TEE_SUPPLIES_TRANSPORT",
   "final_runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
   "final_runtime_config_file_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421",
+  "free_space": {
+    "available_bytes": 15569469440,
+    "blocker": "CURRENT_FREE_SPACE_BELOW_SINGLE_PASS_FLOOR",
+    "required_bytes": 26907826727
+  },
   "full_writer_launched": false,
   "gate": "Q217_FULL_CONFIG_WOULD_BE_INCLUDED__SCOPED_177_RESPONSE_3_COORDINATE_INPUT_USED",
   "grant_binding": "dbeada9a272ff94a9bff68cf4352b6f1e5a01594",
@@ -116,6 +125,8 @@
     "selected": false,
     "unbound": 38
   },
+  "r3_duplicate_journal_bytes": 8360588401,
+  "r3_terminal_stage_bytes": 26678480536,
   "real_construction_preimage": "BASE_CONFIG_STOPS_AT_Q716WITHOUTMOROCCO_SLOT_176",
   "refusal": {
     "code": "EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED",
@@ -186,6 +197,7 @@
     "staging_budget_bytes": 4380866641,
     "wall_cutoff": null
   },
+  "runner_command_final": "witness_caller.py --mode run ... --runtime-config <private final> --authorized-source-launch",
   "runner_refusal": {
     "code": "RUNTIME_OVERLAY_REQUIRED_FOR_RUN",
     "detail": "",
@@ -199,13 +211,69 @@
     "physical_slots": 181,
     "response_slots": 177
   },
+  "scratch_note": "R3 terminal staging is 26,678,480,536 B across projection spool, first I02 stage, body journal, and writer stage. Single pass removes the 8,360,588,401 B replay journal and explicit first pass; it does not remove projection spool or one writer stage. Fixture savings are not a full-scale guarantee.",
   "selected_coordinate_slots": 3,
   "selected_response_slots": 177,
+  "single_pass_file": "single_pass_handoff.py",
+  "single_pass_wiring": "existing direct write_direct_estate from exact projected sections; duplicate replay journal and explicit first I02 pass removed",
   "source_launch": "REFUSED_WITHOUT_EXACT_AUTHORIZATION",
   "source_opened_stat_hashed_decoded_outside_authorized_decode": false,
+  "source_path_opened_stat_hashed_decoded": false,
   "source_path_opened_stat_hashed_or_decoded": false,
-  "source_read_performed": true,
-  "status": "POST_ALIGNMENT_RUNTIME_CONFIG_READY",
+  "source_read_performed": false,
+  "sourcefree_rehearsal": {
+    "original_source_opened": false,
+    "producer_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 5,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "producer_status": "PRODUCER_COMMITTED",
+    "progress": [
+      {
+        "families": 14,
+        "phase": "sections_ready",
+        "records": 30,
+        "rows": 5
+      },
+      {
+        "families": 13,
+        "phase": "published",
+        "records": 29,
+        "retained_bytes": 356677
+      }
+    ],
+    "reader_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 5,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RespondentIdentity": 5,
+      "RoutingEligibilityFact": 5,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "reader_status": "READER_OPENED",
+    "retained_bytes": 356677,
+    "sourcefree_test_only": true,
+    "wrong_root_refused": true
+  },
+  "status": "SINGLE_PASS_WITNESS_READY__FREE_SPACE_BLOCKER",
   "supervisor_root_absolute": true,
   "tests": {
     "failed": 0,

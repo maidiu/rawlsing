@@ -26,8 +26,13 @@ FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342
 RAM_CAP = 6 * 1024**3
 COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
 Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
-STAGING_BUDGET = COMPLETED_512K_BYTES + Q2_SPOOL_RESERVE
-FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3        # retain 8 GiB uncommitted
+# R3 observed terminal stage minus the duplicate replay journal; this is a
+# practical floor, not a guarantee for a different source/writer generation.
+R3_TERMINAL_STAGE_BYTES = 26678480536
+R3_DUPLICATE_JOURNAL_BYTES = 8360588401
+PRACTICAL_STAGING_BUDGET = R3_TERMINAL_STAGE_BYTES - R3_DUPLICATE_JOURNAL_BYTES
+STAGING_BUDGET = PRACTICAL_STAGING_BUDGET
+FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3
 OVERLAY_CANONICAL = "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0"
 OVERLAY_ADDED_RULE_COUNTS = {
     "q715withoutmorocco": 303,
@@ -181,9 +186,8 @@ def preflight(args) -> int:
 def producer(args) -> int:
     verify_candidate(args.candidate_tree, args.candidate_patch)
     sys.path.insert(0, str(args.candidate_tree))
-    from rawlsing_next.pre553_source_i02_handoff import build_source_i02_construction_only
+    from single_pass_handoff import build_single_pass
     from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
-    from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
     wr, pin = _scoped()
     if args.runtime_config is None:
         raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_PRODUCER")
@@ -210,22 +214,16 @@ def producer(args) -> int:
     root = Path(args.root).absolute()
     private = root / "private"
     private.mkdir(mode=0o700, parents=False, exist_ok=True)
-    destination = private / "SRC04.sqlite"
-    if destination.exists():
-        raise CallerRefusal("DESTINATION_ALREADY_EXISTS")
     if shutil.disk_usage(root).free < FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_PRODUCER")
-    sink = SourceSavedBodySink(
-        certificate_path=destination, authorized_private_root=private,
-        chunk_rows=512)
-    result = build_source_i02_construction_only(
-        config=scoped, source_path=args.source_path, destination=destination,
-        body_sink=sink, chunk_size=512, resolver=resolver,
-        host=bound.request.host, purpose=bound.request.purpose,
+    def progress(update):
+        print(json.dumps(update, sort_keys=True), file=sys.stderr, flush=True)
+    receipt = build_single_pass(
+        config=scoped, source_path=args.source_path, private_root=private,
+        resolver=resolver, host=bound.request.host, purpose=bound.request.purpose,
         consumer_use=bound.request.consumer_use,
         semantic_use_scope=bound.request.semantic_use_scope,
-    )
-    receipt = sink.receipt
+        chunk_rows=512, progress=progress)
     payload = {
         "schema": "ANVIL_ALL35_WITNESS_PRODUCER_RECEIPT@1",
         "producer_pid": os.getpid(),
@@ -236,14 +234,15 @@ def producer(args) -> int:
                           "physical_slots": len(scoped_doc["physical_slots"])},
         "grant_ref": bound.grant_ref.as_dict(),
         "decision_ref": bound.decision.decision_ref.as_dict(),
-        "source_sha256": result.source_sha256,
-        "row_count": result.row_count,
-        "i02": {k: getattr(result.roots, k) for k in
+        "source_sha256": scoped_doc["binding"]["source_sha256"],
+        "row_count": scoped_doc["binding"]["row_count"],
+        "i02": {k: getattr(receipt.i02, k) for k in
                 ("logical", "physical", "release", "source", "replay", "universe", "schema")},
         "manifest_sha256": receipt.manifest_sha256,
         "estate_path": receipt.path,
-        "family_counts": dict(result.counts),
-        "body_transport": result.body_transport,
+        "family_counts": dict(receipt.family_counts),
+        "single_pass_path": True,
+        "i02_passes": 1,
         "retained_bytes": receipt.retained_bytes,
         "source_read_performed": True,
         "joined_q2": False,
@@ -253,7 +252,7 @@ def producer(args) -> int:
     (root / "producer_receipt.json").write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     (root / "producer.stdout").write_text("")
     (root / "producer.stderr").write_text("")
-    print(json.dumps({"status": "PRODUCER_COMMITTED", "path": receipt.path}))
+    print(json.dumps({"status": "PRODUCER_COMMITTED", "path": receipt.path, "single_pass": True}))
     return 0
 
 
