@@ -2,7 +2,7 @@
 
 ## Executable research package
 
-**Package** `UM_SOROK_CONSTITUTIVE_ORGANISM_R1_2026-11-19.zip`; SHA-256 `e26a9968cc8f0833e72a8b268d97c064f3731085b82b6e634f56fffc25e59d03`; available in user's Rawlsing ChatGPT Library `UM-SOROK-HQ/2026.11.19.16.12`, not yet GitHub-hosted. **Archive contains:** README, IMPLEMENTATION_MAP, KNOWN_LIMITATIONS, SOURCE_GROUNDING, HANDOFF, governing principal mandate, other-agent architectural return, tests, demo SQLite state, demo outputs, source and manifest.
+**Package** `UM_SOROK_CONSTITUTIVE_ORGANISM_R1_2026-11-19.zip`; SHA-256 `e26a9968cc8f0833e72a8b268d97c064f3731085b82b6e634f56fffc25e59d03`; available in user's Rawlsing ChatGPT Library `UM-SOROK-HQ/2026.11.19.16.12`. **Unpacked original Python code, tests, manifests and text documents are now directly GitHub-hosted** under [ORACLE/UM_SOROK_ORGANISM_R1/](UM_SOROK_ORGANISM_R1/README.md) at source commit `79dbbbc6a998739c6d8d782e8e73df7d297d6934`. The ZIP bytes and generated SQLite demo database remain in Library. **Archive contains:** README, IMPLEMENTATION_MAP, KNOWN_LIMITATIONS, SOURCE_GROUNDING, HANDOFF, governing principal mandate, other-agent architectural return, tests, demo SQLite state, demo outputs, source and manifest.
 
 The package's Python namespace `um_sorok_organism/` includes:
 - `types.py` — functional/state contracts; `storage.py` — research SQLite ledger with genesis and hash chain.
