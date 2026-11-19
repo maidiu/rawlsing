@@ -100,6 +100,11 @@ def _permission_set(values: Iterable[str], label: str) -> tuple[str, ...]:
         raise FF01GenericIngressError(f"{label}: empty or invalid permission")
     if len(result) != len(set(result)):
         raise FF01GenericIngressError(f"{label}: duplicate permission")
+    # Caller-declared permission names are never a source/science issuer. They
+    # must not even visually resemble an independently granted causal/actor use.
+    reserved = ("CAUSAL", "STRUCTURAL", "FF02", "WORLD", "ACTOR", "SOROK", "N9", "N10W", "V3", "PRODUCTION")
+    if any(any(token in name.upper() for token in reserved) for name in result):
+        raise FF01GenericIngressError(f"{label}: protected use cannot be granted by caller text")
     return tuple(sorted(result))
 
 
@@ -108,6 +113,8 @@ def _domain(query: EmpiricalQuerySpec) -> tuple[tuple[ExactRef, ...], tuple[tupl
     refs = _refs(query.target_refs, "target")
     if not isinstance(spec, Mapping) or len(refs) < 2 or spec.get("arity") != len(refs):
         raise FF01GenericIngressError("only exact multi-target queries with matching arity are admitted")
+    if len(refs) != len(set(refs)):
+        raise FF01GenericIngressError("duplicate target ref cannot establish distinct respondent-coherent dimensions")
     if spec.get("joint_order_semantics") not in ("SEMANTIC_ORDERED", "CANONICAL_SET_ORDER"):
         raise FF01GenericIngressError("unsupported query target order")
     if spec.get("joint_order_semantics") == "CANONICAL_SET_ORDER" and refs != tuple(sorted(refs, key=lambda r: r.key)):
@@ -318,9 +325,10 @@ def receive_ff01_observed_joint(
         if (risk_members is None) != (denom_members is None):
             raise FF01GenericIngressError("one-sided respondent extent is not a qualified I03 denominator")
         if risk_members is None:
-            # Historical test scaffolds may omit both. Never upgrade this to
-            # an attested source population or inferred respondent roster.
-            projection["respondent_extent_grade"] = "NOT_ENUMERATED__SOURCE_CUSTODY_HELD"
+            # A current new generic positive FF01 receiver must be *stricter*
+            # than old historical bare test scaffolds. Actual I03 exposes
+            # the roster; require it rather than project away the absence.
+            raise FF01GenericIngressError("SUPPORTED fact missing both respondent enumerations")
         else:
             risk_raw = _refs(risk_members, "risk respondent")
             denom_raw = _refs(denom_members, "denominator respondent")
