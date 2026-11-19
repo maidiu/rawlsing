@@ -32,6 +32,7 @@ files=(
   rawlsing_next/pre553_s04_ff01_consumer.py
   rawlsing_next/pre553_s04_cold_custody.py
   rawlsing_next/pre553_s04_research_batch.py
+  rawlsing_next/pre553_s04_first_consumer.py
   rawlsing_next/tests/test_pre553_s04_observed_research.py
   rawlsing_next/tests/test_pre553_s04_i05_reception.py
   rawlsing_next/tests/test_pre553_s04_ff01_read_conservation.py
@@ -43,6 +44,7 @@ files=(
   rawlsing_next/tests/test_pyat1009_ff01_s04_consumer.py
   rawlsing_next/tests/test_pre553_s04_cold_custody.py
   rawlsing_next/tests/test_pre553_s04_research_batch.py
+  rawlsing_next/tests/test_pre553_s04_first_consumer.py
   rawlsing_next/tests/run_pyat_s04_cold_marathon_local.sh
 )
 for file in "${files[@]}"; do
