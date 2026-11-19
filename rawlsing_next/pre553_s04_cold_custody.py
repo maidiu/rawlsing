@@ -38,6 +38,7 @@ CONTRACT = "S04_SOURCEFREE_COLD_I03_PREIMAGE_R1"
 MAX_BYTES = 64 * 1024 * 1024
 FILE_SUFFIX = ".s04-sourcefree.json"
 CLAIM = "INTERNAL_EXACT_PREIMAGE_REPLAY__EXTERNAL_SOURCE_RIGHTS_NOT_ISSUED"
+SOURCEFREE_ASSERTION = "CALLER_ASSERTS_SYNTHETIC_SOURCEFREE_FIXTURE__NO_ORIGINAL_SURVEY_CONTENT"
 
 
 class S04ColdCustodyError(ValueError):
@@ -141,8 +142,16 @@ def freeze_s04_i03_sourcefree(
     query: EmpiricalQuerySpec,
     execution: QueryExecutionResult,
     knowledge: S04ObservedKnowledge,
+    sourcefree_origin_assertion: str,
 ) -> S04ColdBundle:
-    """Seal the given exact I03 and S04 preimages; no source execution."""
+    """Seal exact I03 and S04 preimages; explicit SOURCEFREE ONLY opt-in.
+
+    This is a caller assertion, not source issuance or a false native grant.
+    A real-survey custody implementer requires a different owner-approved
+    contract and an attested rights/redaction mechanism.
+    """
+    if sourcefree_origin_assertion != SOURCEFREE_ASSERTION:
+        raise S04ColdCustodyError("explicit synthetic-sourcefree-only assertion required")
     if (type(query) is not EmpiricalQuerySpec or type(execution) is not QueryExecutionResult
             or type(knowledge) is not S04ObservedKnowledge):
         raise S04ColdCustodyError("original I03 query/result and S04 knowledge required")
@@ -154,6 +163,7 @@ def freeze_s04_i03_sourcefree(
     payload = {
         "contract": CONTRACT,
         "scope": "CALLER_DECLARED_SOURCEFREE_ONLY__NO_ORIGINAL_SOURCE_GRANT",
+        "sourcefree_origin_assertion": SOURCEFREE_ASSERTION,
         "grade": CLAIM,
         "query_preimage": query.as_dict(),
         "fact_preimage": execution.facts[0].as_dict(),
@@ -185,13 +195,14 @@ def read_s04_cold_preimages(
         raise S04ColdCustodyError("only exact cold-bundle type is readable")
     m = bundle.material()
     allowed = {
-        "contract", "scope", "grade", "query_preimage", "fact_preimage",
+        "contract", "scope", "sourcefree_origin_assertion", "grade", "query_preimage", "fact_preimage",
         "execution", "knowledge_payload_json", "knowledge_hash", "knowledge_ref",
         "external_source_root",
     }
     if set(m) != allowed:
         raise S04ColdCustodyError("cold bundle fields do not match exact replay contract")
     if (m.get("scope") != "CALLER_DECLARED_SOURCEFREE_ONLY__NO_ORIGINAL_SOURCE_GRANT"
+            or m.get("sourcefree_origin_assertion") != SOURCEFREE_ASSERTION
             or m.get("grade") != CLAIM
             or m.get("external_source_root") != "MUST_BE_SUPPLIED_SEPARATELY_AT_READ_TIME"):
         raise S04ColdCustodyError("sidecar scope or forbidden self-signed grant changed")
@@ -329,7 +340,7 @@ def read_s04_sourcefree_private(path: str | Path) -> S04ColdBundle:
 
 
 __all__ = [
-    "CONTRACT", "S04ColdCustodyError", "S04ColdBundle", "S04ExternalRootPin",
+    "CONTRACT", "SOURCEFREE_ASSERTION", "S04ColdCustodyError", "S04ColdBundle", "S04ExternalRootPin",
     "S04ColdRead", "freeze_s04_i03_sourcefree", "read_s04_cold_preimages",
     "receive_ff01_from_pinned_cold", "write_s04_sourcefree_private",
     "read_s04_sourcefree_private",
