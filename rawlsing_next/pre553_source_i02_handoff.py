@@ -73,6 +73,9 @@ from rawlsing_next.pre553_source_i02_streams import (
     SourceI02BodyTransportRefusal,
 )
 from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
+from rawlsing_next.pre553_physical_cell_journal import (
+    PhysicalCellJournal, PhysicalCellJournalReceipt,
+)
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_r157_projection_adapter import (
     IDENTITY_CLASS_ORIGINAL,
@@ -169,6 +172,7 @@ class SourceI02Handoff:
     stats: SourceI02Stats
     direct_sections_consumed: bool = True
     body_transport: Mapping[str, Any] | None = None
+    physical_cell_journal: PhysicalCellJournalReceipt | None = None
 
     def open_certificate(self):
         """Open the existing cold reader; its host capability may be unavailable."""
@@ -425,6 +429,7 @@ def _project_spooled_families(
     spool_paths: Mapping[str, Path],
     batch_size: int,
     row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
+    physical_journal: PhysicalCellJournal | None = None,
 ) -> tuple[dict[str, int], dict[str, Any]]:
     """Run exactly one bounded physical cell pass into the private spool."""
     rows = {binding.row_ordinal: binding.respondent_ref for binding in projection.row_bindings}
@@ -455,6 +460,12 @@ def _project_spooled_families(
         for cell in incidence.iter_cells(batch_size):
             if not isinstance(cell, PhysicalCell):
                 raise SourceI02Refusal("NON_PHYSICAL_CELL_TRANSPORT")
+            # Physical evidence is written BEFORE the semantic projection
+            # filters. Fully unprojected variables and unknown mapping slots
+            # are preserved in this sourcefree companion without inventing
+            # a semantic 14th family, response occurrence or source authority.
+            if physical_journal is not None:
+                physical_journal.accept(cell)
             key = (cell.variable_ordinal, cell.variable_name)
             if key_slot is not None and key == (key_slot["ordinal"], key_slot["name"]):
                 key_cells.append(cell)
@@ -1142,6 +1153,7 @@ def build_source_i02_handoff(
     consumer_use: str | None = None,
     semantic_use_scope: tuple[str, ...] | None = None,
     body_sink: SourceI02BodySink | None = None,
+    physical_journal: PhysicalCellJournal | None = None,
 ) -> SourceI02Handoff:
     """Build one bounded source→direct-I02 handoff.
 
@@ -1157,6 +1169,9 @@ def build_source_i02_handoff(
     """
     if not isinstance(config, SourceConfig):
         config = SourceConfig(config)
+    if (physical_journal is not None
+            and type(physical_journal) is not PhysicalCellJournal):
+        raise SourceI02Refusal("EXACT_PHYSICAL_JOURNAL_SINK_REQUIRED")
     doc = config.document
     target = Path(destination).absolute()
     if (target.suffix != ".sqlite" or target.exists() or target.is_symlink()
@@ -1185,6 +1200,11 @@ def build_source_i02_handoff(
     )
     original_source = (
         doc["binding"]["identity_class"] == IDENTITY_CLASS_ORIGINAL)
+    # Raw physical retention is separately permissioned. Existing original
+    # construction/read grants do NOT imply export/retention of all cells.
+    # Sourcefree C0 permits explicit private journals for engineering only.
+    if original_source and physical_journal is not None:
+        raise SourceI02Hold("ORIGINAL_PHYSICAL_JOURNAL_RETENTION_RIGHTS_UNISSUED")
     source_prehash_passes = 1 if original_source else 0
     source_reads = 1 + source_prehash_passes
     source_open_model = (
@@ -1236,6 +1256,8 @@ def build_source_i02_handoff(
             raise SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
         if incidence.row_count != doc["binding"]["row_count"]:
             raise SourceI02Refusal("DECODED_SOURCE_ROWS_MISMATCH")
+        if physical_journal is not None:
+            physical_journal.begin(incidence)
         spool_dir = Path(tempfile.mkdtemp(
             prefix=".s1e-i02-spool-", dir=target.parent))
         spool_paths = {
@@ -1249,6 +1271,7 @@ def build_source_i02_handoff(
                 spool_paths=spool_paths,
                 batch_size=batch_size,
                 row_native_keys=row_native_keys,
+                physical_journal=physical_journal,
             )
         )
         operation_fates, operation_audit = _operation_source_antijoin(
@@ -1310,6 +1333,9 @@ def build_source_i02_handoff(
             operation_fates=operation_fates,
             stats=stats,
         )
+        if physical_journal is not None:
+            raw_receipt = physical_journal.finish()
+            handoff = replace(handoff, physical_cell_journal=raw_receipt)
         if sink is not None:
             body_transport = sink.finish(
                 roots=roots,
@@ -1321,6 +1347,8 @@ def build_source_i02_handoff(
     except BaseException as exc:
         if sink is not None:
             sink.abort(exc)
+        if physical_journal is not None:
+            physical_journal.abort()
         if published or (
             manifest is not None
             and _target_matches_manifest(target, manifest)
