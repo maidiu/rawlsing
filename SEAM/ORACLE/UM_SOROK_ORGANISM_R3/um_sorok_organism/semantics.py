@@ -23,6 +23,14 @@ class HeuristicSemanticProvider:
     """Always available incomplete sourcefree substitute, kept visible in receipts."""
     grade='SOURCEFREE_RULE_BASED_PLACEHOLDER_NO_LLM'
     def propose(self,task,packet):
+        if task=='composition_choice':
+            # Coarse sourcefree actor policy, not empirical motive science.
+            available=packet.get('available_methods',[])
+            if not available:
+                return {'task':task,'method_id':'DECLINE','semantic_grade':self.grade}
+            return {'task':task,'method_id':available[0]['id'],
+                    'semantic_grade':self.grade,
+                    'reason':'PROVISIONAL_ACTOR_POLICY_FIRST_AVAILABLE'}
         if task=='actor_attempt':
             possibilities=packet.get('options',[])
             if not possibilities:return {'task':task,'action':'WAIT','basis':['NONE']}
@@ -35,6 +43,7 @@ class HeuristicSemanticProvider:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
             return {'task':task,'action':possibilities[0]['action'],
+                    'option_id':possibilities[0].get('option_id'),
                     'basis':possibilities[0].get('basis',[]),'semantic_grade':self.grade}
         if task=='development':
             experience=packet.get('experience',{})
@@ -161,6 +170,10 @@ class ValidatingSemanticService:
     def proposal(self,task,packet):
         out=self.provider.propose(task,packet)
         if not isinstance(out,dict):raise ValueError('BAD_SEMANTIC_PACKET')
+        if task=='composition_choice':
+            ids={m['id'] for m in packet.get('available_methods',[])}
+            if out.get('method_id') not in (ids | {'DECLINE'}):
+                raise ValueError('MODEL_COMPOSITION_NOT_ACTOR_ELIGIBLE')
         if task=='actor_attempt' and 'action' not in out:raise ValueError('NO_ACTION')
         if task=='development' and not isinstance(out.get('candidates'),list):raise ValueError('BAD_DEVELOPMENT_CANDIDATES')
         return out
