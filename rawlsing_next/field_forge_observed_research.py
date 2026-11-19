@@ -8,6 +8,7 @@ A reproducible research request may change axes/conditions without resampling.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from fractions import Fraction
 from json import loads
 from typing import Any, Mapping, Sequence
 
@@ -108,6 +109,10 @@ def ask_exact_descriptive_support(
     if m["producer_state"] == "SUPPORTED":
         if not m["complete_cells"]:
             raise ObservedResearchError("supported FF01 without complete joint cells")
+        for index, requested in selected:
+            observed_domain = {canonical_json(row["cell"][index]) for row in m["complete_cells"]}
+            if canonical_json(requested) not in observed_domain:
+                raise ObservedResearchError("condition value not in source-declared exact domain")
         for row in m["complete_cells"]:
             state = row["cell"][target_index]
             target_key = canonical_json(state)
@@ -130,7 +135,10 @@ def ask_exact_descriptive_support(
                 "raw_count": n,
                 "observed_cell_state": "POSITIVE" if n else "OBSERVED_ZERO_WITHIN_COMPLETE_CASE",
                 "fraction_of_condition_complete_case": (
-                    {"$exact_fraction": [n, denominator]} if denominator > 0 else None
+                    {"$exact_fraction": [
+                        Fraction(n, denominator).numerator,
+                        Fraction(n, denominator).denominator,
+                    ]} if denominator > 0 else None
                 ),
             })
     else:
@@ -194,7 +202,7 @@ def ask_observed_minor_cell_candidates(
     ]
     answer = {
         "contract": CONTRACT,
-        "kind": "EXACT_SMALL_CELL_CANDIDATE_SELECTION_NOT_MINORIY_DISCOVERY",
+        "kind": "EXACT_SMALL_CELL_CANDIDATE_SELECTION_NOT_MINORITY_DISCOVERY",
         "state": STATE_SUPPORTED if supported else STATE_BLOCKED,
         "upstream_typed_state": m["producer_state"],
         "source_ff01_ref": received.ref.as_dict(),
