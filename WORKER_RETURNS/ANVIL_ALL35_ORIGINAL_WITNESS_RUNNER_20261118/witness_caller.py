@@ -23,6 +23,7 @@ HERE = Path(__file__).resolve().parent
 BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
 FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
 FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
+SINGLE_PASS_SHA = "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e"
 RAM_CAP = 6 * 1024**3
 COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
 Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
@@ -80,6 +81,9 @@ def verify_candidate(tree: Path, patch: Path | None = None) -> None:
         raise CallerRefusal("CANDIDATE_SOURCE_HASH_MISMATCH", str(source))
     if patch is not None and (not patch.is_file() or sha(patch) != FINAL_PATCH_SHA):
         raise CallerRefusal("CANDIDATE_PATCH_HASH_MISMATCH", str(patch))
+    compact = HERE / "single_pass_handoff.py"
+    if not compact.is_file() or sha(compact) != SINGLE_PASS_SHA:
+        raise CallerRefusal("COMPACT_IMPLEMENTATION_HASH_MISMATCH", str(compact))
 
 
 def _paths() -> None:
@@ -88,6 +92,7 @@ def _paths() -> None:
 
 def _grant(binding_dir: Path = BINDING_DIR):
     sys.path.insert(0, str(binding_dir))
+    from single_pass_handoff import _require_current
     import existing_grant_binding as gb
     raw = json.loads((binding_dir / "fixtures/SRC04_CONFIG_BINDING.json").read_text())
     cfg = gb.ConfigBinding(**raw)
@@ -104,9 +109,11 @@ def _grant(binding_dir: Path = BINDING_DIR):
     if not isinstance(source_path, str) or not source_path:
         raise CallerRefusal("GRANT_SOURCE_PATH_MISSING")
     resolver = gb.ExistingGrantResolver(grant_path, trust, bound.request)
-    # The callback is exercised on both boundaries, exactly as the R157 reader does.
-    if resolver.resolve_current(bound.request) != resolver.resolve_current(bound.request):
-        raise CallerRefusal("GRANT_PRE_POST_DECISION_CHANGED")
+    # Exact CURRENT/revocation/scope check before any checkpoint read/publication.
+    try:
+        _require_current(resolver, bound.request, bound.decision.decision_ref)
+    except Exception as exc:
+        raise CallerRefusal("GRANT_CURRENT_SCOPE_REFUSED", getattr(exc, "code", type(exc).__name__)) from exc
     return gb, bound, resolver, source_path, trust
 
 
@@ -204,7 +211,7 @@ def producer(args) -> int:
         raise CallerRefusal("Q217_NOT_EXCLUDED")
     scoped = SourceConfig(scoped_doc)
     _gb, bound, resolver, source_path_from_grant, _trust = _grant(args.binding_dir)
-    if os.path.normpath(args.source_path) != os.path.normpath(source_path_from_grant):
+    if not args.resume_checkpoint and os.path.normpath(args.source_path) != os.path.normpath(source_path_from_grant):
         raise CallerRefusal("SOURCE_PATH_DOES_NOT_MATCH_GRANT")
     exact_request = source_read_request_from_config(
         scoped, host=bound.request.host, purpose=bound.request.purpose,
@@ -223,8 +230,8 @@ def producer(args) -> int:
         receipt = resume_single_pass(
             checkpoint=args.resume_checkpoint, root=root, config=scoped,
             request=bound.request, grant_ref=bound.grant_ref,
-            decision_ref=bound.decision.decision_ref, chunk_rows=512,
-            progress=progress)
+            decision_ref=bound.decision.decision_ref, resolver=resolver,
+            chunk_rows=512, progress=progress)
         resumed = True
     else:
         receipt = build_single_pass(
@@ -489,6 +496,11 @@ def main() -> int:
         return supervisor(args)
     except CallerRefusal as exc:
         print(json.dumps({"status": "REFUSED", "code": exc.code, "detail": exc.detail}))
+        return 2
+    except Exception as exc:
+        code = getattr(exc, "code", type(exc).__name__)
+        detail = getattr(exc, "detail", str(exc)[:300])
+        print(json.dumps({"status": "REFUSED", "code": code, "detail": detail}, sort_keys=True))
         return 2
 
 

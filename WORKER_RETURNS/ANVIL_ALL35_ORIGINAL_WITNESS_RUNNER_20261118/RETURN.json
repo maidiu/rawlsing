@@ -12,14 +12,11 @@
   "accepted_src04_reference": "ba41253681212be14a0cde009afb99d77e14935e",
   "actual_caller": "witness_caller.py",
   "actual_runner_inputs": {
-    "base_config": "WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/inputs/SRC04/source.config.repaired.v2.json",
-    "base_config_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
-    "final_runtime_config": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json",
-    "final_runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
-    "final_runtime_config_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421",
-    "free_space_available": 15569469440,
-    "free_space_required": 26907826727,
-    "single_pass_module": "single_pass_handoff.py"
+    "candidate_patch": "OWNER/WORKER_RETURNS/ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_20261118/candidate.patch",
+    "candidate_tree": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
+    "config": "IMPLEMENTER/WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/inputs/SRC04/source.config.repaired.v2.json",
+    "runtime_config": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json",
+    "work_root": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned"
   },
   "actual_source_launch": false,
   "added_rule_counts": {
@@ -27,6 +24,35 @@
     "q715withoutmorocco": 303,
     "q716incomedeciles": 2,
     "q716withoutmorocco": 327
+  },
+  "caller_corrections": {
+    "compact_implementation_hash_pin_sha256": "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e",
+    "current_guard": {
+      "held": "CURRENT_NOT_GRANTED",
+      "revoked": "CURRENT_REVOKED"
+    },
+    "direct_resume_without_source_path": {
+      "code": "CHECKPOINT_MISSING",
+      "detail": "",
+      "status": "REFUSED"
+    },
+    "exact_preflight_status": "RUNTIME_OVERLAY_QUALIFIED",
+    "q217": {
+      "release_events": 0,
+      "residual_id": "SRC04-FIELD-REPAIR-q217",
+      "residual_status": "UNRESOLVED_EXACT_UNLABELED_CODES",
+      "selected_in_release": false,
+      "slot_name": "q217",
+      "slot_ordinal": 27,
+      "status": "HELD_EXACT_BY_SCOPED_CONFIG",
+      "unbound_cells": 38
+    },
+    "request_equal_to_approved": true,
+    "scoped_counts": {
+      "coordinate_slots": 3,
+      "physical_slots": 181,
+      "response_slots": 177
+    }
   },
   "caller_scope": "SRC04 witness-specific; producer/supervisor/fresh-reader machinery is reusable, but the q217 hold, 177/3 projection and accepted accounting are not generic acceptance",
   "candidate_commit": "3aecb818d8f65d63da809c365f05f3320434f1c4",
@@ -54,22 +80,13 @@
     "baseline_checkpoint_bytes": 1956,
     "baseline_spool_bytes": 551124,
     "compact_checkpoint_bytes": 1904,
-    "compact_spool_bytes": 38835,
-    "encoding": "shared field header + positional typed JSON arrays + deterministic gzip",
+    "compact_spool_bytes": 38798,
     "exact_payload_digests_equal": true,
     "exact_roots_equal": true,
     "fixture_rows": 90,
     "resume_decode_called": false,
-    "saving_bytes": 512289,
-    "saving_fraction": 0.929535,
-    "typed_values": [
-      "repeated",
-      "zero",
-      "missing/None",
-      "DK 7.0",
-      "NOT_ASKED -1.0",
-      "substantive"
-    ]
+    "saving_bytes": 512326,
+    "saving_fraction": 0.929602
   },
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
@@ -127,9 +144,11 @@
   "final_runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
   "final_runtime_config_file_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421",
   "free_space": {
-    "available_bytes": 15569469440,
-    "blocker": "CURRENT_FREE_SPACE_BELOW_SINGLE_PASS_FLOOR",
-    "required_bytes": 26907826727
+    "available_bytes": 44736503808,
+    "gap_bytes": 0,
+    "headroom_evidence": "evidence/SRC04_COMPACT_RUN_HEADROOM_RECEIVING.json",
+    "stale_review_value": 15569469440,
+    "startup_floor_bytes": 26907826727
   },
   "full_writer_launched": false,
   "gate": "Q217_FULL_CONFIG_WOULD_BE_INCLUDED__SCOPED_177_RESPONSE_3_COORDINATE_INPUT_USED",
@@ -320,7 +339,7 @@
     "sourcefree_test_only": true,
     "wrong_root_refused": true
   },
-  "status": "COMPACT_TYPED_SPOOL_GREEN__CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP",
+  "status": "COMPACT_PARITY_REVIEWED__CALLER_DEFECTS_REPAIRED__HEADROOM_CLEARED",
   "supervisor_root_absolute": true,
   "tests": {
     "failed": 0,

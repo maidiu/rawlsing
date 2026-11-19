@@ -267,11 +267,33 @@ def _resume_source(config, payload, root: Path):
     return projection, spool_paths, manifest, source, declared_counts
 
 
+def _require_current(resolver, request, decision_ref):
+    if resolver is None or not callable(getattr(resolver, "resolve_current", None)):
+        raise CheckpointRefusal("CURRENT_RESOLVER_REQUIRED")
+    first = resolver.resolve_current(request)
+    second = resolver.resolve_current(request)
+    if first != second or first.decision_ref != decision_ref:
+        raise CheckpointRefusal("CURRENT_DECISION_DRIFT")
+    if first.currentness != "CURRENT_GRANTED":
+        raise CheckpointRefusal("CURRENT_NOT_GRANTED", first.currentness)
+    if first.revocation_ref is not None:
+        raise CheckpointRefusal("CURRENT_REVOKED")
+    for name in ("source_id", "source_sha256", "host", "purpose", "consumer_use",
+                 "read_operation", "physical_read_extent", "metadata_freeze_refs",
+                 "semantic_use_scope"):
+        if getattr(first, name) != getattr(request, name):
+            raise CheckpointRefusal("CURRENT_REQUEST_SCOPE_MISMATCH", name)
+    return first
+
+
 def resume_single_pass(*, checkpoint, root, config, request, grant_ref,
-                       decision_ref, expected_i02=None, chunk_rows=512,
-                       progress=None):
+                       decision_ref, resolver=None, expected_i02=None,
+                       chunk_rows=512, progress=None):
     """Resume writer from authenticated prepared sections; never re-decodes."""
     root = Path(root).absolute()
+    doc = config.document if hasattr(config, "document") else config
+    if doc.get("binding", {}).get("identity_class") == "ORIGINAL_SOURCE":
+        _require_current(resolver, request, decision_ref)
     payload = load_checkpoint(checkpoint=checkpoint, root=root, config=config,
                               request=request, grant_ref=grant_ref,
                               decision_ref=decision_ref)
