@@ -351,6 +351,17 @@ def receive_ff01_observed_joint(
         # cell that the source/issuer did not actually support.
         if fact.raw_numerator_support != 0:
             raise FF01GenericIngressError("nonpositive producer has unexplained positive target support")
+        negative_topology = fact.target_topology
+        if isinstance(negative_topology, Mapping):
+            negative_cells = negative_topology.get("complete_cell_semantic_projection")
+            if negative_cells is not None:
+                if not isinstance(negative_cells, (list, tuple)):
+                    raise FF01GenericIngressError("nonpositive joint has malformed cell payload")
+                for row in negative_cells:
+                    if not isinstance(row, Mapping) or type(row.get("raw_numerator_support")) is not int:
+                        raise FF01GenericIngressError("nonpositive joint has unauthenticated cell count")
+                    if row["raw_numerator_support"] != 0:
+                        raise FF01GenericIngressError("nonpositive joint contains contradictory positive cell")
 
     canonical = canonical_json(projection)
     digest = semantic_hash(projection)
