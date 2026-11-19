@@ -292,7 +292,9 @@ def receive_s04_i03_research(
         "VALID_EMPTY", "INTEGRITY_FAILURE", "UNSUPPORTED", "UNCERTAINTY_UNQUANTIFIED"
     }:
         raise S04KnowledgeError("unrecognized I03 nonpositive typed state")
-    elif resolved > 0 and fact.typed_state not in {"LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"}:
+    elif resolved > 0 and fact.typed_state not in {
+        "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED", "UNRESOLVED"
+    }:
         raise S04KnowledgeError("typed producer has unexplained positive count")
 
     if fact.typed_state != "SUPPORTED":
@@ -307,11 +309,22 @@ def receive_s04_i03_research(
         if negative_cells is not None:
             if not isinstance(negative_cells, (list, tuple)):
                 raise S04KnowledgeError("nonpositive I03 cell payload malformed")
+            retained_total = 0
             for row in negative_cells:
                 if (not isinstance(row, Mapping)
                         or type(row.get("raw_numerator_support")) is not int
                         or row["raw_numerator_support"] < 0):
                     raise S04KnowledgeError("nonpositive I03 negative cell count malformed")
+                retained_total += row["raw_numerator_support"]
+            if retained_total != resolved:
+                raise S04KnowledgeError(
+                    "nonpositive I03 cell count contradicts held resolved total"
+                )
+        if (resolved > 0 and fact.typed_state == "UNRESOLVED"
+                and not 0 < resolved < eligible):
+            raise S04KnowledgeError(
+                "partially resolved UNRESOLVED joint requires positive incomplete risk"
+            )
 
     publication = {
         "contract": CONTRACT,

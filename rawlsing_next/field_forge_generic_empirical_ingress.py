@@ -365,7 +365,7 @@ def receive_ff01_observed_joint(
         # Typed nonpositive results are retained without fabricating a domain
         # cell that the source/issuer did not actually support.
         if fact.raw_numerator_support > 0 and fact.typed_state not in {
-            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
+            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED", "UNRESOLVED"
         }:
             raise FF01GenericIngressError("nonpositive producer has unexplained positive target support")
         negative_topology = fact.target_topology
@@ -378,15 +378,22 @@ def receive_ff01_observed_joint(
         if negative_cells is not None:
             if not isinstance(negative_cells, (list, tuple)):
                 raise FF01GenericIngressError("nonpositive joint has malformed cell payload")
+            retained_total = 0
             for row in negative_cells:
                 if (not isinstance(row, Mapping)
                         or type(row.get("raw_numerator_support")) is not int
                         or row["raw_numerator_support"] < 0):
                     raise FF01GenericIngressError("nonpositive joint has invalid negative cell count")
-                if row["raw_numerator_support"] > 0 and fact.typed_state not in {
-                    "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
-                }:
-                    raise FF01GenericIngressError("nonpositive joint contains contradictory positive cell")
+                retained_total += row["raw_numerator_support"]
+            if retained_total != fact.raw_numerator_support:
+                raise FF01GenericIngressError(
+                    "nonpositive joint cell count contradicts held resolved total"
+                )
+        if (fact.raw_numerator_support > 0 and fact.typed_state == "UNRESOLVED"
+                and not 0 < fact.raw_numerator_support < fact.raw_denominator_support):
+            raise FF01GenericIngressError(
+                "partially resolved UNRESOLVED joint requires positive incomplete risk"
+            )
 
     canonical = canonical_json(projection)
     digest = semantic_hash(projection)

@@ -51,3 +51,29 @@ New additive `rawlsing_next/pre553_distinct_cold_i03_batch.py` supplies `execute
 New `rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py` uses 1/10/100 distinct native question refs on actual accepted sourcefree C11→Parquet→cold executor (not 100 renamed identical operations), compares original in-memory I03 exact fact refs at first/last positions, instruments number of native session enters (expect ONE), rejects duplicate request preflight and invokes actual revocation after first existing-I03 execution (expect refused and no orphan postings). These tests are **AUTHORED_NOT_EXECUTED**, and the high-width real-source/CURRENT/6GiB economic threshold remains HELD. If the small suite fails, repair it before any performance/correctness claim.
 
 This extension implements a *bounded economical scheduling primitive*, not a replacement saved I03 API. Resource owner can now time same 1/10/100 query sets old independent method vs this one-session path on an existing retained 10k/high-width estate with process-tree RSS and scratch, exact parities, then accept/reject its actual benefit. Do not report speedup from code structure alone.
+
+## Further high-severity source-law correction: LEGITIMATE partial-positive UNRESOLVED
+
+Native `_pre553_query_eval.py` ~lines 547–550 and 820–823 explicitly emits
+`typed_state="UNRESOLVED"` whenever `raw_resolved != raw_denominator`,
+even when **some** real eligible respondents have fully resolved positive
+joint cells. The older #1149 and #1150 receptions rejected all positive
+`UNRESOLVED` supports as "unexplained" and erased this legitimate state from
+the available research receipt. Simply whitelisting it would have broken
+the inherited hostile guard `test_negative_state_cannot_hide_positive_cell_evidence`
+and let a top-level zero mask nested positive cells.
+
+The independent branch now admits only the exact source-typed
+`UNRESOLVED` **HELD** state where `0<raw_resolved<raw_eligible` and,
+when full original nested cell material is present, validates
+`sum(raw_cell_counts)==raw_resolved`. It never publishes a supported
+conditional distribution for partially observed respondents; it carries
+the positive count and remaining eligibility gap as evidence only. It
+also conserves `LOW_SUPPORT`/unquantified uncertainty as held, refuses
+self-rehashed inconsistent positive nested counts with a contradictory
+header, and keeps canonical zero/negative types distinct. Three new
+adversarial tests challenge the 3/4 partial support and 2-vs-3 forged
+header; the full inherited FF suite's top-0/positive-cell RED is retained.
+**These are author code and NOT_RUN, and the 3/4 fixture is a semantically
+coherent mutation of native I03 fact material rather than an independently
+executed original-source incomplete-response query.**

@@ -145,3 +145,83 @@ def test_terminal_i05_fact_still_consumes_original_ff01_without_new_i03():
     assert observed.material()["fact_ref"] == ff.semantic_projection()["producer_fact_ref"]
     assert s04_receipt.material()["candidate_validation_state"] == r.typed_state
     assert direct_receipt.material()["candidate_validation_state"] == r.typed_state
+
+
+def _partial_unresolved_fixture(*, contradiction=False):
+    """Hash-coherent typed UNRESOLVED with 3/4 actual resolved joint cases.
+
+    This is a source-contract mutation of native-owned I03 fact material,
+    not a claim that the caller issued a new scientific operation.
+    """
+    _, _, _, query, execution = _case(tag="REVIEW1097-PARTIAL-UNRESOLVED")
+    actual = execution.facts[0]
+    fields = dict(actual.semantic_fields)
+    topo = dict(actual.target_topology)
+    cells = [dict(x) for x in topo["complete_cell_semantic_projection"]]
+    positive = next(row for row in cells if row["raw_numerator_support"] == 1)
+    positive["raw_numerator_support"] = 0
+    positive["cell_state"] = "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    topo["complete_cell_semantic_projection"] = cells
+    fields["target_topology"] = topo
+    fields["raw_numerator_support"] = 3
+    fields["raw_resolved_target_support"] = 3
+    if contradiction:
+        # Full cells add to 3, but header falsely claims 2 resolved.
+        fields["raw_numerator_support"] = 2
+        fields["raw_resolved_target_support"] = 2
+    partial = EmpiricalFact(
+        typed_state="UNRESOLVED",
+        authority_snapshot_refs=actual.authority_snapshot_refs,
+        dependency_refs=actual.dependency_refs,
+        producer_replay_locator_or_reference_root=actual.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+    return query, replace(execution, facts=(partial,))
+
+
+def test_native_i03_partial_unresolved_support_survives_held_not_distributed():
+    q, execution = _partial_unresolved_fixture()
+    original = execution.facts[0]
+    assert original.raw_numerator_support == 3
+    assert original.raw_denominator_support == 4
+    s04 = receive_s04_i03_research(query=q, execution=execution).material()
+    ff = receive_ff01_observed_joint(
+        query=q, execution=execution, conditioner_index=0,
+        producer_permission_ceiling=PERMISSIONS,
+    ).semantic_projection()
+    assert s04["state"] == "PRODUCER_TYPED_HELD"
+    assert s04["producer_typed_state"] == "UNRESOLVED"
+    assert s04["raw_fully_resolved_joint_n"] == 3
+    assert s04["raw_eligible_condition_denominator"] == 4
+    assert s04["nonpositive_positive_count_retained_not_served"] == 3
+    assert s04["complete_cells"] == []
+    assert ff["producer_state"] == "UNRESOLVED"
+    assert ff["raw_fully_resolved_joint_n"] == 3
+    assert ff["raw_eligible_condition_denominator"] == 4
+    assert ff["held_observed_n_if_nonpositive"] == 3
+    assert ff["complete_cells"] == []
+    assert ff["zero_means"] == "NO_ZERO_INFERENCE_FROM_NONPOSITIVE_PRODUCER_STATE"
+
+
+def test_hash_coherent_partial_unresolved_false_nested_total_refuses():
+    q, execution = _partial_unresolved_fixture(contradiction=True)
+    with pytest.raises(S04KnowledgeError, match="held resolved total"):
+        receive_s04_i03_research(query=q, execution=execution)
+    with pytest.raises(FF01GenericIngressError, match="held resolved total"):
+        receive_ff01_observed_joint(
+            query=q, execution=execution, conditioner_index=0,
+            producer_permission_ceiling=PERMISSIONS,
+        )
+
+
+def test_native_i03_legitimate_unresolved_emission_rule_is_not_heuristic():
+    # This is an independently checked native source-contract invariant:
+    # _pre553_query_eval sets UNRESOLVED for
+    # 0 <= raw_resolved_target_support < raw_denominator_support, in either
+    # ordinary/grouped source-verified evaluation. We assert the bounded
+    # receiver behavior, not simulate a new issuer or original source.
+    q, execution = _partial_unresolved_fixture()
+    assert execution.facts[0].typed_state == "UNRESOLVED"
+    assert execution.facts[0].raw_resolved_target_support < execution.facts[0].raw_denominator_support
+    s04 = receive_s04_i03_research(query=q, execution=execution)
+    assert s04.material()["grade"] != "RAW_FULLY_RESOLVED_SAME_RESPONDENT_SAMPLE_NOT_POPULATION"
