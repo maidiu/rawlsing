@@ -1,0 +1,536 @@
+{
+  "actual_care": {
+    "actor": "mara",
+    "attempt": "CARE",
+    "clock": 2,
+    "coactor": null,
+    "developmental_effect_count": {
+      "mara": 0,
+      "nadia": 0,
+      "sam": 0
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "CARE_GIVEN",
+    "public_tip": "care — care given",
+    "receipt": "evt_51ba51b8c724daa653f7",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "child_generated_next_attempt": {
+    "actor": "nadia",
+    "attempt": "PRACTICE",
+    "clock": 247,
+    "coactor": null,
+    "developmental_effect_count": {
+      "mara": 0,
+      "nadia": 1,
+      "sam": 0
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "SOLO_PRACTICE",
+    "public_tip": "practice — solo practice",
+    "receipt": "evt_fd18581afcad8aefc546",
+    "selection_grade": "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE",
+    "status": "PERFORMED"
+  },
+  "child_iceberg": {
+    "forms": 2,
+    "traces": 1
+  },
+  "child_practice": {
+    "actor": "nadia",
+    "attempt": "PRACTICE",
+    "clock": 245,
+    "coactor": null,
+    "developmental_effect_count": {
+      "mara": 0,
+      "nadia": 1,
+      "sam": 0
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "SOLO_PRACTICE",
+    "public_tip": "practice — solo practice",
+    "receipt": "evt_91e3272486b92e50a0a7",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "child_singing": {
+    "actor": "nadia",
+    "attempt": "SING",
+    "clock": 246,
+    "coactor": null,
+    "developmental_effect_count": {
+      "mara": 0,
+      "nadia": 3,
+      "sam": 0
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "SOLO_PRACTICE",
+    "public_tip": "sing — solo practice",
+    "receipt": "evt_6f640560eb7e6b972a28",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "child_situated": {
+    "accessible_cues": [
+      {
+        "clock": 247,
+        "description": "SOLO_PRACTICE",
+        "id": "cue_dceb789ab44e28ee",
+        "kind": "performed_practice",
+        "last_access_clock": 247,
+        "location": "home",
+        "modality": "visual",
+        "private_to": null,
+        "source_actor": "nadia",
+        "tags": [
+          "practice",
+          "solo_practice"
+        ],
+        "threshold": 0.05
+      },
+      {
+        "clock": 247,
+        "description": "co-present other actor",
+        "id": "presence:mara:247",
+        "kind": "coactor_present",
+        "location": "home",
+        "modality": "present",
+        "source_actor": "mara",
+        "tags": [
+          "coactor",
+          "mara"
+        ]
+      },
+      {
+        "clock": 247,
+        "description": "co-present other actor",
+        "id": "presence:sam:247",
+        "kind": "coactor_present",
+        "location": "home",
+        "modality": "present",
+        "source_actor": "sam",
+        "tags": [
+          "coactor",
+          "sam"
+        ]
+      }
+    ],
+    "actor": "nadia",
+    "candidate_actions": [
+      {
+        "action": "REST",
+        "basis": [
+          "organism"
+        ],
+        "opportunity": "ORGANISM",
+        "score": 1.06
+      },
+      {
+        "action": "PRACTICE",
+        "basis": [
+          "form_4d3f196cc28c78ca",
+          "project:project_9676605404b02fc6"
+        ],
+        "motive_hypotheses": [
+          "UNSPECIFIED_ACQUIRED_MOTIVE"
+        ],
+        "opportunity": "ACQUIRED",
+        "practical_objects": [
+          "explore whether a rhythm can continue"
+        ],
+        "score": 0.3456
+      },
+      {
+        "action": "SING",
+        "basis": [
+          "form_8ec051f8c87b3661",
+          "project:project_9676605404b02fc6"
+        ],
+        "motive_hypotheses": [
+          "UNSPECIFIED_ACQUIRED_MOTIVE"
+        ],
+        "opportunity": "ACQUIRED",
+        "practical_objects": [
+          "explore whether a rhythm can continue"
+        ],
+        "score": 0.336
+      },
+      {
+        "action": "ORIENT",
+        "basis": [
+          "organism"
+        ],
+        "opportunity": "ORGANISM",
+        "score": 0.06
+      },
+      {
+        "action": "SIGNAL",
+        "basis": [
+          "organism"
+        ],
+        "opportunity": "ORGANISM",
+        "score": 0.06
+      },
+      {
+        "action": "WAIT",
+        "basis": [
+          "organism"
+        ],
+        "opportunity": "ORGANISM",
+        "score": 0.06
+      }
+    ],
+    "clock": 247,
+    "currents": [
+      {
+        "kind": "ONGOING_ACTIVITY",
+        "motive": "UNSPECIFIED_ACQUIRED_MOTIVE",
+        "object": "explore whether a rhythm can continue",
+        "priority": 0.32,
+        "recruitment_basis": [],
+        "ref": "project_9676605404b02fc6"
+      },
+      {
+        "actor_access": "tacit",
+        "kind": "PRACTICE",
+        "object": null,
+        "ref": "form_4d3f196cc28c78ca"
+      },
+      {
+        "actor_access": "tacit",
+        "kind": "PRACTICE",
+        "object": null,
+        "ref": "form_8ec051f8c87b3661"
+      }
+    ],
+    "disagreements": [],
+    "dormant": [],
+    "inhibited": [],
+    "readset": [
+      "cue_dceb789ab44e28ee",
+      "form_4d3f196cc28c78ca",
+      "form_8ec051f8c87b3661"
+    ],
+    "recruited": [
+      {
+        "access": "tacit",
+        "actor": "nadia",
+        "body_min": 0.1,
+        "changes": [
+          {
+            "actor": "nadia",
+            "event": "objective_1530df3692535448",
+            "experience_ref": "experience_504894be51b51bbb",
+            "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+            "semantic_hypothesis": true
+          }
+        ],
+        "content": "practiced practice",
+        "cues": [
+          "practice",
+          "solo_practice"
+        ],
+        "enables": [
+          "PRACTICE"
+        ],
+        "evidence": {
+          "actor": "nadia",
+          "event": "objective_3504a5d5fd01ae7b",
+          "experience_ref": "experience_81173f79e11e26b2",
+          "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+          "semantic_hypothesis": true
+        },
+        "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+        "id": "form_4d3f196cc28c78ca",
+        "kind": "PRACTICE",
+        "lifecycle": "ACTIVE",
+        "origin": [
+          "objective_3504a5d5fd01ae7b"
+        ],
+        "scope": {
+          "locations": [
+            "home"
+          ]
+        },
+        "strength": 0.49
+      },
+      {
+        "access": "tacit",
+        "actor": "nadia",
+        "body_min": 0.1,
+        "content": "practiced sing",
+        "cues": [
+          "sing",
+          "solo_practice"
+        ],
+        "enables": [
+          "SING"
+        ],
+        "evidence": {
+          "actor": "nadia",
+          "event": "objective_147b1204107aee1f",
+          "experience_ref": "experience_dad55c38900a8513",
+          "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+          "semantic_hypothesis": true
+        },
+        "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+        "id": "form_8ec051f8c87b3661",
+        "kind": "PRACTICE",
+        "lifecycle": "ACTIVE",
+        "origin": [
+          "objective_147b1204107aee1f"
+        ],
+        "scope": {
+          "locations": [
+            "home"
+          ]
+        },
+        "strength": 0.45
+      }
+    ],
+    "unknowns": [
+      "adult_purpose",
+      "adult_ideology"
+    ]
+  },
+  "cold_reopen": {
+    "chain": {
+      "events": 9,
+      "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "last_hash": "ac895e4e6cb681803627670ee89e624fd76238f408906061bffdf621a86bff66",
+      "valid": true
+    },
+    "child_forms": 2,
+    "world_clock": 247
+  },
+  "independent_joint_activity": {
+    "actor": "mara",
+    "attempt": "SING",
+    "clock": 243,
+    "coactor": "JOIN",
+    "developmental_effect_count": {
+      "mara": 3,
+      "nadia": 0,
+      "sam": 3
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "JOINT_ACTIVITY_PERFORMED",
+    "public_tip": "sing — joint activity performed",
+    "receipt": "evt_9f0a645a5ec0f0f241c0",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "independent_joint_activity_repeated": {
+    "actor": "mara",
+    "attempt": "SING",
+    "clock": 244,
+    "coactor": "JOIN",
+    "developmental_effect_count": {
+      "mara": 3,
+      "nadia": 0,
+      "sam": 3
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "JOINT_ACTIVITY_PERFORMED",
+    "public_tip": "sing — joint activity performed",
+    "receipt": "evt_34da742fe5f9c5bf89ee",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "infant_signal": {
+    "actor": "nadia",
+    "attempt": "SIGNAL",
+    "clock": 1,
+    "coactor": null,
+    "developmental_effect_count": {
+      "mara": 0,
+      "nadia": 1,
+      "sam": 0
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "objective_outcome": "NONVERBAL_SIGNAL",
+    "public_tip": "signal — nonverbal signal",
+    "receipt": "evt_289591a0fc1e4bda2c57",
+    "selection_grade": "INJECTED_NOT_NATIVE_ACTOR_CHOICE",
+    "status": "PERFORMED"
+  },
+  "initial_constitution": {
+    "child_forms": 0,
+    "father_forms": 4,
+    "mother_forms": 6
+  },
+  "initialization": {
+    "actors": [
+      "mara",
+      "sam",
+      "nadia"
+    ],
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "world": "w1"
+  },
+  "mother_interview": {
+    "evidence_quality": {
+      "household_care": "DIRECT_ANSWER_LEAKAGE_NOT_INDEPENDENT",
+      "institutional_trust": "DIRECT_ANSWER_LEAKAGE_NOT_INDEPENDENT",
+      "religious_practice": "DIRECT_ANSWER_LEAKAGE_NOT_INDEPENDENT",
+      "religious_self_description": "DIRECT_ANSWER_LEAKAGE_NOT_INDEPENDENT"
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "independent_whole_respondent_correspondence": "NOT_DEMONSTRATED",
+    "responses": {
+      "household_care": "significant",
+      "institutional_trust": "mixed",
+      "religious_practice": "often",
+      "religious_self_description": "not religious"
+    }
+  },
+  "ordinary_months": {
+    "effects": {
+      "mara": [],
+      "nadia": [],
+      "sam": []
+    },
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "period": {
+      "cannot_warrant": "UNRECORDED_SPECIFIC_OCCURRENCE",
+      "end": 242,
+      "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "id": "period_754767ce85b0467a",
+      "processes": [
+        {
+          "coverage": "AGGREGATE_MODELED",
+          "kind": "care",
+          "summary": "modeled recurring care with no invented private conversations"
+        },
+        {
+          "coverage": "AGGREGATE_MODELED",
+          "kind": "work_conditions",
+          "summary": "household and work time remain constrained"
+        }
+      ],
+      "resolution": "AGGREGATE_MODELED",
+      "start": 2
+    },
+    "receipt": "evt_408dfe6774d141f52da1"
+  },
+  "relation_field_after_one": [
+    {
+      "constraints": [],
+      "continuity": "open",
+      "history": [
+        {
+          "activity": "SING",
+          "clock": 242,
+          "contributions": [
+            {
+              "act": "SING",
+              "actor": "mara"
+            },
+            {
+              "act": "JOIN",
+              "actor": "sam"
+            }
+          ],
+          "material_effects": []
+        }
+      ],
+      "id": "rel:mara:sam",
+      "joint_capabilities": [],
+      "objective_grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "observed_patterns": [],
+      "participants": [
+        "mara",
+        "sam"
+      ]
+    }
+  ],
+  "relation_field_after_two": [
+    {
+      "constraints": [],
+      "continuity": "open",
+      "history": [
+        {
+          "activity": "SING",
+          "clock": 242,
+          "contributions": [
+            {
+              "act": "SING",
+              "actor": "mara"
+            },
+            {
+              "act": "JOIN",
+              "actor": "sam"
+            }
+          ],
+          "material_effects": []
+        },
+        {
+          "activity": "SING",
+          "clock": 243,
+          "contributions": [
+            {
+              "act": "SING",
+              "actor": "mara"
+            },
+            {
+              "act": "JOIN",
+              "actor": "sam"
+            }
+          ],
+          "material_effects": []
+        }
+      ],
+      "id": "rel:mara:sam",
+      "joint_capabilities": [],
+      "objective_grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "observed_patterns": [
+        "REPEATED_JOINT_ACT_OBSERVED"
+      ],
+      "participants": [
+        "mara",
+        "sam"
+      ]
+    }
+  ],
+  "sourcefree_chain": {
+    "events": 9,
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "last_hash": "ac895e4e6cb681803627670ee89e624fd76238f408906061bffdf621a86bff66",
+    "valid": true
+  },
+  "unacquired_child_actions": [
+    {
+      "action": "ORIENT",
+      "basis": [
+        "organism"
+      ],
+      "opportunity": "ORGANISM",
+      "score": 0.06
+    },
+    {
+      "action": "REST",
+      "basis": [
+        "organism"
+      ],
+      "opportunity": "ORGANISM",
+      "score": 0.06
+    },
+    {
+      "action": "SIGNAL",
+      "basis": [
+        "organism"
+      ],
+      "opportunity": "ORGANISM",
+      "score": 0.06
+    },
+    {
+      "action": "WAIT",
+      "basis": [
+        "organism"
+      ],
+      "opportunity": "ORGANISM",
+      "score": 0.06
+    }
+  ]
+}
