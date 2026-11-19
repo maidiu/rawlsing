@@ -431,16 +431,19 @@ def _project_spooled_families(
                         )
                         slot_counts[("RespondentEvent", key)] += 1
                         unresolved_response_events += 1
-                    continue
-                for occurrence in rule.occurrences:
-                    write(
-                        "RespondentEvent",
-                        _event(
-                            incidence.source_sha256, cell.row_ordinal, respondent,
-                            slot, cell, rule, occurrence, projection,
-                        ),
-                    )
-                    slot_counts[("RespondentEvent", key)] += 1
+                else:
+                    # A shared physical slot can have approved coordinate or
+                    # weight owners too. Never skip their emission merely
+                    # because the response interpretation is unresolved.
+                    for occurrence in rule.occurrences:
+                        write(
+                            "RespondentEvent",
+                            _event(
+                                incidence.source_sha256, cell.row_ordinal, respondent,
+                                slot, cell, rule, occurrence, projection,
+                            ),
+                        )
+                        slot_counts[("RespondentEvent", key)] += 1
             if key in coordinate:
                 slot = coordinate[key]
                 rule = {item.physical_key: item for item in slot.values}.get(
