@@ -58,6 +58,7 @@ from rawlsing_next.pre553_empirical_objects import (
     RespondentEvent,
     WeightMeasureFact,
     canonical_json,
+    canonicalize,
     exact_ref,
 )
 from rawlsing_next.pre553_operation_fate_census import (
@@ -371,6 +372,46 @@ def _occurrence_templates(slot: Any) -> tuple[Any, ...]:
     return tuple(template[key] for key in sorted(template))
 
 
+def _unmapped_event_with_physical_missingness(
+    *,
+    source_sha256: str,
+    row_ordinal: int,
+    respondent: Any,
+    slot: Any,
+    cell: PhysicalCell,
+    raw_rule: ResponseValueRule,
+    occurrence: Any,
+    projection: GovernedC11Projection,
+) -> RespondentEvent:
+    """Retain source missingness without changing any previously mapped event.
+
+    The actual physical typed raw value stays in the established canonical
+    raw_response_value witness. The source-declared missing classification and
+    declaration are additional *uninterpreted* semantic fields only for
+    fallback events. None of these fields supplies a missing source mapping,
+    scientific response, routing status, transform, or occurrence authority.
+    """
+    original = _event(
+        source_sha256, row_ordinal, respondent, slot, cell,
+        raw_rule, occurrence, projection,
+    )
+    fields = dict(original.semantic_fields)
+    fields["uninterpreted_physical_missing_state"] = cell.missing_state.value
+    fields["uninterpreted_source_missing_declaration"] = canonicalize(
+        cell.source_missing_declaration
+    )
+    fields["uninterpreted_physical_cell_key"] = _cell_key(cell)
+    return RespondentEvent(
+        typed_state=original.typed_state,
+        authority_snapshot_refs=original.authority_snapshot_refs,
+        dependency_refs=original.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            original.producer_replay_locator_or_reference_root
+        ),
+        **fields,
+    )
+
+
 def _project_spooled_families(
     *,
     config: SourceConfig,
@@ -443,9 +484,12 @@ def _project_spooled_families(
                         )
                         write(
                             "RespondentEvent",
-                            _event(
-                                incidence.source_sha256, cell.row_ordinal, respondent,
-                                slot, cell, raw_rule, occurrence, projection,
+                            _unmapped_event_with_physical_missingness(
+                                source_sha256=incidence.source_sha256,
+                                row_ordinal=cell.row_ordinal,
+                                respondent=respondent,
+                                slot=slot, cell=cell, raw_rule=raw_rule,
+                                occurrence=occurrence, projection=projection,
                             ),
                         )
                         slot_counts[("RespondentEvent", key)] += 1
