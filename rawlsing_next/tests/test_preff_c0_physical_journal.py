@@ -70,7 +70,7 @@ def test_one_source_read_retains_every_cell_and_reprojects_new_mapping_cold(
     b = reproject_sourcefree_c11_from_physical_journal(
         receipt, authorized_private_root=private, projection=b_projection,
     )
-    events = [obj for obj in b.public_objects if obj.schema_id == "RespondentEvent"]
+    events = [obj for obj in b.public_objects if type(obj).__name__ == "RespondentEvent"]
     assert len(events) == fixture["rows"]
     assert all(obj.typed_state != "INVALID_UNRESOLVED" for obj in events)
     assert b.source_artifact_ref.content_hash == fixture["source_sha"]
