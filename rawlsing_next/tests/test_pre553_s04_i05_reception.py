@@ -1,7 +1,8 @@
 """I05 source-owned real result must arrive S04 before any Field Forge claim."""
 import pytest
+from collections.abc import Mapping
 
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref, semantic_hash
 from rawlsing_next.pre553_s04_i05_reception import (
     S04I05ReceptionError, receive_s04_i05_role,
 )
@@ -64,3 +65,21 @@ def test_sourcefree_i05_role_replay_is_identical_on_fresh_owner_execution():
     )
     assert a[0].ref == b[0].ref
     assert a[1].ref == b[1].ref
+
+
+def test_i05_native_frozen_mapping_fact_refs_are_normalized_not_hashed_raw():
+    # This reproduces the user's two 2026-11-18 local REDs: I05 receipts
+    # retain mappingproxy ref preimages, which are intentionally unhashable.
+    discovery = _real_frontier()
+    receipt = discovery.receipts[0]
+    assert any(isinstance(ref, Mapping) for ref in receipt.empirical_fact_refs)
+    owned = tuple(exact_ref(ref) for ref in receipt.empirical_fact_refs)
+    frontier = tuple(exact_ref(ref) for ref in discovery.empirical_fact_refs)
+    assert owned and all(ref in frontier for ref in owned)
+    observed, role = receive_s04_i05_role(
+        discovery=discovery,
+        candidate_receipt_ref=receipt.ref,
+        query_role="BASE",
+    )
+    assert exact_ref(role.material()["fact_ref"]) in owned
+    assert exact_ref(observed.material()["fact_ref"]) in frontier
