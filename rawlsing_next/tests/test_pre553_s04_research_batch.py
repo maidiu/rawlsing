@@ -56,7 +56,11 @@ def test_1_10_100_sourcefree_repeated_requests_share_one_native_i03(
     assert m["source_release_ref"] == result.release_refs[0].as_dict()
     assert m["scientific_rank"] is None
     assert m["new_population_claim"] is None
-    assert outputs[0].ref == outputs[-1].ref if asked % 2 else outputs[0].ref != outputs[-1].ref
+    assert m["raw_source_risk_eligible_n"] == 4
+    assert m["raw_full_joint_resolved_n"] == 4
+    assert m["raw_unresolved_joint_eligible_n"] == 0
+    assert "NOT_DECOMPOSABLE" in m["unresolved_cause_grade"]
+    assert (outputs[0].ref == outputs[-1].ref) is (asked % 2 == 1)
 
 
 def test_order_of_context_keys_does_not_recompute_or_change_exact_receipt():
