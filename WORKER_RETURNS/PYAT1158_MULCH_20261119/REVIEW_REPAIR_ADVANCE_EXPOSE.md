@@ -20,7 +20,11 @@ Read canonical opening `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md` f
 
 ## Savage: S04 held and actual FF01 reception
 
-**PF-024 (confirmed downstream source information loss).** Actual S04 first reader knows `source_unknown_condition_member_refs`, known-true denominator and risk N; `receive_ff01_from_s04` previously emitted only `BLOCKED_GRADE`, empty cells and held observed N. The missing roster makes target-unknown and condition-unknown appear indistinguishable to downstream FF. **Repair:** preserve the three S04-exact fields in the existing `FF01ObservedJoint` as typed `held_condition_membership_uncertainty`; accepted cells remain empty and claim BLOCKED. No fake rights, respondent assignment to any joint cell, or denominator completion. The previous S04-I03 exact authentication check remains unchanged.
+**PF-024 (confirmed downstream source information loss).** Actual S04 first reader knows `source_unknown_condition_member_refs`, known-true denominator and risk N; `receive_ff01_from_s04` previously emitted only `BLOCKED_GRADE`, empty cells and held observed N. The missing roster provenance makes target-unknown and condition-unknown appear indistinguishable to downstream FF. **Repair:** preserve original roster **commitment, counts and source S04 ref** in the existing `FF01ObservedJoint` as typed `held_condition_membership_uncertainty`; accepted cells remain empty and claim BLOCKED. Do not export raw respondent identifiers into caller-declared FF01 rights. No fake rights, respondent assignment to any joint cell, or denominator completion. The previous S04-I03 exact authentication check remains unchanged.
+
+## Self-attack: raw respondent roster was an unauthorized FF01 disclosure (PF-028)
+
+The first draft of PF-024's fix carried S04's **raw respondent exact refs** directly in a portable FF01 receipt, despite FF01 permissions being caller-declared, not source-issued. That would create a new disclosure channel for respondent-level identifiers downstream. Before any test or merge, replaced the plaintext roster with `semantic_hash(original S04 unknown roster)`, the exact S04 knowledge ref and lossless known-true/unknown/risk counts. The original roster remains under S04 custody and can be checked only by an authorized receiver. New test explicitly refuses raw roster export. It is still not an independently reviewed access-control grant.
 
 ## Build forward: same S04 workspace → provisional DHIKR comparative inquiry
 
@@ -40,6 +44,6 @@ New C3 sourcefree first-fault tests use actual I03/S04 XOR and context, explicit
 
 **Holds:** PF-001/005/008/012/013/014/015/016/019/020/027, exact actual SAV/DTA cold and group/native reader test execution, original original-source issue rights, large-scale physical economics, source-issued mapping edition, protected paired CURRENT_PROGRESS receiving, independent nonauthor G5. No source-original scientific qualification, no cohort-level causal ownership, no SEAM actor.
 
-**PROGRAMMA proposed intake, not protected CAS:** add a single receipt to controlling #1097 and current one PROGRAMMA candidate with frozen original #1158, review branch HEAD, exact changed paths/ledger PF022–PF027, tests NOT_EXECUTED, science/source/owner/protected holds; update paired `CURRENT_PROGRESS.md/.json` only by competent authorized protected receiving owner. No new master PROGRAMMA.
+**PROGRAMMA proposed intake, not protected CAS:** add a single receipt to controlling #1097 and current one PROGRAMMA candidate with frozen original #1158, review branch HEAD, exact changed paths/ledger PF022–PF028, tests NOT_EXECUTED, science/source/owner/protected holds; update paired `CURRENT_PROGRESS.md/.json` only by competent authorized protected receiving owner. No new master PROGRAMMA.
 
 **Next operational handoff:** one of the exact-head C0/C1/C3 small courts on Mac; repair real REDs at first fault (don't weaken historical negatives), independent nonauthor attack on repaired current HEAD and original-condition membership, then source-mapping edition and real DHIKR method owner/science qualification. User's priority remains building the same integrated machine.
