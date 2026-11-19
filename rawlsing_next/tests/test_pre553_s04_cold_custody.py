@@ -142,6 +142,10 @@ def test_private_storage_refuses_world_readable_directory_and_symlink(tmp_path):
         read_s04_sourcefree_private(link)
     with pytest.raises(S04ColdCustodyError, match="symlink"):
         write_s04_sourcefree_private(link, bundle)
+    directory_link = tmp_path / "symlinked-private-parent"
+    directory_link.symlink_to(good.parent, target_is_directory=True)
+    with pytest.raises(S04ColdCustodyError, match="symbolic link"):
+        read_s04_sourcefree_private(directory_link / good.name)
 
 
 def test_wrong_filename_and_bytes_refuse_read_without_making_false_zero(tmp_path):
