@@ -91,7 +91,7 @@ def test_compound_predicate_unknown_conserves_conclusive_membership_and_not(monk
         state = node["synthetic_epistemic_state"]
         visited.append(state)
         if state == "UNKNOWN":
-            raise native.EmpiricalQueryResolutionError(
+            raise native.UnresolvedConditionMember(
                 "UNRESOLVED_CONDITION_MEMBER: observed physical value uninterpreted"
             )
         if state == "AUTHORITY_ERROR":

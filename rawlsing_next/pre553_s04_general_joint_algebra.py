@@ -370,6 +370,16 @@ class S04GeneralJointWorkspace:
         self._check_current()
         return S04ProjectionAnswer(canonical_json(payload), semantic_hash(payload))
 
+    def compare_dhikr(self, request: "DHIKRComparisonRequest") -> "DHIKRComparisonReceipt":
+        """Bounded actual same-source comparative inquiry, not a second I03.
+
+        The distinct module owns method-specific calculations. This method
+        reuses this workspace's source postings, source guard and exact full
+        joint, preserving all existing S04 query behavior.
+        """
+        from rawlsing_next.pre553_s04_dhikr_comparative import analyze_s04_dhikr
+        return analyze_s04_dhikr(self, request)
+
     def query_many(self, requests: Iterable[S04Projection]) -> Iterable[S04ProjectionAnswer]:
         """Lazy requests with NO artificial cardinality or discovery threshold.
 
