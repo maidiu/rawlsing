@@ -203,6 +203,37 @@ def receive_s04_i03_research(
         if (not isinstance(topology, Mapping) or topology.get("arity") != len(targets)
                 or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]):
             raise S04KnowledgeError("fact target roles/order differ from query")
+        # Full cells cannot validate a substituted domain/replay identity.
+        selected = query.target_arity_and_topology.get("joint_domain")
+        cartesian = [canonicalize(list(combo)) for combo in product(*domains)]
+        if selected is None:
+            full = cartesian
+        else:
+            if not isinstance(selected, (list, tuple)):
+                raise S04KnowledgeError("source joint domain malformed")
+            full = [canonicalize(x) for x in selected]
+            keys = [canonical_json(x) for x in full]
+            expected_keys = {canonical_json(x) for x in cartesian}
+            if len(keys) != len(expected_keys) or set(keys) != expected_keys:
+                raise S04KnowledgeError("source joint domain changed or incomplete")
+        components = [
+            {"target_ref": ref.as_dict(), "topology": "SCALAR_SINGULAR",
+             "domain": list(domain),
+             "target_domain_replay_ref": _exact(
+                 component.get("target_domain_replay_ref"), "target domain replay"
+             ).as_dict()}
+            for ref, domain, component in zip(
+                targets, domains, query.target_arity_and_topology["components"]
+            )
+        ]
+        expected_domain_identity = semantic_hash({
+            "components": components,
+            "joint_order_semantics": query.target_arity_and_topology["joint_order_semantics"],
+            "full_domain": full,
+        })
+        if (topology.get("target_domain_identity") != expected_domain_identity
+                or fact.target_domain_identity != expected_domain_identity):
+            raise S04KnowledgeError("I03 source joint domain identity changed")
         raw_rows = topology.get("complete_cell_semantic_projection")
         if not isinstance(raw_rows, (list, tuple)):
             raise S04KnowledgeError("positive joint is missing full cell material")

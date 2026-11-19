@@ -1,0 +1,39 @@
+name: PYAT S04 independent hostile FF01 seam (sourcefree)
+'on':
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_s04_observed_research.py'
+      - 'rawlsing_next/pre553_s04_ff01_consumer.py'
+      - 'rawlsing_next/tests/test_pyat1009_ff01_s04_consumer.py'
+      - '.github/workflows/pyat-s04-independent-hostile-seam.yml'
+permissions:
+  contents: read
+jobs:
+  hostile-seam:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat pyarrow duckdb
+      - name: Sourcefree S04 FF01 and original native tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat1009_ff01_s04_consumer.py \
+            rawlsing_next/tests/test_pre553_s04_observed_research.py \
+            rawlsing_next/tests/test_pre553_s04_i05_reception.py \
+            rawlsing_next/tests/test_pre553_s04_ff01_read_conservation.py \
+            rawlsing_next/tests/test_pyat1009_ff01_generic_ingress.py \
+            rawlsing_next/tests/test_pyat1009_ff01_cold_direct_estate.py \
+            rawlsing_next/tests/test_pre553_direct_estate_i03.py \
+            --junitxml=pyat-s04-hostile-seam.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s04-hostile-sourcefree-proof
+          path: pyat-s04-hostile-seam.xml
+          if-no-files-found: ignore
