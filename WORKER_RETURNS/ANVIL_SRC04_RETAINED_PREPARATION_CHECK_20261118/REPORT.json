@@ -1,0 +1,136 @@
+{
+  "schema": "ANVIL_SRC04_RETAINED_PREPARATION_RECOVERY_DECISION@1",
+  "decision": "IMPOSSIBLE_WITHOUT_RE_DECODE_OR_NEW_AUTHORITY",
+  "as_of": "2026-11-18",
+  "worktree": "OWNER@cfcc200e6ab11dd5f058b85536e498b6d36dedcf",
+  "scope": "Bounded read-only aggregate decision on the stopped Wave 1 R3 retained projection. No source .sav read, no respondent payload read, no interrupted SQLite inspection/recovery, no mutations/copies/deletions, no original build.",
+  "aggregate_inputs": {
+    "r3_receiving": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/SRC04_REAL_CONSTRUCTION_R3_RECEIVING.json",
+    "r3_disposition": "SRC04_REAL_CONSTRUCTION_FAILED_DISK_FLOOR_BEFORE_PUBLICATION",
+    "published": false,
+    "cold_reader_executed": false,
+    "terminal_stage_bytes": 26678480536,
+    "supervisor_receipt": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_7e8a35957bdb11fd/supervisor_receipt.json",
+    "supervisor_receipt_sha256": "f363fa23066f35128419c80457c54c651011bbc3ccee9d8e24ce12d54ad58b35",
+    "supervisor_status": "ABORTED",
+    "supervisor_abort": "FREE_FLOOR_BREACH",
+    "footprint": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/SRC04_LIVE_STAGING_FOOTPRINT.json",
+    "stopped_runner_commit": "11626da5c94a699cf3776362ed48863efb616c6e",
+    "stopped_runner_reference": "WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py:184-227",
+    "stopped_runner_path_behavior": "Calls build_source_i02_construction_only(...) with SourceSavedBodySink in the producer process. No checkpoint is written and no SourceReleaseManifest/I02 receipt is persisted before the writer; producer_receipt.json is only written after the call returns."
+  },
+  "retained_private_root": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_7e8a35957bdb11fd/private",
+  "retained_top_level_metadata": [
+    {"name": ".s1e-i02-spool-6iefwk6i", "type": "directory", "bytes": 4505034543},
+    {"name": ".s1e-body-journal-wwfwjnoy", "type": "directory", "bytes": 8360588401},
+    {"name": ".s2b-direct-stage-t6pz7m04.tmp", "type": "regular_file", "bytes": 13810065408, "note": "interrupted SQLite staging; NOT opened, parsed, copied, or recovered"},
+    {"name": ".s2b-direct-stage-t6pz7m04.tmp-journal", "type": "regular_file", "bytes": 2792184, "note": "interrupted SQLite journal; NOT opened, parsed, copied, or recovered"}
+  ],
+  "spool": {
+    "directory": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_7e8a35957bdb11fd/private/.s1e-i02-spool-6iefwk6i",
+    "present_families": {
+      "RespondentEvent": {"bytes": 4441824241, "records": null},
+      "EmpiricalCoordinateFact": {"bytes": 63210302, "records": null},
+      "WeightMeasureFact": {"bytes": 0, "records": null}
+    },
+    "present_family_count": 3,
+    "all_family_count_required": 13,
+    "missing_from_spool": [
+      "EmpiricalUniverse",
+      "RespondentIdentity",
+      "QuestionVariableBinding",
+      "RoutingEligibilityFact",
+      "AuthoritySnapshot",
+      "SourceUniverseRelation",
+      "EmpiricalPredicateReplayBinding",
+      "ComparatorReplayBinding",
+      "DiscoveryBranchReplayBinding",
+      "StructuralAdmissionReplayBinding"
+    ],
+    "files_are_not_self_describing": "No persisted per-file checksum, record count, manifest, projection identity, source hash, config hash, request/grant/decision reference, typed-absence marker, or expected I02 roots. The directory name is random; file names and sizes are not authenticated state."
+  },
+  "body_journal_metadata_only": {
+    "nonempty": {
+      "AuthoritySnapshot": 13717,
+      "QuestionVariableBinding": 357808,
+      "RespondentEvent": 5476601716,
+      "RespondentIdentity": 8956035,
+      "RoutingEligibilityFact": 2874659125
+    },
+    "empty": [
+      "ComparatorReplayBinding",
+      "DiscoveryBranchReplayBinding",
+      "EmpiricalCoordinateFact",
+      "EmpiricalPredicateReplayBinding",
+      "EmpiricalUniverse",
+      "SourceUniverseRelation",
+      "StructuralAdmissionReplayBinding",
+      "WeightMeasureFact"
+    ],
+    "incomplete": true,
+    "r3_terminal_counts": {
+      "RespondentEvent": 1298649,
+      "RespondentEvent_expected": 1298649,
+      "RoutingEligibilityFact": 887855,
+      "RoutingEligibilityFact_expected": 1298649,
+      "routing_fraction": 0.6836758816277532,
+      "total_complete_lines": 2194021,
+      "later_coordinate_family_lines": 0
+    },
+    "authoritative": false,
+    "reason": "The journal is an interrupted body-tee stream, not a complete manifest-bearing section set. Empty files are ambiguous between typed absence and interruption. No trusted checksum or completion receipt exists."
+  },
+  "checkpoint_status": {
+    "prepared_sections_checkpoint_present": false,
+    "checkpoint_key_present": false,
+    "exact_missing_files": [
+      "private/prepared-sections.checkpoint.json",
+      "private/checkpoint.key"
+    ],
+    "current_single_pass_handoff_requirement": "The later/current single_pass_handoff.py is not present in stopped runner commit 11626da5. It requires an HMAC-authenticated checkpoint plus exact config, request, grant_ref, decision_ref, spool counts, and per-file SHA/size before resume. The stopped run has none of those bindings.",
+    "current_acceptance_present": false
+  },
+  "required_inputs_not_persisted": [
+    "A trusted prepared-sections checkpoint binding source_id, source_sha256, source_rows, canonical config SHA, request digest, grant_ref, decision_ref, and per-spool-family relative path/size/SHA/record count.",
+    "The complete static family set needed by SourcefreeDirectI02Sections: EmpiricalUniverse, RespondentIdentity, QuestionVariableBinding, RoutingEligibilityFact, AuthoritySnapshot, SourceUniverseRelation, and the four replay-binding families.",
+    "SourceReleaseManifest and its semantic projection: source_artifact_id, source_artifact_content_hash, source_family/study/product/release/instrument identities, declared universe refs, declared authority refs, declared record counts, source snapshot retention ref, and manifest content hash.",
+    "Replay protocol authority ref, replay protocol version, deterministic tie-order rules ref, and exact typed absences for every family.",
+    "The exact SourceConfig/scoped config and projection identity plus universe_ref used for the R3 projection; aggregate receipts do not bind these to the retained spool.",
+    "The exact key-witness row_native_keys outcome and projection counts. These were in producer memory; no trusted aggregate receipt supplies them.",
+    "Expected I02 roots / manifest digest / current acceptance receipt for resume. No expected roots were persisted because the stopped caller writes producer_receipt.json only after the construction call returns.",
+    "A current authorization/grant decision receipt for a resumed writer. The R3 supervisor receipt records only ABORTED and resource caps, not source/config/projection/current binding."
+  ],
+  "trusted_checksums_identity_current_acceptance": {
+    "spool_checksums": "absent",
+    "spool_record_counts": "absent; only byte sizes are present",
+    "manifest_or_manifest_sha": "absent",
+    "expected_i02_roots": "absent",
+    "source_config_binding": "not bound to retained spool by any checkpoint or receipt",
+    "request_grant_decision_binding": "not bound to retained spool by any checkpoint or receipt",
+    "current_acceptance": "absent",
+    "existing_aggregate_receipts": [
+      "SRC04_REAL_CONSTRUCTION_R3_RECEIVING.json records abort/terminal progress, not a trusted spool/manifest checkpoint.",
+      "supervisor_receipt.json records ABORTED/FREE_FLOOR_BREACH and caps, not source or projection identity.",
+      "SRC04_LIVE_STAGING_FOOTPRINT.json records metadata sizes, not hashes, counts, or acceptance.",
+      "CHECKPOINT.json src04_real_construction_native records runner/source scope, not retained section identity."
+    ]
+  },
+  "reconstruction_assessment": {
+    "without_re_decode": "Not possible from the retained artifacts as authenticated state. The spool contains only 3 of 13 families; the body journal is incomplete and lacks trusted manifest/replay/absence metadata; no checkpoint/key or expected roots exist.",
+    "with_new_projection_from_config": "Would be a newly derived projection/manifest, not the accepted R3 projection. It would require deriving new counts, absences, manifest, and authority from leftovers, and would still lack source/current/checkpoint binding. This is explicitly not treated as certification and was not attempted.",
+    "one_pass_writer": "The existing one-pass writer could consume a SourcefreeDirectI02Sections object if one were reconstructed, but no authenticated object or manifest exists to feed it.",
+    "interrupted_sqlite": "Not used. It was not opened, parsed, copied, or recovered; it is not trusted authority."
+  },
+  "conclusion": "Recovery is impossible without re-decoding and without creating new authority. The exact missing precondition is an authenticated prepared-sections checkpoint (prepared-sections.checkpoint.json plus checkpoint.key) binding the exact source/config/request/grant/decision and complete per-family spool paths/sizes/SHAs/counts, together with the complete static/replay sections and SourceReleaseManifest/expected I02 roots. None is present in the stopped R3 artifacts, and existing aggregate receipts do not substitute for it.",
+  "actions_taken": {
+    "source_sav_opened": false,
+    "respondent_payload_read": false,
+    "interrupted_sqlite_opened": false,
+    "retained_artifacts_mutated": false,
+    "retained_artifacts_copied": false,
+    "retained_artifacts_deleted": false,
+    "original_build_started": false,
+    "product_code_changed": false,
+    "new_authority_derived": false
+  }
+}
