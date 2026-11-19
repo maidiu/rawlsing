@@ -295,6 +295,24 @@ def receive_s04_i03_research(
     elif resolved > 0 and fact.typed_state not in {"LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"}:
         raise S04KnowledgeError("typed producer has unexplained positive count")
 
+    if fact.typed_state != "SUPPORTED":
+        # Preserve legitimate LOW_SUPPORT counts, but reject malformed
+        # producer cell material instead of laundering it into HELD.
+        # Canonical EmpiricalFact validates its top-level counts; it does
+        # not validate every nested target_topology cell.
+        negative_topology = fact.target_topology
+        if not isinstance(negative_topology, Mapping):
+            raise S04KnowledgeError("nonpositive I03 target topology malformed")
+        negative_cells = negative_topology.get("complete_cell_semantic_projection")
+        if negative_cells is not None:
+            if not isinstance(negative_cells, (list, tuple)):
+                raise S04KnowledgeError("nonpositive I03 cell payload malformed")
+            for row in negative_cells:
+                if (not isinstance(row, Mapping)
+                        or type(row.get("raw_numerator_support")) is not int
+                        or row["raw_numerator_support"] < 0):
+                    raise S04KnowledgeError("nonpositive I03 negative cell count malformed")
+
     publication = {
         "contract": CONTRACT,
         "state": "SUPPORTED_SAMPLE_DESCRIPTIVE" if fact.typed_state == "SUPPORTED" else "PRODUCER_TYPED_HELD",
