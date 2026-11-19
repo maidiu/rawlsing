@@ -35,6 +35,7 @@ from rawlsing_next.pre553_r5_codec import (
 )
 
 SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@2"
+LEGACY_SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@1"
 _CODEC = R5TypedValueCodec()
 
 
@@ -86,6 +87,11 @@ class PhysicalCellJournalReceipt:
     gzip_sha256: str
     gzip_bytes: int
     path: str
+
+    @property
+    def full_physical_metadata_retained(self) -> bool:
+        """Version 2 retains the actual dictionary; v1 retains only its digest."""
+        return self.schema == SCHEMA
 
     def material(self) -> dict:
         return {
@@ -282,7 +288,8 @@ def read_physical_cells(
     Requires independently retained exact receipt. Neither this read nor its
     successful checksum issues a semantic mapping, source rights or weights.
     """
-    if type(receipt) is not PhysicalCellJournalReceipt or receipt.schema != SCHEMA:
+    if (type(receipt) is not PhysicalCellJournalReceipt
+            or receipt.schema not in {SCHEMA, LEGACY_SCHEMA}):
         raise PhysicalCellJournalError("independently held exact physical receipt required")
     root = _root(authorized_private_root)
     target = Path(receipt.path).absolute()
@@ -294,25 +301,35 @@ def read_physical_cells(
     file = target / "physical_cells.jsonl.gz"
     manifest = target / "manifest.json"
     metadata_file = target / "physical_metadata.json"
-    if (file.is_symlink() or manifest.is_symlink() or metadata_file.is_symlink()
-            or not file.is_file() or not manifest.is_file()
-            or not metadata_file.is_file()):
-        raise PhysicalCellJournalError(
-            "physical journal body/manifest/decoder metadata missing or linked"
+    if (file.is_symlink() or manifest.is_symlink()
+            or not file.is_file() or not manifest.is_file()):
+        raise PhysicalCellJournalError("physical journal body/manifest missing or linked")
+    if receipt.full_physical_metadata_retained:
+        if metadata_file.is_symlink() or not metadata_file.is_file():
+            raise PhysicalCellJournalError(
+                "version-2 physical decoder dictionary missing or linked"
+            )
+        metadata_bytes = metadata_file.read_bytes()
+        if sha256(metadata_bytes).hexdigest() != _sha(receipt.source_metadata_digest):
+            raise PhysicalCellJournalError("decoder physical metadata digest differs from receipt")
+        metadata = json.loads(metadata_bytes)
+        declared_variables = tuple(
+            (row["ordinal"], row["name"]) for row in metadata["variables"]
         )
-    metadata_bytes = metadata_file.read_bytes()
-    if sha256(metadata_bytes).hexdigest() != _sha(receipt.source_metadata_digest):
-        raise PhysicalCellJournalError("decoder physical metadata digest differs from receipt")
-    metadata = json.loads(metadata_bytes)
-    declared_variables = tuple(
-        (row["ordinal"], row["name"]) for row in metadata["variables"]
-    )
-    if (metadata.get("schema") != PHYSICAL_METADATA_CONTRACT
-            or metadata.get("source_sha256") != receipt.source_sha256
-            or declared_variables != receipt.variables):
-        raise PhysicalCellJournalError(
-            "physical dictionary/source/variables differ from original decoder"
-        )
+        if (metadata.get("schema") != PHYSICAL_METADATA_CONTRACT
+                or metadata.get("source_sha256") != receipt.source_sha256
+                or declared_variables != receipt.variables):
+            raise PhysicalCellJournalError(
+                "physical dictionary/source/variables differ from original decoder"
+            )
+    else:
+        # Historical v1 cold observation must remain readable, but its
+        # original source dictionary is NOT recoverable from the digest.
+        # Never represent a v1 receipt as dictionary-complete evidence.
+        if metadata_file.exists() or metadata_file.is_symlink():
+            raise PhysicalCellJournalError(
+                "unissued physical metadata attached to legacy v1 receipt"
+            )
     if json.loads(manifest.read_text("ascii")) != receipt.material():
         raise PhysicalCellJournalError("physical journal manifest differs from independent receipt")
     if file.stat().st_size != receipt.gzip_bytes:
@@ -399,7 +416,7 @@ def reproject_sourcefree_c11_from_physical_journal(
     return build_validated_source_backed_c11_release_from_stream(stream, projection)
 
 __all__ = [
-    "SCHEMA", "PhysicalCellJournal", "PhysicalCellJournalReceipt",
+    "SCHEMA", "LEGACY_SCHEMA", "PhysicalCellJournal", "PhysicalCellJournalReceipt",
     "PhysicalCellJournalError", "read_physical_cells",
     "reproject_sourcefree_c11_from_physical_journal",
 ]
