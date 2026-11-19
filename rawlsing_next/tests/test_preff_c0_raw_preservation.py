@@ -262,9 +262,19 @@ def test_cold_saved_unmapped_event_keeps_physical_class_and_mapped_event_identit
             assert len(event.semantic_fields["uninterpreted_physical_cell_key"]) == 64
             assert event.canonical_response_value_if_authorized is None
         else:
-            assert event.ref == original.ref
-            assert event.semantic_projection() == original.semantic_projection()
+            # The response meaning is unchanged, but the source-mapping
+            # projection identity is part of a derived semantic event ref.
+            # Never confuse that semantic ref with the stable physical cell.
+            assert event.typed_state == original.typed_state
+            assert (
+                event.canonical_response_value_if_authorized
+                == original.canonical_response_value_if_authorized
+            )
+            assert event.scoped_respondent_ref == original.scoped_respondent_ref
             assert "uninterpreted_physical_missing_state" not in event.semantic_fields
+            # PF-006: retaining a stable semantic EVENT identity across
+            # mapping revisions requires an owner decision; source physical
+            # identity is independently protected by the new raw journal.
 
 
 def test_unmapped_source_missing_classification_never_invents_observed_coverage():
