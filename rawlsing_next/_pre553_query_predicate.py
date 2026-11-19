@@ -289,21 +289,34 @@ def _leaf_match(
             runtime_release_ref=index.release.release_ref,
         )
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
-            _refuse_unresolved_value_leaf(event, node)
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
                 continue
-            result = result or runtime_authorities.match_exact_event_representation(
-                frozen_scope_ref=scope_ref,
-                runtime_release_ref=index.release.release_ref,
-                question_ref=question_ref,
-                response_value_ref=response_ref,
-                source_native_value=native_value,
-                event_raw_response_value=event.raw_response_value,
+            result = (
+                runtime_authorities.match_exact_event_representation(
+                    frozen_scope_ref=scope_ref,
+                    runtime_release_ref=index.release.release_ref,
+                    question_ref=question_ref,
+                    response_value_ref=response_ref,
+                    source_native_value=native_value,
+                    event_raw_response_value=event.raw_response_value,
+                ) or result
             )
-        return result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: no definite positive governed event"
+            )
+        return False
 
     if leaf_type == "SURVEY_RESPONSE_EVENT":
         question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
@@ -321,19 +334,28 @@ def _leaf_match(
             raise EmpiricalQueryResolutionError("response predicate operator must be EQ/IN/STATE_EQ")
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
-            # Keep the original source object and its authority in the
-            # negative evidence closure BEFORE the typed unknown is raised.
-            _refuse_unresolved_value_leaf(event, node)
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
             if operator == "STATE_EQ":
-                result = result or event.typed_state == node.get("typed_state")
+                result = (event.typed_state == node.get("typed_state")) or result
             else:
-                result = result or canonicalize(_semantic_value(event)) in values
-        return result
+                result = (canonicalize(_semantic_value(event)) in values) or result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: no definite positive response event"
+            )
+        return False
 
     if leaf_type == "ROUTING_APPLICABILITY_STATE":
         question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
@@ -366,14 +388,25 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
-            _refuse_unresolved_value_leaf(event, node)
-            result = result or event.typed_state == desired
-        return result
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
+            result = (event.typed_state == desired) or result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: typed-state question unresolved"
+            )
+        return False
 
     if leaf_type == "DERIVED_BRANCH_COHORT":
         branch_id = node.get("branch_definition_id")
