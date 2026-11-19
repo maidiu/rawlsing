@@ -126,7 +126,9 @@ def _preimage(obj: Any, family: type) -> Any:
         )
     except (KeyError, TypeError, ValueError, AttributeError) as exc:
         raise S04ColdCustodyError("cannot reconstruct original I03 semantic object") from exc
-    if answer.as_dict() != obj or answer.ref != exact_ref(
+    # Native CanonicalSemanticObject may detach internal immutable tuples;
+    # exact *canonical JSON* equality is the stable serialized ABI.
+    if canonical_json(answer.as_dict()) != canonical_json(obj) or answer.ref != exact_ref(
         {"kind": answer.FAMILY, "object_id": obj["object_id"], "content_hash": obj["content_hash"]},
         "recreated original ref",
     ):
@@ -182,6 +184,13 @@ def read_s04_cold_preimages(
     if type(bundle) is not S04ColdBundle:
         raise S04ColdCustodyError("only exact cold-bundle type is readable")
     m = bundle.material()
+    allowed = {
+        "contract", "scope", "grade", "query_preimage", "fact_preimage",
+        "execution", "knowledge_payload_json", "knowledge_hash", "knowledge_ref",
+        "external_source_root",
+    }
+    if set(m) != allowed:
+        raise S04ColdCustodyError("cold bundle fields do not match exact replay contract")
     if (m.get("scope") != "CALLER_DECLARED_SOURCEFREE_ONLY__NO_ORIGINAL_SOURCE_GRANT"
             or m.get("grade") != CLAIM
             or m.get("external_source_root") != "MUST_BE_SUPPLIED_SEPARATELY_AT_READ_TIME"):
