@@ -1,0 +1,153 @@
+{
+  "batch": {
+    "observation": "Batch COMPLETED is operational execution, not an empirical-fact or VALID_EMPTY claim; result refs are DiscoveryResultReceipt refs.",
+    "receipt_has_typed_fact_state": false,
+    "receipts": [
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "DiscoveryResultReceipt@1.0.0"
+        ],
+        "state": "COMPLETED"
+      },
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "DiscoveryResultReceipt@1.0.0"
+        ],
+        "state": "COMPLETED"
+      },
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "EmpiricalFact@1.0.0"
+        ],
+        "state": "COMPLETED"
+      }
+    ],
+    "result_refs_include_empirical_fact": true,
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "batch_api": "rawlsing_next.pre553_saved_workload_integration.execute_saved_batch",
+  "batch_prior_receipt_reuse": {
+    "all_forged_receipts_retained": true,
+    "forged_receipt_count": 3,
+    "forged_result_kind": "EmpiricalPredicate@1.0.0",
+    "native_execution_required": false,
+    "observation": "All COMPLETED prior receipts with non-result refs are accepted; execute_saved_batch has no prior-output consistency check.",
+    "returned_receipt_count": 3,
+    "reused_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "existing_src16_status": {
+    "correct_as_pending": true,
+    "handoff_statement": "I05/Batch was not exercised here.",
+    "receipt_status": "SOURCE_NEUTRAL_RAW_LANE_PASS__I03_LEAF_GUARD_MIXED_RED_GREEN_PASS__I05_BATCH_PENDING"
+  },
+  "first_discrepancy": {
+    "emitted_coverage_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "emitted_typed_state": "COVERAGE_LIMITED",
+    "source_fact_states": [
+      "UNRESOLVED",
+      "UNRESOLVED"
+    ],
+    "where": "I05 terminal mapping after native I03 output",
+    "why": "UNRESOLVED is collapsed with UNAVAILABLE in _terminal_fact_class before _evaluate_candidate selects EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED."
+  },
+  "fixture": "existing rawlsing_next.tests.test_pre553_prepared_saved_i03._fixture",
+  "one_narrow_fix": {
+    "batch_prior_cache": "In execute_saved_batch, require exact prior native outputs and validate every completed prior receipt with the existing _validate_prior_cache; reject otherwise. Do not trust result_refs from a prior receipt alone.",
+    "first_discrepancy": "In pre553_discovery_exact._terminal_fact_class, test UNRESOLVED before UNAVAILABLE and return UNRESOLVED; in _evaluate_candidate return EVALUATED_UNRESOLVED / UNRESOLVED; add EVALUATED_UNRESOLVED to TERMINAL_COVERAGE_STATES.",
+    "not_applied": true
+  },
+  "original_source_accessed": false,
+  "pins": {
+    "batch_runner_sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1",
+    "discovery_exact_sha256": "a9ab765be9c877c7e65c4118a6ae16de4e43ad6361e3b1b00541d76aa37eb29f",
+    "prepared_saved_i03_sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+    "saved_c11_admission_sha256": "93299f5c0100d132bb2bef07b321af1755726a5e90ee3b488a11dc1b6028c526",
+    "saved_workload_integration_sha256": "54cf978db77cef25a2dc17a0006f63ef13ee13a65708d68d194403a6e7afafee",
+    "src16_handoff_sha256": "3f6078dd1ce41566c196ff0c3f14ae0324fda10c9002198d8063327aed9e9ddb",
+    "src16_receipt_sha256": "43f57e47ce90c6f9bfb0db8d2a96f39a2cc43345a597113a86f1c6d514710942"
+  },
+  "positive_i03": {
+    "fact_count": 1,
+    "raw_denominator_support": 8,
+    "typed_state": "SUPPORTED"
+  },
+  "product_files_modified": false,
+  "rights_denial": {
+    "direct_i05": {
+      "message": "current source/operation authority refused",
+      "type": "DirectEstateError"
+    },
+    "prior_receipt_batch": {
+      "message": "current source/operation authority refused",
+      "type": "DirectEstateError"
+    }
+  },
+  "schema": "ANVIL_SRC16_I03_I05_BATCH_TRACE@1",
+  "scratch": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/src16-i03-i05-batch-3kz7_bzc",
+  "sourcefree": true,
+  "status": "FIRST_DISCREPANCY__UNRESOLVED_MAPPED_TO_COVERAGE_LIMITED__BATCH_PRIOR_RECEIPT_REUSE_UNVALIDATED",
+  "unresolved_i05": {
+    "first_mapping": {
+      "location": "rawlsing_next/pre553_discovery_exact.py:_terminal_fact_class / _evaluate_candidate",
+      "mapped_coverage": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+      "mapped_fact_class": "UNAVAILABLE",
+      "mapped_typed_state": "COVERAGE_LIMITED",
+      "source_states": "UNRESOLVED"
+    },
+    "native_i03_fact_states": [
+      "UNRESOLVED",
+      "UNRESOLVED"
+    ],
+    "receipt_coverage_states": [
+      "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY"
+    ],
+    "receipt_typed_states": [
+      "COVERAGE_LIMITED"
+    ],
+    "valid_empty": false
+  },
+  "valid_empty_i05": {
+    "distinct_from_unresolved": true,
+    "native_i03_fact_states": [
+      "ZERO_SUPPORT",
+      "SUPPORTED"
+    ],
+    "receipt_coverage_states": [
+      "EVALUATED_VALID_EMPTY"
+    ],
+    "receipt_typed_states": [
+      "VALID_EMPTY"
+    ],
+    "valid_empty": true
+  }
+}

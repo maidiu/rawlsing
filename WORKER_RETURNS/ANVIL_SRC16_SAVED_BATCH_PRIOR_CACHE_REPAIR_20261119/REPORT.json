@@ -1,0 +1,50 @@
+{
+  "schema": "ANVIL_SRC16_SAVED_BATCH_PRIOR_CACHE_REPAIR@1",
+  "disposition": "ACCEPT_SCOPED__SAVED_BATCH_PRIOR_RECEIPT_CACHE_VALIDATED_OR_REEXECUTED",
+  "source_cut": "5a4b1cabce9625a61cfe26c20afb519531f567bd",
+  "owner_base": "df84f297e434f4abc4c6fda9cbf9354512ddc4f4",
+  "observed_defect": {
+    "trace": "4426446c7529335bdb96ab24ab3a70c848269f7f",
+    "location": "rawlsing_next/pre553_saved_workload_integration.py::execute_saved_batch",
+    "before": "Completed prior receipts with forged result_refs were accepted without prior native outputs or exact prior-cache validation."
+  },
+  "repair": {
+    "patch": "execute_saved_batch_prior_cache.patch",
+    "applies_cleanly": true,
+    "behavior": [
+      "When exact prior_outputs are supplied, use existing _validate_prior_cache against the current manifest and native output refs.",
+      "When trusted prior outputs are absent, drop completed prior receipts and reexecute completed units; partial/absent receipts are preserved for legitimate resume.",
+      "No receipt alone can skip a completed unit; no new issuer or Batch semantics."
+    ]
+  },
+  "evidence": {
+    "baseline_trace": "BASELINE_TRACE.json",
+    "patched_trace": "PATCHED_TRACE.json",
+    "patched_trace_batch": "COMPLETED with three actual execution receipts",
+    "patched_trace_forged_receipts_retained": false,
+    "same_root_reuse": {
+      "records_equal": true,
+      "receipt_count": 3,
+      "summary": "COMPLETED"
+    },
+    "changed_prior_output_refused": true,
+    "changed_output_error": "PRIOR_OUTPUT_KIND_MISMATCH",
+    "patch_apply_check": "PATCH_APPLY_CHECK.txt"
+  },
+  "preserved": {
+    "normal_batch": "unchanged; no prior receipts path unchanged",
+    "partial_or_absent_resume": "partial/absent prior receipts are not filtered",
+    "completed_exact_resume": "requires exact prior_outputs and passes _validate_prior_cache",
+    "discovery_first_discrepancy": "left to separate discovery owner; not edited",
+    "batch_semantics": "no change",
+    "issuer": "none added"
+  },
+  "scope_limits": {
+    "sourcefree": true,
+    "original_source_read": false,
+    "private_census": false,
+    "field_forge_or_dhikr": false,
+    "real_survey": false,
+    "frozen_runtime_edited": false
+  }
+}

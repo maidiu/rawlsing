@@ -1,0 +1,39 @@
+{
+  "batch_prior_receipt_reuse": {
+    "all_forged_receipts_retained": false,
+    "forged_receipt_count": 3,
+    "forged_result_kind": "EmpiricalPredicate@1.0.0",
+    "native_execution_required": false,
+    "observation": "All COMPLETED prior receipts with non-result refs are accepted; execute_saved_batch has no prior-output consistency check.",
+    "returned_receipt_count": 3,
+    "reused_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "first_discrepancy": {
+    "emitted_coverage_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "emitted_typed_state": "COVERAGE_LIMITED",
+    "source_fact_states": [
+      "UNRESOLVED",
+      "UNRESOLVED"
+    ],
+    "where": "I05 terminal mapping after native I03 output",
+    "why": "UNRESOLVED is collapsed with UNAVAILABLE in _terminal_fact_class before _evaluate_candidate selects EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED."
+  },
+  "out": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/src16_batch_repair/TRACE.json",
+  "status": "FIRST_DISCREPANCY__UNRESOLVED_MAPPED_TO_COVERAGE_LIMITED__BATCH_PRIOR_RECEIPT_REUSE_UNVALIDATED"
+}
