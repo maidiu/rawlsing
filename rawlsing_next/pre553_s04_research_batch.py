@@ -82,6 +82,8 @@ def run_s04_context_batch(
             raise S04BatchError("only exact typed S04 targets admitted")
         if not isinstance(request.conditions, Mapping):
             raise S04BatchError("condition selections must be a mapping")
+        if any(type(index) is not int for index in request.conditions):
+            raise S04BatchError("condition axis must be exact integer, not bool or string")
         # Use JSON content keys, NOT Python repr or object address. Request
         # order and exact condition values remain visible in the receipt.
         selector = {
