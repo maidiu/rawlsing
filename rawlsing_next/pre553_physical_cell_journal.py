@@ -248,77 +248,136 @@ class PhysicalCellJournal:
         self.state = "aborted"
 
 
+def _private_regular_reader(path: Path):
+    """Open a pinned private regular inode, without following leaf symlinks."""
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
+    # O_NONBLOCK makes an unexpected FIFO refuse promptly instead of hanging.
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    fd = os.open(path, flags)
+    try:
+        state = os.fstat(fd)
+        if (not stat.S_ISREG(state.st_mode)
+                or state.st_uid != os.geteuid()
+                or state.st_mode & 0o077):
+            raise PhysicalCellJournalError("journal requires private regular owned inode")
+        return os.fdopen(fd, "rb")
+    except BaseException:
+        os.close(fd)
+        raise
+
+
 def read_physical_cells(
     receipt: PhysicalCellJournalReceipt, *, authorized_private_root: str | Path,
 ) -> Iterator[PhysicalCell]:
-    """Cold exact read of the independent physical source, NOT a C11 fact.
+    """Cold verified physical journal: never emit from a reopened mutable file.
 
-    Requires independently retained exact receipt. Neither this read nor its
-    successful checksum issues a semantic mapping, source rights or weights.
+    Copy the compressed source once, hash the exact bytes copied, validate the
+    WHOLE uncompressed typed stream and its topology, then replay only from an
+    unlinked private snapshot inode. Changing the on-disk journal after the
+    verification pass cannot change what the caller receives. This grants no
+    mapping, scientific inference or original-source retention rights.
     """
     if type(receipt) is not PhysicalCellJournalReceipt or receipt.schema != SCHEMA:
         raise PhysicalCellJournalError("independently held exact physical receipt required")
+    if (type(receipt.row_count) is not int or receipt.row_count < 1
+            or type(receipt.cell_count) is not int
+            or type(receipt.variables) is not tuple or not receipt.variables
+            or any(type(v) is not tuple or len(v) != 2
+                   or type(v[0]) is not int or v[0] != i
+                   or type(v[1]) is not str or not v[1]
+                   for i, v in enumerate(receipt.variables, 1))
+            or receipt.cell_count != receipt.row_count * len(receipt.variables)
+            or type(receipt.gzip_bytes) is not int or receipt.gzip_bytes <= 0):
+        raise PhysicalCellJournalError("malformed physical receipt topology/length")
+    _sha(receipt.source_metadata_digest)
+    _sha(receipt.gzip_sha256)
     root = _root(authorized_private_root)
+    releases = root / "releases"
+    if releases.is_symlink() or not releases.is_dir():
+        raise PhysicalCellJournalError("physical releases directory missing or linked")
+    releases_stat = releases.stat()
+    if (releases_stat.st_uid != os.geteuid()
+            or releases_stat.st_mode & 0o077):
+        raise PhysicalCellJournalError("physical releases directory not privately owned")
     target = Path(receipt.path).absolute()
-    if (target != root / "releases" / ("physical-" + _sha(receipt.source_sha256)
-                                      + "-" + _sha(receipt.physical_cells_sha256))
-            or target.is_symlink()
-            or not target.is_dir()):
+    if (target != releases / ("physical-" + _sha(receipt.source_sha256)
+                               + "-" + _sha(receipt.physical_cells_sha256))
+            or target.is_symlink() or not target.is_dir()):
         raise PhysicalCellJournalError("physical journal path outside exact retention scope")
+    target_stat = target.stat()
+    if target_stat.st_uid != os.geteuid() or target_stat.st_mode & 0o077:
+        raise PhysicalCellJournalError("physical journal release not private")
     file = target / "physical_cells.jsonl.gz"
     manifest = target / "manifest.json"
-    if (file.is_symlink() or manifest.is_symlink()
-            or not file.is_file() or not manifest.is_file()):
-        raise PhysicalCellJournalError("physical journal body/manifest missing or linked")
-    if json.loads(manifest.read_text("ascii")) != receipt.material():
+    try:
+        with _private_regular_reader(manifest) as handle:
+            material = json.loads(handle.read().decode("ascii"))
+    except (OSError, UnicodeError, ValueError) as exc:
+        raise PhysicalCellJournalError("physical manifest unreadable") from exc
+    if material != receipt.material():
         raise PhysicalCellJournalError("physical journal manifest differs from independent receipt")
-    if file.stat().st_size != receipt.gzip_bytes:
-        raise PhysicalCellJournalError("physical journal compressed length differs from receipt")
-    compressed_digest = sha256()
-    with file.open("rb") as handle:
-        for block in iter(lambda: handle.read(1 << 20), b""):
-            compressed_digest.update(block)
-    if compressed_digest.hexdigest() != _sha(receipt.gzip_sha256):
-        raise PhysicalCellJournalError("physical journal compressed hash differs from receipt")
-    # Complete uncompressed verification BEFORE offering the first value.
-    # A checksum failure at EOF may not expose earlier corrupt values to
-    # a consumer that could start making semantic facts while streaming.
-    seen = 0
-    stream_digest = sha256()
-    with gzip.open(file, "rb") as handle:
-        for line in handle:
-            stream_digest.update(line)
-            data = json.loads(line)
-            ordinal = seen % len(receipt.variables) + 1
-            row = seen // len(receipt.variables) + 1
-            if (data["row"] != row or data["ordinal"] != ordinal
-                    or (data["ordinal"], data["name"])
-                    != receipt.variables[ordinal - 1]):
-                raise PhysicalCellJournalError("physical cell order/slot changed")
-            # Reject invalid typed payloads as well as invalid bytes.
-            _CODEC.decode(data["raw_value"])
-            PhysicalMissingState(data["missing_state"])
-            _CODEC.decode(data["missing_declaration"])
-            _CODEC.decode(data["source_value_label"])
-            seen += 1
-    if (seen != receipt.cell_count
-            or seen != receipt.row_count * len(receipt.variables)
-            or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
-        raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
-    # The original SAV/DTA is NOT reopened. This second bounded pass is
-    # exclusively over independently authenticated retained physical bytes.
-    # A future original-source reader must also pin host rights/currentness.
-    with gzip.open(file, "rb") as handle:
-        for line in handle:
-            data = json.loads(line)
-            yield PhysicalCell(
-                data["row"], data["ordinal"], data["name"],
-                _CODEC.decode(data["raw_value"]),
-                PhysicalMissingState(data["missing_state"]),
-                _CODEC.decode(data["missing_declaration"]),
-                _CODEC.decode(data["source_value_label"]),
-            )
 
+    # This file descriptor is the only read of the published body. The unlinked
+    # temporary inode lives inside the explicit private retention root; it is
+    # not named/published, and closes even if a caller stops iterating early.
+    try:
+        with _private_regular_reader(file) as original, tempfile.TemporaryFile(
+            mode="w+b", dir=root
+        ) as pinned:
+            digest = sha256()
+            size = 0
+            for block in iter(lambda: original.read(1 << 20), b""):
+                size += len(block)
+                if size > receipt.gzip_bytes:
+                    raise PhysicalCellJournalError("physical journal compressed length differs from receipt")
+                digest.update(block)
+                pinned.write(block)
+            if size != receipt.gzip_bytes:
+                raise PhysicalCellJournalError("physical journal compressed length differs from receipt")
+            if digest.hexdigest() != _sha(receipt.gzip_sha256):
+                raise PhysicalCellJournalError("physical journal compressed hash differs from receipt")
+
+            pinned.seek(0)
+            seen = 0
+            stream_digest = sha256()
+            with gzip.GzipFile(fileobj=pinned, mode="rb") as stream:
+                for line in stream:
+                    stream_digest.update(line)
+                    data = json.loads(line)
+                    ordinal = seen % len(receipt.variables) + 1
+                    row = seen // len(receipt.variables) + 1
+                    if (type(data) is not dict
+                            or type(data.get("row")) is not int
+                            or type(data.get("ordinal")) is not int
+                            or type(data.get("name")) is not str
+                            or data["row"] != row or data["ordinal"] != ordinal
+                            or (data["ordinal"], data["name"]) != receipt.variables[ordinal - 1]):
+                        raise PhysicalCellJournalError("physical cell order/slot changed")
+                    _CODEC.decode(data["raw_value"])
+                    PhysicalMissingState(data["missing_state"])
+                    _CODEC.decode(data["missing_declaration"])
+                    _CODEC.decode(data["source_value_label"])
+                    seen += 1
+            if (seen != receipt.cell_count
+                    or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
+                raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
+
+            # No second read/open of the externally mutable published file.
+            pinned.seek(0)
+            with gzip.GzipFile(fileobj=pinned, mode="rb") as stream:
+                for line in stream:
+                    data = json.loads(line)
+                    yield PhysicalCell(
+                        data["row"], data["ordinal"], data["name"],
+                        _CODEC.decode(data["raw_value"]),
+                        PhysicalMissingState(data["missing_state"]),
+                        _CODEC.decode(data["missing_declaration"]),
+                        _CODEC.decode(data["source_value_label"]),
+                    )
+    except PhysicalCellJournalError:
+        raise
+    except (OSError, EOFError, ValueError, TypeError, KeyError, UnicodeError) as exc:
+        raise PhysicalCellJournalError("physical journal invalid/corrupt typed bytes") from exc
 
 
 
