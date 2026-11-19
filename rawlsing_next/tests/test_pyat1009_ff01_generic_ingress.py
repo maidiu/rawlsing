@@ -334,6 +334,8 @@ def test_denominator_may_legitimately_be_condition_selected_subset_of_risk_membe
         result,
         denominator_member_refs=tuple(denominator[:3]),
         raw_denominator_support=3,
+        raw_numerator_support=3,
+        raw_resolved_target_support=3,
     )
     # Four resolved cells cannot legitimately survive a three-member
     # denominator: first ensure this contradiction is refused.
