@@ -270,8 +270,15 @@ def receive_ff01_observed_joint(
         "joint_arity": len(refs),
         "raw_eligible_condition_denominator": fact.raw_denominator_support,
         "raw_fully_resolved_joint_n": fact.raw_numerator_support,
+        "held_observed_n_if_nonpositive": (
+            None if fact.typed_state == "SUPPORTED" else fact.raw_numerator_support
+        ),
         "uncertainty_state": fact.uncertainty_method_or_typed_state,
-        "zero_means": "OBSERVED_ZERO_WITHIN_SUPPORTED_ASKED_RISK__NOT_IMPOSSIBLE",
+        "zero_means": (
+            "OBSERVED_ZERO_WITHIN_SUPPORTED_ASKED_RISK__NOT_IMPOSSIBLE"
+            if fact.typed_state == "SUPPORTED"
+            else "NO_ZERO_INFERENCE_FROM_NONPOSITIVE_PRODUCER_STATE"
+        ),
         "complete_cells": [],
         "conditioned_complete_case_support": [],
         "not_proven": [
@@ -357,7 +364,9 @@ def receive_ff01_observed_joint(
     else:
         # Typed nonpositive results are retained without fabricating a domain
         # cell that the source/issuer did not actually support.
-        if fact.raw_numerator_support != 0:
+        if fact.raw_numerator_support > 0 and fact.typed_state not in {
+            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
+        }:
             raise FF01GenericIngressError("nonpositive producer has unexplained positive target support")
         negative_topology = fact.target_topology
         if isinstance(negative_topology, Mapping):
@@ -368,7 +377,9 @@ def receive_ff01_observed_joint(
                 for row in negative_cells:
                     if not isinstance(row, Mapping) or type(row.get("raw_numerator_support")) is not int:
                         raise FF01GenericIngressError("nonpositive joint has unauthenticated cell count")
-                    if row["raw_numerator_support"] != 0:
+                    if row["raw_numerator_support"] > 0 and fact.typed_state not in {
+                        "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
+                    }:
                         raise FF01GenericIngressError("nonpositive joint contains contradictory positive cell")
 
     canonical = canonical_json(projection)
