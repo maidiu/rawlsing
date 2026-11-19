@@ -165,3 +165,65 @@ def test_s04_to_ff01_cold_reader_seam_keeps_same_release_without_second_query(
     assert old_ff.ref == actual.ref
     assert actual.semantic_projection()["release_ref"] == s04.material()["release_ref"]
     assert actual.semantic_projection()["raw_fully_resolved_joint_n"] == 4
+
+
+def test_real_existing_n10e_crossreader_consumes_s04_derived_ff01():
+    """This is a real N10E sourcefree C1 crossread, NOT a new N10E provider."""
+    from rawlsing_next.field_forge_n10e_crossread import conserve_ff01_n10e_actual_read
+    from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec
+    from rawlsing_next.pre553_empirical_possibility_provider import (
+        provide_empirical_possibility_slice,
+    )
+    from rawlsing_next.tests import (
+        n10e_empirical_slice_fixture as fx,
+        test_pre553_empirical_query as native,
+    )
+    case = fx.build_provider_case("forward")
+    source, qa = case["source"], case["query_authority"]
+    pred = native._branch_predicate(source, qa, tag="FF01-WHOLE-RISK")
+    bare = native._query(
+        source, qa, pred, ("POSITION", "ANSWER"), risk="R",
+        tag="FF01-AT07-SAME-SOURCE-JOINT",
+    )
+    spec = dict(bare.target_arity_and_topology)
+    components = [dict(c) for c in spec["components"]]
+    for component, name, domain in zip(
+        components, ("POSITION", "ANSWER"), (("P1", "P2"), ("no", "yes"))
+    ):
+        component["domain"] = list(domain)
+        component["target_domain_replay_ref"] = native._ref(
+            "TARGET_DOMAIN", f"FF01-AT07-{name}-" + "-".join(domain),
+        )
+    query = EmpiricalQuerySpec(
+        typed_state=bare.typed_state,
+        authority_snapshot_refs=bare.authority_snapshot_refs,
+        dependency_refs=bare.dependency_refs,
+        producer_replay_locator_or_reference_root=bare.producer_replay_locator_or_reference_root,
+        **{
+            **dict(bare.semantic_fields),
+            "target_arity_and_topology": {**spec, "components": components},
+        },
+    )
+    i03 = native._run(source, qa, pred, query, registry=case["registry"])
+    s04 = receive_s04_i03_research(query=query, execution=i03)
+    ff01 = receive_ff01_from_s04(
+        knowledge=s04, query=query, execution=i03, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    provider = provide_empirical_possibility_slice(
+        repository=source["repo"],
+        empirical_query=case["empirical_query"], predicate=case["predicate"],
+        authority_registry=case["registry"], release_refs=case["release_refs"],
+        consumer_query=case["consumer_query"], model_rule=case["model_rule"],
+        condition_binding_witness=case["condition_binding_witness"],
+    )
+    observed = conserve_ff01_n10e_actual_read(
+        ff01=ff01, provider=provider,
+        n10e_empirical_query=case["empirical_query"],
+        n10e_predicate=case["predicate"],
+        n10e_consumer_query=case["consumer_query"],
+    ).material()
+    assert observed["ff01_ref"] == ff01.ref.as_dict()
+    assert observed["raw_condition_denominator"] == 60
+    assert {x["target_state"]: x["raw_numerator_support"] for x in
+            observed["conserved_target_cells"]} == {"no": 6, "yes": 54}

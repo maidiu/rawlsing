@@ -20,3 +20,12 @@ NEW tests compare value- and ref-exact with direct FF01 oracle, false self-rehas
 **Evidence grade:** source/code authored on independent branch, tests **NOT EXECUTED** until a real sourcefree runner receipt is supplied. Current #1150 CI previously failed without source-level step proof. No true #997/#998 joined source→S05, native original SRC04 source decode, 100k/6GiB economy, scientific determinicity ranking, original-source permission, independent G5, or protected receiving. Do not claim terminal #1009.
 
 **Required local command**: `EXPECTED_S04_SEAM_HEAD=<THIS_BRANCH_EXACT_HEAD> bash rawlsing_next/tests/run_pyat_s04_hostile_seam_local.sh`. Existing sourcefree ancestor checks and exact downstream usage, not a second research programme. If a RED occurs, repair this same independent branch, replay and have separate nonauthor reviewer verify.
+
+## Additional original-source/cold-reader adversarial findings
+
+- Codex `b3dd74d16` and S04/FF01 parent `a0e68e34` have **identical blob hashes** for native `pre553_empirical_query.py` (`8885e637`), `pre553_source_direct_parquet_estate.py` (`e8622ac6`), `pre553_c11_ingest.py` (`37cd35fa`) and `pre553_batch_runner.py` (`8320f284`).
+- They **differ** in `pre553_direct_estate_i03.py` (`d662fc57` vs `9fd39efb`), `_pre553_query_common.py` (`da536ff7` vs `402186dd`) and `_pre553_query_eval.py` (`87849f7c` vs `7372290e`). The parent has a more recent routing-locator/cold-query path; tests on the Codex witness **cannot prove this exact separate code**, or vice versa. This independent branch does not modify or prefer either physical owner version.
+- The previous manifest's direct FF01 exact-relation/condition and N10E crossread are not full same-source **one-pass** N10E value production: N10E remains independently executed, exactly as its prior code declares.
+- The new `test_real_existing_n10e_crossreader_consumes_s04_derived_ff01` checks the **actual accepted N10E crossreader** from an FF01 receipt created from S04 and original native I03; result must have forward conditional denominator 60, yes=54/no=6. This confirms one additional first-consumer edge **if and only if executed successfully**. It does not claim no extra N10E I03 query, original source rights, or selected N10W world.
+
+**Self-attack:** the first attempt at S04 native-domain guard incorrectly converted unary F1 scalar domain to a one-value array. A separate follow-up commit repaired it; inherited native one-target F1 test is explicitly in the full runner. All new tests remain `NOT_RUN` here, not a green receipt.
