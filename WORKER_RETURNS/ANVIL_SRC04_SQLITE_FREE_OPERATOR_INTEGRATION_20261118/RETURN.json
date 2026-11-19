@@ -148,6 +148,21 @@
       "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
     }
   },
+  "resume_root_separation": {
+    "cli_missing_checkpoint": {
+      "exit": 2,
+      "free_min": 39710806016,
+      "rss_peak": 45539328,
+      "samples": 3,
+      "schema": "ANVIL_ALL35_WITNESS_SUPERVISOR@1",
+      "status": "PRODUCER_REFUSED"
+    },
+    "decode_trap": true,
+    "new_output_private": "/private/.../new-private",
+    "old_checkpoint_preserved": true,
+    "sourcefree_cli_supervisor": "NOT_EXECUTED__COMMON_WITNESS_IS_SRC04_CONFIGURED; direct sourcefree resume used the reviewed single-pass boundary",
+    "sourcefree_old_new_root": "OLD_NEW_ROOT_RESUME_PASS"
+  },
   "resume_wiring": {
     "no_source_decode": true,
     "note": "missing-checkpoint run wiring refused before source; retained original checkpoint not opened or changed",
@@ -157,6 +172,11 @@
       "status": "REFUSED"
     },
     "retained_checkpoint_not_executed": true
+  },
+  "runtime_pins": {
+    "sqlite_free_single_pass": "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e",
+    "sqlite_free_witness": "ec844fa7691e5ef99f40b1cf8692d24d3dd8d5c8572b2997d56cfa0746e1865b",
+    "streaming_estate": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
   },
   "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_RETURN@1",
   "source_cut": "302e04941fc1d3d986af41a9a61d4869e927ca3d",

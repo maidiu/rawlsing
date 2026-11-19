@@ -288,17 +288,23 @@ def _require_current(resolver, request, decision_ref):
 
 def resume_single_pass(*, checkpoint, root, config, request, grant_ref,
                        decision_ref, resolver=None, expected_i02=None,
+                       checkpoint_root=None, preserve_checkpoint=True,
                        chunk_rows=512, progress=None):
-    """Resume writer from authenticated prepared sections; never re-decodes."""
+    """Resume writer from an authenticated checkpoint in its original private root.
+
+    ``root`` is the new output private root; ``checkpoint_root`` is the stopped
+    run private root holding checkpoint.key and relative spool files.
+    """
     root = Path(root).absolute()
+    croot = Path(checkpoint_root).absolute() if checkpoint_root is not None else root
     doc = config.document if hasattr(config, "document") else config
     if doc.get("binding", {}).get("identity_class") == "ORIGINAL_SOURCE":
         _require_current(resolver, request, decision_ref)
-    payload = load_checkpoint(checkpoint=checkpoint, root=root, config=config,
+    payload = load_checkpoint(checkpoint=checkpoint, root=croot, config=config,
                               request=request, grant_ref=grant_ref,
                               decision_ref=decision_ref)
     projection, spool_paths, manifest, source, declared_counts = _resume_source(
-        config, payload, root)
+        config, payload, croot)
     if progress:
         progress({"phase": "checkpoint_validated", "rows": payload["source_rows"],
                   "families": len(declared_counts),
@@ -312,8 +318,9 @@ def resume_single_pass(*, checkpoint, root, config, request, grant_ref,
     cleanup_ok, leftovers = handoff._cleanup_spool(spool_paths, spool_paths[next(iter(spool_paths))].parent)
     if not cleanup_ok:
         raise handoff.SourceI02Refusal("SPOOL_CLEANUP_INCOMPLETE", leftovers)
-    (root / CHECKPOINT_NAME).unlink(missing_ok=True)
-    (root / HMAC_KEY_NAME).unlink(missing_ok=True)
+    if not preserve_checkpoint:
+        (croot / CHECKPOINT_NAME).unlink(missing_ok=True)
+        (croot / HMAC_KEY_NAME).unlink(missing_ok=True)
     if progress:
         progress({"phase": "published_from_checkpoint", "families": len(receipt.family_counts),
                   "records": int(sum(receipt.family_counts.values())),

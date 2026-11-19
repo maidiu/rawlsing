@@ -23,7 +23,7 @@ HERE = Path(__file__).resolve().parent
 BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
 FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
 FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
-SINGLE_PASS_SHA = "11b6f4eef8bf8d3b032cedb0312c518dde7618cf9fddd81f72b9c8ca06ea8fde"
+SINGLE_PASS_SHA = "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e"
 STREAMING_ESTATE_SHA = "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
 RAM_CAP = 6 * 1024**3
 COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
@@ -226,6 +226,17 @@ def producer(args) -> int:
     root = Path(args.root).absolute()
     private = root / "private"
     private.mkdir(mode=0o700, parents=False, exist_ok=True)
+    checkpoint_root = None
+    if args.resume_checkpoint:
+        work = Path(args.work_root).absolute() if args.work_root else root.parent
+        cp = Path(args.resume_checkpoint).absolute()
+        try:
+            cp.relative_to(work)
+        except ValueError as exc:
+            raise CallerRefusal("CHECKPOINT_OUTSIDE_WORK_ROOT", str(cp)) from exc
+        if any(p.is_symlink() for p in (cp, cp.parent)):
+            raise CallerRefusal("CHECKPOINT_SYMLINK_REFUSED")
+        checkpoint_root = cp.parent
     if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_PRODUCER")
     progress_path = root / "progress.jsonl"
@@ -239,6 +250,7 @@ def producer(args) -> int:
             checkpoint=args.resume_checkpoint, root=root, config=scoped,
             request=bound.request, grant_ref=bound.grant_ref,
             decision_ref=bound.decision.decision_ref, resolver=resolver,
+            checkpoint_root=checkpoint_root, preserve_checkpoint=True,
             chunk_rows=512, progress=progress)
         resumed = True
     else:
@@ -412,7 +424,7 @@ def supervisor(args) -> int:
                "--config", str(args.config),
                "--runtime-config", str(args.runtime_config),
                "--binding-dir", str(args.binding_dir), "--root", str(root),
-               "--source-path", source_path]
+               "--work-root", str(work), "--source-path", source_path]
               + (["--resume-checkpoint", str(args.resume_checkpoint)]
                  if args.resume_checkpoint else []))
     samples: list[dict[str, Any]] = []
