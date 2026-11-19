@@ -26,11 +26,14 @@ echo "SOURCEFREE only; no original survey or new scientific estimand."
 "$PYTHON" -B -m compileall -q \
   rawlsing_next/pre553_s04_cold_custody.py \
   rawlsing_next/pre553_s04_research_batch.py \
+  rawlsing_next/pre553_s04_first_consumer.py \
   rawlsing_next/tests/test_pre553_s04_cold_custody.py \
-  rawlsing_next/tests/test_pre553_s04_research_batch.py
+  rawlsing_next/tests/test_pre553_s04_research_batch.py \
+  rawlsing_next/tests/test_pre553_s04_first_consumer.py
 tests=(
   rawlsing_next/tests/test_pre553_s04_cold_custody.py
   rawlsing_next/tests/test_pre553_s04_research_batch.py
+  rawlsing_next/tests/test_pre553_s04_first_consumer.py
 )
 if [[ "${PYAT_S04_COLD_NEW_ONLY:-0}" != "1" ]]; then
   tests+=(
