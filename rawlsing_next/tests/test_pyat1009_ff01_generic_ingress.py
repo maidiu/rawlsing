@@ -153,8 +153,15 @@ def test_untrusted_export_cannot_mutate_hash_identified_ff01_result():
 
 def test_permission_ceiling_cannot_widen_into_causal_use():
     _, _, _, query, result = _case()
-    with pytest.raises(FF01GenericIngressError, match="widen"):
+    # The protected-use filter may reject first; the assertion tests denial,
+    # not incidental ordering or wording of two independent fail-closed guards.
+    with pytest.raises(FF01GenericIngressError, match="protected use|widen"):
         _receive(query, result, relation_permission_ceiling=("STRONG_CAUSAL",))
+    # Exercise the separate strict-subset guard with otherwise lawful labels.
+    with pytest.raises(FF01GenericIngressError, match="widen"):
+        _receive(query, result, relation_permission_ceiling=(
+            "FF01_DESCRIPTIVE_SOURCEFREE", "FF01_DIAGNOSTIC_READ_ONLY",
+        ))
     accepted = _receive(query, result, relation_permission_ceiling=PERMISSIONS)
     assert accepted.semantic_projection()["relation_permission_ceiling"] == list(PERMISSIONS)
 
