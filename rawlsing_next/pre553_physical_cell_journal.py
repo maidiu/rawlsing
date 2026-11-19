@@ -52,8 +52,9 @@ def _root(path: str | Path) -> Path:
     root = Path(path).absolute()
     if root.is_symlink() or not root.is_dir():
         raise PhysicalCellJournalError("explicit existing private retention directory required")
-    mode = root.stat().st_mode
-    if not stat.S_ISDIR(mode) or mode & 0o077:
+    status = root.stat()
+    mode = status.st_mode
+    if status.st_uid != os.geteuid() or not stat.S_ISDIR(mode) or mode & 0o077:
         raise PhysicalCellJournalError("physical journal requires private 0700 retention root")
     return root
 
@@ -195,7 +196,7 @@ class PhysicalCellJournal:
         releases.mkdir(mode=0o700, exist_ok=True)
         if releases.stat().st_mode & 0o077:
             raise PhysicalCellJournalError("physical releases root not private")
-        target = releases / ("physical-" + content_sha)
+        target = releases / ("physical-" + self._expected_sha + "-" + content_sha)
         if target.exists() or target.is_symlink():
             raise PhysicalCellJournalError(
                 "physical journal content-addressed target occupied; no overwrite"
@@ -259,7 +260,8 @@ def read_physical_cells(
         raise PhysicalCellJournalError("independently held exact physical receipt required")
     root = _root(authorized_private_root)
     target = Path(receipt.path).absolute()
-    if (target != root / "releases" / ("physical-" + _sha(receipt.physical_cells_sha256))
+    if (target != root / "releases" / ("physical-" + _sha(receipt.source_sha256)
+                                      + "-" + _sha(receipt.physical_cells_sha256))
             or target.is_symlink()
             or not target.is_dir()):
         raise PhysicalCellJournalError("physical journal path outside exact retention scope")
