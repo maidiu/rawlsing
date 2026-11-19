@@ -1,0 +1,53 @@
+{
+  "schema": "ANVIL_SRC16_RAW_MAPPED_I05_REVIEW@1",
+  "disposition": "DEFECT__ROW_DELETION_PROOF_IS_SET_ONLY__MAPPED_AND_I05_CONTROLS_PASS",
+  "source_cut": {
+    "implementer": "0dcd75749e5c186842a70dec777096b3f22086d8",
+    "trace": "aa9e91d58b24ea4366a902fb16ba110b566edd5d",
+    "owner": "e3d911364b06ac1d4dec28801d1db56eb6bcf389"
+  },
+  "mapped_exact": {
+    "status": "PASS",
+    "sav": {"expected": 1, "raw": 1, "control": 1, "exact": true},
+    "dta": {"expected": 2, "raw": 2, "control": 2, "exact": true},
+    "raw_and_control_signatures_equal": true,
+    "raw_witness_preserved": true,
+    "declared_missing_preserved": true,
+    "observed_unresolved_preserved": true,
+    "invalid_physical_refused": true,
+    "source_read_performed": false
+  },
+  "row_deletion_defect": {
+    "status": "NOT_ACTUAL",
+    "location": "IMPLEMENTER/.../common/shared_raw_lane_test.py:137-139",
+    "code": "mutation = set(control_selected); mutation.remove(sorted(mutation)[0])",
+    "problem": "The proof mutates an in-memory signature set only. It does not delete a mapped row from an actual saved estate, reopen it, fail RED, then restore/reopen. The reported mutation_deleting_mapped_row_fails=true therefore does not establish the required row-deletion RED-with-restoration.",
+    "smallest_fix": "Build an exact mutated copy of the saved mapped estate with one mapped Parquet row deleted and recomputed exact manifest/root, prove cold reopen fails or differs; restore the original exact estate and reopen equal. Do not claim actual row deletion from a set-only mutation."
+  },
+  "joint_and_mapped_controls": {
+    "status": "PASS",
+    "joint_mixed_before": {"raw_denominator": 1, "risk_count": 2, "typed_state": "UNRESOLVED"},
+    "joint_mixed_after": {"raw_denominator": 0, "risk_count": 0, "typed_state": "UNRESOLVED", "detail": "UNRESOLVED_CONDITION_MEMBER"},
+    "mapped_not": {"typed_state": "ZERO_SUPPORT", "risk_count": 2},
+    "known_missing_unchanged": true,
+    "diagnostic_allowed_unchanged": true,
+    "guard_flag_after": true
+  },
+  "native_i05": {
+    "red": {"status": "RED", "coverage_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "typed_state": "COVERAGE_LIMITED"},
+    "green": {"status": "GREEN", "coverage_state": "EVALUATED_UNRESOLVED", "typed_state": "COVERAGE_LIMITED"},
+    "valid_empty": {"coverage_state": "EVALUATED_VALID_EMPTY", "typed_state": "VALID_EMPTY", "valid": true},
+    "positive": {"typed_state": "SUPPORTED", "raw_denominator_support": 8},
+    "authority_refusal": {"type": "DirectEstateError", "message": "current source/operation authority refused"},
+    "patch_applied": true,
+    "batch_invoked": false
+  },
+  "scope_limits": {
+    "sourcefree": true,
+    "original_source_accessed": false,
+    "frozen_runtime_edited": false,
+    "batch_patch_used": false,
+    "real_gss_build": false,
+    "dhikr": false
+  }
+}

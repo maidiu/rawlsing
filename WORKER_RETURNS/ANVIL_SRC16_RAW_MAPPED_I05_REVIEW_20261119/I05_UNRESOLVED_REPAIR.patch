@@ -1,0 +1,30 @@
+--- a/rawlsing_next/pre553_discovery_exact.py
++++ b/rawlsing_next/pre553_discovery_exact.py
+@@ -80,6 +80,7 @@
+     "EVALUATED_NONCOMPARABLE",
+     "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
+     "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
++    "EVALUATED_UNRESOLVED",
+ })
+ 
+ 
+@@ -865,7 +866,9 @@
+         raise ExactBoundedCoverageError("I03 integrity failure cannot be laundered into discovery coverage")
+     if states & {"NONCOMPARABLE", "NOT_APPLICABLE"}:
+         return "NONCOMPARABLE"
+-    if states & {"UNAVAILABLE", "UNRESOLVED"}:
++    if "UNRESOLVED" in states:
++        return "UNRESOLVED"
++    if "UNAVAILABLE" in states:
+         return "UNAVAILABLE"
+     if all(fact.raw_denominator_support == 0 or fact.typed_state in {"ZERO_SUPPORT", "VALID_EMPTY"} for fact in facts):
+         return "VALID_EMPTY"
+@@ -1024,6 +1027,8 @@
+     terminal = _terminal_fact_class(canonical_facts)
+     if terminal == "NONCOMPARABLE":
+         return "EVALUATED_NONCOMPARABLE", "NONCOMPARABLE", canonical_facts, support
++    if terminal == "UNRESOLVED":
++        return "EVALUATED_UNRESOLVED", "COVERAGE_LIMITED", canonical_facts, support
+     if terminal == "UNAVAILABLE":
+         return "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "COVERAGE_LIMITED", canonical_facts, support
+     if terminal == "VALID_EMPTY":
