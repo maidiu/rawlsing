@@ -1,8 +1,8 @@
 {
   "config": {
     "canonical_sha256": "b865e4ba4402ae2e895c68d6c7553c1794f6bf3d3e56c4074798d6cf25cce049",
-    "file_sha256": "ef461a364e9e0d1e956456ba7c676af925a38425d08aec0b2ab8f327f59728a6",
-    "path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/fixtures/SRC17.d2_runtime.config.json"
+    "path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/fixtures/SRC17.d2_runtime.config.json",
+    "sha256": "ef461a364e9e0d1e956456ba7c676af925a38425d08aec0b2ab8f327f59728a6"
   },
   "grant": {
     "auth_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
@@ -14,20 +14,20 @@
   "launch_eligibility": "READY_FOR_CONTROLLER_EXACT_SRC17_GRANT__SOURCEFREE_METADATA_ONLY_NOT_RUN",
   "launch_inputs": {
     "actual": "--mode run --work-root <fresh-private-root>",
-    "bindings": "exact fixtures/SRC17_USER_GRANT.json and fixtures/SRC17_GRANT_AUTHENTICATION.json",
+    "auth": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/fixtures/SRC17_GRANT_AUTHENTICATION.json",
+    "config": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/fixtures/SRC17.d2_runtime.config.json",
+    "grant": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/fixtures/SRC17_USER_GRANT.json",
     "preflight": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_EXACT_MAPPING_20261119/src17_operator.py",
     "sourcefree": "--mode sourcefree --root <fresh-private-root>"
   },
   "legacy_r4_untouched": true,
   "negative_grant_scope": {
-    "attempted_purpose": "EXPANDED_SRC06",
-    "attempted_source_id": "SRC06",
-    "exact_purpose": "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE",
-    "exact_source_id": "SRC17",
-    "reason": "GRANT_SCOPE_OR_SOURCE_EXPANSION_REFUSED",
-    "refused": true,
-    "schema": "ANVIL_SRC17_NEGATIVE_GRANT_SCOPE@1",
-    "source_read_performed": false
+    "decision": "TEST_ONLY_SCOPE_AND_REVOCATION_CHECKS",
+    "revoked_refused": true,
+    "schema": "ANVIL_SRC17_SQLITE_FREE_NEGATIVE_CASES@1",
+    "source_read_performed": false,
+    "wrong_purpose_refused": true,
+    "wrong_source_refused": true
   },
   "preflight": {
     "held_administrative_excluded": 5,
@@ -48,7 +48,7 @@
   "source_decoded": false,
   "source_read_performed": false,
   "sourcefree": {
-    "elapsed_seconds": 0.5614300669403747,
+    "elapsed_seconds": 0.907590597984381,
     "family_counts": {
       "AuthoritySnapshot": 7,
       "ComparatorReplayBinding": 0,
@@ -65,24 +65,28 @@
       "WeightMeasureFact": 0
     },
     "phase_seconds": {
-      "family_written": 0.001708,
-      "footers_verified": 0.55496,
-      "published": 0.560204,
-      "reopened_validation": 0.584365,
+      "family_written": 0.002179,
+      "footers_verified": 0.592642,
+      "published": 0.59761,
       "stream_start": 0.0
     },
+    "producer_exited_before_reader": true,
+    "producer_pid": 28279,
     "proof_scratch_bytes": 195377,
-    "retained_bytes": 3824417,
+    "reader_pid": 28305,
+    "retained_bytes": 3824400,
     "roots": {
-      "logical": "2d599ab97c50a5e2e866e4b5fae731bc1fa9583579dbbe5ac05650e5e4d62f13",
-      "physical": "3d9a770c7e3946ae97d9f351786eef434bb3f181427d866f070e0f08d8e9f5cb",
-      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|617b036c3d25b63aeec9e645e978820626e73993f6e84bc1f2d97c0de376af9c",
-      "replay": "22f08f1b4a06239654b2c61a81d99169b8b578fc7dd0c75dfe32d13b3570a2ae",
+      "logical": "96b387de68a4f9af291fc74c0ab94ec2dff264f2331298b5c62ce8e71f423caa",
+      "physical": "396f1a6b5951cbe970d8fea59e946080470bc62de0f0005bcb0da41fd04e2bfe",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|d2937d414c502381c136638015a008272baa11576e7ec3bcde24cff381d27ed5",
+      "replay": "64c7f849e421b89f0caae632c787ba161a744b1af2bb4bacc0752da2bc44527a",
       "schema": "ANVIL_STREAM_C11_ESTATE@1",
-      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|f6fea72b1a8b09c450f0c5666fe50005e58bcf71d51de24a01f74440fcaafd12",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|46fa75bc5ebbb81fb3d96ddcb356461d632395a46662cf4f116addc0fd893864",
       "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
     },
-    "rss_maxrss_raw": 126976000,
+    "roots_equal": true,
+    "rss_maxrss_raw": 121569280,
+    "rss_units": "macOS ru_maxrss bytes",
     "source_read_performed": false,
     "sqlite_files": [],
     "status": "PASS_SOURCEFREE_KEY_AND_CONTINUOUS_FIXTURE"
