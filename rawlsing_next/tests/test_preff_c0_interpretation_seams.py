@@ -62,3 +62,71 @@ def test_native_i05_terminal_preserves_unknown_distinct_from_valid_empty():
     assert _terminal_fact_class((unresolved,)) == "UNRESOLVED"
     assert _terminal_fact_class((original, unresolved)) == "UNRESOLVED"
     assert _terminal_fact_class((original,)) is None
+
+
+def test_compound_predicate_unknown_conserves_conclusive_membership_and_not(monkeypatch):
+    """Actual native AST control flow, with only its terminal leaf substituted.
+
+    False AND UNKNOWN and True OR UNKNOWN are determinate; the inverse
+    combinations and NOT UNKNOWN are not. Non-interpretation errors propagate.
+    """
+    import rawlsing_next._pre553_query_predicate as native
+
+    visited = []
+
+    def leaf(node, **kwargs):
+        state = node["synthetic_epistemic_state"]
+        visited.append(state)
+        if state == "UNKNOWN":
+            raise native.EmpiricalQueryResolutionError(
+                "UNRESOLVED_CONDITION_MEMBER: observed physical value uninterpreted"
+            )
+        if state == "AUTHORITY_ERROR":
+            raise native.EmpiricalQueryResolutionError("AUTHORITY_DENIED")
+        return state == "TRUE"
+
+    def leaf_node(state):
+        return {"op": "LEAF", "synthetic_epistemic_state": state}
+
+    def evaluate(ast):
+        return native._eval_predicate(
+            ast, respondent=None, index=None, registry=None,
+            used=[], used_auth=[], derived_branch_memberships=None,
+        )
+
+    with monkeypatch.context() as patch:
+        patch.setattr(native, "_leaf_match", leaf)
+        for op, conclusive, result in (
+            ("AND", "FALSE", False),
+            ("OR", "TRUE", True),
+        ):
+            for order in ("left", "right"):
+                nodes = [leaf_node(conclusive), leaf_node("UNKNOWN")]
+                if order == "right":
+                    nodes.reverse()
+                visited.clear()
+                assert evaluate({"op": op, "children": nodes}) is result
+                assert len(visited) == 2  # no silently hidden source obligation
+
+        for op, other in (("AND", "TRUE"), ("OR", "FALSE")):
+            with pytest.raises(native.EmpiricalQueryResolutionError,
+                               match="UNRESOLVED_CONDITION_MEMBER"):
+                evaluate({"op": op, "children": [leaf_node(other), leaf_node("UNKNOWN")]})
+        with pytest.raises(native.EmpiricalQueryResolutionError,
+                           match="UNRESOLVED_CONDITION_MEMBER"):
+            evaluate({"op": "NOT", "children": [leaf_node("UNKNOWN")]})
+        with pytest.raises(native.EmpiricalQueryResolutionError,
+                           match="UNRESOLVED_CONDITION_MEMBER"):
+            evaluate({"op": "NOT", "children": [
+                {"op": "OR", "children": [leaf_node("FALSE"), leaf_node("UNKNOWN")]}
+            ]})
+        assert evaluate({"op": "NOT", "children": [
+            {"op": "OR", "children": [leaf_node("TRUE"), leaf_node("UNKNOWN")]}
+        ]}) is False
+        for op in ("AND", "OR"):
+            with pytest.raises(native.EmpiricalQueryResolutionError,
+                               match="AUTHORITY_DENIED"):
+                evaluate({"op": op, "children": [
+                    leaf_node("FALSE" if op == "AND" else "TRUE"),
+                    leaf_node("AUTHORITY_ERROR"),
+                ]})
