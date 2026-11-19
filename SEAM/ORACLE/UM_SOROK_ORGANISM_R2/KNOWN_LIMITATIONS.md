@@ -1,0 +1,7 @@
+# R2 KNOWN LIMITATIONS — never bury deficits under passing tests
+
+R2 deliberately preserves the **sourcefree research only** status of R1. It has no native CAN/P3 psychological writer, P2 event owner, P4/P5/P6 public product consumer, production permission, independently selected real PYAT whole pseudo-respondents, live tested LLM, independent test reviewer, or empirical human-learning validation. The old R0 consent bug remains historically unfixed, although later research public paths reject its analogous bypass. Its new shared-field and labor models are strongly provisional.
+
+**Newly exposed risks:** (1) automatic project genesis after one performed SING may overinstall a purpose; (2) no qualified learned stable joint capability; (3) two-pass project/association recruitment is not a general fixed-point reasoner; (4) stored independent Other policy is not service attestation; (5) operator research receipt access is not native actor-specific privacy; (6) synthetic parent answers still leak response key; (7) economic ownership is simplified; (8) partial somatic actor experience is not an empirically adequate phenomenology; (9) local sourcefree code is not integrated into canonical P2/P3/P6.
+
+Read `docs/HOSTILE_THEORY_CODE_LEDGER_R2.md` for named defects F01–F12, precise changes, where neglected original SOROK doctrine was recovered, and R2 negative probes. **Remaining science and integration are NOT_FIXED.**
