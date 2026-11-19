@@ -26,6 +26,7 @@ from rawlsing_next.pre553_empirical_objects import (
 from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
+from rawlsing_next.pre553_s04_observed_research import _domains
 from rawlsing_next.pre553_s04_research_batch import S04ContextRequest
 from rawlsing_next.field_forge_generic_empirical_ingress import _permission_set
 from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
@@ -128,6 +129,17 @@ def execute_distinct_native_s04_research(
             raise S04DistinctBatchError("original query/predicate binding mismatch")
         if query.ref.key in seen:
             raise S04DistinctBatchError("duplicate query cannot count as distinct native work")
+        # The S04 owner, NOT this batch, defines permitted target topology
+        # and the 16,384-cell bound. Refuse unsupported/repeated/multiselect or
+        # overwide output BEFORE constructing any cold SQLite postings.
+        _domains(query)
+        grain = query.requested_output_grain
+        if (not isinstance(grain, Mapping)
+                or grain.get("source_scope_mode") != "SINGLE_UNIVERSE"
+                or grain.get("measure_kind") != "RAW"):
+            raise S04DistinctBatchError(
+                "only single-universe RAW S04 sourcefree research admitted"
+            )
         seen.add(query.ref.key)
         if item.conditioner_index is not None:
             if (type(item.conditioner_index) is not int
