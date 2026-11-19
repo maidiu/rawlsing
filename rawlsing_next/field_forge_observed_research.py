@@ -195,8 +195,19 @@ def ask_observed_minor_cell_candidates(
     if type(selected_condition_index) is not int or not 0 <= selected_condition_index < m["joint_arity"]:
         raise ObservedResearchError("condition axis not in joint")
     supported = m["producer_state"] == "SUPPORTED"
+    condition_totals: dict[str, int] = {}
+    if supported:
+        for row in m["complete_cells"]:
+            ckey = canonical_json(row["cell"][selected_condition_index])
+            condition_totals[ckey] = condition_totals.get(ckey, 0) + row["raw_support"]
     cells = [
-        {"observed_joint_cell": row["cell"], "raw_support": row["raw_support"]}
+        {
+            "observed_joint_cell": row["cell"],
+            "condition_value": row["cell"][selected_condition_index],
+            "raw_support": row["raw_support"],
+            "fully_resolved_condition_n": condition_totals[canonical_json(
+                row["cell"][selected_condition_index])],
+        }
         for row in m["complete_cells"]
         if supported and 0 < row["raw_support"] <= max_observed_support
     ]
@@ -242,6 +253,7 @@ def ask_unissued_comparative_ranking(
         raise ObservedResearchError("invalid comparative candidate set")
     if len(items) != len(set(items)):
         raise ObservedResearchError("duplicate comparative candidate axis")
+    items = tuple(sorted(items))
     answer = {
         "contract": CONTRACT,
         "kind": "COMPARATIVE_PREDICTOR_RESEARCH_REQUEST",
