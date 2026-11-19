@@ -336,6 +336,78 @@ class WholeOrganism(unittest.TestCase):
         self.assertNotEqual(a['activity_history'][0]['practical_object'],a['activity_history'][1]['practical_object'])
         self.assertTrue(all(h['event']=='evt_actual' for h in a['activity_history']))
 
+    def test_sr004_blocked_actor_activity_survives_cold_reopen_without_motive_inference(self):
+        from copy import deepcopy
+        packet=deepcopy(MARA)
+        packet['fictional_seed']['acquired_forms']=[]
+        packet['fictional_seed']['projects']=[{'object':'obtain food through the market',
+            'means':['BUY_FOOD'],'priority':3,'cue_terms':['home'],
+            'motive':'household provision remains a hypothesis'}]
+        with tempfile.TemporaryDirectory() as directory:
+            path=str(Path(directory)/'sr004.sqlite3')
+            rt=ConstitutiveRuntime(path)
+            rt.initialize([('worker','Worker',packet)])
+            try:
+                self.assertEqual(rt.situated('worker')['candidate_actions'][0]['action'],'BUY_FOOD')
+                actual=rt.step('worker')
+                self.assertEqual(actual['selection_grade'],'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE')
+                self.assertEqual(actual['status'],'BLOCKED')
+                self.assertEqual(actual['objective_outcome'],'INSUFFICIENT_CLAIM_ON_FOOD')
+                original=rt.ledger.actor('worker')[1]
+                self.assertEqual(len(original['activity_history']),1)
+                episode=original['activity_history'][0]
+                self.assertEqual(episode['performed_status'],'BLOCKED')
+                self.assertEqual(episode['operation_course'],'INTERRUPTED_ATTEMPT')
+                self.assertEqual(episode['object_fulfillment'],'NOT_INFERRED_FROM_OPERATION')
+                self.assertEqual(episode['motive_realized'],'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                self.assertEqual(len(original['lived_activity_history']),1)
+                lived=original['lived_activity_history'][0]
+                self.assertEqual(lived['objective_outcome'],'NOT_INFERRED')
+                self.assertEqual(lived['felt'],'SOMATIC_ATTEMPT_ONLY')
+                self.assertNotIn('INSUFFICIENT_CLAIM_ON_FOOD',str(lived))
+                ongoing=[c for c in rt.situated('worker')['currents']
+                    if c['kind']=='ONGOING_ACTIVITY' and 'market' in c['object']]
+                self.assertEqual(len(ongoing),1)
+                self.assertEqual(ongoing[0]['latest_lived_attempt'],lived)
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+            reopened=ConstitutiveRuntime(path)
+            try:
+                self.assertTrue(reopened.verify()['valid'])
+                persisted=reopened.ledger.actor('worker')[1]
+                self.assertEqual(persisted['activity_history'][0]['event'],episode['event'])
+                self.assertEqual(persisted['lived_activity_history'][0],lived)
+            finally:reopened.close()
+
+    def test_sr004_externally_injected_action_does_not_steal_an_actor_motive(self):
+        a=self.rt.ledger.actor('mara')[1]
+        self.rt.step('mara',requested_action='SING')
+        after=self.rt.ledger.actor('mara')[1]
+        self.assertEqual(after.get('activity_history',[]),a.get('activity_history',[]))
+        self.assertEqual(after.get('lived_activity_history',[]),a.get('lived_activity_history',[]))
+        self.assertTrue(self.rt.verify()['valid'])
+
+    def test_sr004_partial_and_blocked_activity_not_erased_by_technical_status(self):
+        from um_sorok_organism.activity import record_activity_afterlife
+        a=self.rt.ledger.actor('mara')[1]
+        a['projects']=[{'id':'needs','object':'secure food','means':['BUY_FOOD'],'status':'active'},
+                       {'id':'relations','object':'participate in shared provisioning','means':['BUY_FOOD'],'status':'active'}]
+        partial=record_activity_afterlife(a,'BUY_FOOD','PARTIAL','REQUEST_UNANSWERED',
+            ['project:needs','project:relations'],'objective_one')
+        blocked=record_activity_afterlife(a,'BUY_FOOD','BLOCKED','NO_ACCESSIBLE_FOOD',
+            ['project:needs','project:relations'],'objective_two')
+        self.assertEqual(len(partial),2)
+        self.assertEqual(len(blocked),2)
+        self.assertEqual({x['practical_object'] for x in blocked},{'secure food','participate in shared provisioning'})
+        self.assertEqual({x['operation_course'] for x in partial},{'PARTIAL_ATTEMPT'})
+        self.assertEqual({x['operation_course'] for x in blocked},{'INTERRUPTED_ATTEMPT'})
+        self.assertTrue(all(x['object_fulfillment']=='NOT_INFERRED_FROM_OPERATION'
+            for x in partial+blocked))
+        self.assertTrue(all(len(p['operational_history'])==2 for p in a['projects']))
+        with self.assertRaisesRegex(ValueError,'DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT'):
+            record_activity_afterlife(a,'BUY_FOOD','BLOCKED','NO_ACCESSIBLE_FOOD',
+                ['project:needs'],'objective_two')
+
     def test_bodily_maturation_is_not_automatically_language_competence(self):
         self.rt.background(365*2)
         n=self.rt.snapshot('nadia')

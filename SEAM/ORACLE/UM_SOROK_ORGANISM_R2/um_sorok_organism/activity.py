@@ -29,28 +29,74 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
         x['recruitment_basis'] += ['FORM_LINK:'+r['source'] for r in recruiting]
         x['motive']=p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE')
         x['object']=p['object']
+        # An unfinished personally lived attempt may inform subsequent recruitment.
+        # This is actor-accessible attempt history, not an objective motive verdict.
+        x['latest_lived_attempt']=copy(p.get('latest_lived_attempt'))
         result.append(x)
     return result
 
 
 def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref, object_delta=None):
-    """Register actual means and the actor's possible relation to their object.
+    """Preserve a performed, partial or blocked operation's activity courses.
 
-    The external act never proves satisfaction of the purpose; provenance must
-    indicate *which* ongoing activity, if any, was recruited. An injected action
-    does not retroactively invent the actor's purpose.
+    A blocked attempt is still historical conduct. Only actor-chosen project:
+    bases may attach a proposed purpose; an external injection cannot steal
+    one. Objective success does not entail practical-object fulfillment or
+    psychic motive satisfaction. These are audit receipts, not subjective truth.
     """
-    project_ids={r.removeprefix('project:') for r in basis if r.startswith('project:')}
+    if status not in ('PERFORMED', 'PARTIAL', 'BLOCKED'):
+        raise ValueError('UNKNOWN_ACTIVITY_OPERATION_STATUS')
+    project_ids={r.removeprefix('project:') for r in basis
+                 if isinstance(r,str) and r.startswith('project:')}
     histories=[]
     for project in actor.get('projects',[]):
-        if project['id'] not in project_ids: continue
-        if own_action not in project.get('means',[]):continue
+        if project['id'] not in project_ids or own_action not in project.get('means',[]):
+            continue
+        if any(h.get('event')==event_ref for h in project.get('operational_history',[])):
+            raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
         entry={'event':event_ref,'project':project['id'],
             'operation':own_action,'objective_outcome':outcome,'performed_status':status,
             'practical_object':project['object'],'motive_hypothesis':project.get('motive'),
             'object_transformation':copy(object_delta or {}),
+            'operation_course':('INTERRUPTED_ATTEMPT' if status=='BLOCKED'
+                 else 'PARTIAL_ATTEMPT' if status=='PARTIAL'
+                 else 'PERFORMED_OPERATION'),
+            'object_fulfillment':'NOT_INFERRED_FROM_OPERATION',
+            'objective_outcome_access':'WORLD_AUDIT_NOT_ACTOR_KNOWLEDGE',
             'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME','grade':GRADE}
         histories.append(entry)
         project.setdefault('operational_history',[]).append(entry)
     actor.setdefault('activity_history',[]).extend(histories)
     return histories
+
+
+def register_lived_activity_attempt(actor, experience, histories):
+    """Keep the actor's somatic attempted operation separate from world audit.
+
+    An incomplete course can remain accessible to future situated recruitment,
+    but no objective outcome, purpose realization or memory is manufactured.
+    """
+    felt=experience.get('felt_enactment') or {}
+    if not felt or felt.get('objective_result_not_inferred') is not True:
+        return []
+    if felt.get('attempted_operation')!=experience.get('own_action'):
+        return []
+    visible=[c.get('id') for c in experience.get('perceived_cues',[]) if c.get('id')]
+    lived=[]
+    for h in histories:
+        if h['operation']!=experience['own_action']:
+            continue
+        p=next((p for p in actor.get('projects',[]) if p['id']==h['project']),None)
+        if p is None:continue
+        trace={'event':h['event'],'project':h['project'],
+               'attempted_operation':h['operation'],'felt':'SOMATIC_ATTEMPT_ONLY',
+               'accessible_cue_refs':visible,
+               'objective_outcome':'NOT_INFERRED',
+               'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME',
+               'practical_continuation':'OPEN_FOR_FUTURE_INTERPRETATION',
+               'grade':GRADE}
+        p.setdefault('lived_attempt_history',[]).append(trace)
+        p['latest_lived_attempt']=copy(trace)
+        actor.setdefault('lived_activity_history',[]).append(trace)
+        lived.append(trace)
+    return lived

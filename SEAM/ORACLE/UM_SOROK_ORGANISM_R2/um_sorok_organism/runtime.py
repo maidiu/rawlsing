@@ -13,7 +13,7 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
-from .activity import record_activity_afterlife
+from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -146,7 +146,6 @@ class ConstitutiveRuntime:
                 apply_body(actors[aid],'WAIT','IMPOSED' if summary['action']=='IMPOSE' else 'PARTIAL')
         activity_effects={}
         for row in resolved['performed']:
-            if row['status']!='PERFORMED':continue
             chosen=principal if row['actor']==actor_id else partner
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
@@ -185,6 +184,8 @@ class ConstitutiveRuntime:
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            # Actor-owned practical afterlife and world audit remain distinct.
+            register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
             # Disabled LLM proposals may truthfully produce no change.
             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
