@@ -4,6 +4,7 @@ from dataclasses import replace
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
+    UnresolvedConditionMember,
     _eval_predicate,
     _question_matches,
     _select_respondent_events,
@@ -461,6 +462,7 @@ def _evaluate_index_group_core(
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []
     raw_resolved = 0
+    unresolved_condition_members: list[ExactRef] = []
     inapplicable_count = 0
     component_positive = [False] * plan.arity
     derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
@@ -491,15 +493,21 @@ def _evaluate_index_group_core(
         if not member:
             continue
         risk_members.append(respondent.ref)
-        condition = _eval_predicate(
-            predicate.predicate_ast,
-            respondent=respondent,
-            index=index,
-            registry=registry,
-            used=used,
-            used_auth=used_auth,
-            derived_branch_memberships=derived_branch_memberships,
-        )
+        try:
+            condition = _eval_predicate(
+                predicate.predicate_ast,
+                respondent=respondent,
+                index=index,
+                registry=registry,
+                used=used,
+                used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
+            )
+        except UnresolvedConditionMember:
+            # Unknown condition is neither false nor a denominator member.
+            # Retain its eligible respondent and exact source evidence.
+            unresolved_condition_members.append(respondent.ref)
+            continue
         if not condition:
             continue
         denominator_members.append(respondent.ref)
@@ -528,7 +536,17 @@ def _evaluate_index_group_core(
     denominator_refs = _canonical_refs(denominator_members)
     raw_denominator = len(denominator_refs)
 
-    if not risk_refs:
+    if unresolved_condition_members:
+        # Positive/zero counts are only from proven condition-true members.
+        # Unknown members may alter numerator, denominator or weights:
+        # no complete scientific distribution can be admitted downstream.
+        state = "UNRESOLVED"
+        detail = (
+            "source-typed condition membership unresolved for "
+            f"{len(unresolved_condition_members)} eligible respondent(s); "
+            "raw denominator/counts cover known-true members only"
+        )
+    elif not risk_refs:
         if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
             state = "ZERO_OVERLAP"
             detail = "each target has eligible respondents but exact common risk-set overlap is zero"
@@ -679,6 +697,7 @@ def _evaluate_index_group(
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []
     raw_resolved = 0
+    unresolved_condition_members: list[ExactRef] = []
     weighted_denominator = Fraction(0, 1) if weighted_cells is not None else None
     weighted_resolved = Fraction(0, 1) if weighted_cells is not None else None
     inapplicable_count = 0
@@ -752,15 +771,19 @@ def _evaluate_index_group(
             if not member:
                 continue
             risk_members.append(respondent.ref)
-            condition = _eval_predicate(
-                predicate.predicate_ast,
-                respondent=respondent,
-                index=index,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
+            try:
+                condition = _eval_predicate(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
+                )
+            except UnresolvedConditionMember:
+                unresolved_condition_members.append(respondent.ref)
+                continue
             if not condition:
                 continue
             denominator_members.append(respondent.ref)
@@ -801,7 +824,17 @@ def _evaluate_index_group(
     denominator_refs = _canonical_refs(denominator_members)
     raw_denominator = len(denominator_refs)
 
-    if not risk_refs:
+    if unresolved_condition_members:
+        # Positive/zero counts are only from proven condition-true members.
+        # Unknown members may alter numerator, denominator or weights:
+        # no complete scientific distribution can be admitted downstream.
+        state = "UNRESOLVED"
+        detail = (
+            "source-typed condition membership unresolved for "
+            f"{len(unresolved_condition_members)} eligible respondent(s); "
+            "raw denominator/counts cover known-true members only"
+        )
+    elif not risk_refs:
         if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
             state = "ZERO_OVERLAP"
             detail = "each target has eligible respondents but exact common risk-set overlap is zero"
