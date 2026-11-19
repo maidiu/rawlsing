@@ -181,8 +181,12 @@ def test_below_minimum_branch_never_claims_comparison_or_discloses_target_split(
         request=DHIKRComparisonRequest(
             target_axis=2, predictor_axes=(1,), fixed_context=((0, "0"),),
             min_branch_n=3, max_nodes=4,
+            bootstrap_replicates=16,
         ),
     ).material()
+    assert result["bootstrap_rank_instability"]["state"] == (
+        "HELD_BELOW_MIN_BRANCH_N__NO_IID_RANKING"
+    )
     root = result["nodes"][0]
     assert root["raw_same_case_n"] == 2
     assert root["terminal_reason"] == "BELOW_MINIMUM_OBSERVED_CONTEXT_N"

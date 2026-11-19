@@ -223,8 +223,12 @@ def _bootstrap_stability(
     )
     # Every resample must score ALL candidate groups; avoid accidentally
     # multiplying the original bounded single-predictor budget by 92.
-    work = n * repeats * (len(groups) + len(predictors))
-    if work > 2_000_000:
+    # Single-predictor case bootstrap was already bounded by 4096 cases,
+    # 200 replicates and 8 request axes. Do not withdraw that historical
+    # capability merely because an optional interaction method was added.
+    # Singleton group scores reuse the already-computed one-axis metrics.
+    work = n * repeats * len(groups)
+    if max_interaction_order > 1 and work > 2_000_000:
         return {"state": "HELD_GROUP_BOOTSTRAP_WORK_CAP",
                 "raw_n": n, "estimated_case_group_evaluations": work,
                 "max_case_group_evaluations": 2_000_000,
@@ -250,8 +254,12 @@ def _bootstrap_stability(
         indices = rng.choices(range(len(values)), weights=weights, k=n)
         counts = Counter(indices)
         sampled = [(values[i], count) for i, count in counts.items()]
+        single_metrics = {
+            axis: _association(sampled, target, (axis,))
+            for axis in predictors
+        }
         computed = {
-            axis: _association(sampled, target, (axis,))["normalized_reduction"]
+            axis: single_metrics[axis]["normalized_reduction"]
             for axis in predictors
         }
         if any(value is None for value in computed.values()):
@@ -268,7 +276,11 @@ def _bootstrap_stability(
         # single-axis ranking previously mislabeled as recruitment stability.
         group_priority = {}
         for group in groups:
-            bits = _association(sampled, target, group)["information_bits"]
+            bits = (
+                single_metrics[group[0]]["information_bits"]
+                if len(group) == 1
+                else _association(sampled, target, group)["information_bits"]
+            )
             score = (bits or 0.0) / len(group)
             group_draws[group].append(score)
             group_priority[group] = score
@@ -460,16 +472,28 @@ def analyze_s04_dhikr(
         }
         workspace.query(S04Projection((), {}))
         return DHIKRComparisonReceipt(canonical_json(result), semantic_hash(result))
-    result["bootstrap_rank_instability"] = _bootstrap_stability(
-        root_rows, request.target_axis,
-        tuple(a for a in request.predictor_axes if a not in dict(context)),
-        repeats=request.bootstrap_replicates,
-        case_cap=request.bootstrap_case_cap,
-        seed=seed,
-        max_interaction_order=request.max_interaction_order,
-    ) if any(a not in dict(context) for a in request.predictor_axes) else {
-        "state": "NO_UNCONDITIONED_PREDICTOR_LEFT"
-    }
+    root_n = sum(count for _, count in root_rows)
+    if root_n < request.min_branch_n:
+        # A node held below the request's minimum support must not carry an
+        # independently non-HELD bootstrap rank in a sibling receipt field.
+        result["bootstrap_rank_instability"] = {
+            "state": "HELD_BELOW_MIN_BRANCH_N__NO_IID_RANKING",
+            "raw_n": root_n,
+            "required_min_branch_n": request.min_branch_n,
+        }
+    elif any(a not in dict(context) for a in request.predictor_axes):
+        result["bootstrap_rank_instability"] = _bootstrap_stability(
+            root_rows, request.target_axis,
+            tuple(a for a in request.predictor_axes if a not in dict(context)),
+            repeats=request.bootstrap_replicates,
+            case_cap=request.bootstrap_case_cap,
+            seed=seed,
+            max_interaction_order=request.max_interaction_order,
+        )
+    else:
+        result["bootstrap_rank_instability"] = {
+            "state": "NO_UNCONDITIONED_PREDICTOR_LEFT"
+        }
 
     queue = [(context, 0, None)]
     n_processed = 0

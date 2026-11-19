@@ -78,3 +78,14 @@ not another PRE-FF backend or master plan. Implementation (not a G5 judgment):
   currentness; adaptive selection-corrected uncertainty and design variance;
   independent source permission for context/minority publication; original
   100k economics; true FF02→SEAM and independently received G5.
+
+### Second self-attack — PF032
+
+The first continuation commit was source-inspected again. It incorrectly
+allowed a root with fewer than `min_branch_n` observations to carry a positive
+IID bootstrap rank alongside a held contextual node. It also imposed a new
+group-replication work cap on the preexisting single-predictor bootstrap and
+duplicated singleton metric computation. Both now repaired on the *same*
+review branch: held context cannot bootstrap; interaction-order >1 alone
+activates the added 2M group work cap, while singleton metrics are reused.
+Added a negative low-N first-fault test. **Still not executed at this head.**
