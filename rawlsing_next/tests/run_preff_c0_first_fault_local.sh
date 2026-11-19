@@ -25,6 +25,7 @@ case "$COURT" in
     ;;
   C1_PREDICATE_I05)
     tests=(rawlsing_next/tests/test_preff_c0_interpretation_seams.py
+           rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
            rawlsing_next/tests/test_pre553_discovery_exact.py)
     ;;
   C1_SAVED_BATCH)
@@ -40,6 +41,7 @@ case "$COURT" in
     tests=(rawlsing_next/tests/test_preff_c0_raw_preservation.py
            rawlsing_next/tests/test_preff_c0_physical_journal.py
            rawlsing_next/tests/test_preff_c0_interpretation_seams.py
+           rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
            rawlsing_next/tests/test_preff_c0_dhikr_first_consumer.py
            rawlsing_next/tests/test_pyat960_s1e_source_i02.py
            rawlsing_next/tests/test_pre553_discovery_exact.py
