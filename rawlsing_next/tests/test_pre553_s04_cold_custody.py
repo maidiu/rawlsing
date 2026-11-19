@@ -14,7 +14,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, ExactRef, canonical_json, semantic_hash,
 )
 from rawlsing_next.pre553_s04_cold_custody import (
-    S04ColdBundle, S04ColdCustodyError, S04ExternalRootPin,
+    SOURCEFREE_ASSERTION, S04ColdBundle, S04ColdCustodyError, S04ExternalRootPin,
     freeze_s04_i03_sourcefree, read_s04_cold_preimages,
     read_s04_sourcefree_private, receive_ff01_from_pinned_cold,
     write_s04_sourcefree_private,
@@ -32,7 +32,7 @@ PERMISSIONS = ("FF01_DESCRIPTIVE_SOURCEFREE",)
 def _ready(parity=0, *, tag="S04-COLD-REPLAY"):
     _, _, _, q, r = _case(parity, tag=tag)
     s04 = receive_s04_i03_research(query=q, execution=r)
-    original = freeze_s04_i03_sourcefree(query=q, execution=r, knowledge=s04)
+    original = freeze_s04_i03_sourcefree(sourcefree_origin_assertion=SOURCEFREE_ASSERTION, query=q, execution=r, knowledge=s04)
     pin = S04ExternalRootPin(q.ref, r.facts[0].ref, r.release_refs[0])
     return original, pin, q, r, s04
 
@@ -172,7 +172,7 @@ def test_low_support_counts_stay_held_across_cold_storage():
     )
     altered_result = replace(r, facts=(held,))
     knowledge = receive_s04_i03_research(query=q, execution=altered_result)
-    bundle = freeze_s04_i03_sourcefree(
+    bundle = freeze_s04_i03_sourcefree(sourcefree_origin_assertion=SOURCEFREE_ASSERTION, 
         query=q, execution=altered_result, knowledge=knowledge,
     )
     pin = S04ExternalRootPin(q.ref, held.ref, r.release_refs[0])
@@ -194,7 +194,7 @@ def test_cold_saved_parquet_native_i03_replays_without_reopening_source(tmp_path
         saved_name="original-persisted",
     )
     s04 = receive_s04_i03_research(query=query, execution=actual)
-    bundle = freeze_s04_i03_sourcefree(query=query, execution=actual, knowledge=s04)
+    bundle = freeze_s04_i03_sourcefree(sourcefree_origin_assertion=SOURCEFREE_ASSERTION, query=query, execution=actual, knowledge=s04)
     pin = S04ExternalRootPin(query.ref, actual.facts[0].ref, actual.release_refs[0])
     path = write_s04_sourcefree_private(tmp_path / "private-replay", bundle)
     del actual, query, s04
