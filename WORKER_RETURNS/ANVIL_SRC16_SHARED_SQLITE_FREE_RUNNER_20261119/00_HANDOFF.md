@@ -1,136 +1,101 @@
-# SRC16 native mapping — age refusal and bounded gap census
+# SRC16 declared-missing overlay and residual observed cells
 
-## Finding
+## Census received
 
-The admitted native run at `3d63d416e9ed…` refused before publish with:
+The authorized aggregate census completed:
 
-```json
-{"code":"UNBOUND_RESPONSE_CELL","detail":{"row":1,"slot":[11,"age"]}}
-```
+- 126 response slots;
+- 58,697 unmapped cells;
+- 40,592 `FORMAT_USER_MISSING_RANGE`;
+- 18,105 `OBSERVED_STORAGE_VALUE`;
+- zero missing or duplicate mapped positions.
 
-The pinned config has an `age` response slot whose configured substantive value
-set is only `89 = 89 or older`.  Its other 13 values are typed missing/special
-codes.  The existing `GSS1972-codebook.csv` likewise gives only
-`response_options_substantive = "89 = 89 or older"` and does not state the
-ordinary age range.  Therefore the ordinary age tokens at physical ordinal 11
-are not inferable from the pinned config/codebook alone.  Adding a guessed
-`18..88` range or accepting arbitrary numeric codes would be semantic invention
-and is not done.
+No new native source scan was performed by this worker.  No raw token or
+respondent record was printed, committed, or included in this handoff.
 
-The `.sav` was not modified.  No source was opened by this worker.
+## Declared-missing repair
 
-## One bounded precheck correction
+`common/declared_missing_mapping.py` deterministically reads the completed
+private census and the pinned config.  It materializes **only**
+`FORMAT_USER_MISSING_RANGE` cells, preserving:
 
-`common/sqlite_free_single_pass.py` now invokes
-`common/mapped_slot_precheck.py` **once after exact decode and before spool or
-projection**.  It aggregates unresolved physical tokens for every mapped
-response/coordinate/weight slot, plus missing and duplicate mapped cells, and
-refuses with `UNBOUND_MAPPED_SLOTS` containing the whole aggregate report.
-This prevents repeated full runs that would stop at age first.
+- the exact source missing declaration (`kind=range`, exact `lo`/`hi`); and
+- the existing `FORMAT_USER_MISSING_RANGE` physical state.
 
-The sourcefree path was re-run through the actual common supervisor after the
-change: `COMPLETE`, producer/reader exit 0, distinct child PIDs `84780`/`84791`,
-6 rows, no SQLite.  `copy_observed_raw` coordinate handling is respected.
+Each rule uses the existing typed `MISSING` response state, retains the raw
+source token, keeps `canonical_value: null`, and copies the exact scalar
+occurrence topology.  No authority is added.
 
-Synthetic yes/no witness (`synthetic_mapping_witness.out`):
+Private aggregate coverage replay:
 
-- pinned config file `1106de3e…`;
-- configured age values: 14;
-- `89` bound: yes;
-- typed missing `-99`, `-98`, system missing: bound: yes;
-- ordinary `18` unresolved: yes;
-- arbitrary code `3` not made valid: yes;
-- one precheck collected `18` and `30` together: yes;
-- no respondent rows emitted and no source read.
+- declared-missing range cells covered: **40,592 / 40,592**;
+- exact range rules: **243** across **121** slots;
+- observed storage cells left explicitly unresolved: **18,105**;
+- remaining unresolved cells: **18,105**;
+- other mapped cells touched: **0**;
+- coverage replay: **PASS**;
+- overlay SHA-256: `3e107fb0fcec7c94a4e50be7b614a6351ced3cca3cd8f836e1e6886fc0f5ce42`.
 
-## Exact missing evidence: one controller census
+The overlay itself is private and is not in Git.  The only published values are
+counts and digests.
 
-The worker cannot run the source.  The owner/controller can run this one bounded
-census under the **existing exact SRC16 construction grant**, using the existing
-profile and resolver, without any new grant or wider scope:
+## Observed-value class requiring a decision
 
-```bash
-PYTHONPATH="$PRIVATE_CANDIDATE_TREE:$RETURN/common" \
-PYTHONDONTWRITEBYTECODE=1 \
-python3 -B "$RETURN/common/gap_census.py" \
-  --profile "$PRIVATE_SRC16_PROFILE" \
-  --out "$PRIVATE_GAP_CENSUS_JSON" \
-  --controller-run
-```
+Exact class: `PhysicalMissingState.OBSERVED_STORAGE_VALUE`, **18,105 cells** in
+126 response slots.  These were not made substantive merely because a raw value
+exists.  No rule was added for them; the overlay leaves them unresolved.  This
+is the exact remaining mapping decision class.
 
-`$PRIVATE_SRC16_PROFILE` is the existing exact SRC16 profile containing
-`binding_dir`, `config`, and `source_path`.  The script:
+No source token values were emitted to logs, model context, or Git.
 
-1. loads the pinned config and exact current resolver;
-2. verifies config file SHA `1106de3e…`, canonical SHA `c26e8e71…`, source SHA
-   `e368fc0f…`, currentness and revocation;
-3. performs one bounded physical pass;
-4. writes only aggregate per-slot unresolved tokens/counts, missing/duplicate
-   slot counts, and no respondent rows, identity keys, source bytes, or
-   decoded response table.
+## Synthetic positive/refusal
 
-The output must remain local/private, not Git.  It collects all mapped-slot
-unresolved coverage at once, not just age.
+`synthetic_declared_missing_witness.py` uses synthetic cells only:
 
-## Exact repair content after census
+- declared range token -> `MISSING` rule: **YES**;
+- observed token not made substantive: **YES**;
+- observed token not dropped: **YES**;
+- no authority expansion: **YES**;
+- provenance pinned: **YES**;
+- one synthetic positive and one refusal path: **PASS**.
 
-The exact repair is to add, for each **observed** unresolved age token returned
-by the census, a rule with the original token and physical state:
+Output: `synthetic_declared_missing_witness.out`.
 
-```json
-{
-  "raw_value": "<observed decoded age token>",
-  "missing_state": "OBSERVED_STORAGE_VALUE",
-  "source_missing_declaration": null,
-  "response_state": "SUBSTANTIVE_RESPONSE",
-  "occurrences": "<copy the existing age scalar occurrence exactly>",
-  "canonical_value": null,
-  "transform_authority_ref": null,
-  "extra_authority_refs": []
-}
-```
+## Metadata admission and provenance
 
-Only tokens actually observed in the exact source are added.  Unobserved
-arbitrary codes remain unbound.  No canonical recoding, range invention,
-category invention, or field discard is performed.  Other unresolved slots in
-the census are reported together and must be adjudicated from their own exact
-codebook evidence; they are not silently coerced.
+Base pinned metadata admission still passes through the actual source adapter:
 
-This worker has not mutated the pinned config or published an override because
-the census tokens have not been supplied.  That census output is the exact
-missing evidence required to finish the age construction mapping.
-
-## Metadata-only agreement
-
-`generic_cli.py --mode src16-metadata` still passes through the actual source
-adapter:
-
-- source SHA `e368fc0f…`;
 - config file `1106de3e…`, canonical `c26e8e71…`;
+- source SHA `e368fc0f…`;
 - 1,613 rows / 216 physical / 157 response / 2 coordinates / 0 weights;
 - `CURRENT_GRANTED`, no revocation;
-- other-source, analysis-purpose and incorrect-scope cases refused with
-  `EXACT_REQUEST_MISMATCH`;
-- `source_read_performed: false`.
+- exact source-scope negative cases refused;
+- source read: false.
 
-## Residual / scope
+The private overlay records the base config file/canonical hashes, census hash,
+source SHA, `authority_expansion: false`, and `source_reopened: false`.
+A private candidate config built by appending these 243 rules loads through
+`load_source_config` with 157 response slots.  Candidate admission passes; its
+file digest is private and is not published.  No source was opened for this
+test.
 
-- Native SRC16 remains **READY-INPUT, NOT RERUN**.
-- Exact age mapping remains blocked only on the aggregate census token set.
-- No new wave, Q2/science, protected write, runner redesign beyond the bounded
-  aggregate precheck, alternate lifecycle, or DHIKR was added.
-- Source config and authorization identity remain pinned; `.sav` unchanged.
+## Remaining state
+
+- 40,592 declared source-missing cells now have exact typed overlay rules.
+- 18,105 observed-storage cells remain explicitly unresolved and need an exact
+  decision; they are not substantive by existence.
+- The private overlay is not yet applied to the public pinned config because it
+  is data-derived and must remain outside Git.
+- Native SRC16 was not launched or rerun.  No new grant, scope, wave, Q2/science,
+  protected write, or DHIKR was added.
 
 ## Files
 
-- `common/mapped_slot_precheck.py`
-- `common/gap_census.py`
-- `common/synthetic_mapping_witness.py`
-- `common/sqlite_free_single_pass.py`
-- `common/sqlite_free_witness.py`
-- `sourcefree_precheck_test.out`
-- `sourcefree_precheck_receipts.json`
-- `synthetic_mapping_witness.out`
-- `src16_metadata_mapping_repair.out`
-- `src16_denial.out`
+- `common/declared_missing_mapping.py`
+- `common/synthetic_declared_missing_witness.py`
+- `declared_missing_replay.out`
+- `declared_missing_overlay_admission.out`
+- `synthetic_declared_missing_witness.out`
+- `src16_metadata_declared_missing.out`
+- `src16_age_refusal.out`
 - `receipt.json`
