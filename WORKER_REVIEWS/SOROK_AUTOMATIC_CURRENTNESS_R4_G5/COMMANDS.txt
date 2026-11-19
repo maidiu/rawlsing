@@ -1,0 +1,102 @@
+# SOROK automatic currentness R4 focused receiving — commands
+# cwd /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+# host Darwin 22.6.0 x86_64 / macOS 13.7.8; Python /private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3
+# Product read-only; writes only WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5 and
+# .local-logs/sorok-programma-automatic-currentness-r4-receiving-20261116-r1.
+# No author live key/identity/capability value was read, copied or printed.
+# The 34-test run used a reviewer-generated sandbox key/identity.
+
+REPO=/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing
+REV=$REPO/WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5
+LOGS=$REPO/.local-logs/sorok-programma-automatic-currentness-r4-receiving-20261116-r1
+PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+RT=$REPO/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+AUTH=/Users/matthewsmith/.codex/worktrees/sorok1037-b-receipt-g5/Rawlsing
+STATE=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/sorok-automatic-currentness-20261115
+LAUNCHER=/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py
+
+# 1. Source/identity pins
+git rev-parse HEAD
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py
+git hash-object WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/tests/test_launch_auth_boundary.py
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+git hash-object .github/workflows/sorok-operational-currentness-r1.yml
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_task_packets_20261112.json
+git hash-object SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENTNESS_FROZEN_SOURCE_R1/original_gmt_overlay_20261112.json
+# runtime 1df8c98b…, test e19e1241…, focused R4 b3bb1fa9…, frozen d971b6ea…, f76c0d90…, 17cfae53…, 474befcb…
+
+# 2. Exact old fake launcher against frozen old R3 source and corrected source
+# old source worktree: 0b2664a8353f5957e1dad4bb5678be66fa9470ef
+# original fake launcher: probes/fake_attest_launch.original.py sha256 c596188f…
+# matching-session fake launcher: probes/fake_attest_launch.matching_session.py sha256 7ede7468…
+# old source: attest exit 0, TRUSTED_LAUNCH_ATTESTED; old fake review exit 0.
+# corrected source exact: attest exit 1 TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH;
+#   fake review exit 1 UNTRUSTED_CONTROLLER_RUN.
+# corrected matching session: attest exit 1 LAUNCHER_PROOF_REQUIRED.
+# Raw: evidence/raw/fake_attest_witness_old/, evidence/raw/fake_attest_witness_corrected/,
+#      evidence/raw/matching_session/, evidence/old_source_fake_review_intake.*,
+#      evidence/corrected_source_fake_review_intake.*.
+
+# 3. Actual installed launcher positive (auto-attestation)
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -B \
+  WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/probes/installed_launcher_positive.r4_adapted.py \
+  > "$REV/evidence/installed_launcher_positive_stdout.log" \
+  2> "$REV/evidence/installed_launcher_positive_time.log"
+# exit 0; launch exit 0; attestation exit 0; provenance TRUSTED_LAUNCHER_ATTESTATION.
+
+# 4. 34 focused tests (17 original + 11 R3 + 6 R4), reviewer-generated sandbox key
+HOME=$LOGS/test-home \
+PYTHONPATH=/Users/matthewsmith/Library/Python/3.11/lib/python/site-packages \
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -m pytest -p no:cacheprovider -q \
+  SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py \
+  WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R3/tests/test_material_auth_boundary.py \
+  WORKER_RETURNS/SOROK_AUTOMATIC_CURRENTNESS_R4/tests/test_launch_auth_boundary.py \
+  > "$REV/evidence/checks/r4_tests_stdout.log" \
+  2> "$REV/evidence/checks/r4_tests_time.log"
+# exit 0; 34 passed in 5.79s.
+
+# 5. Retained material and fake reviewer probes
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -B \
+  WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/probes/material_auth_probe.r4_adapted.py \
+  > "$REV/evidence/material_auth_probe_stdout.log" \
+  2> "$REV/evidence/material_auth_probe_time.log"
+TMPDIR=$LOGS/tmp /usr/bin/time -l "$PY" -B \
+  WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/probes/fake_reviewer_run_probe.r4_adapted.py \
+  > "$REV/evidence/fake_reviewer_probe_stdout.log" \
+  2> "$REV/evidence/fake_reviewer_probe_time.log"
+# material exit 0 PASS 7 fixed/0 gaps; fake reviewer exit 0, underlying refusal UNTRUSTED_CONTROLLER_RUN.
+
+# 6. Required local workflow equivalents (macOS, not hosted Actions)
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --self-test --status
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py
+"$PY" SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --no-git --status
+"$PY" -m py_compile CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
+"$PY" CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
+# all exit 0; changed WORKER_COMMISSIONS count 0, selector not applicable.
+
+# 7. Live sandbox from author pair copy (author live pair read-only)
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_before.json" 2> "$REV/evidence/live_status_before.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" startup --reconcile \
+  > "$REV/evidence/live_startup.json" 2> "$REV/evidence/live_startup.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" status \
+  > "$REV/evidence/live_status_after.json" 2> "$REV/evidence/live_status_after.err"
+TMPDIR=$LOGS/live-sandbox/tmp PYTHONDONTWRITEBYTECODE=1 "$PY" -B "$RT" \
+  --config "$LOGS/live-sandbox/repo/config.json" what-next \
+  > "$REV/evidence/what_next.out" 2> "$REV/evidence/what_next.err"
+# exits 2/2/2/2 with four source items; 16 refs; PR 200; issue 403.
+
+# 8. Freeze sequence (performed after this log)
+# git add WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5
+# git commit -m "review: freeze automatic currentness R4 G5 evidence (ACCEPT_SCOPED_SOURCEFREE)"
+# Evidence commit becomes receipt review_commit.
+# Create REVIEW_RECEIPT.json with runtime/test/VERDICT blobs at that commit;
+# commit only receipt later. The actual prebound installed hook intakes it after
+# this reviewer process exits. No manual fabricated completion or live key read.

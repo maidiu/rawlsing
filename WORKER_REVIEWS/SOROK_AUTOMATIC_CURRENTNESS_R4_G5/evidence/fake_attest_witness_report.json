@@ -1,0 +1,52 @@
+{
+  "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_FAKE_ATTEST_WITNESS_REVIEW@1",
+  "original_launcher_sha256": "c596188f68e4228e8a4a7bc7b5aa9072e42eb8df8690965d3431f837659f7252",
+  "matching_launcher_sha256": "7ede7468bd093f2ce570947cbe034e48bf52e5e75e4dfbb3f71b8ec396126b1b",
+  "old_source": {
+    "source": "0b2664a8353f5957e1dad4bb5678be66fa9470",
+    "attest_exit": "0",
+    "attest_state": "TRUSTED_LAUNCH_ATTESTED",
+    "fake_review_exit": "old_source_fake_review_exit=0"
+  },
+  "corrected_exact": {
+    "attest_exit": "1",
+    "attest_error": "SOROK_CURRENTNESS_RUNTIME_RED: TRUSTED_LAUNCH_ACTUAL_SESSION_MISMATCH",
+    "fake_review_exit": "corrected_source_fake_review_exit=1",
+    "fake_review_error": "SOROK_CURRENTNESS_RUNTIME_RED: UNTRUSTED_CONTROLLER_RUN: /Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-r4-receiving-20261116-r1/fake-attest-witness/corrected/repo/controller-state/fake-attest"
+  },
+  "corrected_matching_session": {
+    "launcher_exit": 0,
+    "attest_exit": "1",
+    "error": "SOROK_CURRENTNESS_RUNTIME_RED: LAUNCHER_PROOF_REQUIRED"
+  },
+  "installed_launcher_positive": {
+    "attestation": {
+      "exit_code": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_tail": "",
+      "stdout_sha256": "b69872838e00feac57d277501a98970b46073568a17147639e817c93129f66cc"
+    },
+    "launch_exit": 0,
+    "launch_stderr": "",
+    "launch_stdout": "{\n  \"job_id\": \"r4-installed-launcher-positive\",\n  \"child_pid\": 3338,\n  \"supervisor_pid\": 3337,\n  \"observer_pid\": 3339,\n  \"run_dir\": \"/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-r4-receiving-20261116-r1/installed-launcher-positive/repo/controller-state/r4-installed-launcher-positive\",\n  \"launch_is_not_completion\": true\n}\n",
+    "launcher_path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+    "launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+    "positive": true,
+    "registry_entry": {
+      "authorization": "LAUNCHER_HMAC_LAUNCH_SPEC",
+      "expected_session": "ses_r4_installed_positive",
+      "launcher_path": "/Users/matthewsmith/.local/share/rawlsing-controller/local-automation/64d52127/launch.py",
+      "launcher_sha256": "cfd180ac3bfc4ef60ea226d7a6975cc08ecb27600e68597a96f5719e9ca2c3b2",
+      "migration": false,
+      "provenance": "TRUSTED_LAUNCHER_ATTESTATION",
+      "role": "IMPLEMENTER",
+      "run_dir": "/Users/matthewsmith/.codex/worktrees/sorok1038-custody-g5/Rawlsing/.local-logs/sorok-programma-automatic-currentness-r4-receiving-20261116-r1/installed-launcher-positive/repo/controller-state/r4-installed-launcher-positive",
+      "session": "ses_r4_installed_positive",
+      "task_id": "AUTOMATIC_CURRENTNESS_R1"
+    },
+    "schema": "SOROK_AUTOMATIC_CURRENTNESS_R4_INSTALLED_LAUNCHER_POSITIVE@1",
+    "verdict": "PASS"
+  },
+  "conclusion": "Old source exact hostile witness reproduced bypass; corrected source refuses exact old witness at actual-session binding and matching-session caller-authored launcher for missing installed-launcher proof. Actual installed launcher auto-attested a sandbox qualification run. The separate installed-launcher synthetic REVIEWER binding test is outside this signed receipt and is not used as the actual review.",
+  "terminal": "STOP"
+}

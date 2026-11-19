@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_CURRENTNESS_REVIEW_RECEIPT@1",
+  "task_id": "AUTOMATIC_CURRENTNESS_R1",
+  "implementation_commit": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+  "implementation_code_sha": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447",
+  "test_code_sha": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1",
+  "author_session": "ses_e21a481bfffefyvpxaeFaAOFvQ",
+  "reviewer_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+  "reviewer_role": "same_distinct_independent_nonauthor",
+  "review_commit": "723270372948d53602bcba88c8f0040026663b4a",
+  "review_pr": null,
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "engineering_verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "scientific_verdict": "HELD",
+  "authority_verdict": "HOLD_SOURCE_AUTHORITY",
+  "accept_scoped": true,
+  "scope": "EXACT_OPERATIONAL_CURRENTNESS_MECHANISM_UNDER_TRUSTED_LOCAL_OPERATOR_CONTROLLER_BOUNDARY; installed-launcher proof and actual-session binding; external issue/comment connector and CI holds; no full-original/native/protected claim",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "full_original_claim": "NOT_ESTABLISHED",
+  "protected_ci": "UNAVAILABLE_BILLING",
+  "adoption": "PENDING_PROTECTED_CI_AND_ADOPTION",
+  "source_trust": "REAL_LOCAL_NONAUTHOR_REVIEW",
+  "source_documents": [
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/operational_currentness_runtime_r1.py",
+      "git_blob": "1df8c98b87323f48cdfc6c5f6da4c82846bfa447"
+    },
+    {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/test_operational_currentness_runtime_r1.py",
+      "git_blob": "e19e1241aa2e34d4a037f73cd9dca5222833f9d1"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/VERDICT.json",
+      "git_blob": "ce9bb67b93edd38ff5850f5febcb2dc1ba8a785d"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/EVIDENCE.json",
+      "git_blob": "6d5c91e7fe8d2522374668d284c8ed96e633f381"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/00_RECEIVING.md",
+      "git_blob": "ab0470702936601f47856fdc64b6eaffba65f777"
+    },
+    {
+      "path": "WORKER_REVIEWS/SOROK_AUTOMATIC_CURRENTNESS_R4_G5/G5_HANDOFF.md",
+      "git_blob": "d5492cfd9c751c1cbcfb3621a886f3c72d9ace3b"
+    }
+  ],
+  "reviewed_at_utc": "2026-11-16T08:13:31.252214+00:00",
+  "reasons": [
+    "exact old R3 fake launcher reproduced bypass on old source; corrected source refuses actual-session mismatch",
+    "matching-session fake launcher refused LAUNCHER_PROOF_REQUIRED",
+    "actual installed launcher auto-attested with fixed path/hash and TRUSTED_LAUNCHER_ATTESTATION",
+    "34 focused tests pass with reviewer-generated sandbox key; material 7/0; fake unenrolled reviewer refused",
+    "issue/comment 403 is a source-authority HOLD and CI is unavailable; no full/native/protected claim"
+  ],
+  "remaining_holds": {
+    "connector": "HOLD_SOURCE_AUTHORITY for issue/comment HTTP 403; no full currentness",
+    "protected_ci": "UNAVAILABLE_BILLING; no Actions PASS or protected adoption",
+    "native_science_actor_human": "HELD",
+    "full_original": "NOT_ESTABLISHED",
+    "protected_merge": "none"
+  },
+  "runtime_intake": {
+    "manual_fabrication": false,
+    "path": "AUTOMATIC_INSTALLED_CONTROLLER_HOOK_AFTER_REAL_PROCESS_EXIT",
+    "expected_source": "e3c2349dac018e8339b99abda87af68ebe1fb9b8",
+    "expected_role": "REVIEWER",
+    "expected_session": "ses_e2186e745ffecK1Ilg4cw26pVu",
+    "review_job": "sorok-programma-automatic-currentness-r4-receiving-20261116-r1"
+  },
+  "terminal": "STOP"
+}
