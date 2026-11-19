@@ -16,7 +16,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CAND = Path(os.environ["ANVIL_CANDIDATE_TREE"])
-OPER = Path("/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118")
+OPER = HERE / "common"
 sys.path[:0] = [str(CAND), str(OPER), str(HERE)]
 from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, load_source_config, canonical_config_hash, source_read_request_from_config, decode_fixture_config, row_native_keys_from_transport
 from rawlsing_next.tests.test_pyat960_s1e_support import source_fixture
@@ -33,31 +33,10 @@ def sourcefree(root: Path) -> dict:
     root=Path(root).absolute(); root.mkdir(mode=0o700,parents=True,exist_ok=True)
     private=root/'private'; private.mkdir(mode=0o700,exist_ok=True)
     f=source_fixture(root/'fixture', keyed=True, values=(1.,2.,0.,7.,None,-1.))
-    from rawlsing_next import pre553_source_i02_handoff as handoff
-    inc=decode_fixture_config(f['config'], f['path'])
-    try:
-        keys=row_native_keys_from_transport(f['config'], incidence=inc, batch_size=2)
-    finally:
-        inc.close()
-    original=handoff.build_governed_c11_projection
-    def keyed_projection(config, *, source_sha256=None, row_count=None, row_native_keys=None):
-        return original(config, source_sha256=source_sha256, row_count=row_count,
-                        row_native_keys=keys if row_native_keys is None else row_native_keys)
-    original_project=handoff._project_spooled_families
-    def keyed_project(*args, **kwargs):
-        if kwargs.get('row_native_keys') is None:
-            kwargs=dict(kwargs); kwargs['row_native_keys']=keys
-        return original_project(*args, **kwargs)
-    handoff.build_governed_c11_projection=keyed_projection
-    handoff._project_spooled_families=keyed_project
     progress=[]
-    try:
-        rec=build_single_pass(config=f['config'], source_path=f['path'], private_root=private,
-                              chunk_rows=2, compact_spool=True,
-                              progress=lambda x: progress.append(x))
-    finally:
-        handoff.build_governed_c11_projection=original
-        handoff._project_spooled_families=original_project
+    rec=build_single_pass(config=f['config'], source_path=f['path'], private_root=private,
+                          chunk_rows=2, compact_spool=True,
+                          progress=lambda x: progress.append(x))
     estate=open_stream_native_estate(private, rec.path, rec.manifest_sha256, rec.roots,
                                      current_authorizer=lambda roots: roots==rec.roots,
                                      progress=lambda x: progress.append(x))
@@ -123,8 +102,6 @@ def src16_run(root: Path) -> dict:
     source_path=Path(os.environ['ANVIL_SRC16_SOURCE_PATH']).absolute()
     resolver,_=_load_resolver(binding_dir)
     cfg=load_source_config(cfg_path); root=Path(root).absolute(); private=root/'private'; private.mkdir(mode=0o700,parents=True,exist_ok=True)
-    if cfg.document['respondents'].get('source_native_key_slot'):
-        raise Refusal('SRC16_KEY_SLOT_REQUIRES_SAME_DECODE_ROW_NATIVE_KEYS_IN_SHARED_BUILD','respondents.source_native_key_slot')
     # The shared single-pass path checks resolver/current before decoding.
     rec=build_single_pass(config=cfg,source_path=source_path,private_root=private,
                           resolver=resolver,host=resolver.request.host,purpose=resolver.request.purpose,

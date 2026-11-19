@@ -1,114 +1,128 @@
-# SRC16 shared SQLite-free runner injection
+# SRC16 shared SQLite-free runner — real key wiring
 
-## Verdict
+## Readiness
 
-**Sourcefree keyed path: PASS.** **SRC16 metadata admission/refusal: PASS.**
-**Native SRC16 source launch: READY-INPUT / EXACT BLOCKER — not executed.**
+- **KEYED SOURCEFREE THROUGH THE ACTUAL COMMON SUPERVISOR/PRODUCER/READER: PASS**
+- **SRC16 EXACT METADATA ADMISSION/NEGATIVE RESOLVER: PASS**
+- **SRC16 NATIVE SOURCE: READY-INPUT, NOT RUN; checkpoint key-resume remains a separate proof**
+- No original source access or launch by this worker.
 
-No original source bytes were opened. No private path, config value or grant
-bytes are published here.
+## Surgical common-operator patch
 
-## Shared operator injection
+Patch target: `MEASUREMENT_PREP@1f8b61b81…`.
 
-`generic_cli.py` is an executable packaged successor over the existing shared
-operator at `MEASUREMENT_PREP@1f8b61b8…`:
+`common/sqlite_free_single_pass.py` now:
 
-- `sourcefree` calls the existing shared `build_single_pass` and
-  `open_stream_native_estate` (no separate GSS writer).
-- `src16-metadata` loads the exact SRC16 config through the current parser and
-  the exact existing private resolver; it performs metadata-only admission and
-  negative cases.
-- `src16-run` is the owner-only source injection path. It refuses before source
-  I/O because the exact SRC16 config declares a source-native key slot and the
-  shared single-pass builder does not yet pass same-decode `row_native_keys`
-  into its projection.
+- derives `row_native_keys_from_transport` from the **same already-admitted
+  incidence**;
+- passes those keys through the existing projection and spooling calls;
+- no second decode and no production-projection monkeypatch.
 
-The sourcefree keyed test injects derived keys from the same generated fixture
-decode into the existing projection, not a new writer.
+`common/sqlite_free_witness.py` now has one common `--sourcefree` branch:
+the existing supervised `--mode run` creates its child producer, waits for
+producer exit, then launches the real fresh reader. It uses the existing
+progress file, stderr logs, RSS/free-space caps and supervisor receipt.
 
-## Safe sourcefree keyed evidence
+`generic_cli.py` is the per-wave source adapter/CLI:
 
-```json
-{"status":"SOURCEFREE_KEYED_PASS","keyed":true,
- "family_counts":{"EmpiricalUniverse":1,"RespondentIdentity":6,
- "QuestionVariableBinding":1,"RespondentEvent":6,
- "RoutingEligibilityFact":6,"EmpiricalCoordinateFact":6,
- "WeightMeasureFact":0,"AuthoritySnapshot":7,
- "SourceUniverseRelation":0,"EmpiricalPredicateReplayBinding":0,
- "ComparatorReplayBinding":0,"DiscoveryBranchReplayBinding":0,
- "StructuralAdmissionReplayBinding":0},
- "proof_schema":"ANVIL_STREAM_C11_ESTATE@1",
- "sqlite_present":false,
- "progress_phases":["checkpoint_ready","stream_start","family_written",
- "footers_verified","published","reopened_validation"],
- "source_read":false}
+- `sourcefree`: shared common build/reader path with a generated keyed fixture;
+- `src16-metadata`: exact config load plus exact existing private resolver
+  admission/negative checks;
+- `src16-run`: exact config/source/binding/request injection into the same
+  common `build_single_pass`; provided for owner launch only.
+
+Private SRC16 paths/config values/grant bytes are read only from owner-supplied
+environment variables and are never printed or Git-published. The explicit
+SRC16 key refusal was removed because the common build now injects keys.
+
+## Actual supervisor evidence
+
+Command (private candidate tree is supplied by env; no private path published):
+
+```bash
+ANVIL_CANDIDATE_TREE="$PRIVATE_CANDIDATE_TREE" \
+PYTHONPATH="$PRIVATE_CANDIDATE_TREE:$RETURN/common" \
+python3 "$RETURN/common/sqlite_free_witness.py" \
+  --mode run --sourcefree \
+  --candidate-tree "$PRIVATE_CANDIDATE_TREE" \
+  --candidate-patch "<exact candidate patch>" \
+  --config "<unused sourcefree config path>" \
+  --binding-dir "<existing binding dir>" \
+  --work-root "$PRIVATE_WORK_ROOT"
 ```
 
-The actual CLI performed normal build and fresh native reopen. No `.sqlite`
-artifact was present. Existing caps/progress path was used unchanged.
+Result:
 
-## SRC16 metadata-only admission
+```json
+{"schema":"ANVIL_ALL35_WITNESS_SUPERVISOR@1","status":"COMPLETE",
+ "producer_exit":0,"reader_exit":0,"abort":null,
+ "elapsed":2.0158314689761028,"samples":7,
+ "rss_peak":109633536,"free_min":37048590336,
+ "caps":{"rss":6442450944,"startup_free_floor":26907826727,
+ "in_flight_free_floor":8589934592,
+ "staging_budget":18317892135,"wall_cutoff":null}}
+```
 
-Exact pinned config:
+Producer and reader receipts:
 
-- source: `SRC16`, `GSS1972.sav`
-- source SHA-256: `e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204`
-- config file SHA-256: `1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7`
-- config canonical SHA-256: `c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534`
-- shape: 1,613 rows; 216 physical slots; 157 response slots; 2 coordinates;
+- keyed sourcefree: 10 identities/events/routing/coordinates, 1 universe,
+  1 question, 7 authority snapshots, 0 weights;
+- producer schema `ANVIL_STREAM_C11_ESTATE@1`;
+- reader counts equal producer counts;
+- no `.sqlite` artifact under the supervisor root;
+- producer exit 0, producer gone before reader, reader exit 0.
+
+The direct shared sourcefree CLI (`generic_cli.py --mode sourcefree`) also
+passes with the common key path and no monkeypatch.
+
+## SRC16 exact metadata admission
+
+- source: SRC16 / GSS1972.sav
+- source SHA-256 `e368fc0f…`
+- config file SHA-256 `1106de3e…`
+- canonical `c26e8e71…`
+- 1,613 rows; 216 physical slots; 157 response slots; 2 coordinates;
   0 weights
-- purpose/scope: `FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY` /
-  `C11_CONSTRUCTION_ONLY`, `NO_Q2`, `NO_SEMANTIC_ADOPTION`
-- currentness: `CURRENT_GRANTED`; revocation: none
-- source read performed: **false**
+- purpose/scope construction-only, `CURRENT_GRANTED`, no revocation
+- exact private resolver admitted the exact request
+- negative resolver cases: other source, analysis purpose, incorrect scope all
+  refused with `EXACT_REQUEST_MISMATCH`
+- source read: **false**
+- no private path/config value/grant bytes printed.
 
-Metadata admission result: `SRC16_METADATA_ADMISSION_PASS`.
-
-Negative refusal cases all pass without source read:
-`other_source`, `analysis_purpose`, `incorrect_scope` →
-`EXACT_REQUEST_MISMATCH`.
-
-Grant hash is retained as metadata; grant bytes and private paths are not
-published.
-
-## Exact native blocker
-
-`src16-run` refuses before source:
-
-`SRC16_KEY_SLOT_REQUIRES_SAME_DECODE_ROW_NATIVE_KEYS_IN_SHARED_BUILD:
-respondents.source_native_key_slot`
-
-This is the existing shared single-pass field-proof gap, not a new SRC16 grant,
-config or scientific issue. The existing resolution is
-`row_native_keys_from_transport` over the same admitted decode; it must be
-passed through the shared build path before a real SRC16 launch. No blanket
-re-audit was performed.
-
-## Exact owner launch form (not executed)
-
-Environment values are supplied privately by the owner; no private paths are
-published here.
+## Native launch form — not run
 
 ```bash
 ANVIL_CANDIDATE_TREE="$PRIVATE_CANDIDATE_TREE" \
 ANVIL_SRC16_GRANT_DIR="$PRIVATE_SRC16_GRANT_DIR" \
 ANVIL_SRC16_CONFIG="$PRIVATE_SRC16_CONFIG" \
 ANVIL_SRC16_SOURCE_PATH="$PRIVATE_EXACT_SRC16_SOURCE" \
-PYTHONPATH="$PRIVATE_CANDIDATE_TREE:$SHARED_OPERATOR_DIR:$RETURN_DIR" \
-python3 generic_cli.py --mode src16-run --root "$PRIVATE_WORK_ROOT"
+PYTHONPATH="$PRIVATE_CANDIDATE_TREE:$RETURN/common:$RETURN" \
+python3 "$RETURN/generic_cli.py" --mode src16-run --root "$PRIVATE_WORK_ROOT"
 ```
 
-This is not ready to launch until the key-slot pass-through is added to the
-same shared build path.
+The exact SRC16 key-slot pass-through exists in the common build now. Owner
+launch is not performed by this worker.
+
+## Residual
+
+- The common build derives and uses keys in the normal one-pass path. Checkpoint
+  serialization of exact typed key witnesses for a **keyed resume** is not yet
+  proven; the existing compact checkpoint/resume remains valid for sourcefree
+  non-keyed and its prior tests. This is the precise residual; no sourcefree
+  fixture or source launch is blocked in the normal no-resume path.
 
 ## Files
 
+- `common/sqlite_free_single_pass.py`
+- `common/sqlite_free_witness.py`
+- `common/sourcefree_fixture.py`
+- `common/streaming_estate.py`
 - `generic_cli.py`
 - `sourcefree_test.out`
+- `sourcefree_supervisor.out`
 - `src16_metadata_test.out`
-- `src16_run_refusal.out`
 - `receipt.json`
 
-No source bytes, respondent payload, config values, grant bytes, private paths,
-product, protected refs, Q2/science, or other-wave authority were added or
-changed.
+No per-wave lifecycle, duplicate investigation, protected edits, DHIKR,
+original source read, or new GSS writer was added.

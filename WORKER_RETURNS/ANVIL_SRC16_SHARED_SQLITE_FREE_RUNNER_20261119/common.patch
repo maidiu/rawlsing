@@ -1,0 +1,140 @@
+--- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_single_pass.py	2026-11-19 01:28:59
++++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_single_pass.py	2026-11-19 03:03:33
+@@ -350,6 +350,7 @@
+ ):
+     """One admitted decode, exact projected sections, authenticated checkpoint, one writer pass."""
+     from rawlsing_next import pre553_source_i02_handoff as handoff
++    from rawlsing_next.pre553_r157_projection_adapter import row_native_keys_from_transport
+     from streaming_estate import write_streaming_estate
+     doc = config.document if hasattr(config, "document") else config
+     original = doc["binding"]["identity_class"] == "ORIGINAL_SOURCE"
+@@ -373,9 +374,11 @@
+             raise handoff.SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
+         if incidence.row_count != doc["binding"]["row_count"]:
+             raise handoff.SourceI02Refusal("DECODED_SOURCE_ROWS_MISMATCH")
++        row_native_keys = row_native_keys_from_transport(
++            config, incidence=incidence, batch_size=batch_size)
+         projection = handoff.build_governed_c11_projection(
+             config, source_sha256=doc["binding"]["source_sha256"],
+-            row_count=doc["binding"]["row_count"], row_native_keys=None)
++            row_count=doc["binding"]["row_count"], row_native_keys=row_native_keys)
+         universe_ref = projection.universes[0].ref
+         root = Path(private_root).absolute()
+         spool_dir = Path(tempfile.mkdtemp(prefix=".s1e-i02-spool-", dir=root))
+@@ -390,7 +393,7 @@
+             counts, _metrics, _slots, _key = handoff._project_spooled_families(
+                 config=config, projection=projection, incidence=incidence,
+                 spool_paths=write_paths, batch_size=batch_size,
+-                row_native_keys=None)
++                row_native_keys=row_native_keys)
+             manifest, source, declared_counts, _absences = handoff._manifest_and_sections(
+                 projection=projection, incidence=incidence,
+                 spool_paths=actual_paths, counts=counts,
+--- MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py	2026-11-19 02:26:55
++++ IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119/common/sqlite_free_witness.py	2026-11-19 03:03:43
+@@ -20,10 +20,11 @@
+ from typing import Any, Mapping
+
+ HERE = Path(__file__).resolve().parent
++SOURCEFREE_FIXTURE = HERE / "sourcefree_fixture.py"
+ BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
+ FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
+ FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
+-SINGLE_PASS_SHA = "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e"
++SINGLE_PASS_SHA = "d70de4b9a82f0434833fcf998181a98bd045f37558b39270f22522c2f4e003dd"
+ STREAMING_ESTATE_SHA = "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
+ RAM_CAP = 6 * 1024**3
+ COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
+@@ -198,6 +199,20 @@
+ def producer(args) -> int:
+     verify_candidate(args.candidate_tree, args.candidate_patch)
+     sys.path.insert(0, str(args.candidate_tree))
++    if args.sourcefree:
++        from sourcefree_fixture import make_keyed_fixture
++        from sqlite_free_single_pass import build_single_pass
++        root=Path(args.root).absolute(); private=root/"private"; private.mkdir(mode=0o700,parents=False,exist_ok=True)
++        cfg,path=make_keyed_fixture(root/"sourcefree")
++        progress_path=root/"progress.jsonl"
++        def progress(update):
++            with progress_path.open("a",encoding="utf-8") as stream:
++                stream.write(json.dumps(update,sort_keys=True)+"\n"); stream.flush()
++            print(json.dumps(update,sort_keys=True),file=sys.stderr,flush=True)
++        receipt=build_single_pass(config=cfg,source_path=path,private_root=private,chunk_rows=2,compact_spool=True,progress=progress)
++        payload={"schema":"ANVIL_ALL35_WITNESS_PRODUCER_RECEIPT@1","producer_pid":os.getpid(),"source_id":"SOURCEFREE","q217":{"status":"NOT_APPLICABLE"},"scoped_counts":{"response_slots":len(cfg.document["response_slots"]),"coordinate_slots":len(cfg.document["coordinate_slots"]),"physical_slots":len(cfg.document["physical_slots"])},"grant_ref":None,"decision_ref":None,"source_sha256":cfg.document["binding"]["source_sha256"],"row_count":cfg.document["binding"]["row_count"],"i02":{k:getattr(receipt.roots,k) for k in ("logical","physical","release","source","replay","universe","schema")},"proof_schema":receipt.roots.schema,"manifest_sha256":receipt.manifest_sha256,"estate_path":receipt.path,"family_counts":dict(receipt.family_counts),"single_pass_path":True,"resumed_from_checkpoint":False,"checkpoint":None,"i02_passes":1,"retained_bytes":receipt.retained_bytes,"source_read_performed":False,"joined_q2":False,"authorized_executable_q2":False,"issued_workload":False}
++        (root/"producer_receipt.json").write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n");(root/"producer.stdout").write_text("");(root/"producer.stderr").write_text("")
++        print(json.dumps({"status":"PRODUCER_COMMITTED","path":receipt.path,"single_pass":True,"sourcefree":True}));return 0
+     from sqlite_free_single_pass import build_single_pass, resume_single_pass
+     from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
+     wr, pin = _scoped()
+@@ -300,6 +315,17 @@
+ def reader(args) -> int:
+     verify_candidate(args.candidate_tree, None)
+     sys.path.insert(0, str(args.candidate_tree))
++    if args.sourcefree:
++        from streaming_estate import StreamRoots, open_stream_native_estate
++        from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
++        root=Path(args.root).absolute();receipt=json.loads((root/"producer_receipt.json").read_text());producer_pid=int(receipt["producer_pid"])
++        probe=subprocess.run(["ps","-p",str(producer_pid),"-o","pid="],capture_output=True,text=True)
++        if probe.stdout.strip(): raise CallerRefusal("PRODUCER_STILL_ALIVE_BEFORE_READER")
++        held=StreamRoots(**receipt["i02"])
++        estate=open_stream_native_estate(root/"private",exact_path=receipt["estate_path"],manifest_sha256=receipt["manifest_sha256"],roots=held,current_authorizer=lambda r:r==held)
++        counts={f:sum(1 for _ in estate.iter_family(f)) for f in ALL_FAMILIES}
++        payload={"schema":"ANVIL_ALL35_WITNESS_READER_RECEIPT@1","reader_pid":os.getpid(),"producer_pid":producer_pid,"producer_exited_before_reader":True,"estate_path":receipt["estate_path"],"manifest_sha256":receipt["manifest_sha256"],"i02":receipt["i02"],"family_counts":counts,"reconstructed_release_ref":None,"stream_release_ref":receipt["i02"]["release"],"legacy_release_comparison":"NOT_APPLICABLE_SOURCEFREE","source_read_performed_by_reader":False,"source_path_opened_stat_hashed_decoded_by_reader":False}
++        (root/"reader_receipt.json").write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n");print(json.dumps({"status":"READER_OPENED","counts":counts,"sourcefree":True}));return 0
+     from streaming_estate import StreamRoots, open_stream_native_estate
+     from rawlsing_next.pre553_source_i02_streams import ALL_FAMILIES
+     root = Path(args.root).absolute()
+@@ -380,7 +406,7 @@
+
+
+ def _rss(pid: int) -> int:
+-    vendor = HERE.parent / "ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor"
++    vendor = Path("/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ENGINEERING_MEASUREMENT_PREP_20261117/vendor")
+     sys.path.insert(0, str(vendor))
+     from court_instrumentation import process_tree_rss_bytes
+     return process_tree_rss_bytes(pid)
+@@ -407,9 +433,9 @@
+
+ def supervisor(args) -> int:
+     verify_candidate(args.candidate_tree, args.candidate_patch)
+-    if not args.authorized_source_launch:
++    if not args.sourcefree and not args.authorized_source_launch:
+         raise CallerRefusal("EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED")
+-    if args.runtime_config is None:
++    if not args.sourcefree and args.runtime_config is None:
+         raise CallerRefusal("RUNTIME_OVERLAY_REQUIRED_FOR_RUN")
+     work = Path(args.work_root).absolute()
+     work.mkdir(mode=0o700, parents=True, exist_ok=True)
+@@ -418,13 +444,14 @@
+     if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
+         raise CallerRefusal("DISK_FLOOR_BEFORE_RUN")
+     base = [sys.executable, str(Path(__file__).resolve()), "--mode"]
+-    source_path = args.source_path or _grant_source_path(args.binding_dir)
+     common = (["--candidate-tree", str(args.candidate_tree),
+                "--candidate-patch", str(args.candidate_patch),
+                "--config", str(args.config),
+-               "--runtime-config", str(args.runtime_config),
+                "--binding-dir", str(args.binding_dir), "--root", str(root),
+-               "--work-root", str(work), "--source-path", source_path]
++               "--work-root", str(work)]
++              + (["--sourcefree"] if args.sourcefree else [
++                 "--runtime-config", str(args.runtime_config),
++                 "--source-path", args.source_path or _grant_source_path(args.binding_dir)])
+               + (["--resume-checkpoint", str(args.resume_checkpoint)]
+                  if args.resume_checkpoint else []))
+     samples: list[dict[str, Any]] = []
+@@ -507,12 +534,13 @@
+     ap.add_argument("--source-path", default=None)
+     ap.add_argument("--resume-checkpoint", type=Path)
+     ap.add_argument("--authorized-source-launch", action="store_true")
++    ap.add_argument("--sourcefree", action="store_true")
+     args = ap.parse_args()
+     try:
+         if args.mode == "preflight":
+             return preflight(args)
+         if args.mode == "producer":
+-            if not args.root or (not args.source_path and not args.resume_checkpoint):
++            if not args.root or (not args.sourcefree and not args.source_path and not args.resume_checkpoint):
+                 raise CallerRefusal("PRODUCER_ROOT_AND_GRANT_SOURCE_REQUIRED")
+             return producer(args)
+         if args.mode == "reader":
