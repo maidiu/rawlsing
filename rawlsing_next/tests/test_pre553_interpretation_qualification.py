@@ -17,7 +17,8 @@ from rawlsing_next.pre553_interpretation_qualification import (
     contains_unresolved_response, refuse_positive_uninterpreted_support,
 )
 from rawlsing_next.pre553_s04_observed_research import (
-    S04ObservedKnowledge, receive_s04_i03_research,
+    S04ObservedKnowledge, S04KnowledgeError, ask_s04_exact_condition,
+    ask_s04_common_risk_predictor_evidence, receive_s04_i03_research,
 )
 from rawlsing_next.pre553_s04_general_joint_algebra import (
     S04GeneralAlgebraError, S04GeneralJointWorkspace, S04Projection,
@@ -70,6 +71,15 @@ def test_self_rehashed_positive_unresolved_s04_cannot_be_counted_by_cached_algeb
         S04GeneralJointWorkspace(
             knowledge=counterfeit,
             expected_knowledge_ref=counterfeit.ref,
+        )
+    with pytest.raises(S04KnowledgeError, match="UNRESOLVED_INTERPRETATION"):
+        ask_s04_exact_condition(
+            knowledge=counterfeit, target_index=2, conditions={0: marker},
+        )
+    with pytest.raises(S04KnowledgeError, match="UNRESOLVED_INTERPRETATION"):
+        ask_s04_common_risk_predictor_evidence(
+            knowledge=counterfeit, target_index=2,
+            candidate_indices=(0, 1), context={},
         )
 
 
