@@ -33,6 +33,7 @@ from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEsta
 CONTRACT = "S04_DISTINCT_SAVED_I03_RESEARCH_BATCH@1.0.0"
 GRADE = "SOURCEFREE_ONE_NATIVE_PREPARATION__S04_RESEARCH_FIRST__FF01_OPTIONAL"
 FF01_DESCRIPTIVE = ("FF01_DESCRIPTIVE_SOURCEFREE",)
+SOURCEFREE_ONLY_ASSERTION = "SYNTHETIC_SOURCEFREE_FIXTURE__NO_ORIGINAL_SURVEY_ANALYSIS_AUTHORITY"
 
 
 class S04DistinctBatchError(ValueError):
@@ -88,6 +89,7 @@ def execute_distinct_native_s04_research(
     *,
     executor: CarrierNeutralResearchExecutor,
     operations: Sequence[S04DistinctOperation],
+    sourcefree_origin_assertion: str,
 ) -> S04DistinctBatchResult:
     """Preflight original-owned queries; execute I03 once each in one session.
 
@@ -97,6 +99,11 @@ def execute_distinct_native_s04_research(
     the existing native I03 adapter throws without a partial returned batch.
     No side effect (archive, FF issuance) occurs until all I03 succeeds.
     """
+    if sourcefree_origin_assertion != SOURCEFREE_ONLY_ASSERTION:
+        raise S04DistinctBatchError(
+            "explicit synthetic-sourcefree-only declaration required; "
+            "an original-source C11 construction grant is NOT I03/S04 analysis authority"
+        )
     if type(executor) is not CarrierNeutralResearchExecutor:
         raise S04DistinctBatchError("exact native CarrierNeutralResearchExecutor required")
     if type(executor.repository) is not VerifiedDirectEstate:
@@ -205,6 +212,8 @@ def execute_distinct_native_s04_research(
     material = {
         "contract": CONTRACT,
         "claim_grade": GRADE,
+        "sourcefree_origin_assertion": SOURCEFREE_ONLY_ASSERTION,
+        "assertion_grade": "CALLER_DECLARED_NOT_SOURCE_ISSUER_ATTESTED",
         "one_existing_native_source_release_ref": native.source_release_ref.as_dict(),
         "prepared_postings_sessions": native.prepared_session_count,
         "distinct_original_i03_operations": len(requests),
@@ -228,7 +237,8 @@ def execute_distinct_native_s04_research(
 
 
 __all__ = [
-    "CONTRACT", "GRADE", "S04DistinctBatchError", "S04DistinctOperation",
+    "CONTRACT", "GRADE", "SOURCEFREE_ONLY_ASSERTION",
+    "S04DistinctBatchError", "S04DistinctOperation",
     "S04DistinctBatchReceipt", "S04DistinctBatchResult",
     "execute_distinct_native_s04_research",
 ]
