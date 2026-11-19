@@ -130,3 +130,82 @@ def test_compound_predicate_unknown_conserves_conclusive_membership_and_not(monk
                     leaf_node("FALSE" if op == "AND" else "TRUE"),
                     leaf_node("AUTHORITY_ERROR"),
                 ]})
+
+
+
+def test_multi_response_same_leaf_known_positive_survives_unknown(monkeypatch):
+    """A leaf is itself an OR of approved repeated response events.
+
+    One known affirmative + one uninterpreted is conclusive TRUE;
+    one known negative + one uninterpreted is UNKNOWN. Every event is
+    still authority-checked, recorded and retained as source evidence.
+    """
+    from types import SimpleNamespace
+    import rawlsing_next._pre553_query_predicate as native
+    from rawlsing_next.tests import test_pre553_empirical_query as fixture
+
+    source = fixture._build_source(
+        "PREFF-LEAF-UNKNOWN", [
+            {"id": "R1", "responses": {"X": 1}},
+        ],
+    )
+    auth = source["source_auth"].authority_ref
+    question = source["qrefs"]["X"]
+    registry = fixture._registry(source, fixture._query_authority("PREFF-LEAF-UNKNOWN"))
+    row_ref = source["universe"].ref
+    fake_respondent = SimpleNamespace(ref=row_ref)
+    fake_index = SimpleNamespace(universe=source["universe"])
+    node = {
+        "leaf_type": "SURVEY_RESPONSE_EVENT",
+        "question_semantic_ref": question,
+        "component_or_event_selector_ref": question,
+        "response_value_or_state_ref": question,
+        "response_topology_authority_ref": auth,
+        "response_semantic_authority_ref": auth,
+        "operator": "STATE_EQ",
+        "typed_state": "SUBSTANTIVE_RESPONSE",
+    }
+    known = SimpleNamespace(
+        typed_state="SUBSTANTIVE_RESPONSE",
+        authority_snapshot_refs=(auth,),
+        ref=question,
+    )
+    unknown = SimpleNamespace(
+        typed_state="INVALID_UNRESOLVED",
+        authority_snapshot_refs=(auth,),
+        ref=question,
+    )
+    negative = SimpleNamespace(
+        typed_state="MISSING",
+        authority_snapshot_refs=(auth,),
+        ref=question,
+    )
+    captured = []
+    with monkeypatch.context() as patch:
+        patch.setattr(
+            native, "_validate_public_object_authorities",
+            lambda event, registry: (auth,),
+        )
+        patch.setattr(
+            native, "_select_respondent_events",
+            lambda *args, **kwargs: iter((known, unknown)),
+        )
+        assert native._leaf_match(
+            node, respondent=fake_respondent, index=fake_index,
+            registry=registry, used=captured, used_auth=[],
+        ) is True
+        assert captured == [known, unknown]
+        captured.clear()
+        patch.setattr(
+            native, "_select_respondent_events",
+            lambda *args, **kwargs: iter((negative, unknown)),
+        )
+        with pytest.raises(
+            native.UnresolvedConditionMember,
+            match="UNRESOLVED_CONDITION_MEMBER",
+        ):
+            native._leaf_match(
+                node, respondent=fake_respondent, index=fake_index,
+                registry=registry, used=captured, used_auth=[],
+            )
+        assert captured == [negative, unknown]
