@@ -1,0 +1,232 @@
+{
+  "config": {
+    "canonical_sha256": "3f1eb83abe61415e01b2f67bcfe34ee6fe61d69d3aef7161be5e6e41e2a7be07",
+    "file_sha256": "ca791189e208c9b311a7261ac254ce5ffea35e9c13b4d6e2ec87e9e55a1ecca8",
+    "path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_CONSTRUCTION_PREP_20261119/fixtures/SRC17.source.config.json"
+  },
+  "field_mapping_blocker": {
+    "administrative_held_items": 5,
+    "continuous_held_items": 51,
+    "residuals": [
+      "SRC17-NATIVE-ROW-KEY",
+      "SRC17-CONTINUOUS-NATIVE-FINITE-RULE",
+      "SRC17-ADMIN-NO-RESPONSE-SLOT"
+    ],
+    "source_native_key_slot": {
+      "name": "id",
+      "ordinal": 3
+    }
+  },
+  "grant": {
+    "authentication_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
+    "currentness": "CURRENT_GRANTED",
+    "file_sha256": "d6272ba68d737fa9da27704e18bf6ee00ef1d31f685ba76f84f4a0dcc4764e3d",
+    "path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_CONSTRUCTION_PREP_20261119/fixtures/SRC17_USER_GRANT.json",
+    "revocation": "NONE_RECORDED"
+  },
+  "launch_commands": {
+    "actual_src17": "BLOCKED__EXACT_NATIVE_ROW_KEY_AND_CONTINUOUS_RULE_REQUIRED",
+    "free_space_evidence": "evidence/SRC04_COMPACT_RUN_HEADROOM_RECEIVING.json",
+    "in_flight_floor_bytes": 8589934592,
+    "preflight": [
+      "python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_CONSTRUCTION_PREP_20261119/src17_operator.py",
+      "--mode",
+      "preflight"
+    ],
+    "schema": "ANVIL_SRC17_LAUNCH_COMMANDS@1",
+    "sourcefree_positive": [
+      "python3",
+      "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC17_SQLITE_FREE_CONSTRUCTION_PREP_20261119/src17_operator.py",
+      "--mode",
+      "sourcefree",
+      "--root",
+      "<fresh-private-root>"
+    ],
+    "startup_floor_bytes": 26907826727,
+    "work_root": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned"
+  },
+  "negative_source_scope": {
+    "attempted_source_id": "SRC06",
+    "grant_source_id": "SRC17",
+    "reason": "EXACT_GRANT_SOURCE_SCOPE_DOES_NOT_MATCH_SRC06",
+    "refused": true,
+    "schema": "ANVIL_SRC17_NEGATIVE_SOURCE_SCOPE@1",
+    "source_read_performed": false
+  },
+  "no_protected_or_r4_changes": true,
+  "preflight": {
+    "authentication_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
+    "config_blockers": {
+      "administrative_held_items": 5,
+      "continuous_held_items": 51,
+      "required_residuals": [
+        {
+          "field": "respondents.source_native_key_slot",
+          "id": "SRC17-NATIVE-ROW-KEY",
+          "status": "DECODE_REQUIRED"
+        },
+        {
+          "field": "questions[].response_slots",
+          "id": "SRC17-CONTINUOUS-NATIVE-FINITE-RULE",
+          "status": "NATIVE_FINITE_RULE_REQUIRED"
+        },
+        {
+          "field": "questions[].response_slots",
+          "id": "SRC17-ADMIN-NO-RESPONSE-SLOT",
+          "status": "RETAINED_ADMINISTRATIVE"
+        }
+      ],
+      "source_native_key_slot": {
+        "name": "id",
+        "ordinal": 3
+      }
+    },
+    "config_canonical_sha256": "3f1eb83abe61415e01b2f67bcfe34ee6fe61d69d3aef7161be5e6e41e2a7be07",
+    "config_file_sha256": "ca791189e208c9b311a7261ac254ce5ffea35e9c13b4d6e2ec87e9e55a1ecca8",
+    "grant_currentness": "CURRENT_GRANTED",
+    "grant_sha256": "d6272ba68d737fa9da27704e18bf6ee00ef1d31f685ba76f84f4a0dcc4764e3d",
+    "launch_eligibility": "BLOCKED__EXACT_NATIVE_ROW_KEY_AND_CONTINUOUS_RULE_REQUIRED",
+    "request_exact": true,
+    "revocation": "NONE_RECORDED",
+    "schema": "ANVIL_SRC17_SQLITE_FREE_PREFLIGHT@1",
+    "source_id": "SRC17",
+    "source_read_performed": false,
+    "sqlite_proof_expected": false
+  },
+  "real_launch": false,
+  "schema": "ANVIL_SRC17_SQLITE_FREE_CONSTRUCTION_PREP_RETURN@1",
+  "source_decoded": false,
+  "source_read_performed": false,
+  "sourcefree": {
+    "elapsed_seconds": 0.6995768020860851,
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 90,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RespondentIdentity": 90,
+      "RoutingEligibilityFact": 90,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "phase_seconds": {
+      "family_written": 0.002472,
+      "footers_verified": 0.552594,
+      "published": 0.557659,
+      "reopened_validation": 0.58152,
+      "stream_start": 0.0
+    },
+    "progress_phases": [
+      {
+        "checkpoint": false,
+        "families": 14,
+        "phase": "checkpoint_ready",
+        "records": 370,
+        "rows": 90
+      },
+      {
+        "expected": 370,
+        "phase": "stream_start",
+        "timestamp": "2026-11-19T05:31:27.242681+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "EmpiricalUniverse",
+        "phase": "family_written",
+        "processed": 1,
+        "timestamp": "2026-11-19T05:31:27.245153+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "RespondentIdentity",
+        "phase": "family_written",
+        "processed": 91,
+        "timestamp": "2026-11-19T05:31:27.334443+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "QuestionVariableBinding",
+        "phase": "family_written",
+        "processed": 92,
+        "timestamp": "2026-11-19T05:31:27.334791+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "RespondentEvent",
+        "phase": "family_written",
+        "processed": 182,
+        "timestamp": "2026-11-19T05:31:27.528232+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "RoutingEligibilityFact",
+        "phase": "family_written",
+        "processed": 272,
+        "timestamp": "2026-11-19T05:31:27.617034+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "EmpiricalCoordinateFact",
+        "phase": "family_written",
+        "processed": 362,
+        "timestamp": "2026-11-19T05:31:27.737726+00:00"
+      },
+      {
+        "expected": 370,
+        "family": "AuthoritySnapshot",
+        "phase": "family_written",
+        "processed": 369,
+        "timestamp": "2026-11-19T05:31:27.743675+00:00"
+      },
+      {
+        "expected": 370,
+        "phase": "footers_verified",
+        "processed": 369,
+        "timestamp": "2026-11-19T05:31:27.795275+00:00"
+      },
+      {
+        "expected": 370,
+        "phase": "published",
+        "processed": 369,
+        "proof_scratch_bytes": 199473,
+        "timestamp": "2026-11-19T05:31:27.800340+00:00"
+      },
+      {
+        "families": 13,
+        "phase": "published",
+        "records": 369,
+        "retained_bytes": 3818518
+      },
+      {
+        "expected": 369,
+        "phase": "reopened_validation",
+        "processed": 369,
+        "timestamp": "2026-11-19T05:31:27.824201+00:00"
+      }
+    ],
+    "proof_scratch_bytes": 199473,
+    "retained_bytes": 3818518,
+    "roots": {
+      "logical": "072568f0066e20b92eef4c771daf8076bab9126004311079733fd5fc790fae71",
+      "physical": "9d1da2103c3638a4a029d9fb612e331c79f2689362f168ac4a8100ba81dc3594",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|1503060e3705c4a1878cf623c1997d259332c9c769e38da31d8fa991ead07591",
+      "replay": "77d73f798cbd4f20482e7e4caa8dac9bb4820e22a4468ecc924acc4642054962",
+      "schema": "ANVIL_STREAM_C11_ESTATE@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|17218ae8b78f7f6552585349238d1da0f9b4c59cb0de03c389ebebc932961c94",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    },
+    "rss_maxrss_kib": 125612032,
+    "schema": "ANVIL_SRC17_SQLITE_FREE_SOURCEFREE@1",
+    "source_read_performed": false,
+    "sqlite_files": [],
+    "status": "PASS_SOURCEFREE_SQLITE_FREE"
+  },
+  "sqlite_proof_in_normal_path": false,
+  "status": "SRC17_SQLITE_FREE_PREPARATION_READY__ACTUAL_FIELD_MAPPING_BLOCKED"
+}
