@@ -35,6 +35,8 @@ files=(
   rawlsing_next/pre553_s04_first_consumer.py
   rawlsing_next/pre553_distinct_cold_i03_batch.py
   rawlsing_next/pre553_distinct_cold_s04_batch.py
+  rawlsing_next/pre553_s04_general_joint_algebra.py
+  rawlsing_next/pre553_s04_dynamic_research.py
   rawlsing_next/tests/test_pre553_s04_observed_research.py
   rawlsing_next/tests/test_pre553_s04_i05_reception.py
   rawlsing_next/tests/test_pre553_s04_ff01_read_conservation.py
@@ -50,6 +52,8 @@ files=(
   rawlsing_next/tests/test_pyat1097_held_integrity_and_i05.py
   rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py
   rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
+  rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py
+  rawlsing_next/tests/test_pre553_s04_dynamic_research.py
   rawlsing_next/tests/run_pyat1097_fullstack_review_local.sh
 )
 for file in "${files[@]}"; do

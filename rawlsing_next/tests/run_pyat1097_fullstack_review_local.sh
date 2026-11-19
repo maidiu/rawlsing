@@ -26,9 +26,22 @@ mkdir -p "$OUT"
 printf '%s\n' "$SHA" > "$OUT/exact_head.txt"
 "$PYTHON" --version > "$OUT/python_version.txt" 2>&1
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
-"$PYTHON" -B -m compileall -q  rawlsing_next/field_forge_generic_empirical_ingress.py  rawlsing_next/field_forge_i05_role_ingress.py  rawlsing_next/pre553_s04_observed_research.py  rawlsing_next/tests/test_pyat1097_held_integrity_and_i05.py rawlsing_next/pre553_distinct_cold_i03_batch.py rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py
- rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py rawlsing_next/pre553_distinct_cold_s04_batch.py rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
+"$PYTHON" -B -m compileall -q \
+  rawlsing_next/field_forge_generic_empirical_ingress.py \
+  rawlsing_next/field_forge_i05_role_ingress.py \
+  rawlsing_next/pre553_s04_observed_research.py \
+  rawlsing_next/pre553_distinct_cold_i03_batch.py \
+  rawlsing_next/pre553_distinct_cold_s04_batch.py \
+  rawlsing_next/pre553_s04_general_joint_algebra.py \
+  rawlsing_next/pre553_s04_dynamic_research.py \
+  rawlsing_next/tests/test_pyat1097_held_integrity_and_i05.py \
+  rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py \
+  rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py \
+  rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py \
+  rawlsing_next/tests/test_pre553_s04_dynamic_research.py
 tests=(
+ rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py
+ rawlsing_next/tests/test_pre553_s04_dynamic_research.py
  rawlsing_next/tests/test_pyat1097_held_integrity_and_i05.py
  rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py
  rawlsing_next/tests/test_pre553_s04_cold_custody.py
