@@ -1,0 +1,10 @@
+--- a/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py
++++ b/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py
+@@
+-            receipt = resume_single_pass(
+-            checkpoint=args.resume_checkpoint, root=root, config=scoped,
++            receipt = resume_single_pass(
++            checkpoint=args.resume_checkpoint, root=root / "private", config=scoped,
+@@
+-        "source_read_performed": True,
++        "source_read_performed": not resumed,

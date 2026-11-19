@@ -1,0 +1,60 @@
+{
+  "base_pins": {
+    "operator_manifest_sha": "d71c6429a5e81546cd416383f502ea6a633990af763294cf8caec0000ff47fe6",
+    "operator_return_sha": "af0cda9abd316c29fcfb710eb90e8d6c42f669112f95e155703f1c409c913f83",
+    "single_pass_sha": "399c71e013d7a9afffb3bc1f512d94d76a85117ee5b917d35bd1d5ef80cec01e",
+    "streaming_estate_sha": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
+  },
+  "base_sha": "87c4a21306b8bf7b77ab2c01b1fd06d028b06012",
+  "forged_path_refusal": "NONEXACT_ESTATE_PATH",
+  "forward_patch": {
+    "changes": [
+      "resume_single_pass output root=<run>/private",
+      "source_read_performed=False for resumed producer"
+    ],
+    "file": "forward.patch"
+  },
+  "reader_only_command": {
+    "layout": "resumed",
+    "no_move_rewrite_rebuild": true,
+    "no_source_decode": true,
+    "release_path_pattern": "<run>/releases/<expected-64hex-digest>",
+    "required": [
+      "run root mode 0700",
+      "release directory mode 0700",
+      "exact digest-named release",
+      "manifest SHA",
+      "roots JSON",
+      "current resolver via binding-dir"
+    ],
+    "run_root": "<exact-0700-resumed-run-root>"
+  },
+  "real_checkpoint_opened": false,
+  "real_launch": false,
+  "real_source_accessed": false,
+  "schema": "ANVIL_SRC04_RESUMED_READER_PATH_RETURN@1",
+  "sourcefree_normal": {
+    "event_count": 90,
+    "layout": "private",
+    "manifest_sha256": "2edd85bfaca546b14408163449c470973c93845c51514020fe0224ac551b62e1",
+    "release_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/resumed-reader-test/normal-copy/private/releases/ee5a21798910c20d5b18c75b0c16ca8c4ba084de817f88d42ae534e416aea04b",
+    "run_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/resumed-reader-test/normal-copy",
+    "schema": "ANVIL_SRC04_RESUMED_READER@1",
+    "sqlite_files": [],
+    "status": "READER_OPENED",
+    "stream_release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|5a39499b840bd9301a68a3c27ad02ceaec6d70a05bcb3be94514ddd198a69763"
+  },
+  "sourcefree_resumed_layout": {
+    "event_count": 90,
+    "layout": "resumed",
+    "manifest_sha256": "2edd85bfaca546b14408163449c470973c93845c51514020fe0224ac551b62e1",
+    "release_path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/resumed-reader-test/resumed-run/releases/ee5a21798910c20d5b18c75b0c16ca8c4ba084de817f88d42ae534e416aea04b",
+    "run_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/resumed-reader-test/resumed-run",
+    "schema": "ANVIL_SRC04_RESUMED_READER@1",
+    "sqlite_files": [],
+    "status": "READER_OPENED",
+    "stream_release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|5a39499b840bd9301a68a3c27ad02ceaec6d70a05bcb3be94514ddd198a69763"
+  },
+  "sqlite_files": [],
+  "status": "READER_ONLY_RECOVERY_STAGED__SOURCEFREE_LAYOUTS_GREEN"
+}
