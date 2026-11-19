@@ -1,0 +1,42 @@
+{
+  "boundaries": [
+    "No source read/decode",
+    "No full estate re-verification",
+    "No rebuild or estate mutation",
+    "No checkpoint/product/protected changes",
+    "No historical promotion"
+  ],
+  "disposition": "SCOPED_177_WITNESS__Q217_QUESTION_BINDING_OMITTED__NOT_ACCEPTED_HISTORICAL",
+  "evidence": {
+    "historical_release": "303a57851785557fff8229e29a5554717168cbd1:campaign_src04_completion/release/evidence/RELEASE_RECEIPT.json",
+    "producer": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_b860363f87c69684/producer_receipt.json",
+    "r4_job": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/anvil-engineering-20261117/anvil-eng-src04-real-construction-native-20261118-r4/job.json",
+    "reader": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_b860363f87c69684/reader_receipt.json",
+    "supervisor": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned/SRC04_WITNESS_b860363f87c69684/supervisor_receipt.json"
+  },
+  "exact_hashed_field": "QuestionVariableBinding family, q217 native question binding omitted in R4 scoped candidate projection; release/replay hashes downstream",
+  "handoff_sha256": "48d01b9aa713de7f46ed33c9213e485495af1b0d65ad90efd36e31926c86c80a",
+  "historical": {
+    "acceptance_commit": "ba41253681212be14a0cde009afb99d77e14935e",
+    "configured_response_slots": 178,
+    "held_response_slots": [
+      27
+    ],
+    "release_receipt_commit": "303a57851785557fff8229e29a5554717168cbd1",
+    "selected_response_slots": 177
+  },
+  "r4": {
+    "accepted_release": "9ddec98561a0fc54668136cc13e64573edcadcbfb12cd3f79cbfc05606f97ae1",
+    "accepted_replay": "893f24ae10b297cd21422d154ec1649d522da4add006d1d3ac3da9a3da111a49",
+    "differences_from_accepted": {},
+    "manifest_sha256": "5297493c6626a178029cb15d36ccdd1693c9a977ca126d93c43b289432df2cb2",
+    "q217_native_binding_present": false,
+    "question_variable_binding_count": 177,
+    "reader_exit": 2,
+    "reconstructed_release": "8444fcb5701db32ca00de37d4f67b8af73cb3cd95ce76e270637b1741240f611",
+    "reconstructed_replay": "1ea8528c8745fc0e1f905a54459780f69add5d42f6d4167d8a64cdcc139a0c85",
+    "retained_bytes": 1167092333
+  },
+  "repair": "reader-only or certificate-only cannot add missing QVB; historical-equivalence requires construction retaining q217 QVB with q217 events held",
+  "schema": "ANVIL_SRC04_R4_RELEASE_FINGERPRINT@1"
+}
