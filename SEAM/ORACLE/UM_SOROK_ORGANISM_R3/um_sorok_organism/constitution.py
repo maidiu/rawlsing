@@ -133,15 +133,24 @@ def compose(constitution,access,limit=50):
             if status:
                 q=actions.setdefault(a,{'action':a,'score':.1,'basis':[],'opportunity':'ACQUIRED'})
                 q['score']+=.24*f.get('strength',.5);q['basis'].append(fid)
+    # Preserve distinct activities that share the same physical means. A
+    # practice of singing for Father and singing for Mother are not identical
+    # candidates merely because both execute the SING opcode.
+    project_actions=[]
     for p in projects:
         if p.get('status','active')!='active':continue
         for a in p.get('means',[]):
             status,why=eligible(constitution.body,a)
             if status:
-                q=actions.setdefault(a,{'action':a,'score':.1,'basis':[],'opportunity':'PROJECT'})
-                q['score']+=.4*p.get('priority',.5);q['basis'].append('project:'+p['id'])
-                q.setdefault('practical_objects',[]).append(p['object'])
-                q.setdefault('motive_hypotheses',[]).append(p.get('motive','UNKNOWN'))
+                project_actions.append({
+                    'action':a,'option_id':'project:'+p['id']+':'+a,
+                    'activity_ref':p['id'], 'practical_object':p['object'],
+                    'practical_objects':[p['object']],
+                    'counterpart':p.get('counterpart'),
+                    'motive_hypotheses':[p.get('motive','UNKNOWN')],
+                    'score':.1+.4*p.get('priority',.5),
+                    'basis':['project:'+p['id']], 'opportunity':'PROJECT'
+                })
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -153,14 +162,18 @@ def compose(constitution,access,limit=50):
         if a=='REST' and constitution.body['rest']<.45:q['score']+=1.0
         if a=='EAT' and constitution.body['nutrition']<.5:q['score']+=1.0
         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
-    dynamics=enact_currents(constitution,access,active,actions.values())
+    # Keep form-/organism-derived means as separately available practical acts.
+    # Project-qualified inhibition may affect one activity but not another.
+    all_options=list(actions.values())+project_actions
+    dynamics=enact_currents(constitution,access,active,all_options)
     currents+=dynamics['currents']
     # These effects are *derived* from present bodily state and historically
     # acquired forms, never silently committed as an event or a new mind state.
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
     learned=qualified_learned_compositions(constitution,access,active,projects,
                                           dynamics['candidate_actions'])
-    ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
+    ordered=sorted(dynamics['candidate_actions'],
+                   key=lambda x:(-x['score'],x['action'],x.get('option_id','')))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
