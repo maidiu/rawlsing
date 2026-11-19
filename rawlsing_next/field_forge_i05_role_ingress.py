@@ -14,7 +14,9 @@ from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.field_forge_generic_empirical_ingress import (
     FF01ObservedJoint, receive_ff01_observed_joint,
 )
-from rawlsing_next.pre553_discovery_exact import ExactBoundedDiscoveryResult
+from rawlsing_next.pre553_discovery_exact import (
+    ExactBoundedDiscoveryResult, TERMINAL_COVERAGE_STATES,
+)
 from rawlsing_next.pre553_empirical_objects import (
     ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
 )
@@ -86,6 +88,10 @@ def receive_i05_exact_joint_at_ff01(
         "NONCOMPARABLE", "COVERAGE_LIMITED", "PRUNED_BY_AUTHORITY", "UNEVALUATED"
     }:
         raise FF01I05IngressError("unknown I05 validation grade")
+    # Candidate fact custody is not completed I05 validation. S04 already
+    # requires exact terminal coverage; direct FF01 must not bypass it.
+    if receipt.coverage_state not in TERMINAL_COVERAGE_STATES:
+        raise FF01I05IngressError("I05 candidate has nonterminal frontier coverage")
     identity = receipt.candidate_identity
     if not isinstance(identity, Mapping):
         raise FF01I05IngressError("missing candidate identity")

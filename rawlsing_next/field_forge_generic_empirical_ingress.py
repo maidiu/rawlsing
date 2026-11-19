@@ -365,22 +365,39 @@ def receive_ff01_observed_joint(
         # Typed nonpositive results are retained without fabricating a domain
         # cell that the source/issuer did not actually support.
         if fact.raw_numerator_support > 0 and fact.typed_state not in {
-            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
+            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED", "UNRESOLVED"
         }:
             raise FF01GenericIngressError("nonpositive producer has unexplained positive target support")
         negative_topology = fact.target_topology
-        if isinstance(negative_topology, Mapping):
-            negative_cells = negative_topology.get("complete_cell_semantic_projection")
-            if negative_cells is not None:
-                if not isinstance(negative_cells, (list, tuple)):
-                    raise FF01GenericIngressError("nonpositive joint has malformed cell payload")
-                for row in negative_cells:
-                    if not isinstance(row, Mapping) or type(row.get("raw_numerator_support")) is not int:
-                        raise FF01GenericIngressError("nonpositive joint has unauthenticated cell count")
-                    if row["raw_numerator_support"] > 0 and fact.typed_state not in {
-                        "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
-                    }:
-                        raise FF01GenericIngressError("nonpositive joint contains contradictory positive cell")
+        # Typed held does not mean that a hash-valid but impossible source
+        # topology may be laundered into a harmless-looking empty receipt.
+        # Legitimate LOW_SUPPORT positive evidence stays held, not discarded.
+        if not isinstance(negative_topology, Mapping):
+            raise FF01GenericIngressError("nonpositive joint has malformed target topology")
+        negative_cells = negative_topology.get("complete_cell_semantic_projection")
+        if negative_cells is not None:
+            if not isinstance(negative_cells, (list, tuple)):
+                raise FF01GenericIngressError("nonpositive joint has malformed cell payload")
+            retained_total = 0
+            for row in negative_cells:
+                if (not isinstance(row, Mapping)
+                        or type(row.get("raw_numerator_support")) is not int
+                        or row["raw_numerator_support"] < 0):
+                    raise FF01GenericIngressError("nonpositive joint has invalid negative cell count")
+                retained_total += row["raw_numerator_support"]
+            if retained_total != fact.raw_numerator_support:
+                if fact.raw_numerator_support == 0 and retained_total > 0:
+                    raise FF01GenericIngressError(
+                        "nonpositive joint contains contradictory positive cell"
+                    )
+                raise FF01GenericIngressError(
+                    "nonpositive joint cell count contradicts held resolved total"
+                )
+        if (fact.raw_numerator_support > 0 and fact.typed_state == "UNRESOLVED"
+                and not 0 < fact.raw_numerator_support < fact.raw_denominator_support):
+            raise FF01GenericIngressError(
+                "partially resolved UNRESOLVED joint requires positive incomplete risk"
+            )
 
     canonical = canonical_json(projection)
     digest = semantic_hash(projection)
