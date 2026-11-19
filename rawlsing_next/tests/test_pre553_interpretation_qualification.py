@@ -5,7 +5,7 @@ tests here prove only the exact PRE553 S04/FF01 consumer defenses and
 operation-version CURRENT behavior from already-qualified native I03 facts.
 No constructed original GSS, no original-source use, no mapping issuer.
 """
-from copy import deepcopy
+from json import loads
 
 import pytest
 
@@ -159,7 +159,7 @@ def test_hash_consistent_supported_original_i03_claim_with_positive_unmapped_cel
     original = execution.facts[0]
     marker = {"typed_response_state": "INVALID_UNRESOLVED"}
     fields = dict(q.semantic_fields)
-    topo = deepcopy(fields["target_arity_and_topology"])
+    topo = loads(canonical_json(fields["target_arity_and_topology"]))
     topo["components"][0]["domain"][1] = marker
     fields["target_arity_and_topology"] = topo
     new_q = EmpiricalQuerySpec(
@@ -190,7 +190,7 @@ def test_hash_consistent_supported_original_i03_claim_with_positive_unmapped_cel
     })
 
     fact_fields = dict(original.semantic_fields)
-    fact_topology = deepcopy(fact_fields["target_topology"])
+    fact_topology = loads(canonical_json(fact_fields["target_topology"]))
     fact_topology["target_domain_identity"] = identity
     for row in fact_topology["complete_cell_semantic_projection"]:
         if row["cell"][0] == "1":
