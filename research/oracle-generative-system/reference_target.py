@@ -78,7 +78,31 @@ def crossing(rows):
     return None
 
 
-def analyze(data, profile, seed):
+def work_context(answered, target, seed):
+    # Bound the error of every deterministic reader given exactly these keys.
+    # This is an empirical support calculation over the fitted finite release.
+    context = ["hrs1", "wkdecide", "partteam"]
+    mass = answered.groupby(context + ["ballot", "form", "richwork"])[WEIGHT].sum()
+    by_answer = mass.unstack(fill_value=0).reindex(columns=[1, 2], fill_value=0)
+    minority = by_answer.min(axis=1)
+    peers = answered
+    for item in context:
+        peers = peers.loc[peers[item] == target.read_constraint(item)]
+    alternate = peers.loc[peers.richwork != target.read_constraint("richwork")]
+    summary = {"inputs": context + ["ballot", "form"], "distinct_inputs": len(by_answer),
+               "mixed_cells": int((minority > 0).sum()),
+               "minimum_in_sample_weighted_error": float(minority.sum() / by_answer.sum().sum()),
+               "same_work_context_before_form_n": len(peers),
+               "different_report_in_same_work_context_n": len(alternate)}
+    if alternate.empty:
+        return summary, None
+    cells = alternate.groupby(["ballot", "form", *ITEMS])[WEIGHT].sum()
+    cell = Random(seed).choices(list(cells.index), weights=list(cells), k=1)[0]
+    ballot, form, *values = map(int, cell)
+    return summary, ReferenceTarget(ballot, form, tuple(values))
+
+
+def analyze(data, profile, seed, contrasts=None):
     eligible = data.loc[profile]
     offered = eligible.loc[eligible.ballot.isin([1, 3])]
     answered = offered.dropna(subset=list(ITEMS))
@@ -109,10 +133,15 @@ def analyze(data, profile, seed):
     result.update(profile_n=len(eligible), offered_n=len(offered), complete_n=len(answered),
                   distinct_reference_cells=len(cells), sampled_item_count=len(target),
                   sampled_hrs1=target[ITEMS.index("hrs1")])
-    return result, ReferenceTarget(ballot, form, target)
+    reference = ReferenceTarget(ballot, form, target)
+    if contrasts is not None:
+        result["work_context"], alternative = work_context(answered, reference, seed)
+        if alternative is not None:
+            contrasts.append(alternative)
+    return result, reference
 
 
-def run(path):
+def run(path, *, include_work_contrasts=False):
     if hashlib.sha256(path.read_bytes()).hexdigest() != SHA256:
         raise ValueError("Source edition mismatch")
     cols = ["age", "sex", "degree", "wrkstat", "ballot", "form", WEIGHT, "vstrat", "vpsu"] + list(ITEMS)
@@ -122,7 +151,10 @@ def run(path):
     summaries = {"archive_sha256": SHA256, "sampling_seeds": [201011, 201012]}
     draws = {}
     for name, code, seed in (("female_profile", 2, 201011), ("male_profile", 1, 201012)):
-        summaries[name], draws[name] = analyze(data, eligible & (data.sex == code), seed)
+        contrasts = [] if include_work_contrasts else None
+        summaries[name], draws[name] = analyze(data, eligible & (data.sex == code), seed, contrasts)
+        if contrasts:
+            draws[name + "_work_contrast"] = contrasts[0]
     return summaries, draws
 
 

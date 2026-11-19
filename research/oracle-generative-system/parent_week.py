@@ -47,14 +47,14 @@ def propose(hours, seed):
     return schedule
 
 
-def observe_hours(activity, session):
+def observe_hours(activity, session, actor=PARENT):
     # The test world has one job, covers this entire week and assumes exact recall.
     # The reader has no target or proposed schedule argument.
     total = 0
-    for row in activity.read_parent_history(session, PARENT, as_actor=PARENT)["history"]:
+    for row in activity.read_parent_history(session, actor, as_actor=actor)["history"]:
         if row["kind"] != activity.PARENT_ACTIVITY_KIND:
             continue
-        receipt = activity.read_parent_activity(session, PARENT, row["operation_id"], as_actor=PARENT)
+        receipt = activity.read_parent_activity(session, actor, row["operation_id"], as_actor=actor)
         day = date.fromisoformat(receipt["period_context"]["as_of_date"])
         if START <= day < REFERENCE:
             body = session.event(row["event_id"])["body"]
