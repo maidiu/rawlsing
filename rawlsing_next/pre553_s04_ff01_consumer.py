@@ -134,7 +134,19 @@ def receive_ff01_from_s04(
         # The same original I03 fact was already revalidated above.
         "held_condition_membership_uncertainty": (
             {
-                "unknown_member_refs": material["source_unknown_condition_member_refs"],
+                # FF01's producer permissions are caller-declared, not an
+                # independently issued respondent-level access grant.
+                # Preserve provenance by commitment to the exact roster
+                # already held under source-scoped S04, never by exporting
+                # identifying member refs into this portable receipt.
+                "source_knowledge_ref": knowledge.ref.as_dict(),
+                "unknown_member_ref_commitment": semantic_hash(
+                    material["source_unknown_condition_member_refs"]
+                ),
+                "unknown_member_n": len(
+                    material["source_unknown_condition_member_refs"]
+                ),
+                "member_refs_exported": False,
                 "known_true_denominator_n": material["source_known_true_denominator_n"],
                 "eligible_risk_n": material["source_eligible_risk_n"],
                 "state": "UNRESOLVED_CONDITION_MEMBERSHIP__NO_FULL_DISTRIBUTION",
