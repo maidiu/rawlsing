@@ -37,3 +37,11 @@ sourcefree fixture activity; explicit original SRC04 access remains FALSE.
 These are **author source modifications only**. No new test execution,
 true same-supervisor checkpoint resume, native SRC04 source read,
 independent G5 or protected receiving occurred.
+
+## Small pinned archive proof entrypoint
+
+The offline test script now supports verification against an existing
+local Git repository containing the exact commit, without checking out
+a full additional Rawlsing worktree. It runs six new regression cases
+and three inherited sourcefree witness-runner checks after manifest
+verification. This is a test *invitation*, not a test execution receipt.

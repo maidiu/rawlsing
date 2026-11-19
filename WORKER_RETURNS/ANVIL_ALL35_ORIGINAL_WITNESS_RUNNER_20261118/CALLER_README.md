@@ -74,3 +74,14 @@ Run `run_sourcefree_checks.sh` on the exact repaired Git worktree with the
 It checks the manifest file hashes and executes stdlib-only offline tests.
 **It never launches an original source read.** These new author-side tests
 are not claimed passing until a real local receipt is returned.
+
+## Disk-light pinned archive test (no new full worktree)
+
+Archive only this witness folder from an existing local repo at the **exact**
+commit, then set `EXPECTED_ANVIL_HEAD` and
+`ANVIL_ARCHIVE_FROM_REPO=/absolute/path/to/existing/rawlsing` to run
+`run_sourcefree_checks.sh` inside the extracted tree. The runner verifies
+itself, its manifest and key code files against the immutable Git SHA,
+then all manifest SHA256/byte lengths, Python source compile, and
+**six new and three inherited** no-source guard tests. No real source,
+writer, remote process or host-grant action is performed by that script.
