@@ -27,6 +27,7 @@ from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
 from rawlsing_next.pre553_s04_research_batch import S04ContextRequest
+from rawlsing_next.field_forge_generic_empirical_ingress import _permission_set
 from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
 
 CONTRACT = "S04_DISTINCT_SAVED_I03_RESEARCH_BATCH@1.0.0"
@@ -133,7 +134,20 @@ def execute_distinct_native_s04_research(
             raise S04DistinctBatchError("no invented adaptive/unknown S04 context requests")
         if type(item.producer_permission_ceiling) is not tuple or any(
                 type(label) is not str for label in item.producer_permission_ceiling):
-            raise S04DistinctBatchError("exact issuer permission ceiling labels required")
+            raise S04DistinctBatchError("exact caller-declared permission ceiling labels required")
+        # Reuse the original FF01 protected-use guard *before* native source
+        # preparation, not only on the eventual consumer. This does not issue
+        # or extend a source permission: it rejects invalid caller text early.
+        _permission_set(item.producer_permission_ceiling, "producer permissions")
+        for req in item.context_requests:
+            if (type(req.target_index) is not int
+                    or not 0 <= req.target_index < len(query.target_refs)
+                    or not isinstance(req.conditions, dict)
+                    or any(type(index) is not int
+                           or index == req.target_index
+                           or not 0 <= index < len(query.target_refs)
+                           for index in req.conditions)):
+                raise S04DistinctBatchError("context axes invalid for original query topology")
         requests.append(ColdI03Operation(query.ref, predicate.ref))
         selected.append((query, item))
 
