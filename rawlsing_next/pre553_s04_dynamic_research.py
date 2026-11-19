@@ -25,7 +25,6 @@ from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
-from rawlsing_next.pre553_s04_research_batch import S04ContextRequest
 from rawlsing_next.pre553_s04_general_joint_algebra import S04GeneralJointWorkspace
 from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
 from rawlsing_next.pre553_distinct_cold_s04_batch import (
@@ -135,6 +134,7 @@ class S04DynamicResearchSession:
         workspace = S04GeneralJointWorkspace(
             knowledge=product.knowledge,
             expected_knowledge_ref=product.knowledge.ref,
+            current_guard=repo._live,
         )
         self._executed += 1
         return S04DynamicResearchResult(original=product, joint_workspace=workspace)
