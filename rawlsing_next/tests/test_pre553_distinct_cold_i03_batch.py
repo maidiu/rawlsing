@@ -7,6 +7,8 @@ High-width original-source/100k/6GiB economics separately held.
 from dataclasses import replace
 from pathlib import Path
 
+from rawlsing_next.pre553_empirical_objects import exact_ref
+
 import pytest
 
 pytest.importorskip("pyarrow")
@@ -103,7 +105,9 @@ def test_distinct_saved_queries_reuse_one_authentic_native_session(
     assert result.prepared_session_count == 1
     assert len(result.results) == distinct
     assert len({q.ref for q in queries}) == distinct
-    assert len({q.target_refs[0] for q in queries}) == distinct
+    # Native target_refs are frozen semantic mappings; their exact identities
+    # are hashable only after normalization through the existing ref contract.
+    assert len({exact_ref(q.target_refs[0], "batch target").key for q in queries}) == distinct
     assert result.source_release_ref == source["release_ref"]
     assert [r.query_ref for r in result.results] == [q.ref for q in queries]
     assert not list(Path(root).glob(".s2c-native-i03-*"))

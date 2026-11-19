@@ -34,7 +34,18 @@ def test_1_10_100_sourcefree_repeated_requests_share_one_native_i03(
     calls = []
 
     def trace(*, knowledge, target_index, conditions):
-        calls.append((target_index, canonical_json(conditions)))
+        # S04 condition axis keys are *integers*. The canonical JSON codec
+        # deliberately permits string-keyed mappings only; preserve the
+        # native integer axis in an explicit ordered list, as the real batch
+        # implementation does, rather than weakening the canonical codec.
+        selector = {
+            "target_index": target_index,
+            "conditions": [
+                {"index": index, "state": state}
+                for index, state in sorted(conditions.items())
+            ],
+        }
+        calls.append(canonical_json(selector))
         return original(knowledge=knowledge, target_index=target_index, conditions=conditions)
 
     monkeypatch.setattr(mod, "ask_s04_exact_condition", trace)
