@@ -1,0 +1,53 @@
+name: PYAT #1009 generic FF01 empirical reader (sourcefree)
+'on':
+  push:
+    branches:
+      - agent/pyat1009-generic-ff01-descriptive-receiver-r1
+    paths:
+      - 'rawlsing_next/field_forge_generic_empirical_ingress.py'
+      - 'rawlsing_next/tests/test_pyat1009_ff01_*.py'
+      - '.github/workflows/pyat1009-generic-ff01-sourcefree.yml'
+  pull_request:
+    paths:
+      - 'rawlsing_next/field_forge_generic_empirical_ingress.py'
+      - 'rawlsing_next/tests/test_pyat1009_ff01_*.py'
+      - '.github/workflows/pyat1009-generic-ff01-sourcefree.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-ff01-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact sourcefree test dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat pyarrow duckdb
+      - name: Genuine C11 I03 to FF01 RAW descriptor and hostile tests
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat1009_ff01_generic_ingress.py \
+            rawlsing_next/tests/test_pyat1009_ff01_observed_research.py \
+            rawlsing_next/tests/test_pyat1009_ff01_i05_role_ingress.py \
+            rawlsing_next/tests/test_pyat1009_ff01_n10e_crossread.py \
+            rawlsing_next/tests/test_pyat1009_ff01_cold_direct_estate.py \
+            --junitxml=ff01-generic-sourcefree.xml
+      - name: Existing I03 and specialized GT12 FF01 nonregression
+        env:
+          PYTHONPATH: .
+        run: |
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_empirical_query.py \
+            rawlsing_next/tests/test_field_forge_conditional_support.py \
+            rawlsing_next/tests/test_pre553_direct_estate_i03.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat1009-ff01-sourcefree-proof
+          path: ff01-generic-sourcefree.xml
+          if-no-files-found: ignore
