@@ -1,3 +1,5 @@
+> **UM-SOROK R1 research organism bank (candidate, 2026-11-19):** [ORACLE #1159](https://github.com/maidiu/rawlsing/pull/1159) and [32 R1 evidence/priority bank](32_UM_SOROK_CONSTITUTIVE_ORGANISM_R1_ORACLE_BANK_AND_USER_PRIORITY_20261119.md) record 24/24 author-tested local whole-organism software, exact source archive SHA, sourcefree limits, and the principal's instruction **integrate later**. This is not a protected acceptance or R40. The canonical PROGRAMMA opening oath remains first-binding.
+
 # PROGRAMMA SOROK — current guide navigation
 
 **Prospective MCR-lite:** [shared eight-point operating standard](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) applies to all new ordinary MCR commissions. This is a discipline of maximal substantive completion and minimal administrative friction, not permission to invent actor/source science; full MCR-C remains where explicitly required. Live owner progress, not stale candidate paragraphs below, controls current engineering status.
