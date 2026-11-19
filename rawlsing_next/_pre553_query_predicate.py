@@ -172,6 +172,25 @@ def _leaf_exact_values(
     return tuple(canonicalize(v) for v in values)
 
 
+
+def _refuse_unresolved_value_leaf(event: Any, node: Mapping[str, Any]) -> None:
+    """Leaf-local guard: unresolved is not Boolean false/true support.
+
+    Only a leaf that explicitly asks for INVALID_UNRESOLVED may inspect it.
+    An unrelated diagnostic leaf in a mixed AND/OR/NOT cannot exempt this leaf.
+    """
+    if str(event.typed_state) != "INVALID_UNRESOLVED":
+        return
+    if node.get("leaf_type") == "TYPED_RESPONSE_STATE" and node.get("typed_state") == "INVALID_UNRESOLVED":
+        return
+    if (node.get("leaf_type") == "SURVEY_RESPONSE_EVENT"
+            and node.get("operator") == "STATE_EQ"
+            and node.get("typed_state") == "INVALID_UNRESOLVED"):
+        return
+    raise EmpiricalQueryResolutionError(
+        "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
+    )
+
 def _leaf_match(
     node: Mapping[str, Any],
     *,
@@ -262,6 +281,7 @@ def _leaf_match(
         )
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
+            _refuse_unresolved_value_leaf(event, node)
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
@@ -293,6 +313,7 @@ def _leaf_match(
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
+            _refuse_unresolved_value_leaf(event, node)
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
@@ -335,6 +356,7 @@ def _leaf_match(
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
+            _refuse_unresolved_value_leaf(event, node)
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
