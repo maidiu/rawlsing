@@ -31,6 +31,15 @@
     },
     "summary": "COMPLETED operational only"
   },
+  "batch_corrected_review": {
+    "authority_refusal": true,
+    "changed_mapping_error": "SavedC11AdmissionError: ('SAVED_BATCH_PREDICATE_BINDING_MISMATCH', 'EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:c9f9bf096f49e482009a92ff7a88ef5cb60c3ce067d175f44381facf16f30979|c9f9bf096f49e482009a92ff7a88ef5cb60c3ce067d175f44381facf16f30979')",
+    "changed_mapping_refused": true,
+    "changed_prior_output_refused": true,
+    "exact_cache_reuse": true,
+    "partial_resume": true,
+    "status": "GREEN_FORGED_REEXECUTED"
+  },
   "cold_consumer_traversal": {
     "batch": "actual execute_saved_batch",
     "i03": "actual PreparedSavedC11Admission.execute_i03",
@@ -120,7 +129,7 @@
     "01_handoff_raw_lane.patch": "3f40601e50cb6f4953bafc7c0012523d7e8f2dec6a4cf7ac4b0442a0634ef075",
     "02_query_predicate_guard.patch": "ee47777d4386567866570635c66d90a347c7e76050dd9ee6ff2b1e81381d6ad6",
     "03_i05_unresolved_repair.patch": "7825cd02024b6a1e310efcf5c8d34161a33ce0c5540cab4f83330d14cfda83b2",
-    "04_saved_batch_prior_cache.patch": "9cda4d5bba659f6b0b69990d6b66f85451471355d773798fb9bb7b8e075a29e4"
+    "04_saved_batch_prior_cache.patch": "71b128749e108dd5dff5a1729ad33a4c84c1a3a088bc1b3c5c94476f150c4c58"
   },
   "pins": {
     "IMPLEMENTER": "0dcd75749e5c186842a70dec777096b3f22086d8",
@@ -131,7 +140,7 @@
   "result_hashes": {
     "_pre553_query_predicate.py": "7f22f515d541af33e7b529b0635092c69f2555b0ebb284141e3ffededfce7a3e",
     "pre553_discovery_exact.py": "4afe821016a77465cdbc7fa6f492fdc93dda6bf78347ad0c7f7c812a7f575830",
-    "pre553_saved_workload_integration.py": "16d4409da80ec80520dd90f2c835877c8be2576ed66690d656d49d7b3dfc24ac",
+    "pre553_saved_workload_integration.py": "efa46bbdf8453674db6c686a65510c90d497893a1b6ec5651a11d76863d2e52f",
     "pre553_source_i02_handoff.py": "c32d62e93ce28354e90fafb3befab97b203bf589d3f05441d4661254bd555514"
   },
   "saved_row_deletion": {
@@ -154,7 +163,7 @@
   },
   "schema": "ANVIL_SRC16_RAW_JOINED_SOURCEFREE@1",
   "sourcefree": true,
-  "status": "JOINED_SOURCEFREE_PASS__SAVED_ROW_DELETION_RED_RESTORE_GREEN",
+  "status": "JOINED_SOURCEFREE_PASS__CORRECTED_BATCH_PREDICATE_REFUSAL__EXACT_REUSE_PRESERVED",
   "trace_file_sha256": "d1dc4d741a39d69ccc090529d28ff89e9f72e376563f15b046b2ef3aa7799657",
   "typed_unresolved": {
     "i05_coverage_state": "EVALUATED_UNRESOLVED",

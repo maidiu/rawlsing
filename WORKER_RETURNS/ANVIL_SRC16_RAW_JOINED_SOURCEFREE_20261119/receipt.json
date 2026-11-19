@@ -1,5 +1,14 @@
 {
   "authority_denial": "DirectEstateError",
+  "batch_corrected_review": {
+    "authority_refusal": true,
+    "changed_mapping_error": "SavedC11AdmissionError: ('SAVED_BATCH_PREDICATE_BINDING_MISMATCH', 'EmpiricalQuerySpec@1.0.0|urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:c9f9bf096f49e482009a92ff7a88ef5cb60c3ce067d175f44381facf16f30979|c9f9bf096f49e482009a92ff7a88ef5cb60c3ce067d175f44381facf16f30979')",
+    "changed_mapping_refused": true,
+    "changed_prior_output_refused": true,
+    "exact_cache_reuse": true,
+    "partial_resume": true,
+    "status": "GREEN_FORGED_REEXECUTED"
+  },
   "batch_forged_prior_retained": false,
   "cold_consumer_traversal": [
     "I03",
@@ -8,24 +17,28 @@
   ],
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 2006,
-      "sha256": "081910876ea8eb3017394146393df19dc13041471626dd44a82f2ff1e2b6d8d2"
+      "bytes": 2240,
+      "sha256": "dbe09aa7eb28935b6c042da98c85470876b72ba51203e5328488544114e831a7"
+    },
+    "BATCH_CORRECTED_REVIEW.json": {
+      "bytes": 16397,
+      "sha256": "8af5fa1ef239f1809fde94784a2a3e9c68cf2b9d8852eeb879dc46d87029a8c6"
     },
     "GSS1972_HANDOFF.md": {
-      "bytes": 2348,
-      "sha256": "db5402bb9048c01cadd2af8ded1b6f2734b2a3ac2955f301d34a3117da68ede8"
+      "bytes": 2399,
+      "sha256": "86f1a038eac556d7f037ee8001f8ca173459d310493b2636c42c6cb94e531d51"
     },
     "JOINED_EVIDENCE.json": {
-      "bytes": 6605,
-      "sha256": "e9358057a54e91238900b1e7a2da4da4b711fb29b0d9342f2705afa2e32d1f8f"
+      "bytes": 7172,
+      "sha256": "e7b694d0e846d60f8fe4aca428b2fc64688b46be4b4b1c8fa0a6a1e675e80c39"
     },
     "SETUP.sh": {
       "bytes": 968,
       "sha256": "e0eb079cbfa5bcfbb85125a70c2f1fcf03ff7fe405004ef51638f7381e73ab0f"
     },
     "TRACE.json": {
-      "bytes": 7434,
-      "sha256": "d1dc4d741a39d69ccc090529d28ff89e9f72e376563f15b046b2ef3aa7799657"
+      "bytes": 3990,
+      "sha256": "649fe1d7c04d1c67436e3c27486c2d1510fe0f49c95ed0eddfd6038f43b32d41"
     },
     "i03_joined.out": {
       "bytes": 3669,
@@ -48,8 +61,8 @@
       "sha256": "7825cd02024b6a1e310efcf5c8d34161a33ce0c5540cab4f83330d14cfda83b2"
     },
     "patches/04_saved_batch_prior_cache.patch": {
-      "bytes": 1724,
-      "sha256": "9cda4d5bba659f6b0b69990d6b66f85451471355d773798fb9bb7b8e075a29e4"
+      "bytes": 2417,
+      "sha256": "71b128749e108dd5dff5a1729ad33a4c84c1a3a088bc1b3c5c94476f150c4c58"
     },
     "raw_lane_joined.out": {
       "bytes": 1653,
@@ -71,7 +84,7 @@
   "saved_row_deletion": "PASS_RED_RESTORE_GREEN",
   "schema": "ANVIL_SRC16_RAW_JOINED_SOURCEFREE_RECEIPT@1",
   "sourcefree": true,
-  "status": "JOINED_SOURCEFREE_PASS__SAVED_ROW_DELETION_RED_RESTORE_GREEN",
+  "status": "JOINED_SOURCEFREE_PASS__CORRECTED_BATCH_PREDICATE_REFUSAL__EXACT_REUSE_PRESERVED",
   "typed_unresolved": "I03 UNRESOLVED -> I05 EVALUATED_UNRESOLVED/COVERAGE_LIMITED",
   "valid_empty": "EVALUATED_VALID_EMPTY/VALID_EMPTY"
 }

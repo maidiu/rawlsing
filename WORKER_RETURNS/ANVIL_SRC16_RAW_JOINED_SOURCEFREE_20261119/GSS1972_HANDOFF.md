@@ -8,7 +8,7 @@ Patch order is exact:
 1. `patches/01_handoff_raw_lane.patch`
 2. `patches/02_query_predicate_guard.patch`
 3. `patches/03_i05_unresolved_repair.patch`
-4. `patches/04_saved_batch_prior_cache.patch`
+4. `patches/04_saved_batch_prior_cache.patch` (corrected OWNER `aaa8a548…`, SHA `71b12874…`)
 
 Patch SHA-256 values and pre/post file hashes are frozen in
 `JOINED_EVIDENCE.json`. `SETUP.sh` reproduces the isolated candidate.

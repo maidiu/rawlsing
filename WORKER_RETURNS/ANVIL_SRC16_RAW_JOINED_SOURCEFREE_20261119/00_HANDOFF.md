@@ -26,7 +26,10 @@ owner-only construction/fresh-reader command.
   `COVERAGE_LIMITED`
 - valid empty: distinct `EVALUATED_VALID_EMPTY` / `VALID_EMPTY`
 - saved Batch: `COMPLETED`, full manifest coverage, operational execution only
-- forged completed prior receipts: not retained under R3 patch
+- corrected changed-predicate path: refused with `SAVED_BATCH_PREDICATE_BINDING_MISMATCH`
+- exact same-root reuse: preserved, 3/3 receipt records equal
+- forged completed prior receipts: not retained; reexecuted
+- changed prior output: `PRIOR_OUTPUT_MISMATCH`; legitimate partial resume preserved
 - current authority denial: `DirectEstateError` for direct I05 and prior-receipt
   Batch
 - mapped parity: exact; SAV expected/raw/control 1/1/1, DTA 2/2/2
