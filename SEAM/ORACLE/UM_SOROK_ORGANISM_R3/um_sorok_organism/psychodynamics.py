@@ -95,7 +95,7 @@ def enact_currents(constitution, access, active_forms, candidates):
                 if not _matches(t, o, access, cues):
                     continue
                 (approach if t['polarity'] == 'APPROACH' else withhold).append(form['id'])
-                currents.append({'kind': 'ACQUIRED_ACTIVITY_CURRENT',
+                currents.append({'kind': 'ACQUIRED_ACTION_CURRENT',
                     'action': o['action'], 'polarity': t['polarity'],
                     'form_ref': form['id'], 'option_id': ident,
                     'activity_ref': o.get('activity_ref'),
@@ -107,12 +107,20 @@ def enact_currents(constitution, access, active_forms, candidates):
         if approach and withhold:
             o['psychodynamic_status'] = 'UNRESOLVED_CONTRADICTION'
             o['opposed_currents'] = {'approach': approach, 'withhold': withhold}
-            antagonisms.append({'option_id': ident, 'action': o['action'],
+            # Several activity-specific options may inherit an identical
+            # *unqualified* tension. Preserve each candidate's own response,
+            # without duplicating a single historical source conflict in the
+            # diagnostic antagonism ledger. Distinct source sets remain distinct.
+            conflict={'option_id': ident, 'action': o['action'],
                 'activity_ref': o.get('activity_ref'),
                 'practical_object': o.get('practical_object'),
                 'approach': approach, 'withhold': withhold,
                 'resolution': 'UNDETERMINED; NO FORCED HARMONY',
-                'actor': constitution.actor})
+                'actor': constitution.actor}
+            if not any(x['action']==conflict['action'] and
+                x['approach']==approach and x['withhold']==withhold
+                for x in antagonisms):
+                antagonisms.append(conflict)
             updated.append(o)
         elif withhold:
             suspended.append({'option_id': ident, 'action': o['action'],
