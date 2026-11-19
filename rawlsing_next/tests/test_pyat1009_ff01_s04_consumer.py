@@ -17,7 +17,7 @@ from rawlsing_next.pre553_s04_ff01_consumer import (
 from rawlsing_next.field_forge_generic_empirical_ingress import (
     FF01GenericIngressError, receive_ff01_observed_joint,
 )
-from rawlsing_next.field_forge_observed_research import ask_observed_conditioned_support
+from rawlsing_next.field_forge_observed_research import ask_exact_descriptive_support
 from rawlsing_next.tests.test_pyat1009_ff01_generic_ingress import _case
 
 RIGHTS = ("FF01_DESCRIPTIVE_SOURCEFREE",)
@@ -44,7 +44,7 @@ def test_existing_ff01_abi_consumes_s04_without_second_i03_execution():
     assert ff.semantic_projection()["joint_arity"] == 3
     assert len(ff.semantic_projection()["complete_cells"]) == 8
     assert ff.semantic_projection()["producer_fact_ref"] == s04.material()["fact_ref"]
-    answer = ask_observed_conditioned_support(
+    answer = ask_exact_descriptive_support(
         received=ff, target_index=2, conditions={0: "0", 1: "0"},
     ).material()
     assert answer["condition_fully_resolved_n"] == 1
@@ -61,10 +61,10 @@ def test_same_pairwise_marginal_different_three_way_fates_through_s04_ff01():
 
 def test_direction_is_role_specific_with_different_complete_case_denominators():
     _, _, _, ff = _both()
-    fwd = ask_observed_conditioned_support(
+    fwd = ask_exact_descriptive_support(
         received=ff, target_index=2, conditions={0: "0", 1: "0"},
     ).material()
-    rev = ask_observed_conditioned_support(
+    rev = ask_exact_descriptive_support(
         received=ff, target_index=0, conditions={2: "0"},
     ).material()
     assert fwd["condition_fully_resolved_n"] == 1
