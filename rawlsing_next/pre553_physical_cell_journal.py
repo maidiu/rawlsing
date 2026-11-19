@@ -28,12 +28,13 @@ from typing import Iterator
 
 from rawlsing_next.pre553_physical_decoder import (
     PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence,
+    PHYSICAL_METADATA_CONTRACT, build_physical_metadata_payload,
 )
 from rawlsing_next.pre553_r5_codec import (
     R5TypedValueCodec, canonical_json as r5_canonical_json,
 )
 
-SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@1"
+SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@2"
 _CODEC = R5TypedValueCodec()
 
 
@@ -116,6 +117,7 @@ class PhysicalCellJournal:
         self._gzip = None
         self._expected_sha: str | None = None
         self._metadata_digest: str | None = None
+        self._metadata_bytes: bytes | None = None
         self._rows = 0
         self._variables: tuple[tuple[int, str], ...] = ()
         self._seen = 0
@@ -129,6 +131,24 @@ class PhysicalCellJournal:
             raise PhysicalCellJournalError("NEW exact physical-source incidence required")
         self._expected_sha = _sha(incidence.source_sha256)
         self._metadata_digest = _sha(incidence.physical_metadata_digest)
+        # Preserve the full original physical dictionary and reader receipt,
+        # not merely a checksum that becomes uninterpretable after SAV/DTA
+        # removal. This remains physical evidence, never semantic issuance.
+        source_metadata = build_physical_metadata_payload(
+            source_sha256=incidence.source_sha256,
+            source_format=incidence.source_format,
+            reader_configuration=incidence.reader_configuration,
+            file_metadata=incidence.file_metadata,
+            variables=incidence.variables,
+        )
+        self._metadata_bytes = json.dumps(
+            source_metadata, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+        if sha256(self._metadata_bytes).hexdigest() != self._metadata_digest:
+            raise PhysicalCellJournalError(
+                "physical source dictionary differs from decoder metadata digest"
+            )
         self._rows = incidence.row_count
         self._variables = tuple((v.ordinal, v.name) for v in incidence.variables)
         if (type(self._rows) is not int or self._rows < 1
@@ -146,6 +166,12 @@ class PhysicalCellJournal:
                 filename="", mode="wb", fileobj=self._raw_stream, mtime=0,
                 compresslevel=6,
             )
+            metadata_file = self._stage / "physical_metadata.json"
+            with metadata_file.open("xb") as metadata_handle:
+                os.chmod(metadata_file, 0o600)
+                metadata_handle.write(self._metadata_bytes)
+                metadata_handle.flush()
+                os.fsync(metadata_handle.fileno())
             self.state = "writing"
         except BaseException:
             self.abort()
@@ -267,9 +293,26 @@ def read_physical_cells(
         raise PhysicalCellJournalError("physical journal path outside exact retention scope")
     file = target / "physical_cells.jsonl.gz"
     manifest = target / "manifest.json"
-    if (file.is_symlink() or manifest.is_symlink()
-            or not file.is_file() or not manifest.is_file()):
-        raise PhysicalCellJournalError("physical journal body/manifest missing or linked")
+    metadata_file = target / "physical_metadata.json"
+    if (file.is_symlink() or manifest.is_symlink() or metadata_file.is_symlink()
+            or not file.is_file() or not manifest.is_file()
+            or not metadata_file.is_file()):
+        raise PhysicalCellJournalError(
+            "physical journal body/manifest/decoder metadata missing or linked"
+        )
+    metadata_bytes = metadata_file.read_bytes()
+    if sha256(metadata_bytes).hexdigest() != _sha(receipt.source_metadata_digest):
+        raise PhysicalCellJournalError("decoder physical metadata digest differs from receipt")
+    metadata = json.loads(metadata_bytes)
+    declared_variables = tuple(
+        (row["ordinal"], row["name"]) for row in metadata["variables"]
+    )
+    if (metadata.get("schema") != PHYSICAL_METADATA_CONTRACT
+            or metadata.get("source_sha256") != receipt.source_sha256
+            or declared_variables != receipt.variables):
+        raise PhysicalCellJournalError(
+            "physical dictionary/source/variables differ from original decoder"
+        )
     if json.loads(manifest.read_text("ascii")) != receipt.material():
         raise PhysicalCellJournalError("physical journal manifest differs from independent receipt")
     if file.stat().st_size != receipt.gzip_bytes:
