@@ -343,6 +343,7 @@ class _GroupCore:
     cell_by_respondent: Mapping[str, str]
     used_objects: tuple[Any, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
+    unresolved_condition_member_refs: tuple[ExactRef, ...]
     fingerprint: str
 
 
@@ -355,6 +356,9 @@ def _group_core_fingerprint(core: _GroupCore) -> str:
         "detail": core.detail,
         "risk_members": [ref.key for ref in core.risk_members],
         "denominator_members": [ref.key for ref in core.denominator_members],
+        "unresolved_condition_member_refs": [
+            ref.key for ref in core.unresolved_condition_member_refs
+        ],
         "raw_denominator": core.raw_denominator,
         "raw_resolved_target_support": core.raw_resolved_target_support,
         "raw_cells": sorted(core.raw_cells.items()),
@@ -583,6 +587,7 @@ def _evaluate_index_group_core(
         cell_by_respondent=MappingProxyType(dict(sorted(cell_by_respondent.items()))),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
         fingerprint="",
     )
     object.__setattr__(core, "fingerprint", _group_core_fingerprint(core))
@@ -624,6 +629,7 @@ def _materialize_grouped_evaluation(
             weighted_cells=None,
             used_objects=core.used_objects,
             used_authority_refs=core.used_authority_refs,
+            unresolved_condition_member_refs=core.unresolved_condition_member_refs,
         )
     if profile.measure_kind != "GOVERNED_WEIGHTED":
         raise EmpiricalQueryExecutionError("unsupported measure kind in grouped materialization")
@@ -660,6 +666,7 @@ def _materialize_grouped_evaluation(
         weighted_cells=MappingProxyType(dict(sorted(weighted_cells.items()))),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=core.unresolved_condition_member_refs,
     )
 
 
@@ -871,6 +878,7 @@ def _evaluate_index_group(
                         if weighted_cells is not None else None),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
     )
 
 
@@ -923,6 +931,10 @@ def _make_execution_replay_ref(
         "denominator_member_refs": [ref.as_dict() for ref in evaluation.denominator_members],
         "complete_cells": list(_cell_projection(evaluation)),
     }
+    if evaluation.unresolved_condition_member_refs:
+        material["unresolved_condition_member_refs"] = [
+            ref.as_dict() for ref in evaluation.unresolved_condition_member_refs
+        ]
     digest = semantic_hash(material)
     return ExactRef(
         "PRE553_I03_QUERY_REPLAY",
@@ -1007,6 +1019,16 @@ def _build_fact(
             "joint_order_semantics": plan.joint_order_semantics,
             "target_domain_identity": plan.domain_identity,
             "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
+            **({
+                "condition_membership_uncertainty": {
+                    "state": "UNRESOLVED_CONDITION_MEMBERSHIP",
+                    "member_refs": [
+                        ref.as_dict() for ref in evaluation.unresolved_condition_member_refs
+                    ],
+                    "known_true_denominator": evaluation.raw_denominator,
+                    "eligible_risk_n": len(evaluation.risk_members),
+                }
+            } if evaluation.unresolved_condition_member_refs else {}),
         },
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
