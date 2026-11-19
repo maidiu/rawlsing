@@ -1,10 +1,11 @@
 {
   "actual_caller_available": true,
   "checkpoint_tested": true,
+  "compact_spool_tested": true,
   "files": {
     "CALLER_README.md": {
-      "bytes": 3176,
-      "sha256": "1188838940b1a337bc046872557ebdf48292eecde519de4104ba5ccf24e9f0de"
+      "bytes": 3364,
+      "sha256": "8577970c08b9149d40c1ebc15bfef3c605e0d85aaa0ce450b685f281a5068233"
     },
     "DISK_GUARD_TEST.json": {
       "bytes": 158,
@@ -90,6 +91,34 @@
       "bytes": 1714,
       "sha256": "89992eefc0831ded4d2914beedd3af40f397ba73e9eea7a28c16fa80b0f6ca7a"
     },
+    "REHEARSAL_COMPACT/BASELINE_READER.json": {
+      "bytes": 1782,
+      "sha256": "d29c1a0bff702dab7c86a7a361fe89b03aa043893d360901a1a03231037d82d6"
+    },
+    "REHEARSAL_COMPACT/BASELINE_RESUME.json": {
+      "bytes": 1737,
+      "sha256": "aace0038b19b58dbcd9cc763ad4065830bc4b5a6bfcddcee4fb2ca71e4532c3d"
+    },
+    "REHEARSAL_COMPACT/BASELINE_STOP.json": {
+      "bytes": 250,
+      "sha256": "067082ee2a28931d718772351cf3734ef844efcb9c7ef6c5cf0584f4a66d1c69"
+    },
+    "REHEARSAL_COMPACT/COMPACT_READER.json": {
+      "bytes": 1782,
+      "sha256": "d29c1a0bff702dab7c86a7a361fe89b03aa043893d360901a1a03231037d82d6"
+    },
+    "REHEARSAL_COMPACT/COMPACT_RESUME.json": {
+      "bytes": 1735,
+      "sha256": "2d4e1dde595375e986d8c6c1f5b5e082b8dbd29f7b07cc7789944f029e58c8ac"
+    },
+    "REHEARSAL_COMPACT/COMPACT_STOP.json": {
+      "bytes": 247,
+      "sha256": "410cc2e967c8831829b6004f6bc28b65405e279d8ce9fb9026797cca4cac228c"
+    },
+    "REHEARSAL_COMPACT/READER.out": {
+      "bytes": 29,
+      "sha256": "125330a7d9be28f951db43b62917a0e5f0c4c430cf91fe7e485ad02d1f530a48"
+    },
     "REHEARSAL_SINGLE_PASS/PRODUCER.json": {
       "bytes": 1730,
       "sha256": "a8d516315b3cbb9c8de7a3500c97981c1ac8c7d12a84ea9ead0a6057176af04d"
@@ -135,8 +164,8 @@
       "sha256": "444c4f89c3060f81869c9b04186e857c79e4205e4143f7f1c0ccc0cf36d8edd9"
     },
     "RETURN.json": {
-      "bytes": 12591,
-      "sha256": "77ffb30a882d7c93f4040882303ea1c20e2d9af5c7b1ac345262b07ac0b35dd8"
+      "bytes": 13458,
+      "sha256": "d73acedfc7bdf1a8c8ce6abfeadd1c2bca9839b93266e8121436fd0ed459dee7"
     },
     "SRC04_WITNESS_SCOPE.json": {
       "bytes": 4347,
@@ -154,9 +183,13 @@
       "bytes": 5222,
       "sha256": "3abbff2fff023732c4341e0fcbe86827c0e0662e25f894b7e3fe813b439b041e"
     },
+    "compact_rehearsal.py": {
+      "bytes": 4912,
+      "sha256": "6b4685cf4f64af02cdb404dcfbfc1aa73afd9bdef535147c5150727f6ba0a898"
+    },
     "single_pass_handoff.py": {
-      "bytes": 14428,
-      "sha256": "1fa5fb8189ea4514829d50b0b6bd3aaf9d0841b61c73af1d95254d4b7a2d0199"
+      "bytes": 19841,
+      "sha256": "c87ad499ad902973de4b9ee90cb50254d819e1431f471c09a2336c2734b0bce1"
     },
     "test_disk_guards.py": {
       "bytes": 751,
@@ -191,5 +224,5 @@
   "source_read_performed": true,
   "sourcefree_only": true,
   "sourcefree_rehearsal": true,
-  "status": "CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP"
+  "status": "COMPACT_TYPED_SPOOL_GREEN__CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP"
 }

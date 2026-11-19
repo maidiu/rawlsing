@@ -31,7 +31,7 @@ The candidate tree must hash as `pre553_source_i02_handoff.py = 6ab7cb50…` and
 
 1. Supervisor verifies candidate/patch hashes and opens a unique private root.
 2. Producer verifies exact grant/request, q217 hold and 177/3 scoped config before source decode.
-3. Producer uses localized `single_pass_handoff.py`: one admitted decode, exact projected sections, and the existing `write_direct_estate` directly. It removes the duplicate replay body journal and explicit first I02 pass; it does not change the core writer.
+3. Producer uses localized `single_pass_handoff.py`: one admitted decode, exact projected sections, and the existing `write_direct_estate` directly. The compact spool uses shared field headers plus positional typed JSON arrays in deterministic gzip; the existing canonical object codec reconstructs exact objects at the writer boundary. It removes the duplicate replay body journal and explicit first I02 pass; it does not change the core writer.
 4. At the prepared-sections boundary, the producer writes an authenticated checkpoint (HMAC key private 0600) containing exact source/config/request/decision refs and complete spool hashes/counts. Writer publication remains atomic. After interruption, resume from this checkpoint without re-decode; altered/missing/partial checkpoints are refused before publication.
 5. Supervisor enforces 6 GiB process-tree RSS and the 8 GiB in-flight free-space floor separately from the 26,907,826,727 B startup working-room gate. It reaps the producer before a fresh reader.
 6. If the exact `ba886d877…` runtime overlay is absent, the caller refuses before source with `RUNTIME_OVERLAY_REQUIRED_FOR_RUN`; base v2 stops at slot 176 q716withoutmorocco.

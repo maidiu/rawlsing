@@ -39,7 +39,9 @@
     "baseline_manifest_equal": true,
     "baseline_roots_equal": true,
     "checkpoint_hmac_key": "private root / checkpoint.key mode 0600",
+    "compact_checkpoint_verified": true,
     "created_at_interrupt": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/checkpoint-rehearsal/resume-private/prepared-sections.checkpoint.json",
+    "fresh_resume_no_decode": true,
     "poison_checkpoint_refused": true,
     "poison_error": "CheckpointRefusal",
     "reader_roots_equal": true,
@@ -48,6 +50,26 @@
     "schema": "ANVIL_SRC04_PREPARED_SECTIONS_CHECKPOINT@1"
   },
   "checkpoint_boundary": "prepared sections / existing direct writer; authenticates exact source/config/request/grant/decision and complete spool file hashes/counts; no re-decode on resume; checkpoint HMAC key private mode 0600",
+  "compact_spool": {
+    "baseline_checkpoint_bytes": 1956,
+    "baseline_spool_bytes": 589728,
+    "compact_checkpoint_bytes": 1904,
+    "compact_spool_bytes": 41233,
+    "encoding": "shared field header + positional typed JSON arrays + deterministic gzip",
+    "exact_payload_digests_equal": true,
+    "exact_roots_equal": true,
+    "fixture_rows": 96,
+    "resume_decode_called": false,
+    "saving_bytes": 548495,
+    "saving_fraction": 0.930081,
+    "typed_values": [
+      "repeated",
+      "zero",
+      "missing/None",
+      "DK 7.0",
+      "substantive"
+    ]
+  },
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
   "coverage": {
@@ -297,10 +319,11 @@
     "sourcefree_test_only": true,
     "wrong_root_refused": true
   },
-  "status": "CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP",
+  "status": "COMPACT_TYPED_SPOOL_GREEN__CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP",
   "supervisor_root_absolute": true,
   "tests": {
     "failed": 0,
     "passed": 3
-  }
+  },
+  "writer_internal_stage_dominance": "R3 26,678,480,536 B terminal stage remains dominated by non-spool writer/projection stage; compact spool savings are not a full-scale peak guarantee"
 }
