@@ -239,3 +239,12 @@ def test_fresh_python_process_rehydrates_without_parent_i03_objects(tmp_path):
     )
     assert result.returncode == 0, result.stderr
     assert len(result.stdout.strip()) == 64
+
+
+def test_cold_custody_requires_explicit_sourcefree_assertion():
+    _, _, q, r, knowledge = _ready()
+    with pytest.raises(S04ColdCustodyError, match="synthetic-sourcefree-only assertion"):
+        freeze_s04_i03_sourcefree(
+            query=q, execution=r, knowledge=knowledge,
+            sourcefree_origin_assertion="THIS_IS_ORIGINAL_NATIVE_SURVEY",
+        )
