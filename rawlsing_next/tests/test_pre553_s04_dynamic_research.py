@@ -5,6 +5,7 @@ import pytest
 
 pytest.importorskip("pyarrow")
 
+from rawlsing_next.pre553_carrier_execution import CarrierExecutionBindingError
 from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
 from rawlsing_next.pre553_source_direct_parquet_estate import DirectEstateError
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
@@ -140,5 +141,5 @@ def test_rejects_original_survey_construction_grant_and_bad_catalog_query(
         # Query issued by the original catalog must match its original
         # predicate; unissued query IDs and forged bindings are unavailable.
         foreign = ExactRef("EmpiricalQuerySpec@1.0.0", "urn:test:alien-query", semantic_hash("alien"))
-        with pytest.raises((KeyError, ValueError), match="unknown|unavailable|not found|missing"):
+        with pytest.raises(CarrierExecutionBindingError, match="unavailable"):
             dynamic.ask(S04DynamicQuestion(foreign, pred.ref))
