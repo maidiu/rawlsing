@@ -68,14 +68,34 @@ def _source(tag, rows=None):
     return _source_with_candidate(_MP(), tag, 1)
 
 
-def _replace_event(source, candidate, state):
+def _source_rows(tag):
+    holder = {}
+    original = native.ingest_c11_source_release
+    def capture(candidate, repo):
+        holder["candidate"] = candidate
+        return original(candidate, repo)
+    mp = _MP()
+    with mp.context():
+        mp.setattr(native, "ingest_c11_source_release", capture)
+        source = native._build_source(tag, [
+            {"id": "R1", "responses": {"Y": 0, "X": 0}},
+            {"id": "R2", "responses": {"Y": 1, "X": 1}},
+        ])
+    return source, holder["candidate"]
+
+
+def _replace_event(source, candidate, state, question="Y"):
     respondent = source["respondents"]["R2"].ref
+    qref = source["qrefs"][question]
     events = []
     changed = 0
     for event in candidate.respondent_events:
         ref = event.scoped_respondent_ref
+        nref = event.native_question_ref
         same = (ref.get("object_id") == respondent.object_id
-                and ref.get("content_hash") == respondent.content_hash)
+                and ref.get("content_hash") == respondent.content_hash
+                and nref.get("object_id") == qref.object_id
+                and nref.get("content_hash") == qref.content_hash)
         if same and changed == 0:
             from rawlsing_next.pre553_empirical_objects import RespondentEvent
             fields = dict(event.semantic_fields)
@@ -124,13 +144,16 @@ def _state_leaf(source, state):
     }
 
 
-def _execute(tag, root, *, state=None, condition="NOT", mapped=False):
-    source, candidate = _source(tag, [
-        {"id": "R1", "responses": {"Y": 0}},
-        {"id": "R2", "responses": {"Y": 1}},
-    ])
+def _execute(tag, root, *, state=None, condition="NOT", joint=False):
+    if joint:
+        source, candidate = _source_rows(tag)
+    else:
+        source, candidate = _source(tag, [
+            {"id": "R1", "responses": {"Y": 0}},
+            {"id": "R2", "responses": {"Y": 1}},
+        ])
     if state is not None:
-        source, candidate = _replace_event(source, candidate, state)
+        source, candidate = _replace_event(source, candidate, state, question="Y")
     qa = native._query_authority(tag)
     diagnostic = _state_leaf(source, "INVALID_UNRESOLVED")
     value_leaf = _state_leaf(source, "SUBSTANTIVE_RESPONSE")
@@ -148,7 +171,10 @@ def _execute(tag, root, *, state=None, condition="NOT", mapped=False):
     else:
         raise AssertionError("unknown condition")
     predicate = native._predicate(source, qa, ast, tag=f"{tag}-pred")
-    query = native._query(source, qa, predicate, ("Y",), tag=f"{tag}-query")
+    query = native._query(
+        source, qa, predicate, ("Y", "X") if joint else ("Y",),
+        tag=f"{tag}-query",
+    )
     root = Path(root) / tag
     root.mkdir(mode=0o700, parents=True, exist_ok=True)
     estate_root, receipt = _cold(root, candidate, source["universe"].ref, "estate")
@@ -191,6 +217,8 @@ def main():
         (None, "NOT", "mapped_not"),
     ):
         out[label] = _execute(label, root, state=state, condition=cond)
+    out["joint_mixed"] = _execute(
+        "joint_mixed", root, state="INVALID_UNRESOLVED", condition="MIXED", joint=True)
     print(json.dumps({"guard": os.environ.get("ANVIL_GUARD") == "1", "results": out}, sort_keys=True))
     return 0
 

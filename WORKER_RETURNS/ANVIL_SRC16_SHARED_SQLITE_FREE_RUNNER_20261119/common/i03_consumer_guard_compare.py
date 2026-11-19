@@ -15,6 +15,8 @@ checks={
  'after_unresolved_not_held': after['unresolved_not']['raw_denominator']==0 and after['unresolved_not']['risk_count']==0 and 'UNRESOLVED_CONDITION_MEMBER' in after['unresolved_not']['detail'],
  'before_unresolved_mixed_denominator': before['unresolved_mixed']['raw_denominator']==1 and before['unresolved_mixed']['risk_count']==2,
  'after_unresolved_mixed_held': after['unresolved_mixed']['raw_denominator']==0 and after['unresolved_mixed']['risk_count']==0 and 'UNRESOLVED_CONDITION_MEMBER' in after['unresolved_mixed']['detail'],
+ 'before_joint_mixed_denominator': before['joint_mixed']['raw_denominator']==1 and before['joint_mixed']['risk_count']==2,
+ 'after_joint_mixed_held': after['joint_mixed']['raw_denominator']==0 and after['joint_mixed']['risk_count']==0 and 'UNRESOLVED_CONDITION_MEMBER' in after['joint_mixed']['detail'],
  'after_unresolved_positive_held': after['unresolved_positive']['raw_denominator']==0 and after['unresolved_positive']['risk_count']==0 and 'UNRESOLVED_CONDITION_MEMBER' in after['unresolved_positive']['detail'],
  'known_missing_unchanged': fields(before['known_missing_not'])==fields(after['known_missing_not']) and after['known_missing_not']['typed_state']=='UNRESOLVED',
  'diagnostic_allowed_unchanged': fields(before['unresolved_diagnostic'])==fields(after['unresolved_diagnostic']) and after['unresolved_diagnostic']['typed_state']=='UNRESOLVED',

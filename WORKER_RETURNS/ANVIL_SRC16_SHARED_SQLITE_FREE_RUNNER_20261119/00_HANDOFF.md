@@ -1,95 +1,81 @@
-# Source-neutral raw lane + I03 leaf guard — R4 mixed-predicate closure
+# Source-neutral raw lane — exact mapped control and joint I03 proof
 
 ## Scope
 
-Sourcefree only.  The frozen runtime/candidate trees and all real source data
-remain read-only.  The authored handoff and predicate guard are isolated copies
-under this return, with executable `-U0` patches.  No `.sav` was opened and no
-survey was launched.
+Sourcefree only.  Frozen runtime/candidates and all original data remain
+read-only.  This return contains the isolated handoff and predicate-guard copies
+with reproducible `-U0` patches.  No `.sav`, source read, GSS launch, I05/Batch
+execution, or new research was performed.
 
-## Raw construction lane (preserved)
+## Mapped-parity defect corrected
 
-The shared construction-only raw lane remains:
+The prior test used `raw_mapped <= base_mapped`, which allowed silent mapped
+support loss.  It is replaced by an independently defined mapped set and a
+separate mapped-only matched control:
 
-- unmapped observed storage -> `INVALID_UNRESOLVED`;
-- source-declared missing -> `MISSING`;
-- exact raw value in the existing `$raw_physical_value` witness;
-- existing declared occurrence topology copied, not guessed;
-- no substantive promotion, canonical recoding, or new authority.
+- expected physical positions derive from fixture input and the mapped-only
+  config, not from raw output;
+- a separate control build uses a copied mapped-only config on the same source;
+- each expected position produces exactly one event, with exact cardinality;
+- comparison is exact equality of the full event ref and canonical semantic
+  projection, including raw value, response state, native/canonical/component
+  refs, topology, multiplicity/order, occurrence, and payload;
+- no subset operator and no expected-row restriction from actual output;
+- deleting one still-mapped control row makes the comparison fail.
 
-Two differently shaped sourcefree fixtures (SAV and DTA) were written and
-cold-reopened through the saved first reader.  Mapped matched records retain
-their exact semantic signatures.  Invalid physical state still refuses.
+`shared_raw_lane_test.out`:
 
-## I03 guard (R4)
+| fixture | expected mapped | raw mapped | control mapped | exact | deletion fails |
+|---|---:|---:|---:|---|---|
+| SAV 3-row | 1 | 1 | 1 | yes | yes |
+| DTA 4-row | 2 | 2 | 2 | yes | yes |
 
-The prior guard had an exact bypass: a whole-AST diagnostic exemption let a
-mixed predicate pass an unrelated value-dependent leaf.  R4 replaces it with a
-**leaf-local** guard in the existing predicate evaluator:
+Raw/witness/declared-missing/invalid-physical checks remain PASS.  The two
+fixture shapes are still SAV and DTA.
 
-`_refuse_unresolved_value_leaf(event, node)`
+## Joint-target saved I03
 
-It is called only while the existing leaf already iterates its selected saved
-events.  It:
+Added an actual saved-native first-consumer case with two targets (`Y`, `X`),
+one unresolved `Y` event, and a mapped `X` event.  The mixed condition remains:
 
-- refuses `INVALID_UNRESOLVED` for a value-dependent response-state or
-  response-value leaf;
-- allows only that individual explicit `INVALID_UNRESOLVED` state leaf;
-- does not recurse the AST before evaluation and does not perform a second
-  full query pass;
-- uses the same existing question/component/occurrence event selection as the
-  guarded leaf;
-- raises existing `EmpiricalQueryResolutionError`, which the existing I03
-  consumer converts to its normal typed negative/hold fact.
+`AND(INVALID_UNRESOLVED diagnostic, NOT(SUBSTANTIVE_RESPONSE))`
 
-The mixed predicate reproduced the exact bypass and is now held:
-
-`AND(INVALID_UNRESOLVED state diagnostic, NOT(SUBSTANTIVE_RESPONSE))`
-
-## Actual saved native first-consumer evidence
-
-`i03_consumer_before.out` / `i03_consumer_after.out` were produced through
-`write_direct_estate` and `CarrierNeutralResearchExecutor.execute_i03` on the
-cold saved estate, not through `_eval_predicate` or selector filtering alone.
+Actual `write_direct_estate` + `CarrierNeutralResearchExecutor.execute_i03`
+results:
 
 | case | before | after |
 |---|---|---|
-| unmapped NOT | denominator 1, risk 2, `UNRESOLVED` | denominator 0, risk 0, guard hold |
-| unmapped positive | `SUPPORTED`, denominator 1 | denominator 0, risk 0, guard hold |
-| mixed diagnostic + NOT | denominator 1, risk 2, `UNRESOLVED` | denominator 0, risk 0, guard hold |
-| standalone diagnostic | denominator 1, risk 2, `UNRESOLVED` | identical, allowed |
-| known missing NOT | denominator 1, risk 2, `UNRESOLVED` | identical, still distinct |
-| mapped NOT | denominator 0, risk 2, `ZERO_SUPPORT` | identical, replay and risk unchanged |
+| joint mixed (`Y`,`X`) | denominator 1, risk 2, `UNRESOLVED` | denominator 0, risk 0, guard hold |
+| simple mixed | denominator 1, risk 2 | denominator 0, risk 0 |
+| simple NOT / positive | denominator 1 / `SUPPORTED` | both held |
+| standalone diagnostic | denominator 1, risk 2 | identical, allowed |
+| known missing | denominator 1, risk 2 | identical, still distinct |
+| mapped NOT | denominator 0, risk 2, `ZERO_SUPPORT` | identical; risk/replay unchanged |
 
-`i03_consumer_guard_compare.out`: **PASS**, including mixed before RED, mixed
-after hold, positive/NOT holds, standalone diagnostic parity, known-missing
-parity, and mapped denominator/risk/replay parity.
+`i03_consumer_guard_compare.out`: **PASS**.
 
-## I05/Batch status
+The guard remains leaf-local in `_refuse_unresolved_value_leaf`; it is not a
+whole-AST prepass and does not add a second query pass.  Only the individual
+explicit `INVALID_UNRESOLVED` state leaf is exempt in a mixed predicate.
 
-Inspected `pre553_prepared_saved_i03.PreparedI03Session.execute_i05` and
-`SavedC11Admission.execute_i05`.  Both route to the existing
-`execute_exact_bounded_discovery`; that owner calls `execute_empirical_query`
-(guard included) per candidate.  I05/Batch was **not exercised** here.
+Component/occurrence selection variant: not available in this sourcefree
+fixture builder (one occurrence/component per question); the joint target
+variant is exercised, and no synthetic component/occurrence claim is made.
 
-The exact remaining join is in `pre553_discovery_exact.py`: an I03
-`UNRESOLVED` fact is currently mapped by `_terminal_fact_class` (lines 862-870)
-to `UNAVAILABLE` / `EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY` (lines
-1027-1028), which conflates unresolved with missing/authority.  That is a
-terminal-state/join decision beyond this narrow I03 guard cut.  No Field Forge
-or PRE-V3 qualification is claimed.
+## I05/Batch
 
-## Private GSS census verification
+I05/Batch was not exercised and remains independent.  Inspected handoffs route
+`execute_i05` through `execute_exact_bounded_discovery`; the exact remaining
+join is the existing discovery terminal mapping of `UNRESOLVED` to
+`UNAVAILABLE` / `EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY`
+(`pre553_discovery_exact.py:862-870, 1027-1028`).  No Field Forge or PRE-V3
+qualification is claimed.
 
-`gss_census_local_verify.out` replayed the completed private aggregate census
-without source access:
+## Private census verification
 
-- 40,592 declared-missing range cells covered;
-- 18,105 observed-storage cells remain unresolved;
-- 243 exact range rules;
-- missing/duplicate mapped positions: 0;
-- coverage replay: PASS;
-- no raw tokens published.
+`gss_census_local_verify.out` remains PASS: 40,592 declared-missing range cells
+covered, 18,105 observed-storage cells unresolved, 243 exact range rules, zero
+missing/duplicate mapped positions, no tokens/source.
 
 ## Files
 
@@ -110,5 +96,5 @@ without source access:
 - `gss_census_local_verify.out`
 - `receipt.json`
 
-No bytecode, private overlay, raw tokens, real source, GSS retry, new corpus,
-protected edit, second backend, or DHIKR was added.
+No bytecode, raw tokens, private overlay, real/data source, protected edits,
+I05/Batch changes, or DHIKR.

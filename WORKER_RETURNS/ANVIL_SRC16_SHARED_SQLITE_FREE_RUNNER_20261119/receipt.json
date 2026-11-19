@@ -50,8 +50,8 @@
   },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4754,
-      "sha256": "3f6078dd1ce41566c196ff0c3f14ae0324fda10c9002198d8063327aed9e9ddb"
+      "bytes": 4178,
+      "sha256": "0615c7ab0b183ba5109528e61cfe34f0f37ddd5f06335c4d2a7fb220e233d8d1"
     },
     "common.patch": {
       "bytes": 16121,
@@ -62,12 +62,12 @@
       "sha256": "3f40601e50cb6f4953bafc7c0012523d7e8f2dec6a4cf7ac4b0442a0634ef075"
     },
     "common/i03_consumer_guard_compare.py": {
-      "bytes": 2341,
-      "sha256": "d9dea276ae553260f90799eb33c4c5e8588053d39c3c8c9b20a0d1568f56a032"
+      "bytes": 2645,
+      "sha256": "2e7eda288ea6ee66bf9029256fc176d8a9c5b4a1a99e04b1fb7df0f9920e69a8"
     },
     "common/i03_consumer_guard_test.py": {
-      "bytes": 7490,
-      "sha256": "ca5e7336612ac75c5fe6a79a627250e2ce8b5ff17192dbe16f5ff21eeed342e4"
+      "bytes": 8494,
+      "sha256": "185c11bb509211ce79827e7b1a61f34b4c7b10ff62831201015c5098a2eaa54e"
     },
     "common/pre553_query_predicate.worker.py": {
       "bytes": 24761,
@@ -82,8 +82,8 @@
       "sha256": "ee47777d4386567866570635c66d90a347c7e76050dd9ee6ff2b1e81381d6ad6"
     },
     "common/shared_raw_lane_test.py": {
-      "bytes": 10270,
-      "sha256": "a9f7e5e297b6ee05895c62c2247810e1f8fb16d13993792f3d89f3a5af9b0d5b"
+      "bytes": 8721,
+      "sha256": "9b4b84f0823994eb1b968e89a402b7562a14cbc6f21ed2cd11866680330765d2"
     },
     "common/sqlite_free_single_pass.py": {
       "bytes": 22200,
@@ -106,24 +106,24 @@
       "sha256": "7b237b2f780518b06f410241ce1165ce481c35612871a9f6eb28b7de22c78af1"
     },
     "i03_consumer_after.out": {
-      "bytes": 3161,
-      "sha256": "9e2184b462c2ec25bec0c761d5084a407e6e9c7ce0dd5dde79103d7fa912784e"
+      "bytes": 3669,
+      "sha256": "807ed5d54833c25f154e6d85bb9b05613650bf153085ae2f74256badc93ac705"
     },
     "i03_consumer_before.out": {
-      "bytes": 3171,
-      "sha256": "bce69e0c2e7e10869d1a964179a2c5838c2238ff190824344642398163b8bc11"
+      "bytes": 3704,
+      "sha256": "fa62ea4943f78155a4fec2d50be839891919f50e926f2d34e8c85da2c0622440"
     },
     "i03_consumer_guard_compare.out": {
-      "bytes": 6815,
-      "sha256": "1d9412d42f81bb64d219d04816da9baa86493c3299e23d6cc9cffb9375e0174d"
+      "bytes": 7928,
+      "sha256": "99a058802ab116f90a84dbd1a76f3040e67e3221a70b093e8d60a1eec23150e2"
     },
     "keyed_adapter_receipts.json": {
       "bytes": 1436,
       "sha256": "d5499e339cb56d8f674cc6b6759f98ebd7212ee62720c32717263fc921380e4e"
     },
     "shared_raw_lane_test.out": {
-      "bytes": 1119,
-      "sha256": "1d7da9c6e6c85eb94cccc252326153fbeba01028998e3739aaacb598393fd815"
+      "bytes": 1120,
+      "sha256": "53e38bcac3e4e2664c40e23d32d6695b815c2bc4240d3d4ea95c60902afbab26"
     },
     "sourcefree_precheck_receipts.json": {
       "bytes": 1344,
@@ -181,9 +181,28 @@
   },
   "i03_guard": {
     "ast_prepass": false,
+    "component_occurrence_variant": "NOT_COMPATIBLE_WITH_EXISTING_SOURCEFREE_FIXTURE_BUILDER__NO_FABRICATED_CLAIM",
     "extra_full_pass": false,
     "implementation": "leaf-local _refuse_unresolved_value_leaf",
+    "joint_target": {
+      "after": {
+        "detail": "UNRESOLVED_CONDITION_MEMBER",
+        "raw_denominator": 0,
+        "risk_count": 0
+      },
+      "before": {
+        "raw_denominator": 1,
+        "risk_count": 2,
+        "typed_state": "UNRESOLVED"
+      },
+      "status": "PASS",
+      "targets": [
+        "Y",
+        "X"
+      ]
+    },
     "known_missing_unchanged": true,
+    "leaf_local": true,
     "mapped_parity_denominator_risk_replay": true,
     "mixed_after": {
       "detail": "UNRESOLVED_CONDITION_MEMBER",
@@ -195,6 +214,7 @@
       "risk_count": 2,
       "typed_state": "UNRESOLVED"
     },
+    "mixed_bypass_fixed": true,
     "mixed_bypass_reproduced": true,
     "simple_positive_and_not_held": true,
     "standalone_diagnostic_allowed": true,
@@ -221,13 +241,29 @@
   },
   "i05_batch": {
     "field_forge_or_prev3_claimed": false,
-    "handoffs_inspected": [
-      "pre553_prepared_saved_i03.PreparedI03Session.execute_i05",
-      "pre553_saved_c11_admission.SavedC11Admission.execute_i05"
-    ],
     "remaining_join": "pre553_discovery_exact.py:862-870/1027-1028 maps UNRESOLVED to UNAVAILABLE/EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
-    "route": "execute_exact_bounded_discovery -> execute_empirical_query",
-    "status": "PENDING_NOT_EXECUTED"
+    "status": "PENDING_NOT_EXECUTED_LEFT_INDEPENDENT"
+  },
+  "mapped_parity": {
+    "control": "separate mapped-only matched control build",
+    "dta": {
+      "control": 2,
+      "deletion_fails": true,
+      "exact": true,
+      "expected": 2,
+      "raw": 2
+    },
+    "expected_positions_from": "fixture input + mapped-only config",
+    "sav": {
+      "control": 1,
+      "deletion_fails": true,
+      "exact": true,
+      "expected": 1,
+      "raw": 1
+    },
+    "signature": "event ref + canonical semantic projection including multiplicity/refs/payload",
+    "status": "PASS_EXACT",
+    "subset_used": false
   },
   "native_source": {
     "age_mapping": "EXACT_OBSERVED_TOKENS_REQUIRED",
@@ -239,6 +275,7 @@
   "no_new_native_source_scan": true,
   "no_new_source_scan": true,
   "no_original_source_read_by_worker": true,
+  "no_private_overlay_in_git": true,
   "no_private_paths_published": true,
   "no_raw_tokens_published": true,
   "no_real_data_read": true,
@@ -334,7 +371,7 @@
     "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
     "status": "SRC16_METADATA_ADMISSION_PASS"
   },
-  "status": "SOURCE_NEUTRAL_RAW_LANE_PASS__I03_LEAF_GUARD_MIXED_RED_GREEN_PASS__I05_BATCH_PENDING",
+  "status": "SOURCE_NEUTRAL_RAW_MAPPED_EXACT_PASS__I03_JOINT_MIXED_GUARD_PASS__I05_PENDING",
   "synthetic_declared_missing": {
     "checks": "synthetic_declared_missing_witness.out",
     "status": "PASS"

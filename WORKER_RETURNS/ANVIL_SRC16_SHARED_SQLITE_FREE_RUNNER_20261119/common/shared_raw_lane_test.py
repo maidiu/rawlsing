@@ -31,15 +31,14 @@ _module = importlib.util.module_from_spec(_spec)
 sys.modules[_name] = _module
 _spec.loader.exec_module(_module)
 
-from rawlsing_next.pre553_r157_projection_adapter import SourceConfig  # noqa: E402
+from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
+from rawlsing_next.pre553_source_i02_handoff import (
+    build_governed_c11_projection, decode_dta, decode_sav, row_native_keys_from_transport,
+)  # noqa: E402
 from rawlsing_next.tests.test_pyat940_s1b_support import make_config, write_fixture  # noqa: E402
 from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState  # noqa: E402
 from rawlsing_next.pre553_source_i02_handoff import SourceI02Refusal, _unresolved_response_state  # noqa: E402
 from rawlsing_next.pre553_empirical_objects import canonical_json  # noqa: E402
-from rawlsing_next.pre553_c11_integrity import TypedAbsence  # noqa: E402
-from rawlsing_next._pre553_query_common import _ReleaseIndex  # noqa: E402
-from rawlsing_next._pre553_query_predicate import _eval_predicate  # noqa: E402
-from rawlsing_next.pre553_empirical_authority import AuthorityRegistry  # noqa: E402
 from sqlite_free_single_pass import build_single_pass  # noqa: E402
 from streaming_estate import open_stream_native_estate  # noqa: E402
 
@@ -74,71 +73,37 @@ def _raw_witness_ok(event) -> bool:
     return isinstance(material, Mapping) and "token" in material
 
 
-def _mapped_signature(event):
+def _event_key(event):
     return (
         canonical_json(event.scoped_respondent_ref),
         canonical_json(event.native_question_ref),
-        event.response_state,
-        canonical_json(event.raw_response_value),
-        canonical_json(event.response_topology_ref),
-        canonical_json(event.multiplicity_order_rank_fields),
-        canonical_json(event.canonical_response_value_if_authorized),
+        str(event.multiplicity_order_rank_fields.get("index")),
     )
 
 
-def _i03_not_witness(estate, events):
-    """Use the saved I03 predicate evaluator on a saved condition + NOT.
+def _event_signature(event):
+    return (event.ref.key, canonical_json(event.semantic_projection()))
 
-    This is a RED witness, not a new semantic rule.  A NOT over the saved
-    substantive-state condition must not silently take an unresolved event as
-    a positive condition member.
-    """
-    identities = {r.ref.key: r for r in estate.iter_family("RespondentIdentity", batch_size=16)}
-    unresolved = [e for e in events if e.typed_state != "SUBSTANTIVE_RESPONSE"]
-    if not unresolved:
-        return {"available": False, "red": False}
-    event = unresolved[0]
-    def _resp_key(value):
-        return "|".join((value["kind"], value["object_id"], value["content_hash"])) if isinstance(value, Mapping) else value.key
-    key = _resp_key(event.scoped_respondent_ref)
-    respondent = identities[key]
-    same = tuple(e for e in events if _resp_key(e.scoped_respondent_ref) == key)
-    universe = next(estate.iter_family("EmpiricalUniverse", batch_size=8))
-    auths = tuple(estate.iter_family("AuthoritySnapshot", batch_size=64))
-    registry = AuthorityRegistry(auths)
-    leaf = {
-        "op": "LEAF",
-        "leaf_type": "TYPED_RESPONSE_STATE",
-        "empirical_universe_ref": dict(universe.ref.as_dict()),
-        "question_semantic_ref": dict(event.native_question_ref),
-        "typed_state_ref": dict(event.response_topology_ref),
-        "state_semantic_authority_ref": event.authority_snapshot_refs[0].as_dict(),
-        "typed_state": "SUBSTANTIVE_RESPONSE",
+
+def _expected_mapped_keys(path, cfg, values, keep_raw):
+    """Independent expected positions from fixture input + mapped-only config."""
+    fmt = cfg.document["identity"]["source_format"]
+    incidence = decode_sav(path) if fmt == "SAV" else decode_dta(path)
+    keys = row_native_keys_from_transport(cfg, incidence=incidence, batch_size=4)
+    projection = build_governed_c11_projection(
+        cfg,
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        row_native_keys=keys,
+    )
+    row_refs = {binding.row_ordinal: binding.respondent_ref for binding in projection.row_bindings}
+    qref = projection.questions[0].native_question_ref
+    occurrence = cfg.document["response_slots"][0]["values"][0]["occurrences"][0]["key"]
+    return {
+        (canonical_json(row_refs[row]), canonical_json(qref), str(occurrence))
+        for row, value in enumerate(values, 1)
+        if value == keep_raw and row in row_refs
     }
-    node = {"op": "NOT", "children": [leaf]}
-    index = _ReleaseIndex(
-        release=None,
-        universe=universe,
-        respondents={key: respondent},
-        events_by_respondent={key: same},
-        coordinates_by_respondent={key: ()},
-        routing_by_respondent={key: ()},
-        weights_by_respondent={key: ()},
-        source_relations=(),
-    )
-    used, used_auth = [], []
-    try:
-        leaf_result = _eval_predicate(
-            leaf, respondent=respondent, index=index, registry=registry,
-            used=used, used_auth=used_auth,
-        )
-        result = _eval_predicate(
-            node, respondent=respondent, index=index, registry=registry,
-            used=used, used_auth=used_auth,
-        )
-        return {"available": True, "leaf": bool(leaf_result), "red": bool(result), "error": None}
-    except Exception as exc:
-        return {"available": True, "leaf": None, "red": False, "error": type(exc).__name__}
 
 def _one_fixture(root: Path, *, source_format: str, values, missing_range=False,
                  extended_missing=False, keep_raw=1.0):
@@ -153,36 +118,41 @@ def _one_fixture(root: Path, *, source_format: str, values, missing_range=False,
         user_missing_range=missing_range, extended_missing=extended_missing,
     )
     raw_cfg = SourceConfig(_strip_unmapped(doc, keep_raw))
-    base_cfg = SourceConfig(copy.deepcopy(doc))
+    control_cfg = SourceConfig(_strip_unmapped(copy.deepcopy(doc), keep_raw))
+    expected_keys = _expected_mapped_keys(path, raw_cfg, values, keep_raw)
     (root / "private-raw").mkdir(mode=0o700, parents=True, exist_ok=True)
-    (root / "private-base").mkdir(mode=0o700, parents=True, exist_ok=True)
+    (root / "private-control").mkdir(mode=0o700, parents=True, exist_ok=True)
     raw_rec = build_single_pass(
         config=raw_cfg, source_path=path, private_root=root / "private-raw",
         chunk_rows=2, compact_spool=True,
     )
-    base_rec = build_single_pass(
-        config=base_cfg, source_path=path, private_root=root / "private-base",
+    control_rec = build_single_pass(
+        config=control_cfg, source_path=path, private_root=root / "private-control",
         chunk_rows=2, compact_spool=True,
     )
     raw_estate, raw_events = _read(root / "private-raw", raw_rec)
-    _, base_events = _read(root / "private-base", base_rec)
-    raw_mapped = {_mapped_signature(e) for e in raw_events if e.typed_state == "SUBSTANTIVE_RESPONSE"}
-    base_mapped = {_mapped_signature(e) for e in base_events if e.typed_state == "SUBSTANTIVE_RESPONSE"}
+    _, control_events = _read(root / "private-control", control_rec)
+    raw_selected = {_event_signature(e) for e in raw_events if _event_key(e) in expected_keys}
+    control_selected = {_event_signature(e) for e in control_events if _event_key(e) in expected_keys}
+    mutation = set(control_selected)
+    if mutation:
+        mutation.remove(sorted(mutation)[0])
     states = {}
     for event in raw_events:
         states[event.typed_state] = states.get(event.typed_state, 0) + 1
     unresolved = [e for e in raw_events if e.typed_state != "SUBSTANTIVE_RESPONSE"]
-    i03 = _i03_not_witness(raw_estate, raw_events)
     return {
         "source_format": source_format,
         "rows": rows,
         "event_count": len(raw_events),
         "state_counts": dict(sorted(states.items())),
-        "mapped_matched_rows": raw_mapped <= base_mapped,
-        "mapped_signature_count": len(raw_mapped),
+        "mapped_expected_count": len(expected_keys),
+        "mapped_raw_count": len(raw_selected),
+        "mapped_control_count": len(control_selected),
+        "mapped_exact": raw_selected == control_selected and len(raw_selected) == len(expected_keys),
+        "mutation_deleting_mapped_row_fails": mutation != raw_selected,
         "unresolved_count": len(unresolved),
         "raw_witness_preserved": all(_raw_witness_ok(e) for e in unresolved),
-        "i03_condition_plus_not": i03,
         "cold_reopen": True,
     }
 
@@ -212,15 +182,12 @@ def main() -> int:
         and b["state_counts"].get("INVALID_UNRESOLVED", 0) == 1,
         "no_substantive_shift": a["state_counts"].get("SUBSTANTIVE_RESPONSE", 0) == 1
         and b["state_counts"].get("SUBSTANTIVE_RESPONSE", 0) == 2,
-        "mapped_matched_rows": a["mapped_matched_rows"] and b["mapped_matched_rows"],
+        "mapped_exact": a["mapped_exact"] and b["mapped_exact"],
+        "mutation_deleting_mapped_row_fails": a["mutation_deleting_mapped_row_fails"] and b["mutation_deleting_mapped_row_fails"],
         "raw_witness_preserved": a["raw_witness_preserved"] and b["raw_witness_preserved"],
         "invalid_physical_input_refused": invalid_refused,
-        "i03_not_red_proven": a["i03_condition_plus_not"].get("available")
-        and a["i03_condition_plus_not"].get("red") is True
-        and b["i03_condition_plus_not"].get("available")
-        and b["i03_condition_plus_not"].get("red") is True,
     }
-    status = "SHARED_RAW_LANE_TEST_PASS_WITH_I03_RED" if all(checks.values()) else "SHARED_RAW_LANE_TEST_FAILED"
+    status = "SHARED_RAW_LANE_TEST_PASS_MAPPED_EXACT" if all(checks.values()) else "SHARED_RAW_LANE_TEST_FAILED"
     print(json.dumps({
         "status": status, "checks": checks,
         "sav": a, "dta": b,
