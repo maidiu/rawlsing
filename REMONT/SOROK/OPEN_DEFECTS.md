@@ -43,6 +43,12 @@ Live PYAT REMONT precedent: [PYAT PR #1162](https://github.com/maidiu/rawlsing/p
 
 **SR-P004 remains PARTIAL_CODE_REPAIRED, not closed:** compose still ranks means with project priorities; motive and activity-genesis are not scientifically constituted. SR-P011 remains OPEN_NOT_FIXED. NEXT: further object-directed activity selection and motive-genesis before moving to SR-P005. No native P2/P3 integration, independent G5, source/science/actor grants, protected receiving or retroactive status changes for other P/T/E rows.
 
+#### SR-P004 REMONT R2 — do not graft foreign means onto an activity (2026-11-19)
+
+**New negative construction, same PARTIAL_CODE_REPAIRED row.** The R2 composed-activity planner could generate any globally eligible two-step operation grammar for any situated project even when neither operation belonged to that project's historically acquired means. It then borrowed the bases of other projects, incorrectly attributing their means to the wrong practical object. Now composition requires every operation to be a declared means of that same project AND to be present in its own situated project-basis. Form evidence may be reused, but another project's purpose is never laundered into this plan.
+
+**Executed after R2 addition:** 39/39 local unittest PASS including the previous 37, new positive separate music versus workshop plans, and negative foreign-project basis refusal. Both component ops reenter world through independently resolved future attempts; this does NOT demonstrate scientific motive genesis, means generalization or completed actor-owned selection.
+
 ### Queue T — genuine test, fixture and harness defects
 
 **No independently confirmed faulty R2 assertion or harness defect was identified in this turn.** The inherited R1 suite was extended and R2's 34 locally executed cases pass. Lack of independent test, LLM-provider validation, or source-qualified field data is recorded in Queue E, **not misclassified as a test bug**. Later first-fault counterexamples get stable IDs `SR-T001+`, source line and witness before an agent is assigned.

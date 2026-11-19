@@ -412,6 +412,35 @@ class WholeOrganism(unittest.TestCase):
             record_activity_afterlife(a,'BUY_FOOD','BLOCKED','NO_ACCESSIBLE_FOOD',
                 ['project:needs'],'objective_two')
 
+    def test_sr004_composed_plan_cannot_graft_unrelated_means_onto_object(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.plans import propose_compositions
+        options=[{'action':a,'score':1,'basis':basis} for a,basis in [
+          ('WORK',['project:livelihood']),('REPAIR',['project:livelihood']),
+          ('PRACTICE',['project:music','form:practice']),
+          ('SING',['project:music','form:song'])]]
+        currents=[{'kind':'ONGOING_ACTIVITY','ref':'music','object':'make music together',
+                   'means':['PRACTICE','SING']},
+                  {'kind':'ONGOING_ACTIVITY','ref':'livelihood','object':'repair the workshop',
+                   'means':['WORK','REPAIR']}]
+        results=propose_compositions(SimpleNamespace(actor='mara',currents=currents,
+                                                      candidate_actions=options))
+        self.assertEqual(len(results),2)
+        by_object={x.object:x for x in results}
+        self.assertEqual(by_object['make music together'].steps,('PRACTICE','SING'))
+        self.assertEqual(by_object['repair the workshop'].steps,('WORK','REPAIR'))
+        self.assertNotIn('project:livelihood',by_object['make music together'].basis)
+        self.assertNotIn('project:music',by_object['repair the workshop'].basis)
+
+    def test_sr004_global_operations_without_owner_basis_do_not_form_project_plan(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.plans import propose_compositions
+        fake=SimpleNamespace(actor='mara',currents=[{'kind':'ONGOING_ACTIVITY',
+          'ref':'music','object':'music','means':['PRACTICE','SING']}],
+          candidate_actions=[{'action':'PRACTICE','basis':['project:someone_else']},
+                             {'action':'SING','basis':['form:sing']}])
+        self.assertEqual(propose_compositions(fake),[])
+
     def test_bodily_maturation_is_not_automatically_language_competence(self):
         self.rt.background(365*2)
         n=self.rt.snapshot('nadia')
