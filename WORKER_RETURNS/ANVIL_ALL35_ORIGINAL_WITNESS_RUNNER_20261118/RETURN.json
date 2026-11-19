@@ -52,21 +52,22 @@
   "checkpoint_boundary": "prepared sections / existing direct writer; authenticates exact source/config/request/grant/decision and complete spool file hashes/counts; no re-decode on resume; checkpoint HMAC key private mode 0600",
   "compact_spool": {
     "baseline_checkpoint_bytes": 1956,
-    "baseline_spool_bytes": 589728,
+    "baseline_spool_bytes": 551124,
     "compact_checkpoint_bytes": 1904,
-    "compact_spool_bytes": 41233,
+    "compact_spool_bytes": 38835,
     "encoding": "shared field header + positional typed JSON arrays + deterministic gzip",
     "exact_payload_digests_equal": true,
     "exact_roots_equal": true,
-    "fixture_rows": 96,
+    "fixture_rows": 90,
     "resume_decode_called": false,
-    "saving_bytes": 548495,
-    "saving_fraction": 0.930081,
+    "saving_bytes": 512289,
+    "saving_fraction": 0.929535,
     "typed_values": [
       "repeated",
       "zero",
       "missing/None",
       "DK 7.0",
+      "NOT_ASKED -1.0",
       "substantive"
     ]
   },

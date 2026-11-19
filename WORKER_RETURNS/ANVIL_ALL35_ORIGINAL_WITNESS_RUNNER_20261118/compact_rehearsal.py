@@ -17,8 +17,8 @@ def fixture(root):
   from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
   return SourceConfig(json.loads(p.read_text())),Path(q.read_text().strip())
  # repeated zero, missing, DK and substantive values to exercise typed distinctions
- values=(1.0,2.0,0.0,7.0,None,1.0,2.0,None)*12
- f=source_fixture(root/'src',values=values);p.write_text(json.dumps(f['document'],indent=2,sort_keys=True)+'\n');q.write_text(str(f['path'])+'\n');return f['config'],f['path']
+ values=(1.0,2.0,0.0,7.0,None,-1.0,1.0,2.0,None,-1.0)*9
+ f=source_fixture(root/'src',values=values,config_kwargs={'response_state_overrides':{-1.0:'NOT_ASKED'}});p.write_text(json.dumps(f['document'],indent=2,sort_keys=True)+'\n');q.write_text(str(f['path'])+'\n');return f['config'],f['path']
 
 def req(cfg):
  sha=cfg.document['binding']['source_sha256'];return types.SimpleNamespace(source_id=cfg.source_id,source_sha256=sha,source_format='SAV',custody_locator_binding='TEST_LOCAL',host='TEST_HOST',purpose='TEST_ONLY',consumer_use='TEST_ONLY',read_operation='SOURCE_RESPONSE_DECODE',physical_read_extent='EXACT_FILE',metadata_freeze_refs=(ExactRef('TEST_METADATA','test','a'*64),),semantic_use_scope=('TEST_ONLY',)),ExactRef('TEST_GRANT','grant','b'*64),ExactRef('TEST_DECISION','decision','c'*64)
