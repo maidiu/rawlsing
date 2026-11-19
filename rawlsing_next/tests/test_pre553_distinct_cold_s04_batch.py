@@ -46,6 +46,7 @@ def test_distinct_queries_run_one_native_index_and_produce_each_real_s04(
     with monkeypatch.context() as patch:
         patch.setattr(DirectEstateI03Session, "__enter__", counted)
         result = subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
             executor=executor, operations=requests,
         )
     assert len(entered) == 1
@@ -120,6 +121,7 @@ def test_one_preparation_feeds_real_k2_s04_ff01_and_unary_native_f1(
     with monkeypatch.context() as patch:
         patch.setattr(DirectEstateI03Session, "__enter__", capture)
         result = subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
             executor=executor, operations=instructions,
         )
     assert len(entered) == 1
@@ -165,6 +167,7 @@ def test_source_revoked_during_s04_reception_returns_no_partial_batch(
         patch.setattr(subject, "receive_s04_first_consumer", withdraw_after_one)
         with pytest.raises(DirectEstateError, match="current source"):
             subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
                 executor=executor, operations=instructions,
             )
     assert count["n"] == 1
@@ -188,16 +191,19 @@ def test_duplicate_wrong_predicate_unary_ff01_and_causal_text_refuse_before_inde
         patch.setattr(DirectEstateI03Session, "__enter__", detect)
         with pytest.raises(subject.S04DistinctBatchError, match="duplicate"):
             subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
                 executor=executor,
                 operations=(instructions[0], instructions[0]),
             )
         with pytest.raises(subject.S04DistinctBatchError, match="genuine k>=2"):
             subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
                 executor=executor,
                 operations=(replace(instructions[1], conditioner_index=0),),
             )
         with pytest.raises(FF01GenericIngressError, match="protected use"):
             subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
                 executor=executor,
                 operations=(replace(
                     instructions[0],
@@ -206,6 +212,7 @@ def test_duplicate_wrong_predicate_unary_ff01_and_causal_text_refuse_before_inde
             )
         with pytest.raises(subject.S04DistinctBatchError, match="context axes"):
             subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
                 executor=executor,
                 operations=(replace(
                     instructions[0],
@@ -220,6 +227,7 @@ def test_original_construction_grant_is_not_a_qualified_i03_repository():
     # not a VerifiedDirectEstate or an I03 analysis authorization.
     with pytest.raises(subject.S04DistinctBatchError, match="CarrierNeutralResearchExecutor"):
         subject.execute_distinct_native_s04_research(
+                sourcefree_origin_assertion=subject.SOURCEFREE_ONLY_ASSERTION,
             executor={"source_id": "SRC16", "purpose": "FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY"},
             operations=(subject.S04DistinctOperation(
                 query_ref=object(), predicate_ref=object(),
