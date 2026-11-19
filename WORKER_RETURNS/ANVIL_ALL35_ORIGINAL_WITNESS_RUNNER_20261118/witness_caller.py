@@ -32,7 +32,8 @@ R3_TERMINAL_STAGE_BYTES = 26678480536
 R3_DUPLICATE_JOURNAL_BYTES = 8360588401
 PRACTICAL_STAGING_BUDGET = R3_TERMINAL_STAGE_BYTES - R3_DUPLICATE_JOURNAL_BYTES
 STAGING_BUDGET = PRACTICAL_STAGING_BUDGET
-FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3
+STARTUP_FREE_FLOOR = STAGING_BUDGET + 8 * 1024**3
+IN_FLIGHT_FREE_FLOOR = 8 * 1024**3
 OVERLAY_CANONICAL = "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0"
 OVERLAY_ADDED_RULE_COUNTS = {
     "q715withoutmorocco": 303,
@@ -186,7 +187,7 @@ def preflight(args) -> int:
 def producer(args) -> int:
     verify_candidate(args.candidate_tree, args.candidate_patch)
     sys.path.insert(0, str(args.candidate_tree))
-    from single_pass_handoff import build_single_pass
+    from single_pass_handoff import build_single_pass, resume_single_pass
     from rawlsing_next.pre553_r157_projection_adapter import SourceConfig, source_read_request_from_config
     wr, pin = _scoped()
     if args.runtime_config is None:
@@ -214,16 +215,26 @@ def producer(args) -> int:
     root = Path(args.root).absolute()
     private = root / "private"
     private.mkdir(mode=0o700, parents=False, exist_ok=True)
-    if shutil.disk_usage(root).free < FREE_FLOOR:
+    if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_PRODUCER")
     def progress(update):
         print(json.dumps(update, sort_keys=True), file=sys.stderr, flush=True)
-    receipt = build_single_pass(
+    if args.resume_checkpoint:
+        receipt = resume_single_pass(
+            checkpoint=args.resume_checkpoint, root=root, config=scoped,
+            request=bound.request, grant_ref=bound.grant_ref,
+            decision_ref=bound.decision.decision_ref, chunk_rows=512,
+            progress=progress)
+        resumed = True
+    else:
+        receipt = build_single_pass(
         config=scoped, source_path=args.source_path, private_root=private,
         resolver=resolver, host=bound.request.host, purpose=bound.request.purpose,
         consumer_use=bound.request.consumer_use,
         semantic_use_scope=bound.request.semantic_use_scope,
-        chunk_rows=512, progress=progress)
+            chunk_rows=512, progress=progress, request=bound.request,
+            grant_ref=bound.grant_ref, decision_ref=bound.decision.decision_ref)
+        resumed = False
     payload = {
         "schema": "ANVIL_ALL35_WITNESS_PRODUCER_RECEIPT@1",
         "producer_pid": os.getpid(),
@@ -242,6 +253,8 @@ def producer(args) -> int:
         "estate_path": receipt.path,
         "family_counts": dict(receipt.family_counts),
         "single_pass_path": True,
+        "resumed_from_checkpoint": resumed,
+        "checkpoint": None,
         "i02_passes": 1,
         "retained_bytes": receipt.retained_bytes,
         "source_read_performed": True,
@@ -346,8 +359,8 @@ def _sample(pid: int, root: Path, samples: list[dict[str, Any]]) -> str | None:
     samples.append({"elapsed": time.monotonic(), "rss": rss, "free": free})
     if rss > RAM_CAP:
         return "RSS_6GIB"
-    if free < FREE_FLOOR:
-        return "FREE_FLOOR_BREACH"
+    if free < IN_FLIGHT_FREE_FLOOR:
+        return "IN_FLIGHT_8GIB_BREACH"
     return None
 
 
@@ -369,16 +382,18 @@ def supervisor(args) -> int:
     work.mkdir(mode=0o700, parents=True, exist_ok=True)
     root = (work / tempfile_name(work, args.candidate_tree)).absolute()
     root.mkdir(mode=0o700)
-    if shutil.disk_usage(root).free < FREE_FLOOR:
+    if shutil.disk_usage(root).free < STARTUP_FREE_FLOOR:
         raise CallerRefusal("DISK_FLOOR_BEFORE_RUN")
     base = [sys.executable, str(Path(__file__).resolve()), "--mode"]
     source_path = args.source_path or _grant_source_path(args.binding_dir)
-    common = ["--candidate-tree", str(args.candidate_tree),
-              "--candidate-patch", str(args.candidate_patch),
-              "--config", str(args.config),
-              "--runtime-config", str(args.runtime_config),
-              "--binding-dir", str(args.binding_dir), "--root", str(root),
-              "--source-path", source_path]
+    common = (["--candidate-tree", str(args.candidate_tree),
+               "--candidate-patch", str(args.candidate_patch),
+               "--config", str(args.config),
+               "--runtime-config", str(args.runtime_config),
+               "--binding-dir", str(args.binding_dir), "--root", str(root),
+               "--source-path", source_path]
+              + (["--resume-checkpoint", str(args.resume_checkpoint)]
+                 if args.resume_checkpoint else []))
     samples: list[dict[str, Any]] = []
     started = time.monotonic()
     producer = subprocess.Popen([*base, "producer", *common], cwd=str(HERE),
@@ -430,8 +445,9 @@ def supervisor(args) -> int:
               "abort": abort, "elapsed": time.monotonic() - started,
               "samples": len(samples), "rss_peak": max((x["rss"] for x in samples), default=0),
               "free_min": min((x["free"] for x in samples), default=0),
-              "caps": {"rss": RAM_CAP, "staging_budget": STAGING_BUDGET,
-                       "free_floor": FREE_FLOOR, "wall_cutoff": None}}
+              "caps": {"rss": RAM_CAP, "startup_free_floor": STARTUP_FREE_FLOOR,
+                       "in_flight_free_floor": IN_FLIGHT_FREE_FLOOR,
+                       "staging_budget": STAGING_BUDGET, "wall_cutoff": None}}
     (root / "supervisor_receipt.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
     return 0 if result["status"] == "COMPLETE" else 4
@@ -454,13 +470,14 @@ def main() -> int:
     ap.add_argument("--root", type=Path)
     ap.add_argument("--work-root", type=Path, default=HERE / "RUNS")
     ap.add_argument("--source-path", default=None)
+    ap.add_argument("--resume-checkpoint", type=Path)
     ap.add_argument("--authorized-source-launch", action="store_true")
     args = ap.parse_args()
     try:
         if args.mode == "preflight":
             return preflight(args)
         if args.mode == "producer":
-            if not args.root or not args.source_path:
+            if not args.root or (not args.source_path and not args.resume_checkpoint):
                 raise CallerRefusal("PRODUCER_ROOT_AND_GRANT_SOURCE_REQUIRED")
             return producer(args)
         if args.mode == "reader":

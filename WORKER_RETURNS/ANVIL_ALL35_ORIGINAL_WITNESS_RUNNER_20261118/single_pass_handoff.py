@@ -1,15 +1,226 @@
 #!/usr/bin/env python3
-"""Localized single-pass adapter: exact projected sections -> existing writer.
+"""Localized single-pass adapter with an authenticated prepared-sections checkpoint.
 
-This mirrors the accepted OWNER proof path.  It does not alter the core writer,
-schema, Q2 paths, or source/config/grant artifacts.  The explicit first I02 proof
-and duplicate replay body journal are omitted; the existing direct writer still
-co-produces its own I02 proof and Parquet from the exact one-shot sections.
+The checkpoint is created after source admission/projection/spooling and before
+the existing direct writer.  It contains no respondent values.  A fresh process
+can resume the writer from the exact spool files without re-decoding the source.
+The HMAC key is private mode-0600 beside the private spool; this is integrity
+binding for restart, not independent historical authority.
 """
 from __future__ import annotations
+import hashlib
+import hmac
+import json
+import os
 import tempfile
 from pathlib import Path
 from typing import Any, Callable, Mapping
+
+CHECKPOINT_SCHEMA = "ANVIL_SRC04_PREPARED_SECTIONS_CHECKPOINT@1"
+HMAC_KEY_NAME = "checkpoint.key"
+CHECKPOINT_NAME = "prepared-sections.checkpoint.json"
+
+
+class CheckpointRefusal(RuntimeError):
+    def __init__(self, code: str, detail: str = ""):
+        super().__init__(code + (f": {detail}" if detail else ""))
+        self.code = code
+        self.detail = detail
+
+
+class CheckpointStop(RuntimeError):
+    """Test-only interruption after checkpoint, before writer publication."""
+
+
+def _canon(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"),
+                      ensure_ascii=False, allow_nan=False).encode("utf-8")
+
+
+def _sha_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for block in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def _request_payload(request: Any) -> dict[str, Any]:
+    return {
+        "source_id": request.source_id,
+        "source_sha256": request.source_sha256,
+        "source_format": request.source_format,
+        "custody_locator_binding": request.custody_locator_binding,
+        "host": request.host,
+        "purpose": request.purpose,
+        "consumer_use": request.consumer_use,
+        "read_operation": request.read_operation,
+        "physical_read_extent": request.physical_read_extent,
+        "metadata_freeze_refs": [r.as_dict() for r in request.metadata_freeze_refs],
+        "semantic_use_scope": list(request.semantic_use_scope),
+    }
+
+
+def _key(root: Path, *, create: bool) -> bytes:
+    path = root / HMAC_KEY_NAME
+    if path.exists():
+        os.chmod(path, 0o600)
+        return path.read_bytes()
+    if not create:
+        raise CheckpointRefusal("CHECKPOINT_KEY_MISSING")
+    key = os.urandom(32)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    try:
+        os.write(fd, key)
+    finally:
+        os.close(fd)
+    return key
+
+
+def _checkpoint_payload(*, config, request, grant_ref, decision_ref,
+                        spool_paths, counts, root: Path) -> dict[str, Any]:
+    from rawlsing_next.pre553_r157_projection_adapter import canonical_config_hash
+    return {
+        "schema": CHECKPOINT_SCHEMA,
+        "source_id": request.source_id,
+        "source_sha256": request.source_sha256,
+        "source_rows": config.document["binding"]["row_count"],
+        "config_canonical_sha256": canonical_config_hash(config),
+        "request": _request_payload(request),
+        "request_digest": hashlib.sha256(_canon(_request_payload(request))).hexdigest(),
+        "grant_ref": grant_ref.as_dict(),
+        "decision_ref": decision_ref.as_dict(),
+        "spool_families": {
+            family: {
+                "relative_path": str(Path(path).relative_to(root)),
+                "bytes": Path(path).stat().st_size,
+                "sha256": _sha_file(Path(path)),
+                "records": int(counts[family]),
+            }
+            for family, path in spool_paths.items()
+        },
+        "spool_counts": {k: int(v) for k, v in counts.items()},
+    }
+
+
+def write_checkpoint(*, root: str | Path, config, request, grant_ref,
+                     decision_ref, spool_paths, counts) -> Path:
+    root = Path(root).absolute()
+    key = _key(root, create=True)
+    payload = _checkpoint_payload(
+        config=config, request=request, grant_ref=grant_ref,
+        decision_ref=decision_ref, spool_paths=spool_paths, counts=counts, root=root)
+    auth = hmac.new(key, _canon(payload), hashlib.sha256).hexdigest()
+    document = {"payload": payload, "hmac_sha256": auth}
+    target = root / CHECKPOINT_NAME
+    temp = target.with_suffix(".tmp")
+    fd = os.open(temp, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    try:
+        os.write(fd, _canon(document) + b"\n")
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+    os.replace(temp, target)
+    return target
+
+
+def load_checkpoint(*, checkpoint: str | Path, root: str | Path, config,
+                    request, grant_ref, decision_ref) -> dict[str, Any]:
+    checkpoint = Path(checkpoint).absolute()
+    root = Path(root).absolute()
+    if not checkpoint.is_file():
+        raise CheckpointRefusal("CHECKPOINT_MISSING")
+    try:
+        envelope = json.loads(checkpoint.read_text())
+        payload = envelope["payload"]
+        auth = envelope["hmac_sha256"]
+    except Exception as exc:
+        raise CheckpointRefusal("CHECKPOINT_MALFORMED") from exc
+    key = _key(root, create=False)
+    expected = hmac.new(key, _canon(payload), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(auth, expected):
+        raise CheckpointRefusal("CHECKPOINT_HMAC_MISMATCH")
+    from rawlsing_next.pre553_r157_projection_adapter import canonical_config_hash
+    if payload.get("schema") != CHECKPOINT_SCHEMA:
+        raise CheckpointRefusal("CHECKPOINT_SCHEMA_MISMATCH")
+    if payload.get("source_id") != request.source_id:
+        raise CheckpointRefusal("CHECKPOINT_SOURCE_MISMATCH")
+    if payload.get("source_sha256") != request.source_sha256:
+        raise CheckpointRefusal("CHECKPOINT_SOURCE_SHA_MISMATCH")
+    if payload.get("source_rows") != config.document["binding"]["row_count"]:
+        raise CheckpointRefusal("CHECKPOINT_ROWS_MISMATCH")
+    if payload.get("config_canonical_sha256") != canonical_config_hash(config):
+        raise CheckpointRefusal("CHECKPOINT_CONFIG_MISMATCH")
+    if payload.get("request_digest") != hashlib.sha256(
+            _canon(_request_payload(request))).hexdigest():
+        raise CheckpointRefusal("CHECKPOINT_REQUEST_MISMATCH")
+    if payload.get("grant_ref") != grant_ref.as_dict():
+        raise CheckpointRefusal("CHECKPOINT_GRANT_MISMATCH")
+    if payload.get("decision_ref") != decision_ref.as_dict():
+        raise CheckpointRefusal("CHECKPOINT_DECISION_MISMATCH")
+    spool = payload.get("spool_families")
+    if not isinstance(spool, dict):
+        raise CheckpointRefusal("CHECKPOINT_SPOOL_MISSING")
+    for family, meta in spool.items():
+        p = root / meta["relative_path"]
+        if not p.is_file() or p.stat().st_size != meta["bytes"] or _sha_file(p) != meta["sha256"]:
+            raise CheckpointRefusal("CHECKPOINT_SPOOL_MISMATCH", family)
+    return payload
+
+
+def _projection(config):
+    from rawlsing_next import pre553_source_i02_handoff as handoff
+    doc = config.document
+    return handoff.build_governed_c11_projection(
+        config, source_sha256=doc["binding"]["source_sha256"],
+        row_count=doc["binding"]["row_count"], row_native_keys=None)
+
+
+def _resume_source(config, payload, root: Path):
+    from rawlsing_next import pre553_source_i02_handoff as handoff
+    projection = _projection(config)
+    spool_paths = {f: root / payload["spool_families"][f]["relative_path"]
+                   for f in handoff.SPOOL_FAMILIES}
+    class IncidenceStub:
+        source_sha256 = payload["source_sha256"]
+        row_count = payload["source_rows"]
+    manifest, source, declared_counts, _absences = handoff._manifest_and_sections(
+        projection=projection, incidence=IncidenceStub(),
+        spool_paths=spool_paths, counts=payload["spool_counts"],
+        universe_ref=projection.universes[0].ref)
+    return projection, spool_paths, manifest, source, declared_counts
+
+
+def resume_single_pass(*, checkpoint, root, config, request, grant_ref,
+                       decision_ref, expected_i02=None, chunk_rows=512,
+                       progress=None):
+    """Resume writer from authenticated prepared sections; never re-decodes."""
+    root = Path(root).absolute()
+    payload = load_checkpoint(checkpoint=checkpoint, root=root, config=config,
+                              request=request, grant_ref=grant_ref,
+                              decision_ref=decision_ref)
+    projection, spool_paths, manifest, source, declared_counts = _resume_source(
+        config, payload, root)
+    if progress:
+        progress({"phase": "checkpoint_validated", "rows": payload["source_rows"],
+                  "families": len(declared_counts),
+                  "records": int(sum(declared_counts.values())),
+                  "resumed": True})
+    from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
+    receipt = write_direct_estate(source, projection.universes[0].ref, root,
+                                  chunk_rows=chunk_rows, expected_i02=expected_i02)
+    from rawlsing_next import pre553_source_i02_handoff as handoff
+    cleanup_ok, leftovers = handoff._cleanup_spool(spool_paths, spool_paths[next(iter(spool_paths))].parent)
+    if not cleanup_ok:
+        raise handoff.SourceI02Refusal("SPOOL_CLEANUP_INCOMPLETE", leftovers)
+    (root / CHECKPOINT_NAME).unlink(missing_ok=True)
+    (root / HMAC_KEY_NAME).unlink(missing_ok=True)
+    if progress:
+        progress({"phase": "published_from_checkpoint", "families": len(receipt.family_counts),
+                  "records": int(sum(receipt.family_counts.values())),
+                  "retained_bytes": int(receipt.retained_bytes)})
+    return receipt
+
 
 def build_single_pass(
     *,
@@ -25,8 +236,12 @@ def build_single_pass(
     batch_size: int = 512,
     chunk_rows: int = 512,
     progress: Callable[[Mapping[str, Any]], None] | None = None,
+    stop_after_checkpoint: bool = False,
+    grant_ref: Any = None,
+    decision_ref: Any = None,
+    request: Any = None,
 ):
-    """One admitted decode, exact projected sections, one existing writer pass."""
+    """One admitted decode, exact projected sections, authenticated checkpoint, one writer pass."""
     from rawlsing_next import pre553_source_i02_handoff as handoff
     from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
     doc = config.document if hasattr(config, "document") else config
@@ -34,6 +249,8 @@ def build_single_pass(
     if original:
         if resolver is None:
             raise handoff.SourceI02Hold("SOURCE_READ_RESOLVER_REQUIRED")
+        if request is None or grant_ref is None or decision_ref is None:
+            raise CheckpointRefusal("CHECKPOINT_AUTHORITY_BINDING_REQUIRED")
         incidence = handoff.decode_config_with_source_read_permission(
             config, source_path=source_path, resolver=resolver,
             host=host, purpose=purpose, consumer_use=consumer_use,
@@ -42,6 +259,8 @@ def build_single_pass(
         fmt = doc["identity"]["source_format"]
         decoder = handoff.decode_sav if fmt == "SAV" else handoff.decode_dta
         incidence = decoder(source_path, encoding=None)
+    checkpoint_written = False
+    published = False
     try:
         if incidence.source_sha256 != doc["binding"]["source_sha256"]:
             raise handoff.SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
@@ -65,21 +284,34 @@ def build_single_pass(
                 projection=projection, incidence=incidence,
                 spool_paths=spool_paths, counts=counts,
                 universe_ref=universe_ref)
+            if request is not None and grant_ref is not None and decision_ref is not None:
+                write_checkpoint(root=root, config=config, request=request,
+                                  grant_ref=grant_ref, decision_ref=decision_ref,
+                                  spool_paths=spool_paths, counts=counts)
+                checkpoint_written = True
             if progress:
-                progress({"phase": "sections_ready", "rows": incidence.row_count,
+                progress({"phase": "checkpoint_ready", "rows": incidence.row_count,
                           "families": len(declared_counts),
-                          "records": int(sum(declared_counts.values()))})
+                          "records": int(sum(declared_counts.values())),
+                          "checkpoint": checkpoint_written})
+            if stop_after_checkpoint:
+                raise CheckpointStop("STOP_AFTER_CHECKPOINT")
             receipt = write_direct_estate(
                 source, universe_ref, root, chunk_rows=chunk_rows,
                 expected_i02=expected_i02)
+            published = True
             if progress:
                 progress({"phase": "published", "families": len(receipt.family_counts),
                           "records": int(sum(receipt.family_counts.values())),
                           "retained_bytes": int(receipt.retained_bytes)})
             return receipt
         finally:
-            cleanup_ok, leftovers = handoff._cleanup_spool(spool_paths, spool_dir)
-            if not cleanup_ok:
-                raise handoff.SourceI02Refusal("SPOOL_CLEANUP_INCOMPLETE", leftovers)
+            if not checkpoint_written or published:
+                cleanup_ok, leftovers = handoff._cleanup_spool(spool_paths, spool_dir)
+                if not cleanup_ok:
+                    raise handoff.SourceI02Refusal("SPOOL_CLEANUP_INCOMPLETE", leftovers)
+                if published:
+                    (root / CHECKPOINT_NAME).unlink(missing_ok=True)
+                    (root / HMAC_KEY_NAME).unlink(missing_ok=True)
     finally:
         incidence.close()

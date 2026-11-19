@@ -34,6 +34,18 @@
   "candidate_patch_sha256": "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f",
   "candidate_source_sha256": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f",
   "candidate_tree": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/anvil-src04-candidate-31rqm9z_/candidate",
+  "checkpoint": {
+    "baseline_counts_equal": true,
+    "baseline_manifest_equal": true,
+    "baseline_roots_equal": true,
+    "created_at_interrupt": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/checkpoint-rehearsal/resume-private/prepared-sections.checkpoint.json",
+    "poison_checkpoint_refused": true,
+    "poison_error": "CheckpointRefusal",
+    "reader_roots_equal": true,
+    "resume_process_decode_called": false,
+    "schema": "ANVIL_SRC04_PREPARED_SECTIONS_CHECKPOINT@1"
+  },
+  "checkpoint_boundary": "prepared sections / existing direct writer; authenticates exact source/config/request/grant/decision and complete spool file hashes/counts; no re-decode on resume; checkpoint HMAC key private mode 0600",
   "config_file_sha256": "5e107de4baf43f11a2a3e739e05481d8008de6f90951e86a170fb4d804ef3ff5",
   "config_index": "ad3386b718fd9ace234a00dab3b32ee51039b77f",
   "coverage": {
@@ -79,6 +91,13 @@
     }
   },
   "defect_repaired": "REMOVED_BODY_SINK_ADAPTER__NATIVE_SOURCESAVEDBODYSINK_DIRECT__TEE_SUPPLIES_TRANSPORT",
+  "disk_guard_split": {
+    "current_free_bytes": 15924334592,
+    "current_startup_gap_bytes": 10983492135,
+    "in_flight_free_floor_bytes": 8589934592,
+    "rss_cap_bytes": 6442450944,
+    "startup_free_floor_bytes": 26907826727
+  },
   "final_runtime_config_canonical_sha256": "ba886d87763fdeb4d91df784b9672d6604081c9eaf81fd9ef6b3d334d4a387e0",
   "final_runtime_config_file_sha256": "dd5cf699070eaf3c528d97bd126d7bfd8166a7885010b0b95202cdf00ab34421",
   "free_space": {
@@ -101,6 +120,7 @@
     "No new grant/science/product edit"
   ],
   "no_launch_on_raw": true,
+  "no_original_source_opened": true,
   "numeric_domain_builder_sha256": "3889358a0659ec843b9c51d42c3498339eef7a0c161b78d6776e111eb5f27988",
   "one_authorized_admitted_decode": true,
   "original_source_path_from_grant": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/Arab Barometer Wave 1.sav",
@@ -204,7 +224,7 @@
     "status": "REFUSED"
   },
   "runner_requires_final_runtime_config": true,
-  "runner_scope": "SRC04-specific witness checks; reusable producer/supervisor/fresh-reader machinery only",
+  "runner_scope": "SRC04 witness runner only; no core writer/product changes",
   "schema": "ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_RETURN@1",
   "scoped_counts": {
     "coordinate_slots": 3,
@@ -215,6 +235,7 @@
   "selected_coordinate_slots": 3,
   "selected_response_slots": 177,
   "single_pass_file": "single_pass_handoff.py",
+  "single_pass_path": true,
   "single_pass_wiring": "existing direct write_direct_estate from exact projected sections; duplicate replay journal and explicit first I02 pass removed",
   "source_launch": "REFUSED_WITHOUT_EXACT_AUTHORIZATION",
   "source_opened_stat_hashed_decoded_outside_authorized_decode": false,
@@ -273,7 +294,7 @@
     "sourcefree_test_only": true,
     "wrong_root_refused": true
   },
-  "status": "SINGLE_PASS_WITNESS_READY__FREE_SPACE_BLOCKER",
+  "status": "CHECKPOINT_RESUME_GREEN__DISK_STARTUP_GAP",
   "supervisor_root_absolute": true,
   "tests": {
     "failed": 0,
