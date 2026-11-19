@@ -472,7 +472,7 @@
     "dhikr_author_head_observed": "a3e2a4ed5e2de2477d344e709a3111bc1d7fd7dc",
     "scientific_method_owner": "HELD_NOT_ISSUED",
     "independent_review": "PENDING",
-    "currentness": "HQ_CURRENTNESS_HOLD__S04_OLD_HEAD_174_2_TWICE__MAPPINGPROXY_FIX_NOT_RETESTED__FF01_N10E_AND_C11_LEASE_G5_SCIENCE_PROTECTED_HELD",
+    "currentness": "HQ_CURRENTNESS_HOLD__S04_LOCAL_SOURCEFREE_GREEN_X2__NO_INDEPENDENT_G5__B3DD_ORIGINAL_SOURCE_RIGHTS_AND_COLD_ROUTING_UNRECEIVED__PROTECTED_REV11_HELD",
     "protected_owner_cas": "NOT_ATTEMPTED",
     "host_native_tests": "NOT_RUN",
     "archive_movement": "NOT_PERFORMED__PRIORITY_SUPERSESSION_ONLY_AFTER_INDEPENDENT_REVIEW_AND_PROTECTED_CAS",
@@ -525,7 +525,7 @@
       ],
       "local_test": "bash rawlsing_next/tests/run_pyat_s04_preff_local.sh",
       "local_c11_compat": "bash rawlsing_next/tests/check_pyat_s04_against_c11_head.sh b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
-      "actual_executed_tests": "USER_OLD_HEAD_135C_174_PASS_2_FAIL_LOCAL_AND_B3DD_OVERLAY__SAME_MAPPINGPROXY_ERROR",
+      "actual_executed_tests": "USER_EXACT_HEAD_A0E68E3__I05_4_PASS__LOCAL_S04_177_PASS_0_FAIL_27_45S__CODEX_B3DD_OVERLAY_177_PASS_0_FAIL_26_20S",
       "writer_lease": "NOT_ATTESTED",
       "reviewer": "NOT_INDEPENDENTLY_REVIEWED",
       "protected_cas": "NOT_ATTEMPTED",
@@ -535,9 +535,35 @@
         "test_commit": "a0e68e349afe0414ef2ebfbb91d4c8ffd3f848b2",
         "root_cause": "I05_RECEIPT_FROZEN_MAPPINGPROXY_EXACT_FACT_REFS_WERE_HASHED_RAW",
         "fix": "NORMALIZE_CANDIDATE_AND_FRONTIER_REF_PREIMAGES_THROUGH_PRE553_EXACT_REF_BEFORE_MEMBERSHIP",
-        "grade": "AUTHOR_CODE_COMMITTED__FIX_NOT_RETESTED",
-        "compat": "B3DD_OVERLAY_SAME_TWO_REDS__NO_EXTRA_FAILURES_VISIBLE__NOT_PASS"
-      }
+        "grade": "AUTHOR_FIX_EXECUTED_SOURCEFREE_GREEN_IN_LOCAL_AND_B3DD_OVERLAY",
+        "compat": "LOCAL_SELECTED_SOURCEFREE_177_PASS_X2__NOT_NATIVE_C11_RIGHTS_OR_FULL_PHYSICAL_PARITY"
+      },
+      "local_test_proof": {
+        "code_head": "a0e68e349afe0414ef2ebfbb91d4c8ffd3f848b2",
+        "ordinary": {
+          "passed": 177,
+          "failed": 0,
+          "exit_code": 0,
+          "duration_seconds": 27.45,
+          "log": "USER_LOCAL_.pyat-s04-local-proof/"
+        },
+        "codex_overlay": {
+          "passed": 177,
+          "failed": 0,
+          "exit_code": 0,
+          "duration_seconds": 26.2,
+          "log": "USER_LOCAL_.pyat-s04-c11-compat-proof/execution/",
+          "c11_head": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+          "grade": "SOURCEFREE_LOCAL_OVERLAY_PASSED"
+        },
+        "i05_direct": {
+          "passed": 4,
+          "failed": 0,
+          "duration_seconds": 0.63
+        },
+        "attest_grade": "USER_RUN_OF_AUTHOR_TESTS_NOT_INDEPENDENT_G5_NOT_ORIGINAL_SURVEY"
+      },
+      "host_git_integrity": "BACKGROUND_GC_FATAL_BAD_OBJECT_WORKTREES_CODE_HEAD__SEPARATE_GIT_WORKTREE_DIAGNOSTIC_PENDING"
     }
   }
 }
