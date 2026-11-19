@@ -29,6 +29,7 @@ Each row must name first owner/source, real consumer and negative consequence, m
 ## Isolated REMONT code presently available
 
 - `06742db76a6f3e970895ae3ef4441df9d66f167a` — v2 physical journal persists complete original decoder metadata in a private companion and verifies its hash/source/slot identity on cold reads, rather than storing only an uninterpretable digest. Does not issue semantic meaning or source retention rights.
+- `d74297751d4adfca05de0046f04bee24d9c04e9e` — cold v1 physical journals remain readable at their original dictionary-digest-only evidence grade, while v2 reads require a retained validated physical dictionary. PF-019 logs the candidate-introduced compatibility regression.
 - `a57d60d68a42b653b3766d9212207515f855d038` — one failed source-I02 transaction now attempts body-sink abort, physical-custody abort and direct-I02 invalidation independently; cleanup failures noted against the original error. PF-018 records the destructive cascade.
 - `OPEN_DEFECTS.md` Queue P/T/E priority correction and PF-018 custody; all production rows preserved. No test execution claimed.
 
