@@ -1,0 +1,80 @@
+{
+  "files": {
+    "00_HANDOFF.md": {
+      "bytes": 4311,
+      "sha256": "c253debc7a02e9183cab2a1c429c8055eb9edc1618c45bc67265f020935baf37"
+    },
+    "generic_cli.py": {
+      "bytes": 9510,
+      "sha256": "6855d0bf3cd0ec31e0b58af44b69b9f564665644f38d31c4a2ce31ba8baa9a3f"
+    },
+    "sourcefree_test.out": {
+      "bytes": 793,
+      "sha256": "d58cb1bfe194e688f4353d2c37fdab30d4ae08e99bf66cad78834b4f5deb5f14"
+    },
+    "src16_metadata_test.out": {
+      "bytes": 826,
+      "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
+    },
+    "src16_run_refusal.out": {
+      "bytes": 169,
+      "sha256": "e7db39473e4dd79ffeeba703a8d30a970233c3608166d0e41a30f5728ab30c7e"
+    }
+  },
+  "native_source": {
+    "exact_field": "respondents.source_native_key_slot",
+    "existing_resolution": "row_native_keys_from_transport must be passed through shared build projection",
+    "source_read_performed": false,
+    "status": "HELD_SAME_DECODE_KEY_PASS_THROUGH"
+  },
+  "no_config_values_or_grant_bytes_published": true,
+  "no_new_gss_writer": true,
+  "no_private_paths_published": true,
+  "no_sqlite": true,
+  "schema": "ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER@1",
+  "source_id": "SRC16",
+  "sourcefree_keyed": {
+    "family_counts": {
+      "AuthoritySnapshot": 7,
+      "EmpiricalCoordinateFact": 6,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 6,
+      "RespondentIdentity": 6,
+      "RoutingEligibilityFact": 6,
+      "WeightMeasureFact": 0
+    },
+    "progress_phases": [
+      "checkpoint_ready",
+      "stream_start",
+      "family_written",
+      "footers_verified",
+      "published",
+      "reopened_validation"
+    ],
+    "sqlite_present": false,
+    "status": "PASS"
+  },
+  "src16_metadata": {
+    "config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
+    "config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
+    "currentness": "CURRENT_GRANTED",
+    "negative_cases": [
+      "other_source",
+      "analysis_purpose",
+      "incorrect_scope"
+    ],
+    "revocation": null,
+    "shape": {
+      "coordinate_slots": 2,
+      "physical_slots": 216,
+      "response_slots": 157,
+      "rows": 1613,
+      "weight_slots": 0
+    },
+    "source_read_performed": false,
+    "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "status": "SRC16_METADATA_ADMISSION_PASS"
+  },
+  "status": "SOURCEFREE_KEYED_PASS__SRC16_METADATA_ADMISSION_PASS__NATIVE_SOURCE_HELD_KEY_SLOT"
+}
