@@ -7,7 +7,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, canonical_json, semantic_hash,
 )
 from rawlsing_next.pre553_s04_cold_custody import (
-    S04ExternalRootPin, freeze_s04_i03_sourcefree, read_s04_cold_preimages,
+    SOURCEFREE_ASSERTION, S04ExternalRootPin, freeze_s04_i03_sourcefree, read_s04_cold_preimages,
 )
 from rawlsing_next.pre553_s04_observed_research import receive_s04_i03_research
 from rawlsing_next.pre553_s04_research_batch import (
@@ -127,7 +127,7 @@ def test_held_low_support_returns_typed_held_for_all_requests():
 
 def test_cold_rehydrated_source_answers_identically_with_one_source_root():
     q, r, s04 = _fixture()
-    bundle = freeze_s04_i03_sourcefree(query=q, execution=r, knowledge=s04)
+    bundle = freeze_s04_i03_sourcefree(sourcefree_origin_assertion=SOURCEFREE_ASSERTION, query=q, execution=r, knowledge=s04)
     cold = read_s04_cold_preimages(
         bundle, external_root=S04ExternalRootPin(q.ref, r.facts[0].ref, r.release_refs[0]),
     )
