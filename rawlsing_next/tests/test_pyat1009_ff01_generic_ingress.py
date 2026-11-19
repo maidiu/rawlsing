@@ -211,3 +211,95 @@ def test_ordered_scalar_components_only_not_implicit_repetition_collapse():
     assert tuple(ref["object_id"] for ref in _receive(query, result).semantic_projection()["target_refs"]) == tuple(
         ref["object_id"] for ref in query.target_refs
     )
+
+
+@pytest.mark.parametrize("mutation", [
+    "duplicate_denominator", "duplicate_risk", "foreign_denominator",
+    "wrong_kind", "denominator_short", "risk_only", "denominator_only",
+])
+def test_adversarial_respondent_roster_closure_not_washed_out(mutation):
+    # These are re-signed *I03-shaped* facts, not an imaginary FF01 count
+    # table. A self-consistent but fictional roster still requires source trust.
+    _, _, _, query, result = _case(tag="FF01-ROSTER-HOSTILE")
+    fact = result.facts[0]
+    risk = list(getattr(fact, "risk_set_member_refs"))
+    denominator = list(getattr(fact, "denominator_member_refs"))
+    assert risk and denominator
+    if mutation == "duplicate_denominator":
+        denominator[1] = denominator[0]
+    elif mutation == "duplicate_risk":
+        risk[1] = risk[0]
+    elif mutation == "foreign_denominator":
+        denominator[0] = ExactRef(
+            "C11Internal:RespondentIdentity",
+            "urn:test:alien-respondent",
+            semantic_hash("alien-respondent"),
+        )
+    elif mutation == "wrong_kind":
+        denominator[0] = ExactRef(
+            "RespondentEvent@1.0.0",
+            "urn:test:wrong-respondent-family",
+            semantic_hash("wrong-respondent-family"),
+        )
+    elif mutation == "denominator_short":
+        denominator.pop()
+    fields = {"risk_set_member_refs": tuple(risk), "denominator_member_refs": tuple(denominator)}
+    if mutation == "risk_only":
+        fields["denominator_member_refs"] = None
+    elif mutation == "denominator_only":
+        fields["risk_set_member_refs"] = None
+    bad = _changed_result(result, **fields)
+    with pytest.raises(FF01GenericIngressError, match="respondent|denominator"):
+        _receive(query, bad)
+
+
+def test_actual_native_roster_is_labeled_internally_consistent_not_independently_issued():
+    _, _, _, query, result = _case(tag="FF01-ROSTER-GRADE")
+    received = _receive(query, result)
+    assert (received.semantic_projection()["respondent_extent_grade"]
+            == "INTERNALLY_CONSISTENT_I03_ENUMERATION__SOURCE_AUTHORITY_UNVERIFIED")
+
+
+def test_false_supported_all_zero_joint_cannot_be_promoted():
+    _, _, _, query, result = _case(tag="FF01-FALSE-SUPPORTED")
+    fact = result.facts[0]
+    top = dict(fact.target_topology)
+    cells = [dict(row) for row in top["complete_cell_semantic_projection"]]
+    for row in cells:
+        row["raw_numerator_support"] = 0
+        row["cell_state"] = "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+    top["complete_cell_semantic_projection"] = cells
+    bad = _changed_result(
+        result, target_topology=top,
+        raw_numerator_support=0, raw_resolved_target_support=0,
+    )
+    with pytest.raises(FF01GenericIngressError, match="zero resolved joint"):
+        _receive(query, bad)
+
+
+def test_falsified_empty_issuer_cannot_self_sign_as_genuine_ff01_research():
+    _, _, _, query, result = _case(tag="FF01-EMPTY-ISSUER")
+    assert query.query_authority_refs
+    # Query and fact are both hash-coherent, but have no operation issuer.
+    changed_query = native.EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=query.dependency_refs,
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        **{**dict(query.semantic_fields), "query_authority_refs": ()},
+    )
+    changed_fact = _replace_fact(
+        result.facts[0], empirical_query_spec_ref=changed_query.ref,
+    )
+    # Rebind exact query dependency rather than accidentally passing only due
+    # to a stale ref, to reach the authority-issuance test itself.
+    old = result.facts[0]
+    changed_fact = EmpiricalFact(
+        typed_state=changed_fact.typed_state,
+        authority_snapshot_refs=changed_fact.authority_snapshot_refs,
+        dependency_refs=tuple(changed_query.ref if v == query.ref else v for v in old.dependency_refs),
+        producer_replay_locator_or_reference_root=changed_fact.producer_replay_locator_or_reference_root,
+        **dict(changed_fact.semantic_fields),
+    )
+    with pytest.raises(FF01GenericIngressError, match="issuer|authority|query"):
+        _receive(changed_query, replace(result, query_ref=changed_query.ref, facts=(changed_fact,)))
