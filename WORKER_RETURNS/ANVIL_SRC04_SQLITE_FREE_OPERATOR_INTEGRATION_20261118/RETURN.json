@@ -1,0 +1,114 @@
+{
+  "compact_runner_source": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+  "free_space": {
+    "available_bytes": 44736503808,
+    "gap_bytes": 0,
+    "in_flight_floor_bytes": 8589934592,
+    "startup_floor_bytes": 26907826727
+  },
+  "full_witness_launched": false,
+  "legacy_compatibility": "old VerifiedDirectEstate read path retained; cut test passes",
+  "limitations": [
+    "Sourcefree fixture only",
+    "No real SRC04 run",
+    "New stream roots not legacy SQLite/I02 roots",
+    "No benchmark or full-scale claim"
+  ],
+  "native_reader": "explicit StreamVerifiedEstate(VerifiedDirectEstate) boundary; exact checks; no object.__new__",
+  "normal": {
+    "counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 90,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RespondentIdentity": 90,
+      "RoutingEligibilityFact": 90,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "manifest_sha256": "f4cbe94316a5b5ea7c54ade967bdcb8d7e4ce9b7751d511c921c34ca1f1d32db",
+    "path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/sqlite-free-rehearsal/normal-private/releases/215ec84eeeca2371afd307896f45f9b2b3db35b6c22ee483d73e6f37156f82c1",
+    "roots": {
+      "logical": "3d2c98201044bc0dcbbf28a8985ffacdcbd91bd709ebff90b8aa2b15c93e5a3e",
+      "physical": "163d8cdaea04130261ffce4dc75d1eaf86cac8d035a384e407600836a572c1c6",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|43bc7d941472c4e2110cd23a683c00bc8fe8f1eaba911fa1e8c6f2a22bb76693",
+      "replay": "19a188eb18cc331d7dd088db6a24ccc508604fe97e666cb04b224a705637d09c",
+      "schema": "ANVIL_STREAM_C11_ESTATE@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|c6c90936495d5653eb9c845ded32b8bf8e4a8825e692b410b697be9f3b58360f",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    }
+  },
+  "normal_path_sqlite_proof_built": false,
+  "object_new_bypass": false,
+  "operator_inputs": {
+    "candidate_patch": "OWNER/WORKER_RETURNS/ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_20261118/candidate.patch",
+    "candidate_tree": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
+    "config": "IMPLEMENTER/WORKER_RETURNS/ANVIL_ALL35_C11_INPUTS_20261118/inputs/SRC04/source.config.repaired.v2.json",
+    "runtime_config": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json",
+    "work_root": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned"
+  },
+  "original_source_opened": false,
+  "progress_jsonl": [
+    "{\"checkpoint\": false, \"families\": 14, \"phase\": \"checkpoint_ready\", \"records\": 370, \"rows\": 90}",
+    "{\"expected\": 370, \"phase\": \"stream_start\", \"timestamp\": \"2026-11-19T04:31:07.619860+00:00\"}",
+    "{\"expected\": 370, \"family\": \"EmpiricalUniverse\", \"phase\": \"family_written\", \"processed\": 1, \"timestamp\": \"2026-11-19T04:31:07.621826+00:00\"}",
+    "{\"expected\": 370, \"family\": \"RespondentIdentity\", \"phase\": \"family_written\", \"processed\": 91, \"timestamp\": \"2026-11-19T04:31:07.714620+00:00\"}",
+    "{\"expected\": 370, \"family\": \"QuestionVariableBinding\", \"phase\": \"family_written\", \"processed\": 92, \"timestamp\": \"2026-11-19T04:31:07.715044+00:00\"}",
+    "{\"expected\": 370, \"family\": \"RespondentEvent\", \"phase\": \"family_written\", \"processed\": 182, \"timestamp\": \"2026-11-19T04:31:07.939077+00:00\"}",
+    "{\"expected\": 370, \"family\": \"RoutingEligibilityFact\", \"phase\": \"family_written\", \"processed\": 272, \"timestamp\": \"2026-11-19T04:31:08.042597+00:00\"}",
+    "{\"expected\": 370, \"family\": \"EmpiricalCoordinateFact\", \"phase\": \"family_written\", \"processed\": 362, \"timestamp\": \"2026-11-19T04:31:08.181770+00:00\"}",
+    "{\"expected\": 370, \"family\": \"AuthoritySnapshot\", \"phase\": \"family_written\", \"processed\": 369, \"timestamp\": \"2026-11-19T04:31:08.188997+00:00\"}",
+    "{\"expected\": 370, \"phase\": \"footers_verified\", \"processed\": 369, \"timestamp\": \"2026-11-19T04:31:08.244783+00:00\"}",
+    "{\"expected\": 370, \"phase\": \"published\", \"processed\": 369, \"proof_scratch_bytes\": 199473, \"timestamp\": \"2026-11-19T04:31:08.249995+00:00\"}",
+    "{\"families\": 13, \"phase\": \"published\", \"records\": 369, \"retained_bytes\": 3818390}"
+  ],
+  "proof_schema": "ANVIL_STREAM_C11_ESTATE@1",
+  "read_back_audit_in_normal_path": false,
+  "readers": {
+    "equal_counts_and_digests": true,
+    "roots_equal": true
+  },
+  "resume": {
+    "checkpoint": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/sqlite-free-rehearsal/resume-private/prepared-sections.checkpoint.json",
+    "counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 90,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RespondentIdentity": 90,
+      "RoutingEligibilityFact": 90,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "decode_called": false,
+    "manifest_sha256": "f4cbe94316a5b5ea7c54ade967bdcb8d7e4ce9b7751d511c921c34ca1f1d32db",
+    "path": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/sqlite-free-rehearsal/resume-private/releases/215ec84eeeca2371afd307896f45f9b2b3db35b6c22ee483d73e6f37156f82c1",
+    "roots": {
+      "logical": "3d2c98201044bc0dcbbf28a8985ffacdcbd91bd709ebff90b8aa2b15c93e5a3e",
+      "physical": "163d8cdaea04130261ffce4dc75d1eaf86cac8d035a384e407600836a572c1c6",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|43bc7d941472c4e2110cd23a683c00bc8fe8f1eaba911fa1e8c6f2a22bb76693",
+      "replay": "19a188eb18cc331d7dd088db6a24ccc508604fe97e666cb04b224a705637d09c",
+      "schema": "ANVIL_STREAM_C11_ESTATE@1",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|c6c90936495d5653eb9c845ded32b8bf8e4a8825e692b410b697be9f3b58360f",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662"
+    }
+  },
+  "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_RETURN@1",
+  "source_cut": "302e04941fc1d3d986af41a9a61d4869e927ca3d",
+  "source_read_performed": false,
+  "status": "SQLITE_FREE_OPERATOR_INTEGRATION_GREEN__SOURCEFREE_ONLY",
+  "tests": {
+    "cut": "....                                                                     [100%]\n4 passed in 3.92s",
+    "sourcefree_normal_resume": "PASS"
+  }
+}
