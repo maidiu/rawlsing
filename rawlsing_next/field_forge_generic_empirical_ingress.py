@@ -292,6 +292,11 @@ def receive_ff01_observed_joint(
         "anti_inferences": list(ANTI_INFERENCES),
     }
     if fact.typed_state == "SUPPORTED":
+        if (fact.raw_numerator_support <= 0
+                or fact.raw_numerator_support != fact.raw_denominator_support):
+            raise FF01GenericIngressError(
+                "SUPPORTED full joint requires complete eligible/resolved source risk"
+            )
         topology = fact.target_topology
         if not isinstance(topology, Mapping) or topology.get("arity") != len(refs) or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]:
             raise FF01GenericIngressError("fact has wrong joint topology/order")

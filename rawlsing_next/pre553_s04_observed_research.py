@@ -198,8 +198,12 @@ def receive_s04_i03_research(
 
     rows: list[dict[str, Any]] = []
     if fact.typed_state == "SUPPORTED":
-        if resolved <= 0:
-            raise S04KnowledgeError("SUPPORTED source knowledge needs positive real joint support")
+        # Native I03 requires full resolution for the entire eligible risk.
+        # A 3/4 partial case is UNRESOLVED, never SUPPORTED.
+        if resolved <= 0 or resolved != eligible:
+            raise S04KnowledgeError(
+                "SUPPORTED full joint requires complete eligible/resolved source risk"
+            )
         topology = fact.target_topology
         if (not isinstance(topology, Mapping) or topology.get("arity") != len(targets)
                 or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]):

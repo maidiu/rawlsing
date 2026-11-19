@@ -38,12 +38,15 @@ date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
   rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py \
   rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py \
   rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py \
-  rawlsing_next/tests/test_pre553_s04_dynamic_research.py
+  rawlsing_next/tests/test_pre553_s04_dynamic_research.py \
+  rawlsing_next/tests/test_pyat1155_hostile_supported_risk.py
 tests=(
  rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py
  rawlsing_next/tests/test_pre553_s04_dynamic_research.py
  rawlsing_next/tests/test_pyat1097_held_integrity_and_i05.py
  rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py
+ rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
+ rawlsing_next/tests/test_pyat1155_hostile_supported_risk.py
  rawlsing_next/tests/test_pre553_s04_cold_custody.py
  rawlsing_next/tests/test_pre553_s04_research_batch.py
  rawlsing_next/tests/test_pre553_s04_first_consumer.py

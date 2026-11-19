@@ -134,6 +134,15 @@ class S04GeneralJointWorkspace:
             raise S04GeneralAlgebraError("invalid native sample support")
 
         self._supported = m["state"] == "SUPPORTED_SAMPLE_DESCRIPTIVE"
+        if self._supported != (m.get("producer_typed_state") == "SUPPORTED"):
+            raise S04GeneralAlgebraError("S04 producer state and supported grade disagree")
+        if self._supported and (
+            m["raw_fully_resolved_joint_n"] <= 0
+            or m["raw_fully_resolved_joint_n"] != m["raw_eligible_condition_denominator"]
+        ):
+            raise S04GeneralAlgebraError(
+                "SUPPORTED full joint requires complete eligible/resolved source risk"
+            )
         rows = m.get("complete_cells")
         if type(rows) is not list:
             raise S04GeneralAlgebraError("S04 complete_cells must be an exact list")
@@ -159,6 +168,10 @@ class S04GeneralJointWorkspace:
                 raise S04GeneralAlgebraError("duplicate or alien joint cell")
             seen.add(key)
             n = row["raw_count"]
+            if row.get("cell_state") != (
+                "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+            ):
+                raise S04GeneralAlgebraError("S04 source zero/positive cell state altered")
             total += n
             if n:
                 pos = len(self._positive_cells)
@@ -228,7 +241,10 @@ class S04GeneralJointWorkspace:
         if self._current_guard is not None:
             # A callback is not an issuer. Native integration binds the
             # actual VerifiedDirectEstate._live guard, which can revoke.
-            if self._current_guard() is False:
+            result = self._current_guard()
+            # Native _live success returns None and denial raises. Do not
+            # treat numeric zero, strings, or other sentinels as grants.
+            if result is not None and result is not True:
                 raise S04GeneralAlgebraError("CURRENT denied by bound source guard")
 
     def query(self, request: S04Projection) -> S04ProjectionAnswer:
