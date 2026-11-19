@@ -342,14 +342,33 @@ def _unresolved_response_state(cell: PhysicalCell) -> str:
 
 
 def _occurrence_templates(slot: Any) -> tuple[Any, ...]:
-    """Reuse source-authorized occurrence grain; do not invent multiplicities."""
-    by_key = {}
+    """Only reuse one unequivocal source-authorized occurrence topology.
+
+    A union of mismatched known response-value occurrences would invent
+    multiplicities for an unknown physical value. Reject heterogeneous
+    templates instead of silently creating a fabricated repeated answer.
+    """
+    template = None
     for value in slot.values:
+        current = {}
         for occurrence in value.occurrences:
-            by_key.setdefault(occurrence.key, occurrence)
-    if not by_key:
+            if (occurrence.key in current
+                    and current[occurrence.key] != occurrence):
+                raise SourceI02Refusal("AMBIGUOUS_RESPONSE_OCCURRENCE_KEY")
+            current[occurrence.key] = occurrence
+        if not current:
+            raise SourceI02Refusal("UNMAPPED_RESPONSE_HAS_EMPTY_KNOWN_OCCURRENCE")
+        if template is None:
+            template = current
+        elif template != current:
+            raise SourceI02Refusal(
+                "UNMAPPED_RESPONSE_OCCURRENCE_TOPOLOGY_AMBIGUOUS",
+                {"known_template_keys": sorted(template),
+                 "conflicting_template_keys": sorted(current)},
+            )
+    if not template:
         raise SourceI02Refusal("UNBOUND_RESPONSE_SLOT_HAS_NO_OCCURRENCE_TEMPLATE")
-    return tuple(by_key[key] for key in sorted(by_key))
+    return tuple(template[key] for key in sorted(template))
 
 
 def _project_spooled_families(
