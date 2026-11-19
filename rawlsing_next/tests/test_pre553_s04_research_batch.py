@@ -56,6 +56,8 @@ def test_1_10_100_sourcefree_repeated_requests_share_one_native_i03(
     assert m["source_release_ref"] == result.release_refs[0].as_dict()
     assert m["scientific_rank"] is None
     assert m["new_population_claim"] is None
+    assert "ORIGINAL_SOURCE_RIGHTS_UNVERIFIED" in m["source_authentication_grade"]
+    assert "NOT_ISSUED" in m["batch_issuer_authority"]
     assert m["raw_source_risk_eligible_n"] == 4
     assert m["raw_full_joint_resolved_n"] == 4
     assert m["raw_unresolved_joint_eligible_n"] == 0
