@@ -3,6 +3,8 @@
 Not a native original survey, statistical estimator, FF02 admission, or G5.
 The fixture intentionally uses the accepted 13-family direct-estate writer.
 """
+from dataclasses import replace
+from hashlib import sha256
 from itertools import product
 from pathlib import Path
 
@@ -10,8 +12,9 @@ import pytest
 
 pytest.importorskip("pyarrow")
 
-from rawlsing_next.pre553_c11_ingest import ingest_c11_source_release
+from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest, ingest_c11_source_release
 from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_empirical_objects import ExactRef
 from rawlsing_next.field_forge_generic_empirical_ingress import (
     receive_ff01_observed_joint, replay_ff01_observed_joint,
 )
@@ -35,7 +38,41 @@ def _source_and_original_candidate(monkeypatch, tag: str, parity: int):
         scope.setattr(native, "ingest_c11_source_release", capture)
         source = native._build_source(tag, rows, question_namespace="FF01-NATIVE-SHARED")
     assert holder.get("candidate") is not None
-    return source, holder["candidate"]
+    candidate = holder["candidate"]
+    if parity == 1:
+        # A changed response vector is new source bytes. The original test
+        # fixture hashes only its *tag*, so explicitly version the physical
+        # artifact/retention/replay instead of laundering changed bytes under
+        # an unchanged historical source identity.
+        old = candidate.source_release_manifest
+        digest = sha256((tag + ":parity1-altered-source-bytes").encode()).hexdigest()
+        changed_manifest = replace(
+            old,
+            release_id=old.release_id + "-ALTERED",
+            source_artifact_content_hash=digest,
+            source_snapshot_retention_ref=ExactRef(
+                old.source_snapshot_retention_ref.kind,
+                old.source_snapshot_retention_ref.object_id + "-ALTERED",
+                digest,
+            ),
+        )
+        altered = replace(
+            candidate, source_release_manifest=changed_manifest,
+            candidate_replay_manifest=None,
+        )
+        replay = candidate.candidate_replay_manifest
+        altered = replace(altered, candidate_replay_manifest=build_candidate_replay_manifest(
+            altered,
+            replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+            deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+            replay_protocol_version=replay.replay_protocol_version,
+        ))
+        updated_repo = C11Repository()
+        admitted = ingest_c11_source_release(altered, updated_repo)
+        assert admitted.accepted, admitted.errors
+        source = {**source, "repo": updated_repo, "release_ref": admitted.release_ref}
+        candidate = altered
+    return source, candidate
 
 
 def _actual_cold_ff01(tmp_path, monkeypatch, *, parity, tag, saved_name):
