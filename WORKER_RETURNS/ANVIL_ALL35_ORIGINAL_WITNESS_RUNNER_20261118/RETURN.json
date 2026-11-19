@@ -38,10 +38,12 @@
     "baseline_counts_equal": true,
     "baseline_manifest_equal": true,
     "baseline_roots_equal": true,
+    "checkpoint_hmac_key": "private root / checkpoint.key mode 0600",
     "created_at_interrupt": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/checkpoint-rehearsal/resume-private/prepared-sections.checkpoint.json",
     "poison_checkpoint_refused": true,
     "poison_error": "CheckpointRefusal",
     "reader_roots_equal": true,
+    "resume_command": "witness_caller.py --mode run --resume-checkpoint <private>/prepared-sections.checkpoint.json ...",
     "resume_process_decode_called": false,
     "schema": "ANVIL_SRC04_PREPARED_SECTIONS_CHECKPOINT@1"
   },
@@ -95,6 +97,7 @@
     "current_free_bytes": 15924334592,
     "current_startup_gap_bytes": 10983492135,
     "in_flight_free_floor_bytes": 8589934592,
+    "note": "startup gate and in-flight 8 GiB abort floor are separate",
     "rss_cap_bytes": 6442450944,
     "startup_free_floor_bytes": 26907826727
   },

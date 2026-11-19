@@ -414,7 +414,9 @@ def supervisor(args) -> int:
                   "status": "ABORTED", "abort": abort,
                   "samples": len(samples), "rss_peak": max((x["rss"] for x in samples), default=0),
                   "free_min": min((x["free"] for x in samples), default=0),
-                  "caps": {"rss": RAM_CAP, "free_floor": FREE_FLOOR}}
+                  "caps": {"rss": RAM_CAP,
+                           "in_flight_free_floor": IN_FLIGHT_FREE_FLOOR,
+                           "startup_free_floor": STARTUP_FREE_FLOOR}}
         (root / "supervisor_receipt.json").write_text(json.dumps(result, indent=2) + "\n")
         print(json.dumps(result))
         return 3
