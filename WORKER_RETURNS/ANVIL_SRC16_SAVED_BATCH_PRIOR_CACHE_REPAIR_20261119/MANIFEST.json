@@ -1,11 +1,13 @@
 {
-  "schema": "ANVIL_SRC16_SAVED_BATCH_PRIOR_CACHE_REPAIR_MANIFEST@1",
+  "schema": "ANVIL_SRC16_SAVED_BATCH_PRIOR_CACHE_REPAIR_MANIFEST@2",
   "source_cut": "5a4b1cabce9625a61cfe26c20afb519531f567bd",
-  "owner_base": "df84f297e434f4abc4c6fda9cbf9354512ddc4f4",
+  "review_cut": "aa9e91d58b24ea4366a902fb16ba110b566edd5d",
+  "owner_base": "e3d911364b06ac1d4dec28801d1db56eb6bcf389",
+  "disposition": "FIXED_CHANGED_PREDICATE_STALE_CACHE_ADMISSION",
   "files": {
     "00_HANDOFF.md": {
-      "sha256": "d68cfd61ad45280a07b8aa7677b0efb2dde0ea4136c541ac0fe436e7ff971316",
-      "bytes": 1408
+      "sha256": "e8effcd53ea149b2b9ac3bdf2e95652bbd390b875d60c916c39ce450781633ad",
+      "bytes": 1591
     },
     "BASELINE_TRACE.json": {
       "sha256": "4a104d6d476081fd6d5f800dc3eb0ecbea2b20530dd6cb4a8a6e253b749b6e45",
@@ -27,9 +29,25 @@
       "sha256": "fc41e476ba0ecd52893330d69dded208335fddc09f12c60f34b1605c3e3f2e03",
       "bytes": 81
     },
+    "PREDICATE_FIX_GREEN.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "PREDICATE_FIX_GREEN.json": {
+      "sha256": "7d83e2ae77bd00a8905c1d56222d74518b1bd2ceeb48148707fbb03d8e425918",
+      "bytes": 16384
+    },
+    "PREDICATE_FIX_REPORT.json": {
+      "sha256": "929bf79fb3c5e53c7c1d06c964726e4b4cd52f82fcb98a036ecf039ab803deb3",
+      "bytes": 1242
+    },
+    "PRIOR_PATCH_CHANGED_MAP_ACCEPTED.json": {
+      "sha256": "d34a0ae23efe540ca33ae916698c5f03cec0974177dbc8902288cc7e0dcd83e4",
+      "bytes": 16466
+    },
     "REPORT.json": {
-      "sha256": "6b99b699e63216794b8d45d07f55d5d4e1ed7036336c8333e4dc294a1813d1d0",
-      "bytes": 2234
+      "sha256": "7f4eda8b607314e94983256d0a7318028005babf4fdb35f9fa37557fa7db1323",
+      "bytes": 2665
     },
     "REUSE_PROBE.err": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -44,12 +62,13 @@
       "bytes": 440
     },
     "execute_saved_batch_prior_cache.patch": {
-      "sha256": "9cda4d5bba659f6b0b69990d6b66f85451471355d773798fb9bb7b8e075a29e4",
-      "bytes": 1724
+      "sha256": "71b128749e108dd5dff5a1729ad33a4c84c1a3a088bc1b3c5c94476f150c4c58",
+      "bytes": 2417
     }
   },
   "sourcefree": true,
   "original_source_read": false,
+  "i03_i05_edited": false,
   "frozen_runtime_edited": false,
-  "discovery_edited": false
+  "real_gss": false
 }

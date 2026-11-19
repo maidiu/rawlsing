@@ -16,12 +16,25 @@
      max_units: int | None = None,
  ) -> Any:
      """Run the actual native Batch scheduler over one admitted saved estate."""
-@@ -135,9 +137,22 @@
+@@ -135,9 +137,35 @@
              ),
          }
  
 +    prior_receipts = tuple(prior_receipts)
 +    if prior_outputs is not None:
++        # Before any cached unit can be skipped, bind the caller's predicate
++        # map to the exact query predicate already carried in the unit's
++        # semantic_input_refs.  A completed receipt is not authority to reuse a
++        # different predicate mapping.
++        for unit in manifest.units:
++            if unit.job_kind != "QUERY":
++                continue
++            supplied = predicate_ref_by_query.get(unit.job_ref.key)
++            if supplied is None or supplied not in unit.semantic_input_refs:
++                raise SavedC11AdmissionError(
++                    "SAVED_BATCH_PREDICATE_BINDING_MISMATCH",
++                    unit.job_ref.key,
++                )
 +        # Reuse the existing exact native-output/prior-receipt checker.  A
 +        # receipt alone is never authority to skip a completed unit.
 +        _validate_prior_cache(manifest, prior_receipts, prior_outputs)

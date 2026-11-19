@@ -1,0 +1,30 @@
+{
+  "schema": "ANVIL_SRC16_SAVED_BATCH_PREDICATE_FIX@1",
+  "disposition": "FIXED_CHANGED_PREDICATE_STALE_CACHE_ADMISSION",
+  "base_patch": "execute_saved_batch_prior_cache.patch",
+  "exact_defect": {
+    "before": "When exact prior_outputs and completed prior receipts were supplied, a changed predicate_ref_by_query was ignored and cached units were skipped.",
+    "after": "Before cache reuse, every QUERY unit's supplied predicate must be present in that unit's exact semantic_input_refs; otherwise SavedC11AdmissionError('SAVED_BATCH_PREDICATE_BINDING_MISMATCH')."
+  },
+  "red_green": {
+    "prior_patch_changed_mapping_accepted": true,
+    "fixed_changed_mapping_refused": true,
+    "error": "SavedC11AdmissionError: SAVED_BATCH_PREDICATE_BINDING_MISMATCH"
+  },
+  "preserved": {
+    "exact_cache_reuse_same_records_equal": true,
+    "changed_prior_output_refused": true,
+    "partial_resume_receipt_retained": true,
+    "partial_unit_reexecuted": true,
+    "forged_completed_receipts_reexecuted": true,
+    "authority_refusal": true,
+    "normal_no_prior_cache_path_unchanged": true
+  },
+  "scope": {
+    "sourcefree": true,
+    "batch_only": true,
+    "i03_i05_edited": false,
+    "new_architecture": false,
+    "real_gss": false
+  }
+}

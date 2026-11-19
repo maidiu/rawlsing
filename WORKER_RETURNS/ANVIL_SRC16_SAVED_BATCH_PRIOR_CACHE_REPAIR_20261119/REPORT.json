@@ -46,5 +46,15 @@
     "field_forge_or_dhikr": false,
     "real_survey": false,
     "frozen_runtime_edited": false
-  }
+  },
+  "predicate_binding_fix": {
+    "status": "FIXED",
+    "location": "execute_saved_batch before _validate_prior_cache",
+    "red": "changed predicate map accepted under exact prior cache",
+    "green": "SAVED_BATCH_PREDICATE_BINDING_MISMATCH",
+    "preserved_valid_cache": true,
+    "preserved_partial_resume": true,
+    "sourcefree": true
+  },
+  "patch_sha256": "71b128749e108dd5dff5a1729ad33a4c84c1a3a088bc1b3c5c94476f150c4c58"
 }
