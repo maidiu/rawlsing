@@ -362,6 +362,9 @@ def receive_s04_i03_research(
                     or unknown_condition.get("known_true_denominator") != eligible
                     or unknown_condition.get("eligible_risk_n") != len(risk_members)
                     or not set(unknown).isdisjoint(denominator_members)
+                    or any(ref.kind != "C11Internal:RespondentIdentity"
+                           for ref in (*unknown, *risk_members,
+                                       *denominator_members))
                     or not set((*unknown, *denominator_members)).issubset(
                         risk_members
                     )):
