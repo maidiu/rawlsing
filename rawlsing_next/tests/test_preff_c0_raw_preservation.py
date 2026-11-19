@@ -153,3 +153,111 @@ def test_unmapped_value_must_not_acquire_union_of_conflicting_known_occurrences(
     no_source_template = SimpleNamespace(values=())
     with pytest.raises(SourceI02Refusal, match="NO_OCCURRENCE_TEMPLATE"):
         _occurrence_templates(no_source_template)
+
+
+@pytest.mark.parametrize("source_format", ("SAV", "DTA"))
+def test_cold_saved_unmapped_event_keeps_physical_class_and_mapped_event_identity(
+    tmp_path, source_format,
+):
+    """Cold 13-family saved reader, not merely in-memory author projection.
+
+    Reuse the exact physical source twice. Change only its response mapping.
+    All already-interpreted event identities and values must remain byte-equal;
+    one formerly mapped event becomes explicitly uninterpreted without
+    changing its original raw witness or losing the source cell.
+    """
+    from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
+    from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
+    from rawlsing_next.tests.test_pyat960_s1e_support import source_fixture, build
+
+    root = tmp_path / source_format
+    root.mkdir()
+    fixture = source_fixture(
+        root / "source", source_format=source_format,
+        values=(0.0, 1.0, 2.0, 0.0, 1.0),
+    )
+    altered = deepcopy(fixture["document"])
+    altered["response_slots"][0]["values"] = [
+        rule for rule in altered["response_slots"][0]["values"]
+        if rule["raw_value"] != 2.0
+    ]
+
+    def saved(name, config):
+        private = root / (name + "-private")
+        private.mkdir(mode=0o700)
+        certificate = root / (name + ".sqlite")
+        sink = SourceSavedBodySink(
+            certificate_path=certificate,
+            authorized_private_root=private, chunk_rows=2,
+        )
+        handoff = build(
+            root, fixture, name=name + ".sqlite", config=config,
+            body_sink=sink, chunk_size=2,
+        )
+        receipt = sink.receipt
+        estate = VerifiedDirectEstate(
+            private, exact_path=receipt.path,
+            independently_held_manifest_sha256=receipt.manifest_sha256,
+            independently_held_i02=receipt.i02,
+            current_authorizer=lambda _: True,
+        )
+        events = list(estate.iter_family("RespondentEvent", batch_size=2))
+        assert len(events) == handoff.stats.event_count == fixture["rows"]
+        return handoff, events
+
+    full_handoff, full = saved("mapped", fixture["config"])
+    partial_handoff, partial = saved("unmapped", SourceConfig(altered))
+    assert full_handoff.source_sha256 == partial_handoff.source_sha256
+    assert full_handoff.roots.logical != partial_handoff.roots.logical
+    assert sum(e.typed_state == "INVALID_UNRESOLVED" for e in partial) == 1
+
+    by_respondent = lambda events: {
+        e.scoped_respondent_ref.key: e for e in events
+    }
+    mapped_by_respondent = by_respondent(full)
+    partial_by_respondent = by_respondent(partial)
+    assert set(mapped_by_respondent) == set(partial_by_respondent)
+
+    for respondent, event in partial_by_respondent.items():
+        original = mapped_by_respondent[respondent]
+        assert event.raw_response_value == original.raw_response_value
+        if event.typed_state == "INVALID_UNRESOLVED":
+            assert original.typed_state == "SUBSTANTIVE_RESPONSE"
+            assert event.semantic_fields["uninterpreted_physical_missing_state"] == (
+                "OBSERVED_STORAGE_VALUE"
+            )
+            assert event.semantic_fields["uninterpreted_source_missing_declaration"] is None
+            assert len(event.semantic_fields["uninterpreted_physical_cell_key"]) == 64
+            assert event.canonical_response_value_if_authorized is None
+        else:
+            assert event.ref == original.ref
+            assert event.semantic_projection() == original.semantic_projection()
+            assert "uninterpreted_physical_missing_state" not in event.semantic_fields
+
+
+def test_unmapped_source_missing_classification_never_invents_observed_coverage():
+    from rawlsing_next.pre553_physical_decoder import (
+        PhysicalCell, PhysicalMissingState,
+    )
+    from rawlsing_next.pre553_source_i02_handoff import (
+        SourceI02Refusal, _unresolved_response_state,
+    )
+    for state in (
+        PhysicalMissingState.SYSTEM_MISSING,
+        PhysicalMissingState.FORMAT_USER_MISSING_VALUE,
+        PhysicalMissingState.FORMAT_USER_MISSING_RANGE,
+        PhysicalMissingState.FORMAT_EXTENDED_MISSING,
+        PhysicalMissingState.SOURCE_CELL_ABSENT_OR_UNREPRESENTED,
+    ):
+        c = PhysicalCell(1, 1, "Q", 42, state, {"kind": "source"})
+        assert _unresolved_response_state(c) == "MISSING"
+    observed = PhysicalCell(
+        1, 1, "Q", 42,
+        PhysicalMissingState.OBSERVED_STORAGE_VALUE, None,
+    )
+    assert _unresolved_response_state(observed) == "INVALID_UNRESOLVED"
+    with pytest.raises(SourceI02Refusal, match="UNSUPPORTED_PHYSICAL_MISSING_STATE"):
+        _unresolved_response_state(PhysicalCell(
+            1, 1, "Q", 42,
+            PhysicalMissingState.PHYSICAL_STATE_UNKNOWN, None,
+        ))
