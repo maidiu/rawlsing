@@ -9,6 +9,15 @@ from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
 _SELECTOR_CONTRACT_VERSION = 1
 
+
+class UnresolvedConditionMember(EmpiricalQueryResolutionError):
+    """A real source cell has unknown interpretation in THIS condition.
+
+    This is not authority denial, routing absence, an empty support set,
+    or a negative Boolean match. Only this class may be transformed into
+    a typed partial I03 result; other query failures remain refusals.
+    """
+
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
         return _ref_field(event, "question_or_target_ref") == target
@@ -187,7 +196,7 @@ def _refuse_unresolved_value_leaf(event: Any, node: Mapping[str, Any]) -> None:
             and node.get("operator") == "STATE_EQ"
             and node.get("typed_state") == "INVALID_UNRESOLVED"):
         return
-    raise EmpiricalQueryResolutionError(
+    raise UnresolvedConditionMember(
         "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
     )
 
@@ -281,9 +290,9 @@ def _leaf_match(
         )
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
-            _refuse_unresolved_value_leaf(event, node)
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
+            _refuse_unresolved_value_leaf(event, node)
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
                 continue
             result = result or runtime_authorities.match_exact_event_representation(
@@ -313,11 +322,13 @@ def _leaf_match(
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
-            _refuse_unresolved_value_leaf(event, node)
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
+            # Keep the original source object and its authority in the
+            # negative evidence closure BEFORE the typed unknown is raised.
+            _refuse_unresolved_value_leaf(event, node)
             if operator == "STATE_EQ":
                 result = result or event.typed_state == node.get("typed_state")
             else:
@@ -356,11 +367,11 @@ def _leaf_match(
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
-            _refuse_unresolved_value_leaf(event, node)
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
+            _refuse_unresolved_value_leaf(event, node)
             result = result or event.typed_state == desired
         return result
 
@@ -481,16 +492,14 @@ def _eval_predicate(
                     used=used, used_auth=used_auth,
                     derived_branch_memberships=derived_branch_memberships,
                 ))
-            except EmpiricalQueryResolutionError as exc:
-                if not str(exc).startswith("UNRESOLVED_CONDITION_MEMBER:"):
-                    raise
+            except UnresolvedConditionMember as exc:
                 unresolved_members.append(exc)
         if op == "AND" and False in known_values:
             return False
         if op == "OR" and True in known_values:
             return True
         if unresolved_members:
-            raise EmpiricalQueryResolutionError(
+            raise UnresolvedConditionMember(
                 "UNRESOLVED_CONDITION_MEMBER: no conclusive "
                 f"{op} membership with source-typed unresolved values"
             ) from unresolved_members[0]
@@ -498,4 +507,4 @@ def _eval_predicate(
     raise EmpiricalQueryResolutionError("predicate op must be AND/OR/NOT/LEAF")
 
 
-__all__ = ["_build_release_index", "_eval_predicate", "_question_matches", "_validate_public_object_authorities"]
+__all__ = ["_build_release_index", "_eval_predicate", "_question_matches", "_validate_public_object_authorities", "UnresolvedConditionMember"]
