@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py", line 496, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py", line 484, in main
+    return producer(args)
+           ^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py", line 207, in producer
+    if os.path.normpath(args.source_path) != os.path.normpath(source_path_from_grant):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 391, in normpath
+TypeError: expected str, bytes or os.PathLike object, not NoneType

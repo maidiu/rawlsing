@@ -1,0 +1,189 @@
+{
+  "schema": "ANVIL_SRC04_COMPACT_INDEPENDENT_REVIEW@1",
+  "disposition": "SCOPED_ACCEPT_COMPACT_SOURCEFREE_PARITY__DEFECTS_IN_CALLER_PACKAGING_AND_RESUME_CLI",
+  "source_cut": {
+    "measurement_prep_sha": "e35a9c79ea02035d9345d70205a3373ffeded913",
+    "manifest": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/MANIFEST.json",
+    "manifest_sha256": "05b648a5ee61a5e5a968f6c264635569d4c9bfc67d7810b0afd05e776b9d54c6",
+    "owner_worktree": "cfcc200e6ab11dd5f058b85536e498b6d36dedcf",
+    "immutable_return": "OWNER review commit published with this report"
+  },
+  "review_scope": "Read-only MEASUREMENT_PREP; sourcefree fixture only; no original source read, no real run, no product edits, no wider review, no access to prior scratch trees.",
+  "compact_vs_baseline": {
+    "command_sequence": [
+      "compact_rehearsal.py baseline-stop <fresh-root>",
+      "compact_rehearsal.py compact-stop <fresh-root>",
+      "compact_rehearsal.py baseline-resume <fresh-root>",
+      "compact_rehearsal.py compact-resume <fresh-root>",
+      "compact_rehearsal.py reader <fresh-root>"
+    ],
+    "test_root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil_src04_compact_review_run",
+    "spool": {
+      "baseline_bytes": 551124,
+      "baseline_files": 3,
+      "compact_bytes": 38851,
+      "compact_files": 2,
+      "published_author_compact_bytes": 38835,
+      "difference_note": "Independent rerun used a fresh deterministic sourcefree fixture path; compact payload parity and matched roots passed. The 16-byte difference is not treated as a payload defect."
+    },
+    "resume": {
+      "baseline_decode_called": false,
+      "compact_decode_called": false,
+      "fresh_reader_opened": true,
+      "exact_roots_equal": true,
+      "manifest_equal": true,
+      "counts_equal": true,
+      "ordered_payload_equal": true,
+      "identity_payload_equal": true,
+      "routing_payload_equal": true,
+      "replay_equal": true,
+      "manifest_sha256": "733beddd3b3b6b82339666e5adab4ed6360a2e90ee0f3efe250e7225a0ce3346",
+      "i02": {
+        "logical": "e55a906a030e9d8a495d319d4ceecee4c579e96f314ccabeea8616cc2ab95531",
+        "physical": "1fcfc2204f9a4feecfddb9b5499f0c3d6c182a9f44d91fc6fb1f9076888c66a6",
+        "release": "C11_DIRECT_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|ba3e877f22e6a0c397e1a8236e3fa3c7fbd5b8ab6d792b92a6987f5a5b99cab5",
+        "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|463f7ad0e0abf9314479e8a52704d89d877860a95290917e1715736e829ab34c",
+        "replay": "C11Internal:ReplayManifest|urn:rawlsing:pre553:c11:ReplayManifest:sha256:6b164728939757ef6e5af943989f67daba52f1ddf5a6b60d9c33660b0fc54742|6b164728939757ef6e5af943989f67daba52f1ddf5a6b60d9c33660b0fc54742",
+        "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662",
+        "schema": "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1"
+      },
+      "counts": {
+        "EmpiricalUniverse": 1,
+        "RespondentIdentity": 90,
+        "QuestionVariableBinding": 1,
+        "RespondentEvent": 90,
+        "RoutingEligibilityFact": 90,
+        "EmpiricalCoordinateFact": 90,
+        "WeightMeasureFact": 0,
+        "AuthoritySnapshot": 7,
+        "SourceUniverseRelation": 0,
+        "EmpiricalPredicateReplayBinding": 0,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "StructuralAdmissionReplayBinding": 0
+      }
+    },
+    "typed_edge_evidence": {
+      "events": 90,
+      "response_states": {
+        "SUBSTANTIVE_RESPONSE": 45,
+        "MISSING": 18,
+        "NOT_ASKED": 18,
+        "DK": 9
+      },
+      "raw_token_classes": {
+        "float64_finite:0000000000000000": 9,
+        "float64_finite:3ff0000000000000": 18,
+        "float64_finite:4000000000000000": 18,
+        "float64_finite:401c000000000000": 9,
+        "float64_finite:bff0000000000000": 18,
+        "none:None": 18
+      },
+      "zero_values": 9,
+      "missing_values": 18,
+      "not_asked_values": 18,
+      "dk_values": 9,
+      "repeated_occurrences": 84,
+      "weight_family_zero": true,
+      "ordered_payload_equal": true,
+      "compact_event_payload_equal": true
+    },
+    "zero_family_checkpoint": {
+      "source": "CHECKPOINT_ZERO_EVIDENCE.json",
+      "WeightMeasureFact": {"bytes": 0, "records": 0, "sha256": null},
+      "resume_behavior": "zero-record family is skipped and reconstructed as empty; cold reader count is 0"
+    }
+  },
+  "corruption_refusal": {
+    "test": "One byte changed in a copied compact EmpiricalCoordinateFact.jsonl.gz after checkpoint, before resume.",
+    "refused": true,
+    "code": "CHECKPOINT_SPOOL_MISMATCH",
+    "detail": "EmpiricalCoordinateFact",
+    "error_type": "CheckpointRefusal",
+    "source_decode_called": false,
+    "publication_started": false,
+    "evidence": "CORRUPTION_REFUSAL.json"
+  },
+  "caller_invocation": {
+    "actual_shared_caller": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/witness_caller.py",
+    "exact_candidate_tree_preflight": {
+      "candidate_tree": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
+      "handoff_sha256": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f",
+      "result": "RUNTIME_OVERLAY_QUALIFIED",
+      "source_path_opened_stat_hashed_decoded": false,
+      "request_equal_to_approved": true,
+      "q217_held": true,
+      "scoped_counts": {"response_slots": 177, "coordinate_slots": 3, "physical_slots": 181}
+    },
+    "worktree_candidate_preflight": {
+      "candidate_tree": "MEASUREMENT_PREP",
+      "handoff_sha256": "801ff41640bf9d7f06f9256ac002d09b8ea1da2834aea4c7495c41dc3e682fae",
+      "result": "REFUSED",
+      "code": "CANDIDATE_SOURCE_HASH_MISMATCH"
+    },
+    "run_gate": {
+      "preflight_passes": true,
+      "run_started": false,
+      "authorized_source_launch_present": false,
+      "startup_free_floor_bytes": 26907826727,
+      "manifest_available_bytes": 15569469440,
+      "blocker": "CURRENT_FREE_SPACE_BELOW_SINGLE_PASS_FLOOR",
+      "note": "Compact spool is smaller, but the actual caller's startup gate still uses the R3-derived 26,907,826,727 B floor. It cannot launch now even if authorized."
+    }
+  },
+  "source_grant_guards": {
+    "preflight_grant_check": "witness_caller._grant binds exact grant, config, request and pre/post current decision; preflight reports source path not opened.",
+    "producer_grant_check": "witness_caller.producer checks exact source path against grant and exact request; original build_single_pass requires resolver/request/grant/decision before source admission.",
+    "resume_no_decode": "resume_single_pass loads HMAC checkpoint and does not call source decode.",
+    "resume_currentness_gap": "resume_single_pass itself does not re-check resolver/current; the actual witness caller's _grant call provides a pre-resume current check, but a direct API resume relies on the local checkpoint HMAC only.",
+    "compact_code_pin_gap": "witness_caller.verify_candidate pins only pre553_source_i02_handoff.py and candidate.patch. The compact implementation single_pass_handoff.py is imported from the runner directory and is not hash-verified at runtime; its manifest hash is c87ad499ad902973de4b9ee90cb50254d819e1431f471c09a2336c2734b0bce1."
+  },
+  "exact_defects": [
+    {
+      "id": "CALLER_CANDIDATE_TREE_HASH_MISMATCH",
+      "severity": "HIGH_INVOCATION",
+      "reproduction": "witness_caller.py --mode preflight --candidate-tree MEASUREMENT_PREP ... -> CANDIDATE_SOURCE_HASH_MISMATCH; handoff 801ff4... vs pinned 6ab7...",
+      "scoped_acceptance": "The exact overlay candidate tree (handoff 6ab7...) passes; the compact worktree's rawlsing_next tree does not."
+    },
+    {
+      "id": "DIRECT_PRODUCER_RESUME_REQUIRES_SOURCE_PATH",
+      "severity": "MEDIUM_CLI",
+      "reproduction": "witness_caller.py --mode producer --resume-checkpoint <checkpoint> (no --source-path) -> TypeError at witness_caller.py:207 os.path.normpath(args.source_path)",
+      "scoped_acceptance": "The `run` wrapper always supplies `--source-path` from the grant, so the shared run path is not affected by this direct producer subcommand bug."
+    },
+    {
+      "id": "COMPACT_IMPLEMENTATION_NOT_HASH_PINNED",
+      "severity": "HIGH_INTEGRITY",
+      "reproduction": "witness_caller.verify_candidate checks only pre553_source_i02_handoff.py and candidate.patch; single_pass_handoff.py has no runtime hash check.",
+      "scoped_acceptance": "Manifest records c87ad4... but execution does not enforce it; trust boundary is weaker than stated."
+    },
+    {
+      "id": "RESUME_CURRENTNESS_GAP",
+      "severity": "MEDIUM_AUTHORITY",
+      "reproduction": "resume_single_pass validates HMAC/config/request/grant/decision but does not call resolver.resolve_current; direct API resume can publish after checkpoint without an independent current check.",
+      "scoped_acceptance": "witness_caller._grant performs current pre/post checks before calling resume; this is not a full external authority gate for direct API callers."
+    },
+    {
+      "id": "STARTUP_FREE_SPACE_BLOCKER",
+      "severity": "HIGH_OPERATIONAL",
+      "reproduction": "MANIFEST free_space_blocker: available 15,569,469,440 B < required 26,907,826,727 B; witness_caller run checks STARTUP_FREE_FLOOR before producer.",
+      "scoped_acceptance": "Compact staging payload parity passes, but no launch is currently eligible; this is not a compact encoding defect."
+    }
+  ],
+  "scoped_acceptance": {
+    "compact_payload_parity": true,
+    "interrupted_resume_without_decode": true,
+    "cold_reader": true,
+    "corruption_refusal": true,
+    "actual_caller_can_reach_path_with_exact_overlay_tree": true,
+    "actual_authorized_launch": false
+  },
+  "boundaries": {
+    "original_source_read": false,
+    "source_sav_opened": false,
+    "real_run": false,
+    "product_edits": false,
+    "previous_scratch_access": false,
+    "wider_review": false
+  }
+}
