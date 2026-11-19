@@ -271,13 +271,22 @@ def receive_s04_i03_research(
         "response_semantics_ref": _exact(fact.response_state_semantics_ref, "responses").as_dict(),
         "target_refs": [x.as_dict() for x in targets],
         "target_domains": [list(x) for x in domains],
+        "full_query_target_topology": canonicalize(query.target_arity_and_topology),
+        "native_fact_target_domain_identity": fact.target_domain_identity,
         "joint_order_semantics": query.target_arity_and_topology["joint_order_semantics"],
         "target_arity": len(targets),
         "raw_eligible_condition_denominator": eligible,
         "raw_fully_resolved_joint_n": resolved,
+        "risk_set_type": fact.risk_set_type,
+        "source_scope_mode": fact.source_scope_mode,
+        "measure_kind": fact.measure_kind,
+        "producer_uncertainty_state": fact.uncertainty_method_or_typed_state,
         "complete_cells": sorted(rows, key=lambda row: canonical_json(row["cell"])),
         "authority_refs": [x.as_dict() for x in sorted(authorities, key=lambda ref: ref.key)],
         "source_provenance_refs": [x.as_dict() for x in sorted(provenance, key=lambda ref: ref.key)],
+        "query_dependency_refs": [
+            x.as_dict() for x in _unique_refs(query.dependency_refs, "query dependencies")
+        ],
         "nonpositive_positive_count_retained_not_served": (
             resolved if fact.typed_state != "SUPPORTED" else None
         ),
