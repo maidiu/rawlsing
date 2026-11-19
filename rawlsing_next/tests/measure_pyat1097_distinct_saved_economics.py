@@ -25,7 +25,7 @@ from time import perf_counter_ns
 import pytest
 
 from rawlsing_next.pre553_distinct_cold_s04_batch import (
-    S04DistinctOperation, execute_distinct_native_s04_research,
+    SOURCEFREE_ONLY_ASSERTION, S04DistinctOperation, execute_distinct_native_s04_research,
 )
 from rawlsing_next.pre553_s04_first_consumer import receive_s04_first_consumer
 from rawlsing_next.tests.test_pre553_distinct_cold_i03_batch import _case
@@ -71,6 +71,7 @@ def measure(*, mode: str, size: int) -> dict:
                 index_preparations = opened["n"]
             else:
                 native = execute_distinct_native_s04_research(
+                    sourcefree_origin_assertion=SOURCEFREE_ONLY_ASSERTION,
                     executor=executor,
                     operations=tuple(
                         S04DistinctOperation(query.ref, predicate.ref)
