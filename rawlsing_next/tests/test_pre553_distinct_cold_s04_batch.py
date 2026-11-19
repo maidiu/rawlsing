@@ -233,3 +233,17 @@ def test_original_construction_grant_is_not_a_qualified_i03_repository():
                 query_ref=object(), predicate_ref=object(),
             ),),
         )
+
+
+def test_src16_construction_only_intent_cannot_claim_sourcefree_i03_analysis(
+    tmp_path, monkeypatch,
+):
+    _, _, predicate, queries, executor, _, _ = _case(
+        tmp_path, monkeypatch, 1, name="SRC16-ANVIL-CONSTRUCTION-ONLY-REFUSAL",
+    )
+    with pytest.raises(subject.S04DistinctBatchError, match="construction grant"):
+        subject.execute_distinct_native_s04_research(
+            executor=executor,
+            operations=(subject.S04DistinctOperation(queries[0].ref, predicate.ref),),
+            sourcefree_origin_assertion="FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY",
+        )
