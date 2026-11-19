@@ -1,0 +1,86 @@
+{
+  "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_FINAL_RECHECK@1",
+  "disposition": "ACCEPT_SCOPED_SOURCEFREE_READER_AND_MODULE_PIN__REAL_LAUNCH_HAS_CURRENT_DISK_GAP",
+  "source_cut": {
+    "commit": "0bdda6428654fd949196dd8d46e428b83ed42f0d",
+    "directory": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118",
+    "manifest_files_verified": 27,
+    "manifest_bad_files": [],
+    "streaming_estate_sha256_pin": "5a8a4d6cd0a1f2793571c695c9d5658f7e882213821f745ed0d42614514474e2"
+  },
+  "reader_failure_repair": {
+    "actual_reader_mode": "sqlite_free_witness.py --mode reader",
+    "exit_code": 0,
+    "status": "READER_OPENED",
+    "counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 90,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RoutingEligibilityFact": 90,
+      "EmpiricalCoordinateFact": 90,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "receipt_evidence": "READER_RECEIPT.json",
+    "stream_release_ref": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|cfe4d1e07c47036d67c70ead9785e3a2c49c2b40f21d1a48fc8f3eab9ad89127",
+    "stream_release_identity": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|cfe4d1e07c47036d67c70ead9785e3a2c49c2b40f21d1a48fc8f3eab9ad89127",
+    "reconstructed_release_ref": null,
+    "release_ref_equal_to_accepted": null,
+    "legacy_release_comparison": "NOT_APPLICABLE_STREAM_PROOF",
+    "source_read_performed_by_reader": false,
+    "source_path_opened_stat_hashed_decoded_by_reader": false,
+    "verdict": "The prior NoneType .content_hash failure is gone. The receipt honestly uses the stream release identity and marks legacy comparison not applicable."
+  },
+  "tampered_module_refusal": {
+    "test": "Copied the isolated operator directory, appended a byte to streaming_estate.py, and ran metadata preflight.",
+    "exit_code": 2,
+    "status": "REFUSED",
+    "code": "STREAMING_IMPLEMENTATION_HASH_MISMATCH",
+    "before_import": true,
+    "source_read_performed": false,
+    "evidence": "TAMPERED_MODULE_REFUSAL.json"
+  },
+  "exact_metadata_preflight": {
+    "evidence": "EXACT_PREFLIGHT.json",
+    "status": "RUNTIME_OVERLAY_QUALIFIED",
+    "source_path_opened_stat_hashed_decoded": false,
+    "request_equal_to_approved": true,
+    "q217": "HELD_EXACT_BY_SCOPED_CONFIG",
+    "scoped_counts": {"response_slots": 177, "coordinate_slots": 3, "physical_slots": 181}
+  },
+  "real_construction_scope": {
+    "accepted_config_overlay_metadata_ready": true,
+    "authorized_grant_binding_metadata_present": true,
+    "actual_real_source_execution": false,
+    "reason": "No original source/data was opened by this review; real execution still requires its external grant/current gate and an actual authorized launch.",
+    "current_work_root_free_bytes": 19374125056,
+    "startup_floor_bytes": 26907826727,
+    "current_free_gap_bytes": 7533701671,
+    "current_disk_evidence": "CURRENT_DISK.json",
+    "note": "The current measured free space is below the caller's startup floor even though the code path is ready. This is a resource gap, not a reader or module-pin defect."
+  },
+  "already_reviewed_not_repeated": {
+    "sqlite_free_normal_publication": "Existing publication evidence remains reviewed; no replay matrix was rerun.",
+    "separate_audit": "Existing separate read-only audit evidence remains reviewed.",
+    "width": "Only bounded sourcefree 90-row/369-record coverage is established; no full-width or 512x600 claim.",
+    "resources": "No benchmark or full resource envelope was produced."
+  },
+  "blocker": {
+    "reader_or_module_pin": null,
+    "real_launch": "CURRENT_FREE_SPACE_BELOW_STARTUP_FLOOR"
+  },
+  "boundaries": {
+    "original_source_access": false,
+    "original_data": false,
+    "code_edits": false,
+    "legacy_r4_interference": false,
+    "science_authority_widened": false,
+    "sourcefree_only_recheck": true
+  }
+}
