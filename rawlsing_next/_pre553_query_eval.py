@@ -201,6 +201,13 @@ def _target_component_value(
         used.append(event)
         used_auth.extend(_validate_public_object_authorities(event, registry))
 
+    # No observed event is not an observed empty collection. This applies
+    # equally to multiselect, ordered, ranked and repeated target topologies:
+    # a legitimate empty response must be explicitly source-issued, rather
+    # than inferred from absence in the event carrier.
+    if not events:
+        return False, None
+
     topology = component.topology
     if topology == "SCALAR_SINGULAR":
         if not events:
