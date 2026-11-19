@@ -386,6 +386,10 @@ def receive_ff01_observed_joint(
                     raise FF01GenericIngressError("nonpositive joint has invalid negative cell count")
                 retained_total += row["raw_numerator_support"]
             if retained_total != fact.raw_numerator_support:
+                if fact.raw_numerator_support == 0 and retained_total > 0:
+                    raise FF01GenericIngressError(
+                        "nonpositive joint contains contradictory positive cell"
+                    )
                 raise FF01GenericIngressError(
                     "nonpositive joint cell count contradicts held resolved total"
                 )

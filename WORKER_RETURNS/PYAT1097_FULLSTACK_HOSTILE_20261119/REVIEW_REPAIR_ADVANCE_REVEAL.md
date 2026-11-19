@@ -77,3 +77,18 @@ header; the full inherited FF suite's top-0/positive-cell RED is retained.
 **These are author code and NOT_RUN, and the 3/4 fixture is a semantically
 coherent mutation of native I03 fact material rather than an independently
 executed original-source incomplete-response query.**
+
+## Whole-consumer partial-negative repair
+
+Follow-up self-attack found the optional actual `pre553_s04_ff01_consumer.py`
+rejected the newly conserved genuine positive-partial `UNRESOLVED` fact
+under its own old `LOW_SUPPORT`-only held predicate; this would have
+stranded the repaired S04 data before FF01 first consumption. The adapter
+now admits `UNRESOLVED` only **as already independently validated
+S04 HELD knowledge** without re-execution or cell publication. Test checks
+that S04→FF01 output exactly equals direct FF01 held output and
+`ask_s04_exact_condition` yields typed HELD (no denominator or cells).
+Additional negative branch preserves the **literal** inherited test's
+`contradictory positive cell` refusal for top resolved0 with positive
+nested cells; malformed 2-vs-3 partial remains a distinct refusal.
+No real original-source incomplete-case runtime claimed. Tests NOT_RUN.

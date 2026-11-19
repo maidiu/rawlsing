@@ -18,8 +18,9 @@ from rawlsing_next.field_forge_i05_role_ingress import (
     FF01I05IngressError, receive_i05_exact_joint_at_ff01,
 )
 from rawlsing_next.pre553_s04_observed_research import (
-    S04KnowledgeError, receive_s04_i03_research,
+    S04KnowledgeError, ask_s04_exact_condition, receive_s04_i03_research,
 )
+from rawlsing_next.pre553_s04_ff01_consumer import receive_ff01_from_s04
 from rawlsing_next.pre553_s04_i05_reception import (
     S04I05ReceptionError, receive_s04_i05_role,
 )
@@ -184,7 +185,8 @@ def test_native_i03_partial_unresolved_support_survives_held_not_distributed():
     original = execution.facts[0]
     assert original.raw_numerator_support == 3
     assert original.raw_denominator_support == 4
-    s04 = receive_s04_i03_research(query=q, execution=execution).material()
+    knowledge = receive_s04_i03_research(query=q, execution=execution)
+    s04 = knowledge.material()
     ff = receive_ff01_observed_joint(
         query=q, execution=execution, conditioner_index=0,
         producer_permission_ceiling=PERMISSIONS,
@@ -201,6 +203,17 @@ def test_native_i03_partial_unresolved_support_survives_held_not_distributed():
     assert ff["held_observed_n_if_nonpositive"] == 3
     assert ff["complete_cells"] == []
     assert ff["zero_means"] == "NO_ZERO_INFERENCE_FROM_NONPOSITIVE_PRODUCER_STATE"
+    from_s04 = receive_ff01_from_s04(
+        knowledge=knowledge, query=q, execution=execution,
+        conditioner_index=0, producer_permission_ceiling=PERMISSIONS,
+    ).semantic_projection()
+    assert from_s04 == ff
+    held = ask_s04_exact_condition(
+        knowledge=knowledge, target_index=2, conditions={0: "0"},
+    ).material()
+    assert held["state"] == "UPSTREAM_SCIENCE_OR_SOURCE_HELD"
+    assert held["raw_conditioned_full_case_n"] is None
+    assert held["complete_target_cells"] == []
 
 
 def test_hash_coherent_partial_unresolved_false_nested_total_refuses():

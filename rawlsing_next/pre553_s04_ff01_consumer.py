@@ -186,7 +186,7 @@ def receive_ff01_from_s04(
             })
     elif material["complete_cells"] or (
         resolved > 0 and material["producer_typed_state"] not in (
-            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"
+            "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED", "UNRESOLVED"
         )
     ):
         raise S04FF01SeamError("held I03 evidence falsely promoted to observed joint")
