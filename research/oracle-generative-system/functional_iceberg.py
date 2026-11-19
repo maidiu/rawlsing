@@ -29,10 +29,6 @@ class Actor:
     commitments: frozenset
     expectations: dict = field(default_factory=dict)
 
-    def anticipates(self, cue, effect):
-        record = self.expectations.get(cue)
-        return record is not None and record.anticipated_effect == effect
-
     def retain_or_admit(self, event):
         # One actor's situated interpretation of giving space to a disputed message.
         # Independent constraints (a venue closing, another participant declining)
@@ -51,7 +47,11 @@ class Actor:
         return True
 
     def attempt(self, cue):
-        return "indicate_choice" if self.anticipates(cue, "my_choice_considered") else "observe"
+        expected = self.expectations.get(cue)
+        if expected and expected.anticipated_effect in {
+                "my_choice_considered", "selected_object_obtained_after_indicating"}:
+            return "indicate_choice"
+        return "observe"
 
 
 def install_opening(proposal):
@@ -102,7 +102,7 @@ def acquire(child, experienced):
             continue
         difference = sum(attempted) / len(attempted) - sum(baseline) / len(baseline)
         if difference >= 0.5:
-            child.expectations[cue] = Expectation(cue, "my_choice_considered",
+            child.expectations[cue] = Expectation(cue, "selected_object_obtained_after_indicating",
                                                   "contrast_in_accessible_encounters")
 
 
@@ -128,6 +128,7 @@ def run():
             own_choice_realized = signaled and keep
             traces.append(Encounter("open_hand", signaled, True, True, own_choice_realized))
         acquire(child, traces)
+        learned = child.expectations.get("open_hand")
         act = child.attempt("open_hand")
         # The adult and child read the same expectation type. A later shortage
         # can defeat the child's newly attempted action without erasing its cause.
@@ -137,8 +138,11 @@ def run():
         later = {name: fulfill(available) for name, available in (("stocked", True), ("empty", False))}
         results.append({"constructed_opening": proposal["name"], "reference": emitted, "disclaimed_collection_retained": keep,
                         "adult_at_same_invitation": person.attempt("open_hand"),
+                        "acquired_anticipation": learned.anticipated_effect if learned else None,
                         "before": before, "after": act, "other_cue": child.attempt("closed_book"),
                         "later_choice_fulfilled": later})
+    assert [r["acquired_anticipation"] for r in results] == [
+        "selected_object_obtained_after_indicating", None]
     assert results[0]["after"] == "indicate_choice" and results[1]["after"] == "observe"
     return results
 
