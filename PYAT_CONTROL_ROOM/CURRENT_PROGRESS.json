@@ -472,7 +472,7 @@
     "dhikr_author_head_observed": "a3e2a4ed5e2de2477d344e709a3111bc1d7fd7dc",
     "scientific_method_owner": "HELD_NOT_ISSUED",
     "independent_review": "PENDING",
-    "currentness": "HQ_CURRENTNESS_HOLD__PROTECTED_REV11_PREP_ONLY__1148_1149_1150_AND_B3DD_WITNESS_UNRECEIVED__LEASE_G5_SCIENCE_NOT_ISSUED",
+    "currentness": "HQ_CURRENTNESS_HOLD__S04_OLD_HEAD_174_2_TWICE__MAPPINGPROXY_FIX_NOT_RETESTED__FF01_N10E_AND_C11_LEASE_G5_SCIENCE_PROTECTED_HELD",
     "protected_owner_cas": "NOT_ATTEMPTED",
     "host_native_tests": "NOT_RUN",
     "archive_movement": "NOT_PERFORMED__PRIORITY_SUPERSESSION_ONLY_AFTER_INDEPENDENT_REVIEW_AND_PROTECTED_CAS",
@@ -508,7 +508,7 @@
     "pre_field_forge_s04_observed_knowledge": {
       "status": "SOURCEFREE_AUTHOR_CODE_UNTESTED__INDEPENDENT_G5_HELD",
       "pr": 1150,
-      "code_head": "135c3454d03bf1697627e3f107f13772caeef342",
+      "code_head": "a0e68e349afe0414ef2ebfbb91d4c8ffd3f848b2",
       "base_pr": 1149,
       "capabilities": [
         "NATIVE_I03_UNARY_F1_AND_KWAY_F4_TO_EXACT_S04_SOURCE_OBSERVED_KNOWLEDGE",
@@ -525,11 +525,19 @@
       ],
       "local_test": "bash rawlsing_next/tests/run_pyat_s04_preff_local.sh",
       "local_c11_compat": "bash rawlsing_next/tests/check_pyat_s04_against_c11_head.sh b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
-      "actual_executed_tests": "NONE",
+      "actual_executed_tests": "USER_OLD_HEAD_135C_174_PASS_2_FAIL_LOCAL_AND_B3DD_OVERLAY__SAME_MAPPINGPROXY_ERROR",
       "writer_lease": "NOT_ATTESTED",
       "reviewer": "NOT_INDEPENDENTLY_REVIEWED",
       "protected_cas": "NOT_ATTEMPTED",
-      "next": "LOCAL_RUN_RED_GREEN__CODEX_C11_COLD_READER_DIVERGENCE_TEST__DISTINCT_NONAUTHOR_G5__PAIRED_PROGRAMMA_RECEIVING"
+      "next": "LOCAL_RUN_RED_GREEN__CODEX_C11_COLD_READER_DIVERGENCE_TEST__DISTINCT_NONAUTHOR_G5__PAIRED_PROGRAMMA_RECEIVING",
+      "author_repair": {
+        "commit": "83f6747f97d7e584bbcc9adbbc91f142cf083170",
+        "test_commit": "a0e68e349afe0414ef2ebfbb91d4c8ffd3f848b2",
+        "root_cause": "I05_RECEIPT_FROZEN_MAPPINGPROXY_EXACT_FACT_REFS_WERE_HASHED_RAW",
+        "fix": "NORMALIZE_CANDIDATE_AND_FRONTIER_REF_PREIMAGES_THROUGH_PRE553_EXACT_REF_BEFORE_MEMBERSHIP",
+        "grade": "AUTHOR_CODE_COMMITTED__FIX_NOT_RETESTED",
+        "compat": "B3DD_OVERLAY_SAME_TWO_REDS__NO_EXTRA_FAILURES_VISIBLE__NOT_PASS"
+      }
     }
   }
 }
