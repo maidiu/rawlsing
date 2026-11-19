@@ -1,0 +1,15 @@
+# ORACLE/23 — UM-SOROK R3 executable theory→code and new theory bounce-back
+
+**Status:** R3 sourcefree research, local author tests 42/42 PASS, no native SOROK integration or independent receiving, 2026-11-19.
+
+The [actual executable R3 source](UM_SOROK_ORGANISM_R3/README.md) advances the existing R2 organism. [F13–F17 theory↔code ledger](UM_SOROK_ORGANISM_R3/docs/HOSTILE_THEORY_CODE_R3.md) identifies original R2 theoretical defects, recovered SEAM/30/PRE-A0/PFF/CAN/O05 doctrine, changed source files and specific executable observations.
+
+**Contributions:** qualified learned approach/withhold pressure changes prospective choices without pretending to be bodily impossibility; opposing currents coexist without scalar harmonization; actor/event-grounded acquisition of a two-means practical composition method can alter later activity proposals. [Eight new R3 tests](UM_SOROK_ORGANISM_R3/tests/test_r3_pressure_genesis.py) join the 34 R2 tests and all 42 pass locally. This does **not** solve preconceptual affect, the genuine genesis of a novel compositional method, learned defensive compromise or a mature psychodynamic law.
+
+**Bounce-back into ongoing SEAM/30 independent theory mulch:** [R3 theory challenge](UM_SOROK_ORGANISM_R3/docs/SEAM30_R3_BOUNCEBACK.md). Its challenge is not another ontology catalog; it asks how different experiences actually produce selective impression, suppression, new ends and a learned way of composing. See the additive note submitted against SEAM/30 PR #1161.
+
+**REMONT dependency discovered before this handoff:** The separate SOROK REMONT operator has two *concurrent and overlapping* SR-P004 sourcefree repair drafts [#1165](https://github.com/maidiu/rawlsing/pull/1165) (`480d3595ef744779cbfce186cd1696d8e8f61e36`) and [#1166](https://github.com/maidiu/rawlsing/pull/1166) (`0663f3641680360605c5f3f343954fb1b0f602fa`). Both start from R2 `e883168ac57a5490ff659d8e9a9705e9269e8b2c` and repair missing actor-owned afterlife for blocked/partial attempts. #1165 also enforces project-qualified means in plan composition. Neither is independently received or in protected code. [Overlap and compatibility notice](../../REMONT/SOROK/R3_SR_P004_LIVE_OVERLAP_20261119.md) preserves these distinctions and explicitly directs fresh-head reconciliation at every later build, without absorbing or overruling either candidate.
+
+**Original R3 ZIP:** `UM_SOROK_CONSTITUTIVE_ORGANISM_R3_THEORY_CODE_2026-11-19.zip` SHA-256 `b83391bb0b6b20fde7dab1f1bfdf8c0de44e97494371fb8f7f73a4750f9358d5` in ChatGPT Library `/Rawlsing/UM-SOROK-HQ/R3_theory_code_20261119/`, with unpacked Python/test/text source in this GitHub commit.
+
+**Principal sequence:** Keep the three-agent SEAM/30 mulch and separate executable organism construction running concurrently; new conceptual advances must seek code consequences. REMONT independently investigates incidental defects; its changes can affect future design, so recheck its live status. Native P2/P3/P6 integration remains deferred.
