@@ -1,0 +1,269 @@
+{
+  "authority_refusal": {
+    "error": "DirectEstateError: current source/operation authority refused",
+    "refused": true
+  },
+  "base_sha": "aa9e91d58b24ea4366a902fb16ba110b566edd5d",
+  "binding": {
+    "admission_current_required": true,
+    "manifest_hash": "38af5193f89c297520ad0175948816dbd19307471d1693c7a24ef900236e32be",
+    "prior_output_fact_refs_match_receipts": true,
+    "unit_hashes_are_prior_output_keys": true
+  },
+  "changed_mapping": {
+    "accepted": true,
+    "receipts": 3,
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "changed_output": {
+    "error": "WorkloadAdmissionError: PRIOR_OUTPUT_KIND_MISMATCH",
+    "refused": true
+  },
+  "exact_cache_reuse": {
+    "receipts": [
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "29cb9f22031ca8609db3ee64926c8c852422fee4c98f621180688e8498c98048",
+        "result_refs": [
+          {
+            "content_hash": "653d8af3cec4c522989e0689e88c8b1a54207c756f1bf10bc381bfb3c5927f83",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:653d8af3cec4c522989e0689e88c8b1a54207c756f1bf10bc381bfb3c5927f83"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "6c753c79ac386f0533aa3b8317735baefcf0d9d3d899bebadd9d79344719cbe6",
+        "result_refs": [
+          {
+            "content_hash": "73308842b2a9b0fe89b4fe1db941f2923c79d857460b05a2cff9a17a4367506b",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:73308842b2a9b0fe89b4fe1db941f2923c79d857460b05a2cff9a17a4367506b"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "b2a8ee213ec81c0cd0d6b33a4f5b53a5476c80dd1d72ae584cfc945a71443e89",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:b2a8ee213ec81c0cd0d6b33a4f5b53a5476c80dd1d72ae584cfc945a71443e89"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "0fe5a4f1fd8e6a44cc1af8e3ed495ef395063bda234777802bfddf4979ab8f41",
+        "result_refs": [
+          {
+            "content_hash": "d6e6d3bc100b4252897a27fdf819c61fa3b135813ca9766abb1524fdda848d1d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d6e6d3bc100b4252897a27fdf819c61fa3b135813ca9766abb1524fdda848d1d"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "c48ceabef0bfe22c6a751edb71dd9e1feabd18608719996766917b4479ca0858",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:c48ceabef0bfe22c6a751edb71dd9e1feabd18608719996766917b4479ca0858"
+        }
+      }
+    ],
+    "same_records_equal": true,
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "exact_first_defect": {
+    "defect": "CHANGED_PREDICATE_MAPPING_REUSE_ACCEPTED",
+    "narrow_fix_if_applied": "Require predicate_ref_by_query[unit.job_ref.key] to equal the query predicate bound by the unit semantic_input_refs before cache reuse; otherwise refuse or reexecute. Do not trust the mapping merely because all prior receipts are completed.",
+    "observed": "changed predicate_ref_by_query accepted with exact prior outputs/receipts; completed units skipped; Batch COMPLETED",
+    "where": "rawlsing_next/pre553_saved_workload_integration.py::execute_saved_batch",
+    "why": "prior-cache validation checks manifest, unit identity and native output refs but not the caller predicate mapping against each unit semantic_input_refs"
+  },
+  "green": {
+    "all_forged_receipts_retained": false,
+    "receipt_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "reexecuted": true,
+    "status": "GREEN_FORGED_REEXECUTED",
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "owner_patch": {
+    "applied_unchanged": true,
+    "apply_check": "PATCH_APPLY_CHECK.txt",
+    "file": "OWNER_EXACT_PATCH.patch",
+    "target": "rawlsing_next/pre553_saved_workload_integration.py"
+  },
+  "partial_resume": {
+    "partial_receipt_retained": true,
+    "receipts": [
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "7ae89eeb72d8ebd7c497cfb34826218edcf2ffd75e54069ab155075ec856ace8",
+        "result_refs": [],
+        "state": "DEFERRED",
+        "unit_ref": {
+          "content_hash": "7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04"
+        }
+      },
+      {
+        "attempt_index": 2,
+        "execution_performed": true,
+        "receipt_hash": "3892e53d6fcad3e0314770cf69d0cf509545de373e88764025345cd5eadfbd63",
+        "result_refs": [
+          {
+            "content_hash": "653d8af3cec4c522989e0689e88c8b1a54207c756f1bf10bc381bfb3c5927f83",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:653d8af3cec4c522989e0689e88c8b1a54207c756f1bf10bc381bfb3c5927f83"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:7b9b5cd6f16a2925677ec8dffbc187744f96c6a2999db8d991fc691471f26f04"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "6c753c79ac386f0533aa3b8317735baefcf0d9d3d899bebadd9d79344719cbe6",
+        "result_refs": [
+          {
+            "content_hash": "73308842b2a9b0fe89b4fe1db941f2923c79d857460b05a2cff9a17a4367506b",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:73308842b2a9b0fe89b4fe1db941f2923c79d857460b05a2cff9a17a4367506b"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "b2a8ee213ec81c0cd0d6b33a4f5b53a5476c80dd1d72ae584cfc945a71443e89",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:b2a8ee213ec81c0cd0d6b33a4f5b53a5476c80dd1d72ae584cfc945a71443e89"
+        }
+      },
+      {
+        "attempt_index": 1,
+        "execution_performed": true,
+        "receipt_hash": "0fe5a4f1fd8e6a44cc1af8e3ed495ef395063bda234777802bfddf4979ab8f41",
+        "result_refs": [
+          {
+            "content_hash": "d6e6d3bc100b4252897a27fdf819c61fa3b135813ca9766abb1524fdda848d1d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d6e6d3bc100b4252897a27fdf819c61fa3b135813ca9766abb1524fdda848d1d"
+          }
+        ],
+        "state": "COMPLETED",
+        "unit_ref": {
+          "content_hash": "c48ceabef0bfe22c6a751edb71dd9e1feabd18608719996766917b4479ca0858",
+          "kind": "PRE553BatchUnit@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-unit:sha256:c48ceabef0bfe22c6a751edb71dd9e1feabd18608719996766917b4479ca0858"
+        }
+      }
+    ],
+    "summary": {
+      "actual_execution_receipts": 4,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    },
+    "unit_reexecuted": true
+  },
+  "pins": {
+    "baseline_review_sha256": "ae160f6ec2584ab2f99c55405b358d2ba02cbc15072ccdfbaa818b598453b06b",
+    "implementer_sha": "0dcd75749e5c186842a70dec777096b3f22086d8",
+    "measurement_prep_trace_sha": "aa9e91d58b24ea4366a902fb16ba110b566edd5d",
+    "owner_patch_sha256": "9cda4d5bba659f6b0b69990d6b66f85451471355d773798fb9bb7b8e075a29e4",
+    "owner_sha": "e3d911364b06ac1d4dec28801d1db56eb6bcf389",
+    "patched_review_sha256": "d34a0ae23efe540ca33ae916698c5f03cec0974177dbc8902288cc7e0dcd83e4"
+  },
+  "preserved": {
+    "authority_revocation": "DirectEstateError",
+    "batch_implementation_modified_by_reviewer": false,
+    "changed_prior_output": "refused PRIOR_OUTPUT_KIND_MISMATCH",
+    "exact_validated_cache": "reuse accepted only with exact prior outputs",
+    "forged_completed_receipts": "RED retained; GREEN reexecuted",
+    "i05_patch_applied": false,
+    "normal_batch": "unchanged",
+    "partial_resume": "DEFERRED retained; one unit attempt 2 reexecuted"
+  },
+  "red": {
+    "all_forged_receipts_retained": true,
+    "reexecuted": false,
+    "status": "RED_FORGED_RETAINED",
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "schema": "ANVIL_SRC16_RAW_BATCH_REVIEW@1",
+  "scope_limits": {
+    "dhikr": false,
+    "frozen_runtime_edited": false,
+    "gss_build_run": false,
+    "live_runner_touched": false,
+    "original_source_read": false,
+    "protected_edits": false
+  },
+  "sourcefree": true,
+  "status": "ACCEPT_SCOPED_WITH_EXACT_RESIDUAL_DEFECT__CHANGED_PREDICATE_MAPPING_REUSE"
+}
