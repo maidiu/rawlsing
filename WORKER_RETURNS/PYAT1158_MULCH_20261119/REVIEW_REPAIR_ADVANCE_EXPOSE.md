@@ -89,3 +89,56 @@ duplicated singleton metric computation. Both now repaired on the *same*
 review branch: held context cannot bootstrap; interaction-order >1 alone
 activates the added 2M group work cap, while singleton metrics are reused.
 Added a negative low-N first-fault test. **Still not executed at this head.**
+
+## HQ-SCALE CONTINUATION: REAL C4 FIELD FORGE TO PRE-V3 EMPIRICAL FIRST CONSUMER
+
+**Frozen predecessor:** #1164 `1e74710b7b41263fd5787b40e47e5842b14abc86`. This is a major
+forward-construction turn, not another REMONT minor-bug pass.
+The same chosen sourcefree I03→S04→DHIKR→FF01 line acquires an actual
+executable **PRE-V3 empirical candidate first consumer** in
+`rawlsing_next/pre553_s04_field_forge_v3_bridge.py`.
+
+Implemented behaviors (code staged, focused tests authored, not executed):
+1. Consume ONE prior actual native I03 result through existing
+   `receive_s04_first_consumer`; require an actual FF01 first-consumer object
+   and reuse existing `S04GeneralJointWorkspace.compare_dhikr`. No C11
+   reopen, no second I03 operation, no second estimator.
+2. Cross-verify all source query, original fact, release and risk refs,
+   S04 knowledge ref, S04 first-consumer ref, actual FF01 object ref and
+   DHIKR comparator ref. Replay each DHIKR contextual branch through the
+   actual FF01 `ask_exact_descriptive_support`; verify same-case risk N,
+   target-response support and exact contextual receipt refs. Keep HELD
+   low-N branches without exporting an implied scored target split.
+3. Supply `consume_v3_empirical_case_offer`: given independently pinned
+   roots, caller context and explicit deterministic seed, sample ONE entire
+   k-dimensional **observed joint cell**, by source empirical raw joint support.
+   This does NOT independently sample marginal variables and thereby invent
+   impossible survey configurations. Preserve actual target refs/values,
+   distinct zero-context vs low-N vs producer-unresolved abstention, source
+   support and target distribution receipt. This is an *empirical hypothetical
+   configuration* for PRE-V3, never a respondent identity or finished person.
+4. Private, no-clobber, content-addressed **cold sourcefree** archive;
+   restore actual FF01/DHIKR receipts and contextual crossreads without
+   original C11/I03 calls. External independently held exact pins, including
+   the FF01 and DHIKR refs, are mandatory at cold V3 consumption. Bundle
+   contents cannot self-issue source/actor authority.
+5. Eight new C4 first-fault tests for actual I03→FF01→V3 sourcefree XOR,
+   target/provenance conservation, joint-coherence, deterministic replay,
+   low-N/zero/unknown abstention, foreign domain, forged FF01/body/context,
+   original-source-rights refusal and durable cold first consumption.
+   Existing runner receives `C4_FF_V3`, and `C0_ALL_SMALL` includes it.
+
+**Explicit limitations that must NOT be silently promoted:** This is the
+SOURCEFREE exploratory empirical feeder, not independent Sorok C4 actor,
+CAN008 recruitment, ADP/needs/psychic change, material-power FF02 relation,
+original-wave lawful disclosure, population calibration, M1/M4/M5 structural
+position, or full V3 person. The Sorok native E001/E002 importers remain
+unproved. The existing frozen structural FF→PREV3 relation admission owner is
+not bypassed. Next engineering branch: integrate an owner-authenticated
+Sorok C4 candidate consumer accepting this exact bounded empirical evidence
+alongside independent material/world/other-person source inputs, **without**
+turning Pyat's sampled joint into psychogenesis.
+
+**Execution grade:** CODE AUTHORED; tests **NOT EXECUTED**; no source,
+science, G5, Sorok actor or protected CAS promotion. Original #1158 and
+protected PRE-MAIN remain untouched.
