@@ -224,7 +224,7 @@ def receive_ff01_observed_joint(
         raise FF01GenericIngressError("claimed release missing from producer provenance")
     authorities = set(fact.authority_snapshot_refs)
     issued_query_authorities = {authority_ref(a) for a in query.query_authority_refs}
-    if not authorities or not set(query.authority_snapshot_refs).issubset(authorities) or not issued_query_authorities.issubset(authorities):
+    if not issued_query_authorities or not authorities or not set(query.authority_snapshot_refs).issubset(authorities) or not issued_query_authorities.issubset(authorities):
         raise FF01GenericIngressError("query issuer/authority closure missing")
 
     refs, domains, domain_identity = _domain(query)
@@ -307,6 +307,8 @@ def receive_ff01_observed_joint(
         if set(seen) != expected:
             raise FF01GenericIngressError("incomplete native joint cell support")
         total = sum(n for _, n in seen.values())
+        if total == 0:
+            raise FF01GenericIngressError("SUPPORTED fact with zero resolved joint support is not a positive FF01 relation")
         if total != fact.raw_numerator_support or total > fact.raw_denominator_support:
             raise FF01GenericIngressError("joint count disagrees with producer fully resolved/eligible denominator")
         if getattr(fact, "raw_resolved_target_support", total) != total:
