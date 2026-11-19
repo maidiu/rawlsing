@@ -26,6 +26,9 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
+from rawlsing_next.pre553_interpretation_qualification import (
+    InterpretationQualificationError, refuse_positive_uninterpreted_support,
+)
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
 
 
@@ -326,6 +329,12 @@ def receive_ff01_observed_joint(
             n = row.get("raw_numerator_support")
             if type(n) is not int or n < 0:
                 raise FF01GenericIngressError("invalid joint count")
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=cell, raw_support=n, consumer="FF01",
+                )
+            except InterpretationQualificationError as exc:
+                raise FF01GenericIngressError(str(exc)) from exc
             expected_state = "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
             if row.get("cell_state") != expected_state or row.get("weighted_numerator_support_if_authorized") is not None:
                 raise FF01GenericIngressError("cell status or RAW weight material mismatch")

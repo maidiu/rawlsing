@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from json import loads
-from typing import Any, Mapping, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
 from rawlsing_next.pre553_distinct_cold_i03_batch import (
@@ -27,6 +27,9 @@ from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
 from rawlsing_next.pre553_s04_observed_research import _domains
+from rawlsing_next.pre553_interpretation_qualification import (
+    S04InterpretationCurrent,
+)
 from rawlsing_next.pre553_s04_research_batch import S04ContextRequest
 from rawlsing_next.field_forge_generic_empirical_ingress import _permission_set
 from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
@@ -91,6 +94,7 @@ def execute_distinct_native_s04_research(
     executor: CarrierNeutralResearchExecutor,
     operations: Sequence[S04DistinctOperation],
     sourcefree_origin_assertion: str,
+    resolve_current_response_semantics_ref: Callable[[ExactRef], ExactRef] | None = None,
 ) -> S04DistinctBatchResult:
     """Preflight original-owned queries; execute I03 once each in one session.
 
@@ -112,8 +116,12 @@ def execute_distinct_native_s04_research(
     if type(operations) not in (tuple, list) or not 1 <= len(operations) <= MAX_DISTINCT:
         raise S04DistinctBatchError("1..100 finite ordered original operations required")
 
+    if (resolve_current_response_semantics_ref is not None
+            and not callable(resolve_current_response_semantics_ref)):
+        raise S04DistinctBatchError("interpretation resolver must be callable or absent")
     requests: list[ColdI03Operation] = []
     selected: list[tuple[Any, S04DistinctOperation]] = []
+    interpretation_guards: list[S04InterpretationCurrent | None] = []
     seen: set[str] = set()
 
     # Full binding and research/FF01 configuration validation takes place
@@ -167,6 +175,21 @@ def execute_distinct_native_s04_research(
                            or not 0 <= index < len(query.target_refs)
                            for index in req.conditions)):
                 raise S04DistinctBatchError("context axes invalid for original query topology")
+        semantics_ref = exact_ref(
+            query.requested_output_grain["response_state_semantics_ref"],
+            "original query response-semantic interpretation",
+        )
+        guard = None
+        if resolve_current_response_semantics_ref is not None:
+            resolver = resolve_current_response_semantics_ref
+            guard = S04InterpretationCurrent(
+                expected_response_semantics_ref=semantics_ref,
+                resolve_current_response_semantics_ref=lambda ref=semantics_ref: resolver(ref),
+            )
+            # Map CURRENT must be checked *before* preparing cold C11
+            # postings, not merely after a full batch can spend time.
+            guard.check_current()
+        interpretation_guards.append(guard)
         requests.append(ColdI03Operation(query.ref, predicate.ref))
         selected.append((query, item))
 
@@ -187,6 +210,9 @@ def execute_distinct_native_s04_research(
     receipt_rows: list[dict[str, Any]] = []
     for position, ((query, instruction), original) in enumerate(zip(selected, native.results)):
         source._live()  # CURRENT check before each new research consumer
+        interpretation = interpretation_guards[position]
+        if interpretation is not None:
+            interpretation.check_current()
         if (original.query_ref != query.ref
                 or original.release_refs != executor.release_refs
                 or len(original.facts) != 1):
@@ -199,6 +225,8 @@ def execute_distinct_native_s04_research(
             context_requests=instruction.context_requests,
         )
         source._live()  # refused revocation: no partial return/publication
+        if interpretation is not None:
+            interpretation.check_current()
         product = publication.receipt.material()
         if (product["source_fact_ref"] != original.facts[0].ref.as_dict()
                 or product["source_query_ref"] != query.ref.as_dict()
@@ -218,9 +246,25 @@ def execute_distinct_native_s04_research(
             "first_consumer_ref": publication.receipt.ref.as_dict(),
             "first_consumer_status": product["consumer_status"],
             "producer_typed_state": publication.knowledge.material()["producer_typed_state"],
+            "response_interpretation_semantics_ref": (
+                exact_ref(query.requested_output_grain["response_state_semantics_ref"],
+                          "original query response semantics").as_dict()
+            ),
+            "interpretation_current_check": (
+                "OPERATION_SCOPED_EXTERNAL_EXACT_REF_MATCH__NOT_ISSUER"
+                if interpretation else "INTERPRETATION_CURRENT_NOT_VERIFIED"
+            ),
+            "mapping_edition_dependencies": (
+                "SEPARATE_C11_VERSIONED_MAPPING_IDENTITY_NOT_ESTABLISHED"
+            ),
         })
 
     source._live()
+    # A version change during ANY later unit must invalidate publication of
+    # the WHOLE batched set. This is a batch admission check, not an issuer.
+    for interpretation in interpretation_guards:
+        if interpretation is not None:
+            interpretation.check_current()
     material = {
         "contract": CONTRACT,
         "claim_grade": GRADE,
@@ -230,6 +274,11 @@ def execute_distinct_native_s04_research(
         "prepared_postings_sessions": native.prepared_session_count,
         "distinct_original_i03_operations": len(requests),
         "distinct_source_risks_kept_separate": True,
+        "interpretation_current_check": (
+            "ALL_EXACT_REFERENCES_RECHECKED_PRE_POST__NO_SOURCE_ISSUER"
+            if resolve_current_response_semantics_ref else
+            "UNVERIFIED__OPERATION_REPLAY_NOT_MAPPING_QUALIFIED"
+        ),
         "ordered_research_products": receipt_rows,
         "authorities_not_issued": [
             "ORIGINAL_SURVEY_ACCESS_OR_SEMANTIC_USE_NOT_GRANTED_BY_THIS_SOURCEFREE_ADAPTER",

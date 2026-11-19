@@ -19,6 +19,9 @@ from json import loads
 from math import prod
 from typing import Any, Mapping, Sequence
 
+from rawlsing_next.pre553_interpretation_qualification import (
+    InterpretationQualificationError, refuse_positive_uninterpreted_support,
+)
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, EmpiricalQuerySpec, ExactRef, authority_ref, canonical_json,
@@ -271,6 +274,17 @@ def receive_s04_i03_research(
             n = row.get("raw_numerator_support")
             if (key not in expected or key in seen or type(n) is not int or n < 0):
                 raise S04KnowledgeError("duplicate, foreign, incomplete or negative cell")
+            # ANVIL's raw lane preserves observed but unmapped values as
+            # INVALID_UNRESOLVED; even a self-rehashed SUPPORTED fact must not
+            # turn that positive event into a substantive S04 sample count.
+            # Actual response-state diagnostic use is a separate issuer,
+            # never an implicit grant via this descriptive recipient.
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=cell, raw_support=n, consumer="S04",
+                )
+            except InterpretationQualificationError as exc:
+                raise S04KnowledgeError(str(exc)) from exc
             if row.get("cell_state") != (
                 "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
             ):
@@ -379,6 +393,29 @@ def _read(knowledge: S04ObservedKnowledge) -> dict[str, Any]:
     m = knowledge.material()
     if knowledge.ref.content_hash != semantic_hash(m):
         raise S04KnowledgeError("S04 knowledge identity invalid")
+    # A content hash alone does not attest source interpretation. The direct
+    # F1/F2 conditioner and comparative candidate-table readers must perform
+    # the same fail-closed positive-unknown check as I03->S04 reception and
+    # the general joint workspace. Otherwise a self-rehashed S04 object can
+    # bypass both and turn an unmapped code into an observed distribution.
+    rows = m.get("complete_cells")
+    if not isinstance(rows, list):
+        raise S04KnowledgeError("S04 retained source cells malformed")
+    if m.get("state") == "SUPPORTED_SAMPLE_DESCRIPTIVE":
+        for row in rows:
+            if (not isinstance(row, dict)
+                    or not isinstance(row.get("cell"), list)
+                    or type(row.get("raw_count")) is not int):
+                raise S04KnowledgeError("S04 retained source cell malformed")
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=row["cell"], raw_support=row["raw_count"],
+                    consumer="S04-conditioned",
+                )
+            except InterpretationQualificationError as exc:
+                raise S04KnowledgeError(str(exc)) from exc
+    elif rows:
+        raise S04KnowledgeError("held S04 must not publish complete observed cells")
     return m
 
 

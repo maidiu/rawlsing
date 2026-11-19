@@ -15,7 +15,7 @@ respondent-coherent S04 joint is provided by S04GeneralJointWorkspace.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
@@ -26,6 +26,9 @@ from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
 from rawlsing_next.pre553_s04_general_joint_algebra import S04GeneralJointWorkspace
+from rawlsing_next.pre553_interpretation_qualification import (
+    S04InterpretationCurrent,
+)
 from rawlsing_next.pre553_source_direct_parquet_estate import VerifiedDirectEstate
 from rawlsing_next.pre553_distinct_cold_s04_batch import (
     SOURCEFREE_ONLY_ASSERTION,
@@ -65,6 +68,7 @@ class S04DynamicResearchSession:
         *,
         executor: CarrierNeutralResearchExecutor,
         sourcefree_origin_assertion: str,
+        resolve_current_response_semantics_ref: Callable[[ExactRef], ExactRef] | None = None,
     ) -> None:
         if sourcefree_origin_assertion != SOURCEFREE_ONLY_ASSERTION:
             raise S04DynamicResearchError(
@@ -77,6 +81,12 @@ class S04DynamicResearchSession:
             raise S04DynamicResearchError(
                 "exact one-release verified saved C11 executor required"
             )
+        if (resolve_current_response_semantics_ref is not None
+                and not callable(resolve_current_response_semantics_ref)):
+            raise S04DynamicResearchError(
+                "version resolver must be callable or absent"
+            )
+        self._interpretation_resolver = resolve_current_response_semantics_ref
         self._executor = executor
         self._native: DirectEstateI03Session | None = None
         self._opened = False
@@ -117,6 +127,22 @@ class S04DynamicResearchSession:
         predicate = self._executor.runtime_catalog.resolve_predicate_exact(question.predicate_ref)
         if exact_ref(query.condition_predicate_ref, "query predicate") != predicate.ref:
             raise S04DynamicResearchError("query/predicate identity mismatch")
+        # A source's CURRENT is distinct from the CURRENT of its
+        # interpretation/mapping. The exact response-semantics ref already
+        # belongs to this query's issued output grain; no new fabricated
+        # mapping reference is issued by the PYAT service.
+        interpretation = None
+        if self._interpretation_resolver is not None:
+            expected = exact_ref(
+                query.requested_output_grain["response_state_semantics_ref"],
+                "original query response semantics",
+            )
+            resolver = self._interpretation_resolver
+            interpretation = S04InterpretationCurrent(
+                expected_response_semantics_ref=expected,
+                resolve_current_response_semantics_ref=lambda: resolver(expected),
+            )
+            interpretation.check_current()
         actual: QueryExecutionResult = execute_empirical_query(
             repository=self._native,
             query=query,
@@ -125,16 +151,21 @@ class S04DynamicResearchSession:
             release_refs=self._executor.release_refs,
         )
         repo._live()
+        if interpretation is not None:
+            interpretation.check_current()
         product = receive_s04_first_consumer(
             query=query,
             execution=actual,
             conditioner_index=question.conditioner_index,
         )
         repo._live()
+        if interpretation is not None:
+            interpretation.check_current()
         workspace = S04GeneralJointWorkspace(
             knowledge=product.knowledge,
             expected_knowledge_ref=product.knowledge.ref,
             current_guard=repo._live,
+            interpretation_current=interpretation,
         )
         self._executed += 1
         return S04DynamicResearchResult(original=product, joint_workspace=workspace)
@@ -157,6 +188,14 @@ class S04DynamicResearchSession:
             "original_native_i03_queries_executed": self._executed,
             "sourcefree_verified_postings_sessions": 1 if self._opened else 0,
             "batch_cardinality_limit": None,
+            "interpretation_current_check": (
+                "BOUND_EXACT_RESPONSE_SEMANTICS_PRE_POST__CALLER_RESOLVER_NOT_ISSUER"
+                if self._interpretation_resolver else
+                "INTERPRETATION_CURRENT_UNVERIFIED"
+            ),
+            "mapping_edition_dependencies": (
+                "NEEDS_C11_SOURCE_ISSUED_MAPPING_VERSION_REF_IN_QUERY_AND_FACT"
+            ),
             "scientific_rank_or_original_source_authority": None,
         }
 
