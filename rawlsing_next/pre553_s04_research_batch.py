@@ -126,6 +126,8 @@ def run_s04_context_batch(
         "source_release_ref": origin["release_ref"],
         "source_risk_set_ref": origin["risk_set_ref"],
         "source_measure_basis_ref": origin["measure_basis_ref"],
+        "source_authentication_grade": origin["source_authenticity"],
+        "batch_issuer_authority": "NOT_ISSUED__REQUIRES_ORIGINAL_I03_OR_SEPARATE_PIN",
         "raw_source_risk_eligible_n": origin["raw_eligible_condition_denominator"],
         "raw_full_joint_resolved_n": origin["raw_fully_resolved_joint_n"],
         "raw_unresolved_joint_eligible_n": (
