@@ -342,6 +342,10 @@ class S04GeneralJointWorkspace:
                 if self._interpretation_current else
                 "INTERPRETATION_CURRENT_UNVERIFIED"
             ),
+            "mapping_edition_dependencies": (
+                "NOT_ESTABLISHED_BY_LEGACY_I03_RESPONSE_SEMANTICS_PIN__"
+                "REQUIRES_SEPARATELY_VERSIONED_C11_INTERPRETATION_AUTHORITY"
+            ),
             "source_current_check": (
                 "BOUND_GUARD_PRE_POST__NOT_SOURCE_ISSUANCE" if self._current_guard
                 else "OFFLINE_SOURCE_CURRENT_UNVERIFIED"
