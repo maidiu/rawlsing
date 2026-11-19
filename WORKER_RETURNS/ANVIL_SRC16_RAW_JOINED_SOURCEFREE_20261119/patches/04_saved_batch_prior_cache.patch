@@ -1,0 +1,42 @@
+--- a/rawlsing_next/pre553_saved_workload_integration.py
++++ b/rawlsing_next/pre553_saved_workload_integration.py
+@@ -21,6 +21,7 @@
+     ExecutorBinding,
+ )
+ from rawlsing_next.pre553_issued_workload import (
++    _validate_prior_cache,
+     execute_issued_workload,
+     resume_joined_workloads,
+ )
+@@ -88,6 +89,7 @@
+     predicate_ref_by_query: Mapping[str, Any] | None = None,
+     discovery_authority_ref_by_key: Mapping[str, Any] | None = None,
+     prior_receipts: Any = (),
++    prior_outputs: Mapping[str, Any] | None = None,
+     max_units: int | None = None,
+ ) -> Any:
+     """Run the actual native Batch scheduler over one admitted saved estate."""
+@@ -135,9 +137,22 @@
+             ),
+         }
+ 
++    prior_receipts = tuple(prior_receipts)
++    if prior_outputs is not None:
++        # Reuse the existing exact native-output/prior-receipt checker.  A
++        # receipt alone is never authority to skip a completed unit.
++        _validate_prior_cache(manifest, prior_receipts, prior_outputs)
++    else:
++        # Without independently trusted prior native outputs, a completed
++        # receipt cannot be reused.  Reexecute completed units; preserve
++        # partial/absent receipts so genuine resume behavior remains intact.
++        prior_receipts = tuple(
++            receipt for receipt in prior_receipts
++            if getattr(receipt, "state", None) != "COMPLETED"
++        )
+     runner = BatchExecutionRunner(
+         manifest=manifest, repository=admission,
+-        prior_receipts=tuple(prior_receipts), saved_mode=True,
++        prior_receipts=prior_receipts, saved_mode=True,
+     )
+     if type(admission) is PreparedSavedC11Admission:
+         with admission.prepared_i03() as prepared:

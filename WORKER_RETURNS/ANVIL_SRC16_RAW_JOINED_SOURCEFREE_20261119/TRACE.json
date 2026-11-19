@@ -1,0 +1,241 @@
+{
+  "batch": {
+    "observation": "Batch COMPLETED is operational execution, not an empirical-fact or VALID_EMPTY claim; result refs are DiscoveryResultReceipt refs.",
+    "receipt_has_typed_fact_state": false,
+    "receipts": [
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "DiscoveryResultReceipt@1.0.0"
+        ],
+        "state": "COMPLETED"
+      },
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "DiscoveryResultReceipt@1.0.0"
+        ],
+        "state": "COMPLETED"
+      },
+      {
+        "execution_performed": true,
+        "result_kinds": [
+          "EmpiricalFact@1.0.0"
+        ],
+        "state": "COMPLETED"
+      }
+    ],
+    "result_refs_include_empirical_fact": true,
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "batch_api": "rawlsing_next.pre553_saved_workload_integration.execute_saved_batch",
+  "batch_prior_receipt_reuse": {
+    "all_forged_receipts_retained": false,
+    "forged_receipt_count": 3,
+    "forged_result_kind": "EmpiricalPredicate@1.0.0",
+    "native_execution_required": false,
+    "prior_cache_policy": "completed receipts filtered when no exact prior_outputs; reexecuted; forged refs not retained",
+    "returned_receipt_count": 3,
+    "reused_states": [
+      "COMPLETED",
+      "COMPLETED",
+      "COMPLETED"
+    ],
+    "summary": {
+      "actual_execution_receipts": 3,
+      "batch_state": "COMPLETED",
+      "completed_units": 3,
+      "coverage_state": "FULL_MANIFEST_COVERAGE",
+      "deferred_units": 0,
+      "failed_units": 0,
+      "full_coverage": true,
+      "pending_units": 0,
+      "populated_data_execution_claim": false,
+      "total_units": 3
+    }
+  },
+  "fixture": "existing rawlsing_next.tests.test_pre553_prepared_saved_i03._fixture",
+  "joined_path": {
+    "authority": {
+      "direct_i05": {
+        "message": "current source/operation authority refused",
+        "type": "DirectEstateError"
+      },
+      "prior_receipt_batch": {
+        "message": "current source/operation authority refused",
+        "type": "DirectEstateError"
+      }
+    },
+    "batch_prior_reuse": {
+      "all_forged_receipts_retained": false,
+      "forged_receipt_count": 3,
+      "forged_result_kind": "EmpiricalPredicate@1.0.0",
+      "native_execution_required": false,
+      "observation": "All COMPLETED prior receipts with non-result refs are accepted; execute_saved_batch has no prior-output consistency check.",
+      "returned_receipt_count": 3,
+      "reused_states": [
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED"
+      ],
+      "summary": {
+        "actual_execution_receipts": 3,
+        "batch_state": "COMPLETED",
+        "completed_units": 3,
+        "coverage_state": "FULL_MANIFEST_COVERAGE",
+        "deferred_units": 0,
+        "failed_units": 0,
+        "full_coverage": true,
+        "pending_units": 0,
+        "populated_data_execution_claim": false,
+        "total_units": 3
+      }
+    },
+    "i03_positive": {
+      "fact_count": 1,
+      "raw_denominator_support": 8,
+      "typed_state": "SUPPORTED"
+    },
+    "i05_unresolved": {
+      "first_mapping": {
+        "location": "rawlsing_next/pre553_discovery_exact.py:_terminal_fact_class / _evaluate_candidate",
+        "mapped_coverage": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+        "mapped_fact_class": "UNAVAILABLE",
+        "mapped_typed_state": "COVERAGE_LIMITED",
+        "source_states": "UNRESOLVED"
+      },
+      "native_i03_fact_states": [
+        "UNRESOLVED",
+        "UNRESOLVED"
+      ],
+      "receipt_coverage_states": [
+        "EVALUATED_UNRESOLVED"
+      ],
+      "receipt_typed_states": [
+        "COVERAGE_LIMITED"
+      ],
+      "valid_empty": false
+    },
+    "i05_valid_empty": {
+      "distinct_from_unresolved": true,
+      "native_i03_fact_states": [
+        "ZERO_SUPPORT",
+        "SUPPORTED"
+      ],
+      "receipt_coverage_states": [
+        "EVALUATED_VALID_EMPTY"
+      ],
+      "receipt_typed_states": [
+        "VALID_EMPTY"
+      ],
+      "valid_empty": true
+    },
+    "saved_batch": {
+      "observation": "Batch COMPLETED is operational execution, not an empirical-fact or VALID_EMPTY claim; result refs are DiscoveryResultReceipt refs.",
+      "receipt_has_typed_fact_state": false,
+      "receipts": [
+        {
+          "execution_performed": true,
+          "result_kinds": [
+            "DiscoveryResultReceipt@1.0.0"
+          ],
+          "state": "COMPLETED"
+        },
+        {
+          "execution_performed": true,
+          "result_kinds": [
+            "DiscoveryResultReceipt@1.0.0"
+          ],
+          "state": "COMPLETED"
+        },
+        {
+          "execution_performed": true,
+          "result_kinds": [
+            "EmpiricalFact@1.0.0"
+          ],
+          "state": "COMPLETED"
+        }
+      ],
+      "result_refs_include_empirical_fact": true,
+      "summary": {
+        "actual_execution_receipts": 3,
+        "batch_state": "COMPLETED",
+        "completed_units": 3,
+        "coverage_state": "FULL_MANIFEST_COVERAGE",
+        "deferred_units": 0,
+        "failed_units": 0,
+        "full_coverage": true,
+        "pending_units": 0,
+        "populated_data_execution_claim": false,
+        "total_units": 3
+      }
+    }
+  },
+  "original_source_accessed": false,
+  "pins": {
+    "batch_runner_sha256": "e8c110ff3a18acec0956bb47c4789312dd49e812c0643875b7a3e13a13415ab1",
+    "discovery_exact_sha256": "4afe821016a77465cdbc7fa6f492fdc93dda6bf78347ad0c7f7c812a7f575830",
+    "prepared_saved_i03_sha256": "fbc60cb65e159c820d25f70052130e1256689bf1655053ff9b0751f0e968cf78",
+    "saved_c11_admission_sha256": "93299f5c0100d132bb2bef07b321af1755726a5e90ee3b488a11dc1b6028c526",
+    "saved_workload_integration_sha256": "16d4409da80ec80520dd90f2c835877c8be2576ed66690d656d49d7b3dfc24ac",
+    "src16_handoff_sha256": "0615c7ab0b183ba5109528e61cfe34f0f37ddd5f06335c4d2a7fb220e233d8d1",
+    "src16_receipt_sha256": "2157e825f0c6c3071237cdcb7b8b5b9647ee1db8bcf4b68a2d76c73c6ba76497"
+  },
+  "positive_i03": {
+    "fact_count": 1,
+    "raw_denominator_support": 8,
+    "typed_state": "SUPPORTED"
+  },
+  "product_files_modified": false,
+  "rights_denial": {
+    "direct_i05": {
+      "message": "current source/operation authority refused",
+      "type": "DirectEstateError"
+    },
+    "prior_receipt_batch": {
+      "message": "current source/operation authority refused",
+      "type": "DirectEstateError"
+    }
+  },
+  "schema": "ANVIL_SRC16_I03_I05_BATCH_TRACE@1",
+  "sourcefree": true,
+  "status": "JOINED_SOURCEFREE_PASS__I05_UNRESOLVED_DISTINCT__BATCH_PRIOR_CACHE_GUARDED",
+  "unresolved_i05": {
+    "native_i03_fact_states": [
+      "UNRESOLVED",
+      "UNRESOLVED"
+    ],
+    "receipt_coverage_states": [
+      "EVALUATED_UNRESOLVED"
+    ],
+    "receipt_typed_states": [
+      "COVERAGE_LIMITED"
+    ],
+    "valid_empty": false
+  },
+  "valid_empty_i05": {
+    "distinct_from_unresolved": true,
+    "native_i03_fact_states": [
+      "ZERO_SUPPORT",
+      "SUPPORTED"
+    ],
+    "receipt_coverage_states": [
+      "EVALUATED_VALID_EMPTY"
+    ],
+    "receipt_typed_states": [
+      "VALID_EMPTY"
+    ],
+    "valid_empty": true
+  }
+}
