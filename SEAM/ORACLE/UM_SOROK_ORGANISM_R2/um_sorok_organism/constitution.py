@@ -117,7 +117,8 @@ def compose(constitution,access,limit=50):
                                  'not_personal_investment':True})
     for p in projects:
         if p.get('status','active')=='active':currents.append({'kind':'ONGOING_ACTIVITY','ref':p['id'],'object':p['object'],'motive':p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE'),
-            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[])})
+            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[]),
+            'latest_lived_attempt':copy(p.get('latest_lived_attempt'))})
     for fid,f in active.items():
         currents.append({'kind':f['kind'],'ref':fid,'object':f.get('object'),'actor_access':f.get('access','tacit')})
     for a in constitution.links:
