@@ -165,12 +165,16 @@ def conserve_ff01_n10e_actual_read(
         raise FF01N10ECrossreadError("N10E response-state meaning changed")
 
     exact_counts: dict[str, int] = {}
+    conditioner_domain = {canonical_json(row["cell"][condition_index]) for row in material["complete_cells"]}
+    if canonical_json(condition_value) not in conditioner_domain:
+        raise FF01N10ECrossreadError("N10E predicate value outside exact FF01 domain")
+    # Include every target-domain cell, including source-observed zeros.
+    for row in material["complete_cells"]:
+        exact_counts.setdefault(canonical_json(row["cell"][target_index]), 0)
     for row in material["complete_cells"]:
         if row["cell"][condition_index] == condition_value:
             key = canonical_json(row["cell"][target_index])
-            exact_counts[key] = exact_counts.get(key, 0) + row["raw_support"]
-    if not exact_counts:
-        raise FF01N10ECrossreadError("N10E predicate value outside exact FF01 domain")
+            exact_counts[key] += row["raw_support"]
     if comp.raw_denominator_support != sum(exact_counts.values()):
         raise FF01N10ECrossreadError("N10E condition-selected denominator differs from FF01 same-person slice")
 
