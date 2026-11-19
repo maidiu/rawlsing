@@ -61,7 +61,7 @@ def test_unpinned_cold_read_is_inspection_only_not_ff01_grant():
     bundle, anchor, _, _, _ = _ready()
     read = read_s04_cold_preimages(bundle)
     assert read.pin_grade == "INSPECT_ONLY_UNPINNED__NO_FF01_COLD_ADMISSION"
-    with pytest.raises(S04ColdCustodyError, match="pin required"):
+    with pytest.raises(S04ColdCustodyError, match="unpinned"):
         receive_ff01_from_pinned_cold(
             bundle=bundle, external_root=None,
             conditioner_index=0, producer_permission_ceiling=PERMISSIONS,
