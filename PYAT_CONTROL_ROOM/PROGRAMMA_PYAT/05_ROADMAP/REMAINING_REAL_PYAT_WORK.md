@@ -38,6 +38,31 @@
 
 **Parallel execution and ownership:** Existing real SRC04 activity may continue *if attested*; #998 selected FIABC→S05 work and #1006 physical measured repair may proceed under nonoverlapping file/lease grants; S04 estimator and FF01 full-reader scientific review can run in parallel. If FF code owner/lease or required source/estimand is unavailable, name exact `OWNER_LEASE_HOLD` or `SCIENTIFIC_METHOD_HOLD` and keep all other lawful work moving. This is not permission to invent a host session or a new scientific claim.
 
+### 3A. Implemented code capital tied to the ONE PLAN — 2026-11-18 candidate
+
+**Control:** This is an addendum *within the existing PROGRAMMA execution agenda*, not a second programme or a claim of protected receiving. The new author-code lineage is [draft PR #1149](https://github.com/maidiu/rawlsing/pull/1149) at **e0b35e30ddd61ef716da07a3704adabc07737c2a**, based on unmerged ANVIL **aab22c22c9e282ff40f970cdedab7ddfb39ecd7a**. The protected PRE-MAIN cut remains **5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e**, paired progress rev11. **No passing new runtime tests, independently authenticated #1009 lease, scientific issuance, independent G5 or protected CAS was established.**
+
+| Existing home | Written capability on #1149 | Exact remaining grade |
+| --- | --- | --- |
+| S03 / ANVIL / source and C11 | Reuse accepted direct persisted 13-family sourcefree estate, I03, I05 and Batch; new cold writer→I03→FF01 tests committed | Existing bounded ANVIL capital retained; cold integration test unexecuted, original survey source and physical cost held |
+| S04 F1/F2 descriptive distributions | **field_forge_observed_research.py** reads actual FF01 k-way joint; RAW marginals, context-conditioned and inverse conditional supports; exact reduced fractions and typed zero | AUTHOR_CODE / sample only, not design-weighted inference |
+| S04 EE07–EE08 determinicity | Same module assembles candidate predictor conditional tables on **one common fully resolved respondent risk**, including context changes; outputs no unauthorized ranks | Empirical tables AUTHOR_CODE; estimand, metric, uncertainty, multiplicity, rank stability and sampling design **SCIENCE_OWNER_HOLD** |
+| S04 F3 discovery and minorities | **field_forge_i05_role_ingress.py** selects an actual I05 executed role/receipt/fact and feeds FF01, conserving VALID_EMPTY vs DISCOVERED_RESULT_SUPPORTED. Small-cell enumeration is caller-bounded | SOURCEFREE_AUTHOR_CODE; real adaptive recursive research/selection/stopping scientific authority still held |
+| S04 F4 JOINT and S06.1 FF01 | **field_forge_generic_empirical_ingress.py** preserves real common-respondent scalar k≥2 complete cells, selected-condition vs resolved support, source/risk/roster/replay and typed negatives; GT12 Q86 ABI untouched | AUTHOR_CODE, no actual new tests passed; multiselect/repeated/weighted scopes unresolved |
+| S05 FIABC / M1/M2/B5 | No replacement; #998 retained with claim-specific learned route | Existing independent owner and G5 held; **not** mandatory for lawful direct descriptive FF01 |
+| S06.2 FF02 / N9 material power | No unsupported class/property/causal facts created; strong permission text cannot be self-minted | Source/material and structural science-owner HOLD, not solved by survey counts |
+| S07 F6 / S08 F7 independent samples/time | No false pooling or fake panel created | Cross-source and time comparability/rights HOLD |
+| S10 N10E | **field_forge_n10e_crossread.py** checks FF01's same-release conditional joint against *existing independently computed* N10E C1 possibility geometry: conditioner direction, exact source/risk, count cells, changed/restore | SOURCEFREE_AUTHOR_CODE **CROSS-READ ONLY**. It repeats I03 work and is **not** FF01-issued N10E geometry, N10W or V3 |
+| Tests / economics | 5 sourcefree new test modules, a CI workflow, and **rawlsing_next/tests/run_pyat1009_ff01_local.sh** executing new and inherited I03/I05/N10E/GT12/direct-estate tests | TESTS_COMMITTED_NOT_VERIFIED_PASS; GitHub Actions failed with no visible steps; #1006 cost and process RSS unmeasured |
+
+**No false promotion:** A real completed sourcefree producer can be an engineering result without being a representative inference, causal structural description, independently adopted scientific model, original-source right, actor/person/relationship or protected status. The new FF01 source qualifier is caller-declared and does not authenticate original respondent identity. An I05 role envelope is reconstructed from an authentic I05-retained I03 fact; it is not a newly executed independent I03 result. The N10E cross-read conserves two independently generated outputs; it is not yet economical one-pass direct FF01→N10E.
+
+**Immediate executable stop/go:** Checkout exact draft PR #1149 and run **bash rawlsing_next/tests/run_pyat1009_ff01_local.sh**. Use test logs to repair this SAME implementation lineage; an independent nonauthor then executes genuine cold same-release first-read + changed/restore/negative and resource evidence. Synchronize qualified source and code receipts into #960/#1097 and THIS existing PROGRAMMA plus paired CURRENT_PROGRESS.md/json under authorized protected CAS. **No further general survey or separate plan required.**
+
+**Current hold:** HQ_CURRENTNESS_HOLD__PR1148_UNMERGED__PR1149_UNEXECUTED__OWNER_LEASE_AND_G5_HELD__LATER_ANVIL_DHIKR_UNRECEIVED.
+
+---
+
 ### 4. Minimal science/consumer contract — actual research, not mechanically similar output
 
 - **Issued source facts:** exact source/edition/wave, country/eligible cohort, common respondent/occurrence and jointly asked risk set, actual target and conditioners, weight/design/right, typed issue/fate/absence, CURRENT, source and reader refs.
