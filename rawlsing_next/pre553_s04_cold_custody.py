@@ -300,8 +300,11 @@ def read_s04_sourcefree_private(path: str | Path) -> S04ColdBundle:
     import os
     import stat
     p = Path(path)
-    if p.is_symlink():
+    if p.is_symlink() or p.parent.is_symlink():
         raise S04ColdCustodyError("symbolic link is not a trusted sidecar")
+    if (not p.parent.is_dir()
+            or S_IMODE(p.parent.stat().st_mode) & 0o077):
+        raise S04ColdCustodyError("cold sidecar parent must be a private directory")
     try:
         flags = O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
         fd = os_open(str(p), flags)
