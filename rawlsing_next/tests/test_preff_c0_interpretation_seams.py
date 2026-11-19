@@ -12,7 +12,9 @@ from rawlsing_next._pre553_query_predicate import (
     EmpiricalQueryResolutionError, _refuse_unresolved_value_leaf,
 )
 from rawlsing_next.pre553_discovery_exact import _terminal_fact_class
-from rawlsing_next.pre553_empirical_objects import EmpiricalFact
+from rawlsing_next.tests.test_pyat1097_held_integrity_and_i05 import (
+    _partial_unresolved_fixture,
+)
 from rawlsing_next.tests.test_pyat1009_ff01_generic_ingress import _case
 
 
@@ -53,13 +55,10 @@ def test_source_declared_missing_keeps_its_distinct_typed_state():
 def test_native_i05_terminal_preserves_unknown_distinct_from_valid_empty():
     _, _, _, query, execution = _case()
     original = execution.facts[0]
-    unresolved = EmpiricalFact(
-        typed_state="UNRESOLVED",
-        authority_snapshot_refs=original.authority_snapshot_refs,
-        dependency_refs=original.dependency_refs,
-        producer_replay_locator_or_reference_root=original.producer_replay_locator_or_reference_root,
-        **dict(original.semantic_fields),
-    )
+    _, held_result = _partial_unresolved_fixture()
+    unresolved = held_result.facts[0]
+    assert unresolved.raw_denominator_support == 4
+    assert unresolved.raw_numerator_support == 3
     assert _terminal_fact_class((unresolved,)) == "UNRESOLVED"
     assert _terminal_fact_class((original, unresolved)) == "UNRESOLVED"
     assert _terminal_fact_class((original,)) is None
