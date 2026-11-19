@@ -1,0 +1,57 @@
+{
+  "bindings": {
+    "SRC04": {
+      "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+      "currentness": "CURRENT_GRANTED",
+      "decision_ref": {
+        "content_hash": "63983453d1fc9edfc2b4452ca5f48177c1d1433be8006def1795b52d50922cec",
+        "kind": "FULL_SOURCE_READ_DECISION",
+        "object_id": "urn:rawlsing:full-source-decision:SRC04:d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139"
+      },
+      "grant_sha256": "d8f13c67af276175266168e9af1a91e28fd543fcecadc1e79112a9854b4a8139",
+      "host": "USER_LOCAL_MAC",
+      "path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/SRC04_BINDING.json",
+      "purpose": "FULL_SRC04_ORIGINAL_C11_CONSTRUCTION",
+      "revocation_ref": null,
+      "sha256": "d1283b6ebb660f333efd083f479a16f65ce00b432d2956ac596a62c4f81befb0",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "status": "EXACT_MACHINE_BINDING_AVAILABLE"
+    },
+    "SRC17": {
+      "authentication_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/fixtures/SRC17_GRANT_AUTHENTICATION.json",
+      "authentication_sha256": "f7fb429bb77779556e2e0a591ea2b089bf1f0a97d85d059545baf5fd66dd052b",
+      "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+      "currentness": "CURRENT_GRANTED",
+      "decision_ref": {
+        "content_hash": "2ab9dfd5daf116988323ceb2300edee89aacbcc356e3c8407c59316a8d0faf43",
+        "kind": "USER_SOURCE_READ_DECISION",
+        "object_id": "urn:rawlsing:campaign-d2:src17:decision"
+      },
+      "grant_sha256": "d6272ba68d737fa9da27704e18bf6ee00ef1d31f685ba76f84f4a0dcc4764e3d",
+      "host": "USER_LOCAL_MAC",
+      "partial_i03_i05": true,
+      "purpose": "SECOND_FAMILY_ORIGINAL_SOURCE_C11_POSITIVE",
+      "reusable_for_src04_binding": false,
+      "revocation": "NONE_RECORDED",
+      "scope_receipt_path": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118/SRC17_SCOPE.json",
+      "scope_receipt_sha256": "57a5ae790076e57072bc226979aa2940316d8fbc58b18b3eea1bdd0f008152e5",
+      "source_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "status": "EXACT_MACHINE_BINDING_AVAILABLE_PARTIAL_C11_ONLY"
+    }
+  },
+  "refused_inferences": [
+    "filesystem presence or custody is not permission",
+    "sourcefree TEST_ONLY fixture existence is not source permission",
+    "historical/superseded grants are not current grants",
+    "SRC17 construction-only grant is not reusable for SRC04 or I03/I05"
+  ],
+  "runner_inputs": {
+    "candidate_patch": "OWNER/WORKER_RETURNS/ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_20261118/candidate.patch",
+    "candidate_tree": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
+    "compact_operator": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118",
+    "operator_head": "0bdda6428654fd949196dd8d46e428b83ed42f0d",
+    "real_source_launch": "NOT_PERFORMED__REQUIRES_AUTHORIZED_SOURCE_GRANT_AND_CURRENT_RESOLVER"
+  },
+  "schema": "ANVIL_ALL35_MACHINE_BINDING_INDEX@1",
+  "scope": "Existing exact local source-read/C11 consent only; no new grant, no source read, no Q2 issuance."
+}
