@@ -279,9 +279,108 @@ def ask_unissued_comparative_ranking(
     return ExactDescriptiveResearchAnswer(canonical_json(answer), semantic_hash(answer))
 
 
+
+def assemble_comparable_predictor_tables(
+    *,
+    received: FF01ObservedJoint,
+    target_index: int,
+    candidate_indices: Sequence[int],
+    outer_context: Mapping[int, Any],
+) -> ExactDescriptiveResearchAnswer:
+    """Materialize *comparable RAW conditional evidence*, not a determinicity rank.
+
+    All candidate tables use the same FULLY RESOLVED k-way I03 joint and same
+    outer conditioning predicate. This avoids comparing percentages with
+    silently different asked/eligible subsets while preserving that such a
+    sample is not automatically representative of its population.
+    """
+    m = _source_joint(received)
+    arity = m["joint_arity"]
+    if type(target_index) is not int or not (0 <= target_index < arity):
+        raise ObservedResearchError("target must be exact joint dimension")
+    if isinstance(candidate_indices, (str, bytes)) or not isinstance(candidate_indices, Sequence):
+        raise ObservedResearchError("candidate indices must be exact sequence")
+    candidates = tuple(candidate_indices)
+    if not candidates or any(
+        type(i) is not int or i == target_index or not (0 <= i < arity) for i in candidates
+    ) or len(candidates) != len(set(candidates)):
+        raise ObservedResearchError("invalid or repeated candidate predictor index")
+    candidates = tuple(sorted(candidates))
+    if not isinstance(outer_context, Mapping):
+        raise ObservedResearchError("outer_context must map exact dimension indices")
+    context = _selected_indices(outer_context, arity, target_index)
+    if any(i in candidates for i, _ in context):
+        raise ObservedResearchError("outer_context cannot preselect a candidate predictor")
+    normalized_context = dict(context)
+
+    baseline = ask_exact_descriptive_support(
+        received=received, target_index=target_index,
+        conditions=normalized_context,
+    )
+    base = baseline.material()
+    tables = []
+    if m["producer_state"] == "SUPPORTED":
+        for idx in candidates:
+            state_map: dict[str, Any] = {}
+            for cell in m["complete_cells"]:
+                state = cell["cell"][idx]
+                state_map[canonical_json(state)] = state
+            parts = []
+            for state_key, state in sorted(state_map.items()):
+                answer = ask_exact_descriptive_support(
+                    received=received,
+                    target_index=target_index,
+                    conditions={**normalized_context, idx: state},
+                )
+                payload = answer.material()
+                parts.append({
+                    "predictor_state": state,
+                    "question_conditioned_research_ref": answer.ref.as_dict(),
+                    "raw_fully_resolved_condition_n": payload["condition_fully_resolved_n"],
+                    "response_cells": payload["complete_case_cells"],
+                })
+            if sum(x["raw_fully_resolved_condition_n"] for x in parts) != base["condition_fully_resolved_n"]:
+                raise ObservedResearchError("predictor partition does not conserve common-context support")
+            tables.append({
+                "candidate_index": idx,
+                "candidate_ref": m["target_refs"][idx],
+                "predictor_states": parts,
+                "partition_sum_equals_common_context": True,
+            })
+
+    answer = {
+        "contract": CONTRACT,
+        "kind": "COMPARABLE_RAW_PREDICTOR_EVIDENCE_NO_ESTIMATOR",
+        "state": (
+            "SCIENTIFIC_METHOD_OWNER_HOLD__COUNTS_AVAILABLE"
+            if m["producer_state"] == "SUPPORTED"
+            else STATE_BLOCKED
+        ),
+        "source_ff01_ref": received.ref.as_dict(),
+        "source_release_ref": m["release_ref"],
+        "source_universe_ref": m["universe_ref"],
+        "source_risk_set_ref": m["risk_set_ref"],
+        "target_index": target_index,
+        "target_ref": m["target_refs"][target_index],
+        "outer_context": [
+            {"index": i, "ref": m["target_refs"][i], "state": value}
+            for i, value in context
+        ],
+        "common_context_answer_ref": baseline.ref.as_dict(),
+        "common_complete_case_n": base["condition_fully_resolved_n"],
+        "source_eligible_n_not_necessarily_full_cases": m["raw_eligible_condition_denominator"],
+        "predictor_tables": tables,
+        "ranked_results": None,
+        "scientific_selection_status": "ESTIMAND_VARIANCE_AND_POSTSELECTION_OWNER_HELD",
+        "denominator_grade": ESTIMAND,
+        "limits": list(UNISSUED_SCIENCE),
+    }
+    return ExactDescriptiveResearchAnswer(canonical_json(answer), semantic_hash(answer))
+
+
 __all__ = [
     "CONTRACT", "STATE_SUPPORTED", "STATE_ZERO", "STATE_BLOCKED",
     "ObservedResearchError", "ExactDescriptiveResearchAnswer",
     "ask_exact_descriptive_support", "ask_observed_minor_cell_candidates",
-    "ask_unissued_comparative_ranking",
+    "ask_unissued_comparative_ranking", "assemble_comparable_predictor_tables",
 ]
