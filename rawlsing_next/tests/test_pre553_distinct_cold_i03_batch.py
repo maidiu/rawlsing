@@ -1,4 +1,3 @@
-from rawlsing_next.pre553_empirical_objects import exact_ref
 """Sourcefree native cold estate 1/10/100 DISTINCT question-role operations.
 
 Existing I03, not another evaluator. Test selector-based native cold parity,
@@ -7,6 +6,8 @@ High-width original-source/100k/6GiB economics separately held.
 """
 from dataclasses import replace
 from pathlib import Path
+
+from rawlsing_next.pre553_empirical_objects import exact_ref
 
 import pytest
 
