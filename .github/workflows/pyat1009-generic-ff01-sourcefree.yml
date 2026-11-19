@@ -32,6 +32,9 @@ jobs:
         run: |
           python -B -m pytest -q -o addopts='' -p no:cacheprovider \
             rawlsing_next/tests/test_pyat1009_ff01_generic_ingress.py \
+            rawlsing_next/tests/test_pyat1009_ff01_observed_research.py \
+            rawlsing_next/tests/test_pyat1009_ff01_i05_role_ingress.py \
+            rawlsing_next/tests/test_pyat1009_ff01_n10e_crossread.py \
             rawlsing_next/tests/test_pyat1009_ff01_cold_direct_estate.py \
             --junitxml=ff01-generic-sourcefree.xml
       - name: Existing I03 and specialized GT12 FF01 nonregression
