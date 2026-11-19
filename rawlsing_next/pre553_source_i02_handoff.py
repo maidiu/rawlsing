@@ -55,6 +55,7 @@ from rawlsing_next.pre553_c11_integrity import TypedAbsence
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact,
     ExactRef,
+    AuthorityRef,
     RespondentEvent,
     WeightMeasureFact,
     canonical_json,
@@ -83,6 +84,9 @@ from rawlsing_next.pre553_r157_projection_adapter import (
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
+    RESPONSE_OWNER_FAMILY,
+    COORDINATE_OWNER_FAMILY,
+    WEIGHT_OWNER_FAMILY,
     ResponseValueRule,
     SourceBackedC11FacadeError,
     _cell_key,
@@ -382,6 +386,7 @@ def _unmapped_event_with_physical_missingness(
     raw_rule: ResponseValueRule,
     occurrence: Any,
     projection: GovernedC11Projection,
+    owner_authority_refs: tuple[AuthorityRef, ...] = (),
 ) -> RespondentEvent:
     """Retain source missingness without changing any previously mapped event.
 
@@ -393,7 +398,7 @@ def _unmapped_event_with_physical_missingness(
     """
     original = _event(
         source_sha256, row_ordinal, respondent, slot, cell,
-        raw_rule, occurrence, projection,
+        raw_rule, occurrence, projection, owner_authority_refs,
     )
     fields = dict(original.semantic_fields)
     fields["uninterpreted_physical_missing_state"] = cell.missing_state.value
@@ -427,6 +432,7 @@ def _project_spooled_families(
     response = {slot.slot.key: slot for slot in projection.response_slots}
     coordinate = {slot.slot.key: slot for slot in projection.coordinate_slots}
     weight = {slot.slot.key: slot for slot in projection.weight_slots}
+    owner_sets = {slot.slot.key: slot for slot in projection.slot_owner_sets}
     projected = set(response) | set(coordinate) | set(weight)
     seen: dict[tuple[int, str], set[int]] = {key: set() for key in projected}
     handles = {
@@ -462,8 +468,13 @@ def _project_spooled_families(
             seen[key].add(cell.row_ordinal)
             respondent = respondent_by_ref[rows[cell.row_ordinal]]
             physical_key = _cell_key(cell)
+            owner_set = owner_sets.get(key)
             if key in response:
                 slot = response[key]
+                response_auths = (
+                    owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY)
+                    if owner_set is not None else ()
+                )
                 rule = {item.physical_key: item for item in slot.values}.get(physical_key)
                 if rule is None:
                     # Preserve the exact physical cell in C11's existing
@@ -490,6 +501,7 @@ def _project_spooled_families(
                                 respondent=respondent,
                                 slot=slot, cell=cell, raw_rule=raw_rule,
                                 occurrence=occurrence, projection=projection,
+                                owner_authority_refs=response_auths,
                             ),
                         )
                         slot_counts[("RespondentEvent", key)] += 1
@@ -504,6 +516,7 @@ def _project_spooled_families(
                             _event(
                                 incidence.source_sha256, cell.row_ordinal, respondent,
                                 slot, cell, rule, occurrence, projection,
+                                response_auths,
                             ),
                         )
                         slot_counts[("RespondentEvent", key)] += 1
@@ -516,6 +529,8 @@ def _project_spooled_families(
                     _coordinate(
                         incidence.source_sha256, cell.row_ordinal, respondent,
                         slot, cell, rule, projection,
+                        owner_set.authority_refs_for(COORDINATE_OWNER_FAMILY)
+                        if owner_set is not None else (),
                     ),
                 )
                 slot_counts[("EmpiricalCoordinateFact", key)] += 1
@@ -528,6 +543,8 @@ def _project_spooled_families(
                     _weight(
                         incidence.source_sha256, cell.row_ordinal, respondent,
                         slot, cell, rule, projection,
+                        owner_set.authority_refs_for(WEIGHT_OWNER_FAMILY)
+                        if owner_set is not None else (),
                     ),
                 )
                 slot_counts[("WeightMeasureFact", key)] += 1
