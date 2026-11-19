@@ -3,6 +3,7 @@ import pytest
 
 from rawlsing_next.field_forge_observed_research import (
     ObservedResearchError,
+    assemble_comparable_predictor_tables,
     ask_exact_descriptive_support,
     ask_observed_minor_cell_candidates,
     ask_unissued_comparative_ranking,
@@ -134,3 +135,52 @@ def test_descriptive_result_is_immutable_detached_and_identity_verifiable():
     assert answer.ref == ask_exact_descriptive_support(
         received=observed, target_index=1, conditions={0: "1"},
     ).ref
+
+
+def test_same_respondent_comparative_predictor_tables_share_identical_context_n():
+    observed = _real()
+    bundle = assemble_comparable_predictor_tables(
+        received=observed, target_index=2,
+        candidate_indices=(0, 1), outer_context={},
+    )
+    m = bundle.material()
+    assert m["state"] == "SCIENTIFIC_METHOD_OWNER_HOLD__COUNTS_AVAILABLE"
+    assert m["common_complete_case_n"] == 4
+    assert m["ranked_results"] is None
+    assert len(m["predictor_tables"]) == 2
+    assert all(
+        sum(row["raw_fully_resolved_condition_n"] for row in table["predictor_states"]) == 4
+        for table in m["predictor_tables"]
+    )
+    assert bundle.ref == assemble_comparable_predictor_tables(
+        received=observed, target_index=2,
+        candidate_indices=(1, 0), outer_context={},
+    ).ref
+
+
+def test_conditioning_context_changes_predictor_evidence_without_ranking():
+    observed = _real()
+    x0 = assemble_comparable_predictor_tables(
+        received=observed, target_index=2,
+        candidate_indices=(1,), outer_context={0: "0"},
+    )
+    x1 = assemble_comparable_predictor_tables(
+        received=observed, target_index=2,
+        candidate_indices=(1,), outer_context={0: "1"},
+    )
+    assert x0.ref != x1.ref
+    assert x0.material()["common_complete_case_n"] == x1.material()["common_complete_case_n"] == 2
+    first_x0 = x0.material()["predictor_tables"][0]["predictor_states"][0]
+    first_x1 = x1.material()["predictor_tables"][0]["predictor_states"][0]
+    assert first_x0["response_cells"] != first_x1["response_cells"]
+    assert x0.material()["ranked_results"] is None
+    assert x1.material()["ranked_results"] is None
+
+
+def test_comparative_evidence_refuses_selected_candidate_as_outer_context():
+    observed = _real()
+    with pytest.raises(ObservedResearchError, match="preselect"):
+        assemble_comparable_predictor_tables(
+            received=observed, target_index=2,
+            candidate_indices=(0, 1), outer_context={0: "0"},
+        )
