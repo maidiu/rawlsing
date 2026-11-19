@@ -472,7 +472,7 @@
     "dhikr_author_head_observed": "a3e2a4ed5e2de2477d344e709a3111bc1d7fd7dc",
     "scientific_method_owner": "HELD_NOT_ISSUED",
     "independent_review": "PENDING",
-    "currentness": "HQ_CURRENTNESS_HOLD__S04_177_GREEN_X2__FF01_S04_INDEPENDENT_HOSTILE_189_LOCAL_EDITED_PASS_EXACT_HEAD_NOT_RETESTED__SOURCE_SCIENCE_G5_PROTECTED_HELD",
+    "currentness": "HQ_CURRENTNESS_HOLD__SOURCEFREE_1151_EXACT_189_PASS__PR1152_NEW_CODE_UNEXECUTED__SOURCE_SCIENCE_LEASE_G5_CAS_HELD",
     "protected_owner_cas": "NOT_ATTEMPTED",
     "host_native_tests": "NOT_RUN",
     "archive_movement": "NOT_PERFORMED__PRIORITY_SUPERSESSION_ONLY_AFTER_INDEPENDENT_REVIEW_AND_PROTECTED_CAS",
@@ -591,6 +591,54 @@
         "SCIENCE_ESTIMAND_VARIANCE_RANK_RECURSION_UNISSUED",
         "PROTECTED_REV11_CAS_NOT_ATTEMPTED"
       ]
+    },
+    "s04_cold_savage_20261119": {
+      "pr": 1152,
+      "code_head": "2fe541d0773f0f0ccb761d5e99e4f216dd102ad9",
+      "base_1151": "17d66e7ee1683275b10695d617040bd3ba7b48f1",
+      "actual_implemented": [
+        "PRIVATE_SOURCEFREE_EXACT_I03_QUERY_FACT_S04_PREIMAGE_CONTENT_ADDRESSED_COLD_REPLAY",
+        "EXTERNAL_EXACT_QUERY_FACT_RELEASE_PIN_REQUIRED_FOR_FF01_COLD_CONSUMER__NOT_SOURCE_ISSUER",
+        "S04_1_10_100_CONTEXT_BATCH__COMMON_RISK_EXACT_DUPLICATE_REUSE",
+        "SINGLE_EXISTING_I03_EXECUTION__S04_FIRST__OPTIONAL_BATCH__EXISTING_FF01_ABI",
+        "SOURCEFREE_EXPLICIT_ASSERTION_PRIVACY_0700_DIR_0600_FILE_AND_ATOMIC_HARDLINK"
+      ],
+      "incoming_proof": {
+        "parent_1151": {
+          "head": "17d66e7ee1683275b10695d617040bd3ba7b48f1",
+          "passed": 189,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "exit": 0,
+          "xml_seconds": 37.356,
+          "archive_sha256": "ef20a6268d050ee0e5b39c55d1728b8a0085bb519288390c6918e07fd00a9ccc"
+        },
+        "codex_overlay": {
+          "code_head": "a0e68e349afe0414ef2ebfbb91d4c8ffd3f848b2",
+          "c11_head": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+          "passed": 177,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "exit": 0,
+          "xml_seconds": 26.188,
+          "archive_sha256": "6b6efa0a39a24c5954d0b9515a45797373aff30233f0594532e0405544fc8d6d"
+        },
+        "classification": "USER_EXECUTED_SOURCEFREE_ANCESTOR_PROOF__NOT_NEW_1152_TESTS"
+      },
+      "new_tests": "CODE_COMMITTED_NOT_RUN",
+      "exact_local_command": "EXPECTED_PYAT_S04_COLD_HEAD=2fe541d0773f0f0ccb761d5e99e4f216dd102ad9 bash rawlsing_next/tests/run_pyat_s04_cold_marathon_local.sh",
+      "codex_compat_command": "bash rawlsing_next/tests/check_pyat_s04_cold_against_codex.sh b3dd74d16c71f9f63b10510af041ec83a1b5c3de 2fe541d0773f0f0ccb761d5e99e4f216dd102ad9",
+      "exact_return": "WORKER_RETURNS/PYAT_S04_COLD_CUSTODY_SAVAGE_20261119/REVIEW_REPAIR_ADVANCE_REVEAL.md",
+      "source_rights": "NO_NATIVE_ORIGINAL_SOURCE_ADMISSION__SOURCEFREE_ASSERTION_CALLER_NOT_ATTESTED",
+      "science_rights": "DETERMINICITY_RANK_VARIANCE_RECURSIVE_DISCOVERY_STOPPING_NOT_ISSUED",
+      "native_equivalence": "CODEX_B3DD_COLD_ROUTING_DIVERGENCE__NEW_OVERLAY_TEST_NOT_RUN",
+      "trust_anchor": "EXTERNAL_EXACT_ROOT_PIN_MATCH_NOT_ORIGINAL_SURVEY_ISSUER_ATTESTATION",
+      "FF01_default": "LEGACY_DIRECT_ROUTE_UNCHANGED__S04_FIRST_ALTERNATIVE_AUTHOR_CODE",
+      "G5": "NO_DISTINCT_REVIEW_OF_1152",
+      "owner_lease": "NOT_ATTESTED",
+      "protected_receiving": "NOT_ATTEMPTED"
     }
   }
 }
