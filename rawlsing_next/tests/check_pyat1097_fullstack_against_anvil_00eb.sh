@@ -62,9 +62,9 @@ files=(
 # MUST be overlaid, otherwise this compatibility court would RED due to
 # a missing test rather than testing actual native-C11 compatibility.
 runner_tests="$(git show "$CODE:rawlsing_next/tests/run_pyat1097_fullstack_review_local.sh" | awk '
-  /^tests=\\($/ { in_tests=1; next }
-  in_tests && /^\\)/ { exit }
-  in_tests && /^[[:space:]]+rawlsing_next\\/tests\\// {
+  /^tests=\($/ { in_tests=1; next }
+  in_tests && /^\)/ { exit }
+  in_tests && /^[[:space:]]+rawlsing_next\/tests\// {
     gsub(/^[[:space:]]+|[[:space:]]+$/, "", $0); print
   }
 ')"
