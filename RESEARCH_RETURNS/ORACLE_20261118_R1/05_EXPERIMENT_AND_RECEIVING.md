@@ -1,0 +1,57 @@
+# Measurements, competing predictions and next operation
+
+## What executed
+
+On the oldMac checkout, the logical C11 fixture builder created two distinct four-respondent releases. For each, the existing I03 evaluator computed three unary, three pairwise and one three-target RAW fact over the common eligible population. The binary questions are fictional. Their conjunction represents simultaneous availability, authorization and timely arrival under the fixture definition. In deployment these require independently qualified employer, time and travel data. Every unary count of a one was two. Each ordered pair had one observation in each of its four cells. The all-ones cell of the three-way fact had zero observations in one release and one in the other. The ordinary pairwise reconstruction would miss the distinction.
+
+Python enumerated every assignment of the resulting eligible slots to a network of size two in the same four-person roster. Zero was attainable in both worlds. One was attainable only in the second. There are no modeled weights on these permutations. The enumeration proves sharp set membership in this finite case. Inspect the raw cells, fact and release references in 04_results.json. A fresh Python process reproduced the file byte for byte.
+
+Run from the repository root:
+
+```sh
+PYTHONPATH=. python3 RESEARCH_RETURNS/ORACLE_20261118_R1/03_opportunity_bounds.py
+PYTHONPATH=. python3 -m pytest -p no:cacheprovider -q rawlsing_next/tests/test_pre553_empirical_query.py -k 'k_way_parity_full_joint or missing_exact_c11_release or shared_i03_rejects_allow_authority_missing_fact_family'
+```
+
+All three pre-existing tests passed. They cover the exact joint, unavailable release and wrong authorization family. They predate this experiment. The bounds, mechanism proposal and interpretation have author evidence only.
+
+Separately, on the same code cut, the ordinary P6 CLI ran in a fresh temporary state directory with model transport unset. Each command opened the state in a new process. `new` and `view` returned workshop clock 248. `wait 1` advanced it to 249 and publicly displayed “Nadia makes a repair.” The next `view` recovered that event at clock 249. A player can exercise the underlying scene locally:
+
+```sh
+scene_dir=$(mktemp -d)
+runner=WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py
+PYTHONPATH=. python3 "$runner" --state "$scene_dir" new
+PYTHONPATH=. python3 "$runner" --state "$scene_dir" wait 1
+PYTHONPATH=. python3 "$runner" --state "$scene_dir" view
+```
+
+The sourcefree P6 interaction supplies an actual place for a future encounter. Today's actor never received an I03-derived offer. Merely calling “wait” in proportion to K would give the researcher control of the actor's opportunities and falsely imply a historical mechanism.
+
+## What would distinguish the explanations
+
+**Forward process.** Before a shift, freeze institutional rules, independent rosters, commitments and the actor's prior accessible events. At event time generate feasible coworkers, allow each to initiate or decline, record delivery before the deadline, and independently record release by the person with authority. Preserve refused attempts and wage consequences. Only then can actual caregiving time or the identity of the available caregiver change. A child can experience the caregiver's return, absence or changed routine. Later, after repeated accessible handoffs, a hypothesis is that the child may anticipate which adult to approach before language is available. An unobserved handoff leaves no direct trace of the workplace exchange in the child. Missing developmental authority yields NOT_EVALUATED. Adult explanations require separate language and reflective access.
+
+**Backward inference.** Pooling whole respondents within one source, period and correctly administered instrument constrains distributions of expressed positions. To condition fictional histories, hold public answers such as endorsement of dependable work and family care equal across histories. Consider one history of manager-only release and another of repeated peer substitutions supported by a collective roster. Both can produce those answers. In the former, the parent's attempts might track a named manager, in the latter a practice that another worker can carry. Hold the generation law fixed and record what the actor actually witnessed. Select either history before prospective play with its status as a fictional scenario. For purposes of calibration, administer the questionnaire as a later observation with its own wording, reporting context and refusal options. Neither earlier endorsements nor successful reproduction of them identify the actual historical mixture.
+
+**A discriminating prediction needs overlap.** Suppose the same authorized person made every observed offer. A policy storing named-person experience and a policy storing the role's transferability can agree on every past acceptance and every elicited answer, yet disagree on a new authorized coworker's first offer. Relabeling all people consistently cannot separate them. A role change within a familiar coworker and a carrier change within the same role break those two correlations separately. Include ordinary same-person/same-role repeats and costly offers as controls. If such contrasts never occurred, the incremental prediction is unidentified even with a perfect response table. An episodic policy permitted to infer roles from events might reproduce both predictions. In that case compare held-out accuracy, storage, time and replay under matched information and compute before retaining a separate PFF relation.
+
+**Collect the missing observation.** With consent and appropriate source rights, link a time diary, shift roster, actual approval authority, who offered, who could hear/read it, the reply, release, pay consequence and the child's separately observed experience. Enroll eligible shifts before offers occur, including shifts with zero offers. A willing helper often approaches a parent expected to accept. Restricting to unsolicited offers would therefore select on anticipated uptake. For a prospective test use already qualified, willing helpers in a voluntary simulation of a relief offer, counterbalance messenger and public authorization, hold feasible coverage and cost fixed, and independently record the parent's first attempt. Real-world validation needs separate recruitment, consent and assumptions about selection and assignment. Repeated eligible shifts are clustered within workers and workplaces. Split by workplace or household before model fitting. Prespecify held-out loss for attempted transfer and separately for completed release. Report uncertainty and supported strata. A prospective gain predicts an action in that setting. Testing the formation rule additionally requires observations before and after new transfer experiences, with selection into them addressed.
+
+Evidence for choosing this historical relation comes from research on service-sector work. In a sample of 3,653 parents, unpredictable schedules were associated with more complicated care arrangements and greater reliance on informal care. This motivates measuring care arrangements and third parties separately. The results give no historical frequency for our proposed role learning, no individual parenting prediction, and no automatic transfer to another setting. [Harknett, Schneider & Luhr, Social Problems](https://academic.oup.com/socpro/article-abstract/69/1/164/5905573)
+
+## Where the first transfer stops
+
+| Stage | First owner and consumer | Disposition |
+|---|---|---|
+| Source event to complete eligible joint | C11 fixture builder to `execute_empirical_query` to exact cell projection | Four-person RAW populations, sourcefree executed. The fixture's tags have no authority over actual workers. |
+| Joint to feasible social field | Experiment reads returned count and same-roster size to bound the intersection | Executed through the bounds. Actual historical network, slot timing and objectively qualified rights need PYAT source/structural owners. |
+| Field to a particular offer | World owner needs a dated, lawfully related coworker who is free and entitled and actually chooses to offer. SOROK actor owner controls perception and decision. | First missing input at the examined boundary. N10E can supply a positioned possibility. Its public possibility cannot name a contact or admit an offer. Institution and coworker retain independent power to refuse. |
+| Admitted act to perceived consequence | `run_p6.experience` reads committed objects, routes to action, then calls situated reconsideration under its sensory/access conditions. | Existing independent bench activity executed locally. The examined house command surface supplies no relief-transfer operation for these facts. |
+| Experience to durable change and later act | CAN-011 practice/mediator and CAN-010 expectation, ADP-016 trace and ADP-017 accessible claim, with qualified Rule A/T | Proposed contrast-based L, forward T after commitment, bounded contextual memory vs sparse role relation R. Later first test is whom the parent asks on a new shift. The child's acquired expectation, an adult's stated reasons and the employer's actual permission need distinct readers. |
+| Product to human effect | Continuing user encounter and subsequent independent consented evaluation | Existing sourcefree scene ran. Proposed shift episode unbuilt. No human participant or effect result. |
+
+If the helper's message arrives after the decision, freeze all other direct and indirect paths and require the earlier attempt to replay unchanged. Change the employer's real sanction while holding expressed opinion fixed and examine attempted and completed transfers separately. Remove access to the exchange while preserving the caregiver's actual earlier return and permit the child to encounter only the return. Omit the learning issuer and require NOT_EVALUATED. Restore the dated world, draws and rights and require the same event identities and visibility. These are future acceptance tests for the selected owner, beyond the three executed producer tests.
+
+For scale, the analytic count bounds require constant work after a valid joint is available. Roster identity and time intersection can use the existing selected world's event and contact records. The factorial enumeration in the proof is confined to four synthetic slots. The proof makes no new 100k, 6 GiB or household-year performance claim. A source-specific external roster and authorization of its link are indispensable before treating the same-roster assumption as empirical.
+
+**Receiving.** Live protected head matched the dossier's 5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e. PR 1144 matched the frozen 24dfbb4f126c570f47b8b5918a60acfd145690b8. The native I03 evaluator and P6 runner had blobs b72b469e6646b88e4e2ed4dbbf0f3c209557fd69 and 044a3e11e9b21849df52b62d7e4e5646c56756e2 respectively. No changes appeared between those cuts for the tested empirical query module, fixture module or P6 folder. Mechanical grade is sourcefree execution of two separate paths. The cross-owner reader and historical mediator remain proposed. POP, DEV and TRANS for the proposed mechanism are untested. Human effect, scientific issuance, native rights and sealed cold accession remain open. The next lawful decision is whether the world and source owners can supply a dated reachable roster and a first offer with a separately observed response.

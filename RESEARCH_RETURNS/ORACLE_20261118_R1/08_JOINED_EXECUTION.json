@@ -1,0 +1,216 @@
+{
+  "grade": "SOURCEFREE_RESEARCH",
+  "observations": {
+    "recognized": [
+      "1",
+      "1"
+    ],
+    "imposed": [
+      "1",
+      "0"
+    ],
+    "no_record": [
+      "1",
+      "0"
+    ]
+  },
+  "calibration": {
+    "recognized": {
+      "mode": "joint_check",
+      "expression_hash": "e3aaaa54ffe56447a07e1df16e2b1842b2694710df70525d6c40ea04580bbbaf",
+      "formation": "P3_PSYCH:eae11c9a56a36a4f3e549ce11a048e7f9c8dd6adddfae15764241446a2518893",
+      "readset": [
+        "2bbb4e8c24194935f44e44bfe713c4898112b180e14acdd10a4eda356d213a5f",
+        "55df4e9644e7abb5f1370a9beac148b5fcbdbe1fec02c1a21b43787a1903a461",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+        "203dd17a4871854674668a9b36ecb6f6e89ec01237c4ce1db3bb6eb6dd6b2718"
+      ],
+      "invitation": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685"
+    },
+    "imposed": {
+      "mode": "private_check",
+      "expression_hash": "6fb6d05a6890d5252559627f069f2f68da88b84a2859edf55a73fb76e30b908d",
+      "formation": "P3_PSYCH:7ea5fdc5ed9f74abe4755d6d922df90f566ec770a5de77ee68de9c0cf38ab869",
+      "readset": [
+        "2bbb4e8c24194935f44e44bfe713c4898112b180e14acdd10a4eda356d213a5f",
+        "55df4e9644e7abb5f1370a9beac148b5fcbdbe1fec02c1a21b43787a1903a461",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+        "e9c67b78e20d98296d06cca3f14b460c8d86691c4110f28a17f3fe9182456474"
+      ],
+      "invitation": null
+    },
+    "no_record": {
+      "mode": "inspect_alone",
+      "expression_hash": "74bcc09bf34046b96a9d8949a95a44a35d1f1d303cdb2985430c45c3906da769",
+      "formation": "P3_PSYCH:3237324c13a66908d49a5bfa1fab38377395515cdb1925dfc0f9c70b1993e8c6",
+      "readset": [
+        "2bbb4e8c24194935f44e44bfe713c4898112b180e14acdd10a4eda356d213a5f",
+        "55df4e9644e7abb5f1370a9beac148b5fcbdbe1fec02c1a21b43787a1903a461",
+        "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+        "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+        "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+        "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938"
+      ],
+      "invitation": null
+    }
+  },
+  "runs": [
+    {
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-edge-protocol-1",
+        "content_hash": "d4629094b351b0ce02a512d4337b0633401a0d54c4f7cb1881841fd7d44d623e"
+      },
+      "query": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:1b57d114b936f0d0434fca7ebf55a46203000ea5ffd5e8580318921d8283fcd6",
+        "content_hash": "1b57d114b936f0d0434fca7ebf55a46203000ea5ffd5e8580318921d8283fcd6"
+      },
+      "fact": {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:89537abb528f455659c645ee5feac30313c2f8bcc3e8988c9421cf9eaf48ba50",
+        "content_hash": "89537abb528f455659c645ee5feac30313c2f8bcc3e8988c9421cf9eaf48ba50"
+      },
+      "ordered_targets": [
+        "replied",
+        "invited"
+      ],
+      "cell_mass": {
+        "00": "0",
+        "01": "0",
+        "10": "3/4",
+        "11": "1/4"
+      },
+      "history_mass": {
+        "recognized": "1/4",
+        "imposed": "3/8",
+        "no_record": "3/8"
+      },
+      "private_check_sharp_bounds": [
+        "0",
+        "3/4"
+      ],
+      "draw_seed": 7,
+      "extremal_whole_root_weights": [
+        {
+          "recognized": "1/4",
+          "imposed": "0",
+          "no_record": "3/4"
+        },
+        {
+          "recognized": "1/4",
+          "imposed": "3/4",
+          "no_record": "0"
+        }
+      ],
+      "also_requiring_half_imposed_hypothetically": [
+        "1/2",
+        "1/2"
+      ],
+      "path": [
+        "start",
+        "remaining",
+        "imposed"
+      ],
+      "live_cell": [
+        "1",
+        "0"
+      ],
+      "live": {
+        "mode": "private_check",
+        "expression_hash": "6fb6d05a6890d5252559627f069f2f68da88b84a2859edf55a73fb76e30b908d",
+        "formation": "P3_PSYCH:10c131813d82b8c6ded36b239365de88e32620548950bc8fdf294d7ee1307a96",
+        "readset": [
+          "2bbb4e8c24194935f44e44bfe713c4898112b180e14acdd10a4eda356d213a5f",
+          "55df4e9644e7abb5f1370a9beac148b5fcbdbe1fec02c1a21b43787a1903a461",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+          "6d5886eff99607bcd100f1b13ccdf363e9ba5715fcb56a1a8378069f2562d9f5"
+        ],
+        "invitation": null
+      }
+    },
+    {
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-edge-protocol-3",
+        "content_hash": "95452a8ff86ced8cf8092ade3f4a39f7da41ceedb8c9978e7da69fc593078417"
+      },
+      "query": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:773ad9deb0fe7999bdf958fcc889b8ffc2a63f23dde9103473b5c531088eaf63",
+        "content_hash": "773ad9deb0fe7999bdf958fcc889b8ffc2a63f23dde9103473b5c531088eaf63"
+      },
+      "fact": {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4385081c9e26bc8b2fcd3c00ec1c346c556f7d90643e3c5c4ad34c3de1958daa",
+        "content_hash": "4385081c9e26bc8b2fcd3c00ec1c346c556f7d90643e3c5c4ad34c3de1958daa"
+      },
+      "ordered_targets": [
+        "replied",
+        "invited"
+      ],
+      "cell_mass": {
+        "00": "0",
+        "01": "0",
+        "10": "1/4",
+        "11": "3/4"
+      },
+      "history_mass": {
+        "recognized": "3/4",
+        "imposed": "1/8",
+        "no_record": "1/8"
+      },
+      "private_check_sharp_bounds": [
+        "0",
+        "1/4"
+      ],
+      "draw_seed": 7,
+      "extremal_whole_root_weights": [
+        {
+          "recognized": "3/4",
+          "imposed": "0",
+          "no_record": "1/4"
+        },
+        {
+          "recognized": "3/4",
+          "imposed": "1/4",
+          "no_record": "0"
+        }
+      ],
+      "also_requiring_half_imposed_hypothetically": "incompatible constraints on supplied world library",
+      "path": [
+        "start",
+        "recognized"
+      ],
+      "live_cell": [
+        "1",
+        "1"
+      ],
+      "live": {
+        "mode": "joint_check",
+        "expression_hash": "e3aaaa54ffe56447a07e1df16e2b1842b2694710df70525d6c40ea04580bbbaf",
+        "formation": "P3_PSYCH:9f155be418cb9eb5962aed183b26e2a333e7560443f90f94b0e4dbd6bf745623",
+        "readset": [
+          "2bbb4e8c24194935f44e44bfe713c4898112b180e14acdd10a4eda356d213a5f",
+          "55df4e9644e7abb5f1370a9beac148b5fcbdbe1fec02c1a21b43787a1903a461",
+          "7a74d44887d64fe288f12d7c63c1683d1c0b468576fa665fd1f11ac2f0542a3d",
+          "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+          "1cf1b6e7290a670159aebe119414d38cc6dc7b1ee28ba807a7b3f0830cd5db33",
+          "f6dbb0b1b715759a3060bbdf4ac4dae2a1a4ba10ffd95291fb6d32efc41c9938",
+          "4c46c402a37fe191ed73036926158b4bfbccf00bb4c17c2fea17fa32640cfbdb"
+        ],
+        "invitation": "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+        "inspection_performed": true
+      }
+    }
+  ]
+}
