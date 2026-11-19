@@ -43,6 +43,12 @@ def test_f4_native_true_three_way_kept_pre_field_forge():
     assert p["raw_eligible_condition_denominator"] == 4
     assert p["raw_fully_resolved_joint_n"] == 4
     assert p["fact_ref"] == native_result.facts[0].ref.as_dict()
+    assert p["native_fact_target_domain_identity"] == native_result.facts[0].target_domain_identity
+    assert p["full_query_target_topology"] == q.target_arity_and_topology
+    assert p["source_scope_mode"] == "SINGLE_UNIVERSE"
+    assert p["measure_kind"] == "RAW"
+    assert p["risk_set_type"] == native_result.facts[0].risk_set_type
+    assert p["producer_uncertainty_state"] == native_result.facts[0].uncertainty_method_or_typed_state
     assert p["source_authenticity"].endswith("ORIGINAL_SOURCE_RIGHTS_UNVERIFIED")
     assert "COMPARATIVE_DETERMINICITY_METRIC_NOT_ISSUED" in p["not_issued"]
 
