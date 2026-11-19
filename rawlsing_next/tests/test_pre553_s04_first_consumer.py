@@ -8,7 +8,7 @@ from rawlsing_next.field_forge_generic_empirical_ingress import (
     FF01GenericIngressError, receive_ff01_observed_joint,
 )
 from rawlsing_next.pre553_s04_cold_custody import (
-    S04ExternalRootPin, freeze_s04_i03_sourcefree, read_s04_cold_preimages,
+    SOURCEFREE_ASSERTION, S04ExternalRootPin, freeze_s04_i03_sourcefree, read_s04_cold_preimages,
 )
 from rawlsing_next.pre553_s04_research_batch import S04ContextRequest
 from rawlsing_next.tests import test_pre553_empirical_query as native
@@ -117,7 +117,7 @@ def test_rehydrated_sourcefree_cold_preimages_enter_first_consumer_without_c11()
     original = service.receive_s04_first_consumer(
         query=query, execution=result, conditioner_index=0,
     )
-    archive = freeze_s04_i03_sourcefree(
+    archive = freeze_s04_i03_sourcefree(sourcefree_origin_assertion=SOURCEFREE_ASSERTION, 
         query=query, execution=result, knowledge=original.knowledge,
     )
     read = read_s04_cold_preimages(
