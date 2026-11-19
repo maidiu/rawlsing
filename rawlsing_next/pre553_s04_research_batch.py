@@ -126,6 +126,13 @@ def run_s04_context_batch(
         "source_release_ref": origin["release_ref"],
         "source_risk_set_ref": origin["risk_set_ref"],
         "source_measure_basis_ref": origin["measure_basis_ref"],
+        "raw_source_risk_eligible_n": origin["raw_eligible_condition_denominator"],
+        "raw_full_joint_resolved_n": origin["raw_fully_resolved_joint_n"],
+        "raw_unresolved_joint_eligible_n": (
+            origin["raw_eligible_condition_denominator"]
+            - origin["raw_fully_resolved_joint_n"]
+        ),
+        "unresolved_cause_grade": "NOT_DECOMPOSABLE_BY_ROUTING_OR_NONRESPONSE_FROM_I03_AGGREGATE",
         "requests_total": len(requests),
         "distinct_contextual_computations": len(lookup),
         "reused_exact_requests": len(requests) - len(lookup),
