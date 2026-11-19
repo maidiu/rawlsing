@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from json import loads
-from typing import Any, Sequence
+from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
 from rawlsing_next.pre553_distinct_cold_i03_batch import (
@@ -142,7 +142,7 @@ def execute_distinct_native_s04_research(
         for req in item.context_requests:
             if (type(req.target_index) is not int
                     or not 0 <= req.target_index < len(query.target_refs)
-                    or not isinstance(req.conditions, dict)
+                    or not isinstance(req.conditions, Mapping)
                     or any(type(index) is not int
                            or index == req.target_index
                            or not 0 <= index < len(query.target_refs)
