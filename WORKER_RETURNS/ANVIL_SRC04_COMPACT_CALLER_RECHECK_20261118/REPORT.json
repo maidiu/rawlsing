@@ -1,0 +1,128 @@
+{
+  "schema": "ANVIL_SRC04_COMPACT_CALLER_RECHECK@1",
+  "disposition": "ACCEPT_SCOPED",
+  "reviewer": "same independent reviewer",
+  "owner_branch_base": "86e987f06a76beca4a410225d943457899f6ac92",
+  "source_cut": {
+    "measurement_prep_head": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
+    "manifest": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_ORIGINAL_WITNESS_RUNNER_20261118/MANIFEST.json",
+    "manifest_sha256": "603cce17914b1a9bb6b545d870d914550686f898f91a33ce122a7004e0a0bf98",
+    "manifest_files_verified": 56,
+    "manifest_bad_files": [],
+    "single_pass_sha256": "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e",
+    "witness_caller_sha256": "d574a55676a57cbbc2bd87242802cddd11b2bc63abca76ae86d1681183cb6bac"
+  },
+  "scope": "Recheck only the prior caller defects. No original source access or execution, no product edits, no stopped data, no wider review.",
+  "valid_sourcefree_resume_without_source_path": {
+    "path": "compact_rehearsal baseline-stop/compact-stop/baseline-resume/compact-resume/reader",
+    "compact_resume_decode_called": false,
+    "compact_resume_status": "RESUMED",
+    "compact_reader_opened": true,
+    "baseline_reader": "COMPACT_BASELINE_RESUME_READER.JSON",
+    "compact_reader": "COMPACT_COMPACT_RESUME_READER.JSON",
+    "roots_equal": true,
+    "manifest_equal": true,
+    "counts_equal": true,
+    "payload_digests_equal": true,
+    "family_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 90,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RoutingEligibilityFact": 90,
+      "EmpiricalCoordinateFact": 90,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    }
+  },
+  "invalid_sourcefree_resume_without_source_path": {
+    "path": "INVALID_RESUME_NO_SOURCE.json",
+    "refused": true,
+    "code": "CHECKPOINT_MISSING",
+    "source_path_supplied": false,
+    "source_decode_called": false,
+    "publication_started": false
+  },
+  "direct_producer_resume_without_source_path": {
+    "path": "DIRECT_RESUME_NO_SOURCE.json",
+    "refused": true,
+    "code": "CHECKPOINT_MISSING",
+    "prior_type_error_gone": true,
+    "source_read_performed": false
+  },
+  "synthetic_original_shaped_guards": {
+    "path": "CURRENT_GUARD_SYNTHETIC.json",
+    "original_shaped_config": true,
+    "source_decode_called": false,
+    "spool_created": false,
+    "held": {"refused": true, "code": "CURRENT_NOT_GRANTED"},
+    "revoked": {"refused": true, "code": "CURRENT_REVOKED"},
+    "wrong_request": {"refused": true, "code": "CURRENT_REQUEST_SCOPE_MISMATCH", "detail": "host"}
+  },
+  "digest_pin_mismatch": {
+    "path": "DIGEST_PIN_MISMATCH_REFUSAL.json",
+    "refused": true,
+    "code": "CANDIDATE_SOURCE_HASH_MISMATCH",
+    "before_import": true,
+    "candidate_tree": "MEASUREMENT_PREP",
+    "observed_handoff_sha256": "801ff41640bf9d7f06f9256ac002d09b8ea1da2834aea4c7495c41dc3e682fae",
+    "pinned_handoff_sha256": "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
+  },
+  "operator_cli_preflight": {
+    "path": "CLI_PREFLIGHT_EXACT.json",
+    "mode": "preflight",
+    "candidate_tree": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree",
+    "candidate_patch": "OWNER/WORKER_RETURNS/ANVIL_ALL35_CONSTRUCTION_ONLY_CANDIDATE_20261118/candidate.patch",
+    "config": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/tree/rawlsing_next/source_configuration/data/SRC04/source.config.repaired.v2.json",
+    "runtime_config": "MEASUREMENT_PREP/private-runtime/SRC04_OVERLAY_REPLAY_1795040438/SRC04.post_alignment.runtime.config.json",
+    "binding_dir": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118",
+    "work_root": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned",
+    "result": "RUNTIME_OVERLAY_QUALIFIED",
+    "source_path_opened_stat_hashed_decoded": false,
+    "request_equal_to_approved": true,
+    "q217": "HELD_EXACT_BY_SCOPED_CONFIG",
+    "scoped_counts": {"response_slots": 177, "coordinate_slots": 3, "physical_slots": 181},
+    "run_gate_no_auth": {
+      "path": "RUN_GATE_NO_AUTH.json",
+      "refused": true,
+      "code": "EXPLICIT_SOURCE_LAUNCH_AUTHORIZATION_REQUIRED",
+      "source_read_performed": false
+    }
+  },
+  "current_disk": {
+    "path": "DISK.current.json",
+    "free_bytes": 42577633280,
+    "startup_floor_bytes": 26907826727,
+    "above_floor": true,
+    "note": "Measured at the carried work-root; ignored the stale prior 15.5GB figures."
+  },
+  "source_grant_guards": {
+    "verify_candidate_before_import": true,
+    "compact_single_pass_pin_sha256": "719fe9574b0e92f69f700a67705ea4f07c32d5731055e7573bc301df613f5f2e",
+    "actual_grant_current_guard": "witness_caller._grant calls _require_current before producer resume/build; exact current/revocation/scope checks are present.",
+    "original_resume_guard": "resume_single_pass calls _require_current for ORIGINAL_SOURCE configs before checkpoint load/publication.",
+    "sourcefree_resume": "no source path or decoder is used; valid checkpoint path publishes from spool, missing/corrupt checkpoint refuses.",
+    "source_launch": "explicit authorization still required; no real run performed."
+  },
+  "prior_defects_status": {
+    "candidate_worktree_hash_mismatch": "still a packaging rejection for MEASUREMENT_PREP raw tree; exact overlay candidate tree passes. Scoped acceptance with the stated operator candidate tree.",
+    "direct_producer_resume_no_source": "repaired: returns CHECKPOINT_MISSING instead of TypeError.",
+    "compact_implementation_pin": "repaired: SINGLE_PASS_SHA is checked before import; current file matches 719fe9...",
+    "resume_currentness_gap": "repaired for ORIGINAL_SOURCE configs via _require_current before checkpoint load; sourcefree resume has no source authority path.",
+    "startup_disk_blocker": "not present now: current free 42,577,633,280 B exceeds the 26,907,826,727 B floor. Old manifest/free_space_blocker figures were stale and are not used."
+  },
+  "blocker": null,
+  "boundaries": {
+    "original_source_read": false,
+    "execution": false,
+    "product_edits": false,
+    "stopped_data_touched": false,
+    "wider_review": false,
+    "prior_scratch_access": false
+  }
+}
