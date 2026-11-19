@@ -6,6 +6,7 @@ independent questionnaire reproduction.
 """
 from .types import adult, copy, stable_id, GRADE
 from .psychodynamics import validate_tendencies
+from .organism import ACTIONS
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
@@ -16,12 +17,19 @@ def construct_parent(actor_id,name,source_packet,semantic):
         'pseudo_respondent':copy(source_packet),'historical_grade':'FICTIONAL_INVERSE_UNDERIDENTIFIED'})
     for form in result.get('forms',[]):
         if 'id' not in form or form['id'] in person['forms']:raise ValueError('INVALID_INITIAL_FORM')
-        f=copy(form);validate_tendencies(f);f['actor']=actor_id
+        f=copy(form);validate_tendencies(f)
+        if not isinstance(f.get('enables',[]),list) or any(not isinstance(op,str) or op not in ACTIONS for op in f.get('enables',[])):
+            raise ValueError('UNSUPPORTED_ACQUIRED_OPERATION')
+        f['actor']=actor_id
         f['origin']=['fictional_init:'+actor_id]
         f['grade']='FICTIONAL_ABDUCTIVE_INITIALIZATION'
         person['forms'][f['id']]=f
     person['links']=copy(result.get('links',[]))
-    person['projects']=copy(result.get('projects',[]))
+    projects=copy(result.get('projects',[]))
+    for project in projects:
+        if not isinstance(project,dict) or not isinstance(project.get('means',[]),list) or any(not isinstance(op,str) or op not in ACTIONS for op in project.get('means',[])):
+            raise ValueError('UNSUPPORTED_ACTIVITY_MEANS')
+    person['projects']=projects
     if not person['forms'] and not person['projects']:
         raise ValueError('NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION')
     person['fictional_backfill']=copy(result.get('fictional_backfill',{}))

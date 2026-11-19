@@ -92,6 +92,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     performed.insert(0,{'actor':aid,'action':attempt.action,'status':status,'as_willing':True})
     if not allowed:
         output='BODILY_'+reason
+    elif attempt.action in ('EAT','BUY_FOOD','WORK','REPAIR') and loc not in world['sites']:
+        # No phantom production on detached dict returned by _site().
+        status='BLOCKED';output='UNKNOWN_MATERIAL_SITE'
     elif attempt.action=='MOVE':
         if attempt.object_ref in world['sites']:
             site=world['sites'][attempt.object_ref]

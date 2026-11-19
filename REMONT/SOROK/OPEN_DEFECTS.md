@@ -97,3 +97,12 @@ Live PYAT REMONT precedent: [PYAT PR #1162](https://github.com/maidiu/rawlsing/p
 - **Executed combined code, isolated sourcefree:** original R3 42 + P004 5 + P005 8 + R3 negative/positive 3 = **58 tests PASS, 0 FAIL**. The combined Python/test Git blob hashes match the locally executed bytes. No independent G5, protected owner receiving, or native science/actor/POP/DEV/TRANS accreditation.
 
 **Authority:** candidate draft only, E001..E006 persist. Not a mandate to bypass protected PROGRAMMA or paired CURRENT_PROGRESS.
+
+## REMONT R3 R2 — further reproduced production defects (2026-11-19)
+
+**Additional sourcefree P bugs, independently reproduced against the earlier R3-integrated candidate before applying the R2 patch:**
+
+- **SR-P025:** `construct_parent` could persist adult projects whose `means` contained an unsupported `TELEPORT` action; seeded acquired forms could likewise advertise an impossible physical `enables` operation. `development.admit` could add/reorganize projects or acquire forms with the same nonexistent operation. This silently confused a person's **aspirational practical object** with a means they can possibly enact. Repair: require every specified executable means/enabler to exist in the existing `organism.ACTIONS` vocabulary at parent construction and developmental admission; `means=[]` remains permitted for unrealized aims. Invalid proposals fail before any parent ledger commit or affected form/project mutation.
+- **SR-P026:** actor `WORK` at `world.positions[id]='nonexistent_site'` yielded `PERFORMED / MATERIAL_STOCK_PRODUCED` while no site in `world.sites` ever received the goods. Repair: `EAT/BUY_FOOD/WORK/REPAIR` now return `BLOCKED / UNKNOWN_MATERIAL_SITE` if the objective site does not exist; no ghost goods, claims or debits. This is not a new mandatory location ontology, only a fail-closed guard against orphan writes to a temporary empty dictionary.
+
+**Exact combined execution:** 62/62 local unittests PASS, 0 FAIL (prior 58 + 4 new tests; every published Python/test Git blob byte-identical to locally executed files). SR-P004/P005 remain partial; SR-P021/024 have author-tested bounds; SR-P022/023 remain open unimplemented capability bounds. P/T/E original IDs and already published historical receipts remain conserved. Independent reviewer/native authority/protected paired receiving: **not done**.

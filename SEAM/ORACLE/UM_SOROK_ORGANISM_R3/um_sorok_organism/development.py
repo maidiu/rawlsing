@@ -43,6 +43,8 @@ def admit(actor,experience,event_ref,candidates):
             ident=form.get('id') or stable_id('form',{'actor':actor['id'],'event':event_ref,'index':idx,'content':form})
             if ident in actor['forms']:raise InvalidDevelopment('DUPLICATE_FORM_ID')
             validate_tendencies(form)
+            if any(not isinstance(op,str) or op not in ACTIONS for op in form.get('enables',[])):
+                raise InvalidDevelopment('UNSUPPORTED_ACQUIRED_OPERATION')
             form.update({'id':ident,'actor':actor['id'],'origin':[event_ref],
                          'grade':GRADE,'lifecycle':form.get('lifecycle','ACTIVE'),
                          'evidence':evidence})
@@ -133,6 +135,8 @@ def admit(actor,experience,event_ref,candidates):
             project=copy(c.get('project',{}))
             if not project.get('object') or not isinstance(project.get('means'),list):
                 raise InvalidDevelopment('INVALID_NEW_PROJECT')
+            if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
+                raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
                 raise InvalidDevelopment('DUPLICATE_PROJECT')
@@ -149,6 +153,8 @@ def admit(actor,experience,event_ref,candidates):
             if project is None:raise InvalidDevelopment('UNKNOWN_PROJECT')
             if 'means' in c and (not isinstance(c['means'],list) or not all(isinstance(x,str) for x in c['means'])):
                 raise InvalidDevelopment('INVALID_PROJECT_MEANS')
+            if 'means' in c and any(x not in ACTIONS for x in c['means']):
+                raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)

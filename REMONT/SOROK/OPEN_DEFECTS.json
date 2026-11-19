@@ -73,6 +73,12 @@
         ],
         "test_count": 58,
         "remaining": "Weighted action ranking and genuinely acquired motive genesis; native owners not integrated"
+      },
+      "sourcefree_r3_second_repair": {
+        "local_tests": 62,
+        "fail": 0,
+        "grade": "LOCAL_AUTHOR_RECHECK__INDEPENDENT_REVIEW_PENDING",
+        "origin": "R3 sourcefree integrated branch"
       }
     },
     {
@@ -126,6 +132,12 @@
         ],
         "test_count": 58,
         "remaining": "Hiring/shift authorization, employer wage debt, grant issuance/revocation, material social reproduction and native owner"
+      },
+      "sourcefree_r3_second_repair": {
+        "local_tests": 62,
+        "fail": 0,
+        "grade": "LOCAL_AUTHOR_RECHECK__INDEPENDENT_REVIEW_PENDING",
+        "origin": "R3 sourcefree integrated branch"
       }
     },
     {
@@ -287,7 +299,13 @@
       "doctrinal_source": "SEAM/30 Constitutive Person: a functioning actor cannot be replaced by an inert empty person",
       "executable_probe": "test_sr_p021_empty_external_provider_rejected_no_inert_adult",
       "disposition": "Explicit NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION; no forced preset motives, no answer inference, unqualified LLM proposals still unaccepted",
-      "open_science": "Empirically defensible adult construction and actual model provider not demonstrated"
+      "open_science": "Empirically defensible adult construction and actual model provider not demonstrated",
+      "sourcefree_r3_second_repair": {
+        "local_tests": 62,
+        "fail": 0,
+        "grade": "LOCAL_AUTHOR_RECHECK__INDEPENDENT_REVIEW_PENDING",
+        "origin": "R3 sourcefree integrated branch"
+      }
     },
     {
       "id": "SR-P022",
@@ -317,7 +335,33 @@
       "owner_location": "R3 psychodynamics.validate_tendencies; parents.construct_parent; development.admit ADD_FORM",
       "doctrinal_source": "SEAM/30 body/psychodynamic world-action split and executable owner vocabulary",
       "executable_probe": "test_sr_p024_unexecutable_seed_tendency_rejected_without_actor_or_world and test_sr_p024_actual_supported_tendency_still_allowed",
-      "disposition": "Validate tendency action against organism.ACTIONS; invalid adult initialization refused without committed actor/world; valid operations unaffected"
+      "disposition": "Validate tendency action against organism.ACTIONS; invalid adult initialization refused without committed actor/world; valid operations unaffected",
+      "sourcefree_r3_second_repair": {
+        "local_tests": 62,
+        "fail": 0,
+        "grade": "LOCAL_AUTHOR_RECHECK__INDEPENDENT_REVIEW_PENDING",
+        "origin": "R3 sourcefree integrated branch"
+      }
+    },
+    {
+      "id": "SR-P025",
+      "status": "SOURCEFREE_R3_FIX_62_LOCAL_TESTS__REVIEW_PENDING",
+      "confidence": "CONFIRMED_CODE",
+      "first_fault": "Adult and developmental acquisition accepted projects and forms claiming executable means such as TELEPORT not supported by organism.ACTIONS",
+      "owner_location": "R3 parents.construct_parent; development.admit ADD_PROJECT/REORGANIZE_PROJECT/ADD_FORM",
+      "doctrinal_source": "SEAM/30 distinction between a practical object, a bodily/technical means and actor's actual capability",
+      "executable_probe": "test_sr_p025_parent_seed_impossible_project_means_rejected_without_commit; test_sr_p025_parent_seed_impossible_form_enabler_rejected; test_sr_p025_invalid_new_and_reorganized_project_means_do_not_mutate",
+      "disposition": "Validate all declared executable means/enablers against organism.ACTIONS; allow projects with empty means and future novel ends; sourcefree author-tested, independently unreceived"
+    },
+    {
+      "id": "SR-P026",
+      "status": "SOURCEFREE_R3_FIX_62_LOCAL_TESTS__REVIEW_PENDING",
+      "confidence": "CONFIRMED_CODE",
+      "first_fault": "WORK at a nonexistent world.positions site returned successful material production but mutated an unowned transient dict, leaving no real produced stock",
+      "owner_location": "R3 world._resolve_untrusted_core material branch and _site",
+      "doctrinal_source": "SEAM/30 material world must resist fiction and conserve actual produced goods",
+      "executable_probe": "test_sr_p026_no_production_or_food_transaction_at_missing_material_site",
+      "disposition": "Unknown material sites block EAT/BUY_FOOD/WORK/REPAIR before false material receipts, rather than treating an ephemeral empty dict as a production site; pending independent receiving"
     }
   ],
   "queue_T": [],
@@ -384,18 +428,23 @@
     "parent_p4": "480d3595ef744779cbfce186cd1696d8e8f61e36",
     "parent_p5": "1b0bbca8e610d81cea820d200f2c90b73ea3efdc",
     "scope": "RECONCILE_SHARED_P004_P005_AND_FIX_CONFIRMED_R3_P021_P024",
-    "local_executed_tests": 58,
+    "local_executed_tests": 62,
     "local_fail": 0,
     "test_origin": {
       "r3": 42,
       "p004": 5,
       "p005": 8,
-      "new_r3": 3
+      "new_r3_first": 3,
+      "new_r3_second": 4
     },
     "combined_grade": "LOCAL_AUTHOR_SOURCEFREE_PASS_NOT_INDEPENDENT_OR_NATIVE",
     "tests_on_exact_created_git_blobs": true,
     "native_science_rights": false,
     "independent_receiving": false,
-    "protected_adoption": false
+    "protected_adoption": false,
+    "additional_reproduced": [
+      "UNSUPPORTED_ACQUIRED_MEANS_P025",
+      "PHANTOM_SITE_MATERIAL_PRODUCTION_P026"
+    ]
   }
 }
