@@ -7,7 +7,7 @@ import pytest
 
 from rawlsing_next.pre553_s04_dhikr_comparative import (
     DHIKRComparisonRequest, DHIKRExplorationError,
-    _association, _source_minority, compare_dhikr_from_i03,
+    _association, _source_minority, _bootstrap_stability, compare_dhikr_from_i03,
 )
 from rawlsing_next.pre553_s04_observed_research import receive_s04_i03_research
 from rawlsing_next.pre553_s04_general_joint_algebra import (
@@ -114,3 +114,12 @@ def test_contextual_subset_has_exact_same_case_denominator():
     assert result["bootstrap_rank_instability"]["state"] == (
         "NOT_REQUESTED__DESIGN_UNCERTAINTY_NOT_ESTABLISHED"
     )
+
+
+def test_bootstrap_no_observed_context_does_not_attempt_empty_multinomial():
+    result = _bootstrap_stability(
+        [], target=2, predictors=(0, 1),
+        repeats=16, case_cap=64, seed=24,
+    )
+    assert result["state"] == "ZERO_OBSERVED_CONTEXT_SUPPORT__NO_IID_RESAMPLING"
+    assert result["repetitions_completed"] == 0

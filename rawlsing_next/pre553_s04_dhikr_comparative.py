@@ -171,6 +171,9 @@ def _bootstrap_stability(
     n = sum(c for _, c in cells)
     if repeats == 0:
         return {"state": "NOT_REQUESTED__DESIGN_UNCERTAINTY_NOT_ESTABLISHED"}
+    if n == 0:
+        return {"state": "ZERO_OBSERVED_CONTEXT_SUPPORT__NO_IID_RESAMPLING",
+                "raw_n": 0, "repetitions_completed": 0}
     if n > case_cap:
         return {"state": "HELD_RESOURCE_CAP", "raw_n": n,
                 "max_case_n": case_cap, "repetitions_completed": 0}
@@ -238,9 +241,9 @@ def _validate_request(request: DHIKRComparisonRequest, arity: int, domains):
     t, axes = request.target_axis, request.predictor_axes
     if (type(t) is not int or not 0 <= t < arity
             or type(axes) is not tuple or not axes
-            or len(axes) != len(set(axes))
             or len(axes) > 8
-            or any(type(a) is not int or not 0 <= a < arity or a == t for a in axes)):
+            or any(type(a) is not int or not 0 <= a < arity or a == t for a in axes)
+            or len(axes) != len(set(axes))):
         raise DHIKRExplorationError("distinct bounded predictors cannot include target")
     if (type(request.fixed_context) is not tuple
             or any(type(p) is not tuple or len(p) != 2 or
@@ -344,6 +347,15 @@ def analyze_s04_dhikr(
         )]
 
     root_rows = selected(context)
+    if not root_rows:
+        # A zero in a selected, observed full-case context is neither an
+        # impossible configuration nor a statistical comparison.
+        result["state"] = "ZERO_OBSERVED_CONTEXT__NO_DHIKR_COMPARISON"
+        result["bootstrap_rank_instability"] = {
+            "state": "ZERO_OBSERVED_CONTEXT_SUPPORT__NO_IID_RESAMPLING"
+        }
+        workspace.query(S04Projection((), {}))
+        return DHIKRComparisonReceipt(canonical_json(result), semantic_hash(result))
     result["bootstrap_rank_instability"] = _bootstrap_stability(
         root_rows, request.target_axis,
         tuple(a for a in request.predictor_axes if a not in dict(context)),
