@@ -204,18 +204,23 @@ def receive_s04_i03_research(
                 or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]):
             raise S04KnowledgeError("fact target roles/order differ from query")
         # Full cells cannot validate a substituted domain/replay identity.
-        selected = query.target_arity_and_topology.get("joint_domain")
-        cartesian = [canonicalize(list(combo)) for combo in product(*domains)]
-        if selected is None:
-            full = cartesian
+        # Native _target_plan: F1 unary domains are SCALAR, not [state].
+        # For k>=2 the source-selected full joint is positional arrays.
+        if len(targets) == 1:
+            full = list(domains[0])
         else:
-            if not isinstance(selected, (list, tuple)):
-                raise S04KnowledgeError("source joint domain malformed")
-            full = [canonicalize(x) for x in selected]
-            keys = [canonical_json(x) for x in full]
-            expected_keys = {canonical_json(x) for x in cartesian}
-            if len(keys) != len(expected_keys) or set(keys) != expected_keys:
-                raise S04KnowledgeError("source joint domain changed or incomplete")
+            selected = query.target_arity_and_topology.get("joint_domain")
+            cartesian = [canonicalize(list(combo)) for combo in product(*domains)]
+            if selected is None:
+                full = cartesian
+            else:
+                if not isinstance(selected, (list, tuple)):
+                    raise S04KnowledgeError("source joint domain malformed")
+                full = [canonicalize(x) for x in selected]
+                keys = [canonical_json(x) for x in full]
+                expected_keys = {canonical_json(x) for x in cartesian}
+                if len(keys) != len(expected_keys) or set(keys) != expected_keys:
+                    raise S04KnowledgeError("source joint domain changed or incomplete")
         components = [
             {"target_ref": ref.as_dict(), "topology": "SCALAR_SINGULAR",
              "domain": list(domain),
