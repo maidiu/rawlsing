@@ -134,3 +134,85 @@ def test_unpinned_and_callback_false_results_do_not_invent_issuer_approval():
             knowledge=valid, expected_knowledge_ref=valid.ref,
             interpretation_current=invalid,
         )
+
+
+
+def test_hash_consistent_supported_original_i03_claim_with_positive_unmapped_cell_refused():
+    """A self-consistent source query+fact counterfeit must fail BOTH S04/FF01.
+
+    This is stronger than simply forging an S04 JSON. Even when the source
+    query domain, exact fact topology, identity hashes and supported-count
+    totals agree, source interpretation UNKNOWN is NOT substantive support.
+    """
+    from dataclasses import replace
+    from itertools import product
+
+    from rawlsing_next.pre553_empirical_objects import (
+        EmpiricalFact, EmpiricalQuerySpec, canonicalize,
+    )
+    from rawlsing_next.pre553_s04_observed_research import S04KnowledgeError
+    from rawlsing_next.field_forge_generic_empirical_ingress import (
+        FF01GenericIngressError, receive_ff01_observed_joint,
+    )
+
+    q, execution, _ = _observed()
+    original = execution.facts[0]
+    marker = {"typed_response_state": "INVALID_UNRESOLVED"}
+    fields = dict(q.semantic_fields)
+    topo = deepcopy(fields["target_arity_and_topology"])
+    topo["components"][0]["domain"][1] = marker
+    fields["target_arity_and_topology"] = topo
+    new_q = EmpiricalQuerySpec(
+        typed_state=q.typed_state,
+        authority_snapshot_refs=q.authority_snapshot_refs,
+        dependency_refs=q.dependency_refs,
+        producer_replay_locator_or_reference_root=q.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+    domains = [list(c["domain"]) for c in topo["components"]]
+    normalized_components = [
+        {
+            "target_ref": exact_ref(c["target_ref"], "target").as_dict(),
+            "topology": "SCALAR_SINGULAR",
+            "domain": list(c["domain"]),
+            "target_domain_replay_ref": exact_ref(
+                c["target_domain_replay_ref"], "domain replay"
+            ).as_dict(),
+        }
+        for c in topo["components"]
+    ]
+    identity = semantic_hash({
+        "components": normalized_components,
+        "joint_order_semantics": topo["joint_order_semantics"],
+        "full_domain": [
+            canonicalize(list(combination)) for combination in product(*domains)
+        ],
+    })
+
+    fact_fields = dict(original.semantic_fields)
+    fact_topology = deepcopy(fact_fields["target_topology"])
+    fact_topology["target_domain_identity"] = identity
+    for row in fact_topology["complete_cell_semantic_projection"]:
+        if row["cell"][0] == "1":
+            row["cell"][0] = marker
+    fact_fields["target_topology"] = fact_topology
+    fact_fields["target_domain_identity"] = identity
+    fact_fields["empirical_query_spec_ref"] = new_q.ref
+    synthetic = EmpiricalFact(
+        typed_state="SUPPORTED",
+        authority_snapshot_refs=original.authority_snapshot_refs,
+        dependency_refs=(*original.dependency_refs, new_q.ref),
+        producer_replay_locator_or_reference_root=original.producer_replay_locator_or_reference_root,
+        **fact_fields,
+    )
+    changed = replace(execution, query_ref=new_q.ref, facts=(synthetic,))
+    assert synthetic.raw_numerator_support == synthetic.raw_denominator_support == 4
+    assert new_q.ref != q.ref
+    assert synthetic.ref != original.ref
+    with pytest.raises(S04KnowledgeError, match="UNRESOLVED_INTERPRETATION"):
+        receive_s04_i03_research(query=new_q, execution=changed)
+    with pytest.raises(FF01GenericIngressError, match="UNRESOLVED_INTERPRETATION"):
+        receive_ff01_observed_joint(
+            query=new_q, execution=changed, conditioner_index=0,
+            producer_permission_ceiling=("FF01_DESCRIPTIVE_SOURCEFREE",),
+        )
