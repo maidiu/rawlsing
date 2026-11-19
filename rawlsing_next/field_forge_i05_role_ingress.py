@@ -16,7 +16,7 @@ from rawlsing_next.field_forge_generic_empirical_ingress import (
 )
 from rawlsing_next.pre553_discovery_exact import ExactBoundedDiscoveryResult
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, canonical_json, exact_ref, semantic_hash,
+    ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
 )
 
 CONTRACT = "S04_I05_TO_FF01_EXACT_ROLE_RECEPTION@1.0.0"
@@ -149,14 +149,14 @@ def receive_i05_exact_joint_at_ff01(
 
     payload = {
         "contract": CONTRACT,
-        "grade": "EXACT_I05_ROLE_TRANSPORT_TO_FF01__NO_SCIENTIFIC_RANK",
+        "grade": "EXACT_I05_OWNED_FACT_WITH_RECONSTRUCTED_I03_ENVELOPE__NO_SCIENTIFIC_RANK",
         "discovery_authority_ref": discovery.discovery_authority_ref.as_dict(),
         "discovery_frontier_ref": discovery.evaluated_frontier_ref.as_dict(),
         "discovery_replay_ref": discovery.replay_ref.as_dict(),
         "candidate_receipt_ref": receipt.ref.as_dict(),
         "candidate_validation_state": receipt.typed_state,
         "candidate_coverage_state": receipt.coverage_state,
-        "candidate_identity": canonical_json(identity),
+        "candidate_identity": canonicalize(identity),
         "query_role": query_role,
         "role_query_ref": query.ref.as_dict(),
         "role_predicate_ref": predicate.ref.as_dict(),
@@ -167,6 +167,7 @@ def receive_i05_exact_joint_at_ff01(
         "not_proven": [
             "RECURSIVE_ADAPTIVE_SEARCH_NOT_PERFORMED_BY_THIS_READER",
             "VALID_EMPTY_DISCOVERY_VALIDATION_IS_NOT_ZERO_SOURCE_POPULATION",
+            "I03_QUERY_EXECUTION_ENVELOPE_REASSEMBLED_FROM_I05_FACT_NOT_INDEPENDENT_EXECUTION",
             "SCIENCE_ESTIMATOR_AND_POSTSELECTION_UNISSUED",
             "N10E_N10W_FF02_V3_NOT_CONSUMED_BY_THIS_READER",
         ],
