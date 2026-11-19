@@ -1,0 +1,92 @@
+{
+  "analysis_or_q2_issued": false,
+  "binding_sha256": "c132033177de0fafa3f473dd630839fb93ac991086825d80dcd8846d96116d8e",
+  "consumer": "EXISTING_PRE553_SOURCE_BACKED_C11",
+  "currentness": "CURRENT_GRANTED",
+  "decision_ref": {
+    "content_hash": "46788ad2cf2b5501b07e73276e89df3e5543d24404856e42fcab8a94a86bc9b4",
+    "kind": "USER_SOURCE_READ_DECISION",
+    "object_id": "urn:rawlsing:src16:construction-decision:c65e44254e604bbc51ee9ac81612df7127ba47d3aa40fbe7b947dcaef76d562d"
+  },
+  "extent": "EXACT_FILE",
+  "grant_sha256": "c65e44254e604bbc51ee9ac81612df7127ba47d3aa40fbe7b947dcaef76d562d",
+  "host": "USER_LOCAL_MAC",
+  "private_operative": {
+    "binding_file": "SRC16.construction.binding.json",
+    "grant_file": "SRC16.construction.grant.json",
+    "in_git": false,
+    "mode": "0700/0600",
+    "resolver_file": "SRC16.exact_resolver.py",
+    "root": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/anvil_src16_construction_grant_20261119"
+  },
+  "public_source_path": false,
+  "purpose": "FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY",
+  "request": {
+    "consumer_use": "EXISTING_PRE553_SOURCE_BACKED_C11",
+    "custody_locator_binding": "SRC16_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING",
+    "host": "USER_LOCAL_MAC",
+    "metadata_freeze_refs": [
+      {
+        "content_hash": "72eed6f202b83c1c0abe2ee9093372c3176840c3566d8a605812ecb6444af8de",
+        "kind": "R154_PHYSICAL_METADATA",
+        "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC16_PHYSICAL_METADATA.json"
+      }
+    ],
+    "physical_read_extent": "EXACT_FILE",
+    "purpose": "FULL_SRC16_ORIGINAL_C11_CONSTRUCTION_ONLY",
+    "read_operation": "SOURCE_RESPONSE_DECODE",
+    "semantic_use_scope": [
+      "C11_CONSTRUCTION_ONLY",
+      "NO_Q2",
+      "NO_SEMANTIC_ADOPTION",
+      "SRC16"
+    ],
+    "source_format": "SAV",
+    "source_id": "SRC16",
+    "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204"
+  },
+  "resolver_results": {
+    "exact_request": {
+      "admitted": true,
+      "currentness": "CURRENT_GRANTED",
+      "source_read_performed": false
+    },
+    "negative_cases": [
+      {
+        "case": "other_source",
+        "code": "EXACT_REQUEST_MISMATCH",
+        "refused": true,
+        "source_read_performed": false
+      },
+      {
+        "case": "analysis_purpose",
+        "code": "EXACT_REQUEST_MISMATCH",
+        "refused": true,
+        "source_read_performed": false
+      },
+      {
+        "case": "incorrect_scope",
+        "code": "EXACT_REQUEST_MISMATCH",
+        "refused": true,
+        "source_read_performed": false
+      }
+    ]
+  },
+  "retention": "LOCAL_RUNTIME_ONLY",
+  "revocation": "NONE_RECORDED",
+  "schema": "ANVIL_SRC16_CONSTRUCTION_GRANT_ACTIVATION@1",
+  "scope": "ALL_216_PHYSICAL_SLOTS__C11_CONSTRUCTION_ONLY__NO_Q2",
+  "source_artifact_id": "GSS1972.sav",
+  "source_bytes": 1647241,
+  "source_columns": 216,
+  "source_id": "SRC16",
+  "source_read_performed": false,
+  "source_rows": 1613,
+  "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+  "status": "ACTIVE_PRIVATE_OPERATIVE_BINDING",
+  "user_decision": {
+    "issuer": "HUMAN_USER_VIA_EXISTING_PYAT_HQ",
+    "quote": "for GSS 1972, yes",
+    "thread": "HQ_THIS_THREAD"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "authorized_launch_inputs_available": false,
+  "can_execute_src16": false,
+  "metadata_preflight_available": false,
+  "reason": "The shared SQLite-free witness hardcodes SRC04 config/trust/q217/runtime overlay and its producer path; it has no SRC16 source/grant/config entry. The exact SRC16 binding is materialized privately but cannot be injected into that runner without a generic binding/config adapter.",
+  "schema": "ANVIL_SRC16_SHARED_RUNNER_GAP@1",
+  "shared_runner": "/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118/sqlite_free_witness.py",
+  "smallest_gap": "Add a generic source-specific binding injection to the existing sqlite_free_single_pass/sqlite_free_witness path; no per-wave writer or new administrative system is needed.",
+  "source_read_performed": false
+}
