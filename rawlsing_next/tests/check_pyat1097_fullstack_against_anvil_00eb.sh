@@ -54,8 +54,41 @@ files=(
   rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
   rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py
   rawlsing_next/tests/test_pre553_s04_dynamic_research.py
+  rawlsing_next/tests/test_pyat1155_hostile_supported_risk.py
   rawlsing_next/tests/run_pyat1097_fullstack_review_local.sh
 )
+# The author/sourcefree runner is allowed to grow. A new test which
+# only exists at CODE and is absent from the frozen Codex native tree
+# MUST be overlaid, otherwise this compatibility court would RED due to
+# a missing test rather than testing actual native-C11 compatibility.
+runner_tests="$(git show "$CODE:rawlsing_next/tests/run_pyat1097_fullstack_review_local.sh" | awk '
+  /^tests=\($/ { in_tests=1; next }
+  in_tests && /^\)/ { exit }
+  in_tests && /^[[:space:]]+rawlsing_next\/tests\// {
+    gsub(/^[[:space:]]+|[[:space:]]+$/, "", $0); print
+  }
+')"
+if [[ -z "$runner_tests" ]]; then
+  echo "HOLD_NO_EXECUTABLE_TEST_SELECTION_AT_CODE_HEAD" >&2
+  exit 16
+fi
+while IFS= read -r test_file; do
+  if git cat-file -e "$C11:$test_file" 2>/dev/null; then
+    continue
+  fi
+  found=0
+  for file in "${files[@]}"; do
+    if [[ "$file" == "$test_file" ]]; then
+      found=1
+      break
+    fi
+  done
+  if [[ "$found" != 1 ]]; then
+    echo "HOLD_RUNNER_TEST_MISSING_FROM_ADDITIVE_OVERLAY: $test_file" >&2
+    exit 17
+  fi
+done <<< "$runner_tests"
+
 for file in "${files[@]}"; do
   if git cat-file -e "$C11:$file" 2>/dev/null; then
     echo "HOLD_SOURCE_OVERLAP_WITH_CODEX_NATIVE: $file" >&2

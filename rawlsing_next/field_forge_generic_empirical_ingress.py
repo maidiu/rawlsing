@@ -292,6 +292,18 @@ def receive_ff01_observed_joint(
         "anti_inferences": list(ANTI_INFERENCES),
     }
     if fact.typed_state == "SUPPORTED":
+        # Preserve the pre-existing, more specific SUPPORTED-zero refusal
+        # before the new partial-risk integrity guard. Both are fail-closed:
+        # an all-zero joint is not a positive FF01 relation, and a 3/4
+        # partial response cannot impersonate a fully resolved joint.
+        if fact.raw_numerator_support <= 0:
+            raise FF01GenericIngressError(
+                "SUPPORTED fact with zero resolved joint support is not a positive FF01 relation"
+            )
+        if fact.raw_numerator_support != fact.raw_denominator_support:
+            raise FF01GenericIngressError(
+                "SUPPORTED full joint requires complete eligible/resolved source risk"
+            )
         topology = fact.target_topology
         if not isinstance(topology, Mapping) or topology.get("arity") != len(refs) or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]:
             raise FF01GenericIngressError("fact has wrong joint topology/order")
