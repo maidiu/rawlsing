@@ -67,6 +67,18 @@ def test_native_i03_typed_held_condition_conserves_exact_unknown_members(
     ).query(S04Projection((0,), {})).material()
     assert answer["state"] != "SUPPORTED"
     assert answer["comparative_predictor_rank"] is None
+    # Real FF01 adapter consumes the HELD S04 value, without querying
+    # the original respondents again or fabricating full support.
+    from rawlsing_next.pre553_s04_ff01_consumer import receive_ff01_from_s04
+    from rawlsing_next.field_forge_generic_empirical_ingress import BLOCKED_GRADE
+    ff01 = receive_ff01_from_s04(
+        knowledge=knowledge, query=query, execution=actual,
+        conditioner_index=0,
+        producer_permission_ceiling=("FF01_DESCRIPTIVE_SOURCEFREE",),
+    )
+    assert ff01.semantic_projection()["claim_grade"] == BLOCKED_GRADE
+    assert ff01.semantic_projection()["producer_state"] == "UNRESOLVED"
+    assert ff01.semantic_projection()["complete_cells"] == []
 
 
 def test_rehashed_inconsistent_unknown_condition_members_are_not_admitted(
