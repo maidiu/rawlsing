@@ -278,8 +278,11 @@ def read_physical_cells(
             compressed_digest.update(block)
     if compressed_digest.hexdigest() != _sha(receipt.gzip_sha256):
         raise PhysicalCellJournalError("physical journal compressed hash differs from receipt")
-    stream_digest = sha256()
+    # Complete uncompressed verification BEFORE offering the first value.
+    # A checksum failure at EOF may not expose earlier corrupt values to
+    # a consumer that could start making semantic facts while streaming.
     seen = 0
+    stream_digest = sha256()
     with gzip.open(file, "rb") as handle:
         for line in handle:
             stream_digest.update(line)
@@ -287,9 +290,25 @@ def read_physical_cells(
             ordinal = seen % len(receipt.variables) + 1
             row = seen // len(receipt.variables) + 1
             if (data["row"] != row or data["ordinal"] != ordinal
-                    or (data["ordinal"], data["name"]) != receipt.variables[ordinal - 1]):
+                    or (data["ordinal"], data["name"])
+                    != receipt.variables[ordinal - 1]):
                 raise PhysicalCellJournalError("physical cell order/slot changed")
+            # Reject invalid typed payloads as well as invalid bytes.
+            _CODEC.decode(data["raw_value"])
+            PhysicalMissingState(data["missing_state"])
+            _CODEC.decode(data["missing_declaration"])
+            _CODEC.decode(data["source_value_label"])
             seen += 1
+    if (seen != receipt.cell_count
+            or seen != receipt.row_count * len(receipt.variables)
+            or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
+        raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
+    # The original SAV/DTA is NOT reopened. This second bounded pass is
+    # exclusively over independently authenticated retained physical bytes.
+    # A future original-source reader must also pin host rights/currentness.
+    with gzip.open(file, "rb") as handle:
+        for line in handle:
+            data = json.loads(line)
             yield PhysicalCell(
                 data["row"], data["ordinal"], data["name"],
                 _CODEC.decode(data["raw_value"]),
@@ -297,10 +316,6 @@ def read_physical_cells(
                 _CODEC.decode(data["missing_declaration"]),
                 _CODEC.decode(data["source_value_label"]),
             )
-    if (seen != receipt.cell_count
-            or seen != receipt.row_count * len(receipt.variables)
-            or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
-        raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
 
 
 __all__ = [
