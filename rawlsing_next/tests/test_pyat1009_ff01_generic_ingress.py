@@ -303,3 +303,39 @@ def test_falsified_empty_issuer_cannot_self_sign_as_genuine_ff01_research():
     )
     with pytest.raises(FF01GenericIngressError, match="issuer|authority|query"):
         _receive(changed_query, replace(result, query_ref=changed_query.ref, facts=(changed_fact,)))
+
+
+def test_negative_state_cannot_hide_positive_cell_evidence():
+    _, _, _, query, result = _case(tag="FF01-TYPED-NEGATIVE-ATTACK")
+    previous = result.facts[0]
+    changed = dict(previous.semantic_fields)
+    changed["raw_numerator_support"] = 0
+    changed["raw_resolved_target_support"] = 0
+    retagged = EmpiricalFact(
+        typed_state="UNRESOLVED",
+        authority_snapshot_refs=previous.authority_snapshot_refs,
+        dependency_refs=previous.dependency_refs,
+        producer_replay_locator_or_reference_root=previous.producer_replay_locator_or_reference_root,
+        **changed,
+    )
+    with pytest.raises(FF01GenericIngressError, match="contradictory positive cell"):
+        _receive(query, replace(result, facts=(retagged,)))
+
+
+def test_denominator_may_legitimately_be_condition_selected_subset_of_risk_members():
+    _, _, _, query, result = _case(tag="FF01-ROSTER-SUBSET")
+    fact = result.facts[0]
+    risk = list(fact.risk_set_member_refs)
+    denominator = list(fact.denominator_member_refs)
+    assert len(risk) == len(denominator) == 4
+    # Internally consistent sourcefree conditional subset need not equal the
+    # full eligible risk enumeration. This is NOT a source-native authority.
+    reduced = _changed_result(
+        result,
+        denominator_member_refs=tuple(denominator[:3]),
+        raw_denominator_support=3,
+    )
+    # Four resolved cells cannot legitimately survive a three-member
+    # denominator: first ensure this contradiction is refused.
+    with pytest.raises(FF01GenericIngressError, match="joint count"):
+        _receive(query, reduced)
