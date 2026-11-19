@@ -19,7 +19,7 @@ from fractions import Fraction
 from itertools import product
 from math import prod
 from json import loads
-from typing import Any, Iterable, Mapping
+from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next.pre553_empirical_objects import (
     ExactRef, canonical_json, canonicalize, semantic_hash,
@@ -93,6 +93,7 @@ class S04GeneralJointWorkspace:
         expected_knowledge_ref: ExactRef,
         max_filter_cache_entries: int = 128,
         max_cached_row_ids: int = 65_536,
+        current_guard: Callable[[], Any] | None = None,
     ) -> None:
         if type(knowledge) is not S04ObservedKnowledge:
             raise S04GeneralAlgebraError("actual S04 knowledge object required")
@@ -103,6 +104,10 @@ class S04GeneralJointWorkspace:
                 or type(max_cached_row_ids) is not int
                 or max_cached_row_ids < 1):
             raise S04GeneralAlgebraError("positive finite resource budgets required")
+        if current_guard is not None and not callable(current_guard):
+            raise S04GeneralAlgebraError("CURRENT guard must be callable or absent")
+        self._current_guard = current_guard
+        self._check_current()
         self._knowledge = knowledge
         self._material = knowledge.material()
         m = self._material
@@ -219,7 +224,15 @@ class S04GeneralJointWorkspace:
                 self._cached_row_ids += len(rows)
         return rows
 
+    def _check_current(self) -> None:
+        if self._current_guard is not None:
+            # A callback is not an issuer. Native integration binds the
+            # actual VerifiedDirectEstate._live guard, which can revoke.
+            if self._current_guard() is False:
+                raise S04GeneralAlgebraError("CURRENT denied by bound source guard")
+
     def query(self, request: S04Projection) -> S04ProjectionAnswer:
+        self._check_current()
         if type(request) is not S04Projection or type(request.output_axes) is not tuple:
             raise S04GeneralAlgebraError("typed ordered projection required")
         axes = request.output_axes
@@ -277,6 +290,10 @@ class S04GeneralJointWorkspace:
             "source_response_semantics_ref": m["response_semantics_ref"],
             "original_source_authenticity": m["source_authenticity"],
             "independent_original_source_issuer": None,
+            "source_current_check": (
+                "BOUND_GUARD_PRE_POST__NOT_SOURCE_ISSUANCE" if self._current_guard
+                else "OFFLINE_SOURCE_CURRENT_UNVERIFIED"
+            ),
             "output_axes": [
                 {"index": i, "target_ref": m["target_refs"][i]} for i in axes
             ],
@@ -294,6 +311,7 @@ class S04GeneralJointWorkspace:
             "no_cross_fact_or_cross_risk_pooling": True,
             "unissued": list(UNISSUED),
         }
+        self._check_current()
         return S04ProjectionAnswer(canonical_json(payload), semantic_hash(payload))
 
     def query_many(self, requests: Iterable[S04Projection]) -> Iterable[S04ProjectionAnswer]:
