@@ -166,7 +166,8 @@ def receive_s04_i03_research(
         raise S04KnowledgeError("fact changed its source universe")
     grain = query.requested_output_grain
     if (not isinstance(grain, Mapping) or grain.get("source_scope_mode") != "SINGLE_UNIVERSE"
-            or grain.get("measure_kind") != "RAW" or fact.measure_kind != "RAW"):
+            or grain.get("measure_kind") != "RAW" or fact.measure_kind != "RAW"
+            or fact.source_scope_mode != "SINGLE_UNIVERSE"):
         raise S04KnowledgeError("only RAW unpooled sourcefree descriptive science admitted")
     if _exact(fact.response_state_semantics_ref, "response semantics") != _exact(
             grain.get("response_state_semantics_ref"), "query response semantics"):
@@ -203,6 +204,42 @@ def receive_s04_i03_research(
         if (not isinstance(topology, Mapping) or topology.get("arity") != len(targets)
                 or topology.get("joint_order_semantics") != query.target_arity_and_topology["joint_order_semantics"]):
             raise S04KnowledgeError("fact target roles/order differ from query")
+        # Full cells cannot validate a substituted domain/replay identity.
+        # Native _target_plan: F1 unary domains are SCALAR, not [state].
+        # For k>=2 the source-selected full joint is positional arrays.
+        if len(targets) == 1:
+            full = list(domains[0])
+        else:
+            selected = query.target_arity_and_topology.get("joint_domain")
+            cartesian = [canonicalize(list(combo)) for combo in product(*domains)]
+            if selected is None:
+                full = cartesian
+            else:
+                if not isinstance(selected, (list, tuple)):
+                    raise S04KnowledgeError("source joint domain malformed")
+                full = [canonicalize(x) for x in selected]
+                keys = [canonical_json(x) for x in full]
+                expected_keys = {canonical_json(x) for x in cartesian}
+                if len(keys) != len(expected_keys) or set(keys) != expected_keys:
+                    raise S04KnowledgeError("source joint domain changed or incomplete")
+        components = [
+            {"target_ref": ref.as_dict(), "topology": "SCALAR_SINGULAR",
+             "domain": list(domain),
+             "target_domain_replay_ref": _exact(
+                 component.get("target_domain_replay_ref"), "target domain replay"
+             ).as_dict()}
+            for ref, domain, component in zip(
+                targets, domains, query.target_arity_and_topology["components"]
+            )
+        ]
+        expected_domain_identity = semantic_hash({
+            "components": components,
+            "joint_order_semantics": query.target_arity_and_topology["joint_order_semantics"],
+            "full_domain": full,
+        })
+        if (topology.get("target_domain_identity") != expected_domain_identity
+                or fact.target_domain_identity != expected_domain_identity):
+            raise S04KnowledgeError("I03 source joint domain identity changed")
         raw_rows = topology.get("complete_cell_semantic_projection")
         if not isinstance(raw_rows, (list, tuple)):
             raise S04KnowledgeError("positive joint is missing full cell material")
@@ -238,8 +275,11 @@ def receive_s04_i03_research(
                 raise S04KnowledgeError("weighted individual cell smuggled into RAW joint")
             rows.append({"cell": cell, "raw_count": n, "cell_state": row["cell_state"]})
             seen.add(key)
-        if seen != expected or sum(row["raw_count"] for row in rows) != resolved:
-            raise S04KnowledgeError("incomplete full joint or count/denominator inconsistency")
+        if (seen != expected or sum(row["raw_count"] for row in rows) != resolved
+                or fact.raw_resolved_target_support != resolved):
+            raise S04KnowledgeError(
+                "incomplete full joint or raw resolved target/denominator inconsistency"
+            )
         risk_members = _unique_refs(fact.risk_set_member_refs, "risk respondents")
         denominator_members = _unique_refs(fact.denominator_member_refs, "eligible respondents")
         if (len(denominator_members) != eligible
