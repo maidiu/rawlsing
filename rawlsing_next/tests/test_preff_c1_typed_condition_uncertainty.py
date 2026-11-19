@@ -88,11 +88,13 @@ def test_rehashed_inconsistent_unknown_condition_members_are_not_admitted(
     with monkeypatch.context() as patch:
         patch.setattr(evaluator, "_eval_predicate", partial)
         actual = native._run(source, qa, pred, query)
-    from rawlsing_next.pre553_empirical_objects import EmpiricalFact
+    from rawlsing_next.pre553_empirical_objects import EmpiricalFact, exact_ref
     fact = actual.facts[0]
     source_topology = dict(fact.target_topology)
     witness = dict(source_topology["condition_membership_uncertainty"])
-    witness["member_refs"] = [fact.denominator_member_refs[0].as_dict()]
+    witness["member_refs"] = [
+        exact_ref(fact.denominator_member_refs[0], "known respondent").as_dict()
+    ]
     source_topology["condition_membership_uncertainty"] = witness
     forged = EmpiricalFact(
         typed_state=fact.typed_state,
