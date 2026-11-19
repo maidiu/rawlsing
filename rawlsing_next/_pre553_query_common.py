@@ -191,6 +191,9 @@ class _Evaluation:
     weighted_cells: Mapping[str, Fraction] | None
     used_objects: tuple[CanonicalSemanticObject | C11InternalRecord | _EventRead, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
+    # Extra negative evidence only. Empty for every historical complete
+    # query, preserving existing canonical fact/replay identities.
+    unresolved_condition_member_refs: tuple[ExactRef, ...] = ()
 
 
 def _require_mapping(value: Any, name: str) -> Mapping[str, Any]:
