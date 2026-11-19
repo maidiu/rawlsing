@@ -322,7 +322,7 @@ def test_negative_state_cannot_hide_positive_cell_evidence():
         _receive(query, replace(result, facts=(retagged,)))
 
 
-def test_denominator_may_legitimately_be_condition_selected_subset_of_risk_members():
+def test_forged_condition_subset_cannot_retain_more_resolved_cells_than_denominator():
     _, _, _, query, result = _case(tag="FF01-ROSTER-SUBSET")
     fact = result.facts[0]
     risk = list(fact.risk_set_member_refs)
@@ -341,3 +341,46 @@ def test_denominator_may_legitimately_be_condition_selected_subset_of_risk_membe
     # denominator: first ensure this contradiction is refused.
     with pytest.raises(FF01GenericIngressError, match="joint count"):
         _receive(query, reduced)
+
+
+def test_genuine_native_condition_selected_denominator_subset_is_accepted():
+    source, qauth, _, _, _ = _case(tag="FF01-GENUINE-SUBSET")
+    members = (source["respondents"]["R00"], source["respondents"]["R10"])
+    predicate = native._branch_predicate(
+        source, qauth, members=members, tag="TWO-OF-FOUR",
+    )
+    query = native._query(source, qauth, predicate, ("X", "Y", "Z"), tag="subset")
+    result = native._run(source, qauth, predicate, query)
+    assert result.facts[0].typed_state == "SUPPORTED"
+    assert result.facts[0].raw_denominator_support == 2
+    received = _receive(query, result)
+    assert received.semantic_projection()["raw_eligible_condition_denominator"] == 2
+    assert received.semantic_projection()["raw_fully_resolved_joint_n"] == 2
+
+
+def test_actual_pairwise_i03_marginals_identical_while_triples_differ():
+    left_source, left_qa, left_pred, left_query, left_triple = _case(
+        parity=0, tag="FF01-XOR-EQUAL-PAIR",
+    )
+    right_source, right_qa, right_pred, right_query, right_triple = _case(
+        parity=1, tag="FF01-XNOR-EQUAL-PAIR",
+    )
+    assert _receive(left_query, left_triple).ref != _receive(right_query, right_triple).ref
+    for targets in (("X", "Y"), ("X", "Z"), ("Y", "Z")):
+        lhs = native._run(
+            left_source, left_qa, left_pred,
+            native._query(left_source, left_qa, left_pred, targets, tag="pair"),
+        ).facts[0]
+        rhs = native._run(
+            right_source, right_qa, right_pred,
+            native._query(right_source, right_qa, right_pred, targets, tag="pair"),
+        ).facts[0]
+        left_cells = {
+            tuple(row["cell"]): row["raw_numerator_support"]
+            for row in lhs.target_topology["complete_cell_semantic_projection"]
+        }
+        right_cells = {
+            tuple(row["cell"]): row["raw_numerator_support"]
+            for row in rhs.target_topology["complete_cell_semantic_projection"]
+        }
+        assert left_cells == right_cells
