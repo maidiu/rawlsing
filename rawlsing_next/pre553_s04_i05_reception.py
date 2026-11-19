@@ -106,7 +106,20 @@ def receive_s04_i05_role(
     if not isinstance(original_fact_refs, (list, tuple)) or len(original_fact_refs) != 1:
         raise S04I05ReceptionError("selected role has no single original source fact")
     fact_ref = _ref(original_fact_refs[0], "I05 owned fact")
-    if fact_ref not in set(receipt.empirical_fact_refs) or fact_ref not in set(discovery.empirical_fact_refs):
+    # Canonical I05 receipt fields may deserialize as frozen MappingProxyType
+    # dictionaries rather than hashable ExactRef instances. Normalize every
+    # source reference through the *existing* exact-ref contract before set
+    # membership. Never hash the raw serialized mappings or compare by object id.
+    receipt_fact_refs = tuple(
+        _ref(value, "candidate empirical fact") for value in receipt.empirical_fact_refs
+    )
+    frontier_fact_refs = tuple(
+        _ref(value, "frontier empirical fact") for value in discovery.empirical_fact_refs
+    )
+    if (len(set(receipt_fact_refs)) != len(receipt_fact_refs)
+            or len(set(frontier_fact_refs)) != len(frontier_fact_refs)):
+        raise S04I05ReceptionError("duplicate exact empirical fact identity in I05 custody")
+    if fact_ref not in receipt_fact_refs or fact_ref not in frontier_fact_refs:
         raise S04I05ReceptionError("source fact not part of exact validated I05 frontier")
     selected = [f for f in discovery.empirical_facts if f.ref == fact_ref]
     if len(selected) != 1 or _ref(selected[0].empirical_query_spec_ref, "fact query") != query.ref:
