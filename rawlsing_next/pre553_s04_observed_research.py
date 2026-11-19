@@ -19,6 +19,9 @@ from json import loads
 from math import prod
 from typing import Any, Mapping, Sequence
 
+from rawlsing_next.pre553_interpretation_qualification import (
+    InterpretationQualificationError, refuse_positive_uninterpreted_support,
+)
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, EmpiricalQuerySpec, ExactRef, authority_ref, canonical_json,
@@ -271,6 +274,17 @@ def receive_s04_i03_research(
             n = row.get("raw_numerator_support")
             if (key not in expected or key in seen or type(n) is not int or n < 0):
                 raise S04KnowledgeError("duplicate, foreign, incomplete or negative cell")
+            # ANVIL's raw lane preserves observed but unmapped values as
+            # INVALID_UNRESOLVED; even a self-rehashed SUPPORTED fact must not
+            # turn that positive event into a substantive S04 sample count.
+            # Actual response-state diagnostic use is a separate issuer,
+            # never an implicit grant via this descriptive recipient.
+            try:
+                refuse_positive_uninterpreted_support(
+                    cell=cell, raw_support=n, consumer="S04",
+                )
+            except InterpretationQualificationError as exc:
+                raise S04KnowledgeError(str(exc)) from exc
             if row.get("cell_state") != (
                 "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
             ):
