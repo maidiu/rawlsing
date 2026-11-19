@@ -1,0 +1,111 @@
+"""C0 physical-preservation contract against the ACTUAL source-direct I02 writer.
+
+No original survey data or new interpretation is fabricated. An otherwise
+qualified SAV/DTA fixture is rebuilt with one physically observed response
+mapping omitted; the resulting same-source C11 release must retain its
+uninterpreted raw cell, continue existing mapped rows and preserve separately
+authorized coordinate ownership even when response interpretation is unknown.
+"""
+from copy import deepcopy
+from pathlib import Path
+import sqlite3
+
+import pytest
+
+from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
+from rawlsing_next.tests.test_pyat960_s1e_source_i02 import _fixture, _build
+
+
+def _states(path: Path, family: str) -> dict[str, int]:
+    db = sqlite3.connect(path)
+    try:
+        return dict(db.execute(
+            "SELECT state,COUNT(*) FROM main.objects WHERE family=? GROUP BY state",
+            (family,),
+        ))
+    finally:
+        db.close()
+
+
+@pytest.mark.parametrize("source_format", ["SAV", "DTA"])
+def test_missing_mapping_preserves_raw_observed_and_mapped_responses_cold(
+    tmp_path, source_format,
+):
+    fixture = _fixture(
+        tmp_path / source_format,
+        source_format=source_format,
+        values=(0.0, 1.0, 2.0, 0.0, 1.0),
+    )
+    full = _build(tmp_path / source_format, fixture, name="fully-mapped.sqlite")
+    altered = deepcopy(fixture[4])
+    original_values = altered["response_slots"][0]["values"]
+    mapped_rules = [v for v in original_values if v["raw_value"] != 2.0]
+    assert len(mapped_rules) == len(original_values) - 1
+    altered["response_slots"][0]["values"] = mapped_rules
+
+    # C11 must not require a scientific mapping to preserve an observed
+    # physical value; the *interpretation* of that one row remains held.
+    first = _build(
+        tmp_path / source_format, fixture,
+        name="with-uninterpreted.sqlite", config=SourceConfig(altered),
+    )
+    second = _build(
+        tmp_path / source_format, fixture,
+        name="uninterpreted-reopen-parity.sqlite",
+        config=SourceConfig(deepcopy(altered)),
+    )
+    states = _states(Path(first.destination), "RespondentEvent")
+    assert states["INVALID_UNRESOLVED"] == 1
+    assert states["SUBSTANTIVE_RESPONSE"] == 4
+    assert first.stats.event_count == full.stats.event_count == 5
+    assert first.stats.coordinate_count == full.stats.coordinate_count == 5
+    assert first.roots.logical == second.roots.logical
+    assert first.roots.physical == second.roots.physical
+    assert first.roots.logical != full.roots.logical
+    assert _states(Path(first.destination), "EmpiricalCoordinateFact") == _states(
+        Path(full.destination), "EmpiricalCoordinateFact"
+    )
+
+
+def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
+    tmp_path,
+):
+    # Deliberately have BOTH independently approved owners share the
+    # same physical response slot. Unknown response meaning must not
+    # suppress a valid, separate source-coordinate fact.
+    fixture = _fixture(
+        tmp_path, source_format="SAV",
+        values=(0.0, 1.0, 2.0, 1.0, 0.0),
+    )
+    altered = deepcopy(fixture[4])
+    altered["response_slots"][0]["values"] = [
+        rule for rule in altered["response_slots"][0]["values"]
+        if rule["raw_value"] != 2.0
+    ]
+    # Reuse the exact authority/owner-set structure defined by the
+    # existing S1-B fixture factory; do not improvise any permission.
+    from rawlsing_next.tests.test_pyat940_s1b_support import make_config
+    dual = make_config(
+        source_format="SAV",
+        active_source_sha256=fixture[1],
+        row_count=fixture[2],
+        values=(0.0, 1.0, 2.0, 1.0, 0.0),
+        keyed=False,
+        duplicate_slot_owner=True,
+        include_slot_owner_set=True,
+    )
+    dual["response_slots"][0]["values"] = [
+        rule for rule in dual["response_slots"][0]["values"]
+        if rule["raw_value"] != 2.0
+    ]
+    handoff = _build(
+        tmp_path, fixture, name="qualified-dual-owner.sqlite",
+        config=SourceConfig(dual),
+    )
+    assert _states(Path(handoff.destination), "RespondentEvent")[
+        "INVALID_UNRESOLVED"
+    ] == 1
+    # One country coordinate plus the q101 coordinate, every physical
+    # respondent including the one whose response meaning was unmapped.
+    assert handoff.stats.coordinate_count == 2 * fixture[2]
+    assert sum(_states(Path(handoff.destination), "EmpiricalCoordinateFact").values()) == 2 * fixture[2]
