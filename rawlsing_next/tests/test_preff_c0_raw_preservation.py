@@ -98,10 +98,36 @@ def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
         rule for rule in dual["response_slots"][0]["values"]
         if rule["raw_value"] != 2.0
     ]
+    from rawlsing_next.tests.test_pyat960_s1e_support import RecordingBodySink
+    sink = RecordingBodySink()
     handoff = _build(
         tmp_path, fixture, name="qualified-dual-owner.sqlite",
-        config=SourceConfig(dual),
+        config=SourceConfig(dual), body_sink=sink,
     )
+    assert sink.finished and not sink.aborted
+    declared = dual["slot_owner_sets"][0]["owners"]
+    expected_authorities = {
+        owner["owner_family"]: {
+            (a["authority_id"], a["authority_version"], a["authority_content_hash"])
+            for a in owner["authority_refs"]
+        }
+        for owner in declared
+    }
+    observed = {"RespondentEvent@1.0.0": [], "EmpiricalCoordinateFact@1.0.0": []}
+    for family, obj in sink.bodies:
+        if family in ("RespondentEvent", "EmpiricalCoordinateFact"):
+            observed[family + "@1.0.0"].append(obj)
+    assert len(observed["RespondentEvent@1.0.0"]) == fixture[2]
+    assert len(observed["EmpiricalCoordinateFact@1.0.0"]) >= fixture[2]
+    for family, objects in observed.items():
+        for obj in objects:
+            actual = {
+                (a.authority_id, a.authority_version, a.authority_content_hash)
+                for a in obj.authority_snapshot_refs
+            }
+            assert expected_authorities[family].issubset(actual), (
+                family, "shared slot owner authority must reach retained physical body"
+            )
     assert _states(Path(handoff.destination), "RespondentEvent")[
         "INVALID_UNRESOLVED"
     ] == 1
