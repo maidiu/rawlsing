@@ -90,11 +90,15 @@ def receive_s04_first_consumer(
         batch, _ = run_s04_context_batch(
             knowledge=knowledge, requests=context_requests,
         )
-    if downstream is None and batch is None:
-        # S04 itself is a valid F1 consumer even without more operations.
-        consumer_status = "UPSTREAM_S04_ONLY"
+    if downstream is not None and batch is not None:
+        consumer_status = "S04_TO_FF01_WITH_CONTEXT_BATCH"
+    elif downstream is not None:
+        consumer_status = "S04_TO_FF01_FIRST_CONSUMER"
+    elif batch is not None:
+        consumer_status = "S04_CONTEXT_BATCH_ONLY"
     else:
-        consumer_status = "FIRST_CONSUMER_BOUND"
+        # S04 itself is a valid unary F1 product without mandatory FF01.
+        consumer_status = "UPSTREAM_S04_ONLY"
     material = knowledge.material()
     payload = {
         "contract": CONTRACT,
