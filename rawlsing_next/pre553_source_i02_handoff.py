@@ -70,7 +70,7 @@ from rawlsing_next.pre553_source_i02_streams import (
     SourceI02BodyTee,
     SourceI02BodyTransportRefusal,
 )
-from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalSourceIncidence
+from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_r157_projection_adapter import (
     IDENTITY_CLASS_ORIGINAL,
@@ -82,6 +82,7 @@ from rawlsing_next.pre553_r157_projection_adapter import (
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
+    ResponseValueRule,
     SourceBackedC11FacadeError,
     _cell_key,
     _coordinate,
@@ -324,6 +325,33 @@ def _verify_census_before_source(
     return audit
 
 
+def _unresolved_response_state(cell: PhysicalCell) -> str:
+    """Preserve source-decoded missingness; unbound observed does not mean answer."""
+    if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+        return "INVALID_UNRESOLVED"
+    if cell.missing_state in {
+        PhysicalMissingState.FORMAT_USER_MISSING_VALUE,
+        PhysicalMissingState.FORMAT_USER_MISSING_RANGE,
+        PhysicalMissingState.FORMAT_EXTENDED_MISSING,
+        PhysicalMissingState.SYSTEM_MISSING,
+        PhysicalMissingState.SOURCE_CELL_ABSENT_OR_UNREPRESENTED,
+    }:
+        return "MISSING"
+    raise SourceI02Refusal(
+        "UNSUPPORTED_PHYSICAL_MISSING_STATE", cell.missing_state.value)
+
+
+def _occurrence_templates(slot: Any) -> tuple[Any, ...]:
+    """Reuse source-authorized occurrence grain; do not invent multiplicities."""
+    by_key = {}
+    for value in slot.values:
+        for occurrence in value.occurrences:
+            by_key.setdefault(occurrence.key, occurrence)
+    if not by_key:
+        raise SourceI02Refusal("UNBOUND_RESPONSE_SLOT_HAS_NO_OCCURRENCE_TEMPLATE")
+    return tuple(by_key[key] for key in sorted(by_key))
+
+
 def _project_spooled_families(
     *,
     config: SourceConfig,
@@ -349,6 +377,8 @@ def _project_spooled_families(
     slot_counts: Counter[tuple[str, tuple[int, str]]] = Counter()
     key_slot = config.document["respondents"].get("source_native_key_slot")
     key_cells: list[PhysicalCell] = []
+    unresolved_response_cells = 0
+    unresolved_response_events = 0
 
     def write(family: str, obj: Any) -> None:
         handles[family].write(
@@ -376,10 +406,32 @@ def _project_spooled_families(
                 slot = response[key]
                 rule = {item.physical_key: item for item in slot.values}.get(physical_key)
                 if rule is None:
-                    raise SourceI02Refusal(
-                        "UNBOUND_RESPONSE_CELL",
-                        {"row": cell.row_ordinal, "slot": key},
-                    )
+                    # Preserve the exact physical cell in C11's existing
+                    # 13-family body, without asserting substantive meaning.
+                    # Observed and source-declared missing remain distinct;
+                    # every recovered occurrence is from existing topology.
+                    state = _unresolved_response_state(cell)
+                    occurrences = _occurrence_templates(slot)
+                    unresolved_response_cells += 1
+                    for occurrence in occurrences:
+                        raw_rule = ResponseValueRule(
+                            physical_key=physical_key,
+                            response_state=state,
+                            occurrences=(occurrence,),
+                            canonical_value=None,
+                            transform_authority_ref=None,
+                            extra_authority_refs=(),
+                        )
+                        write(
+                            "RespondentEvent",
+                            _event(
+                                incidence.source_sha256, cell.row_ordinal, respondent,
+                                slot, cell, raw_rule, occurrence, projection,
+                            ),
+                        )
+                        slot_counts[("RespondentEvent", key)] += 1
+                        unresolved_response_events += 1
+                    continue
                 for occurrence in rule.occurrences:
                     write(
                         "RespondentEvent",
@@ -434,7 +486,11 @@ def _project_spooled_families(
             raise SourceI02Refusal("ROW_NATIVE_KEY_WITNESS_MISMATCH")
     return (
         counts,
-        {"rows": len(rows), "projected_slots": len(projected)},
+        {
+            "rows": len(rows), "projected_slots": len(projected),
+            "unresolved_response_cells": unresolved_response_cells,
+            "unresolved_response_events": unresolved_response_events,
+        },
         dict(slot_counts),
         key_slot is not None,
     )
