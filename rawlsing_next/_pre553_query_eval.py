@@ -4,6 +4,7 @@ from dataclasses import replace
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
+    UnresolvedConditionMember,
     _eval_predicate,
     _question_matches,
     _select_respondent_events,
@@ -342,6 +343,7 @@ class _GroupCore:
     cell_by_respondent: Mapping[str, str]
     used_objects: tuple[Any, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
+    unresolved_condition_member_refs: tuple[ExactRef, ...]
     fingerprint: str
 
 
@@ -354,6 +356,9 @@ def _group_core_fingerprint(core: _GroupCore) -> str:
         "detail": core.detail,
         "risk_members": [ref.key for ref in core.risk_members],
         "denominator_members": [ref.key for ref in core.denominator_members],
+        "unresolved_condition_member_refs": [
+            ref.key for ref in core.unresolved_condition_member_refs
+        ],
         "raw_denominator": core.raw_denominator,
         "raw_resolved_target_support": core.raw_resolved_target_support,
         "raw_cells": sorted(core.raw_cells.items()),
@@ -461,6 +466,7 @@ def _evaluate_index_group_core(
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []
     raw_resolved = 0
+    unresolved_condition_members: list[ExactRef] = []
     inapplicable_count = 0
     component_positive = [False] * plan.arity
     derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
@@ -491,15 +497,21 @@ def _evaluate_index_group_core(
         if not member:
             continue
         risk_members.append(respondent.ref)
-        condition = _eval_predicate(
-            predicate.predicate_ast,
-            respondent=respondent,
-            index=index,
-            registry=registry,
-            used=used,
-            used_auth=used_auth,
-            derived_branch_memberships=derived_branch_memberships,
-        )
+        try:
+            condition = _eval_predicate(
+                predicate.predicate_ast,
+                respondent=respondent,
+                index=index,
+                registry=registry,
+                used=used,
+                used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
+            )
+        except UnresolvedConditionMember:
+            # Unknown condition is neither false nor a denominator member.
+            # Retain its eligible respondent and exact source evidence.
+            unresolved_condition_members.append(respondent.ref)
+            continue
         if not condition:
             continue
         denominator_members.append(respondent.ref)
@@ -528,7 +540,17 @@ def _evaluate_index_group_core(
     denominator_refs = _canonical_refs(denominator_members)
     raw_denominator = len(denominator_refs)
 
-    if not risk_refs:
+    if unresolved_condition_members:
+        # Positive/zero counts are only from proven condition-true members.
+        # Unknown members may alter numerator, denominator or weights:
+        # no complete scientific distribution can be admitted downstream.
+        state = "UNRESOLVED"
+        detail = (
+            "source-typed condition membership unresolved for "
+            f"{len(unresolved_condition_members)} eligible respondent(s); "
+            "raw denominator/counts cover known-true members only"
+        )
+    elif not risk_refs:
         if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
             state = "ZERO_OVERLAP"
             detail = "each target has eligible respondents but exact common risk-set overlap is zero"
@@ -565,6 +587,7 @@ def _evaluate_index_group_core(
         cell_by_respondent=MappingProxyType(dict(sorted(cell_by_respondent.items()))),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
         fingerprint="",
     )
     object.__setattr__(core, "fingerprint", _group_core_fingerprint(core))
@@ -606,6 +629,7 @@ def _materialize_grouped_evaluation(
             weighted_cells=None,
             used_objects=core.used_objects,
             used_authority_refs=core.used_authority_refs,
+            unresolved_condition_member_refs=core.unresolved_condition_member_refs,
         )
     if profile.measure_kind != "GOVERNED_WEIGHTED":
         raise EmpiricalQueryExecutionError("unsupported measure kind in grouped materialization")
@@ -642,6 +666,7 @@ def _materialize_grouped_evaluation(
         weighted_cells=MappingProxyType(dict(sorted(weighted_cells.items()))),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=core.unresolved_condition_member_refs,
     )
 
 
@@ -679,6 +704,7 @@ def _evaluate_index_group(
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []
     raw_resolved = 0
+    unresolved_condition_members: list[ExactRef] = []
     weighted_denominator = Fraction(0, 1) if weighted_cells is not None else None
     weighted_resolved = Fraction(0, 1) if weighted_cells is not None else None
     inapplicable_count = 0
@@ -752,15 +778,19 @@ def _evaluate_index_group(
             if not member:
                 continue
             risk_members.append(respondent.ref)
-            condition = _eval_predicate(
-                predicate.predicate_ast,
-                respondent=respondent,
-                index=index,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
+            try:
+                condition = _eval_predicate(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
+                )
+            except UnresolvedConditionMember:
+                unresolved_condition_members.append(respondent.ref)
+                continue
             if not condition:
                 continue
             denominator_members.append(respondent.ref)
@@ -801,7 +831,17 @@ def _evaluate_index_group(
     denominator_refs = _canonical_refs(denominator_members)
     raw_denominator = len(denominator_refs)
 
-    if not risk_refs:
+    if unresolved_condition_members:
+        # Positive/zero counts are only from proven condition-true members.
+        # Unknown members may alter numerator, denominator or weights:
+        # no complete scientific distribution can be admitted downstream.
+        state = "UNRESOLVED"
+        detail = (
+            "source-typed condition membership unresolved for "
+            f"{len(unresolved_condition_members)} eligible respondent(s); "
+            "raw denominator/counts cover known-true members only"
+        )
+    elif not risk_refs:
         if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
             state = "ZERO_OVERLAP"
             detail = "each target has eligible respondents but exact common risk-set overlap is zero"
@@ -838,6 +878,7 @@ def _evaluate_index_group(
                         if weighted_cells is not None else None),
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
+        unresolved_condition_member_refs=_canonical_refs(unresolved_condition_members),
     )
 
 
@@ -890,6 +931,10 @@ def _make_execution_replay_ref(
         "denominator_member_refs": [ref.as_dict() for ref in evaluation.denominator_members],
         "complete_cells": list(_cell_projection(evaluation)),
     }
+    if evaluation.unresolved_condition_member_refs:
+        material["unresolved_condition_member_refs"] = [
+            ref.as_dict() for ref in evaluation.unresolved_condition_member_refs
+        ]
     digest = semantic_hash(material)
     return ExactRef(
         "PRE553_I03_QUERY_REPLAY",
@@ -974,6 +1019,16 @@ def _build_fact(
             "joint_order_semantics": plan.joint_order_semantics,
             "target_domain_identity": plan.domain_identity,
             "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
+            **({
+                "condition_membership_uncertainty": {
+                    "state": "UNRESOLVED_CONDITION_MEMBERSHIP",
+                    "member_refs": [
+                        ref.as_dict() for ref in evaluation.unresolved_condition_member_refs
+                    ],
+                    "known_true_denominator": evaluation.raw_denominator,
+                    "eligible_risk_n": len(evaluation.risk_members),
+                }
+            } if evaluation.unresolved_condition_member_refs else {}),
         },
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,

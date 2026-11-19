@@ -338,7 +338,40 @@ def receive_s04_i03_research(
                 raise S04KnowledgeError(
                     "nonpositive I03 cell count contradicts held resolved total"
                 )
-        if (resolved > 0 and fact.typed_state == "UNRESOLVED"
+        unknown_condition = negative_topology.get(
+            "condition_membership_uncertainty"
+        )
+        if unknown_condition is not None:
+            if (fact.typed_state != "UNRESOLVED"
+                    or not isinstance(unknown_condition, Mapping)
+                    or unknown_condition.get("state")
+                    != "UNRESOLVED_CONDITION_MEMBERSHIP"):
+                raise S04KnowledgeError("unissued condition uncertainty witness")
+            unknown = _unique_refs(
+                unknown_condition.get("member_refs", ()),
+                "unknown condition respondents",
+            )
+            risk_members = _unique_refs(
+                fact.risk_set_member_refs, "risk respondents"
+            )
+            denominator_members = _unique_refs(
+                fact.denominator_member_refs, "known-true respondents"
+            )
+            if (not unknown
+                    or len(denominator_members) != eligible
+                    or unknown_condition.get("known_true_denominator") != eligible
+                    or unknown_condition.get("eligible_risk_n") != len(risk_members)
+                    or not set(unknown).isdisjoint(denominator_members)
+                    or any(ref.kind != "C11Internal:RespondentIdentity"
+                           for ref in (*unknown, *risk_members,
+                                       *denominator_members))
+                    or not set((*unknown, *denominator_members)).issubset(
+                        risk_members
+                    )):
+                raise S04KnowledgeError(
+                    "uncertain condition members violate original source-risk extent"
+                )
+        elif (resolved > 0 and fact.typed_state == "UNRESOLVED"
                 and not 0 < resolved < eligible):
             raise S04KnowledgeError(
                 "partially resolved UNRESOLVED joint requires positive incomplete risk"
@@ -382,6 +415,15 @@ def receive_s04_i03_research(
         "not_issued": list(UNISSUED),
         "source_authenticity": "I03_HASH_AND_ISSUER_INTERNAL_CLOSURE__ORIGINAL_SOURCE_RIGHTS_UNVERIFIED",
         "per_cell_respondent_membership": "NOT_IN_AGGREGATE_EMPIRICAL_FACT",
+        **({
+            "source_unknown_condition_member_refs": [
+                ref.as_dict() for ref in unknown
+            ],
+            "source_known_true_denominator_n": eligible,
+            "source_eligible_risk_n": len(risk_members),
+        } if fact.typed_state != "SUPPORTED"
+        and negative_topology.get("condition_membership_uncertainty") is not None
+        else {}),
     }
     h = semantic_hash(publication)
     return S04ObservedKnowledge(canonical_json(publication), h)

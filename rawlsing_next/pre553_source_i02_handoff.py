@@ -55,9 +55,11 @@ from rawlsing_next.pre553_c11_integrity import TypedAbsence
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact,
     ExactRef,
+    AuthorityRef,
     RespondentEvent,
     WeightMeasureFact,
     canonical_json,
+    canonicalize,
     exact_ref,
 )
 from rawlsing_next.pre553_operation_fate_census import (
@@ -70,7 +72,10 @@ from rawlsing_next.pre553_source_i02_streams import (
     SourceI02BodyTee,
     SourceI02BodyTransportRefusal,
 )
-from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalSourceIncidence
+from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
+from rawlsing_next.pre553_physical_cell_journal import (
+    PhysicalCellJournal, PhysicalCellJournalReceipt,
+)
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_r157_projection_adapter import (
     IDENTITY_CLASS_ORIGINAL,
@@ -82,6 +87,10 @@ from rawlsing_next.pre553_r157_projection_adapter import (
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
+    RESPONSE_OWNER_FAMILY,
+    COORDINATE_OWNER_FAMILY,
+    WEIGHT_OWNER_FAMILY,
+    ResponseValueRule,
     SourceBackedC11FacadeError,
     _cell_key,
     _coordinate,
@@ -163,6 +172,7 @@ class SourceI02Handoff:
     stats: SourceI02Stats
     direct_sections_consumed: bool = True
     body_transport: Mapping[str, Any] | None = None
+    physical_cell_journal: PhysicalCellJournalReceipt | None = None
 
     def open_certificate(self):
         """Open the existing cold reader; its host capability may be unavailable."""
@@ -324,6 +334,93 @@ def _verify_census_before_source(
     return audit
 
 
+def _unresolved_response_state(cell: PhysicalCell) -> str:
+    """Preserve source-decoded missingness; unbound observed does not mean answer."""
+    if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+        return "INVALID_UNRESOLVED"
+    if cell.missing_state in {
+        PhysicalMissingState.FORMAT_USER_MISSING_VALUE,
+        PhysicalMissingState.FORMAT_USER_MISSING_RANGE,
+        PhysicalMissingState.FORMAT_EXTENDED_MISSING,
+        PhysicalMissingState.SYSTEM_MISSING,
+        PhysicalMissingState.SOURCE_CELL_ABSENT_OR_UNREPRESENTED,
+    }:
+        return "MISSING"
+    raise SourceI02Refusal(
+        "UNSUPPORTED_PHYSICAL_MISSING_STATE", cell.missing_state.value)
+
+
+def _occurrence_templates(slot: Any) -> tuple[Any, ...]:
+    """Only reuse one unequivocal source-authorized occurrence topology.
+
+    A union of mismatched known response-value occurrences would invent
+    multiplicities for an unknown physical value. Reject heterogeneous
+    templates instead of silently creating a fabricated repeated answer.
+    """
+    template = None
+    for value in slot.values:
+        current = {}
+        for occurrence in value.occurrences:
+            if (occurrence.key in current
+                    and current[occurrence.key] != occurrence):
+                raise SourceI02Refusal("AMBIGUOUS_RESPONSE_OCCURRENCE_KEY")
+            current[occurrence.key] = occurrence
+        if not current:
+            raise SourceI02Refusal("UNMAPPED_RESPONSE_HAS_EMPTY_KNOWN_OCCURRENCE")
+        if template is None:
+            template = current
+        elif template != current:
+            raise SourceI02Refusal(
+                "UNMAPPED_RESPONSE_OCCURRENCE_TOPOLOGY_AMBIGUOUS",
+                {"known_template_keys": sorted(template),
+                 "conflicting_template_keys": sorted(current)},
+            )
+    if not template:
+        raise SourceI02Refusal("UNBOUND_RESPONSE_SLOT_HAS_NO_OCCURRENCE_TEMPLATE")
+    return tuple(template[key] for key in sorted(template))
+
+
+def _unmapped_event_with_physical_missingness(
+    *,
+    source_sha256: str,
+    row_ordinal: int,
+    respondent: Any,
+    slot: Any,
+    cell: PhysicalCell,
+    raw_rule: ResponseValueRule,
+    occurrence: Any,
+    projection: GovernedC11Projection,
+    owner_authority_refs: tuple[AuthorityRef, ...] = (),
+) -> RespondentEvent:
+    """Retain source missingness without changing any previously mapped event.
+
+    The actual physical typed raw value stays in the established canonical
+    raw_response_value witness. The source-declared missing classification and
+    declaration are additional *uninterpreted* semantic fields only for
+    fallback events. None of these fields supplies a missing source mapping,
+    scientific response, routing status, transform, or occurrence authority.
+    """
+    original = _event(
+        source_sha256, row_ordinal, respondent, slot, cell,
+        raw_rule, occurrence, projection, owner_authority_refs,
+    )
+    fields = dict(original.semantic_fields)
+    fields["uninterpreted_physical_missing_state"] = cell.missing_state.value
+    fields["uninterpreted_source_missing_declaration"] = canonicalize(
+        cell.source_missing_declaration
+    )
+    fields["uninterpreted_physical_cell_key"] = _cell_key(cell)
+    return RespondentEvent(
+        typed_state=original.typed_state,
+        authority_snapshot_refs=original.authority_snapshot_refs,
+        dependency_refs=original.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            original.producer_replay_locator_or_reference_root
+        ),
+        **fields,
+    )
+
+
 def _project_spooled_families(
     *,
     config: SourceConfig,
@@ -332,6 +429,7 @@ def _project_spooled_families(
     spool_paths: Mapping[str, Path],
     batch_size: int,
     row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None,
+    physical_journal: PhysicalCellJournal | None = None,
 ) -> tuple[dict[str, int], dict[str, Any]]:
     """Run exactly one bounded physical cell pass into the private spool."""
     rows = {binding.row_ordinal: binding.respondent_ref for binding in projection.row_bindings}
@@ -339,6 +437,7 @@ def _project_spooled_families(
     response = {slot.slot.key: slot for slot in projection.response_slots}
     coordinate = {slot.slot.key: slot for slot in projection.coordinate_slots}
     weight = {slot.slot.key: slot for slot in projection.weight_slots}
+    owner_sets = {slot.slot.key: slot for slot in projection.slot_owner_sets}
     projected = set(response) | set(coordinate) | set(weight)
     seen: dict[tuple[int, str], set[int]] = {key: set() for key in projected}
     handles = {
@@ -349,6 +448,8 @@ def _project_spooled_families(
     slot_counts: Counter[tuple[str, tuple[int, str]]] = Counter()
     key_slot = config.document["respondents"].get("source_native_key_slot")
     key_cells: list[PhysicalCell] = []
+    unresolved_response_cells = 0
+    unresolved_response_events = 0
 
     def write(family: str, obj: Any) -> None:
         handles[family].write(
@@ -359,6 +460,12 @@ def _project_spooled_families(
         for cell in incidence.iter_cells(batch_size):
             if not isinstance(cell, PhysicalCell):
                 raise SourceI02Refusal("NON_PHYSICAL_CELL_TRANSPORT")
+            # Physical evidence is written BEFORE the semantic projection
+            # filters. Fully unprojected variables and unknown mapping slots
+            # are preserved in this sourcefree companion without inventing
+            # a semantic 14th family, response occurrence or source authority.
+            if physical_journal is not None:
+                physical_journal.accept(cell)
             key = (cell.variable_ordinal, cell.variable_name)
             if key_slot is not None and key == (key_slot["ordinal"], key_slot["name"]):
                 key_cells.append(cell)
@@ -372,23 +479,58 @@ def _project_spooled_families(
             seen[key].add(cell.row_ordinal)
             respondent = respondent_by_ref[rows[cell.row_ordinal]]
             physical_key = _cell_key(cell)
+            owner_set = owner_sets.get(key)
             if key in response:
                 slot = response[key]
+                response_auths = (
+                    owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY)
+                    if owner_set is not None else ()
+                )
                 rule = {item.physical_key: item for item in slot.values}.get(physical_key)
                 if rule is None:
-                    raise SourceI02Refusal(
-                        "UNBOUND_RESPONSE_CELL",
-                        {"row": cell.row_ordinal, "slot": key},
-                    )
-                for occurrence in rule.occurrences:
-                    write(
-                        "RespondentEvent",
-                        _event(
-                            incidence.source_sha256, cell.row_ordinal, respondent,
-                            slot, cell, rule, occurrence, projection,
-                        ),
-                    )
-                    slot_counts[("RespondentEvent", key)] += 1
+                    # Preserve the exact physical cell in C11's existing
+                    # 13-family body, without asserting substantive meaning.
+                    # Observed and source-declared missing remain distinct;
+                    # every recovered occurrence is from existing topology.
+                    state = _unresolved_response_state(cell)
+                    occurrences = _occurrence_templates(slot)
+                    unresolved_response_cells += 1
+                    for occurrence in occurrences:
+                        raw_rule = ResponseValueRule(
+                            physical_key=physical_key,
+                            response_state=state,
+                            occurrences=(occurrence,),
+                            canonical_value=None,
+                            transform_authority_ref=None,
+                            extra_authority_refs=(),
+                        )
+                        write(
+                            "RespondentEvent",
+                            _unmapped_event_with_physical_missingness(
+                                source_sha256=incidence.source_sha256,
+                                row_ordinal=cell.row_ordinal,
+                                respondent=respondent,
+                                slot=slot, cell=cell, raw_rule=raw_rule,
+                                occurrence=occurrence, projection=projection,
+                                owner_authority_refs=response_auths,
+                            ),
+                        )
+                        slot_counts[("RespondentEvent", key)] += 1
+                        unresolved_response_events += 1
+                else:
+                    # A shared physical slot can have approved coordinate or
+                    # weight owners too. Never skip their emission merely
+                    # because the response interpretation is unresolved.
+                    for occurrence in rule.occurrences:
+                        write(
+                            "RespondentEvent",
+                            _event(
+                                incidence.source_sha256, cell.row_ordinal, respondent,
+                                slot, cell, rule, occurrence, projection,
+                                response_auths,
+                            ),
+                        )
+                        slot_counts[("RespondentEvent", key)] += 1
             if key in coordinate:
                 slot = coordinate[key]
                 rule = {item.physical_key: item for item in slot.values}.get(
@@ -398,6 +540,8 @@ def _project_spooled_families(
                     _coordinate(
                         incidence.source_sha256, cell.row_ordinal, respondent,
                         slot, cell, rule, projection,
+                        owner_set.authority_refs_for(COORDINATE_OWNER_FAMILY)
+                        if owner_set is not None else (),
                     ),
                 )
                 slot_counts[("EmpiricalCoordinateFact", key)] += 1
@@ -410,6 +554,8 @@ def _project_spooled_families(
                     _weight(
                         incidence.source_sha256, cell.row_ordinal, respondent,
                         slot, cell, rule, projection,
+                        owner_set.authority_refs_for(WEIGHT_OWNER_FAMILY)
+                        if owner_set is not None else (),
                     ),
                 )
                 slot_counts[("WeightMeasureFact", key)] += 1
@@ -434,7 +580,11 @@ def _project_spooled_families(
             raise SourceI02Refusal("ROW_NATIVE_KEY_WITNESS_MISMATCH")
     return (
         counts,
-        {"rows": len(rows), "projected_slots": len(projected)},
+        {
+            "rows": len(rows), "projected_slots": len(projected),
+            "unresolved_response_cells": unresolved_response_cells,
+            "unresolved_response_events": unresolved_response_events,
+        },
         dict(slot_counts),
         key_slot is not None,
     )
@@ -1003,6 +1153,7 @@ def build_source_i02_handoff(
     consumer_use: str | None = None,
     semantic_use_scope: tuple[str, ...] | None = None,
     body_sink: SourceI02BodySink | None = None,
+    physical_journal: PhysicalCellJournal | None = None,
 ) -> SourceI02Handoff:
     """Build one bounded source→direct-I02 handoff.
 
@@ -1018,6 +1169,9 @@ def build_source_i02_handoff(
     """
     if not isinstance(config, SourceConfig):
         config = SourceConfig(config)
+    if (physical_journal is not None
+            and type(physical_journal) is not PhysicalCellJournal):
+        raise SourceI02Refusal("EXACT_PHYSICAL_JOURNAL_SINK_REQUIRED")
     doc = config.document
     target = Path(destination).absolute()
     if (target.suffix != ".sqlite" or target.exists() or target.is_symlink()
@@ -1046,6 +1200,11 @@ def build_source_i02_handoff(
     )
     original_source = (
         doc["binding"]["identity_class"] == IDENTITY_CLASS_ORIGINAL)
+    # Raw physical retention is separately permissioned. Existing original
+    # construction/read grants do NOT imply export/retention of all cells.
+    # Sourcefree C0 permits explicit private journals for engineering only.
+    if original_source and physical_journal is not None:
+        raise SourceI02Hold("ORIGINAL_PHYSICAL_JOURNAL_RETENTION_RIGHTS_UNISSUED")
     source_prehash_passes = 1 if original_source else 0
     source_reads = 1 + source_prehash_passes
     source_open_model = (
@@ -1097,6 +1256,8 @@ def build_source_i02_handoff(
             raise SourceI02Refusal("DECODED_SOURCE_SHA_MISMATCH")
         if incidence.row_count != doc["binding"]["row_count"]:
             raise SourceI02Refusal("DECODED_SOURCE_ROWS_MISMATCH")
+        if physical_journal is not None:
+            physical_journal.begin(incidence)
         spool_dir = Path(tempfile.mkdtemp(
             prefix=".s1e-i02-spool-", dir=target.parent))
         spool_paths = {
@@ -1110,6 +1271,7 @@ def build_source_i02_handoff(
                 spool_paths=spool_paths,
                 batch_size=batch_size,
                 row_native_keys=row_native_keys,
+                physical_journal=physical_journal,
             )
         )
         operation_fates, operation_audit = _operation_source_antijoin(
@@ -1171,6 +1333,9 @@ def build_source_i02_handoff(
             operation_fates=operation_fates,
             stats=stats,
         )
+        if physical_journal is not None:
+            raw_receipt = physical_journal.finish()
+            handoff = replace(handoff, physical_cell_journal=raw_receipt)
         if sink is not None:
             body_transport = sink.finish(
                 roots=roots,
@@ -1182,6 +1347,8 @@ def build_source_i02_handoff(
     except BaseException as exc:
         if sink is not None:
             sink.abort(exc)
+        if physical_journal is not None:
+            physical_journal.abort()
         if published or (
             manifest is not None
             and _target_matches_manifest(target, manifest)
