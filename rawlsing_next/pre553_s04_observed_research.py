@@ -206,12 +206,26 @@ def receive_s04_i03_research(
         raw_rows = topology.get("complete_cell_semantic_projection")
         if not isinstance(raw_rows, (list, tuple)):
             raise S04KnowledgeError("positive joint is missing full cell material")
-        expected = {canonical_json(list(combo)) for combo in product(*domains)}
+        expected = (
+            {canonical_json([v]) for v in domains[0]}
+            if len(targets) == 1
+            else {canonical_json(list(combo)) for combo in product(*domains)}
+        )
         seen: set[str] = set()
         for row in raw_rows:
-            if not isinstance(row, Mapping) or not isinstance(row.get("cell"), (list, tuple)):
+            if not isinstance(row, Mapping):
                 raise S04KnowledgeError("malformed target cell")
-            cell = canonicalize(list(row["cell"]))
+            native_cell = row.get("cell")
+            if len(targets) == 1:
+                # I03 represents scalar F1 cells as scalar domain values, not
+                # one-element tuples. The S04 research ABI stays k-wide.
+                if isinstance(native_cell, (list, tuple)):
+                    raise S04KnowledgeError("unary scalar source cell is not an array")
+                cell = canonicalize([native_cell])
+            else:
+                if not isinstance(native_cell, (list, tuple)) or len(native_cell) != len(targets):
+                    raise S04KnowledgeError("joint cell arity differs from query")
+                cell = canonicalize(list(native_cell))
             key = canonical_json(cell)
             n = row.get("raw_numerator_support")
             if (key not in expected or key in seen or type(n) is not int or n < 0):
