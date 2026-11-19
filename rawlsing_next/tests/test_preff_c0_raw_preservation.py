@@ -120,14 +120,20 @@ def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
     assert len(observed["RespondentEvent@1.0.0"]) == fixture[2]
     assert len(observed["EmpiricalCoordinateFact@1.0.0"]) >= fixture[2]
     for family, objects in observed.items():
+        qualified = 0
         for obj in objects:
             actual = {
                 (a.authority_id, a.authority_version, a.authority_content_hash)
                 for a in obj.authority_snapshot_refs
             }
-            assert expected_authorities[family].issubset(actual), (
-                family, "shared slot owner authority must reach retained physical body"
-            )
+            if expected_authorities[family].issubset(actual):
+                qualified += 1
+        # The country coordinate is a different physical slot and has no
+        # dual-owner requirement. Exactly the shared q101 slot's full
+        # respondent body must carry each respective approved owner set.
+        assert qualified == fixture[2], (
+            family, "shared physical-slot owner authority did not survive"
+        )
     assert _states(Path(handoff.destination), "RespondentEvent")[
         "INVALID_UNRESOLVED"
     ] == 1
