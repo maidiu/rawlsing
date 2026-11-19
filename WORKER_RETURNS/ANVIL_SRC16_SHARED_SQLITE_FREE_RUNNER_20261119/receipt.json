@@ -1,17 +1,16 @@
 {
-  "common_key_injection": {
-    "no_monkeypatch": true,
-    "same_admitted_incidence": true,
-    "sourcefree_compatible": true
-  },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4841,
-      "sha256": "a0a1a52ab93b7bf50236fc1da7bc5177e1514d23bec5b349ad5d704370d8fbb0"
+      "bytes": 4339,
+      "sha256": "9ceaba56fbc324b6a2aadbe55b705079bfc68ee106f1684f8743149b30faabbc"
     },
     "common.patch": {
-      "bytes": 10290,
-      "sha256": "68b1e03f7014b12a1b8d5a46e87a6935cb14f16265d0067350ed9bc8279c09b3"
+      "bytes": 15277,
+      "sha256": "b2acea83c04d04b4873e84b99c5689bed509a379d6e7c40bb9f8429a1ae1494c"
+    },
+    "common/source_adapter.py": {
+      "bytes": 3338,
+      "sha256": "81c42b916e7f2983e55bc03ed271ca6cfb5d52ec593d5f95cfa3474061a443d3"
     },
     "common/sourcefree_fixture.py": {
       "bytes": 421,
@@ -22,16 +21,20 @@
       "sha256": "d70de4b9a82f0434833fcf998181a98bd045f37558b39270f22522c2f4e003dd"
     },
     "common/sqlite_free_witness.py": {
-      "bytes": 30136,
-      "sha256": "261a4b8b393cf4a5e52ccc4756b9b7904c7d06d85a6467d9b176b077902ea043"
+      "bytes": 35088,
+      "sha256": "6bf571cdcc041fd3b3635707cbf85ad30bb8d2fe6c177f8d34d31a4fd5577556"
     },
     "common/streaming_estate.py": {
       "bytes": 15161,
       "sha256": "1c4d28aad9dc667d982914b0e782aee161a30ddf1e0664ef2eed7ec03096837a"
     },
     "generic_cli.py": {
-      "bytes": 8083,
-      "sha256": "78ced8f4f744a535f4ea0f73d3398b4b146716a0a4dd2e8e83431c0ff7c924f2"
+      "bytes": 8072,
+      "sha256": "e710f28e44fe854e4f24cf2013edc26772f157bdb5f7b0dadc0da06ae4318c5d"
+    },
+    "keyed_adapter_supervisor.out": {
+      "bytes": 367,
+      "sha256": "ed9bb1147741b0170488f6114a8f4f0c79d0c43fcb3078d0333f3778420b1847"
     },
     "sourcefree_supervisor.out": {
       "bytes": 367,
@@ -41,42 +44,48 @@
       "bytes": 793,
       "sha256": "d58cb1bfe194e688f4353d2c37fdab30d4ae08e99bf66cad78834b4f5deb5f14"
     },
+    "src16_denial.out": {
+      "bytes": 84,
+      "sha256": "588fd7d34b4742c6f4e5c5724fb94e5f003a697fbcf6aac6b4fc78853240618d"
+    },
     "src16_metadata_test.out": {
       "bytes": 826,
       "sha256": "7fe66e089a5ba0a2ebb1412122f41e161567723cf8d6b5c09c55c03047aaf062"
     }
   },
   "native_source": {
-    "checkpoint_key_resume_proven": false,
-    "source_read_performed": false,
+    "keyed_resume_proven": false,
+    "launch_path": "generic_cli src16-run -> common supervisor --source-adapter",
     "status": "READY_INPUT_NOT_RUN"
   },
+  "no_new_gss_writer": true,
   "no_original_source_read": true,
   "no_private_paths_published": true,
   "no_sqlite": true,
   "schema": "ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER@1",
   "sourcefree_supervised": {
-    "caps": "existing common supervisor caps",
+    "distinct_pids": true,
     "family_counts": {
       "AuthoritySnapshot": 7,
-      "EmpiricalCoordinateFact": 10,
+      "EmpiricalCoordinateFact": 6,
       "EmpiricalUniverse": 1,
       "QuestionVariableBinding": 1,
-      "RespondentEvent": 10,
-      "RespondentIdentity": 10,
-      "RoutingEligibilityFact": 10,
+      "RespondentEvent": 6,
+      "RespondentIdentity": 6,
+      "RoutingEligibilityFact": 6,
       "WeightMeasureFact": 0
     },
     "producer_exit": 0,
+    "producer_pid": 77002,
     "reader_exit": 0,
-    "sourcefree_keyed": true,
+    "reader_pid": 77010,
     "sqlite_present": false,
     "status": "COMPLETE"
   },
   "src16_metadata": {
+    "common_producer_denial": "ENFORCED_BEFORE_DECODE",
     "config_canonical_sha256": "c26e8e71afbc629a9f19708cedb7b38cc2ba3cefb9ac53f11e0608044e64b534",
     "config_file_sha256": "1106de3e086032f5ac0b26fee0b56a147722399c80ac2841b70f0b851dea93b7",
-    "currentness": "CURRENT_GRANTED",
     "negative_cases": [
       "other_source",
       "analysis_purpose",
@@ -90,7 +99,8 @@
       "weight_slots": 0
     },
     "source_read_performed": false,
-    "status": "SRC16_METADATA_ADMISSION_PASS"
+    "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "status": "PASS"
   },
-  "status": "KEYED_SOURCEFREE_SUPERVISED_PASS__SRC16_METADATA_ADMISSION_PASS__NATIVE_SOURCE_READY_INPUT_NO_RUN"
+  "status": "KEYED_COMMON_SUPERVISOR_PASS__SRC16_METADATA_AND_DENIAL_PASS__NATIVE_INITIAL_READY_INPUT__KEYED_RESUME_RESIDUAL"
 }

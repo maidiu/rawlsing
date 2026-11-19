@@ -94,22 +94,23 @@ def src16_metadata() -> dict:
             'negative_cases':negatives,'source_read_performed':False,'grant_bytes_published':False}
 
 def src16_run(root: Path) -> dict:
-    # Owner-only command path. Refuses unless the exact private admission passes;
-    # it does not print private paths or grant/config values.
-    meta=src16_metadata()
-    binding_dir=Path(os.environ['ANVIL_SRC16_GRANT_DIR']).absolute()
-    cfg_path=Path(os.environ['ANVIL_SRC16_CONFIG']).absolute()
-    source_path=Path(os.environ['ANVIL_SRC16_SOURCE_PATH']).absolute()
-    resolver,_=_load_resolver(binding_dir)
-    cfg=load_source_config(cfg_path); root=Path(root).absolute(); private=root/'private'; private.mkdir(mode=0o700,parents=True,exist_ok=True)
-    # The shared single-pass path checks resolver/current before decoding.
-    rec=build_single_pass(config=cfg,source_path=source_path,private_root=private,
-                          resolver=resolver,host=resolver.request.host,purpose=resolver.request.purpose,
-                          consumer_use=resolver.request.consumer_use,semantic_use_scope=resolver.request.semantic_use_scope,
-                          request=resolver.request,grant_ref=resolver.decision.source_permission_refs[0],
-                          decision_ref=resolver.decision.decision_ref,
-                          chunk_rows=512,progress=lambda x: print(json.dumps({k:v for k,v in x.items() if k not in ('path',)},sort_keys=True),flush=True))
-    return {'status':'SRC16_SOURCE_LAUNCH_PATH_READY_NOT_RUN_BY_AGENT','roots':{k:getattr(rec.roots,k) for k in ('logical','physical','release','source','replay','universe','schema')},'family_counts':dict(rec.family_counts),'source_read_performed_by_agent':False}
+    """Owner path: route SRC16 through the existing common supervisor."""
+    root=Path(root).absolute(); root.mkdir(mode=0o700,parents=True,exist_ok=True)
+    profile=root/"source_profile.private.json"
+    binding_dir=Path(os.environ["ANVIL_SRC16_GRANT_DIR"]).absolute()
+    cfg_path=Path(os.environ["ANVIL_SRC16_CONFIG"]).absolute()
+    source_path=Path(os.environ["ANVIL_SRC16_SOURCE_PATH"]).absolute()
+    patch=Path(os.environ["ANVIL_CANDIDATE_PATCH"]).absolute()
+    profile.write_text(json.dumps({"kind":"src16","config":str(cfg_path),"binding_dir":str(binding_dir),"source_path":str(source_path)},sort_keys=True)+"\n")
+    # The common supervisor creates and owns the actual producer/reader children.
+    import subprocess
+    cmd=[sys.executable,"-B",str(HERE/"common"/"sqlite_free_witness.py"),"--mode","run","--source-adapter",str(profile),
+         "--candidate-tree",str(CAND),"--candidate-patch",str(patch),
+         "--config",str(cfg_path),"--binding-dir",str(binding_dir),"--work-root",str(root/"supervisor")]
+    run=subprocess.run(cmd,capture_output=True,text=True,timeout=3600)
+    if run.returncode: raise Refusal("SUPERVISOR_REFUSED",str(run.returncode))
+    receipt=json.loads((root/"supervisor"/"supervisor_receipt.json").read_text()) if (root/"supervisor"/"supervisor_receipt.json").exists() else json.loads(run.stdout)
+    return {"status":receipt.get("status"),"producer_exit":receipt.get("producer_exit"),"reader_exit":receipt.get("reader_exit"),"supervised":True,"source_read_performed_by_agent":False}
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--mode',choices=('sourcefree','src16-metadata','src16-run'),required=True);ap.add_argument('--root');a=ap.parse_args()
