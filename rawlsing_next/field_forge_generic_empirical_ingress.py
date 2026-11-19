@@ -20,6 +20,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalPredicate,
     EmpiricalQuerySpec,
     ExactRef,
+    authority_ref,
     canonical_json,
     canonicalize,
     exact_ref,
@@ -222,7 +223,8 @@ def receive_ff01_observed_joint(
     if execution.release_refs[0] not in provenance:
         raise FF01GenericIngressError("claimed release missing from producer provenance")
     authorities = set(fact.authority_snapshot_refs)
-    if not authorities or not set(query.authority_snapshot_refs).issubset(authorities) or not set(query.query_authority_refs).issubset(authorities):
+    issued_query_authorities = {authority_ref(a) for a in query.query_authority_refs}
+    if not authorities or not set(query.authority_snapshot_refs).issubset(authorities) or not issued_query_authorities.issubset(authorities):
         raise FF01GenericIngressError("query issuer/authority closure missing")
 
     refs, domains, domain_identity = _domain(query)
