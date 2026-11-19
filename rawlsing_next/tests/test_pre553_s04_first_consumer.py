@@ -42,6 +42,7 @@ def test_one_real_i03_call_always_precedes_s04_and_value_fed_ff01(monkeypatch):
     assert delivered.knowledge.material()["fact_ref"] == previously.facts[0].ref.as_dict()
     assert delivered.ff01.semantic_projection()["producer_fact_ref"] == previously.facts[0].ref.as_dict()
     assert delivered.receipt.material()["batch_research_ref"] == delivered.batch.ref.as_dict()
+    assert delivered.receipt.material()["consumer_status"] == "S04_TO_FF01_WITH_CONTEXT_BATCH"
     assert delivered.batch.material()["distinct_contextual_computations"] == 2
     oracle = receive_ff01_observed_joint(
         query=query, execution=previously,
