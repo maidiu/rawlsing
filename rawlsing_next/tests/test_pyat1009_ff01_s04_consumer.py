@@ -227,3 +227,35 @@ def test_real_existing_n10e_crossreader_consumes_s04_derived_ff01():
     assert observed["raw_condition_denominator"] == 60
     assert {x["target_state"]: x["raw_numerator_support"] for x in
             observed["conserved_target_cells"]} == {"no": 6, "yes": 54}
+
+
+def test_s04_refuses_hash_coherent_false_resolved_target_support():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    changed = dict(fact.semantic_fields)
+    changed["raw_resolved_target_support"] = 999
+    forged = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **changed,
+    )
+    with pytest.raises(S04KnowledgeError, match="raw resolved target"):
+        receive_s04_i03_research(query=q, execution=replace(r, facts=(forged,)))
+
+
+def test_s04_refuses_hash_coherent_multi_universe_fact_scope():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    changed = dict(fact.semantic_fields)
+    changed["source_scope_mode"] = "MULTI_UNIVERSE"
+    forged = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **changed,
+    )
+    with pytest.raises(S04KnowledgeError, match="unpooled"):
+        receive_s04_i03_research(query=q, execution=replace(r, facts=(forged,)))

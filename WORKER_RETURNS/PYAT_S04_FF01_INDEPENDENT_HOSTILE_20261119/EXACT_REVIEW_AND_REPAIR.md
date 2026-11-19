@@ -29,3 +29,16 @@ NEW tests compare value- and ref-exact with direct FF01 oracle, false self-rehas
 - The new `test_real_existing_n10e_crossreader_consumes_s04_derived_ff01` checks the **actual accepted N10E crossreader** from an FF01 receipt created from S04 and original native I03; result must have forward conditional denominator 60, yes=54/no=6. This confirms one additional first-consumer edge **if and only if executed successfully**. It does not claim no extra N10E I03 query, original source rights, or selected N10W world.
 
 **Self-attack:** the first attempt at S04 native-domain guard incorrectly converted unary F1 scalar domain to a one-value array. A separate follow-up commit repaired it; inherited native one-target F1 test is explicitly in the full runner. All new tests remain `NOT_RUN` here, not a green receipt.
+
+## Further upstream source-boundary repair
+
+Hostile comparison to #1149 FF01's own stricter gates found two source-integrity
+lacunae in #1150 S04: **(i)** no equality between
+`fact.raw_resolved_target_support` and the admitted fully-resolved sum; and
+**(ii)** its query/execution single-universe check did not explicitly refuse
+`fact.source_scope_mode=MULTI_UNIVERSE`. Both can be made internally
+hash-consistent by constructing a new `EmpiricalFact` even while S04 emits
+an apparently supported sample knowledge record. The isolated branch now
+requires exact numerator/resolved equality and actual single-universe fact
+scope, with two new negative tests. These are author-source repairs, **not**
+executed RED→GREEN receipts.

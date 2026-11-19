@@ -166,7 +166,8 @@ def receive_s04_i03_research(
         raise S04KnowledgeError("fact changed its source universe")
     grain = query.requested_output_grain
     if (not isinstance(grain, Mapping) or grain.get("source_scope_mode") != "SINGLE_UNIVERSE"
-            or grain.get("measure_kind") != "RAW" or fact.measure_kind != "RAW"):
+            or grain.get("measure_kind") != "RAW" or fact.measure_kind != "RAW"
+            or fact.source_scope_mode != "SINGLE_UNIVERSE"):
         raise S04KnowledgeError("only RAW unpooled sourcefree descriptive science admitted")
     if _exact(fact.response_state_semantics_ref, "response semantics") != _exact(
             grain.get("response_state_semantics_ref"), "query response semantics"):
@@ -274,8 +275,11 @@ def receive_s04_i03_research(
                 raise S04KnowledgeError("weighted individual cell smuggled into RAW joint")
             rows.append({"cell": cell, "raw_count": n, "cell_state": row["cell_state"]})
             seen.add(key)
-        if seen != expected or sum(row["raw_count"] for row in rows) != resolved:
-            raise S04KnowledgeError("incomplete full joint or count/denominator inconsistency")
+        if (seen != expected or sum(row["raw_count"] for row in rows) != resolved
+                or fact.raw_resolved_target_support != resolved):
+            raise S04KnowledgeError(
+                "incomplete full joint or raw resolved target/denominator inconsistency"
+            )
         risk_members = _unique_refs(fact.risk_set_member_refs, "risk respondents")
         denominator_members = _unique_refs(fact.denominator_member_refs, "eligible respondents")
         if (len(denominator_members) != eligible
