@@ -71,7 +71,9 @@ def receive_ff01_from_s04(
         ("fact_ref", execution.facts[0].ref.as_dict()),
         ("release_ref", execution.release_refs[0].as_dict()),
         ("full_query_target_topology", canonicalize(query.target_arity_and_topology)),
-        ("target_refs", [x.as_dict() for x in query.target_refs]),
+        ("target_refs", [
+            exact_ref(x, "selected I03 target").as_dict() for x in query.target_refs
+        ]),
     ):
         _same(material, key, value)
 
