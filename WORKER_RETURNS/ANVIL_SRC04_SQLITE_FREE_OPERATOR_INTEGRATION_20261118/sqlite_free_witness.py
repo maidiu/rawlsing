@@ -24,6 +24,7 @@ BINDING_DIR = HERE.parent / "ANVIL_ALL35_EXISTING_GRANT_ADMISSION_20261118"
 FINAL_PATCH_SHA = "ffa4520f965e4f2fd22ea5043d0c80528f44a47f94afdb763d3b77c21ca3a08f"
 FINAL_HANDOFF_SHA = "6ab7cb50574f6a50a441a24db44f2d7f05bdaad0c14988fc533bd263342aee1f"
 SINGLE_PASS_SHA = "11b6f4eef8bf8d3b032cedb0312c518dde7618cf9fddd81f72b9c8ca06ea8fde"
+STREAMING_ESTATE_SHA = "5a8a4d6cd0a1f2793571c695c9d5658f7e882213821f745ed0d42614514474e2"
 RAM_CAP = 6 * 1024**3
 COMPLETED_512K_BYTES = int(3.08 * 1024**3)       # completed 512x600 witness
 Q2_SPOOL_RESERVE = 1024**3                       # routing/current-Q2 spool
@@ -84,6 +85,9 @@ def verify_candidate(tree: Path, patch: Path | None = None) -> None:
     compact = HERE / "sqlite_free_single_pass.py"
     if not compact.is_file() or sha(compact) != SINGLE_PASS_SHA:
         raise CallerRefusal("COMPACT_IMPLEMENTATION_HASH_MISMATCH", str(compact))
+    streaming = HERE / "streaming_estate.py"
+    if not streaming.is_file() or sha(streaming) != STREAMING_ESTATE_SHA:
+        raise CallerRefusal("STREAMING_IMPLEMENTATION_HASH_MISMATCH", str(streaming))
 
 
 def _paths() -> None:
@@ -349,9 +353,9 @@ def reader(args) -> int:
         "reconstructed_release_ref": None,
         "stream_release_ref": receipt["i02"]["release"],
         "accepted_historical": ACCEPTED,
-        "release_ref_equal_to_accepted": (
-            estate.reconstructed_v1_release_ref.content_hash
-            == ACCEPTED["release_hash"]),
+        "legacy_release_comparison": "NOT_APPLICABLE_STREAM_PROOF",
+        "stream_release_identity": receipt["i02"]["release"],
+        "release_ref_equal_to_accepted": None,
         "differences_from_accepted": differences,
         "q217_hold_from_scoped_producer": receipt["q217"],
         "source_read_performed_by_reader": False,

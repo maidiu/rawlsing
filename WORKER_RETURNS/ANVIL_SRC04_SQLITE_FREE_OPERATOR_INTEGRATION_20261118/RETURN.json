@@ -1,4 +1,27 @@
 {
+  "actual_reader": {
+    "counts": {
+      "AuthoritySnapshot": 7,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 90,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RespondentIdentity": 90,
+      "RoutingEligibilityFact": 90,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "legacy_release_comparison": "NOT_APPLICABLE_STREAM_PROOF",
+    "producer_exited_before_reader": true,
+    "reconstructed_release_ref": null,
+    "release_ref_equal_to_accepted": null,
+    "status": "READER_OPENED",
+    "stream_release_identity": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|cfe4d1e07c47036d67c70ead9785e3a2c49c2b40f21d1a48fc8f3eab9ad89127"
+  },
   "compact_runner_source": "b3dd74d16c71f9f63b10510af041ec83a1b5c3de",
   "free_space": {
     "available_bytes": 44736503808,
@@ -53,6 +76,16 @@
     "work_root": "evidence/anvil-src04-candidate-31rqm9z_/private-runs-aligned"
   },
   "original_source_opened": false,
+  "pins": {
+    "altered_streaming_refusal": {
+      "code": "STREAMING_IMPLEMENTATION_HASH_MISMATCH",
+      "detail": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/sqlite-free-pin-test/streaming_estate.py",
+      "status": "REFUSED"
+    },
+    "sqlite_free_single_pass": "11b6f4eef8bf8d3b032cedb0312c518dde7618cf9fddd81f72b9c8ca06ea8fde",
+    "sqlite_free_witness": "0cbfc4382e065309e673ec1c766b69e80fb43bcc66c786ace3264472d8e90b08",
+    "streaming_estate": "5a8a4d6cd0a1f2793571c695c9d5658f7e882213821f745ed0d42614514474e2"
+  },
   "progress_jsonl": [
     "{\"checkpoint\": false, \"families\": 14, \"phase\": \"checkpoint_ready\", \"records\": 370, \"rows\": 90}",
     "{\"expected\": 370, \"phase\": \"stream_start\", \"timestamp\": \"2026-11-19T04:31:07.619860+00:00\"}",
@@ -106,8 +139,9 @@
   "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_RETURN@1",
   "source_cut": "302e04941fc1d3d986af41a9a61d4869e927ca3d",
   "source_read_performed": false,
-  "status": "SQLITE_FREE_OPERATOR_INTEGRATION_GREEN__SOURCEFREE_ONLY",
+  "status": "SQLITE_FREE_OPERATOR_INTEGRATION_GREEN__ACTUAL_READER_FIXED",
   "tests": {
+    "actual_sourcefree_reader": "PASS",
     "cut": "....                                                                     [100%]\n4 passed in 3.92s",
     "sourcefree_normal_resume": "PASS"
   }
