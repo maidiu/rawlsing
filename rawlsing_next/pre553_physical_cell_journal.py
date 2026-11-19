@@ -292,6 +292,20 @@ def read_physical_cells(
             or receipt.schema not in {SCHEMA, LEGACY_SCHEMA}):
         raise PhysicalCellJournalError("independently held exact physical receipt required")
     root = _root(authorized_private_root)
+    releases = root / "releases"
+    # A private root does not make a symlinked intermediate directory private.
+    if releases.is_symlink() or not releases.is_dir():
+        raise PhysicalCellJournalError("private physical releases directory required")
+    releases_stat = releases.stat()
+    if releases_stat.st_uid != os.geteuid() or releases_stat.st_mode & 0o077:
+        raise PhysicalCellJournalError("physical releases directory is not private")
+    if (type(receipt.row_count) is not int or receipt.row_count < 1
+            or type(receipt.cell_count) is not int
+            or not receipt.variables
+            or any(type(o) is not int or o != i or type(n) is not str or not n
+                   for i, (o, n) in enumerate(receipt.variables, 1))
+            or receipt.cell_count != receipt.row_count * len(receipt.variables)):
+        raise PhysicalCellJournalError("invalid independent physical receipt geometry")
     target = Path(receipt.path).absolute()
     if (target != root / "releases" / ("physical-" + _sha(receipt.source_sha256)
                                       + "-" + _sha(receipt.physical_cells_sha256))
@@ -334,50 +348,59 @@ def read_physical_cells(
         raise PhysicalCellJournalError("physical journal manifest differs from independent receipt")
     if file.stat().st_size != receipt.gzip_bytes:
         raise PhysicalCellJournalError("physical journal compressed length differs from receipt")
-    compressed_digest = sha256()
-    with file.open("rb") as handle:
-        for block in iter(lambda: handle.read(1 << 20), b""):
-            compressed_digest.update(block)
-    if compressed_digest.hexdigest() != _sha(receipt.gzip_sha256):
-        raise PhysicalCellJournalError("physical journal compressed hash differs from receipt")
-    # Complete uncompressed verification BEFORE offering the first value.
-    # A checksum failure at EOF may not expose earlier corrupt values to
-    # a consumer that could start making semantic facts while streaming.
-    seen = 0
-    stream_digest = sha256()
-    with gzip.open(file, "rb") as handle:
-        for line in handle:
-            stream_digest.update(line)
-            data = json.loads(line)
-            ordinal = seen % len(receipt.variables) + 1
-            row = seen // len(receipt.variables) + 1
-            if (data["row"] != row or data["ordinal"] != ordinal
-                    or (data["ordinal"], data["name"])
-                    != receipt.variables[ordinal - 1]):
-                raise PhysicalCellJournalError("physical cell order/slot changed")
-            # Reject invalid typed payloads as well as invalid bytes.
-            _CODEC.decode(data["raw_value"])
-            PhysicalMissingState(data["missing_state"])
-            _CODEC.decode(data["missing_declaration"])
-            _CODEC.decode(data["source_value_label"])
-            seen += 1
-    if (seen != receipt.cell_count
-            or seen != receipt.row_count * len(receipt.variables)
-            or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
-        raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
-    # The original SAV/DTA is NOT reopened. This second bounded pass is
-    # exclusively over independently authenticated retained physical bytes.
-    # A future original-source reader must also pin host rights/currentness.
-    with gzip.open(file, "rb") as handle:
-        for line in handle:
-            data = json.loads(line)
-            yield PhysicalCell(
-                data["row"], data["ordinal"], data["name"],
-                _CODEC.decode(data["raw_value"]),
-                PhysicalMissingState(data["missing_state"]),
-                _CODEC.decode(data["missing_declaration"]),
-                _CODEC.decode(data["source_value_label"]),
+    # The published gzip is mutable after the integrity preflight. Pin its
+    # exact compressed bytes in an anonymous, private, bounded-disk snapshot
+    # before *any* cell is offered to a semantic consumer. Both verification
+    # and replay use this snapshot; neither rereads the published path.
+    with tempfile.TemporaryFile(mode="w+b", dir=root) as snapshot:
+        compressed_digest = sha256()
+        copied = 0
+        with file.open("rb") as handle:
+            for block in iter(lambda: handle.read(1 << 20), b""):
+                copied += len(block)
+                snapshot.write(block)
+                compressed_digest.update(block)
+        if (copied != receipt.gzip_bytes
+                or compressed_digest.hexdigest() != _sha(receipt.gzip_sha256)):
+            raise PhysicalCellJournalError(
+                "physical journal compressed snapshot differs from receipt"
             )
+        # Complete uncompressed verification BEFORE offering the first value.
+        # A bad later cell must not let earlier cells escape into interpretation.
+        snapshot.seek(0)
+        seen = 0
+        stream_digest = sha256()
+        with gzip.GzipFile(fileobj=snapshot, mode="rb") as handle:
+            for line in handle:
+                stream_digest.update(line)
+                data = json.loads(line)
+                ordinal = seen % len(receipt.variables) + 1
+                row = seen // len(receipt.variables) + 1
+                if (data["row"] != row or data["ordinal"] != ordinal
+                        or (data["ordinal"], data["name"])
+                        != receipt.variables[ordinal - 1]):
+                    raise PhysicalCellJournalError("physical cell order/slot changed")
+                _CODEC.decode(data["raw_value"])
+                PhysicalMissingState(data["missing_state"])
+                _CODEC.decode(data["missing_declaration"])
+                _CODEC.decode(data["source_value_label"])
+                seen += 1
+        if (seen != receipt.cell_count
+                or stream_digest.hexdigest() != _sha(receipt.physical_cells_sha256)):
+            raise PhysicalCellJournalError("physical journal uncompressed bytes/count differ")
+        # Replay only from the *verified anonymous snapshot*. Replacing the
+        # published file after validation cannot change a consumer's facts.
+        snapshot.seek(0)
+        with gzip.GzipFile(fileobj=snapshot, mode="rb") as handle:
+            for line in handle:
+                data = json.loads(line)
+                yield PhysicalCell(
+                    data["row"], data["ordinal"], data["name"],
+                    _CODEC.decode(data["raw_value"]),
+                    PhysicalMissingState(data["missing_state"]),
+                    _CODEC.decode(data["missing_declaration"]),
+                    _CODEC.decode(data["source_value_label"]),
+                )
 
 
 
