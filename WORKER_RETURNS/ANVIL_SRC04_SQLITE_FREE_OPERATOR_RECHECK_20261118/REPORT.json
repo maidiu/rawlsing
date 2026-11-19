@@ -1,0 +1,95 @@
+{
+  "schema": "ANVIL_SRC04_SQLITE_FREE_OPERATOR_RECHECK@1",
+  "disposition": "NOT_READY__ACTUAL_READER_STREAM_RELEASE_BLOCKER",
+  "source_cut": {
+    "commit": "20e265633e3ded64fd6f031c1b1b0c1e90db2661",
+    "directory": "MEASUREMENT_PREP/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_OPERATOR_INTEGRATION_20261118",
+    "manifest_files_verified": 24,
+    "manifest_bad_files": [],
+    "tests": "4 passed in 3.92s (author; not repeated for count)"
+  },
+  "actual_sourcefree_writer": {
+    "normal": "SOURCEFREE_NORMAL.json",
+    "normal_out": "NORMAL_OK",
+    "counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 90,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 90,
+      "RoutingEligibilityFact": 90,
+      "EmpiricalCoordinateFact": 90,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "roots": {
+      "logical": "f69356c3b40ce769e152dac89aacd232fdb23e5acb260a629e3889ac5f7994e4",
+      "physical": "901ace5abc89866500dcefa815c64bc4e3dd6e5da29fe1a0163d0ef0b3651985",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|S1B_FIXTURE_RELEASE|cfe4d1e07c47036d67c70ead9785e3a2c49c2b40f21d1a48fc8f3eab9ad89127",
+      "source": "SOURCE_ARTIFACT|R157_FIXTURE:S1B_NONRESPONDENT_FIXTURE|b764de340ccc75555e3b98494e371ae784ab20540004a68932f28a7ba836f543",
+      "replay": "7b8c0fe8cc40886050a113597a56e0e72f88ee3ae1833a038c8fc8ba714a5d0c",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662|3250e1ffbe4132e26734e5f03457a5d8ec90dc46fa7a71a9e844ed525c627662",
+      "schema": "ANVIL_STREAM_C11_ESTATE@1"
+    },
+    "manifest_sha256": "7ad3e88073593bff6441462759f562e1f04609a80c6139b3e3918e786e50ecd9",
+    "normal_path_sqlite_files": [],
+    "normal_path_file_count": 15,
+    "progress_phases_observed": ["checkpoint_ready", "stream_start", "family_written", "footers_verified", "published", "reopened_validation"],
+    "proof_scratch_bytes_observed": 199473
+  },
+  "actual_cli_reader": {
+    "command": "sqlite_free_witness.py --mode reader ... --root <sourcefree-normal-root>",
+    "result": "REFUSED",
+    "error_type": "AttributeError",
+    "error": "'NoneType' object has no attribute 'content_hash'",
+    "evidence": "ACTUAL_READER_FAILURE.json",
+    "defect_location": "sqlite_free_witness.py reader line 353 reads estate.reconstructed_v1_release_ref.content_hash",
+    "source_boundary_location": "streaming_estate.py StreamVerifiedEstate.__init__ sets reconstructed_v1_release_ref=None",
+    "why_it_matters": "The new stream-native reader reaches the actual witness reader contract but cannot produce the required reader receipt or accepted-release comparison."
+  },
+  "exact_metadata_preflight": {
+    "evidence": "EXACT_PREFLIGHT.json",
+    "status": "RUNTIME_OVERLAY_QUALIFIED",
+    "source_path_opened_stat_hashed_decoded": false,
+    "q217": "HELD_EXACT_BY_SCOPED_CONFIG",
+    "scoped_counts": {"response_slots": 177, "coordinate_slots": 3, "physical_slots": 181},
+    "request_equal_to_approved": true
+  },
+  "separate_audit": {
+    "evidence": "AUDIT.json",
+    "exit_code": 0,
+    "result": "PASS",
+    "read_only": true,
+    "sqlite_calls": false,
+    "counts": 369,
+    "note": "Actual separate CLI audit on the sourcefree stream estate passed and rewrote nothing."
+  },
+  "prior_four_blockers_status": {
+    "writer_integration": "partially fixed: sqlite_free_single_pass and sqlite_free_witness use streaming_estate; sourcefree normal path has no .sqlite.",
+    "producer_receipt": "fixed in new sqlite_free_witness producer: serializes receipt.roots under i02.",
+    "reader_boundary": "partially fixed: uses StreamRoots/open_stream_native_estate, but actual reader still dereferences None reconstructed_v1_release_ref and refuses.",
+    "digest_pins": "partial: sqlite_free_single_pass is pinned; streaming_estate.py itself is not pinned by verify_candidate."
+  },
+  "smallest_required_repair": "In sqlite_free_witness.reader, stop dereferencing estate.reconstructed_v1_release_ref for the stream proof. Use a stream-native release identity (receipt.i02.release / StreamRoots.release) for the present field and make the accepted-legacy comparison explicit false/not-applicable, or set a typed stream release ref in StreamVerifiedEstate and update the comparison. Then add streaming_estate.py to the runtime digest pins.",
+  "ready_scope": {
+    "sourcefree_construction": false,
+    "real_authorized_construction": false,
+    "reason": "actual cold reader refuses before producing a receipt"
+  },
+  "bounded_remaining_questions": {
+    "width": "Only a sourcefree 90-row/369-record fixture was exercised; no full-width materialization or 512x600 full-run claim.",
+    "resources": "proof scratch observed at 199,473 bytes; retained fixture estate 3,818,492 bytes; no benchmark or full resource envelope.",
+    "authority": "Metadata preflight is exact and source path is not opened; real authorized construction still requires its external grant/current gate."
+  },
+  "boundaries": {
+    "original_source_read": false,
+    "staging_access": false,
+    "legacy_r4_interference": false,
+    "code_edits": false,
+    "sourcefree_only": true
+  }
+}
