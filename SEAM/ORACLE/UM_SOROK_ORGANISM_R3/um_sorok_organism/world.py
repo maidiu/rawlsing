@@ -4,7 +4,7 @@ World consequences can be unilateral, imposed, cooperative, or refused.
 from .types import Attempt, Resolution, copy, stable_id, digest
 from .organism import eligible
 from dataclasses import asdict
-import hmac, hashlib, os, json
+import hmac, hashlib, os, json, math
 
 COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
              'MAKE_SPACE':{'JOIN','SING'},'SHARE':{'JOIN','CARE'}}
@@ -29,6 +29,39 @@ def _field(world,a,b):
 
 
 def _site(world,aid):return world['sites'].get(world['positions'].get(aid),{})
+
+def _effective_material_controller(world, loc, site):
+    """Resolve actual institutional control, including non-denormalized sites.
+
+    A site may omit a controller label while an independent institution still
+    controls it (e.g. the hall board). Missing/conflicting declarations must
+    never turn controlled material into free stock.
+    """
+    controllers=[name for name,inst in world['institutions'].items()
+                 if inst.get('controls')==loc]
+    named=site.get('controller')
+    if named is not None and (named not in controllers or len(controllers)!=1):
+        return None,True
+    if len(controllers)>1:
+        return None,True
+    return (named or (controllers[0] if controllers else None)),False
+
+
+def _nonnegative_transfer_amount(raw, error):
+    """Reject invalid fixture economics before world/actor mutations.
+
+    Research accounts are money claims, not a market law or policy scheduler.
+    An invalid negative or nonfinite amount cannot mint money, seize worker
+    balances, or poison canonical ledger serialization.
+    """
+    try:
+        amount = float(raw)
+    except (TypeError, ValueError, OverflowError):
+        raise ValueError(error) from None
+    if not math.isfinite(amount) or amount < 0:
+        raise ValueError(error)
+    return amount
+
 
 
 def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None):
@@ -76,7 +109,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             site['food']-=1;output='ATE_SHARED_HOUSEHOLD_FOOD'
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
-        site=_site(world,aid);cost=float(site.get('food_price',1.0))
+        site=_site(world,aid);cost=_nonnegative_transfer_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
         if site.get('food',0)<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
         elif world['accounts'].get(aid,0)<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
         else:
@@ -84,24 +117,41 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']+=1
             output='FOOD_PURCHASED'
     elif attempt.action=='WORK':
-        site=_site(world,aid);site['stock']=site.get('stock',0)+2
-        controller=site.get('controller')
-        if controller in world['institutions']:
+        site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        if unqualified:
+            # Neither a missing issuer nor a mismatched owner converts an
+            # institutionally controlled worksite into unowned production.
+            status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif controller is not None:
             institution=world['institutions'][controller]
-            wage=float(institution.get('wage',0))
-            available=max(0,world['accounts'].get(controller,0))
+            wage=_nonnegative_transfer_amount(institution.get('wage',0), 'INVALID_WAGE')
+            available=_nonnegative_transfer_amount(world['accounts'].get(controller,0),
+                                                      'INVALID_CONTROLLER_BALANCE')
             paid=min(available,wage)
+            # Validation and controller relation precede every material write.
+            site['stock']=site.get('stock',0)+2
             world['accounts'][controller]=round(available-paid,5)
             world['accounts'][aid]=round(world['accounts'].get(aid,0)+paid,5)
             claim={'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
                    'controller':controller,'wage':paid,'worker_control_of_output':False}
             world.setdefault('material_claims',[]).append(claim)
             output='PRODUCED_GOODS_CONTROLLED_BY_OTHER'
-        else:output='MATERIAL_STOCK_PRODUCED'
+        else:
+            # No controller exists: this is not a wage relationship.
+            site['stock']=site.get('stock',0)+2
+            output='MATERIAL_STOCK_PRODUCED'
     elif attempt.action=='REPAIR':
-        site=_site(world,aid)
-        if site.get('stock',0)<1:status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
-        else:site['stock']-=1;output='REPAIR_PERFORMED'
+        site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        if unqualified:
+            status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif controller is not None and aid not in site.get('material_use_grants',[]):
+            # Public entrance ≠ the right to appropriate a controller's goods.
+            # Grant is an objective world/site relation, never actor assertion.
+            status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
+        elif site.get('stock',0)<1:
+            status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
+        else:
+            site['stock']-=1;output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
         members=world['institutions']['hall_board']['members']
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'

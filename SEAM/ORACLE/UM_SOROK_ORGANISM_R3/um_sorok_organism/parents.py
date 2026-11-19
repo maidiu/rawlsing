@@ -22,6 +22,8 @@ def construct_parent(actor_id,name,source_packet,semantic):
         person['forms'][f['id']]=f
     person['links']=copy(result.get('links',[]))
     person['projects']=copy(result.get('projects',[]))
+    if not person['forms'] and not person['projects']:
+        raise ValueError('NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION')
     person['fictional_backfill']=copy(result.get('fictional_backfill',{}))
     person['initialization']={'source_ref':source_packet.get('source_ref','UNVERIFIED_INPUT'),
         'observed_question_count':len(source_packet['answers']),

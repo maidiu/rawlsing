@@ -12,3 +12,7 @@
 | SR-E006 | E / `NOT_YET_ISSUED` | R3 author source tests and GitHub research branch | No independent review, formal original-source CAN/ADP rule, PYAT adult survey blind correspondence, live model provider exercise or protected integration. Preserve distinct already-listed E queue duties; no G5 promotion |
 
 **Continue commissioned work.** These are delegated future defects/limitations, not a blanket stop or assignment to the theory builder. Exact R3 code and grade are in its ORACLE PR/immutable commit. Any prior R2 SR-P IDs retain their original identity, status and evidence unless a competent custodian changes them with proof.
+
+## REMONT sourcefree compatibility repair against live R3 (later additive custody)
+
+The earlier R3 delta remains the discovery state at 3dba91136870ab5e766ca14faacd847531dea075. **After independent REMONT construction** a sourcefree candidate now reproduces and remedies SR-P021 (an empty adult-constructor result created an inert adult) and SR-P024 (an action=TELEPORT acquired tendency was accepted). These statuses are **local author-tested fix candidates**, not protected native closures. Their actual negative tests are present in the R3 source test tree. SR-P022 and SR-P023 remain open capability bounds. SR-P004 and SR-P005 repairs from #1165/#1170 are carried forward without retiring the original independent reviews. The combined candidate passed **58/58 local tests**. The original R3 42/42 author test receipt is still historically valid for its earlier exact head, not overwritten.

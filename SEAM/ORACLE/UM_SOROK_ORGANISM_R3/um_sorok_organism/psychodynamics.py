@@ -7,6 +7,7 @@ silently sorted into one rational preference. The current is a *situated read*,
 not a new source-of-truth for the psyche and not a mind-reading public tip.
 """
 from .types import copy, GRADE
+from .organism import ACTIONS
 
 POLARITIES = {'APPROACH', 'WITHHOLD'}
 
@@ -17,7 +18,7 @@ def validate_tendencies(form):
         raise ValueError('INVALID_ACQUIRED_TENDENCIES')
     for t in ts:
         if (not isinstance(t, dict) or t.get('polarity') not in POLARITIES or
-                not isinstance(t.get('action'),str) or not t['action'] or
+                not isinstance(t.get('action'),str) or t['action'] not in ACTIONS or
                 not isinstance(t.get('cue_terms',[]),list) or
                 not all(isinstance(x,str) for x in t.get('cue_terms',[]))):
             raise ValueError('INVALID_ACQUIRED_TENDENCIES')
