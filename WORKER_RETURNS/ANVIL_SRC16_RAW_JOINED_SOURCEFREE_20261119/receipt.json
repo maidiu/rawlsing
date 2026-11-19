@@ -8,16 +8,16 @@
   ],
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 1728,
-      "sha256": "4bddf23f16bfdc040901d445fa1bee91f4e835916a2ec8e345e99045f4c9216e"
+      "bytes": 2006,
+      "sha256": "081910876ea8eb3017394146393df19dc13041471626dd44a82f2ff1e2b6d8d2"
     },
     "GSS1972_HANDOFF.md": {
       "bytes": 2348,
       "sha256": "db5402bb9048c01cadd2af8ded1b6f2734b2a3ac2955f301d34a3117da68ede8"
     },
     "JOINED_EVIDENCE.json": {
-      "bytes": 5052,
-      "sha256": "9bcc706b6adf953f4fd26c275a7870dde0330e056fb84c94181a9e812e365ede"
+      "bytes": 6605,
+      "sha256": "e9358057a54e91238900b1e7a2da4da4b711fb29b0d9342f2705afa2e32d1f8f"
     },
     "SETUP.sh": {
       "bytes": 968,
@@ -52,17 +52,26 @@
       "sha256": "9cda4d5bba659f6b0b69990d6b66f85451471355d773798fb9bb7b8e075a29e4"
     },
     "raw_lane_joined.out": {
-      "bytes": 1120,
-      "sha256": "53e38bcac3e4e2664c40e23d32d6695b815c2bc4240d3d4ea95c60902afbab26"
+      "bytes": 1653,
+      "sha256": "829bfdf5db2b6b058d46b57cc57eacd9f11af1fd3b0c7e2b3c13eae14ac59e02"
+    },
+    "raw_lane_saved_row_deletion.out": {
+      "bytes": 1653,
+      "sha256": "829bfdf5db2b6b058d46b57cc57eacd9f11af1fd3b0c7e2b3c13eae14ac59e02"
+    },
+    "raw_lane_saved_row_deletion_test.py": {
+      "bytes": 12506,
+      "sha256": "418dff3c389d57b446472bf7fbe006df2529dcf8302290338c5fd9dfb505c3ea"
     }
   },
   "mapped_parity": "PASS_EXACT",
   "one_saved_estate_build": true,
   "original_source_accessed": false,
   "real_gss_executed": false,
+  "saved_row_deletion": "PASS_RED_RESTORE_GREEN",
   "schema": "ANVIL_SRC16_RAW_JOINED_SOURCEFREE_RECEIPT@1",
   "sourcefree": true,
-  "status": "JOINED_SOURCEFREE_PASS__I05_UNRESOLVED_DISTINCT__BATCH_PRIOR_CACHE_GUARDED",
+  "status": "JOINED_SOURCEFREE_PASS__SAVED_ROW_DELETION_RED_RESTORE_GREEN",
   "typed_unresolved": "I03 UNRESOLVED -> I05 EVALUATED_UNRESOLVED/COVERAGE_LIMITED",
   "valid_empty": "EVALUATED_VALID_EMPTY/VALID_EMPTY"
 }

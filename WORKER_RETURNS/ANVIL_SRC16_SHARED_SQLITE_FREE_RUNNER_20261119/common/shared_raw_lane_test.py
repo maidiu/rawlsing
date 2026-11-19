@@ -38,9 +38,11 @@ from rawlsing_next.pre553_source_i02_handoff import (
 from rawlsing_next.tests.test_pyat940_s1b_support import make_config, write_fixture  # noqa: E402
 from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState  # noqa: E402
 from rawlsing_next.pre553_source_i02_handoff import SourceI02Refusal, _unresolved_response_state  # noqa: E402
-from rawlsing_next.pre553_empirical_objects import canonical_json  # noqa: E402
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, ExactRef, canonical_json  # noqa: E402
+from rawlsing_next._pre553_direct_i02_sourcefree import SourcefreeDirectI02Sections  # noqa: E402
+from rawlsing_next.pre553_source_direct_parquet_estate import _FAMILIES_IN_ORDER  # noqa: E402
+from streaming_estate import StreamRoots, open_stream_native_estate, write_streaming_estate  # noqa: E402
 from sqlite_free_single_pass import build_single_pass  # noqa: E402
-from streaming_estate import open_stream_native_estate  # noqa: E402
 
 
 def _strip_unmapped(doc: dict, keep_raw: float) -> dict:
@@ -105,6 +107,67 @@ def _expected_mapped_keys(path, cfg, values, keep_raw):
         if value == keep_raw and row in row_refs
     }
 
+class _ManifestProxy:
+    def __init__(self, content_hash, release_id, counts, source_ref):
+        self.content_hash = content_hash
+        self.release_id = release_id
+        self.declared_record_counts_by_logical_family = counts
+        self.source_artifact_ref = source_ref
+
+    def semantic_projection(self):
+        return {"source_manifest_sha256": self.content_hash,
+                "release_id": self.release_id}
+
+
+def _ref_from_key(key):
+    kind, object_id, content_hash = key.split("|", 2)
+    return ExactRef(kind, object_id, content_hash)
+
+
+def _build_mutated_estate(root: Path, raw_estate, raw_rec, remove_key):
+    """Remove one mapped saved event and fully rebuild through the writer."""
+    sections = {}
+    removed = None
+    for family in _FAMILIES_IN_ORDER:
+        objects = list(raw_estate.iter_family(family, batch_size=8))
+        if family == "RespondentEvent":
+            kept = []
+            for obj in objects:
+                if removed is None and _event_key(obj) == remove_key:
+                    removed = obj
+                else:
+                    kept.append(obj)
+            objects = kept
+        sections[family] = tuple(objects)
+    if removed is None:
+        raise AssertionError("mapped saved row to delete was not found")
+    roots = raw_estate.i02
+    counts = dict(raw_estate.manifest["family_counts"])
+    counts["RespondentEvent"] -= 1
+    release_id = roots.release.split("|", 2)[1]
+    manifest = _ManifestProxy(
+        raw_estate.manifest["manifest_sha256"], release_id, counts,
+        _ref_from_key(roots.source),
+    )
+    source = SourcefreeDirectI02Sections(
+        manifest=manifest,
+        sections=sections,
+        typed_absences={},
+        replay_protocol_authority_ref=AuthorityRef(
+            "REPLAY_PROTOCOL", "1.0.0", roots.replay),
+        replay_protocol_version="1.0.0",
+        deterministic_tie_order_rules_ref=ExactRef(
+            "ORDER_RULE", "CANONICAL-REF-SORT", roots.logical),
+    )
+    mutated_root = root / "private-mutated"
+    mutated_root.mkdir(mode=0o700, parents=True, exist_ok=True)
+    mut_rec = write_streaming_estate(
+        source, _ref_from_key(roots.universe), mutated_root, chunk_rows=2,
+    )
+    _, events = _read(mutated_root, mut_rec)
+    return removed, mut_rec, events, sections
+
+
 def _one_fixture(root: Path, *, source_format: str, values, missing_range=False,
                  extended_missing=False, keep_raw=1.0):
     root.mkdir(mode=0o700, parents=True, exist_ok=True)
@@ -134,9 +197,28 @@ def _one_fixture(root: Path, *, source_format: str, values, missing_range=False,
     _, control_events = _read(root / "private-control", control_rec)
     raw_selected = {_event_signature(e) for e in raw_events if _event_key(e) in expected_keys}
     control_selected = {_event_signature(e) for e in control_events if _event_key(e) in expected_keys}
-    mutation = set(control_selected)
-    if mutation:
-        mutation.remove(sorted(mutation)[0])
+    # The deliberately deleted mapped response must be removed from a saved
+    # estate, then fully rebuilt through the actual writer and cold reopened.
+    remove_event = next(
+        (e for e in raw_events if _event_key(e) in expected_keys), None)
+    if remove_event is None:
+        raise AssertionError("no mapped saved event available for deletion")
+    removed, mut_rec, mutated_events, _sections = _build_mutated_estate(
+        root, raw_estate, raw_rec, _event_key(remove_event))
+    mutated_selected = {
+        _event_signature(e) for e in mutated_events if _event_key(e) in expected_keys
+    }
+    missing = control_selected - mutated_selected
+    saved_deletion_fails = (
+        len(mutated_selected) == len(expected_keys) - 1
+        and missing == {_event_signature(remove_event)}
+        and mutated_selected != control_selected
+    )
+    _, restored_events = _read(root / "private-raw", raw_rec)
+    restored_selected = {
+        _event_signature(e) for e in restored_events if _event_key(e) in expected_keys
+    }
+    saved_restore_equal = restored_selected == control_selected and len(restored_selected) == len(expected_keys)
     states = {}
     for event in raw_events:
         states[event.typed_state] = states.get(event.typed_state, 0) + 1
@@ -150,7 +232,9 @@ def _one_fixture(root: Path, *, source_format: str, values, missing_range=False,
         "mapped_raw_count": len(raw_selected),
         "mapped_control_count": len(control_selected),
         "mapped_exact": raw_selected == control_selected and len(raw_selected) == len(expected_keys),
-        "mutation_deleting_mapped_row_fails": mutation != raw_selected,
+        "saved_row_deletion_fails": saved_deletion_fails,
+        "saved_row_deletion_missing_ref": _event_signature(remove_event)[0],
+        "saved_row_restore_equal": saved_restore_equal,
         "unresolved_count": len(unresolved),
         "raw_witness_preserved": all(_raw_witness_ok(e) for e in unresolved),
         "cold_reopen": True,
@@ -183,7 +267,8 @@ def main() -> int:
         "no_substantive_shift": a["state_counts"].get("SUBSTANTIVE_RESPONSE", 0) == 1
         and b["state_counts"].get("SUBSTANTIVE_RESPONSE", 0) == 2,
         "mapped_exact": a["mapped_exact"] and b["mapped_exact"],
-        "mutation_deleting_mapped_row_fails": a["mutation_deleting_mapped_row_fails"] and b["mutation_deleting_mapped_row_fails"],
+        "saved_row_deletion_fails": a["saved_row_deletion_fails"] and b["saved_row_deletion_fails"],
+        "saved_row_restore_equal": a["saved_row_restore_equal"] and b["saved_row_restore_equal"],
         "raw_witness_preserved": a["raw_witness_preserved"] and b["raw_witness_preserved"],
         "invalid_physical_input_refused": invalid_refused,
     }

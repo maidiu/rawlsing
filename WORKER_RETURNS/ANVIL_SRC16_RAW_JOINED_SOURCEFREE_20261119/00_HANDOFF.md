@@ -29,8 +29,12 @@ owner-only construction/fresh-reader command.
 - forged completed prior receipts: not retained under R3 patch
 - current authority denial: `DirectEstateError` for direct I05 and prior-receipt
   Batch
-- mapped parity: exact; SAV expected/raw/control 1/1/1, DTA 2/2/2; deleting a
-  mapped control row fails
+- mapped parity: exact; SAV expected/raw/control 1/1/1, DTA 2/2/2
+- saved-row deletion: one mapped event removed from the saved sections, the
+  estate fully rebuilt through `write_streaming_estate`, cold reopened, and the
+  equality check fails on the exact missing response; original estate restored
+  and cold reopen is equal again
+- no in-memory set deletion is used as the proof
 - declared missingness: separate `MISSING` and `INVALID_UNRESOLVED` states in
   raw lane evidence
 
