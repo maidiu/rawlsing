@@ -1,0 +1,86 @@
+{
+  "schema": "ANVIL_SRC04_SQLITE_FREE_NATIVE_REVIEW@1",
+  "disposition": "NOT_READY__MANDATORY_OPERATOR_INTEGRATION_BLOCKER",
+  "source_cut": {
+    "commit": "302e04941fc1d3d986af41a9a61d4869e927ca3d",
+    "directory": "IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC04_SQLITE_FREE_CONSTRUCTION_20261118",
+    "candidate_receipt_verified": true,
+    "candidate_receipt_files": 7,
+    "candidate_bad_files": [],
+    "candidate_test_output": "4 passed in 3.50s (author; not repeated for count)"
+  },
+  "one_boundary_replay": {
+    "evidence": "REPLAY_PROOF.json",
+    "sourcefree_test_only": true,
+    "original_source_read": false,
+    "writer_counts": {
+      "EmpiricalUniverse": 1,
+      "RespondentIdentity": 5,
+      "QuestionVariableBinding": 1,
+      "RespondentEvent": 5,
+      "RoutingEligibilityFact": 5,
+      "EmpiricalCoordinateFact": 5,
+      "WeightMeasureFact": 0,
+      "AuthoritySnapshot": 7,
+      "SourceUniverseRelation": 0,
+      "EmpiricalPredicateReplayBinding": 0,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "StructuralAdmissionReplayBinding": 0
+    },
+    "new_estate_manifest_schema": "ANVIL_STREAM_C11_ESTATE@1",
+    "no_sqlite_file": true,
+    "progress_phases_observed": [
+      "stream_start", "family_written", "footers_verified", "published",
+      "reopened_validation"
+    ],
+    "native_boundary_iter_family": "works on sourcefree replay"
+  },
+  "exact_blockers": [
+    {
+      "id": "ACTUAL_OPERATOR_NOT_USING_STREAM_WRITER",
+      "evidence": "ACTUAL_OPERATOR_REFS.txt",
+      "detail": "MEASUREMENT_PREP single_pass_handoff.py still imports rawlsing_next...write_direct_estate at lines 307, 345, 411. sqlite_free_wiring.patch is present only as a staged file in the cut; it is not applied to the actual operator. Normal and resume producer construction therefore still use the SQLite proof path, not streaming_estate."
+    },
+    {
+      "id": "PRODUCER_RECEIPT_CONTRACT_MISMATCH",
+      "evidence": "ACTUAL_OPERATOR_REFS.txt",
+      "detail": "witness_caller.producer line 257 reads receipt.i02. StreamReceipt has fields path, manifest_sha256, roots, family_counts, retained_bytes, legacy_i02; it has no i02. If the wiring patch were applied, producer receipt construction would fail with AttributeError before producer exit."
+    },
+    {
+      "id": "READER_LEGACY_CONSTRUCTOR_AND_RELEASE_REF",
+      "evidence": "ACTUAL_OPERATOR_REFS.txt; REPLAY_PROOF.json",
+      "detail": "witness_caller.reader still constructs VerifiedDirectEstate with ExternalI02Roots/legacy schema, and line 340 calls estate.reconstructed_v1_release_ref.as_dict(). The SQLite-free boundary sets reconstructed_v1_release_ref=None (streaming_estate.py line 245), so the actual reader raises AttributeError. StreamRoots and ANVIL_STREAM_C11_ESTATE@1 are not the legacy constructor contract."
+    },
+    {
+      "id": "NEW_MODULE_NOT_PINNED_AND_RESUME_NOT_WIRED",
+      "evidence": "ACTUAL_OPERATOR_REFS.txt",
+      "detail": "witness_caller.verify_candidate pins the old handoff/patch/compact single-pass only; streaming_estate.py and sqlite_free_wiring.patch are not runtime digest-pinned. resume path still imports the old writer and producer receipt/reader remain legacy."
+    }
+  ],
+  "what_is_functional": {
+    "standalone_stream_writer": "sourcefree replay wrote all families, emitted progress phases, produced no .sqlite file, and passed the standalone stream manifest/footer checks.",
+    "standalone_open_stream_native_estate": "returned an object whose iter_family works on the stream manifest and whose current callback is callable.",
+    "not_functional_as_operator": "the actual normal/resume producer and reader integration is not present; producer receipt and reader contracts remain legacy."
+  },
+  "semantic_identity": {
+    "new_stream_logical_replay_derived_from_content": true,
+    "legacy_expected_roots_refused": true,
+    "author_changed_restore_test": "not independently repeated; not the blocker",
+    "legacy_physical_root_equality": "not claimed"
+  },
+  "audit": {
+    "optional_separate_audit_present": true,
+    "author_test_reports_readonly_and_manifest_unchanged": true,
+    "not_integrated": "operator path does not invoke streaming_estate audit"
+  },
+  "smallest_integration_repair": "Make the actual operator stream-native, not just the staged writer patch: apply sqlite_free_wiring.patch to MEASUREMENT_PREP single_pass_handoff.py; update witness_caller.producer to serialize StreamReceipt.roots (or add an explicit compatibility i02 field); update witness_caller.reader to open via open_stream_native_estate and provide a typed non-null reconstructed_v1_release_ref (or replace the legacy accepted-release comparison with the new stream identity); and add streaming_estate.py plus the applied patch to the digest pin set. Until that adapter is present, the cut cannot be integrated for normal or resume producer/reader.",
+  "boundaries": {
+    "original_source_access": false,
+    "live_wave1": false,
+    "governed_artifact_change": false,
+    "product_code_change": false,
+    "prior_author_tests_recounted": false,
+    "sourcefree_replay_only": true
+  }
+}

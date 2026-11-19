@@ -1,0 +1,51 @@
+ACTUAL OPERATOR REFERENCES (read-only source inspection)
+--- single_pass_handoff.py writer imports
+307:    from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
+308:    receipt = write_direct_estate(source, projection.universes[0].ref, root,
+345:    from rawlsing_next.pre553_source_direct_parquet_estate import write_direct_estate
+411:            receipt = write_direct_estate(
+--- witness_caller.py producer receipt
+253-        "grant_ref": bound.grant_ref.as_dict(),
+254-        "decision_ref": bound.decision.decision_ref.as_dict(),
+255-        "source_sha256": scoped_doc["binding"]["source_sha256"],
+256-        "row_count": scoped_doc["binding"]["row_count"],
+257:        "i02": {k: getattr(receipt.i02, k) for k in
+258-                ("logical", "physical", "release", "source", "replay", "universe", "schema")},
+259-        "manifest_sha256": receipt.manifest_sha256,
+260-        "estate_path": receipt.path,
+261-        "family_counts": dict(receipt.family_counts),
+262-        "single_pass_path": True,
+263-        "resumed_from_checkpoint": resumed,
+--
+328-        "producer_pid": producer_pid,
+329-        "producer_exited_before_reader": True,
+330-        "estate_path": receipt["estate_path"],
+331-        "manifest_sha256": receipt["manifest_sha256"],
+332:        "i02": receipt["i02"],
+333-        "family_counts": counts,
+334-        "identity_count": len(identities),
+335-        "identity_ref_digest": hashlib.sha256(
+336-            json.dumps(sorted(identities), separators=(",", ":")).encode()).hexdigest(),
+337-        "routing_count": len(routing),
+338-        "routing_ref_digest": hashlib.sha256(
+--- witness_caller.py reader
+305-
+306-    estate = VerifiedDirectEstate(
+307-        root / "private", exact_path=receipt["estate_path"],
+308-        independently_held_manifest_sha256=receipt["manifest_sha256"],
+309:        independently_held_i02=held, current_authorizer=current)
+310-    counts = {}
+311-    identities = []
+312-    routing = []
+313-    for family in ALL_FAMILIES:
+--
+336-            json.dumps(sorted(identities), separators=(",", ":")).encode()).hexdigest(),
+337-        "routing_count": len(routing),
+338-        "routing_ref_digest": hashlib.sha256(
+339-            json.dumps(sorted(routing), separators=(",", ":")).encode()).hexdigest(),
+340:        "reconstructed_release_ref": estate.reconstructed_v1_release_ref.as_dict(),
+341-        "accepted_historical": ACCEPTED,
+342-        "release_ref_equal_to_accepted": (
+343-            estate.reconstructed_v1_release_ref.content_hash
+344-            == ACCEPTED["release_hash"]),
+--- staged patch not applied?
