@@ -315,10 +315,22 @@ def receive_ff01_observed_joint(
             raise FF01GenericIngressError("resolved target support lost in FF01")
         risk_members = getattr(fact, "risk_set_member_refs", None)
         denom_members = getattr(fact, "denominator_member_refs", None)
-        if risk_members is not None and denom_members is not None:
-            rm, dm = set(_refs(risk_members, "risk respondent")), set(_refs(denom_members, "denominator respondent"))
-            if len(dm) != fact.raw_denominator_support or not dm.issubset(rm):
-                raise FF01GenericIngressError("condition-selected denominator members disagree with fact")
+        if (risk_members is None) != (denom_members is None):
+            raise FF01GenericIngressError("one-sided respondent extent is not a qualified I03 denominator")
+        if risk_members is None:
+            # Historical test scaffolds may omit both. Never upgrade this to
+            # an attested source population or inferred respondent roster.
+            projection["respondent_extent_grade"] = "NOT_ENUMERATED__SOURCE_CUSTODY_HELD"
+        else:
+            risk_raw = _refs(risk_members, "risk respondent")
+            denom_raw = _refs(denom_members, "denominator respondent")
+            if any(ref.kind != "C11Internal:RespondentIdentity" for ref in (*risk_raw, *denom_raw)):
+                raise FF01GenericIngressError("respondent extent contains non-C11 identity")
+            if len(risk_raw) != len(set(risk_raw)) or len(denom_raw) != len(set(denom_raw)):
+                raise FF01GenericIngressError("respondent extent contains duplicate exact identity")
+            if len(denom_raw) != fact.raw_denominator_support or not set(denom_raw).issubset(set(risk_raw)):
+                raise FF01GenericIngressError("condition-selected denominator respondents disagree with risk")
+            projection["respondent_extent_grade"] = "INTERNALLY_CONSISTENT_I03_ENUMERATION__SOURCE_AUTHORITY_UNVERIFIED"
         # Only rearrange I03's actual complete cells; do not infer per-cell people.
         projection["complete_cells"] = [
             {"cell": cell, "raw_support": n, "cell_state": "OBSERVED_POSITIVE" if n else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"}
