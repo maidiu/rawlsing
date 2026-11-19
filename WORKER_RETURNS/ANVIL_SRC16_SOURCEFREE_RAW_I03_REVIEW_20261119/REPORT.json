@@ -1,0 +1,57 @@
+{
+  "schema": "ANVIL_SRC16_SOURCEFREE_RAW_I03_REVIEW@1",
+  "disposition": "DEFECT__MAPPED_PARITY_SUBSET_ALLOWS_SILENT_MAPPED_LOSS",
+  "source_cut": {
+    "commit": "5a4b1cabce9625a61cfe26c20afb519531f567bd",
+    "directory": "IMPLEMENTER/WORKER_RETURNS/ANVIL_SRC16_SHARED_SQLITE_FREE_RUNNER_20261119",
+    "owner_base": "00ebc4a162e27a310b89c9a54e251fe063c7ee60"
+  },
+  "raw_round_trip": {
+    "status": "PASS_SOURCEFREE",
+    "sav": {"event_count": 3, "state_counts": {"INVALID_UNRESOLVED": 1, "MISSING": 1, "SUBSTANTIVE_RESPONSE": 1}, "raw_witness_preserved": true, "cold_reopen": true},
+    "dta": {"event_count": 4, "state_counts": {"INVALID_UNRESOLVED": 1, "MISSING": 1, "SUBSTANTIVE_RESPONSE": 2}, "raw_witness_preserved": true, "cold_reopen": true},
+    "two_shapes": true,
+    "invalid_physical_refused": true,
+    "raw_tokens_published": false
+  },
+  "mapped_parity_defect": {
+    "status": "FAIL__NOT_PARITY",
+    "location": "common/shared_raw_lane_test.py:181",
+    "code": "\"mapped_matched_rows\": raw_mapped <= base_mapped",
+    "observed_sav": {
+      "raw_substantive_signatures": 1,
+      "base_substantive_signatures": 2,
+      "raw_subset_of_base": true,
+      "raw_equals_base": false,
+      "raw_event_count": 3,
+      "base_event_count": 3
+    },
+    "consequence": "The raw fixture intentionally strips one mapped response rule. The test still reports mapped_matched_rows=true because it only checks a subset, and it never compares base/raw mapped cardinality or full signature equality. A mapped row can silently disappear while the test passes.",
+    "smallest_fix": "At common/shared_raw_lane_test.py:169-182 require raw_mapped == base_mapped and compare both counts (or keep all base mapped rules in the raw lane fixture/signature proof). Do not call a subset check mapped parity."
+  },
+  "actual_saved_i03": {
+    "status": "PASS_WITH_BEFORE_RED",
+    "compare": "I03_COMPARE.json",
+    "before_unresolved_mixed": {"raw_denominator": 1, "risk_count": 2, "typed_state": "UNRESOLVED"},
+    "after_unresolved_mixed": {"raw_denominator": 0, "risk_count": 0, "typed_state": "UNRESOLVED", "detail": "UNRESOLVED_CONDITION_MEMBER"},
+    "after_unresolved_not": {"raw_denominator": 0, "risk_count": 0, "typed_state": "UNRESOLVED"},
+    "after_unresolved_positive": {"raw_denominator": 0, "risk_count": 0, "typed_state": "UNRESOLVED"},
+    "known_missing_not_unchanged": true,
+    "diagnostic_allowed_unchanged": true,
+    "mapped_not_zero_support_preserved": true,
+    "held_not_consumed_as_true_zero": true
+  },
+  "coverage_gaps": {
+    "target_joint_case": "NOT EXERCISED: i03_consumer_guard_test.py:151 builds a single-target query with ('Y',); no joint target.",
+    "native_canonical_component_occurrence_variants": "NOT EXPLICITLY EXERCISED: raw signatures include those fields, but no fixture varies target/canonical/component/occurrence matching.",
+    "scope": "Bounded sourcefree fixtures only; no full-coverage or real-source claim."
+  },
+  "boundaries": {
+    "original_source_access": false,
+    "private_census": false,
+    "editing_frozen_trees": false,
+    "author_branch_edit": false,
+    "source_read_performed": false,
+    "raw_tokens_published": false
+  }
+}
