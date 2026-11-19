@@ -67,7 +67,7 @@ class ConstitutiveRuntime:
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
         return {'receipt':receipt['id'],'cue':cue,'grade':GRADE}
 
-    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
+    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None,selected_method=None):
         actor=actors[actor_id]
         c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
         options=copy(situated['candidate_actions'])
@@ -83,18 +83,30 @@ class ConstitutiveRuntime:
             ok,why=eligible(actor['body'],requested_action)
             if not ok: raise ValueError('ACTOR_ACTION_BODILY_INELIGIBLE:'+why)
             action=requested_action
-            basis=['EXTERNAL_RESEARCH_ACTION_INJECTION']
-            authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
+            if selected_method is not None:
+                known={m['id']:m for m in situated.get('learned_compositions',[])}
+                rule=known.get(selected_method)
+                if rule is None or action not in rule['operations']:
+                    raise ValueError('ACTOR_METHOD_NOT_CURRENTLY_RECRUITED')
+                basis=['acquired_method:'+selected_method]+['form:'+ref for ref in rule['source_forms']]
+                authority='ACTOR_POLICY_SELECTED_ACQUIRED_METHOD_SOURCEFREE'
+            else:
+                basis=['EXTERNAL_RESEARCH_ACTION_INJECTION']
+                authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
             action=proposed['action']
-            opt=next((o for o in options if o['action']==action),None)
+            option_id=proposed.get('option_id')
+            opt=next((o for o in options if o['action']==action and
+                      (option_id is None or o.get('option_id')==option_id)),None)
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
             basis=copy(opt.get('basis',[]))
+            if opt.get('option_id'):
+                basis.append('selected_option:'+opt['option_id'])
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,means=[],basis=basis,
                        intention=authority,scene_hash=digest({'world':world,'actor':actor_id})),
@@ -118,16 +130,22 @@ class ConstitutiveRuntime:
 
     def step(self,actor_id,requested_action=None,target=None,object_ref=None,
              coactor_override=None):
-        """One atomic joined life transition. Coactor always uses own plan.
+        """Public research entrypoint: caller-specified conduct is injected."""
+        return self._commit_actor_step(actor_id,requested_action,target,object_ref,
+                                       coactor_override=coactor_override)
 
-        coactor_override is deliberately prohibited; original R0 consent bug
-        is repaired in this research implementation at the public transaction.
+    def _commit_actor_step(self,actor_id,requested_action=None,target=None,object_ref=None,
+                           coactor_override=None,_selected_method=None):
+        """Shared world transaction; composition chosen only by actor policy.
+
+        No REMONT SR-P004/P005 repairs are attempted in this feature branch.
         """
         if coactor_override is not None:raise ValueError('FORGED_COACTOR_OVERRIDE_REFUSED')
         wv,world=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
         actors=self.ledger.actors()
-        principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        principal=self._actor_plan(actor_id,world,actors,requested_action,
+                                   selected_method=_selected_method)[0]
         principal.target=target;principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
@@ -256,6 +274,52 @@ class ConstitutiveRuntime:
            'observed_actual_attempts':len(transitions),
            'grade':GRADE, 'selection_grade':'EXTERNAL_RESEARCH_PLAN_INVOCATION',
            'no_guaranteed_outcome':True}
+
+    def act_on_acquired_method(self,actor_id):
+        """Actor policy selects a currently recruited method, not its caller.
+
+        Unlike perform_composed_activity(plan_id), no caller supplies the
+        method, sequence, other actor response or objective outcome.
+        """
+        current=self.situated(actor_id)
+        learned=current.get('learned_compositions',[])
+        if not learned:
+            return {'actor':actor_id,'status':'NO_RECRUITED_ACQUIRED_METHOD',
+                    'attempts':[],'grade':GRADE}
+        _,actor=self.ledger.actor(actor_id)
+        suggested=self.semantic.proposal('composition_choice',{
+            'actor':{'id':actor_id,'role':actor['role']},
+            'available_methods':copy(learned),
+            'situated_currents':copy(current['currents']),
+            'antagonisms':copy(current['antagonisms']),
+            'selection_grade':GRADE})
+        selected=suggested['method_id']
+        if selected=='DECLINE':
+            return {'actor':actor_id,'status':'ACTOR_DECLINED_COMPOSITION',
+                    'attempts':[],'grade':GRADE}
+        eligible_methods={m['id']:m for m in learned}
+        if selected not in eligible_methods:
+            raise ValueError('MODEL_COMPOSITION_NOT_ACTOR_ELIGIBLE')
+        method=eligible_methods[selected]
+        attempts=[]
+        for action in method['operations']:
+            # Re-read actor/world context after each settled act.
+            presently={m['id']:m for m in
+                       self.situated(actor_id).get('learned_compositions',[])}
+            selected_now=presently.get(selected)
+            if selected_now is None or action not in selected_now['operations']:
+                return {'actor':actor_id,'method_id':selected,
+                        'status':'METHOD_NO_LONGER_RECRUITABLE',
+                        'attempts':attempts,'grade':GRADE}
+            result=self._commit_actor_step(actor_id,requested_action=action,
+                                            _selected_method=selected)
+            attempts.append(result)
+            if result['status'] not in ('PERFORMED','PARTIAL'):
+                break
+        return {'actor':actor_id,'method_id':selected,'attempts':attempts,
+                'status':'SOURCEFREE_ACTOR_POLICY_SELECTED_COMPOSITION',
+                'no_caller_selected_method':True,'no_guaranteed_outcome':True,
+                'grade':GRADE}
 
     def interview(self,actor_id,instrument):
         _,a=self.ledger.actor(actor_id)
