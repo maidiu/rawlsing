@@ -17,6 +17,7 @@ from collections import OrderedDict
 from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
+from math import prod
 from json import loads
 from typing import Any, Iterable, Mapping
 
@@ -159,6 +160,8 @@ class S04GeneralJointWorkspace:
                 self._positive_cells.append((cell, n))
                 for axis, value in enumerate(cell):
                     postings.setdefault((axis, canonical_json(value)), set()).add(pos)
+        if self._supported and len(seen) != prod(len(d) for d in self._domains):
+            raise S04GeneralAlgebraError("S04 complete joint domain omitted source-declared cells")
         if self._supported and total != m["raw_fully_resolved_joint_n"]:
             raise S04GeneralAlgebraError("S04 full-case cell counts violate source denominator")
         if not self._supported and total:
