@@ -57,6 +57,7 @@ files=(
   rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
   rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py
   rawlsing_next/tests/test_pre553_s04_dynamic_research.py
+  rawlsing_next/tests/test_pyat1155_hostile_supported_risk.py
   rawlsing_next/tests/run_pyat1097_fullstack_review_local.sh
 )
 for file in "${files[@]}"; do
