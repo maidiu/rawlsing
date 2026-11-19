@@ -1345,15 +1345,38 @@ def build_source_i02_handoff(
             handoff = replace(handoff, body_transport=body_transport)
         return handoff
     except BaseException as exc:
+        # The body sink, physical journal, and direct-I02 publisher are
+        # separately owned resources in one failed source transaction.
+        # An exception in one abort MUST NOT strand the other resource.
+        # Preserve the original first fault, appending cleanup failures as
+        # diagnostics rather than converting a rollback defect into success.
+        cleanup_errors: list[str] = []
         if sink is not None:
-            sink.abort(exc)
+            try:
+                sink.abort(exc)
+            except BaseException as cleanup_exc:
+                cleanup_errors.append(
+                    f"body sink abort failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
         if physical_journal is not None:
-            physical_journal.abort()
-        if published or (
-            manifest is not None
-            and _target_matches_manifest(target, manifest)
-        ):
-            _invalidate_target(target, exc)
+            try:
+                physical_journal.abort()
+            except BaseException as cleanup_exc:
+                cleanup_errors.append(
+                    f"physical journal abort failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
+        try:
+            if published or (
+                manifest is not None
+                and _target_matches_manifest(target, manifest)
+            ):
+                _invalidate_target(target, exc)
+        except BaseException as cleanup_exc:
+            cleanup_errors.append(
+                f"direct-I02 invalidation failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+            )
+        if cleanup_errors and hasattr(exc, "add_note"):
+            exc.add_note("source-I02 rollback incomplete: " + "; ".join(cleanup_errors))
         raise
     finally:
         if spool_paths is not None:
