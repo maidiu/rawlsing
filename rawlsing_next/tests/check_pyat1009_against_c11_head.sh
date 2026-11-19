@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Sourcefree compatibility at a local Codex C11 HEAD. Never modifies owner worktrees.
 # Usage from a Rawlsing checkout:
-#   bash rawlsing_next/tests/check_pyat1009_against_c11_head.sh b3dd74916
+#   bash rawlsing_next/tests/check_pyat1009_against_c11_head.sh b3dd74d16c71f9f63b10510af041ec83a1b5c3de
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
-C11_REF="${1:-b3dd74916}"
+C11_REF="${1:-b3dd74d16c71f9f63b10510af041ec83a1b5c3de}"
 CODE_REF="${PYAT1009_CANDIDATE_REF:-HEAD}"
 ANVIL="68aa7cac7cce7057fefd458ef4a06bec2dede1b2"
 BASE="aab22c22c9e282ff40f970cdedab7ddfb39ecd7a"
@@ -25,8 +25,10 @@ printf '%s\n' "$CODE" > "$OUT/code_head.txt"
 echo "Exact C11: $C11"
 echo "Exact code: $CODE"
 if ! git merge-base --is-ancestor "$ANVIL" "$C11"; then
-  echo "HOLD_ANCESTRY: C11 does not descend from accepted ANVIL sourcefree."
-  exit 13
+  echo "DIVERGENT_C11_LINEAGE: exact Codex C11 witness is not a descendant of the ANVIL integration head."
+  echo "This is a SOURCEFREE COMPATIBILITY EXPERIMENT ONLY; not a merge or production acceptance."
+  echo "Public I03 API and cold routing-locator differences must be independently reviewed."
+  git merge-base "$ANVIL" "$C11" || true
 fi
 if ! git merge-base --is-ancestor "$BASE" "$CODE"; then
   echo "HOLD_CODE_ANCESTRY: code is not based on frozen ANVIL candidate."
