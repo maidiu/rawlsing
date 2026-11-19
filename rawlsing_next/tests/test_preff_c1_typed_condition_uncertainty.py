@@ -79,6 +79,11 @@ def test_native_i03_typed_held_condition_conserves_exact_unknown_members(
     assert ff01.semantic_projection()["claim_grade"] == BLOCKED_GRADE
     assert ff01.semantic_projection()["producer_state"] == "UNRESOLVED"
     assert ff01.semantic_projection()["complete_cells"] == []
+    held = ff01.semantic_projection()["held_condition_membership_uncertainty"]
+    assert held["state"] == "UNRESOLVED_CONDITION_MEMBERSHIP__NO_FULL_DISTRIBUTION"
+    assert held["unknown_member_refs"] == material["source_unknown_condition_member_refs"]
+    assert held["known_true_denominator_n"] == 4 - unknown_count
+    assert held["eligible_risk_n"] == 4
 
 
 def test_rehashed_inconsistent_unknown_condition_members_are_not_admitted(

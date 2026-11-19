@@ -129,6 +129,19 @@ def receive_ff01_from_s04(
         "raw_eligible_condition_denominator": eligible,
         "raw_fully_resolved_joint_n": resolved,
         "held_observed_n_if_nonpositive": None if supported else resolved,
+        # Exact source-known-true/unknown condition extents are preserved
+        # downstream as HELD provenance only, never candidate support.
+        # The same original I03 fact was already revalidated above.
+        "held_condition_membership_uncertainty": (
+            {
+                "unknown_member_refs": material["source_unknown_condition_member_refs"],
+                "known_true_denominator_n": material["source_known_true_denominator_n"],
+                "eligible_risk_n": material["source_eligible_risk_n"],
+                "state": "UNRESOLVED_CONDITION_MEMBERSHIP__NO_FULL_DISTRIBUTION",
+            }
+            if not supported and "source_unknown_condition_member_refs" in material
+            else None
+        ),
         "uncertainty_state": material["producer_uncertainty_state"],
         "zero_means": (
             "OBSERVED_ZERO_WITHIN_SUPPORTED_ASKED_RISK__NOT_IMPOSSIBLE"
