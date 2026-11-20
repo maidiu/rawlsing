@@ -10,6 +10,7 @@ from .plans import qualified_learned_compositions
 from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
+from .attention_field import situate_attention
 from .world import _qualified_members
 
 
@@ -288,17 +289,22 @@ def compose(constitution,access,limit=50):
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
     learned=qualified_learned_compositions(constitution,access,active,projects,
                                           dynamics['candidate_actions'])
+    # Meaning can be received without every sign becoming available for
+    # focal, costly practical consideration. Tacit recruited psychology used
+    # original access; only deliberate means/beneficiary binding uses the
+    # presently nominated, scarce attentional field.
+    attention=situate_attention(constitution,access)
     # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
     for option in dynamics['candidate_actions']:
         option['practical_alternatives']=practical_alternatives(
-            constitution,access,option)
+            constitution,attention['focus_access'],option)
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
     prospective=project_trial_horizons(
-        constitution,access,dynamics['candidate_actions'])
+        constitution,attention['focus_access'],dynamics['candidate_actions'])
     currents+=prospective['currents']
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
@@ -309,4 +315,5 @@ def compose(constitution,access,limit=50):
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
-       suspended_actions=dynamics['suspended'],learned_compositions=learned)
+       suspended_actions=dynamics['suspended'],learned_compositions=learned,
+       attention_frame=attention['frame'])
