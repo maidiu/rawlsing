@@ -352,7 +352,8 @@ def _initial(
         "identity": identity, "source": source,
         "country_scope_mode": country_mode,
         "base_context": _serialize_context(context),
-        "min_branch_n": None,
+        "adaptive_support": None,
+        "country_question_common_case_n": None,
         "base_same_case_n": None, "base_target_distribution": [],
         "base_support_grade": "NOT_YET_ISSUED",
         "nodes": [], "frontier": [{"context": _serialize_context(context),
@@ -371,24 +372,94 @@ def _initial(
     }
 
 
-def _revive_deferred(m: dict[str, Any], domains: Sequence[Sequence[Any]],
-                     max_pending: int) -> None:
-    """Store one range cursor rather than silently dropping source branches."""
+def _revive_deferred(m: dict[str, Any], max_pending: int) -> None:
+    """Resume exactly the eligible *observed* children, never fake zero cells.
+
+    The parent node already retains all categories' source-positive evidence
+    and a count of exact source-zero declared categories. This cursor
+    persists the subset eligible for bounded further investigation; it
+    does not convert other observed categories into absent possibilities.
+    """
     while m["deferred"] and len(m["frontier"]) < max_pending:
         item = m["deferred"][0]
-        axis = item["axis"]
         nxt = item["next_index"]
-        domain = domains[axis]
-        if nxt >= len(domain):
+        if nxt >= len(item["scheduled"]):
             m["deferred"].pop(0)
             continue
+        child = item["scheduled"][nxt]
         ctx = _ctx(item["context"])
-        ctx[axis] = domain[nxt]
+        ctx[item["axis"]] = child["source_value"]
         m["frontier"].append({
             "context": _serialize_context(ctx),
             "depth": item["depth"], "parent": item["parent"],
+            "source_support_at_admission": child["support"],
         })
         item["next_index"] += 1
+
+
+def _target_counts_in_context(
+    positive: Sequence[tuple[tuple[Any, ...], int]], *,
+    target_axis: int, context: Mapping[int, Any],
+) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for row, n in positive:
+        if all(_key(row[axis]) == _key(value) for axis, value in context.items()):
+            k = _key(row[target_axis])
+            counts[k] = counts.get(k, 0) + n
+    return counts
+
+
+def _child_outcome_inventory(
+    *, positive: Sequence[tuple[tuple[Any, ...], int]],
+    target_axis: int, split_axis: int, context: Mapping[int, Any],
+    source_domain: Sequence[Any],
+    country_n: int, policy: AdaptiveSupportPolicy,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], int]:
+    """One source-joint pass; no modal-category truncation.
+
+    Counts and contrasts are **source-exact** inside the same respondent
+    population. Positive but below-threshold options remain inspectable
+    in the parent inventory with their precise source-native identity.
+    """
+    parent_counts = _target_counts_in_context(
+        positive, target_axis=target_axis, context=context)
+    by_value: dict[str, dict[str, int]] = {}
+    original: dict[str, Any] = {}
+    for row, n in positive:
+        if not all(_key(row[a]) == _key(v) for a, v in context.items()):
+            continue
+        key = _key(row[split_axis])
+        original[key] = row[split_axis]
+        child = by_value.setdefault(key, {})
+        y = _key(row[target_axis])
+        child[y] = child.get(y, 0) + n
+    parent_n = sum(parent_counts.values())
+    candidates: list[tuple[Any, dict[str, Any]]] = []
+    for value in source_domain:
+        key = _key(value)
+        if key not in by_value:
+            continue
+        data = classify_observed_branch(
+            country_question_n=country_n,
+            parent_n=parent_n,
+            observed_n=sum(by_value[key].values()),
+            parent_target_counts=parent_counts,
+            child_target_counts=by_value[key],
+            policy=policy,
+        )
+        candidates.append((value, data))
+    schedule, conserved = order_child_probes(candidates, policy)
+    inventory = [
+        {"source_value": value, "source_target_counts": by_value[_key(value)],
+         "support": item}
+        for value, item in candidates
+    ]
+    exact_source_zeros = len(source_domain) - len(candidates)
+    if exact_source_zeros < 0 or sum(
+        item["support"]["observed_raw_n"] for item in inventory
+    ) != parent_n:
+        raise DeterminicityCycleError("SPLIT_CHILD_POPULATION_NOT_CONSERVED")
+    return schedule, conserved, inventory, exact_source_zeros
 
 
 def advance_country_determinicity(
@@ -539,30 +610,45 @@ def advance_country_determinicity(
         state["stopping_reason"] = "BASELINE_OUTPUT_DOMAIN_EXCEEDS_HOST_BUDGET"
         state["status"] = "HELD_SOURCE_OUTPUT_CAPACITY"
         return _seal(state, policy.max_receipt_bytes)
+    country_only = (
+        {country_axis: country_value} if country_axis is not None else {}
+    )
+    country_projection = workspace.query(S04Projection((), country_only)).material()
+    country_n = country_projection["raw_selected_full_case_n"]
+    if type(country_n) is not int or country_n < 0:
+        raise DeterminicityCycleError("COUNTRY_QUESTION_COMMON_CASE_N_NOT_ISSUED")
+    adaptive = country_support_thresholds(country_n, policy.support_policy)
+    explore_min_n = adaptive["explore_min_n"]
     base = workspace.query(S04Projection(
         (policy.target_axis,), context,
     )).material()
     base_n = base["raw_selected_full_case_n"]
     base_grade = (
         "SOURCE_EXACT_RAW_SAME_CASE_COARSE_NOT_POPULATION"
-        if base_n is not None and base_n >= policy.min_branch_n else
-        "LOW_OR_ZERO_CONTEXT_SUPPORT__NO_TARGET_DISCLOSURE"
+        if base_n is not None and base_n >= explore_min_n else
+        "SOURCE_OBSERVED_BELOW_EXPLORATION_THRESHOLD_NOT_POPULATION"
+        if base_n else "ZERO_OR_HELD_CONTEXT_NO_POPULATION_CLAIM"
     )
+    # Retain source-observed positive categories even when there is
+    # insufficient support for a reliable inference. The downstream
+    # population/actor consumer must separately check support_grade.
     base_counts = (
         [{"state": item["output_states"][0], "n": item["raw_count"]}
          for item in base["complete_output_cells"]]
-        if base_grade.startswith("SOURCE_EXACT") else []
+        if base_n and base_n > 0 else []
     )
     if prior is not None and (
         state.get("base_context") != _serialize_context(context)
-        or state.get("min_branch_n") != policy.min_branch_n
+        or state.get("adaptive_support") != adaptive
+        or state.get("country_question_common_case_n") != country_n
         or state.get("base_same_case_n") != base_n
         or state.get("base_target_distribution") != base_counts
         or state.get("base_support_grade") != base_grade
     ):
         raise DeterminicityCycleError("COARSER_SOURCE_BASELINE_CHANGED_ON_RESUME")
     state["base_context"] = _serialize_context(context)
-    state["min_branch_n"] = policy.min_branch_n
+    state["adaptive_support"] = adaptive
+    state["country_question_common_case_n"] = country_n
     state["base_same_case_n"] = base_n
     state["base_target_distribution"] = base_counts
     state["base_support_grade"] = base_grade
@@ -582,7 +668,7 @@ def advance_country_determinicity(
             stop = "CALL_NODE_BUDGET"; break
         if state["completed_nodes"] >= policy.max_total_nodes:
             stop = "TOTAL_NODE_BUDGET_WITH_UNSEARCHED_FRONTIER"; break
-        _revive_deferred(state, domains, policy.max_pending_nodes)
+        _revive_deferred(state, policy.max_pending_nodes)
         if state["active"] is None:
             if not state["frontier"]:
                 stop = "EXPLORATION_FRONTIER_COMPLETE"; break
@@ -880,7 +966,7 @@ def advance_country_determinicity(
                 "next_index": 0, "depth": active["depth"] + 1,
                 "parent": node_id,
             })
-            _revive_deferred(next_state, domains, policy.max_pending_nodes)
+            _revive_deferred(next_state, policy.max_pending_nodes)
         if len(canonical_json(next_state).encode("utf-8")) > policy.max_receipt_bytes:
             stop = "RECEIPT_STORAGE_BUDGET_CURRENT_NODE_UNCOMMITTED"; break
         state = next_state
