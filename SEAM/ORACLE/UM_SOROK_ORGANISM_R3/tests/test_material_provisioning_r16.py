@@ -164,7 +164,11 @@ class R16LiveMaterialAction(unittest.TestCase):
         self.assertEqual(world['sites']['home']['food'],11)
         self.assertGreater(child['body']['nutrition'],before)
         self.assertEqual(len(world['material_feeding_events']),1)
+        self.assertTrue(world['material_feeding_events'][0][
+            'external_action_not_actor_motive'])
         self.assertEqual(len(mother['performed_feeding_events']),1)
+        self.assertFalse(mother['performed_feeding_events'][0][
+            'original_action_was_actor_selected'])
         self.assertEqual(len(child['experienced_care_events']),1)
         self.assertEqual(child['experienced_care_events'][0][
             'source_care_event_type'],'RECEIVED_UNSOLICITED_CARE')
@@ -186,6 +190,9 @@ class R16LiveMaterialAction(unittest.TestCase):
         performed=self.rt.step('nadia')
         self.assertEqual(performed['attempt'],'SIGNAL')
         self.assertEqual(performed['coactor'],'FEED')
+        now_world=self.rt.ledger.world('w1')[1]
+        self.assertTrue(now_world['material_feeding_events'][-1][
+            'actor_independently_selected_this_attempt'])
         self.assertEqual(
             self.rt.ledger.world('w1')[1]['sites']['home']['food'],
             food_before-1)
