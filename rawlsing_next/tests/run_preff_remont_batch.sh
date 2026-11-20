@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -52,6 +52,10 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q007) # C5 material sourcefree context navigation and real I05 role
       tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py)
+      ;;
+    RMT-Q008) # REMONT P0 ABI parity and historical raw/held negative courts
+      tests=(rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
+             rawlsing_next/tests/test_preff_c0_raw_preservation.py)
       ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
