@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -57,6 +57,10 @@ for id in "${cases[@]}"; do
       tests=(rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
              rawlsing_next/tests/test_preff_c0_raw_preservation.py)
       ;;
+    RMT-Q009) # C5 contextual navigation full inherited sourcefree court
+      ;;
+    RMT-Q010) # C6 V3/SEAM pinned replay, world and pair negative court
+      ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2
@@ -69,10 +73,16 @@ for id in "${cases[@]}"; do
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/start_utc.txt"
   echo "REMONT_EXECUTING $id at $HEAD_SHA"
   set +e
-  if [[ "$id" == RMT-Q005 ]]; then
+  if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 ]]; then
+    # Reuse the existing exact-head first-fault courts, not duplicated suites.
+    court=C0_ALL_SMALL
+    case "$id" in
+      RMT-Q009) court=C5_V3_CONTEXT ;;
+      RMT-Q010) court=C6_V3_SEAM ;;
+    esac
     EXPECTED_PREFF_C0_HEAD="$HEAD_SHA" \
-    PREFF_COURT=C0_ALL_SMALL \
-    PREFF_PROOF_DIR="$dir/broad_c0" \
+    PREFF_COURT="$court" \
+    PREFF_PROOF_DIR="$dir/court" \
     bash rawlsing_next/tests/run_preff_c0_first_fault_local.sh \
       2>&1 | tee "$dir/runner.log"
   else
