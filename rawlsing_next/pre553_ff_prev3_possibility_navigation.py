@@ -224,10 +224,15 @@ def plan_v3_sourcefree_context_branches(
     supported = f["producer_state"] == "SUPPORTED" and d["state"] == "SOURCE_COHERENT_SAMPLE_COMPARISON"
     base_rows = _context_rows(f, context) if supported else []
     base_n = _total(base_rows) if supported else None
+    # A low/zero support context can report its total status, but must not
+    # partition a one-person context across further axes. In particular,
+    # branching the target axis itself would disclose a held target answer
+    # even while source_target_alternatives remains empty.
+    partition_eligible = supported and base_n >= required
     axis_products = []
     for axis in axes:
         branches = []
-        if supported:
+        if partition_eligible:
             for key, value in domains[axis].items():
                 selected = _context_rows(f, {**context, axis: value})
                 n = _total(selected)
@@ -283,9 +288,15 @@ def plan_v3_sourcefree_context_branches(
         axis_products.append({
             "axis": axis,
             "target_ref": f["target_refs"][axis],
-            "state": "SOURCE_OBSERVED_PARTITION" if supported else "UPSTREAM_TYPED_HELD",
+            "state": (
+                "SOURCE_OBSERVED_PARTITION" if partition_eligible
+                else "HELD_LOW_OR_ZERO_BASE_CONTEXT__NO_BRANCH_DISCLOSURE"
+                if supported else "UPSTREAM_TYPED_HELD"
+            ),
             "branches": branches,
-            "partition_sum_conserves_base_full_cases": True if supported else None,
+            "partition_sum_conserves_base_full_cases": (
+                True if partition_eligible else None
+            ),
         })
     result = {
         "contract": PLAN_CONTRACT, "grade": GRADE,
@@ -328,9 +339,22 @@ def run_v3_sourcefree_context_path(
     if (not isinstance(steps, Sequence) or isinstance(steps, (str, bytes))
             or len(steps) > MAX_PATH_LENGTH):
         raise V3ContextNavigationError("path must be bounded source-axis sequence")
-    m, _, f, _ = _source(envelope, external_pin)
+    m, _, f, d = _source(envelope, external_pin)
     context = _condition(starting_conditions, f=f, domains=_source_domains(f))
     start = _exact_context(context, f)
+    # Refuse extension from an already held initial context. Without this
+    # gate a caller can repeatedly query one-person contexts via paths
+    # despite the low-N qualification the same machine assigns at each step.
+    if steps:
+        initial = plan_v3_sourcefree_context_branches(
+            envelope=envelope, external_pin=external_pin,
+            conditions=context, candidate_axes=(),
+            min_context_n=min_context_n,
+        ).material()
+        if initial["state"] != "CONTEXT_ELIGIBLE_FOR_SOURCEFREE_CASE_OFFER":
+            raise V3ContextNavigationError(
+                "cannot extend initial held/low/zero source context"
+            )
     requested_steps = []
     history = []
     for step in steps:

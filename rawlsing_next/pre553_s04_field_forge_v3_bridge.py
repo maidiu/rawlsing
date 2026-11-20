@@ -432,7 +432,13 @@ def consume_v3_empirical_case_offer(
         for axis, value in enumerate(selected["cell"])
     ] if selected is not None else []
     answer = None
-    if supported and m["target_index"] not in context:
+    # The complete target distribution is a separately derived conditional
+    # research receipt. A low/zero-N abstention must NOT publish even its
+    # keyed digest: that would defeat the held target-disclosure boundary.
+    # This remains an API guard over sourcefree material, NOT an independently
+    # authorized privacy system for original-survey cohorts.
+    if (state == "SOURCE_COHERENT_EXPLORATORY_CASE_OFFER"
+            and m["target_index"] not in context):
         answer = ask_exact_descriptive_support(
             received=ff, target_index=m["target_index"],
             conditions=context,
