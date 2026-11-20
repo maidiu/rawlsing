@@ -53,6 +53,10 @@ def passage(world,actors,days,processes=None):
        'qualified_material_time_allocation_ref':allocation_receipt['id'],
        'care_period_refs':allocation_receipt['care_period_refs'],
        'wage_period_refs':allocation_receipt['wage_period_refs'],
+       'material_feeding_period_refs':allocation_receipt[
+           'material_feeding_period_refs'],
+       'material_feeding_shortfall_refs':allocation_receipt[
+           'material_feeding_shortfall_refs'],
        'actor_time_claims':allocation_receipt['actor_hour_claims_per_day'],
        'material_object_condition_process_refs':[r['id'] for r in material_wear],
        'qualified_aggregate_practice_refs':practice_evidence,

@@ -14,6 +14,8 @@ import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import verify_qualified_period_envelope
 from .co_regulation_history import conserve_received_period_care
+from .material_provisioning import (
+    PROVISION_KIND,qualify_feeding,settle_provisioning)
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -21,6 +23,7 @@ ACTIVE_HOURS=DAY_HOURS-PROVISIONAL_REST_RESERVE
 KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
                  'QUALIFIED_REPRODUCTIVE_CARE',
                  'QUALIFIED_WAGE_LABOR',
+                 'QUALIFIED_MATERIAL_FEEDING',
                  'QUALIFIED_OTHER_OBLIGATION'})
 
 
@@ -89,6 +92,10 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         a=raw['actor'];site=raw['location']
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
+        if raw['kind']==PROVISION_KIND:
+            # Feeding is an additional, materially specified routine, never
+            # silently included in generic CARE or awarded by affection.
+            qualify_feeding(world,actors,raw,start_clock,days)
         if raw['kind']=='QUALIFIED_REPRODUCTIVE_CARE':
             recipient=raw.get('recipient')
             if (type(recipient) is not str or recipient==a or
@@ -256,6 +263,7 @@ def apply_period_allocation(world,actors,allocation):
             care.append(_care(world,actors,proc,start,days))
         elif proc['kind']=='QUALIFIED_WAGE_LABOR':
             wages.append(_work(world,actors,proc,start,days))
+    provisioned=settle_provisioning(world,actors,allocation)
     receipt={
         'id':ref,'start_clock':start,'end_clock':start+days,
         'actor_hour_claims_per_day':copy(
@@ -264,6 +272,9 @@ def apply_period_allocation(world,actors,allocation):
             allocation['unmodeled_free_hours_per_day']),
         'care_period_refs':[x['id'] for x in care],
         'wage_period_refs':[x['id'] for x in wages],
+        'material_feeding_period_refs':[x['id'] for x in provisioned],
+        'material_feeding_shortfall_refs':[
+            x['id'] for x in provisioned if x['uncovered_food_units']>0],
         'source_qualified_process_refs':[
             x['source_ref'] for x in allocation['qualified']],
         'support_downgraded_to_unresolved_indices':copy(

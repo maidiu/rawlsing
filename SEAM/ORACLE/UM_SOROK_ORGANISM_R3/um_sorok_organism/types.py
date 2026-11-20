@@ -69,6 +69,7 @@ class Constitution:
     undergone_care_periods: list[dict] = field(default_factory=list)
     co_regulation_orientations: list[dict] = field(default_factory=list)
     experienced_care_events: list[dict] = field(default_factory=list)
+    performed_feeding_events: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -137,6 +138,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'practice_exposures': [],
         'undergone_care_periods': [], 'co_regulation_orientations': [],
         'experienced_care_events': [],
+        'performed_feeding_events': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
@@ -154,7 +156,9 @@ def adult(actor_id: str, name: str, location='home', age_days=30 * 365) -> dict:
 
 def blank_world(world_id='w1'):
     return {'id': world_id, 'clock': 0, 'positions': {},
-            'sites': {'home': {'food': 12, 'stock': 8, 'access': 'public'},
+            'sites': {'home': {'food': 12, 'stock': 8, 'access': 'public',
+                           'shared_household_food':True,
+                           'provisioning_rule':'PROPORTIONAL_DECLARED_CLAIMS_R1'},
                       'workshop': {'food': 1, 'stock': 5, 'access': 'public',
                                    'controller':'workshop_steward', 'food_price':1.0},
                       'hall': {'food': 0, 'stock': 2, 'access': 'controlled'}},
@@ -166,6 +170,8 @@ def blank_world(world_id='w1'):
                 'hall_petition_signatures':[], 'rule_history':[]}},
             'cues': [], 'historical_periods': [], 'public_history': [],
             'social_reproductive_labor': [],
+            'material_provisioning_periods': [],
+            'material_feeding_events': [],
             'scheduled_obligations': [],
             'positioned_material_records': [],
             'institutional_access_rules': [],

@@ -21,11 +21,12 @@ from .material_investments import (
     invested_material_action_options, annotate_material_alternatives)
 from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
-from .world import _qualified_members
+from .world import _qualified_members, _nonnegative_transfer_amount
 from .institutional_reproduction import current_institutional_opportunities
 from .expectation_afterlife import annotate_practical_expectations
 from .co_regulation_history import (
     recruit_co_regulation, addressed_signal_alternatives)
+from .caregiving_practice import project_repeat_feeding
 
 
 def materialize(actor,world):
@@ -48,6 +49,7 @@ def materialize(actor,world):
         undergone_care_periods=copy(actor.get('undergone_care_periods',[])),
         co_regulation_orientations=copy(actor.get('co_regulation_orientations',[])),
         experienced_care_events=copy(actor.get('experienced_care_events',[])),
+        performed_feeding_events=copy(actor.get('performed_feeding_events',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -117,6 +119,18 @@ def actor_access(actor,world):
         env.append('MAKE_OBJECT')
     if any(x.get('kind')=='material_object_present' for x in cues):
         env.append('INSPECT')
+    # A visible/held source of food is a material possibility; the actor's
+    # actual ability and willingness to feed someone else remain separate.
+    held=_nonnegative_transfer_amount(
+        world.get('holdings',{}).get(actor['id'],{}).get('food',0),
+        'INVALID_ACTOR_ACCESS_HELD_FOOD')
+    site=world['sites'].get(location,{})
+    shared=(site.get('shared_household_food') is True and
+            _nonnegative_transfer_amount(site.get('food',0),
+              'INVALID_ACTOR_ACCESS_SHARED_FOOD')>=1)
+    if any(c.get('kind')=='coactor_present' for c in cues) and (
+            held>=1 or shared):
+        env.append('FEED')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -461,6 +475,8 @@ def compose(constitution,access,limit=50):
         option['practical_alternatives']+=object_bound_alternatives(
             constitution,attention['focus_access'],option['action'])
         option['practical_alternatives']+=addressed_signal_alternatives(
+            constitution,attention['focus_access'],option)
+        option['practical_alternatives']+=project_repeat_feeding(
             constitution,attention['focus_access'],option)
         annotate_material_alternatives(option,invested)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):

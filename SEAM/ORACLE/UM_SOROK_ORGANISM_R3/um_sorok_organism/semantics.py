@@ -15,6 +15,7 @@ from .co_regulation_history import sourcefree_revision_proposal
 from .plural_care_paths import (
     choose_one_grounded_plural_acquisition, propose_one_reopening,
     plural_addressed_signal_choice)
+from .caregiving_practice import choose_independent_repeat_feeding
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -37,6 +38,14 @@ class HeuristicSemanticProvider:
         if task=='actor_attempt':
             possibilities=packet.get('options',[])
             if not possibilities:return {'task':task,'action':'WAIT','basis':['NONE']}
+            # The other person's independent learned practical repertoire can
+            # propose FEED after a signal. This is not the signal author's
+            # command, and absence of material food still blocks the world.
+            repeated_feed=choose_independent_repeat_feeding(
+                possibilities,packet.get('requesting_actor'),
+                packet.get('requesting_action'))
+            if repeated_feed:
+                return {'task':task,**repeated_feed}
             # deliberately choose among actually available options; does not mint actions.
             if possibilities[0].get('psychodynamic_status')=='UNRESOLVED_CONTRADICTION':
                 # This is a declared primitive *deferral* policy, not proof
@@ -276,7 +285,7 @@ class HeuristicSemanticProvider:
                     'relation':edge['relation'], 'contexts':edge.get('contexts',[]),
                     'grade':'FICTIONAL_BACKFILL_HYPOTHESIS'})
             projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
-                 'means':['REST','EAT','WORK','CARE'],'priority':.42,'cue_terms':['home','work'],
+                 'means':['REST','EAT','WORK','CARE','FEED'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
             return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
