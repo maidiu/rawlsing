@@ -36,6 +36,9 @@ from rawlsing_next.pre553_s04_adaptive_support import (
     AdaptiveSupportPolicy, classify_observed_branch, order_child_probes,
     thresholds as country_support_thresholds,
 )
+from rawlsing_next.pre553_s04_exploration_admission import (
+    SearchEvidence, route_exploratory_split, source_observed_group_states,
+)
 from rawlsing_next.pre553_s04_observed_research import (
     MAX_CELLS as S04_MAX_CELLS, receive_s04_i03_research,
 )
@@ -938,14 +941,60 @@ def advance_country_determinicity(
             ]
 
         node_id = state["completed_nodes"]
-        groups = sorted(
-            active["batch_groups"],
-            key=lambda v: (-_decimal(v["per_axis_priority_bits"]),
-                           len(v["axes"]), v["axes"]),
+        # Unadjusted plug-in MI is strictly nonnegative in finite samples
+        # and positive almost surely in many independence configurations.
+        # Do not let the provisional V550-relative n-support curve alone
+        # open a recursion tree. Admit a split ONLY after paying the source
+        # observed model/state and repeated-search codelength.
+        source_cells_in_node = [
+            (row, n) for row, n in positive if all(
+                _key(row[a]) == _key(v) for a, v in selected.items()
+            )
+        ]
+        search_family_size = len(available) + (
+            comb(len(available), 2) if policy.max_pair_order == 2 else 0
         )
-        best = groups[0] if groups else None
+        assessed_groups = []
+        for group in active["batch_groups"]:
+            axes = tuple(group["axes"])
+            joint_info = _decimal(group["per_axis_priority_bits"]) * Decimal(len(axes))
+            source_n, y_states, x_states = source_observed_group_states(
+                positive_cells=source_cells_in_node,
+                target_axis=policy.target_axis, predictor_axes=axes,
+            )
+            if source_n != active["raw_n"]:
+                raise DeterminicityCycleError("SPLIT_SCORE_COHORT_NOT_SOURCE_EXACT")
+            statistical_route = route_exploratory_split(SearchEvidence(
+                common_case_n=source_n,
+                target_observed_states=y_states,
+                joint_predictor_observed_states=x_states,
+                information_bits=joint_info,
+                candidate_family_size=search_family_size,
+                previous_search_nodes=state["completed_nodes"],
+            ))
+            if any(axis in channels for axis in axes):
+                # The source observation-status hypothesis needs its OWN
+                # qualified risk/estimator: never promote ordinary MI or
+                # a value/status-mixed heuristic to automatic actor inputs.
+                statistical_route["admit_automatic_recursion"] = False
+                statistical_route["grade"] = "OBSERVATION_CHANNEL_DIAGNOSTIC_NOT_AUTOSPLIT"
+            assessed_groups.append({**group, "complexity_admission": statistical_route})
+        groups = sorted(
+            assessed_groups,
+            key=lambda v: (
+                -_decimal(v["complexity_admission"]["net_search_codelength_bits"]),
+                -_decimal(v["per_axis_priority_bits"]),
+                len(v["axes"]), v["axes"],
+            ),
+        )
+        admitted = [
+            group for group in groups
+            if group["complexity_admission"]["admit_automatic_recursion"]
+            and _decimal(group["per_axis_priority_bits"]) > Decimal(policy.min_signal_bits)
+        ]
+        best = admitted[0] if admitted else None
         gain = _decimal(best["per_axis_priority_bits"]) if best else Decimal(0)
-        split = best["axes"][0] if best and gain > Decimal(policy.min_signal_bits) else None
+        split = best["axes"][0] if best else None
         raw_n = active["raw_n"]
         if raw_n is None:
             raise DeterminicityCycleError("SOURCE_RISK_COUNT_NOT_COMPUTED")
@@ -1022,6 +1071,7 @@ def advance_country_determinicity(
             "review_support_is_candidate_not_design_qualification": True,
             "predictor_screens": active["candidate_screens"],
             "exploratory_priority_groups": groups,
+            "automatic_split_requires_positive_model_and_search_net_gain": True,
             "selected_split_axis": split,
             "selected_split_score_bits": gain,
             "split_observed_branch_inventory": child_inventory,
@@ -1043,7 +1093,7 @@ def advance_country_determinicity(
                 else "OBSERVED_BELOW_DYNAMIC_EXPLORATION_NOT_ERASED"
                 if not may_explore else
                 "CONFIGURED_DEPTH_BOUND" if active["depth"] >= policy.max_depth
-                else "NO_OBSERVED_POSITIVE_INFORMATION_OR_UNSEARCHED_INTERACTIONS"
+                else "NO_COMPLEXITY_QUALIFIED_SPLIT__SOURCE_RELATIONS_RETAINED"
                 if split is None else None
             ),
         }
