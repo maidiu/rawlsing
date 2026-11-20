@@ -17,6 +17,7 @@ from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .initiative import continue_life
+from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -98,7 +99,11 @@ class ConstitutiveRuntime:
                        'option_id':None,'project_id':None,
                        'anticipated_difference':None,
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
-                       'conscious_availability':'NOT_INFERRED'}
+                       'conscious_availability':'NOT_INFERRED',
+                       'operative_selection_witness':{
+                           'policy_path':'EXTERNAL_INJECTION_NOT_ACTOR_INITIATIVE',
+                           'source_grade':GRADE,
+                           'historical_motive':'NOT_INFERRED'}}
             bound_target=None
         else:
             # The new selection interface offers actor-scoped *practical*
@@ -228,6 +233,14 @@ class ConstitutiveRuntime:
                        'world_request':{
                            'operation':action,
                            'addressed_party_ref':bound_target}}
+            # Freeze the exact historically acquired grounds a SOURCEFREE
+            # action policy actually used, or explicitly leave it unknown.
+            # The old machinery retained currents but could not say which
+            # affected this occasion once the world had already settled.
+            practical['operative_selection_witness']=freeze_operative_witness(
+                actor_id,world['clock'],options,action,proposed,
+                getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
+                selected_refs)
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,target=bound_target,means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
@@ -373,6 +386,9 @@ class ConstitutiveRuntime:
                 'selected_project_ref':own_selection.get('project_id'),
                 'practical_option_ref':(
                     actor_attempt.practical_selection.get('option_id')
+                    if personally_done and actor_attempt is not None else None),
+                'pre_world_operative_policy_witness_analytic_only':(
+                    copy(actor_attempt.practical_selection.get('operative_selection_witness'))
                     if personally_done and actor_attempt is not None else None),
                 'anticipated_difference_analytic_only':(
                     copy(actor_attempt.practical_selection.get('anticipated_difference'))
