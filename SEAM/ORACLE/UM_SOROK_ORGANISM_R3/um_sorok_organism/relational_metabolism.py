@@ -180,6 +180,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
         "action_currents": action_currents,
         "readset": sorted(readset),
         "grade": GRADE,
+        "not_a_clinical_unconscious_etiology": True,
     }
 
 
