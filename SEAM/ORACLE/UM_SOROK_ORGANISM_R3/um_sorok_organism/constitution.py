@@ -404,6 +404,10 @@ def compose(constitution,access,limit=50):
         entry['basis']+=candidate['basis']
         entry.setdefault('candidate_notice_refs',[]).extend(
             candidate['candidate_notice_refs'])
+        entry.setdefault('candidate_notice_grounds',{}).update({
+            ref:candidate.get('source_grounds_status',
+                'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING')
+            for ref in candidate['candidate_notice_refs']})
     material=material_opportunity_from_history(constitution,access)
     for candidate in material['offers']:
         op=candidate['action']
@@ -507,7 +511,9 @@ def compose(constitution,access,limit=50):
                   str(constitution.clock)+':'+str(ref),
                  'actor':constitution.actor,'as_of_clock':constitution.clock,
                  'operation':'INSPECT','project_id':None,
-                 'grounds_status':'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING',
+                 'grounds_status':option.get(
+                     'candidate_notice_grounds',{}).get(
+                         ref,'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING'),
                  'world_request':{'operation':'INSPECT',
                      'addressed_party_ref':None,'material_object_ref':ref},
                  'anticipated_difference':None,
