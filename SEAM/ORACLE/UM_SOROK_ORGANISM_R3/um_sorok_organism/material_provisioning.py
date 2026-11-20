@@ -205,3 +205,73 @@ def settle_provisioning(world, actors, allocation):
         actors[recipient]["body"]["nutrition"]=float(final)
     world.setdefault("material_provisioning_periods",[]).extend(outcomes)
     return outcomes
+
+
+def perform_one_actual_feeding(world,actors,giver,recipient,location):
+    """One independently authored, actual FEED transfers a full food unit.
+
+    No infant duty or assumed caregiver motive. This operation belongs to
+    the world action resolver, not to the simulated child's self-understanding.
+    """
+    if (giver not in actors or recipient not in actors or giver==recipient
+            or location not in world.get("sites",{})
+            or any(world.get("positions",{}).get(x)!=location
+                   or actors[x].get("location")!=location
+                   for x in (giver,recipient))):
+        return {"status":"BLOCKED","outcome":"RECIPIENT_NOT_PRESENT",
+                "material_feeding_ref":None}
+    held=_quantity(world.get("holdings",{}).get(
+        giver,{}).get("food",0),"GIVER_HELD_FOOD")
+    if held>=1:
+        origin="GIVER_HELD_FOOD"
+        next_food=held-Decimal(1)
+    else:
+        if not world["sites"][location].get("shared_household_food",False):
+            return {"status":"BLOCKED","outcome":"NO_AUTHORIZED_FEEDING_STOCK",
+                    "material_feeding_ref":None}
+        site_food=_quantity(world["sites"][location].get("food",0),
+                            "HOUSEHOLD_FOOD")
+        if site_food<1:
+            return {"status":"BLOCKED","outcome":"NO_MATERIAL_FOOD_TO_GIVE",
+                    "material_feeding_ref":None}
+        if world["sites"][location].get("provisioning_rule")!=(
+                "PROPORTIONAL_DECLARED_CLAIMS_R1"):
+            raise ValueError("FEED_UNQUALIFIED_SHARED_MATERIAL_RULE")
+        origin="SHARED_SITE_FOOD"
+        next_food=site_food-Decimal(1)
+    body=actors[recipient]["body"]
+    nutrition=_quantity(body.get("nutrition"),"RECIPIENT_NUTRITION")
+    proposed=min(Decimal(1),nutrition+Decimal("0.12"))
+    after=proposed.quantize(UNIT)
+    identity=stable_id("independently_performed_feeding",{
+        "world":world["id"],"clock":world["clock"]+1,
+        "giver":giver,"recipient":recipient,"origin":origin})
+    # Material effect and bodily result computed before either source changes.
+    if origin=="GIVER_HELD_FOOD":
+        world.setdefault("holdings",{}).setdefault(giver,{})[
+            "food"]=float(next_food)
+    else:
+        world["sites"][location]["food"]=float(next_food)
+    body["nutrition"]=float(after)
+    receipt={
+        "id":identity,"clock":world["clock"]+1,
+        "giver":giver,"recipient":recipient,"site":location,
+        "food_source":origin,"food_consumed":1,
+        "nutrition_before":float(nutrition),
+        "nutrition_after":float(after),
+        "nutrition_effect":float(after-nutrition),
+        "independently_actor_authored":"SOURCEFREE_ACTOR_SELECTED",
+        "co_presence_not_future_consent":True,
+        "caregiver_intent_or_love":"NOT_INFERRED",
+        "not_compressed_fiction":True,
+        "grade":GRADE}
+    world.setdefault("material_feeding_events",[]).append(receipt)
+    world.setdefault("social_reproductive_labor",[]).append({
+        "id":identity+":labor","giver":giver,"recipient":recipient,
+        "site":location,"clock":world["clock"]+1,
+        "work_kind":"DIRECT_MATERIAL_FEEDING",
+        "material_feed_ref":identity,
+        "caregiver_bodily_cost":"PHYSICAL_ACTION_FEED",
+        "grade":GRADE})
+    return {"status":"PERFORMED","outcome":"MATERIAL_FOOD_GIVEN",
+            "material_feeding_ref":identity}
