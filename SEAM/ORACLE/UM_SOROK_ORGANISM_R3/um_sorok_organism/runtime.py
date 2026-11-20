@@ -96,7 +96,7 @@ class ConstitutiveRuntime:
                        'option_id':None,'project_id':None,
                        'anticipated_difference':None,
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
-                       'not_actor_conscious_intent':True}
+                       'conscious_availability':'NOT_INFERRED'}
             bound_target=None
         else:
             # The new selection interface offers actor-scoped *practical*
@@ -221,7 +221,7 @@ class ConstitutiveRuntime:
                            if a['project_id'] in selected_refs]
                            if len(selected_refs)>1 else []),
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
-                       'not_actor_conscious_intent':True,
+                       'conscious_availability':'NOT_INFERRED',
                        'not_premature_fulfillment':True,
                        'world_request':{
                            'operation':action,
