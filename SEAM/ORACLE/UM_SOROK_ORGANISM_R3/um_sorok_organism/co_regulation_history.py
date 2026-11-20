@@ -114,7 +114,10 @@ def admit_co_regulation(actor,experience,event_ref,proposal):
               if x.get('caregiver_ref')==partner}
     lived={x['id']:x for x in actor.get('experienced_care_events',[])
            if x.get('giver_ref')==partner and
-           x.get('event_ref')!=event_ref}
+           x.get('event_ref')!=event_ref and
+           type(x.get('clock')) is int and
+           type(experience.get('clock')) is int and
+           x['clock']<experience['clock']}
     if (any(x not in personal for x in referenced) or
             any(x not in lived for x in lived_refs)):
         raise ValueError('COREGULATION_ADMISSION_FOREIGN_CARE_HISTORY')
