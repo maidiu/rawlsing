@@ -283,6 +283,30 @@ class PurposeAndGenesisR6(unittest.TestCase):
                              for p in later['projects']))
         self.assertTrue(self.rt.verify()['valid'])
 
+    def test_two_composed_projects_same_object_stay_separate_by_project_origin(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.plans import propose_compositions
+        common={'object':'make a shared sound',
+                'means':['PRACTICE','SING'],'kind':'ONGOING_ACTIVITY'}
+        current=SimpleNamespace(
+            actor='mother',
+            currents=[dict(common,ref='first'),dict(common,ref='second')],
+            candidate_actions=[
+                {'action':'PRACTICE',
+                 'basis':['project:first','project:second']},
+                {'action':'SING',
+                 'basis':['project:first','project:second']},
+            ],
+            learned_compositions=[],
+        )
+        plans=propose_compositions(current)
+        self.assertEqual(len(plans),2)
+        self.assertEqual({p.project_ref for p in plans},{'first','second'})
+        self.assertEqual(len({p.id for p in plans}),2)
+        self.assertTrue(all(
+            p.purpose_claim=='HYPOTHESIZED_PLAN_OBJECT_NOT_PERFORMER_INTENT'
+            for p in plans))
+
     def test_legacy_explicit_multi_project_call_stays_distinct_from_auto_pool(self):
         a=adult('mother','Mother')
         a['projects']=[
