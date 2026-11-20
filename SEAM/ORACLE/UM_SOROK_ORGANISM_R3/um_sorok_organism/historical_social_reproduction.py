@@ -164,7 +164,9 @@ def _care(world,actors,proc,start,days):
     fatigue=round(min(.12,hours*.00012),5)
     benefit=round(min(.10,hours*.00018),5)
     giver['rest']=max(.02,round(giver['rest']-fatigue,5))
-    recipient['comfort']=min(1.,round(recipient['comfort']+benefit,5))
+    comfort_before=recipient['comfort']
+    recipient['comfort']=min(1.,round(comfort_before+benefit,5))
+    actual_bodily_effect=round(recipient['comfort']-comfort_before,5)
     ref=stable_id('aggregate_reproductive_care',{
         'world':world['id'],'giver':a,'recipient':r,
         'source':proc['source_ref'],'start':start,'days':days})
@@ -174,7 +176,8 @@ def _care(world,actors,proc,start,days):
         'source_ref':proc['source_ref'],
         'modeled_labor_hours':round(hours,3),
         'giver_rest_expenditure_model':fatigue,
-        'recipient_comfort_effect_model':benefit,
+        'recipient_comfort_effect_model':actual_bodily_effect,
+        'modeled_proposed_relief_before_bodily_saturation':benefit,
         'wage_opportunity_cost':'NOT_INFERRED_FROM_CARE_ALONE',
         'unprovided_other_care':'UNKNOWN',
         'actor_gratitude_or_love':'NOT_INFERRED',
