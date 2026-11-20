@@ -34,7 +34,8 @@ def conserve_lived_high_resolution_care(actor,experience,event_ref,before,after)
         raise ValueError('PLURAL_CARE_INVALID_EXPERIENCE_CLOCK')
     if not experience.get('participated'):
         return None
-    unsolicited=(experience.get('own_action')=='RECEIVED_CARE'
+    unsolicited=(experience.get('own_action') in (
+                     'RECEIVED_CARE','RECEIVED_FEEDING')
                  and experience.get('felt_effect')=='SOMATIC_CARE_CANDIDATE')
     responsive=(experience.get('own_action')=='SIGNAL'
                 and experience.get('status')=='PERFORMED'
@@ -44,7 +45,7 @@ def conserve_lived_high_resolution_care(actor,experience,event_ref,before,after)
         return None
     cues=[c for c in experience.get('perceived_cues',[])
           if type(c) is dict and type(c.get('id')) is str
-          and ((unsolicited and c.get('kind')=='performed_care'
+          and ((unsolicited and c.get('kind') in ('performed_care','performed_feed')
                 and type(c.get('source_actor')) is str
                 and c['source_actor']!=actor['id'])
                or (responsive and c.get('kind')=='performed_signal'
@@ -297,7 +298,7 @@ def admit_reopening(actor,experience,event_ref,proposal):
            and x.get('received_cue_ref')==proposal.get('perceived_cue_ref')]
     if len(lived)!=1 or not any(
             c.get('id')==proposal.get('perceived_cue_ref') and (
-                (c.get('kind')=='performed_care'
+                (c.get('kind') in ('performed_care','performed_feed')
                  and c.get('source_actor')==orientation['caregiver_ref'])
                 or (c.get('kind')=='performed_signal'
                     and c.get('actor_accessible_care_responder_ref')==
