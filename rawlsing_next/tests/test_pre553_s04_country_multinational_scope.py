@@ -5,8 +5,6 @@ chain before I03's multi-country source native first-reader is claimed.
 Unlike the US-only I03+S04 vertical fixture, these tests exercise
 the *multinational source-semantic authority* contract in isolation.
 """
-from copy import deepcopy
-
 import pytest
 
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
@@ -90,8 +88,7 @@ def _fixture(*, predicate_style="EQ", grant_mapping=True):
     query = _query(issued_source, qauth, predicate, ("Y", "X1"),
                    tag="multinational-with-exact-country-predicate")
     registry = AuthorityRegistry((
-        source["source_auth"], source["routing_auth"], source["coord_auth"]
-        if False else country_auth, qauth,
+        source["source_auth"], source["routing_auth"], country_auth, qauth,
         *tuple(a for a in source["authorities"]
                if a.authority_kind not in {
                    "SOURCE_SEMANTICS_TOPOLOGY", "ROUTING_RISK_SET",
