@@ -33,6 +33,11 @@ ACTIONS = {
     'CONTRIBUTE_FOOD_COMMONS':{'motor':0.42,'language':0.0,'cost':0.09},
     'OFFER_PANTRY_CONTROL_TRANSFER':{'motor':0.24,'language':0.28,'cost':0.05},
     'ACCEPT_PANTRY_CONTROL_TRANSFER':{'motor':0.24,'language':0.28,'cost':0.05},
+    'ACCEPT_WORK_TERMS':{'motor':0.20,'language':0.28,'cost':0.04},
+    'SUSPEND_WAGE_WORK':{'motor':0.24,'language':0.32,'cost':0.08},
+    'WITHDRAW_FROM_WAGE_WORK':{'motor':0.15,'language':0.28,'cost':0.04},
+    'CONTRIBUTE_WAGE_RELIEF':{'motor':0.18,'language':0.20,'cost':0.04},
+    'DRAW_WAGE_RELIEF':{'motor':0.14,'language':0.18,'cost':0.04},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }

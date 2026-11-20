@@ -29,6 +29,8 @@ from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import possible_institutional_learning
 from .material_dependency_history import conserve_sensed_material_nonperformance
+from .livelihood_history import conserve_incomplete_work
+from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -516,6 +518,7 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref,world)
             conserve_sensed_material_nonperformance(
                 actors[aid],experience,objective_ref)
+            conserve_incomplete_work(actors[aid],experience,objective_ref)
             # A failed, actually attempted addressed call may revise the
             # historically learned expectation of this particular source.
             # It never proves why that Other did not respond, or retroactively
@@ -730,6 +733,18 @@ class ConstitutiveRuntime:
                 'source':source,'not_actor_chosen_enclosure':True,
                 'no_unearned_material_rights':True,'grade':GRADE})
         return {'receipt':receipt['id'],**source}
+
+    def register_sourcefree_work_regime(self,spec):
+        """World-only wage institutional fixture, not worker consent."""
+        version,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        registered=register_work_regime(world,actors,spec)
+        receipt=self.ledger.commit(
+            self.world_id,version,world,{}, {},
+            'SOURCEFREE_EXISTING_WAGE_RELATION_FIXTURE',None,{
+                'source':registered,
+                'contract_not_automatically_accepted':True,'grade':GRADE})
+        return {'receipt':receipt['id'],**registered}
 
     def register_historical_routine_source(self,spec):
         """Declare a bounded *research fictional* routine source before use.
