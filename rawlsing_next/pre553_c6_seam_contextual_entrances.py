@@ -255,10 +255,21 @@ def replay_c6_contextual_entrance(
     envelope: V3SeamEnvelope,
     external_pin: V3SeamExternalPin,
     path: V3ContextPath,
+    expected_receipt_ref: ExactRef | None = None,
 ) -> C6ContextualEntrance:
-    """Authoritative recomputation is upstream-root-bound; hash alone fails."""
+    """Cold replay requires BOTH upstream roots AND an independent C6 ref.
+
+    Upstream C4/C5 roots cannot authenticate caller-chosen scenario_slot,
+    entrance kind, or disclosure minimum. Never take that authority from
+    the candidate receipt: a self-rehashed field would replay as itself.
+    The expected ref must have been retained separately at C6 issuance.
+    """
     if type(receipt) is not C6ContextualEntrance:
         raise C6SeamError("exact typed C6 receipt required")
+    if type(expected_receipt_ref) is not ExactRef:
+        raise C6SeamError("independently held C6 receipt ref required for cold replay")
+    if expected_receipt_ref != receipt.ref:
+        raise C6SeamError("C6 cold source replay failed: independent receipt ref mismatch")
     m = receipt.material()
     rebuilt = assemble_c6_contextual_entrance(
         envelope=envelope, external_pin=external_pin, path=path,
@@ -277,6 +288,8 @@ def assemble_two_sourcefree_parent_entrances(
     first_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
     second_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
     partner_selection_claim: Any = None,
+    first_expected_receipt_ref: ExactRef | None = None,
+    second_expected_receipt_ref: ExactRef | None = None,
 ) -> C6IndependentParents:
     """Two on-demand hypotheses, NEVER a simulated survey partner relation.
 
@@ -299,11 +312,11 @@ def assemble_two_sourcefree_parent_entrances(
         raise C6SeamError("both independent source triplets required")
     replay_c6_contextual_entrance(
         receipt=first, envelope=first_source[0], external_pin=first_source[1],
-        path=first_source[2],
+        path=first_source[2], expected_receipt_ref=first_expected_receipt_ref,
     )
     replay_c6_contextual_entrance(
         receipt=second, envelope=second_source[0], external_pin=second_source[1],
-        path=second_source[2],
+        path=second_source[2], expected_receipt_ref=second_expected_receipt_ref,
     )
     return _seal({
         "contract": PAIR_CONTRACT,
@@ -330,6 +343,8 @@ def replay_two_sourcefree_parent_entrances(
     second: C6ContextualEntrance,
     first_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
     second_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
+    first_expected_receipt_ref: ExactRef | None = None,
+    second_expected_receipt_ref: ExactRef | None = None,
 ) -> C6IndependentParents:
     """No self-rehashed couple record can impersonate source-pinned parents."""
     if type(receipt) is not C6IndependentParents:
@@ -337,6 +352,8 @@ def replay_two_sourcefree_parent_entrances(
     rebuilt = assemble_two_sourcefree_parent_entrances(
         first=first, second=second,
         first_source=first_source, second_source=second_source,
+        first_expected_receipt_ref=first_expected_receipt_ref,
+        second_expected_receipt_ref=second_expected_receipt_ref,
     )
     if rebuilt.ref != receipt.ref:
         raise C6SeamError("independent-parent cold replay failed")
@@ -349,6 +366,7 @@ def as_nonissuing_world_conditioned_prefix(
     envelope: V3SeamEnvelope,
     external_pin: V3SeamExternalPin,
     path: V3ContextPath,
+    expected_receipt_ref: ExactRef | None = None,
 ) -> WorldConditionedPrefix:
     """Real existing R112 first consumer receives a typed NONPOSITIVE step.
 
@@ -361,6 +379,7 @@ def as_nonissuing_world_conditioned_prefix(
     # forged empirical reference into a downstream historical receipt.
     replay_c6_contextual_entrance(
         receipt=receipt, envelope=envelope, external_pin=external_pin, path=path,
+        expected_receipt_ref=expected_receipt_ref,
     )
     m = receipt.material()
     return WorldConditionedPrefix(
