@@ -15,7 +15,8 @@ from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
 from .food_power_reproduction import (
     INSTALL,MAINTAIN,SANCTION,COMMONS,install_gate,
-    maintain_gate,sanction_gate,contribute_food_commons)
+    maintain_gate,sanction_gate,contribute_food_commons,
+    OFFER,ACCEPT,offer_control_transfer,accept_control_transfer)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -383,6 +384,18 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         status=institutional['status']
         output=institutional['outcome']
         policy_receipt=institutional.get('sanction_ref')
+    elif attempt.action==OFFER:
+        institutional=offer_control_transfer(
+            world,actors,aid,target,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('offer_ref')
+    elif attempt.action==ACCEPT:
+        institutional=accept_control_transfer(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('transfer_ref')
     elif attempt.action==COMMONS:
         institutional=contribute_food_commons(
             world,actors,aid,loc,attempt.intention)
