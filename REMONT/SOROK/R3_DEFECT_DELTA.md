@@ -49,3 +49,8 @@ Parent 52fcbe5f36952fe671e9c941c85896e5f6149078. R6 newly reproduced SR-P053 (ca
 ## R7 REMONTATHON — independently reproduced typed-world and coactor first faults
 
 After verified R6 parent `a14003df55ed63c9257a8f9bbb2a3501d36bf7dc`, six production identities SR-P058 through SR-P063 were reproduced with fourteen negative failures and patched at existing sourcefree world, psychodynamics, constitution and development owners. They close permissions that matched actor IDs by substring, phantom Other response to an impossible initiating act, wrong-target coactor consent, nonfinite target-body laundering by care, string scope false admission, and malformed cue/link/project source effects. R7 adds 22 tests; complete **153/153 PASS normal + 153/153 PASS optimized**, cold ZIP extraction rerun. Full receipts at `REPAIRS/REMONTATHON_R3_R7_20261119/`. Current total 63 P: 10 open/6 partial/47 author-repaired review-pending, T0/E6. No native or protected promotion.
+
+
+## R8 continuing sourcefree REMONT — 171 normal+optimized tests
+
+From PR #1171 R7 source `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400`, R8 reproduced and repaired SR-P064–069, including actor-A coverage wrongly rewriting actor-B, nontransactional scoped period change, string cue fragmentation, unknown-modality threshold bypass, string-bool project suppression, and false-positive period scope formation. Test-first RED: 14 FAIL + 1 ERROR of 18 targeted tests; combined green 171/171 under normal and optimized Python, fresh cold extraction. New code/test bytes pinned in `REPAIRS/REMONTATHON_R3_R8_20261119/`. Production ledger 69 P (10 OPEN, 6 PARTIAL, 53 AUTHOR-REPAIRED REVIEW PENDING), T0, E6. Protected and native boundaries unchanged.

@@ -177,6 +177,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             validate_activity_priority(project.get('priority',.4))
+            if 'contextual_only' in project and type(project['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
             _text_list(project.get('cue_terms',[]),'INVALID_PROJECT_CUE_TERMS')
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
@@ -197,6 +199,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if 'means' in c and any(x not in ACTIONS for x in c['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             if 'priority' in c:validate_activity_priority(c['priority'])
+            if 'contextual_only' in c and type(c['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
             if 'cue_terms' in c:_text_list(c['cue_terms'],'INVALID_PROJECT_CUE_TERMS')
             for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
                 if field in c:project[field]=copy(c[field])
@@ -235,19 +239,55 @@ def _admit_in_place(actor,experience,event_ref,candidates):
 
 
 def recurring_provisional_growth(actor,period_ref,processes):
-    """No invented microepisodes; only coarse sourced period effects, including null.
-    Repeated activity can provisionally change scope of an *existing* power if
-    explicitly warranted by coverage. This is not a new social memory/event.
+    """Admit only actor-addressed coarse-life effects, all-or-nothing.
+
+    Modelled coverage is NOT an individual experience and may not rewrite a
+    different actor merely because they possess the same reusable form ID.
+    A modeled scope generalization is not an observed microepisode or a law.
     """
+    staged=copy(actor)
     outputs=[]
+    if not isinstance(processes,list):
+        raise InvalidDevelopment('INVALID_PERIOD_PROCESSES')
     for proc in processes:
-        if proc.get('kind')=='practice_access' and proc.get('coverage')=='AGGREGATE_MODELED':
-            fid=proc.get('form_id')
-            if fid in actor['forms'] and proc.get('warrants_scope_change') is True:
-                old=copy(actor['forms'][fid].get('scope',{}))
-                new_locations=sorted(set(old.get('locations',[])+proc.get('locations',[])))
-                actor['forms'][fid]['scope']={**old,'locations':new_locations}
-                actor['forms'][fid].setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
-                    'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
-                outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+        if not isinstance(proc,dict):
+            raise InvalidDevelopment('INVALID_PERIOD_PROCESS')
+        if proc.get('kind')!='practice_access' or proc.get('coverage')!='AGGREGATE_MODELED':
+            continue
+        if proc.get('warrants_scope_change') is not True:
+            continue
+        # A global, unqualified activity-coverage capsule is not a licence to
+        # generalize every similarly named learned form in all family members.
+        claimed_actor=proc.get('actor_id')
+        if not isinstance(claimed_actor,str) or not claimed_actor:
+            raise InvalidDevelopment('PERIOD_PRACTICE_REQUIRES_ACTOR')
+        if claimed_actor!=staged['id']:
+            continue
+        fid=proc.get('form_id')
+        if not isinstance(fid,str) or not fid:
+            raise InvalidDevelopment('INVALID_PERIOD_FORM_REF')
+        if fid not in staged['forms']:
+            # Evidence for an unowned form does not fabricate that form.
+            continue
+        locations=proc.get('locations',[])
+        if (not isinstance(locations,list) or
+                any(not isinstance(place,str) or not place for place in locations)):
+            raise InvalidDevelopment('INVALID_PERIOD_LOCATIONS')
+        form=staged['forms'][fid]
+        old=copy(form.get('scope',{}))
+        try:
+            validate_tendencies({'scope':old})
+        except ValueError as exc:
+            raise InvalidDevelopment('INVALID_PRIOR_FORM_SCOPE') from exc
+        old_locations=old.get('locations',[])
+        novel=sorted(set(old_locations)|set(locations))
+        if set(novel)==set(old_locations):
+            # Period occurred, but the actor's recruitment did not change.
+            continue
+        form['scope']={**old,'locations':novel}
+        form.setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
+            'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
+        outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+    actor.clear()
+    actor.update(staged)
     return outputs

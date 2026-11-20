@@ -7,6 +7,7 @@ from .activity import eligible_activities
 from .psychodynamics import enact_currents
 from .plans import qualified_learned_compositions
 from .world import _qualified_members
+import math
 
 
 def materialize(actor,world):
@@ -32,7 +33,18 @@ def actor_access(actor,world):
         if x.get('location') not in (location,'all'):
             counted+=1;continue
         sense=x.get('modality','visual')
-        if sense in ('visual','auditory') and actor['body']['sensor']<x.get('threshold',.05):
+        # Fail closed for malformed historic cue payloads; a misspelled or
+        # fabricated modality is not a license to skip bodily sensory gating.
+        # 'present' is generated locally above for co-presence, never world cue.
+        threshold=x.get('threshold',.05)
+        tags=x.get('tags',[])
+        if (sense not in ('visual','auditory','tactile','olfactory') or
+                not isinstance(tags,list) or any(not isinstance(t,str) for t in tags) or
+                not isinstance(x.get('kind',''),str) or
+                isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or
+                not math.isfinite(threshold) or not 0<=threshold<=1):
+            counted+=1;continue
+        if actor['body']['sensor']<threshold:
             counted+=1;continue
         if x.get('private_to') not in (None,actor['id']):
             counted+=1;continue

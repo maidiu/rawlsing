@@ -13,6 +13,26 @@ COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACT
 
 def add_cue(world,kind,tags,location='all',modality='visual',description='',source_actor=None,
             private_to=None,threshold=.05,clock_offset=0,lasting_ticks=0):
+    # Objective sensory records become actor-accessible, possibly influencing
+    # future recruitment. Reject malformed observations before any world write:
+    # list('care') is not the single cue 'care', and an untyped 'present'
+    # modality must not bypass an organism's sensory threshold.
+    if not isinstance(kind,str) or not kind:
+        raise ValueError('INVALID_CUE_KIND')
+    if (not isinstance(tags,list) or any(not isinstance(t,str) or not t for t in tags)):
+        raise ValueError('INVALID_CUE_TAGS')
+    if modality not in ('visual','auditory','tactile','olfactory'):
+        raise ValueError('INVALID_CUE_MODALITY')
+    if (isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or
+            not math.isfinite(threshold) or not 0<=threshold<=1):
+        raise ValueError('INVALID_CUE_THRESHOLD')
+    if (type(lasting_ticks) is not int or lasting_ticks<0 or
+            type(clock_offset) is not int or clock_offset<0):
+        raise ValueError('INVALID_CUE_TIME')
+    if not isinstance(location,str) or not location:
+        raise ValueError('INVALID_CUE_LOCATION')
+    if private_to is not None and (not isinstance(private_to,str) or not private_to):
+        raise ValueError('INVALID_CUE_PRIVATE_ACTOR')
     moment=world['clock']+clock_offset
     cue={'clock':moment,'last_access_clock':moment+lasting_ticks,'id':stable_id('cue',{'n':world['clock'],'tags':tags,'s':source_actor,'d':description,'index':len(world['cues'])}),
          'kind':kind,'tags':list(tags),'location':location,'modality':modality,
