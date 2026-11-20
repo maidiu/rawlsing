@@ -31,6 +31,7 @@ from .institutional_procedure_learning import possible_institutional_learning
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
 from .labor_dependency import register_work_regime
+from .wage_bargaining import register_wage_dispute
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -745,6 +746,18 @@ class ConstitutiveRuntime:
                 'source':registered,
                 'contract_not_automatically_accepted':True,'grade':GRADE})
         return {'receipt':receipt['id'],**registered}
+
+    def register_sourcefree_wage_dispute(self,spec):
+        """Declare a hypothetical wage proposal, not worker assent."""
+        version,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=register_wage_dispute(world,actors,spec)
+        receipt=self.ledger.commit(
+            self.world_id,version,world,{}, {},
+            'SOURCEFREE_POSTED_WAGE_PROPOSAL_NOT_A_WORKER_DEMAND',None,{
+                'source':source,'no_automatic_worker_endorsement':True,
+                'no_automatic_employer_concession':True,'grade':GRADE})
+        return {'receipt':receipt['id'],**source}
 
     def register_historical_routine_source(self,spec):
         """Declare a bounded *research fictional* routine source before use.
