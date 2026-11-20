@@ -102,11 +102,11 @@ class PluralCareSourcefree(unittest.TestCase):
         with self.assertRaisesRegex(
                 ValueError,'COREGULATION_ADMISSION_FOREIGN_CARE_HISTORY'):
             admit_co_regulation(
-                self.nadia,now,'e2',{
-                'caregiver_ref':'father','period_refs':[],
+                self.nadia,current_experience(clock=3,people=('father',)),
+                'e3',{'caregiver_ref':'father','period_refs':[],
                 'lived_care_event_refs':[self.nadia[
                     'experienced_care_events'][0]['id']],
-                'perceived_cue_ref':'seen-now'})
+                'perceived_cue_ref':'present:father:3'})
 
     def test_equal_aggregate_care_does_not_impose_parent_hierarchy(self):
         rows=[{'caregiver_ref':'mother','perceived_cue_ref':'cm',
@@ -148,6 +148,12 @@ class PluralCareSourcefree(unittest.TestCase):
         # supplies a distinct later response; it is not a global moral rank.
         lived_care(self.nadia,'mother',7,'mother-again')
         view.experienced_care_events=self.nadia['experienced_care_events']
+        # The earlier clock-5 projection must not inspect future support.
+        earlier=addressed_signal_alternatives(view,access,{'action':'SIGNAL'})
+        self.assertIsNone(plural_addressed_signal_choice(
+            [{'action':'SIGNAL','practical_alternatives':earlier}],needy))
+        view.clock=8
+        access.cues=current_experience(clock=8)['perceived_cues']
         later=addressed_signal_alternatives(view,access,{'action':'SIGNAL'})
         chosen=plural_addressed_signal_choice(
             [{'action':'SIGNAL','practical_alternatives':later}],needy)
