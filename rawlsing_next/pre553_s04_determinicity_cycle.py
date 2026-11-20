@@ -727,7 +727,16 @@ def advance_country_determinicity(
             req = DHIKRComparisonRequest(
                 target_axis=policy.target_axis, predictor_axes=batch,
                 fixed_context=tuple(sorted(selected.items())),
-                min_branch_n=explore_min_n, max_depth=0, max_nodes=1,
+                # Protected source-observed minorities can be examined at
+                # their *actual* small N, but never upgraded to a
+                # review-qualified population result by the DHIKR score.
+                min_branch_n=(
+                    min(explore_min_n, active["source_support_at_admission"]["observed_raw_n"])
+                    if active.get("source_support_at_admission", {}).get(
+                        "protected_minor_exploration_candidate", False)
+                    else explore_min_n
+                ),
+                max_depth=0, max_nodes=1,
                 max_interaction_order=policy.max_pair_order,
                 bootstrap_replicates=policy.bootstrap_replicates,
                 bootstrap_case_cap=policy.bootstrap_case_cap,
@@ -920,22 +929,80 @@ def advance_country_determinicity(
         gain = _decimal(best["per_axis_priority_bits"]) if best else Decimal(0)
         split = best["axes"][0] if best and gain > Decimal(policy.min_signal_bits) else None
         raw_n = active["raw_n"]
-        no_support = raw_n is None or raw_n < policy.min_branch_n
-        if no_support:
+        if raw_n is None:
+            raise DeterminicityCycleError("SOURCE_RISK_COUNT_NOT_COMPUTED")
+        node_context = _ctx(active["context"])
+        node_counts = _target_counts_in_context(
+            positive, target_axis=policy.target_axis,
+            context=node_context,
+        )
+        if sum(node_counts.values()) != raw_n:
+            raise DeterminicityCycleError("NODE_COUNTS_NOT_SAME_SOURCE_RISK")
+        if active["parent"] is None:
+            parent_context = node_context
+        else:
+            parent_context = _ctx(state["nodes"][active["parent"]]["context"])
+        parent_counts = _target_counts_in_context(
+            positive, target_axis=policy.target_axis,
+            context=parent_context,
+        )
+        support = classify_observed_branch(
+            country_question_n=country_n,
+            parent_n=sum(parent_counts.values()), observed_n=raw_n,
+            parent_target_counts=parent_counts,
+            child_target_counts=node_counts, policy=policy.support_policy,
+        )
+        prior_admission = active.get("source_support_at_admission")
+        if prior_admission is not None and prior_admission != support:
+            raise DeterminicityCycleError("SCHEDULED_MINOR_FORK_SUPPORT_CHANGED")
+        may_explore = (
+            support["routine_exploration_eligible"]
+            or support["protected_minor_exploration_candidate"]
+        )
+        if not may_explore:
             split = None
         if active["depth"] >= policy.max_depth:
             split = None
+        # Always conserve source-observed target counts; support qualification
+        # controls inference and deepening, never observed existence.
+        target_counts = [
+            {"state": value, "n": n}
+            for value, n in sorted(node_counts.items())
+        ]
+        scheduled_children: list[dict[str, Any]] = []
+        conserved_uninvestigated: list[dict[str, Any]] = []
+        child_inventory: list[dict[str, Any]] = []
+        zero_declared_children = 0
+        if split is not None:
+            (scheduled_children, conserved_uninvestigated, child_inventory,
+             zero_declared_children) = _child_outcome_inventory(
+                positive=positive, target_axis=policy.target_axis,
+                split_axis=split, context=node_context,
+                source_domain=domains[split], country_n=country_n,
+                policy=policy.support_policy,
+            )
         complete = {
             "node": node_id, "parent": active["parent"],
             "depth": active["depth"], "context": active["context"],
             "raw_same_case_n": raw_n,
-            "target_distribution": active["raw_target_counts"] if not no_support else [],
-            "target_disclosure": ("RAW_SAME_CASE_SAMPLE_NOT_POPULATION"
-                                  if not no_support else "LOW_ZERO_OR_HELD_NO_TARGET_DISCLOSURE"),
+            "target_distribution": target_counts if raw_n > 0 else [],
+            "target_disclosure": (
+                "RAW_SAME_CASE_SAMPLE_NOT_POPULATION"
+                if support["routine_exploration_eligible"] else
+                "RAW_SAME_CASE_PROTECTED_MINOR_DIAGNOSTIC_ONLY"
+                if support["protected_minor_exploration_candidate"] else
+                "SOURCE_OBSERVED_UNDERPOWERED_NOT_POPULATION" if raw_n > 0 else
+                "EXACT_SOURCE_ZERO_NO_POPULATION_INFERENCE"
+            ),
+            "source_support": support,
+            "review_support_is_candidate_not_design_qualification": True,
             "predictor_screens": active["candidate_screens"],
             "exploratory_priority_groups": groups,
             "selected_split_axis": split,
             "selected_split_score_bits": gain,
+            "split_observed_branch_inventory": child_inventory,
+            "split_source_declared_zero_count": zero_declared_children,
+            "split_observed_not_scheduled": conserved_uninvestigated,
             "minority_contradictions": (
                 best["minority_contradictions"] if best else []
             ),
@@ -948,8 +1015,10 @@ def advance_country_determinicity(
             "bootstrap_uncertainty": active["batch_bootstrap_sensitivity"],
             "survey_design_variance": "NOT_ISSUED",
             "terminal_reason": (
-                "LOW_OR_ZERO_SOURCE_SUPPORT" if no_support
-                else "CONFIGURED_DEPTH_BOUND" if active["depth"] >= policy.max_depth
+                "EXACT_SOURCE_ZERO" if raw_n <= 0
+                else "OBSERVED_BELOW_DYNAMIC_EXPLORATION_NOT_ERASED"
+                if not may_explore else
+                "CONFIGURED_DEPTH_BOUND" if active["depth"] >= policy.max_depth
                 else "NO_OBSERVED_POSITIVE_INFORMATION_OR_UNSEARCHED_INTERACTIONS"
                 if split is None else None
             ),
@@ -960,11 +1029,11 @@ def advance_country_determinicity(
         next_state["completed_nodes"] = node_id + 1
         next_state["frontier"] = list(state["frontier"])
         next_state["deferred"] = [dict(d) for d in state["deferred"]]
-        if split is not None:
+        if split is not None and scheduled_children:
             next_state["deferred"].append({
                 "context": active["context"], "axis": split,
                 "next_index": 0, "depth": active["depth"] + 1,
-                "parent": node_id,
+                "parent": node_id, "scheduled": scheduled_children,
             })
             _revive_deferred(next_state, policy.max_pending_nodes)
         if len(canonical_json(next_state).encode("utf-8")) > policy.max_receipt_bytes:
@@ -1060,6 +1129,11 @@ def consume_determinicity_context_for_prev3(
         "target_distribution": result["complete_output_cells"],
         "raw_same_case_n": result["raw_selected_full_case_n"],
         "unvisited_frontier_retained": m["remaining_budgeted_work"],
+        "source_support_grade": (
+            m["base_support_grade"] if node_id is None
+            else node["source_support"]["scientific_grade"]
+        ),
+        "review_support_is_not_a_population_qualification": True,
         "grade": METHOD_GRADE,
         "must_use_existing_independently_pinned_c4_c5_before_v3": True,
         "does_not_issue_actor_or_person": True,
