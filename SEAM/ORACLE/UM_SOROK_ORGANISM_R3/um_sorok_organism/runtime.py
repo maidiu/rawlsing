@@ -345,6 +345,12 @@ class ConstitutiveRuntime:
                 'event':objective_ref,'experience_ref':experience['ref'],
                 'own_action':own,'purpose_status':own_selection['status'],
                 'selected_project_ref':own_selection.get('project_id'),
+                'practical_option_ref':(
+                    actor_attempt.practical_selection.get('option_id')
+                    if personally_done and actor_attempt is not None else None),
+                'anticipated_difference_analytic_only':(
+                    copy(actor_attempt.practical_selection.get('anticipated_difference'))
+                    if personally_done and actor_attempt is not None else None),
                 'selected_project_refs':copy(own_selection.get(
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
