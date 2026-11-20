@@ -323,6 +323,26 @@ def assemble_two_sourcefree_parent_entrances(
     }, C6IndependentParents)
 
 
+def replay_two_sourcefree_parent_entrances(
+    *,
+    receipt: C6IndependentParents,
+    first: C6ContextualEntrance,
+    second: C6ContextualEntrance,
+    first_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
+    second_source: tuple[V3SeamEnvelope, V3SeamExternalPin, V3ContextPath],
+) -> C6IndependentParents:
+    """No self-rehashed couple record can impersonate source-pinned parents."""
+    if type(receipt) is not C6IndependentParents:
+        raise C6SeamError("typed independent-parent receipt required")
+    rebuilt = assemble_two_sourcefree_parent_entrances(
+        first=first, second=second,
+        first_source=first_source, second_source=second_source,
+    )
+    if rebuilt.ref != receipt.ref:
+        raise C6SeamError("independent-parent cold replay failed")
+    return rebuilt
+
+
 def as_nonissuing_world_conditioned_prefix(
     *,
     receipt: C6ContextualEntrance,
@@ -367,5 +387,5 @@ __all__ = [
     "HELD_WORLD_STATE", "UNISSUED", "C6SeamError", "C6ContextualEntrance",
     "C6IndependentParents", "assemble_c6_contextual_entrance",
     "replay_c6_contextual_entrance", "assemble_two_sourcefree_parent_entrances",
-    "as_nonissuing_world_conditioned_prefix",
+    "replay_two_sourcefree_parent_entrances", "as_nonissuing_world_conditioned_prefix",
 ]

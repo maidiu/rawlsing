@@ -25,6 +25,7 @@ from rawlsing_next.pre553_c6_seam_contextual_entrances import (
     assemble_c6_contextual_entrance,
     replay_c6_contextual_entrance,
     assemble_two_sourcefree_parent_entrances,
+    replay_two_sourcefree_parent_entrances,
     as_nonissuing_world_conditioned_prefix,
 )
 from rawlsing_next.tests.test_preff_c5_continuing_contextual_prev3 import (
@@ -140,6 +141,20 @@ def test_two_historical_parent_entrances_never_claim_partner_selection():
         first=first, second=second,
         first_source=triplet_a, second_source=triplet_b,
     ).ref == pair.ref
+    assert replay_two_sourcefree_parent_entrances(
+        receipt=pair, first=first, second=second,
+        first_source=triplet_a, second_source=triplet_b,
+    ).ref == pair.ref
+    forged_pair = pair.material()
+    forged_pair["first_scenario_slot"] = "other"
+    forged_pair = C6IndependentParents(
+        canonical_json(forged_pair), semantic_hash(forged_pair),
+    )
+    with pytest.raises(C6SeamError, match="independent-parent cold replay failed"):
+        replay_two_sourcefree_parent_entrances(
+            receipt=forged_pair, first=first, second=second,
+            first_source=triplet_a, second_source=triplet_b,
+        )
     with pytest.raises(C6SeamError, match="PARTNER_SELECTION_NOT_ESTABLISHED"):
         assemble_two_sourcefree_parent_entrances(
             first=first, second=second,
