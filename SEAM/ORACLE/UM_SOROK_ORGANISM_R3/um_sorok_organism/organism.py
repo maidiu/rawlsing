@@ -27,6 +27,10 @@ ACTIONS = {
     'DENY_HALL':{'motor':0.20,'language':0.0,'cost':0.01},
     'SIGN_HALL_PETITION':{'motor':0.22,'language':0.28,'cost':0.05},
     'SIGN_FOOD_PETITION':{'motor':0.22,'language':0.28,'cost':0.05},
+    'INSTALL_PANTRY_GATE':{'motor':0.52,'language':0.28,'cost':0.17},
+    'MAINTAIN_PANTRY_GATE':{'motor':0.42,'language':0.20,'cost':0.14},
+    'SANCTION_PANTRY_ACCESS':{'motor':0.35,'language':0.20,'cost':0.12},
+    'CONTRIBUTE_FOOD_COMMONS':{'motor':0.42,'language':0.0,'cost':0.09},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }
