@@ -280,7 +280,7 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
                 raise ValueError("FEED_UNQUALIFIED_SHARED_MATERIAL_RULE")
             origin="SHARED_SITE_FOOD"
             next_food=site_food-Decimal(1)
-     body=actors[recipient]["body"]
+    body=actors[recipient]["body"]
     nutrition=_quantity(body.get("nutrition"),"RECIPIENT_NUTRITION")
     proposed=min(Decimal(1),nutrition+Decimal("0.12"))
     after=proposed.quantize(UNIT)
