@@ -38,10 +38,63 @@ class ResearchLedger:
                 self.conn.execute('ROLLBACK')
                 raise
 
+    def _verify_current_anchor_locked(self, wid):
+        """Prevent a later valid receipt from laundering uncommitted state.
+
+        The most recent event must still bind the *current persisted* world and
+        complete actor roster before adding anything to that same history. This
+        is deliberately O(actors), not a full historical chain scan on every
+        life step. ``verify_chain`` remains the full independent audit.
+        This method is called only inside the SQLite IMMEDIATE transaction.
+        """
+        first=self.conn.execute('SELECT kind FROM events ORDER BY seq LIMIT 1').fetchone()
+        last=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash '
+                               'FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+        if not first or first[0]!='INITIALIZATION' or not last:
+            raise Conflict('MISSING_LEDGER_GENESIS')
+        eid,event_world,event_clock,event_actor,kind,payload,prior,chain=last
+        try:
+            envelope=json.loads(payload)
+            if (canonical(envelope)!=payload or event_world!=envelope['world'] or
+                event_clock!=envelope['clock'] or event_actor!=envelope['actor'] or
+                kind!=envelope['kind'] or
+                eid!='evt_'+digest({'prev':prior,'envelope':envelope})[:20] or
+                chain!=digest({'previous':prior,'eid':eid,'envelope':envelope})):
+                raise Conflict('UNCOMMITTED_LEDGER_RECORD')
+        except (ValueError,TypeError,KeyError) as exc:
+            raise Conflict('UNCOMMITTED_LEDGER_RECORD') from exc
+        if event_world!=wid:
+            raise Conflict('UNCOMMITTED_WORLD_ROSTER')
+        rows=self.conn.execute('SELECT id,body FROM worlds').fetchall()
+        if len(rows)!=1 or rows[0][0]!=wid:
+            raise Conflict('UNCOMMITTED_WORLD_ROSTER')
+        try:
+            world=json.loads(rows[0][1])
+            if canonical(world)!=rows[0][1] or digest(world)!=envelope['world_digest'] or world['clock']!=event_clock:
+                raise Conflict('UNCOMMITTED_WORLD_STATE')
+        except (ValueError,TypeError,KeyError) as exc:
+            raise Conflict('UNCOMMITTED_WORLD_STATE') from exc
+        rows=self.conn.execute('SELECT id,body FROM actors').fetchall()
+        if set(aid for aid,_ in rows)!=set(envelope['actor_digests']):
+            raise Conflict('UNCOMMITTED_ACTOR_STATE')
+        for aid,raw in rows:
+            try:
+                person=json.loads(raw)
+                if (canonical(person)!=raw or person.get('id')!=aid or
+                    digest(person)!=envelope['actor_digests'][aid]):
+                    raise Conflict('UNCOMMITTED_ACTOR_STATE')
+            except (ValueError,TypeError,KeyError) as exc:
+                raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
+
     def initialize(self, world, actors, source_seals=None):
         with self.tx():
             if self.conn.execute('SELECT 1 FROM worlds WHERE id=?',(world['id'],)).fetchone():
                 raise Conflict('world already initialized')
+            if self.conn.execute('SELECT 1 FROM worlds LIMIT 1').fetchone():
+                # This research DB has one ordered objective world event chain.
+                # A second genesis would create an unrelated world with a
+                # misleading shared ancestry.
+                raise Conflict('MULTIWORLD_RESEARCH_DB_UNSUPPORTED')
             for a in actors:
                 if a['id'] in world['positions']:
                     raise Conflict('duplicate actor')
@@ -96,7 +149,9 @@ class ResearchLedger:
                 raise Conflict('source seal immutable')
             row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
             if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
-            wid,body=row;world=json.loads(body)
+            wid,body=row
+            self._verify_current_anchor_locked(wid)
+            world=json.loads(body)
             sha=digest({'category':category,'content':content})
             prior=self.conn.execute('SELECT chain_hash FROM events ORDER BY seq DESC LIMIT 1').fetchone()
             prev=prior[0] if prior else 'GENESIS'
@@ -122,6 +177,7 @@ class ResearchLedger:
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
+            self._verify_current_anchor_locked(wid)
             for aid,a in actors.items():
                 cur=self.conn.execute('SELECT version FROM actors WHERE id=?',(aid,)).fetchone()
                 if not cur or cur[0]!=actor_versions[aid] or a['id']!=aid:
@@ -180,13 +236,18 @@ class ResearchLedger:
         records=self.events()
         if not records:
             raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
-        for r in records:
+        for idx,r in enumerate(records):
             envelope=r['envelope']
             if canonical(envelope)!=r['envelope_bytes']:
                 raise AssertionError('EVENT_ENVELOPE_NONCANONICAL_BYTES')
             if (r['world_id']!=envelope['world'] or r['clock']!=envelope['clock']
                 or r['actor_id']!=envelope['actor'] or r['kind']!=envelope['kind']):
                 raise AssertionError('EVENT_HEADER_ENVELOPE_MISMATCH')
+            if idx==0 and (r['kind']!='INITIALIZATION' or r['actor_id'] is not None or
+                           r['previous_hash']!='GENESIS'):
+                raise AssertionError('NOT_INITIALIZATION_GENESIS')
+            if idx>0 and r['kind']=='INITIALIZATION':
+                raise AssertionError('DUPLICATE_INITIALIZATION_GENESIS')
             if r['previous_hash']!=prior:
                 raise AssertionError('BROKEN_EVENT_ANCESTRY')
             if r['id']!='evt_'+digest({'prev':prior,'envelope':envelope})[:20]:

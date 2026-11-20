@@ -151,3 +151,24 @@ Source parent `2986cf5307097a2546bcd22c74371f39415a6751`. Three new first faults
 | **SR-P044** | Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair | `world.py::_resolve_untrusted_core` (`test_p044_private_credit_shortfall_is_not_world_public_history`) |
 
 SR-P042 ensures an initialized world may not present an entirely deleted SQLite event history as `valid=True`. SR-P043 requires byte-identical canonical stored event envelopes, not just identical parsed JSON semantics. SR-P044 closes the *remaining* private account shortfall disclosure through `world.public_history`; the privileged `Resolution.world_delta.event` retains the exact objective cause. Previous P031 cue/tip protections and R2 source seal byte identity are conserved. R3 evidence and runnable 91-test archive in `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R3_20261119/` and immutable personal Library `/Rawlsing/SOROK-REMONT/REMONTATHON_R3_20261119_R3/`. Total **44 P, zero confirmed T, six E**. Remaining P005/P012/P018 partial; P011/P022/P023 and broader scientific functions still unresolved. No independently accepted/graded native science or protected merge.
+
+## REMONTATHON R3 R4 — sourcefree 104-test first-fault continuation (2026-11-19)
+
+Exact parent: b29c3d28db66dc4439eb5899826289dd8b6ad6f7 in draft PR #1171. The executable source remains ORACLE R3 #1167; no protected branch or canonical paired progress changes.
+
+Reproduced RED on prior code before repair, then repaired the first source owner:
+
+| Identity | Reproduced defect | Exact repair |
+|---|---|---|
+| **SR-P045** | Uncommitted SQLite world or actor state could become verified after the next legitimate life step, external cue, or source seal | storage.py::commit, seal_source, _verify_current_anchor_locked — Require the current persisted world/actors to match last event's hashed canonical state before appending |
+| **SR-P046** | A deleted initialization genesis could be replaced by a late source seal as an apparently valid first event | storage.py::seal_source, verify_chain — Require real INITIALIZATION ancestry at append and verify; reject forged SOURCE_SEAL genesis |
+| **SR-P047** | Boolean True was accepted as one day of historical passage | ordinary_life.py::passage — Require type(days) is int before maturation |
+| **SR-P048** | Initializing a second world in one SQLite research ledger inserted a second GENESIS into the same chain | storage.py::initialize — Reject second distinct world in the explicitly single-world research DB |
+| **SR-P049** | Buying food at an institution debited the buyer without crediting the actual goods controller; no seller at unowned site | world.py::BUY_FOOD — Credit objectively identified controller and persist FOOD_PURCHASE claim, refuse unknown seller and invalid seller balance |
+| **SR-P050** | Python coerced boolean money such as price=True or wage=False into numeric monetary transfers | world.py::_nonnegative_transfer_amount — Fail closed for bool and nonnumeric amounts before material/account mutation |
+
+Evidence: 13 added regression tests, cumulative 104/104 PASS under normal Python and 104/104 under python -O. Ten targeted failures were observed on frozen source before repairs. Exact code/test Git blobs and red/green receipts are in REMONT/SOROK/REPAIRS/REMONTATHON_R3_R4_20261119/.
+
+**Status bookkeeping is explicitly partitioned:** 50 production records TOTAL = 10 OPEN/NOT FIXED, 6 PARTIAL and 34 AUTHOR-REPAIRED CANDIDATES PENDING INDEPENDENT REVIEW (0 independently accepted). The HISTORICAL_R0_NOT_FIXED row SR-P020 counts as OPEN, not fixed. Open: SR-P011, SR-P013, SR-P014, SR-P015, SR-P016, SR-P017, SR-P019, SR-P020, SR-P022, SR-P023. Partial: SR-P004, SR-P005, SR-P006, SR-P009, SR-P012, SR-P018.
+
+T = zero confirmed test-harness defects; E = six evidence and authority holds unchanged. The prior 91-test and earlier receipts remain immutable historical cuts. No native P2–P6/CAN/ADP rights, qualified PYAT respondent science, live LLM behavior, production security, independent G5, protected merge or paired CURRENT_PROGRESS receiving.

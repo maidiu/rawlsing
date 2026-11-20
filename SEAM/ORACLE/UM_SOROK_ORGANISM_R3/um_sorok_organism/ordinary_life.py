@@ -4,7 +4,7 @@ from .organism import mature
 
 
 def passage(world,actors,days,processes=None):
-    if not isinstance(days,int) or days<1 or days>3650:raise ValueError('UNSUPPORTED_TIME_PASSAGE')
+    if type(days) is not int or days<1 or days>3650:raise ValueError('UNSUPPORTED_TIME_PASSAGE')
     processes=copy(processes or [])
     start=world['clock']
     for a in actors.values():

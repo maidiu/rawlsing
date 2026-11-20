@@ -54,6 +54,11 @@ def _nonnegative_transfer_amount(raw, error):
     An invalid negative or nonfinite amount cannot mint money, seize worker
     balances, or poison canonical ledger serialization.
     """
+    # Bool is int in Python but not an objective quantity; accepting True as
+    # a wage or price creates fictional monetary claims. Sourcefree world
+    # receipts use explicit finite numeric inputs rather than coerced strings.
+    if isinstance(raw,bool) or not isinstance(raw,(int,float)):
+        raise ValueError(error)
     try:
         amount = float(raw)
     except (TypeError, ValueError, OverflowError):
@@ -120,12 +125,31 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         buyer_balance=_nonnegative_transfer_amount(world['accounts'].get(aid,0),'INVALID_BUYER_BALANCE')
         owned_food=_nonnegative_transfer_amount(world.get('holdings',{}).get(aid,{}).get('food',0),
                                                 'INVALID_OWNED_FOOD')
+        # Ownership of offered goods and the monetary recipient must be
+        # objective world relations. Charging the buyer without recording who
+        # received the payment destroyed purchasing claims inside the modeled
+        # economy. A room with food but no identifiable seller is NOT a shop.
+        seller,controller_error=_effective_material_controller(world,loc,site)
         if available_food<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
         elif buyer_balance<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+        elif controller_error:status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif seller is None:status='BLOCKED';output='NO_OBJECTIVE_SELLER'
         else:
-            site['food']=available_food-1;world['accounts'][aid]=round(buyer_balance-cost,5)
-            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=owned_food+1
-            output='FOOD_PURCHASED'
+            seller_balance=_nonnegative_transfer_amount(
+                world['accounts'].get(seller,0),'INVALID_SELLER_BALANCE')
+            paid=round(cost,5)
+            if buyer_balance<paid:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+            else:
+                site['food']=available_food-1
+                if seller!=aid:
+                    world['accounts'][aid]=round(buyer_balance-paid,5)
+                    world['accounts'][seller]=round(seller_balance+paid,5)
+                world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=owned_food+1
+                world.setdefault('material_claims',[]).append({
+                    'clock':world['clock'],'kind':'FOOD_PURCHASE',
+                    'buyer':aid,'site':loc,'seller':seller,'price_paid':paid,
+                    'goods_transferred':1,'not_actor_psychic_motive':True})
+                output='FOOD_PURCHASED'
     elif attempt.action=='WORK':
         site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
         stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
