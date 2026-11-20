@@ -147,3 +147,145 @@ EvidenceClaim {
 
 The great epistemic temptation is to make each later representation simpler by erasing qualifications. The correct architecture lets a consumer get a narrow usable object **without** having to reconstruct the qualifications from chat history or guess which upstream source it came from.
 
+
+---
+
+## III. DISCOVERY IS A RECURSIVE OPERATION, NOT A PREDICTOR REPORT
+
+### III.1 One inquiry changes the next inquiry
+
+The finite survey estate is not a finite list of possible analyses. Inference is a graph of lawful questions and propositions. A source-supported answer can become a new dependent variable, a conditioning context, a discovered exception, a warning about meaning, or a request to the social-world owner. The machine should not require the designer to pre-enumerate all combinations or nominate every sociological concept in advance.
+
+One **Discovery Move** has eight inseparable parts:
+
+1. **Question:** which possibility, relation, absence, contradiction, historical change or model claim would be consequential to know?
+2. **Eligibility:** what exact source, population, risk set, component/semantic authority, observation and permitted inference could answer it?
+3. **Operation:** which deterministic or statistically issued transformation and actual evidence does it invoke?
+4. **Product:** what distribution, counterconfiguration, bound, negative, graph, difference or new social object did it find?
+5. **Challenge:** which alternative explanation, conditioning factor, held eligibility, selection effect or model assumption could overturn it?
+6. **Concept change:** which candidate grouping, branch, measured distinction or research category should split, merge, disappear or become more precise?
+7. **New question:** which *available and lawful* discriminating observation best reduces the uncertainty that matters?
+8. **Replay:** what input identities, methods, random seeds where relevant, search frontier, root/authority versions, evidence and consumer paths make the operation reproducible and invalidatable?
+
+It can start from any point. A novel minority might generate a new response-response inquiry; a source-translation conflict can undo a previously assembled motif; a structural hypothesis can require rechecking the distribution within exposed versus unexposed eligible populations; a simulated historical change can request an as-of empirical comparison **without turning the simulation into evidence**.
+
+The output is not just the latest probability; it is a **difference in the map of possibility**: what became known, what stopped being tenable, what remains compatible with the evidence, and why the next question is now different.
+
+### III.2 First recover the complete shape of a response
+
+For every lawful question and subgroup, compute the full response morphology: category options and counts, conditional and absolute frequencies, dispersion, rankings, ordinal structure, missingness/refusal/inapplicability, multi-label overlap, true zeros, sample/estimator uncertainty and any source-native component structure. A multi-answer battery can hold several true selections simultaneously. An item with no measured option is not equivalent to an observed 'none'. A diffuse distribution is positive information, not 'failed determinicity'.
+
+The output must retain the *whole denominator and full alternative space*, even when the user asks about one selected target. A category's individual support must not erase parent distributions, or quietly redefine all alternatives as a binary yes/no.
+
+Then ask what each response act refers to. Comparing reported institutional mistrust with actual experience of sanctions is potentially productive; calling both 'distrust' can be an error. Where an empirical concept requires combining multiple items, expose exact component identity, inclusion, order, missingness, direction and legitimacy of aggregation. The tool may output both the exact responses and an explicitly modeled new score; it must not substitute the latter for the former.
+
+### III.3 Conditionally map, reverse and fracture the field
+
+For a target Y, and eligible contextual conditions X:
+
+- Compare \(P(Y)\) with \(P(Y\mid X=x)\) across all meaningful X and the permitted joint conditions, reporting absolute support, magnitude, uncertainty, multiplicity and coverage.
+- Ask the inverse \(P(X=x\mid Y)\) on the **same actual joint and appropriate base rates**, not by inverting a predictor ranking. A large likelihood of an attitude within a rare position does not make that position the dominant social location of the attitude.
+- Distinguish a broadly widespread tendency, a near-deterministic local relation, a highly concentrated but tiny minority, and a practically weak effect. Do not collapse prevalence, predictability, specificity, causality and political significance.
+- Search for conditional reversals, higher-order synergies, redundancies and suppression. Some structures (including XOR-like dependence) are absent from every one-variable comparison and appear only in genuine combinations.
+- **Fracture the majority** into retention, departure, distinct alternatives, ambiguous/residual and refusal; give *each* branch a fresh opportunity to find its own conditioning variables. Do not repeat the root splitter mechanically inside every subgroup.
+- Follow a coherent minority all the way into its own distinct world. Discover where it is materially concentrated, what beliefs/acts co-travel with it, what its internal divisions are, and how its contextual affordances differ. Rarity is neither proof of noise nor automatic proof of importance.
+
+A branch tree is a useful *view* of the discovered relations, not a personality tree or a mandatory physical data layout. Branches can overlap, recross, remerge, refer to several responses, and be revised after a better question or source correction. Unvisited or budget-pruned branches remain explicitly marked; their absence from the output is not a measured null.
+
+**Determinicity is a family of questions**, not one strength slider: conditional concentration, uncertainty reduction, effect stability, context dependence, breadth of coverage, predictive performance out of sample, minority survival, and the degree of identification. A social relation can be stable in its sign but poor at individual prediction; it can be predictive and weakly interpretable; it can reverse within a different historically constituted risk set.
+
+### III.4 Discover relations inside actual respondents
+
+A survey's respondent-level records allow questions a table of separate marginals cannot answer. Recover genuine *co-signatures* of beliefs, stated commitments, normative attitudes, actual reported conduct, perceptions, costs and social conditions recorded within the **same respondent and applicable period**.
+
+An **Attitude Cloud** is a qualified pattern of within-respondent co-travel and conditional exclusion. It may contain mutually reinforcing judgments, nominally opposed commitments, principle/application disjunction, differentiated treatment of target groups, aspirations that conflict with reported action, or overlapping alternatives that split by material circumstances. A cloud's dimension and role information must remain available even if a downstream interface requests a short summary.
+
+An **Empirical Repertoire** is a family of supported configurations and context-conditioned variants, not proof that any respondent's deep psyche has a unified schema. A respondent can perform different acts in different fields. Repertoire coherence is not individual psychological integration; observed co-travel is not causal recruitment; surface contradiction is not automatically hypocrisy.
+
+The engine must query across component vectors, multi-label batteries and non-scalar joints. Preserve whole-support consistency, component-specific eligibility, source-native answer order, roles, missing/blocked values and exact respondent identity. Downstream pressure calculations cannot change simply because extra joint *context* has been attached; any actual structural pressure transformation requires its own rule.
+
+### III.5 A missing joint may have mathematical content without becoming a fictional respondent
+
+Suppose two binary events A and B are measured in separate sources. They do not share respondent IDs. If, and only if, an independently defensible **common target population, time, semantic meaning, exposure and relevant risk set** is established, then exact marginals \(p_A\) and \(p_B\) constrain—but do not identify—their intersection:
+
+\[
+\max(0,p_A+p_B-1) \le P(A\cap B) \le \min(p_A,p_B).
+\]
+
+For .70 and .60, the sharp compatible overlap range is [.30,.60]; overlap is necessary, but its exact rate, direction of association and individual bearers are unidentified. For .45 and .40, zero overlap is compatible with the evidence. If the samples differ in eligible population or period without a qualified bridge, neither cross-source interval is lawful, regardless of how plausible the matching sounds.
+
+A **Multi-Universe Identification Court** constructs the feasible family of joint laws under qualified marginals, legitimate partial joints, structural zeros and any *explicitly issued* further restrictions. It optimizes claims and contrasts over that set rather than picking an arbitrary synthetic coupling. With more events, the result is a constrained finite-distribution feasibility problem rather than a casual pairwise multiplication. Sampling, design, meaning, comparability and transport uncertainty form separate outer layers around any exact mathematical identified set.
+
+This produces a **Partially Identified Repertoire Relation**, not a Respondent-Coherent Repertoire. It may show a necessary overlap, a robust lower bound, an excluded hypothesis, or a direction of association that remains ambiguous. A statistical matching or generative model can propose a *modeled* joint if its owner issues assumptions and checks; no amount of decimal precision upgrades it to observed co-travel. Field Forge may receive bounded constraints; a parent generator cannot use a chosen compatible coupling as though a historical source had observed it.
+
+The best next query often follows from **which admissible observation would narrow the identified set most**. If no legal existing question can distinguish the couplings, the rival scenarios must remain live possibilities rather than being quietly settled by the model.
+
+### III.6 The machine must be allowed to invent concepts, not facts
+
+The old sociological categories are starting hypotheses: occupation, class, religion, national identity, ideology, household type, community, trust, liberalism, conservatism and so on. The survey could contain recurring forms that the questionnaire designers never named. A combination of material circumstances and response acts may appear unexpectedly, cross familiar social labels, split an allegedly homogeneous category, or expose that one named concept conflates two phenomena.
+
+**Concept formation** takes a *source-qualified motif* and generates candidate definitions, exemplars, negatives, countercases, context restrictions, boundary uncertainties and new tests. A concept is allowed to become more abstract when genuine recurrence demands it, or more specific when a second observation splits it. It is never 'confirmed' merely because a cluster algorithm produced a label or an LLM gave an evocative interpretation.
+
+Keep two concept identity layers: the immutable empirical object and the revisable interpretive construct. A candidate can have aliases, genealogy and competitors. If a framework is rejected, its original observed cases do not disappear. A model's rhetorical confidence is not a source warrant. Some source categories may prove structurally misleading; others may remain useful even without a new grand theory.
+
+### III.7 Scientific learning must attack its own attractiveness
+
+Adaptive search can discover a beautiful false relation by repeatedly testing enough possibilities. The engine must therefore preserve the searched and unsearched frontier; compare to null/permutation and negative-control constructions where suitable; assess sampling variability, design effects, sparse cell support, multiple comparisons and out-of-sample performance where relevant. A narrow interval cannot repair a wrong population or unlicensed semantic interpretation. A large association cannot authorize an institutional mechanism. A 'statistically insignificant' result cannot be conflated with no effect or absence of variation.
+
+**Scientific success includes both identification and honest nonidentification.** An independently authorized result can be weak, absent under a declared threshold, multimodal, inconclusive, sensitive to missingness, transport-limited, or contradictory to a prior concept. These are usable products. If a source supports a positive conditional but the current pipeline always refuses because its producer was never built or an owner failed to bind it, that is not a scientific null: it is **unfinished machine work**.
+
+### III.8 Autonomous inquiry must operate within a finite estate
+
+The question frontier can be large, but source evidence cannot magically grow. The investigator ranks queries by expected relevance, surprise, uncertainty reduction, minority preservation, potential falsification and computational cost, with nonzero exploration budget for unfashionable and low-prevalence branches. Its policy should be replayable and auditable, not a cascade of unrecoverable language-model hunches.
+
+Separate **finite high-stakes semantic adjudication** from **open-ended abductive research**. Strong model assistance may help adjudicators analyze wording and map bounded concepts before execution, subject to human/competent authority. During discovery, LLMs can propose competing motifs, target combinations, explanatory hypotheses and falsifiers; exact approved computation supplies the evidence. A failed conjecture should teach the inquiry controller which kind of hypothesis failed, not disappear from memory.
+
+The engine remembers *computational work*, not just conceptual answers: exact respondent masks, qualified joint intersections, prepared cohorts, approved semantically normalized queries, canonical source and authority versions, cached node dependencies and replay roots. Build a **shared query DAG** rather than paying full cold-source scans for every follow-up. Cache equivalence does not grant authority: a stale or corrupted authority root must invalidate a plausible cached answer, and deleting all caches must leave exact reconstructible truth.
+
+---
+
+## IV. SOCIAL FORMATIONS EMERGE FROM RELATIONS; THEY DO NOT GET ASSIGNED BY A CLASSIFIER
+
+### IV.1 Position and disposition are overlapping but different spaces
+
+The empirical machine needs two distinguishable yet related geometries: **material/institutional position** and **measured response/repertoire**. Within declared legal comparison metrics, it can study their homologies, mismatches, concentrations, gradients, bridges, exclusions, local boundaries and cross-field analogies. No default Euclidean map of all humans is warranted. The distance metric, comparison population and meaning of each axis are part of the claim.
+
+A material position can contain income, property, control over productive assets, supervision, credential, contractual insecurity, dependence, access to collective power, care load, legal status, geography, and institutional recognition—not as identical variables, but as empirically or structurally linked parts of relations. A response/disposition space contains actual recorded judgments and practices, not an invisible personality field.
+
+The **Motif Atlas** takes intersections across these spaces and suggests candidate social formations without naming classes based solely on cluster geometry. A pattern crossing two positions may reflect shared institutional exposure; a pattern appearing only in an occupation may reflect an organization or a questionnaire artifact; a pattern with no observed positional concentration is still a real empirical pattern. The atlas must keep these explanations open.
+
+### IV.2 Hegemony is not frequency
+
+Assess separately a repertoire's prevalence, reach across groups, prestige and salience, field-specific recognition, alignment with resource holders, institutional reinforcement, political coercion, organized counterforces and temporal persistence. A numerically small privileged repertoire can dominate institutional language; a large subordinated population can share a practice yet lack coercive power; a locally authoritative subhegemony can lose convertibility across class or geographic boundaries.
+
+**Hegemony, counterhegemony and subhegemony** are therefore multidimensional structural-empirical hypotheses. They are not a ranking from a popularity score. The engine can identify empirical distribution and independently grounded power relations; strong interpretations require explicit mechanism and source rights. It must also find absent anticipated correlations: if a proposed institutional hegemony predicts a certain source-measurable relation and the adequately powered source contradicts it, that countercase must return to the structural owner.
+
+### IV.3 Capital has value only within a relation
+
+Money, land, credentials, networks, language, physical safety, recognized legitimacy, citizenship and time are not substitutable units on one universal 'capital' meter. Their *convertibility* depends on institutional gates and collective relationships: a qualification valued in one country may be rejected across a border; home ownership confers power under one tenancy regime and debt vulnerability under another; intimate networks may protect a household or expose it to coercion.
+
+The field must model **what a resource allows its holder to do, to whom, under which rules and costs**. Two formally equal salaries may support very different feasible lives when one worker bears unpaid dependent care and the other owns housing or commands another's labor. Transformations of capital and institutional standing create new trajectories without rewriting the original survey observations.
+
+### IV.4 Contradictions are concrete relations, not a universal minus sign
+
+Keep distinct:
+- contradictory responses recorded in one person;
+- different reported practices under different contexts;
+- conflict between formally professed ideals and material cost;
+- material incompatibility between labor obligations and care needs;
+- institutional conflict between law, enforcement and informal practice;
+- competing collective powers and reproduction strategies;
+- actor-internal ambivalence or inaccessible conflict.
+
+A survey may support the first two. A situated-world record may support the middle three. The last requires a psychologically developing actor. A high-level social contradiction can affect people who do not consciously perceive it, while a psychologically salient dilemma may have no large-scale structural significance. The machinery must allow both.
+
+**A contradiction is productive when it changes the search or the possible action**, not when it merely appears as a red flag. Ask what positions bear it, which alternatives it suppresses, how different groups negotiate it, who pays the material cost, whether a minority holds a workable counterpractice, and which reorganization of resources or institutions would make the conflict different.
+
+### IV.5 Historical materialism must distinguish proof from explanation
+
+An observed covariance between occupation and support for redistribution is not yet a demonstration that wage exploitation caused the support. A field theory may hypothesize pathways through bargaining power, socialization, workplace organization, class encounter or experienced precarity. Each pathway has distinct observable footprints and competing accounts. The system must preserve them as candidates until qualified independently.
+
+Likewise a moral claim can be both a response act and an institutionally produced discourse; neither permits the machine to deny the respondent's agency or infer the precise path by which it was acquired. The purpose of material explanation is to locate dependence, control and changeable relations, not to replace people with a mechanistic stereotype.
+
+The world builder should be able to ask: **what would have to change materially for this observed pattern to become easier, harder or unavailable?** Then it distinguishes a sourced counterfactual, an explicitly modeled intervention, a mere possible alternative, and an unsupported fantasy. An empirical probability is not a causal transport coefficient.
+
