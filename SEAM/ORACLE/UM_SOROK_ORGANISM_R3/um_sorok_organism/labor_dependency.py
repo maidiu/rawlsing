@@ -245,21 +245,22 @@ def _uncommitted_paid_wage(world,regime,who,site):
     An initial cash balance or future unpaid wage cannot fabricate a wage-funded
     collective resource.
     """
-    paid=sum(_money(x["wage"],"WAGE_PROVENANCE") for x in
+    from decimal import Decimal
+    paid=sum((Decimal(str(_money(x["wage"],"WAGE_PROVENANCE"))) for x in
         world.get("material_claims",[])
         if type(x) is dict and x.get("worker")==who
         and x.get("site")==site
         and x.get("controller")==regime["controller"]
         and type(x.get("clock")) is int and x["clock"]<=world["clock"]
-        and type(x.get("wage")) in (int,float))
-    assigned=sum(_money(x["amount"],"PAST_RELIEF_TRANSFER") for x in
-        world.get("material_claims",[])
+        and type(x.get("wage")) in (int,float)),Decimal(0))
+    assigned=sum((Decimal(str(_money(x["amount"],"PAST_RELIEF_TRANSFER")))
+        for x in world.get("material_claims",[])
         if type(x) is dict and x.get("kind")=="ACTUAL_WAGE_FUNDED_RELIEF"
         and x.get("payer")==who and x.get("source_ref")==regime["id"]
-        and type(x.get("amount")) in (int,float))
+        and type(x.get("amount")) in (int,float)),Decimal(0))
     if assigned>paid:
         raise ValueError("R19_RELIEF_EXCEEDS_PRIOR_ACTUAL_WAGES")
-    return round(paid-assigned,5)
+    return float(paid-assigned)
 
 
 def fund_worker_relief(world,actors,who,site,intention):
