@@ -24,6 +24,7 @@ from .material_investments import (
 from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
+from .caregiving_practice import retain_performed_material_feeding
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -433,7 +434,11 @@ class ConstitutiveRuntime:
                     if x.get('kind')=='coactor_present'
                     and x.get('source_actor')!=aid]
             if not participated and not personal_cues:continue
-            own=personally_done['action'] if personally_done else ('RECEIVED_CARE' if aid in affected else None)
+            own=(personally_done['action'] if personally_done else
+                 ('RECEIVED_FEEDING' if aid in affected and
+                  summary['action']=='FEED' else
+                  'RECEIVED_CARE' if aid in affected and
+                  summary['action']=='CARE' else None))
             # Only this actor's actual selection—not the pooled action
             # opportunity—may qualify an undertaken project. For a target
             # who merely suffers the act, there is no actor-authored project.
@@ -451,7 +456,7 @@ class ConstitutiveRuntime:
                              'body_access':'SOMATIC_ATTEMPT_ONLY',
                              'objective_result_not_inferred':True}
                             if personally_done else None)
-            felt_effect=(('SOMATIC_CARE_CANDIDATE' if summary['action']=='CARE'
+            felt_effect=(('SOMATIC_CARE_CANDIDATE' if summary['action'] in ('CARE','FEED')
                          else 'IMPOSED_EFFECT_UNINTERPRETED')
                          if aid in resolved['personal_effects'] and not personally_done
                          else None)
@@ -503,6 +508,8 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            retain_performed_material_feeding(
+                actors[aid],experience,objective_ref,world)
             # A failed, actually attempted addressed call may revise the
             # historically learned expectation of this particular source.
             # It never proves why that Other did not respond, or retroactively
