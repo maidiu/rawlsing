@@ -20,6 +20,7 @@ from .food_access_struggle import choose_food_petition
 from .institutional_procedure_learning import one_bounded_proposal
 from .material_dependency_history import choose_lived_material_counterpath
 from .livelihood_history import sourcefree_relief_recruitment
+from .worker_bargaining_history import choose_actor_bargaining_stance
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -105,6 +106,10 @@ class HeuristicSemanticProvider:
             funded_relief=sourcefree_relief_recruitment(possibilities)
             if funded_relief:
                 return {'task':task,**funded_relief}
+            wage_stance=choose_actor_bargaining_stance(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if wage_stance:
+                return {'task':task,**wage_stance}
             object_action=choose_qualified_material_care(possibilities)
             if object_action:
                 return {'task':task,**object_action}
