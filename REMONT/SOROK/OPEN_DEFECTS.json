@@ -2437,31 +2437,33 @@
     "source_r11_head": "39f6972089858ee968e73b2e731005c71a8055dd",
     "source_current_original_remont_pr": 1171,
     "source_current_original_remont_head": "c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7",
-    "status": "AUTHOR_REPAIRED_SOURCEFREE_R12__PENDING_DISTINCT_INDEPENDENT_REREVIEW",
+    "status": "AUTHOR_REPAIRED_SOURCEFREE_R12__HOSTILE_G5_CORRECTION__PENDING_DISTINCT_INDEPENDENT_REREVIEW",
     "external_review_disposition_inherited": "REVISE_EXACT_DEFECT",
     "external_r11_review_author_distinct": true,
     "corrections": [
       {
         "fault": "R11-DEF-01",
-        "status": "REPAIRED_SOURCEFREE_TESTED__P070_P071_NOT_INDEPENDENTLY_ACCEPTED",
+        "status": "REPAIRED_SOURCEFREE_TESTED__P070_P071_AND_TYPED_NONOBJECT_SNAPSHOT__NOT_INDEPENDENTLY_ACCEPTED",
         "owner": [
           "storage.py::verify_chain",
           "constitution.py::actor_access"
         ],
         "tests": [
           "tests.test_independent_r11_receiving.R10Continuity",
+          "tests.test_r12_independent_review_repairs.HostileG5Continuity",
           "tests.test_remont_independent_followons_r10"
         ]
       },
       {
         "fault": "R11-DEF-02",
-        "status": "REPAIRED_SOURCEFREE_TESTED__R12_NOT_INDEPENDENTLY_ACCEPTED",
+        "status": "REPAIRED_SOURCEFREE_TESTED__ADD_PROJECT_AND_REORGANIZE_PROJECT_ROUTES_CLOSED__NOT_INDEPENDENTLY_ACCEPTED",
         "owner": [
           "development.py::admit"
         ],
         "tests": [
           "tests.test_independent_r11_receiving.TrialAuthority",
-          "tests.test_r12_independent_review_repairs.TrialPurposeAuthorityR12"
+          "tests.test_r12_independent_review_repairs.TrialPurposeAuthorityR12",
+          "tests.test_r12_independent_review_repairs.TrialPurposeAuthorityR12.test_current_trial_cannot_reorganize_existing_project_into_motive"
         ]
       },
       {
@@ -2476,12 +2478,13 @@
       "reproduced_independent_red_subcases": 5,
       "reviewer_tests_run": 6,
       "reviewer_tests_pass": 6,
-      "sourcefree_normal_pass": 246,
-      "optimized_pass": 246,
-      "pytest_pass": 246,
-      "pytest_subtests": 14,
+      "sourcefree_normal_pass": 248,
+      "optimized_pass": 248,
+      "pytest_pass": 248,
+      "pytest_subtests": 16,
       "cold_reopen_events": 9,
-      "cold_hash": "27de011b1861f864b07f57f4c4ec1cd3eeb9a0488b126edf8032e594de9ae47d"
+      "cold_hash": "bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363",
+      "hash_seed_stable": true
     },
     "queue_accounting": {
       "P_total": 71,
@@ -2494,8 +2497,8 @@
       "native_G5_accepted": 0
     },
     "archive_sha256": "2aeb7fc0075124ce0107bf48087ed1bb2b967cb52846135a18559ac00b83b460",
-    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R12_INDEPENDENT_REVIEW_REPAIRS_20261120",
-    "note": "Sourcefree local repair and custody receipt, not new independent receiving; original P identities and statuses remain unchanged",
+    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R12_REVIEW_REPAIRS_20261120",
+    "note": "Sourcefree local repair and custody receipt, not new independent receiving; hostile G5 correction blocks REORGANIZE_PROJECT in the issued-trial event; original P identities/statuses remain unchanged",
     "protected_current_progress_pair_written": false
   }
 }

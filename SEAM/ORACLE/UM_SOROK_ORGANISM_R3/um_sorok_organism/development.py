@@ -54,17 +54,17 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
     if issued_trial is not None:
         # An *issued current trial* has not yet become a durable purpose.
-        # Every durable-project acquisition path must respect this boundary;
-        # an LLM cannot evade TAKE_UP by relabeling the same act ADD_PROJECT,
-        # even under a different project name/object. Sourcefree conservative
-        # restriction of this event only, NOT a general law of development:
-        # unrelated projects can still be acquired through separately evidenced
-        # nontrial experiences and later life transitions.
-        if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
-            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
-        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
-               and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
+        # Every durable-project acquisition or mutation path must respect this
+        # boundary; an LLM cannot evade TAKE_UP by relabeling the same act
+        # ADD_PROJECT or by reorganizing an existing project, even under a
+        # different project name/object. Sourcefree conservative restriction of
+        # this event only, NOT a general law of development: unrelated projects
+        # can still be acquired through separately evidenced nontrial
+        # experiences and later life transitions.
+        if any(c.get('kind') in ('ADD_PROJECT','REORGANIZE_PROJECT')
                for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
     witnessed=[]

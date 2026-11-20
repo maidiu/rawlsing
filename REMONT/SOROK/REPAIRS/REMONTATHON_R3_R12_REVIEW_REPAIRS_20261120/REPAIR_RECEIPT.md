@@ -29,6 +29,18 @@
 - Demo executed exit 0 and independently cold-opened using two separate runtime instances: **9 events, stable matching event IDs and last hash `27de011b1861f864b07f57f4c4ec1cd3eeb9a0488b126edf8032e594de9ae47d`, `PRAGMA integrity_check=ok`, `verify().valid=True`**. This is an R12 demo/hash, not R11's earlier `2921bbaa…`.
 - These are Python 3.13.5 local author-side executions. **Python 3.11 of new R12 head and nonauthor re-review are still pending**; earlier user Python 3.11 R11 green is conserved separately.
 
+## Addendum — independent hostile G5 correction (2026-11-20)
+
+A separate hostile review at the exact R12 HEAD found one residual same-event motive route the original six reviewer tests did not cover: `REORGANIZE_PROJECT` could set a mature `motive` (and optionally `object`/`status`) on a pre-existing project during an issued current-trial event. `ADD_PROJECT` was blocked, but the broader project-mutation path was not.
+
+**Source corrections:** `development.admit` now rejects `ADD_PROJECT` **and** `REORGANIZE_PROJECT` whenever an issued current-trial ticket is present, and rejects any `TAKE_UP_POSSIBLE_END` in that event. `storage.verify_chain` now emits typed `WORLD_SNAPSHOT_NOT_OBJECT` / `ACTOR_SNAPSHOT_NOT_OBJECT` errors for canonical non-object snapshots instead of an untyped `AttributeError`. `constitution.compose` now sorts the qualified active-form closure, removing hash-seed-dependent demo/event ordering.
+
+**New regression tests:** `test_current_trial_cannot_reorganize_existing_project_into_motive` and `test_canonical_nonobject_world_and_actor_snapshots_are_typed_red` in `tests/test_r12_independent_review_repairs.py`. The hostile pre-fix runtime probe reproduced a committed mature motive while the end remained `POSSIBLE_NOT_ACQUIRED_MOTIVE`; post-fix it is `REFUSED:InvalidDevelopment:CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT`, no project mutation, no trial history.
+
+**Execution after correction:** **248/248 PASS normal**, **248/248 PASS `python -O`**, pytest **248 passed + 16 subtests** on Python 3.11.3. Fresh demo runs now produce the same 9-event last hash `bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363` across processes and `PYTHONHASHSEED` values; cross-process cold reopen and `PRAGMA integrity_check` remain valid.
+
+The prior 246-test receipts above are preserved as historical cuts. The 71 queue_P records and six queue_E holds are unchanged; no status was self-promoted. R12 remains sourcefree author-tested, not independently accepted, and P070/P071 remain separately review-pending.
+
 ## Unresolved, preserved
 
 R12 repairs only the independently identified three R11 defects. No claim of the whole organism being complete or of mature psychological truth. The original 8 open and 8 partial P identities remain not fixed/partial, and the 53 sourcefree bounded original first-fault review passes remain *scoped*. P070/P071 still require distinct independent acceptance; R12's new source cut requires its own independent review and protected authorized receiving. The R12 work does not include all of separately evolving SORACLE R11/R12. The six evidence/authority holds, G5, original PYAT parent source fidelity and scientifically calibrated live LLM remain open. Do not update protected PROGRAMMA or paired CURRENT_PROGRESS without authorized competent receiving.

@@ -142,7 +142,7 @@ def compose(constitution,access,limit=50):
     potentially_active=closure(seed)
     vetoed={l['target'] for l in negative if l['source'] in potentially_active}
     inhibited.extend(sorted(vetoed))
-    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
+    active={fid:copy(forms[fid]) for fid in sorted(closure(seed,vetoed))}
     # A historically acquired relational configuration can recruit an already
     # acquired form even without its ordinary cue. It cannot revive a vetoed
     # direct action, bypass body/scope, or invent a form. Keep the inhibited

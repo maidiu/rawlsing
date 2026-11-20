@@ -6,7 +6,8 @@ from copy import deepcopy
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService
 from um_sorok_organism.development import admit, InvalidDevelopment
-from um_sorok_organism.types import adult
+from um_sorok_organism.storage import ResearchLedger
+from um_sorok_organism.types import adult, blank_world
 
 
 class TrialPurposeAuthorityR12(unittest.TestCase):
@@ -69,6 +70,40 @@ class TrialPurposeAuthorityR12(unittest.TestCase):
         self.assertEqual(after['traces'],pre['traces'])
         self.assertEqual(after['possible_ends'],pre['possible_ends'])
 
+    def test_current_trial_cannot_reorganize_existing_project_into_motive(self):
+        rt=self.runtime
+        def add_project(task,packet):
+            if task=='actor_attempt':return {'task':task,'action':'WAIT'}
+            if task=='development':
+                return {'task':task,'candidates':[{'kind':'ADD_PROJECT','project':{
+                    'id':'existing_project','object':'ordinary neutral project',
+                    'means':['WAIT'],'motive':'NEUTRAL_ORDINARY','priority':.4,
+                    'cue_terms':['wait']}}]}
+            return {'task':task,'surface':'public only'}
+        rt.semantic=ValidatingSemanticService(CallbackLLMProvider(add_project))
+        rt.step('nadia',requested_action='WAIT')
+        rt.cue(kind='song',tags=['sing','rhythm'],location='home')
+        pre_clock=rt.ledger.world()[1]['clock']
+        pre=deepcopy(rt.snapshot('nadia'))
+        def reorganize(task,packet):
+            if task=='actor_attempt':
+                ticket=next(t for t in packet['possible_end_trials'] if t['operation']=='SING')
+                return {'task':task,'possible_end_trial_id':ticket['trial_id']}
+            if task=='development':
+                return {'task':task,'candidates':[{'kind':'REORGANIZE_PROJECT',
+                    'project_id':'existing_project',
+                    'motive':'MATURE_RHYTHM_MOTIVE_FROM_CURRENT_TRIAL'}]}
+            return {'task':task,'surface':'public only'}
+        rt.semantic=ValidatingSemanticService(CallbackLLMProvider(reorganize))
+        with self.assertRaisesRegex(InvalidDevelopment,'CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT'):
+            rt.step('nadia')
+        after=rt.snapshot('nadia')
+        project=next(p for p in after['projects'] if p['id']=='existing_project')
+        self.assertEqual(project['motive'],'NEUTRAL_ORDINARY')
+        self.assertEqual(after['possible_ends'],pre['possible_ends'])
+        self.assertEqual(rt.ledger.world()[1]['clock'],pre_clock)
+        self.assertTrue(rt.verify()['valid'])
+
     def test_other_nontrial_event_may_admit_actor_specific_new_project(self):
         # No issued trial ticket; an independently experienced later event
         # may still support a *provisional* project through existing admission.
@@ -97,5 +132,19 @@ class TrialPurposeAuthorityR12(unittest.TestCase):
         self.assertEqual(end['status'],'POSSIBLE_NOT_ACQUIRED_MOTIVE')
         self.assertFalse(any('rhythm' in p.get('object','') for p in rt.snapshot('nadia')['projects']))
         self.assertTrue(rt.verify()['valid'])
+
+class HostileG5Continuity(unittest.TestCase):
+    def test_canonical_nonobject_world_and_actor_snapshots_are_typed_red(self):
+        for table,error in (('worlds','WORLD_SNAPSHOT_NOT_OBJECT'),
+                            ('actors','ACTOR_SNAPSHOT_NOT_OBJECT')):
+            with self.subTest(table=table), tempfile.TemporaryDirectory() as d:
+                ledger=ResearchLedger(str(Path(d)/'snapshot.sqlite'))
+                try:
+                    ledger.initialize(blank_world(),[adult('ann','Ann')])
+                    ledger.conn.execute("UPDATE "+table+" SET body='[]'")
+                    with self.assertRaisesRegex(AssertionError,error):
+                        ledger.verify_chain()
+                finally:
+                    ledger.close()
 
 if __name__=='__main__': unittest.main()
