@@ -158,6 +158,10 @@ def test_actual_native_i03_consumes_verified_stream_without_historical_v1(
     assert result.release_refs != oracle.release_refs
     assert estate.native_replay_ref.kind == "ANVILStreamReplayRoot@1"
     assert estate.native_replay_ref.content_hash == held.roots["replay"]
+    with pytest.raises(TypeError):
+        estate.manifest["members"]["RespondentEvent.parquet"] = "0" * 64
+    with pytest.raises(DirectEstateError, match="immutable"):
+        estate.native_release_ref = source["release_ref"]
     assert not list(root.glob(".s2c-native-i03-*"))
     assert not list(release.glob("*.sqlite"))
 
@@ -230,3 +234,19 @@ def test_native_stream_wrong_issued_query_cannot_be_substituted(
             estate=estate, runtime_catalog=catalog,
             query_ref=source["universe"].ref, predicate_ref=predicate.ref,
         )
+
+
+
+def test_native_stream_detects_member_changed_after_initial_verification(
+    tmp_path, monkeypatch,
+):
+    (source, auth, predicate, query, catalog, root, release, manifest,
+     held, grant) = _stream(tmp_path, monkeypatch, "ST-TOCTOU")
+    estate = VerifiedAnvilStreamEstate(
+        root, exact_path=release, independently_held=held,
+        current_authorizer=grant,
+    )
+    with (release / "RespondentEvent.parquet").open("ab") as handle:
+        handle.write(b"ALTERED_AFTER_VERIFIED")
+    with pytest.raises(DirectEstateError, match="member changed"):
+        estate._recheck_unchanged_members()
