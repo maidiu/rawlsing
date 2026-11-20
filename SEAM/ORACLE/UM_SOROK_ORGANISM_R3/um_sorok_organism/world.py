@@ -5,6 +5,7 @@ from .types import Attempt, Resolution, copy, stable_id, digest
 from .organism import eligible
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
+from decimal import Decimal
 
 COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
              'MAKE_SPACE':{'JOIN','SING'},'SHARE':{'JOIN','CARE'}}
@@ -83,6 +84,27 @@ def _cash_amount(raw,error):
     return amount
 
 
+def _exact_material_delta(before, delta, error):
+    """Refuse a material transfer that storage cannot actually represent.
+
+    Current sourcefree accounts and inventories use JSON float numbers. Even
+    individually finite/rounded balances can lose a real unit on addition or
+    subtraction (e.g. 1e20 + 1 == 1e20). Validate the outcome in decimal space
+    then require exact preservation through that existing representation.
+    This is an integrity guard, NOT a new currency or labor law.
+    """
+    intended=Decimal(str(before))+Decimal(str(delta))
+    if intended<0:
+        raise ValueError(error)
+    try:
+        stored=float(intended)
+    except (OverflowError,ValueError):
+        raise ValueError(error) from None
+    if not math.isfinite(stored) or Decimal(str(stored))!=intended:
+        raise ValueError(error)
+    return stored
+
+
 def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None):
     """Contributions must be independently supplied by a trusted runtime planner.
     The world never accepts a caller-provided consent boolean. Consent is not
@@ -124,13 +146,15 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         else:status='BLOCKED';output='UNKNOWN_DESTINATION'
     elif attempt.action=='EAT':
         site=_site(world,aid)
-        inventory=world.setdefault('holdings',{}).setdefault(aid,{'food':0})
+        inventory=world.get('holdings',{}).get(aid,{'food':0})
         owned=_nonnegative_transfer_amount(inventory.get('food',0),'INVALID_OWNED_FOOD')
         household=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
         if owned>=1:
-            inventory['food']=owned-1;output='ATE_OWNED_FOOD'
+            next_owned=_exact_material_delta(owned,-1,'INVALID_OWNED_FOOD_DELTA')
+            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=next_owned
+            output='ATE_OWNED_FOOD'
         elif loc=='home' and household>=1:
-            site['food']=household-1;output='ATE_SHARED_HOUSEHOLD_FOOD'
+            site['food']=_exact_material_delta(household,-1,'INVALID_SITE_FOOD_DELTA');output='ATE_SHARED_HOUSEHOLD_FOOD'
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
         site=_site(world,aid)
@@ -145,23 +169,35 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         # economy. A room with food but no identifiable seller is NOT a shop.
         seller,controller_error=_effective_material_controller(world,loc,site)
         if available_food<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
-        elif buyer_balance<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+        elif seller!=aid and buyer_balance<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
         elif controller_error:status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
         elif seller is None:status='BLOCKED';output='NO_OBJECTIVE_SELLER'
         else:
             seller_balance=_cash_amount(
                 world['accounts'].get(seller,0),'INVALID_SELLER_BALANCE')
             paid=round(cost,5)
-            if buyer_balance<paid:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+            if seller!=aid and buyer_balance<paid:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
             else:
-                site['food']=available_food-1
+                # Compute every transfer before mutating any ledger-owned fact.
+                # Finite individually valid inputs may still overflow or lose
+                # the requested five-decimal or physical-unit change.
+                food_next=_exact_material_delta(available_food,-1,'INVALID_SITE_FOOD_DELTA')
+                holdings_next=_exact_material_delta(owned_food,1,'INVALID_OWNED_FOOD_DELTA')
+                # Existing sourcefree P049 treats self-collection of an owned
+                # shop's food as a *performed* movement of material goods. It
+                # is not a paid market transaction: the same account cannot
+                # be both an outgoing and incoming external claim.
                 if seller!=aid:
-                    world['accounts'][aid]=round(buyer_balance-paid,5)
-                    world['accounts'][seller]=round(seller_balance+paid,5)
-                world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=owned_food+1
+                    buyer_next=_exact_material_delta(buyer_balance,-paid,'INVALID_BUYER_TRANSFER_PRECISION')
+                    seller_next=_exact_material_delta(seller_balance,paid,'INVALID_SELLER_TRANSFER_PRECISION')
+                site['food']=food_next
+                if seller!=aid:
+                    world['accounts'][aid]=buyer_next
+                    world['accounts'][seller]=seller_next
+                world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=holdings_next
                 world.setdefault('material_claims',[]).append({
-                    'clock':world['clock'],'kind':'FOOD_PURCHASE',
-                    'buyer':aid,'site':loc,'seller':seller,'price_paid':paid,
+                    'clock':world['clock'],'kind':('FOOD_PURCHASE' if seller!=aid else 'SELF_STOCK_REALLOCATION'),
+                    'buyer':aid,'site':loc,'seller':seller,'price_paid':(paid if seller!=aid else 0),
                     'goods_transferred':1,'not_actor_psychic_motive':True})
                 output='FOOD_PURCHASED'
     elif attempt.action=='WORK':
@@ -171,6 +207,18 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             # Neither a missing issuer nor a mismatched owner converts an
             # institutionally controlled worksite into unowned production.
             status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif controller==aid:
+            # Self-controlled production is not a transfer of wages between
+            # independent parties. Preserve the real performed activity and
+            # stock change without minting a bogus employer-to-self salary.
+            next_stock=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
+            site['stock']=next_stock
+            world.setdefault('material_claims',[]).append({
+                'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
+                'controller':controller,'wage':0,'wage_due':0,'wage_unpaid':0,
+                'worker_control_of_output':True,
+                'economic_grade':'SOURCEFREE_SELF_CONTROL_NO_EXTERNAL_WAGE'})
+            output='SELF_CONTROLLED_GOODS_PRODUCED'
         elif controller is not None:
             institution=world['institutions'][controller]
             wage=_cash_amount(institution.get('wage',0), 'INVALID_WAGE')
@@ -182,10 +230,15 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             due=round(wage,5)
             paid=round(min(round(available,5),due),5)
             unpaid=round(max(0,due-paid),5)
-            # Validation and controller relation precede every material write.
-            site['stock']=stock+2
-            world['accounts'][controller]=round(available-paid,5)
-            world['accounts'][aid]=round(worker_balance+paid,5)
+            # Qualify material and monetary deltas BEFORE any persisted write.
+            # Rounding separately validated operands does not guarantee a real
+            # debit, credit or added stock at large magnitudes.
+            stock_next=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
+            employer_next=_exact_material_delta(available,-paid,'INVALID_EMPLOYER_TRANSFER_PRECISION')
+            worker_next=_exact_material_delta(worker_balance,paid,'INVALID_WORKER_TRANSFER_PRECISION')
+            site['stock']=stock_next
+            world['accounts'][controller]=employer_next
+            world['accounts'][aid]=worker_next
             claim={'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
                    'controller':controller,'wage':paid,'wage_due':due,
                    'wage_unpaid':unpaid,'worker_control_of_output':False}
@@ -199,7 +252,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             output='PRODUCED_GOODS_CONTROLLED_BY_OTHER'
         else:
             # No controller exists: this is not a wage relationship.
-            site['stock']=stock+2
+            site['stock']=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
             output='MATERIAL_STOCK_PRODUCED'
     elif attempt.action=='REPAIR':
         site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
@@ -213,7 +266,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         elif stock<1:
             status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
         else:
-            site['stock']=stock-1;output='REPAIR_PERFORMED'
+            site['stock']=_exact_material_delta(stock,-1,'INVALID_SITE_STOCK_DELTA');output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
         members=world['institutions']['hall_board']['members']
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'

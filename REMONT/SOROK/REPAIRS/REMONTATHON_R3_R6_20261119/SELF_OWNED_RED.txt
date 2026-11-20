@@ -1,0 +1,18 @@
+test_p056_self_owned_food_still_accessible_without_cash (tests.test_remontathon_r6.MaterialConservationR6.test_p056_self_owned_food_still_accessible_without_cash) ... FAIL
+
+======================================================================
+FAIL: test_p056_self_owned_food_still_accessible_without_cash (tests.test_remontathon_r6.MaterialConservationR6.test_p056_self_owned_food_still_accessible_without_cash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r6_work/tests/test_remontathon_r6.py", line 97, in test_p056_self_owned_food_still_accessible_without_cash
+    self.assertEqual(r.status,'PERFORMED')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'BLOCKED' != 'PERFORMED'
+- BLOCKED
++ PERFORMED
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
