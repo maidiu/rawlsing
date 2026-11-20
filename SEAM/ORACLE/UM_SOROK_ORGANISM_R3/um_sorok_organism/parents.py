@@ -34,7 +34,12 @@ def construct_parent(actor_id,name,source_packet,semantic):
         if (not isinstance(motif.get('id'),str) or not motif['id'] or
                 any(x.get('id')==motif['id'] for x in person['relational_motifs'])):
             raise ValueError('DUPLICATE_OR_UNIDENTIFIED_ADULT_MOTIF')
-        person['relational_motifs'].append(copy(motif))
+        sealed=copy(motif)
+        sealed['origin']=['fictional_init:'+actor_id]
+        sealed['grade']='FICTIONAL_ABDUCTIVE_INITIALIZATION'
+        sealed['not_respondent_unconscious_truth']=True
+        sealed['status']=sealed.get('status','ACTIVE')
+        person['relational_motifs'].append(sealed)
     projects=copy(result.get('projects',[]))
     for project in projects:
         if not isinstance(project,dict) or not isinstance(project.get('means',[]),list) or any(not isinstance(op,str) or op not in ACTIONS for op in project.get('means',[])):
