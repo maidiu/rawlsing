@@ -62,6 +62,7 @@ def test_actual_c4_c5_enters_c6_without_second_i03_or_fabricated_actor():
     assert result.ref == replay_c6_contextual_entrance(
         receipt=result, envelope=c4.envelope,
         external_pin=c4.external_pin, path=path,
+        expected_receipt_ref=result.ref,
     ).ref
 
 
@@ -109,6 +110,7 @@ def test_nadia_entrance_is_contextual_not_an_adult_determined_at_birth():
     assert replay_c6_contextual_entrance(
         receipt=packet, envelope=c4.envelope,
         external_pin=c4.external_pin, path=path,
+        expected_receipt_ref=packet.ref,
     ).ref == packet.ref
 
 
@@ -127,6 +129,8 @@ def test_two_historical_parent_entrances_never_claim_partner_selection():
     pair = assemble_two_sourcefree_parent_entrances(
         first=first, second=second,
         first_source=triplet_a, second_source=triplet_b,
+        first_expected_receipt_ref=first.ref,
+        second_expected_receipt_ref=second.ref,
     )
     m = pair.material()
     assert pair.ref != first.ref and pair.ref != second.ref
@@ -140,10 +144,14 @@ def test_two_historical_parent_entrances_never_claim_partner_selection():
     assert assemble_two_sourcefree_parent_entrances(
         first=first, second=second,
         first_source=triplet_a, second_source=triplet_b,
+        first_expected_receipt_ref=first.ref,
+        second_expected_receipt_ref=second.ref,
     ).ref == pair.ref
     assert replay_two_sourcefree_parent_entrances(
         receipt=pair, first=first, second=second,
         first_source=triplet_a, second_source=triplet_b,
+        first_expected_receipt_ref=first.ref,
+        second_expected_receipt_ref=second.ref,
     ).ref == pair.ref
     forged_pair = pair.material()
     forged_pair["first_scenario_slot"] = "other"
@@ -154,17 +162,23 @@ def test_two_historical_parent_entrances_never_claim_partner_selection():
         replay_two_sourcefree_parent_entrances(
             receipt=forged_pair, first=first, second=second,
             first_source=triplet_a, second_source=triplet_b,
+            first_expected_receipt_ref=first.ref,
+            second_expected_receipt_ref=second.ref,
         )
     with pytest.raises(C6SeamError, match="PARTNER_SELECTION_NOT_ESTABLISHED"):
         assemble_two_sourcefree_parent_entrances(
             first=first, second=second,
             first_source=triplet_a, second_source=triplet_b,
+            first_expected_receipt_ref=first.ref,
+            second_expected_receipt_ref=second.ref,
             partner_selection_claim={"statistic": "within-person co-travel"},
         )
     with pytest.raises(C6SeamError, match="slots must differ"):
         assemble_two_sourcefree_parent_entrances(
             first=first, second=first,
             first_source=triplet_a, second_source=triplet_a,
+            first_expected_receipt_ref=first.ref,
+            second_expected_receipt_ref=first.ref,
         )
 
 
@@ -177,6 +191,8 @@ def test_fake_parent_as_nadia_or_person_authority_cannot_be_emitted():
             first=child, second=child,
             first_source=(c4.envelope,c4.external_pin,path),
             second_source=(c4.envelope,c4.external_pin,path),
+            first_expected_receipt_ref=child.ref,
+            second_expected_receipt_ref=child.ref,
         )
     with pytest.raises(C6SeamError, match="historical entrance"):
         assemble_c6_contextual_entrance(
@@ -190,6 +206,21 @@ def test_fake_parent_as_nadia_or_person_authority_cannot_be_emitted():
         )
 
 
+def test_c6_replay_without_independently_held_receipt_pin_fails_closed():
+    """Source C4/C5 cannot authenticate mutable caller-chosen C6 slot."""
+    c4, path, packet = _context("PYAT-C6-NO-EXTERNAL-PIN")
+    with pytest.raises(C6SeamError, match="independently held C6 receipt ref required"):
+        replay_c6_contextual_entrance(
+            receipt=packet, envelope=c4.envelope,
+            external_pin=c4.external_pin, path=path,
+        )
+    with pytest.raises(C6SeamError, match="independently held C6 receipt ref required"):
+        as_nonissuing_world_conditioned_prefix(
+            receipt=packet, envelope=c4.envelope,
+            external_pin=c4.external_pin, path=path,
+        )
+
+
 def test_rehashed_c5_and_c6_forgeries_fail_pinned_replay_and_world():
     c4, path, packet = _context("PYAT-C6-HOSTILE")
     altered = path.material()
@@ -200,24 +231,34 @@ def test_rehashed_c5_and_c6_forgeries_fail_pinned_replay_and_world():
             envelope=c4.envelope, external_pin=c4.external_pin,
             path=forged_path, entrance=ENTRY_PARENT, slot="forged",
         )
-    fake = packet.material()
-    fake["scenario_slot_not_actor_id"] = "substituted-child"
-    forged_packet = C6ContextualEntrance(canonical_json(fake), semantic_hash(fake))
-    with pytest.raises(C6SeamError, match="cold source replay failed"):
-        replay_c6_contextual_entrance(
-            receipt=forged_packet, envelope=c4.envelope,
-            external_pin=c4.external_pin, path=path,
-        )
-    with pytest.raises(C6SeamError, match="cold source replay failed"):
-        as_nonissuing_world_conditioned_prefix(
-            receipt=forged_packet, envelope=c4.envelope,
-            external_pin=c4.external_pin, path=path,
-        )
+    # Caller-defined slot/entrance/minimum are not entailed by C4/C5.
+    # Hold the original issued packet ref OUTSIDE the candidate under test.
+    for key, replacement in (
+        ("scenario_slot_not_actor_id", "substituted-child"),
+        ("entrance", ENTRY_NADIA),
+        ("min_disclosure_cell_n", 3),
+    ):
+        fake = packet.material()
+        fake[key] = replacement
+        forged_packet = C6ContextualEntrance(canonical_json(fake), semantic_hash(fake))
+        with pytest.raises(C6SeamError, match="cold source replay failed"):
+            replay_c6_contextual_entrance(
+                receipt=forged_packet, envelope=c4.envelope,
+                external_pin=c4.external_pin, path=path,
+                expected_receipt_ref=packet.ref,
+            )
+        with pytest.raises(C6SeamError, match="cold source replay failed"):
+            as_nonissuing_world_conditioned_prefix(
+                receipt=forged_packet, envelope=c4.envelope,
+                external_pin=c4.external_pin, path=path,
+                expected_receipt_ref=packet.ref,
+            )
     wrong_pin = replace(c4.external_pin, ff01_ref=c4.external_pin.query_ref)
     with pytest.raises(EmpiricalSeamError, match="external/ff01_ref"):
         as_nonissuing_world_conditioned_prefix(
             receipt=packet, envelope=c4.envelope,
             external_pin=wrong_pin, path=path,
+            expected_receipt_ref=packet.ref,
         )
 
 
@@ -226,6 +267,7 @@ def test_existing_world_first_consumer_gets_held_not_fake_n10e_issuance():
     prefix = as_nonissuing_world_conditioned_prefix(
         receipt=packet, envelope=c4.envelope,
         external_pin=c4.external_pin, path=path,
+        expected_receipt_ref=packet.ref,
     )
     assert prefix.step["state"] == HELD_WORLD_STATE
     assert prefix.step["cells"] == []
@@ -255,6 +297,7 @@ def test_native_source_change_prevents_cross_entrance_replay():
         replay_c6_contextual_entrance(
             receipt=packet, envelope=b.envelope,
             external_pin=b.external_pin, path=path,
+            expected_receipt_ref=packet.ref,
         )
 
 
@@ -324,11 +367,13 @@ def test_actual_eight_respondent_full_joint_can_seed_non_singular_v3_proposal():
     assert packet.ref == replay_c6_contextual_entrance(
         receipt=packet, envelope=c4.envelope,
         external_pin=c4.external_pin, path=path,
+        expected_receipt_ref=packet.ref,
     ).ref
     # Even a positive whole joint candidate is not N10W or actor approval.
     prefix = as_nonissuing_world_conditioned_prefix(
         receipt=packet, envelope=c4.envelope,
         external_pin=c4.external_pin, path=path,
+        expected_receipt_ref=packet.ref,
     )
     assert prefix.step["state"] == HELD_WORLD_STATE
     assert prefix.step["cells"] == []
@@ -370,4 +415,5 @@ def test_private_cold_c4_archive_resumes_actual_c6_parent_and_nadia_inputs(tmp_p
     assert replay_c6_contextual_entrance(
         receipt=p, envelope=restored,
         external_pin=build.external_pin, path=path,
+        expected_receipt_ref=p.ref,
     ).ref == p.ref
