@@ -128,8 +128,41 @@ def compose(constitution,access,limit=50):
 
     potentially_active=closure(seed)
     vetoed={l['target'] for l in negative if l['source'] in potentially_active}
+    # Acquired configurations can recruit a third, historically existing
+    # form. The bounded monotonic closure keeps new inhibitors from sneaking
+    # an already vetoed conduit into the current. This is conservative under
+    # contradictory loops (it may over-suppress) and is NOT a global psyche
+    # optimizer, conscious retrieval manager or clinical conflict law.
+    motif_seeds=set()
+    motif_routes={}
+    for _ in range(2*len(qualified)+2):
+        reachable=closure(seed|motif_seeds,vetoed)
+        projection=derive_relational_metabolism(
+            constitution,access,{fid:forms[fid] for fid in reachable},vetoed)
+        proposed={route['target_form'] for route in projection['recruitment_candidates']
+                  if route['target_form'] in qualified}
+        for route in projection['recruitment_candidates']:
+            if route['target_form'] in qualified:
+                motif_routes.setdefault(route['target_form'],route)
+        possible=closure(seed|motif_seeds|proposed)
+        next_veto=vetoed|{l['target'] for l in negative
+                         if l['source'] in possible}
+        next_seeds=motif_seeds|proposed
+        if next_veto==vetoed and next_seeds==motif_seeds:
+            break
+        vetoed=next_veto;motif_seeds=next_seeds
+    else:
+        raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
     inhibited.extend(sorted(vetoed))
-    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
+    active={fid:copy(forms[fid]) for fid in closure(seed|motif_seeds,vetoed)}
+    relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    for fid,route in sorted(motif_routes.items()):
+        if fid in active and fid not in closure(seed,vetoed):
+            currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
+                'ref':fid,'motif_ref':route['motif_ref'],
+                'qualified_source_forms':route['source_form_refs'],
+                'had_inhibited_source':bool(route['suppressed_source_refs']),
+                'not_actor_conscious_retrieval':True})
     # History-made links to activities can recruit an ongoing project under
     # a new cue. Its object/motive remains separate from its possible means.
     projects=eligible_activities(constitution,active.keys(),access)
@@ -183,7 +216,6 @@ def compose(constitution,access,limit=50):
         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
     # An inhibited form can still have an indirect, historically admitted
     # effect on another form or action. Never reinstate its direct capabilities.
-    relational=derive_relational_metabolism(constitution,access,active,vetoed)
     currents+=relational['currents']
     dynamics=enact_currents(constitution,access,active,actions.values(),
                              relational=relational)
