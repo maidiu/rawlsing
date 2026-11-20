@@ -81,6 +81,24 @@ def practical_alternatives(constitution,access,option):
                 'not_a_transparent_self_account':True},
             'source_grade':GRADE,'not_actor_self_account':True,
             'not_world_outcome':True,'priority':project.get('priority',.5)})
+    if act=='PLEDGE_CARE':
+        # An actual addressee matters: a free-floating promise cannot bind
+        # some convenient future person assigned by the world narration.
+        for counterpart in sorted(present):
+            alts.append({
+                'option_id':stable_id('addressed_care_pledge',{
+                    'actor':actor,'clock':clock,'target':counterpart}),
+                'actor':actor,'as_of_clock':clock,
+                'operation':act,'project_id':None,
+                'grounds_status':'POSSIBLE_SITUATED_FUTURE_CARE_PROMISE',
+                'anticipated_difference':None,
+                'beneficiary_as_apprehended':counterpart,
+                'world_request':{'operation':act,
+                    'addressed_party_ref':counterpart,
+                    'material_object_ref':None},
+                'binding_status':'OTHER_PRESENT_NOT_CONSENT_TO_LATER_CARE',
+                'promise_does_not_establish_future_fulfillment':True,
+                'source_grade':GRADE,'not_a_conscious_motive_deduction':True})
     alts.append({'option_id':stable_id('practical_option',{'actor':actor,'clock':clock,
                   'action':act,'project_ref':None}),
         'actor':actor,'as_of_clock':clock,'operation':act,'project_id':None,
