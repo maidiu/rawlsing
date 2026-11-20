@@ -17,10 +17,10 @@ On a **future** OpenCode invocation, at a clean worktree pinned to the then-auth
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013
 ```
 
-Without arguments the runner defaults to Q001–Q004 and Q007–Q010; Q005 remains the separately requested broad original regression sweep. RMT-Q009/Q010 call the **existing C5_V3_CONTEXT / C6_V3_SEAM courts**, not duplicate test definitions; Q005's original `broad_c0` proof path remains conserved. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
+Without arguments the runner defaults to Q001–Q004, Q007–Q010 and Q013; Q005 remains the separately requested broad original regression sweep. RMT-Q009/Q010 call the **existing C5_V3_CONTEXT / C6_V3_SEAM courts**, not duplicate test definitions; Q005's original `broad_c0` proof path remains conserved. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
 **GitHub runner infrastructure hold (PF-042):** GitHub Actions checks have failed on both pre-repair `8c4e70ef...` and repaired descendants *before executing steps*. At inspected run `44671288932`, job `136072619214` has `runner_id=0`, empty `steps`, and no retrievable job logs. These CI reds are **NOT pytest evidence**. Until the runner owner restores a provisioned execution path, use the existing Mac/OpenCode sourcefree batch with one exact immutable HEAD; record JUnit/logs and do not reclassify the worker result as independent G5.
 
@@ -100,6 +100,16 @@ Without arguments the runner defaults to Q001–Q004 and Q007–Q010; Q005 remai
 - **Positive:** pinned genuine I03→C5→C6 parent and Nadia sourcefree proposals, coherent whole-joint cell disclosure only above independent minimum, two separately pinned adult proposals without invented partner selection, cold replay with independently retained C6 receipt `ExactRef`, two-parent and world-held first consumers.
 - **Negatives:** self-rehashed C5 and C6 receipt, changed scenario slot / parent-or-Nadia entrance / disclosure threshold, missing or mismatched independently held original C6 pin, substituted first-parent packet, unauthenticated world ingress, counterfeit FF01 root, low-N/zero disclosure, invented N10E/N10W/actor source grants. **A pin derived from the candidate being checked is NOT independent proof.**
 - **Historical failure → repair:** `bb55950549bbd59211adfc2b1c1e7826b93da77a` 33 PASS/1 FAIL (C6 self-rehashed slot accepted); patched by `ff422c0...` with expanded hostile regressions; `fa11b2733612497d765d788008e8367df16d1d10` **36/36 PASS** (user Mac, 7.56s). **No later HEAD certified.** OpenCode executor logs first faults; identity/actor authority to REMONT Browser.
+
+### RMT-Q013 — source-event absence must not become a supported empty target (REMONT #1162 PF-025)
+**Priority P0 · SOURCE CODE REPAIRED / NOT EXECUTED at this HEAD · FUTURE OPENCODE BATCH**
+- **Historical defect identity:** The separate REMONT PR #1162 calls this **PF-025**. The already-existing #1173 `OPEN_DEFECTS.md` uses **PF-025 for a different predicate exception problem**. Do not coalesce the two PF-025 histories or renumber them. This C6-lineage receiving alias is `PF-043`; the original #1162 repair was independently authored at `16fbdb77c634b4016f01e452d87f5de412a3e1e0`.
+- **Actual test:** `rawlsing_next/tests/test_preff_c1_target_absence.py` (17 parameterized sourcefree cases); **producer:** `_pre553_query_eval.py::_target_component_value` and `_target_configuration`. **Existing reader:** I03 target/cell support → I05 discovery / saved Batch → S04/DHIKR → FF01 / hypothetical source-coherent V3 options.
+- **Confirmed source first fault before repair:** topologies `UNORDERED_MULTISELECT_SET`, `UNORDERED_MULTISELECT`, `MULTISELECT`, `ORDERED_SEQUENCE`, `RANKED_RESPONSE`, `REPEATED_EVENT` and `REPEATED_MEASUREMENT` returned `(True, [])` on **no selected source events**, whereas scalar/routed/componentized refused. This falsely interpreted unobserved source as observed administered empty, allowing apparent source-complete joint membership.
+- **Bounded code repair:** actual same-source C6 descendant source now returns `(False, None)` for all `not events` before topology-specific positive aggregation; no new semantic empty collection grammar, survey source right, or implicit nonresponse inference. Original explicit administered-empty requires separate source issuance (PYAT-REQ-012).
+- **Positive/negative falsifier:** every supported topology must refuse zero exact selected events; typed `_target_configuration` likewise refuses missing multivalued member without a fabricated `[]` joint cell. Existing sourcefree positive C5/C6 and I03 normal scalar/routed/ranked tests must remain unchanged. Historical `fa11b273...` C5 22/22 and C6 36/36 was **before this code repair** and is not testing evidence for it.
+- **Routing:** OpenCode next future execution Q013 + Q005 full C0 sourcefree; REMONT Browser for source/rights/semantic interpretation, independent G5 and actual original-wave administered-empty semantics separately held. **No immediate separate run requested.**
+- **Cross-branch queue:** `RMT-Q011` and `RMT-Q012` exist on C7 PR #1179 but remain jurisdiction-held for SOROK approval; IDs reserved, not dropped or repurposed. Do not activate cross-owner Sorok lifecycle code merely by adding Q013 on PYAT C6 parent.
 
 ## Required execution comment (latest active PR #1173, linked to #1097)
 
