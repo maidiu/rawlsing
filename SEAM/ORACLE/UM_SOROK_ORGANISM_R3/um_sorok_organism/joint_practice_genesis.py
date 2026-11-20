@@ -14,11 +14,12 @@ def possible_joint_practice(actor,experience,event_ref):
     if experience.get("actor")!=actor.get("id"):
         return []
     history=actor.get("participation_history",[])
-    current=[h for h in history
+    current_positions=[i for i,h in enumerate(history)
              if h.get("event_ref")==event_ref
              and h.get("experience_ref")==experience.get("ref")]
-    if len(current)!=1:return []
-    now=current[0]
+    if len(current_positions)!=1:return []
+    current_index=current_positions[0]
+    now=history[current_index]
     operation=now.get("own_attempted_operation")
     partner=now.get("reciprocated_partner_actor_visible")
     if (not now.get("joint_participation_perceived")
@@ -30,7 +31,8 @@ def possible_joint_practice(actor,experience,event_ref):
     # Stronger than repeat counting: first an actual *unfinished* activity
     # with no successful coactor participation, then a different real
     # encounter in which the Other independently participated.
-    prior=[h for h in history if h.get("event_ref")!=event_ref
+    prior=[h for h in history[:current_index]
+           if h.get("event_ref")!=event_ref
            and h.get("own_attempted_operation")==operation
            and h.get("own_status") in ("PARTIAL","BLOCKED")
            and not h.get("joint_participation_perceived")
