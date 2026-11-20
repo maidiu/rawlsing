@@ -215,6 +215,13 @@ class ConstitutiveRuntime:
             personal_cues=[x for x in access.cues if x['id']==world['cues'][-1]['id']]
             if not participated and not personal_cues:continue
             own=personally_done['action'] if personally_done else ('RECEIVED_CARE' if aid in affected else None)
+            # Only this actor's actual selection—not the pooled action
+            # opportunity—may qualify an undertaken project. For a target
+            # who merely suffers the act, there is no actor-authored project.
+            actor_attempt=(principal if aid==actor_id else partner)
+            own_selection=(copy(actor_attempt.purpose_selection)
+                 if personally_done and actor_attempt is not None
+                 else {'status':'NO_ACTOR_AUTHORED_ATTEMPT','project_id':None})
             reciprocal=None
             if partner and resolved['objective_description']=='JOINT_ACTIVITY_PERFORMED' and personally_done and personal_cues:
                 reciprocal=partner.actor if aid==actor_id else actor_id
@@ -236,8 +243,20 @@ class ConstitutiveRuntime:
                         'own_action':own,'status':personally_done['status'] if personally_done else 'OBSERVED',
                         'perceived_cues':personal_cues,'participated':participated,
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
+                        'attempted_purpose':own_selection,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            # An action changes the opportunities and signals subsequently
+            # accessible to its author. We retain the actually received path,
+            # without inventing the counterfactual evidence they did not meet.
+            actors[aid].setdefault('evidence_paths',[]).append({
+                'event':objective_ref,'experience_ref':experience['ref'],
+                'own_action':own,'purpose_status':own_selection['status'],
+                'selected_project_ref':own_selection.get('project_id'),
+                'received_cue_refs':[c['id'] for c in personal_cues],
+                'not_a_counterfactual_comparison':True,
+                'unencountered_alternatives':'UNKNOWN_NOT_OBSERVED',
+                'grade':GRADE})
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
@@ -255,6 +274,10 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                # Untried possible ends are actor-history hypotheses, not
+                # automatically functioning motives or public self-knowledge.
+                'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
                 # preceding psychic organization. The simulated actor neither
                 # observes this full packet nor has to possess its vocabulary.
