@@ -278,6 +278,36 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if (end.get('status')!='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                     or end['origin_event']==event_ref):
                 raise InvalidDevelopment('POSSIBLE_END_CANNOT_RETROACTIVELY_BECOME_INTENT')
+            # The second episode must remain an independently experienced
+            # event. An LLM may nominate WHICH actually received cue became
+            # consequential, but cannot create or retrospectively access it.
+            # Absence of an explicit sign remains qualified uncertainty, not
+            # an instruction to invent a conscious explanation.
+            later_received={cue.get('id') for cue in experience.get('perceived_cues',[])
+                if isinstance(cue,dict) and type(cue.get('id')) is str}
+            claimed_later_sign=c.get('later_perceived_cue_ref')
+            if (claimed_later_sign is not None and
+                    (type(claimed_later_sign) is not str or
+                     claimed_later_sign not in later_received)):
+                raise InvalidDevelopment('TAKEUP_SIGN_NOT_ACTOR_RECEIVED')
+            if claimed_later_sign is None and len(later_received)==1:
+                # One received sign is a *possible contextual anchor*, not
+                # proof it caused the new concern or that the actor knows why.
+                claimed_later_sign=next(iter(later_received))
+            takeup_evidence={
+                'later_event':event_ref,'later_experience_ref':experience['ref'],
+                'actual_received_sign_refs':sorted(later_received),
+                'later_received_sign_ref':claimed_later_sign,
+                'sign_selection_grade':(
+                    'LLM_PROPOSED_ACTOR_RECEIVED_SIGN'
+                    if 'later_perceived_cue_ref' in c else
+                    'SINGLE_ACTOR_RECEIVED_SIGN_PROVISIONAL'
+                    if claimed_later_sign else
+                    'LATER_EXPERIENCE_SIGN_UNSPECIFIED'),
+                'not_a_proven_causal_significance':True,
+                'not_actor_self_account':True,
+                'unobserved_alternatives':'UNKNOWN_NOT_OBSERVED',
+            }
             requested=c.get('means',end['possible_means'])
             if (type(requested) is not list or not requested or
                     any(type(x) is not str or x not in end['possible_means']
@@ -296,12 +326,14 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                      'contextual_only':False,
                      'origin':[end['origin_event'],event_ref],
                      'possible_end_ref':ref,
+                     'takeup_evidence':copy(takeup_evidence),
                      'skill_mastery_not_inferred':True,
                      'original_attempt_purpose_not_rewritten':True,
                      'grade':GRADE}
             actor['projects'].append(project)
             end.setdefault('subsequent_takeup',[]).append({
                 'event':event_ref,'experience_ref':experience['ref'],
+                'takeup_evidence':copy(takeup_evidence),
                 'project_ref':project_id,'grade':GRADE})
             end['status']='TAKEN_UP_AS_PRACTICAL_PROJECT'
             report.append({'kind':op,'project':project_id,'possible_end':ref,
