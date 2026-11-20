@@ -16,6 +16,7 @@ from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
+from .distributed_power import record_actor_participation
 from .initiative import continue_life
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
@@ -113,7 +114,8 @@ class ConstitutiveRuntime:
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
-            proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
+            proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
+                'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
@@ -445,6 +447,12 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            # Objective coactor contribution remains with the world, while
+            # each person's actually accessible experience can establish a
+            # contingent later *possibility of seeking assistance*.
+            record_actor_participation(
+                actors[aid],experience,resolved,objective_ref,
+                body_before=bodily_before[aid],body_after=actors[aid]['body'])
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
