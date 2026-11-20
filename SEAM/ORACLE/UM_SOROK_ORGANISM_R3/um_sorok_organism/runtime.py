@@ -385,6 +385,7 @@ class ConstitutiveRuntime:
         transitions=[]
         context={'plan_id':current['id'],
                  'hypothesized_object':current['object'],
+                 'hypothetical_project_ref':current.get('project_ref'),
                  'authority':'EXTERNAL_RESEARCH_PLAN',
                  'not_actor_attested_purpose':True,
                  'not_guaranteed_success_or_future_participation':True}
