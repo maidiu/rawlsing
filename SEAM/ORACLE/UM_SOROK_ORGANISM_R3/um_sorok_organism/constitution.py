@@ -543,6 +543,11 @@ def compose(constitution,access,limit=50):
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+
+                           ([
+                             food_collective['source_notice_exposure_ref']]
+                            +food_collective['lived_care_refs']
+                            +food_collective['attempted_obstruction_refs']
+                            if food_collective else [])+
                            inquiry['readset']+
                            functional['readset']+
                            expectation_afterlife['readset']+
