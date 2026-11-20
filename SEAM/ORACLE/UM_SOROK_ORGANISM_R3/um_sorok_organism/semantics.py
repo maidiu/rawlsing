@@ -6,6 +6,7 @@ from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
 from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
 from .prospective_horizon import select_bounded_exploratory_trial
+from .distributed_power import choose_uncompelled_assistance
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -55,6 +56,13 @@ class HeuristicSemanticProvider:
             trial=select_bounded_exploratory_trial(possibilities)
             if trial:
                 return {'task':task,**trial}
+            # A previously witnessed reciprocal signal can be tried again,
+            # without assigning an enduring attachment or commandeering the
+            # responder. Actor's body bounds the immediate offline proposal.
+            assisted=choose_uncompelled_assistance(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if assisted:
+                return {'task':task,**assisted}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
