@@ -1,0 +1,45 @@
+name: SORACLE R17 sourcefree exact-head research tests
+
+on:
+  push:
+    branches:
+      - agent/soracle-r17-institutional-food-power-20261120
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
+      - '.github/workflows/soracle-r17-sourcefree-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provisional-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Show the exact checked-out source identity
+        run: |
+          git rev-parse HEAD
+          git status --porcelain
+      - name: Compile every source module
+        run: |
+          python -m compileall -q SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism
+      - name: R17 institutional food-power court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s tests -p 'test_institutional_food_power_r17.py' -v
+      - name: Full inherited sourcefree regression court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s tests -v
+      - name: Optimized Python independent correctness check
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -O -m unittest discover -s tests -p 'test_institutional_food_power_r17.py' -v
+
+# Research author CI only: NOT REMONT G5 or protected/native receiving.
