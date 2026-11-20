@@ -387,7 +387,9 @@ def advance_country_determinicity(
         "country_native_value": canonicalize(country_value),
         "policy": {
             **{key: value for key, value in vars(policy).items()
-               if key not in ("fixed_context", "min_signal_bits")},
+               if key not in ("fixed_context", "min_signal_bits",
+                              "max_total_nodes", "max_pending_nodes",
+                              "max_new_nodes_per_call", "max_receipt_bytes")},
             "fixed_context": _serialize_context(context),
             "min_signal_bits": Decimal(policy.min_signal_bits),
         },
@@ -449,6 +451,7 @@ def advance_country_determinicity(
                 for row in m_source["complete_cells"] if row["raw_count"] > 0]
     used = domain_cells
     processed_axes = 0
+    output_cells_used = 0
     completed_this_call = 0
     stop = "NO_PENDING_WORK"
     # This controls exploration. Every batch is an actual DHIKR single-node
@@ -467,6 +470,7 @@ def advance_country_determinicity(
                 **node, "next_predictor_offset": 0,
                 "candidate_screens": [], "batch_groups": [],
                 "raw_target_counts": None, "raw_n": None,
+                "batch_bootstrap_sensitivity": [],
             }
         active = state["active"]
         selected = _ctx(active["context"])
@@ -486,7 +490,11 @@ def advance_country_determinicity(
             estimated += (policy.bootstrap_replicates * min(
                 policy.bootstrap_case_cap, m_source["raw_fully_resolved_joint_n"]
             ) * (k + pairs))
+            projected_output = len(domains[policy.target_axis]) + sum(
+                len(domains[a]) for a in batch
+            ) + pairs
             if (used + estimated > resources.max_cell_visits
+                    or output_cells_used + projected_output > resources.max_output_cells
                     or not _resource_ok(deadline=deadline, budget=resources,
                                         resource_sample=resource_sample)):
                 stop = "HOST_COST_OR_DEADLINE_BEFORE_NEXT_DHIKR_BATCH"; break
@@ -500,7 +508,14 @@ def advance_country_determinicity(
             )
             result = analyze_s04_dhikr(workspace, req).material()
             used += estimated
+            output_cells_used += projected_output
             processed_axes += k
+            active["batch_bootstrap_sensitivity"].append({
+                "source_dhikr_source_query_ref": result["source_query_ref"],
+                "candidate_axes": list(batch),
+                "bootstrap_state": result["bootstrap_rank_instability"],
+                "method": "IID_SENSITIVITY_ONLY_NOT_COMPLEX_SURVEY_DESIGN",
+            })
             if result["state"] != "SOURCE_COHERENT_SAMPLE_COMPARISON":
                 active["raw_n"] = 0
                 active["raw_target_counts"] = []
@@ -607,7 +622,8 @@ def advance_country_determinicity(
             ),
             "cross_batch_interactions": "NOT_SEARCHED",
             "missingness_for_unspecified_axes": "NOT_ISSUED",
-            "bootstrap_uncertainty": "EXPLORATORY_IID_ONLY__NO_DESIGN_VARIANCE",
+            "bootstrap_uncertainty": active["batch_bootstrap_sensitivity"],
+            "survey_design_variance": "NOT_ISSUED",
             "terminal_reason": (
                 "LOW_OR_ZERO_SOURCE_SUPPORT" if no_support
                 else "CONFIGURED_DEPTH_BOUND" if active["depth"] >= policy.max_depth
@@ -634,6 +650,10 @@ def advance_country_determinicity(
         completed_this_call += 1
     state["total_estimated_cell_visits"] += used
     state["last_call_estimated_cell_visits"] = used
+    state["last_call_budgeted_output_cells"] = output_cells_used
+    state["last_call_elapsed_seconds"] = Decimal(
+        str(round(monotonic() - start, 6))
+    )
     state["stopping_reason"] = stop
     state["remaining_budgeted_work"] = bool(
         state["active"] or state["frontier"] or state["deferred"])
