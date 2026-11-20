@@ -14,6 +14,7 @@ from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
+from .practical_difference import start_expectation
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -91,6 +92,12 @@ class ConstitutiveRuntime:
                      'project_id':None,'selection_grade':'EXTERNAL_INJECTION',
                      'other_available_projects_not_claimed':True}
             authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
+            practical={'status':'EXTERNAL_RESEARCH_OPERATION',
+                       'option_id':None,'project_id':None,
+                       'anticipated_difference':None,
+                       'actor_has_explicit_reason':'NOT_ESTABLISHED',
+                       'not_actor_conscious_intent':True}
+            bound_target=None
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
@@ -120,6 +127,31 @@ class ConstitutiveRuntime:
             available={p['project_id']:p for p in opt.get('project_courses',[])}
             if any(ref not in available for ref in selected_refs):
                 raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            alternatives=opt.get('practical_alternatives',[])
+            option_id=proposed.get('practical_option_id')
+            if option_id is not None:
+                if type(option_id) is not str:
+                    raise ValueError('INVALID_PRACTICAL_OPTION_ID')
+                match=[a for a in alternatives if a['option_id']==option_id]
+                if len(match)!=1:
+                    raise ValueError('UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID')
+                selected_alternative=match[0]
+                alternate_project=selected_alternative['project_id']
+                if not selected_refs and alternate_project is not None:
+                    selected_refs=[alternate_project]
+                elif selected_refs != ([alternate_project] if alternate_project else []):
+                    raise ValueError('PRACTICAL_OPTION_PURPOSE_CONFLICT')
+            else:
+                if len(selected_refs)==1:
+                    selected_alternative=next((a for a in alternatives
+                        if a['project_id']==selected_refs[0]),None)
+                elif not selected_refs:
+                    selected_alternative=next((a for a in alternatives
+                        if a['project_id'] is None),None)
+                else:
+                    selected_alternative=None
+            if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
+                raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             selected=[available[ref] for ref in selected_refs]
             selection_grade=proposed.get(
                 'purpose_selection_grade',
@@ -149,9 +181,34 @@ class ConstitutiveRuntime:
             basis=[ref for ref in opt.get('basis',[])
                    if not (isinstance(ref,str) and ref.startswith('project:'))]
             basis+=['project:'+ref for ref in selected_refs]
+            bound_target=(selected_alternative['world_request']['addressed_party_ref']
+                          if selected_alternative else None)
+            practical={'status':'ACTOR_POLICY_PRACTICAL_ATTEMPT',
+                       'option_id':(selected_alternative['option_id']
+                           if selected_alternative else stable_id(
+                               'joint_practical_option',{'actor':actor_id,
+                                'clock':world['clock'],'action':action,
+                                'projects':sorted(selected_refs)})),
+                       'as_of_clock':world['clock'],'actor':actor_id,
+                       'selected_project_refs':copy(selected_refs),
+                       'project_id':(selected_refs[0] if len(selected_refs)==1 else None),
+                       'anticipated_difference':(
+                           copy(selected_alternative.get('anticipated_difference'))
+                           if selected_alternative else None),
+                       'anticipated_differences':([
+                           copy(a.get('anticipated_difference')) for a in alternatives
+                           if a['project_id'] in selected_refs]
+                           if len(selected_refs)>1 else []),
+                       'actor_has_explicit_reason':'NOT_ESTABLISHED',
+                       'not_actor_conscious_intent':True,
+                       'not_premature_fulfillment':True,
+                       'world_request':{
+                           'operation':action,
+                           'addressed_party_ref':bound_target}}
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
-        return Attempt(actor_id,action,means=[],basis=basis,
+        return Attempt(actor_id,action,target=bound_target,means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
+                       practical_selection=practical,
                        scene_hash=digest({'world':world,'actor':actor_id})),
 
     def plan(self,actor_id,requested_action=None,target=None,object_ref=None):
@@ -159,7 +216,10 @@ class ConstitutiveRuntime:
         actors=self.ledger.actors()
         if actor_id not in actors:raise ValueError('UNREGISTERED_ACTOR')
         attempt=self._actor_plan(actor_id,world,actors,requested_action)[0]
-        attempt.target=target;attempt.object_ref=object_ref
+        if target is not None and attempt.target not in (None,target):
+            raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
+        if target is not None:attempt.target=target
+        attempt.object_ref=object_ref
         return attempt
 
     def _independent_coactor_plan(self,principal,world,actors):
@@ -205,7 +265,10 @@ class ConstitutiveRuntime:
                 'not_an_actor_self_account':True,
             }
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
-        principal.target=target;principal.object_ref=object_ref
+        if target is not None and principal.target not in (None,target):
+            raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
+        if target is not None:principal.target=target
+        principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
@@ -269,6 +332,12 @@ class ConstitutiveRuntime:
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            if personally_done and actor_attempt is not None:
+                # Anticipation is formed at the time of this actor's attempt,
+                # distinct from how the world actually settled it. It can
+                # remain pending after the objective event has committed.
+                start_expectation(actors[aid],actor_attempt.practical_selection,
+                                  experience,objective_ref)
             # An action changes the opportunities and signals subsequently
             # accessible to its author. We retain the actually received path,
             # without inventing the counterfactual evidence they did not meet.
@@ -305,6 +374,7 @@ class ConstitutiveRuntime:
                 # Untried possible ends are actor-history hypotheses, not
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
