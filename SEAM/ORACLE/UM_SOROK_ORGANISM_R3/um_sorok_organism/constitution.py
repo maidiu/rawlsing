@@ -28,6 +28,9 @@ def materialize(actor,world):
 
 def actor_access(actor,world):
     """Objective cues are never automatically the actor's concepts or memories."""
+    # Inherit the current REMONT P071 embodied-sensor gate. Invalid body
+    # state cannot silently turn comparison with NaN into perceptual access.
+    eligible(actor['body'],'WAIT')
     location=world['positions'].get(actor['id'])
     cues=[]; counted=0;receipts=[]
     for x in world['cues']:
