@@ -20,6 +20,8 @@ def possible_institutional_learning(actor,experience,event_ref):
         raise ValueError("INSTITUTIONAL_LEARNING_ACTOR_MISMATCH")
     if actor.get("body",{}).get("language",0)<.28:
         return []
+    if type(experience.get("clock")) is not int:
+        raise ValueError("INSTITUTIONAL_LEARNING_NO_EVENT_CLOCK")
     received=[x for x in experience.get("perceived_cues",[])
               if type(x) is dict and x.get("kind")==SIGN
               and x.get("description")==RESULT
@@ -29,12 +31,16 @@ def possible_institutional_learning(actor,experience,event_ref):
         x for x in actor.get("power_exercises",[])
         if x.get("operation")=="SIGN_FOOD_PETITION"
         and x.get("attempt_status_analyst_receipt")=="PERFORMED"
-        and type(x.get("event_ref")) is str]
+        and type(x.get("event_ref")) is str
+        and type(x.get("event_clock")) is int
+        and x["event_clock"]<=experience["clock"]]
     source=[
         x for x in actor.get("notice_exposures",[])
         if type(x) is dict and
         "public_petition" in x.get("public_words_available",[])
-        and type(x.get("public_notice_ref")) is str]
+        and type(x.get("public_notice_ref")) is str
+        and type(x.get("inspected_at_clock")) is int
+        and x["inspected_at_clock"]<=experience["clock"]]
     if not own or not source:return []
     if any(x.get("origin_public_event_ref")==event_ref for x
            in actor.get("institutional_expectations",[])):
@@ -70,6 +76,8 @@ def admit_public_procedure_expectation(actor,experience,event_ref,proposal):
         raise ValueError("INSTITUTIONAL_LEARNING_FOREIGN_ACTOR")
     if actor.get("body",{}).get("language",0)<.28:
         raise ValueError("INSTITUTIONAL_LEARNING_NO_CULTURAL_MEANS")
+    if type(experience.get("clock")) is not int:
+        raise ValueError("INSTITUTIONAL_LEARNING_NO_EVENT_CLOCK")
     cue=proposal.get("received_public_sign_ref")
     if len([x for x in experience.get("perceived_cues",[])
             if type(x) is dict and x.get("id")==cue and
@@ -79,11 +87,15 @@ def admit_public_procedure_expectation(actor,experience,event_ref,proposal):
     if not any(x.get("id")==exercised and
                x.get("operation")=="SIGN_FOOD_PETITION" and
                x.get("attempt_status_analyst_receipt")=="PERFORMED"
+               and type(x.get("event_clock")) is int
+               and x["event_clock"]<=experience["clock"]
                for x in actor.get("power_exercises",[])):
         raise ValueError("INSTITUTIONAL_LEARNING_FOREIGN_SIGNATURE")
     notice=proposal.get("inspected_notice_ref")
     if not any(x.get("public_notice_ref")==notice and
                "public_petition" in x.get("public_words_available",[])
+               and type(x.get("inspected_at_clock")) is int
+               and x["inspected_at_clock"]<=experience["clock"]
                for x in actor.get("notice_exposures",[])):
         raise ValueError("INSTITUTIONAL_LEARNING_NO_PRIOR_INSPECTION")
     if proposal.get("scope")!="POSTED_INSTITUTIONAL_PROCEDURE":
@@ -97,6 +109,7 @@ def admit_public_procedure_expectation(actor,experience,event_ref,proposal):
     row={
         "id":ident,"actor":actor["id"],
         "origin_public_event_ref":event_ref,
+        "observed_at_clock":experience["clock"],
         "own_received_experience_ref":experience["ref"],
         "received_public_change_sign_ref":cue,
         "actual_own_signature_practice_ref":exercised,
