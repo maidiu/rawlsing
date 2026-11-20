@@ -30,7 +30,8 @@ from .caregiving_practice import project_repeat_feeding
 from .food_access_struggle import (
     live_food_petition_opportunity, offered_food_petition)
 from .food_power_reproduction import (
-    food_power_opportunities,COMMONS,INSTALL,MAINTAIN,SANCTION)
+    food_power_opportunities,COMMONS,INSTALL,MAINTAIN,SANCTION,
+    OFFER,ACCEPT)
 
 
 def materialize(actor,world):
@@ -403,7 +404,7 @@ def compose(constitution,access,limit=50):
     # affordances, not preassigned personality motives. The counter-source
     # can be recruited only when this particular actor actually attempted
     # care and encountered a nonperformance at this site.
-    for action in (INSTALL,MAINTAIN,SANCTION,COMMONS):
+    for action in (INSTALL,MAINTAIN,SANCTION,COMMONS,OFFER,ACCEPT):
         if action not in access.affordances or not eligible(
                 constitution.body,action)[0]:
             continue
