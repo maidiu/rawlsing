@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "um-sorok-constitutive-organism-research"
+version = "0.4.0"
+description = "TCO R4 sourcefree historically constituted organism and developmental kernel"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["um_sorok_organism*"]
