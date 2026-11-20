@@ -112,13 +112,25 @@ class ConstitutiveRuntime:
             # A model policy is NOT a conscious iceberg manager.
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
+            flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
+                'possible_end_trials':flat_trials,
+                'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
             requested_option=proposed.get('practical_option_id')
+            requested_trial=proposed.get('possible_end_trial_id')
+            trial_choice=None
+            if requested_trial is not None:
+                if type(requested_trial) is not str or requested_option is not None:
+                    raise ValueError('POSSIBLE_END_TRIAL_SELECTION_CONFLICT')
+                matches=[t for t in flat_trials if t.get('trial_id')==requested_trial]
+                if len(matches)!=1:
+                    raise ValueError('UNISSUED_OR_AMBIGUOUS_POSSIBLE_END_TRIAL')
+                trial_choice=matches[0]
             if requested_option is not None:
                 if type(requested_option) is not str:
                     raise ValueError('INVALID_PRACTICAL_OPTION_ID')
@@ -129,6 +141,10 @@ class ConstitutiveRuntime:
                 action=matches[0]['operation']
                 if 'action' in proposed and proposed['action']!=action:
                     raise ValueError('PRACTICAL_OPTION_OPERATION_CONFLICT')
+            elif trial_choice is not None:
+                action=trial_choice['operation']
+                if 'action' in proposed and proposed['action']!=action:
+                    raise ValueError('POSSIBLE_END_TRIAL_OPERATION_CONFLICT')
             else:
                 action=proposed['action']
             opt=next((o for o in options if o['action']==action),None)
@@ -155,6 +171,12 @@ class ConstitutiveRuntime:
             available={p['project_id']:p for p in opt.get('project_courses',[])}
             if any(ref not in available for ref in selected_refs):
                 raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            if trial_choice is not None:
+                if selected_refs:
+                    raise ValueError('PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT')
+                if not any(t.get('trial_id')==trial_choice['trial_id']
+                           for t in opt.get('possible_end_trials',[])):
+                    raise ValueError('PROVISIONAL_TRIAL_NOT_IN_SELECTED_OPERATION')
             alternatives=opt.get('practical_alternatives',[])
             option_id=proposed.get('practical_option_id')
             if option_id is not None:
@@ -204,6 +226,17 @@ class ConstitutiveRuntime:
                          'project_id':None,'project_ids':[],
                          'selection_grade':'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
                          'other_available_projects_not_claimed':True}
+            if trial_choice is not None:
+                purpose={
+                    'status':'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE',
+                    'possible_end_ref':trial_choice['possible_end_ref'],
+                    'original_event':trial_choice['origin_event'],
+                    'project_id':None,'project_ids':[],
+                    'selection_grade':
+                        'HISTORICALLY_GROUNDED_POSSIBILITY_NOT_CONSCIOUS_REASON',
+                    'object_fulfillment':'NOT_INFERRED',
+                    'other_available_projects_not_claimed':True,
+                }
             # Preserve only explicitly selected projects on Attempt; all
             # unselected courses remain in the situation, not the act's past.
             basis=[ref for ref in opt.get('basis',[])
@@ -233,6 +266,10 @@ class ConstitutiveRuntime:
                        'world_request':{
                            'operation':action,
                            'addressed_party_ref':bound_target}}
+            if trial_choice is not None:
+                # Freeze actor's already issued option before the world settles.
+                practical['possible_end_trial']=copy(trial_choice)
+                practical['selected_trial_is_not_conscious_intention']=True
             # Freeze the exact historically acquired grounds a SOURCEFREE
             # action policy actually used, or explicitly leave it unknown.
             # The old machinery retained currents but could not say which
@@ -390,6 +427,9 @@ class ConstitutiveRuntime:
                 'pre_world_operative_policy_witness_analytic_only':(
                     copy(actor_attempt.practical_selection.get('operative_selection_witness'))
                     if personally_done and actor_attempt is not None else None),
+                'provisional_end_trial_ref_analytic_only':(
+                    actor_attempt.practical_selection.get('possible_end_trial',{}).get('trial_id')
+                    if personally_done and actor_attempt is not None else None),
                 'anticipated_difference_analytic_only':(
                     copy(actor_attempt.practical_selection.get('anticipated_difference'))
                     if personally_done and actor_attempt is not None else None),
@@ -444,7 +484,19 @@ class ConstitutiveRuntime:
                     'reconstruct_from_admitted_current_not_a_recovered_memory':True,
                     'objective_event_ref':objective_ref},
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
-            developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
+            developmental_candidates=copy(proposal['candidates'])
+            if personally_done and actor_attempt is not None:
+                issued_trial=actor_attempt.practical_selection.get('possible_end_trial')
+                if issued_trial:
+                    # A trial's historical fact is not optional model narration.
+                    # The same existing developmental owner records the actual
+                    # attempt without claiming motive satisfaction or knowledge.
+                    developmental_candidates.insert(0,{
+                        'kind':'RECORD_POSSIBLE_END_TRIAL',
+                        'trial':copy(issued_trial),
+                    })
+            developmental[aid]=admit(actors[aid],experience,objective_ref,
+                                    developmental_candidates)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately
