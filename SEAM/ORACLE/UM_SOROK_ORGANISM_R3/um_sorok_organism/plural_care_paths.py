@@ -32,18 +32,30 @@ def conserve_lived_high_resolution_care(actor,experience,event_ref,before,after)
         raise ValueError('PLURAL_CARE_EXPERIENCE_ACTOR_MISMATCH')
     if type(experience.get('clock')) is not int or experience['clock']<0:
         raise ValueError('PLURAL_CARE_INVALID_EXPERIENCE_CLOCK')
-    if (experience.get('own_action')!='RECEIVED_CARE'
-            or experience.get('felt_effect')!='SOMATIC_CARE_CANDIDATE'
-            or not experience.get('participated')):
+    if not experience.get('participated'):
+        return None
+    unsolicited=(experience.get('own_action')=='RECEIVED_CARE'
+                 and experience.get('felt_effect')=='SOMATIC_CARE_CANDIDATE')
+    responsive=(experience.get('own_action')=='SIGNAL'
+                and experience.get('status')=='PERFORMED'
+                and (experience.get('felt_enactment') or {}).get(
+                    'attempted_operation')=='SIGNAL')
+    if not unsolicited and not responsive:
         return None
     cues=[c for c in experience.get('perceived_cues',[])
-          if type(c) is dict and c.get('kind')=='performed_care'
-          and type(c.get('source_actor')) is str
-          and c.get('source_actor')!=actor['id']
-          and type(c.get('id')) is str]
+          if type(c) is dict and type(c.get('id')) is str
+          and ((unsolicited and c.get('kind')=='performed_care'
+                and type(c.get('source_actor')) is str
+                and c['source_actor']!=actor['id'])
+               or (responsive and c.get('kind')=='performed_signal'
+                   and c.get('actual_independent_care_response_not_a_motive')
+                   is True
+                   and type(c.get('actor_accessible_care_responder_ref')) is str
+                   and c['actor_accessible_care_responder_ref']!=actor['id']))]
     if len(cues)!=1:
         return None
-    giver=cues[0]['source_actor']
+    giver=(cues[0]['source_actor'] if unsolicited
+           else cues[0]['actor_accessible_care_responder_ref'])
     gain=_delta(before['comfort'],after['comfort'],'COMFORT')
     nutrition=_delta(before['nutrition'],after['nutrition'],'NUTRITION')
     if gain<=0 and nutrition<=0:
@@ -62,6 +74,11 @@ def conserve_lived_high_resolution_care(actor,experience,event_ref,before,after)
         'actual_felt_body_change_model':{
             'comfort':gain,'nutrition':nutrition},
         'lived_bodily_regulation':'SOURCEFREE_EVENT_QUALIFIED',
+        'source_care_event_type':(
+            'RECEIVED_UNSOLICITED_CARE' if unsolicited
+            else 'INDEPENDENT_CARE_RESPONSE_TO_SIGNAL'),
+        'original_signal_was_for_this_caregiver':(
+            'NOT_INFERRED' if responsive else 'NO_SIGNAL_IN_THIS_EVENT'),
         'cause_or_love_known_to_actor':'NOT_ESTABLISHED',
         'caregiver_past_or_future_consistency':'NOT_ESTABLISHED',
         'other_person_private_meaning':'INACCESSIBLE',
@@ -259,9 +276,14 @@ def admit_reopening(actor,experience,event_ref,proposal):
            and x.get('giver_ref')==orientation.get('caregiver_ref')
            and x.get('received_cue_ref')==proposal.get('perceived_cue_ref')]
     if len(lived)!=1 or not any(
-            c.get('id')==proposal.get('perceived_cue_ref') and
-            c.get('kind')=='performed_care' and
-            c.get('source_actor')==orientation['caregiver_ref']
+            c.get('id')==proposal.get('perceived_cue_ref') and (
+                (c.get('kind')=='performed_care'
+                 and c.get('source_actor')==orientation['caregiver_ref'])
+                or (c.get('kind')=='performed_signal'
+                    and c.get('actor_accessible_care_responder_ref')==
+                    orientation['caregiver_ref']
+                    and c.get('actual_independent_care_response_not_a_motive')
+                    is True))
             for c in experience.get('perceived_cues',[])
             if type(c) is dict):
         raise ValueError('PLURAL_CARE_REOPEN_NO_NEW_RECEIVED_CARE')
