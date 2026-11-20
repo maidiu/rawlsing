@@ -100,38 +100,55 @@ class ConstitutiveRuntime:
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
-            project_ref=proposed.get('project_id')
-            # An LLM/callback/heuristic must distinguish *which undertaking*
-            # this act currently attempts. Not supplying it is a lawful
-            # exploratory or underdetermined act, never all possible motives.
-            if project_ref is not None and type(project_ref) is not str:
+            # A single operation may genuinely serve SEVERAL projects, but
+            # only when the actor policy explicitly selects the particular
+            # subset. Never infer multi-intent from the pooled opportunity.
+            # Omission is meaningful: an exploratory act with no known end.
+            raw=proposed.get('project_ids')
+            if raw is not None and proposed.get('project_id') is not None:
+                raise ValueError('AMBIGUOUS_SINGLE_AND_MULTI_PURPOSE_SELECTION')
+            if raw is None:
+                one=proposed.get('project_id')
+                selected_refs=[] if one is None else [one]
+            else:
+                if (type(raw) is not list or not raw
+                        or len(raw)>8 or len(set(map(str,raw)))!=len(raw)):
+                    raise ValueError('INVALID_MULTIPLE_PROJECT_SELECTION')
+                selected_refs=raw
+            if any(type(ref) is not str or not ref for ref in selected_refs):
                 raise ValueError('MODEL_SELECTED_PURPOSE_NOT_TEXT')
-            courses=opt.get('project_courses',[])
-            selected=next((p for p in courses
-                           if p['project_id']==project_ref),None)
-            if project_ref is not None and selected is None:
+            available={p['project_id']:p for p in opt.get('project_courses',[])}
+            if any(ref not in available for ref in selected_refs):
                 raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            selected=[available[ref] for ref in selected_refs]
+            selection_grade=proposed.get(
+                'purpose_selection_grade',
+                'MODEL_CHOSEN_COURSE_FICTIONAL_NOT_OBSERVED_CONSCIOUS_MOTIVE')
             if selected:
-                purpose={'status':'ACTOR_POLICY_SELECTED_PROJECT_COURSE',
-                         'project_id':selected['project_id'],
-                         'practical_object':selected['object'],
-                         'motive_hypothesis':selected['motive_hypothesis'],
-                         'selection_grade':proposed.get(
-                             'purpose_selection_grade',
-                             'MODEL_CHOSEN_COURSE_FICTIONAL_NOT_OBSERVED_CONSCIOUS_MOTIVE'),
-                         'not_claimed_fulfillment':True,
-                         'other_available_projects_not_claimed':True}
+                purpose={
+                    'status':('ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+                              if len(selected)==1
+                              else 'ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES'),
+                    'project_id':selected[0]['project_id'] if len(selected)==1 else None,
+                    'project_ids':copy(selected_refs),
+                    'practical_objects':[p['object'] for p in selected],
+                    'motive_hypotheses':[p['motive_hypothesis'] for p in selected],
+                    'selection_grade':selection_grade,
+                    'not_claimed_fulfillment':True,
+                    'other_available_projects_not_claimed':True}
+                if len(selected)==1:
+                    purpose['practical_object']=selected[0]['object']
+                    purpose['motive_hypothesis']=selected[0]['motive_hypothesis']
             else:
                 purpose={'status':'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
-                         'project_id':None,'selection_grade':
-                             'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
+                         'project_id':None,'project_ids':[],
+                         'selection_grade':'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
                          'other_available_projects_not_claimed':True}
-            # Preserve only the chosen project's basis on the selected
-            # Attempt. The unchosen opportunities belong in the *situated*
-            # projection, not the performed act's historical explanation.
+            # Preserve only explicitly selected projects on Attempt; all
+            # unselected courses remain in the situation, not the act's past.
             basis=[ref for ref in opt.get('basis',[])
                    if not (isinstance(ref,str) and ref.startswith('project:'))]
-            if selected:basis.append('project:'+selected['project_id'])
+            basis+=['project:'+ref for ref in selected_refs]
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
