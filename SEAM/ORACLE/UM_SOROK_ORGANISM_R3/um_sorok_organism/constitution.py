@@ -11,6 +11,7 @@ from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
+from .historical_self_organization import pre_cue_pressures
 from .distributed_power import conditional_assistance_options
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
@@ -64,6 +65,7 @@ def materialize(actor,world):
             'material_dependency_encounters',[])),
         labor_dependency_encounters=copy(actor.get(
             'labor_dependency_encounters',[])),
+        historical_orientations=copy(actor.get('historical_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -176,8 +178,10 @@ def compose(constitution,access,limit=50):
     where the encoded form's scope prohibits it.
     """
     if constitution.actor!=access.actor:raise ValueError('ACTOR_IDENTITY_MISMATCH')
-    forms=constitution.forms; cues=_tokens(access.cues)
-    active={}; dormant=[]; inhibited=[]; currents=[]; disagreements=[]
+    forms=constitution.forms
+    historical=pre_cue_pressures(constitution,access)
+    cues=_tokens(access.cues)
+    active={}; dormant=[]; inhibited=[]; currents=copy(historical['currents']); disagreements=[]
     # A contextual project that is not presently recruited must NOT prime its
     # own cues. Otherwise an unseen future project bootstraps a form into the
     # present, and the form is then misrepresented as the project's cause.
@@ -534,7 +538,7 @@ def compose(constitution,access,limit=50):
     # effect on another form or action. Never reinstate its direct capabilities.
     currents+=relational['currents']
     dynamics=enact_currents(constitution,access,active,actions.values(),
-                             relational=relational)
+                             relational=relational,historical=historical)
     currents+=dynamics['currents']
     # Nondeclarative, historically acquired orientation can matter BEFORE an
     # explicit project exists. A read does not write new psychic content.
@@ -549,7 +553,7 @@ def compose(constitution,access,limit=50):
     # focal, costly practical consideration. Tacit recruited psychology used
     # original access; only deliberate means/beneficiary binding uses the
     # presently nominated, scarce attentional field.
-    attention=situate_attention(constitution,access)
+    attention=situate_attention(constitution,access,historical=historical)
     # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
@@ -610,7 +614,7 @@ def compose(constitution,access,limit=50):
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+exercised['readset']+
+                           historical['readset']+preproject['readset']+exercised['readset']+
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+
