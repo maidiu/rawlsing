@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q018)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -66,6 +66,9 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q014) # Exact asked/eligible RAW denominator and source-native nonanswers
       ;; # Reuse existing R03_ASKED_ELIGIBLE court below, never duplicate tests.
+    RMT-Q018) # Cross-source F6 identified bound; NO forged respondent joint
+      tests=(rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py)
+      ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2

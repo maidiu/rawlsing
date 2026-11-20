@@ -1,5 +1,9 @@
 # OPEN EXECUTION COMMISSION — PYAT/REMONT sourcefree queue
 
+## New F6 DHIKRYMULCH intake — RMT-Q018 / REMONT owns actual tests
+
+At this independent F6 branch, a self-contained S04 partial-identification implementation and actual I03→S04 sourcefree tests are added without editing PYAT #1207 country/determinicity owners. The canonical next free QID is **RMT-Q018**, because #1207 already owns Q015–Q017 and #1209 owns Q014. Do not overwrite either queue lineage; before any OpenCode flight, assemble an authorized combined HEAD or return `HOLD_QUEUE_AND_ACTIVE_CODE_HEAD_NOT_RECONCILED`. The first F6 tests are **NOT_EXECUTED**, and do not need the user to run them. OpenCode on its next *separately initiated* queued flight must send actual falsifier/first-fault evidence directly to REMONT #1162 and cross-link the F6 source PR, #1207 and #1097. Original-wave source/identity, independent G5, structural and actor rights remain external. Q018's mathematical proof is a finite-frame logical bound, **not** a justified real-world prevalence estimate unless the source relation/coverage owner supplies the bridge.
+
 ## Latest queue update — PYAT #1205 asked-eligible RAW · RMT-Q014
 
 This supersedes the older #1173-only HEAD selection paragraphs below **for the next separately user-authorized invocation**. PYAT #1205 `c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5` is the later sourcefree descendant (existing I03/R03 query policy). Its focused `R03_ASKED_ELIGIBLE` court is **41 PASS / 0 FAIL**, user/worker execution, not G5; an independent broad `C0_ALL_SMALL` run at that SHA was underway when this queue amendment was prepared. **The user must not be asked to run it again now.** The queue/runner follow-up itself is a separate direct descendant; do not transfer the predecessor green to the follow-up SHA.
