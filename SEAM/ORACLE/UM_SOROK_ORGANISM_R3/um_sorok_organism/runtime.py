@@ -92,11 +92,35 @@ class ConstitutiveRuntime:
                      'project_id':None,'project_ids':[],
                      'other_available_projects_not_claimed':True}
             authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
+            trial_choice=None
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
-                'requesting_actor':requesting_actor,'requesting_action':requesting_action})
-            action=proposed['action']
+                'requesting_actor':requesting_actor,'requesting_action':requesting_action,
+                'possible_end_trials':[copy(t) for o in options
+                    for t in o.get('possible_end_trials',[])],
+                'trial_is_not_durable_motive':True})
+            requested_trial=proposed.get('possible_end_trial_id')
+            if (requested_trial is not None and
+                    proposed.get('practical_option_id') is not None):
+                raise ValueError('POSSIBLE_END_TRIAL_SELECTION_CONFLICT')
+            trial_choice=None
+            if requested_trial is not None:
+                if type(requested_trial) is not str or not requested_trial:
+                    raise ValueError('INVALID_POSSIBLE_END_TRIAL_ID')
+                issued=[t for o in options for t in o.get('possible_end_trials',[])
+                    if t.get('trial_id')==requested_trial]
+                if len(issued)!=1:
+                    raise ValueError('UNISSUED_OR_AMBIGUOUS_POSSIBLE_END_TRIAL')
+                trial_choice=issued[0]
+                if (trial_choice.get('actor')!=actor_id or
+                        trial_choice.get('as_of_clock')!=world['clock']):
+                    raise ValueError('FOREIGN_OR_STALE_POSSIBLE_END_TRIAL')
+            action=proposed.get('action')
+            if trial_choice is not None:
+                if action not in (None,trial_choice['operation']):
+                    raise ValueError('POSSIBLE_END_TRIAL_OPERATION_CONFLICT')
+                action=trial_choice['operation']
             opt=next((o for o in options if o['action']==action),None)
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
@@ -116,8 +140,14 @@ class ConstitutiveRuntime:
                     raise ValueError('INVALID_MULTIPLE_PROJECT_SELECTION')
                 selected_refs=raw
             available={course['project_id']:course for course in opt.get('project_courses',[])}
+            if trial_choice is not None and selected_refs:
+                raise ValueError('PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT')
             if any(ref not in available for ref in selected_refs):
                 raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            if trial_choice is not None and not any(
+                    t.get('trial_id')==trial_choice['trial_id']
+                    for t in opt.get('possible_end_trials',[])):
+                raise ValueError('PROVISIONAL_TRIAL_NOT_IN_SELECTED_OPERATION')
             chosen=[available[ref] for ref in selected_refs]
             if chosen:
                 purpose={'status':('ACTOR_POLICY_SELECTED_PROJECT_COURSE'
@@ -136,12 +166,21 @@ class ConstitutiveRuntime:
                     'project_id':None,'project_ids':[],
                     'selection_grade':'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
                     'other_available_projects_not_claimed':True}
+            if trial_choice is not None:
+                purpose={'status':'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE',
+                         'project_id':None,'project_ids':[],
+                         'possible_end_ref':trial_choice['possible_end_ref'],
+                         'selection_grade':'SOURCEFREE_TRIAL_NOT_CONSCIOUS_INTENT',
+                         'object_fulfillment':'NOT_INFERRED'}
             basis=[r for r in opt.get('basis',[]) if
                    not (isinstance(r,str) and r.startswith('project:'))]
             basis+=['project:'+ref for ref in selected_refs]
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE' 
         return Attempt(actor_id,action,means=[],basis=basis,
-                       intention=authority,purpose_selection=purpose,scene_hash=digest({'world':world,'actor':actor_id})),
+                       intention=authority,purpose_selection=purpose,
+                       practical_selection=({'possible_end_trial':copy(trial_choice)}
+                            if trial_choice is not None else {}),
+                       scene_hash=digest({'world':world,'actor':actor_id})),
 
     def plan(self,actor_id,requested_action=None,target=None,object_ref=None):
         _,world=self.ledger.world(self.world_id)
@@ -269,7 +308,13 @@ class ConstitutiveRuntime:
                     (principal if aid==actor_id else partner).purpose_selection
                     if personally_done else {}),
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
-            developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
+            # The separate runtime-owned issuance is not in LLM candidates.
+            # Only actually performed principal/coactor acts retain a ticket.
+            actor_attempt=(principal if aid==actor_id else partner)
+            issued=(actor_attempt.practical_selection.get('possible_end_trial')
+                    if personally_done and actor_attempt else None)
+            developmental[aid]=admit(actors[aid],experience,objective_ref,
+                proposal['candidates'],issued_trial=copy(issued) if issued else None)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately

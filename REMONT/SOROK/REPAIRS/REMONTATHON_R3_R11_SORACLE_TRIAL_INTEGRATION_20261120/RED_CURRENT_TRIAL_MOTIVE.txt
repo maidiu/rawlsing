@@ -1,0 +1,29 @@
+test_heuristic_does_not_upgrade_current_trial_to_mature_project (test_r11_soracle_integrated.R11NoMotiveFromCurrentTrial.test_heuristic_does_not_upgrade_current_trial_to_mature_project) ... FAIL
+test_eligible_operations_only_and_clock_actor_bound (test_r11_soracle_integrated.R11ProspectiveComposition.test_eligible_operations_only_and_clock_actor_bound) ... ok
+test_no_two_trials_same_event_even_if_different_ends (test_r11_soracle_integrated.R11ProspectiveComposition.test_no_two_trials_same_event_even_if_different_ends) ... ok
+test_repeated_history_makes_untried_means_distinguishable (test_r11_soracle_integrated.R11ProspectiveComposition.test_repeated_history_makes_untried_means_distinguishable) ... ok
+test_unissued_model_trial_rejected_atomically_even_in_batch (test_r11_soracle_integrated.R11ProspectiveComposition.test_unissued_model_trial_rejected_atomically_even_in_batch) ... ok
+test_unobserved_sign_or_wrong_actor_cannot_project_trial (test_r11_soracle_integrated.R11ProspectiveComposition.test_unobserved_sign_or_wrong_actor_cannot_project_trial) ... ok
+test_external_injection_never_issues_trial_even_if_eligible (test_r11_soracle_integrated.R11ProspectiveRuntime.test_external_injection_never_issues_trial_even_if_eligible) ... ok
+test_mismatched_operation_from_trial_is_refused (test_r11_soracle_integrated.R11ProspectiveRuntime.test_mismatched_operation_from_trial_is_refused) ... ok
+test_model_can_select_valid_trial_by_id_but_not_unknown (test_r11_soracle_integrated.R11ProspectiveRuntime.test_model_can_select_valid_trial_by_id_but_not_unknown) ... ok
+test_model_selected_established_project_cannot_coincide_with_trial (test_r11_soracle_integrated.R11ProspectiveRuntime.test_model_selected_established_project_cannot_coincide_with_trial) ... ok
+test_real_world_trial_event_and_cold_reopen (test_r11_soracle_integrated.R11ProspectiveRuntime.test_real_world_trial_event_and_cold_reopen) ... ok
+test_two_actor_turns_after_initial_history_have_no_extra_issuer (test_r11_soracle_integrated.R11ProspectiveRuntime.test_two_actor_turns_after_initial_history_have_no_extra_issuer) ... ok
+
+======================================================================
+FAIL: test_heuristic_does_not_upgrade_current_trial_to_mature_project (test_r11_soracle_integrated.R11NoMotiveFromCurrentTrial.test_heuristic_does_not_upgrade_current_trial_to_mature_project)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11/tests/test_r11_soracle_integrated.py", line 220, in test_heuristic_does_not_upgrade_current_trial_to_mature_project
+    self.assertEqual(state['possible_ends'][0]['status'],'POSSIBLE_NOT_ACQUIRED_MOTIVE')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'TAKEN_UP_AS_PRACTICAL_PROJECT' != 'POSSIBLE_NOT_ACQUIRED_MOTIVE'
+- TAKEN_UP_AS_PRACTICAL_PROJECT
++ POSSIBLE_NOT_ACQUIRED_MOTIVE
+
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.096s
+
+FAILED (failures=1)
