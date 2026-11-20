@@ -69,6 +69,20 @@ def _nonnegative_transfer_amount(raw, error):
 
 
 
+def _cash_amount(raw,error):
+    """A monetary claim must survive declared five-decimal storage exactly.
+
+    A positive subtick price/wage must not round to zero and transfer goods or
+    erase owed compensation. Nonrepresentable balances must not mint value on
+    the next transfer. This rejects, rather than silently rounds, input. Not a
+    claim that the sourcefree model has real-world currency-calibration rights.
+    """
+    amount=_nonnegative_transfer_amount(raw,error)
+    if amount != round(amount,5):
+        raise ValueError(error+'_PRECISION')
+    return amount
+
+
 def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None):
     """Contributions must be independently supplied by a trusted runtime planner.
     The world never accepts a caller-provided consent boolean. Consent is not
@@ -120,9 +134,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
         site=_site(world,aid)
-        cost=_nonnegative_transfer_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
+        cost=_cash_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
         available_food=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
-        buyer_balance=_nonnegative_transfer_amount(world['accounts'].get(aid,0),'INVALID_BUYER_BALANCE')
+        buyer_balance=_cash_amount(world['accounts'].get(aid,0),'INVALID_BUYER_BALANCE')
         owned_food=_nonnegative_transfer_amount(world.get('holdings',{}).get(aid,{}).get('food',0),
                                                 'INVALID_OWNED_FOOD')
         # Ownership of offered goods and the monetary recipient must be
@@ -135,7 +149,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         elif controller_error:status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
         elif seller is None:status='BLOCKED';output='NO_OBJECTIVE_SELLER'
         else:
-            seller_balance=_nonnegative_transfer_amount(
+            seller_balance=_cash_amount(
                 world['accounts'].get(seller,0),'INVALID_SELLER_BALANCE')
             paid=round(cost,5)
             if buyer_balance<paid:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
@@ -159,10 +173,10 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
         elif controller is not None:
             institution=world['institutions'][controller]
-            wage=_nonnegative_transfer_amount(institution.get('wage',0), 'INVALID_WAGE')
-            available=_nonnegative_transfer_amount(world['accounts'].get(controller,0),
+            wage=_cash_amount(institution.get('wage',0), 'INVALID_WAGE')
+            available=_cash_amount(world['accounts'].get(controller,0),
                                                       'INVALID_CONTROLLER_BALANCE')
-            worker_balance=_nonnegative_transfer_amount(world['accounts'].get(aid,0),
+            worker_balance=_cash_amount(world['accounts'].get(aid,0),
                                                       'INVALID_WORKER_BALANCE')
             # Precise within research account's declared five-decimal units.
             due=round(wage,5)

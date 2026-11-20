@@ -692,6 +692,36 @@
       "local_tests_fail": 0,
       "protected_received": false,
       "independent_reviewed": false
+    },
+    {
+      "id": "SR-P051",
+      "status": "SOURCEFREE_REMONTATHON_R5_111_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_RED_BEFORE_CORRECTION",
+      "first_fault": "Positive food price and wage below five-decimal currency granularity rounded to zero, delivering goods free or erasing owed wage",
+      "owner_location": "world.py::BUY_FOOD; WORK; _cash_amount",
+      "executable_probe": "test_p051_subtick_positive_food_price_not_rounded_into_free_goods; test_p051_subtick_positive_wage_does_not_disappear; test_p051_valid_five_decimal_money_remains_transferable",
+      "disposition": "Reject positive prices/wages that cannot be represented in five-decimal monetary units without silently zeroing; exact representable values continue",
+      "doctrinal_source": "SEAM Constitutive Person objective material claims require executable world consequences",
+      "source_parent_sha": "54e3cac868bf413e0d8db5e876e91077e2028cc1",
+      "local_tests_pass": 111,
+      "local_tests_fail": 0,
+      "independent_reviewed": false,
+      "protected_received": false
+    },
+    {
+      "id": "SR-P052",
+      "status": "SOURCEFREE_REMONTATHON_R5_111_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_RED_BEFORE_CORRECTION",
+      "first_fault": "Unrepresentable buyer/seller/controller/worker account balances silently rounded during transfers and could mint/destroy value",
+      "owner_location": "world.py::_cash_amount; BUY_FOOD; WORK",
+      "executable_probe": "test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding; test_p052_unrepresentable_seller_claim_cannot_leak_credit; test_p052_unrepresentable_employer_balance_cannot_create_paid_wages; test_p052_unrepresentable_worker_balance_cannot_change_paid_wages",
+      "disposition": "Validate sourcefree money balances for exact five-decimal persistence before goods/wages/accounts mutate",
+      "doctrinal_source": "SEAM Constitutive Person objective material claims require executable world consequences",
+      "source_parent_sha": "54e3cac868bf413e0d8db5e876e91077e2028cc1",
+      "local_tests_pass": 111,
+      "local_tests_fail": 0,
+      "independent_reviewed": false,
+      "protected_received": false
     }
   ],
   "queue_T": [],
@@ -866,5 +896,32 @@
     "independent_reviewed": false,
     "protected_received": false,
     "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R4_20261119/"
+  },
+  "remontathon_r3_r5": {
+    "base_head": "54e3cac868bf413e0d8db5e876e91077e2028cc1",
+    "additional_sourcefree_defects": [
+      "SR-P051",
+      "SR-P052"
+    ],
+    "new_tests": 7,
+    "red_failures_before": 6,
+    "normal_test_pass": 111,
+    "optimized_test_pass": 111,
+    "fail": 0,
+    "source_blob": "c435cd06509442344613047eeada3f5df9a8fe6c",
+    "test_blob": "e678b90adb77146b848c72c50ce63283638d36c9",
+    "review_grade": "AUTHOR_TESTED_SOURCEFREE_ONLY",
+    "independent_reviewed": false,
+    "protected_received": false,
+    "status_partition": {
+      "P_total": 52,
+      "P_open_or_not_fixed": 10,
+      "P_partial": 6,
+      "P_author_repaired_review_pending": 36,
+      "P_independently_accepted": 0,
+      "T_confirmed": 0,
+      "E_holds": 6
+    },
+    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R5_20261119/"
   }
 }

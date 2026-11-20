@@ -38,3 +38,6 @@ Against current R3 integrated parent `2986cf5307097a2546bcd22c74371f39415a6751`,
 
 ## R4 REMONTATHON — 104/104 local sourcefree tests
 Against exact R3 R3 parent b29c3d28db66dc4439eb5899826289dd8b6ad6f7, six newly reproduced and fixed bugs (SR-P045..050) prevented actor/world state laundering, forged missing genesis and second-world history, Boolean time/money, and monetary claims disappearing in an objective workshop sale. 13 new tests: 104 green under normal and optimized Python. Open/partial/author-candidate status is now 10/6/34 out of 50; none of the 34 author candidates are independent accepted. E six and T zero unchanged. See R4 source receipt in repairs folder. No protected merge.
+
+## Sourcefree REMONTATHON R3 R5
+At immutable R4 parent 54e3cac868bf413e0d8db5e876e91077e2028cc1, R5 observed six additional negative test failures caused by five-decimal rounding of prices, wages and account balances; two source production identities SR-P051/P052 appended. Fixed at world material monetary validation without changing the model's currency granularity. 111/111 PASS in normal and optimized Python. Status now 52 P (10 open / 6 partial / 36 author-repaired pending review), T0, E6. No protected receiving or independent acceptance.

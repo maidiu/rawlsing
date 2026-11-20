@@ -172,3 +172,16 @@ Evidence: 13 added regression tests, cumulative 104/104 PASS under normal Python
 **Status bookkeeping is explicitly partitioned:** 50 production records TOTAL = 10 OPEN/NOT FIXED, 6 PARTIAL and 34 AUTHOR-REPAIRED CANDIDATES PENDING INDEPENDENT REVIEW (0 independently accepted). The HISTORICAL_R0_NOT_FIXED row SR-P020 counts as OPEN, not fixed. Open: SR-P011, SR-P013, SR-P014, SR-P015, SR-P016, SR-P017, SR-P019, SR-P020, SR-P022, SR-P023. Partial: SR-P004, SR-P005, SR-P006, SR-P009, SR-P012, SR-P018.
 
 T = zero confirmed test-harness defects; E = six evidence and authority holds unchanged. The prior 91-test and earlier receipts remain immutable historical cuts. No native P2–P6/CAN/ADP rights, qualified PYAT respondent science, live LLM behavior, production security, independent G5, protected merge or paired CURRENT_PROGRESS receiving.
+
+## REMONTATHON R3 R5 — sourcefree five-decimal monetary integrity, 111 PASS (2026-11-19)
+
+**Exact parent:** 54e3cac868bf413e0d8db5e876e91077e2028cc1 at draft PR #1171. R5 does not replace the existing R3 organism, native P2–P6, or SEAM Constitutive Person ownership. Seven additional real tests above 104, of which six failed before repair.
+
+| ID | Reproduced first fault | Source repair |
+|---|---|---|
+| **SR-P051** | Positive food price and wage below five-decimal currency granularity rounded to zero, delivering goods free or erasing owed wage | world.py::BUY_FOOD; WORK; _cash_amount; Reject positive prices/wages that cannot be represented in five-decimal monetary units without silently zeroing; exact representable values continue; test_p051_subtick_positive_food_price_not_rounded_into_free_goods; test_p051_subtick_positive_wage_does_not_disappear; test_p051_valid_five_decimal_money_remains_transferable |
+| **SR-P052** | Unrepresentable buyer/seller/controller/worker account balances silently rounded during transfers and could mint/destroy value | world.py::_cash_amount; BUY_FOOD; WORK; Validate sourcefree money balances for exact five-decimal persistence before goods/wages/accounts mutate; test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding; test_p052_unrepresentable_seller_claim_cannot_leak_credit; test_p052_unrepresentable_employer_balance_cannot_create_paid_wages; test_p052_unrepresentable_worker_balance_cannot_change_paid_wages |
+
+Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**; optimized `python -O -m unittest discover -s tests -q` **111 PASS, 0 FAIL**. Exact test/source blobs matched the local runnable code. Sourcefree model stores money to five decimal places; rejecting subunit or nonrepresentable input preserves its *declared* economic consistency, not a calibrated monetary theory.
+
+**Continuing precise partition:** 52 production identities = **10 OPEN**, **6 PARTIAL**, **36 AUTHOR-REPAIRED, AWAITING INDEPENDENT RECEIVING**, zero independently accepted. Original P001–050 retained. T confirmed = 0; E = 6 evidence/authority holds unchanged. P005 remains PARTIAL; P011, P020, P022/P023 remain open by their source statuses. Full R5 red/green receipt under REMONT/SOROK/REPAIRS/REMONTATHON_R3_R5_20261119. No protected or canonical paired CURRENT_PROGRESS updates.
