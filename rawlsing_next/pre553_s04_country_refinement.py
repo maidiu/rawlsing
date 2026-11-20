@@ -414,20 +414,14 @@ def run_issued_country_refinement(
     }
 
 
-def run_r03_v2_issued_country_refinement(
+def resolve_r03_v2_issued_sourcefree_role(
     *, issuance: Any, operation_id: str, query_role: str,
-    universe: EmpiricalUniverse, execution: QueryExecutionResult,
-    request: CountryRequest, target_index: int,
-    candidate_indices: Sequence[int], context: Mapping[int, Any],
-    budget: RefinementBudget,
-    resource_sample: Callable[[], ResourceSample] | None = None,
-) -> dict[str, Any]:
-    """Bind an original-R03-lowered *TEST_ONLY* QUERY role to the S04 adapter.
+    execution: QueryExecutionResult,
+) -> tuple[EmpiricalQuerySpec, EmpiricalPredicate, AuthorityRegistry, str]:
+    """Resolve ONE authentic TEST_ONLY R03 V2 query role and exact I03 result.
 
-    The caller CANNOT inject a new query/predicate into this receiving path.
-    R03 owns compilation and issuance; this adapter resolves exact preimages
-    only from the authentic v2 runtime catalog. It does not upgrade R03's
-    TEST_ONLY_SOURCEFREE ceiling to original-survey science.
+    Both the existing country-screen reader and the continuing DHIKR cycle
+    reuse this owner-catalog binding. No caller-created query or source rights.
     """
     from rawlsing_next.pre553_governed_query_issuer_v2 import (
         GOVERNED_QUERY_ISSUER_SCHEMA, GovernedQueryIssuanceV2,
@@ -463,9 +457,31 @@ def run_r03_v2_issued_country_refinement(
             or not isinstance(execution, QueryExecutionResult)
             or execution.query_ref != query.ref):
         raise CountryRefinementError("R03_SOURCE_QUERY_PREDICATE_EXECUTION_DRIFT")
+    return query, predicate, catalog.authority_registry, issued.envelope_sha256
+
+
+def run_r03_v2_issued_country_refinement(
+    *, issuance: Any, operation_id: str, query_role: str,
+    universe: EmpiricalUniverse, execution: QueryExecutionResult,
+    request: CountryRequest, target_index: int,
+    candidate_indices: Sequence[int], context: Mapping[int, Any],
+    budget: RefinementBudget,
+    resource_sample: Callable[[], ResourceSample] | None = None,
+) -> dict[str, Any]:
+    """Bind an original-R03-lowered *TEST_ONLY* QUERY role to the S04 adapter.
+
+    The caller CANNOT inject a new query/predicate into this receiving path.
+    R03 owns compilation and issuance; this adapter resolves exact preimages
+    only from the authentic v2 runtime catalog. It does not upgrade R03's
+    TEST_ONLY_SOURCEFREE ceiling to original-survey science.
+    """
+    query, predicate, registry, _envelope = resolve_r03_v2_issued_sourcefree_role(
+        issuance=issuance, operation_id=operation_id,
+        query_role=query_role, execution=execution,
+    )
     result = run_issued_country_refinement(
         universe=universe, predicate=predicate, query=query, execution=execution,
-        registry=catalog.authority_registry, request=request,
+        registry=registry, request=request,
         target_index=target_index, candidate_indices=candidate_indices,
         context=context, budget=budget, resource_sample=resource_sample,
     )
