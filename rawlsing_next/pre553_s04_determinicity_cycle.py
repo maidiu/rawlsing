@@ -87,7 +87,8 @@ class CyclePolicy:
                 self.max_new_nodes_per_call, self.max_receipt_bytes,
                 self.bootstrap_case_cap)):
             raise DeterminicityCycleError("INVALID_CYCLE_LIMIT")
-        if (type(self.max_depth) is not int or self.max_depth < 0
+        if (self.min_branch_n < 2
+                or type(self.max_depth) is not int or self.max_depth < 0
                 or type(self.max_pair_order) is not int
                 or self.max_pair_order not in (1, 2)
                 or type(self.bootstrap_replicates) is not int
@@ -203,8 +204,10 @@ def _observation_contract(
             or min(a, b) < 0 or max(a, b) >= len(query.target_refs)):
         raise DeterminicityCycleError("INVALID_OBSERVATION_AXIS")
     snap = registry.resolve_exact(authority_ref(channel.semantics_authority_ref)).snapshot
+    if snap.authority_kind not in ("COORDINATE_SEMANTICS", "SOURCE_SEMANTICS_TOPOLOGY"):
+        raise DeterminicityCycleError("OBSERVATION_AUTHORITY_WRONG_SOURCE_FAMILY")
     require_positive_authority(
-        snap, authority_kind="COORDINATE_SEMANTICS",
+        snap, authority_kind=snap.authority_kind,
         source_universe_ref=universe.ref,
     )
     scope = snap.scope_envelope
@@ -554,6 +557,19 @@ def advance_country_determinicity(
                 continue
         if active["next_predictor_offset"] < len(available):
             stop = "PREDICTOR_BATCH_BUDGET_UNSEARCHED"; break
+        # Once every candidate in this query joint has been conditioned
+        # away, the result is still a REAL source-supported leaf distribution.
+        # It must not be mislabeled as LOW_SUPPORT merely because no
+        # predictor batch remained to call DHIKR.
+        if active["raw_n"] is None:
+            exact_leaf = workspace.query(S04Projection(
+                (policy.target_axis,), selected,
+            )).material()
+            active["raw_n"] = exact_leaf["raw_selected_full_case_n"]
+            active["raw_target_counts"] = [
+                {"state": c["output_states"][0], "n": c["raw_count"]}
+                for c in exact_leaf["complete_output_cells"]
+            ]
 
         node_id = state["completed_nodes"]
         groups = sorted(
