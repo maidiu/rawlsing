@@ -155,13 +155,20 @@ class ConstitutiveRuntime:
         return other
 
     def step(self,actor_id,requested_action=None,target=None,object_ref=None,
-             coactor_override=None):
+             coactor_override=None,research_plan_context=None):
         """One atomic joined life transition. Coactor always uses own plan.
 
         coactor_override is deliberately prohibited; original R0 consent bug
         is repaired in this research implementation at the public transaction.
         """
         if coactor_override is not None:raise ValueError('FORGED_COACTOR_OVERRIDE_REFUSED')
+        if research_plan_context is not None:
+            if (requested_action is None
+                    or not isinstance(research_plan_context,dict)
+                    or type(research_plan_context.get('plan_id')) is not str
+                    or type(research_plan_context.get('hypothesized_object')) is not str
+                    or research_plan_context.get('authority')!='EXTERNAL_RESEARCH_PLAN'):
+                raise ValueError('UNQUALIFIED_EXTERNAL_PLAN_CONTEXT')
         wv,world=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
         actors=self.ledger.actors()
@@ -303,6 +310,8 @@ class ConstitutiveRuntime:
                'actor_accessible':observed,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
+                 'external_research_plan_context':copy(research_plan_context),
+                 'external_plan_is_not_actor_chosen_undertaking':True,
                  'coactor_attempt':partner.document() if partner else None,
                  'coactor_selection_grade':partner.intention if partner else None,
                  'coactor_policy_receipt':coactor_policy_receipt,
@@ -354,11 +363,19 @@ class ConstitutiveRuntime:
         # Every step is independently resolved; prior success never guarantees
         # later feasibility, consent or material outcome.
         transitions=[]
+        context={'plan_id':current['id'],
+                 'hypothesized_object':current['object'],
+                 'authority':'EXTERNAL_RESEARCH_PLAN',
+                 'not_actor_attested_purpose':True,
+                 'not_guaranteed_success_or_future_participation':True}
         for action in current['steps']:
-            response=self.step(actor_id,requested_action=action)
+            response=self.step(actor_id,requested_action=action,
+                               research_plan_context=context)
             transitions.append(response)
             if response['status'] not in ('PERFORMED','PARTIAL'):break
         return {'plan_id':plan_id,'attempts':transitions,
+           'external_plan_hypothesized_object':current['object'],
+           'external_plan_not_actor_attributed_purpose':True,
            'observed_actual_attempts':len(transitions),
            'grade':GRADE, 'selection_grade':'EXTERNAL_RESEARCH_PLAN_INVOCATION',
            'no_guaranteed_outcome':True}
