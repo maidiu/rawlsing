@@ -506,6 +506,10 @@ An LLM serves as **genuine psychological construction machinery**, but its quest
 - A **provisional project or attempt**: an available opportunity and analogy make repetition imaginable and actionable without a settled activity.
 - An **established motive-bearing activity**: repeated or decisive lived practice has made the object significant within continuing life, in relation to other concerns, means and social practices.
 
+**Available project courses, attributed attempts, and objective outcomes are distinct.** A material affordance may make several projects possible, but the actor may attempt one, several, or none of them. A bodily action need not serve an explicitly selected goal. A proposed project does not become historical authorial intent just because an event occurred; attribute the attempt's activity afterlife **only** to genuinely selected project(s) under the actor's actual qualified selection receipt. Several conflicting activities may recruit one action without a sovereign manager choosing one true motive.
+
+An unsought consequence may later become noticeable as an **available possible end**. It can remain unperceived or become available through a separate, actual actor-accessible cue. A later encounter may allow tentative uptake as a practical project; still later experience may reorganize motive-bearing activity. LLM-nominated later signs must be grounded in actual perception history: sign provenance is necessary but **not sufficient proof of psychological causation**.
+
 One episode does not mechanically produce a stable music-oriented project. Equally, requiring a fully established project before any novel attempt prevents the very beginning of transfer. The acquisition path can be rapid or gradual, fail entirely, change its object, or be redirected through an independent Other. The model must specify what makes a proposed transition defensible, which alternative interpretation remains, and what future encounter would reveal a difference.
 
 **Analogical recruitment** is not silent permanent scope expansion. A cue resembling earlier practice can provisionally recruit it; the subsequent activity reveals whether the organization transfers, must narrow, becomes a new competence, or remains ineffective. This preserves both the lesson of Lahire's context-dependent past and the rule against unauthorized learned-association overrides of genuine eligibility.
@@ -521,7 +525,9 @@ A committed psychological proposal must therefore state:
 - alternative hypotheses, uncertainty, refusal or NO_CHANGE;
 - the future encounter that could test or transform it.
 
-A moving paragraph that alters no subsequent activity is not psychological genesis. A list of reward-weight updates with no account of which lived activities changed is not psychodynamics. The actor can register an affective contradiction before understanding it, understand a conflict without changing it, or change behavior without any corresponding articulate theory of the self.
+A moving paragraph that alters no subsequent activity is not psychological genesis. A list of reward-weight updates with no account of which lived activities changed is not psychodynamics. **The iceberg remains productive without an overt project.** Inhibition, waiting, avoidance, emotional dissonance, suppressed strivings and contradictory relational investments can alter attention, bodily experience, perceived possibility, future salience and the organization of other currents. A heuristic selector that chooses a single project is a provisional sourcefree convention, not a psychological law. Acquired currents can support, antagonize, displace, recruit and reinterpret each other over time, with histories of their relations as well as histories of their individual contents. Slow, nonverbal and multisensory experience may reorganize the person without one clean propositional cue.
+
+The actor can register an affective contradiction before understanding it, understand a conflict without changing it, or change behavior without any corresponding articulate theory of the self.
 
 ### VII.6 Contextual plurality is the norm, not an exception
 
@@ -746,6 +752,8 @@ The positive event circuit is: qualified prospective candidate → owner-chosen 
 A hosted LLM's new output need not match byte-for-byte on repeated invocation. Exact causal replay uses its **previously recorded selected proposal**, source/world root, readset, actor/clock, contingency and admitted owner receipts rather than calling the model again. Joint effects must not present a half-completed purchase or move as completed world history. Preserve causal and authority roles even if multiple owner deltas are atomically committed.
 
 ### IX.5 Psychological proposals must be executable transformations
+
+**The November 20 SORACLE bank's sourcefree R6 candidate** (PR #1180, verified at ba9c933832459c8d8a8eb1440319ce4fcecdc8c3) contains code concepts for distinct possible ends, evidence paths, explicit attempted-project selection and later notice/take-up. The archived 19 test methods were **authored but not executed** at that R6 HEAD. REMONT R8 and independent TCO R5 evidence belongs to different implementations/heads, not this R6. A builder must confront exact contemporary source and reconcile overlapping types, constitution, runtime, activity, semantics and development changes; no new truth store or falsely inherited test result. The point of this inheritance is operative action genealogy—not yet an accredited total motive-formation psychology.
 
 A model-generated developmental proposal must specify its *mechanism of future effect*. A suggested new relational expectation 'care is conditional on performance' is incomplete until it provides:
 - a source in actually experienced interactions or fictional backfill under the correct lane;
