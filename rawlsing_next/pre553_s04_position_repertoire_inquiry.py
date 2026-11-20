@@ -200,6 +200,10 @@ def inquire_position_repertoire(
             or not _same(m["source"]["fact_ref"], source["fact_ref"])
             or not _same(m["source"]["risk_set_ref"], source["risk_set_ref"])
             or not _same(m["source"]["universe_ref"], source["universe_ref"])
+            or not _same(m["source"]["query_ref"], source["query_ref"])
+            or not _same(m["source"]["release_ref"], source["release_ref"])
+            or not _same(m["source"]["response_semantics_ref"],
+                         source["response_semantics_ref"])
             or request.target_axis != m["source"]["target_axis"]):
         raise PositionRepertoireInquiryError("DETERMINICITY_SOURCE_COUNTRY_OR_TARGET_DRIFT")
     conditions = _context(request.conditions)
