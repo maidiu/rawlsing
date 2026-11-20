@@ -201,8 +201,19 @@ def compose(constitution,access,limit=50):
             if status:
                 q=actions.setdefault(a,{'action':a,'score':.1,'basis':[],'opportunity':'PROJECT'})
                 q['score']+=.4*p.get('priority',.5);q['basis'].append('project:'+p['id'])
+                # Multiple projects may afford this *same* bodily action.
+                # Their presence is candidate opportunity, NOT a claim that
+                # all those purposes were selected in the impending attempt.
                 q.setdefault('practical_objects',[]).append(p['object'])
                 q.setdefault('motive_hypotheses',[]).append(p.get('motive','UNKNOWN'))
+                q.setdefault('project_courses',[]).append({
+                    'project_id':p['id'],
+                    'object':p['object'],
+                    'motive_hypothesis':p.get('motive','UNKNOWN'),
+                    'priority':p.get('priority',.5),
+                    'recruitment_basis':copy(p.get('recruitment_basis',[])),
+                    'course_grade':'AVAILABLE_PURPOSE_NOT_SELECTED_INTENT'})
+                q['pooled_basis_is_not_actor_selected_purpose']=True
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
