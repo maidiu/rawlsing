@@ -153,6 +153,10 @@ def _serialize_context(context: Mapping[int, Any]) -> list[list[Any]]:
 
 
 def _decimal(value: Any) -> Decimal:
+    if type(value) is Decimal:
+        if not value.is_finite():
+            raise DeterminicityCycleError("NONFINITE_SCORE_REFUSED")
+        return value
     v = read_dhikr_sample_estimate(value)
     return Decimal(0) if v is None else v
 
@@ -219,6 +223,7 @@ def _observation_contract(
         "observation_risk_set_ref": exact_ref(query.risk_set_ref).as_dict(),
     }
     if (not isinstance(scope, Mapping)
+            or not all(key in scope for key in expected)
             or scope.get("observation_semantics_kind")
             != "SOURCE_ISSUED_OBSERVATION_STATUS_AND_VALUE"
             or any(_key(scope.get(k)) != _key(v) for k, v in expected.items())):
@@ -484,7 +489,9 @@ def advance_country_determinicity(
             # all pairs and a bounded candidate-group frontier. Bootstrap
             # resampling adds n*repetitions*group evaluations.
             k = len(batch)
-            pairs = comb(k, 2) if policy.max_pair_order == 2 else 0
+            # DHIKR's existing node always computes the pairwise diagnostic
+            # even if the selected candidate-group order is singleton.
+            pairs = comb(k, 2)
             cases = len(positive)
             estimated = cases * (8 + 8*k + 8*pairs)
             estimated += (policy.bootstrap_replicates * min(
@@ -506,6 +513,7 @@ def advance_country_determinicity(
                 bootstrap_replicates=policy.bootstrap_replicates,
                 bootstrap_case_cap=policy.bootstrap_case_cap,
             )
+            before_batch = loads(canonical_json(state))
             result = analyze_s04_dhikr(workspace, req).material()
             used += estimated
             output_cells_used += projected_output
@@ -514,7 +522,11 @@ def advance_country_determinicity(
                 "source_dhikr_source_query_ref": result["source_query_ref"],
                 "candidate_axes": list(batch),
                 "bootstrap_state": result["bootstrap_rank_instability"],
-                "method": "IID_SENSITIVITY_ONLY_NOT_COMPLEX_SURVEY_DESIGN",
+                "method": (
+                    "IID_RAW_MIXED_STATUS_SCORE_NOT_VALID_FOR_VALUE_PRIORITY"
+                    if any(a in channels for a in batch)
+                    else "IID_SENSITIVITY_ONLY_NOT_COMPLEX_SURVEY_DESIGN"
+                ),
             })
             if result["state"] != "SOURCE_COHERENT_SAMPLE_COMPARISON":
                 active["raw_n"] = 0
@@ -573,6 +585,10 @@ def advance_country_determinicity(
                 active["next_predictor_offset"] = len(available)
             # Progress checkpoint can be returned mid-node. The remaining
             # unscanned predictors are explicitly NOT_SEARCHED.
+            if len(canonical_json(state).encode("utf-8")) > policy.max_receipt_bytes:
+                state = before_batch
+                stop = "RECEIPT_BUDGET_BEFORE_UNCOMMITTED_DHIKR_BATCH"
+                break
             if active["next_predictor_offset"] < len(available):
                 continue
         if active["next_predictor_offset"] < len(available):
