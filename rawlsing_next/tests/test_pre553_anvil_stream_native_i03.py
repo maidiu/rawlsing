@@ -250,3 +250,24 @@ def test_native_stream_detects_member_changed_after_initial_verification(
         handle.write(b"ALTERED_AFTER_VERIFIED")
     with pytest.raises(DirectEstateError, match="member changed"):
         estate._recheck_unchanged_members()
+
+
+
+def test_metadata_receipt_cannot_masquerade_as_native_stream_estate(
+    tmp_path, monkeypatch,
+):
+    from rawlsing_next.pre553_anvil_stream_carrier_qualification import (
+        qualify_saved_stream_manifest,
+    )
+    (source, auth, predicate, query, catalog, root, release, manifest,
+     held, grant) = _stream(tmp_path, monkeypatch, "ST-METADATA-ONLY")
+    metadata = qualify_saved_stream_manifest(
+        root=root, exact_release_path=release,
+        held=held, current_authorizer=grant,
+    )
+    assert metadata.native_i03_admitted is False
+    with pytest.raises(DirectEstateError, match="exact stream estate"):
+        execute_anvil_stream_i03(
+            estate=metadata, runtime_catalog=catalog,
+            query_ref=query.ref, predicate_ref=predicate.ref,
+        )
