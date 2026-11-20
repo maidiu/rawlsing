@@ -1,5 +1,7 @@
 # Current Execution Agenda — PROGRAMMA Pyat B00 (2026-11-05; ordered S0–S1 candidate)
 
+> **NOVEMBER 20 CURRENTNESS — C0–C6 SOURCEFREE ENGINEERING ADVANCED; COMPLETE S01–S05 NOT CLOSED.** [Current factual PR/test/section crosswalk](20261120_C0_C6_IMPLEMENTATION_AND_S01_S05_STATUS_CANDIDATE.md) · [proposed paired protected progress update, unissued](20261120_POST_C0_C6_PENDING_PAIR_DELTA.md). The exact tested sourcefree #1164 and C5/C6 results postdate the November 19 author-only snapshot below; preserve that snapshot *as history* and use this linked overlay for newest evidence. No new global C0–C5 plan or section-wide clearance from test success. Protected paired rev11 unchanged; owner receiving required.
+
 ## ONE PLAN — PROGRAMMA PYAT CONSOLIDATED EXECUTION AGENDA (2026-11-18, AUTHOR CANDIDATE)
 
 > **STATUS: REVIEW CANDIDATE, NOT PROTECTED ADOPTION.** User-directed consolidation on an isolated branch based on protected PRE-MAIN 5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e, paired PYAT progress rev11. No independent HQ review, scientific/owner qualification, native test, local Codex lease attestation or protected CAS is implied. Later ANVIL implementation and DHIKR do not yet appear in that protected progress pair: **HQ_CURRENTNESS_HOLD** until competent receiving. This document proposes how to consolidate the existing programme, not a second programme.
