@@ -141,6 +141,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     partner_valid=False
     policy_receipt=None
     care_labor_receipt=None
+    future_care_obligation_ref=None
     if partner_attempt:
         ok,why=eligible(actors[partner_attempt.actor]['body'],partner_attempt.action)
         partner_valid=(ok and world['positions'].get(partner_attempt.actor)==loc)
@@ -294,6 +295,25 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
+    elif attempt.action=='PLEDGE_CARE':
+        # The pledge is this actor's act, not the recipient's promise to
+        # accept it, nor any claim that future care has already happened.
+        if target in actors and target!=aid and world['positions'].get(target)==loc:
+            future_care_obligation_ref=stable_id('care_obligation',{
+                'actor':aid,'recipient':target,'at':world['clock']+1})
+            world.setdefault('scheduled_obligations',[]).append({
+                'id':future_care_obligation_ref,
+                'kind':'ACTOR_PROMISED_FUTURE_CARE',
+                'responsible_actor':aid,'recipient':target,
+                'origin_clock':world['clock']+1,
+                'due_clock':world['clock']+4,
+                'status':'PENDING',
+                'no_recipient_consent_to_future_action_assumed':True,
+                'due_not_proof_of_breach_without_coverage':True,
+                'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'})
+            output='FUTURE_CARE_PROMISED_NOT_FULFILLED'
+        else:
+            status='PARTIAL';output='PROMISE_ADDRESSEE_NOT_PRESENT'
     elif attempt.action=='SIGN_HALL_PETITION':
         institutional=contribute_to_hall_petition(world,aid,loc)
         status=institutional['status']
@@ -311,6 +331,16 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             care_labor_receipt=retain_material_care(
                 world,aid,target,clock=world['clock']+1,
                 location=loc,effect='RECEIVED_CARE')['id']
+            # A later actually performed act can discharge an earlier pledge.
+            # An elapsed deadline alone never invents fulfillment or breach.
+            for due in world.get('scheduled_obligations',[]):
+                if (due.get('status')=='PENDING'
+                        and due.get('responsible_actor')==aid
+                        and due.get('recipient')==target
+                        and due.get('kind')=='ACTOR_PROMISED_FUTURE_CARE'):
+                    due['status']='FULFILLED_BY_ACTUAL_CARE'
+                    due['fulfilled_at_clock']=world['clock']+1
+                    due['fulfillment_care_labor_ref']=care_labor_receipt
             output='CARE_GIVEN'
         else:status='PARTIAL';output='CARE_TARGET_ABSENT'
     elif attempt.action=='IMPOSE':
@@ -375,6 +405,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'material_claim_ref':claim_ref,
                    'institutional_policy_ref':policy_receipt,
                    'social_reproductive_labor_ref':care_labor_receipt,
+                   'future_care_obligation_ref':future_care_obligation_ref,
                    'co_present_not_verified_witnessing':True}
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
