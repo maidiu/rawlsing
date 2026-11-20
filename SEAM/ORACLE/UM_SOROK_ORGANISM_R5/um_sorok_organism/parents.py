@@ -1,0 +1,55 @@
+"""Fictional adult initializer; survey is conditioning, not respondent latent psyche.
+
+A live LLM may be injected through ValidatingSemanticService; deterministic
+fallback is deliberately crude and direct-keyed. The latter cannot certify
+independent questionnaire reproduction.
+"""
+from .types import adult, copy, stable_id, GRADE
+from .psychodynamics import validate_tendencies
+
+
+def construct_parent(actor_id,name,source_packet,semantic):
+    if not source_packet.get('answers') or not isinstance(source_packet['answers'],dict):
+        raise ValueError('PSEUDO_RESPONDENT_REQUIRED')
+    person=adult(actor_id,name)
+    result=semantic.proposal('adult_constructor',{'actor_id':actor_id,'name':name,
+        'pseudo_respondent':copy(source_packet),'historical_grade':'FICTIONAL_INVERSE_UNDERIDENTIFIED'})
+    for form in result.get('forms',[]):
+        if 'id' not in form or form['id'] in person['forms']:raise ValueError('INVALID_INITIAL_FORM')
+        f=copy(form);validate_tendencies(f);f['actor']=actor_id
+        f['origin']=['fictional_init:'+actor_id]
+        f['grade']='FICTIONAL_ABDUCTIVE_INITIALIZATION'
+        person['forms'][f['id']]=f
+    person['links']=copy(result.get('links',[]))
+    person['projects']=copy(result.get('projects',[]))
+    person['fictional_backfill']=copy(result.get('fictional_backfill',{}))
+    person['initialization']={'source_ref':source_packet.get('source_ref','UNVERIFIED_INPUT'),
+        'observed_question_count':len(source_packet['answers']),
+        'source_grade':source_packet.get('source_grade','REPRESENTATIVE_TEST_FIXTURE'),
+        'abduction_grade':'SOURCEFREE_FICTIONAL_HYPOTHESIS',
+        'questionnaire_as_live_behavior':'UNPROVEN_WITHOUT_BLIND_SURVEY_RECONSTRUCTION',
+        'not_real_respondent_psyche':True}
+    person['unknowns'].extend(['private_respondent_life_is_unidentified',
+        'causal_explanation_of_survey_answers_unproved'])
+    return person
+
+
+def interview_readout(person,instrument):
+    """Test whether initial constitution supplies independently generatable answers.
+    Direct asserted-answer recovery is flagged, NOT celebrated as independent.
+    """
+    responses={};quality={}
+    for q in instrument:
+        forms=[f for f in person['forms'].values() if f.get('object')==q]
+        if forms:
+            # Model provider must define an operational evaluator to graduate.
+            with_answer=[f for f in forms if 'asserted_answer' in f]
+            if with_answer:
+                responses[q]=with_answer[0]['asserted_answer']
+                quality[q]='DIRECT_ANSWER_LEAKAGE_NOT_INDEPENDENT'
+            else:
+                quality[q]='NO_INDEPENDENT_OPERATIONAL_EVALUATOR'
+        else:quality[q]='NO_FORM'
+    return {'responses':responses,'evidence_quality':quality,
+        'independent_whole_respondent_correspondence':'NOT_DEMONSTRATED',
+        'grade':GRADE}
