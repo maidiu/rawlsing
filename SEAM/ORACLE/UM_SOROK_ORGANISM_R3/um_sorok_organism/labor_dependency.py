@@ -241,6 +241,18 @@ def fund_worker_relief(world,actors,who,site,intention):
     if (regime is None or who not in regime["contracts"] or
             world["positions"].get(who)!=site):
         return {"status":"BLOCKED","outcome":"NO_SITUATED_WORKER_FOR_RELIEF"}
+    # This is *worker wage* mutual provision, not a moral score attached to
+    # any pre-existing private money. An actual employer wage claim must
+    # precede the new contribution; imported capital alone does not qualify.
+    earned=any(type(x) is dict and x.get("worker")==who
+               and x.get("site")==site
+               and x.get("controller")==regime["controller"]
+               and type(x.get("wage")) in (int,float) and x["wage"]>0
+               and type(x.get("clock")) is int
+               and x["clock"]<world["clock"]+1
+               for x in world.get("material_claims",[]))
+    if not earned:
+        return {"status":"BLOCKED","outcome":"NO_ACTUAL_PRIOR_WAGE_EXERCISE"}
     receipt=_transfer(world,who,regime["relief_pool_ref"],RELIEF_UNIT,
                       "ACTUAL_WAGE_FUNDED_RELIEF",regime["id"],intention)
     if receipt is None:
