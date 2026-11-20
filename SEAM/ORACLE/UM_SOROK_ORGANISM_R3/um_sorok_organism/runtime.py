@@ -25,6 +25,7 @@ from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
+from .food_access_struggle import configure_food_power
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -690,6 +691,24 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon)
+
+    def register_sourcefree_food_control(self,spec):
+        """Configure a fictional material institution in WORLD, not in psyche.
+
+        The caller declares the initial sourcefree power relation.
+        Subsequent changes require distinct actor-selected signatures.
+        No adult or child is automatically said to comprehend this rule.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=configure_food_power(world,actors,spec)
+        committed=self.ledger.commit(
+            self.world_id,v,world,{}, {},
+            'SOURCEFREE_FOOD_ACCESS_AUTHORITY_FIXTURE',None,{
+                'source':source,'world_only_not_actor_political_action':True,
+                'not_native_science_or_protected_receiving':True,
+                'grade':GRADE})
+        return {'receipt':committed['id'],**source}
 
     def register_historical_routine_source(self,spec):
         """Declare a bounded *research fictional* routine source before use.
