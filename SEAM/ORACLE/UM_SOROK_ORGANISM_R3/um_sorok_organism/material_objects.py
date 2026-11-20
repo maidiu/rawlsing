@@ -168,3 +168,44 @@ def material_opportunity_from_history(constitution,access):
         'grade':GRADE}],
         'readset':[h['event_ref'] for h in practiced[-12:]],
         'grade':GRADE}
+
+
+def advance_material_wear(world,days,start_clock):
+    """Objective material aging during compressed periods, not narrated scenes.
+
+    Weathering can change a durable artifact without a deliberate encounter
+    or a user's request. One aggregate sourcefree receipt replaces invented
+    daily scratches. The object's actual past makers and ownership survive.
+    This rate is an illustrative simulation rule, NOT a calibrated material
+    law or evidence of how a particular historical artifact deteriorated.
+    """
+    if type(days) is not int or days<1 or type(start_clock) is not int:
+        raise ValueError('MATERIAL_AGING_UNQUALIFIED_PERIOD')
+    receipts=[]
+    for obj in world.get('material_objects',{}).values():
+        if type(obj) is not dict or type(obj.get('id')) is not str:
+            continue
+        old=obj.get('condition')
+        if type(old) not in (float,int) or not 0<=old<=1:
+            raise ValueError('MATERIAL_AGING_INVALID_CONDITION')
+        # Physical aging is separate from voluntary care and skilled repair.
+        # Never insert a fictional worker's action to explain passive wear.
+        new=round(max(0,old-.0005*days),5)
+        if new==old:continue
+        obj['condition']=new
+        rid=stable_id('ambient_object_change',{
+            'object':obj['id'],'start':start_clock,'end':start_clock+days,
+            'before':old,'after':new})
+        effect={
+            'id':rid,'object_ref':obj['id'],
+            'start_clock':start_clock,'end_clock':start_clock+days,
+            'condition_prior':old,'condition_after':new,
+            'cause_class':'ILLUSTRATIVE_AMBIENT_MATERIAL_WEAR',
+            'specific_unseen_microevents':'NOT_GENERATED',
+            'owner_unchanged':True,'maker_history_unchanged':True,
+            'personally_observed_by_actors':'NOT_INFERRED',
+            'sourcefree_unvalidated_rate':.0005,'grade':GRADE,
+        }
+        obj.setdefault('objective_condition_history',[]).append(effect)
+        receipts.append(effect)
+    return receipts
