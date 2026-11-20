@@ -32,7 +32,7 @@
 | P017 | Material signs and objects with actual lifecycle, not just cue expiration | SORACLE | R12 `material_objects`, R9 bounded time cues inherited; need original-source independent reconciliation and gradual cultural object lifecycles; PARTIAL |
 | P018 | Auxiliary source seals, private receipts and enforceable native disclosure | REMONT + competent native authority | Do not authorize privacy or forge source identity from LLM transport; independent seal/tenant boundaries and native owner required; PARTIAL |
 
-**Counts:** 12 primarily SORACLE construction identities (P013,P014,P015,P016,P019,P022,P023,P004,P005,P006,P011,P017); 2 REMONT engineering (P012,P018); 1 shared lived/privacy (P009); 1 historical preserve (P020). **Official statuses remain 8 OPEN / 8 PARTIAL-or-historical**, not reissued by this overlay.
+**Counts:** 12 primarily SORACLE construction identities (P013,P014,P015,P016,P019,P022,P023,P004,P005,P006,P011,P017); 2 REMONT engineering (P012,P018); 1 shared lived/privacy (P009); 1 historical preserve (P020). **Official statuses remain eight entries in the OPEN section (including historical P020) and eight PARTIAL entries**; no status is reissued by this overlay.
 
 ## Actual new developmental first-consumer operations (not documents alone)
 
