@@ -201,3 +201,31 @@ def fallback_nonproject_orientation(options):
             'FICTIONAL_PREPROJECT_ORIENTATION_NOT_CONSCIOUS_INTENTION',
             'basis': ['HISTORICALLY_ACQUIRED_SENSORY_ORIENTATION'],
             'semantic_grade': 'SOURCEFREE_FALLBACK_NOT_UNIVERSAL_BEHAVIOR'}
+
+
+def fallback_nonproject_deferral(options):
+    """Conservative *offline* policy for a contradictory/withheld solicitation.
+
+    R8's first implementation exposed learned WITHHOLD in the situated option
+    but then the old action-only fallback could choose that option anyway.
+    This is a real function gap: a private current that no selector reads.
+    Deferral here is explicitly NOT a psychological law or an assertion that
+    inhibition always wins. The semantic provider may propose a different
+    historically plausible response. No candidate is silently deleted.
+    """
+    if any(o.get('project_courses') for o in options):
+        return None
+    if not any(o.get('action') == 'WAIT' for o in options):
+        return None
+    pressing = [o for o in options if o.get('preproject_recruitment', {}).get('status')
+                in ('ACQUIRED_NONPROJECT_WITHHOLD',
+                    'UNRESOLVED_PREPROJECT_CONTRADICTION')]
+    approaching = [o for o in options if o.get('preproject_recruitment', {}).get('status')
+                   == 'ACQUIRED_NONPROJECT_APPROACH']
+    if pressing and not approaching:
+        return {'action':'WAIT','project_id':None,
+                'purpose_selection_grade':
+                'HEURISTIC_DEFERRAL_UNDER_NONPROJECT_WITHHOLD_OR_CONTRADICTION',
+                'basis':['RECRUITED_NONPROJECT_INHIBITION_NOT_RESOLVED'],
+                'semantic_grade':'SOURCEFREE_FALLBACK_NOT_UNIVERSAL_BEHAVIOR'}
+    return None
