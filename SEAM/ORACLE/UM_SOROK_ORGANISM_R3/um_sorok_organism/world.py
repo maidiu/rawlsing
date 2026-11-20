@@ -354,7 +354,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         policy_receipt=institutional.get('policy_receipt')
     elif attempt.action=='FEED':
         resolved_food=perform_one_actual_feeding(
-            world,actors,aid,target,loc)
+            world,actors,aid,target,loc,
+            attempt.intention)
         status=resolved_food['status']
         output=resolved_food['outcome']
         material_feeding_ref=resolved_food['material_feeding_ref']
@@ -402,7 +403,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 # a signal: objective food stock and bodily eligibility still
                 # decide what material assistance actually happened.
                 supported=perform_one_actual_feeding(
-                    world,actors,partner_attempt.actor,aid,loc)
+                    world,actors,partner_attempt.actor,aid,loc,
+                    partner_attempt.intention)
                 material_feeding_ref=supported['material_feeding_ref']
                 if supported['status']=='PERFORMED':
                     effects[aid]['received_assistance']=True
