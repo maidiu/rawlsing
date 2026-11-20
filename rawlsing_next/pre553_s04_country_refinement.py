@@ -30,6 +30,7 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_s04_observed_research import (
+    MAX_CELLS as S04_MAX_CELLS,
     ask_s04_common_risk_predictor_evidence, receive_s04_i03_research,
 )
 
@@ -149,7 +150,9 @@ def _country_scope(
         source_universe_ref=universe.ref,
     )
     scope = snapshot.scope_envelope
-    if not isinstance(scope, Mapping) or (
+    if not isinstance(scope, Mapping) or scope.get("candidate_only_not_positive_authority") is True:
+        raise CountryRefinementError("REGISTRY_CANDIDATE_NOT_POSITIVE_COUNTRY_ISSUER")
+    if (
         not _same(scope.get("country_coordinate_semantic_ref"), coord.as_dict())
         or not _same(scope.get("source_universe_country_geography"),
                      universe.country_geography)
@@ -231,6 +234,9 @@ def run_issued_country_refinement(
             or not isinstance(budget.wall_seconds, (int, float)) or
             not 0 < budget.wall_seconds < float("inf")):
         raise CountryRefinementError("INVALID_RESOURCE_ENVELOPE")
+    if any(v is not None and (type(v) is not int or v <= 0)
+           for v in (budget.max_rss_bytes, budget.max_scratch_bytes)):
+        raise CountryRefinementError("BAD_RSS_OR_SCRATCH_BUDGET")
     if (budget.max_rss_bytes is not None or budget.max_scratch_bytes is not None) and resource_sample is None:
         raise CountryRefinementError("RESOURCE_MONITOR_REQUIRED")
     mode, country_axis, source_country_value = _country_scope(
@@ -262,10 +268,14 @@ def run_issued_country_refinement(
             not isinstance(c.get("domain"), (list, tuple)) for c in components):
         raise CountryRefinementError("INVALID_SOURCE_TARGET_COMPONENTS")
     predicted_cells = prod(len(c["domain"]) for c in components)
-    if predicted_cells > budget.max_input_cells:
+    if predicted_cells > budget.max_input_cells or predicted_cells > S04_MAX_CELLS:
         return {
             "contract": CONTRACT, "state": HOLD,
-            "stop_reason": "ISSUED_JOINT_DOMAIN_EXCEEDS_BUDGET_BEFORE_S04",
+            "stop_reason": (
+                "ISSUED_JOINT_DOMAIN_EXCEEDS_BUDGET_BEFORE_S04"
+                if predicted_cells > budget.max_input_cells
+                else "EXISTING_S04_JOINT_TRANSPORT_CAPACITY_HELD"
+            ),
             "country": request.country, "country_proof_mode": mode,
             "source_query_ref": query.ref.as_dict(),
             "unvisited_candidate_indices": list(candidate_indices),
@@ -273,6 +283,17 @@ def run_issued_country_refinement(
             "source_fact_not_reinterpreted": True,
         }
 
+    if predicted_cells > budget.max_cell_visits:
+        return {
+            "contract": CONTRACT, "state": HOLD,
+            "stop_reason": "JOINT_MATERIALIZATION_CELL_VISITS_OVER_BUDGET",
+            "country": request.country, "country_proof_mode": mode,
+            "source_query_ref": query.ref.as_dict(),
+            "unvisited_candidate_indices": list(candidate_indices),
+            "source_fact_not_reinterpreted": True,
+        }
+
+    start = monotonic()
     if resource_sample is not None:
         u = resource_sample()
         if not isinstance(u, ResourceSample) or u.rss_bytes < 0 or u.scratch_bytes < 0:
@@ -307,8 +328,7 @@ def run_issued_country_refinement(
     if country_axis is not None:
         conditions[country_axis] = source_country_value
 
-    start = monotonic()
-    visits, output_cells = 0, 0
+    visits, output_cells = predicted_cells, 0
     done: list[dict[str, Any]] = []
     stop = "EVALUATED_DECLARED_CANDIDATES"
 
@@ -338,10 +358,11 @@ def run_issued_country_refinement(
         if not within_resource():
             stop = "WALL_RSS_OR_SCRATCH_BUDGET"
             break
-        answer = ask_s04_common_risk_predictor_evidence(
+        answer_receipt = ask_s04_common_risk_predictor_evidence(
             knowledge=knowledge, target_index=target_index,
             candidate_indices=(candidate,), context=conditions,
-        ).material()
+        )
+        answer = answer_receipt.material()
         tables = answer.get("tables", ())
         if not tables:
             stop = "SOURCE_TABLE_OR_SCIENCE_HELD"
@@ -364,6 +385,7 @@ def run_issued_country_refinement(
             "unadjusted_mutual_information_bits": _mutual_information(table),
             "branches": branch_states,
             "source_s04_evidence_ref": answer["baseline_answer_ref"],
+            "source_s04_comparison_ref": answer_receipt.ref.as_dict(),
             "claim_grade": "SOURCE_EXACT_RAW_SAMPLE_DIAGNOSTIC_NOT_POPULATION_OR_CAUSAL",
         })
         visits += worst_visits
