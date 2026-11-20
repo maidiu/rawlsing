@@ -144,6 +144,10 @@ class R18WorldPower(unittest.TestCase):
         self.w['clock']=1
         # Institution holds fourteen real units, yet mother cannot access it.
         self.assertFalse(can_draw_shared_food(self.w,'mother','home'))
+        # Contribute the LAST privately held unit. The next feeding
+        # cannot accidentally use private holdings rather than the new
+        # collectively constituted store.
+        self.w['holdings']['mother']['food']=1.0
         old=self.w['holdings']['mother']['food']
         moved=contribute_food_commons(
             self.w,self.a,'mother','home',AUTONOMOUS)
