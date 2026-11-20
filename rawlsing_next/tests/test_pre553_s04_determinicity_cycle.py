@@ -209,3 +209,44 @@ def test_xor_interaction_recruits_a_zero_marginal_axis_then_recovers_conditional
     assert child["predictor_screens"][0]["information_bits"] == 1
     assert child["raw_same_case_n"] == 8
     assert followup.material()["new_I03_queries"] == 0
+
+
+
+def test_smaller_affordable_batch_is_not_rejected_by_pessimistic_full_width_forecast():
+    real = _real_joint("cycle-calibrated-batch")
+    policy = _policy(max_depth=0)
+    # Four positive joint cells. Two predictors together need more than this
+    # deliberately constrained *per-call* accounting budget; one is useful.
+    first = _advance(
+        real, policy=policy, resources=_resources(max_cell_visits=40),
+    ).material()
+    assert first["status"] == "PARTIAL_RESUMABLE"
+    assert first["active"]["next_predictor_offset"] == 1
+    assert len(first["active"]["candidate_screens"]) == 1
+    assert first["base_same_case_n"] == 8
+    assert first["last_call_measured_batch_work_units"] > 0
+    assert first["last_call_measured_dhikr_batch_seconds"] is not None
+
+
+def test_resumed_small_batches_preserve_cross_batch_pair_diagnostics_and_do_not_erase_xor():
+    real = _xor()
+    policy = _policy(max_depth=0, min_signal_bits="0.1")
+    # Domain cells 8; four nonzero joint configurations. The 40-unit budget
+    # forces a singleton batch, making its partner a subsequent inquiry.
+    receipt = _advance(
+        real, policy=policy, resources=_resources(max_cell_visits=40),
+    )
+    first = receipt.material()
+    assert first["active"]["next_predictor_offset"] == 1
+    assert first["nodes"] == []
+    receipt = _advance(
+        real, policy=policy, resources=_resources(max_cell_visits=40),
+        previous=receipt, pinned=receipt.ref,
+    )
+    root = receipt.material()["nodes"][0]
+    assert root["predictor_screens"][0]["information_bits"] == 0
+    assert root["predictor_screens"][1]["information_bits"] == 0
+    assert root["selected_split_axis"] == 1
+    assert root["cross_batch_interactions"]
+    assert root["cross_batch_interactions"][0]["axes"] == [1, 2]
+    assert receipt.material()["new_I03_queries"] == 0
