@@ -6,6 +6,7 @@ from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
 from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
 from .prospective_horizon import select_bounded_exploratory_trial
+from .distributed_power import choose_uncompelled_assistance
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -55,6 +56,13 @@ class HeuristicSemanticProvider:
             trial=select_bounded_exploratory_trial(possibilities)
             if trial:
                 return {'task':task,**trial}
+            # A previously witnessed reciprocal signal can be tried again,
+            # without assigning an enduring attachment or commandeering the
+            # responder. Actor's body bounds the immediate offline proposal.
+            assisted=choose_uncompelled_assistance(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if assisted:
+                return {'task':task,**assisted}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
@@ -93,7 +101,8 @@ class HeuristicSemanticProvider:
             lived=copy(packet.get('historically_proposed_preproject',[]))
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
-            relation_candidates=lived
+            relation_candidates=lived+copy(
+                packet.get('historically_proposed_functional',[]))
             other=experience.get('reciprocated_partner')
             if other and cues:
                 # A genuinely performed joint occurrence can leave a trace and
@@ -179,6 +188,13 @@ class HeuristicSemanticProvider:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
                        'cue_terms':['signal','care']}]+relation_candidates, 'semantic_grade':self.grade}
             return {'task':task,'candidates':relation_candidates,'semantic_grade':self.grade}
+        if task=='blind_adult_interview':
+            # A sourcefree fallback has no independently generated survey
+            # response law. Silence is preferable to resurrecting the
+            # questionnaire-keyed cached answer as a false blind success.
+            return {'task':task,'responses':{},
+                'status':'NO_INDEPENDENT_FALLBACK_INTERVIEW_EVALUATOR',
+                'semantic_grade':self.grade}
         if task=='adult_constructor':
             target=packet['pseudo_respondent']
             answers=target.get('answers',{})

@@ -16,7 +16,11 @@ from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
+from .distributed_power import record_actor_participation
+from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
+from .continuity_clock import continue_to_discontinuity
+from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
@@ -113,7 +117,8 @@ class ConstitutiveRuntime:
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
-            proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
+            proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
+                'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
@@ -445,12 +450,20 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            # Objective coactor contribution remains with the world, while
+            # each person's actually accessible experience can establish a
+            # contingent later *possibility of seeking assistance*.
+            record_actor_participation(
+                actors[aid],experience,resolved,objective_ref,
+                body_before=bodily_before[aid],body_after=actors[aid]['body'])
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
             # nondeclarative orientation. This is not proof of why relief arose.
             history_genesis=proposals_from_bodily_history(
                 actors[aid],experience,bodily_before[aid],actors[aid]['body'])
+            functional_genesis=propose_actor_lived_correspondences(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -470,6 +483,7 @@ class ConstitutiveRuntime:
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
+                'historically_proposed_functional':copy(functional_genesis),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
@@ -552,6 +566,14 @@ class ConstitutiveRuntime:
             self.ledger.actors,
             lambda actor_id: self.step(actor_id), beats)
 
+    def advance_to_discontinuity(self,horizon=30):
+        """Cover ordinary time only to the next real material interruption.
+
+        A due commitment lets its owner initiate an independently selected
+        response; no caller script forces fulfillment or another's consent.
+        """
+        return continue_to_discontinuity(self,horizon)
+
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
@@ -597,6 +619,16 @@ class ConstitutiveRuntime:
     def interview(self,actor_id,instrument):
         _,a=self.ledger.actor(actor_id)
         return interview_readout(a,instrument)
+
+    def blind_interview(self,actor_id,instrument):
+        """Target-free post-constitution respondent probe (not a fidelity claim).
+
+        Unlike the legacy direct-keyed interview, this probe supplies neither
+        sampled answers nor questionnaire-mediators to the semantic call.
+        """
+        _,world=self.ledger.world(self.world_id)
+        _,actor=self.ledger.actor(actor_id)
+        return render_blind_interview(actor,instrument,self.semantic,world)
 
     def verify(self):return self.ledger.verify_chain()
     def close(self):self.ledger.close()

@@ -10,7 +10,11 @@ from .plans import qualified_learned_compositions
 from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
+from .attention_field import situate_attention
+from .distributed_power import conditional_assistance_options
+from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
+from .institutional_reproduction import current_institutional_opportunities
 
 
 def materialize(actor,world):
@@ -23,6 +27,8 @@ def materialize(actor,world):
         possible_ends=copy(actor.get('possible_ends',[])),
         evidence_paths=copy(actor.get('evidence_paths',[])),
         expectations=copy(actor.get('expectations',[])),
+        participation_history=copy(actor.get('participation_history',[])),
+        functional_bindings=copy(actor.get('functional_bindings',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -57,6 +63,13 @@ def actor_access(actor,world):
     env=[]
     site=world['sites'].get(location,{})
     if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
+    # A publicly posted objective practice can make participation feasible
+    # without implying the person already cares about this institution.
+    if actor['body']['sensor'] >= .05:
+        env += [v['operation'] for v in current_institutional_opportunities(
+            world,actor['id'],location)]
+    if any(c.get('kind')=='coactor_present' for c in cues):
+        env.append('PLEDGE_CARE')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -267,6 +280,20 @@ def compose(constitution,access,limit=50):
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
         status,why=eligible(constitution.body,a)
         if status:actions.setdefault(a,{'action':a,'score':.06,'basis':['organism'],'opportunity':'ORGANISM'})
+    if 'PLEDGE_CARE' in access.affordances:
+        status,why=eligible(constitution.body,'PLEDGE_CARE')
+        if status:
+            actions.setdefault('PLEDGE_CARE',{
+                'action':'PLEDGE_CARE','score':.045,
+                'basis':['ACTUAL_CO_PRESENT_POSSIBLE_ADDRESSEE'],
+                'opportunity':'PROMISE_CAN_BE_MADE_NOT_FUTURE_FULFILLED'})
+    if 'SIGN_HALL_PETITION' in access.affordances:
+        status,why=eligible(constitution.body,'SIGN_HALL_PETITION')
+        if status:
+            actions.setdefault('SIGN_HALL_PETITION',{
+                'action':'SIGN_HALL_PETITION','score':.055,
+                'basis':['WORLD_PUBLISHED_INSTITUTIONAL_PROCEDURE'],
+                'opportunity':'PUBLIC_RIGHT_NOT_PREASSIGNED_SOLIDARITY'})
     for a,q in actions.items():
         if a in ('WORK','REPAIR','SING','JOIN','MAKE_SPACE','OPEN_HALL') and access.location not in ('workshop','home','hall'):
             q['score']*=.45
@@ -288,25 +315,41 @@ def compose(constitution,access,limit=50):
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
     learned=qualified_learned_compositions(constitution,access,active,projects,
                                           dynamics['candidate_actions'])
+    # Meaning can be received without every sign becoming available for
+    # focal, costly practical consideration. Tacit recruited psychology used
+    # original access; only deliberate means/beneficiary binding uses the
+    # presently nominated, scarce attentional field.
+    attention=situate_attention(constitution,access)
     # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
     for option in dynamics['candidate_actions']:
         option['practical_alternatives']=practical_alternatives(
-            constitution,access,option)
+            constitution,attention['focus_access'],option)
+        # A learned relation of distributed practical power can add a real
+        # future *invitation* alternative. The Other's policy remains their own.
+        option['practical_alternatives']+=conditional_assistance_options(
+            constitution,attention['focus_access'],option)
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
+    functional=project_functional_correspondences(
+        constitution,attention['focus_access'])
+    currents.extend({'kind':'QUALIFIED_PROVISIONAL_FUNCTIONAL_CORRESPONDENCE',
+                     **copy(row)} for row in functional['active'])
     prospective=project_trial_horizons(
-        constitution,access,dynamics['candidate_actions'])
+        constitution,attention['focus_access'],dynamics['candidate_actions'],
+        functional_correspondences=functional['active'])
     currents+=prospective['currents']
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+prospective['readset']+
+                           preproject['readset']+functional['readset']+
+                           prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
-       suspended_actions=dynamics['suspended'],learned_compositions=learned)
+       suspended_actions=dynamics['suspended'],learned_compositions=learned,
+       attention_frame=attention['frame'])

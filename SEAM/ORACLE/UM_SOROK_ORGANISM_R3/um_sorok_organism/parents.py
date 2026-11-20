@@ -10,13 +10,16 @@ from .organism import ACTIONS
 from .development import validate_activity_priority
 from .relational_metabolism import validate_motif
 from .practical_difference import validate_expected_difference
+from .historical_parent_bridge import historically_conditioned_entrances
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
     if not source_packet.get('answers') or not isinstance(source_packet['answers'],dict):
         raise ValueError('PSEUDO_RESPONDENT_REQUIRED')
     person=adult(actor_id,name)
+    historical=historically_conditioned_entrances(source_packet)
     result=semantic.proposal('adult_constructor',{'actor_id':actor_id,'name':name,
+        'historically_conditioned_alternatives':copy(historical),
         'pseudo_respondent':copy(source_packet),'historical_grade':'FICTIONAL_INVERSE_UNDERIDENTIFIED'})
     for form in result.get('forms',[]):
         if 'id' not in form or form['id'] in person['forms']:raise ValueError('INVALID_INITIAL_FORM')
@@ -53,6 +56,7 @@ def construct_parent(actor_id,name,source_packet,semantic):
     if not person['forms'] and not person['projects']:
         raise ValueError('NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION')
     person['fictional_backfill']=copy(result.get('fictional_backfill',{}))
+    person['historical_entrances']=copy(historical)
     person['initialization']={'source_ref':source_packet.get('source_ref','UNVERIFIED_INPUT'),
         'observed_question_count':len(source_packet['answers']),
         'source_grade':source_packet.get('source_grade','REPRESENTATIVE_TEST_FIXTURE'),

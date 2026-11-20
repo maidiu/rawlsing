@@ -59,6 +59,8 @@ class Constitution:
     possible_ends: list[dict] = field(default_factory=list)
     evidence_paths: list[dict] = field(default_factory=list)
     expectations: list[dict] = field(default_factory=list)
+    participation_history: list[dict] = field(default_factory=list)
+    functional_bindings: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -77,6 +79,7 @@ class Situated:
     antagonisms: list[dict] = field(default_factory=list)
     suspended_actions: list[dict] = field(default_factory=list)
     learned_compositions: list[dict] = field(default_factory=list)
+    attention_frame: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -120,6 +123,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
                  'illness': 0.0, 'regulation': .28},
         'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [],
         'possible_ends': [], 'evidence_paths': [], 'expectations': [],
+        'participation_history': [], 'functional_bindings': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
@@ -142,7 +146,16 @@ def blank_world(world_id='w1'):
                                    'controller':'workshop_steward', 'food_price':1.0},
                       'hall': {'food': 0, 'stock': 2, 'access': 'controlled'}},
             'relations': {}, 'accounts':{'workshop_steward':12.0},'material_claims':[],
-            'institutions': {'workshop_steward':{'controls':'workshop','wage':.25,'claims_output':True},'hall_board': {'controls': 'hall', 'members': [], 'rule': 'hall_permission'}},
+            'institutions': {'workshop_steward':{'controls':'workshop','wage':.25,'claims_output':True},'hall_board': {'controls': 'hall', 'members': [], 'rule': 'hall_permission',
+                'petition_procedure':{'id':'HALL_PUBLIC_PETITION_R1',
+                    'enabled':True,'quorum':2,'posted_at':['home','workshop'],
+                    'subject':'hall_access','effect':'PUBLIC_ON_QUORUM'},
+                'hall_petition_signatures':[], 'rule_history':[]}},
             'cues': [], 'historical_periods': [], 'public_history': [],
+            'social_reproductive_labor': [],
+            'scheduled_obligations': [],
+            'positioned_material_records': [],
+            'institutional_access_rules': [],
+            'material_gate_audit': [],
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
