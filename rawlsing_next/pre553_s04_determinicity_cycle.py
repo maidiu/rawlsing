@@ -278,6 +278,10 @@ def _initial(
         "contract": CYCLE_CONTRACT, "method_grade": METHOD_GRADE,
         "identity": identity, "source": source,
         "country_scope_mode": country_mode,
+        "base_context": _serialize_context(context),
+        "min_branch_n": None,
+        "base_same_case_n": None, "base_target_distribution": [],
+        "base_support_grade": "NOT_YET_ISSUED",
         "nodes": [], "frontier": [{"context": _serialize_context(context),
                                   "depth": 0, "parent": None}],
         "deferred": [], "active": None,
@@ -445,13 +449,49 @@ def advance_country_determinicity(
                 or state.get("country_scope_mode") != mode
                 or state.get("completed_nodes") != len(state.get("nodes", []))):
             raise DeterminicityCycleError("RESUMED_SOURCE_POLICY_OR_IDENTITY_DRIFT")
-    if m_source["state"] != "SUPPORTED_SAMPLE_DESCRIPTIVE":
-        state["stopping_reason"] = "UPSTREAM_TYPED_HELD_NOT_A_NEGATIVE_ANSWER"
-        return _seal(state, policy.max_receipt_bytes)
     domains = m_source["target_domains"]
     for axis, value in context.items():
         if _key(value) not in {_key(v) for v in domains[axis]}:
             raise DeterminicityCycleError("CONDITION_OUTSIDE_EXACT_DOMAIN")
+    if m_source["state"] != "SUPPORTED_SAMPLE_DESCRIPTIVE":
+        state["stopping_reason"] = "UPSTREAM_TYPED_HELD_NOT_A_NEGATIVE_ANSWER"
+        state["status"] = "HELD_SOURCE_NOT_AN_OBSERVED_ZERO"
+        return _seal(state, policy.max_receipt_bytes)
+    # Return a useful coarser answer even when no predictor-screening
+    # operation can be admitted by this host budget. This S04 projection
+    # is exact for the source-country risk set; it is NOT a population
+    # estimate and is intentionally not re-derived from marginal tables.
+    if len(domains[policy.target_axis]) > resources.max_output_cells:
+        state["stopping_reason"] = "BASELINE_OUTPUT_DOMAIN_EXCEEDS_HOST_BUDGET"
+        state["status"] = "HELD_SOURCE_OUTPUT_CAPACITY"
+        return _seal(state, policy.max_receipt_bytes)
+    base = workspace.query(S04Projection(
+        (policy.target_axis,), context,
+    )).material()
+    base_n = base["raw_selected_full_case_n"]
+    base_grade = (
+        "SOURCE_EXACT_RAW_SAME_CASE_COARSE_NOT_POPULATION"
+        if base_n is not None and base_n >= policy.min_branch_n else
+        "LOW_OR_ZERO_CONTEXT_SUPPORT__NO_TARGET_DISCLOSURE"
+    )
+    base_counts = (
+        [{"state": item["output_states"][0], "n": item["raw_count"]}
+         for item in base["complete_output_cells"]]
+        if base_grade.startswith("SOURCE_EXACT") else []
+    )
+    if prior is not None and (
+        state.get("base_context") != _serialize_context(context)
+        or state.get("min_branch_n") != policy.min_branch_n
+        or state.get("base_same_case_n") != base_n
+        or state.get("base_target_distribution") != base_counts
+        or state.get("base_support_grade") != base_grade
+    ):
+        raise DeterminicityCycleError("COARSER_SOURCE_BASELINE_CHANGED_ON_RESUME")
+    state["base_context"] = _serialize_context(context)
+    state["min_branch_n"] = policy.min_branch_n
+    state["base_same_case_n"] = base_n
+    state["base_target_distribution"] = base_counts
+    state["base_support_grade"] = base_grade
     positive = [(tuple(row["cell"]), row["raw_count"])
                 for row in m_source["complete_cells"] if row["raw_count"] > 0]
     used = domain_cells
@@ -693,7 +733,7 @@ def consume_determinicity_context_for_prev3(
     *, receipt: DeterminicityCycleReceipt,
     independently_pinned_receipt_ref: ExactRef,
     workspace: S04GeneralJointWorkspace,
-    node_id: int,
+    node_id: int | None = None,
 ) -> dict[str, Any]:
     """Real S04 projection consumer, suitable to pass conditions to C4/C5.
 
@@ -705,13 +745,25 @@ def consume_determinicity_context_for_prev3(
             or type(independently_pinned_receipt_ref) is not ExactRef
             or independently_pinned_receipt_ref != receipt.ref
             or type(workspace) is not S04GeneralJointWorkspace
-            or type(node_id) is not int):
+            or (node_id is not None and type(node_id) is not int)):
         raise DeterminicityCycleError("INDEPENDENT_RECEIPT_AND_WORKSPACE_REQUIRED")
     m = receipt.material()
-    if (m["source"]["knowledge_ref"] != workspace._knowledge.ref.as_dict()
-            or not 0 <= node_id < len(m["nodes"])):
+    if m["source"]["knowledge_ref"] != workspace._knowledge.ref.as_dict():
         raise DeterminicityCycleError("FOREIGN_SOURCE_OR_UNISSUED_NODE")
-    node = m["nodes"][node_id]
+    if node_id is None:
+        node = {
+            "context": m["base_context"],
+            "raw_same_case_n": m["base_same_case_n"],
+            "target_disclosure": (
+                "RAW_SAME_CASE_SAMPLE_NOT_POPULATION"
+                if m["base_support_grade"].startswith("SOURCE_EXACT")
+                else "COARSE_SOURCE_HELD"
+            ),
+        }
+    else:
+        if not 0 <= node_id < len(m["nodes"]):
+            raise DeterminicityCycleError("FOREIGN_SOURCE_OR_UNISSUED_NODE")
+        node = m["nodes"][node_id]
     if node["target_disclosure"] != "RAW_SAME_CASE_SAMPLE_NOT_POPULATION":
         raise DeterminicityCycleError("HELD_CONTEXT_CANNOT_BECOME_PERSONAL_EVIDENCE")
     context = _ctx(node["context"])
