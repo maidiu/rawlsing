@@ -14,6 +14,7 @@ from um_sorok_organism.food_access_struggle import (
     contribute_food_petition, choose_food_petition)
 from um_sorok_organism.material_provisioning import (
     perform_one_actual_feeding,settle_provisioning,PROVISION_KIND)
+from um_sorok_organism.world import _effective_material_controller
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.routine_sources import (
     register_sourcefree_period_envelope)
@@ -192,6 +193,16 @@ class R17ObjectivePower(unittest.TestCase):
         self.assertEqual(by_giver["father"]["consumed_food_units"],0)
         self.assertEqual(by_giver["mother"]["consumed_food_units"],3)
         self.assertEqual(self.world["sites"]["home"]["food"],9)
+
+    def test_food_title_does_not_grant_title_to_home_work_and_other_sites(self):
+        controller,invalid=_effective_material_controller(
+            self.world,"home",self.world["sites"]["home"])
+        self.assertIsNone(controller)
+        self.assertFalse(invalid)
+        self.assertTrue(can_draw_shared_food(
+            self.world,"father","workshop"))
+        self.assertEqual(self.world["sites"]["home"]["stock"],8)
+        self.assertEqual(self.world["sites"]["workshop"]["stock"],5)
 
     def test_false_controller_and_actor_roster_do_not_grant_rights(self):
         with self.assertRaisesRegex(ValueError,"FOOD_POWER_ALREADY_REGISTERED"):
