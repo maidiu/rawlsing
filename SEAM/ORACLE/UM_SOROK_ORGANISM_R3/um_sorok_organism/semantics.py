@@ -78,9 +78,15 @@ class HeuristicSemanticProvider:
             action=experience.get('own_action')
             status=experience.get('status')
             cues=experience.get('perceived_cues',[])
+            # Sourcefree fallback can now turn a real lived bodily transition
+            # into a PROVISIONAL nonverbal proposal, even when the actor was
+            # the recipient of care rather than a voluntary co-performer.
+            # A live LLM receives the same evidence-grade candidates and may
+            # instead nominate no change. No adult end/idea is inferred.
+            lived=copy(packet.get('historically_proposed_preproject',[]))
             if status not in ('PERFORMED','PARTIAL'):
-                return {'task':task,'candidates':[],'semantic_grade':self.grade}
-            relation_candidates=[]
+                return {'task':task,'candidates':lived,'semantic_grade':self.grade}
+            relation_candidates=lived
             other=experience.get('reciprocated_partner')
             if other and cues:
                 # A genuinely performed joint occurrence can leave a trace and
