@@ -188,6 +188,13 @@ class HeuristicSemanticProvider:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
                        'cue_terms':['signal','care']}]+relation_candidates, 'semantic_grade':self.grade}
             return {'task':task,'candidates':relation_candidates,'semantic_grade':self.grade}
+        if task=='blind_adult_interview':
+            # A sourcefree fallback has no independently generated survey
+            # response law. Silence is preferable to resurrecting the
+            # questionnaire-keyed cached answer as a false blind success.
+            return {'task':task,'responses':{},
+                'status':'NO_INDEPENDENT_FALLBACK_INTERVIEW_EVALUATOR',
+                'semantic_grade':self.grade}
         if task=='adult_constructor':
             target=packet['pseudo_respondent']
             answers=target.get('answers',{})
