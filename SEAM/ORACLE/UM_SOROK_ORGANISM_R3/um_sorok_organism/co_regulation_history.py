@@ -1,0 +1,224 @@
+"""SORACLE R14: material co-regulation becomes acquired, fallible practical orientation.
+
+One aggregate period of historically scoped care CAN be material for later
+development without inventing individual care scenes. Objective care hours do
+not equal love, recognized benefactor, attachment certainty, the caregiver's
+future consent, or a conscious autobiographical memory.
+
+Constitution is an actor-owned read; the only psychological writer is the
+existing development.admit transaction. A later ACTUALLY SENSED co-presence
+can qualify a fictional semantic proposal to seek this particular person.
+The world then independently decides whether that person participates.
+"""
+from .types import GRADE, stable_id, copy
+from .organism import eligible
+
+
+def conserve_received_period_care(recipient, period):
+    """Persist one potential lived bodily condition, not scenes or affection."""
+    if type(period) is not dict or period.get('recipient')!=recipient.get('id'):
+        raise ValueError('COREGULATION_WRONG_RECIPIENT')
+    if not (period.get('id') and period.get('giver') and
+            period.get('source_ref') and
+            period.get('grade')=='SOURCEFREE_QUALIFIED_AGGREGATE_CARE'):
+        raise ValueError('COREGULATION_UNQUALIFIED_PERIOD')
+    hours=period.get('modeled_labor_hours')
+    effect=period.get('recipient_comfort_effect_model')
+    if type(hours) not in (int,float) or type(effect) not in (int,float):
+        raise ValueError('COREGULATION_INVALID_PERIOD_MAGNITUDE')
+    if hours<=0 or effect<=0:return None
+    if recipient['body']['sensor']<.05:
+        # The world may model material care without inferring that the person
+        # registered its social source through this sensory system.
+        return None
+    ident=stable_id('undergone_care_period',{
+        'actor':recipient['id'],'world_ref':period['id']})
+    records=recipient.setdefault('undergone_care_periods',[])
+    if any(x.get('id')==ident for x in records):
+        raise ValueError('COREGULATION_DUPLICATE_PERIOD_EXPOSURE')
+    row={
+        'id':ident,'actor':recipient['id'],'caregiver_ref':period['giver'],
+        'world_period_ref':period['id'],'source_ref':period['source_ref'],
+        'location':period['site'],'from_clock':period['start_clock'],
+        'through_clock':period['end_clock'],
+        'aggregate_modeled_care_hours':round(hours,3),
+        'aggregate_modeled_bodily_relief':round(effect,5),
+        'historical_exposure_kind':'MODELED_BODILY_CO_REGULATION',
+        'caregiver_consent_at_individual_unrendered_times':'NOT_PROVED',
+        'actor_identified_source_of_relief':'NOT_ESTABLISHED',
+        'attachment_or_trust':'NOT_ESTABLISHED',
+        'conscious_memories_of_each_episode':'NOT_GENERATED',
+        'grade':GRADE}
+    records.append(row)
+    return row
+
+
+def possible_acquired_regulation(actor,experience,event_ref):
+    """Current received co-presence is required to reinterpret a prior period."""
+    if actor.get('id')!=experience.get('actor') or not event_ref:
+        raise ValueError('COREGULATION_FOREIGN_EXPERIENCE')
+    received={c['id']:c for c in experience.get('perceived_cues',[])
+              if type(c) is dict and type(c.get('id')) is str
+              and c.get('kind')=='coactor_present'
+              and type(c.get('source_actor')) is str}
+    if not received:return []
+    known={x.get('caregiver_ref') for x in
+           actor.get('co_regulation_orientations',[])
+           if x.get('status')=='ACTIVE'}
+    results=[]
+    for partner in sorted({c['source_actor'] for c in received.values()}):
+        if partner in known:continue
+        history=[x for x in actor.get('undergone_care_periods',[])
+                 if x.get('caregiver_ref')==partner and
+                 x.get('aggregate_modeled_care_hours',0)>0 and
+                 x.get('through_clock',float('inf'))<=
+                      experience.get('clock',float('inf'))]
+        if not history:continue
+        cues=[c for c in received.values() if c['source_actor']==partner]
+        results.append({
+            'kind':'POSSIBLE_ACQUIRED_CO_REGULATION',
+            'source_care_period_refs':[x['id'] for x in history[-24:]],
+            'caregiver_ref':partner,'current_perceived_cue_ref':cues[0]['id'],
+            'candidate_operations':['SIGNAL','ORIENT','NO_NEW_ORIENTATION'],
+            'readiness':'PARTICULAR_HISTORICAL_RELATIONAL_POSSIBILITY',
+            'psychic_valuation':'NOT_YET_ADMITTED',
+            'not_a_conscious_attribution_of_care':True,
+            'caregiver_future_behavior':'INDEPENDENT_UNKNOWN',
+            'no_fictitious_microepisode':True,'grade':GRADE})
+    return results[:6]
+
+
+def admit_co_regulation(actor,experience,event_ref,proposal):
+    if actor.get('id')!=experience.get('actor'):
+        raise ValueError('COREGULATION_ADMISSION_FOREIGN_ACTOR')
+    partner=proposal.get('caregiver_ref')
+    cue_id=proposal.get('perceived_cue_ref')
+    if type(partner) is not str or not partner or partner==actor['id']:
+        raise ValueError('COREGULATION_ADMISSION_INVALID_CAREGIVER')
+    matches=[c for c in experience.get('perceived_cues',[])
+             if type(c) is dict and c.get('id')==cue_id and
+             c.get('kind')=='coactor_present' and
+             c.get('source_actor')==partner]
+    if len(matches)!=1:
+        raise ValueError('COREGULATION_ADMISSION_NO_LIVED_COPRESENCE')
+    referenced=proposal.get('period_refs')
+    if type(referenced) is not list or not 1<=len(referenced)<=24:
+        raise ValueError('COREGULATION_ADMISSION_NO_PERIOD_SOURCES')
+    personal={x['id']:x for x in actor.get('undergone_care_periods',[])
+              if x.get('caregiver_ref')==partner}
+    if len(set(referenced))!=len(referenced) or any(
+            x not in personal for x in referenced):
+        raise ValueError('COREGULATION_ADMISSION_FOREIGN_CARE_HISTORY')
+    if any(x.get('caregiver_ref')==partner and x.get('status')=='ACTIVE'
+           for x in actor.get('co_regulation_orientations',[])):
+        raise ValueError('COREGULATION_ADMISSION_ALREADY_ACTIVE')
+    ident=stable_id('acquired_coregulation',{
+        'actor':actor['id'],'partner':partner,'event':event_ref,
+        'periods':referenced,'cue':cue_id})
+    row={
+        'id':ident,'actor':actor['id'],'caregiver_ref':partner,
+        'origin_event':event_ref,'experience_ref':experience.get('ref'),
+        'current_perceived_cue_ref':cue_id,
+        'source_care_period_refs':copy(referenced),
+        'possible_operation':'SIGNAL','status':'ACTIVE',
+        'scope_location':experience.get('location'),
+        'actor_identifies_help_as_social_power':'NOT_ESTABLISHED',
+        'caregiver_will_respond':'NOT_ASSUMED',
+        'affection_and_moral_merit':'NOT_INFERRED',
+        'conscious_actor_reason':'NOT_INFERRED',
+        'hypothesis':'ACQUIRED_PARTICULAR_CO_REGULATION_ORIENTATION',
+        'grade':GRADE}
+    actor.setdefault('co_regulation_orientations',[]).append(row)
+    return {'kind':'ACQUIRE_CO_REGULATION_ORIENTATION',
+            'orientation_ref':ident,'source_periods':len(referenced),
+            'recipient':actor['id'],'caregiver_ref':partner,'grade':GRADE}
+
+
+def sourcefree_co_regulation_proposal(possibilities):
+    """One uniquely sourced prior caregiver, not a universal care reflex."""
+    if len(possibilities)!=1:return []
+    p=possibilities[0]
+    return [{'kind':'ACQUIRE_CO_REGULATION_ORIENTATION',
+             'caregiver_ref':p['caregiver_ref'],
+             'period_refs':p['source_care_period_refs'],
+             'perceived_cue_ref':p['current_perceived_cue_ref'],
+             'sourcefree_no_conscious_knowledge':True}]
+
+
+def recruit_co_regulation(constitution,access):
+    if constitution.actor!=access.actor:
+        raise ValueError('COREGULATION_RECRUITMENT_FOREIGN_ACTOR')
+    present={x.get('source_actor') for x in access.cues
+             if type(x) is dict and x.get('kind')=='coactor_present'}
+    offered=[];readset=[]
+    if not eligible(constitution.body,'SIGNAL')[0]:
+        return {'offered':offered,'readset':readset}
+    # A corresponding caregiver is *present*, but can still decline to act.
+    for record in constitution.co_regulation_orientations:
+        if record.get('status')!='ACTIVE' or record.get('caregiver_ref') not in present:
+            continue
+        if record.get('scope_location') not in (None,access.location):
+            continue
+        offered.append({
+            'caregiver_ref':record['caregiver_ref'],
+            'orientation_ref':record['id'],
+            'source_care_period_refs':copy(record['source_care_period_refs']),
+            'action':'SIGNAL',
+            'score':.22,
+            'historical_ground':'SOURCEFREE_LIVED_CO_REGULATION_HISTORY',
+            'not_child_conscious_causal_theory':True,
+            'coactor_consent':'INDEPENDENT_UNDECIDED',
+            'grade':GRADE})
+        readset.append(record['id'])
+    return {'offered':offered,'readset':readset,'grade':GRADE}
+
+
+def addressed_signal_alternatives(constitution,access,option):
+    if option.get('action')!='SIGNAL':return []
+    history=recruit_co_regulation(constitution,access)
+    return [{
+        'option_id':stable_id('historically_addressed_signal',{
+            'actor':constitution.actor,'clock':constitution.clock,
+            'partner':p['caregiver_ref'],'orientation':p['orientation_ref']}),
+        'actor':constitution.actor,'as_of_clock':constitution.clock,
+        'operation':'SIGNAL','project_id':None,
+        'grounds_status':'HISTORICALLY_ACQUIRED_CO_REGULATION',
+        'anticipated_difference':None,
+        'beneficiary_as_apprehended':'NOT_INFERRED',
+        'world_request':{
+            'operation':'SIGNAL',
+            'addressed_party_ref':p['caregiver_ref'],
+            'material_object_ref':None},
+        'binding_status':'HISTORICALLY_ADDRESSED_PARTNER_PRESENT',
+        'origin_orientation_ref':p['orientation_ref'],
+        'source_period_refs':p['source_care_period_refs'],
+        'caregiver_participation_not_required_or_assumed':True,
+        'not_a_conscious_reason_or_love_claim':True,
+        'source_grade':GRADE}
+        for p in history['offered']]
+
+
+def choose_historically_situated_signal(options,body):
+    """Fallible fallback: a need-bearing actor can *try* to summon a prior carer.
+
+    This is not a universal infant reflex; it only operates if an already
+    admitted orientation and the person's actual current availability match.
+    A project, contrary pressure or ambiguous eligible caregivers defeats it.
+    """
+    if type(body) is not dict or body.get('comfort',1)>=.43:
+        return None
+    if any(o.get('project_courses') for o in options):
+        return None
+    qualified=[]
+    for o in options:
+        if o.get('action')!='SIGNAL' or o.get('psychodynamic_status')=='UNRESOLVED_CONTRADICTION':
+            continue
+        for alt in o.get('practical_alternatives',[]):
+            if alt.get('grounds_status')=='HISTORICALLY_ACQUIRED_CO_REGULATION':
+                qualified.append(alt)
+    if len(qualified)!=1:return None
+    return {
+        'action':'SIGNAL','practical_option_id':qualified[0]['option_id'],
+        'project_id':None,
+        'selection_grade':'SOURCEFREE_RELATIONALLY_GROUNDED_CALL_ATTEMPT',
+        'other_response_is_independently_settled':True}
