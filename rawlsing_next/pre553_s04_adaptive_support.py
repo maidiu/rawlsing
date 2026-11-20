@@ -55,7 +55,7 @@ class AdaptiveSupportPolicy:
     protected_min_n: int = 2
     protected_parent_fraction: str = "0.10"
     protected_min_target_tv: str = "0.25"
-    max_protected_children_per_split: int = 2
+    max_protected_children_per_split: int = 0  # never auto-expand raw-contrast noise
 
     def __post_init__(self) -> None:
         for x in (self.explore_rate, self.review_rate,
@@ -63,9 +63,12 @@ class AdaptiveSupportPolicy:
             _rate(x)
         for x in (self.explore_floor, self.explore_cap,
                   self.review_floor, self.review_cap,
-                  self.protected_min_n, self.max_protected_children_per_split):
+                  self.protected_min_n):
             if type(x) is not int or x < 1:
                 raise AdaptiveSupportError("INVALID_SUPPORT_COUNT_LIMIT")
+        if (type(self.max_protected_children_per_split) is not int
+                or self.max_protected_children_per_split < 0):
+            raise AdaptiveSupportError("INVALID_PROTECTED_DIAGNOSTIC_QUOTA")
         if (self.explore_floor > self.explore_cap
                 or self.review_floor > self.review_cap
                 or self.review_floor < self.explore_floor
@@ -201,5 +204,9 @@ def order_child_probes(
     quota = policy.max_protected_children_per_split
     for item in protected[quota:]:
         held.append({**item, "reason": "PROTECTED_MINOR_PROBE_QUOTA_NOT_NEGATIVE"})
+    # A statistical surprise from n=2 or n=4 is overwhelmingly likely
+    # without independent corroboration. The default quota is zero.
+    # Any nonzero experimental quota must be explicitly requested by
+    # the competent source-science owner, never inferred from TV alone.
     scheduled = regular + protected[:quota]
     return scheduled, held
