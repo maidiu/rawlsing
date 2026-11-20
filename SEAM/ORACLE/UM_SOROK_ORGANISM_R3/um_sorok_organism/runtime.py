@@ -17,6 +17,7 @@ from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
+from .practical_powers import retain_exercised_power
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -456,6 +457,13 @@ class ConstitutiveRuntime:
             record_actor_participation(
                 actors[aid],experience,resolved,objective_ref,
                 body_before=bodily_before[aid],body_after=actors[aid]['body'])
+            # A person can later seek to repeat an actually exercised
+            # operation or attempt to practice a formerly joint activity.
+            # The source-free rule does NOT confer independent technical
+            # mastery or external access rights.
+            retain_exercised_power(
+                actors[aid],experience,objective_ref,
+                world['positions'].get(aid,actors[aid]['location']))
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
