@@ -141,10 +141,12 @@ def test_empty_path_honors_initial_context_and_unconstrained_offer():
 
 def test_zero_complete_case_context_is_not_labeled_impossibility():
     c4 = _c4("C5-ZERO")
-    result = _path(c4, [(2, "1")], initial={0: "0", 1: "0"})
+    # A fully specified zero remains observable. An already one-person
+    # starting context must NOT be extended through target-state branching.
+    result = _path(c4, [], initial={0: "0", 1: "0", 2: "1"})
     m = result.material()
     assert m["final_raw_complete_case_n"] == 0
-    assert m["history"][0]["disposition"] == "OBSERVED_ZERO_IN_COMPLETE_CASE__NOT_IMPOSSIBLE"
+    assert m["history"] == []
     assert m["status"] == "ZERO_OBSERVED_CONTEXT__NOT_IMPOSSIBILITY"
     assert m["final_case_offer_payload"]["selected_complete_joint_cell"] == []
     # Source contains zero cells but cannot prove physical impossibility.
@@ -341,3 +343,23 @@ def test_actual_I03_majority_minority_and_tie_survive_v3_context_branching():
     assert len(whole) == 3
     assert whole[0]["candidate_state"] == "0"
     assert path.material()["final_case_offer_payload"]["sorok_v3_actor_mutation"] is None
+
+
+def test_low_n_starting_context_does_not_expose_target_through_axis_partitions():
+    c4 = _c4("C5-LOW-BASE-TARGET-REFUSAL")
+    base = _plan(c4, conditions={0: "0", 1: "0"}, axes=(2,)).material()
+    assert base["base_raw_complete_case_n"] == 1
+    assert base["state"] == "LOW_COMPLETE_CASE_N__NO_CANDIDATE_OFFER"
+    axis = base["source_observed_axes"][0]
+    assert axis["state"] == "HELD_LOW_OR_ZERO_BASE_CONTEXT__NO_BRANCH_DISCLOSURE"
+    assert axis["branches"] == []
+    assert axis["partition_sum_conserves_base_full_cases"] is None
+    # The original code let a further step expose which target state the
+    # one-person sample contributed despite declaring that very N held.
+    with pytest.raises(V3ContextNavigationError, match="cannot extend initial"):
+        _path(c4, [(2, "0")], initial={0: "0", 1: "0"})
+    # Preserve the existing positive 2->1 partition's counts; only an
+    # ALREADY low-N base loses its ordinary child breakdown.
+    eligible = _plan(c4, conditions={0: "0"}, axes=(1,)).material()
+    assert eligible["base_raw_complete_case_n"] == 2
+    assert [branch["raw_complete_case_n"] for branch in eligible["source_observed_axes"][0]["branches"]] == [1, 1]

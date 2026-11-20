@@ -18,10 +18,36 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007)
 fi
+# A test queue is an immutable evidence batch. Never overwrite a previous
+# RED/GREEN at the same SHA, even when a worker retries a corrected command.
+# To rerun, choose a new REMONT_PROOF_ROOT and keep the previous archive.
+if [[ ! "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] ||
+   [[ ! "$EXPECTED_PREFF_C0_HEAD" =~ ^[0-9a-f]{40}$ ]]; then
+  echo "HOLD_INVALID_REMONT_EXACT_HEAD" >&2
+  exit 25
+fi
+declare -A seen_cases=()
+for id in "${cases[@]}"; do
+  case "$id" in
+    RMT-Q001|RMT-Q002|RMT-Q003|RMT-Q004|RMT-Q005|RMT-Q007) ;;
+    *)
+      echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
+      exit 2 ;;
+  esac
+  if [[ -n "${seen_cases[$id]+present}" ]]; then
+    echo "HOLD_DUPLICATE_REMONT_QID: $id" >&2
+    exit 26
+  fi
+  seen_cases["$id"]=1
+done
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
-mkdir -p "$OUT"
+mkdir -p "$(dirname "$OUT")"
+if ! mkdir -m 700 "$OUT"; then
+  echo "HOLD_EXISTING_REMONT_PROOF__DO_NOT_OVERWRITE: $OUT" >&2
+  exit 27
+fi
 printf '%s\n' "$HEAD_SHA" > "$OUT/exact_head.txt"
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
 printf '%s\n' "case_id,exitcode,report_directory" > "$OUT/index.csv"
