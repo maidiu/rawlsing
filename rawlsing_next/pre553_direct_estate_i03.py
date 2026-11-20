@@ -32,6 +32,8 @@ from rawlsing_next._pre553_query_common import (
     EmpiricalQueryResolutionError, _ReleaseIndex, _ref_field,
 )
 from rawlsing_next._pre553_external_i02_certificate import DIRECT_SCHEMA
+from rawlsing_next.pre553_anvil_stream_carrier_qualification import STREAM_SCHEMA
+from rawlsing_next.pre553_anvil_stream_native_i03 import VerifiedAnvilStreamEstate
 from rawlsing_next.pre553_c11_integrity import RespondentIdentity
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalCoordinateFact, EmpiricalUniverse, ExactRef, RespondentEvent,
@@ -117,11 +119,17 @@ class DirectEstateI03Session:
     all bodies stay in the independently hashed Parquet estate.
     """
 
-    def __init__(self, estate: VerifiedDirectEstate):
-        if type(estate) is not VerifiedDirectEstate:
-            raise DirectEstateError("native cold I03 requires exact VerifiedDirectEstate")
-        if estate.i02.schema != DIRECT_SCHEMA:
-            raise DirectEstateError("native cold I03 requires exact complete direct-I02 certificate")
+    def __init__(self, estate: VerifiedDirectEstate | VerifiedAnvilStreamEstate):
+        if type(estate) is VerifiedDirectEstate:
+            if estate.i02.schema != DIRECT_SCHEMA:
+                raise DirectEstateError("native cold I03 requires exact complete direct-I02 certificate")
+        elif type(estate) is VerifiedAnvilStreamEstate:
+            if estate.i02.schema != STREAM_SCHEMA:
+                raise DirectEstateError("native cold I03 requires exact qualified ANVIL stream schema")
+        else:
+            raise DirectEstateError(
+                "native cold I03 requires exact independently verified direct or ANVIL stream estate"
+            )
         self.estate = estate
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         self._db: sqlite3.Connection | None = None
@@ -556,8 +564,15 @@ class DirectEstateI03Session:
         self, *, query: Any, release_refs: Any,
     ) -> tuple[tuple[ExactRef, _ReleaseIndex], ...]:
         self._require_live()
-        release = self.estate.reconstructed_v1_release_ref
-        replay = _ref_from_key(self.estate.i02.replay, "C11Internal:ReplayManifest")
+        if type(self.estate) is VerifiedAnvilStreamEstate:
+            # A stream has a genuine exact stream release root and a replay
+            # digest, NOT an independently reconstructed historical v1 C11
+            # replay manifest. Preserve that difference in every native fact.
+            release = self.estate.native_release_ref
+            replay = self.estate.native_replay_ref
+        else:
+            release = self.estate.reconstructed_v1_release_ref
+            replay = _ref_from_key(self.estate.i02.replay, "C11Internal:ReplayManifest")
         universe_ref = _ref_from_key(self.estate.i02.universe, "EmpiricalUniverse@1.0.0")
         supplied = tuple(sorted(
             {exact_ref(ref, "release_ref") for ref in release_refs},
