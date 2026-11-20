@@ -106,3 +106,29 @@ def retain_personal_notice_exposure(actor,experience,event_ref):
         records.append({'kind':'RETAIN_PERSONAL_PUBLIC_NOTICE_EXPOSURE',
                         'ref':key,'grade':GRADE})
     return records
+
+
+def choose_grounded_public_inquiry(options):
+    """Sourcefree fallback when only one historically grounded notice is live.
+
+    An institution is not compelled to tell the truth simply because an
+    individual inspected its public document. The actor need not consciously
+    call this behavior an investigation or a political challenge.
+    """
+    choices=[a for option in options if option.get('action')=='INSPECT'
+             and not option.get('project_courses')
+             for a in option.get('practical_alternatives',[])
+             if a.get('grounds_status')==
+             'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING']
+    distinct={a['option_id']:a for a in choices}
+    if len(distinct)!=1:
+        return None
+    choice=next(iter(distinct.values()))
+    return {
+        'action':'INSPECT',
+        'practical_option_id':choice['option_id'],
+        'project_id':None,
+        'semantic_grade':'SOURCEFREE_ACTOR_GROUNDED_EVIDENCE_SEEKING',
+        'selection_is_not_conscious_explanation':True,
+        'public_notice_ref_analyst_only':choice['world_request']['material_object_ref'],
+    }
