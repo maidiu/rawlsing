@@ -229,6 +229,7 @@ def pre_cue_pressures(constitution, access):
                 'source_family': family, 'ref': source_id,
                 'action': row['operation'], 'polarity': polarity,
                 'origin_event': row['origin_event'],
+                'source_modality': row.get('source',{}).get('modality'),
                 'source_self_claim_not_causal_truth': family == 'ACQUIRED_SELF_ORGANIZATION',
                 'not_conscious_intent': True, 'not_a_new_project': True,
                 'no_present_cue_required': True, 'grade': GRADE,
