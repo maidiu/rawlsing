@@ -1,5 +1,8 @@
 # REMONT — exact source/authority artifact retrieval ledger (2026-11-19)
 
+**ACTUAL-BYTE RECOVERY ADDENDUM (DO NOT REPLACE THIS 190-ITEM HISTORICAL LIST):** [RECOVERED_ARCHIVE_AND_14_SOURCE_BYTE_DELTA_20261119.md](RECOVERED_ARCHIVE_AND_14_SOURCE_BYTE_DELTA_20261119.md), companion 119-record verified original/source and codebook inventory plus all 4,907 36-wave ZIP member locations at native Library `/Rawlsing/Evidence/REMONT_2026.11.19_FULL_INVENTORY/`. QSR-C actual and 14 frozen source files direct hash matches; 48 codebook CSV SHA members (35 accepted-source waves plus 13 Asian W6 legacy). Do not conflate historical path census with current physical byte verification or source owner permission.
+
+
 **Status:** author-candidate source archaeology, not selected live semantic authority. **Scope:** reconstruct and reuse historically accepted DDM/VOZHD question-structure, source-native occurrence topology, response-option semantics and their existing modern C11/Z06 first consumers. For bulk future source provenance, includes the full frozen 35 SAV/DTA files and associated codebooks/audits.
 
 Machine-readable source: [ORIGINAL_ARTIFACT_RETRIEVAL_LIST.json](ORIGINAL_ARTIFACT_RETRIEVAL_LIST.json), 190 entries with typed statuses, exact sizes/hashes when proven, date basis, original archive/repo/Library path and archival status. [Original source recovery law](HISTORICAL_SOURCE_AUTHORITY_RECOVERY.md) and [typed H01–H15 evidence](HISTORICAL_SOURCE_AUTHORITY_RECOVERY.json).
