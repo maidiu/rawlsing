@@ -4,7 +4,7 @@
 
 **Repository/branch:** `maidiu/rawlsing` · PR #1164 · `review/pyat1158-mulch-physical-dhikr-20261119-r1`.
 
-**Immutable evidence chronology:** User Mac run at `a0b95cb7231601bbc228cf13b644851dd22c449d`, `PREFF_COURT=C4_FF_V3`: **19 tests, 9 PASS / 10 FAIL**, exit 1. Nine failures: DHIKR binary floats refused by PRE553 identity. One: I05 test erroneously required distinct candidate source-identity refs to coincide. Author repair `21cb6985e9ced72e62a0fb14e4fff22ddea6092b` is code-committed, **NOT EXECUTED**. Follow-on SHA adds explicit downstream decimal reader and this queue; **NOT EXECUTED**. Never transfer test results across SHAs.
+**Immutable evidence chronology:** User Mac first-fault at `a0b95cb7231601bbc228cf13b644851dd22c449d`, `PREFF_COURT=C4_FF_V3`: **19 tests / 9 PASS / 10 FAIL**, nine from DHIKR float identity, one mistaken I05 source identity collapse. Later Mac sourcefree full queue at **frozen `8c4e70ef0a3bc1a146f84504bd1ac5ff548f0fb0`**: **194 test executions / 177 PASS / 17 failure instances (16 unique nodes)**. Q001 13/13 PASS, Q002 8/8 PASS, Q003 7/8, Q004 66/78, Q005 83/87, Q006 HELD. Q004 12 share one supported FF01 null-field/ABI identity defect; Q003 one stale cold pin error regex; Q005 coordinate owner miscount and frozen mapping `.key` (plus repeated C4 red). These are **user/worker Mac local reports, not independent G5**, with unpublished JUnit under `.pyat-preff-remont-proof/8c4e70ef.../`. The repairs are code-committed at descendants of C5 and **NOT_EXECUTED at repaired HEAD**. Never transfer test results across SHAs.
 
 ## Single repeatable worker operation
 
@@ -15,10 +15,10 @@ At a clean worktree pinned to the current, explicitly recorded #1164 commit:
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008
 ```
 
-Without arguments the runner defaults to Q001–Q004 plus the newly appended Q007; Q005 is the additional broad regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
+Without arguments the runner defaults to Q001–Q004, Q007 and Q008; Q005 remains the separately requested broad original regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
 **Growing rule:** Add a fresh numbered QID and its purpose, exact file(s), producer/consumer, positive/negative proof and triage owner here, and append one bounded suite to the launcher. Do **not** modify existing QID meanings or erase red/held evidence; supersede old IDs explicitly. OpenCode receives the same commission on every run, reads its latest queue and executes all eligible new QIDs against one frozen HEAD.
 
@@ -72,8 +72,17 @@ Without arguments the runner defaults to Q001–Q004 plus the newly appended Q00
 - **Negative falsifiers:** independently invented marginal combinations, duplicate/foreign/mapped-by-guess axes, NaN/float source conditions, context escalation after low-N, missing external pin, counterfeit rehashed replay, incompatible source risk or state, falsely declaring minority a trait/cohort, fabricating world/actor permission.
 - **Triage:** REMONT Browser for source/semantics/privacy/actor and cross-owner defects; OpenCode separately authorized for one-module bounded code mistakes. **No fake person.** All 14 tests and inherited Q001–Q005 remain NOT EXECUTED at the new C5 commit. Historical user Mac 10 fail/9 pass remains old head only.
 
+### RMT-Q008 — repair-bound held-source/raw provenance ring (PF-038–041)
+**Priority P0 · NEW / SOURCEFREE / RUN_PENDING**
+- **Tests:** `rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py` (native I03→S04→FF01 actual source-unknown roster, 1/4 unknowns and forged rehashed membership); `rawlsing_next/tests/test_preff_c0_raw_preservation.py` (original SAV/DTA raw physical witness, unmapped preservation, correct independent coordinate owners, frozen saved respondent identity).
+- **Boundary:** Q008 covers the historical negative controls often missed by the Q004 FF01 parity test and Q005 broad C0; **does not replace** Q003/C4, Q004/FF01 or Q005 full prior-source regressions. For source fix PF-038, require source exact positive `test_pyat1009_ff01_s04_consumer.py` as Q004; assert supported `held_condition_membership_uncertainty` key fully absent, not serialized null.
+- **Positive:** supported S04→FF01 exact historical generic receipt ref; HELD authentic source-unknown provenance remains restricted to S04 knowledge ref (count/denominator/source knowledge, NO roster exports/digest); no false joint support; all saved source cells retain own raw physical identity/typed missingness across mapping changes; owner authority applies to both emitted coordinate slots; frozen respondent mapping rehydrates with existing `exact_ref`.
+- **Falsifiers:** C1 held state loses knowledge or exports member refs; Q004 parity still differs despite missing null; 5/10 coordinate false count; SAV/DTA `.key` failure; unbound response cells absent; counterfeit release or physical witness accepted; protected scientific authority inferred.
+- **Routing:** REMONT Browser judges PF-038 original FF01 ABI/provenance; OpenCode bounded test corrections for PF-039–041; distinct independent G5 only after exact-SHA executed proof.
+- **Exact state:** repaired source/test commits `826a500`, `a05c705`, `c98141d`, `212713a`; all `CODE_COMMITTED_NOT_EXECUTED` until rerun at one current frozen HEAD.
+
 ## Required execution comment (PR #1164, linked to #1097)
 
 One **version-pinned** report, including: exact tested SHA and git tree cleanliness; host OS, Python and pytest version; each QID with test files, exact command, summary, exit code and JUnit/log paths; first failure stack and minimal source trace; whether a failure is old/new/test-misstatement/owner contract; proposed smallest repair; affected upstream and downstream owners; historical negative controls to conserve; recommended **REMONT Browser vs OpenCode** with reason. Mark unrun items `NOT_EXECUTED`; do not call author runs independent G5 or protected acceptance.
 
-**Repair boundary:** OpenCode executes and *suggests*, does not commit code in this commission. A later separately user-authorized OpenCode bug flight may repair a narrow one-owner, no-new-ABI defect (approximately two implementation/test files maximum), with a fresh exact-head regression. Cross-owner, historical source/provenance, scientific/actor authority or substantive method changes go to REMONT Browser; architectural forward construction stays with PYAT HQ. REMONT keeps test execution history beside PF001–PF036 without making HQ wait for the queue.
+**Repair boundary:** OpenCode executes and *suggests*, does not commit code in this standing commission; the REMONT Browser repair author has issued bounded fixes separately. A later separately user-authorized OpenCode bug flight may repair a narrow one-owner, no-new-ABI defect (approximately two implementation/test files maximum), with a fresh exact-head regression. Cross-owner, historical source/provenance, scientific/actor authority or substantive method changes go to REMONT Browser; architectural forward construction stays with PYAT HQ. REMONT keeps test execution history beside PF001–PF036 without making HQ wait for the queue.
