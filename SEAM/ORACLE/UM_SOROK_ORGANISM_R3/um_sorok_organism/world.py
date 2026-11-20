@@ -13,6 +13,9 @@ from .mediated_efficacy import objective_arrangement
 from .material_provisioning import perform_one_actual_feeding
 from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
+from .food_power_reproduction import (
+    INSTALL,MAINTAIN,SANCTION,COMMONS,install_gate,
+    maintain_gate,sanction_gate,contribute_food_commons)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -197,6 +200,13 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             next_owned=_exact_material_delta(owned,-1,'INVALID_OWNED_FOOD_DELTA')
             world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=next_owned
             output='ATE_OWNED_FOOD'
+        elif _nonnegative_transfer_amount(
+                site.get('mutual_aid_food',0),
+                'INVALID_MUTUAL_AID_FOOD')>=1:
+            site['mutual_aid_food']=_exact_material_delta(
+                site['mutual_aid_food'],-1,
+                'INVALID_COMMONS_FOOD_DELTA')
+            output='ATE_INDEPENDENT_FOOD_COMMONS'
         elif loc=='home' and household>=1 and (
                 can_draw_shared_food(world,aid,loc)):
             site['food']=_exact_material_delta(household,-1,'INVALID_SITE_FOOD_DELTA');output='ATE_SHARED_HOUSEHOLD_FOOD'
@@ -357,6 +367,28 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         status=institutional['status']
         output=institutional['outcome']
         policy_receipt=institutional.get('policy_receipt')
+    elif attempt.action==INSTALL:
+        institutional=install_gate(world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('enclosure_event_ref')
+    elif attempt.action==MAINTAIN:
+        institutional=maintain_gate(world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('enforcement_ref')
+    elif attempt.action==SANCTION:
+        institutional=sanction_gate(
+            world,actors,aid,target,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('sanction_ref')
+    elif attempt.action==COMMONS:
+        institutional=contribute_food_commons(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('commons_ref')
     elif attempt.action=='SIGN_FOOD_PETITION':
         institutional=contribute_food_petition(
             world,actors,aid,loc,attempt.intention)
