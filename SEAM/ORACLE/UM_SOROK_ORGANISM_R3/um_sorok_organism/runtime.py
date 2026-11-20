@@ -24,7 +24,9 @@ from .material_investments import (
 from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
-from .co_regulation_history import possible_acquired_regulation
+from .co_regulation_history import (
+    possible_acquired_regulation, record_lived_co_regulation_response,
+    possible_revision_after_nonresponse)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -297,6 +299,9 @@ class ConstitutiveRuntime:
                            'addressed_party_ref':bound_target,
                            'material_object_ref':bound_object},
                        'selected_material_object_ref':bound_object,
+                       'source_co_regulation_orientation_ref':(
+                           selected_alternative.get('origin_orientation_ref')
+                           if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
@@ -495,6 +500,14 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            # A failed, actually attempted addressed call may revise the
+            # historically learned expectation of this particular source.
+            # It never proves why that Other did not respond, or retroactively
+            # changes the care the child previously underwent.
+            if personally_done and actor_attempt is not None:
+                record_lived_co_regulation_response(
+                    actors[aid],experience,
+                    actor_attempt.practical_selection,objective_ref)
             # Objective coactor contribution remains with the world, while
             # each person's actually accessible experience can establish a
             # contingent later *possibility of seeking assistance*.
@@ -529,6 +542,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             care_genesis=possible_acquired_regulation(
                 actors[aid],experience,objective_ref)
+            care_revision=possible_revision_after_nonresponse(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -556,6 +571,8 @@ class ConstitutiveRuntime:
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
                 'historically_possible_co_regulation':copy(care_genesis),
+                'historically_possible_co_regulation_revision':copy(
+                    care_revision),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
