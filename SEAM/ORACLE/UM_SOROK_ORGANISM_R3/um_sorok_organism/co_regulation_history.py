@@ -191,14 +191,16 @@ def recruit_co_regulation(constitution,access):
              'bodily_regulation_sensed':True}
             for x in record.get('response_history',[])
             if x.get('felt_bodily_relief_on_this_call',False) is True
-            and type(x.get('event_clock')) is int]
+            and type(x.get('event_clock')) is int
+            and x['event_clock']<=constitution.clock]
         personally_sensed_support += [
             {'response_ref':x['id'],'event_clock':x.get('clock'),
              'bodily_regulation_sensed':True}
             for x in getattr(constitution,'experienced_care_events',[])
             if x.get('giver_ref')==record['caregiver_ref']
             and type(x.get('clock')) is int
-            and x.get('clock')>=record.get('origin_event_clock',0)]
+            and record.get('origin_event_clock') is not None
+            and record['origin_event_clock']<=x['clock']<=constitution.clock]
         offered.append({
             'personally_sensed_support_history':sorted(
                 personally_sensed_support,key=lambda x:x['event_clock']),
