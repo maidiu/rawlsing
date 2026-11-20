@@ -23,6 +23,7 @@ from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
+from .routine_sources import register_sourcefree_period_envelope
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -628,6 +629,26 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon)
+
+    def register_historical_routine_source(self,spec):
+        """Declare a bounded *research fictional* routine source before use.
+
+        This does not certify that an actor did something, was willing,
+        learned an operation, or possessed a survey respondent's history.
+        Only a later source-checked compressed passage can use this envelope.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=register_sourcefree_period_envelope(world,actors,spec)
+        receipt=self.ledger.commit(
+            self.world_id,v,world,{}, {},
+            'SOURCEFREE_HISTORICAL_ROUTINE_ENVELOPE',None,{
+                'source_ref':source['id'],
+                'world_only_not_actor_experience':True,
+                'no_automatic_effect_or_native_science':True,
+                'grade':GRADE})
+        return {'receipt':receipt['id'],'source_ref':source['id'],
+                'grade':'EXPLICIT_SOURCEFREE_HISTORICAL_FIXTURE'}
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
