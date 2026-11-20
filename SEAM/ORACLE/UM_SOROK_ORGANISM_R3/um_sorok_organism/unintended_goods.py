@@ -97,7 +97,7 @@ def one_sourcefree_provisional_end(qualifications, actor):
         'kind':'NOTICE_POSSIBLE_END',
         'perceived_cue_ref':q['source_cue_ref'],
         'possible_object':'explore a further possibility with this encountered material thing',
-        'possible_means':['INSPECT','REPAIR','ORIENT'],
+        'possible_means':['INSPECT','REPAIR'],
         # For preverbal actors, strings are implementation discriminants,
         # never claims of already articulated human categories.
         'cue_terms':['material_object'],
