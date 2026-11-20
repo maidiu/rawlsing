@@ -324,6 +324,35 @@ class R18JoinedRuntime(unittest.TestCase):
         self.assertFalse(can_draw_shared_food(w,'mother','home'))
         self.assertTrue(self.rt.verify()['valid'])
 
+    def test_live_two_actor_property_transfer_requires_later_inspection_and_payment(self):
+        self.rt.step('father',requested_action='INSPECT',
+                     object_ref=self.source['notice_ref'])
+        self.rt.step('father',requested_action='INSTALL_PANTRY_GATE')
+        version,w=self.rt.ledger.world('w1')
+        w['accounts']['mother']=2.0
+        self.rt.ledger.commit(
+            'w1',version,w,{}, {},'EXPLICIT_FICTIONAL_BUYER_ASSETS',None,
+            {'not_survey_empirical_assets':True})
+        offered=self.rt.step('father',
+            requested_action='OFFER_PANTRY_CONTROL_TRANSFER',target='mother')
+        self.assertEqual(offered['status'],'PERFORMED')
+        _,w=self.rt.ledger.world('w1')
+        board=w['institutions']['household_food_board']
+        self.assertEqual(board['controller_actor'],'father')
+        offer_notice=board['r18_transfer_offer']['notice_ref']
+        self.rt.step('mother',requested_action='INSPECT',
+                     object_ref=offer_notice)
+        purchased=self.rt.step('mother',
+            requested_action='ACCEPT_PANTRY_CONTROL_TRANSFER')
+        self.assertEqual(purchased['status'],'PERFORMED')
+        _,w=self.rt.ledger.world('w1')
+        board=w['institutions']['household_food_board']
+        self.assertEqual(board['controller_actor'],'mother')
+        self.assertEqual(len(board['r18_transfer_history']),1)
+        self.assertEqual(w['accounts']['mother'],1.0)
+        self.assertEqual(w['accounts']['father'],5.0)
+        self.assertTrue(self.rt.verify()['valid'])
+
     def test_live_material_frustration_becomes_later_available_commons(self):
         self.rt.step('father',requested_action='INSPECT',
                      object_ref=self.source['notice_ref'])
