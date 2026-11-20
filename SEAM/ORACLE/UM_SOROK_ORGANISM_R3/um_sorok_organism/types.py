@@ -58,6 +58,7 @@ class Constitution:
     # a signal path is a motive, self-knowledge, or invented counterfactual.
     possible_ends: list[dict] = field(default_factory=list)
     evidence_paths: list[dict] = field(default_factory=list)
+    expectations: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -90,6 +91,8 @@ class Attempt:
     # Actor-selected project purpose is separate from the pooled reasons why
     # a physical operation was eligible. None is a lawful first attempt.
     purpose_selection: dict = field(default_factory=dict)
+    # Private actor-policy decision identity; world executes only action/target/object.
+    practical_selection: dict = field(default_factory=dict)
     scene_hash: str = ''
     grade: str = GRADE
 
@@ -116,7 +119,8 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
                  'arousal': .40, 'motor': .17, 'sensor': .40, 'language': 0.0,
                  'illness': 0.0, 'regulation': .28},
         'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [],
-        'possible_ends': [], 'evidence_paths': [], 'memories': [], 'traces': [],
+        'possible_ends': [], 'evidence_paths': [], 'expectations': [],
+        'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
     }
