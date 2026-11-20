@@ -22,7 +22,7 @@ RELATIONS = frozenset({
 # Motifs are *acquired configurations* of previously acquired actor forms.
 # They may route possible action or interpret the significance of a relation.
 # They do not invent new action opcodes, facts about other minds, or world power.
-EFFECTS = frozenset({"ACTION_CURRENT", "RELATION_MEDIATION"})
+EFFECTS = frozenset({"ACTION_CURRENT", "RELATION_MEDIATION", "RECRUIT_FORM"})
 POLARITIES = frozenset({"APPROACH", "WITHHOLD"})
 
 
@@ -69,12 +69,20 @@ def validate_motif(motif, forms):
             if (effect.get("action") not in ACTIONS
                     or effect.get("polarity") not in POLARITIES):
                 raise InvalidRelationalMotif("MOTIF_ACTION_NOT_QUALIFIED")
-        else:
+        elif effect["kind"] == "RELATION_MEDIATION":
             if (effect.get("source") not in sources or
                     effect.get("target") not in sources or
                     effect["source"] == effect["target"] or
                     effect.get("relation") not in RELATIONS):
                 raise InvalidRelationalMotif("MOTIF_RELATION_NOT_QUALIFIED")
+        else:
+            # A historical configuration can recruit an *already acquired*
+            # third form across cues; it cannot invent the target, bypass its
+            # organismic scope, or override an independently admitted veto.
+            target = effect.get("target_form")
+            if (type(target) is not str or target not in forms
+                    or target in sources or not forms[target].get("origin")):
+                raise InvalidRelationalMotif("MOTIF_RECRUITMENT_TARGET_UNQUALIFIED")
     if motif.get("status", "ACTIVE") not in ("ACTIVE", "DORMANT"):
         raise InvalidRelationalMotif("INVALID_MOTIF_STATUS")
     return True
@@ -110,6 +118,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
     cues = _tokens(access)
     currents = []
     action_currents = []
+    recruitment_candidates = []
     readset = set()
     for link in constitution.links:
         if (link.get("source") not in situated
@@ -165,6 +174,15 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
                     "source_form_refs": sorted(sources),
                     "has_inhibited_source": bool(sources & blocked),
                 })
+            elif effect["kind"] == "RECRUIT_FORM":
+                recruitment_candidates.append({
+                    "target_form": effect["target_form"],
+                    "motif_ref": mid,
+                    "source_form_refs": sorted(sources),
+                    "suppressed_source_refs": sorted(sources & blocked),
+                    "qualification": "SITUATED_ACQUIRED_ASSOCIATIVE_RECRUITMENT",
+                    "grade": GRADE,
+                })
             else:
                 currents.append({
                     "kind": "ACQUIRED_PERSONAL_SENSE_MEDIATION",
@@ -178,6 +196,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
     return {
         "currents": currents,
         "action_currents": action_currents,
+        "recruitment_candidates": recruitment_candidates,
         "readset": sorted(readset),
         "grade": GRADE,
         "not_a_clinical_unconscious_etiology": True,
