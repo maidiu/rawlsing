@@ -62,13 +62,23 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
         ident=purpose_selection.get('project_id')
         status_kind=purpose_selection.get('status')
         if status_kind=='ACTOR_POLICY_SELECTED_PROJECT_COURSE':
-            if (type(ident) is not str or ident not in project_ids):
+            if (type(ident) is not str or project_ids!={ident}
+                    or purpose_selection.get('project_ids',[ident])!=[ident]):
                 raise ValueError('SELECTED_PURPOSE_NOT_IN_ACTOR_ATTEMPT_BASIS')
             project_ids={ident}
+        elif status_kind=='ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES':
+            refs=purpose_selection.get('project_ids')
+            if (ident is not None or type(refs) is not list
+                    or not 2<=len(refs)<=8
+                    or any(type(x) is not str for x in refs)
+                    or set(refs)!=project_ids or len(set(refs))!=len(refs)):
+                raise ValueError('MULTIPLE_SELECTED_PURPOSES_MISMATCH_ATTEMPT')
+            project_ids=set(refs)
         elif status_kind in (
             'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
             'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE'):
-            if ident is not None:raise ValueError('PURPOSE_UNKNOWN_BUT_PROJECT_ASSERTED')
+            if ident is not None or project_ids:
+                raise ValueError('PURPOSE_UNKNOWN_BUT_PROJECT_ASSERTED')
             project_ids=set()
         else:raise ValueError('UNKNOWN_SELECTED_PURPOSE_STATUS')
         attribution=status_kind
