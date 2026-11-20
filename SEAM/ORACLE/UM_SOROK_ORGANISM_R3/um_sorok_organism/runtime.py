@@ -16,6 +16,7 @@ from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
+from .initiative import continue_life
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -469,6 +470,19 @@ class ConstitutiveRuntime:
             'objective_outcome':resolved['objective_description'],'public_tip':expression.get('surface'),
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
+
+    def continue_without_user(self,beats=1):
+        """Commit bounded real actor-selected, world-resolved life while absent.
+
+        Unlike compressed background passage, each beat is a real transaction.
+        The scheduler chooses who gets the occasion, not what they intend;
+        it passes no external action, target, consent or forced developmental
+        proposition into the continuing organism.
+        """
+        return continue_life(
+            lambda: self.ledger.world(self.world_id)[1],
+            self.ledger.actors,
+            lambda actor_id: self.step(actor_id), beats)
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
