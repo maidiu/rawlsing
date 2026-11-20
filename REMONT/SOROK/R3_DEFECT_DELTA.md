@@ -30,3 +30,8 @@ At exact parent `0d40c700e1aea9c2f4d4940827106309baebbd3b`, an independent REMON
 ## REMONTATHON R3 R2 — after R1 84-test cut
 
 SR-P040 header/envelope mismatch and SR-P041 Python -O fail-open were reproduced and repaired at `storage.py`; SR-P018 now checks exact canonical source-seal bytes, SR-P039 rejects bool clock. Four additional negative tests, combined **88/88 local PASS**. See ongoing `OPEN_DEFECTS` records and `REPAIRS/REMONTATHON_R3_R2_20261119/`. This is independent repair construction, not an independently reviewed protected owner promotion.
+
+
+## REMONTATHON R3 R3 — further red/green repairs, 91 normal and optimized tests
+
+Against current R3 integrated parent `2986cf5307097a2546bcd22c74371f39415a6751`, the independent REMONT engineer reproduced three sourcefree faults: a deleted entire SQLite event chain was reported valid; byte-altered event envelopes preserved normalized digest; and public_history still disclosed private buyer credit shortages. SR-P042/P043/P044 fix those at existing storage/world source owners, with new exact negative tests and full **91/91 PASS** under normal AND optimized `python -O` execution. Source release remains author-tested research only; old repair records and protected HEAD unchanged. See the canonical existing P/T/E ledger and R3 R3 receipt.

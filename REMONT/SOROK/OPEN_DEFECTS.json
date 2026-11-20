@@ -563,6 +563,39 @@
       "executable_probe": "test_p041_optimized_python_does_not_disable_integrity_assertions",
       "disposition": "Unconditional explicit exceptions reject altered ancestry in optimized subprocess",
       "research_limit": "Local research demonstration, not native owner/cold G5"
+    },
+    {
+      "id": "SR-P042",
+      "status": "SOURCEFREE_REMONTATHON_R3_91_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "RED_BEFORE_GREEN_CONFIRMED_CODE",
+      "first_fault": "Deleting every event from an initialized life without source-seals gave a valid empty chain",
+      "owner_location": "storage.py::verify_chain",
+      "doctrinal_source": "Constitutive Person: objective history identity versus public witnessed events",
+      "executable_probe": "test_p042_deleting_every_event_cannot_turn_life_into_a_valid_empty_chain",
+      "disposition": "Refuse verification when the entire objective event chain is missing",
+      "grade": "SOURCEFREE_LOCAL_AUTHOR_TESTED__NO_NATIVE_OR_INDEPENDENT_RECEIVING"
+    },
+    {
+      "id": "SR-P043",
+      "status": "SOURCEFREE_REMONTATHON_R3_91_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "RED_BEFORE_GREEN_CONFIRMED_CODE",
+      "first_fault": "Whitespace-altered stored event JSON remained accepted because digest normalized it first",
+      "owner_location": "storage.py::events/verify_chain",
+      "doctrinal_source": "Constitutive Person: objective history identity versus public witnessed events",
+      "executable_probe": "test_p043_ledger_event_payload_byte_mutation_without_semantic_change_is_detected",
+      "disposition": "Preserve original envelope bytes and enforce exact canonical stored representation",
+      "grade": "SOURCEFREE_LOCAL_AUTHOR_TESTED__NO_NATIVE_OR_INDEPENDENT_RECEIVING"
+    },
+    {
+      "id": "SR-P044",
+      "status": "SOURCEFREE_REMONTATHON_R3_91_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "RED_BEFORE_GREEN_CONFIRMED_CODE",
+      "first_fault": "Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair",
+      "owner_location": "world.py::_resolve_untrusted_core",
+      "doctrinal_source": "Constitutive Person: objective history identity versus public witnessed events",
+      "executable_probe": "test_p044_private_credit_shortfall_is_not_world_public_history",
+      "disposition": "Keep real reason in objective privileged Resolution and event ledger, publish only observable incomplete attempt in world public_history",
+      "grade": "SOURCEFREE_LOCAL_AUTHOR_TESTED__NO_NATIVE_OR_INDEPENDENT_RECEIVING"
     }
   ],
   "queue_T": [],
@@ -684,5 +717,21 @@
     "grade": "AUTHOR_SOURCEFREE_TESTED__INDEPENDENT_RECEIVING_PENDING",
     "evidence": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R2_20261119/",
     "protected_received": false
+  },
+  "remontathon_r3_r3": {
+    "base_head": "2986cf5307097a2546bcd22c74371f39415a6751",
+    "local_tests_normal": 91,
+    "local_tests_python_optimized": 91,
+    "fail": 0,
+    "new_ids": [
+      "SR-P042",
+      "SR-P043",
+      "SR-P044"
+    ],
+    "sourcefree_grade": "AUTHOR_EXECUTED__REVIEW_PENDING",
+    "archive_sha256": "2410b6869291c6b45eb66339d12c27feb06e8af9cd1594c7a1f4a343f36aeac1",
+    "evidence": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R3_20261119/",
+    "protected_received": false,
+    "independent_reviewed": false
   }
 }

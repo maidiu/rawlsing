@@ -164,7 +164,8 @@ class ResearchLedger:
         else:
             x=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash FROM events ORDER BY seq LIMIT ?', (limit,))
         return [{'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
-                 'envelope':json.loads(p),'previous_hash':prev,'chain_hash':h}
+                 'envelope':json.loads(p),'envelope_bytes':p,
+                 'previous_hash':prev,'chain_hash':h}
                 for e,wid,clock,aid,kind,p,prev,h in x]
 
     def verify_chain(self):
@@ -177,8 +178,12 @@ class ResearchLedger:
         """
         prior='GENESIS';count=0;anchored={}
         records=self.events()
+        if not records:
+            raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
         for r in records:
             envelope=r['envelope']
+            if canonical(envelope)!=r['envelope_bytes']:
+                raise AssertionError('EVENT_ENVELOPE_NONCANONICAL_BYTES')
             if (r['world_id']!=envelope['world'] or r['clock']!=envelope['clock']
                 or r['actor_id']!=envelope['actor'] or r['kind']!=envelope['kind']):
                 raise AssertionError('EVENT_HEADER_ENVELOPE_MISMATCH')

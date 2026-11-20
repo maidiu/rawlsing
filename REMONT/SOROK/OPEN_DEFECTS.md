@@ -138,3 +138,16 @@ All 13 IDs are **local author-tested repair candidates, not independently receiv
 Immutable preceding R1 84-test cut: `a4d4f54b825b69c5b2f7ff66e8450babafda6404`. Reproduced further first faults: **SR-P040** forged SQLite event `kind/actor_id/world_id/clock` headers passed a hashed-envelope-only verifier; **SR-P041** running `python -O` eliminated assert-based ancestry and hash checks. Repaired original `storage.py::events/verify_chain` to bind every SQLite header to its hashed envelope and use unconditional fail-closed exceptions. **SR-P018 additional partial:** whitespace mutation of source-seal bytes had preserved a semantically normalized hash, so the verifier now requires exact canonical bytes. **SR-P039 additional partial:** a Boolean objective clock is rejected (no `bool`→`int` coercion).
 
 Four new before-red/after-green tests include an actual optimized Python subprocess. Full combined R3 **88 PASS / 0 FAIL**; historical 62/84 cuts preserved. Current R2 receipt, test log and exact file identity under `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R2_20261119/`. Roster now **41 P, 0 confirmed T, 6 E**. Sourcefree author evidence only; independent receiving, native P2–P6/source rights, scientific POP/DEV/TRANS, protected merger and paired canonical CURRENT_PROGRESS remain unearned.
+
+
+## REMONTATHON R3 R3 — 91 real code tests, exact-byte event custody and public-history repair
+
+Source parent `2986cf5307097a2546bcd22c74371f39415a6751`. Three new first faults were **RED** on that exact code before repair; all pass along with the full organism suite after patch, including **91 tests on normal Python and 91 on `python -O`**. No changes in protected ownership; this is sourcefree research code.
+
+| ID | Reproduced fault | Fixed first source owner |
+|---|---|---|
+| **SR-P042** | Deleting every event from an initialized life without source-seals gave a valid empty chain | `storage.py::verify_chain` (`test_p042_deleting_every_event_cannot_turn_life_into_a_valid_empty_chain`) |
+| **SR-P043** | Whitespace-altered stored event JSON remained accepted because digest normalized it first | `storage.py::events/verify_chain` (`test_p043_ledger_event_payload_byte_mutation_without_semantic_change_is_detected`) |
+| **SR-P044** | Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair | `world.py::_resolve_untrusted_core` (`test_p044_private_credit_shortfall_is_not_world_public_history`) |
+
+SR-P042 ensures an initialized world may not present an entirely deleted SQLite event history as `valid=True`. SR-P043 requires byte-identical canonical stored event envelopes, not just identical parsed JSON semantics. SR-P044 closes the *remaining* private account shortfall disclosure through `world.public_history`; the privileged `Resolution.world_delta.event` retains the exact objective cause. Previous P031 cue/tip protections and R2 source seal byte identity are conserved. R3 evidence and runnable 91-test archive in `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R3_20261119/` and immutable personal Library `/Rawlsing/SOROK-REMONT/REMONTATHON_R3_20261119_R3/`. Total **44 P, zero confirmed T, six E**. Remaining P005/P012/P018 partial; P011/P022/P023 and broader scientific functions still unresolved. No independently accepted/graded native science or protected merge.

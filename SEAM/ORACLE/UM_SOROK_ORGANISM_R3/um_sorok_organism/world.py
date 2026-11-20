@@ -253,12 +253,16 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'object_ref':attempt.object_ref,
                    'material_claim_ref':claim_ref,
                    'co_present_not_verified_witnessing':True}
-    world['public_history'].append(event_summary)
+    # Objective event audit contains the real resolution, but public history
+    # must not publish the actor's private financial/material explanation.
+    # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
+    perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
+    public_event={**event_summary,'outcome':perceptible_outcome}
+    world['public_history'].append(public_event)
     # New cues are actual public world consequences, not actor introspection.
     # World effects persist even when no participant currently perceives them.
     # Public, witness-accessible sign is not a world-audit report. A refused
     # purchase, for example, does not reveal the purchaser's account deficit.
-    perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
     add_cue(world,'performed_'+attempt.action.lower(),
             [attempt.action.lower(),perceptible_outcome.lower()],
             location=loc,modality='auditory' if attempt.action in ('SING','SPEAK','SIGNAL','ASK') else 'visual',
