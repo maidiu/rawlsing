@@ -61,6 +61,7 @@ def record_actor_participation(actor, experience, actual, event_ref,
     record={
         'id':ref,'actor':actor['id'],'event_ref':event_ref,
         'experience_ref':experience.get('ref'),
+        'experienced_clock':experience.get('clock'),
         'own_attempted_operation':operation,'own_status':status,
         'reciprocated_partner_actor_visible':partner,
         'received_cue_refs':sorted(set(signs)),
@@ -116,13 +117,29 @@ def conditional_assistance_options(constitution, access, option):
     offered=[]
     for counterpart,rows in sorted(grounded.items()):
         source_refs=sorted(set(r['event_ref'] for r in rows))
+        # An earlier lone interruption and later genuinely reciprocated
+        # cooperation can produce an actor-specific acquired practice. It is
+        # stronger evidence of a *conditional way to try together* than mere
+        # repetition, but it cannot supply the other's future independent act.
+        practiced=[x for x in getattr(constitution,'joint_practices',[])
+            if x.get('actor')==constitution.actor
+            and x.get('coactor_ref')==counterpart
+            and x.get('operation')==operation
+            and x.get('status')==(
+                'ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY')
+            and all(type(t) is str for t in x.get('source_participation_refs',[]))]
+        qualified=practiced[-1] if practiced else None
         offered.append({
             'option_id':stable_id('conditional_assistance_option',{
                 'actor':constitution.actor,'clock':constitution.clock,
                 'operation':operation,'other':counterpart,'sources':source_refs}),
             'actor':constitution.actor,'as_of_clock':constitution.clock,
             'operation':operation,'project_id':None,
-            'grounds_status':'ACTOR_PREVIOUSLY_EXPERIENCED_CONTINGENT_COACTIVITY',
+            'grounds_status':(
+                'HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                if qualified else
+                'ACTOR_PREVIOUSLY_EXPERIENCED_CONTINGENT_COACTIVITY'),
+            'acquired_joint_practice_ref':qualified['id'] if qualified else None,
             'participation_source_event_refs':source_refs,
             'supporter_actor_ref':counterpart,
             'world_request':{'operation':operation,
@@ -159,11 +176,19 @@ def choose_uncompelled_assistance(options, body):
         return None
     choices=[a for o in options if o.get('action')=='SIGNAL'
              for a in o.get('practical_alternatives',[])
-             if a.get('grounds_status')==
-                'ACTOR_PREVIOUSLY_EXPERIENCED_CONTINGENT_COACTIVITY']
-    if len(choices)!=1:
-        return None
-    option=choices[0]
+             if a.get('grounds_status') in (
+                'ACTOR_PREVIOUSLY_EXPERIENCED_CONTINGENT_COACTIVITY',
+                'HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE')]
+    if len(choices)==1:
+        option=choices[0]
+    else:
+        # Multiple past respondents do not authorize an arbitrary preferred
+        # caregiver. One actor-acquired, source-qualified *different* joint
+        # practice may now differentiate the prospective invitation.
+        practiced=[x for x in choices if x.get('grounds_status')==(
+            'HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE')]
+        if len(practiced)!=1:return None
+        option=practiced[0]
     return {
         'action':'SIGNAL','project_id':None,
         'practical_option_id':option['option_id'],

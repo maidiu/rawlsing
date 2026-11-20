@@ -30,6 +30,9 @@ from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import possible_institutional_learning
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
+from .psychic_genesis import (
+    conserve_lived_episode,possible_contrast_end)
+from .joint_practice_genesis import possible_joint_practice
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -52,6 +55,23 @@ class ConstitutiveRuntime:
         self.semantic=semantic or ValidatingSemanticService()
         self.world_id=world_id
         self.authority=IndependentWorldAuthority(self._independent_coactor_plan)
+
+    @classmethod
+    def with_explicit_json_llm(cls,db,*,endpoint,model,api_key,
+                               allow_private_actor_data=False,
+                               world_id='w1',transport=None):
+        """Real opt-in semantic machinery; no implicit remote disclosure.
+
+        This only selects a model provider. Psychic development still
+        requires an actual world experience and the existing typed owner.
+        """
+        from .live_psychological_llm import ExplicitJSONLLMProvider
+        provider=ExplicitJSONLLMProvider(
+            endpoint=endpoint,model=model,api_key=api_key,
+            allow_private_actor_data=allow_private_actor_data,
+            transport=transport)
+        return cls(db,semantic=ValidatingSemanticService(provider),
+                   world_id=world_id)
 
     def initialize(self,parent_packets=None,child_id='nadia',child_name='Nadia'):
         world=blank_world(self.world_id)
@@ -514,6 +534,14 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            conserve_lived_episode(
+                actors[aid],experience,objective_ref,
+                bodily_before[aid],actors[aid]['body'],
+                source_selection=(
+                    actor_attempt.intention if personally_done and
+                    actor_attempt is not None else None))
+            possible_genetic_end=possible_contrast_end(
+                actors[aid],experience,objective_ref)
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
             conserve_sensed_material_nonperformance(
@@ -542,6 +570,8 @@ class ConstitutiveRuntime:
             record_actor_participation(
                 actors[aid],experience,resolved,objective_ref,
                 body_before=bodily_before[aid],body_after=actors[aid]['body'])
+            possible_joint_practice_genesis=possible_joint_practice(
+                actors[aid],experience,objective_ref)
             # A person can later seek to repeat an actually exercised
             # operation or attempt to practice a formerly joint activity.
             # The source-free rule does NOT confer independent technical
@@ -599,6 +629,11 @@ class ConstitutiveRuntime:
                 # Untried possible ends are actor-history hypotheses, not
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'historically_possible_genetic_ends':copy(possible_genetic_end),
+                'historically_possible_joint_practices':copy(
+                    possible_joint_practice_genesis),
+                'recent_personally_lived_genesis_witnesses_analyst_only':copy(
+                    actors[aid].get('lived_genesis_episodes',[])[-8:]),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),

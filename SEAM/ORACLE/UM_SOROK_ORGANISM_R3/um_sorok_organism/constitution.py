@@ -65,6 +65,9 @@ def materialize(actor,world):
             'material_dependency_encounters',[])),
         labor_dependency_encounters=copy(actor.get(
             'labor_dependency_encounters',[])),
+        lived_genesis_episodes=copy(actor.get(
+            'lived_genesis_episodes',[])),
+        joint_practices=copy(actor.get('joint_practices',[])),
         historical_orientations=copy(actor.get('historical_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),

@@ -144,6 +144,15 @@ class HeuristicSemanticProvider:
             # A live LLM receives the same evidence-grade candidates and may
             # instead nominate no change. No adult end/idea is inferred.
             lived=copy(packet.get('historically_proposed_preproject',[]))
+            # P004/P011/P023: only a jointly source-qualified earlier
+            # interruption and later received bodily benefit can propose a
+            # novel possible end. This is NOT an immediate acquired motive.
+            genetic=packet.get('historically_possible_genetic_ends',[])
+            if len(genetic)==1:
+                lived.append(copy(genetic[0]))
+            joint=packet.get('historically_possible_joint_practices',[])
+            if len(joint)==1:
+                lived.append(copy(joint[0]))
             lived+=choose_one_grounded_plural_acquisition(
                 packet.get('historically_possible_plural_care',[]))
             lived+=propose_one_reopening(

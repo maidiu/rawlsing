@@ -1,0 +1,41 @@
+name: SORACLE — Nadia-first constitutive-genesis sourcefree court
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
+      - 'SEAM/ORACLE/00_NADIA_FIRST_CONSTRUCTION_PRIORITY_20261120.md'
+      - 'REMONT/SOROK/INBOX/20261120_SORACLE_NADIA_FIRST_P004_P011_P014_P015_P023_INTAKE.md'
+      - '.github/workflows/soracle-nadia-first-sourcefree-tests.yml'
+permissions:
+  contents: read
+jobs:
+  nadia-developmental-first-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile all organism modules
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m compileall -q um_sorok_organism
+      - name: New developmental-genesis first consumers
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_nadia_psychic_genesis_p004_p011_p023
+          python -O -m unittest -v tests.test_nadia_psychic_genesis_p004_p011_p023
+      - name: New conditional joint practice and Other independence
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_conditional_joint_practice_p015
+          python -O -m unittest -v tests.test_conditional_joint_practice_p015
+      - name: Original inherited organism suite
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -v
+      - name: Original inherited optimized suite
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest discover -s tests -v
