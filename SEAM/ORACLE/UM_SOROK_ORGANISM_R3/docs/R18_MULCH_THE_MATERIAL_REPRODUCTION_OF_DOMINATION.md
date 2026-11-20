@@ -41,6 +41,14 @@ New `food_power_reproduction.py` registers `SOURCEFREE_FOOD_ENCLOSURE_CONCESSION
 
 **No hidden autonomous enforcer:** this service provider is an explicit sourcefree institution with a material account, NOT a simulated human employee. Its employees, dependence, wages, competence, legitimacy and consent remain an additional future construction problem. Money accounting is improved; sociology of force remains incomplete.
 
+### 3. Control can be transmitted without assuming a recipient has accepted it
+
+The first R18 implementation constituted a controller who could maintain coercive capacity, but not a socially reproducible *property claim*. That revealed an additional problem: institutional authority could be created and contested, yet could not change hands as a historically operative object. Added the two distinct, situated world operations `OFFER_PANTRY_CONTROL_TRANSFER` and `ACCEPT_PANTRY_CONTROL_TRANSFER` inside the same `food_power_reproduction` ownership.
+
+A source-qualified controller can offer the still-`CONTROLLED` claim to a named, actually co-situated recipient. That writes a clock-limited public offer, NOT a new controller. The recipient must encounter and actually `INSPECT` that specific posted offer and then make a **different actor-owned ACCEPT action** with sufficient money. Only then does the world transfer a real monetary claim between the two people, change the named effective controller, replace the exclusive permitted-drawer roster, and retain a permanent typed source chain from original concession through the offer to the paid successor. The enforcement institution and its remaining paid coverage can be inherited but continued funding is not ensured. The original controller history is not overwritten; the new owner's mental identification or ideology is not inferred.
+
+This is **actual procedural and material transmission, not genealogical or universal class reproduction**. The fictional purchase price, the simplified seller/recipient procedure, the limited public notice and the absence of law, debt and inheritance courts remain sourcefree approximations. An expired, unaccepted offer conveys no authority and permits a new offer without rewriting the old one. A collective change to `SHARED_BY_COLLECTIVE_ACTS` prevents sale of the now-abolished exclusive controlling claim.
+
 ### 3. Material counterproduction instead of mere petitioning
 
 `CONTRIBUTE_FOOD_COMMONS` moves **one actually held private food unit** into a distinct, collectively accessible site store `mutual_aid_food` with its own durable transfer history. Its existence is not created by sympathy or rhetoric. Site food may remain under effective institutional exclusion. Independently contributed commons stock is physically disjoint from the original enclosed pantry.
@@ -71,6 +79,7 @@ Committed new original-repository tests at `tests/test_reproduced_food_power_r18
 - exact conservation of private transferred food and controller/enforcement-service money;
 - formal rights versus effective finite enforcement; paid maintenance and expiration;
 - independent public petition, effective general rule change, residual paid selective sanction and expiry;
+- a distinct offered versus accepted controller succession, source-specific prior notice inspection, actual buyer/seller monetary settlement, unaccepted-offer expiry, continuity of objective franchise and non-retroactive actor histories;
 - private stores and independent commons surviving control of the original pantry;
 - actual commons feeding rather than a hidden fallback to an individual's remaining private holdings;
 - actor-sensed nonperformance versus world-owner cause, as-of-clock first-consumer recruitment, and a joined `ConstitutiveRuntime` continuation with the same continuing Nadia and parents.
@@ -81,7 +90,7 @@ Read-only `.github/workflows/soracle-r18-sourcefree-tests.yml` permits exact-che
 
 ## MULCH AGAIN — what this stronger construction still lacks
 
-**Money financing a fictional service is not yet the actual social reproduction of coercive labor.** The model must acquire independently constituted enforcers, their jobs, wages, loyalties and refusals; historically specific property titles; transmission of class control; conflicts over custody and redistribution of capital; other institutions' recognition or rejection of an asserted title; household exit and social protection; and increasingly differentiated adult/child psychologically operable cultural meanings.
+**Money financing a fictional service is not yet the actual social reproduction of coercive labor.** The model must acquire independently constituted enforcers, their jobs, wages, loyalties and refusals; historically specific property titles; full intergenerational, state-recognized transmission of class control; conflicts over custody and redistribution of capital; other institutions' recognition or rejection of an asserted title; household exit and social protection; and increasingly differentiated adult/child psychologically operable cultural meanings.
 
 The R18 sourcefree concession remains a real imposed historical *entry condition*; the installed enclosure is material. Historical generativity must next extend further backward through acquisition and forward through social enforcement, not claim a completed class society. Sourcefree fractions, prices, deadlines and rationing are research choices, NOT human laws. No original PYAT conditional-adult, validated developmental calibration, protected PROGRAMMA, native CAN/ADP/P2–P6 or scientific issuance.
 
