@@ -16,6 +16,7 @@ from .plural_care_paths import (
     choose_one_grounded_plural_acquisition, propose_one_reopening,
     plural_addressed_signal_choice)
 from .caregiving_practice import choose_independent_repeat_feeding
+from .food_access_struggle import choose_food_petition
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -92,6 +93,9 @@ class HeuristicSemanticProvider:
             inquiry=choose_grounded_public_inquiry(possibilities)
             if inquiry:
                 return {'task':task,**inquiry}
+            collective=choose_food_petition(possibilities)
+            if collective:
+                return {'task':task,**collective}
             object_action=choose_qualified_material_care(possibilities)
             if object_action:
                 return {'task':task,**object_action}
