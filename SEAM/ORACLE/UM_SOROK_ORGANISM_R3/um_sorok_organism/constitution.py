@@ -139,23 +139,47 @@ def compose(constitution,access,limit=50):
             if len(newer)==len(reached):return reached
             reached=newer
 
-    potentially_active=closure(seed)
+    def joint_recruitment(start, blocked=frozenset()):
+        """Bounded positive-link + historically admitted motif fixed point.
+
+        A motif-recruited form is an existing qualified form, so its acquired
+        RECRUITS/SUPPORTS links and further qualified motifs may operate. This
+        is not the creation of new psyche or a change in physical eligibility.
+        Inhibitory veto is computed conservatively from all *potential* sources
+        before final recruitment: a newly reached inhibitor cannot silently
+        become an unopposed conduit or let its target act.
+        """
+        reached=closure(start,blocked)
+        motive_receipts={}
+        # Every strict iteration adds an existing acquired form; finite by
+        # actor's qualified form inventory, including cyclic motifs/links.
+        for _ in range(len(qualified)+1):
+            derived=derive_relational_metabolism(
+                constitution,access,{fid:forms[fid] for fid in reached},
+                list(set(inhibited)|set(blocked)))
+            new_targets=set()
+            for item in derived['recruitment_candidates']:
+                target=item['target_form']
+                if target in qualified and target not in blocked and target not in reached:
+                    new_targets.add(target)
+                    motive_receipts.setdefault(target,item)
+            following=closure(reached|new_targets,blocked)
+            if following==reached:
+                return reached,motive_receipts
+            reached=following
+        raise ValueError('RELATIONAL_RECRUITMENT_DID_NOT_TERMINATE')
+
+    potentially_active,_=joint_recruitment(seed)
     vetoed={l['target'] for l in negative if l['source'] in potentially_active}
     inhibited.extend(sorted(vetoed))
-    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
-    # A historically acquired relational configuration can recruit an already
-    # acquired form even without its ordinary cue. It cannot revive a vetoed
-    # direct action, bypass body/scope, or invent a form. Keep the inhibited
-    # source available for *indirect* mediation, not for direct performance.
-    relational=derive_relational_metabolism(constitution,access,active,inhibited)
-    for candidate in relational['recruitment_candidates']:
-        target=candidate['target_form']
-        if target in qualified and target not in vetoed and target not in active:
-            active[target]=copy(forms[target])
-            currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
-                'ref':target,'motif_ref':candidate['motif_ref'],
-                'had_inhibited_source':candidate['had_inhibited_source'],
-                'grade':relational['grade']})
+    actual,recruitment_receipts=joint_recruitment(seed,vetoed)
+    active={fid:copy(forms[fid]) for fid in actual}
+    for target,item in sorted(recruitment_receipts.items()):
+        if target not in active: continue
+        currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
+            'ref':target,'motif_ref':item['motif_ref'],
+            'had_inhibited_source':item['had_inhibited_source'],
+            'grade':item['grade']})
     relational=derive_relational_metabolism(constitution,access,active,inhibited)
     currents.extend(relational['currents'])
     # History-made links to activities can recruit an ongoing project under

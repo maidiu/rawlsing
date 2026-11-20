@@ -1,0 +1,78 @@
+test_external_injection_cannot_claim_project_course_by_legacy_basis (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_external_injection_cannot_claim_project_course_by_legacy_basis) ... FAIL
+test_no_selected_purpose_does_not_create_activity_history (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_no_selected_purpose_does_not_create_activity_history) ... ok
+test_selected_purpose_cannot_be_omitted_from_basis (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_selected_purpose_cannot_be_omitted_from_basis) ... FAIL
+test_unselected_extra_project_cannot_be_recorded_as_intent (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_unselected_extra_project_cannot_be_recorded_as_intent) ... FAIL
+test_valid_selected_multiple_projects_remains_distinct (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_valid_selected_multiple_projects_remains_distinct) ... ok
+test_cyclic_relational_and_positive_links_terminate_without_duplicates (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_cyclic_relational_and_positive_links_terminate_without_duplicates) ... FAIL
+test_motif_recruited_form_recruits_its_separate_link_descendant (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_motif_recruited_form_recruits_its_separate_link_descendant) ... FAIL
+test_motif_recruited_inhibitor_vetoes_directly_seeded_form (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_motif_recruited_inhibitor_vetoes_directly_seeded_form) ... FAIL
+test_motif_recruited_link_descendant_cannot_break_scope (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_motif_recruited_link_descendant_cannot_break_scope) ... ok
+test_two_distinct_motifs_cascade_to_another_acquired_form (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_two_distinct_motifs_cascade_to_another_acquired_form) ... FAIL
+
+======================================================================
+FAIL: test_external_injection_cannot_claim_project_course_by_legacy_basis (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_external_injection_cannot_claim_project_course_by_legacy_basis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_activity.py", line 16, in test_external_injection_cannot_claim_project_course_by_legacy_basis
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_PURPOSE_BASIS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_selected_purpose_cannot_be_omitted_from_basis (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_selected_purpose_cannot_be_omitted_from_basis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_activity.py", line 53, in test_selected_purpose_cannot_be_omitted_from_basis
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_PURPOSE_BASIS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unselected_extra_project_cannot_be_recorded_as_intent (test_remontathon_r14_activity.ActivityPurposeSelectionP004.test_unselected_extra_project_cannot_be_recorded_as_intent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_activity.py", line 26, in test_unselected_extra_project_cannot_be_recorded_as_intent
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_PURPOSE_BASIS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_cyclic_relational_and_positive_links_terminate_without_duplicates (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_cyclic_relational_and_positive_links_terminate_without_duplicates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_recruitment.py", line 69, in test_cyclic_relational_and_positive_links_terminate_without_duplicates
+    self.assertIn('d',ids)
+    ~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: 'd' not found in ['a', 'b', 'c']
+
+======================================================================
+FAIL: test_motif_recruited_form_recruits_its_separate_link_descendant (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_motif_recruited_form_recruits_its_separate_link_descendant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_recruitment.py", line 41, in test_motif_recruited_form_recruits_its_separate_link_descendant
+    self.assertIn('d',ids)
+    ~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: 'd' not found in {'a', 'b', 'c'}
+
+======================================================================
+FAIL: test_motif_recruited_inhibitor_vetoes_directly_seeded_form (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_motif_recruited_inhibitor_vetoes_directly_seeded_form)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_recruitment.py", line 55, in test_motif_recruited_inhibitor_vetoes_directly_seeded_form
+    self.assertNotIn('b',ids)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: 'b' unexpectedly found in {'a', 'b', 'c'}
+
+======================================================================
+FAIL: test_two_distinct_motifs_cascade_to_another_acquired_form (test_remontathon_r14_recruitment.RelationalLinkTransitiveP012.test_two_distinct_motifs_cascade_to_another_acquired_form)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r14_frozen_red/tests/test_remontathon_r14_recruitment.py", line 48, in test_two_distinct_motifs_cascade_to_another_acquired_form
+    self.assertIn('e',{f['id'] for f in s.recruited})
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'e' not found in {'a', 'b', 'c'}
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+FAILED (failures=7)
