@@ -13,6 +13,7 @@ from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation
+from .prospective_horizon import record_possible_end_trial
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -30,7 +31,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
          'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_PREPROJECT_ANTICIPATION',
-         'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION','NO_CHANGE'}
+         'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
+         'RECORD_POSSIBLE_END_TRIAL','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -273,6 +275,13 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op=='RECORD_POSSIBLE_END_TRIAL':
+            # A real trial is recorded even when no LLM wishes to declare an
+            # acquired motive. The developmental owner retains its afterlife.
+            try:
+                report.append(record_possible_end_trial(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='TAKE_UP_POSSIBLE_END':
             ref=c.get('possible_end_ref')
             ends=[e for e in actor.get('possible_ends',[])
