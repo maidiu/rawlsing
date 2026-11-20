@@ -7,6 +7,8 @@ from .types import copy, stable_id, GRADE
 from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
 from .prospective_horizon import select_bounded_exploratory_trial
 from .distributed_power import choose_uncompelled_assistance
+from .practical_inquiry import choose_grounded_public_inquiry
+from .material_investments import choose_qualified_material_care
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -63,6 +65,12 @@ class HeuristicSemanticProvider:
                 possibilities,packet.get('actor',{}).get('body',{}))
             if assisted:
                 return {'task':task,**assisted}
+            inquiry=choose_grounded_public_inquiry(possibilities)
+            if inquiry:
+                return {'task':task,**inquiry}
+            object_action=choose_qualified_material_care(possibilities)
+            if object_action:
+                return {'task':task,**object_action}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,

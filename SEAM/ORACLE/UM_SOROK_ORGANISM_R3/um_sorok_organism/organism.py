@@ -15,6 +15,7 @@ ACTIONS = {
     'CARE':{'motor':0.42,'language':0.0,'cost':0.10},
     'WORK':{'motor':0.62,'language':0.0,'cost':0.22},
     'REPAIR':{'motor':0.55,'language':0.10,'cost':0.16},
+    'MAKE_OBJECT':{'motor':0.52,'language':0.10,'cost':0.15},
     'ASK':{'motor':0.05,'language':0.4,'cost':0.04},
     'SPEAK':{'motor':0.02,'language':0.35,'cost':0.03},
     'REFUSE':{'motor':0.0,'language':0.0,'cost':0.01},

@@ -12,6 +12,14 @@ from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
+from .practical_powers import situated_exercised_repertoire
+from .practical_inquiry import offer_actor_inquiry, notices_present
+from .material_objects import (
+    material_objects_present, can_make, object_bound_alternatives,
+    material_opportunity_from_history)
+from .material_investments import (
+    invested_material_action_options, annotate_material_alternatives)
+from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -29,6 +37,11 @@ def materialize(actor,world):
         expectations=copy(actor.get('expectations',[])),
         participation_history=copy(actor.get('participation_history',[])),
         functional_bindings=copy(actor.get('functional_bindings',[])),
+        power_exercises=copy(actor.get('power_exercises',[])),
+        notice_exposures=copy(actor.get('notice_exposures',[])),
+        object_encounters=copy(actor.get('object_encounters',[])),
+        material_investments=copy(actor.get('material_investments',[])),
+        practice_exposures=copy(actor.get('practice_exposures',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -60,6 +73,30 @@ def actor_access(actor,world):
                     'clock':world['clock'],'kind':'coactor_present',
                     'tags':['coactor',other],'source_actor':other,'location':location,
                     'modality':'present','description':'co-present other actor'})
+    # An objectively posted notice is an opportunity to inspect public
+    # information, not automatic possession of its words or an explanation
+    # of an earlier obstruction. Reading requires an actual later operation.
+    if actor['body']['sensor'] >= .05:
+        for notice in notices_present(world,location,world['clock']):
+            cues.append({
+                'id':'public_notice_visible:'+notice['id']+':'+str(world['clock']),
+                'clock':world['clock'],
+                'kind':'public_notice_visible',
+                'public_notice_ref':notice['id'],
+                'tags':['posted','public_notice'],
+                'modality':'visual',
+                'location':location,'description':'a visible posted public notice',
+                'public_content_not_yet_experienced':True})
+    if actor['body']['sensor'] >= .05:
+        for obj in material_objects_present(world,location):
+            cues.append({
+                'id':'material_object_visible:'+obj['id']+':'+str(world['clock']),
+                'clock':world['clock'],'kind':'material_object_present',
+                'material_object_ref':obj['id'],
+                'tags':['material_object','object_present'],
+                'modality':'visual','location':location,
+                'description':'a visible worked material object',
+                'ownership_and_private_history_not_perceived':True})
     env=[]
     site=world['sites'].get(location,{})
     if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
@@ -70,6 +107,10 @@ def actor_access(actor,world):
             world,actor['id'],location)]
     if any(c.get('kind')=='coactor_present' for c in cues):
         env.append('PLEDGE_CARE')
+    if actor['body']['sensor'] >= .05 and can_make(world,actor['id'],location):
+        env.append('MAKE_OBJECT')
+    if any(x.get('kind')=='material_object_present' for x in cues):
+        env.append('INSPECT')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -275,6 +316,59 @@ def compose(constitution,access,limit=50):
         if 'project_pressure_ceiling' in q:
             q['score']+=q['project_pressure_ceiling']
             q['score_aggregation']='MAX_AVAILABLE_PROJECT_PRESSURE_NOT_SUM_OF_MOTIVES'
+    # Actual prior exercise may make an operation available on a later
+    # occasion without attributing the actor's motive, independent mastery,
+    # a new world right, or the earlier coactor's future willingness.
+    exercised=situated_exercised_repertoire(constitution,access)
+    for candidate in exercised['offered']:
+        action=candidate['action']
+        entry=actions.setdefault(action,{
+            'action':action,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_EXERCISED_POSSIBILITY'})
+        entry['basis']+=['exercise:'+r for r in candidate['basis']]
+        entry.setdefault('practical_exercise_sources',[]).extend(
+            candidate['source_event_refs'])
+        entry.setdefault('historical_support_statuses',[]).extend(
+            candidate['historical_support_statuses'])
+        entry['score']=max(entry['score'],candidate['score'])
+    inquiry=offer_actor_inquiry(constitution,access)
+    for candidate in inquiry['offered']:
+        action=candidate['action']
+        entry=actions.setdefault(action,{
+            'action':action,'score':candidate['score'],'basis':[],
+            'opportunity':'ACTOR_HISTORICAL_EVIDENCE_SEEKING'})
+        entry['score']=max(entry['score'],candidate['score'])
+        entry['basis']+=candidate['basis']
+        entry.setdefault('candidate_notice_refs',[]).extend(
+            candidate['candidate_notice_refs'])
+    material=material_opportunity_from_history(constitution,access)
+    for candidate in material['offers']:
+        op=candidate['action']
+        entry=actions.setdefault(op,{
+            'action':op,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_PROPOSED_MATERIAL_COMPOSITION'})
+        entry['score']=max(entry['score'],candidate['score'])
+        entry['basis']+=candidate['basis']
+    if 'INSPECT' in access.affordances:
+        ok,_=eligible(constitution.body,'INSPECT')
+        if ok:
+            actions.setdefault('INSPECT',{
+                'action':'INSPECT','score':.078,
+                'basis':['CURRENT_MATERIAL_OBJECT_VISIBLE'],
+                'opportunity':'MATERIAL_OBJECT_CAN_BE_INSPECTED_NOT_A_GOAL'})
+    invested=invested_material_action_options(constitution,access)
+    currents+=invested['recruitment']['currents']
+    for candidate in invested['proposals']:
+        op=candidate['action']
+        entry=actions.setdefault(op,{
+            'action':op,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_INVESTED_VISIBLE_OBJECT'})
+        entry['basis']+=candidate['basis']
+        entry['score']=max(entry['score'],candidate['score'])
+        entry.setdefault('object_specific_pressures',[]).append({
+            'material_object_ref':candidate['object_ref'],
+            'unresolved_conflict':candidate['unresolved_conflict'],
+            'actor_meaning_not_world_ownership':True})
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -324,12 +418,36 @@ def compose(constitution,access,limit=50):
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
     for option in dynamics['candidate_actions']:
+        # A graded *component* projection can inform future practical
+        # construction, without granting material permission or pretending
+        # the simulated actor has a Foucauldian theory of its own powers.
+        option['situated_component_facility']=situated_component_efficacy(
+            {'power_exercises':constitution.power_exercises,
+             'practice_exposures':constitution.practice_exposures},
+             option['action'],access.location)
         option['practical_alternatives']=practical_alternatives(
             constitution,attention['focus_access'],option)
         # A learned relation of distributed practical power can add a real
         # future *invitation* alternative. The Other's policy remains their own.
         option['practical_alternatives']+=conditional_assistance_options(
             constitution,attention['focus_access'],option)
+        option['practical_alternatives']+=object_bound_alternatives(
+            constitution,attention['focus_access'],option['action'])
+        annotate_material_alternatives(option,invested)
+        if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
+            option['practical_alternatives'] += [
+                {'option_id':'inquiry:'+constitution.actor+':'+
+                  str(constitution.clock)+':'+str(ref),
+                 'actor':constitution.actor,'as_of_clock':constitution.clock,
+                 'operation':'INSPECT','project_id':None,
+                 'grounds_status':'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING',
+                 'world_request':{'operation':'INSPECT',
+                     'addressed_party_ref':None,'material_object_ref':ref},
+                 'anticipated_difference':None,
+                 'binding_status':'PUBLIC_POSTED_NOTICE_ACTOR_SITUATED',
+                 'not_secret_world_explanation':True,
+                 'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+                for ref in option['candidate_notice_refs']]
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -346,7 +464,11 @@ def compose(constitution,access,limit=50):
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+functional['readset']+
+                           preproject['readset']+exercised['readset']+
+                           invested['recruitment']['readset']+
+                           material['readset']+
+                           inquiry['readset']+
+                           functional['readset']+
                            prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),

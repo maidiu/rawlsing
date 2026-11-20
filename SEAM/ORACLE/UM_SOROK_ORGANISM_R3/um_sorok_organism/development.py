@@ -15,6 +15,7 @@ from .preproject_agency import admit_preproject_anticipation, revise_preproject_
 from .reflective_regulation import acquire_reflective_regulation
 from .prospective_horizon import record_possible_end_trial
 from .functional_correspondence import admit_functional_correspondence
+from .material_investments import admit_material_investment
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -33,7 +34,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
          'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
-         'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE','NO_CHANGE'}
+         'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
+         'INVEST_MATERIAL_OBJECT','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -276,6 +278,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op=='INVEST_MATERIAL_OBJECT':
+            try:
+                report.append(admit_material_investment(
+                    actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_FUNCTIONAL_CORRESPONDENCE':
             try:
                 report.append(admit_functional_correspondence(actor,experience,event_ref,c))

@@ -17,6 +17,10 @@ from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
+from .practical_powers import retain_exercised_power
+from .practical_inquiry import retain_personal_notice_exposure
+from .material_investments import (
+    retain_personal_object_encounter, possible_object_investments)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -249,6 +253,8 @@ class ConstitutiveRuntime:
             basis+=['project:'+ref for ref in selected_refs]
             bound_target=(selected_alternative['world_request']['addressed_party_ref']
                           if selected_alternative else None)
+            bound_object=(selected_alternative['world_request'].get('material_object_ref')
+                          if selected_alternative else None)
             practical={'status':'ACTOR_POLICY_PRACTICAL_ATTEMPT',
                        'option_id':(selected_alternative['option_id']
                            if selected_alternative else stable_id(
@@ -284,7 +290,9 @@ class ConstitutiveRuntime:
                 getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
                 selected_refs)
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
-        return Attempt(actor_id,action,target=bound_target,means=[],basis=basis,
+        return Attempt(actor_id,action,target=bound_target,
+                       object_ref=(bound_object if requested_action is None else None),
+                       means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
                        practical_selection=practical,
                        scene_hash=digest({'world':world,'actor':actor_id})),
@@ -297,7 +305,9 @@ class ConstitutiveRuntime:
         if target is not None and attempt.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:attempt.target=target
-        attempt.object_ref=object_ref
+        if object_ref is not None and attempt.object_ref not in (None,object_ref):
+            raise ValueError('CALLER_OBJECT_CONFLICTS_WITH_ACTOR_SELECTION')
+        if object_ref is not None:attempt.object_ref=object_ref
         return attempt
 
     def _independent_coactor_plan(self,principal,world,actors):
@@ -349,7 +359,9 @@ class ConstitutiveRuntime:
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:principal.target=target
-        principal.object_ref=object_ref
+        if object_ref is not None and principal.object_ref not in (None,object_ref):
+            raise ValueError('CALLER_OBJECT_CONFLICTS_WITH_ACTOR_SELECTION')
+        if object_ref is not None:principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
@@ -456,6 +468,15 @@ class ConstitutiveRuntime:
             record_actor_participation(
                 actors[aid],experience,resolved,objective_ref,
                 body_before=bodily_before[aid],body_after=actors[aid]['body'])
+            # A person can later seek to repeat an actually exercised
+            # operation or attempt to practice a formerly joint activity.
+            # The source-free rule does NOT confer independent technical
+            # mastery or external access rights.
+            retain_exercised_power(
+                actors[aid],experience,objective_ref,
+                world['positions'].get(aid,actors[aid]['location']))
+            retain_personal_notice_exposure(actors[aid],experience,objective_ref)
+            retain_personal_object_encounter(actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
@@ -464,6 +485,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,bodily_before[aid],actors[aid]['body'])
             functional_genesis=propose_actor_lived_correspondences(
                 actors[aid],experience,objective_ref)
+            material_meaning_proposals=possible_object_investments(
+                actors[aid],experience)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -484,6 +507,8 @@ class ConstitutiveRuntime:
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),
+                'historically_possible_material_meanings':copy(
+                    material_meaning_proposals),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),

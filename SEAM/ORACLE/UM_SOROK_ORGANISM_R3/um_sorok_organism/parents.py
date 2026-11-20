@@ -11,6 +11,7 @@ from .development import validate_activity_priority
 from .relational_metabolism import validate_motif
 from .practical_difference import validate_expected_difference
 from .historical_parent_bridge import historically_conditioned_entrances
+from .mediated_efficacy import seed_fictional_adult_training
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
@@ -55,6 +56,20 @@ def construct_parent(actor_id,name,source_packet,semantic):
     person['projects']=projects
     if not person['forms'] and not person['projects']:
         raise ValueError('NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION')
+    # Dense historically plausible adult practice is an expressly fictional
+    # *aggregate*, not thousands of invented success events. Survey responses
+    # do not prove which apprenticeship or informal routine occurred.
+    # The LLM constructor can propose these periods; a declared fictional
+    # scenario seed may supply them when the placeholder model cannot.
+    practice_proposals=result.get('fictional_practice_periods')
+    if practice_proposals is None:
+        practice_proposals=source_packet.get(
+            'fictional_seed',{}).get('practice_periods',[])
+    historical_practice=seed_fictional_adult_training(
+        person,copy(practice_proposals),
+        source_grade=source_packet.get('source_grade','UNQUALIFIED_SURVEY_INPUT'))
+    person['fictional_practice_period_refs']=[
+        row['id'] for row in historical_practice]
     person['fictional_backfill']=copy(result.get('fictional_backfill',{}))
     person['historical_entrances']=copy(historical)
     person['initialization']={'source_ref':source_packet.get('source_ref','UNVERIFIED_INPUT'),
