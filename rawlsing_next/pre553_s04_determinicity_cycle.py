@@ -319,6 +319,7 @@ def advance_country_determinicity(
     independently_pinned_prior_ref: ExactRef | None = None,
     resource_sample: Callable[[], ResourceSample] | None = None,
     current_guard: Callable[[], Any] | None = None,
+    issuer_evidence: Mapping[str, Any] | None = None,
 ) -> DeterminicityCycleReceipt:
     """Advance bounded work; resume by independently pinned receipt.
 
@@ -380,6 +381,8 @@ def advance_country_determinicity(
         "source_predicate": predicate.ref.as_dict(),
         "source_universe": universe.ref.as_dict(),
         "source_release_refs": [r.as_dict() for r in execution.release_refs],
+        "source_issuer_evidence": canonicalize(issuer_evidence) if issuer_evidence is not None
+                                  else "EXACT_I03_QUERY_ISSUER_NOT_SEPARATELY_CERTIFIED",
         "country": country.country, "country_mode": mode,
         "country_native_value": canonicalize(country_value),
         "policy": {
@@ -417,6 +420,8 @@ def advance_country_determinicity(
         "target_axis": policy.target_axis,
         "country": country.country, "source_family": country.source_family,
         "wave": country.wave, "native_country_value": canonicalize(country_value),
+        "issuer_evidence": canonicalize(issuer_evidence) if issuer_evidence is not None
+                           else "EXACT_I03_QUERY_ISSUER_NOT_SEPARATELY_CERTIFIED",
     }
     if prior is None:
         if independently_pinned_prior_ref is not None:
@@ -702,3 +707,44 @@ def consume_determinicity_context_for_prev3(
         "does_not_issue_actor_or_person": True,
         "does_not_issue_population_probability_or_causality": True,
     }
+
+
+
+def advance_r03_v2_country_determinicity(
+    *, issuance: Any, operation_id: str, query_role: str,
+    universe: EmpiricalUniverse, execution: QueryExecutionResult,
+    country: CountryRequest, policy: CyclePolicy, resources: RefinementBudget,
+    observation_channels: Sequence[ObservationChannel] = (),
+    prior: DeterminicityCycleReceipt | None = None,
+    independently_pinned_prior_ref: ExactRef | None = None,
+    resource_sample: Callable[[], ResourceSample] | None = None,
+    current_guard: Callable[[], Any] | None = None,
+) -> DeterminicityCycleReceipt:
+    """Actual R03 V2 sourcefree issuer→I03→S04/DHIKR continuing ingress.
+
+    This is TEST_ONLY_SOURCEFREE by R03 contract; original35 rights,
+    population science and future I03 QUERY issuance are NOT asserted.
+    """
+    from rawlsing_next.pre553_s04_country_refinement import (
+        resolve_r03_v2_issued_sourcefree_role,
+    )
+    query, predicate, registry, envelope = resolve_r03_v2_issued_sourcefree_role(
+        issuance=issuance, operation_id=operation_id,
+        query_role=query_role, execution=execution,
+    )
+    issued = {
+        "r03_compilation_hash": issuance.content_hash,
+        "r03_workload_envelope_sha256": envelope,
+        "r03_operation_id": operation_id,
+        "r03_query_role": query_role,
+        "permission": "TEST_ONLY_SOURCEFREE_NO_ORIGINAL_SOURCE_GRANT",
+    }
+    return advance_country_determinicity(
+        universe=universe, query=query, predicate=predicate,
+        execution=execution, registry=registry, country=country,
+        policy=policy, resources=resources,
+        observation_channels=observation_channels, prior=prior,
+        independently_pinned_prior_ref=independently_pinned_prior_ref,
+        resource_sample=resource_sample, current_guard=current_guard,
+        issuer_evidence=issued,
+    )
