@@ -772,15 +772,19 @@ A physically optimized DAG can:
 
 Do not confuse a hash-matching payload with a scientifically complete dataset or an authorized interpretation. A stale authority root is not repaired by a cached answer that happens to have the right numerical value. A consumer-access failure is information loss even if the underlying bytes still exist.
 
-### IX.7 A powerful LLM has two positive roles and four prohibitions
+### IX.7 Models help construct and challenge possibilities; owners commit reality
 
-**Role 1: pre-adjudication assistant** for finite, expensive, high-stakes source semantics and ontological interpretation. It can reason deeply over exact evidence and propose decision alternatives with source quotations and negative tests. Only a competent issued authority makes the binding semantic or method selection.
+At the finite **PYAT semantic** boundary, deep models can help competent adjudicators evaluate difficult source wording, alternatives and measurement meaning. At the open-ended **PYAT research** boundary, they generate candidate motifs, mechanisms, falsifiers and new questions that have to survive actual eligible evidence and method courts. Neither role issues its own scientific authority.
 
-**Role 2: live abductive construction** in both open-ended PYAT research and SOROK psychic development. In PYAT, it nominates surprising empirical questions, motifs, rival mechanisms and falsifiers whose claims must be tested by admissible computation. In SOROK, it proposes context-sensitive meanings, organizations, relationships and developmental transformations that become operative only through explicit actor-state commitments.
+Inside SOROK, preserve **three temporally different operations** rather than one prompting box:
 
-**Prohibitions:** it cannot fabricate a survey observation, manufacture an unmeasured respondent join, issue a structural/causal law from confident prose, or overwrite independent world history with a retrospective story. Its creative strength should be directed toward *candidate formation and realistic psychological construction*, where new possibilities genuinely matter, not toward laundering uncertain claims into facts.
+1. **Prospective proposal:** from an actor-local view and qualified world affordances, a model suggests possible episodes, responses, utterances and practical alternatives. It cannot substitute inaccessible facts from another person's mind as if known to this actor.
+2. **Actor/world selection and actual admission:** existing competent owners select or stochastically resolve among lawful candidates, commit actual actions and world results, and retain the proposal, readset, contingency and source. An impulsive, unwise action can be valid without a neatly rational optimizer.
+3. **Retrospective psychological abduction:** from actually committed consequences and actor-accessible experiences, a model proposes delayed personal sense, acquired expectations, memory organization or changed future recruitment. CAN/ADP owners independently qualify and commit a target or NO_CHANGE; retrospective prose cannot rewrite an earlier utterance, reassign the parent's concealed motives, or invent a traumatizing history.
 
-The model's role is not merely 'speaker of the personality.' Speech itself is a situation-dependent action; the model is permitted to generate it from actual world and actor states. It must also be permitted to revise its theory of a fictional actor when the life falsifies a previous interpretation.
+The **historical source-cut implementation gap** described in the November 11 SOROK blueprint is instructive, not current code proof: selected P3 had a prospective EventProposal lane and retrospective impressions, but those impressions were not necessarily a positive durable psychological writer consumed by future actions. The blueprint specifically recommended reusing B1/B3A/BP2P4J/HQ300/R3-M01/C9RI sourcefree effect machinery before building a new general developmental engine, while keeping native CAN-008 Rule A, CAN-011 Rule T and ADP memory authority distinct. Inspect exact live code and issuers; do not fossilize that November 11 diagnosis as today's HEAD.
+
+**Forbidden transformations:** LLM proposal → observed survey fact; cross-source marginals → same-person joint; empirical correlation → certified coercive mechanism; world event → child's private knowledge of every cause; retrospective explanation → retroactively committed world fact; narrative trait label → operative acquired organization without a later consumer. The model is an important constructor of hypotheses and psyche, **not the world arbiter, semantic issuer or sole psychological state writer**.
 
 ### IX.8 Reuse the existing organism; do not build a decorative replacement
 
