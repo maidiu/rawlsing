@@ -18,7 +18,8 @@ from .organism import eligible
 # existing organism, never generic applied competence for WORK or property.
 PRACTICEABLE = frozenset({'SING', 'JOIN', 'MAKE_SPACE', 'PRACTICE'})
 REPEATABLE = frozenset({'SING','JOIN','MAKE_SPACE','PRACTICE',
-                        'SIGNAL','ASK','INSPECT','REPAIR','WORK'})
+                        'SIGNAL','ASK','INSPECT','REPAIR','WORK',
+                        'FEED','SIGN_FOOD_PETITION'})
 
 
 def retain_exercised_power(actor, experience, objective_ref, location):
@@ -51,6 +52,7 @@ def retain_exercised_power(actor, experience, objective_ref, location):
                    'NO_PERCEIVED_JOINT_PARTICIPATION')
     receipt={
         'id':key,'actor':actor['id'],'event_ref':objective_ref,
+        'event_clock':experience.get('clock'),
         'experience_ref':experience.get('ref'),
         'operation':operation,'encounter_location':location,
         'attempt_status_analyst_receipt':status,

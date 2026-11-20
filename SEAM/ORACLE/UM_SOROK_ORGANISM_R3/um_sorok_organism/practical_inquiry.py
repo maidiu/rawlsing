@@ -54,23 +54,39 @@ def offer_actor_inquiry(constitution,access):
            if isinstance(r,dict) and r.get('attempt_status_analyst_receipt') in
            ('BLOCKED','PARTIAL') and
            r.get('encounter_location')==access.location]
-    if not prior:
+    learned=[r for r in getattr(constitution,
+              'institutional_expectations',[])
+             if isinstance(r,dict) and
+             r.get('status')=='PROVISIONAL' and
+             r.get('operative_possible_means')=='INSPECT' and
+             r.get('scope')=='POSTED_INSTITUTIONAL_PROCEDURE'
+             and type(r.get('observed_at_clock')) is int
+             and r['observed_at_clock']<=constitution.clock]
+    if not prior and not learned:
         return {'offered':[],'readset':[],'grade':GRADE}
     allowed,_=eligible(constitution.body,'INSPECT')
     if not allowed:
         return {'offered':[],'readset':[],'grade':GRADE}
     # The old difficulty and the public sign may be unrelated. The actor
     # is allowed to investigate, not preapproved to learn a causal verdict.
+    route=('HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING' if prior
+           else 'HISTORICALLY_LEARNED_INSTITUTIONAL_INQUIRY')
+    basis=(['HISTORICALLY_FRUSTRATED_ATTEMPT']+
+           [x['experience_ref'] for x in prior[-8:]]
+           if prior else
+           ['HISTORICALLY_EXERCISED_COLLECTIVE_PROCEDURE']+
+           [x['own_received_experience_ref'] for x in learned[-8:]])
     return {'offered':[{
         'action':'INSPECT','score':.17,
-        'basis':['HISTORICALLY_FRUSTRATED_ATTEMPT']+
-                [x['experience_ref'] for x in prior[-8:]],
+        'basis':basis,
+        'source_grounds_status':route,
         'candidate_notice_refs':uninspected[:8],
         'opportunity':'ACTOR_HISTORICAL_EVIDENCE_SEEKING',
         'no_conscious_curiosity_motive_inferred':True,
         'relevant_notice_relation':'UNRESOLVED_MAY_BE_UNRELATED',
         'public_only_not_privileged_world_CAUSE':True,'grade':GRADE}],
-        'readset':[x['event_ref'] for x in prior[-8:]],
+        'readset':([x['event_ref'] for x in prior[-8:]]+
+                   [x['origin_public_event_ref'] for x in learned[-8:]]),
         'candidate_notices':uninspected[:8],
         'grade':GRADE}
 
@@ -94,6 +110,7 @@ def retain_personal_notice_exposure(actor,experience,event_ref):
             continue
         row={
             'id':key,'public_notice_ref':ref,
+            'inspected_at_clock':experience.get('clock'),
             'event_ref':event_ref,'experience_ref':experience.get('ref'),
             'received_cue_ref':cue.get('id'),
             'public_words_available':copy(cue.get('tags',[])),
@@ -118,8 +135,9 @@ def choose_grounded_public_inquiry(options):
     choices=[a for option in options if option.get('action')=='INSPECT'
              and not option.get('project_courses')
              for a in option.get('practical_alternatives',[])
-             if a.get('grounds_status')==
-             'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING']
+             if a.get('grounds_status') in (
+             'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING',
+             'HISTORICALLY_LEARNED_INSTITUTIONAL_INQUIRY')]
     distinct={a['option_id']:a for a in choices}
     if len(distinct)!=1:
         return None

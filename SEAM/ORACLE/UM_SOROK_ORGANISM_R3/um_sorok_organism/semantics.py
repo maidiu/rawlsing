@@ -16,6 +16,8 @@ from .plural_care_paths import (
     choose_one_grounded_plural_acquisition, propose_one_reopening,
     plural_addressed_signal_choice)
 from .caregiving_practice import choose_independent_repeat_feeding
+from .food_access_struggle import choose_food_petition
+from .institutional_procedure_learning import one_bounded_proposal
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -92,6 +94,9 @@ class HeuristicSemanticProvider:
             inquiry=choose_grounded_public_inquiry(possibilities)
             if inquiry:
                 return {'task':task,**inquiry}
+            collective=choose_food_petition(possibilities)
+            if collective:
+                return {'task':task,**collective}
             object_action=choose_qualified_material_care(possibilities)
             if object_action:
                 return {'task':task,**object_action}
@@ -137,6 +142,8 @@ class HeuristicSemanticProvider:
                 packet.get('historically_possible_reopened_care',[]))
             lived+=sourcefree_revision_proposal(
                 packet.get('historically_possible_co_regulation_revision',[]))
+            lived+=one_bounded_proposal(
+                packet.get('historically_possible_public_procedure_learning',[]))
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
             relation_candidates=lived+copy(

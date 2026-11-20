@@ -25,6 +25,8 @@ from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
+from .food_access_struggle import configure_food_power
+from .institutional_procedure_learning import possible_institutional_learning
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -567,6 +569,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             care_revision=possible_revision_after_nonresponse(
                 actors[aid],experience,objective_ref)
+            institutional_learning=possible_institutional_learning(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -601,6 +605,8 @@ class ConstitutiveRuntime:
                     actual_lived_care['id'] if actual_lived_care else None),
                 'historically_possible_co_regulation_revision':copy(
                     care_revision),
+                'historically_possible_public_procedure_learning':copy(
+                    institutional_learning),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
@@ -690,6 +696,24 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon)
+
+    def register_sourcefree_food_control(self,spec):
+        """Configure a fictional material institution in WORLD, not in psyche.
+
+        The caller declares the initial sourcefree power relation.
+        Subsequent changes require distinct actor-selected signatures.
+        No adult or child is automatically said to comprehend this rule.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=configure_food_power(world,actors,spec)
+        committed=self.ledger.commit(
+            self.world_id,v,world,{}, {},
+            'SOURCEFREE_FOOD_ACCESS_AUTHORITY_FIXTURE',None,{
+                'source':source,'world_only_not_actor_political_action':True,
+                'not_native_science_or_protected_receiving':True,
+                'grade':GRADE})
+        return {'receipt':committed['id'],**source}
 
     def register_historical_routine_source(self,spec):
         """Declare a bounded *research fictional* routine source before use.

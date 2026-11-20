@@ -19,6 +19,7 @@ from .material_investments import admit_material_investment
 from .co_regulation_history import (
     admit_co_regulation, admit_co_regulation_revision)
 from .plural_care_paths import admit_reopening
+from .institutional_procedure_learning import admit_public_procedure_expectation
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -41,6 +42,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'INVEST_MATERIAL_OBJECT','ACQUIRE_CO_REGULATION_ORIENTATION',
          'REVISE_CO_REGULATION_ORIENTATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
+         'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
          'NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
@@ -294,6 +296,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op=='ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION':
+            try:
+                report.append(admit_public_procedure_expectation(
+                    actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='REOPEN_CO_REGULATION_ORIENTATION':
             try:
                 report.append(admit_reopening(actor,experience,event_ref,c))

@@ -1,7 +1,7 @@
 """READ MODEL for the entire, possibly dormant and contradictory person; pure composition.
 No psychology state is minted by materialization. This module is deliberately read-only.
 """
-from .types import Constitution, Situated, AccessibleEncounter, copy
+from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
@@ -27,6 +27,8 @@ from .expectation_afterlife import annotate_practical_expectations
 from .co_regulation_history import (
     recruit_co_regulation, addressed_signal_alternatives)
 from .caregiving_practice import project_repeat_feeding
+from .food_access_struggle import (
+    live_food_petition_opportunity, offered_food_petition)
 
 
 def materialize(actor,world):
@@ -50,6 +52,7 @@ def materialize(actor,world):
         co_regulation_orientations=copy(actor.get('co_regulation_orientations',[])),
         experienced_care_events=copy(actor.get('experienced_care_events',[])),
         performed_feeding_events=copy(actor.get('performed_feeding_events',[])),
+        institutional_expectations=copy(actor.get('institutional_expectations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -131,6 +134,9 @@ def actor_access(actor,world):
     if any(c.get('kind')=='coactor_present' for c in cues) and (
             held>=1 or shared):
         env.append('FEED')
+    if actor['body']['sensor'] >= .05:
+        env += [x['operation'] for x in live_food_petition_opportunity(
+            world,actor,location)]
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -372,6 +378,22 @@ def compose(constitution,access,limit=50):
         'other_response_remains_independent':True,
         'not_a_conscious_self_report':True,
         'grade':r['grade']} for r in historical_care['offered'])
+    food_collective=offered_food_petition(constitution,access)
+    if food_collective is not None:
+        fop=food_collective['action']
+        q=actions.setdefault(fop,{
+            'action':fop,'score':food_collective['score'],
+            'basis':[],'opportunity':'LIVED_MATERIAL_REPRODUCTION_PUBLIC_PROCEDURE'})
+        q['score']=max(q['score'],food_collective['score'])
+        q['basis']+=food_collective['basis']
+        q['food_collective_ground']=copy(food_collective)
+        currents.append({
+            'kind':'MATERIAL_REPRODUCTION_MEETS_COLLECTIVE_PROCEDURE',
+            'source_notice_ref':food_collective['source_notice_exposure_ref'],
+            'lived_care_refs':food_collective['lived_care_refs'],
+            'obstruction_refs':food_collective['attempted_obstruction_refs'],
+            'not_automatic_ideological_identification':True,
+            'grade':GRADE})
     inquiry=offer_actor_inquiry(constitution,access)
     for candidate in inquiry['offered']:
         action=candidate['action']
@@ -382,6 +404,10 @@ def compose(constitution,access,limit=50):
         entry['basis']+=candidate['basis']
         entry.setdefault('candidate_notice_refs',[]).extend(
             candidate['candidate_notice_refs'])
+        entry.setdefault('candidate_notice_grounds',{}).update({
+            ref:candidate.get('source_grounds_status',
+                'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING')
+            for ref in candidate['candidate_notice_refs']})
     material=material_opportunity_from_history(constitution,access)
     for candidate in material['offers']:
         op=candidate['action']
@@ -485,7 +511,9 @@ def compose(constitution,access,limit=50):
                   str(constitution.clock)+':'+str(ref),
                  'actor':constitution.actor,'as_of_clock':constitution.clock,
                  'operation':'INSPECT','project_id':None,
-                 'grounds_status':'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING',
+                 'grounds_status':option.get(
+                     'candidate_notice_grounds',{}).get(
+                         ref,'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING'),
                  'world_request':{'operation':'INSPECT',
                      'addressed_party_ref':None,'material_object_ref':ref},
                  'anticipated_difference':None,
@@ -515,6 +543,11 @@ def compose(constitution,access,limit=50):
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+
+                           ([
+                             food_collective['source_notice_exposure_ref']]
+                            +food_collective['lived_care_refs']
+                            +food_collective['attempted_obstruction_refs']
+                            if food_collective else [])+
                            inquiry['readset']+
                            functional['readset']+
                            expectation_afterlife['readset']+

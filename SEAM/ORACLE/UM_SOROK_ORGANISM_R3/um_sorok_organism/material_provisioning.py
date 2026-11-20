@@ -14,6 +14,7 @@ human-care priority. It is replaced by qualified material institutions later.
 from decimal import Decimal, ROUND_DOWN
 from math import isfinite
 from .types import stable_id, copy, GRADE
+from .food_access_struggle import can_draw_shared_food
 
 UNIT = Decimal("0.00001")
 PROVISION_KIND="QUALIFIED_MATERIAL_FEEDING"
@@ -145,10 +146,22 @@ def settle_provisioning(world, actors, allocation):
         pool=_available(world,origin,items[0]["giver"],loc)
         if pool>CAP:
             raise ValueError("PROVISION_POOL_EXCEEDS_CAP")
-        alloc=_allocate(pool,items)
-        delivered=sum((x for _,x in alloc),Decimal(0))
+        # A pantry controller can withhold *accessible* stock without
+        # deleting its physical existence. Distinct eligible and restricted
+        # claims may coexist against the same site. Only entitled requests
+        # compete for the accessible portion; denied claims consume nothing.
+        eligible_claims=[
+            claim for claim in items if
+            origin=="GIVER_HELD_FOOD" or
+            can_draw_shared_food(world,claim["giver"],loc)]
+        alloc=_allocate(pool,eligible_claims)
+        allowed_amounts={claim["id"]:amount for claim,amount in alloc}
+        delivered=sum(allowed_amounts.values(),Decimal(0))
         changes.append((key,pool-delivered))
-        for claim,amount in alloc:
+        for claim in sorted(items,key=lambda x:x["id"]):
+            amount=allowed_amounts.get(claim["id"],Decimal(0))
+            denied=(origin=="SHARED_SITE_FOOD" and
+                    not can_draw_shared_food(world,claim["giver"],loc))
             requested=Decimal(claim["requested_units"])
             shortage=requested-amount
             # Provisional physiology: max 0.02 body nutrition per unit. It
@@ -171,8 +184,15 @@ def settle_provisioning(world, actors, allocation):
                 "requested_food_units":float(requested),
                 "consumed_food_units":float(amount),
                 "uncovered_food_units":float(shortage),
+                "uncovered_due_to_institutional_rights_units":(
+                    float(requested) if denied else 0.0),
+                "uncovered_due_to_material_shortage_units":(
+                    0.0 if denied else float(shortage)),
+                "physical_stock_was_present_but_inaccessible":(
+                    bool(denied and pool>0)),
                 "actual_recipient_nutrition_gain":float(gained),
                 "material_status":(
+                    "INSTITUTIONAL_RIGHTS_DENIED" if denied else
                     "FULLY_PROVISIONED" if shortage==0 else
                     "PARTIALLY_PROVISIONED" if amount>0 else
                     "UNPROVISIONED_NO_AVAILABLE_FOOD"),
@@ -229,6 +249,12 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
     else:
         if not world["sites"][location].get("shared_household_food",False):
             return {"status":"BLOCKED","outcome":"NO_AUTHORIZED_FEEDING_STOCK",
+                    "material_feeding_ref":None}
+        # Objective entitlement is a power relation over a material resource.
+        # A person's wish to feed cannot override the institutional gate.
+        if not can_draw_shared_food(world,giver,location):
+            return {"status":"BLOCKED",
+                    "outcome":"HOUSEHOLD_FOOD_ACCESS_RESTRICTED",
                     "material_feeding_ref":None}
         site_food=_quantity(world["sites"][location].get("food",0),
                             "HOUSEHOLD_FOOD")
