@@ -71,11 +71,10 @@ class ExplicitJSONLLMProvider:
                 if response.geturl()!=self.endpoint:
                     raise ValueError("REMOTE_MODEL_DESTINATION_CHANGED")
                 data=response.read(256001)
-        except Exception as exc:
-            # Never include upstream HTTP response bodies or secret headers
-            # in a developmental receipt or logged exception.
-            raise RuntimeError("REMOTE_MODEL_REQUEST_FAILED") from type(exc)(
-                str(type(exc).__name__))
+        except Exception:
+            # Never include upstream HTTP response bodies, secret headers,
+            # URLs or credentials in a developmental receipt or exception.
+            raise RuntimeError("REMOTE_MODEL_REQUEST_FAILED") from None
         if len(data)>256000:
             raise ValueError("REMOTE_MODEL_REPLY_TOO_LARGE")
         return json.loads(data.decode("utf-8"))
