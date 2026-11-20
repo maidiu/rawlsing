@@ -31,6 +31,8 @@ ACTIONS = {
     'MAINTAIN_PANTRY_GATE':{'motor':0.42,'language':0.20,'cost':0.14},
     'SANCTION_PANTRY_ACCESS':{'motor':0.35,'language':0.20,'cost':0.12},
     'CONTRIBUTE_FOOD_COMMONS':{'motor':0.42,'language':0.0,'cost':0.09},
+    'OFFER_PANTRY_CONTROL_TRANSFER':{'motor':0.24,'language':0.28,'cost':0.05},
+    'ACCEPT_PANTRY_CONTROL_TRANSFER':{'motor':0.24,'language':0.28,'cost':0.05},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }
