@@ -1,5 +1,14 @@
 # OPEN EXECUTION COMMISSION — PYAT/REMONT sourcefree queue
 
+## Latest queue update — PYAT #1205 asked-eligible RAW · RMT-Q014
+
+This supersedes the older #1173-only HEAD selection paragraphs below **for the next separately user-authorized invocation**. PYAT #1205 `c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5` is the later sourcefree descendant (existing I03/R03 query policy). Its focused `R03_ASKED_ELIGIBLE` court is **41 PASS / 0 FAIL**, user/worker execution, not G5; an independent broad `C0_ALL_SMALL` run at that SHA was underway when this queue amendment was prepared. **The user must not be asked to run it again now.** The queue/runner follow-up itself is a separate direct descendant; do not transfer the predecessor green to the follow-up SHA.
+
+The same standing OpenCode commission now includes **RMT-Q014** (new exact asked-eligible test and historical 39/2 → 41/0 receipt). When a future OpenCode run is expressly initiated, first reconcile the authorized current PYAT candidate and current worker-queue PR HEAD; use one clean exact source SHA that actually **contains** the Q014 runner/queue, then run eligible QIDs including Q014. If current source code advanced independently and no authorized combined head contains both it and the queue, declare `HOLD_QUEUE_AND_ACTIVE_CODE_HEAD_NOT_RECONCILED` rather than silently testing a stale branch. Q005 continues to run C0_ALL_SMALL; ingest an already provided proof rather than requesting a pointless duplicate.
+
+**Changed reporting destination:** OpenCode must publish one exact-SHA, first-fault record for each RED **directly to REMONT PR #1162** and cross-link active source PR #1205/successor and #1097. REMONT owns repair disposition; this test executor does not mutate code. PYAT HQ handles continuing functional construction, not queue debugging. Inherited historical jobs Q001–Q013, including Q006 source-data HOLD and Q011–Q012 Sorok-held, remain unchanged. No automatic/background worker launch is implied by queue inclusion.
+
+
 **AGENT_TYPE:** OpenCode engineering TEST EXECUTOR / failure diagnostician, NOT PYAT HQ, NOT REMONT final reviewer.  
 **INTELLIGENCE_LEVEL:** HIGH for source/ABI tracing; user chooses editor and model, no autonomous account/model switching.  
 **REPOSITORY:** `maidiu/rawlsing` (public).  
