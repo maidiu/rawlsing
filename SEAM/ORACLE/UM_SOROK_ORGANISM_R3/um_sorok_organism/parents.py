@@ -8,6 +8,7 @@ from .types import adult, copy, stable_id, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
 from .development import validate_activity_priority
+from .relational_metabolism import validate_motif
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
@@ -26,6 +27,14 @@ def construct_parent(actor_id,name,source_packet,semantic):
         f['grade']='FICTIONAL_ABDUCTIVE_INITIALIZATION'
         person['forms'][f['id']]=f
     person['links']=copy(result.get('links',[]))
+    # Source-conditioned adult history is an explicitly FICTIONAL construction.
+    # No questionnaire answer is assumed to reveal a hidden psychodynamic motif.
+    for motif in result.get('relational_motifs',[]):
+        validate_motif(motif,person['forms'])
+        if (not isinstance(motif.get('id'),str) or not motif['id'] or
+                any(x.get('id')==motif['id'] for x in person['relational_motifs'])):
+            raise ValueError('DUPLICATE_OR_UNIDENTIFIED_ADULT_MOTIF')
+        person['relational_motifs'].append(copy(motif))
     projects=copy(result.get('projects',[]))
     for project in projects:
         if not isinstance(project,dict) or not isinstance(project.get('means',[]),list) or any(not isinstance(op,str) or op not in ACTIONS for op in project.get('means',[])):
