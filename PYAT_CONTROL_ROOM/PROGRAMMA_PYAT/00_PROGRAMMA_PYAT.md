@@ -31,6 +31,10 @@
 
 <!-- HQ_OATH_R2_FIRST_CONTACT_END -->
 
+> **DHIKRYMULCH — living determinicity-theory resurrection (2026-11-20, DOCUMENTARY CANDIDATE; NOT SOURCE EXHAUSTION OR PROTECTED ADOPTION).** Read [DHIKRYMULCH: the unified empirical-social possibility theory](DHIKRYMULCH/00_DHIKRYMULCH.md) with its [44-LMX/30-LMQ historical source and open-excavation register](DHIKRYMULCH/SOURCE_RESERVOIR_AND_OPEN_EXCAVATION.md). This locus recovers the **goal** which DHIKR exists to resurrect: autonomous, multidirectional, respondent-coherent, branch/minority/cloud/structural/temporal possibility intelligence for lawful Field Forge and hypothetical-person inputs. It is NOT a new work programme, a declaration that current DHIKR achieves the theory, a source-rights grant, or a PYAT takeover of Sorok psychology. Historical source exhaustion, implementation crosswalk, actual science and independent receiving remain open. Existing PROGRAMMA, HQ OATH and paired protected CURRENT_PROGRESS remain controlling.
+
+
+
 > **LATEST LIVE C0–C6 / S01–S05 EVIDENCE INDEX (NOVEMBER 20, 2026) — DOCUMENTARY CANDIDATE, NOT PROTECTED ADOPTED:** Read the [one-page-source-graded currentness and S01–S05 closure crosswalk](05_ROADMAP/20261120_C0_C6_IMPLEMENTATION_AND_S01_S05_STATUS_CANDIDATE.md) and [pending paired progress receiving delta](05_ROADMAP/20261120_POST_C0_C6_PENDING_PAIR_DELTA.md). Actual latest sourcefree tests include #1164 **218/218** and #1173 C5 **22/22** + C6 **36/36** at their exact executed SHAs; **S01–S05 NOT TERMINALLY CLOSED**, originals/method/learned world/G5/protected receiving held. Existing protected CURRENT_PROGRESS revision 11 unchanged. This is an additive status locator, not another execution programme, protected promotion or alteration of the HQ OATH.
 
 
