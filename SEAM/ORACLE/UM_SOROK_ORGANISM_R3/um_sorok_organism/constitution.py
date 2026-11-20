@@ -52,6 +52,7 @@ def materialize(actor,world):
         co_regulation_orientations=copy(actor.get('co_regulation_orientations',[])),
         experienced_care_events=copy(actor.get('experienced_care_events',[])),
         performed_feeding_events=copy(actor.get('performed_feeding_events',[])),
+        institutional_expectations=copy(actor.get('institutional_expectations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
