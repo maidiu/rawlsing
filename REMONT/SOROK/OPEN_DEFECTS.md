@@ -1,5 +1,20 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R11 repaired exact-head follow-up — scoped review / P070–P071 independence hold (2026-11-20)
+
+**Frozen successor review:** [#1198](https://github.com/maidiu/rawlsing/pull/1198) at `d96f1c0b181b9772b1cd90c093e7393acc66523c`; exact review [#5999778333](https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333). This is a **new sourcefree receiving record in the existing REMONT ledger, not a replacement master, protected merge, or native engineering/scientific authorization**.
+
+- **R11-DEF-02 — `ACCEPT_SCOPED`:** current actor-issued trial cannot cause same-event model `ADD_PROJECT` or motive/object-changing `REORGANIZE_PROJECT`, including renamed foreign object, or same-end `TAKE_UP_POSSIBLE_END`. Its independent original trial history remains actor-owned and event-specific. This is a bounded engineering safeguard, not acquired-motive science.
+- **R11-DEF-03 — `ACCEPT_SCOPED`:** all **71/71 original REMONT P records structurally identical** to this register; T0/E6 unchanged, 53 originally scoped first-fault reviews conserved, eight OPEN, eight PARTIAL, P070/P071 still author-repaired/pending independent. Existing historical register below is preserved.
+- **R11-DEF-01 — `FUNCTIONAL_PASS__HOLD_INDEPENDENT_ACCEPTANCE`:** exact P070 original `storage.py` and P071 embodied-sensor gating both execute normally and pass hostile tests; **the reviewing assistant authored those original two fixes on #1171** and cannot independently accept them. A **different reviewer** must challenge their source and tests, after which authorized receiving may consider full R11 succession.
+
+**Fresh independently executed exact-source evidence:** rebuild from frozen ancestor plus five exact changed/new Git blobs; **41/41** Python source/test SHA256 and Git identities match both candidate manifest and published tree; **241/241 normal, 241/241 `-O`, pytest 241 + 12 subtests, five additional independent reviewer tests normal and optimized PASS**. Cold SQLite reopen and forged trial-ID/motive/history attacks checked. Complete evidence ZIP in Library `/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R1198_20261120/` SHA-256 `920458eaba7ace4b418621eb17097e80b549eee6cbd1024c008bcb812824649f`.
+
+**Overall `HOLD` on blanket independent #1198 acceptance until credential- and author-independent P070/P071 receiving; no protected receiving.** Existing canonical PROGRAMMA and paired `CURRENT_PROGRESS.md`/`.json` are unchanged, `HQ_CURRENTNESS_HOLD` remains for the authorized recipient. The user-selected construction-first TCO/SORACLE program continues without promotion of sourcefree machinery to science.
+
+---
+
+
 ## CURRENT INDEPENDENT REMONT R11 REVIEW — 2026-11-20
 
 **This is an additive receiving decision in the EXISTING REMONT register; original R10 code and 71-entry P/T/E statuses below are unchanged.** The externally constructed REMONT R10 #1187 and R11 #1190 are independently executable, but they are not yet valid replacements for this branch.
@@ -371,3 +386,13 @@ Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**
 **Actual test-first evidence:** independent reviewer's six-test module on frozen original R11 produced **five failing negative subcases**, two positive checks passed. Repaired R12 **six/six reviewer tests pass**, exact original P070/P071 three regression methods pass, plus five additional author tests. Full **246/246 PASS normal**, **246/246 PASS optimized**, **pytest 246 passed + 14 subtests**, extracted runnable ZIP cold rerun; 9-event demo SQLite cross-runtime cold reopen verifies identical chain hashes and `PRAGMA integrity_check=ok`. Python 3.13.5 executed; user Python 3.11.3 result applies to **frozen R11 only**, not the new R12 head.
 
 **Accurate ledger:** 71 P = 53 bounded independently reviewed first faults + 8 OPEN + 8 PARTIAL + 2 AUTHOR-REPAIRED REVIEW PENDING. T=0 confirmed; E=6 evidence/authority holds unchanged. R12 repair not independently accepted, native G5 and protected receiving unissued. Re-review must be by an engineer other than the R12 author (and for P070/71, other than their original author). Exact source and test identities in R12 evidence directory.
+
+
+## REMONTATHON R13 — two actual defects repaired on frozen R12 (2026-11-20)
+
+**Exact frozen R12 #1199** `9db0e6f64bf568409e638ff2215af8b8a414487f`; nine new tests returned **six FAIL, three PASS** before code changes. Complete R13 **255/255 PASS normal**, **255/255 PASS optimized**, **255 pytest passed +14 subtests**, cold ZIP reexecution. R13 has no Python 3.11 or distinct independent re-review.
+
+- **SR-P072** — Same actor-issued provisional trial allowed model-authored REORGANIZE_PROJECT to rename an old project's motive/object/means and reactivate dormant status as if a durable motive had been acquired in the current event. **Source repair:** Deny all REORGANIZE_PROJECT candidate actions in an issued current-trial event; preserve separately qualified later nontrial reorganizations.
+- **SR-P073** — ConstitutiveRuntime.cue silently coerced explicit falsey tag inputs (False, empty string, empty list) into kind tags, bypassing objective sensory tag validation and inventing recruitment cues. **Source repair:** Only None (omitted tags) defaults to [kind]; malformed explicit tags refuse and empty [] is preserved.
+
+**Custody:** 73 P = 53 scoped independent first-fault reviews, 8 OPEN, 8 PARTIAL, **4 author-repaired pending independent review (P070–P073)**; T=0, E=6. Original #1171 R1198 follow-up with P070/P071 distinct acceptance hold and R12 review ledger preserved. Existing 71 P statuses unchanged; no protected PRE-MAIN, native scientific owner or canonical CURRENT_PROGRESS rights advanced.

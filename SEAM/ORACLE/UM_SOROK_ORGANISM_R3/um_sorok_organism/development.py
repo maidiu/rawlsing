@@ -62,6 +62,13 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         # nontrial experiences and later life transitions.
         if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        # A model can also launder today's exploratory attempt into an
+        # apparently established motive by activating or changing an OLD
+        # project. The old ID does not supply current-episode developmental
+        # evidence. Continue to permit separately qualified NONtrial events
+        # to reorganize projects; this is not a universal learning law.
+        if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
         if any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
                and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
                for c in candidates):

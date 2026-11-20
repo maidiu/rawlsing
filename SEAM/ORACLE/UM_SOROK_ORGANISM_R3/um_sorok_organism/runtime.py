@@ -63,7 +63,11 @@ class ConstitutiveRuntime:
         """External world fixture change, not an actor psychological event."""
         wv,world=self.ledger.world(self.world_id)
         if actor_id is not None:self.ledger.actor(actor_id)
-        cue=add_cue(world,kind,tags or [kind],location=location,description=description,
+        # Only an omitted tags argument invokes the documented default.
+        # Explicit false/empty-string tags must fail source validation, and
+        # a deliberately empty tag list must not become a fabricated kind tag.
+        cue=add_cue(world,kind,[kind] if tags is None else tags,
+                    location=location,description=description,
                     modality=modality,private_to=private_to,source_actor=actor_id,
                     clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1

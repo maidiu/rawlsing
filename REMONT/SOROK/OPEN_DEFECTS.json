@@ -1892,6 +1892,32 @@
       "independently_accepted": false,
       "protected_received": false,
       "engineering_grade": "SOURCEFREE_AUTHOR_TESTED_PATCH__PENDING_DISTINCT_INDEPENDENT_RECEIVING"
+    },
+    {
+      "id": "SR-P072",
+      "first_fault": "Same actor-issued provisional trial allowed model-authored REORGANIZE_PROJECT to rename an old project's motive/object/means and reactivate dormant status as if a durable motive had been acquired in the current event",
+      "owner_location": "development.py::admit; REORGANIZE_PROJECT",
+      "disposition": "Deny all REORGANIZE_PROJECT candidate actions in an issued current-trial event; preserve separately qualified later nontrial reorganizations",
+      "executable_probe": "test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive; test_r13_same_trial_cannot_enable_dormant_project_through_status; test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event",
+      "status": "REPAIRED_CODE_AUTHOR_TESTED__REMONT_R13_255__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_RED_ON_FROZEN_R12_BEFORE_SOURCE_REPAIR",
+      "source_parent_sha": "9db0e6f64bf568409e638ff2215af8b8a414487f",
+      "grade": "SOURCEFREE_AUTHOR_EXECUTED__NO_NATIVE_ISSUANCE",
+      "independently_accepted": false,
+      "protected_received": false
+    },
+    {
+      "id": "SR-P073",
+      "first_fault": "ConstitutiveRuntime.cue silently coerced explicit falsey tag inputs (False, empty string, empty list) into kind tags, bypassing objective sensory tag validation and inventing recruitment cues",
+      "owner_location": "runtime.py::cue; world.py::add_cue",
+      "disposition": "Only None (omitted tags) defaults to [kind]; malformed explicit tags refuse and empty [] is preserved",
+      "executable_probe": "test_r13_false_tag_input_must_not_silently_become_cue_of_kind; test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind; test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag",
+      "status": "REPAIRED_CODE_AUTHOR_TESTED__REMONT_R13_255__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_RED_ON_FROZEN_R12_BEFORE_SOURCE_REPAIR",
+      "source_parent_sha": "9db0e6f64bf568409e638ff2215af8b8a414487f",
+      "grade": "SOURCEFREE_AUTHOR_EXECUTED__NO_NATIVE_ISSUANCE",
+      "independently_accepted": false,
+      "protected_received": false
     }
   ],
   "queue_T": [],
@@ -2431,6 +2457,52 @@
     "canonical_programma_current_progress_pair_updated": false,
     "HQ_CURRENTNESS_HOLD": "NO_CREDENTIAL_INDEPENDENT_G5_OR_AUTHORIZED_PROTECTED_RECEIVING"
   },
+  "remont_r1198_independent_followup": {
+    "as_of": "2026-11-20",
+    "repaired_pr": 1198,
+    "repaired_sha": "d96f1c0b181b9772b1cd90c093e7393acc66523c",
+    "direct_parent": "39f6972089858ee968e73b2e731005c71a8055dd",
+    "reviewed_by": "SEPARATE_SOURCEFREE_EXECUTION_AGENT__PR_GITHUB_CREDENTIAL_SHARED_WITH_AUTHOR",
+    "github_review_id": 5999778333,
+    "receipt_kind": "BOUNDED_INDEPENDENT_FOLLOWUP__NOT_CREDENTIAL_INDEPENDENT_G5",
+    "dispositions": {
+      "R11-DEF-01": "FUNCTIONAL_PASS__INDEPENDENT_ACCEPTANCE_HOLD_P070_P071_ORIGINAL_FIX_AUTHOR",
+      "R11-DEF-02": "ACCEPT_SCOPED_SOURCEFREE_ENGINEERING",
+      "R11-DEF-03": "ACCEPT_SCOPED_SOURCE_CUSTODY",
+      "whole_repair_pr": "HOLD_UNTIL_DISTINCT_P070_P071_FIRST_SOURCE_RECEIVING"
+    },
+    "source_integrity": {
+      "manifest_python_files": 41,
+      "matched_git_blobs": 41,
+      "matched_source_sha256": 41,
+      "untracked_python_files": 0
+    },
+    "actual_independent_execution": {
+      "normal_unittest_pass": 241,
+      "optimized_unittest_pass": 241,
+      "pytest_pass": 241,
+      "pytest_subtests_pass": 12,
+      "new_adversarial_normal_pass": 5,
+      "new_adversarial_optimized_pass": 5
+    },
+    "ledger_conservation": {
+      "P_total": 71,
+      "P_all_prior_entries_bitwise_equivalent_as_JSON": true,
+      "scoped_first_fault_53_unchanged": true,
+      "open": 8,
+      "partial": 8,
+      "p070_p071_pending": 2,
+      "T_total": 0,
+      "E_total": 6
+    },
+    "evidence_library": "/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R1198_20261120/R1198_INDEPENDENT_FOLLOWUP_20261120.zip",
+    "evidence_zip_sha256": "920458eaba7ace4b418621eb17097e80b549eee6cbd1024c008bcb812824649f",
+    "github_review_url": "https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333",
+    "independent_first_source_custody": "P070_P071_REQUIRE_DIFFERENT_REVIEWER__THIS_AGENT_AUTHORED_THEIR_ORIGINAL_REPAIR",
+    "canonical_current_progress_modified": false,
+    "protected_pre_main_received": false,
+    "currentness_hold": "HQ_CURRENTNESS_HOLD_FOR_PROTECTED_AUTHORIZED_RECEIVING_AND_CREDENTIAL_INDEPENDENCE"
+  },
   "remont_r12_1190_independent_review_repairs": {
     "date": "2026-11-20",
     "source_r11_pr": 1190,
@@ -2497,5 +2569,43 @@
     "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R12_INDEPENDENT_REVIEW_REPAIRS_20261120",
     "note": "Sourcefree local repair and custody receipt, not new independent receiving; original P identities and statuses remain unchanged",
     "protected_current_progress_pair_written": false
+  },
+  "remont_r13_1199_trial_project_cue_repairs": {
+    "date": "2026-11-20",
+    "base_pr": 1199,
+    "base_sha": "9db0e6f64bf568409e638ff2215af8b8a414487f",
+    "original_remont_pr": 1171,
+    "original_remont_source_sha": "a6b5f97b9aa7e1f8c8d4063d2ab8d5869f6fefb1",
+    "new_ids": [
+      "SR-P072",
+      "SR-P073"
+    ],
+    "sourcefree_author_green": {
+      "normal": 255,
+      "optimized": 255,
+      "pytest": 255,
+      "pytest_subtests": 14,
+      "added_tests": 9
+    },
+    "frozen_r12_red_failures": 6,
+    "code_test_blobs": {
+      "development.py": "b00e5d2343f5e718ed0dbff620747d56b7804fc4",
+      "runtime.py": "854796222630be49ee10fc0ddc7ebcccccb31046",
+      "test_remontathon_r13.py": "af7ce9e996a6a512dea2084e2f4db9fafc3a955d"
+    },
+    "archive_sha256": "753a841ba39e98d4e1db95a1add4e2685e9874b134439099afd4d1253e438473",
+    "custody": "All 71 preexisting P statuses unchanged; original new R1198 independent follow-up plus R12 metadata both conserved",
+    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R13_20261120/",
+    "status_partition": {
+      "P_total": 73,
+      "P_scoped_first_fault_review_pass": 53,
+      "P_open": 8,
+      "P_partial": 8,
+      "P_author_repaired_review_pending": 4,
+      "T_confirmed": 0,
+      "E_holds": 6
+    },
+    "independently_accepted": false,
+    "protected_received": false
   }
 }
