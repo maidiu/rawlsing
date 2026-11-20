@@ -39,6 +39,11 @@ def configure_food_power(world,actors,spec):
             or any(type(x) is not str or not x or x not in actors
                    for x in permitted+signers)):
         raise ValueError("FOOD_POWER_INVALID_ACTOR_ROSTERS")
+    controller_actor=spec.get("controller_actor")
+    if (type(controller_actor) is not str or
+            controller_actor not in permitted or
+            controller_actor not in actors):
+        raise ValueError("FOOD_POWER_UNGROUNDED_MATERIAL_CONTROLLER")
     quorum=spec.get("quorum")
     if type(quorum) is not int or not 2<=quorum<=len(signers):
         raise ValueError("FOOD_POWER_INVALID_QUORUM")
@@ -48,7 +53,8 @@ def configure_food_power(world,actors,spec):
         raise ValueError("FOOD_POWER_SIGNER_NOT_PRESENT_AT_DECLARATION")
     ref=stable_id("fictional_food_access_order",{
         "world":world["id"],"clock":world["clock"],"site":site,
-        "source":spec["source_ref"],"permitted":sorted(permitted),
+        "source":spec["source_ref"],"controller":controller_actor,
+        "permitted":sorted(permitted),
         "petitioners":sorted(signers),"quorum":quorum})
     notice_ref=stable_id("public_food_rights_notice",{"authority_ref":ref})
     words=["household_food","public_petition","collective_food_access"]
@@ -63,6 +69,8 @@ def configure_food_power(world,actors,spec):
         "grade":GRADE}
     board={
         "id":ref,"controls":site,"food_rights":"CONTROLLED",
+        "controller_actor":controller_actor,
+        "objective_control_not_a_mental_trait":True,
         "initially_permitted_givers":sorted(permitted),
         "eligible_petitioners":sorted(signers),
         "source_ref":spec["source_ref"],
