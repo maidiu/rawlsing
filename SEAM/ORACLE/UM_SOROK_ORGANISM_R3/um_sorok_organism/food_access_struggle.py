@@ -92,7 +92,13 @@ def _board(world,site):
     appointed=world.get("sites",{}).get(site,{}).get(
         "food_access_authority")
     board=world.get("institutions",{}).get(AUTHORITY)
-    if appointed is None and board is None:
+    if appointed is None:
+        # A board with authority over one store cannot colonize the
+        # material rights of unrelated sites. Still fail closed if this
+        # very site is its declared object but the reciprocal site pointer
+        # has been stripped or corrupted.
+        if type(board) is dict and board.get("food_stock_site")==site:
+            raise ValueError("FOOD_POWER_WORLD_AUTHORITY_INCONSISTENT")
         return None
     if (appointed!=AUTHORITY or type(board) is not dict or
             board.get("food_stock_site")!=site or
