@@ -170,8 +170,8 @@ class HeuristicSemanticProvider:
                 return {'task':task,'candidates':candidates+relation_candidates,'semantic_grade':self.grade}
             if action=='SIGNAL' and cues:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
-                       'cue_terms':['signal','care']}], 'semantic_grade':self.grade}
-            return {'task':task,'candidates':[],'semantic_grade':self.grade}
+                       'cue_terms':['signal','care']}]+relation_candidates, 'semantic_grade':self.grade}
+            return {'task':task,'candidates':relation_candidates,'semantic_grade':self.grade}
         if task=='adult_constructor':
             target=packet['pseudo_respondent']
             answers=target.get('answers',{})
