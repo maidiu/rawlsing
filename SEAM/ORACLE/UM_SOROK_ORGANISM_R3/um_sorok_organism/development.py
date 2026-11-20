@@ -516,7 +516,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 actor['self_model'].setdefault('hypotheses',[]).append({'claim':c.get('claim',''),
                     'confidence':c.get('confidence','uncertain'), 'origin':[event_ref],
                     'grade':GRADE,'does_not_operate_without_practice':True})
-                report.append({'kind':op,'status':'UNSTRUCTURED_SELF_HYPOTHESIS_NONOPERATIVE'})
+                report.append({'kind':op,'status':'ADMITTED_SOURCEFREE_FICTIONAL',
+                               'operative':False,'not_practice_qualified':True})
     actor.setdefault('history_refs',[]).append(event_ref)
     return report
 
