@@ -49,6 +49,65 @@ METHOD_GRADE = "SOURCE_EXACT_RAW_SAME_CASE_EXPLORATION_NONCAUSAL_NONPOPULATION"
 MAX_DHIKR_BATCH = 8  # existing DHIKR method contract; batch, not total predictor ceiling
 
 
+def _dhikr_batch_work_estimate(
+    *, context_positive_rows: int, axis_count: int,
+    bootstrap_replicates: int, raw_context_n: int,
+    bootstrap_case_cap: int,
+) -> int:
+    """Accounting estimate for the INHERITED DHIKR operation, not CPU seconds.
+
+    DHIKR performs same-case singles, pair diagnostics, and group scoring.
+    Use source-observed nonzero cells in the exact current context, not the
+    entire survey or an arbitrary eightfold multiplier. This is a planning
+    estimate; measured wall time and a process supervisor remain distinct.
+    """
+    if not 1 <= axis_count <= MAX_DHIKR_BATCH:
+        raise DeterminicityCycleError("INVALID_DHIKR_BATCH_WIDTH")
+    pairs = comb(axis_count, 2)
+    row_passes = 2 + 3 * axis_count + 4 * pairs
+    bootstrap_work = (
+        bootstrap_replicates * min(raw_context_n, bootstrap_case_cap)
+        * (axis_count + pairs)
+    )
+    return max(1, context_positive_rows) * row_passes + bootstrap_work
+
+
+def _plan_affordable_batch(
+    *, remaining_axes: Sequence[int], max_width: int,
+    context_positive_rows: int, context_raw_n: int,
+    domains: Sequence[Sequence[Any]], target_axis: int,
+    policy: "CyclePolicy", remaining_work: int,
+    remaining_output_cells: int,
+) -> tuple[tuple[int, ...], int, int]:
+    """Downshift from a full 8-axis DHIKR inquiry to 1 affordable axis.
+
+    Every candidate remains eligible for a later call. Small-batch
+    interactions are partial evidence, not an exhaustive no-interaction
+    finding. This prevents one pessimistic large-batch estimate from
+    blocking useful source-valid screening.
+    """
+    max_width = min(MAX_DHIKR_BATCH, max_width, len(remaining_axes))
+    for width in range(max_width, 0, -1):
+        axes = tuple(remaining_axes[:width])
+        pairs = comb(width, 2)
+        work = _dhikr_batch_work_estimate(
+            context_positive_rows=context_positive_rows,
+            axis_count=width,
+            bootstrap_replicates=policy.bootstrap_replicates,
+            raw_context_n=context_raw_n,
+            bootstrap_case_cap=policy.bootstrap_case_cap,
+        )
+        output = len(domains[target_axis]) + sum(
+            len(domains[a]) for a in axes
+        ) + pairs
+        if work <= remaining_work and output <= remaining_output_cells:
+            return axes, work, output
+    return (), 0, 0
+
+
+
+
+
 class DeterminicityCycleError(ValueError):
     """Country, source, budget, replay or scientific-claim boundary refused."""
 
@@ -522,29 +581,32 @@ def advance_country_determinicity(
         available = [a for a in policy.predictor_axes if a not in selected]
         cursor = active["next_predictor_offset"]
         if cursor < len(available) and processed_axes < resources.max_candidates:
-            batch = tuple(available[cursor:cursor + min(
-                MAX_DHIKR_BATCH, resources.max_candidates - processed_axes,
-            )])
-            # Conservative workload prediction: DHIKR scores all singles,
-            # all pairs and a bounded candidate-group frontier. Bootstrap
-            # resampling adds n*repetitions*group evaluations.
+            # Work is evaluated in THIS source-selected configuration.
+            # Never reject a useful singleton because a proposed 8-axis
+            # screening batch is too expensive. DHIKR's fixed eight-axis
+            # arity is a per-call method limit, not a scientific stop.
+            context_positive = [
+                (row, n) for row, n in positive if all(
+                    _key(row[a]) == _key(v) for a, v in selected.items()
+                )
+            ]
+            context_raw_n = sum(n for _, n in context_positive)
+            if not _resource_ok(deadline=deadline, budget=resources,
+                                resource_sample=resource_sample):
+                stop = "HOST_DEADLINE_RSS_OR_SCRATCH_LIMIT"; break
+            batch, estimated, projected_output = _plan_affordable_batch(
+                remaining_axes=available[cursor:],
+                max_width=resources.max_candidates - processed_axes,
+                context_positive_rows=len(context_positive),
+                context_raw_n=context_raw_n,
+                domains=domains, target_axis=policy.target_axis,
+                policy=policy,
+                remaining_work=resources.max_cell_visits - used,
+                remaining_output_cells=resources.max_output_cells - output_cells_used,
+            )
+            if not batch:
+                stop = "NO_SINGLETON_FITS_REMAINING_ACCOUNTING_ENVELOPE"; break
             k = len(batch)
-            # DHIKR's existing node always computes the pairwise diagnostic
-            # even if the selected candidate-group order is singleton.
-            pairs = comb(k, 2)
-            cases = len(positive)
-            estimated = cases * (8 + 8*k + 8*pairs)
-            estimated += (policy.bootstrap_replicates * min(
-                policy.bootstrap_case_cap, m_source["raw_fully_resolved_joint_n"]
-            ) * (k + pairs))
-            projected_output = len(domains[policy.target_axis]) + sum(
-                len(domains[a]) for a in batch
-            ) + pairs
-            if (used + estimated > resources.max_cell_visits
-                    or output_cells_used + projected_output > resources.max_output_cells
-                    or not _resource_ok(deadline=deadline, budget=resources,
-                                        resource_sample=resource_sample)):
-                stop = "HOST_COST_OR_DEADLINE_BEFORE_NEXT_DHIKR_BATCH"; break
             req = DHIKRComparisonRequest(
                 target_axis=policy.target_axis, predictor_axes=batch,
                 fixed_context=tuple(sorted(selected.items())),
@@ -554,12 +616,17 @@ def advance_country_determinicity(
                 bootstrap_case_cap=policy.bootstrap_case_cap,
             )
             before_batch = loads(canonical_json(state))
+            batch_started = monotonic()
             result = analyze_s04_dhikr(workspace, req).material()
+            actual_seconds = Decimal(str(round(monotonic() - batch_started, 6)))
             used += estimated
             output_cells_used += projected_output
             processed_axes += k
             active["batch_bootstrap_sensitivity"].append({
                 "source_dhikr_source_query_ref": result["source_query_ref"],
+                "budget_forecast_cell_visits": estimated,
+                "measured_batch_wall_seconds": actual_seconds,
+                "batch_width_selected_by_affordability": k,
                 "candidate_axes": list(batch),
                 "bootstrap_state": result["bootstrap_rank_instability"],
                 "method": (
