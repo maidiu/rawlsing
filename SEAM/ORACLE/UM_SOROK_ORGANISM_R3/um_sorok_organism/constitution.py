@@ -55,6 +55,8 @@ def materialize(actor,world):
         experienced_care_events=copy(actor.get('experienced_care_events',[])),
         performed_feeding_events=copy(actor.get('performed_feeding_events',[])),
         institutional_expectations=copy(actor.get('institutional_expectations',[])),
+        material_dependency_encounters=copy(actor.get(
+            'material_dependency_encounters',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -410,16 +412,14 @@ def compose(constitution,access,limit=50):
             'opportunity':'SITUATED_MATERIAL_FOOD_POWER'})
         entry['basis'].append('actual_material_ability:'+action)
         if action==COMMONS:
-            denied=[x for x in constitution.power_exercises
-                    if x.get('operation')=='FEED'
-                    and x.get('encounter_location')==access.location
-                    and x.get('attempt_status_analyst_receipt') in (
-                        'BLOCKED','PARTIAL')
-                    and type(x.get('event_clock')) is int
-                    and x['event_clock']<=constitution.clock]
+            denied=[x for x in constitution.material_dependency_encounters
+                    if x.get('own_operation_attempted')=='FEED'
+                    and x.get('location')==access.location
+                    and type(x.get('clock')) is int
+                    and x['clock']<=constitution.clock]
             if denied:
                 entry['material_counterpower_ground']={
-                    'personally_exercised_incomplete_care_ref':
+                    'personally_sensed_incomplete_feeding_ref':
                         denied[-1]['id'],
                     'alternative_requires_own_food_not_ideology':True}
                 currents.append({
