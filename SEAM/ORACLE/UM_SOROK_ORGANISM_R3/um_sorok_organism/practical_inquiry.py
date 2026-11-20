@@ -59,7 +59,9 @@ def offer_actor_inquiry(constitution,access):
              if isinstance(r,dict) and
              r.get('status')=='PROVISIONAL' and
              r.get('operative_possible_means')=='INSPECT' and
-             r.get('scope')=='POSTED_INSTITUTIONAL_PROCEDURE']
+             r.get('scope')=='POSTED_INSTITUTIONAL_PROCEDURE'
+             and type(r.get('observed_at_clock')) is int
+             and r['observed_at_clock']<=constitution.clock]
     if not prior and not learned:
         return {'offered':[],'readset':[],'grade':GRADE}
     allowed,_=eligible(constitution.body,'INSPECT')
@@ -108,6 +110,7 @@ def retain_personal_notice_exposure(actor,experience,event_ref):
             continue
         row={
             'id':key,'public_notice_ref':ref,
+            'inspected_at_clock':experience.get('clock'),
             'event_ref':event_ref,'experience_ref':experience.get('ref'),
             'received_cue_ref':cue.get('id'),
             'public_words_available':copy(cue.get('tags',[])),
