@@ -332,3 +332,42 @@ def test_actual_eight_respondent_full_joint_can_seed_non_singular_v3_proposal():
     )
     assert prefix.step["state"] == HELD_WORLD_STATE
     assert prefix.step["cells"] == []
+
+
+def test_private_cold_c4_archive_resumes_actual_c6_parent_and_nadia_inputs(tmp_path):
+    """Persist inherited C4 once; restart C5/C6 without querying I03."""
+    from rawlsing_next.pre553_s04_field_forge_v3_bridge import (
+        write_sourcefree_v3_handoff_private,
+        read_sourcefree_v3_handoff_private,
+    )
+    from rawlsing_next.pre553_ff_prev3_possibility_navigation import (
+        run_v3_sourcefree_context_path,
+    )
+    build = _c4("PYAT-C6-PRIVATE-COLD")
+    root = tmp_path / "private"
+    root.mkdir(mode=0o700)
+    original = write_sourcefree_v3_handoff_private(root, build.envelope)
+    restored = read_sourcefree_v3_handoff_private(
+        original, external_pin=build.external_pin,
+    )
+    assert restored.ref == build.envelope.ref
+    path = run_v3_sourcefree_context_path(
+        envelope=restored, external_pin=build.external_pin,
+        starting_conditions={}, steps=((0, "0"),), seed=104,
+    )
+    p = assemble_c6_contextual_entrance(
+        envelope=restored, external_pin=build.external_pin,
+        path=path, entrance=ENTRY_PARENT, slot="precontact-adult",
+    )
+    n = assemble_c6_contextual_entrance(
+        envelope=restored, external_pin=build.external_pin,
+        path=path, entrance=ENTRY_NADIA, slot="ongoing-development-event",
+    )
+    assert p.ref != n.ref
+    assert p.material()["source_case_offer_ref"] == n.material()["source_case_offer_ref"]
+    assert p.material()["no_additional_i03_queries"] is True
+    assert n.material()["actor_state_transition"] is None
+    assert replay_c6_contextual_entrance(
+        receipt=p, envelope=restored,
+        external_pin=build.external_pin, path=path,
+    ).ref == p.ref
