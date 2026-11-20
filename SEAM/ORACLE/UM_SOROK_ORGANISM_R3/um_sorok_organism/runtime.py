@@ -19,6 +19,8 @@ from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
+from .material_investments import (
+    retain_personal_object_encounter, possible_object_investments)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -474,6 +476,7 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref,
                 world['positions'].get(aid,actors[aid]['location']))
             retain_personal_notice_exposure(actors[aid],experience,objective_ref)
+            retain_personal_object_encounter(actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
@@ -482,6 +485,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,bodily_before[aid],actors[aid]['body'])
             functional_genesis=propose_actor_lived_correspondences(
                 actors[aid],experience,objective_ref)
+            material_meaning_proposals=possible_object_investments(
+                actors[aid],experience)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -502,6 +507,8 @@ class ConstitutiveRuntime:
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),
+                'historically_possible_material_meanings':copy(
+                    material_meaning_proposals),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
