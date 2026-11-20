@@ -87,6 +87,9 @@ class ConstitutiveRuntime:
             if not ok: raise ValueError('ACTOR_ACTION_BODILY_INELIGIBLE:'+why)
             action=requested_action
             basis=['EXTERNAL_RESEARCH_ACTION_INJECTION']
+            purpose={'status':'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
+                     'project_id':None,'selection_grade':'EXTERNAL_INJECTION',
+                     'other_available_projects_not_claimed':True}
             authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
@@ -97,10 +100,59 @@ class ConstitutiveRuntime:
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
-            basis=copy(opt.get('basis',[]))
+            # A single operation may genuinely serve SEVERAL projects, but
+            # only when the actor policy explicitly selects the particular
+            # subset. Never infer multi-intent from the pooled opportunity.
+            # Omission is meaningful: an exploratory act with no known end.
+            raw=proposed.get('project_ids')
+            if raw is not None and proposed.get('project_id') is not None:
+                raise ValueError('AMBIGUOUS_SINGLE_AND_MULTI_PURPOSE_SELECTION')
+            if raw is None:
+                one=proposed.get('project_id')
+                selected_refs=[] if one is None else [one]
+            else:
+                if (type(raw) is not list or not raw
+                        or len(raw)>8 or len(set(map(str,raw)))!=len(raw)):
+                    raise ValueError('INVALID_MULTIPLE_PROJECT_SELECTION')
+                selected_refs=raw
+            if any(type(ref) is not str or not ref for ref in selected_refs):
+                raise ValueError('MODEL_SELECTED_PURPOSE_NOT_TEXT')
+            available={p['project_id']:p for p in opt.get('project_courses',[])}
+            if any(ref not in available for ref in selected_refs):
+                raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            selected=[available[ref] for ref in selected_refs]
+            selection_grade=proposed.get(
+                'purpose_selection_grade',
+                'MODEL_CHOSEN_COURSE_FICTIONAL_NOT_OBSERVED_CONSCIOUS_MOTIVE')
+            if selected:
+                purpose={
+                    'status':('ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+                              if len(selected)==1
+                              else 'ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES'),
+                    'project_id':selected[0]['project_id'] if len(selected)==1 else None,
+                    'project_ids':copy(selected_refs),
+                    'practical_objects':[p['object'] for p in selected],
+                    'motive_hypotheses':[p['motive_hypothesis'] for p in selected],
+                    'selection_grade':selection_grade,
+                    'not_claimed_fulfillment':True,
+                    'other_available_projects_not_claimed':True}
+                if len(selected)==1:
+                    purpose['practical_object']=selected[0]['object']
+                    purpose['motive_hypothesis']=selected[0]['motive_hypothesis']
+            else:
+                purpose={'status':'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
+                         'project_id':None,'project_ids':[],
+                         'selection_grade':'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
+                         'other_available_projects_not_claimed':True}
+            # Preserve only explicitly selected projects on Attempt; all
+            # unselected courses remain in the situation, not the act's past.
+            basis=[ref for ref in opt.get('basis',[])
+                   if not (isinstance(ref,str) and ref.startswith('project:'))]
+            basis+=['project:'+ref for ref in selected_refs]
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,means=[],basis=basis,
-                       intention=authority,scene_hash=digest({'world':world,'actor':actor_id})),
+                       intention=authority,purpose_selection=purpose,
+                       scene_hash=digest({'world':world,'actor':actor_id})),
 
     def plan(self,actor_id,requested_action=None,target=None,object_ref=None):
         _,world=self.ledger.world(self.world_id)
@@ -120,13 +172,20 @@ class ConstitutiveRuntime:
         return other
 
     def step(self,actor_id,requested_action=None,target=None,object_ref=None,
-             coactor_override=None):
+             coactor_override=None,research_plan_context=None):
         """One atomic joined life transition. Coactor always uses own plan.
 
         coactor_override is deliberately prohibited; original R0 consent bug
         is repaired in this research implementation at the public transaction.
         """
         if coactor_override is not None:raise ValueError('FORGED_COACTOR_OVERRIDE_REFUSED')
+        if research_plan_context is not None:
+            if (requested_action is None
+                    or not isinstance(research_plan_context,dict)
+                    or type(research_plan_context.get('plan_id')) is not str
+                    or type(research_plan_context.get('hypothesized_object')) is not str
+                    or research_plan_context.get('authority')!='EXTERNAL_RESEARCH_PLAN'):
+                raise ValueError('UNQUALIFIED_EXTERNAL_PLAN_CONTEXT')
         wv,world=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
         actors=self.ledger.actors()
@@ -168,7 +227,8 @@ class ConstitutiveRuntime:
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
-                {'material_claim_ref':summary.get('material_claim_ref')})
+                {'material_claim_ref':summary.get('material_claim_ref')},
+                purpose_selection=chosen.purpose_selection)
         developmental={};subjective={};post_event_psychodynamics={}
         for aid in actors:
             # Separate actor-specific view, no analyst world description in LLM input.
@@ -179,6 +239,13 @@ class ConstitutiveRuntime:
             personal_cues=[x for x in access.cues if x['id']==world['cues'][-1]['id']]
             if not participated and not personal_cues:continue
             own=personally_done['action'] if personally_done else ('RECEIVED_CARE' if aid in affected else None)
+            # Only this actor's actual selection—not the pooled action
+            # opportunity—may qualify an undertaken project. For a target
+            # who merely suffers the act, there is no actor-authored project.
+            actor_attempt=(principal if aid==actor_id else partner)
+            own_selection=(copy(actor_attempt.purpose_selection)
+                 if personally_done and actor_attempt is not None
+                 else {'status':'NO_ACTOR_AUTHORED_ATTEMPT','project_id':None})
             reciprocal=None
             if partner and resolved['objective_description']=='JOINT_ACTIVITY_PERFORMED' and personally_done and personal_cues:
                 reciprocal=partner.actor if aid==actor_id else actor_id
@@ -202,6 +269,22 @@ class ConstitutiveRuntime:
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            # An action changes the opportunities and signals subsequently
+            # accessible to its author. We retain the actually received path,
+            # without inventing the counterfactual evidence they did not meet.
+            actors[aid].setdefault('evidence_paths',[]).append({
+                'event':objective_ref,'experience_ref':experience['ref'],
+                'own_action':own,'purpose_status':own_selection['status'],
+                'selected_project_ref':own_selection.get('project_id'),
+                'selected_project_refs':copy(own_selection.get(
+                    'project_ids',([own_selection['project_id']]
+                        if own_selection.get('project_id') else []))),
+                'received_cue_refs':[c['id'] for c in personal_cues],
+                'received_cue_tags':sorted({str(tag).lower()
+                    for cue in personal_cues for tag in cue.get('tags',[])}),
+                'not_a_counterfactual_comparison':True,
+                'unencountered_alternatives':'UNKNOWN_NOT_OBSERVED',
+                'grade':GRADE})
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
@@ -219,6 +302,11 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                # Untried possible ends are actor-history hypotheses, not
+                # automatically functioning motives or public self-knowledge.
+                'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'selected_purpose_analytic_only':copy(own_selection),
+                'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
                 # preceding psychic organization. The simulated actor neither
                 # observes this full packet nor has to possess its vocabulary.
@@ -244,6 +332,8 @@ class ConstitutiveRuntime:
                'actor_accessible':observed,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
+                 'external_research_plan_context':copy(research_plan_context),
+                 'external_plan_is_not_actor_chosen_undertaking':True,
                  'coactor_attempt':partner.document() if partner else None,
                  'coactor_selection_grade':partner.intention if partner else None,
                  'coactor_policy_receipt':coactor_policy_receipt,
@@ -295,11 +385,20 @@ class ConstitutiveRuntime:
         # Every step is independently resolved; prior success never guarantees
         # later feasibility, consent or material outcome.
         transitions=[]
+        context={'plan_id':current['id'],
+                 'hypothesized_object':current['object'],
+                 'hypothetical_project_ref':current.get('project_ref'),
+                 'authority':'EXTERNAL_RESEARCH_PLAN',
+                 'not_actor_attested_purpose':True,
+                 'not_guaranteed_success_or_future_participation':True}
         for action in current['steps']:
-            response=self.step(actor_id,requested_action=action)
+            response=self.step(actor_id,requested_action=action,
+                               research_plan_context=context)
             transitions.append(response)
             if response['status'] not in ('PERFORMED','PARTIAL'):break
         return {'plan_id':plan_id,'attempts':transitions,
+           'external_plan_hypothesized_object':current['object'],
+           'external_plan_not_actor_attributed_purpose':True,
            'observed_actual_attempts':len(transitions),
            'grade':GRADE, 'selection_grade':'EXTERNAL_RESEARCH_PLAN_INVOCATION',
            'no_guaranteed_outcome':True}

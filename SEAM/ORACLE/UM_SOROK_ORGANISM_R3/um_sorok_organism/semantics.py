@@ -34,8 +34,23 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
-            return {'task':task,'action':possibilities[0]['action'],
-                    'basis':possibilities[0].get('basis',[]),'semantic_grade':self.grade}
+            # Select at most one historically available undertaking, not the
+            # pooled basis of all projects that share the chosen operation.
+            # This deterministic priority/tie policy is fictional fallback,
+            # NOT an empirically recovered conscious motive.
+            option=possibilities[0]
+            courses=option.get('project_courses',[])
+            if courses:
+                selected=sorted(courses,key=lambda x:(
+                    -x.get('priority',.5),str(x['project_id'])))[0]
+                project_ref=selected['project_id']
+            else:
+                project_ref=None
+            return {'task':task,'action':option['action'],
+                    'project_id':project_ref,
+                    'purpose_selection_grade':('HEURISTIC_PROJECT_COURSE_CHOSEN'
+                         if project_ref is not None else 'NO_ASSIGNED_PROJECT_END'),
+                    'basis':option.get('basis',[]),'semantic_grade':self.grade}
         if task=='development':
             experience=packet.get('experience',{})
             action=experience.get('own_action')
@@ -57,6 +72,32 @@ class HeuristicSemanticProvider:
                     'other_ref':other,'hypothesis':'shared participation with '+other+
                     ' has recently occurred; future participation remains uncertain',
                     'confidence':'tentative'})
+            # A prior sensed possibility can become a provisional practical
+            # end only in a DIFFERENT experienced event. The first act was
+            # exploratory, not retroactively undertaken for the later end.
+            tags={str(tag).lower() for cue in cues
+                  for tag in cue.get('tags',[])}
+            for candidate in packet.get('actor_possible_ends',[]):
+                if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
+                        and candidate.get('origin_event')!=packet.get(
+                             'historical_psychodynamic_context',{}).get('objective_event_ref')
+                        and tags & {str(x).lower() for x in candidate.get('cue_terms',[])}):
+                    # The fallback may name an actually received later sign.
+                    # It may never make up an unseen cue or confer knowledge
+                    # of why that sign became psychically important.
+                    matching_sign=next((cue.get('id') for cue in cues
+                        if type(cue.get('id')) is str and
+                        {str(t).lower() for t in cue.get('tags',[])}
+                        & {str(t).lower() for t in candidate.get('cue_terms',[])}),None)
+                    relation_candidates.append({
+                        'kind':'TAKE_UP_POSSIBLE_END',
+                        'possible_end_ref':candidate['id'],
+                        'means':copy(candidate['possible_means']),
+                        'priority':.32,
+                        **({'later_perceived_cue_ref':matching_sign}
+                            if matching_sign is not None else {}),
+                    })
+                    break
             if action in ('PRACTICE','SING','JOIN','MAKE_SPACE') and cues:
                 # Existing forms can generalize in scope rather than minting
                 # endlessly duplicated skills. This is a provisional fictional
@@ -86,14 +127,18 @@ class HeuristicSemanticProvider:
                     if previous:
                         candidates.append({'kind':'LINK_FORMS',
                             'source':previous['id'],'target':fid,'relation':'SUPPORTS'})
-                    # Concrete fictional new purpose; NOT empirically warranted
-                    # from one episode and not a universal child motive.
-                    candidates.append({'kind':'ADD_PROJECT','project':{
-                        'id':stable_id('project',{'actor':packet['actor']['id'],'clock':packet['clock'],
-                                                 'object':'continue shared rhythms'}),
-                        'object':'explore whether a rhythm can continue',
-                        'means':['SING','PRACTICE'],'priority':.32,
-                        'cue_terms':['sing','rhythm'],'status':'active'}})
+                    # A first performed song may expose an unanticipated
+                    # *possible end*. It is NOT yet why the person acted.
+                    # Only a later experienced episode can give it project
+                    # status, and neither step asserts an empirical human law.
+                    received=next((q.get('id') for q in cues
+                         if type(q.get('id')) is str and q.get('id')),None)
+                    if received:
+                        candidates.append({'kind':'NOTICE_POSSIBLE_END',
+                            'perceived_cue_ref':received,
+                            'possible_object':'explore whether a rhythm can continue',
+                            'possible_means':['SING','PRACTICE'],
+                            'cue_terms':['sing','rhythm']})
                 return {'task':task,'candidates':candidates+relation_candidates,'semantic_grade':self.grade}
             if action=='SIGNAL' and cues:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',

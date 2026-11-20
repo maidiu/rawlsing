@@ -24,7 +24,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
-         'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF','NO_CHANGE'}
+         'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
+         'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -230,6 +231,113 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['forms'][ident]['lifecycle']='DORMANT' if op=='SET_DORMANT' else 'ACTIVE'
             actor['forms'][ident].setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='NOTICE_POSSIBLE_END':
+            # An experience can make a *previously unchosen* consequence
+            # interesting without retroactively making it the purpose of the
+            # first attempt. This is only a possible future end, not a motive.
+            ref=c.get('perceived_cue_ref')
+            received={q.get('id') for q in experience.get('perceived_cues',[])
+                      if isinstance(q,dict) and type(q.get('id')) is str}
+            if type(ref) is not str or ref not in received:
+                raise InvalidDevelopment('POSSIBLE_END_MUST_DERIVE_FROM_ACTOR_RECEIVED_SIGN')
+            obj=c.get('possible_object')
+            if type(obj) is not str or not obj.strip() or len(obj)>512:
+                raise InvalidDevelopment('INVALID_POSSIBLE_END_DESCRIPTION')
+            possible=c.get('possible_means',[])
+            if (type(possible) is not list or not 1<=len(possible)<=8
+                    or any(type(x) is not str or x not in ACTIONS for x in possible)
+                    or len(set(possible))!=len(possible)):
+                raise InvalidDevelopment('POSSIBLE_END_MEANS_NOT_QUALIFIED')
+            cues=c.get('cue_terms',[])
+            _text_list(cues,'INVALID_POSSIBLE_END_CUES')
+            if len(cues)>16:raise InvalidDevelopment('POSSIBLE_END_CUES_UNBOUNDED')
+            end_id=stable_id('possible_end',{'actor':actor['id'],
+                'event':event_ref,'cue':ref,'index':idx,'object':obj})
+            if any(e['id']==end_id for e in actor.get('possible_ends',[])):
+                raise InvalidDevelopment('DUPLICATE_POSSIBLE_END')
+            end={'id':end_id,'possible_object':obj,
+                 'possible_means':copy(possible),'cue_terms':copy(cues),
+                 'status':'POSSIBLE_NOT_ACQUIRED_MOTIVE',
+                 'origin_event':event_ref,'experience_ref':experience['ref'],
+                 'actor_perceived_cue_ref':ref,
+                 'eliciting_actor_action':experience.get('own_action'),
+                 'initial_event_intent_not_rewritten':True,
+                 'actual_consequence_not_identified_by_actor_perception':True,
+                 'meaning_hypothesis_not_empirical_learning_law':True,
+                 'grade':GRADE}
+            actor.setdefault('possible_ends',[]).append(end)
+            report.append({'kind':op,'possible_end':end_id,
+                           'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op=='TAKE_UP_POSSIBLE_END':
+            ref=c.get('possible_end_ref')
+            ends=[e for e in actor.get('possible_ends',[])
+                  if e.get('id')==ref]
+            if len(ends)!=1:
+                raise InvalidDevelopment('UNKNOWN_OR_AMBIGUOUS_POSSIBLE_END')
+            end=ends[0]
+            if (end.get('status')!='POSSIBLE_NOT_ACQUIRED_MOTIVE'
+                    or end['origin_event']==event_ref):
+                raise InvalidDevelopment('POSSIBLE_END_CANNOT_RETROACTIVELY_BECOME_INTENT')
+            # The second episode must remain an independently experienced
+            # event. An LLM may nominate WHICH actually received cue became
+            # consequential, but cannot create or retrospectively access it.
+            # Absence of an explicit sign remains qualified uncertainty, not
+            # an instruction to invent a conscious explanation.
+            later_received={cue.get('id') for cue in experience.get('perceived_cues',[])
+                if isinstance(cue,dict) and type(cue.get('id')) is str}
+            claimed_later_sign=c.get('later_perceived_cue_ref')
+            if (claimed_later_sign is not None and
+                    (type(claimed_later_sign) is not str or
+                     claimed_later_sign not in later_received)):
+                raise InvalidDevelopment('TAKEUP_SIGN_NOT_ACTOR_RECEIVED')
+            if claimed_later_sign is None and len(later_received)==1:
+                # One received sign is a *possible contextual anchor*, not
+                # proof it caused the new concern or that the actor knows why.
+                claimed_later_sign=next(iter(later_received))
+            takeup_evidence={
+                'later_event':event_ref,'later_experience_ref':experience['ref'],
+                'actual_received_sign_refs':sorted(later_received),
+                'later_received_sign_ref':claimed_later_sign,
+                'sign_selection_grade':(
+                    'LLM_PROPOSED_ACTOR_RECEIVED_SIGN'
+                    if 'later_perceived_cue_ref' in c else
+                    'SINGLE_ACTOR_RECEIVED_SIGN_PROVISIONAL'
+                    if claimed_later_sign else
+                    'LATER_EXPERIENCE_SIGN_UNSPECIFIED'),
+                'not_a_proven_causal_significance':True,
+                'not_actor_self_account':True,
+                'unobserved_alternatives':'UNKNOWN_NOT_OBSERVED',
+            }
+            requested=c.get('means',end['possible_means'])
+            if (type(requested) is not list or not requested or
+                    any(type(x) is not str or x not in end['possible_means']
+                        for x in requested) or len(set(requested))!=len(requested)):
+                raise InvalidDevelopment('UNLICENSED_TAKEUP_MEANS')
+            priority=c.get('priority',.35)
+            validate_activity_priority(priority)
+            project_id=stable_id('emergent_project',{
+                'actor':actor['id'],'candidate':ref,'event':event_ref})
+            if any(p['id']==project_id for p in actor['projects']):
+                raise InvalidDevelopment('DUPLICATE_EMERGENT_PROJECT')
+            project={'id':project_id,'object':end['possible_object'],
+                     'motive':'EMERGENT_PROVISIONAL_END_NOT_INFERRED_FROM_INITIAL_ACT',
+                     'means':copy(requested),'cue_terms':copy(end['cue_terms']),
+                     'status':'active','priority':priority,
+                     'contextual_only':False,
+                     'origin':[end['origin_event'],event_ref],
+                     'possible_end_ref':ref,
+                     'takeup_evidence':copy(takeup_evidence),
+                     'skill_mastery_not_inferred':True,
+                     'original_attempt_purpose_not_rewritten':True,
+                     'grade':GRADE}
+            actor['projects'].append(project)
+            end.setdefault('subsequent_takeup',[]).append({
+                'event':event_ref,'experience_ref':experience['ref'],
+                'takeup_evidence':copy(takeup_evidence),
+                'project_ref':project_id,'grade':GRADE})
+            end['status']='TAKEN_UP_AS_PRACTICAL_PROJECT'
+            report.append({'kind':op,'project':project_id,'possible_end':ref,
+                           'status':'ADMITTED_FICTIONAL_LATER_END_TAKEUP'})
         elif op=='ADD_PROJECT':
             project=copy(c.get('project',{}))
             if not project.get('object') or not isinstance(project.get('means'),list):

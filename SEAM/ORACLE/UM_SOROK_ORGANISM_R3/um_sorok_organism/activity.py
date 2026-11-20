@@ -36,7 +36,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
     return result
 
 
-def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref, object_delta=None):
+def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref,
+                              object_delta=None, purpose_selection=None):
     """Preserve an *attempted* operation's separate objective activity courses.
 
     A blocked/partial attempt is historical conduct, not the absence of an
@@ -47,7 +48,40 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
     """
     if status not in ('PERFORMED', 'PARTIAL', 'BLOCKED'):
         raise ValueError('UNKNOWN_ACTIVITY_OPERATION_STATUS')
-    project_ids={r.removeprefix('project:') for r in basis if isinstance(r,str) and r.startswith('project:')}
+    project_ids={r.removeprefix('project:') for r in basis
+                 if isinstance(r,str) and r.startswith('project:')}
+    # A standalone explicit project-basis call is a *legacy caller assertion*.
+    # The joined live runtime instead passes its selected-purpose receipt:
+    # it is a historical error to read a pooled option's several courses as
+    # several ACTUALLY ATTEMPTED ends.
+    if purpose_selection is None:
+        attribution='EXPLICIT_LEGACY_PROJECT_BASIS_ASSERTION'
+    else:
+        if not isinstance(purpose_selection,dict):
+            raise ValueError('INVALID_SELECTED_PURPOSE_RECEIPT')
+        ident=purpose_selection.get('project_id')
+        status_kind=purpose_selection.get('status')
+        if status_kind=='ACTOR_POLICY_SELECTED_PROJECT_COURSE':
+            if (type(ident) is not str or project_ids!={ident}
+                    or purpose_selection.get('project_ids',[ident])!=[ident]):
+                raise ValueError('SELECTED_PURPOSE_NOT_IN_ACTOR_ATTEMPT_BASIS')
+            project_ids={ident}
+        elif status_kind=='ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES':
+            refs=purpose_selection.get('project_ids')
+            if (ident is not None or type(refs) is not list
+                    or not 2<=len(refs)<=8
+                    or any(type(x) is not str for x in refs)
+                    or set(refs)!=project_ids or len(set(refs))!=len(refs)):
+                raise ValueError('MULTIPLE_SELECTED_PURPOSES_MISMATCH_ATTEMPT')
+            project_ids=set(refs)
+        elif status_kind in (
+            'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
+            'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE'):
+            if ident is not None or project_ids:
+                raise ValueError('PURPOSE_UNKNOWN_BUT_PROJECT_ASSERTED')
+            project_ids=set()
+        else:raise ValueError('UNKNOWN_SELECTED_PURPOSE_STATUS')
+        attribution=status_kind
     histories=[]
     for project in actor.get('projects',[]):
         if project['id'] not in project_ids or own_action not in project.get('means',[]):
@@ -63,6 +97,9 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
                  else 'PARTIAL_ATTEMPT' if status=='PARTIAL'
                  else 'PERFORMED_OPERATION'),
             'object_fulfillment':'NOT_INFERRED_FROM_OPERATION',
+            'intent_attribution':attribution,
+            'selected_at_actor_attempt':True if purpose_selection is not None else 'LEGACY_CALLER_ASSERTION',
+            'other_eligible_project_courses_not_asserted':purpose_selection is not None,
             'objective_outcome_access':'WORLD_AUDIT_NOT_ACTOR_KNOWLEDGE',
             'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME','grade':GRADE}
         histories.append(entry)

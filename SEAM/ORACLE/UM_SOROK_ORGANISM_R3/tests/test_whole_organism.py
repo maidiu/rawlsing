@@ -166,9 +166,20 @@ class WholeOrganism(unittest.TestCase):
         self.rt.background(365)
         self.rt.step('nadia',requested_action='PRACTICE')
         self.rt.step('nadia',requested_action='SING')
+        first=self.rt.snapshot('nadia')
+        # A first successful/partial trial can reveal a POSSIBLE future end.
+        # It was not already the purpose of that first attempt.
+        self.assertTrue(any('rhythm' in e['possible_object']
+                            and e['status']=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
+                            for e in first['possible_ends']))
+        self.assertFalse(any('rhythm' in p['object'] for p in first['projects']))
+        self.rt.step('nadia',requested_action='SING')
         person=self.rt.snapshot('nadia')
         self.assertTrue(any(link['relation']=='SUPPORTS' for link in person['links']))
         self.assertTrue(any('rhythm' in p['object'] for p in person['projects']))
+        self.assertTrue(any('rhythm' in e['possible_object']
+                            and e['status']=='TAKEN_UP_AS_PRACTICAL_PROJECT'
+                            for e in person['possible_ends']))
         # Persisted relation means one acquired practice can activate another.
         practice=next(f for f in person['forms'].values() if 'PRACTICE' in f['enables'])
         song=next(f for f in person['forms'].values() if 'SING' in f['enables'])

@@ -15,6 +15,8 @@ class ComposedActivity:
     steps: tuple[str,...]
     basis: tuple[str,...]
     grade: str=GRADE
+    project_ref: str | None=None
+    purpose_claim: str='HYPOTHESIZED_PLAN_OBJECT_NOT_PERFORMER_INTENT'
 
 
 def qualified_learned_compositions(constitution, encounter, active_forms, projects, options):
@@ -75,7 +77,9 @@ def propose_compositions(situated, max_steps=3):
                    if r!='organism' and not str(r).startswith('project:')}
         refs=tuple(sorted({project_basis}|form_refs))
         out.append(ComposedActivity(stable_id('composed',{'actor':situated.actor,
-          'purpose':p['object'],'steps':candidate,'basis':refs}),
-          situated.actor,p['object'],candidate,refs))
+          'project_ref':p['ref'],'purpose':p['object'],
+          'steps':candidate,'basis':refs}),
+          situated.actor,p['object'],candidate,refs,
+          project_ref=p['ref']))
     # Deduplicate across current projects without destroying different ends.
     return out
