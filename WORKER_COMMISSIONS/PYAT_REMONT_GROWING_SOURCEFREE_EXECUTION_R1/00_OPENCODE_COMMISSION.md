@@ -51,3 +51,12 @@ The user has expressly reaffirmed **REMONT owns the testing and repair queue whi
 **Responsibility split:** OpenCode runs and captures exact-head logs/JUnit/first faults (no production edits). REMONT owns P/T/E triage, historical-negative conservation and repair disposition, with major source/authority/cross-owner faults routed to REMONT Browser. PYAT continues construction rather than debugging local fixtures/CI. Original-source Q006 remains held for separately issued source-science authority; an historic code-map candidate does not issue it.
 
 No RMT-Q011/Q012 collision (reserved for cross-owner SOROK). Do not repurpose those identifiers.
+
+
+## PR #1207 quantitative reorientation — REMONT RMT-Q017 (NOT_EXECUTED)
+
+The user challenged the preliminary 0.5%-of-country (3–15) exploration / (5–30) review curves because a small absolute support threshold produces both false subgroup contrast at small N and a combinatorial eligible-node explosion at large N. Direct null-model calculations confirmed this. **Do not treat the country-relative support curve as scientific branch authorization.**
+
+The implementation candidate now keeps the counts as descriptive metadata only and adds separately conservative complexity-/multiplicity-penalized automatic recursion. The default "protected minority" recursive quota was lowered to zero because a 4-person binary subgroup can show a 25-percentage-point false contrast with 62.5% probability under an even 50/50 null. The source observation remains present, queryable and correctly graded. Recover missing variance, search selection, effective-n and historical meaning through separately competent scientists/issuers, not from sourcefree score values.
+
+RMT-Q017 targets `rawlsing_next/tests/test_pre553_s04_support_noise_admission.py`. The standing queue and runner have the exact new selector; no author-side tests or repairs have been run. Execute only with appropriate independent commissioning at an exact permitted PR HEAD, following Q015/Q016 (and the separately authorized cross-branch Q014, not from this branch). REMONT owns P/T/E repair triage. This code is a candidate *routing heuristic*, not a scientifically calibrated null test or original survey grant.
