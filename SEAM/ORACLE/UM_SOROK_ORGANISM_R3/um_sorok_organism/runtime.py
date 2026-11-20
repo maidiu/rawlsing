@@ -18,6 +18,7 @@ from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
+from .practical_inquiry import retain_personal_notice_exposure
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -250,6 +251,8 @@ class ConstitutiveRuntime:
             basis+=['project:'+ref for ref in selected_refs]
             bound_target=(selected_alternative['world_request']['addressed_party_ref']
                           if selected_alternative else None)
+            bound_object=(selected_alternative['world_request'].get('material_object_ref')
+                          if selected_alternative else None)
             practical={'status':'ACTOR_POLICY_PRACTICAL_ATTEMPT',
                        'option_id':(selected_alternative['option_id']
                            if selected_alternative else stable_id(
@@ -285,7 +288,9 @@ class ConstitutiveRuntime:
                 getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
                 selected_refs)
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
-        return Attempt(actor_id,action,target=bound_target,means=[],basis=basis,
+        return Attempt(actor_id,action,target=bound_target,
+                       object_ref=(bound_object if requested_action is None else None),
+                       means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
                        practical_selection=practical,
                        scene_hash=digest({'world':world,'actor':actor_id})),
@@ -298,7 +303,9 @@ class ConstitutiveRuntime:
         if target is not None and attempt.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:attempt.target=target
-        attempt.object_ref=object_ref
+        if object_ref is not None and attempt.object_ref not in (None,object_ref):
+            raise ValueError('CALLER_OBJECT_CONFLICTS_WITH_ACTOR_SELECTION')
+        if object_ref is not None:attempt.object_ref=object_ref
         return attempt
 
     def _independent_coactor_plan(self,principal,world,actors):
@@ -350,7 +357,9 @@ class ConstitutiveRuntime:
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:principal.target=target
-        principal.object_ref=object_ref
+        if object_ref is not None and principal.object_ref not in (None,object_ref):
+            raise ValueError('CALLER_OBJECT_CONFLICTS_WITH_ACTOR_SELECTION')
+        if object_ref is not None:principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
@@ -464,6 +473,7 @@ class ConstitutiveRuntime:
             retain_exercised_power(
                 actors[aid],experience,objective_ref,
                 world['positions'].get(aid,actors[aid]['location']))
+            retain_personal_notice_exposure(actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
