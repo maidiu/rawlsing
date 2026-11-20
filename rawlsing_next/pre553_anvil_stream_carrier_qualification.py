@@ -76,7 +76,8 @@ class HeldStreamPins:
         if not (_HEX.fullmatch(self.source_sha256)
                 and _HEX.fullmatch(self.manifest_sha256)):
             _fail("independent source and manifest SHA-256 pins required")
-        if type(self.roots) is not dict or set(self.roots) != _ROOT_FIELDS:
+        from types import MappingProxyType
+        if type(self.roots) not in (dict, MappingProxyType) or set(self.roots) != _ROOT_FIELDS:
             _fail("all seven independently held stream root fields required")
         if any(type(v) is not str or not v for v in self.roots.values()):
             _fail("stream root values must be exact nonempty strings")
@@ -88,7 +89,6 @@ class HeldStreamPins:
         if not self.roots["source"].endswith("|" + self.source_sha256):
             _fail("exact source artifact disagrees with independently held source hash")
         # Dataclass immutability must also cover the mutable input mapping.
-        from types import MappingProxyType
         object.__setattr__(self, "roots", MappingProxyType(dict(self.roots)))
 
 
