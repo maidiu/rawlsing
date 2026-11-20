@@ -32,6 +32,7 @@ from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
 from .psychic_genesis import (
     conserve_lived_episode,possible_contrast_end)
+from .joint_practice_genesis import possible_joint_practice
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -569,6 +570,8 @@ class ConstitutiveRuntime:
             record_actor_participation(
                 actors[aid],experience,resolved,objective_ref,
                 body_before=bodily_before[aid],body_after=actors[aid]['body'])
+            possible_joint_practice_genesis=possible_joint_practice(
+                actors[aid],experience,objective_ref)
             # A person can later seek to repeat an actually exercised
             # operation or attempt to practice a formerly joint activity.
             # The source-free rule does NOT confer independent technical
@@ -627,6 +630,8 @@ class ConstitutiveRuntime:
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'historically_possible_genetic_ends':copy(possible_genetic_end),
+                'historically_possible_joint_practices':copy(
+                    possible_joint_practice_genesis),
                 'recent_personally_lived_genesis_witnesses_analyst_only':copy(
                     actors[aid].get('lived_genesis_episodes',[])[-8:]),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
