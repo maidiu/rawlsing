@@ -62,6 +62,7 @@ class Constitution:
     participation_history: list[dict] = field(default_factory=list)
     functional_bindings: list[dict] = field(default_factory=list)
     power_exercises: list[dict] = field(default_factory=list)
+    notice_exposures: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -125,7 +126,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [],
         'possible_ends': [], 'evidence_paths': [], 'expectations': [],
         'participation_history': [], 'functional_bindings': [],
-        'power_exercises': [],
+        'power_exercises': [], 'notice_exposures': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
@@ -159,5 +160,6 @@ def blank_world(world_id='w1'):
             'positioned_material_records': [],
             'institutional_access_rules': [],
             'material_gate_audit': [],
+            'public_notices': [],
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
