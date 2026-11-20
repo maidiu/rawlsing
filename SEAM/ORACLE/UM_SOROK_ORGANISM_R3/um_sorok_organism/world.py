@@ -10,6 +10,7 @@ from .practical_inquiry import notices_present
 from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
+from .material_provisioning import perform_one_actual_feeding
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -155,6 +156,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     partner_valid=False
     policy_receipt=None
     care_labor_receipt=None
+    material_feeding_ref=None
     future_care_obligation_ref=None
     inspected_public_notice=None
     inspected_material_object=None
@@ -350,6 +352,16 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         status=institutional['status']
         output=institutional['outcome']
         policy_receipt=institutional.get('policy_receipt')
+    elif attempt.action=='FEED':
+        resolved_food=perform_one_actual_feeding(
+            world,actors,aid,target,loc)
+        status=resolved_food['status']
+        output=resolved_food['outcome']
+        material_feeding_ref=resolved_food['material_feeding_ref']
+        if status=='PERFORMED':
+            effects[target]={
+                'action':'RECEIVED_FEEDING','bodily':True,
+                'material_food_consumed_in_world':True}
     elif attempt.action=='CARE':
         if target in actors and world['positions'].get(target)==loc:
             b=actors[target]['body']
@@ -357,7 +369,6 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             # giver's act; validate before the first objective bodily effect.
             eligible(b,'WAIT')
             b['comfort']=min(1,b['comfort']+.18)
-            b['nutrition']=min(1,b['nutrition']+.06)
             effects[target]={'action':'RECEIVED_CARE','bodily':True}
             care_labor_receipt=retain_material_care(
                 world,aid,target,clock=world['clock']+1,
@@ -453,6 +464,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'material_claim_ref':claim_ref,
                    'institutional_policy_ref':policy_receipt,
                    'social_reproductive_labor_ref':care_labor_receipt,
+                   'material_feeding_ref':material_feeding_ref,
                    'future_care_obligation_ref':future_care_obligation_ref,
                    'inspected_public_notice_ref':(
                         inspected_public_notice['id'] if inspected_public_notice else None),
