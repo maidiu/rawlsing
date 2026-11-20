@@ -20,6 +20,8 @@ bash rawlsing_next/tests/run_preff_remont_batch.sh \
 
 Without arguments the runner defaults to Q001–Q004, Q007 and Q008; Q005 remains the separately requested broad original regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
+**GitHub runner infrastructure hold (PF-042):** GitHub Actions checks have failed on both pre-repair `8c4e70ef...` and repaired descendants *before executing steps*. At inspected run `44671288932`, job `136072619214` has `runner_id=0`, empty `steps`, and no retrievable job logs. These CI reds are **NOT pytest evidence**. Until the runner owner restores a provisioned execution path, use the existing Mac/OpenCode sourcefree batch with one exact immutable HEAD; record JUnit/logs and do not reclassify the worker result as independent G5.
+
 **Growing rule:** Add a fresh numbered QID and its purpose, exact file(s), producer/consumer, positive/negative proof and triage owner here, and append one bounded suite to the launcher. Do **not** modify existing QID meanings or erase red/held evidence; supersede old IDs explicitly. OpenCode receives the same commission on every run, reads its latest queue and executes all eligible new QIDs against one frozen HEAD.
 
 ## Eligible pending first-fault tests
