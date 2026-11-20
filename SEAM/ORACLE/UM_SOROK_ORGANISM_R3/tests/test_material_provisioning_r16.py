@@ -17,7 +17,9 @@ from um_sorok_organism.runtime import ConstitutiveRuntime
 
 
 PARENT={'source_ref':'r16_sourcefree_research_parent',
-        'answers':{},'fictional_seed':{'projects':[]}}
+        'answers':{'explicit_fictional_condition':'fixture_answer_not_original_survey'},
+        'source_grade':'UNQUALIFIED_FICTIONAL_TEST_FIXTURE',
+        'fictional_seed':{'projects':[]}}
 
 
 def family(include_sibling=False):
