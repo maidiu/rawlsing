@@ -766,3 +766,114 @@ SOROK already possesses P2–P6, CAN/ADP, PFF, SDTF, legacy V3, the Mechanisms, 
 
 The architectural decision rule is **functional conservation under lawful replacement**, not loyalty to a historical acronym. If an existing engine is already a legitimate recruitment mechanism, use it rather than inventing a second; if it only narrates after decisions are made, that is not the missing psychological-construction function. If an old Enneagram coefficient was always speculative, do not reinstate it to achieve superficial backward compatibility. The old *question it was trying to answer* must find a stronger mechanism or an explicitly held open problem.
 
+
+---
+
+## X. FOUR WHOLE-MACHINE INQUIRIES AND THEIR DISCRIMINATING FAILURES
+
+These are **constructed acceptance scenarios**, not assertions of findings in the real 35-wave estate. The system must discover its own empirically warranted answers, including answers that contradict these sketches.
+
+### X.1 A multi-label questionnaire becomes a new social question
+
+An eligible survey asks which kinds of discrimination respondents perceive or experience, allowing multiple selections. A conventional pipeline computes the most commonly selected category and perhaps compares it to a country average. The intended machine obtains complete multi-answer morphology, respondent denominators, option overlap, refusal, eligibility and valid risk sets. It may discover that the dominant option is not the dominant **whole response pattern**: people who choose it disagree sharply about what accompanies it.
+
+The investigator follows majority retention and departure, distinct minority combinations and residual response sets. It searches for conditional forks by work, schooling, household, institutional access and place only where source identity and semantics permit. A second splitter inside one unusual minority could expose a configuration invisible to global one-variable rankings. It now asks what else travels together **within these same people**—normative judgment, reports of actual institution encounters, willingness to act and conflicting responses—while the response-act grammar prevents treating perception and action as synonyms.
+
+A newly found motif generates **rival interpretations and a testable question**. An empirical footprint can reach Field Forge as a question about institutions, status and coercion, not a magically proven causal story. The conditioned possibility service retains the minority branch with real uncertainty or performs an explicit specificity walkback.
+
+**Hard counterexample:** if the motif vanishes under a proper independent assessment, the machine must revise or withdraw the candidate social concept without erasing original observed configurations. If semantic authority for a special relation is absent, the empirical co-observation still survives while the prohibited interpretation is withheld. **Complete product:** a newly discovered, challenged, reusable question reaching an actual consumer, not a fashionable cluster name.
+
+### X.2 Work, care, class and the material cost of acting otherwise
+
+Imagine a fictional adult caregiver employed under an insecure labor regime, responsible for dependent care and possessing little financial buffer. This is a **hypothetical social position**, not an actual matched survey respondent. PYAT may recover source-supported patterns of labor precarity, collective-action judgments, household conditions or institutional trust—but may not fabricate any unavailable same-person joint.
+
+Field Forge independently constructs schedules, wages, childcare hours, transit, employer powers, household dependencies, contractual protection, sanctions, collective organization and available supports. A workplace action becomes a differently costly alternative depending on solidarity networks, care obligations and material buffers. The *frequency* of survey respondents saying they fear dismissal is not itself the power relation.
+
+Two fictional adults with the same measured survey answer pattern may have distinct practical motives because their actual histories differ. One has repeatedly experienced coworker solidarity; another has experienced a failed collective attempt; a third acts out of care-driven caution while sincerely endorsing redistribution. Those psychic organizations require actual or explicitly abducted life histories.
+
+Now change one material relation: a childcare cooperative becomes operational, or a protective legal rule is amended but left unenforced. The system must say which **practical alternatives change**, for whom, and why; it must not automatically raise the actor's 'defiance score'. The actor encounters the new situation, acts or refrains, receives independent replies and materially consequential outcomes, and learns from them. The cooperative itself requires labor, resources and governance.
+
+**Hard counterexamples:** the cooperative changes nothing despite care having been asserted as the main impediment; group political averages dictate the individual's decision; the legal protection is treated as effective with no enforcement; an adult's acquired psychology never changes after a meaningful outcome. **Complete product:** a witnessed divergence among survey-conditioned possibility, actual material opportunity, perceived opportunity, chosen activity and realized consequence.
+
+### X.3 Nadia's childhood has no hidden adult answer key
+
+Initialize immature Nadia with embodied needs, dependence and available developing capacities, not an adult ideology or secretly fixed personality type. Independently construct her fictional parents from whole-survey-informed alternatives and sufficiently grounded historical backfill, then let them continue as separate actors with their own burdens and concerns.
+
+A succession of ordinary days involves employment, food, fatigue, care work, learning, visits, small arguments, play, illness, ritual and institutional encounters. The compression mechanism preserves cumulative labor, costs, practice and relationship history. During a significant event Nadia fails at a task: one caregiver, exhausted by their own work, answers impatiently; another Other responds differently because of their independently tracked concerns. Nadia perceives the event through her developmental capacities, bodily needs and past relations. The psychological constructor can propose a new expectation about help-seeking, but it must state what was experienced, why this interpretation is available, its rival interpretations and what future situation could recruit it.
+
+Later the impatient caregiver makes sustained reparative efforts, while the once-reliable Other fails to help. Nadia's earlier organization may become relationship-specific, remain conflicted, transform or collapse. The system cannot simply decide she has become 'resilient'. She enters a school where class and household circumstances change her actual activities. Peers have their own objectives, and the institution has material routines and rules.
+
+**Hard counterexamples:** two genuinely different histories yield identical fixed adult destinations; changing real care labor has no effect; the compressed routine swallows a shock; an independent Other's refusal is overwritten to serve the protagonist; a newly 'learned' organization changes only prose and never recruitment or activity. **Complete product:** an adult possibility with plausible history and a child whose unfolding life is nonpredetermined yet reconstructible through experience, world and relational transformation.
+
+### X.4 Independent survey marginals cannot become an imagined joined population
+
+Separate sources estimate binary marginals .70 and .60. First test whether they genuinely support a common target population, time, meanings, eligibility and inference authority. Otherwise retain the valid source-local findings and refuse the cross-source bridge. If fully warranted, their sharp possible overlap is [.30,.60]; that establishes necessary overlap but **not** the exact association or which respondent holds both. For .45 and .40, zero overlap remains compatible.
+
+A synthetic statistical matching algorithm may pick a coupling, but does not establish it as observed. A new legitimate partial joint may narrow the identified set. A more confident language model cannot. Alter the population eligibility and the original bound ceases to be legal. Separately, with 36 yes, 24 no, 40 eligible unanswered among 100, the 60% yes rate among responders cannot certify a majority of all eligible cases; the finite eligible-record bound is [.36,.76]. Change the unanswered to valid skips and the calculation must change.
+
+**Complete product:** precise positive claims about what all admissible worlds share, alongside explicit refusal to invent the rest. This is an active scientific capability, not a footnote about uncertainty.
+
+---
+
+## XI. ACCEPTANCE IS WHOLE-FUNCTION, ADVERSARIAL AND SOURCE-EXACT
+
+### XI.1 Five questions determine maturity
+
+For each required capability, distinguish:
+1. **Local operation:** on competent input, does it produce an actual positive or valid empirical null result?
+2. **Authority conservation:** does meaning, provenance, risk set, component identity, negative status and use permission survive?
+3. **Composed integration:** is the positive product reachable by the **real** next owner/consumer without invented data or unauthorized interpretation?
+4. **Estate/world occupancy:** can governed real source input or genuinely independently configured actor/world state reach the code at its declared scope?
+5. **End-use adequacy:** does the result actually alter the empirical inquiry, material opportunity or developing actor process for which the capability exists?
+
+Local sourcefree capability is not original35 scientific accreditation. A valid empty or well-measured null is a positive result; a refusal because nobody has implemented the necessary producer is unfinished development. A missing upstream permission is not automatically a defect in the downstream component, but it remains an unresolved integration/estate obligation.
+
+### XI.2 Eight binding empirical functions must compose
+
+HQD-125 F1–F8 are terminal functions, not a mandatory re-creation of historical stage boundaries:
+
+| Gate | Positive witness; negative it must survive |
+|---|---|
+| **F1 Governed substrate** | Exact source/risk-set/response facts accessible; wrong release, eligibility, missingness, role or permission rejected |
+| **F2 Conditional determinants** | True context-sensitive response distributions computed, including weak/null/diffuse findings; no modal-only façade |
+| **F3 Recursive branches** | Majority, minority, exits, residuals and secondary splitters preserved; no early stereotype collapse |
+| **F4 Clouds and joints** | Actual same-respondent configuration and component information retained; false joins refused |
+| **F5 Structural translation** | Empirical footprints reach properly qualified Field Forge and world consumers; correlation not declared mechanism |
+| **F6 Multi-source worlds** | Distinct governed surveys contribute simultaneously without pooling incompatible people or measurements |
+| **F7 Historical comparison** | Question wording, population and temporal change distinguished; no automatic trend or age/cohort fiction |
+| **F8 Positioned actor possibility** | N10E and independently qualified N9 jointly produce N10W alternatives usable by an actual parent/SOROK first reader; no group destiny |
+
+A bounded R05/P41 path, a Q86 canary, a generic two-binary-sourcefree relation and a historical same-respondent consumer can each be valuable without jointly satisfying F1–F8 for all governed native sources. The missing integration is not repaired by a new name.
+
+### XI.3 Named hostile mutation families
+
+**Source and semantic mutations:** swap release, shift eligible universe, invert a response sign, mistake routing for no, turn a multi-select into exclusive categories, scalarize a partial component vector, treat a proposed semantic alignment as certified portability, silently use survey weights with no issued estimand.
+
+**Discovery and statistical mutations:** make fake joints from marginals; hide tiny-cell instability; report unsearched branches as null; compute reverse conditionals without correct base rates; let adaptive multiple testing justify a beautiful but spurious motif; confuse a refusal with a measured negative; infer a country trend from a changed translation; claim distinct cross-sectional respondents are a panel.
+
+**Structural mutations:** correlate job insecurity and fear and declare an employer coercive mechanism without institutional evidence; infer hegemony solely from prevalence; replace a real class relation with income; force historical nine strata onto an emergent motif; transmit culture as a one-way ideology packet; omit the labor making household and institutional reproduction possible; let FF absence erase legitimate upstream co-travel.
+
+**Generative mutations:** independently sample incompatible survey traits as one fictional adult; copy an actual respondent into a biography; initialize an infant with adult ideology; invent past trauma through an LLM response; pretend an acquired organization matters when it never affects later recruitment; treat an attempted act as an accomplished world consequence; make every Other subordinate to Nadia's story; run long compressions that erase ordinary-life costs and changes.
+
+**Integrity/ownership mutations:** retain a field's bytes while changing its authority role; run with a stale cache root; ignore invalidation after source or semantic corrections; serve from a forbidden old fallback; fail to restore after restart; combine two writers' incompatible heads; claim protected adoption based on draft PR code; count a negative-only stub as a positive function; let a worker self-review.
+
+For every mutation, require a witness that the wrong result fails **and** that an authorized positive path or correctly scoped refusal still works. Tests that pass because the module refuses everything are not proof of a working organism.
+
+### XI.4 Four psychological proof levels
+
+**Representation:** needs, maturation, real world and Other states, acquired organizations, active motives, memory, relational history and opaque conflict persist.
+
+**Operative transition:** encountered events recruit real incompatible organizations; actual action follows a trace of situated composition; independent world arbitration determines consequences; grounded learning changes later recruitment.
+
+**Historical becoming:** ordinary-life compression, major interruptions, social reproduction, developing capacities and relationship changes make a long nonpredestined trajectory intelligible.
+
+**Two-entrance integration:** survey-conditioned fictional adult backfill and Nadia's actual development share one continuing psychological runtime, with changing world circumstances altering situated possibilities without dictating identity.
+
+A compelling prose episode is not operative transition; one toy transition is not historical becoming; green tests that never pass a real possibility from N10W to a realized actor are not the final integrated system.
+
+### XI.5 Whole-organism completion witness
+
+Require (a) a **surprising empirical finding**, including a legitimate negative if that is what the source says, whose new question is actually pursued and challenged; (b) a properly grounded material-world interpretation that changes at least one reachable alternative while preserving a competing uncertainty; (c) a real parent/child psychological trajectory where experience constructs or reorganizes a recruitable psychic organization; (d) an independent Other or institution producing a nontrivial consequence; (e) persistence and replay of the altered actor/world state; (f) explicit refusal of a highly plausible but illegitimate inference.
+
+This is not a demand for a perfected general psychology before coding. It is a demand for an **imperfect, substantially integrated, functioning organism** rather than many isolated toy components and a documentary claim of completion.
+
