@@ -11,14 +11,13 @@ manifest, source-analysis grant, or protected receiving is introduced.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from hashlib import sha256
 import json
 from pathlib import Path
 from types import MappingProxyType
 from typing import Any, Callable
 
 from rawlsing_next.pre553_anvil_stream_carrier_qualification import (
-    HeldStreamPins, STREAM_SCHEMA, StreamCarrierQualificationError,
+    HeldStreamPins, STREAM_SCHEMA,
     _digest, _private_regular, qualify_saved_stream_manifest,
 )
 from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
@@ -117,7 +116,16 @@ class VerifiedAnvilStreamEstate:
         if (type(manifest) is not dict or manifest.get("schema") != STREAM_SCHEMA
                 or manifest.get("roots") != dict(independently_held.roots)):
             raise DirectEstateError("saved stream identity changed after qualification")
-        self.manifest = manifest
+        # Do not let caller mutation of the publicly visible decoded manifest
+        # replace physical commitments after verification. All nested maps
+        # used by the reader are also immutable.
+        self._member_commitments = tuple(sorted(manifest["members"].items()))
+        self.manifest = MappingProxyType({
+            **manifest,
+            "members": MappingProxyType(dict(manifest["members"])),
+            "family_counts": MappingProxyType(dict(manifest["family_counts"])),
+            "roots": MappingProxyType(dict(manifest["roots"])),
+        })
 
         # The existing native I03 reader expects these exact 13 typed family
         # bodies + a positional event locator; do not silently project another
@@ -192,7 +200,7 @@ class VerifiedAnvilStreamEstate:
         self._live()
         if _digest(self.directory / "manifest.json") != self.held_manifest_sha256:
             raise DirectEstateError("stream manifest changed during execution")
-        for name, held_sha in sorted(self.manifest["members"].items()):
+        for name, held_sha in self._member_commitments:
             self._live()
             member = self.directory / name
             _private_regular(member, directory=False)
