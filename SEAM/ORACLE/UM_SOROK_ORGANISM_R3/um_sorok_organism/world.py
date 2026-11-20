@@ -22,6 +22,10 @@ from .labor_dependency import (
     CONTRIBUTE as WORK_POOL,DRAW as WORK_DRAW,
     accept_work_terms,suspend_worker,withdraw_labor,
     fund_worker_relief,draw_worker_relief,work_permission)
+from .wage_bargaining import (
+    AUTHOR as WAGE_AUTHOR,WITHHOLD as WAGE_WITHHOLD,
+    EMPLOYER_ACCEPT as WAGE_ACCEPT,EMPLOYER_REJECT as WAGE_REJECT,
+    endorse_wage_demand,withhold_paid_shift,employer_respond)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -379,6 +383,30 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         status=institutional['status']
         output=institutional['outcome']
         policy_receipt=institutional.get('policy_receipt')
+    elif attempt.action==WAGE_AUTHOR:
+        institutional=endorse_wage_demand(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('endorsement_ref')
+    elif attempt.action==WAGE_WITHHOLD:
+        institutional=withhold_paid_shift(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('stoppage_ref')
+    elif attempt.action==WAGE_ACCEPT:
+        institutional=employer_respond(
+            world,actors,aid,loc,attempt.intention,True)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('decision_ref')
+    elif attempt.action==WAGE_REJECT:
+        institutional=employer_respond(
+            world,actors,aid,loc,attempt.intention,False)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('decision_ref')
     elif attempt.action==WORK_ACCEPT:
         institutional=accept_work_terms(
             world,actors,aid,loc,attempt.intention)
