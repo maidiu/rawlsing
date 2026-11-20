@@ -55,6 +55,15 @@ def project_trial_horizons(constitution, access, candidate_actions):
         means = end.get('possible_means', [])
         if not isinstance(means, list):
             continue
+        # The actual history of attempted means is a NEW prospective
+        # distinction. Prior technical execution cannot establish that the
+        # end was fulfilled or which untried alternative would fare better.
+        tried = [t for t in end.get('trial_history', [])
+                 if isinstance(t, dict)
+                 and type(t.get('operation')) is str
+                 and type(t.get('event_ref')) is str]
+        tried_operations = {t['operation'] for t in tried}
+        trial_history_refs = [t['id'] for t in tried if type(t.get('id')) is str]
         qualified = []
         for operation in dict.fromkeys(x for x in means if type(x) is str):
             option = op_index.get(operation)
@@ -80,7 +89,13 @@ def project_trial_horizons(constitution, access, candidate_actions):
                     {x.casefold() for x in cues if type(x) is str} & present),
                 'other_possible_means': sorted(set(
                     x for x in means if type(x) is str and x != operation)),
-                'previous_trials': len(end.get('trial_history', [])),
+                'previous_trials': len(tried),
+                'actual_prior_trial_history_refs': trial_history_refs[-32:],
+                'prior_mean_attempted': operation in tried_operations,
+                'recognized_open_means_contrast': (
+                    bool(tried_operations) and operation not in tried_operations),
+                'means_contrast_grade':
+                    'HISTORICALLY_DIFFERENTIATED_ATTEMPT_NOT_RESULT_COMPARISON',
                 'is_means_substitution': (
                     end.get('eliciting_actor_action') not in (None, operation)),
                 'actor_project_ref': None,
@@ -100,6 +115,7 @@ def project_trial_horizons(constitution, access, candidate_actions):
                 'offered_eligible_operations': qualified,
                 'origin_event': end['origin_event'],
                 'trial_not_a_motive': True,
+                'historically_tried_means': sorted(tried_operations),
                 'untried_alternatives_remain_unknown': True,
                 'grade': GRADE,
             })
@@ -124,13 +140,22 @@ def select_bounded_exploratory_trial(options):
         and o.get('preproject_recruitment', {}).get('status') not in (
             'ACQUIRED_NONPROJECT_WITHHOLD', 'UNRESOLVED_PREPROJECT_CONTRADICTION')
     ]
-    # Do not award the choice to a more elaborately described end.
-    if len({(t['possible_end_ref'], t['operation'])
-            for _, t in options_with_trial}) != 1:
-        return None
     if not options_with_trial:
         return None
-    option, trial = options_with_trial[0]
+    unique = {(t['possible_end_ref'], t['operation']): (o,t)
+              for o,t in options_with_trial}
+    # A singular untried alternative for ONE previously explored possibility
+    # can supply an exploratory *variation*. It is a defeasible sourcefree
+    # policy, not an empirical rule that all persons prefer novelty.
+    if len(unique) > 1:
+        ends = {t['possible_end_ref'] for _,t in unique.values()}
+        untried = [(o,t) for o,t in unique.values()
+                   if t.get('recognized_open_means_contrast')]
+        if len(ends) != 1 or len(untried) != 1:
+            return None
+        option, trial = untried[0]
+    else:
+        option, trial = next(iter(unique.values()))
     return {
         'action': option['action'],
         'possible_end_trial_id': trial['trial_id'],
