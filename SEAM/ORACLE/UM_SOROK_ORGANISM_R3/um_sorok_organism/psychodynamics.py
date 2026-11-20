@@ -22,7 +22,14 @@ def validate_tendencies(form):
         if (isinstance(v,bool) or not isinstance(v,(int,float)) or
                 not math.isfinite(v) or not 0<=v<=1):
             raise ValueError('INVALID_ACQUIRED_FORM_PARAMETERS')
-    if not isinstance(form.get('scope',{}),dict):
+    scope=form.get('scope',{})
+    if (not isinstance(scope,dict) or
+            not isinstance(scope.get('locations',[]),list) or
+            any(not isinstance(x,str) for x in scope.get('locations',[])) or
+            ('counterpart' in scope and scope['counterpart'] is not None and
+             (not isinstance(scope['counterpart'],str) or not scope['counterpart'])) or
+            not isinstance(form.get('cues',[]),list) or
+            any(not isinstance(x,str) for x in form.get('cues',[]))):
         raise ValueError('INVALID_ACQUIRED_FORM_PARAMETERS')
     ts=form.get('tendencies', [])
     if not isinstance(ts, list) or len(ts)>12:

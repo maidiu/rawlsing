@@ -6,6 +6,7 @@ from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
 from .plans import qualified_learned_compositions
+from .world import _qualified_members
 
 
 def materialize(actor,world):
@@ -47,7 +48,7 @@ def actor_access(actor,world):
                     'modality':'present','description':'co-present other actor'})
     env=[]
     site=world['sites'].get(location,{})
-    if site.get('access')=='public' or actor['id'] in site.get('admitted',[]):env.append('SITE_ACCESS')
+    if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 

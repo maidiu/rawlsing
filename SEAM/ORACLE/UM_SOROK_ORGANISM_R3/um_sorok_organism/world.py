@@ -29,6 +29,20 @@ def _field(world,a,b):
        'continuity':'open','objective_grade':'SOURCEFREE_RESEARCH_PROVISIONAL'})
 
 
+def _qualified_members(owner, field, error):
+    """Return only an actual explicit actor-ID roster, never string substring rights.
+
+    These are world-owner permissions; malformed external/fixture types fail
+    closed before any site, material, or institutional write. No new powers are
+    invented for an actor who merely resembles a listed principal's name.
+    """
+    members=owner.get(field, [])
+    if (not isinstance(members,list) or
+            any(not isinstance(member,str) or not member for member in members)):
+        raise ValueError(error)
+    return members
+
+
 def _site(world,aid):return world['sites'].get(world['positions'].get(aid),{})
 
 def _effective_material_controller(world, loc, site):
@@ -139,7 +153,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='MOVE':
         if attempt.object_ref in world['sites']:
             site=world['sites'][attempt.object_ref]
-            if site['access']=='public' or aid in site.get('admitted',[]):
+            if (site['access']=='public' or aid in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):
                 world['positions'][aid]=attempt.object_ref;actor['location']=attempt.object_ref
                 output='MOVED'
             else:status='BLOCKED';output='INSTITUTIONAL_ACCESS_DENIED'
@@ -259,7 +273,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
         if unqualified:
             status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
-        elif controller is not None and aid not in site.get('material_use_grants',[]):
+        elif controller is not None and aid not in _qualified_members(site,'material_use_grants','INVALID_MATERIAL_GRANT'):
             # Public entrance ≠ the right to appropriate a controller's goods.
             # Grant is an objective world/site relation, never actor assertion.
             status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
@@ -268,17 +282,21 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         else:
             site['stock']=_exact_material_delta(stock,-1,'INVALID_SITE_STOCK_DELTA');output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
-        members=world['institutions']['hall_board']['members']
+        members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:
             world['sites']['hall']['access']='public';output='HALL_OPENED'
     elif attempt.action=='DENY_HALL':
-        members=world['institutions']['hall_board']['members']
+        members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
     elif attempt.action=='CARE':
         if target in actors and world['positions'].get(target)==loc:
-            b=actors[target]['body'];b['comfort']=min(1,b['comfort']+.18)
+            b=actors[target]['body']
+            # A recipient does not silently acquire valid physiology through a
+            # giver's act; validate before the first objective bodily effect.
+            eligible(b,'WAIT')
+            b['comfort']=min(1,b['comfort']+.18)
             b['nutrition']=min(1,b['nutrition']+.06)
             effects[target]={'action':'RECEIVED_CARE','bodily':True}
             output='CARE_GIVEN'
@@ -380,12 +398,15 @@ class IndependentWorldAuthority:
         partner=None;policy_receipt=None
         if (principal.action in COOPERATIVE and principal.target in actors
                 and principal.target!=principal.actor and
-                world['positions'].get(principal.actor)==world['positions'].get(principal.target)):
+                world['positions'].get(principal.actor)==world['positions'].get(principal.target)
+                and eligible(actors[principal.actor]['body'],principal.action)[0]):
             candidate=self.__planner(principal,copy(world),copy(actors))
             if not isinstance(candidate,Attempt) or candidate.actor!=principal.target:
                 raise ValueError('INDEPENDENT_COACTOR_POLICY_INVALID')
             if candidate.action not in COOPERATIVE[principal.action]|{'REFUSE'}:
                 raise ValueError('INDEPENDENT_COACTOR_NOT_ELIGIBLE_TO_JOIN')
+            if candidate.target!=principal.actor:
+                raise ValueError('INDEPENDENT_COACTOR_TARGET_MISMATCH')
             ok,reason=eligible(actors[candidate.actor]['body'],candidate.action)
             if not ok:raise ValueError('COACTOR_BODILY_INELIGIBLE:'+reason)
             partner=candidate

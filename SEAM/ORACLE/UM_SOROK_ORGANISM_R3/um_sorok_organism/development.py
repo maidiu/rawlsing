@@ -11,6 +11,12 @@ import math
 
 class InvalidDevelopment(ValueError): pass
 
+
+def _text_list(value, error):
+    if not isinstance(value,list) or any(not isinstance(x,str) for x in value):
+        raise InvalidDevelopment(error)
+    return value
+
 ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
@@ -84,6 +90,7 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             a,b=c.get('source'),c.get('target')
             if a not in actor['forms'] or b not in actor['forms'] or c.get('relation') not in RELATIONS:
                 raise InvalidDevelopment('UNRESOLVED_LINK')
+            _text_list(c.get('contexts',[]),'INVALID_LINK_CONTEXTS')
             link={'source':a,'target':b,'relation':c['relation'],
                   'contexts':c.get('contexts',[]),'origin':[event_ref],
                   'evidence':evidence,'grade':GRADE}
@@ -93,6 +100,7 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             src,dst=c.get('source'),c.get('target')
             if src not in actor['forms'] or not any(p['id']==dst for p in actor['projects']):
                 raise InvalidDevelopment('UNQUALIFIED_ACTIVITY_LINK')
+            _text_list(c.get('contexts',[]),'INVALID_LINK_CONTEXTS')
             link={'source':src,'target':dst,'relation':'RECRUITS_ACTIVITY',
                   'contexts':c.get('contexts',[]),'origin':[event_ref],
                   'evidence':evidence,'grade':GRADE}
@@ -138,6 +146,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if ident not in actor['forms']:raise InvalidDevelopment('UNKNOWN_FORM')
             new_scope=c.get('new_scope')
             if not isinstance(new_scope,dict):raise InvalidDevelopment('BAD_SCOPE')
+            # Scope membership must be typed: a string is a substring matcher,
+            # not a list of established context locations.
+            validate_tendencies({'scope':new_scope})
             form=actor['forms'][ident]
             form.setdefault('prior_scopes',[]).append({'scope':copy(form.get('scope',{})),'event':event_ref})
             form['scope']=copy(new_scope)
@@ -166,6 +177,7 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             validate_activity_priority(project.get('priority',.4))
+            _text_list(project.get('cue_terms',[]),'INVALID_PROJECT_CUE_TERMS')
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
                 raise InvalidDevelopment('DUPLICATE_PROJECT')
@@ -185,11 +197,13 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if 'means' in c and any(x not in ACTIONS for x in c['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             if 'priority' in c:validate_activity_priority(c['priority'])
+            if 'cue_terms' in c:_text_list(c['cue_terms'],'INVALID_PROJECT_CUE_TERMS')
             for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)
             report.append({'kind':op,'project':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op in ('TRACE','MEMORY'):
+            _text_list(c.get('cue_terms',[]),'INVALID_TRACE_CUES')
             ref=stable_id('trace' if op=='TRACE' else 'memory',{'actor':actor['id'],'event':event_ref,'index':idx})
             entry={'id':ref,'origin':[event_ref],'experience':experience['ref'],
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',

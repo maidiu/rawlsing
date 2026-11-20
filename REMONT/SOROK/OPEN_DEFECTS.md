@@ -201,3 +201,21 @@ Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**
 **Executed results:** full `python -m unittest discover -s tests -v`: **131 PASS, 0 FAIL**; full optimized `python -O -m unittest discover -s tests -q`: **131 PASS, 0 FAIL**; cold archive re-extraction independently reproduced both totals. First R6 negative source test run: 13 failures/15 probes; further self-owned and rejected-EAT error-path red cases were documented. R4 preexisting positive self-sale test remains green. All changes are within sourcefree existing world.py plus added tests.
 
 **Continuing precise status:** 57 P production identities = **10 OPEN/NOT FIXED, 6 PARTIAL, 41 AUTHOR-REPAIRED / INDEPENDENT REVIEW PENDING, 0 independently accepted**. Confirmed test-harness defects T=0; evidence/authority holds E=6 unaltered. Earlier P001..P052 and historical repair/test evidence conserved. No native, protected, canonical paired CURRENT_PROGRESS, live provider, CAN/ADP scientific issuance or independent G5 claim.
+
+
+## REMONTATHON R3 R7 — 153 integrated tests; real authority/coaction and contextual-recruitment repairs (2026-11-19)
+
+**Frozen R6 source parent:** `a14003df55ed63c9257a8f9bbb2a3501d36bf7dc`; original executable ORACLE R3 #1167 remains the sourcefree builder. 22 new R7 tests, including **14 failed targeted negative cases before their respective patches**, were executed against existing world and development owners. Full combined suite: **153 PASS / 0 FAIL under normal Python and 153 PASS / 0 FAIL under optimized `python -O`**, independently repeated from a fresh extraction of the runnable ZIP. No protected/native authority move.
+
+| ID | Reproduced first fault | Repaired source owner |
+|---|---|---|
+| **SR-P058** | Malformed world grant strings awarded access to actor IDs matching an unrelated actor's substring | `world.py::_qualified_members, MOVE/REPAIR/OPEN_HALL/DENY_HALL` |
+| **SR-P059** | Blocked initiator produced a completed voluntary coactor action and invoked that coactor planner despite physically impossible invitation | `world.py::IndependentWorldAuthority.resolve` |
+| **SR-P060** | Independently planned coactor attempt could target an unrelated third party but count as reciprocal cooperation with principal | `world.py::IndependentWorldAuthority.resolve` |
+| **SR-P061** | CARE to target with NaN bodily nutrition could turn invalid recipient data into apparently normal body state | `world.py::_resolve_untrusted_core::CARE` |
+| **SR-P062** | String scope.locations, non-string counterpart, string form cues and malformed site admission produced false psychological eligibility | `psychodynamics.py::validate_tendencies; constitution.py::actor_access; development.py::CHANGE_RECRUITMENT_SCOPE` |
+| **SR-P063** | Untyped relation/activity-link contexts and project/trace cue strings could be admitted and later recruit via character-wise or substring matching | `development.py::LINK_FORMS/LINK_ACTIVITY/ADD_PROJECT/REORGANIZE_PROJECT/TRACE/MEMORY` |
+
+**Non-regression:** Exact typed hall access, controlled-material grants, real recipient care, lawful independent coaction, source-qualified context lists and project links still work. Permission-bearing strings are not interpreted as membership; malformed historical admissions fail closed rather than pretending to be authorized. R7 adds no new psychological law, compulsory motive, adult destiny or owner. Its repairs are appropriate to a changing Constitutive Organism because they enforce existing typed boundaries without concretizing contested theoretical semantics.
+
+**Continuing precise accounting:** 63 P production defect identities = **10 OPEN/NOT FIXED + 6 PARTIAL + 47 AUTHOR-REPAIRED CANDIDATES NOT INDEPENDENTLY ACCEPTED**. Independently accepted P=0; T=0 confirmed harness failures; E=6 evidence/authority holds unchanged. Old P001–057 preserved exactly. Prior R6 131-test evidence remains historical. R7 exact source Git blob identities, red/green logs and complete test suite under `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R7_20261119/` and Library `/Rawlsing/SOROK-REMONT/REMONTATHON_R3_20261119_R7/`. No protected PRE-MAIN merge, native P2–P6/CAN/ADP, LLM scientific issuance, qualified PYAT whole-survey conditioning, independent acceptance or paired canonical CURRENT_PROGRESS writing.
