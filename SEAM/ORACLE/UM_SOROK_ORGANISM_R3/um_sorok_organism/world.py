@@ -5,6 +5,7 @@ from .types import Attempt, Resolution, copy, stable_id, digest
 from .organism import eligible
 from .institutional_reproduction import (
     contribute_to_hall_petition, retain_material_care)
+from .material_conjunction import evaluate_material_conjunction
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -138,6 +139,15 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     status='PERFORMED' if allowed else 'BLOCKED'
     output=''
     target=attempt.target
+    # Structural conditions bite where the world attempts an operation, not
+    # as identity scores preloaded into a psychological selector.
+    material_gate=evaluate_material_conjunction(world,aid,loc,attempt.action)
+    if material_gate['readset']:
+        world.setdefault('material_gate_audit',[]).append({
+            'clock':world['clock']+1,'actor':aid,
+            'operation':attempt.action,
+            'objective_rule_evaluation':copy(material_gate),
+            'not_actor_self_knowledge':True})
     partner_valid=False
     policy_receipt=None
     care_labor_receipt=None
@@ -152,6 +162,10 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     performed.insert(0,{'actor':aid,'action':attempt.action,'status':status,'as_willing':True})
     if not allowed:
         output='BODILY_'+reason
+    elif material_gate['decision']=='BLOCKED':
+        status='BLOCKED';output='STRUCTURAL_RULE_PREVENTED_OPERATION'
+    elif material_gate['decision']=='UNRESOLVED':
+        status='PARTIAL';output='INSTITUTIONAL_PERMISSION_UNRESOLVED'
     elif attempt.action in ('EAT','BUY_FOOD','WORK','REPAIR') and loc not in world['sites']:
         # No phantom production on detached dict returned by _site().
         status='BLOCKED';output='UNKNOWN_MATERIAL_SITE'
