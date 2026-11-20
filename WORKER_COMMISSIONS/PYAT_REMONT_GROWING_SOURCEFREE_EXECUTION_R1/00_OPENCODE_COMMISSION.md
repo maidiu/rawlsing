@@ -15,15 +15,17 @@ You are the REMONT **growing test commission executor** for `maidiu/rawlsing`, c
 
 Reconcile the actual live PR #1173 head (or explicitly authorized successor), freeze the full 40-hex SHA, and check it has not moved. In the actual local repository, use `git fetch origin pull/1173/head` and `SHA="$(git rev-parse FETCH_HEAD)"` to bind the fetched identity. Make a new detached worktree at that exact SHA, recording its directory and `git status --porcelain`. If the host/repo/source is unavailable or the queue is stale against a newer head, hold with exact evidence instead of running at an unknown revision or fetching arbitrary original sources. Do not presume the user has multiple hosts/accounts or switch editor/model without authorization.
 
-Read the entire current `REMONT_EXECUTION_QUEUE.md` and execute all eligible pending sourcefree QIDs, including the optional broad suite and all subsequently appended eligible QIDs. For the next **separately user-launched** run, execute the cumulative Q001–Q005 and Q007–Q010 inventory, with Q006 strictly held. The exact operation **when launched** is:
+Read the entire current `REMONT_EXECUTION_QUEUE.md` and execute all eligible pending sourcefree QIDs, including the optional broad suite and all subsequently appended eligible QIDs. For the next **separately user-launched** run, execute the cumulative Q001–Q005, Q007–Q010 and Q013 inventory, with Q006 strictly held. Q011–Q012 are reserved by held C7 PR #1179 and require Sorok cross-owner approval; do not activate them from this PYAT branch. The exact operation **when launched** is:
 
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013
 ```
 
 **Historical sourcefree evidence already supplied, do not rerun just for this update:** user Mac `fa11b2733612497d765d788008e8367df16d1d10` passed `C5_V3_CONTEXT` 22/22 in 3.89s and `C6_V3_SEAM` 36/36 in 7.56s. The earlier `bb55950549bbd59211adfc2b1c1e7826b93da77a` C6 was 33 PASS/1 FAIL and is retained as a genuine first fault. User-visible console reports are NOT a remote readback of local JUnit/logs or nonauthor G5. These results apply only to their exact historical SHA; running OpenCode is a future operation, not requested now.
+
+**Additional bounded first-fault repair, do not pre-mark green:** #1173 `_pre553_query_eval.py` now refuses any target topology with zero exact selected respondent events before multivalued aggregate construction (PF-043 in this branch, cross-ledger alias #1162 PF-025). New `test_preff_c1_target_absence.py` has 17 sourcefree cases; execute through **RMT-Q013** along with the cumulative Q001–Q005/Q007–010 and preserve genuine administered-empty authority as an unresolved separate original-source scientific requirement. Previous user Mac C5/C6 results at `fa11b273...` predate this code modification. No immediate new run was requested.
 
 The runner checks exact SHA and clean tracked files, runs each group even when another fails, and writes independent proof under `.pyat-preff-remont-proof/$SHA/`. Read each `pytest.log`, `junit.xml`, `exitcode.txt` and the batch `index.csv`. Do not execute Q006 or any original AB/GSS/wave suite without a separately issued source/rights commission.
 
