@@ -5,6 +5,7 @@ from .types import Constitution, Situated, AccessibleEncounter, copy
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
+from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
 
 
@@ -14,6 +15,7 @@ def materialize(actor,world):
         forms=copy(actor['forms']),links=copy(actor['links']),projects=copy(actor['projects']),
         activity_links=copy(actor.get('activity_links',[])),
         composition_methods=copy(actor.get('composition_methods',[])),
+        relational_motifs=copy(actor.get('relational_motifs',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -104,8 +106,13 @@ def compose(constitution,access,limit=50):
     valid_links=[link for link in constitution.links
         if link.get('source') in forms and link.get('target') in forms
         and (not link.get('contexts') or access.location in link['contexts'])]
-    positive=[link for link in valid_links if link.get('relation') in ('RECRUITS','SUPPORTS')]
-    negative=[link for link in valid_links if link.get('relation')=='INHIBITS']
+    # PRE-A0's explicitly admitted relation functions must do work; not
+    # merely appear in a relation-history report. Activation and suppression
+    # still respect the form's own scope and bodily eligibility.
+    positive=[link for link in valid_links if link.get('relation') in
+              ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')]
+    negative=[link for link in valid_links if link.get('relation') in
+              ('INHIBITS','SUPPRESSES')]
 
     def closure(start, blocked=frozenset()):
         reached=set(start)&qualified-set(blocked)
@@ -173,7 +180,12 @@ def compose(constitution,access,limit=50):
         if a=='REST' and constitution.body['rest']<.45:q['score']+=1.0
         if a=='EAT' and constitution.body['nutrition']<.5:q['score']+=1.0
         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
-    dynamics=enact_currents(constitution,access,active,actions.values())
+    # An inhibited form can still have an indirect, historically admitted
+    # effect on another form or action. Never reinstate its direct capabilities.
+    relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    currents+=relational['currents']
+    dynamics=enact_currents(constitution,access,active,actions.values(),
+                             relational=relational)
     currents+=dynamics['currents']
     # These effects are *derived* from present bodily state and historically
     # acquired forms, never silently committed as an event or a new mind state.
@@ -184,6 +196,7 @@ def compose(constitution,access,limit=50):
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
-       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts)),
+       readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
+                           [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)
