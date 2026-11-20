@@ -68,7 +68,7 @@ def configure_food_power(world,actors,spec):
         "public_notice_not_automatic_comprehension":True,
         "grade":GRADE}
     board={
-        "id":ref,"controls":site,"food_rights":"CONTROLLED",
+        "id":ref,"food_stock_site":site,"food_rights":"CONTROLLED",
         "controller_actor":controller_actor,
         "objective_control_not_a_mental_trait":True,
         "initially_permitted_givers":sorted(permitted),
@@ -95,7 +95,7 @@ def _board(world,site):
     if appointed is None and board is None:
         return None
     if (appointed!=AUTHORITY or type(board) is not dict or
-            board.get("controls")!=site or
+            board.get("food_stock_site")!=site or
             board.get("food_rights") not in (
                 "CONTROLLED","SHARED_BY_COLLECTIVE_ACTS")):
         raise ValueError("FOOD_POWER_WORLD_AUTHORITY_INCONSISTENT")
