@@ -54,6 +54,10 @@ class Constitution:
     source_grade: str = GRADE
     composition_methods: list[dict] = field(default_factory=list)
     relational_motifs: list[dict] = field(default_factory=list)
+    # Sourcefree qualified history: neither an unfinished possible end nor
+    # a signal path is a motive, self-knowledge, or invented counterfactual.
+    possible_ends: list[dict] = field(default_factory=list)
+    evidence_paths: list[dict] = field(default_factory=list)
 
 
 @dataclass
