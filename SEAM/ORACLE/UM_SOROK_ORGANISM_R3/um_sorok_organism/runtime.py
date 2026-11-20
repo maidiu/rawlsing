@@ -55,6 +55,23 @@ class ConstitutiveRuntime:
         self.world_id=world_id
         self.authority=IndependentWorldAuthority(self._independent_coactor_plan)
 
+    @classmethod
+    def with_explicit_json_llm(cls,db,*,endpoint,model,api_key,
+                               allow_private_actor_data=False,
+                               world_id='w1',transport=None):
+        """Real opt-in semantic machinery; no implicit remote disclosure.
+
+        This only selects a model provider. Psychic development still
+        requires an actual world experience and the existing typed owner.
+        """
+        from .live_psychological_llm import ExplicitJSONLLMProvider
+        provider=ExplicitJSONLLMProvider(
+            endpoint=endpoint,model=model,api_key=api_key,
+            allow_private_actor_data=allow_private_actor_data,
+            transport=transport)
+        return cls(db,semantic=ValidatingSemanticService(provider),
+                   world_id=world_id)
+
     def initialize(self,parent_packets=None,child_id='nadia',child_name='Nadia'):
         world=blank_world(self.world_id)
         parents=[]
