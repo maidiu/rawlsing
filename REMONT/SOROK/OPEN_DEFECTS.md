@@ -253,3 +253,18 @@ Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**
 **Queued exact-source court:** full `python -m unittest discover -s tests -v`, full `python -O -m unittest discover -s tests -q`, R4 **11** authored cases, R5 **6** authored cases, R8 **171** author-pass baseline, actual executed discovery/counts, cold SQLite reopen and event-chain check, preserved first-red witness, source hashes and independent review. **171+11+6=188 is a hypothetical discovery count after proper R8+R4+R5 integration—not an observed pass or proof that all suites coexist.**
 
 **Authority/status:** this separate construction-agent intake changes **none** of R8's existing accounting: **69 production rows (10 open, 6 partial, 53 author-repaired pending independent review), T=0 confirmed, E=6 holds**. Actual REMONT custodian must assign IDs/closures/repairs; the build author must keep constructing rather than take over defect repair. No protected CURRENT_PROGRESS/PROGRAMMA was touched.
+
+## External construction handoff — R6 Astra-purpose historical-genesis test intake (2026-11-20)
+
+**Separate receiving.** The R4/R5 intake remains intact. New sourcefree [R6 #1180](https://github.com/maidiu/rawlsing/pull/1180) at `f796937d23354e5e518ff55da4795307de9ec551` is stacked on R5/R7 and not integrated with active REMONT R8. Read [R6-P/T/E intake](INBOX/20261120_R6_ASTEMULCH_PURPOSE_GENESIS_EXECUTION_INTAKE.md) for exact source, authority, negative witnesses and required integrated cold runner.
+
+| Provisional handoff | Queue | First fault / test obligation | Status without canonical SR-ID |
+|---|---|---|---|
+| **R6-P-INBOX-01** | P | R5 operation-level pooled project bases were treated as all projects actually attempted. R6 carries selected purpose subset/none into settlement. | SOURCE-VERIFIED CAUSAL FAULT; independent before-red/after-green required. |
+| **R6-P-INBOX-02** | P | R5 heuristic minted “continue shared rhythms” active project during Nadia's first song. R6 separates possible end from later event-qualified uptake. | SOURCE-VERIFIED FORMATION CLAIM; two-event/rollback regression unexecuted. |
+| **R6-P-INBOX-03** | P | Different projects with identical composed operations/object could share a plan ID lacking project ref. | SOURCE-VERIFIED ID COLLISION PATH; reproduce and retest. |
+| **R6-P-INBOX-04** | P inquiry | Bounded lived signal history / possible-end recurrence implemented, but general choice-conditioned evidence and unseen alternatives remain scientifically open. | CAPABILITY GAP, not a confirmed product error. |
+| **R6-T-INBOX** | T investigation | 17 R6 new native `unittest` methods plus changed inherited Nadia scenario require executed normal/-O proof; no known confirmed new harness defect. | UNEXECUTED, NOT T-CLOSED. |
+| **R6-E-INBOX** | E | No exact R6 runner; no R8 rebase/test; three Astra full local documents not source accessible. | EXECUTION, INTEGRATION & SOURCE-FIDELITY HOLD. |
+
+**Required receiving matrix:** R8 historical 171+171 author passes, R4 11 authored tests, R5 6 authored, R6 17 authored. **205 is arithmetic only, not an executed denominator**. Actual reporter must capture complete cold checkout SHA, first-red fault, full normal/optimized discovered counts, cold SQLite verification, actor/private/Other guards, source hashes and rights. Existing **69 P / 0 confirmed T / 6 E** R8 status partition remains untouched; all new IDs here are **provisional inbox labels**, not official ledger allocation. REMONT owns triage and actual repair; source builder continues the organism.
