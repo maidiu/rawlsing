@@ -118,7 +118,10 @@ def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
         if family in ("RespondentEvent", "EmpiricalCoordinateFact"):
             observed[family + "@1.0.0"].append(obj)
     assert len(observed["RespondentEvent@1.0.0"]) == fixture[2]
-    assert len(observed["EmpiricalCoordinateFact@1.0.0"]) >= fixture[2]
+    # The fixture emits two physical coordinate slots per respondent. Their
+    # approved authority sets can overlap: authority identity is not a slot
+    # selector and cannot be used to count only the q101 coordinates.
+    assert len(observed["EmpiricalCoordinateFact@1.0.0"]) == 2 * fixture[2]
     for family, objects in observed.items():
         qualified = 0
         for obj in objects:
@@ -128,11 +131,10 @@ def test_unmapped_response_does_not_skip_independent_approved_coordinate_owner(
             }
             if expected_authorities[family].issubset(actual):
                 qualified += 1
-        # The country coordinate is a different physical slot and has no
-        # dual-owner requirement. Exactly the shared q101 slot's full
-        # respondent body must carry each respective approved owner set.
-        assert qualified == fixture[2], (
-            family, "shared physical-slot owner authority did not survive"
+        # All emitted facts must conserve their approved owner authority;
+        # the number of physical slots was checked independently above.
+        assert qualified == len(objects), (
+            family, "approved physical-slot owner authority did not survive"
         )
     assert _states(Path(handoff.destination), "RespondentEvent")[
         "INVALID_UNRESOLVED"
@@ -243,8 +245,9 @@ def test_cold_saved_unmapped_event_keeps_physical_class_and_mapped_event_identit
     assert full_handoff.roots.logical != partial_handoff.roots.logical
     assert sum(e.typed_state == "INVALID_UNRESOLVED" for e in partial) == 1
 
+    from rawlsing_next.pre553_empirical_objects import exact_ref
     by_respondent = lambda events: {
-        e.scoped_respondent_ref.key: e for e in events
+        exact_ref(e.scoped_respondent_ref).key: e for e in events
     }
     mapped_by_respondent = by_respondent(full)
     partial_by_respondent = by_respondent(partial)

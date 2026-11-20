@@ -44,11 +44,24 @@ def test_unmapped_response_is_never_boolean_false_even_under_not_leaf():
     )
 
 
-def test_source_declared_missing_keeps_its_distinct_typed_state():
-    for state in ("MISSING", "NOT_ASKED", "INAPPLICABLE"):
+def test_source_declared_missing_keeps_distinct_state_but_not_substantive_value_truth():
+    for state in ("MISSING", "DK", "REFUSAL", "NOT_ASKED", "INAPPLICABLE"):
+        for operation in ("EQ", "IN"):
+            with pytest.raises(EmpiricalQueryResolutionError, match="UNRESOLVED_CONDITION_MEMBER"):
+                _refuse_unresolved_value_leaf(
+                    SimpleNamespace(typed_state=state),
+                    {"leaf_type": "SURVEY_RESPONSE_EVENT", "operator": operation},
+                )
+        # Separately issued diagnostic state equality still examines the
+        # exact source-typed status; no status is rewritten into another.
         _refuse_unresolved_value_leaf(
             SimpleNamespace(typed_state=state),
-            {"leaf_type": "SURVEY_RESPONSE_EVENT", "operator": "EQ"},
+            {"leaf_type": "SURVEY_RESPONSE_EVENT", "operator": "STATE_EQ",
+             "typed_state": state},
+        )
+        _refuse_unresolved_value_leaf(
+            SimpleNamespace(typed_state=state),
+            {"leaf_type": "TYPED_RESPONSE_STATE", "typed_state": state},
         )
 
 
@@ -78,7 +91,7 @@ def test_compound_predicate_unknown_conserves_conclusive_membership_and_not(monk
         state = node["synthetic_epistemic_state"]
         visited.append(state)
         if state == "UNKNOWN":
-            raise native.EmpiricalQueryResolutionError(
+            raise native.UnresolvedConditionMember(
                 "UNRESOLVED_CONDITION_MEMBER: observed physical value uninterpreted"
             )
         if state == "AUTHORITY_ERROR":

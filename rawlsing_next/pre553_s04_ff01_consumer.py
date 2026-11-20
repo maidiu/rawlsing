@@ -146,6 +146,23 @@ def receive_ff01_from_s04(
         ],
         "anti_inferences": list(ANTI_INFERENCES),
     }
+    # Only a HELD S04 state with an authenticated unknown-member witness
+    # gains this additional, restricted provenance. A supported receipt must
+    # be byte-identical to the existing generic FF01 ABI: it has no such key,
+    # not even a null-valued placeholder.
+    if not supported and "source_unknown_condition_member_refs" in material:
+        m["held_condition_membership_uncertainty"] = {
+            # Caller-declared FF01 permissions do not release respondent IDs.
+            # The S04 knowledge ref commits to the roster without exporting
+            # either its members or a separately enumerable digest.
+            "source_knowledge_ref": knowledge.ref.as_dict(),
+            "roster_binding": "EXACT_S04_KNOWLEDGE_REF_ONLY__NO_EXPORTED_ROSTER_DIGEST",
+            "unknown_member_n": len(material["source_unknown_condition_member_refs"]),
+            "member_refs_exported": False,
+            "known_true_denominator_n": material["source_known_true_denominator_n"],
+            "eligible_risk_n": material["source_eligible_risk_n"],
+            "state": "UNRESOLVED_CONDITION_MEMBERSHIP__NO_FULL_DISTRIBUTION",
+        }
     if supported:
         if resolved <= 0:
             raise S04FF01SeamError("SUPPORTED source has no real joint")

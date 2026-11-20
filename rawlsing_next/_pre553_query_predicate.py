@@ -183,22 +183,46 @@ def _leaf_exact_values(
 
 
 def _refuse_unresolved_value_leaf(event: Any, node: Mapping[str, Any]) -> None:
-    """Leaf-local guard: unresolved is not Boolean false/true support.
+    """Refuse all non-substantive values at substantive equality predicates.
 
-    Only a leaf that explicitly asks for INVALID_UNRESOLVED may inspect it.
-    An unrelated diagnostic leaf in a mixed AND/OR/NOT cannot exempt this leaf.
+    Exact typed-state diagnostics retain their historical meaning, including
+    an explicitly named INVALID_UNRESOLVED; a substantive EQ/IN matcher never
+    treats MISSING/DK/REFUSAL/IAP/NOT_ASKED as a real negative or a positive
+    source-native value. NOT of such an unanswerable leaf stays unknown.
+    Repeated-event callers scan ALL events and may still return known TRUE.
     """
-    if str(event.typed_state) != "INVALID_UNRESOLVED":
-        return
-    if node.get("leaf_type") == "TYPED_RESPONSE_STATE" and node.get("typed_state") == "INVALID_UNRESOLVED":
-        return
-    if (node.get("leaf_type") == "SURVEY_RESPONSE_EVENT"
-            and node.get("operator") == "STATE_EQ"
-            and node.get("typed_state") == "INVALID_UNRESOLVED"):
-        return
-    raise UnresolvedConditionMember(
-        "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
+    state = str(event.typed_state)
+    leaf_type = node.get("leaf_type")
+    diagnostic = (
+        leaf_type == "TYPED_RESPONSE_STATE"
+        or (leaf_type == "SURVEY_RESPONSE_EVENT"
+            and node.get("operator") == "STATE_EQ")
     )
+    if state == "INVALID_UNRESOLVED":
+        if ((leaf_type == "TYPED_RESPONSE_STATE"
+             and node.get("typed_state") == "INVALID_UNRESOLVED")
+            or (leaf_type == "SURVEY_RESPONSE_EVENT"
+                and node.get("operator") == "STATE_EQ"
+                and node.get("typed_state") == "INVALID_UNRESOLVED")):
+            return
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
+        )
+    if (leaf_type == "SURVEY_RESPONSE_EVENT"
+            and node.get("operator") in {"EQ", "IN"}
+            and state != "SUBSTANTIVE_RESPONSE"):
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: source-typed non-substantive response has no value truth"
+        )
+    # Public native-value dialect is always a substantive response value;
+    # the separately authorized TYPED_RESPONSE_STATE/STATE_EQ grammars are
+    # the only way to ask about diagnostic response classes.
+    if (node.get("operation") is not None and leaf_type == "SURVEY_RESPONSE_EVENT"
+            and state != "SUBSTANTIVE_RESPONSE"):
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: governed native value lacks substantive response"
+        )
+
 
 def _leaf_match(
     node: Mapping[str, Any],

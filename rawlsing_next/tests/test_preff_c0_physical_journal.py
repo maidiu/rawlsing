@@ -156,3 +156,59 @@ def test_physical_companion_recovers_wholly_unmapped_variable_without_occurrence
                for cell in recovered if cell.variable_name == "unmapped")
     # No question id, occurrence index, response polarity or mapping
     # has been invented for these three source-native cells.
+
+
+def test_cold_read_pins_verified_bytes_against_postverification_replacement(
+    tmp_path, monkeypatch,
+):
+    """The published gzip may change just after preverification: never emit it."""
+    import gzip
+    import rawlsing_next.pre553_physical_cell_journal as custody
+    fixture = source_fixture(
+        tmp_path / "source", source_format="SAV",
+        values=(0.0, 1.0, 2.0),
+    )
+    private = tmp_path / "private"
+    private.mkdir(mode=0o700)
+    receipt = build(
+        tmp_path, fixture, physical_journal=PhysicalCellJournal(private),
+    ).physical_cell_journal
+    physical = Path(receipt.path) / "physical_cells.jsonl.gz"
+    untouched = physical.read_bytes()
+    ctor = gzip.GzipFile
+    calls = {"n": 0}
+
+    def concurrent_mutation(*args, **kwargs):
+        calls["n"] += 1
+        if calls["n"] == 2:
+            # Simulate a same-user mutation precisely between verification
+            # and the beginning of replay. This is NOT an integrity grant.
+            physical.write_bytes(b"REPLACED_AFTER_VERIFICATION")
+        return ctor(*args, **kwargs)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(custody.gzip, "GzipFile", concurrent_mutation)
+        recovered = list(read_physical_cells(
+            receipt, authorized_private_root=private,
+        ))
+    assert calls["n"] == 2
+    assert len(recovered) == receipt.cell_count
+    assert [x.variable_name for x in recovered[:2]] == ["q101", "country"]
+    assert physical.read_bytes() != untouched
+
+
+def test_cold_read_rejects_symlinked_intermediate_release_directory(tmp_path):
+    fixture = source_fixture(
+        tmp_path / "source", source_format="DTA", values=(0.0, 1.0),
+    )
+    private = tmp_path / "private"
+    private.mkdir(mode=0o700)
+    receipt = build(
+        tmp_path, fixture, physical_journal=PhysicalCellJournal(private),
+    ).physical_cell_journal
+    releases = private / "releases"
+    relocated = tmp_path / "external-releases"
+    releases.rename(relocated)
+    releases.symlink_to(relocated, target_is_directory=True)
+    with pytest.raises(PhysicalCellJournalError, match="linked"):
+        list(read_physical_cells(receipt, authorized_private_root=private))
