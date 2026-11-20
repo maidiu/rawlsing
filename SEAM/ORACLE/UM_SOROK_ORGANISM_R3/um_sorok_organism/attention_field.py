@@ -37,7 +37,7 @@ def _feature(cue, language):
                   if type(t) is str and t.strip())))[:24]
 
 
-def situate_attention(constitution, access, *, ceiling=8):
+def situate_attention(constitution, access, *, ceiling=8, historical=None):
     if constitution.actor != access.actor:
         raise ValueError('ATTENTION_FOREIGN_ACTOR')
     if type(ceiling) is not int or ceiling < 2 or ceiling > 32:
@@ -79,6 +79,8 @@ def situate_attention(constitution, access, *, ceiling=8):
                     if f.get('lifecycle','ACTIVE')=='ACTIVE']
     form_terms = set(t.casefold() for f in active_forms
                      for t in f.get('cues',[]) if type(t) is str)
+    historical_modalities={x.get('source_modality') for x in
+        (historical or {}).get('currents',[]) if type(x.get('source_modality')) is str}
     evaluated = []
     for index,cue in enumerate(cues):
         tokens = _feature(cue,language)
@@ -90,7 +92,8 @@ def situate_attention(constitution, access, *, ceiling=8):
             if c.get('kind')=='coactor_present'}
         # Rank is for resource allocation, not strength of a motive.
         rank = (3 if purposeful else 0) + (2 if known else 0) + (
-            1 if same_person else 0)
+            1 if same_person else 0) + (
+            1 if cue.get('modality') in historical_modalities else 0)
         evaluated.append({'cue':cue,'index':index,'tokens':tokens,
                           'rank':rank,'rarity':rarity,
                           'preverbal_resolution':language < .25})
@@ -121,6 +124,7 @@ def situate_attention(constitution, access, *, ceiling=8):
             'preverbal_tags_not_cognitive_categories':language < .25,
             'nonselected_cues_not_conclusively_unnoticed':True,
             'pre_attentive_recruitment_uses_full_access':True,
+            'historical_sensory_bias_is_provisional':bool(historical_modalities),
             'requires_independent_actor_learning_for_durable_bias':True,
             'budget_policy_not_a_human_attention_law':True,
             'grade':GRADE,
