@@ -20,7 +20,7 @@ bash rawlsing_next/tests/run_preff_remont_batch.sh \
   RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014
 ```
 
-Without arguments the runner defaults to Q001–Q004, Q007–Q010, Q013, Q014, Q015 and Q016; Q005 remains the separately requested broad original regression sweep. RMT-Q009/Q010 call the **existing C5_V3_CONTEXT / C6_V3_SEAM courts**, not duplicate test definitions; Q005's original `broad_c0` proof path remains conserved. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
+Without arguments the runner defaults to Q001–Q004, Q007–Q010, Q013, and Q014–Q019; Q005 remains the separately requested broad original regression sweep. RMT-Q009/Q010 call the **existing C5_V3_CONTEXT / C6_V3_SEAM courts**, not duplicate test definitions; Q005's original `broad_c0` proof path remains conserved. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
 **GitHub runner infrastructure hold (PF-042):** GitHub Actions checks have failed on both pre-repair `8c4e70ef...` and repaired descendants *before executing steps*. At inspected run `44671288932`, job `136072619214` has `runner_id=0`, empty `steps`, and no retrievable job logs. These CI reds are **NOT pytest evidence**. Until the runner owner restores a provisioned execution path, use the existing Mac/OpenCode sourcefree batch with one exact immutable HEAD; record JUnit/logs and do not reclassify the worker result as independent G5.
 
@@ -158,6 +158,26 @@ Without arguments the runner defaults to Q001–Q004, Q007–Q010, Q013, Q014, Q
 - **Execution evidence required:** exact clean detached HEAD; test command, local OS/Python/pytest; per-file and aggregate pass/fail/skip and first traceback; exit codes, JUnit and logs; separate P/T/E/requirements register with affected source and downstream, minimal owner repair recommendation, then hand off to REMONT Browser for substantive scientific/source/cross-owner changes. Runner only executes/records, makes **no source repairs**. Original source scientific issuance remains Q006 AUTHORITY_HOLD.
 
 **No immediate user-run or author-run test is requested.** Append this QID to the standing batch launcher and await the **next separately commissioned OpenCode execution**; do not manufacture an additional green gate or test commission.
+
+### RMT-Q017 — Country-scoped statistical noise and automatic recursion gate
+**P0 · SOURCEFREE QUEUED · NOT_EXECUTED · REMONT repairs**
+- **Exact source parent:** #1207 HEAD `b48222d42fb0c638d12af3cc05222260d5f94889`, copied byte-for-byte into this candidate for `pre553_s04_adaptive_support.py`, `pre553_s04_determinicity_cycle.py`, `pre553_s04_exploration_admission.py`, and `test_pre553_s04_support_noise_admission.py`. Do not infer previous Q015 scientific success.
+- **Method:** raw support is descriptive only; automatic recursion requires complexity/search penalty. Protected observed low-N candidates remain available but no automatic minority recursion by raw large sample contrasts. Independent null, planted XOR, rare-signal recall, many-predictor and host-cost falsifiers; preserve exact low-N underpower rather than erase an observation.
+- **Owner:** REMONT runs `rawlsing_next/tests/test_pre553_s04_support_noise_admission.py`; P/T/E first defects and revisions stay with REMONT. This is not a calibrated significance test or source authority.
+
+### RMT-Q018 — Unobserved finite-frame two-proposition relation (F6)
+**P0 · SOURCEFREE QUEUED · NOT_EXECUTED · REMONT repairs**
+- **Exact source parent:** #1219 HEAD `acb7fa6a58af2b62774a34b40c59bcdabf4fd9c1`, byte-exact copied production `rawlsing_next/pre553_s04_partially_identified_repertoire.py` and original test `rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py`. Finite-frame common source authority is mandatory for a 30–60% overlap inference from 70/60% marginals. Ordinary independently sampled surveys lack this grant.
+- **Positive:** Fréchet sharp interval and all four event pattern bounds under independent positive census-frame premise. **Negatives:** no common-frame authority, alternative cohorts, sampling survey as census, wrong period, forged target/sources, source joint fabricated, source-local numerator drift, negative authority.
+- **Owner:** REMONT runs `rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py`; scientific-issuer and ordinary-sampled-survey extension remain with independent F6 owner, not this integration author.
+
+### RMT-Q019 — Existing-owner position–repertoire integration (not a new estimator)
+**P0 · NEW CONNECTED CONSUMER · SOURCEFREE QUEUED · NOT_EXECUTED · REMONT repairs**
+- **New code:** `rawlsing_next/pre553_s04_position_repertoire_inquiry.py`; **new test:** `rawlsing_next/tests/test_pre553_s04_position_repertoire_inquiry.py`. Reuses established S04 general joint workspace (forward/reverse k-way respondent-coherent projections), the exact-country S04/DHIKR cycle, the existing C1/N10E positioned-subject possibility owner, and the **separate** F6 bounds reader. Does NOT create an alternate position model, predictor scorer, query engine, sampling or walkback algorithm, C4/C5/C6 actor, or respondent-synthetic cross-source joint.
+- **Positive courts:** actual sourcefree I03→S04→DHIKR one-country conditional target, same-risk joint, reverse conditional, exact external receipt pins, cold rereplay; independently F6-qualified and F6-held cases retained in separate lane without producing a joint. **Negative courts:** foreign source/target/issuer, counterfeit expected pin, source-country base drop, target-condition leakage, source domain mismatch, capped output expansion as explicit held not zero, storage-budget refusal, false N10E owner input, actor rights/refusal.
+- **Owner boundary:** OpenCode only runs and records first faults; REMONT triages P/T/E and owns repairs. No new C1/N10E/S04/F6 authority issuance; no original source rights, complex-survey variance, G5, protected receiving or SOROK sampling. The only downstream outcome is a restricted PYAT empirical **inquiry**; existing FF/C4/C5/C6 and N10E remain qualified consumer owners. Q019 has NOT been executed. Unknown source risk, low-n evidence and bounded output are not permissions to produce a hypothetical adult.
+
+**Integrated source for these three queues:** isolated branch `agent/pyat-haqqmulch-q014-q019-position-repertoire-integrated-20261120-r1`, based on #1218 head `d93a9a07984ee3ea6649e6e5111105eb134e5802`. The executor must freeze this branch's current 40-hex SHA after explicit authorization and confirm the Q017/#1207 and Q018/#1219 source blobs are exactly conserved, plus Q014–Q016 inherited. **No workflow launches itself.** No older author/worker green transfers to new composite SHA. Original Q006 and SOROK Q011/Q012 remain held.
 
 ## Required execution comment (latest active PR #1173, linked to #1097)
 
