@@ -78,7 +78,7 @@ The initial relief-world witness inserted a wage-shaped claim row directly. That
 
 Added read-only `.github/workflows/soracle-r19-sourcefree-tests.yml` for Python compilation, R19 focused normal/-O and all R3–R19 inherited regression suites.
 
-**Exact evidence:** R19 code, tests and workflow have been authored and committed. **No author original-repository test, integrated SQLite execution, CI run or independent REMONT verdict has been performed or observed.** Test cases are hypotheses about the committed implementation, NOT test passes. R18 unexecuted original court is not upgraded through a stack; older R16 source-extracted 19/19 normal/-O passes cannot certify R19.
+**Exact evidence:** R19 code, tests and workflow have been authored and committed. **No successful original-repository Python compilation, unittest execution, joined SQLite run or independent REMONT verdict has been verified.** Pull-request GitHub Actions did record failures for R18 run [#44829604014](https://github.com/maidiu/rawlsing/actions/runs/44829604014) and R19 run [#44829604024](https://github.com/maidiu/rawlsing/actions/runs/44829604024), at `a9c4697eea138a84aa13aaf743c2ef200e4604e3`. Both jobs reported zero steps and their decoded job logs were unavailable (`404 BlobNotFound`), so the failure cause and whether Python began executing cannot be established. The next REMONT test must use the **final newer branch HEAD**. Test cases are hypotheses about the committed implementation, NOT test passes. R18's unexecuted original court is not upgraded through a stack; older R16 source-extracted 19/19 normal/-O passes cannot certify R19.
 
 ### Authority, theory and simulation limitations
 
