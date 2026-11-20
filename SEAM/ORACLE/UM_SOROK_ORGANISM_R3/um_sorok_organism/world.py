@@ -9,6 +9,7 @@ from .material_conjunction import evaluate_material_conjunction
 from .practical_inquiry import notices_present
 from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
+from .mediated_efficacy import objective_arrangement
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -512,7 +513,23 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             sign['material_object_ref']=worked_material_object['object_ref']
             sign['actor_sensed_object_not_full_object_provenance']=True
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
-    return Resolution(status,performed,{'event':event_summary},effects,witnesses,output)
+    # World-level efficacy is NOT the actor's own explanatory model. Even an
+    # independently authored coactor response does not make the principal's
+    # body an owner of the jointly produced power. Preserve actual
+    # participation and objective permissions as distinct analytic fields.
+    genuinely_joined=(
+        [partner_attempt.actor] if (
+            partner_attempt and partner_valid and
+            attempt.action in COOPERATIVE and
+            partner_attempt.action in COOPERATIVE[attempt.action] and
+            status=='PERFORMED') else [])
+    arrangement=objective_arrangement(
+        actors[aid],world,attempt.action,loc,
+        actual_other_participants=genuinely_joined)
+    return Resolution(status,performed,
+        {'event':event_summary,
+         'sourcefree_objective_efficacy_arrangement_analyst_only':arrangement},
+        effects,witnesses,output)
 
 
 class IndependentWorldAuthority:
