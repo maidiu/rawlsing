@@ -12,6 +12,7 @@ from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
+from .practical_powers import situated_exercised_repertoire
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -29,6 +30,7 @@ def materialize(actor,world):
         expectations=copy(actor.get('expectations',[])),
         participation_history=copy(actor.get('participation_history',[])),
         functional_bindings=copy(actor.get('functional_bindings',[])),
+        power_exercises=copy(actor.get('power_exercises',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -275,6 +277,21 @@ def compose(constitution,access,limit=50):
         if 'project_pressure_ceiling' in q:
             q['score']+=q['project_pressure_ceiling']
             q['score_aggregation']='MAX_AVAILABLE_PROJECT_PRESSURE_NOT_SUM_OF_MOTIVES'
+    # Actual prior exercise may make an operation available on a later
+    # occasion without attributing the actor's motive, independent mastery,
+    # a new world right, or the earlier coactor's future willingness.
+    exercised=situated_exercised_repertoire(constitution,access)
+    for candidate in exercised['offered']:
+        action=candidate['action']
+        entry=actions.setdefault(action,{
+            'action':action,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_EXERCISED_POSSIBILITY'})
+        entry['basis']+=['exercise:'+r for r in candidate['basis']]
+        entry.setdefault('practical_exercise_sources',[]).extend(
+            candidate['source_event_refs'])
+        entry.setdefault('historical_support_statuses',[]).extend(
+            candidate['historical_support_statuses'])
+        entry['score']=max(entry['score'],candidate['score'])
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -346,7 +363,8 @@ def compose(constitution,access,limit=50):
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+functional['readset']+
+                           preproject['readset']+exercised['readset']+
+                           functional['readset']+
                            prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
