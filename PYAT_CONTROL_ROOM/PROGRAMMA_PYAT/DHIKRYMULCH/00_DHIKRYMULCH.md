@@ -14,7 +14,11 @@ The old vector/Enneagram route starts with a statistical or cultural environment
 
 These are not detachable features. Their collision requires a distinct account of **what exists**, **what can be observed about it**, **what operations evidence permits**, **how material worlds generate and constrain options**, **how a particular life takes up or changes them**, and **how consequences alter the next conditions of life**. The exact place where the machine must refuse a transformation is as important as the place where it must make one.
 
-The **spine emerging from this disassembly** is therefore not a chosen metaphor. It is a sequence of **mediated transformations that preserve the differences between historical reality, evidence, social possibility, psychic organization and actual becoming while allowing each to change the questions posed of the others**. What flows forward is not a deterministic identity. It is an increasingly situated **space of admissible alternatives**, their pressures and pathways, until a genuinely independent actor experiences a world and makes something happen. What flows back is the changed world, the new lived history, and epistemically qualified new questions—not fabricated empirical validation.
+The deeper **spine emerging from the recovered material** is **historically organized, object-directed activity as the mediating substance of both social reproduction and personal becoming**, with irreducible evidentiary and ontological owners for each level. Societies reproduce and change their material arrangements through labor, care, institutions and collective practice. Surveys are radically partial records of what situated people say, judge or report doing in historical observation encounters. An individual's psyche is neither a direct reflection of those conditions nor an uncaused interior: it is acquired and reorganized through an embodied person's participation in, interpretation of and lived consequences from plural activities. A later encounter recruits that acquired past under changed conditions. The process that makes psychology *operative* is therefore also among the processes through which psychology *becomes different*.
+
+This does not appoint activity theory as a universally demonstrated psychological law or collapse every real thing into an all-purpose 'activity' variable. Source truth, institutional truth, actor experience and fictional world history have different warrants. But the source families converge on a decisive construction problem: **what happens to the several historically constituted activities a person is trying to sustain when they encounter this particular world, and how does the lived consequence alter what can be recruited next?** That question integrates plural dispositions, motives, material possibilities, Others and developmental change without making demographic position into personality.
+
+What crosses owner boundaries is not a deterministic identity. It is qualified possibilities for situated activities, concrete affordances and inhibitions, independent worldly events, and histories of what participants actually do and live through. What returns is a changed world, changed organization of ongoing activities, reconstituted psychic iceberg and new scientifically qualified questions—never a fictional result promoted into source observation.
 
 **The completed organism must be simultaneously:**
 - a governed, historically situated empirical investigator, able to recover actual whole-respondent structures from a finite multi-survey estate and discover unforeseen concepts;
@@ -445,22 +449,26 @@ A person's operative organization needs more than a flat character summary. Repr
 
 These levels should be represented as **interacting, independently updatable organizations**, not mandatory modules with fixed coefficients. Some experiences produce pervasive transformations; others alter a single habit or a relationship-specific expectancy. Two organizations can be genuinely inconsistent, one conscious and one not, or both conscious but recruited under different conditions. They need not be averaged into an internally consistent personality vector.
 
-### VII.3 From encounter to recruitment to situated activity
+### VII.3 Lived activity mediates both today's recruitment and tomorrow's acquisition
 
-An event does not reach the mind as a ready-made semantic input. The organism encounters it through its place, bodily state, ongoing task, available language, prior relational history, attention, perceptual access and immediate stakes. Different actors in the same room can experience different *situated opportunities* because they have different needs and histories.
+An event does not reach the psyche as a ready-made semantic input. The organism encounters it through bodily state, present activity, existing relational investments, language, practical capacity, attention, historical habits, material stakes and the limited means available to it. Two children can live through the same objectively recorded event differently. Vygotsky's **perezhivanie** exposes the irreducible middle: **objective occurrence ≠ lived-through realization ≠ later psychic afterlife**. This does not require introducing an arbitrary new Perezhivanie class; it requires the existing event, PRE-A0 experience and developmental traces to conserve those differences. A preverbal infant can experience bodily coordination, frustration or rupture without holding a proposition about it.
 
-A minimal psychological **recruitment circuit**:
+The same action can participate in several *continuing activities* with different objects and motives. Nadia's technically successful singing can sustain coordination with her mother, provide sensory pleasure, seek recognition, allow another child to participate and protect a valued role. If her mother praises Nadia while humiliating the other child, the notes may be correct while several implicated activities receive incompatible consequences. Affect can register those differences before Nadia can name them. An action's technical success is **not** identical to satisfaction of the activity's motives; one positive/negative reward is insufficient.
 
-1. **World presents an encounter:** an independent Other acts, an institution enforces a rule, a need arises, an object affords an activity, an unexpected event occurs.
-2. **Available attention and interpretation:** bodily salience, familiarity, threat, relevance to a current activity, competing obligations, capacity and social meaning filter what is taken up.
-3. **Recruitment candidates:** a plurality of acquired organizations becomes more or less recruitable in this context: fear, curiosity, loyalty, practical skill, counterhabit, anger, cultural judgment, care, humor, obedience, collective hope.
-4. **Contradictory composition:** the actor's current motives, relationships, norms, habits, needs and projections combine unevenly, sometimes suppressing one another. The result may remain internally conflicted; the actor can hesitate, split public/private behavior, perform an established routine, refuse, negotiate, or improvise.
-5. **Situated response and action:** speech, gesture, inaction, attention shift, relationship management, practical operation, attempt to change a rule or tool, or sustained activity. The output includes intended and unrecognized effects; it is not always a verbal choice.
-6. **World arbitration:** independent physical and social conditions determine what actually succeeds, who responds, which material stocks change, and what consequences become newly possible. A chosen action is not an accomplished action.
-7. **Experience and reconstitution:** bodily change, emotional reaction, learning, association, acquired practice, memory revision, reinforcement, disconfirmation, altered trust and relationship history change the iceberg. An experience can undermine the meaning the actor initially assigned to it.
-8. **Future recruitment:** the changed psychic and social worlds jointly alter what can be noticed, wanted, feared, practiced, imagined, chosen and achieved in the next event.
+A minimal but causally concrete recruitment and reconstitution circuit:
 
-This is not a closed-state Markov character generator that updates a few trait numbers once per scene. The next event depends on changed needs, Others, institutions, relationships, schedules, material stocks, learned meanings and life histories. Nor is each step a compulsory conscious deliberation: many operations are habitual, embodied, skilled, improvisational or barely articulate.
+1. **Independent world occurrence**: an Other acts, need emerges, institution intervenes, material circumstance changes or a practical opportunity appears.
+2. **Situated access and lived-through realization**: the actor can perceive only what their embodied, developmental, relational and practical situation makes available; perception and expectation can be mistaken.
+3. **Contextual recruitment**: existing acquired organizations, skills, memories, concerns and projects become differentially available, activated or inhibited by material, social and symbolic cues.
+4. **Analogical possibility**: a resemblance to prior activity can make an old organization *provisionally* recruitable in an unfamiliar context without declaring the transfer already acquired. A tentative attempt can succeed, fail or reveal the analogy to be false.
+5. **Composition across activities**: one response may serve multiple ongoing, partly conflicting motives and relationships; incompatible organizations can coexist and influence the action without a master personality score choosing a winner.
+6. **Situated action, operation or inaction**: the actor uses a learned method toward a present aim, speaks, withholds speech, waits, helps, resists, attempts a new practice or sustains routine activity.
+7. **Independent arbitration**: material conditions, institutions and Others determine what physically and socially occurred, distinct from the actor's intention and interpretation.
+8. **Differentiated consequences and affect**: ask what happened *separately* to the activities, means, objectives and relationships implicated, what the actor expected and what they could actually register. The affective result need not be univocal or conscious.
+9. **Potential reconstitution**: new practical distinctions, memories, expectations, altered relationships, capabilities, projects and future applicability of organizations can be proposed and committed only where grounded in lived experience and developmental availability. A change may be narrow, dormant, contradictory or absent.
+10. **Changed future recruitment**: the now-altered psychic and social worlds make different activities, cues, inhibitions and analogical uses available.
+
+The activity between recruitment and reconstitution is **not a disposable output stage**. It is where the acquired organization encounters its own possibility and limit, including conditions of success unavailable to the actor's prior imagination. Some activity serves only maintenance; some develops a skill, shifts a motive, creates an opposition, or changes the relation among earlier investments. The system cannot demand conscious introspection at every step or collapse this long process into a Markov trait update.
 
 ### VII.4 Activity, action and operation are different levels of an actor's life
 
@@ -473,20 +481,31 @@ Model the distinction:
 
 An operation can become an action when conditions break a routine; an activity can change motive without every surface action changing; conflicting activities can recruit the same skill. This solves a frequent mechanical failure in personality simulation: a model can update 'trust' yet never change which concrete practices the person is capable of undertaking or why they undertake them.
 
-### VII.5 Experience changes *organizations*, not merely strength scores
+### VII.5 A new anticipated end is not yet an enduring motive
 
-An LLM must serve as a **genuine psychological construction instrument**, not just a stylistic narrator. Given grounded event traces and current organizations, it may propose: a new candidate learned expectation; a change in significance; a relational strategy; a conflicting interpretation; a new possible memory generalization; an internalization or repudiation of a culturally available norm; or an altered organization of a skill and goal.
+An LLM serves as **genuine psychological construction machinery**, but its question is not 'what trait should event E install?' It is: **given this actor's historically constituted activities and relations, how could this being live through these consequences, and what acquired organization, distinction or future recruitment pathway might emerge?** It proposes within the limits of known experience, existing psyche, maturational capacities and social conditions, then passes through an explicit SOROK adjudication and state-commitment contract.
 
-Proposals enter an **explicit psychological adjudication/commitment path**:
-- grounds in actually encountered events and available developmental capacities;
-- specifies what organization is created, revised, inhibited or split, with scope and context;
-- states its relation to existing memories, needs, skills, obligations and contradictory organizations;
-- predicts at least one *operative difference* in future attention, recruitment, interpretation, action, expression or relation;
-- preserves alternative hypotheses, uncertainty and provenance;
-- rejects fabrications inconsistent with known life history, unavailable knowledge, or world facts;
-- commits only within SOROK's fictional psychological jurisdiction, never to PYAT's measured truth.
+**Separate three states** that old generator heuristics were tempted to merge:
+- A **newly available possible end**: Nadia remembers a pleasurable sound and can anticipate trying to make it again.
+- A **provisional project or attempt**: an available opportunity and analogy make repetition imaginable and actionable without a settled activity.
+- An **established motive-bearing activity**: repeated or decisive lived practice has made the object significant within continuing life, in relation to other concerns, means and social practices.
 
-An evocative paragraph that changes no recruitment or action is not psychological construction. A repeatedly applied scalar update that produces no coherent human difference is likewise insufficient. The proposal may be provisional: a later event can expose that what looked like internalized obedience was situational compliance, or that a seemingly generalized distrust is relationship-specific.
+One episode does not mechanically produce a stable music-oriented project. Equally, requiring a fully established project before any novel attempt prevents the very beginning of transfer. The acquisition path can be rapid or gradual, fail entirely, change its object, or be redirected through an independent Other. The model must specify what makes a proposed transition defensible, which alternative interpretation remains, and what future encounter would reveal a difference.
+
+**Analogical recruitment** is not silent permanent scope expansion. A cue resembling earlier practice can provisionally recruit it; the subsequent activity reveals whether the organization transfers, must narrow, becomes a new competence, or remains ineffective. This preserves both the lesson of Lahire's context-dependent past and the rule against unauthorized learned-association overrides of genuine eligibility.
+
+**Capacity acquisition and capacity exercise** are also different. As Sève emphasizes, an acquired operation can be used in new activities, and exercising a power can further develop it; but a person can also acquire an ability they materially cannot exercise. The organization of time, care work, class access and institutional rules mediates whether a possibility becomes practiced, central, inhibited or lost.
+
+A committed psychological proposal must therefore state:
+- the experienced event and the actor-accessible portion of its real consequences;
+- which ongoing activities/motives and relationships were implicated, and how their consequences differed;
+- the proposed new or revised orientation, its developmental availability, and its scope;
+- recruitment triggers, provisional analogies, inhibitions and relationships to contradictory organizations;
+- what behavior, practice, attention, anticipated end or possible activity it can actually change;
+- alternative hypotheses, uncertainty, refusal or NO_CHANGE;
+- the future encounter that could test or transform it.
+
+A moving paragraph that alters no subsequent activity is not psychological genesis. A list of reward-weight updates with no account of which lived activities changed is not psychodynamics. The actor can register an affective contradiction before understanding it, understand a conflict without changing it, or change behavior without any corresponding articulate theory of the self.
 
 ### VII.6 Contextual plurality is the norm, not an exception
 
@@ -548,18 +567,21 @@ After speech, the world responds. Words can change relationships, reputations, r
 
 ## VIII. ORDINARY LIFE IS THE UNIT OF CONTINUITY, NOT THE HEROIC SCENE
 
-### VIII.1 A life is mostly not a dramatic event
+### VIII.1 Everyday conduct, life-time allocation and slow formation
 
-Continuous becoming requires routines: waking, eating, cleaning, commuting, working, waiting, caring, resting, exchanging small gestures, attending school, encountering bureaucracy, reading, praying, chatting, recovering from illness, shopping, playing, being bored, maintaining relationships. These are not background filler. They sustain needs, create repeated exposure, preserve or erode trust, consolidate skills, carry institutions, consume time and resources, and produce the slow acquisition of habits.
+Continuous becoming requires routines: waking, eating, cleaning, commuting, working, waiting, caring, resting, encountering bureaucracy, attending school, reading, praying, talking, being bored and keeping relationships alive. These are not fillers between cinematic formative scenes. They maintain needs, reproduce household and institutional relations, provide practice, allocate time, inhibit other activities, and form expectations.
 
-**Ordinary-life hypercompression** must preserve causally consequential regularity without simulating every second. Use multi-timescale execution:
-- continuous or short-step physiological/need and resource processes where needed;
-- eventful situated encounters when action choices or consequences matter;
-- periodic household, workplace, school and relationship maintenance;
-- compressed routine intervals with explicit summaries of costs, exposures, practice and increments of change;
-- interruption triggers when a threshold, conflict, independent Other or institutional event breaks routine.
+Dreier's **conduct of everyday life** demands a whole organization across places, not merely a sequence of scene-local decisions. A parent may remain at work while concerned for a child. A worker can sacrifice practice of one capacity to preserve the income that makes another possible. Continuing a seemingly unchanged life requires continuing activity. Holzkamp's perspective likewise makes the person's practical reasons and available means irreducible to either coercive structure or freely chosen preference.
 
-Compression is not an excuse to skip social reproduction or psychological development. The compressed unit must retain how much was done, by whom, with which costs, whether prior organizations were practiced or frustrated, whether institutional constraints altered, and which previously impossible questions became worth asking. It cannot convert weeks of boredom into an ungrounded 'personality developed by +0.1' event.
+**Ordinary-life hypercompression** may skip uninformative seconds but must conserve causally consequential duration. Implement multiple clocks: bodily needs, work and care schedules, learning/practice opportunities, relationship maintenance, institutional cycles and meaningful interruption triggers. A compression interval should retain:
+- which activities were undertaken or prevented, and for how long;
+- who performed reproduction labor, at what cost, and what material stocks changed;
+- which skills were acquired, exercised, frustrated or allowed to deteriorate;
+- which organizations had repeated cue exposure or were kept dormant;
+- what relationships and institutional conditions persisted, strengthened or weakened;
+- what surprise, changed need or conflict requires expansion into an explicit event.
+
+The distinction **capacity possessed ≠ opportunity to exercise it** is a hard constraint on compression. A child who learns a skill but loses access to its tools must not be represented as continuously practicing it; a caregiver constrained by a work shift must not be narrated as constantly present; a repetitive occupation can develop practical competence while exhausting the time available for another project. Do not turn months of structured activity into an ungrounded 'personality +0.1' update.
 
 ### VIII.2 A persistent relationship is a two-sided, historically evolving system
 
