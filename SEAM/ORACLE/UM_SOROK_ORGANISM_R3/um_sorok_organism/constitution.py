@@ -24,6 +24,8 @@ from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
 from .expectation_afterlife import annotate_practical_expectations
+from .co_regulation_history import (
+    recruit_co_regulation, addressed_signal_alternatives)
 
 
 def materialize(actor,world):
@@ -43,6 +45,8 @@ def materialize(actor,world):
         object_encounters=copy(actor.get('object_encounters',[])),
         material_investments=copy(actor.get('material_investments',[])),
         practice_exposures=copy(actor.get('practice_exposures',[])),
+        undergone_care_periods=copy(actor.get('undergone_care_periods',[])),
+        co_regulation_orientations=copy(actor.get('co_regulation_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -332,6 +336,27 @@ def compose(constitution,access,limit=50):
         entry.setdefault('historical_support_statuses',[]).extend(
             candidate['historical_support_statuses'])
         entry['score']=max(entry['score'],candidate['score'])
+    historical_care=recruit_co_regulation(constitution,access)
+    for offered in historical_care['offered']:
+        entry=actions.setdefault('SIGNAL',{
+            'action':'SIGNAL','score':.06,'basis':[],
+            'opportunity':'HISTORICALLY_ACQUIRED_RELATIONAL_SIGNAL'})
+        entry['score']=max(entry['score'],offered['score'])
+        entry['basis'].append('co_regulation:'+offered['orientation_ref'])
+    currents.extend({
+        'kind':'HISTORICAL_CO_REGULATION_EXPECTATION_CONTRADICTED',
+        'orientation_ref':r['orientation_ref'],
+        'caregiver_ref':r['previous_caregiver_ref'],
+        'prior_care_history_retained':True,
+        'caregiver_intention_not_proved':True,'grade':r['grade']}
+        for r in historical_care.get('suspended_after_contradiction',[]))
+    currents.extend({
+        'kind':'ACQUIRED_CO_REGULATION_MAY_RECRUIT_SIGNAL',
+        'orientation_ref':r['orientation_ref'],
+        'counterpart_ref':r['caregiver_ref'],
+        'other_response_remains_independent':True,
+        'not_a_conscious_self_report':True,
+        'grade':r['grade']} for r in historical_care['offered'])
     inquiry=offer_actor_inquiry(constitution,access)
     for candidate in inquiry['offered']:
         action=candidate['action']
@@ -434,6 +459,8 @@ def compose(constitution,access,limit=50):
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=object_bound_alternatives(
             constitution,attention['focus_access'],option['action'])
+        option['practical_alternatives']+=addressed_signal_alternatives(
+            constitution,attention['focus_access'],option)
         annotate_material_alternatives(option,invested)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
             option['practical_alternatives'] += [
@@ -470,6 +497,7 @@ def compose(constitution,access,limit=50):
                            preproject['readset']+exercised['readset']+
                            invested['recruitment']['readset']+
                            material['readset']+
+                           historical_care['readset']+
                            inquiry['readset']+
                            functional['readset']+
                            expectation_afterlife['readset']+

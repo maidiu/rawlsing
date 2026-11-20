@@ -11,6 +11,9 @@ from .practical_inquiry import choose_grounded_public_inquiry
 from .material_investments import choose_qualified_material_care
 from .unintended_goods import one_sourcefree_provisional_end
 from .expectation_afterlife import conservative_appraisal_proposal
+from .co_regulation_history import (
+    sourcefree_co_regulation_proposal, choose_historically_situated_signal,
+    sourcefree_revision_proposal)
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -57,6 +60,10 @@ class HeuristicSemanticProvider:
             # Actual historical alternatives can organize provisional action
             # before a settled purpose exists. An experienced future occasion
             # might create a new motive, but this selection does not assert one.
+            historical_signal=choose_historically_situated_signal(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if historical_signal:
+                return {'task':task,**historical_signal}
             trial=select_bounded_exploratory_trial(possibilities)
             if trial:
                 return {'task':task,**trial}
@@ -109,6 +116,10 @@ class HeuristicSemanticProvider:
             # A live LLM receives the same evidence-grade candidates and may
             # instead nominate no change. No adult end/idea is inferred.
             lived=copy(packet.get('historically_proposed_preproject',[]))
+            lived+=sourcefree_co_regulation_proposal(
+                packet.get('historically_possible_co_regulation',[]))
+            lived+=sourcefree_revision_proposal(
+                packet.get('historically_possible_co_regulation_revision',[]))
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
             relation_candidates=lived+copy(
