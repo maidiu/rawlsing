@@ -46,8 +46,12 @@ class HeuristicSemanticProvider:
                 project_ref=selected['project_id']
             else:
                 project_ref=None
+            alternative=next((a for a in option.get('practical_alternatives',[])
+                 if a.get('project_id')==project_ref),None)
             return {'task':task,'action':option['action'],
                     'project_id':project_ref,
+                    **({'practical_option_id':alternative['option_id']}
+                        if alternative else {}),
                     'purpose_selection_grade':('HEURISTIC_PROJECT_COURSE_CHOSEN'
                          if project_ref is not None else 'NO_ASSIGNED_PROJECT_END'),
                     'basis':option.get('basis',[]),'semantic_grade':self.grade}
