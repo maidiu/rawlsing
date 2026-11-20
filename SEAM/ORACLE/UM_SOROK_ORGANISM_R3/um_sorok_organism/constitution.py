@@ -1,7 +1,7 @@
 """READ MODEL for the entire, possibly dormant and contradictory person; pure composition.
 No psychology state is minted by materialization. This module is deliberately read-only.
 """
-from .types import Constitution, Situated, AccessibleEncounter, copy
+from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
