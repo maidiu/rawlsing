@@ -205,7 +205,14 @@ def choose_historically_situated_signal(options,body):
     admitted orientation and the person's actual current availability match.
     A project, contrary pressure or ambiguous eligible caregivers defeats it.
     """
-    if type(body) is not dict or body.get('comfort',1)>=.43:
+    if type(body) is not dict:
+        return None
+    # The child can seek a historically constituted caregiver amid hunger,
+    # exhaustion or discomfort. No universal 'want affection' score is
+    # manufactured, and no independent Other is precommitted to respond.
+    need=(body.get('comfort',1)<.43 or body.get('nutrition',1)<.55
+          or body.get('rest',1)<.40)
+    if not need:
         return None
     if any(o.get('project_courses') for o in options):
         return None
