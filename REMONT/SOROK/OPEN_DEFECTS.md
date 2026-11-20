@@ -1,5 +1,33 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R12 R2 — same-event project reorganization repaired in sourcefree code (2026-11-20; REVIEW PENDING)
+
+**Published prospective R12 successor to [#1199](https://github.com/maidiu/rawlsing/pull/1199) frozen `9db0e6f64bf568409e638ff2215af8b8a414487f`.** R12 hostile review [#5999820908](https://github.com/maidiu/rawlsing/pull/1199#pullrequestreview-5999820908) reproduced **REVISE_EXACT_DEFECT**: a genuine actor-issued SING trial allowed a model's `REORGANIZE_PROJECT` proposal to overwrite an already acquired project object/motive with an allegedly mature trial motive in the **same event**. This was a true history/motive-provenance failure despite a valid SQLite chain.
+
+**Implemented source-owner repair:** `um_sorok_organism/development.py::admit` forbids `REORGANIZE_PROJECT` when it carries either `object` or `motive` during a currently runtime-issued trial, refusing before recording any trial history or staged psychic change. The existing `ADD_PROJECT` and same-end `TAKE_UP_POSSIBLE_END` guards remain. Later actual *nontrial* project reorganization and current-trial non-purpose `priority`/`cue_terms` adjustment remain qualified and tested. The resulting operation is a conservative historical boundary, not a scientific law of desire.
+
+**Actual local sourcefree execution:** exact original R12 42-file source IDs MATCH, inherited 246 normal/-O/pytest PASS; six reviewer-equivalent hostile cases 5 PASS/1 FAIL on frozen R12; repaired **256/256 normal, 256/256 optimized, pytest 256 + 20 subtests**, 10/10 joined hostile plus new cases, two-process cold reopen PASS. Repaired **44-Python-file** manifest (41 original untouched + 1 development owner edit + 2 new test modules). [Source and detailed receipt](REPAIRS/REMONTATHON_R12_R2_TRIAL_MOTIVE_20261120/REPAIR_RECEIPT.md) will be carried in this isolated successor branch; original immutable reviewer test source remains `dea778ef3187994a362d88a0287029730730590b`.
+
+**Current 71 original REMONT P identities and statuses are unchanged**: 53 scoped first-fault review PASS, 8 OPEN, 8 PARTIAL, P070/P071 two original author-tested/pending independently received. T0/E6 unchanged. The newer original #1171 R1198 receiving record and R12 source metadata both conserved. Repair author does **not** independently receive or approve this work. Another agent must perform the fresh exact-head court, and P070/P071 require a reviewer distinct from their original author. Protected PRE-MAIN and canonical PROGRAMMA/CURRENT_PROGRESS remain untouched; `HQ_CURRENTNESS_HOLD` on authorized intake.
+
+---
+
+
+## R11 repaired exact-head follow-up — scoped review / P070–P071 independence hold (2026-11-20)
+
+**Frozen successor review:** [#1198](https://github.com/maidiu/rawlsing/pull/1198) at `d96f1c0b181b9772b1cd90c093e7393acc66523c`; exact review [#5999778333](https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333). This is a **new sourcefree receiving record in the existing REMONT ledger, not a replacement master, protected merge, or native engineering/scientific authorization**.
+
+- **R11-DEF-02 — `ACCEPT_SCOPED`:** current actor-issued trial cannot cause same-event model `ADD_PROJECT` or motive/object-changing `REORGANIZE_PROJECT`, including renamed foreign object, or same-end `TAKE_UP_POSSIBLE_END`. Its independent original trial history remains actor-owned and event-specific. This is a bounded engineering safeguard, not acquired-motive science.
+- **R11-DEF-03 — `ACCEPT_SCOPED`:** all **71/71 original REMONT P records structurally identical** to this register; T0/E6 unchanged, 53 originally scoped first-fault reviews conserved, eight OPEN, eight PARTIAL, P070/P071 still author-repaired/pending independent. Existing historical register below is preserved.
+- **R11-DEF-01 — `FUNCTIONAL_PASS__HOLD_INDEPENDENT_ACCEPTANCE`:** exact P070 original `storage.py` and P071 embodied-sensor gating both execute normally and pass hostile tests; **the reviewing assistant authored those original two fixes on #1171** and cannot independently accept them. A **different reviewer** must challenge their source and tests, after which authorized receiving may consider full R11 succession.
+
+**Fresh independently executed exact-source evidence:** rebuild from frozen ancestor plus five exact changed/new Git blobs; **41/41** Python source/test SHA256 and Git identities match both candidate manifest and published tree; **241/241 normal, 241/241 `-O`, pytest 241 + 12 subtests, five additional independent reviewer tests normal and optimized PASS**. Cold SQLite reopen and forged trial-ID/motive/history attacks checked. Complete evidence ZIP in Library `/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R1198_20261120/` SHA-256 `920458eaba7ace4b418621eb17097e80b549eee6cbd1024c008bcb812824649f`.
+
+**Overall `HOLD` on blanket independent #1198 acceptance until credential- and author-independent P070/P071 receiving; no protected receiving.** Existing canonical PROGRAMMA and paired `CURRENT_PROGRESS.md`/`.json` are unchanged, `HQ_CURRENTNESS_HOLD` remains for the authorized recipient. The user-selected construction-first TCO/SORACLE program continues without promotion of sourcefree machinery to science.
+
+---
+
+
 ## CURRENT INDEPENDENT REMONT R11 REVIEW — 2026-11-20
 
 **This is an additive receiving decision in the EXISTING REMONT register; original R10 code and 71-entry P/T/E statuses below are unchanged.** The externally constructed REMONT R10 #1187 and R11 #1190 are independently executable, but they are not yet valid replacements for this branch.
@@ -356,18 +384,3 @@ Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**
 **TEST QUEUE IS NOT ALL GREEN:** `SR-P022` (pre-cue historically formed attention/recruitment) and `SR-P023` (historically generated novel end) remain **PROPOSED / NOT EXECUTED**. These are descriptive probes in the original ledger, not ready-made runnable OpenCode job entries. No native OpenCode queue job or independent execution has been claimed. Independent receiving of prior repair sibling PRs #1165/#1166/#1170 also remains pending.
 
 **Exact R9 status partition:** **69 production records = 8 OPEN, 8 PARTIAL, 53 AUTHOR-REPAIRED PENDING INDEPENDENT REVIEW; independently accepted 0.** Confirmed T harness defects 0, E authority/evidence holds 6 unchanged. No protected PRE-MAIN edit, paired canonical CURRENT_PROGRESS update, native owners, scientific PYAT or psychological validity issuance.
-
-
-## REMONTATHON R12 — repair of independent R11 review's exact defects (2026-11-20)
-
-**Custody:** previous R11 #1190 exact `39f6972089858ee968e73b2e731005c71a8055dd` was independently reviewed as **REVISE_EXACT_DEFECT**, despite the user independently confirming 232/232 on Python 3.11.3 and two-process SQLite cold reopening. The active ORIGINAL continuing roster #1171 is `c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7`, not R11's stale 69-record ancestor. Every one of its 71 P IDs and all prior first-fault scoped independent review dispositions are preserved unchanged in this R12 paired ledger. **No statuses were self-promoted.**
-
-**R11-DEF-01:** ported current original P070 canonical stored world/actor raw-byte and singleton world roster checks into the joined R11 storage verifier; ported original P071 whole-body sensor preflight into joined actor access. Original tests and independent reviewer tests now pass, but P070/P071 remain author-repaired and separately review-pending.
-
-**R11-DEF-02:** an LLM could bypass selected-trial `TAKE_UP_POSSIBLE_END` protection by `ADD_PROJECT` in that same event, minting durable motive from an exploratory trial. The sourcefree `development.admit` now refuses any simultaneous durable `ADD_PROJECT` when an issuer-supplied current-trial ticket is present, including renamed-object attempts; independent later nontrial project admission remains intact. New cross-event/atomic negative/positive tests pass. This is a provisional integrity boundary, **not** a universal psychology of motives.
-
-**R11-DEF-03:** replaces stale R11 69 P tracking with exact live ORIGINAL #1171 71-record MD/JSON pair, adds *only* this R12 repair receipt, and carries existing `INDEPENDENT_R9_53_20261120` review file bytes forward. Canonical PROGRAMMA and paired protected CURRENT_PROGRESS remain untouched.
-
-**Actual test-first evidence:** independent reviewer's six-test module on frozen original R11 produced **five failing negative subcases**, two positive checks passed. Repaired R12 **six/six reviewer tests pass**, exact original P070/P071 three regression methods pass, plus five additional author tests. Full **246/246 PASS normal**, **246/246 PASS optimized**, **pytest 246 passed + 14 subtests**, extracted runnable ZIP cold rerun; 9-event demo SQLite cross-runtime cold reopen verifies identical chain hashes and `PRAGMA integrity_check=ok`. Python 3.13.5 executed; user Python 3.11.3 result applies to **frozen R11 only**, not the new R12 head.
-
-**Accurate ledger:** 71 P = 53 bounded independently reviewed first faults + 8 OPEN + 8 PARTIAL + 2 AUTHOR-REPAIRED REVIEW PENDING. T=0 confirmed; E=6 evidence/authority holds unchanged. R12 repair not independently accepted, native G5 and protected receiving unissued. Re-review must be by an engineer other than the R12 author (and for P070/71, other than their original author). Exact source and test identities in R12 evidence directory.

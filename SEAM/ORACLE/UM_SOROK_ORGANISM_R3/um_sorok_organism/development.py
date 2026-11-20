@@ -62,6 +62,16 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         # nontrial experiences and later life transitions.
         if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        # An established project is no authority for the present trial to
+        # acquire a motive by retrospective renaming. Object or motive changes
+        # constitute the same durable-purpose transition as ADD_PROJECT; only
+        # a distinct lived occasion can support that proposal. Refuse before
+        # recording the provisional trial or applying *any* model candidate.
+        # Non-purpose adjustments (e.g. cue scope/priority) retain their
+        # ordinary sourcefree admission path, as do nontrial reorganizations.
+        if any(c.get('kind')=='REORGANIZE_PROJECT'
+               and ('object' in c or 'motive' in c) for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
         if any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
                and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
                for c in candidates):
