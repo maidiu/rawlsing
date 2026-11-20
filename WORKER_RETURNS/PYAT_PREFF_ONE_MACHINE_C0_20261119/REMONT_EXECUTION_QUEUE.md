@@ -77,3 +77,12 @@ Without arguments the runner defaults to Q001–Q004 plus the newly appended Q00
 One **version-pinned** report, including: exact tested SHA and git tree cleanliness; host OS, Python and pytest version; each QID with test files, exact command, summary, exit code and JUnit/log paths; first failure stack and minimal source trace; whether a failure is old/new/test-misstatement/owner contract; proposed smallest repair; affected upstream and downstream owners; historical negative controls to conserve; recommended **REMONT Browser vs OpenCode** with reason. Mark unrun items `NOT_EXECUTED`; do not call author runs independent G5 or protected acceptance.
 
 **Repair boundary:** OpenCode executes and *suggests*, does not commit code in this commission. A later separately user-authorized OpenCode bug flight may repair a narrow one-owner, no-new-ABI defect (approximately two implementation/test files maximum), with a fresh exact-head regression. Cross-owner, historical source/provenance, scientific/actor authority or substantive method changes go to REMONT Browser; architectural forward construction stays with PYAT HQ. REMONT keeps test execution history beside PF001–PF036 without making HQ wait for the queue.
+
+### RMT-Q008 — executable REMONT batch evidence custody and no-clobber
+**Priority P0 / TEST_INFRASTRUCTURE / RUN_PENDING**
+- **Test:** `rawlsing_next/tests/test_preff_remont_batch_guard.py` (registered in `rawlsing_next/tests/run_preff_remont_batch.sh`).
+- **Producer:** one existing `run_preff_remont_batch.sh`; **consumer:** independently retained per-QID JUnit/logs/exit and immutable historical RED inventory.
+- **Positive:** sourcefree execution queue preflights all QIDs before any case, accepts only exact 40-hex HEAD and a clean tracked worktree, preserves macOS Bash 3.2, and selects the existing broad Q005 in the default complete eligible batch.
+- **Adversarial negative:** duplicate QID / unauthorized Q006 / unknown QID must not create any proof; an already-existing exact-head proof directory must remain byte-unchanged, including prior RED evidence. A changed HEAD must refuse before touching proof.
+- **Triage:** REMONT owns evidence-custody policy and queue/registration; later explicitly authorized OpenCode BUG worker may repair a one-file shell portability issue. Neither this sourcefree test nor its pass is independent G5, science or original source permission.
+- **Existing batch run:** include `RMT-Q008` alongside Q001–005 and Q007. Prior QID identifiers and results are immutable.

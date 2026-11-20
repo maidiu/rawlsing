@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008)
 fi
 # A test queue is an immutable evidence batch. Never overwrite a previous
 # RED/GREEN at the same SHA, even when a worker retries a corrected command.
@@ -32,7 +32,7 @@ fi
 validated_cases=()
 for id in "${cases[@]}"; do
   case "$id" in
-    RMT-Q001|RMT-Q002|RMT-Q003|RMT-Q004|RMT-Q005|RMT-Q007) ;;
+    RMT-Q001|RMT-Q002|RMT-Q003|RMT-Q004|RMT-Q005|RMT-Q007|RMT-Q008) ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2 ;;
@@ -81,6 +81,9 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q007) # C5 material sourcefree context navigation and real I05 role
       tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py)
+      ;;
+    RMT-Q008) # Batch proof custody / Mac Bash 3.2 / invalid QID refusal
+      tests=(rawlsing_next/tests/test_preff_remont_batch_guard.py)
       ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
