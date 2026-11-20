@@ -17,6 +17,8 @@ from .practical_inquiry import offer_actor_inquiry, notices_present
 from .material_objects import (
     material_objects_present, can_make, object_bound_alternatives,
     material_opportunity_from_history)
+from .material_investments import (
+    invested_material_action_options, annotate_material_alternatives)
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -36,6 +38,8 @@ def materialize(actor,world):
         functional_bindings=copy(actor.get('functional_bindings',[])),
         power_exercises=copy(actor.get('power_exercises',[])),
         notice_exposures=copy(actor.get('notice_exposures',[])),
+        object_encounters=copy(actor.get('object_encounters',[])),
+        material_investments=copy(actor.get('material_investments',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -350,6 +354,19 @@ def compose(constitution,access,limit=50):
                 'action':'INSPECT','score':.078,
                 'basis':['CURRENT_MATERIAL_OBJECT_VISIBLE'],
                 'opportunity':'MATERIAL_OBJECT_CAN_BE_INSPECTED_NOT_A_GOAL'})
+    invested=invested_material_action_options(constitution,access)
+    currents+=invested['recruitment']['currents']
+    for candidate in invested['proposals']:
+        op=candidate['action']
+        entry=actions.setdefault(op,{
+            'action':op,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_INVESTED_VISIBLE_OBJECT'})
+        entry['basis']+=candidate['basis']
+        entry['score']=max(entry['score'],candidate['score'])
+        entry.setdefault('object_specific_pressures',[]).append({
+            'material_object_ref':candidate['object_ref'],
+            'unresolved_conflict':candidate['unresolved_conflict'],
+            'actor_meaning_not_world_ownership':True})
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -407,6 +424,7 @@ def compose(constitution,access,limit=50):
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=object_bound_alternatives(
             constitution,attention['focus_access'],option['action'])
+        annotate_material_alternatives(option,invested)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
             option['practical_alternatives'] += [
                 {'option_id':'inquiry:'+constitution.actor+':'+
@@ -438,6 +456,7 @@ def compose(constitution,access,limit=50):
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            preproject['readset']+exercised['readset']+
+                           invested['recruitment']['readset']+
                            material['readset']+
                            inquiry['readset']+
                            functional['readset']+
