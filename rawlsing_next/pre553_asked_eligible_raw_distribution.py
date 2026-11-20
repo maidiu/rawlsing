@@ -20,6 +20,7 @@ from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, EmpiricalQuerySpec, canonical_json, canonicalize,
+    exact_ref,
 )
 
 POLICY = "ASKED_ELIGIBLE_RAW_DISTRIBUTION@1"
@@ -134,11 +135,16 @@ def summarize_asked_eligible_raw_fact(
     if (query.requested_output_grain.get(PROFILE_FIELD) != POLICY
             or query.requested_output_grain.get("measure_kind") != "RAW"):
         raise AskedEligibleDistributionError("NOT_AN_ASKED_ELIGIBLE_RAW_QUERY")
-    if fact.empirical_query_spec_ref != query.ref:
+    # CanonicalSemanticObject freezes its semantic refs as *mappings*,
+    # while query.ref is a live ExactRef. Compare reconstructed identities,
+    # never unequal raw representation types.
+    if exact_ref(fact.empirical_query_spec_ref) != query.ref:
         raise AskedEligibleDistributionError("FACT_QUERY_IDENTITY_MISMATCH")
-    if (fact.risk_set_ref != query.risk_set_ref
-            or fact.response_state_semantics_ref
-            != query.requested_output_grain["response_state_semantics_ref"]):
+    if (exact_ref(fact.risk_set_ref) != exact_ref(query.risk_set_ref)
+            or exact_ref(fact.response_state_semantics_ref)
+            != exact_ref(query.requested_output_grain[
+                "response_state_semantics_ref"
+            ])):
         raise AskedEligibleDistributionError("FACT_SOURCE_RISK_OR_SEMANTICS_MISMATCH")
     if len(query.target_refs) != 1 or fact.target_topology["arity"] != 1:
         raise AskedEligibleDistributionError(
@@ -150,7 +156,7 @@ def summarize_asked_eligible_raw_fact(
         "contract": POLICY,
         "query_ref": query.ref.as_dict(),
         "fact_ref": fact.ref.as_dict(),
-        "risk_set_ref": fact.risk_set_ref.as_dict(),
+        "risk_set_ref": exact_ref(fact.risk_set_ref).as_dict(),
         "denominator_definition": (
             "KNOWN_CONDITION_TRUE_AND_ROUTING_ELIGIBLE__"
             "DO_NOT_INFER_ASKED_FROM_RECORDED_RESPONSE"
