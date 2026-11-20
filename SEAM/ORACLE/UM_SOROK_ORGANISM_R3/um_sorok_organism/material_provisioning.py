@@ -207,7 +207,8 @@ def settle_provisioning(world, actors, allocation):
     return outcomes
 
 
-def perform_one_actual_feeding(world,actors,giver,recipient,location):
+def perform_one_actual_feeding(world,actors,giver,recipient,location,
+                               actor_selection_source='UNKNOWN_NOT_ISSUED'):
     """One independently authored, actual FEED transfers a full food unit.
 
     No infant duty or assumed caregiver motive. This operation belongs to
@@ -260,7 +261,12 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location):
         "nutrition_before":float(nutrition),
         "nutrition_after":float(after),
         "nutrition_effect":float(after-nutrition),
-        "independently_actor_authored":"SOURCEFREE_ACTOR_SELECTED",
+        "actor_selection_source":actor_selection_source,
+        "actor_independently_selected_this_attempt":(
+            actor_selection_source==
+            "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE"),
+        "external_action_not_actor_motive":(
+            actor_selection_source=="INJECTED_NOT_NATIVE_ACTOR_CHOICE"),
         "co_presence_not_future_consent":True,
         "caregiver_intent_or_love":"NOT_INFERRED",
         "not_compressed_fiction":True,
