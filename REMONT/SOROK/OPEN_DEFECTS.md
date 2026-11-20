@@ -1,5 +1,30 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## CURRENT INDEPENDENT REMONT R11 REVIEW — 2026-11-20
+
+**This is an additive receiving decision in the EXISTING REMONT register; original R10 code and 71-entry P/T/E statuses below are unchanged.** The externally constructed REMONT R10 #1187 and R11 #1190 are independently executable, but they are not yet valid replacements for this branch.
+
+**Reviewer exact-source cuts:** experimental R10 [#1187](https://github.com/maidiu/rawlsing/pull/1187) `9a1f2c4ba2a07d7760bd40940b014263bc1b2a19`, R11 [#1190](https://github.com/maidiu/rawlsing/pull/1190) `39f6972089858ee968e73b2e731005c71a8055dd`. R11 parent is R10 #1187; R10 parent is historical R9 `c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d`, **not the original R10 P070/P071 and 53-receiving branch below**.
+
+**Independent execution:** 213/213 experimental R10 tests normal and `-O`; 232/232 R11 tests normal and `-O`; pytest respective 213/232 PASS + 10 subtests each. R11 39/39 and R10 36/36 source/test Python blobs match GitHub. Independently written six R11 hostile functions **two positives PASS and five negative subcases RED under normal and `-O`**; R10 continuity alone has four RED subcases. Full runnable source-evidence ZIP [banked in REMONT Library](/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R11_20261120/SOROK_REMONT_R11_INDEPENDENT_RECEIVING_20261120.zip), SHA256 `b4bdab661667214c30c568941b94d858da16804747e073eb23c5f7eace5847d4`.
+
+**Verdict: `REVISE_EXACT_DEFECT` on R11 #1190, `REVISE_EXACT_DEFECT_FOR_CURRENT_REMONT_SUCCESSION` on #1187.** Detailed GitHub COMMENT reviews: #1190 review `5996097731`, #1187 review `5996104337`.
+
+| Court | First-fault negative | Required repair and conservation |
+|---|---|---|
+| **R11-DEF-01** integration | Original P070 canonical persisted world/actor snapshot, singleton world-identity, and P071 valid embodied actor sensor guards are missing from #1187 and #1190; four reproducible RED subcases | Inherit #1171 original first-source guards and P070/P071 tests **alongside** R4/R5/R6/R11 mechanisms |
+| **R11-DEF-02** psychological authority | An actual malicious model callback selects an issued prospective SING trial, then installs an *already durable* mature motive via same-event `ADD_PROJECT`, bypassing the specific `TAKE_UP_POSSIBLE_END` ban | End-specific historical provenance across **every** project-acquisition route; conserve later-event legitimate takeup |
+| **R11-DEF-03** source custody | #1187 and #1190 ship the old 69-record ledger, not original REMONT's 71-record current queue with 53 separate scoped reviewer receipts | Reconcile the **existing** `.md` and `.json` without loss, requalification or a rival programme |
+
+**Scope:** The actual prospective-trial actor issuance, one-event history and forged-foreign-trial rejection have positive independent executable support. The three #1189 RED-origin hostile tests are preserved verbatim and pass in R11. This does **not** accept the combined R11 or establish motive science. The new SORACLE #1191 research line is separate and unexecuted here.
+
+**Independence boundary:** This review agent did not author #1187 or #1190, but the GitHub connector authenticates with the PR author's account; GitHub refused formal REQUEST_CHANGES and accepted detailed COMMENT reviews. This is independent test execution / engineering reasoning, **not independent GitHub account/G5 credential accreditation**. Crucially, **this same reviewer authored P070/P071 source repairs previously** and does **not** independently accept those original repairs; another reviewer must receive them. Do not change the original 53 sourcefree scoped PASS or 8 OPEN, 8 PARTIAL, 2 new author-tested records below.
+
+**Currentness:** Original REMONT candidate remains 71 P entries. Protected PRE-MAIN and paired `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md` and `.json` unchanged; competent owner/writer receiving still requires `HQ_CURRENTNESS_HOLD` on protected authority, not on continued bounded review.
+
+---
+
+
 ## CURRENT R10 — REMONT OWN-LEDGER 53-ID INDEPENDENT REVIEW AND P070/P071 REPAIR (2026-11-20)
 
 **This section is the live SOROK REMONT candidate register, replacing earlier historical summaries below.** Authoritative source is the paired machine ledger [`OPEN_DEFECTS.json`](OPEN_DEFECTS.json), updated in the **existing PR #1171**, not only in separate review/repair PRs. Earlier R2 through R9 tables and claims are retained **as historical snapshots**; in particular their "53 awaiting review" is superseded by this section. No separate REMONT master or protected owner created.
