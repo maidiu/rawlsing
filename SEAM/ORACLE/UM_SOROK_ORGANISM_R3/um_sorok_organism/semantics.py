@@ -5,6 +5,7 @@ explicitly coarse heuristic fiction, not an LLM and not a human learning law.
 from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
 from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
+from .prospective_horizon import select_bounded_exploratory_trial
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -48,6 +49,12 @@ class HeuristicSemanticProvider:
             deferral=fallback_nonproject_deferral(possibilities)
             if deferral:
                 return {'task':task,**deferral}
+            # Actual historical alternatives can organize provisional action
+            # before a settled purpose exists. An experienced future occasion
+            # might create a new motive, but this selection does not assert one.
+            trial=select_bounded_exploratory_trial(possibilities)
+            if trial:
+                return {'task':task,**trial}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
