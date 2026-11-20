@@ -11,9 +11,10 @@ from .practical_inquiry import choose_grounded_public_inquiry
 from .material_investments import choose_qualified_material_care
 from .unintended_goods import one_sourcefree_provisional_end
 from .expectation_afterlife import conservative_appraisal_proposal
-from .co_regulation_history import (
-    sourcefree_co_regulation_proposal, choose_historically_situated_signal,
-    sourcefree_revision_proposal)
+from .co_regulation_history import sourcefree_revision_proposal
+from .plural_care_paths import (
+    choose_one_grounded_plural_acquisition, propose_one_reopening,
+    plural_addressed_signal_choice)
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -44,6 +45,15 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
+            # Under immediate need, an actual differentiated relational
+            # history may give a *particular* caregiver a meaningful address.
+            # Let that history be considered before generic ORIENT, but never
+            # over a live contrary current, competing project or unresolved
+            # plural relation. The Other's willingness remains unknown.
+            historical_signal=plural_addressed_signal_choice(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if historical_signal:
+                return {'task':task,**historical_signal}
             # The embodied child's acquired, nonpropositional anticipation may
             # alter a future attempt without first inventing an adult project.
             # When rival currents coexist, this heuristic MUST NOT decide.
@@ -60,10 +70,6 @@ class HeuristicSemanticProvider:
             # Actual historical alternatives can organize provisional action
             # before a settled purpose exists. An experienced future occasion
             # might create a new motive, but this selection does not assert one.
-            historical_signal=choose_historically_situated_signal(
-                possibilities,packet.get('actor',{}).get('body',{}))
-            if historical_signal:
-                return {'task':task,**historical_signal}
             trial=select_bounded_exploratory_trial(possibilities)
             if trial:
                 return {'task':task,**trial}
@@ -116,8 +122,10 @@ class HeuristicSemanticProvider:
             # A live LLM receives the same evidence-grade candidates and may
             # instead nominate no change. No adult end/idea is inferred.
             lived=copy(packet.get('historically_proposed_preproject',[]))
-            lived+=sourcefree_co_regulation_proposal(
-                packet.get('historically_possible_co_regulation',[]))
+            lived+=choose_one_grounded_plural_acquisition(
+                packet.get('historically_possible_plural_care',[]))
+            lived+=propose_one_reopening(
+                packet.get('historically_possible_reopened_care',[]))
             lived+=sourcefree_revision_proposal(
                 packet.get('historically_possible_co_regulation_revision',[]))
             if status not in ('PERFORMED','PARTIAL'):

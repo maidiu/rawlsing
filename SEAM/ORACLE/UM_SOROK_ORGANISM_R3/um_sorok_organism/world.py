@@ -512,6 +512,17 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         if worked_material_object and worked_material_object.get('object_ref'):
             sign['material_object_ref']=worked_material_object['object_ref']
             sign['actor_sensed_object_not_full_object_provenance']=True
+        if (attempt.action=='SIGNAL' and status=='PERFORMED'
+                and partner_attempt is not None and partner_valid
+                and partner_attempt.action=='CARE'
+                and output=='JOINT_ACTIVITY_PERFORMED'):
+            # An actual particular-person coaction can be a publicly
+            # perceptible part of this event without revealing the responder's
+            # underlying motive, lasting disposition or private mind. This
+            # sourcefree visibility approximation remains revisable.
+            sign['actor_accessible_care_responder_ref']=partner_attempt.actor
+            sign['actual_independent_care_response_not_a_motive']=True
+            sign['not_automatic_actor_conscious_identification']=True
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     # World-level efficacy is NOT the actor's own explanatory model. Even an
     # independently authored coactor response does not make the principal's

@@ -47,6 +47,7 @@ def materialize(actor,world):
         practice_exposures=copy(actor.get('practice_exposures',[])),
         undergone_care_periods=copy(actor.get('undergone_care_periods',[])),
         co_regulation_orientations=copy(actor.get('co_regulation_orientations',[])),
+        experienced_care_events=copy(actor.get('experienced_care_events',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))

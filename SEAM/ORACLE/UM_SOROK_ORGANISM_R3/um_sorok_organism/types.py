@@ -68,6 +68,7 @@ class Constitution:
     practice_exposures: list[dict] = field(default_factory=list)
     undergone_care_periods: list[dict] = field(default_factory=list)
     co_regulation_orientations: list[dict] = field(default_factory=list)
+    experienced_care_events: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -135,6 +136,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'object_encounters': [], 'material_investments': [],
         'practice_exposures': [],
         'undergone_care_periods': [], 'co_regulation_orientations': [],
+        'experienced_care_events': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,

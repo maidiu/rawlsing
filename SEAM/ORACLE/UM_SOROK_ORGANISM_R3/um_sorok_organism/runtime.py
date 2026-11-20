@@ -27,6 +27,9 @@ from .routine_sources import register_sourcefree_period_envelope
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
+from .plural_care_paths import (
+    conserve_lived_high_resolution_care, plural_acquisition_candidate,
+    sourcequalified_reopening)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -507,7 +510,16 @@ class ConstitutiveRuntime:
             if personally_done and actor_attempt is not None:
                 record_lived_co_regulation_response(
                     actors[aid],experience,
-                    actor_attempt.practical_selection,objective_ref)
+                    actor_attempt.practical_selection,objective_ref,
+                    bodily_before=bodily_before[aid],
+                    bodily_after=actors[aid]['body'])
+            # A materially real CARE occurrence can enter the recipient's
+            # own high-resolution history, but only when personally received
+            # and accompanied by a real bodily difference. A normal day or
+            # externally explained world archive cannot invent that history.
+            actual_lived_care=conserve_lived_high_resolution_care(
+                actors[aid],experience,objective_ref,
+                bodily_before[aid],actors[aid]['body'])
             # Objective coactor contribution remains with the world, while
             # each person's actually accessible experience can establish a
             # contingent later *possibility of seeking assistance*.
@@ -542,6 +554,10 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             care_genesis=possible_acquired_regulation(
                 actors[aid],experience,objective_ref)
+            plural_care_genesis=plural_acquisition_candidate(
+                actors[aid],experience,objective_ref)
+            renewed_relational_possibility=sourcequalified_reopening(
+                actors[aid],experience,objective_ref)
             care_revision=possible_revision_after_nonresponse(
                 actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
@@ -571,6 +587,11 @@ class ConstitutiveRuntime:
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
                 'historically_possible_co_regulation':copy(care_genesis),
+                'historically_possible_plural_care':copy(plural_care_genesis),
+                'historically_possible_reopened_care':copy(
+                    renewed_relational_possibility),
+                'actual_lived_high_resolution_care_ref':(
+                    actual_lived_care['id'] if actual_lived_care else None),
                 'historically_possible_co_regulation_revision':copy(
                     care_revision),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),

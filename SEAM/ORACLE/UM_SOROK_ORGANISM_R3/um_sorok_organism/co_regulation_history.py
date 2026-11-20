@@ -12,6 +12,7 @@ The world then independently decides whether that person participates.
 """
 from .types import GRADE, stable_id, copy
 from .organism import eligible
+from .plural_care_paths import _delta
 
 
 def conserve_received_period_care(recipient, period):
@@ -101,27 +102,40 @@ def admit_co_regulation(actor,experience,event_ref,proposal):
              c.get('source_actor')==partner]
     if len(matches)!=1:
         raise ValueError('COREGULATION_ADMISSION_NO_LIVED_COPRESENCE')
-    referenced=proposal.get('period_refs')
-    if type(referenced) is not list or not 1<=len(referenced)<=24:
-        raise ValueError('COREGULATION_ADMISSION_NO_PERIOD_SOURCES')
+    referenced=proposal.get('period_refs',[])
+    lived_refs=proposal.get('lived_care_event_refs',[])
+    if (type(referenced) is not list or type(lived_refs) is not list or
+            not 1<=len(referenced)+len(lived_refs)<=40 or
+            len(referenced)>24 or len(lived_refs)>16 or
+            any(type(x) is not str for x in referenced+lived_refs) or
+            len(set(referenced+lived_refs))!=len(referenced)+len(lived_refs)):
+        raise ValueError('COREGULATION_ADMISSION_NO_QUALIFIED_SOURCES')
     personal={x['id']:x for x in actor.get('undergone_care_periods',[])
               if x.get('caregiver_ref')==partner}
-    if len(set(referenced))!=len(referenced) or any(
-            x not in personal for x in referenced):
+    lived={x['id']:x for x in actor.get('experienced_care_events',[])
+           if x.get('giver_ref')==partner and
+           x.get('event_ref')!=event_ref and
+           type(x.get('clock')) is int and
+           type(experience.get('clock')) is int and
+           x['clock']<experience['clock']}
+    if (any(x not in personal for x in referenced) or
+            any(x not in lived for x in lived_refs)):
         raise ValueError('COREGULATION_ADMISSION_FOREIGN_CARE_HISTORY')
     if any(x.get('caregiver_ref')==partner and x.get('status')=='ACTIVE'
            for x in actor.get('co_regulation_orientations',[])):
         raise ValueError('COREGULATION_ADMISSION_ALREADY_ACTIVE')
     ident=stable_id('acquired_coregulation',{
         'actor':actor['id'],'partner':partner,'event':event_ref,
-        'periods':referenced,'cue':cue_id})
+        'periods':referenced,'lived_events':lived_refs,'cue':cue_id})
     row={
         'id':ident,'actor':actor['id'],'caregiver_ref':partner,
         'origin_event':event_ref,'experience_ref':experience.get('ref'),
         'current_perceived_cue_ref':cue_id,
         'source_care_period_refs':copy(referenced),
+        'source_lived_care_event_refs':copy(lived_refs),
         'possible_operation':'SIGNAL','status':'ACTIVE',
         'scope_location':experience.get('location'),
+        'origin_event_clock':experience.get('clock'),
         'actor_identifies_help_as_social_power':'NOT_ESTABLISHED',
         'caregiver_will_respond':'NOT_ASSUMED',
         'affection_and_moral_merit':'NOT_INFERRED',
@@ -131,6 +145,7 @@ def admit_co_regulation(actor,experience,event_ref,proposal):
     actor.setdefault('co_regulation_orientations',[]).append(row)
     return {'kind':'ACQUIRE_CO_REGULATION_ORIENTATION',
             'orientation_ref':ident,'source_periods':len(referenced),
+            'source_lived_events':len(lived_refs),
             'recipient':actor['id'],'caregiver_ref':partner,'grade':GRADE}
 
 
@@ -170,10 +185,38 @@ def recruit_co_regulation(constitution,access):
                 'does_not_identify_caregiver_intention':True,
                 'grade':GRADE})
             continue
+        personally_sensed_support=[
+            {'response_ref':x['id'],
+             'event_clock':x.get('event_clock'),
+             'bodily_regulation_sensed':True}
+            for x in record.get('response_history',[])
+            if x.get('felt_bodily_relief_on_this_call',False) is True
+            and type(x.get('event_clock')) is int
+            and x['event_clock']<=constitution.clock]
+        personally_sensed_support += [
+            {'response_ref':x['id'],'event_clock':x.get('clock'),
+             'bodily_regulation_sensed':True}
+            for x in getattr(constitution,'experienced_care_events',[])
+            if x.get('giver_ref')==record['caregiver_ref']
+            and type(x.get('clock')) is int
+            and record.get('origin_event_clock') is not None
+            and record['origin_event_clock']<=x['clock']<=constitution.clock]
         offered.append({
+            'personally_sensed_support_history':sorted(
+                personally_sensed_support,key=lambda x:x['event_clock']),
             'caregiver_ref':record['caregiver_ref'],
             'orientation_ref':record['id'],
             'source_care_period_refs':copy(record['source_care_period_refs']),
+            'interpretation_phase':record.get('interpretation_phase','PROVISIONAL'),
+            'reopened_after_actual_contradiction':(
+                record.get('interpretation_phase')
+                =='OPEN_AFTER_LIVED_CARE_NOT_SETTLED_TRUST'
+                and any(x.get('after')=='UNRESOLVED_AFTER_NONRESPONSE'
+                        for x in record.get('interpretation_history',[]))),
+            'prior_unfinished_personally_sensed_call_count':len([
+                x for x in record.get('response_history',[])
+                if x.get('analyst_qualified_experience_class')==
+                   'UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN']),
             'action':'SIGNAL',
             'score':.22,
             'historical_ground':'SOURCEFREE_LIVED_CO_REGULATION_HISTORY',
@@ -204,6 +247,12 @@ def addressed_signal_alternatives(constitution,access,option):
         'binding_status':'HISTORICALLY_ADDRESSED_PARTNER_PRESENT',
         'origin_orientation_ref':p['orientation_ref'],
         'source_period_refs':p['source_care_period_refs'],
+        'personally_sensed_support_history':copy(
+            p.get('personally_sensed_support_history',[])),
+        'reopened_after_actual_contradiction':p.get(
+            'reopened_after_actual_contradiction',False),
+        'prior_unfinished_personally_sensed_call_count':p.get(
+            'prior_unfinished_personally_sensed_call_count',0),
         'caregiver_participation_not_required_or_assumed':True,
         'not_a_conscious_reason_or_love_claim':True,
         'source_grade':GRADE}
@@ -243,7 +292,8 @@ def choose_historically_situated_signal(options,body):
         'other_response_is_independently_settled':True}
 
 
-def record_lived_co_regulation_response(actor, experience, selection, event_ref):
+def record_lived_co_regulation_response(actor, experience, selection, event_ref,
+                                       bodily_before=None,bodily_after=None):
     """The learner's actually attempted signal acquires a fallible afterlife.
 
     'World did not join' is not automatically 'caregiver does not love me'.
@@ -275,6 +325,11 @@ def record_lived_co_regulation_response(actor, experience, selection, event_ref)
     status=experience.get('status')
     if status not in ('PARTIAL','PERFORMED','BLOCKED'):
         return None
+    delta=(_delta(bodily_before['comfort'],bodily_after['comfort'],
+                  'RESPONDED_CALL_COMFORT')
+           if bodily_before is not None and bodily_after is not None
+           else 0.)
+    felt_relief=(status=='PERFORMED' and delta>=.025)
     meaning=('UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN'
              if status=='PARTIAL' else
              'PERFORMED_SIGNAL_NOT_PROOF_OF_CARE'
@@ -290,6 +345,10 @@ def record_lived_co_regulation_response(actor, experience, selection, event_ref)
         'caregiver_ref':addressed,'event_ref':event_ref,
         'experience_ref':experience.get('ref'),
         'received_sign_ref':signs[0]['id'],
+        'event_clock':experience.get('clock'),
+        'body_comfort_difference_on_call':delta,
+        'felt_bodily_relief_on_this_call':felt_relief,
+        'relief_not_proof_of_other_intent':True,
         'attempted_operation':'SIGNAL',
         'actor_experienced_attempt_status':status,
         'received_sign_description':signs[0].get('description'),
