@@ -56,7 +56,23 @@ def admit_preproject_anticipation(actor, experience, event_ref, candidate):
     if not experience.get('participated') and not seen:
         raise ValueError('PREPROJECT_NO_EXPOSURE')
     cue = seen[cue_id]
-    tokens = _tags(cue)
+    terms = _tags(cue)
+    # Analyst-tagged descriptions are not words in an infant's perceptual
+    # repertoire. A first-person sensory discrimination is only as fine as
+    # the body's supported resolution, and must retain unknown identity.
+    body = actor.get('body', {})
+    language = body.get('language', 0)
+    if not isinstance(language, (int, float)) or isinstance(language, bool):
+        raise ValueError('PREPROJECT_INVALID_LANGUAGE_CAPACITY')
+    if language < .25:
+        modality = cue.get('modality')
+        if modality not in ('auditory', 'visual', 'tactile', 'present', 'olfactory'):
+            raise ValueError('PREPROJECT_INFANT_SENSORY_MODALITY_UNQUALIFIED')
+        tokens = ['sensory:' + modality]
+        access_resolution = 'UNDIFFERENTIATED_SENSORY_MODALITY_ONLY'
+    else:
+        tokens = terms
+        access_resolution = 'TAGGED_ANALYST_PROPOSAL_NOT_ACTOR_CONCEPT_PROOF'
     if not tokens:
         raise ValueError('PREPROJECT_UNDIFFERENTIATED_SIGN')
     if len(tokens) > 16:
@@ -69,6 +85,8 @@ def admit_preproject_anticipation(actor, experience, event_ref, candidate):
                 'origin_experience_ref': experience.get('ref'),
                 'origin_received_cue_ref': cue_id,
                 'discriminant_tags': tokens, 'modality': cue.get('modality', 'unknown'),
+                'sensory_resolution': access_resolution,
+                'analyst_source_tags_not_actor_knowledge': terms,
                 'possible_operation': action, 'orientation_mode': mode,
                 'historical_ground_ref': event_ref,
                 'project_id': None, 'acquisition': 'PREPROJECT_ORIENTING_CONTINGENCY',
@@ -122,7 +140,13 @@ def recruit_preproject_anticipations(constitution, access, options):
     """
     if constitution.actor != access.actor:
         raise ValueError('PREPROJECT_ACTOR_MISMATCH')
+    # Admitted prelinguistic signatures re-recruit via perceivable sensory
+    # bands, not through word-level analyst cue tags. Broad false positives
+    # are possible and explicitly retained as uncertainty.
     presented = {tag for cue in access.cues for tag in _tags(cue)}
+    presented.update('sensory:' + str(c.get('modality')) for c in access.cues
+                     if c.get('modality') in ('auditory','visual','tactile',
+                                             'present','olfactory'))
     currents, readset = [], []
     recognized = {}
     for record in constitution.expectations:
