@@ -345,6 +345,17 @@
         "optimized_pass": 265,
         "independent_acceptance": "PENDING",
         "status_not_promoted": true
+      },
+      "r15_repair": {
+        "parent_pr": 1214,
+        "parent_head": "f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0",
+        "sourcefree_bounded_fix": "Acyclic inhibitor defeat now checked against actual post-recruitment sources; cycles remain conservatively unresolved.",
+        "remaining": "Partial substantive obligation; requires separate independent review and native owner/authority for scientific/secret/source rights",
+        "author_normal_pass": 276,
+        "author_optimized_pass": 276,
+        "pytest_pass": 276,
+        "independent_acceptance": "PENDING",
+        "status_not_promoted": true
       }
     },
     {
@@ -424,6 +435,17 @@
         "local_tests": 88,
         "grade": "SOURCEFREE_AUTHOR_LOCAL__REVIEW_PENDING",
         "first_fault_scope": "Exact canonical source-seal byte checks; no authoritative historical migration"
+      },
+      "r15_repair": {
+        "parent_pr": 1214,
+        "parent_head": "f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0",
+        "sourcefree_bounded_fix": "Source seals tied to issuer event and canonical table bytes before reads/commits; unanchored constraints refused and malformed seal IDs fail before issuance.",
+        "remaining": "Partial substantive obligation; requires separate independent review and native owner/authority for scientific/secret/source rights",
+        "author_normal_pass": 276,
+        "author_optimized_pass": 276,
+        "pytest_pass": 276,
+        "independent_acceptance": "PENDING",
+        "status_not_promoted": true
       }
     },
     {
@@ -2723,5 +2745,51 @@
     "independently_accepted": false,
     "protected_received": false,
     "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R14_20261120/"
+  },
+  "remont_r15_p012_p018": {
+    "date": "2026-11-20",
+    "parent_pr": 1214,
+    "parent_head": "f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0",
+    "original_remont_head_observed": "30f9ce0208bad066fe89231f0e25d75f56857700",
+    "scope": "SOURCEFREE_FIRST_OWNER_P012_INHIBITOR_STRATIFICATION_AND_P018_SOURCE_SEAL_CUSTODY",
+    "changed_identities": [
+      "SR-P012",
+      "SR-P018"
+    ],
+    "new_production_ids": 0,
+    "first_red": {
+      "new_tests": 9,
+      "failed": 6,
+      "passed": 3
+    },
+    "additional_identity_red": {
+      "test_methods": 2,
+      "failed": 2,
+      "subcases": 8
+    },
+    "tests": {
+      "normal_pass": 276,
+      "optimized_pass": 276,
+      "pytest_pass": 276,
+      "pytest_subtests": 22,
+      "cold_zip_normal_pass": 276,
+      "cold_zip_optimized_pass": 276,
+      "cold_zip_pytest_pass": 276
+    },
+    "source_sha256": "R15_SOURCE_SHA256.json",
+    "archive_sha256": "cc044f0796a77fc8dfa0155dea13b87107ba83a784fd6ea4444901ad471c6664",
+    "status_partition": {
+      "P_total": 73,
+      "P_independently_scoped_first_fault_pass": 53,
+      "P_open": 8,
+      "P_partial": 8,
+      "P_author_review_pending": 4,
+      "T_confirmed": 0,
+      "E_holds": 6
+    },
+    "p019_p022_for_soracle": true,
+    "p009_native_privacy_not_implemented": true,
+    "independent_acceptance": false,
+    "protected_received": false
   }
 }

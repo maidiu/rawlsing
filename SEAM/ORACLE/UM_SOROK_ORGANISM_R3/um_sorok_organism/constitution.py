@@ -170,7 +170,46 @@ def compose(constitution,access,limit=50):
         raise ValueError('RELATIONAL_RECRUITMENT_DID_NOT_TERMINATE')
 
     potentially_active,_=joint_recruitment(seed)
-    vetoed={l['target'] for l in negative if l['source'] in potentially_active}
+    # P012/R15: a form already defeated by an independently active inhibitor
+    # cannot, in an unambiguous acyclic inhibition graph, defeat a third form.
+    # The older all-potential-sources veto incorrectly over-suppressed A->B->C,
+    # even when B was itself blocked by A. Do not infer a stable winner in
+    # genuinely cyclic, contradictory organizations or support-dependent
+    # feedback. Those retain the conservative original policy.
+    conservative_veto={l['target'] for l in negative
+                       if l['source'] in potentially_active}
+    edges={fid:set() for fid in potentially_active}
+    incoming={fid:0 for fid in potentially_active}
+    for link in negative:
+        src=link['source']; dst=link['target']
+        if src in edges and dst in edges and dst not in edges[src]:
+            edges[src].add(dst)
+            incoming[dst]+=1
+    frontier=sorted(fid for fid in edges if incoming[fid]==0)
+    order=[]
+    while frontier:
+        node=frontier.pop(0)
+        order.append(node)
+        for target in sorted(edges[node]):
+            incoming[target]-=1
+            if incoming[target]==0:
+                frontier.append(target)
+        frontier.sort()
+    vetoed=conservative_veto
+    if len(order)==len(edges):
+        stratified=set()
+        for src in order:
+            if src not in stratified:
+                stratified.update(edges[src])
+        # Crucially, this is a *verified fixed point*, not a choice from
+        # conflicting possible minds. If removing an inhibited supporter
+        # would also remove an alleged inhibitor, refuse that optimistic
+        # selection and keep the conservative veto.
+        candidate_active,_=joint_recruitment(seed,stratified)
+        surviving_veto={link['target'] for link in negative
+                        if link['source'] in candidate_active}
+        if surviving_veto==stratified:
+            vetoed=stratified
     inhibited.extend(sorted(vetoed))
     actual,recruitment_receipts=joint_recruitment(seed,vetoed)
     active={fid:copy(forms[fid]) for fid in actual}
