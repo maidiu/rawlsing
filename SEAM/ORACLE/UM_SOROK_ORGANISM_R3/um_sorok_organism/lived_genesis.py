@@ -60,12 +60,23 @@ def proposals_from_bodily_history(actor,experience,before,after):
         ident,modality=cue.get('id'),cue.get('modality')
         if not isinstance(ident,str) or modality not in SENSES:continue
         band='sensory:'+modality
-        if any(x.get('acquisition')=='PREPROJECT_ORIENTING_CONTINGENCY' and
-               x.get('possible_operation')=='ORIENT' and
-               band in x.get('discriminant_tags',[])
-               for x in current):
-            continue
+        # SAVAGE R8: suppressing every later same-band encounter made the
+        # first experience a permanent monopoly on the child's possibility.
+        # Independent historically opposite bodily courses must be able to
+        # coexist, WITHOUT either overwriting the first or multiplying
+        # identical descriptions of that course into stronger motivation.
+        compatible=[x for x in current
+                    if x.get('acquisition')=='PREPROJECT_ORIENTING_CONTINGENCY'
+                    and x.get('possible_operation')=='ORIENT'
+                    and band in x.get('discriminant_tags',[])]
+        if any(x.get('orientation_mode')==orientation for x in compatible):
+            continue  # this coarse band cannot yet warrant another same-valence distinction
+        contrary=[x['id'] for x in compatible
+                  if x.get('orientation_mode') in ('APPROACH','WITHHOLD')
+                  and x['orientation_mode']!=orientation]
         return [{'kind':'ACQUIRE_PREPROJECT_ANTICIPATION',
+                 'prior_contrary_expectation_refs':contrary,
+                 'new_history_does_not_erase_prior_orientation':True,
                  'perceived_cue_ref':ident,
                  'possible_operation':'ORIENT',
                  'orientation_mode':orientation,
