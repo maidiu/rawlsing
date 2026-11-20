@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -64,6 +64,8 @@ for id in "${cases[@]}"; do
     RMT-Q013) # 17 PF025 target-absence vs legitimate-empty first-fault checks
       tests=(rawlsing_next/tests/test_preff_c1_target_absence.py)
       ;;
+    RMT-Q014) # Exact asked/eligible RAW denominator and source-native nonanswers
+      ;; # Reuse existing R03_ASKED_ELIGIBLE court below, never duplicate tests.
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2
@@ -76,12 +78,13 @@ for id in "${cases[@]}"; do
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/start_utc.txt"
   echo "REMONT_EXECUTING $id at $HEAD_SHA"
   set +e
-  if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 ]]; then
+  if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 || "$id" == RMT-Q014 ]]; then
     # Reuse the existing exact-head first-fault courts, not duplicated suites.
     court=C0_ALL_SMALL
     case "$id" in
       RMT-Q009) court=C5_V3_CONTEXT ;;
       RMT-Q010) court=C6_V3_SEAM ;;
+      RMT-Q014) court=R03_ASKED_ELIGIBLE ;;
     esac
     proof_subdir=court
     if [[ "$id" == RMT-Q005 ]]; then proof_subdir=broad_c0; fi
