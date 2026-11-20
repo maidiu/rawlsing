@@ -49,6 +49,7 @@ class CountryRequest:
     country_axis: int | None = None
     country_coordinate_ref: ExactRef | None = None
     country_coordinate_authority_ref: AuthorityRef | None = None
+    source_country_value: Any | None = None  # source-native code, issuer-mapped
 
 
 @dataclass(frozen=True)
@@ -109,7 +110,7 @@ def _country_scope(
     *, universe: EmpiricalUniverse, query: EmpiricalQuerySpec,
     predicate: EmpiricalPredicate, registry: AuthorityRegistry,
     request: CountryRequest,
-) -> tuple[str, int | None]:
+) -> tuple[str, int | None, Any]:
     if not request.country or not request.source_family or not request.wave:
         raise CountryRefinementError("COUNTRY_SOURCE_WAVE_REQUIRED")
     wave = universe.canonical_wave_if_governed or universe.raw_wave
@@ -129,9 +130,10 @@ def _country_scope(
 
     if _same(universe.country_geography, request.country):
         if (request.country_axis is not None or request.country_coordinate_ref is not None or
-                request.country_coordinate_authority_ref is not None):
+                request.country_coordinate_authority_ref is not None or
+                request.source_country_value is not None):
             raise CountryRefinementError("SOURCE_ALREADY_COUNTRY_SCOPED")
-        return "SOURCE_UNIVERSE_COUNTRY", None
+        return "SOURCE_UNIVERSE_COUNTRY", None, request.country
 
     # Neither family name nor a displayed country label can confer geography.
     # A multi-country source needs exact positive source semantic authority,
@@ -155,13 +157,22 @@ def _country_scope(
     ):
         raise CountryRefinementError("SOURCE_COUNTRY_COORDINATE_MEANING_NOT_ISSUED")
 
+    country_values = scope.get("country_values_by_canonical_code")
+    if (not isinstance(country_values, Mapping) or request.country not in country_values):
+        raise CountryRefinementError("COUNTRY_CODE_TO_SOURCE_VALUE_NOT_ISSUED")
+    source_value = country_values[request.country]
+    if (source_value is None or isinstance(source_value, (Mapping, list, tuple)) or
+            not isinstance(source_value, (str, int)) or isinstance(source_value, bool)):
+        raise CountryRefinementError("INVALID_ISSUED_COUNTRY_SOURCE_VALUE")
+    if request.source_country_value is not None and not _same(request.source_country_value, source_value):
+        raise CountryRefinementError("SOURCE_COUNTRY_VALUE_MISMATCH")
     if request.country_axis is None:
         if not _has_entailing_country_leaf(
-            predicate.predicate_ast, coordinate=coord, country=request.country,
+            predicate.predicate_ast, coordinate=coord, country=source_value,
             authority=auth,
         ):
             raise CountryRefinementError("QUERY_PREDICATE_DOES_NOT_ENTAIL_COUNTRY")
-        return "ISSUED_EXACT_COUNTRY_PREDICATE", None
+        return "ISSUED_EXACT_COUNTRY_PREDICATE", None, source_value
 
     axis = request.country_axis
     if type(axis) is not int or not 0 <= axis < len(query.target_refs):
@@ -173,9 +184,9 @@ def _country_scope(
         raise CountryRefinementError("COUNTRY_AXIS_NO_SOURCE_DOMAIN")
     component = components[axis]
     if (not isinstance(component, Mapping) or
-            not any(_same(v, request.country) for v in component.get("domain", ()))):
+            not any(_same(v, source_value) for v in component.get("domain", ()))):
         raise CountryRefinementError("COUNTRY_NOT_IN_EXACT_SOURCE_DOMAIN")
-    return "ISSUED_COUNTRY_AXIS", axis
+    return "ISSUED_COUNTRY_AXIS", axis, source_value
 
 
 def _mutual_information(table: Mapping[tuple[str, str], int]) -> float:
@@ -222,7 +233,7 @@ def run_issued_country_refinement(
         raise CountryRefinementError("INVALID_RESOURCE_ENVELOPE")
     if (budget.max_rss_bytes is not None or budget.max_scratch_bytes is not None) and resource_sample is None:
         raise CountryRefinementError("RESOURCE_MONITOR_REQUIRED")
-    mode, country_axis = _country_scope(
+    mode, country_axis, source_country_value = _country_scope(
         universe=universe, query=query, predicate=predicate,
         registry=registry, request=request,
     )
@@ -260,7 +271,7 @@ def run_issued_country_refinement(
         raise CountryRefinementError("UNDECLARED_SOURCE_AXIS")
     conditions = dict(context)
     if country_axis is not None:
-        conditions[country_axis] = request.country
+        conditions[country_axis] = source_country_value
 
     start = monotonic()
     visits, output_cells = 0, 0
@@ -330,6 +341,7 @@ def run_issued_country_refinement(
         "stop_reason": stop, "country": request.country,
         "source_family": request.source_family, "wave": request.wave,
         "country_proof_mode": mode, "country_axis": country_axis,
+        "source_issued_country_value": source_country_value,
         "knowledge_ref": knowledge.ref.as_dict(),
         "source_query_ref": query.ref.as_dict(),
         "source_universe_ref": universe.ref.as_dict(),
