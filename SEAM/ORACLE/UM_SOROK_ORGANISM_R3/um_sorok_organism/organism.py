@@ -13,6 +13,7 @@ ACTIONS = {
     'JOIN':{'motor':0.24,'language':0.0,'cost':0.07},
     'MAKE_SPACE':{'motor':0.24,'language':0.05,'cost':0.06},
     'CARE':{'motor':0.42,'language':0.0,'cost':0.10},
+    'FEED':{'motor':0.42,'language':0.0,'cost':0.08},
     'WORK':{'motor':0.62,'language':0.0,'cost':0.22},
     'REPAIR':{'motor':0.55,'language':0.10,'cost':0.16},
     'MAKE_OBJECT':{'motor':0.52,'language':0.10,'cost':0.15},
