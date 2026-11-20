@@ -16,6 +16,7 @@ import csv
 from dataclasses import dataclass
 from hashlib import sha256
 from io import StringIO
+from types import MappingProxyType
 from typing import Any, Mapping
 
 COUNTRY_REGISTRY_SCHEMA = "PYAT_SOURCE_COUNTRY_REGISTRY_CANDIDATE@1"
@@ -42,6 +43,12 @@ class CountryRegistryCandidate:
     country_values_by_canonical_code: Mapping[str, str]
     authority_artifact_refs: tuple[tuple[str, str], ...]
     mapping_status: str = "CANDIDATE_ONLY_NOT_ISSUED"
+
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self, "country_values_by_canonical_code",
+            MappingProxyType(dict(self.country_values_by_canonical_code)),
+        )
 
     def source_authority_scope_candidate(
         self, *, universe_country_geography: Any,
