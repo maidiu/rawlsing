@@ -39,8 +39,43 @@ class LivedGenesisR8(unittest.TestCase):
     def test_existing_acquired_band_is_not_replaced_by_deterministic_valence(self):
         a=actor();received=exp();prior=proposals_from_bodily_history(a,received,body(.3),body(.6))[0]
         admit_preproject_anticipation(a,received,'e1',prior)
-        self.assertEqual(proposals_from_bodily_history(a,exp(cue_id='c2'),body(.8),body(.2)),[])
-        self.assertEqual(a['expectations'][0]['orientation_mode'],'APPROACH')
+        second=proposals_from_bodily_history(a,exp(cue_id='c2'),body(.8),body(.2))
+        self.assertEqual(len(second),1)
+        self.assertEqual(second[0]['orientation_mode'],'WITHHOLD')
+        self.assertEqual(second[0]['prior_contrary_expectation_refs'],[a['expectations'][0]['id']])
+        admit_preproject_anticipation(a,exp(cue_id='c2'),'e2',second[0])
+        self.assertEqual([x['orientation_mode'] for x in a['expectations']],['APPROACH','WITHHOLD'])
+        self.assertEqual(a['expectations'][1]['contrary_prior_expectation_refs'],[a['expectations'][0]['id']])
+
+    def test_same_band_repeated_same_valence_is_not_three_new_motives(self):
+        a=actor();original=exp();first=proposals_from_bodily_history(a,original,body(.3),body(.6))[0]
+        admit_preproject_anticipation(a,original,'e1',first)
+        self.assertEqual(proposals_from_bodily_history(a,exp(cue_id='c2'),body(.1),body(.6)),[])
+
+    def test_contradictory_histories_recruit_together_without_false_synthesis(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.preproject_agency import recruit_preproject_anticipations
+        a=actor();first=exp();p=proposals_from_bodily_history(a,first,body(.3),body(.6))[0]
+        admit_preproject_anticipation(a,first,'e1',p)
+        second=exp(cue_id='c2');q=proposals_from_bodily_history(a,second,body(.8),body(.2))[0]
+        admit_preproject_anticipation(a,second,'e2',q)
+        options=[{'action':'ORIENT','basis':[]},{'action':'WAIT','basis':[]}]
+        r=recruit_preproject_anticipations(
+            SimpleNamespace(actor='nadia',expectations=a['expectations']),
+            SimpleNamespace(actor='nadia',cues=[{'id':'c3','modality':'visual','tags':['not_speech']}]),options)
+        self.assertEqual(options[0]['preproject_recruitment']['status'],'UNRESOLVED_PREPROJECT_CONTRADICTION')
+        self.assertEqual(r['distinct_historical_ground_count'],2)
+        self.assertEqual(len(a['projects']),0)
+
+    def test_contrary_historical_citation_cannot_be_forged(self):
+        a=actor();first=exp();p=proposals_from_bodily_history(a,first,body(.3),body(.6))[0]
+        admit_preproject_anticipation(a,first,'e1',p)
+        later=exp(cue_id='c2');q=proposals_from_bodily_history(a,later,body(.8),body(.2))[0]
+        q['prior_contrary_expectation_refs']=['someone_else_history']
+        from unittest import TestCase
+        with self.assertRaisesRegex(ValueError,'UNQUALIFIED_PRIOR_CONTRADICTION'):
+            admit_preproject_anticipation(a,later,'e2',q)
+        self.assertEqual(len(a['expectations']),1)
     def test_low_sensor_cannot_gain_arbitrary_discrimination(self):
         a=actor();a['body']['sensor']=0.03
         self.assertEqual(proposals_from_bodily_history(a,exp(),body(.3),body(.6)),[])
