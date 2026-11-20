@@ -68,11 +68,14 @@ class HeldStreamPins:
     source_id: str
     source_sha256: str
     manifest_sha256: str
+    exact_release_path: str
     roots: Mapping[str, str]
 
     def __post_init__(self) -> None:
         if self.source_id not in ("SRC04", "SRC16"):
             _fail("P0 stream bridge limited to the two explicitly selected waves")
+        if type(self.exact_release_path) is not str or not Path(self.exact_release_path).is_absolute():
+            _fail("independently held absolute saved release path required")
         if not (_HEX.fullmatch(self.source_sha256)
                 and _HEX.fullmatch(self.manifest_sha256)):
             _fail("independent source and manifest SHA-256 pins required")
@@ -86,8 +89,11 @@ class HeldStreamPins:
         if not (_HEX.fullmatch(self.roots["logical"])
                 and _HEX.fullmatch(self.roots["physical"])):
             _fail("independent logical and physical SHA-256 roots required")
-        if not self.roots["source"].endswith("|" + self.source_sha256):
+        if (not self.roots["source"].startswith("SOURCE_ARTIFACT|")
+                or not self.roots["source"].endswith("|" + self.source_sha256)):
             _fail("exact source artifact disagrees with independently held source hash")
+        if not self.roots["release"].startswith("C11_STREAM_SOURCEFREE_RELEASE|"):
+            _fail("stream carrier release kind mismatch")
         # Dataclass immutability must also cover the mutable input mapping.
         object.__setattr__(self, "roots", MappingProxyType(dict(self.roots)))
 
@@ -121,6 +127,8 @@ def qualify_saved_stream_manifest(
         _fail("current analytical authority refused before saved source access")
     root = Path(root).absolute()
     release = Path(exact_release_path).absolute()
+    if release != Path(held.exact_release_path).absolute():
+        _fail("saved stream path differs from independently held release path")
     try:
         release.relative_to(root)
     except ValueError as exc:
