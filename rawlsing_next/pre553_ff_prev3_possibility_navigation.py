@@ -211,9 +211,11 @@ def plan_v3_sourcefree_context_branches(
                 or not isinstance(candidate_axes, Sequence)):
             raise V3ContextNavigationError("candidate axes must be explicit sequence")
         axes = tuple(candidate_axes)
-        if (len(axes) != len(set(axes))
-                or any(type(a) is not int or a in context
-                       or not 0 <= a < f["joint_arity"] for a in axes)):
+        # Type-check before building a set: malformed caller states such as
+        # dict/list axes must yield a typed refusal, not a raw TypeError.
+        if (any(type(a) is not int or a in context
+                or not 0 <= a < f["joint_arity"] for a in axes)
+                or len(axes) != len(set(axes))):
             raise V3ContextNavigationError("duplicate, conditioned or foreign candidate axis")
         axes = tuple(sorted(axes))
     if len(axes) > MAX_DIMENSIONS:

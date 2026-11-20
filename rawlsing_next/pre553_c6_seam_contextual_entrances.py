@@ -294,7 +294,8 @@ def assemble_two_sourcefree_parent_entrances(
         raise C6SeamError("parent pair input requires two adult backfill entrances")
     if a["scenario_slot_not_actor_id"] == b["scenario_slot_not_actor_id"]:
         raise C6SeamError("independent parent scenario slots must differ")
-    if len(first_source) != 3 or len(second_source) != 3:
+    if (type(first_source) is not tuple or type(second_source) is not tuple
+            or len(first_source) != 3 or len(second_source) != 3):
         raise C6SeamError("both independent source triplets required")
     replay_c6_contextual_entrance(
         receipt=first, envelope=first_source[0], external_pin=first_source[1],
@@ -323,7 +324,11 @@ def assemble_two_sourcefree_parent_entrances(
 
 
 def as_nonissuing_world_conditioned_prefix(
+    *,
     receipt: C6ContextualEntrance,
+    envelope: V3SeamEnvelope,
+    external_pin: V3SeamExternalPin,
+    path: V3ContextPath,
 ) -> WorldConditionedPrefix:
     """Real existing R112 first consumer receives a typed NONPOSITIVE step.
 
@@ -332,6 +337,11 @@ def as_nonissuing_world_conditioned_prefix(
     """
     if type(receipt) is not C6ContextualEntrance:
         raise C6SeamError("typed C6 entrance required for world first consumer")
+    # Even a nonpositive world-side result must not launder a self-rehashed
+    # forged empirical reference into a downstream historical receipt.
+    replay_c6_contextual_entrance(
+        receipt=receipt, envelope=envelope, external_pin=external_pin, path=path,
+    )
     m = receipt.material()
     return WorldConditionedPrefix(
         prefix_id="PYAT_C6_" + receipt.content_hash[:24],
