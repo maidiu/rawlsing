@@ -1,5 +1,16 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R12 R2 — published same-trial project motive repair, INDEPENDENT RECEIVING PENDING
+
+**Actual sourcefree code repair: [draft PR #1211](https://github.com/maidiu/rawlsing/pull/1211), immutable HEAD `cc0fe319596ee12258acf48dc6078b552bafd3bc`, parent frozen R12 #1199 `9db0e6f64bf568409e638ff2215af8b8a414487f`.** Independent R12 review #5999820908 reproduced a same-trial `REORGANIZE_PROJECT` mature-motive bypass. Actual existing development owner now refuses `REORGANIZE_PROJECT` containing `object` or `motive` during an **actor-issued current** possible-end trial, before any sourcefree psychic stage mutation. Earlier `ADD_PROJECT` and same-end `TAKE_UP_POSSIBLE_END` guards conserved; nontrial project reorganization and nonpurpose adjustments remain available.
+
+**Executed author evidence**: frozen 246 normal / -O / pytest green, external reviewer-equivalent six scenarios **5 PASS / 1 FAIL on untouched R12**, repaired **256/256 normal, 256/256 optimized, pytest 256 + 20 subtests**, 10 targeted cases PASS, two-process cold SQLite reopen valid, **44/44 Python source Git blobs** and SHA256 match immutable repair HEAD. [Code receipt and exact evidence](https://github.com/maidiu/rawlsing/blob/cc0fe319596ee12258acf48dc6078b552bafd3bc/REMONT/SOROK/REPAIRS/REMONTATHON_R12_R2_TRIAL_MOTIVE_20261120/REPAIR_RECEIPT.md); runnable ZIP banked under `/Rawlsing/SOROK-REMONT/R12_R2_TRIAL_MOTIVE_20261120/`.
+
+**Existing 71 production P entries and their statuses UNCHANGED**, T0/E6 unchanged; R1198 receiving and earlier 53 scoped first-fault review conserved. This is a **repair candidate**, not independently accepted or merged: a different agent must run the exact independent R12 hostile tests, review the implementation and issue `ACCEPT_SCOPED / REVISE_EXACT_DEFECT / HOLD`. SR-P070/P071 additionally remain author-repaired pending an eligible original-author-independent reviewer. No native science/actor rights or protected merge; `HQ_CURRENTNESS_HOLD` for authorized PROGRAMMA/CURRENT_PROGRESS pair intake.
+
+---
+
+
 ## R11 repaired exact-head follow-up — scoped review / P070–P071 independence hold (2026-11-20)
 
 **Frozen successor review:** [#1198](https://github.com/maidiu/rawlsing/pull/1198) at `d96f1c0b181b9772b1cd90c093e7393acc66523c`; exact review [#5999778333](https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333). This is a **new sourcefree receiving record in the existing REMONT ledger, not a replacement master, protected merge, or native engineering/scientific authorization**.

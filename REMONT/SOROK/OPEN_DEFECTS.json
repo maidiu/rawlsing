@@ -2476,5 +2476,120 @@
     "canonical_current_progress_modified": false,
     "protected_pre_main_received": false,
     "currentness_hold": "HQ_CURRENTNESS_HOLD_FOR_PROTECTED_AUTHORIZED_RECEIVING_AND_CREDENTIAL_INDEPENDENCE"
+  },
+  "remont_r12_1190_independent_review_repairs": {
+    "date": "2026-11-20",
+    "source_r11_pr": 1190,
+    "source_r11_head": "39f6972089858ee968e73b2e731005c71a8055dd",
+    "source_current_original_remont_pr": 1171,
+    "source_current_original_remont_head": "c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7",
+    "status": "AUTHOR_REPAIRED_SOURCEFREE_R12__PENDING_DISTINCT_INDEPENDENT_REREVIEW",
+    "external_review_disposition_inherited": "REVISE_EXACT_DEFECT",
+    "external_r11_review_author_distinct": true,
+    "corrections": [
+      {
+        "fault": "R11-DEF-01",
+        "status": "REPAIRED_SOURCEFREE_TESTED__P070_P071_NOT_INDEPENDENTLY_ACCEPTED",
+        "owner": [
+          "storage.py::verify_chain",
+          "constitution.py::actor_access"
+        ],
+        "tests": [
+          "tests.test_independent_r11_receiving.R10Continuity",
+          "tests.test_remont_independent_followons_r10"
+        ]
+      },
+      {
+        "fault": "R11-DEF-02",
+        "status": "REPAIRED_SOURCEFREE_TESTED__R12_NOT_INDEPENDENTLY_ACCEPTED",
+        "owner": [
+          "development.py::admit"
+        ],
+        "tests": [
+          "tests.test_independent_r11_receiving.TrialAuthority",
+          "tests.test_r12_independent_review_repairs.TrialPurposeAuthorityR12"
+        ]
+      },
+      {
+        "fault": "R11-DEF-03",
+        "status": "CURRENT_71_RECORD_LEDGER_CONSERVED_BY_EXACT_SOURCE_AND_ADDITIVE_RECORD",
+        "source_md_blob": "b721563ca316a27a7ca86eaff69e11afd17825ba",
+        "source_json_blob": "459396e065b5b8fd18fed6aa0024fd3883e57fe6"
+      }
+    ],
+    "test_evidence": {
+      "frozen_r11_test_count": 232,
+      "reproduced_independent_red_subcases": 5,
+      "reviewer_tests_run": 6,
+      "reviewer_tests_pass": 6,
+      "sourcefree_normal_pass": 246,
+      "optimized_pass": 246,
+      "pytest_pass": 246,
+      "pytest_subtests": 14,
+      "cold_reopen_events": 9,
+      "cold_hash": "27de011b1861f864b07f57f4c4ec1cd3eeb9a0488b126edf8032e594de9ae47d"
+    },
+    "queue_accounting": {
+      "P_total": 71,
+      "P_scoped_independent_review_pass": 53,
+      "P_partial": 8,
+      "P_open": 8,
+      "P070_P071_author_repaired_review_pending": 2,
+      "T_confirmed": 0,
+      "E_holds": 6,
+      "native_G5_accepted": 0
+    },
+    "archive_sha256": "2aeb7fc0075124ce0107bf48087ed1bb2b967cb52846135a18559ac00b83b460",
+    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R12_INDEPENDENT_REVIEW_REPAIRS_20261120",
+    "note": "Sourcefree local repair and custody receipt, not new independent receiving; original P identities and statuses remain unchanged",
+    "protected_current_progress_pair_written": false
+  },
+  "remont_r12_r2_trial_reorganization_repair": {
+    "as_of": "2026-11-20",
+    "candidate_branch": "agent/sorok-remont-r12-r2-project-reorganization-trial-20261120",
+    "parent_r12_pr": 1199,
+    "parent_r12_head": "9db0e6f64bf568409e638ff2215af8b8a414487f",
+    "independent_review_pr": 1199,
+    "independent_review_id": 5999820908,
+    "code_change": "um_sorok_organism/development.py::admit refuses REORGANIZE_PROJECT changing object or motive on a runtime-issued current trial, before any actor psychic mutation",
+    "disposition": "SOURCEFREE_AUTHOR_REPAIRED__256_GREEN__INDEPENDENT_REREVIEW_PENDING",
+    "exact_first_fault": "model proposed mature motive through REORGANIZE_PROJECT during same actual actor-issued SING trial, avoiding ADD_PROJECT guard while provisional end remained unacquired",
+    "inherited_python_files_verified": 41,
+    "changed_or_new_python_files": 3,
+    "total_python_files": 44,
+    "historical_review_cases_scenario_count": 6,
+    "new_author_first_fault_cases": 4,
+    "execution": {
+      "inherited_r12_246_normal": true,
+      "inherited_r12_246_optimized": true,
+      "inherited_r12_pytest_246": true,
+      "original_r12_adversarial_failure_reproduced": 1,
+      "repaired_normal_unittest": 256,
+      "repaired_optimized_unittest": 256,
+      "repaired_pytest": 256,
+      "repaired_pytest_subtests": 20,
+      "two_process_cold_reopen": true
+    },
+    "source_receipt": "REMONT/SOROK/REPAIRS/REMONTATHON_R12_R2_TRIAL_MOTIVE_20261120/REPAIR_RECEIPT.md",
+    "source_manifest": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/R12_R2_SOURCE_SHA256.json",
+    "original_R12_reviewer_exact_test_blob": "019dc15b79fccff66b142396605504cf81feab88",
+    "original_R12_reviewer_exact_commit": "dea778ef3187994a362d88a0287029730730590b",
+    "sourcefree_zip_sha256": "f9faa8c9a120ed75c58652d427326abe9e0f8cdebd27c87256797748ad3ccff0",
+    "original_P_total": 71,
+    "original_P_entries_unchanged": true,
+    "original_T0_E6_unchanged": true,
+    "original_53_scoped_review_unchanged": true,
+    "p070_p071_independent_receiving": "PENDING_DISTINCT_AGENT_NO_SELF_ACCEPTANCE",
+    "latest_original_remont_head": "a6b5f97b9aa7e1f8c8d4063d2ab8d5869f6fefb1",
+    "prior_r1198_receiving_preserved": true,
+    "canonical_progress_pair_updated": false,
+    "protected_received": false,
+    "authority": "AUTHOR_TESTED_ONLY__NO_SOROK_SCIENCE_NATIVE_G5_OR_PROTECTED_MERGE",
+    "repair_pr": 1211,
+    "repair_exact_head": "cc0fe319596ee12258acf48dc6078b552bafd3bc",
+    "status": "AUTHOR_TESTED_REPAIR_PUBLISHED__INDEPENDENT_RECEIVING_PENDING",
+    "original_remont_receipt_at_head": "a6b5f97b9aa7e1f8c8d4063d2ab8d5869f6fefb1",
+    "independent_receiver_required": "OTHER_AGENT__EXACT_1211_HEAD",
+    "protected_merge": false
   }
 }
