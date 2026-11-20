@@ -7,6 +7,8 @@ from .institutional_reproduction import (
     contribute_to_hall_petition, retain_material_care)
 from .material_conjunction import evaluate_material_conjunction
 from .practical_inquiry import notices_present
+from .material_objects import (
+    produce_artifact, repair_artifact, material_objects_present)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -154,6 +156,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     care_labor_receipt=None
     future_care_obligation_ref=None
     inspected_public_notice=None
+    inspected_material_object=None
+    worked_material_object=None
     if partner_attempt:
         ok,why=eligible(actors[partner_attempt.actor]['body'],partner_attempt.action)
         partner_valid=(ok and world['positions'].get(partner_attempt.actor)==loc)
@@ -289,19 +293,29 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             # No controller exists: this is not a wage relationship.
             site['stock']=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
             output='MATERIAL_STOCK_PRODUCED'
+    elif attempt.action=='MAKE_OBJECT':
+        worked_material_object=produce_artifact(world,aid,loc)
+        status=worked_material_object['status']
+        output=worked_material_object['outcome']
     elif attempt.action=='REPAIR':
-        site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
-        stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
-        if unqualified:
-            status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
-        elif controller is not None and aid not in _qualified_members(site,'material_use_grants','INVALID_MATERIAL_GRANT'):
-            # Public entrance ≠ the right to appropriate a controller's goods.
-            # Grant is an objective world/site relation, never actor assertion.
-            status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
-        elif stock<1:
-            status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
+        if attempt.object_ref is not None:
+            worked_material_object=repair_artifact(
+                world,aid,loc,attempt.object_ref)
+            status=worked_material_object['status']
+            output=worked_material_object['outcome']
         else:
-            site['stock']=_exact_material_delta(stock,-1,'INVALID_SITE_STOCK_DELTA');output='REPAIR_PERFORMED'
+            site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+            stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
+            if unqualified:
+                status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+            elif controller is not None and aid not in _qualified_members(site,'material_use_grants','INVALID_MATERIAL_GRANT'):
+                # Public entrance ≠ the right to appropriate a controller's goods.
+                # Grant is an objective world/site relation, never actor assertion.
+                status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
+            elif stock<1:
+                status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
+            else:
+                site['stock']=_exact_material_delta(stock,-1,'INVALID_SITE_STOCK_DELTA');output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
@@ -408,11 +422,17 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         public=[notice for notice in notices_present(
                     world,loc,world['clock'])
                 if notice['id']==attempt.object_ref]
-        if len(public)!=1:
-            status='PARTIAL';output='NO_ACTOR_SELECTED_PUBLIC_NOTICE'
-        else:
+        if len(public)==1:
             inspected_public_notice=public[0]
             output='PUBLIC_NOTICE_INSPECTED'
+        else:
+            objects=[obj for obj in material_objects_present(world,loc)
+                     if obj['id']==attempt.object_ref]
+            if len(objects)!=1:
+                status='PARTIAL';output='NO_ACTOR_SELECTED_PUBLIC_OBJECT'
+            else:
+                inspected_material_object=objects[0]
+                output='VISIBLE_MATERIAL_OBJECT_INSPECTED'
     elif attempt.action=='WAIT':output='INACTION_OR_WAIT'
     else:output='ACT_COMPLETED'
     performed[0]['status']=status
@@ -435,6 +455,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'future_care_obligation_ref':future_care_obligation_ref,
                    'inspected_public_notice_ref':(
                         inspected_public_notice['id'] if inspected_public_notice else None),
+                   'worked_material_object_ref':(
+                        worked_material_object.get('object_ref')
+                        if worked_material_object else None),
+                   'inspected_material_object_ref':(
+                        inspected_material_object['id']
+                        if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
@@ -462,12 +488,29 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             source_actor=aid)
         sign['public_notice_ref']=inspected_public_notice['id']
         sign['world_rule_truth_not_inferred_from_public_text']=True
+    elif inspected_material_object is not None:
+        # The actor sees apparent condition, not title, production class,
+        # source labor, all past repairs or another person's private meaning.
+        condition=inspected_material_object['condition']
+        appearance=('visibly_worn' if condition<.65 else
+                    'apparently_repaired' if condition<.95 else
+                    'apparently_sound')
+        sign=add_cue(world,'performed_inspect',
+            ['inspect','material_object',appearance],
+            location=loc,modality='visual',private_to=aid,
+            description='visible material appearance: '+appearance,
+            source_actor=aid)
+        sign['material_object_ref']=inspected_material_object['id']
+        sign['public_appearance_not_complete_object_history']=True
     else:
-        add_cue(world,'performed_'+attempt.action.lower(),
+        sign=add_cue(world,'performed_'+attempt.action.lower(),
                 [attempt.action.lower(),perceptible_outcome.lower()],
                 location=loc,modality='auditory' if attempt.action in (
                     'SING','SPEAK','SIGNAL','ASK') else 'visual',
                 description=perceptible_outcome,source_actor=aid)
+        if worked_material_object and worked_material_object.get('object_ref'):
+            sign['material_object_ref']=worked_material_object['object_ref']
+            sign['actor_sensed_object_not_full_object_provenance']=True
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     return Resolution(status,performed,{'event':event_summary},effects,witnesses,output)
 
