@@ -146,7 +146,12 @@ def blank_world(world_id='w1'):
                                    'controller':'workshop_steward', 'food_price':1.0},
                       'hall': {'food': 0, 'stock': 2, 'access': 'controlled'}},
             'relations': {}, 'accounts':{'workshop_steward':12.0},'material_claims':[],
-            'institutions': {'workshop_steward':{'controls':'workshop','wage':.25,'claims_output':True},'hall_board': {'controls': 'hall', 'members': [], 'rule': 'hall_permission'}},
+            'institutions': {'workshop_steward':{'controls':'workshop','wage':.25,'claims_output':True},'hall_board': {'controls': 'hall', 'members': [], 'rule': 'hall_permission',
+                'petition_procedure':{'id':'HALL_PUBLIC_PETITION_R1',
+                    'enabled':True,'quorum':2,'posted_at':['home','workshop'],
+                    'subject':'hall_access','effect':'PUBLIC_ON_QUORUM'},
+                'hall_petition_signatures':[], 'rule_history':[]}},
             'cues': [], 'historical_periods': [], 'public_history': [],
+            'social_reproductive_labor': [],
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
