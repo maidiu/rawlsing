@@ -166,6 +166,50 @@ class PluralCareSourcefree(unittest.TestCase):
             [{'action':'SIGNAL','practical_alternatives':later}],
             {'comfort':.8,'nutrition':.8,'rest':.8}))
 
+    def test_actual_independent_response_can_reopen_suspended_relational_possibility(self):
+        lived_care(self.nadia,'mother',1,'first')
+        original=current_experience(clock=2,people=('mother',))
+        proposal=choose_one_grounded_plural_acquisition(
+            plural_acquisition_candidate(self.nadia,original,'event2'))[0]
+        admit_co_regulation(self.nadia,original,'event2',proposal)
+        orientation=self.nadia['co_regulation_orientations'][0]
+        orientation['interpretation_phase']='UNRESOLVED_AFTER_NONRESPONSE'
+        orientation['response_history']=[{
+            'id':'one_failed','event_ref':'nonreply1'},
+            {'id':'another_failed','event_ref':'nonreply2'}]
+        world_witness={
+            'actor':'nadia','clock':5,'location':'home',
+            'ref':'experienced_reply','participated':True,
+            'own_action':'SIGNAL','status':'PERFORMED',
+            'felt_enactment':{'attempted_operation':'SIGNAL'},
+            'perceived_cues':[{
+                'id':'performed_signal:5','kind':'performed_signal',
+                'source_actor':'nadia',
+                'actor_accessible_care_responder_ref':'mother',
+                'actual_independent_care_response_not_a_motive':True}]}
+        actual=conserve_lived_high_resolution_care(
+            self.nadia,world_witness,'replied_world_event5',
+            body(),body(.63,.64))
+        self.assertEqual(actual['giver_ref'],'mother')
+        self.assertEqual(actual['source_care_event_type'],
+                         'INDEPENDENT_CARE_RESPONSE_TO_SIGNAL')
+        self.assertEqual(actual['original_signal_was_for_this_caregiver'],
+                         'NOT_INFERRED')
+        reopened=sourcequalified_reopening(
+            self.nadia,world_witness,'replied_world_event5')
+        self.assertEqual(len(reopened),1)
+        accepted=admit_reopening(self.nadia,world_witness,
+                  'replied_world_event5',propose_one_reopening(reopened)[0])
+        self.assertEqual(accepted['phase'],
+                         'OPEN_AFTER_LIVED_CARE_NOT_SETTLED_TRUST')
+        self.assertEqual(len(orientation['response_history']),2)
+        self.assertEqual(len(self.nadia['experienced_care_events']),2)
+        forged={**world_witness,
+            'perceived_cues':[{'id':'performed_signal:5',
+                'kind':'performed_signal','source_actor':'nadia'}]}
+        self.assertIsNone(conserve_lived_high_resolution_care(
+            self.nadia,forged,'other_event',body(),body(.63,.64)))
+
     def test_lived_care_can_reopen_contradicted_relation_without_forgetting(self):
         lived_care(self.nadia,'mother',1,'first')
         e=current_experience(clock=2,people=('mother',))
