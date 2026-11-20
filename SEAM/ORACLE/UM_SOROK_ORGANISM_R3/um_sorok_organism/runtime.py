@@ -33,9 +33,12 @@ class ConstitutiveRuntime:
             parents.append(person)
         child=newborn(child_id,child_name)
         world['institutions']['hall_board']['members']=[parents[0]['id']] if parents else []
-        self.ledger.initialize(world,parents+[child])
-        for a,_,packet in (parent_packets or []):
-            self.ledger.seal_source('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',packet)
+        # Source conditioning and fictional initialization share one transaction
+        # and one immutable event-chain envelope. There must never be a committed
+        # person with missing or unanchored source qualification.
+        source_seals=[('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',packet)
+                      for a,_,packet in (parent_packets or [])]
+        self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
 
     def snapshot(self,actor_id):
@@ -196,7 +199,13 @@ class ConstitutiveRuntime:
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
         observed=subjective.get(actor_id,{})
-        actual_tip={'action':principal.action,'outcome':summary['outcome'] if observed.get('perceived_cues') else 'UNKNOWN_TO_ACTOR',
+        # A privileged world audit outcome is NOT automatically what this
+        # person saw or can disclose. The event's public sign is deliberately
+        # less informative than the real objective financial/material reason.
+        public_sign=next((cue.get('description','EVENT_PERCEIVED') for cue in
+                         observed.get('perceived_cues',[]) if cue.get('kind','').startswith('performed_')),
+                         'UNKNOWN_TO_ACTOR')
+        actual_tip={'action':principal.action,'outcome':public_sign,
                     'status':summary['status']}
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':observed,

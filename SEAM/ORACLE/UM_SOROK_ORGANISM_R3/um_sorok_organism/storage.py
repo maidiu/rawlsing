@@ -38,7 +38,7 @@ class ResearchLedger:
                 self.conn.execute('ROLLBACK')
                 raise
 
-    def initialize(self, world, actors):
+    def initialize(self, world, actors, source_seals=None):
         with self.tx():
             if self.conn.execute('SELECT 1 FROM worlds WHERE id=?',(world['id'],)).fetchone():
                 raise Conflict('world already initialized')
@@ -48,6 +48,14 @@ class ResearchLedger:
                 world['positions'][a['id']] = a['location']
                 world.setdefault('accounts',{}).setdefault(a['id'],0.0)
                 world.setdefault('holdings',{}).setdefault(a['id'],{'food':0})
+            # Sealed conditioning is durable *inside* the initialization
+            # transaction. Legacy unanchored seals cannot be treated as verified.
+            seals={}
+            for sid,category,content in (source_seals or []):
+                if sid in seals:raise Conflict('DUPLICATE_SOURCE_SEAL')
+                seals[sid]=digest({'category':category,'content':content})
+                self.conn.execute('INSERT INTO source_seals VALUES(?,?,?)',
+                                  (sid,category,canonical(content)))
             self.conn.execute('INSERT INTO worlds VALUES(?,?,?)',(world['id'],0,canonical(world)))
             for a in actors:
                 self.conn.execute('INSERT INTO actors VALUES(?,?,?)',(a['id'],0,canonical(a)))
@@ -56,6 +64,7 @@ class ResearchLedger:
                                      'grade':'FICTIONAL_GENESIS'},
               'world_digest':digest(world),
               'actor_digests':{a['id']:digest(a) for a in sorted(actors,key=lambda x:x['id'])},
+              'source_seal_digests':seals,
               'grade':GRADE}
             prior='GENESIS'
             eid='evt_'+digest({'prev':prior,'envelope':envelope})[:20]
@@ -77,10 +86,31 @@ class ResearchLedger:
         return {a:json.loads(b) for a,b in self.conn.execute('SELECT id,body FROM actors')}
 
     def seal_source(self, sid, category, content):
+        """Optional late source seal: chain-anchor atomically, never an orphan row.
+
+        A source insertion is a historical data act, not psychology formation.
+        It must be emitted through the same world-anchored research chain.
+        """
         with self.tx():
             if self.conn.execute('SELECT 1 FROM source_seals WHERE id=?',(sid,)).fetchone():
                 raise Conflict('source seal immutable')
+            row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
+            if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
+            wid,body=row;world=json.loads(body)
+            sha=digest({'category':category,'content':content})
+            prior=self.conn.execute('SELECT chain_hash FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+            prev=prior[0] if prior else 'GENESIS'
+            actor_map={aid:json.loads(blob) for aid,blob in self.conn.execute('SELECT id,body FROM actors')}
+            envelope={'world':wid,'clock':world['clock'],'kind':'SOURCE_SEAL',
+                'actor':None,'payload':{'source_id':sid,'source_digest':sha},
+                'world_digest':digest(world),
+                'actor_digests':{aid:digest(actor) for aid,actor in sorted(actor_map.items())},
+                'source_seal_digests':{sid:sha},'grade':GRADE}
+            eid='evt_'+digest({'prev':prev,'envelope':envelope})[:20]
+            chain=digest({'previous':prev,'eid':eid,'envelope':envelope})
             self.conn.execute('INSERT INTO source_seals VALUES(?,?,?)',(sid,category,canonical(content)))
+            self.conn.execute('INSERT INTO events(eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash) VALUES(?,?,?,?,?,?,?,?)',
+                              (eid,wid,world['clock'],None,'SOURCE_SEAL',canonical(envelope),prev,chain))
 
     def source(self,sid):
         x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
@@ -100,6 +130,19 @@ class ResearchLedger:
             prev=prior[0] if prior else 'GENESIS'
             full_actors={aid:json.loads(blob) for aid,blob in self.conn.execute('SELECT id,body FROM actors')}
             full_actors.update(actors)
+            if actor_id is not None and actor_id not in full_actors:
+                raise Conflict('UNKNOWN_EVENT_ACTOR')
+            # A fabricated position is a fabricated co-present Other. Actor IDs,
+            # physical positions, and actor-owned location are one closed roster.
+            if set(world.get('positions',{})) != set(full_actors):
+                raise Conflict('UNREGISTERED_WORLD_POSITION')
+            if any(a.get('location')!=world['positions'][aid] or a.get('id')!=aid
+                   for aid,a in full_actors.items()):
+                raise Conflict('ACTOR_WORLD_POSITION_DIVERGENCE')
+            latest=self.conn.execute('SELECT payload FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+            if (not isinstance(world.get('clock'),int) or world['clock']<0 or
+                    (latest and world['clock']<json.loads(latest[0])['clock'])):
+                raise Conflict('WORLD_CLOCK_REGRESSION')
             envelope={'world':wid, 'clock':world['clock'],'kind':kind,'actor':actor_id,
                       'payload':payload,'world_digest':digest(world),
                       'actor_digests':{k:digest(v) for k,v in sorted(full_actors.items())},
@@ -123,20 +166,32 @@ class ResearchLedger:
         return [{'id':e,'envelope':json.loads(p),'previous_hash':prev,'chain_hash':h} for e,p,prev,h in x]
 
     def verify_chain(self):
-        prior='GENESIS'; count=0
-        for r in self.events():
+        prior='GENESIS';count=0;anchored={}
+        records=self.events()
+        for r in records:
+            envelope=r['envelope']
             assert r['previous_hash']==prior, 'broken ancestry'
-            assert r['id']=='evt_'+digest({'prev':prior,'envelope':r['envelope']})[:20], 'bad id'
-            assert r['chain_hash']==digest({'previous':prior,'eid':r['id'],'envelope':r['envelope']}), 'bad chain'
+            assert r['id']=='evt_'+digest({'prev':prior,'envelope':envelope})[:20], 'bad id'
+            assert r['chain_hash']==digest({'previous':prior,'eid':r['id'],'envelope':envelope}), 'bad chain'
+            for sid,sha in envelope.get('source_seal_digests',{}).items():
+                assert sid not in anchored, 'SOURCE_SEAL_DUPLICATE_ANCHOR:'+sid
+                anchored[sid]=sha
             prior=r['chain_hash'];count+=1
-        if count:
-            last=self.events()[-1]['envelope']
+        actual={sid:digest({'category':cat,'content':json.loads(content)})
+                for sid,cat,content in self.conn.execute('SELECT id,type,content FROM source_seals')}
+        assert anchored==actual, 'SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY'
+        if records:
+            last=records[-1]['envelope']
             if digest(self.world(last['world'])[1])!=last['world_digest']:
                 raise AssertionError('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER')
             actors=self.actors()
+            # An uncommitted actor INSERT is just as serious as a changed
+            # registered actor. The event envelope owns the complete roster.
+            assert set(actors)==set(last['actor_digests']), 'UNCOMMITTED_ACTOR_SET'
             for aid,ahash in last['actor_digests'].items():
                 if aid not in actors or digest(actors[aid])!=ahash:
                     raise AssertionError('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER:'+aid)
-        return {'grade':GRADE,'events':count,'valid':True,'last_hash':prior}
+        return {'grade':GRADE,'events':count,'valid':True,'last_hash':prior,
+                'source_seals_verified':len(anchored)}
 
     def close(self): self.conn.close()

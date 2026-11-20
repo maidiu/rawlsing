@@ -8,11 +8,22 @@ not a new source-of-truth for the psyche and not a mind-reading public tip.
 """
 from .types import copy, GRADE
 from .organism import ACTIONS
+import math
 
 POLARITIES = {'APPROACH', 'WITHHOLD'}
 
 
 def validate_tendencies(form):
+    # Existing form-strength and motor threshold are executable quantities,
+    # not unconstrained strings supplied by a construction model.
+    if not isinstance(form,dict):raise ValueError('INVALID_ACQUIRED_FORM_PARAMETERS')
+    for key,default in (('strength',.5),('body_min',0)):
+        v=form.get(key,default)
+        if (isinstance(v,bool) or not isinstance(v,(int,float)) or
+                not math.isfinite(v) or not 0<=v<=1):
+            raise ValueError('INVALID_ACQUIRED_FORM_PARAMETERS')
+    if not isinstance(form.get('scope',{}),dict):
+        raise ValueError('INVALID_ACQUIRED_FORM_PARAMETERS')
     ts=form.get('tendencies', [])
     if not isinstance(ts, list) or len(ts)>12:
         raise ValueError('INVALID_ACQUIRED_TENDENCIES')

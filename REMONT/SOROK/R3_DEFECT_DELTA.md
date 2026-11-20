@@ -20,3 +20,8 @@ The earlier R3 delta remains the discovery state at 3dba91136870ab5e766ca14faacd
 ## Subsequent REMONT P025/P026 negative fixes (sourcefree)
 
 Two further issues were verified *against the actually running R3-integrated code*: unknown physical means were accepted as acquired form/project operation fields (SR-P025), and a WORK action at a missing objective site reported successful goods production without changing any enduring site stock (SR-P026). Corrected at original parent/development/world owners with explicit negative tests. Combined R3 suite **62 PASS, 0 FAIL** locally. Existing R3 conceptual P022/P023 gaps remain open. The previously reported 42/42, 58/58 cuts remain historical and exact; these are additive repairs, not retroactive adoption or formal independent receiving.
+
+
+## REMONTATHON R3 R1 — actually executed 84-test sourcefree follow-on
+
+At exact parent `0d40c700e1aea9c2f4d4940827106309baebbd3b`, an independent REMONTATHON reproduced SR-P012 and SR-P018 historical gaps, plus real first faults SR-P027..039 and the employer wage arrears part of SR-P005. At full patched source cut, `python -m unittest discover -s tests -v` = **84/84 PASS, 0 FAIL**, +22 new compared with prior 62. See the continuing ledgers and `REPAIRS/REMONTATHON_R3_R1_20261119/` for actual patch, immutable blob identities, and test receipt. This is local sourcefree engineering; no G5, no native SOROK owner receiving, no protected merge. P012/P018/P005 remain PARTIAL. P022/P023 remain explicit capability bounds. The original discovery and earlier 42/58/62 test cuts are preserved above without retroactive regrading.

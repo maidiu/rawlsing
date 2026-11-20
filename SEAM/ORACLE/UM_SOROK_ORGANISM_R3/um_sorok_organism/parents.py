@@ -7,6 +7,7 @@ independent questionnaire reproduction.
 from .types import adult, copy, stable_id, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
+from .development import validate_activity_priority
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
@@ -29,6 +30,7 @@ def construct_parent(actor_id,name,source_packet,semantic):
     for project in projects:
         if not isinstance(project,dict) or not isinstance(project.get('means',[]),list) or any(not isinstance(op,str) or op not in ACTIONS for op in project.get('means',[])):
             raise ValueError('UNSUPPORTED_ACTIVITY_MEANS')
+        validate_activity_priority(project.get('priority',.5))
     person['projects']=projects
     if not person['forms'] and not person['projects']:
         raise ValueError('NO_OPERATIVE_FICTIONAL_PARENT_CONSTITUTION')

@@ -1,5 +1,6 @@
 """Bounded, functional, sourcefree organism model. No endocrine realism claims."""
 from .types import copy
+import math
 
 ACTIONS = {
     'REST':{'motor':0.0,'language':0.0,'cost':0.0},
@@ -26,6 +27,14 @@ ACTIONS = {
 }
 
 def eligible(body, action):
+    # Invalid embodied material must never acquire capacity by Python's NaN
+    # comparison behavior or apply_body's clamps. Stop *before* objective action.
+    for key in ('nutrition','rest','comfort','pain','arousal','motor',
+                'sensor','language','illness','regulation'):
+        v=body.get(key)
+        if (isinstance(v,bool) or not isinstance(v,(int,float)) or
+                not math.isfinite(v) or not 0<=v<=1):
+            raise ValueError('INVALID_BODY_STATE:'+key)
     if action not in ACTIONS: return False, 'UNKNOWN_ACTION'
     needed=ACTIONS[action]
     if body['motor'] < needed['motor']:return False,'MOTOR_CAPABILITY'

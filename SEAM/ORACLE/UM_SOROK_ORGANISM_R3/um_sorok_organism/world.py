@@ -106,21 +106,29 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='EAT':
         site=_site(world,aid)
         inventory=world.setdefault('holdings',{}).setdefault(aid,{'food':0})
-        if inventory.get('food',0)>=1:
-            inventory['food']-=1;output='ATE_OWNED_FOOD'
-        elif loc=='home' and site.get('food',0)>=1:
-            site['food']-=1;output='ATE_SHARED_HOUSEHOLD_FOOD'
+        owned=_nonnegative_transfer_amount(inventory.get('food',0),'INVALID_OWNED_FOOD')
+        household=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
+        if owned>=1:
+            inventory['food']=owned-1;output='ATE_OWNED_FOOD'
+        elif loc=='home' and household>=1:
+            site['food']=household-1;output='ATE_SHARED_HOUSEHOLD_FOOD'
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
-        site=_site(world,aid);cost=_nonnegative_transfer_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
-        if site.get('food',0)<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
-        elif world['accounts'].get(aid,0)<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+        site=_site(world,aid)
+        cost=_nonnegative_transfer_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
+        available_food=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
+        buyer_balance=_nonnegative_transfer_amount(world['accounts'].get(aid,0),'INVALID_BUYER_BALANCE')
+        owned_food=_nonnegative_transfer_amount(world.get('holdings',{}).get(aid,{}).get('food',0),
+                                                'INVALID_OWNED_FOOD')
+        if available_food<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
+        elif buyer_balance<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
         else:
-            site['food']-=1;world['accounts'][aid]=round(world['accounts'][aid]-cost,5)
-            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']+=1
+            site['food']=available_food-1;world['accounts'][aid]=round(buyer_balance-cost,5)
+            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=owned_food+1
             output='FOOD_PURCHASED'
     elif attempt.action=='WORK':
         site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
         if unqualified:
             # Neither a missing issuer nor a mismatched owner converts an
             # institutionally controlled worksite into unowned production.
@@ -130,31 +138,44 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             wage=_nonnegative_transfer_amount(institution.get('wage',0), 'INVALID_WAGE')
             available=_nonnegative_transfer_amount(world['accounts'].get(controller,0),
                                                       'INVALID_CONTROLLER_BALANCE')
-            paid=min(available,wage)
+            worker_balance=_nonnegative_transfer_amount(world['accounts'].get(aid,0),
+                                                      'INVALID_WORKER_BALANCE')
+            # Precise within research account's declared five-decimal units.
+            due=round(wage,5)
+            paid=round(min(round(available,5),due),5)
+            unpaid=round(max(0,due-paid),5)
             # Validation and controller relation precede every material write.
-            site['stock']=site.get('stock',0)+2
+            site['stock']=stock+2
             world['accounts'][controller]=round(available-paid,5)
-            world['accounts'][aid]=round(world['accounts'].get(aid,0)+paid,5)
+            world['accounts'][aid]=round(worker_balance+paid,5)
             claim={'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
-                   'controller':controller,'wage':paid,'worker_control_of_output':False}
+                   'controller':controller,'wage':paid,'wage_due':due,
+                   'wage_unpaid':unpaid,'worker_control_of_output':False}
             world.setdefault('material_claims',[]).append(claim)
+            if unpaid>0:
+                # A lack of cash does not erase an objectively configured wage
+                # claim. This is an employer liability, not a worker's belief.
+                world.setdefault('wage_arrears',[]).append({'clock':world['clock'],
+                    'worker':aid,'controller':controller,'site':loc,
+                    'amount':unpaid,'material_claim_index':len(world['material_claims'])})
             output='PRODUCED_GOODS_CONTROLLED_BY_OTHER'
         else:
             # No controller exists: this is not a wage relationship.
-            site['stock']=site.get('stock',0)+2
+            site['stock']=stock+2
             output='MATERIAL_STOCK_PRODUCED'
     elif attempt.action=='REPAIR':
         site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
         if unqualified:
             status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
         elif controller is not None and aid not in site.get('material_use_grants',[]):
             # Public entrance ≠ the right to appropriate a controller's goods.
             # Grant is an objective world/site relation, never actor assertion.
             status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
-        elif site.get('stock',0)<1:
+        elif stock<1:
             status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
         else:
-            site['stock']-=1;output='REPAIR_PERFORMED'
+            site['stock']=stock-1;output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
         members=world['institutions']['hall_board']['members']
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
@@ -235,9 +256,13 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     world['public_history'].append(event_summary)
     # New cues are actual public world consequences, not actor introspection.
     # World effects persist even when no participant currently perceives them.
-    add_cue(world,'performed_'+attempt.action.lower(),[attempt.action.lower(),output.lower()],
+    # Public, witness-accessible sign is not a world-audit report. A refused
+    # purchase, for example, does not reveal the purchaser's account deficit.
+    perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
+    add_cue(world,'performed_'+attempt.action.lower(),
+            [attempt.action.lower(),perceptible_outcome.lower()],
             location=loc,modality='auditory' if attempt.action in ('SING','SPEAK','SIGNAL','ASK') else 'visual',
-            description=output,source_actor=aid)
+            description=perceptible_outcome,source_actor=aid)
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     return Resolution(status,performed,{'event':event_summary},effects,witnesses,output)
 

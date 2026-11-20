@@ -1,0 +1,30 @@
+# SOROK REMONTATHON R3 R1 — actual sourcefree first-fault repairs
+
+**Original live candidate:** private `maidiu/rawlsing` PR #1171 at `0d40c700e1aea9c2f4d4940827106309baebbd3b`; actual R3 builder PR #1167 at `3dba91136870ab5e766ca14faacd847531dea075` as verified 2026-11-19. **Protected integration HEAD** `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e` at start. No native-owner, scientific, or protected receiving has occurred here.
+
+**SEAM grounding:** Constitutive Organism synthesis PR #1161, a documentary research conception, not replacement code. Preserve objective world/independent Others, actor-specific partial perception, historical acquired constitution, possible-but-unperformed intention, embodiment, time, and continuing material reproduction. Never manufacture LLM personhood or source empiricism.
+
+## Independently reproduced failed sourcefree probes, then code repaired
+
+- **SR-P012 PARTIAL FIX:** reverse-ordered five-hop form links beyond three loop iterations were dropped; a directly inhibited seed could still recruit downstream descendants. Replace arbitrary 3-pass link walk with bounded positive closure, conservative negative-link veto, and a final closure excluding blocked conduits. Cyclic/conflicting form science remains provisional.
+- **SR-P018 PARTIAL FIX:** source-seal SQLite records could be changed after insertion and `verify_chain()` still reported valid. Fictional parent source seals now commit atomically with INITIALIZATION and hashed anchors in its event envelope, while late seals append self-contained source events. `verify_chain()` requires *exact* source seal concordance; legacy unanchored source rows fail rather than get silently upgraded. Historical pre-change databases require separate migration/receiving decision.
+- **SR-P027:** accepted effect #1 in `development.admit` persisted in the caller's in-memory actor when effect #2 was invalid. Stage all proposed effects on a copy, replace caller state only after full successful validation.
+- **SR-P028:** a `float('nan')` delta bypassed numeric bound checks and silently promoted form strength. Reject nonfinite and bool deltas.
+- **SR-P029:** nonfinite buyer balance could purchase food; nonfinite worker balance could corrupt wage payment. Validate before any material or money write.
+- **SR-P030:** nonfinite/negative site stock silently allowed phantom work or repairs. Validate before mutation.
+- **SR-P031:** failed purchase leaked `INSUFFICIENT_CLAIM_ON_FOOD` into the co-present witness's visual cue. For blocked/partial conduct, cue carries only the observable `ATTEMPT_NOT_COMPLETED`; privileged objective audit retains the actual causal reason.
+- **SR-P032:** ledger's verification checked hashes of already-referenced actors but accepted a direct uncommitted extra SQLite actor row. Require exact equality of actor roster to the last event envelope.
+- **SR-P033:** model-produced adult forms could contain nonnumeric strength/body thresholds, then raise at future recruitment time. Validate finite bounded typed parameters at admission.
+- **SR-P034:** fictional parent projects and later admission/reorganization could carry nonnumeric/invalid priority values into situated action weighting. Validate finite, nonnegative priority; do *not* force a universal 0..1 psychic scale.
+- **SR-P035:** model-facing public tip used privileged objective outcome rather than what actor could actually access. Derive surface from qualified perceived event cue, or mark unknown.
+- **SR-P036:** nonfinite owned-food holdings could poison a successful purchase after debiting accounts and stock. Validate holdings first.
+- **SR-P037:** a NaN embodied motor metric passed `eligible()` comparisons and could turn into a performed act. Enforce bounded finite organismic state before any action attempt.
+- **SR-P038:** direct `ResearchLedger.commit()` admitted ghost actor IDs and extra world positions without corresponding actor registration, enabling fabricated co-present Others. Exact actor/world-position and actor-location referential checks.
+- **SR-P039:** `ResearchLedger.commit()` allowed objective clock regression while maintaining a formally valid hash chain. Refuse a world clock earlier than the prior event.
+- **SR-P005 FURTHER PARTIAL REPAIR:** a configured wage of .25 with employer cash .10 paid the worker .10 but silently discarded the .15 unpaid claim. World-owned material claim now differentiates due/paid/unpaid wage and records immutable arrears; no automatic debt collection or assertion about worker awareness.
+
+## Evidence
+
+Previous unmodified exact R3 combined branch: `62/62 PASS`. Multiple independent pre-repair new regression batches were RED and recorded. Exact patched full code: `python -m unittest discover -s tests -v` -> **84 PASS / 0 FAIL**; 22 new tests, including invalid-source tamper/delete/cold reopen, altered embodied state, invalid economic values, composed recruitment and inhibition, failed acquisition atomicity, privileged cue segregation, unknown actor/time refusal, 120 authentic transitions + cold reopen, and a bad multi-effect provider callback leaving no durable partial psychological/world event. One initial stress-test assumption ignored fatigue and was corrected as a **fixture mistake**, not classed as product bug. See `REMONTATHON_TEST_RESULTS.txt`, `REMONTATHON_FILE_IDENTITIES.json`, and the 2 new test modules.
+
+No native CI run, independent G5 reviewer, original P2/P3/P4/P5/P6 integration, PYAT source population/science, POP/DEV/TRANS, live external LLM, confidentiality production control, canonical paired CURRENT_PROGRESS write, or protected merge claimed. Existing SR-P001..026 and SR-E001..006 must be conserved with the additive new P027..039; SR-P012, P018 and P005 remain **partial**, not completely closed. Remaining R3 defects include P011, P013/014/015/016/017/019/022/023 and limitations of closed-set operation vocabulary and current first-read owner capabilities. The 84-test run is a bounded research demonstration, not a complete person.

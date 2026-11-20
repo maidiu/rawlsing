@@ -7,6 +7,7 @@ objective world fact or another actor's state here.
 from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
+import math
 
 class InvalidDevelopment(ValueError): pass
 
@@ -18,8 +19,33 @@ KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONA
 RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS'}
 
 
+def validate_activity_priority(value):
+    # Project importance is deliberately NOT capped at 1: existing acquired
+    # purposes may have intense salience. It must, however, be a finite,
+    # nonnegative number or it corrupts situated ranking and possibility.
+    if (isinstance(value,bool) or not isinstance(value,(int,float)) or
+            not math.isfinite(value) or value<0):
+        raise InvalidDevelopment('INVALID_ACTIVITY_PRIORITY')
+    return value
+
+
 def admit(actor,experience,event_ref,candidates):
-    """Mutates an in-memory actor copy; caller commits atomically with world.
+    """All-or-nothing psychic admission even for a multi-effect LLM proposal.
+
+    Caller owns an actor object whose identity may be held elsewhere. Validate
+    and apply on a detached candidate, then replace content only after every
+    operation succeeds. A later rejected effect cannot leave an earlier
+    proposed memory, project, or relationship silently installed.
+    """
+    candidate_actor=copy(actor)
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+    actor.clear()
+    actor.update(candidate_actor)
+    return result
+
+
+def _admit_in_place(actor,experience,event_ref,candidates):
+    """Mutates only the stage copy; caller commits atomically with world.
 
     A proposal is admissible only after an event actually occurred to which the
     actor had a qualified exposure. This is *fictional sourcefree* admission,
@@ -121,7 +147,9 @@ def admit(actor,experience,event_ref,candidates):
             ident=c.get('form_id')
             if ident not in actor['forms']:raise InvalidDevelopment('UNKNOWN_FORM')
             delta=c.get('delta',0)
-            if not isinstance(delta,(int,float)) or abs(delta)>.35:raise InvalidDevelopment('UNBOUNDED_STRENGTH')
+            if (isinstance(delta,bool) or not isinstance(delta,(int,float))
+                    or not math.isfinite(delta) or abs(delta)>.35):
+                raise InvalidDevelopment('UNBOUNDED_STRENGTH')
             f=actor['forms'][ident];f['strength']=round(min(1,max(0,f.get('strength',.4)+delta)),4)
             f.setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
@@ -137,6 +165,7 @@ def admit(actor,experience,event_ref,candidates):
                 raise InvalidDevelopment('INVALID_NEW_PROJECT')
             if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
+            validate_activity_priority(project.get('priority',.4))
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
                 raise InvalidDevelopment('DUPLICATE_PROJECT')
@@ -155,6 +184,7 @@ def admit(actor,experience,event_ref,candidates):
                 raise InvalidDevelopment('INVALID_PROJECT_MEANS')
             if 'means' in c and any(x not in ACTIONS for x in c['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
+            if 'priority' in c:validate_activity_priority(c['priority'])
             for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)

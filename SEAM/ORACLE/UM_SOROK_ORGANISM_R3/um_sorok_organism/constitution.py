@@ -87,23 +87,41 @@ def compose(constitution,access,limit=50):
         match=set(str(x).lower() for x in f.get('cues',[]))
         if match & (cues|project_tags) or f.get('always_recruitable'):
             active[fid]=copy(f)
-    # Associations are admissible only if persisted as functional links.
-    for _ in range(3):
-        changed=False
-        for link in constitution.links:
-            src,dst=link.get('source'),link.get('target')
-            if src not in active or dst not in forms:continue
-            if link.get('contexts') and access.location not in link['contexts']:continue
-            if link['relation'] in ('RECRUITS','SUPPORTS') and dst not in active:
-                f=forms[dst]
-                if (f.get('lifecycle') not in ('ENDED','DORMANT')
-                        and f.get('body_min',0)<=constitution.body['motor']
-                        and _form_in_scope(f,access)):
-                    active[dst]=copy(f); changed=True
-            elif link['relation']=='INHIBITS':
-                inhibited.append(dst)
-        if not changed:break
-    for fid in set(inhibited):active.pop(fid,None)
+    # P012: evidence-bounded reachability to a real fixed point, independently
+    # of arbitrary link order or a three-pass depth limit. A qualifying
+    # inhibitor blocks its target's ability to become a recruitment conduit;
+    # it cannot first recruit a descendant and then disappear at the end.
+    #
+    # We use a conservative two-stage lattice: positive possible reachability,
+    # then inhibitor veto by all potential qualified active sources, followed
+    # by positive reachability without vetoed conduits. This may over-suppress
+    # under opposing cycles; it never fabricates the affected form's action.
+    seed=set(active)
+    qualified={fid for fid,f in forms.items()
+        if f.get('lifecycle') not in ('ENDED','DORMANT')
+        and f.get('body_min',0)<=constitution.body['motor']
+        and _form_in_scope(f,access)}
+    valid_links=[link for link in constitution.links
+        if link.get('source') in forms and link.get('target') in forms
+        and (not link.get('contexts') or access.location in link['contexts'])]
+    positive=[link for link in valid_links if link.get('relation') in ('RECRUITS','SUPPORTS')]
+    negative=[link for link in valid_links if link.get('relation')=='INHIBITS']
+
+    def closure(start, blocked=frozenset()):
+        reached=set(start)&qualified-set(blocked)
+        # Monotonic form set grows at most len(qualified) times, cycles stop.
+        while True:
+            added={l['target'] for l in positive
+                   if l['source'] in reached and l['target'] in qualified
+                   and l['target'] not in blocked}
+            newer=reached|added
+            if len(newer)==len(reached):return reached
+            reached=newer
+
+    potentially_active=closure(seed)
+    vetoed={l['target'] for l in negative if l['source'] in potentially_active}
+    inhibited.extend(sorted(vetoed))
+    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
     # History-made links to activities can recruit an ongoing project under
     # a new cue. Its object/motive remains separate from its possible means.
     projects=eligible_activities(constitution,active.keys(),access)

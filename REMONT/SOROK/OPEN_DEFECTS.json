@@ -83,7 +83,7 @@
     },
     {
       "id": "SR-P005",
-      "status": "PARTIAL_CODE_REPAIRED__R3_COMBINED_58_PASS_RECEIVING_PENDING",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CONFIRMED_CODE",
       "first_fault": "R1 work raised site stock without recording differentiated appropriation of product",
       "owner_location": "world.py::WORK; types.py",
@@ -138,6 +138,14 @@
         "fail": 0,
         "grade": "LOCAL_AUTHOR_RECHECK__INDEPENDENT_REVIEW_PENDING",
         "origin": "R3 sourcefree integrated branch"
+      },
+      "remontathon_r3_r1": {
+        "source_base": "0d40c700e1aea9c2f4d4940827106309baebbd3b",
+        "local_pass": 84,
+        "local_fail": 0,
+        "first_fault_scope": "Unpaid configured wage now conserved as objective arrears; richer labor rights not implemented",
+        "grade": "SOURCEFREE_AUTHOR_EXECUTED__INDEPENDENT_REVIEW_PENDING",
+        "protected_received": false
       }
     },
     {
@@ -202,13 +210,21 @@
     },
     {
       "id": "SR-P012",
-      "status": "OPEN_NOT_FIXED",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CREDIBLE_RISK",
       "first_fault": "Two-pass activity/form recruitment may miss cyclic or higher-order jointly required organizations",
       "owner_location": "constitution.py::compose; activity.py::eligible_activities",
       "doctrinal_source": "PFF context-conditional graph; O05 object-oriented activity",
       "executable_probe": "test_unrecruited_project_does_not_summon_its_own_form",
-      "disposition": "Need bounded monotone fixed-point or appropriately nonmonotone conflict evaluator; not proved by current test"
+      "disposition": "Need bounded monotone fixed-point or appropriately nonmonotone conflict evaluator; not proved by current test",
+      "remontathon_r3_r1": {
+        "source_base": "0d40c700e1aea9c2f4d4940827106309baebbd3b",
+        "local_pass": 84,
+        "local_fail": 0,
+        "first_fault_scope": "Bounded link fixed-point with negative-form veto; conflicting causal psychological law not independently validated",
+        "grade": "SOURCEFREE_AUTHOR_EXECUTED__INDEPENDENT_REVIEW_PENDING",
+        "protected_received": false
+      }
     },
     {
       "id": "SR-P013",
@@ -262,13 +278,21 @@
     },
     {
       "id": "SR-P018",
-      "status": "OPEN_NOT_FIXED",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CREDIBLE_RISK",
       "first_fault": "Research event chain does not cover all auxiliary source-seal state; private receipt inspection is not native privacy",
       "owner_location": "storage.py::source_seals/verify_chain; runtime.py private receipts",
       "doctrinal_source": "ADP-016/017; actor-bound source/secrecy; PROGRAMMA oath exact evidence",
       "executable_probe": "test_private_experience_receipts_not_sent_to_public_expression",
-      "disposition": "Bound seal mutability to ledger and enforce disclosure rights if promoted; research-only until then"
+      "disposition": "Bound seal mutability to ledger and enforce disclosure rights if promoted; research-only until then",
+      "remontathon_r3_r1": {
+        "source_base": "0d40c700e1aea9c2f4d4940827106309baebbd3b",
+        "local_pass": 84,
+        "local_fail": 0,
+        "first_fault_scope": "Atomic source seals in hash-chain, exact roster; historical legacy unanchored DBs explicitly fail; native secrecy unqualified",
+        "grade": "SOURCEFREE_AUTHOR_EXECUTED__INDEPENDENT_REVIEW_PENDING",
+        "protected_received": false
+      }
     },
     {
       "id": "SR-P019",
@@ -362,6 +386,149 @@
       "doctrinal_source": "SEAM/30 material world must resist fiction and conserve actual produced goods",
       "executable_probe": "test_sr_p026_no_production_or_food_transaction_at_missing_material_site",
       "disposition": "Unknown material sites block EAT/BUY_FOOD/WORK/REPAIR before false material receipts, rather than treating an ephemeral empty dict as a production site; pending independent receiving"
+    },
+    {
+      "id": "SR-P027",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Partial psychic batch survived a later rejected candidate",
+      "owner_location": "development.py::admit",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p027_development_batch_rejection_is_all_or_nothing",
+      "disposition": "Stage actor copy; commit all in-memory effects only if entire candidate batch succeeds",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P028",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Nonfinite strength delta silently increased acquired form strength",
+      "owner_location": "development.py::admit::CHANGE_STRENGTH",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p028_nan_strength_delta_does_not_promote_form",
+      "disposition": "Require finite bounded numeric delta; no NaN/bool coercion",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P029",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Nonfinite buyer and worker account balances bypassed monetary guards",
+      "owner_location": "world.py::BUY_FOOD/WORK",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p029_buyer_nan_balance_fails_before_world_mutation; test_p029_nonfinite_worker_balance_cannot_poison_wage_payment",
+      "disposition": "Fail before goods, wages or holdings mutate",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P030",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Nonfinite site stock could be produced or consumed as if material",
+      "owner_location": "world.py::WORK/REPAIR",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p030_nonfinite_site_stock_cannot_be_consumed_or_produced",
+      "disposition": "Reject invalid stock before production or repair",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P031",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Blocked purchase's private account reason leaked into public cue",
+      "owner_location": "world.py::add_cue from _resolve_untrusted_core",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p031_failed_purchase_private_money_reason_not_public_cue",
+      "disposition": "Witness-accessible sign shows only attempt not completed; true cause preserved in privileged objective event",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P032",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Verifier accepted uncommitted extra SQLite actor",
+      "owner_location": "storage.py::verify_chain",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p032_chain_rejects_phantom_uncommitted_actor",
+      "disposition": "Require exact actor roster equality with last sealed event",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P033",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "External adult constructor admitted nonnumeric/acausal form parameters",
+      "owner_location": "psychodynamics.py::validate_tendencies; parents.py",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p033_bad_seed_form_strength_refused_before_initializing_actor",
+      "disposition": "Typed finite 0..1 form strength/body threshold gate at seed and developmental ingress",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P034",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Invalid project priority entered actor and broke situated ranking",
+      "owner_location": "development.py::validate_activity_priority; parents.py",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p034_bad_project_priority_cannot_break_recruitment",
+      "disposition": "Require finite nonnegative salience without forcing unit-range adult motivation",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P035",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Outward tip repeated world-audit outcome, not actor-observed sign",
+      "owner_location": "runtime.py::step::actual_tip",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p031_tip_does_not_narrate_private_financial_reason",
+      "disposition": "Use actor-accessible event cue or UNKNOWN_TO_ACTOR; objective ledger stays separate",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P036",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Nonfinite owned-food holdings corrupted successful purchase",
+      "owner_location": "world.py::BUY_FOOD",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p036_nonfinite_holdings_cannot_poison_food_purchase",
+      "disposition": "Validate holding before any stock/account change",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P037",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "NaN motor/other bodily metrics passed eligibility into action",
+      "owner_location": "organism.py::eligible",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p037_nonfinite_body_does_not_get_transformed_into_valid_performed_action",
+      "disposition": "Validate finite [0,1] embodied state before any world action",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P038",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Research ledger admitted ghost event actor/position without registered Other",
+      "owner_location": "storage.py::commit",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p038_ghost_event_actor_cannot_be_written_as_world_history; test_p038_ghost_position_cannot_manufacture_copresent_other",
+      "disposition": "Require event actor identity, exact position roster and actor-owned locations",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+    },
+    {
+      "id": "SR-P039",
+      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "World clock regressed while the hash chain still verified",
+      "owner_location": "storage.py::commit",
+      "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
+      "executable_probe": "test_p039_retrograde_world_clock_cannot_commit",
+      "disposition": "Reject objective historical time regression",
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
     }
   ],
   "queue_T": [],
@@ -446,5 +613,25 @@
       "UNSUPPORTED_ACQUIRED_MEANS_P025",
       "PHANTOM_SITE_MATERIAL_PRODUCTION_P026"
     ]
+  },
+  "remontathon_r3_r1": {
+    "parent_pr": 1171,
+    "parent_sha": "0d40c700e1aea9c2f4d4940827106309baebbd3b",
+    "source": "ORACLE_UM_SOROK_R3",
+    "code_scope": "REPRODUCED_P012_P018_P027_P039_AND_WAGE_ARREARS_P005",
+    "counts": {
+      "P": 39,
+      "T": 0,
+      "E": 6
+    },
+    "new_regression_and_stress_tests": 22,
+    "local_pass": 84,
+    "local_fail": 0,
+    "long_life_steps": 120,
+    "artifacts_folder": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R1_20261119/",
+    "grade": "AUTHOR_LOCAL_SOURCEFREE__REVIEW_PENDING",
+    "independent_reviewed": false,
+    "protected_received": false,
+    "legacy_unanchored_source_seals": "REQUIRES_EXPLICIT_MIGRATION"
   }
 }
