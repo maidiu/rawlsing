@@ -15,7 +15,7 @@ from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
 
-COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
+COOPERATIVE={'SIGNAL':{'CARE','JOIN','FEED'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
              'MAKE_SPACE':{'JOIN','SING'},'SHARE':{'JOIN','CARE'}}
 
 
@@ -397,6 +397,25 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                     'contributions':[{'actor':aid,'act':attempt.action},
                                      {'actor':target,'act':partner_attempt.action}],
                     'material_effects':[]}
+            if attempt.action=='SIGNAL' and partner_attempt.action=='FEED':
+                # The responder's autonomous FEED is not merely consent to
+                # a signal: objective food stock and bodily eligibility still
+                # decide what material assistance actually happened.
+                supported=perform_one_actual_feeding(
+                    world,actors,partner_attempt.actor,aid,loc)
+                material_feeding_ref=supported['material_feeding_ref']
+                if supported['status']=='PERFORMED':
+                    effects[aid]['received_assistance']=True
+                    joint['material_effects'].append({
+                        'recipient':aid,
+                        'kind':'SOURCE_QUALIFIED_ACTUAL_FEEDING',
+                        'material_feeding_ref':material_feeding_ref})
+                else:
+                    status='PARTIAL'
+                    output='COACTOR_ATTEMPTED_FEED_WITHOUT_AVAILABLE_STOCK'
+                    for performed_action in performed:
+                        if performed_action['actor']==partner_attempt.actor:
+                            performed_action['status']='BLOCKED'
             if attempt.action=='SIGNAL' and partner_attempt.action=='CARE':
                 # Distinct autonomous contributions jointly produce regulation.
                 # No presumed praise/recognition/attachment or human-law claim.
@@ -413,7 +432,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             # or a stable social attractor. Keep observed pattern distinct.
             if len(field['history'])>=2 and 'REPEATED_JOINT_ACT_OBSERVED' not in field['observed_patterns']:
                 field['observed_patterns'].append('REPEATED_JOINT_ACT_OBSERVED')
-            output='JOINT_ACTIVITY_PERFORMED'
+            if status=='PERFORMED':
+                output='JOINT_ACTIVITY_PERFORMED'
         else:
             status='PARTIAL';output='INDEPENDENT_COACTOR_DID_NOT_JOIN'
     elif attempt.action in ('SING','PRACTICE','MAKE_SPACE'):
@@ -526,7 +546,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             sign['actor_sensed_object_not_full_object_provenance']=True
         if (attempt.action=='SIGNAL' and status=='PERFORMED'
                 and partner_attempt is not None and partner_valid
-                and partner_attempt.action=='CARE'
+                and partner_attempt.action in ('CARE','FEED')
                 and output=='JOINT_ACTIVITY_PERFORMED'):
             # An actual particular-person coaction can be a publicly
             # perceptible part of this event without revealing the responder's
