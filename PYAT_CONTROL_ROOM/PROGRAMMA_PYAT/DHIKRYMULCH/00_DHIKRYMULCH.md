@@ -977,3 +977,157 @@ For every necessary capability, record its **required consequence**, selected ex
 
 A newly accepted feature that lacks its first consumer remains **implementation without demonstrated occupancy**. A discovered indispensable older function lacking a present owner remains **live work**, not silent retirement. An original-source restriction cannot be relieved by a theoretical rewrite. Source-free versus source-native, actor-internal versus world, protected versus draft, accepted versus asserted, and real source versus fictional construction remain separate at every handoff.
 
+
+---
+
+## XIII. INTEGRATED CONSERVATION AND SOURCE COURT — NOTHING IMPORTANT RETIRES BY SILENCE
+
+This is the **in-book no-loss accounting**, not a coequal conceptual appendix to consult to understand the target. Earlier 20 chapters have been disassembled, reordered and rewritten into §§0–XII. Their old placement carries **no automatic authority**. Each historically identified function must nonetheless have an explicit present demand, lawful successor or justified retirement, plus a new actual proof. Listing an ID here **does not** assert it has been implemented, independently reviewed, issued for source science or consumed. An old proof gap is not automatically a current defect; it is a historical obligation to reconcile at its exact grain.
+
+### XIII.1 The twenty former containers and their transformed homes
+
+| Former chapter | Former title | Functional homes in this reconstructed theory |
+|---|---|---|
+| I | THE INTENDED RESULT: A MACHINE THAT KNOWS THE SHAPE OF POSSIBLE SOCIAL HUMANITY | 0; XI |
+| II | FIRST: MAKE THE OBSERVED SOCIAL WORLD AVAILABLE | II |
+| III | GIVE EVERY QUESTION ITS COMPLETE RESPONSE MORPHOLOGY | II; III |
+| IV | DISCOVER THE CONDITIONAL TOPOGRAPHY OF EVERY MEASURED POSSIBILITY | III |
+| V | REVERSE THE INFERENCE: FROM A POSITION TO AN ATTITUDE, AND FROM AN ATTITUDE BACK TO POSSIBLE POSITIONS | III |
+| VI | FIND THE FRACTURES: MAJORITY, EXIT, ALTERNATIVES AND THEIR OWN INTERNAL WORLDS | III; IV |
+| VII | DISCOVER HIGHER-ORDER INTERACTIONS AND HIDDEN CONFIGURATIONS | III |
+| VIII | RECOVER ATTITUDE CO-TRAVEL, CLOUDS, REPERTOIRES AND COHERENT EXCEPTIONS | III |
+| IX | CONSTRUCT THE POSITION–DISPOSITION LANDSCAPE | IV |
+| X | BUILD PROFILES OF HEGEMONY, COUNTERHEGEMONY, SUBHEGEMONY AND SOCIAL COMMON SENSE | IV; V |
+| XI | FIELD FORGE: FROM EMPIRICAL POSSIBILITY TO THE SOCIALLY CONSTITUTED FIELD | V; IX |
+| XII | MAKE CONTRADICTION, COMPETING PRESSURES AND ALTERNATIVE FUTURES FIRST-CLASS | IV; V; VII |
+| XIII | LEARN SOCIAL HISTORIES, NOT JUST CROSS-SECTIONS | VI |
+| XIV | BUILD THE POSITIONED-SUBJECT QUERY ENGINE AND HONEST SPECIFICITY WALKBACK | IX |
+| XV | PRODUCE PARENT/ADULT CONFIGURATIONS WITHOUT INVENTING PSYCHOLOGICAL PERSONS | VII; IX |
+| XVI | SERVE A LIVING FIELD, NOT A STATIC CATALOGUE | IX |
+| XVII | BUILD AN AUTONOMOUS EPISTEMIC EXPLORER | III; IX |
+| XVIII | ATTACK THE MACHINE WHERE IT WOULD BE MOST SEDUCTIVELY WRONG | XI |
+| XIX | THE COMPLETE INTELLIGENCE CIRCUIT | X; XI |
+| XX | HOW HARDER CAN WE GO? | XII |
+
+The reorganization is not a lexical relocation. For example, the old §§II/III/VIII's observation, response acts, respondent joints and missingness are now **one qualified evidence and discovery grammar** (§§II–III). The old §§IX–XIII's position geometry, hegemony, institutional power, reproduction, contradiction and historical time now form a **material, independently constituted world** (§§I, IV–VI), not a hidden demographic classifier. The old §§XIV–XVII's conditioned query, generative adulthood, living field and autonomous explorer are now **the operational consumer/research interfaces** (§§III, VII, IX). What was largely an actor-boundary warning has become a positive **two-entrance continuing psychological runtime** (§§VII–VIII). And the former last-chapter challenge is now actual **whole-organism falsification and construction law** (§§X–XII). No old chapter is treated as a sacred module boundary.
+
+### XIII.2 All 44 inherited Long Memory functional obligations, mapped to one machine
+
+The concern texts and residual markers are inherited historical evidence; the right-hand home is the **new canonical functional location**. 'None at preservation grain' means the old investigator thought the problem was conceptually accounted for, **not** that modern code is proven complete.
+
+| Historical ID | Indispensable function/problem | New home | Historical residual (not current verdict) |
+|---|---|---|---|
+| LMX-001 | Typed semantic claim/proposition/authority/currentness/use-permission identity. | II; IX | None at preservation grain. |
+| LMX-003 | REJECT/BLOCKED/proven-negative/unexamined noncollapse. | II; IX | None at preservation grain. |
+| LMX-005 | Manual/source-semantic authority cannot be auto-derived from raw bytes. | II; IX | None at preservation grain. |
+| LMX-006 | Question/source implementation identity distinct from semantic identity. | II; IX | Source-specific positive bindings remain ordinary authority maintenance. |
+| LMX-008 | Source-native questionnaire structure distinct from semantic relation authority. | II; IX | Positive source-family load varies. |
+| LMX-009 | P3C proposition equivalence does not grant response portability/respondent joins/joint authority. | II; IX | None. |
+| LMX-015 | Response semantics/direction/missingness/topology from exact source authority. | II; IX | Use-specific source load can remain fail-closed. |
+| LMX-016 | Routing/applicability/risk set executable or typed unresolved. | II; IX | Some source/product positive runtime bindings remain maintenance debt. |
+| LMX-017 | Measurement portability/value equivalence requires separate authority. | II; IX | Concrete future portability uses need exact authority. |
+| LMX-018 | Weight/design/estimand/variance authority is purpose/claim scoped. | II; IX | Unused family/use combinations may remain unbound. |
+| LMX-020 | Category empirical object distinct from parent distribution. | II; IX | None at functional grain. |
+| LMX-025 | Typed closure jurisdiction and evidence-state-specific verdicts. | II; IX | None. |
+| LMX-030 | Multi-universe disagreement/history/noncomparability preserved. | II; IX | None at functional grain. |
+| LMX-002 | Typed lifecycle/current selection and immutable history. | II; IX | Runtime maintenance executor remains B08 future work. |
+| LMX-004 | Future semantic-authority production/adjudication/genealogy/lifecycle/release/rollback. | II; IX | B08 eight functions remain implementation/owner-executor work. |
+| LMX-007 | P2/source-local continuity genealogy distinct from canonical P3C identity. | II; IX | B08 execution remains future. |
+| LMX-010 | Logical V550J configuration distinct from executable scope/risk-set/completion. | III; IX | Product-wide positive J authority load unproved. |
+| LMX-011 | Same-respondent joint evidence irreducible. | III; IX | Product-wide authorized coverage unproved. |
+| LMX-012 | Component identity/order/roles/multi-axis authority vector. | III; IX | Current implementation proof open. |
+| LMX-013 | Non-scalar vectors and complete+compatible+unanimous+nonempty scalarization. | III; IX | Current general consumer implementation unproved. |
+| LMX-014 | Joint/component denominator and context certification. | III; IX | Current consumer proof open. |
+| LMX-019 | V551 canonical signed projection has one governed owner. | III; IX | Whole-path regression proof required in candidate test. |
+| LMX-022 | Joint context may attach without silently mutating pressure. | III; IX | B07 consumer proof open. |
+| LMX-021 | V552 structural pressure/fact is a new governed structural statement not the empirical distribution. | V; IX | None at functional grain. |
+| LMX-038 | Structural-channel/contradiction interpretation requires explicit rule authority. | V; IX | Specific future rule additions only if terminal use requires. |
+| LMX-027 | Deterministic adaptive discovery replay and search-completeness state. | III; IX | Physical performance/execution proof future. |
+| LMX-028 | Autonomous discovery beyond designer-predeclared queries. | III; IX | Real-source production execution remains source-release dependent. |
+| LMX-029 | Positioned-subject empirical possibility field distinct from actor state. | III; IX; XII | Physical representation/service implementation future. |
+| LMX-036 | Sparse-slice broadening exposes specificity loss and proxy provenance. | III; IX; XII | Physical policy implementation/performance future. |
+| LMX-023 | Whole-machine information availability despite removal of physical stage copies. | IX; XI | Current executable end-to-end zero-loss not proved. |
+| LMX-024 | Authority role must survive not merely field bytes. | IX; XI | Whole-current role equivalence not yet proved. |
+| LMX-026 | Cache nonauthority/stale rejection/delete-and-rebuild. | IX; XI | Physical candidate proof future. |
+| LMX-042 | Exact derivability requires determinant/provenance/invalidation/replay proof. | IX; XI | Current V554+ reverse lineage proof open. |
+| LMX-043 | Atomic staging/promotion/restart/replay are conservation functions. | IX; XI | Physical implementation proof future. |
+| LMX-031 | Generated person is developmental/relational/palimpsestic not isolated adult vector. | VII; VIII | Multiple V3 runtime rule implementations remain downstream work. |
+| LMX-032 | Structural position distinct from awareness/solidarity/viscerality/belief/expression. | VII; VIII | None at conceptual grain. |
+| LMX-033 | Plural frameworks plus buffers/cracks/dissonance mediate structure→actor. | VII; VIII | Substantive V3 update rules remain downstream authority work. |
+| LMX-034 | Alienation/identification modulates visibility/objectification of each finite stratum under Absolute Horizon. | VII; VIII | ADP-014 accepted semantic/update authority and runtime implementation not yet proved. |
+| LMX-035 | Developmental/construct availability varies with generated life history rather than universal birthday gates. | VII; VIII | Exact accepted construct-availability contract remains future V3 authority work. |
+| LMX-037 | LLM/narrative expression cannot invent causal biography/upstream authority. | VII; VIII | None at conceptual grain. |
+| LMX-039 | Actor opacity availability/opportunity/encounter/exposure/realization/response/memory/knowledge/expression noncollapse. | VII; VIII | None at ontology grain. |
+| LMX-040 | Old heuristic psychological/parent-type coefficients are not empirical truth. | VII; VIII | None. |
+| LMX-041 | No decorative ontology; truthful status surfaces. | XI; XII | None. |
+| LMX-044 | Current consumer absence does not prove historical function obsolete. | XI; XII | None. |
+
+### XIII.3 All 30 inherited LMQ proof and resource debts
+
+These are original historical debt identities and dispositions preserved for audit. Some have been superseded by later exact receipts. A build agent must demand *live exact code/test/source/owner reconciliation* before asserting that any historical failure is still open or has closed. A physically absent old ZIP is not by itself a lost operative function when the original behavior is otherwise independently established; an old successful code excerpt is not proof of current first-consumer occupancy.
+
+| Historical ID | Historical demand | Historical status/type | Why it matters to present machine |
+|---|---|---|---|
+| LMQ-001 | Post-repair whole PRE553 consumer/field conservation re-court and explicit final verdict. | NOT_LOCATED / MODERN_PROOF_GAP | Historical major repairs do not prove whole-machine information closure without a new court bound to repaired roots. |
+| LMQ-002 | Valid production-complete V550J authority after Archive08 quarantine. | NOT_PROVED / HISTORICAL_CAPABILITY_GAP | Archive08 global release is rejected; bounded authority cannot authorize all-wave joint compilation. |
+| LMQ-003 | Executable exact routing predicates for 99 source-signaled rows. | NOT_PROVED / HISTORICAL_AUTHORITY_GAP | Respondent risk sets may not be guessed from source signals. |
+| LMQ-004 | Source closure or governed known-absence for 320 no-source-row + 280 unresolved routing rows. | NOT_PROVED / HISTORICAL_AUTHORITY_GAP | Applicability/risk-set authority remains fail-closed until source evidence or known-absence exists. |
+| LMQ-005 | All-wave executable V550J scope-variant/risk-set registry. | NOT_PROVED / HISTORICAL_CAPABILITY_GAP | Logical configuration alone cannot authorize execution. |
+| LMQ-006 | Future semantic-authority production/maintenance lifecycle successor. | NOT_PROVED / MODERN_SUCCESSION_GAP | Frozen R184 tables do not preserve ability to admit/correct future terrain. |
+| LMQ-007 | Canonical installed successor of Section35 component-aware authority vector. | NOT_PROVED / MODERN_SUCCESSION_GAP | Validated historical implementation was explicitly not installed. |
+| LMQ-008 | Complete installation proof that V551 owns canonical signed projection and downstream does not re-infer. | PARTIAL_PROOF / MODERN_SUCCESSION_GAP | Multiple semantic projection owners create drift and semantic duplication. |
+| LMQ-009 | Current field-to-consumer information-conservation closure. | NOT_PROVED / MODERN_PROOF_GAP | Field bytes may survive while lawful consumer access or authority role is lost. |
+| LMQ-010 | Complete lower-level source-structure row-audit producer set behind 18792-row QSR. | PARTIAL_RECOVERY / HISTORICAL_REPLAY_GAP | Compiled register authority is strong but complete primary-source replay is unproved. |
+| LMQ-011 | QSR 15f7... to later same-name 9139... row/field succession. | UNPROVED / LINEAGE_PROOF_GAP | Same filename/newer timestamp does not establish governed semantic succession. |
+| LMQ-012 | Exact GSS_P3C_NATIVE_CLOSURE_RETURN.json. | NOT_LOCATED / HISTORICAL_RECEIPT_GAP | R02 proves historical GSS succession but exact named native terminal receipt remains missing. |
+| LMQ-013 | Fresh selected 35-wave response-semantics runtime court. | NOT_PROVED / MODERN_EXECUTION_PROOF | Registry/contract closure is distinct from empirical selected-run closure. |
+| LMQ-014 | Canonical structural-channel and contradiction inference authority contract. | NOT_PROVED / MODERN_SUCCESSION_GAP | Output structures do not prove the semantic rules that interpret them. |
+| LMQ-015 | Generalized survey weight/design/estimand/variance authority. | NOT_PROVED / MODERN_AUTHORITY_GAP | Weighted computation capability does not authorize arbitrary estimands or uncertainty claims. |
+| LMQ-016 | Structural-persona A/S/V frameworks buffers alienation successor or formal retirement. | SUCCESSION_OPEN / MODERN_SUCCESSION_GAP | Strong person-world distinctions may be outside manual semantic-authority preservation. |
+| LMQ-017 | V506 construct/driver runtime installation + coverage validator + status closure. | NOT_PROVED / HISTORICAL_INTEGRATION_GAP | Recovered files close absence-of-map only; guide overstates actual mapping coverage and no promoted runtime receipt was found. |
+| LMQ-018 | Corrected driver-set rerun and semantic-master/scale-transform binding. | NOT_PROVED / HISTORICAL_SUCCESSION_GAP | Preserving old driver labels without corrected source meaning launders semantic defects. |
+| LMQ-019 | FAIL_ROM relation_evidence role revalidation. | NOT_PROVED / MODERN_ROLE_PRESERVATION_GAP | Concrete proof that a field may survive while its authority role is lost. |
+| LMQ-020 | Exact recovered from Library.zip wrapper. | CONTROL_IDENTITY_KNOWN__R06_NOT_INDEPENDENTLY_MATERIALIZED / EXTERNAL_WRAPPER | Constituent shards are substantially recovered but do not prove wrapper byte equivalence. |
+| LMQ-021 | P3A_V35_CANDIDATE_IDENTITY_MIGRATION.csv. | PRESENT_IN_SEALED_TREE / PRESENT_NOT_RETRIEVED | Previously mislabeled missing due transfer-local omission. |
+| LMQ-022 | P3A_V35_ALL_CANDIDATE_HASH_RECONCILIATION.csv. | PRESENT_IN_SEALED_TREE / PRESENT_NOT_RETRIEVED | Previously transfer-local omission. |
+| LMQ-023 | P3_DDL_VALIDATION_QUERIES_v7.sql. | PRESENT_IN_SEALED_TREE / PRESENT_NOT_RETRIEVED | Important same-name/different-hash lineage warning; not a global absence. |
+| LMQ-024 | Section85 nine-family diagnostic smoke exact ZIP. | NOT_IN_SEALED_TREE / EXTERNAL_HISTORICAL_PAYLOAD | Exact byte-level replay/provenance only; conceptual execution evidence already exists. |
+| LMQ-025 | Layer1 35-wave audit checkpoint SAFE ZIP. | NOT_IN_SEALED_TREE / EXTERNAL_HISTORICAL_PAYLOAD | Exact failure artifact could improve chronology but does not alter known preliminary status. |
+| LMQ-026 | Layer1 joint-authority repair checkpoint 075605f ZIP. | NOT_IN_SEALED_TREE / EXTERNAL_HISTORICAL_PAYLOAD | Exact registry artifacts may improve historical repair provenance. |
+| LMQ-027 | Original PRE553 Freeze Audit ZIP1 wrapper. | PRESENT_IN_SEALED_TREE / PRESENT_NOT_RETRIEVED | Core evidence already audited; wrapper only matters for forensic equivalence. |
+| LMQ-028 | Original PRE553 Freeze Audit ZIP2 wrapper. | PRESENT_IN_SEALED_TREE / PRESENT_NOT_RETRIEVED | Core planning evidence already audited. |
+| LMQ-029 | rawlsing_pax_marxica_2_0_MAX_androidic_pack(1).zip. | EXACT_ZIP_UNAVAILABLE__MEMBERS_HASHED / OPTIONAL_INTENT_ARCHAEOLOGY | Pax remains design/terminal-intent evidence absent execution proof. |
+| LMQ-030 | Intermediate J v23-v40 cumulative handoff packages. | NOT_PRESENT_IN_SUPPLIED_SELECTION / CHRONOLOGY_COMPLETENESS | May matter for byte-complete packaging chronology but current decisive J findings have stronger later evidence. |
+
+### XIII.4 The source streams consumed into this reconstruction and their epistemic role
+
+**Original-intent/source-boundary stream:** the early multi-label Arab Barometer inquiry, V550–V553 original directive, original project identity and August V5 inter-pressuring orientation, the August 30 Field Forge questioning, the original nine-strata and parent-generation visions, V3.4 generator, Enneagram and full vector pipeline. They contribute the questions about person/world, cultural mediation, recursive branches, whole-case co-travel, defiance, permeation, developing relations and pressure; none authorizes old fixed cultural scores or speculative Enneagram weights as empirical psychology.
+
+**Law and recovered-function stream:** HQD-125 (F1–F8 functional law), HQD-216 (productive adequacy), Long Memory R01–R06 and its 44 functional concepts/30 resource debts, historical V550/V551/V552 and J-family, V551 canonical projection, whole-field conservation/caches/currentness and signed pressure doctrine, current semantic/routing/source permits. These contribute **what must actually function and what must not be lost**, not an order to reinstate obsolete byte-level physical stages.
+
+**Field and material-world stream:** Field Forge R1/R2 and its adopted actor-independent minimum relation contract, original field-relative capital and hegemony/subhegemony inquiries, EPR/GeoEPR geography/power demands, social-reproduction theory, Wright's class relation analysis, economic and institutional source evidence. They contribute material position, resources, conversion, independent Others, carriers, world conditions, labor/care reproduction and power. Analytical associations alone cannot issue specific causal mechanisms.
+
+**Psychological/developmental stream:** original V3, P2–P6, CAN/ADP, PFF, SDTF, PRE-A0, SEAM, ORACLE and Mechanisms; Leontiev's activity/motive/personal sense/affect distinction; Vygotsky's lived-through encounter (perezhivanie); Luria's historically organized cognitive mediation; Sève's acquisition/exercise relation; Lahire's multiple acquired dispositions, inhibition and practical analogy; Dreier/Holzkamp's conduct of everyday life and practical reasons; Archer's reflexivity problem; Elder/Mortimer's life course and historical timing; Kohn/Schooler's work/position reciprocal development. These are *different intellectual models* providing concrete modeling problems, not an instantly validated unified psychology. The SORACLE HQ synthesis of activity-mediated recruitment and genesis exposed a genuine missing connection and has been reworked directly into §§0, VII and VIII rather than appended as a new theory.
+
+**Statistical identification/epistemology stream:** source-specific survey design and nonresponse; Fréchet–Hoeffding bounds for common-population event conjunctions; Manski's partial-identification perspective; statistical matching/data-fusion cautions; exact respondent co-observation, missing-answer bounds, selection/multiple-testing and explicit transport. These provide a richer *positive* science of qualified possibilities, not permission to invent missing joint observations.
+
+**Current engineering and owner stream:** PRE553 source/semantic and learned primitive implementations, C11 storage/performance, S04/DHIKR, N10E/N10W and P41/R05 first readers, Field Forge R2/GT canaries and generic bounded relations, Sorok continuing organism branches. These are implementation candidates/accepted-capital leads, each requiring **live selected HEAD, executed test and source/owner proof**, not a present blanket claim of complete end-to-end organism.
+
+**Specific original cross-check anchors:**
+- PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md
+- PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md
+- PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/FIELD_FORGE_R2_SUCCESSION_CURRENTNESS_20261104_R1.md
+- PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/10_N10_POSSIBILITY_F8.md
+- PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/L_FIELD_FORGE_CONSTITUTION.md
+- Long Memory corpus files 02B_PERSON_WORLD_AND_ANALYTICAL_CAPABILITIES.md and 02C_WHOLE_MACHINE_INFORMATION_CONSERVATION.md
+- source-specific exact original chronology and paths in the earlier archival SOURCE_RESERVOIR_AND_OPEN_EXCAVATION.md at immutable 638bb7a4a1049bd666946e869a7fde7592dd2624, **historical provenance only**; no agent should have to read it to learn the target.
+
+### XIII.5 What would constitute actual source-bank exhaustion
+
+**This author has not established exhaustive original-source inspection.** The recovered historical register itself explicitly says early 2025–May/June 2026 source formulations, all V500-series ancestry, complete old Long Memory packets, alternate drafts, EPR/GeoEPR originals, and many source-specific original35 method records were not all exhaustively mined. The uploaded scholarly works have been consulted for selected operative questions, not all read cover-to-cover and adjudicated as a unified scientific theory. This candidate has incorporated much of their strongest recovered content; it cannot truthfully mark the universe 'nothing forgotten' merely because all 44 and 30 indexed debts are represented.
+
+A genuine saturation court must have a **closed source universe** (explicit location/version/size/hash and relevant temporal cut), a logged read/contrast decision for every in-scope item, a source-to-function and source-to-theory crosswalk, a conflicting-source disposition, a residue for each nonintegrated substantive idea, and an adversarial check against the currently selected repository and user controlling priorities. The residual must reach *zero for the declared closed universe*, not by arbitrarily excluding difficult witnesses. Crucially: every material recovered difference must trigger **revision of the integrated text and its affected contracts**, never an afterthought chapter of miscellaneous additions.
+
+If a newly mined source shows the alleged activity-centered synthesis to be too narrow, **rewrite the kernel**. If it shows a discarded mechanism was useful, restore its function in the appropriate existing section or prove lawful retirement. If it suggests a beautiful theory but no distinguishable consumer behavior, keep it as a candidate instead of freezing it. If the available source corpus is not fully enumerated, leave the exhaustion claim open rather than invent certainty.
+
+**Current documentary disposition:** RECONSTITUTED_SINGLE_TARGET_CANDIDATE; 20/20 former chapter homes accounted for; 44/44 inherited LMX obligations and 30/30 LMQ debts indexed in-book; source corpus not yet certified exhaustive; no independent intellectual or engineering acceptance; no protected PROGRAMMA/CURRENT_PROGRESS receiving.
