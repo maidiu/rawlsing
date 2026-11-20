@@ -20,6 +20,7 @@ def materialize(actor,world):
         relational_motifs=copy(actor.get('relational_motifs',[])),
         possible_ends=copy(actor.get('possible_ends',[])),
         evidence_paths=copy(actor.get('evidence_paths',[])),
+        expectations=copy(actor.get('expectations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
