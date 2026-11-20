@@ -12,7 +12,8 @@ from .material_investments import choose_qualified_material_care
 from .unintended_goods import one_sourcefree_provisional_end
 from .expectation_afterlife import conservative_appraisal_proposal
 from .co_regulation_history import (
-    sourcefree_co_regulation_proposal, choose_historically_situated_signal)
+    sourcefree_co_regulation_proposal, choose_historically_situated_signal,
+    sourcefree_revision_proposal)
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -117,6 +118,8 @@ class HeuristicSemanticProvider:
             lived=copy(packet.get('historically_proposed_preproject',[]))
             lived+=sourcefree_co_regulation_proposal(
                 packet.get('historically_possible_co_regulation',[]))
+            lived+=sourcefree_revision_proposal(
+                packet.get('historically_possible_co_regulation_revision',[]))
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
             relation_candidates=lived+copy(
