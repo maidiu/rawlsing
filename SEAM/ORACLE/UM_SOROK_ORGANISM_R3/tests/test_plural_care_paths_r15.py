@@ -210,6 +210,37 @@ class PluralCareSourcefree(unittest.TestCase):
         self.assertIsNone(conserve_lived_high_resolution_care(
             self.nadia,forged,'other_event',body(),body(.63,.64)))
 
+    def test_recent_relief_does_not_erase_the_contradicted_relational_past(self):
+        reopened={
+            'option_id':'to_mother',
+            'grounds_status':'HISTORICALLY_ACQUIRED_CO_REGULATION',
+            'reopened_after_actual_contradiction':True,
+            'prior_unfinished_personally_sensed_call_count':3,
+            'personally_sensed_support_history':[{
+                'response_ref':'real_recent_mother_response',
+                'event_clock':12,'bodily_regulation_sensed':True}]}
+        other={
+            'option_id':'to_father',
+            'grounds_status':'HISTORICALLY_ACQUIRED_CO_REGULATION',
+            'reopened_after_actual_contradiction':False,
+            'personally_sensed_support_history':[{
+                'response_ref':'real_earlier_father_response',
+                'event_clock':9,'bodily_regulation_sensed':True}]}
+        needy={'comfort':.2,'nutrition':.4,'rest':.3}
+        selected=plural_addressed_signal_choice([{
+            'action':'SIGNAL','practical_alternatives':[reopened,other]}],needy)
+        self.assertEqual(selected['practical_option_id'],'to_father')
+        no_other_witness={**other,'personally_sensed_support_history':[]}
+        self.assertIsNone(plural_addressed_signal_choice([{
+            'action':'SIGNAL','practical_alternatives':[
+                reopened,no_other_witness]}],needy))
+        # An independently chosen act is still possible when this is the
+        # only available person; nothing in the fallback declares their
+        # relationship safe, loving or free of contradiction.
+        alone=plural_addressed_signal_choice([{
+            'action':'SIGNAL','practical_alternatives':[reopened]}],needy)
+        self.assertEqual(alone['practical_option_id'],'to_mother')
+
     def test_lived_care_can_reopen_contradicted_relation_without_forgetting(self):
         lived_care(self.nadia,'mother',1,'first')
         e=current_experience(clock=2,people=('mother',))
