@@ -18,7 +18,8 @@ from .organism import eligible
 # existing organism, never generic applied competence for WORK or property.
 PRACTICEABLE = frozenset({'SING', 'JOIN', 'MAKE_SPACE', 'PRACTICE'})
 REPEATABLE = frozenset({'SING','JOIN','MAKE_SPACE','PRACTICE',
-                        'SIGNAL','ASK','INSPECT','REPAIR','WORK'})
+                        'SIGNAL','ASK','INSPECT','REPAIR','WORK',
+                        'FEED','SIGN_FOOD_PETITION'})
 
 
 def retain_exercised_power(actor, experience, objective_ref, location):
