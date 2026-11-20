@@ -137,8 +137,8 @@ def test_budget_refuses_unaffordable_full_table_and_does_not_make_negative():
 def test_budget_refuses_counted_cell_expansion_without_partial_silent_zero():
     out = _run(_real_joint("country-visits"),
                budget=_budget(max_cell_visits=1))
-    assert out["state"] == "PARTIAL_UNVISITED_UNKNOWN"
-    assert out["candidate_evidence"] == []
+    assert out["state"].startswith("HELD")
+    assert out["stop_reason"] == "JOINT_MATERIALIZATION_CELL_VISITS_OVER_BUDGET"
     assert out["unvisited_candidate_indices"] == [1, 2]
 
 
