@@ -18,10 +18,36 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009)
 fi
+# Sourcefree exact-head evidence is immutable. Reruns use a distinct
+# REMONT_PROOF_ROOT; earlier RED/JUnit/log bytes must survive.
+if [[ ! "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] ||
+   [[ ! "$EXPECTED_PREFF_C0_HEAD" =~ ^[0-9a-f]{40}$ ]]; then
+  echo "HOLD_INVALID_REMONT_EXACT_HEAD" >&2
+  exit 25
+fi
+# Bash 3.2/macOS and nounset safe. Preflight every QID before any test
+# or proof mutation; Q006 deliberately remains an authority hold.
+validated_cases="|"
+for id in "${cases[@]}"; do
+  case "$id" in
+    RMT-Q001|RMT-Q002|RMT-Q003|RMT-Q004|RMT-Q005|RMT-Q007|RMT-Q008|RMT-Q009) ;;
+    *)
+      echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
+      exit 2 ;;
+  esac
+  case "$validated_cases" in
+    *"|$id|"*) echo "HOLD_DUPLICATE_REMONT_QID: $id" >&2; exit 26 ;;
+  esac
+  validated_cases="${validated_cases}${id}|"
+done
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
-mkdir -p "$OUT"
+mkdir -p "$(dirname "$OUT")"
+if ! mkdir -m 700 "$OUT"; then
+  echo "HOLD_EXISTING_REMONT_PROOF__DO_NOT_OVERWRITE: $OUT" >&2
+  exit 27
+fi
 printf '%s\n' "$HEAD_SHA" > "$OUT/exact_head.txt"
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
 printf '%s\n' "case_id,exitcode,report_directory" > "$OUT/index.csv"
@@ -53,9 +79,12 @@ for id in "${cases[@]}"; do
     RMT-Q007) # C5 material sourcefree context navigation and real I05 role
       tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py)
       ;;
-    RMT-Q008) # REMONT P0 ABI parity and historical raw/held negative courts
+    RMT-Q008) # Existing PYAT held-source/raw negative ring
       tests=(rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
              rawlsing_next/tests/test_preff_c0_raw_preservation.py)
+      ;;
+    RMT-Q009) # New immutable proof/no-clobber sourcefree preflight
+      tests=(rawlsing_next/tests/test_preff_remont_batch_guard.py)
       ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
