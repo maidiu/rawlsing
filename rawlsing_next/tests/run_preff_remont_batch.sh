@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q011)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -61,6 +61,11 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q010) # C6 V3/SEAM pinned replay, world and pair negative court
       ;;
+    RMT-Q011) # C7 pure C6->R4 sourcefree admission and negative courts
+      tests=(rawlsing_next/tests/test_preff_c7_actual_r4_world_bridge.py)
+      ;;
+    RMT-Q012) # Actual independent Sorok R4 full-package byte-pinned runtime
+      ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2
@@ -73,7 +78,15 @@ for id in "${cases[@]}"; do
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/start_utc.txt"
   echo "REMONT_EXECUTING $id at $HEAD_SHA"
   set +e
-  if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 ]]; then
+  if [[ "$id" == RMT-Q012 ]]; then
+    # Separate immutable R4 source tree must already be fetched. DO NOT
+    # pretend Q011 skip counts are an executed R4 interaction.
+    EXPECTED_PREFF_C0_HEAD="$HEAD_SHA" \
+    EXPECTED_C7_R4_HEAD=7bff10db7adb7b17bcf035a27561ea59e9a3b2be \
+    PREFF_PROOF_DIR="$dir/joint_R4" \
+    bash rawlsing_next/tests/run_preff_c7_actual_r4_local.sh \
+      2>&1 | tee "$dir/runner.log"
+  elif [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 ]]; then
     # Reuse the existing exact-head first-fault courts, not duplicated suites.
     court=C0_ALL_SMALL
     case "$id" in

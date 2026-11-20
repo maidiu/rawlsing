@@ -34,3 +34,14 @@ For every failure, identify the **first actual defect**, not the final generic s
 Publish one useful exact-SHA execution report to the **actual active source PR #1173** (or explicitly authorized descendant) and link it into #1097. Never claim the old Mac green was executed at the newer, queue-mutated HEAD. Report OS/Python/pytest, every run/skipped QID, command, pass/fail/skip, full JUnit/log path, source excerpt or traceback and recommended repair owner. Explicitly label USER/WORKER_SOURCEFREE_TEST_EXECUTED vs NOT_EXECUTED, not independent G5 or protected CAS. If no connector to publish, return a comment-ready report and identify the missing permission instead of claiming publication.
 
 Your required return is a single test matrix and repair-triage inventory with exact proof, no source-wave execution, no code changes and no false scientific or actor authority. **Standing workflow for all FUTURE sourcefree developments:** source/repair author appends the next unused numbered QID to the ONE existing queue and wires its actual regression court to the same launcher as part of development handoff. OpenCode consumes the enlarged queue at the **next user-initiated** invocation—do not interrupt an ongoing Mac run with more commands or pretend the queue executes itself. Preserve prior executed SHAs, local proof paths, every negative court and the unrun Q006 original-source hold. The commission remains OPEN for future launches; adding tests does not silently accredit the current candidate.
+
+## NEW: C7 actual Sorok R4 cross-branch first consumer
+
+New C7 branch stacks above the existing PYAT C6 #1173 implementation, without rewriting the R4 owner PR #1174. REMONT queue **Q011** runs pure sourcefree C7 admission tests and may SKIP the two R4-dependent cases. **Q012** is distinct: actual independently pinned R4 execution is REQUIRED. Fetch both exact commits, but do NOT merge branches. In the detached C7 worktree the command is:
+
+```bash
+git fetch origin pull/1174/head
+EXPECTED_PREFF_C0_HEAD="$SHA" bash rawlsing_next/tests/run_preff_remont_batch.sh RMT-Q011 RMT-Q012
+```
+
+The Q012 script archives only the 20 Python modules of frozen Sorok R4 SHA `7bff10db7adb7b17bcf035a27561ea59e9a3b2be`, cryptographically checks their source bytes, and executes the actual R4 body/world/actor/psychological afterlife and cold hash-chain replay. It is not a second pseudo-actor implementation. The original R4 owner remains untouched, science/actor/protected rights remain held. Report Q011 skipped cases distinctly; no source-original waves or scientific G5. Inspect the C7 implementation and new tests before any repair. If C7 has obvious one-module bugs, route to REMONT/OpenCode; conceptual world/actor causality to Sorok R4 + PYAT heads.
