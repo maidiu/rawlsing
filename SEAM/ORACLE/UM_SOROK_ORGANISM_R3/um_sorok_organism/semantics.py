@@ -82,11 +82,20 @@ class HeuristicSemanticProvider:
                         and candidate.get('origin_event')!=packet.get(
                              'historical_psychodynamic_context',{}).get('objective_event_ref')
                         and tags & {str(x).lower() for x in candidate.get('cue_terms',[])}):
+                    # The fallback may name an actually received later sign.
+                    # It may never make up an unseen cue or confer knowledge
+                    # of why that sign became psychically important.
+                    matching_sign=next((cue.get('id') for cue in cues
+                        if type(cue.get('id')) is str and
+                        {str(t).lower() for t in cue.get('tags',[])}
+                        & {str(t).lower() for t in candidate.get('cue_terms',[])}),None)
                     relation_candidates.append({
                         'kind':'TAKE_UP_POSSIBLE_END',
                         'possible_end_ref':candidate['id'],
                         'means':copy(candidate['possible_means']),
                         'priority':.32,
+                        **({'later_perceived_cue_ref':matching_sign}
+                            if matching_sign is not None else {}),
                     })
                     break
             if action in ('PRACTICE','SING','JOIN','MAKE_SPACE') and cues:
