@@ -201,6 +201,13 @@ def _target_component_value(
         used.append(event)
         used_auth.extend(_validate_public_object_authorities(event, registry))
 
+    # PF-025: an absent response is not an observed empty multiselect,
+    # sequence or repeated answer. All target topologies must retain the
+    # same unresolved semantics unless a source owner explicitly issues
+    # evidence of an administered-empty selection.
+    if not events:
+        return False, None
+
     topology = component.topology
     if topology == "SCALAR_SINGULAR":
         if not events:
