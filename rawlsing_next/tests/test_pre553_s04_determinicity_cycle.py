@@ -10,6 +10,7 @@ from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_s04_country_refinement import (
     CountryRequest, RefinementBudget,
 )
+from rawlsing_next.pre553_s04_adaptive_support import AdaptiveSupportPolicy
 from rawlsing_next.pre553_s04_determinicity_cycle import (
     CyclePolicy, DeterminicityCycleError, ObservationChannel,
     advance_country_determinicity, consume_determinicity_context_for_prev3,
@@ -25,7 +26,7 @@ from rawlsing_next.tests.test_pre553_empirical_query import (
 def _policy(**kwargs):
     d = dict(
         target_axis=0, predictor_axes=(1, 2), fixed_context=(),
-        min_branch_n=2, max_depth=2, max_total_nodes=16,
+        max_depth=2, max_total_nodes=16,
         max_pending_nodes=16, max_new_nodes_per_call=1,
         max_receipt_bytes=250_000, max_pair_order=2,
         bootstrap_replicates=0, min_signal_bits="0.00001",
@@ -164,10 +165,17 @@ def test_source_observation_meaning_cannot_be_invented_by_caller():
 
 def test_low_support_is_not_a_person_or_negative_population_truth():
     real = _real_joint("cycle-low-n")
-    receipt = _advance(real, policy=_policy(min_branch_n=16))
+    receipt = _advance(real, policy=_policy(
+        support_policy=AdaptiveSupportPolicy(
+            explore_floor=16, explore_cap=16,
+            review_floor=16, review_cap=16,
+        ),
+    ))
     m = receipt.material()
     assert m["base_same_case_n"] == 8
-    assert m["base_target_distribution"] == []
+    # Underpowered observations are conserved, not erased.
+    assert sum(c["n"] for c in m["base_target_distribution"]) == 8
+    assert m["base_support_grade"].startswith("SOURCE_OBSERVED_BELOW")
     assert not m["independent_original_source_rights"]
 
 
