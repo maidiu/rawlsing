@@ -12,6 +12,7 @@ The world then independently decides whether that person participates.
 """
 from .types import GRADE, stable_id, copy
 from .organism import eligible
+from .plural_care_paths import _delta
 
 
 def conserve_received_period_care(recipient, period):
@@ -191,7 +192,7 @@ def recruit_co_regulation(constitution,access):
         personally_sensed_support += [
             {'response_ref':x['id'],'event_clock':x.get('clock'),
              'bodily_regulation_sensed':True}
-            for x in constitution.experienced_care_events
+            for x in getattr(constitution,'experienced_care_events',[])
             if x.get('giver_ref')==record['caregiver_ref']
             and type(x.get('clock')) is int
             and x.get('clock')>=record.get('origin_event_clock',0)]
@@ -272,7 +273,8 @@ def choose_historically_situated_signal(options,body):
         'other_response_is_independently_settled':True}
 
 
-def record_lived_co_regulation_response(actor, experience, selection, event_ref):
+def record_lived_co_regulation_response(actor, experience, selection, event_ref,
+                                       bodily_before=None,bodily_after=None):
     """The learner's actually attempted signal acquires a fallible afterlife.
 
     'World did not join' is not automatically 'caregiver does not love me'.
@@ -304,6 +306,11 @@ def record_lived_co_regulation_response(actor, experience, selection, event_ref)
     status=experience.get('status')
     if status not in ('PARTIAL','PERFORMED','BLOCKED'):
         return None
+    delta=(_delta(bodily_before['comfort'],bodily_after['comfort'],
+                  'RESPONDED_CALL_COMFORT')
+           if bodily_before is not None and bodily_after is not None
+           else 0.)
+    felt_relief=(status=='PERFORMED' and delta>=.025)
     meaning=('UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN'
              if status=='PARTIAL' else
              'PERFORMED_SIGNAL_NOT_PROOF_OF_CARE'
@@ -319,6 +326,10 @@ def record_lived_co_regulation_response(actor, experience, selection, event_ref)
         'caregiver_ref':addressed,'event_ref':event_ref,
         'experience_ref':experience.get('ref'),
         'received_sign_ref':signs[0]['id'],
+        'event_clock':experience.get('clock'),
+        'body_comfort_difference_on_call':delta,
+        'felt_bodily_relief_on_this_call':felt_relief,
+        'relief_not_proof_of_other_intent':True,
         'attempted_operation':'SIGNAL',
         'actor_experienced_attempt_status':status,
         'received_sign_description':signs[0].get('description'),
