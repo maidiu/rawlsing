@@ -116,6 +116,22 @@ def can_draw_shared_food(world,giver,site):
     if board is None:return True
     if type(giver) is not str or not giver:
         raise ValueError("FOOD_POWER_UNKNOWN_DRAWER")
+    # R18 separates a formally recorded food right from the *continuing*
+    # material capacity to enforce its restriction. Earlier R17 fixtures,
+    # without a material enforcement constitution, preserve their old rule.
+    from .food_power_reproduction import effective_enforcement
+    now=world["clock"]
+    if not effective_enforcement(board,now):
+        return True
+    for sanction in board.get("r18_sanctions",[]):
+        if (sanction.get("subject")==giver
+                and type(sanction.get("start_clock")) is int
+                and type(sanction.get("through_clock")) is int
+                and sanction["start_clock"]<=now<=sanction["through_clock"]):
+            # A collective access reform can coexist temporarily with an
+            # individually enforced sanction. Neither legal rule nor physical
+            # food stock by itself exhausts effective power.
+            return False
     if board["food_rights"]=="SHARED_BY_COLLECTIVE_ACTS":
         return True
     return giver in board["initially_permitted_givers"]
