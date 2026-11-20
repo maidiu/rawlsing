@@ -1,0 +1,35 @@
+name: SORACLE R19 wage-life sourcefree court (read-only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
+      - '.github/workflows/soracle-r19-sourcefree-tests.yml'
+permissions:
+  contents: read
+jobs:
+  r19-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile original sourcefree organism
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m compileall -q um_sorok_organism
+      - name: R19 focused sourcefree first-consumer and world tests
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest -v tests.test_labor_dependency_r19
+      - name: R19 focused optimized (-O)
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest -v tests.test_labor_dependency_r19
+      - name: Full inherited sourcefree regression (R3–R19)
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -v
+      - name: Full inherited optimized regression
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest discover -s tests -v
