@@ -1,0 +1,38 @@
+# REMONT / SOROK — R19 EXACT-HEAD WAGE-DEPENDENCY AND MATERIAL-LIFE COURT
+
+**Owner:** SORACLE sourcefree forward construction, not REMONT or accredited native SOROK.
+
+**R19 branch:** `agent/soracle-r19-labor-dependency-reproduction-20261120`; stacked on exact R18 source `72e4a9b0f42f3a8459df54dc5a2f360dd0d0cdb3`. Resolve live author HEAD independently before checkout. Complete report: `SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R19_MULCH_WAGE_DEPENDENCY_AND_WORKER_RELIEF.md`.
+
+**Evidence grade:** Original-repository tests `tests/test_labor_dependency_r19.py` and read-only `.github/workflows/soracle-r19-sourcefree-tests.yml` are committed. The SORACLE author did NOT run Python, the full sourcefree original suite, the optimized -O suite, the joined SQLite test or GitHub Actions; no independent G5/REMONT receiving exists. Previous R16 bounded 19/19 + 19/19 source-extracted tests do not test R19.
+
+## Required exact-HEAD independent execution
+
+```
+cd SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+python -m compileall -q um_sorok_organism
+python -m unittest -v tests.test_labor_dependency_r19
+python -O -m unittest -v tests.test_labor_dependency_r19
+python -m unittest discover -s tests -v
+python -O -m unittest discover -s tests -v
+```
+
+**R19-01 — sourcefree existing enterprise, not worker consent.** Register an explicit, source-graded existing enterprise `workshop_steward` with exact workshop ownership, wage, human worker roster, delegate roster, institutional service account and separate worker relief account. That precondition must not pay workers, create employee contracts or imply anyone believes in the employer's legitimacy. Nonempty source, correct site/controller, nonzero wage and unique identities are required. Existing unrelated hall/food institutions must remain unchanged.
+
+**R19-02 — individually received contract.** One worker must physically encounter and `INSPECT` the exact posted wage terms, then later `ACCEPT_WORK_TERMS` through their own embodied action. Merely seeing the sign, being economically needy, standing at workshop, or having a guessed employer as model context does not create their contract. External injection must retain `INJECTED_NOT_NATIVE_ACTOR_CHOICE`, and any actor-selected attempt its own distinct provenance. Actual acceptance is not proof of unconstrained voluntariness.
+
+**R19-03 — first consumer is the real existing WORK.** Without an accepted ACTIVE source-specific contract, `WORK` must not add stock to employer site or transfer wage into worker account. With one, preserve original `world.WORK`: employer controls +2 objective stock, account pays actual wage to worker, unpaid liabilities remain typed if employer lacks funds, private actor financial observations remain bounded. At a site without R19 work regime, previous WORK semantics remain unchanged.
+
+**R19-04 — independent employer delegate and financed suspension.** An identified separate actor at the worksite, named as delegate in the objective fixture, can attempt `SUSPEND_WAGE_WORK` targeting an actually contracted worker. The sourcefree employer *institution* pays 1 real unit into a distinct sourcefree labor-service account; that is not the delegate's personal or unexplained money. The worker is blocked from future paid WORK for four ticks, yet prior competence, wages, contract and body are not erased. Suspension not consented to by worker. Wrong delegate, unknown worker, no employer funds and other sites cannot sanction. Explicitly distinguish the real delegate's independent actor action from the still-fictional service provider (no employees simulated there).
+
+**R19-05 — withdrawal.** Worker themselves can `WITHDRAW_FROM_WAGE_WORK`; that changes future entitlement/ability to be paid without confiscating previous earnings, claiming voluntary freedom from material deprivation, or rewriting earlier workdays.
+
+**R19-06 — worker material support not moral affinity.** A contributor must have a prior actual positive wage receipt for this same enterprise/site before the sourcefree `CONTRIBUTE_WAGE_RELIEF` can debit .25 from their account and credit a separate relief pool. A private account prefilled from an external fictional donation is not earned wages. A currently sanctioned worker with a continuing registered contract can try `DRAW_WAGE_RELIEF` only while actual funds exist in the pool; that credits the worker's account and debits the fund. Payout doesn't terminate employer suspension or prove all workers supported them. No money minted.
+
+**R19-07 — person-level incomplete activity.** Independently resolved BLOCKED WORK must produce a personally perceivable `performed_work` sign and only the actual worker's `labor_dependency_encounters`, through the existing `runtime.step` afterlife. The actor record must not claim to know employer motives, objective account states or a future no-work probability. After a prior failed day at an actual site, if a real relief alternative is available, `Constitution.compose` must offer a source-qualified `DRAW_WAGE_RELIEF` course and the bounded semantic policy may nominate it, subject to project selection, WITHHOLD and contradiction. No future clock source at earlier constitution.
+
+**R19-08 — materially reproduced child.** Execute one continuing `ConstitutiveRuntime`: parent MOVEs to workshop, independently (or clearly injected) INSPECTs/ACCEPTs wage terms, physically WORKs for pay, BUYs actual stock at an explicitly fictional price, MOVEs home with held food, and FEEDs Nadia. Confirm real employer output, wage debit/credit, retail purchase, giver food debit, Nadia body gain, child lived food source and no adult theory imputed to Nadia. Cold SQLite reopen, event-chain verification, no duplicated wages/food/memory.
+
+**R19-09 — original science and inherited holds.** No survey-conditional adult hypothesis is authorized from sourcefree fabricated parent packet, no issued labor law/class psychodynamics, no automatic case that an accepted contract implies freely chosen employment, no fully simulated enforcing labor force. Reproduce inherited R14/R15 empty-answers test fixtures, R10/R13 provisional-end trial mismatch, and R17–R18 stacked sourcefree tests separately; file precise owned REMONT defect receipts. Keep protected PRE-MAIN and paired CURRENT_PROGRESS unchanged until independently received.
+
+**Requested return:** exact-SHA original runtime test outcomes including normal/-O and cold reopen, counterexamples and bounded authorized fixes, independent code witness, native receiving gates distinguished. Do not claim any unexecuted test PASS. `HQ_CURRENTNESS_HOLD` remains for HQ or protected programmatic authority.
