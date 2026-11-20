@@ -30,6 +30,8 @@ from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import possible_institutional_learning
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
+from .psychic_genesis import (
+    conserve_lived_episode,possible_contrast_end)
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -514,6 +516,14 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            conserve_lived_episode(
+                actors[aid],experience,objective_ref,
+                bodily_before[aid],actors[aid]['body'],
+                source_selection=(
+                    actor_attempt.intention if personally_done and
+                    actor_attempt is not None else None))
+            possible_genetic_end=possible_contrast_end(
+                actors[aid],experience,objective_ref)
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
             conserve_sensed_material_nonperformance(
@@ -599,6 +609,9 @@ class ConstitutiveRuntime:
                 # Untried possible ends are actor-history hypotheses, not
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'historically_possible_genetic_ends':copy(possible_genetic_end),
+                'recent_personally_lived_genesis_witnesses_analyst_only':copy(
+                    actors[aid].get('lived_genesis_episodes',[])[-8:]),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),
