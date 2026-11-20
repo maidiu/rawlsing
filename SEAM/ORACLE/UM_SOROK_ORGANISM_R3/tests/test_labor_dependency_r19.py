@@ -8,7 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from um_sorok_organism.types import adult,newborn,blank_world
+from um_sorok_organism.types import adult,newborn,blank_world,Attempt
+from um_sorok_organism.world import resolve
 from um_sorok_organism.labor_dependency import (
     register_work_regime,work_permission,accept_work_terms,
     suspend_worker,withdraw_labor,fund_worker_relief,draw_worker_relief,
@@ -88,7 +89,6 @@ class WageRelationWorld(unittest.TestCase):
             self.w,self.a,'father','mother','workshop',AUTONOMOUS)
         self.assertEqual(status['status'],'PERFORMED')
         self.assertEqual(work_permission(self.w,'mother','workshop'),
-                         'NO_ACCEPTED_WAGE_CONTRACT' if False else
                          'QUALIFIED_WORK_CONTRACT_ACTIVE')
         # Sourcefree sanctions start next clock and do not rewrite the
         # worker's historical contract or pretend she approved punishment.
@@ -128,14 +128,21 @@ class WageRelationWorld(unittest.TestCase):
         no_fake_wage=fund_worker_relief(
             self.w,self.a,'father','workshop',AUTONOMOUS)
         self.assertEqual(no_fake_wage['status'],'BLOCKED')
-        self.w['material_claims'].append({
-            'clock':0,'worker':'father','site':'workshop',
-            'controller':'workshop_steward','wage':.25,
-            'wage_due':.25,'wage_unpaid':0})
-        self.w['clock']=1
+        # Earn the wage by executing the ORIGINAL work owner, rather than
+        # fabricating a claim row that only resembles the actual source.
+        performed=resolve(self.w,self.a,Attempt(
+            actor='father',action='WORK',intention=AUTONOMOUS))
+        self.assertEqual(performed.status,'PERFORMED')
+        self.assertEqual(performed.objective_description,
+                         'PRODUCED_GOODS_CONTROLLED_BY_OTHER')
+        self.assertEqual(self.w['material_claims'][-1]['wage'],.25)
         contributed=fund_worker_relief(
             self.w,self.a,'father','workshop',AUTONOMOUS)
         self.assertEqual(contributed['status'],'PERFORMED')
+        # Initial money is not a bottomless claim against one wage.
+        duplicated=fund_worker_relief(
+            self.w,self.a,'father','workshop',AUTONOMOUS)
+        self.assertEqual(duplicated['status'],'BLOCKED')
         fund=self.w['work_regimes']['workshop']['relief_pool_ref']
         self.assertEqual(self.w['accounts'][fund],.25)
         suspend_worker(self.w,self.a,'father','mother','workshop',AUTONOMOUS)
@@ -261,6 +268,69 @@ class JoinedWageLife(unittest.TestCase):
         self.assertEqual(w['material_feeding_events'][-1]['food_source'],
                          'GIVER_HELD_FOOD')
         self.assertTrue(self.rt.verify()['valid'])
+
+    def test_joined_employer_sanction_and_real_wage_relief(self):
+        # Distinct adult action streams and real employer money meet at one
+        # continuing world. Nadia never inherits the workers' adult concepts.
+        for person in ('mother','father'):
+            self.assertEqual(self.rt.step(
+                person,requested_action='MOVE',
+                object_ref='workshop')['status'],'PERFORMED')
+            self.assertEqual(self.rt.step(
+                person,requested_action='INSPECT',
+                object_ref=self.registered['terms_notice_ref'])['status'],
+                'PERFORMED')
+            self.assertEqual(self.rt.step(
+                person,requested_action='ACCEPT_WORK_TERMS')['status'],
+                'PERFORMED')
+        self.assertEqual(self.rt.step(
+            'father',requested_action='WORK')['status'],'PERFORMED')
+        self.assertEqual(self.rt.step(
+            'mother',requested_action='WORK')['status'],'PERFORMED')
+        self.assertEqual(self.rt.step(
+            'father',requested_action='CONTRIBUTE_WAGE_RELIEF')['status'],
+            'PERFORMED')
+        before=self.rt.ledger.world('w1')[1]
+        total_before=sum(before['accounts'].values())
+        sanction=self.rt.step('father',requested_action='SUSPEND_WAGE_WORK',
+                             target='mother')
+        self.assertEqual(sanction['status'],'PERFORMED')
+        blocked=self.rt.step('mother',requested_action='WORK')
+        self.assertEqual(blocked['status'],'BLOCKED')
+        self.assertEqual(self.rt.snapshot('mother')[
+            'labor_dependency_encounters'][0]['own_attempted_work'],'WORK')
+        self.assertEqual(self.rt.snapshot('nadia')[
+            'labor_dependency_encounters'],[])
+        candidates=[x for x in self.rt.situated('mother')[
+            'candidate_actions'] if x['action']=='DRAW_WAGE_RELIEF']
+        self.assertEqual(len(candidates),1)
+        self.assertTrue(candidates[0].get('labor_relief_ground'))
+        paid=self.rt.step('mother',requested_action='DRAW_WAGE_RELIEF')
+        self.assertEqual(paid['status'],'PERFORMED')
+        world=self.rt.ledger.world('w1')[1]
+        self.assertEqual(world['accounts'][
+            self.registered['relief_pool_ref']],0)
+        self.assertEqual(world['accounts']['mother'],.5)
+        self.assertEqual(sum(world['accounts'].values()),total_before)
+        self.assertTrue(self.rt.verify()['valid'])
+
+    def test_employer_suspension_requires_named_present_actor_target(self):
+        for person in ('mother','father'):
+            self.rt.step(person,requested_action='MOVE',
+                         object_ref='workshop')
+        self.rt.step('mother',requested_action='INSPECT',
+                     object_ref=self.registered['terms_notice_ref'])
+        self.rt.step('mother',requested_action='ACCEPT_WORK_TERMS')
+        targets=[a for x in self.rt.situated('father')['candidate_actions']
+                 if x['action']=='SUSPEND_WAGE_WORK'
+                 for a in x['practical_alternatives']
+                 if a['world_request']['addressed_party_ref']=='mother']
+        self.assertEqual(len(targets),1)
+        self.assertEqual(targets[0]['binding_status'],
+                         'ACTUALLY_COPRESENT_TARGET')
+        self.assertTrue(targets[0][
+            'world_will_requalify_authority_at_execution'])
+
 
 if __name__=='__main__':
     unittest.main()
