@@ -54,6 +54,9 @@ def register_concession(world,actors,spec):
         "world":world["id"],"clock":world["clock"],"site":site,
         "controller":controller,"source":spec["source_ref"]})
     notice=stable_id("posted_food_concession",{"concession":ref})
+    q=spec.get("quorum",2)
+    if type(q) is not int or not 2<=q<=len(petitioners):
+        raise ValueError("R18_INVALID_QUORUM")
     world.setdefault("food_control_concessions",{})[site]={
         "id":ref,"site":site,"controller":controller,
         "eligible_petitioners":sorted(petitioners),
@@ -62,9 +65,6 @@ def register_concession(world,actors,spec):
         "public_notice_ref":notice,"status":"AVAILABLE_NOT_ENACTED",
         "preexisting_structural_permission_not_endogenous":True,
         "grade":GRADE}
-    q=spec.get("quorum",2)
-    if type(q) is not int or not 2<=q<=len(petitioners):
-        raise ValueError("R18_INVALID_QUORUM")
     world.setdefault("public_notices",[]).append({
         "id":notice,"public":True,"location":site,
         "effective_from":world["clock"],"effective_until":None,
@@ -92,7 +92,6 @@ def install_gate(world,actors,who,site,intention):
     if (concession["controller"]!=who or who not in actors or
             world["positions"].get(who)!=site):
         return {"status":"BLOCKED","outcome":"NO_ACTOR_ENCLOSURE_PERMISSION"}
-    from .food_access_struggle import witnessed_public_procedure
     # A concession can be an uninspected objective right: the actor must
     # actually inspect its separate notice before electing to use it.
     seen=any(x.get("public_notice_ref")==concession["public_notice_ref"]
@@ -274,13 +273,26 @@ def food_power_opportunities(world,actor,site):
     concession=_concession(world,site)
     if (concession and concession["controller"]==who
             and concession["status"]=="AVAILABLE_NOT_ENACTED"
-            and world["positions"].get(who)==site):
+            and world["positions"].get(who)==site
+            and any(x.get("public_notice_ref")==concession["public_notice_ref"]
+                and type(x.get("inspected_at_clock")) is int
+                and x["inspected_at_clock"]<=world["clock"]
+                for x in actor.get("notice_exposures",[]))
+            and _amount(world.get("holdings",{}).get(
+                who,{}).get("food",0),"AFFORDANCE_INSTALL_STAKE")>=2
+            and _amount(world.get("accounts",{}).get(
+                who,0),"AFFORDANCE_INSTALL_PAYMENT")>=COST_INSTALL):
         available.append(INSTALL)
     board=_owned_board(world,who,site)
     if board:
-        if board["food_rights"]=="CONTROLLED":
+        balance=_amount(world.get("accounts",{}).get(
+            who,0),"AFFORDANCE_ENFORCEMENT_CASH")
+        if board["food_rights"]=="CONTROLLED" and balance>=COST_MAINTAIN:
             available.append(MAINTAIN)
-        if effective_enforcement(board,world["clock"]):
+        if (effective_enforcement(board,world["clock"])
+                and balance>=COST_SANCTION
+                and any(other!=who and location==site
+                        for other,location in world["positions"].items())):
             available.append(SANCTION)
     if (_amount(world.get("holdings",{}).get(
             who,{}).get("food",0),"AFFORDANCE_HELD_FOOD")>=1
