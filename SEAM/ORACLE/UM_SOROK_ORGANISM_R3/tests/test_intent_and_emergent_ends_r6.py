@@ -222,6 +222,53 @@ class PurposeAndGenesisR6(unittest.TestCase):
         self.assertTrue(a['projects'][0]['original_attempt_purpose_not_rewritten'])
         self.assertTrue(a['projects'][0]['skill_mastery_not_inferred'])
 
+    def test_later_takeup_cannot_cite_an_unreceived_cue(self):
+        a=adult('mother','Mother')
+        admit(a,experience(),'objective:one',[
+            {'kind':'NOTICE_POSSIBLE_END',
+             'perceived_cue_ref':'world:perceived_song',
+             'possible_object':'pursue a shared rhythm',
+             'possible_means':['SING'],'cue_terms':['sing']}])
+        before=copy(a)
+        with self.assertRaisesRegex(InvalidDevelopment,
+                                    'TAKEUP_SIGN_NOT_ACTOR_RECEIVED'):
+            admit(a,experience(ref='actor:experienced:two',
+                               cue='world:actual_later_sound'),
+                  'objective:two',[
+                  {'kind':'TAKE_UP_POSSIBLE_END',
+                   'possible_end_ref':a['possible_ends'][0]['id'],
+                   'later_perceived_cue_ref':'world:invented_silence',
+                   'means':['SING']}])
+        self.assertEqual(a,before)
+
+    def test_takeup_persists_actual_later_sign_without_motive_certainty(self):
+        a=adult('mother','Mother')
+        admit(a,experience(),'objective:one',[
+            {'kind':'NOTICE_POSSIBLE_END',
+             'perceived_cue_ref':'world:perceived_song',
+             'possible_object':'explore a new rhythm',
+             'possible_means':['SING'],'cue_terms':['rhythm']}])
+        initial=copy(a['possible_ends'][0])
+        later=experience(ref='actor:experienced:two',
+                         cue='world:actually_heard_again')
+        admit(a,later,'objective:two',[
+            {'kind':'TAKE_UP_POSSIBLE_END',
+             'possible_end_ref':initial['id'],
+             'later_perceived_cue_ref':'world:actually_heard_again',
+             'means':['SING']}])
+        evidence=a['projects'][0]['takeup_evidence']
+        self.assertEqual(evidence['later_received_sign_ref'],
+                         'world:actually_heard_again')
+        self.assertEqual(evidence['actual_received_sign_refs'],
+                         ['world:actually_heard_again'])
+        self.assertEqual(evidence['sign_selection_grade'],
+                         'LLM_PROPOSED_ACTOR_RECEIVED_SIGN')
+        self.assertTrue(evidence['not_a_proven_causal_significance'])
+        self.assertEqual(a['projects'][0]['origin'],
+                         ['objective:one','objective:two'])
+        self.assertTrue(a['projects'][0]['original_attempt_purpose_not_rewritten'])
+        self.assertEqual(a['possible_ends'][0]['origin_event'],initial['origin_event'])
+
     def test_same_event_cannot_retroactively_become_own_purpose(self):
         a=adult('mother','Mother')
         x=experience()
