@@ -58,7 +58,16 @@ def project_trial_horizons(constitution, access, candidate_actions,
         bridge_matches=[b for b in functional_correspondences
                         if b.get('possible_end_ref')==end.get('id')]
         bridge=(bridge_matches[0] if len(bridge_matches)==1 else None)
-        if not original_match and bridge is None:
+        # The very same material object can remain accessible even if
+        # learned language has not yet captured a shared 'object category'.
+        # The referential match is analyst/world-qualified, NOT asserted as
+        # a preverbal explicit concept.
+        source_object=end.get('origin_material_object_ref')
+        object_continuity=(
+            type(source_object) is str and
+            any(c.get('material_object_ref')==source_object
+                for c in access.cues if type(c) is dict))
+        if not original_match and bridge is None and not object_continuity:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
@@ -97,6 +106,8 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'matching_present_terms': sorted(original_match),
                 'functional_bridge_ref':bridge.get('binding_ref') if bridge else None,
                 'historical_analogy_is_provisional':bool(bridge),
+                'same_object_world_continuity_not_actor_concept':bool(object_continuity),
+                'source_material_object_ref':(source_object if object_continuity else None),
                 'other_possible_means': sorted(set(
                     x for x in means if type(x) is str and x != operation)),
                 'previous_trials': len(tried),
