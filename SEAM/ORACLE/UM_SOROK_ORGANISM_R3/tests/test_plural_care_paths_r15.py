@@ -232,7 +232,7 @@ class PluralCareJoinedRuntime(unittest.TestCase):
         self.runtime.step('nadia',requested_action='ORIENT')
         self.runtime.step('nadia',requested_action='ORIENT')
         self.runtime.step('mother',requested_action='CARE',target='nadia')
-        self.runtime.background(400)
+        self.runtime.background(600)
         chosen=self.runtime.plan('nadia')
         self.assertEqual(chosen.action,'SIGNAL')
         self.assertEqual(chosen.target,'mother')
