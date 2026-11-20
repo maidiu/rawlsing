@@ -26,7 +26,8 @@ def _present_terms(access):
     return terms
 
 
-def project_trial_horizons(constitution, access, candidate_actions):
+def project_trial_horizons(constitution, access, candidate_actions,
+                           functional_correspondences=()):
     """Attach *prospectable* trials to existing eligible operations.
 
     There is no new action and no ungrounded means creation: candidates have
@@ -49,8 +50,15 @@ def project_trial_horizons(constitution, access, candidate_actions):
                 and end.get('actor_perceived_cue_ref')):
             continue
         cues = end.get('cue_terms', [])
-        if (not isinstance(cues, list) or not cues
-                or not {x.casefold() for x in cues if type(x) is str} & present):
+        original_match=({x.casefold() for x in cues if type(x) is str}
+                        & present) if isinstance(cues,list) else set()
+        # A previously experienced but NOT DURABLY GENERALIZED functional
+        # correspondence can license one attempt in a new context without
+        # pretending the observer's shared label is the child's concept.
+        bridge_matches=[b for b in functional_correspondences
+                        if b.get('possible_end_ref')==end.get('id')]
+        bridge=(bridge_matches[0] if len(bridge_matches)==1 else None)
+        if not original_match and bridge is None:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
@@ -74,6 +82,7 @@ def project_trial_horizons(constitution, access, candidate_actions):
                 'clock': constitution.clock,
                 'possible_end': end['id'],
                 'operation': operation,
+                'functional_bridge':bridge.get('binding_ref') if bridge else None,
             })
             trial = {
                 'trial_id': ident,
@@ -85,8 +94,9 @@ def project_trial_horizons(constitution, access, candidate_actions):
                 'origin_experience_ref': end['experience_ref'],
                 'eliciting_actor_action': end.get('eliciting_actor_action'),
                 'hypothesized_difference': end.get('possible_object'),
-                'matching_present_terms': sorted(
-                    {x.casefold() for x in cues if type(x) is str} & present),
+                'matching_present_terms': sorted(original_match),
+                'functional_bridge_ref':bridge.get('binding_ref') if bridge else None,
+                'historical_analogy_is_provisional':bool(bridge),
                 'other_possible_means': sorted(set(
                     x for x in means if type(x) is str and x != operation)),
                 'previous_trials': len(tried),
@@ -215,6 +225,7 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         'received_sign_refs': sorted(set(refs)),
         'eliciting_possible_end_ref': end['id'],
         'original_end_origin_event': end['origin_event'],
+        'functional_bridge_ref': trial.get('functional_bridge_ref'),
         'means_substitution_proposed_before_event': bool(
             trial.get('is_means_substitution')),
         'experience_proves_cause': False,
