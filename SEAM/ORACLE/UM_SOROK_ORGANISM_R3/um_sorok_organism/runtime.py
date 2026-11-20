@@ -15,6 +15,9 @@ from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
+from .lived_genesis import proposals_from_bodily_history
+from .initiative import continue_life
+from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -96,7 +99,11 @@ class ConstitutiveRuntime:
                        'option_id':None,'project_id':None,
                        'anticipated_difference':None,
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
-                       'conscious_availability':'NOT_INFERRED'}
+                       'conscious_availability':'NOT_INFERRED',
+                       'operative_selection_witness':{
+                           'policy_path':'EXTERNAL_INJECTION_NOT_ACTOR_INITIATIVE',
+                           'source_grade':GRADE,
+                           'historical_motive':'NOT_INFERRED'}}
             bound_target=None
         else:
             # The new selection interface offers actor-scoped *practical*
@@ -226,6 +233,14 @@ class ConstitutiveRuntime:
                        'world_request':{
                            'operation':action,
                            'addressed_party_ref':bound_target}}
+            # Freeze the exact historically acquired grounds a SOURCEFREE
+            # action policy actually used, or explicitly leave it unknown.
+            # The old machinery retained currents but could not say which
+            # affected this occasion once the world had already settled.
+            practical['operative_selection_witness']=freeze_operative_witness(
+                actor_id,world['clock'],options,action,proposed,
+                getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
+                selected_refs)
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,target=bound_target,means=[],basis=basis,
                        intention=authority,purpose_selection=purpose,
@@ -285,6 +300,9 @@ class ConstitutiveRuntime:
                 'sourcefree_grade':GRADE,
                 'not_an_actor_self_account':True,
             }
+        # Snapshot physical state before independently authorized world settlement;
+        # later psychic inference cannot retcon what this body had undergone.
+        bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
@@ -369,6 +387,9 @@ class ConstitutiveRuntime:
                 'practical_option_ref':(
                     actor_attempt.practical_selection.get('option_id')
                     if personally_done and actor_attempt is not None else None),
+                'pre_world_operative_policy_witness_analytic_only':(
+                    copy(actor_attempt.practical_selection.get('operative_selection_witness'))
+                    if personally_done and actor_attempt is not None else None),
                 'anticipated_difference_analytic_only':(
                     copy(actor_attempt.practical_selection.get('anticipated_difference'))
                     if personally_done and actor_attempt is not None else None),
@@ -384,6 +405,12 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            # A model must not invent the child's remembered language or a
+            # bodily benefit. Use actual material before/after body plus a
+            # sign personally received to propose—not yet admit—one modest
+            # nondeclarative orientation. This is not proof of why relief arose.
+            history_genesis=proposals_from_bodily_history(
+                actors[aid],experience,bodily_before[aid],actors[aid]['body'])
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -402,6 +429,8 @@ class ConstitutiveRuntime:
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
+                'historically_proposed_preproject':copy(history_genesis),
+                'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
@@ -457,6 +486,19 @@ class ConstitutiveRuntime:
             'objective_outcome':resolved['objective_description'],'public_tip':expression.get('surface'),
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
+
+    def continue_without_user(self,beats=1):
+        """Commit bounded real actor-selected, world-resolved life while absent.
+
+        Unlike compressed background passage, each beat is a real transaction.
+        The scheduler chooses who gets the occasion, not what they intend;
+        it passes no external action, target, consent or forced developmental
+        proposition into the continuing organism.
+        """
+        return continue_life(
+            lambda: self.ledger.world(self.world_id)[1],
+            self.ledger.actors,
+            lambda actor_id: self.step(actor_id), beats)
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)

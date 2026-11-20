@@ -8,6 +8,7 @@ from .psychodynamics import enact_currents
 from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
 from .practical_difference import practical_alternatives
+from .preproject_agency import recruit_preproject_anticipations
 from .world import _qualified_members
 
 
@@ -277,6 +278,10 @@ def compose(constitution,access,limit=50):
     dynamics=enact_currents(constitution,access,active,actions.values(),
                              relational=relational)
     currents+=dynamics['currents']
+    # Nondeclarative, historically acquired orientation can matter BEFORE an
+    # explicit project exists. A read does not write new psychic content.
+    preproject=recruit_preproject_anticipations(constitution,access,dynamics['candidate_actions'])
+    currents+=preproject['currents']
     # These effects are *derived* from present bodily state and historically
     # acquired forms, never silently committed as an event or a new mind state.
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
@@ -293,7 +298,7 @@ def compose(constitution,access,limit=50):
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           list(candidate_history_refs)+
+                           preproject['readset']+list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)

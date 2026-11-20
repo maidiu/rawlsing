@@ -4,6 +4,7 @@ explicitly coarse heuristic fiction, not an LLM and not a human learning law.
 """
 from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
+from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -34,6 +35,19 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
+            # The embodied child's acquired, nonpropositional anticipation may
+            # alter a future attempt without first inventing an adult project.
+            # When rival currents coexist, this heuristic MUST NOT decide.
+            orientation=fallback_nonproject_orientation(possibilities)
+            if orientation:
+                return {'task':task,**orientation}
+            # The first R8 code review found that merely recording learned
+            # negative pressure would let the older default still select it.
+            # This bounded policy MAY defer if an acquired tacit WITHHOLD or
+            # unresolved contradiction has no uncontested nonproject approach.
+            deferral=fallback_nonproject_deferral(possibilities)
+            if deferral:
+                return {'task':task,**deferral}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
@@ -64,9 +78,15 @@ class HeuristicSemanticProvider:
             action=experience.get('own_action')
             status=experience.get('status')
             cues=experience.get('perceived_cues',[])
+            # Sourcefree fallback can now turn a real lived bodily transition
+            # into a PROVISIONAL nonverbal proposal, even when the actor was
+            # the recipient of care rather than a voluntary co-performer.
+            # A live LLM receives the same evidence-grade candidates and may
+            # instead nominate no change. No adult end/idea is inferred.
+            lived=copy(packet.get('historically_proposed_preproject',[]))
             if status not in ('PERFORMED','PARTIAL'):
-                return {'task':task,'candidates':[],'semantic_grade':self.grade}
-            relation_candidates=[]
+                return {'task':task,'candidates':lived,'semantic_grade':self.grade}
+            relation_candidates=lived
             other=experience.get('reciprocated_partner')
             if other and cues:
                 # A genuinely performed joint occurrence can leave a trace and
@@ -150,8 +170,8 @@ class HeuristicSemanticProvider:
                 return {'task':task,'candidates':candidates+relation_candidates,'semantic_grade':self.grade}
             if action=='SIGNAL' and cues:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
-                       'cue_terms':['signal','care']}], 'semantic_grade':self.grade}
-            return {'task':task,'candidates':[],'semantic_grade':self.grade}
+                       'cue_terms':['signal','care']}]+relation_candidates, 'semantic_grade':self.grade}
+            return {'task':task,'candidates':relation_candidates,'semantic_grade':self.grade}
         if task=='adult_constructor':
             target=packet['pseudo_respondent']
             answers=target.get('answers',{})

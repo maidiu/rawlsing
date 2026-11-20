@@ -1,0 +1,27 @@
+name: SOROK R8 constitutive agency sourcefree full runtime
+on:
+  push:
+    branches:
+      - agent/soracle-r8-constitutive-agency-mulch-20261120
+  pull_request:
+    branches:
+      - agent/um-sorok-r7-astra-practical-alternatives-20261120
+jobs:
+  organism-sourcefree:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact source identity
+        run: git rev-parse HEAD
+      - name: Full inherited plus new normal unittest court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -v
+      - name: Full inherited plus new optimized unittest court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest discover -s tests -q
