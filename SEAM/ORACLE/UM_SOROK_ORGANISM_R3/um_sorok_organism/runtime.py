@@ -592,6 +592,10 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                'actor_historical_orientations_analyst_only':copy(
+                    actors[aid].get('historical_orientations',[])),
+                'actor_self_model_analyst_only':copy(
+                    actors[aid].get('self_model',{})),
                 # Untried possible ends are actor-history hypotheses, not
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),

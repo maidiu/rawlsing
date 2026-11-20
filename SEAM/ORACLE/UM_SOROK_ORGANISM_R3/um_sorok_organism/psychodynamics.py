@@ -42,7 +42,7 @@ def validate_tendencies(form):
             raise ValueError('INVALID_ACQUIRED_TENDENCIES')
 
 
-def enact_currents(constitution, access, active_forms, candidates, relational=None):
+def enact_currents(constitution, access, active_forms, candidates, relational=None, historical=None):
     """Composes differentiated pressures without universal numerical conversion.
 
     A learned WITHHOLD does not vanish from the iceberg when thwarted by a
@@ -79,6 +79,9 @@ def enact_currents(constitution, access, active_forms, candidates, relational=No
             'source_form_refs':copy(mediated['source_form_refs']),
             'has_inhibited_source':mediated['has_inhibited_source'],
             'grade':GRADE,'not_actor_self_knowledge':True})
+    for h in (historical or {}).get('currents', []):
+        action=h['action'];polarity=h['polarity'];ref='history:'+h['ref']
+        forces.setdefault(action,{}).setdefault(polarity,[]).append(ref)
     updated=[];antagonisms=[];suspended=[]
     for option in candidates:
         o=copy(option);action=o['action'];polarities=forces.get(action,{})
@@ -97,6 +100,9 @@ def enact_currents(constitution, access, active_forms, candidates, relational=No
             if approach:
                 o['psychodynamic_status']='ACQUIRED_APPROACH_WITHOUT_RECORDED_COUNTERCURRENT'
                 o['support_currents']=approach
+                if any(ref.startswith('history:') for ref in approach):
+                    o['score'] += .16
+                    o['historical_pre_cue_rank_effect']='BOUNDED_SOURCEFREE_POLICY'
             updated.append(o)
     return {'candidate_actions':updated,'currents':currents,'antagonisms':antagonisms,
             'suspended':suspended,'grade':GRADE}
