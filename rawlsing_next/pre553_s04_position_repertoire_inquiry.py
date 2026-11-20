@@ -61,7 +61,6 @@ class PositionRepertoireRequest:
     reverse_given_target_value: Any | None = None
     max_projection_cells: int = 2048
     max_result_bytes: int = 250_000
-    min_disclosure_cell_n: int = 2
     f6_events: tuple[bool, bool] | None = None
 
     def __post_init__(self):
@@ -79,11 +78,8 @@ class PositionRepertoireRequest:
                     or any(type(x) is not int or x < 0 for x in sequence)):
                 raise PositionRepertoireInquiryError("INVALID_POSITION_AXES")
         if any(type(v) is not int or v < 1 for v in
-               (self.max_projection_cells, self.max_result_bytes,
-                self.min_disclosure_cell_n)):
+               (self.max_projection_cells, self.max_result_bytes)):
             raise PositionRepertoireInquiryError("INVALID_PHYSICAL_OR_PRIVACY_BUDGET")
-        if self.min_disclosure_cell_n < 2:
-            raise PositionRepertoireInquiryError("DISCLOSURE_MINIMUM_TOO_SMALL")
         if self.f6_events is not None and (
                 type(self.f6_events) is not tuple
                 or len(self.f6_events) != 2
