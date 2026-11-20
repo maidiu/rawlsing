@@ -33,7 +33,7 @@ from .food_power_reproduction import (
     food_power_opportunities,COMMONS,INSTALL,MAINTAIN,SANCTION,
     OFFER,ACCEPT)
 from .labor_dependency import (
-    actor_work_opportunities,work_permission,
+    actor_work_opportunities,work_permission,situated_suspension_targets,
     ACCEPT as LABOR_ACCEPT,SUSPEND as LABOR_SUSPEND,
     RESIGN as LABOR_RESIGN,CONTRIBUTE as LABOR_FUND,DRAW as LABOR_DRAW)
 
@@ -572,6 +572,8 @@ def compose(constitution,access,limit=50):
         option['practical_alternatives']+=addressed_signal_alternatives(
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=project_repeat_feeding(
+            constitution,attention['focus_access'],option)
+        option['practical_alternatives']+=situated_suspension_targets(
             constitution,attention['focus_access'],option)
         annotate_material_alternatives(option,invested)
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
