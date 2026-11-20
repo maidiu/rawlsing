@@ -183,7 +183,9 @@ class HeuristicSemanticProvider:
                   'object':p.get('object','continued life'),
                   'means':p.get('means',[]),'priority':p.get('priority',.5),
                   'cue_terms':p.get('cue_terms',[]),'status':'active',
-                  'origin':['fictional_seed:'+packet['actor_id']]})
+                  'origin':['fictional_seed:'+packet['actor_id']],
+                  **{k:copy(p[k]) for k in ('expected_difference','addressed_party_ref')
+                     if k in p}})
             # Explicit fictional-backfill link geometry. Indexes point only to
             # the extra seeded forms, never to empirical question-answer forms.
             seeded_forms=forms[len(answers):]
