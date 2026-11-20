@@ -581,3 +581,188 @@ The runtime must repeatedly implement a causally interpretable trace of:
 
 The process is *historical* in both directions: the actor changes, and the world—including Others—changes. On a future turn, an earlier institution can be absent, a relationship may have been damaged, a once-scarce skill may now be practiced, a previously invisible pressure may be recognized. The life history must be sufficient to explain these changes without repeatedly inventing causes from scratch.
 
+
+---
+
+## IX. ONE COMPUTATIONAL ORGANISM: CONTRACTS, OPERATIONS, OWNERS AND INTEGRATION
+
+### IX.1 The architecture follows the distinctions in the world, not the inherited stage names
+
+The simulation and its empirical source machinery must be implemented as a **versioned, composable system of truth-bearing and fictional states**. The source data is finite, immutable for a selected release and independently governed. The derived empirical products and research concepts are revisable with exact lineage. The structural world is historically dynamic, with separately authorized historical facts and explicit hypothetical transitions. Psychological state is fictional, persistent, partially opaque and updated through encounters and activities. The same serialized number can appear in several parts of this machine but must never thereby become the same kind of thing.
+
+A defensible provisional interface map:
+
+\`\`\`text
+SOURCE ESTATE / SEMANTIC AUTHORITY
+  -> observed respondent and eligible-measure facts
+  -> PYAT discovery: MORPH, CONDITION, REVERSE, FRACTURE,
+     INTERACT, JOINT, BOUND, MAP, FORM, COMPARE, REVISE
+  -> evidence-qualified possibility relations
+        \        \
+         \        -> N10E empirical conditioned-possibility service
+          -> FIELD FORGE relational admission and world mechanisms
+                  -> N9 actor-independent world
+                         \
+                          -> N10W situated possibility = N9 AND N10E
+                                     -> SOROK construction/recruitment
+                                     -> independently arbitrated activity
+                                     -> world/Other/institution changes
+                                     -> psychologically acquired history
+                                     -> next event / next possible question
+EXPLORATORY LLM hypothesis proposals -> qualified owner gates
+CAN/ADP, PFF, SDTF, P2–P6, Mechanisms, PRE-A0, SEAM, ORACLE,
+legacy V3 -> reusable inherited capital, exact owner audit required
+\`\`\`
+
+This is a functional dependency drawing, **not** a command to rebuild every existing primitive or materialize every named arrow as a physical stage. Current Field Forge R2 authority allows direct consumption of competent producer objects; it does not demand a universal learned carrier. PYAT owns source-qualified empirical inference; competent structural owners own independent material claims; SOROK owns psychological acquisition and realized actor state; world owners arbitrate consequences; authority/receiving owners control scientific issuance and protected integration. Cross-system contracts are allowed without granting either side the other's epistemic powers.
+
+### IX.2 Minimal common language: identity, time, status and dependency
+
+All operative records require:
+- a stable ID and a versioned type;
+- effective time, recorded time and, when needed, historical-as-of time;
+- owner and authority namespace;
+- exact provenance (original evidence or fictional causal antecedents);
+- dependency roots, invalidation and replay rules;
+- explicit epistemic grade and permissible transformation;
+- scope of population, actor, world, source, relation or scene;
+- positive **and negative** condition states;
+- first consumer and any asserted test/qualification status.
+
+Do not solve every module boundary with one universal opaque JSON blob. Use typed references so that meanings and roles survive access: an observed risk set cannot be substituted for a fictional household, nor a proposed class relation for a person, nor a modeled belief for a survey answer. But do not multiply redundant wrappers: a typed access protocol can dereference a competent existing producer instead of duplicating its entire payload.
+
+The essential data objects, logically if not as one physical schema, are:
+
+| Object | Minimum contents | Primary authority | Prohibited substitution |
+|---|---|---|---|
+| **ObservationEvent** | release, respondent unit, question/answer/component, eligibility, meaning, place/time, method authority | source and semantics owners | answer → psychological motive |
+| **EvidenceClaim** | proposition, exact support, risk set, source, inference, uncertainty, bounds, alternatives, negatives, lineage | PYAT / relevant method owner | marginal → joint/person |
+| **EmpiricalFormation** | observed motif, position/disposition geometry, branch/exception, concept genealogy, countercases | PYAT, qualified interpretation | cluster → objective class |
+| **StructuralRelation** | actors/roles, resource/rule, direction, scope, time, power/cost, authority and competing mechanisms | Field Forge / world owner | correlation → causal law |
+| **WorldState** | institutions, Others, resources, rules, locations, schedules, exposures, ongoing reproduction, history | world runtime / historical source owner | generated scene → source fact |
+| **PossibilityEnvelope** | condition, available/blocked alternatives, evidence grades, costs, minority support, uncertainty, walkback | N10E + N9 → N10W | group mean → individual destiny |
+| **PersonState** | embodiment, needs, maturation, acquired organizations, motives, memories, relationships, opacity | SOROK | current text → full mind |
+| **Encounter** | independent world cause, who could perceive/act, exposures, affordances, time, stakes | world + actor access | event → universal interpretation |
+| **RecruitmentTrace** | candidates, triggers, inhibitions, conflicts, activity, chosen operations and expression | SOROK | organization → forced act |
+| **Consequence** | attempted and realized outcomes, Other responses, changes to material and relational world | world arbiter | intention → success |
+| **ReconstitutionDelta** | learned/altered organizations and memories, evidence from experienced consequences, alternative updates | SOROK | LLM explanation → ungrounded psyche |
+| **InquiryNode** | current hypothesis, exact computed support, rival questions, search frontier, cost, replay roots | PYAT epistemic explorer | conjecture → empirical fact |
+
+The table is a minimum semantic vocabulary for integration. Component owners can prove equivalence to existing contracts; new structures are justified by missing functions, not by new names alone.
+
+### IX.3 Conditioned possibility must be an actual service
+
+A downstream request should specify a historical/source-qualified context and an intended consumption:
+
+\`\`\`text
+PossibilityQuery {
+  as_of_world, source_scope, place_time, positioned_subject_conditions,
+  already_realized_observations_or_fictional_history,
+  response_targets, allowed_precision_and_proxy_policy,
+  alternative_and_minority_budget, required_evidence_grade,
+  intended_consumer, query_history
+}
+\`\`\`
+
+The answer must not be one randomly sampled ideological vector:
+
+\`\`\`text
+PossibilityAnswer {
+  precise_supported_condition, observed_whole_case_options,
+  conditional_distributions, materially_conditioned_alternatives,
+  minority_and_exception_paths, empirical_and_world_constraints,
+  partially_identified_relations, model_assumption_sensitivity,
+  unresolved_or_forbidden_combinations, sample_and_semantic_limits,
+  specificity_walkback, valid_absences, provenance_and_version,
+  next_questions, actor_nonpredestination_warning
+}
+\`\`\`
+
+**Specificity walkback** is a visible decision: if exact age × household × place × labor × stated-religion conditioning is unsupported, broaden permissible conditions one at a time, record what was lost and how the answer changed. A proxy-country or neighboring-wave distribution, if permitted, must be marked as a proxy with time and transport risks, not local empirical fact. When no lawful candidate exists, return the exact unsupported point and the smallest valid question instead of hallucinating a very precise adult.
+
+The generative service must distinguish:
+- **actually observed whole-respondent configurations** and legitimate conditional sets;
+- **model-dependent synthetic configurations** under explicitly tested assumptions;
+- **partially identified possibilities** consistent with, but not point-established by, source constraints;
+- **source-incompatible or structurally excluded configurations** with proven reasons;
+- **untested and unknown combinations** that cannot be counted as impossible.
+
+Sampling a coherent fictional adult may employ a qualified model or respondent-supported distribution, but a sample is not a copied respondent or a real person. The service does not pre-generate all personalities. It provides conditional distributions and question navigation that downstream construction can use repeatedly.
+
+### IX.4 The live actor event loop
+
+A provisional agent/world contract should make a full update atomic at its own grain:
+
+\`\`\`text
+advance_world(t0 -> t1):
+  mature_needs_resources_and_institutional_processes()
+  run_compressed_routines_with_reconstructible_effects()
+  emit_independent_encounters_and_other_agent_actions()
+  for each situated actor in affected set:
+    perception = actor_access(world_events, actor_history, capacity)
+    candidates = recruit(acquired_organizations, needs, motives,
+                         perceived_affordances, relational_memory)
+    response = compose(candidates, conflicts, current_activity,
+                       bodily_state, learned_operations)
+    attempted_action = express_or_do(response)
+    realized_outcome = world_arbitrate(attempted_action,
+                                       Others, institutions, resources)
+    psychological_delta = learn_from_experience(
+                            perception, action, realized_outcome,
+                            current_organizations, maturation)
+    commit_actor_delta_and_relational_memory(psychological_delta)
+  atomically_commit_world_actor_history()
+  expose_new_context_to_situated_possibility_queries()
+\`\`\`
+
+This is **not a synchronous obligation to run every actor in every interval**. It defines causal order and a trace contract. Compression may elide routine steps only while preserving their cumulative material, embodied, relational and developmental effects; significant interruptions expand into explicit events. No language model may bypass world arbitration by writing a successful consequence into narrative prose.
+
+If SOROK runs several psychological operations concurrently, use explicit conflict resolution and stable history; a later memory change cannot quietly overwrite a world fact. Where an update is intentionally uncertain, store that uncertainty rather than choosing a plausible but unsupported exact motive. An actor may misremember, and a narrator may convey that misconception, but world history and belief history cannot be the same untyped ledger.
+
+### IX.5 Psychological proposals must be executable transformations
+
+A model-generated developmental proposal must specify its *mechanism of future effect*. A suggested new relational expectation 'care is conditional on performance' is incomplete until it provides:
+- a source in actually experienced interactions or fictional backfill under the correct lane;
+- an acquisition or reinterpretation pathway;
+- developmental availability;
+- contexts, cues and relationship targets where it may become recruitable;
+- competing organizations it inhibits or is inhibited by;
+- possible behavioral, attentional or expressive changes;
+- conditions under which future events could challenge or transform it.
+
+A proposal that only adds purple prose to a character's narrative, or one that overgeneralizes one frightening event into a universal worldview without a modeled learning pathway, should not be committed as psychological fact. The model may propose several interpretations and their differential predictions; SOROK's owner sets which are legal to become operative. Do not merely store a 'psychological suggestion' in side metadata while the runtime ignores it.
+
+### IX.6 Memory, persistence, cache and recomputation are part of psychology and science
+
+There are two independent histories:
+- **epistemic history**: releases, source rights, method decisions, queries, accepted/rejected concepts, corrections and replay roots;
+- **fictional life and world history**: events, actions, relationships, developmental changes, persistent resource changes and others' decisions.
+
+Both need versioned persistence, but they obey different truth rules. A revised semantic mapping can invalidate a PYAT answer and N10E possibility without erasing that Nadia previously experienced a fictional event generated under an earlier scenario. A world correction may require a governed simulation fork, not a silent retroactive rewrite of her memories. A world rollback needs to resolve resulting actor-state dependencies at the same version boundary.
+
+A physically optimized DAG can:
+- reuse exact eligible masks, canonical joints, query subexpressions and derived concepts;
+- use Parquet/Zstd or suitable persistent carriers where existing owner contracts demand them, and bounded caches for warm query efficiency;
+- maintain exact dependency roots and **delete-and-rebuild** behavior for nonauthoritative caches;
+- invalidate on changed source, semantic rights, structural mechanisms, comparison assumptions, time context, scenario branch or actor-history version as applicable;
+- demonstrate identical meaning across cold and warm paths and across harmless physical layout changes;
+- require atomic stage/promote and exact recovery after interruption.
+
+Do not confuse a hash-matching payload with a scientifically complete dataset or an authorized interpretation. A stale authority root is not repaired by a cached answer that happens to have the right numerical value. A consumer-access failure is information loss even if the underlying bytes still exist.
+
+### IX.7 A powerful LLM has two positive roles and four prohibitions
+
+**Role 1: pre-adjudication assistant** for finite, expensive, high-stakes source semantics and ontological interpretation. It can reason deeply over exact evidence and propose decision alternatives with source quotations and negative tests. Only a competent issued authority makes the binding semantic or method selection.
+
+**Role 2: live abductive construction** in both open-ended PYAT research and SOROK psychic development. In PYAT, it nominates surprising empirical questions, motifs, rival mechanisms and falsifiers whose claims must be tested by admissible computation. In SOROK, it proposes context-sensitive meanings, organizations, relationships and developmental transformations that become operative only through explicit actor-state commitments.
+
+**Prohibitions:** it cannot fabricate a survey observation, manufacture an unmeasured respondent join, issue a structural/causal law from confident prose, or overwrite independent world history with a retrospective story. Its creative strength should be directed toward *candidate formation and realistic psychological construction*, where new possibilities genuinely matter, not toward laundering uncertain claims into facts.
+
+The model's role is not merely 'speaker of the personality.' Speech itself is a situation-dependent action; the model is permitted to generate it from actual world and actor states. It must also be permitted to revise its theory of a fictional actor when the life falsifies a previous interpretation.
+
+### IX.8 Reuse the existing organism; do not build a decorative replacement
+
+SOROK already possesses P2–P6, CAN/ADP, PFF, SDTF, legacy V3, the Mechanisms, PRE-A0, SEAM and ORACLE; PYAT already possesses C11, conditional/branch/joint primitives, semantic and structural owners, partial first consumers, N10E/N10W and Field Forge R2 architectural law. A construction agent should establish *which functions are actually implemented, tested and consumed* at exact heads, and then extend or replace only the missing functions while preserving valuable accepted capital.
+
+The architectural decision rule is **functional conservation under lawful replacement**, not loyalty to a historical acronym. If an existing engine is already a legitimate recruitment mechanism, use it rather than inventing a second; if it only narrates after decisions are made, that is not the missing psychological-construction function. If an old Enneagram coefficient was always speculative, do not reinstate it to achieve superficial backward compatibility. The old *question it was trying to answer* must find a stronger mechanism or an explicitly held open problem.
+
