@@ -250,3 +250,70 @@ def test_c5_axes_unhashable_input_yields_typed_failure_not_builtin_typeerror():
             envelope=c4.envelope, external_pin=c4.external_pin,
             conditions={}, candidate_axes=([1],),
         )
+
+
+def test_actual_eight_respondent_full_joint_can_seed_non_singular_v3_proposal():
+    """A positive C6 on genuine native I03 facts, not only a safe HOLD demo."""
+    from itertools import product
+    from rawlsing_next.tests import test_pre553_empirical_query as native
+    from rawlsing_next.pre553_s04_cold_custody import SOURCEFREE_ASSERTION
+    from rawlsing_next.pre553_s04_dhikr_comparative import DHIKRComparisonRequest
+    from rawlsing_next.pre553_s04_field_forge_v3_bridge import (
+        build_empirical_field_forge_v3_handoff,
+    )
+    from rawlsing_next.pre553_ff_prev3_possibility_navigation import (
+        run_v3_sourcefree_context_path,
+    )
+    tag = "PYAT-C6-NATIVE-EIGHT-ROW-POSITIVE"
+    rows = [
+        {"id": f"R{x}{y}{rep}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
+        for x, y, rep in product((0, 1), (0, 1), (0, 1))
+    ]
+    source = native._build_source(
+        tag, rows, question_namespace="S04-RESEARCH-QUESTIONS"
+    )
+    qa = native._query_authority(tag)
+    predicate = native._branch_predicate(source, qa, tag="all")
+    query = native._query(source, qa, predicate, ("X", "Y", "Z"), tag="query")
+    actual = native._run(source, qa, predicate, query)
+    assert actual.facts[0].typed_state == "SUPPORTED"
+    c4 = build_empirical_field_forge_v3_handoff(
+        query=query, execution=actual,
+        comparison_request=DHIKRComparisonRequest(
+            target_axis=2, predictor_axes=(0, 1),
+            min_branch_n=2, max_depth=2, max_nodes=9,
+            max_interaction_order=2, bootstrap_replicates=0,
+        ),
+        conditioner_index=0,
+        sourcefree_origin_assertion=SOURCEFREE_ASSERTION,
+    )
+    path = run_v3_sourcefree_context_path(
+        envelope=c4.envelope, external_pin=c4.external_pin,
+        starting_conditions={0: "0"}, steps=((1, "1"),), seed=121,
+    )
+    assert path.material()["final_raw_complete_case_n"] == 2
+    packet = assemble_c6_contextual_entrance(
+        envelope=c4.envelope, external_pin=c4.external_pin,
+        path=path, entrance=ENTRY_PARENT, slot="qualified-sample-parent",
+        min_disclosure_cell_n=2,
+    )
+    m = packet.material()
+    assert m["whole_case_state"] == "SOURCEFREE_CELL_PROPOSAL_ONLY__NO_PERSON"
+    assert m["original_selected_cell_n_if_disclosable"] == 2
+    chosen = {
+        x["source_dimension"]: x["candidate_state"]
+        for x in m["hypothetical_joint_configuration"]
+    }
+    assert len(chosen) == 3
+    assert chosen == {0: "0", 1: "1", 2: "1"}
+    assert packet.ref == replay_c6_contextual_entrance(
+        receipt=packet, envelope=c4.envelope,
+        external_pin=c4.external_pin, path=path,
+    ).ref
+    # Even a positive whole joint candidate is not N10W or actor approval.
+    prefix = as_nonissuing_world_conditioned_prefix(
+        receipt=packet, envelope=c4.envelope,
+        external_pin=c4.external_pin, path=path,
+    )
+    assert prefix.step["state"] == HELD_WORLD_STATE
+    assert prefix.step["cells"] == []
