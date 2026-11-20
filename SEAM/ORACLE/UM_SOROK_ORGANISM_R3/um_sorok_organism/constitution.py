@@ -36,6 +36,10 @@ from .labor_dependency import (
     actor_work_opportunities,work_permission,situated_suspension_targets,
     ACCEPT as LABOR_ACCEPT,SUSPEND as LABOR_SUSPEND,
     RESIGN as LABOR_RESIGN,CONTRIBUTE as LABOR_FUND,DRAW as LABOR_DRAW)
+from .wage_bargaining import (
+    actor_bargaining_opportunities,
+    AUTHOR as WAGE_AUTHOR,WITHHOLD as WAGE_WITHHOLD,
+    EMPLOYER_ACCEPT as WAGE_ACCEPT,EMPLOYER_REJECT as WAGE_REJECT)
 
 
 def materialize(actor,world):
@@ -64,6 +68,8 @@ def materialize(actor,world):
             'material_dependency_encounters',[])),
         labor_dependency_encounters=copy(actor.get(
             'labor_dependency_encounters',[])),
+        wage_bargaining_experiences=copy(actor.get(
+            'wage_bargaining_experiences',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -150,6 +156,7 @@ def actor_access(actor,world):
             world,actor,location)]
     env+=food_power_opportunities(world,actor,location)
     env+=actor_work_opportunities(world,actor,location)
+    env+=actor_bargaining_opportunities(world,actor,location)
     if work_permission(world,actor['id'],location)==(
             'QUALIFIED_WORK_CONTRACT_ACTIVE'):
         env.append('WORK')
@@ -463,6 +470,34 @@ def compose(constitution,access,limit=50):
                     'kind':'HISTORICAL_WAGE_OBSTRUCTION_AND_FUNDED_RELIEF',
                     'experienced_work_ref':interrupted[-1]['id'],
                     'employer_motive_unknown':True,'grade':GRADE})
+    for action in (WAGE_AUTHOR,WAGE_WITHHOLD,WAGE_ACCEPT,WAGE_REJECT):
+        if action not in access.affordances or not eligible(
+                constitution.body,action)[0]:
+            continue
+        entry=actions.setdefault(action,{
+            'action':action,'score':.14,'basis':[],
+            'opportunity':'SOURCEFREE_SITUATED_COLLECTIVE_WAGE_CONTEST'})
+        entry['basis'].append('real_wage_dispute_opportunity:'+action)
+        if action==WAGE_AUTHOR:
+            past=[x for x in constitution.power_exercises
+                if x.get('operation')=='WORK'
+                and x.get('attempt_status_analyst_receipt')=='PERFORMED'
+                and type(x.get('event_clock')) is int
+                and x['event_clock']<=constitution.clock]
+            if past:
+                entry['wage_bargaining_ground']={
+                    'actor_personally_performed_work_ref':past[-1]['id'],
+                    'possible_end_not_assumed':True}
+        if action==WAGE_WITHHOLD:
+            prior=[x for x in constitution.wage_bargaining_experiences
+                if x.get('operation')==WAGE_AUTHOR
+                and x.get('status')=='PERFORMED'
+                and type(x.get('clock')) is int
+                and x['clock']<=constitution.clock]
+            if prior:
+                entry['wage_withholding_ground']={
+                    'actor_lived_prior_endorsement_ref':prior[-1]['id'],
+                    'no_unilateral_qualification_of_other_workers':True}
     inquiry=offer_actor_inquiry(constitution,access)
     for candidate in inquiry['offered']:
         action=candidate['action']
