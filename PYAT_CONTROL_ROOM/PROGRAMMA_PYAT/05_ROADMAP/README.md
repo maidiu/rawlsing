@@ -1,3 +1,5 @@
+> **November 20 sourcefree status locator (C0–C6; S01–S05 not terminal):** [exact-source currentness & closure matrix](20261120_C0_C6_IMPLEMENTATION_AND_S01_S05_STATUS_CANDIDATE.md) · [proposed paired current-progress receiving](20261120_POST_C0_C6_PENDING_PAIR_DELTA.md). No protected revision change from this document candidate.
+
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
 > **SINGLE ORDERED EXECUTION AGENDA — AUTHOR CANDIDATE, NOT PROTECTED:** [REMAINING_REAL_PYAT_WORK](REMAINING_REAL_PYAT_WORK.md) is the one proposed active PLAN. This README is navigation, S01–S11 are section details, original components/seams are contract ledgers; #998 learned FIABC/M1/M2/B5 and #1009 direct FF01 descriptive routes must share one source/release, not form two duplicate production paths; Oct28, Nov12–15/R3, W-series, ANVIL and DHIKR are nested constraints, work orders or evidence, not parallel plan authorities. Preserve current protected rev11 and all independently owned scientific/actor/rights gates until exact reviewed receiving.

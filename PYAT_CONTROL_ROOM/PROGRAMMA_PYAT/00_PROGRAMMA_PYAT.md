@@ -31,6 +31,9 @@
 
 <!-- HQ_OATH_R2_FIRST_CONTACT_END -->
 
+> **LATEST LIVE C0–C6 / S01–S05 EVIDENCE INDEX (NOVEMBER 20, 2026) — DOCUMENTARY CANDIDATE, NOT PROTECTED ADOPTED:** Read the [one-page-source-graded currentness and S01–S05 closure crosswalk](05_ROADMAP/20261120_C0_C6_IMPLEMENTATION_AND_S01_S05_STATUS_CANDIDATE.md) and [pending paired progress receiving delta](05_ROADMAP/20261120_POST_C0_C6_PENDING_PAIR_DELTA.md). Actual latest sourcefree tests include #1164 **218/218** and #1173 C5 **22/22** + C6 **36/36** at their exact executed SHAs; **S01–S05 NOT TERMINALLY CLOSED**, originals/method/learned world/G5/protected receiving held. Existing protected CURRENT_PROGRESS revision 11 unchanged. This is an additive status locator, not another execution programme, protected promotion or alteration of the HQ OATH.
+
+
 ---
 
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
