@@ -95,6 +95,32 @@ class PurposeAndGenesisR6(unittest.TestCase):
         self.assertEqual(unselected.get('operational_history',[]),[])
         self.assertTrue(self.rt.verify()['valid'])
 
+    def test_explicitly_multiple_projects_can_both_be_undertaken_without_pooling(self):
+        def callback(task,packet):
+            if task=='actor_attempt':
+                option=next(o for o in packet['options']
+                            if o['action']=='SING')
+                selected=[c['project_id'] for c in option['project_courses']]
+                self.assertEqual(len(selected),2)
+                return {'task':task,'action':'SING',
+                        'project_ids':selected}
+            if task=='development':
+                return {'task':task,'candidates':[]}
+            return {'task':task,'surface':'song perceived'}
+        self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(callback))
+        self.rt.step('mother')
+        a=self.rt.snapshot('mother')
+        self.assertEqual(len(a['activity_history']),2)
+        self.assertEqual(
+            {x['practical_object'] for x in a['activity_history']},
+            {'comfort my child through song',
+             'experiment with changing a rhythm'})
+        self.assertTrue(all(x['intent_attribution']==
+            'ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES'
+                            for x in a['activity_history']))
+        self.assertEqual(len(a['evidence_paths'][-1]['selected_project_refs']),2)
+        self.assertTrue(self.rt.verify()['valid'])
+
     def test_no_model_project_choice_means_unattributed_exploration(self):
         self.provider(include_purpose=False)
         self.rt.step('mother')
