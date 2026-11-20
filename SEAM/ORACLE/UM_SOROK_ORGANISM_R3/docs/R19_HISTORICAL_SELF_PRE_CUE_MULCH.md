@@ -21,7 +21,7 @@ An acquired orientation can condition which aspects of an encounter become salie
 
 ## TURN MACHINE — test and evidence grades
 
-Nine authored unittest methods in tests/test_historical_self_precue_r19.py cover differing prior histories with identical cue-free present, no-history control, revision and reinstatement, operative self-organization, contradictory pressures, infant development, foreign identity and forged sign/operation refusal, duplication, ungrounded omnipotent self-hypotheses, same-event self-practice laundering, and committed SQLite cold reopen.
+Ten authored unittest methods in tests/test_historical_self_precue_r19.py cover differing prior histories with identical cue-free present, no-history control, revision and reinstatement, operative self-organization, contradictory pressures, infant development, foreign identity and forged sign/operation refusal, duplication, ungrounded omnipotent self-hypotheses, same-event self-practice laundering, and committed SQLite cold reopen.
 
 A dedicated GitHub Actions push workflow requests Python compilation, focused R19 tests, the entire inherited normal and optimized unittest suites and a sourcefree organism demo. The first attempted run FAILED with **zero recorded job steps and unavailable logs**. This provides no actual Python pass or fail. The authored suite is NOT executable proof until a competent runner produces an exact-head receipt.
 
