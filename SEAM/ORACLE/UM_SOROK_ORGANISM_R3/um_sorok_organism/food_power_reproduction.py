@@ -469,8 +469,12 @@ def food_power_opportunities(world,actor,site):
         available.append(INSTALL)
     board=_owned_board(world,who,site)
     if board:
+        old_offer=board.get("r18_transfer_offer")
+        still_pending=(type(old_offer) is dict and
+                       type(old_offer.get("through_clock")) is int and
+                       old_offer["through_clock"]>=world["clock"])
         if (board.get("food_rights")=="CONTROLLED"
-                and not board.get("r18_transfer_offer")):
+                and not still_pending):
             available.append(OFFER)
         balance=_amount(world.get("accounts",{}).get(
             who,0),"AFFORDANCE_ENFORCEMENT_CASH")
