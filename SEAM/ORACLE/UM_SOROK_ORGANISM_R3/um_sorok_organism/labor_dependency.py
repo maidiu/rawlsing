@@ -322,3 +322,33 @@ def actor_work_opportunities(world,actor,site):
                         for x in regime["suspensions"])):
             out.append(DRAW)
     return out
+
+
+def situated_suspension_targets(constitution,access,option):
+    """Target *persons encountered*, not unseen payroll or private beliefs.
+
+    A target-specific operation can be selected by a semantic actor policy.
+    This is only a practical possibility; the independent world checks
+    actual employment and sanction budgets at settlement time.
+    """
+    if option.get("action")!=SUSPEND:return []
+    seen=sorted({c.get("source_actor") for c in access.cues
+                if c.get("kind")=="coactor_present"
+                and type(c.get("source_actor")) is str
+                and c.get("source_actor")!=constitution.actor})
+    return [{
+        "option_id":stable_id("situated_labor_sanction_alternative",{
+            "actor":constitution.actor,"clock":constitution.clock,
+            "other":other,"action":SUSPEND}),
+        "actor":constitution.actor,
+        "as_of_clock":constitution.clock,
+        "operation":SUSPEND,"project_id":None,
+        "grounds_status":"PRESENT_PERSON_NOT_PROOF_OF_EMPLOYMENT",
+        "world_request":{"operation":SUSPEND,
+                         "addressed_party_ref":other,
+                         "material_object_ref":None},
+        "binding_status":"ACTUALLY_COPRESENT_TARGET",
+        "other_motives_and_employment_status":"NOT_INFERRED",
+        "world_will_requalify_authority_at_execution":True,
+        "source_grade":GRADE}
+        for other in seen]
