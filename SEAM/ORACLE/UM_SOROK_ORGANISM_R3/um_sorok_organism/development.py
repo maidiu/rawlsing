@@ -13,6 +13,9 @@ from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation
+from .historical_self_organization import (
+    acquire_orientation, revise_orientation, acquire_operative_self,
+    revise_operative_self)
 from .prospective_horizon import record_possible_end_trial
 from .functional_correspondence import admit_functional_correspondence
 from .material_investments import admit_material_investment
@@ -41,6 +44,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'INVEST_MATERIAL_OBJECT','ACQUIRE_CO_REGULATION_ORIENTATION',
          'REVISE_CO_REGULATION_ORIENTATION',
+         'ACQUIRE_HISTORICAL_ORIENTATION','REVISE_HISTORICAL_ORIENTATION',
+         'REVISE_OPERATIVE_SELF_ORGANIZATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
          'NO_CHANGE'}
@@ -492,11 +497,26 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 'confidence':c.get('confidence','tentative'),
                 'grade':GRADE,'not_other_objective_truth':True})
             report.append({'kind':op,'other_ref':other,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACQUIRE_HISTORICAL_ORIENTATION':
+            try:report.append(acquire_orientation(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
+        elif op=='REVISE_HISTORICAL_ORIENTATION':
+            try:report.append(revise_orientation(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
+        elif op=='REVISE_OPERATIVE_SELF_ORGANIZATION':
+            try:report.append(revise_operative_self(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
         elif op=='ACTOR_SELF_MODEL':
             if actor['body']['language']<.25:raise InvalidDevelopment('NO_REFLECTIVE_SELF_MODEL_CAPACITY')
-            actor['self_model'].setdefault('hypotheses',[]).append({'claim':c.get('claim',''),
-                'confidence':c.get('confidence','uncertain'), 'origin':[event_ref], 'grade':GRADE})
-            report.append({'kind':op,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+            if 'operative_action' in c:
+                qualified=copy(c);qualified['operation']=c['operative_action']
+                try:report.append(acquire_operative_self(actor,experience,event_ref,qualified))
+                except ValueError as err:raise InvalidDevelopment(str(err)) from err
+            else:
+                actor['self_model'].setdefault('hypotheses',[]).append({'claim':c.get('claim',''),
+                    'confidence':c.get('confidence','uncertain'), 'origin':[event_ref],
+                    'grade':GRADE,'does_not_operate_without_practice':True})
+                report.append({'kind':op,'status':'UNSTRUCTURED_SELF_HYPOTHESIS_NONOPERATIVE'})
     actor.setdefault('history_refs',[]).append(event_ref)
     return report
 
