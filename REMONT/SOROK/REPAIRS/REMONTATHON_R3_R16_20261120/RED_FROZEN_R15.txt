@@ -1,0 +1,202 @@
+test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) ... 
+  test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='[]') ... ERROR
+  test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='null') ... ERROR
+  test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='false') ... ERROR
+  test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='0') ... ERROR
+  test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='"actor"') ... ERROR
+test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) ... 
+  test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='[]') ... FAIL
+  test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='null') ... FAIL
+  test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='true') ... FAIL
+  test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='42') ... FAIL
+  test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='"literal"') ... FAIL
+test_recruited_forms_are_deterministically_sorted (tests.test_r16_r12_local_machine_reconcile.SortedRecruitmentR16.test_recruited_forms_are_deterministically_sorted) ... FAIL
+test_issued_trial_cannot_take_up_another_possible_end_in_same_event (tests.test_r16_r12_local_machine_reconcile.TrialBoundaryR16.test_issued_trial_cannot_take_up_another_possible_end_in_same_event) ... FAIL
+
+======================================================================
+ERROR: test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='[]')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 41, in test_canonical_nonobject_actor_snapshot_is_a_typed_failure
+    l.verify_chain()
+    ~~~~~~~~~~~~~~^^
+  File "/mnt/data/remont_r16/um_sorok_organism/storage.py", line 384, in verify_chain
+    if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+       ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='null')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 41, in test_canonical_nonobject_actor_snapshot_is_a_typed_failure
+    l.verify_chain()
+    ~~~~~~~~~~~~~~^^
+  File "/mnt/data/remont_r16/um_sorok_organism/storage.py", line 384, in verify_chain
+    if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+       ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='false')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 41, in test_canonical_nonobject_actor_snapshot_is_a_typed_failure
+    l.verify_chain()
+    ~~~~~~~~~~~~~~^^
+  File "/mnt/data/remont_r16/um_sorok_organism/storage.py", line 384, in verify_chain
+    if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+       ^^^^^^^^^^
+AttributeError: 'bool' object has no attribute 'get'
+
+======================================================================
+ERROR: test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 41, in test_canonical_nonobject_actor_snapshot_is_a_typed_failure
+    l.verify_chain()
+    ~~~~~~~~~~~~~~^^
+  File "/mnt/data/remont_r16/um_sorok_organism/storage.py", line 384, in verify_chain
+    if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+       ^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_canonical_nonobject_actor_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_actor_snapshot_is_a_typed_failure) (literal='"actor"')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 41, in test_canonical_nonobject_actor_snapshot_is_a_typed_failure
+    l.verify_chain()
+    ~~~~~~~~~~~~~~^^
+  File "/mnt/data/remont_r16/um_sorok_organism/storage.py", line 384, in verify_chain
+    if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+       ^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+FAIL: test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='[]')
+----------------------------------------------------------------------
+AssertionError: LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 23, in test_canonical_nonobject_world_snapshot_is_a_typed_failure
+    with self.assertRaisesRegex(AssertionError, 'WORLD_SNAPSHOT_NOT_OBJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "WORLD_SNAPSHOT_NOT_OBJECT" does not match "LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER"
+
+======================================================================
+FAIL: test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='null')
+----------------------------------------------------------------------
+AssertionError: LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 23, in test_canonical_nonobject_world_snapshot_is_a_typed_failure
+    with self.assertRaisesRegex(AssertionError, 'WORLD_SNAPSHOT_NOT_OBJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "WORLD_SNAPSHOT_NOT_OBJECT" does not match "LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER"
+
+======================================================================
+FAIL: test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='true')
+----------------------------------------------------------------------
+AssertionError: LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 23, in test_canonical_nonobject_world_snapshot_is_a_typed_failure
+    with self.assertRaisesRegex(AssertionError, 'WORLD_SNAPSHOT_NOT_OBJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "WORLD_SNAPSHOT_NOT_OBJECT" does not match "LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER"
+
+======================================================================
+FAIL: test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='42')
+----------------------------------------------------------------------
+AssertionError: LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 23, in test_canonical_nonobject_world_snapshot_is_a_typed_failure
+    with self.assertRaisesRegex(AssertionError, 'WORLD_SNAPSHOT_NOT_OBJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "WORLD_SNAPSHOT_NOT_OBJECT" does not match "LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER"
+
+======================================================================
+FAIL: test_canonical_nonobject_world_snapshot_is_a_typed_failure (tests.test_r16_r12_local_machine_reconcile.ExactSnapshotTypeR16.test_canonical_nonobject_world_snapshot_is_a_typed_failure) (literal='"literal"')
+----------------------------------------------------------------------
+AssertionError: LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 23, in test_canonical_nonobject_world_snapshot_is_a_typed_failure
+    with self.assertRaisesRegex(AssertionError, 'WORLD_SNAPSHOT_NOT_OBJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "WORLD_SNAPSHOT_NOT_OBJECT" does not match "LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER"
+
+======================================================================
+FAIL: test_recruited_forms_are_deterministically_sorted (tests.test_r16_r12_local_machine_reconcile.SortedRecruitmentR16.test_recruited_forms_are_deterministically_sorted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 62, in test_recruited_forms_are_deterministically_sorted
+    self.assertEqual([f['id'] for f in situated.recruited], sorted(ids))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['gamma', 'tau', 'rho', 'phi', 'kappa', 'al[85 chars]eta'] != ['alpha', 'beta', 'delta', 'eta', 'gamma', [85 chars]eta']
+
+First differing element 0:
+'gamma'
+'alpha'
+
++ ['alpha',
++  'beta',
++  'delta',
++  'eta',
+- ['gamma',
+? ^
+
++  'gamma',
+? ^
+
++  'iota',
++  'kappa',
++  'mu',
++  'nu',
++  'omega',
++  'phi',
++  'rho',
++  'sigma',
+   'tau',
++  'theta',
+-  'rho',
+-  'phi',
+-  'kappa',
+-  'alpha',
+-  'iota',
+-  'mu',
+   'xi',
+-  'beta',
+-  'nu',
+-  'delta',
+-  'omega',
+-  'theta',
+-  'eta',
+-  'sigma',
+   'zeta']
+
+======================================================================
+FAIL: test_issued_trial_cannot_take_up_another_possible_end_in_same_event (tests.test_r16_r12_local_machine_reconcile.TrialBoundaryR16.test_issued_trial_cannot_take_up_another_possible_end_in_same_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r16/tests/test_r16_r12_local_machine_reconcile.py", line 87, in test_issued_trial_cannot_take_up_another_possible_end_in_same_event
+    with self.assertRaisesRegex(InvalidDevelopment,'CURRENT_TRIAL_NOT_MATURE_MOTIVE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.028s
+
+FAILED (failures=7, errors=5)

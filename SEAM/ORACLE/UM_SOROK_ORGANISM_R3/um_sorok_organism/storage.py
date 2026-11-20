@@ -365,6 +365,8 @@ class ResearchLedger:
                 raise AssertionError('UNCOMMITTED_WORLD_ROSTER')
             try:
                 world_obj=json.loads(world_rows[0][1])
+                if type(world_obj) is not dict:
+                    raise AssertionError('WORLD_SNAPSHOT_NOT_OBJECT')
                 if canonical(world_obj)!=world_rows[0][1]:
                     raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES')
             except (ValueError,TypeError) as exc:
@@ -377,6 +379,8 @@ class ResearchLedger:
             for aid,raw in actor_rows:
                 try:
                     person=json.loads(raw)
+                    if type(person) is not dict:
+                        raise AssertionError('ACTOR_SNAPSHOT_NOT_OBJECT:'+aid)
                     if canonical(person)!=raw:
                         raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid)
                 except (ValueError,TypeError) as exc:
