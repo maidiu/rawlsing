@@ -1,0 +1,908 @@
+--- R3/um_sorok_organism/activity.py
++++ R4/um_sorok_organism/activity.py
+@@ -1,56 +1,97 @@
+-"""R2: historically situated activity-object-motive-means relations.
++"""TCO R4 activity afterlife: public course != actor-owned lived course.
+ 
+-Leontiev/Sève distinction: technical success != fulfillment of the motive; a
+-single performed operation can belong to multiple contradictory activities.
+-This is a derived and then actor-owned *research* process, not native V3.
++Integrates the independently proposed REMONT SR-P004 repair *at research grade*;
++preflights mutations and preserves shared-operation/multiple-object ambiguity.
+ """
+-from .types import copy, stable_id, GRADE
++from .types import copy, GRADE
+ 
+ 
+ def eligible_activities(constitution, recruited_form_ids, encounter):
+-    """A project can have its own cues or be recruited through an acquired form.
+-
+-    Contextual-only projects stay dormant absent real cues or a qualified
+-    FORM->ACTIVITY link. Noncontextual ordinary projects remain available.
+-    """
+     actual_tags={str(t).lower() for c in encounter.cues for t in c.get('tags',[])}
+     sources=set(recruited_form_ids)
+     result=[]
+     for p in constitution.projects:
+-        if p.get('status','active')!='active': continue
+-        cue_match=bool(set(t.lower() for t in p.get('cue_terms',[])) & actual_tags)
+-        recruiting=[link for link in constitution.activity_links
+-            if link.get('relation')=='RECRUITS_ACTIVITY'
+-            and link.get('source') in sources and link.get('target')==p['id']
+-            and (not link.get('contexts') or encounter.location in link['contexts'])]
+-        if p.get('contextual_only') and not (cue_match or recruiting): continue
+-        x=copy(p)
+-        x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
+-        x['recruitment_basis'] += ['FORM_LINK:'+r['source'] for r in recruiting]
++        if p.get('status','active')!='active':continue
++        cue_match=bool({t.lower() for t in p.get('cue_terms',[])} & actual_tags)
++        recruiting=[r for r in constitution.activity_links
++                    if r.get('relation')=='RECRUITS_ACTIVITY' and r.get('source') in sources
++                    and r.get('target')==p['id'] and
++                    (not r.get('contexts') or encounter.location in r['contexts'])]
++        if p.get('contextual_only') and not (cue_match or recruiting):continue
++        x=copy(p);x['recruitment_basis']=(['ACTIVITY_CUE'] if cue_match else [])+[
++            'FORM_LINK:'+r['source'] for r in recruiting]
+         x['motive']=p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE')
+         x['object']=p['object']
++        x['latest_lived_attempt']=copy(p.get('latest_lived_attempt'))
+         result.append(x)
+     return result
+ 
+ 
+-def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref, object_delta=None):
+-    """Register actual means and the actor's possible relation to their object.
++def record_activity_afterlife(actor,own_action,status,outcome,basis,event_ref,object_delta=None):
++    """Register specifically attributed actor attempts, NOT motive satisfaction.
+ 
+-    The external act never proves satisfaction of the purpose; provenance must
+-    indicate *which* ongoing activity, if any, was recruited. An injected action
+-    does not retroactively invent the actor's purpose.
++    Existing R2 public helper conserves multi-object courses when the admitted
++    basis explicitly contains more than one project. The R4 actor planner must
++    NOT silently infer such multi-project intention from the action's feasibility.
++    All duplicates preflight before any in-memory mutation.
+     """
+-    project_ids={r.removeprefix('project:') for r in basis if r.startswith('project:')}
++    if status not in ('PERFORMED','PARTIAL','BLOCKED'):
++        raise ValueError('UNKNOWN_ACTIVITY_OPERATION_STATUS')
++    project_ids={b.removeprefix('project:') for b in basis
++                 if isinstance(b,str) and b.startswith('project:')}
++    matched=[p for p in actor.get('projects',[]) if p['id'] in project_ids
++             and own_action in p.get('means',[])]
++    for p in matched:
++        if any(h.get('event')==event_ref for h in p.get('operational_history',[])):
++            raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
+     histories=[]
+-    for project in actor.get('projects',[]):
+-        if project['id'] not in project_ids: continue
+-        if own_action not in project.get('means',[]):continue
+-        entry={'event':event_ref,'project':project['id'],
+-            'operation':own_action,'objective_outcome':outcome,'performed_status':status,
+-            'practical_object':project['object'],'motive_hypothesis':project.get('motive'),
+-            'object_transformation':copy(object_delta or {}),
+-            'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME','grade':GRADE}
+-        histories.append(entry)
+-        project.setdefault('operational_history',[]).append(entry)
++    for p in matched:
++        entry={'event':event_ref,'project':p['id'],'operation':own_action,
++          'performed_status':status,'operation_course':('INTERRUPTED_ATTEMPT' if status=='BLOCKED'
++             else 'PARTIAL_ATTEMPT' if status=='PARTIAL' else 'PERFORMED_OPERATION'),
++          'objective_outcome':outcome,'objective_outcome_access':'WORLD_AUDIT_NOT_ACTOR_KNOWLEDGE',
++          'practical_object':p['object'],'motive_hypothesis':p.get('motive'),
++          'object_transformation':copy(object_delta or {}),
++          'object_fulfillment':'NOT_INFERRED_FROM_OPERATION',
++          'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME','grade':GRADE}
++        p.setdefault('operational_history',[]).append(entry);histories.append(entry)
+     actor.setdefault('activity_history',[]).extend(histories)
+     return histories
++
++
++def register_lived_activity_attempt(actor,experience,histories):
++    """Personally accessible somatic course, without importing world verdicts.
++
++    Status here is a *provisional proprioceptive proxy* under the research
++    world model. The objective cause is NEVER copied to the lived record.
++    """
++    felt=experience.get('felt_enactment') or {}
++    if (felt.get('objective_result_not_inferred') is not True or
++            felt.get('attempted_operation')!=experience.get('own_action')):
++        return []
++    cues=[c for c in experience.get('perceived_cues',[]) if c.get('id')]
++    outputs=[]
++    # preflight all project/event duplicates; no partial in-memory append.
++    matches=[h for h in histories if h['operation']==experience['own_action']]
++    for h in matches:
++        p=next((x for x in actor.get('projects',[]) if x['id']==h['project']),None)
++        if p and any(t.get('event')==h['event'] for t in p.get('lived_attempt_history',[])):
++            raise ValueError('DUPLICATE_LIVED_ATTEMPT_FOR_PROJECT')
++    for h in matches:
++        p=next((x for x in actor.get('projects',[]) if x['id']==h['project']),None)
++        if not p:continue
++        course=('INTERRUPTED' if experience['status']=='BLOCKED' else
++                'PARTIAL' if experience['status']=='PARTIAL' else 'CONTINUED')
++        trace={'event':h['event'],'project':h['project'],'actor':actor['id'],
++            'experience_ref':experience['ref'],'attempted_operation':h['operation'],
++            'somatic_course':course,'somatic_course_grade':'SOURCEFREE_ENACTMENT_PROXY',
++            'felt':'SOMATIC_ATTEMPT_ONLY','accessible_cue_refs':[c['id'] for c in cues],
++            'accessible_cue_tags':sorted({str(t).lower() for c in cues for t in c.get('tags',[])}),
++            'objective_outcome':'NOT_INFERRED',
++            'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME',
++            'practical_continuation':'OPEN_FOR_FUTURE_INTERPRETATION','grade':GRADE}
++        p.setdefault('lived_attempt_history',[]).append(trace)
++        p['latest_lived_attempt']=copy(trace)
++        actor.setdefault('lived_activity_history',[]).append(trace)
++        outputs.append(trace)
++    return outputs
+--- R3/um_sorok_organism/becoming.py
++++ R4/um_sorok_organism/becoming.py
+@@ -0,0 +1,216 @@
++"""TCO R4: replaceable, actor-specific lived-difference and relational genesis.
++
++No scalar psychological conservation, fixed ends, clinical theories or invented
++past events. A single experience is an open trace; repeated *contrasts* may
++qualify an orientation, not an explanation, diagnosis or completed competence.
++Historical proposals remain provisional and source-bound. Independent Others'
++world histories never become actor memories through this module.
++"""
++from .types import stable_id,copy,GRADE
++
++MECHANISM='TCO_R4_LIVED_DIFFERENCE@1'
++
++
++class LivedDifferenceKernel:
++    version=MECHANISM
++
++    def mark_attention(self,actor,cues):
++        """Only annotate already accessible cues, never manufacture or expose them."""
++        out=copy(cues)
++        for cue in out:
++            tags={str(t).lower() for t in cue.get('tags',[])+[cue.get('kind','')]}
++            refs=[v['id'] for v in actor.get('nonconceptual_orientations',{}).values()
++                  if tags & set(v['cue_terms'])]
++            if refs:cue['actor_attention_refs']=sorted(refs)
++        return out
++
++    def register_preconceptual(self,actor,experience,clock):
++        """Finite-body, pre-verbal co-regulatory pattern, no adult emotion installed.
++
++        Repeated independently supported care *with actor's own somatic
++        settling* may change which coactor-present cues later draw attention.
++        Neither attachment nor consent nor a caregiver's love is inferred.
++        """
++        if experience.get('actor')!=actor['id']:
++            raise ValueError('PRECONCEPTUAL_ACTOR_MISMATCH')
++        partner=experience.get('reciprocated_partner')
++        bodily=experience.get('interoceptive_change') or []
++        if not partner or 'SETTLING_PROXY' not in bodily:
++            return []
++        history=actor.setdefault('nonconceptual_events',[])
++        row={'event':experience['ref'],'clock':clock,'coactor':partner,
++             'somatic_signature':'SETTLING_PROXY',
++             'actor_access':'NONDECLARATIVE_BODILY_PROXY'}
++        if any(e['event']==row['event'] for e in history):
++            raise ValueError('PRECONCEPTUAL_DUPLICATE_EXPERIENCE')
++        history.append(row)
++        qualified=[e for e in history if e['coactor']==partner]
++        if len(qualified)<2:return []
++        ident=stable_id('orientation',{'actor':actor['id'],'other':partner,
++                                        'kind':'SOMATIC_CONTINGENCY'})
++        orientation={'id':ident,'actor':actor['id'],'other':partner,
++            'cue_terms':['coactor',partner.lower()],
++            'source_experience_refs':[e['event'] for e in qualified],
++            'function':'NONCONCEPTUAL_ATTENTION_ORIENTATION',
++            'not_attachment_or_other_intention':True,
++            'version':self.version,'grade':GRADE}
++        old=actor.setdefault('nonconceptual_orientations',{}).get(ident)
++        actor['nonconceptual_orientations'][ident]=orientation
++        return [] if old==orientation else [{'kind':'NONCONCEPTUAL_SOMATIC_CUE_ORIENTATION',
++                'orientation':ident,'source_experience_refs':orientation['source_experience_refs']}]
++
++    def register(self,actor,experience,lived,clock):
++        """Actor's actual experienced participation differentiates future salience.
++
++        Keep source episodes append-only, form contrast hypotheses only when
++        two distinct actor-experienced courses exist for SAME project/operation.
++        A contrast is not an inferred frustration, inhibition or causation.
++        """
++        if actor['id']!=experience.get('actor'):
++            raise ValueError('BECOMING_ACTOR_IDENTITY_MISMATCH')
++        changes=[]
++        for row in lived:
++            if row.get('actor')!=actor['id'] or row.get('experience_ref')!=experience['ref']:
++                raise ValueError('BECOMING_FOREIGN_EXPERIENCE')
++            key=stable_id('course',{'actor':actor['id'],'project':row['project'],
++                                     'action':row['attempted_operation']})
++            cluster=actor.setdefault('lived_course_series',{}).setdefault(key,{
++                'id':key,'project':row['project'],'operation':row['attempted_operation'],
++                'actor':actor['id'],'episodes':[],'grade':GRADE})
++            if any(x['event']==row['event'] for x in cluster['episodes']):
++                raise ValueError('BECOMING_DUPLICATE_EVIDENCE')
++            episode={'event':row['event'],'experience_ref':row['experience_ref'],
++                     'clock':clock,'somatic_course':row['somatic_course'],
++                     'accessible_cue_tags':copy(row['accessible_cue_tags']),
++                     'actor':actor['id']}
++            cluster['episodes'].append(episode)
++            kinds={e['somatic_course'] for e in cluster['episodes']}
++            # Both episodes actually lived by this actor; no omniscient cause.
++            if len(kinds)>=2:
++                evidence=cluster['episodes']
++                ref=stable_id('difference',{'actor':actor['id'],'series':key})
++                # A contrast exists across multiple episodes, but its content
++                # is deliberately undetermined rather than an LLM's motive.
++                acquired=actor.setdefault('acquired_discriminations',{})
++                old=acquired.get(ref)
++                new={'id':ref,'actor':actor['id'],'series':key,'project':row['project'],
++                     'operation':row['attempted_operation'],
++                     'courses':sorted(kinds),'origin_events':[e['event'] for e in evidence],
++                     'accessible_cue_tags':sorted({tag for e in evidence
++                                                  for tag in e['accessible_cue_tags']}),
++                     'function':'DIFFERENTIATE_PRACTICAL_EXPECTATION',
++                     'interpretation':'OPEN_NOT_CAUSALLY_EXPLAINED',
++                     'acquired_not_preinstalled':True,'version':self.version,'grade':GRADE}
++                acquired[ref]=new
++                if old!=new:
++                    changes.append({'kind':'ACQUIRED_DIFFERENCE_IN_ENACTMENT',
++                                    'discrimination':ref,'origin_events':new['origin_events'],
++                                    'no_inferred_motive':True})
++        return changes
++
++    def orient(self,const,access):
++        """Actor-conditional orientation derived from *accessible* cue tags.
++
++        Perceivability remains world/sensor-owned; attention is differentiated
++        after access but before form matching and action prospect formation.
++        """
++        observed={str(t).lower() for c in access.cues
++                  for t in c.get('tags',[])+[c.get('kind','')]}
++        currents=[];matching=[]
++        for orient in const.nonconceptual_orientations.values():
++            if orient['actor']!=const.actor:continue
++            hits=sorted(set(orient['cue_terms'])&observed)
++            if hits and any(orient['id'] in c.get('actor_attention_refs',[]) for c in access.cues):
++                currents.append({'kind':'NONCONCEPTUAL_ACQUIRED_ORIENTATION',
++                     'ref':orient['id'],'matched_accessible_tags':hits,
++                     'origin_experiences':copy(orient['source_experience_refs']),
++                     'not_conscious_named_affect':True,'version':self.version})
++        for d in const.acquired_discriminations.values():
++            if d['actor']!=const.actor:continue
++            hits=sorted(set(d['accessible_cue_tags'])&observed)
++            if hits:
++                entry={'kind':'HISTORY_CONDITIONED_ATTENTION','ref':d['id'],
++                       'project':d['project'],'operation':d['operation'],
++                       'matched_accessible_tags':hits,'origin_events':copy(d['origin_events']),
++                       'not_a_conscious_explanation':True,'version':self.version}
++                currents.append(entry);matching.append(d)
++        return currents,matching
++
++    def propose_second_order(self,actor,experience,participations):
++        """Generate a practice hypothesis from an actor's *own* event sequence.
++
++        A triplet INTERRUPTED(A)->CONTINUED(B)->CONTINUED(A) in one project
++        is sufficient for a *candidate organizing method* only, never a causal
++        inference that B enabled A. Two independent triplets are required to
++        admit the practice as an executable method. No mature fixed ontology.
++        """
++        changes=[]
++        for row in participations:
++            if row['somatic_course']!='CONTINUED':continue
++            project=row['project'];action=row['attempted_operation']
++            episodes=[e for e in actor.get('lived_activity_history',[])
++                      if e['project']==project and e['actor']==actor['id']]
++            if len(episodes)<3:continue
++            last=episodes[-1]
++            if last['experience_ref']!=experience['ref']:continue
++            # A, B, A is a historically observed sequence, not arbitrary opcode pair.
++            first,mid=episodes[-3:-1]
++            if (first['attempted_operation']!=action or
++                first['somatic_course']!='INTERRUPTED' or
++                mid['attempted_operation']==action or
++                mid['somatic_course']!='CONTINUED'):
++                continue
++            pair=(mid['attempted_operation'],action)
++            p=next((x for x in actor['projects'] if x['id']==project),None)
++            if not p or not set(pair).issubset(p.get('means',[])):continue
++            # The original R4 association would also learn SING-before-REPAIR
++            # when an unseen fixture replenished stock between the actions.
++            # Confront the world-owner feasibility record: a blocked material
++            # requirement, a distinct operation that actually improved it,
++            # and a subsequently feasible retry in the SAME material field.
++            # This checks objective support, NOT subjective recognition or a
++            # scientific causal law of why the organism selected its practice.
++            audits=actor.get('activity_history',[])
++            def objective_life(episode):
++                return next((h for h in audits if h['event']==episode['event']
++                     and h['project']==project and
++                     h['operation']==episode['attempted_operation']),None)
++            f,m,l=(objective_life(e) for e in (first,mid,last))
++            if not (f and m and l):continue
++            failure=[r for r in f.get('object_transformation',{}).get('affordance_requirements',[])
++                     if not r['satisfied']]
++            intermediate=m.get('object_transformation',{}).get('affordance_changes',[])
++            recovered=l.get('object_transformation',{}).get('affordance_requirements',[])
++            materially_supported=any(
++                effect['path']==needed['path'] and effect['delta']>0 and
++                effect['after']>=needed['required_at_least'] and
++                any(r['path']==needed['path'] and r['satisfied'] for r in recovered)
++                for needed in failure for effect in intermediate)
++            if not materially_supported:continue
++            if not all(e.get('accessible_cue_tags') for e in (first,mid,last)):
++                # No fictional acquisition from an inaccessible material chain.
++                continue
++            ident=stable_id('provisional_method',{'actor':actor['id'],
++                         'project':project,'steps':pair})
++            record=actor.setdefault('historical_method_candidates',{}).setdefault(ident,{
++                    'id':ident,'actor':actor['id'],'project':project,
++                    'operations':list(pair),'triplets':[],
++                    'claim':'REPEATED_LIVED_SEQUENCE_WITH_WORLD_AFFORDANCE_SUPPORT_NOT_CAUSAL_CERTAINTY',
++                    'version':self.version})
++            triplet=[e['event'] for e in (first,mid,last)]
++            if triplet not in record['triplets']:record['triplets'].append(triplet)
++            # Distinct triplets must not recycle one event as proof twice.
++            flat=[a for seq in record['triplets'] for a in seq]
++            disjoint_evidence=len(record['triplets'])>=2 and len(flat)==len(set(flat))
++            if disjoint_evidence and ident not in actor.setdefault('historical_composition_methods',{}):
++                method={'id':ident,'actor':actor['id'],'project':project,
++                    'operations':list(pair),'source_events':copy(record['triplets']),
++                    'hypothesized_end':'try an encountered alternative before retrying '+action,
++                    'status':'ACTIVE','meaning':'ACQUIRED_PROCEDURAL_ASSOCIATION_NOT_CAUSAL_CERTAINTY',
++                    'origin_grade':'HISTORICALLY_REPEATED_LIVED_AND_WORLD_SUPPORTED_PRACTICE',
++                    'version':self.version,'grade':GRADE}
++                actor['historical_composition_methods'][ident]=method
++                changes.append({'kind':'HISTORY_GENERATED_COMPOSITION_METHOD','method':ident,
++                                'source_events':copy(record['triplets']),
++                                'not_inferred_universal_learning_law':True})
++        return changes
+--- R3/um_sorok_organism/constitution.py
++++ R4/um_sorok_organism/constitution.py
+@@ -6,6 +6,8 @@
+ from .activity import eligible_activities
+ from .psychodynamics import enact_currents
+ from .plans import qualified_learned_compositions
++from .becoming import LivedDifferenceKernel
++from .relational import RelationalKernel
+ 
+ 
+ def materialize(actor,world):
+@@ -14,12 +16,15 @@
+         forms=copy(actor['forms']),links=copy(actor['links']),projects=copy(actor['projects']),
+         activity_links=copy(actor.get('activity_links',[])),
+         composition_methods=copy(actor.get('composition_methods',[])),
++        acquired_discriminations=copy(actor.get('acquired_discriminations',{})),
++        historical_composition_methods=copy(actor.get('historical_composition_methods',{})),
++        nonconceptual_orientations=copy(actor.get('nonconceptual_orientations',{})),
+         memories=copy(actor['memories']),traces=copy(actor['traces']),
+         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
+         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
+ 
+ 
+-def actor_access(actor,world):
++def actor_access(actor,world,historical_kernel=None):
+     """Objective cues are never automatically the actor's concepts or memories."""
+     location=world['positions'].get(actor['id'])
+     cues=[]; counted=0;receipts=[]
+@@ -49,7 +54,11 @@
+     site=world['sites'].get(location,{})
+     if site.get('access')=='public' or actor['id'] in site.get('admitted',[]):env.append('SITE_ACCESS')
+     env+=['REST','WAIT','ORIENT','SIGNAL']
+-    return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
++    kernel=historical_kernel or LivedDifferenceKernel()
++    cues=kernel.mark_attention(actor,cues)
++    attention_receipts=sorted({ref for cue in cues for ref in cue.get('actor_attention_refs',[])})
++    return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),
++                               receipts,counted,attention_receipts)
+ 
+ 
+ def _tokens(cues):
+@@ -65,14 +74,15 @@
+         return False
+     return True
+ 
+-def compose(constitution,access,limit=50):
++def compose(constitution,access,limit=50,historical_kernel=None,relational_kernel=None):
+     """Three streams: direct cue/ongoing project, acquired associative links, qualified traces.
+     Does not select a motive, infer actor memory from objective facts, or claim transfer
+     where the encoded form's scope prohibits it.
+     """
+     if constitution.actor!=access.actor:raise ValueError('ACTOR_IDENTITY_MISMATCH')
+     forms=constitution.forms; cues=_tokens(access.cues)
+-    active={}; dormant=[]; inhibited=[]; currents=[]; disagreements=[]
++    historical_attention,matched_differences=(historical_kernel or LivedDifferenceKernel()).orient(constitution,access)
++    active={}; dormant=[]; inhibited=[]; currents=list(historical_attention); disagreements=[]
+     # A contextual project that is not presently recruited must NOT prime its
+     # own cues. Otherwise an unseen future project bootstraps a form into the
+     # present, and the form is then misrepresented as the project's cause.
+@@ -120,7 +130,8 @@
+                                  'not_personal_investment':True})
+     for p in projects:
+         if p.get('status','active')=='active':currents.append({'kind':'ONGOING_ACTIVITY','ref':p['id'],'object':p['object'],'motive':p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE'),
+-            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[])})
++            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[]),
++            'means':copy(p.get('means',[])), 'latest_lived_attempt':copy(p.get('latest_lived_attempt'))})
+     for fid,f in active.items():
+         currents.append({'kind':f['kind'],'ref':fid,'object':f.get('object'),'actor_access':f.get('access','tacit')})
+     for a in constitution.links:
+@@ -142,6 +153,8 @@
+                 q['score']+=.4*p.get('priority',.5);q['basis'].append('project:'+p['id'])
+                 q.setdefault('practical_objects',[]).append(p['object'])
+                 q.setdefault('motive_hypotheses',[]).append(p.get('motive','UNKNOWN'))
++                q.setdefault('project_contributions',[]).append({'project':p['id'],'object':p['object'],
++                    'priority_hypothesis':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[])})
+     # Developmentally rudimentary orienting and self-preserving actions remain possible
+     # even with no acquired conceptual operations.
+     for a in ('WAIT','REST','ORIENT','SIGNAL'):
+@@ -153,7 +166,19 @@
+         if a=='REST' and constitution.body['rest']<.45:q['score']+=1.0
+         if a=='EAT' and constitution.body['nutrition']<.5:q['score']+=1.0
+         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
+-    dynamics=enact_currents(constitution,access,active,actions.values())
++    # Read historical differences as qualified actionable premises, NEVER an
++    # automatic inhibition, diagnosis or objective causal explanation.
++    for option in actions.values():
++        option['historical_differences']=[d['id'] for d in matched_differences
++            if d['operation']==option['action'] and
++               ('project:'+d['project'] in option.get('basis',[]))]
++    # TCO: relational provenance can refashion a practice's *function* without
++    # changing the objective world, granting a new action, or pretending that
++    # latent suppressed formations have been erased from causal history.
++    relational=(relational_kernel or RelationalKernel()).transduce(
++        constitution,access,active,inhibited,list(actions.values()))
++    currents+=relational['currents']
++    dynamics=enact_currents(constitution,access,active,relational['candidate_actions'])
+     currents+=dynamics['currents']
+     # These effects are *derived* from present bodily state and historically
+     # acquired forms, never silently committed as an event or a new mind state.
+--- R3/um_sorok_organism/development.py
++++ R4/um_sorok_organism/development.py
+@@ -15,7 +15,10 @@
+          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
+          'ACQUIRE_COMPOSITION_METHOD','NO_CHANGE'}
+ KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
+-RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS'}
++RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS',
++           'SUBORDINATES','INSTRUMENTALIZES','JUSTIFIES','LICENSES',
++           'RATIONALIZES','INTERPRETS_THROUGH','REVALUES','COMPENSATES_FOR',
++           'SUPPRESSES','QUARANTINES_FROM'}
+ 
+ 
+ def admit(actor,experience,event_ref,candidates):
+--- R3/um_sorok_organism/plans.py
++++ R4/um_sorok_organism/plans.py
+@@ -39,6 +39,22 @@
+           'object':rule.get('hypothesized_end','UNKNOWN_END'),
+           'source_forms':rule['source_forms'],'origin':rule['origin'],
+           'grade':rule['grade'],'acquired_not_born':True})
++    # R4: procedures generated by personally lived, repeated practical contrasts;
++    # they require their own current project means and prospective opportunity.
++    available_by_action={o['action']:o for o in options}
++    for method in constitution.historical_composition_methods.values():
++        if method.get('actor')!=constitution.actor or method.get('status')!='ACTIVE':continue
++        p=next((p for p in projects if p['id']==method['project']),None)
++        if not p:continue
++        steps=method['operations'];project_ref='project:'+p['id']
++        if not set(steps).issubset(set(p.get('means',[]))):continue
++        if not all(a in available_by_action and
++                   project_ref in available_by_action[a].get('basis',[]) for a in steps):continue
++        out.append({'id':method['id'],'operations':list(steps),
++            'object':method['hypothesized_end'],'source_forms':[],
++            'origin':[ref for triplet in method['source_events'] for ref in triplet],
++            'project':p['id'],'historically_generated':True,
++            'grade':GRADE,'acquired_not_born':True})
+     return out
+ 
+ 
+@@ -52,23 +68,21 @@
+         if len(steps)>max_steps:continue
+         out.append(ComposedActivity(stable_id('composed',{'actor':situated.actor,
+           'method':method['id'],'steps':steps}),situated.actor,method['object'],
+-          steps,tuple(method['source_forms']+[method['id']])))
+-    # These older algorithmic patterns are inherited provisional grammar,
+-    # explicitly *not* evidence of a separately acquired method.
+-    # These are compositional *grammars* of already feasible means, not new
+-    # psychologically preinstalled desires. Purposes derive from actor projects.
++          steps,tuple(method['source_forms']+[method['id']]+
++                    (['project:'+method['project']] if method.get('project') else []))))
++    # REMONT #1165 first fault: global means do NOT entitle a foreign project.
++    # Kept as an explicitly *algorithmic*, not psychologically acquired grammar.
++    patterns=(('WORK','REPAIR'),('MAKE_SPACE','SING'),
++              ('PRACTICE','SING'),('ASK','JOIN'))
+     for p in projects:
+-        if 'WORK' in options and 'REPAIR' in options:
+-            candidate=('WORK','REPAIR')
+-        elif 'MAKE_SPACE' in options and 'SING' in options:
+-            candidate=('MAKE_SPACE','SING')
+-        elif 'PRACTICE' in options and 'SING' in options:
+-            candidate=('PRACTICE','SING')
+-        elif 'ASK' in options and 'JOIN' in options:
+-            candidate=('ASK','JOIN')
+-        else:continue
+-        if len(candidate)>max_steps:continue
+-        refs=tuple(sorted({p['ref']} | {r for a in candidate for r in options[a].get('basis',[]) }))
++        own=set(p.get('means',[]));ref='project:'+p['ref']
++        candidate=next((seq for seq in patterns if len(seq)<=max_steps and
++                        all(a in own and a in options and
++                            ref in options[a].get('basis',[]) for a in seq)),None)
++        if not candidate:continue
++        form_refs={b for a in candidate for b in options[a].get('basis',[])
++                   if b!='organism' and not str(b).startswith('project:')}
++        refs=tuple(sorted({ref}|form_refs))
+         out.append(ComposedActivity(stable_id('composed',{'actor':situated.actor,
+           'purpose':p['object'],'steps':candidate,'basis':refs}),
+           situated.actor,p['object'],candidate,refs))
+--- R3/um_sorok_organism/relational.py
++++ R4/um_sorok_organism/relational.py
+@@ -0,0 +1,69 @@
++"""TCO R4 context-qualified psychic relations: operative and non-omnipotent.
++
++PRE-A0's historically differentiated relational field is not a single
++magnetism score. A form can function THROUGH another without being replaced;
++inhibition can preserve an indirect causal possibility without claiming an
++unseen conscious motive. The world never adopts an actor's moral re-description.
++"""
++from .types import copy,stable_id,GRADE
++
++RELATIONAL_VERSION='TCO_R4_RELATIONAL_REFUNCTIONING@1'
++REFUNCTION={'SUBORDINATES','INSTRUMENTALIZES','JUSTIFIES','LICENSES',
++            'RATIONALIZES','INTERPRETS_THROUGH','REVALUES','COMPENSATES_FOR'}
++LATENT={'INHIBITS','SUPPRESSES','QUARANTINES_FROM'}
++
++
++def transduce(constitution,access,active_forms,inhibited_form_ids,candidates):
++    """Return private actor-conditional interpretation and cause provenance.
++
++    No new action is minted; each implicated action must already be eligible.
++    Neither coercive practice nor objective injury is excused by a frame.
++    A suppressed form remains available as *historical indirect lineage*, not
++    as a public action, self-report, or forced affect discharge.
++    """
++    currents=[];qualified=copy(candidates)
++    suppressed=set(inhibited_form_ids);observed=set()
++    for link in constitution.links:
++        src,dst=link.get('source'),link.get('target')
++        relation=link.get('relation')
++        if src not in constitution.forms or dst not in constitution.forms:continue
++        if link.get('contexts') and access.location not in link['contexts']:continue
++        if src not in active_forms and src not in suppressed:continue
++        if relation not in REFUNCTION|LATENT:continue
++        key=stable_id('relation',{'actor':constitution.actor,'source':src,
++                 'target':dst,'relation':relation,'origin':link.get('origin',[])})
++        src_in_current=src in active_forms;dst_in_current=dst in active_forms
++        latent=not src_in_current or (dst in suppressed and not dst_in_current)
++        # Existing historical relation can condition the psychological meaning
++        # of something without being directly expressed in this scene.
++        current={'kind':'LATENT_RELATIONAL_CONDITION' if latent else
++                 'HISTORICALLY_REFUNCTIONED_MEANING',
++                 'ref':key,'relation':relation,'source':src,'target':dst,
++                 'origin':copy(link.get('origin',[])),
++                 'source_currently_recruited':src_in_current,
++                 'target_currently_recruited':dst_in_current,
++                 'not_world_moral_verdict':True,
++                 'not_actor_conscious_self_account':True,
++                 'version':RELATIONAL_VERSION,'grade':GRADE}
++        currents.append(current)
++        # Only a currently available target's OWN existing means can receive
++        # interpretive provenance; dormant/inhibited targets mint no action.
++        if relation in REFUNCTION and src_in_current and dst_in_current:
++            for option in qualified:
++                if option['action'] in constitution.forms[dst].get('enables',[]) and (
++                        src in option.get('basis',[]) or dst in option.get('basis',[])):
++                    option.setdefault('relational_frames',[]).append({'ref':key,
++                        'relation':relation,'source':src,'target':dst,
++                        'meaning':'ACTOR_SITUATED_HYPOTHESIS_NOT_OBJECTIVE_JUSTIFICATION'})
++                    if 'relation:'+key not in option['basis']:
++                        option['basis'].append('relation:'+key)
++                    observed.add(key)
++    return {'currents':currents,'candidate_actions':qualified,
++            'operative_relations':sorted(observed),'version':RELATIONAL_VERSION}
++
++
++class RelationalKernel:
++    """Exchangeable functional read policy, separate from owner/world ledger."""
++    version=RELATIONAL_VERSION
++    def transduce(self,constitution,access,active_forms,inhibited_form_ids,candidates):
++        return transduce(constitution,access,active_forms,inhibited_form_ids,candidates)
+--- R3/um_sorok_organism/runtime.py
++++ R4/um_sorok_organism/runtime.py
+@@ -1,4 +1,4 @@
+-"""UM-SOROK integrated provisional living computational organism R2.
++"""UM-SOROK TCO R4 integrated provisional living computational organism.
+ 
+ One continuing world, distinct actors and bodies, acquired variable functional
+ psychology, contextual recruitment, independent coactivity, objective outcomes,
+@@ -13,17 +13,21 @@
+ from .organism import eligible, apply_body
+ from .development import admit, recurring_provisional_growth
+ from .ordinary_life import passage
+-from .activity import record_activity_afterlife
++from .activity import record_activity_afterlife, register_lived_activity_attempt
++from .becoming import LivedDifferenceKernel
++from .relational import RelationalKernel
+ from .parents import construct_parent, interview_readout
+ from .semantics import ValidatingSemanticService
+ from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
+ 
+ class ConstitutiveRuntime:
+-    def __init__(self,db,semantic=None,world_id='w1'):
++    def __init__(self,db,semantic=None,world_id='w1',becoming=None,relational=None):
+         self.ledger=ResearchLedger(db)
+         self.semantic=semantic or ValidatingSemanticService()
+         self.world_id=world_id
+         self.authority=IndependentWorldAuthority(self._independent_coactor_plan)
++        self.becoming=becoming or LivedDifferenceKernel()
++        self.relational=relational or RelationalKernel()
+ 
+     def initialize(self,parent_packets=None,child_id='nadia',child_name='Nadia'):
+         world=blank_world(self.world_id)
+@@ -46,14 +50,14 @@
+     def see(self,actor_id):
+         _,world=self.ledger.world(self.world_id)
+         _,person=self.ledger.actor(actor_id)
+-        return asdict(actor_access(person,world))
++        return asdict(actor_access(person,world,self.becoming))
+ 
+     def situated(self,actor_id):
+         _,world=self.ledger.world(self.world_id)
+         _,person=self.ledger.actor(actor_id)
+         const=materialize(person,world)
+-        access=actor_access(person,world)
+-        return asdict(compose(const,access))
++        access=actor_access(person,world,self.becoming)
++        return asdict(compose(const,access,historical_kernel=self.becoming,relational_kernel=self.relational))
+ 
+     def cue(self,actor_id=None,kind='ordinary_contact',tags=None,location='home',
+             description='',modality='visual',private_to=None):
+@@ -69,7 +73,7 @@
+ 
+     def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
+         actor=actors[actor_id]
+-        c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
++        c=materialize(actor,world);e=actor_access(actor,world,self.becoming);situated=asdict(compose(c,e,historical_kernel=self.becoming,relational_kernel=self.relational))
+         options=copy(situated['candidate_actions'])
+         if requesting_actor is not None:
+             valid=COOPERATIVE.get(requesting_action,set())
+@@ -94,7 +98,22 @@
+             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
+             ok,why=eligible(actor['body'],action)
+             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
+-            basis=copy(opt.get('basis',[]))
++            # A globally eligible operation is NOT proof the actor undertook
++            # all projects which happen to share that means. A policy may
++            # explicitly select compatible projects; single project defaults
++            # remain sourcefree hypotheses. A genuinely ambiguous selection
++            # keeps the motive unresolved instead of manufacturing ownership.
++            allowed_projects={b.removeprefix('project:') for b in opt.get('basis',[])
++                               if isinstance(b,str) and b.startswith('project:')}
++            nominated=proposed.get('project_ids')
++            if nominated is None:
++                nominated=sorted(allowed_projects) if len(allowed_projects)==1 else []
++            if (not isinstance(nominated,list) or len(nominated)!=len(set(nominated)) or
++                any(not isinstance(p,str) or p not in allowed_projects for p in nominated)):
++                raise ValueError('MODEL_PROJECT_INTENTION_NOT_SUPPORTED')
++            basis=[b for b in opt.get('basis',[])
++                   if not (isinstance(b,str) and b.startswith('project:'))]
++            basis+=['project:'+p for p in nominated]
+             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+         return Attempt(actor_id,action,means=[],basis=basis,
+                        intention=authority,scene_hash=digest({'world':world,'actor':actor_id})),
+@@ -118,19 +137,29 @@
+ 
+     def step(self,actor_id,requested_action=None,target=None,object_ref=None,
+              coactor_override=None):
+-        """One atomic joined life transition. Coactor always uses own plan.
+-
+-        coactor_override is deliberately prohibited; original R0 consent bug
+-        is repaired in this research implementation at the public transaction.
+-        """
++        """An autonomous actor policy or explicitly external action injection."""
+         if coactor_override is not None:raise ValueError('FORGED_COACTOR_OVERRIDE_REFUSED')
+         wv,world=self.ledger.world(self.world_id)
+-        actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
++        versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
+         actors=self.ledger.actors()
++        if actor_id not in actors:raise ValueError('UNREGISTERED_ACTOR')
+         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+         principal.target=target;principal.object_ref=object_ref
++        return self._execute_attempt(actor_id,principal,wv,world,actors,versions)
++
++    def _execute_attempt(self,actor_id,principal,wv,world,actors,actor_versions):
++        """One world-authorized, independently coactor-resolved atomic life turn.
++
++        A history-derived endogenous attempt uses the SAME world owner and
++        afterlife as normal self-prospect. The argument is an internal planned
++        attempt, not a public caller's permission to forge coactor behavior.
++        """
++        if actor_id!=principal.actor or actor_id not in actors:
++            raise ValueError('ATTEMPT_ACTOR_IDENTITY_MISMATCH')
+         # A caller never supplies another actor's response. The world owner
+         # obtains it from the installed independently constituted actor policy.
++        before_bodies={aid:copy(a['body']) for aid,a in actors.items()}
++        before_world=copy(world)
+         actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
+         resolved=asdict(actual)
+         summary=resolved['world_delta']['event']
+@@ -146,16 +175,34 @@
+                 apply_body(actors[aid],'WAIT','IMPOSED' if summary['action']=='IMPOSE' else 'PARTIAL')
+         activity_effects={}
+         for row in resolved['performed']:
+-            if row['status']!='PERFORMED':continue
+             chosen=principal if row['actor']==actor_id else partner
+             if chosen is None:continue
+-            activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
++            # World-owned material feasibility provenance, not an actor belief.
++            # A later genesis mechanism can distinguish an actually altered
++            # affordance from mere temporal B-between-failure-and-success.
++            aid=row['actor'];origin=before_world['positions'].get(aid)
++            previous=before_world['sites'].get(origin,{})
++            current=world['sites'].get(origin,{})
++            changes=[];requirements=[]
++            for field in ('stock','food'):
++                b=previous.get(field);a=current.get(field)
++                if isinstance(a,(int,float)) and isinstance(b,(int,float)) and a!=b:
++                    changes.append({'path':'sites.'+str(origin)+'.'+field,
++                                    'before':b,'after':a,'delta':a-b})
++            if row['action']=='REPAIR':
++                req=previous.get('stock',0)
++                requirements=[{'path':'sites.'+str(origin)+'.stock',
++                    'required_at_least':1,'actual_before':req,
++                    'satisfied':req>=1}]
++            activity_effects[aid]=record_activity_afterlife(actors[aid],
+                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
+-                {'material_claim_ref':summary.get('material_claim_ref')})
+-        developmental={};subjective={}
++                {'material_claim_ref':summary.get('material_claim_ref'),
++                 'affordance_changes':changes,'affordance_requirements':requirements,
++                 'material_owner':'INDEPENDENT_WORLD_RESEARCH_AUTHORITY'})
++        developmental={};subjective={};historical_becoming={}
+         for aid in actors:
+             # Separate actor-specific view, no analyst world description in LLM input.
+-            access=actor_access(actors[aid],world)
++            access=actor_access(actors[aid],world,self.becoming)
+             personally_done=next((r for r in resolved['performed'] if r['actor']==aid),None)
+             participated=aid in affected
+             if not participated and not access.cues:continue
+@@ -176,6 +223,15 @@
+                          else 'IMPOSED_EFFECT_UNINTERPRETED')
+                          if aid in resolved['personal_effects'] and not personally_done
+                          else None)
++            # Experimental interoceptive read-model: only this actor's own
++            # present body change, never another's objective status/intent.
++            pre=before_bodies[aid];post=actors[aid]['body']
++            body_registration=[]
++            if (post['comfort']-pre['comfort']>=.06 or
++                pre['arousal']-post['arousal']>=.06):
++                body_registration.append('SETTLING_PROXY')
++            if pre['comfort']-post['comfort']>=.06:
++                body_registration.append('DISTRESS_PROXY')
+             experience={'actor':aid,'reciprocated_partner':reciprocal,
+                         'ref':stable_id('experience',{'actor':aid,'event':objective_ref,
+                                          'cues':personal_cues,'participated':participated,
+@@ -183,14 +239,24 @@
+                         'own_action':own,'status':personally_done['status'] if personally_done else 'OBSERVED',
+                         'perceived_cues':personal_cues,'participated':participated,
+                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
++                        'interoceptive_change':body_registration,
++                        'interoceptive_grade':'SOURCEFREE_NONCONCEPTUAL_BODY_PROXY',
+                         'actor_access_grade':GRADE}
+             subjective[aid]=copy(experience)
++            lived=register_lived_activity_attempt(actors[aid],experience,
++                                                activity_effects.get(aid,[]))
++            changed=self.becoming.register_preconceptual(actors[aid],experience,world['clock'])
++            changed+=self.becoming.register(actors[aid],experience,lived,world['clock'])
++            changed+=self.becoming.propose_second_order(actors[aid],experience,lived)
++            historical_becoming[aid]=changed
+             # Disabled LLM proposals may truthfully produce no change.
+             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
+                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
+                 'clock':world['clock'],'experience':experience,
+-                'selected_constitution':asdict(compose(materialize(actors[aid],world),access)),
++                'selected_constitution':asdict(compose(materialize(actors[aid],world),access,historical_kernel=self.becoming,relational_kernel=self.relational)),
+                 'actor_forms':copy(actors[aid]['forms']),
++                'historical_formation':copy(changed),
++                'lived_courses':copy(actors[aid].get('lived_course_series',{})),
+                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
+             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
+         observed=subjective.get(actor_id,{})
+@@ -205,6 +271,9 @@
+                  'coactor_policy_receipt':coactor_policy_receipt,
+                  'objective_ref':objective_ref,'actual':summary,
+                  'developmental_effects':developmental,'activity_effects':activity_effects,
++                 'historical_becoming':historical_becoming,
++                 'becoming_mechanism_version':self.becoming.version,
++                 'relational_mechanism_version':self.relational.version,
+                  'subjective_experience_refs':{aid:e['ref'] for aid,e in subjective.items()},
+                  # Canonical research ledger retains each *separately keyed*
+                  # access-qualified lived receipt. Do not send this audit-only
+@@ -222,6 +291,7 @@
+             'coactor':partner.action if partner else None,'status':resolved['status'],
+             'objective_outcome':resolved['objective_description'],'public_tip':expression.get('surface'),
+             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
++            'historical_becoming_count':{aid:len(e) for aid,e in historical_becoming.items()},
+             'grade':GRADE}
+ 
+     def background(self,days,processes=None):
+@@ -257,6 +327,53 @@
+            'grade':GRADE, 'selection_grade':'EXTERNAL_RESEARCH_PLAN_INVOCATION',
+            'no_guaranteed_outcome':True}
+ 
++    def continue_life(self,actor_id):
++        """Actor-originated research selection of an *acquired* practical method.
++
++        Caller chooses only WHO to advance, not action, plan, Other's consent,
++        project or result. Methods must have emerged through lived actor history.
++        Each operation rechecks current body, learned method, means and world.
++        This is a declared imperfect deterministic research policy, not human
++        psychology, not a secure adversarial-process sandbox.
++        """
++        actor=self.ledger.actor(actor_id)[1]
++        methods=actor.get('historical_composition_methods',{})
++        current=self.possible_composed_activities(actor_id)
++        candidates=[p for p in current if any(m in methods for m in p['basis'])]
++        if not candidates:
++            return {'actor':actor_id,'attempts':[], 'reason':'NO_QUALIFIED_ACQUIRED_METHOD',
++                    'sourcefree':True}
++        # Deterministic policy over the actor's own methods, not a caller plan ID.
++        selected=sorted(candidates,key=lambda p:p['id'])[0]
++        project_ids=[b.removeprefix('project:') for b in selected['basis']
++                     if b.startswith('project:')]
++        if len(project_ids)!=1:raise ValueError('HISTORICAL_METHOD_PROJECT_NOT_UNIQUE')
++        project_id=project_ids[0]
++        attempts=[]
++        for operation in selected['steps']:
++            wv,world=self.ledger.world(self.world_id)
++            versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
++            actors=self.ledger.actors()
++            p=next((p for p in actors[actor_id]['projects'] if p['id']==project_id),None)
++            if not p or operation not in p.get('means',[]):break
++            # Re-evaluate current recruitability; no stale method grant.
++            present=self.possible_composed_activities(actor_id)
++            if selected['id'] not in {m['id'] for m in present}:break
++            allowed,_=eligible(actors[actor_id]['body'],operation)
++            if not allowed:break
++            from .types import Attempt
++            principal=Attempt(actor_id,operation,basis=['project:'+project_id,
++                 'historical_method:'+selected['id']],
++                 intention='ACTOR_HISTORY_DERIVED_METHOD_SELECTED_SOURCEFREE',
++                 scene_hash=digest({'world':world,'actor':actor_id}))
++            result=self._execute_attempt(actor_id,principal,wv,world,actors,versions)
++            attempts.append(result)
++            if result['status']!='PERFORMED':break
++        return {'actor':actor_id,'method':selected['id'],
++                'project':project_id,'attempts':attempts,'sourcefree':True,
++                'selection_grade':'ACTOR_HISTORY_DERIVED_METHOD_SELECTED_SOURCEFREE',
++                'no_predetermined_success':True}
++
+     def interview(self,actor_id,instrument):
+         _,a=self.ledger.actor(actor_id)
+         return interview_readout(a,instrument)
+--- R3/um_sorok_organism/types.py
++++ R4/um_sorok_organism/types.py
+@@ -33,6 +33,7 @@
+     affordances: list[str]
+     access_receipts: list[str]
+     inaccessible_count: int = 0
++    attention_receipts: list[str] = field(default_factory=list)
+ 
+ 
+ @dataclass
+@@ -53,6 +54,9 @@
+     history_refs: list[str] = field(default_factory=list)
+     source_grade: str = GRADE
+     composition_methods: list[dict] = field(default_factory=list)
++    acquired_discriminations: dict = field(default_factory=dict)
++    historical_composition_methods: dict = field(default_factory=dict)
++    nonconceptual_orientations: dict = field(default_factory=dict)
+ 
+ 
+ @dataclass
+@@ -107,7 +111,10 @@
+         'body': {'nutrition': .78, 'rest': .78, 'comfort': .66, 'pain': 0.0,
+                  'arousal': .40, 'motor': .17, 'sensor': .40, 'language': 0.0,
+                  'illness': 0.0, 'regulation': .28},
+-        'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'activity_history': [], 'memories': [], 'traces': [],
++        'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'historical_composition_methods': {}, 'historical_method_candidates': {},
++        'acquired_discriminations': {}, 'lived_course_series': {}, 'lived_activity_history': [],
++        'nonconceptual_orientations': {}, 'nonconceptual_events': [],
++        'activity_history': [], 'memories': [], 'traces': [],
+         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
+         'grade': GRADE, 'history_refs': [], 'current_activity': None,
+     }
