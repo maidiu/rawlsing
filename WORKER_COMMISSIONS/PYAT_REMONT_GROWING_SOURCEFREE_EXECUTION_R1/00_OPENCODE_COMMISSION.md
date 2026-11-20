@@ -15,12 +15,12 @@ You are the REMONT **growing test commission executor** for `maidiu/rawlsing` PR
 
 Reconcile the actual live PR #1164 head, freeze the full 40-hex SHA, and check it has not moved. In the actual local repository, use `git fetch origin pull/1164/head` and `SHA="$(git rev-parse FETCH_HEAD)"` to bind the fetched identity. Make a new detached worktree at that exact SHA, recording its directory and `git status --porcelain`. If the host/repo/source is unavailable or the queue is stale against a newer head, hold with exact evidence instead of running at an unknown revision or fetching arbitrary original sources. Do not presume the user has multiple hosts/accounts or switch editor/model without authorization.
 
-Read the entire current `REMONT_EXECUTION_QUEUE.md` and execute all eligible pending sourcefree QIDs, including the optional broad suite and all subsequently appended eligible QIDs. For its current Q001–Q005 inventory, the exact operation is:
+Read the entire current `REMONT_EXECUTION_QUEUE.md` and execute all eligible pending sourcefree QIDs, including the optional broad suite and all subsequently appended eligible QIDs. For its current runnable Q001–Q005 and Q007 inventory, the exact operation is:
 
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007
 ```
 
 The runner checks exact SHA and clean tracked files, runs each group even when another fails, and writes independent proof under `.pyat-preff-remont-proof/$SHA/`. Read each `pytest.log`, `junit.xml`, `exitcode.txt` and the batch `index.csv`. Do not execute Q006 or any original AB/GSS/wave suite without a separately issued source/rights commission.

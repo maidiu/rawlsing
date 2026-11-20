@@ -15,10 +15,10 @@ At a clean worktree pinned to the current, explicitly recorded #1164 commit:
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007
 ```
 
-Without arguments the runner defaults to Q001–Q004; Q005 is the additional broad regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
+Without arguments the runner defaults to Q001–Q004 plus the newly appended Q007; Q005 is the additional broad regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
 **Growing rule:** Add a fresh numbered QID and its purpose, exact file(s), producer/consumer, positive/negative proof and triage owner here, and append one bounded suite to the launcher. Do **not** modify existing QID meanings or erase red/held evidence; supersede old IDs explicitly. OpenCode receives the same commission on every run, reads its latest queue and executes all eligible new QIDs against one frozen HEAD.
 
@@ -64,6 +64,13 @@ Without arguments the runner defaults to Q001–Q004; Q005 is the additional bro
 ### RMT-Q006 — original-wave/scientific qualification
 **Priority P2 · NOT EXECUTABLE HERE / AUTHORITY_HOLD**
 - **No runnable test path authorized.** Needs explicit original-source entitlement, mapping edition, actual ARABBAR1/GSS material, survey design method and secure execution host. Do not turn this sourcefree commission into original wave runs. Separate owner issuance required.
+
+### RMT-Q007 — C5 live contextual possibility service, history, contradictions and case offer
+**Priority P0 · RUN_PENDING · NEW CONTINUING PRODUCT**
+- **Actual tests:** `rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py` (14 tests). **New implementation:** `rawlsing_next/pre553_ff_prev3_possibility_navigation.py`. **Upstream actual owners:** I03 `_pre553_query_common.QueryExecutionResult` → `pre553_s04_first_consumer.py`, `pre553_s04_dhikr_comparative.py`, `pre553_s04_field_forge_v3_bridge.py`, `field_forge_observed_research.py`. **Downstream:** PRE-V3 whole-case conditional offer; no Sorok actor mutation or structural admission.
+- **Expected positive:** one actual native synthetic I03 multi-target joint and separately an I05 `VALID_EMPTY` candidate's still-supported I03 fact; exact pinned C4 FF01/DHIKR input; map all unconditioned source axes' values into conserved raw complete-case branch partitions; show source-observed target alternatives including ties/nonmodals (actual 5-to-1 minority vs separate ties); zero is NOT impossibility, low-N is held, continuing steps stop at held; reproduce whole observed joint configuration with deterministic seed, exact replay after cold private archive restore, never reread C11/I03.
+- **Negative falsifiers:** independently invented marginal combinations, duplicate/foreign/mapped-by-guess axes, NaN/float source conditions, context escalation after low-N, missing external pin, counterfeit rehashed replay, incompatible source risk or state, falsely declaring minority a trait/cohort, fabricating world/actor permission.
+- **Triage:** REMONT Browser for source/semantics/privacy/actor and cross-owner defects; OpenCode separately authorized for one-module bounded code mistakes. **No fake person.** All 14 tests and inherited Q001–Q005 remain NOT EXECUTED at the new C5 commit. Historical user Mac 10 fail/9 pass remains old head only.
 
 ## Required execution comment (PR #1164, linked to #1097)
 
