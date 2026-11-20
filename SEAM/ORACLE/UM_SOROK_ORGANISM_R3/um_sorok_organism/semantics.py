@@ -19,6 +19,7 @@ from .caregiving_practice import choose_independent_repeat_feeding
 from .food_access_struggle import choose_food_petition
 from .institutional_procedure_learning import one_bounded_proposal
 from .material_dependency_history import choose_lived_material_counterpath
+from .livelihood_history import sourcefree_relief_recruitment
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -101,6 +102,9 @@ class HeuristicSemanticProvider:
             materially_possible=choose_lived_material_counterpath(possibilities)
             if materially_possible:
                 return {'task':task,**materially_possible}
+            funded_relief=sourcefree_relief_recruitment(possibilities)
+            if funded_relief:
+                return {'task':task,**funded_relief}
             object_action=choose_qualified_material_care(possibilities)
             if object_action:
                 return {'task':task,**object_action}
