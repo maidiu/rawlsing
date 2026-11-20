@@ -81,6 +81,16 @@ Without arguments the runner defaults to Q001–Q004, Q007 and Q008; Q005 remain
 - **Routing:** REMONT Browser judges PF-038 original FF01 ABI/provenance; OpenCode bounded test corrections for PF-039–041; distinct independent G5 only after exact-SHA executed proof.
 - **Exact state:** repaired source/test commits `826a500`, `a05c705`, `c98141d`, `212713a`; all `CODE_COMMITTED_NOT_EXECUTED` until rerun at one current frozen HEAD.
 
+
+### RMT-Q009 — immutable historical RED/GREEN proof and macOS batch preflight
+**Priority P0 · TEST_INFRASTRUCTURE · RUN_PENDING**
+- **Test:** `rawlsing_next/tests/test_preff_remont_batch_guard.py`, registered in the SAME `rawlsing_next/tests/run_preff_remont_batch.sh` batch.
+- **Producer:** current exact-head REMONT Q001–Q008 batch runner. **Consumer:** cumulative JUnit/log/exit/index evidence and old historical RED proof.
+- **Positive:** the default queue includes Q005 and Q008; exact clean 40-hex HEAD; no previous proof directory overwritten; Bash 3.2/macOS nounset-safe execution.
+- **Negative falsifiers:** stale HEAD, duplicate QID, original-wave Q006, unknown QID, existing immutable proof archive must refuse before executing a test or truncating any log. A prior RED sentinel survives byte-exact.
+- **Routing:** REMONT Browser for proof custody/QID authority; separately user-authorized OpenCode BUG worker for a narrow shell syntax error only. Q009 pass is sourcefree, not G5 or original-wave rights.
+- **Grade:** CODE/TEST_AUTHORED_NOT_EXECUTED; historical RMT-Q008 ownership and Q001–Q007 preserved.
+
 ## Required execution comment (PR #1164, linked to #1097)
 
 One **version-pinned** report, including: exact tested SHA and git tree cleanliness; host OS, Python and pytest version; each QID with test files, exact command, summary, exit code and JUnit/log paths; first failure stack and minimal source trace; whether a failure is old/new/test-misstatement/owner contract; proposed smallest repair; affected upstream and downstream owners; historical negative controls to conserve; recommended **REMONT Browser vs OpenCode** with reason. Mark unrun items `NOT_EXECUTED`; do not call author runs independent G5 or protected acceptance.

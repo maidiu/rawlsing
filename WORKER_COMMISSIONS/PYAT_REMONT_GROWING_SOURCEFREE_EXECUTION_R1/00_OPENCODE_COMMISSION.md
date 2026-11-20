@@ -20,7 +20,7 @@ Read the entire current `REMONT_EXECUTION_QUEUE.md` and execute all eligible pen
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009
 ```
 
 The runner checks exact SHA and clean tracked files, runs each group even when another fails, and writes independent proof under `.pyat-preff-remont-proof/$SHA/`. Read each `pytest.log`, `junit.xml`, `exitcode.txt` and the batch `index.csv`. Do not execute Q006 or any original AB/GSS/wave suite without a separately issued source/rights commission.
@@ -32,3 +32,5 @@ For every failure, identify the **first actual defect**, not the final generic s
 Publish one useful exact-SHA execution report to PR #1164 and link it into #1097. Report OS/Python/pytest, every run/skipped QID, command, pass/fail/skip, full JUnit/log path, source excerpt or traceback and recommended repair owner. Explicitly label USER/WORKER_SOURCEFREE_TEST_EXECUTED vs NOT_EXECUTED, not independent G5 or protected CAS. If no connector to publish, return a comment-ready report and identify the missing permission instead of claiming publication.
 
 Your required return is a single test matrix and repair-triage inventory with exact proof, no source-wave execution, no code changes and no false scientific or actor authority. The commission remains OPEN and can be rerun later after PYAT HQ appends new tests.
+
+**2026-11-20 living queue handoff:** Existing PYAT RMT-Q008 belongs to held-source/raw-provenance P0; never reuse its ID. REMONT RMT-Q009 adds immutable proof/no-clobber and macOS Bash 3.2 preflight. Execute Q001–Q005, Q007–Q009 at the newly frozen exact HEAD. If a prior exact-head proof exists, do NOT overwrite; choose a new explicit `REMONT_PROOF_ROOT` and retain both RED/GREEN receipts. The execution worker must not modify code or self-issue G5.
