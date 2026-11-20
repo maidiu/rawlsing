@@ -4,6 +4,7 @@ explicitly coarse heuristic fiction, not an LLM and not a human learning law.
 """
 from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
+from .preproject_agency import fallback_nonproject_orientation
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -34,6 +35,12 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
+            # The embodied child's acquired, nonpropositional anticipation may
+            # alter a future attempt without first inventing an adult project.
+            # When rival currents coexist, this heuristic MUST NOT decide.
+            orientation=fallback_nonproject_orientation(possibilities)
+            if orientation:
+                return {'task':task,**orientation}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
