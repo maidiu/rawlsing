@@ -347,17 +347,59 @@ def identify_uncertain_unobserved_overlap(
     })
 
 
+def replay_uncertain_unobserved_overlap(
+    *,
+    receipt: UncertainRepertoire,
+    left: S04ObservedKnowledge,
+    right: S04ObservedKnowledge,
+    left_event_cell: Any,
+    right_event_cell: Any,
+    registry: AuthorityRegistry | None = None,
+    left_interval_authority: AuthorityRef | None = None,
+    right_interval_authority: AuthorityRef | None = None,
+    common_population_authority: AuthorityRef | None = None,
+) -> UncertainRepertoire:
+    """Cold source-and-issuer replay: rehashing a counterfeit cannot issue it."""
+    if type(receipt) is not UncertainRepertoire:
+        raise UncertainRepertoireError("EXACT_UNCERTAIN_REPERTOIRE_RECEIPT_REQUIRED")
+    rebuilt = identify_uncertain_unobserved_overlap(
+        left=left, right=right,
+        left_event_cell=left_event_cell, right_event_cell=right_event_cell,
+        registry=registry,
+        left_interval_authority=left_interval_authority,
+        right_interval_authority=right_interval_authority,
+        common_population_authority=common_population_authority,
+    )
+    if rebuilt.ref != receipt.ref:
+        raise UncertainRepertoireError("UNCERTAIN_REPERTOIRE_SOURCE_REPLAY_FAILED")
+    return rebuilt
+
+
 def ask_uncertain_repertoire_configuration(
     *,
     relation: UncertainRepertoire,
+    left: S04ObservedKnowledge,
+    right: S04ObservedKnowledge,
+    left_event_cell: Any,
+    right_event_cell: Any,
     event_a: bool,
     event_b: bool,
+    registry: AuthorityRegistry | None = None,
+    left_interval_authority: AuthorityRef | None = None,
+    right_interval_authority: AuthorityRef | None = None,
+    common_population_authority: AuthorityRef | None = None,
 ) -> dict[str, Any]:
-    """A typed compatibility constraint, never a possible-person sampler."""
-    if type(relation) is not UncertainRepertoire:
-        raise UncertainRepertoireError("EXACT_UNCERTAIN_REPERTOIRE_RECEIPT_REQUIRED")
+    """A source-replayed compatibility constraint; never a person sampler."""
     if type(event_a) is not bool or type(event_b) is not bool:
         raise UncertainRepertoireError("EXACT_BINARY_PROPOSITION_FLAGS_REQUIRED")
+    replay_uncertain_unobserved_overlap(
+        receipt=relation, left=left, right=right,
+        left_event_cell=left_event_cell, right_event_cell=right_event_cell,
+        registry=registry,
+        left_interval_authority=left_interval_authority,
+        right_interval_authority=right_interval_authority,
+        common_population_authority=common_population_authority,
+    )
     m = relation.material()
     key = ("A_AND_B" if event_a and event_b else
            "A_ONLY" if event_a else
@@ -387,5 +429,5 @@ __all__ = [
     "CONTRACT", "INTERVAL_OPERATION", "BRIDGE_OPERATION", "INTERVAL_COVERAGE",
     "BRIDGE_KIND", "GRADE", "UNISSUED", "UncertainRepertoireError",
     "UncertainRepertoire", "identify_uncertain_unobserved_overlap",
-    "ask_uncertain_repertoire_configuration",
+    "replay_uncertain_unobserved_overlap", "ask_uncertain_repertoire_configuration",
 ]
