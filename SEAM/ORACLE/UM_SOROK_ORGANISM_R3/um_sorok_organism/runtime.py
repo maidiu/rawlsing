@@ -99,10 +99,31 @@ class ConstitutiveRuntime:
                        'not_actor_conscious_intent':True}
             bound_target=None
         else:
+            # The new selection interface offers actor-scoped *practical*
+            # alternatives, not merely operation names. It also accepts the
+            # older action-only policy with explicitly unresolved purposes.
+            # A model policy is NOT a conscious iceberg manager.
+            flat_alternatives=[copy(alt) for o in options
+                               for alt in o.get('practical_alternatives',[])]
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
-                'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
+                'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
+                'situated':situated,'options':options,
+                'practical_options':flat_alternatives,
+                'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
-            action=proposed['action']
+            requested_option=proposed.get('practical_option_id')
+            if requested_option is not None:
+                if type(requested_option) is not str:
+                    raise ValueError('INVALID_PRACTICAL_OPTION_ID')
+                matches=[a for a in flat_alternatives
+                         if a['option_id']==requested_option]
+                if len(matches)!=1:
+                    raise ValueError('UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID')
+                action=matches[0]['operation']
+                if 'action' in proposed and proposed['action']!=action:
+                    raise ValueError('PRACTICAL_OPTION_OPERATION_CONFLICT')
+            else:
+                action=proposed['action']
             opt=next((o for o in options if o['action']==action),None)
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
