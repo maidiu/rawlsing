@@ -1,5 +1,16 @@
 # REMONT — recovered source-authority capital and exact current join (2026-11-19)
 
+## 2026-11-19 ACTUAL QSR VERSION-C RECOVERY + 190-ITEM FILE INVENTORY
+
+The user directly provided original `question_structure_register.csv`; its actual 26,582,238 bytes were independently SHA-256 checked at `9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219`, **identical to historical HARVEST-001 version C**. Exact parse: 18,792 data rows / 69 columns / 562 `needs_manual_review=yes` / 35 family-wave pairs, including EVS 1999 under canonical `W3`, not excluded Asian W6. **Native persistent original now banked:** `/Rawlsing/Evidence/question_structure_register_9139c1ab77bf47a8_18792x69.csv` (native Library file ID `file_000000004b1c8212838dcf7cc1d3a8bf`). This is an actual restored historical payload, NOT just its earlier recovery record; no oldMac ZIP extraction was necessary for version C.
+
+Also actual original R14 integrity audit 352,871 bytes / SHA `fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0`, WVS7 master questionnaire 885,723 bytes / SHA `5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b`, WVS7 master codebook 3,542,402 bytes / SHA `d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3`, and 35-wave question-relation registry 1,119,028 bytes / SHA `a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b` were materialized from native Library and independently verified.
+
+**Retrieval inventory:** [human full list](ORIGINAL_ARTIFACT_RETRIEVAL_LIST.md) / [typed 190-item machine list](ORIGINAL_ARTIFACT_RETRIEVAL_LIST.json) documents name/size/date-basis/SHA/location for all 35 frozen original SAV/DTA source files (1,319,161,326 aggregate bytes), their 35 historical per-wave codebooks and 70 CSV/YAML structural audit entries, nine historical response-option packet SHA references, 12 frozen QSM FQRA SHA/byte rows, restored core materials and remaining country/source producer scope. Each unknown field remains explicitly null.
+
+**Crucial non-promotion:** QSR-C source-structure/manual payload **retrieval now closed**, while original source response mapping, C11 object-family/occurrence indexing, routing admission and Z06→I03/Batch/S04/U43 current consumer/owner permission **remain held**. The located `source_structure_audit_binding_35wave_v1.json` in Library itself reports `BLOCKED_REQUIRES_HASH_BOUND_AUDIT_REPUBLICATION`: 35 expected wave UIDs, zero observed UIDs, `artifacts=[]`. Do not reinterpret this as a green 35-wave audit. No 35-source ingestion ordered; immediate pilot WVS7 and competent separate authorized family only. No tests/new science/protected pair accepted.
+
+
 **Disposition:** `HISTORICAL_ORIGINALS_LOCATED__SOURCE_INSTANCE_AND_CURRENT_CONSUMER_JOIN_HELD`.
 
 **Machine-readable source of this bounded return:** [HISTORICAL_SOURCE_AUTHORITY_RECOVERY.json](HISTORICAL_SOURCE_AUTHORITY_RECOVERY.json), with fifteen typed evidence handles `H01..H15`, exact refs, content hashes, ownership limits, negative cases and five executable next operations. **This is a historical/source-authority inventory, not an issuer or a new programme.** It refines **PF-001 / PF-006 / PF-008 / PF-020 and PYAT-REQ-001 / 002**, without renumbering or closing them.
