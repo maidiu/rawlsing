@@ -1,0 +1,40 @@
+{
+  "schema": "ANVIL_USER_SCOPED_SOURCE_DECISION@1",
+  "decision_kind": "USER_DIRECT_AFFIRMATIVE_SCOPED_ANALYTICAL_DECISION",
+  "decision_state": "ALLOW",
+  "decision_status": "AFFIRMATIVE_SCOPED_LOCAL_ANALYSIS",
+  "not_retroactive_historical_grant": true,
+  "user_words": "oh oh, I grant analysis permission man, of course ... i commissioned the ... thing",
+  "host": "MainMac",
+  "purpose": "P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+  "scope": "P0_SAVED_C11_LOCAL_ANALYSIS",
+  "operations": ["I03", "I05", "Batch", "S04", "DHIKR", "FF01", "C4", "C5", "C6"],
+  "limits": {
+    "no_raw_survey_reopen": true,
+    "no_rebuild": true,
+    "no_public_respondent_data": true,
+    "no_expanded_waves": true,
+    "no_standing_grant": true,
+    "no_protected_edit": true,
+    "no_retroactive_historical_grant_change": true,
+    "valid_estimator_not_established": true,
+    "preexisting_compiler_query_not_established": true,
+    "native_provider_compatibility_not_established": true
+  },
+  "waves": {
+    "SRC04": {
+      "wave": "Arab Barometer Wave 1",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src04|365d27aea5daa49f208b5aa10eef6bba936a0676ae7eeedefe562b55b66ac0a4",
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "saved_manifest_sha256": "c1e98289046746b70d5714ca57b7682523004ae766dba7f66051cdfe3f877597",
+      "saved_i02_schema": "ANVIL_STREAM_C11_ESTATE@1"
+    },
+    "SRC16": {
+      "wave": "GSS1972",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0",
+      "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "saved_manifest_sha256": "7a777dd17ec78137457c07e28177435aa0863f444ff43574e9ce9c6941bf8d1c",
+      "saved_i02_schema": "ANVIL_STREAM_C11_ESTATE@1"
+    }
+  }
+}

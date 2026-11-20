@@ -1,0 +1,79 @@
+{
+  "decision_status": "AFFIRMATIVE_SCOPED_LOCAL_ANALYSIS",
+  "host": "MainMac",
+  "note": "C6 typed external-root gate refuses ANVIL_STREAM_C11_ESTATE@1 before any saved Parquet read. No schema bypass requested; carrier widening belongs to REMONT.",
+  "parquet_read": false,
+  "purpose": "P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+  "resolver_calls": [
+    "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src04|365d27aea5daa49f208b5aa10eef6bba936a0676ae7eeedefe562b55b66ac0a4",
+    "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0"
+  ],
+  "respondent_rows_emitted": 0,
+  "schema": "ANVIL_P0_R2_TYPED_USER_DECISION_AND_CONSUMER_GATE@1",
+  "source_opened": false,
+  "user_words": "oh oh, I grant analysis permission man, of course ... i commissioned the ... thing",
+  "waves": {
+    "SRC04": {
+      "currentness": "CURRENT_GRANTED",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src04|365d27aea5daa49f208b5aa10eef6bba936a0676ae7eeedefe562b55b66ac0a4",
+      "downstream_status": "NOT_REACHED",
+      "host": "MainMac",
+      "manifest_sha256": "c1e98289046746b70d5714ca57b7682523004ae766dba7f66051cdfe3f877597",
+      "parquet_read": false,
+      "purpose": "P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+      "refusal": {
+        "class": "ExternalI02IntegrityError",
+        "earliest_executable_refusal": true,
+        "message": "unsupported externally held certificate schema",
+        "stage": "TYPED_EXTERNAL_I02_ROOT_ADMISSION"
+      },
+      "respondent_rows_emitted": 0,
+      "saved_i02": {
+        "logical": "8c21b01f0fb294972c859a59068defe6f6dfef91e7de20a1684a99cae0558de0",
+        "physical": "4cdee717304548fff3b4b9b4915ebd51a456f6497b1d94c0c9304e8697f3fc01",
+        "release": "C11_STREAM_SOURCEFREE_RELEASE|SRC04_ARAB_BAROMETER_I_PREPARATION|58091faaff4fd67928f76450f1a722b42580332e2783e049bdf9e31af1a8fdf6",
+        "replay": "abcace83d9c12ed482cc1c042a1f9cc49f27ba00452c376008145bafab85e9a1",
+        "schema": "ANVIL_STREAM_C11_ESTATE@1",
+        "source": "SOURCE_ARTIFACT|Arab Barometer Wave 1.sav|2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+        "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:d71f6c516dd0850796b0868d67c8cf850ee835c10fd8721671fb6594c10a4a29|d71f6c516dd0850796b0868d67c8cf850ee835c10fd8721671fb6594c10a4a29"
+      },
+      "scope": "P0_SAVED_C11_LOCAL_ANALYSIS",
+      "source_opened": false,
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "stage_reached": "TYPED_EXTERNAL_I02_ROOT_ADMISSION",
+      "typed_external_i02_roots_created": false,
+      "wave": "Arab Barometer Wave 1"
+    },
+    "SRC16": {
+      "currentness": "CURRENT_GRANTED",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0",
+      "downstream_status": "NOT_REACHED",
+      "host": "MainMac",
+      "manifest_sha256": "7a777dd17ec78137457c07e28177435aa0863f444ff43574e9ce9c6941bf8d1c",
+      "parquet_read": false,
+      "purpose": "P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+      "refusal": {
+        "class": "ExternalI02IntegrityError",
+        "earliest_executable_refusal": true,
+        "message": "unsupported externally held certificate schema",
+        "stage": "TYPED_EXTERNAL_I02_ROOT_ADMISSION"
+      },
+      "respondent_rows_emitted": 0,
+      "saved_i02": {
+        "logical": "2673c233ecdf96ace49f65f8edf6ff9f46c1ea31c6826d3b11eed12a39da29c4",
+        "physical": "0f6a40fdf603863e367163ddca4dc4552bda7267f6f6862491f3d9e068117848",
+        "release": "C11_STREAM_SOURCEFREE_RELEASE|GSS_1972_SOURCE_ARTIFACT|95fbd6e611bfdc259d86d46e3d74568e04cc209f97d5ada05d45ae25483a41fb",
+        "replay": "08f57630a64b281043ffb11af59f1903e80e3e0690ec68869f995048bb788da7",
+        "schema": "ANVIL_STREAM_C11_ESTATE@1",
+        "source": "SOURCE_ARTIFACT|GSS1972.sav|e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+        "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:8a3e19904e95a67b63db59215eeebf47912a497e253668a0bc57943a62f657d3|8a3e19904e95a67b63db59215eeebf47912a497e253668a0bc57943a62f657d3"
+      },
+      "scope": "P0_SAVED_C11_LOCAL_ANALYSIS",
+      "source_opened": false,
+      "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "stage_reached": "TYPED_EXTERNAL_I02_ROOT_ADMISSION",
+      "typed_external_i02_roots_created": false,
+      "wave": "GSS1972"
+    }
+  }
+}
