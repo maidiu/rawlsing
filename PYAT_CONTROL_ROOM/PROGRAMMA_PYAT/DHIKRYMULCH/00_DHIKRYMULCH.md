@@ -289,3 +289,128 @@ Likewise a moral claim can be both a response act and an institutionally produce
 
 The world builder should be able to ask: **what would have to change materially for this observed pattern to become easier, harder or unavailable?** Then it distinguishes a sourced counterfactual, an explicitly modeled intervention, a mere possible alternative, and an unsupported fantasy. An empirical probability is not a causal transport coefficient.
 
+
+---
+
+## V. FIELD FORGE IS THE WORLD'S STRUCTURAL COURT, NOT A SECOND EMPIRICAL ENGINE
+
+### V.1 What Field Forge receives and what it constitutes
+
+The old DDM-to-strata path correctly wanted empirical dispositions to meet the structured society, but its required nine-strata mold is historical ancestry, not controlling ontology. The adopted Field Forge R2 architecture permits **actor-independent structural relation objects** derived from qualified input evidence, with exact roles, direction, time, scope, negative states and allowed uses. It explicitly does **not** demand one gigantic universal wrapper or the automatic promotion of every observed correlation into a social-power relation.
+
+Field Forge must see the actual DDM products the relevant lawful producer already owns: source-qualified distributions, conditional minority branches, same-respondent co-travel and joints, typed response concepts, positional contrasts, partial identification, historical comparisons, and empirical counterexamples. It may request original facts for canary inspection, but must not take over all upstream analytical producers simply because they can be accessed.
+
+It separately receives world evidence: institutions, rules, labor and care arrangements, ownership/control, housing, sanctions, historical policy, geography, collective capacities, statuses, resources, cultural practices and the pathways by which different actors encounter these. Source-specific legal/semantic/structural authority determines which statements can be admitted. The absence of a special semantic relation owner does not delete valid empirical co-travel; it prevents only an unsupported special interpretation.
+
+The fundamental output is **a typed, time- and field-scoped relational claim** or a precise typed refusal. It can be served directly from legitimate producers, referenced from exact roots or materialized when necessary. Its physical location is an implementation decision, not a reason to invent a second generic Field Forge compiler.
+
+### V.2 Four different statements with four different evidentiary burdens
+
+A useful field might contain:
+
+1. **Empirical footprint**: among eligible employed respondents in a specified source, a response pattern differs sharply by reported job security. This is an observed or estimated source relation, not a proof of cause.
+2. **Structural relation**: a particular employment regime gives one party the authority to terminate a contract, provides the other weak bargaining protection, and ties income to access to basic needs. This depends on independently issued institutional or material evidence.
+3. **Pressure mechanism**: given this relation, participation in a collective action has a modeled or evidenced cost, sanction risk, buffer, or opportunity pathway. The mechanism must state actors, conditions, direction, time, scope and any assumptions; empirical footprint alone does not create it.
+4. **Situated encounter**: this specific worker becomes aware of, misperceives, ignores, resists or uses the pressure during an actual encounter. The actor's history, psychology, access and present circumstances determine this; it is not Field Forge's jurisdiction.
+
+Do not call the fourth 'structural pressure' and infer it from the first. A field can contain a real pressure without the subject understanding it; a subject can strongly feel a pressure that is misperceived or exaggerated. Both matter in a simulation that takes persons seriously.
+
+### V.3 Construct the relational world at multiple scales
+
+The constitutive field includes spatial and temporal grains: household, workplace, village, city, border region, state, transnational market, institutions and social networks. The scales overlap and can conflict. A local subhegemony may be subordinate nationally; an institution may have legal authority but little effective reach in one district; migration may alter the convertibility of a credential or relationship; a household may buffer coercion while reproducing another form of domination.
+
+Represent **positions, relations, capacities, resource stocks, institutional rules, relevant schedules, costs, benefits, exclusions, recognized and informal norms, potential sanctions, transmission paths, and uncertainty**. Different claims have different scope; a region-level statistic cannot be transplanted into a specific family's exact bank balance or personal history.
+
+Power should be a relation with **controller, controlled resource or decision, targets, feasible interventions, enforcement, potential resistance, and consequences**. Hegemony should be a pattern of power and symbolic recognition within fields; pressure should refer to concrete alternative-sensitive pathways; reproduction should include the labor that keeps those pathways operative.
+
+### V.4 Carriers make culture materially operative
+
+A cultural message is not a weight emitted continuously by 'society.' It is heard, practiced, enforced, interrupted, embodied and reinterpreted through **carrier events**: a classroom lesson, a prayer meeting, a workplace evaluation, a strike, a family meal, a border interview, a neighbor's assistance, a media encounter, a police checkpoint, a wage payment, a school expulsion.
+
+The carrier has material conditions and an actor-relative path of access. It may confer a norm while also furnishing its critique. A school can punish defiance and teach a language of justice; a religious institution can endorse hierarchy and expose an ethical demand to defend the oppressed; a workplace can exploit and generate collective competence; a family can care and constrain simultaneously.
+
+The engine must store at least: origin institution/actor, medium and practice, purpose, possible audience, access conditions, credibility cues, costs/sanctions, public and private meanings available, temporal exposure, and conflicting carrier alternatives. It must not assume a carrier is accepted simply because it arrives. **Institutional transmission is an interaction, not a transfer of a ready-made internal belief**.
+
+### V.5 The opportunity–inhibition landscape is the world-facing social product
+
+For an actor situated at a given time in this material world, Field Forge and the objective-world producers should support a query:
+
+**What courses of activity are physically, legally, economically, socially and institutionally reachable? Which have low friction, high cost, sanctions, support, dependence, collective alternatives or uncertain access? What contradictory demands coexist? Which changes in resources, law, relations or historical circumstances would expand or contract the field?**
+
+Return alternatives with evidence and mechanism status, not one best action. The world may allow a formally legal course that is practically unaffordable; prohibit a course that people nevertheless attempt; enable an action collectively but not individually; alter what costs mean depending on buffers, care work, documentation, language and allies. Compare **formal availability, practical reachability, anticipated consequences, actual enforcement, and actor-perceived possibility** without merging them.
+
+A pressure claim must remain conditional. A demographic group average is not a pressure mechanism, and a structurally situated risk is not a prediction that an individual will comply. No source-supported empirical result is sacrificed just because the causal interpretation is held.
+
+### V.6 Cross-source composition is not synthetic census-making
+
+Multiple surveys can illuminate different aspects of one historical world without sharing respondents. Each source retains its own sample frame, release, time, respondent units, questionnaires, estimands and special meanings. Field Forge may compose **qualified relational constraints, complementary observations and externally sourced mechanisms**, preserving their scopes and conflicts.
+
+Three distinct possibilities:
+
+- Direct same-respondent conjunction: legitimate within one source (or independently certified linkage) at the actually shared unit, time and risk set.
+- Same-target-population inference without linkage: partial identification or an explicitly assumption-bearing statistical model, never silently a witnessed joint.
+- Analogical relation across different worlds: an explicitly compared pattern that may suggest a mechanism but grants neither shared respondents nor common population nor historical transport.
+
+No operation may stitch people from different waves into a synthetic person solely to produce a cleaner social world. A graph of separately true facts is not proof that they all describe the same individual or that one institution caused them.
+
+### V.7 Relations have real negative and unknown states
+
+Field Forge's lawful outputs include a warranted positive relation, warranted valid empty, independently tested absence, insufficient evidence, noncomparable, missing authority, no transport, coverage limited, blocked and integrity failure. Each state keeps the original empirical evidence available at its own legitimate scope. A *correct typed refusal* is not an implementation victory if the needed positive structural producer or consumer has not been built.
+
+The world owner must maintain valid structural rules over time, including genealogy, issuance, revision, invalidation and rollback. Old V552 pressure seed tables do not grant universal causal authority. An actor-facing pressure may be modeled where explicitly issued as an assumption-bound simulation; it cannot be advertised as an observed social law.
+
+### V.8 Field Forge must remain different from SOROK
+
+Field Forge can specify that an employer may fire a worker, that medical care requires travel, that a household has exhausted a resource, or that an organization offers mutual aid. It can specify a possible sermon, demonstration, shift schedule, rejection letter or neighborhood encounter. It cannot specify that the worker *therefore* fears the employer, that the mother *therefore* identifies with a social role, that the child *therefore* becomes compliant, or that a norm has been internalized. Those are historically situated actor processes.
+
+The distinction is reciprocal. SOROK may develop a psychologically convincing fear or resentment, but it does not make a falsified real-world labor relation true. An actor's narration of an institution is evidence of that actor's current perspective within the simulation, not an independent proof that the institution operates as described. If the world's implementation is underdetermined, the actor may reasonably be uncertain too.
+
+---
+
+## VI. HISTORICAL BECOMING: PEOPLE AND STRUCTURES ARE MOVING OBJECTS
+
+### VI.1 A source snapshot is a historically located window, not an eternal cultural constant
+
+Different waves may differ because of population composition, within-position attitude change, questionnaire wording, translation, sampling design, legal classification, selection, cohort replacement, migration or an actual institutional rupture. Historical comparison must separate these rather than subtracting national averages and narrating the difference as modernization.
+
+The comparison court asks whether the **same target proposition** can be meaningfully measured across periods, whether eligible populations and estimands are comparable, whether source protocols changed, and which analytical decompositions are identifiable. Class, occupation and religious identity can themselves change meaning, not merely prevalence. Even valid repeated cross-sections do not automatically distinguish age, period and cohort effects. A cohort resemblance is not longitudinal same-person change.
+
+When supported, decompose observed change into **population-composition changes, within-position changes, changing position relations, changes in meaning or observation, and externally sourced institutional events**; retain the residual unidentified component. A named historical event can be relevant as an independent context fact without being proven the cause of a survey difference.
+
+### VI.2 Transmission, maintenance and rupture are processes
+
+A social field persists only if people and institutions keep reproducing it: making contracts, raising children, paying wages, organizing households, teaching norms, maintaining coercive capacity, allocating goods, contesting decisions. Its reproduction may simultaneously cultivate the abilities and solidarities through which people challenge it.
+
+The world model must therefore support **eventful transformations**:
+- changes in resource quantities, access, prices and time obligations;
+- law, policy, enforcement and institution governance;
+- collective action, coalition formation, breakdown and repression;
+- migration, displacement, demographic shifts and changing networks;
+- ecological, health and material shocks;
+- learning, technological change, educational and occupational pathways;
+- care, dependency, mortality, birth and changing household composition;
+- altered legitimacy, competing collective interpretations and new carriers.
+
+Some events arise through simulated actions; others are exogenous, historically scripted, stochastically modeled or supplied from external authoritative records. Their origins must be separately tagged. A fictional action cannot retrospectively alter an original 2010 survey response. Historical reconstruction cannot be treated as experimental identification simply because the simulation can run a counterfactual.
+
+### VI.3 History has multiple clocks
+
+Calendar time, age, developmental time, institutional cycles, labor shifts, relational duration and cultural generations do not advance in lockstep. The same world event can meet one actor at infancy, another during parenthood, another after retirement. Childhood, adolescence and adulthood are not merely stages where different fixed coefficients switch on; they are qualitatively distinct arrangements of dependence, feasible activity, language, recognition, institutions and responsibility.
+
+A person can carry an earlier organization into a new condition where it is newly recruitable, unable to function, or transformed. Old experiences can be reinterpreted by later events. A historical society can change sharply while a household carries older forms of sense-making; a person's internal organization can change while the surrounding institution remains materially stable.
+
+### VI.4 Counterfactuals belong to their own epistemic lane
+
+Ask: under what changed conditions might this opportunity, relation, prevalence or actor trajectory differ? There are at least three grades:
+- a **source-supported historical comparison** of actually observed different conditions;
+- a **qualified structural scenario** whose interventions and transition rules have explicit warrant and sensitivity;
+- an **exploratory fictional counterfactual** whose purpose is to reveal possible consequences and contradictory pathways, not report empirical frequencies.
+
+Do not flatten them into 'the simulation proves X would have happened.' A compelling counterfactual narrative may be a useful design witness or source of test questions. It is not a recovered historical event or independent evidence of causal necessity.
+
+### VI.5 History feeds the discovery engine backward as a question
+
+The temporal circuit is recursive. A changed institutional rule can expose a historical shift worth querying within eligible sources. A failure of an apparently stable attitude cloud across a wave can expose translation drift, changing cohort composition, newly created social positions, or a true alteration in repertoires. A persistent minority under immense structural pressure may challenge a simplistic field model. A reported rise in an attitude that disappears after correcting a changed question is a positive finding about the history of observation, not a failed sociology.
+
+The historical engine therefore revises its *question* as well as its modeled world. It must preserve competing interpretations when the evidence cannot distinguish them.
+
