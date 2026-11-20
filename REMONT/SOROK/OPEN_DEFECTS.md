@@ -237,3 +237,34 @@ Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**
 **Sourcefree scope:** The coarse-history process may not grant one person another person's modeled practice history by sharing a form ID. Sensory event ingress remains typed and bounded, and malformed historical cues cannot bypass bodily access. Contextual project flags must be actual Boolean values. Mere repeated evidence that leaves an existing scope unchanged is not falsely minted as psychic formation. These are first-fault repairs to mutable engineering boundaries, **not** new universal developmental laws, owner rights or a new psyche database. Existing functions and R7 positive tests remain covered.
 
 **Accurate R8 ledger:** 69 production defect records = **10 OPEN / 6 PARTIAL / 53 AUTHOR-REPAIRED AWAITING INDEPENDENT REVIEW**, with **0 independently accepted**. T=0 confirmed test-harness bugs, E=6 separately conserved source/authority holds. SR-P001..063 and earlier local test cuts remain historical. Evidence: `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R8_20261119/`; complete sourcefree archive SHA-256 `d29e6ae7e2d153d3c29aefe95d39266594d2436f22494bb2c135fb5d07b79ffb`. No protected PRE-MAIN merge, native CAN/ADP/P2–P6 receiving, scientific PYAT/LLM validation or paired CURRENT_PROGRESS write.
+
+## External construction handoff — R4/R5 organism testing and REMONT ownership (2026-11-20)
+
+**Ledger intake, not REMONT acceptance or independent review.** Source branch was forked from the latest observed REMONTATHON R8 head `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764`; the active REMONT branch was **not edited**. Full P/T/E detail, exact commits and executable test queue: [20261120_UM_SOROK_R4_R5_PTE_TEST_EXECUTION_HANDOFF.md](INBOX/20261120_UM_SOROK_R4_R5_PTE_TEST_EXECUTION_HANDOFF.md).
+
+| Provisional intake | Queue | Unresolved evidence/defect | Disposition, NOT an issued SR-ID |
+|---|---|---|---|
+| **R5-T-INBOX-01** | T | R4 `unittest` test retained pytest-only `tmp_path` parameter. Builder source corrected at `739da5a149c8c55f9069bdc610f26f987fcdb54e`; no actual red/green execution. | SOURCE-IDENTIFIED FIX / EXECUTION UNVERIFIED. REMONT to reproduce and review. |
+| **R5-E-INBOX-01** | E | R4 Actions runs `44675087533` and `44675093891` failed with no reported job steps/logs at workflow source `e675ed0005bffce0aa21d5df641e40170ad36858`. | RUNNER EVIDENCE HOLD; no Python result established. Obtain cold exact-HEAD runner. |
+| **R5-E-INBOX-02** | E | R5 #1175 at reviewed `782b7f377bcac4873bbf4a6dccbc567d99c368b5` inherits R7, **not** REMONT R8 (which adds SR-P064–069). | CURRENTNESS/INTEGRATION HOLD; integrate without overwriting R8 and execute same-tree tests. |
+| **R5-E-INBOX-03** | E | No independent G5, native psychological/scientific issuance, PYAT empirical qualification or protected receiving of R4/R5. | Cross-reference existing E holds; no new rights. |
+| **R5-P-INBOX-01** | P investigation | R5 `RECRUIT_FORM` learned motif closure, indirect inhibited form effects, context/body/Other guard preservation and relabeling of later action remain **unexecuted**. | Test/falsify; `NO_REPRODUCED_PRODUCT_FAULT`; no production repair claim or canonical P ID. |
+
+**Queued exact-source court:** full `python -m unittest discover -s tests -v`, full `python -O -m unittest discover -s tests -q`, R4 **11** authored cases, R5 **6** authored cases, R8 **171** author-pass baseline, actual executed discovery/counts, cold SQLite reopen and event-chain check, preserved first-red witness, source hashes and independent review. **171+11+6=188 is a hypothetical discovery count after proper R8+R4+R5 integration—not an observed pass or proof that all suites coexist.**
+
+**Authority/status:** this separate construction-agent intake changes **none** of R8's existing accounting: **69 production rows (10 open, 6 partial, 53 author-repaired pending independent review), T=0 confirmed, E=6 holds**. Actual REMONT custodian must assign IDs/closures/repairs; the build author must keep constructing rather than take over defect repair. No protected CURRENT_PROGRESS/PROGRAMMA was touched.
+
+## External construction handoff — R6 Astra-purpose historical-genesis test intake (2026-11-20)
+
+**Separate receiving.** The R4/R5 intake remains intact. New sourcefree [R6 #1180](https://github.com/maidiu/rawlsing/pull/1180) at `f796937d23354e5e518ff55da4795307de9ec551` is stacked on R5/R7 and not integrated with active REMONT R8. Read [R6-P/T/E intake](INBOX/20261120_R6_ASTEMULCH_PURPOSE_GENESIS_EXECUTION_INTAKE.md) for exact source, authority, negative witnesses and required integrated cold runner.
+
+| Provisional handoff | Queue | First fault / test obligation | Status without canonical SR-ID |
+|---|---|---|---|
+| **R6-P-INBOX-01** | P | R5 operation-level pooled project bases were treated as all projects actually attempted. R6 carries selected purpose subset/none into settlement. | SOURCE-VERIFIED CAUSAL FAULT; independent before-red/after-green required. |
+| **R6-P-INBOX-02** | P | R5 heuristic minted “continue shared rhythms” active project during Nadia's first song. R6 separates possible end from later event-qualified uptake. | SOURCE-VERIFIED FORMATION CLAIM; two-event/rollback regression unexecuted. |
+| **R6-P-INBOX-03** | P | Different projects with identical composed operations/object could share a plan ID lacking project ref. | SOURCE-VERIFIED ID COLLISION PATH; reproduce and retest. |
+| **R6-P-INBOX-04** | P inquiry | Bounded lived signal history / possible-end recurrence implemented, but general choice-conditioned evidence and unseen alternatives remain scientifically open. | CAPABILITY GAP, not a confirmed product error. |
+| **R6-T-INBOX** | T investigation | 17 R6 new native `unittest` methods plus changed inherited Nadia scenario require executed normal/-O proof; no known confirmed new harness defect. | UNEXECUTED, NOT T-CLOSED. |
+| **R6-E-INBOX** | E | No exact R6 runner; no R8 rebase/test; three Astra full local documents not source accessible. | EXECUTION, INTEGRATION & SOURCE-FIDELITY HOLD. |
+
+**Required receiving matrix:** R8 historical 171+171 author passes, R4 11 authored tests, R5 6 authored, R6 17 authored. **205 is arithmetic only, not an executed denominator**. Actual reporter must capture complete cold checkout SHA, first-red fault, full normal/optimized discovered counts, cold SQLite verification, actor/private/Other guards, source hashes and rights. Existing **69 P / 0 confirmed T / 6 E** R8 status partition remains untouched; all new IDs here are **provisional inbox labels**, not official ledger allocation. REMONT owns triage and actual repair; source builder continues the organism.
