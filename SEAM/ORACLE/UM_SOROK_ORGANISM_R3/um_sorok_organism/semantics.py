@@ -101,7 +101,8 @@ class HeuristicSemanticProvider:
             lived=copy(packet.get('historically_proposed_preproject',[]))
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
-            relation_candidates=lived
+            relation_candidates=lived+copy(
+                packet.get('historically_proposed_functional',[]))
             other=experience.get('reciprocated_partner')
             if other and cues:
                 # A genuinely performed joint occurrence can leave a trace and
