@@ -14,6 +14,9 @@ from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
+from .material_objects import (
+    material_objects_present, can_make, object_bound_alternatives,
+    material_opportunity_from_history)
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -78,6 +81,16 @@ def actor_access(actor,world):
                 'modality':'visual',
                 'location':location,'description':'a visible posted public notice',
                 'public_content_not_yet_experienced':True})
+    if actor['body']['sensor'] >= .05:
+        for obj in material_objects_present(world,location):
+            cues.append({
+                'id':'material_object_visible:'+obj['id']+':'+str(world['clock']),
+                'clock':world['clock'],'kind':'material_object_present',
+                'material_object_ref':obj['id'],
+                'tags':['material_object','object_present'],
+                'modality':'visual','location':location,
+                'description':'a visible worked material object',
+                'ownership_and_private_history_not_perceived':True})
     env=[]
     site=world['sites'].get(location,{})
     if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
@@ -88,6 +101,10 @@ def actor_access(actor,world):
             world,actor['id'],location)]
     if any(c.get('kind')=='coactor_present' for c in cues):
         env.append('PLEDGE_CARE')
+    if actor['body']['sensor'] >= .05 and can_make(world,actor['id'],location):
+        env.append('MAKE_OBJECT')
+    if any(x.get('kind')=='material_object_present' for x in cues):
+        env.append('INSPECT')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -318,6 +335,21 @@ def compose(constitution,access,limit=50):
         entry['basis']+=candidate['basis']
         entry.setdefault('candidate_notice_refs',[]).extend(
             candidate['candidate_notice_refs'])
+    material=material_opportunity_from_history(constitution,access)
+    for candidate in material['offers']:
+        op=candidate['action']
+        entry=actions.setdefault(op,{
+            'action':op,'score':candidate['score'],'basis':[],
+            'opportunity':'HISTORICALLY_PROPOSED_MATERIAL_COMPOSITION'})
+        entry['score']=max(entry['score'],candidate['score'])
+        entry['basis']+=candidate['basis']
+    if 'INSPECT' in access.affordances:
+        ok,_=eligible(constitution.body,'INSPECT')
+        if ok:
+            actions.setdefault('INSPECT',{
+                'action':'INSPECT','score':.078,
+                'basis':['CURRENT_MATERIAL_OBJECT_VISIBLE'],
+                'opportunity':'MATERIAL_OBJECT_CAN_BE_INSPECTED_NOT_A_GOAL'})
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -373,6 +405,8 @@ def compose(constitution,access,limit=50):
         # future *invitation* alternative. The Other's policy remains their own.
         option['practical_alternatives']+=conditional_assistance_options(
             constitution,attention['focus_access'],option)
+        option['practical_alternatives']+=object_bound_alternatives(
+            constitution,attention['focus_access'],option['action'])
         if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
             option['practical_alternatives'] += [
                 {'option_id':'inquiry:'+constitution.actor+':'+
@@ -404,6 +438,7 @@ def compose(constitution,access,limit=50):
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            preproject['readset']+exercised['readset']+
+                           material['readset']+
                            inquiry['readset']+
                            functional['readset']+
                            prospective['readset']+
