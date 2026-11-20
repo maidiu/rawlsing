@@ -45,6 +45,15 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
+            # Under immediate need, an actual differentiated relational
+            # history may give a *particular* caregiver a meaningful address.
+            # Let that history be considered before generic ORIENT, but never
+            # over a live contrary current, competing project or unresolved
+            # plural relation. The Other's willingness remains unknown.
+            historical_signal=plural_addressed_signal_choice(
+                possibilities,packet.get('actor',{}).get('body',{}))
+            if historical_signal:
+                return {'task':task,**historical_signal}
             # The embodied child's acquired, nonpropositional anticipation may
             # alter a future attempt without first inventing an adult project.
             # When rival currents coexist, this heuristic MUST NOT decide.
@@ -61,10 +70,6 @@ class HeuristicSemanticProvider:
             # Actual historical alternatives can organize provisional action
             # before a settled purpose exists. An experienced future occasion
             # might create a new motive, but this selection does not assert one.
-            historical_signal=plural_addressed_signal_choice(
-                possibilities,packet.get('actor',{}).get('body',{}))
-            if historical_signal:
-                return {'task':task,**historical_signal}
             trial=select_bounded_exploratory_trial(possibilities)
             if trial:
                 return {'task':task,**trial}
