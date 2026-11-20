@@ -307,6 +307,32 @@ class PurposeAndGenesisR6(unittest.TestCase):
             p.purpose_claim=='HYPOTHESIZED_PLAN_OBJECT_NOT_PERFORMER_INTENT'
             for p in plans))
 
+    def test_first_new_end_and_actual_signal_path_are_relevant_without_being_motives(self):
+        self.rt.background(240)
+        self.rt.step('nadia',requested_action='SING')
+        current=self.rt.situated('nadia')
+        kinds={x['kind'] for x in current['currents']}
+        self.assertIn('HISTORICALLY_NOTICED_POSSIBLE_END',kinds)
+        self.assertIn('HISTORICAL_SIGNAL_PATH_REENCOUNTERED',kinds)
+        signal=next(x for x in current['currents']
+                    if x['kind']=='HISTORICAL_SIGNAL_PATH_REENCOUNTERED')
+        self.assertTrue(signal['not_imputed_counterfactual'])
+        self.assertTrue(signal['no_automatic_belief_update'])
+        end=next(x for x in current['currents']
+                 if x['kind']=='HISTORICALLY_NOTICED_POSSIBLE_END')
+        self.assertTrue(end['not_automatically_an_active_motive'])
+        self.assertFalse(any('rhythm' in p['object']
+                             for p in self.rt.snapshot('nadia')['projects']))
+
+    def test_unobserved_interval_does_not_fake_same_signal_as_current(self):
+        self.rt.background(240)
+        self.rt.step('nadia',requested_action='SING')
+        self.rt.background(1)
+        current=self.rt.situated('nadia')
+        self.assertFalse(any(x['kind']=='HISTORICAL_SIGNAL_PATH_REENCOUNTERED'
+                             for x in current['currents']))
+        self.assertTrue(self.rt.snapshot('nadia')['evidence_paths'])
+
     def test_legacy_explicit_multi_project_call_stays_distinct_from_auto_pool(self):
         a=adult('mother','Mother')
         a['projects']=[
