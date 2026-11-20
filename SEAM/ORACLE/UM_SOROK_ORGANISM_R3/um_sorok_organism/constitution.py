@@ -28,6 +28,9 @@ def materialize(actor,world):
 
 def actor_access(actor,world):
     """Objective cues are never automatically the actor's concepts or memories."""
+    # Current original REMONT P071: nonfinite sensor values do not grant
+    # perception via NaN comparison. Reuse embodied eligibility's validation.
+    eligible(actor['body'],'WAIT')
     location=world['positions'].get(actor['id'])
     cues=[]; counted=0;receipts=[]
     for x in world['cues']:

@@ -269,13 +269,31 @@ class ResearchLedger:
             raise AssertionError('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY')
         if records:
             last=records[-1]['envelope']
-            if digest(self.world(last['world'])[1])!=last['world_digest']:
+            # Exact current REMONT P070: the *stored* state is committed,
+            # not only the meaning of its parsed JSON. No extra world can be
+            # present even if the primary world hash still matches.
+            world_rows=self.conn.execute('SELECT id,body FROM worlds').fetchall()
+            if len(world_rows)!=1 or world_rows[0][0]!=last['world']:
+                raise AssertionError('UNCOMMITTED_WORLD_ROSTER')
+            try:
+                world_obj=json.loads(world_rows[0][1])
+                if canonical(world_obj)!=world_rows[0][1]:
+                    raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES')
+            except (ValueError,TypeError) as exc:
+                raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES') from exc
+            if digest(world_obj)!=last['world_digest']:
                 raise AssertionError('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER')
-            actors=self.actors()
-            if set(actors)!=set(last['actor_digests']):
+            actor_rows=self.conn.execute('SELECT id,body FROM actors').fetchall()
+            if set(aid for aid,_ in actor_rows)!=set(last['actor_digests']):
                 raise AssertionError('UNCOMMITTED_ACTOR_SET')
-            for aid,ahash in last['actor_digests'].items():
-                if aid not in actors or digest(actors[aid])!=ahash:
+            for aid,raw in actor_rows:
+                try:
+                    person=json.loads(raw)
+                    if canonical(person)!=raw:
+                        raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid)
+                except (ValueError,TypeError) as exc:
+                    raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid) from exc
+                if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
                     raise AssertionError('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER:'+aid)
         return {'grade':GRADE,'events':count,'valid':True,'last_hash':prior,
                 'source_seals_verified':len(anchored)}
