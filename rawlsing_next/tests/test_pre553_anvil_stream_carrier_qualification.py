@@ -51,6 +51,7 @@ def _estate(tmp_path):
     pins = HeldStreamPins(
         source_id="SRC04", source_sha256=SOURCE,
         manifest_sha256=sha256(manifest.read_bytes()).hexdigest(),
+        exact_release_path=str(release),
         roots=dict(ROOTS),
     )
     return root, release, manifest, pins
@@ -136,7 +137,7 @@ def test_wrong_source_identity_or_source_scope_refuses_without_manifest_read(tmp
         replace(pins, source_id="SRC17")
     with pytest.raises(StreamCarrierQualificationError, match="source artifact"):
         replace(pins, source_sha256="9" * 64)
-    with pytest.raises(StreamCarrierQualificationError, match="outside exact custody root"):
+    with pytest.raises(StreamCarrierQualificationError, match="independently held release path"):
         qualify_saved_stream_manifest(
             root=root, exact_release_path=tmp_path / "another_release",
             held=pins, current_authorizer=lambda _: True,
