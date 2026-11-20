@@ -22,6 +22,9 @@ def possible_joint_practice(actor,experience,event_ref):
     now=history[current_index]
     operation=now.get("own_attempted_operation")
     partner=now.get("reciprocated_partner_actor_visible")
+    if (type(now.get("experienced_clock")) is not int or
+            now["experienced_clock"]!=experience.get("clock")):
+        return []
     if (not now.get("joint_participation_perceived")
             or now.get("own_status")!="PERFORMED"
             or type(operation) is not str
@@ -36,6 +39,8 @@ def possible_joint_practice(actor,experience,event_ref):
            and h.get("own_attempted_operation")==operation
            and h.get("own_status") in ("PARTIAL","BLOCKED")
            and not h.get("joint_participation_perceived")
+           and type(h.get("experienced_clock")) is int
+           and h["experienced_clock"]<now["experienced_clock"]
            and type(h.get("event_ref")) is str
            and type(h.get("experience_ref")) is str]
     if not prior:return []
