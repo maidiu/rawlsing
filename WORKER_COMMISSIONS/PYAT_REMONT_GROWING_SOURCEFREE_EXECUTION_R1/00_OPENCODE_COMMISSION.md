@@ -1,3 +1,9 @@
+## Integrated Q014–Q019 successor candidate — REMONT to execute, PYAT not to repair
+
+**Latest source authority, superseding older frozen target descriptions below:** the isolated Q014–Q019 candidate is `agent/pyat-haqqmulch-q014-q019-position-repertoire-integrated-20261120-r1`, derived from existing #1218 at `d93a9a07984ee3ea6649e6e5111105eb134e5802`. It incorporates byte-exact Q017 noise-control source from #1207 at `b48222d42fb0c638d12af3cc05222260d5f94889`, and byte-exact Q018 F6 partial-identification source/tests from #1219 at `acb7fa6a58af2b62774a34b40c59bcdabf4fd9c1`; Q019 adds a NEW thin owner-reusing PYAT inquiry (S04 general conditional/inverse/co-travel; existing country/DHIKR receipt; N10E/C1 possibility and F6 *separate* evidence lanes) rather than new engines. All six cases retain prior identities: Q014 asked-eligible, Q015 continuing DHIKR, Q016 country issuer, Q017 statistical noise, Q018 partial identification, Q019 connected consumer. Q006 original source and Q011–Q012 SOROK remain HELD.
+
+**Execution:** OpenCode starts **only after separate explicit invocation**, reconciles the authorized current composite 40-hex SHA, creates one clean detached worktree and runs the ONE existing `rawlsing_next/tests/run_preff_remont_batch.sh` with its eligible default cases (or specifically Q014–Q019). Preserve exact-head logs, JUnit, host metrics and P/T/E first-faults. No user Mac command requested here. No earlier pass, author-written test or GitHub CI outcome may substitute for this exact-head execution. REMONT owns repair triage and substantive fixes; the PYAT construction author does not debug or independently accredit its own work. No source scientific, actor, independent G5 or protected authority is granted.
+
 # OPEN EXECUTION COMMISSION — PYAT/REMONT sourcefree queue
 
 ## Integrated sourcefree candidate — Q014/Q015/Q016 (await explicit launch)
