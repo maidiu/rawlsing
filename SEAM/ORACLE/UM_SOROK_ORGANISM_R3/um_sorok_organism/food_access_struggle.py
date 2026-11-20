@@ -121,12 +121,14 @@ def can_draw_shared_food(world,giver,site):
     return giver in board["initially_permitted_givers"]
 
 
-def witnessed_public_procedure(actor,board):
+def witnessed_public_procedure(actor,board,clock):
     """Reading a public notice is not conscious assent or causal mastery."""
     return any(type(x) is dict and
                x.get("public_notice_ref")==board["public_notice_ref"]
                and "public_petition" in x.get(
                    "public_words_available",[])
+               and type(x.get("inspected_at_clock")) is int
+               and x["inspected_at_clock"]<=clock
                for x in actor.get("notice_exposures",[]))
 
 
@@ -139,7 +141,7 @@ def food_petition_available(world,actor,site):
         return False
     if world.get("positions",{}).get(who)!=site:
         return False
-    if not witnessed_public_procedure(actor,board):
+    if not witnessed_public_procedure(actor,board,world["clock"]):
         return False
     return not any(x.get("actor")==who for x in board["signatures"])
 
@@ -248,7 +250,9 @@ def offered_food_petition(constitution,access):
     noticed=[
         x for x in constitution.notice_exposures
         if x.get("public_notice_ref") in visible_current and
-        "public_petition" in x.get("public_words_available",[])]
+        "public_petition" in x.get("public_words_available",[])
+        and type(x.get("inspected_at_clock")) is int
+        and x["inspected_at_clock"]<=constitution.clock]
     if not noticed:return None
     practiced=[
         x for x in constitution.performed_feeding_events
