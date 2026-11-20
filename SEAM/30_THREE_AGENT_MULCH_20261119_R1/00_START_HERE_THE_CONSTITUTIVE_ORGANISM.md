@@ -250,6 +250,15 @@ Suppose Father later holds real authority over who may participate, and Nadia no
 Not every acquired capacity is a motive. Not every first attempt establishes transfer. Not every transfer is successful, recognized or reproducible. The new relation among acquired capacity, affected Other, learned good and practical authority must itself have a historical path. A dynamically composed practice is a legitimate possible action, not automatically an objective success or a newly installed motive.
 
 
+### The empirical-to-lived-world seam: precise upstream jurisdiction
+
+The PYAT/SEAM offering is deeper than demographic sampling. Its source-qualified architectural chain is **governed instrument/source observations and original35 → durable C11 respondent-level facts → I03/I05 F1–F4 conditional, recursive and higher-order same-person empirical products → FIELD-FORGE claim-graded actor-independent social relations → qualified F6/F7 temporal and multi-field claims → N9 objective world / N10E empirical possibility / N10W conditioned positioned possibility → N11 acceptance and N12 governance**, with ANVIL/related work subject to exact branch authority and currentness. This is a source/owner crosswalk, not a claim every product is issued or operational.
+
+Differentiate **measured respondent answer**, **independently supported structural relation**, **model-qualified possible world**, and **admitted particular fictional actual event**. No LLM or survey percentage may promote a possible social norm into an enforced institution, a reported answer into a hidden individual's psyche, or a demographic pattern into one person's inevitable ideology. Period, instrument translation, routing, eligibilities, denominators, uncertain minority combinations, underpowered cells, and missingness matter. A sampling zero is not an objectively impossible human life.
+
+A source-qualified **possible encounter** is not yet an actual actor's **material encounter**, and an actual encounter is not yet that actor's **accessible/lived experience**. Outer world/field recruitment must pass through independently admitted real social opportunity before the actor's inner acquired iceberg can be recruited and changed. Population calibration, parent initial questionnaire correspondence and the open-ended child's developmental fidelity are three distinct obligations. See [ORACLE/01](https://github.com/maidiu/rawlsing/blob/d7e6ff6ec228145c2f325664722923f0f03e8d89/SEAM/ORACLE/01_TOTAL_PROBLEM_AND_NONNEGOTIABLE_DIMENSIONS.md) and the [verbatim R2 predecessor](ARCHIVE/00_CONSTITUTIVE_ORGANISM_R2_PRE_RECAST_20261119.md).
+
+
 ## XI. Two historical entrances, one continuing organism
 
 **Mother and Father begin as separately constituted fictional adults.** PYAT must supply genuinely eligible, respondent-coherent *whole configurations* with conditional comparison distributions, denominators, source wordings, missingness, relevant material/historical variables and limits. The LLM **abductively proposes a richly contradictory fictional adult iceberg** and plausible compressed formative backfill; it does not discover the real survey respondent's hidden childhood. A bounded retrospective reconciliation can ensure basic world feasibility, but decades of simulated infancy are not required before an adult can exist.
@@ -264,6 +273,13 @@ Mother and Father do not acquire a marriage because a constructor chooses compat
 
 **Outer social-field recruitment is not inner psychic recruitment.** PYAT/Field Forge source-qualified possible people, relations and institutional carriers may be instantiated into an actual world; Nadia encounters only what is materially and epistemically available. Population dissent cannot be installed as a latent personal ideology just because it exists in a survey. Mandatory universal nine-strata personality ontology is retired; historically particular class, care, law, religion, colonial and institutional relations remain essential material causes.
 
+### Multiple timescales are psychological and product constraints
+
+Besides embodied minutes, daily care and work, biographical years, and historical institutional change, **the live product needs elastic time**: unobserved ordinary life can continue without a narrator forcing a rich event each user message. World depth may be qualified ahead of viewer attention while disclosure and actor knowledge remain separate from physical materialization. Root/seed precontact history may split into irreversible user continuities; restarting may not rewrite an independently existing person's past. An admitted routine coverage capsule is not permission to fabricate detailed performed Other acts or exact remembered conversations.
+
+The organism's first developmental means include **interoception, sensation, orienting, regulation, movement, bodily fatigue and pain**, long before the child possesses adult language, cultural motives or an explicit self-model. Neither bodily process nor history requires an adult conceptual interpreter in order to affect later recruitment.
+
+
 ## XII. Ordinary life is the medium, not the space between important scenes
 
 A few dramatic events cannot constitute a whole person. **Three to five expensive high-resolution events must be embedded in represented dense everyday life**—feeding, sleeping, care, transport, chores, work, boredom, school, illness, rest, community participation, repetitive exclusion, ordinary tenderness and the use of available time.
@@ -273,6 +289,17 @@ Sève's attention to lived time, Dreier's conduct of life and life course, Elder
 Maintain separate historical granularities: performed individual event; admitted recurring practice or coverage interval; speculative compressed parental prehistory; retained sensory/causal trace; autobiographical memory; present interpretation; actor-access restriction; unresolved historical absence. A coarse routine does not entitle the narrator to invent an exact unperformed conversation. Increasing render detail later cannot violate admitted historical parentage.
 
 The product consequence is severe: **the focal Other exists and has a life before user contact**. The world proceeds through other people and institutions beyond user attention. A common pre-contact canon may branch copy-on-write into irreversible user continuities; user curiosity can deepen lawful materialization or prompt actor-owned disclosure but cannot rewrite the person's own history, command their awareness, or force intimacy. Actual object history differs from actor investment and viewer attribution. The system should not optimize the person's life solely to retain users.
+
+### The earlier negative demonstrations are binding lessons, not proof of personhood
+
+Astra's R0 report describes a lower-level \`perform()\` path accepting caller-supplied \`partner_consent=True\` even when the independent helper's reader returned \`DECLINE\`, while a higher-level coupled path checked that reader. That is **historically reported source evidence**, not independently rerun by this synthesis. Its conserved design lesson is that a voluntary joint act requires independently authored contribution; it does not imply that unilateral bullying, injury, interruption or institutional imposition requires victim consent.
+
+An earlier P4 changed-counterpart \`inspect_alone\` result was an **empty-record fallback**, not evidence of acquired autonomous transfer. P3's historically inspected project/counterpart-scoped sourcefree reader, together with \`native_rule: MISSING_RULE\` and \`memory_formation: MISSING_RULE\`, demonstrates useful bounded software **and** unissued native general psychological formation. R3's actual action-level APPROACH/WITHHOLD currents and acquired composition are valuable and still narrower than the full PRE-A0 relational topology.
+
+**SOROK Mechanism I** retains qualified historical world materialization; **Mechanism II** actor/observer-specific perception, recognition and disclosure; **Mechanism III** independent situated initiative. The person projection or renderer may not replace these with another all-purpose event owner. Legacy V3's fast/slow pressure-flow and inspectable BackboneState must be conserved as *functions*, not its fixed adult trait inventory.
+
+PROGRAMMA's **144 functions, 38 seams and 83 gates** remain an exact engineering/receiving audit estate; a compact conceptual owner table does not certify all their first readers or consumers. Live heads, CURRENT_PROGRESS, independent review and authorized receiving remain necessary for HQ claims, but are not a warrant to halt provisional connected engineering for validation-first microtests.
+
 
 ## XIII. The conceptual machinery must not become another owner
 
