@@ -18,7 +18,7 @@ from .food_access_struggle import can_draw_shared_food
 
 UNIT = Decimal("0.00001")
 PROVISION_KIND="QUALIFIED_MATERIAL_FEEDING"
-ORIGINS=frozenset(("SHARED_SITE_FOOD","GIVER_HELD_FOOD"))
+ORIGINS=frozenset(("SHARED_SITE_FOOD","GIVER_HELD_FOOD","MUTUAL_AID_FOOD"))
 CAP=Decimal("1000000")
 
 
@@ -37,6 +37,8 @@ def _available(world, origin, giver, location):
         return _quantity(world.get("holdings",{}).get(
             giver,{}).get("food",0),"HELD_FOOD")
     site=world["sites"][location]
+    if origin=="MUTUAL_AID_FOOD":
+        return _quantity(site.get("mutual_aid_food",0),"MUTUAL_AID_FOOD")
     if not site.get("shared_household_food",False):
         raise ValueError("PROVISION_SITE_HAS_NO_SHARED_FOOD_GRANT")
     if site.get("provisioning_rule")!="PROPORTIONAL_DECLARED_CLAIMS_R1":
@@ -152,7 +154,7 @@ def settle_provisioning(world, actors, allocation):
         # compete for the accessible portion; denied claims consume nothing.
         eligible_claims=[
             claim for claim in items if
-            origin=="GIVER_HELD_FOOD" or
+            origin in ("GIVER_HELD_FOOD","MUTUAL_AID_FOOD") or
             can_draw_shared_food(world,claim["giver"],loc)]
         alloc=_allocate(pool,eligible_claims)
         allowed_amounts={claim["id"]:amount for claim,amount in alloc}
@@ -209,6 +211,8 @@ def settle_provisioning(world, actors, allocation):
         if origin=="GIVER_HELD_FOOD":
             old=world.setdefault("holdings",{}).setdefault(
                 holder,{}).get("food",0)
+        elif origin=="MUTUAL_AID_FOOD":
+            old=world["sites"][holder].get("mutual_aid_food",0)
         else:
             old=world["sites"][holder]["food"]
         _quantity(old,"FOOD_BEFORE_SETTLEMENT")
@@ -219,6 +223,8 @@ def settle_provisioning(world, actors, allocation):
         origin,holder=key
         if origin=="GIVER_HELD_FOOD":
             world["holdings"][holder]["food"]=float(nextstock)
+        elif origin=="MUTUAL_AID_FOOD":
+            world["sites"][holder]["mutual_aid_food"]=float(nextstock)
         else:
             world["sites"][holder]["food"]=float(nextstock)
     for recipient,final in projected_nutrition.items():
@@ -247,26 +253,34 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
         origin="GIVER_HELD_FOOD"
         next_food=held-Decimal(1)
     else:
-        if not world["sites"][location].get("shared_household_food",False):
-            return {"status":"BLOCKED","outcome":"NO_AUTHORIZED_FEEDING_STOCK",
-                    "material_feeding_ref":None}
-        # Objective entitlement is a power relation over a material resource.
-        # A person's wish to feed cannot override the institutional gate.
-        if not can_draw_shared_food(world,giver,location):
-            return {"status":"BLOCKED",
-                    "outcome":"HOUSEHOLD_FOOD_ACCESS_RESTRICTED",
-                    "material_feeding_ref":None}
-        site_food=_quantity(world["sites"][location].get("food",0),
-                            "HOUSEHOLD_FOOD")
-        if site_food<1:
-            return {"status":"BLOCKED","outcome":"NO_MATERIAL_FOOD_TO_GIVE",
-                    "material_feeding_ref":None}
-        if world["sites"][location].get("provisioning_rule")!=(
-                "PROPORTIONAL_DECLARED_CLAIMS_R1"):
-            raise ValueError("FEED_UNQUALIFIED_SHARED_MATERIAL_RULE")
-        origin="SHARED_SITE_FOOD"
-        next_food=site_food-Decimal(1)
-    body=actors[recipient]["body"]
+        # A collectively built store is not the controller's original pantry
+        # and does not inherit that pantry's unilateral title.
+        commons=_quantity(world["sites"][location].get(
+            "mutual_aid_food",0),"INDEPENDENT_COMMONS_FOOD")
+        if commons>=1:
+            origin="MUTUAL_AID_FOOD"
+            next_food=commons-Decimal(1)
+        else:
+            if not world["sites"][location].get("shared_household_food",False):
+                return {"status":"BLOCKED",
+                        "outcome":"NO_AUTHORIZED_FEEDING_STOCK",
+                        "material_feeding_ref":None}
+            if not can_draw_shared_food(world,giver,location):
+                return {"status":"BLOCKED",
+                        "outcome":"HOUSEHOLD_FOOD_ACCESS_RESTRICTED",
+                        "material_feeding_ref":None}
+            site_food=_quantity(world["sites"][location].get("food",0),
+                                "HOUSEHOLD_FOOD")
+            if site_food<1:
+                return {"status":"BLOCKED",
+                        "outcome":"NO_MATERIAL_FOOD_TO_GIVE",
+                        "material_feeding_ref":None}
+            if world["sites"][location].get("provisioning_rule")!=(
+                    "PROPORTIONAL_DECLARED_CLAIMS_R1"):
+                raise ValueError("FEED_UNQUALIFIED_SHARED_MATERIAL_RULE")
+            origin="SHARED_SITE_FOOD"
+            next_food=site_food-Decimal(1)
+     body=actors[recipient]["body"]
     nutrition=_quantity(body.get("nutrition"),"RECIPIENT_NUTRITION")
     proposed=min(Decimal(1),nutrition+Decimal("0.12"))
     after=proposed.quantize(UNIT)
@@ -277,6 +291,8 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
     if origin=="GIVER_HELD_FOOD":
         world.setdefault("holdings",{}).setdefault(giver,{})[
             "food"]=float(next_food)
+    elif origin=="MUTUAL_AID_FOOD":
+        world["sites"][location]["mutual_aid_food"]=float(next_food)
     else:
         world["sites"][location]["food"]=float(next_food)
     body["nutrition"]=float(after)
