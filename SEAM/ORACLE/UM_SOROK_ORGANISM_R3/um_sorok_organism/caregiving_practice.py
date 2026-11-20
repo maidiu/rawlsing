@@ -42,6 +42,11 @@ def retain_performed_material_feeding(actor,experience,event_ref,world):
         "recipient":ref["recipient"],"clock":experience["clock"],
         "site":ref["site"],"material_food_source":ref["food_source"],
         "applied_nutrition_change":ref["nutrition_effect"],
+        "actual_action_selection_source":ref.get(
+            "actor_selection_source","UNKNOWN_NOT_ISSUED"),
+        "original_action_was_actor_selected":ref.get(
+            "actor_independently_selected_this_attempt",False),
+        "observed_practice_not_automatic_endorsement":True,
         "received_action_sign_ref":(signs[0]["id"] if signs else None),
         "own_somatic_enactment_qualified":True,
         "operative_possible_means":"FEED",
@@ -80,6 +85,7 @@ def project_repeat_feeding(constitution,access,option):
                              "addressed_party_ref":peer,
                              "material_object_ref":None},
             "performed_feeding_origin_ref":newest["id"],
+            "prior_practical_exercise_does_not_prove_original_willingness":True,
             "not_a_duty_or_permanent_consent":True,
             "may_choose_refusal":True,
             "grade":GRADE})
