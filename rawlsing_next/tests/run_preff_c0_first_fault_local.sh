@@ -52,8 +52,13 @@ case "$COURT" in
            rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py
            rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py)
     ;;
+  R03_ASKED_ELIGIBLE)
+    tests=(rawlsing_next/tests/test_pre553_asked_eligible_raw_distribution.py
+           rawlsing_next/tests/test_pre553_empirical_query.py)
+    ;;
   C0_ALL_SMALL)
-    tests=(rawlsing_next/tests/test_preff_c6_seam_contextual_entrances.py
+    tests=(rawlsing_next/tests/test_pre553_asked_eligible_raw_distribution.py
+           rawlsing_next/tests/test_preff_c6_seam_contextual_entrances.py
            rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py
            rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py
            rawlsing_next/tests/test_preff_c3_dhikr_comparative.py

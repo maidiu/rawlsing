@@ -81,7 +81,8 @@ def package(path: Path, rows: int, rules, *, coordinate="OCCASION",
                 unit=units[rule.source_variable_code],
                 administered=rule.administered,
                 semantic_direction=rule.semantic_direction,
-                value_aliases=rule.value_aliases))
+                value_aliases=rule.value_aliases,
+                response_state_by_source_value=rule.response_state_by_source_value))
         else:
             expanded.append(rule)
     return NativeSourcePackage(

@@ -86,6 +86,7 @@ def _build_source(
     risk_namespace: str | None = None,
     topology_by_question=None,
     nonmember_routing_state: str = "NOT_ELIGIBLE",
+    event_states=None,
 ):
     source_auth = _auth(
         f"source-{tag}",
@@ -195,8 +196,11 @@ def _build_source(
         respondent = respondent_by_id[row["id"]]
         for q, value in sorted(row.get("responses", {}).items()):
             topology_kind = (topology_by_question or {}).get(q, "SCALAR_SINGULAR")
+            event_state = (event_states or {}).get(
+                (row["id"], q), "SUBSTANTIVE_RESPONSE"
+            )
             events.append(RespondentEvent(
-                typed_state="SUBSTANTIVE_RESPONSE",
+                typed_state=event_state,
                 authority_snapshot_refs=(source_auth.authority_ref,),
                 dependency_refs=(),
                 producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", f"event-{tag}-{row['id']}-{q}"),
@@ -212,7 +216,7 @@ def _build_source(
                 value_transform_authority_ref=None,
                 response_topology_ref=_ref("TOPOLOGY", f"{question_namespace}-{q}-{topology_kind}"),
                 multiplicity_order_rank_fields={"kind": topology_kind, "index": 0},
-                response_state="SUBSTANTIVE_RESPONSE",
+                response_state=event_state,
             ))
         for coord, value in sorted(row.get("coords", {}).items()):
             coordinates.append(EmpiricalCoordinateFact(
@@ -449,6 +453,7 @@ def _query(
     tag="q",
     diagnostic_kind=None,
     target_authority_refs=None,
+    asked_eligible_raw: bool = False,
 ):
     if universe_refs is None:
         universe_refs = (source["universe"].ref,)
@@ -466,6 +471,13 @@ def _query(
         }
         for target in targets
     ]
+    if asked_eligible_raw:
+        from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+            include_asked_eligible_states,
+        )
+        components = [
+            include_asked_eligible_states(component) for component in components
+        ]
     grain = {
         "source_scope_mode": source_mode,
         "measure_kind": measure,
@@ -475,6 +487,14 @@ def _query(
     }
     if measure == "GOVERNED_WEIGHTED":
         grain["weight_basis_id"] = "W"
+    if asked_eligible_raw:
+        from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+            POLICY, PROFILE_FIELD,
+        )
+        grain[PROFILE_FIELD] = POLICY
+        grain["response_state_semantics_ref"] = _ref(
+            "RESPONSE_STATE_SEMANTICS", "ASKED_ELIGIBLE_RAW_DISTRIBUTION_V1"
+        )
     if diagnostic_kind is not None:
         grain["diagnostic_kind"] = diagnostic_kind
     return EmpiricalQuerySpec(

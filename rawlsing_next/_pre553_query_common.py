@@ -13,6 +13,11 @@ implemented.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+    POLICY as ASKED_ELIGIBLE_POLICY,
+    PROFILE_FIELD as ASKED_ELIGIBLE_PROFILE_FIELD,
+    AskedEligibleDistributionError, enforce_asked_eligible_query_shape,
+)
 from fractions import Fraction
 from itertools import product
 from types import MappingProxyType
@@ -304,6 +309,13 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
         raise EmpiricalQueryExecutionError("requested_output_grain.measure_kind is invalid")
     if risk not in RISK_SET_TYPES:
         raise EmpiricalQueryExecutionError("requested_output_grain.risk_set_type is invalid")
+    # The issuer may select the reusable asked-eligible response policy,
+    # but no label can create routing or omit the typed nonanswer domain.
+    asked = grain.get(ASKED_ELIGIBLE_PROFILE_FIELD)
+    if asked is not None and asked != ASKED_ELIGIBLE_POLICY:
+        raise EmpiricalQueryExecutionError("unknown descriptive denominator policy")
+    if asked == ASKED_ELIGIBLE_POLICY and measure != "RAW":
+        raise EmpiricalQueryExecutionError("ASKED_ELIGIBLE_REQUIRES_RAW_MEASURE")
     diagnostic = grain.get("diagnostic_kind")
     if diagnostic in DIAGNOSTIC_ONLY_KINDS:
         raise Pre553SemanticCollapseError("diagnostic score cannot define I03 EmpiricalFact execution")
@@ -333,6 +345,9 @@ def _parse_target_plan(query: EmpiricalQuerySpec, registry: AuthorityRegistry) -
         raise EmpiricalQueryExecutionError("target components length must equal declared arity")
 
     components: list[_TargetComponent] = []
+    asked = query.requested_output_grain.get(ASKED_ELIGIBLE_PROFILE_FIELD)
+    if asked is not None and asked != ASKED_ELIGIBLE_POLICY:
+        raise EmpiricalQueryExecutionError("unknown descriptive denominator policy")
     for idx, (raw, target_ref) in enumerate(zip(components_raw, target_refs)):
         item = _require_mapping(raw, f"target component {idx}")
         item_ref = _exact(item.get("target_ref"), f"target component {idx}.target_ref")
@@ -366,6 +381,16 @@ def _parse_target_plan(query: EmpiricalQuerySpec, registry: AuthorityRegistry) -
         included_states = frozenset(str(x) for x in included_states_raw)
         if not included_states:
             raise EmpiricalQueryExecutionError("included_states cannot be empty")
+        if asked == ASKED_ELIGIBLE_POLICY:
+            try:
+                enforce_asked_eligible_query_shape(
+                    measure=query.requested_output_grain.get("measure_kind"),
+                    topology=topology,
+                    included_states=included_states,
+                    domain=domain,
+                )
+            except AskedEligibleDistributionError as exc:
+                raise EmpiricalQueryExecutionError(str(exc)) from exc
         components.append(_TargetComponent(
             target_ref=item_ref,
             topology=topology,
