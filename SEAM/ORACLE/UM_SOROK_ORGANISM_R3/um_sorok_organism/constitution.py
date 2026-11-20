@@ -11,6 +11,7 @@ from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
+from .distributed_power import conditional_assistance_options
 from .world import _qualified_members
 
 
@@ -24,6 +25,7 @@ def materialize(actor,world):
         possible_ends=copy(actor.get('possible_ends',[])),
         evidence_paths=copy(actor.get('evidence_paths',[])),
         expectations=copy(actor.get('expectations',[])),
+        participation_history=copy(actor.get('participation_history',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -299,6 +301,10 @@ def compose(constitution,access,limit=50):
     # first; an inhibited operation cannot be revived by an option ID.
     for option in dynamics['candidate_actions']:
         option['practical_alternatives']=practical_alternatives(
+            constitution,attention['focus_access'],option)
+        # A learned relation of distributed practical power can add a real
+        # future *invitation* alternative. The Other's policy remains their own.
+        option['practical_alternatives']+=conditional_assistance_options(
             constitution,attention['focus_access'],option)
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
