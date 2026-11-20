@@ -182,6 +182,34 @@ def test_two_historical_parent_entrances_never_claim_partner_selection():
         )
 
 
+def test_parent_pair_refuses_substituted_first_packet_and_unpinned_inputs():
+    """Pair admission cannot use a rehashed child's own ref as its issuer."""
+    c4, path, first = _context("PYAT-C6-PAIR-FORGED-FIRST", slot="parent-one")
+    second = assemble_c6_contextual_entrance(
+        envelope=c4.envelope, external_pin=c4.external_pin,
+        path=path, entrance=ENTRY_PARENT, slot="parent-two",
+    )
+    source = (c4.envelope, c4.external_pin, path)
+    substitute = first.material()
+    substitute["scenario_slot_not_actor_id"] = "unapproved-parent-three"
+    forged_first = C6ContextualEntrance(
+        canonical_json(substitute), semantic_hash(substitute),
+    )
+    # The original first.ref is a separate, retained binding, not forged_first.ref.
+    with pytest.raises(C6SeamError, match="C6 cold source replay failed"):
+        assemble_two_sourcefree_parent_entrances(
+            first=forged_first, second=second,
+            first_source=source, second_source=source,
+            first_expected_receipt_ref=first.ref,
+            second_expected_receipt_ref=second.ref,
+        )
+    with pytest.raises(C6SeamError, match="independently held C6 receipt ref required"):
+        assemble_two_sourcefree_parent_entrances(
+            first=first, second=second,
+            first_source=source, second_source=source,
+        )
+
+
 def test_fake_parent_as_nadia_or_person_authority_cannot_be_emitted():
     c4, path, child = _context(
         "PYAT-C6-NO-PAIR-FROM-CHILD", entrance=ENTRY_NADIA,
