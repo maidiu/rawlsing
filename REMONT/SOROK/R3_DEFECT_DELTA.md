@@ -59,3 +59,8 @@ From PR #1171 R7 source `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400`, R8 reproduce
 ## REMONTATHON R3 R9 — bounded correction of two OPEN defects; 177 normal/optimized PASS
 
 At immutable R8 head `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764`, P011's one-SING automatic enduring project and P017's inaccessible temporal duration through runtime were reproduced RED and fixed in existing sourcefree owners, with actual limits documented. Six added tests; 2 FAIL and 2 ERROR on frozen R8, full 177/177 normal/optimized green afterward. P011/P017 move **OPEN to PARTIAL**, not fully CLOSED or independently accepted. Counts: 69 P = 8 OPEN/8 PARTIAL/53 author-repaired pending independent review, T0, E6. Probes P022/P023 remain PROPOSED_NOT_EXECUTED; native OpenCode runner and G5 have not been invoked. See R9 source/test identities and evidence receipt.
+
+
+## R12 sourcefree review-followon — 246 green, three R11 review defects repaired but not independently received
+
+R11 #1190 `39f6972089858ee968e73b2e731005c71a8055dd` separate independent reviewer found P070/P071 absent, `ADD_PROJECT` same-event motive laundering, and stale 69-ID ledger. R12 author repair inherits original current #1171 `c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7` exactly, preserving 71 IDs (53 scoped first-fault reviewed; 8 open; 8 partial; 2 P070/P071 author repair pending), adds no new P identities, and restores sourcefree P070/P071 integrity to the joined organism. Adversarial RED 5 subcases; R12 normal/-O/pytest 246 PASS, 14 pytest subtests, cold chain valid. Original 6 E holds and all native/protected rights remain. Distinct independent R12 rereview + Python 3.11 R12 run outstanding.
