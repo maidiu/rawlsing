@@ -27,3 +27,15 @@ Use Vmestye, Zakonchilos, Voskres, and HARVEST through their existing references
 4. Return an exact executable handoff or typed hold for the selected operation and state what that finding implies for the other wave. Send any authentic query to the existing MainMac worker for a real I03 execution, replay and a directly relevant negative. Take I05 separately if an existing authorized discovery path is ready.
 
 Keep both C11 releases untouched. No survey rebuild, manufactured QUERY, promotion of TEST_ONLY evidence, protected edit or repeat architecture campaign. Private authority material and respondent data stay local. The MainMac OpenCode worker is already checking the HARVEST material under this same requirement.
+
+## MainMac authority-census follow-through
+
+Start with the concrete candidate **GSS 1972 busing**. The worker found its exact HARVEST-001 structure row, the current HARVEST-003 QSM and driver rows, the accepted source mapping, and its exact question binding in the saved C11 metadata. The source mapping identifies a signed binary contrast with the RELATION_EVIDENCE role. Its row selector is ALL, while its routing status is ROUTING_UNKNOWN. H48 provides candidate coordinates. An existing scientific decision adopting those candidates for this operation still needs to be established.
+
+**Scientific decision for the R03 owner.** Can this item support a single-target descriptive marginal on an explicitly qualified denominator? Identify which respondent population the current source records can actually establish under ROUTING_UNKNOWN, whether the recorded role supports this use, and what claim must be held. If appropriate, point to or issue the exact policy, frontier operation and scope. Do not infer that everyone in the estate was asked the item from the row selector.
+
+**Engineering decision for the source-to-issuer owner.** The source-config projection probe for SRC16 refused at respondents.source_native_key_slot because it had no row_native_keys. It was executed without decoding source records. Determine whether the exact existing saved respondent identity and source binding supply the required keyed input through an existing authorized read path. The refusal is scoped to the projection call. It does not establish that the keys are absent from the saved estate or that a source rebuild is required. A saved-key connection would still leave the real-wave issuer requirement above open.
+
+SRC04's bounded projection probe stopped at 120 seconds without a result. Treat that as incomplete evidence. Keep both saved releases untouched and take the first authentic issued operation to the MainMac reader.
+
+[Exact MainMac follow-through and owner handoff](https://github.com/maidiu/rawlsing/tree/8daebf4fb86a591533f74718fdc6af4ab0bafcb1/WORKER_RETURNS/ANVIL_P0_R03_AUTHORITY_CENSUS_FOLLOWTHROUGH_20261120_R1)
