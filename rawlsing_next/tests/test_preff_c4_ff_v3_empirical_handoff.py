@@ -91,7 +91,7 @@ def test_cold_replay_requires_independent_pin_and_recovers_same_source_case():
     )
     assert offer.material()["raw_conditioned_complete_case_n"] == 4
     assert len(offer.material()["selected_complete_joint_cell"]) == 3
-    with pytest.raises(EmpiricalSeamError, match="external root"):
+    with pytest.raises(EmpiricalSeamError, match="separately held source pin"):
         consume_v3_empirical_case_offer(
             envelope=cold, external_pin=None, conditions={}, seed=4,
         )
