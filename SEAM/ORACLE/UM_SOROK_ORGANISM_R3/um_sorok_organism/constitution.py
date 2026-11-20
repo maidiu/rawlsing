@@ -13,6 +13,7 @@ from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
 from .practical_powers import situated_exercised_repertoire
+from .practical_inquiry import offer_actor_inquiry, notices_present
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -31,6 +32,7 @@ def materialize(actor,world):
         participation_history=copy(actor.get('participation_history',[])),
         functional_bindings=copy(actor.get('functional_bindings',[])),
         power_exercises=copy(actor.get('power_exercises',[])),
+        notice_exposures=copy(actor.get('notice_exposures',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -62,6 +64,20 @@ def actor_access(actor,world):
                     'clock':world['clock'],'kind':'coactor_present',
                     'tags':['coactor',other],'source_actor':other,'location':location,
                     'modality':'present','description':'co-present other actor'})
+    # An objectively posted notice is an opportunity to inspect public
+    # information, not automatic possession of its words or an explanation
+    # of an earlier obstruction. Reading requires an actual later operation.
+    if actor['body']['sensor'] >= .05:
+        for notice in notices_present(world,location,world['clock']):
+            cues.append({
+                'id':'public_notice_visible:'+notice['id']+':'+str(world['clock']),
+                'clock':world['clock'],
+                'kind':'public_notice_visible',
+                'public_notice_ref':notice['id'],
+                'tags':['posted','public_notice'],
+                'modality':'visual',
+                'location':location,'description':'a visible posted public notice',
+                'public_content_not_yet_experienced':True})
     env=[]
     site=world['sites'].get(location,{})
     if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
@@ -292,6 +308,16 @@ def compose(constitution,access,limit=50):
         entry.setdefault('historical_support_statuses',[]).extend(
             candidate['historical_support_statuses'])
         entry['score']=max(entry['score'],candidate['score'])
+    inquiry=offer_actor_inquiry(constitution,access)
+    for candidate in inquiry['offered']:
+        action=candidate['action']
+        entry=actions.setdefault(action,{
+            'action':action,'score':candidate['score'],'basis':[],
+            'opportunity':'ACTOR_HISTORICAL_EVIDENCE_SEEKING'})
+        entry['score']=max(entry['score'],candidate['score'])
+        entry['basis']+=candidate['basis']
+        entry.setdefault('candidate_notice_refs',[]).extend(
+            candidate['candidate_notice_refs'])
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -347,6 +373,20 @@ def compose(constitution,access,limit=50):
         # future *invitation* alternative. The Other's policy remains their own.
         option['practical_alternatives']+=conditional_assistance_options(
             constitution,attention['focus_access'],option)
+        if option['action']=='INSPECT' and option.get('candidate_notice_refs'):
+            option['practical_alternatives'] += [
+                {'option_id':'inquiry:'+constitution.actor+':'+
+                  str(constitution.clock)+':'+str(ref),
+                 'actor':constitution.actor,'as_of_clock':constitution.clock,
+                 'operation':'INSPECT','project_id':None,
+                 'grounds_status':'HISTORICALLY_FRUSTRATED_EVIDENCE_SEEKING',
+                 'world_request':{'operation':'INSPECT',
+                     'addressed_party_ref':None,'material_object_ref':ref},
+                 'anticipated_difference':None,
+                 'binding_status':'PUBLIC_POSTED_NOTICE_ACTOR_SITUATED',
+                 'not_secret_world_explanation':True,
+                 'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+                for ref in option['candidate_notice_refs']]
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -364,6 +404,7 @@ def compose(constitution,access,limit=50):
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            preproject['readset']+exercised['readset']+
+                           inquiry['readset']+
                            functional['readset']+
                            prospective['readset']+
                            list(candidate_history_refs)+
