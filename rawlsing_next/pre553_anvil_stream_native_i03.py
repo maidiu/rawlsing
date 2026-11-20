@@ -88,6 +88,7 @@ class VerifiedAnvilStreamEstate:
             root=root, exact_release_path=exact_path,
             held=independently_held, current_authorizer=current_authorizer,
         )
+        object.__setattr__(self, "_frozen", False)
         self._held = independently_held
         self._authorize = current_authorizer
         self.held_manifest_sha256 = independently_held.manifest_sha256
@@ -174,6 +175,30 @@ class VerifiedAnvilStreamEstate:
         finally:
             for reader in parquets.values():
                 reader.close()
+        object.__setattr__(self, "_frozen", True)
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        if getattr(self, "_frozen", False):
+            raise DirectEstateError("verified ANVIL stream binding is immutable")
+        object.__setattr__(self, name, value)
+
+    def __delattr__(self, name: str) -> None:
+        if getattr(self, "_frozen", False):
+            raise DirectEstateError("verified ANVIL stream binding is immutable")
+        object.__delattr__(self, name)
+
+    def _recheck_unchanged_members(self) -> None:
+        """Fail closed if the saved estate changed during a native query."""
+        self._live()
+        if _digest(self.directory / "manifest.json") != self.held_manifest_sha256:
+            raise DirectEstateError("stream manifest changed during execution")
+        for name, held_sha in sorted(self.manifest["members"].items()):
+            self._live()
+            member = self.directory / name
+            _private_regular(member, directory=False)
+            if _digest(member) != held_sha:
+                raise DirectEstateError("stream member changed during execution")
+        self._live()
 
     def _live(self) -> None:
         if self._authorize(self._held) is not True:
@@ -260,7 +285,9 @@ def execute_anvil_stream_i03(
             authority_registry=runtime_catalog.authority_registry,
             release_refs=(estate.native_release_ref,),
         )
-        estate._live()
+        # Never emit a fact after physical member tampering or a rights
+        # revocation during the query; the saved data are not copied/rebuilt.
+        estate._recheck_unchanged_members()
         return result
 
 
