@@ -2,27 +2,31 @@
 
 **Queue identity:** `PYAT_REMONT_EXECUTION_QUEUE@1` · **Test custodian:** REMONT · **Runner/diagnostician:** OpenCode · **Major repair reviewer:** REMONT Browser · **Forward architecture:** PYAT HQ. This is one continuing commission, not a succession of isolated agents or a replacement PROGRAMMA.
 
-**Repository/branch:** `maidiu/rawlsing` · PR #1164 · `review/pyat1158-mulch-physical-dhikr-20261119-r1`.
+**Repository/branch:** `maidiu/rawlsing` · continuing stacked production #1164 at frozen `84f7eb795676f88bade23051707942ba2e9b353d` → active C6 descendant PR #1173 `agent/pyat-c6-s04-v3-seam-sourcefree-forward-20261120-r1`. Resolve the **latest explicitly authorized active head** when OpenCode is launched; do not run an earlier PR head by habit. Same queue identity, no new commission.
 
 **Immutable evidence chronology:** User Mac first-fault at `a0b95cb7231601bbc228cf13b644851dd22c449d`, `PREFF_COURT=C4_FF_V3`: **19 tests / 9 PASS / 10 FAIL**, nine from DHIKR float identity, one mistaken I05 source identity collapse. Later Mac sourcefree full queue at **frozen `8c4e70ef0a3bc1a146f84504bd1ac5ff548f0fb0`**: **194 test executions / 177 PASS / 17 failure instances (16 unique nodes)**. Q001 13/13 PASS, Q002 8/8 PASS, Q003 7/8, Q004 66/78, Q005 83/87, Q006 HELD. Q004 12 share one supported FF01 null-field/ABI identity defect; Q003 one stale cold pin error regex; Q005 coordinate owner miscount and frozen mapping `.key` (plus repeated C4 red). These are **user/worker Mac local reports, not independent G5**, with unpublished JUnit under `.pyat-preff-remont-proof/8c4e70ef.../`. The repairs are code-committed at descendants of C5 and **NOT_EXECUTED at repaired HEAD**. Never transfer test results across SHAs.
+
+**Later exact user-run evidence — C6 first-fault and repaired return:** At frozen PR #1173 `bb55950549bbd59211adfc2b1c1e7826b93da77a`, Mac `C5_V3_CONTEXT` **22 PASS / 0 FAIL** (3.45s), `C6_V3_SEAM` **33 PASS / 1 FAIL** (7.04s); substantive failure was rehashed `scenario_slot_not_actor_id` passing C6 cold verification. After external C6 receipt-pin source fix plus hostile tests, Mac user ran frozen `fa11b2733612497d765d788008e8367df16d1d10`: `C5_V3_CONTEXT` **22 PASS / 0 FAIL** (3.89s), `C6_V3_SEAM` **36 PASS / 0 FAIL** (7.56s); total **58 passing test executions**. Evidence was reported from `/Users/matthewsmith/Desktop/rawlsing-pyat-c6-repair/.pyat-preff-c0-proof/{C5_V3_CONTEXT,C6_V3_SEAM}/`; this receiving agent has the user transcript, **not readback of local JUnit/log bytes**. This is **USER_SOURCEFREE_TEST_EXECUTED** at `fa11b273...`, not independent G5, original-wave science, actor authority or protected CAS. Later edits to this queue/runner **do not move that green to their new SHA**.
 
 ## Single repeatable worker operation
 
 **Executor:** `rawlsing_next/tests/run_preff_remont_batch.sh`. It checks a frozen `EXPECTED_PREFF_C0_HEAD`, rejects dirty tracked trees, runs every QID even after a preceding red, preserves each `junit.xml`, `pytest.log`, `exitcode.txt` and per-case exact SHA. Batch `index.csv` records each exit. No git writes or original wave operations.
 
-At a clean worktree pinned to the current, explicitly recorded #1164 commit:
+On a **future** OpenCode invocation, at a clean worktree pinned to the then-authorized active PR #1173 (or verified successor) exact SHA; do not initiate a duplicate run merely because this queue was updated:
 
 ```bash
 EXPECTED_PREFF_C0_HEAD="$SHA" \
 bash rawlsing_next/tests/run_preff_remont_batch.sh \
-  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008
+  RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q005 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010
 ```
 
-Without arguments the runner defaults to Q001–Q004, Q007 and Q008; Q005 remains the separately requested broad original regression sweep. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
+Without arguments the runner defaults to Q001–Q004 and Q007–Q010; Q005 remains the separately requested broad original regression sweep. RMT-Q009/Q010 call the **existing C5_V3_CONTEXT / C6_V3_SEAM courts**, not duplicate test definitions; Q005's original `broad_c0` proof path remains conserved. Run specific QIDs as script arguments. Evidence lands at `.pyat-preff-remont-proof/$SHA/` by default; override with `REMONT_PROOF_ROOT` for a low-disk host.
 
 **GitHub runner infrastructure hold (PF-042):** GitHub Actions checks have failed on both pre-repair `8c4e70ef...` and repaired descendants *before executing steps*. At inspected run `44671288932`, job `136072619214` has `runner_id=0`, empty `steps`, and no retrievable job logs. These CI reds are **NOT pytest evidence**. Until the runner owner restores a provisioned execution path, use the existing Mac/OpenCode sourcefree batch with one exact immutable HEAD; record JUnit/logs and do not reclassify the worker result as independent G5.
 
-**Growing rule:** Add a fresh numbered QID and its purpose, exact file(s), producer/consumer, positive/negative proof and triage owner here, and append one bounded suite to the launcher. Do **not** modify existing QID meanings or erase red/held evidence; supersede old IDs explicitly. OpenCode receives the same commission on every run, reads its latest queue and executes all eligible new QIDs against one frozen HEAD.
+**Standing future-work rule (user instruction, 2026-11-20):** For **every subsequent PYAT/REMONT sourcefree code development that introduces or changes a testable capability, repair or negative contract**, the development author should append the next unused `RMT-Q###` to this **same** living queue, wire its exact existing or new court into `run_preff_remont_batch.sh`, identify owner/consumer/positive and negative falsifiers, and preserve the tested SHA. The standing OpenCode commission will execute all eligible QIDs together **on its next separately initiated run**. Do **not** interrupt the user with an immediate new command, ask for another worktree, or imply a queued job executes automatically in the background. The user may independently run an urgent first-fault court, and that historical run stays separately pinned. Escalate source/actor/rights issues as holds; do not overwrite older QID meanings or claim independent G5.
+
+**Growing rule:** Add a fresh numbered QID and its purpose, exact file(s), producer/consumer, positive/negative proof and triage owner here, and append one bounded suite to the launcher. Do **not** modify existing QID meanings or erase red/held evidence; supersede old IDs explicitly. OpenCode receives the same commission on every future run, reads its latest queue and executes all eligible new QIDs against one frozen HEAD.
 
 ## Eligible pending first-fault tests
 
@@ -83,7 +87,21 @@ Without arguments the runner defaults to Q001–Q004, Q007 and Q008; Q005 remain
 - **Routing:** REMONT Browser judges PF-038 original FF01 ABI/provenance; OpenCode bounded test corrections for PF-039–041; distinct independent G5 only after exact-SHA executed proof.
 - **Exact state:** repaired source/test commits `826a500`, `a05c705`, `c98141d`, `212713a`; all `CODE_COMMITTED_NOT_EXECUTED` until rerun at one current frozen HEAD.
 
-## Required execution comment (PR #1164, linked to #1097)
+### RMT-Q009 — C5_V3_CONTEXT complete sourcefree context court
+**Priority P0 · NEXT OPENCODE BATCH / PRIOR MAC SOURCEFREE GREEN at frozen fa11b273**
+- **Original authorized executable:** `rawlsing_next/tests/run_preff_c0_first_fault_local.sh`, `PREFF_COURT=C5_V3_CONTEXT`; this selects `test_preff_c5_continuing_contextual_prev3.py` **and** `test_preff_c4_ff_v3_empirical_handoff.py`. Source owner: `pre553_ff_prev3_possibility_navigation.py`; existing exact I03→S04/DHIKR→FF01→C4 pinned ancestry.
+- **Positive:** source-observed conditional branch counts, complete-case same-source identities, replayable context history, zero vs low-N distinction, actual conditional alternatives/minority/ties, I05 valid-empty handoff, private cold C4 restoration and bounded axes. No fabricated actor or source rights.
+- **Negatives:** forged C5 path, changed seed, invalid axes/context, missing or substituted C4/FF01 external pins, disabled hold, sourcefree→population/actor authority promotion.
+- **Historical executed proof:** at `bb55950549bbd59211adfc2b1c1e7826b93da77a` 22/22 PASS; at `fa11b2733612497d765d788008e8367df16d1d10` 22/22 PASS (user Mac, 3.89s). **NOT EXECUTED on later queue-commit SHAs.** Owner: OpenCode executor; substantive cross-owner/source questions REMONT Browser.
+
+### RMT-Q010 — C6_V3_SEAM exact historical-entrance and cold authenticity court
+**Priority P0 · NEXT OPENCODE BATCH / PRIOR MAC SOURCEFREE GREEN at frozen fa11b273**
+- **Original authorized executable:** `rawlsing_next/tests/run_preff_c0_first_fault_local.sh`, `PREFF_COURT=C6_V3_SEAM`; runs `test_preff_c6_seam_contextual_entrances.py` **plus inherited C5/C4 tests**. Owner: `pre553_c6_seam_contextual_entrances.py`; downstream R112 `WorldConditionedPrefix` remains explicitly NONISSUING.
+- **Positive:** pinned genuine I03→C5→C6 parent and Nadia sourcefree proposals, coherent whole-joint cell disclosure only above independent minimum, two separately pinned adult proposals without invented partner selection, cold replay with independently retained C6 receipt `ExactRef`, two-parent and world-held first consumers.
+- **Negatives:** self-rehashed C5 and C6 receipt, changed scenario slot / parent-or-Nadia entrance / disclosure threshold, missing or mismatched independently held original C6 pin, substituted first-parent packet, unauthenticated world ingress, counterfeit FF01 root, low-N/zero disclosure, invented N10E/N10W/actor source grants. **A pin derived from the candidate being checked is NOT independent proof.**
+- **Historical failure → repair:** `bb55950549bbd59211adfc2b1c1e7826b93da77a` 33 PASS/1 FAIL (C6 self-rehashed slot accepted); patched by `ff422c0...` with expanded hostile regressions; `fa11b2733612497d765d788008e8367df16d1d10` **36/36 PASS** (user Mac, 7.56s). **No later HEAD certified.** OpenCode executor logs first faults; identity/actor authority to REMONT Browser.
+
+## Required execution comment (latest active PR #1173, linked to #1097)
 
 One **version-pinned** report, including: exact tested SHA and git tree cleanliness; host OS, Python and pytest version; each QID with test files, exact command, summary, exit code and JUnit/log paths; first failure stack and minimal source trace; whether a failure is old/new/test-misstatement/owner contract; proposed smallest repair; affected upstream and downstream owners; historical negative controls to conserve; recommended **REMONT Browser vs OpenCode** with reason. Mark unrun items `NOT_EXECUTED`; do not call author runs independent G5 or protected acceptance.
 
