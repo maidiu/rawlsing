@@ -725,35 +725,21 @@ The generative service must distinguish:
 
 Sampling a coherent fictional adult may employ a qualified model or respondent-supported distribution, but a sample is not a copied respondent or a real person. The service does not pre-generate all personalities. It provides conditional distributions and question navigation that downstream construction can use repeatedly.
 
-### IX.4 The live actor event loop
+### IX.4 One historical Nadia, actor-local perspectives, and a rolling world
 
-A provisional agent/world contract should make a full update atomic at its own grain:
+**There is one Nadia.** The historical P3 organism cannot generate a biography that is handed to a freshly invented P4–P6 personality. Its actual developing-person/world history must compile to the **same versioned world/person root** used by the live interaction machinery. Preserve root, actor roster, branching identity, clocks, objective world history, relationships and acquired psychological organization. The root is a *causal state* with eligible unresolved detail, not a prose sheet that licenses new backstory whenever asked.
 
-```text
-advance_world(t0 -> t1):
-  mature_needs_resources_and_institutional_processes()
-  run_compressed_routines_with_reconstructible_effects()
-  emit_independent_encounters_and_other_agent_actions()
-  for each situated actor in affected set:
-    perception = actor_access(world_events, actor_history, capacity)
-    candidates = recruit(acquired_organizations, needs, motives,
-                         perceived_affordances, relational_memory)
-    response = compose(candidates, conflicts, current_activity,
-                       bodily_state, learned_operations)
-    attempted_action = express_or_do(response)
-    realized_outcome = world_arbitrate(attempted_action,
-                                       Others, institutions, resources)
-    psychological_delta = learn_from_experience(
-                            perception, action, realized_outcome,
-                            current_organizations, maturation)
-    commit_actor_delta_and_relational_memory(psychological_delta)
-  atomically_commit_world_actor_history()
-  expose_new_context_to_situated_possibility_queries()
-```
+**Use existing owner jurisdictions, not a second life engine.** P3 orchestrates chronology and records; P2/ADP-019/S47 own objective occurrences, objects, material changes and world effects; ADP-015 owns relationship states; CAN-010/011 own durable acquired psyche; CAN-008 owns immediate recruitment and response; ADP-016/017 own memories, availability of knowledge and claims; PFF/V2 handles actor-limited expression; Mechanism I fills permissible historical-object detail, Mechanism II governs user perception, and Mechanism III handles independent present activity. P4–P6/S46 handle live encounters. This is a historical owner map to recheck at current code HEADs, not an authority issuance or instruction to build duplicate modules.
 
-This is **not a synchronous obligation to run every actor in every interval**. It defines causal order and a trace contract. Compression may elide routine steps only while preserving their cumulative material, embodied, relational and developmental effects; significant interruptions expand into explicit events. No language model may bypass world arbitration by writing a successful consequence into narrative prose.
+**An objective world fact, a parent's private interpretation, the parent's actual utterance and Nadia's perception are four records.** The owner can know the full material constraint and admissible options; a parent acts from their own accessible circumstances; their actual speech may reveal only part of their motivation; the child acquires only the episode they could hear, observe or infer. Provide a read-only actor-relative situated view from existing world/actor/relation state: actual local affordances, actor-controlled resources, work/care obligations, current activity, existing acquired organizations, accessible memories, perceived Others and causal readsets. The owner/adjudicator may inspect objective information unavailable to that actor, but may not present it as the actor's private knowledge. Do not install a redundant authoritative 'Nadia profile' beside the person's durable organizations.
 
-If SOROK runs several psychological operations concurrently, use explicit conflict resolution and stable history; a later memory change cannot quietly overwrite a world fact. Where an update is intentionally uncertain, store that uncertainty rather than choosing a plausible but unsupported exact motive. An actor may misremember, and a narrator may convey that misconception, but world history and belief history cannot be the same untyped ledger.
+**Four clocks cannot be collapsed:** historical/as-of calendar time (age, source wave, employment, tenancy, entitlements); P3 owner logical order (proposals, admissions, retrospect); S46 present activity intervals; and actual body, relation and developmental duration. A historical change *inside* a compressed interval must split it at its effective date. A job lost in January and restored in June cannot cause twelve months of unemployment expense; rent begins and ends with actual tenure. Workshop S46 ticks are not automatically months or years. The same source survey wave is not a longitudinal panel following these fictional people.
+
+The **duration pass precedes each selected event**: split interval at actual changes, maintain stocks and flows, care and work, schedules, repeated practice and thwarted activities, update independent parents and Others, and apply only qualified actor-durational rules (including evaluated NO_CHANGE). A lasting material pressure without an actual learning rule remains a world pressure, not a compulsory trait increment. Sparse P3 episodes may occur in batches, with later retrospective processing, but duration continues between them.
+
+The positive event circuit is: qualified prospective candidate → owner-chosen event and actor action → separately admitted outward speech → independent world and relational consequences → actor-local perceptual receipt → CAN-008 immediate recruitment → possible later CAN/ADP psychological proposal and competent commit → a different future reader consuming the actual persisted effect. **Generate the conduct before explaining it**: the actor can be impulsive, self-defeating, mistaken or opaque to themselves, not a reward-maximizer equipped with a tidy post-hoc explanation.
+
+A hosted LLM's new output need not match byte-for-byte on repeated invocation. Exact causal replay uses its **previously recorded selected proposal**, source/world root, readset, actor/clock, contingency and admitted owner receipts rather than calling the model again. Joint effects must not present a half-completed purchase or move as completed world history. Preserve causal and authority roles even if multiple owner deltas are atomically committed.
 
 ### IX.5 Psychological proposals must be executable transformations
 
