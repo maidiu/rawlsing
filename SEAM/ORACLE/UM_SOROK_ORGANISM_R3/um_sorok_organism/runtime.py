@@ -243,7 +243,6 @@ class ConstitutiveRuntime:
                         'own_action':own,'status':personally_done['status'] if personally_done else 'OBSERVED',
                         'perceived_cues':personal_cues,'participated':participated,
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
-                        'attempted_purpose':own_selection,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
             # An action changes the opportunities and signals subsequently
@@ -277,6 +276,7 @@ class ConstitutiveRuntime:
                 # Untried possible ends are actor-history hypotheses, not
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
                 # preceding psychic organization. The simulated actor neither
