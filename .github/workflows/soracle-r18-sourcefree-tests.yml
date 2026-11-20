@@ -1,0 +1,35 @@
+name: SORACLE R18 sourcefree receiving court (read-only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
+      - '.github/workflows/soracle-r18-sourcefree-tests.yml'
+permissions:
+  contents: read
+jobs:
+  r18-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile source, no external accounts or LLM
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m compileall -q um_sorok_organism
+      - name: R18 sourcefree focus
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest -v tests.test_reproduced_food_power_r18
+      - name: R18 sourcefree optimized (-O) focus
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest -v tests.test_reproduced_food_power_r18
+      - name: Full inherited sourcefree regression (R3 through R18)
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -v
+      - name: Full optimized inherited regression
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest discover -s tests -v

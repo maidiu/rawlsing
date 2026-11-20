@@ -49,8 +49,22 @@ def configure_food_power(world,actors,spec):
         raise ValueError("FOOD_POWER_INVALID_QUORUM")
     if type(spec.get("source_ref")) is not str or not spec["source_ref"]:
         raise ValueError("FOOD_POWER_NO_SOURCEFREE_IDENTITY")
-    if any(world.get("positions",{}).get(a)!=site for a in signers):
-        raise ValueError("FOOD_POWER_SIGNER_NOT_PRESENT_AT_DECLARATION")
+    # The R17 direct fixture requires present signers. R18 can instead
+    # inherit an earlier *registered* site-specific concession: its named
+    # eligible participants remain real even if someone is away at work
+    # when another actor acts to install the gate. The grant is verified
+    # against the prior world's source, not inferred from an arbitrary list.
+    prior=spec.get("pre_registered_concession_ref")
+    if prior is None:
+        if any(world.get("positions",{}).get(a)!=site for a in signers):
+            raise ValueError("FOOD_POWER_SIGNER_NOT_PRESENT_AT_DECLARATION")
+    else:
+        registered=world.get("food_control_concessions",{}).get(site)
+        if (not registered or registered.get("id")!=prior
+                or registered.get("controller")!=controller_actor
+                or registered.get("eligible_petitioners")!=sorted(signers)
+                or registered.get("quorum")!=quorum):
+            raise ValueError("FOOD_POWER_UNAUTHORIZED_INHERITED_CONCESSION")
     ref=stable_id("fictional_food_access_order",{
         "world":world["id"],"clock":world["clock"],"site":site,
         "source":spec["source_ref"],"controller":controller_actor,
@@ -116,6 +130,22 @@ def can_draw_shared_food(world,giver,site):
     if board is None:return True
     if type(giver) is not str or not giver:
         raise ValueError("FOOD_POWER_UNKNOWN_DRAWER")
+    # R18 separates a formally recorded food right from the *continuing*
+    # material capacity to enforce its restriction. Earlier R17 fixtures,
+    # without a material enforcement constitution, preserve their old rule.
+    from .food_power_reproduction import effective_enforcement
+    now=world["clock"]
+    if not effective_enforcement(board,now):
+        return True
+    for sanction in board.get("r18_sanctions",[]):
+        if (sanction.get("subject")==giver
+                and type(sanction.get("start_clock")) is int
+                and type(sanction.get("through_clock")) is int
+                and sanction["start_clock"]<=now<=sanction["through_clock"]):
+            # A collective access reform can coexist temporarily with an
+            # individually enforced sanction. Neither legal rule nor physical
+            # food stock by itself exhausts effective power.
+            return False
     if board["food_rights"]=="SHARED_BY_COLLECTIVE_ACTS":
         return True
     return giver in board["initially_permitted_givers"]

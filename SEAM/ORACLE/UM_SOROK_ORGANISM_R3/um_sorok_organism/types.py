@@ -71,6 +71,7 @@ class Constitution:
     experienced_care_events: list[dict] = field(default_factory=list)
     performed_feeding_events: list[dict] = field(default_factory=list)
     institutional_expectations: list[dict] = field(default_factory=list)
+    material_dependency_encounters: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -141,6 +142,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'experienced_care_events': [],
         'performed_feeding_events': [],
         'institutional_expectations': [],
+        'material_dependency_encounters': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
@@ -160,6 +162,7 @@ def blank_world(world_id='w1'):
     return {'id': world_id, 'clock': 0, 'positions': {},
             'sites': {'home': {'food': 12, 'stock': 8, 'access': 'public',
                            'shared_household_food':True,
+                           'mutual_aid_food':0,
                            'provisioning_rule':'PROPORTIONAL_DECLARED_CLAIMS_R1'},
                       'workshop': {'food': 1, 'stock': 5, 'access': 'public',
                                    'controller':'workshop_steward', 'food_price':1.0},
@@ -174,6 +177,8 @@ def blank_world(world_id='w1'):
             'social_reproductive_labor': [],
             'material_provisioning_periods': [],
             'material_feeding_events': [],
+            'food_control_concessions': {},
+            'food_commons_history': [],
             'scheduled_obligations': [],
             'positioned_material_records': [],
             'institutional_access_rules': [],

@@ -29,6 +29,9 @@ from .co_regulation_history import (
 from .caregiving_practice import project_repeat_feeding
 from .food_access_struggle import (
     live_food_petition_opportunity, offered_food_petition)
+from .food_power_reproduction import (
+    food_power_opportunities,COMMONS,INSTALL,MAINTAIN,SANCTION,
+    OFFER,ACCEPT)
 
 
 def materialize(actor,world):
@@ -53,6 +56,8 @@ def materialize(actor,world):
         experienced_care_events=copy(actor.get('experienced_care_events',[])),
         performed_feeding_events=copy(actor.get('performed_feeding_events',[])),
         institutional_expectations=copy(actor.get('institutional_expectations',[])),
+        material_dependency_encounters=copy(actor.get(
+            'material_dependency_encounters',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -137,6 +142,7 @@ def actor_access(actor,world):
     if actor['body']['sensor'] >= .05:
         env += [x['operation'] for x in live_food_petition_opportunity(
             world,actor,location)]
+    env+=food_power_opportunities(world,actor,location)
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -394,6 +400,33 @@ def compose(constitution,access,limit=50):
             'obstruction_refs':food_collective['attempted_obstruction_refs'],
             'not_automatic_ideological_identification':True,
             'grade':GRADE})
+    # Controlling a store and building an alternative are real world
+    # affordances, not preassigned personality motives. The counter-source
+    # can be recruited only when this particular actor actually attempted
+    # care and encountered a nonperformance at this site.
+    for action in (INSTALL,MAINTAIN,SANCTION,COMMONS,OFFER,ACCEPT):
+        if action not in access.affordances or not eligible(
+                constitution.body,action)[0]:
+            continue
+        entry=actions.setdefault(action,{
+            'action':action,'score':.12,'basis':[],
+            'opportunity':'SITUATED_MATERIAL_FOOD_POWER'})
+        entry['basis'].append('actual_material_ability:'+action)
+        if action==COMMONS:
+            denied=[x for x in constitution.material_dependency_encounters
+                    if x.get('own_operation_attempted')=='FEED'
+                    and x.get('location')==access.location
+                    and type(x.get('clock')) is int
+                    and x['clock']<=constitution.clock]
+            if denied:
+                entry['material_counterpower_ground']={
+                    'personally_sensed_incomplete_feeding_ref':
+                        denied[-1]['id'],
+                    'alternative_requires_own_food_not_ideology':True}
+                currents.append({
+                    'kind':'BLOCKED_REPRODUCTION_MAY_RECRUIT_MATERIAL_ALTERNATIVE',
+                    'historical_attempt_ref':denied[-1]['id'],
+                    'not_a_conscious_class_analysis':True,'grade':GRADE})
     inquiry=offer_actor_inquiry(constitution,access)
     for candidate in inquiry['offered']:
         action=candidate['action']
