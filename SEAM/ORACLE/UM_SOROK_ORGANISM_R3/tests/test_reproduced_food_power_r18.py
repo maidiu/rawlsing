@@ -90,6 +90,11 @@ class R18WorldPower(unittest.TestCase):
         self.assertEqual(self.w['sites']['home']['food'],14)
         self.assertEqual(self.w['holdings']['father']['food'],2)
         self.assertEqual(self.w['accounts']['father'],4)
+        service=self.w['food_control_concessions']['home'][
+            'enforcement_service_ref']
+        self.assertEqual(self.w['accounts'][service],1)
+        self.assertEqual(self.w['accounts']['father']+
+                         self.w['accounts'][service],5)
         self.assertEqual(self.w['institutions'][
             'household_food_board']['r18_enforcement_history'][0][
             'actor_selection_source'],INJECTED)
@@ -111,6 +116,11 @@ class R18WorldPower(unittest.TestCase):
         self.assertEqual(maintain_gate(self.w,self.a,'father','home',
             AUTONOMOUS)['status'],'PERFORMED')
         self.assertEqual(self.w['accounts']['father'],3)
+        service=self.w['food_control_concessions']['home'][
+            'enforcement_service_ref']
+        self.assertEqual(self.w['accounts'][service],2)
+        self.assertEqual(self.w['accounts']['father']+
+                         self.w['accounts'][service],5)
         self.w['clock']=7
         self.assertFalse(can_draw_shared_food(self.w,'mother','home'))
         self.w['clock']=9
@@ -132,6 +142,12 @@ class R18WorldPower(unittest.TestCase):
         sanction=sanction_gate(
             self.w,self.a,'father','mother','home',AUTONOMOUS)
         self.assertEqual(sanction['status'],'PERFORMED')
+        service=self.w['food_control_concessions']['home'][
+            'enforcement_service_ref']
+        self.assertEqual(self.w['accounts']['father'],2)
+        self.assertEqual(self.w['accounts'][service],3)
+        self.assertEqual(self.w['accounts']['father']+
+                         self.w['accounts'][service],5)
         self.w['clock']=1
         self.assertFalse(can_draw_shared_food(self.w,'mother','home'))
         self.assertTrue(can_draw_shared_food(self.w,'nadia','home'))
