@@ -100,6 +100,10 @@ def choose_independent_repeat_feeding(options,requesting_actor,
         if o.get("action")!="FEED" or (
                 o.get("psychodynamic_status")=="UNRESOLVED_CONTRADICTION"):
             continue
+        if o.get("preproject_recruitment",{}).get("status") in (
+                "ACQUIRED_NONPROJECT_WITHHOLD",
+                "UNRESOLVED_PREPROJECT_CONTRADICTION"):
+            continue
         for alt in o.get("practical_alternatives",[]):
             if alt.get("grounds_status")!=(
                     "HISTORICALLY_PERFORMED_MATERIAL_FEEDING"):
