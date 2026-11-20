@@ -97,8 +97,17 @@ def test_asked_but_no_emitted_response_event_remains_held_and_in_denominator():
 
 def test_unknown_routing_does_not_mean_asked_and_does_not_mean_not_asked():
     source, qa, pred, query = _case(unknown_route=True)
-    with pytest.raises(EmpiricalQueryExecutionError, match="routing/risk-set state is unresolved"):
-        _run(source, qa, pred, query)
+    # I03 must return an exact negative fact; routing uncertainty is not
+    # coerced into a smaller answered-only or ineligible denominator.
+    fact = _run(source, qa, pred, query).facts[0]
+    assert fact.typed_state == "UNAVAILABLE"
+    assert fact.p02_failure_state == "RISK_SET_UNAVAILABLE"
+    assert fact.execution_detail == (
+        "routing/risk-set state is unresolved; "
+        "it may not be coerced to nonmembership"
+    )
+    assert fact.raw_denominator_support == 0
+    assert fact.raw_numerator_support == 0
 
 
 def test_source_code_98_is_not_magically_recoded_as_dk_without_issuer_evidence():
@@ -108,8 +117,18 @@ def test_source_code_98_is_not_magically_recoded_as_dk_without_issuer_evidence()
     pred = _branch_predicate(source, qa)
     query = _query(source, qa, pred, ("Y",),
                    tag="asked-98-not-invented", asked_eligible_raw=True)
-    with pytest.raises(EmpiricalQueryExecutionError, match="absent from the query-declared full target domain"):
-        _run(source, qa, pred, query)
+    # A source code that lacks a governed DK mapping remains substantive.
+    # When outside the declared exact target domain, I03 returns its
+    # integrity-negative fact rather than fabricating a typed DK cell.
+    fact = _run(source, qa, pred, query).facts[0]
+    assert fact.typed_state == "INTEGRITY_FAILURE"
+    assert fact.p02_failure_state == "INTEGRITY_FAILURE"
+    assert fact.execution_detail == (
+        "realized exact target cell is absent from the "
+        "query-declared full target domain"
+    )
+    assert fact.raw_denominator_support == 0
+    assert fact.raw_numerator_support == 0
 
 
 def test_policy_marker_cannot_smuggle_substantive_only_response_domain():
