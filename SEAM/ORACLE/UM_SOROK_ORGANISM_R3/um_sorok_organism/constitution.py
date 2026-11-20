@@ -106,8 +106,13 @@ def compose(constitution,access,limit=50):
     valid_links=[link for link in constitution.links
         if link.get('source') in forms and link.get('target') in forms
         and (not link.get('contexts') or access.location in link['contexts'])]
-    positive=[link for link in valid_links if link.get('relation') in ('RECRUITS','SUPPORTS')]
-    negative=[link for link in valid_links if link.get('relation')=='INHIBITS']
+    # PRE-A0's explicitly admitted relation functions must do work; not
+    # merely appear in a relation-history report. Activation and suppression
+    # still respect the form's own scope and bodily eligibility.
+    positive=[link for link in valid_links if link.get('relation') in
+              ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')]
+    negative=[link for link in valid_links if link.get('relation') in
+              ('INHIBITS','SUPPRESSES')]
 
     def closure(start, blocked=frozenset()):
         reached=set(start)&qualified-set(blocked)
