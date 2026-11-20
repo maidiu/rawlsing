@@ -17,6 +17,11 @@ from .food_power_reproduction import (
     INSTALL,MAINTAIN,SANCTION,COMMONS,install_gate,
     maintain_gate,sanction_gate,contribute_food_commons,
     OFFER,ACCEPT,offer_control_transfer,accept_control_transfer)
+from .labor_dependency import (
+    ACCEPT as WORK_ACCEPT,SUSPEND as WORK_SUSPEND,RESIGN as WORK_RESIGN,
+    CONTRIBUTE as WORK_POOL,DRAW as WORK_DRAW,
+    accept_work_terms,suspend_worker,withdraw_labor,
+    fund_worker_relief,draw_worker_relief,work_permission)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -258,6 +263,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                     'buyer':aid,'site':loc,'seller':seller,'price_paid':(paid if seller!=aid else 0),
                     'goods_transferred':1,'not_actor_psychic_motive':True})
                 output='FOOD_PURCHASED'
+    elif attempt.action=='WORK' and work_permission(
+            world,aid,loc) not in (
+            'QUALIFIED_WORK_CONTRACT_ACTIVE',
+            'NO_ADDITIONAL_CONTRACT_REGIME'):
+        status='BLOCKED'
+        output=work_permission(world,aid,loc)
     elif attempt.action=='WORK':
         site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
         stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
@@ -368,6 +379,35 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         status=institutional['status']
         output=institutional['outcome']
         policy_receipt=institutional.get('policy_receipt')
+    elif attempt.action==WORK_ACCEPT:
+        institutional=accept_work_terms(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('contract_ref')
+    elif attempt.action==WORK_SUSPEND:
+        institutional=suspend_worker(
+            world,actors,aid,target,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('suspension_ref')
+    elif attempt.action==WORK_RESIGN:
+        institutional=withdraw_labor(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+    elif attempt.action==WORK_POOL:
+        institutional=fund_worker_relief(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('relief_ref')
+    elif attempt.action==WORK_DRAW:
+        institutional=draw_worker_relief(
+            world,actors,aid,loc,attempt.intention)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('relief_ref')
     elif attempt.action==INSTALL:
         institutional=install_gate(world,actors,aid,loc,attempt.intention)
         status=institutional['status']
