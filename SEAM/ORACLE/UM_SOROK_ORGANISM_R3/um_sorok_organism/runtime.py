@@ -26,6 +26,7 @@ from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
+from .institutional_procedure_learning import possible_institutional_learning
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -568,6 +569,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             care_revision=possible_revision_after_nonresponse(
                 actors[aid],experience,objective_ref)
+            institutional_learning=possible_institutional_learning(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -602,6 +605,8 @@ class ConstitutiveRuntime:
                     actual_lived_care['id'] if actual_lived_care else None),
                 'historically_possible_co_regulation_revision':copy(
                     care_revision),
+                'historically_possible_public_procedure_learning':copy(
+                    institutional_learning),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
