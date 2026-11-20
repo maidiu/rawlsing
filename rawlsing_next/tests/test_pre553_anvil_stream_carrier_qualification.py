@@ -41,9 +41,18 @@ def _estate(tmp_path):
     release.mkdir(mode=0o700)
     doc = {
         "schema": "ANVIL_STREAM_C11_ESTATE@1",
-        "i02": ROOTS,
+        "roots": ROOTS,
+        "body_format": "legacy_exact_object_row_json_in_same_parquet_member",
+        "proof_version": "STREAM_TYPED_IDENTITY_COVERAGE@1",
+        "legacy_i02": None,
+        "sqlite_proof_built": False,
+        "read_back_audit": False,
+        "manifest_sha256": "1" * 64,  # embedded proof marker, not file digest
         "source_sha256": SOURCE,
+        "members": {name + ".parquet": "2" * 64 for name in FAMILIES}
+                   | {"event_locator.parquet": "3" * 64},
         "family_counts": {name: 0 for name in FAMILIES},
+        "event_locator_count": 0,
     }
     manifest = release / "manifest.json"
     manifest.write_text(json.dumps(doc, sort_keys=True), encoding="utf-8")
@@ -163,3 +172,41 @@ def test_r2_exact_saved_roots_remain_stream_not_direct_certificate(source_id):
     assert wave["manifest_sha256"] and len(wave["manifest_sha256"]) == 64
     with pytest.raises(ExternalI02IntegrityError, match="unsupported externally held certificate schema"):
         ExternalI02Roots(**wave["saved_i02"])
+
+
+@pytest.mark.parametrize("edit", ["missing_member", "wrong_event_count",
+                                   "wrong_body_format", "invented_direct_i02"])
+def test_rehashed_but_unqualified_stream_layout_still_refuses(tmp_path, edit):
+    """A newly held digest alone cannot make a forged stream geometry valid."""
+    root, release, manifest, pins = _estate(tmp_path)
+    doc = json.loads(manifest.read_text())
+    if edit == "missing_member":
+        del doc["members"]["event_locator.parquet"]
+    elif edit == "wrong_event_count":
+        doc["event_locator_count"] = 1
+    elif edit == "wrong_body_format":
+        doc["body_format"] = "other-transport"
+    else:
+        doc["legacy_i02"] = {"unverified": "direct-conversion"}
+    manifest.write_text(json.dumps(doc, sort_keys=True))
+    reheld = replace(
+        pins, manifest_sha256=sha256(manifest.read_bytes()).hexdigest()
+    )
+    with pytest.raises(StreamCarrierQualificationError):
+        qualify_saved_stream_manifest(
+            root=root, exact_release_path=release,
+            held=reheld, current_authorizer=lambda _: True,
+        )
+
+
+def test_nested_roots_are_stream_not_i02(tmp_path):
+    root, release, manifest, pins = _estate(tmp_path)
+    doc = json.loads(manifest.read_text())
+    doc["i02"] = doc.pop("roots")
+    manifest.write_text(json.dumps(doc, sort_keys=True))
+    reheld = replace(pins, manifest_sha256=sha256(manifest.read_bytes()).hexdigest())
+    with pytest.raises(StreamCarrierQualificationError, match="roots mismatch"):
+        qualify_saved_stream_manifest(
+            root=root, exact_release_path=release,
+            held=reheld, current_authorizer=lambda _: True,
+        )
