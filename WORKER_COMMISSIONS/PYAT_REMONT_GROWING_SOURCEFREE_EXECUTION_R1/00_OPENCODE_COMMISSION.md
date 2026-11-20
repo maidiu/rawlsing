@@ -1,5 +1,15 @@
 # OPEN EXECUTION COMMISSION — PYAT/REMONT sourcefree queue
 
+## Integrated sourcefree candidate — Q014/Q015/Q016 (await explicit launch)
+
+This branch combines #1209's asked-eligible RAW policy, original #1205 source/tests, and all **nine exact Git-blob-identical** additional #1207 country/S04/determinicity source and test files. **No new PYAT implementation or tests have been independently executed on the new composite HEAD.** On its parent #1205 source `c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5`, user/worker Mac reports **R03_ASKED_ELIGIBLE 41/41** and **C0_ALL_SMALL 124/124** green; no transfer to integration SHA.
+
+**Collision fixed globally:** Q014 = asked/eligible raw policy; Q015 = continuing S04/DHIKR cycle; Q016 = country-source and S04 refinement suite (formerly the conflicting #1207 Q014). The **single** `REMONT_EXECUTION_QUEUE.md` and `run_preff_remont_batch.sh` now contain all three cases with their distinct actual tests. Q006 requires original-source permission and Q011–Q012 are reserved for SOROK.
+
+**Operational authority:** This draft is an **integration candidate, not automatically authorized to run or receive**. Future OpenCode must check its exact live HEAD against the approved candidate and source owners, use one clean detached worktree, run eligible QIDs and preserve per-QID first-fault logs. Q014 and Q015/Q016 may only execute together from a head containing both code lineages, such as this candidate **after explicit selection**. This queue update does not launch tests or require the user to repeat the prior Mac 124/124. REMONT PR #1162 receives actual P/T/E first faults and controls repairs; scientific/actor/protected receiving held. The inherited older execution-target paragraphs below are historical and superseded by this top section.
+
+
+
 ## Latest queue update — PYAT #1205 asked-eligible RAW · RMT-Q014
 
 This supersedes the older #1173-only HEAD selection paragraphs below **for the next separately user-authorized invocation**. PYAT #1205 `c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5` is the later sourcefree descendant (existing I03/R03 query policy). Its focused `R03_ASKED_ELIGIBLE` court is **41 PASS / 0 FAIL**, user/worker execution, not G5; an independent broad `C0_ALL_SMALL` run at that SHA was underway when this queue amendment was prepared. **The user must not be asked to run it again now.** The queue/runner follow-up itself is a separate direct descendant; do not transfer the predecessor green to the follow-up SHA.
