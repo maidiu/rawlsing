@@ -3,6 +3,8 @@ World consequences can be unilateral, imposed, cooperative, or refused.
 """
 from .types import Attempt, Resolution, copy, stable_id, digest
 from .organism import eligible
+from .institutional_reproduction import (
+    contribute_to_hall_petition, retain_material_care)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -137,6 +139,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     output=''
     target=attempt.target
     partner_valid=False
+    policy_receipt=None
+    care_labor_receipt=None
     if partner_attempt:
         ok,why=eligible(actors[partner_attempt.actor]['body'],partner_attempt.action)
         partner_valid=(ok and world['positions'].get(partner_attempt.actor)==loc)
@@ -290,6 +294,11 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
+    elif attempt.action=='SIGN_HALL_PETITION':
+        institutional=contribute_to_hall_petition(world,aid,loc)
+        status=institutional['status']
+        output=institutional['outcome']
+        policy_receipt=institutional.get('policy_receipt')
     elif attempt.action=='CARE':
         if target in actors and world['positions'].get(target)==loc:
             b=actors[target]['body']
@@ -299,6 +308,9 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             b['comfort']=min(1,b['comfort']+.18)
             b['nutrition']=min(1,b['nutrition']+.06)
             effects[target]={'action':'RECEIVED_CARE','bodily':True}
+            care_labor_receipt=retain_material_care(
+                world,aid,target,clock=world['clock']+1,
+                location=loc,effect='RECEIVED_CARE')['id']
             output='CARE_GIVEN'
         else:status='PARTIAL';output='CARE_TARGET_ABSENT'
     elif attempt.action=='IMPOSE':
@@ -361,6 +373,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'coactor_action':partner_attempt.action if partner_attempt else None,
                    'object_ref':attempt.object_ref,
                    'material_claim_ref':claim_ref,
+                   'institutional_policy_ref':policy_receipt,
+                   'social_reproductive_labor_ref':care_labor_receipt,
                    'co_present_not_verified_witnessing':True}
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
