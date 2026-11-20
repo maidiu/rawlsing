@@ -154,3 +154,62 @@ def objective_arrangement(actor, world, operation, location,
         'independent_power_as_metaphysical_category':'REJECTED',
         'grade':GRADE,
     }
+
+
+def seed_fictional_adult_training(actor, proposals, *, source_grade):
+    """History-rich adult entrance without invented individual success scenes.
+
+    A hypothetical adult may have practiced thousands of occasions during
+    decades not individually simulated. A provider must propose plausible
+    bounded periods; it may NOT convert survey answer positions into skill
+    proofs. The result is constitutive *fictional* backfill with large
+    uncertainty, not measured respondent development or a memory the actor
+    can consciously recount.
+    """
+    if actor.get('role')!='adult' or type(proposals) is not list:
+        raise ValueError('ADULT_PRACTICE_BACKFILL_UNQUALIFIED')
+    if len(proposals)>64:
+        raise ValueError('ADULT_PRACTICE_BACKFILL_TOO_MANY_PERIODS')
+    rows=[]
+    for index,p in enumerate(proposals):
+        if type(p) is not dict:
+            raise ValueError('ADULT_PRACTICE_BACKFILL_NOT_STRUCTURED')
+        op=p.get('operation')
+        place=p.get('location')
+        duration=p.get('duration_days')
+        period=p.get('past_period_ref')
+        if op not in COMPONENTS or type(place) is not str or not place:
+            raise ValueError('ADULT_PRACTICE_BACKFILL_UNKNOWN_COMPONENT')
+        if type(duration) is not int or not 0<=duration<=actor['age_days']:
+            raise ValueError('ADULT_PRACTICE_BACKFILL_IMPOSSIBLE_DURATION')
+        if type(period) is not str or not period:
+            raise ValueError('ADULT_PRACTICE_BACKFILL_NO_PERIOD_SOURCE')
+        fraction=_fraction(p.get('participation_fraction'))
+        mode=p.get('support_configuration','ARRANGEMENT_UNRESOLVED')
+        if mode not in ('SOLO_COMPONENT_PRACTICE',
+                        'ASSISTED_COMPONENT_PRACTICE',
+                        'ARRANGEMENT_UNRESOLVED'):
+            raise ValueError('ADULT_PRACTICE_BACKFILL_UNKNOWN_ARRANGEMENT')
+        ident=stable_id('fictional_adult_practice',{
+            'actor':actor['id'],'index':index,'period':period,
+            'component':op,'place':place,'duration':duration,
+            'fraction':fraction,'mode':mode})
+        if any(x.get('id')==ident for x in actor.get('practice_exposures',[])):
+            raise ValueError('ADULT_PRACTICE_BACKFILL_DUPLICATE')
+        row={
+            'id':ident,'actor':actor['id'],'operation':op,
+            'location':place,
+            'source_ref':'FICTIONAL_HISTORICAL_ABDUCTION:'+period,
+            'modeled_participation_days':round(duration*fraction,3),
+            'support_configuration':mode,
+            'estimated_period_length_days':duration,
+            'actual_individual_events':'NOT_RECONSTRUCTED',
+            'adult_skill_is_not_measured_from_survey':True,
+            'does_not_grant_permission_or_supporter_consent':True,
+            'does_not_force_self_knowledge':True,
+            'historical_source_grade':source_grade,
+            'grade':'SOURCEFREE_UNDERIDENTIFIED_ADULT_BACKFILL',
+        }
+        actor.setdefault('practice_exposures',[]).append(row)
+        rows.append(row)
+    return rows
