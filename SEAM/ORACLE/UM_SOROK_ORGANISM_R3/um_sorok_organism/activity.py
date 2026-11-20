@@ -48,6 +48,33 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
     if status not in ('PERFORMED', 'PARTIAL', 'BLOCKED'):
         raise ValueError('UNKNOWN_ACTIVITY_OPERATION_STATUS')
     project_ids={r.removeprefix('project:') for r in basis if isinstance(r,str) and r.startswith('project:')}
+    # Sourcefree runtime passes a separate actor-policy purpose receipt. The
+    # pooled action basis must agree exactly with that receipt: a fabricated
+    # project: tag may not attach an objective history to an unchosen motive.
+    # Historic direct helper calls without a purpose receipt retain their
+    # explicit, *disclosed legacy assertion* grade, never actor-policy proof.
+    if purpose_selection is not None:
+        if type(purpose_selection) is not dict:
+            raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
+        selected=purpose_selection.get('project_ids',[])
+        if (type(selected) is not list or
+                any(type(x) is not str or not x for x in selected) or
+                len(set(selected)) != len(selected) or
+                project_ids != set(selected)):
+            raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
+        declared=purpose_selection.get('project_id')
+        status_grade=purpose_selection.get('status')
+        if (declared is not None and
+                (len(selected)!=1 or declared!=selected[0])):
+            raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
+        expected_grade=('ACTOR_POLICY_SELECTED_PROJECT_COURSE' if len(selected)==1
+             else 'ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES' if selected
+             else None)
+        if (selected and status_grade!=expected_grade) or (not selected and
+                status_grade not in ('EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
+                'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
+                'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')):
+            raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
     histories=[]
     for project in actor.get('projects',[]):
         if project['id'] not in project_ids or own_action not in project.get('means',[]):

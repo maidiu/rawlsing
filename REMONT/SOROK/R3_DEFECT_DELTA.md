@@ -69,3 +69,8 @@ R11 #1190 `39f6972089858ee968e73b2e731005c71a8055dd` separate independent review
 ## REMONT R13 — 255 test repair cut
 
 At frozen R12 `9db0e6f64bf568409e638ff2215af8b8a414487f`, P072 same-event REORGANIZE_PROJECT mature-motive laundering and P073 falsey cue-tag coercion reproduced with six pre-fix failures. Both repaired in first owner, nine new regressions; 255 PASS normal/optimized/pytest (+14 subtests), freshly extracted archive reexecuted. All original 71 P records conserved with #1171 R1198 independent followup and R12 separate receipt. 73 P: 53 scoped reviewed,8 open,8 partial,4 author-tested review pending; T0/E6, no protected or native claim.
+
+
+## REMONTATHON R14 — P012/P004 first-owner partial repairs, 265 executable tests
+
+Exact R13 source `3b9b58b75bdceec901c3ba7aaa18738ea4989923` tested RED 7/10 new cases. R14 `constitution.compose` jointly closes relational motifs and acquired link recruitment/inhibition; `activity.record_activity_afterlife` rejects project-history attribution contradicted by explicit actor-policy purpose selection. 265 normal/-O/pytest pass (+14 subtests) and cold package recheck. 73 P statuses unchanged (53 scoped independent reviews, 8 OPEN, 8 PARTIAL, 4 author repair pending); original #1171 R12-R2 P072 followup metadata conserved. P019/P022 remain SORACLE. No native protected, G5 or scientific issuance.
