@@ -7,6 +7,15 @@
 
 The R14 ledger's remaining 16 identities are NOT all REMONT patches. The primary new code targets P004/P011/P023 (new ends via two actual lived episodes and later third episode), P014 (explicit network-capable psychological semantic adapter), and P006/P015 (conditional acquired joint practice). These are author sourcefree CONSTRUCTION CANDIDATES, not closed first faults. P012/P018 remain REMONT-first; P009 shared with native privacy authority; P020 original R0 historical failure untouched.
 
+## Observed GitHub Actions outcome — no Python execution evidence
+
+At PR #1221 candidate commit `9da8ba38190b549831834813d8ed76841539c8d8`, GitHub created:
+- [Nadia-first sourcefree court run #44835605375](https://github.com/maidiu/rawlsing/actions/runs/44835605375) — reported **failure**, job #136631106464;
+- [inherited R19 court run #44835605274](https://github.com/maidiu/rawlsing/actions/runs/44835605274) — reported **failure**, job #136631105776;
+- [inherited R18 court run #44835605075](https://github.com/maidiu/rawlsing/actions/runs/44835605075) — reported **failure**, job #136631105111.
+
+**Every returned job had ZERO recorded steps.** For Nadia-first, the official decoded job-log fetch returned `404 BlobNotFound`. There is no compiler, unittest, Python exception or actual test-run log available. **DO NOT attribute these red workflow conclusions to a demonstrated code defect or claim source tests executed.** REMONT must first establish an executable runner and exact source receipt, then report actual failures. This is a runner/visibility HOLD of unknown cause, not a green or a proven program red.
+
 ## Exact-source independent suite
 
 Use an isolated checkout at exact HEAD:
