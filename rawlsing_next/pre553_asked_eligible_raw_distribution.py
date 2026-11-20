@@ -59,7 +59,9 @@ def include_asked_eligible_states(
     if component.get("topology") != "SCALAR_SINGULAR":
         raise AskedEligibleDistributionError("SCALAR_SINGULAR_TARGET_REQUIRED")
     original_states = component.get("included_states")
-    if list(original_states) != ["SUBSTANTIVE_RESPONSE"]:
+    if not isinstance(original_states, (tuple, list)) or list(original_states) != [
+        "SUBSTANTIVE_RESPONSE"
+    ]:
         raise AskedEligibleDistributionError(
             "SOURCE_COMPONENT_NOT_SUBSTANTIVE_ONLY_BEFORE_POLICY"
         )
