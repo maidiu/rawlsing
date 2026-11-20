@@ -189,6 +189,12 @@ Then ask what each response act refers to. Comparing reported institutional mist
 
 ### III.3 Conditionally map, reverse and fracture the field
 
+The original Arab Barometer recursive-discrimination experiment exposed a crucial *two-track* operation that must remain native to the generic engine. A multi-label answer set needs both **option-presence branches** (selected SES yes/no; selected religion yes/no, etc.) and **whole-response-pattern branches** (SES only; SES plus religion; religion without SES; none of those; other overlaps). These are different partitions of the same respondent evidence. The presence of SES never means exclusive SES. The system must preserve both, and avoid presenting overlap counts as a partition of all respondents.
+
+For the first split, and then independently inside the majority, each exit, each distinct alternative and each residual, calculate branch-local conditional determinants. The node's record includes **exact predicate, eligible respondent N, weighted denominator only if issued, observed answer configuration, overlap and missing states, competing splitter hypotheses, uncertainty, shape, stability and stop reason**. A tiny Lebanese no-formal-education residual in an early exploratory chat was explicitly unstable; numbers from that historical chat are *hypothesis provenance*, not qualified new survey facts. Fixed cutoff rules proposed in that discussion are likewise provisional—use validated thresholds and decision-sensitive uncertainty rather than pretending 'N=50' is a universal sociological truth.
+
+**A 'none of these' category is particularly vulnerable to theft of meaning.** It may represent genuine denial of the listed bases, unmeasured local categories, a failure of the question grammar, an answer strategy, withholding or a routing/method artifact. The code records the chosen option faithfully; the source does not thereby tell us which of these social interpretations is correct. A concentration of 'none' may generate a strong research question, not automatic evidence of false consciousness, depoliticization or fear of speaking. Neither 'none' nor multiple selections may be treated as disposable residual noise.
+
 For a target Y, and eligible contextual conditions X:
 
 - Compare \(P(Y)\) with \(P(Y\mid X=x)\) across all meaningful X and the permitted joint conditions, reporting absolute support, magnitude, uncertainty, multiplicity and coverage.
@@ -207,6 +213,8 @@ A branch tree is a useful *view* of the discovered relations, not a personality 
 A survey's respondent-level records allow questions a table of separate marginals cannot answer. Recover genuine *co-signatures* of beliefs, stated commitments, normative attitudes, actual reported conduct, perceptions, costs and social conditions recorded within the **same respondent and applicable period**.
 
 An **Attitude Cloud** is a qualified pattern of within-respondent co-travel and conditional exclusion. It may contain mutually reinforcing judgments, nominally opposed commitments, principle/application disjunction, differentiated treatment of target groups, aspirations that conflict with reported action, or overlapping alternatives that split by material circumstances. A cloud's dimension and role information must remain available even if a downstream interface requests a short summary.
+
+A branch's **shape** can be a graded drift, sharp polarization, stable local majority with minority, fragmented multimodality, or collapse toward a residual response option. These are empirical descriptions of eligible responses, not a license to declare which strata the person 'sees'. A sociological account of category legibility requires interpretation, possible missing categories and world context, keeping the alternative readings alive.
 
 An **Empirical Repertoire** is a family of supported configurations and context-conditioned variants, not proof that any respondent's deep psyche has a unified schema. A respondent can perform different acts in different fields. Repertoire coherence is not individual psychological integration; observed co-travel is not causal recruitment; surface contradiction is not automatically hypocrisy.
 
