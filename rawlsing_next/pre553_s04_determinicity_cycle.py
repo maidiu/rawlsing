@@ -685,6 +685,24 @@ def advance_country_determinicity(
         active = state["active"]
         selected = _ctx(active["context"])
         available = [a for a in policy.predictor_axes if a not in selected]
+        # Avoid spending scientific-comparison work on an ineligible
+        # tiny context. Preserve its exact observed count/distribution;
+        # a specifically protected minority (already admitted by its
+        # parent) is allowed a separately graded diagnostic inquiry.
+        selected_n = sum(
+            n for row, n in positive if all(
+                _key(row[a]) == _key(v) for a, v in selected.items()
+            )
+        )
+        protected_entry = active.get(
+            "source_support_at_admission", {}
+        ).get("protected_minor_exploration_candidate", False)
+        if (selected_n < explore_min_n and not protected_entry
+                and active["raw_n"] is None):
+            active["raw_n"] = selected_n
+            active["raw_target_counts"] = []
+            active["next_predictor_offset"] = len(available)
+            active["next_cross_batch_pair_index"] = comb(len(available), 2)
         cursor = active["next_predictor_offset"]
         if cursor < len(available) and processed_axes < resources.max_candidates:
             # Work is evaluated in THIS source-selected configuration.
@@ -953,7 +971,13 @@ def advance_country_determinicity(
             child_target_counts=node_counts, policy=policy.support_policy,
         )
         prior_admission = active.get("source_support_at_admission")
-        if prior_admission is not None and prior_admission != support:
+        if prior_admission is not None and (
+            prior_admission["observed_raw_n"] != support["observed_raw_n"]
+            or prior_admission["parent_raw_n"] != support["parent_raw_n"]
+            or prior_admission["explore_min_n"] != support["explore_min_n"]
+            or prior_admission["review_candidate_min_n"] != support["review_candidate_min_n"]
+            or prior_admission["scientific_grade"] != support["scientific_grade"]
+        ):
             raise DeterminicityCycleError("SCHEDULED_MINOR_FORK_SUPPORT_CHANGED")
         may_explore = (
             support["routine_exploration_eligible"]
@@ -966,7 +990,7 @@ def advance_country_determinicity(
         # Always conserve source-observed target counts; support qualification
         # controls inference and deepening, never observed existence.
         target_counts = [
-            {"state": value, "n": n}
+            {"state": loads(value), "n": n}
             for value, n in sorted(node_counts.items())
         ]
         scheduled_children: list[dict[str, Any]] = []
