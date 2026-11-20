@@ -23,6 +23,12 @@ def materialize(actor,world):
 
 def actor_access(actor,world):
     """Objective cues are never automatically the actor's concepts or memories."""
+    # Reading an invalid embodied sensor is not a harmless comparison:
+    # NaN < threshold is False, which previously gave an invalid body the
+    # ability to perceive even cues above its sensory capacity. Reuse the
+    # organism owner's validated eligibility contract, without inventing a
+    # psychological capacity, bodily update, or actor authorization.
+    eligible(actor['body'],'WAIT')
     location=world['positions'].get(actor['id'])
     cues=[]; counted=0;receipts=[]
     for x in world['cues']:

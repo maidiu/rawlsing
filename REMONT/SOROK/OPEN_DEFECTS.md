@@ -1,5 +1,87 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## CURRENT R10 — REMONT OWN-LEDGER 53-ID INDEPENDENT REVIEW AND P070/P071 REPAIR (2026-11-20)
+
+**This section is the live SOROK REMONT candidate register, replacing earlier historical summaries below.** Authoritative source is the paired machine ledger [`OPEN_DEFECTS.json`](OPEN_DEFECTS.json), updated in the **existing PR #1171**, not only in separate review/repair PRs. Earlier R2 through R9 tables and claims are retained **as historical snapshots**; in particular their "53 awaiting review" is superseded by this section. No separate REMONT master or protected owner created.
+
+**Frozen reviewed author R9:** `c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d` in #1171. Independent examiner's formal COMMENT review on #1171 ID `5988719917`; [exact all-53 per-ID executable review](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.md) and [machine-readable receipt](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.json) copied into **this same REMONT branch**. Original executable 177/177 normal and 177/177 optimized PASS; independently authored 17/17 cross-family cases PASS. Exact first-fault review **ACCEPT_SCOPED_SOURCEFREE_FUNCTIONAL_ENGINEERING for 53 original identities**, **not credentialed native G5/owner or protected receiving**. Each of the 53 original `queue_P` entries has a status change and retained historical `author_status_before_scoped_review`, scoped receipt/evidence and separate native authority fields; no loss of original first-fault/repaired-source identities.
+
+**Two additional reproduced first faults (R9 original source RED, bounded R10 sourcefree fix locally tested):**
+
+| New ID | First fault actually reproduced | Fix integrated into #1171 | Current status |
+|---|---|---|---|
+| **SR-P070** | `storage.verify_chain` accepted noncanonical persisted world/actor JSON snapshot bytes and extra uncommitted world row, notwithstanding earlier P043 event-byte and P045 preappend fixes | `storage.py`: canonical raw snapshot-byte equality; exact singleton world roster before accepting verification | `REPAIRED_CODE_AUTHOR_TESTED__REVIEW_PENDING` |
+| **SR-P071** | `constitution.actor_access` let NaN actor sensor pass sensory threshold (distinct from P037 bodily action guard and P067 world cue-ingress guard) | `constitution.py`: use existing `organism.eligible(actor.body,'WAIT')` before actor sensory read | `REPAIRED_CODE_AUTHOR_TESTED__REVIEW_PENDING` |
+
+**Actual R10 source/test:** the two exact first-source modules and `tests/test_remont_independent_followons_r10.py` have been integrated into this **existing #1171**, with first-fault source from former draft #1183. Four negative subcases RED on frozen R9, fixed sourcefree candidate **180/180 normal PASS, 180/180 optimized PASS**, plus independently authored 20/20 external cases normal and optimized PASS. Distinct receiving of these *new reviewer-authored repairs* is still pending; reviewing the original 53 does not auto-accept P070/P071. Inherited accepted sourcefree functionality, material world, psychodynamic and actor boundaries remain covered by the complete suite.
+
+**Current disjoint accounting: 71 production records = 53 independently reviewed scoped-functional PASS + 8 historically OPEN + 8 historically PARTIAL + 2 newly authored code-repair candidates awaiting independent receiving.** The 69 inherited production identities remain, T confirmed harness defects 0, E authority/evidence holds 6. The original R9 69-record partition is preserved below as history; P070/P071 are **not** retroactively counted as old defects. No native original-source P2–P6/CAN/ADP/PFF, whole-survey PYAT or psychological scientific qualification, actor/human grant, global G5, or protected PRE-MAIN receiving.
+
+**Authority/canonical currentness:** `integration/pre-main-reconciliation-r1` remains protected at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`. Existing `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md`, `.json` and PROGRAMMA remain unchanged pending a competent receiving/writer lease. **HQ_CURRENTNESS_HOLD** applies there, not to this material REMONT update. First-source code plus defect ledger are now on the same REMONT branch; separated #1182/#1183 remain immutable historical receipts and are not rival live queues.
+
+### Exact 53 first-fault dispositions — R10
+
+| Original defect | Independent disposition | Original first fault preserved |
+|---|---|---|
+| `SR-P001` | **PASS — scoped sourcefree first fault** | R1 objective event cues were indefinitely perceptible |
+| `SR-P002` | **PASS — scoped sourcefree first fault** | R1 associative recruitment bypassed target contextual scope |
+| `SR-P003` | **PASS — scoped sourcefree first fault** | R1 active project generated its own cue/context to summon dormant form |
+| `SR-P007` | **PASS — scoped sourcefree first fault** | Early R2 inferred enduring joint capability from count>=2 encounters |
+| `SR-P008` | **PASS — scoped sourcefree first fault** | R1/early R2 single cooperation installed RELATIONAL_INVESTMENT by default |
+| `SR-P010` | **PASS — scoped sourcefree first fault** | Age maturation was at risk of installing language acquisition without learning |
+| `SR-P021` | **PASS — scoped sourcefree first fault** | Adult initializer accepted model-supplied forms=[] and projects=[] as an operative adult despite no functional psychological constitution |
+| `SR-P024` | **PASS — scoped sourcefree first fault** | R3 accepted acquired action=TELEPORT with valid WITHHOLD polarity, creating impossible psychic operation |
+| `SR-P025` | **PASS — scoped sourcefree first fault** | Adult and developmental acquisition accepted projects and forms claiming executable means such as TELEPORT not supported by organism.ACTIONS |
+| `SR-P026` | **PASS — scoped sourcefree first fault** | WORK at a nonexistent world.positions site returned successful material production but mutated an unowned transient dict, leaving no real produced stock |
+| `SR-P027` | **PASS — scoped sourcefree first fault** | Partial psychic batch survived a later rejected candidate |
+| `SR-P028` | **PASS — scoped sourcefree first fault** | Nonfinite strength delta silently increased acquired form strength |
+| `SR-P029` | **PASS — scoped sourcefree first fault** | Nonfinite buyer and worker account balances bypassed monetary guards |
+| `SR-P030` | **PASS — scoped sourcefree first fault** | Nonfinite site stock could be produced or consumed as if material |
+| `SR-P031` | **PASS — scoped sourcefree first fault** | Blocked purchase's private account reason leaked into public cue |
+| `SR-P032` | **PASS — scoped sourcefree first fault** | Verifier accepted uncommitted extra SQLite actor |
+| `SR-P033` | **PASS — scoped sourcefree first fault** | External adult constructor admitted nonnumeric/acausal form parameters |
+| `SR-P034` | **PASS — scoped sourcefree first fault** | Invalid project priority entered actor and broke situated ranking |
+| `SR-P035` | **PASS — scoped sourcefree first fault** | Outward tip repeated world-audit outcome, not actor-observed sign |
+| `SR-P036` | **PASS — scoped sourcefree first fault** | Nonfinite owned-food holdings corrupted successful purchase |
+| `SR-P037` | **PASS — scoped sourcefree first fault** | NaN motor/other bodily metrics passed eligibility into action |
+| `SR-P038` | **PASS — scoped sourcefree first fault** | Research ledger admitted ghost event actor/position without registered Other |
+| `SR-P039` | **PASS — scoped sourcefree first fault** | World clock regressed while the hash chain still verified |
+| `SR-P040` | **PASS — scoped sourcefree first fault** | SQLite event header columns could be forged without changing hashed envelope, leaving chain valid |
+| `SR-P041` | **PASS — scoped sourcefree first fault** | Optimized Python -O removes assert-based source/event chain/actor checks; tampered ancestry returned valid |
+| `SR-P042` | **PASS — scoped sourcefree first fault** | Deleting every event from an initialized life without source-seals gave a valid empty chain |
+| `SR-P043` | **PASS — scoped sourcefree first fault** | Whitespace-altered stored event JSON remained accepted because digest normalized it first |
+| `SR-P044` | **PASS — scoped sourcefree first fault** | Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair |
+| `SR-P045` | **PASS — scoped sourcefree first fault** | Uncommitted SQLite world or actor state could become verified after the next legitimate life step, external cue, or source seal |
+| `SR-P046` | **PASS — scoped sourcefree first fault** | A deleted initialization genesis could be replaced by a late source seal as an apparently valid first event |
+| `SR-P047` | **PASS — scoped sourcefree first fault** | Boolean True was accepted as one day of historical passage |
+| `SR-P048` | **PASS — scoped sourcefree first fault** | Initializing a second world in one SQLite research ledger inserted a second GENESIS into the same chain |
+| `SR-P049` | **PASS — scoped sourcefree first fault** | Buying food at an institution debited the buyer without crediting the actual goods controller; no seller at unowned site |
+| `SR-P050` | **PASS — scoped sourcefree first fault** | Python coerced boolean money such as price=True or wage=False into numeric monetary transfers |
+| `SR-P051` | **PASS — scoped sourcefree first fault** | Positive food price and wage below five-decimal currency granularity rounded to zero, delivering goods free or erasing owed wage |
+| `SR-P052` | **PASS — scoped sourcefree first fault** | Unrepresentable buyer/seller/controller/worker account balances silently rounded during transfers and could mint/destroy value |
+| `SR-P053` | **PASS — scoped sourcefree first fault** | A purchase debited or credited the wrong amount (sometimes zero, sometimes nonfinite) for individually valid large buyer/seller balances |
+| `SR-P054` | **PASS — scoped sourcefree first fault** | Wage payment changed employer or worker cash by zero at high magnitude and could overflow the worker account; nevertheless stock and wage claim were issued |
+| `SR-P055` | **PASS — scoped sourcefree first fault** | Food, owned holdings and workshop stock at large representable float magnitudes were incremented/decremented without any underlying count change, yet goods were claimed consumed, purchased, repaired or produced |
+| `SR-P056` | **PASS — scoped sourcefree first fault** | Same actor/institution account was credited a wage without an external payer debit, while same-account owned-food reallocation was labeled a positive price_paid; existing owner could be denied own stock for no cash |
+| `SR-P057` | **PASS — scoped sourcefree first fault** | Error-path EAT created a new empty holdings row before rejecting an unrepresentable material transfer |
+| `SR-P058` | **PASS — scoped sourcefree first fault** | Malformed world grant strings awarded access to actor IDs matching an unrelated actor's substring |
+| `SR-P059` | **PASS — scoped sourcefree first fault** | Blocked initiator produced a completed voluntary coactor action and invoked that coactor planner despite physically impossible invitation |
+| `SR-P060` | **PASS — scoped sourcefree first fault** | Independently planned coactor attempt could target an unrelated third party but count as reciprocal cooperation with principal |
+| `SR-P061` | **PASS — scoped sourcefree first fault** | CARE to target with NaN bodily nutrition could turn invalid recipient data into apparently normal body state |
+| `SR-P062` | **PASS — scoped sourcefree first fault** | String scope.locations, non-string counterpart, string form cues and malformed site admission produced false psychological eligibility |
+| `SR-P063` | **PASS — scoped sourcefree first fault** | Untyped relation/activity-link contexts and project/trace cue strings could be admitted and later recruit via character-wise or substring matching |
+| `SR-P064` | **PASS — scoped sourcefree first fault** | Coarse actor-A practice coverage expanded actor-B's psyche merely because both possessed the same form identifier |
+| `SR-P065` | **PASS — scoped sourcefree first fault** | A period with one valid then one malformed scope change partially mutated actor before TypeError; untyped locations were accepted |
+| `SR-P066` | **PASS — scoped sourcefree first fault** | Malformed cue tags string fragmented into character tokens; nontext tags persisted and later crashed contextual recruitment |
+| `SR-P067` | **PASS — scoped sourcefree first fault** | Unknown/forged world cue modality bypassed sensor threshold; negative and NaN thresholds could fabricate access |
+| `SR-P068` | **PASS — scoped sourcefree first fault** | String 'false' in contextual_only treated as truthy and quietly suppressed an acquired project in ADD_PROJECT and REORGANIZE_PROJECT |
+| `SR-P069` | **PASS — scoped sourcefree first fault** | Identical historical practice scope generated a durable PERIOD_SCOPE_CHANGE and actor changes entry without any actual new capability |
+
+**See the existing [full exact-source review](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.md) for the personally executed test witness corresponding to each ID and the bounded evidence and limitations.**
+
+---
+
+
 **2026-11-19. Research candidate.** This is a **separate SOROK defect-custody ledger** under `REMONT/SOROK/`, subordinate to existing SOROK PROGRAMMA—not another master programme and not an authorization to alter protected owners. **Governing principal:** build/savage/repair/recover forgotten theory **in code**; defects discovered en route are noted but **do not derail the commissioned construction**. At the end of this construction return, defect ownership moves to a *separate REMONT-qualified agent*, not the construction author. User expressly deferred native integration.
 
 ## Recovered REMONT handling discipline
