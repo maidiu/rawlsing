@@ -12,6 +12,7 @@ from .relational_metabolism import (
 from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
+from .reflective_regulation import acquire_reflective_regulation
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -29,7 +30,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
          'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_PREPROJECT_ANTICIPATION',
-         'REVISE_PREPROJECT_ANTICIPATION','NO_CHANGE'}
+         'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -350,6 +351,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
         elif op=='REVISE_PREPROJECT_ANTICIPATION':
             try:
                 report.append(revise_preproject_anticipation(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_REFLECTIVE_REGULATION':
+            try:
+                receipt=acquire_reflective_regulation(actor,experience,event_ref,c,ACTIONS)
+                # The new practice is read by the EXISTING recruitment and
+                # psychodynamic owners, not by a parallel will controller.
+                validate_tendencies(actor['forms'][receipt['form']])
+                report.append(receipt)
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='APPRAISE_EXPECTED_DIFFERENCE':
