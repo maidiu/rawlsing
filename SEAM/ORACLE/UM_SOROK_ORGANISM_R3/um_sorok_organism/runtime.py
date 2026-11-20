@@ -26,6 +26,7 @@ from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
+from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import possible_institutional_learning
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -714,6 +715,18 @@ class ConstitutiveRuntime:
                 'not_native_science_or_protected_receiving':True,
                 'grade':GRADE})
         return {'receipt':committed['id'],**source}
+
+    def register_sourcefree_pantry_concession(self,spec):
+        """Fixture makes a concession available, not enacted or believed."""
+        version,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=register_concession(world,actors,spec)
+        receipt=self.ledger.commit(
+            self.world_id,version,world,{}, {},
+            'SOURCEFREE_PANTRY_CONCESSION_PRECONDITION',None,{
+                'source':source,'not_actor_chosen_enclosure':True,
+                'no_unearned_material_rights':True,'grade':GRADE})
+        return {'receipt':receipt['id'],**source}
 
     def register_historical_routine_source(self,spec):
         """Declare a bounded *research fictional* routine source before use.
