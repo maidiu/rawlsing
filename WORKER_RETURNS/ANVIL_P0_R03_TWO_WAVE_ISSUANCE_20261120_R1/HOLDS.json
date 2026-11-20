@@ -1,0 +1,145 @@
+{
+  "schema": "ANVIL_P0_R03_TYPED_TWO_WAVE_ISSUANCE_HOLD@1",
+  "exact_head": "0e5ae0b8ed1e828320be5cfcee7b9549655c1eeb",
+  "issuer_cut": "357a0fbf50377788b050f5365089ed54a0548f23",
+  "issuer_code": "rawlsing_next/pre553_governed_query_issuer_v2.py",
+  "compiler_contract": "rawlsing_next/pre553_universal_workload.py::compile_governed_frontier",
+  "source_permission": "CURRENT_R2_SCOPED_LOCAL_ANALYSIS_ON_MAINMAC",
+  "scientific_issuer_delegation": "NOT_ESTABLISHED",
+  "issuance_attempted": false,
+  "issuer_invoked": false,
+  "gate_probe": {
+    "invoked": true,
+    "class": "WorkloadBindingRefusal",
+    "message": "NATIVE_PREIMAGE_BUNDLE_REQUIRED",
+    "exact_contract_line": "pre553_universal_workload.py:489",
+    "note": "No compiler input was supplied or manufactured; this is the contract gate, not an issuance."
+  },
+  "waves": {
+    "SRC04": {
+      "wave": "Arab Barometer Wave 1",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src04|365d27aea5daa49f208b5aa10eef6bba936a0676ae7eeedefe562b55b66ac0a4",
+      "hold_state": "HOLD_INPUTS_ABSENT",
+      "missing_inputs": {
+        "NativePreimageBundle": {
+          "state": "ABSENT",
+          "missing_fields": ["bundle_hash", "projection", "physical_stream", "release", "administered", "held", "excluded", "unknown", "question_refs", "risk_set_ref", "respondent_rows", "occurrence_bindings"],
+          "evidence": "No admitted R56 bundle artifact serialized in R2 custody; source-preparation config explicitly says original source execution is NOT_PERFORMED and requires a permitted decode for native respondent keys.",
+          "owner": "R03/NativePreimageBundle owner + ARAB source-read owner"
+        },
+        "SourceInventory": {
+          "state": "NOT_ADMITTED",
+          "missing_fields": ["occurrences", "measure_plans", "risk_set_refs", "unit_transforms", "state_map", "current_selection", "inventory_complete", "inventory_gaps"],
+          "evidence": "SRC04.post_alignment.runtime.config.json is SOURCE_PREPARATION, not a typed admitted inventory; routing/form/row-key/weight/direction and q217/q715/q716 residuals remain open.",
+          "owner": "ARAB lane / P3 integration owner"
+        },
+        "GrammarPolicy": {
+          "state": "ABSENT",
+          "missing_fields": ["COMPETENT_ISSUED policy_id", "grade", "direction_grants", "bounds", "owner_refs", "authority_refs"],
+          "evidence": "No actual competent scientific policy for this wave; the #997/#1084 tests use a test-only sourcefree fixture.",
+          "owner": "R03 scientific policy owner"
+        },
+        "ScientificFrontier": {
+          "state": "ABSENT",
+          "missing_fields": ["inventory_hash", "policy_hash", "source_identity", "operations", "ELIGIBLE disposition", "SUPPORTED lowering", "query_role_refs"],
+          "evidence": "No actual producer frontier or eligibility decision exists in the held evidence; source preparation is not a scientific frontier.",
+          "owner": "R03 scientific producer/issuer owner"
+        },
+        "ELIGIBLE_SUPPORTED_OPERATION": {
+          "state": "ABSENT",
+          "missing_fields": ["operation_id", "query_ref", "predicate_ref", "query_role", "lowering record"],
+          "evidence": "No eligible+supported operation with exact source/predicate semantics was supplied.",
+          "owner": "R03 scientific producer + #997 S1-E owner"
+        }
+      },
+      "source_mapping_findings": [
+        {"residual_id": "SRC04-ROUTING-UNRESOLVED", "field": "routing.typed_state", "status": "UNKNOWN", "owner": "ARAB lane / P3 integration owner"},
+        {"residual_id": "SRC04-ROW-NATIVE-KEY", "field": "respondents.source_native_key_slot", "status": "UNKNOWN", "owner": "ARAB lane / P3 integration owner"},
+        {"residual_id": "SRC04-FORM-ADMIN", "field": "supported_scope.supported_form_slice", "status": "UNKNOWN", "owner": "ARAB lane / P3 integration owner"},
+        {"residual_id": "SRC04-WEIGHT-AUTHORITY", "field": "weight_slots", "status": "NOT_DECLARED", "owner": "ARAB lane / P3 integration owner"},
+        {"residual_id": "SRC04-DIRECTION", "field": "items.relation.manual_signed_polarity_status", "status": "NOT_CERTIFIED_BY_THIS_PREPARATION", "owner": "ARAB lane / later scientific authority owner"},
+        {"residual_id": "SRC04-FIELD-REPAIR-q217", "field": "response_slots[q217].values", "status": "UNRESOLVED_EXACT_UNLABELED_CODES", "owner": "SRC04 lane B / full-source grant owner"},
+        {"residual_id": "SRC04-FIELD-REPAIR-q715withoutmorocco", "field": "response_slots[q715withoutmorocco].values", "status": "PENDING_OBSERVED_DOMAIN_QUALIFICATION", "owner": "SRC04 lane B / full-source grant owner"},
+        {"residual_id": "SRC04-FIELD-REPAIR-q716withoutmorocco", "field": "response_slots[q716withoutmorocco].values", "status": "PENDING_OBSERVED_DOMAIN_QUALIFICATION", "owner": "SRC04 lane B / full-source grant owner"}
+      ],
+      "source_files": ["SRC04.post_alignment.runtime.config.json", "SRC04_Q217_MAPPING_RECEIVING.json", "SRC04_CONFIG_BINDING.json"],
+      "i05": {
+        "state": "HOLD_NO_COMPATIBLE_ISSUED_DISCOVERY_PATH",
+        "reason": "No exact discovery authority or stream-compatible issued discovery handoff exists; R2 analysis permission is not a discovery issuer decision."
+      },
+      "shortest_action": "R03/NativePreimageBundle and ARAB source owners must provide the missing bundle/inventory/policy/frontier and resolve the named residuals, or return a typed no-query hold. No new issuer code."
+    },
+    "SRC16": {
+      "wave": "GSS1972",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0",
+      "hold_state": "HOLD_INPUTS_ABSENT",
+      "missing_inputs": {
+        "NativePreimageBundle": {
+          "state": "ABSENT",
+          "missing_fields": ["bundle_hash", "projection", "physical_stream", "release", "administered", "held", "excluded", "unknown", "question_refs", "risk_set_ref", "respondent_rows", "occurrence_bindings"],
+          "evidence": "No admitted R56 bundle artifact serialized in R2 custody; source config says original respondent execution is NOT_PERFORMED and requires permitted decode-produced respondent keys.",
+          "owner": "R03/NativePreimageBundle owner + GSS source-read decoder owner"
+        },
+        "SourceInventory": {
+          "state": "NOT_ADMITTED",
+          "missing_fields": ["occurrences", "measure_plans", "risk_set_refs", "unit_transforms", "state_map", "current_selection", "inventory_complete", "inventory_gaps"],
+          "evidence": "SRC16.source.config.json is SOURCE_PREPARATION, not a typed admitted inventory; routing, sample frame, weight, canonical value and native row-key residuals remain open.",
+          "owner": "GSS source evidence owner / R157 P3 integration owner"
+        },
+        "GrammarPolicy": {
+          "state": "ABSENT",
+          "missing_fields": ["COMPETENT_ISSUED policy_id", "grade", "direction_grants", "bounds", "owner_refs", "authority_refs"],
+          "evidence": "No actual competent scientific policy for this wave; the #997/#1084 tests use a test-only sourcefree fixture.",
+          "owner": "R03 scientific policy owner"
+        },
+        "ScientificFrontier": {
+          "state": "ABSENT",
+          "missing_fields": ["inventory_hash", "policy_hash", "source_identity", "operations", "ELIGIBLE disposition", "SUPPORTED lowering", "query_role_refs"],
+          "evidence": "No actual producer frontier or eligibility decision exists in the held evidence; source preparation is not a scientific frontier.",
+          "owner": "R03 scientific producer/issuer owner"
+        },
+        "ELIGIBLE_SUPPORTED_OPERATION": {
+          "state": "ABSENT",
+          "missing_fields": ["operation_id", "query_ref", "predicate_ref", "query_role", "lowering record"],
+          "evidence": "No eligible+supported operation with exact source/predicate semantics was supplied.",
+          "owner": "R03 scientific producer + #997 S1-E owner"
+        }
+      },
+      "source_mapping_findings": [
+        {"residual_id": "SRC16-NATIVE-ROW-KEY", "field": "respondents.source_native_key_slot", "status": "DECODE_REQUIRED", "owner": "R157 P3 integration owner with source-read decoder owner"},
+        {"residual_id": "SRC16-ROUTING-UNKNOWN", "field": "routing[].typed_state", "status": "ROUTING_UNKNOWN", "owner": "GSS source evidence owner"},
+        {"residual_id": "SRC16-SOURCE-AUTHORITY-DEFER", "field": "authority.snapshots", "status": "DEFER", "owner": "R157 authority owner"},
+        {"residual_id": "SRC16-CANONICAL-VALUE", "field": "response_slots[].values[].canonical_value", "status": "NOT_AUTHORIZED", "owner": "R157 mapping authority owner"},
+        {"residual_id": "SRC16-WEIGHT-HELD", "field": "physical_slots[214].name=wtssall", "status": "HELD", "owner": "GSS weight/design evidence owner"},
+        {"residual_id": "SRC16-FORM-ADMINISTRATION", "field": "supported_scope.supported_form_slice", "status": "UNKNOWN", "owner": "GSS source evidence owner"},
+        {"residual_id": "SRC16-SAMPLE-FRAME", "field": "universe.sampling_design_regime", "status": "UNRESOLVED", "owner": "GSS source evidence owner"},
+        {"residual_id": "SRC16-CONTINUOUS-NATIVE-FINITE-RULE", "field": "questions[].response_slots", "status": "NATIVE_FINITE_RULE_REQUIRED", "owner": "GSS source/native-representation owner"},
+        {"residual_id": "SRC16-ADMIN-NO-RESPONSE-SLOT", "field": "questions[].response_slots", "status": "RETAINED_ADMINISTRATIVE", "owner": "GSS source/native-representation owner"}
+      ],
+      "source_files": ["SRC16.source.config.json", "SRC16.construction.binding.json", "SRC16.shared-profile.json"],
+      "i05": {
+        "state": "HOLD_NO_COMPATIBLE_ISSUED_DISCOVERY_PATH",
+        "reason": "No exact discovery authority or stream-compatible issued discovery handoff exists; R2 analysis permission is not a discovery issuer decision."
+      },
+      "shortest_action": "R03/NativePreimageBundle and GSS source owners must provide the missing bundle/inventory/policy/frontier and resolve the named residuals, or return a typed no-query hold. No new issuer code."
+    }
+  },
+  "browser_hq_r03_handoff": {
+    "status": "TYPED_NONISSUANCE_HOLD_INPUTS_ABSENT",
+    "not_a_production_bug": true,
+    "no_issue_comment_posted": true,
+    "exact_links": {
+      "issuer_code": "https://github.com/maidiu/rawlsing/blob/357a0fbf50377788b050f5365089ed54a0548f23/rawlsing_next/pre553_governed_query_issuer_v2.py",
+      "compiler_contract": "https://github.com/maidiu/rawlsing/blob/357a0fbf50377788b050f5365089ed54a0548f23/rawlsing_next/pre553_universal_workload.py",
+      "preimage_contract": "https://github.com/maidiu/rawlsing/blob/357a0fbf50377788b050f5365089ed54a0548f23/rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "bridge": "https://github.com/maidiu/rawlsing/blob/3eee662d509fd78bc93d3ea26c3058d3199c960f/rawlsing_next/pre553_anvil_stream_native_i03.py",
+      "r3_receipt": "https://github.com/maidiu/rawlsing/blob/0e5ae0b8ed1e828320be5cfcee7b9549655c1eeb/WORKER_RETURNS/ANVIL_P0_TWO_SAVED_WAVES_NATIVE_I03_20261120_R3/00_HANDOFF.md",
+      "req_013": "https://github.com/maidiu/rawlsing/blob/62b94554608273a86040e2e7e2666a561100dc06/WORKER_RETURNS/PYAT_PREFF_ONE_MACHINE_C0_20261119/OPEN_REQUIREMENTS.md"
+    },
+    "local_evidence_basenames": {
+      "SRC04": ["SRC04.post_alignment.runtime.config.json", "SRC04_Q217_MAPPING_RECEIVING.json", "SRC04_CONFIG_BINDING.json"],
+      "SRC16": ["SRC16.source.config.json", "SRC16.construction.binding.json", "SRC16.shared-profile.json"],
+      "R2_custody": "controller-held P0 private custody; not copied"
+    }
+  }
+}
