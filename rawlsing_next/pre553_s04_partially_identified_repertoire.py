@@ -324,8 +324,67 @@ def identify_unobserved_overlap(
     })
 
 
+def ask_partial_repertoire_configuration(
+    *,
+    relation: PartiallyIdentifiedRepertoire,
+    event_a: bool,
+    event_b: bool,
+) -> dict[str, Any]:
+    """Consumer-facing *possibility constraint*, NOT a sampler or case.
+
+    The four exclusive configurations admit different marginal-compatible
+    feasible intervals. Even a point-identified frequency does NOT certify
+    one person or couple. This reader never selects a coupling, creates a
+    survey row, or converts a sampled finite frame into universal impossibility.
+    """
+    if type(relation) is not PartiallyIdentifiedRepertoire:
+        raise PartialIdentificationError("EXACT_PARTIAL_RELATION_REQUIRED")
+    if type(event_a) is not bool or type(event_b) is not bool:
+        raise PartialIdentificationError("EXACT_BINARY_EVENT_ROLES_REQUIRED")
+    m = relation.material()
+    base = {
+        "contract": "S04_PARTIAL_REPERTOIRE_CONFIGURATION_CONSTRAINT@1",
+        "relation_ref": relation.ref.as_dict(),
+        "event_a": event_a,
+        "event_b": event_b,
+        "not_an_observed_joint_or_person": True,
+        "selected_coupling": None,
+        "source_grade": "NO_ORIGINAL_SOURCE_OR_ACTOR_PERMISSION_INFERRED",
+        "interval": None,
+    }
+    if m["state"] != "SHARP_PARTIAL_IDENTIFICATION_CONDITIONAL_ON_COMMON_FINITE_FRAME":
+        return {
+            **base, "state": "HELD_COMMON_POPULATION_UNPROVEN",
+            "configuration_status": "UNASSESSABLE_NOT_IMPOSSIBLE",
+        }
+    low = m["countercouplings"]["LOWER_EXTREME"]
+    high = m["countercouplings"]["UPPER_EXTREME"]
+    name = (
+        "A_AND_B" if event_a and event_b
+        else "A_ONLY" if event_a else "B_ONLY" if event_b else "NEITHER"
+    )
+    def as_fraction(material: Mapping[str, Any]) -> Fraction:
+        return Fraction(material["numerator"], material["denominator"])
+    # A_ONLY and B_ONLY move in the *opposite* direction of overlap.
+    v1, v2 = as_fraction(low[name]), as_fraction(high[name])
+    lo, hi = min(v1, v2), max(v1, v2)
+    return {
+        **base,
+        "state": "CONSTRAINT_CALCULATED_FOR_EXACT_FINITE_FRAME",
+        "configuration_status": (
+            "NO_OCCURRENCE_COMPATIBLE_WITH_THIS_EXACT_FRAME"
+            if hi == 0 else
+            "SOME_OCCURRENCE_LOGICALLY_REQUIRED_WITHIN_FRAME"
+            if lo > 0 else
+            "POSSIBLE_BUT_NOT_LOGICALLY_REQUIRED_WITHIN_FRAME"
+        ),
+        "interval": {"lower": _fraction(lo), "upper": _fraction(hi)},
+        "requested_configuration": name,
+    }
+
+
 __all__ = [
     "CONTRACT", "BRIDGE_OPERATION", "BRIDGE_KIND", "GRADE",
     "PartialIdentificationError", "PartiallyIdentifiedRepertoire",
-    "identify_unobserved_overlap",
+    "identify_unobserved_overlap", "ask_partial_repertoire_configuration",
 ]
