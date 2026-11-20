@@ -6,6 +6,14 @@
 
 **Evidence grade:** Original-repository tests `tests/test_labor_dependency_r19.py` and read-only `.github/workflows/soracle-r19-sourcefree-tests.yml` are committed. The SORACLE author did NOT run Python, the full sourcefree original suite, the optimized -O suite, the joined SQLite test or GitHub Actions; no independent G5/REMONT receiving exists. Previous R16 bounded 19/19 + 19/19 source-extracted tests do not test R19.
 
+## Recorded workflow attempts and evidence boundary
+
+The pull-request event created **two GitHub Actions runs** at commit `a9c4697eea138a84aa13aaf743c2ef200e4604e3`:
+- [R18 inherited sourcefree court — run #44829604014](https://github.com/maidiu/rawlsing/actions/runs/44829604014), conclusion `failure`;
+- [R19 sourcefree court — run #44829604024](https://github.com/maidiu/rawlsing/actions/runs/44829604024), conclusion `failure`.
+
+Both job records contain **zero steps** in the corresponding official job-steps result. Attempts to fetch the job logs returned GitHub `404 BlobNotFound`; no Python compilation, individual unittest command, stack trace or runner environment is visible. Therefore the failures **cannot presently be attributed to code, a runner/billing condition, or the workflow definitions**. They are evidence that an Actions run was initiated and failed, *not* evidence that Python tests executed or failed. REMONT must recover the workflow infrastructure failure and then execute the court at the actual final HEAD.
+
 ## Required exact-HEAD independent execution
 
 ```
