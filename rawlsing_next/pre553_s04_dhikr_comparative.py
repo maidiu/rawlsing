@@ -14,9 +14,10 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from decimal import Decimal
 from itertools import combinations
 import json
-from math import log2
+from math import isfinite, log2
 from random import Random
 from typing import Any, Mapping
 
@@ -80,6 +81,46 @@ class DHIKRComparisonReceipt:
 
 def _key(value: Any) -> str:
     return canonical_json(canonicalize(value))
+
+
+def _estimates_to_semantic_material(value: Any) -> Any:
+    """Serialize SAMPLE numeric estimates without weakening PRE553 identity.
+
+    Entropy and bootstrap calculations use floating-point arithmetic inside
+    this provisional scientific method. Binary floats may NEVER enter
+    canonical source/receipt identity. The output decimal is an exact
+    serialization of a rounded computational estimate, NOT an exact
+    scientific, population, design-variance or causal claim.
+
+    Whole-number estimates retain JSON integer interoperability (0 and 1).
+    Nonintegral estimates use PRE553's native $exact_decimal representation.
+    Nonfinite results fail closed instead of leaking NaN/Infinity.
+    """
+    if type(value) is float:
+        if not isfinite(value):
+            raise DHIKRExplorationError("nonfinite in-sample estimator refused")
+        decimal_value = Decimal(str(value))
+        if decimal_value == decimal_value.to_integral_value():
+            return int(decimal_value)
+        return decimal_value
+    if isinstance(value, Mapping):
+        return {key: _estimates_to_semantic_material(item)
+                for key, item in value.items()}
+    if isinstance(value, (tuple, list)):
+        return [_estimates_to_semantic_material(item) for item in value]
+    return value
+
+
+def _seal_dhikr_result(result: dict[str, Any]) -> DHIKRComparisonReceipt:
+    """One identity boundary shared by held and supported DHIKR returns."""
+    result["sample_estimate_encoding"] = (
+        "FINITE_BINARY_COMPUTATION_ROUNDED_TO_DECIMAL_SEMANTIC_MATERIAL__"
+        "NOT_EXACT_SCIENTIFIC_ESTIMATION"
+    )
+    stable = _estimates_to_semantic_material(result)
+    # Native canonical_json converts Decimal into $exact_decimal material.
+    # Hash THE SAME packed value; no lossy JSON default=float workaround.
+    return DHIKRComparisonReceipt(canonical_json(stable), semantic_hash(stable))
 
 
 def _entropy(counts: Mapping[str, int]) -> float:
@@ -454,7 +495,7 @@ def analyze_s04_dhikr(
         result["bootstrap_rank_instability"] = {
             "state": "UPSTREAM_HELD__NO_SAMPLE_INFERENCE"}
         workspace.query(S04Projection((), {}))
-        return DHIKRComparisonReceipt(canonical_json(result), semantic_hash(result))
+        return _seal_dhikr_result(result)
 
     context = tuple((axis, _key(value)) for axis, value in request.fixed_context)
     def selected(context_keys):
@@ -471,7 +512,7 @@ def analyze_s04_dhikr(
             "state": "ZERO_OBSERVED_CONTEXT_SUPPORT__NO_IID_RESAMPLING"
         }
         workspace.query(S04Projection((), {}))
-        return DHIKRComparisonReceipt(canonical_json(result), semantic_hash(result))
+        return _seal_dhikr_result(result)
     root_n = sum(count for _, count in root_rows)
     if root_n < request.min_branch_n:
         # A node held below the request's minimum support must not carry an
@@ -605,7 +646,7 @@ def analyze_s04_dhikr(
     )
     # CURRENT may have changed during the traversal; recheck without any I03.
     workspace.query(S04Projection((), {}))
-    return DHIKRComparisonReceipt(canonical_json(result), semantic_hash(result))
+    return _seal_dhikr_result(result)
 
 
 def compare_dhikr_from_i03(

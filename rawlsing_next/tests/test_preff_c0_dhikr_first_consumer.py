@@ -9,7 +9,7 @@ No inference to population, source-original rights, predictor rank,
 adaptive stopping, causal force or SEAM actors is permitted here.
 """
 from rawlsing_next._pre553_query_common import QueryExecutionResult
-from rawlsing_next.pre553_empirical_objects import exact_ref
+from rawlsing_next.pre553_empirical_objects import canonical_json, exact_ref
 from rawlsing_next.pre553_s04_i05_reception import receive_s04_i05_role
 from rawlsing_next.pre553_s04_general_joint_algebra import (
     S04GeneralJointWorkspace, S04Projection,
@@ -76,11 +76,26 @@ def test_existing_dhikr_i05_frontier_full_eight_candidate_positive_and_negative_
         assert exact["source_fact_ref"] == material["fact_ref"]
         assert exact["no_second_i03_or_source_query"]
         assert exact["comparative_predictor_rank"] is None
-        observed.append((knowledge.ref, ff.ref, receipt.typed_state))
-    # Candidate result states differ. Their shared original I03 full-joint
-    # facts must not differ merely because one candidate cell was absent.
-    assert len({x[0] for x in observed}) == 1
-    assert len({x[1] for x in observed}) == 1
+        projection = ff.semantic_projection()
+        observed.append((
+            knowledge.ref, ff.ref, receipt.typed_state,
+            canonical_json(projection["complete_cells"]),
+            canonical_json(projection["target_refs"]),
+            projection["raw_fully_resolved_joint_n"],
+            canonical_json(projection["risk_set_ref"]),
+            canonical_json(projection["release_ref"]),
+        ))
+    # Eight differently adjudicated I05 candidates carry eight distinct
+    # original query/fact evidence identities. Collapsing those identities
+    # is not conservation. The *same source-observed full case data* is
+    # conserved across those separately scoped first consumers.
+    assert len({x[0] for x in observed}) == 8
+    assert len({x[1] for x in observed}) == 8
+    assert len({x[3] for x in observed}) == 1
+    assert len({x[4] for x in observed}) == 1
+    assert {x[5] for x in observed} == {4}
+    assert len({x[6] for x in observed}) == 1
+    assert len({x[7] for x in observed}) == 1
     assert {x[2] for x in observed} == {
         "VALID_EMPTY", "DISCOVERED_RESULT_SUPPORTED",
     }

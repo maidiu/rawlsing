@@ -7,7 +7,8 @@ import pytest
 
 from rawlsing_next.pre553_s04_dhikr_comparative import (
     DHIKRComparisonRequest, DHIKRExplorationError,
-    _association, _source_minority, _bootstrap_stability, compare_dhikr_from_i03,
+    _association, _source_minority, _bootstrap_stability,
+    _estimates_to_semantic_material, compare_dhikr_from_i03,
 )
 from rawlsing_next.pre553_s04_observed_research import receive_s04_i03_research
 from rawlsing_next.pre553_s04_general_joint_algebra import (
@@ -196,3 +197,23 @@ def test_below_minimum_branch_never_claims_comparison_or_discloses_target_split(
     assert root["target_count_disposition"] == (
         "HELD_BELOW_MIN_BRANCH_N__NO_CONTEXT_TARGET_DISCLOSURE"
     )
+
+
+def test_dhikr_sample_estimates_obey_source_semantic_identity():
+    from rawlsing_next.pre553_empirical_objects import canonicalize, canonical_json
+    estimates = _estimates_to_semantic_material({
+        "exact_integral": [0.0, 1.0, -0.0],
+        "provisional_fraction": [0.125, 0.333333333333],
+        "recursive": {"mi": 0.691283},
+    })
+    packed = canonicalize(estimates)
+    assert packed["exact_integral"] == [0, 1, 0]
+    assert packed["provisional_fraction"] == [
+        {"$exact_decimal": "0.125"},
+        {"$exact_decimal": "0.333333333333"},
+    ]
+    assert packed["recursive"]["mi"] == {"$exact_decimal": "0.691283"}
+    assert canonical_json(estimates) == canonical_json(packed)
+    for nonfinite in (float("nan"), float("inf"), -float("inf")):
+        with pytest.raises(DHIKRExplorationError, match="nonfinite"):
+            _estimates_to_semantic_material({"signal": nonfinite})

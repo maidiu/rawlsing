@@ -142,3 +142,31 @@ turning Pyat's sampled joint into psychogenesis.
 **Execution grade:** CODE AUTHORED; tests **NOT EXECUTED**; no source,
 science, G5, Sorok actor or protected CAS promotion. Original #1158 and
 protected PRE-MAIN remain untouched.
+
+## November 19 evening — USER EXECUTED C4 FIRST-FAULT AT PRIOR EXACT HEAD
+
+**Proof received:** user local Mac detached worktree #1164
+`a0b95cb7231601bbc228cf13b644851dd22c449d`,
+`PREFF_COURT=C4_FF_V3`, 19 tests: **9 PASS / 10 FAIL**,
+3.33s, exit 1. Evidence is user-executed and head-scoped, NOT independently
+reperformed in this implementation environment.
+
+**PF035**: nine sourcefree failures converge at DHIKR's exact receipt
+serialization: binary floats 0.0 and 1.0 refused by PRE553 canonicalize.
+Keep the correct no-float rule. Repair at DHIKR return boundary by encoding
+rounded finite scientific sample estimates through Decimal semantic material;
+integral values remain integers; reject nonfinite; clarify scientific
+computational non-exactness. Three held/positive return paths share one seal.
+
+**PF036**: the remaining I05 first-consumer test was historically mistaken:
+each of 8 candidate role queries/facts carries its own exact provenance and
+S04/FF01 identity despite the shared complete source-observed joint. The
+court now verifies eight preserved candidate identities alongside identical
+joint cells, dimensions, n=4 and source/risk context, without falsely
+flattening candidate grades.
+
+**New repair code and tests NOT EXECUTED** in the author's runtime.
+C4 must be rerun at this repaired HEAD; subsequent defects must be addressed
+at first faulty owner, not hidden by test weakening. Existing original
+scientific/source/actor rights, independently received G5 and protected
+programme CAS remain held.
