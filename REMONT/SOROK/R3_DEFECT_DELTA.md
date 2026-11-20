@@ -64,3 +64,8 @@ At immutable R8 head `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764`, P011's one-SING
 ## R12 sourcefree review-followon — 246 green, three R11 review defects repaired but not independently received
 
 R11 #1190 `39f6972089858ee968e73b2e731005c71a8055dd` separate independent reviewer found P070/P071 absent, `ADD_PROJECT` same-event motive laundering, and stale 69-ID ledger. R12 author repair inherits original current #1171 `c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7` exactly, preserving 71 IDs (53 scoped first-fault reviewed; 8 open; 8 partial; 2 P070/P071 author repair pending), adds no new P identities, and restores sourcefree P070/P071 integrity to the joined organism. Adversarial RED 5 subcases; R12 normal/-O/pytest 246 PASS, 14 pytest subtests, cold chain valid. Original 6 E holds and all native/protected rights remain. Distinct independent R12 rereview + Python 3.11 R12 run outstanding.
+
+
+## REMONT R13 — 255 test repair cut
+
+At frozen R12 `9db0e6f64bf568409e638ff2215af8b8a414487f`, P072 same-event REORGANIZE_PROJECT mature-motive laundering and P073 falsey cue-tag coercion reproduced with six pre-fix failures. Both repaired in first owner, nine new regressions; 255 PASS normal/optimized/pytest (+14 subtests), freshly extracted archive reexecuted. All original 71 P records conserved with #1171 R1198 independent followup and R12 separate receipt. 73 P: 53 scoped reviewed,8 open,8 partial,4 author-tested review pending; T0/E6, no protected or native claim.
