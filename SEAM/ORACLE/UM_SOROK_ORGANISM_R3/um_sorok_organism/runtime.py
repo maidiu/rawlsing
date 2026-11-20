@@ -276,6 +276,9 @@ class ConstitutiveRuntime:
                 'event':objective_ref,'experience_ref':experience['ref'],
                 'own_action':own,'purpose_status':own_selection['status'],
                 'selected_project_ref':own_selection.get('project_id'),
+                'selected_project_refs':copy(own_selection.get(
+                    'project_ids',([own_selection['project_id']]
+                        if own_selection.get('project_id') else []))),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'not_a_counterfactual_comparison':True,
                 'unencountered_alternatives':'UNKNOWN_NOT_OBSERVED',
