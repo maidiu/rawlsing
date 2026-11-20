@@ -344,6 +344,13 @@ def compose(constitution,access,limit=50):
         entry['score']=max(entry['score'],offered['score'])
         entry['basis'].append('co_regulation:'+offered['orientation_ref'])
     currents.extend({
+        'kind':'HISTORICAL_CO_REGULATION_EXPECTATION_CONTRADICTED',
+        'orientation_ref':r['orientation_ref'],
+        'caregiver_ref':r['previous_caregiver_ref'],
+        'prior_care_history_retained':True,
+        'caregiver_intention_not_proved':True,'grade':r['grade']}
+        for r in historical_care.get('suspended_after_contradiction',[]))
+    currents.extend({
         'kind':'ACQUIRED_CO_REGULATION_MAY_RECRUIT_SIGNAL',
         'orientation_ref':r['orientation_ref'],
         'counterpart_ref':r['caregiver_ref'],
