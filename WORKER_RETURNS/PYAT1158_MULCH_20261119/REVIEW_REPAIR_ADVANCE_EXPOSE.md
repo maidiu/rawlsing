@@ -170,3 +170,10 @@ C4 must be rerun at this repaired HEAD; subsequent defects must be addressed
 at first faulty owner, not hidden by test weakening. Existing original
 scientific/source/actor rights, independently received G5 and protected
 programme CAS remain held.
+
+## Continuing HQ→REMONT execution delegation — exact tests, not architecture paralysis
+
+The user directed a **growing reusable OpenCode test commission** rather than repeated individual Mac commands. Authored the cumulative `WORKER_RETURNS/PYAT_PREFF_ONE_MACHINE_C0_20261119/REMONT_EXECUTION_QUEUE.md`, its generic exact-head `rawlsing_next/tests/run_preff_remont_batch.sh` and the reusable `WORKER_COMMISSIONS/PYAT_REMONT_GROWING_SOURCEFREE_EXECUTION_R1/00_OPENCODE_COMMISSION.md`. RMT-Q001 numeric/identity, Q002 I05 provenance vs observed joint, Q003 C4 PRE-V3/cold, Q004 surrounding S04/FF01/source identity, Q005 broad C0, Q006 original source/method HOLD. Every runnable entry has exact file, positive/negative controls, first-fault instructions and owner routing. Sourcefree first-fault work is deliberately separated from PYAT's substantive Field Forge/SEAM construction.
+
+Upstream/downstream source inspection: PRE553 `canonicalize` source identity still forbids floats; S04 joint, I03 fact and FF01 sample denominator implementation unchanged; I05 role/fact refs preserve operation-specific lineage; DHIKR sample estimates move through one decimal semantic seal; new public `read_dhikr_sample_estimate` explicitly decodes canonical nonintegral Decimal and integral numbers, rejects raw floats, booleans, nonfinite/un-canonical values. The receipt's source fields are prevalidated against the existing canonical law to refuse accidental conversion/laundering of later noncanonical source floats. New tests exercise this downstream numerical ABI. No new global numeric semantics or auto-admission.
+**Tests at this construction HEAD: NOT EXECUTED.** Author is not REMONT independent reviewer and does not claim a protected scientific or actor grant.

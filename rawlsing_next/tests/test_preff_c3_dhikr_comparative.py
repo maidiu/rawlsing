@@ -4,11 +4,13 @@ The same-person full joint is consumed once; no second estimator/source query.
 Sample entropy and bootstrap scenarios are not source/science owner grants.
 """
 import pytest
+from decimal import Decimal
 
 from rawlsing_next.pre553_s04_dhikr_comparative import (
     DHIKRComparisonRequest, DHIKRExplorationError,
     _association, _source_minority, _bootstrap_stability,
     _estimates_to_semantic_material, compare_dhikr_from_i03,
+    read_dhikr_sample_estimate,
 )
 from rawlsing_next.pre553_s04_observed_research import receive_s04_i03_research
 from rawlsing_next.pre553_s04_general_joint_algebra import (
@@ -217,3 +219,38 @@ def test_dhikr_sample_estimates_obey_source_semantic_identity():
     for nonfinite in (float("nan"), float("inf"), -float("inf")):
         with pytest.raises(DHIKRExplorationError, match="nonfinite"):
             _estimates_to_semantic_material({"signal": nonfinite})
+
+
+def test_dhikr_decimal_consumer_can_compare_fractional_estimates_exactly():
+    _, _, _, query, execution = _real(tag="DHIKR-C3-DOWNSTREAM-ESTIMATE")
+    material = compare_dhikr_from_i03(
+        query=query,
+        execution=execution,
+        request=DHIKRComparisonRequest(
+            target_axis=2, predictor_axes=(0, 1),
+            max_interaction_order=2, bootstrap_replicates=16,
+        ),
+    ).material()
+    root = material["nodes"][0]
+    assert read_dhikr_sample_estimate(
+        root["priority_normalized_by_group_size_bits"]
+    ) == Decimal("0.5")
+    assert read_dhikr_sample_estimate(
+        root["pairwise_conditional_interactions"][0]["joint_information_bits"]
+    ) == Decimal("1")
+    assert read_dhikr_sample_estimate(None) is None
+    # Downstream must NEVER assume a typed decimal is a bare JSON float.
+    for malformed in (
+        0.5, True, {"$exact_decimal": "0.500"},
+        {"$exact_decimal": "NaN"}, {"$exact_decimal": "Infinity"},
+        {"$exact_decimal": "0.5", "other": "smuggled"},
+    ):
+        with pytest.raises(DHIKRExplorationError):
+            read_dhikr_sample_estimate(malformed)
+
+
+def test_dhikr_estimator_codec_cannot_launder_float_source_identity():
+    from rawlsing_next.pre553_s04_dhikr_comparative import _seal_dhikr_result
+    from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
+    with pytest.raises(Pre553IntegrityError, match="float"):
+        _seal_dhikr_result({"source_illegal_float_ref": 0.125})

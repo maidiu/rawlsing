@@ -111,8 +111,42 @@ def _estimates_to_semantic_material(value: Any) -> Any:
     return value
 
 
+def read_dhikr_sample_estimate(value: Any) -> Decimal | None:
+    """Read a DHIKR estimate explicitly, without weakening source identities.
+
+    Issued computational estimates are either JSON integral numbers or
+    PRE553 canonical $exact_decimal material. This is deliberately NOT a
+    general-purpose numeric parser: binary floats, booleans, uncanonical
+    decimal strings and unrelated source-state objects fail closed.
+    """
+    if value is None:
+        return None
+    if type(value) is int:
+        return Decimal(value)
+    if (type(value) is dict and set(value) == {"$exact_decimal"}
+            and type(value["$exact_decimal"]) is str):
+        try:
+            number = Decimal(value["$exact_decimal"])
+        except ArithmeticError as exc:
+            raise DHIKRExplorationError("invalid canonical estimate") from exc
+        if (not number.is_finite()
+                or canonicalize(number) != value):
+            raise DHIKRExplorationError("noncanonical or nonfinite estimate")
+        return number
+    raise DHIKRExplorationError("DHIKR estimate requires issued decimal or integer")
+
+
 def _seal_dhikr_result(result: dict[str, Any]) -> DHIKRComparisonReceipt:
     """One identity boundary shared by held and supported DHIKR returns."""
+    # Source identity and caller conditions were already canonical at their
+    # owning S04 ingress. Never launder a future noncanonical source float
+    # through the provisional estimator's float-to-decimal output codec.
+    for name, source in result.items():
+        if name.startswith("source_") or name in (
+            "fixed_context", "mapping_edition_dependencies",
+            "original_source_authenticity", "source_current_check",
+        ):
+            canonicalize(source)
     result["sample_estimate_encoding"] = (
         "FINITE_BINARY_COMPUTATION_ROUNDED_TO_DECIMAL_SEMANTIC_MATERIAL__"
         "NOT_EXACT_SCIENTIFIC_ESTIMATION"
@@ -665,4 +699,5 @@ def compare_dhikr_from_i03(
 __all__ = [
     "CONTRACT", "GRADE", "DHIKRExplorationError", "DHIKRComparisonRequest",
     "DHIKRComparisonReceipt", "analyze_s04_dhikr", "compare_dhikr_from_i03",
+    "read_dhikr_sample_estimate",
 ]
