@@ -1,0 +1,89 @@
+..............................................FFFFF
+=================================== FAILURES ===================================
+_ R15SourceCustodyPreflightHostile.test_append_refuses_unauthorized_seal_map_on_regular_event _
+
+self = <test_r15_independent_receiving.R15SourceCustodyPreflightHostile testMethod=test_append_refuses_unauthorized_seal_map_on_regular_event>
+
+    def test_append_refuses_unauthorized_seal_map_on_regular_event(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                inject_unauthorized_source_anchor_in_regular_event(ledger)
+                version, world = ledger.world()
+                before = len(ledger.events())
+>               with self.assertRaises(Conflict):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Conflict not raised
+
+tests/test_r15_independent_receiving.py:101: AssertionError
+_ R15SourceCustodyPreflightHostile.test_modified_historical_source_anchor_must_refuse_append _
+
+self = <test_r15_independent_receiving.R15SourceCustodyPreflightHostile testMethod=test_modified_historical_source_anchor_must_refuse_append>
+
+    def test_modified_historical_source_anchor_must_refuse_append(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                rewrite_initial_seal_map_and_sealed_row(ledger)
+                version, world = ledger.world()
+                before = len(ledger.events())
+>               with self.assertRaises(Conflict, msg='P018 must not append to invalid historical source anchor'):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Conflict not raised : P018 must not append to invalid historical source anchor
+
+tests/test_r15_independent_receiving.py:77: AssertionError
+_ R15SourceCustodyPreflightHostile.test_modified_historical_source_anchor_must_refuse_source_read _
+
+self = <test_r15_independent_receiving.R15SourceCustodyPreflightHostile testMethod=test_modified_historical_source_anchor_must_refuse_source_read>
+
+    def test_modified_historical_source_anchor_must_refuse_source_read(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                rewrite_initial_seal_map_and_sealed_row(ledger)
+>               with self.assertRaises(Conflict, msg='P018 must not return tampered source'):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Conflict not raised : P018 must not return tampered source
+
+tests/test_r15_independent_receiving.py:65: AssertionError
+_ R15SourceCustodyPreflightHostile.test_noncanonical_source_seal_event_must_refuse_source_read _
+
+self = <test_r15_independent_receiving.R15SourceCustodyPreflightHostile testMethod=test_noncanonical_source_seal_event_must_refuse_source_read>
+
+    def test_noncanonical_source_seal_event_must_refuse_source_read(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                ledger.seal_source('later', 'TEST', {'new': 'sealed'})
+                raw = ledger.conn.execute("SELECT payload FROM events WHERE kind='SOURCE_SEAL'").fetchone()[0]
+                ledger.conn.execute("UPDATE events SET payload=? WHERE kind='SOURCE_SEAL'", (raw+' ',))
+                with self.assertRaisesRegex(AssertionError,'EVENT_ENVELOPE_NONCANONICAL_BYTES'):
+                    ledger.verify_chain()
+>               with self.assertRaises(Conflict):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Conflict not raised
+
+tests/test_r15_independent_receiving.py:117: AssertionError
+_ R15SourceCustodyPreflightHostile.test_source_read_refuses_unauthorized_seal_map_on_regular_event _
+
+self = <test_r15_independent_receiving.R15SourceCustodyPreflightHostile testMethod=test_source_read_refuses_unauthorized_seal_map_on_regular_event>
+
+    def test_source_read_refuses_unauthorized_seal_map_on_regular_event(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                inject_unauthorized_source_anchor_in_regular_event(ledger)
+>               with self.assertRaises(Conflict):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               AssertionError: Conflict not raised
+
+tests/test_r15_independent_receiving.py:89: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_r15_independent_receiving.py::R15SourceCustodyPreflightHostile::test_append_refuses_unauthorized_seal_map_on_regular_event - AssertionError: Conflict not raised
+FAILED tests/test_r15_independent_receiving.py::R15SourceCustodyPreflightHostile::test_modified_historical_source_anchor_must_refuse_append - AssertionError: Conflict not raised : P018 must not append to invalid historical source anchor
+FAILED tests/test_r15_independent_receiving.py::R15SourceCustodyPreflightHostile::test_modified_historical_source_anchor_must_refuse_source_read - AssertionError: Conflict not raised : P018 must not return tampered source
+FAILED tests/test_r15_independent_receiving.py::R15SourceCustodyPreflightHostile::test_noncanonical_source_seal_event_must_refuse_source_read - AssertionError: Conflict not raised
+FAILED tests/test_r15_independent_receiving.py::R15SourceCustodyPreflightHostile::test_source_read_refuses_unauthorized_seal_map_on_regular_event - AssertionError: Conflict not raised
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 5 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+5 failed, 46 passed, 2 subtests passed in 0.93s
+exit=1
