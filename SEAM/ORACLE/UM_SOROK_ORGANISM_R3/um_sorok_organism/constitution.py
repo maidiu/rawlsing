@@ -14,6 +14,7 @@ from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
+from .institutional_reproduction import current_institutional_opportunities
 
 
 def materialize(actor,world):
@@ -62,6 +63,11 @@ def actor_access(actor,world):
     env=[]
     site=world['sites'].get(location,{})
     if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
+    # A publicly posted objective practice can make participation feasible
+    # without implying the person already cares about this institution.
+    if actor['body']['sensor'] >= .05:
+        env += [v['operation'] for v in current_institutional_opportunities(
+            world,actor['id'],location)]
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -272,6 +278,13 @@ def compose(constitution,access,limit=50):
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
         status,why=eligible(constitution.body,a)
         if status:actions.setdefault(a,{'action':a,'score':.06,'basis':['organism'],'opportunity':'ORGANISM'})
+    if 'SIGN_HALL_PETITION' in access.affordances:
+        status,why=eligible(constitution.body,'SIGN_HALL_PETITION')
+        if status:
+            actions.setdefault('SIGN_HALL_PETITION',{
+                'action':'SIGN_HALL_PETITION','score':.055,
+                'basis':['WORLD_PUBLISHED_INSTITUTIONAL_PROCEDURE'],
+                'opportunity':'PUBLIC_RIGHT_NOT_PREASSIGNED_SOLIDARITY'})
     for a,q in actions.items():
         if a in ('WORK','REPAIR','SING','JOIN','MAKE_SPACE','OPEN_HALL') and access.location not in ('workshop','home','hall'):
             q['score']*=.45
