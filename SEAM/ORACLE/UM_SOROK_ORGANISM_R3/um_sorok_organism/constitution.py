@@ -9,6 +9,7 @@ from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
 from .practical_difference import practical_alternatives
 from .preproject_agency import recruit_preproject_anticipations
+from .prospective_horizon import project_trial_horizons
 from .world import _qualified_members
 
 
@@ -293,12 +294,19 @@ def compose(constitution,access,limit=50):
     for option in dynamics['candidate_actions']:
         option['practical_alternatives']=practical_alternatives(
             constitution,access,option)
+    # The same historically noticed end can offer several ACTUAL eligible
+    # operations without becoming an acquired project or being given an
+    # automatic conscious object. This projection never grants capability.
+    prospective=project_trial_horizons(
+        constitution,access,dynamics['candidate_actions'])
+    currents+=prospective['currents']
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+list(candidate_history_refs)+
+                           preproject['readset']+prospective['readset']+
+                           list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)
