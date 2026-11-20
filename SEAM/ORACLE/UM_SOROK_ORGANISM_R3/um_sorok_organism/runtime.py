@@ -280,6 +280,8 @@ class ConstitutiveRuntime:
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
                 'received_cue_refs':[c['id'] for c in personal_cues],
+                'received_cue_tags':sorted({str(tag).lower()
+                    for cue in personal_cues for tag in cue.get('tags',[])}),
                 'not_a_counterfactual_comparison':True,
                 'unencountered_alternatives':'UNKNOWN_NOT_OBSERVED',
                 'grade':GRADE})
