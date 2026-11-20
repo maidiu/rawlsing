@@ -154,5 +154,8 @@ def blank_world(world_id='w1'):
             'cues': [], 'historical_periods': [], 'public_history': [],
             'social_reproductive_labor': [],
             'scheduled_obligations': [],
+            'positioned_material_records': [],
+            'institutional_access_rules': [],
+            'material_gate_audit': [],
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
