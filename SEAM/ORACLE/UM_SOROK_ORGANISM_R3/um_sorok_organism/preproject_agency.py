@@ -1,1 +1,272 @@
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+"""R8: preproject acquired solicitation in the existing actor expectation owner.
+
+This is an explicitly fictional, sourcefree candidate—not a human learning law.
+A body may be solicited by an experience before it can name or choose a project.
+No world fact, consciousness, successful outcome, or Other's conduct is inferred.
+"""
+import hashlib
+import json
+from copy import deepcopy
+
+GRADE = 'SOURCEFREE_RESEARCH_PROVISIONAL'
+MODES = frozenset(('APPROACH', 'WITHHOLD', 'AMBIVALENT'))
+# Restricted to existing low-level organismic operations. A semantic model
+# cannot install competence in an operation not already available in the body.
+ORIENTING_OPERATIONS = frozenset(('ORIENT', 'SIGNAL', 'WAIT', 'REST'))
+
+
+def _id(tag, value):
+    raw = json.dumps(value, sort_keys=True, separators=(',', ':'),
+                     ensure_ascii=False, allow_nan=False)
+    return tag + '_' + hashlib.sha256(raw.encode('utf8')).hexdigest()[:16]
+
+
+def _received(experience):
+    return {x['id']: x for x in experience.get('perceived_cues', [])
+            if isinstance(x, dict) and isinstance(x.get('id'), str)}
+
+
+def _tags(cue):
+    terms = cue.get('tags', [])
+    if not isinstance(terms, list) or any(not isinstance(t, str) for t in terms):
+        raise ValueError('INVALID_ACTOR_SENSORY_TERMS')
+    # Descriptors are ANALYST markers of a discriminable signal, not infant words.
+    return sorted({t.strip().casefold() for t in terms if t.strip()})
+
+
+def admit_preproject_anticipation(actor, experience, event_ref, candidate):
+    """Owner-called after admitted actor experience; returns an actor record.
+
+    Requires a literally received cue, explicit target operation, and a mode.
+    An actor has no adult motive, concept or known world outcome as a result.
+    The model's conjecture is fallible; sourcefree, actor-local, and event-bound.
+    """
+    if experience.get('actor') != actor.get('id') or not event_ref:
+        raise ValueError('PREPROJECT_IDENTITY_MISMATCH')
+    seen = _received(experience)
+    cue_id = candidate.get('perceived_cue_ref')
+    if cue_id not in seen:
+        raise ValueError('PREPROJECT_UNEXPERIENCED_SIGN')
+    action = candidate.get('possible_operation')
+    if action not in ORIENTING_OPERATIONS:
+        raise ValueError('PREPROJECT_UNLICENSED_OPERATION')
+    mode = candidate.get('orientation_mode')
+    if mode not in MODES:
+        raise ValueError('PREPROJECT_INVALID_ORIENTATION')
+    if not experience.get('participated') and not seen:
+        raise ValueError('PREPROJECT_NO_EXPOSURE')
+    cue = seen[cue_id]
+    terms = _tags(cue)
+    # Analyst-tagged descriptions are not words in an infant's perceptual
+    # repertoire. A first-person sensory discrimination is only as fine as
+    # the body's supported resolution, and must retain unknown identity.
+    body = actor.get('body', {})
+    language = body.get('language', 0)
+    if not isinstance(language, (int, float)) or isinstance(language, bool):
+        raise ValueError('PREPROJECT_INVALID_LANGUAGE_CAPACITY')
+    if language < .25:
+        modality = cue.get('modality')
+        if modality not in ('auditory', 'visual', 'tactile', 'present', 'olfactory'):
+            raise ValueError('PREPROJECT_INFANT_SENSORY_MODALITY_UNQUALIFIED')
+        tokens = ['sensory:' + modality]
+        access_resolution = 'UNDIFFERENTIATED_SENSORY_MODALITY_ONLY'
+    else:
+        tokens = terms
+        access_resolution = 'TAGGED_ANALYST_PROPOSAL_NOT_ACTOR_CONCEPT_PROOF'
+    if not tokens:
+        raise ValueError('PREPROJECT_UNDIFFERENTIATED_SIGN')
+    if len(tokens) > 16:
+        raise ValueError('PREPROJECT_UNBOUNDED_SIGN')
+    # Historical contradiction is not a forced revision of the old formation.
+    # A semantic model cannot cite another actor's invented prior experience;
+    # the prior MUST be an actor-owned, same-context, oppositely oriented record.
+    prior_ids=candidate.get('prior_contrary_expectation_refs',[])
+    if (type(prior_ids) is not list or len(set(prior_ids))!=len(prior_ids)
+            or any(type(x) is not str for x in prior_ids)):
+        raise ValueError('PREPROJECT_INVALID_CONTRADICTION_REFS')
+    expected_prior=[x for x in actor.get('expectations',[])
+                    if x.get('acquisition')=='PREPROJECT_ORIENTING_CONTINGENCY'
+                    and x.get('possible_operation')==action
+                    and set(x.get('discriminant_tags',[])) & set(tokens)
+                    and x.get('orientation_mode') in ('APPROACH','WITHHOLD')
+                    and x.get('orientation_mode') != mode]
+    if set(prior_ids)-{x['id'] for x in expected_prior}:
+        raise ValueError('PREPROJECT_UNQUALIFIED_PRIOR_CONTRADICTION')
+    # The effect is a proposal for altered orientation, not a statement that the
+    # infant consciously expected a benefit, or that a consequence occurred.
+    recorded = {'id': _id('preproject', {'actor': actor['id'], 'event': event_ref,
+                                       'cue': cue_id, 'operation': action}),
+                'actor': actor['id'], 'origin_event': event_ref,
+                'origin_experience_ref': experience.get('ref'),
+                'origin_received_cue_ref': cue_id,
+                'discriminant_tags': tokens, 'modality': cue.get('modality', 'unknown'),
+                'sensory_resolution': access_resolution,
+                'analyst_source_tags_not_actor_knowledge': terms,
+                'possible_operation': action, 'orientation_mode': mode,
+                'historical_ground_ref': event_ref,
+                'contrary_prior_expectation_refs': sorted(prior_ids),
+                'opposition_is_analytical_not_an_actor_sensed_dialectic':True,
+                'project_id': None, 'acquisition': 'PREPROJECT_ORIENTING_CONTINGENCY',
+                'conceptual_access': 'NONDECLARATIVE_NOT_ACTOR_PROPOSITION',
+                'expectation_grade': 'PROVISIONAL_SENSORY_PRACTICAL_NOT_MOTIVE',
+                'world_consequence': 'NOT_INFERRED',
+                'causal_cue_interpretation': 'NOT_ESTABLISHED',
+                'source_grade': GRADE, 'revisions': []}
+    if any(e.get('id') == recorded['id'] for e in actor.get('expectations', [])):
+        raise ValueError('PREPROJECT_DUPLICATE_ACQUISITION')
+    actor.setdefault('expectations', []).append(recorded)
+    return {'kind': 'ACQUIRE_PREPROJECT_ANTICIPATION', 'expectation': recorded['id'],
+            'operation': action, 'not_a_motive': True, 'grade': GRADE}
+
+
+def revise_preproject_anticipation(actor, experience, event_ref, candidate):
+    """A later qualified sign changes orientation; world/counterfactuals remain open."""
+    if actor.get('id') != experience.get('actor') or not event_ref:
+        raise ValueError('PREPROJECT_IDENTITY_MISMATCH')
+    identity = candidate.get('expectation_ref')
+    prior = next((x for x in actor.get('expectations', [])
+                  if x.get('id') == identity and
+                  x.get('acquisition') == 'PREPROJECT_ORIENTING_CONTINGENCY'), None)
+    if prior is None:
+        raise ValueError('PREPROJECT_UNKNOWN_EXPECTATION')
+    if prior['origin_event'] == event_ref:
+        raise ValueError('PREPROJECT_RETROACTIVE_REVISION')
+    sign = candidate.get('perceived_cue_ref')
+    if sign not in _received(experience):
+        raise ValueError('PREPROJECT_REVISION_UNSEEN_SIGN')
+    mode = candidate.get('orientation_mode')
+    if mode not in MODES:
+        raise ValueError('PREPROJECT_INVALID_ORIENTATION')
+    prior['revisions'].append({'event': event_ref, 'experience_ref': experience.get('ref'),
+                               'perceived_cue_ref': sign,
+                               'prior_mode': prior['orientation_mode'],
+                               'new_mode': mode,
+                               'not_world_verdict': True, 'grade': GRADE})
+    prior['orientation_mode'] = mode
+    return {'kind': 'REVISE_PREPROJECT_ANTICIPATION',
+            'expectation': identity, 'new_mode': mode, 'grade': GRADE}
+
+
+def recruit_preproject_anticipations(constitution, access, options):
+    """Produce currents and practical possibility, not a sovereign action choice.
+
+    Repeated descriptions of ONE historical ground do not add votes; genuinely
+    different grounds remain DISTINCT, rather than forcibly added or maxed.
+    Incompatible currents are exposed as a contradiction, not resolved here.
+    Only presently accessible cues recruit. No invented memory or world event.
+    """
+    if constitution.actor != access.actor:
+        raise ValueError('PREPROJECT_ACTOR_MISMATCH')
+    # Admitted prelinguistic signatures re-recruit via perceivable sensory
+    # bands, not through word-level analyst cue tags. Broad false positives
+    # are possible and explicitly retained as uncertainty.
+    presented = {tag for cue in access.cues for tag in _tags(cue)}
+    presented.update('sensory:' + str(c.get('modality')) for c in access.cues
+                     if c.get('modality') in ('auditory','visual','tactile',
+                                             'present','olfactory'))
+    currents, readset = [], []
+    recognized = {}
+    for record in constitution.expectations:
+        if record.get('acquisition') != 'PREPROJECT_ORIENTING_CONTINGENCY':
+            continue
+        if not presented.intersection(record.get('discriminant_tags', [])):
+            continue
+        operation = record.get('possible_operation')
+        if operation not in ORIENTING_OPERATIONS:
+            continue
+        # A historical ground may be multiply described without multiplying
+        # the pressure it exerts. Ambiguous copies get one conflicting group.
+        ground = (operation, record.get('historical_ground_ref') or record['id'])
+        recognized.setdefault(ground, []).append(record)
+    qualified = {}
+    for (operation, ground), records in sorted(recognized.items()):
+        modes = sorted({r['orientation_mode'] for r in records})
+        pol = modes[0] if len(modes) == 1 else 'AMBIVALENT'
+        refs = sorted(r['id'] for r in records)
+        current = {'kind': 'HISTORICALLY_ACQUIRED_PREPROJECT_SOLICITATION',
+                   'operation': operation, 'orientation_mode': pol,
+                   'historical_ground_ref': ground,
+                   'constituent_expectation_refs': refs,
+                   'multiple_descriptions_not_multiple_drives': len(records) > 1,
+                   'possible_not_necessary_action': True,
+                   'not_a_conscious_reason': True,
+                   'grade': GRADE}
+        currents.append(current)
+        readset.extend(refs)
+        qualified.setdefault(operation, []).append(current)
+    for option in options:
+        op = option.get('action')
+        if op not in qualified:
+            continue
+        sets = qualified[op]
+        approach = [c for c in sets if c['orientation_mode'] == 'APPROACH']
+        withhold = [c for c in sets if c['orientation_mode'] == 'WITHHOLD']
+        ambivalent = [c for c in sets if c['orientation_mode'] == 'AMBIVALENT']
+        # The actor can remain capable while a current inhibits enactment.
+        status = ('UNRESOLVED_PREPROJECT_CONTRADICTION' if
+                  (approach and withhold) or ambivalent else
+                  'ACQUIRED_NONPROJECT_APPROACH' if approach else
+                  'ACQUIRED_NONPROJECT_WITHHOLD')
+        option['preproject_recruitment'] = {
+            'status': status,
+            'ground_refs': [c['historical_ground_ref'] for c in sets],
+            'source_count_distinct': len(sets),
+            'no_automatic_choice_or_motive': True, 'grade': GRADE}
+        option.setdefault('basis', []).extend(
+            ['preproject:' + str(c['historical_ground_ref']) for c in sets])
+    return {'currents': currents, 'readset': sorted(set(readset)),
+            'distinct_historical_ground_count': len(recognized),
+            'not_an_intent_selection': True, 'grade': GRADE}
+
+
+def fallback_nonproject_orientation(options):
+    """Explicitly weak fictional fallback: cannot supersede other activities.
+
+    This intentionally only decides an otherwise UNSPECIFIED organismic
+    orientation when exactly one available action has acquired solicitation.
+    Contradiction, no cue, or continuing other projects => no injected choice.
+    An external semantic provider may instead propose refusal/inaction.
+    """
+    if any(o.get('project_courses') for o in options):
+        return None
+    eligible = [o for o in options
+                if o.get('preproject_recruitment', {}).get('status') ==
+                'ACQUIRED_NONPROJECT_APPROACH' and
+                o.get('action') in ('ORIENT', 'SIGNAL')]
+    contested = any(o.get('preproject_recruitment', {}).get('status') ==
+                    'UNRESOLVED_PREPROJECT_CONTRADICTION' for o in options)
+    if len(eligible) != 1 or contested:
+        return None
+    return {'action': eligible[0]['action'], 'project_id': None,
+            'purpose_selection_grade':
+            'FICTIONAL_PREPROJECT_ORIENTATION_NOT_CONSCIOUS_INTENTION',
+            'basis': ['HISTORICALLY_ACQUIRED_SENSORY_ORIENTATION'],
+            'semantic_grade': 'SOURCEFREE_FALLBACK_NOT_UNIVERSAL_BEHAVIOR'}
+
+
+def fallback_nonproject_deferral(options):
+    """Conservative *offline* policy for a contradictory/withheld solicitation.
+
+    R8's first implementation exposed learned WITHHOLD in the situated option
+    but then the old action-only fallback could choose that option anyway.
+    This is a real function gap: a private current that no selector reads.
+    Deferral here is explicitly NOT a psychological law or an assertion that
+    inhibition always wins. The semantic provider may propose a different
+    historically plausible response. No candidate is silently deleted.
+    """
+    if any(o.get('project_courses') for o in options):
+        return None
+    if not any(o.get('action') == 'WAIT' for o in options):
+        return None
+    pressing = [o for o in options if o.get('preproject_recruitment', {}).get('status')
+                in ('ACQUIRED_NONPROJECT_WITHHOLD',
+                    'UNRESOLVED_PREPROJECT_CONTRADICTION')]
+    approaching = [o for o in options if o.get('preproject_recruitment', {}).get('status')
+                   == 'ACQUIRED_NONPROJECT_APPROACH']
+    if pressing and not approaching:
+        return {'action':'WAIT','project_id':None,
+                'purpose_selection_grade':
+                'HEURISTIC_DEFERRAL_UNDER_NONPROJECT_WITHHOLD_OR_CONTRADICTION',
+                'basis':['RECRUITED_NONPROJECT_INHIBITION_NOT_RESOLVED'],
+                'semantic_grade':'SOURCEFREE_FALLBACK_NOT_UNIVERSAL_BEHAVIOR'}
+    return None
