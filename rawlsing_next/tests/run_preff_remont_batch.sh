@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -60,6 +60,9 @@ for id in "${cases[@]}"; do
     RMT-Q009) # C5 contextual navigation full inherited sourcefree court
       ;;
     RMT-Q010) # C6 V3/SEAM pinned replay, world and pair negative court
+      ;;
+    RMT-Q013) # 17 PF025 target-absence vs legitimate-empty first-fault checks
+      tests=(rawlsing_next/tests/test_preff_c1_target_absence.py)
       ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
