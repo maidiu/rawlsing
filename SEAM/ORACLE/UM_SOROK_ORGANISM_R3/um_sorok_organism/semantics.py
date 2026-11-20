@@ -4,7 +4,7 @@ explicitly coarse heuristic fiction, not an LLM and not a human learning law.
 """
 from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
-from .preproject_agency import fallback_nonproject_orientation
+from .preproject_agency import fallback_nonproject_orientation, fallback_nonproject_deferral
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -41,6 +41,13 @@ class HeuristicSemanticProvider:
             orientation=fallback_nonproject_orientation(possibilities)
             if orientation:
                 return {'task':task,**orientation}
+            # The first R8 code review found that merely recording learned
+            # negative pressure would let the older default still select it.
+            # This bounded policy MAY defer if an acquired tacit WITHHOLD or
+            # unresolved contradiction has no uncontested nonproject approach.
+            deferral=fallback_nonproject_deferral(possibilities)
+            if deferral:
+                return {'task':task,**deferral}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
