@@ -11,7 +11,8 @@ from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
 from .material_provisioning import perform_one_actual_feeding
-from .food_access_struggle import contribute_food_petition
+from .food_access_struggle import (
+    contribute_food_petition,can_draw_shared_food)
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -196,8 +197,11 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             next_owned=_exact_material_delta(owned,-1,'INVALID_OWNED_FOOD_DELTA')
             world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=next_owned
             output='ATE_OWNED_FOOD'
-        elif loc=='home' and household>=1:
+        elif loc=='home' and household>=1 and (
+                can_draw_shared_food(world,aid,loc)):
             site['food']=_exact_material_delta(household,-1,'INVALID_SITE_FOOD_DELTA');output='ATE_SHARED_HOUSEHOLD_FOOD'
+        elif loc=='home' and household>=1:
+            status='BLOCKED';output='INSTITUTION_RESTRICTED_HOUSEHOLD_FOOD'
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
         site=_site(world,aid)
