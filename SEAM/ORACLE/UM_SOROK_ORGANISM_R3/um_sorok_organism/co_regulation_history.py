@@ -207,6 +207,16 @@ def recruit_co_regulation(constitution,access):
             'caregiver_ref':record['caregiver_ref'],
             'orientation_ref':record['id'],
             'source_care_period_refs':copy(record['source_care_period_refs']),
+            'interpretation_phase':record.get('interpretation_phase','PROVISIONAL'),
+            'reopened_after_actual_contradiction':(
+                record.get('interpretation_phase')
+                =='OPEN_AFTER_LIVED_CARE_NOT_SETTLED_TRUST'
+                and any(x.get('after')=='UNRESOLVED_AFTER_NONRESPONSE'
+                        for x in record.get('interpretation_history',[]))),
+            'prior_unfinished_personally_sensed_call_count':len([
+                x for x in record.get('response_history',[])
+                if x.get('analyst_qualified_experience_class')==
+                   'UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN']),
             'action':'SIGNAL',
             'score':.22,
             'historical_ground':'SOURCEFREE_LIVED_CO_REGULATION_HISTORY',
@@ -239,6 +249,10 @@ def addressed_signal_alternatives(constitution,access,option):
         'source_period_refs':p['source_care_period_refs'],
         'personally_sensed_support_history':copy(
             p.get('personally_sensed_support_history',[])),
+        'reopened_after_actual_contradiction':p.get(
+            'reopened_after_actual_contradiction',False),
+        'prior_unfinished_personally_sensed_call_count':p.get(
+            'prior_unfinished_personally_sensed_call_count',0),
         'caregiver_participation_not_required_or_assumed':True,
         'not_a_conscious_reason_or_love_claim':True,
         'source_grade':GRADE}
