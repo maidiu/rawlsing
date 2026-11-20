@@ -28,6 +28,7 @@ from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import possible_institutional_learning
+from .material_dependency_history import conserve_sensed_material_nonperformance
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -513,6 +514,8 @@ class ConstitutiveRuntime:
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
             retain_performed_material_feeding(
                 actors[aid],experience,objective_ref,world)
+            conserve_sensed_material_nonperformance(
+                actors[aid],experience,objective_ref)
             # A failed, actually attempted addressed call may revise the
             # historically learned expectation of this particular source.
             # It never proves why that Other did not respond, or retroactively
