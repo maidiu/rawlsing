@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
-from itertools import combinations
+from itertools import combinations, islice
 from json import loads
 from math import comb, isfinite, prod
 from time import monotonic
@@ -575,6 +575,9 @@ def advance_country_determinicity(
                 "candidate_screens": [], "batch_groups": [],
                 "raw_target_counts": None, "raw_n": None,
                 "batch_bootstrap_sensitivity": [],
+                "pairs_covered_in_batch": [],
+                "next_cross_batch_pair_index": 0,
+                "cross_batch_pair_evidence": [],
             }
         active = state["active"]
         selected = _ctx(active["context"])
@@ -622,6 +625,10 @@ def advance_country_determinicity(
             used += estimated
             output_cells_used += projected_output
             processed_axes += k
+            if policy.max_pair_order == 2 and k >= 2:
+                active["pairs_covered_in_batch"].extend(
+                    [list(pair) for pair in combinations(batch, 2)]
+                )
             active["batch_bootstrap_sensitivity"].append({
                 "source_dhikr_source_query_ref": result["source_query_ref"],
                 "budget_forecast_cell_visits": estimated,
@@ -700,6 +707,79 @@ def advance_country_determinicity(
                 continue
         if active["next_predictor_offset"] < len(available):
             stop = "PREDICTOR_BATCH_BUDGET_UNSEARCHED"; break
+        # All marginal candidates have now been examined. Recover useful
+        # pairwise interactions between candidates that fell into *different*
+        # budget-sized batches. Otherwise shrinking a batch for economy could
+        # silently miss an XOR (zero information for both single variables).
+        # Read the same joint; no new I03, R03, storage or predictor authority.
+        if policy.max_pair_order == 2 and len(available) >= 2:
+            total_pairs = comb(len(available), 2)
+            covered = {
+                (int(pair[0]), int(pair[1]))
+                for pair in active["pairs_covered_in_batch"]
+            }
+            # Skip source-unissued observation-status interactions rather
+            # than ranking mixed missingness as predictive value.
+            while active["next_cross_batch_pair_index"] < total_pairs:
+                pair_index = active["next_cross_batch_pair_index"]
+                pair = next(islice(combinations(available, 2), pair_index, None))
+                if pair in covered or any(a in channels for a in pair):
+                    active["next_cross_batch_pair_index"] += 1
+                    continue
+                if processed_axes >= resources.max_candidates:
+                    stop = "CROSS_BATCH_INTERACTION_CALL_BUDGET"
+                    break
+                context_positive = [
+                    (row, n) for row, n in positive if all(
+                        _key(row[a]) == _key(v) for a, v in selected.items()
+                    )
+                ]
+                # One inherited two-axis association scan and its emitted
+                # diagnostic; unlike DHIKR's full group comparator, no
+                # duplicate full-joint projection or bootstrap is incurred.
+                pair_work = max(1, len(context_positive))
+                if (used + pair_work > resources.max_cell_visits
+                        or output_cells_used + 1 > resources.max_output_cells
+                        or not _resource_ok(
+                            deadline=deadline, budget=resources,
+                            resource_sample=resource_sample,
+                        )):
+                    stop = "CROSS_BATCH_INTERACTION_RESOURCE_BUDGET"
+                    break
+                before_pair = loads(canonical_json(state))
+                pair_started = monotonic()
+                estimate = _association(
+                    context_positive, policy.target_axis, pair,
+                )
+                pair_elapsed = Decimal(
+                    str(round(monotonic() - pair_started, 6))
+                )
+                used += pair_work
+                output_cells_used += 1
+                processed_axes += 1
+                bits = _decimal(estimate["information_bits"])
+                active["cross_batch_pair_evidence"].append({
+                    "axes": list(pair),
+                    "raw_n": estimate["raw_n"],
+                    "information_bits": estimate["information_bits"],
+                    "budget_forecast_cell_visits": pair_work,
+                    "measured_wall_seconds": pair_elapsed,
+                    "source_evidence": "EXISTING_S04_SAME_CASE_DHIKR_ASSOCIATION",
+                })
+                if bits > 0:
+                    active["batch_groups"].append({
+                        "axes": list(pair),
+                        "per_axis_priority_bits": bits / Decimal(2),
+                        "minority_contradictions": [],
+                        "search_scope": "CROSS_BATCH_SAME_CASE_PAIR",
+                    })
+                active["next_cross_batch_pair_index"] += 1
+                if len(canonical_json(state).encode("utf-8")) > policy.max_receipt_bytes:
+                    state = before_pair
+                    stop = "CROSS_BATCH_PAIR_RECEIPT_STORAGE_BUDGET"
+                    break
+            if active["next_cross_batch_pair_index"] < total_pairs:
+                break
         # Once every candidate in this query joint has been conditioned
         # away, the result is still a REAL source-supported leaf distribution.
         # It must not be mislabeled as LOW_SUPPORT merely because no
@@ -743,7 +823,11 @@ def advance_country_determinicity(
             "minority_contradictions": (
                 best["minority_contradictions"] if best else []
             ),
-            "cross_batch_interactions": "NOT_SEARCHED",
+            "cross_batch_interactions": (
+                active["cross_batch_pair_evidence"]
+                if policy.max_pair_order == 2 else
+                "NOT_REQUESTED_SINGLETON_ONLY"
+            ),
             "missingness_for_unspecified_axes": "NOT_ISSUED",
             "bootstrap_uncertainty": active["batch_bootstrap_sensitivity"],
             "survey_design_variance": "NOT_ISSUED",
