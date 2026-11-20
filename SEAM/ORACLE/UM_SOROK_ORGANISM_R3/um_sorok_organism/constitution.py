@@ -21,7 +21,7 @@ from .material_investments import (
     invested_material_action_options, annotate_material_alternatives)
 from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
-from .world import _qualified_members
+from .world import _qualified_members, _nonnegative_transfer_amount
 from .institutional_reproduction import current_institutional_opportunities
 from .expectation_afterlife import annotate_practical_expectations
 from .co_regulation_history import (
@@ -121,13 +121,15 @@ def actor_access(actor,world):
         env.append('INSPECT')
     # A visible/held source of food is a material possibility; the actor's
     # actual ability and willingness to feed someone else remain separate.
-    held=world.get('holdings',{}).get(actor['id'],{}).get('food',0)
+    held=_nonnegative_transfer_amount(
+        world.get('holdings',{}).get(actor['id'],{}).get('food',0),
+        'INVALID_ACTOR_ACCESS_HELD_FOOD')
+    site=world['sites'].get(location,{})
+    shared=(site.get('shared_household_food') is True and
+            _nonnegative_transfer_amount(site.get('food',0),
+              'INVALID_ACTOR_ACCESS_SHARED_FOOD')>=1)
     if any(c.get('kind')=='coactor_present' for c in cues) and (
-            (isinstance(held,(int,float)) and not isinstance(held,bool)
-             and held>=1) or
-            (location in world['sites'] and
-             world['sites'][location].get('shared_household_food') is True
-             and world['sites'][location].get('food',0)>=1)):
+            held>=1 or shared):
         env.append('FEED')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
