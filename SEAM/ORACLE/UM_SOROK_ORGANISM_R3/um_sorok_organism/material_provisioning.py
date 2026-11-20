@@ -133,6 +133,12 @@ def settle_provisioning(world, actors, allocation):
              else claim["location"])
         pools.setdefault(key,[]).append(claim)
     outcomes=[];changes=[]
+    # Plan nutrition across *all* competing sources before any mutation.
+    # Two carers cannot each independently raise the same child's body
+    # toward one and then sum their isolated gains beyond physiology.
+    projected_nutrition={
+        aid:_quantity(actor["body"]["nutrition"],"RECIPIENT_NUTRITION")
+        for aid,actor in actors.items()}
     for key,items in sorted(pools.items()):
         origin,holder=key
         loc=items[0]["location"]
@@ -147,11 +153,12 @@ def settle_provisioning(world, actors, allocation):
             shortage=requested-amount
             # Provisional physiology: max 0.02 body nutrition per unit. It
             # does NOT certify a diet or infer hunger satisfaction from hours.
-            body=actors[claim["recipient"]]["body"]
-            old=_quantity(body["nutrition"],"RECIPIENT_NUTRITION")
+            recipient=claim["recipient"]
+            old=projected_nutrition[recipient]
             nominal=min(Decimal("0.50"),amount*Decimal("0.02"))
             after=min(Decimal("1"),old+nominal).quantize(UNIT)
             gained=after-old
+            projected_nutrition[recipient]=after
             outcomes.append({
                 "id":stable_id("material_feeding_period",{
                     "claim":claim["id"],"delivery":str(amount),
@@ -186,20 +193,15 @@ def settle_provisioning(world, actors, allocation):
             old=world["sites"][holder]["food"]
         _quantity(old,"FOOD_BEFORE_SETTLEMENT")
         _quantity(float(nextstock),"FOOD_AFTER_SETTLEMENT")
-    for row in outcomes:
-        old=actors[row["recipient"]]["body"]["nutrition"]
-        _quantity(old,"RECIPIENT_BEFORE_SETTLEMENT")
-        gain=Decimal(str(row["actual_recipient_nutrition_gain"]))
-        _quantity(float(Decimal(str(old))+gain),"RECIPIENT_AFTER_SETTLEMENT")
+    for recipient,final in projected_nutrition.items():
+        _quantity(float(final),"RECIPIENT_AFTER_SETTLEMENT")
     for key,nextstock in changes:
         origin,holder=key
         if origin=="GIVER_HELD_FOOD":
             world["holdings"][holder]["food"]=float(nextstock)
         else:
             world["sites"][holder]["food"]=float(nextstock)
-    for row in outcomes:
-        b=actors[row["recipient"]]["body"]
-        b["nutrition"]=round(b["nutrition"]+
-                            row["actual_recipient_nutrition_gain"],5)
+    for recipient,final in projected_nutrition.items():
+        actors[recipient]["body"]["nutrition"]=float(final)
     world.setdefault("material_provisioning_periods",[]).extend(outcomes)
     return outcomes
