@@ -82,13 +82,12 @@ def _fraction(value: Fraction) -> dict[str, int]:
     return {"numerator": value.numerator, "denominator": value.denominator}
 
 
-def _exact_refs(value: Any, label: str) -> set[ExactRef]:
-    if not isinstance(value, (list, tuple)) or not value:
-        raise PartialIdentificationError(f"{label}_EXACT_REF_SET_REQUIRED")
-    parsed = tuple(exact_ref(x) for x in value)
-    if len(set(parsed)) != len(parsed):
-        raise PartialIdentificationError(f"{label}_DUPLICATE_REF")
-    return set(parsed)
+def _exact_pair(value: Any, label: str) -> tuple[ExactRef, ExactRef]:
+    # Exact left/right role identity, not a set: two distinct sources may
+    # legitimately share a question, response grammar, or measure basis ref.
+    if not isinstance(value, (list, tuple)) or len(value) != 2:
+        raise PartialIdentificationError(f"{label}_EXACT_TWO_ROLE_REFS_REQUIRED")
+    return exact_ref(value[0]), exact_ref(value[1])
 
 
 def _marginal(
@@ -203,10 +202,8 @@ def _bridge(
         ("predicate_refs", "predicate_ref"),
     )
     for key, field in required_sets:
-        target = {
-            exact_ref(left[field]), exact_ref(right[field]),
-        }
-        if _exact_refs(scope.get(key), key) != target:
+        target = (exact_ref(left[field]), exact_ref(right[field]))
+        if _exact_pair(scope.get(key), key) != target:
             raise PartialIdentificationError(f"COMMON_FRAME_{key.upper()}_MISMATCH")
     n = scope.get("finite_population_n")
     if (type(n) is not int or n <= 0
