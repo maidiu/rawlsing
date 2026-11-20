@@ -20,6 +20,7 @@ from .distributed_power import record_actor_participation
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
+from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
@@ -618,6 +619,16 @@ class ConstitutiveRuntime:
     def interview(self,actor_id,instrument):
         _,a=self.ledger.actor(actor_id)
         return interview_readout(a,instrument)
+
+    def blind_interview(self,actor_id,instrument):
+        """Target-free post-constitution respondent probe (not a fidelity claim).
+
+        Unlike the legacy direct-keyed interview, this probe supplies neither
+        sampled answers nor questionnaire-mediators to the semantic call.
+        """
+        _,world=self.ledger.world(self.world_id)
+        _,actor=self.ledger.actor(actor_id)
+        return render_blind_interview(actor,instrument,self.semantic,world)
 
     def verify(self):return self.ledger.verify_chain()
     def close(self):self.ledger.close()
