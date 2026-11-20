@@ -28,6 +28,59 @@ def _amount(value,field):
     return _cash_amount(value,"R18_INVALID_"+field)
 
 
+
+
+def _service(world,concession):
+    ref=concession.get("enforcement_service_ref")
+    provider=world.get("institutions",{}).get(ref)
+    if (type(ref) is not str or type(provider) is not dict
+            or provider.get("kind")!="DECLARED_FICTIONAL_ENFORCEMENT_SERVICE"
+            or provider.get("site")!=concession.get("site")
+            or provider.get("concession_ref")!=concession.get("id")):
+        raise ValueError("R18_ENFORCEMENT_SERVICE_SOURCE_MISMATCH")
+    return ref
+
+
+def _paid_enforcement(world,concession,payer,cost,kind,intention):
+    """Two-sided account transfer; no money minting or magical expenditure.
+
+    The receiving entity is an explicitly fictional institutional service,
+    NOT a secretly willing person. Particular human enforcement labor and
+    consent remain unresolved scientific/developmental obligations.
+    """
+    service=_service(world,concession)
+    from .world import _exact_material_delta
+    money=_amount(world.get("accounts",{}).get(payer,0),
+                  "ENFORCEMENT_PAYER_BALANCE")
+    receiver=_amount(world.get("accounts",{}).get(service,0),
+                     "ENFORCEMENT_SERVICE_BALANCE")
+    if money<cost:
+        raise ValueError("R18_UNFUNDED_ENFORCEMENT_TRANSFER")
+    next_payer=_exact_material_delta(money,-cost,
+                                    "R18_ENFORCEMENT_PAYMENT_DEBIT")
+    next_provider=_exact_material_delta(receiver,cost,
+                                       "R18_ENFORCEMENT_PAYMENT_CREDIT")
+    identity=stable_id("enforcement_service_payment",{
+        "payer":payer,"recipient":service,"kind":kind,
+        "clock":world["clock"]+1,"amount":cost})
+    world["accounts"][payer]=next_payer
+    world["accounts"][service]=next_provider
+    receipt={
+        "id":identity,"clock":world["clock"]+1,
+        "payer":payer,"recipient_institution":service,
+        "amount":cost,"institutional_service_kind":kind,
+        "actor_selection_source":intention,
+        "money_conserved_between_two_accounts":True,
+        "human_enforcer_consent_not_imputed":True,
+        "grade":GRADE}
+    world.setdefault("material_claims",[]).append({
+        "clock":world["clock"]+1,"kind":"FINANCED_ENFORCEMENT_SERVICE",
+        "payer":payer,"recipient":service,"amount":cost,
+        "source_ref":concession["id"],
+        "no_inferred_employee_or_ideology":True})
+    world.setdefault("enforcement_payments",[]).append(receipt)
+    return receipt
+
 def register_concession(world,actors,spec):
     """Fixture creates a *possibility of domination*, not a ruling board."""
     if type(spec) is not dict or spec.get("grade")!=(
@@ -57,8 +110,20 @@ def register_concession(world,actors,spec):
     q=spec.get("quorum",2)
     if type(q) is not int or not 2<=q<=len(petitioners):
         raise ValueError("R18_INVALID_QUORUM")
+    provider_ref=stable_id("food_enforcement_provider",{
+        "world":world["id"],"site":site,"concession":ref})
+    if provider_ref in world.get("institutions",{}) or (
+            provider_ref in world.get("accounts",{})):
+        raise ValueError("R18_ENFORCEMENT_PROVIDER_COLLISION")
+    world.setdefault("institutions",{})[provider_ref]={
+        "kind":"DECLARED_FICTIONAL_ENFORCEMENT_SERVICE",
+        "site":site,"concession_ref":ref,
+        "separate_institution_not_a_coactor_or_person":True,
+        "grade":GRADE}
+    world.setdefault("accounts",{})[provider_ref]=0.0
     world.setdefault("food_control_concessions",{})[site]={
         "id":ref,"site":site,"controller":controller,
+        "enforcement_service_ref":provider_ref,
         "eligible_petitioners":sorted(petitioners),
         "quorum":spec.get("quorum",2),
         "source_ref":spec["source_ref"],
@@ -112,7 +177,10 @@ def install_gate(world,actors,who,site,intention):
     from .food_access_struggle import configure_food_power, AUTHORITY
     next_held=_exact_material_delta(held,-INITIAL_FOOD_STAKE,"R18_HELD_FOOD_DELTA")
     next_food=_exact_material_delta(stock,INITIAL_FOOD_STAKE,"R18_PANTRY_STOCK_DELTA")
-    next_cash=_exact_material_delta(cash,-COST_INSTALL,"R18_INSTALL_CASH_DELTA")
+    _service(world,concession)
+    # All material source accounts qualified before the effective rule change.
+    _amount(world["accounts"][
+        concession["enforcement_service_ref"]],"INSTALL_SERVICE_BALANCE")
     created=configure_food_power(world,actors,{
         "grade":"EXPLICIT_SOURCEFREE_INSTITUTIONAL_SCENARIO",
         "site":site,"controller_actor":who,
@@ -123,7 +191,9 @@ def install_gate(world,actors,who,site,intention):
         "pre_registered_concession_ref":concession["id"]})
     world.setdefault("holdings",{}).setdefault(who,{})["food"]=next_held
     world["sites"][site]["food"]=next_food
-    world.setdefault("accounts",{})[who]=next_cash
+    install_payment=_paid_enforcement(
+        world,concession,who,COST_INSTALL,
+        "INITIAL_PANTRY_ENCLOSURE_SERVICE",intention)
     board=world["institutions"][AUTHORITY]
     board["r18_origin_concession_ref"]=concession["id"]
     board["r18_requires_material_enforcement"]=True
@@ -134,6 +204,7 @@ def install_gate(world,actors,who,site,intention):
     board["r18_enforcement_history"]=[{
         "clock":world["clock"]+1,"actor":who,"cost":COST_INSTALL,
         "kind":"INITIAL_ENFORCEMENT_FINANCED",
+        "payment_ref":install_payment["id"],
         "actor_selection_source":intention,
         "independent_actor_choice_not_assumed":(
             intention=="INJECTED_NOT_NATIVE_ACTOR_CHOICE"),
@@ -177,10 +248,9 @@ def maintain_gate(world,actors,who,site,intention):
     money=_amount(world.get("accounts",{}).get(who,0),"MAINTENANCE_CASH")
     if money<COST_MAINTAIN:
         return {"status":"BLOCKED","outcome":"NO_RESOURCES_TO_ENFORCE_CONTROL"}
-    from .world import _exact_material_delta
-    next_balance=_exact_material_delta(money,-COST_MAINTAIN,
-                                       "R18_ENFORCEMENT_TRANSFER")
-    world["accounts"][who]=next_balance
+    concession=_concession(world,site)
+    paid=_paid_enforcement(world,concession,who,COST_MAINTAIN,
+                          "REPRODUCE_PANTRY_CONTROL",intention)
     board["r18_enforced_through"]=max(
         world["clock"],board["r18_enforced_through"])+MAINTAIN_TICKS
     receipt={"id":stable_id("paid_enforcement",{
@@ -188,6 +258,7 @@ def maintain_gate(world,actors,who,site,intention):
             "payer":who}),
         "clock":world["clock"]+1,"actor":who,
         "cost":COST_MAINTAIN,"kind":"MATERIAL_ENFORCEMENT_REPRODUCED",
+        "payment_ref":paid["id"],
         "actor_selection_source":intention,"grade":GRADE}
     board["r18_enforcement_history"].append(receipt)
     return {"status":"PERFORMED","outcome":"PANTRY_CONTROL_REPRODUCED",
@@ -207,9 +278,9 @@ def sanction_gate(world,actors,who,other,site,intention):
     money=_amount(world.get("accounts",{}).get(who,0),"SANCTION_CASH")
     if money<COST_SANCTION:
         return {"status":"BLOCKED","outcome":"INSUFFICIENT_POWER_TO_SANCTION"}
-    from .world import _exact_material_delta
-    world["accounts"][who]=_exact_material_delta(
-        money,-COST_SANCTION,"R18_SANCTION_PAYMENT")
+    concession=_concession(world,site)
+    paid=_paid_enforcement(world,concession,who,COST_SANCTION,
+                          "SELECTIVE_PANTRY_SANCTION",intention)
     until=world["clock"]+SANCTION_TICKS+1
     row={"id":stable_id("pantry_access_sanction",{
         "board":board["id"],"clock":world["clock"]+1,
@@ -217,6 +288,7 @@ def sanction_gate(world,actors,who,other,site,intention):
         "controller":who,"subject":other,
         "start_clock":world["clock"]+1,"through_clock":until,
         "cost":COST_SANCTION,
+        "payment_ref":paid["id"],
         "world_rule_after":board["food_rights"],
         "actor_selection_source":intention,
         "not_validated_moral_justification":True,"grade":GRADE}
