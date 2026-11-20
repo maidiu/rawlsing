@@ -7,6 +7,7 @@ from .activity import eligible_activities
 from .psychodynamics import enact_currents
 from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
+from .practical_difference import practical_alternatives
 from .world import _qualified_members
 
 
@@ -235,7 +236,12 @@ def compose(constitution,access,limit=50):
             status,why=eligible(constitution.body,a)
             if status:
                 q=actions.setdefault(a,{'action':a,'score':.1,'basis':[],'opportunity':'PROJECT'})
-                q['score']+=.4*p.get('priority',.5);q['basis'].append('project:'+p['id'])
+                # A richer description of one purpose must not cast more
+                # votes for the same physical operation. Project availability
+                # uses a MAX ceiling, not the sum of every candidate motive.
+                q['project_pressure_ceiling']=max(
+                    q.get('project_pressure_ceiling',0),.4*p.get('priority',.5))
+                q['basis'].append('project:'+p['id'])
                 # Multiple projects may afford this *same* bodily action.
                 # Their presence is candidate opportunity, NOT a claim that
                 # all those purposes were selected in the impending attempt.
@@ -249,6 +255,10 @@ def compose(constitution,access,limit=50):
                     'recruitment_basis':copy(p.get('recruitment_basis',[])),
                     'course_grade':'AVAILABLE_PURPOSE_NOT_SELECTED_INTENT'})
                 q['pooled_basis_is_not_actor_selected_purpose']=True
+    for q in actions.values():
+        if 'project_pressure_ceiling' in q:
+            q['score']+=q['project_pressure_ceiling']
+            q['score_aggregation']='MAX_AVAILABLE_PROJECT_PRESSURE_NOT_SUM_OF_MOTIVES'
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -271,6 +281,12 @@ def compose(constitution,access,limit=50):
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
     learned=qualified_learned_compositions(constitution,access,active,projects,
                                           dynamics['candidate_actions'])
+    # Attach actor/clock/project-specific practical ALTERNATIVES beneath the
+    # existing physical action grammar. Psychodynamic inhibition still acts
+    # first; an inhibited operation cannot be revived by an option ID.
+    for option in dynamics['candidate_actions']:
+        option['practical_alternatives']=practical_alternatives(
+            constitution,access,option)
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
