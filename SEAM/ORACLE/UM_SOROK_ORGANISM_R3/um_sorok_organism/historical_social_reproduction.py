@@ -1,0 +1,256 @@
+"""SORACLE R13 — material time, social reproduction, and compressed life.
+
+A compressed period cannot silently grant one individual 25 hours of labor,
+care and practice per day, invent a coactor's every consent, or convert an
+ordinary project into thousands of eyewitness successes. Source-qualified
+routine exposures are *aggregate fictional model assumptions*, not identified
+real events, human developmental laws, or moral duties. The world owns time,
+care benefit, work claim and the distribution of costs.
+
+Existing ordinary_life.passage and existing actor-specific practice learning
+remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
+"""
+import math
+from .types import GRADE, copy, stable_id
+
+DAY_HOURS=24.0
+PROVISIONAL_REST_RESERVE=8.0
+ACTIVE_HOURS=DAY_HOURS-PROVISIONAL_REST_RESERVE
+KINDS=frozenset({'QUALIFIED_ROUTINE_PRACTICE',
+                 'QUALIFIED_REPRODUCTIVE_CARE',
+                 'QUALIFIED_WAGE_LABOR',
+                 'QUALIFIED_OTHER_OBLIGATION'})
+
+
+def _number(value, name, *, zero=True):
+    if (type(value) not in (int,float) or
+            not math.isfinite(value) or value<0 or
+            (not zero and value==0)):
+        raise ValueError('HISTORICAL_TIME_INVALID_'+name)
+    return float(value)
+
+
+def _typecheck(process):
+    if type(process) is not dict or process.get('kind') not in KINDS:
+        raise ValueError('HISTORICAL_TIME_UNSUPPORTED_PROCESS')
+    if type(process.get('source_ref')) is not str or not process['source_ref']:
+        raise ValueError('HISTORICAL_TIME_UNSOURCED_PROCESS')
+    if type(process.get('actor')) is not str or not process['actor']:
+        raise ValueError('HISTORICAL_TIME_MISSING_ACTOR')
+    site=process.get('location')
+    if type(site) is not str or not site:
+        raise ValueError('HISTORICAL_TIME_MISSING_SITE')
+    hours=_number(process.get('hours_per_active_day'),
+                  'HOURS_PER_ACTIVE_DAY',zero=False)
+    fraction=_number(process.get('provisional_exposure_fraction'),
+                     'EXPOSURE_FRACTION')
+    if hours>24 or fraction>1:
+        raise ValueError('HISTORICAL_TIME_OVERSIZED_EXPOSURE')
+    return hours,fraction
+
+
+def _actor_at_site(world,actors,actor,site):
+    return (actor in actors and world.get('positions',{}).get(actor)==site
+            and actors[actor].get('location')==site)
+
+
+def _support_history(world,a,b):
+    for relation in world.get('relations',{}).values():
+        if ({a,b}==set(relation.get('participants',[])) and
+                any(type(h) is dict and h.get('contributions')
+                    for h in relation.get('history',[]))):
+            return True
+    return False
+
+
+def qualify_period_allocation(world,actors,processes,start_clock,days):
+    """Validate whole-period feasibility BEFORE any developmental/world write.
+
+    All named historical actors pay their own time. A caregiver's costs do
+    not vanish into the recipient's comfort, nor can an employer time claim
+    coexist for free with care or practice. Locational stability during the
+    compressed interval is a *declared* fixture assumption; any modeled
+    relocation should split the interval rather than be hidden.
+    """
+    if type(days) is not int or not 1<=days<=3650:
+        raise ValueError('HISTORICAL_TIME_INVALID_DAYS')
+    if type(start_clock) is not int or start_clock<0:
+        raise ValueError('HISTORICAL_TIME_INVALID_CLOCK')
+    if type(processes) is not list or len(processes)>512:
+        raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
+    normalized=[];fraction_by_actor={};support_downgrades=[]
+    for i,raw in enumerate(processes):
+        hours,fraction=_typecheck(raw)
+        a=raw['actor'];site=raw['location']
+        if not _actor_at_site(world,actors,a,site):
+            raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
+        if raw['kind']=='QUALIFIED_REPRODUCTIVE_CARE':
+            recipient=raw.get('recipient')
+            if (type(recipient) is not str or recipient==a or
+                    not _actor_at_site(world,actors,recipient,site)):
+                raise ValueError('HISTORICAL_TIME_NO_CO_PRESENT_CARE_RECIPIENT')
+            if not any('CARE' in p.get('means',[]) and
+                       p.get('status','active')=='active'
+                       for p in actors[a].get('projects',[])):
+                raise ValueError('HISTORICAL_TIME_NO_PRACTICED_CARE_COURSE')
+        if raw['kind']=='QUALIFIED_WAGE_LABOR':
+            controller=world.get('sites',{}).get(site,{}).get('controller')
+            institution=world.get('institutions',{}).get(controller,{})
+            if (type(controller) is not str or not controller or
+                    controller==a or
+                    institution.get('controls')!=site):
+                raise ValueError('HISTORICAL_TIME_NO_EMPLOYMENT_RELATION')
+            if not any('WORK' in p.get('means',[]) and
+                       p.get('status','active')=='active'
+                       for p in actors[a].get('projects',[])):
+                raise ValueError('HISTORICAL_TIME_NO_PRACTICED_WORK_COURSE')
+        if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
+            mode=raw.get('mode','ARRANGEMENT_UNRESOLVED')
+            if mode=='ASSISTED_COMPONENT_PRACTICE':
+                supporter=raw.get('support_actor')
+                if (type(supporter) is not str or
+                        not _actor_at_site(world,actors,supporter,site) or
+                        not _support_history(world,a,supporter)):
+                    # No future cooperation is inferred. The actor may still
+                    # have plausible generic practice, but the specific
+                    # assistant cannot be assigned by a routine label.
+                    mode='ARRANGEMENT_UNRESOLVED'
+                    support_downgrades.append(i)
+            raw={**raw,'mode':mode}
+        normalized.append(copy(raw))
+        fraction_by_actor[a]=fraction_by_actor.get(a,0.)+hours*fraction
+    over={a:round(x,6) for a,x in fraction_by_actor.items()
+          if x>ACTIVE_HOURS+1e-9}
+    if over:
+        raise ValueError('HISTORICAL_TIME_OVERBOOKED_ACTOR:'+','.join(
+            sorted(over)))
+    return {
+        'qualified':normalized,
+        'actor_active_hour_claim_per_day':{
+            a:round(h,5) for a,h in sorted(fraction_by_actor.items())},
+        'unmodeled_free_hours_per_day':{
+            a:round(max(0,ACTIVE_HOURS-h),5)
+            for a,h in sorted(fraction_by_actor.items())},
+        'support_downgraded_to_unresolved_indices':support_downgrades,
+        'daily_time_cap_hours':DAY_HOURS,
+        'provisional_rest_reserve_hours':PROVISIONAL_REST_RESERVE,
+        'assumed_same_site_through_period':True,
+        'no_unobserved_coactor_choices_invented':True,
+        'not_empirical_time_use_validation':True,
+        'start_clock':start_clock,'days':days,'grade':GRADE,
+    }
+
+
+def _care(world,actors,proc,start,days):
+    a=proc['actor'];r=proc['recipient'];site=proc['location']
+    hours=proc['hours_per_active_day']*proc[
+        'provisional_exposure_fraction']*days
+    # Routine work is not an explicit sequence of care actions; this is a
+    # modeled resource/bodily consequence with distinct cost-bearers.
+    giver=actors[a]['body'];recipient=actors[r]['body']
+    fatigue=round(min(.12,hours*.00012),5)
+    benefit=round(min(.10,hours*.00018),5)
+    giver['rest']=max(.02,round(giver['rest']-fatigue,5))
+    recipient['comfort']=min(1.,round(recipient['comfort']+benefit,5))
+    ref=stable_id('aggregate_reproductive_care',{
+        'world':world['id'],'giver':a,'recipient':r,
+        'source':proc['source_ref'],'start':start,'days':days})
+    row={
+        'id':ref,'start_clock':start,'end_clock':start+days,
+        'site':site,'giver':a,'recipient':r,
+        'source_ref':proc['source_ref'],
+        'modeled_labor_hours':round(hours,3),
+        'giver_rest_expenditure_model':fatigue,
+        'recipient_comfort_effect_model':benefit,
+        'wage_opportunity_cost':'NOT_INFERRED_FROM_CARE_ALONE',
+        'unprovided_other_care':'UNKNOWN',
+        'actor_gratitude_or_love':'NOT_INFERRED',
+        'no_individually_observed_care_events':True,
+        'grade':'SOURCEFREE_QUALIFIED_AGGREGATE_CARE'}
+    world.setdefault('reproductive_labor_periods',[]).append(row)
+    return row
+
+
+def _work(world,actors,proc,start,days):
+    a=proc['actor'];site=proc['location']
+    actual_site=world['sites'][site]
+    controller=actual_site['controller']
+    institution=world['institutions'][controller]
+    wage=_number(institution.get('wage'),'WORKSITE_WAGE')
+    hours=proc['hours_per_active_day']*proc[
+        'provisional_exposure_fraction']*days
+    # Explicitly provisional 8-hour-normalized period claim, not a verified
+    # historical labor productivity/wage law. The world does not invent goods
+    # it did not model. Actual creditor account and employer account differ.
+    owed=round(hours/8*wage,5)
+    cash=_number(world.get('accounts',{}).get(controller,0),
+                 'EMPLOYER_BALANCE')
+    paid=round(min(owed,cash),5)
+    unpaid=round(max(0,owed-paid),5)
+    world['accounts'][controller]=round(cash-paid,5)
+    world['accounts'][a]=round(_number(
+        world['accounts'].get(a,0),'WORKER_BALANCE')+paid,5)
+    ref=stable_id('aggregate_wage_work',{
+        'world':world['id'],'worker':a,'controller':controller,
+        'source':proc['source_ref'],'start':start,'days':days})
+    row={
+        'id':ref,'source_ref':proc['source_ref'],
+        'start_clock':start,'end_clock':start+days,
+        'worker':a,'controller':controller,'site':site,
+        'modeled_labor_hours':round(hours,3),
+        'wage_due_sourcefree_model':owed,
+        'actual_paid_model':paid,'wage_arrears':unpaid,
+        'physical_goods_output':'NOT_INFERRED_WITHOUT_MATERIAL_PRODUCTION_MODEL',
+        'worker_control_of_output':'NOT_CONFERRED_BY_WAGE',
+        'no_observed_individual_work_events':True,
+        'grade':'SOURCEFREE_QUALIFIED_AGGREGATE_WAGE'}
+    world.setdefault('wage_labor_periods',[]).append(row)
+    if unpaid>0:
+        world.setdefault('wage_arrears',[]).append({
+            'aggregate_labor_ref':ref,'worker':a,'controller':controller,
+            'amount':unpaid,'period_end_clock':start+days})
+    return row
+
+
+def apply_period_allocation(world,actors,allocation):
+    """Actual world/bodily result for one already-qualified history window.
+
+    Caller uses copy-on-write ledger; call once per registered period.
+    Results do NOT automatically become conscious autobiographical memories.
+    """
+    if allocation.get('grade')!=GRADE:
+        raise ValueError('HISTORICAL_TIME_UNQUALIFIED_ALLOCATION')
+    start=allocation['start_clock'];days=allocation['days']
+    if world['clock']!=start:
+        raise ValueError('HISTORICAL_TIME_WORLD_ADVANCED_BEFORE_SETTLEMENT')
+    ref=stable_id('historical_time_allocation',{
+        'world':world['id'],'start':start,'days':days,
+        'processes':allocation['qualified']})
+    if any(r.get('id')==ref for r in
+           world.get('historical_time_allocations',[])):
+        raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
+    care=[];wages=[]
+    # All qualification and per-person time budgets are checked before writes.
+    for proc in allocation['qualified']:
+        if proc['kind']=='QUALIFIED_REPRODUCTIVE_CARE':
+            care.append(_care(world,actors,proc,start,days))
+        elif proc['kind']=='QUALIFIED_WAGE_LABOR':
+            wages.append(_work(world,actors,proc,start,days))
+    receipt={
+        'id':ref,'start_clock':start,'end_clock':start+days,
+        'actor_hour_claims_per_day':copy(
+            allocation['actor_active_hour_claim_per_day']),
+        'free_hours_per_day_after_modeled_claims':copy(
+            allocation['unmodeled_free_hours_per_day']),
+        'care_period_refs':[x['id'] for x in care],
+        'wage_period_refs':[x['id'] for x in wages],
+        'source_qualified_process_refs':[
+            x['source_ref'] for x in allocation['qualified']],
+        'support_downgraded_to_unresolved_indices':copy(
+            allocation['support_downgraded_to_unresolved_indices']),
+        'absent_high_resolution_scenes':'NOT_DEEMED_TO_HAVE_OCCURRED',
+        'work_and_care_bearer_differentiation':True,
+        'not_a_human_time_use_or_developmental_law':True,
+        'grade':GRADE}
+    world.setdefault('historical_time_allocations',[]).append(receipt)
+    return receipt
