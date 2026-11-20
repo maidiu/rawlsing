@@ -19,6 +19,7 @@ from .material_objects import (
     material_opportunity_from_history)
 from .material_investments import (
     invested_material_action_options, annotate_material_alternatives)
+from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
@@ -40,6 +41,7 @@ def materialize(actor,world):
         notice_exposures=copy(actor.get('notice_exposures',[])),
         object_encounters=copy(actor.get('object_encounters',[])),
         material_investments=copy(actor.get('material_investments',[])),
+        practice_exposures=copy(actor.get('practice_exposures',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -416,6 +418,13 @@ def compose(constitution,access,limit=50):
     # existing physical action grammar. Psychodynamic inhibition still acts
     # first; an inhibited operation cannot be revived by an option ID.
     for option in dynamics['candidate_actions']:
+        # A graded *component* projection can inform future practical
+        # construction, without granting material permission or pretending
+        # the simulated actor has a Foucauldian theory of its own powers.
+        option['situated_component_facility']=situated_component_efficacy(
+            {'power_exercises':constitution.power_exercises,
+             'practice_exposures':constitution.practice_exposures},
+             option['action'],access.location)
         option['practical_alternatives']=practical_alternatives(
             constitution,attention['focus_access'],option)
         # A learned relation of distributed practical power can add a real
