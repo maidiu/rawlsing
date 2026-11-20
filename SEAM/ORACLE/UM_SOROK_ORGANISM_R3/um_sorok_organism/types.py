@@ -63,6 +63,8 @@ class Constitution:
     functional_bindings: list[dict] = field(default_factory=list)
     power_exercises: list[dict] = field(default_factory=list)
     notice_exposures: list[dict] = field(default_factory=list)
+    object_encounters: list[dict] = field(default_factory=list)
+    material_investments: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -127,6 +129,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'possible_ends': [], 'evidence_paths': [], 'expectations': [],
         'participation_history': [], 'functional_bindings': [],
         'power_exercises': [], 'notice_exposures': [],
+        'object_encounters': [], 'material_investments': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
