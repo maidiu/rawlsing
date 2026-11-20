@@ -63,6 +63,33 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                              for x in c.currents))
         self.assertLess(option(c)['score'],option(a)['score'])
 
+    def test_identical_ambiguous_cue_differently_recruits_lived_attention(self):
+        # No present semantic cue names the learned action; both face the same
+        # unclassified auditory event. Only their own lived history differs.
+        one=adult('one','One'); two=adult('two','Two')
+        unformed=adult('unformed','Unformed')
+        admit(one,lived('one','first',cue=True),'world:first',
+              [orientation('APPROACH',perceived_cue_ref='signal:one:first')])
+        admit(two,lived('two','first',cue=True),'world:second',
+              [orientation('WITHHOLD',perceived_cue_ref='signal:two:first')])
+        cue={'id':'current:ambiguous','kind':'unclassified',
+             'tags':['not_previously_named'],'modality':'auditory'}
+        def encountered(actor):
+            world=blank_world()
+            world['positions'][actor['id']]='home'
+            a=AccessibleEncounter(actor=actor['id'],world_clock=9,
+                location='home',cues=[cue],affordances=[],
+                access_receipts=['current:ambiguous'])
+            return compose(materialize(actor,world),a)
+        a,b,c=map(encountered,(one,two,unformed))
+        self.assertIsNotNone(option(a))
+        self.assertIsNone(option(b))
+        self.assertTrue(a.attention_frame['historical_sensory_bias_is_provisional'])
+        self.assertTrue(b.attention_frame['historical_sensory_bias_is_provisional'])
+        self.assertFalse(c.attention_frame['historical_sensory_bias_is_provisional'])
+        self.assertFalse(any(x['kind']=='HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE'
+                             for x in c.currents))
+
     def test_cue_absence_precedes_categorization_and_revision_retains_history(self):
         actor=adult('a','A')
         first=admit(actor,lived('a','first'),'world:first',
