@@ -69,6 +69,7 @@ def inspected(actor,notice):
     actor.setdefault("notice_exposures",[]).append({
         "id":"personally_inspected:"+actor["id"],
         "public_notice_ref":notice,
+        "inspected_at_clock":0,
         "public_words_available":[
             "public_petition","household_food","collective_food_access"],
         "actor_comprehension":"NOT_ESTABLISHED"})
@@ -231,6 +232,7 @@ class R17HistoricallyAcquiredPoliticalMeans(unittest.TestCase):
             "id":"actually_exercised_petition",
             "operation":"SIGN_FOOD_PETITION",
             "event_ref":"earlier_actual_signature",
+            "event_clock":3,
             "attempt_status_analyst_receipt":"PERFORMED"})
 
     def sample_public_change(self):
@@ -260,6 +262,20 @@ class R17HistoricallyAcquiredPoliticalMeans(unittest.TestCase):
         # Another institution may post another real notice later. This
         # person's actual earlier practice can make its inspection possible,
         # without first fabricating a further frustration or public belief.
+        # Reconstructing the clock before the outcome must not import the
+        # future learned expectancy from a later actor snapshot.
+        self.world["clock"]=3
+        earlier=materialize(self.actor,self.world)
+        early_access=AccessibleEncounter(
+            actor="father",world_clock=3,location="home",
+            cues=[{"id":"older_visible","kind":"public_notice_visible",
+                   "public_notice_ref":"another_real_notice",
+                   "tags":["public_notice"]}],
+            affordances=["INSPECT"],access_receipts=[],
+            inaccessible_count=0)
+        self.assertEqual(offer_actor_inquiry(
+            earlier,early_access)["offered"],[])
+        self.world["clock"]=6
         c=materialize(self.actor,self.world)
         access=AccessibleEncounter(
             actor="father",world_clock=6,location="home",
