@@ -195,6 +195,26 @@ def plural_addressed_signal_choice(options,body):
         chosen=alts[0]
         contrast='ONE_CURRENTLY_QUALIFIED_RELATION'
     else:
+        # A newly relieved but historically contradictory relation is NOT
+        # suddenly the best caregiver because its last response was latest.
+        # Where distinct alternatives are co-present, preserve the conflict.
+        # A live semantic constructor may still negotiate that possibility;
+        # this sourcefree fallback cannot author a 'trust' verdict.
+        if any(x.get('reopened_after_actual_contradiction') is True
+               for x in alts):
+            uncontradicted=[x for x in alts
+                if x.get('reopened_after_actual_contradiction') is not True]
+            if not uncontradicted:
+                return None
+            def _has_lived_support(alt):
+                return any(type(x) is dict and
+                    x.get('bodily_regulation_sensed') is True
+                    and type(x.get('event_clock')) is int
+                    and type(x.get('response_ref')) is str
+                    for x in alt.get('personally_sensed_support_history',[]))
+            if not any(_has_lived_support(x) for x in uncontradicted):
+                return None
+            alts=uncontradicted
         witnessed=[]
         for alt in alts:
             supports=alt.get('personally_sensed_support_history',[])
