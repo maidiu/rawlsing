@@ -44,6 +44,9 @@ def test_existing_ff01_abi_consumes_s04_without_second_i03_execution():
     assert ff.semantic_projection()["joint_arity"] == 3
     assert len(ff.semantic_projection()["complete_cells"]) == 8
     assert ff.semantic_projection()["producer_fact_ref"] == s04.material()["fact_ref"]
+    # The historical generic FF01 ABI does not serialize a supported-case
+    # held witness, not even as a null field: that changes the exact ref.
+    assert "held_condition_membership_uncertainty" not in ff.semantic_projection()
     answer = ask_exact_descriptive_support(
         received=ff, target_index=2, conditions={0: "0", 1: "0"},
     ).material()
