@@ -12,7 +12,7 @@ SOURCE-ISSUANCE requirements, not fabricated source results.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 from itertools import combinations, islice
 from json import loads
@@ -31,6 +31,10 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 from rawlsing_next.pre553_s04_country_refinement import (
     CountryRequest, RefinementBudget, ResourceSample, _country_scope,
+)
+from rawlsing_next.pre553_s04_adaptive_support import (
+    AdaptiveSupportPolicy, classify_observed_branch, order_child_probes,
+    thresholds as country_support_thresholds,
 )
 from rawlsing_next.pre553_s04_observed_research import (
     MAX_CELLS as S04_MAX_CELLS, receive_s04_i03_research,
@@ -127,7 +131,6 @@ class CyclePolicy:
     target_axis: int
     predictor_axes: tuple[int, ...]
     fixed_context: tuple[tuple[int, Any], ...]
-    min_branch_n: int
     max_depth: int
     max_total_nodes: int
     max_pending_nodes: int
@@ -137,6 +140,7 @@ class CyclePolicy:
     bootstrap_replicates: int = 0
     bootstrap_case_cap: int = 4096
     min_signal_bits: str = "0.0"  # canonical decimal; method tolerance, not physics
+    support_policy: AdaptiveSupportPolicy = field(default_factory=AdaptiveSupportPolicy)
 
     def __post_init__(self) -> None:
         if (type(self.target_axis) is not int
@@ -152,11 +156,11 @@ class CyclePolicy:
                 or len({p[0] for p in self.fixed_context}) != len(self.fixed_context)):
             raise DeterminicityCycleError("INVALID_FIXED_CONTEXT")
         if any(type(v) is not int or v < 1 for v in (
-                self.min_branch_n, self.max_total_nodes, self.max_pending_nodes,
+                self.max_total_nodes, self.max_pending_nodes,
                 self.max_new_nodes_per_call, self.max_receipt_bytes,
                 self.bootstrap_case_cap)):
             raise DeterminicityCycleError("INVALID_CYCLE_LIMIT")
-        if (self.min_branch_n < 2
+        if (type(self.support_policy) is not AdaptiveSupportPolicy
                 or type(self.max_depth) is not int or self.max_depth < 0
                 or type(self.max_pair_order) is not int
                 or self.max_pair_order not in (1, 2)
@@ -465,10 +469,11 @@ def advance_country_determinicity(
         "country_native_value": canonicalize(country_value),
         "policy": {
             **{key: value for key, value in vars(policy).items()
-               if key not in ("fixed_context", "min_signal_bits",
+               if key not in ("fixed_context", "min_signal_bits", "support_policy",
                               "max_total_nodes", "max_pending_nodes",
                               "max_new_nodes_per_call", "max_receipt_bytes")},
             "fixed_context": _serialize_context(context),
+            "support_policy": vars(policy.support_policy),
             "min_signal_bits": Decimal(policy.min_signal_bits),
         },
         "observation_channels": [
@@ -636,7 +641,7 @@ def advance_country_determinicity(
             req = DHIKRComparisonRequest(
                 target_axis=policy.target_axis, predictor_axes=batch,
                 fixed_context=tuple(sorted(selected.items())),
-                min_branch_n=policy.min_branch_n, max_depth=0, max_nodes=1,
+                min_branch_n=explore_min_n, max_depth=0, max_nodes=1,
                 max_interaction_order=policy.max_pair_order,
                 bootstrap_replicates=policy.bootstrap_replicates,
                 bootstrap_case_cap=policy.bootstrap_case_cap,
