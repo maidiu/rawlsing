@@ -19,11 +19,14 @@ def retain_performed_material_feeding(actor,experience,event_ref,world):
     signs=[x for x in experience.get("perceived_cues",[])
            if type(x) is dict and x.get("kind")=="performed_feed"
            and x.get("source_actor")==actor["id"]]
-    if len(signs)!=1:return None
+    # A responsive caregiver may have a proprioceptively received FEED act
+    # while the single public world sign belongs to the person signaling.
+    # Actual world food settlement plus their OWN enactment is necessary;
+    # absence of a public FEED sign alone is not absence of that act.
+    if len(signs)>1:return None
     refs=[r for r in world.get("material_feeding_events",[])
           if r.get("clock")==experience.get("clock")
-          and r.get("giver")==actor["id"] and
-          r.get("material_feeding_ref")==None]
+          and r.get("giver")==actor["id"]]
     # The objective world identity is inspected by the ANALYST, but neither
     # a cause nor a social role is installed as this actor's conscious reason.
     if len(refs)!=1:return None
@@ -39,7 +42,8 @@ def retain_performed_material_feeding(actor,experience,event_ref,world):
         "recipient":ref["recipient"],"clock":experience["clock"],
         "site":ref["site"],"material_food_source":ref["food_source"],
         "applied_nutrition_change":ref["nutrition_effect"],
-        "received_action_sign_ref":signs[0]["id"],
+        "received_action_sign_ref":(signs[0]["id"] if signs else None),
+        "own_somatic_enactment_qualified":True,
         "operative_possible_means":"FEED",
         "skill_or_future_repetition":"NOT_ESTABLISHED",
         "conscious_reason_or_gender_duty":"NOT_ESTABLISHED",
