@@ -15,6 +15,13 @@ from um_sorok_organism.food_access_struggle import (
 from um_sorok_organism.material_provisioning import (
     perform_one_actual_feeding,settle_provisioning,PROVISION_KIND)
 from um_sorok_organism.world import _effective_material_controller
+from um_sorok_organism.institutional_procedure_learning import (
+    possible_institutional_learning,one_bounded_proposal,
+    admit_public_procedure_expectation)
+from um_sorok_organism.practical_inquiry import (
+    offer_actor_inquiry,choose_grounded_public_inquiry)
+from um_sorok_organism.types import AccessibleEncounter
+from um_sorok_organism.constitution import materialize
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.routine_sources import (
     register_sourcefree_period_envelope)
@@ -213,6 +220,88 @@ class R17ObjectivePower(unittest.TestCase):
             can_draw_shared_food(self.world,"father","home")
 
 
+class R17HistoricallyAcquiredPoliticalMeans(unittest.TestCase):
+    def setUp(self):
+        self.world,self.actors=household()
+        self.order=configure_food_power(
+            self.world,self.actors,declaration())
+        self.actor=self.actors["father"]
+        inspected(self.actor,self.order["public_notice_ref"])
+        self.actor["power_exercises"].append({
+            "id":"actually_exercised_petition",
+            "operation":"SIGN_FOOD_PETITION",
+            "event_ref":"earlier_actual_signature",
+            "attempt_status_analyst_receipt":"PERFORMED"})
+
+    def sample_public_change(self):
+        return {
+            "actor":"father","ref":"father_received_public_change",
+            "clock":4,"participated":False,
+            "own_action":None,"status":"OBSERVED",
+            "perceived_cues":[{
+                "id":"changed_public_sign",
+                "kind":"performed_sign_food_petition",
+                "description":"COLLECTIVE_FOOD_ACCESS_RIGHTS_CHANGED",
+                "source_actor":"mother"}]}
+
+    def test_an_actual_public_change_can_become_later_practical_inquiry(self):
+        lived=self.sample_public_change()
+        possible=possible_institutional_learning(
+            self.actor,lived,"objective_rule_change")
+        self.assertEqual(len(possible),1)
+        proposed=one_bounded_proposal(possible)
+        accepted=admit_public_procedure_expectation(
+            self.actor,lived,"objective_rule_change",proposed[0])
+        self.assertEqual(accepted["kind"],
+                         "ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION")
+        self.assertEqual(len(self.actor["institutional_expectations"]),1)
+        self.assertFalse(self.actor["self_model"])
+        self.assertFalse(self.actor["other_models"])
+        # Another institution may post another real notice later. This
+        # person's actual earlier practice can make its inspection possible,
+        # without first fabricating a further frustration or public belief.
+        c=materialize(self.actor,self.world)
+        access=AccessibleEncounter(
+            actor="father",world_clock=6,location="home",
+            cues=[{
+                "id":"another_posted_rule","kind":"public_notice_visible",
+                "public_notice_ref":"another_real_notice",
+                "source_actor":None,"tags":["public_notice"]}],
+            affordances=["INSPECT"],access_receipts=[],
+            inaccessible_count=0)
+        inquiry=offer_actor_inquiry(c,access)
+        self.assertEqual(len(inquiry["offered"]),1)
+        self.assertEqual(inquiry["offered"][0]["source_grounds_status"],
+                         "HISTORICALLY_LEARNED_INSTITUTIONAL_INQUIRY")
+        self.assertFalse(inquiry["offered"][0][
+            "public_only_not_privileged_world_CAUSE"] is False)
+
+    def test_unseen_result_and_unperformed_contribution_cannot_learn(self):
+        result=self.sample_public_change()
+        unseen={**result,"perceived_cues":[]}
+        self.assertEqual(possible_institutional_learning(
+            self.actor,unseen,"objective_rule_change"),[])
+        with self.assertRaisesRegex(
+                ValueError,"INSTITUTIONAL_LEARNING_NO_LIVED_PUBLIC_RESULT"):
+            admit_public_procedure_expectation(
+                self.actor,unseen,"objective_rule_change",
+                {"received_public_sign_ref":"changed_public_sign",
+                 "own_signature_exercise_ref":"actually_exercised_petition",
+                 "inspected_notice_ref":self.order["public_notice_ref"],
+                 "scope":"POSTED_INSTITUTIONAL_PROCEDURE"})
+        self.actor["power_exercises"].clear()
+        self.assertEqual(possible_institutional_learning(
+            self.actor,result,"objective_rule_change"),[])
+
+    def test_an_uncomprehending_infant_cannot_acquire_adult_procedure(self):
+        child=self.actors["nadia"]
+        child["notice_exposures"]=self.actor["notice_exposures"][:]
+        child["power_exercises"]=self.actor["power_exercises"][:]
+        seen={**self.sample_public_change(),"actor":"nadia"}
+        self.assertEqual(possible_institutional_learning(
+            child,seen,"objective_rule_change"),[])
+
+
 class R17IntegratedLife(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory()
@@ -273,6 +362,36 @@ class R17IntegratedLife(unittest.TestCase):
         new_world=self.rt.ledger.world("w1")[1]
         self.assertEqual(new_world["sites"]["home"]["food"],
                          before_food-1)
+        self.assertTrue(self.rt.verify()["valid"])
+
+    def test_collective_result_develops_procedural_inquiry_not_ideology(self):
+        self.rt.step("father",requested_action="FEED",target="nadia")
+        self.rt.step("mother",requested_action="FEED",target="nadia")
+        for who in ("father","mother"):
+            self.rt.step(who,requested_action="INSPECT",
+                object_ref=self.order["public_notice_ref"])
+        self.assertEqual(self.rt.step("father")["attempt"],
+                         "SIGN_FOOD_PETITION")
+        self.assertEqual(self.rt.step("mother")["attempt"],
+                         "SIGN_FOOD_PETITION")
+        mother=self.rt.snapshot("mother")
+        father=self.rt.snapshot("father")
+        nadia=self.rt.snapshot("nadia")
+        self.assertEqual(len(mother["institutional_expectations"]),1)
+        self.assertEqual(len(father["institutional_expectations"]),1)
+        self.assertEqual(nadia["institutional_expectations"],[])
+        self.assertEqual(nadia["self_model"],{})
+        self.assertTrue(mother["institutional_expectations"][0][
+            "explicit_actor_political_theory"]=="NOT_INFERRED")
+        situated=self.rt.situated("mother")
+        found=[
+            alt for option in situated["candidate_actions"]
+            if option["action"]=="INSPECT"
+            for alt in option.get("practical_alternatives",[])
+            if alt.get("grounds_status")==
+            "HISTORICALLY_LEARNED_INSTITUTIONAL_INQUIRY"]
+        self.assertEqual(len(found),1)
+        self.assertEqual(self.rt.plan("mother").action,"INSPECT")
         self.assertTrue(self.rt.verify()["valid"])
 
     def test_externally_injected_signatures_do_not_count_as_independent(self):
