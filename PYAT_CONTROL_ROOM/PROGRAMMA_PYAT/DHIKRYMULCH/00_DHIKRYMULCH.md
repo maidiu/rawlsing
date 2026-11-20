@@ -414,3 +414,170 @@ The temporal circuit is recursive. A changed institutional rule can expose a his
 
 The historical engine therefore revises its *question* as well as its modeled world. It must preserve competing interpretations when the evidence cannot distinguish them.
 
+
+---
+
+## VII. THE PSYCHOLOGICAL ORGANISM IS CONSTRUCTED IN HISTORY, NOT SAMPLED FROM A GROUP
+
+### VII.1 What exactly enters SOROK from PYAT and the world
+
+Two **different** entrances lead into one continuing psychological architecture.
+
+**Parents and other fictional adults** begin from a situated, historically plausible *whole-configuration proposal*: not a trait draw, not the nearest real survey respondent, not a made-up joint of independently sampled questionnaire items. PYAT supplies conditional empirical possibilities and the alternatives within them; Field Forge supplies independent material/institutional worlds; historical backfill constructs a fictional person's life in those conditions by intelligent and explicit **abduction**, including relational history, maturation and contradictory experiences. An adult who appears at the beginning of Nadia's life is not a statically completed label; the backfilled history is a revisable fictional explanatory construction whose events and inferential status must be retained. Once realized in the simulated world, that adult continues to learn and change rather than periodically resampling an entire personality from population percentages.
+
+**Nadia and other developing children** begin as immature, embodied, need-bearing organisms with capacities, physical vulnerability, emergent attention and dependency—not adult ideology, secret predetermined type or a target biography baked into an initial seed. Their particular psychological iceberg is **acquired** through actual world exposures, activity, relationships, bodily experience, interpreted events, cultural meanings, care, conflict and uneven maturation. No adult endpoint has authority over which infancy experiences are 'needed' to construct it.
+
+The two entrances can use different initialization methods, but thereafter use **one psychological physics**: need, encounter, recruitment, action, consequence, memory, reorganization and future recruitment. An adult's reconstructed history and a child's simulated history may have different warrant (fictional inference versus actual prior simulated events); the runtime must not erase that difference.
+
+### VII.2 The psyche is stratified, contradictory, nontransparent and historically acquired
+
+A person's operative organization needs more than a flat character summary. Represent at least:
+
+- **Embodied organism:** needs, energy, fatigue, pain, illness, arousal, hunger, temperature, comfort, growth, aging and developmental capacity; not reducible to ideological vectors.
+- **Active concerns and obligations:** what this being is trying to sustain or avoid now, including dependents, work, material obligations, commitments, immediate tasks and conflicting goals.
+- **Acquired response organizations:** learned expectancies, routines, skills, protective strategies, relational templates, practices, habitual interpretations, symbol systems, emotional associations and context-dependent affordances.
+- **Motives and values:** partial, developing hierarchies of meaningful activity, including explicit commitments and contradictory nonverbal attractions. Do not identify stated ideological views with dominant operative motives.
+- **Representations of Others and the world:** incomplete, revisable, socially learned models of what other people will do and what institutions permit; these can be biased, out of date, or wrong.
+- **Reflexive and narrative resources:** the ability, when developmentally and situationally available, to interpret oneself, deliberate, rationalize, pray, analyze, narrate, repress, reconsider or refuse a social role.
+- **A partly inaccessible layer:** organizations whose origins, triggers, or coexistence are not fully available to consciousness or available narrative. 'Hidden' does not license a universal Freudian ontology or invisible numerical driver with no behavioral impact. Every proposed hidden organization must earn its place by a functional constraint, developmental origin, observable consequence or deliberately marked uncertainty.
+- **History and relational bonds:** episodic and schematic memories, skill acquisitions, role commitments, contested identities, ruptures, habits of care, betrayals, reconciliations and prior changes. History is not one concatenated story string.
+- **Current standpoint and expression:** what this actor is attending to, permitted to say, willing to reveal, able to articulate, and trying to achieve in this precise encounter. Public speech is a situated action, not a transparent dump of the psyche.
+
+These levels should be represented as **interacting, independently updatable organizations**, not mandatory modules with fixed coefficients. Some experiences produce pervasive transformations; others alter a single habit or a relationship-specific expectancy. Two organizations can be genuinely inconsistent, one conscious and one not, or both conscious but recruited under different conditions. They need not be averaged into an internally consistent personality vector.
+
+### VII.3 From encounter to recruitment to situated activity
+
+An event does not reach the mind as a ready-made semantic input. The organism encounters it through its place, bodily state, ongoing task, available language, prior relational history, attention, perceptual access and immediate stakes. Different actors in the same room can experience different *situated opportunities* because they have different needs and histories.
+
+A minimal psychological **recruitment circuit**:
+
+1. **World presents an encounter:** an independent Other acts, an institution enforces a rule, a need arises, an object affords an activity, an unexpected event occurs.
+2. **Available attention and interpretation:** bodily salience, familiarity, threat, relevance to a current activity, competing obligations, capacity and social meaning filter what is taken up.
+3. **Recruitment candidates:** a plurality of acquired organizations becomes more or less recruitable in this context: fear, curiosity, loyalty, practical skill, counterhabit, anger, cultural judgment, care, humor, obedience, collective hope.
+4. **Contradictory composition:** the actor's current motives, relationships, norms, habits, needs and projections combine unevenly, sometimes suppressing one another. The result may remain internally conflicted; the actor can hesitate, split public/private behavior, perform an established routine, refuse, negotiate, or improvise.
+5. **Situated response and action:** speech, gesture, inaction, attention shift, relationship management, practical operation, attempt to change a rule or tool, or sustained activity. The output includes intended and unrecognized effects; it is not always a verbal choice.
+6. **World arbitration:** independent physical and social conditions determine what actually succeeds, who responds, which material stocks change, and what consequences become newly possible. A chosen action is not an accomplished action.
+7. **Experience and reconstitution:** bodily change, emotional reaction, learning, association, acquired practice, memory revision, reinforcement, disconfirmation, altered trust and relationship history change the iceberg. An experience can undermine the meaning the actor initially assigned to it.
+8. **Future recruitment:** the changed psychic and social worlds jointly alter what can be noticed, wanted, feared, practiced, imagined, chosen and achieved in the next event.
+
+This is not a closed-state Markov character generator that updates a few trait numbers once per scene. The next event depends on changed needs, Others, institutions, relationships, schedules, material stocks, learned meanings and life histories. Nor is each step a compulsory conscious deliberation: many operations are habitual, embodied, skilled, improvisational or barely articulate.
+
+### VII.4 Activity, action and operation are different levels of an actor's life
+
+The same behavior may belong to materially and psychologically different activities. A parent bringing food can act from care, fear of sanction, obligation, habit, guilt, calculation or mixed motives; the act's physical description alone does not disclose them. A worker performing a task may be maintaining wages, protecting a colleague, seeking competence, or avoiding humiliation. A child practicing a phrase may be experimenting with sound, earning praise, imitating a parent, asserting affiliation or trying to avoid exclusion.
+
+Model the distinction:
+- **Activity:** relatively enduring organization around some motive and social object, always embedded in practices and material conditions.
+- **Action:** a goal-directed or situated contribution within activity; goals can be conscious or only partially articulated.
+- **Operation:** the condition-dependent method by which a goal is carried out, often routinized and not the subject of active reflection.
+
+An operation can become an action when conditions break a routine; an activity can change motive without every surface action changing; conflicting activities can recruit the same skill. This solves a frequent mechanical failure in personality simulation: a model can update 'trust' yet never change which concrete practices the person is capable of undertaking or why they undertake them.
+
+### VII.5 Experience changes *organizations*, not merely strength scores
+
+An LLM must serve as a **genuine psychological construction instrument**, not just a stylistic narrator. Given grounded event traces and current organizations, it may propose: a new candidate learned expectation; a change in significance; a relational strategy; a conflicting interpretation; a new possible memory generalization; an internalization or repudiation of a culturally available norm; or an altered organization of a skill and goal.
+
+Proposals enter an **explicit psychological adjudication/commitment path**:
+- grounds in actually encountered events and available developmental capacities;
+- specifies what organization is created, revised, inhibited or split, with scope and context;
+- states its relation to existing memories, needs, skills, obligations and contradictory organizations;
+- predicts at least one *operative difference* in future attention, recruitment, interpretation, action, expression or relation;
+- preserves alternative hypotheses, uncertainty and provenance;
+- rejects fabrications inconsistent with known life history, unavailable knowledge, or world facts;
+- commits only within SOROK's fictional psychological jurisdiction, never to PYAT's measured truth.
+
+An evocative paragraph that changes no recruitment or action is not psychological construction. A repeatedly applied scalar update that produces no coherent human difference is likewise insufficient. The proposal may be provisional: a later event can expose that what looked like internalized obedience was situational compliance, or that a seemingly generalized distrust is relationship-specific.
+
+### VII.6 Contextual plurality is the norm, not an exception
+
+Lahire's challenge to unified habitus is particularly operative here. A person may learn distinct organizations in family, school, work, worship, collective action, migration and intimate relationships. Not every acquired scheme is always active. Some contexts recruit incompatible schemes; some combine them into new patterns. A person can sincerely hold rival commitments, switch behavior without consciously planning the shift, and revise old motives after seeing the consequences.
+
+**Recruitment must depend on context and development**, not on a universal highest-weight trait. At a minimum track activation cues, accessible memory, material affordance, current motives, perceived Others, fatigue, role expectations, symbolic objects, recent events, antagonistic inhibition, and capacity to improvise. These influences must be represented sufficiently for events to change recruitment rules over time.
+
+Not all contradictions require resolution. They may remain dormant, be rationalized, erupt under new pressure, or produce genuine synthesis. The model must allow identity to become less unified, more unified, or organized differently without assuming psychological coherence is always the good.
+
+### VII.7 Development as open-ended formation, not a prescribed age curve
+
+Biological maturation changes bodily needs and the available operations of attention, memory, language, emotion regulation, social inference, reflection and practical skill. Cultural institutions organize developmental opportunities unequally. Childhood labor, schooling, play, migration, war, care, exclusion, class and collective life alter what is encountered, learned and possible.
+
+Implement **capability availability as a stateful developmental condition**: age and maturation matter but are not enough. Learned symbols, practice, support, nutrition, historical setting, disability, stress and institutions affect the real available repertoire. There should be no universal birthday switch that turns on 'political ideology', 'romantic attachment' or a final personality class. A new capacity can make an earlier experience newly interpretable.
+
+Luria's cultural-developmental inquiry asks how thinking is organized by historically available practices and cognitive tools; Elder asks how life timing, historical shocks and social pathways matter; Mortimer asks how work, adolescence and transition shape reciprocal trajectories. Those questions constrain the architecture, but do not supply universal deterministic update weights.
+
+### VII.8 The parents' backfill must explain, not predestine, Nadia
+
+The adult seeding procedure should operate like **constrained, whole-survey-informed historical abduction**:
+1. Choose a legitimate material/world position and time, not a stereotyped nation-level profile.
+2. Query PYAT for conditional *whole-configuration alternatives* and uncertainty, keeping minority routes visible.
+3. Bring in the world: household history, institutions, livelihoods, resource access, care patterns, cultural carriers, events and possible critical encounters.
+4. Generate several plausible, causally distinct biographies compatible with the evidence and world. Prefer configurations whose relational history could produce their current organizations; document what is fictional, not empirically observed.
+5. Select/commit one fictional backfill with explicit temporal events and reconstruct enough operative psyche for future interaction. Do **not** copy any real respondent or invent a secret survey profile.
+6. Put the adult into the actual continuing world as an independent Other whose actions may surprise Nadia and whose own state may change.
+
+Two adults who share every measured survey answer can have different needs, motivations, memories and responses to their child. Conversely two adults with different survey patterns can converge in a particular act because of a shared practical obligation. Whole-survey conditioning constrains plausible starting configurations but does not manufacture psychology or destiny.
+
+### VII.9 Nadia's upbringing must be actual interaction, not retroactive biography
+
+Nadia encounters adults, objects, illness, hunger, affection, disagreement, limits, care, danger, language, stories, religious practice, school, neighborhood and institutional power as actual world events. Her responses have consequences for others; their responses in turn constrain or extend what she can do. Care is a material process performed by independently burdened people, not a timeless trait called 'parental warmth'. Her psychological organizations develop from these interactions, not from a script describing the adult she is supposed to become.
+
+At each age, the system must be capable of explaining:
+- **What she needed or was engaged in**, not an abstract adult motive.
+- **What she actually encountered**, and what she had the capacity to notice or interpret.
+- **Which learned organizations were available and recruited**, and which were not yet acquired or inhibited.
+- **What she did or failed to do**, with independently determined world consequences.
+- **What changed in her capacity, relationship, memory or motive organization**, including unresolved contradictions.
+- **What new possibility or vulnerability is now present** that was not present before.
+
+A developmental trajectory that can be predicted in detail from the parent's national culture and a child seed violates this constitution. A trajectory in which each scene is entertaining but the same psychic organizations never change also violates it.
+
+### VII.10 Psychic opacity, alienation and the ultimate horizon
+
+The earlier A/S/V frameworks insisted on distinguishing **material position, awareness, solidarity, viscerality, belief and expression**. Keep them separate. A person may be in a class relation without identifying with that class, recognize a contradiction without acting, act in solidarity without a coherent ideology, or express values they do not consistently practice. **Buffers and cracks** matter: material security, relational protection, ideological availability and lived crisis mediate what structures become conscious or actionable.
+
+Alienation, identification and solidarity must have *traceable relations* to activity, world, and subjective organization; they are not decorative numeric dials. The old Absolute Horizon / ultimate meaning language can function as an **open question about how finite commitments are relativized, absolutized, criticized or transcended**. It is not a fixed psychological 'spiritual depth' score, a doctrinal verdict, or a hidden totalizing variable. A person may locate ultimate concern through religion, justice, care, art, labor, grief or wordless attention, or never articulate it. No metaphysical theology is installed as an empirical fact.
+
+The actor can be uncertain about their own motives. The runtime needs provisional, private and inaccessible organizations without inventing an omniscient narrator who explains them all. A meaningful response may be an action before it can be spoken; language can both reveal and alter what becomes conscious.
+
+### VII.11 Expression is a consequential act, not the final cosmetic layer
+
+An utterance has audience, timing, risk, desired effect, linguistic repertoire, possible concealment, emotion, habits and social conditions. The language model constructing speech must consult actual actor/world state and the selected activity; it should also allow silence, hesitation, misstatement and refusal. A polished monologue inconsistent with a tired, frightened person in a workplace encounter is not good expression just because it matches the personality description.
+
+After speech, the world responds. Words can change relationships, reputations, resource access, shared interpretations and internal organization. Expression may be retrospectively reinterpreted by the speaker. Therefore **the loop continues after language**; there is no terminal 'GPT output' stage in a living psychological organism.
+
+---
+
+## VIII. ORDINARY LIFE IS THE UNIT OF CONTINUITY, NOT THE HEROIC SCENE
+
+### VIII.1 A life is mostly not a dramatic event
+
+Continuous becoming requires routines: waking, eating, cleaning, commuting, working, waiting, caring, resting, exchanging small gestures, attending school, encountering bureaucracy, reading, praying, chatting, recovering from illness, shopping, playing, being bored, maintaining relationships. These are not background filler. They sustain needs, create repeated exposure, preserve or erode trust, consolidate skills, carry institutions, consume time and resources, and produce the slow acquisition of habits.
+
+**Ordinary-life hypercompression** must preserve causally consequential regularity without simulating every second. Use multi-timescale execution:
+- continuous or short-step physiological/need and resource processes where needed;
+- eventful situated encounters when action choices or consequences matter;
+- periodic household, workplace, school and relationship maintenance;
+- compressed routine intervals with explicit summaries of costs, exposures, practice and increments of change;
+- interruption triggers when a threshold, conflict, independent Other or institutional event breaks routine.
+
+Compression is not an excuse to skip social reproduction or psychological development. The compressed unit must retain how much was done, by whom, with which costs, whether prior organizations were practiced or frustrated, whether institutional constraints altered, and which previously impossible questions became worth asking. It cannot convert weeks of boredom into an ungrounded 'personality developed by +0.1' event.
+
+### VIII.2 A persistent relationship is a two-sided, historically evolving system
+
+A relationship is more than the focal actor's tag for another person. Track concrete encounters and mutual dependencies; commitments and asymmetries; interpreted histories and their divergences; boundary and consent; help, neglect, coercion and resistance; shared memories and mismatched recollections; altered trust, attachment and expectations; changed power or material dependence. Each participant retains their own psychic state and version of the history.
+
+A parent-child relationship changes through the child's maturation and the adult's independent activities. A friendship can persist across places with changing frequency and meaning. Institutions can enter relationships as creditors, employers, schools or courts. A relationship can fracture while both participants believe they acted understandably. The world need not contrive a single morally tidy narrative.
+
+### VIII.3 Independence is tested by surprises and disagreement
+
+An independent Other can refuse a request, pursue a goal elsewhere, become unavailable, misread the focal person's intent, change in an unanticipated direction, or suffer institutional consequences the focal actor did not cause. The world can make a plan impossible despite the actor's determination; it can also supply an unanticipated ally or opening.
+
+A simulation with many 'NPCs' who exist only to trigger scripted psychological updates is not a social organism. The test is not raw number of other-agent tokens but whether their persistent aims and independent conditions constrain the focal actor. Even a low-fidelity background process is better than a deterministic accessory if it preserves real otherness.
+
+### VIII.4 The full recursive circuit
+
+The runtime must repeatedly implement a causally interpretable trace of:
+
+**material world and ongoing reproductive activity → event/encounter/exposure → bodily and psychic recruitability → composition of motives and acquired organizations → situated intention/action/inaction/expression → independent other/world arbitration → material, relational and institutional consequence → memory and acquired-organization revision → changed future possibility and recruitment.**
+
+The process is *historical* in both directions: the actor changes, and the world—including Others—changes. On a future turn, an earlier institution can be absent, a relationship may have been damaged, a once-scarce skill may now be practiced, a previously invisible pressure may be recognized. The life history must be sufficient to explain these changes without repeatedly inventing causes from scratch.
+
