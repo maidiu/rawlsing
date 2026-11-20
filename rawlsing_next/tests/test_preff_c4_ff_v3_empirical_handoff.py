@@ -123,6 +123,7 @@ def test_not_outside_source_domain_and_no_independent_marginal_fabrication():
     # The default min context n=2 forces abstention: no selected source cell.
     assert offer.material()["state"] == "LOW_CONTEXT_SUPPORT__ABSTAIN"
     assert offer.material()["selected_complete_joint_cell"] == []
+    assert offer.material()["source_target_distribution_ref"] is None
 
 
 def test_zero_context_and_minimum_support_are_holds_not_impossible_states():
@@ -141,6 +142,7 @@ def test_zero_context_and_minimum_support_are_holds_not_impossible_states():
     assert zero.material()["state"] == "ZERO_OBSERVED_CONTEXT__NOT_IMPOSSIBILITY"
     assert zero.material()["raw_conditioned_complete_case_n"] == 0
     assert zero.material()["selected_complete_joint_cell"] == []
+    assert zero.material()["source_target_distribution_ref"] is None
 
 
 def test_rehashed_ff01_body_cannot_pass_exact_external_consumer_pin():
@@ -209,3 +211,21 @@ def test_persisted_cold_field_forge_prev3_first_consumer_no_source_requery(
         read_sourcefree_v3_handoff_private(
             file, external_pin=result.external_pin,
         )
+
+
+def test_held_low_n_context_never_publishes_target_research_reference():
+    result = _build("REMONT-C4-LOW-N-REF")
+    one = consume_v3_empirical_case_offer(
+        envelope=result.envelope, external_pin=result.external_pin,
+        conditions={0: "0", 1: "0"}, seed=11,
+    ).material()
+    assert one["raw_conditioned_complete_case_n"] == 1
+    assert one["state"] == "LOW_CONTEXT_SUPPORT__ABSTAIN"
+    assert one["source_target_distribution_ref"] is None
+    assert one["selected_complete_joint_cell"] == []
+    valid = consume_v3_empirical_case_offer(
+        envelope=result.envelope, external_pin=result.external_pin,
+        conditions={0: "0"}, seed=11,
+    ).material()
+    assert valid["state"] == "SOURCE_COHERENT_EXPLORATORY_CASE_OFFER"
+    assert valid["source_target_distribution_ref"] is not None
