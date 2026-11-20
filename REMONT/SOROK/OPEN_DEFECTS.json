@@ -1310,5 +1310,103 @@
       "T_confirmed": 0,
       "E_holds": 6
     }
-  }
+  },
+  "external_builder_pending_intakes": [
+    {
+      "id": "R5-CONSTRUCTION-PTE-INBOX-20261120",
+      "received_as": "BUILDER_PROPOSED_REMONT_INTAKE_NOT_ACCEPTED_DEFECT_STATUS",
+      "scope": "SOROK_R4_R5_RELATIONAL_METABOLISM_SOURCEFREE",
+      "frozen_remont_parent_sha": "d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764",
+      "remont_pr": 1171,
+      "builder_prs": [
+        1172,
+        1175
+      ],
+      "builder_examined_sha": "782b7f377bcac4873bbf4a6dccbc567d99c368b5",
+      "builder_inherits_remont_r7_not_r8": true,
+      "detail_path": "REMONT/SOROK/INBOX/20261120_UM_SOROK_R4_R5_PTE_TEST_EXECUTION_HANDOFF.md",
+      "queue_T": [
+        {
+          "provisional_ref": "R5-T-INBOX-01",
+          "status": "STATIC_SOURCE_FAULT_CORRECTED_NOT_EXECUTED",
+          "first_fault": "unittest.TestCase method was left with pytest-only tmp_path fixture argument",
+          "code_correction_sha": "739da5a149c8c55f9069bdc610f26f987fcdb54e",
+          "executed_red": false,
+          "executed_green": false,
+          "owner": "REMONT_HARNESS_CUSTODIAN_NOT_ORGANISM_BUILDER"
+        }
+      ],
+      "queue_E": [
+        {
+          "provisional_ref": "R5-E-INBOX-01",
+          "status": "EXECUTION_EVIDENCE_HOLD",
+          "workflow_sha": "e675ed0005bffce0aa21d5df641e40170ad36858",
+          "github_run_ids": [
+            44675087533,
+            44675093891
+          ],
+          "observed": "failed with no reported steps or available job logs; no Python execution established",
+          "next": "cold exact-HEAD local runner normal and optimized full suites, source manifest, cold SQLite verification"
+        },
+        {
+          "provisional_ref": "R5-E-INBOX-02",
+          "status": "INTEGRATION_CURRENTNESS_HOLD",
+          "current_remont_r8_sha": "d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764",
+          "next": "separately integrate R5 code atop R8, preserve P064-P069, execute full inherited plus added tests; do not modify active REMONT branch"
+        },
+        {
+          "provisional_ref": "R5-E-INBOX-03",
+          "status": "EXISTING_E_HOLDS_CROSS_REFERENCE",
+          "next": "independent G5, CAN/ADP/source authority, protected receiving remain unissued"
+        }
+      ],
+      "queue_P_investigation": [
+        {
+          "provisional_ref": "R5-P-INBOX-01",
+          "status": "UNEXECUTED_CAPABILITY_RISK_NO_REPRODUCED_FIRST_FAULT",
+          "source": "um_sorok_organism/constitution.py::compose / relational_metabolism.py::derive_relational_metabolism",
+          "tests_authored": {
+            "r4_path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_relational_metabolism_r4.py",
+            "r4_count": 11,
+            "r5_path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_relational_recruitment_r5.py",
+            "r5_count": 6
+          },
+          "extra_falsifiers": [
+            "cyclic suppression/recruitment",
+            "no hidden-form creation or contextual bypass",
+            "physical eligibility and Other autonomy preserved",
+            "actor-private psychodynamics not rendered",
+            "atomic model-candidate rollback",
+            "later encounter changed by revised relation"
+          ],
+          "owner": "REMONT_TO_CLASSIFY_AFTER_FIRST_FAULT; NOT_BUILDER_REPAIR"
+        }
+      ],
+      "required_run": [
+        "git rev-parse HEAD",
+        "python -m unittest discover -s tests -v",
+        "python -O -m unittest discover -s tests -q",
+        "python -m um_sorok_organism demo --db /tmp/sorok_r5_remont.sqlite3",
+        "cold SQLite reopen, verify event chain and actor/world boundaries",
+        "preserve first-fault red, full green logs, source SHA, runner/environment and reviewer authority"
+      ],
+      "historical_r8_author_normal_pass": 171,
+      "historical_r8_author_optimized_pass": 171,
+      "r4_test_cases_authored": 11,
+      "r5_test_cases_authored": 6,
+      "hypothetical_merged_discovered_test_total_if_all_distinct": 188,
+      "hypothetical_total_is_not_executed": true,
+      "counts_unchanged": true,
+      "status_partition_unchanged": {
+        "P_total": 69,
+        "P_open": 10,
+        "P_partial": 6,
+        "P_author_repaired_review_pending": 53,
+        "T_confirmed": 0,
+        "E_holds": 6
+      },
+      "protected_receiving": false,
+      "independently_accepted": false
+    }
+  ]
 }
