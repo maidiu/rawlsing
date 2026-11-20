@@ -17,6 +17,7 @@ from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self)
 from .psychic_genesis import admit_contrast_end
+from .joint_practice_genesis import admit_joint_practice
 from .prospective_horizon import record_possible_end_trial
 from .functional_correspondence import admit_functional_correspondence
 from .material_investments import admit_material_investment
@@ -49,7 +50,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REVISE_OPERATIVE_SELF_ORGANIZATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
-         'ACQUIRE_GENETIC_POSSIBLE_END','NO_CHANGE'}
+         'ACQUIRE_GENETIC_POSSIBLE_END',
+         'ACQUIRE_CONDITIONAL_JOINT_PRACTICE','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -255,6 +257,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['forms'][ident]['lifecycle']='DORMANT' if op=='SET_DORMANT' else 'ACTIVE'
             actor['forms'][ident].setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACQUIRE_CONDITIONAL_JOINT_PRACTICE':
+            try:
+                report.append(admit_joint_practice(
+                    actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_GENETIC_POSSIBLE_END':
             try:
                 report.append(admit_contrast_end(
