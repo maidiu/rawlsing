@@ -426,11 +426,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                     'kind':'CONTINGENT_CARE_REGULATION','comfort_before':before,
                     'comfort_after':b['comfort']})
                 effects[aid]['received_assistance']=True
-            field['history'].append(joint)
+            if status=='PERFORMED':
+                field['history'].append(joint)
             # PFF noncollapse: two co-occurrences are evidence of repetition,
             # NOT proof of learned relational capability, love, recognition,
             # or a stable social attractor. Keep observed pattern distinct.
-            if len(field['history'])>=2 and 'REPEATED_JOINT_ACT_OBSERVED' not in field['observed_patterns']:
+            if status=='PERFORMED' and len(field['history'])>=2 and 'REPEATED_JOINT_ACT_OBSERVED' not in field['observed_patterns']:
                 field['observed_patterns'].append('REPEATED_JOINT_ACT_OBSERVED')
             if status=='PERFORMED':
                 output='JOINT_ACTIVITY_PERFORMED'
