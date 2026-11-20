@@ -16,7 +16,7 @@ still needed to enforce a hard deadline/RSS on an individual blocking call.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import log2
+from math import log2, prod
 from time import monotonic
 from typing import Any, Callable, Mapping, Sequence
 
@@ -253,6 +253,40 @@ def run_issued_country_refinement(
         raise CountryRefinementError("ALREADY_CONDITIONED_PREDICTOR")
     if execution.query_ref != query.ref:
         raise CountryRefinementError("I03_QUERY_IDENTITY_MISMATCH")
+
+    # Fail *before* S04 expands a wide complete domain into an expensive
+    # Cartesian table. This returns a typed hold, not an inferred source zero.
+    components = query.target_arity_and_topology.get("components")
+    if not isinstance(components, (list, tuple)) or any(
+            not isinstance(c, Mapping) or
+            not isinstance(c.get("domain"), (list, tuple)) for c in components):
+        raise CountryRefinementError("INVALID_SOURCE_TARGET_COMPONENTS")
+    predicted_cells = prod(len(c["domain"]) for c in components)
+    if predicted_cells > budget.max_input_cells:
+        return {
+            "contract": CONTRACT, "state": HOLD,
+            "stop_reason": "ISSUED_JOINT_DOMAIN_EXCEEDS_BUDGET_BEFORE_S04",
+            "country": request.country, "country_proof_mode": mode,
+            "source_query_ref": query.ref.as_dict(),
+            "unvisited_candidate_indices": list(candidate_indices),
+            "projected_complete_domain_cells": predicted_cells,
+            "source_fact_not_reinterpreted": True,
+        }
+
+    if resource_sample is not None:
+        u = resource_sample()
+        if not isinstance(u, ResourceSample) or u.rss_bytes < 0 or u.scratch_bytes < 0:
+            raise CountryRefinementError("INVALID_RESOURCE_SAMPLE")
+        if ((budget.max_rss_bytes is not None and u.rss_bytes >= budget.max_rss_bytes) or
+                (budget.max_scratch_bytes is not None and u.scratch_bytes >= budget.max_scratch_bytes)):
+            return {
+                "contract": CONTRACT, "state": HOLD,
+                "stop_reason": "RESOURCE_LIMIT_BEFORE_S04_MATERIALIZATION",
+                "country": request.country, "country_proof_mode": mode,
+                "source_query_ref": query.ref.as_dict(),
+                "unvisited_candidate_indices": list(candidate_indices),
+                "source_fact_not_reinterpreted": True,
+            }
 
     knowledge = receive_s04_i03_research(query=query, execution=execution)
     m = knowledge.material()
