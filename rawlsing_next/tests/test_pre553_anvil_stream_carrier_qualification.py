@@ -89,20 +89,17 @@ def test_false_schema_or_source_root_cannot_pass_held_stream_admission(
     tmp_path, replacement,
 ):
     root, release, _, pins = _estate(tmp_path)
-    bad = replace(pins, roots={**ROOTS, **replacement})
-    if replacement.get("schema") != "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1":
-        with pytest.raises(StreamCarrierQualificationError, match="roots mismatch"):
-            qualify_saved_stream_manifest(
-                root=root, exact_release_path=release,
-                held=bad, current_authorizer=lambda _: True,
-            )
-    else:
-        # A direct-I02 schema is never a valid typed stream identity.
+    if replacement.get("schema") == "PYAT_S2B_DIRECT_SOURCEFREE_CANDIDATE_CERT@1":
+        # Refuse while constructing the exact held-stream type itself.
         with pytest.raises(StreamCarrierQualificationError, match="stream schema"):
-            qualify_saved_stream_manifest(
-                root=root, exact_release_path=release,
-                held=bad, current_authorizer=lambda _: True,
-            )
+            replace(pins, roots={**ROOTS, **replacement})
+        return
+    bad = replace(pins, roots={**ROOTS, **replacement})
+    with pytest.raises(StreamCarrierQualificationError, match="roots mismatch"):
+        qualify_saved_stream_manifest(
+            root=root, exact_release_path=release,
+            held=bad, current_authorizer=lambda _: True,
+        )
 
 
 def test_mutated_manifest_refuses_even_if_its_new_json_is_self_consistent(tmp_path):
