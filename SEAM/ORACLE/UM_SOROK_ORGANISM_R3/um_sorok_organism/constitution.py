@@ -17,6 +17,8 @@ def materialize(actor,world):
         activity_links=copy(actor.get('activity_links',[])),
         composition_methods=copy(actor.get('composition_methods',[])),
         relational_motifs=copy(actor.get('relational_motifs',[])),
+        possible_ends=copy(actor.get('possible_ends',[])),
+        evidence_paths=copy(actor.get('evidence_paths',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -169,6 +171,39 @@ def compose(constitution,access,limit=50):
     # Trace reads are only admitted trace references, not recovered episodic memory.
     traces=[t for t in constitution.traces if set(t.get('cue_terms',[]))&(cues|project_tags)]
     for t in traces[:limit]:currents.append({'kind':'NONDECLARATIVE_TRACE','ref':t['id'],'manifestation':t.get('manifestation','uninterpreted')})
+    # An earlier experienced possibility may become situatedly relevant again,
+    # without instantly becoming a project, desired end, or self-narrative.
+    # We read bounded historical descendants of actual actor-received cues.
+    candidate_history_refs=set()
+    for end in constitution.possible_ends[-128:]:
+        if end.get('status')!='POSSIBLE_NOT_ACQUIRED_MOTIVE':
+            continue
+        qualified={str(x).lower() for x in end.get('cue_terms',[])}
+        if qualified and qualified & cues:
+            candidate_history_refs.add(end['id'])
+            currents.append({
+                'kind':'HISTORICALLY_NOTICED_POSSIBLE_END',
+                'ref':end['id'],
+                'possible_object_for_analytic_construction':end['possible_object'],
+                'actual_origin_event':end['origin_event'],
+                'not_automatically_an_active_motive':True,
+                'not_necessarily_actor_self_articulated':True})
+    # Seeking, avoiding, staying or leaving can change what evidence was
+    # available later. Historical path receipts are NOT observations of
+    # counterfactual encounters or proof of a learned causal theory.
+    for previous in constitution.evidence_paths[-64:]:
+        prior_tags={str(x).lower()
+                    for x in previous.get('received_cue_tags',[])}
+        if prior_tags and prior_tags & cues:
+            candidate_history_refs.add(previous['experience_ref'])
+            currents.append({
+                'kind':'HISTORICAL_SIGNAL_PATH_REENCOUNTERED',
+                'ref':previous['experience_ref'],
+                'old_operation':previous.get('own_action'),
+                'old_selected_project_refs':copy(previous.get(
+                    'selected_project_refs',[])),
+                'not_imputed_counterfactual':True,
+                'no_automatic_belief_update':True})
     for field in constitution.relations:
         if 'REPEATED_JOINT_ACT_OBSERVED' in field.get('observed_patterns',[]):
             counterpart=[x for x in field['participants'] if x!=constitution.actor]
@@ -241,6 +276,7 @@ def compose(constitution,access,limit=50):
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
+                           list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)
