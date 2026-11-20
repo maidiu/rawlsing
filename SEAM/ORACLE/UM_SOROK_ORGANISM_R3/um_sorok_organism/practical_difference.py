@@ -73,6 +73,12 @@ def practical_alternatives(constitution,access,option):
                              'material_object_ref':None},
             'binding_status':('QUALIFIED_AS_PRESENT' if target and reachable else
                     'NO_ADDRESSED_PARTY' if target is None else 'UNBOUND_PARTY_NOT_PRESENT'),
+            'recruitment_pressures':{
+                'historic_form_or_project_basis':copy(option.get('basis',[])),
+                'psychodynamic_status':option.get('psychodynamic_status','UNQUALIFIED'),
+                'opposed_currents':copy(option.get('opposed_currents',{})),
+                'support_currents':copy(option.get('support_currents',[])),
+                'not_a_transparent_self_account':True},
             'source_grade':GRADE,'not_actor_self_account':True,
             'not_world_outcome':True,'priority':project.get('priority',.5)})
     alts.append({'option_id':stable_id('practical_option',{'actor':actor,'clock':clock,
