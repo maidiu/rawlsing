@@ -145,7 +145,8 @@ class ContrastedPsychicGenesis(unittest.TestCase):
         self.assertEqual(project["origin"],["world:later","world:third"])
         self.assertTrue(project["original_attempt_purpose_not_rewritten"])
         self.assertIn("world:earlier",end["source_event_refs"])
-        self.assertEqual(end["status"],"TAKEN_UP_AS_PRACTICAL_PROJECT")
+        self.assertEqual(child["possible_ends"][0]["status"],
+                         "TAKEN_UP_AS_PRACTICAL_PROJECT")
 
 
 class ExplicitLiveLLMContract(unittest.TestCase):
