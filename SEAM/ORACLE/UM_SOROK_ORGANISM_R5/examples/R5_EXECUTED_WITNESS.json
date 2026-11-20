@@ -1,0 +1,154 @@
+{
+  "actor_ids": [
+    "caregiver",
+    "nadia",
+    "worker"
+  ],
+  "actor_self_continuation": {
+    "attempts": [
+      "WORK:PERFORMED",
+      "REPAIR:PERFORMED"
+    ],
+    "method": "composed_7920fcfcee5b704f"
+  },
+  "chain": {
+    "events": 25,
+    "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+    "last_hash": "c135333ec8c5b72e514d02970b74c55dd56baf22fd326d23d8f67cd9db71b96c",
+    "valid": true
+  },
+  "child_care_events": [
+    "JOINT_ACTIVITY_PERFORMED",
+    "JOINT_ACTIVITY_PERFORMED"
+  ],
+  "child_language": 0.0,
+  "child_nonconceptual_orientations": [
+    {
+      "actor": "nadia",
+      "cue_terms": [
+        "coactor",
+        "caregiver"
+      ],
+      "function": "NONCONCEPTUAL_ATTENTION_ORIENTATION",
+      "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "id": "orientation_25944f0dcf94a447",
+      "not_attachment_or_other_intention": true,
+      "other": "caregiver",
+      "source_experience_refs": [
+        "experience_4907714c0c9e57ee",
+        "experience_abd1cfbdec5291cf"
+      ],
+      "version": "TCO_R4_LIVED_DIFFERENCE@1"
+    }
+  ],
+  "historically_refunctioned_care": {
+    "actor_attempt": "IMPOSE",
+    "attempt_grade": "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE",
+    "independent_target_changed": true,
+    "not_objective_justification": true,
+    "prospective_actions": [
+      "CARE",
+      "EAT",
+      "REST",
+      "WORK",
+      "SPEAK",
+      "IMPOSE",
+      "ORIENT",
+      "SIGNAL",
+      "WAIT"
+    ],
+    "relation_routes": [
+      {
+        "kind": "ACQUIRED_RELATION_ENABLED_PRACTICE",
+        "no_new_ability_minted": true,
+        "not_actor_self_explanation": true,
+        "not_world_moral_verdict": true,
+        "origin": [],
+        "ref": "relation_f4bfc3dc39d80db7",
+        "relation": "INSTRUMENTALIZES",
+        "source": "seed_form_0139745383103acc",
+        "target": "seed_form_f6783ac418626617",
+        "version": "TCO_R5_RELATIONAL_REFUNCTIONING@2"
+      }
+    ],
+    "world_outcome": "UNILATERAL_IMPOSITION_NOT_CONSENT",
+    "world_status": "PERFORMED"
+  },
+  "limitations": [
+    "no_live_model",
+    "no_native_P2_P3_P6",
+    "no_blind_survey_parent_fidelity",
+    "no_scientific_human_law",
+    "research_world_fixtures_explicit",
+    "no_independent_receiving"
+  ],
+  "schema": "TCO_R5_RECONSTITUTIVE_CONNECTED_WITNESS@1",
+  "sourcefree": true,
+  "worker_historical_actions": [
+    "REPAIR:BLOCKED",
+    "WORK:PERFORMED",
+    "REPAIR:PERFORMED",
+    "REPAIR:BLOCKED",
+    "WORK:PERFORMED",
+    "REPAIR:PERFORMED"
+  ],
+  "worker_history_generated_methods": [
+    {
+      "actor": "worker",
+      "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "hypothesized_end": "try an encountered alternative before retrying REPAIR",
+      "id": "provisional_method_c3e1677446802a4e",
+      "meaning": "ACQUIRED_PROCEDURAL_ASSOCIATION_NOT_CAUSAL_CERTAINTY",
+      "operations": [
+        "WORK",
+        "REPAIR"
+      ],
+      "origin_grade": "HISTORICALLY_REPEATED_LIVED_AND_WORLD_SUPPORTED_PRACTICE",
+      "project": "seed_project_cdad2905b94755fc",
+      "source_events": [
+        [
+          "objective_7a4315333898acfc",
+          "objective_cc11ee8638de82ff",
+          "objective_5ba4d9c2f02e8dc2"
+        ],
+        [
+          "objective_dedf0bb91188e38f",
+          "objective_ebb1afa40524ed76",
+          "objective_2dff2d606d056e2f"
+        ]
+      ],
+      "status": "ACTIVE",
+      "version": "TCO_R4_LIVED_DIFFERENCE@1"
+    }
+  ],
+  "worker_material_differences": [
+    {
+      "accessible_cue_tags": [
+        "missing_repair_material",
+        "repair",
+        "repair_performed"
+      ],
+      "acquired_not_preinstalled": true,
+      "actor": "worker",
+      "courses": [
+        "CONTINUED",
+        "INTERRUPTED"
+      ],
+      "function": "DIFFERENTIATE_PRACTICAL_EXPECTATION",
+      "grade": "SOURCEFREE_RESEARCH_PROVISIONAL",
+      "id": "difference_b0b292cab450f12b",
+      "interpretation": "OPEN_NOT_CAUSALLY_EXPLAINED",
+      "operation": "REPAIR",
+      "origin_events": [
+        "objective_7a4315333898acfc",
+        "objective_5ba4d9c2f02e8dc2",
+        "objective_dedf0bb91188e38f",
+        "objective_2dff2d606d056e2f"
+      ],
+      "project": "seed_project_cdad2905b94755fc",
+      "series": "course_ad4c170d4b9c985d",
+      "version": "TCO_R4_LIVED_DIFFERENCE@1"
+    }
+  ],
+  "world_id": "w1"
+}
