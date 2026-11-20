@@ -228,12 +228,38 @@ def suspend_worker(world,actors,delegate,worker,site,intention):
 def withdraw_labor(world,actors,who,site,intention):
     regime=_regime(world,site)
     if (regime is None or who not in regime["contracts"] or
-            regime["contracts"][who].get("status")!="ACTIVE"):
-        return {"status":"BLOCKED","outcome":"NO_ACTIVE_WORK_TO_WITHDRAW"}
+            regime["contracts"][who].get("status")!="ACTIVE"
+            or world["positions"].get(who)!=site):
+        return {"status":"BLOCKED","outcome":"NO_SITUATED_ACTIVE_WORK_TO_WITHDRAW"}
     regime["contracts"][who]["status"]="WORKER_WITHDREW"
     regime["contracts"][who]["end_clock"]=world["clock"]+1
     regime["contracts"][who]["withdrawal_selection_source"]=intention
     return {"status":"PERFORMED","outcome":"WORKER_WITHDREW_FUTURE_LABOR"}
+
+
+def _uncommitted_paid_wage(world,regime,who,site):
+    """Actual wage receipts less previously funded transfers, never salary owed.
+
+    Money is fungible. This identifies an upper bound on historically earned
+    contributable claims, not which physical coins a worker happens to own.
+    An initial cash balance or future unpaid wage cannot fabricate a wage-funded
+    collective resource.
+    """
+    paid=sum(_money(x["wage"],"WAGE_PROVENANCE") for x in
+        world.get("material_claims",[])
+        if type(x) is dict and x.get("worker")==who
+        and x.get("site")==site
+        and x.get("controller")==regime["controller"]
+        and type(x.get("clock")) is int and x["clock"]<=world["clock"]
+        and type(x.get("wage")) in (int,float))
+    assigned=sum(_money(x["amount"],"PAST_RELIEF_TRANSFER") for x in
+        world.get("material_claims",[])
+        if type(x) is dict and x.get("kind")=="ACTUAL_WAGE_FUNDED_RELIEF"
+        and x.get("payer")==who and x.get("source_ref")==regime["id"]
+        and type(x.get("amount")) in (int,float))
+    if assigned>paid:
+        raise ValueError("R19_RELIEF_EXCEEDS_PRIOR_ACTUAL_WAGES")
+    return round(paid-assigned,5)
 
 
 def fund_worker_relief(world,actors,who,site,intention):
@@ -241,18 +267,8 @@ def fund_worker_relief(world,actors,who,site,intention):
     if (regime is None or who not in regime["contracts"] or
             world["positions"].get(who)!=site):
         return {"status":"BLOCKED","outcome":"NO_SITUATED_WORKER_FOR_RELIEF"}
-    # This is *worker wage* mutual provision, not a moral score attached to
-    # any pre-existing private money. An actual employer wage claim must
-    # precede the new contribution; imported capital alone does not qualify.
-    earned=any(type(x) is dict and x.get("worker")==who
-               and x.get("site")==site
-               and x.get("controller")==regime["controller"]
-               and type(x.get("wage")) in (int,float) and x["wage"]>0
-               and type(x.get("clock")) is int
-               and x["clock"]<world["clock"]+1
-               for x in world.get("material_claims",[]))
-    if not earned:
-        return {"status":"BLOCKED","outcome":"NO_ACTUAL_PRIOR_WAGE_EXERCISE"}
+    if _uncommitted_paid_wage(world,regime,who,site)<RELIEF_UNIT:
+        return {"status":"BLOCKED","outcome":"NO_UNCOMMITTED_PAID_WAGE_CLAIM"}
     receipt=_transfer(world,who,regime["relief_pool_ref"],RELIEF_UNIT,
                       "ACTUAL_WAGE_FUNDED_RELIEF",regime["id"],intention)
     if receipt is None:
@@ -263,8 +279,9 @@ def fund_worker_relief(world,actors,who,site,intention):
 
 def draw_worker_relief(world,actors,who,site,intention):
     regime=_regime(world,site)
-    if regime is None or who not in regime["contracts"]:
-        return {"status":"BLOCKED","outcome":"NO_WORK_RELATION_FOR_RELIEF"}
+    if (regime is None or who not in regime["contracts"] or
+            world["positions"].get(who)!=site):
+        return {"status":"BLOCKED","outcome":"NO_SITUATED_WORK_RELATION_FOR_RELIEF"}
     if not any(x.get("worker")==who and
                x.get("start_clock",10**12)<=world["clock"]<=
                x.get("through_clock",-1) for x in regime["suspensions"]):
@@ -292,9 +309,16 @@ def actor_work_opportunities(world,actor,site):
             out.append(SUSPEND)
     if who in regime["contracts"]:
         if regime["contracts"][who].get("status")=="ACTIVE":
-            out +=[RESIGN,CONTRIBUTE]
-        if any(x["worker"]==who and
-               x["start_clock"]<=world["clock"]<=x["through_clock"]
-               for x in regime["suspensions"]):
+            out.append(RESIGN)
+        if (_money(world.get("accounts",{}).get(who,0),
+                   "ACTOR_RELIEF_BALANCE")>=RELIEF_UNIT
+                and _uncommitted_paid_wage(
+                    world,regime,who,site)>=RELIEF_UNIT):
+            out.append(CONTRIBUTE)
+        if (_money(world["accounts"].get(
+                regime["relief_pool_ref"],0),"RELIEF_POOL_BALANCE")>=RELIEF_UNIT
+                and any(x["worker"]==who and
+                        x["start_clock"]<=world["clock"]<=x["through_clock"]
+                        for x in regime["suspensions"])):
             out.append(DRAW)
     return out
