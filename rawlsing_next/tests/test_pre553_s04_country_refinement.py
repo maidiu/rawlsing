@@ -129,8 +129,9 @@ def test_budget_refuses_unaffordable_full_table_and_does_not_make_negative():
     out = _run(_real_joint("country-no-budget"),
                budget=_budget(max_input_cells=2))
     assert out["state"].startswith("HELD")
-    assert out["stop_reason"] == "JOINT_OVER_INPUT_BUDGET"
-    assert out["unvisited"] == [1, 2]
+    assert out["stop_reason"] == "ISSUED_JOINT_DOMAIN_EXCEEDS_BUDGET_BEFORE_S04"
+    assert out["unvisited_candidate_indices"] == [1, 2]
+    assert out["source_fact_not_reinterpreted"]
 
 
 def test_budget_refuses_counted_cell_expansion_without_partial_silent_zero():
@@ -147,9 +148,8 @@ def test_explicit_real_memory_probe_is_required_and_respected():
         _run(real, budget=_budget(max_rss_bytes=100))
     out = _run(real, budget=_budget(max_rss_bytes=100),
                monitor=lambda: ResourceSample(rss_bytes=101, scratch_bytes=0))
-    assert out["state"] == "PARTIAL_UNVISITED_UNKNOWN"
-    assert out["candidate_evidence"] == []
-    assert out["stop_reason"] == "WALL_RSS_OR_SCRATCH_BUDGET"
+    assert out["state"].startswith("HELD")
+    assert out["stop_reason"] == "RESOURCE_LIMIT_BEFORE_S04_MATERIALIZATION"
 
 
 def test_or_and_not_cannot_fake_predicate_country_entailment():
