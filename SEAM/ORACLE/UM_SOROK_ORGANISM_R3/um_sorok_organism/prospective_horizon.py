@@ -67,7 +67,14 @@ def project_trial_horizons(constitution, access, candidate_actions,
             type(source_object) is str and
             any(c.get('material_object_ref')==source_object
                 for c in access.cues if type(c) is dict))
-        if not original_match and bridge is None and not object_continuity:
+        if source_object is not None:
+            # A shared analyst token 'material_object' is not evidence that
+            # this child has generalized a good from object A to object B.
+            # Keep the particular source until a qualified future operation
+            # can bind a different actor-recognizable correspondence.
+            if not object_continuity:
+                continue
+        elif not original_match and bridge is None:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
