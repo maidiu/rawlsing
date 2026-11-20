@@ -1,0 +1,26 @@
+.........................................F...................... [ 25%]
+.................................................................. [ 51%]
+........................................................................ [ 80%]
+..................................................                 [100%]
+=================================== FAILURES ===================================
+_ TrialProjectAuthority.test_negative_same_event_trial_rewrite_of_existing_project_must_refuse _
+
+self = <test_r12_hostile_receiving_new.TrialProjectAuthority testMethod=test_negative_same_event_trial_rewrite_of_existing_project_must_refuse>
+
+    def test_negative_same_event_trial_rewrite_of_existing_project_must_refuse(self):
+        """RED: R12 bans ADD_PROJECT but permits motive rewrite via REORGANIZE_PROJECT."""
+        self._choose_trial([{'kind': 'REORGANIZE_PROJECT',
+            'project_id': self.project['id'],
+            'object': self.end['possible_object'],
+            'motive': 'MATURE_END_FROM_THIS_TRIAL',
+            'priority': 15.0}])
+        before_clock = self.rt.ledger.world()[1]['clock']
+        before_projects = deepcopy(self.rt.snapshot('nadia')['projects'])
+>       with self.assertRaisesRegex(InvalidDevelopment,
+                'CURRENT_TRIAL|MOTIVE|DURABLE_PROJECT'):
+E               AssertionError: InvalidDevelopment not raised
+
+tests/test_r12_hostile_receiving_new.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_r12_hostile_receiving_new.py::TrialProjectAuthority::test_negative_same_event_trial_rewrite_of_existing_project_must_refuse - AssertionError: InvalidDevelopment not raised
+1 failed, 251 passed, 20 subtests passed in 5.75s

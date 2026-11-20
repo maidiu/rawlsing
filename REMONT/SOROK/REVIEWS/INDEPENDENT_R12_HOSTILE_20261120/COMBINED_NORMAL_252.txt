@@ -1,0 +1,16 @@
+======================================================================
+FAIL: test_negative_same_event_trial_rewrite_of_existing_project_must_refuse (test_r12_hostile_receiving_new.TrialProjectAuthority.test_negative_same_event_trial_rewrite_of_existing_project_must_refuse)
+RED: R12 bans ADD_PROJECT but permits motive rewrite via REORGANIZE_PROJECT.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r12_independent/run/tests/test_r12_hostile_receiving_new.py", line 68, in test_negative_same_event_trial_rewrite_of_existing_project_must_refuse
+    with self.assertRaisesRegex(InvalidDevelopment,
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+            'CURRENT_TRIAL|MOTIVE|DURABLE_PROJECT'):
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+----------------------------------------------------------------------
+Ran 252 tests in 5.616s
+
+FAILED (failures=1)
