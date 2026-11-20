@@ -9,6 +9,8 @@ from .prospective_horizon import select_bounded_exploratory_trial
 from .distributed_power import choose_uncompelled_assistance
 from .practical_inquiry import choose_grounded_public_inquiry
 from .material_investments import choose_qualified_material_care
+from .unintended_goods import one_sourcefree_provisional_end
+from .expectation_afterlife import conservative_appraisal_proposal
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -111,6 +113,11 @@ class HeuristicSemanticProvider:
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
             relation_candidates=lived+copy(
                 packet.get('historically_proposed_functional',[]))
+            relation_candidates+=one_sourcefree_provisional_end(
+                packet.get('historically_possible_incidental_goods',[]),
+                {'possible_ends':packet.get('actor_possible_ends',[])})
+            relation_candidates+=conservative_appraisal_proposal(
+                packet.get('historically_possible_delayed_appraisals',[]))
             other=experience.get('reciprocated_partner')
             if other and cues:
                 # A genuinely performed joint occurrence can leave a trace and

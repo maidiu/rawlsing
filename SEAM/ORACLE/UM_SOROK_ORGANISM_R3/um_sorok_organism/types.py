@@ -165,6 +165,7 @@ def blank_world(world_id='w1'):
             'positioned_material_records': [],
             'institutional_access_rules': [],
             'material_gate_audit': [],
+            'routine_source_registry': {},
             'public_notices': [],
             'material_objects': {},
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},

@@ -265,7 +265,17 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 'event':event_ref,'cue':ref,'index':idx,'object':obj})
             if any(e['id']==end_id for e in actor.get('possible_ends',[])):
                 raise InvalidDevelopment('DUPLICATE_POSSIBLE_END')
+            origin_object=c.get('origin_material_object_ref')
+            if origin_object is not None and (
+                    type(origin_object) is not str or
+                    not any(q.get('id')==ref and
+                            q.get('material_object_ref')==origin_object
+                            for q in experience.get('perceived_cues',[])
+                            if type(q) is dict)):
+                raise InvalidDevelopment(
+                    'POSSIBLE_END_OBJECT_NOT_ACTOR_RECEIVED')
             end={'id':end_id,'possible_object':obj,
+                 'origin_material_object_ref':origin_object,
                  'possible_means':copy(possible),'cue_terms':copy(cues),
                  'status':'POSSIBLE_NOT_ACQUIRED_MOTIVE',
                  'origin_event':event_ref,'experience_ref':experience['ref'],

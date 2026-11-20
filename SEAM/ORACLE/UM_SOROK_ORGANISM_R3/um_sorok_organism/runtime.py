@@ -21,6 +21,9 @@ from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
+from .unintended_goods import possible_unintended_goods
+from .expectation_afterlife import source_qualified_appraisal_candidates
+from .routine_sources import register_sourcefree_period_envelope
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -209,6 +212,20 @@ class ConstitutiveRuntime:
                         if a['project_id'] is None),None)
                 else:
                     selected_alternative=None
+            # An unintended material consequence can become a later trial
+            # concerning that *particular continuing object*. Never let an
+            # action-only fallback silently substitute a site-wide generic
+            # repair for the actor's historically identified practical thing.
+            if trial_choice is not None and trial_choice.get(
+                    'source_material_object_ref') is not None:
+                source_object=trial_choice['source_material_object_ref']
+                material_matches=[
+                    a for a in alternatives if
+                    a.get('world_request',{}).get('material_object_ref')
+                    ==source_object]
+                if len(material_matches)!=1:
+                    raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
+                selected_alternative=material_matches[0]
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             selected=[available[ref] for ref in selected_refs]
@@ -276,7 +293,10 @@ class ConstitutiveRuntime:
                        'not_premature_fulfillment':True,
                        'world_request':{
                            'operation':action,
-                           'addressed_party_ref':bound_target}}
+                           'addressed_party_ref':bound_target,
+                           'material_object_ref':bound_object},
+                       'selected_material_object_ref':bound_object,
+                       'material_object_not_automatically_owned_by_actor':True}
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -487,6 +507,13 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             material_meaning_proposals=possible_object_investments(
                 actors[aid],experience)
+            possible_incidental_goods=possible_unintended_goods(
+                actors[aid],experience,
+                (actor_attempt.practical_selection
+                 if personally_done and actor_attempt is not None
+                 else None),objective_ref)
+            delayed_expectation_appraisals=source_qualified_appraisal_candidates(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -509,6 +536,10 @@ class ConstitutiveRuntime:
                 'historically_proposed_functional':copy(functional_genesis),
                 'historically_possible_material_meanings':copy(
                     material_meaning_proposals),
+                'historically_possible_incidental_goods':copy(
+                    possible_incidental_goods),
+                'historically_possible_delayed_appraisals':copy(
+                    delayed_expectation_appraisals),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
@@ -598,6 +629,26 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon)
+
+    def register_historical_routine_source(self,spec):
+        """Declare a bounded *research fictional* routine source before use.
+
+        This does not certify that an actor did something, was willing,
+        learned an operation, or possessed a survey respondent's history.
+        Only a later source-checked compressed passage can use this envelope.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        source=register_sourcefree_period_envelope(world,actors,spec)
+        receipt=self.ledger.commit(
+            self.world_id,v,world,{}, {},
+            'SOURCEFREE_HISTORICAL_ROUTINE_ENVELOPE',None,{
+                'source_ref':source['id'],
+                'world_only_not_actor_experience':True,
+                'no_automatic_effect_or_native_science':True,
+                'grade':GRADE})
+        return {'receipt':receipt['id'],'source_ref':source['id'],
+                'grade':'EXPLICIT_SOURCEFREE_HISTORICAL_FIXTURE'}
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)

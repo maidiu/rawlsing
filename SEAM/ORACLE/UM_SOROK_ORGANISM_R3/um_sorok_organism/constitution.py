@@ -23,6 +23,7 @@ from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 from .institutional_reproduction import current_institutional_opportunities
+from .expectation_afterlife import annotate_practical_expectations
 
 
 def materialize(actor,world):
@@ -448,6 +449,8 @@ def compose(constitution,access,limit=50):
                  'not_secret_world_explanation':True,
                  'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
                 for ref in option['candidate_notice_refs']]
+    expectation_afterlife=annotate_practical_expectations(
+        constitution,dynamics['candidate_actions'])
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -469,6 +472,7 @@ def compose(constitution,access,limit=50):
                            material['readset']+
                            inquiry['readset']+
                            functional['readset']+
+                           expectation_afterlife['readset']+
                            prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
