@@ -22,6 +22,7 @@ from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods
+from .expectation_afterlife import source_qualified_appraisal_candidates
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -510,6 +511,8 @@ class ConstitutiveRuntime:
                 (actor_attempt.practical_selection
                  if personally_done and actor_attempt is not None
                  else None),objective_ref)
+            delayed_expectation_appraisals=source_qualified_appraisal_candidates(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -534,6 +537,8 @@ class ConstitutiveRuntime:
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
                     possible_incidental_goods),
+                'historically_possible_delayed_appraisals':copy(
+                    delayed_expectation_appraisals),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
