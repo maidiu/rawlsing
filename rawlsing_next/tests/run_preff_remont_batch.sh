@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q016 RMT-Q015)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q016 RMT-Q015 RMT-Q017)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -72,6 +72,9 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q015) # Source-coherent continuing S04/DHIKR adaptive budget and PRE-V3 context
       tests=(rawlsing_next/tests/test_pre553_s04_determinicity_cycle.py)
+      ;;
+    RMT-Q017) # Statistically safe S04 routing: no n-only explosion or small-group false structure
+      tests=(rawlsing_next/tests/test_pre553_s04_support_noise_admission.py)
       ;;
     *)
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
