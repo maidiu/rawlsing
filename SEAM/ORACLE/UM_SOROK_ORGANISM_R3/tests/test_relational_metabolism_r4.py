@@ -247,7 +247,14 @@ class RelationalMetabolismR4(unittest.TestCase):
             "UNPROVEN_WITHOUT_BLIND_SURVEY_RECONSTRUCTION"))
 
 
-    def test_runtime_private_pre_event_metabolism_is_not_public_expression(tmp_path):
+    def test_runtime_private_pre_event_metabolism_is_not_public_expression(self):
+        # Native unittest cannot inject pytest's tmp_path fixture.
+        # Register sourcefree temporary storage for reliable local execution.
+        import tempfile
+        import shutil
+        from pathlib import Path
+        tmp_path=Path(tempfile.mkdtemp(prefix='sorok_relational_r4_'))
+        self.addCleanup(shutil.rmtree,tmp_path)
         packet={
             "answers":{"Q":"some answer"},
             "fictional_seed":{
