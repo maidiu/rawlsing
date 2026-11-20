@@ -169,6 +169,7 @@ def blank_world(world_id='w1'):
             'cues': [], 'historical_periods': [], 'public_history': [],
             'social_reproductive_labor': [],
             'material_provisioning_periods': [],
+            'material_feeding_events': [],
             'scheduled_obligations': [],
             'positioned_material_records': [],
             'institutional_access_rules': [],
