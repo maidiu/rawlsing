@@ -12,7 +12,8 @@ from types import SimpleNamespace
 from um_sorok_organism.types import blank_world,adult,newborn
 from um_sorok_organism.food_power_reproduction import (
     register_concession,install_gate,maintain_gate,sanction_gate,
-    contribute_food_commons,effective_enforcement,food_power_opportunities)
+    contribute_food_commons,effective_enforcement,food_power_opportunities,
+    offer_control_transfer,accept_control_transfer)
 from um_sorok_organism.food_access_struggle import (
     can_draw_shared_food,contribute_food_petition)
 from um_sorok_organism.material_provisioning import (
@@ -180,6 +181,55 @@ class R18WorldPower(unittest.TestCase):
         self.assertEqual(self.w['sites']['home']['mutual_aid_food'],0)
         self.assertEqual(self.w['sites']['home']['food'],14)
         self.assertGreater(self.a['nadia']['body']['nutrition'],before)
+
+    def test_property_transmission_is_two_independent_material_acts(self):
+        enact(self.w,self.a)
+        self.w['accounts']['mother']=2.0
+        offer=offer_control_transfer(
+            self.w,self.a,'father','mother','home',AUTONOMOUS)
+        self.assertEqual(offer['status'],'PERFORMED')
+        board=self.w['institutions']['household_food_board']
+        self.assertEqual(board['controller_actor'],'father')
+        self.assertFalse(can_draw_shared_food(self.w,'mother','home'))
+        self.w['clock']=1
+        refused=accept_control_transfer(
+            self.w,self.a,'mother','home',AUTONOMOUS)
+        self.assertEqual(refused['status'],'BLOCKED')
+        self.assertEqual(self.w['accounts']['mother'],2)
+        inspect(self.a['mother'],offer['notice_ref'],clock=1,
+                words=['food_control_offer','transmissible_property_claim'])
+        completed=accept_control_transfer(
+            self.w,self.a,'mother','home',AUTONOMOUS)
+        self.assertEqual(completed['status'],'PERFORMED')
+        self.assertEqual(board['controller_actor'],'mother')
+        self.assertEqual(board['r18_original_controller_actor'],'father')
+        self.assertEqual(board['initially_permitted_givers'],['mother'])
+        self.assertEqual(board['r18_transfer_history'][0][
+            'actor_selection_source'],AUTONOMOUS)
+        self.assertEqual(self.w['accounts']['father'],5)
+        self.assertEqual(self.w['accounts']['mother'],1)
+        self.assertFalse(can_draw_shared_food(self.w,'father','home'))
+        self.assertTrue(can_draw_shared_food(self.w,'mother','home'))
+        service=self.w['food_control_concessions']['home'][
+            'enforcement_service_ref']
+        self.assertEqual(self.w['accounts']['father']+
+                         self.w['accounts']['mother']+
+                         self.w['accounts'][service],7)
+
+    def test_expired_unaccepted_transfer_cannot_install_new_controller(self):
+        enact(self.w,self.a)
+        self.w['accounts']['mother']=3.0
+        offer=offer_control_transfer(
+            self.w,self.a,'father','mother','home',AUTONOMOUS)
+        self.w['clock']=5
+        inspect(self.a['mother'],offer['notice_ref'],clock=1)
+        old=accept_control_transfer(
+            self.w,self.a,'mother','home',AUTONOMOUS)
+        self.assertEqual(old['status'],'BLOCKED')
+        self.assertEqual(self.w['institutions'][
+            'household_food_board']['controller_actor'],'father')
+        self.assertIn('OFFER_PANTRY_CONTROL_TRANSFER',
+            food_power_opportunities(self.w,self.a['father'],'home'))
 
     def test_no_private_food_no_material_commons(self):
         self.w['holdings']['mother']['food']=0
