@@ -57,6 +57,8 @@ The **material relation** is primary: employee/employer, tenant/landlord, debtor
 
 **Social reproduction is causal infrastructure, not background scenery.** Food, housing, caregiving, maintenance, rest, education, health, intimacy, and the organization of labor power require activity, time, resources and institutions. Who performs this work and who is relieved of it affects which trajectories are sustainable. Reproduction includes its own conflicts, appropriations, exclusions, uneven burdens and possibilities of collective reorganization. It is never only a set of consumption values attached to an income percentile.
 
+The historical Permeability Index and Defiance/Revolutionary Tendencies System likewise named genuine problems: differential exposure to outside symbolic systems, defensive or creative uptake, dissent, repression, accommodation and reorganization. Their historical hand-set scales (like the legacy outlier/health coefficients) are **not** scientific inference rules. The reconstituted answer is relational: who actually encountered which carriers and alternative practices, what material conditions enabled or prevented their use, and how those lived encounters altered available activity, recruitment and future struggle.
+
 The legacy cultural-vector model had a valid question—how is an individual differently situated within historically patterned meanings?—but an inadequate answer when it averaged national cultural dimensions and converted them to preselected types. Preserve the *question about historically situated meanings and contradiction*, not the authority of unvalidated weights or personality-type coefficients.
 
 ### I.2 Social structure, actual power, pressure and flow are irreducible
@@ -99,6 +101,8 @@ The first PYAT object is not an answer cell but a **Survey Observation Event**: 
 
 An eligible respondent who leaves a question unanswered, an inapplicable respondent, a person never sampled, a person who was not offered that wording, and a respondent who answered a legitimate 'none' are five different objects. Preserve them. A coded zero may be observed absence, a negative answer, or a mechanical placeholder; no universal default can decide.
 
+**Privacy and respondent non-extraction are substantive constraints.** Preserve eligible respondent identity internally where authorized for valid joints and replay, but do not expose real survey individuals as reusable fictional personalities. Small or identifiable intersections require source-specific disclosure controls, aggregation or refusal; 'interesting rare minority' is not permission to reidentify survey respondents or reveal sensitive response combinations. Use exact source permission and privacy rules rather than assuming anonymity from a locally stripped identifier. A fictional adult is a historically conditioned construction, never a real respondent reproduced with a new name.
+
 The estate's finite source budget makes the semantics particularly important. You cannot repair a missing source question by turning an LLM's plausible sociological interpretation into data. The right reaction is to ask **what is positively recoverable, what else is constrained, what remains unidentified, and which available measurement could distinguish alternatives**.
 
 ### II.2 Identity, meaning and permission travel together but never collapse
@@ -134,7 +138,7 @@ The observation field is itself socially informative when reach, administrative 
 
 A useful record should carry a full multidimensional warrant rather than a global confidence number:
 
-\`\`\`text
+```text
 EvidenceClaim {
   proposition, target_event, observed_unit, source_identity, exact_root,
   source_release, historical_place_time, risk_set, population_scope,
@@ -145,7 +149,7 @@ EvidenceClaim {
   actor_permission, search_coverage, derivation_dependencies, invalidation,
   first_consumer, next_discriminating_question
 }
-\`\`\`
+```
 
 **Evidence kinds remain distinguishable:** directly observed; respondent-co-observed; estimated population relation; mathematically partially identified; model-dependent extrapolation; semantic conjecture; structurally admitted mechanism; valid empirical null; underpowered; unasked; noncomparable; blocked; integrity-failed; source-intrinsically inapplicable; producer/consumer unfinished. They may coexist on different axes of a single claim. A proposal made by an LLM is not equal to an issued semantic decision. A whole-questionnaire decode is not proof of approved original-source survey inference.
 
@@ -255,6 +259,8 @@ The engine remembers *computational work*, not just conceptual answers: exact re
 The empirical machine needs two distinguishable yet related geometries: **material/institutional position** and **measured response/repertoire**. Within declared legal comparison metrics, it can study their homologies, mismatches, concentrations, gradients, bridges, exclusions, local boundaries and cross-field analogies. No default Euclidean map of all humans is warranted. The distance metric, comparison population and meaning of each axis are part of the claim.
 
 A material position can contain income, property, control over productive assets, supervision, credential, contractual insecurity, dependence, access to collective power, care load, legal status, geography, and institutional recognition—not as identical variables, but as empirically or structurally linked parts of relations. A response/disposition space contains actual recorded judgments and practices, not an invisible personality field.
+
+**Homology** is a declared, testable correspondence between relational structures in different spaces or fields, not numerical similarity by magic. A position–repertoire homology requires common eligible observations or a separately authorized comparison; cross-field homology requires explicit translation of roles, scope, institutional context and historically altered meanings. Two groups sharing an attitude are not thereby the same social formation, and two statistical curves with similar shapes do not prove one underlying mechanism.
 
 The **Motif Atlas** takes intersections across these spaces and suggests candidate social formations without naming classes based solely on cluster geometry. A pattern crossing two positions may reflect shared institutional exposure; a pattern appearing only in an occupation may reflect an organization or a questionnaire artifact; a pattern with no observed positional concentration is still a real empirical pattern. The atlas must keep these explanations open.
 
@@ -614,7 +620,7 @@ The simulation and its empirical source machinery must be implemented as a **ver
 
 A defensible provisional interface map:
 
-\`\`\`text
+```text
 SOURCE ESTATE / SEMANTIC AUTHORITY
   -> observed respondent and eligible-measure facts
   -> PYAT discovery: MORPH, CONDITION, REVERSE, FRACTURE,
@@ -634,7 +640,7 @@ SOURCE ESTATE / SEMANTIC AUTHORITY
 EXPLORATORY LLM hypothesis proposals -> qualified owner gates
 CAN/ADP, PFF, SDTF, P2–P6, Mechanisms, PRE-A0, SEAM, ORACLE,
 legacy V3 -> reusable inherited capital, exact owner audit required
-\`\`\`
+```
 
 This is a functional dependency drawing, **not** a command to rebuild every existing primitive or materialize every named arrow as a physical stage. Current Field Forge R2 authority allows direct consumption of competent producer objects; it does not demand a universal learned carrier. PYAT owns source-qualified empirical inference; competent structural owners own independent material claims; SOROK owns psychological acquisition and realized actor state; world owners arbitrate consequences; authority/receiving owners control scientific issuance and protected integration. Cross-system contracts are allowed without granting either side the other's epistemic powers.
 
@@ -676,7 +682,7 @@ The table is a minimum semantic vocabulary for integration. Component owners can
 
 A downstream request should specify a historical/source-qualified context and an intended consumption:
 
-\`\`\`text
+```text
 PossibilityQuery {
   as_of_world, source_scope, place_time, positioned_subject_conditions,
   already_realized_observations_or_fictional_history,
@@ -684,11 +690,11 @@ PossibilityQuery {
   alternative_and_minority_budget, required_evidence_grade,
   intended_consumer, query_history
 }
-\`\`\`
+```
 
 The answer must not be one randomly sampled ideological vector:
 
-\`\`\`text
+```text
 PossibilityAnswer {
   precise_supported_condition, observed_whole_case_options,
   conditional_distributions, materially_conditioned_alternatives,
@@ -698,7 +704,7 @@ PossibilityAnswer {
   specificity_walkback, valid_absences, provenance_and_version,
   next_questions, actor_nonpredestination_warning
 }
-\`\`\`
+```
 
 **Specificity walkback** is a visible decision: if exact age × household × place × labor × stated-religion conditioning is unsupported, broaden permissible conditions one at a time, record what was lost and how the answer changed. A proxy-country or neighboring-wave distribution, if permitted, must be marked as a proxy with time and transport risks, not local empirical fact. When no lawful candidate exists, return the exact unsupported point and the smallest valid question instead of hallucinating a very precise adult.
 
@@ -715,7 +721,7 @@ Sampling a coherent fictional adult may employ a qualified model or respondent-s
 
 A provisional agent/world contract should make a full update atomic at its own grain:
 
-\`\`\`text
+```text
 advance_world(t0 -> t1):
   mature_needs_resources_and_institutional_processes()
   run_compressed_routines_with_reconstructible_effects()
@@ -735,7 +741,7 @@ advance_world(t0 -> t1):
     commit_actor_delta_and_relational_memory(psychological_delta)
   atomically_commit_world_actor_history()
   expose_new_context_to_situated_possibility_queries()
-\`\`\`
+```
 
 This is **not a synchronous obligation to run every actor in every interval**. It defines causal order and a trace contract. Compression may elide routine steps only while preserving their cumulative material, embodied, relational and developmental effects; significant interruptions expand into explicit events. No language model may bypass world arbitration by writing a successful consequence into narrative prose.
 
