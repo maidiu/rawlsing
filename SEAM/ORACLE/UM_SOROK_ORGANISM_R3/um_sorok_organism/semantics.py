@@ -40,8 +40,12 @@ class HeuristicSemanticProvider:
             # NOT an empirically recovered conscious motive.
             option=possibilities[0]
             courses=option.get('project_courses',[])
-            if courses:
-                selected=sorted(courses,key=lambda x:(
+            bindable={a['project_id'] for a in option.get('practical_alternatives',[])
+                      if a.get('project_id') is not None
+                      and a.get('binding_status')!='UNBOUND_PARTY_NOT_PRESENT'}
+            available=[c for c in courses if c['project_id'] in bindable]
+            if available:
+                selected=sorted(available,key=lambda x:(
                     -x.get('priority',.5),str(x['project_id'])))[0]
                 project_ref=selected['project_id']
             else:
