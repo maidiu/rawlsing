@@ -64,6 +64,10 @@ def acquire_orientation(actor, experience, event_ref, proposal):
     _actor_event(actor, experience, event_ref)
     source = _received(experience, proposal)
     action = _action(actor, proposal)
+    if (actor['body']['language'] < .25 and source['kind'] ==
+            'ACTOR_RECEIVED_SIGNAL' and source['modality'] not in
+            ('auditory','visual','tactile','present','olfactory')):
+        raise ValueError('HISTORICAL_INFANT_SENSORY_UNGROUNDED')
     mode = proposal.get('orientation_mode')
     if mode not in MODES:
         raise ValueError('HISTORICAL_INVALID_POLARITY')
@@ -203,6 +207,9 @@ def pre_cue_pressures(constitution, access):
     currents = []
     seen = set()
     readset = []
+    origins = {r.get('id'): r for r in
+               getattr(constitution, 'historical_orientations', [])
+               if type(r) is dict and type(r.get('id')) is str}
     sources = [(r, 'NONDECLARATIVE_PRACTICE') for r in
                getattr(constitution, 'historical_orientations', [])]
     sources += [(r, 'ACQUIRED_SELF_ORGANIZATION') for r in
@@ -229,7 +236,9 @@ def pre_cue_pressures(constitution, access):
                 'source_family': family, 'ref': source_id,
                 'action': row['operation'], 'polarity': polarity,
                 'origin_event': row['origin_event'],
-                'source_modality': row.get('source',{}).get('modality'),
+                'source_modality': (row.get('source',{}).get('modality') or
+                    origins.get(row.get('source_orientation_ref'),{}).get(
+                        'source',{}).get('modality')),
                 'source_self_claim_not_causal_truth': family == 'ACQUIRED_SELF_ORGANIZATION',
                 'not_conscious_intent': True, 'not_a_new_project': True,
                 'no_present_cue_required': True, 'grade': GRADE,
