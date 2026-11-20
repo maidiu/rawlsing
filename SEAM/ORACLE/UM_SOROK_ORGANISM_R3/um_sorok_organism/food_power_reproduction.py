@@ -15,6 +15,10 @@ INSTALL="INSTALL_PANTRY_GATE"
 MAINTAIN="MAINTAIN_PANTRY_GATE"
 SANCTION="SANCTION_PANTRY_ACCESS"
 COMMONS="CONTRIBUTE_FOOD_COMMONS"
+OFFER="OFFER_PANTRY_CONTROL_TRANSFER"
+ACCEPT="ACCEPT_PANTRY_CONTROL_TRANSFER"
+TRANSFER_PRICE=1.0
+TRANSFER_WINDOW=4
 COST_INSTALL=1.0
 COST_MAINTAIN=1.0
 COST_SANCTION=2.0
@@ -340,6 +344,113 @@ def contribute_food_commons(world,actors,who,site,intention):
             "commons_ref":receipt["id"]}
 
 
+
+def offer_control_transfer(world,actors,who,recipient,site,intention):
+    """Offer a *possible* transfer, not inherited control or recipient assent."""
+    board=_owned_board(world,who,site)
+    if (board is None or board.get("food_rights")!="CONTROLLED"
+            or recipient not in actors or recipient==who
+            or world["positions"].get(recipient)!=site):
+        return {"status":"BLOCKED","outcome":"NO_SITUATED_PANTRY_TRANSFER_PARTIES"}
+    previous=board.get("r18_transfer_offer")
+    if previous and type(previous.get("through_clock")) is int and (
+            previous["through_clock"]>=world["clock"]):
+        return {"status":"BLOCKED","outcome":"ANOTHER_EFFECTIVE_TRANSFER_OFFER_EXISTS"}
+    ident=stable_id("pantry_control_offer",{
+        "board":board["id"],"from":who,"to":recipient,
+        "clock":world["clock"]+1})
+    notice=stable_id("posted_pantry_control_offer",{"offer":ident})
+    record={
+        "id":ident,"from_controller":who,"recipient":recipient,
+        "clock":world["clock"]+1,
+        "through_clock":world["clock"]+TRANSFER_WINDOW,
+        "source_concession_ref":board["r18_origin_concession_ref"],
+        "price":TRANSFER_PRICE,"notice_ref":notice,
+        "actor_selection_source":intention,
+        "recipient_has_not_yet_accepted":True,
+        "grade":GRADE}
+    board["r18_transfer_offer"]=record
+    world.setdefault("public_notices",[]).append({
+        "id":notice,"public":True,"location":site,
+        "effective_from":world["clock"]+1,
+        "effective_until":record["through_clock"],
+        "public_terms":["food_control_offer","transmissible_property_claim"],
+        "public_text":"The current controller offers to transfer pantry "+
+                      "control by a separate actor-accepted material exchange.",
+        "origin_rule_ref":ident,
+        "acceptance_not_presumed_from_publication":True,
+        "grade":GRADE})
+    return {"status":"PERFORMED",
+            "outcome":"PANTRY_CONTROL_TRANSFER_OFFERED_NOT_ACCEPTED",
+            "offer_ref":ident,"notice_ref":notice}
+
+
+def accept_control_transfer(world,actors,who,site,intention):
+    """Separate independent action and paid exchange transfer real power."""
+    from .food_access_struggle import _board
+    board=_board(world,site)
+    if (board is None or not board.get("r18_origin_concession_ref")
+            or board.get("food_rights")!="CONTROLLED"):
+        return {"status":"BLOCKED","outcome":"NO_TRANSFERRABLE_EFFECTIVE_PANTRY_CLAIM"}
+    offer=board.get("r18_transfer_offer")
+    if (not offer or offer.get("recipient")!=who or
+            type(offer.get("clock")) is not int or
+            type(offer.get("through_clock")) is not int or
+            not offer["clock"]<=world["clock"]<=offer["through_clock"] or
+            world["positions"].get(who)!=site or
+            who not in actors or
+            offer.get("from_controller")!=board["controller_actor"]):
+        return {"status":"BLOCKED","outcome":"PANTRY_TRANSFER_OFFER_EXPIRED_OR_FOREIGN"}
+    inspected=any(
+        x.get("public_notice_ref")==offer["notice_ref"] and
+        type(x.get("inspected_at_clock")) is int and
+        offer["clock"]<=x["inspected_at_clock"]<=world["clock"]
+        for x in actors[who].get("notice_exposures",[]))
+    if not inspected:
+        return {"status":"BLOCKED","outcome":"TRANSFER_NOTICE_NOT_PERSONALLY_INSPECTED"}
+    seller=board["controller_actor"]
+    buyer_cash=_amount(world.get("accounts",{}).get(who,0),
+                       "PANTRY_TRANSFER_BUYER_BALANCE")
+    seller_cash=_amount(world.get("accounts",{}).get(seller,0),
+                        "PANTRY_TRANSFER_SELLER_BALANCE")
+    price=_amount(offer["price"],"PANTRY_TRANSFER_PRICE")
+    if buyer_cash<price:
+        return {"status":"BLOCKED","outcome":"NO_MATERIAL_POWER_TO_ACQUIRE_CONTROL"}
+    from .world import _exact_material_delta
+    buyer_after=_exact_material_delta(buyer_cash,-price,
+                                      "R18_TRANSFER_BUYER_CASH")
+    seller_after=_exact_material_delta(seller_cash,price,
+                                       "R18_TRANSFER_SELLER_CASH")
+    # A paid change of controller must not retroactively rewrite the grant.
+    world["accounts"][who]=buyer_after
+    world["accounts"][seller]=seller_after
+    board.setdefault("r18_original_controller_actor",seller)
+    board["controller_actor"]=who
+    board["initially_permitted_givers"]=[who]
+    board["r18_transfer_offer"]=None
+    receipt={
+        "id":stable_id("pantry_control_transfer",{
+            "board":board["id"],"offer":offer["id"],
+            "new_controller":who,"clock":world["clock"]+1}),
+        "clock":world["clock"]+1,"from_controller":seller,
+        "to_controller":who,"offer_ref":offer["id"],
+        "source_concession_ref":offer["source_concession_ref"],
+        "price_paid":price,
+        "enforcement_service_ability_inherited_not_ensured":True,
+        "prior_controller_loses_exclusive_pantry_right":True,
+        "actor_selection_source":intention,
+        "recipient_motive_not_inferred":True,
+        "grade":GRADE}
+    board.setdefault("r18_transfer_history",[]).append(receipt)
+    world.setdefault("material_claims",[]).append({
+        "clock":world["clock"]+1,"kind":"PANTRY_CLAIM_PURCHASE",
+        "payer":who,"recipient":seller,"amount":price,
+        "source_ref":offer["id"],"paid_change_of_effective_control":True})
+    return {"status":"PERFORMED",
+            "outcome":"PANTRY_CONTROL_MATERIALLY_TRANSFERRED",
+            "transfer_ref":receipt["id"]}
+
+
 def food_power_opportunities(world,actor,site):
     """Specific existing means, not an attribution of desire or consciousness."""
     available=[];who=actor["id"]
@@ -358,6 +469,9 @@ def food_power_opportunities(world,actor,site):
         available.append(INSTALL)
     board=_owned_board(world,who,site)
     if board:
+        if (board.get("food_rights")=="CONTROLLED"
+                and not board.get("r18_transfer_offer")):
+            available.append(OFFER)
         balance=_amount(world.get("accounts",{}).get(
             who,0),"AFFORDANCE_ENFORCEMENT_CASH")
         if board["food_rights"]=="CONTROLLED" and balance>=COST_MAINTAIN:
@@ -367,6 +481,21 @@ def food_power_opportunities(world,actor,site):
                 and any(other!=who and location==site
                         for other,location in world["positions"].items())):
             available.append(SANCTION)
+    from .food_access_struggle import _board
+    existing=_board(world,site)
+    if existing:
+        proposed=existing.get("r18_transfer_offer")
+        if (type(proposed) is dict and proposed.get("recipient")==who
+                and type(proposed.get("clock")) is int
+                and type(proposed.get("through_clock")) is int
+                and proposed["clock"]<=world["clock"]<=proposed["through_clock"]
+                and _amount(world.get("accounts",{}).get(
+                    who,0),"AFFORDANCE_TRANSFER_FUNDS")>=TRANSFER_PRICE
+                and any(x.get("public_notice_ref")==proposed.get("notice_ref")
+                        and type(x.get("inspected_at_clock")) is int
+                        and proposed["clock"]<=x["inspected_at_clock"]<=world["clock"]
+                        for x in actor.get("notice_exposures",[]))):
+            available.append(ACCEPT)
     if (_amount(world.get("holdings",{}).get(
             who,{}).get("food",0),"AFFORDANCE_HELD_FOOD")>=1
             and world["positions"].get(who)==site):
