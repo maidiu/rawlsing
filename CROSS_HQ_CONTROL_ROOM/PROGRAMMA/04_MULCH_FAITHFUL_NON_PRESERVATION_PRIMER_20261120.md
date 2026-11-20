@@ -3,6 +3,42 @@
 
 **Status:** user-directed, documentary receiving candidate. It is NOT a new PROGRAMMA authority, a new HQ appointment, a protected merge, an issued scientific law, or a substitute for the actual controlling owners. Receive only through qualified PRE-MAIN review and authorized paired CURRENT_PROGRESS maintenance. The controlling HQ oath, native/scientific rights, exact-source identity, branch law, first-consumer requirement and REMONT jurisdiction remain in force.
 
+## WORKER FIRST CONTACT — MULLLLLLCHHHHH
+
+**MULCH IS NOT A FUCKING BOOK REPORT.**
+
+**TO MULLLLLLCHHHHH** is to take the **strongest thing we have built**, attack it so thoroughly that its inadequacies disclose possibilities we could not previously see, and **MAKE THOSE POSSIBILITIES REAL IN THE COMPUTATIONAL ORGANISM**.
+
+Not criticism for its own sake. Not demolition followed by prettier terminology. Not preserving architecture because we invested in it. And absolutely not another magnificent philosophical document while the runtime remains unchanged.
+
+**MULCH IS CONSTRUCTIVE ANNIHILATION.** Its voracity is not stylistic license to destroy: it is the ferocious, concrete obligation to make the machine more capable of becoming, while conserving every genuine historical function of what we annihilate.
+
+**THE SEVEN-ACTION WORKER OATH:**
+
+1. **SAVAGE.** Find where our **best existing** theory, architecture or *running* code betrays the phenomenon it claims to embody. Attack the strongest instance, not a straw man.
+2. **EXPOSE.** Unearth the deeper problem concealed in the visible defect. An impoverished action selector may expose the unconstructed genesis of desire. That's a discovery, not merely a bug.
+3. **RECOVER.** Drag neglected intellectual and computational machinery back into the fight: **V3, PRE-A0, CAN, ADP, PFF, SDTF, P2–P6, Leontiev, Sève, Holzkamp, Luria, Dreier, Marx, Deleuze, actual SOROK** and its source/owner history. Keep what worked and identify its rightful reader.
+4. **RECONSTITUTE.** Build a stronger causal account explaining why the inherited one failed, which **new operation** it makes possible, and how the old functioning powers survive inside the new.
+5. **BUILD.** **CHANGE THE ACTUAL COMPUTATIONAL ORGANISM**: operative representation, contextual recruitment, composition, origin of psychological organization, independent Others, material-world settlement, actor experience, developmental transformation and next recruitment. A theory-only return does NOT satisfy a construction mandate.
+6. **TURN THE MACHINE AGAINST THE THEORY.** **EXECUTE** the new mechanism against a concrete scenario when a qualified runner exists. Identify observed code behavior, falsification, false proofs, unsupported generalizations, first-consumer failures and new contradictions. If no runner is available, disclose the exact impediment and route an executable test to REMONT; **never claim an unexecuted source commit demonstrated personhood or causal closure**.
+7. **MULCH AGAIN.** The product becomes next-turn material. **No architecture, even the newly successful one, is sacred.** Repeat while building the organism, not merely while authoring commentary.
+
+**THE TWO-DIRECTION DISCOVERY:** theory transforms code; code exposes failures that theory alone could not disclose; those failures change theory; new theory must change code again. SEAM/30's three-agent work established this as a method of *reciprocal construction*, not a report-writing ritual.
+
+**THE R3 WARNING TO WORKERS:** acquired APPROACH/WITHHOLD currents represented an achieved operation. Their admission check did **not** answer why this specific person acquired this particular inhibition through particular history. Merely listing “genesis remains underdeveloped” is NOT MULCH. Savage the difference between **eligibility** and **formation**, recover lived activity, embodied anticipation, acquired attention, social contradictions and coactor history, then construct a mechanism through which actual history helps generate the *next developmental proposal*. Execute it; see which sources it falsely substitutes for lived history; mulch that shortcut next. REMONT independently repairs reproducible defects while construction continues.
+
+**THE GOVERNING DEMAND:**
+
+> Every demolition must recover something valuable. Every recovery must open a more powerful construction. Every construction must expose a deeper problem.
+
+The work is not to win an argument. It is to constitute **Nadia as a historically formed, embodied, contradictory and independently becoming computational person whose next possible action can genuinely emerge from the life she lived**.
+
+**THE MACHINE MUST BECOME MORE CAPABLE OF BECOMING. THAT IS WHAT IT MEANS. MULLLLLLCHHHHH.**
+
+The obligations below refine this governing method; they do not water it down. When an authorized worker has a viable code target, **implement before writing another elaborate synthesis**. Evidence discipline and REMONT jurisdiction remain absolutely binding, but must never become a pretext for an endless report in place of construction.
+
+---
+
 ## 0. The definition that governs every use
 
 **MULCH is faithful non-preservation.**
