@@ -38,6 +38,10 @@ ACTIONS = {
     'WITHDRAW_FROM_WAGE_WORK':{'motor':0.15,'language':0.28,'cost':0.04},
     'CONTRIBUTE_WAGE_RELIEF':{'motor':0.18,'language':0.20,'cost':0.04},
     'DRAW_WAGE_RELIEF':{'motor':0.14,'language':0.18,'cost':0.04},
+    'ENDORSE_WAGE_DEMAND':{'motor':0.18,'language':0.25,'cost':0.04},
+    'WITHHOLD_WORK_SHIFT':{'motor':0.26,'language':0.10,'cost':0.06},
+    'EMPLOYER_ACCEPT_WAGE_DEMAND':{'motor':0.16,'language':0.32,'cost':0.05},
+    'EMPLOYER_REJECT_WAGE_DEMAND':{'motor':0.16,'language':0.32,'cost':0.05},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }
