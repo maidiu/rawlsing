@@ -144,6 +144,27 @@ What a user encounters is chiefly the fourth, sometimes mediated by accessible s
 
 ---
 
+### Event-first psychodynamics: the iceberg operates; the LLM follows the admitted shift
+
+**Controlling principal correction (November 19):** SOROK's event-structure is already intended to *activate persona-computation*, including what becomes salient and how current psychic relations interact. The LLM **afterward realizes a scene congruent with the actual computed shift**. Do not invent a new perception-before-recruitment interpreter or install a conscious “iceberg manager.” The iceberg is continuously operative through body, attention, feeling, expectation, suppression, practical possibility, and their histories. The tip is partial manifestation, not an independent counterpower.
+
+Preserve the PRE-A0 two-call distinction: a model may also propose **qualified developmental semantic consequences**, which become operative only through competent typed admission. That proposal role is distinct from **ex post expressive realization**. The renderer has no authority to add an unconscious cause, a performed event, another actor's intention, or a formerly inaccessible memory. The computation is not an explanation written to fit an appealing scene.
+
+### The productivity constraint is causal, not a literal conservation of emotion
+
+The principal's first-law-of-thermodynamics analogy demands that **inhibition not silently annihilate the psychological processes that matter**. The developing iceberg can reroute, sublimate, sublate, amplify, attenuate, repress, compensate, rationalize, repeat, or reorganize its historical relations. An excluded tenderness can make resentment more defensively organized; an unexpressed loyalty can alter the meaning of dissent; a disavowed dependency can shape attention without becoming a conscious confession. Psychological processes can be productive of repression, stasis, domination, grief, aversion or nothing publicly manifest—not necessarily progress.
+
+**Do not mistake the analogy for an empirically established energy-conservation law.** There is no justified conserved scalar of desire, affect or memory, and biological forgetting, extinction and genuine loss happen. Nor must every event force a durable psychological update. Preserve *historical lineage and qualified causal effects*; distinguish present nonexpression, context dormancy, indirect effect, temporal attenuation, owner-admitted extinction and unknown. A subsystem need not consume compute every tick to remain historically constituted. Inhibition must be able to *alter other currents or future recruitment*, not merely delete a form from the active set. Source-derived, not a newly invented organ: PRE-A0 §§4–7, 13–17 already specifies relational motifs, inhibition chains, unrecognized sources and recursive psychic afterlife.
+
+### Relations among relations are as important as the forms being related
+
+The meaning or felt significance of an acquired form may change because of its relation to another form, a historical person, a moral authority, a continuing activity, or the actor's relation to the relation itself. Differentiate change to **form**, **directed relation**, **contextual recruitment scope**, **higher-order motif**, **actor access**, and **objective world**. An earlier appreciation can remain real yet become painful, temporarily occluded, reinterpreted as complicity, or subordinate to another attachment. An emotion can become the object of another emotion: fear of longing, shame about desire, pleasure in sadness, resentment about one's own dependence. Do not combine them by arithmetic or infer a universal trauma etiology. Preserve the full Freud/Jung/Klein/Leontiev/Sève/Lahire/Dreier/Holzkamp/Luria/Fromm/Fanon tensions in [SEAM/30-05](05_PSYCHODYNAMIC_RELATION_HISTORY_AND_UNCONSCIOUS_OPERATION_R1.md).
+
+**Full source and programmatic implications:** [SEAM/30-06 — Productive Psychodynamics, Event-First Computation, and Ideological Recruitment](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md). This is a required companion to the operative synthesis, not an optional theoretical appendix.
+
+
+---
+
 ## 4. The person×event metabolism SOROK already specified
 
 The adopted CAN-008 R2 person×event structure is **actor receivability → actor uptake/appraisal → situated recruitment → multi-stream immediate response**, followed where qualified by separate owner effects. The two-call design assigns semantic/recruitment to analytic Call A and situated phenomenal flesh/voice to Call B. The latter must not mint psychological formation merely to produce compelling prose. PFF specializes narrow relational interaction; V2 expresses rather than owns the psyche. This is existing doctrine, **not** a new ORACLE invention.
@@ -322,6 +343,19 @@ Hold three things nonidentical:
 A genuine Other does not have to agree to be affected. Interrupting, pestering, humiliating, bullying, withdrawing promised care, imposing a sanction, coercing or changing a wage can be ordinary, institutionally backed or catastrophic deeds. Distinguish an **independently authored voluntary contribution** (required for joint cooperation) from an **actor-authored unilateral imposition** and the **affected party's actual material or experiential consequence**. A caller must not forge the helper's consent; a victim need not consent to a harm for the event to occur. The reported R0 `partner_consent=True` defect matters because its low-level action interface allegedly recorded a helper's participation contrary to the helper's own refusal—not because all adverse consequences require prior consent. The exact R0 source remains uninspected in this synthesis, so the claim remains a reported negative, not an independently rerun fact.
 
 **Collective and institutional effects must be world-owned.** A creditor's decision can alter a household's material feasibility; a school rule can reclassify an accessible practice; a congregation can condition room use; an employer can reorganize care time; colonial/state/imperial policy can alter needs and risks outside the focal actor's awareness. These relations do not become psychological facts merely because the analyst names them. A changed actor belief does not change property, wages, public authorization or institutionally effective categories. A collective practice changes them only through actual admissible actions, material means and later enforceable consequences.
+
+---
+
+### A worked materialist mechanism: cruelty recruited as righteous loyalty
+
+Consider an objectively hurtful act by a pastor against a congregant. The pastor's presentation as **righteous correction** can make a large difference to a follower's psychic response—but only through concrete authority, prior identification, material dependence, learned scripts of discipline, community witnessing and the actor's own historical relation to the leader. The event does **not** have a fixed audience-wide psychological valence.
+
+For one follower, the performed genre of rebuke recruits an internalized norm that *licensed corrective suffering*, and compassion is subordinated or recoded as “loving discipline.” The follower feels righteous solidarity, relief, zeal, protection of group identity or authorized aggression. A different follower may feel sincere sympathy but comply outwardly because dissent risks exclusion. Another may experience the act as proof of hypocrisy and begin differentiating care from authority. A third may reproduce the pastor's cruelty in another relation. These are distinct event-specific constitutions, not generic “authoritarianism” percentages.
+
+This is PRE-A0 §10's already-specified **identification → internalization → naturalization → invisibility → agent-of**: internalized discipline can become policing of Others. Gramsci's hegemonic consent, Althusser's material interpellation, Bourdieu's *authorized* symbolic performance, Foucault's individualizing pastoral power, Fromm's internalized authoritarian conscience and Freire's reproduction of an oppressor's mode sharpen the structural/social mechanism. Their claims are not interchangeable. **Outer institutional authorization is not inner recruitment; actual victim harm is not follower interpretation.** A pious rebuke may carry authority where an unframed insult fails; no magic linguistic formula guarantees this, and a milieu may authorize blunt insults too.
+
+This reconnects **world-owned institutional power → performed and recognized genre → actor-specific relational recruitment → multi-stream pressure-flow → situated action and emotional consequence → retained/changed motifs → future institutional reproduction**. It also clarifies why SOROK must model *both* people as independent, including the target of the cruelty, and preserve uncertainty rather than declare righteousness or hidden bad faith as objective fact. See the worked branch-by-branch case and citations in [SEAM/30-06](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md).
+
 
 ---
 
@@ -519,6 +553,14 @@ It is not the canonical PROGRAMMA, not an implemented new psyche, not proof that
 ---
 
 ## 17. Reconciled omission ledger and the remaining live problems
+
+### November 19 psychodynamic and ideological follow-through — no-drop check
+
+The principal **affirmed all findings in the PRE-A0 and psychoanalytic/materialist recovery**, then imposed three additional controlling clarifications: (i) event-structure persona computation is already intended to precede the LLM's faithful expressive realization; (ii) inhibition must retain productive/indirect historical function rather than secretly erase a conflicting form; and (iii) publicly performed moral authority can recruit devotion and cruelty in followers, not just empathy for the target. Sections 3 and 8 now integrate these directly. They **supplement**, rather than replace, the fifteen-item reconciliation, the whole-person activity genesis, and the existing source/owner crosswalk.
+
+The first-law analogy is retained only as a **programmatic non-annihilation and causal-lineage principle**, not as physical conservation of psychic energy. A no-change effect is lawful. A relation can extinguish, weaken, be unknown or fail to recruit without the machine fabricating a corresponding positive discharge elsewhere. Current R3 is a narrow beginning, not a verified implementation of this complete psychodynamics. [Detailed adjudication and historical sources](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md).
+
+
 
 ### The fifteen spinning plates, landed into one constellation
 
