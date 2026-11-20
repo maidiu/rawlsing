@@ -45,7 +45,8 @@ The same \`SING\`, \`WORK\`, \`CARE\` or \`REFUSE\` can be available under sever
 
 ### 4. The actor changes the evidence they can later encounter
 
-- Each actual actor-specific experience now records a separate \`evidence_paths\` entry with the performed act, selected project ref(s) **if** actually selected, and the perceptible cue IDs *actually received*. The history explicitly says \`UNKNOWN_NOT_OBSERVED\` for alternatives.
+- Each actual actor-specific experience now records a separate \`evidence_paths\` entry with the performed act, selected project ref(s) **if** actually selected, and the perceptible cue IDs **and tags** *actually received*. The history explicitly says \`UNKNOWN_NOT_OBSERVED\` for alternatives.
+- The read-only `Constitution` now carries both source-qualified `possible_ends` and `evidence_paths`. At a later relevant cue, `compose` may emit a bounded **HISTORICALLY_NOTICED_POSSIBLE_END** or **HISTORICAL_SIGNAL_PATH_REENCOUNTERED** current, without adding a motive, action, learned certainty, or recovered memory. This makes the earlier potential *available to influence later situated construction*, without pretending the earlier act already had that aim.
 - This is a deliberate lower bound: recorded signal-path selection can support later developmental and interpretive reasoning, but does **not** yet implement calibrated active learning, belief updates from absence, counterfactual comparison, or causal attribution to an unobserved path. Unseen alternative evidence must not be fabricated.
 - The developmental LLM receives source-graded \`actor_possible_ends\`, \`evidence_path\`, and analytic-only selected-purpose/history receipts. The **public expression service does not receive privileged selected motive hypotheses** as the actor's self-knowledge.
 
@@ -57,7 +58,7 @@ This is an important **genesis × psychodynamic** connection: experiencing a non
 
 ## Sourcefree tests, grades, and known limitations
 
-**New:** \`tests/test_intent_and_emergent_ends_r6.py\` presently has **15 native unittest methods** (authored, GitHub readback verified, not actually executed). They cover one selected end out of two, explicitly multiple selected ends, unknown/exploratory purpose, forged project rejection, external action injection, heuristic single choice, private purpose-vs-expression boundary, two-event possible-end formation, same-event retroactive-intent rejection with atomic rollback, unseen cue rejection, unlicensed invented operation rejection, actual Nadia first/second song, legacy direct API explicit multi-source attribution, and distinct composed plan identity under same operation/object.
+**New:** \`tests/test_intent_and_emergent_ends_r6.py\` presently has **17 native unittest methods** (authored, GitHub readback verified, not actually executed). They cover one selected end out of two, explicitly multiple selected ends, unknown/exploratory purpose, forged project rejection, external action injection, heuristic single choice, private purpose-vs-expression boundary, two-event possible-end formation, same-event retroactive-intent rejection with atomic rollback, unseen cue rejection, unlicensed invented operation rejection, actual Nadia first/second song, legacy direct API explicit multi-source attribution, and distinct composed plan identity under same operation/object.
 
 **Changed original regression:** \`tests/test_whole_organism.py\` now requires a *two-event* path for Nadia's new rhythm project rather than an active project immediately after one song. The rest of that suite is not independently green on this branch.
 
