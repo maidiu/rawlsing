@@ -59,6 +59,7 @@ class Constitution:
     possible_ends: list[dict] = field(default_factory=list)
     evidence_paths: list[dict] = field(default_factory=list)
     expectations: list[dict] = field(default_factory=list)
+    participation_history: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -121,6 +122,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
                  'illness': 0.0, 'regulation': .28},
         'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [],
         'possible_ends': [], 'evidence_paths': [], 'expectations': [],
+        'participation_history': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
