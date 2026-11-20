@@ -1,0 +1,82 @@
+# What PYAT presently is
+
+**2026-11-20 · source-graded working digest · NOT an operative replacement for PROGRAMMA**
+
+Companion to [00 DHIKRYMULCH](00_DHIKRYMULCH.md), the *positive functional target*, and [02 What next?](02_TARGET_TO_PRESENT_DELTA.md), the *smallest practical approach*. This digest reports what was found at **specified code, issue and review cuts**. It does not create a new authority, propose a new storage design, or claim execution of tests in this session. The live [PROGRAMMA](../00_PROGRAMMA_PYAT.md), [paired CURRENT_PROGRESS](../../CURRENT_PROGRESS.json), [single C01–C17 operating register #1097](https://github.com/maidiu/rawlsing/issues/1097), issue-specific owners and current GitHub HEADs still control.
+
+## A. The question the machine exists to answer
+
+The primary object is **the empirically observed range and internal variability of source-qualified demographic/social configurations** at a *manageable* resolution. Given an admissible population slice D, a measured response Y, and further measured candidate splitters X, discover what P(Y | D) looks like; which X discriminates most robustly; how rankings, minority patterns, within-respondent joints and uncertainty change with legitimate additional conditions; and which aspects are unmeasured or structurally interpreted only by separate authority. **PYAT does not need an individual simulation bank.** SOROK's first particularizing selection comes later.
+
+**Determinicity** in the historic V550 sense is empirical answer-split informativeness: entropy/conditional entropy reduction, MI/NMI, Cramér's V, response uplift and recursive best conditional split. It is not an omnipotent demographic cause and is never one universal ranking independent of question, risk set, country, wave or subgroup. The historical `data/ddm_build_copy/ddm_v550_branching.py` actually computes those diagnostics and bounded entropy-gain branches; modern `pre553_discovery_exact.py` recognizes relevant diagnostic tokens but forbids score-controlled pruning of its *claimed exhaustive* search. This is established source-code presence, **not** proof of a present, calibrated, economical determinicity service on real saved waves.
+
+## B. Four nonidentical present states
+
+| Plane | Inspected identity | What it establishes |
+|---|---|---|
+| **Protected PRE-MAIN** | `integration/pre-main-reconciliation-r1` HEAD `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e` | Accepted protected contents only; not the complete set of later branch implementations |
+| **Protected PYAT bookkeeping** | `CURRENT_PROGRESS.json` blob `45d3059064371378b18d883cff6dc9d05f0a3960`, revision **11**; PROGRAMMA front door blob `72e58b52506cc444c7643223fdb8673ee2969e7c` | Last verified protected pairing is Nov17 ANVIL R7 instrument-preparation documentary receipt; no general new science, actor rights or host lease |
+| **Unmerged/independently scoped engineering** | Direct 13-family S2-C/S2-D accepted sourcefree heads documented in [#1006](https://github.com/maidiu/rawlsing/issues/1006); integrated [#1158](https://github.com/maidiu/rawlsing/pull/1158) at `434f88c94b9dc2dc85c8e0f67f71a4825a4f59bc`; [#1173](https://github.com/maidiu/rawlsing/pull/1173) at `b0f45c16e0a9901832e13ea7df4a4cff3a346c78` | Real reusable code at differing accepted/author-only scopes; *not* one protected fully integrated implementation |
+| **Local two-wave native cold estate** | MainMac R3 return for [#1185](https://github.com/maidiu/rawlsing/pull/1185), code `3eee662d509fd78bc93d3ea26c3058d3199c960f`, evidence indexed in [#1097 comments](https://github.com/maidiu/rawlsing/issues/1097) | Reported **26/26 tests**, successful 14/14 member verification for each of SRC04/SRC16 and original cold **admission**; original **QUERY_NOT_ISSUED**, I03 **NOT_EXECUTED**, I05/Batch/S04/FF not reached |
+
+The SRC04/SRC16 stream manifests reported 1,298,649 and 253,241 event/locator counts respectively. Their precise source/use rights and native query issuance remain separate from cold admission. One now-closed *carrier admission* fault must **not** be reported as an original source analytical PASS. The latest #1173 PF-043 target-absence repair was committed but **not yet run at that HEAD** according to its reported C6 status.
+
+**HQ currentness:** `HQ_CURRENTNESS_HOLD` for absent verified appointment, author leases, new protected paired receiving, independent review of all later exact implementation HEADs, complete native original scientific issuance and N11/N12. This paper is **a read-only reconciliation**, not a purported HQ takeover.
+
+## C. The machine that already exists: S01–S11, not blank slate
+
+| Route | Existing capital | Critical remaining proof or defect |
+|---|---|---|
+| **S01 source identity/measurement** | SAV/DTA source adapters/configurations, selected codebook/role/routing systems, 35-wave historical preparation, R157 source slot register (**18,413 slots / 18,276 IDs**, not observations) | Actual selected edition/use/meaning/weights and respondent permission for source-native analytical claims |
+| **S02 U/Epre and work issuing** | Source risk/eligible/asked machinery; `pre553_universal_workload.py`, `pre553_issued_workload.py`; selected sourcefree R03 issued operations | A qualified original wave query/response/grain/risk-set that the admitted SRC04/SRC16 native I03 can actually execute; no inferred permission |
+| **S03 13-family C11 and physical** | `pre553_c11_*`, `pre553_physical_decoder.py`, `pre553_parquet_carrier.py` in protected work; separate S2-B external I02, S2-C direct Parquet/Zstd 13-family writer and S2-D seven native readers accepted at **sourcefree bounded** immutable cuts | General single-source true one-pass 13-family body → persisted cold query; realistic whole-width RSS/cold/write/reuse economics; full code joining/receiving |
+| **S04 measured conditionals/discovery** | `pre553_empirical_query.py`, `_pre553_query_eval.py`, `pre553_discovery_exact.py`, `pre553_discovery_adaptive.py`, `pre553_recursive_handoff.py`, `pre553_analytical_composition.py`, `pre553_diagnostics.py`; sourcefree F1–F4 and true 3+ respondent-linked joints | Current joined native multi-condition predictor ranking, source-authorized operation, sparse branch breadth, multiple-query costs and failure-resistant minority preservation |
+| **S05 learned products/replay** | `pre553_learned_empirical_adjudication.py`, `pre553_learned_product_lifecycle.py`, `pre553_learned_world_composition.py`, `pre553_batch_runner.py`, actual scoped R05/P41 readers | Complete source→C11→I03/I05/Batch→F1–F4→learned first reader with both result changes and honest negatives; full [#998](https://github.com/maidiu/rawlsing/issues/998) integration not accepted |
+| **S06 Field Forge F5** | `field_forge_conditional_support.py`, `pre553_structural_admission.py`, FF01 descriptive producer/conditional candidates, independently considered FF R2 actor-independent relation grammar | Original observed field/context vs genuinely independent institutional resource/power rules; no majority→cause inference; real first consumer |
+| **S07 F6 cross-survey** | Historical F6M nonpooling/partial field constructions and candidate readers | Source- and estimand-compatible multiple fields; no fictitious joint between independent surveys; objective-world consumer absent at general native grade |
+| **S08 F7 historical change** | Comparability/temporal candidate code and sourcefree historical-world clocks | Real comparable source waves and measured no-change/change/rupture at time/meaning/survey-design scope |
+| **S09 objective N9 world** | `pre553_universal_world_binding.py` and scoped world readers / P41 synthetic world proof | Qualified actual source/material/as-of N9 under selected structural issuer, not a fixture labeled real |
+| **S10 N10E/N10W possibility** | `pre553_analytical_composition.py::compose_positioned_subject_possibility`; `pre553_empirical_possibility_provider.py`; `pre553_n9_n10w_progressive_candidate.py` 58-respondent synthetic progression | Actual accepted N9 AND computed N10E use where required, meaningful selected demographic *configurations* and SOROK first use; no need for a newly invented adult-vector warehouse |
+| **S11 completion/SEAM** | HQD-125 F1–F8 functional law, HQD-216 positive-product law, N11/N12 gates, accepted smaller sourcefree corridors | Full original35 N11/F1–F8 source/science/independent rights and optional actor wake separately held; first useful scoped product does not await all35 materialization |
+
+Useful controlled [source roadmap](../05_ROADMAP/REMAINING_REAL_PYAT_WORK.md) and [S01–S11 section guides](../05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md) remain the source-graded detailed maps. This table is **not another operating register**; corrections belong in #1097 and qualified receiving, not a parallel stale bookkeeping system.
+
+## D. Historic scientific function already recovered: determinicity
+
+Protected historical `data/ddm_build_copy/ddm_v550_branching.py` blob `8f6d40e0d016d66e5a3b334b31747eaef752873f` has `indicator_summary_rows`, `secondary_indicator_summary_rows`, `branch_nodes_rows` and `outlier_cohort_rows`. V551's `ddm_v551_conditional.py` derives a conditional determinicity index after explicit source/support/role gates. V550 historically defaulted to branching depth **3**, support capped at **30** under its support formula, and expanded the **two most populous** eligible values per selected splitter. Those were *historical implementation heuristics*, NOT a current scientific claim that only two branches can be meaningful or that exactly 30 observations establish adequate certainty. Preserve the ideas and check whether current I03/I05/DHIKR already implements their estimands before any port.
+
+Modern exact I05 (protected `pre553_discovery_exact.py`) insists on finite owner-issued candidate grammar and exact frontier evaluation; optional MI/NMI/Cramér's V/entropy diagnostics cannot *silently* reduce its declared complete search. Adaptive discovery (`pre553_discovery_adaptive.py`) may order exploration under authorized budget and replay, with ranking no semantic truth. **A practical optimizer should issue meaningful finite conditioned inquiries rather than enumerate every demographic-power-set intersection.** Exploration scores may prioritize work; support/uncertainty and issued source rights determine what can be claimed.
+
+## E. Material constraints: separate actual hardware from invented acceptance numbers
+
+### Established physical design choices
+
+**Retain** the source-native 13-family C11, source-bound compressed Parquet/Zstd persistence, strict original identity/occurrences, genuinely cold verified replay, scoped I03/I05/Batch first consumers, and the current *reuse-before-rewrite* integration route. The rejected old W03 full-object-first/Stone-style rewrite and parallel database architecture are **not revived** by DHIKRYMULCH.
+
+### Actual costs already reported, with non-comparable cut warning
+
+[#1097](https://github.com/maidiu/rawlsing/issues/1097) and [#1006](https://github.com/maidiu/rawlsing/issues/1006) describe older / different execution shapes: sourcefree 100k writer around **3,033.723 seconds**, **310.16 MB** retained, **5.26 GB** staging, around **4.39 GB** temporary I02, around **1.30 GB** temporary native query index, and ~**562.362 seconds** selected query. A separate historical artifact path recorded **6,468,513,792 B peak RSS**. These are **not** a reproducible performance profile of the latest S2-C/D merged with #1185. Never compute an imaginary current speedup against them.
+
+**Potential measured hot spots:** duplicated JSON body plus typed Parquet columns, full postwrite reconstruct/re-encode parity, member rehash at cold open, rebuilt SQLite postings per fresh session, a route that journals 13 temporary JSONL families before reconstructing persistence, per-query full cohort reconstruction and grouped native direct-estate incompatibility. Whether each is a *fix-now* problem depends on its actual cost and proof-preserving repair.
+
+### User-authorized requirements versus unratified measurement rituals
+
+- The **6 GiB process-tree RSS limit** was documented repeatedly as a historical engineering acceptance court; **this research did not verify that the user selected 6 GiB as a present hard architectural requirement**. It is a **candidate practical ceiling until checked against current host capacity and user priority**. Physical feasibility under actual RAM/free disk is nonnegotiable; the number itself is not holy.
+- The **100,000-distinct-respondent** trial is a proposed realistic scale stressor and helps expose sparse/improper test geometry; it is **not a license to postpone all usable engineering until that exact number passes**. Choose one representative workload and expand only enough to expose a meaningful scaling risk.
+- **The “1/10/100 distinct-query” sequence is explicitly NOT BINDING.** The exact numbers were repeated in agent issue descriptions. Related old historical C03 tests used 1/10/100 **selected columns**, not a universal test of sociological conditional-query effectiveness. What matters is **first-versus-repeated legitimate query cost and how reuse scales**; the smallest discriminating benchmark chosen by the actual bottleneck owner suffices. No other agent-supplied performance number becomes binding merely by copy-paste into a control document.
+- No current MainMac system specifications, free disk, task-specific end-to-end timing, acceptable query latency, materialized product budget or target conditioner arity were independently obtained in this pass. These are **decision gaps**, not alleged machine failures.
+
+**Engineering triage principle:** first get one representative, scientifically honest, physically executable native path; profile its real hot spot; make only a *measured materially beneficial* limited change; retain all respondent/scientific/legal proofs. Do not require theoretical perfection, 100 fake benchmarks or an unmeasured optimization as a gate to every productive sourcefree/native pilot.
+
+## F. What changed today in the actually available state
+
+- Two MainMac saved original stream estates **did** pass a bounded native cold-carrier admission; **their original analytic I03 QUERY remains unissued**. [#1097 latest issue comments](https://github.com/maidiu/rawlsing/issues/1097).
+- The source→saved one-pass body bridge remains a concrete P0 requirement [#997](https://github.com/maidiu/rawlsing/issues/997); #998 is the existing integrated consumer commission; #1006 owns narrowly profiled physical economics **without a new architecture**. These owners must not collide.
+- **Actual next unblocker may be narrower than disk optimization:** the user MainMac has saved source and working cold admission, but the scientifically legal request constructor/meaning/risk-set issuer did not produce a runnable native query. A document calling all data pipelines absent would obscure this decisive state.
+- Protected rev11 has not received the newer material developments, and the published candidate heads are divergent. A legitimate HQ must use authorized paired receiving and independent exact proof rather than claiming this digest magically incorporates those branches into production.
+
+## G. Falsifiers for this digest
+
+If a new precise live HEAD demonstrates (a) a qualified issued original I03 fact for SRC04/SRC16, (b) an independently reviewed full native joined S01–S05 path, (c) current source-qualified F5/F6/F7/N9/N10W first consumption, or (d) a different actual measured economic bottleneck, **replace these dated claims** in the next authorized operational record. Conversely, if any claimed accepted code cannot be imported at the actual pinned head with an independent receipt, downgrade it to candidate rather than translating an issue's “done” into an execution fact.
+
+**Working conclusion:** PYAT already has most of its organ types, though at differing acceptance/status cuts. The missing achievement is *one economical, genuinely source-issued, reusable, configuration-sensitive, progressively more informative machine with actual consumers*. That is the construction target, not another new architecture.
