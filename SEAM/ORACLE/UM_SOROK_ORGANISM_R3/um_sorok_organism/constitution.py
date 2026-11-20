@@ -12,6 +12,7 @@ from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .distributed_power import conditional_assistance_options
+from .functional_correspondence import project_functional_correspondences
 from .world import _qualified_members
 
 
@@ -26,6 +27,7 @@ def materialize(actor,world):
         evidence_paths=copy(actor.get('evidence_paths',[])),
         expectations=copy(actor.get('expectations',[])),
         participation_history=copy(actor.get('participation_history',[])),
+        functional_bindings=copy(actor.get('functional_bindings',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -309,15 +311,21 @@ def compose(constitution,access,limit=50):
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
+    functional=project_functional_correspondences(
+        constitution,attention['focus_access'])
+    currents.extend({'kind':'QUALIFIED_PROVISIONAL_FUNCTIONAL_CORRESPONDENCE',
+                     **copy(row)} for row in functional['active'])
     prospective=project_trial_horizons(
-        constitution,attention['focus_access'],dynamics['candidate_actions'])
+        constitution,attention['focus_access'],dynamics['candidate_actions'],
+        functional_correspondences=functional['active'])
     currents+=prospective['currents']
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
-                           preproject['readset']+prospective['readset']+
+                           preproject['readset']+functional['readset']+
+                           prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
