@@ -87,6 +87,9 @@ class ConstitutiveRuntime:
             if not ok: raise ValueError('ACTOR_ACTION_BODILY_INELIGIBLE:'+why)
             action=requested_action
             basis=['EXTERNAL_RESEARCH_ACTION_INJECTION']
+            purpose={'status':'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
+                     'project_id':None,'selection_grade':'EXTERNAL_INJECTION',
+                     'other_available_projects_not_claimed':True}
             authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
@@ -97,10 +100,42 @@ class ConstitutiveRuntime:
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
-            basis=copy(opt.get('basis',[]))
+            project_ref=proposed.get('project_id')
+            # An LLM/callback/heuristic must distinguish *which undertaking*
+            # this act currently attempts. Not supplying it is a lawful
+            # exploratory or underdetermined act, never all possible motives.
+            if project_ref is not None and type(project_ref) is not str:
+                raise ValueError('MODEL_SELECTED_PURPOSE_NOT_TEXT')
+            courses=opt.get('project_courses',[])
+            selected=next((p for p in courses
+                           if p['project_id']==project_ref),None)
+            if project_ref is not None and selected is None:
+                raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            if selected:
+                purpose={'status':'ACTOR_POLICY_SELECTED_PROJECT_COURSE',
+                         'project_id':selected['project_id'],
+                         'practical_object':selected['object'],
+                         'motive_hypothesis':selected['motive_hypothesis'],
+                         'selection_grade':proposed.get(
+                             'purpose_selection_grade',
+                             'MODEL_CHOSEN_COURSE_FICTIONAL_NOT_OBSERVED_CONSCIOUS_MOTIVE'),
+                         'not_claimed_fulfillment':True,
+                         'other_available_projects_not_claimed':True}
+            else:
+                purpose={'status':'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
+                         'project_id':None,'selection_grade':
+                             'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
+                         'other_available_projects_not_claimed':True}
+            # Preserve only the chosen project's basis on the selected
+            # Attempt. The unchosen opportunities belong in the *situated*
+            # projection, not the performed act's historical explanation.
+            basis=[ref for ref in opt.get('basis',[])
+                   if not (isinstance(ref,str) and ref.startswith('project:'))]
+            if selected:basis.append('project:'+selected['project_id'])
             authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
         return Attempt(actor_id,action,means=[],basis=basis,
-                       intention=authority,scene_hash=digest({'world':world,'actor':actor_id})),
+                       intention=authority,purpose_selection=purpose,
+                       scene_hash=digest({'world':world,'actor':actor_id})),
 
     def plan(self,actor_id,requested_action=None,target=None,object_ref=None):
         _,world=self.ledger.world(self.world_id)
@@ -168,7 +203,8 @@ class ConstitutiveRuntime:
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
-                {'material_claim_ref':summary.get('material_claim_ref')})
+                {'material_claim_ref':summary.get('material_claim_ref')},
+                purpose_selection=chosen.purpose_selection)
         developmental={};subjective={};post_event_psychodynamics={}
         for aid in actors:
             # Separate actor-specific view, no analyst world description in LLM input.
