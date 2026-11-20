@@ -53,6 +53,7 @@ class Constitution:
     history_refs: list[str] = field(default_factory=list)
     source_grade: str = GRADE
     composition_methods: list[dict] = field(default_factory=list)
+    relational_motifs: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -107,7 +108,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'body': {'nutrition': .78, 'rest': .78, 'comfort': .66, 'pain': 0.0,
                  'arousal': .40, 'motor': .17, 'sensor': .40, 'language': 0.0,
                  'illness': 0.0, 'regulation': .28},
-        'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'activity_history': [], 'memories': [], 'traces': [],
+        'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [], 'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
     }
