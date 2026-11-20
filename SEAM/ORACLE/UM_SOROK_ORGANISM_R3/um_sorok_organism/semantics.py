@@ -214,6 +214,8 @@ class ValidatingSemanticService:
     def proposal(self,task,packet):
         out=self.provider.propose(task,packet)
         if not isinstance(out,dict):raise ValueError('BAD_SEMANTIC_PACKET')
-        if task=='actor_attempt' and 'action' not in out:raise ValueError('NO_ACTION')
+        if (task=='actor_attempt' and 'action' not in out
+                and 'practical_option_id' not in out):
+            raise ValueError('NO_ACTION_OR_PRACTICAL_OPTION')
         if task=='development' and not isinstance(out.get('candidates'),list):raise ValueError('BAD_DEVELOPMENT_CANDIDATES')
         return out
