@@ -24,6 +24,7 @@ from .material_investments import (
 from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
+from .co_regulation_history import possible_acquired_regulation
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity
@@ -412,7 +413,17 @@ class ConstitutiveRuntime:
             personally_done=next((r for r in resolved['performed'] if r['actor']==aid),None)
             participated=aid in affected
             if not participated and not access.cues:continue
-            personal_cues=[x for x in access.cues if x['id']==world['cues'][-1]['id']]
+            personal_cues=[x for x in access.cues
+                           if x['id']==world['cues'][-1]['id']]
+            if participated:
+                # The presently co-situated other can be sensed without
+                # revealing their motives or private biography. The earlier
+                # projection omitted this mundane evidence even from actors
+                # whose living encounter just occurred in the same room.
+                # Retain no cue whose sensory eligibility actor_access denied.
+                personal_cues += [x for x in access.cues
+                    if x.get('kind')=='coactor_present'
+                    and x.get('source_actor')!=aid]
             if not participated and not personal_cues:continue
             own=personally_done['action'] if personally_done else ('RECEIVED_CARE' if aid in affected else None)
             # Only this actor's actual selection—not the pooled action
@@ -436,7 +447,9 @@ class ConstitutiveRuntime:
                          else 'IMPOSED_EFFECT_UNINTERPRETED')
                          if aid in resolved['personal_effects'] and not personally_done
                          else None)
-            experience={'actor':aid,'reciprocated_partner':reciprocal,
+            experience={'actor':aid,'clock':world['clock'],
+                        'location':access.location,
+                        'reciprocated_partner':reciprocal,
                         'ref':stable_id('experience',{'actor':aid,'event':objective_ref,
                                          'cues':personal_cues,'participated':participated,
                                          'felt_enactment':felt_enactment}),
@@ -514,6 +527,8 @@ class ConstitutiveRuntime:
                  else None),objective_ref)
             delayed_expectation_appraisals=source_qualified_appraisal_candidates(
                 actors[aid],experience,objective_ref)
+            care_genesis=possible_acquired_regulation(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -540,6 +555,7 @@ class ConstitutiveRuntime:
                     possible_incidental_goods),
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
+                'historically_possible_co_regulation':copy(care_genesis),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
