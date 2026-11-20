@@ -161,5 +161,6 @@ def blank_world(world_id='w1'):
             'institutional_access_rules': [],
             'material_gate_audit': [],
             'public_notices': [],
+            'material_objects': {},
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
