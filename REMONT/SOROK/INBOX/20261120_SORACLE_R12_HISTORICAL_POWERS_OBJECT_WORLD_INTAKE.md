@@ -76,3 +76,25 @@ P7. Native P2/SDTF object history, ADP memory, PFF recruitment, P3 writer, exist
 - Native CAN/ADP/P2/PFF receiving, paired protected CURRENT_PROGRESS, HQ accreditation or G5: **HOLD**.
 
 REMONT should fix only independently substantiated, version-pinned defects through its own custody. SORACLE is separately continuing forward computation and theory.
+
+
+## R12B — new sourcefree mediated efficacy follow-up (2026-11-20; NOT EXECUTED)
+
+The user identified a conceptual category error: **actor-operatively available component facility** must not be called **socially independent human power**, and an analyst/world power attribution does not confer that analysis as the actor's reflective self-knowledge. R12B adds `mediated_efficacy.py`, `R12B_MEDIATED_EFFICACY_NOT_SOVEREIGN_MASTERY.md` and connected actor/world/ordinary-time/parent readers. These are forward construction, not REMONT repairs.
+
+### Additional checkout-dependent T (REMONT ownership)
+
+- **T7, compression and precision:** ordinary passage without specifically qualified ongoing practice must not confer competence; with a structured source-qualified active routine it should store ONE aggregate history with duration and exposure fraction, not invent hundreds of individual successful events. Verify dedupe and invalid source rejection; test unsupported, absent and blocked world configurations separately. Source-qualified adult backfill remains hypothetical, underidentified and non-psychometric.
+- **T8, differentiated meanings of efficacy:** one experienced joint performed episode produces at most narrow component evidence, not self-originated power or independent full mastery. With an actual helper absent, test that a practice attempt may become situatedly available without assuming the prior cooperative result. Confirm the model's epistemic interval remains broad even if aggregate exposure expands its estimated facility.
+- **T9, objective vs operative vs reflective:** `world.Resolution.world_delta` can carry actual site access, material command and independently authored coactor participation for analytical purposes. Confirm none is automatically copied into `actor.self_model`, public tip/expression, other actors' psychological states or experienced cue content. The actor may still form an inaccurate private belief through separately qualified development.
+- **T10, sourcefree quantitative calibration:** test the range and bound of provisional dose-to-facility computations with a newborn, an adult with low-resolution hypothetical history, an adult with several explicitly rendered practices, and cases losing access without losing historical technical facility. Do NOT report a PASS as empirical calibration or proof of adult realism.
+- **T11, actor/time-history custody:** verify cold event-ledger/SQLite reopening retains actor-scoped practice_exposures and distinct objective arrangements, and that source-specific backfill neither exposes questionnaire targets nor overwrites P2/PFF/CAN/ADP native owners. Review whether background routine inference remains too permissive when an ongoing project lacks actual historical resource access; this may be an architectural constraint, not solely a code defect.
+
+### Further P/E holds
+
+- Current world `SING`/`PRACTICE` technical outcome remains too coarse to ground empirical performance quality; sourcefree facility is a candidate planning projection, not a scientifically validated success probability.
+- Simulated long-period source-qualified routines still lack full competing-time budgets, household obligations, class/site transfer and cultural-developmental calibration. Multiple overlapping hypothetical periods could exaggerate a person's total practice history; this is a declared forward architectural gap.
+- The existing string `INDEPENDENT_PRACTICE_PROBE` means only *without the particular prior helper*, not social self-origination or proven general mastery. Reviewer must not silently treat it otherwise.
+- Actual R12B exact SHA, runner, scientific source, independent review and protected receiving remain UNKNOWN or HOLD until a separately authorized agent verifies them.
+
+**REMONT repairs, test execution and issue grading are not done by this author.**
