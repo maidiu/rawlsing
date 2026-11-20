@@ -28,7 +28,8 @@ if [[ ! "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]] ||
   echo "HOLD_INVALID_REMONT_EXACT_HEAD" >&2
   exit 25
 fi
-declare -A seen_cases=()
+# macOS ships Bash 3.2: do not use Bash-4 associative arrays here.
+validated_cases=()
 for id in "${cases[@]}"; do
   case "$id" in
     RMT-Q001|RMT-Q002|RMT-Q003|RMT-Q004|RMT-Q005|RMT-Q007) ;;
@@ -36,11 +37,13 @@ for id in "${cases[@]}"; do
       echo "INVALID_OR_UNCOMMISSIONED_REMONT_CASE: $id" >&2
       exit 2 ;;
   esac
-  if [[ -n "${seen_cases[$id]+present}" ]]; then
-    echo "HOLD_DUPLICATE_REMONT_QID: $id" >&2
-    exit 26
-  fi
-  seen_cases["$id"]=1
+  for previous in "${validated_cases[@]}"; do
+    if [[ "$previous" == "$id" ]]; then
+      echo "HOLD_DUPLICATE_REMONT_QID: $id" >&2
+      exit 26
+    fi
+  done
+  validated_cases+=("$id")
 done
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$(dirname "$OUT")"
