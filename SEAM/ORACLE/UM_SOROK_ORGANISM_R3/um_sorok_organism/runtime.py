@@ -32,6 +32,7 @@ from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
 from .labor_dependency import register_work_regime
 from .wage_bargaining import register_wage_dispute
+from .worker_bargaining_history import record_worker_bargaining_experience
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
     possible_revision_after_nonresponse)
@@ -551,6 +552,8 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref,
                 world['positions'].get(aid,actors[aid]['location']))
             retain_personal_notice_exposure(actors[aid],experience,objective_ref)
+            record_worker_bargaining_experience(
+                actors[aid],experience,objective_ref)
             retain_personal_object_encounter(actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
