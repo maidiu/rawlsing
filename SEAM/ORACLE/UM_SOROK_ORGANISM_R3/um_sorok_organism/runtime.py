@@ -59,12 +59,13 @@ class ConstitutiveRuntime:
         return asdict(compose(const,access))
 
     def cue(self,actor_id=None,kind='ordinary_contact',tags=None,location='home',
-            description='',modality='visual',private_to=None):
+            description='',modality='visual',private_to=None,lasting_ticks=0):
         """External world fixture change, not an actor psychological event."""
         wv,world=self.ledger.world(self.world_id)
         if actor_id is not None:self.ledger.actor(actor_id)
         cue=add_cue(world,kind,tags or [kind],location=location,description=description,
-                    modality=modality,private_to=private_to,source_actor=actor_id,clock_offset=1)
+                    modality=modality,private_to=private_to,source_actor=actor_id,
+                    clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})

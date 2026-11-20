@@ -153,6 +153,25 @@ class WholeOrganism(unittest.TestCase):
         self.assertIn('workshop',forms2[practice['id']]['scope']['locations'])
         self.assertIn('PRACTICE',{x['action'] for x in self.rt.situated('nadia')['candidate_actions']})
     def test_composed_activity_generates_multiple_world_attempts(self):
+        # A continuing project must be separately proposed, not automatically
+        # inferred from a single SING technical occurrence (SR-P011). Here a
+        # test-only semantic provider explicitly proposes a candidate project;
+        # the existing development owner then admits and exercises it.
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        heuristic=HeuristicSemanticProvider()
+        proposed_project=[False]
+        def proposal(task,packet):
+            result=heuristic.propose(task,packet)
+            if (task=='development' and packet['experience'].get('own_action')=='SING'
+                    and not proposed_project[0]):
+                proposed_project[0]=True
+                result['candidates'].append({'kind':'ADD_PROJECT','project':{
+                    'id':'project:explicit_rhythm_candidate',
+                    'object':'explore whether rhythm can continue',
+                    'means':['PRACTICE','SING'],'priority':.32,
+                    'cue_terms':['sing','rhythm'],'status':'active'}})
+            return result
+        self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(proposal))
         self.rt.background(365)
         self.rt.step('nadia',requested_action='PRACTICE')
         self.rt.step('nadia',requested_action='SING')
@@ -168,7 +187,10 @@ class WholeOrganism(unittest.TestCase):
         self.rt.step('nadia',requested_action='SING')
         person=self.rt.snapshot('nadia')
         self.assertTrue(any(link['relation']=='SUPPORTS' for link in person['links']))
-        self.assertTrue(any('rhythm' in p['object'] for p in person['projects']))
+        # P011: an acquired SING practice does not itself prove a durable
+        # rhythm-oriented project. Project genesis needs an owner-admitted
+        # hypothesis based on richer lived history, not the operation name.
+        self.assertFalse(any('rhythm' in p['object'] for p in person['projects']))
         # Persisted relation means one acquired practice can activate another.
         practice=next(f for f in person['forms'].values() if 'PRACTICE' in f['enables'])
         song=next(f for f in person['forms'].values() if 'SING' in f['enables'])

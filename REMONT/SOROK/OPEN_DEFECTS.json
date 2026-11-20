@@ -200,13 +200,18 @@
     },
     {
       "id": "SR-P011",
-      "status": "OPEN_NOT_FIXED",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_R9_177_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CONFIRMED_CODE",
       "first_fault": "Offline heuristic can install continuing SING-oriented project on single episode",
       "owner_location": "semantics.py::OfflineSemanticProvider",
       "doctrinal_source": "O05 motives arise through object-directed activity; PRE-A0 no caregiver ideological defaults",
-      "executable_probe": "test_one_operation_can_serve_competing_activities_without_motive_deduction",
-      "disposition": "Needed: qualified context-specific project genesis instead of one-event end attribution"
+      "executable_probe": "test_one_song_does_not_automatically_create_enduring_project; test_explicit_semantic_project_still_goes_through_typed_development_owner; full combined R9 suite 177 PASS",
+      "disposition": "R9 removed unearned one-SING heuristic ADD_PROJECT; explicit semantically proposed and admitted projects remain possible. Persistent object-oriented motive genesis and live semantic science NOT IMPLEMENTED.",
+      "last_repair_parent_head": "d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764",
+      "last_repair_evidence": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R9_20261120/REPAIR_RECEIPT.md",
+      "owner_grade": "SOURCEFREE_AUTHOR_LOCAL__INDEPENDENT_REVIEW_PENDING",
+      "independently_accepted": false,
+      "protected_received": false
     },
     {
       "id": "SR-P012",
@@ -268,13 +273,18 @@
     },
     {
       "id": "SR-P017",
-      "status": "OPEN_NOT_FIXED",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_R9_177_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CREDIBLE_RISK",
       "first_fault": "Time-windowed cue model may mistakenly erase continuing environmental signals/material signs",
       "owner_location": "world.py::add_cue; constitution.py::actor_access",
       "doctrinal_source": "ADP-010 difference between persistent affordance and one-time exposure; PRE-A0",
-      "executable_probe": "test_historical_cue_expires_without_becoming_memory",
-      "disposition": "Model persistent objects/signals separately from transient event cues; preserve F01 fix"
+      "executable_probe": "test_qualified_lasting_bell_remains_accessible_for_two_ticks_and_expires; test_default_zero_duration_cue_still_expires; invalid duration does not commit; full combined R9 suite 177 PASS",
+      "disposition": "R9 runtime.cue forwards bounded lasting_ticks to existing objective world owner; multi-tick observed bell retained for qualified duration. Real material objects/signs scheduling still UNIMPLEMENTED.",
+      "last_repair_parent_head": "d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764",
+      "last_repair_evidence": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R9_20261120/REPAIR_RECEIPT.md",
+      "owner_grade": "SOURCEFREE_AUTHOR_LOCAL__INDEPENDENT_REVIEW_PENDING",
+      "independently_accepted": false,
+      "protected_received": false
     },
     {
       "id": "SR-P018",
@@ -1305,6 +1315,44 @@
       "P_total": 69,
       "P_open_or_not_fixed": 10,
       "P_partial": 6,
+      "P_author_repaired_review_pending": 53,
+      "P_independently_accepted": 0,
+      "T_confirmed": 0,
+      "E_holds": 6
+    }
+  },
+  "remontathon_r3_r9": {
+    "source_head": "d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764",
+    "source_pr": 1171,
+    "changed_id_statuses": {
+      "SR-P011": "OPEN_TO_PARTIAL",
+      "SR-P017": "OPEN_TO_PARTIAL"
+    },
+    "normal_test_pass": 177,
+    "optimized_test_pass": 177,
+    "red_on_frozen_r8": {
+      "failures": 2,
+      "errors": 2,
+      "tests": 6
+    },
+    "new_tests": 6,
+    "source_sha": {
+      "semantics.py": "0363e3e590f28edfef9d9354ceda86325fbfb791",
+      "runtime.py": "f660178cd0ff3c177954ff04282c8fff48c5bc82",
+      "test_whole_organism.py": "7e2ebd6428d6046422ca6d3db005fd13248f2fae",
+      "test_remontathon_r9.py": "de7ee007b537649d4a20d6624408dc8939f6310a",
+      "test_remontathon_r9_p017.py": "8714b9a02e8d238abb918b93fcede7437b9986b7"
+    },
+    "test_queue_remaining": {
+      "SR-P022": "PROPOSED_NOT_EXECUTED",
+      "SR-P023": "PROPOSED_NOT_EXECUTED"
+    },
+    "evidence_dir": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R9_20261120/",
+    "grade": "AUTHOR_EXECUTED_SOURCEFREE__NO_INDEPENDENT_REVIEW_OR_NATIVE_RIGHTS",
+    "counts": {
+      "P_total": 69,
+      "P_open_or_not_fixed": 8,
+      "P_partial": 8,
       "P_author_repaired_review_pending": 53,
       "P_independently_accepted": 0,
       "T_confirmed": 0,

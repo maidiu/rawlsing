@@ -54,3 +54,8 @@ After verified R6 parent `a14003df55ed63c9257a8f9bbb2a3501d36bf7dc`, six product
 ## R8 continuing sourcefree REMONT — 171 normal+optimized tests
 
 From PR #1171 R7 source `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400`, R8 reproduced and repaired SR-P064–069, including actor-A coverage wrongly rewriting actor-B, nontransactional scoped period change, string cue fragmentation, unknown-modality threshold bypass, string-bool project suppression, and false-positive period scope formation. Test-first RED: 14 FAIL + 1 ERROR of 18 targeted tests; combined green 171/171 under normal and optimized Python, fresh cold extraction. New code/test bytes pinned in `REPAIRS/REMONTATHON_R3_R8_20261119/`. Production ledger 69 P (10 OPEN, 6 PARTIAL, 53 AUTHOR-REPAIRED REVIEW PENDING), T0, E6. Protected and native boundaries unchanged.
+
+
+## REMONTATHON R3 R9 — bounded correction of two OPEN defects; 177 normal/optimized PASS
+
+At immutable R8 head `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764`, P011's one-SING automatic enduring project and P017's inaccessible temporal duration through runtime were reproduced RED and fixed in existing sourcefree owners, with actual limits documented. Six added tests; 2 FAIL and 2 ERROR on frozen R8, full 177/177 normal/optimized green afterward. P011/P017 move **OPEN to PARTIAL**, not fully CLOSED or independently accepted. Counts: 69 P = 8 OPEN/8 PARTIAL/53 author-repaired pending independent review, T0, E6. Probes P022/P023 remain PROPOSED_NOT_EXECUTED; native OpenCode runner and G5 have not been invoked. See R9 source/test identities and evidence receipt.

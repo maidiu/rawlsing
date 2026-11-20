@@ -86,14 +86,12 @@ class HeuristicSemanticProvider:
                     if previous:
                         candidates.append({'kind':'LINK_FORMS',
                             'source':previous['id'],'target':fid,'relation':'SUPPORTS'})
-                    # Concrete fictional new purpose; NOT empirically warranted
-                    # from one episode and not a universal child motive.
-                    candidates.append({'kind':'ADD_PROJECT','project':{
-                        'id':stable_id('project',{'actor':packet['actor']['id'],'clock':packet['clock'],
-                                                 'object':'continue shared rhythms'}),
-                        'object':'explore whether a rhythm can continue',
-                        'means':['SING','PRACTICE'],'priority':.32,
-                        'cue_terms':['sing','rhythm'],'status':'active'}})
+                    # P011: a first performed song can establish a practice,
+                    # not a settled new object/motive. A provider may separately
+                    # propose a project through the existing typed developmental
+                    # owner, but this weak offline heuristic cannot infer one
+                    # merely from the action opcode. No compulsory positive
+                    # developmental direction is assigned to the episode.
                 return {'task':task,'candidates':candidates+relation_candidates,'semantic_grade':self.grade}
             if action=='SIGNAL' and cues:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
