@@ -77,6 +77,7 @@ class Situated:
     antagonisms: list[dict] = field(default_factory=list)
     suspended_actions: list[dict] = field(default_factory=list)
     learned_compositions: list[dict] = field(default_factory=list)
+    attention_frame: dict = field(default_factory=dict)
 
 
 @dataclass
