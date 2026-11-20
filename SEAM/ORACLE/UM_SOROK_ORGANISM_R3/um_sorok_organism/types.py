@@ -73,6 +73,7 @@ class Constitution:
     institutional_expectations: list[dict] = field(default_factory=list)
     material_dependency_encounters: list[dict] = field(default_factory=list)
     labor_dependency_encounters: list[dict] = field(default_factory=list)
+    wage_bargaining_experiences: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -145,6 +146,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'institutional_expectations': [],
         'material_dependency_encounters': [],
         'labor_dependency_encounters': [],
+        'wage_bargaining_experiences': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
@@ -181,6 +183,7 @@ def blank_world(world_id='w1'):
             'material_feeding_events': [],
             'food_control_concessions': {},
             'work_regimes': {},
+            'wage_disputes': {},
             'food_commons_history': [],
             'scheduled_obligations': [],
             'positioned_material_records': [],
