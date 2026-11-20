@@ -119,7 +119,8 @@ def install_gate(world,actors,who,site,intention):
         "initially_permitted_givers":[who],
         "eligible_petitioners":concession["eligible_petitioners"],
         "quorum":concession["quorum"],
-        "source_ref":concession["source_ref"]+":ENACTED:"+concession["id"]})
+        "source_ref":concession["source_ref"]+":ENACTED:"+concession["id"],
+        "pre_registered_concession_ref":concession["id"]})
     world.setdefault("holdings",{}).setdefault(who,{})["food"]=next_held
     world["sites"][site]["food"]=next_food
     world.setdefault("accounts",{})[who]=next_cash
