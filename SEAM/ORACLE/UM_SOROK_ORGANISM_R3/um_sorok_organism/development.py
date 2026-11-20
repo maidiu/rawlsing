@@ -122,6 +122,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             link.setdefault('relational_history',[]).append(old)
             link.setdefault('id',ident)
             link['relation']=c['new_relation']
+            # Caller cannot replace the immutable historical source of the
+            # original relation; only its current actor-specific interpretation.
             link['contexts']=copy(contexts)
             link.setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'relation':ident,
