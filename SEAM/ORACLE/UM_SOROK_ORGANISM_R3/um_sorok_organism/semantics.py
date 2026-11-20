@@ -134,6 +134,34 @@ class HeuristicSemanticProvider:
             # Explicit fictional-backfill link geometry. Indexes point only to
             # the extra seeded forms, never to empirical question-answer forms.
             seeded_forms=forms[len(answers):]
+            seeded_motifs=[]
+            for i,motif in enumerate(seeded.get('relational_motifs',[])):
+                indices=motif.get('source_indices',[])
+                if (not isinstance(indices,list) or not 2<=len(indices)<=4
+                        or any(type(k) is not int or k<0 or k>=len(seeded_forms)
+                               for k in indices)):
+                    raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                effects=[]
+                for effect in motif.get('effects',[]):
+                    e=copy(effect)
+                    if e.get('kind')=='RELATION_MEDIATION':
+                        a,b=e.get('source_index'),e.get('target_index')
+                        if (type(a) is not int or type(b) is not int
+                                or a not in indices or b not in indices):
+                            raise ValueError('INVALID_FICTIONAL_MOTIF_ENDPOINTS')
+                        e['source']=seeded_forms[a]['id']
+                        e['target']=seeded_forms[b]['id']
+                        e.pop('source_index',None);e.pop('target_index',None)
+                    effects.append(e)
+                seeded_motifs.append({
+                    'id':stable_id('backfill_motif',{'actor':packet['actor_id'],'i':i,'seed':motif}),
+                    'source_forms':[seeded_forms[k]['id'] for k in indices],
+                    'cue_terms':motif.get('cue_terms',[]),
+                    'locations':motif.get('locations',[]),
+                    'effects':effects, 'status':'ACTIVE',
+                    'origin':['fictional_init:'+packet['actor_id']],
+                    'grade':'EXPLICIT_FICTIONAL_BACKFILL_NOT_SURVEY_INFERENCE',
+                    'not_respondent_unconscious_truth':True})
             seeded_links=[]
             for edge in seeded.get('links',[]):
                 left,right=edge.get('source_index'),edge.get('target_index')
@@ -146,7 +174,8 @@ class HeuristicSemanticProvider:
             projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
                  'means':['REST','EAT','WORK','CARE'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
-            return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
+            return {'task':task,'forms':forms,'links':seeded_links,
+                    'relational_motifs':seeded_motifs,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
                       'coverage':'HYPOTHETICAL','unknown':['specific childhood scenes']},
                     'semantic_grade':self.grade}
