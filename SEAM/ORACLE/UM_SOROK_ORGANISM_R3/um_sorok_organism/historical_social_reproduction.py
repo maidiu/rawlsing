@@ -117,6 +117,14 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                     mode='ARRANGEMENT_UNRESOLVED'
                     support_downgrades.append(i)
             raw={**raw,'mode':mode}
+            if mode=='ASSISTED_COMPONENT_PRACTICE':
+                # Do not silently treat the other person's modeled time as
+                # free. Participation in a repeated shared arrangement uses
+                # the supporter's own finite hours as well. The prior
+                # coactivity trace is only a *warrant* for a provisional
+                # aggregate, not proof of consent on every unrendered day.
+                fraction_by_actor[supporter]=(
+                    fraction_by_actor.get(supporter,0.)+hours*fraction)
         normalized.append(copy(raw))
         fraction_by_actor[a]=fraction_by_actor.get(a,0.)+hours*fraction
     over={a:round(x,6) for a,x in fraction_by_actor.items()
