@@ -1,3 +1,13 @@
+# UM-SOROK R4 — relational-psychodynamic metabolism (sourcefree, candidate)
+
+**New sourcefree implementation stacked on R3 + REMONTATHON R5; NOT tested, independently reviewed, received or scientifically accredited at the current R4 SHA.** Read [R4 exact construction and limitation record](docs/RELATIONAL_METABOLISM_R4.md) before interpreting the historical R3 notes below. This branch extends the **same runnable research organism** rather than replacing its actor/world/psychic storage.
+
+**Actual new code:** \`um_sorok_organism/relational_metabolism.py\` (context-conditioned higher-order motifs, indirect inhibited relations and qualified action currents); \`constitution.py\` / \`psychodynamics.py\` (historical motifs become operative in present action); \`development.py\` (event-qualified motif acquisition, relation revaluation, motif reorganization with historical ancestry); \`types.py\` / \`parents.py\` / \`semantics.py\` (same data path for fictional adult backfill and open child development); \`runtime.py\` (actor-private pre/post event psychodynamic receipts, with restricted public renderer).
+
+**New research court authored, execution unverified:** \`python -m pytest -q -o addopts='' tests/test_relational_metabolism_r4.py\`, followed by full inherited \`python -m unittest discover -s tests -v\`. **Do not transfer R3 42-pass or R5 111-pass claims to this modified R4 HEAD.** The historical \`SOURCE_SHA256.json\` below is an R3 snapshot, not a current R4 manifest.
+
+---
+
 # UM-SOROK R3 — live theory↔code pressure-flow and acquired composition (sourcefree)
 
 **Status:** `SOURCEFREE_RESEARCH_PROVISIONAL`, actual Python/SQLite research code. No native owner/actor rights; no protected integration. Historical R1 and R2 preserved. Principal directs SEAM/30 to keep deepening the theory in parallel while this line writes and criticizes code. Incidental defects belong in REMONT.
