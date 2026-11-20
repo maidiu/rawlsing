@@ -66,8 +66,11 @@ def include_asked_eligible_states(
             "SOURCE_COMPONENT_NOT_SUBSTANTIVE_ONLY_BEFORE_POLICY"
         )
     domain = component.get("domain")
-    if not isinstance(domain, (tuple, list)) or not domain:
+    if not isinstance(domain, (tuple, list)):
         raise AskedEligibleDistributionError("EXACT_SOURCE_SUBSTANTIVE_DOMAIN_REQUIRED")
+    # A legitimately asked question can have no substantive answers.
+    # In that case the typed DK/refusal/missing outcomes still form a
+    # nonempty and fully accountable I03 target domain.
     values = [canonicalize(x) for x in domain]
     if any(isinstance(v, Mapping) and "typed_response_state" in v for v in values):
         raise AskedEligibleDistributionError(

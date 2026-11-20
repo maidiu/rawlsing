@@ -166,3 +166,79 @@ def test_helper_rejects_unqualified_non_scalar_and_substantive_collision():
         include_asked_eligible_states({
             **base, "domain": ["0", {"typed_response_state": "DK"}],
         })
+
+
+
+def test_native_source_rule_requires_explicit_codebook_typed_nonanswer_mapping(tmp_path):
+    """Physical codes become DK/refusal only through an admitted source rule."""
+    from rawlsing_next.pre553_source_native_preimage_adapter import (
+        NativeSourceRule, NativePreimageRefusal, materialize_native_preimages,
+    )
+    from rawlsing_next.pre553_physical_decoder import decode_dta
+    from rawlsing_next.tests.test_universal_source_projection import (
+        package, write_rows,
+    )
+    p = tmp_path / "asked_source_states.dta"
+    rows = [
+        {"PID": 1.0, "OCCASION": 0.0, "Y": 1.0},
+        {"PID": 2.0, "OCCASION": 0.0, "Y": 98.0},
+        {"PID": 3.0, "OCCASION": 0.0, "Y": 99.0},
+        {"PID": 4.0, "OCCASION": 0.0, "Y": 97.0},
+    ]
+    write_rows(p, rows, fmt="dta")
+    plain = package(
+        p, len(rows), (NativeSourceRule("impl.y", "Y"),),
+        coordinate="OCCASION", source_format="DTA",
+    )
+    issued = package(
+        p, len(rows),
+        (NativeSourceRule(
+            "impl.y", "Y",
+            response_state_by_source_value={
+                "98": "DK", "99": "REFUSAL", "97": "SOURCE_SPECIFIC_SPECIAL",
+            },
+        ),),
+        coordinate="OCCASION", source_format="DTA",
+    )
+    assert plain.package_hash != issued.package_hash
+    original = materialize_native_preimages(
+        package=plain, incidence=decode_dta(p),
+    )
+    typed = materialize_native_preimages(
+        package=issued, incidence=decode_dta(p),
+    )
+    q = issued.selected[0].source_variable_code
+    def states(bundle):
+        target = bundle.question_refs[q]
+        return {
+            v.response_state for slot in bundle.projection.response_slots
+            if slot.question_binding.native_question_ref == target
+            for v in slot.values
+        }
+    assert states(original) == {"SUBSTANTIVE_RESPONSE"}
+    assert states(typed) == {
+        "SUBSTANTIVE_RESPONSE", "DK", "REFUSAL",
+        "SOURCE_SPECIFIC_SPECIAL",
+    }
+    with pytest.raises(NativePreimageRefusal, match="CONFLICTING"):
+        NativeSourceRule(
+            "impl.y", "Y",
+            value_aliases={"98": "good"},
+            response_state_by_source_value={"98": "DK"},
+        )
+    with pytest.raises(NativePreimageRefusal, match="INVALID_TYPED"):
+        NativeSourceRule(
+            "impl.y", "Y", response_state_by_source_value={"98": "NOT_ASKED"}
+        )
+
+
+def test_all_nonanswer_source_can_have_zero_substantive_domain():
+    component = {
+        "topology": "SCALAR_SINGULAR",
+        "included_states": ["SUBSTANTIVE_RESPONSE"],
+        "domain": [],
+    }
+    result = include_asked_eligible_states(component)
+    assert result["domain"] == [
+        {"typed_response_state": state} for state in STATE_SET[1:]
+    ]
