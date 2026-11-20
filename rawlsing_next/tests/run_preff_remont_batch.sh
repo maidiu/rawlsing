@@ -80,9 +80,11 @@ for id in "${cases[@]}"; do
       RMT-Q009) court=C5_V3_CONTEXT ;;
       RMT-Q010) court=C6_V3_SEAM ;;
     esac
+    proof_subdir=court
+    if [[ "$id" == RMT-Q005 ]]; then proof_subdir=broad_c0; fi
     EXPECTED_PREFF_C0_HEAD="$HEAD_SHA" \
     PREFF_COURT="$court" \
-    PREFF_PROOF_DIR="$dir/court" \
+    PREFF_PROOF_DIR="$dir/$proof_subdir" \
     bash rawlsing_next/tests/run_preff_c0_first_fault_local.sh \
       2>&1 | tee "$dir/runner.log"
   else
