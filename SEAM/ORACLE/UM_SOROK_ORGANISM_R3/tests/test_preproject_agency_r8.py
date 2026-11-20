@@ -143,3 +143,28 @@ class PreprojectAgencyTests(unittest.TestCase):
         self.assertEqual(self.actor['expectations'][0]['historical_ground_ref'],'e1')
 
 if __name__=='__main__':unittest.main()
+
+class PreprojectDeferralMulchR8(unittest.TestCase):
+    def _options(self, modes):
+        options=[{'action':'WAIT','basis':[]},{'action':'SIGNAL','basis':[]}]
+        actor={'id':'nadia','expectations':[]}
+        for n,mode in enumerate(modes):
+            admit_preproject_anticipation(actor,exp(),'e'+str(n),cand(orientation_mode=mode))
+        recruit_preproject_anticipations(situated(actor),access(['soft_voice']),options)
+        return options
+
+    def test_withhold_now_has_an_actual_fallback_reader(self):
+        from um_sorok_organism.preproject_agency import fallback_nonproject_deferral
+        p=self._options(['WITHHOLD'])
+        self.assertEqual(fallback_nonproject_deferral(p)['action'],'WAIT')
+
+    def test_contradiction_exposes_deferral_not_automatic_approach(self):
+        from um_sorok_organism.preproject_agency import fallback_nonproject_deferral
+        p=self._options(['APPROACH','WITHHOLD'])
+        self.assertEqual(fallback_nonproject_deferral(p)['action'],'WAIT')
+
+    def test_existing_project_not_erased_by_nonproject_deferral(self):
+        from um_sorok_organism.preproject_agency import fallback_nonproject_deferral
+        p=self._options(['WITHHOLD'])
+        p[0]['project_courses']=[{'project_id':'work'}]
+        self.assertIsNone(fallback_nonproject_deferral(p))
