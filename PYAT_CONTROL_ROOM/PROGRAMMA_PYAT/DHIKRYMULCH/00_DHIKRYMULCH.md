@@ -66,6 +66,18 @@ Local relational geometry, multiple correspondence analysis where its measuremen
 
 This distinction organizes the rest of the machine: complete response morphologies occupy one evidentiary space, social and material positions the other, and conditional inference plus higher-order respondent co-travel make the relationship between them navigable.
 
+### The observation field: a survey is itself a historically structured social encounter
+
+Before asking what a population believes, the engine must know **which population can appear as an answerer under these conditions**, and what act of answering has actually been observed. A questionnaire is not a transparent aperture through which society automatically describes itself. It is an institutional encounter: somebody designed the categories and language, a sampling apparatus determined reachability, an interview mode made some answers easier or more costly, and respondents brought their own practical relations to disclosure, refusal and interpretation.
+
+This observation structure is a real part of the data's meaning, not a later optional caveat. A worker employed informally, an undocumented migrant, a displaced household, a child excluded by age, a woman whose interview is overheard, or a person living under police intimidation may inhabit very different **conditions of observability**. Sometimes available evidence actually permits comparisons of response rates, item nonresponse, mode, language, coverage or subgroup eligibility. Sometimes it does not. The latter is an **observational shadow**, not evidence that excluded or silent people possess a particular belief.
+
+**Input:** Source-defined population and coverage, sampling frame, interview mode and time, questionnaire language, administration and skip rules, response and participation opportunity, known nonresponse, survey weights and independently admitted external population information. **Operation:** Build a typed map of who was reachable, eligible, asked, observed, able to decline, actually recorded and represented by each statistical estimator. Compare observed participation and missingness patterns when the design permits. Identify where the questionnaire's own categories obscure distinctions or lack relevant responses. **Product:** An **Observation and Silence Field** attached to every empirical question: source-covered positive and negative claims, known excluded domains, differential nonresponse where actually measurable, conjectured but unverified silencing mechanisms, and the precise additional observation that would discriminate among explanations.
+
+The engine should *not* claim that silence equals fear, that "none of these" necessarily means alienation, or that a powerless group is intrinsically voiceless. Nor should it convert every unobserved population into missing data requiring fabricated imputation. A strong sociological machine makes itself aware of its **selection mechanisms** and produces explicit proposals for new questions without confusing those proposals with answers. It can say: "The observed group has this repertoire; the survey does not allow us to characterize the group excluded from its frame. The observed refusal pattern is consistent with several explanations, none identified." This is knowledge about the reach of its knowledge.
+
+The new power is reciprocal: when a discovered motif clusters around an unexpectedly high refusal or a strange residual category, the observation field becomes an **active object of inquiry**. The machine can challenge its apparent social-formation discovery by asking whether the pattern tracks administration, translation, applicability, response-option incompleteness or survey selection instead. If the challenge survives, the formation becomes better supported; if not, it corrects the ontology rather than propagating a flattering but false social type.
+
 ## III. GIVE EVERY QUESTION ITS COMPLETE RESPONSE MORPHOLOGY
 
 A conventional analysis begins by choosing a dependent variable and one favored outcome. Ours first asks what the question permits people to say and what the observed population actually did say.
@@ -79,6 +91,14 @@ For a multi-select question, do not pretend the options are exclusive. Recover b
 **Why:** We cannot discover minorities or contradictions by first deleting every outcome except the mode. We cannot discover overlapping interpretive frames if the data model requires exactly one answer. A source response can be a selection of multiple frames, an ambivalent rating, or a refusal to accept the offered choices.
 
 **Next:** Ask which social and material positions differentiate the entire morphology—not simply which feature best predicts one selected answer.
+
+### Responses are acts, not unmediated interior states
+
+The observable object is often a **reported position under a particular instrument**, rather than a transparent belief stored inside a person. Agreement with a principle, recognition of an injustice, support for an institution, recollection of a practice, an intended vote and an observed action are different evidentiary kinds. Even "what is the main basis of discrimination?" measures a respondent's selection among offered ways of naming discrimination at that moment; it does not directly measure the objective causal composition of discrimination, nor the whole psychological reality through which that person interprets it.
+
+A response morphology should therefore organize **expressive possibilities** as well as answer values: selection, omission, multi-frame composition, ranked priority, degree, hesitation if observed, contestation of the question's frame, report of one's own conduct, report about others and missing/no-access states. Do not manufacture hesitation or lived ambiguity when the instrument did not record it. But do not flatten an actual multi-response or norm/conduct differentiation into a single trait. The engine's downstream value partly depends on making such distinctions available before a hypothetical-person constructor mistakes a survey response for an acquired, all-context disposition.
+
+**Product added to the response layer:** a **Response-Act Grammar** that states the target of each observation (self-report, judgment of society, experienced event, hypothetical intention, enacted practice, factual condition), its available categorical/ordinal/multi-answer topology, and what is *not* observed. This typed grammar is what permits meaningful cross-question relational discovery later.
 
 ## IV. DISCOVER THE CONDITIONAL TOPOGRAPHY OF EVERY MEASURED POSSIBILITY
 
@@ -164,6 +184,18 @@ Demographic and material positions condition these clouds; they are not automati
 
 **Next:** Ask where these repertoires live in the wider social space and how their relations vary.
 
+### Co-occurrence is only the beginning: discover typed relationships among principles, applications, conduct, costs and targets
+
+A respondent-coherent attitude cloud says that measurements co-travel. But there is a far more powerful question: **what kind of relationship do the measurements themselves express?** Two jointly selected opinions may be mere companions, one may be the concrete application of a principle the other expresses, one may be a proposed means to a stated end, or they may describe the same rule as applied to different social targets. Their *pairing* can carry information that neither standalone answer nor numerical correlation captures.
+
+The older O10/S14/S15 structural-grammar aspiration made this explicit. The forward design should recover, with governed semantic roles, at least these *possible analytic questions*: **principle ↔ application; norm ↔ reported conduct; goal ↔ means; public commitment ↔ personal cost; universal declaration ↔ target selectivity; rule ↔ exception; claimed duty ↔ reciprocal obligation; prescribed loyalty ↔ competing commitment**. Some require two responses by the same person; some compare source-observed distributions across people or settings; some would require observations that a survey simply lacks. The analytic operation must know which it is doing.
+
+**Operation:** A qualified semantic authority identifies which measured propositions have a legitimate typed relation. The empirical engine then performs the actual same-unit co-administration and joint checks, conditions on observed positions, and discovers patterns of consistency, asymmetry, reversals, conditional selectivity, diffuse connection and apparent contradiction. It separately tests whether a relation depends on a particular target or practical cost. The result is not an arithmetic "hypocrisy" or "moral worth" score: a person can consistently hold two responses because the questions have different objects, or a social contradiction may be real without every respondent experiencing it as psychological conflict.
+
+**Product:** A **Typed Repertoire-Relation Field**: which patterns coexist, which logical or practical relation an authorized meaning analysis proposes, which social positions carry each configuration, which limits belong to sampling/semantics, and which new contrast could falsify the interpretation. A compelling finding would be that an apparently universal norm is expressed differently across specifically named targets under a fixed position condition, *if the survey actually administered all those questions*. The engine can discover such selective application without inferring an unseen motive.
+
+**Why this precedes structural interpretation:** A field's ideological contradictions are not recoverable from bare marginal distributions. Yet assigning them unilaterally from moral theory would also be false. The typed joint grammar gives Field Forge precise candidates to evaluate against independent institutions, conflicts and material relations.
+
 ## IX. CONSTRUCT THE POSITION–DISPOSITION LANDSCAPE
 
 A cloud tells us what travels together. A conditional topography tells us how responses vary by position. Now we need to understand the *geometry* of both: which positions are empirically near or distant under a declared comparison, where multiple repertoires overlap, where their boundaries are sharp, and which subcultures are simultaneously similar on one axis and antagonistic on another.
@@ -219,6 +251,20 @@ This changes the meaning of **subhegemony**. A repertoire can be widely respecte
 Position–repertoire homology, empirical motifs, field-relative resources and conversion together offer a much more capable alternative to a compulsory nine-strata lookup table. The old strata remain one optional view of the underlying, context-responsive relational topology.
 
 **Next:** Bring the purely empirical geometry to the separately authorized social-world constitution process, where its possible relation to power can be examined.
+
+### Concept birth: discover candidate social kinds rather than endlessly sort people into inherited categories
+
+The hardest original ambition was not to describe an already named subgroup. It was for the machine to **discover formations its designers had not anticipated**. This cannot be fulfilled by choosing a top splitter, assigning a label like "sectarian subculture," and repeating. Nor does it require the software to pronounce a new objective class or community whenever some statistical cluster appears.
+
+The creative empirical move begins with **an unnamed respondent-supported motif**: a combination of observed answers, response-act relations, a conditional position geometry, unusual minorities, differentiated membership and an actual support/stability profile. An explorative model or search algorithm may detect a motif because a three-way interaction is not reducible to pairwise relations; because two supposedly antagonistic principles coexist; because a global minority becomes a local majority; or because the same pattern appears across social positions which the initial ontology treated as separate.
+
+The next move is **concept formation under challenge**. The machine proposes a candidate description of the motif and its differentiating features. Then it tries to defeat the candidate: does it survive alternative cuts, a change of target response, leave-one-context-out tests, valid design sensitivity, observed countercases, or an entirely different authorized measure of the proposed concept? Is it a stable collective configuration, an artifact of routing, a dense intersection of already known conditions, a questionnaire response style, a mixture of two distinct groups, or a temporary statistical accident? Where no test is possible, it remains a bounded descriptive candidate rather than a recognized social kind.
+
+The machine must preserve **overlapping, nested, cross-cutting and discontinuous membership**. A person may occupy several institutional positions and express several repertoires. A social formation may have porous membership, a core and periphery, and an exception field; it is not automatically a mutually exclusive latent class. A recursive tree can **discover** a context, but the resulting possibility space may be better represented as an overlapping family of intersections and relations. Branches are exploratory paths, not metaphysical partitions.
+
+**Product:** An **Empirical Concept Candidate** consisting of a reproducible observed signature, respondent universe, admissible description, positive and counterexamples, social-position distribution, validated or unresolved differentiation, open tests and explicit claims it cannot support. An LLM can propose an illuminating tentative name or competing interpretations, but cannot turn its interpretation into source fact. A human/source-adjudicated sociological concept can be associated with the candidate later; the statistical motif itself continues to exist even if its proposed name is rejected.
+
+Now new concepts can drive new work. A concept candidate can become a conditioning object for further multi-label branch searches, a target of reverse position inference, a comparator across waves, a question to Field Forge, and a fresh alternative in adult possibility exploration. **The epistemic ontology is allowed to grow, be corrected, split or merge**, while the immutable observed evidence and original rejected interpretations remain distinguishable. That is genuine self-expanding empirical sociology: not endless automatic tabulation, but an engine that can create and contest the *terms* of its next inquiry.
 
 ## X. BUILD PROFILES OF HEGEMONY, COUNTERHEGEMONY, SUBHEGEMONY AND SOCIAL COMMON SENSE
 
@@ -386,6 +432,18 @@ At a sufficiently developed stage, a query can also request **maximal informativ
 
 The most generative form of the result is therefore a **conditional possibility neighborhood**: an organized account of which adjacent configurations remain possible under fixed material conditions, which empirical changes move us between them, and what is unknown about their eventual lived formation. It offers much more than a sampled vector and less than a fictional biography—a fertile and disciplined input for the next owner.
 **Next:** Let the generative consumer construct a hypothetical configuration that remains accountable to this space.
+
+### Neither copy actual respondents nor fabricate every unobserved combination
+
+The historically useful generation problem is richer than "select one whole survey respondent" versus "sample every question marginally." Whole-respondent support is the strongest direct demonstration that a configuration of *measured answers* co-occurred. It is not an ontological claim that configurations never observed in a finite sample could not occur, nor is it permission to recombine columns arbitrarily.
+
+A powerful Positioned Possibility Service should distinguish **four constructive forms of possibility**. An *observed configuration* is supported at its exact source/respondent grain, including required nonresponse semantics. An *inferred but unobserved configuration* may be offered only by a separately admitted, dependence-preserving generative model or bounded conditional inference, with its validation and extrapolation limits. An *unresolved configuration* is one whose absence could reflect finite support, incomplete measurement or unsearched conditions and cannot be called impossible. An *excluded configuration* is forbidden by an actual logical, physical, source-defined or authoritative incompatibility—not merely because its empirical count is zero.
+
+**Operation:** Condition on the situated request, find the strongest respondent-backed joint neighborhoods and observed alternatives; where full exact cases are sparse, apply admissible specificity walkback. If broader generative breadth is necessary, consider only a model with an explicitly preserved joint-dependence structure, an evaluated ability to reproduce known joint and minority configurations, and a limit on unobserved extrapolation. Never claim that a synthetic draw is a newly found real survey respondent. Distinguish "this sampled adult is coherent under an admitted model" from "this exact whole configuration occurred in source data." Protect source privacy: a generative request must not cause a restricted row to be exposed as a fictional biography.
+
+**Product:** A **Qualified Possibility Envelope** with observed whole-case anchors, unresolved neighborhoods, conditionally inferred alternatives, explicitly impossible combinations, probability ranges where justified, and the fidelity/authority of its construction mode. It allows some genuinely new synthetic combinations without claiming that the survey has measured their real-world prevalence. Especially when many necessary dimensions were never co-administered, honest partial description can be a better offer than a superficially complete person.
+
+The principle is **creative breadth under known dependence**. Respondent fidelity must not become a regime of copying sampled individuals, and fictional creativity must not become a regime of independent marginals. Both mistakes would make social life narrower or more stereotyped than the evidence warrants.
 
 ## XV. PRODUCE PARENT/ADULT CONFIGURATIONS WITHOUT INVENTING PSYCHOLOGICAL PERSONS
 
