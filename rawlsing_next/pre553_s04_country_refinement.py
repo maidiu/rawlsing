@@ -390,3 +390,66 @@ def run_issued_country_refinement(
         "process_supervisor_required_for_hard_per_unit_deadlines": True,
         "original_survey_rights_from_this_adapter": False,
     }
+
+
+def run_r03_v2_issued_country_refinement(
+    *, issuance: Any, operation_id: str, query_role: str,
+    universe: EmpiricalUniverse, execution: QueryExecutionResult,
+    request: CountryRequest, target_index: int,
+    candidate_indices: Sequence[int], context: Mapping[int, Any],
+    budget: RefinementBudget,
+    resource_sample: Callable[[], ResourceSample] | None = None,
+) -> dict[str, Any]:
+    """Bind an original-R03-lowered *TEST_ONLY* QUERY role to the S04 adapter.
+
+    The caller CANNOT inject a new query/predicate into this receiving path.
+    R03 owns compilation and issuance; this adapter resolves exact preimages
+    only from the authentic v2 runtime catalog. It does not upgrade R03's
+    TEST_ONLY_SOURCEFREE ceiling to original-survey science.
+    """
+    from rawlsing_next.pre553_governed_query_issuer_v2 import (
+        GOVERNED_QUERY_ISSUER_SCHEMA, GovernedQueryIssuanceV2,
+    )
+
+    if (type(issuance) is not GovernedQueryIssuanceV2
+            or issuance.schema != GOVERNED_QUERY_ISSUER_SCHEMA
+            or issuance.issued.record.scope != "TEST_ONLY_SOURCEFREE"):
+        raise CountryRefinementError("R03_V2_EXACT_SOURCEFREE_ISSUANCE_REQUIRED")
+    if (not isinstance(operation_id, str) or not operation_id
+            or not isinstance(query_role, str) or not query_role):
+        raise CountryRefinementError("R03_OPERATION_AND_ROLE_REQUIRED")
+    issued = issuance.issued
+    workload = issued.workload
+    if (issued.envelope_sha256 != semantic_hash(workload.envelope())
+            or issued.record.envelope_sha256 != issued.envelope_sha256):
+        raise CountryRefinementError("R03_ISSUED_WORKLOAD_ENVELOPE_DRIFT")
+    matches = [b for b in issuance.operation_jobs
+               if b.operation_id == operation_id and b.query_role == query_role]
+    if len(matches) != 1:
+        raise CountryRefinementError("R03_ORIGINAL_QUERY_ROLE_NOT_ISSUED")
+    binding = matches[0]
+    if not any(
+        r.query_ref == binding.query_ref and r.predicate_ref == binding.predicate_ref
+        for r in workload.requests
+    ):
+        raise CountryRefinementError("R03_ISSUED_QUERY_ROLE_NOT_IN_WORKLOAD")
+    catalog = workload.catalog
+    query = catalog.resolve_query_exact(binding.query_ref)
+    predicate = catalog.resolve_predicate_exact(binding.predicate_ref)
+    if (query.ref != binding.query_ref or predicate.ref != binding.predicate_ref
+            or exact_ref(query.condition_predicate_ref) != predicate.ref
+            or execution.query_ref != query.ref):
+        raise CountryRefinementError("R03_SOURCE_QUERY_PREDICATE_EXECUTION_DRIFT")
+    result = run_issued_country_refinement(
+        universe=universe, predicate=predicate, query=query, execution=execution,
+        registry=catalog.authority_registry, request=request,
+        target_index=target_index, candidate_indices=candidate_indices,
+        context=context, budget=budget, resource_sample=resource_sample,
+    )
+    return {
+        **result, "r03_issued_compilation_hash": issuance.content_hash,
+        "r03_issued_operation_id": operation_id,
+        "r03_issued_query_role": query_role,
+        "r03_issued_workload_envelope_sha256": issued.envelope_sha256,
+        "source_original_science_permission": "NOT_GRANTED_TEST_ONLY_SOURCEFREE",
+    }
