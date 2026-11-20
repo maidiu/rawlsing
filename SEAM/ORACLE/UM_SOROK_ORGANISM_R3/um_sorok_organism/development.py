@@ -52,11 +52,23 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
             type(c) is not dict or c.get('kind')=='RECORD_POSSIBLE_END_TRIAL'
             for c in candidates):
         raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
-    if issued_trial is not None and any(
-            c.get('kind')=='TAKE_UP_POSSIBLE_END'
-            and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
-            for c in candidates):
-        raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
+    if issued_trial is not None:
+        # A currently issued possible-end trial is not historical evidence of
+        # a mature motive. The older guard caught only TAKE_UP for that end;
+        # model output could evade it with ADD_PROJECT (even by renaming the
+        # object), or rewrite a preexisting project's object/motive instead.
+        # Require a separate experienced occasion for new durable project
+        # construction. Other preexisting projects, and later R6 takeup,
+        # remain available through their ordinary qualified pathways.
+        for c in candidates:
+            if c.get('kind')=='ADD_PROJECT':
+                raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
+            if (c.get('kind')=='REORGANIZE_PROJECT'
+                    and any(k in c for k in ('object','motive'))):
+                raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
+            if (c.get('kind')=='TAKE_UP_POSSIBLE_END'
+                    and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')):
+                raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
     witnessed=[]
     if issued_trial is not None:

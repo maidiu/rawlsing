@@ -1,0 +1,60 @@
+test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected) ... 
+  test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected) (table='worlds') ... FAIL
+  test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected) (table='actors') ... FAIL
+test_p070_uncommitted_second_world_cannot_verify (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_second_world_cannot_verify) ... FAIL
+test_p071_malformed_actor_sensor_not_a_perceptual_license (tests.test_r11_independent_regressions.R10Continuity.test_p071_malformed_actor_sensor_not_a_perceptual_license) ... FAIL
+test_malicious_model_relabels_current_trial_via_new_project (tests.test_r11_independent_regressions.TrialAuthority.test_malicious_model_relabels_current_trial_via_new_project) ... FAIL
+test_malicious_provider_claims_foreign_trial_history_at_development (tests.test_r11_independent_regressions.TrialAuthority.test_malicious_provider_claims_foreign_trial_history_at_development) ... ok
+test_valid_selected_trial_retains_actor_history_and_world_chain (tests.test_r11_independent_regressions.TrialAuthority.test_valid_selected_trial_retains_actor_history_and_world_chain) ... ok
+
+======================================================================
+FAIL: test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected) (table='worlds')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11_repair/frozen_r11/tests/test_r11_independent_regressions.py", line 35, in test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected
+    with self.assertRaisesRegex(AssertionError,'NONCANONICAL|CHANGED'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected) (table='actors')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11_repair/frozen_r11/tests/test_r11_independent_regressions.py", line 35, in test_p070_uncommitted_noncanonical_actor_world_snapshot_bytes_rejected
+    with self.assertRaisesRegex(AssertionError,'NONCANONICAL|CHANGED'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_p070_uncommitted_second_world_cannot_verify (tests.test_r11_independent_regressions.R10Continuity.test_p070_uncommitted_second_world_cannot_verify)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11_repair/frozen_r11/tests/test_r11_independent_regressions.py", line 23, in test_p070_uncommitted_second_world_cannot_verify
+    with self.assertRaisesRegex(AssertionError,'UNCOMMITTED_WORLD_ROSTER'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_p071_malformed_actor_sensor_not_a_perceptual_license (tests.test_r11_independent_regressions.R10Continuity.test_p071_malformed_actor_sensor_not_a_perceptual_license)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11_repair/frozen_r11/tests/test_r11_independent_regressions.py", line 43, in test_p071_malformed_actor_sensor_not_a_perceptual_license
+    with self.assertRaisesRegex(ValueError,'INVALID_BODY_STATE:sensor'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malicious_model_relabels_current_trial_via_new_project (tests.test_r11_independent_regressions.TrialAuthority.test_malicious_model_relabels_current_trial_via_new_project)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r11_repair/frozen_r11/tests/test_r11_independent_regressions.py", line 92, in test_malicious_model_relabels_current_trial_via_new_project
+    self.assertFalse(any(p.get('motive')=='MATURE_RHYTHM_MOTIVE_FROM_TRIAL' for p in projects),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'CURRENT_TRIAL_MOTIVE_CAN_BE_MINTED_VIA_ADD_PROJECT: '+repr(projects))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : CURRENT_TRIAL_MOTIVE_CAN_BE_MINTED_VIA_ADD_PROJECT: [{'cue_terms': ['sing'], 'grade': 'SOURCEFREE_RESEARCH_PROVISIONAL', 'id': 'project_ce572738c6c12637', 'means': ['SING'], 'motive': 'MATURE_RHYTHM_MOTIVE_FROM_TRIAL', 'object': 'explore whether a rhythm can continue', 'origin': ['objective_d3ed7a9183898bc2'], 'priority': 0.8, 'status': 'active'}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.058s
+
+FAILED (failures=5)
