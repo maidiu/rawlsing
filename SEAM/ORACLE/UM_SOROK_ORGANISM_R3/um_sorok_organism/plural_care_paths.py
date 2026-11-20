@@ -30,6 +30,8 @@ def conserve_lived_high_resolution_care(actor,experience,event_ref,before,after)
     """
     if actor.get('id')!=experience.get('actor') or not event_ref:
         raise ValueError('PLURAL_CARE_EXPERIENCE_ACTOR_MISMATCH')
+    if type(experience.get('clock')) is not int or experience['clock']<0:
+        raise ValueError('PLURAL_CARE_INVALID_EXPERIENCE_CLOCK')
     if (experience.get('own_action')!='RECEIVED_CARE'
             or experience.get('felt_effect')!='SOMATIC_CARE_CANDIDATE'
             or not experience.get('participated')):
@@ -80,6 +82,8 @@ def plural_acquisition_candidate(actor,experience,event_ref):
     """
     if actor['id']!=experience.get('actor'):
         raise ValueError('PLURAL_CARE_FOREIGN_ACTOR')
+    if type(experience.get('clock')) is not int or experience['clock']<0:
+        raise ValueError('PLURAL_CARE_INVALID_EXPERIENCE_CLOCK')
     present={c.get('source_actor'):c.get('id')
              for c in experience.get('perceived_cues',[])
              if type(c) is dict and c.get('kind')=='coactor_present'
