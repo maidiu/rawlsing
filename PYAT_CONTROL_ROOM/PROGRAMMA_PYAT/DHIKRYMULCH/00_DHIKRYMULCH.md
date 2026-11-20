@@ -899,3 +899,81 @@ Require (a) a **surprising empirical finding**, including a legitimate negative 
 
 This is not a demand for a perfected general psychology before coding. It is a demand for an **imperfect, substantially integrated, functioning organism** rather than many isolated toy components and a documentary claim of completion.
 
+
+---
+
+## XII. ENGINEERING THIS ORGANISM: CONSTRUCTION DECISIONS, NOT ANOTHER VISION CAMPAIGN
+
+### XII.1 Status and authority are separate from the target
+
+**The finished target is now this reconstructed architecture; the code is not yet proved to realize it.** A canonical specification can guide agent commissions without pretending to certify its own implementation, original-source rights, or independent review. At this author's verified November 20 evidence cut: protected PRE-MAIN integration head is 5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e, paired PYAT CURRENT_PROGRESS.json reports revision 11; original DHIKRYMULCH draft #1184 remains at 86a12c5f733d6a74b800e1bc3bdccb3ceba25e78; separate partial-identification research PR #1193 was at 638bb7a4a1049bd666946e869a7fde7592dd2624 before this reconstructive descendant branch. These are **source cuts**, not a timeless claim that no later work exists. This reconstruction branch has no independently attested HQ writer/host lease, original35 science rights, G5 verdict, qualified structural mechanism issuance or protected paired CAS. Do not confuse a book author's ability to prepare a complete target with an HQ appointment.
+
+The current constructive mandate is **substantial integrated software** using existing inherited capital, not a return to validation-first philosophy or endless source census. Science and adversarial trials remain necessary, but they are subordinate to building a functioning approximation whose assumptions remain explicit. Agents must not use the absence of a perfected psychology to avoid building its provisional operative semantics.
+
+### XII.2 The nonnegotiable full vertical slice
+
+A build agent should work toward a single connected vertical in which:
+
+1. A qualified PYAT result (or an explicitly honest sourcefree surrogate at the permitted test grain) conditions material and cultural alternatives without inventing respondents.
+2. Field Forge/world owners instantiate independent roles, resources, schedules, social reproduction, available institutional actions and at least one genuinely material constraint.
+3. A parent is historically backfilled through survey-conditioned adult possibility plus fictional relational/activity history, **without** taking a source respondent as a person.
+4. Nadia begins as an embodied immature organism with no predetermined personality end.
+5. A continuing activity involves bodily need, the parent, a material world condition and another independent actor.
+6. Nadia's available acquired organizations or primitive capacities affect how she lives through the encounter; a situated response is executed and the world arbitrates its consequences.
+7. A grounded psychological transformation is proposed, admitted, or refused as NO_CHANGE, and becomes operative for a subsequent different encounter.
+8. Ordinary-life processes carry actual time, care work, needs and practice between encounters without resetting the world.
+9. A later action demonstrates that the **same actor** is different for a reconstructible historical reason while another actor retains their independent agenda.
+10. A counterexample—altering an institutional condition, a life history, an eligibility gate, or a psychological proposal—changes the expected part of the trace, **and not an unrelated authority layer**.
+
+No loose report of ten separately green modules replaces this witness.
+
+### XII.3 Reuse and extend inherited owners
+
+The actual implementation must first **compare existing current code against the required positive function** and retain accepted value:
+- **PYAT:** original35 source identity/semantic and respondent facts; C11 and other conditioned analytical primitives; V550 branch/co-travel/J genealogy; sourcefree current N10E/N10W, S04/DHIKR and first consumers; current field-relative and historical operators; persistence/replay and source authority.
+- **Field Forge/N9:** adopted R2 actor-independent relation constitution, legitimate direct use/dereference of qualified empirical products, material mechanism source limits, noncompulsory carrier and bounded current canaries. Extend only where general material relation generation, independent world conditions, first readers and pressure/cost mechanisms are still functionally absent.
+- **SOROK:** inherited P2–P6, CAN/ADP, PFF, SDTF, V3, Mechanisms, PRE-A0, SEAM and ORACLE. Map these to the actual functions of body/needs, historical psyche, recruitment, activity, semantic realization, developmental reconstitution, independent Others, world arbitration, adult backfill, compression and continuing runtime. A module's existing presence is not proof of uptake; an isolated demo is not a realized person.
+- **Owner/authority controls:** source science and actor method issuers, original-source permission, semantic authority lifecycle, typed negatives, canonical current selection, qualified reviewer and protected paired progress are operational constraints to preserve; never bypass them by renaming an interface.
+
+A sound **replacement** conserves the fulfilled function and moves the primary owner only with legitimate receiving. An old heuristic that is scientifically unsound can be retired after its *intended question* has a stronger answer or an explicit held status. No obsolete Enneagram coefficient deserves a free pass merely because it is in old code. Neither should an old joint, branch, component vector, structural pathway or developmental distinction vanish because its new runtime owner has not yet been named.
+
+### XII.4 Provisional engineering decisions worth implementing now
+
+These are **provisional choices**, with authority and falsifiers, not an unjustified scientific constitution:
+
+**A. Exact source/claim query graph.** Use available canonical releases, respondent masks, per-question risk-set and semantic authority, with cached derived operations and deterministic query node identity; calculate exact preexisting operators, building orchestration where absent. Proof: same query and legitimate new branch survive cold/warm parity, source-version mutation and missing authority with the same meaning. This is a research engine, not a warehouse of all possible generated persons.
+
+**B. Context-sensitive material-world state.** Persist institution roles, rules, schedules, resource stocks, labor/care obligations, geographic and legal access, and separate actor-world interpretations. Proof: modifying a material fact alters actual available actions at a world consumer and survives restart. Do not start with an enormous abstract force-vector architecture.
+
+**C. Historical psychological organization graph.** Represent acquired organizations as reusable structures with origin experience/backfill, functional activity links, triggers, optional analogical scope, inhibitions, contradictions, developmental availability and update history. This may be implemented over existing Sorok classes; the conceptual contract matters more than a new file name. Proof: a specific prior event changes later recruitment under matched context, while irrelevant contexts remain appropriately unaffected.
+
+**D. Competing-activity recruitment and consequence accounting.** A response may participate in several ongoing activities. Record anticipated outcomes, actions, world outcomes and activity-relative consequences/affect separately, with no universal single reward sign. Proof: technical success can coincide with a psychologically thwarted motive, and the next action reflects that difference.
+
+**E. Tentative recruitment without imaginary instant learning.** Keep eligibility for established practices separate from a provisional analogy-driven attempt. Proof: a novel context can recruit an attempted transfer without silently certifying a new universal ability; success/failure can then narrow or expand actual applicability.
+
+**F. Abductive learning with operational commitment.** Let an LLM propose meaning and organization changes, but require age, actual experience, history, contradicted motive, anticipated future behavior and competing interpretations. Test the proposed delta against future contexts; allow NO_CHANGE. Proof: the delta changes actual recruitment or performance, not just a narrative summary.
+
+**G. Multiple independent Other processes.** At least one caregiver and one other nonfocal actor must have persistent needs, obligations and autonomous world interactions. Use appropriate low-fidelity routines away from interaction hotspots. Proof: an Other can resist or redirect a focal actor, with no script override.
+
+**H. Multi-timescale routine compression.** Persist life-time allocation, resource flows, body state, skill exercise and development, relationship maintenance and thresholds for explicit encounter expansion. Proof: long compressed intervals are equivalent at a declared causal grain to an appropriately sampled uncompressed trace; meaningful interruptions are not erased.
+
+**I. Adult entrance and child entrance convergence.** Build separate truthful provenance for adult historical backfill and actual child history; then run the same psychic and world transition machinery. Proof: parents continue to change from actual experience, and Nadia's trajectory is not constrained by a prechosen adult class.
+
+**J. One durable event and evidence trace.** Record world truth, actor perspective, inference proposals, accepted/held psychological updates, resource consequences, and provenance at different namespaces. Proof: a model cannot turn imagined private meaning into a historical fact or an original source claim.
+
+These are **building decisions**, not a requirement to fragment work into ten independent engines. The preferred implementation is the smallest integrated set of modifications to existing owners that demonstrably delivers all ten functions.
+
+### XII.5 Construction order is a dependency decision, not a bureaucracy
+
+Begin from a functionally connected vertical, not the easiest isolated part. Where protected seams block direct writing, build integration-ready adapter or implementation branches against exact contracts; do not counterfeit a merge. Keep independent source/structural/actor owners intact. Use lawful sourcefree fixtures to make positive capability executable *before* native source grants, but do not call fixture acceptance original35 execution.
+
+Then broaden gradually along meaningful dimensions: real whole-respondent morphology and recursive branch selection; general material institution encounters; richer conflicting-activity recruitment; several independently behaving Others; long ordinary-life compression; persistent relationships; historical shocks; source-qualified cross-wave and multi-survey worlds. Each expansion must improve a previously failing **whole-consumer witness** rather than merely increase the list of supported class names.
+
+The parallelization constraint is not 'one agent per chapter'. Agents can work on independent contracts if their outputs have exact shared interface conditions, immutable code heads, owner leases and direct positive acceptance tests. They must submit what actual code was written, which tests truly ran, which inherited components were reused, where the system still depends on heuristics, and whether downstream integration really occurred.
+
+### XII.6 A governing completion ledger should be maintained *against this single text*
+
+For every necessary capability, record its **required consequence**, selected existing implementation and immutable head, actual acceptance test and independent reviewer, scientifically permitted scope, first consuming function, gaps and the next eligible action. The machine-readable ledger is a tracking **projection** of the requirements in this authority; it is not a parallel theory or a place to renegotiate what the organism is.
+
+A newly accepted feature that lacks its first consumer remains **implementation without demonstrated occupancy**. A discovered indispensable older function lacking a present owner remains **live work**, not silent retirement. An original-source restriction cannot be relieved by a theoretical rewrite. Source-free versus source-native, actor-internal versus world, protected versus draft, accepted versus asserted, and real source versus fictional construction remain separate at every handoff.
+
