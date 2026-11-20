@@ -26,6 +26,7 @@ ACTIONS = {
     'OPEN_HALL':{'motor':0.35,'language':0.0,'cost':0.06},
     'DENY_HALL':{'motor':0.20,'language':0.0,'cost':0.01},
     'SIGN_HALL_PETITION':{'motor':0.22,'language':0.28,'cost':0.05},
+    'SIGN_FOOD_PETITION':{'motor':0.22,'language':0.28,'cost':0.05},
     'PLEDGE_CARE':{'motor':0.18,'language':0.28,'cost':0.03},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }
