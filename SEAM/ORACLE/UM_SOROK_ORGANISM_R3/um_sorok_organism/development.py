@@ -8,6 +8,7 @@ from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
 from .relational_metabolism import admit_motif, validate_motif, link_ref, RELATIONS as RELATIONAL_RELATIONS
+from .prospective_horizon import record_possible_end_trial
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -37,7 +38,7 @@ def validate_activity_priority(value):
     return value
 
 
-def admit(actor,experience,event_ref,candidates):
+def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
     """All-or-nothing psychic admission even for a multi-effect LLM proposal.
 
     Caller owns an actor object whose identity may be held elsewhere. Validate
@@ -45,8 +46,26 @@ def admit(actor,experience,event_ref,candidates):
     operation succeeds. A later rejected effect cannot leave an earlier
     proposed memory, project, or relationship silently installed.
     """
+    # Semantic proposals can never claim historical trial selection after
+    # world settlement. Issuance occurs in the actor-policy runtime only.
+    if type(candidates) is not list or any(
+            type(c) is not dict or c.get('kind')=='RECORD_POSSIBLE_END_TRIAL'
+            for c in candidates):
+        raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
+    if issued_trial is not None and any(
+            c.get('kind')=='TAKE_UP_POSSIBLE_END'
+            and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
+            for c in candidates):
+        raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
-    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+    witnessed=[]
+    if issued_trial is not None:
+        try:
+            witnessed.append(record_possible_end_trial(
+                candidate_actor,experience,event_ref,issued_trial))
+        except ValueError as exc:
+            raise InvalidDevelopment(str(exc)) from exc
+    result=witnessed+_admit_in_place(candidate_actor,experience,event_ref,candidates)
     actor.clear()
     actor.update(candidate_actor)
     return result

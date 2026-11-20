@@ -86,6 +86,8 @@ class Attempt:
     basis: list[str] = field(default_factory=list)
     intention: str = ''
     purpose_selection: dict = field(default_factory=dict)
+    # Actor-policy-issued prospective trial only; never semantic afterlife.
+    practical_selection: dict = field(default_factory=dict)
     scene_hash: str = ''
     grade: str = GRADE
 

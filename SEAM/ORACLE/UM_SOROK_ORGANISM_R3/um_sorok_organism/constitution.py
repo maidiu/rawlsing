@@ -7,6 +7,7 @@ from .activity import eligible_activities
 from .psychodynamics import enact_currents
 from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
+from .prospective_horizon import project_trial_horizons
 from .world import _qualified_members
 import math
 
@@ -239,10 +240,13 @@ def compose(constitution,access,limit=50):
     inhibited+=['action:'+x['action'] for x in dynamics['suspended']]
     learned=qualified_learned_compositions(constitution,access,active,projects,
                                           dynamics['candidate_actions'])
+    # SORACLE prospective trials decorate existing qualified operations only.
+    prospective=project_trial_horizons(constitution,access,dynamics['candidate_actions'])
+    currents+=prospective['currents']
     ordered=sorted(dynamics['candidate_actions'],key=lambda x:(-x['score'],x['action']))[:limit]
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
-       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts+relational['readset']+list(inhibited)+list(candidate_history_refs))),
+       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts+relational['readset']+prospective['readset']+list(inhibited)+list(candidate_history_refs))),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)

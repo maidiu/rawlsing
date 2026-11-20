@@ -4,6 +4,7 @@ explicitly coarse heuristic fiction, not an LLM and not a human learning law.
 """
 from typing import Protocol, Callable
 from .types import copy, stable_id, GRADE
+from .prospective_horizon import select_bounded_exploratory_trial
 
 class SemanticProvider(Protocol):
     def propose(self,task:str,packet:dict)->dict: ...
@@ -38,6 +39,10 @@ class HeuristicSemanticProvider:
             # project that happens to make it possible. Sourcefree heuristic
             # chooses ONE eligible course; a model can choose none or explicitly
             # select several, with clear provisional provenance.
+            # Noticing a possible end can license one provisional trial,
+            # but never a newly fabricated means or an acquired motive.
+            trial=select_bounded_exploratory_trial(possibilities)
+            if trial:return {'task':task,**trial}
             option=possibilities[0]
             courses=option.get('project_courses',[])
             chosen=sorted(courses,key=lambda p:(-p.get('priority',.5),p['project_id']))[0] if courses else None
@@ -71,7 +76,14 @@ class HeuristicSemanticProvider:
             # independently received sign recurs in a DISTINCT event.
             tags={str(t).lower() for cue in cues for t in cue.get('tags',[])}
             event_ref=packet.get('historical_psychodynamic_context',{}).get('objective_event_ref')
+            current_trial=packet.get('selected_purpose_analytic_only',{})
             for prior in packet.get('actor_possible_ends',[]):
+                # The CURRENT situated trial cannot be the evidence for its
+                # simultaneous promotion to an already-acquired motive.
+                if (current_trial.get('status')==
+                        'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE'
+                        and prior.get('id')==current_trial.get('possible_end_ref')):
+                    continue
                 if (prior.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE' and
                         prior.get('origin_event')!=event_ref and
                         tags & {str(v).lower() for v in prior.get('cue_terms',[])}):
@@ -220,6 +232,8 @@ class ValidatingSemanticService:
     def proposal(self,task,packet):
         out=self.provider.propose(task,packet)
         if not isinstance(out,dict):raise ValueError('BAD_SEMANTIC_PACKET')
-        if task=='actor_attempt' and 'action' not in out:raise ValueError('NO_ACTION')
+        if (task=='actor_attempt' and 'action' not in out
+                and 'possible_end_trial_id' not in out):
+            raise ValueError('NO_ACTION_OR_ISSUED_OPTION')
         if task=='development' and not isinstance(out.get('candidates'),list):raise ValueError('BAD_DEVELOPMENT_CANDIDATES')
         return out
