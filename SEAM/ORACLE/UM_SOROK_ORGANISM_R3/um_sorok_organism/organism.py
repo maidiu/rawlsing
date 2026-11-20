@@ -23,6 +23,7 @@ ACTIONS = {
     'INSPECT':{'motor':0.10,'language':0.0,'cost':0.02},
     'OPEN_HALL':{'motor':0.35,'language':0.0,'cost':0.06},
     'DENY_HALL':{'motor':0.20,'language':0.0,'cost':0.01},
+    'SIGN_HALL_PETITION':{'motor':0.22,'language':0.28,'cost':0.05},
     'IMPOSE':{'motor':0.50,'language':0.0,'cost':0.14},
 }
 
