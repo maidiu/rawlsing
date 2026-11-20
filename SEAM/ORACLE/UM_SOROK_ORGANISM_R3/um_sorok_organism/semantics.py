@@ -276,7 +276,7 @@ class HeuristicSemanticProvider:
                     'relation':edge['relation'], 'contexts':edge.get('contexts',[]),
                     'grade':'FICTIONAL_BACKFILL_HYPOTHESIS'})
             projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
-                 'means':['REST','EAT','WORK','CARE'],'priority':.42,'cue_terms':['home','work'],
+                 'means':['REST','EAT','WORK','CARE','FEED'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
             return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
