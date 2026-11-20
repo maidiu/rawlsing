@@ -32,6 +32,10 @@ from .food_access_struggle import (
 from .food_power_reproduction import (
     food_power_opportunities,COMMONS,INSTALL,MAINTAIN,SANCTION,
     OFFER,ACCEPT)
+from .labor_dependency import (
+    actor_work_opportunities,work_permission,
+    ACCEPT as LABOR_ACCEPT,SUSPEND as LABOR_SUSPEND,
+    RESIGN as LABOR_RESIGN,CONTRIBUTE as LABOR_FUND,DRAW as LABOR_DRAW)
 
 
 def materialize(actor,world):
@@ -58,6 +62,8 @@ def materialize(actor,world):
         institutional_expectations=copy(actor.get('institutional_expectations',[])),
         material_dependency_encounters=copy(actor.get(
             'material_dependency_encounters',[])),
+        labor_dependency_encounters=copy(actor.get(
+            'labor_dependency_encounters',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -143,6 +149,10 @@ def actor_access(actor,world):
         env += [x['operation'] for x in live_food_petition_opportunity(
             world,actor,location)]
     env+=food_power_opportunities(world,actor,location)
+    env+=actor_work_opportunities(world,actor,location)
+    if work_permission(world,actor['id'],location)==(
+            'QUALIFIED_WORK_CONTRACT_ACTIVE'):
+        env.append('WORK')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -427,6 +437,32 @@ def compose(constitution,access,limit=50):
                     'kind':'BLOCKED_REPRODUCTION_MAY_RECRUIT_MATERIAL_ALTERNATIVE',
                     'historical_attempt_ref':denied[-1]['id'],
                     'not_a_conscious_class_analysis':True,'grade':GRADE})
+    # Accepted employment can make paid production practical. A separate
+    # actually experienced failed work attempt may recruit available real
+    # worker relief, without granting causal knowledge of employer intent.
+    for action in ('WORK',LABOR_ACCEPT,LABOR_SUSPEND,
+                   LABOR_RESIGN,LABOR_FUND,LABOR_DRAW):
+        if action not in access.affordances or not eligible(
+                constitution.body,action)[0]:
+            continue
+        entry=actions.setdefault(action,{
+            'action':action,'score':.14,'basis':[],
+            'opportunity':'SOURCEFREE_SITUATED_WAGE_RELATION'})
+        entry['basis'].append('wage_world_opportunity:'+action)
+        if action==LABOR_DRAW:
+            interrupted=[x for x in constitution.labor_dependency_encounters
+                if x.get('own_attempted_work')=='WORK'
+                and x.get('location')==access.location
+                and type(x.get('clock')) is int
+                and x['clock']<=constitution.clock]
+            if interrupted:
+                entry['labor_relief_ground']={
+                    'personal_failed_work_ref':interrupted[-1]['id'],
+                    'sourcefree_fund_not_actor_ideology':True}
+                currents.append({
+                    'kind':'HISTORICAL_WAGE_OBSTRUCTION_AND_FUNDED_RELIEF',
+                    'experienced_work_ref':interrupted[-1]['id'],
+                    'employer_motive_unknown':True,'grade':GRADE})
     inquiry=offer_actor_inquiry(constitution,access)
     for candidate in inquiry['offered']:
         action=candidate['action']
