@@ -1,5 +1,7 @@
 # REMONT — recovered source-authority capital and exact current join (2026-11-19)
 
+**LATEST BYTE-VERIFIED ADDENDUM:** [RECOVERED_ARCHIVE_AND_14_SOURCE_BYTE_DELTA_20261119.md](RECOVERED_ARCHIVE_AND_14_SOURCE_BYTE_DELTA_20261119.md), with 14 native-Library SHA-matching frozen original surveys, all 48 codebooks individually SHA-verified, exact 36-wave ZIP and original 35-source distinctions. A 119-record byte/authority inventory and entire 4,907-entry ZIP member manifest are banked in `/Rawlsing/Evidence/REMONT_2026.11.19_FULL_INVENTORY/`. The separate 190-record historical retrieval ledger is preserved. **No change to original source/semantic/current science-authority holds.**
+
 ## 2026-11-19 ACTUAL QSR VERSION-C RECOVERY + 190-ITEM FILE INVENTORY
 
 The user directly provided original `question_structure_register.csv`; its actual 26,582,238 bytes were independently SHA-256 checked at `9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219`, **identical to historical HARVEST-001 version C**. Exact parse: 18,792 data rows / 69 columns / 562 `needs_manual_review=yes` / 35 family-wave pairs, including EVS 1999 under canonical `W3`, not excluded Asian W6. **Native persistent original now banked:** `/Rawlsing/Evidence/question_structure_register_9139c1ab77bf47a8_18792x69.csv` (native Library file ID `file_000000004b1c8212838dcf7cc1d3a8bf`). This is an actual restored historical payload, NOT just its earlier recovery record; no oldMac ZIP extraction was necessary for version C.
