@@ -36,7 +36,7 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
     return result
 
 
-def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref, object_delta=None):
+def record_activity_afterlife(actor, own_action, status, outcome, basis, event_ref, object_delta=None, purpose_selection=None):
     """Preserve an *attempted* operation's separate objective activity courses.
 
     A blocked/partial attempt is historical conduct, not the absence of an
@@ -59,6 +59,7 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
             'operation':own_action,'objective_outcome':outcome,'performed_status':status,
             'practical_object':project['object'],'motive_hypothesis':project.get('motive'),
             'object_transformation':copy(object_delta or {}),
+            'intent_attribution':(purpose_selection.get('status') if purpose_selection else 'EXPLICIT_LEGACY_PROJECT_BASIS_ASSERTION'),
             'operation_course':('INTERRUPTED_ATTEMPT' if status=='BLOCKED'
                  else 'PARTIAL_ATTEMPT' if status=='PARTIAL'
                  else 'PERFORMED_OPERATION'),

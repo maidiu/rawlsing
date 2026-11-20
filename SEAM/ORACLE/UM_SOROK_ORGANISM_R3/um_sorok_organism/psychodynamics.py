@@ -42,7 +42,7 @@ def validate_tendencies(form):
             raise ValueError('INVALID_ACQUIRED_TENDENCIES')
 
 
-def enact_currents(constitution, access, active_forms, candidates):
+def enact_currents(constitution, access, active_forms, candidates, relational=None):
     """Composes differentiated pressures without universal numerical conversion.
 
     A learned WITHHOLD does not vanish from the iceberg when thwarted by a
@@ -67,6 +67,16 @@ def enact_currents(constitution, access, active_forms, candidates):
             forces.setdefault(a,{}).setdefault(pol,[]).append(ident)
             currents.append({'kind':'ACQUIRED_ACTION_CURRENT','action':a,'polarity':pol,
                 'form_ref':ident,'grade':GRADE,'no_universal_motive_strength':True})
+    # Model-output hypotheses are not psychic currents. These are derived
+    # only from actor-owned historically admitted relational configurations.
+    for item in (relational or {}).get('action_currents',[]):
+        action=item['action'];polarity=item['polarity']
+        source='motif:'+item['motif_ref']
+        forces.setdefault(action,{}).setdefault(polarity,[]).append(source)
+        currents.append({'kind':'RELATIONALLY_MEDIATED_ACTION_CURRENT',
+            'action':action,'polarity':polarity,'motif_ref':item['motif_ref'],
+            'has_inhibited_source':item['has_inhibited_source'],
+            'not_a_self_known_reason':True,'grade':GRADE})
     updated=[];antagonisms=[];suspended=[]
     for option in candidates:
         o=copy(option);action=o['action'];polarities=forces.get(action,{})

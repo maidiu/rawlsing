@@ -88,6 +88,9 @@ class ConstitutiveRuntime:
             if not ok: raise ValueError('ACTOR_ACTION_BODILY_INELIGIBLE:'+why)
             action=requested_action
             basis=['EXTERNAL_RESEARCH_ACTION_INJECTION']
+            purpose={'status':'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
+                     'project_id':None,'project_ids':[],
+                     'other_available_projects_not_claimed':True}
             authority='INJECTED_NOT_NATIVE_ACTOR_CHOICE'
         else:
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
@@ -98,10 +101,47 @@ class ConstitutiveRuntime:
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
-            basis=copy(opt.get('basis',[]))
-            authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+            # A physical operation may serve several possible projects, but
+            # their availability is NOT the actor having undertaken them all.
+            raw=proposed.get('project_ids')
+            if raw is not None and proposed.get('project_id') is not None:
+                raise ValueError('AMBIGUOUS_SINGLE_AND_MULTI_PURPOSE_SELECTION')
+            if raw is None:
+                one=proposed.get('project_id')
+                selected_refs=[] if one is None else [one]
+            else:
+                if (type(raw) is not list or not raw or len(raw)>8 or
+                        any(type(ref) is not str or not ref for ref in raw) or
+                        len(set(raw))!=len(raw)):
+                    raise ValueError('INVALID_MULTIPLE_PROJECT_SELECTION')
+                selected_refs=raw
+            available={course['project_id']:course for course in opt.get('project_courses',[])}
+            if any(ref not in available for ref in selected_refs):
+                raise ValueError('MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE')
+            chosen=[available[ref] for ref in selected_refs]
+            if chosen:
+                purpose={'status':('ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+                     if len(chosen)==1 else 'ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES'),
+                    'project_id':chosen[0]['project_id'] if len(chosen)==1 else None,
+                    'project_ids':copy(selected_refs),
+                    'practical_objects':[q['object'] for q in chosen],
+                    'motive_hypotheses':[q['motive_hypothesis'] for q in chosen],
+                    'selection_grade':proposed.get('purpose_selection_grade',
+                        'MODEL_CHOSEN_COURSE_FICTIONAL_NOT_OBSERVED_CONSCIOUS_MOTIVE'),
+                    'not_claimed_fulfillment':True,
+                    'other_available_projects_not_claimed':True}
+                if len(chosen)==1:purpose['practical_object']=chosen[0]['object']
+            else:
+                purpose={'status':'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
+                    'project_id':None,'project_ids':[],
+                    'selection_grade':'EXPLORATORY_OR_UNRESOLVED_END_NOT_INFERRED',
+                    'other_available_projects_not_claimed':True}
+            basis=[r for r in opt.get('basis',[]) if
+                   not (isinstance(r,str) and r.startswith('project:'))]
+            basis+=['project:'+ref for ref in selected_refs]
+            authority='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE' 
         return Attempt(actor_id,action,means=[],basis=basis,
-                       intention=authority,scene_hash=digest({'world':world,'actor':actor_id})),
+                       intention=authority,purpose_selection=purpose,scene_hash=digest({'world':world,'actor':actor_id})),
 
     def plan(self,actor_id,requested_action=None,target=None,object_ref=None):
         _,world=self.ledger.world(self.world_id)
@@ -131,6 +171,15 @@ class ConstitutiveRuntime:
         wv,world=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
         actors=self.ledger.actors()
+        # Private pre-event person×event computation is recorded in the
+        # sealed research receipt, not in the public tip or model renderer.
+        before=asdict(compose(materialize(actors[actor_id],world),
+                               actor_access(actors[actor_id],world)))
+        private_pre_event_psychodynamics={
+            'actor':actor_id,'currents':copy(before['currents']),
+            'readset':copy(before['readset']),
+            'grade':'SOURCEFREE_RESEARCH_PROVISIONAL',
+            'not_actor_self_knowledge':True}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
         principal.target=target;principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
@@ -154,7 +203,8 @@ class ConstitutiveRuntime:
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
-                {'material_claim_ref':summary.get('material_claim_ref')})
+                {'material_claim_ref':summary.get('material_claim_ref')},
+                purpose_selection=chosen.purpose_selection)
         developmental={};subjective={}
         for aid in actors:
             # Separate actor-specific view, no analyst world description in LLM input.
@@ -188,6 +238,22 @@ class ConstitutiveRuntime:
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            received=[c for c in personal_cues if isinstance(c,dict)]
+            if personally_done and received:
+                actors[aid].setdefault('evidence_paths',[]).append({
+                    'experience_ref':experience['ref'],
+                    'objective_event_ref':objective_ref,
+                    'own_action':personally_done['action'],
+                    'selected_project_refs':copy(
+                        (principal if aid==actor_id else partner).purpose_selection.get('project_ids',[])),
+                    'received_cue_refs':[c.get('id') for c in received],
+                    'received_cue_tags':sorted({str(t).lower() for c in received
+                        for t in c.get('tags',[])}),
+                    'actor_access_grade':GRADE,
+                    'purpose_status':(principal if aid==actor_id else partner).purpose_selection.get('status'),
+                    'selected_project_ref':(principal if aid==actor_id else partner).purpose_selection.get('project_id'),
+                    'unencountered_alternatives':'UNKNOWN_NOT_OBSERVED',
+                    'not_an_unperformed_counterfactual':True})
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
@@ -197,6 +263,11 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':asdict(compose(materialize(actors[aid],world),access)),
                 'actor_forms':copy(actors[aid]['forms']),
+                'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
+                'historical_psychodynamic_context':{'objective_event_ref':objective_ref},
+                'selected_purpose_analytic_only':copy(
+                    (principal if aid==actor_id else partner).purpose_selection
+                    if personally_done else {}),
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
         observed=subjective.get(actor_id,{})
@@ -215,6 +286,7 @@ class ConstitutiveRuntime:
                  'coactor_attempt':partner.document() if partner else None,
                  'coactor_selection_grade':partner.intention if partner else None,
                  'coactor_policy_receipt':coactor_policy_receipt,
+                 'private_pre_event_psychodynamics':private_pre_event_psychodynamics,
                  'objective_ref':objective_ref,'actual':summary,
                  'developmental_effects':developmental,'activity_effects':activity_effects,
                  'subjective_experience_refs':{aid:e['ref'] for aid,e in subjective.items()},

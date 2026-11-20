@@ -34,8 +34,18 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
-            return {'task':task,'action':possibilities[0]['action'],
-                    'basis':possibilities[0].get('basis',[]),'semantic_grade':self.grade}
+            # A selected operation does not automatically undertake every
+            # project that happens to make it possible. Sourcefree heuristic
+            # chooses ONE eligible course; a model can choose none or explicitly
+            # select several, with clear provisional provenance.
+            option=possibilities[0]
+            courses=option.get('project_courses',[])
+            chosen=sorted(courses,key=lambda p:(-p.get('priority',.5),p['project_id']))[0] if courses else None
+            return {'task':task,'action':option['action'],
+                    'project_id':chosen['project_id'] if chosen else None,
+                    'purpose_selection_grade':('HEURISTIC_PROJECT_COURSE_CHOSEN'
+                         if chosen else 'NO_ASSIGNED_PROJECT_END'),
+                    'basis':option.get('basis',[]),'semantic_grade':self.grade}
         if task=='development':
             experience=packet.get('experience',{})
             action=experience.get('own_action')
@@ -57,6 +67,25 @@ class HeuristicSemanticProvider:
                     'other_ref':other,'hypothesis':'shared participation with '+other+
                     ' has recently occurred; future participation remains uncertain',
                     'confidence':'tentative'})
+            # Later opportunity takes up a prior possible end only when an
+            # independently received sign recurs in a DISTINCT event.
+            tags={str(t).lower() for cue in cues for t in cue.get('tags',[])}
+            event_ref=packet.get('historical_psychodynamic_context',{}).get('objective_event_ref')
+            for prior in packet.get('actor_possible_ends',[]):
+                if (prior.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE' and
+                        prior.get('origin_event')!=event_ref and
+                        tags & {str(v).lower() for v in prior.get('cue_terms',[])}):
+                    matching=next((cue.get('id') for cue in cues if
+                        type(cue.get('id')) is str and
+                        {str(v).lower() for v in cue.get('tags',[])} &
+                        {str(v).lower() for v in prior.get('cue_terms',[])}),None)
+                    if matching:
+                        relation_candidates.append({'kind':'TAKE_UP_POSSIBLE_END',
+                            'possible_end_ref':prior['id'],
+                            'means':copy(prior['possible_means']),
+                            'later_perceived_cue_ref':matching,
+                            'priority':.32})
+                        break
             if action in ('PRACTICE','SING','JOIN','MAKE_SPACE') and cues:
                 # Existing forms can generalize in scope rather than minting
                 # endlessly duplicated skills. This is a provisional fictional
@@ -86,12 +115,17 @@ class HeuristicSemanticProvider:
                     if previous:
                         candidates.append({'kind':'LINK_FORMS',
                             'source':previous['id'],'target':fid,'relation':'SUPPORTS'})
-                    # P011: a first performed song can establish a practice,
-                    # not a settled new object/motive. A provider may separately
-                    # propose a project through the existing typed developmental
-                    # owner, but this weak offline heuristic cannot infer one
-                    # merely from the action opcode. No compulsory positive
-                    # developmental direction is assigned to the episode.
+                    # One performed SING may allow a previously unforeseen
+                    # possible end; that is not the intention of the first act
+                    # and does NOT install a continuing project yet.
+                    heard=next((q.get('id') for q in cues if
+                        type(q.get('id')) is str and q['id']),None)
+                    if heard:
+                        candidates.append({'kind':'NOTICE_POSSIBLE_END',
+                            'perceived_cue_ref':heard,
+                            'possible_object':'explore whether a rhythm can continue',
+                            'possible_means':['SING','PRACTICE'],
+                            'cue_terms':['sing','rhythm']})
                 return {'task':task,'candidates':candidates+relation_candidates,'semantic_grade':self.grade}
             if action=='SIGNAL' and cues:
                 return {'task':task,'candidates':[{'kind':'TRACE','manifestation':'contingent reply possible',
@@ -141,10 +175,37 @@ class HeuristicSemanticProvider:
                     'target':seeded_forms[right]['id'],
                     'relation':edge['relation'], 'contexts':edge.get('contexts',[]),
                     'grade':'FICTIONAL_BACKFILL_HYPOTHESIS'})
-            projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
+            # Motif source indices identify explicit fictional seeded forms,
+            # never answer-derived forms. Reject unsupported/forged indices.
+            motifs=[]
+            for i,m in enumerate(seeded.get('relational_motifs',[])):
+                refs=m.get('source_indices')
+                if (type(refs) is not list or not 2<=len(refs)<=4 or
+                    any(type(k) is not int or k<0 or k>=len(seeded_forms) for k in refs) or
+                    len(set(refs))!=len(refs)):
+                    raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                mx=copy(m)
+                mx.pop('source_indices',None)
+                mx['source_forms']=[seeded_forms[k]['id'] for k in refs]
+                mx['id']=stable_id('seed_motif',{'actor':packet['actor_id'],'i':i,'motif':m})
+                effects=[]
+                for e in m.get('effects',[]):
+                    item=copy(e)
+                    for key,index in (('source','source_index'),('target','target_index'),
+                                      ('target_form','target_form_index')):
+                        if index in item:
+                            n=item.pop(index)
+                            if type(n) is not int or n<0 or n>=len(seeded_forms):
+                                raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                            item[key]=seeded_forms[n]['id']
+                    effects.append(item)
+                mx['effects']=effects
+                mx['origin']=['fictional_seed:'+packet['actor_id']]
+                motifs.append(mx)
+            projects.append({'id':'project:ordinary_life' ,'object':'maintain everyday life',
                  'means':['REST','EAT','WORK','CARE'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
-            return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
+            return {'task':task,'forms':forms,'links':seeded_links,'relational_motifs':motifs,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
                       'coverage':'HYPOTHETICAL','unknown':['specific childhood scenes']},
                     'semantic_grade':self.grade}
