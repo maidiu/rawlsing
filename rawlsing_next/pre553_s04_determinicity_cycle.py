@@ -78,6 +78,8 @@ def _plan_affordable_batch(
     domains: Sequence[Sequence[Any]], target_axis: int,
     policy: "CyclePolicy", remaining_work: int,
     remaining_output_cells: int,
+    measured_seconds_per_work_unit: Decimal | None = None,
+    wall_seconds_remaining: float | None = None,
 ) -> tuple[tuple[int, ...], int, int]:
     """Downshift from a full 8-axis DHIKR inquiry to 1 affordable axis.
 
@@ -101,6 +103,14 @@ def _plan_affordable_batch(
             len(domains[a]) for a in axes
         ) + pairs
         if work <= remaining_work and output <= remaining_output_cells:
+            # After a real small pilot, admit only time-affordable work.
+            # Calibration is local to this invocation; a resumed call on
+            # another host must never inherit its wall-time forecast.
+            if (measured_seconds_per_work_unit is not None
+                    and wall_seconds_remaining is not None
+                    and Decimal(work) * measured_seconds_per_work_unit
+                    > Decimal(str(max(0.0, wall_seconds_remaining)))):
+                continue
             return axes, work, output
     return (), 0, 0
 
@@ -556,6 +566,8 @@ def advance_country_determinicity(
     used = domain_cells
     processed_axes = 0
     output_cells_used = 0
+    timed_batch_work = 0
+    timed_batch_seconds = Decimal(0)
     completed_this_call = 0
     stop = "NO_PENDING_WORK"
     # This controls exploration. Every batch is an actual DHIKR single-node
@@ -599,13 +611,24 @@ def advance_country_determinicity(
                 stop = "HOST_DEADLINE_RSS_OR_SCRATCH_LIMIT"; break
             batch, estimated, projected_output = _plan_affordable_batch(
                 remaining_axes=available[cursor:],
-                max_width=resources.max_candidates - processed_axes,
+                # Start with a small timed probe instead of betting the
+                # entire interactive wall budget on an uncalibrated 8-axis
+                # estimate. Subsequent batches grow when measured time fits.
+                max_width=min(
+                    2 if timed_batch_work == 0 else MAX_DHIKR_BATCH,
+                    resources.max_candidates - processed_axes,
+                ),
                 context_positive_rows=len(context_positive),
                 context_raw_n=context_raw_n,
                 domains=domains, target_axis=policy.target_axis,
                 policy=policy,
                 remaining_work=resources.max_cell_visits - used,
                 remaining_output_cells=resources.max_output_cells - output_cells_used,
+                measured_seconds_per_work_unit=(
+                    timed_batch_seconds / Decimal(timed_batch_work)
+                    if timed_batch_work else None
+                ),
+                wall_seconds_remaining=deadline - monotonic(),
             )
             if not batch:
                 stop = "NO_SINGLETON_FITS_REMAINING_ACCOUNTING_ENVELOPE"; break
@@ -623,6 +646,8 @@ def advance_country_determinicity(
             result = analyze_s04_dhikr(workspace, req).material()
             actual_seconds = Decimal(str(round(monotonic() - batch_started, 6)))
             used += estimated
+            timed_batch_work += estimated
+            timed_batch_seconds += actual_seconds
             output_cells_used += projected_output
             processed_axes += k
             if policy.max_pair_order == 2 and k >= 2:
@@ -858,6 +883,9 @@ def advance_country_determinicity(
     state["total_estimated_cell_visits"] += used
     state["last_call_estimated_cell_visits"] = used
     state["last_call_budgeted_output_cells"] = output_cells_used
+    state["last_call_measured_dhikr_batch_seconds"] = timed_batch_seconds
+    state["last_call_measured_batch_work_units"] = timed_batch_work
+    state["last_call_wall_forecast_is_host_local_not_science"] = True
     state["last_call_elapsed_seconds"] = Decimal(
         str(round(monotonic() - start, 6))
     )
