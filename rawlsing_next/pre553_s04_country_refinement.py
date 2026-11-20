@@ -438,6 +438,7 @@ def run_r03_v2_issued_country_refinement(
     predicate = catalog.resolve_predicate_exact(binding.predicate_ref)
     if (query.ref != binding.query_ref or predicate.ref != binding.predicate_ref
             or exact_ref(query.condition_predicate_ref) != predicate.ref
+            or not isinstance(execution, QueryExecutionResult)
             or execution.query_ref != query.ref):
         raise CountryRefinementError("R03_SOURCE_QUERY_PREDICATE_EXECUTION_DRIFT")
     result = run_issued_country_refinement(
