@@ -61,6 +61,7 @@ def record_actor_participation(actor, experience, actual, event_ref,
     record={
         'id':ref,'actor':actor['id'],'event_ref':event_ref,
         'experience_ref':experience.get('ref'),
+        'experienced_clock':experience.get('clock'),
         'own_attempted_operation':operation,'own_status':status,
         'reciprocated_partner_actor_visible':partner,
         'received_cue_refs':sorted(set(signs)),
