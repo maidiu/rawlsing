@@ -233,9 +233,16 @@ def offered_food_petition(constitution,access):
     if constitution.actor!=access.actor:
         raise ValueError("FOOD_POWER_WRONG_CONSTITUTION")
     if OPERATION not in access.affordances:return None
+    visible_current={
+        cue.get("public_notice_ref")
+        for cue in access.cues
+        if type(cue) is dict and
+        cue.get("kind")=="public_notice_visible" and
+        type(cue.get("public_notice_ref")) is str}
     noticed=[
         x for x in constitution.notice_exposures
-        if "public_petition" in x.get("public_words_available",[])]
+        if x.get("public_notice_ref") in visible_current and
+        "public_petition" in x.get("public_words_available",[])]
     if not noticed:return None
     practiced=[
         x for x in constitution.performed_feeding_events
