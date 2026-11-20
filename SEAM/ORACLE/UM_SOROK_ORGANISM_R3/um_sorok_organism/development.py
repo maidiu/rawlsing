@@ -10,6 +10,7 @@ from .relational_metabolism import (
     RELATIONS, link_ref, validate_motif, admit_motif, InvalidRelationalMotif,
 )
 from .organism import ACTIONS
+from .practical_difference import validate_expected_difference, appraise_expected_difference
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -25,7 +26,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
-         'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END','NO_CHANGE'}
+         'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
+         'APPRAISE_EXPECTED_DIFFERENCE','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -338,6 +340,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             end['status']='TAKEN_UP_AS_PRACTICAL_PROJECT'
             report.append({'kind':op,'project':project_id,'possible_end':ref,
                            'status':'ADMITTED_FICTIONAL_LATER_END_TAKEUP'})
+        elif op=='APPRAISE_EXPECTED_DIFFERENCE':
+            try:
+                report.append(appraise_expected_difference(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ADD_PROJECT':
             project=copy(c.get('project',{}))
             if not project.get('object') or not isinstance(project.get('means'),list):
@@ -345,6 +352,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             validate_activity_priority(project.get('priority',.4))
+            if 'expected_difference' in project:
+                project['expected_difference']=validate_expected_difference(
+                    project['expected_difference'])
             _text_list(project.get('cue_terms',[]),'INVALID_PROJECT_CUE_TERMS')
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
@@ -366,7 +376,10 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             if 'priority' in c:validate_activity_priority(c['priority'])
             if 'cue_terms' in c:_text_list(c['cue_terms'],'INVALID_PROJECT_CUE_TERMS')
-            for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
+            if 'expected_difference' in c:
+                validate_expected_difference(c['expected_difference'])
+            for field in ('priority','means','object','motive','status','cue_terms','contextual_only',
+                          'expected_difference','addressed_party_ref'):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)
             report.append({'kind':op,'project':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
