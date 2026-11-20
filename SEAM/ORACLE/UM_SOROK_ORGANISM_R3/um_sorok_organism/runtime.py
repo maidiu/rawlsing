@@ -17,6 +17,7 @@ from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
+from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
@@ -459,6 +460,8 @@ class ConstitutiveRuntime:
             # nondeclarative orientation. This is not proof of why relief arose.
             history_genesis=proposals_from_bodily_history(
                 actors[aid],experience,bodily_before[aid],actors[aid]['body'])
+            functional_genesis=propose_actor_lived_correspondences(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -478,6 +481,7 @@ class ConstitutiveRuntime:
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
+                'historically_proposed_functional':copy(functional_genesis),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
