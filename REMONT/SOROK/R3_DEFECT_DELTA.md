@@ -74,3 +74,8 @@ At frozen R12 `9db0e6f64bf568409e638ff2215af8b8a414487f`, P072 same-event REORGA
 ## REMONTATHON R14 — P012/P004 first-owner partial repairs, 265 executable tests
 
 Exact R13 source `3b9b58b75bdceec901c3ba7aaa18738ea4989923` tested RED 7/10 new cases. R14 `constitution.compose` jointly closes relational motifs and acquired link recruitment/inhibition; `activity.record_activity_afterlife` rejects project-history attribution contradicted by explicit actor-policy purpose selection. 265 normal/-O/pytest pass (+14 subtests) and cold package recheck. 73 P statuses unchanged (53 scoped independent reviews, 8 OPEN, 8 PARTIAL, 4 author repair pending); original #1171 R12-R2 P072 followup metadata conserved. P019/P022 remain SORACLE. No native protected, G5 or scientific issuance.
+
+
+## R15 P012/P018 sourcefree truth-bound repairs — 276 tests
+
+Frozen R14 f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0: six initial failures in nine new first-fault tests; two more source-identity methods failed pre-repair. Fixes in existing constitution recruitment and storage source custody owners. 276 PASS normal/optimized/pytest (+22 subtests), fresh archive reexecution and cold 9-event verify. Both original statuses remain PARTIAL. Existing 73 IDs and 53 scoped reviews unchanged; P019/P022 remain SORACLE; P009 native disclosure held. Distinct independent receiving, Python 3.11 and protected law held.

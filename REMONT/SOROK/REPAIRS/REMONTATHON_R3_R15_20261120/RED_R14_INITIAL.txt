@@ -1,0 +1,69 @@
+test_inhibitor_chain_order_independent (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_inhibitor_chain_order_independent) ... FAIL
+test_inhibitor_dependent_on_vetoed_supporter_does_not_invent_action (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_inhibitor_dependent_on_vetoed_supporter_does_not_invent_action) ... ok
+test_mutual_inhibition_stays_conservative_not_arbitrarily_won (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_mutual_inhibition_stays_conservative_not_arbitrarily_won) ... ok
+test_suppressed_inhibitor_cannot_falsely_block_its_target_in_acyclic_court (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_suppressed_inhibitor_cannot_falsely_block_its_target_in_acyclic_court) ... FAIL
+test_auxiliary_unanchored_constraints_are_not_invisible_to_audit (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_auxiliary_unanchored_constraints_are_not_invisible_to_audit) ... FAIL
+test_generic_commit_cannot_forge_source_seal_event (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_generic_commit_cannot_forge_source_seal_event) ... FAIL
+test_hash_consistent_unbacked_source_event_fails_audit (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_hash_consistent_unbacked_source_event_fails_audit) ... FAIL
+test_source_read_fails_closed_if_stored_source_bytes_changed (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_source_read_fails_closed_if_stored_source_bytes_changed) ... FAIL
+test_valid_late_seal_works_and_is_cold_verified (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_valid_late_seal_works_and_is_cold_verified) ... ok
+
+======================================================================
+FAIL: test_inhibitor_chain_order_independent (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_inhibitor_chain_order_independent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 41, in test_inhibitor_chain_order_independent
+    self.assertIn('c',{f['id'] for f in s.recruited})
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'c' not found in {'a'}
+
+======================================================================
+FAIL: test_suppressed_inhibitor_cannot_falsely_block_its_target_in_acyclic_court (tests.test_remontathon_r15_source_and_inhibition.InhibitionTruthR15.test_suppressed_inhibitor_cannot_falsely_block_its_target_in_acyclic_court)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 30, in test_suppressed_inhibitor_cannot_falsely_block_its_target_in_acyclic_court
+    self.assertEqual(ids, {'a','c'})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'c'
+
+======================================================================
+FAIL: test_auxiliary_unanchored_constraints_are_not_invisible_to_audit (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_auxiliary_unanchored_constraints_are_not_invisible_to_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 100, in test_auxiliary_unanchored_constraints_are_not_invisible_to_audit
+    with self.assertRaisesRegex(AssertionError,'UNANCHORED_CONSTRAINTS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_generic_commit_cannot_forge_source_seal_event (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_generic_commit_cannot_forge_source_seal_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 71, in test_generic_commit_cannot_forge_source_seal_event
+    with self.assertRaisesRegex(Conflict,'RESERVED_SOURCE_EVENT_KIND'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_hash_consistent_unbacked_source_event_fails_audit (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_hash_consistent_unbacked_source_event_fails_audit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 91, in test_hash_consistent_unbacked_source_event_fails_audit
+    with self.assertRaisesRegex(AssertionError,'SOURCE_SEAL_EVENT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_source_read_fails_closed_if_stored_source_bytes_changed (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_source_read_fails_closed_if_stored_source_bytes_changed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 114, in test_source_read_fails_closed_if_stored_source_bytes_changed
+    with self.assertRaisesRegex(Conflict,'SOURCE_SEAL'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.033s
+
+FAILED (failures=6)

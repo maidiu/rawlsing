@@ -47,6 +47,7 @@ class ResearchLedger:
         life step. ``verify_chain`` remains the full independent audit.
         This method is called only inside the SQLite IMMEDIATE transaction.
         """
+        self._verified_source_seals_locked()
         first=self.conn.execute('SELECT kind FROM events ORDER BY seq LIMIT 1').fetchone()
         last=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash '
                                'FROM events ORDER BY seq DESC LIMIT 1').fetchone()
@@ -86,6 +87,65 @@ class ResearchLedger:
             except (ValueError,TypeError,KeyError) as exc:
                 raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
 
+    def _verified_source_seals_locked(self):
+        """Audit every auxiliary source against its exact historical issuer event.
+
+        The ledger's event digest is *not* a cryptographic credential. This
+        checks source custody and refuses unanchored auxiliary state in this
+        research DB; it does not authorize an external disclosure or native
+        scientific issuer. Called before appends and source reads, not only
+        when an analyst explicitly requests verify_chain().
+        """
+        if self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone():
+            raise Conflict('UNANCHORED_CONSTRAINTS_STATE')
+        anchored={}
+        seen_genesis=False
+        for kind, raw in self.conn.execute(
+                "SELECT kind,payload FROM events WHERE kind IN ('INITIALIZATION','SOURCE_SEAL') ORDER BY seq"):
+            try:
+                env=json.loads(raw)
+                seals=env.get('source_seal_digests')
+                if type(seals) is not dict:
+                    raise ValueError('MISSING_SEAL_MAP')
+                if kind=='INITIALIZATION':
+                    if seen_genesis:
+                        raise ValueError('DUPLICATE_GENESIS_ANCHOR')
+                    seen_genesis=True
+                else:
+                    detail=env.get('payload')
+                    if (len(seals)!=1 or type(detail) is not dict or
+                            env.get('actor') is not None):
+                        raise ValueError('SOURCE_SEAL_EVENT_WRONG_SHAPE')
+                    sid,hash_value=next(iter(seals.items()))
+                    if (detail.get('source_id')!=sid or
+                            detail.get('source_digest')!=hash_value):
+                        raise ValueError('SOURCE_SEAL_EVENT_MISMATCH')
+                for sid,sha in seals.items():
+                    if (type(sid) is not str or type(sha) is not str or
+                            not sid or not sha or sid in anchored):
+                        raise ValueError('DUPLICATE_OR_INVALID_SOURCE_SEAL')
+                    anchored[sid]=sha
+            except (ValueError,TypeError,KeyError,StopIteration) as exc:
+                raise Conflict('SOURCE_SEAL_EVENT_INVALID') from exc
+        actual={}
+        for sid,category,raw in self.conn.execute('SELECT id,type,content FROM source_seals'):
+            try:
+                content=json.loads(raw)
+                if canonical(content)!=raw:
+                    raise ValueError('NONCANONICAL_SOURCE_BYTES')
+                actual[sid]=digest({'category':category,'content':content})
+            except (ValueError,TypeError) as exc:
+                raise Conflict('SOURCE_SEAL_TABLE_NONCANONICAL') from exc
+        if anchored!=actual:
+            raise Conflict('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED')
+        return anchored
+
+    @staticmethod
+    def _validate_source_identity(sid, category):
+        if (type(sid) is not str or not sid.strip() or
+                type(category) is not str or not category.strip()):
+            raise Conflict('INVALID_SOURCE_IDENTITY')
+
     def initialize(self, world, actors, source_seals=None):
         with self.tx():
             if self.conn.execute('SELECT 1 FROM worlds WHERE id=?',(world['id'],)).fetchone():
@@ -95,6 +155,9 @@ class ResearchLedger:
                 # A second genesis would create an unrelated world with a
                 # misleading shared ancestry.
                 raise Conflict('MULTIWORLD_RESEARCH_DB_UNSUPPORTED')
+            if (self.conn.execute('SELECT 1 FROM source_seals LIMIT 1').fetchone() or
+                    self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone()):
+                raise Conflict('UNANCHORED_PREGENESIS_AUXILIARY_STATE')
             for a in actors:
                 if a['id'] in world['positions']:
                     raise Conflict('duplicate actor')
@@ -105,6 +168,7 @@ class ResearchLedger:
             # transaction. Legacy unanchored seals cannot be treated as verified.
             seals={}
             for sid,category,content in (source_seals or []):
+                self._validate_source_identity(sid,category)
                 if sid in seals:raise Conflict('DUPLICATE_SOURCE_SEAL')
                 seals[sid]=digest({'category':category,'content':content})
                 self.conn.execute('INSERT INTO source_seals VALUES(?,?,?)',
@@ -144,6 +208,7 @@ class ResearchLedger:
         A source insertion is a historical data act, not psychology formation.
         It must be emitted through the same world-anchored research chain.
         """
+        self._validate_source_identity(sid,category)
         with self.tx():
             if self.conn.execute('SELECT 1 FROM source_seals WHERE id=?',(sid,)).fetchone():
                 raise Conflict('source seal immutable')
@@ -168,12 +233,18 @@ class ResearchLedger:
                               (eid,wid,world['clock'],None,'SOURCE_SEAL',canonical(envelope),prev,chain))
 
     def source(self,sid):
-        x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
-        return None if not x else {'category':x[0], 'content':json.loads(x[1])}
+        with self.lock:
+            self._verified_source_seals_locked()
+            x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
+            return None if not x else {'category':x[0], 'content':json.loads(x[1])}
 
     def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload):
         """All research state is committed atomically with immutable objective receipt."""
         if world['id']!=wid: raise Conflict('wrong world')
+        # Reserved source-identity events are issued only by seal_source()
+        # alongside the actual source_seals table row in one transaction.
+        if kind in ('INITIALIZATION','SOURCE_SEAL'):
+            raise Conflict('RESERVED_SOURCE_EVENT_KIND')
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
@@ -254,11 +325,28 @@ class ResearchLedger:
                 raise AssertionError('BAD_EVENT_ID')
             if r['chain_hash']!=digest({'previous':prior,'eid':r['id'],'envelope':envelope}):
                 raise AssertionError('BAD_EVENT_CHAIN_HASH')
-            for sid,sha in envelope.get('source_seal_digests',{}).items():
-                if sid in anchored:
-                    raise AssertionError('SOURCE_SEAL_DUPLICATE_ANCHOR:'+sid)
+            seals=envelope.get('source_seal_digests',{})
+            if type(seals) is not dict:
+                raise AssertionError('SOURCE_SEAL_EVENT_INVALID_MAP')
+            if r['kind']=='SOURCE_SEAL':
+                payload=envelope.get('payload')
+                if (len(seals)!=1 or r['actor_id'] is not None or
+                        type(payload) is not dict):
+                    raise AssertionError('SOURCE_SEAL_EVENT_INVALID')
+                sid,sha=next(iter(seals.items()))
+                if (payload.get('source_id')!=sid or
+                        payload.get('source_digest')!=sha):
+                    raise AssertionError('SOURCE_SEAL_EVENT_MISMATCH')
+            elif r['kind']!='INITIALIZATION' and seals:
+                raise AssertionError('SOURCE_SEAL_EVENT_UNAUTHORIZED_ANCHOR')
+            for sid,sha in seals.items():
+                if (type(sid) is not str or type(sha) is not str or
+                        not sid or not sha or sid in anchored):
+                    raise AssertionError('SOURCE_SEAL_DUPLICATE_OR_INVALID_ANCHOR')
                 anchored[sid]=sha
             prior=r['chain_hash'];count+=1
+        if self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone():
+            raise AssertionError('UNANCHORED_CONSTRAINTS_STATE')
         actual={}
         for sid,cat,content in self.conn.execute('SELECT id,type,content FROM source_seals'):
             normalized=json.loads(content)
