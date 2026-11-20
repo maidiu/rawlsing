@@ -71,6 +71,7 @@ class Constitution:
     experienced_care_events: list[dict] = field(default_factory=list)
     performed_feeding_events: list[dict] = field(default_factory=list)
     institutional_expectations: list[dict] = field(default_factory=list)
+    material_dependency_encounters: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -141,6 +142,7 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'experienced_care_events': [],
         'performed_feeding_events': [],
         'institutional_expectations': [],
+        'material_dependency_encounters': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
