@@ -212,7 +212,9 @@ def compose(constitution,access,limit=50):
             vetoed=stratified
     inhibited.extend(sorted(vetoed))
     actual,recruitment_receipts=joint_recruitment(seed,vetoed)
-    active={fid:copy(forms[fid]) for fid in actual}
+    # Verified R12 source-only correction: set iteration cannot determine the
+    # order of actor-facing recruitment, act-basis lists or ledger hashes.
+    active={fid:copy(forms[fid]) for fid in sorted(actual)}
     for target,item in sorted(recruitment_receipts.items()):
         if target not in active: continue
         currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',

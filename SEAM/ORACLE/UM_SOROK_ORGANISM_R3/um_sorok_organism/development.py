@@ -69,9 +69,10 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         # to reorganize projects; this is not a universal learning law.
         if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
-        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
-               and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
-               for c in candidates):
+        # An actor-issued exploratory trial is not evidence that some OTHER
+        # previously noted end became a mature purpose in this same event.
+        # Future, distinct nontrial episodes retain qualified take-up.
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
     witnessed=[]
