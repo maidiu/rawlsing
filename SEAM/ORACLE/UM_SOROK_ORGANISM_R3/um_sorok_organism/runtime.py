@@ -19,6 +19,7 @@ from .lived_genesis import proposals_from_bodily_history
 from .distributed_power import record_actor_participation
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
+from .continuity_clock import continue_to_discontinuity
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
@@ -563,6 +564,14 @@ class ConstitutiveRuntime:
             lambda: self.ledger.world(self.world_id)[1],
             self.ledger.actors,
             lambda actor_id: self.step(actor_id), beats)
+
+    def advance_to_discontinuity(self,horizon=30):
+        """Cover ordinary time only to the next real material interruption.
+
+        A due commitment lets its owner initiate an independently selected
+        response; no caller script forces fulfillment or another's consent.
+        """
+        return continue_to_discontinuity(self,horizon)
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
