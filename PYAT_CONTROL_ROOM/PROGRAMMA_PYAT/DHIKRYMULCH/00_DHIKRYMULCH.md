@@ -6,7 +6,7 @@
 
 **This is the machine we intend to build, described in the order in which its intelligence comes into existence.** DHIKR is the resurrection effort by which recovered and presently missing capacities are made available. It does not define the endpoint. The endpoint is the most powerful truthful, generative, historically situated empirical-social possibility engine we can construct: a system that can discover, explain, navigate, compare and serve the structured multiplicity of human possibilities recorded in survey evidence, without mistaking those possibilities for finished psychological persons.
 
-This is a **conceptual architecture**, not an insistence upon one giant runtime, one physical file schema, one sequence of physically materialized stages or one scalar called *determinicity*. The objects named here are conceptual capabilities and service results. An existing, more general lawful implementation may realize several at once. The theory tells us **what must be possible**, why each operation exists, what it needs, what it produces, and what new question that output makes answerable. A later independent code confrontation will determine which capabilities are already in fact delivered and which must be built or repaired. The separate historical source/conservation register remains available, but it does not govern the order of this affirmative account.
+This is a **conceptual architecture**, not an insistence upon one giant runtime, one physical file schema, one sequence of physically materialized stages or one scalar called *determinicity*. Its order is **logical dependency, not a compulsory once-through serial conveyor**. Empirical discovery must reenter earlier questions when later results reveal a hidden branch, contradiction, contradictory interpretation, absent population or new measurement problem. The structure is a continuously revisable inquiry graph and a separate historically material field-construction process, not one analytics waterfall. The objects named here are conceptual capabilities and service results. An existing, more general lawful implementation may realize several at once. The theory tells us **what must be possible**, why each operation exists, what it needs, what it produces, and what new question that output makes answerable. A later independent code confrontation will determine which capabilities are already in fact delivered and which must be built or repaired. The separate historical source/conservation register remains available, but it does not govern the order of this affirmative account.
 
 ---
 
@@ -25,6 +25,8 @@ That is our target. It is neither a survey dashboard nor a trait generator. It i
 The machine must be capable of saying "most," "some," "nearly none," "this minority," "this alternative," "these patterns travel together," "the ranking changes here," "we have evidence but the meaning is disputed," "this specific combination is unsupported," "the question cannot be transported," and "we lack the scientific authority to make that stronger claim." All of those answers carry information.
 
 The ultimate achievement is not predictability at any price. It is the ability to produce **specificity without stereotype, contingency without randomness, and coherence without predestination**.
+
+The machine has four simultaneously active circuits rather than one long assembly line: an **empirical discovery circuit** that finds admissible patterns and directs new questions back into governed evidence; an **actor-independent social-world constitution circuit** where Field Forge interprets and composes social structures without taking over upstream empirical producers; a **post-Field-Forge historical-condition circuit** that resolves structural pressure, temporal change and circumstance into usable PRE-V3 contexts; and a **generative query circuit** in which downstream hypothetical-person construction requests more conditional evidence without rewriting the observed world. A fifth, orthogonal **proof/conservation circuit** follows every produced claim across those four. These circuits reinforce one another but never exchange permissions by proximity.
 
 ## II. FIRST: MAKE THE OBSERVED SOCIAL WORLD AVAILABLE
 
@@ -96,6 +98,8 @@ A branch must know what defines it, what respondents it describes, which respons
 
 **Next:** Search for patterns that no single question or branch reveals.
 
+The fracture-map must also be able to produce **a next-question** that is itself shaped by the branch: if the dominant response in a provincial labor stratum fragments by occupation, the system can nominate an occupation-conditioned multi-label pattern and retrieve it on the same governed risk set. A subsequent answer may require the system to revise its original branch priority, merge two proposed subcultures, or investigate a small retained exception. This is already the empirical discovery loop beginning to feed back into itself, not merely a final autonomous-explorer chapter waiting at the end.
+
 ## VII. DISCOVER HIGHER-ORDER INTERACTIONS AND HIDDEN CONFIGURATIONS
 
 Some social possibilities do not announce themselves in any individual predictor. Two variables can each look uninformative alone and jointly become decisive; three conditions can expose a stable minority concealed by every pairwise table. In other contexts, a strong apparent interaction is an artifact of sparse, high-cardinality memorization.
@@ -134,7 +138,7 @@ A proximity score never automatically establishes a social relation, shared fate
 
 **Why:** We need to know not only that one configuration is common among a group, but whether it is confined, widespread, situated at a boundary, common across opposed material positions, or locally unique.
 
-**Next:** Ask which of these configurations is simply frequent, and which is entangled with power.
+**Next:** Bring the purely empirical geometry to the separately authorized social-world constitution process, where its possible relation to power can be examined.
 
 ## X. BUILD PROFILES OF HEGEMONY, COUNTERHEGEMONY, SUBHEGEMONY AND SOCIAL COMMON SENSE
 
@@ -144,7 +148,7 @@ A view can be widespread without being hegemonic. A locally dominant repertoire 
 
 Do **not** infer ruling-class status from high income alone or treat every national minority as subaltern. Do **not** infer a theory of domination from category frequency. These are evidence profiles supporting later governed interpretations.
 
-**Product:** **Plural Hegemony and Social-Repertoire Evidence Profiles**: locally dominant, broadly diffuse, power-aligned, regionally bounded, contested, counterposed and unresolved complexes, often coexisting in the same society.
+**Product:** **Plural Hegemony and Social-Repertoire Evidence Profiles**: locally dominant, broadly diffuse, power-aligned, regionally bounded, contested, counterposed and unresolved complexes, often coexisting in the same society. Before Field Forge admission, these are **candidate empirical indicators and open questions**, not already-established relations of institutional hegemony. It is the presence of additional governed social-world evidence—not the rhetorical intensity of the name—that permits a stronger claim.
 
 **Why:** This gives Field Forge the distinction between what an average respondent says and what a society's institutions may normalize, reward, stigmatize or impose—without pretending surveys already measure all those institutional relations.
 
@@ -154,6 +158,8 @@ Do **not** infer ruling-class status from high income alone or treat every natio
 
 The strongest next question is no longer "what predicts Y?" It is **what becomes possible, facilitated, inhibited, costly, rewarded, stigmatized or foreclosed for differently positioned people—and through which material relations?**
 
+**Architectural location:** This is the **replacement for the old nine-strata/inter-strata-pressure representation**, not a new name for DDM and not a direct source-data analysis stage. The upstream DDM must already have produced the governed response structures, co-signatures, recursive branches, joints, minority configurations and learned empirical objects available to Field Forge. Field Forge may descend to source facts for evidentiary canaries, but **an epistemic ability to derive a relation from respondents is not proof that source → Field Forge is the desirable production insertion point**. The proper production seam is the current legitimate output of the pre-strata empirical machine; the older respondent sources remain the ultimate proof floor.
+
 **Operation:** Field Forge receives the authorized empirical possibility objects and, where independently governed evidence permits, composes them with material positions, institutions, resources, geographical arrangements, collective organization, political and economic power, cultural legitimacy and historical events. It distinguishes a **measured statistical contrast** from an **interpreted structural pressure**, a **specific institutional channel**, an **asserted causal mechanism**, and a **downstream actor's experienced response**.
 
 A source-observed contrast does not make its own structural rule. The higher-order interpretation must say what independent fact or rule licenses claims about access, coercion, bargaining power, social reproduction, gatekeeping, resource conversion, institutional sanction or historical contradiction. Some currently known empirical results may enter this process only as exploratory evidence, and must be allowed to remain useful at that weaker grade.
@@ -162,7 +168,13 @@ A source-observed contrast does not make its own structural rule. The higher-ord
 
 **Why:** Social position and belief can correlate without any particular mechanism; mechanisms can act differently across contexts; institutions have consequences even where a survey did not ask about them. This is where empirical regularities can be related to a historical world rather than left as a numerical social taxonomy.
 
-**Next:** Examine contradiction inside and between these fields, while keeping empirical observation separate from psychological conflict.
+**Next:** Produce the actor-independent **structural world and relation field** in whatever smallest competent object forms suffice, then submit it to the **distinct downstream post-Field-Forge layer** before PRE-V3. Not all empirical possibilities require structural promotion: legitimate source-observed co-travel can remain consumable without a special structural relation, and a rejected causal interpretation must not erase the descriptive observation.
+
+### The indispensable downstream after Field Forge
+
+The Field Forge output itself is **not yet resolved historical pressure in a fictional person's circumstances**. The original design interposed structural/pressure/temporal/linking machinery between the new structural world and the PRE-V3 context. This additional machinery must be able to apply authored structural claims at specified times, places, institutional scales, relevant material relations and target position-grains; distinguish baseline pressure from a contingent event; combine competing heterogeneous components without illegitimate scalarization; represent channels by which resources and sanctions operate; and carry temporal change, exposure relevance and uncertainty to the final actor-independent context. No preexisting concrete implementation is assumed complete merely because it shares these names. But the *functions* cannot be silently skipped.
+
+What Field Forge constitutes is an actor-independent **social world**. What the post-Forge machinery resolves is the **situational pressure/constraint/opportunity field for a specified historical setting**. What PRE-V3 hands off is a **historically conditioned possibility and exposure context**, never an actor's acquired belief, remembered event or chosen action. All three boundaries have separate meanings and potentially separate source/owner permissions; they can be implemented through direct typed objects rather than a mandatory mega-packet.
 
 ## XII. MAKE CONTRADICTION, COMPETING PRESSURES AND ALTERNATIVE FUTURES FIRST-CLASS
 
@@ -186,11 +198,13 @@ Historical possibility changes. Positions, institutions, cultural meanings, prev
 
 Where sources cannot be harmonized, preserve several distinct temporal witnesses and their disagreement rather than invent one universal chronological curve. A time- and place-bounded repertoire cannot be silently used as the default for a person born into an earlier period.
 
+**Rupture is not interpolation noise.** War, occupation, genocide, sanctions, coups, mass displacement, economic collapse and institutional reorganization can alter what a position is, which populations are reachable, what speech is safe and which choices even exist. A temporal layer must therefore retain source-wave distance, what change is merely interpolated, the confidence penalty of that interpolation, independently authorized event overrides and any discontinuity that defeats smooth modeling. Where the rupture's effect is not measured, the event belongs to historically grounded context with uncertainty—not to a magically reconstructed time series of survey answers. A person passing through a rupture is a problem for Sorok's lived history; the empirical system can supply the changing historical field but cannot manufacture that person's experience.
+
 **Product:** **Historically Indexed Possibility Fields** and explicit **Change/Noncomparability Profiles**: what is observed at each period; what changes are legitimately inferable; what remains ambiguous or unmeasured.
 
 **Why:** A hypothetical person must come from a historical world rather than a timeless demographic calculator. But a social trend is not yet that person's acquisition history.
 
-**Next:** Make it possible to ask highly specific questions of the resulting field, even when the precise conditioning slice is sparse.
+**Next:** Pass only legitimate, actor-independent structural/temporal conditions through the post-Field-Forge layer, then make it possible to ask highly specific questions of the resulting field, even when the precise conditioning slice is sparse.
 
 ## XIV. BUILD THE POSITIONED-SUBJECT QUERY ENGINE AND HONEST SPECIFICITY WALKBACK
 
@@ -200,7 +214,7 @@ The empirical intelligence must become *usable*. A downstream caller will ask fo
 
 Crucially, conditioning does not imply independent feature sampling. The engine should either select from supported whole cases, use separately justified models of joint dependence, or expose that the requested configuration has not been observed. The caller should be able to ask which possibilities are still open, not only which one was selected.
 
-**Product:** A **Positioned Possibility Service** returning the appropriate distribution of complete and partially supported configurations, exact context roots, candidate alternatives, local minority support, uncertainty, walkback, specificity loss and negative evidence.
+**Product:** A **Positioned Possibility Service** returning the appropriate distribution of complete and partially supported configurations, exact context roots, candidate alternatives, local minority support, uncertainty, walkback, specificity loss and negative evidence. It must be capable of **counter-conditional interrogation**: retain fixed legitimate conditions, change one additional condition, expose how the entire remaining joint possibility set moves, and show when a supposedly decisive predictor was an artifact of conditioning or sample opportunity. This is not a causal counterfactual unless separate interventions/mechanisms authorize that stronger meaning. We are navigating conditional evidentiary possibilities, not rewriting history.
 
 **Why:** This is the bridge from general population intelligence to historically situated hypothetical adults—and the protection against reducing uncommon people to average demographic expectations.
 
@@ -212,13 +226,15 @@ The parents' empirical entrance is the point where the knowledge becomes generat
 
 **Operation:** Given a historical-fictional specification and any legitimate material conditions, use the Positioned Possibility Service to propose a **whole, respondent-coherent hypothetical adult configuration**. Draw or select from the actual supported conditional alternatives without illegitimate demographic independence or personality-type shortcuts. Preserve minority options even when the modal profile dominates. Allow context to be revised and remaining alternatives queried. Keep exact source and method limitations visible so another system can refuse an unsupported psychological inference.
 
-A pair of independently plausible adults is not a survey-evidenced marriage. Empirical respondent relations do not establish these two fictional people's kinship, mutual attraction, role negotiation, life story or parenting. Those belong to separately supplied fictional-world conditions and Sorok's developmental and relational construction.
+**The second parent's entrance must be conditionable on the first parent's situated world.** The original parent/coparent ambition was not to independently sample two national adults and simply declare them a household. The richer proposal is a *two-entrance possibility problem*: first select a source-coherent, historically situated Parent A candidate; then evaluate admissible **Parent B possibilities conditioned on Parent A's position, local social field, class proximity, educational and religious/ethnic boundaries, plausible meeting opportunity and other independently established structural constraints**. The output should distinguish whether each restriction is survey-observed, structurally inferred, an explicitly fictional/marriage-field heuristic, or missing. It must leave open whether the desired pair can be supported at the requested specificity and must permit abstention, backoff and a plurality of candidate B configurations.
+
+None of that makes the relationship a survey fact. **A conditional proposal for B is not empirical proof of partner selection.** Survey respondents are generally not linked to their actual partners; a source-faithful conditional model may constrain possible pairings without discovering a particular household. Independent empirical parent candidates may be used as a minimal sourcefree seed, but cannot be confused with the full coparent/encounter vision. Sorok or the competent world/relationship owner supplies and realizes the actual fictional association, encounter, mutual response, parenting, life history and psychological change. PYAT supplies only what a legitimate conditional possibility model knows or refuses to know.
 
 **Product:** **Historical Adult Empirical Entrance Offers**: distributions, sampled whole-case proposals, alternatives, contextual constraints, specificity history and qualified unknowns. They can be revisited or resampled as downstream construction chooses, but are never a bank of prewritten fixed personalities.
 
 **Why:** A person who has some situated answer configuration still does not have an acquired psyche, a biography, a relational motive or a set of justified memories. PYAT is strongest precisely when it makes the empirical possibilities rich enough that Sorok need not invent a social worldview from generic prose.
 
-**Next:** Make the empirical outputs usable by Field Forge and Sorok as live, queryable intelligence rather than as a one-off export.
+**Next:** Make the empirically conditioned adult and coparent *possibility fields* usable by the downstream structural and Sorok consumers as revisitable questions, not fixed biographies or a one-off export. Changes to the social world may call for new possibilities but do not retroactively rewrite an already realized psychological person.
 
 ## XVI. SERVE A LIVING FIELD, NOT A STATIC CATALOGUE
 
@@ -228,7 +244,7 @@ A single huge final JSON packet is not the system. The right output is an **evid
 
 Make the field **progressively explorable**: each new condition updates the possibilities; each changed source root invalidates descendants that actually depended on it; an authorized reanalysis can produce a new lineage without destroying the previous historical record. The service can explain the precise empirical basis for a claim without exposing restricted respondent identities.
 
-**Product:** A **Queryable Empirical-Social Possibility Intelligence** with reproducible answers, negative states, explanations, partial and complete discovery frontiers, cached-but-nonauthoritative derived views, and exact consumer boundaries.
+**Product:** A **Queryable Empirical-Social Possibility Intelligence** with reproducible answers, negative states, explanations, partial and complete discovery frontiers, cached-but-nonauthoritative derived views, and exact consumer boundaries. Engineering requires a *knowledge graph of exact operations* rather than an ever-growing collection of static tables: each answer retains which eligible evidence universe and authorized semantic roles support it, which conditions it answered, which other questions it makes possible, and which downstream objects depend on it. The graph must support reentry, selective invalidation, repeatable view construction and deferred recomputation. The runtime need not build every potential condition/product eagerly; it must know what is legally constructible and produce or refuse it on demand.
 
 **Why:** Theoretical ambition is wasted if the downstream system cannot obtain the relevant part at the moment it needs it, or if it must reread all source files to answer every new question.
 
@@ -242,7 +258,7 @@ An empirical discovery engine must move beyond predeclared one-variable question
 
 The machine must also know when not to continue: insufficient source support, forbidden transport, excessive complexity, unstable evidence, missing question semantics or exhausted authorized search opportunities. Every inquiry should produce not only an interesting result but a **state of knowledge**: what was asked, what was learned, what failed, what remains open, and which new operation that result supports.
 
-**Product:** The **Autonomous Social Discovery Frontier**: a replayable empirical inquiry graph that can discover previously unknown conditional subcultures and relation patterns, distinguish genuinely examined absence from unexplored territory, and generate a bounded next worklist.
+**Product:** The **Autonomous Social Discovery Frontier**: a replayable empirical inquiry graph that can discover previously unknown conditional subcultures and relation patterns, distinguish genuinely examined absence from unexplored territory, and generate a bounded next worklist. It must account for the **independently declared opportunity space**: a controller cannot claim its inquiry complete merely because it has visited every candidate it chose to generate. A discovered branch can reopen the response morphology or condition-selection policy; a new attitude cloud can change which configurations deserve search; structural/world contradictions can nominate further empirical hypotheses but may not automatically grant those hypotheses truth. Thus every frontier advance can reenter earlier evidence functions. Discoveries, rejected hypotheses, holds, source-qualified next questions, partial-search coverage and resource costs are all outputs of one continuing inquiry.
 
 **Why:** Without this, Rawlsing is still dependent on a human analyst to imagine every important subgroup and hypothesis. With it, the machine becomes capable of finding what its designer did not know to look for—without declaring itself a source-authority or sociology oracle.
 
