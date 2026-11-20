@@ -21,6 +21,8 @@ from typing import Callable, Mapping, Any
 STREAM_SCHEMA = "ANVIL_STREAM_C11_ESTATE@1"
 _ROOT_FIELDS = frozenset(("logical", "physical", "release", "source",
                           "replay", "universe", "schema"))
+_BODY_FORMAT = "legacy_exact_object_row_json_in_same_parquet_member"
+_PROOF_VERSION = "STREAM_TYPED_IDENTITY_COVERAGE@1"
 _FAMILIES = frozenset((
     "AuthoritySnapshot", "ComparatorReplayBinding",
     "DiscoveryBranchReplayBinding", "EmpiricalCoordinateFact",
@@ -153,15 +155,36 @@ def qualify_saved_stream_manifest(
         _fail("saved stream manifest must be an exact mapping")
     if manifest.get("schema") != STREAM_SCHEMA:
         _fail("saved stream schema differs from independently selected carrier")
-    if (type(manifest.get("i02")) is not dict
-            or manifest["i02"] != dict(held.roots)):
+    # Actual P0 stream manifests use "roots", not S2-C "i02". Their
+    # self-reported manifest_sha256 is NOT the complete manifest file hash;
+    # only the externally held SHA checked above authenticates the file.
+    if (type(manifest.get("roots")) is not dict
+            or manifest["roots"] != dict(held.roots)):
         _fail("saved stream full source/release/replay/universe roots mismatch")
+    if (manifest.get("body_format") != _BODY_FORMAT
+            or manifest.get("proof_version") != _PROOF_VERSION
+            or manifest.get("legacy_i02", "MISSING") is not None
+            or manifest.get("sqlite_proof_built") is not False):
+        _fail("unqualified stream body/proof format: not direct-I02")
+    if not (type(manifest.get("manifest_sha256")) is str
+            and _HEX.fullmatch(manifest["manifest_sha256"])):
+        _fail("stream embedded proof digest absent or malformed")
+    members = manifest.get("members")
+    required = {name + ".parquet" for name in _FAMILIES}
+    required.add("event_locator.parquet")
+    if (type(members) is not dict or set(members) != required
+            or any(type(v) is not str or not _HEX.fullmatch(v)
+                   for v in members.values())):
+        _fail("exact fourteen-member stream manifest inventory required")
     if "source_sha256" in manifest and manifest["source_sha256"] != held.source_sha256:
         _fail("saved stream source SHA mismatch")
     counts = manifest.get("family_counts")
     if (type(counts) is not dict or set(counts) != _FAMILIES
             or any(type(v) is not int or v < 0 for v in counts.values())):
         _fail("full thirteen-family saved C11 census required")
+    if (type(manifest.get("event_locator_count")) is not int
+            or manifest["event_locator_count"] != counts["RespondentEvent"]):
+        _fail("saved stream event/locator census mismatch")
     if current_authorizer(held) is not True:
         _fail("current analytical authority revoked during carrier inspection")
     # This admission has no method to supply verified native respondent rows.
