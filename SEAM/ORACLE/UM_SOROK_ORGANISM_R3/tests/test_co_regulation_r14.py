@@ -12,7 +12,9 @@ from um_sorok_organism.co_regulation_history import (
     conserve_received_period_care, possible_acquired_regulation,
     admit_co_regulation, sourcefree_co_regulation_proposal,
     recruit_co_regulation, addressed_signal_alternatives,
-    choose_historically_situated_signal)
+    choose_historically_situated_signal,
+    record_lived_co_regulation_response, possible_revision_after_nonresponse,
+    sourcefree_revision_proposal, admit_co_regulation_revision)
 from um_sorok_organism.types import newborn
 from um_sorok_organism.runtime import ConstitutiveRuntime
 
@@ -129,6 +131,81 @@ class R14SourcefreeModule(unittest.TestCase):
         self.assertIsNone(choose_historically_situated_signal(
             [{'action':'SIGNAL','practical_alternatives':two}],
             {'comfort':.2,'nutrition':.4,'rest':.1}))
+
+
+    def test_two_actual_unfinished_calls_can_revise_without_retroactive_erasure(self):
+        actor,history,earlier,proposal=self.actor,self.source,experience(),None
+        possibility=possible_acquired_regulation(actor,earlier,'first')
+        proposal=sourcefree_co_regulation_proposal(possibility)[0]
+        admitted=admit_co_regulation(actor,earlier,'first',proposal)
+        orientation=admitted['orientation_ref']
+        selection={
+            'source_co_regulation_orientation_ref':orientation,
+            'world_request':{'operation':'SIGNAL',
+                'addressed_party_ref':'mother','material_object_ref':None}}
+        def missed_call(index):
+            return {'actor':'nadia','ref':'experience:'+str(index),
+                'clock':25+index,'location':'home',
+                'own_action':'SIGNAL','status':'PARTIAL',
+                'felt_enactment':{'attempted_operation':'SIGNAL'},
+                'perceived_cues':[{
+                    'id':'sign:'+str(index),'kind':'performed_signal',
+                    'source_actor':'nadia',
+                    'description':'ATTEMPT_NOT_COMPLETED'}],
+                'participated':True}
+        e1=missed_call(1)
+        record_lived_co_regulation_response(
+            actor,e1,selection,'second')
+        self.assertEqual(possible_revision_after_nonresponse(
+            actor,e1,'second'),[])
+        e2=missed_call(2)
+        record_lived_co_regulation_response(
+            actor,e2,selection,'third')
+        proposals=possible_revision_after_nonresponse(
+            actor,e2,'third')
+        self.assertEqual(len(proposals),1)
+        typed=sourcefree_revision_proposal(proposals)
+        self.assertEqual(len(typed),1)
+        result=admit_co_regulation_revision(
+            actor,e2,'third',typed[0])
+        self.assertEqual(result['phase'],'UNRESOLVED_AFTER_NONRESPONSE')
+        self.assertEqual(len(actor['undergone_care_periods']),1)
+        self.assertEqual(len(actor['co_regulation_orientations'][0][
+            'response_history']),2)
+        view=SimpleNamespace(actor='nadia',body=actor['body'],
+            clock=28,co_regulation_orientations=actor[
+                'co_regulation_orientations'])
+        access=SimpleNamespace(actor='nadia',location='home',
+                                cues=[current_cue()])
+        projected=recruit_co_regulation(view,access)
+        self.assertEqual(projected['offered'],[])
+        self.assertEqual(len(
+            projected['suspended_after_contradiction']),1)
+        self.assertEqual(len(projected['readset']),1)
+
+    def test_one_failed_or_unsensed_call_does_not_prove_rejection(self):
+        actor=self.actor
+        e=experience()
+        proposal=sourcefree_co_regulation_proposal(
+            possible_acquired_regulation(actor,e,'first'))[0]
+        orientation=admit_co_regulation(
+            actor,e,'first',proposal)['orientation_ref']
+        selection={'source_co_regulation_orientation_ref':orientation,
+                   'world_request':{'addressed_party_ref':'mother'}}
+        no_sign={'actor':'nadia','ref':'later','own_action':'SIGNAL',
+                 'status':'PARTIAL',
+                 'felt_enactment':{'attempted_operation':'SIGNAL'},
+                 'perceived_cues':[]}
+        self.assertIsNone(record_lived_co_regulation_response(
+            actor,no_sign,selection,'later'))
+        self.assertEqual(actor['co_regulation_orientations'][0].get(
+            'response_history',[]),[])
+        with self.assertRaisesRegex(
+                ValueError,'COREGULATION_REVISE_NO_CURRENT_LIVED_RESPONSE'):
+            admit_co_regulation_revision(actor,no_sign,'later',{
+                'orientation_ref':orientation,
+                'latest_response_ref':'fictional',
+                'interpretation_phase':'UNRESOLVED_AFTER_NONRESPONSE'})
 
 
 class R14IntegratedLife(unittest.TestCase):
