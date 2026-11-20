@@ -6,6 +6,9 @@ objective world fact or another actor's state here.
 """
 from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
+from .relational_metabolism import (
+    RELATIONS, link_ref, validate_motif, admit_motif, InvalidRelationalMotif,
+)
 from .organism import ACTIONS
 import math
 
@@ -14,9 +17,11 @@ class InvalidDevelopment(ValueError): pass
 ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
-         'ACQUIRE_COMPOSITION_METHOD','NO_CHANGE'}
+         'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
+         'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
-RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS'}
+# The typed historic PRE-A0 relational family is supplied by the
+# owner-adjacent sourcefree relational read, not redefined locally.
 
 
 def validate_activity_priority(value):
@@ -87,8 +92,65 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             link={'source':a,'target':b,'relation':c['relation'],
                   'contexts':c.get('contexts',[]),'origin':[event_ref],
                   'evidence':evidence,'grade':GRADE}
-            if link not in actor['links']:actor['links'].append(link)
+            link['id']=link_ref(link)
+            if not any(link_ref(old)==link['id'] for old in actor['links']):
+                actor['links'].append(link)
             report.append({'kind':op,'from':a,'to':b,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACQUIRE_RELATIONAL_MOTIF':
+            try:
+                motif=admit_motif(actor,c,event_ref,experience,idx)
+            except InvalidRelationalMotif as exc:
+                raise InvalidDevelopment(str(exc)) from exc
+            actor.setdefault('relational_motifs',[]).append(motif)
+            report.append({'kind':op,'motif':motif['id'],
+                           'status':'ADMITTED_SOURCEFREE_RELATIONAL_FORMATION'})
+        elif op=='REVALUE_RELATION':
+            # The old relation remains in exact in-actor ancestry; replacement
+            # changes how its endpoints become meaningful *now*, never the
+            # fact that an earlier interpretation once operated.
+            ident=c.get('relation_id')
+            matches=[l for l in actor['links'] if link_ref(l)==ident]
+            if len(matches)!=1 or c.get('new_relation') not in RELATIONS:
+                raise InvalidDevelopment('UNQUALIFIED_RELATIONAL_REVALUATION')
+            link=matches[0]
+            contexts=c.get('contexts',link.get('contexts',[]))
+            if (type(contexts) is not list or len(contexts)>20 or
+                    not all(type(x) is str for x in contexts)):
+                raise InvalidDevelopment('INVALID_RELATIONAL_REVALUATION_SCOPE')
+            old={'relation':link['relation'],'contexts':copy(link.get('contexts',[])),
+                 'event':event_ref,'prior_origin':copy(link.get('origin',[]))}
+            link.setdefault('relational_history',[]).append(old)
+            link.setdefault('id',ident)
+            link['relation']=c['new_relation']
+            # Caller cannot replace the immutable historical source of the
+            # original relation; only its current actor-specific interpretation.
+            link['contexts']=copy(contexts)
+            link.setdefault('changes',[]).append(evidence)
+            report.append({'kind':op,'relation':ident,
+                           'status':'ADMITTED_SOURCEFREE_RELATIONAL_REVALUATION'})
+        elif op=='REORGANIZE_RELATIONAL_MOTIF':
+            ident=c.get('motif_id')
+            motifs=actor.get('relational_motifs',[])
+            found=next((x for x in motifs if x.get('id')==ident),None)
+            if found is None:
+                raise InvalidDevelopment('UNKNOWN_RELATIONAL_MOTIF')
+            # Changes to an existing learned configuration are themselves
+            # historically qualified, reversible in documentary history.
+            update=copy(found)
+            for key in ('cue_terms','locations','effects','status'):
+                if key in c:update[key]=copy(c[key])
+            try:validate_motif(update,actor['forms'])
+            except InvalidRelationalMotif as exc:
+                raise InvalidDevelopment(str(exc)) from exc
+            found.setdefault('motif_history',[]).append({
+                'event':event_ref,
+                'previous':{key:copy(found.get(key)) for key in
+                            ('cue_terms','locations','effects','status')},
+                'experience_ref':experience['ref'],'grade':GRADE})
+            for key in ('cue_terms','locations','effects','status'):
+                if key in c:found[key]=copy(update[key])
+            report.append({'kind':op,'motif':ident,
+                           'status':'ADMITTED_SOURCEFREE_MOTIF_REORGANIZATION'})
         elif op=='LINK_ACTIVITY':
             src,dst=c.get('source'),c.get('target')
             if src not in actor['forms'] or not any(p['id']==dst for p in actor['projects']):
