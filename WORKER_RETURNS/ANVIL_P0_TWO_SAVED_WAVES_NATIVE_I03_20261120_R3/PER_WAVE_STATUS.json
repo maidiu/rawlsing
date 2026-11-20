@@ -1,0 +1,49 @@
+{
+  "schema": "ANVIL_P0_R3_PER_WAVE_STATUS@1",
+  "host": "MainMac",
+  "exact_head": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+  "waves": {
+    "SRC04": {
+      "wave": "Arab Barometer Wave 1",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src04|365d27aea5daa49f208b5aa10eef6bba936a0676ae7eeedefe562b55b66ac0a4",
+      "currentness": "CURRENT_GRANTED",
+      "cold_bridge_admission": "VERIFIED",
+      "governed_issued_query": "QUERY_NOT_ISSUED",
+      "native_i03": "NOT_ATTEMPTED_NO_LAWFUL_ISSUED_QUERY",
+      "i05_discovery": "NOT_ATTEMPTED_NO_COMPATIBLE_AUTHORITY_PATH",
+      "batch": "NOT_REACHED",
+      "s04_dhikr_ff01": "NOT_REACHED",
+      "c4_c5_c6": "NOT_REACHED",
+      "first_fault": null
+    },
+    "SRC16": {
+      "wave": "GSS1972",
+      "decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0",
+      "currentness": "CURRENT_GRANTED",
+      "cold_bridge_admission": "VERIFIED",
+      "governed_issued_query": "QUERY_NOT_ISSUED",
+      "native_i03": "NOT_ATTEMPTED_NO_LAWFUL_ISSUED_QUERY",
+      "i05_discovery": "NOT_ATTEMPTED_NO_COMPATIBLE_AUTHORITY_PATH",
+      "batch": "NOT_REACHED",
+      "s04_dhikr_ff01": "NOT_REACHED",
+      "c4_c5_c6": "NOT_REACHED",
+      "first_fault": null
+    }
+  },
+  "tests": {
+    "new_native_stream": "8/8 PASS",
+    "existing_metadata": "18/18 PASS",
+    "combined": "26/26 PASS"
+  },
+  "limits": {
+    "original_source_opened": false,
+    "rebuild": false,
+    "schema_alias": false,
+    "fabricated_query": false,
+    "respondent_values_emitted": 0,
+    "extra_waves": false,
+    "protected_edits": false,
+    "pr_1185_changed": false
+  },
+  "next_owner_action": "R03/scientific compiler-issuer must issue an exact lawful QUERY/predicate/authority per wave, or typed no-query hold; discovery owner must supply an exact compatible authority/path if intended."
+}
