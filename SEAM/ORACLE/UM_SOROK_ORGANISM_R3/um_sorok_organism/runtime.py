@@ -130,6 +130,21 @@ class ConstitutiveRuntime:
         wv,world=self.ledger.world(self.world_id)
         actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
         actors=self.ledger.actors()
+        # Preserve a private read of the operative psychological organization
+        # BEFORE the independent world result. Even an externally injected
+        # action cannot retroactively manufacture the actor's motives.
+        pre_event_psychodynamics={}
+        for aid,person in actors.items():
+            prior=asdict(compose(materialize(person,world),actor_access(person,world)))
+            pre_event_psychodynamics[aid]={
+                'readset':copy(prior['readset']),
+                'recruited_form_refs':[x['id'] for x in prior['recruited']],
+                'inhibited_refs':copy(prior['inhibited']),
+                'currents':copy(prior['currents']),
+                'antagonisms':copy(prior['antagonisms']),
+                'sourcefree_grade':GRADE,
+                'not_an_actor_self_account':True,
+            }
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
         principal.target=target;principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
@@ -154,7 +169,7 @@ class ConstitutiveRuntime:
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
                 row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
                 {'material_claim_ref':summary.get('material_claim_ref')})
-        developmental={};subjective={}
+        developmental={};subjective={};post_event_psychodynamics={}
         for aid in actors:
             # Separate actor-specific view, no analyst world description in LLM input.
             access=actor_access(actors[aid],world)
@@ -191,10 +206,18 @@ class ConstitutiveRuntime:
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
             # Disabled LLM proposals may truthfully produce no change.
+            selected=asdict(compose(materialize(actors[aid],world),access))
+            post_event_psychodynamics[aid]={
+                'readset':copy(selected['readset']),
+                'currents':copy(selected['currents']),
+                'inhibited_refs':copy(selected['inhibited']),
+                'antagonisms':copy(selected['antagonisms']),
+                'grade':GRADE,'not_a_public_tip':True,
+            }
             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
                 'clock':world['clock'],'experience':experience,
-                'selected_constitution':asdict(compose(materialize(actors[aid],world),access)),
+                'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
@@ -223,6 +246,9 @@ class ConstitutiveRuntime:
                  # Objective occurrence, actor experience, acquired afterlife
                  # are distinct and can now be independently reconstructed.
                  'private_actor_experience_receipts':copy(subjective),
+                 'private_pre_event_psychodynamics':copy(pre_event_psychodynamics),
+                 'private_post_event_psychodynamics':copy(post_event_psychodynamics),
+                 'relational_dynamics_are_admitted_read_projections_not_actor_claims':True,
                  'model_service_grade':getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
                  'sourcefree':True}
         committed=self.ledger.commit(self.world_id,wv,world,actors,actor_versions,
