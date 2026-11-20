@@ -153,5 +153,6 @@ def blank_world(world_id='w1'):
                 'hall_petition_signatures':[], 'rule_history':[]}},
             'cues': [], 'historical_periods': [], 'public_history': [],
             'social_reproductive_labor': [],
+            'scheduled_obligations': [],
             'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
             'grade': GRADE}
