@@ -1,0 +1,13 @@
+# R4 → R5 unresolved defects and REMONT compatibility (sourcefree research)
+
+Do not mistake the 61 tests for native SOROK completion or independent receiving.
+
+1. **SR-P004 status: bounded repair constructed, NOT scientifically or protected accepted.** R4 contains nonperformed activity courses and separately actor-lived traces; project-qualified pair patterns from #1165; all original 42 R3 tests plus new checks. #1165/#1166 remain sibling draft fixes; R4 does not merge or close them. REMONT owner should inspect exact R4 code rather than cherrypick both patches and reintroduce R3's global grammar.
+2. **Candidate-selection genesis still underdetermined.** R4 verifies experienced sequence + independent material support; selection of alternate practical means is currently sourcefree semantic/callback, not historically generated desire. Bounded formal insight, not human scientific law.
+3. **Actor-specific inference can be wrong.** Repeated somatic course contrast gets an attention cue, not a causal story. The module may yet overgeneralize cue tags or material feasibility when perceptual access to the relevant causal property was weak. Test novel hidden or mistaken analogies.
+4. **Relational afterlife incomplete.** Historically acquired `SUBORDINATES` etc can reframe an eligible act privately but currently do not grow or break through multi-actor historical conflict. `INHIBITS` preserves a latent relation without yet materially altering a third link. This needs further actual computational construction under the current TCO.
+5. **Different activity purposes:** a multi-project action with no explicit selected project remains purposely unattributed. A richer actor policy should support genuinely multi-motive intentional action *without* equating all eligible projects to intended projects.
+6. **Sourcefree/Nadia/parent obligations:** two settled-care episodes are not attachment, selfhood or language; parent construction still uses fictional packet answer keys rather than blind survey correspondence; live LLM semantics not executed. Native P2–P6, real PYAT issuer source cuts, owner/privacy gates, independent peer receiving and human plausibility remain open.
+7. **TCO is moving.** This source was grounded against SEAM/30 R3 structural recast HEAD `50cde6f63fb6a20ee2cdbe18753e840cbb2e101a`, not all future theory. The mechanism version and theory cut are part of the research source receipt. Reconcile later TCO PR HEAD and any new REMONT PR before adapting code.
+
+**No R4 defect receipt is a grant to rewrite the separate REMONT OPEN_DEFECTS owner queues.** Compatible future repair requires a new material owner review and a test showing both conservation and improved operation.
