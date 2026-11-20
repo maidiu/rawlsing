@@ -154,10 +154,21 @@ def recruit_co_regulation(constitution,access):
     if not eligible(constitution.body,'SIGNAL')[0]:
         return {'offered':offered,'readset':readset}
     # A corresponding caregiver is *present*, but can still decline to act.
+    suspended=[]
     for record in constitution.co_regulation_orientations:
         if record.get('status')!='ACTIVE' or record.get('caregiver_ref') not in present:
             continue
         if record.get('scope_location') not in (None,access.location):
+            continue
+        if record.get('interpretation_phase')=='UNRESOLVED_AFTER_NONRESPONSE':
+            # Prior care still happened; a later unsuccessful call can
+            # destabilize THIS fallback without erasing material history.
+            readset.append(record['id'])
+            suspended.append({'orientation_ref':record['id'],
+                'previous_caregiver_ref':record['caregiver_ref'],
+                'history_not_deleted':True,
+                'does_not_identify_caregiver_intention':True,
+                'grade':GRADE})
             continue
         offered.append({
             'caregiver_ref':record['caregiver_ref'],
@@ -170,7 +181,8 @@ def recruit_co_regulation(constitution,access):
             'coactor_consent':'INDEPENDENT_UNDECIDED',
             'grade':GRADE})
         readset.append(record['id'])
-    return {'offered':offered,'readset':readset,'grade':GRADE}
+    return {'offered':offered,'readset':readset,
+            'suspended_after_contradiction':suspended,'grade':GRADE}
 
 
 def addressed_signal_alternatives(constitution,access,option):
@@ -229,3 +241,149 @@ def choose_historically_situated_signal(options,body):
         'project_id':None,
         'selection_grade':'SOURCEFREE_RELATIONALLY_GROUNDED_CALL_ATTEMPT',
         'other_response_is_independently_settled':True}
+
+
+def record_lived_co_regulation_response(actor, experience, selection, event_ref):
+    """The learner's actually attempted signal acquires a fallible afterlife.
+
+    'World did not join' is not automatically 'caregiver does not love me'.
+    A sign of attempted action must be received by this actor. The partner
+    must have been frozen in the *actor-selected practical alternative*,
+    not supplied by a third-party retrospective narrative.
+    """
+    if experience.get('actor')!=actor.get('id') or not event_ref:
+        raise ValueError('COREGULATION_RESPONSE_FOREIGN_ACTOR')
+    selected=(selection or {}).get('source_co_regulation_orientation_ref')
+    if selected is None:return None
+    if experience.get('own_action')!='SIGNAL' or (
+            experience.get('felt_enactment') or {}).get(
+                'attempted_operation')!='SIGNAL':
+        raise ValueError('COREGULATION_RESPONSE_NOT_OWN_SIGNAL')
+    orientations=[x for x in actor.get('co_regulation_orientations',[])
+                  if x.get('id')==selected]
+    if len(orientations)!=1:
+        raise ValueError('COREGULATION_RESPONSE_UNKNOWN_ORIENTATION')
+    original=orientations[0]
+    addressed=(selection or {}).get('world_request',{}).get('addressed_party_ref')
+    if addressed!=original['caregiver_ref']:
+        raise ValueError('COREGULATION_RESPONSE_NOT_SELECTED_CAREGIVER')
+    signs=[c for c in experience.get('perceived_cues',[])
+           if type(c) is dict and c.get('kind')=='performed_signal'
+           and type(c.get('id')) is str and
+           c.get('source_actor')==actor['id']]
+    if len(signs)!=1:return None
+    status=experience.get('status')
+    if status not in ('PARTIAL','PERFORMED','BLOCKED'):
+        return None
+    meaning=('UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN'
+             if status=='PARTIAL' else
+             'PERFORMED_SIGNAL_NOT_PROOF_OF_CARE'
+             if status=='PERFORMED' else
+             'BODILY_BLOCKED_SIGNAL_NOT_SOCIAL_REJECTION')
+    ident=stable_id('lived_co_regulation_response',{
+        'actor':actor['id'],'orientation':selected,'event':event_ref,
+        'sign':signs[0]['id']})
+    if any(x.get('id')==ident for x in original.get('response_history',[])):
+        raise ValueError('COREGULATION_DUPLICATE_LIVED_RESPONSE')
+    receipt={
+        'id':ident,'actor':actor['id'],'orientation_ref':selected,
+        'caregiver_ref':addressed,'event_ref':event_ref,
+        'experience_ref':experience.get('ref'),
+        'received_sign_ref':signs[0]['id'],
+        'attempted_operation':'SIGNAL',
+        'actor_experienced_attempt_status':status,
+        'received_sign_description':signs[0].get('description'),
+        'analyst_qualified_experience_class':meaning,
+        'caregiver_intention':'NOT_INFERRED_FROM_NONRESPONSE',
+        'experienced_quality_of_care':'NOT_MEASURED',
+        'does_not_retroactively_change_original_care':True,
+        'grade':GRADE}
+    original.setdefault('response_history',[]).append(receipt)
+    return receipt
+
+
+def possible_revision_after_nonresponse(actor,experience,event_ref):
+    """Recurrent actually sensed unfinished calls may destabilize a shortcut.
+
+    No permanent rupture, rejection, pathologizing diagnosis or new motive
+    is declared. The semantic developmental owner may abstain or provisionally
+    suspend the automatic repeat-call policy while retaining the history.
+    """
+    if actor.get('id')!=experience.get('actor'):
+        raise ValueError('COREGULATION_REVISION_FOREIGN_ACTOR')
+    candidates=[]
+    for orientation in actor.get('co_regulation_orientations',[]):
+        if orientation.get('status')!='ACTIVE' or orientation.get(
+                'interpretation_phase','PROVISIONAL')!='PROVISIONAL':
+            continue
+        recent=[x for x in orientation.get('response_history',[])
+                if x.get('analyst_qualified_experience_class')==
+                'UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN']
+        if (len({x['event_ref'] for x in recent})<2
+                or recent[-1]['event_ref']!=event_ref):
+            continue
+        candidates.append({
+            'kind':'POSSIBLE_REORGANIZATION_OF_CO_REGULATION',
+            'orientation_ref':orientation['id'],
+            'recent_nonresponse_ref':recent[-1]['id'],
+            'contradicting_lived_response_refs':[x['id'] for x in recent[-8:]],
+            'candidate':'SUSPEND_EXCLUSIVE_CALL_SHORTCUT',
+            'not_an_inference_of_lack_of_love':True,
+            'not_a_child_conscious_theory':True,
+            'no_permanent_loss_of_prior_lived_support':True,
+            'grade':GRADE})
+    return candidates
+
+
+def sourcefree_revision_proposal(candidates):
+    """Conservative example of real actor-relative expectation revision."""
+    if len(candidates)!=1:return []
+    c=candidates[0]
+    return [{'kind':'REVISE_CO_REGULATION_ORIENTATION',
+             'orientation_ref':c['orientation_ref'],
+             'latest_response_ref':c['recent_nonresponse_ref'],
+             'interpretation_phase':'UNRESOLVED_AFTER_NONRESPONSE',
+             'grade':GRADE}]
+
+
+def admit_co_regulation_revision(actor,experience,event_ref,proposal):
+    if actor.get('id')!=experience.get('actor'):
+        raise ValueError('COREGULATION_REVISE_FOREIGN_ACTOR')
+    ident=proposal.get('orientation_ref')
+    current=[x for x in actor.get('co_regulation_orientations',[])
+             if x.get('id')==ident and x.get('status')=='ACTIVE']
+    if len(current)!=1:
+        raise ValueError('COREGULATION_REVISE_UNKNOWN_ACTIVE_ORIENTATION')
+    orientation=current[0]
+    response=[x for x in orientation.get('response_history',[])
+              if x.get('id')==proposal.get('latest_response_ref')
+              and x.get('event_ref')==event_ref
+              and x.get('analyst_qualified_experience_class')==
+                 'UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN']
+    if len(response)!=1:
+        raise ValueError('COREGULATION_REVISE_NO_CURRENT_LIVED_RESPONSE')
+    sign={c.get('id') for c in experience.get('perceived_cues',[])
+          if type(c) is dict and type(c.get('id')) is str}
+    if response[0]['received_sign_ref'] not in sign:
+        raise ValueError('COREGULATION_REVISE_NO_CURRENT_PERCEPTION')
+    previous=[x for x in orientation.get('response_history',[])
+              if x.get('analyst_qualified_experience_class')==
+                 'UNFINISHED_ATTEMPT_WITH_RECEIVED_SIGN']
+    if len({x['event_ref'] for x in previous})<2:
+        raise ValueError('COREGULATION_REVISE_LACKS_DISTINCT_HISTORY')
+    phase=proposal.get('interpretation_phase')
+    if phase!='UNRESOLVED_AFTER_NONRESPONSE':
+        raise ValueError('COREGULATION_REVISE_UNLICENSED_PHASE')
+    old=orientation.get('interpretation_phase','PROVISIONAL')
+    if old==phase:
+        raise ValueError('COREGULATION_REVISE_DUPLICATE_PHASE')
+    orientation.setdefault('interpretation_history',[]).append({
+        'before':old,'after':phase,'changed_at_event':event_ref,
+        'experience_ref':experience.get('ref'),
+        'new_lived_response_ref':response[0]['id'],
+        'could_still_seek_other_help':'UNKNOWN',
+        'caregiver_moral_truth':'NOT_INFERRED',
+        'grade':GRADE})
+    orientation['interpretation_phase']=phase
+    return {'kind':'REVISE_CO_REGULATION_ORIENTATION',
+            'orientation_ref':ident,'phase':phase,'grade':GRADE}
