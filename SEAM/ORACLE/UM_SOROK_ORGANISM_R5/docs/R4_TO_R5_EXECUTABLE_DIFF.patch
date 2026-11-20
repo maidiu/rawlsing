@@ -1,0 +1,177 @@
+--- R4/um_sorok_organism/relational.py
++++ R5/um_sorok_organism/relational.py
+@@ -7,7 +7,7 @@
+ """
+ from .types import copy,stable_id,GRADE
+ 
+-RELATIONAL_VERSION='TCO_R4_RELATIONAL_REFUNCTIONING@1'
++RELATIONAL_VERSION='TCO_R5_RELATIONAL_REFUNCTIONING@2'
+ REFUNCTION={'SUBORDINATES','INSTRUMENTALIZES','JUSTIFIES','LICENSES',
+             'RATIONALIZES','INTERPRETS_THROUGH','REVALUES','COMPENSATES_FOR'}
+ LATENT={'INHIBITS','SUPPRESSES','QUARANTINES_FROM'}
+@@ -62,8 +62,75 @@
+             'operative_relations':sorted(observed),'version':RELATIONAL_VERSION}
+ 
+ 
++def recruit_functional_possibility(constitution,access,active_forms,inhibited_form_ids):
++    """TCO: an already active organization can give another an operative function.
++
++    An actor-*acquired* directed relation can make a previously irrelevant
++    practice prospectively available. This is not a new ability, action opcode,
++    motive, or moral license: the target must already be acquired, embodied,
++    currently scoped, and not inhibited. Neither speaker ideology nor a pretty
++    social account can create a new world permission or coactor agreement.
++
++    Deliberately one-hop: no recursive contagion or global taxonomy. Theory
++    revisions can replace this function via RelationalKernel without rewriting
++    historic events or retroactively manufacturing acquired practices.
++    """
++    from .organism import eligible
++    from .constitution import _form_in_scope
++    allowed={'SUBORDINATES','INSTRUMENTALIZES','INTERPRETS_THROUGH',
++             'REVALUES','JUSTIFIES','LICENSES'}
++    active=copy(active_forms);blocked=set(inhibited_form_ids)
++    currents=[]
++    for link in constitution.links:
++        source,target=link.get('source'),link.get('target')
++        if source not in active_forms or target not in constitution.forms:
++            continue
++        if target in blocked or target in active:
++            continue
++        relation=link.get('relation')
++        if relation not in allowed:
++            continue
++        # Do not reintroduce REMONT R7's string-membership permission bug through
++        # a new relation operator. This bounds R5 only; it does NOT receive or
++        # replace the wider independent REMONT R7 source-owner repair.
++        contexts=link.get('contexts',[])
++        if (not isinstance(contexts,list) or
++              any(not isinstance(x,str) for x in contexts)):
++            continue
++        if contexts and access.location not in contexts:
++            continue
++        form=constitution.forms[target]
++        scope=form.get('scope',{})
++        if not isinstance(scope,dict):continue
++        locs=scope.get('locations',[])
++        if (not isinstance(locs,list) or any(not isinstance(x,str) for x in locs)):
++            continue
++        counterpart=scope.get('counterpart')
++        if counterpart is not None and not isinstance(counterpart,str):continue
++        if form.get('lifecycle') in ('ENDED','DORMANT'):
++            continue
++        if form.get('body_min',0)>constitution.body['motor']:
++            continue
++        if not _form_in_scope(form,access):
++            continue
++        # Historical linkage never creates a bodily-unavailable action. The
++        # form can still operate noninstrumentally when it enables no action.
++        active[target]=copy(form)
++        ref=stable_id('relation',{'actor':constitution.actor,
++             'source':source,'target':target,'relation':relation,
++             'origin':link.get('origin',[])})
++        currents.append({'kind':'ACQUIRED_RELATION_ENABLED_PRACTICE',
++              'ref':ref,'source':source,'target':target,'relation':relation,
++              'origin':copy(link.get('origin',[])),
++              'no_new_ability_minted':True,'not_world_moral_verdict':True,
++              'not_actor_self_explanation':True,'version':RELATIONAL_VERSION})
++    return {'active':active,'currents':currents,'version':RELATIONAL_VERSION}
++
++
+ class RelationalKernel:
+     """Exchangeable functional read policy, separate from owner/world ledger."""
+     version=RELATIONAL_VERSION
++    def recruit(self,constitution,access,active_forms,inhibited_form_ids):
++        return recruit_functional_possibility(constitution,access,active_forms,inhibited_form_ids)
+     def transduce(self,constitution,access,active_forms,inhibited_form_ids,candidates):
+         return transduce(constitution,access,active_forms,inhibited_form_ids,candidates)
+--- R4/um_sorok_organism/constitution.py
++++ R5/um_sorok_organism/constitution.py
+@@ -114,6 +114,36 @@
+                 inhibited.append(dst)
+         if not changed:break
+     for fid in set(inhibited):active.pop(fid,None)
++    # R5: qualified relation-of-function can recruit an existing dormant form,
++    # before options are constructed. Unlike an expressive frame, it changes
++    # prospective action availability; the independent world still adjudicates.
++    # The kernel is swappable as TCO evolves. Legacy injected policies with no
++    # recruit method remain valid but cannot grant this new operation.
++    relational_engine=relational_kernel or RelationalKernel()
++    recruit=getattr(relational_engine,'recruit',None)
++    if callable(recruit):
++        mediation=recruit(constitution,access,active,list(set(inhibited)))
++        if not isinstance(mediation,dict) or not isinstance(mediation.get('active'),dict):
++            raise ValueError('INVALID_RELATIONAL_RECRUITMENT_OPERATOR')
++        if set(mediation['active']) - set(forms):
++            raise ValueError('RELATIONAL_KERNEL_MINTED_UNACQUIRED_FORM')
++        # Swappable policies may interpret existing relations but cannot
++        # silently mutate a person's acquired physical repertoire, bypass
++        # context, or turn an ended form into an active new ability.
++        for fid,projected in mediation['active'].items():
++            original=forms[fid]
++            if (not isinstance(projected,dict) or
++                  not isinstance(projected.get('enables',[]),list) or
++                  not set(projected.get('enables',[])).issubset(
++                      set(original.get('enables',[])))):
++                raise ValueError('RELATIONAL_KERNEL_MINTED_UNACQUIRED_ABILITY')
++            if (original.get('lifecycle') in ('ENDED','DORMANT') or
++                 original.get('body_min',0)>constitution.body['motor'] or
++                 not _form_in_scope(original,access)):
++                raise ValueError('RELATIONAL_KERNEL_BYPASSED_FORM_SCOPE')
++        if any(ref in set(inhibited) for ref in mediation['active']):
++            raise ValueError('RELATIONAL_KERNEL_RESTORED_INHIBITED_FORM')
++        active=mediation['active'];currents.extend(mediation.get('currents',[]))
+     # History-made links to activities can recruit an ongoing project under
+     # a new cue. Its object/motive remains separate from its possible means.
+     projects=eligible_activities(constitution,active.keys(),access)
+--- R4/um_sorok_organism/activity.py
++++ R5/um_sorok_organism/activity.py
+@@ -44,6 +44,11 @@
+     for p in matched:
+         if any(h.get('event')==event_ref for h in p.get('operational_history',[])):
+             raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
++    # A learned organizing method may be exercised through multiple operations
++    # but it is not invented anew by each operation. Keep its actual historical
++    # exercise reference separately from the hypothetical purpose.
++    method_refs=sorted({b.removeprefix('historical_method:') for b in basis
++                         if isinstance(b,str) and b.startswith('historical_method:')})
+     histories=[]
+     for p in matched:
+         entry={'event':event_ref,'project':p['id'],'operation':own_action,
+@@ -53,7 +58,8 @@
+           'practical_object':p['object'],'motive_hypothesis':p.get('motive'),
+           'object_transformation':copy(object_delta or {}),
+           'object_fulfillment':'NOT_INFERRED_FROM_OPERATION',
+-          'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME','grade':GRADE}
++          'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME',
++          'method_exercise_refs':copy(method_refs),'grade':GRADE}
+         p.setdefault('operational_history',[]).append(entry);histories.append(entry)
+     actor.setdefault('activity_history',[]).extend(histories)
+     return histories
+@@ -85,7 +91,8 @@
+         trace={'event':h['event'],'project':h['project'],'actor':actor['id'],
+             'experience_ref':experience['ref'],'attempted_operation':h['operation'],
+             'somatic_course':course,'somatic_course_grade':'SOURCEFREE_ENACTMENT_PROXY',
+-            'felt':'SOMATIC_ATTEMPT_ONLY','accessible_cue_refs':[c['id'] for c in cues],
++            'felt':'SOMATIC_ATTEMPT_ONLY','method_exercise_refs':copy(h.get('method_exercise_refs',[])),
++            'accessible_cue_refs':[c['id'] for c in cues],
+             'accessible_cue_tags':sorted({str(t).lower() for c in cues for t in c.get('tags',[])}),
+             'objective_outcome':'NOT_INFERRED',
+             'motive_realized':'UNDETERMINED_BY_TECHNICAL_OUTCOME',
+--- R4/um_sorok_organism/runtime.py
++++ R5/um_sorok_organism/runtime.py
+@@ -194,8 +194,13 @@
+                 requirements=[{'path':'sites.'+str(origin)+'.stock',
+                     'required_at_least':1,'actual_before':req,
+                     'satisfied':req>=1}]
++            # The event summary's objective outcome describes the principal's
++            # act. A coactor's separately undertaken operation must not
++            # inherit that outcome as if the coactor performed the same act.
++            actor_outcome=(summary['outcome'] if aid==actor_id else
++                ('COACTOR_'+str(row['action'])+'_'+str(row['status'])))
+             activity_effects[aid]=record_activity_afterlife(actors[aid],
+-                row['action'],row['status'],summary['outcome'],chosen.basis,objective_ref,
++                row['action'],row['status'],actor_outcome,chosen.basis,objective_ref,
+                 {'material_claim_ref':summary.get('material_claim_ref'),
+                  'affordance_changes':changes,'affordance_requirements':requirements,
+                  'material_owner':'INDEPENDENT_WORLD_RESEARCH_AUTHORITY'})

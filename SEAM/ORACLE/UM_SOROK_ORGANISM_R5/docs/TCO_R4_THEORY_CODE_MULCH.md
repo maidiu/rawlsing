@@ -1,0 +1,43 @@
+# TCO R4 — the actual seven-turn mulch, theory transformed into computation
+
+**Grounding:** *The Constitutive Organism* R3 structural recast in SEAM/30 PR #1161 at `50cde6f63fb6a20ee2cdbe18753e840cbb2e101a`; companion R2 analysis, relation-history 05, productive psychodynamics 06; actual R3 source commit `7491502f6e698874a3cd6cc84fece7d64f672cdc`; REMONT #1165/#1166; sourcefree research only.
+
+## 1. SAVAGE the strongest thing built
+
+R3 really did acquire actor-specific opposed APPROACH/WITHHOLD and event-ancestried composition. Yet the supposedly historical actor `step()` immediately discarded BLOCKED/PARTIAL courses; its planner attributed borrowed means to unrelated projects; composed-plan execution called an explicitly injected operation and lost all practical object history. Its LLM-readable future might therefore acquire a plausible fictional disposition without encountering its own attempt's consequences. An `ADD_METHOD` gate still required an external proposal for why a person acquired the method. A suppressed form was simply removed from activation, with no indirect relational role.
+
+## 2. EXPOSE what fixing SR-P004 actually requires
+
+An action receipt is not a participation. Objective work, a person's undertaken object, a bodily undergone attempt, an accessible clue, an anticipated alternative, and a new acquired means are different authorities. Recording a blocked attempt does not make the next actor psychologically reconstituted. One performed operation may serve contradictory activities; an eligible means does NOT prove that the actor intended all the projects that mention it. The genesis of a *method* cannot be the posthoc assignment of a plausible label.
+
+## 3. RECOVER code/doctrine without producing a master personality machine
+
+PRE-A0 relations of relations and §7 activity-before-pressure; CAN-008 event receivability/uptake/recruitment/multi-stream; R3 pressure-flow; legacy V3 activity time; ADP actor access and independent Other; PFF histories and noncollapse; O05 Leontiev's action versus activity/object/motive; Sève's actual productive labor and access; Dreier, Holzkamp and Luria on actor-situated practical becoming. No global psychological scalar, homogeneous feeling, obligatory healthy destination, or forged coactor permission.
+
+## 4. RECONSTITUTE + BUILD: code-changing operations
+
+- **SR-P004 repaired at bounded research grade:** `activity.record_activity_afterlife` records BLOCKED/PARTIAL/PERFORMED as objective courses, checks all project duplicates *before mutation*, never infers motive realization; `register_lived_activity_attempt` stores only personally undergone course and accessible cue refs, with `objective_outcome=NOT_INFERRED`. `runtime.step` no longer skips unsuccessful projects. `constitution.compose` carries the latest lived attempt in an ongoing activity current.
+- **Actor purpose is not mere material eligibility:** `runtime._actor_plan` distinguishes a form/project supporting an operation from a policy-explicit selected project. Single-project default remains a declared research inference; when several purposes are supported, no purpose is presumed absent explicit sourcefree actor-policy selection. Externally injected actions cannot counterfeit a project.
+- **Materials instead of chronology-only genesis:** `LivedDifferenceKernel` forms source-graded contrasts from separate actor-owned somatic histories, alters *future attention* to actually accessible cues, and forms a higher-order `WORK→REPAIR` method only after **two event-disjoint** actor-experienced `REPAIR-blocked→WORK-performed→REPAIR-performed` courses where the independent world-owner's actual stock deltas support the earlier blocked requirement. This is a provisional association, NOT proof the actor mentally discovered causality. The method is later recruited by `plans.qualified_learned_compositions` and executed via `runtime.continue_life`, with each new step revalidated against current actor/body/world, no automatic success, no caller's plan ID.
+- **Nadia before adult concept:** two independent contingent SIGNAL/CARE bodily settling episodes give Nadia a nondeclarative coactor-specific attention orientation. No new language, stable love, competence, social role, or caregiver's subjective motive is inferred; future awareness still requires co-presence and actual sensory access.
+- **Relational refunctioning:** `RelationalKernel` qualifies `SUBORDINATES`, `JUSTIFIES`, `INTERPRETS_THROUGH`, etc. across acquired forms, where they are active and in context. This changes *which historically formed relation the actor's attempted practice bears*; a world result remains independently resolved. `INHIBITS`/`SUPPRESSES` may leave latent causal relational structure, not an automatically transformed affect. It neither conjures actions nor blesses harmful world conduct.
+- **Transfiguration seam:** the two versioned kernels are independently injected into the existing runtime. The event ledger remains the stable audit. New theory can recompose the derived private psychological reads without retroactive changes to actors' performed events. Historical method origin/experience refs and mechanism versions are carried into atomic sourcefree receipts.
+
+## 5. TURN THE MACHINE AGAINST ITSELF
+
+- R3 42 inherited regressions remain green.
+- 19 R4 tests are green, **61 total**. See `tests/R4_TEST_VERBOSE.txt`.
+- The novel negative `test_false_temporal_succession_cannot_invent_material_enabling_means` exposed an actual defect in the first R4 generator: it would learn `SING→REPAIR` after an *unrelated test fixture* secretly replenished stock. The generator was changed to require world-owner evidence that B altered the **same material affordance** that made A impossible, followed by A's real opportunity. It still cannot prove human comprehension, only physically qualified historical opportunity.
+- The connected witness creates one world with independently constituted caregiver, child Nadia and adult worker: two nonconceptual care episodes; two sourcefree experience triplets; a new historically sourced method; later actual autonomous actor-continuation through world resolution; **24 valid hash-chained events**, no change to native owners.
+
+## 6. OPEN NEW CONTRADICTIONS (do NOT declare a completed person)
+
+- **The hardest next problem:** Why did the actor *try* the materially useful B among all alternatives? The two-triplet rule checks a feasible episode sequence and repeated experience, not developmental motivation. Need first-class lived anticipated consequences, unequal institutions and previously acquired perception to propose several competing *possible methods*, rather than coding the specific chosen route or accepting a generic LLM story.
+- A material affordance change can be objectively checked without the person understanding its causal role. R4 requires accessible event cues, but does not know whether the actor perceived **the specific materially relevant difference**. A separate operational read model for perceptual discrimination and later revisability is needed.
+- A relational interpretation currently annotates action provenance and makes latent relations readable; it is not yet the full transformation whereby care becomes discipline or love becomes punitive authority in actual prospective behavior and deep history. Source-qualified refunctioning of linked ends, conflicts, material power and independent targets must be implemented; no moralizing rule.
+- The bounded world is a toy. No actual PYAT whole-survey parent abduction and no native body/P2/P3/P4–P6 acceptance. Nadia's sensorimotor co-regulatory orientation is an approximation, not an attachment model. Higher-order method formed after exactly two triplets is a provisional heuristic, not an invariant of persons.
+- The actor self-continuation still requires an external call advancing world time; it chooses its own method but is not the full independent historical life scheduler. Repeated hypercompressed routine needs future event selection and durable uncovered-history distinction.
+
+## 7. MULCH AGAIN
+
+Challenge R4 with a material relationship where a repeated world effect is correlated but not caused by the apparent means, where an actor learns a distorted analogy despite correct objective evidence, where a caring institution teaches genuine punitive practice, where the same act simultaneously pursues partly incompatible projects, or where the child becomes affectively attentive to someone without repeated bodily settling. The next theory should deliver a **typed executable alternative** and the next worker should change code, not restate this memo.
