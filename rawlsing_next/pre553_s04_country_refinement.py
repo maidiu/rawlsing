@@ -489,6 +489,6 @@ def run_r03_v2_issued_country_refinement(
         **result, "r03_issued_compilation_hash": issuance.content_hash,
         "r03_issued_operation_id": operation_id,
         "r03_issued_query_role": query_role,
-        "r03_issued_workload_envelope_sha256": issued.envelope_sha256,
+        "r03_issued_workload_envelope_sha256": _envelope,
         "source_original_science_permission": "NOT_GRANTED_TEST_ONLY_SOURCEFREE",
     }
