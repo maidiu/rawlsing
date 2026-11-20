@@ -278,7 +278,7 @@
     },
     {
       "id": "SR-P018",
-      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING",
+      "status": "PARTIAL_CODE_REPAIRED__REMONTATHON_R2_88_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "CREDIBLE_RISK",
       "first_fault": "Research event chain does not cover all auxiliary source-seal state; private receipt inspection is not native privacy",
       "owner_location": "storage.py::source_seals/verify_chain; runtime.py private receipts",
@@ -292,6 +292,12 @@
         "first_fault_scope": "Atomic source seals in hash-chain, exact roster; historical legacy unanchored DBs explicitly fail; native secrecy unqualified",
         "grade": "SOURCEFREE_AUTHOR_EXECUTED__INDEPENDENT_REVIEW_PENDING",
         "protected_received": false
+      },
+      "remontathon_r3_r2": {
+        "source_parent": "a4d4f54b825b69c5b2f7ff66e8450babafda6404",
+        "local_tests": 88,
+        "grade": "SOURCEFREE_AUTHOR_LOCAL__REVIEW_PENDING",
+        "first_fault_scope": "Exact canonical source-seal byte checks; no authoritative historical migration"
       }
     },
     {
@@ -521,14 +527,42 @@
     },
     {
       "id": "SR-P039",
-      "status": "SOURCEFREE_REMONTATHON_R3_R1_LOCAL_84_PASS__INDEPENDENT_REVIEW_PENDING",
+      "status": "SOURCEFREE_REMONTATHON_R2_88_LOCAL_PASS_REVIEW_PENDING",
       "confidence": "REPRODUCED_CODE_FIRST_FAULT",
       "first_fault": "World clock regressed while the hash chain still verified",
       "owner_location": "storage.py::commit",
       "doctrinal_source": "SEAM Constitutive Person: embodied/independent world, historical actor and epistemic causality",
       "executable_probe": "test_p039_retrograde_world_clock_cannot_commit",
       "disposition": "Reject objective historical time regression",
-      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued"
+      "research_limit": "Native P2/P3/P6 and empirical POP/DEV/TRANS not independently issued",
+      "remontathon_r3_r2": {
+        "source_parent": "a4d4f54b825b69c5b2f7ff66e8450babafda6404",
+        "local_tests": 88,
+        "grade": "SOURCEFREE_AUTHOR_LOCAL__REVIEW_PENDING",
+        "first_fault_scope": "Bool clock rejected at commit"
+      }
+    },
+    {
+      "id": "SR-P040",
+      "status": "SOURCEFREE_REMONTATHON_R2_88_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "SQLite event header columns could be forged without changing hashed envelope, leaving chain valid",
+      "owner_location": "storage.py::events/verify_chain",
+      "doctrinal_source": "SEAM Constitutive Person: real historical objective truth and actor registration",
+      "executable_probe": "test_p040_event_table_headers_cannot_disagree_with_hashed_envelope",
+      "disposition": "Header fields must agree with hashed objective envelope",
+      "research_limit": "Local research demonstration, not native owner/cold G5"
+    },
+    {
+      "id": "SR-P041",
+      "status": "SOURCEFREE_REMONTATHON_R2_88_LOCAL_PASS__INDEPENDENT_REVIEW_PENDING",
+      "confidence": "REPRODUCED_CODE_FIRST_FAULT",
+      "first_fault": "Optimized Python -O removes assert-based source/event chain/actor checks; tampered ancestry returned valid",
+      "owner_location": "storage.py::verify_chain",
+      "doctrinal_source": "SEAM Constitutive Person: real historical objective truth and actor registration",
+      "executable_probe": "test_p041_optimized_python_does_not_disable_integrity_assertions",
+      "disposition": "Unconditional explicit exceptions reject altered ancestry in optimized subprocess",
+      "research_limit": "Local research demonstration, not native owner/cold G5"
     }
   ],
   "queue_T": [],
@@ -633,5 +667,22 @@
     "independent_reviewed": false,
     "protected_received": false,
     "legacy_unanchored_source_seals": "REQUIRES_EXPLICIT_MIGRATION"
+  },
+  "remontathon_r3_r2": {
+    "parent_head": "a4d4f54b825b69c5b2f7ff66e8450babafda6404",
+    "local_pass": 88,
+    "local_fail": 0,
+    "additional_regressions": 4,
+    "added_ids": [
+      "SR-P040",
+      "SR-P041"
+    ],
+    "further_partial": [
+      "SR-P018",
+      "SR-P039"
+    ],
+    "grade": "AUTHOR_SOURCEFREE_TESTED__INDEPENDENT_RECEIVING_PENDING",
+    "evidence": "REMONT/SOROK/REPAIRS/REMONTATHON_R3_R2_20261119/",
+    "protected_received": false
   }
 }

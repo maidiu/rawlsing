@@ -140,7 +140,7 @@ class ResearchLedger:
                    for aid,a in full_actors.items()):
                 raise Conflict('ACTOR_WORLD_POSITION_DIVERGENCE')
             latest=self.conn.execute('SELECT payload FROM events ORDER BY seq DESC LIMIT 1').fetchone()
-            if (not isinstance(world.get('clock'),int) or world['clock']<0 or
+            if (type(world.get('clock')) is not int or world['clock']<0 or
                     (latest and world['clock']<json.loads(latest[0])['clock'])):
                 raise Conflict('WORLD_CLOCK_REGRESSION')
             envelope={'world':wid, 'clock':world['clock'],'kind':kind,'actor':actor_id,
@@ -160,34 +160,54 @@ class ResearchLedger:
 
     def events(self,limit=None):
         if limit is None:
-            x=self.conn.execute('SELECT eid,payload,previous_hash,chain_hash FROM events ORDER BY seq')
+            x=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash FROM events ORDER BY seq')
         else:
-            x=self.conn.execute('SELECT eid,payload,previous_hash,chain_hash FROM events ORDER BY seq LIMIT ?', (limit,))
-        return [{'id':e,'envelope':json.loads(p),'previous_hash':prev,'chain_hash':h} for e,p,prev,h in x]
+            x=self.conn.execute('SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash FROM events ORDER BY seq LIMIT ?', (limit,))
+        return [{'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
+                 'envelope':json.loads(p),'previous_hash':prev,'chain_hash':h}
+                for e,wid,clock,aid,kind,p,prev,h in x]
 
     def verify_chain(self):
+        """Fail closed in ordinary AND Python -O interpreters.
+
+        The chain binds the *whole SQLite event record*, not only a JSON
+        subdocument. Source custody requires exact canonical bytes for
+        conditioning; semantically identical whitespace is still a changed
+        source seal. This is local integrity, not native cryptographic issuer.
+        """
         prior='GENESIS';count=0;anchored={}
         records=self.events()
         for r in records:
             envelope=r['envelope']
-            assert r['previous_hash']==prior, 'broken ancestry'
-            assert r['id']=='evt_'+digest({'prev':prior,'envelope':envelope})[:20], 'bad id'
-            assert r['chain_hash']==digest({'previous':prior,'eid':r['id'],'envelope':envelope}), 'bad chain'
+            if (r['world_id']!=envelope['world'] or r['clock']!=envelope['clock']
+                or r['actor_id']!=envelope['actor'] or r['kind']!=envelope['kind']):
+                raise AssertionError('EVENT_HEADER_ENVELOPE_MISMATCH')
+            if r['previous_hash']!=prior:
+                raise AssertionError('BROKEN_EVENT_ANCESTRY')
+            if r['id']!='evt_'+digest({'prev':prior,'envelope':envelope})[:20]:
+                raise AssertionError('BAD_EVENT_ID')
+            if r['chain_hash']!=digest({'previous':prior,'eid':r['id'],'envelope':envelope}):
+                raise AssertionError('BAD_EVENT_CHAIN_HASH')
             for sid,sha in envelope.get('source_seal_digests',{}).items():
-                assert sid not in anchored, 'SOURCE_SEAL_DUPLICATE_ANCHOR:'+sid
+                if sid in anchored:
+                    raise AssertionError('SOURCE_SEAL_DUPLICATE_ANCHOR:'+sid)
                 anchored[sid]=sha
             prior=r['chain_hash'];count+=1
-        actual={sid:digest({'category':cat,'content':json.loads(content)})
-                for sid,cat,content in self.conn.execute('SELECT id,type,content FROM source_seals')}
-        assert anchored==actual, 'SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY'
+        actual={}
+        for sid,cat,content in self.conn.execute('SELECT id,type,content FROM source_seals'):
+            normalized=json.loads(content)
+            if canonical(normalized)!=content:
+                raise AssertionError('SOURCE_SEAL_NONCANONICAL_BYTES:'+sid)
+            actual[sid]=digest({'category':cat,'content':normalized})
+        if anchored!=actual:
+            raise AssertionError('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY')
         if records:
             last=records[-1]['envelope']
             if digest(self.world(last['world'])[1])!=last['world_digest']:
                 raise AssertionError('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER')
             actors=self.actors()
-            # An uncommitted actor INSERT is just as serious as a changed
-            # registered actor. The event envelope owns the complete roster.
-            assert set(actors)==set(last['actor_digests']), 'UNCOMMITTED_ACTOR_SET'
+            if set(actors)!=set(last['actor_digests']):
+                raise AssertionError('UNCOMMITTED_ACTOR_SET')
             for aid,ahash in last['actor_digests'].items():
                 if aid not in actors or digest(actors[aid])!=ahash:
                     raise AssertionError('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER:'+aid)

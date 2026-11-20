@@ -25,3 +25,8 @@ Two further issues were verified *against the actually running R3-integrated cod
 ## REMONTATHON R3 R1 — actually executed 84-test sourcefree follow-on
 
 At exact parent `0d40c700e1aea9c2f4d4940827106309baebbd3b`, an independent REMONTATHON reproduced SR-P012 and SR-P018 historical gaps, plus real first faults SR-P027..039 and the employer wage arrears part of SR-P005. At full patched source cut, `python -m unittest discover -s tests -v` = **84/84 PASS, 0 FAIL**, +22 new compared with prior 62. See the continuing ledgers and `REPAIRS/REMONTATHON_R3_R1_20261119/` for actual patch, immutable blob identities, and test receipt. This is local sourcefree engineering; no G5, no native SOROK owner receiving, no protected merge. P012/P018/P005 remain PARTIAL. P022/P023 remain explicit capability bounds. The original discovery and earlier 42/58/62 test cuts are preserved above without retroactive regrading.
+
+
+## REMONTATHON R3 R2 — after R1 84-test cut
+
+SR-P040 header/envelope mismatch and SR-P041 Python -O fail-open were reproduced and repaired at `storage.py`; SR-P018 now checks exact canonical source-seal bytes, SR-P039 rejects bool clock. Four additional negative tests, combined **88/88 local PASS**. See ongoing `OPEN_DEFECTS` records and `REPAIRS/REMONTATHON_R3_R2_20261119/`. This is independent repair construction, not an independently reviewed protected owner promotion.

@@ -253,3 +253,53 @@ class ObjectiveLedgerAuthorityRegressions(unittest.TestCase):
                                      None,{'kind':'retroactive_false_event'})
                 self.assertEqual(len(rt.ledger.events()),before)
             finally:rt.close()
+
+class LedgerAdversarialRoundTwo(unittest.TestCase):
+    def test_p040_event_table_headers_cannot_disagree_with_hashed_envelope(self):
+        with tempfile.TemporaryDirectory() as folder:
+            rt=ConstitutiveRuntime(str(Path(folder)/'state.db'))
+            try:
+                rt.initialize([('a','A',PACKET)])
+                rt.ledger.conn.execute("UPDATE events SET kind='FORGED_LIFE',actor_id='ghost' WHERE seq=1")
+                with self.assertRaisesRegex(AssertionError,'EVENT_HEADER_ENVELOPE_MISMATCH'):
+                    rt.verify()
+            finally:rt.close()
+
+    def test_p018_seal_canonical_bytes_cannot_change_under_same_semantic_digest(self):
+        with tempfile.TemporaryDirectory() as folder:
+            rt=ConstitutiveRuntime(str(Path(folder)/'state.db'))
+            try:
+                rt.initialize([('a','A',PACKET)])
+                sid='fictional_source:a'
+                old=rt.ledger.conn.execute('SELECT content FROM source_seals WHERE id=?',(sid,)).fetchone()[0]
+                rt.ledger.conn.execute('UPDATE source_seals SET content=? WHERE id=?',(' '+old+' ',sid))
+                with self.assertRaisesRegex(AssertionError,'SOURCE_SEAL_NONCANONICAL_BYTES'):
+                    rt.verify()
+            finally:rt.close()
+
+    def test_p041_optimized_python_does_not_disable_integrity_assertions(self):
+        import subprocess,sys
+        with tempfile.TemporaryDirectory() as folder:
+            path=str(Path(folder)/'state.db')
+            rt=ConstitutiveRuntime(path)
+            try:
+                rt.initialize([('a','A',PACKET)])
+                rt.ledger.conn.execute("UPDATE events SET previous_hash='FORGED' WHERE seq=1")
+            finally:rt.close()
+            code=('import sys\nfrom um_sorok_organism.runtime import ConstitutiveRuntime\n'
+                  'rt=ConstitutiveRuntime(sys.argv[1])\n'
+                  'try:\n rt.verify()\nexcept AssertionError:\n sys.exit(0)\n'
+                  'sys.exit(1)\n')
+            result=subprocess.run([sys.executable,'-O','-c',code,path],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,
+                             'Optimized Python incorrectly accepted tampered ancestry: '+result.stderr)
+
+    def test_p039_bool_is_not_an_objective_world_clock(self):
+        with tempfile.TemporaryDirectory() as folder:
+            rt=ConstitutiveRuntime(str(Path(folder)/'state.db'))
+            try:
+                rt.initialize([('a','A',PACKET)])
+                v,w=rt.ledger.world();w['clock']=True
+                with self.assertRaisesRegex(Exception,'WORLD_CLOCK_REGRESSION'):
+                    rt.ledger.commit('w1',v,w,{}, {},'OBJECTIVE_CUE',None,{'kind':'bad_bool_clock'})
+            finally:rt.close()
