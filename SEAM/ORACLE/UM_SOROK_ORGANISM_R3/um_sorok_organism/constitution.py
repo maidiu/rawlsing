@@ -68,6 +68,8 @@ def actor_access(actor,world):
     if actor['body']['sensor'] >= .05:
         env += [v['operation'] for v in current_institutional_opportunities(
             world,actor['id'],location)]
+    if any(c.get('kind')=='coactor_present' for c in cues):
+        env.append('PLEDGE_CARE')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -278,6 +280,13 @@ def compose(constitution,access,limit=50):
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
         status,why=eligible(constitution.body,a)
         if status:actions.setdefault(a,{'action':a,'score':.06,'basis':['organism'],'opportunity':'ORGANISM'})
+    if 'PLEDGE_CARE' in access.affordances:
+        status,why=eligible(constitution.body,'PLEDGE_CARE')
+        if status:
+            actions.setdefault('PLEDGE_CARE',{
+                'action':'PLEDGE_CARE','score':.045,
+                'basis':['ACTUAL_CO_PRESENT_POSSIBLE_ADDRESSEE'],
+                'opportunity':'PROMISE_CAN_BE_MADE_NOT_FUTURE_FULFILLED'})
     if 'SIGN_HALL_PETITION' in access.affordances:
         status,why=eligible(constitution.body,'SIGN_HALL_PETITION')
         if status:
