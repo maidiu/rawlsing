@@ -6,6 +6,7 @@ from .organism import eligible
 from .institutional_reproduction import (
     contribute_to_hall_petition, retain_material_care)
 from .material_conjunction import evaluate_material_conjunction
+from .practical_inquiry import notices_present
 from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
@@ -152,6 +153,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     policy_receipt=None
     care_labor_receipt=None
     future_care_obligation_ref=None
+    inspected_public_notice=None
     if partner_attempt:
         ok,why=eligible(actors[partner_attempt.actor]['body'],partner_attempt.action)
         partner_valid=(ok and world['positions'].get(partner_attempt.actor)==loc)
@@ -399,7 +401,18 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='REFUSE':output='ACTOR_REFUSED'
     elif attempt.action=='REST':output='BODY_RESTED'
     elif attempt.action=='ORIENT':output='ORIENTING_PERFORMED'
-    elif attempt.action=='INSPECT':output='INSPECTION_PERFORMED'
+    elif attempt.action=='INSPECT':
+        # An investigation has a real object. An arbitrary administrator's
+        # private record is not what a posted notice says, and the actor must
+        # identify a particular visible object rather than inspect 'society'.
+        public=[notice for notice in notices_present(
+                    world,loc,world['clock'])
+                if notice['id']==attempt.object_ref]
+        if len(public)!=1:
+            status='PARTIAL';output='NO_ACTOR_SELECTED_PUBLIC_NOTICE'
+        else:
+            inspected_public_notice=public[0]
+            output='PUBLIC_NOTICE_INSPECTED'
     elif attempt.action=='WAIT':output='INACTION_OR_WAIT'
     else:output='ACT_COMPLETED'
     performed[0]['status']=status
@@ -420,6 +433,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'institutional_policy_ref':policy_receipt,
                    'social_reproductive_labor_ref':care_labor_receipt,
                    'future_care_obligation_ref':future_care_obligation_ref,
+                   'inspected_public_notice_ref':(
+                        inspected_public_notice['id'] if inspected_public_notice else None),
                    'co_present_not_verified_witnessing':True}
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
@@ -431,10 +446,28 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     # World effects persist even when no participant currently perceives them.
     # Public, witness-accessible sign is not a world-audit report. A refused
     # purchase, for example, does not reveal the purchaser's account deficit.
-    add_cue(world,'performed_'+attempt.action.lower(),
-            [attempt.action.lower(),perceptible_outcome.lower()],
-            location=loc,modality='auditory' if attempt.action in ('SING','SPEAK','SIGNAL','ASK') else 'visual',
-            description=perceptible_outcome,source_actor=aid)
+    if inspected_public_notice is not None:
+        # The personally received cue contains only what the institution
+        # actually put on its public notice, not its private causal archive.
+        # No separate second cue replaces the selected event cue in the
+        # actor-specific experienced-event projection.
+        terms=inspected_public_notice.get('public_terms',[])
+        if type(terms) is not list or any(type(t) is not str for t in terms):
+            raise ValueError('PUBLIC_NOTICE_INVALID_TERMS')
+        sign=add_cue(world,'performed_inspect',
+            ['inspect','public_notice']+terms,
+            location=loc,modality='visual',private_to=aid,
+            description=inspected_public_notice.get(
+                'public_text','PUBLIC_NOTICE_WITHOUT_TEXT'),
+            source_actor=aid)
+        sign['public_notice_ref']=inspected_public_notice['id']
+        sign['world_rule_truth_not_inferred_from_public_text']=True
+    else:
+        add_cue(world,'performed_'+attempt.action.lower(),
+                [attempt.action.lower(),perceptible_outcome.lower()],
+                location=loc,modality='auditory' if attempt.action in (
+                    'SING','SPEAK','SIGNAL','ASK') else 'visual',
+                description=perceptible_outcome,source_actor=aid)
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     return Resolution(status,performed,{'event':event_summary},effects,witnesses,output)
 
