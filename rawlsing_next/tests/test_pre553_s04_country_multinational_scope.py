@@ -21,7 +21,7 @@ from rawlsing_next.tests.test_pre553_empirical_query import (
 )
 
 
-def _fixture(*, predicate_style="EQ", grant_mapping=True):
+def _fixture(*, predicate_style="EQ", grant_mapping=True, candidate_only=False):
     source = _build_source("country-multinational-source", [
         {"id": "U1", "responses": {"Y": "1", "X1": "1"},
          "coords": {"COUNTRY": "840"}},
@@ -50,6 +50,8 @@ def _fixture(*, predicate_style="EQ", grant_mapping=True):
     }
     if grant_mapping:
         scope["country_values_by_canonical_code"] = {"US": "840", "DE": "276"}
+    if candidate_only:
+        scope["candidate_only_not_positive_authority"] = True
     auth_fields["scope_envelope"] = scope
     country_auth = AuthoritySnapshot(
         typed_state=authority.typed_state,
@@ -181,4 +183,18 @@ def test_multinational_country_target_axis_has_to_be_issued_target():
         _country_scope(
             universe=u, predicate=p, query=q, registry=registry,
             request=req,
+        )
+
+
+
+def test_historical_country_mapping_candidate_cannot_self_promote_even_in_allow_snapshot():
+    u, p, q, registry, source = _fixture(candidate_only=True)
+    with pytest.raises(CountryRefinementError, match="CANDIDATE_NOT_POSITIVE"):
+        _country_scope(
+            universe=u, predicate=p, query=q, registry=registry,
+            request=CountryRequest(
+                country="US", source_family="SURVEY", wave="W1",
+                country_coordinate_ref=source["crefs"]["COUNTRY"],
+                country_coordinate_authority_ref=source["coord_auth"].authority_ref,
+            ),
         )
