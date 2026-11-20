@@ -34,8 +34,23 @@ class HeuristicSemanticProvider:
                 if 'WAIT' in available:
                     return {'task':task,'action':'WAIT','basis':['SOURCEFREE_HEURISTIC_CONFLICT_DEFERRAL'],
                             'semantic_grade':self.grade}
-            return {'task':task,'action':possibilities[0]['action'],
-                    'basis':possibilities[0].get('basis',[]),'semantic_grade':self.grade}
+            # Select at most one historically available undertaking, not the
+            # pooled basis of all projects that share the chosen operation.
+            # This deterministic priority/tie policy is fictional fallback,
+            # NOT an empirically recovered conscious motive.
+            option=possibilities[0]
+            courses=option.get('project_courses',[])
+            if courses:
+                selected=sorted(courses,key=lambda x:(
+                    -x.get('priority',.5),str(x['project_id'])))[0]
+                project_ref=selected['project_id']
+            else:
+                project_ref=None
+            return {'task':task,'action':option['action'],
+                    'project_id':project_ref,
+                    'purpose_selection_grade':('HEURISTIC_PROJECT_COURSE_CHOSEN'
+                         if project_ref is not None else 'NO_ASSIGNED_PROJECT_END'),
+                    'basis':option.get('basis',[]),'semantic_grade':self.grade}
         if task=='development':
             experience=packet.get('experience',{})
             action=experience.get('own_action')
