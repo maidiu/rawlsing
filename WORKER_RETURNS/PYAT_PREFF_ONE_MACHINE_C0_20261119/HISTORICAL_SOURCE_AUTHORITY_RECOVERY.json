@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_REMONT_HISTORICAL_SOURCE_AUTHORITY_RECOVERY@1",
-  "record_status": "SOURCE_GRADED_INVESTIGATION__DRAFT_NOT_PROTECTED_NOT_CURRENT_SOURCE_ISSUANCE",
+  "record_status": "SOURCE_GRADED_SOURCE_ARTIFACT_C_RECOVERY_ACTUAL__DRAFT_NOT_CURRENT_SOURCE_ISSUANCE",
   "date_utc": "2026-11-19",
   "repo": "maidiu/rawlsing",
   "protected_premain_ref": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
@@ -83,10 +83,23 @@
       "common_pre_driver_structure_sha256": "500f0022f5ccdec32008019bad642d62c3c5a77937bcbf9cef24fc67d23e6f85",
       "manual_review_rows": 562,
       "manual_review_sequence_sha256": "98a24a7bfecf573b5ef00329226f7210a2e6cb61ebaadd9b5e6127aff476c780",
-      "status": "HISTORICALLY_RECOVERED_AND_ADJUDICATED__NOT_INSTALLED_OR_CURRENT_SELECTED_IN_THIS_PR",
+      "status": "EXACT_69_COLUMN_QSR_VERSION_C_ORIGINAL_SHA_MATCH__18_792_ROWS__562_MANUAL_REVIEW__NATIVE_LIBRARY_FILE_BANKED__NOT_CURRENT_SOURCE_EDITION",
       "locator_from_existing_user_storage_index": "~/Desktop/Rawlsing_authority_census_exports/HARVEST-001_QUESTION_STRUCTURE_REGISTER_LINEAGE_EVIDENCE.zip",
       "zip_member": "payload/Rawlsing/data/ddm_build_copy/manifests/question_structure_register.csv",
-      "negative": "Historical source-structure/manual core identical; semantic-driver versions differ; do not restore by rebuilding old manual decisions or treat copied ZIP as active runtime authority"
+      "negative": "Historical source-structure/manual core identical; semantic-driver versions differ; do not restore by rebuilding old manual decisions or treat copied ZIP as active runtime authority",
+      "recovered_original_variant_c": {
+        "sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+        "size_bytes": 26582238,
+        "rows": 18792,
+        "columns": 69,
+        "manual_review_yes": 562,
+        "source_family_wave_pairs": 35,
+        "evs_1999_canonical_wave": "W3",
+        "original_uploaded_file": "question_structure_register.csv",
+        "native_library_path": "/Rawlsing/Evidence/question_structure_register_9139c1ab77bf47a8_18792x69.csv",
+        "native_library_file_id": "file_000000004b1c8212838dcf7cc1d3a8bf",
+        "verification": "LOCAL_SHA256_CONFIRMED_EXACT_HARVEST-001_C_SHA__SOURCE_DATA_INSPECTED"
+      }
     },
     {
       "id": "H06",
@@ -124,8 +137,12 @@
       "name": "R14_SOURCE_NATIVE_CANDIDATE_INTEGRITY_AUDIT_R3.csv",
       "file_id": "file_000000008ee881f7b169181a30dc6311",
       "historical_reported_sha256": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
-      "status": "EXACT_NATIVE_LIBRARY_POINTER_LOCATED__BYTES_NOT_REHASHED_THIS_OPERATION",
-      "rule": "Questionnaire/codebook reconciliation; source native/applicability distinctions"
+      "status": "ACTUAL_ORIGINAL_LIBRARY_BYTES_SHA256_MATCH__352_871_BYTES__NO_SOURCE_CURRENT_EDITION",
+      "rule": "Questionnaire/codebook reconciliation; source native/applicability distinctions",
+      "actual_byte_verification": {
+        "size_bytes": 352871,
+        "sha256": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0"
+      }
     },
     {
       "id": "H09",
@@ -188,7 +205,27 @@
         "file_00000000da80722f98a132205b69d244",
         "file_00000000e41c722f8d67a0fc93343951"
       ],
-      "status": "EXACT_HISTORICAL_SOURCE_SCOPE_POSITIVE_WITH_NONAUTOMATIC_C11_CONSUMER"
+      "status": "EXACT_HISTORICAL_SOURCE_SCOPE_POSITIVE_WITH_NONAUTOMATIC_C11_CONSUMER",
+      "verified_library_documents": [
+        {
+          "id": "file_00000000da80722f98a132205b69d244",
+          "name": "WVS Wave 7 (2017) Questionnaire.pdf",
+          "bytes": 885723,
+          "sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b"
+        },
+        {
+          "id": "file_00000000e41c722f8d67a0fc93343951",
+          "name": "WVS Wave 7 (2017) Codebook.pdf",
+          "bytes": 3542402,
+          "sha256": "d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3"
+        },
+        {
+          "id": "file_000000002ee881fba3c96ce1bf2f3a04",
+          "name": "question_relation_registry_35wave_active_v1.csv",
+          "bytes": 1119028,
+          "sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b"
+        }
+      ]
     },
     {
       "id": "H12",
@@ -258,7 +295,8 @@
     "FQRA relation/role statuses do not automatically authorize C11 object ownership or routing",
     "R14 source-native joint membership does not itself prove source-authorized C11 event-group or occurrence-index mapping",
     "P10 no-loss preservation means exact reference, not that all historical manual authority is loaded/current",
-    "No sourcefree/original-source tests, reviewer verdict, local oldMac extraction, full current consumer invalidation or protected paired receiving was performed by this investigation"
+    "No sourcefree/original-source tests, reviewer verdict, local oldMac extraction, full current consumer invalidation or protected paired receiving was performed by this investigation",
+    "The exact original QSR version C is now available in native Library and parsed, but the inherited compiler/current source-semantic selection remains unproved; its historical C11 mapping and current authority are separate."
   ],
   "machine_next_operations": [
     {
@@ -297,5 +335,14 @@
       "negative": "Unexecuted authored test/branch-only document/old native source without grant => no promotion"
     }
   ],
-  "hold": "HQ_CURRENTNESS_HOLD__HISTORICAL_AUTHORITY_LOCATED__CURRENT_INSTANCE_AND_CONSUMER_JOIN_NOT_EXECUTED"
+  "hold": "HQ_CURRENTNESS_HOLD__HISTORICAL_AUTHORITY_LOCATED__CURRENT_INSTANCE_AND_CONSUMER_JOIN_NOT_EXECUTED",
+  "artifact_retrieval_inventory": {
+    "machine_file": "ORIGINAL_ARTIFACT_RETRIEVAL_LIST.json",
+    "human_file": "ORIGINAL_ARTIFACT_RETRIEVAL_LIST.md",
+    "total_records": 190,
+    "total_original_sav_dta_files": 35,
+    "total_frozen_sav_dta_bytes": 1319161326,
+    "original_qsr_c_sha_confirmed": true,
+    "unverified_original_hashes_must_remain_null": true
+  }
 }
