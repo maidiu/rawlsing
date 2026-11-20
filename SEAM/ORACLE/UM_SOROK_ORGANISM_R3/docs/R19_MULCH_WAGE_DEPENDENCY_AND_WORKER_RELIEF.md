@@ -30,7 +30,7 @@ It does **not** create contracts or call the parent a worker by fiat. `ACCEPT_WO
 
 `SUSPEND_WAGE_WORK` is **a distinct bodily/language-dependent action by a named, present delegate actor**, not an employer policy automatically overriding a person's mind. Its world owner requires the worker's actual contracted relation, a declared delegated authority and actual employer funds. A one-unit payment moves from the already existing employer institution's account to a separate fictional labor-disciplinary service account. This employer-funded act can temporarily block a future wage-work attempt, without removing the worker's capacity to act, rewriting the contract or installing a moral explanation.
 
-The person who executes the suspension is a real R19 actor with their own body, activity and selectable policy. The receiving enforcement-service institution remains a provisional accounting abstraction, NOT a fully simulated human labor workforce; the external institutional grant and delegates' wage/dependency paths still need further construction.
+The person who executes the suspension is a real R19 actor with their own body, activity and selectable policy. The original actor-policy practical-alternative seam now offers **target-specific `SUSPEND_WAGE_WORK` options for actually co-present people**. Their mere presence does not prove a valid employee contract; the independent world checks that condition, delegated authority and employer finances again at execution. No model or externally injected request can forge the target's consent. The receiving enforcement-service institution remains a provisional accounting abstraction, NOT a fully simulated human labor workforce; the external institutional grant and delegates' wage/dependency paths still need further construction.
 
 `WITHDRAW_FROM_WAGE_WORK` provides the worker with a separate possible withdrawal operation, ending their own contract without rewriting previously performed labor, unpaid employer debts or future alternatives.
 
@@ -39,6 +39,8 @@ The person who executes the suspension is a real R19 actor with their own body, 
 `CONTRIBUTE_WAGE_RELIEF` transfers a finite real monetary unit from the contributor's account to an identified independent worker pool, but only if the contributor has a prior actual positive wage-work receipt at this exact workplace and controller. Imported money is not silently called worker earnings. A person with a current source-qualified employer suspension can attempt `DRAW_WAGE_RELIEF` from this pool. The pool cannot create money, compel any other worker to contribute, or end the suspension. It supplies a short-lived material possibility under that real relationship.
 
 The sourcefree pool rule and contribution amount are research choices, not a scientifically issued model of unions, welfare, strike funds or charity.
+
+**Additional construction from review:** the first relief rule checked whether the contributor had *ever* earned a wage. That allowed repeated donations to claim the same past wage as provenance indefinitely whenever other private money was available. R19 now computes the precise remaining source-attributable paid wage by summing prior actual paid `WORK` receipts and subtracting all previous relief contributions. Monetary provenance uses decimal arithmetic rather than unsafe float accumulation. A wage can fund no more relief than it actually paid; initial outside wealth does not manufacture further wage receipts. Actual food and cash flows are still fungible, so this is an upper bound on historical source-attributed contribution, not evidence of distinguishable physical currency.
 
 ### 4. The iceberg recruits from activity without the analyst explaining it
 
@@ -70,7 +72,9 @@ The actor no longer has an inexhaustible free productive field. Wages can fail, 
 
 ## TURN THE MACHINE AGAINST THEORY
 
-Added original `tests/test_labor_dependency_r19.py` with isolated world and joined `ConstitutiveRuntime` scenarios: contract vs public posting, separate INSPECT/acceptance, externally injected versus actor-selected acceptance, employer-owned stock/wages, finite financed suspension and expiration, worker withdrawal, prior-earned-wage-funded relief and real beneficiary, absence of spillover to unrelated work sites, actor's as-of-clock first-person unfinished WORK evidence, sourcefree relief recruitment, and the entire wage-to-food-to-child circuit.
+Expanded the original `tests/test_labor_dependency_r19.py` with isolated world and joined `ConstitutiveRuntime` scenarios: contract vs public posting, separate INSPECT/acceptance, externally injected versus actor-selected acceptance, employer-owned stock/wages, finite financed suspension and expiration, worker withdrawal, prior-earned-wage-funded relief and real beneficiary, absence of spillover to unrelated work sites, actor's as-of-clock first-person unfinished WORK evidence, sourcefree relief recruitment, and the entire wage-to-food-to-child circuit.
+
+The initial relief-world witness inserted a wage-shaped claim row directly. That was not a proof that the real `WORK` producer earned it. The test has been repaired to **execute the inherited world `WORK` action**, and explicitly attacks repeated funding of the same wage. A new joined SQLite candidate covers employer-backed suspension, the worker's actor-specific unfinished work, current available relief, finite payout and unchanged Nadia ideology; it also checks that an actor-selected sanction could be bound to a real, present possible addressee through the inherited practical-option interface.
 
 Added read-only `.github/workflows/soracle-r19-sourcefree-tests.yml` for Python compilation, R19 focused normal/-O and all R3–R19 inherited regression suites.
 
