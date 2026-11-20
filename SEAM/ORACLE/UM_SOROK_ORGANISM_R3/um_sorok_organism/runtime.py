@@ -219,6 +219,16 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                # The analytic model may reason from the actual *computed*
+                # preceding psychic organization. The simulated actor neither
+                # observes this full packet nor has to possess its vocabulary.
+                # A candidate remains fictional until actor-owned typed admit.
+                'historical_psychodynamic_context':{
+                    'before_objective_transition':copy(pre_event_psychodynamics.get(aid,{})),
+                    'after_world_before_formation':copy(post_event_psychodynamics.get(aid,{})),
+                    'analyst_only_not_actor_self_knowledge':True,
+                    'reconstruct_from_admitted_current_not_a_recovered_memory':True,
+                    'objective_event_ref':objective_ref},
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
         observed=subjective.get(actor_id,{})
