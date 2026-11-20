@@ -13,6 +13,7 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import verify_qualified_period_envelope
+from .co_regulation_history import conserve_received_period_care
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -180,6 +181,10 @@ def _care(world,actors,proc,start,days):
         'no_individually_observed_care_events':True,
         'grade':'SOURCEFREE_QUALIFIED_AGGREGATE_CARE'}
     world.setdefault('reproductive_labor_periods',[]).append(row)
+    # History must be available to the recipient's next psychic reader; the
+    # caregiver's world labor cost is NOT automatically a child's conscious
+    # attribution of where comfort came from.
+    conserve_received_period_care(actors[r],row)
     return row
 
 
