@@ -12,6 +12,7 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 """
 import math
 from .types import GRADE, copy, stable_id
+from .routine_sources import verify_qualified_period_envelope
 
 DAY_HOURS=24.0
 PROVISIONAL_REST_RESERVE=8.0
@@ -81,6 +82,9 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
     normalized=[];fraction_by_actor={};support_downgrades=[]
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
+        source_confirmation=verify_qualified_period_envelope(
+            world,raw,start_clock,days)
+        raw={**raw,'source_registry_confirmation':source_confirmation}
         a=raw['actor'];site=raw['location']
         if not _actor_at_site(world,actors,a,site):
             raise ValueError('HISTORICAL_TIME_ACTOR_NOT_AT_RECORDED_SITE')
