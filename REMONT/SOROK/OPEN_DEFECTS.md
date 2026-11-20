@@ -1,5 +1,14 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R13 same-event alias-takeup repair — separate author branch (2026-11-20)
+
+**New sourcefree candidate only** atop frozen R13 PR #1210 `3b9b58b75bdceec901c3ba7aaa18738ea4989923`. The independent receiving [review #6000135914](https://github.com/maidiu/rawlsing/pull/1210#pullrequestreview-6000135914) reproduced two failing tests in `development.admit`: genuine current issued trial A plus different existing possible end B could create durable project B by `TAKE_UP_POSSIBLE_END` in the same event. The exact fix refuses *all* such takeups during any issued trial, regardless of end identity, while preserving legitimate later nontrial takeup. **Unchanged reviewer test blob `8ba0af53e2e57f88089248f42e08b3a61ed41279`** is now run with the inherited 255: **260/260 normal, 260/260 optimized, 260 pytest + 19 subtests**. A fresh cold ZIP extraction also passes. 44/44 Python source files recorded with Git object SHA-1, SHA256, and lengths. Original 73 P/T0/E6 queue records remain unchanged; none promoted to independent accepted. Protected PRE-MAIN and paired PROGRAMMA/CURRENT_PROGRESS not touched. Full runnable packet `SOROK_R13_ALIAS_TAKEUP_REPAIR_20261120.zip` SHA256 `228b4ebe5293cedd26d69a9816d9672a5dad226b233a9699529e2279cb2f7a38`.
+
+**Disposition:** `R13_ALIAS_TAKEUP_REPAIRED_SOURCEFREE_TESTED__INDEPENDENT_RECEIVING_PENDING`.
+
+---
+
+
 ## R11 repaired exact-head follow-up — scoped review / P070–P071 independence hold (2026-11-20)
 
 **Frozen successor review:** [#1198](https://github.com/maidiu/rawlsing/pull/1198) at `d96f1c0b181b9772b1cd90c093e7393acc66523c`; exact review [#5999778333](https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333). This is a **new sourcefree receiving record in the existing REMONT ledger, not a replacement master, protected merge, or native engineering/scientific authorization**.

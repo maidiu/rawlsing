@@ -69,9 +69,12 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         # to reorganize projects; this is not a universal learning law.
         if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
-        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
-               and c.get('possible_end_ref')==issued_trial.get('possible_end_ref')
-               for c in candidates):
+        # Trial and durable takeup are separate historical operations.
+        # Matching only the selected end ID let an LLM acquire a parallel
+        # provisional end as a mature project during this *same* trial event.
+        # No alternate-end durable takeup issuer exists here: refuse every
+        # TAKE_UP_POSSIBLE_END until a separately experienced nontrial event.
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
     witnessed=[]
