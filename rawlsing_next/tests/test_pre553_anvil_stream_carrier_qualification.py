@@ -142,3 +142,24 @@ def test_wrong_source_identity_or_source_scope_refuses_without_manifest_read(tmp
             root=root, exact_release_path=tmp_path / "another_release",
             held=pins, current_authorizer=lambda _: True,
         )
+
+
+@pytest.mark.parametrize("source_id", ["SRC04", "SRC16"])
+def test_r2_exact_saved_roots_remain_stream_not_direct_certificate(source_id):
+    """The real worker's saved stream commitments cannot be relabeled direct."""
+    from pathlib import Path
+    from rawlsing_next._pre553_external_i02_certificate import (
+        ExternalI02IntegrityError, ExternalI02Roots,
+    )
+    project = Path(__file__).resolve().parents[2]
+    path = (project / "WORKER_RETURNS" /
+            "ANVIL_P0_TWO_SAVED_WAVES_20261120" / "R2" /
+            "R2_TYPED_DECISION_AND_REFUSALS.json")
+    evidence = json.loads(path.read_text(encoding="utf-8"))
+    wave = evidence["waves"][source_id]
+    assert wave["currentness"] == "CURRENT_GRANTED"
+    assert wave["saved_i02"]["schema"] == "ANVIL_STREAM_C11_ESTATE@1"
+    assert wave["source_sha256"] == wave["saved_i02"]["source"].rsplit("|", 1)[1]
+    assert wave["manifest_sha256"] and len(wave["manifest_sha256"]) == 64
+    with pytest.raises(ExternalI02IntegrityError, match="unsupported externally held certificate schema"):
+        ExternalI02Roots(**wave["saved_i02"])
