@@ -23,8 +23,8 @@ def situated(actor):
     return SimpleNamespace(actor=actor['id'], expectations=deepcopy(actor['expectations']))
 
 
-def access(tags):
-    return SimpleNamespace(actor='nadia', cues=[{'id':'s2','tags':tags}])
+def access(tags, modality='auditory'):
+    return SimpleNamespace(actor='nadia', cues=[{'id':'s2','tags':tags,'modality':modality}])
 
 
 class PreprojectAgencyTests(unittest.TestCase):
@@ -42,6 +42,11 @@ class PreprojectAgencyTests(unittest.TestCase):
         self.assertIsNone(a['project_id'])
         self.assertEqual(a['conceptual_access'],'NONDECLARATIVE_NOT_ACTOR_PROPOSITION')
         self.assertEqual(a['world_consequence'],'NOT_INFERRED')
+
+    def test_preverbal_unqualified_modality_cannot_mint_word_level_memory(self):
+        source=exp(cues=[{'id':'s1','tags':['human_gratitude']}])
+        with self.assertRaisesRegex(ValueError,'MODALITY_UNQUALIFIED'):
+            admit_preproject_anticipation(self.actor,source,'e1',cand())
 
     def test_unseen_sign_cannot_be_acquired(self):
         with self.assertRaisesRegex(ValueError,'UNEXPERIENCED'):
@@ -61,10 +66,28 @@ class PreprojectAgencyTests(unittest.TestCase):
         self.assertEqual(fallback_nonproject_orientation(options)['action'],'SIGNAL')
         self.assertIsNone(fallback_nonproject_orientation(options)['project_id'])
 
+    def test_infant_does_not_acquire_analyst_language_as_sensorium(self):
+        self.acquired()
+        e=self.actor['expectations'][0]
+        self.assertEqual(e['discriminant_tags'], ['sensory:auditory'])
+        self.assertEqual(e['sensory_resolution'],
+                         'UNDIFFERENTIATED_SENSORY_MODALITY_ONLY')
+        self.assertNotIn('soft_voice',e['discriminant_tags'])
+
+    def test_same_modality_transfer_remains_broad_and_unproven(self):
+        self.acquired()
+        options=[{'action':'SIGNAL','basis':[]}]
+        p=recruit_preproject_anticipations(situated(self.actor),
+             access(['machine_hum'],modality='auditory'),options)
+        self.assertTrue(p['currents'])
+        self.assertEqual(p['currents'][0]['orientation_mode'],'APPROACH')
+        # This is a real semantic gap: co-modal resemblance is NOT identity.
+        self.assertNotIn('machine_hum', self.actor['expectations'][0]['discriminant_tags'])
+
     def test_unseen_current_context_cannot_recruit(self):
         self.acquired()
         options=[{'action':'SIGNAL','basis':[]}]
-        self.assertFalse(recruit_preproject_anticipations(situated(self.actor),access(['machine_hum']),options)['currents'])
+        self.assertFalse(recruit_preproject_anticipations(situated(self.actor),access(['machine_hum'],modality='visual'),options)['currents'])
         self.assertIsNone(fallback_nonproject_orientation(options))
 
     def test_mature_project_prevents_heuristic_preproject_override(self):
