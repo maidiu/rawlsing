@@ -15,6 +15,7 @@ from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
+from .lived_genesis import proposals_from_bodily_history
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -285,6 +286,9 @@ class ConstitutiveRuntime:
                 'sourcefree_grade':GRADE,
                 'not_an_actor_self_account':True,
             }
+        # Snapshot physical state before independently authorized world settlement;
+        # later psychic inference cannot retcon what this body had undergone.
+        bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
@@ -384,6 +388,12 @@ class ConstitutiveRuntime:
             # Actor-owned practical afterlife is separate from world objective
             # outcome. It can later be recruited, but is not motive fulfillment.
             register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
+            # A model must not invent the child's remembered language or a
+            # bodily benefit. Use actual material before/after body plus a
+            # sign personally received to propose—not yet admit—one modest
+            # nondeclarative orientation. This is not proof of why relief arose.
+            history_genesis=proposals_from_bodily_history(
+                actors[aid],experience,bodily_before[aid],actors[aid]['body'])
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -402,6 +412,8 @@ class ConstitutiveRuntime:
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
+                'historically_proposed_preproject':copy(history_genesis),
+                'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
                 # The analytic model may reason from the actual *computed*
