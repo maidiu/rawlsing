@@ -344,5 +344,65 @@
     "total_frozen_sav_dta_bytes": 1319161326,
     "original_qsr_c_sha_confirmed": true,
     "unverified_original_hashes_must_remain_null": true
+  },
+  "verified_byte_addendum_20261119": {
+    "file": "RECOVERED_ARCHIVE_AND_14_SOURCE_BYTE_DELTA_20261119.md",
+    "repo_head_at_addendum": "4768f75c5bdcdbe2efb8cfa2dec2a994c095e023",
+    "native_library_root": "/Rawlsing/Evidence/REMONT_2026.11.19_FULL_INVENTORY/",
+    "native_library_inventory_files": [
+      "REMONT_exact_file_inventory.csv",
+      "REMONT_exact_file_inventory.json",
+      "REMONT_recovery_guide.md",
+      "FINAL_FINAL_CODEBOOKS_members.csv",
+      "complete_36wave_final_contents.csv",
+      "REMONT_Exact_Recovery_Inventory_2026-11-19.zip"
+    ],
+    "inventory_records": 119,
+    "existing_independent_historical_retrieval_records": 190,
+    "raw_source_total": 35,
+    "raw_source_original_bytes_sha256_reverified_in_this_operation": 14,
+    "raw_source_original_bytes_not_retrieved_in_this_operation": 21,
+    "codebook_csvs_actual_original_bytes_hashed": 48,
+    "codebooks_in_closed_35": 35,
+    "codebooks_excluded_asian_barometer_w6": 13,
+    "complete_36wave_final_zip": {
+      "native_library_path": "/complete_36wave_final.zip",
+      "native_file_id": "file_000000009ad8822fab6efcc81c540dbc",
+      "size_bytes": 388583537,
+      "sha256": "dacbc0ccaed13a15cc09785f9360a67f6fe8d1efb95d3064a2f32d5f103fd589",
+      "zip_entries": 4907,
+      "files": 4382,
+      "uncompressed_size_bytes": 5342956797,
+      "contains_raw_sav_dta": false,
+      "contains_qsr": false,
+      "contains_fqra_or_r14": false,
+      "includes_historical_asian_w6": true
+    },
+    "final_final_codebooks_zip": {
+      "native_library_path": "/Rawlsing/FINAL FINAL CODEBOOKS.zip",
+      "native_file_id": "file_0000000023c48212b8f5cdc0eaa6d156",
+      "size_bytes": 3876304,
+      "sha256": "476da5b6d9b1375a7a190ec1001f0a0e5102e86bcff862c7fdf05a7991c882db"
+    },
+    "qsr_version_c": {
+      "native_library_path": "/Rawlsing/Evidence/question_structure_register_9139c1ab77bf47a8_18792x69.csv",
+      "sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+      "size_bytes": 26582238,
+      "rows": 18792,
+      "columns": 69,
+      "manual_rows": 562,
+      "actual_verified": true
+    },
+    "catalog_csv_sha256": "77fbe3628542d43f3cc53a35a7e4908f947e05697173cde0bbefbfd0edcd4f2c",
+    "catalog_json_sha256": "6a6b404cc79f7b2fee87cac2260ae5340431451c983c1d3790222419b0a60d24",
+    "status": "ACTUAL_SOURCE_BYTES_VERIFIED__SOURCE_SPECIFIC_C11_MAPPING_STILL_HELD",
+    "nonclaims": [
+      "36wave compiled derivatives contain no original raw SAV/DTA survey file and do not select CLOSED_35",
+      "source-data byte matching is not source-permission authorization",
+      "physical QSR original recovered does not authorize exact V550 C11 semantic mapping currentness",
+      "14 original source matches do not certify all 35 source bytes in this operation",
+      "48 codebooks do not prove current official country questionnaires or exact routing risk sets",
+      "no tests/independent reviewer/protected receiving executed"
+    ]
   }
 }
