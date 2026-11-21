@@ -124,7 +124,17 @@ def main():
                 # (where one existed) are now preserved in the single whole.
                 check_exact_source_name(source_table[key], record[attr], key)
             elif source_name.startswith("SOROKUDA"):
-                check_exact_source_name(source_table[key], record[attr], key)
+                # Original source union deliberately includes 98 source-cut-only
+                # entries, without a module path. Demand exact path where known,
+                # otherwise preserve the actual cut; do NOT invent a locator.
+                loc = record.get("module_or_historical_path")
+                if loc:
+                    check_exact_source_name(source_table[key], loc, key)
+                elif record.get("source_cut"):
+                    check_exact_source_name(
+                        source_table[key], record["source_cut"], key)
+                else:
+                    must(key in source_table, "lost source-only code ID " + key)
             else:
                 check_exact_source_name(source_table[key], record[attr], key)
 
