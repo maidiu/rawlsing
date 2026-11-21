@@ -59,6 +59,19 @@ def verify_inherited_files(directory=ROOT):
     return problems
 
 
+def verify_readable_status(directory=ROOT):
+    """The readable 77-PR view must pin the exact current ledger blob."""
+    try:
+        raw = (directory / 'LIVE_RECEIVING_LEDGER.json').read_bytes()
+        status = (directory / 'READABLE_CANDIDATE_STATUS_20261121.md').read_text()
+    except OSError:
+        return ['READABLE_LEDGER_VIEW_MISSING']
+    m = re.search(r'exact Git \*\*blob `([0-9a-f]{40})`', status)
+    if not m or m.group(1) != sha_blob(raw):
+        return ['READABLE_LEDGER_VIEW_STALE']
+    return []
+
+
 def progress_errors(md, state):
     problems = []
     m = re.search(r'current progress revision\s*(\d+)', md, re.I)
@@ -119,6 +132,8 @@ def audit(ledger, snapshot, md='', progress=None):
             if 'ISSUED' in str(a.get(permission, '')).upper() and 'NOT_ISSUED' not in str(a.get(permission, '')).upper():
                 if not r.get('competent_authority_receipt'):
                     errors.append('FALSE_NATIVE_OR_SCIENCE_PROMOTION:' + str(n) + ':' + permission)
+        if r.get('disposition', '').startswith('INDEPENDENTLY_REVIEWED') and not (r.get('review', {}).get('sha') and 'ACCEPT' in str(r.get('review', {}).get('verdict'))):
+            errors.append('UNSUPPORTED_INDEPENDENT_REVIEW_CLAIM:' + str(n))
         if 'PROTECTED_RECEIVED' in r.get('disposition', '') and not r.get('merged'):
             errors.append('UNMERGED_ASSERTED_PROTECTED:' + str(n))
     observed = {p.get('pr'): p for p in snapshot.get('prs', [])}
@@ -183,7 +198,7 @@ def main():
     ap.add_argument('--root', type=Path, default=ROOT)
     ap.add_argument('--progress-dir', type=Path, default=ROOT.parent.parent)
     args = ap.parse_args()
-    problems = verify_inherited_files(args.root)
+    problems = verify_inherited_files(args.root) + verify_readable_status(args.root)
     try:
         ledger = json.loads((args.root / 'LIVE_RECEIVING_LEDGER.json').read_text())
         if args.live:
