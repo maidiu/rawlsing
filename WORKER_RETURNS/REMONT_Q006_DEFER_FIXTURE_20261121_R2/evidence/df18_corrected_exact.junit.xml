@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.477" timestamp="2026-11-21T10:14:26.241424-05:00" hostname="mainMac.lan"><testcase classname="rawlsing_next.tests.test_pre553_anvil_stream_recorded_defer_fixture" name="test_persisted_defer_recorded_entry_reaches_actual_earliest_fault" time="0.667"><failure message="rawlsing_next.pre553_anvil_stream_recorded.RecordedResponseError: stored R5 raw_typed value cannot be decoded exactly">estate = &lt;rawlsing_next.pre553_anvil_stream_native_i03.VerifiedAnvilStreamEstate object at 0x10df56250&gt;
+selected_refs = {'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:09bd76664442978f173eba21f6b570f1f482c441d0d491cb62b...88bf45c0ff27cf4e6904a74f400851ba72551c5ecf3770e|c52efddee2171f2ec88bf45c0ff27cf4e6904a74f400851ba72551c5ecf3770e', ...}
+
+    def _decoded_raw_values(
+        estate: VerifiedAnvilStreamEstate, selected_refs: set[str],
+    ) -&gt; dict[str, object]:
+        """Decode R5 raw_typed only for exact selected event refs.
+
+        The large event family is never materialized into a raw dictionary; only
+        the exact q103-selected refs are decoded from the bounded Parquet batches.
+        """
+        result: dict[str, object] = {}
+        parquet = pq.ParquetFile(estate.directory / "RespondentEvent.parquet")
+        try:
+            for batch in parquet.iter_batches(
+                batch_size=1024, columns=["ref", "raw_typed"],
+            ):
+                for row in batch.to_pylist():
+                    if row["ref"] not in selected_refs:
+                        continue
+                    try:
+                        encoded = json.loads(row["raw_typed"])
+&gt;                       result[row["ref"]] = _unwrap_raw_physical_value(
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            _CODEC.decode(encoded)
+                        )
+E                       NameError: name '_unwrap_raw_physical_value' is not defined
+
+rawlsing_next/pre553_anvil_stream_recorded.py:193: NameError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-994/test_persisted_defer_recorded_0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10b9d0c10&gt;
+
+    def test_persisted_defer_recorded_entry_reaches_actual_earliest_fault(tmp_path, monkeypatch):
+        source, candidate, root, release, held, historical, universe = _defer_stream(
+            tmp_path, monkeypatch,
+        )
+        # Canonical fixture is persisted before the product import.
+        assert historical.decision_state == "DEFER"
+        assert historical.authority_ref in universe.authority_snapshot_refs
+        assert (release / "manifest.json").exists()
+        # The exact cut must expose the recorded entry classes.  The scratch
+        # corrected bfa cut restores only the exact earlier definitions.
+        from rawlsing_next.pre553_anvil_stream_recorded import (
+            HeldRecordedOperation, RecordedUniverseUse, RecordedResponseError,
+            build_recorded_operation,
+        )
+        from rawlsing_next.pre553_anvil_stream_issuance import issue_and_execute_stream_i03
+        from rawlsing_next.pre553_anvil_stream_native_i03 import execute_anvil_stream_i03
+        from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+
+        codes = ("1", "2", "3", "4", "97", "98", "99")
+        interpretation = (
+            ("1", "SUBSTANTIVE_RESPONSE"), ("2", "SUBSTANTIVE_RESPONSE"),
+            ("3", "SUBSTANTIVE_RESPONSE"), ("4", "SUBSTANTIVE_RESPONSE"),
+            ("97", "SOURCE_SPECIFIC_SPECIAL"), ("98", "DK"), ("99", "REFUSAL"),
+        )
+        scope = "Q103_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY"
+        qref = source["qrefs"]["Y"]
+        roots = {
+            "source": candidate.universes[0].source_artifact_ref.key if False else source["release_ref"].key,
+        }
+        # Exact stream roots from the fixture source and universe.
+        stream_roots = {
+            "source": held.roots["source"], "release": held.roots["release"],
+            "universe": universe.ref.key, "replay": held.roots["replay"],
+        }
+        owner_sha = sha256(b"q006-sourcefree-fixture-owner").hexdigest()
+        def clone_snapshot(base, *, state, scope_envelope, kind, families, label):
+            fields = dict(base.semantic_fields)
+            fields.update({
+                "authority_id": "Q006-FIXTURE-" + label + "-" + state,
+                "authority_version": "1.0.0",
+                "authority_content_hash": semantic_hash({
+                    "state": state, "scope": scope_envelope,
+                    "owner": owner_sha, "label": label,
+                }),
+                "authority_kind": kind,
+                "decision_state": state,
+                "governed_operations": ("Q103-OP-RECORDED-RESPONSE-ONLY",),
+                "governed_object_families": families,
+                "scope_envelope": scope_envelope,
+            })
+            return AuthoritySnapshot(
+                typed_state=state,
+                authority_snapshot_refs=base.authority_snapshot_refs,
+                dependency_refs=base.dependency_refs,
+                producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+                **fields,
+            )
+        positive_scope = {
+            "source_universe_refs": [universe.ref.as_dict()],
+            "scope": scope,
+            "release": stream_roots["release"],
+            "replay_root": stream_roots["replay"],
+            "source_sha256": stream_roots["source"],
+            "recorded_raw_codes": list(codes),
+        }
+        positive_source = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="SOURCE_SEMANTICS_TOPOLOGY",
+            families=("EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0"),
+            label="SOURCE",
+        )
+        positive_routing = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="ROUTING_RISK_SET", families=("RoutingEligibilityFact@1.0.0",),
+            label="ROUTING",
+        )
+        positive_query = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="PREDICATE_GRAMMAR",
+            families=("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+                      "EmpiricalFact@1.0.0"),
+            label="QUERY",
+        )
+        positive = positive_source
+        risk = ExactRef("RISK_SET", "recorded-response-fixture", semantic_hash({"codes": codes, "owner": owner_sha}))
+        rule = ExactRef("ROUTING_RULE", "recorded-only-fixture", semantic_hash({"scope": scope, "owner": owner_sha}))
+        member = ExactRef("MEMBER_SET", "recorded-members-fixture", semantic_hash({"codes": codes, "owner": owner_sha}))
+        measure = ExactRef("MEASURE_BASIS", "RAW", semantic_hash({"measure": "RAW"}))
+        semantics = ExactRef("RESPONSE_STATE_SEMANTICS", "recorded-only-fixture", semantic_hash({"interpretation": interpretation}))
+        domain = ExactRef("TARGET_DOMAIN", "q103-recorded-fixture", semantic_hash({"question": qref.as_dict(), "codes": codes}))
+        pred_replay = ExactRef("REPLAY_ROOT", "recorded-predicate-fixture", semantic_hash({"kind": "predicate"}))
+        query_replay = ExactRef("REPLAY_ROOT", "recorded-query-fixture", semantic_hash({"kind": "query"}))
+        transform = ExactRef("RECORDED_VALUE_TRANSFORM", "q103-fixture", semantic_hash({"transform": "R5_RAW_TO_RECORDED_OUTCOME"}))
+        operation = HeldRecordedOperation(
+            owner_decision_sha256=owner_sha,
+            source_id="SRC04",
+            source_root=stream_roots["source"],
+            release_root=stream_roots["release"],
+            universe_root=stream_roots["universe"],
+            replay_root=stream_roots["replay"],
+            question_ref=qref,
+            authorized_operation="Q103-OP-RECORDED-RESPONSE-ONLY",
+            allowed_raw_codes=codes,
+            interpretation=interpretation,
+            authorities=(positive_source, positive_routing, positive_query),
+            query_authority_ref=positive_query.authority_ref,
+            routing_authority_ref=positive_routing.authority_ref,
+            source_authority_ref=positive_source.authority_ref,
+            recorded_risk_ref=risk,
+            routing_rule_ref=rule,
+            member_set_replay_ref=member,
+            measure_basis_ref=measure,
+            response_state_semantics_ref=semantics,
+            target_domain_replay_ref=domain,
+            predicate_replay_root=pred_replay,
+            query_replay_root=query_replay,
+            transform_ref=transform,
+            approved_nonanswer_states=("UNRESOLVED",),
+        )
+        estate = VerifiedAnvilStreamEstate(
+            root, exact_path=release, independently_held=held,
+            current_authorizer=lambda _pins: True,
+        )
+&gt;       decision, plan, missing = build_recorded_operation(
+            estate=estate, operation=operation, question_ref=qref,
+        )
+
+rawlsing_next/tests/test_pre553_anvil_stream_recorded_defer_fixture.py:330:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/pre553_anvil_stream_recorded.py:258: in build_recorded_operation
+    decoded_raw = _decoded_raw_values(estate, selected_event_refs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+estate = &lt;rawlsing_next.pre553_anvil_stream_native_i03.VerifiedAnvilStreamEstate object at 0x10df56250&gt;
+selected_refs = {'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:09bd76664442978f173eba21f6b570f1f482c441d0d491cb62b...88bf45c0ff27cf4e6904a74f400851ba72551c5ecf3770e|c52efddee2171f2ec88bf45c0ff27cf4e6904a74f400851ba72551c5ecf3770e', ...}
+
+    def _decoded_raw_values(
+        estate: VerifiedAnvilStreamEstate, selected_refs: set[str],
+    ) -&gt; dict[str, object]:
+        """Decode R5 raw_typed only for exact selected event refs.
+
+        The large event family is never materialized into a raw dictionary; only
+        the exact q103-selected refs are decoded from the bounded Parquet batches.
+        """
+        result: dict[str, object] = {}
+        parquet = pq.ParquetFile(estate.directory / "RespondentEvent.parquet")
+        try:
+            for batch in parquet.iter_batches(
+                batch_size=1024, columns=["ref", "raw_typed"],
+            ):
+                for row in batch.to_pylist():
+                    if row["ref"] not in selected_refs:
+                        continue
+                    try:
+                        encoded = json.loads(row["raw_typed"])
+                        result[row["ref"]] = _unwrap_raw_physical_value(
+                            _CODEC.decode(encoded)
+                        )
+                    except Exception as exc:
+&gt;                       raise RecordedResponseError(
+                            "stored R5 raw_typed value cannot be decoded exactly"
+                        ) from exc
+E                       rawlsing_next.pre553_anvil_stream_recorded.RecordedResponseError: stored R5 raw_typed value cannot be decoded exactly
+
+rawlsing_next/pre553_anvil_stream_recorded.py:197: RecordedResponseError</failure></testcase></testsuite></testsuites>
