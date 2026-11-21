@@ -2844,5 +2844,41 @@
     "python_311_at_this_R16_HEAD": false,
     "protected_received": false,
     "canonical_progress_updated": false
+  },
+  "remont_r17_p018_source_preflight_20261120": {
+    "date": "2026-11-20",
+    "source_parent_pr": 1222,
+    "source_parent_head": "7a8a18c153ee5a36e1c52eca15f4e5e8862296be",
+    "status": "AUTHOR_REPAIRED_SOURCEFREE_R17__PENDING_DISTINCT_INDEPENDENT_REVIEW",
+    "fault": "Inherited R15/R16 P018: source() and append preflight could read or extend a ledger whose full verify_chain() already failed.",
+    "repair": [
+      "storage.py::source full verify preflight",
+      "storage.py::commit full verify preflight",
+      "storage.py::seal_source full verify preflight"
+    ],
+    "tests": [
+      "tests.test_r17_source_preflight",
+      "tests.test_remontathon_r4 (two source-seal assertions inspect table directly)"
+    ],
+    "test_evidence": {
+      "normal_pass": 288,
+      "optimized_pass": 288,
+      "pytest_pass": 288,
+      "pytest_subtests": 32,
+      "python": "3.11.3",
+      "demo_hash": "bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363",
+      "cold_reopen": true
+    },
+    "queue_accounting": {
+      "P_total": 73,
+      "P_scoped_independent_review_pass": 53,
+      "P_open": 8,
+      "P_partial": 8,
+      "P070_P073_author_repaired_review_pending": 4,
+      "T_confirmed": 0,
+      "E_holds": 6,
+      "native_G5_accepted": 0
+    },
+    "note": "Sourcefree local repair candidate, not independent acceptance or protected receiving; original P identities and statuses unchanged."
   }
 }

@@ -1,0 +1,26 @@
+test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end (__main__.SameEventAliasTakeup.test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end) ... FAIL
+test_legitimate_current_trial_without_take_up_stays_provisional (__main__.SameEventAliasTakeup.test_legitimate_current_trial_without_take_up_stays_provisional) ... ok
+test_legitimate_later_nontrial_takeup_remains_available (__main__.SameEventAliasTakeup.test_legitimate_later_nontrial_takeup_remains_available) ... ok
+test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) ... ok
+test_real_issued_trial_may_not_launder_identical_end_under_other_id (__main__.SameEventAliasTakeup.test_real_issued_trial_may_not_launder_identical_end_under_other_id) ... FAIL
+
+======================================================================
+FAIL: test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end (__main__.SameEventAliasTakeup.test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 87, in test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end
+    with self.assertRaises(InvalidDevelopment):
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_real_issued_trial_may_not_launder_identical_end_under_other_id (__main__.SameEventAliasTakeup.test_real_issued_trial_may_not_launder_identical_end_under_other_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 60, in test_real_issued_trial_may_not_launder_identical_end_under_other_id
+    with self.assertRaises(InvalidDevelopment):
+AssertionError: InvalidDevelopment not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.037s
+
+FAILED (failures=2)

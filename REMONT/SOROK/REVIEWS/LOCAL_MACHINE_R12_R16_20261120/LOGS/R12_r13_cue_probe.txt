@@ -1,0 +1,55 @@
+test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end (__main__.SameEventAliasTakeup.test_direct_owner_does_not_turn_current_issued_trial_into_other_durable_end) ... ok
+test_legitimate_current_trial_without_take_up_stays_provisional (__main__.SameEventAliasTakeup.test_legitimate_current_trial_without_take_up_stays_provisional) ... ok
+test_legitimate_later_nontrial_takeup_remains_available (__main__.SameEventAliasTakeup.test_legitimate_later_nontrial_takeup_remains_available) ... ok
+test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) ...
+  test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=False) ... FAIL
+  test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid='') ... FAIL
+  test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid={}) ... FAIL
+  test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=()) ... FAIL
+  test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=[None]) ... FAIL
+test_real_issued_trial_may_not_launder_identical_end_under_other_id (__main__.SameEventAliasTakeup.test_real_issued_trial_may_not_launder_identical_end_under_other_id) ... ok
+
+======================================================================
+FAIL: test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 115, in test_r13_cue_provenance_invalid_false_does_not_commit
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 115, in test_r13_cue_provenance_invalid_false_does_not_commit
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 115, in test_r13_cue_provenance_invalid_false_does_not_commit
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=())
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 115, in test_r13_cue_provenance_invalid_false_does_not_commit
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_cue_provenance_invalid_false_does_not_commit (__main__.SameEventAliasTakeup.test_r13_cue_provenance_invalid_false_does_not_commit) (invalid=[None])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_independent_r13_alias_takeup.py", line 117, in test_r13_cue_provenance_invalid_false_does_not_commit
+    self.assertEqual(runtime.verify()['events'],events)
+AssertionError: 5 != 1
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.041s
+
+FAILED (failures=5)
