@@ -130,6 +130,19 @@ class ActualSocialVocalDevelopment(unittest.TestCase):
         self.assertEqual(possible_vocal_coordination(
             n,b,"world:turn:3"),[])
 
+    def test_old_turn_cannot_be_reused_to_farm_capacity_each_day(self):
+        n=newborn("nadia","Nadia")
+        stage_public_object_speech(n)
+        social_turn(n,2,180)
+        second,_=social_turn(n,3,200)
+        admit(n,second,"world:turn:3",possible_vocal_coordination(
+            n,second,"world:turn:3"))
+        self.assertEqual(n["body"]["language"],.07)
+        third,_=social_turn(n,4,201)
+        self.assertEqual(possible_vocal_coordination(
+            n,third,"world:turn:4"),[])
+        self.assertEqual(n["body"]["language"],.07)
+
     def test_model_cannot_forge_skill_or_coactor_source_atomically(self):
         n=newborn("nadia","Nadia")
         stage_public_object_speech(n)
