@@ -1,0 +1,132 @@
+{
+  "contract": "PYAT_R37_N9J_FIRST_TWO_INTERVENTIONS_PREREGISTRATION@1",
+  "sealed_start": "68873526efe5a39a0849aa401666ac997870f156",
+  "cited_precedents": {
+    "wp2i": "c1a91372ec6a81492055d7ef9b6932f9e9048273",
+    "n10wm": "14e952915e36dc525a18ace93152a2bbc84d1dc2",
+    "e05": "257dfaf41be7d2a88c11741851e9dc89363b5386"
+  },
+  "audience": "sourcefree bounded existing generic service, nonparent option and finite conception-situation proposal; NOT genealogy",
+  "controlled_experiment_1": {
+    "label": "EMPIRICAL_ONLY",
+    "baseline": {
+      "empirical_changed": false,
+      "structural_revision": false,
+      "selection_clock": {
+        "mode": "TEST_CURRENT",
+        "valid_at": "2027-09-01",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01"
+      }
+    },
+    "intervention": {
+      "empirical_changed": true,
+      "structural_revision": false
+    },
+    "expected_counts": [
+      {
+        "n": 32,
+        "y_before": 18,
+        "y_after": 19
+      },
+      {
+        "n": 16,
+        "y_before": 10,
+        "y_after": 11
+      },
+      {
+        "n": 8,
+        "y_before": 6,
+        "y_after": 7
+      }
+    ],
+    "expected_fraction_before": [
+      "9/16",
+      "5/8",
+      "3/4"
+    ],
+    "expected_fraction_after": [
+      "19/32",
+      "11/16",
+      "7/8"
+    ],
+    "expected_world_invariant": true,
+    "expected_native_units_invariant": true,
+    "expected_empirical_source_release_and_evidence_identity_change": true,
+    "expected_undisclosed_probability": null,
+    "expected_selection_weight": null
+  },
+  "controlled_experiment_2": {
+    "label": "STRUCTURAL_ONLY",
+    "baseline": {
+      "empirical_changed": false,
+      "structural_revision": false,
+      "selection_clock": {
+        "mode": "TEST_CURRENT",
+        "valid_at": "2027-09-01",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01"
+      }
+    },
+    "intervention": {
+      "empirical_changed": false,
+      "structural_revision": true
+    },
+    "expected_fields": {
+      "training_access": [
+        true,
+        false
+      ],
+      "training_fee": [
+        2,
+        2
+      ],
+      "exit_cost": [
+        2,
+        8
+      ],
+      "civil_open": [
+        true,
+        true
+      ],
+      "civil_sanction": [
+        false,
+        false
+      ]
+    },
+    "expected_nonparent_training": [
+      "ELIGIBLE",
+      "BLOCKED_BY_MODELED_RULE"
+    ],
+    "expected_nonparent_exit": [
+      "WITHIN_MODELED_BUDGET",
+      "RESOURCE_CONSTRAINED"
+    ],
+    "expected_proposal_institutional": [
+      "FEASIBLE_MODELED_PREMISE",
+      "INFEASIBLE_MODELED_PREMISE"
+    ],
+    "expected_proposal_civil": [
+      "FEASIBLE_MODELED_PREMISE",
+      "FEASIBLE_MODELED_PREMISE"
+    ],
+    "expected_empirical_invariant": true,
+    "expected_native_units_invariant": true,
+    "expected_route_probability": null,
+    "expected_selection_weight": null
+  },
+  "preregistered_hostiles": [
+    "access_TRUE_fee_7_budget_5__nonparent_blocked__proposal_access_premise_only",
+    "zero_raw_risk_denominator_remains_null",
+    "opposite_minority_counts_remain_present",
+    "permission_revocation_prevents_fresh_serving_not_archival_evidence",
+    "publication_asof_is_distinct_from_effective_time_and_actor_knowledge",
+    "unrelated_field_change_must_not_invalidate_consumers",
+    "requested_person_exposure_model_use_pooling_refused",
+    "identical_selection_clock_replay_is_bit_identical",
+    "no_N11_N12_OC05_SOROK_C0_V3_installation"
+  ],
+  "observed_results": null,
+  "execution_state": "PRECOMMITTED_UNEXECUTED",
+  "original_data_read": false
+}

@@ -1,0 +1,210 @@
+{
+  "schema": "PYAT_R37_N9J_JOINED_ORTHOGONAL_NATIVE_CONSUMER_RESULTS@1",
+  "basis": {
+    "precommit": "8c49333a7d56ca4d3bafbcc8095ccd81661ea562",
+    "first_successful_ci_run": 39173307925,
+    "first_successful_ci_test_head": "833bff78536fb30a19aefaeaaf42c4d60bd8c4d6",
+    "scope": "ACTUAL EXISTING SOURCEFREE E04 selected-world service, native E05 N9-shaped adapter and both separate native consumers",
+    "grade": "NONINSTALLING_SOURCEFREE_ADAPTER_CANDIDATE",
+    "real_source_ingest": false,
+    "original35": false,
+    "actual_person": false
+  },
+  "experimental_population": "58 synthetic respondent rows in exact fixed source-local E03/C1/N10E risk sets; no population inference",
+  "world_channels": "TEST_ONLY modeled E04 synthetic institutional values from exact M4/M5 native published producer objects, not real Ghana structural conditions",
+  "observed": {
+    "empirical_only": {
+      "fixed": "structural E04 revision 1; test selection clock TEST_CURRENT 2027-09-01; native GSS/NCA fields unchanged",
+      "before": [
+        {
+          "condition": "Y | A=1",
+          "denominator": 32,
+          "yes": 18,
+          "no": 14,
+          "p_yes": "9/16",
+          "p_no": "7/16",
+          "source_balance_count": 4
+        },
+        {
+          "condition": "Y | A=1,B=1",
+          "denominator": 16,
+          "yes": 10,
+          "no": 6,
+          "p_yes": "5/8",
+          "p_no": "3/8",
+          "source_balance_count": 4
+        },
+        {
+          "condition": "Y | A=1,B=1,C=1",
+          "denominator": 8,
+          "yes": 6,
+          "no": 2,
+          "p_yes": "3/4",
+          "p_no": "1/4",
+          "source_balance_count": 4
+        }
+      ],
+      "after": [
+        {
+          "condition": "Y | A=1",
+          "denominator": 32,
+          "yes": 19,
+          "no": 13,
+          "p_yes": "19/32",
+          "p_no": "13/32",
+          "source_balance_count": 6
+        },
+        {
+          "condition": "Y | A=1,B=1",
+          "denominator": 16,
+          "yes": 11,
+          "no": 5,
+          "p_yes": "11/16",
+          "p_no": "5/16",
+          "source_balance_count": 6
+        },
+        {
+          "condition": "Y | A=1,B=1,C=1",
+          "denominator": 8,
+          "yes": 7,
+          "no": 1,
+          "p_yes": "7/8",
+          "p_no": "1/8",
+          "source_balance_count": 6
+        }
+      ],
+      "identities": "source_universe_ref, release_ref and evidence_ref all change at every progressive step",
+      "native_consumers": {
+        "nonparent": "empirical evidence, source-balance 4->6, and exact evidence refs actually change; modeled route states unchanged",
+        "conception_proposal": "all finite proposals carry changed empirical profiles and refs; modeled route premise states unchanged"
+      },
+      "no_causal_claim": true
+    },
+    "structural_only": {
+      "fixed": "same synthetic respondent rows, all three exact empirical step objects, GSS and NCA native readset, 2027-09-01 selection clock",
+      "before": {
+        "training_access": true,
+        "training_fee": 2,
+        "exit_cost": 2,
+        "civil_open": true,
+        "civil_sanction": false
+      },
+      "after": {
+        "training_access": false,
+        "training_fee": 2,
+        "exit_cost": 8,
+        "civil_open": true,
+        "civil_sanction": false
+      },
+      "native_consumers": {
+        "nonparent": {
+          "training": [
+            "ELIGIBLE",
+            "BLOCKED_BY_MODELED_RULE"
+          ],
+          "exit_constraint": [
+            "WITHIN_MODELED_BUDGET",
+            "RESOURCE_CONSTRAINED"
+          ],
+          "civil": [
+            "ELIGIBLE",
+            "ELIGIBLE"
+          ]
+        },
+        "conception_proposal": {
+          "institutional": [
+            "FEASIBLE_MODELED_PREMISE",
+            "INFEASIBLE_MODELED_PREMISE"
+          ],
+          "civil": [
+            "FEASIBLE_MODELED_PREMISE",
+            "FEASIBLE_MODELED_PREMISE"
+          ]
+        }
+      },
+      "justified_invariants": "All empirical source denominators, minority and alternative cell counts, evidence refs, and GSS/NCA independent values remain unchanged; civil rule unchanged so civil outputs invariant",
+      "causal_limit": "Modeled public permissions describe formal route predicates, not observed availability, affordability, exposure, agency or route realization"
+    },
+    "native_independent_fields": [
+      {
+        "family": "GSS",
+        "measure": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+        "native_geography": "GHANA_RURAL",
+        "unit": "occupied households",
+        "numerator": 2388192,
+        "denominator": 3288063,
+        "published_percent": "72.6%",
+        "representative_of": "GSS source fixture only"
+      },
+      {
+        "family": "NCA",
+        "measure": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS",
+        "native_geography": "GHANA_NATIONAL",
+        "unit": "active subscriptions",
+        "value": 23414527,
+        "representative_of": "NCA source fixture only"
+      }
+    ],
+    "no_pooling": true,
+    "source_specific_minorities": {
+      "conditions": "Y | A=0,B=1,C=1",
+      "steps": [
+        {
+          "denominator": 26,
+          "yes": 11,
+          "no": 15,
+          "p_yes": "11/26"
+        },
+        {
+          "denominator": 12,
+          "yes": 6,
+          "no": 6,
+          "p_yes": "1/2"
+        },
+        {
+          "denominator": 6,
+          "yes": 4,
+          "no": 2,
+          "p_yes": "2/3"
+        }
+      ]
+    },
+    "formal_vs_affordable": {
+      "observed_case": "access=True, training_fee=2, modeled budget=1",
+      "nonparent": "BLOCKED_BY_MODELED_RULE",
+      "proposal": "FEASIBLE_MODELED_PREMISE",
+      "disposition": "Distinct predicates; no reconciled practical feasibility or route propensity"
+    },
+    "nulls": {
+      "route_probability": null,
+      "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+      "selection_weight": null,
+      "selection_weight_reason": "NO_SCENARIO_SELECTION_MODEL_OR_ISSUER",
+      "actor_knowledge": "NOT_REQUESTED_NO_ACTOR_OWNER",
+      "unknown_field": "explicit typed unknown/refusal, never automatic false"
+    },
+    "temporal": {
+      "test_current": {
+        "valid_at": "2027-09-01",
+        "published_asof": "2027-09-01"
+      },
+      "historical": {
+        "valid_at": "2026-06-01",
+        "published_asof": "2026-03-01"
+      },
+      "revised_rule_effective_from": "2027-01-01",
+      "revised_rule_published": "2027-06-01",
+      "actor_knowledge": "not granted"
+    },
+    "refresh_channels": {
+      "empirical": "source/release/evidence identities rebind; structural fixed",
+      "structural": "published effective rule/revision and M4/M5 object refs change; empirical evidence fixed"
+    },
+    "revocation": {
+      "training_access": "fresh dependent structural route becomes typed unknown, empirical unaffected; old receipt archival only",
+      "empirical": "fresh empirical steps withheld, world/native fields unaffected; old receipt archival only",
+      "unrelated_field": "separately selected dependency closure, unrelated scope leaves preexisting receipts usable"
+    }
+  },
+  "implementation_scope": "Return-scoped exact native source/test, branch in draft PR; no N11/N12/OC05 installation, Sorok C0 port, or V3 physical weld."
+}
