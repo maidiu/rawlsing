@@ -49,6 +49,10 @@ These are local Python+SQLite sample timings, not source decode/projection, real
 
 ---
 
+### KUDA-R16-f — permanent complete C11 store decision test designed, NOT executed (2026-11-21)
+
+[One existing #1006 owned test protocol](https://github.com/maidiu/rawlsing/issues/1006#issuecomment-7067308042): directly compare the *already-saved original* 13-family ANVIL stream estate across H = Parquet + **permanent compact SQLite index** and S1 TEXT/S2 INTEGER/S3 INTEGER+32-byte SHA256 **complete SQLite C11** retaining all full canonical source refs, bodies, typed R5 and source-science/replay records, as well as query/result metadata. Preserve ANVIL stream vs direct-I02 identity distinction, original source roots, the original recorded Q103 issuer and native I03 evaluator, and identical S04/FF01, durable S2-F/S05 first consumers. Test 1/10/100 DISTINCT issued queries, 3+ co-occurrence, full scan, 10 new-process cold opens, separate one-time build and steady cost, durable+scratch bytes, peak RSS, wrong-current/corruption/restoration/fingerprint collision. The actual original 100-operation issuer must exist or source-authority HOLD rather than invented. A full physical file SHA cannot match across Parquet and SQLite; compare externally held original **logical** closure and native fact roots, qualify derived physical roots separately. Outcome select by exact parity + measured total economics/break-even, not the historical 1748.98-second unprofiled single Q103. **DESIGNED_NOT_EXECUTED**; no code/owner acceptance, no extra KUDA historical ID, no protected G4/paired CURRENT_PROGRESS update. `HQ_CURRENTNESS_HOLD` applies to storage cutover, not the test.
+
 ## KUDA-R16 — SQLite-canonical feasibility adjudication against selected 13-family C11 (2026-11-21; SOURCE_STATIC / NOT A STORAGE SELECTION)
 
 ### MainMac sample-index compaction measurements — actual #1006 receipt (2026-11-21; not whole SQLite C11)
