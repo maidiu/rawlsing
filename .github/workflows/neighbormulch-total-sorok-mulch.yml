@@ -1,0 +1,27 @@
+name: NEIGHBORMULCH TOTAL SOROK no-drop source and idea court
+on:
+  push:
+    branches:
+      - agent/neighbormulch-total-sorok-source-conservation-r1-20261121
+  pull_request:
+    branches:
+      - agent/neighbormulch-soracle-r27-reciprocal-intake-20261121-r1
+  workflow_dispatch:
+jobs:
+  exact-source-identity-and-user-ideas:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile read-only bank verifier
+        run: python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_total_mulch.py
+      - name: Original IDs, source file locators and complete current conversation idea register
+        run: python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_total_mulch.py
+      - name: Reopen immutable original H/Q/O-Index/SOROKUDA/S0-S16 source blobs directly
+        run: |
+          python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
+          python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
