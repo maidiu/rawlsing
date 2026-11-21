@@ -9,7 +9,7 @@ from dataclasses import asdict
 from pathlib import Path
 from .types import newborn, blank_world, Attempt, copy, GRADE, digest, stable_id
 from .storage import ResearchLedger
-from .constitution import materialize, actor_access, compose
+from .constitution import materialize, actor_access, compose, situated_encounter_aperture
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
@@ -141,6 +141,28 @@ class ConstitutiveRuntime:
         const=materialize(person,world)
         access=actor_access(person,world)
         return asdict(compose(const,access))
+
+    def current_interpersonal_aperture(self, observer_id, counterpart_id):
+        """Internal, read-only current co-presence witness for a registered pair.
+
+        Not an encounter event, identity recognition, actor's speech, a user
+        scene, or permission to inspect another person's psychological history.
+        Actual public perception comes through existing actor_access gates.
+        """
+        if (type(observer_id) is not str or not observer_id
+                or type(counterpart_id) is not str or not counterpart_id):
+            raise ValueError('ENCOUNTER_INVALID_ACTOR_REF')
+        if observer_id==counterpart_id:
+            raise ValueError('ENCOUNTER_OTHER_MUST_BE_DISTINCT')
+        try:
+            _,observer=self.ledger.actor(observer_id)
+            # Verify membership; do not pass the Other's private actor
+            # constitution into a public/read-model first-consumer.
+            self.ledger.actor(counterpart_id)
+        except KeyError as exc:
+            raise ValueError('ENCOUNTER_UNREGISTERED_ACTOR') from exc
+        _,world=self.ledger.world(self.world_id)
+        return situated_encounter_aperture(observer,counterpart_id,world)
 
     def cue(self,actor_id=None,kind='ordinary_contact',tags=None,location='home',
             description='',modality='visual',private_to=None,lasting_ticks=0):
