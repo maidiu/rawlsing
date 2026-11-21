@@ -1,31 +1,98 @@
 {
-  "base_commit": "1a3c84e03b9c2e7288e2bafb7fb4e98ab81d94be",
+  "base_commit": "520094c79c25efaabed2db6c02150f2912091721",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
+    "decision_verifier_required": true,
     "exports": [
       "HeldStreamIssuanceDecision",
       "StreamIssuanceError",
       "issue_and_execute_stream_i03"
     ],
     "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
-    "sha256": "56d5e795ddeb0563e9cffba752780ae04a05927e748764f7718c7f08d1d4eb6c"
+    "sha256": "42e49432b5a1c89b26894f194e7fa32a998e00236975175c893d328c5c788791"
+  },
+  "correction": {
+    "bound_fields": [
+      "source_id",
+      "source_root",
+      "release_root",
+      "universe_root",
+      "replay_root",
+      "question_ref",
+      "authorized_operation",
+      "approved_denominator_ref",
+      "approved_response_semantics_ref",
+      "authorities",
+      "approved_raw_domain",
+      "approved_nonanswer_states"
+    ],
+    "effective_current_optional": false,
+    "retained": [
+      "forged/stale decision",
+      "missing verifier",
+      "wrong source/release/universe/replay/question",
+      "wrong operation",
+      "missing/stale authority",
+      "outside approved domain",
+      "denied/revoked authority"
+    ],
+    "true_for_anything_default": false,
+    "verifier_calls": "before validation, before native execution, after native execution, at final output"
   },
   "g5_claim": false,
+  "missing_resolver_red": {
+    "decision_verifier": null,
+    "replay_ref": "{'content_hash': '45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8'}",
+    "schema": "ANVIL_Q006_MISSING_RESOLVER_RED@1",
+    "status": "RED_POSITIVE_RAN_WITHOUT_DECISION_VERIFIER",
+    "typed_state": "SUPPORTED"
+  },
+  "operation_builder": {
+    "existing_paths": [
+      "pre553_governed_query_issuer_v2 requires GovernedFrontierCompilation and is TEST_ONLY",
+      "pre553_native_workload_binding.build_projection_catalog is a test fixture from NativePreimageBundle, not saved stream"
+    ],
+    "first_fault": "HeldStreamIssuanceDecision still requires caller-supplied EmpiricalPredicate and EmpiricalQuerySpec; no production operation-to-query builder consumes VerifiedAnvilStreamEstate",
+    "not_implemented_because": "q103 exact 97/98/99 and asked/eligible decision is missing; an operation builder would require cross-owner source/schema terrain",
+    "owner_needed": [
+      "R03 / saved-release issuer owner",
+      "SRC04 QSM/source/risk owner"
+    ],
+    "status": "ABSENT__EXACT_OWNER_SEAM"
+  },
+  "original_q103_data_accessed": false,
   "original_source_accessed": false,
   "original_wave_i03": false,
-  "owner_needed": [
-    "R03 / saved-release issuer owner",
-    "SRC04 QSM/source/risk owner"
-  ],
   "pins": {
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
-    "candidate_module": "56d5e795ddeb0563e9cffba752780ae04a05927e748764f7718c7f08d1d4eb6c",
+    "candidate_module_sha256": "42e49432b5a1c89b26894f194e7fa32a998e00236975175c893d328c5c788791",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
-    "proof_output": "fae18118e9fc3e96ebcdc5e626953a98f34ceef4aa9fd6d127bff9e4bc5e1f94",
-    "proof_script": "2268cfe26bed2515b0508ae7d6a558853f7199e7270a497b1fddb390cc869593"
+    "red_witness_sha256": "732b3f584764143a2df7eb9f71f4074858bea6d66c525c1020ecf811af147bc4",
+    "typed_proof_sha256": "130013a2eef92facd37b1419c28edc390fded549d1fbbfac12207de02c9eb8e1"
   },
-  "proof": {
+  "protected_edits": false,
+  "q103_constraint": {
+    "asked_eligible": "not inferred",
+    "native_i03": "NOT_RUN",
+    "original_source": "NOT_READ",
+    "response_codes": "97/98/99 not remapped"
+  },
+  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
+  "reused": [
+    "VerifiedAnvilStreamEstate",
+    "RuntimeObjectCatalog",
+    "AuthorityRegistry",
+    "execute_anvil_stream_i03",
+    "DirectEstateI03Session",
+    "execute_empirical_query"
+  ],
+  "saved_estate_modified": false,
+  "saved_estate_rebuilt": false,
+  "schema": "ANVIL_P0_Q006_TYPED_ISSUANCE_CORRECTION@1",
+  "sourcefree": true,
+  "status": "AUTHORITY_BINDING_CORRECTED__MISSING_RESOLVER_RED_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD",
+  "typed_proof": {
     "estate_writes": false,
     "negatives": [
       {
@@ -71,14 +138,32 @@
         "type": "StreamIssuanceError"
       },
       {
+        "label": "stale_authority",
+        "message": "exact historical authority unavailable; no fallback permitted",
+        "refused": true,
+        "type": "Pre553AuthorityError"
+      },
+      {
         "label": "outside_approved_domain",
         "message": "native raw outcome is outside the approved domain",
         "refused": true,
         "type": "StreamIssuanceError"
       },
       {
+        "label": "forged_decision",
+        "message": "held decision verifier refused",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "missing_verifier",
+        "message": "exact held decision verifier is required",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
         "label": "denied_current",
-        "message": "effective source/operation authority refused",
+        "message": "held decision verifier refused",
         "refused": true,
         "type": "StreamIssuanceError"
       }
@@ -107,36 +192,20 @@
       "roots_unchanged": true,
       "typed_state": "SUPPORTED"
     },
+    "revoked_at_output": {
+      "label": "revoked_at_output",
+      "message": "held decision verifier refused at output",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
     "revoked_during_execution": {
       "label": "revoked_during_execution",
-      "message": "effective source/operation authority revoked during execution",
+      "message": "held decision verifier refused before execution",
       "refused": true,
       "type": "StreamIssuanceError"
     },
     "schema": "ANVIL_Q006_TYPED_ISSUANCE_PROOF@1",
     "sourcefree": true,
     "status": "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"
-  },
-  "protected_edits": false,
-  "q103_constraint": {
-    "asked_eligible": "not inferred",
-    "native_i03": "NOT_RUN for q103 original-wave",
-    "response_codes": "97/98/99 not remapped",
-    "status": "SOURCE_DECISION_HELD"
-  },
-  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
-  "reused": [
-    "VerifiedAnvilStreamEstate",
-    "RuntimeObjectCatalog",
-    "AuthorityRegistry",
-    "execute_anvil_stream_i03",
-    "DirectEstateI03Session",
-    "execute_empirical_query"
-  ],
-  "saved_estate_modified": false,
-  "saved_estate_rebuilt": false,
-  "schema": "ANVIL_P0_Q006_TYPED_ISSUANCE_RETURN@1",
-  "seam": "held decision -> exact roots/question/operation/authority validation -> RuntimeObjectCatalog -> execute_anvil_stream_i03",
-  "sourcefree": true,
-  "status": "TYPED_ISSUANCE_SEAM_IMPLEMENTED__SOURCEFREE_POSITIVE_NONANSWER_NEGATIVES_GREEN__Q103_SOURCE_DECISION_HELD"
+  }
 }

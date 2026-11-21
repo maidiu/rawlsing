@@ -30,7 +30,7 @@ from rawlsing_next.pre553_anvil_stream_issuance import (  # noqa: E402
 from rawlsing_next.pre553_anvil_stream_native_i03 import (  # noqa: E402
     VerifiedAnvilStreamEstate,
 )
-from rawlsing_next.pre553_empirical_objects import ExactRef  # noqa: E402
+from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref  # noqa: E402
 from rawlsing_next.tests.test_pre553_anvil_stream_native_i03 import _stream  # noqa: E402
 
 
@@ -46,6 +46,11 @@ def _decision(estate, source, auth, predicate, query, *, nonanswer=()):
         authorities=tuple((*source["authorities"], auth)),
         predicate=predicate,
         query=query,
+        approved_denominator_ref=exact_ref(query.risk_set_ref, "proof denominator"),
+        approved_response_semantics_ref=exact_ref(
+            query.requested_output_grain["response_state_semantics_ref"],
+            "proof response semantics",
+        ),
         approved_raw_domain=("0", "1"),
         approved_nonanswer_states=tuple(nonanswer),
     )
@@ -85,8 +90,11 @@ def main() -> int:
             current_authorizer=grant,
         )
         decision = _decision(estate, source, auth, predicate, query)
+        current = {"yes": True}
+        def verify_decision(candidate):
+            return current["yes"] and candidate == decision
         positive = issue_and_execute_stream_i03(
-            estate=estate, decision=decision, effective_current=lambda: True,
+            estate=estate, decision=decision, decision_verifier=verify_decision,
         )
         fact = positive.facts[0]
         out["positive"] = {
@@ -124,7 +132,8 @@ def main() -> int:
             nonanswer=("UNRESOLVED",),
         )
         nonanswer = issue_and_execute_stream_i03(
-            estate=estate_n, decision=decision_n, effective_current=lambda: True,
+            estate=estate_n, decision=decision_n,
+            decision_verifier=lambda candidate: candidate == decision_n,
         )
         nfact = nonanswer.facts[0]
         out["nonanswer"] = {
@@ -151,9 +160,7 @@ def main() -> int:
         bad_question = dataclasses.replace(
             decision,
             question_ref=ExactRef(
-                "QUESTION_NATIVE",
-                source["qrefs"]["Y"].object_id,
-                "5" * 64,
+                "QUESTION_NATIVE", source["qrefs"]["Y"].object_id, "5" * 64,
             ),
         )
         bad_operation = dataclasses.replace(
@@ -163,34 +170,68 @@ def main() -> int:
         bad_domain = dataclasses.replace(
             decision, approved_raw_domain=("9",),
         )
+        forged_domain = dataclasses.replace(
+            decision, approved_raw_domain=("9",),
+        )
+        stale_authority = dataclasses.replace(
+            decision, authorities=decision.authorities[:-1],
+        )
         out["negatives"] = [
             _reject("wrong_source", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_source)),
+                estate=estate, decision=bad_source,
+                decision_verifier=lambda c: c == bad_source)),
             _reject("wrong_release", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_release)),
+                estate=estate, decision=bad_release,
+                decision_verifier=lambda c: c == bad_release)),
             _reject("wrong_universe", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_universe)),
+                estate=estate, decision=bad_universe,
+                decision_verifier=lambda c: c == bad_universe)),
             _reject("wrong_replay", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_replay)),
+                estate=estate, decision=bad_replay,
+                decision_verifier=lambda c: c == bad_replay)),
             _reject("wrong_question", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_question)),
+                estate=estate, decision=bad_question,
+                decision_verifier=lambda c: c == bad_question)),
             _reject("wrong_operation", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_operation)),
+                estate=estate, decision=bad_operation,
+                decision_verifier=lambda c: c == bad_operation)),
             _reject("missing_authority", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=empty_authority)),
+                estate=estate, decision=empty_authority,
+                decision_verifier=lambda c: c == empty_authority)),
+            _reject("stale_authority", lambda: issue_and_execute_stream_i03(
+                estate=estate, decision=stale_authority,
+                decision_verifier=lambda c: c == stale_authority)),
             _reject("outside_approved_domain", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=bad_domain)),
+                estate=estate, decision=bad_domain,
+                decision_verifier=lambda c: c == bad_domain)),
+            _reject("forged_decision", lambda: issue_and_execute_stream_i03(
+                estate=estate, decision=forged_domain,
+                decision_verifier=verify_decision)),
+            _reject("missing_verifier", lambda: issue_and_execute_stream_i03(
+                estate=estate, decision=decision, decision_verifier=None)),
             _reject("denied_current", lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=decision, effective_current=lambda: False)),
+                estate=estate, decision=decision,
+                decision_verifier=lambda c: False)),
         ]
         revoke = {"calls": 0}
-        def revoked():
+        def revoked(candidate):
             revoke["calls"] += 1
             return revoke["calls"] < 2
         out["revoked_during_execution"] = _reject(
             "revoked_during_execution",
             lambda: issue_and_execute_stream_i03(
-                estate=estate, decision=decision, effective_current=revoked,
+                estate=estate, decision=decision, decision_verifier=revoked,
+            ),
+        )
+        output_revoke = {"calls": 0}
+        def revoked_at_output(candidate):
+            output_revoke["calls"] += 1
+            return output_revoke["calls"] < 4
+        out["revoked_at_output"] = _reject(
+            "revoked_at_output",
+            lambda: issue_and_execute_stream_i03(
+                estate=estate, decision=decision,
+                decision_verifier=revoked_at_output,
             ),
         )
         out["status"] = "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"

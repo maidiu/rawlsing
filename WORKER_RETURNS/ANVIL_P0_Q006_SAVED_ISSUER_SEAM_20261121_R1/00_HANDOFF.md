@@ -1,79 +1,89 @@
-# Q006 saved-stream typed issuance seam — candidate
+# Q006 saved-stream typed issuance — authority-binding correction
 
 ## Status
 
-`TYPED_ISSUANCE_SEAM_IMPLEMENTED__SOURCEFREE_POSITIVE_NONANSWER_NEGATIVES_GREEN__Q103_SOURCE_DECISION_HELD`
+`AUTHORITY_BINDING_CORRECTED__MISSING_RESOLVER_RED_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD`
 
-Isolated candidate only. No q103 original-wave issuance or scientific authority
-is claimed.
+Isolated candidate only. No q103 original-wave issuance, new source scheme or
+scientific authority is claimed.
 
-## Candidate code
+## RED witness — missing resolver
 
-`rawlsing_next/pre553_anvil_stream_issuance.py`
+`red_missing_resolver.py` was run against the prior candidate
+`520094c79c25efaabed2db6c02150f2912091721` with
+`effective_current=None`. The positive sourcefree call completed with
+`SUPPORTED`; the absent decision-level check did not block it. See
+`RED_MISSING_RESOLVER.out`.
 
-`HeldStreamIssuanceDecision` is externally supplied and held. It carries the
-exact stream source/release/universe/replay roots, question ref, authorized
-operation, typed authority snapshots, existing `EmpiricalPredicate` and
-`EmpiricalQuerySpec`, and approved raw/nonanswer domains.
+## Correction
 
-`issue_and_execute_stream_i03`:
+`rawlsing_next/pre553_anvil_stream_issuance.py` now requires
+`decision_verifier: Callable[[HeldStreamIssuanceDecision], bool]`; there is no
+optional check and no `lambda: True` default in the adapter. It calls the exact
+held-decision verifier before validation, immediately before native execution,
+after native execution, and at final output. It also validates the held
+source/release/universe/replay roots, source identity, exact question binding,
+query target, denominator, response-state semantics, operation authority and
+current estate.
 
-1. requires a verified `VerifiedAnvilStreamEstate`;
-2. checks the held source identity and all four roots against the estate;
-3. requires exactly one matching saved `QuestionVariableBinding`;
-4. requires the query condition to be the exact predicate and the query target
-   to be exactly the held question/universe;
-5. requires exact held authorities and an exact authorized operation;
-6. reuses the existing `RuntimeObjectCatalog` constructor;
-7. calls the existing `execute_anvil_stream_i03` native I03 path;
-8. checks approved raw cells and approved nonanswer states;
-9. checks effective live authority before and after execution and rechecks
-   unchanged stream members.
+`HeldStreamIssuanceDecision` now carries the externally held denominator and
+response-semantics refs. No source semantics are inferred from saved metadata.
 
-No alternate evaluator, issuer, new permanent ref, TEST_ONLY promotion, or
-caller-selected unscoped admission is introduced.
+## Retained refusals
 
-## Sourcefree executed proof
+The sourcefree proof refuses:
+
+- forged/stale decision under the expected verifier;
+- missing verifier;
+- wrong source/release/universe/replay/question;
+- wrong operation;
+- missing/stale authority;
+- raw outcome outside the approved domain;
+- denied current authority;
+- revocation during execution and at final output.
+
+## Operation-to-query construction — exact first fault
+
+The existing exact saved-stream consumer still requires caller-supplied
+`EmpiricalPredicate` and `EmpiricalQuerySpec`. No production operation-to-query
+builder exists for a verified ANVIL stream:
+
+- `pre553_governed_query_issuer_v2` builds only from a
+  `GovernedFrontierCompilation` and is explicitly `TEST_ONLY_SOURCEFREE`;
+- `pre553_native_workload_binding.build_projection_catalog` is a test-only
+  fixture builder and does not consume a verified saved stream;
+- q103's 97/98/99 and asked/eligible source decision is absent, so constructing
+  its operation/query would require source/schema authority not present here.
+
+The candidate therefore freezes the valid authority-binding correction at the
+adapter and leaves operation-to-query construction as an exact owner seam. It
+does not invent a new source scheme, full R03 compiler or second evaluator.
+
+### Required owner terrain
+
+- **R03 / saved-release issuer owner**: production operation-to-query/predicate
+  construction from the exact held operation and verified stream scope.
+- **SRC04 QSM/source/risk owner**: q103 97/98/99, system missingness, and
+  asked/eligible denominator (or narrower recorded-responses-only scope).
+
+## Sourcefree proof
 
 `proof_typed_issuance.py` / `TYPED_ISSUANCE.out`:
 
-- positive: `SUPPORTED`, raw denominator 2, cells `0`/`1`, exact
-  `PRE553_I03_QUERY_REPLAY`, stream release retained, roots unchanged;
-- nonanswer fixture: native `UNRESOLVED`, approved as `UNRESOLVED`, replay
-  retained;
-- wrong source root: refused;
-- wrong release root: refused;
-- wrong universe root: refused;
-- wrong replay root: refused;
-- wrong question ref: refused;
-- wrong authorized operation: refused by exact authority;
-- missing authority: refused;
-- raw outcome outside approved domain: refused;
-- denied current authority: refused;
-- revoked during execution: refused.
+- positive: `SUPPORTED`, denominator 2, cells `0`/`1`, exact
+  `PRE553_I03_QUERY_REPLAY`;
+- nonanswer: `UNRESOLVED`, explicitly approved;
+- roots unchanged, stream release retained;
+- exact verifier mandatory and called before/after/output;
+- all negatives above refused.
 
-## q103 constraint
+## Pins
 
-The q103 source return `4a35990659f40130f4579a3929d61238dde4b84d` still lacks
-independent decisions for 97/98/99 and asked/eligible routing. This candidate
-does not remap those codes or risk; q103 is not executed. The generic
-`approved_raw_domain`/`approved_nonanswer_states` fields preserve those as
-explicit externally supplied constraints.
-
-## Reused / pinned
-
-- P0 issuer handoff: `refs/anvil-p0/issuer` @ `357a0fbf...` (#1084)
-- asked-eligible: `refs/anvil-p0/asked-eligible` @ `c5efdbdf...` (#1205)
-- 1185 bridge: `3eee662d...`
+- #1084 issuer: `357a0fbf...`
+- #1205 asked-eligible: `c5efdbdf...`
+- #1185 bridge: `3eee662d...`
+- prior candidate: `520094c79...`
 - q103 return: `4a3599065...`
-- existing 997/998 contracts were not reissued or merged.
 
-## Owner
-
-- **R03 / saved-release issuer owner**: accept or amend the held-decision
-  issuance seam and runtime catalog construction.
-- **SRC04 QSM/source/risk owner**: issue q103 97/98/99, system missingness,
-  and asked/eligible decision (or narrower recorded-responses-only scope).
-
-No original source, saved-estate rebuild/write, private custody file, protected
-ref, G5 claim, or original-wave I03 was used.
+No original source, original q103 data, saved-estate rebuild/modification,
+protected refs, G5 claim, issue posts or original-wave I03 was used.

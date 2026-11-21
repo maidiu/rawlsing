@@ -55,6 +55,8 @@ class HeldStreamIssuanceDecision:
     authorities: tuple[AuthoritySnapshot, ...]
     predicate: EmpiricalPredicate
     query: EmpiricalQuerySpec
+    approved_denominator_ref: ExactRef
+    approved_response_semantics_ref: ExactRef
     approved_raw_domain: tuple[str, ...]
     approved_nonanswer_states: tuple[str, ...] = ()
 
@@ -93,20 +95,21 @@ def issue_and_execute_stream_i03(
     *,
     estate: VerifiedAnvilStreamEstate,
     decision: HeldStreamIssuanceDecision,
-    effective_current: Callable[[], bool] | None = None,
+    decision_verifier: Callable[[HeldStreamIssuanceDecision], bool],
 ):
     """Validate a held decision, build the existing catalog, and execute I03.
 
-    ``effective_current`` must be the current external authority check for the
-    held decision.  When absent, the verified estate's own current check still
-    applies, but no source-specific authority freshness is asserted.
+    ``decision_verifier`` is mandatory: it is the exact external held-decision
+    resolver/currentness check.  There is no local true-for-anything default.
     """
     if type(estate) is not VerifiedAnvilStreamEstate:
         raise StreamIssuanceError("exact verified ANVIL stream estate required")
     if type(decision) is not HeldStreamIssuanceDecision:
         raise StreamIssuanceError("exact held stream issuance decision required")
-    if effective_current is not None and effective_current() is not True:
-        raise StreamIssuanceError("effective source/operation authority refused")
+    if not callable(decision_verifier):
+        raise StreamIssuanceError("exact held decision verifier is required")
+    if decision_verifier(decision) is not True:
+        raise StreamIssuanceError("held decision verifier refused")
 
     estate._live()
     if type(decision.source_id) is not str or decision.source_id != estate._held.source_id:
@@ -136,6 +139,19 @@ def issue_and_execute_stream_i03(
     held_universe = _stream_exact_universe(decision.universe_root)
     if universes != (held_universe,):
         raise StreamIssuanceError("query universe is not the held stream universe")
+    if exact_ref(query.risk_set_ref, "query risk set") != exact_ref(
+        decision.approved_denominator_ref, "held denominator"
+    ):
+        raise StreamIssuanceError("query denominator is not the held denominator")
+    grain = query.requested_output_grain
+    if type(grain) is not dict and not hasattr(grain, "get"):
+        raise StreamIssuanceError("query output grain is not an exact mapping")
+    if exact_ref(
+        grain.get("response_state_semantics_ref"), "query response semantics"
+    ) != exact_ref(
+        decision.approved_response_semantics_ref, "held response semantics"
+    ):
+        raise StreamIssuanceError("query response semantics is not the held semantics")
 
     authorities = tuple(decision.authorities)
     if not authorities or any(type(x) is not AuthoritySnapshot for x in authorities):
@@ -162,14 +178,16 @@ def issue_and_execute_stream_i03(
         discovery_authorities=(),
     )
     # Existing native I03; no alternate evaluator or catalog path.
+    if decision_verifier(decision) is not True:
+        raise StreamIssuanceError("held decision verifier refused before execution")
     result = execute_anvil_stream_i03(
         estate=estate,
         runtime_catalog=catalog,
         query_ref=query.ref,
         predicate_ref=predicate.ref,
     )
-    if effective_current is not None and effective_current() is not True:
-        raise StreamIssuanceError("effective source/operation authority revoked during execution")
+    if decision_verifier(decision) is not True:
+        raise StreamIssuanceError("held decision verifier refused after execution")
 
     approved_raw = tuple(decision.approved_raw_domain)
     if not approved_raw or any(type(x) is not str for x in approved_raw):
@@ -181,6 +199,8 @@ def issue_and_execute_stream_i03(
         if not set(cells).issubset(set(approved_raw)):
             raise StreamIssuanceError("native raw outcome is outside the approved domain")
     estate._recheck_unchanged_members()
+    if decision_verifier(decision) is not True:
+        raise StreamIssuanceError("held decision verifier refused at output")
     return result
 
 

@@ -44,14 +44,32 @@
       "type": "StreamIssuanceError"
     },
     {
+      "label": "stale_authority",
+      "message": "exact historical authority unavailable; no fallback permitted",
+      "refused": true,
+      "type": "Pre553AuthorityError"
+    },
+    {
       "label": "outside_approved_domain",
       "message": "native raw outcome is outside the approved domain",
       "refused": true,
       "type": "StreamIssuanceError"
     },
     {
+      "label": "forged_decision",
+      "message": "held decision verifier refused",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "missing_verifier",
+      "message": "exact held decision verifier is required",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
       "label": "denied_current",
-      "message": "effective source/operation authority refused",
+      "message": "held decision verifier refused",
       "refused": true,
       "type": "StreamIssuanceError"
     }
@@ -80,9 +98,15 @@
     "roots_unchanged": true,
     "typed_state": "SUPPORTED"
   },
+  "revoked_at_output": {
+    "label": "revoked_at_output",
+    "message": "held decision verifier refused at output",
+    "refused": true,
+    "type": "StreamIssuanceError"
+  },
   "revoked_during_execution": {
     "label": "revoked_during_execution",
-    "message": "effective source/operation authority revoked during execution",
+    "message": "held decision verifier refused before execution",
     "refused": true,
     "type": "StreamIssuanceError"
   },
