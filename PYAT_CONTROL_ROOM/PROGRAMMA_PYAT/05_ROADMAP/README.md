@@ -3,6 +3,9 @@
 [Scoped F6 closed-PR conservation](G4_F6_CLOSED_PR_CONSERVATION_20261121.md) records the Q018/Q020 successor, Q019 retirement and the stale REMONT queue note.
 
 
+**Rev23 scoped sourcefree Q023 S04 typed-hold delta.** #1247 fast-forwarded to `997ca50869551d292650c710a2c99a43c9119f7a` from `53517c4ac` (via test-only successor `16d3dfb99`); the exact S04 repair holds real UNAVAILABLE and ZERO_SUPPORT as typed producer facts (`PRODUCER_TYPED_HELD`), never `SUPPORTED_SAMPLE_DESCRIPTIVE`, with exact **4 SUPPORTED / 6 UNAVAILABLE / 2 ZERO_SUPPORT**. OpenCode session `ses_e02721729ffe2zKdAlQsGsj1jx` independently reviewed the scoped delta (reported: focus 1 pass plus S04 suite 10 pass, macOS Python 3.11.3). Sourcefree delta only; the rev22 `53517c4ac` receipt and earlier counts stay historical at their own SHAs. Protected status unchanged; canonical CI failed on the separate shared front-door question offset, whose repair is active. [Q023 S04 receipt](G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json).
+
+
 **Rev22 sourcefree execution follow-up.** Q023 33/33 and Q014 41/41 independently reproduced on the same host at #1247 `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. Broader G5 and code receiving remain pending. [independent execution receipt](G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json).
 
 

@@ -1,3 +1,12 @@
+# PYAT CURRENT_PROGRESS REV23 — SCOPED SOURCEFREE Q023 S04 TYPED-HOLD DELTA
+
+[Revision 23 Q023 S04 receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)
+
+
+**#1247 fast-forwarded** from `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` to `997ca50869551d292650c710a2c99a43c9119f7a` (via test-only successor `16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1`). The exact S04 repair reads `target_domain_identity` with `getattr(..., None)` so typed-negative I03 executions are held instead of crashing; the existing Q023 test now calls `receive_s04_first_consumer` on those facts and asserts `PRODUCER_TYPED_HELD`, never `SUPPORTED_SAMPLE_DESCRIPTIVE`. Real UNAVAILABLE and ZERO_SUPPORT produce the typed hold with the exact partition **4 SUPPORTED / 6 UNAVAILABLE / 2 ZERO_SUPPORT**. OpenCode session `ses_e02721729ffe2zKdAlQsGsj1jx` independently reviewed the scoped S04 delta; the reported results are **focus 1 pass plus S04 suite 10 pass, macOS Python 3.11.3**. This is a **scoped sourcefree delta only**; the rev22 `53517c4ac` receipt and every earlier count remain historical receipts at their historical SHAs. **Protected status unchanged:** no feature code in PRE-MAIN, no wider independent G5, and no protected receiving. Canonical CI started after the public change and failed on the separate shared front-door question offset (run `44890906453`; `verify_pyat_product_priority_visibility_r1.py` reports the exact user question outside its 2600-character prefix window in all three front doors); that is **not** a Q023/S04 failure and its separate repair is active.
+
+---
+
 # PYAT CURRENT_PROGRESS REV22 — INDEPENDENT Q023/Q014 EXECUTION RECEIPT
 
 [Revision 22 execution receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)

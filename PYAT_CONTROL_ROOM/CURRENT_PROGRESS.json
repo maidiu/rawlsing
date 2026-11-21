@@ -1,10 +1,48 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 22,
-  "revision_note": "Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The Q023 fixture emitted four SUPPORTED, six UNAVAILABLE and two ZERO_SUPPORT facts. The earlier finding mistook the supported subset for the full workload. The test-only successor 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 adds the missing assertions and passed the focused test with its committed test file against the unchanged #1247 checkout. Wider G4 receiving and feature-code adoption remain pending.",
-  "report_status": "PYAT_REV22_DOC_ONLY_INDEPENDENT_EXECUTION_Q023_Q014__CODE_UNRECEIVED",
-  "remont_1247_independent_execution": {"candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff", "tests": {"RMT-Q014": {"tests": 41}, "RMT-Q023": {"tests": 33}}, "artifact_scope": "Case counts and names. Raw JUnit retained on execution host.", "receipt": "PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json"},
+  "revision": 23,
+  "revision_note": "Rev23 scoped sourcefree Q023 S04 typed-hold delta: #1247 fast-forwarded from 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff to 997ca50869551d292650c710a2c99a43c9119f7a (via test-only successor 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1). The exact S04 repair holds real UNAVAILABLE and ZERO_SUPPORT as PRODUCER_TYPED_HELD with exact 4/6/2; OpenCode session ses_e02721729ffe2zKdAlQsGsj1jx independently reviewed the scoped delta (focus 1 pass plus S04 suite 10 pass, macOS Python 3.11.3). Scoped sourcefree delta only; the rev22 53517c4ac receipt and earlier counts remain historical receipts at their historical SHAs. Protected status unchanged; canonical CI failed on the separate shared front-door question offset. No feature code in PRE-MAIN and no protected receiving.",
+  "report_status": "PYAT_REV23_SCOPED_SOURCEFREE_Q023_S04_TYPED_HOLD__REV22_HISTORICAL_RETAINED__CODE_UNRECEIVED",
+  "remont_1247_independent_execution": {"candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff", "tests": {"RMT-Q014": {"tests": 41}, "RMT-Q023": {"tests": 33}}, "artifact_scope": "Case counts and names. Raw JUnit retained on execution host.", "receipt": "PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json", "historical_revision": 22, "superseded_for_q023_s04_scope_by": "remont_1247_s04_typed_hold_rev23"},
+  "remont_1247_s04_typed_hold_rev23": {
+    "grade": "INDEPENDENTLY_REVIEWED_SCOPED_SOURCEFREE",
+    "candidate_pr": 1247,
+    "candidate": "997ca50869551d292650c710a2c99a43c9119f7a",
+    "prior_candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+    "fast_forward": "53517c4ac -> 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 (test-only successor) -> 997ca5086",
+    "scope": "SCOPED_SOURCEFREE_S04_TYPED_NEGATIVE_HOLD_DELTA_ONLY",
+    "source_delta": {
+      "source_pr": 1264,
+      "path": "rawlsing_next/pre553_s04_observed_research.py",
+      "repair": "target_domain_identity read via getattr(fact, 'target_domain_identity', None); typed-negative I03 facts held instead of crashing before S04 reception",
+      "test_path": "rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py",
+      "test": "test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results asserts PRODUCER_TYPED_HELD, never SUPPORTED_SAMPLE_DESCRIPTIVE, and exact 4/6/2"
+    },
+    "typed_hold": {
+      "SUPPORTED": 4,
+      "UNAVAILABLE": 6,
+      "ZERO_SUPPORT": 2,
+      "issued_query_total": 12,
+      "not_promoted_to_supported_sample_descriptive": true
+    },
+    "independent_review": {
+      "session": "ses_e02721729ffe2zKdAlQsGsj1jx",
+      "scope": "Focus 1 pass plus S04 suite 10 pass",
+      "environment": "macOS Python 3.11.3",
+      "attribution": "USER_SUPPLIED_SESSION_AND_RESULTS__S04_SOURCE_DELTA_INSPECTED_IN_THIS_RECEIVING"
+    },
+    "protected_status": "UNCHANGED__NO_FEATURE_CODE_IN_PRE_MAIN__NO_PROTECTED_RECEIVING",
+    "canonical_ci": {
+      "started_after_public_change": true,
+      "result": "FAILURE",
+      "run_id": 44890906453,
+      "cause": "SHARED_FRONT_DOOR_QUESTION_OFFSET__EXACT_USER_QUESTION_BEYOND_2600_CHAR_PREFIX_WINDOW",
+      "disposition": "SEPARATE_REPAIR_ACTIVE__NOT_A_Q023_S04_FAILURE__NOT_GREEN"
+    },
+    "historical_receipts": "REV22_53517C4AC_AND_EARLIER_RETAINED_AT_HISTORICAL_SHAS",
+    "receipt": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json"
+  },
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
