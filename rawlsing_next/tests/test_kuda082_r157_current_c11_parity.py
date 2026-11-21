@@ -1,84 +1,84 @@
-"""KUDA-082 actual R157 synthetic fixture -> current facade/direct I02 parity.
+"""KUDA-082: diagnostic-only test of existing R157 and C11 two-path fidelity.
 
-No original35 file, source read, native scientific issuance or new C11 engine.
+This test owns NO production reader, issuer, semantic schema, all35 index,
+or historical universal_source_to_c11 package. Do not install an alternative
+C11 entrypoint to make a historical fixture check pass.
 """
 import pytest
 
-from rawlsing_next.pre553_empirical_objects import ExactRef
-from rawlsing_next.pre553_r157_projection_adapter import SourceConfig
-from rawlsing_next.pre553_r157_universal_c11_parity import (
-    UniversalC11ReceiptError,
-    receive_r157_fixture_c11_parity,
+from rawlsing_next.pre553_c11_ingest import ingest_c11_source_release
+from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_r157_projection_adapter import (
+    SourceConfig,
+    SourceConfigurationBindingError,
+    build_governed_c11_projection,
+    decode_fixture_config,
+    project_c11_candidate_from_config,
+    row_native_keys_from_transport,
+)
+from rawlsing_next.pre553_source_backed_c11_facade import (
+    build_validated_source_backed_c11_release,
 )
 from rawlsing_next.tests.test_pyat940_s1b_support import build_scenario, make_config
 
 
-@pytest.mark.parametrize("source_format,values", [
+@pytest.mark.parametrize("format_name,values", (
     ("SAV", (1.0, 2.0, 0.0, 7.0, 8.0, -1.0, None)),
     ("DTA", (1.0, 1.0, 0.0, None)),
-])
-def test_actual_current_r157_two_ingress_parity_and_existing_release(
-    tmp_path, source_format, values
+))
+def test_independent_current_r157_facade_vs_direct_i02_parity(
+    tmp_path, format_name, values,
 ):
-    case = build_scenario(tmp_path / source_format, source_format=source_format, values=values)
+    court = build_scenario(
+        tmp_path / format_name, source_format=format_name, values=values,
+    )
     try:
-        receipt = receive_r157_fixture_c11_parity(
-            config=case["config"], incidence=case["incidence"],
-            expected_release_ref=case["release"].release_ref,
-            batch_size=3,
+        incidence = court["incidence"]
+        config = court["config"]
+        keys = row_native_keys_from_transport(
+            config, incidence=incidence, batch_size=3,
         )
-        assert receipt.release_ref == case["release"].release_ref
-        assert receipt.facade_release_ref == receipt.release_ref
-        assert receipt.repository_release_refs == (receipt.release_ref,)
-        assert receipt.semantic_release_hash == receipt.release_ref.content_hash
-        assert receipt.original_execution == "NOT_RUN"
-        assert receipt.source_sha256 == case["source_sha"]
-        assert receipt.source_rows == case["rows"]
-        assert receipt.family_counts
-        assert receipt.m01_m18_coverage
+        projection = build_governed_c11_projection(
+            config, source_sha256=incidence.source_sha256,
+            row_count=incidence.row_count, row_native_keys=keys,
+        )
+        # Both executions remain inside the CHOSEN current owners.
+        facade_release = build_validated_source_backed_c11_release(
+            incidence, projection, batch_size=3,
+        )
+        candidate = project_c11_candidate_from_config(
+            config, projection,
+            cells_factory=lambda: incidence.iter_cells(3),
+            row_native_keys=keys,
+            source_sha256=incidence.source_sha256,
+            row_count=incidence.row_count,
+        )
+        repository = C11Repository()
+        ingestion = ingest_c11_source_release(candidate, repository)
+        assert ingestion.accepted
+        assert ingestion.release_ref is not None
+        direct = repository.resolve_release_exact(ingestion.release_ref)
+        assert direct.release_ref == facade_release.release_ref == court["release"].release_ref
+        assert direct.source_artifact_ref == facade_release.source_artifact_ref
+        assert direct.semantic_release_hash == facade_release.semantic_release_hash
+        assert direct.m01_m18_coverage == facade_release.m01_m18_coverage
+        assert repository.release_refs == (direct.release_ref,)
     finally:
-        case["incidence"].close()
+        court["incidence"].close()
 
 
-def test_original_source_config_refused_before_any_physical_iteration(tmp_path, monkeypatch):
-    case = build_scenario(tmp_path / "orig", source_format="SAV")
-    try:
-        original = SourceConfig(make_config(
-            source_format="SAV",
-            active_source_sha256=case["source_sha"],
-            row_count=case["rows"],
-            values=case["values"],
-            purpose="SOURCE_PREPARATION",
-            original=True,
-        ))
-        assert original.identity_class == "ORIGINAL_SOURCE"
-        with monkeypatch.context() as m:
-            m.setattr(case["incidence"], "iter_cells",
-                      lambda *_a, **_k: (_ for _ in ()).throw(
-                          AssertionError("ORIGINAL CONFIG MUST NOT TOUCH CELLS")))
-            with pytest.raises(UniversalC11ReceiptError,
-                               match="EXACT_NONRESPONDENT_FIXTURE_CONFIG_REQUIRED"):
-                receive_r157_fixture_c11_parity(
-                    config=original, incidence=case["incidence"])
-    finally:
-        case["incidence"].close()
-
-
-def test_wrong_pinned_expected_release_ref_is_not_silently_admitted(tmp_path):
-    case = build_scenario(tmp_path / "wrong", source_format="SAV")
-    try:
-        previous = case["release"].release_ref
-        false = ExactRef(previous.kind, previous.object_id, "0" * 64)
-        with pytest.raises(UniversalC11ReceiptError,
-                           match="PINNED_EXPECTED_C11_REF_MISMATCH"):
-            receive_r157_fixture_c11_parity(
-                config=case["config"], incidence=case["incidence"],
-                expected_release_ref=false,
-            )
-    finally:
-        case["incidence"].close()
-
-
-def test_uncertified_sourcefree_inputs_refused_without_ingress():
-    with pytest.raises(UniversalC11ReceiptError, match="EXACT_NONRESPONDENT_FIXTURE"):
-        receive_r157_fixture_c11_parity(config=None, incidence=None)
+def test_fixture_reader_must_refuse_closed_original_source_config_before_io(tmp_path):
+    # This deliberately constructs source authority SHAPE only, not a grant;
+    # the sourcefree decoder must not open any named original source.
+    fake_sha = "a" * 64
+    config = SourceConfig(make_config(
+        source_format="SAV", active_source_sha256=fake_sha,
+        row_count=2, values=(1.0, 2.0),
+        original=True, purpose="SOURCE_PREPARATION",
+    ))
+    assert config.identity_class == "ORIGINAL_SOURCE"
+    with pytest.raises(
+        SourceConfigurationBindingError,
+        match="decode_fixture_config refuses ORIGINAL_SOURCE",
+    ):
+        decode_fixture_config(config, tmp_path / "nonexistent-original.sav")
