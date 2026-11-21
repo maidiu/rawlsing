@@ -1,6 +1,9 @@
 # SEAM ↔ NEIGHBORMULCH — RECIPROCAL ENTRYPOINT
 ## One world, one independently becoming person, human participation as a real historical cause
 
+
+**NEW SHARED RECIPROCAL BANK (Round Eight, 2026-11-21):** [01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md](01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md) — direct user exact-SES and person-generated first-contact corrections, the last affirmed whole kernel, 44-line accepted/provisional/open/superseded no-drop matrix, source/authority boundaries, and two-sided SORACLE-CO ↔ NEIGHBOR handoff. **Read this and the current whole NEIGHBOR theory on every subsequent reciprocal MULCH; this does not edit/authorize the Constitutive Organism.**
+
 **SOURCE-GROUNDED CANDIDATE on isolated branch.** This file is a pointer, **not** a rival constitution or a grant to rewrite the Astra × UM-SOROK × SORACLE Constitutive Organism.
 
 **Canonical NEIGHBORMULCH workspace:** [SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/00_START_HERE.md](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/00_START_HERE.md).
