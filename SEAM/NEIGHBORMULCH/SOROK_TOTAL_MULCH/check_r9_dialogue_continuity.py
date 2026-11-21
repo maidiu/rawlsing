@@ -156,7 +156,7 @@ def main():
          "latest direct user's one-document and no-branch instruction lost")
     must("I do not want you to craete new documents" in direct,
          "source user wording not preserved verbatim")
-    must("HOLD_MISSING_ORIGINAL_CHAT" in whole and
+    must("HELD_MISSING_ORIGINAL_CHAT" in whole and
          "HELD_SEMANTIC_INDEPENDENCE" in whole,
          "independent evidence gap concealed")
     must("one existing" in whole.lower() or "existing draft PR #1277" in whole,
