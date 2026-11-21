@@ -102,3 +102,31 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 - If a promised verbatim original chat is missing, name the source gap and keep the earlier source summaries open; **do not claim absolute chat archival completeness**.
 - Passing sourcefree Actions at a fixed SHA authorizes only the scope that was actually executed, never human psychological science or protected HQ status.
 
+
+
+## E. Source-preserving update after user's latest financial-opacity and opening-day corrections (R9)
+
+**Direct source custody:** [10 partial direct-turn record](10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md) preserves the available user wording, including the response to the previous assistant's claims; [11 cross-lineage 104-identity union](11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json) retains **44 historical C bank rows**, **44 existing NM rows**, and **16 current R9 propositions** with explicit correction/supersession state. They overlap. Earlier turns and November 15 full discussion are not available as complete verbatim transcript. The R9 single-current theory lives at [NEIGHBOR whole](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md), with source ledger [13](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md). Original PR #1275 heads and 757 original source union are retained without rewrite.
+
+**Explicit historical retractions:** The earlier “same SES means the user knows Nadia's financial sacrifice” is **false as a user knowledge claim**. Same starting economic position is held as world truth, while the user sees only their own resource cost, never a guaranteed Nadia balance. The prior categorical prohibition on an authored trivial fictional prior acceptance/refusal in the entry prelude is also **retracted**: clicking/opening the game consents to a bounded encounter premise, not to unlimited offscreen impersonation. The “endless branch-specific precomputed openings” is returned to an open alternative; user prefers conditioning a plausible contact on Nadia's actual state on **the day of opening**, with possible unvisited common reference state awaiting source-owner adjudication.
+
+| R9 ID | Evidence | Specific claim or concern | Preserved fate |
+|---|---|---|---|
+| R9-01 | DIRECT_USER | Same SES/ordinary burden at entry exists as world truth, not automatically as visitor knowledge | CONSERVE_MATCH_SUPERSEDE_KNOWLEDGE |
+| R9-02 | DIRECT_USER | The only financial HUD is the user's own resources; Nadia's precise balance is not displayed or guaranteed known | NEW_CONTROLLING_EPISTEMIC_RULE |
+| R9-03 | DIRECT_USER | Offering or asking purchase price may blink a relative-cost preview on user's own resource bar; Nadia reacts actor-locally | NEW_UX_SURFACE_HYPOTHESIS |
+| R9-04 | DIRECT_USER | Splitting Dutch, asking painful money questions, or offering to pay are real situated negotiations, not scripted reactions | NEW_ACTIVITY_CASE |
+| R9-05 | DIRECT_USER | One or both independent financial conditions may diverge later without announcement; participants need not notice | NEW_TIME_AND_OPACITY |
+| R9-06 | DIRECT_USER | Money inequality changes ability to feel financial pain; no reward-lesson should disclose the inequality automatically | NEW_HISTORICAL_CONSEQUENCE |
+| R9-07 | DIRECT_USER | Avoid endless prewritten openings; generate possible encounter based on persona's condition that day | PREFERRED_NEW_IDEA_WITH_ALTERNATIVE_RETAINED |
+| R9-08 | DIRECT_USER | Question: How could player-as-neighbor have met Nadia at this moment, based on live shared/branch-conditional conditions? | NEW_CONTINGENT_CONTACT_PROBLEM |
+| R9-09 | DIRECT_USER | Opening product constitutes bounded advance consent to encounter and allows plausible authored prior fictional conversation or invitation | CATEGORICAL_NO_PRELUDE_RULE_RETRACTED |
+| R9-10 | RESEARCH_INFERENCE | A user-unaffected reference Nadia may continue to day of opening, then a branch-local visitor contact forks without changing global reference | PROVISIONAL_ARCHITECTURE_NOT_CLAIMED_IMPLEMENTED |
+| R9-11 | DIRECT_USER | Consult PR #1275 TOTAL SOROK source union at exact user-provided HEAD and Actions | INDEPENDENTLY_VERIFIED_SOURCE |
+| R9-12 | DIRECT_USER | Backfill conversation transcript where available and source-grade scrape surviving concepts; disclose missing original turns | EXECUTED_PARTIAL_SOURCE_BANK |
+| R9-13 | RESEARCH_INFERENCE | R8 claimed player knows Nadia's actual financial sacrifice from own bar; that was unwarranted epistemic promotion | RETRACTION |
+| R9-14 | RESEARCH_INFERENCE | Low-stakes prior fictional event such as missed Tuesday/accepted Thursday can be authored by encounter premise, not external life claim | REVISED_BOUNDED_PRELUDE |
+| R9-15 | RESEARCH_INFERENCE | On-demand contact at today-state versus generated reusable openings remains design alternatives; prefer causal on-demand if feasible | OPEN_ALTERNATIVE |
+| R9-16 | METHOD_REQUIREMENT | No tool exports full original ChatGPT conversation here, so only directly visible turns marked transcribed; older gaps explicit | TRANSCRIPT_GRADE_HOLD |
+
+**Important status:** This section is appended, not a summary replacement of NM-001–NM-044. “DIRECT_USER” is a controlling user preference/idea, “RESEARCH_INFERENCE” is a derived proposal, and “METHOD_REQUIREMENT” records the archival procedure. Entries are **not** automatically accepted software architecture, live code or independent CO assent. All following conversation turns require explicit new transcript evidence and a new one-per-idea source update; nothing is banked automatically in future chats.
