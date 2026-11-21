@@ -76,28 +76,59 @@ def validate_activity_priority(value):
 
 
 def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
-    """All-or-nothing psychic admission even for a multi-effect LLM proposal.
+    """Atomic actor-owned admission; an issued trial cannot become its own motive.
 
-    Caller owns an actor object whose identity may be held elsewhere. Validate
-    and apply on a detached candidate, then replace content only after every
-    operation succeeds. A later rejected effect cannot leave an earlier
-    proposed memory, project, or relationship silently installed.
+    Preserve R3's one actual trial recorder and R13/R18's separate issuer
+    and durable-project protections. A semantic candidate is never a ticket.
     """
-    # REMONT R16 joined to SORACLE R3: the actual operation's pre-world,
-    # actor-issued trial constrains what this same event can be used to
-    # install. R3 still owns the later typed RECORD_POSSIBLE_END_TRIAL;
-    # copying R16's recorder here would duplicate its historical event.
+    if type(candidates) is not list or any(type(c) is not dict for c in candidates):
+        raise InvalidDevelopment('INVALID_DEVELOPMENT_CANDIDATES')
+    records=[c for c in candidates if c.get('kind')=='RECORD_POSSIBLE_END_TRIAL']
+    if records and (issued_trial is None or len(records)!=1
+                    or records[0].get('trial')!=issued_trial):
+        raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
+
     if issued_trial is not None:
-        if type(issued_trial) is not dict or issued_trial.get('actor')!=actor.get('id'):
+        if (type(issued_trial) is not dict
+                or issued_trial.get('actor')!=actor.get('id')):
             raise InvalidDevelopment('CURRENT_TRIAL_ISSUER_ACTOR_MISMATCH')
-        if any(type(c) is dict and c.get('kind')=='REORGANIZE_PROJECT'
-               for c in candidates):
+        # The two inherited ticket identities are both real historical
+        # issuers: R13 used "end"; R3's prospective horizon uses
+        # "possible_end" plus an optional functional bridge. Keep the
+        # exact grammars, not arbitrary model-rehashed ticket strings.
+        identity={'actor':actor['id'],
+                  'clock':issued_trial.get('as_of_clock'),
+                  'operation':issued_trial.get('operation')}
+        valid_ids={
+            stable_id('end_trial', {**identity,
+                'end':issued_trial.get('possible_end_ref')}),
+            stable_id('end_trial', {**identity,
+                'possible_end':issued_trial.get('possible_end_ref'),
+                'functional_bridge':issued_trial.get('functional_bridge_ref')}),
+        }
+        if (type(issued_trial.get('trial_id')) is not str
+                or issued_trial['trial_id'] not in valid_ids):
+            raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
+        # An issued exploratory operation cannot mature into a declared
+        # enduring project through a synonymous generic ADD_PROJECT.
+        if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
-        # Even a DIFFERENT previously noticed possible end cannot become a
-        # durable motive during the event commissioned to trial this one.
-        if any(type(c) is dict and c.get('kind')=='TAKE_UP_POSSIBLE_END'
-               for c in candidates):
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
             raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
+        # A physical event can be tried for at most one possible end;
+        # copying it into a different end's history cannot multiply lives.
+        if any(t.get('event_ref')==event_ref
+               for end in actor.get('possible_ends',[])
+               for t in end.get('trial_history',[]) if type(t) is dict):
+            raise InvalidDevelopment('POSSIBLE_END_TRIAL_EVENT_ALREADY_CONSUMED')
+        if not records:
+            # A genuine sourcefree direct issuer call still records a trial;
+            # runtime's explicit inserted R3 record is accepted only if it
+            # matches the frozen ticket. Never record it twice.
+            candidates=[{'kind':'RECORD_POSSIBLE_END_TRIAL',
+                         'trial':copy(issued_trial)}]+candidates
     candidate_actor=copy(actor)
     result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
     actor.clear()
