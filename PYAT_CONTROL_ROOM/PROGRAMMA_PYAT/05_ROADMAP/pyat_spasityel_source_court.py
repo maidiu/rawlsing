@@ -85,7 +85,36 @@ try:
  launcher=exact(B16,D+"01_C05R2B_PRODUCTION_EXECUTION_DRIVER.py","26d1e3ede625499a26c712844bffaff4d77e13da")
  chunks=[fetch(B16,D+"DRIVER_SOURCE_CHUNKS/part_0%d.b64"%i) for i in (0,1)]
  test("B16 two driver chunks exact lengths",list(map(len,chunks))==[7001,3052],list(map(len,chunks)))
- recovered=gzip.decompress(base64.b64decode(b"".join(chunks),validate=True))
+ encoded=b"".join(chunks)
+ archive_error=None
+ recovered=None
+ repair=None
+ try:
+  recovered=gzip.decompress(base64.b64decode(encoded,validate=True))
+ except Exception as original_error:
+  archive_error=repr(original_error)
+  report["B16"]["as_committed_loader_error"]=archive_error
+  # The frozen bootstrap used validate=True, so its direct load is objectively non-runnable.
+  test("B16 archived Base64 strict-load failure is an actual historical packing defect",
+       len(encoded)%4==1 and "padding" in str(original_error).lower(),
+       {"concat_len":len(encoded),"error":archive_error})
+  # Source recovery only, never execution or silent modification of frozen history.
+  for position in range(max(0,len(chunks[0])-16),min(len(encoded),len(chunks[0])+17)):
+   candidate=encoded[:position]+encoded[position+1:]
+   try:
+    decoded=gzip.decompress(base64.b64decode(candidate,validate=True))
+   except Exception:
+    continue
+   digest=hashlib.sha256(decoded).hexdigest()
+   if digest=="59ce6903776df5f5b17bc074b15d9ae06334a5a1c30fad91096fc3fb6a014a3f":
+    recovered=decoded
+    repair={"forensic_only_removed_base64_char_at_global_offset":position,
+            "removed_character":chr(encoded[position]),"chunk_boundary":len(chunks[0]),
+            "archived_source_unmodified":True}
+    break
+ if recovered is None:
+  raise RuntimeError("B16 packed driver is invalid and cannot be recovered by one-character boundary deletion")
+ if repair:report["B16"]["forensic_boundary_repair"]=repair
  sha=hashlib.sha256(recovered).hexdigest()
  test("B16 exact effective uncompressed driver SHA256",sha=="59ce6903776df5f5b17bc074b15d9ae06334a5a1c30fad91096fc3fb6a014a3f",sha)
  asttree=ast.parse(recovered,filename="B16_EXACT_CODE_NOT_EXECUTED")
