@@ -10,6 +10,7 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
+OATH_END = "<!-- HQ_OATH_R2_FIRST_CONTACT_END -->"
 MARKER = "PYAT-PRODUCT-PRIORITIES-20261110-R1"
 LENS = ("What is possible? What is facilitated? What is inhibited or repressed? "
         "By which forces? In contradiction with what other tendencies? "
@@ -60,7 +61,9 @@ def validate(root: Path) -> list[str]:
             errors.append("agenda lost required user/product clause: " + term)
     for rel in FRONT:
         body = content(rel)
-        if MARKER not in body[:2600] or LENS not in body[:2600]:
+        oath_end = body.find(OATH_END)
+        front_body = body[oath_end + len(OATH_END):] if oath_end >= 0 else body
+        if MARKER not in front_body[:2600] or LENS not in front_body[:2600]:
             errors.append("front door lost exact user question: " + rel)
         if "CURRENT PROTECTED STATUS" not in body[:1600]:
             errors.append("front door currentness absent at entry: " + rel)
