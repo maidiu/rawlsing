@@ -1,0 +1,395 @@
+{
+  "schema": "SOROK_SPECIFIC_294_PINNED_BRANCH_SHARD_V1",
+  "source_repo": "maidiu/rawlsing",
+  "census_date": "2026-10-28",
+  "census_ref": "315251451a6d112fb312a6a2e80b096d345c5de6",
+  "census_parts": [
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_01_10.json",
+      "blob_sha": "4624a265c68075ee4f358e5c1726226dfb6fec28",
+      "count": 1000
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_11_20.json",
+      "blob_sha": "187101a2d0a35fac00de88ba5e97a28fa1b12d67",
+      "count": 1000
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_21_29.json",
+      "blob_sha": "f4f1ea13dbb69d79c7035be61a7f4daba0a829e1",
+      "count": 831
+    }
+  ],
+  "census_type": "NAME_HEAD_ONLY__NOT_ATOMIC__NOT_CODE_ADJUDICATION",
+  "selection": "literal case-insensitive substring sorok in 2831 original branch names",
+  "baseline_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "purpose": "strict first-wave branch coverage; inspect source and reviewer evidence and actual consumer, no integration",
+  "required_per_entry_fields": [
+    "branch",
+    "census_head",
+    "fresh_head",
+    "freshness_delta",
+    "role_type",
+    "unique_diff_vs_premain",
+    "actual_code_paths",
+    "return_receipt",
+    "tests_and_execution_proof",
+    "reviewer_ref_and_status",
+    "source_rights",
+    "first_real_consumer",
+    "red_or_hold",
+    "already_current_or_stranded",
+    "duplicate_or_superseded_by",
+    "adoption_candidate_grade",
+    "next_proof_owner"
+  ],
+  "shard": "C_HQ_AND_PRODUCT",
+  "expected_rows": 69,
+  "entries": [
+    {
+      "name": "agent/sorok-control-room-current-command-consolidation-20261028-r1",
+      "sha": "5ea806bd0e3d4cb87b81cef7b159ebad06adda9d",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-d002-g1-smallest-lawful-playable-moment-r1",
+      "sha": "bb81c1cb3a59c1861770135939c6cc145a888710",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq-r14-post-course-correct-reconciliation-r1",
+      "sha": "4b0730e3604bcbb60c404c9f5cc64347da227d2a",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq-r15-communicative-discipline-constitution-r1",
+      "sha": "da6f3c5e43f7f12c8c33f0109f2894e37b482e7d",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq299-six-return-intake-courts-r1",
+      "sha": "5c59fb409d5f08312c19b936738eb4410dbd4f26",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq300-hq299-six-court-intake-r1",
+      "sha": "28d791df05b4d24ebe48b4298101af6951035a36",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq301-hq300-partial-fanin-r1",
+      "sha": "896d8bcbfb9257c190fc9e4241b3a0176594d08e",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq302-hq301-partial-return-fanin-r1",
+      "sha": "75341803ace63da30dfcd66273b6e3d75ad87132",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq303-hq302-partial-fanin-r1",
+      "sha": "63ba1d86c26632ed388fe0bcc46f92f910efb69e",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq304-rba-rsc0-return-fanin-r1",
+      "sha": "a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq305-bl3-sourcefree-sensitivity-fanin-r1",
+      "sha": "7df144ae498a280f0359eaa1c99e78f06bc9728f",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq306-br3-acceptance-fanin-r1",
+      "sha": "959d2d54fa31e27cead46cda912bd3976f0815db",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq307-oc1-return-fanin-r1",
+      "sha": "9ca0469b6ace374e52db308bb794b16e65f2a578",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq308-out3-rcp3-ocr1-fanin-r1",
+      "sha": "bea91e19ee77e2909bda700effb0ad358dff66e5",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq309-hq308-three-repair-fanin-r1",
+      "sha": "7dd4e05990eba8069aa02504777ddd3173524c01",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq310-can3-oc3-fanin-out5-pending-r1",
+      "sha": "6377927a0fd29a9a5d6a1f85f83ea1b44d484a76",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq311-out5-local-report-oc4-return-fanin-r1",
+      "sha": "95dc53cdc2d1adc7465d5e50915599dceddf9dde",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq312-out6-outp-oc5-m01-fanin-r1",
+      "sha": "50d9c762c48a99cd0d41bd811219087d96dc4bc0",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq313-out7-oc5e-m02-fanin-r1",
+      "sha": "d86309f96d41f913c5ecad37dc49a59f48bfbc7a",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq314-out8-m03-fanin-oc6-pending-r1",
+      "sha": "f9b4fd61eb64ad644b590b644450ac5563b6d151",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq315-out9-oc6-m04-fanin-r1",
+      "sha": "1565838242b43487bc249a73e0ca857638eb0df7",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq316-m05-return-oc7-pending-two-fronts-r1",
+      "sha": "8af50c539bd249d6aab76bea7cf81f61579906fa",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq317-m06-oc7-ms1-fanin-r1",
+      "sha": "c0d8d84d1c095720dfc570bf4e751a6854f7ccec",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq318-ms2-c07p-out10-fanin-r1",
+      "sha": "2b2fa4a555a61bfb855ca4fff462b42dbecca193",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq319-full-command-and-forward-science-r1",
+      "sha": "b1c0b474969b891c11da8f3a16b748568f395af5",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq320-five-return-fanin-product-decision-r1",
+      "sha": "3c423a0f74915a01911197b0023de9f85fd74aff",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-hq320-progress-rev3-report-pair-r1",
+      "sha": "5488616ab432eaf562c1abc97d6259a0c254b8ee",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-prea0-psyche-architecture-r1",
+      "sha": "0eae4cb22324c42973594e3909da56e4b2e5e45b",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-product-ontology-control-room-r1",
+      "sha": "ae5cdfe2ef2302c86c1b5ed3becd4cc5d8601e1f",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-r12-full-chat-forensic-handoff-r1",
+      "sha": "b4e7f3e2dd08f1ab6642ce34d50ba351ea93acda",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-r13-deep-banking-phenomenal-user-model-capability-r1",
+      "sha": "ec554dee75ff36a39f37104faca368b506cc373d",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-r13-deep-banking-user-lens-capability-r1",
+      "sha": "de66cb61735a22b527cb93df65663c4a46afcf19",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-sm-lab1-world-org-response-causal-court-r1",
+      "sha": "d7cc7ebf0c06303ffe5637aa4d14c3c1fc228e09",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-a-whole-person-architecture-r1",
+      "sha": "b47742b02b9ea1b969798f9e9655222a5deaf397",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-b-historical-v3-adaptation-r1",
+      "sha": "d8f8b4f7610a4a28d86cf6d0c08f5d297d74d6e3",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-c-experience-formed-interwiring-r1",
+      "sha": "d99ebb98aa875d79af023f1bfa11f3054ac49684",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-c9-r3-testonly-idempotency-isolated-r2",
+      "sha": "1e99681f58086f2784834df1186cfba71a2c50b9",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-c9-r3-testonly-idempotency-r1",
+      "sha": "c0e5faa547c085be0ed1b07aba8a7ec21c8a22aa",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-d-execution-architecture-owner-wiring-r1",
+      "sha": "f904955e1c6f4db2d7fdebf8d2a6b78029274a5f",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-f0-portable-sourcefree-build-r1",
+      "sha": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-f0-r2-source-custody-repair-r1",
+      "sha": "60797302652e7d7877443f6e9d0becde5afb8382",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-f0-r3-source-custody-repair-r1",
+      "sha": "70470a9fe3593f7561e716ec30e2a2ebcc61885b",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-f0-source-portability-r1",
+      "sha": "9903a30d8d9cd4594f58c46bec80e538610a1851",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-ra-whole-person-plasticity-science-r1",
+      "sha": "7991454bf78060d3bca0aa1bfe4296bded230735",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rb-source-runtime-migration-r1",
+      "sha": "57f03f75f5ad92c35d23d81a70ae37d23800f7cf",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rf0-code-r1",
+      "sha": "fb8527fa8f182159c96ee95eb49644a649256c70",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rf0-r2-code-r1",
+      "sha": "5c9ac33aab23c75d35314ece57c30dc95a96aee7",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rrm40-r2-literal-source-r1",
+      "sha": "29691846962cf2b302eff8a15baa6142f0d682cc",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rrm40-source-r1",
+      "sha": "0c181943e527613f4bc114684a1962949a549e20",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rrp0-contract-r1",
+      "sha": "52943312fcc072d3fd668673972fc25f00a92130",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-review-rrp0-r2-c12-fork-storage-r1",
+      "sha": "8df1712b665917b1dbeb1c0d7526830e167b4833",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-rm40-r2-literal-v3-patch-map-r1",
+      "sha": "a67f155ba06ebb33067769510e940012d71b3fa6",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-rm40-r3-symbol-api-addendum-r1",
+      "sha": "6b31fd3b87f757f1a67b119068c6f8d4198f15f9",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-rm40-source-patch-crosswalk-r1",
+      "sha": "653d356d773ab025c4ed22e9d70ba8fc25d6f839",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-rp0-canonical-actor-authority-contract-r1",
+      "sha": "00ffb0475d09de895a38874f1cede4d21114d01c",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-rp0-r2-physical-c9-c12-contract-r1",
+      "sha": "f13f74d3f92ef0732dc33e5d3ebc314b6d0c70df",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-s-r-independent-whole-machine-court-r1",
+      "sha": "ac55c36e42ded82957176896cbc5953db62f7209",
+      "protected": false
+    },
+    {
+      "name": "agent/sorok-syn02-s-reviewed-whole-machine-integration-r1",
+      "sha": "321fa29bb3e51849a43cb7caf1600625bf215539",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261019-p0-needs-first-person-production-architecture-inheritance-r1",
+      "sha": "4073ae2a3363d05e429e3be885486f094414b8ce",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261019-ps0-independent-native-person-development-scientific-needs-r1",
+      "sha": "b1f8155338e6fae9fdca0fd11a810199ed12f3ca",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261020-accepted-successor-hq-r1",
+      "sha": "b206b085d09e25f7d4d188b6c09e9d2eab06dacc",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261020-accession-submission-r1",
+      "sha": "6b87d0c792bbc4e57a517841fda676152f80dc49",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261020-independent-full-accession-candidate-r2",
+      "sha": "2fb4f4bdda25c778388ae7802b76fe1712c52c2b",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261023-fresh-maximal-accession-candidate-r3",
+      "sha": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261026-independent-accession-application-r1",
+      "sha": "5d5d4beaee63c0ac0b367a6f1e5ef399c8a3326e",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261026-v3-courts-foundation-r1",
+      "sha": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261027-independent-maximal-accession-candidate-r1",
+      "sha": "d2560368e10541905df84bafc7d3c64f63efc0d8",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-20261028-independent-sourcegraded-grok-candidate-r1",
+      "sha": "633b0487cda009eb182dd933bab5bafb6d432ae3",
+      "protected": false
+    },
+    {
+      "name": "agent/vozhd-sorok-hq321-four-return-fanin-candidate-r1",
+      "sha": "903bbc73cac90380a702bfa1f2f15ad9a43c20f7",
+      "protected": false
+    }
+  ]
+}

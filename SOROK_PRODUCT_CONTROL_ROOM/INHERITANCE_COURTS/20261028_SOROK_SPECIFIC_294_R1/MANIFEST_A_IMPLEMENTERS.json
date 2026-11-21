@@ -1,0 +1,540 @@
+{
+  "schema": "SOROK_SPECIFIC_294_PINNED_BRANCH_SHARD_V1",
+  "source_repo": "maidiu/rawlsing",
+  "census_date": "2026-10-28",
+  "census_ref": "315251451a6d112fb312a6a2e80b096d345c5de6",
+  "census_parts": [
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_01_10.json",
+      "blob_sha": "4624a265c68075ee4f358e5c1726226dfb6fec28",
+      "count": 1000
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_11_20.json",
+      "blob_sha": "187101a2d0a35fac00de88ba5e97a28fa1b12d67",
+      "count": 1000
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/CENSUS_PART_21_29.json",
+      "blob_sha": "f4f1ea13dbb69d79c7035be61a7f4daba0a829e1",
+      "count": 831
+    }
+  ],
+  "census_type": "NAME_HEAD_ONLY__NOT_ATOMIC__NOT_CODE_ADJUDICATION",
+  "selection": "literal case-insensitive substring sorok in 2831 original branch names",
+  "baseline_premain": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+  "purpose": "strict first-wave branch coverage; inspect source and reviewer evidence and actual consumer, no integration",
+  "required_per_entry_fields": [
+    "branch",
+    "census_head",
+    "fresh_head",
+    "freshness_delta",
+    "role_type",
+    "unique_diff_vs_premain",
+    "actual_code_paths",
+    "return_receipt",
+    "tests_and_execution_proof",
+    "reviewer_ref_and_status",
+    "source_rights",
+    "first_real_consumer",
+    "red_or_hold",
+    "already_current_or_stranded",
+    "duplicate_or_superseded_by",
+    "adoption_candidate_grade",
+    "next_proof_owner"
+  ],
+  "shard": "A_IMPLEMENTERS",
+  "expected_rows": 98,
+  "entries": [
+    {
+      "name": "agent/rabochii-sorok-20261018-b3-x3-atomic-admission-repair-r1",
+      "sha": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1",
+      "sha": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261018-clr2-ownerlicensed-publication-r1",
+      "sha": "a1c5b1b09b825184e80e84a1789c393b97ea9ae2",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261018-clr3-recursive-canon-causal-court-r1",
+      "sha": "4076dcc7c944723b8eea449c0753e535b79d1aa5",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261018-m2r3-counterpart-owner-repair-userdirect-r1",
+      "sha": "9c1ab2fa172e41c7fb033b5f134b25255d65126c",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261018-m2r4-rule-witness-repair-userdirect-r1",
+      "sha": "2001169089e97da7444dc8baa2df700aa56e9aca",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-c0r3-c0x-endtoend-transport-repair-r1",
+      "sha": "a0f7ab5ff9323a1db8a4c6c3b365283b0969de46",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-c0x-dual-owner-receiver-completion-r1",
+      "sha": "b02deee1bac9393921845caa657841c40408eaf6",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-c8o-out14-writer-authority-executable-boundary-r1",
+      "sha": "9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-c9p-native-actor-transition-terminal-tranche-r1",
+      "sha": "38fba47614e82a86fc5a3fa3f50c27048493e808",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-c9r-whole-actor-boundary-consumer-repair-r1",
+      "sha": "6fa2939972ce5a2c0cc4f2b033946b276f1c2934",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-g15-g14-seven-family-genealogy-causal-repair-r1",
+      "sha": "fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-g17-material-history-and-independent-lives-r1",
+      "sha": "90d0eb7925de54635559a879ee76fc1b97b9ff61",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-g18-authenticated-material-history-whole-c4-c9-repair-r1",
+      "sha": "61713eafe0e7a5386a8f0aed4836b15f3d921ed5",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261019-pa0-v3-adp-pff-generator-authority-implementation-atlas-r1",
+      "sha": "3b39c86b376efff8c11833b8451c1791adddb9bc",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp1-historical-actor-production-c4-c9-positive-r1",
+      "sha": "be9f3a9e1bb4c61a8c3ec89a9a5d18b4a10762a2",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp2-joined-event-rule-action-positive-r1",
+      "sha": "5065e2e6934e9d5bca800cbf88c79e461bcf2393",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp2p4j-joined-technical-alpha-r1",
+      "sha": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp3-c8-exclusive-writer-external-anchor-r1",
+      "sha": "7faaa0722336231335d974bebc70c1282c79ce3e",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-bp4-c10-c12-continuing-person-alpha-r1",
+      "sha": "d868e82c7c83def2df18295244d93af9706e647f",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-r26e-c12-integrity-science-live-product-r1",
+      "sha": "eb0a2b90eb1bfc1f1020cc854ed8ae1243deceb6",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-r26v-historical-v3-actor-activity-producer-r1",
+      "sha": "fd32e0b28349aa54a01d46a2116c7a401fde0a60",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261020-r27p-stable-historical-actor-c12-a0-product-r1",
+      "sha": "d831515c344c6f358d12e2887250af05bcb04d78",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r29p-actor-history-cold-c12-user-product-r1",
+      "sha": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r30a-first-neighbor-binding-first-session-r1",
+      "sha": "ce0dfc67ef5058338f4d7161d32a8cb5bdf733a6",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r30g-gm01-material-life-real-product-r1",
+      "sha": "024e77f07b74a333c6d65aca3ee2d7cb9154d584",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r31e-actor-expression-binding-first-neighbor-r1",
+      "sha": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r31j-gm01-pre-c9-owner-source-first-person-r1",
+      "sha": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261021-r32h-codex-hq-accession-evidence-binder-r1",
+      "sha": "43e649349332fa7ecd47ee8bbe144da082e19413",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261024-m35-firstclass-b-source-bp2-c12-r1",
+      "sha": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261024-s36-actor-access-response-r1",
+      "sha": "8da78d8031a06a4bd7e1297fd713e573299c0860",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261026-ra-a-person-callgraph-r1",
+      "sha": "ff47e917a2b6c72ad827d59d021839b1613c1781",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261026-ra-b-astra-k1k11-evidence-r1",
+      "sha": "48d3c8bb6c91038c26ae234c73295b3175c6515e",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261026-ra-c-runtime-causal-reproduction-r1",
+      "sha": "d01454f6ee105bd0b91adcd0d204b4e96831eebb",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-20261026-ra-d-mac-executable-reality-r1",
+      "sha": "6d3610c576dc0ef3ceccbf7ac122c197f22be6fa",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-prea0-sg-genealogy-construction-r1",
+      "sha": "aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa01-durable-person-target-r1",
+      "sha": "75c6d24ccad0f07344712fcba94878288acf33eb",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa02-current-event-pff-target-r1",
+      "sha": "cb156ee99c040eb52dfd87155e7e446eb9dc7053",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa03-rebuilt-v2-actor-realization-target-r1",
+      "sha": "81baa3cd7f2f399a4219c6da1988e6627d959236",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa04-binding-phenomenal-product-target-r1",
+      "sha": "9d94bd42d0e260fd440f7f1982fc41c90dad8463",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa05-laboratory-nadia-fixture-r1",
+      "sha": "284b9b4bebbc281276ee65d3821fb05abdad42f2",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa05b-whole-person-render-input-ablation-r1",
+      "sha": "a406e1d289faac31fd51cca8b36a4bb47af93852",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa06a-anthropic-renderer-court-harness-r1",
+      "sha": "4a6bf4dafbe113ae61ab6fc2423acec6619dc0f9",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa06b-renderer-court-identity-binding-r2",
+      "sha": "4ce795413c2e77be04657a260cbda586610f4756",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa06c-referent-repair-cross-model-screen-r1",
+      "sha": "b4fd4855c1b7608d06481b5ac55f577af1476e06",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r15-rfa06c2-quote-smoke-gate-repair-r1",
+      "sha": "06e5cadac5519d5e86609a490c95157738d0fe10",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq297-k3k5-causal-cell-court-r1",
+      "sha": "12c65e0ed0a82ebe6a843182990e8b8586b85341",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sc0-value-bearing-port-r1",
+      "sha": "b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sg-choice-authority-r1",
+      "sha": "a12d01c5f7d7ddad8be92c58afc97141b672dba0",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sgi2-forward-generalization-r1",
+      "sha": "aa4d845736ff6208a988a3e70cb9f74e3104633e",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sm-lab2-behavioral-r1",
+      "sha": "bf5fda102f4bced41a0f18f71c4c380d5d099462",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sm-owner-effect-court-r1",
+      "sha": "9ba40aabea9773ba9d2f3cf32248347f2b0f7e18",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq298-sr-outbox-execution-r1",
+      "sha": "8da45605c267ea60b664d00fc8444d8c9b007628",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq299-g12-sgi1-direct-generalization-r1",
+      "sha": "27f2dbfea291a9fad2d0ad5a17e5b10aaacf3505",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-behavioral-assay-r2-reconstruction-r1",
+      "sha": "99b7c4cb16888c50f23c9b55e21f485ec172e6cb",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-c0-sc0-adapter-red-repair-r1",
+      "sha": "49992b28becfdbecbd41d9dbead47532bf0b6af9",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-can008-first-positive-sourcefree-r1",
+      "sha": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq300-outbox-authority-cold-repair-r1",
+      "sha": "e09d6497b7e0118b063b3620729f59b47f88a819",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq302-out2-rto-red-repair-r1",
+      "sha": "b1004a43eb0309af99e1b7ce9d5290df3c07f3cd",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq304-c0-rsc0-31red-repair-r1",
+      "sha": "a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq306-oc1-custody-readiness-r1",
+      "sha": "19438890e43153e2bc4a1ad271b5e19bcef33e1e",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-can2-can008-law-causal-repair-r1",
+      "sha": "ee6a48b40247b113c614fe2099d4c443e8dd7bb7",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-oc2-custody-red-repair-r1",
+      "sha": "a61d5794271038fb20c94a75eaee401a66613ce9",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq308-out4-out3-red-repair-r1",
+      "sha": "2afa3022e5551df71b739cf8689e832db85e1196",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq310-m01-memory-mediation-causal-cell-r1",
+      "sha": "02187a14e75ff30dd953d3c7185d689b80e62304",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq310-oc4-custody-ten-red-repair-r1",
+      "sha": "0caaec590f6a8bf6744f22dc9c948c5fe233bc94",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq311-out6-out5-sourcefree-four-defect-repair-r1",
+      "sha": "673233571b7d899c309dd26f9b9cd2508404c0b6",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-m03-claim-selector-provenance-repair-r1",
+      "sha": "e1f7a74e51201b9614bcc578348b4e9db7be7bd3",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-oc6-native-input-contract-repair-r1",
+      "sha": "873ce1c749fbbf6e9ccb2902e4cb6ef021001a17",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq313-out8-restored-ack-ghost-repair-r1",
+      "sha": "0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq315-m05-m04-provenance-ancestry-repair-r1",
+      "sha": "8b7f3ed2ad095eee060fd040dcab88e59d4ca255",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq316-ms1-serial-memory-belief-feasibility-r1",
+      "sha": "d40cc32ecec8f681dcced6a482b6438a86080899",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq317-c07p-crossprocess-custody-r1",
+      "sha": "805d0a071db70bb37ec95df450b9429f46544fe9",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq317-out10-multiwriter-feasibility-r1",
+      "sha": "54eed50dcea538509baaaa52b68c9d5fef844a4d",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq318-ms3-ms2-provenance-repair-r1",
+      "sha": "48200cf0b8e9b69ce27bf0151cb43fde5133322f",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq318-out11-out9-multiwriter-recovery-r1",
+      "sha": "ecc0c5c86d0b6d4aab54ace63fb2af8fb3d784dc",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-c0p-generic-port-positive-r1",
+      "sha": "154a4dd5615d47f014ca90eb1234b16e983bf5c1",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-g12-genealogy-owner-bridge-r1",
+      "sha": "e5d356fd53e132565b1e0b66abb617085f4142ed",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-life1-world-relation-epochal-court-r1",
+      "sha": "7ffc20ddb30f71034abf8d02c224d13d6952e11f",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq319-out12-multiwriter-lock-cas-r1",
+      "sha": "c2fb389300b888b7addbe488cad30956a810094a",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq320-g13-k11-lab-mechanism-repair-r1",
+      "sha": "47bca2a56d34ed37186a436e7490cbaa417bfe5c",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-hq320-w01-actor-rule-owner-option-court-r1",
+      "sha": "5c79ca953d54ebaa12fa81f0f58611d3f7e43dcc",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sc0-generic-port-r1",
+      "sha": "241d35fa8a13ea03c68fbe55554ce81c210b745f",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sg-genealogy-k11-authority-r1",
+      "sha": "ca031ce1d5c56b58b18727f94f41571d6dd763fb",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sm-situated-causal-cell-r1",
+      "sha": "7777a06dbd3a8f9dcf2b7ca3241e853dc485e505",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-r3-postastra-sr-occurrence-surface-r1",
+      "sha": "99f2e7128a8417dfeaa39468c45ba65f6958c061",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-sgi1-sourcefree-genealogy-k11-lab-r1",
+      "sha": "27ca1f2792a5213064c0b5ea2e27b89e8acce0c3",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq322-c0r-c0i-three-red-repair-r1",
+      "sha": "aac6d7d13ce386598d6e1c147687d9ed64e188b7",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq322-out14-multiwriter-integrity-repair-r1",
+      "sha": "a77f0f8e45ee27133576209c315e53341dcb5a9e",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq323-c0r2-git-backed-repair-r1",
+      "sha": "55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq324-b1-can008-can011-coupled-positive-r1",
+      "sha": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq324-p1-llm-alternative-admission-r1",
+      "sha": "fb4fa049b6e3dd9df8d25a4f42a2b41e9d737c60",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq325-b2-four-return-executable-integration-r1",
+      "sha": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq326-m1-interpretation-lineage-kernel-r1",
+      "sha": "7e91c19828589281fb348c3aff35dca51bf9d995",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq327-r1-b2-event-identity-repair-r1",
+      "sha": "358fd1086eac0a4aa7791ca14abc25c45b935ddd",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq328-m2-m1-source-time-identity-repair-r1",
+      "sha": "5c2fbe14ccfa5027becfabc682206a1e61aaf986",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq329-b3-coupled-interpretation-prototype-r1",
+      "sha": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+      "protected": false
+    },
+    {
+      "name": "agent/rabochii-sorok-v2-hq330-m4-m2-source-preimage-repair-r1",
+      "sha": "858bc2d91b1d9f8f7420607e29a0b6dd64761d3c",
+      "protected": false
+    }
+  ]
+}
