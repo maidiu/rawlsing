@@ -135,62 +135,70 @@ theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
 start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
 crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
 critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
-# The central 03 was REWRITTEN as a complete 17-chapter theory, not
-# appended with numbered rival essays; 00 points there, 04 preserves exact
-# speech, 05 accepts first-consumer courts and 06 enforces full reconstitution.
+# ONE-HOUSE DOC CONSERVATION: 03 is fully reconstituted from two
+# independently authored theory lineages and the executed R28 organism.
+# Structural/semantic-marker evidence only: no claim of human science,
+# full independent 197/104 conceptual adjudication or protected receiving.
 theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
 start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
 critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
 heads = re.findall(r"^## ([IVX]+)\. ", theory, re.M)
-assert heads == [
-    "I","II","III","IV","V","VI","VII","VIII","IX","X",
-    "XI","XII","XIII","XIV","XV","XVI","XVII"
-], ("THEORY_NOT_FULLY_RECONSTITUTED", heads)
-assert len(theory) >= 68000 and "STAGING ONLY" not in theory
+assert heads == ["I","II","III","IV","V","VI","VII","VIII","IX",
+                 "X","XI","XII","XIII","XIV","XV","XVI","XVII"], (
+                 "ONE_HOUSE_CHAPTER_DISPLACEMENT",heads)
+assert len(theory)>=68000 and "STAGING ONLY" not in theory
 for phrase in (
-    "The object is neither a dialogue bot",
-    "Material world, social reproduction",
-    "infant activity and caregiver alterity",
-    "Overlapping relational fields",
-    "firewood",
-    "fetishism, God and power",
-    "the Sabbath was made for man, not man for the Sabbath",
-    "relational_metabolism",
-    "historical_self_organization",
-    "M0",
-    "M8",
-    "Nadia sibling falsifier",
-    "Birkenstocks",
-    "H0–H3",
-    "Mechanism I",
-    "Mechanism II",
-    "Mechanism III",
-    "copy-on-write",
-    "visitor's gaze",
-    "World consequences without social recognition",
-    "The player inhabits a world position",
-    "homologous-peer",
-    "The product itself is a social institution",
-    "One continuing organism",
-    "Falsification, not stage-show confirmation",
-    "Open contradictions and the ongoing duty",
-    "What conservation means here",
-    "S0–S16",
-    "C0–C12",
-    "Q123",
+    "ONE HOUSE", "two former theories", "same-SES", "YOUR RESOURCES",
+    "NO_LAWFUL_HOMOLOGY", "Sabbath", "Mark 2:27", "firewood",
+    "M0–M8", "relational_metabolism", "historical_self_organization",
+    "R28", "628", "two-meal", "false", "Birkenstocks", "H0–H3",
+    "Mechanism I", "Mechanism II", "Mechanism III", "MII", "MIII",
+    "S0–S16", "C0–C12", "Q123", "messaging", "F1–F10",
+    "RC1–RC6", "platform", "SES", "coincidence", "source"
 ):
-    assert phrase.casefold() in theory.casefold(), ("RECONSTITUTED_THEORY_LOSS", phrase)
+    # Keep quality checks honest: verifying the claim is articulated cannot
+    # prove the claim is correct or integrated in running source.
+    assert phrase.casefold() in theory.casefold(), (
+        "ONE_HOUSE_THEORY_SPECIFIC_OMISSION",phrase)
 for i in range(1,11):
-    assert ("**F" + str(i) + " " in theory or "**F" + str(i) + " —" in theory), ("MISSING_FALSIFIER", i)
-for lo,hi in ((1,12),(13,26),(27,39),(40,52),(53,62),
-              (63,86),(87,99),(100,116),(117,139),(140,163),(164,190)):
-    assert f"H{lo:03d}–H{hi:03d}" in theory, ("H_SOURCE_FAMILY_NOT_MULCHED", lo, hi)
+    assert ("**F"+str(i)+" " in crosswalk or "**F"+str(i)+" —" in crosswalk), (
+        "LOST_OLD_03_EXECUTABLE_FALSIFIER",i)
+for i in range(1,7):
+    assert "**RC-"+str(i)+"**" in crosswalk, ("LOST_OBSERVER_FIRST_CONSUMER",i)
+for i in range(1,9):
+    assert "JH-"+str(i)+":" in crosswalk, ("MISSING_TWO_HOUSE_FIRST_CONSUMER",i)
+for lo,hi in ((1,12),(13,26),(27,39),(40,52),(53,62),(63,86),
+              (87,99),(100,116),(117,139),(140,163),(164,190)):
+    assert f"H{lo:03d}–H{hi:03d}" in crosswalk, (
+        "LOST_ORIGINAL_H_FAMILY_FALSIFIER",lo,hi)
 assert "ONE FULLY REWRITTEN theory document" in start
 assert "03 — The Dialectical Constitutive Person and Its Game" in start
 assert "Mandatory WHOLE-THEORY replacement rule" in critique
 assert "THEORY_MULCH_INCOMPLETE" in critique
-for doc in (start, crosswalk, critique, theory):
-    assert not re.search(r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)", doc), "DEAD_SATELLITE_LINK"
+for doc in (start,crosswalk,critique,theory):
+    assert not re.search(r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)",doc), (
+        "DEAD_SATELLITE_LINK")
+
+# The second house is preserved as provenance, not smuggled as another
+# active theory. 104 cross-lineage propositions: C44 + NM44 + R9-16.
+# 197 predecessor source/fate sections are preserved before retirement.
+rival=ideas.split("## H. SECOND INDEPENDENT HOUSE:",1)[1]
+rival_lineage=rival.split("### 197 source sections:",1)[1].split(
+    "### 104 cross-lineage user/theory propositions",1)[0]
+source_rows=re.findall(r"^\| R[^|]+-S\d+ \|",rival_lineage,re.M)
+assert len(source_rows)==197, ("RIVAL_PREDECESSOR_SOURCE_LOSS",len(source_rows))
+rival_propositions=rival.split("### 104 cross-lineage user/theory propositions",1)[1]
+for prefix,count in (("C",44),("NM-",44),("R9-",16)):
+    if prefix=="C":
+        rows=re.findall(r"^\| C\d{2} \|",rival_propositions,re.M)
+    elif prefix=="NM-":
+        rows=re.findall(r"^\| NM-\d{3} \|",rival_propositions,re.M)
+    else:
+        rows=re.findall(r"^\| R9-\d{2} \|",rival_propositions,re.M)
+    assert len(rows)==count, ("RIVAL_ORIGINAL_PROPOSITION_LOSS",prefix,len(rows))
+assert "original user" in ideas.casefold()
+assert "ONE-HOUSE JOINED FIRST-CONSUMER" in crosswalk
 
 # Terminal cleanup gate: the source essays were intermediate material for
 # the whole-theory rewrite, not permanent documents. Keep the actual original
@@ -222,7 +230,7 @@ print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicit
 print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
-print("WHOLE_THEORY_RECONSTITUTION_DOC_COURT_PASS: 03 rebuilt in 17 chapters, 11 original H-source families, F1-F10 and 04/05/06 integrated; document-level checks, NOT independent philosophical/scientific certification")
+print("ONE_HOUSE_RECONSTITUTED_STRUCTURE_PASS: 17 chapters, two theory lineages represented, 104 original claims + 197 predecessor references in existing 04, original F1-F10/RC1-RC6 and new JH1-JH8 in existing 05; semantic and runtime claims NOT independently certified")
 print("ONE_LIVING_03_NO_SATELLITES_PASS: staging and 10–13 deleted from active tree; 04 original quotes + 05 RC courts preserved")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
