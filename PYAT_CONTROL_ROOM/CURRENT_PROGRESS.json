@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 19,
-  "revision_note": "Rev19 documentary-only G4 functional-conservation source cut: selective PR1247 0059e3c712c978eccf3f2cc754b1f2679ac496c5 on REMONT PR1243 3b27f559e70c1de95426e40a8ee6bbe30011455d, original donor #1244 ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550; 3 recovered S2F/S2G modules, 5 identified core ABI/identity/asked-eligible/DTA/I05 restorations plus cold S04, saved C11, journal; COMMITTED_UNTESTED, no protected feature promotion, native rights or G5.",
-  "report_status": "PYAT_REV19_DOCUMENTARY_SOURCE_STATIC_FUNCTION_CONSERVATION__PR1247_CODE_UNRECEIVED",
+  "revision": 20,
+  "revision_note": "Rev20 source-static no-dup: #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff extends ORIGINAL current-governed issued workload saved route with opted-in prepared I03 and reuses NativeWorkloadResult->S04, 2 Q023 tests not executed; G4 S02/S03/S04 and linked component records + paired progress ONLY, no PRE-MAIN feature code, original science/G5/actor held.",
+  "report_status": "PYAT_REV20_DOC_ONLY_NATIVE_ISSUED_NORMAL_PREPARED_I03_FIRST_READER__CODE_UNRECEIVED_TESTS_UNEXECUTED",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -716,5 +716,37 @@
     "native_ff02_actor_qualification": false,
     "nonpromoted_scope": "S2E/S2F/S2G and P0 first-consumer code remains open PR; latest REMONT Q015 still owned by REMONT",
     "platform_protected_branch_claim": false
+  },
+  "g4_pyat_1247_normal_issued_first_reader_rev20": {
+    "grade": "COMMITTED_UNTESTED__SOURCE_STATIC_FIRST_CONSUMER_EXTENSION",
+    "candidate_pr": 1247,
+    "candidate_sha": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+    "base_remont_1243": "3b27f559e70c1de95426e40a8ee6bbe30011455d",
+    "code_owner": "rawlsing_next/pre553_issued_workload.execute_issued_workload",
+    "first_reader": "rawlsing_next/pre553_saved_workload_integration.execute_saved_normal",
+    "reused": [
+      "PreparedSavedC11Admission.from_verified_admission",
+      "DirectEstateI03Session",
+      "BatchExecutionRunner",
+      "NativeWorkloadResult.outputs_by_unit",
+      "receive_s04_first_consumer"
+    ],
+    "actual_new_function": "optional exact-bool reuse_prepared_saved_session=True on native externally CURRENT-checked issued NORMAL saved workload, shared one index and existing native result preimages for S04",
+    "default_compatibility": "False original path unchanged; unauthorized or nonbool refused",
+    "tests_added": [
+      "test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results",
+      "test_r03_v2_prepared_saved_flag_refuses_unbacked_or_truthy_grants"
+    ],
+    "test_file": "rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py",
+    "remont_queue": "RMT-Q023",
+    "remont_issue_comment": 7058964881,
+    "source_science_authority": "NO_NEW_ORIGINAL_SURVEY_OR_FF02_RIGHTS",
+    "actual_python_execution_at_sha": false,
+    "independent_review_at_sha": false,
+    "protected_code_receiving": false,
+    "original_r03_issuer": "REUSED_NOT_REPLACED",
+    "remont_q015": "OWNED_BY_REMONT_NO_CODE_CHANGE",
+    "soracle_1234": "UNTOUCHED",
+    "observed_query_vs_supported_S04": "ELIGIBLE_QUERY_IS_NOT_AUTOMATICALLY_SUPPORTED_FACT; negatives retained"
   }
 }

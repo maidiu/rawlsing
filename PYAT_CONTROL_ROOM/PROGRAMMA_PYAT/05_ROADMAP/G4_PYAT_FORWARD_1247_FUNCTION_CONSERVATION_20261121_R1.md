@@ -1,5 +1,16 @@
 # G4 functional-conservation correction — REMONT #1243 → PYAT #1247
 
+## REV20 exact functional addition — original issued NORMAL saved workload
+
+**Candidate #1247 @ `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` · COMMITTED_UNTESTED, separate from PRE-MAIN.** Previous rev19 retained the ordinary saved Batch→prepared cold I03 and a separate manually selected I03→S04/FF01 two-query demonstration. The *original* externally governed `pre553_issued_workload.execute_issued_workload` saved-estate route still ran each query through a one-operation cold I03 session.
+
+The new optional exact-boolean `reuse_prepared_saved_session=True` connects this original issued-workload owner to `PreparedSavedC11Admission.from_verified_admission` and one `DirectEstateI03Session`. Original v2 R03 TEST_ONLY QUERY issuance, external `admit/check_current`, real `BatchExecutionRunner`, exact unit receipts and `NativeWorkloadResult.outputs_by_unit` are conserved. `execute_saved_normal` passes the flag without replacement. Default is unchanged; wrong type and unbacked prepared requests refuse before source opening. Native unsupported/unavailable issued roles are retained as typed negatives, not fabricated S04. The supported native role is received by existing S04 without rerunning I03. No original source permission, source-realized survey claim, population estimation or FF02 causal use.
+
+**New tests (2) in the existing RMT-Q023 file:** `test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results` and `test_r03_v2_prepared_saved_flag_refuses_unbacked_or_truthy_grants` in `test_pyat997_r03_governed_query_issuer_v2.py`. Q023 already includes the earlier distinct 1/10/100 native cold I03→S04/FF01 courts. Tests have **not executed at `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`** here; same-HEAD first-fault execution belongs to OpenCode/REMONT #1162, comment 7058964881. #1242/#1243 Q015 and SORACLE #1234 remain separately owned.
+
+**Documentary receiving grade only; no feature code imported to PRE-MAIN.** Rev19 historical records stay as history and this new source candidate is labeled in existing G4 INDEX and COMPONENT_STATUS rows.
+
+
 **Evidence grade: EXACT-SOURCE STATIC / COMMITTED_UNTESTED.** This supplements the EXISTING G4, not a replacement registry. This document is included in a documentary-only same-revision paired PYAT receiving. Source code is exclusively on draft [PR #1247](https://github.com/maidiu/rawlsing/pull/1247), **not PRE-MAIN**.
 
 - **REMONT source base:** PR #1243 `3b27f559e70c1de95426e40a8ee6bbe30011455d`, Q015 remedy already identical to #1244; historical reported 374 local passes unverified at immutable proof grade.
