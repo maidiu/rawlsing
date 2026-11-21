@@ -6,7 +6,7 @@ No standalone subsystem, original survey grant, or population inference.
 """
 from __future__ import annotations
 
-import copy
+from dataclasses import replace
 
 import pytest
 
@@ -91,7 +91,7 @@ def test_081_d_rejects_self_signed_alien_source_after_valid_067_086_profile():
 
     # Forge a distinct SOURCE_ARTIFACT that is self-consistently hashed.
     # This is a hostile SOURCEFREE profile, not the actual original source.
-    altered = copy.deepcopy(valid)
+    altered = replace(valid)
     old_sources = tuple(
         ref for ref in altered.producer_provenance_refs if ref.kind == "SOURCE_ARTIFACT"
     )
