@@ -133,7 +133,7 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
             or use.get("host")!=custody.host
         ):
             raise StoreFailure("original source-specific universe-use decision binding changed")
-        if use.get("state") not in ("AUTHORIZED","ISSUED","ACCEPTED"):
+        if use.get("state") != "ALLOW_EXACT_OPERATION_ONLY":
             # The historical exact decision state may have a more specific
             # string: a competent owner must map it explicitly, not guess.
             raise StoreFailure("unrecognized source-specific universe-use decision state")
