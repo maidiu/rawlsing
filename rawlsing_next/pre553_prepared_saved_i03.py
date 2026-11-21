@@ -60,14 +60,33 @@ class PreparedI03Session:
             raise PreparedSavedI03Error("exact prepared saved admission required")
         if type(session) is not DirectEstateI03Session:
             raise PreparedSavedI03Error("exact DirectEstateI03Session required")
+        # The receipt must name the SAME private estate the native session reads.
+        # Comparing release labels or two independently valid roots is insufficient.
+        if session.estate is not admission._estate:
+            raise PreparedSavedI03Error("prepared admission/session estate mismatch")
+        session._require_live()  # actually entered and externally CURRENT
+        admission.check_current()
         self._admission = admission
         self._session = session
         self._operations = 0
         self._closed = False
 
+    def __setattr__(self, name: str, value: Any) -> None:
+        if name in {"_admission", "_session"} and hasattr(self, name):
+            raise PreparedSavedI03Error("prepared admission/session binding is immutable")
+        object.__setattr__(self, name, value)
+
+    def _require_same_estate(self) -> None:
+        # A caller can still mutate the underlying DirectEstateI03Session.estate
+        # outside this wrapper. Recheck before EVERY operation and receipt.
+        if self._session.estate is not self._admission._estate:
+            raise PreparedSavedI03Error("prepared admission/session estate mismatch")
+
     def _require_open(self) -> None:
         if self._closed:
             raise PreparedSavedI03Error("prepared saved I03 session is closed")
+        self._require_same_estate()
+        self._session._require_live()
         self._admission.check_current()
 
     def _copy_query(self, query_ref: ExactRef | Any):
@@ -102,6 +121,7 @@ class PreparedI03Session:
             authority_registry=self._admission._runtime_catalog.authority_registry,
             release_refs=(self._admission._release_ref,),
         )
+        self._require_same_estate()
         self._admission.check_current()
         self._operations += 1
         return result
@@ -124,11 +144,16 @@ class PreparedI03Session:
             query_template_catalog=catalog.queries,
             group_scope=None,
         )
+        self._require_same_estate()
         self._admission.check_current()
         self._operations += 1
         return result
 
     def receipt(self) -> PreparedSessionReceipt:
+        # The public receipt must not attest estate A while native session B
+        # is attached, even if no query has yet been executed.
+        self._require_same_estate()
+        self._admission.check_current()
         return PreparedSessionReceipt(
             schema=PREPARED_SAVED_I03_SCHEMA,
             manifest_sha256=self._admission.manifest_sha256,
