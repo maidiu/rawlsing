@@ -3,6 +3,9 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+**SOROKUDA cross-estate code recovery (candidate, NOT G4 functional authority):** [SOROKUDA — SOROK's separate source-pinned implementation conservator](../../../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA.md), with 61 code/56 tests and 98 exact historical code leads; KUDA's five earlier SOROK entries are historic crosslinks, not comprehensive SOROK proof. SOROK PROGRAMMA and paired progress remain authoritative.
+
+
 **KUDA/NEKUDA post-VOZHD DAG code reclamation (R7, user-corrected scope):** [KUDA current post-rework stranded/unreceived code](KUDA.md), [NEKUDA lesser/rejected post-rework iterations](NEKUDA.md). These are additive evidence overlays on **this same G4 branch**, not a second authority. **Pre-FORGE V550–V558 DDM and old FFX are excluded**, with older erroneous R3 preserved in Git history only. These ledgers track after-August DVA/TRII/CHETIRI/PYAT DAG-integration *implementations*, their actual consumer and receiving divergence. They do not alter G4 or paired CURRENT_PROGRESS, issue native/science/actor rights, or touch post–Nov19 REMONT work. Before building a post-rework function, compare live selected code with KUDA and source/negative in NEKUDA; omission never proves absence.
 
 
