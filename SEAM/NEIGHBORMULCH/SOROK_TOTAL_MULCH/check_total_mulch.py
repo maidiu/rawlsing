@@ -84,7 +84,25 @@ assert paths["total_directory_entries"] == 25, paths["total_directory_entries"]
 assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
 idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|", ideas, re.M)]
-assert idea_numbers == list(range(1, 67)), idea_numbers
+assert idea_numbers == list(range(1, 86)), idea_numbers
+recent = (ROOT / "12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md").read_text()
+for phrase in (
+    "in a public forest with a borrowed axe",
+    "value I created now lives inside the wood",
+    "the Sabbath was made for man, not man for the Sabbath",
+    "the free hand of the market",
+    "is your brain falling out",
+    "Externalization is not automatically alienation or fetishism",
+):
+    assert phrase in recent, ("LOST_USER_VALUE_THEORY", phrase)
+intake = (ROOT / "13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md").read_text()
+for phrase in (
+    "CONCRETE_USER_REQUESTED_INTEGRATION_BACKLOG_CANDIDATE",
+    "PENDING_ORIGINAL_OWNER_MULCHINEERING",
+    "RC-1", "RC-2", "RC-3", "RC-4", "RC-5", "RC-6",
+    "H053", "H059", "R27 CO",
+):
+    assert phrase in intake, ("LOST_GAZE_MULCHINEERING", phrase)
 for excerpt in (
     "everything is a dialectic", "it needs to be modeled like many overlapping dialectics",
     "also, what I have just said is a riff",
@@ -117,7 +135,7 @@ for leaf in (
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
-print("USER_CONVERSATION PASS: NM-001 through NM-066 contiguous; exact latest source snippets preserved")
+print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
