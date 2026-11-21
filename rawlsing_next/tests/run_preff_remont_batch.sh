@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020 RMT-Q021 RMT-Q022)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020 RMT-Q021 RMT-Q022 RMT-Q023)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -55,9 +55,10 @@ for id in "${cases[@]}"; do
     RMT-Q007) # C5 material sourcefree context navigation and real I05 role
       tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py)
       ;;
-    RMT-Q008) # REMONT P0 ABI parity and historical raw/held negative courts
+    RMT-Q008) # Source custody: v2 physical dictionary plus pinned cold replay negatives
       tests=(rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
-             rawlsing_next/tests/test_preff_c0_raw_preservation.py)
+             rawlsing_next/tests/test_preff_c0_raw_preservation.py
+             rawlsing_next/tests/test_preff_c0_physical_journal.py)
       ;;
     RMT-Q009) # C5 contextual navigation full inherited sourcefree court
       ;;
@@ -92,6 +93,14 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q022) # Existing G4/OATH structural and receiving checks, NOT semantic accreditation
       tests=()
+      ;;
+    RMT-Q023) # PYAT preserved exact C11→native I03→S04/FF01 cold first-consumer integration
+      tests=(rawlsing_next/tests/test_pre553_prepared_saved_i03.py
+             rawlsing_next/tests/test_pre553_distinct_cold_i03_batch.py
+             rawlsing_next/tests/test_pre553_distinct_cold_s04_batch.py
+             rawlsing_next/tests/test_pre553_s04_dynamic_research.py
+             rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py
+             rawlsing_next/tests/test_pyat_forward_saved_ff01_first_reader.py)
       ;;
     RMT-Q019) # RETIRED: no justified first consumer beyond existing S04/C1/C5/N10E
       echo "HELD_RETIRED_Q019__DUPLICATE_COORDINATOR_WITHDRAWN__NO_TEST_OR_AUTHORITY" >&2

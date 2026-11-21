@@ -1,0 +1,21 @@
+# PYAT selective forward-construction over REMONT #1243 — 2026-11-21
+
+**Single isolated source candidate.** Parent [REMONT #1243](https://github.com/maidiu/rawlsing/pull/1243) `3b27f559e70c1de95426e40a8ee6bbe30011455d`, source donor [PYAT #1244](https://github.com/maidiu/rawlsing/pull/1244) `ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550`. No wholesale merge of either history. This branch is not protected and is NOT owned by REMONT.
+
+## Preserved only because the exact function was absent/inferior on #1243
+
+- Existing cold native query evaluator untouched. `PreparedSavedC11Admission.from_verified_admission` and saved Batch `reuse_prepared_session=True` provide a new real normal-workload consumer of the inherited single-posting-index operation; default Batch semantics unchanged. Original R03 v2 QUERY issuer blob identical on both inputs and **not modified**.
+- `pre553_distinct_cold_i03_batch` (bounded 1/10/100 distinct) and `pre553_distinct_cold_s04_batch` (actual I03→S04 and optional FF01); `pre553_s04_dynamic_research` (unbounded, catalog-issued sequences over one cold session, with CURRENT on original source and optional interpretation). These are distinct access modes, not new numeric/scientific authorities.
+- Physical journal v2 `physical_metadata.json` carries original decoder dictionary, unlike v1 digest only. The carried implementation **retains v1's anonymous pinned compressed-byte snapshot, full typed validation before first yield, private owned/no-follow reader and adverse mutation/symlink tests**. Source-I02 one-pass close-before-publish/independent rollback is carried **exact from REMONT R16** (`4bed962724efdf68c31f7a13e697533c7552c8aa`), not a new builder invention.
+- Existing S2-E verifier `pre553_s2e_exact_conservation` and its four historical test modules are restored byte-exact from #1244: this resolves the **source-file missing-import** identified on #1243, NOT proof that the full optional native S2-E path runs.
+- Exact existing Q015 code blob `eaf83cf340ddbe10fc8c53c4dd57d0f1afd247c2`, existing R03 v2 issuer `a55275c4b5f824496f7d18df9d013e1ab883a317`, S04→FF01 `527eecbd3d5c0e980fe63b95229565441c310ce8` are identical across both and **untouched**. Q015 remains REMONT-owned. SORACLE #1234 untouched. Q019 retired.
+
+## Runnable tests / negative conservation
+
+Original transplanted suites: 1/10/100 **distinct SOURCEFREE** cold I03, cold I03→S04/FF01, dynamic 103 original catalog queries, 257 conditioned followups over same S04 joint, CURRENT revocation between calls, no original survey rights, exact source/predicate refusal, physical v2 dictionary/corruption/symlink/cold mutation, S2-E corpus/identity/false-complete refusals, R03 v2 issuer/saved Batch, prepared admission and revocation. One **new** connected sourcefree first-consumer test binds an ordinary saved C11 admission to one physical posting session and TWO original RAW k-way query facts, checks S04→existing FF01 semantic exact-ref parity with the original generic ingress and no second native I03.
+
+Existing REMONT/OpenCode runner on THIS candidate HEAD adds Q023 (new shared cold-consumer integration), extends existing Q008 with actual physical journal; Q015 and all other historical QIDs remain same. Execute only from a clean checkout with `EXPECTED_PREFF_C0_HEAD=<exact SHA> bash rawlsing_next/tests/run_preff_remont_batch.sh RMT-Q008 RMT-Q014 RMT-Q015 RMT-Q021 RMT-Q023`. Run the 4 S2-E test files explicitly via `python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pyat919_s2e_a*_*.py` (shell glob depends on actual checkout; do not claim green without real logs). **This author cannot run the repo's Python tests in this GitHub-backed environment**; source is COMMITTED_UNTESTED until OpenCode/host executor produces exact immutable proof.
+
+## Still missing and not represented as green
+
+Original SAV/DTA source and survey-scientific issuance, a real high-width source-shaped 1/10/100 distinct CPU/RSS/cold-read measurement under ≤6 GiB, complete native S2-E optional consumer, original source FF02 material/world/actor consumption, independent review, protected code/paired receiving. Preserve #1243's reported 374 local PASS ONLY at its own SHA; this new SHA has NO inherited PASS receipt.
