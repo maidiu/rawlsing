@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_G4_ONCE_V8_AUTHOR_STATIC_COURT_R1",
+  "source_cut_before_guard": "74c7b2daf339b3a85995b57de3865be981042092",
+  "run_environment": "CODE_MODE_V8_NO_NODE_GITHUB_WORKFLOW",
+  "self_test": {
+    "pass": true,
+    "cases": [
+      {
+        "name": "UNCHANGED_CANDIDATE_ALLOWED",
+        "pass": true
+      },
+      {
+        "name": "ALTERED_CANDIDATE_HEAD_HELD",
+        "pass": true
+      },
+      {
+        "name": "CLOSED_BRANCH_FATE_HELD",
+        "pass": true
+      },
+      {
+        "name": "NEW_BRANCH_REQUIRES_RECONCILIATION",
+        "pass": true
+      },
+      {
+        "name": "RECEIVED_NEW_HEAD_ALLOWED",
+        "pass": true
+      },
+      {
+        "name": "FALSE_ABSENCE_FIVE_KNOWN_OWNERS_RED",
+        "pass": true
+      }
+    ]
+  },
+  "actual_edited_g4_integrity": {
+    "pass": true,
+    "failures": [],
+    "counts": {
+      "id_782": 782,
+      "obligation_id_150": 150,
+      "id_62": 62,
+      "edge_id_82": 82
+    },
+    "chapters": 20
+  },
+  "original_repo_node_execution": false,
+  "independent_review": false,
+  "protected_branch_required_check": false,
+  "grade": "AUTHOR_EXECUTED_PURE_FUNCTION_FIXTURE_AND_JSONL_SOURCE_READBACK"
+}
