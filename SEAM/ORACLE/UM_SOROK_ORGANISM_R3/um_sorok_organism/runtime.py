@@ -38,6 +38,8 @@ from .care_commitment_genesis import (
 from .cultural_mediation import (
     conserve_personally_heard_reference,
     possible_cultural_object_inquiry,possible_reference_revision)
+from .social_vocal_development import (
+    conserve_reciprocated_vocal_turn,possible_vocal_coordination)
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -620,6 +622,10 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             cultural_revision_candidates=possible_reference_revision(
                 actors[aid],experience,objective_ref)
+            conserve_reciprocated_vocal_turn(
+                actors[aid],experience,objective_ref)
+            vocal_development_candidates=possible_vocal_coordination(
+                actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
@@ -677,6 +683,10 @@ class ConstitutiveRuntime:
                     cultural_reference_candidates),
                 'historically_possible_cultural_revisions':copy(
                     cultural_revision_candidates),
+                'historically_possible_social_vocal_development':copy(
+                    vocal_development_candidates),
+                'actor_personally_practiced_vocal_turns_analyst_only':copy(
+                    actors[aid].get('vocal_turn_experiences',[])[-12:]),
                 'actor_personally_heard_cultural_demonstrations_analyst_only':copy(
                     actors[aid].get('cultural_demonstrations',[])[-16:]),
                 'actor_acquired_cultural_references_analyst_only':copy(
