@@ -208,7 +208,13 @@ class HeuristicSemanticProvider:
             # exploratory, not retroactively undertaken for the later end.
             tags={str(tag).lower() for cue in cues
                   for tag in cue.get('tags',[])}
-            for candidate in packet.get('actor_possible_ends',[]):
+            # The exact actor-issued prospective trial is itself an attempt,
+            # NOT a later independent uptake. This analytic-only selection
+            # receipt is produced by runtime._actor_plan, not the model.
+            # A custom model still meets the non-bypassable admission guard.
+            current_trial=((packet.get('selected_purpose_analytic_only') or {})
+                .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
+            for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
                 if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                         and candidate.get('origin_event')!=packet.get(
                              'historical_psychodynamic_context',{}).get('objective_event_ref')
