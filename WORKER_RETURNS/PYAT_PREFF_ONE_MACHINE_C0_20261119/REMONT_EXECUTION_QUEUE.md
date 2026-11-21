@@ -1,3 +1,15 @@
+## RMT-Q023 — P0 native saved C11 → R03-v2 issued Batch prepared reuse (2026-11-20/21)
+
+**QUEUED / COMMITTED_UNTESTED**, on **isolated new PYAT forward-engineering candidate**, not PRE-MAIN. New exact source SHA will be this queue-change commit. Historical author parent #1238 `1b07ee8e43b1e6dfc1543d777fe51b5750633d1c`; separate earlier PRE-MAIN-derived OpenCode branch `dd1f5a45830c09ac21f577aa97351d639be1af0d` carries Q021/Q022, **not** this complete #1238 R03 v2 source ancestry. Never pretend the branches are one already-executed HEAD.
+
+**First producer/consumer:** native S2-C `VerifiedDirectEstate` and independent pins → normal `SavedC11Admission` → existing `PreparedSavedC11Admission.from_verified_admission` (new exact conversion) → existing `execute_saved_batch(..., reuse_prepared_session=True)` Batch runner → original native I03 / I05 owner. Concrete R03-v2 issuer unit test exercises eligible compiler-issued QUERY roles through this physical saved Batch in exactly one `DirectEstateI03Session._build` instead of one rebuild per query. No second source read, invented issuer, native data permission, released person or FF causal analysis. Default `reuse_prepared_session=False` leaves old behavior untouched.
+
+**Execute exact two files through the ONE existing runner** `RMT-Q023` at the new frozen branch SHA and an unchanged sourcefree `R03_ASKED_ELIGIBLE` court as `RMT-Q014` if dependencies are present. Sourcefree 1,10,100 **repeated** I03 operations ≠ verified 1,10,100 **distinct** realistic queries; explicitly label scope. Required first-fault negatives: fake/duck caller admission, denied source CURRENT before conversion, wrong predicate vs exact query, changed original v1 issuer, non-issued v2 QUERY, failed mid-run with no persisted posting index, full no-regression batch receipts. Independent original survey/host rights still unissued, actual high-width cost/≤6GiB pending. Existing P0 goal #960/#1097 unchanged.
+
+**OpenCode execution return:** exact 40-hex HEAD, clean tree, Python/pytest/pyarrow, sourcefree positive/negative counts, per-QID JUnit/log, actual index rebuild count and CPU/wall/RSS/scratch if measured. Red → existing REMONT #1162 first fault, not another owner committee; no Actions dependency.
+
+---
+
 # REMONT — Growing sourcefree execution queue (OPEN)
 
 ## CORR-006/007 — Q015 narrow I05-ownership proof and Q020 preservation (2026-11-20)
