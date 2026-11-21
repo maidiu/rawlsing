@@ -1,0 +1,32 @@
+name: PYAT KUDA017-018 F6M F6P first-consumer sourcefree court
+on:
+  push:
+    branches:
+      - agent/pyat-kuda017-018-f6m-f6p-stratified-evidence-consumer-20261121
+permissions:
+  contents: read
+jobs:
+  sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree test requirements
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Exact HEAD F6 producer-to-consumer and existing S04 bounds
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p kuda017-proof
+          python -m pytest -q -o addopts='' --junitxml=kuda017-proof/junit.xml \
+            rawlsing_next/tests/test_kuda_f6m_f6p_integrated.py \
+            rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py
+      - name: Preserve first-consumer JUnit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuda017-018-f6-court
+          path: kuda017-proof/
+          if-no-files-found: error
