@@ -2,8 +2,6 @@
 
 No original35 file, source read, native scientific issuance or new C11 engine.
 """
-from copy import deepcopy
-
 import pytest
 
 from rawlsing_next.pre553_empirical_objects import ExactRef
@@ -12,7 +10,7 @@ from rawlsing_next.pre553_r157_universal_c11_parity import (
     UniversalC11ReceiptError,
     receive_r157_fixture_c11_parity,
 )
-from rawlsing_next.tests.test_pyat940_s1b_support import build_scenario
+from rawlsing_next.tests.test_pyat940_s1b_support import build_scenario, make_config
 
 
 @pytest.mark.parametrize("source_format,values", [
@@ -45,15 +43,15 @@ def test_actual_current_r157_two_ingress_parity_and_existing_release(
 def test_original_source_config_refused_before_any_physical_iteration(tmp_path, monkeypatch):
     case = build_scenario(tmp_path / "orig", source_format="SAV")
     try:
-        document = deepcopy(case["document"])
-        document["binding"]["identity_class"] = "ORIGINAL_SOURCE"
-        # The raw closed config may independently refuse the forged original
-        # claim. If a correct original config is constructible, the receiver
-        # must still refuse it without physical access.
-        try:
-            original = SourceConfig(document)
-        except Exception:
-            return
+        original = SourceConfig(make_config(
+            source_format="SAV",
+            active_source_sha256=case["source_sha"],
+            row_count=case["rows"],
+            values=case["values"],
+            purpose="SOURCE_PREPARATION",
+            original=True,
+        ))
+        assert original.identity_class == "ORIGINAL_SOURCE"
         with monkeypatch.context() as m:
             m.setattr(case["incidence"], "iter_cells",
                       lambda *_a, **_k: (_ for _ in ()).throw(
