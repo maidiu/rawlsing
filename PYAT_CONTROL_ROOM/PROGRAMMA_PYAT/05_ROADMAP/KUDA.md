@@ -855,7 +855,7 @@
 
 **Smallest nonduplicative operation:** Preserve observed zero vs absence and signed measure contract, compare to current Field Forge and M1.
 
-**NEKUDA family and negative comparisons:** NEKUDA-039, NEKUDA-040.
+**NEKUDA family and negative comparisons:** NEKUDA-039.
 
 ### KUDA-045 — V552J verified packet-to-structural-fact join and atomic producer publication
 
@@ -873,7 +873,7 @@
 
 **Smallest nonduplicative operation:** Compare join score, permission and source manifest ABI before any modern reuse; preserve probe-only ceiling.
 
-**NEKUDA family and negative comparisons:** NEKUDA-041.
+**NEKUDA family and negative comparisons:** NEKUDA-040.
 
 ### KUDA-046 — V553 fail-closed verified V552J canonical wave harmonization
 
@@ -891,7 +891,7 @@
 
 **Smallest nonduplicative operation:** Conserve independent verification of canonical V552J surface; do not recreate obsolete packet shim.
 
-**NEKUDA family and negative comparisons:** NEKUDA-041, NEKUDA-042.
+**NEKUDA family and negative comparisons:** NEKUDA-040, NEKUDA-042.
 
 ### KUDA-047 — V553 multi-family repository/wave candidate discovery
 
@@ -909,7 +909,7 @@
 
 **Smallest nonduplicative operation:** Reuse strict multi-family/country identity and qualify explicit current version instead of mtime for accepted runs.
 
-**NEKUDA family and negative comparisons:** NEKUDA-043.
+**NEKUDA family and negative comparisons:** NEKUDA-041.
 
 ### KUDA-048 — V553 independent temporal source/country/calendar identity normalizer
 
@@ -927,7 +927,7 @@
 
 **Smallest nonduplicative operation:** Conserve pure identity boundary alongside P07 temporal comparability, not in place of it.
 
-**NEKUDA family and negative comparisons:** NEKUDA-044.
+**NEKUDA family and negative comparisons:** NEKUDA-042.
 
 ### KUDA-049 — V5 thin V552J→V558 executable boundary artifact chain
 
@@ -945,7 +945,7 @@
 
 **Smallest nonduplicative operation:** Reuse positive/negative boundary accounting only after checking newer M1–M4 first readers.
 
-**NEKUDA family and negative comparisons:** NEKUDA-045.
+**NEKUDA family and negative comparisons:** NEKUDA-043.
 
 ### KUDA-050 — V555 bounded life-course mediation and household/channel slot builder
 
@@ -963,7 +963,7 @@
 
 **Smallest nonduplicative operation:** Conserve distinct mediation questions only, not its generic placeholder rows, against real SOROK/world sources.
 
-**NEKUDA family and negative comparisons:** NEKUDA-046.
+**NEKUDA family and negative comparisons:** NEKUDA-044.
 
 ### KUDA-051 — V557 bounded renderer and prompt-shape safety contract
 
@@ -981,7 +981,7 @@
 
 **Smallest nonduplicative operation:** Compare with selected M4 dependency-role authority; preserve stronger negative tests only.
 
-**NEKUDA family and negative comparisons:** NEKUDA-047.
+**NEKUDA family and negative comparisons:** NEKUDA-045.
 
 ### KUDA-052 — V558 numeric-runtime graft readiness evaluator
 
@@ -999,7 +999,7 @@
 
 **Smallest nonduplicative operation:** Compare blockers and proposed numeric graft against actual later actor/runtime owners; no claim of simulation.
 
-**NEKUDA family and negative comparisons:** NEKUDA-048.
+**NEKUDA family and negative comparisons:** NEKUDA-046.
 
 ### KUDA-053 — V558+ generated-vs-evidenced memory and narrative governance rows
 
@@ -1017,7 +1017,7 @@
 
 **Smallest nonduplicative operation:** Conserve normative distinctions, require real runtime memory/event tests before any acceptance.
 
-**NEKUDA family and negative comparisons:** NEKUDA-049.
+**NEKUDA family and negative comparisons:** NEKUDA-047.
 
 ### KUDA-054 — V554 bounded seed-affordance/absence/blocked-condition contract
 
@@ -1035,7 +1035,7 @@
 
 **Smallest nonduplicative operation:** Correct exact reader/authority/status contract before any world use; no need for new V554 seed data model.
 
-**NEKUDA family and negative comparisons:** NEKUDA-018, NEKUDA-050.
+**NEKUDA family and negative comparisons:** NEKUDA-018, NEKUDA-048.
 
 ### KUDA-055 — V550+ survey family/wave/country identity helper
 
@@ -1053,7 +1053,7 @@
 
 **Smallest nonduplicative operation:** Compare modern source identity owner and reuse only missing edge-case aliases, not another identity authority.
 
-**NEKUDA family and negative comparisons:** NEKUDA-051.
+**NEKUDA family and negative comparisons:** NEKUDA-049.
 
 ### KUDA-056 — V550+ family-specific overlay resolution and typed absence
 
@@ -1071,7 +1071,7 @@
 
 **Smallest nonduplicative operation:** Conserve keyed lookup and wrong-family refusal, compare with R157/B49 authority selection.
 
-**NEKUDA family and negative comparisons:** NEKUDA-051.
+**NEKUDA family and negative comparisons:** NEKUDA-049.
 
 ### KUDA-057 — Shared strict pipeline manifest, integrity, and staged publication library
 
@@ -1089,7 +1089,7 @@
 
 **Smallest nonduplicative operation:** Reuse proven manifest/atomic contracts where not already owned by C11; test path containment, crashes and stale artifacts.
 
-**NEKUDA family and negative comparisons:** NEKUDA-052.
+**NEKUDA family and negative comparisons:** NEKUDA-050.
 
 ### KUDA-058 — V5 thin-path provisionality and continuity build standard
 
@@ -1107,7 +1107,7 @@
 
 **Smallest nonduplicative operation:** Preserve continuity proof categories and refusal rather than reintroduce an opaque READY flag.
 
-**NEKUDA family and negative comparisons:** NEKUDA-045.
+**NEKUDA family and negative comparisons:** NEKUDA-051.
 
 ## Escalation boundaries
 
