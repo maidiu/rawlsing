@@ -127,6 +127,55 @@ This document is not a third supreme controller. The legitimate protected progra
 
 **Joint return when both have enough source:** not "match interfaces" but **a revisable single-world constitution with the best surviving functions from both sides**, and actual joined sourcefree first-consumer evidence. Concept changes follow source/counterexample, not rhetorical compromise.
 
+## 8. ORDERED INITIAL BOOTSTRAP — NEIGHBORMULCH'S THEORY FIRST, THEN THE ORGANISM'S DEEP RESPONSE, THEN THEIR RECIPROCAL TRANSFORMATION
+
+**User's latest precise instruction:** Before the Constitutive Organism undertakes a major theory-MULCH *toward the human encounter*, NEIGHBORMULCH should have **profoundly begun its own independent theory-MULCH toward the organism's eventual possibilities**, not today's R25 limitations. **Then** the organism builder conducts its own substantial theoretical reconstruction under that newly articulated experience horizon, without allowing it to flatten richer existing psychology. **Then** NEIGHBORMULCH must revise *its own theory* under the expanded psychology. This is **ordered initial asymmetry, not permanent hierarchical authority**.
+
+The initial exchange is **not** peer agents negotiating schemas at one another's current SHAs. It is a sequence of constructive challenges to the conceptual limitations of both.
+
+### N0 — NEIGHBORMULCH first independent maximal experience THEORY-MULCH
+
+Read the original SOROK charter, H001–H190, the 123 unfinished questions, Courts 1–11, D002/Astra/CIRR/MI–MIII, source history and SEAM/30. Formulate a **positive, critically reconstructed theory of the human encounter** as world/person/user activity before asking the organism builder for an interface. Treat the organism's past and current work as a **developing source of richer future human action**, not a fixed list of fields. NEIGHBORMULCH MUST ask which psychological capabilities its intended interaction actually presupposes, including those **not yet implemented or even well conceptualized**, and which original Mechanism/UX achievements would falsify a shallow psychological model.
+
+**Required first substantial theory return (N-T1):**
+- **Positive theory:** What constitutes an encounter with an independently living, only partially knowable Other? What are user praxis, participant embodiment, evidence, ordinary time, social relations, independent material consequence, meaningful return and non-coercive ethical aspiration?
+- **Historical immanent criticism:** Which original Courts/Mechanisms are inadequate despite preserving valid functions? Which "historically missing" functions are already implemented elsewhere? Which theological/product ideals are provisional or superseded?
+- **Required unrealized person:** Not an API wishlist: detailed *future abilities of the person* necessary for this encounter (e.g. acquired perceptual orientations; nonconscious conflicting responses; original agent-conceived speech/absence; commitments to a third party; imperfect self-understanding; activity unaffected by user's attention; capacity for unexpected relation and lifelong afterlife).
+- **Adversarial concrete encounters:** At least three distinct human situations that strain today's actor models **without scripting an outcome** (e.g. hearing unseen approaching user while absorbed in work; freely leaving a conversation due to caregiver duty; treating seemingly benign help as a threat because of lived history, without turning that interpretation into objective truth).
+- **Two-sided preservation demands:** What the future encounter must be able to consume from richer psyche, and what the deeper psyche must eventually learn to receive from lawful human/world experience.
+- **Consequence for source/code:** Name exact implicated MI/MII/MIII/R21+ producers/consumers where verified, but **no premature canon-writer choice**; preserve current tested/unexecuted distinctions and real privacy/rights.
+
+**What counts as "profoundly underway":** a conceptually substantial N-T1 with these distinctions, strong counterexamples, source-grounded inadequacies and genuine future-person demands. **NOT** waiting for finished comprehensive documentation, a perfected philosophical doctrine, a complete UX runtime, or an arbitrary number of days/rounds. Theory can and should generate bounded exploratory code if it clarifies the concept, but not preemptively choose the shared world writer or substitute a new character.
+
+### C0 — Meanwhile, the Constitutive Organism CONTINUES building
+
+Its agent does **not** stop R21–R25 source-local tests, substantial psyche/history/world construction, SOROKUDA code conservation or independent actor/day continuity pending N-T1. It can independently deepen its existing theory according to endogenous gaps, but **must not finalize an encounter-directed redesign against an imagined target**. Keep qualified extension points and current/future distinction, and report richer capabilities NEIGHBORMULCH must eventually accommodate. No reciprocally uninformed big interface/ontology decision.
+
+### C1 — Constitutive Organism's FULL THEORY-MULCH after N-T1
+
+Treat NEIGHBORMULCH's returned theory **as a demanding encounter with our own theory**, not a binding checklist or UI service contract. Reconstruct our strongest positive account of how embodied need, historical psyche, acquired relational means, contradictory recruitment, self-interpretation, independent Others and world consequence actually constitute what can occur in those encounters. Ask:
+- Which NEIGHBORMULCH expectations are presently beyond our person **and should force genuinely new psychological construction**?
+- Which are themselves theoretically impoverished, overly player-centered, too narratable, too dyadic, too intentionalist, too teleological, or ignorant of what the organism already demonstrates?
+- Which of our advanced operations are invisible or unexpressible in current UX but **must not be abandoned**?
+- What does rich Mechanism III/MII capability require us to rethink about actor attention, sense reception and operation, beyond a co-presence cue?
+- What concrete new psychological ontology/operations and first consumers would make the relationship stronger than either original conception?
+
+**Required C-T1 return:** a transformed **positive constitutive theory** (not just a list of bugs), a no-drop response preserving advanced source operations, explicit counter-critique of N-T1, actor/world/experience causal transformations, and exact testable next code construction under the original owners. Keep real R23–R25 code building, actual execution and independent receiving as separately graded work.
+
+### N1 — NEIGHBORMULCH's second THEORY-MULCH, now challenged by the deeper person
+
+N-T1 MUST NOT be locked as "the UX spec" while the organism merely tries to pass it. NEIGHBORMULCH returns to its first theory under C-T1's richer psychology and rethinks what the human encounter must actually become: less user-centered, less transparent, more temporally material, more open to actor projects and contradictions. If the initial vision assumed a simplified actor, change the vision and then the Mechanism/first-consumer code. Do not manufacture readable outward cues to prove hidden states; the richer person may correctly produce nothing perceptible to the user.
+
+**Required N-T2 return:** what the organism showed NEIGHBORMULCH that the first UX conception could not represent; which new sensory/experience/control/world requirements arise; how the strongest old Mechanisms are preserved; and which user-owned, actual-world first consumer is now appropriate.
+
+### F1 — After initial reciprocal depth, fused THEORY×CODE MULCH accelerates
+
+**Only after N-T1 → C-T1 → N-T2 has produced real mutual transformation**, attempt substantive writer/ontology receiving for joined one-event, one-world, one-person source. Research/experimental integration and bounded causal-cell tests can run earlier, if labeled as provisional; do not make an ontology-committing protected merge before resolving the real collisions. Each running first consumer must then inform and potentially falsify both theories, rather than merely certify they comply with a frozen spec.
+
+From there, the order is no longer rigid; use source-relevant substantive developments and counterexamples, not meeting cadence, to trigger reciprocal turns. A producer can build while a peer theorizes, and a conceptual revision can be important without an instantaneous merge.
+
+**Critical anti-gates:** Neither the richness of our current organism nor the richness of an original UX document is the other side's ceiling. Neither agent may veto independent bounded construction simply by having an unfinished theory. The first N-T1 is an **opening challenge**, not independent accreditation, ultimate authority, adoption of all 190 ideas, or an instruction for the organism to become a character-display backend.
+
 ### Final non-reduction oath (local research principle; not a new PROGRAMMA HQ oath)
 
 **Never make the person smaller to fit the window. Never make the window smaller to fit the person. Expand both until the same historically constituted life can actually be lived and encountered.** Preserve distinct owners, source, tests, rights, material reality and opacity throughout.
