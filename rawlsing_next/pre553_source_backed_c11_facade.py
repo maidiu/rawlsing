@@ -6,7 +6,7 @@ meaning and never bypasses C11 validation.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, replace, fields, is_dataclass
 from fractions import Fraction
 import hashlib
 import math
@@ -264,6 +264,30 @@ class ExactPhysicalCellStream:
         return self.cell_iter_factory()
 
 
+def _cache_projection_preimage(value: Any) -> Any:
+    """Lossless cache identity for the governed input (not a new authority).
+
+    Semantic objects supply their content-addressed full preimages via refs or
+    as_dict; dataclass rule carriers are recursively expanded so a changed
+    source/row/response/occurrence/routing/weight rule cannot alias its old
+    value under the same nominal projection ref.
+    """
+    if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence)):
+        return value.as_dict()
+    if is_dataclass(value):
+        return {
+            field.name: _cache_projection_preimage(getattr(value, field.name))
+            for field in fields(value)
+        }
+    if isinstance(value, Mapping):
+        return {key: _cache_projection_preimage(item) for key, item in value.items()}
+    if isinstance(value, (tuple, list)):
+        return [_cache_projection_preimage(item) for item in value]
+    if hasattr(value, "as_dict"):
+        return value.as_dict()
+    return value
+
+
 @dataclass(frozen=True)
 class GovernedC11Projection:
     projection_identity_ref: ExactRef
@@ -357,26 +381,18 @@ class GovernedC11Projection:
 
     @property
     def cache_identity(self) -> str:
-        owner_sets = [
-            {
-                "contract": x.contract_id,
-                "slot": x.slot.key,
-                "owners": [
-                    {"family": o.owner_family, "authority_refs": [a.as_dict() for a in o.authority_refs]}
-                    for o in x.owners
-                ],
-            }
-            for x in sorted(self.slot_owner_sets, key=lambda x: x.slot.key)
-        ]
-        material = {
+        """Exact full governed-projection preimage, not just its asserted name.
+
+        Caller-provided projection_identity_ref and authority refs do not
+        establish equivalence when row/response/routing/weight/occurrence rules
+        differ. Hash the actual entire producer input, preserving typed
+        absence and canonical semantic references. This is cache isolation,
+        not original-source/science/current-use authorization.
+        """
+        return semantic_hash({
             "contract": CONTRACT_ID,
-            "projection_identity_ref": self.projection_identity_ref.as_dict(),
-            "source_sha256": self.expected_source_sha256,
-            "required_authority_refs": [x.as_dict() for x in sorted(self.required_authority_refs, key=lambda r: r.key)],
-        }
-        if owner_sets:
-            material["slot_owner_sets"] = owner_sets
-        return semantic_hash(material)
+            "projection": _cache_projection_preimage(self),
+        })
 
 
 def _owner_material(owner_authority_refs: Iterable[AuthorityRef]) -> tuple[AuthorityRef, ...]:
@@ -611,6 +627,7 @@ def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalC
 class SourceBackedFacadeKey:
     source_sha256: str
     projection_identity: str
+    physical_binding_identity: str | None = None
 
 
 class SourceBackedC11SessionCache:
@@ -639,8 +656,17 @@ class SourceBackedC11SessionCache:
         return len(self._entries)
 
 
-def source_backed_facade_key(source, p):
-    return SourceBackedFacadeKey(source.source_sha256, p.cache_identity)
+def source_backed_facade_key(source, p, *, current_authorities=()):
+    """Cache only under the same full semantics AND physical-read context."""
+    binding = {
+        "row_count": source.row_count,
+        "decoder_metadata_digest": _accelerator_decoder_digest(source),
+        "transport_identity": getattr(source, "transport_identity", None),
+        "current_authority_refs": sorted(a.ref.key for a in current_authorities),
+    }
+    return SourceBackedFacadeKey(
+        source.source_sha256, p.cache_identity, semantic_hash(binding),
+    )
 
 
 def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalCellStream) -> str | None:
@@ -656,7 +682,10 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
 ):
-    key = source_backed_facade_key(source, projection)
+    # One-shot iterables must not disappear between cache admission and the
+    # compact physical-binding witness. Both must see identical authorities.
+    current_authorities = tuple(current_authorities)
+    key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     release = cache.get(key) if cache else None
     if release is None:
         release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
