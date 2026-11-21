@@ -60,3 +60,78 @@ jobs:
         run: |
           python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
           python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
+
+      - name: G4 capability receiving — no advancing code behind a stale PROGRAMMA
+        if: ${{ github.event_name == 'pull_request' }}
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import os
+          import subprocess
+
+          base = os.environ["BASE_SHA"]
+          changed = set(subprocess.check_output(
+              ["git", "diff", "--name-only", base, "HEAD", "--"],
+              text=True,
+          ).splitlines())
+          guide = "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md"
+          body = Path(guide).read_text(encoding="utf-8")
+          first = body.split("<!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->", 1)
+          assert len(first) == 2, "G4_CURRENT_FIRST_LOOK_MISSING"
+          view = first[1].split("<!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_END -->", 1)
+          assert len(view) == 2, "G4_CURRENT_FIRST_LOOK_NOT_CLOSED"
+          required_roman = (
+              "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
+              "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII",
+              "XVIII", "XIX", "XX"
+          )
+          rows = re.findall(r"(?m)^\\| \\*\\*([IVX]+) — ", view[0])
+          assert tuple(rows) == required_roman, "G4_DHIKRYMULCH_20_ROW_COVERAGE_MISSING"
+          for required in (
+              "FUNCTION_PARITY.jsonl", "INDEX.jsonl",
+              "COMPONENT_STATUS.jsonl", "CURRENT_SEAM_STATES.jsonl",
+              "ALREADY EXISTS", "ACTUAL REMAINING GAP"
+          ):
+              assert required in view[0], "G4_EXISTING_CAPITAL_NAVIGATION_MISSING:" + required
+
+          # A candidate code merge changes programme capabilities only
+          # through protected receiving, so maintain the existing G4
+          # and paired CURRENT_PROGRESS at the SAME receiving event.
+          touched = sorted(path for path in changed
+              if path.endswith(".py")
+              and not ("/tests/" in path or Path(path).name.startswith("test_"))
+              and (
+                  path.startswith("rawlsing_next/")
+                  or path.startswith("data/ddm_build_copy/")
+                  or (path.startswith("WORKER_RETURNS/")
+                      and "/candidate/" in path)
+              ))
+          if touched:
+              md = "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md"
+              js = "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json"
+              assert guide in changed, (
+                  "CODE_CHANGED_BUT_G4_CAPABILITY_FIRST_LOOK_UNUPDATED:" + repr(touched[:12])
+              )
+              assert md in changed and js in changed, (
+                  "CODE_CHANGED_BUT_PAIRED_PYAT_CURRENT_PROGRESS_NOT_RECEIVED"
+              )
+              old = subprocess.check_output(
+                  ["git", "show", base + ":" + guide], text=True,
+              )
+              prefix = "<!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->"
+              suffix = "<!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_END -->"
+              old_view = old.split(prefix, 1)[1].split(suffix, 1)[0] if prefix in old else ""
+              old_rows = [l for l in old_view.splitlines() if l.startswith("| **")]
+              new_rows = [l for l in view[0].splitlines() if l.startswith("| **")]
+              assert old_rows != new_rows, (
+                  "CODE_CHANGED_BUT_NO_FUNCTIONAL_G4_ROW_RECONCILED"
+              )
+          print("G4_CAPABILITY_FIRST_LOOK_PRESENT_20_OF_20; "
+                "RELEVANT_CODE_CHANGES=" + str(len(touched)) +
+                "; DOCUMENTARY_INTEGRITY_ONLY_NOT_SEMANTIC_VALIDATION")
+          PY
