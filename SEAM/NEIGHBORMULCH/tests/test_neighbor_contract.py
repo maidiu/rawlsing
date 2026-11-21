@@ -31,11 +31,12 @@ fake_world = types.ModuleType('um_sorok_organism.world')
 
 
 def add_cue(world, kind, tags, location='all', modality='visual',
-            description='', source_actor=None, private_to=None):
+            description='', source_actor=None, private_to=None, lasting_ticks=0):
     if modality not in ('visual', 'auditory', 'tactile', 'olfactory'):
         raise ValueError('INVALID_CUE_MODALITY')
     item={'id': stable_id('cue', {'clock': world['clock'],
             'i': len(world['cues'])}), 'clock': world['clock'],
+          'last_access_clock': world['clock'] + lasting_ticks,
           'kind': kind, 'tags': tags, 'location': location,
           'modality': modality, 'description': description,
           'source_actor': source_actor, 'private_to': private_to}
@@ -44,12 +45,22 @@ def add_cue(world, kind, tags, location='all', modality='visual',
 
 
 fake_world.add_cue = add_cue
-sys.modules.update({'um_sorok_organism': fake_pkg,
-  'um_sorok_organism.types': fake_types, 'um_sorok_organism.world': fake_world})
-path = Path(__file__).resolve().parents[1] / 'neighbor_runtime.py'
-spec = importlib.util.spec_from_file_location('neighbor_runtime', path)
-module = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(module)
+_modules = {'um_sorok_organism': fake_pkg,
+    'um_sorok_organism.types': fake_types, 'um_sorok_organism.world': fake_world}
+_old_modules = {name: sys.modules.get(name) for name in _modules}
+try:
+    sys.modules.update(_modules)
+    path = Path(__file__).resolve().parents[1] / 'neighbor_runtime.py'
+    spec = importlib.util.spec_from_file_location('neighbormulch_contract_spy', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+finally:
+    # Never poison imports of the actual R21 organism in a combined suite.
+    for name, old in _old_modules.items():
+        if old is None:
+            sys.modules.pop(name, None)
+        else:
+            sys.modules[name] = old
 NeighborEncounter = module.NeighborEncounter
 EncounterRefusal = module.EncounterRefusal
 
@@ -63,8 +74,8 @@ class LedgerSpy:
             'cues':[], 'material_objects':{}}
         self._version = 0
         self._actors = {'worker':{'id':'worker', 'location':'workshop',
-                                 'history':['existing_work']},
-                        'elsewhere':{'id':'elsewhere','location':'home'}}
+                                 'history':['existing_work'], 'body':{'language':0.9}},
+                        'elsewhere':{'id':'elsewhere','location':'home', 'body':{'language':0.9}}}
         self._events = [{'id':'genesis','kind':'INITIALIZATION',
                           'envelope':{'payload':{}}}]
     def world(self, wid):
@@ -223,6 +234,25 @@ class OneWorldContract(unittest.TestCase):
         with self.assertRaisesRegex(EncounterRefusal,'MISSING_USER_SENSORY_CONDITIONS'):
             n.install_sourcefree_conditions(invalid,request_id='wrong')
         self.assertEqual(r.ledger.world('w1')[1]['clock'],0)
+
+    def test_sensory_receipt_window_survives_one_world_transition(self):
+        self.neighbor.contribute('come','MOVE',destination='workshop')
+        _,world=self.runtime.ledger.world('w1')
+        cue=world['cues'][-1]
+        self.assertEqual(cue['clock'],world['clock'])
+        self.assertEqual(cue['last_access_clock'],world['clock']+1)
+        self.assertLess(cue['last_access_clock'],world['clock']+2)
+
+    def test_audible_speech_is_not_infant_lexical_understanding(self):
+        self.neighbor.contribute('come','MOVE',destination='workshop')
+        self.runtime.ledger._actors['worker']['body']['language']=0.0
+        out=self.neighbor.contribute('said','SAY',text='You are late again.')
+        self.assertEqual(out['actor_uptake'],'NOT_ESTABLISHED')
+        _,world=self.runtime.ledger.world('w1')
+        self.assertEqual(world['neighbor_user_events'][-1]['authored_text'],
+                         'You are late again.')
+        self.assertEqual(world['cues'][-1]['description'],'Speech sounds nearby.')
+        self.assertNotIn('You are late again.',str(world['cues'][-1]))
 
     def test_unqualified_words_cannot_author_outcome(self):
         with self.assertRaisesRegex(EncounterRefusal,'INVALID_USER_SPEECH'):
