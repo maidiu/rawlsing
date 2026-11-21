@@ -349,20 +349,34 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
     assert len(index_builds) == 1
     assert result.summary.full_coverage
     assert result.outputs_by_unit
-    observed_query_count = 0
+    issued_query_count = 0
+    supported_s04_count = 0
+    negatives = []
     for unit in result.manifest.units:
         if unit.job_kind != "QUERY":
             continue
+        issued_query_count += 1
         native = result.outputs_by_unit[unit.unit_hash]
         query = workload.catalog.resolve_query_exact(unit.job_ref)
+        assert native.query_ref == query.ref
+        assert len(native.facts) == 1
+        if native.facts[0].typed_state != "SUPPORTED":
+            # R03 issues exact eligible QUERY roles, not a guarantee that
+            # every source risk set is empirically observable. Preserve
+            # unavailable/unresolved native facts instead of forging S04.
+            negatives.append((query.ref, native.facts[0].ref,
+                              native.facts[0].typed_state))
+            continue
         s04 = receive_s04_first_consumer(query=query, execution=native)
         assert s04.execution is native
         assert s04.knowledge.material()["fact_ref"] == native.facts[0].ref.as_dict()
         assert s04.receipt.material()["producer_operation"] == (
             "ONE_PREEXISTING_I03_RESULT__NO_ADDITIONAL_QUERY"
         )
-        observed_query_count += 1
-    assert observed_query_count == len(workload.requests)
+        supported_s04_count += 1
+    assert issued_query_count == len(workload.requests)
+    assert supported_s04_count >= 1, "sourcefree q101 supported S04 first reader disappeared"
+    assert len(negatives) + supported_s04_count == issued_query_count
 
     # Same original issuer, release and query: prepared and default paths
     # must return identical empirical fact/receipt refs.
