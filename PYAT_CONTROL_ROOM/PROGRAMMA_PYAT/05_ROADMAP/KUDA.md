@@ -337,7 +337,7 @@
 
 **Smallest nonduplicative operation:** Conserve its frozen-common-risk and noncomparable-arm controls.
 
-**NEKUDA family and negative comparisons:** NEKUDA-013, NEKUDA-014.
+**NEKUDA family and negative comparisons:** NEKUDA-013, NEKUDA-014, NEKUDA-033.
 
 ### KUDA-016 — FFX002 R2 local geometric position/disposition view
 
@@ -355,7 +355,7 @@
 
 **Smallest nonduplicative operation:** Retain as comparison/negative court for representation choice.
 
-**NEKUDA family and negative comparisons:** NEKUDA-014.
+**NEKUDA family and negative comparisons:** NEKUDA-014, NEKUDA-033.
 
 ### KUDA-017 — F6M partially identified cross-marginal synthesis
 
@@ -427,7 +427,7 @@
 
 **Smallest nonduplicative operation:** Repair keyed V553→V554 consumer and status ABI, not V553 calculation from scratch.
 
-**NEKUDA family and negative comparisons:** NEKUDA-017, NEKUDA-018.
+**NEKUDA family and negative comparisons:** NEKUDA-017, NEKUDA-018, NEKUDA-048.
 
 ### KUDA-021 — E41→R08→L01 signed empirical evidence to world-consumer path
 
