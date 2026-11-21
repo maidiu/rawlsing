@@ -21,6 +21,7 @@ from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
 from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
+from .social_vocal_development import admit_vocal_coordination
 from .prospective_horizon import record_possible_end_trial
 from .functional_correspondence import admit_functional_correspondence
 from .material_investments import admit_material_investment
@@ -57,7 +58,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
          'ACQUIRE_COSTLY_CARE_PRACTICE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
-         'REVISE_SITUATED_CULTURAL_REFERENCE','NO_CHANGE'}
+         'REVISE_SITUATED_CULTURAL_REFERENCE',
+         'ACQUIRE_SOCIAL_VOCAL_COORDINATION','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -263,6 +265,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['forms'][ident]['lifecycle']='DORMANT' if op=='SET_DORMANT' else 'ACTIVE'
             actor['forms'][ident].setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACQUIRE_SOCIAL_VOCAL_COORDINATION':
+            try:
+                report.append(admit_vocal_coordination(
+                    actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_SITUATED_CULTURAL_REFERENCE':
             try:
                 report.append(admit_cultural_reference(
