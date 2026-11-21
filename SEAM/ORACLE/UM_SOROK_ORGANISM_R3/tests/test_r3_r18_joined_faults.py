@@ -15,7 +15,7 @@ from um_sorok_organism.storage import ResearchLedger,Conflict
 from um_sorok_organism.types import adult,blank_world,stable_id
 from um_sorok_organism.development import admit,InvalidDevelopment
 from um_sorok_organism.runtime import ConstitutiveRuntime, _bind_actor_trial_particular_object
-from um_sorok_organism.semantics import ValidatingSemanticService, CallbackLLMProvider
+from um_sorok_organism.semantics import ValidatingSemanticService, CallbackLLMProvider, HeuristicSemanticProvider
 from um_sorok_organism.world import add_cue
 
 
@@ -340,6 +340,46 @@ class JoinedIssuedTrialAndParticularObject(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'NO_ACTION_OR_PRACTICAL_OPTION'):
             ValidatingSemanticService(CallbackLLMProvider(
                 lambda task,packet:{'task':task})).proposal('actor_attempt',{})
+
+
+class JoinedHeuristicTrialNotMatureMotive(unittest.TestCase):
+    def _packet(self, active_trial):
+        return {
+            'actor':{'id':'nadia','role':'child','location':'home',
+                     'body':{'language':0}},
+            'clock':22,
+            'experience':{'actor':'nadia','own_action':'WAIT','status':'PERFORMED',
+                          'reciprocated_partner':None,
+                          'perceived_cues':[{'id':'actually_received',
+                                              'tags':['sing','rhythm']}]},
+            'actor_possible_ends':[{'id':'possible_rhythm',
+                'status':'POSSIBLE_NOT_ACQUIRED_MOTIVE',
+                'origin_event':'world:earlier',
+                'possible_means':['SING','PRACTICE'],
+                'cue_terms':['sing','rhythm']}],
+            'historical_psychodynamic_context':{
+                'objective_event_ref':'world:now'},
+            'selected_purpose_analytic_only':{'status':(
+                'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE'
+                if active_trial else
+                'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE')},
+        }
+
+    def test_heuristic_must_not_propose_same_event_trial_as_mature_motive(self):
+        proposal=HeuristicSemanticProvider().propose(
+            'development',self._packet(True))
+        self.assertFalse(any(c.get('kind')=='TAKE_UP_POSSIBLE_END'
+                             for c in proposal['candidates']))
+
+    def test_different_nontrial_encounter_can_still_propose_takeup(self):
+        proposal=HeuristicSemanticProvider().propose(
+            'development',self._packet(False))
+        takeups=[c for c in proposal['candidates']
+                 if c.get('kind')=='TAKE_UP_POSSIBLE_END']
+        self.assertEqual(len(takeups),1)
+        self.assertEqual(takeups[0]['possible_end_ref'],'possible_rhythm')
+        self.assertEqual(takeups[0]['later_perceived_cue_ref'],
+                         'actually_received')
 
 
 if __name__=="__main__":
