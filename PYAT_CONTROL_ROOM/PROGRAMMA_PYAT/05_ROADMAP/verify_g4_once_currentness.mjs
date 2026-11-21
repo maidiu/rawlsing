@@ -49,6 +49,11 @@ function validateRows(index,parity,components,seams,manifest){
  }
  const joins=index.find(x=>x.id==="ROADMAP:S11")?.g4_once_r2_inherited_source_crosswalk?.unresolved_w1h_custody?.ids||[];
  if(joins.length!==164||new Set(joins).size!==164)failures.push("G4_R2_W1H_164_UNJOINED_CUSTODY_LOST");
+ const k1ar=index.find(x=>x.id==="ROADMAP:S01")?.g4_once_r3_k1_source_authority_unjoined?.unjoined_AR_records||[];
+ const k1history=index.find(x=>x.id==="ROADMAP:S11")?.g4_once_r3_k1_historical_custody;
+ if(k1ar.length!==47||new Set(k1ar.map(x=>x.id)).size!==47)failures.push("G4_K1_47_SOURCE_AUTHORITY_UNJOINED_LOST");
+ if(k1history?.typed_unjoined_67?.AR_unverified!==47||k1history?.typed_unjoined_67?.held_owner_actions?.length!==14||k1history?.typed_unjoined_67?.nonadditive_families?.length!==6)failures.push("G4_K1_67_TYPED_SENTINEL_DECOMPOSITION_LOST");
+ if(k1history?.inherited_history?.LMX44?.length!==44||k1history?.inherited_history?.LMQ30?.length!==30)failures.push("G4_K1_LMX44_LMQ30_HISTORICAL_CUSTODY_LOST");
  const historicLinks=parity.filter(x=>x.g4_once_r2_historical_function_relationship);
  if(historicLinks.length!==18||historicLinks.some(x=>x.g4_once_r2_historical_function_relationship.preserve_frozen_parity!==x.parity))failures.push("G4_R2_18_HISTORICAL_FUNCTION_LINKS_LOST_OR_PARITY_PROMOTED");
   return {pass:failures.length===0,failures,counts:Object.fromEntries(specs.map(([x,k,n])=>[k+"_"+n,x.length])),chapters:chapters.size,inherited:Object.fromEntries(Object.keys(sourceGrains).map(k=>[k,recovered[k].length])),w1h_unjoined:joins.length,historical_function_relations:historicLinks.length};
