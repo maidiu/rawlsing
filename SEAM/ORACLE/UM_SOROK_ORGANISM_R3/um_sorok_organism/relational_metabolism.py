@@ -88,8 +88,9 @@ def validate_motif(motif, forms):
             if ("mediated_action" in effect or "polarity" in effect):
                 target = forms[effect["target"]]
                 action = effect.get("mediated_action")
+                enables = target.get("enables", [])
                 if (type(action) is not str or action not in ACTIONS
-                        or action not in target.get("enables", [])
+                        or type(enables) is not list or action not in enables
                         or effect.get("polarity") not in POLARITIES):
                     raise InvalidRelationalMotif(
                         "MOTIF_MEDIATED_ACTION_NOT_ACQUIRED_BY_TARGET")
