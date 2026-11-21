@@ -240,7 +240,8 @@ def test_smaller_affordable_batch_is_not_rejected_by_pessimistic_full_width_fore
 
 def test_resumed_small_batches_preserve_cross_batch_pair_diagnostics_and_do_not_erase_xor():
     real = _xor()
-    policy = _policy(max_depth=0, min_signal_bits="0.1")
+    # One level permits the asserted root split; zero intentionally forbids it.
+    policy = _policy(max_depth=1, min_signal_bits="0.1")
     # Domain cells 8; four nonzero joint configurations. The 40-unit budget
     # forces a singleton batch, making its partner a subsequent inquiry.
     receipt = _advance(
