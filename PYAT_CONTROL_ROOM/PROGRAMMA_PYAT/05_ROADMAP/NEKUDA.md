@@ -1,6 +1,6 @@
 # NEKUDA — lesser, defective, superseded, misleading and nonadoptable iterations
 
-**Revision NEKUDA-R2, 2026-11-21.** Companion to [KUDA strongest code-family records](KUDA.md), on the **same existing G4 branch**, not an additional PR, not a new PROGRAMMA and not a new engineering queue. Research is limited to evidence established before 2026-11-19 ~12:50 ET. Statements describe **exact historical cuts**, and do not automatically apply to later code. NEKUDA preserves failures and supersession relations; `NO_ACCEPTED_KUDA_SUCCESSOR` explicitly avoids inventing a fix. No Python tests executed during this ledger authoring.
+**Revision NEKUDA-R3, 2026-11-21.** Companion to [KUDA strongest code-family records](KUDA.md), on the **same existing G4 branch**, not an additional PR, not a new PROGRAMMA and not a new engineering queue. Research is limited to evidence established before 2026-11-19 ~12:50 ET. Statements describe **exact historical cuts**, and do not automatically apply to later code. NEKUDA preserves failures and supersession relations; `NO_ACCEPTED_KUDA_SUCCESSOR` explicitly avoids inventing a fix. No Python tests executed during this ledger authoring.
 
 **Maintenance:** on each subsequent return, revise the same NEKUDA.md and KUDA.md files in place via exact-head CAS, preserving stable IDs. Retire a predecessor only after actual source-function, consumer and negative comparison; don't collapse distinct scopes. No protected receiving or source/science authority is implied.
 
@@ -40,6 +40,25 @@
 | `NEKUDA-031` | V556 historical pressure-flow register mistaken for enacted psyche | KUDA-035, KUDA-037 | Historical V556 emits contract rows/registers and renderer prerequisites. Modern M3 validates structural output contract; neither  |
 | `NEKUDA-032` | V558 old runtime-input gate mistaken for an executable persona runtime | KUDA-036, KUDA-038 | build_v558_runtime_input_gate only normalizes/validates V557 input fields. Selected M4 is an exact structural repository, not runt |
 | `NEKUDA-033` | FFX configuration A collapsed into geometric B or conditional C | KUDA-015, KUDA-016, KUDA-033, KUDA-034 | A exact observed configurations, B local geometry, C direct conditional redistribution have different output semantics despite one |
+
+| `NEKUDA-034` | V550 bounded max_questions mistaken for balanced all-wave enumeration | KUDA-039 | _build_question_list sorts by source/wave/country/var_code and applies max_questions with head(max_questions), so bounded list may |
+| `NEKUDA-035` | V550 response-map matches mistaken for true administered semantic rights | KUDA-040 | The audit counts distinct mapped answer values and special flags, which can be complete while the original codebook mapping or que |
+| `NEKUDA-036` | V550J optional association classifier used without required refusal | KUDA-041 | AssociationLaneRegistry.classify returns None on unmatched rules; classify_required raises explicit RegistryAuthorityError. The ac |
+| `NEKUDA-037` | V550J manifest/family row validation mistaken for substantive empirical proof | KUDA-042 | _validate_v550j_run_outputs validates row counts, schema paths and family coverage; an allowed-empty artifact may be not_applicabl |
+| `NEKUDA-038` | V551 auxiliary conditional index no verified live first reader | KUDA-043 | build_conditional_determinicity_index exists and returns index/exclusion rows, but prior Trii D11 source investigation found its a |
+| `NEKUDA-039` | V552 signed-pressure descriptive score mistaken for social-causal structure | KUDA-044 | Weighted signed response components can calculate a descriptive score with correct authorized inputs, but cannot alone identify in |
+| `NEKUDA-040` | V552J partial semantic match carries MATCHED_EXACT_SCOPE/probe permission | KUDA-045 | A 5–7 structural-match score is labelled partial_structural_match yet resolves under exact source/run/wave/country and the row may |
+| `NEKUDA-041` | V553 historical latest-run chosen by file modification time | KUDA-047 | discover_latest_wave_runs selects greatest mtime_ns (then depth/name) per source/wave/country; copying or touching a run can chang |
+| `NEKUDA-042` | V553 normalized country/year mistaken for wave-comparability science | KUDA-048 | The source-family/country/calendar normalizer correctly refuses mixed identities but does not prove questionnaire equivalence, wei |
+| `NEKUDA-043` | V5 thin 'READY' boundary artifact mistaken for executable persona chain | KUDA-049 | The orchestrator can return READY_V5_THIN_END_TO_END_WITH_BOUNDARY_LIMITATIONS while its packets say runtime_packets_written=false |
+| `NEKUDA-044` | V555 life-course slots mistaken for developmental histories | KUDA-050 | Mediation slots and parent/co-parent ledgers are prerequisite schemas, not biographies or developmental causation. Its explicit ru |
+| `NEKUDA-045` | V557 renderer prompt-shape audit mistaken for a renderer | KUDA-051 | V557 compiles renderer boundary/audit requirements but itself emits no dialogue, voice, model invocations or persona continuity. |
+| `NEKUDA-046` | V558 numeric graft readiness mistaken for completed runtime graft | KUDA-052 | The evaluator inspects V557 contracts and prospective governance and can produce a readiness report, while it explicitly implement |
+| `NEKUDA-047` | V558+ generated-memory audit green without generated memories scanned | KUDA-053 | _memory_rows emits evidence_laundering_scan_status='not_run', zero generated and evidenced memory counts, but audit_status='pass'  |
+| `NEKUDA-048` | V554 heuristic input reaches V555 without V553 measured source key | KUDA-020, KUDA-054 | build_v554_seed_contract reads v553_country_year_pressure_field and falls back to year-indexed heuristic pressure, not source-keye |
+| `NEKUDA-049` | V550 family overlay identity presence mistaken for endorsed source authority | KUDA-055, KUDA-056 | load_family_overlay returns the first identity-valid overlay candidate; it does not independently select issued scientific precede |
+| `NEKUDA-050` | Legacy pipeline SHA and staged directory transport mistaken for semantic permission | KUDA-057 | verify_boundary_manifest enforces declared hashes, identity and typed downstream permission but cannot establish whether the issue |
+| `NEKUDA-051` | V5 build-standard continuity labels mistaken for an executed chain | KUDA-058 | build_thin_build_ledger counts implementation_kind and upstream_continuity_result labels, but a reported scaffold/readiness score  |
 
 ## Full negative and supersession evidence
 
@@ -372,6 +391,186 @@
 **Why this is NEKUDA, not KUDA:** A exact observed configurations, B local geometry, C direct conditional redistribution have different output semantics despite one common-risk harness.
 
 **No-loss / non-promotion rule:** Keep A/B/C as independent measured comparison arms; no representation is silently replaced by another.
+
+### NEKUDA-034 — V550 bounded max_questions mistaken for balanced all-wave enumeration
+
+**Kind:** `PROSPECTIVE_COVERAGE_LIMIT`. **Best comparators:** KUDA-039.
+
+**Exact historical source:** [data/ddm_build_copy/build_determinicity_repository_v550.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_determinicity_repository_v550.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** _build_question_list sorts by source/wave/country/var_code and applies max_questions with head(max_questions), so bounded list may truncate later waves.
+
+**No-loss / non-promotion rule:** Not itself a bug for explicit preview quotas, but not a fair all35 source selection or zero-candidate proof.
+
+### NEKUDA-035 — V550 response-map matches mistaken for true administered semantic rights
+
+**Kind:** `AUTHORITY_SCOPE_LIMIT`. **Best comparators:** KUDA-040.
+
+**Exact historical source:** [data/ddm_build_copy/build_determinicity_wave_shard_v550.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_determinicity_wave_shard_v550.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** The audit counts distinct mapped answer values and special flags, which can be complete while the original codebook mapping or question administration is wrong.
+
+**No-loss / non-promotion rule:** Use the audit as required-coverage evidence, never as original source-holder or scientific permission.
+
+### NEKUDA-036 — V550J optional association classifier used without required refusal
+
+**Kind:** `LESSER_CLASSIFICATION_ENTRYPOINT`. **Best comparators:** KUDA-041.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v550j_registry_classifier.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550j_registry_classifier.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** AssociationLaneRegistry.classify returns None on unmatched rules; classify_required raises explicit RegistryAuthorityError. The actual historical compiler uses classify_required.
+
+**No-loss / non-promotion rule:** Preserve the fail-closed required entrypoint for actual publication decisions.
+
+### NEKUDA-037 — V550J manifest/family row validation mistaken for substantive empirical proof
+
+**Kind:** `PROOF_SCOPE_LIMIT`. **Best comparators:** KUDA-042.
+
+**Exact historical source:** [data/ddm_build_copy/compile_v550j_joint_response_patterns.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/compile_v550j_joint_response_patterns.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** _validate_v550j_run_outputs validates row counts, schema paths and family coverage; an allowed-empty artifact may be not_applicable rather than producing a valid joint.
+
+**No-loss / non-promotion rule:** Manifest completeness is distinct from truthful response coding, denominator and sampling permission.
+
+### NEKUDA-038 — V551 auxiliary conditional index no verified live first reader
+
+**Kind:** `STRANDED_SOCKET`. **Best comparators:** KUDA-043.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v551_conditional.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_conditional.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** build_conditional_determinicity_index exists and returns index/exclusion rows, but prior Trii D11 source investigation found its auxiliary socket not consumed. The current I03 conditioner is not semantic parity.
+
+**No-loss / non-promotion rule:** Do not promote standalone function body to active source-native conditional determinicity.
+
+### NEKUDA-039 — V552 signed-pressure descriptive score mistaken for social-causal structure
+
+**Kind:** `CLAIM_SCOPE_LIMIT`. **Best comparators:** KUDA-044.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v552_structural.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v552_structural.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** Weighted signed response components can calculate a descriptive score with correct authorized inputs, but cannot alone identify institutions, class power or historical causation.
+
+**No-loss / non-promotion rule:** Keep V551 repair debt, observed-zero, original risk-set and scientific-issuer checks distinct.
+
+### NEKUDA-040 — V552J partial semantic match carries MATCHED_EXACT_SCOPE/probe permission
+
+**Kind:** `SEMANTIC_SCOPE_WARNING`. **Best comparators:** KUDA-045.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v552j_handoff.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v552j_handoff.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** A 5–7 structural-match score is labelled partial_structural_match yet resolves under exact source/run/wave/country and the row may become MATCHED_EXACT_SCOPE with join_permission ALLOW; v553_temporal_field_allowed stays false and mode probe_only.
+
+**No-loss / non-promotion rule:** Never represent scope-exact as full semantic equivalence or use probe grant to issue measured temporal field; test explicit partial match and permission.
+
+### NEKUDA-041 — V553 historical latest-run chosen by file modification time
+
+**Kind:** `VERSION_SELECTION_RISK`. **Best comparators:** KUDA-047.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v553_repo_discovery.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_repo_discovery.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** discover_latest_wave_runs selects greatest mtime_ns (then depth/name) per source/wave/country; copying or touching a run can change candidate identity without any scientific or owner-issued as-of choice.
+
+**No-loss / non-promotion rule:** Treat discovery as candidate locator, never current authoritative historical release selection.
+
+### NEKUDA-042 — V553 normalized country/year mistaken for wave-comparability science
+
+**Kind:** `COMPARABILITY_SCOPE_LIMIT`. **Best comparators:** KUDA-048.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v553_temporal_identity.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_temporal_identity.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** The source-family/country/calendar normalizer correctly refuses mixed identities but does not prove questionnaire equivalence, weighting, target-population comparability or causal chronology.
+
+**No-loss / non-promotion rule:** Pair with distinct P07/owner comparability attestation before interpreting measured deltas.
+
+### NEKUDA-043 — V5 thin 'READY' boundary artifact mistaken for executable persona chain
+
+**Kind:** `SCAFFOLD_STATUS_OVERCLAIM`. **Best comparators:** KUDA-049.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v5_thin_end_to_end.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v5_thin_end_to_end.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** The orchestrator can return READY_V5_THIN_END_TO_END_WITH_BOUNDARY_LIMITATIONS while its packets say runtime_packets_written=false and person_level_allowed=false.
+
+**No-loss / non-promotion rule:** Do not present boundary-only handoff artifacts as functioning SOROK persons or world causal runtime.
+
+### NEKUDA-044 — V555 life-course slots mistaken for developmental histories
+
+**Kind:** `NONRUNTIME_SCOPE_LIMIT`. **Best comparators:** KUDA-050.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v555_life_course_mediation.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** Mediation slots and parent/co-parent ledgers are prerequisite schemas, not biographies or developmental causation. Its explicit runtime-readiness field is false.
+
+**No-loss / non-promotion rule:** Conserve allowed/blocked channel questions; do not substitute static slot rows for unfolding persons.
+
+### NEKUDA-045 — V557 renderer prompt-shape audit mistaken for a renderer
+
+**Kind:** `NONRUNTIME_SCOPE_LIMIT`. **Best comparators:** KUDA-051.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v557_renderer_contract.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v557_renderer_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** V557 compiles renderer boundary/audit requirements but itself emits no dialogue, voice, model invocations or persona continuity.
+
+**No-loss / non-promotion rule:** Separate legitimate renderer input contract from actual renderer execution and actor claims.
+
+### NEKUDA-046 — V558 numeric graft readiness mistaken for completed runtime graft
+
+**Kind:** `NONRUNTIME_SCOPE_LIMIT`. **Best comparators:** KUDA-052.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v558_runtime_graft_readiness.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_graft_readiness.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** The evaluator inspects V557 contracts and prospective governance and can produce a readiness report, while it explicitly implements no numeric runtime graft.
+
+**No-loss / non-promotion rule:** A readiness record cannot count as executed world or psyche machinery.
+
+### NEKUDA-047 — V558+ generated-memory audit green without generated memories scanned
+
+**Kind:** `VACUOUS_AUDIT_PASS`. **Best comparators:** KUDA-053.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v558_plus_governance.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_plus_governance.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** _memory_rows emits evidence_laundering_scan_status='not_run', zero generated and evidenced memory counts, but audit_status='pass' because no runtime generation occurred.
+
+**No-loss / non-promotion rule:** Report NOT_RUN rather than passing actual actor memory separation; preserve policy constraints.
+
+### NEKUDA-048 — V554 heuristic input reaches V555 without V553 measured source key
+
+**Kind:** `WRONG_READER_UNREPAIRED`. **Best comparators:** KUDA-020, KUDA-054.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v554_seed_contract.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v554_seed_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** build_v554_seed_contract reads v553_country_year_pressure_field and falls back to year-indexed heuristic pressure, not source-keyed v553_temporal_pressure_field; valid V555 handoff cannot retroactively qualify it.
+
+**No-loss / non-promotion rule:** Repair exact source product and status reader before treating V554 seeds as empirical world evidence.
+
+### NEKUDA-049 — V550 family overlay identity presence mistaken for endorsed source authority
+
+**Kind:** `SOURCE_AUTHORITY_SCOPE_LIMIT`. **Best comparators:** KUDA-055, KUDA-056.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v550_family_overlay.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_family_overlay.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** load_family_overlay returns the first identity-valid overlay candidate; it does not independently select issued scientific precedence or establish a right to read original survey bytes.
+
+**No-loss / non-promotion rule:** Keep per-family identity/refusal, require owner-issued question/use authority separately.
+
+### NEKUDA-050 — Legacy pipeline SHA and staged directory transport mistaken for semantic permission
+
+**Kind:** `TRANSPORT_NOT_SCIENCE`. **Best comparators:** KUDA-057.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_pipeline_boundary_contract.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_pipeline_boundary_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** verify_boundary_manifest enforces declared hashes, identity and typed downstream permission but cannot establish whether the issuer was scientifically competent; relative file paths require containment review for untrusted manifests.
+
+**No-loss / non-promotion rule:** Reuse only as transport law with external owner competence and path/tamper testing.
+
+### NEKUDA-051 — V5 build-standard continuity labels mistaken for an executed chain
+
+**Kind:** `STATUS_NOT_RUNTIME`. **Best comparators:** KUDA-058.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v5_build_standard.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v5_build_standard.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** build_thin_build_ledger counts implementation_kind and upstream_continuity_result labels, but a reported scaffold/readiness score is not independent test execution or actor/world science.
+
+**No-loss / non-promotion rule:** Preserve documentary no-promotion categories; demand actual first consumers and independent evidence.
 
 ## Distinctions that must survive future KUDA reviews
 

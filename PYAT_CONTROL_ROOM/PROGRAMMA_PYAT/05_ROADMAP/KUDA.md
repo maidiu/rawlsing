@@ -1,6 +1,6 @@
 # KUDA — most complete known conserved/underrecognized capability versions
 
-**Revision: KUDA-R2 (2026-11-21).** Persistent maintenance location: `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` (the existing G4 repair branch; no new branch or PR). KUDA is an **evidence overlay, not the PROGRAMMA capability status authority**. G4's existing INDEX/FUNCTION_PARITY/COMPONENT_STATUS/CURRENT_SEAM_STATES and paired CURRENT_PROGRESS control accepted status. Source body presence, actual execution, independent review, scientific/source authority and protected receiving are independent.
+**Revision: KUDA-R3 (2026-11-21).** Persistent maintenance location: `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` (the existing G4 repair branch; no new branch or PR). KUDA is an **evidence overlay, not the PROGRAMMA capability status authority**. G4's existing INDEX/FUNCTION_PARITY/COMPONENT_STATUS/CURRENT_SEAM_STATES and paired CURRENT_PROGRESS control accepted status. Source body presence, actual execution, independent review, scientific/source authority and protected receiving are independent.
 
 **Historical filter:** only implementation evidence established *before 2026-11-19 ~12:50 America/New_York*, excluding subsequent PRE-MAIN/REMONT/Q014–Q020 turmoil delegated to PYAT HQ. Comparison snapshot `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`; older DDM `25830fe7462bb9e29bc4087e6ae14f3f84cec377`. Source-static and historical reviewed findings only; **no Python suites executed in this return**. Tests described as written or previously reported, not newly passed. This is a deep targeted search, not exhaustive proof that no other source exists.
 
@@ -47,6 +47,27 @@
 | `KUDA-036` | M4 selected V557/V558 exact publication and repository role resolution | S10/S11 | `SELECTED_SOURCEFREE` |
 | `KUDA-037` | V556 historical pressure-flow/attractor prerequisite builder | S09/S10 | `HISTORICAL_EXECUTABLE` |
 | `KUDA-038` | V558 historical runtime-input normalization and review gate | S10/S11 | `HISTORICAL_EXECUTABLE` |
+
+| `KUDA-039` | V550 per-wave administered-question catalog compiler | S01/S02 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-040` | V550 per-wave response-map authority-match audit | S01/S03 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-041` | V550J governed association-lane registry and fail-closed classifier | S01/S04 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-042` | V550J complete-run artifact/family-output validator | S03/S04 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-043` | V551 auxiliary conditional-determinicity index and typed exclusion ledger | S04 | `HISTORICAL_CODE_READER_UNPROVED` |
+| `KUDA-044` | V552 signed structural pressure observation/coverage producer | S04/S06 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-045` | V552J verified packet-to-structural-fact join and atomic producer publication | S05/S08 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-046` | V553 fail-closed verified V552J canonical wave harmonization | S08 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-047` | V553 multi-family repository/wave candidate discovery | S01/S08 | `HISTORICAL_EXECUTABLE_UTILITY` |
+| `KUDA-048` | V553 independent temporal source/country/calendar identity normalizer | S01/S08 | `HISTORICAL_EXECUTABLE_UTILITY` |
+| `KUDA-049` | V5 thin V552J→V558 executable boundary artifact chain | S08–S11 | `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY` |
+| `KUDA-050` | V555 bounded life-course mediation and household/channel slot builder | S09 | `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY` |
+| `KUDA-051` | V557 bounded renderer and prompt-shape safety contract | S10/S11 | `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY` |
+| `KUDA-052` | V558 numeric-runtime graft readiness evaluator | S10/S11 | `HISTORICAL_EXECUTABLE_NONRUNTIME` |
+| `KUDA-053` | V558+ generated-vs-evidenced memory and narrative governance rows | S11 | `HISTORICAL_EXECUTABLE_NONRUNTIME` |
+| `KUDA-054` | V554 bounded seed-affordance/absence/blocked-condition contract | S08/S09 | `HISTORICAL_EXECUTABLE_WRONG_READER` |
+| `KUDA-055` | V550+ survey family/wave/country identity helper | S01 | `HISTORICAL_EXECUTABLE_SHARED_UTILITY` |
+| `KUDA-056` | V550+ family-specific overlay resolution and typed absence | S01 | `HISTORICAL_EXECUTABLE_SHARED_UTILITY` |
+| `KUDA-057` | Shared strict pipeline manifest, integrity, and staged publication library | S03/S05/S08 | `HISTORICAL_EXECUTABLE_SHARED_UTILITY` |
+| `KUDA-058` | V5 thin-path provisionality and continuity build standard | S09–S11 | `HISTORICAL_EXECUTABLE_SHARED_UTILITY` |
 
 ## Full records — strongest known source version per distinct function
 
@@ -727,6 +748,366 @@
 **Smallest nonduplicative operation:** Do not port unchanged; preserve audit requirements and compare with selected M4 role-authenticated resolution.
 
 **NEKUDA family and negative comparisons:** NEKUDA-032.
+
+### KUDA-039 — V550 per-wave administered-question catalog compiler
+
+**G4 jurisdiction:** S01/S02; G3A:FUNCTION:G1A-FUNC-001. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [_build_question_list](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_determinicity_repository_v550.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/build_determinicity_repository_v550.py`, Git blob `04f3a3646d8b468660385087d92541f03f860cb0`.
+
+**What it really does:** Merges explicit source/wave/country scope with mapping rows, normalizes wave aliases, de-duplicates and orders per-wave question candidates for bounded subsequent materialization.
+
+**Actually established first reader:** Historical V550 repository builder invokes _build_question_list; no contemporary all35 native issuer.
+
+**Why KUDA retains it:** The historical compiler already solves a nontrivial source/wave questionnaire selection problem, separate from C11 query evaluation.
+
+**Limitation / negative:** max_questions truncates a globally sorted candidate list and need not preserve each wave; source metadata != administered semantics or permission.
+
+**Smallest nonduplicative operation:** Conserve exact scope/alias alignment, prove modern source-authority selection before extending or porting.
+
+**NEKUDA family and negative comparisons:** NEKUDA-034.
+
+### KUDA-040 — V550 per-wave response-map authority-match audit
+
+**G4 jurisdiction:** S01/S03; G3A:FUNCTION:G1A-FUNC-002. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [build_response_authority_match_audit](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_determinicity_wave_shard_v550.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/build_determinicity_wave_shard_v550.py`, Git blob `82ffc18df29a8e5ebd78cde97c89d463b3842df6`.
+
+**What it really does:** Per question, compares actual scoped response-map matches, distinct values, special missing/DK/refusal/non-asked states, cardinality/topology and requiredness, issuing blocked/review audit rows.
+
+**Actually established first reader:** Historical V550 wave-shard assembly reads the audit; no original-source native result issuer certified.
+
+**Why KUDA retains it:** Real questionnaire response-authority coverage diagnostic, not merely a list of variables.
+
+**Limitation / negative:** A mapping match or code count does not independently prove source-codebook correctness, design weighting or survey permission.
+
+**Smallest nonduplicative operation:** Diff against current sourced C11 response topology/askedness and preserve missing-category distinctions.
+
+**NEKUDA family and negative comparisons:** NEKUDA-035.
+
+### KUDA-041 — V550J governed association-lane registry and fail-closed classifier
+
+**G4 jurisdiction:** S01/S04; G3A:FUNCTION:G1A-FUNC-008. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [AssociationLaneRegistry.classify_required](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550j_registry_classifier.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550j_registry_classifier.py`, Git blob `e90470f12dc6fb98d874af989854b83e8bc61067`.
+
+**What it really does:** Loads source/wave/country-scoped association lane rules, precedence exact > prefix > regex, and raises RegistryAuthorityError when a required governed association class is absent.
+
+**Actually established first reader:** compile_v550j_joint_response_patterns.py actually calls classify_required in publication reconciliation.
+
+**Why KUDA retains it:** A real guarded, registered association classifier with typed absent authority; avoid hardcoded provenance-free fallback.
+
+**Limitation / negative:** Rules are historical source configuration, not accepted current scientific authority; optional classify() returns None without refusing.
+
+**Smallest nonduplicative operation:** Retain required classifier plus rule source IDs when comparing current S04 eligibility.
+
+**NEKUDA family and negative comparisons:** NEKUDA-036.
+
+### KUDA-042 — V550J complete-run artifact/family-output validator
+
+**G4 jurisdiction:** S03/S04; G3A:FUNCTION:G1A-FUNC-007. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [_validate_v550j_run_outputs; main](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/compile_v550j_joint_response_patterns.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/compile_v550j_joint_response_patterns.py`, Git blob `b42b00cadca6284ff99889116e8aebbc109e940e`.
+
+**What it really does:** Validates per-family manifests, declared schema paths, actual-vs-declared table row counts, expected family coverage, association threshold and typed not-applicable empty artifacts after joint compilation.
+
+**Actually established first reader:** The compiler's main invokes this validator on written family output tables.
+
+**Why KUDA retains it:** Existing operational completeness check for a many-family same-respondent joint compiler, beyond in-memory tuple math.
+
+**Limitation / negative:** Manifest/table consistency and allowed empty outputs do not alone establish sampling, truthful original codebook meaning or an emitted association of every kind.
+
+**Smallest nonduplicative operation:** Conserve family/row-count no-drop checks; compare to current C11/I05 manifest integrity.
+
+**NEKUDA family and negative comparisons:** NEKUDA-037.
+
+### KUDA-043 — V551 auxiliary conditional-determinicity index and typed exclusion ledger
+
+**G4 jurisdiction:** S04; G3A:FUNCTION:G1A-FUNC-012. **Placement:** `HISTORICAL_CODE_READER_UNPROVED`.
+
+**Exact code:** [build_conditional_determinicity_index](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_conditional.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551_conditional.py`, Git blob `359665297677553a33556ce65c2e3d76b60b2cc1`.
+
+**What it really does:** Filters historical evidence bridges for source precedence, authorized derived-determinicity lane, eligibility, de-duplicated keys; emits conditional index and excluded atom reasons.
+
+**Actually established first reader:** Historical D11 record reports auxiliary socket stranded/non-consuming; specific first consuming runtime remains unverified.
+
+**Why KUDA retains it:** A nontrivial typed historical conditional-product body that would otherwise be misclassified as never written.
+
+**Limitation / negative:** Different from original I03 respondent-conditioned probability, no verified issuer or modern first reader.
+
+**Smallest nonduplicative operation:** Demand exact consuming estimator and distinct output need before considering reuse; do not duplicate I03.
+
+**NEKUDA family and negative comparisons:** NEKUDA-038.
+
+### KUDA-044 — V552 signed structural pressure observation/coverage producer
+
+**G4 jurisdiction:** S04/S06; G3A:FUNCTION:G1A-FUNC-013. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [build_v552_pressure_observation_index](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v552_structural.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v552_structural.py`, Git blob `0df56d70cb3880dee723df00aea2207acd525260`.
+
+**What it really does:** Combines terminal V551 signed atoms with component distributions, directional coverage and adjudication; computes selected weighted signed score, positive/negative/neutral shares, dispersion, polarization, and explicit unresolved/observed-zero statuses.
+
+**Actually established first reader:** V552 production pipeline writes structural fact index; V552J's joined producer explicitly consumes these facts.
+
+**Why KUDA retains it:** Genuine descriptive structural observation product, distinct from the separate empty V552 contradiction tensor.
+
+**Limitation / negative:** Producer-bound descriptive pressure, not causal world structure. Weights/denominators require source qualification; unresolved directional debt blocks pressure.
+
+**Smallest nonduplicative operation:** Preserve observed zero vs absence and signed measure contract, compare to current Field Forge and M1.
+
+**NEKUDA family and negative comparisons:** NEKUDA-039, NEKUDA-040.
+
+### KUDA-045 — V552J verified packet-to-structural-fact join and atomic producer publication
+
+**G4 jurisdiction:** S05/S08; G3A:FUNCTION:G1A-FUNC-014. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [verify_v551j_producer_bundle; verify_v552_producer_bundle; compile_v552j_run; ddm_v552j_handoff.build_v552j_join](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/compile_v552j_structural_handoff.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/compile_v552j_structural_handoff.py`, Git blob `a3e6bf17386b58beb0c14b2d79d9e4a9e405c300`.
+
+**What it really does:** Verifies two source manifests, exact run/wave/country scope and artifact hashes; joins certified/review V551J packets to V552 observations, preserves observed zero vs missing, writes join/negative audits and canonical V553 input/handoff indexes via staged publication.
+
+**Actually established first reader:** compile_v552j_run calls build_v552j_join; V553 canonical harmonizer reads exactly its published manifest/artifact surface; 22 W06 unit/test functions written.
+
+**Why KUDA retains it:** A concrete cross-stage semantic/physical handoff with an actual downstream V553 first reader, not speculative joining.
+
+**Limitation / negative:** A scope-exact match can be only partial on semantic IDs; allowed rows are explicitly probe_only and v553_temporal_field_allowed false. No general observed temporal field or causal effect.
+
+**Smallest nonduplicative operation:** Compare join score, permission and source manifest ABI before any modern reuse; preserve probe-only ceiling.
+
+**NEKUDA family and negative comparisons:** NEKUDA-041.
+
+### KUDA-046 — V553 fail-closed verified V552J canonical wave harmonization
+
+**G4 jurisdiction:** S08; G3A:FUNCTION:G1A-FUNC-015. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [inspect_v552j_canonical_surface; build_v553_wave_harmonization](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_canonical_harmonization.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v553_canonical_harmonization.py`, Git blob `1951ada5cb7453108939eae9af91fcbfc90ad517`.
+
+**What it really does:** Checks exact V552J manifests, immutable artifact hashes, canonical join/audit names and producer identity per wave before creating a cross-wave harmonization table and explicit differences.
+
+**Actually established first reader:** compile_v553_wave_harmonization_from_repo invokes it and writes wave-pair evidence/difference artifacts; V553 temporal component consumes harmonization.
+
+**Why KUDA retains it:** Old original-cross-wave integration already has a genuine verified source reader and typed VALID_EMPTY/PRESENT/INVALID states.
+
+**Limitation / negative:** Wave harmonization is not automatically scientific comparability or an observed temporal causal delta; requires qualified versions of V551J/V552J.
+
+**Smallest nonduplicative operation:** Conserve independent verification of canonical V552J surface; do not recreate obsolete packet shim.
+
+**NEKUDA family and negative comparisons:** NEKUDA-041, NEKUDA-042.
+
+### KUDA-047 — V553 multi-family repository/wave candidate discovery
+
+**G4 jurisdiction:** S01/S08; S01/S08.1. **Placement:** `HISTORICAL_EXECUTABLE_UTILITY`.
+
+**Exact code:** [discover_latest_wave_runs; build_wave_descriptors_from_repo](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_repo_discovery.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v553_repo_discovery.py`, Git blob `41e0c85d4179a49b71560d1a55de351f2fe18ec7`.
+
+**What it really does:** Searches recognized historical run roots by explicit (survey family, canonical wave, country), finds V552J readiness and overlay authority directories, builds typed descriptors for harmonization.
+
+**Actually established first reader:** compile_v553_wave_harmonization_from_repo.py actually calls build_wave_descriptors_from_repo.
+
+**Why KUDA retains it:** An existing multi-family exact-key discovery adapter beyond GSS-only paths.
+
+**Limitation / negative:** Selects latest by filesystem mtime, not source-authoritative version/as-of; discovered status is candidate only.
+
+**Smallest nonduplicative operation:** Reuse strict multi-family/country identity and qualify explicit current version instead of mtime for accepted runs.
+
+**NEKUDA family and negative comparisons:** NEKUDA-043.
+
+### KUDA-048 — V553 independent temporal source/country/calendar identity normalizer
+
+**G4 jurisdiction:** S01/S08; S01/S08.1. **Placement:** `HISTORICAL_EXECUTABLE_UTILITY`.
+
+**Exact code:** [normalize_temporal_report_identity](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_temporal_identity.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v553_temporal_identity.py`, Git blob `bbbef13111ed80d015a8f3fa47dec06b8cdf4e67`.
+
+**What it really does:** Before importing Parquet/Arrow, refuses mixed families, missing/mismatched country and unresolved calendar anchor; normalizes wave labels and explicit years.
+
+**Actually established first reader:** V553 temporal pressure source loader imports this normalizer; exact surviving calling receipt not independently executed here.
+
+**Why KUDA retains it:** Small portable identity firewall prevents making a falsely continuous time series out of mixed survey scopes.
+
+**Limitation / negative:** Correct calendar identity does not itself attest semantic/weight/comparability equivalence.
+
+**Smallest nonduplicative operation:** Conserve pure identity boundary alongside P07 temporal comparability, not in place of it.
+
+**NEKUDA family and negative comparisons:** NEKUDA-044.
+
+### KUDA-049 — V5 thin V552J→V558 executable boundary artifact chain
+
+**G4 jurisdiction:** S08–S11; G3A:FUNCTION:G1A-FUNC-023. **Placement:** `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY`.
+
+**Exact code:** [build_thin_layer; build_v5_thin_end_to_end](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v5_thin_end_to_end.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v5_thin_end_to_end.py`, Git blob `dee9c4dd4321d45c88df6f2108a71afb3e0ec502`.
+
+**What it really does:** Runs sequential V552J/V553/V554/V555/V556/V557/V558 boundary packet builders, reads predecessor manifests, writes per-layer readines/forbidden inference reports and aggregate build ledger.
+
+**Actually established first reader:** Historical compile_v5_thin_end_to_end CLI calls build_v5_thin_end_to_end; downstream steps receive previous layer root.
+
+**Why KUDA retains it:** Concrete historical evidence of an executable cross-layer *boundary orchestration*, as opposed to zero cross-layer implementation.
+
+**Limitation / negative:** Its own packet fields say runtime_packets_written=false, persona_fields_written=false, person_level_allowed=false; READY_WITH_BOUNDARY_LIMITATIONS must not become production claim.
+
+**Smallest nonduplicative operation:** Reuse positive/negative boundary accounting only after checking newer M1–M4 first readers.
+
+**NEKUDA family and negative comparisons:** NEKUDA-045.
+
+### KUDA-050 — V555 bounded life-course mediation and household/channel slot builder
+
+**G4 jurisdiction:** S09; G3A:FUNCTION:G1A-FUNC-018. **Placement:** `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY`.
+
+**Exact code:** [build_v555_life_course_mediation](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v555_life_course_mediation.py`, Git blob `f41ef8657f5f9fb07f57dc53ebaffadca3bbaf32`.
+
+**What it really does:** Consumes V554 bounded seed affordance, creates explicit parent/household/co-parent/channel mediation-slot and blocker registers and V556 handoff.
+
+**Actually established first reader:** Historical V5 thin layer chain and V556 pressure-flow requirements consume its output path.
+
+**Why KUDA retains it:** Distinct historical mediation-slot and family-context boundary representation, not the selected M2 learned product.
+
+**Limitation / negative:** Explicit ready_for_runtime_consumption=false; no actual historical biography, situated action or person model.
+
+**Smallest nonduplicative operation:** Conserve distinct mediation questions only, not its generic placeholder rows, against real SOROK/world sources.
+
+**NEKUDA family and negative comparisons:** NEKUDA-046.
+
+### KUDA-051 — V557 bounded renderer and prompt-shape safety contract
+
+**G4 jurisdiction:** S10/S11; G3A:FUNCTION:G1A-FUNC-020. **Placement:** `HISTORICAL_EXECUTABLE_BOUNDARY_ONLY`.
+
+**Exact code:** [build_v557_renderer_contract](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v557_renderer_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v557_renderer_contract.py`, Git blob `7ad1dba128537e6b769617cec7de8220f4139e72`.
+
+**What it really does:** Consumes V556 boundary packet; constructs prompt-shape audit requirements, prohibited inference/renderer blockers and V558 handoff contract.
+
+**Actually established first reader:** Historical V558 runtime input gate consumes V557 contracts; V5 thin chain includes V557.
+
+**Why KUDA retains it:** Pre-existing boundary for separating structural evidence from a later renderer's unsupported prompt/person assertions.
+
+**Limitation / negative:** Explicitly no dialogue, voice, persona generation or runtime consumption authorization.
+
+**Smallest nonduplicative operation:** Compare with selected M4 dependency-role authority; preserve stronger negative tests only.
+
+**NEKUDA family and negative comparisons:** NEKUDA-047.
+
+### KUDA-052 — V558 numeric-runtime graft readiness evaluator
+
+**G4 jurisdiction:** S10/S11; G3A:FUNCTION:G1A-FUNC-021/022. **Placement:** `HISTORICAL_EXECUTABLE_NONRUNTIME`.
+
+**Exact code:** [build_v558_numeric_runtime_graft_readiness; validate_v558_runtime_graft_readiness](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_graft_readiness.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v558_runtime_graft_readiness.py`, Git blob `005637ad329e35a161a14581f51fd08754081c3e`.
+
+**What it really does:** Checks V557 readiness, render contract and governance availability, records missing inputs and explicit blockers before allowing a future numeric runtime graft review.
+
+**Actually established first reader:** V558+ governance builder reads graft readiness together with V558 gate.
+
+**Why KUDA retains it:** There is an actual readiness/negative machine for future runtime bridging rather than only a checklist.
+
+**Limitation / negative:** It expressly does not implement the graft, persona runtime or app behavior.
+
+**Smallest nonduplicative operation:** Compare blockers and proposed numeric graft against actual later actor/runtime owners; no claim of simulation.
+
+**NEKUDA family and negative comparisons:** NEKUDA-048.
+
+### KUDA-053 — V558+ generated-vs-evidenced memory and narrative governance rows
+
+**G4 jurisdiction:** S11; G3A:FUNCTION:G1A-FUNC-022. **Placement:** `HISTORICAL_EXECUTABLE_NONRUNTIME`.
+
+**Exact code:** [build_v558_plus_governance; _memory_rows; _narrative_rows](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_plus_governance.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v558_plus_governance.py`, Git blob `99bb369b5463a9b7a68c0b1f3d84368337d1d51b`.
+
+**What it really does:** Produces typed source-vs-generated memory rules, provenance and narrator/continuity ledgers, evaluator and app-handoff blockers over a V558 predecessor.
+
+**Actually established first reader:** Historical compile_v558_plus_governance CLI builds and writes policy artifacts; no runtime consumption verified.
+
+**Why KUDA retains it:** Early explicit anti-memory-laundering policies distinguish authored scenes/continuity from empirical source facts.
+
+**Limitation / negative:** Generated-vs-evidenced audit reports scan_status=not_run and zeros while audit_status=pass; it proves no generation ran, NOT real runtime audit success.
+
+**Smallest nonduplicative operation:** Conserve normative distinctions, require real runtime memory/event tests before any acceptance.
+
+**NEKUDA family and negative comparisons:** NEKUDA-049.
+
+### KUDA-054 — V554 bounded seed-affordance/absence/blocked-condition contract
+
+**G4 jurisdiction:** S08/S09; G3A:FUNCTION:G1A-FUNC-017. **Placement:** `HISTORICAL_EXECUTABLE_WRONG_READER`.
+
+**Exact code:** [build_v554_seed_contract](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v554_seed_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v554_seed_contract.py`, Git blob `b11b73fc171f6b37976fa579d54700505a69f84c`.
+
+**What it really does:** Turns harmonization/heuristic country-year inputs into bounded seed affordance, absence/blocker and V555 handoff ledgers; does not create a persona.
+
+**Actually established first reader:** V555 life-course mediation consumes its seed packet; actual V553 measured sparse first-reader is WRONG.
+
+**Why KUDA retains it:** Historical seed-to-mediation artifact machinery exists with explicit prohibitions; the missing thing is authoritative measured-source wiring.
+
+**Limitation / negative:** Reads v553_country_year_pressure_field instead of V553 sparse measured field; a valid serialized seed does not certify empirically grounded time.
+
+**Smallest nonduplicative operation:** Correct exact reader/authority/status contract before any world use; no need for new V554 seed data model.
+
+**NEKUDA family and negative comparisons:** NEKUDA-018, NEKUDA-050.
+
+### KUDA-055 — V550+ survey family/wave/country identity helper
+
+**G4 jurisdiction:** S01; S01/S08. **Placement:** `HISTORICAL_EXECUTABLE_SHARED_UTILITY`.
+
+**Exact code:** [canonical_family_key; canonical_wave_key; require_survey_identity](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_survey_identity.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_survey_identity.py`, Git blob `617e2b4fff72133dac623d5d0afb0e9446a15122`.
+
+**What it really does:** Requires explicit survey family and wave, normalizes stable family aliases and wave labels without guessing country or silently treating non-GSS as GSS.
+
+**Actually established first reader:** Imported by V550 family overlays, V550J classifier, V553 discovery/temporal identity and V5 thin chain.
+
+**Why KUDA retains it:** One already-used portable survey-identity contract under multiple historical build families.
+
+**Limitation / negative:** An exact identity string does not confer questionnaire semantics or source rights.
+
+**Smallest nonduplicative operation:** Compare modern source identity owner and reuse only missing edge-case aliases, not another identity authority.
+
+**NEKUDA family and negative comparisons:** NEKUDA-051.
+
+### KUDA-056 — V550+ family-specific overlay resolution and typed absence
+
+**G4 jurisdiction:** S01; S01/S08. **Placement:** `HISTORICAL_EXECUTABLE_SHARED_UTILITY`.
+
+**Exact code:** [load_family_overlay; load_gss_directionality_overlay](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_family_overlay.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_family_overlay.py`, Git blob `c5b7e0cf94b7ae91034d1e325214da1ca6359d17`.
+
+**What it really does:** Resolves source/wave-specific semantic, directionality and positional overlays with exact-case family paths and typed MISSING_REQUIRED/INVALID_SCHEMA status; never silently falls back to GSS for another family.
+
+**Actually established first reader:** V553 repo discovery uses it for authority overlay counts; historical V550 preparation uses it directly.
+
+**Why KUDA retains it:** An actual family-aware overlay loader and refusal contract, not a pile of survey-specific if-statements.
+
+**Limitation / negative:** Presence and first-found path do not establish scientific/issuer precedence or current permission.
+
+**Smallest nonduplicative operation:** Conserve keyed lookup and wrong-family refusal, compare with R157/B49 authority selection.
+
+**NEKUDA family and negative comparisons:** NEKUDA-051.
+
+### KUDA-057 — Shared strict pipeline manifest, integrity, and staged publication library
+
+**G4 jurisdiction:** S03/S05/S08; S03/S05/S08. **Placement:** `HISTORICAL_EXECUTABLE_SHARED_UTILITY`.
+
+**Exact code:** [verify_boundary_manifest; publish_staged_directory; verify_external_dependency_ledger](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_pipeline_boundary_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_pipeline_boundary_contract.py`, Git blob `1edcb454662f1955d6d19f17bd4dc147db33473b`.
+
+**What it really does:** Verifies exact source/run/wave/scope identity, downstream typed permission, declared SHA256 artifact hashes and canonical Parquet; atomically replaces stale stage directories with rollback on publish errors.
+
+**Actually established first reader:** compile_v552j_structural_handoff imports and calls verification and staged publishing; other V5 layers use boundary contract.
+
+**Why KUDA retains it:** Shared fail-closed transport/provenance law already exists; high leverage when comparing old/new physical producers.
+
+**Limitation / negative:** Code checks transport/integrity; it cannot mint authority or semantic truth. Manifest relative-path containment should be separately hardened before using untrusted paths.
+
+**Smallest nonduplicative operation:** Reuse proven manifest/atomic contracts where not already owned by C11; test path containment, crashes and stale artifacts.
+
+**NEKUDA family and negative comparisons:** NEKUDA-052.
+
+### KUDA-058 — V5 thin-path provisionality and continuity build standard
+
+**G4 jurisdiction:** S09–S11; S09/S10/S11. **Placement:** `HISTORICAL_EXECUTABLE_SHARED_UTILITY`.
+
+**Exact code:** [build_layer_build_record; build_review_gate_record; build_thin_build_ledger](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v5_build_standard.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v5_build_standard.py`, Git blob `519e0350f2d5ba5d2035da410f9155278921120b`.
+
+**What it really does:** Separates certified/reviewable/diagnostic/scaffold/blocked outputs, counts upstream/downstream continuity, and records per-layer provisionality without promoting scaf­fold to actor/runtime completion.
+
+**Actually established first reader:** V5 thin end-to-end and V558 graft/governance builders call its records.
+
+**Why KUDA retains it:** Historical explicit evidence about how much of a multi-layer chain was truly tested.
+
+**Limitation / negative:** A good status schema is not itself an implementation, science verdict or independent running witness.
+
+**Smallest nonduplicative operation:** Preserve continuity proof categories and refusal rather than reintroduce an opaque READY flag.
+
+**NEKUDA family and negative comparisons:** NEKUDA-045.
 
 ## Escalation boundaries
 
