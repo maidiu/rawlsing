@@ -249,7 +249,7 @@ def main():
     must("### November 21 — direct user NEIGHBOR-UX jurisdiction" in whole, "UX correction source missing")
     must("Jurisdiction and reciprocal horizon — NEIGHBOR-UX, not SORACLE-CO" in main, "UX ownership blurred")
     must("SORACLE-CO is the distinct theorist and authority" in main, "CO psyche owner distinction blurred")
-    must("original SOROK product and experiential courts" in main.lower(), "source UX court not grounded")
+    must("original sorok product and experiential courts" in main.lower(), "source UX court not grounded")
 
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
