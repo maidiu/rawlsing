@@ -2,10 +2,21 @@
 from collections.abc import Iterator
 
 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _RespondentEvents
+from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
+from rawlsing_next._pre553_external_i02_certificate import _DiskSelectedRespondent
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
 _SELECTOR_CONTRACT_VERSION = 1
+
+
+class UnresolvedConditionMember(EmpiricalQueryResolutionError):
+    """A real source cell has unknown interpretation in THIS condition.
+
+    This is not authority denial, routing absence, an empty support set,
+    or a negative Boolean match. Only this class may be transformed into
+    a typed partial I03 result; other query failures remain refusals.
+    """
 
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
@@ -38,7 +49,11 @@ def _select_respondent_events(
     semantics, including complete respondent universes and zero domains.
     """
     events = index.events_by_respondent[respondent_key]
-    if isinstance(events, _RespondentEvents):
+    # S2-C's versioned saved-read session is explicitly recognized, rather
+    # than accepting an arbitrary duck-typed selector as a native I03 issuer.
+    from rawlsing_next.pre553_direct_estate_i03 import DirectSelectedRespondent
+    if isinstance(events, (_RespondentEvents, CertifiedRespondentEvents,
+                           _DiskSelectedRespondent, DirectSelectedRespondent)):
         yield from events.select(
             target, native_only=native_only, include_component=include_component, states=states,
         )
@@ -166,6 +181,49 @@ def _leaf_exact_values(
     return tuple(canonicalize(v) for v in values)
 
 
+
+def _refuse_unresolved_value_leaf(event: Any, node: Mapping[str, Any]) -> None:
+    """Refuse all non-substantive values at substantive equality predicates.
+
+    Exact typed-state diagnostics retain their historical meaning, including
+    an explicitly named INVALID_UNRESOLVED; a substantive EQ/IN matcher never
+    treats MISSING/DK/REFUSAL/IAP/NOT_ASKED as a real negative or a positive
+    source-native value. NOT of such an unanswerable leaf stays unknown.
+    Repeated-event callers scan ALL events and may still return known TRUE.
+    """
+    state = str(event.typed_state)
+    leaf_type = node.get("leaf_type")
+    diagnostic = (
+        leaf_type == "TYPED_RESPONSE_STATE"
+        or (leaf_type == "SURVEY_RESPONSE_EVENT"
+            and node.get("operator") == "STATE_EQ")
+    )
+    if state == "INVALID_UNRESOLVED":
+        if ((leaf_type == "TYPED_RESPONSE_STATE"
+             and node.get("typed_state") == "INVALID_UNRESOLVED")
+            or (leaf_type == "SURVEY_RESPONSE_EVENT"
+                and node.get("operator") == "STATE_EQ"
+                and node.get("typed_state") == "INVALID_UNRESOLVED")):
+            return
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: condition may not coerce INVALID_UNRESOLVED to Boolean"
+        )
+    if (leaf_type == "SURVEY_RESPONSE_EVENT"
+            and node.get("operator") in {"EQ", "IN"}
+            and state != "SUBSTANTIVE_RESPONSE"):
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: source-typed non-substantive response has no value truth"
+        )
+    # Public native-value dialect is always a substantive response value;
+    # the separately authorized TYPED_RESPONSE_STATE/STATE_EQ grammars are
+    # the only way to ask about diagnostic response classes.
+    if (node.get("operation") is not None and leaf_type == "SURVEY_RESPONSE_EVENT"
+            and state != "SUBSTANTIVE_RESPONSE"):
+        raise UnresolvedConditionMember(
+            "UNRESOLVED_CONDITION_MEMBER: governed native value lacks substantive response"
+        )
+
+
 def _leaf_match(
     node: Mapping[str, Any],
     *,
@@ -255,20 +313,34 @@ def _leaf_match(
             runtime_release_ref=index.release.release_ref,
         )
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
                 continue
-            result = result or runtime_authorities.match_exact_event_representation(
-                frozen_scope_ref=scope_ref,
-                runtime_release_ref=index.release.release_ref,
-                question_ref=question_ref,
-                response_value_ref=response_ref,
-                source_native_value=native_value,
-                event_raw_response_value=event.raw_response_value,
+            result = (
+                runtime_authorities.match_exact_event_representation(
+                    frozen_scope_ref=scope_ref,
+                    runtime_release_ref=index.release.release_ref,
+                    question_ref=question_ref,
+                    response_value_ref=response_ref,
+                    source_native_value=native_value,
+                    event_raw_response_value=event.raw_response_value,
+                ) or result
             )
-        return result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: no definite positive governed event"
+            )
+        return False
 
     if leaf_type == "SURVEY_RESPONSE_EVENT":
         question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
@@ -286,16 +358,28 @@ def _leaf_match(
             raise EmpiricalQueryResolutionError("response predicate operator must be EQ/IN/STATE_EQ")
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
             if operator == "STATE_EQ":
-                result = result or event.typed_state == node.get("typed_state")
+                result = (event.typed_state == node.get("typed_state")) or result
             else:
-                result = result or canonicalize(_semantic_value(event)) in values
-        return result
+                result = (canonicalize(_semantic_value(event)) in values) or result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: no definite positive response event"
+            )
+        return False
 
     if leaf_type == "ROUTING_APPLICABILITY_STATE":
         question_ref = _exact(node.get("question_semantic_ref"), "question_semantic_ref")
@@ -328,13 +412,25 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
+        unresolved = False
         for event in _select_respondent_events(index, respondent_key, question_ref):
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
-            result = result or event.typed_state == desired
-        return result
+            try:
+                _refuse_unresolved_value_leaf(event, node)
+            except UnresolvedConditionMember:
+                unresolved = True
+                continue
+            result = (event.typed_state == desired) or result
+        if result:
+            return True
+        if unresolved:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: typed-state question unresolved"
+            )
+        return False
 
     if leaf_type == "DERIVED_BRANCH_COHORT":
         branch_id = node.get("branch_definition_id")
@@ -437,16 +533,35 @@ def _eval_predicate(
         )
     if op in {"AND", "OR"}:
         children = _require_sequence(node.get("children"), f"{op} children")
-        values = [
-            _eval_predicate(
-                _require_mapping(child, f"{op} child"), respondent=respondent,
-                index=index, registry=registry, used=used, used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
-            for child in children
-        ]
-        return all(values) if op == "AND" else any(values)
+        known_values: list[bool] = []
+        unresolved_members: list[EmpiricalQueryResolutionError] = []
+        # Evaluate EVERY child so exact authority/used-source receipts remain
+        # complete. UNKNOWN is not False and cannot be negated into True.
+        # But AND(False, UNKNOWN) and OR(True, UNKNOWN) are already
+        # determinately False and True, respectively: do not suppress an
+        # unaffected question merely because another branch has no mapping.
+        # Never swallow any other source/authority/integrity exception.
+        for child in children:
+            try:
+                known_values.append(_eval_predicate(
+                    _require_mapping(child, f"{op} child"),
+                    respondent=respondent, index=index, registry=registry,
+                    used=used, used_auth=used_auth,
+                    derived_branch_memberships=derived_branch_memberships,
+                ))
+            except UnresolvedConditionMember as exc:
+                unresolved_members.append(exc)
+        if op == "AND" and False in known_values:
+            return False
+        if op == "OR" and True in known_values:
+            return True
+        if unresolved_members:
+            raise UnresolvedConditionMember(
+                "UNRESOLVED_CONDITION_MEMBER: no conclusive "
+                f"{op} membership with source-typed unresolved values"
+            ) from unresolved_members[0]
+        return all(known_values) if op == "AND" else any(known_values)
     raise EmpiricalQueryResolutionError("predicate op must be AND/OR/NOT/LEAF")
 
 
-__all__ = ["_build_release_index", "_eval_predicate", "_question_matches", "_validate_public_object_authorities"]
+__all__ = ["_build_release_index", "_eval_predicate", "_question_matches", "_validate_public_object_authorities", "UnresolvedConditionMember"]

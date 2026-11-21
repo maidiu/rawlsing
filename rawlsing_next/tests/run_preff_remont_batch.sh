@@ -109,7 +109,10 @@ for id in "${cases[@]}"; do
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/start_utc.txt"
   # Distinguish an absent source/test dependency from an executed regression.
   # These paths are inherited from existing QIDs; do not invent replacements.
-  required=("${tests[@]}")
+  required=()
+  if (( ${#tests[@]} > 0 )); then
+    required=("${tests[@]}")
+  fi
   if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 ||
         "$id" == RMT-Q010 || "$id" == RMT-Q014 ]]; then
     required+=(rawlsing_next/tests/run_preff_c0_first_fault_local.sh)

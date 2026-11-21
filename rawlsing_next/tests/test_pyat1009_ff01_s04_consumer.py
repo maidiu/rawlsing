@@ -1,0 +1,264 @@
+"""Hostile S04 -> actual existing FF01 ABI sourcefree seam. Never original source."""
+from dataclasses import replace
+from itertools import product
+
+import pytest
+
+from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next.pre553_empirical_objects import (
+    EmpiricalFact, ExactRef, canonical_json, semantic_hash,
+)
+from rawlsing_next.pre553_s04_observed_research import (
+    S04KnowledgeError, S04ObservedKnowledge, receive_s04_i03_research,
+)
+from rawlsing_next.pre553_s04_ff01_consumer import (
+    S04FF01SeamError, receive_ff01_from_s04,
+)
+from rawlsing_next.field_forge_generic_empirical_ingress import (
+    FF01GenericIngressError, receive_ff01_observed_joint,
+)
+from rawlsing_next.field_forge_observed_research import ask_exact_descriptive_support
+from rawlsing_next.tests.test_pyat1009_ff01_generic_ingress import _case
+
+RIGHTS = ("FF01_DESCRIPTIVE_SOURCEFREE",)
+
+
+def _both(parity=0, *, tag="INDEPENDENT-S04-FF01"):
+    _, _, _, q, r = _case(parity=parity, tag=tag)
+    s04 = receive_s04_i03_research(query=q, execution=r)
+    consumed = receive_ff01_from_s04(
+        knowledge=s04, query=q, execution=r, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    independent_oracle = receive_ff01_observed_joint(
+        query=q, execution=r, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    assert consumed.ref == independent_oracle.ref
+    assert consumed.semantic_projection() == independent_oracle.semantic_projection()
+    return q, r, s04, consumed
+
+
+def test_existing_ff01_abi_consumes_s04_without_second_i03_execution():
+    q, r, s04, ff = _both()
+    assert ff.semantic_projection()["joint_arity"] == 3
+    assert len(ff.semantic_projection()["complete_cells"]) == 8
+    assert ff.semantic_projection()["producer_fact_ref"] == s04.material()["fact_ref"]
+    # The historical generic FF01 ABI does not serialize a supported-case
+    # held witness, not even as a null field: that changes the exact ref.
+    assert "held_condition_membership_uncertainty" not in ff.semantic_projection()
+    answer = ask_exact_descriptive_support(
+        received=ff, target_index=2, conditions={0: "0", 1: "0"},
+    ).material()
+    assert answer["condition_fully_resolved_n"] == 1
+    assert answer["state"] != "UPSTREAM_SCIENCE_OR_SOURCE_HELD"
+
+
+def test_same_pairwise_marginal_different_three_way_fates_through_s04_ff01():
+    _, _, first, ff0 = _both(0, tag="REAL-TRIPLE-PARITY")
+    _, _, changed, ff1 = _both(1, tag="REAL-TRIPLE-ANTIPARITY")
+    assert first.ref != changed.ref
+    assert ff0.ref != ff1.ref
+    assert ff0.semantic_projection()["complete_cells"] != ff1.semantic_projection()["complete_cells"]
+
+
+def test_direction_is_role_specific_with_different_complete_case_denominators():
+    _, _, _, ff = _both()
+    fwd = ask_exact_descriptive_support(
+        received=ff, target_index=2, conditions={0: "0", 1: "0"},
+    ).material()
+    rev = ask_exact_descriptive_support(
+        received=ff, target_index=0, conditions={2: "0"},
+    ).material()
+    assert fwd["condition_fully_resolved_n"] == 1
+    assert rev["condition_fully_resolved_n"] == 2
+    assert fwd["target_ref"] != rev["target_ref"]
+
+
+def test_rehashed_s04_counterfeit_cannot_authorize_original_i03():
+    q, r, s04, _ = _both()
+    forged = s04.material()
+    forged["complete_cells"][0]["raw_count"] = 999
+    fake = S04ObservedKnowledge(canonical_json(forged), semantic_hash(forged))
+    with pytest.raises(S04FF01SeamError, match="not issued"):
+        receive_ff01_from_s04(
+            knowledge=fake, query=q, execution=r, conditioner_index=0,
+            producer_permission_ceiling=RIGHTS,
+        )
+
+
+def test_different_release_or_query_cannot_reuse_prior_s04_product():
+    q0, r0, s04, _ = _both(0, tag="SOURCE-S04-0")
+    q1, r1, _, _ = _both(1, tag="SOURCE-S04-1")
+    with pytest.raises(S04FF01SeamError, match="not issued"):
+        receive_ff01_from_s04(
+            knowledge=s04, query=q1, execution=r1, conditioner_index=0,
+            producer_permission_ceiling=RIGHTS,
+        )
+
+
+def test_causal_and_permission_widening_refuse_at_s04_ff01_edge():
+    q, r, s04, _ = _both()
+    with pytest.raises(FF01GenericIngressError, match="protected use"):
+        receive_ff01_from_s04(
+            knowledge=s04, query=q, execution=r, conditioner_index=0,
+            producer_permission_ceiling=RIGHTS,
+            relation_permission_ceiling=("FF02_STRUCTURAL",),
+        )
+    with pytest.raises(S04FF01SeamError, match="widen"):
+        receive_ff01_from_s04(
+            knowledge=s04, query=q, execution=r, conditioner_index=0,
+            producer_permission_ceiling=RIGHTS,
+            relation_permission_ceiling=("FF01_DIAGNOSTIC_READ_ONLY",),
+        )
+
+
+def test_s04_rejects_original_fact_domain_identity_substitution():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    altered = dict(fact.semantic_fields)
+    altered["target_domain_identity"] = "WRONG_DOMAIN_ID"
+    invalid = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **altered,
+    )
+    with pytest.raises(S04KnowledgeError, match="domain identity"):
+        receive_s04_i03_research(query=q, execution=replace(r, facts=(invalid,)))
+
+
+def test_held_low_support_positive_count_does_not_become_ff01_joint():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    held = EmpiricalFact(
+        typed_state="LOW_SUPPORT",
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **dict(fact.semantic_fields),
+    )
+    changed = replace(r, facts=(held,))
+    s04 = receive_s04_i03_research(query=q, execution=changed)
+    ff = receive_ff01_from_s04(
+        knowledge=s04, query=q, execution=changed, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    data = ff.semantic_projection()
+    assert data["producer_state"] == "LOW_SUPPORT"
+    assert data["complete_cells"] == []
+    assert data["held_observed_n_if_nonpositive"] == 4
+
+
+def test_s04_to_ff01_cold_reader_seam_keeps_same_release_without_second_query(
+    tmp_path, monkeypatch,
+):
+    pytest.importorskip("pyarrow")
+    from rawlsing_next.tests.test_pyat1009_ff01_cold_direct_estate import _actual_cold_ff01
+    old_ff, execution, query, receipt = _actual_cold_ff01(
+        tmp_path, monkeypatch, parity=0,
+        tag="COLD-S04-SINGLE-RELEASE", saved_name="cold-s04",
+    )
+    s04 = receive_s04_i03_research(query=query, execution=execution)
+    actual = receive_ff01_from_s04(
+        knowledge=s04, query=query, execution=execution, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    assert old_ff.ref == actual.ref
+    assert actual.semantic_projection()["release_ref"] == s04.material()["release_ref"]
+    assert actual.semantic_projection()["raw_fully_resolved_joint_n"] == 4
+
+
+def test_real_existing_n10e_crossreader_consumes_s04_derived_ff01():
+    """This is a real N10E sourcefree C1 crossread, NOT a new N10E provider."""
+    from rawlsing_next.field_forge_n10e_crossread import conserve_ff01_n10e_actual_read
+    from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec
+    from rawlsing_next.pre553_empirical_possibility_provider import (
+        provide_empirical_possibility_slice,
+    )
+    from rawlsing_next.tests import (
+        n10e_empirical_slice_fixture as fx,
+        test_pre553_empirical_query as native,
+    )
+    case = fx.build_provider_case("forward")
+    source, qa = case["source"], case["query_authority"]
+    pred = native._branch_predicate(source, qa, tag="FF01-WHOLE-RISK")
+    bare = native._query(
+        source, qa, pred, ("POSITION", "ANSWER"), risk="R",
+        tag="FF01-AT07-SAME-SOURCE-JOINT",
+    )
+    spec = dict(bare.target_arity_and_topology)
+    components = [dict(c) for c in spec["components"]]
+    for component, name, domain in zip(
+        components, ("POSITION", "ANSWER"), (("P1", "P2"), ("no", "yes"))
+    ):
+        component["domain"] = list(domain)
+        component["target_domain_replay_ref"] = native._ref(
+            "TARGET_DOMAIN", f"FF01-AT07-{name}-" + "-".join(domain),
+        )
+    query = EmpiricalQuerySpec(
+        typed_state=bare.typed_state,
+        authority_snapshot_refs=bare.authority_snapshot_refs,
+        dependency_refs=bare.dependency_refs,
+        producer_replay_locator_or_reference_root=bare.producer_replay_locator_or_reference_root,
+        **{
+            **dict(bare.semantic_fields),
+            "target_arity_and_topology": {**spec, "components": components},
+        },
+    )
+    i03 = native._run(source, qa, pred, query, registry=case["registry"])
+    s04 = receive_s04_i03_research(query=query, execution=i03)
+    ff01 = receive_ff01_from_s04(
+        knowledge=s04, query=query, execution=i03, conditioner_index=0,
+        producer_permission_ceiling=RIGHTS,
+    )
+    provider = provide_empirical_possibility_slice(
+        repository=source["repo"],
+        empirical_query=case["empirical_query"], predicate=case["predicate"],
+        authority_registry=case["registry"], release_refs=case["release_refs"],
+        consumer_query=case["consumer_query"], model_rule=case["model_rule"],
+        condition_binding_witness=case["condition_binding_witness"],
+    )
+    observed = conserve_ff01_n10e_actual_read(
+        ff01=ff01, provider=provider,
+        n10e_empirical_query=case["empirical_query"],
+        n10e_predicate=case["predicate"],
+        n10e_consumer_query=case["consumer_query"],
+    ).material()
+    assert observed["ff01_ref"] == ff01.ref.as_dict()
+    assert observed["raw_condition_denominator"] == 60
+    assert {x["target_state"]: x["raw_numerator_support"] for x in
+            observed["conserved_target_cells"]} == {"no": 6, "yes": 54}
+
+
+def test_s04_refuses_hash_coherent_false_resolved_target_support():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    changed = dict(fact.semantic_fields)
+    changed["raw_resolved_target_support"] = 999
+    forged = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **changed,
+    )
+    with pytest.raises(S04KnowledgeError, match="raw resolved target"):
+        receive_s04_i03_research(query=q, execution=replace(r, facts=(forged,)))
+
+
+def test_s04_refuses_hash_coherent_multi_universe_fact_scope():
+    q, r, _, _ = _both()
+    fact = r.facts[0]
+    changed = dict(fact.semantic_fields)
+    changed["source_scope_mode"] = "MULTI_UNIVERSE"
+    forged = EmpiricalFact(
+        typed_state=fact.typed_state,
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **changed,
+    )
+    with pytest.raises(S04KnowledgeError, match="unpooled"):
+        receive_s04_i03_research(query=q, execution=replace(r, facts=(forged,)))
