@@ -1,5 +1,8 @@
 # O-INDEX living intake test and source-receipt — 2026-11-21
 
+**Historical receipt.** The 12-case accession execution below applies to its original files. At `3779878d2`, 14 cases passed and the authenticated audit returned zero errors with eight closed-unmerged holds. That check is pinned to `3779878d2`; later documentary revisions require reconciliation.
+
+
 **Executed at exact source blobs (not independent review, not protected receiving).** Local isolated Python sandbox in this ChatGPT session; **Python 3.13.5**, interpreter `/opt/pyvenv/bin/python3`. The GitHub documentary branch is not a local Git worktree: source bytes were authored locally and the two source Git blob IDs were independently read back from the isolated GitHub branch. This is a bounded *verifier unit* execution, not the R3 original complete index tests or authenticated live GitHub scan.
 
 | File | Source byte count | Git blob SHA (local `git hash-object` = GitHub readback) |
