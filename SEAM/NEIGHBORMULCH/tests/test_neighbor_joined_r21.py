@@ -74,6 +74,14 @@ class JoinedR21Neighbor(unittest.TestCase):
         changed = self.neighbor.independent_actor_beat('worker')
         self.assertIn('receipt',changed)
         self.assertNotEqual(changed['selection_grade'],'INJECTED_NOT_NATIVE_ACTOR_CHOICE')
+        # The source of a possible subsequent psychic acquisition is the
+        # worker's OWN admitted lived receipt, not only a cue in a world dict.
+        occurred = self.runtime.ledger.events()[-1]
+        self.assertEqual(occurred['kind'],'ACTOR_LIFE_TRANSITION')
+        lived = occurred['envelope']['payload']['private_actor_experience_receipts']['worker']
+        self.assertTrue(any(row.get('kind')=='visitor_speech'
+                            for row in lived['perceived_cues']),
+            'A world-visible user utterance vanished before the same actor lived it')
         profile = self.neighbor.new_private_profile()
         world_before = self.runtime.ledger.world('w1')
         view = self.neighbor.private_surface(profile)
@@ -91,6 +99,24 @@ class JoinedR21Neighbor(unittest.TestCase):
         self.assertTrue(old['idempotent_replay'])
         self.assertEqual(old['receipt'],entered['receipt'])
         self.assertEqual([row['id'] for row in self.runtime.ledger.events()],first_event_ids)
+
+    def test_ordinary_work_continues_before_and_after_user_encounter(self):
+        # The user is an interruption of independent material life, not its
+        # scene-generator or the owner of the adult's practical initiative.
+        prior=self.neighbor.independent_actor_beat('worker')
+        self.assertIn('receipt',prior)
+        pre_contact = [e['id'] for e in self.runtime.ledger.events()]
+        self.assertFalse(self.runtime.ledger.world('w1')[1].get('neighbor_users'))
+        self.neighbor.contribute('arrive','MOVE',destination='workshop')
+        self.neighbor.contribute('leave','LEAVE')
+        after=self.neighbor.independent_actor_beat('worker')
+        self.assertIn('receipt',after)
+        events=self.runtime.ledger.events()
+        self.assertIn(prior['receipt'],[e['id'] for e in events])
+        self.assertIn(after['receipt'],[e['id'] for e in events])
+        self.assertTrue(all(e in [x['id'] for x in events] for e in pre_contact))
+        self.assertNotIn('visitor',self.runtime.ledger.actors())
+        self.assertTrue(self.runtime.verify())
 
     def test_private_exposure_does_not_recruit_actor_or_create_event(self):
         self.neighbor.contribute('come','MOVE',destination='workshop')
