@@ -63,6 +63,14 @@ def project_trial_horizons(constitution, access, candidate_actions,
         # The referential match is analyst/world-qualified, NOT asserted as
         # a preverbal explicit concept.
         source_object=end.get('origin_material_object_ref')
+        # The actually sensed particular Other can remain a prospective
+        # address even when today's generic public care sign is absent.
+        # This proves no knowledge of that Other's future willingness.
+        qualified_other=end.get('addressed_party_ref')
+        other_continuity=(type(qualified_other) is str
+            and any(c.get('kind')=='coactor_present'
+                and c.get('source_actor')==qualified_other
+                for c in access.cues if type(c) is dict))
         object_continuity=(
             type(source_object) is str and
             any(c.get('material_object_ref')==source_object
@@ -74,7 +82,7 @@ def project_trial_horizons(constitution, access, candidate_actions,
             # can bind a different actor-recognizable correspondence.
             if not object_continuity:
                 continue
-        elif not original_match and bridge is None:
+        elif not original_match and bridge is None and not other_continuity:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
@@ -128,6 +136,7 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'source_qualified_addressee_ref':historically_perceived_other,
                 'addressee_present_but_consent_independent':(
                     historically_perceived_other is not None),
+                'present_particular_responder_continuity':bool(other_continuity),
                 'other_possible_means': sorted(set(
                     x for x in means if type(x) is str and x != operation)),
                 'previous_trials': len(tried),
