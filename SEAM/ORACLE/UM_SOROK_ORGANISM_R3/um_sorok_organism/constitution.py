@@ -45,6 +45,7 @@ from .labor_dependency import (
 def materialize(actor,world):
     world_rels=[copy(v) for v in world['relations'].values() if actor['id'] in v.get('participants',[])]
     return Constitution(actor=actor['id'],clock=world['clock'],body=copy(actor['body']),
+        role=actor['role'],age_days=actor['age_days'],
         forms=copy(actor['forms']),links=copy(actor['links']),projects=copy(actor['projects']),
         activity_links=copy(actor.get('activity_links',[])),
         composition_methods=copy(actor.get('composition_methods',[])),
