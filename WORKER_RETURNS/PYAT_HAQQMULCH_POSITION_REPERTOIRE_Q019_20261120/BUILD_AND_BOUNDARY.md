@@ -1,3 +1,6 @@
+> **SUPERSEDED — DO NOT USE AS CURRENT Q019 ENGINE AUTHORITY (2026-11-20 corrective descendant).**
+> This document records the *original untested author rationale* for Q019 at `429cfc5f47e04a82302860f6f33ad48e53daf45d`. The public Q019 coordinator was created before an actual downstream first consumer or unmet native owner function had been demonstrated. It was **withdrawn**, with both implementation and test removed in the corrective child `agent/pyat-session-reuse-repair-q019-retirement-20261120-r1`; `RMT-Q019` is retired, not relabeled as passed. Existing S04, C1, N10E, C5/C6 and F6 owners remain authoritative within their actual evidence and source limits. Q015/Q017 scheduler comparison against existing I05 adaptive discovery remains an open owner matter. This historical record stays to preserve what was done and why it was reversed.
+>
 # HAQQMULCH Q019 — Existing-owner integration, not a second position/repertoire engine
 
 **Operating priority:** Build PYAT, conserve source meaning and minority configurations, and use real time/RSS/storage/cost limits. Work is construction grade and isolated; no protected receiving, G5, source authorization or synthetic person claim.
