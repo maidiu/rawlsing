@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 18,
-  "revision_note": "Rev18 scoped G4 functional reuse/conservation source comparison across #1238/#1242/#1162 and isolated draft PR #1244; no code received to PRE-MAIN, no exact composite tests, no original source science/actor rights; 13 subjects source-static indexed to existing S02/S03/S04/S06/S07 and COMPONENT_STATUS; historical rev14-16 promotion remains retracted.",
-  "report_status": "PYAT_REV18_G4_EXACT_SOURCE_FUNCTION_COMPARISON__NO_NEW_PROTECTED_FEATURE_CODE__REMONT_UNEXECUTED",
+  "revision": 19,
+  "revision_note": "Rev19 documentary-only G4 functional-conservation source cut: selective PR1247 0059e3c712c978eccf3f2cc754b1f2679ac496c5 on REMONT PR1243 3b27f559e70c1de95426e40a8ee6bbe30011455d, original donor #1244 ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550; 3 recovered S2F/S2G modules, 5 identified core ABI/identity/asked-eligible/DTA/I05 restorations plus cold S04, saved C11, journal; COMMITTED_UNTESTED, no protected feature promotion, native rights or G5.",
+  "report_status": "PYAT_REV19_DOCUMENTARY_SOURCE_STATIC_FUNCTION_CONSERVATION__PR1247_CODE_UNRECEIVED",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -682,5 +682,39 @@
     "original_science": false,
     "field_forge_external_first_consumer": false,
     "pre_main_feature_code_changed": false
+  },
+  "g4_pyat_selective_forward_rev19": {
+    "grade": "SOURCE_STATIC_DOCUMENTARY_CAS_ONLY__NO_CODE_OR_SCIENTIFIC_ACCEPTANCE",
+    "premain_parent": "7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a",
+    "candidate_sha": "0059e3c712c978eccf3f2cc754b1f2679ac496c5",
+    "candidate_pr": 1247,
+    "remont_1243_base_sha": "3b27f559e70c1de95426e40a8ee6bbe30011455d",
+    "reference_1244_sha": "ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550",
+    "affected_g4_sections": [
+      "ROADMAP:S02",
+      "ROADMAP:S03",
+      "ROADMAP:S04",
+      "ROADMAP:S05",
+      "ROADMAP:S06",
+      "ROADMAP:S10"
+    ],
+    "affected_existing_component_rows": [
+      "ROADMAP:S02.4",
+      "ROADMAP:S03.1",
+      "ROADMAP:S03.2",
+      "ROADMAP:S03.3",
+      "ROADMAP:S03.4",
+      "ROADMAP:S03.5",
+      "ROADMAP:S04.5",
+      "ROADMAP:S05.1",
+      "ROADMAP:S05.2",
+      "ROADMAP:S06.1"
+    ],
+    "tested_at_candidate_sha": false,
+    "independent_reviewed_at_candidate_sha": false,
+    "original_source_rights": false,
+    "native_ff02_actor_qualification": false,
+    "nonpromoted_scope": "S2E/S2F/S2G and P0 first-consumer code remains open PR; latest REMONT Q015 still owned by REMONT",
+    "platform_protected_branch_claim": false
   }
 }
