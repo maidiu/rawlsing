@@ -42,6 +42,7 @@ def exact(ref,path,sha):
  data=fetch(ref,path); found=blob(data)
  test("EXACT_GIT_BLOB "+path,found==sha,found)
  return data
+class SourceForensicHold(Exception):pass
 try:
  k=(HERE/"KUDA.md").read_text()
  n=(HERE/"NEKUDA.md").read_text()
@@ -99,7 +100,7 @@ try:
        len(encoded)%4==1 and "padding" in str(original_error).lower(),
        {"concat_len":len(encoded),"error":archive_error})
   # Source recovery only, never execution or silent modification of frozen history.
-  for position in range(max(0,len(chunks[0])-16),min(len(encoded),len(chunks[0])+17)):
+  for position in range(len(encoded)):
    candidate=encoded[:position]+encoded[position+1:]
    try:
     decoded=gzip.decompress(base64.b64decode(candidate,validate=True))
@@ -113,7 +114,9 @@ try:
             "archived_source_unmodified":True}
     break
  if recovered is None:
-  raise RuntimeError("B16 packed driver is invalid and cannot be recovered by one-character boundary deletion")
+  report["B16"]["forensic_recovery_status"]="EXACT_SOURCE_HELD_AFTER_ALL_SINGLE_CHARACTER_DELETIONS"
+  report["holds"].append("B16_ARCHIVED_DRIVER_INVALID_STRICT_BASE64_AND_FULL_SOURCE_UNRECOVERED")
+  raise SourceForensicHold("B16 invalid archived driver; no single-character-deletion matches expected SHA256")
  if repair:report["B16"]["forensic_boundary_repair"]=repair
  sha=hashlib.sha256(recovered).hexdigest()
  test("B16 exact effective uncompressed driver SHA256",sha=="59ce6903776df5f5b17bc074b15d9ae06334a5a1c30fad91096fc3fb6a014a3f",sha)
@@ -125,6 +128,8 @@ try:
  runs=[json.loads(fetch(B16,D+filename)) for filename in ("05_PRODUCTION_RUN_1.json","06_PRODUCTION_RUN_2.json")]
  good=all(v["i05"]["candidate_count"]==82 and v["i05"]["empirical_fact_ref_count"]==140 and v["i05"]["unevaluated_count"]==0 and v["i05"]["terminal_state_counts"]=={"EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED":82} for v in runs)
  test("B16 two real-source historical receipts have 82 negatives, zero scientific positives",good)
+except SourceForensicHold as exc:
+ print("B16_SOURCE_FORENSICS_HELD",str(exc),flush=True)
 except Exception as exc:
  test("SOURCE_COURT_EXCEPTION",False,repr(exc))
 finally:
