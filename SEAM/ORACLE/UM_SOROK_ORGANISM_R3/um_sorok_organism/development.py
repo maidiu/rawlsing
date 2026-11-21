@@ -644,19 +644,51 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':
-            # What this actor expects of the Other is not the Other's actual state.
+            # A person may encounter an Other *directly*, or witness that
+            # Other's actually performed act toward a third person. These
+            # are different evidence paths, neither a license to know minds.
             other=c.get('other_ref')
-            if not isinstance(other,str) or not other or other==actor['id']:
+            if type(other) is not str or not other or other==actor['id']:
                 raise InvalidDevelopment('INVALID_OTHER_REFERENCE')
-            if experience.get('reciprocated_partner')!=other:
-                raise InvalidDevelopment('OTHER_NOT_ENCOUNTERED_IN_THIS_EXPERIENCE')
-            if not isinstance(c.get('hypothesis'),str) or not c.get('hypothesis'):
+            hypothesis=c.get('hypothesis')
+            if type(hypothesis) is not str or not hypothesis:
                 raise InvalidDevelopment('EMPTY_RELATIONAL_HYPOTHESIS')
-            actor['other_models'].setdefault(other,[]).append({
-                'hypothesis':c['hypothesis'],'event':event_ref,
-                'confidence':c.get('confidence','tentative'),
-                'grade':GRADE,'not_other_objective_truth':True})
-            report.append({'kind':op,'other_ref':other,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+            about=c.get('about_relation_with_ref')
+            cited=c.get('witnessed_cue_ref')
+            entry={'hypothesis':hypothesis,'event':event_ref,
+                   'confidence':c.get('confidence','tentative'),
+                   'grade':GRADE,'not_other_objective_truth':True}
+            if about is None:
+                # Retain original direct reciprocal encounter gate.
+                if cited is not None:
+                    raise InvalidDevelopment('UNQUALIFIED_OTHER_MODEL_CUE')
+                if experience.get('reciprocated_partner')!=other:
+                    raise InvalidDevelopment('OTHER_NOT_ENCOUNTERED_IN_THIS_EXPERIENCE')
+            else:
+                if (type(about) is not str or not about or
+                        about in (other,actor['id']) or
+                        type(cited) is not str or not cited):
+                    raise InvalidDevelopment('INVALID_THIRD_PARTY_RELATION_REFERENCE')
+                observed=any(
+                    type(cue) is dict and cue.get('id')==cited
+                    and cue.get('source_actor')==other
+                    and cue.get('actor_accessible_target_ref')==about
+                    and cue.get('kind') in (
+                        'performed_care','performed_feed','performed_impose')
+                    and cue.get(
+                        'public_person_directed_act_not_private_intention') is True
+                    for cue in experience.get('perceived_cues',[]))
+                if not observed:
+                    raise InvalidDevelopment('THIRD_PARTY_RELATION_NOT_ACTOR_WITNESSED')
+                entry.update({
+                    'about_relation_with_ref':about,
+                    'witnessed_cue_ref':cited,
+                    'only_actor_local_interpretation_of_witnessed_act':True,
+                    'not_other_private_state_or_target_consent':True})
+            actor['other_models'].setdefault(other,[]).append(entry)
+            report.append({'kind':op,'other_ref':other,
+                           'about_relation_with_ref':about,
+                           'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='ACQUIRE_HISTORICAL_ORIENTATION':
             try:report.append(acquire_orientation(actor,experience,event_ref,c))
             except ValueError as err:raise InvalidDevelopment(str(err)) from err
