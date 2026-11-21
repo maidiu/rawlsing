@@ -192,6 +192,11 @@ def _target_component_value(
         used.append(event)
         used_auth.extend(_validate_public_object_authorities(event, registry))
 
+    # PF-025 / RMT-Q013: no exact selected event is not an observed empty
+    # collection. A genuine administered-empty state requires source issuance.
+    if not events:
+        return False, None
+
     topology = component.topology
     if topology == "SCALAR_SINGULAR":
         if not events:
