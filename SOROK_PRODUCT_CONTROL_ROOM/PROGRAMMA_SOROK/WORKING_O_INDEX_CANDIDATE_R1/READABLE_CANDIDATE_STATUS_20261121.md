@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `c6d6383d8e4c42fa78eea080d9eba638fd67b887`**. Source target: `maidiu/rawlsing`, protected baseline `7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a`. This is a **102-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `889aef6f5b34a85765c376c2372803d8904e58dc`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **102-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 

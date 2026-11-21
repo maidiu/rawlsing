@@ -10,6 +10,8 @@
 - Additive ledger currently has **102 targeted discovered PRs**, not an exhaustive all-repo completeness claim; the most consequential have independently linked exact-head execution and refusal/held statuses. The remaining `UNKNOWN` need per-row targeted source/first-reader reconciliation, not fabricated PASS.
 - Protected [SOROK CURRENT_PROGRESS.md](../../CURRENT_PROGRESS.md) and [.json](../../CURRENT_PROGRESS.json) remain qualified R39, with protected MII addendum; their truthful **protected** history is distinct from the **live unmerged** SORACLE and REMONT work.
 
+Authenticated GitHub ref refresh observed PRE-MAIN `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. PRs #1232 and #1233 both still resolve to `f99b180c48cd389f49aafc49a7ac433a42d85311` and remain held. Shared branch movement does not change these PR head identities. Protected receiving still requires the live court.
+
 ## Proposed insertion — existing canonical PROGRAMMA
 
 **Receiving owner:** competent SOROK HQ / protected PRE-MAIN integrator, not this documentary steward.
@@ -30,7 +32,7 @@ Insert immediately **after** the canonical opening OATH (without rewriting any O
 {
   "o_index_live_receiving_20261121_candidate": {
     "status": "PROPOSED_UNMERGED_HQ_CURRENTNESS_HOLD",
-    "baseline_protected_sha": "7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a",
+    "baseline_protected_sha": "fbc2080403607d85cd67a025b8a9a4ebd41e70c1",
     "working_branch": "agent/sorok-programma-live-receiving-ledger-20261121-r1",
     "o_index_r3_pr": 561,
     "o_index_r3_immutable_head": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
@@ -39,7 +41,7 @@ Insert immediately **after** the canonical opening OATH (without rewriting any O
     "event_count": 5,
     "principal_sourcefree_first_reader": {
       "pr": 1234,
-      "historical_executed_red_sha": "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8",
+      "historical_executed_red_shas": ["018d3025", "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8"],
       "current_executed_scoped_sha": "8d1ff8bbb75b359cc7bd3044b385323600c70b88",
       "local_review_receipt": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997",
       "native_science_issued": false,

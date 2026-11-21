@@ -16,7 +16,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent
-BASE_SHA = '7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a'
+BASE_SHA = 'fbc2080403607d85cd67a025b8a9a4ebd41e70c1'
 PINNED_FILES = {
     '00_START_HERE.md': 'd3bd3eb39059e087004f04456aab4961d9dec5aa',
     '01_SOURCE_OF_TRUTH_REGISTRY.json': 'f530cf193cc0f8c3d93324b5e2b865a4efa3bd34',
