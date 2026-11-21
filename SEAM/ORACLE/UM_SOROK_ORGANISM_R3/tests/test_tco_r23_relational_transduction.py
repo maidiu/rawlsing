@@ -14,6 +14,9 @@ from um_sorok_organism.types import (
 from um_sorok_organism.constitution import compose, materialize, actor_access
 from um_sorok_organism.world import add_cue, resolve
 from um_sorok_organism.development import admit, InvalidDevelopment
+from um_sorok_organism.semantics import (
+    CallbackLLMProvider, ValidatingSemanticService,
+)
 from um_sorok_organism.relational_metabolism import (
     validate_motif, InvalidRelationalMotif,
 )
@@ -377,6 +380,48 @@ class ThreeAgentMulchR23(unittest.TestCase):
             actor='mother',action='IMPOSE',target='not_present'))
         self.assertEqual(absent.status,'BLOCKED')
         self.assertEqual(absent.objective_description,'TARGET_NOT_PRESENT')
+
+    def test_llm_semantic_proposal_becomes_operative_only_after_owner_admission(self):
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        lived_pastor=copy(lived())
+        lived_pastor['perceived_cues']=[{
+            'id':'objective:pastor','source_actor':'pastor'}]
+        calls=[]
+        def candidate_model(task,packet):
+            calls.append((task,copy(packet)))
+            return {'task':task,'candidates':[
+                {'kind':'ACQUIRE_RELATIONAL_MOTIF','motif':motif()}]}
+        semantic=ValidatingSemanticService(
+            CallbackLLMProvider(candidate_model))
+        response=semantic.proposal('development',{
+            'actor':{'id':'mother'},
+            'experience':copy(lived_pastor)})
+        self.assertEqual(len(calls),1)
+        self.assertEqual(len(response['candidates']),1)
+        self.assertEqual(actor.get('relational_motifs',[]),[])
+        report=admit(actor,lived_pastor,'objective:pastor',response['candidates'])
+        self.assertEqual(report[0]['status'],
+                         'ADMITTED_SOURCEFREE_RELATIONAL_FORMATION')
+        self.assertEqual(len(actor['relational_motifs']),1)
+        c=read_model(motif_override=actor['relational_motifs'][0])
+        self.assertEqual(len(mediated(compose(c,encounter()))),1)
+
+    def test_semantic_proposal_is_not_an_unguarded_other_person_memory(self):
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        old=copy(actor)
+        semantic=ValidatingSemanticService(CallbackLLMProvider(
+            lambda task,packet:{
+                'task':task,'candidates':[
+                    {'kind':'ACQUIRE_RELATIONAL_MOTIF','motif':motif()}]}))
+        proposal=semantic.proposal('development',{'experience':lived()})
+        self.assertEqual(actor,old)
+        with self.assertRaisesRegex(
+                InvalidDevelopment,'MOTIF_WITNESSED_OTHER_NOT_RECEIVED'):
+            admit(actor,lived(),'objective:unwitnessed',
+                  proposal['candidates'])
+        self.assertEqual(actor,old)
 
     def test_read_cannot_write_other_psyche_or_world_permission(self):
         c=read_model()
