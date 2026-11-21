@@ -81,8 +81,11 @@ class R14SourcefreeModule(unittest.TestCase):
         self.assertEqual(len(alt),1)
         self.assertEqual(alt[0]['world_request']['addressed_party_ref'],
                          'mother')
-        self.assertFalse(any('consent' in x and x is True
-                             for x in alt[0].values()))
+        # Consent is a claim about the Other's actual response, not a
+        # property silently derived from an earlier lived care relationship.
+        # Inspect typed keys, not non-iterable int/string values.
+        self.assertFalse(any('consent' in str(key).lower() and value is True
+                             for key,value in alt[0].items()))
         self.assertIsNone(choose_historically_situated_signal(
             [{'action':'SIGNAL','practical_alternatives':alt}],
             {'comfort':.8,'nutrition':.8,'rest':.8}))
