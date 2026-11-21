@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_G4_1247_INDEPENDENT_EXECUTION_RECEIPT@1",
+  "record_status": "REV23_SCOPED_SOURCEFREE_Q023_S04_TYPED_HOLD__HISTORICAL_REV22_RECEIPT_RETAINED",
+  "current_receipt": {
+    "revision": 23,
+    "candidate_pr": 1247,
+    "candidate": "997ca50869551d292650c710a2c99a43c9119f7a",
+    "prior_candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+    "fast_forward": "53517c4ac -> 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 (test-only successor) -> 997ca5086",
+    "scope": "SCOPED_SOURCEFREE_S04_TYPED_NEGATIVE_HOLD_DELTA_ONLY",
+    "source_delta": {
+      "source_pr": 1264,
+      "path": "rawlsing_next/pre553_s04_observed_research.py",
+      "repair": "Read target_domain_identity via getattr(fact, \"target_domain_identity\", None) so typed-negative I03 executions are held instead of crashing before S04 reception.",
+      "test_path": "rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py",
+      "test": "test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results now calls receive_s04_first_consumer on typed-negative facts and asserts PRODUCER_TYPED_HELD, never SUPPORTED_SAMPLE_DESCRIPTIVE."
+    },
+    "typed_hold": {
+      "real_unavailable": "PRODUCER_TYPED_HELD__NOT_PROMOTED_TO_SUPPORTED_SAMPLE_DESCRIPTIVE",
+      "real_zero_support": "PRODUCER_TYPED_HELD__NOT_PROMOTED_TO_SUPPORTED_SAMPLE_DESCRIPTIVE",
+      "exact_partition": {
+        "SUPPORTED": 4,
+        "UNAVAILABLE": 6,
+        "ZERO_SUPPORT": 2
+      },
+      "issued_query_total": 12
+    },
+    "independent_review": {
+      "session": "ses_e02721729ffe2zKdAlQsGsj1jx",
+      "scope": "Focus 1 pass plus S04 suite 10 pass",
+      "environment": "macOS Python 3.11.3",
+      "attribution": "USER_SUPPLIED_SESSION_AND_RESULTS__S04_SOURCE_DELTA_INSPECTED_IN_THIS_RECEIVING",
+      "grade": "INDEPENDENTLY_REVIEWED_SCOPED_SOURCEFREE",
+      "protected_received": false
+    },
+    "protected_status": "UNCHANGED__NO_FEATURE_CODE_IN_PRE_MAIN__NO_PROTECTED_RECEIVING",
+    "canonical_ci": {
+      "started_after_public_change": true,
+      "result": "FAILURE",
+      "run_id": 44890906453,
+      "cause": "Shared front-door question offset: verify_pyat_product_priority_visibility_r1.py reports 'front door lost exact user question' for all three front doors because the exact user question text lies beyond its 2600-character prefix window.",
+      "disposition": "SEPARATE_REPAIR_ACTIVE__NOT_A_Q023_S04_FAILURE__NOT_GREEN"
+    },
+    "historical_sha_receipts_retained": true
+  },
+  "historical_receipts": [
+    {
+      "revision": 22,
+      "candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+      "note": "Historical rev22 receipt retained unchanged at its historical SHA. Its counts and negative-coverage finding are superseded for the Q023 S04 typed-hold scope by current_receipt; they are not rewritten.",
+      "tests": {
+        "RMT-Q014": {
+          "tests": 41,
+          "cases": [
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_native_i03_counts_all_asked_including_nonanswers_not_never_asked",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_asked_but_no_emitted_response_event_remains_held_and_in_denominator",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_unknown_routing_does_not_mean_asked_and_does_not_mean_not_asked",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_source_code_98_is_not_magically_recoded_as_dk_without_issuer_evidence",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_policy_marker_cannot_smuggle_substantive_only_response_domain",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_multi_target_native_i03_uses_same_asked_risk_for_a_typed_nonanswer",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_helper_rejects_unqualified_non_scalar_and_substantive_collision",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_native_source_rule_requires_explicit_codebook_typed_nonanswer_mapping",
+            "rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution::test_all_nonanswer_source_can_have_zero_substantive_domain",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_unary_distribution_and_observed_zero_are_exact",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_observed_zero_is_not_zero_support",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_arbitrary_coordinate_conjunction_and_response_position_condition",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_response_response_xor_uses_same_respondent_incidence",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_same_marginals_different_joint_are_distinct_source_indexed_facts",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_equal_denominator_counts_different_risk_member_sets_do_not_collapse",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_routed_common_eligibility_zero_overlap_is_typed",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_raw_and_authorized_weighted_measure_are_distinct_exact_facts",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_missing_or_invalid_weight_fails_closed_without_default_one",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_branch_cohort_membership_is_exact_and_replayable",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_simpson_reversal_preserves_pooled_and_conditioned_query_identity",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_storage_order_permutations_replay_identically",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_tampered_query_predicate_or_replay_reference_fails_closed",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_diagnostic_score_cannot_masquerade_as_empirical_fact",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_query_execution_has_zero_structural_actor_v3_v2_effect",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_authorized_composite_without_exact_relation_bundle_is_noncomparable",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_unsupported_response_topology_is_typed_unresolved_not_collapsed",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_realized_cell_outside_exact_declared_domain_is_integrity_failure",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_missing_exact_c11_release_is_typed_unavailable_without_latest_fallback",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_scalar_query_cannot_collapse_multiselect_carrier_even_with_one_event",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_exact_empty_target_domain_is_valid_empty_not_zero_support",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_exact_all_inapplicable_routing_is_not_applicable_not_zero_support",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_authorized_composite_requires_and_uses_operation_specific_positive_authority",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_rejects_allow_authority_missing_fact_family",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authorities",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_preserves_exact_lawful_target_use",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[DENY]",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[OUT_OF_SCOPE]",
+            "rawlsing_next.tests.test_pre553_empirical_query::test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive[SUPERSEDED_NOT_REPLAYABLE]"
+          ]
+        },
+        "RMT-Q023": {
+          "tests": 33,
+          "cases": [
+            "rawlsing_next.tests.test_pre553_prepared_saved_i03::test_prepared_session_matches_baseline_and_builds_one_index",
+            "rawlsing_next.tests.test_pre553_prepared_saved_i03::test_prepared_session_revocation_and_condition_refusal",
+            "rawlsing_next.tests.test_pre553_prepared_saved_i03::test_prepared_i05_reuses_session_with_exact_discovery_parity",
+            "rawlsing_next.tests.test_pre553_prepared_saved_i03::test_plain_saved_admission_can_reuse_inherited_prepared_index_without_repin",
+            "rawlsing_next.tests.test_pre553_prepared_saved_i03::test_plain_to_prepared_rechecks_revoked_current_before_build",
+            "rawlsing_next.tests.test_pre553_distinct_cold_i03_batch::test_distinct_saved_queries_reuse_one_authentic_native_session[1]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_i03_batch::test_distinct_saved_queries_reuse_one_authentic_native_session[10]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_i03_batch::test_distinct_saved_queries_reuse_one_authentic_native_session[100]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_i03_batch::test_duplicate_selected_query_is_refused_before_native_session_build",
+            "rawlsing_next.tests.test_pre553_distinct_cold_i03_batch::test_mid_batch_revocation_refuses_and_removes_temporary_postings",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_distinct_queries_run_one_native_index_and_produce_each_real_s04[1]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_distinct_queries_run_one_native_index_and_produce_each_real_s04[10]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_distinct_queries_run_one_native_index_and_produce_each_real_s04[100]",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_one_preparation_feeds_real_k2_s04_ff01_and_unary_native_f1",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_source_revoked_during_s04_reception_returns_no_partial_batch",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_duplicate_wrong_predicate_unary_ff01_and_causal_text_refuse_before_index",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_original_construction_grant_is_not_a_qualified_i03_repository",
+            "rawlsing_next.tests.test_pre553_distinct_cold_s04_batch::test_src16_construction_only_intent_cannot_claim_sourcefree_i03_analysis",
+            "rawlsing_next.tests.test_pre553_s04_dynamic_research::test_prepared_native_session_serves_distinct_original_questions_then_indefinite_joint_followups",
+            "rawlsing_next.tests.test_pre553_s04_dynamic_research::test_native_catalog_query_count_above_one_hundred_has_no_query_quota",
+            "rawlsing_next.tests.test_pre553_s04_dynamic_research::test_current_revoked_between_dynamic_questions_refuses_stale_science",
+            "rawlsing_next.tests.test_pre553_s04_dynamic_research::test_rejects_original_survey_construction_grant_and_bad_catalog_query",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v1_discovery_is_unchanged_and_v2_jobs_come_only_from_original_eligible_roles",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v2_valid_issued_query_runs_actual_saved_batch_without_source_reopen",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v1_postconsumer_guards_reject_even_consistent_v2_query_injection",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_sourcefree_public_compiler_rederives_frozen_frontier_and_preserves_prohibitions",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v2_saved_postconsumer_consumes_only_new_compiler_issued_jobs",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v2_changed_operation_bindings_refuse_even_matching_current_record",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v2_issuer_refuses_caller_injected_query_in_original_issuance",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_v2_join_refuses_manifest_query_not_issued_by_v2",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results",
+            "rawlsing_next.tests.test_pyat997_r03_governed_query_issuer_v2::test_r03_v2_prepared_saved_flag_refuses_unbacked_or_truthy_grants",
+            "rawlsing_next.tests.test_pyat_forward_saved_ff01_first_reader::test_ordinary_saved_admission_to_two_source_coherent_ff01_joints_single_index"
+          ]
+        }
+      },
+      "session": "ses_e02c8ed25ffeM0hJk9Qa7TU8Da",
+      "grade": "INDEPENDENT_SAME_HOST_SOURCEFREE_EXECUTION",
+      "negative_coverage": {
+        "finding": "UNDER_ASSERTED_ON_BASE",
+        "observed": {
+          "SUPPORTED": 4,
+          "UNAVAILABLE": 6,
+          "ZERO_SUPPORT": 2
+        },
+        "successor_test_commit": "16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1",
+        "execution": "1 focused pass; committed test blob on unchanged #1247 checkout",
+        "protected_received": false
+      },
+      "artifact_scope": "Case counts and names. Raw JUnit retained on execution host.",
+      "superseded_negative_coverage_finding": {
+        "finding": "PROVE_E",
+        "observed": {
+          "SUPPORTED": 4
+        },
+        "unexercised": [
+          "UNAVAILABLE",
+          "UNRESOLVED"
+        ],
+        "basis": "DeepSeek focused instrumented fixture probe"
+      }
+    }
+  ]
+}

@@ -1,3 +1,22 @@
+# PYAT CURRENT_PROGRESS REV23 — SCOPED SOURCEFREE Q023 S04 TYPED-HOLD DELTA
+
+[Revision 23 Q023 S04 receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)
+
+
+**#1247 fast-forwarded** from `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` to `997ca50869551d292650c710a2c99a43c9119f7a` (via test-only successor `16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1`). The exact S04 repair reads `target_domain_identity` with `getattr(..., None)` so typed-negative I03 executions are held instead of crashing; the existing Q023 test now calls `receive_s04_first_consumer` on those facts and asserts `PRODUCER_TYPED_HELD`, never `SUPPORTED_SAMPLE_DESCRIPTIVE`. Real UNAVAILABLE and ZERO_SUPPORT produce the typed hold with the exact partition **4 SUPPORTED / 6 UNAVAILABLE / 2 ZERO_SUPPORT**. OpenCode session `ses_e02721729ffe2zKdAlQsGsj1jx` independently reviewed the scoped S04 delta; the reported results are **focus 1 pass plus S04 suite 10 pass, macOS Python 3.11.3**. This is a **scoped sourcefree delta only**; the rev22 `53517c4ac` receipt and every earlier count remain historical receipts at their historical SHAs. **Protected status unchanged:** no feature code in PRE-MAIN, no wider independent G5, and no protected receiving. Canonical CI started after the public change and failed on the separate shared front-door question offset (run `44890906453`; `verify_pyat_product_priority_visibility_r1.py` reports the exact user question outside its 2600-character prefix window in all three front doors); that is **not** a Q023/S04 failure and its separate repair is active.
+
+---
+
+# PYAT CURRENT_PROGRESS REV22 — INDEPENDENT Q023/Q014 EXECUTION RECEIPT
+
+[Revision 22 execution receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)
+
+
+Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The Q023 fixture emitted four SUPPORTED, six UNAVAILABLE and two ZERO_SUPPORT facts. The earlier finding mistook the supported subset for the full workload. The test-only successor 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 adds the missing assertions and passed the focused test with its committed test file against the unchanged #1247 checkout. Wider G4 receiving and feature-code adoption remain pending.
+
+
+---
+
 # PYAT CURRENT_PROGRESS REV21 — SAME-SHA USER-EXECUTED Q023/Q014 GREEN, DOC ONLY
 
 **Candidate #1247 unchanged** at `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. The user executed **RMT-Q023 33/33 in 38.48 s** and **RMT-Q014 41/41 in 1.99 s** on oldMac / pytest 9.1.1 in detached worktree. Both explicit runner results exit 0, `executed=1 held=0 failed=0`, 74 passing court executions in total; evidence is **USER_REPORTED_EXECUTED_AT_SHA**, supported by pasted terminal and local Q023 proof index/status/log readback but NOT independent GitHub readback of JUnit bytes or G5. [REMONT exact report](https://github.com/maidiu/rawlsing/issues/1162#issuecomment-7059561917). The rev20 `COMMITTED_UNTESTED` notice is corrected ONLY for these two QIDs. No high-width original-source survey cost, original administered/eligible population authority, external FF02 actor, independent technical receiving, full-suite green, or code promotion. PRE-MAIN changes only existing G4/coupled docs; Q015 remains REMONT-owned and SORACLE #1234 untouched.
