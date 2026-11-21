@@ -1,8 +1,8 @@
 # 03 — C-T1 TRIGGER: WHAT THE SUCCESSOR MUST DO NOW
 
-**N-T1 has materially crossed the user-defined "profoundly underway" threshold.** The entire N-T1 theory has been reconstructed five times, not appended indefinitely. It now directly engages SEAM/30 and the Constitutive Organism rather than merely plotting a UX around it. The fifth theory [at exact source](https://github.com/maidiu/rawlsing/blob/c597791f20988420df356386f1bd55cd261f7ba5/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) is 17 sections; the older 13 ledger [at prior HEAD](https://github.com/maidiu/rawlsing/blob/84b7c469064de243ead2ccf3c6395684f535421c/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md) contains R1–R4 exact draws and explicit user corrections.
+**N-T1 has materially crossed the user-defined "profoundly underway" threshold.** The entire N-T1 theory has been reconstructed five times, not appended indefinitely. It now directly engages SEAM/30 and the Constitutive Organism rather than merely plotting a UX around it. The fifth theory [at exact source](https://github.com/maidiu/rawlsing/blob/c597791f20988420df356386f1bd55cd261f7ba5/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) is 17 sections; the older 13 ledger [at prior HEAD](https://github.com/maidiu/rawlsing/blob/3e79b1d967a5cf3eca14639a793fa04513a0905e/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md) contains R1–R5 exact draws and explicit user corrections; the fifth append reports 18 source records and recommendations to CO.
 
-**But** N-T1 is not shown to have a final frozen handoff or a fifth source-ledger append. The successor should recheck the N-T1 current head and ask whether the neighboring agent has issued a received N-T1 version before treating any wording as final. There is **NO formal requirement to wait for all theoretical perfection**: begin C-T1 preparation and candidate immanent criticism now, perform its major source-grounded return against the newest substantive N-T1 cut, and clearly label provisional vs frozen.
+**But** N-T1 is not shown to have a final frozen handoff though the fifth source-ledger append is now present. The successor should recheck the N-T1 current head and ask whether the neighboring agent has issued a received N-T1 version before treating any wording as final. There is **NO formal requirement to wait for all theoretical perfection**: begin C-T1 preparation and candidate immanent criticism now, perform its major source-grounded return against the newest substantive N-T1 cut, and clearly label provisional vs frozen.
 
 ## A. Keep the working organism alive IN PARALLEL
 
@@ -38,7 +38,7 @@ The previous mode of continuous research reports/REMONT assignments instead of b
 
 ## D. Exact open/held gaps to carry to successor
 
-- Fifth N-T1 thesis head read; fifth source-draw ledger entry/frozen C-T1 handoff **not verified**.
+- Fifth N-T1 thesis head read; fifth source-draw ledger **verified** at `3e79b1d967a5cf3eca14639a793fa04513a0905e`; **frozen C-T1 handoff not verified**.
 - R1 neighbor one-writer adapter is provisional; real R21+MII joined cold first-consumer **not executed**.
 - R23/R24/R25 53 authored cases **not executed** at own head.
 - Original P4/P6/MI storage and new ResearchLedger world/actor authority remain distinct; no final protected writer selection.
