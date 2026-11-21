@@ -1,10 +1,10 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `18d161bf978c02e92984f83b87acd2c6ef4a825f`**. Source target: `maidiu/rawlsing`, protected baseline `7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a`. This is a **103-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `3c032cc5c7e66058b0883e4415e290864f68648f`**. Source target: `maidiu/rawlsing`, protected baseline `7822851fbe7c22a7fc2a1e68ccd41ef59808cf4a`. This is a **102-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
-## Mechanisms / protected and candidates (21 records)
+## Mechanisms / protected and candidates (20 records)
 
 | PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
 |---|---|---|---|---|
@@ -24,7 +24,6 @@
 | [#878](https://github.com/maidiu/rawlsing/pull/878) | `339c872612aff9aa34f7133a2170108bcde385f6` | `agent/sorok-miii-situated-live-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
 | [#880](https://github.com/maidiu/rawlsing/pull/880) | `07fa05e1a9aaf808c088b2df19bf7855f7f9dcea` | `agent/sorok-miii-actor-initiative-continuity-20261110-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
 | [#882](https://github.com/maidiu/rawlsing/pull/882) | `5aa9bdc1133f75028b20d448504dae03abc88115` | `agent/sorok-miii-current-scene-action-context-20261110-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
-| [#882](https://github.com/maidiu/rawlsing/pull/882) | `5aa9bdc1133f75028b20d448504dae03abc88115` | `agent/sorok-miii-current-scene-action-context-20261110-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
 | [#889](https://github.com/maidiu/rawlsing/pull/889) | `0178df262ac04d6fef074a56f6b8448c4d7fdcf9` | `docs/sorok-mechanism-ii-mcr-af-existing-commission-r2` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
 | [#891](https://github.com/maidiu/rawlsing/pull/891) | `724b505c2ab07eaa350a4582e317d1d71faa1d27` | `review/sorok-miii-premain-receiving-20261110-r1` | MERGED / PROTECTED_RECEIVED_MIII_SOURCEFREE_ENGINEERING_SCOPED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
 | [#905](https://github.com/maidiu/rawlsing/pull/905) | `2be0cf252662ad021571db6f0d38b12c205c56ae` | `review/sorok-mii-premain-integration-20261111-r1` | MERGED / PROTECTED_RECEIVED_MII_SOURCEFREE_ENGINEERING_SCOPED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
