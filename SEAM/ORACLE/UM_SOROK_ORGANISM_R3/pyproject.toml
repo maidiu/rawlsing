@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "um-sorok-constitutive-organism-research"
+version = "0.3.0"
+description = "Sourcefree research implementation of the Rawlsing constitutive-person organism"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["um_sorok_organism*"]
