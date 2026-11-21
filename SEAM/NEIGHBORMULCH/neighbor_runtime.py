@@ -268,6 +268,63 @@ class NeighborEncounter:
         self._last_actor_ref = actor_id
         return result
 
+    def continue_independent_life_during_visit(self, *, profile=None):
+        """One genuinely independent actor/world beat while a visitor is present.
+
+        This is NOT an LLM-selected scene or player request for a particular
+        person's response. Reuse the existing organism initiative scheduler,
+        actor/world writer and MII bounded visitor surface. One new performed
+        user contribution is the causal *opportunity* for at most one beat;
+        retries must not create an extra actor event.
+        """
+        _, world = self._world()
+        visitor=world.get('neighbor_users',{}).get(self.user_id)
+        if not isinstance(visitor,dict) or visitor.get('present') is not True:
+            raise EncounterRefusal('VISITOR_NOT_PRESENT_FOR_LIVE_OCCASION')
+        # User may not supply a target actor or an action: the existing
+        # independent actor scheduler owns the decision opportunity.
+        history=self.runtime.ledger.events()
+        user_indices=[i for i,event in enumerate(history)
+            if event.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+            and event.get('envelope',{}).get('payload',{}).get('user')==self.user_id
+            and event.get('envelope',{}).get('payload',{}).get('performed') is True]
+        if not user_indices:
+            raise EncounterRefusal('NO_QUALIFIED_USER_LIFE_OCCASION')
+        source_index=user_indices[-1]
+        source_event=history[source_index]
+        source_ref=source_event['envelope']['payload']['user_event_ref']
+        subsequent=history[source_index+1:]
+        # A later committed life transition is enough to conservatively
+        # refuse to create another one on an identical preceding user turn.
+        # No extra marker store, no second world author, no fabricated event.
+        if any(e.get('kind')=='ACTOR_LIFE_TRANSITION' for e in subsequent):
+            return {'status':'ALREADY_ADVANCED_AFTER_USER_OCCASION',
+                    'source_user_event_ref':source_ref,
+                    'new_world_event':False,'actor_response_not_commanded':True}
+        from um_sorok_organism.initiative import choose_next_actor
+        selected=choose_next_actor(world,self.runtime.ledger.actors())
+        if selected is None:
+            return {'status':'NO_ELIGIBLE_INDEPENDENT_ACTOR',
+                    'source_user_event_ref':source_ref,
+                    'new_world_event':False,'actor_response_not_commanded':True}
+        result=self.independent_actor_beat(selected['actor'])
+        if result.get('selection_grade')=='INJECTED_NOT_NATIVE_ACTOR_CHOICE':
+            raise EncounterRefusal('LIVE_OCCASION_FORGED_ACTOR_SELECTION')
+        _, updated=self._world()
+        view=self.private_surface(profile) if profile is not None else None
+        return {'status':'INDEPENDENT_ACTOR_WORLD_EVENT_COMMITTED',
+                'source_user_event_ref':source_ref,
+                'actor_event_receipt':result['receipt'],
+                'world_clock':updated['clock'],
+                'actor_selected_by_existing_initiative':selected['actor'],
+                'actor_operation':result['attempt'],
+                'actor_status':result['status'],
+                'visitor_surface':view,
+                'new_world_event':True,
+                'no_visitor_selected_actor_intention_or_response':True,
+                'no_unseen_private_psychology_on_visitor_surface':True,
+                'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+
     def private_surface(self, profile: dict, *, command: str | None = None,
                         target: str | None = None):
         """Real MII operations over finite, public facts; no world/actor writes."""
