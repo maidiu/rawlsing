@@ -303,6 +303,17 @@ class ConstitutiveRuntime:
             basis+=['project:'+ref for ref in selected_refs]
             bound_target=(selected_alternative['world_request']['addressed_party_ref']
                           if selected_alternative else None)
+            if trial_choice is not None and trial_choice.get(
+                    'source_qualified_addressee_ref') is not None:
+                end_target=trial_choice['source_qualified_addressee_ref']
+                if (bound_target not in (None,end_target)
+                        or action not in COOPERATIVE):
+                    raise ValueError('GENETIC_TRIAL_ADDRESSEE_NOT_BINDABLE')
+                if not any(c.get('kind')=='coactor_present'
+                       and c.get('source_actor')==end_target
+                       for c in e.cues):
+                    raise ValueError('GENETIC_TRIAL_OTHER_NOT_PRESENT')
+                bound_target=end_target
             bound_object=(selected_alternative['world_request'].get('material_object_ref')
                           if selected_alternative else None)
             practical={'status':'ACTOR_POLICY_PRACTICAL_ATTEMPT',
