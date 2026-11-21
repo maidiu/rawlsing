@@ -394,7 +394,9 @@ def receive_s04_i03_research(
         "target_refs": [x.as_dict() for x in targets],
         "target_domains": [list(x) for x in domains],
         "full_query_target_topology": canonicalize(query.target_arity_and_topology),
-        "native_fact_target_domain_identity": fact.target_domain_identity,
+        "native_fact_target_domain_identity": getattr(
+            fact, "target_domain_identity", None
+        ),
         "joint_order_semantics": query.target_arity_and_topology["joint_order_semantics"],
         "target_arity": len(targets),
         "raw_eligible_condition_denominator": eligible,

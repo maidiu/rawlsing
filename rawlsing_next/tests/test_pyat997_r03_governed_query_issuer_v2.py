@@ -328,16 +328,8 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
     workload = issue.issued.workload
     assert workload.requests
     from rawlsing_next.pre553_saved_workload_integration import execute_saved_normal
-    from rawlsing_next.pre553_s04_first_consumer import (
-        receive_s04_first_consumer as _receive_s04_first_consumer,
-    )
+    from rawlsing_next.pre553_s04_first_consumer import receive_s04_first_consumer
     from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
-
-    s04_consumed_query_refs = []
-
-    def receive_s04_first_consumer(**kwargs):
-        s04_consumed_query_refs.append(kwargs["query"].ref.key)
-        return _receive_s04_first_consumer(**kwargs)
 
     original_build = DirectEstateI03Session._build
     index_builds = []
@@ -359,7 +351,8 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
     assert result.outputs_by_unit
     issued_query_count = 0
     supported_s04_count = 0
-    negatives = []
+    unavailable_s04_count = 0
+    zero_support_count = 0
     typed_negative_facts = []
     for unit in result.manifest.units:
         if unit.job_kind != "QUERY":
@@ -374,9 +367,24 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
             # R03 issues exact eligible QUERY roles, not a guarantee that
             # every source risk set is empirically observable. Preserve
             # unavailable/unresolved native facts instead of forging S04.
-            negatives.append((query.ref, fact.ref, fact.typed_state))
+            if fact.typed_state == "UNAVAILABLE":
+                unavailable_s04_count += 1
+            elif fact.typed_state == "ZERO_SUPPORT":
+                zero_support_count += 1
             if fact.typed_state in {"UNAVAILABLE", "UNRESOLVED"}:
                 typed_negative_facts.append((query, fact))
+            # The real S04 ABI accepts a typed-negative I03 execution and must
+            # hold it as a typed producer, never promote it to a positive
+            # descriptive sample. Call S04 rather than merely never calling it.
+            held = receive_s04_first_consumer(query=query, execution=native)
+            assert held.execution is native
+            held_material = held.knowledge.material()
+            assert held_material["state"] == "PRODUCER_TYPED_HELD"
+            assert held_material["producer_typed_state"] == fact.typed_state
+            assert held_material["state"] != "SUPPORTED_SAMPLE_DESCRIPTIVE"
+            assert held.receipt.material()["s04_typed_state"] == (
+                "PRODUCER_TYPED_HELD"
+            )
             continue
         s04 = receive_s04_first_consumer(query=query, execution=native)
         assert s04.execution is native
@@ -387,9 +395,13 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
         supported_s04_count += 1
     assert issued_query_count == len(workload.requests)
     assert supported_s04_count >= 1, "sourcefree q101 supported S04 first reader disappeared"
+    # Pin the exact issued multiset: 4 SUPPORTED / 6 UNAVAILABLE / 2 ZERO_SUPPORT.
+    assert (supported_s04_count, unavailable_s04_count, zero_support_count) == (
+        4, 6, 2,
+    )
     # This fixture issues a COORDINATE_NATIVE/country QUERY whose exact source
     # risk set is absent. The real I03 owner must emit typed UNAVAILABLE (not a
-    # synthetic positive), and that issued QUERY must not be consumed as S04.
+    # synthetic positive), and S04 must return it as PRODUCER_TYPED_HELD.
     assert any(
         fact.typed_state == "UNAVAILABLE"
         and fact.target_topology.get("p02_failure_state") == "RISK_SET_UNAVAILABLE"
@@ -400,12 +412,8 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
         )
         for query, fact in typed_negative_facts
     ), "issued country QUERY did not retain its typed RISK_SET_UNAVAILABLE fact"
-    negative_query_ref_keys = {
-        query_ref.key for query_ref, _fact_ref, _state in negatives
-    }
-    assert negative_query_ref_keys.isdisjoint(s04_consumed_query_refs), (
-        "typed-negative issued QUERY was incorrectly consumed as S04")
-    assert len(negatives) + supported_s04_count == issued_query_count
+    assert (supported_s04_count + unavailable_s04_count + zero_support_count
+            == issued_query_count)
 
     # Same original issuer, release and query: prepared and default paths
     # must return identical empirical fact/receipt refs.
