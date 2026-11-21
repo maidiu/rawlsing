@@ -1,6 +1,7 @@
 """READ MODEL for the entire, possibly dormant and contradictory person; pure composition.
 No psychology state is minted by materialization. This module is deliberately read-only.
 """
+import math
 from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
@@ -90,6 +91,8 @@ def materialize(actor,world):
 
 def actor_access(actor,world):
     """Objective cues are never automatically the actor's concepts or memories."""
+    # P071 finite-sensor check and P067 closed historical sensory gate.
+    eligible(actor['body'],'WAIT')
     location=world['positions'].get(actor['id'])
     cues=[]; counted=0;receipts=[]
     for x in world['cues']:
@@ -100,7 +103,16 @@ def actor_access(actor,world):
         if x.get('location') not in (location,'all'):
             counted+=1;continue
         sense=x.get('modality','visual')
-        if sense in ('visual','auditory') and actor['body']['sensor']<x.get('threshold',.05):
+        threshold=x.get('threshold',.05)
+        tags=x.get('tags',[])
+        if (sense not in ('visual','auditory','tactile','olfactory') or
+                not isinstance(tags,list) or
+                any(not isinstance(t,str) for t in tags) or
+                not isinstance(x.get('kind',''),str) or
+                isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or
+                not math.isfinite(threshold) or not 0<=threshold<=1):
+            counted+=1;continue
+        if actor['body']['sensor']<threshold:
             counted+=1;continue
         if x.get('private_to') not in (None,actor['id']):
             counted+=1;continue
