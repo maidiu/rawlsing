@@ -78,6 +78,10 @@ def materialize(actor,world):
             'cultural_demonstrations',[])),
         cultural_reference_practices=copy(actor.get(
             'cultural_reference_practices',[])),
+        vocal_turn_experiences=copy(actor.get(
+            'vocal_turn_experiences',[])),
+        vocal_coordination_practices=copy(actor.get(
+            'vocal_coordination_practices',[])),
         historical_orientations=copy(actor.get('historical_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
