@@ -105,9 +105,9 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 
 ## E. November 21 continuation — explicit new user philosophical riff and five back-catalogue finds
 
-**Exact user utterance:** [10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md](10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md), section A. The user's distinction **"this is a riff ... not ... dogmatic writ"** is controlling for provenance. Every interpretive objection below remains an **assistant hypothesis** unless separately adopted after competent review. The original 757-source bank is NOT silently reclassified as user instruction.
+**Exact user utterance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations), section A. The user's distinction **"this is a riff ... not ... dogmatic writ"** is controlling for provenance. Every interpretive objection below remains an **assistant hypothesis** unless separately adopted after competent review. The original 757-source bank is NOT silently reclassified as user instruction.
 
-**Five historically recovered candidates with exact sources and current existing-source comparators:** [11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md](11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md). These are source-old, newly *rediscovered by this assistant*, not invented modern architecture.
+**Five historically recovered candidates with exact sources and current existing-source comparators:** [03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md](03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md). These are source-old, newly *rediscovered by this assistant*, not invented modern architecture.
 
 | ID | Origin | Individually preserved point | Earlier owner / source | Distinctive grade |
 |---|---|---|---|---|
@@ -140,7 +140,7 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 
 ## F. November 21 second continuation — Marxian externalized value, prophetic reversal, and an explicit MULCHINEERING request
 
-**Exact user wording and provenance:** [12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md](12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md), §I; the passage is **user-authored philosophical correction**, while earlier assistant lines that the user quoted and affirmed retain the distinction “assistant formulation, user-endorsed.” **First-consumer engineering intake:** [13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md](13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md).
+**Exact user wording and provenance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations), §I; the passage is **user-authored philosophical correction**, while earlier assistant lines that the user quoted and affirmed retain the distinction “assistant formulation, user-endorsed.” **First-consumer engineering intake:** [05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md](05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md).
 
 | ID | Origin | Separately preserved contribution | Source and owner | Status |
 |---|---|---|---|---|
@@ -167,3 +167,50 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 **Current cumulative count:** NM-001–NM-085: **85 records**. The *new user-originated* conceptual units are NM-067–NM-083, with NM-084–NM-085 clearly assistant-authored qualifications. Do not misreport all 19 new entries as 19 new runtime functions or as universal scientific claims.
 
 **Provenance guard:** original 190 H, 123 Q, 300 SOROKUDA and source-graded O-Index continue to own their historical text. The real code counterpart already implements some motif recruitment. The new reciprocal gaze sequence is specifically candidate MULCHINEERING, not executed code or independent protected receiving.
+
+
+## G. ORIGINAL EXACT USER SPEECH RETAINED FROM SUPERSEDED SOURCE-ESSAY FILES (2026-11-21)
+
+**Source custody vs theory:** The two recent source-essay files were not coequal theoryhubs. These are complete original A/I source-excerpt sections copied from their Git blobs BEFORE deleting the superseded filenames. The full philosophical digestion belongs only in 03 and the actual engineering falsifier in 05. Git history retains prior blobs; the active tree will not retain the older satellite essays. The user calls this a **nondogmatic riff**. Assistant language quoted by the user remains attributed to the assistant.
+
+### G1. Overlapping dialectical fields and infancy — exact source excerpts
+
+Original file: `10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md`; blob `020429ff85c01bfb575abcd48fa73ef91da3eaf4`; all content under original heading A, verbatim:
+
+> yes but it needs to be modeled like many overlapping dialectics
+>
+> is that possible? everything is a dialectic—tip and iceberg of one person to each other, tip-and-iceberg in relation to 'strata' (but actually, what they experience 'strata' as being), 'strata' existing differently within who also have conceptual iceberg-v-tip; Nadia-and-other, Nadia-and-other2, Nadia-and-other1-and-other2—this is why I talk so much about "fields".
+
+> they change the activation, the recruitment, relationally, between elements. elements are always relational. I feel like we actually articulated that a while ago, when trying to figure out how neo-v3 worked—part of the "pull/pressure/flow" is the substance/force of relation itself, even while individuals always only have a "relation" to an idea of another person or of a conceptual reality, or to an idea of an identity, or an idea of a principle, or whatever it is—and just like Marx's "critique of hegel's philosophy of right" + "capital volume 1 ch 1" ... all valuation proceeds from humanity ... and then is stored outside itself in alienated, fetishized form. but there is huge gradient of fetishization, and the almost erotic force of reality is the *dialectical* tension between the idea and material reality, either of the person you have an idea of, or of the concept itself "i knew what love was before I was ever in love ... and once I experienced love ... it was something else entirely ..." (in all the manifold ways that could present itself)
+
+> but it is that storing of value, beginning with the thing we talked so much about, with the dynamic between infant-care-giver, and where that structurally steers at the very least every human who successfully survives childhood to whatever extent—but actually, coming from the other angle, it's not just the elicitation and facilitation of the child *anchoring* to the Real, and goals and desires and confidences drawn out on the basis of parental love-coaxing-become-child-soul-shaping ... its also the other side of it, that the child cannot originally differentiate self from world, and begins with simply wailing for their desires and the world coming to them ... and then developing increasingly sophisticated mechanisms for getting the world to move around them the way they want ... but eventually discovering partially but almost never completely in a total and constant sense (impossible) that the world does not revolve around them ... but they pull towards where they feel enlivened, or they shrink from where they feel unsafe
+
+> maybe what you could do is blast through the back-catalogue, and you find the top 5 ideas that are least familiar to you, and least integrated in what has already been done. and then you bring those back, and you MULCH
+
+> also, what I have just said is a riff, and I want your response—it is not a dictation of dogmatic writ
+
+These are **source excerpts** (the quote preceding “they change ...” in the original turn is earlier assistant language), not a replacement for the conversation. No user approval or empirical claim is implied.
+
+### G2. Marxian human value and reciprocal observer — exact source excerpts
+
+Original file: `12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md`; blob `81d2c7779655316a90c94587dee202b6397c8119`; all content under original heading I, including prior-assistant formulations the user quotes and endorses:
+
+> "But if every association, every affinity and every discomfort is declared a dialectic, the concept loses discriminating power. The computational demand should be to represent **which relations are jointly operative, what organizes their recruitment, and which actual constraints make their coexistence consequential**." yes, good
+
+> is your brain falling out? this is a cocept we have established across Marx, not just in fetishized commodities and the labor theory of value, but in his theological work, in his concept of what God is and how God functions for humans. it's the same operation as commodity-fetishism. the value, generated by humanity or by a human, stores. this is where the labor theory of value operates also. in a public forest with a borrowed axe, I chop firewood, even though I "owned" neither the tree nor the axe, it is conceptually coherent that someone taking my wood without my permission is theft. because value I created now lives inside the wood. My *life* is in the wood. But that is not fetishized. Because when something is *fetishized*, it is when the externalized thing is thought to be inherently and independently valuable in itself, in a fashion that can rule humans, or humanity. God is humanity's historical valuations stored outside of itself. And Jesus and the prophets try to narrow the gap, so that God comes back down to humanity, demands justice for the weakest, and "the Sabbath was made for man, not man for the Sabbath." But what consistently happens is that the authority accreted into God (liberator) becomes a tool through which some can direct others—with the help of wealth and power, especially, and especially, to the benefit of wealth and power, and the concept becomes increasingly unanswerable to humans, and instead must be *obeyed* completely devoid of contextualization, *or else*. ditto "the free hand of the market," or "the forward march of history," or whatever else becomes fetishized and prophetically unanswerable to humanity from whose credence it derives its power.
+
+> "And here there is a striking archival discovery: original SOROK already worked through much of this in its human-value/object-signification and self-retcon documents. The neglected task is not to invent this insight. It is to make its different possibilities operative in the existing organism." yes. so take these ideas and bank them as well.
+
+> "1. Nadia can observe you observing her" yes.
+
+> "Imagine asking Nadia about Rome while discreetly examining a bill on her counter. She might notice your glance. She might think you were looking at something else. She might suspect you read the bill when you never managed to. You might mistake her ordinary irritation for evidence that she caught you. There are now several overlapping, potentially mistaken models of one tiny occurrence." yes.
+
+> "**What remains unproved in the inspected joined consumer:** the complete relationship between covert observation, actor perception, mistaken attribution and subsequent conduct. The larger discovery is that **curiosity is a relational practice, not merely an information-acquisition mechanic**." then put this specifically on the pile for mulchineering.
+
+> "**Actual material relations constitute developing persons; persons acquire and transform representations through those relations; those representations become practically consequential; and subsequent activity can reproduce, contradict or transform both the material relations and the representations." okay, yes good.
+
+> I agree with everything else you said; make sure all new ideas are banked
+
+**Source fidelity note:** quotes introduced above by the user as quotations from the assistant are identified as **assistant formulations explicitly endorsed**, not retroactively user-authored words. The long paragraph beginning "is your brain falling out?" is the user's own corrective philosophical argument, reproduced verbatim including spelling and distinctions. This file does NOT imply the user's approval of any assistant caveat that would narrow the human-value operation to commodities alone.
+
+**No-drop:** NM001–NM085 remain. If any philosophical claim from source-essay 10–12 is absent from rewritten 03 or if any executable RC test from 13 is absent from 05, record `THEORY_MULCH_INCOMPLETE` and prohibit deletion.
