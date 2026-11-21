@@ -1,14 +1,25 @@
-"""PYAT S04/DHIKR continuing, country-safe, resource-bounded determinicity cycle.
+"""PYAT S04/DHIKR local fixed-joint research, country-scoped and bounded.
 
-The science is INHERITED: S04 exact same-case joint + DHIKR conditional
-entropy, interaction, minority and optional IID sensitivity. This module
-schedules and resumes those calculations. It does not replace I03, C11,
-I05 or source-specific survey estimands. No statistical score is causal,
-population-calibrated or an authority to suppress unsearched minorities.
+OWNERSHIP / NONDUPLICATION (source comparison, 2026-11-20):
+The canonical discovery authority, adaptive sealed-unit frontier and replay
+belong to pre553_discovery_adaptive.execute_adaptive_exploration (I05).
+THIS module does not acquire DiscoveryAuthority, seal new I05 evaluation units,
+modify that authority-governed frontier or issue additional I03 queries.
+Its resumable queue is confined to locally analyzing ONE already-issued,
+respondent-coherent I03→S04 joint, with source-country conditioning and a
+finite computational envelope. Its checkpoints are NOT I05 checkpoints.
 
-A single issued country-bound I03 joint is the maximum knowledge available
-here. Requests for a higher-resolution joint are returned as explicit next
-SOURCE-ISSUANCE requirements, not fabricated source results.
+The statistics are inherited from S04 exact joints and DHIKR same-case
+conditional entropy/interaction/minority analysis; optional IID sensitivity
+is not complex-survey science. The local analysis may inform a future
+separately issued I05 operation, but may NEVER act as its authorization,
+support a global unvisited-negative claim, or become a C4/C5/V3 actor input
+without the existing independently authorized first consumer. No current
+FF/C4/C5 production consumer of this receipt is claimed by this module.
+
+A single issued country-bound I03 joint is the maximum source evidence here.
+Higher-resolution joints require new independent source issuance, never
+fabricated source results. No score establishes causal/population truth.
 """
 from __future__ import annotations
 
