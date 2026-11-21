@@ -132,3 +132,17 @@ R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` u
 - **Obsolete diagnostic expectation**: R11 expected `PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT`, but the owner still rejects with `MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE`; negative boundary is conserved, diagnostic string changed.
 
 **Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is a substantial improvement over `018d3025` (demo now passes, two cold chains valid, full court down from 27 to 9), but not all failures are repaired and several require owner/test classification. SORACLE owns ordinary source repair; no protected or independent receiving is claimed.
+
+## SORACLE × REMONT #1234 retest — 8d1ff8b
+
+**Exact HEAD:** `8d1ff8bbb75b359cc7bd3044b385323600c70b88`; Python 3.11.3; clean detached worktree. Original `018d3025` and `2553e1d` REDs are preserved separately; the frozen #1171 `dbfb35c` pin was not repinned. R17 source identity remains exact: `storage.py` blob `75087ed…`, `test_r17_source_preflight.py` blob `b25f93b…`.
+
+**Exact exits:** compileall 0; focused normal 0 (146 tests); focused `-O` 0 (71 tests); full normal 0 (551 tests); full `-O` 0 (551 tests); pytest 0 (**551 passed + 37 subtests**); joined longitudinal demo 0.
+
+**All nine old REDs now pass:** R14 fixture TypeError; Nadia backlog `age_days`; social-vocal `role`; R6 selected-purpose packet count; R6 + R6-integrated false historical-signal current; R15 premature co-regulation orientation; R11 diagnostic expectation; whole-organism composed-activity empty. `types.Constitution`/`materialize` now expose exact ledger `role` and `age_days`.
+
+**Independent positive/negative probes:** actual current event signs (`bell`, `performed_speech`) still produce `HISTORICAL_SIGNAL_PATH_REENCOUNTERED`; synthetic `coactor_present`, `material_object_present` and `public_notice_visible` do not. R15 later caregiver acquisition tests pass; R17 nine-case source-preflight court passes, including typed malformed-envelope conflict; R3/R18 joined and R11 forged-trial/refusal courts pass.
+
+**Two histories / cold chains:** spoken father `SPEAK`, Nadia `INSPECT` `PERFORMED`, cultural demonstrations 1, cold 17 events hash `2bd88d7f497bcc5cd32eddd99acab1e03486dfe1810e4ad130e862c2bb024516`; unspoken father `REST`, Nadia `INSPECT` `PARTIAL`, cultural demonstrations 0, cold 17 events hash `e791512755ec2392cd133c49de4bb8cefe19b4e64a58a4d8eca85c6f30232e5e`. Both valid, 2 source seals, age 14, role child; two separate processes per DB produced identical event hashes. Hashes changed from 2553 (`b2c337…`/`006dfe…`) because the R2 role/age read, R6 current-sign filter and R15 care-acquisition changes alter the envelopes; both histories remain internally valid.
+
+**Verdict:** `ACCEPT_SCOPED` for the 8d1f sourcefree first-consumer repairs and tests; not credential-independent G5, empirical PYAT/whole-survey fidelity, native/source/science/actor rights, or protected PROGRAMMA/CURRENT_PROGRESS receiving.
