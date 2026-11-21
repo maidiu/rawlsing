@@ -1,3 +1,31 @@
+# SORACLE builder continuation — R3 × REMONT R18, source-line corrections
+
+**2026-11-21 · COMMITTED_UNTESTED on this joined source; no claim of completed integration.** The original joined read-first record below remains historical, not a report that its listed tests have since passed.
+
+## Exact source corrections after original joined R18 merge
+
+The builder inspected the R3/R18 *actual* `development.admit` first-consumer boundary and recovered two regressions against inherited REMONT R11–R13: the joined gate refused `REORGANIZE_PROJECT` and `TAKE_UP_POSSIBLE_END` on a current trial but omitted the synonymous `ADD_PROJECT` laundering path; the `RECORD_POSSIBLE_END_TRIAL` developmental operator could also be submitted without the frozen issuer ticket. A separate `runtime.cue` ingress still used `tags or [kind]`, so explicit empty or falsey tags were silently promoted to analyst kind tags, violating R13 P073.
+
+Corrections are **committed** to these existing owners, without creating another mental store, world owner, or generic REMONT assignment:
+
+1. `development.py::admit`: validate typed candidate list; require exactly one matching issued trial for a model-supplied trial history, or insert precisely one R3 historical record from the actual issuer when the runtime or direct caller supplies none. Reject unissued, repeated, or per-event multi-end trials. Restore R13 P072 denial of same-event `ADD_PROJECT` while retaining both `REORGANIZE_PROJECT` and `TAKE_UP_POSSIBLE_END` denial. Preserve older R13 `end` and current R3 `possible_end`+functional-bridge trial identities, and source-specific diagnostic ordering, without adopting a duplicate `record_possible_end_trial` implementation.
+2. `runtime.py::cue`: distinguish omitted `None` tags (documented kind default) from explicit `[]` (actually empty). Refuse `False`, empty string, tuple, number, dict or mixed-list values as `INVALID_CUE_TAGS`, before committing any new world cue.
+3. `tests/test_r3_r18_joined_faults.py`: six additional authored causal tests of atomic same-event project laundering, valid source-qualified projectless trial, single-record runtime path, forged/unissued ticket and trial, nontrial later new-project compatibility, and typed cue ingress. There are now 16 authored tests in that existing joined court, plus the inherited REMONT courts and the longitudinal Nadia demo.
+
+**Source conservation actually inspected at this cut:** the joined `storage.py` blob is **exactly** R18's P018-preflight blob `a89be36d3fe74b46f94a572be4db77941d7d9083`; the joined cultural mediation `46597b97bff10433797c546d63ae02d030296044` and social vocal development `bf50a8edcde90503c5168bce290c1f74b6c89a7c` are exactly SORACLE R3's. The join-specific `activity.py` continues to preserve both the R18 P004 all-selected-means guard and R3 projectless trial status. This is **source parity for named blobs**, not a universal behavior/no-drop certificate.
+
+## Execution and acceptance
+
+GitHub Actions still does **not** establish Python execution on the joined source: runs `44863752702`, `44863752661`, and `44863752628` at the pre-documentary source code cut `ad6311189fc4459e054c0873433d800807fdd66f` completed with failure and no exposed step details. Earlier jobs had zero reported steps, and logs were inaccessible. Treat as **RUNNER/PRESTEP EVIDENCE HELD**, not Python source RED or green. No full repository checkout is available to the current connector-only builder environment; the GitHub connector permits source commits but cannot directly execute its checked-out Python tree.
+
+A **narrow isolated author smoke** was executed with Python 3.13.5 on a manually transcribed excerpt of the admission guard and deliberately stubbed `_admit_in_place`, nine unit tests in normal mode and nine in optimized `-O`, all passing. It exercises gate logic only and **IS NOT `EXECUTED_AT_SHA` for the original repository, full world/SQLite, or the 16 authored integration tests**. It does not authorize a software-pass headline.
+
+The next builder-owned executable boundary remains an actual exact-HEAD complete checkout, then `python -m compileall -q um_sorok_organism`, the combined R3/R18/R13-positive/negative tests, `python -m unittest discover -s tests -v`, `python -O -m unittest discover -s tests -v`, source-integrity falsifiers and the two-household Nadia longitudinal CLI with cold SQLite. SORACLE—not a generic REMONT assignment—owns ordinary initial RED repairs. A separately reproducible consequential P/T/E first fault can subsequently be submitted to independent REMONT with source and observed/expected.
+
+**Protected PRE-MAIN, canonical PROGRAMMA and paired SOROK CURRENT_PROGRESS are unchanged.** No writer lease, independent reviewer receiving, original PYAT source/science, native CAN/ADP, actor rights, or human authorization was established: `HQ_CURRENTNESS_HOLD` for operational SOROK/PYAT HQ status. SR-P019/P022 and other original REMONT identities retain their competent ledger status; no automatic closures are asserted.
+
+---
+
 # SORACLE R3 × REMONT R18 — builder-owned joined organism continuation
 
 **AUTHOR RECONCILIATION: THIS VERSION SUPERSEDES THE R16-ONLY CODE STATE DESCRIBED BELOW.** The earlier R16 evidence is retained as historical source ancestry, not as a statement of this branch's current code or test grade.
