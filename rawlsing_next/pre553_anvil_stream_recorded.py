@@ -52,6 +52,10 @@ SUPPORTED_HISTORICAL_SCOPE_GRADES = frozenset({
     DEFAULT_HISTORICAL_SCOPE_GRADE,
     "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
 })
+HISTORICAL_SCOPE_FIELD_BY_GRADE = MappingProxyType({
+    DEFAULT_HISTORICAL_SCOPE_GRADE: "semantic_scope",
+    "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION": "grade",
+})
 
 
 @dataclass(frozen=True)
@@ -105,7 +109,13 @@ class RecordedUniverseUse:
             raise RecordedResponseError("historical snapshot family mismatch")
         if self.historical_scope_grade not in SUPPORTED_HISTORICAL_SCOPE_GRADES:
             raise RecordedResponseError("unsupported historical scope grade")
-        if self.historical_snapshot.scope_envelope.get("semantic_scope") != self.historical_scope_grade:
+        historical_envelope = self.historical_snapshot.scope_envelope
+        if not isinstance(historical_envelope, Mapping):
+            raise RecordedResponseError("historical snapshot scope envelope is invalid")
+        historical_field = HISTORICAL_SCOPE_FIELD_BY_GRADE[
+            self.historical_scope_grade
+        ]
+        if historical_envelope.get(historical_field) != self.historical_scope_grade:
             raise RecordedResponseError("historical snapshot scope grade mismatch")
         scope = self.positive_snapshot.scope_envelope
         if not isinstance(scope, Mapping) or not scope:

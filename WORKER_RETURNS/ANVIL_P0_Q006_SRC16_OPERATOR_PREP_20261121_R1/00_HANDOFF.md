@@ -65,6 +65,30 @@ The state-bearing projection:
 The driver output includes `stored_code_bins` mapping each raw code to its state
 and emitted cell, plus the exact state-bearing native cells.
 
+## Historical DEFER field
+
+The exact saved SRC16 historical envelope has these keys:
+
+```text
+evidence_bundle_sha256
+grade
+not_source_scientific_authority
+p2_authority_status
+source_id
+source_sha256
+wave
+```
+
+The SRC16 `RecordedUniverseUse` path reads only `scope_envelope["grade"]`.
+SRC04 retains `scope_envelope["semantic_scope"]`. There is no fallback, no
+cross-field alias, and unknown/wrong fields or refs refuse. The historical
+snapshot remains immutable DEFER.
+
+The tiny persisted fixture was changed to the actual SRC16 envelope keys before
+the repair; it failed with `historical snapshot scope grade mismatch`, then
+passed after the field-specific repair. `HISTORICAL_FIELD_RED.out` preserves
+the pre-repair failure.
+
 ## Preflight / currentness
 
 Before any cold estate/index open, the private driver validates:

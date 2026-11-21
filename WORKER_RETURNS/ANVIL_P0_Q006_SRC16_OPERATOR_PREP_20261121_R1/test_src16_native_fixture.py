@@ -102,8 +102,13 @@ def _defer_stream(tmp_path, monkeypatch, tag="RECORDED-DEFER"):
         "governed_operations": ("R157_SOURCE_PREPARATION_SOURCE_SEMANTICS",),
         "governed_object_families": ("EmpiricalUniverse@1.0.0",),
         "scope_envelope": {
-            "semantic_scope": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
-            "source_universe_refs": [source["universe"].ref.as_dict()],
+            "evidence_bundle_sha256": "a" * 64,
+            "grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+            "not_source_scientific_authority": True,
+            "p2_authority_status": "DEFER",
+            "source_id": "SRC16",
+            "source_sha256": "a" * 64,
+            "wave": "GSS1972",
         },
     })
     historical = AuthoritySnapshot(
@@ -436,6 +441,45 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
         ).authorize(universe, decision.query, decision.predicate)
     with pytest.raises(RecordedResponseError, match="historical"):
         replace(use, historical_scope_grade="EXACT_UNKNOWN_GRADE").authorize(
+            universe, decision.query, decision.predicate)
+    from types import SimpleNamespace
+    wrong_field = dict(historical.semantic_fields)
+    wrong_field["scope_envelope"] = {
+        "semantic_scope": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+        "source_universe_refs": [universe.ref.as_dict()],
+    }
+    wrong_field_historical = AuthoritySnapshot(
+        typed_state="DEFER",
+        authority_snapshot_refs=historical.authority_snapshot_refs,
+        dependency_refs=historical.dependency_refs,
+        producer_replay_locator_or_reference_root=historical.producer_replay_locator_or_reference_root,
+        **wrong_field,
+    )
+    fake_universe = SimpleNamespace(
+        ref=universe.ref,
+        authority_snapshot_refs=(wrong_field_historical.authority_ref,),
+    )
+    fake_query = SimpleNamespace(ref=decision.query.ref, risk_set_ref=risk)
+    fake_predicate = SimpleNamespace(ref=decision.predicate.ref)
+    with pytest.raises(RecordedResponseError, match="historical"):
+        replace(use, historical_snapshot=wrong_field_historical).authorize(
+            fake_universe, fake_query, fake_predicate)
+
+    wrong_historical_ref = dict(positive_scope)
+    wrong_historical_ref["historical_snapshot_ref"] = {
+        "kind": "AuthoritySnapshot@1.0.0",
+        "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:" + "0" * 64,
+        "content_hash": "0" * 64,
+    }
+    wrong_ref_snapshot = clone_snapshot(
+        source["authorities"][0], state="ALLOW",
+        scope_envelope=wrong_historical_ref,
+        kind="SOURCE_SEMANTICS_TOPOLOGY",
+        families=("EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0"),
+        label="WRONG-HISTORICAL-REF",
+    )
+    with pytest.raises(RecordedResponseError, match="historical"):
+        replace(use, positive_snapshot=wrong_ref_snapshot).authorize(
             universe, decision.query, decision.predicate)
     # The independent expected scope is the exact full owner scope: any
     # individual field or shape change must refuse before the native path.
