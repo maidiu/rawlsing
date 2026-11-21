@@ -192,6 +192,30 @@ assert "THEORY_MULCH_INCOMPLETE" in critique
 for doc in (start, crosswalk, critique, theory):
     assert not re.search(r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)", doc), "DEAD_SATELLITE_LINK"
 
+# Terminal cleanup gate: the source essays were intermediate material for
+# the whole-theory rewrite, not permanent documents. Keep the actual original
+# H/Q/O/SOROKUDA source atlas, 04 verbatim and 05 courts.
+superseded = (
+    "03_FULL_REWRITE_STAGING_TEMPORARY.md",
+    "10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md",
+    "11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md",
+    "12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md",
+    "13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md",
+)
+for leaf in superseded:
+    assert not (ROOT / leaf).exists(), ("SUPERSEDED_THEORY_STILL_LIVE", leaf)
+assert [z.name for z in ROOT.glob("03_*.md")] == [
+    "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md"
+], "PARALLEL_03_THEORY_FOUND"
+original_g1 = ideas.split("### G1. Overlapping dialectical fields")[1].split(
+    "### G2. Marxian human value")[0]
+original_g2 = ideas.split("### G2. Marxian human value")[1].split(
+    "**No-drop:**")[0]
+assert len(original_g1) > 3079 and len(original_g2) > 4096, "VERBATIM_USER_QUOTE_LOST"
+assert not re.search(
+    r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)",
+    ideas), "BROKEN_VERBATIM_SOURCE_LINK"
+
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
@@ -199,5 +223,6 @@ print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest so
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
 print("WHOLE_THEORY_RECONSTITUTION_DOC_COURT_PASS: 03 rebuilt in 17 chapters, 11 original H-source families, F1-F10 and 04/05/06 integrated; document-level checks, NOT independent philosophical/scientific certification")
+print("ONE_LIVING_03_NO_SATELLITES_PASS: staging and 10–13 deleted from active tree; 04 original quotes + 05 RC courts preserved")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
