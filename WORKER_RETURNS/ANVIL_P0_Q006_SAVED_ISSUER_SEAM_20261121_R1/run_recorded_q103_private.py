@@ -46,6 +46,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--owner-decision", type=Path, required=True)
     ap.add_argument("--operation-json", type=Path, required=True)
+    ap.add_argument("--r2-decision", type=Path, required=True)
     ap.add_argument("--stream-root", type=Path, required=True)
     ap.add_argument("--release-path", type=Path, required=True)
     args = ap.parse_args()
@@ -56,6 +57,22 @@ def main() -> int:
     owner = json.loads(owner_bytes)
     binding = owner["source_binding"]
     roots = binding["saved_i02"]
+    r2_initial = json.loads(args.r2_decision.read_text())
+    r2_source_initial = r2_initial["waves"][owner["source_id"]]
+    expected_binding = {k: r2_source_initial[k] for k in (
+        "custody_estate_path", "decision_ref", "manifest_sha256",
+        "saved_i02", "source_sha256",
+    )}
+    if binding != expected_binding:
+        raise SystemExit("OWNER_R2_BINDING_MISMATCH_BEFORE_READ")
+    def owner_current():
+        current_owner = args.owner_decision.read_bytes()
+        if hashlib.sha256(current_owner).hexdigest() != owner_sha:
+            return False
+        current_r2 = json.loads(args.r2_decision.read_text())
+        current_src = current_r2["waves"][owner["source_id"]]
+        return {k: current_src[k] for k in expected_binding} == expected_binding
+
     held = HeldStreamPins(
         source_id=owner["source_id"],
         source_sha256=binding["source_sha256"],
@@ -66,9 +83,10 @@ def main() -> int:
     estate = VerifiedAnvilStreamEstate(
         args.stream_root, exact_path=args.release_path,
         independently_held=held,
-        # Exact owner/stream current binding, not a true-for-anything callback.
+        # Re-read the exact owner and R2 decision at each current check.
         current_authorizer=lambda pins: (
-            pins.manifest_sha256 == binding["manifest_sha256"]
+            owner_current()
+            and pins.manifest_sha256 == binding["manifest_sha256"]
             and pins.source_sha256 == binding["source_sha256"]
         ),
     )
@@ -107,9 +125,27 @@ def main() -> int:
     decision, plan, missing = build_recorded_operation(
         estate=estate, operation=operation, question_ref=operation.question_ref,
     )
+    def verify_decision(candidate):
+        return (
+            owner_current()
+            and candidate.source_id == decision.source_id
+            and candidate.source_root == decision.source_root
+            and candidate.release_root == decision.release_root
+            and candidate.universe_root == decision.universe_root
+            and candidate.replay_root == decision.replay_root
+            and candidate.question_ref == decision.question_ref
+            and candidate.authorized_operation == decision.authorized_operation
+            and candidate.authorities == decision.authorities
+            and candidate.predicate == decision.predicate
+            and candidate.query == decision.query
+            and candidate.approved_denominator_ref == decision.approved_denominator_ref
+            and candidate.approved_response_semantics_ref == decision.approved_response_semantics_ref
+            and candidate.approved_raw_domain == decision.approved_raw_domain
+            and candidate.approved_nonanswer_states == decision.approved_nonanswer_states
+        )
     result = issue_and_execute_stream_i03(
         estate=estate, decision=decision,
-        decision_verifier=lambda candidate: candidate == decision,
+        decision_verifier=verify_decision,
         recorded_plan=plan,
     )
     out = {

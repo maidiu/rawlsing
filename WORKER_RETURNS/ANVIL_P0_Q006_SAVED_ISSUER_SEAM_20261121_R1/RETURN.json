@@ -9,7 +9,7 @@
     "decision_verifier_required": true,
     "true_for_anything_default": false
   },
-  "base_commit": "83df1aa3daf7e9f88079c753f57adbb469558a42",
+  "base_commit": "00a33dfbdab03906c9b1814808371b0171c466d3",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "modules": [
@@ -19,10 +19,16 @@
       "rawlsing_next/pre553_direct_estate_i03.py"
     ]
   },
+  "focused_tests": {
+    "native_stream_suite": "8 passed",
+    "sourcefree_recorded_operation": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
+  },
   "g5_claim": false,
   "harness": {
-    "command": "PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER python3 .../run_recorded_q103_private.py --owner-decision \"$PRIVATE/q006_q103_owner_decision.json\" --operation-json \"$PRIVATE/q006_q103_operation.json\" --stream-root \"$SRC04_STREAM_ROOT\" --release-path \"$SRC04_RELEASE_PATH\"",
-    "file": "run_recorded_q103_private.py"
+    "materializer": "q006_materialize.py",
+    "private_output_mode": "0600",
+    "public_counts_emitted": false,
+    "runner": "run_recorded_q103_private.py"
   },
   "missing_resolver_red": {
     "decision_verifier": null,
@@ -38,11 +44,12 @@
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
     "direct_session_sha256": "b07881bbdb8f2e795ecbbc3840e5b7783799ed77e3432a332536e416639f3deb",
-    "harness_sha256": "93060b5624319459bb9e99c84b1245ab5ea8af54e6acf01202e816131852ab50",
+    "harness_sha256": "d78eb017804cd3f139e82fc4c20c044c7665c76d39b32a7c9314394996adbfef",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "materializer_sha256": "4f3ef199f09004b40a2541d72e17a12fa2490b3ffc11a13cbbc945ee0178ba4f",
     "native_module_sha256": "e89be25ae9bc9d1a4125bf1e0af4f456cffda6d18513b3e15e9bca36a1e961e3",
     "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
-    "recorded_module_sha256": "78073eddbf37de6be4779bd77726f31c26763561d6355334f05dea792e4ae901",
+    "recorded_module_sha256": "a6a057dd034c9ea789717263813fa5f2a99327f8d0f033cfd255ecd3ca776884",
     "recorded_proof_sha256": "dad4a014b4f69feba99400f43764a665b19f8acdf5b3c5ad2076869185099b74",
     "strategy_module_sha256": "294091697c8c980239fed6c538d421ba9b630f5bbea79bc1b7fa50e40029251a"
   },
@@ -54,6 +61,12 @@
     "operation_authority_before_scan": true,
     "ordinary_unknown_routing": "unchanged",
     "stored_parquet_locator_authority": "unchanged"
+  },
+  "private_operation_artifact": {
+    "fault": "",
+    "local_file": "Q006_MATERIALIZE_FAULT.out",
+    "status": "BLOCKED__EXACT_QUESTION_REF_MISSING",
+    "written": false
   },
   "protected_edits": false,
   "q103_constraint": {
@@ -232,5 +245,5 @@
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_RETURN@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_DENOM7_GREEN__Q103_ORIGINAL_NOT_RUN"
+  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__PRIVATE_OPERATION_REF_BLOCKED"
 }

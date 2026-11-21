@@ -84,8 +84,14 @@ def _authority(authorities, ref, label):
     raise RecordedResponseError(f"held {label} authority is absent")
 
 
-def _decoded_raw_values(estate: VerifiedAnvilStreamEstate) -> dict[str, object]:
-    """Decode the bounded R5 raw_typed lane, never str() an undecoded object."""
+def _decoded_raw_values(
+    estate: VerifiedAnvilStreamEstate, selected_refs: set[str],
+) -> dict[str, object]:
+    """Decode R5 raw_typed only for exact selected event refs.
+
+    The large event family is never materialized into a raw dictionary; only
+    the exact q103-selected refs are decoded from the bounded Parquet batches.
+    """
     result: dict[str, object] = {}
     parquet = pq.ParquetFile(estate.directory / "RespondentEvent.parquet")
     try:
@@ -93,6 +99,8 @@ def _decoded_raw_values(estate: VerifiedAnvilStreamEstate) -> dict[str, object]:
             batch_size=1024, columns=["ref", "raw_typed"],
         ):
             for row in batch.to_pylist():
+                if row["ref"] not in selected_refs:
+                    continue
                 try:
                     encoded = json.loads(row["raw_typed"])
                     result[row["ref"]] = _CODEC.decode(encoded)
@@ -157,7 +165,8 @@ def build_recorded_operation(
             key=lambda x: x.ref.key,
         )
     )
-    decoded_raw = _decoded_raw_values(estate)
+    selected_event_refs = {event.ref.key for event in events}
+    decoded_raw = _decoded_raw_values(estate, selected_event_refs)
     by_respondent: dict[str, list] = {}
     for event in events:
         respondent_ref = exact_ref(event.scoped_respondent_ref, "event respondent")

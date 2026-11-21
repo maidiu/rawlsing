@@ -79,9 +79,18 @@ recorded operation and executes the existing native I03 evaluator.
 
 ```bash
 PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER \
+python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/q006_materialize.py \
+  --owner-decision "$PRIVATE/q006_q103_owner_decision.json" \
+  --r2-decision "$PRIVATE/r2_typed_user_decision_private.json" \
+  --q006-dir "$PRIVATE/q006_q103_execution" \
+  --question-ref "<full exact q103 custody ref>" \
+  --output "$PRIVATE/q006_q103_execution/q006_q103_operation.json"
+
+PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER \
 python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/run_recorded_q103_private.py \
   --owner-decision "$PRIVATE/q006_q103_owner_decision.json" \
-  --operation-json "$PRIVATE/q006_q103_operation.json" \
+  --r2-decision "$PRIVATE/r2_typed_user_decision_private.json" \
+  --operation-json "$PRIVATE/q006_q103_execution/q006_q103_operation.json" \
   --stream-root "$SRC04_STREAM_ROOT" \
   --release-path "$SRC04_RELEASE_PATH"
 ```
@@ -89,7 +98,20 @@ python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_
 The operation JSON is the exact held `HeldRecordedOperation` material:
 source/root/question/operation, authorities, recorded risk/routing/member-set
 refs, measure/response-semantics/domain refs, replay roots and transform ref.
-It is not produced by this author from metadata.
+It is materialized only from the owner decision, held R2 decision and q006
+inputs; no source metadata is inferred.
+
+`q006_materialize.py` currently stops at the exact missing input:
+
+`Q006_EXACT_QUESTION_REF_MISSING: independently held custody provides only the
+native question object ID, not the full kind|object_id|content_hash question
+ref; supply --question-ref from custody.`
+
+No operation artifact was written from a fabricated question hash. Once the
+controller supplies the full exact q103 question ref, the materializer writes
+`q006_q103_operation.json` mode 0600 and the private harness command below is
+runnable. This is a technical custody-ref dependency, not an owner semantics
+request.
 
 The original SRC04 execution remains explicitly not run until the controller
 checks the candidate and private authority.

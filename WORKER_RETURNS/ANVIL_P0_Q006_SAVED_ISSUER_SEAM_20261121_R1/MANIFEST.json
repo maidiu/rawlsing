@@ -1,9 +1,9 @@
 {
-  "base_commit": "83df1aa3daf7e9f88079c753f57adbb469558a42",
+  "base_commit": "00a33dfbdab03906c9b1814808371b0171c466d3",
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4669,
-      "sha256": "d03a320da6a1a9195f3c00f6f7dc3d8cee3d6bcad5b88dd1d24cc407043fc439"
+      "bytes": 5967,
+      "sha256": "cb2ad1187241969d9a75817d4e032e2fb642d97f71a50ea6af525561a2119bfc"
     },
     "PROOF.err": {
       "bytes": 0,
@@ -12,6 +12,14 @@
     "PROOF.out": {
       "bytes": 4151,
       "sha256": "91492220883e018aec8343d1bb5a9a0522740eb38151cf045e1e749a7e4c4a4f"
+    },
+    "Q006_MATERIALIZE_FAULT.err": {
+      "bytes": 195,
+      "sha256": "a127472501b46830462e91c62baf38d8ba492b6a955df3ccec97e057e05cf78a"
+    },
+    "Q006_MATERIALIZE_FAULT.out": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "RECORDED_OPERATION.err": {
       "bytes": 0,
@@ -30,8 +38,8 @@
       "sha256": "732b3f584764143a2df7eb9f71f4074858bea6d66c525c1020ecf811af147bc4"
     },
     "RETURN.json": {
-      "bytes": 8052,
-      "sha256": "62bb8755c8f9987d51b3ea5c9418babaffc8c22c62461de3ab1407c39c551c2f"
+      "bytes": 8226,
+      "sha256": "fd221eb3d1209d6b9a7878d366da144002adb99df9852e62913b0ba195127029"
     },
     "TYPED_ISSUANCE.err": {
       "bytes": 0,
@@ -53,9 +61,13 @@
       "bytes": 15379,
       "sha256": "1c3c6567f22f19a845df320d4b48e4a81c8dcf358660a952fc17dd2383057fc4"
     },
+    "q006_materialize.py": {
+      "bytes": 9502,
+      "sha256": "4f3ef199f09004b40a2541d72e17a12fa2490b3ffc11a13cbbc945ee0178ba4f"
+    },
     "run_recorded_q103_private.py": {
-      "bytes": 5833,
-      "sha256": "93060b5624319459bb9e99c84b1245ab5ea8af54e6acf01202e816131852ab50"
+      "bytes": 7746,
+      "sha256": "d78eb017804cd3f139e82fc4c20c044c7665c76d39b32a7c9314394996adbfef"
     }
   },
   "original_source_accessed": false,
@@ -63,17 +75,19 @@
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
     "direct_session_sha256": "b07881bbdb8f2e795ecbbc3840e5b7783799ed77e3432a332536e416639f3deb",
-    "harness_sha256": "93060b5624319459bb9e99c84b1245ab5ea8af54e6acf01202e816131852ab50",
+    "harness_sha256": "d78eb017804cd3f139e82fc4c20c044c7665c76d39b32a7c9314394996adbfef",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "materializer_sha256": "4f3ef199f09004b40a2541d72e17a12fa2490b3ffc11a13cbbc945ee0178ba4f",
     "native_module_sha256": "e89be25ae9bc9d1a4125bf1e0af4f456cffda6d18513b3e15e9bca36a1e961e3",
     "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
-    "recorded_module_sha256": "78073eddbf37de6be4779bd77726f31c26763561d6355334f05dea792e4ae901",
+    "recorded_module_sha256": "a6a057dd034c9ea789717263813fa5f2a99327f8d0f033cfd255ecd3ca776884",
     "recorded_proof_sha256": "dad4a014b4f69feba99400f43764a665b19f8acdf5b3c5ad2076869185099b74",
     "strategy_module_sha256": "294091697c8c980239fed6c538d421ba9b630f5bbea79bc1b7fa50e40029251a"
   },
+  "private_operation_written": false,
   "saved_estate_modified": false,
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_MANIFEST@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_DENOM7_GREEN__Q103_ORIGINAL_NOT_RUN"
+  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__PRIVATE_OPERATION_REF_BLOCKED"
 }
