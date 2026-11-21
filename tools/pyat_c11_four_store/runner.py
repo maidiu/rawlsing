@@ -97,12 +97,23 @@ class Resources:
         return self
     def __exit__(self, *args):
         self._stop.set()
-        self._thread.join(timeout=3)
+        # The previous timeout could leave a sampler traversing a large
+        # physical directory after its EventLogger had already been closed.
+        self._thread.join()
     def _loop(self):
-        while not self._stop.wait(0.5):
+        import psutil
+        while not self._stop.is_set():
             try:
                 procs = [self._proc]+self._proc.children(recursive=True)
-                rss = sum(p.memory_info().rss for p in procs if p.is_running())
+                rss = 0
+                for process in procs:
+                    try:
+                        if process.is_running():
+                            rss += process.memory_info().rss
+                    except (psutil.NoSuchProcess, psutil.ZombieProcess):
+                        # Cold probe subprocesses may exit between discovery
+                        # and the actual RSS read.
+                        continue
                 self.peak_rss = max(self.peak_rss,rss)
                 self.peak_disk = max(self.peak_disk,size_tree(self.target))
                 self.sample_count += 1
@@ -131,6 +142,8 @@ class Resources:
                               peak_disk_bytes=self.peak_disk)
             except Exception as exc:
                 self.abort_reason = "resource sampling failed: "+str(exc)
+                break
+            if self._stop.wait(0.5):
                 break
     def check(self):
         if self.abort_reason:
@@ -473,6 +486,23 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
     config=json.loads(config_path.read_text())
     if config.get("schema") != "PYAT_FOUR_PERMANENT_STORE_BUNDLE@1":
         raise StoreFailure("wrong bundle/config contract")
+    if only is not None and only not in ARMS:
+        raise StoreFailure("unrecognized individual physical arm")
+    # Validate before any source read, expensive build, or partial output.
+    # Zero/negative sizes formerly produced division-by-zero, backwards
+    # slicing or a nonsensical cold-probe count.
+    numeric_bounds = {
+        "batch_commit": (2048,1),
+        "physical_question_limit": (100,1),
+        "evidence_sample_limit": (100000,1),
+        "cold_reopen_limit": (10,0),
+        "cold_worker_timeout_seconds": (600,1),
+        "minimum_free_gib": (12,0),
+    }
+    for field,(default,lower) in numeric_bounds.items():
+        value=config.get(field,default)
+        if type(value) is not int or value<lower:
+            raise StoreFailure(field+" must be an integer >= "+str(lower))
     output=resolve(root,os.environ.get("PYAT_BENCH_OUTPUT_DIR",config["output_dir"]))
     output.mkdir(parents=True,exist_ok=True)
     run_tag=config.get("run_id") or datetime.now().strftime("%Y%m%dT%H%M%S")
@@ -481,6 +511,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
     common=EventLogger(run_dir/"progress.jsonl","COMMON")
     result={"schema":BENCHMARK_SCHEMA,"status":"RUNNING","started":utc(),
             "config_sha256":digest(config_path.read_bytes()),
+            "report_directory":str(run_dir),
             "host":_host_details(),"arms":{},"comparison":None}
     try:
         with Resources(run_dir,common) as common_r:
@@ -517,8 +548,10 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     report["stages_s"]["build_from_already_saved_c11"]=round(time.perf_counter()-t,3)
                     t=time.perf_counter()
                     s.finish(source.manifest,records)
-                    report["stages_s"]["publish_commit"]=round(time.perf_counter()-t,3)
+                    report["stages_s"]["pre_audit_count_checks"]=round(time.perf_counter()-t,3)
                     t=time.perf_counter()
+                    # Only THIS operation may seal the complete body digest
+                    # and SQL posting counts as a cold-readable store.
                     audited=s.audit_families(emit)
                     report["stages_s"]["full_corpus_body_audit"]=round(time.perf_counter()-t,3)
                     report["family_records"]=audited
@@ -585,6 +618,19 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
             else:
                 result["status"]=("SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY" if issued
                                   else "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+        elif only is not None and only in completed:
+            result["comparison"]={
+                "four_arm_complete":False,
+                "selected_arm":only,
+                "source_family_body_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "physical_query_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "native_i03_fact_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "automatic_canonical_selection":"NOT_AUTHORIZED",
+            }
+            result["status"]=(
+                "SINGLE_ARM_SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY" if issued
+                else "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD"
+            )
         else:
             result["status"]="INCOMPLETE_ARMS_NO_WINNER"
         from .economics import measured_economics
@@ -633,18 +679,22 @@ def main(argv=None):
     args=p.parse_args(argv)
     if args.self_test:
         import unittest
-        from . import test_stores
-        suite=unittest.defaultTestLoader.loadTestsFromModule(test_stores)
+        from . import test_existing_r2, test_runner_sourcefree, test_stores
+        suite=unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromModule(module)
+            for module in (test_stores, test_existing_r2, test_runner_sourcefree)
+        )
         ret=unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if ret.wasSuccessful() else 1
     try:
         r=run(args.config,only=args.only)
         print(canonical({"result":r["status"],
-                         "report_dir":str(resolve(args.config.resolve().parent,
-                                json.loads(args.config.read_text())["output_dir"]))}),flush=True)
+                         "report_dir":r["report_directory"]}),flush=True)
         return 0 if r["status"] in (
             "SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY",
-            "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD") else 2
+            "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD",
+            "SINGLE_ARM_SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY",
+            "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD") else 2
     except Exception as exc:
         print("BENCHMARK_HOLD_OR_FAILURE "+type(exc).__name__+" "+str(exc),
               file=sys.stderr,flush=True)
