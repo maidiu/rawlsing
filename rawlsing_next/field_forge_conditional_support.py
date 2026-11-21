@@ -231,6 +231,30 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError("GT2 relation requires SINGLE_UNIVERSE")
     if grain.get("measure_kind") != "RAW":
         raise FieldForgeConditionalSupportError("GT2 relation is RAW/unweighted only")
+
+    # This projection keeps the fact/query exact references but not their
+    # individual predicate, measure, response semantics or declared risk type.
+    # Their identities must agree *before* FF01 drops the pairwise material:
+    # otherwise a coherent re-signed fact with a different estimand can become
+    # an apparently valid C relation and reach the D first consumer.
+    # These are sourcefree closure checks, not current-source/issuer grants.
+    if _exact(joint_fact.condition_predicate_ref, "fact.condition_predicate_ref") != _exact(
+        joint_query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact predicate mismatch")
+    if _exact(joint_fact.measure_basis_ref, "fact.measure_basis_ref") != _exact(
+        joint_query.measure_basis_ref, "query.measure_basis_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact measure basis mismatch")
+    if grain.get("response_state_semantics_ref") is not None and _exact(
+        joint_fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+    ) != _exact(grain["response_state_semantics_ref"],
+               "query.requested_output_grain.response_state_semantics_ref"):
+        raise FieldForgeConditionalSupportError("query/fact response semantics mismatch")
+    if ("risk_set_type" in joint_fact.semantic_fields
+            and grain.get("risk_set_type") is not None
+            and joint_fact.risk_set_type != grain["risk_set_type"]):
+        raise FieldForgeConditionalSupportError("query/fact risk set type mismatch")
     if getattr(joint_fact, "source_scope_mode", None) not in (None, "SINGLE_UNIVERSE"):
         raise FieldForgeConditionalSupportError("producer fact source scope is not SINGLE_UNIVERSE")
     if getattr(joint_fact, "measure_kind", None) not in (None, "RAW"):
@@ -268,6 +292,36 @@ def _validate_common_closure(
     if not set(provenance).issubset(set(dependencies)):
         raise FieldForgeConditionalSupportError(
             "producer provenance refs are not retained in fact dependency closure")
+
+    # C-3: A legitimate query and fact have *separate* dependency closures.
+    # The C->D bridge sees only the fact's provenance subset. A re-signed
+    # query could therefore declare a contradictory physical source, while
+    # the narrower downstream FF relation still repeats the frozen source.
+    # Inspect every explicit physical-source ref before that information is
+    # projected away. This does NOT authenticate an absent physical source:
+    # original C11 custody and current source-use authority remain external.
+    query_dependencies = _exact_seq(
+        joint_query.dependency_refs, "query.dependency_refs")
+    explicit_query_sources = {
+        ref for ref in query_dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_fact_sources = {
+        ref for ref in dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_provenance_sources = {
+        ref for ref in provenance if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_sources = (
+        explicit_query_sources
+        | explicit_fact_sources
+        | explicit_provenance_sources
+    )
+    if len(explicit_sources) > 1:
+        raise FieldForgeConditionalSupportError(
+            "contradictory physical SOURCE_ARTIFACT claims across query, fact, and provenance")
+    if explicit_sources and explicit_sources != explicit_provenance_sources:
+        raise FieldForgeConditionalSupportError(
+            "physical SOURCE_ARTIFACT in query/fact closure is missing from producer provenance")
 
     return fact_risk, fact_universes, authorities, replay_ref, provenance
 
