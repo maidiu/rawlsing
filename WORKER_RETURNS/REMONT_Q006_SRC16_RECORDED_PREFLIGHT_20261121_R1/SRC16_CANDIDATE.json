@@ -1,0 +1,93 @@
+{
+  "absent": "CARRIER_EVENT_ABSENCE_DISTINCT_NOT_ESTABLISHED_BY_METADATA",
+  "asked_eligibility": "HELD_NOT_PROVEN",
+  "declared_missing": "NONE_DECLARED_FOR_SLOT",
+  "full_scan_performed": false,
+  "historical_universe_authority": {
+    "authority_id": "R157-SRC16-SOURCE-EVIDENCE",
+    "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+    "authority_version": "1.0.0",
+    "contract_scope_mismatch": "bfa RecordedUniverseUse requires semantic_scope=EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY",
+    "decision_state": "DEFER",
+    "governed_operations": [
+      "R157_SOURCE_PREPARATION_SOURCE_SEMANTICS"
+    ],
+    "ref": "AuthoritySnapshot@1.0.0|urn:rawlsing:pre553:AuthoritySnapshot:sha256:a8ad363de69d5cb5f507da6902be1f9b588e338b81cb36739f8913c8278fdd64|a8ad363de69d5cb5f507da6902be1f9b588e338b81cb36739f8913c8278fdd64",
+    "scope_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION"
+  },
+  "mapping_status": "governed_qsmv2_relation",
+  "native_i03_run": false,
+  "native_question_ref": "NATIVE_QUESTION|urn:rawlsing:r157:source:SRC16:question_impl.phase0.29b0dec400d8150f5123|96e5d1e48d463ec0bf049a7ba4e12754e0c8942bb3238b1da20a36190177b9b1",
+  "polarity": "SIGNED",
+  "question_id": "GSS:1972:racpres",
+  "question_role": "RELATION_EVIDENCE",
+  "question_text": "would vote for black president",
+  "r2_decision_ref": "USER_SOURCE_DECISION|pyat-p0-two-saved-waves-r2-src16|430130866902961460d075e4cc16b775a7573403a50ddf1fb2cb52025fdc29d0",
+  "recorded_only": "POSSIBLE_AFTER_SOURCE_OWNER_DECISION",
+  "routing": {
+    "row_selector": "ALL",
+    "typed_state": "ROUTING_UNKNOWN"
+  },
+  "saved_question_binding_present": true,
+  "schema": "ANVIL_Q006_SRC16_RECORDED_PREFLIGHT@1",
+  "source_authority": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+  "source_citations": {
+    "question_binding_metadata": {
+      "family": "QuestionVariableBinding",
+      "present": true
+    },
+    "source_configuration": {
+      "authority": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "file": "SRC16.source.config.json",
+      "item_mapping": "governed_qsmv2_relation",
+      "question_id": "GSS:1972:racpres"
+    },
+    "structure_register": {
+      "file": "HARVEST-001_QUESTION_STRUCTURE_REGISTER_LINEAGE_EVIDENCE/payload/Rawlsing/_methodology_bundle_stage/data/ddm_build/reports/source_structure_audits/GSS_1972_GSS1972.csv",
+      "row": "racpres"
+    }
+  },
+  "source_domain": {
+    "dk": [
+      -98
+    ],
+    "inapplicable": [
+      -100
+    ],
+    "invalid_unresolved": [
+      -95,
+      -94
+    ],
+    "missing": [
+      -99
+    ],
+    "not_asked": [
+      -97,
+      -80,
+      -70
+    ],
+    "physical_system_missing": "None",
+    "refusal": [
+      -90
+    ],
+    "source_specific_special": [
+      -96,
+      -60,
+      -40
+    ],
+    "substantive": [
+      1,
+      2
+    ]
+  },
+  "source_id": "SRC16",
+  "source_roots": {
+    "release": "C11_STREAM_SOURCEFREE_RELEASE|GSS_1972_SOURCE_ARTIFACT|95fbd6e611bfdc259d86d46e3d74568e04cc209f97d5ada05d45ae25483a41fb",
+    "replay": "08f57630a64b281043ffb11af59f1903e80e3e0690ec68869f995048bb788da7",
+    "source": "SOURCE_ARTIFACT|GSS1972.sav|e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:8a3e19904e95a67b63db59215eeebf47912a497e253668a0bc57943a62f657d3|8a3e19904e95a67b63db59215eeebf47912a497e253668a0bc57943a62f657d3"
+  },
+  "topology": "binary_contrast",
+  "unresolved": "SOURCE_INVALID_UNRESOLVED_CODES_PLUS_ROUTING_UNKNOWN",
+  "wave": "GSS1972"
+}
