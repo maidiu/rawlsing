@@ -49,7 +49,7 @@ from .plural_care_paths import (
     sourcequalified_reopening)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
-from .continuity_clock import continue_to_discontinuity
+from .continuity_clock import continue_to_discontinuity, continue_pre_encounter
 from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
@@ -837,6 +837,20 @@ class ConstitutiveRuntime:
         response; no caller script forces fulfillment or another's consent.
         """
         return continue_to_discontinuity(self,horizon)
+
+    def construct_pre_encounter_history(self,subject_id, target_age_days, *,
+                                        horizon_days=365, autonomous_beats=2,
+                                        max_segments=240):
+        """Run sourcefree historical becoming before any user-person meeting.
+
+        Reuse background(), advance_to_discontinuity(), autonomous actor
+        planning and the same persistent world. This is not a user-facing
+        scene, parent-child gameplay, or a matured-adult-person generator.
+        """
+        return continue_pre_encounter(
+            self, subject_id, target_age_days,
+            horizon_days=horizon_days,
+            autonomous_beats=autonomous_beats, max_segments=max_segments)
 
     def register_sourcefree_food_control(self,spec):
         """Configure a fictional material institution in WORLD, not in psyche.
