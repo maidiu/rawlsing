@@ -1,0 +1,166 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "issue_or_packet_id": "E01",
+  "join": "J1",
+  "controller_issue": 995,
+  "controller_stop_line": 939,
+  "event_id": "E01-J1-995-20261113-R1",
+  "status": "J1_PARTIAL_EXACT_BLOCKER",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "threatened_UM_parameters": [
+    "objective material feasibility is not user-authored or back-solved",
+    "parent decision is separate from performed action",
+    "public speech is separate from hidden reason and decision basis",
+    "actual child perception is separate from prior acquired organization",
+    "existing P3 computation is not replaced by a new choice engine",
+    "eligible immediate modes are not promoted to a performed child act",
+    "cold/replay custody preserves one purchase, one debit, one utterance and one P3 head"
+  ],
+  "original_source_and_owner": {
+    "B": {
+      "head": "1161e5f74081888bd813825b3df4afab3e2f5ca7",
+      "owners": [
+        "B01 household/dwelling material",
+        "B02 historical_period",
+        "B03 dwelling/space/noise feasibility",
+        "B04 typed parent purchase/currency",
+        "B05 household rent cadence"
+      ]
+    },
+    "C": {
+      "head": "fa80f7a88533dabf70eda7a108e71dc377cbd910",
+      "owners": [
+        "C01 supporting actor registration",
+        "C02 parent activity/material history",
+        "C03 parent decision/action",
+        "C04 parent speech/child experience"
+      ]
+    },
+    "D": {
+      "head": "85793cb74a9c2deb66570059a65b3f84b776c72e",
+      "owners": [
+        "D01 P3 owner/store retention",
+        "D02 situated context/acquired prior organization",
+        "D03 immediate uptake"
+      ]
+    },
+    "required_frozen_programme_sources": [
+      "01_USER_ORIGINAL_DUEL_PERSONAS_UNABRIDGED.md",
+      "02_SOROK_IMPLEMENTATION_PROGRAMME_R1.md",
+      "03_TASK_PACKETS_R1.json",
+      "04_CODEX_RELAY_AND_CONTRACT_EVOLUTION_R1.md",
+      "05_CODEX_LAUNCH_PROMPT_R1.md",
+      "UM-SOROK R1 f5c43c80675f2556e1287bf55d25052d11e8746e",
+      "E01 packet 227ce149fc7864c83c179a7d3ecaef2b92c5bdab"
+    ]
+  },
+  "actual_defect_or_missing_consumer": {
+    "resolved_composition_discrepancy": "C's frozen cut carried older B04/B05 currency behavior and failed real parent-currency mismatch tests; exact B head supplies typed parent purchase, currency equality and lock order. D's D03 consumed the standalone C04 child-uptake receipt but not C's later normal P6 child-experience consumer. The J1 adapter joins the actual P6 actor current-experience output to D03 without replacing either owner.",
+    "small_truthfulness_fix": "C parent action HOLD was labelled physical_admission=VALID_EMPTY; corrected to HELD to match C's own ABI.",
+    "unresolved_missing_consumer": "No existing sourcefree owner or rule consumes D03 immediate_response into a chosen, performed subsequent child event. D04 and D05 are QUEUED_UNLAUNCHED. D03 explicitly returns eligible modes with native_action_performed=false and durable_formation.target_candidate=null."
+  },
+  "minimal_disposition": {
+    "class": "COMPOSE_AND_CONNECT_THEN_STOP_AT_OWNER_SEAM",
+    "composition": "Merge exact B and C heads onto D; preserve all three histories and owner code.",
+    "connection": "Add read-only J1 adapter consuming normal P6 child experience plus D03 and the admitted/performed parent decision.",
+    "not_done": [
+      "no new choice engine or actor target writer",
+      "no D04 target rule",
+      "no D05 performed consumer",
+      "no promotion of eligible modes to an act",
+      "no native psychological rule"
+    ]
+  },
+  "sourcefree_ceiling_and_native_holds": {
+    "engineering": "SOURCEFREE_S2_PARTIAL",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD",
+    "notes": [
+      "D03 immediate response is an experimental sourcefree activation over existing P3 records, not native CAN/ADP psychology.",
+      "Parent speech text and hidden reason remain caller-supplied; no language-generation owner was invented.",
+      "The J1 adapter only reports the exact missing performed-event owner."
+    ]
+  },
+  "decisive_positive": {
+    "test": "test_j1_full_chain_and_cold_reopen",
+    "actual_chain": "B03 objective feasibility ADMISSIBLE -> C03 parent PURCHASE decision -> C03 PERFORMED B04 purchase -> C04 committed SPEECH -> C12 child speech receipt -> normal P6 child current-experience -> D03 immediate uptake under prior P3 organization -> cold reopen with one purchase/utterance and unchanged P3 head",
+    "result": "PASS at code cut c724d1a89626f3e177acd004c0be20029dc7ade4"
+  },
+  "decisive_negative": {
+    "tests": [
+      "tight/noisy/unknown-dwelling and insufficient-parent-cash scenarios bind the parent to DECLINE/HOLD",
+      "currency mismatch refuses before debit/purchase",
+      "remote child yields HELD_NOT_PERCEIVED and no D03 recruitment",
+      "tampered receipt/speaker/severed event refuse or hold without erasing the parent decision",
+      "same speech under recognized/imposed P3 histories yields different D03 modes and later P3 response streams",
+      "household rent changes only household cash and household affordability; parent cash remains distinct",
+      "D03 store head before == after; no durable target is written"
+    ],
+    "result": "PASS in the same ten-test J1 suite"
+  },
+  "downstream_dependency": {
+    "D04": {
+      "status": "QUEUED_UNLAUNCHED",
+      "requirement": "explicit sourcefree target/recruiter rule and authorized P3 target writer/owner",
+      "blocking": true
+    },
+    "D05": {
+      "status": "QUEUED_UNLAUNCHED",
+      "requirement": "distinct later performed consumer of acquired state, not D03 immediate modes",
+      "blocking": true
+    },
+    "E02/J2": {
+      "status": "NOT_STARTED",
+      "blocking": "E01 terminal act is held"
+    }
+  },
+  "stop_condition": "Stop after the executable upstream J1 chain and the exact D04/D05 performer hold. Do not launch downstream queues, A/B duels, automatic repairs or G5.",
+  "user_decision_needed_if_any": "If the product requires the terminal child performed event now, commission one bounded D04/D05 or equivalent authorized sourcefree child-event performer at a successor head. Otherwise bank the upstream chain and hold.",
+  "changed_paths": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/j1_join.py",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/test_j1_three_head_join.py",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/00_RETURN.md",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/SOURCE_DERIVATION.md",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/SOURCE_DERIVATION.json",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/J1_ABI.md",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/J1_SEAM_BLOCKER.md",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/DEPENDENCY_IMPACT.json",
+    "WORKER_RETURNS/SOROK-E01-J1-995-R1/evidence/*.log"
+  ],
+  "evidence": {
+    "j1": "evidence/j1_three_head_join.log",
+    "b_combined": "evidence/cg_b_combined_inherited.log",
+    "d02": "evidence/d02_inherited.log",
+    "d01_d03_p3_p4_p5": "evidence/d01_d03_p3_p4_p5_inherited.log",
+    "c02": "evidence/c02_inherited.log",
+    "c03_c04": "evidence/c03_c04_inherited.log",
+    "c01_p2": "evidence/c01_p2_inherited.log",
+    "environment": "evidence/environment.log"
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "provider_receipts": "UNOBSERVED",
+    "wall_seconds_observed": {
+      "j1": 156.25,
+      "cg_b_combined": 442.42,
+      "d02": 757.93,
+      "d01_d03_p3_p4_p5": 309.04,
+      "c02": 91.15,
+      "c03_c04": 224.48,
+      "c01_p2": 169.38
+    }
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_PARTIAL_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD",
+    "self_review": "NOT_PERFORMED",
+    "g5": "NOT_LAUNCHED"
+  }
+}

@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+rootdir: /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing
+collecting ... collected 9 items
+
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_two_dated_periods_midperiod_job_change_and_later_state_read PASSED [ 11%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_retry_and_cold_replay_do_not_duplicate_periods PASSED [ 22%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_employment_changes_as_of_date_and_severance_restores PASSED [ 33%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_clock_and_term_tampering_refuses_and_restores PASSED [ 44%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_fork_reads_material_only_and_refuses_new_materialization PASSED [ 55%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_before_first_term_is_unknown_and_outside_plan_refuses PASSED [ 66%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py::test_custom_dated_plan_freezes_anchor_and_clock_mapping PASSED [ 77%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py::test_incremental_period_advance_interleaves_p3_and_employment PASSED [ 88%]
+WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py::test_crash_after_state_before_receipt_recovers_once PASSED [100%]
+
+========================= 9 passed in 77.61s (0:01:17) =========================

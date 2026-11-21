@@ -1,0 +1,139 @@
+{
+  "event_id": "SOROK-DUEL-B01-B-20261112-R1",
+  "task_id": "B01",
+  "phase": "CG-B",
+  "title": "Select existing material writer and bounded household state ABI",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "160cbbd0ae00fb965004085c0e07c872384fe0ff",
+  "opponent_head_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "branch": "codex/sorok-duel-b01-b-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "abi_class": "BREAKING_INTERFACE",
+  "changed_owner_symbols": [
+    "developmental_recursion.p2_owner.branch_is_ancestor",
+    "developmental_recursion.p2_owner.P2Owner.material_fact",
+    "house._read_household_document",
+    "house.read_household",
+    "house.read_house"
+  ],
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "Same-branch P2Owner.material_fact keeps exact verification and key set; household/parent schemas unchanged; fork-only optional state_scope added."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "Verified C12 ancestor reads of copied p6_household/p6_house are now accepted without rebinding source or writing."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "p2_owner.py bytes feed P3Owner._code_pins()/config_hash. A-era roots created at edbb4b344 and pre-B01 roots refuse cold reopen with P3_CONFIG_CHANGED. Evidence: p3_code_pin_a_era.log."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "house.py imports p2_owner.branch_is_ancestor; a mixed B house.py/A p2_owner.py cut fails import. C01 must rebase both files."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "No new owner or consumer path added; existing house.read_household, parent_choice_input and P2Owner.material_fact now support verified ancestor provenance."
+    },
+    {
+      "class": "SCIENTIFIC_HOLD",
+      "detail": "No native/science/rights/human/merge authority. Parent first consumer remains NONE_VERIFIED."
+    }
+  ],
+  "affected_task_ids": [
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "C01",
+    "C03",
+    "C04",
+    "F01",
+    "CG-A cross-input"
+  ],
+  "new_actual_first_reader": "house.read_household / house.parent_choice_input / P2Owner.material_fact on a real C12 child branch; house.read_house, house.scene, and house.perform GO on that child. Parent first consumer remains NONE_VERIFIED.",
+  "effect_on_original_obligation": "EXPANDED",
+  "regressed_obligations": [
+    "P3 code-pin roots created under A's edbb4b344 and all pre-B01 roots are incompatible with B's p2_owner.py; no migration invented.",
+    "Full P6 experience on a cold fork is not proved; P2Owner constructor/P3 config branch binding is outside this lease.",
+    "P3 CHRONOLOGY-PROOF MII sequencing failure is pre-existing at protected baseline and unchanged."
+  ],
+  "fork_contract": {
+    "accepts": "current branch or verified C12 ancestor: lineage validator, copied-prefix/shared-root verification, acyclic parent chain, epoch <= fork_clock at every copied edge",
+    "refuses": "sibling/foreign branch, malformed branch row, missing store, invalid epoch, fact established after fork",
+    "stored_document_branch": "establishment provenance; retained",
+    "returned_read_branch": "current C12 branch",
+    "source": "stable content/schema hash excluding root/branch/epoch/source",
+    "material_hash": "bound current-state hash; changes on fork even when resolved values equal",
+    "state_scope": "C12_FORK_WITHOUT_S46_INTERVAL_STATE on ancestor reads only; absent on same-branch reads",
+    "read_purity": "no episode/checkpoint/world_event/perception/owner/scheduler/branch write"
+  },
+  "c01_impact": {
+    "normal_schema": "UNCHANGED",
+    "mixed_cut_import": "BROKEN: B house.py requires B p2_owner.py",
+    "required_action": "Rebase/reconcile both files at a safe checkpoint; do not presume C01 saw these edits.",
+    "parent_first_consumer": "NONE_VERIFIED"
+  },
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@160cbbd0ae00fb965004085c0e07c872384fe0ff",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@160cbbd0ae00fb965004085c0e07c872384fe0ff",
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/B01_ABI_B_REVISION.md"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/b01_household_b.log",
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p6_test_house_b.log",
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p6_test_mii_b.log",
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/adjacent_b.log"
+    ],
+    "negative": [
+      "test_psyche_store_kitchen_mediator_cannot_stand_for_a_world_fact",
+      "test_material_fact_writer_refuses_psyche_records_and_foreign_sources",
+      "test_c12_fork_carries_ancestor_household_without_rebinding_source foreign-branch refusal",
+      "test_bound_resource_and_owner_severance_refuse_and_restore",
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_head_fork_refusal.log"
+    ],
+    "cold": [
+      "test_changed_value_severance_restore_and_cold_reopen fresh subprocess same-branch cold reopen",
+      "fork read purity counts asserted in test_c12_fork_carries_ancestor_household_without_rebinding_source"
+    ],
+    "regression": [
+      "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p3_code_pin_a_era.log"
+    ]
+  },
+  "queued_contract_changes": [
+    "B02/B03: use fork-aware household reads; decide P3 old-root recreation/migration before period work; do not treat provenance branch as current write authority.",
+    "B04/E03: retain crash-atomic/update obligations; B01 is still two checkpoints and one-shot.",
+    "C01: rebase B p2_owner.py with house.py; mixed A p2_owner + B house is an import failure.",
+    "C03/C04: parent consumer still NONE_VERIFIED; child P6 event bodies may carry parent provenance branch.",
+    "F01: generated imported roots with a different branch need an explicit import/rebind, not one-shot establish_household."
+  ],
+  "active_contract_decision": "PAUSE_AT_CHECKPOINT",
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 510.89,
+    "usd": null,
+    "detail": "Executed suite wall time; A-head/A-era probes additional. No controller/provider/RSS/retry instrumentation available; no figures invented."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "human": "HELD",
+    "merge": "NOT_CLAIMED"
+  },
+  "proof_boundaries": [
+    "No native science, source/rights grant, actor/human authority or protected merge.",
+    "No parent decision/action/utterance; first consumer NONE_VERIFIED.",
+    "No B02 calendar, B03 tenancy/noise, B04 acquisition/refusal, B05 duration.",
+    "No crash atomicity or exactly-once retry.",
+    "No cold fork reopen and no same-root PsycheStore injection.",
+    "A-era/pre-B01 P3 code-pin roots incompatible; no migration.",
+    "Two Library architecture records NOT_INSPECTED locally."
+  ],
+  "handoff": "WORKER_RETURNS/SOROK-DUEL-B01-R1/AGENT_B_HANDOFF.md",
+  "abi_revision": "WORKER_RETURNS/SOROK-DUEL-B01-R1/B01_ABI_B_REVISION.md"
+}

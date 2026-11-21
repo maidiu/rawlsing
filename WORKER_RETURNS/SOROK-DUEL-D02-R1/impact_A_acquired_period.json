@@ -1,0 +1,110 @@
+{
+  "event_id": "D02-A-ACQUIRED-PERIOD-20261112-d82d2ac28",
+  "task_id": "D02",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "d82d2ac28331215ba2caa0ae2d152cce3266bef5",
+  "start_composition_sha": "0c460c7a2a3ed0b6f485b1cc3131bef1b18c0569",
+  "b_return_sha": "0ac3002b94e8a5ebc31842c2686a6a664e8cd63a",
+  "changed_owner_symbols": [
+    "p3.situated_context.build_situated_context",
+    "p3.situated_context._plan_scope",
+    "p3.situated_context._activation_context",
+    "p3.situated_context._acquired_state",
+    "p3.situated_context._period_ingress",
+    "p3.situated_context._b02_module",
+    "p3.situated_context._period_source"
+  ],
+  "abi_class": "COMPATIBLE_ADDITIVE",
+  "affected_task_ids": ["D03", "D04", "D05"],
+  "active_contract_decision": "HOLD_FULL_D02_PREREQUISITE",
+  "active_contract_reason": "Acquired-state provider input and current B02 period ingress are implemented. Full D02 remains held on historical B02 period split/interleaving, C02/P4/P6 live consumer, and C01/B02 dependency acceptance.",
+  "new_actual_first_reader": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py:RecursionCycle._call provider context; the later actual P3 response streams also carry the eligible mode/hash",
+  "effect_on_original_obligation": "PRESERVED",
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/projections.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md",
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/INTEGRATION_CONTRACT.md"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_a_acquired_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_a_acquired_period_all.log",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_a_d01_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_a_p3_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_a_b02_source_regression.log"
+  ],
+  "negative_refs": [
+    "NO_RECORDS unrelated scope",
+    "HELD_NO_ELIGIBLE_RECORD inhibited role",
+    "CONTRADICTION active contradictory modes",
+    "D02_PLAN_OVERRIDE_FORBIDDEN caller actor_observed/material_eligible",
+    "zero-record provider control",
+    "B02_READER_PRESENT_NO_CURRENT_PERIOD hold",
+    "P6_EMPLOYMENT_SOURCE_OR_ROOT_MISMATCH"
+  ],
+  "cold_refs": [
+    "same-path same-seed recognized/imposed P2 event identity equal; acquired modes differ",
+    "fresh-root D01 cold reopen + B01 household + C01 parent + D02 acquired + B02 current period",
+    "selector/provider input leaves store head unchanged"
+  ],
+  "preserved_obligations": [
+    "P2Owner sole world writer; no new scheduler/ledger",
+    "P3 owner/store/activation/projection semantics and MISSING_RULE",
+    "B's event-time selection, access normalization, event/current co-presence, source closure, pending refusal",
+    "parent private state/portal gaze/narrative prose excluded",
+    "D01 deletion/actual-owner verify repairs preserved"
+  ],
+  "regressed_obligations": [
+    "none observed in D02 20 passed, D01 15 passed, P3 77 passed/1 skipped, B02 source 7 passed",
+    "B02 global-unbuilt label updated to source-present hold; B's stale hold test adjusted only for that distinction"
+  ],
+  "queued_contract_changes": [
+    {
+      "task_id": "D03",
+      "change": "May consume acquired modes/withheld field and current period input; must add its own response schema and not treat eligible hypotheses as native memory or choices.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D04",
+      "change": "May consume the acquired activation boundary; must add its own target lifecycle and not write through D02.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D05",
+      "change": "Must add the distinct prospective performed consumer; D02 provider context is not a performed action.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D02",
+      "change": "Full D02 remains held for historical B02 split/interleaving and C02/P4/P6 live consumer.",
+      "status": "PREREQUISITE_HELD"
+    }
+  ],
+  "source_closure": {
+    "base_D02_closure_hash_schema": "SOROK_D02_SOURCE_CLOSURE@1",
+    "period_source": {
+      "path": "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py",
+      "sha256": "78e33649ed7c2a50d1cdea1692f04ea79ddb841748f7532d576c0436647ded22"
+    },
+    "note": "Base 12-file closure remains B's contract. The B02 period reader is a separate exact period_source in body/readset/hash, not a global P3 pin expansion."
+  },
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 1010.46,
+    "usd": null,
+    "honest_status": "UNKNOWN_TOKENS_AND_USD",
+    "wall_breakdown_s": {
+      "d02_all": 814.29,
+      "d01_regression": 92.03,
+      "p3_regression": 51.12,
+      "b02_source_regression": 53.02
+    }
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD"
+  }
+}

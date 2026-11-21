@@ -96,7 +96,8 @@ def _verify_world(state: dict) -> WorldState:
         body = {k: v for k, v in event.items() if k != "hash"}
         if digest(body) != event.get("hash"):
             raise C10Refusal("WORLD_EVENT_INTEGRITY_FAILURE", event.get("event_id", ""))
-        if event["kind"] in {"REPAIR", "OFFSCREEN_REPAIR", "OFFSCREEN_NO_CHANGE"}:
+        if event["kind"] in {"REPAIR", "OFFSCREEN_REPAIR", "OFFSCREEN_NO_CHANGE",
+                             "MATERIAL_ACTIVITY"}:
             if event.get("owner_receipt") is None:
                 raise C10Refusal("WORLD_ACTION_OWNER_RECEIPT_MISSING", event["event_id"])
             try:

@@ -1,0 +1,122 @@
+{
+  "event_id": "D03-B-20261112-658354e2",
+  "task_id": "D03",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "658354e2621e55a0e9d673fae429aaf568f92608",
+  "handoff_provenance": "Full B handoff is WORKER_RETURNS/SOROK-DUEL-D02-R1/AGENT_B_PARENT_UPTAKE_HANDOFF.md; implementation_sha is the immutable B code cut.",
+  "changed_owner_symbols": [
+    "p3.immediate_uptake.build_immediate_uptake",
+    "p3.immediate_uptake.source_closure",
+    "p3.immediate_uptake._speaker_scope",
+    "p3.immediate_uptake._plan_scope",
+    "p3.immediate_uptake._held_output"
+  ],
+  "abi_class": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "New read-only module; no existing owner/store/rule/world writer changed.",
+    "Actual C04 child receipt + writer receipt required; no caller boolean/handmade utterance.",
+    "Existing P3 activation/response rule; durable formation MISSING_RULE.",
+    "D03 source closure and expected-closure/speaker bindings additive."
+  ],
+  "affected_task_ids": ["D04", "D05"],
+  "active_contract_decision": "FINISH_THEN_RECONCILE",
+  "active_contract_reason": "D03 is a bounded sourcefree candidate; D04/D05 queued and not accepted.",
+  "new_actual_first_reader": "p3.immediate_uptake.build_immediate_uptake output -> existing RecursionCycle provider context -> actual later P3 response streams",
+  "effect_on_original_obligation": "PRESERVED",
+  "composition_sha": "6c6a8afa14e8cb197c5db23257e8171a448bc944",
+  "rival_head": "cef8f53b404e8c5fc124bec2649ed44cba679556",
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/immediate_uptake.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+    "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/projection.py"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-D03-R1/tests/test_d03_immediate_uptake.py",
+    "WORKER_RETURNS/SOROK-DUEL-D03-R1/tests/d03_support.py",
+    "WORKER_RETURNS/SOROK-DUEL-D03-R1/evidence/d03_b_immediate_uptake.log"
+  ],
+  "negative_refs": [
+    "test_self_only_parent_receipt_is_refused_not_read",
+    "test_altered_speaker_identity_refuses_without_a_response",
+    "test_severed_speech_event_keeps_parent_prior_choice",
+    "D02 test_prior_acquired_modes_do_not_enter_unobserved_parent_speech_response"
+  ],
+  "cold_refs": [
+    "test_same_actual_speech_two_histories_yield_different_immediate_modes",
+    "test_material_infeasibility_is_not_actor_hearing_or_response_bar",
+    "test_source_closure_exact_and_expected_binding",
+    "test_d03_output_enters_existing_provider_and_later_p3_response"
+  ],
+  "queued_contract_changes": [
+    {
+      "task_id": "D04",
+      "change": "Consume D03 speech_scope/prior_organization_scope/activation_context/immediate_response; add explicit target rule and later performed consumer; no D03 target write.",
+      "status": "CANDIDATE_ADDITIVE"
+    },
+    {
+      "task_id": "D05",
+      "change": "Must be distinct from D03 immediate response/provider transport; durable formation remains MISSING_RULE.",
+      "status": "CANDIDATE_ADDITIVE"
+    }
+  ],
+  "source_closure": {
+    "files": 12,
+    "includes": [
+      "p3/immediate_uptake.py",
+      "p3/__init__.py",
+      "p3/p3_owner.py",
+      "p3/state_store.py",
+      "p3/test_rules.py",
+      "p3/projections.py",
+      "p3/compression.py",
+      "developmental_recursion/contracts.py",
+      "developmental_recursion/p2_owner.py",
+      "developmental_recursion/parent_speech.py",
+      "developmental_recursion/supporting_actor.py",
+      "s45_projection/projection.py"
+    ],
+    "not_included": [
+      "parent_decision/activity writer internals not read by the adapter",
+      "whole S47/P2 estate",
+      "P6/user scene"
+    ]
+  },
+  "shared_contract_gap": "Optional INTEGRATION_CONTRACT addendum documents D03 API/limits; no independent receiving or native acceptance is claimed.",
+  "cost_record": {
+    "tokens": null,
+    "wall_s": 75.09,
+    "usd": null,
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_PARTIAL_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  },
+  "preserved_obligations": [
+    "Actual C04 public child receipt; no hidden reason/cash/period/decision/portal",
+    "Existing P3 activation/response rule and unchanged store head",
+    "No parent speech as focal P3 event or durable target",
+    "No P2/material/period/B01-B05/supporting/house/P4/P6 writer edits"
+  ],
+  "regressed_obligations": [
+    "No functional regression observed: D03 7 passed, D02 22 passed, D01 15 passed, P3 77/1 skipped.",
+    "Standalone C04 seam only; normal Pair3 C04/P6 child consumer not accepted."
+  ],
+  "new_attack_surfaces": [
+    "D03 uses standalone C04 writer/child uptake; no live P4/P6 join.",
+    "Immediate modes are prior-organization modes; speech text does not select a mode directly.",
+    "Optional expected speaker must be bound by the caller; unbound actual registered parent is accepted.",
+    "Local plan-scope validation duplicates D02 semantics; future unified helper possible.",
+    "D03 source closure is file-level and excludes parent_decision/activity transitive code."
+  ],
+  "surviving_disagreements": [
+    "Adapter vs a unified P3 response helper for non-focal speech.",
+    "Whether any sourcefree acquired prior organization can substitute for actual later speech access (B says no).",
+    "Normal C04/P6 consumer and Pair3 repair acceptance.",
+    "D04 target rule/owner and B05 qualification."
+  ]
+}

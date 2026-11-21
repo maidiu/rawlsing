@@ -1,0 +1,24 @@
+# Captured against A D02 code cut 76547199c20f29f63c0e0e43b13a12cdecb3d47a in composition b169b1aafb5df53bef2a3e02b1ab780930dfcd32.
+# Ten actual committed parent events; read_actor_access returns the same current world_clock (252) for every candidate.
+# A's _latest_perceived chooses the lexicographically largest action_event_id (event clock 246) instead of the latest event clock (252).
+# Case state root in task-local scratch. This is the defect reproduction before the B repair.
+event rows:
+{"access_status": "PERCEIVED", "event_clock": 222, "event_ordinal": 1, "event_time": 222, "receipt": {"channel": "co_present", "clock": 222}, "ref": "TEST_ONLY_BP4_WORLD_EVT_9897b1c51b0337249a62ee9f7b92da4bc56d9084b5ba8443f052b5be7506f909", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 225, "event_ordinal": 2, "event_time": 225, "receipt": {"channel": "co_present", "clock": 225}, "ref": "TEST_ONLY_BP4_WORLD_EVT_cadd431ab3688313b67a48b1f82c573d5d5dde6901d3a8d28a9c941785bda2a8", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 228, "event_ordinal": 3, "event_time": 228, "receipt": {"channel": "co_present", "clock": 228}, "ref": "TEST_ONLY_BP4_WORLD_EVT_84190e5d3112be4af4a591a526abb6984a16bc0ec57288fd153914907dc56e8a", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 231, "event_ordinal": 4, "event_time": 231, "receipt": {"channel": "co_present", "clock": 231}, "ref": "TEST_ONLY_BP4_WORLD_EVT_ae9236251e659ebc522d7c86606baeb57efeacffe1acae9f4cb3fb28b30daf75", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 234, "event_ordinal": 5, "event_time": 234, "receipt": {"channel": "co_present", "clock": 234}, "ref": "TEST_ONLY_BP4_WORLD_EVT_2994295070079294a70a9a3dc9cfe044385b82b45aba9007006bb6fbd9327706", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 237, "event_ordinal": 6, "event_time": 237, "receipt": {"channel": "co_present", "clock": 237}, "ref": "TEST_ONLY_BP4_WORLD_EVT_9ae23b210ac0e60e878859a3a015d4c5a962313ec099218818d81bdf919a6cbb", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 240, "event_ordinal": 7, "event_time": 240, "receipt": {"channel": "co_present", "clock": 240}, "ref": "TEST_ONLY_BP4_WORLD_EVT_ac89d34f74a0b1d02c7f25db8388921811e4ba4e3110478a2a31658607ab53b3", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 243, "event_ordinal": 8, "event_time": 243, "receipt": {"channel": "co_present", "clock": 243}, "ref": "TEST_ONLY_BP4_WORLD_EVT_12c1236792240a36f47053a56ae674be9f24ee1349d23a45e4fa65826255e870", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 246, "event_ordinal": 9, "event_time": 246, "receipt": {"channel": "co_present", "clock": 246}, "ref": "TEST_ONLY_BP4_WORLD_EVT_d000555777ab8cf4236074671fe9c17a24581ce455856fd5bd6822a6fe89a90b", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 249, "event_ordinal": 10, "event_time": 249, "receipt": {"channel": "co_present", "clock": 249}, "ref": "TEST_ONLY_BP4_WORLD_EVT_083e562ea8ec07615cb2cc72cd211a513801906756d69b7abd32904f5e96585f", "world_clock": 252}
+{"access_status": "PERCEIVED", "event_clock": 252, "event_ordinal": 11, "event_time": 252, "receipt": {"channel": "co_present", "clock": 252}, "ref": "TEST_ONLY_BP4_WORLD_EVT_36cedc3478c41551c9bfad3740ed5232974fb7627ee8b380c25b318912d69caf", "world_clock": 252}
+latest_by_event_time (252, 11, 'TEST_ONLY_BP4_WORLD_EVT_36cedc3478c41551c9bfad3740ed5232974fb7627ee8b380c25b318912d69caf')
+lexicographically_largest_ref (246, 9, 'TEST_ONLY_BP4_WORLD_EVT_d000555777ab8cf4236074671fe9c17a24581ce455856fd5bd6822a6fe89a90b')
+conflict True
+selector_observation_event_id TEST_ONLY_BP4_WORLD_EVT_d000555777ab8cf4236074671fe9c17a24581ce455856fd5bd6822a6fe89a90b
+selector_observation_event_clock 246
+selector_selected_latest? False
+selector_identity_clock 252
+selector_hash e88646a7f9b5ea9b9b576cae12c21da91cd8dc8a6657881ac1f3347a077f812b

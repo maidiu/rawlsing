@@ -1,0 +1,228 @@
+{
+  "event_id": "SOROK-DUEL-C01-A-20261112-R1",
+  "task_id": "C01",
+  "phase": "CG-C",
+  "title": "Stable supporting-actor identities and dynamic participation without changing Nadia root",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "frozen_start_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+  "branch": "codex/sorok-duel-c01-a-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_FOR_PRE_C01_ROOTS",
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "P2Owner accepts the existing root participant tuple unchanged and additionally accepts live registered supporting-actor stable IDs. Existing root-only callers in P2/P3 tests remain green."
+    },
+    {
+      "class": "NEW_CONSUMER",
+      "detail": "New sourcefree reader boundaries: supporting_actor.read_actor_access, read_supporting_actor, registered_supporting_actors and P2Owner.realize participation consequences."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "p2_owner.py byte change alters P3Owner._code_pins()/config_hash. Pre-C01 P3 state roots need recreation or deliberate migration; same-code roots reopen exactly. No native actor/science/right/merge authority is issued."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "Supporting role allowlist is parent only; no generic actor-description engine, second scheduler, duplicate world/time/person ledger or new database."
+    }
+  ],
+  "changed_owner_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "changed": [
+        "P2Owner.__init__ (additive participant binding; focal requirement; live registration resolution)",
+        "P2Owner.validate_proposal (registered participants; focal presence; supporting co-presence)",
+        "P2Owner._realize via P2Owner.realize (records supporting participation for a performed world event; replay re-verifies it)"
+      ],
+      "added": [
+        "import developmental_recursion.supporting_actor {read_supporting_actor, record_supporting_participation, resolve_participants, verify_supporting_participation}"
+      ],
+      "removed_or_changed_module_level_material_functions": []
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py",
+      "added": [
+        "SUPPORTING_ACTOR_SCHEMA",
+        "SUPPORTING_ACTOR_READ_SCHEMA",
+        "SUPPORTING_REGISTRATION_KIND",
+        "SUPPORTING_PARTICIPATION_KIND",
+        "SUPPORTING_PARTICIPATION_SCHEMA",
+        "ACTOR_ACCESS_SCHEMA",
+        "SUPPORTING_GRADE",
+        "SUPPORTING_ROLES",
+        "PARTICIPANT_KIND",
+        "REGISTRATION_FIELDS",
+        "registration_source",
+        "register_supporting_actor",
+        "read_supporting_actor",
+        "registered_supporting_actors",
+        "resolve_participants",
+        "record_supporting_participation",
+        "verify_supporting_participation",
+        "read_actor_access"
+      ],
+      "removed_or_changed": []
+    }
+  ],
+  "actual_writer_trace": [
+    "supporting_actor.register_supporting_actor [supporting_actor.py:165] validates the actual root and world, then updates branch actor_ids (the same mutable metadata path used by r30a/first_session.py:110 for actor U).",
+    "C12Store.append_episode [bp4/store.py:146] stores the private-state registration episode; only its hash/ID is placed in world.actor_state.",
+    "WorldState.actor_state[alias] and WorldState.positions[alias] are set from the live focal actor position.",
+    "BP4Product._checkpoint [bp4/product.py:101] -> C12Store.checkpoint [bp4/store.py:216] -> WorldState.snapshot [bp4/world.py:323] persists the registration.",
+    "P2Owner.realize [p2_owner.py:290] -> P2Owner._realize [p2_owner.py:344] -> S47Session.admit_event writes the actual performed world event for the focal actor.",
+    "supporting_actor.record_supporting_participation [supporting_actor.py:405] records one C12 perception row per co-present supporting actor for that same world event and one public participation episode."
+  ],
+  "actual_reader": [
+    {
+      "name": "supporting_actor.read_actor_access",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py:514",
+      "consumes": "C12 perception rows plus the actual world event",
+      "returns": "SOROK_P2_ACTOR_ACCESS@1 with PERCEIVED public event projection or NOT_PERCEIVED with no event content"
+    },
+    {
+      "name": "supporting_actor.read_supporting_actor",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py:306",
+      "consumes": "branch actor_ids, world.actor_state registration and the private-state episode",
+      "returns": "SOROK_P2_SUPPORTING_ACTOR_READ@1; private_state is NOT_READ unless as_actor is the same stable ID"
+    },
+    {
+      "name": "P2Owner.realize consequences",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py:419",
+      "consumes": "supporting participant IDs plus the performed world event",
+      "returns": "RealizedEvent.consequences.supporting_participation and supporting_participants public receipts"
+    }
+  ],
+  "new_actual_first_reader": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py:514 read_actor_access (new sourcefree adapter reader over actual C12 perceptions; no pre-existing P6/MIII product consumer is claimed)",
+  "effect_on_original_obligation": "EXPANDED",
+  "effect_detail": "PW-05 rolling parents and PW-06 changing others gain a real stable supporting identity/participation boundary inside the same P2 world; PW-10 composite custody is preserved. Parent antecedent/activity, decision, utterance, hidden-reason uptake and relations remain unimplemented C02/C03/C04/C05 work.",
+  "affected_queued_tasks": [
+    {
+      "task_id": "C02",
+      "effect": "Must use the registered supporting stable ID and public read/self-only private read. It must still implement independent parent antecedent/activity; C01 only proves identity/participation. Do not treat the parent registration as a parent decision."
+    },
+    {
+      "task_id": "C03",
+      "effect": "Must add parent-authored performed decision/action/utterance through an actual writer. C01 participation records only the focal actor's performed world event; it does not make the parent the event author."
+    },
+    {
+      "task_id": "C04",
+      "effect": "Must keep hidden reason separate from performed utterance and Nadia-qualified uptake. Private state is currently a C12 registration episode readable only through the self-only supporting read; outward speech and child receipt remain separate obligations."
+    },
+    {
+      "task_id": "C05",
+      "effect": "Dynamic other-actor registration exists but the role allowlist is parent only. C05 must deliberately extend roles/relations and prove fork/cold relation history; it may not silently relabel the parent as a generic actor."
+    },
+    {
+      "task_id": "D02",
+      "effect": "Situated-field projection must read public supporting/actor access, never the raw world snapshot or private-state episode. Parent/relationship eligibility is not implemented here."
+    },
+    {
+      "task_id": "E01",
+      "effect": "J1 still needs a real parent performed speech/decision distinct from Nadia's uptake. C01 supplies a separate actor identity and perception boundary, not the parent event."
+    },
+    {
+      "task_id": "E02",
+      "effect": "Multi-period parent/Nadia continuity must preserve the same stable parent ID across periods and cold replay. C01 proves only same-clock participation and cold process read."
+    },
+    {
+      "task_id": "F03",
+      "effect": "MI/MII/MIII presentation, exposure and movement remain separate. C01 adds no historical depth, viewer exposure or independent parent movement."
+    },
+    {
+      "task_id": "B02/B03/B04/B05",
+      "effect": "B01 material facts are unchanged. Their P3 state roots may hit the same code-pin break if created before this p2_owner.py byte change; they must recreate or deliberately migrate roots."
+    },
+    {
+      "task_id": "CG-A cross-input #915/#917/#924/#928",
+      "effect": "The p2_owner.py source pin moves again. Compare/rebase the unmerged candidate; do not presume its bridge or pins received."
+    }
+  ],
+  "queued_contract_changes": [
+    "C02/C03/C04/C05/D02/E01 receive a new additively available supporting-actor identity/participation ABI; existing obligations are expanded, not narrowed.",
+    "No active contract was modified. No dependency is silently marked accepted."
+  ],
+  "active_contract_decision": "UNAFFECTED",
+  "preserved_obligations": [
+    "Nadia remains the focal root actor; root actor_ids and P2Owner.actor are unchanged by registration and participation.",
+    "Parent is a newly registered supporting stable ID, not a relabel of fixed A/B or the user actor.",
+    "Same-world event participation is recorded through actual C12 perception receipts and public participation episodes, not test-local state.",
+    "Private state is not in the world snapshot or event objective; it lives in a C12 registration episode and is returned only by the self read.",
+    "Duplicate registration is UNCHANGED and adds no episode/checkpoint; duplicate participation is prevented by the P2 operation receipt and existing episode lookup.",
+    "Existing P2 owner, engine, B01, P3 owner and selected P3 vertical-slice tests remain green.",
+    "No new owner, scheduler, person-world ledger, database or clock was added.",
+    "Native/scientific/rights/actor/human/protected merges remain held."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change alters P3Owner._code_pins()/config_hash; pre-C01 state roots refuse cold reopen under the new code. Same-code roots reopen exactly; no migration invented.",
+    "Full P3 vertical-slice suite was attempted but did not finish within a 900 s budget; 3 tests passed before the timeout. Selected cold-replay/view tests passed. No full-estate claim."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py@9229698c5ded4e8c77801398d4d0ecc3e7c9ccb3",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/r30a/first_session.py:110",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py:146",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/store.py:181",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/product.py:101",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py:323",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_ROLLING_PERSON_WORLD_OWNER_RECONCILIATION_20261111_R1.md (frozen source, PR #911 b50b1282, documentary not adopted)"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/test_c01_supporting_actor.py",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/c01_supporting_actor.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p2_owner_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p3_owner_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/b01_adjacent_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/engine_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p6_actor_scene_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C01-R1/evidence/p3_vertical_selected_regression.log"
+  ],
+  "negative_refs": [
+    "test_ghost_reserved_and_absent_participants_refuse_without_mutation",
+    "test_actor_access_is_separate_and_private_state_leak_refuses",
+    "test_replay_refuses_severed_supporting_perception_and_restores",
+    "test_private_state_episode_severance_refuses",
+    "test_supporting_parent_participates_without_replacing_nadia_and_cold_reopens (duplicate registration UNCHANGED, focal/root invariants)"
+  ],
+  "cold_refs": [
+    "test_cold_process_reads_same_parent_participation: fresh Python subprocess opens the same root and reads the same parent registration and two actor-relative perceptions; private secret absent from stdout",
+    "test_supporting_parent_participates_without_replacing_nadia_and_cold_reopens: close/reopen same state root, snapshot equality, replay equality and unchanged counts",
+    "verify_supporting_participation: replay fails closed if the C12 perception or participation episode is severed"
+  ],
+  "cost_record": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, process RSS, provider latency or retry instrumentation was available or invented in this sourcefree session.",
+    "measured_test_wall_s": {
+      "c01_supporting_actor": 15.33,
+      "p2_owner_regression": 15.26,
+      "p3_owner_regression": 29.9,
+      "b01_adjacent_regression": 33.88,
+      "engine_regression": 160.27,
+      "p6_actor_scene_regression": 25.32,
+      "p3_vertical_selected_regression": 333.51
+    },
+    "failed_attempts": [
+      "Full P3 vertical-slice suite exceeded a 900 s shell timeout after 3 passing tests; not counted as a complete run."
+    ]
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  },
+  "proof_boundaries": [
+    "SOURCEFREE_S2_ONLY; no native ADP-015/C4, CAN/ADP/Pyat, actor/human right, source right or protected merge.",
+    "No parent decision, parent-authored action, utterance, hidden-reason uptake, relationship entity, household membership or genealogy is implemented.",
+    "C01 participation is of the focal actor's performed world event; the parent is a co-present participant/perceiver, not the event author.",
+    "Parent private state is developer-readable in a C12 registration episode, not actor-accessible, not in the world snapshot and not in the event objective.",
+    "Private-state leak guard scans string private values in the event canonical; non-string private values are not leak-scanned.",
+    "Supporting role allowlist is parent only.",
+    "Same-code cold reopen and fresh-process read only; fork/copy and old-code root migration are not proved.",
+    "Full P3 vertical slice and full estate were not completed; only the listed bounded suites passed.",
+    "Two full ChatGPT Library architecture records remain NOT_INSPECTED locally; no contents are claimed."
+  ]
+}

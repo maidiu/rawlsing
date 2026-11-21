@@ -1,0 +1,103 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D03-B-20261112-658354e2",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D03",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "658354e2621e55a0e9d673fae429aaf568f92608",
+  "handoff_provenance": "Full B handoff is WORKER_RETURNS/SOROK-DUEL-D02-R1/AGENT_B_PARENT_UPTAKE_HANDOFF.md; implementation_sha is the immutable B code cut.",
+  "author_branch": "codex/sorok-duel-d02-b-parent-uptake-20261112-r1",
+  "composition_sha": "6c6a8afa14e8cb197c5db23257e8171a448bc944",
+  "rival_head": "cef8f53b404e8c5fc124bec2649ed44cba679556",
+  "rival_code_sha": "d82d2ac28331215ba2caa0ae2d152cce3266bef5",
+  "status": "SOURCEFREE_S2_PARTIAL_CANDIDATE_NOT_NATIVE",
+  "changed_symbols": [
+    "p3.immediate_uptake.build_immediate_uptake",
+    "p3.immediate_uptake.source_closure",
+    "p3.immediate_uptake._speaker_scope",
+    "p3.immediate_uptake._plan_scope",
+    "p3.immediate_uptake._held_output"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "New read-only D03 adapter; no existing owner/store/rule/world writer changed.",
+    "Consumes actual parent_speech.read_child_uptake and actual writer receipt.",
+    "Uses existing PsycheStore.query, projections.activate and test_rules response descriptor.",
+    "Additive source closure and expected-speaker binding; durable formation stays MISSING_RULE."
+  ],
+  "affected_queued_tasks": ["D04", "D05"],
+  "affected_task_notes": {
+    "D04": "May consume D03 speech_scope/prior_organization_scope/activation_context/immediate_response; must add explicit target rule and later performed consumer; no D03 target write.",
+    "D05": "Must be distinct from D03 immediate response and the provider transport; D03 durable formation is MISSING_RULE."
+  },
+  "actual_consumer": "D03 immediate_uptake output -> existing RecursionCycle provider context -> actual later P3 realizations; actual P3 response streams match D03 mode/record hash",
+  "source_identities": {
+    "immediate_uptake_sha256": "0329e85d1cabb7194c2c2dcc93cb77756bac657299ee27c1c30af711e2108982",
+    "parent_speech_sha256": "31e5fad79dfeda71b4632074b3e2df635121eb532bb44ba6303f8459c52d01b0",
+    "supporting_actor_sha256": "35e43d8c924d6ea30b4376ef8bed4a8af5b68dd81d636e1cf9033da4320b9c5a",
+    "s45_projection_sha256": "6e7771000b0d50abcdc990192a2d834171640371e6e814694a918eb9286386fd",
+    "d03_test_sha256": "0448c6077bb351720202ac750c27eea556ce60464bd636748e80302f5bf41f48",
+    "d03_support_sha256": "1bb438f2f6b4cc1d6f3e27c5761d48f57984762da021136df4c066b63f9d55ee",
+    "d03_d04_seam_sha256": "b624c243251796745dc4320ea59fc35aaa546b74ed9d85a4e3a73890729e1b29"
+  },
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/immediate_uptake.py",
+      "WORKER_RETURNS/SOROK-DUEL-D03-R1/D03_D04_SEAM.md",
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D03-R1/evidence/d03_b_immediate_uptake.log",
+      "WORKER_RETURNS/SOROK-DUEL-D03-R1/evidence/d01_b_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-D03-R1/evidence/p3_b_regression.log"
+    ],
+    "negative": [
+      "test_self_only_parent_receipt_is_refused_not_read",
+      "test_altered_speaker_identity_refuses_without_a_response",
+      "test_severed_speech_event_keeps_parent_prior_choice",
+      "D02 test_prior_acquired_modes_do_not_enter_unobserved_parent_speech_response"
+    ],
+    "cold": [
+      "test_same_actual_speech_two_histories_yield_different_immediate_modes",
+      "test_material_infeasibility_is_not_actor_hearing_or_response_bar",
+      "test_source_closure_exact_and_expected_binding",
+      "test_d03_output_enters_existing_provider_and_later_p3_response"
+    ]
+  },
+  "preserved_obligations": [
+    "Actual parent speech/child receipt; no caller boolean or handmade utterance",
+    "No parent hidden reason/decision/cash/period/portal in Nadia readset",
+    "Existing P3 activation/response rule; no new owner/store/scheduler/rule",
+    "Durable formation MISSING_RULE and unchanged store head",
+    "No P2/material/period/B01-B05/supporting/house/P4/P6 writer edits"
+  ],
+  "regressed_obligations": [
+    "No functional regression observed: D03 7 passed; D02 22 passed; D01 15 passed; P3 77/1 skipped.",
+    "C04 is consumed at the standalone writer/child-uptake seam; normal Pair3 C04/P6 child consumer is not accepted or claimed."
+  ],
+  "d04_seam": {
+    "status": "PREPARED_NOT_IMPLEMENTED",
+    "contract_doc": "WORKER_RETURNS/SOROK-DUEL-D03-R1/D03_D04_SEAM.md",
+    "target_candidate": null,
+    "durable_formation": "MISSING_RULE",
+    "requires": ["explicit sourcefree target rule/owner", "B05 qualification", "distinct later performed consumer"]
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d03": 75.09,
+      "d02_all": 927.85,
+      "d01": 89.66,
+      "p3": 53.88
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_PARTIAL_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

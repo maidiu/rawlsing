@@ -1,0 +1,111 @@
+{
+  "schema": "SOROK_E01_J1_DEPENDENCY_IMPACT@1",
+  "event_id": "E01-J1-995-20261113-R1",
+  "composition_code_head": "c724d1a89626f3e177acd004c0be20029dc7ade4",
+  "impact": [
+    {
+      "task_id": "B01",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Household cash remains distinct from C02 parent cash; J1 rent and purchase tests prove no substitution.",
+      "new_consumer": "parent_decision._evaluate_purchase and house.material_feasibility"
+    },
+    {
+      "task_id": "B02",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Current period context qualifies parent decision; the J1 rent test materializes a completed period and charges one rent.",
+      "new_consumer": "parent_activity period context and B05 rent"
+    },
+    {
+      "task_id": "B03",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Committed space, acoustics and household affordability constrain the parent's feasible act in six J1 scenarios.",
+      "new_consumer": "parent_decision._evaluate_purchase -> house.material_feasibility"
+    },
+    {
+      "task_id": "B04",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Typed purchase, parent/market/request currency equality, market->parent lock order and performed ownership are exercised by the J1 positive and currency negative.",
+      "new_consumer": "C03 perform_parent_decision via B04 _purchase_lock/_purchase_drum_kit"
+    },
+    {
+      "task_id": "B05",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "One completed-period household rent debit; duplicate operation refuses; parent cash unaffected.",
+      "new_consumer": "J1 rent-cadence test; no P3 write"
+    },
+    {
+      "task_id": "C01",
+      "status": "PRESERVED",
+      "effect": "Parent speaker registration and role remain the speaker source.",
+      "new_consumer": "C04 writer and D03 speaker scope"
+    },
+    {
+      "task_id": "C02",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Parent material/history and typed purchase row remain the decision input; no duplicate bridge row.",
+      "new_consumer": "C03 decision and J1 adapter read"
+    },
+    {
+      "task_id": "C03",
+      "status": "PRESERVED_AND_CORRECTED",
+      "effect": "Decision, performed act, valid-empty decline and hold are exercised. HOLD physical_admission now truthfully reports HELD.",
+      "new_consumer": "J1 full chain and objective-feasibility scenarios"
+    },
+    {
+      "task_id": "C04",
+      "status": "PRESERVED_AND_CONSUMED",
+      "effect": "Committed public speech, hidden self-only reason, C12 child receipt and normal P6 child current-experience feed the D03 join.",
+      "new_consumer": "j1_join.compose_j1"
+    },
+    {
+      "task_id": "D01",
+      "status": "PRESERVED",
+      "effect": "P3 owner/store retention tests pass at the composed cut.",
+      "new_consumer": "D03 owner/store"
+    },
+    {
+      "task_id": "D02",
+      "status": "PRESERVED",
+      "effect": "Prior acquired organization remains sourcefree and separate from actual later speech perception.",
+      "new_consumer": "D03 activation"
+    },
+    {
+      "task_id": "D03",
+      "status": "PRESERVED_AND_CONNECTED",
+      "effect": "Same actual speech under two P3 histories yields different modes; D03 store head unchanged; no durable target.",
+      "new_consumer": "j1_join.compose_j1 and later P3 provider context"
+    },
+    {
+      "task_id": "D04",
+      "status": "QUEUED_UNLAUNCHED",
+      "effect": "Explicit target/recruiter rule and P3 target writer are absent; J1 stops at this seam.",
+      "new_consumer": null
+    },
+    {
+      "task_id": "D05",
+      "status": "QUEUED_UNLAUNCHED",
+      "effect": "Distinct later performed child event consumer is absent; J1 stops at this seam.",
+      "new_consumer": null
+    },
+    {
+      "task_id": "E01",
+      "status": "PARTIAL_EXACT_BLOCKER",
+      "effect": "Objective feasibility -> parent act/refusal -> speech -> child perception -> D03 response is executable and tested. The subsequent performed child event is held.",
+      "new_consumer": "none for the missing terminal act"
+    },
+    {
+      "task_id": "E02",
+      "status": "NOT_STARTED",
+      "effect": "Depends on E01 terminal act; not launched."
+    }
+  ],
+  "boundaries": {
+    "cg_a_982": "NOT_IMPORTED_NOT_MODIFIED",
+    "cg_a_992": "NOT_IMPORTED_NOT_MODIFIED",
+    "protected_pre_main": "NO_WRITE_NO_MERGE",
+    "fleet": "STOPPED",
+    "new_controller_server_config": "NONE",
+    "credentials_or_env_read": "NONE",
+    "github_actions": "NOT_USED"
+  }
+}

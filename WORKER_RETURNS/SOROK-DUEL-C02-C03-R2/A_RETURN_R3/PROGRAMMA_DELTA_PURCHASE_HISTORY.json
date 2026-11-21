@@ -1,0 +1,55 @@
+{
+  "event_id": "SOROK-DUEL-C03-A-PURCHASE-HISTORY-20261112-R1",
+  "task_id": "C03",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "61f2918ec947e44dd7ecff8fd3359734469e9a90",
+  "composition_start_sha": "01b2d2d23259969778ce996f5527037d666f46f8",
+  "opponent_frozen_sha": "1510d835fcf0a35a5b352b27f4daf4b1f0bb6b34",
+  "opponent_implementation_sha": "255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Parent history now consumes the exact typed B04 P2_PARENT_PURCHASE receipt without depending on the suspended post-purchase ANTECEDENT bridge or duplicate history. It validates the purchase source chain, parent/market/owned before-after provenance, object/owner/kind/price/currency/stock/ownership fields and recomputed purchase source. An exact duplicate bridge is ignored as non-history; a bridge without an exact admitted purchase refuses PARENT_MATERIAL_BRIDGE_NOT_ADOPTED. B04 remains responsible for the separate currency-equality guard; B04/B05 default tests still fail at that real boundary.",
+  "changed_symbols": [
+    "parent_activity._purchase_history_source (typed recomputation/provenance validation)",
+    "parent_activity._purchase_episode_index",
+    "parent_activity._purchase_bridge_duplicate",
+    "parent_activity._parent_material_history (typed purchase + exact bridge suppression)",
+    "parent_activity.read_parent_history (typed purchase provenance fields)"
+  ],
+  "actual_consumer": [
+    "parent_activity.read_parent_material / parent_feasible_actions / read_parent_history after a matching-currency B04 purchase",
+    "C03 perform replay/stale tests",
+    "A C03/C04 live parent purchase/history test"
+  ],
+  "evidence": [
+    "A C03/C04 consumer test purchase history purchase_episode_count=1 with object/market/owned/purchase provenance and no duplicate bridge row.",
+    "Fake bridge without an admitted purchase refuses PARENT_MATERIAL_BRIDGE_NOT_ADOPTED.",
+    "B C02/C03/C04 suite 11 passed in 261.31 s.",
+    "B04/B05 default tests 3 failed/1 passed at parent currency mismatch (real B04 writer issue)."
+  ],
+  "preserved": [
+    "B04 actual purchase writer/stock/ownership/receipt remains the owner",
+    "strict before/after source chain",
+    "parent private/child state not exposed",
+    "bridge is not adopted; removing it changes no reader result"
+  ],
+  "regressed": [
+    "B04 currency guard/expected ABI remains unapplied by Pair1; matching-currency fixtures are required for lawful purchase path",
+    "No full P3 BatchEngine interleave or B05 rent budget reconciliation"
+  ],
+  "expected_b04_abi": "B04_CURRENCY_EXPECTED_ABI.md: require parent==request==market currency before debit, durable CURRENCY_MISMATCH refusal with before==after/no possession, receipt currency fields, remove equivalence declaration, read_purchase validation, matched fixtures.",
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token instrumentation; measured test wall times above."
+  },
+  "ABIclass": "COMPATIBLE_ADDITIVE_TYPED_PURCHASE_HISTORY",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

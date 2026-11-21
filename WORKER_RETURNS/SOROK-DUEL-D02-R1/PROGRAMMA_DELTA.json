@@ -1,0 +1,108 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D02-A-20261112-76547199",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D02",
+  "status": "IN_PROGRESS_PREREQUISITE_HELD",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "76547199c20f29f63c0e0e43b13a12cdecb3d47a",
+  "d01_relay_code_sha": "a3ead75aad5a40a0c96224f8f747e9c48b6f085f",
+  "start_composition_sha": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+  "author_branch": "codex/sorok-duel-d01-a-relay-d02-20261112-r1",
+  "protected_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "changed_symbols": [
+    "p3.situated_context.build_situated_context",
+    "p3.situated_context._material",
+    "p3.situated_context._relations",
+    "p3.situated_context._options",
+    "p3.situated_context._focal_position",
+    "p3.situated_context._latest_perceived"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "New read-only selector over existing P3/P2/P6/C01 owners; no new writer, scheduler, database, ledger or native rule.",
+    "Returned document is an explicit sourcefree decision input; options are input labels, not actor choices.",
+    "B02 calendar/as-of qualification is an explicit hold in date_scope; no historical recursion is claimed."
+  ],
+  "dependency_status": {
+    "D01": "AVAILABLE_AT_B/A_RELAY_CUT",
+    "B02": "NOT_BUILT_HOLD",
+    "C01": "CANDIDATE_A_ONLY_UNDER_B_COUNTERSTRIKE",
+    "D02": "IN_PROGRESS_PREREQUISITE_HELD"
+  },
+  "affected_queued_tasks": ["D03", "D05"],
+  "affected_task_notes": {
+    "D03": "May use the read-only selector as a decision input; must add its own response schema and must not treat admissible option labels as native choices.",
+    "D05": "May use the material/perception split; must add a distinct prospective performed consumer.",
+    "D02": "Full packet remains held until B02 and exact later C01 integration are available."
+  },
+  "actual_reader": "existing developmental_recursion.model_cycle.RecursionCycle._call provider request context (model_cycle.py:332); D02 test asserts the provider receives the exact selector",
+  "producer": "p3.situated_context.build_situated_context over P3Owner/P2Owner actual session, B01 p6_household, C01 focal read_actor_access and public supporting-actor reads",
+  "composition_prerequisite": {
+    "start_sha": "acfcb72f49102cd2fdc7d165b1d5a8e2b5b60f5d",
+    "inputs": {
+      "D01_B_return": "0e0bb07ec8091fd34c6e47fff493a9ce39c9893d",
+      "C01_A": "7e347c45d991df322b987c4fdc70558b1857d9f6",
+      "B01_B": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c"
+    },
+    "fresh_root_test": "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py",
+    "result": "P3 retention cold later consumer + B01 household + C01 parent access coexisted on one fresh root",
+    "old_code_compatibility": "HELD; code-pin changes require fresh roots and no migration was implemented",
+    "p2_owner_house_pairing": "preserved in the composition"
+  },
+  "preserved_obligations": [
+    "P2Owner remains the sole actor/world writer; no second scheduler or ledger",
+    "P3 sourcefree retention and MISSING_RULE boundary",
+    "B01 household remains world-owned; PsycheStore is actor-sidecar only",
+    "C01 public/private access separation; parent private state not exposed",
+    "native CAN/ADP/Pyat, actor/human/source rights and protected merge held"
+  ],
+  "regressed_obligations": [
+    "None observed in D02 6 passed, B01/C01 13 passed, P2/P6 13 passed, D01 15 passed, P3 subset 77 passed/1 skipped.",
+    "Old-code roots refuse by code-pin design; this is an exact compatibility hold, not a silent migration."
+  ],
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/supporting_actor.py"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_situated_context.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_all_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/composition_b01_c01_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/composition_p2_p6_pytest.log"
+    ],
+    "negative": [
+      "D02_STALE_CLOCK / D02_STALE_STATE / D02_FOREIGN_STATE",
+      "P6_HOUSEHOLD_SOURCE_OR_ROOT_MISMATCH",
+      "material HELD on household absence",
+      "unobserved parent not a relation",
+      "private state/portal gaze absent"
+    ],
+    "cold": [
+      "fresh-root D01 formation -> close -> cold reopen -> household/parent/focal access reads -> P3 later consumer",
+      "same-state tool/position restore returns identical selector hash"
+    ]
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d02_suite": 125.48,
+      "b01_c01_composition": 63.86,
+      "p2_p6_composition": 147.75,
+      "d01_a_relay_all": 91.73,
+      "p3_regression_subset": 55.29
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

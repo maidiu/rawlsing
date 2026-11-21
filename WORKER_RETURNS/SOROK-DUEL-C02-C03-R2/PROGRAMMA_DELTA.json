@@ -1,0 +1,160 @@
+{
+  "event_id": "SOROK-DUEL-C02-C03-B-20261112-R2",
+  "task_id": "C02/C03/C04",
+  "phase": "CG-C",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "composition_start_sha": "4724125721c646024bc2ef16b11510e4584991a8",
+  "opponent_head": "4528b68ad4e285a77509687511dcc8765cd41ca7",
+  "opponent_implementation_sha": "9ac1ac71cdbc8dd2c832b2980b501b4031e163e8",
+  "received_b_c01_implementation_sha": "0e526f043027e4256b353d42240e80d85ad39265",
+  "b02_b04_b05_typed_input_sha": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+  "b02_b04_b05_production_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "implementation_sha": "255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "summary": "Composed the available incremental B02 API into C02: qualified current-period context uses period_progress/read_material_period, a new closed P4 period-materialize operation runs materialize_to, and a two-period parent proof covers h1/h2, B02 employment change distinct from parent employment, parent job loss/rehire, debt/care/work, cold reopen, source severance/restoration and ordinary P6 view. Added narrow B04 P2_PARENT_PURCHASE history acceptance with source-chain and currency validation; the real B04 currency conflict is refused and the exact B04 ABI returned. Built C03 explicit sourcefree parent decision/action admission (proposal, admitted decision, performed/valid-empty/held, replay/stale, actual B04 purchase for matching currency) and C04 independent parent utterance, self-only hidden reason and focal-child qualified speech uptake. Full P3 BatchEngine, B04 writer currency repair, B05 rent budget, E03, fork and native authority remain held.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "sha256": "0463220311d3be74b957667a76ec2c7e0e6047b5fccd924791e8995a5fb6c116",
+      "symbols": [
+        "PARENT_B02_FULL_PROOF", "PARENT_B02_FULL_PROOF_HOLD", "B02_REQUIRED_HOOK",
+        "PARENT_PURCHASE_KIND", "PARENT_PURCHASE_RECEIPT_SCHEMA",
+        "_period_context", "_purchase_history_source", "_parent_material_history",
+        "_read_material", "read_parent_history"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py",
+      "sha256": "5e0857acac6f14d3bb67785e1fe0edfd6af3f2fb640f2a3d2ab17b557ad23ba8",
+      "symbols": [
+        "PARENT_REQUEST_SCHEMA", "PARENT_PROPOSAL_SCHEMA", "PARENT_DECISION_SCHEMA",
+        "PARENT_DECISION_RECEIPT_SCHEMA", "PARENT_ACTION_RECEIPT_SCHEMA",
+        "PARENT_DECISION_KIND", "PARENT_ACTION_KIND", "DECISION_RULE",
+        "parent_request_fixture", "propose_parent_decision", "admit_parent_decision",
+        "perform_parent_decision", "read_parent_decision", "read_parent_action"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py",
+      "sha256": "31e5fad79dfeda71b4632074b3e2df635121eb532bb44ba6303f8459c52d01b0",
+      "symbols": [
+        "PARENT_UTTERANCE_SCHEMA", "PARENT_UTTERANCE_RECEIPT_SCHEMA",
+        "PARENT_UTTERANCE_KIND", "CHILD_UPTAKE_SCHEMA",
+        "perform_parent_utterance", "read_parent_utterance", "read_child_uptake"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+      "sha256": "f5f7ea789d6f0fd0df8496756ade7f19a2d18c4fc1b3f3275958a8eed4a7e537",
+      "symbols": [
+        "PARENT_BACKGROUND_OPERATIONS (period-materialize, market-establish, parent-decide, parent-perform, parent-speak)",
+        "_parent_background_dispatch"
+      ]
+    }
+  ],
+  "actual_reader": [
+    "parent_activity.parent_feasible_actions/read_parent_activity (B02-qualified parent material)",
+    "parent_decision.read_parent_decision/read_parent_action (self-only decision/action)",
+    "material_operations.read_owned_objects (actual B04 performed ownership consumer)",
+    "parent_speech.read_child_uptake (public speech only; focal-child C12 speech receipt)"
+  ],
+  "affected_queued_tasks": [
+    "C02 (P3 batch/period interleave held)",
+    "C03 (P3/MIII actor consumption held)",
+    "C04 (P3/P6 Nadia experience held)",
+    "C05",
+    "D02",
+    "E01",
+    "E02",
+    "B02",
+    "B04 (currency ABI required)",
+    "B05 (rent/budget integration held)",
+    "F01",
+    "F03",
+    "P3 source-closure owner",
+    "Pair1 B04/B05 owner"
+  ],
+  "preserved_obligations": [
+    "Nadia remains focal; parent is the C01 stable supporting actor.",
+    "B's C01 repairs, A's C02 kernel, B02/B04/B05 code, B01/B03 house code, P3/model_cycle and P6 house/situated were not edited.",
+    "Parent private motive/decision basis/hidden reason remain self-only C12; no Nadia/user copy.",
+    "Parent activity/decision not Nadia percepts; C04 speech gives Nadia only the public utterance.",
+    "B04 purchase is parent-funded; B01 fixed-A household cash unchanged in C03 tests.",
+    "C03 uses B02-qualified periods; B02 employment holder A is never applied to parent.",
+    "Replay no duplicate cash/stock/ownership; stale decision/perform fail closed.",
+    "No new scheduler/owner/world/time ledger; P4 uses existing boundary/pending/activity protocol.",
+    "No native/source/actor/human/protected authority."
+  ],
+  "regressed_obligations": [
+    "A's two live tests assert the old full-dated hold constant and now fail; the other seven A C02/live tests pass. Stale test/documentation expectation.",
+    "B04/B05 default tests fail at the parent/market currency conflict until Pair1 B applies the exact returned ABI.",
+    "Full C02 P3 BatchEngine interleave, B05 rent integration, E03 crash/ownership, fork/cold lineage, P3 source closure and native/MIII remain held.",
+    "C04 child uptake is C12 speech receipt, not the full P3/P6 Nadia experience consumer.",
+    "P3 pins do not include the new parent modules; no edit/weakening."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py@255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py@255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_speech.py@255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py@255fd4905990e3c0cab3e2d95ba91b851ea701a8",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py@62292613aa9210a7d3e944314e36924349337439",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py@62292613aa9210a7d3e944314e36924349337439",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py@62292613aa9210a7d3e944314e36924349337439"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/test_c02_c03_b_period_decision.py",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/b_c02_c03_period_decision.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/a_c02_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/b02_incremental.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/c01_p2_p3_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/b01_b03_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/p4_p5_regression.log",
+    "WORKER_RETURNS/SOROK-DUEL-C02-C03-R2/evidence/b04_b05_currency_boundary.log"
+  ],
+  "negative_refs": [
+    "test_two_chronological_parent_periods_on_incremental_b02 (B02 employment vs parent; source severance/restore; cold)",
+    "test_parent_decision_changes_from_actual_obligations_stock_and_currency",
+    "test_parent_decision_ignores_nadia_state_and_holds_without_b02",
+    "test_parent_decision_perform_replay_stale_and_cold",
+    "test_admitted_parent_decision_declines_on_real_obligation",
+    "test_parent_utterance_hidden_reason_child_uptake_and_severance",
+    "B04/B05 currency boundary log"
+  ],
+  "cold_refs": [
+    "two-period cold reopen and h1 activity period retention",
+    "C03 purchase cold: material 60/7, purchase history 1, action PERFORMED, P6 view",
+    "C04 utterance cold: child public text, parent hidden reasons, P6 view/say",
+    "B02 materialize_to durable receipts/recovery (read-only input; B02 suite)"
+  ],
+  "defects_repaired": [
+    "A manual B02 date inference/stale full-dated hold -> B02 period_progress/read_material_period and qualified proof.",
+    "No two-period parent proof -> P4 period-materialize over B02 incremental API; h1/h2 parent/cold/sever proof.",
+    "Parent history rejected B04 purchase -> narrow typed receipt/source-chain acceptance; matching currency.",
+    "B04 currency equivalence/debit conflict -> C02 refusal, C03 pre-B04 refusal, exact B04 expected ABI.",
+    "No C03 decision/action -> explicit sourcefree proposal/admit/perform/refusal/replay, actual B04 purchase.",
+    "No C04 hidden/utterance/uptake -> actual SPEECH event, self-only hidden reason, child speech receipt/severance."
+  ],
+  "cost": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, latency, RSS or retry instrumentation was available or invented.",
+    "measured_test_wall_s": {
+      "b_c02_c03_period_decision": 205.63,
+      "a_c02_regression": 88.92,
+      "b02_incremental": 84.0,
+      "c01_p2_p3_regression": 89.38,
+      "b01_b03_regression": 102.05,
+      "p4_p5_regression": 73.83,
+      "b04_b05_currency_boundary": 27.35
+    }
+  },
+  "ABIclass": "BREAKING_INTERFACE_FOR_A_C02_PERIOD_ABI_WITH_ADDITIVE_C03_C04_MODULES_AND_B04_CURRENCY_HOLD",
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

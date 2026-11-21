@@ -1,0 +1,207 @@
+{
+  "event_id": "SOROK-DUEL-B01-B-20261112-R1",
+  "task_id": "B01",
+  "phase": "CG-B",
+  "title": "Select existing material writer and bounded household state ABI",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "160cbbd0ae00fb965004085c0e07c872384fe0ff",
+  "opponent_head_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "branch": "codex/sorok-duel-b01-b-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "BREAKING_INTERFACE",
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "Same-branch household/parent-choice schemas and P2Owner.material_fact key set are unchanged. A verified C12 fork may now carry a fact established on an ancestor; read branch is current, document branch remains provenance."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "New module-level branch_is_ancestor and optional fork-only state_scope field (C12_FORK_WITHOUT_S46_INTERVAL_STATE). No new owner, scheduler, ledger, clock or database."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "p2_owner.py byte change alters P3Owner._code_pins()/config_hash. A-era roots created at edbb4b344 and all pre-B01 roots refuse cold reopen with P3_CONFIG_CHANGED. No migration invented."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "house.py imports p2_owner.branch_is_ancestor. A mixed cut with B house.py and A p2_owner.py fails at import. Pair3 C01 must rebase/reconcile both files together."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "The fork proof is an in-process verified-owner read/action; full P6 cold fork reopen remains blocked by P2 owner/P3 branch binding outside this lease."
+    }
+  ],
+  "summary": "Preserved A's existing S47/P2 checkpoint writer and bounded p6_household ABI, established the C12 fork defect on A's exact HEAD, and repaired the actual P2/P6 readers to follow a verified ancestor branch without rebinding source or creating a new owner. Same-branch reads are unchanged; fork reads are pure and preserve source while the bound material hash changes.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "added": [
+        "branch_is_ancestor"
+      ],
+      "changed": [
+        "P2Owner.material_fact"
+      ],
+      "unchanged_owner_protocol": [
+        "P2Owner.__init__",
+        "P2Owner.validate_proposal",
+        "P2Owner.realize",
+        "P2Owner.actor_experience",
+        "P2Owner.snapshot"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+      "added": [
+        "branch_is_ancestor import",
+        "branch_ok parameter on _read_household_document"
+      ],
+      "changed": [
+        "read_household",
+        "read_house"
+      ],
+      "unchanged": [
+        "HOUSEHOLD_SCHEMA",
+        "HOUSEHOLD_READ_SCHEMA",
+        "SOROK_PARENT_CHOICE_INPUT@1 field set",
+        "place/owner/resource binding rules",
+        "read_house source/root/room/object/history checks"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py",
+      "added_tests": [
+        "test_c12_fork_carries_ancestor_household_without_rebinding_source",
+        "test_world_resource_value_changes_material_hash_not_source",
+        "test_bound_resource_and_owner_severance_refuse_and_restore"
+      ]
+    }
+  ],
+  "fork_semantics": {
+    "stored_branch": "establishment provenance; retained in the stored p6_household/p6_house documents",
+    "read_branch": "current C12 branch; returned by readers",
+    "source": "content/schema hash excluding root, branch, epoch, source; stable across fork",
+    "material_hash": "bound current-state hash including root, current branch, clock, epoch, source, place, owner, resolved resources; changes on fork even when resolved values are equal",
+    "acceptance": "current branch or verified C12 ancestor with lineage, copied-prefix/shared-root verification, acyclic parent chain, and epoch <= fork_clock at every copied edge",
+    "refusal": "sibling/foreign branch, malformed row, missing store, invalid epoch, or fact established after fork",
+    "read_purity": "no episode, checkpoint, world event, perception, owner, scheduler or branch write"
+  },
+  "actual_consumer": [
+    "house.read_household(session) on current branch and verified C12 child branch",
+    "house.parent_choice_input(session) on current branch and verified C12 child branch",
+    "P2Owner.material_fact(\"p6_household\") on current branch and verified C12 child branch",
+    "house.read_house(session) / house.scene(session) / house.perform(session, GO) on a C12 child branch",
+    "parent first consumer remains NONE_VERIFIED; no parent decision/action/utterance"
+  ],
+  "affected_queued_tasks": [
+    {
+      "task_id": "B02",
+      "effect": "May use fork-aware household reads. Must decide P3 old-root recreation or deliberate pin migration before adding period state. Do not treat parent document.branch as current write authority."
+    },
+    {
+      "task_id": "B03",
+      "effect": "May extend place/tenancy/noise/resource facts. Existing one-shot establishment has no update path; a later household update/rebind must be explicit."
+    },
+    {
+      "task_id": "B04",
+      "effect": "Still owns crash-atomic composite establishment, acquisition/refusal, recurring cost and exactly-once material retry. B01 remains two checkpoints and one-shot."
+    },
+    {
+      "task_id": "B05",
+      "effect": "May use the household/parent input; cold fork and multicycle duration remain unproved."
+    },
+    {
+      "task_id": "C01",
+      "effect": "Active Pair3 consumer: normal schemas unchanged, but B house.py requires p2_owner.branch_is_ancestor. Mixed A p2_owner + B house.py is an import failure; rebase both files at a safe checkpoint. Parent identity must not treat holder A as the parent."
+    },
+    {
+      "task_id": "C03",
+      "effect": "Parent first consumer still NONE_VERIFIED; parent decision input must now bind a real parent and must not use provenance branch as current write authority."
+    },
+    {
+      "task_id": "C04",
+      "effect": "Child P6 event bodies retain parent house branch provenance on a fork; do not assume event.body.branch == session.branch_id. Speech/private-reason separation remains untouched."
+    },
+    {
+      "task_id": "F01",
+      "effect": "A generated imported root with an existing household on a different branch will not re-establish through the one-shot path; read the copied fact or add an explicit import/rebind operation."
+    },
+    {
+      "task_id": "CG-A cross-input",
+      "effect": "CG-A p2_owner pin still does not match; do not presume received. The new branch_is_ancestor and fork state_scope are B01-B additions."
+    }
+  ],
+  "preserved_obligations": [
+    "Existing S47/P2 objective world remains the sole material owner; p6_household lives in world.resources and the P2 snapshot.",
+    "Existing P6 house rooms/objects/history source and provenance checks remain; full test_house 8/8 and full test_mii 18/18 pass.",
+    "Same-branch P2Owner.material_fact keep A's exact verification and key set; state_scope is fork-only.",
+    "Cold same-branch subprocess restore remains identical with unchanged read counts.",
+    "No PsycheStore MEDIATOR or test-local later_decision is consumed by household/parent readers.",
+    "No new owner, scheduler, person-world ledger, actor owner, clock, database or duplicate material ledger.",
+    "No parent action, utterance, hidden reason or first consumer fabricated.",
+    "Native/science/rights/human/merge holds remain separate and unchanged."
+  ],
+  "regressed_obligations": [
+    "p2_owner.py byte change breaks P3 code-pin roots created under A's edbb4b344 as well as pre-B01 roots; current code refuses them with P3_CONFIG_CHANGED. Evidence: evidence/p3_code_pin_a_era.log.",
+    "Full P6 cold fork reopen remains blocked by P2Owner binding/P3 config outside B01; the fork proof is in-process verified-owner only.",
+    "SOROK-P6-CHRONOLOGY-PROOF-20261107-R1 still fails identically at protected baseline for MII exposure sequencing; not caused or repaired by B01."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py@160cbbd0ae00fb965004085c0e07c872384fe0ff",
+    "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py@160cbbd0ae00fb965004085c0e07c872384fe0ff",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+    "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/vendor/r30a/vendor/r29p/candidate/vendor/bp4/bp4/store.py"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/test_b01_household.py",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/b01_household_b.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p6_test_house_b.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/p6_test_mii_b.log",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/adjacent_b.log"
+  ],
+  "negative_refs": [
+    "test_psyche_store_kitchen_mediator_cannot_stand_for_a_world_fact",
+    "test_material_fact_writer_refuses_psyche_records_and_foreign_sources",
+    "test_c12_fork_carries_ancestor_household_without_rebinding_source (foreign-branch refusal)",
+    "test_bound_resource_and_owner_severance_refuse_and_restore",
+    "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_head_fork_refusal.log"
+  ],
+  "cold_refs": [
+    "test_changed_value_severance_restore_and_cold_reopen: fresh subprocess cold reopen; household and parent JSON identical to restored baseline; counts unchanged",
+    "test_c12_fork_carries_ancestor_household_without_rebinding_source: fork reads unchanged counts; not a cold fork test"
+  ],
+  "fork_defect_evidence": {
+    "opponent_sha": "edbb4b344d54731a527fd415a965bc848ed964e1",
+    "evidence": "WORKER_RETURNS/SOROK-DUEL-B01-R1/evidence/a_head_fork_refusal.log",
+    "before": "read_household OK on parent; after real C12 fork_alt child, read_household/parent_choice_input/read_house/material_fact all refused",
+    "after": "same sequence on B implementation reads successfully; source stable, material_hash bound changes, P6 GO admitted on child"
+  },
+  "cost": {
+    "status": "PARTIAL",
+    "tokens": null,
+    "usd": null,
+    "wall_s": 510.89,
+    "detail": "Executed suite wall time 61.18 + 163.14 + 231.99 + 54.58 = 510.89s plus A-head/A-era probes. Controller/provider token, latency, RSS, retry instrumentation unavailable; no figures invented."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY_CANDIDATE",
+    "science": "HELD",
+    "source_or_rights": "HELD",
+    "human_or_actor": "HELD",
+    "protected_merge": "NOT_CLAIMED"
+  },
+  "proof_boundaries": [
+    "No native CAN/ADP/Pyat science, actor/human right, source right or protected merge.",
+    "No parent decision/action/utterance; first consumer NONE_VERIFIED.",
+    "No B02 calendar, B03 dwelling/noise/tenancy commit, B04 acquisition/refusal or B05 multicycle duration.",
+    "No crash-atomic composite establishment, concurrent-writer safety or exactly-once material retry.",
+    "No cold fork reopen through P2Owner/P3Owner.",
+    "No same-root P6 PsycheStore MEDIATOR injection.",
+    "No cryptographic authorization from source; source is a content address.",
+    "A-era and pre-B01 P3 code-pin roots are incompatible; no migration invented.",
+    "Two ChatGPT Library architecture records remain NOT_INSPECTED locally; no contents claimed."
+  ],
+  "handoff": "WORKER_RETURNS/SOROK-DUEL-B01-R1/AGENT_B_HANDOFF.md",
+  "abi_revision": "WORKER_RETURNS/SOROK-DUEL-B01-R1/B01_ABI_B_REVISION.md"
+}

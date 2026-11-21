@@ -22,6 +22,53 @@ from outward import OPERATIONS, establish_demo_conditions, perform as perform_ou
 from situated import reconsider
 from situated_provider import ModelUnavailable, SituatedProvider
 
+def parent_background_operation(state, *, operation, request):
+    """Internal P6 seam: normal P4 independent-activity entry for parent work.
+
+    Does not expose parent material on the user scene surface and does not
+    create a second ledger/controller. The caller must use a fresh/valid root;
+    a corrupted root still refuses at check_boundary.
+    """
+    from run_p4 import run_parent_operation
+    return run_parent_operation(
+        state, operation=operation, request=request)
+
+
+def _child_speech_experience(session, *, event_id=None, operation_id=None):
+    from developmental_recursion.parent_speech import read_child_experience
+    from situated import recent_speech
+
+    if event_id is None and operation_id is None:
+        raise RecursionRefusal("P6_CHILD_EXPERIENCE_SCHEMA")
+    child_id = session.read_root()["actor_ids"][0]
+    experience = read_child_experience(
+        session, child_id, event_id=event_id, operation_id=operation_id)
+    recent = recent_speech(session)
+    row = next((item for item in recent
+                if item.get("event_id") == experience.get("event_id")), None)
+    result = {
+        **experience,
+        "p6_experience_source": "situated.recent_speech",
+        "p6_recent_speech": row,
+        "user_view": "NOT_EXPOSED",
+    }
+    if experience.get("status") != "PERCEIVED":
+        return result
+    if row is None:
+        raise RecursionRefusal("P6_CHILD_EXPERIENCE_NOT_IN_ACTOR_CONTEXT")
+    if (row.get("clock") != experience["occurrence_clock"]
+            or row.get("text") != experience["response_input"]["public_text"]
+            or row.get("speaker") != experience["speaker_alias"]):
+        raise RecursionRefusal("P6_CHILD_EXPERIENCE_CONTEXT_MISMATCH")
+    return result
+
+
+def child_speech_experience(session, *, event_id=None, operation_id=None):
+    """Public P6 seam for the actual Nadia-qualified parent speech consumer."""
+    return _child_speech_experience(
+        session, event_id=event_id, operation_id=operation_id)
+
+
 def PACE(fanin, action):
     # Off-room location is not evidence of obstruction. Use the received
     # UNKNOWN mode so elapsed time records no fabricated workshop cause.
@@ -79,6 +126,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                 mii.save_profile(gaze_file, profile)
                 return result
             check_boundary(owner, ledger)
+            if command == "child-experience":
+                return _child_speech_experience(
+                    session, event_id=getattr(args, "event_id", None),
+                    operation_id=getattr(args, "operation_id", None))
             prior = scene(session)
             outcome = None
             if command in ({"go", "look", "wait", "attend", "inspect", "inspect-particular"} | OPERATIONS.keys()) and invitation(session, ledger):
@@ -241,6 +292,11 @@ def main():
     particular.add_argument("--property")
     particular.add_argument("--request-id")
     commands.add_parser("view")
+    child = commands.add_parser(
+        "child-experience",
+        help="Nadia-qualified current parent speech experience (not user view).")
+    child.add_argument("--event-id")
+    child.add_argument("--operation-id")
     wait = commands.add_parser("wait")
     wait.add_argument("duration", type=int)
     wait.add_argument("--request-id")

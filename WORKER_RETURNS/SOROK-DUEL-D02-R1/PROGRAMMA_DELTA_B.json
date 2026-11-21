@@ -1,0 +1,121 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D02-B-20261112-dba782dd",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D02",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "dba782ddf15dd9d8db261c08b515944dcea4b8e4",
+  "handoff_provenance": "Final artifact is the codex/sorok-duel-d02-b-counter-20261112-r1 HEAD commit containing AGENT_B_HANDOFF.md; implementation_sha is the immutable B code cut.",
+  "author_branch": "codex/sorok-duel-d02-b-counter-20261112-r1",
+  "composition_sha": "b169b1aafb5df53bef2a3e02b1ab780930dfcd32",
+  "rival_head": "0d591ff6eab1477bc7e5058e1dd7740813125d19",
+  "status": "SOURCEFREE_S2_PARTIAL_PREREQUISITE_HELD",
+  "changed_symbols": [
+    "p3.situated_context.build_situated_context",
+    "p3.situated_context.source_closure",
+    "p3.situated_context._source_closure",
+    "p3.situated_context._selected_source_files",
+    "p3.situated_context._projection_module",
+    "p3.situated_context._latest_perceived",
+    "p3.situated_context._event_temporal",
+    "p3.situated_context._access_identity",
+    "p3.situated_context._check_session_alignment",
+    "p3.situated_context._material",
+    "p3.situated_context._relations",
+    "p3.situated_context._options",
+    "p3.situated_context.B02_INGRESS",
+    "tests.test_d02_b_repairs"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "No new owner, writer, scheduler, database, loader or global source authority.",
+    "build_situated_context keeps its existing required arguments and adds optional expected_source_closure.",
+    "The context document gains additive source_closure, b02_ingress, selected-event clock/ordinal, selection_basis and event/current co-presence fields.",
+    "Behavioral corrections: latest perceived is selected by event time/ordinal, access hashes exclude read-time world_clock, event-time and current co-presence are separated, pending P3 operations refuse.",
+    "The exact D02 source closure is not added to the global P3Owner config pins; it is a D02 context-boundary closure."
+  ],
+  "affected_queued_tasks": ["D03", "D04", "D05"],
+  "affected_task_notes": {
+    "D03": "May consume the repaired selector via the existing provider context; must use event_co_present/current_co_present explicitly and must not treat admissible_options as native choices.",
+    "D04": "May consume the material/observation/access split; must add its own target rules and cannot use a selector label as acquired state or a performed action.",
+    "D05": "Must add the distinct prospective performed consumer; D02 is read-only input, not a performed event or actor cognition."
+  },
+  "actual_consumer": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py:RecursionCycle._call provider context (tested through RecursionCycle.bootstrap); downstream later P3 proposal input",
+  "producer": "p3.situated_context.build_situated_context over actual P3Owner/P2Owner, B03/P6 household, C01 actor access and S45 projection",
+  "source_identities": {
+    "situated_context_sha256": "1242d0ce39cc356e0591a5ff4eb73fba3e58000a9488b40dffa32759a2726ccf",
+    "test_d02_b_repairs_sha256": "89d1e6277ab07c67639ba9b9de178aa20cee4453f4b2cca7494a964095171987",
+    "b02_ingress_contract_sha256": "ddc1497c3e544ba4da7476233209834a580946a057aa400a4133363a0fb0ac4c",
+    "supporting_actor_c01_b_sha256": "35e43d8c924d6ea30b4376ef8bed4a8af5b68dd81d636e1cf9033da4320b9c5a",
+    "house_b03_a_sha256": "6c892ea7525bc608ccd332dce9ee5ea7dc25397092f9c2db9ef44bd4e17d3436",
+    "p3_owner_d01_relay_sha256": "81be18dae3c4c5d9d79f68ee7146be13055a24c4b63bb54019b8ce9d3931b44b",
+    "state_store_d01_relay_sha256": "fc878ce928d9aca305166bfd1b24f4f5c31923b9479f6d47ac4a0bd54402589a",
+    "s45_projection_sha256": "6e7771000b0d50abcdc990192a2d834171640371e6e814694a918eb9286386fd"
+  },
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_b_repairs.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_b_all_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_b_composition_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d01_b_regression_pytest.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/p3_b_regression_pytest.log"
+    ],
+    "negative": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/D02_A_CURRENT_SELECTION_CONFLICT.txt",
+      "test_actual_events_select_latest_event_time_not_lexical_action_id",
+      "test_temporal_helper_uses_event_clock_when_world_clock_is_constant",
+      "test_current_co_presence_without_event_perception_is_not_eligible",
+      "test_foreign_house_module_is_not_the_selected_reader",
+      "test_pending_p3_operation_refuses_a_new_context"
+    ],
+    "cold": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/D02_B_FIXED_SELECTION.txt",
+      "test_event_access_hash_is_stable_when_world_clock_advances",
+      "test_remembered_event_relation_is_not_current_co_presence",
+      "test_changed_selected_source_refuses_then_restores",
+      "test_source_closure_is_exact_selected_reader_set",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/tests/test_d02_composition_prereq.py"
+    ]
+  },
+  "preserved_obligations": [
+    "A's D01 relay deletion/record-list repair and P3Owner actual-owner store.verify() closure",
+    "A's D02 objective material/position split, parent-private and portal-gaze exclusion, composition test and provider-context boundary",
+    "P3Owner/PsycheStore lifecycle, source/state identity, MISSING_RULE/NOT_ISSUED boundaries",
+    "P2Owner sole world writer; no second scheduler or ledger",
+    "P6 user scene/situated.py and C01/B03/other pair files untouched",
+    "native CAN/ADP/Pyat, rights, actor/human, C12 and protected merge held"
+  ],
+  "regressed_obligations": [
+    "No functional regression observed: D02 16 passed, composition 1 passed, D01 15 passed, P3 77 passed/1 skipped.",
+    "Intentional semantic tightening: co_present remains current, event_co_present must be used for the selected-event relation; access hashes no longer include read-time world_clock; pending P3 operations refuse.",
+    "D02 source closure may invalidate an expected context when any selected file changes; old P3/world roots and pre-composition fixtures require recreation/re-pinning."
+  ],
+  "b02_ingress": {
+    "status": "PREREQUISITE_HELD_NOT_QUALIFIED",
+    "contract_doc": "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT.md",
+    "claim": "Current-clock selector only; no period/date/calendar mapping invented."
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d02_all": 376.06,
+      "d02_composition": 17.87,
+      "d01_regression": 84.85,
+      "p3_regression": 48.24
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD",
+    "notes": "pytest wall-clock only; selector reads 12 closure files and takes an extra base snapshot per build. No microbenchmark or model calls."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_PARTIAL_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}

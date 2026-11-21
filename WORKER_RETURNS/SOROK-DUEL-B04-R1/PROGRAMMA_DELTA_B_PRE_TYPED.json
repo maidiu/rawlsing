@@ -1,0 +1,221 @@
+{
+  "event_id": "SOROK-DUEL-B04-B05-B-20261112-R1",
+  "task_id": "B04/B05",
+  "phase": "CG-B",
+  "title": "Material throughline: B04 parent purchase composition and B05 one-debit rolling rent",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "4a3c45cda7d814df0c60ca4e245499fcfca62162",
+  "frozen_start_sha": "2a47fb389b453c2f902b8c13ed52304fb40efd0d",
+  "a_production_sha": "62292613aa9210a7d3e944314e36924349337439",
+  "a_result_sha": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "branch": "codex/sorok-duel-b04-b05-b-counter-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_C02_BRIDGE_AND_PRIOR_P3_CODE_PIN_BREAK",
+  "classification_detail": [
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "B04 purchase signature and receipt schema retained; admitted purchase now appends a C02-recognized P2_PARENT_MATERIAL_ANTECEDENT material-state bridge with operation_kind=PURCHASE_MATERIAL_STATE. Not a WORK/DEBT/CIRCUMSTANCE claim."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "The frozen composition's parent_activity._parent_material_history does not recognize P2_PARENT_PURCHASE. The bridge is a B04-owned compatibility path; full purchase-history exposure still needs the exact Pair3 hook in B04_B_ABI_REVISION.md."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "B04 material_operations.lock and parent_activity.lock serialization; B05 rolling_reproduction.lock serialization around read/check/write. No new scheduler or ledger."
+    },
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "Prior p2_owner byte cuts (5bc29474e/993339851/362719b40/etc.) invalidate P3 code-pin roots. This round does not migrate or weaken pins."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "Crash rollback and actual three-event P3 BatchEngine integration were added; no full cross-boundary batch or cold fork claim."
+    },
+    {
+      "class": "SCIENTIFIC_HOLD",
+      "detail": "No native/science/source-rights/actor-human authority or protected merge."
+    }
+  ],
+  "summary": "Repaired A B04's frozen-composition failure against returned C02: a purchase now commits a C02-compatible parent material-state bridge in the same P2/C12 transaction, so parent material/options/purchase reads and B05 parent work no longer fail history validation, without forging a WORK/DEBT/CIRCUMSTANCE activity or editing Pair3. Added material/parent and rent locks, forced-checkpoint rollback tests, and a real three-event P3 BatchEngine + B04 purchase + B05 rent integration after the B02 employment split.",
+  "changed_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py",
+      "added": [
+        "_purchase_lock",
+        "C02-compatible PARENT_MATERIAL_KIND material-state bridge",
+        "purchase_drum_kit parent/material lock wrapper",
+        "establish_market_inventory lock wrapper"
+      ],
+      "changed": [
+        "purchase_drum_kit (now public locked wrapper over _purchase_drum_kit)"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py",
+      "added": [
+        "_rent_lock",
+        "apply_household_rent locked wrapper"
+      ],
+      "changed": [
+        "apply_household_rent (now public locked wrapper over _apply_household_rent)"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py",
+      "added": [
+        "C02 material-history consistency after purchase",
+        "later parent activity stale retry/no double debit",
+        "purchase checkpoint crash rollback"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py",
+      "added": [
+        "rent checkpoint crash rollback and exact one-debit recovery"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py",
+      "added": [
+        "actual three-event P3 BatchEngine after B02 employment split",
+        "B04 purchase then B05 rent integration"
+      ]
+    }
+  ],
+  "actual_consumer": [
+    "C02 parent_activity.read_parent_material / parent_feasible_actions / read_parent_history after B04 purchase (material-state bridge)",
+    "material_operations.read_owned_objects / read_market_inventory / read_purchase",
+    "rolling_reproduction.read_household_obligation and apply_household_rent",
+    "historical_period.read_material_period / period_progress in the batch/material integration"
+  ],
+  "c02_composition": {
+    "defect_at_frozen_cut": "B04 updates parent material but C02 _parent_material_history ignores P2_PARENT_PURCHASE; A's B04/B05 tests fail PARENT_MATERIAL_HISTORY_MISMATCH.",
+    "bridge": "Admitted B04 purchase appends P2_PARENT_MATERIAL_ANTECEDENT material-state record with post-purchase material source/content and operation_kind=PURCHASE_MATERIAL_STATE in the same transaction.",
+    "not_a_fake_activity": true,
+    "pair3_hook_required": {
+      "input": "P2_PARENT_PURCHASE episode body root, branch, actor_id, alias, operation_id, status, receipt, material_after_source",
+      "output": "_parent_material_history source ordering and read_parent_history purchase-kind/operation exposure",
+      "consumer": "parent_activity.read_parent_material/read_parent_history/parent_feasible_actions and C03/C04"
+    },
+    "parent_activity_edited": false
+  },
+  "b02_integration": {
+    "custom_employment_change": "2026-01-15",
+    "materialize_to": "2026-01-16",
+    "batch": "actual three-event P3 BatchEngine (vertical:event:4..6) with exact existing plan hashes",
+    "then": "B04 parent-funded purchase; materialize_to 2026-07-01; B05 rent period:2026-h1",
+    "result": "B02 split/currentness read; three actual P3 records with MISSING_RULE; one purchase/ownership; rent 55->43; B03 REFUSED_AFFORDABILITY; P3 head unchanged by B04/B05",
+    "limit": "Batch is after the split; B02 materialize calls between individual events are not proved. period_uncovered records P3 event-tick gaps."
+  },
+  "affected_queued_tasks": [
+    {
+      "task_id": "C02/C03/C04",
+      "effect": "B04 purchase now keeps C02 current material history consistent; Pair3 must recognize P2_PARENT_PURCHASE for full purchase history and reconcile PARENT_B02_HOLD/historical_dates. No fake parent activity or decision added."
+    },
+    {
+      "task_id": "D02",
+      "effect": "Actual B02/B04/B05 material reads are available; active Pair2 input is not rebased."
+    },
+    {
+      "task_id": "E01/E02",
+      "effect": "May consume B04 ownership/stock and B05 historical household obligations; no public event/Nadia perception is claimed."
+    },
+    {
+      "task_id": "F01",
+      "effect": "No P6 live-root claim; P6 house/MII remain green but normal entry is Pair3-owned."
+    },
+    {
+      "task_id": "B05 follow-on",
+      "effect": "No arrears/variable rent/landlord balance/currency conversion; one rent per completed period with refusal blocking alternate operation."
+    }
+  ],
+  "preserved_obligations": [
+    "B01/B03 household/dwelling/feasibility production unchanged and green.",
+    "A's B02 incremental/currentness/receipt implementation unchanged and its 9 tests pass.",
+    "A's B04/B05 material fact schemas, purchase checks, refusal no-debit, rent receipt arithmetic, no public event, no P3 psychology preserved.",
+    "C02 MATERIAL_ACTIVITY vocabulary and history-bound reads preserved; no parent_activity.py edit.",
+    "P6 house/MII suites green; no P6 situated.py/bp4 event vocabulary/P3 file edit.",
+    "No new scheduler, second ledger, parent store, currency conversion, or possession-by-narrative.",
+    "No native/science/rights/human/merge authority."
+  ],
+  "regressed_obligations": [
+    "C02 read_parent_history does not expose P2_PARENT_PURCHASE as purchase history until the exact Pair3 hook is implemented; only the material-state bridge/current material read is coherent.",
+    "C02 PARENT_B02_HOLD and historical_dates=NOT_AVAILABLE remain stale Pair3-owned literals.",
+    "B04 bridge may need reconciliation/removal if Pair3 later recognizes purchase kind directly, to avoid duplicate history rows.",
+    "B02 batch is after the employment split; full cross-boundary materialize-between-events batch remains unproved.",
+    "B05 rent receipt may report period_uncovered for P3 event-tick gaps; no full scheduled coverage claim; no arrears model.",
+    "P3 code-pin roots from prior p2_owner cuts remain incompatible; no migration.",
+    "Preexisting P6 chronology MII proof failure remains at baseline; not caused by B04/B05."
+  ],
+  "source_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/material_operations.py@4a3c45cda7d814df0c60ca4e245499fcfca62162",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/rolling_reproduction.py@4a3c45cda7d814df0c60ca4e245499fcfca62162",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py@62292613aa9210a7d3e944314e36924349337439",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py@2a47fb389b453c2f902b8c13ed52304fb40efd0d"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rolling.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_rollback.py",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/test_b05_batch_cycle.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_period.py",
+    "WORKER_RETURNS/SOROK-DUEL-B02-R1/test_b02_incremental.py"
+  ],
+  "negative_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/a_frozen_b04_failure.log: A B04 tests fail PARENT_MATERIAL_HISTORY_MISMATCH at frozen 2a47 composition",
+    "B04 later parent activity -> PURCHASE_REPLAY_STALE, no second debit",
+    "B04 forced checkpoint failure -> no parent debit/stock/ownership/bridge/receipt",
+    "B04 refusal no debit/stock/ownership; B01 household cash untouched",
+    "B05 forced checkpoint failure -> no cash debit/receipt; cold pre-rent",
+    "B05 duplicate period/different operation -> B05_RENT_ALREADY_RECORDED",
+    "B05 insufficient household cash -> REFUSED no debit",
+    "C02 material history consistency after purchase; bridge is material not activity",
+    "B02 future employment not current; past retrospective; outside/past target refused"
+  ],
+  "cold_refs": [
+    "B04/B05 existing cold subprocess tests remain green after bridge/locks",
+    "B04 crash test closes/reopens exact pre-purchase state",
+    "B05 crash test closes/reopens exact pre-rent state and admits one later rent",
+    "B02 cold/replay and receipt recovery tests remain green"
+  ],
+  "evidence": {
+    "B02": "WORKER_RETURNS/SOROK-DUEL-B02-R1/evidence/b02_b_verified.log",
+    "B04": "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/b04_b.log",
+    "B05": "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/b05_b.log",
+    "combined": "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/b01_b02_b03_b04_b05_b_combined.log",
+    "p6_adjacent": "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/p6_adjacent_b.log",
+    "p6_mii": "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/p6_mii_b.log"
+  },
+  "cost": {
+    "status": "PARTIAL",
+    "tokens": null,
+    "usd": null,
+    "wall_s": 997.68,
+    "detail": "Executed suites: B04 45.20 + B05 72.10 + B02 83.88 + combined 332.40 + P6 adjacent 216.57 + P6 MII 247.53 = 997.68s. Controller/provider token/RSS/retry instrumentation unavailable; no figures invented."
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_ONLY_CANDIDATE",
+    "science": "HELD",
+    "source_or_rights": "HELD",
+    "human_or_actor": "HELD",
+    "protected_merge": "NOT_CLAIMED"
+  },
+  "proof_boundaries": [
+    "No native science, actor/human right, source right, or protected merge.",
+    "No mother decision/utterance/hidden reason or Nadia uptake; no public purchase/rent event/perception.",
+    "No full P3 batch across a B02 split with materialize between events; no full scheduled coverage claim.",
+    "No landlord balance/arrears/variable rent/currency conversion.",
+    "No cold fork; no full P6 live-turn proof.",
+    "No P3 pin migration; prior roots incompatible.",
+    "No independent nonauthor receiving; A/B are competing authors.",
+    "Two Library architecture records NOT_INSPECTED locally."
+  ],
+  "handoff": "WORKER_RETURNS/SOROK-DUEL-B04-R1/AGENT_B_HANDOFF.md",
+  "b05_handoff": "WORKER_RETURNS/SOROK-DUEL-B05-R1/AGENT_B_HANDOFF.md",
+  "b02_handoff": "WORKER_RETURNS/SOROK-DUEL-B02-R1/AGENT_B_RELAY_HANDOFF.md",
+  "b04_abi": "WORKER_RETURNS/SOROK-DUEL-B04-R1/B04_B_ABI_REVISION.md",
+  "b05_abi": "WORKER_RETURNS/SOROK-DUEL-B05-R1/B05_B_ABI_REVISION.md"
+}

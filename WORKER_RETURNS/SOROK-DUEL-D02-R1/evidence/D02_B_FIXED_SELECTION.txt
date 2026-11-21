@@ -1,0 +1,15 @@
+# Captured at the B D02 code cut in this return (same ten-event actual fixture as D02_A_CURRENT_SELECTION_CONFLICT.txt).
+# Selection uses event_time/ordinal; the selector chooses the latest actual event (clock 252), not the lexicographic action id (clock 234).
+# The source closure is the 12-file selected reader/P3-owner closure; B02 remains PREREQUISITE_HELD_NOT_QUALIFIED.
+# Case state root in task-local scratch.
+latest_by_event_time (252, 11, 'TEST_ONLY_BP4_WORLD_EVT_193f98ccbd054990c2f0566d3a0caaff1a8d7cd4147d622e62ae54fa6d3ebd63')
+lexicographically_largest_ref (234, 5, 'TEST_ONLY_BP4_WORLD_EVT_fca8db867dda0468bf9f4535bc50ae0c9c513d37498c2ad606cbef7fc7b57d73')
+conflict True
+selector_observation_event_id TEST_ONLY_BP4_WORLD_EVT_193f98ccbd054990c2f0566d3a0caaff1a8d7cd4147d622e62ae54fa6d3ebd63
+selector_observation_event_clock 252
+selector_selected_latest? True
+selector_identity_clock 252
+source_closure_hash 022378d0c5f43bb3f6d217410a07b2f0c5cb2dd8ffb90ce5de03ff9cab956df3
+source_closure_file_count 12
+b02_status PREREQUISITE_HELD_NOT_QUALIFIED
+selector_hash 8df07c06e7b423fda36fb8e08f842fe614b9260086a21c59f23a3e284ae38285

@@ -1,0 +1,65 @@
+{
+  "event_id": "SOROK-DUEL-B04-A-SEMANTIC-20261112-R1",
+  "task_id": "B04",
+  "phase": "CG-B",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "d2a0a4eadab4ba99ae830c8e47013e60295a4632",
+  "b_lock_commit": "4a3c45cda7d814df0c60ca4e245499fcfca62162",
+  "b_start": "15472ca725e03be1c87faef8c30511edcdf10111",
+  "branch": "codex/sorok-duel-b04-b05-a-semantic-interleave-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "COMPATIBLE_ADDITIVE_WITH_P3_CODE_PIN_BREAK_AND_C02_TYPED_HOOK_PENDING",
+  "classification_detail": [
+    {"class": "BREAKING_INTERFACE", "detail": "B's antecedent material-state bridge is removed. Post-purchase C02 parent reads/feasible/activity refuse until a typed purchase-history hook."},
+    {"class": "NEW_CONSUMER", "detail": "read_purchase consumes the typed P2_PARENT_PURCHASE receipt and ownership acquisition through C01 registration, and exposes the actual C02 status."},
+    {"class": "SOURCE_OR_AUTHORITY", "detail": "p2_owner bytes still invalidate prior P3 code-pin roots; no migration."}
+  ],
+  "changed_symbols": [
+    "material_operations._purchase_drum_kit", "material_operations.purchase_drum_kit",
+    "material_operations.read_purchase", "material_operations._purchase_lock",
+    "p2_owner.MATERIAL_FACT_SLOTS"
+  ],
+  "actual_reader": [
+    {"name": "material_operations.read_purchase", "returns": "receipt, owned totals, parent_material_status, purchase_history_hook"},
+    {"name": "material_operations.read_owned_objects", "returns": "source-qualified ownership totals"},
+    {"name": "material_operations.read_market_inventory", "returns": "source-qualified stock"}
+  ],
+  "typed_hook": {
+    "record": "P2_PARENT_PURCHASE",
+    "consumer": "parent_activity._parent_material_history / read_parent_history / read_parent_material / parent_feasible_actions",
+    "status": "PENDING_PAIR3",
+    "bridge": "REMOVED_NOT_ADOPTED"
+  },
+  "preserved_obligations": [
+    "B locks and atomic checkpoint rollback",
+    "B01 household cash untouched",
+    "no fake WORK/DEBT/CIRCUMSTANCE/ANTECEDENT",
+    "stock/ownership/refusal/no public event",
+    "B04 cold/restore independent"
+  ],
+  "regressed_obligations": [
+    "post-purchase C02 parent reads refuse until typed hook",
+    "second purchase/post-purchase parent work refused until typed hook",
+    "prior P3 roots incompatible"
+  ],
+  "affected_queued_tasks": [
+    "C02 typed purchase-history hook (Pair3)",
+    "C03/C04 parent decision/utterance/uptake",
+    "B05 cross-boundary batch/rent",
+    "P3 receiving/pin migration"
+  ],
+  "test_refs": [
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py",
+    "WORKER_RETURNS/SOROK-DUEL-B04-R1/evidence/b04_a_semantic.log",
+    "WORKER_RETURNS/SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log"
+  ],
+  "negative_refs": [
+    "PARENT_MATERIAL_HISTORY_MISMATCH", "PURCHASE_PARENT_UNAVAILABLE",
+    "no PURCHASE_MATERIAL_STATE antecedent", "wrong owner/currency/parent/price/branch/source",
+    "funds/time/stock/acoustic refusal no effect", "market severance/restore", "checkpoint crash rollback"
+  ],
+  "cold_refs": ["test_purchase_cold_restore_and_source_severance", "test_purchase_crash_rolls_back_parent_stock_ownership_and_history"],
+  "cost": {"status": "UNKNOWN", "reason": "No controller/provider token, latency, RSS or retry instrumentation available."},
+  "note": "Executed author evidence at one cut; independent nonauthor receiving required. B bridge is historical and not adopted."
+}
