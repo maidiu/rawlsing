@@ -440,7 +440,7 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertEqual(len(available),1)
         self.assertEqual(available[0]['orientation_mode'],'WITHHOLD')
         self.assertEqual(available[0]['lived_genesis_basis'][
-            'coexperienced_other_ref'],'father')
+            'coexperienced_other_refs'],['father'])
         self.assertTrue(available[0]['lived_genesis_basis'][
             'other_may_not_have_caused_bodily_course'])
         receipt=admit(actor,second,'world:father2',available)[0]
@@ -450,7 +450,7 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertIsNotNone(option(self._r29_situated_beside(actor)))
         self.assertEqual(len(actor['historical_orientations']),1)
         self.assertEqual(actor['historical_orientations'][0][
-            'coexperienced_other_ref'],'father')
+            'coexperienced_other_refs'],['father'])
         self.assertEqual(actor['historical_orientations'][0]['acquisition'],
                          'REPEATED_LIVED_BODY_COURSE')
 
@@ -487,14 +487,37 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertIsNone(option(father))
         self.assertIsNotNone(option(mother))
 
-    def test_mulch_r29_multi_other_presence_is_underdetermined_not_blamed(self):
-        actor=adult('crowd','Crowd')
+    def test_mulch_r29_multi_other_field_matures_without_blame(self):
+        actor=adult('family','Family')
         self._r29_lived_in_other_presence(
             actor,'x',1,['mother','father'],'WITHHOLD')
         latest=self._r29_lived_in_other_presence(
             actor,'y',2,['mother','father'],'WITHHOLD')
+        proposed=possible_lived_directional_orientation(
+            actor,latest,'world:y')
+        self.assertEqual(len(proposed),1)
+        self.assertEqual(proposed[0]['lived_genesis_basis'][
+            'coexperienced_other_refs'],['father','mother'])
+        self.assertTrue(proposed[0]['lived_genesis_basis'][
+            'other_may_not_have_caused_bodily_course'])
+        admit(actor,latest,'world:y',proposed)
+        # A household field is not a judgment that EITHER parent caused harm.
+        together=self._r29_situated_beside(actor,'mother','father')
+        father=self._r29_situated_beside(actor,'father')
+        mother=self._r29_situated_beside(actor,'mother')
+        self.assertIsNone(option(together))
+        self.assertIsNotNone(option(father))
+        self.assertIsNotNone(option(mother))
+        self.assertEqual(actor['historical_orientations'][0][
+            'coexperienced_other_refs'],['father','mother'])
+
+    def test_mulch_r29_large_crowd_does_not_invent_field_identity(self):
+        actor=adult('many','Many')
+        others=['other'+str(i) for i in range(9)]
+        self._r29_lived_in_other_presence(actor,'a',1,others,'WITHHOLD')
+        now=self._r29_lived_in_other_presence(actor,'b',2,others,'WITHHOLD')
         self.assertEqual(possible_lived_directional_orientation(
-            actor,latest,'world:y'),[])
+            actor,now,'world:b'),[])
         self.assertEqual(actor['historical_orientations'],[])
 
     def test_mulch_r29_forged_social_source_is_atomically_rejected(self):
@@ -503,9 +526,9 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         now=self._r29_lived_in_other_presence(actor,'b',2,'father','WITHHOLD')
         valid=possible_lived_directional_orientation(actor,now,'world:b')[0]
         original=repr(actor)
-        for rewrite in ('mother',None,'institution:fantasy'):
+        for rewrite in (['mother'],[],['institution:fantasy']):
             bad=deepcopy(valid)
-            bad['lived_genesis_basis']['coexperienced_other_ref']=rewrite
+            bad['lived_genesis_basis']['coexperienced_other_refs']=rewrite
             with self.assertRaises(InvalidDevelopment):
                 admit(actor,now,'world:b',[bad])
             self.assertEqual(repr(actor),original)
