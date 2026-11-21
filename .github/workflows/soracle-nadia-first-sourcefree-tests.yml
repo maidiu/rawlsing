@@ -23,6 +23,21 @@ jobs:
       - name: Compile all organism modules
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m compileall -q um_sorok_organism
+      - name: R3 x R16 joined child-life / source-ledger first consumer
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_r3_r16_joined_first_consumer
+          python -O -m unittest -v tests.test_r3_r16_joined_first_consumer
+      - name: REMONT R16 exact typed snapshot, recruitment, trial protections
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_r16_r12_local_machine_reconcile
+          python -O -m unittest -v tests.test_r16_r12_local_machine_reconcile
+      - name: REMONT R15 P012 and P018 inherited source/inhibition court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_remontathon_r15_source_and_inhibition
+          python -O -m unittest -v tests.test_remontathon_r15_source_and_inhibition
       - name: New developmental-genesis first consumers
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
