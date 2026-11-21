@@ -651,115 +651,115 @@ A meal costs something to somebody. Who pays, how they talk about it, whose fina
 
 ### 104 cross-lineage user/theory propositions, all preserved in original wording
 
-**Provenance grade:** C01–C44 came from the earlier shared SORACLE-CO/NEIGHBOR bank, NM-001–NM-044 from #1275's actual user-idea register, and R9-01–R9-16 from directly available latest corrections/author proposals. These overlap; unchallenged assistant proposals are not automatically user-settled architecture. The following cells preserve their source wording and statuses. A missing original message is NOT retroactively recovered by this list.
+These are **provenance-graded** assertions and candidate claims, not 104 independently verified user decisions. An unchallenged assistant proposition is not silently promoted to the status of a user instruction. Historic source categories are preserved rather than rewritten as “accepted.”
 
-| ID | Original source proposition | Preservation / disposition |
-|---|---|---|
+| ID | Source and original status | Original proposition | Surviving prior disposition |
+|---|---|---|---|
+| C01 | R8_SHARED_BANK · U✓ | The UX is meeting an **unchosen particular neighbor**, not a rescue mission, dating funnel, therapy service or general open-world strategy game. | RETAIN_AND_AUDIT |
+| C02 | R8_SHARED_BANK · U✓ | Focal user experience is Nadia-centered **without world or actor computationally bent** toward or away from visitor-centric results. | RETAIN_AND_AUDIT |
+| C03 | R8_SHARED_BANK · U✓ | No intimacy, trust, health, ethics, success, access, dependency or generosity as universal displayed/hidden progression points. | RETAIN_AND_AUDIT |
+| C04 | R8_SHARED_BANK · U✓ | **Exact same SES and demographic homology at entry**, not merely near-class; match ordinary *cost burden*, including the cost of her gifts. | RETAIN_AND_AUDIT |
+| C05 | R8_SHARED_BANK · U✓ | Same cost at entry may be **discovered implicitly** by ordinary purchases or Nadia paying, not didactically announced or required to notice. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
+| C06 | R8_SHARED_BANK · U✓ | Independent material change may cause later relative divergence; no permanent rebalancing or all-life equivalence. | RETAIN_AND_AUDIT |
+| C07 | R8_SHARED_BANK · U✓ | Hidden world-owned money/wage/rent costs, resource projection rather than detailed work simulation; workday, pay, rent, obligations persist. | RETAIN_AND_AUDIT |
+| C08 | R8_SHARED_BANK · O | Exact 18%-of-bar denominator and equivalence algebra not recovered/adopted; no formula invention. | RETAIN_AND_AUDIT |
+| C09 | R8_SHARED_BANK · U+ | A particularly plausible user/person first-contact **prelude is generated from who the particular persona is**, late in historical construction. | RETAIN_AND_AUDIT |
+| C10 | R8_SHARED_BANK · U✓ | Default: user is the **neighbor**, not the appointed tutor/caretaker or someone summoned to solve a task. | RETAIN_AND_AUDIT |
+| C11 | R8_SHARED_BANK · U+ | Opening reasons include car keys/skill, outdoor cigarette contact, ingredient borrowing and genuine actor initiative; context determines exact object. | RETAIN_AND_AUDIT |
+| C12 | R8_SHARED_BANK · U✓ | First-contact must be historically plausible for Nadia and admit real willingness, refusal, awkwardness and no invitation. | RETAIN_AND_AUDIT |
+| C13 | R8_SHARED_BANK · O | How to preserve real human agency if a prelude describes unplayed earlier talk or “you refused Thursday”; bounded setup vs playable event. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
+| C14 | R8_SHARED_BANK · O | Root-precontact truth versus branch-local opening event and versioned shared backfill; no cross-user contact contamination. | RETAIN_AND_AUDIT |
+| C15 | R8_SHARED_BANK · P | Person/world first, event proposal second, typed admission/actor meaning third, finite human perspective last; never story-prose authority. | RETAIN_AND_AUDIT |
+| C16 | R8_SHARED_BANK · U✓ | **A day must have happened** while user absent, without automatic app engagement blame; compressed, concrete, actor/world causal history. | RETAIN_AND_AUDIT |
+| C17 | R8_SHARED_BANK · U✓ | Events continue while visiting: cooking, homework, children, caller, date, guests, door knock; others initiate and act independently. | RETAIN_AND_AUDIT |
+| C18 | R8_SHARED_BANK · U✓ | Real current-world events can condition material life; actors know only what they plausibly encounter; disagreements are genuine possible relations. | RETAIN_AND_AUDIT |
+| C19 | R8_SHARED_BANK · U✓ | Ordinary activity, quiet repetition, slower acquisition or genuinely **no durable change** are possible; no emotional revelation quota. | RETAIN_AND_AUDIT |
+| C20 | R8_SHARED_BANK · U✓ | SORACLE-CO indirect-effect examples are allowed, **not targets**: third-party bonds, private change, becoming independently capable, self-only change, loved withdrawal. | RETAIN_AND_AUDIT |
+| C21 | R8_SHARED_BANK · U✓ | Emotionally/intimately attached or even dependent outcome may also emerge; no anti-visitor independence script. | RETAIN_AND_AUDIT |
+| C22 | R8_SHARED_BANK · U✓ | Act of harm, coercion, sex work or unconventional sexuality does **not** universally imply trauma, moral punishment or standardized family condemnation. | RETAIN_AND_AUDIT |
+| C23 | R8_SHARED_BANK · U✓ | Family/friends/children/partners, employers and other Others have independent projects, experiences, self-interpretations and causal rights. | RETAIN_AND_AUDIT |
+| C24 | R8_SHARED_BANK · P | Real human is not literally a native historical person; thin local shell, meaningful portal translations, no fake full childhood. | RETAIN_AND_AUDIT |
+| C25 | R8_SHARED_BANK · P | User's actual thought/attention/language/negotiation are meaningful acts; goals don't automatically prove success; actor-specific world feasibility. | RETAIN_AND_AUDIT |
+| C26 | R8_SHARED_BANK · P | User system-profile may become richly evidence-grounded and support perception, but Nadia forms an independent, fallible actor-local model of user. | RETAIN_AND_AUDIT |
+| C27 | R8_SHARED_BANK · P | Objective event, perception, actor memory, self-story, testimony and user understanding stay distinct; ATTEND cannot author hidden truth. | RETAIN_AND_AUDIT |
+| C28 | R8_SHARED_BANK · U✓ | Original alpha may show 1→3→5 **richly constituted** personas, not wealthy people or restricted wealthy audience. | RETAIN_AND_AUDIT |
+| C29 | R8_SHARED_BANK · U+ | Eventual Roll may be 1–2 scarce commissions of genuinely unchosen person roots added to shareable bank; exact entitlement economics open. | RETAIN_AND_AUDIT |
+| C30 | R8_SHARED_BANK · U✓ | Same root, different user branches; after contact no mutual history/memory merge. Users discuss differing experiences externally. | RETAIN_AND_AUDIT |
+| C31 | R8_SHARED_BANK · P | Pre-contact late root detail may become shared only if independently constrained by canon and compatible with active branch history. | RETAIN_AND_AUDIT |
+| C32 | R8_SHARED_BANK · U✓ | Free exit, repair, alienation, fallible intimacy, no fake no-show guilt or coercive reminders; time advances independently. | RETAIN_AND_AUDIT |
+| C33 | R8_SHARED_BANK · P | Personhood can be intensified in everyday household activity without second minigame or arbitrary action loop. | RETAIN_AND_AUDIT |
+| C34 | R8_SHARED_BANK · P | Product data, retention, monetization and platform event selection are power; synthetic character harms not moral evidence of real sentience. | RETAIN_AND_AUDIT |
+| C35 | R8_SHARED_BANK · P | Population-weighted global draws need empirical PYAT qualification; 5 seeds do not demonstrate world distribution. | RETAIN_AND_AUDIT |
+| C36 | R8_SHARED_BANK · P | Sourcefree approximation is acceptable with explicit scientific/owner boundaries and actual testing; renderer alone not living organism. | RETAIN_AND_AUDIT |
+| C37 | R8_SHARED_BANK · U✓ | Nothing entitles the visitor to Nadia's time; her willingness changes according to her actual history, not good-Humaning point awards. | RETAIN_AND_AUDIT |
+| C38 | R8_SHARED_BANK · P | Distinct human invite, persona introduction and fresh root commission; no implicit paid or moralized single entitlement. | RETAIN_AND_AUDIT |
+| C39 | R8_SHARED_BANK · S | Prior “approximately comparable socioeconomic peers” at entry must never return as the controlling product requirement. | RETAIN_AND_AUDIT |
+| C40 | R8_SHARED_BANK · S | Prior example treating tutoring as the encounter's default purpose is rejected; tutoring may be an event after acquaintance. | RETAIN_AND_AUDIT |
+| C41 | R8_SHARED_BANK · O | Single published encounter opening vs individualized branch entrances: specify whether seed forks share opening cause, timestamps and local-shell facts. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
+| C42 | R8_SHARED_BANK · O | Intro scene may be too implausible for some deeply private people; product cannot force home access. Decide how honest short/failed openings are handled. | RETAIN_AND_AUDIT |
+| C43 | R8_SHARED_BANK · U+ | New **persona-specific encounter occasion** should be very late in generation, just before her simulated day/live scene, not an early LLM-designed character profile. | RETAIN_AND_AUDIT |
+| C44 | R8_SHARED_BANK · U✓ | Preserve final Round Seven kernel and final dual proposition verbatim (section 2). | RETAIN_AND_AUDIT |
+| NM-001 | PR1275_USER_IDEA_BANK · User, latest exact · Existing theory; stronger material-life first consumer required | Societal forces are inside significant Others, not just background constraints around Nadia | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-002 | PR1275_USER_IDEA_BANK · User, latest exact · Existing; recruit into current response/action | Nadia's identification/alienation is constituted through actual dyadic relations | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-003 | PR1275_USER_IDEA_BANK · User, latest exact · Existing; full higher-order operation not proven | Other people have evolving relationships **with each other**, not solely toward Nadia | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-004 | PR1275_USER_IDEA_BANK · User, latest exact · New explicit scenario/falsifier; partial existing code | Family patterns of identification, alliance and tension wax/wane with circumstances without a family mind | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-005 | PR1275_USER_IDEA_BANK · User, latest exact · New specific longitudinal falsifier | Dad hardworking and unjustly unappreciated → discovered infidelity → prior Nadia loyalty is reinterpreted, not erased | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-006 | PR1275_USER_IDEA_BANK · User, latest exact · User's runtime boundary hypothesis; consequences outside still matter | Bound deep characters to entrants into Nadia's house and causally important ties for tractability | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-007 | PR1275_USER_IDEA_BANK · User, latest exact · Existing law; tiering gap | Independent Others may be cheaper in psychology but cannot be pretend-consenting puppets | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-008 | PR1275_USER_IDEA_BANK · User, latest exact · New cross-owner method hypothesis; never claim survey data observes psyche | Family dialectical-field mapping might be structurally related to PYAT's conditioned multi-variable modeling | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-009 | PR1275_USER_IDEA_BANK · User, latest exact · Specific hypothetical stress test, not categorical rule | Teen Nadia's self-contradictory atheism/Western-culture/freedom identification in historically particular Lebanon | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-010 | PR1275_USER_IDEA_BANK · User, latest exact · Specific contradictory relation-to-relation case | Brother's loving loyalty to mother and masculine duty reproduces restrictions Nadia opposes | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-011 | PR1275_USER_IDEA_BANK · User, latest exact · Distinct anti-score and anti-polarization falsifier | Brother and Nadia can be *extraordinarily close* while strongly divided by family/gender/culture | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-012 | PR1275_USER_IDEA_BANK · User, latest exact · New specific world/field consequence | Father living abroad with new household; transnational absence reorganizes home and sibling roles | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-013 | PR1275_USER_IDEA_BANK · User, latest exact · Invention requires cautious medical/world causality, not blame-script | Mother's health, grief and affection are independent, not merely results of daughter's choices | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-014 | PR1275_USER_IDEA_BANK · User, latest exact · Explicit source hold | Do not infer completion of unfinished `and the` point | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-015 | PR1275_USER_IDEA_BANK · User, latest exact · Governing changed work priority | No new architecture or coding without whole SOROK source consultation and total initial mulch | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-016 | PR1275_USER_IDEA_BANK · User, latest exact · Additive bank delivered, protected adoption held | Bank **every** consequential idea in existing NEIGHBORMULCH, not just PR notes scattered elsewhere | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-017 | PR1275_USER_IDEA_BANK · Earlier, banked · Partial sourcefree executed notice-only | Same proposed external occasion, different postcontact world applicability | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-018 | PR1275_USER_IDEA_BANK · Earlier, banked · Not implemented | Inapplicable common occasion leaves space for a different branch-conditioned event | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-019 | PR1275_USER_IDEA_BANK · Earlier, banked · Partial owners, joined reentry incomplete | A day passes with person continuing while visitor absent | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-020 | PR1275_USER_IDEA_BANK · Earlier, banked · Narrow actor-beat executed | Live environment/Other interruptions can occur during conversation | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-021 | PR1275_USER_IDEA_BANK · Earlier, banked · Joined household scene not proven | One interruption may intersect cooking, child homework, wage labor and conversation | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-022 | PR1275_USER_IDEA_BANK · Earlier, banked · Partial one-writer implementation | Visitor attempts to help, refuse or argue with consequences but no authored coactor response | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-023 | PR1275_USER_IDEA_BANK · Earlier, banked · Original game law already present | No scene should be organized as an explicit moral-choice menu | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-024 | PR1275_USER_IDEA_BANK · Earlier, banked · Qualified external news ingress missing | Real public/world events exist independently of Nadia's awareness | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-025 | PR1275_USER_IDEA_BANK · Earlier, banked · Source-qualified consumer gap | Exposure depends on Nadia's actual media/language/material routine/history | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-026 | PR1275_USER_IDEA_BANK · Earlier, banked · No forced anger, open experiential consumer | Urgency, ignorance, outrage, fury or refusal can arise from material stakes | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-027 | PR1275_USER_IDEA_BANK · Earlier, banked · Partial selected actor-local models | Different siblings/family can acquire different versions of same public event | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-028 | PR1275_USER_IDEA_BANK · Earlier, banked · Sourcefree partial, fuller face-saving gap | Public speech may hide an operative private emotional response | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-029 | PR1275_USER_IDEA_BANK · Earlier, banked · New specific long-term falsifier | Later politeness/relational availability may change without visitor being told why | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-030 | PR1275_USER_IDEA_BANK · Earlier, banked · EXISTING, prior assistant missing-function claim retracted | Shared root and post-contact user forks must remain distinct; real past can deepen by Birkenstocks mechanism | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-031 | PR1275_USER_IDEA_BANK · Earlier, banked · Original hypothesis; product design gap | Small initial seed pool enables user stories about differently encountered Nadias | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-032 | PR1275_USER_IDEA_BANK · Earlier, banked · Existing end, new funding scenario | Rolling is an *investment in an unchosen Other*, not buying compliance or the best personality | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-033 | PR1275_USER_IDEA_BANK · Earlier, banked · New not-yet-chosen product policy | Periodic free roll and optional extra paid persona genesis | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-034 | PR1275_USER_IDEA_BANK · Earlier, banked · Open alternatives, not chosen | Fair one-time reroll after immediate total exclusion may protect paid visitor without returnable persons | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-035 | PR1275_USER_IDEA_BANK · Earlier, banked · New product-policy axis | Distinguish prefab, generated, delayed-open, invited, shared and discoverable persona pools | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-036 | PR1275_USER_IDEA_BANK · Earlier, banked · New attribution/privacy design | Roller may learn others encountered the generated origin but cannot own it or see their private history | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-037 | PR1275_USER_IDEA_BANK · Earlier, banked · Undecided sponsor proposal | Candidate aligned sponsors may help fund operation without turning actor into ad or attachment commodity | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-038 | PR1275_USER_IDEA_BANK · Earlier, banked · Material cause needs full joined consumer | Player behavior may change Nadia's work/art/housing and thereby the real later day | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-039 | PR1275_USER_IDEA_BANK · Earlier, banked · Health/world science hold | Father's medical path different across worlds cannot be scripted from policy/medicine preference | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-040 | PR1275_USER_IDEA_BANK · Earlier, banked · Existing deep spine; sharpened current falsifiers | Game is consequential participation in history larger than visitor, not branching dialogue or affection simulator | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-041 | PR1275_USER_IDEA_BANK · Earlier, banked · Existing mechanism, do not rebuild | A user discovers existing precontact object/photo history which may qualify shared root without granting historical authorship | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-042 | PR1275_USER_IDEA_BANK · Earlier, banked · Existing law, protect | No visiting person or source can convert another's private belief into a factual world oracle | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-043 | PR1275_USER_IDEA_BANK · Earlier, banked · Executable slices, full circuit pending | User action can alter what becomes possible for Other but not choose their independent consent or inner development | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| NM-044 | PR1275_USER_IDEA_BANK · Earlier, banked · Original end, human alpha still unproved | Spirit/solidarity through uncoerced recognition, not retention/ideology-conditioning rewards | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
+| R9-01 | DIRECT_USER | Same SES/ordinary burden at entry exists as world truth, not automatically as visitor knowledge | CONSERVE_MATCH_SUPERSEDE_KNOWLEDGE |
+| R9-02 | DIRECT_USER | The only financial HUD is the user's own resources; Nadia's precise balance is not displayed or guaranteed known | NEW_CONTROLLING_EPISTEMIC_RULE |
+| R9-03 | DIRECT_USER | Offering or asking purchase price may blink a relative-cost preview on user's own resource bar; Nadia reacts actor-locally | NEW_UX_SURFACE_HYPOTHESIS |
+| R9-04 | DIRECT_USER | Splitting Dutch, asking painful money questions, or offering to pay are real situated negotiations, not scripted reactions | NEW_ACTIVITY_CASE |
+| R9-05 | DIRECT_USER | One or both independent financial conditions may diverge later without announcement; participants need not notice | NEW_TIME_AND_OPACITY |
+| R9-06 | DIRECT_USER | Money inequality changes ability to feel financial pain; no reward-lesson should disclose the inequality automatically | NEW_HISTORICAL_CONSEQUENCE |
+| R9-07 | DIRECT_USER | Avoid endless prewritten openings; generate possible encounter based on persona's condition that day | PREFERRED_NEW_IDEA_WITH_ALTERNATIVE_RETAINED |
+| R9-08 | DIRECT_USER | Question: How could player-as-neighbor have met Nadia at this moment, based on live shared/branch-conditional conditions? | NEW_CONTINGENT_CONTACT_PROBLEM |
+| R9-09 | DIRECT_USER | Opening product constitutes bounded advance consent to encounter and allows plausible authored prior fictional conversation or invitation | CATEGORICAL_NO_PRELUDE_RULE_RETRACTED |
+| R9-10 | RESEARCH_INFERENCE | A user-unaffected reference Nadia may continue to day of opening, then a branch-local visitor contact forks without changing global reference | PROVISIONAL_ARCHITECTURE_NOT_CLAIMED_IMPLEMENTED |
+| R9-11 | DIRECT_USER | Consult PR #1275 TOTAL SOROK source union at exact user-provided HEAD and Actions | INDEPENDENTLY_VERIFIED_SOURCE |
+| R9-12 | DIRECT_USER | Backfill conversation transcript where available and source-grade scrape surviving concepts; disclose missing original turns | EXECUTED_PARTIAL_SOURCE_BANK |
+| R9-13 | RESEARCH_INFERENCE | R8 claimed player knows Nadia's actual financial sacrifice from own bar; that was unwarranted epistemic promotion | RETRACTION |
+| R9-14 | RESEARCH_INFERENCE | Low-stakes prior fictional event such as missed Tuesday/accepted Thursday can be authored by encounter premise, not external life claim | REVISED_BOUNDED_PRELUDE |
+| R9-15 | RESEARCH_INFERENCE | On-demand contact at today-state versus generated reusable openings remains design alternatives; prefer causal on-demand if feasible | OPEN_ALTERNATIVE |
+| R9-16 | METHOD_REQUIREMENT | No tool exports full original ChatGPT conversation here, so only directly visible turns marked transcribed; older gaps explicit | TRANSCRIPT_GRADE_HOLD |
 
-| C01 | The UX is meeting an **unchosen particular neighbor**, not a rescue mission, dating funnel, therapy service or general open-world strategy game. | RETAIN_AND_AUDIT |
-| C02 | Focal user experience is Nadia-centered **without world or actor computationally bent** toward or away from visitor-centric results. | RETAIN_AND_AUDIT |
-| C03 | No intimacy, trust, health, ethics, success, access, dependency or generosity as universal displayed/hidden progression points. | RETAIN_AND_AUDIT |
-| C04 | **Exact same SES and demographic homology at entry**, not merely near-class; match ordinary *cost burden*, including the cost of her gifts. | RETAIN_AND_AUDIT |
-| C05 | Same cost at entry may be **discovered implicitly** by ordinary purchases or Nadia paying, not didactically announced or required to notice. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
-| C06 | Independent material change may cause later relative divergence; no permanent rebalancing or all-life equivalence. | RETAIN_AND_AUDIT |
-| C07 | Hidden world-owned money/wage/rent costs, resource projection rather than detailed work simulation; workday, pay, rent, obligations persist. | RETAIN_AND_AUDIT |
-| C08 | Exact 18%-of-bar denominator and equivalence algebra not recovered/adopted; no formula invention. | RETAIN_AND_AUDIT |
-| C09 | A particularly plausible user/person first-contact **prelude is generated from who the particular persona is**, late in historical construction. | RETAIN_AND_AUDIT |
-| C10 | Default: user is the **neighbor**, not the appointed tutor/caretaker or someone summoned to solve a task. | RETAIN_AND_AUDIT |
-| C11 | Opening reasons include car keys/skill, outdoor cigarette contact, ingredient borrowing and genuine actor initiative; context determines exact object. | RETAIN_AND_AUDIT |
-| C12 | First-contact must be historically plausible for Nadia and admit real willingness, refusal, awkwardness and no invitation. | RETAIN_AND_AUDIT |
-| C13 | How to preserve real human agency if a prelude describes unplayed earlier talk or “you refused Thursday”; bounded setup vs playable event. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
-| C14 | Root-precontact truth versus branch-local opening event and versioned shared backfill; no cross-user contact contamination. | RETAIN_AND_AUDIT |
-| C15 | Person/world first, event proposal second, typed admission/actor meaning third, finite human perspective last; never story-prose authority. | RETAIN_AND_AUDIT |
-| C16 | **A day must have happened** while user absent, without automatic app engagement blame; compressed, concrete, actor/world causal history. | RETAIN_AND_AUDIT |
-| C17 | Events continue while visiting: cooking, homework, children, caller, date, guests, door knock; others initiate and act independently. | RETAIN_AND_AUDIT |
-| C18 | Real current-world events can condition material life; actors know only what they plausibly encounter; disagreements are genuine possible relations. | RETAIN_AND_AUDIT |
-| C19 | Ordinary activity, quiet repetition, slower acquisition or genuinely **no durable change** are possible; no emotional revelation quota. | RETAIN_AND_AUDIT |
-| C20 | SORACLE-CO indirect-effect examples are allowed, **not targets**: third-party bonds, private change, becoming independently capable, self-only change, loved withdrawal. | RETAIN_AND_AUDIT |
-| C21 | Emotionally/intimately attached or even dependent outcome may also emerge; no anti-visitor independence script. | RETAIN_AND_AUDIT |
-| C22 | Act of harm, coercion, sex work or unconventional sexuality does **not** universally imply trauma, moral punishment or standardized family condemnation. | RETAIN_AND_AUDIT |
-| C23 | Family/friends/children/partners, employers and other Others have independent projects, experiences, self-interpretations and causal rights. | RETAIN_AND_AUDIT |
-| C24 | Real human is not literally a native historical person; thin local shell, meaningful portal translations, no fake full childhood. | RETAIN_AND_AUDIT |
-| C25 | User's actual thought/attention/language/negotiation are meaningful acts; goals don't automatically prove success; actor-specific world feasibility. | RETAIN_AND_AUDIT |
-| C26 | User system-profile may become richly evidence-grounded and support perception, but Nadia forms an independent, fallible actor-local model of user. | RETAIN_AND_AUDIT |
-| C27 | Objective event, perception, actor memory, self-story, testimony and user understanding stay distinct; ATTEND cannot author hidden truth. | RETAIN_AND_AUDIT |
-| C28 | Original alpha may show 1→3→5 **richly constituted** personas, not wealthy people or restricted wealthy audience. | RETAIN_AND_AUDIT |
-| C29 | Eventual Roll may be 1–2 scarce commissions of genuinely unchosen person roots added to shareable bank; exact entitlement economics open. | RETAIN_AND_AUDIT |
-| C30 | Same root, different user branches; after contact no mutual history/memory merge. Users discuss differing experiences externally. | RETAIN_AND_AUDIT |
-| C31 | Pre-contact late root detail may become shared only if independently constrained by canon and compatible with active branch history. | RETAIN_AND_AUDIT |
-| C32 | Free exit, repair, alienation, fallible intimacy, no fake no-show guilt or coercive reminders; time advances independently. | RETAIN_AND_AUDIT |
-| C33 | Personhood can be intensified in everyday household activity without second minigame or arbitrary action loop. | RETAIN_AND_AUDIT |
-| C34 | Product data, retention, monetization and platform event selection are power; synthetic character harms not moral evidence of real sentience. | RETAIN_AND_AUDIT |
-| C35 | Population-weighted global draws need empirical PYAT qualification; 5 seeds do not demonstrate world distribution. | RETAIN_AND_AUDIT |
-| C36 | Sourcefree approximation is acceptable with explicit scientific/owner boundaries and actual testing; renderer alone not living organism. | RETAIN_AND_AUDIT |
-| C37 | Nothing entitles the visitor to Nadia's time; her willingness changes according to her actual history, not good-Humaning point awards. | RETAIN_AND_AUDIT |
-| C38 | Distinct human invite, persona introduction and fresh root commission; no implicit paid or moralized single entitlement. | RETAIN_AND_AUDIT |
-| C39 | Prior “approximately comparable socioeconomic peers” at entry must never return as the controlling product requirement. | RETAIN_AND_AUDIT |
-| C40 | Prior example treating tutoring as the encounter's default purpose is rejected; tutoring may be an event after acquaintance. | RETAIN_AND_AUDIT |
-| C41 | Single published encounter opening vs individualized branch entrances: specify whether seed forks share opening cause, timestamps and local-shell facts. | SUPERSEDED_OR_REOPENED_BY_DIRECT_USER_R9 |
-| C42 | Intro scene may be too implausible for some deeply private people; product cannot force home access. Decide how honest short/failed openings are handled. | RETAIN_AND_AUDIT |
-| C43 | New **persona-specific encounter occasion** should be very late in generation, just before her simulated day/live scene, not an early LLM-designed character profile. | RETAIN_AND_AUDIT |
-| C44 | Preserve final Round Seven kernel and final dual proposition verbatim (section 2). | RETAIN_AND_AUDIT |
-| NM-001 | Societal forces are inside significant Others, not just background constraints around Nadia | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-002 | Nadia's identification/alienation is constituted through actual dyadic relations | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-003 | Other people have evolving relationships **with each other**, not solely toward Nadia | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-004 | Family patterns of identification, alliance and tension wax/wane with circumstances without a family mind | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-005 | Dad hardworking and unjustly unappreciated → discovered infidelity → prior Nadia loyalty is reinterpreted, not erased | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-006 | Bound deep characters to entrants into Nadia's house and causally important ties for tractability | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-007 | Independent Others may be cheaper in psychology but cannot be pretend-consenting puppets | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-008 | Family dialectical-field mapping might be structurally related to PYAT's conditioned multi-variable modeling | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-009 | Teen Nadia's self-contradictory atheism/Western-culture/freedom identification in historically particular Lebanon | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-010 | Brother's loving loyalty to mother and masculine duty reproduces restrictions Nadia opposes | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-011 | Brother and Nadia can be *extraordinarily close* while strongly divided by family/gender/culture | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-012 | Father living abroad with new household; transnational absence reorganizes home and sibling roles | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-013 | Mother's health, grief and affection are independent, not merely results of daughter's choices | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-014 | Do not infer completion of unfinished `and the` point | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-015 | No new architecture or coding without whole SOROK source consultation and total initial mulch | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-016 | Bank **every** consequential idea in existing NEIGHBORMULCH, not just PR notes scattered elsewhere | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-017 | Same proposed external occasion, different postcontact world applicability | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-018 | Inapplicable common occasion leaves space for a different branch-conditioned event | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-019 | A day passes with person continuing while visitor absent | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-020 | Live environment/Other interruptions can occur during conversation | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-021 | One interruption may intersect cooking, child homework, wage labor and conversation | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-022 | Visitor attempts to help, refuse or argue with consequences but no authored coactor response | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-023 | No scene should be organized as an explicit moral-choice menu | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-024 | Real public/world events exist independently of Nadia's awareness | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-025 | Exposure depends on Nadia's actual media/language/material routine/history | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-026 | Urgency, ignorance, outrage, fury or refusal can arise from material stakes | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-027 | Different siblings/family can acquire different versions of same public event | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-028 | Public speech may hide an operative private emotional response | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-029 | Later politeness/relational availability may change without visitor being told why | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-030 | Shared root and post-contact user forks must remain distinct; real past can deepen by Birkenstocks mechanism | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-031 | Small initial seed pool enables user stories about differently encountered Nadias | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-032 | Rolling is an *investment in an unchosen Other*, not buying compliance or the best personality | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-033 | Periodic free roll and optional extra paid persona genesis | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-034 | Fair one-time reroll after immediate total exclusion may protect paid visitor without returnable persons | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-035 | Distinguish prefab, generated, delayed-open, invited, shared and discoverable persona pools | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-036 | Roller may learn others encountered the generated origin but cannot own it or see their private history | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-037 | Candidate aligned sponsors may help fund operation without turning actor into ad or attachment commodity | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-038 | Player behavior may change Nadia's work/art/housing and thereby the real later day | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-039 | Father's medical path different across worlds cannot be scripted from policy/medicine preference | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-040 | Game is consequential participation in history larger than visitor, not branching dialogue or affection simulator | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-041 | A user discovers existing precontact object/photo history which may qualify shared root without granting historical authorship | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-042 | No visiting person or source can convert another's private belief into a factual world oracle | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-043 | User action can alter what becomes possible for Other but not choose their independent consent or inner development | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| NM-044 | Spirit/solidarity through uncoerced recognition, not retention/ideology-conditioning rewards | RETAIN_AS_PR1275_SOURCE_AND_AUDIT_ACTUAL_CONSUMER |
-| R9-01 | Same SES/ordinary burden at entry exists as world truth, not automatically as visitor knowledge | CONSERVE_MATCH_SUPERSEDE_KNOWLEDGE |
-| R9-02 | The only financial HUD is the user's own resources; Nadia's precise balance is not displayed or guaranteed known | NEW_CONTROLLING_EPISTEMIC_RULE |
-| R9-03 | Offering or asking purchase price may blink a relative-cost preview on user's own resource bar; Nadia reacts actor-locally | NEW_UX_SURFACE_HYPOTHESIS |
-| R9-04 | Splitting Dutch, asking painful money questions, or offering to pay are real situated negotiations, not scripted reactions | NEW_ACTIVITY_CASE |
-| R9-05 | One or both independent financial conditions may diverge later without announcement; participants need not notice | NEW_TIME_AND_OPACITY |
-| R9-06 | Money inequality changes ability to feel financial pain; no reward-lesson should disclose the inequality automatically | NEW_HISTORICAL_CONSEQUENCE |
-| R9-07 | Avoid endless prewritten openings; generate possible encounter based on persona's condition that day | PREFERRED_NEW_IDEA_WITH_ALTERNATIVE_RETAINED |
-| R9-08 | Question: How could player-as-neighbor have met Nadia at this moment, based on live shared/branch-conditional conditions? | NEW_CONTINGENT_CONTACT_PROBLEM |
-| R9-09 | Opening product constitutes bounded advance consent to encounter and allows plausible authored prior fictional conversation or invitation | CATEGORICAL_NO_PRELUDE_RULE_RETRACTED |
-| R9-10 | A user-unaffected reference Nadia may continue to day of opening, then a branch-local visitor contact forks without changing global reference | PROVISIONAL_ARCHITECTURE_NOT_CLAIMED_IMPLEMENTED |
-| R9-11 | Consult PR #1275 TOTAL SOROK source union at exact user-provided HEAD and Actions | INDEPENDENTLY_VERIFIED_SOURCE |
-| R9-12 | Backfill conversation transcript where available and source-grade scrape surviving concepts; disclose missing original turns | EXECUTED_PARTIAL_SOURCE_BANK |
-| R9-13 | R8 claimed player knows Nadia's actual financial sacrifice from own bar; that was unwarranted epistemic promotion | RETRACTION |
-| R9-14 | Low-stakes prior fictional event such as missed Tuesday/accepted Thursday can be authored by encounter premise, not external life claim | REVISED_BOUNDED_PRELUDE |
-| R9-15 | On-demand contact at today-state versus generated reusable openings remains design alternatives; prefer causal on-demand if feasible | OPEN_ALTERNATIVE |
-| R9-16 | No tool exports full original ChatGPT conversation here, so only directly visible turns marked transcribed; older gaps explicit | TRANSCRIPT_GRADE_HOLD |
 
 ### Original SOROK H001–H190: exact historical harvest claims and statuses
 
@@ -1092,463 +1092,463 @@ A meal costs something to somebody. Who pays, how they talk about it, whose fina
 
 ### Original 144 O-Index function/source identities
 
-**These are owner/source leads and statuses, not an invitation to issue another duplicate engine.** The source corpus retains S0–S16 among this 144-identity family. A list of functional records cannot replace the protected OATH, G4, original producer, consumer, acceptance test or PR HEAD.
+These original 144 candidate functional/source identities include the seventeen S0–S16 historical workstreams. Source order, owner, first consumer, and original/current status are recorded to prevent new inventions through amnesia. This is an informational inventory, not a protected owner accession.
 
-| ID | Original functional identity / producer clue | Preserved research disposition |
-|---|---|---|
+| ID | Original function or source | Original owner and first consumer | Historical/current status |
+|---|---|---|---|
+| C0 | Source-qualified historical world and possibility | ORIGINAL_SOROK_C_A_OWNER; C4/C8 world and material possibility | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C1 | Situated subject and actual activity | ORIGINAL_SOROK_C_A_OWNER; CAN008 E1 actor relevance | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C2 | Needs, objects and motives | ORIGINAL_SOROK_C_A_OWNER; CAN008 action feasibility and later motive | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C3 | Individual organization, practice, mediation | ORIGINAL_SOROK_C_A_OWNER; C9 semantic version and E2 selection | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C4 | Material social lives and generation | ORIGINAL_SOROK_C_A_OWNER; C8 actual care/work encounter | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C5 | Differentiated expectations and relational history | ORIGINAL_SOROK_C_A_OWNER; Later actor-relative interpretation/action | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C6 | Real time, activity and interstitial continuity | ORIGINAL_SOROK_C_A_OWNER; CAN008 event feasibility, N/N+1 sequence | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C7 | Historical differentiated response under social powers | ORIGINAL_SOROK_C_A_OWNER; C9 actor action and later interpretation | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C8 | Independent world occurrence and access | ORIGINAL_SOROK_C_A_OWNER; C9 event candidate and actor access | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C9 | Canonical actor decision/version and later semantic reader | ORIGINAL_SOROK_C_A_OWNER; E2 actual semantic response, C12 actor mirror | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C10 | Event/model call and life recursion | ORIGINAL_SOROK_C_A_OWNER; C12 continuing person, N+1 | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C11 | Actual PRE-V3/Pyat physical weld | ORIGINAL_SOROK_C_A_OWNER; C12 world-to-actor source admission | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C12 | Pipeline-produced continuing person and forks | ORIGINAL_SOROK_C_A_OWNER; A0 person life and reentry | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A0 | Existing pipeline-generated individual | ORIGINAL_SOROK_C_A_OWNER; A1 living interaction | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A1 | Bounded live continuing life engine | ORIGINAL_SOROK_C_A_OWNER; A2 historical reentry | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A2 | Historical reentry and changed later action | ORIGINAL_SOROK_C_A_OWNER; A3 independent unfolding | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A3 | Independent ongoing life | ORIGINAL_SOROK_C_A_OWNER; A4 multiple lives | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A4 | Generalized persons and ecologies | ORIGINAL_SOROK_C_A_OWNER; A5 human alpha | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| A5 | Authorized human-facing alpha | ORIGINAL_SOROK_C_A_OWNER; Human participant evaluation | HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M01 | persistent BackboneState pattern | ORIGINAL_V3_SOURCE_OWNER; v3/engine/yearly_step.py::run_one_year, v3/core/derived.py::compute_all_derived | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M02 | material capacity | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M03 | psychological/regulatory capacity vector | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M04 | reproduction constraints | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M05 | A/S/V/Aim domains and latent/expressed Aim | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M06 | multidimensional alienation | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M07 | public/private/inner registers | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M08 | wound/sensitivity state | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M09 | cracks | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M10 | buffers and costs | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M11 | frameworks as metabolic operators | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M12 | collective infrastructure | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M13 | practice stack | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M14 | PeakRouting / loop topology / solidarity boundary | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M15 | need axes / expectation baseline | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M16 | StrivingObject | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M17 | Gift/Disruption shards / expectation events | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M18 | RuptureShard | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M19 | multi-year MetabolizationProcess | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M20 | magnets / relational field | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M21 | pressure-flow history / memory / grooves / conductance | ORIGINAL_V3_SOURCE_OWNER; v3/engine/yearly_step.py::run_one_year post-year pressure flow; v3/psyche/flow.py::run_pressure_flow_cycle | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M22 | child model / assumed rules / taboos / possible-world boundary | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M23 | autonomy/safety drives and conditions | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M24 | stability-threshold inertia | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M25 | yearly ordered causal spine | ORIGINAL_V3_SOURCE_OWNER; v3/engine/step_runner.py::run_n_years → v3/engine/yearly_step.py::run_one_year | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M26 | stored-versus-derived separation | ORIGINAL_V3_SOURCE_OWNER; v3/core/derived.py::compute_all_derived and original step invariant | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M27 | Pass 1 LLM proposal | ORIGINAL_V3_SOURCE_OWNER; v3/engine/run_llm_band.py Pass 1 | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M28 | score/select/apply boundary | ORIGINAL_V3_SOURCE_OWNER; v3/engine/run_llm_band.py selection | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M29 | Pass 2 render-only role | ORIGINAL_V3_SOURCE_OWNER; v3/render/phenomenology.py::render_year; V2 surface | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M30 | V3-under-V2 nonmutation architecture | ORIGINAL_V3_SOURCE_OWNER; v2/conversation_engine.py::prepare_conversation_turn | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M31 | life-course Enneagram emergence / end matcher | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M32 | old V5 runtime-input / field-injection bridge | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M33 | generic pseudo-random mechanical event sampler | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M34 | fallback concretization when Pass 1/selection yields nothing | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M35 | placeholder crack/framework invariant repair | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M36 | hopeful/medium parent defaults | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M37 | structural placeholder scene / annotation for non-LLM years | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M38 | dual derived-schedule declaration | ORIGINAL_V3_SOURCE_OWNER; v3/engine/yearly_step.py::_compute_derived_after_step | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M39 | server-side/manual rupture injection | ORIGINAL_V3_SOURCE_OWNER; HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| M40 | generation readiness / global ready surface | ORIGINAL_V3_SOURCE_OWNER; server/generation/store.py::readiness | EXACT_SELECTED_HISTORICAL_SOURCE_RECORDED__NOT_NATIVE_MODERN_ADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N01 | Needs, desires, motives and practical objects | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N02 | Thick, scoped expectations and early care | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N03 | Challenge, complication, threat and repair | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N04 | Simultaneous recruitment, tension and regulation | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N05 | Durable transition, changed relations and contradiction | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N06 | Interstitial activity, life-stages and social reproduction | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N07 | Independent others, power, care and relational feedback | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N08 | Differentiated impression, intensity, salience and no-change | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N09 | Actor's fallible autobiographical memory and meaning | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N10 | Later ideology, theology and cosmological rearticulation | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N11 | User-settled event-batch temporal recursion | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| N12 | Actual C12 person, coupled world and human encounter | SOROK_ORIGINAL_SCIENCE_OWNER; ORIGINAL_RULE_OR_NATIVE_CONSUMER_NOT_PROVEN | REVIEWED_THEORETICAL_REQUIREMENT__NOT_ORIGINAL_CAUSAL_LAW; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O01 | Need-object-motive | CAN009/010/011; C8/C9 action feasibility and later actor motive | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O02 | Care and early scoped expectations | CAN010/011 + ADP015 + world; Later actor anticipation/response | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O03 | Situated multistream Rule A | CAN008; C9 later CAN008 E2 response | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O04 | Challenge and repair | CAN008/011/012; Later C9 context-sensitive response | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O05 | Acquired practical operation | CAN010/011; Persisted PRACTICE to later E2 task performer | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O06 | New functional relation | CAN008/011 + domain science; Later C9 semantic selector | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O07 | Persistence, dormancy and nochange | CAN011; C9 version receipt to later E2 | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O08 | Independent coactor and material labor | C0/C4/C8/ADP019/SDTF; C8 objective world journal and actor-accessible event | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O09 | Material activity and intervals | C6/C8/CAN009/SDTF; C6/C8 interval and C9 condition read | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O10 | Trace versus remembered episode | ADP016; ADP016 actor-safe N+1 retrospective | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O11 | Sourced mistaken belief | ADP017; ADP017 N+1 and later CAN008 | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O12 | Reflection/SCI05 | SCI05/CAN/ADP; N+1 second-half batch authorization | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O13 | Socially learned concepts | CAN010/011/SCI05; C9 later interpretation/action | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O14 | Native Pyat C11 world weld | Pyat C0/C11 + source custodians; C11 to C12 native person | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O15 | Actual semantic E2 consumer | CAN008/C9/C12; C9 E2 actor-relative operation selector | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| O16 | Irreversible event batch policy | C6/C9/C12 + world owners; C8/C9/C12 world-executing F3 | DECISION_QUESTION_RECOVERED__ORIGINAL_ISSUANCE_NOT_VERIFIED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E01 | Rule A response | EDGE_OWNER_DEPENDS_ON_DECISION; C9 E2 CAN008 actor-relative source read | SPECIFIED_CARRIER_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E02 | Acquired practice and qualified nochange | EDGE_OWNER_DEPENDS_ON_DECISION; C9 Rule T receipt→later E2 earned-operation selector | SPECIFIED_CARRIER_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E03 | Needs/material motive and activity | EDGE_OWNER_DEPENDS_ON_DECISION; C6/C8 reality constraints→C9 actor feasible action | PARTIAL_SOURCEFREE; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E04 | Independent B real encounter | EDGE_OWNER_DEPENDS_ON_DECISION; B owner→C8 world occurrence→actor access | CONTROLLED_SOURCEFREE_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E05 | Canonical actor writer to reader | EDGE_OWNER_DEPENDS_ON_DECISION; C9 actor version+receipt+outbox→C9_READER E2 snapshot | TESTONLY_COMPONENTS_NOT_ASSEMBLED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E06 | Perception-preserving C12 fork | EDGE_OWNER_DEPENDS_ON_DECISION; JOIN-E C12 fork→C9 inherited history reader | SOURCEFREE_REPAIRED_FORK_CURRENT_C9_READER_PROVEN_AT_SELECTED_TEST_SCOPE__NOT_NATIVE; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E07 | F0 transport/source custody | EDGE_OWNER_DEPENDS_ON_DECISION; F0 verified source import→future canonical runtime | REPAIRED_SOURCEFREE_COMPONENT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E08 | Actor-safe memory and SCI05 | EDGE_OWNER_DEPENDS_ON_DECISION; C9 actor access→ADP016/017→postcall SCI05→N+1 | SOURCEFREE_PACKET_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E09 | Irreversible 3–5 world event batch | EDGE_OWNER_DEPENDS_ON_DECISION; F3 conditional proposals→real C8/B execution→C9 durable state | DRYRUN_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E10 | Mother-first genealogy | EDGE_OWNER_DEPENDS_ON_DECISION; C4 antecedent life and material world→C8 child life | DOCUMENTARY_DESIGN_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E11 | Pyat original world weld | EDGE_OWNER_DEPENDS_ON_DECISION; Pyat N11/N12 world service→C11 actual C12 person | SOURCEFREE_PREPARATION; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E12 | Complete person living/reentry/alpha | EDGE_OWNER_DEPENDS_ON_DECISION; C12 same actual person→A0–A5 | NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E13 | Scoped care and challenge expectations | EDGE_OWNER_DEPENDS_ON_DECISION; C9 received care/challenge→later scoped response | REVIEWED_REQUIREMENT_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E14 | Causally necessary interfunctional relation | EDGE_OWNER_DEPENDS_ON_DECISION; CAN011 qualified composed operation/relation→E2 semantic selector | REVIEWED_REQUIREMENT_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| E15 | Socially learned conceptual life | EDGE_OWNER_DEPENDS_ON_DECISION; Qualified educational/institutional history→actor interpretation/action | REVIEWED_REQUIREMENT_ONLY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S0 | Governing purpose / integrity | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: charter, anti-goals, integrity constraints. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S1 | Relational ontology | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: ontology, ownership boundaries, state classes. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S2 | PRE-V3 / V3 / runtime crosswalk | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: accepted architecture requirements for eventual Pyat handoff. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S3 | V3 relational redevelopment | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: candidate V3 relational-prior schema and developmental derivation plan. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S4 | Relationship engine / game mechanics | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: relationship-state model and consequence laws. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S5 | Persona health / flourishing | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: explicit normative model, evidence base, uncertainty law, anti-therapist-God constraints. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S6 | Persistent life / time / world events | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: life-advancement and messaging constitution. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S7 | Player praxis model | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: player-model schema, feedback cadence, privacy model. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S8 | Interaction / action semantics | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: action vocabulary / open-action interpreter / consequence contract. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S9 | LLM expression | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: prompt/runtime boundary, expression tests, anti-sycophancy controls. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S10 | Memory / persistence / replay / cost | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: state hierarchy, event log, summaries, retrieval law, checkpointing, simulation budget. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S11 | UX / UI | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: flows, prototypes, progressive disclosure, accessibility. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S12 | Social layer | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: social options matrix, abuse analysis, minimum safe social architecture. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S13 | Monetization / business model | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: aligned revenue hypotheses and prohibited incentives. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S14 | Safety / privacy / abuse | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: safety constitution, abuse simulation law, privacy boundaries. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S15 | Alpha / evaluation | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: alpha spec, prototype sequence, qualitative + quantitative evaluation. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S16 | Product→engineering handoff | SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER; NOT_RUNTIME__ORIGINAL_WORKSTREAM_OUTPUT: requirement packet with rationale, alternatives, evidence, dependencies, exact affected owners and reopen test. | HISTORICAL_SOURCE_DEFINED_ACTIVE_EXPLORATORY__CURRENT_CANONICAL_ADOPTION_NOT_INFERRED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E1 | R31J/F1CR B material owner + fixed A/B/shared history -> B event | CROSS_COMPONENT_OWNER_SLOTS; R31JProduct / r31j.assertion.p01 (attributed); targetless JOIN refusal read-only | SOURCE_CANDIDATE_OR_UNJOINED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E2 | A/B shared history -> C8 event owner/receipt/access | CROSS_COMPONENT_OWNER_SLOTS; bp2p4.reunion / candidate CandidateStore / bp4.c10.receive | SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E3 | C8 -> CAN008 test-only A -> CAN011 test-only T/no-change | CROSS_COMPONENT_OWNER_SLOTS; JoinedProducer.stage_c9 / CandidateStore | SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E4 | CAN011/T -> C9 selected writer -> performed E2 (not offered) | CROSS_COMPONENT_OWNER_SLOTS; BP2P4J seed/product for E2; C9 R3B reader only for its own actor DB | SOURCE_CANDIDATE_OR_UNJOINED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E5 | C9 -> C10 timeline | CROSS_COMPONENT_OWNER_SLOTS; bp4.c10.receive / JoinedProduct inherited A0-A3 | SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E6 | C10 -> C12 append/fork/cold | CROSS_COMPONENT_OWNER_SLOTS; GuardedC12Store.verify_store/fork; JoinedProduct | SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E7 | C12 -> actual A0-A3 product method/renderer | CROSS_COMPONENT_OWNER_SLOTS; BP4Product/JoinedProduct methods; CLI/run_joined only | SOURCEFREE_SELECTED_COMPONENT__NOT_FULL_PRODUCT; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E8 | G17 material/C9 handoff component | CROSS_COMPONENT_OWNER_SLOTS; continue_person / c9_handoff_consumer.receive_handoff (component) | SOURCE_CANDIDATE_OR_UNJOINED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E9 | M04R journaled claim provenance component | CROSS_COMPONENT_OWNER_SLOTS; cell.Cell.read_owner (component) | SOURCE_CANDIDATE_OR_UNJOINED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| RCFB_E10 | OC5/C8 provenance and capsule trust | CROSS_COMPONENT_OWNER_SLOTS; none adopted | SOURCE_CANDIDATE_OR_UNJOINED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| F1C_ORIGINAL | Original F1C executable exact loose Git blob 104f5bd7826c8676192eac96753d980e35d8a80a | F1C/F1CR ORIGINAL AUTHOR; R31JProduct/r31j.assertion.p01; F1C same_receiver_assertion | EXACT_SOURCE_FOUND_AND_READ__13_HISTORICAL_TEST_CASES_AUTHOR_EXECUTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| F1CR_CLAIMED_PATCH | Claimed historical F1CR patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae | F1C/F1CR ORIGINAL AUTHOR; NONE_VERIFIABLE | EXACT_PATCH_MISSING__SOURCE_NOT_FOUND; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| F1CR_R5_RECONSTRUCTION | R5 reconstructed F1CR live history verifier | F1C/F1CR ORIGINAL AUTHOR; BF1 targetless_c10_consumer.BWorld → TargetlessGuardedJoinedProduct | RECONSTRUCTED_CANDIDATE__AUTHOR_TESTED_NOT_ORIGINAL_PATCH; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B1 | B1 test-only E1→mediator→later E2 | PREEXISTING_LINEAGE_OWNER; Store.commit → execute second event | AUTHOR_39_PASS__I2_PENDING__NO_NATIVE; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B2 | B2 four-return physical developmental bridge | PREEXISTING_LINEAGE_OWNER; Bridge.advance → d1_gate | AUTHOR_81_CONNECTED__249_INHERITED__INDEPENDENT_S2_SCOPED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B3 | B3 coupled synthetic event/meaning | PREEXISTING_LINEAGE_OWNER; World.execute and later T9 CHECK_LOCK eligibility only | AUTHOR_71__42_F2__S3_REVISE__X3_PARTIAL_WRITE_RED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B3A | B3A X3 atomic repair | PREEXISTING_LINEAGE_OWNER; later E3 sourcefree integration | SCOPED_ATOMIC_REPAIR__FOLLOWUP_SCHEMA_RED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B3AS | B3AS schema/readset corrected | PREEXISTING_LINEAGE_OWNER; historical same sourcefree E3 readset and later consumer | INDEPENDENT_I2_ACCEPT_SCOPED_SQL_READSET__NO_NATIVE; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| BP2P4J | BP2P4J JoinedProduct sourcefree actual consumer | PREEXISTING_LINEAGE_OWNER; JoinedProduct → joined_downstream_a0_a2_assertion and C12 episode store | AUTHOR_98__10_SEVERANCES__INDEPENDENT_FULL_RELEASE_NOT_PROVEN; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| S39_S52 | modern Codex S39–S52 series | PREEXISTING_LINEAGE_OWNER; compile_candidate → produce_b_turn → perform_paid_participation | SOURCEFREE__S39_PREMISES_CALLER_SUPPLIED__S49_NATURAL_B_EMPTY; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| R15_V2 | R15 RFA model-renderer feasibility | PREEXISTING_LINEAGE_OWNER; RFA renderer lab / Nadia inputs | R2_PREPARED_NOT_PROVIDER_SCORED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| CP-A5-R2 | cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion | RETURN_AUTHOR_AND_ORIGINAL_OWNER; I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission | SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| C9C12-R2 | c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read | RETURN_AUTHOR_AND_ORIGINAL_OWNER; C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite | SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| B-F1CR-R2 | targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct | RETURN_AUTHOR_AND_ORIGINAL_OWNER; Same I1 root/store/branch; targetless REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED are consumed with A access and B material ledgers | SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
+| V3CORE-R1 | v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct | RETURN_AUTHOR_AND_ORIGINAL_OWNER; Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified | SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED; CANDIDATE_O_INDEX_HISTORICAL__R27_LATER_EXECUTION_IN_COMPANION_NOT_AUTOMATIC_OVERWRITE |
 
-| C0 | Source-qualified historical world and possibility | existing producer/source-owner lookup before assertion of absence |
-| C1 | Situated subject and actual activity | existing producer/source-owner lookup before assertion of absence |
-| C2 | Needs, objects and motives | existing producer/source-owner lookup before assertion of absence |
-| C3 | Individual organization, practice, mediation | existing producer/source-owner lookup before assertion of absence |
-| C4 | Material social lives and generation | existing producer/source-owner lookup before assertion of absence |
-| C5 | Differentiated expectations and relational history | existing producer/source-owner lookup before assertion of absence |
-| C6 | Real time, activity and interstitial continuity | existing producer/source-owner lookup before assertion of absence |
-| C7 | Historical differentiated response under social powers | existing producer/source-owner lookup before assertion of absence |
-| C8 | Independent world occurrence and access | existing producer/source-owner lookup before assertion of absence |
-| C9 | Canonical actor decision/version and later semantic reader | existing producer/source-owner lookup before assertion of absence |
-| C10 | Event/model call and life recursion | existing producer/source-owner lookup before assertion of absence |
-| C11 | Actual PRE-V3/Pyat physical weld | existing producer/source-owner lookup before assertion of absence |
-| C12 | Pipeline-produced continuing person and forks | existing producer/source-owner lookup before assertion of absence |
-| A0 | Existing pipeline-generated individual | existing producer/source-owner lookup before assertion of absence |
-| A1 | Bounded live continuing life engine | existing producer/source-owner lookup before assertion of absence |
-| A2 | Historical reentry and changed later action | existing producer/source-owner lookup before assertion of absence |
-| A3 | Independent ongoing life | existing producer/source-owner lookup before assertion of absence |
-| A4 | Generalized persons and ecologies | existing producer/source-owner lookup before assertion of absence |
-| A5 | Authorized human-facing alpha | existing producer/source-owner lookup before assertion of absence |
-| M01 | persistent BackboneState pattern | existing producer/source-owner lookup before assertion of absence |
-| M02 | material capacity | existing producer/source-owner lookup before assertion of absence |
-| M03 | psychological/regulatory capacity vector | existing producer/source-owner lookup before assertion of absence |
-| M04 | reproduction constraints | existing producer/source-owner lookup before assertion of absence |
-| M05 | A/S/V/Aim domains and latent/expressed Aim | existing producer/source-owner lookup before assertion of absence |
-| M06 | multidimensional alienation | existing producer/source-owner lookup before assertion of absence |
-| M07 | public/private/inner registers | existing producer/source-owner lookup before assertion of absence |
-| M08 | wound/sensitivity state | existing producer/source-owner lookup before assertion of absence |
-| M09 | cracks | existing producer/source-owner lookup before assertion of absence |
-| M10 | buffers and costs | existing producer/source-owner lookup before assertion of absence |
-| M11 | frameworks as metabolic operators | existing producer/source-owner lookup before assertion of absence |
-| M12 | collective infrastructure | existing producer/source-owner lookup before assertion of absence |
-| M13 | practice stack | existing producer/source-owner lookup before assertion of absence |
-| M14 | PeakRouting / loop topology / solidarity boundary | existing producer/source-owner lookup before assertion of absence |
-| M15 | need axes / expectation baseline | existing producer/source-owner lookup before assertion of absence |
-| M16 | StrivingObject | existing producer/source-owner lookup before assertion of absence |
-| M17 | Gift/Disruption shards / expectation events | existing producer/source-owner lookup before assertion of absence |
-| M18 | RuptureShard | existing producer/source-owner lookup before assertion of absence |
-| M19 | multi-year MetabolizationProcess | existing producer/source-owner lookup before assertion of absence |
-| M20 | magnets / relational field | existing producer/source-owner lookup before assertion of absence |
-| M21 | pressure-flow history / memory / grooves / conductance | existing producer/source-owner lookup before assertion of absence |
-| M22 | child model / assumed rules / taboos / possible-world boundary | existing producer/source-owner lookup before assertion of absence |
-| M23 | autonomy/safety drives and conditions | existing producer/source-owner lookup before assertion of absence |
-| M24 | stability-threshold inertia | existing producer/source-owner lookup before assertion of absence |
-| M25 | yearly ordered causal spine | existing producer/source-owner lookup before assertion of absence |
-| M26 | stored-versus-derived separation | existing producer/source-owner lookup before assertion of absence |
-| M27 | Pass 1 LLM proposal | existing producer/source-owner lookup before assertion of absence |
-| M28 | score/select/apply boundary | existing producer/source-owner lookup before assertion of absence |
-| M29 | Pass 2 render-only role | existing producer/source-owner lookup before assertion of absence |
-| M30 | V3-under-V2 nonmutation architecture | existing producer/source-owner lookup before assertion of absence |
-| M31 | life-course Enneagram emergence / end matcher | existing producer/source-owner lookup before assertion of absence |
-| M32 | old V5 runtime-input / field-injection bridge | existing producer/source-owner lookup before assertion of absence |
-| M33 | generic pseudo-random mechanical event sampler | existing producer/source-owner lookup before assertion of absence |
-| M34 | fallback concretization when Pass 1/selection yields nothing | existing producer/source-owner lookup before assertion of absence |
-| M35 | placeholder crack/framework invariant repair | existing producer/source-owner lookup before assertion of absence |
-| M36 | hopeful/medium parent defaults | existing producer/source-owner lookup before assertion of absence |
-| M37 | structural placeholder scene / annotation for non-LLM years | existing producer/source-owner lookup before assertion of absence |
-| M38 | dual derived-schedule declaration | existing producer/source-owner lookup before assertion of absence |
-| M39 | server-side/manual rupture injection | existing producer/source-owner lookup before assertion of absence |
-| M40 | generation readiness / global ready surface | existing producer/source-owner lookup before assertion of absence |
-| N01 | Needs, desires, motives and practical objects | existing producer/source-owner lookup before assertion of absence |
-| N02 | Thick, scoped expectations and early care | existing producer/source-owner lookup before assertion of absence |
-| N03 | Challenge, complication, threat and repair | existing producer/source-owner lookup before assertion of absence |
-| N04 | Simultaneous recruitment, tension and regulation | existing producer/source-owner lookup before assertion of absence |
-| N05 | Durable transition, changed relations and contradiction | existing producer/source-owner lookup before assertion of absence |
-| N06 | Interstitial activity, life-stages and social reproduction | existing producer/source-owner lookup before assertion of absence |
-| N07 | Independent others, power, care and relational feedback | existing producer/source-owner lookup before assertion of absence |
-| N08 | Differentiated impression, intensity, salience and no-change | existing producer/source-owner lookup before assertion of absence |
-| N09 | Actor's fallible autobiographical memory and meaning | existing producer/source-owner lookup before assertion of absence |
-| N10 | Later ideology, theology and cosmological rearticulation | existing producer/source-owner lookup before assertion of absence |
-| N11 | User-settled event-batch temporal recursion | existing producer/source-owner lookup before assertion of absence |
-| N12 | Actual C12 person, coupled world and human encounter | existing producer/source-owner lookup before assertion of absence |
-| O01 | Need-object-motive | existing producer/source-owner lookup before assertion of absence |
-| O02 | Care and early scoped expectations | existing producer/source-owner lookup before assertion of absence |
-| O03 | Situated multistream Rule A | existing producer/source-owner lookup before assertion of absence |
-| O04 | Challenge and repair | existing producer/source-owner lookup before assertion of absence |
-| O05 | Acquired practical operation | existing producer/source-owner lookup before assertion of absence |
-| O06 | New functional relation | existing producer/source-owner lookup before assertion of absence |
-| O07 | Persistence, dormancy and nochange | existing producer/source-owner lookup before assertion of absence |
-| O08 | Independent coactor and material labor | existing producer/source-owner lookup before assertion of absence |
-| O09 | Material activity and intervals | existing producer/source-owner lookup before assertion of absence |
-| O10 | Trace versus remembered episode | existing producer/source-owner lookup before assertion of absence |
-| O11 | Sourced mistaken belief | existing producer/source-owner lookup before assertion of absence |
-| O12 | Reflection/SCI05 | existing producer/source-owner lookup before assertion of absence |
-| O13 | Socially learned concepts | existing producer/source-owner lookup before assertion of absence |
-| O14 | Native Pyat C11 world weld | existing producer/source-owner lookup before assertion of absence |
-| O15 | Actual semantic E2 consumer | existing producer/source-owner lookup before assertion of absence |
-| O16 | Irreversible event batch policy | existing producer/source-owner lookup before assertion of absence |
-| E01 | Rule A response | existing producer/source-owner lookup before assertion of absence |
-| E02 | Acquired practice and qualified nochange | existing producer/source-owner lookup before assertion of absence |
-| E03 | Needs/material motive and activity | existing producer/source-owner lookup before assertion of absence |
-| E04 | Independent B real encounter | existing producer/source-owner lookup before assertion of absence |
-| E05 | Canonical actor writer to reader | existing producer/source-owner lookup before assertion of absence |
-| E06 | Perception-preserving C12 fork | existing producer/source-owner lookup before assertion of absence |
-| E07 | F0 transport/source custody | existing producer/source-owner lookup before assertion of absence |
-| E08 | Actor-safe memory and SCI05 | existing producer/source-owner lookup before assertion of absence |
-| E09 | Irreversible 3–5 world event batch | existing producer/source-owner lookup before assertion of absence |
-| E10 | Mother-first genealogy | existing producer/source-owner lookup before assertion of absence |
-| E11 | Pyat original world weld | existing producer/source-owner lookup before assertion of absence |
-| E12 | Complete person living/reentry/alpha | existing producer/source-owner lookup before assertion of absence |
-| E13 | Scoped care and challenge expectations | existing producer/source-owner lookup before assertion of absence |
-| E14 | Causally necessary interfunctional relation | existing producer/source-owner lookup before assertion of absence |
-| E15 | Socially learned conceptual life | existing producer/source-owner lookup before assertion of absence |
-| S0 | Governing purpose / integrity | existing producer/source-owner lookup before assertion of absence |
-| S1 | Relational ontology | existing producer/source-owner lookup before assertion of absence |
-| S2 | PRE-V3 / V3 / runtime crosswalk | existing producer/source-owner lookup before assertion of absence |
-| S3 | V3 relational redevelopment | existing producer/source-owner lookup before assertion of absence |
-| S4 | Relationship engine / game mechanics | existing producer/source-owner lookup before assertion of absence |
-| S5 | Persona health / flourishing | existing producer/source-owner lookup before assertion of absence |
-| S6 | Persistent life / time / world events | existing producer/source-owner lookup before assertion of absence |
-| S7 | Player praxis model | existing producer/source-owner lookup before assertion of absence |
-| S8 | Interaction / action semantics | existing producer/source-owner lookup before assertion of absence |
-| S9 | LLM expression | existing producer/source-owner lookup before assertion of absence |
-| S10 | Memory / persistence / replay / cost | existing producer/source-owner lookup before assertion of absence |
-| S11 | UX / UI | existing producer/source-owner lookup before assertion of absence |
-| S12 | Social layer | existing producer/source-owner lookup before assertion of absence |
-| S13 | Monetization / business model | existing producer/source-owner lookup before assertion of absence |
-| S14 | Safety / privacy / abuse | existing producer/source-owner lookup before assertion of absence |
-| S15 | Alpha / evaluation | existing producer/source-owner lookup before assertion of absence |
-| S16 | Product→engineering handoff | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E1 | R31J/F1CR B material owner + fixed A/B/shared history -> B event | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E2 | A/B shared history -> C8 event owner/receipt/access | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E3 | C8 -> CAN008 test-only A -> CAN011 test-only T/no-change | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E4 | CAN011/T -> C9 selected writer -> performed E2 (not offered) | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E5 | C9 -> C10 timeline | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E6 | C10 -> C12 append/fork/cold | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E7 | C12 -> actual A0-A3 product method/renderer | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E8 | G17 material/C9 handoff component | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E9 | M04R journaled claim provenance component | existing producer/source-owner lookup before assertion of absence |
-| RCFB_E10 | OC5/C8 provenance and capsule trust | existing producer/source-owner lookup before assertion of absence |
-| F1C_ORIGINAL | Original F1C executable exact loose Git blob 104f5bd7826c8676192eac96753d980e35d8a80a | existing producer/source-owner lookup before assertion of absence |
-| F1CR_CLAIMED_PATCH | Claimed historical F1CR patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae | existing producer/source-owner lookup before assertion of absence |
-| F1CR_R5_RECONSTRUCTION | R5 reconstructed F1CR live history verifier | existing producer/source-owner lookup before assertion of absence |
-| B1 | B1 test-only E1→mediator→later E2 | existing producer/source-owner lookup before assertion of absence |
-| B2 | B2 four-return physical developmental bridge | existing producer/source-owner lookup before assertion of absence |
-| B3 | B3 coupled synthetic event/meaning | existing producer/source-owner lookup before assertion of absence |
-| B3A | B3A X3 atomic repair | existing producer/source-owner lookup before assertion of absence |
-| B3AS | B3AS schema/readset corrected | existing producer/source-owner lookup before assertion of absence |
-| BP2P4J | BP2P4J JoinedProduct sourcefree actual consumer | existing producer/source-owner lookup before assertion of absence |
-| S39_S52 | modern Codex S39–S52 series | existing producer/source-owner lookup before assertion of absence |
-| R15_V2 | R15 RFA model-renderer feasibility | existing producer/source-owner lookup before assertion of absence |
-| CP-A5-R2 | cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion | existing producer/source-owner lookup before assertion of absence |
-| C9C12-R2 | c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read | existing producer/source-owner lookup before assertion of absence |
-| B-F1CR-R2 | targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct | existing producer/source-owner lookup before assertion of absence |
-| V3CORE-R1 | v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct | existing producer/source-owner lookup before assertion of absence |
 
 ### Original 300 SOROKUDA historical/code-source leads
 
-These are **source pointers**, not 300 distinct product laws. They remain in this same source-conservation foundation so the method cannot confuse 'not mentioned by the latest theory' with 'never implemented'.
+These 300 records are historical code/source custody, **not** 300 novel psychological requirements. They retain the actual code path and exact source cut where known; a conceptual summary is not a substitute for opening the original producer and its first reader.
 
-| ID | Historical code/source locator | Preservation duty |
+| ID | Exact historical source location | Historical function/cluster and evidence |
 |---|---|---|
+| SOROKUDA-ORG-001 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/__init__.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-002 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/__main__.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-003 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/activity.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-004 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/adapters.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-005 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/attention_field.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-006 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/blind_parent_probes.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-007 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/care_commitment_genesis.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-008 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/caregiving_practice.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-009 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/cli.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-010 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/co_regulation_history.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-011 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/constitution.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-012 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/continuity_clock.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | HISTORY_RUNTIME — Continuity, compressed intervals, world/actor persistent history and first consumer |
+| SOROKUDA-ORG-013 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/cultural_mediation.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-014 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/development.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-015 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/distributed_power.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-016 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/expectation_afterlife.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-017 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/food_access_struggle.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-018 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/food_power_reproduction.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-019 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/functional_correspondence.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-020 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-021 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-022 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_social_reproduction.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-023 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/initiative.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-024 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/institutional_procedure_learning.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-025 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/institutional_reproduction.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-026 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/joined_longitudinal_demo.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | HISTORY_RUNTIME — Continuity, compressed intervals, world/actor persistent history and first consumer |
+| SOROKUDA-ORG-027 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/joint_practice_genesis.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-028 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/labor_dependency.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-029 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/live_psychological_llm.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | LLM_INTERFACE — Controlled external generative semantic proposal and validation |
+| SOROKUDA-ORG-030 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/lived_genesis.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-031 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/livelihood_history.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-032 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_conjunction.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-033 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_dependency_history.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-034 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_investments.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-035 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_objects.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-036 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_provisioning.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-ORG-037 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/mediated_efficacy.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-038 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/model_provider.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | LLM_INTERFACE — Controlled external generative semantic proposal and validation |
+| SOROKUDA-ORG-039 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/operative_witness.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-040 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/ordinary_life.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | HISTORY_RUNTIME — Continuity, compressed intervals, world/actor persistent history and first consumer |
+| SOROKUDA-ORG-041 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/organism.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-042 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/parents.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-043 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/plans.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-044 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/plural_care_paths.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-045 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_difference.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-046 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_inquiry.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-047 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_powers.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTIVITY — Actual activity, independent initiative, learned alternatives and material investments |
+| SOROKUDA-ORG-048 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/preproject_agency.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-049 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/prospective_horizon.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-050 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/psychic_genesis.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-051 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/psychodynamics.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-052 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/reflective_regulation.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-053 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/relational_metabolism.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | ACTOR_RECRUITMENT — Situated iceberg composition, operative motives and recruitment |
+| SOROKUDA-ORG-054 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/routine_sources.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | SOCIAL_REPRODUCTION — Historical households, plural care, assistance, authority and actual resources |
+| SOROKUDA-ORG-055 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | HISTORY_RUNTIME — Continuity, compressed intervals, world/actor persistent history and first consumer |
+| SOROKUDA-ORG-056 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/semantics.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | LLM_INTERFACE — Controlled external generative semantic proposal and validation |
+| SOROKUDA-ORG-057 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/social_vocal_development.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | DEVELOPMENT — Psychological genesis and actor-owned developmental admission |
+| SOROKUDA-ORG-058 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/storage.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | HISTORY_RUNTIME — Continuity, compressed intervals, world/actor persistent history and first consumer |
+| SOROKUDA-ORG-059 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/types.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-060 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/unintended_goods.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | RESEARCH_INFRA — Provisional typed representations, body's possible actions and owner adapters |
+| SOROKUDA-ORG-061 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | WORLD_MATERIAL — Independent material action, social institutions and persistent objects |
+| SOROKUDA-TEST-001 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_care_commitment_genesis_r2.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-002 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_co_regulation_r14.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-003 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_conditional_joint_practice_p015.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-004 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_cultural_mediation_r3.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-005 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_historical_self_precue_r19.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-006 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_independent_r11_receiving.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-007 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_initiative_r9.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-008 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-009 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_intent_and_emergent_ends_r6_integrated.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-010 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_intent_and_emergent_ends_r6.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-011 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_joined_longitudinal_demo.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-012 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-013 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_lived_genesis_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-014 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_lived_genesis_runtime_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-015 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_material_provisioning_r16.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-016 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_backlog_mulch_r2.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-017 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_longitudinal_backlog_r2.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-018 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_psychic_genesis_p004_p011_p023.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-019 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_operative_witness_r9.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-020 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_plural_care_paths_r15.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-021 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_pre_encounter_history_r21.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-022 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_preproject_agency_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-023 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_preproject_agency_runtime_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-024 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r11_soracle_integrated.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-025 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r12_independent_review_repairs.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-026 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r16_r12_local_machine_reconcile.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-027 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r17_source_preflight.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-028 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r3_pressure_genesis.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-029 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r3_r16_joined_first_consumer.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-030 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r3_r18_joined_faults.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-031 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_reflective_regulation_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-032 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_relational_metabolism_r4_integrated.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-033 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_relational_metabolism_r4.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-034 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_relational_recruitment_r5.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-035 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remont_independent_followons_r10.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-036 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_next.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-037 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r13.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-038 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r14_activity.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-039 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r14_recruitment.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-040 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r15_source_and_inhibition.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-041 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r18_p004_selected_means.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-042 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r3.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-043 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r4.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-044 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r5.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-045 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r6.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-046 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r7.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-047 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r8.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-048 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r9_p017.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-049 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r9.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-050 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_stress.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-051 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_reproduced_food_power_r18.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-052 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_social_vocal_development_r3.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-053 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_soracle_r10_remont_faults.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-054 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_sr_remont_r3_regressions.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-055 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_sr005_material_guard.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-TEST-056 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_whole_organism.py @ 6647f746f4f7d2ae3dd0d14af5cde38191044773 | TEST_SOURCE |
+| SOROKUDA-294-A001 | 8bd4d6b01fd402e7e6a8d07903f2c3cada837f55 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A002 | 16f15a125ba54cdf17f5d41be2d851bbcd2240d7 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A003 | a1c5b1b09b825184e80e84a1789c393b97ea9ae2 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A004 | 4076dcc7c944723b8eea449c0753e535b79d1aa5 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A005 | 9c1ab2fa172e41c7fb033b5f134b25255d65126c | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A006 | 2001169089e97da7444dc8baa2df700aa56e9aca | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A007 | a0f7ab5ff9323a1db8a4c6c3b365283b0969de46 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A008 | b02deee1bac9393921845caa657841c40408eaf6 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A009 | 9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A010 | 38fba47614e82a86fc5a3fa3f50c27048493e808 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A011 | 6fa2939972ce5a2c0cc4f2b033946b276f1c2934 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A012 | fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A013 | 90d0eb7925de54635559a879ee76fc1b97b9ff61 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A014 | 61713eafe0e7a5386a8f0aed4836b15f3d921ed5 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A015 | 3b39c86b376efff8c11833b8451c1791adddb9bc | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A016 | be9f3a9e1bb4c61a8c3ec89a9a5d18b4a10762a2 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A017 | 5065e2e6934e9d5bca800cbf88c79e461bcf2393 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A018 | 5b3e6577400ea1d88971ae6b48e41a118b8059ae | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A019 | 7faaa0722336231335d974bebc70c1282c79ce3e | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A020 | d868e82c7c83def2df18295244d93af9706e647f | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A021 | eb0a2b90eb1bfc1f1020cc854ed8ae1243deceb6 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A022 | fd32e0b28349aa54a01d46a2116c7a401fde0a60 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A023 | d831515c344c6f358d12e2887250af05bcb04d78 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A024 | 001b506fa26ae879ff5b6e57138fc2696e12b538 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A025 | ce0dfc67ef5058338f4d7161d32a8cb5bdf733a6 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A026 | 024e77f07b74a333c6d65aca3ee2d7cb9154d584 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A027 | a2760d3687b063513fe0a5b9589c56c998d4ccb5 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A028 | 64fec28c374d8f77fb0b412d0c934d798ede03e8 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A029 | 43e649349332fa7ecd47ee8bbe144da082e19413 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A030 | 4170fbf19a9d5a64bc728f5b22156bbffcec51e5 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A031 | 8da78d8031a06a4bd7e1297fd713e573299c0860 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A032 | ff47e917a2b6c72ad827d59d021839b1613c1781 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A033 | 48d3c8bb6c91038c26ae234c73295b3175c6515e | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A034 | d01454f6ee105bd0b91adcd0d204b4e96831eebb | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A035 | 6d3610c576dc0ef3ceccbf7ac122c197f22be6fa | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A036 | aec8fecc1ae2e3438ff70c44ce5ce7845d1a4829 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A037 | 75c6d24ccad0f07344712fcba94878288acf33eb | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A038 | cb156ee99c040eb52dfd87155e7e446eb9dc7053 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A039 | 81baa3cd7f2f399a4219c6da1988e6627d959236 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A040 | 9d94bd42d0e260fd440f7f1982fc41c90dad8463 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A041 | 284b9b4bebbc281276ee65d3821fb05abdad42f2 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A042 | a406e1d289faac31fd51cca8b36a4bb47af93852 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A043 | 4a6bf4dafbe113ae61ab6fc2423acec6619dc0f9 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A044 | 4ce795413c2e77be04657a260cbda586610f4756 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A045 | b4fd4855c1b7608d06481b5ac55f577af1476e06 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A046 | 06e5cadac5519d5e86609a490c95157738d0fe10 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A047 | 12c65e0ed0a82ebe6a843182990e8b8586b85341 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A048 | b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A049 | a12d01c5f7d7ddad8be92c58afc97141b672dba0 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A050 | aa4d845736ff6208a988a3e70cb9f74e3104633e | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A051 | bf5fda102f4bced41a0f18f71c4c380d5d099462 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A052 | 9ba40aabea9773ba9d2f3cf32248347f2b0f7e18 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A053 | 8da45605c267ea60b664d00fc8444d8c9b007628 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A054 | 27f2dbfea291a9fad2d0ad5a17e5b10aaacf3505 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A055 | 99b7c4cb16888c50f23c9b55e21f485ec172e6cb | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A056 | 49992b28becfdbecbd41d9dbead47532bf0b6af9 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A057 | 189da3b54307d8731132c9a7f7baf578fee8bc96 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A058 | e09d6497b7e0118b063b3620729f59b47f88a819 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A059 | b1004a43eb0309af99e1b7ce9d5290df3c07f3cd | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A060 | a25ba9ab4e1a0dc12d3764bea8854c8fbc2df227 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A061 | 19438890e43153e2bc4a1ad271b5e19bcef33e1e | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A062 | ee6a48b40247b113c614fe2099d4c443e8dd7bb7 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A063 | a61d5794271038fb20c94a75eaee401a66613ce9 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A064 | 2afa3022e5551df71b739cf8689e832db85e1196 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A065 | 02187a14e75ff30dd953d3c7185d689b80e62304 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A066 | 0caaec590f6a8bf6744f22dc9c948c5fe233bc94 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A067 | 673233571b7d899c309dd26f9b9cd2508404c0b6 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A068 | e1f7a74e51201b9614bcc578348b4e9db7be7bd3 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A069 | 873ce1c749fbbf6e9ccb2902e4cb6ef021001a17 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A070 | 0e05c7dab8334b96f2b2b79e935eeebb1c0f0d11 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A071 | 8b7f3ed2ad095eee060fd040dcab88e59d4ca255 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A072 | d40cc32ecec8f681dcced6a482b6438a86080899 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A073 | 805d0a071db70bb37ec95df450b9429f46544fe9 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A074 | 54eed50dcea538509baaaa52b68c9d5fef844a4d | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A075 | 48200cf0b8e9b69ce27bf0151cb43fde5133322f | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A076 | ecc0c5c86d0b6d4aab54ace63fb2af8fb3d784dc | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A077 | 154a4dd5615d47f014ca90eb1234b16e983bf5c1 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A078 | e5d356fd53e132565b1e0b66abb617085f4142ed | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A079 | 7ffc20ddb30f71034abf8d02c224d13d6952e11f | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A080 | c2fb389300b888b7addbe488cad30956a810094a | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A081 | 47bca2a56d34ed37186a436e7490cbaa417bfe5c | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A082 | 5c79ca953d54ebaa12fa81f0f58611d3f7e43dcc | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A083 | 241d35fa8a13ea03c68fbe55554ce81c210b745f | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A084 | ca031ce1d5c56b58b18727f94f41571d6dd763fb | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A085 | 7777a06dbd3a8f9dcf2b7ca3241e853dc485e505 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A086 | 99f2e7128a8417dfeaa39468c45ba65f6958c061 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A087 | 27ca1f2792a5213064c0b5ea2e27b89e8acce0c3 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A088 | aac6d7d13ce386598d6e1c147687d9ed64e188b7 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A089 | a77f0f8e45ee27133576209c315e53341dcb5a9e | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A090 | 55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A091 | c0f4588c158b40c8903b4aae2f292eae5238b8a0 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A092 | fb4fa049b6e3dd9df8d25a4f42a2b41e9d737c60 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A093 | 950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A094 | 7e91c19828589281fb348c3aff35dca51bf9d995 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A095 | 358fd1086eac0a4aa7791ca14abc25c45b935ddd | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A096 | 5c2fbe14ccfa5027becfabc682206a1e61aaf986 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A097 | 47b46a85b9ebb633754866f1e6f1b12db3bd2012 | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-294-A098 | 858bc2d91b1d9f8f7420607e29a0b6dd64761d3c | HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED |
+| SOROKUDA-VER-005 | WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/candidate/kernel.py @ https://github.com/maidiu/rawlsing/blob/9c1ab2fa172e41c7fb033b5f134b25255d65126c/WORKER_RETURNS/SOROK-M2-R3-COUNTERPART-OWNER-REPAIR-USERDIRECT-R1/candidate/kernel.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-006 | WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/candidate/kernel.py @ https://github.com/maidiu/rawlsing/blob/2001169089e97da7444dc8baa2df700aa56e9aca/WORKER_RETURNS/SOROK-M2-R4-RULE-WITNESS-REPAIR-USERDIRECT-R1/candidate/kernel.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-007 | WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py @ https://github.com/maidiu/rawlsing/blob/a0f7ab5ff9323a1db8a4c6c3b365283b0969de46/WORKER_RETURNS/SOROK-20261019-C0R3-C0X-ENDTOEND-TRANSPORT-REPAIR-R1/candidate/upstream/c0p_two_contract_port.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-008 | WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tools/c0p_stage_runtime.py @ https://github.com/maidiu/rawlsing/blob/b02deee1bac9393921845caa657841c40408eaf6/WORKER_RETURNS/SOROK-20261019-C0X-C0-C10-DUAL-OWNER-RECEIVER-COMPLETION-R1/tools/c0p_stage_runtime.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-009 | WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/runtime/stage_out12/outbox_prototype.py @ https://github.com/maidiu/rawlsing/blob/9784bc1dbae0c9ac13670d5e442ed9cabb6be7fe/WORKER_RETURNS/SOROK-20261019-C8O-OUT14-WRITER-AUTHORITY-EXECUTABLE-BOUNDARY-R1/runtime/stage_out12/outbox_prototype.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-012 | WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py @ https://github.com/maidiu/rawlsing/blob/fbc84ba4b5ec8befcf7954357a2ba1c576f5d7a5/WORKER_RETURNS/SOROK-20261019-G15-G14-SEVEN-FAMILY-GENEALOGY-CAUSAL-REPAIR-R1/candidate/lab_sgi1/pipeline.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-013 | WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py @ https://github.com/maidiu/rawlsing/blob/90d0eb7925de54635559a879ee76fc1b97b9ff61/WORKER_RETURNS/SOROK-20261019-G17-MATERIAL-HISTORY-INDEPENDENT-LIVES-R1/c9_handoff_consumer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-014 | WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py @ https://github.com/maidiu/rawlsing/blob/61713eafe0e7a5386a8f0aed4836b15f3d921ed5/WORKER_RETURNS/SOROK-20261019-G18-AUTHENTICATED-MATERIAL-HISTORY-R1/candidate/lab_sgi1/joint.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-016 | WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py @ https://github.com/maidiu/rawlsing/blob/be9f3a9e1bb4c61a8c3ec89a9a5d18b4a10762a2/WORKER_RETURNS/SOROK-20261020-BP1-HISTORICAL-ACTOR-PRODUCTION-R1/candidate/bp1/composer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-017 | WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/bp2_joined/producer.py @ https://github.com/maidiu/rawlsing/blob/5065e2e6934e9d5bca800cbf88c79e461bcf2393/WORKER_RETURNS/SOROK-20261020-BP2-JOINED-ACTOR-EVENT-RULE-ACTION-R1/bp2_joined/producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-018 | WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/reunion.py @ https://github.com/maidiu/rawlsing/blob/5b3e6577400ea1d88971ae6b48e41a118b8059ae/WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/reunion.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-019 | WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py @ https://github.com/maidiu/rawlsing/blob/7faaa0722336231335d974bebc70c1282c79ce3e/WORKER_RETURNS/SOROK-20261020-BP3-C8-WRITER-TRUST-R1/c8_exclusive_writer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-020 | WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/product.py @ https://github.com/maidiu/rawlsing/blob/d868e82c7c83def2df18295244d93af9706e647f/WORKER_RETURNS/SOROK-20261020-BP4-C10-C12-A0-A3-CONSUMER-R1/bp4/product.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-021 | WORKER_RETURNS/SOROK-20261020-R26E-C12-INTEGRITY-N1-LIVE-PRODUCT-R1/r26e/c12_integrity.py @ https://github.com/maidiu/rawlsing/blob/eb0a2b90eb1bfc1f1020cc854ed8ae1243deceb6/WORKER_RETURNS/SOROK-20261020-R26E-C12-INTEGRITY-N1-LIVE-PRODUCT-R1/r26e/c12_integrity.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-022 | WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py @ https://github.com/maidiu/rawlsing/blob/fd32e0b28349aa54a01d46a2116c7a401fde0a60/WORKER_RETURNS/SOROK-20261020-R26V-HISTORICAL-V3-ACTOR-PRODUCER-R1/candidate/historical_actor_producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-025 | WORKER_RETURNS/SOROK-20261021-R30A-FIRST-NEIGHBOR-SESSION-R1/r30a/first_session.py @ https://github.com/maidiu/rawlsing/blob/ce0dfc67ef5058338f4d7161d32a8cb5bdf733a6/WORKER_RETURNS/SOROK-20261021-R30A-FIRST-NEIGHBOR-SESSION-R1/r30a/first_session.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-027 | WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/r31e/session.py @ https://github.com/maidiu/rawlsing/blob/a2760d3687b063513fe0a5b9589c56c998d4ccb5/WORKER_RETURNS/SOROK-20261021-R31E-ACTOR-EXPRESSION-FIRST-NEIGHBOR-R1/r31e/session.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-030 | WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/firstclass.py @ https://github.com/maidiu/rawlsing/blob/4170fbf19a9d5a64bc728f5b22156bbffcec51e5/WORKER_RETURNS/SOROK-20261024-BP2-FIRSTCLASS-B-SOURCE-R1/firstclass.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-031 | WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py @ https://github.com/maidiu/rawlsing/blob/8da78d8031a06a4bd7e1297fd713e573299c0860/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/actor_access_response.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-053 | WORKER_RETURNS/SOROK-R3-HQ298-SR-OUTBOX-EXECUTION-R1/outbox_prototype.py @ https://github.com/maidiu/rawlsing/blob/8da45605c267ea60b664d00fc8444d8c9b007628/WORKER_RETURNS/SOROK-R3-HQ298-SR-OUTBOX-EXECUTION-R1/outbox_prototype.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-057 | WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py @ https://github.com/maidiu/rawlsing/blob/189da3b54307d8731132c9a7f7baf578fee8bc96/WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/can008_candidate_rule.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-072 | WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/ms1_serial.py @ https://github.com/maidiu/rawlsing/blob/d40cc32ecec8f681dcced6a482b6438a86080899/WORKER_RETURNS/SOROK-R3-HQ316-MS1-SERIAL-MEMORY-BELIEF-FEASIBILITY-R1/runtime/ms1_serial.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-080 | WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/candidate/multiwriter_journal.py @ https://github.com/maidiu/rawlsing/blob/c2fb389300b888b7addbe488cad30956a810094a/WORKER_RETURNS/SOROK-R3-HQ319-OUT12-MULTIWITER-LOCK-CAS-R1/candidate/multiwriter_journal.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-089 | WORKER_RETURNS/SOROK-V2-HQ322-OUT14-MULTIWRITER-INTEGRITY-REPAIR-R1/test_out14_integrity.py @ https://github.com/maidiu/rawlsing/blob/a77f0f8e45ee27133576209c315e53341dcb5a9e/WORKER_RETURNS/SOROK-V2-HQ322-OUT14-MULTIWRITER-INTEGRITY-REPAIR-R1/test_out14_integrity.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-091 | WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py @ https://github.com/maidiu/rawlsing/blob/c0f4588c158b40c8903b4aae2f292eae5238b8a0/WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-092 | WORKER_RETURNS/SOROK-V2-HQ324-P1-PROPOSAL-ADMISSION-R1/p1_contract.py @ https://github.com/maidiu/rawlsing/blob/fb4fa049b6e3dd9df8d25a4f42a2b41e9d737c60/WORKER_RETURNS/SOROK-V2-HQ324-P1-PROPOSAL-ADMISSION-R1/p1_contract.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-093 | WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py @ https://github.com/maidiu/rawlsing/blob/950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-095 | WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py @ https://github.com/maidiu/rawlsing/blob/358fd1086eac0a4aa7791ca14abc25c45b935ddd/WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VAR-001 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/relational_metabolism.py @ eb15248d0a4590846ff5bff02523c1edaf535507 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-002 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/psychodynamics.py @ eb15248d0a4590846ff5bff02523c1edaf535507 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-003 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/development.py @ eb15248d0a4590846ff5bff02523c1edaf535507 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-004 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_tco_r23_relational_transduction.py @ eb15248d0a4590846ff5bff02523c1edaf535507 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-005 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/institutional_procedure_learning.py @ 43a871cd6854b2be617960da98423a18562ba6bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-006 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/development.py @ 43a871cd6854b2be617960da98423a18562ba6bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-007 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py @ 43a871cd6854b2be617960da98423a18562ba6bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-008 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_tco_r24_institutional_relation_contrast.py @ 43a871cd6854b2be617960da98423a18562ba6bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-009 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py @ d9582aefeb5b3f7ed3b14b056ee7ba02fad45763 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-010 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/livelihood_history.py @ d9582aefeb5b3f7ed3b14b056ee7ba02fad45763 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-011 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py @ d9582aefeb5b3f7ed3b14b056ee7ba02fad45763 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-012 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_tco_r25_recurrent_work_organization.py @ d9582aefeb5b3f7ed3b14b056ee7ba02fad45763 | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-013 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/activity.py @ 40dbbd4c774c6f210c4d0c854b9df35c86a7857c | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-014 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r19_atomic_history.py @ 40dbbd4c774c6f210c4d0c854b9df35c86a7857c | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-015 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/constitution.py @ a5d0d6b404bd0c03429c678cd148bb9dc403b33f | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-016 | SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py @ a5d0d6b404bd0c03429c678cd148bb9dc403b33f | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-017 | SEAM/ORACLE/UM_SOROK_ORGANISM_R5/um_sorok_organism/becoming.py @ 52dc91457dad3cf29e8a367001275f29bf8440bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VAR-018 | SEAM/ORACLE/UM_SOROK_ORGANISM_R5/um_sorok_organism/relational.py @ 52dc91457dad3cf29e8a367001275f29bf8440bc | POST_REWORK_DISTINCT_SOURCE_VERSION_OR_TEST |
+| SOROKUDA-VER-001 | WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/frozen_x3/audit_f2.py @ https://github.com/maidiu/rawlsing/blob/8bd4d6b01fd402e7e6a8d07903f2c3cada837f55/WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/frozen_x3/audit_f2.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-002 | WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/atomic_worker.py @ https://github.com/maidiu/rawlsing/blob/16f15a125ba54cdf17f5d41be2d851bbcd2240d7/WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/atomic_worker.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-003 | WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R1/court.py @ https://github.com/maidiu/rawlsing/blob/a1c5b1b09b825184e80e84a1789c393b97ea9ae2/WORKER_RETURNS/SOROK_CONTINGENT_LIVES_CAUSAL_COURT_R1/court.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-004 | WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-FORMATION-CANON-COURT-R1/preserved/r1_court/court.py @ https://github.com/maidiu/rawlsing/blob/4076dcc7c944723b8eea449c0753e535b79d1aa5/WORKER_RETURNS/SOROK-20261018-CLR3-RECURSIVE-FORMATION-CANON-COURT-R1/preserved/r1_court/court.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-010 | WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/__init__.py @ https://github.com/maidiu/rawlsing/blob/38fba47614e82a86fc5a3fa3f50c27048493e808/WORKER_RETURNS/SOROK-20261019-C9P-NATIVE-ACTOR-TRANSITION-TERMINAL-TRANCHE-R1/candidate/__init__.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-011 | WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/severance/proof_integrity_gate_r1.py @ https://github.com/maidiu/rawlsing/blob/6fa2939972ce5a2c0cc4f2b033946b276f1c2934/WORKER_RETURNS/SOROK-20261019-C9R-WHOLE-ACTOR-BOUNDARY-AND-CONSUMER-REPAIR-R1/severance/proof_integrity_gate_r1.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-015 | WORKER_RETURNS/SOROK-20261019-PA0-V3-ADP-PFF-GENERATOR-ATLAS-R1/smoke/smoke_consumer.py @ https://github.com/maidiu/rawlsing/blob/3b39c86b376efff8c11833b8451c1791adddb9bc/WORKER_RETURNS/SOROK-20261019-PA0-V3-ADP-PFF-GENERATOR-ATLAS-R1/smoke/smoke_consumer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-023 | WORKER_RETURNS/SOROK-20261020-R27P-STABLE-ACTOR-QUALIFIED-PRODUCT-R1/candidate/historical_actor_producer.py @ https://github.com/maidiu/rawlsing/blob/d831515c344c6f358d12e2887250af05bcb04d78/WORKER_RETURNS/SOROK-20261020-R27P-STABLE-ACTOR-QUALIFIED-PRODUCT-R1/candidate/historical_actor_producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-024 | WORKER_RETURNS/SOROK-20261021-R29P-ACTOR-C12-USER-PRODUCT-R1/candidate/historical_actor_producer.py @ https://github.com/maidiu/rawlsing/blob/001b506fa26ae879ff5b6e57138fc2696e12b538/WORKER_RETURNS/SOROK-20261021-R29P-ACTOR-C12-USER-PRODUCT-R1/candidate/historical_actor_producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-026 | WORKER_RETURNS/SOROK-20261021-R30G-GM01-MATERIAL-LIFE-PRODUCT-R1/candidate/historical_actor_producer.py @ https://github.com/maidiu/rawlsing/blob/024e77f07b74a333c6d65aca3ee2d7cb9154d584/WORKER_RETURNS/SOROK-20261021-R30G-GM01-MATERIAL-LIFE-PRODUCT-R1/candidate/historical_actor_producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-028 | WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/historical_actor_producer.py @ https://github.com/maidiu/rawlsing/blob/64fec28c374d8f77fb0b412d0c934d798ede03e8/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/candidate/historical_actor_producer.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-041 | SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/VALIDATE_LAB_FIXTURES_R1.js @ https://github.com/maidiu/rawlsing/blob/284b9b4bebbc281276ee65d3821fb05abdad42f2/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/lab_fixture/VALIDATE_LAB_FIXTURES_R1.js | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-042 | SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/render_inputs_r1/VALIDATE_RENDER_INPUTS_R1.js @ https://github.com/maidiu/rawlsing/blob/a406e1d289faac31fd51cca8b36a4bb47af93852/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/render_inputs_r1/VALIDATE_RENDER_INPUTS_R1.js | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-045 | SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_cross_model_screen_r1/screen_common.py @ https://github.com/maidiu/rawlsing/blob/b4fd4855c1b7608d06481b5ac55f577af1476e06/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_cross_model_screen_r1/screen_common.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-046 | SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_cross_model_screen_r2/smoke_custody.py @ https://github.com/maidiu/rawlsing/blob/06e5cadac5519d5e86609a490c95157738d0fe10/SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_cross_model_screen_r2/smoke_custody.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-047 | WORKER_RETURNS/SOROK-R3-HQ297-K3K5-WORLD-CONDITIONED-CAUSAL-COURT-R1/test_k35_sourcefree_court.py @ https://github.com/maidiu/rawlsing/blob/12c65e0ed0a82ebe6a843182990e8b8586b85341/WORKER_RETURNS/SOROK-R3-HQ297-K3K5-WORLD-CONDITIONED-CAUSAL-COURT-R1/test_k35_sourcefree_court.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-048 | WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/conftest.py @ https://github.com/maidiu/rawlsing/blob/b15dbbc4f07ae79e9ffb71e88e91e3b28b35da59/WORKER_RETURNS/SOROK-R3-HQ298-SC0-VALUE-BEARING-PORT-R1/conftest.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-051 | WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/model_gate.py @ https://github.com/maidiu/rawlsing/blob/bf5fda102f4bced41a0f18f71c4c380d5d099462/WORKER_RETURNS/SOROK-R3-HQ298-SM-LAB2-BEHAVIORAL-R1/lab2/model_gate.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-052 | WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py @ https://github.com/maidiu/rawlsing/blob/9ba40aabea9773ba9d2f3cf32248347f2b0f7e18/WORKER_RETURNS/SOROK-R3-HQ298-SM-OWNER-EFFECT-COURT-R1/court/owner_effect_stub_TEST_ONLY.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-054 | WORKER_RETURNS/SOROK-R3-HQ299-G12-SGI1-DIRECT-GENERALIZATION-R1/conftest.py @ https://github.com/maidiu/rawlsing/blob/27f2dbfea291a9fad2d0ad5a17e5b10aaacf3505/WORKER_RETURNS/SOROK-R3-HQ299-G12-SGI1-DIRECT-GENERALIZATION-R1/conftest.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-055 | WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py @ https://github.com/maidiu/rawlsing/blob/99b7c4cb16888c50f23c9b55e21f485ec172e6cb/WORKER_RETURNS/SOROK-R3-HQ300-BEHAVIORAL-ASSAY-R2-RECONSTRUCTION-R1/assay/experiment.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-056 | WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py @ https://github.com/maidiu/rawlsing/blob/49992b28becfdbecbd41d9dbead47532bf0b6af9/WORKER_RETURNS/SOROK-R3-HQ300-C0-SC0-ADAPTER-RED-REPAIR-R1/port/adapter.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-061 | WORKER_RETURNS/SOROK-R3-HQ306-OC1-ORACLE-CUSTODY-READINESS-R1/repro/custody_protocol.py @ https://github.com/maidiu/rawlsing/blob/19438890e43153e2bc4a1ad271b5e19bcef33e1e/WORKER_RETURNS/SOROK-R3-HQ306-OC1-ORACLE-CUSTODY-READINESS-R1/repro/custody_protocol.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-062 | WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py @ https://github.com/maidiu/rawlsing/blob/ee6a48b40247b113c614fe2099d4c443e8dd7bb7/WORKER_RETURNS/SOROK-R3-HQ308-CAN2-LAW-CAUSAL-REPAIR-R1/candidate/candidate_registry_fixture.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-063 | WORKER_RETURNS/SOROK-R3-HQ308-OC2-CUSTODY-RED-REPAIR-R1/repro/custody_protocol.py @ https://github.com/maidiu/rawlsing/blob/a61d5794271038fb20c94a75eaee401a66613ce9/WORKER_RETURNS/SOROK-R3-HQ308-OC2-CUSTODY-RED-REPAIR-R1/repro/custody_protocol.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-065 | WORKER_RETURNS/SOROK-R3-HQ310-M01-MEMORY-MEDIATION-CAUSAL-CELL-R1/repro/cell.py @ https://github.com/maidiu/rawlsing/blob/02187a14e75ff30dd953d3c7185d689b80e62304/WORKER_RETURNS/SOROK-R3-HQ310-M01-MEMORY-MEDIATION-CAUSAL-CELL-R1/repro/cell.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-066 | WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/custody_protocol.py @ https://github.com/maidiu/rawlsing/blob/0caaec590f6a8bf6744f22dc9c948c5fe233bc94/WORKER_RETURNS/SOROK-R3-HQ310-OC4-CUSTODY-TEN-RED-REPAIR-R1/repro/custody_protocol.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-068 | WORKER_RETURNS/SOROK-R3-HQ313-M03-CLAIM-SELECTOR-PROVENANCE-REPAIR-R1/candidate/cell.py @ https://github.com/maidiu/rawlsing/blob/e1f7a74e51201b9614bcc578348b4e9db7be7bd3/WORKER_RETURNS/SOROK-R3-HQ313-M03-CLAIM-SELECTOR-PROVENANCE-REPAIR-R1/candidate/cell.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-069 | WORKER_RETURNS/SOROK-R3-HQ313-OC6-NATIVE-INPUT-CONTRACT-REPAIR-R1/repro/adjudicate.py @ https://github.com/maidiu/rawlsing/blob/873ce1c749fbbf6e9ccb2902e4cb6ef021001a17/WORKER_RETURNS/SOROK-R3-HQ313-OC6-NATIVE-INPUT-CONTRACT-REPAIR-R1/repro/adjudicate.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-071 | WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/candidate/cell.py @ https://github.com/maidiu/rawlsing/blob/8b7f3ed2ad095eee060fd040dcab88e59d4ca255/WORKER_RETURNS/SOROK-R3-HQ315-M05-M04-PROVENANCE-ANCESTRY-REPAIR-R1/candidate/cell.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-073 | WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/observations/mutation/c07_journal_mutant_a.py @ https://github.com/maidiu/rawlsing/blob/805d0a071db70bb37ec95df450b9429f46544fe9/WORKER_RETURNS/SOROK-R3-HQ317-C07P-CROSSPROCESS-CUSTODY-R1/observations/mutation/c07_journal_mutant_a.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-075 | WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/candidate/ms1_serial.py @ https://github.com/maidiu/rawlsing/blob/48200cf0b8e9b69ce27bf0151cb43fde5133322f/WORKER_RETURNS/SOROK-R3-HQ318-MS3-MS2-PROVENANCE-REPAIR-R1/candidate/ms1_serial.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-076 | WORKER_RETURNS/SOROK-R3-HQ318-OUT11-OUT9-MULTIWITER-RECOVERY-R1/repro/out11_two_process_repro.py @ https://github.com/maidiu/rawlsing/blob/ecc0c5c86d0b6d4aab54ace63fb2af8fb3d784dc/WORKER_RETURNS/SOROK-R3-HQ318-OUT11-OUT9-MULTIWITER-RECOVERY-R1/repro/out11_two_process_repro.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-077 | WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/frozen_oracles/pyat_e06/bridge.py @ https://github.com/maidiu/rawlsing/blob/154a4dd5615d47f014ca90eb1234b16e983bf5c1/WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/frozen_oracles/pyat_e06/bridge.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-081 | WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/00_INHERITED_TESTS/finish_packet.py @ https://github.com/maidiu/rawlsing/blob/47bca2a56d34ed37186a436e7490cbaa417bfe5c/WORKER_RETURNS/SOROK-R3-HQ320-G13-K11-LAB-MECHANISM-REPAIR-R1/00_INHERITED_TESTS/finish_packet.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-087 | WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/run_k11.py @ https://github.com/maidiu/rawlsing/blob/27ca1f2792a5213064c0b5ea2e27b89e8acce0c3/WORKER_RETURNS/SOROK-SGI1-SOURCEFREE-K11-LAB-R1/01_LAB_IMPLEMENTATION/run_k11.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-090 | WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py @ https://github.com/maidiu/rawlsing/blob/55d2daa4bab41c5ff4ffdc196c8d36d300c3d60f/WORKER_RETURNS/SOROK-R3-HQ319-C0P-GENERIC-PORT-POSITIVE-R1/repro/c0p_two_contract_port.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-096 | WORKER_RETURNS/SOROK-V2-HQ328-M2-M1-SOURCE-TIME-REPAIR-R1/kernel.py @ https://github.com/maidiu/rawlsing/blob/5c2fbe14ccfa5027becfabc682206a1e61aaf986/WORKER_RETURNS/SOROK-V2-HQ328-M2-M1-SOURCE-TIME-REPAIR-R1/kernel.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
+| SOROKUDA-VER-097 | WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py @ https://github.com/maidiu/rawlsing/blob/47b46a85b9ebb633754866f1e6f1b12db3bd2012/WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py | SOURCE_BODY_INDEPENDENTLY_READ_AND_GIT_BLOB_VERIFIED |
 
-| SOROKUDA-ORG-001 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-002 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-003 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-004 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-005 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-006 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-007 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-008 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-009 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-010 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-011 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-012 | Continuity, compressed intervals, world/actor persistent history and first consumer | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-013 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-014 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-015 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-016 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-017 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-018 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-019 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-020 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-021 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-022 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-023 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-024 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-025 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-026 | Continuity, compressed intervals, world/actor persistent history and first consumer | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-027 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-028 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-029 | Controlled external generative semantic proposal and validation | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-030 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-031 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-032 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-033 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-034 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-035 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-036 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-037 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-038 | Controlled external generative semantic proposal and validation | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-039 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-040 | Continuity, compressed intervals, world/actor persistent history and first consumer | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-041 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-042 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-043 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-044 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-045 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-046 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-047 | Actual activity, independent initiative, learned alternatives and material investments | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-048 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-049 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-050 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-051 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-052 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-053 | Situated iceberg composition, operative motives and recruitment | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-054 | Historical households, plural care, assistance, authority and actual resources | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-055 | Continuity, compressed intervals, world/actor persistent history and first consumer | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-056 | Controlled external generative semantic proposal and validation | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-057 | Psychological genesis and actor-owned developmental admission | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-058 | Continuity, compressed intervals, world/actor persistent history and first consumer | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-059 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-060 | Provisional typed representations, body's possible actions and owner adapters | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-ORG-061 | Independent material action, social institutions and persistent objects | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-001 | SOROKUDA-TEST-001 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-002 | SOROKUDA-TEST-002 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-003 | SOROKUDA-TEST-003 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-004 | SOROKUDA-TEST-004 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-005 | SOROKUDA-TEST-005 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-006 | SOROKUDA-TEST-006 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-007 | SOROKUDA-TEST-007 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-008 | SOROKUDA-TEST-008 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-009 | SOROKUDA-TEST-009 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-010 | SOROKUDA-TEST-010 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-011 | SOROKUDA-TEST-011 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-012 | SOROKUDA-TEST-012 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-013 | SOROKUDA-TEST-013 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-014 | SOROKUDA-TEST-014 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-015 | SOROKUDA-TEST-015 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-016 | SOROKUDA-TEST-016 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-017 | SOROKUDA-TEST-017 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-018 | SOROKUDA-TEST-018 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-019 | SOROKUDA-TEST-019 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-020 | SOROKUDA-TEST-020 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-021 | SOROKUDA-TEST-021 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-022 | SOROKUDA-TEST-022 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-023 | SOROKUDA-TEST-023 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-024 | SOROKUDA-TEST-024 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-025 | SOROKUDA-TEST-025 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-026 | SOROKUDA-TEST-026 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-027 | SOROKUDA-TEST-027 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-028 | SOROKUDA-TEST-028 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-029 | SOROKUDA-TEST-029 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-030 | SOROKUDA-TEST-030 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-031 | SOROKUDA-TEST-031 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-032 | SOROKUDA-TEST-032 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-033 | SOROKUDA-TEST-033 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-034 | SOROKUDA-TEST-034 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-035 | SOROKUDA-TEST-035 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-036 | SOROKUDA-TEST-036 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-037 | SOROKUDA-TEST-037 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-038 | SOROKUDA-TEST-038 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-039 | SOROKUDA-TEST-039 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-040 | SOROKUDA-TEST-040 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-041 | SOROKUDA-TEST-041 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-042 | SOROKUDA-TEST-042 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-043 | SOROKUDA-TEST-043 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-044 | SOROKUDA-TEST-044 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-045 | SOROKUDA-TEST-045 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-046 | SOROKUDA-TEST-046 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-047 | SOROKUDA-TEST-047 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-048 | SOROKUDA-TEST-048 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-049 | SOROKUDA-TEST-049 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-050 | SOROKUDA-TEST-050 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-051 | SOROKUDA-TEST-051 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-052 | SOROKUDA-TEST-052 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-053 | SOROKUDA-TEST-053 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-054 | SOROKUDA-TEST-054 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-055 | SOROKUDA-TEST-055 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-TEST-056 | SOROKUDA-TEST-056 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A001 | SOROKUDA-294-A001 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A002 | SOROKUDA-294-A002 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A003 | SOROKUDA-294-A003 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A004 | SOROKUDA-294-A004 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A005 | SOROKUDA-294-A005 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A006 | SOROKUDA-294-A006 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A007 | SOROKUDA-294-A007 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A008 | SOROKUDA-294-A008 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A009 | SOROKUDA-294-A009 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A010 | SOROKUDA-294-A010 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A011 | SOROKUDA-294-A011 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A012 | SOROKUDA-294-A012 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A013 | SOROKUDA-294-A013 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A014 | SOROKUDA-294-A014 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A015 | SOROKUDA-294-A015 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A016 | SOROKUDA-294-A016 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A017 | SOROKUDA-294-A017 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A018 | SOROKUDA-294-A018 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A019 | SOROKUDA-294-A019 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A020 | SOROKUDA-294-A020 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A021 | SOROKUDA-294-A021 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A022 | SOROKUDA-294-A022 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A023 | SOROKUDA-294-A023 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A024 | SOROKUDA-294-A024 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A025 | SOROKUDA-294-A025 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A026 | SOROKUDA-294-A026 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A027 | SOROKUDA-294-A027 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A028 | SOROKUDA-294-A028 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A029 | SOROKUDA-294-A029 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A030 | SOROKUDA-294-A030 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A031 | SOROKUDA-294-A031 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A032 | SOROKUDA-294-A032 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A033 | SOROKUDA-294-A033 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A034 | SOROKUDA-294-A034 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A035 | SOROKUDA-294-A035 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A036 | SOROKUDA-294-A036 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A037 | SOROKUDA-294-A037 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A038 | SOROKUDA-294-A038 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A039 | SOROKUDA-294-A039 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A040 | SOROKUDA-294-A040 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A041 | SOROKUDA-294-A041 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A042 | SOROKUDA-294-A042 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A043 | SOROKUDA-294-A043 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A044 | SOROKUDA-294-A044 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A045 | SOROKUDA-294-A045 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A046 | SOROKUDA-294-A046 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A047 | SOROKUDA-294-A047 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A048 | SOROKUDA-294-A048 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A049 | SOROKUDA-294-A049 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A050 | SOROKUDA-294-A050 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A051 | SOROKUDA-294-A051 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A052 | SOROKUDA-294-A052 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A053 | SOROKUDA-294-A053 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A054 | SOROKUDA-294-A054 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A055 | SOROKUDA-294-A055 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A056 | SOROKUDA-294-A056 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A057 | SOROKUDA-294-A057 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A058 | SOROKUDA-294-A058 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A059 | SOROKUDA-294-A059 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A060 | SOROKUDA-294-A060 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A061 | SOROKUDA-294-A061 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A062 | SOROKUDA-294-A062 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A063 | SOROKUDA-294-A063 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A064 | SOROKUDA-294-A064 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A065 | SOROKUDA-294-A065 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A066 | SOROKUDA-294-A066 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A067 | SOROKUDA-294-A067 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A068 | SOROKUDA-294-A068 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A069 | SOROKUDA-294-A069 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A070 | SOROKUDA-294-A070 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A071 | SOROKUDA-294-A071 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A072 | SOROKUDA-294-A072 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A073 | SOROKUDA-294-A073 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A074 | SOROKUDA-294-A074 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A075 | SOROKUDA-294-A075 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A076 | SOROKUDA-294-A076 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A077 | SOROKUDA-294-A077 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A078 | SOROKUDA-294-A078 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A079 | SOROKUDA-294-A079 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A080 | SOROKUDA-294-A080 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A081 | SOROKUDA-294-A081 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A082 | SOROKUDA-294-A082 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A083 | SOROKUDA-294-A083 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A084 | SOROKUDA-294-A084 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A085 | SOROKUDA-294-A085 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A086 | SOROKUDA-294-A086 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A087 | SOROKUDA-294-A087 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A088 | SOROKUDA-294-A088 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A089 | SOROKUDA-294-A089 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A090 | SOROKUDA-294-A090 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A091 | SOROKUDA-294-A091 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A092 | SOROKUDA-294-A092 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A093 | SOROKUDA-294-A093 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A094 | SOROKUDA-294-A094 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A095 | SOROKUDA-294-A095 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A096 | SOROKUDA-294-A096 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A097 | SOROKUDA-294-A097 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-294-A098 | SOROKUDA-294-A098 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-005 | SOROKUDA-VER-005 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-006 | SOROKUDA-VER-006 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-007 | SOROKUDA-VER-007 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-008 | SOROKUDA-VER-008 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-009 | SOROKUDA-VER-009 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-012 | SOROKUDA-VER-012 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-013 | SOROKUDA-VER-013 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-014 | SOROKUDA-VER-014 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-016 | SOROKUDA-VER-016 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-017 | SOROKUDA-VER-017 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-018 | SOROKUDA-VER-018 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-019 | SOROKUDA-VER-019 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-020 | SOROKUDA-VER-020 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-021 | SOROKUDA-VER-021 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-022 | SOROKUDA-VER-022 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-025 | SOROKUDA-VER-025 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-027 | SOROKUDA-VER-027 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-030 | SOROKUDA-VER-030 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-031 | SOROKUDA-VER-031 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-053 | SOROKUDA-VER-053 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-057 | SOROKUDA-VER-057 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-072 | SOROKUDA-VER-072 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-080 | SOROKUDA-VER-080 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-089 | SOROKUDA-VER-089 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-091 | SOROKUDA-VER-091 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-092 | SOROKUDA-VER-092 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-093 | SOROKUDA-VER-093 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-095 | SOROKUDA-VER-095 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-001 | SOROKUDA-VAR-001 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-002 | SOROKUDA-VAR-002 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-003 | SOROKUDA-VAR-003 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-004 | SOROKUDA-VAR-004 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-005 | SOROKUDA-VAR-005 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-006 | SOROKUDA-VAR-006 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-007 | SOROKUDA-VAR-007 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-008 | SOROKUDA-VAR-008 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-009 | SOROKUDA-VAR-009 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-010 | SOROKUDA-VAR-010 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-011 | SOROKUDA-VAR-011 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-012 | SOROKUDA-VAR-012 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-013 | SOROKUDA-VAR-013 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-014 | SOROKUDA-VAR-014 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-015 | SOROKUDA-VAR-015 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-016 | SOROKUDA-VAR-016 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-017 | SOROKUDA-VAR-017 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VAR-018 | SOROKUDA-VAR-018 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-001 | SOROKUDA-VER-001 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-002 | SOROKUDA-VER-002 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-003 | SOROKUDA-VER-003 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-004 | SOROKUDA-VER-004 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-010 | SOROKUDA-VER-010 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-011 | SOROKUDA-VER-011 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-015 | SOROKUDA-VER-015 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-023 | SOROKUDA-VER-023 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-024 | SOROKUDA-VER-024 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-026 | SOROKUDA-VER-026 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-028 | SOROKUDA-VER-028 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-041 | SOROKUDA-VER-041 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-042 | SOROKUDA-VER-042 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-045 | SOROKUDA-VER-045 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-046 | SOROKUDA-VER-046 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-047 | SOROKUDA-VER-047 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-048 | SOROKUDA-VER-048 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-051 | SOROKUDA-VER-051 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-052 | SOROKUDA-VER-052 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-054 | SOROKUDA-VER-054 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-055 | SOROKUDA-VER-055 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-056 | SOROKUDA-VER-056 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-061 | SOROKUDA-VER-061 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-062 | SOROKUDA-VER-062 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-063 | SOROKUDA-VER-063 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-065 | SOROKUDA-VER-065 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-066 | SOROKUDA-VER-066 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-068 | SOROKUDA-VER-068 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-069 | SOROKUDA-VER-069 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-071 | SOROKUDA-VER-071 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-073 | SOROKUDA-VER-073 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-075 | SOROKUDA-VER-075 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-076 | SOROKUDA-VER-076 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-077 | SOROKUDA-VER-077 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-081 | SOROKUDA-VER-081 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-087 | SOROKUDA-VER-087 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-090 | SOROKUDA-VER-090 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-096 | SOROKUDA-VER-096 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
-| SOROKUDA-VER-097 | SOROKUDA-VER-097 | exact code owner/first-reader currentness not independently proven by theoretical synthesis |
 
 ### Direct user corrections that override otherwise appealing prior assistant formulations
 
@@ -1558,6 +1558,25 @@ These are **source pointers**, not 300 distinct product laws. They remain in thi
 4. **The positive user pleasure is getting to know someone and perhaps getting closer**; this is distinct from any simulator obligation to optimize Nadia for relational access or to avoid closeness in order to demonstrate otherness.
 5. **No invention of purportedly missing source machinery.** Mechanism I Birkenstocks materialization, the existing encounter and phenomenal owners, PRE-A0, PYAT G4, CO and real implementation witnesses must be consulted before an architecture proposal.
 6. **One document, one conceptual whole.** Previous per-round files and machine no-drop registers can remain *historical evidence* until a source-safe deletion is verified; they must not become competing current theories. The exact earlier original chat text is still not fully recovered, which limits any literal guarantee that every unrecorded assent was captured.
+
+
+### Governing latest direct user instructions (this conversation)
+
+> then do it
+
+> I do not want you to craete new documents. not a new branch. not a new document. you bring the new shit into the old document, and then, at the bottom, you rewrite the whole fucking thing, and then you check that everything is there, and mulched. you do not stop until it is. and then, you delete the old shit. the old shit does not get stored. it is fucking gone. you do not do that until you have fucking *mulched everything*.
+>
+> if [docName] is the document where that happens, then [docName] is where that happens. this is life or death, and you need to not fuck up
+>
+> did you re-write it in its entirety? from *MULCHING? I do not want document proliferation. that is the whole point.*
+>
+> you can, if you would like, make a new document, extract [docName]'s information, articulate the entire mulch until every piece of [docName] is in it, and then delete [docName] and rename the new document [docName]
+>
+> I don't want it to be unsafe, and I don't want to lose ideas. but I want the new things introduced to cut under and deeper, and require everything else be re-arranged
+>
+> Unless ... things are now *so* clear and articulated, and *everything* big is *already* mulched through it that there is only small stuff to append ... then you may begin appending.
+
+**Actual method:** edit and wholly rewrite the existing \`12_NEIGHBOR_THEORYMULCH_CURRENT.md\` on #1277; no new document and no new branch as the work product. Do not manufacture a proof of exhaustive previous chat recovery, source-perfect semantics, or deletion safety. Obsolete theory/source documents can only be deleted once their contents and actual consumers have been conserved and independently checked. Existing Git commit history is not erased by removing a file at HEAD. The earlier provisional R10 side branch with new files was a process violation and must not be treated as a competing active theory.
 
 ### Honest remaining holds
 
