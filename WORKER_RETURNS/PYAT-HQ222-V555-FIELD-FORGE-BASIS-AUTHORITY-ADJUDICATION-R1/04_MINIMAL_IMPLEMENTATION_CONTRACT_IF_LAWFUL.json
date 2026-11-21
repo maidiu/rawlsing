@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_HQ222_V555_MINIMAL_IMPLEMENTATION_CONTRACT_IF_LAWFUL@1.0.0",
+  "commission_tip": "590b7a8f95cc385695e67977189bbd72b2a9a4ac",
+  "status": "CONTINGENT__DO_NOT_IMPLEMENT_UNTIL_NEW_V555_AUTHORITY_DECISION_IS_ADOPTED",
+  "authority_prerequisite": {
+    "requirement": "Create an exact content-addressed V555 registry decision that explicitly admits the bounded SIG-004 relation profile.",
+    "recommended_scope": "Exact frozen GT2 relation first; do not generalize to all FIELD FORGE relations without separate evidence.",
+    "must_bind": [
+      "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "ADMITTED_FIELD_FORGE_RELATION",
+      "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+      "exact accepted GT2 V554 rule identity/version/hash",
+      "STRUCTURAL_MEDIATION_INPUT",
+      "exact V555 route rule/shape/current-selection identity",
+      "exact source structural-position authority",
+      "exact producer-governed structural-channel authority",
+      "exact receiving structural-position authority",
+      "exact relation/admission/F1/B1 provenance closure"
+    ],
+    "must_not_infer": [
+      "conditioner -> cause",
+      "target -> effect",
+      "conditional counts -> mediation strength",
+      "association -> structural channel",
+      "target-use label -> route authority"
+    ]
+  },
+  "implementation_after_authority": {
+    "preferred_write_terrain": [
+      "rawlsing_next/m2_v555_atomic_route.py OR a narrowly-owned sibling relation ingress adapter feeding the same M2 route constructor",
+      "rawlsing_next/tests/test_m2_v555_atomic_route.py",
+      "new bounded relation-V555 tests/court only"
+    ],
+    "required_behavior": [
+      "Replace the single-contract assumption with explicit producer profiles; do not accept arbitrary M1Evaluation contracts.",
+      "For the legacy profile, preserve M1_TEMPORAL_V554_INGRESS_SEAM + DIRECT/V553 + SIG-001/002/003 exactly.",
+      "For the new relation profile, require relation M1 + ADMITTED_FIELD_FORGE_RELATION + SIG-004 + exact newly adopted V555 route-authority row.",
+      "Validate required_basis_kind, F1 signature_id, exact V554 rule identity and route-authority row before route construction.",
+      "Require a genuinely governed source/channel/receiver closure; synthetic hashes or V555 role identifiers may not impersonate producer-governed channel identity.",
+      "Keep route semantic_family STRUCTURAL_MEDIATION_ROUTE_CANDIDATE and actor_independent=true.",
+      "Keep route identity content-addressed; exact F1 identity naturally differentiates relation provenance. Do not add support counts to route identity or weight.",
+      "Preserve relation/admission lineage transitively through the exact F1 reference; add explicit route provenance fields only if the new authority decision declares them identity-bearing.",
+      "Preserve all current M2 typed negatives and presemantic construction-failure distinction."
+    ],
+    "forbidden_shortcuts": [
+      "replace(evaluation, contract_id=M1_CONTRACT_ID)",
+      "adding RELATION_M1_CONTRACT_ID to an allowlist without signature/rule/authority validation",
+      "treating B1.allowed_v555_structural_use as sufficient route authorization",
+      "using V555-LCR-001 itself as the producer structural_channel_ref unless a distinct adopted authority explicitly makes that identity true",
+      "deriving source/receiver/channel roles from Q86B/Q86A names or CONDITIONER/TARGET labels alone",
+      "turning support counts into route strength/readiness/probability/effect"
+    ]
+  },
+  "downstream_impact": {
+    "m3_v556": "No basis-kind widening found; consumes M2Evaluation/route grain.",
+    "m4_v557_v558": "No basis-kind widening found on V555 route consumer path; direct V554 relation publication remains separately accepted.",
+    "expected_semantic_family_change": false,
+    "expected_architecture_reopen": false
+  },
+  "required_tests_after_authority": [
+    "exact positive GT2 SIG-004 witness reaches ROUTE_CANDIDATE_AUTHORIZED only with the newly adopted route row and exact governed closure",
+    "same witness without the new row -> NO_GOVERNED_ROUTE_AUTHORITY",
+    "wrong relation M1 contract/basis/signature/V554 rule -> fail closed",
+    "missing/dangling channel/source/receiver authority -> ROUTE_STATIC_AUTHORITY_MISSING",
+    "VALID_EMPTY remains zero-route VALID_EMPTY",
+    "DENIED/noncomparable/missing-authority states preserve typed refusal",
+    "integrity failure remains CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE",
+    "support-count changes cannot alter route strength because no numeric route strength exists",
+    "CONDITIONER/TARGET cannot by themselves authorize source/channel/receiver mapping",
+    "all existing SIG-001/002/003 M2 regression tests remain unchanged"
+  ]
+}
