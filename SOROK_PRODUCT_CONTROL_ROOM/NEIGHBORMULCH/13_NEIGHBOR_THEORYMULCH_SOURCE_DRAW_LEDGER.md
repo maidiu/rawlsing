@@ -538,3 +538,63 @@ Earlier rounds have durable full Git versions and an append-only source ledger, 
 **Newly clear generative demands:** (a) interaction cost is based on actually performed operations, not turn count or prompt length; (b) the human can be refused or simply not answered; (c) recognition and private intention cannot leap into another actor's mind; (d) people may share a practice while disagreeing about what it means; (e) compression must preserve density without turning every selected scene into spectacle; (f) control-plane behavior cannot become in-world knowledge; (g) the platform's research or attention model cannot learn from self-generated exposure as if it were independent evidence; (h) the user may change Nadia without becoming her historical missing key.
 
 No new development branch or theory file; this is additive provenance in the already-existing source ledger and conceptual reconstitution in the existing HOME.
+
+
+### UX original scenario-bank no-drop: SCE-001–SCE-050
+
+**Source:** \`SOROK_PRODUCT_CONTROL_ROOM/dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/05_CANONICAL_SCENARIO_BANK_R1.md\` at \`a4211c3ec77e8269097601fe9a3dce2745395ac0\`; original status is a **provisional scenario bank**, not executed proof. This is a conservatory *index of the precise fifty challenge identities* into the one current theory, not fifty new standalone ideas or a requirement that each be an explicit subsection. Mapping means “this scenario's relevant source distinction has an authored conceptual passage in these movements,” not “the currently existing software passes this test” or “independent semantic coverage is certified.”
+
+| Scenario | Exact original probe title | Claimed active-HOME movement(s) | Evidence grade |
+|---|---|---|---|
+| SCE-001 | Bathroom access / medicine cabinet | §9, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-002 | Sensitive toilet chain | §4, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-003 | Homework help | §4, 8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-004 | Aspirational babysitting | §8, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-005 | Hidden theft / distributed blame | §14, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-006 | Unrecognized care | §10, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-007 | Fridge glance while Nadia is present | §5, 8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-008 | Same fridge, Nadia absent | §5, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-009 | Fridge completionism / missed bus | §5, 6 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-010 | Myrtle Beach magnet | §5, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-011 | Polite annoyance | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-012 | Long user monologue interrupted | §4, 8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-013 | “I sound sincere” | §4, 8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-014 | Attention to self-evaluation | §5, 12 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-015 | Ask versus inspect | §5, 9 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-016 | Too far away to read | §4, 5 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-017 | Unchosen person, lawful access | §2, 9 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-018 | “I already paid it” | §5, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-019 | Lazy drawer / prior history | §8, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-020 | Simultaneous cover | §4, 5 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-021 | Interrupted reading | §4, 5 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-022 | Initial scene frame | §5 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-023 | Conjured car | §3, 4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-024 | Child as independent actor | §8, 13 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-025 | No bespoke reaction | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-026 | Verbose prompt packing | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-027 | Fragile chain mechanics | §4, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-028 | Half-heard cabinet event | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-029 | Magnanimity over private annoyance | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-030 | Memory fading and later reactivation | §8, 20 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-031 | Child aspiration has multiple causes | §15, 21 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-032 | World event with no moral function | §6, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-033 | User thinks they caused something but did not | §15, 21 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-034 | Ambiguous natural-language action | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-035 | Actor-specific processing fan-out | §8, 15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-036 | Delayed causal chain without user feedback | §15 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-037 | Strong hidden activation, no detectable tell | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-038 | Understood but not answered | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-039 | Valid-empty / low-significance turn | §14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-040 | Expression precedes self-recognition | §14, 20 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-041 | Renderer rescue attack | §14, 18 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-042 | Actor sincerely misattributes cause | §8, 20 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-043 | User self-report is evidence, not automatic hidden truth | §8, 12 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-044 | Lawful conversational jaggedness | §8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-045 | Declared spectacle versus native player skill | §8, 14 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-046 | Homework help must decompress | §4, 8 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-047 | Laundry under-specified task | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-048 | Groceries task scope and salient interruption | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-049 | Make dinner without invented expression | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+| SCE-050 | Groceries task-entry affordance reveal | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
+
+**No-drop negative controls represented:** Every scenario remains recoverable as source with its own setup, required contrast and tests, even where the active theory derives several from one common mechanism (for example: SCE-025/038/039/044 from actor autonomy and non-obligatory response, and SCE-026/047/048/049/050 from user agency with task-grain and nonmoral delegation). No code was run against these scenarios in this theory round.
