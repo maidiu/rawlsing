@@ -1,0 +1,84 @@
+{
+  "schema": "RAWLSING_FUNCTION_REUSE_DECISION@1",
+  "decision_id": "FRS-20261120-001",
+  "stage": "BEFORE_IMPLEMENTATION",
+  "disposition": "EXTEND_EXISTING",
+  "protected_cut": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
+  "governing_law": {
+    "path": "CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md",
+    "blob": "796fa5ba15272b5c59efd495cd72f3c6b77c912a"
+  },
+  "g4_parity": {
+    "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/FUNCTION_PARITY.jsonl",
+    "blob": "6f47c1625418970f61f587480db568357be966ad",
+    "examined_ids": [
+      "G3A:FUNCTION:G1A-FUNC-003",
+      "G3A:FUNCTION:G1A-FUNC-026"
+    ],
+    "function_relationship": "The current historical-to-modern registry identifies the existing V550 recursion and F6 partially identified bounds that were missed by recent decisions; this governance tool is not a new statistical or discovery engine."
+  },
+  "function": {
+    "inputs": "User proposal or commission, existing front-door law, exact current source code, G4 parity records and named active PR heads",
+    "operation": "Before choosing or writing code, verify a committed bounded function-to-owner-to-first-consumer crosswalk and its source identities; refuse undocumented novelty and source drift.",
+    "outputs": "Fail-closed checked prebuild decision receipt and visible CI refusal/repair for unexamined new implementation paths",
+    "first_consumer": "The existing PROGRAMMA/MCR commissioning and GitHub PR receiving process, plus every originating OpenCode agent via root AGENTS.md.",
+    "real_gap": "Existing Oct 19 law, G4 inventory and MCR/OATH CI exist, but none of the inspected CI/entrypoints requires an independently inspectable function-reuse decision BEFORE code is first committed."
+  },
+  "existing_candidates": [
+    {
+      "path": "tools/check_hq_oath.py",
+      "kind": "python_symbol",
+      "symbol": "validate",
+      "blob": "d2e913f2dde791e37bb61e0431caa09dc48efd00",
+      "role": "REUSE_INHERITED_FIRST_CONTACT",
+      "difference": "Oath presence checks no actual owner/capability comparison"
+    },
+    {
+      "path": "CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py",
+      "kind": "python_symbol",
+      "symbol": "completion_contract",
+      "blob": "a6517c6c2dd35c6524a53e7d0c2b7ca43a473862",
+      "role": "EXTEND_EXISTING_MCR_VALIDATION",
+      "difference": "Existing MCR validates commission format and evidence contracts but not source-function reuse"
+    },
+    {
+      "path": ".github/workflows/programma-canonical-pre-main.yml",
+      "kind": "text_contains",
+      "needle": "Reject invalid new or revised copy-paste commissions",
+      "blob": "1a86b00dab964cd7c5f21b5fa4e552192e00ec97",
+      "role": "EXTEND_EXISTING_RECEIVING",
+      "difference": "CI is scoped to canonical checks; no across-PR per-implementation function/capability decision validation"
+    }
+  ],
+  "search_scope": {
+    "current_code": "Exact protected HEAD, root AGENTS.md, MCR validator, HQ oath checker and existing CI",
+    "historical_and_g4": "Direct G4 FUNCTION_PARITY and 2026-10-19 adopted missing-function law",
+    "active_development": "Inspected #1223 latest composite plus #1207/#1219 previous source owners; prior audit exact SHA 429cfc5f47e04a82302860f6f33ad48e53daf45d",
+    "uninspected": "Unconnected private machines and Library branches not accessible to GitHub; no global absence proof"
+  },
+  "active_pr_heads": [
+    {
+      "number": 1223,
+      "head": "429cfc5f47e04a82302860f6f33ad48e53daf45d",
+      "relevance": "Observed unexamined existing-owner duplication triggering present repair"
+    }
+  ],
+  "implementation_targets": [
+    "tools/check_function_reuse_preflight.py",
+    "tests/test_function_reuse_preflight_r1.py",
+    ".github/workflows/function-reuse-stopoff.yml",
+    "AGENTS.md",
+    "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+    "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md"
+  ],
+  "first_consumer": {
+    "path": ".github/workflows/programma-canonical-pre-main.yml",
+    "needle": "Reject invalid new or revised copy-paste commissions",
+    "expected_effect": "A new independent pull-request check and mandatory predesign command extend, rather than replace, existing protected receiving."
+  },
+  "positive_proof": "New code commit must have a prior committed reuse receipt; current owner symbols/blobs and G4 IDs must resolve; stale protected cut or declared active PR head must fail; newly changed production code/commission without a preceding decision receipt must fail.",
+  "negative_proof": "Same-commit card-and-code, absent G4 or owner symbol, wrong owner blob, false accepted novelty without missing delta, stale active branch and missing first consumer must all fail.",
+  "user_answer": "USER_REQUESTED_STRICT_MANDATORY_PREDECISION_EXISTING_OWNER_CONSULTATION_ON_2026_11_20",
+  "owner": "PROGRAMMA_PRE_MAIN_QUALIFIED_RECEIVER_AND_REMONT_FOR_FIRST_FAULTS",
+  "authority_limits": "ISOLATED_PROPOSAL_ONLY__NO_PROTECTED_CHANGE__NO_SCIENCE_SOURCE_ACTOR_OR_REVIEW_RIGHTS"
+}
