@@ -22,6 +22,11 @@ from rawlsing_next.pre553_batch_runner import (
     ExecutorBinding,
 )
 from rawlsing_next.pre553_c11_integrity import TypedAbsence
+from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+    POLICY as ASKED_ELIGIBLE_POLICY,
+    PROFILE_FIELD as ASKED_ELIGIBLE_PROFILE_FIELD,
+    AskedEligibleDistributionError, include_asked_eligible_states,
+)
 from rawlsing_next.pre553_carrier_execution import (
     CarrierNeutralResearchExecutor, RuntimeObjectCatalog,
 )
@@ -599,6 +604,23 @@ def _query_for_bundle(
             "included_states": ["SUBSTANTIVE_RESPONSE"],
         })
     native_measure = _measure_native_kind(measure_kind)
+    # Ordinary RAW distributions, conditioned and multi-axis alike, use the
+    # confirmed asked/eligible denominator and explicitly retain source-
+    # typed nonanswers. Do not silently scalarize multiselect/repeated data.
+    asked_eligible = (
+        native_measure == "RAW"
+        and all(component["topology"] == "SCALAR_SINGULAR"
+                for component in components)
+    )
+    if asked_eligible:
+        try:
+            components = [
+                include_asked_eligible_states(component) for component in components
+            ]
+        except AskedEligibleDistributionError as exc:
+            raise WorkloadBindingRefusal(
+                "ASKED_ELIGIBLE_RAW_COMPONENT_NOT_READY", str(exc)
+            ) from exc
     if native_measure == "GOVERNED_WEIGHTED" and not projection.weight_slots:
         raise WorkloadBindingRefusal("WEIGHTED_MEASURE_WITHOUT_WEIGHT_SLOT")
     grain = {
@@ -612,6 +634,11 @@ def _query_for_bundle(
     }
     if native_measure == "GOVERNED_WEIGHTED":
         grain["weight_basis_id"] = projection.weight_slots[0].weight_basis_id
+    if asked_eligible:
+        grain[ASKED_ELIGIBLE_PROFILE_FIELD] = ASKED_ELIGIBLE_POLICY
+        grain["response_state_semantics_ref"] = _ref(
+            "RESPONSE_STATE_SEMANTICS", "ASKED_ELIGIBLE_RAW_DISTRIBUTION_V1"
+        )
     return EmpiricalQuerySpec(
         typed_state="QUERY_AUTHORIZED_RESOLVABLE",
         authority_snapshot_refs=(query_auth.authority_ref,),

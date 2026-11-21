@@ -6,8 +6,10 @@ meaning and never bypasses C11 validation.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, replace, fields, is_dataclass
 from fractions import Fraction
+from types import MappingProxyType
+from threading import RLock
 import hashlib
 import math
 from typing import Any, Callable, Iterable, Mapping
@@ -23,7 +25,7 @@ from rawlsing_next.pre553_c11_integrity import (
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
-    AuthorityRef, AuthoritySnapshot, EmpiricalCoordinateFact, EmpiricalPredicate,
+    AuthorityRef, AuthoritySnapshot, CanonicalSemanticObject, EmpiricalCoordinateFact, EmpiricalPredicate,
     EmpiricalQuerySpec, EmpiricalUniverse, ExactRef, RespondentEvent,
     RoutingEligibilityFact, SourceUniverseRelation, WeightMeasureFact,
     authority_ref, canonicalize, exact_ref, semantic_hash,
@@ -264,6 +266,69 @@ class ExactPhysicalCellStream:
         return self.cell_iter_factory()
 
 
+def _freeze_governed_input(value: Any) -> Any:
+    """Detach mutable rule data once, before any physical-stream callback.
+
+    Frozen dataclasses are shallow. A mutable response/occurrence/weight or
+    coordinate subvalue must not change *during* the physical-cell iterator
+    and then be restored before the entry/exit cache-key comparison. Canonical
+    semantic and internal C11 records already own immutable identities and
+    remain under their original validators, not a duplicated representation.
+    This private snapshot does not issue scientific or source permission.
+    """
+    if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence,
+                          CanonicalSemanticObject, C11InternalRecord)):
+        return value
+    if isinstance(value, Mapping):
+        return MappingProxyType({
+            key: _freeze_governed_input(item)
+            for key, item in value.items()
+        })
+    if isinstance(value, (tuple, list)):
+        items = tuple(_freeze_governed_input(item) for item in value)
+        if isinstance(value, tuple) and all(a is b for a, b in zip(items, value)):
+            return value
+        return items
+    if isinstance(value, (set, frozenset)):
+        # Sets have no lawful mutable descendants as members. Make the
+        # container immutable without reinterpreting its semantic elements.
+        return frozenset(value)
+    if is_dataclass(value):
+        transformed = {
+            field.name: _freeze_governed_input(getattr(value, field.name))
+            for field in fields(value)
+        }
+        if all(transformed[field.name] is getattr(value, field.name)
+               for field in fields(value)):
+            return value
+        return replace(value, **transformed)
+    return value
+
+
+def _cache_projection_preimage(value: Any) -> Any:
+    """Lossless cache identity for the governed input (not a new authority).
+
+    Semantic objects supply their content-addressed full preimages via refs or
+    as_dict; dataclass rule carriers are recursively expanded so a changed
+    source/row/response/occurrence/routing/weight rule cannot alias its old
+    value under the same nominal projection ref.
+    """
+    if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence)):
+        return value.as_dict()
+    if is_dataclass(value):
+        return {
+            field.name: _cache_projection_preimage(getattr(value, field.name))
+            for field in fields(value)
+        }
+    if isinstance(value, Mapping):
+        return {key: _cache_projection_preimage(item) for key, item in value.items()}
+    if isinstance(value, (tuple, list)):
+        return [_cache_projection_preimage(item) for item in value]
+    if hasattr(value, "as_dict"):
+        return value.as_dict()
+    return value
+
+
 @dataclass(frozen=True)
 class GovernedC11Projection:
     projection_identity_ref: ExactRef
@@ -296,6 +361,14 @@ class GovernedC11Projection:
     slot_owner_sets: tuple[PhysicalSlotOwnerSet, ...] = ()
 
     def __post_init__(self):
+        # Copy and deeply freeze rule-carrier descendants at the source-side
+        # boundary. A caller may mutate its own mapping after construction;
+        # that mutation must never alter the issued projection consumed by I02.
+        for field in fields(self):
+            original = getattr(self, field.name)
+            frozen = _freeze_governed_input(original)
+            if frozen is not original:
+                object.__setattr__(self, field.name, frozen)
         exact_ref(self.projection_identity_ref, "projection_identity_ref")
         _sha(self.expected_source_sha256, "expected_source_sha256")
         if self.source_snapshot_retention_ref.content_hash != self.expected_source_sha256:
@@ -357,26 +430,18 @@ class GovernedC11Projection:
 
     @property
     def cache_identity(self) -> str:
-        owner_sets = [
-            {
-                "contract": x.contract_id,
-                "slot": x.slot.key,
-                "owners": [
-                    {"family": o.owner_family, "authority_refs": [a.as_dict() for a in o.authority_refs]}
-                    for o in x.owners
-                ],
-            }
-            for x in sorted(self.slot_owner_sets, key=lambda x: x.slot.key)
-        ]
-        material = {
+        """Exact full governed-projection preimage, not just its asserted name.
+
+        Caller-provided projection_identity_ref and authority refs do not
+        establish equivalence when row/response/routing/weight/occurrence rules
+        differ. Hash the actual entire producer input, preserving typed
+        absence and canonical semantic references. This is cache isolation,
+        not original-source/science/current-use authorization.
+        """
+        return semantic_hash({
             "contract": CONTRACT_ID,
-            "projection_identity_ref": self.projection_identity_ref.as_dict(),
-            "source_sha256": self.expected_source_sha256,
-            "required_authority_refs": [x.as_dict() for x in sorted(self.required_authority_refs, key=lambda r: r.key)],
-        }
-        if owner_sets:
-            material["slot_owner_sets"] = owner_sets
-        return semantic_hash(material)
+            "projection": _cache_projection_preimage(self),
+        })
 
 
 def _owner_material(owner_authority_refs: Iterable[AuthorityRef]) -> tuple[AuthorityRef, ...]:
@@ -611,36 +676,92 @@ def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalC
 class SourceBackedFacadeKey:
     source_sha256: str
     projection_identity: str
+    physical_binding_identity: str | None = None
 
 
 class SourceBackedC11SessionCache:
     def __init__(self):
         self._entries = {}
+        # Sourcefree session cache; serialize only its small lookup/admission/
+        # eviction metadata, never the I02 source read or I03 computation.
+        self._lock = RLock()
+
+    @staticmethod
+    def _require_same_binding(key, release, entry):
+        stored_key, prior = entry
+        if (stored_key != key or not isinstance(prior, C11LogicalRelease)
+                or prior.source_artifact_ref.content_hash != key.source_sha256
+                or prior.release_ref != release.release_ref
+                or prior.source_release_manifest_hash != release.source_release_manifest_hash
+                or prior.replay_manifest.ref != release.replay_manifest.ref):
+            raise SourceBackedC11FacadeError("conflicting cache rebind")
+
+    @staticmethod
+    def _require_source(key, release):
+        if (not isinstance(release, C11LogicalRelease)
+                or release.source_artifact_ref.content_hash != key.source_sha256):
+            raise SourceBackedC11FacadeError("cache/source mismatch")
 
     def get(self, key):
-        entry = self._entries.get(key)
-        if entry is None:
-            return None
-        stored_key, release = entry
-        if stored_key != key or release.source_artifact_ref.content_hash != key.source_sha256:
-            raise SourceBackedC11FacadeError("stale/tampered cache")
-        return release
+        with self._lock:
+            entry = self._entries.get(key)
+            if entry is None:
+                return None
+            stored_key, release = entry
+            if (stored_key != key or not isinstance(release, C11LogicalRelease)
+                    or release.source_artifact_ref.content_hash != key.source_sha256):
+                raise SourceBackedC11FacadeError("stale/tampered cache")
+            return release
 
     def put(self, key, release):
-        if not isinstance(release, C11LogicalRelease) or release.source_artifact_ref.content_hash != key.source_sha256:
-            raise SourceBackedC11FacadeError("cache/source mismatch")
-        self._entries[key] = (key, release)
+        """Public replay is idempotent only; no unowned first cache admission."""
+        self._require_source(key, release)
+        with self._lock:
+            existing = self._entries.get(key)
+            if existing is None:
+                raise SourceBackedC11FacadeError("producer-only cache admission")
+            self._require_same_binding(key, release, existing)
+            # Preserve first-admitted original object; never replace with a
+            # second caller-supplied object sharing its exact identities.
+
+    def _admit_from_source_backed_producer(self, key, release):
+        """Single, atomic producer admission after I02 + full coherence checks.
+
+        The prior contains() -> public put() split could refuse a legitimate
+        validated producer when another thread cleared the session cache in
+        between. Holding the cache metadata lock prevents that false denial
+        and retains A's producer-only first insertion + B's rebind refusal.
+        This is local synchronization, not external source/issuer authority.
+        """
+        self._require_source(key, release)
+        with self._lock:
+            existing = self._entries.get(key)
+            if existing is None:
+                self._entries[key] = (key, release)
+            else:
+                self._require_same_binding(key, release, existing)
 
     def clear(self):
-        self._entries.clear()
+        with self._lock:
+            self._entries.clear()
 
     @property
     def entry_count(self):
-        return len(self._entries)
+        with self._lock:
+            return len(self._entries)
 
 
-def source_backed_facade_key(source, p):
-    return SourceBackedFacadeKey(source.source_sha256, p.cache_identity)
+def source_backed_facade_key(source, p, *, current_authorities=()):
+    """Cache only under the same full semantics AND physical-read context."""
+    binding = {
+        "row_count": source.row_count,
+        "decoder_metadata_digest": _accelerator_decoder_digest(source),
+        "transport_identity": getattr(source, "transport_identity", None),
+        "current_authority_refs": sorted(a.ref.key for a in current_authorities),
+    }
+    return SourceBackedFacadeKey(
+        source.source_sha256, p.cache_identity, semantic_hash(binding),
+    )
 
 
 def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalCellStream) -> str | None:
@@ -656,7 +777,12 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
 ):
-    key = source_backed_facade_key(source, projection)
+    # One-shot iterables must not disappear between cache admission and the
+    # compact physical-binding witness. Both must see identical authorities.
+    current_authorities = tuple(current_authorities)
+    if cache is not None and not isinstance(cache, SourceBackedC11SessionCache):
+        raise SourceBackedC11FacadeError("source-backed cache must be producer-owned session cache")
+    key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     release = cache.get(key) if cache else None
     if release is None:
         release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
@@ -681,8 +807,23 @@ def build_source_backed_c11_repository(
         )
         if public is not None:
             release = replace(release, public_objects=public)
+        # Frozen dataclasses can still enclose caller-owned mutable mappings.
+        # The physical iterator (or a sidecar callback) may mutate them after
+        # input admission but before I02 finishes. A valid release computed
+        # under changed source/semantic/authority context is not an issued
+        # release under the original context, whether or not a cache exists.
+        if source_backed_facade_key(
+            source, projection, current_authorities=current_authorities
+        ) != key:
+            raise SourceBackedC11FacadeError("cache input changed during C11 build")
         if cache:
-            cache.put(key, release)
+            cache._admit_from_source_backed_producer(key, release)
+    elif cache and source_backed_facade_key(
+        source, projection, current_authorities=current_authorities
+    ) != key:
+        # Covers mutation during a cache.get callback (or concurrent owner
+        # changes) on a hit, not only the fresh-build path.
+        raise SourceBackedC11FacadeError("cache input changed during C11 build")
     return C11Repository((release,)), release
 
 
