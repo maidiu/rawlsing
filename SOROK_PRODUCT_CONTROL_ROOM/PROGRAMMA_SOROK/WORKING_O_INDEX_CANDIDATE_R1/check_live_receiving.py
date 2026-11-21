@@ -60,7 +60,7 @@ def verify_inherited_files(directory=ROOT):
 
 
 def verify_readable_status(directory=ROOT):
-    """The readable 77-PR view must pin the exact current ledger blob."""
+    """The readable candidate-status view must pin the exact current ledger blob."""
     try:
         raw = (directory / 'LIVE_RECEIVING_LEDGER.json').read_bytes()
         status = (directory / 'READABLE_CANDIDATE_STATUS_20261121.md').read_text()
