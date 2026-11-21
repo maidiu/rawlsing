@@ -1,3 +1,27 @@
+## USER DIRECT RECONCILED FUNCTION-CONSERVATION INTAKE — 2026-11-21
+
+**ISOLATED DEVELOPMENT SOURCE ONLY / COMMITTED_UNTESTED.** This queue is the single existing REMONT/OpenCode queue on the actual selected Q014+R03-v2+Q015+physical journal+P0 prepared Batch candidate. The prior `dd1f5a45830c09ac21f577aa97351d639be1af0d` pre-main-derived branch was not a Q014 native v2 integration cut; its test-only Q021 name has been reconciled unchanged here (same two existing test files) and Q022 structural test remains its own separate branch/checkout—**NOT present in this candidate runner**, no asserted all-in-one green. Never run tests from one branch against another SHA and transfer results.
+
+**Source preserved and strengthened:** Existing `RMT-Q008` now includes the already-existing physical journal court (including historical pinned-snapshot mutation and symlinked releases attacks), plus two new version-2 full-dictionary/digest/no-follow tests. REMONT R16 preserved the complete raw source dictionary (genuine new physical evidence); older cold-reader implementation protected stronger pin+preverify replay; the composite code conserves BOTH, with legacy-v1 read support. Only source-static comparison so far, no executed result. **RMT-Q015** uses the exact production module blob `eaf83cf340ddbe10fc8c53c4dd57d0f1afd247c2` and corrected one-test contract blob `ea17144568f6545a0fb98cabdce9bc93c1ff79f4` from #1242; existing DHIKR seal reused, no new estimator or scheduler. Old 14/1 execution result and corrected test remain SHA-pinned to #1242 ancestor, not candidate execution.
+
+**P0 first consumers:** Existing `RMT-Q014` sourcefree R03/asked/eligible court; existing `RMT-Q023` original eligible QUERY jobs→saved Batch→real I03 owner with one postings index; `RMT-Q021` actual S04 sample-descriptive joint and research tests; existing `RMT-Q015–Q018/Q020` require their existing distinct QID source+functional negative courts. `RMT-Q019` remains retired, never reinvent its standalone coordinator. `RMT-Q013` continues target absent ≠ observed empty. `RMT-Q022` can only execute from a branch that really contains G4 Python checker and corresponding three matching OATHs, NOT inferred here.
+
+**On OpenCode invocation:** exact new 40-character HEAD, clean detached worktree, `EXPECTED_PREFF_C0_HEAD=$SHA bash rawlsing_next/tests/run_preff_remont_batch.sh RMT-Q008 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020 RMT-Q021 RMT-Q023`. Report imports missing at source before executing, do not weaken test to green; capture source-true negative, tests+JUnit and one/ten/100 distinct operation cost only where actual. The test executor and REMONT own first faults; original host/data, design science, and consumer authority still held. No GitHub Actions execution or protected code receiving is claimed.
+
+---
+
+## RMT-Q023 — P0 native saved C11 → R03-v2 issued Batch prepared reuse (2026-11-20/21)
+
+**QUEUED / COMMITTED_UNTESTED**, on **isolated new PYAT forward-engineering candidate**, not PRE-MAIN. New exact source SHA will be this queue-change commit. Historical author parent #1238 `1b07ee8e43b1e6dfc1543d777fe51b5750633d1c`; separate earlier PRE-MAIN-derived OpenCode branch `dd1f5a45830c09ac21f577aa97351d639be1af0d` carries Q021/Q022, **not** this complete #1238 R03 v2 source ancestry. Never pretend the branches are one already-executed HEAD.
+
+**First producer/consumer:** native S2-C `VerifiedDirectEstate` and independent pins → normal `SavedC11Admission` → existing `PreparedSavedC11Admission.from_verified_admission` (new exact conversion) → existing `execute_saved_batch(..., reuse_prepared_session=True)` Batch runner → original native I03 / I05 owner. Concrete R03-v2 issuer unit test exercises eligible compiler-issued QUERY roles through this physical saved Batch in exactly one `DirectEstateI03Session._build` instead of one rebuild per query. No second source read, invented issuer, native data permission, released person or FF causal analysis. Default `reuse_prepared_session=False` leaves old behavior untouched.
+
+**Execute exact two files through the ONE existing runner** `RMT-Q023` at the new frozen branch SHA and an unchanged sourcefree `R03_ASKED_ELIGIBLE` court as `RMT-Q014` if dependencies are present. Sourcefree 1,10,100 **repeated** I03 operations ≠ verified 1,10,100 **distinct** realistic queries; explicitly label scope. Required first-fault negatives: fake/duck caller admission, denied source CURRENT before conversion, wrong predicate vs exact query, changed original v1 issuer, non-issued v2 QUERY, failed mid-run with no persisted posting index, full no-regression batch receipts. Independent original survey/host rights still unissued, actual high-width cost/≤6GiB pending. Existing P0 goal #960/#1097 unchanged.
+
+**OpenCode execution return:** exact 40-hex HEAD, clean tree, Python/pytest/pyarrow, sourcefree positive/negative counts, per-QID JUnit/log, actual index rebuild count and CPU/wall/RSS/scratch if measured. Red → existing REMONT #1162 first fault, not another owner committee; no Actions dependency.
+
+---
+
 # REMONT — Growing sourcefree execution queue (OPEN)
 
 ## CORR-006/007 — Q015 narrow I05-ownership proof and Q020 preservation (2026-11-20)

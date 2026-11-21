@@ -212,3 +212,49 @@ def test_cold_read_rejects_symlinked_intermediate_release_directory(tmp_path):
     releases.symlink_to(relocated, target_is_directory=True)
     with pytest.raises(PhysicalCellJournalError, match="linked"):
         list(read_physical_cells(receipt, authorized_private_root=private))
+
+
+def test_v2_physical_dictionary_roundtrip_and_corrupt_refusal(tmp_path):
+    import hashlib
+    import json
+    fixture = source_fixture(
+        tmp_path / "source-dictionary", source_format="SAV",
+        values=(0.0, 1.0, 2.0),
+    )
+    private = tmp_path / "private-dictionary"
+    private.mkdir(mode=0o700)
+    receipt = build(
+        tmp_path, fixture,
+        physical_journal=PhysicalCellJournal(private),
+    ).physical_cell_journal
+    assert receipt.full_physical_metadata_retained
+    metadata = Path(receipt.path) / "physical_metadata.json"
+    data = metadata.read_bytes()
+    assert hashlib.sha256(data).hexdigest() == receipt.source_metadata_digest
+    document = json.loads(data.decode("utf-8"))
+    assert document["source_sha256"] == receipt.source_sha256
+    assert tuple((x["ordinal"], x["name"]) for x in document["variables"]) == receipt.variables
+    assert len(list(read_physical_cells(
+        receipt, authorized_private_root=private,
+    ))) == receipt.cell_count
+    metadata.write_bytes(b"FORGED")
+    with pytest.raises(PhysicalCellJournalError, match="dictionary"):
+        next(read_physical_cells(receipt, authorized_private_root=private))
+
+
+def test_v2_dictionary_symlink_refused_before_any_observation(tmp_path):
+    fixture = source_fixture(
+        tmp_path / "symlink-source", source_format="DTA", values=(0.0, 1.0),
+    )
+    private = tmp_path / "private-symlink"
+    private.mkdir(mode=0o700)
+    receipt = build(
+        tmp_path, fixture,
+        physical_journal=PhysicalCellJournal(private),
+    ).physical_cell_journal
+    metadata = Path(receipt.path) / "physical_metadata.json"
+    alternative = tmp_path / "metadata-alternative"
+    metadata.rename(alternative)
+    metadata.symlink_to(alternative)
+    with pytest.raises((PhysicalCellJournalError, OSError), match="dictionary|linked|regular|symbolic"):
+        next(read_physical_cells(receipt, authorized_private_root=private))

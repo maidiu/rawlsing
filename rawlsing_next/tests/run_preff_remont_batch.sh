@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020 RMT-Q021 RMT-Q023)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -53,9 +53,10 @@ for id in "${cases[@]}"; do
     RMT-Q007) # C5 material sourcefree context navigation and real I05 role
       tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py)
       ;;
-    RMT-Q008) # REMONT P0 ABI parity and historical raw/held negative courts
+    RMT-Q008) # Full physical custody: metadata v2 + older pinned replay no-drop
       tests=(rawlsing_next/tests/test_preff_c1_typed_condition_uncertainty.py
-             rawlsing_next/tests/test_preff_c0_raw_preservation.py)
+             rawlsing_next/tests/test_preff_c0_raw_preservation.py
+             rawlsing_next/tests/test_preff_c0_physical_journal.py)
       ;;
     RMT-Q009) # C5 contextual navigation full inherited sourcefree court
       ;;
@@ -84,6 +85,14 @@ for id in "${cases[@]}"; do
     RMT-Q020) # Issued sampled-population interval F6; separate from retired Q019
       tests=(rawlsing_next/tests/test_pre553_s04_uncertain_repertoire.py
              rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py)
+      ;;
+    RMT-Q021) # Additional S04 joint algebra and observed I03 research: no duplicate QIDs
+      tests=(rawlsing_next/tests/test_pre553_s04_observed_research.py
+             rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py)
+      ;;
+    RMT-Q023) # P0 native C11→R03-v2 issued Batch exact prepared-session reuse
+      tests=(rawlsing_next/tests/test_pre553_prepared_saved_i03.py
+             rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py)
       ;;
     RMT-Q019) # RETIRED: no justified first consumer beyond existing S04/C1/C5/N10E
       echo "HELD_RETIRED_Q019__DUPLICATE_COORDINATOR_WITHDRAWN__NO_TEST_OR_AUTHORITY" >&2

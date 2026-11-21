@@ -172,3 +172,78 @@ def test_prepared_i05_reuses_session_with_exact_discovery_parity(
         r.ref.key for r in baseline.receipts
     ]
     assert observed.evaluated_frontier_ref == baseline.evaluated_frontier_ref
+
+
+def test_plain_saved_admission_can_reuse_inherited_prepared_index_without_repin(
+    tmp_path, monkeypatch,
+):
+    """P0 existing C11→I03: 1/10/100 sourcefree operations, one index, no new issuer.
+
+    Repeated queries are deliberately not asserted distinct scientific jobs.
+    Q014/R03 uses a separate issued-distinct saved Batch test.
+    """
+    from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
+    source, qa, predicate, _, queries, prepared_admission = _fixture(
+        monkeypatch, tmp_path / "plain-to-prepared", "SAVED-REUSE",
+    )
+    ordinary = SavedC11Admission.open(
+        root=Path(prepared_admission.estate_path).parents[1],
+        exact_path=prepared_admission.estate_path,
+        independently_held_manifest_sha256=prepared_admission.manifest_sha256,
+        independently_held_i02=prepared_admission.i02,
+        release_ref=prepared_admission.release_ref,
+        runtime_catalog=prepared_admission._runtime_catalog,
+        current_authorizer=lambda _roots: True,
+    )
+    original_build = DirectEstateI03Session._build
+    builds = []
+
+    def counted(self):
+        builds.append(1)
+        return original_build(self)
+
+    monkeypatch.setattr(DirectEstateI03Session, "_build", counted)
+    native_query = queries["selected"]
+    oracle = ordinary.execute_i03(
+        query_ref=native_query.ref, predicate_ref=predicate.ref,
+    )
+    assert len(builds) == 1
+    for count in (1, 10, 100):
+        builds.clear()
+        upgraded = PreparedSavedC11Admission.from_verified_admission(ordinary)
+        with upgraded.prepared_i03() as session:
+            observed = tuple(
+                session.execute_i03(
+                    query_ref=native_query.ref, predicate_ref=predicate.ref,
+                ) for _ in range(count)
+            )
+            assert session.receipt().operations == count
+        assert len(builds) == 1
+        assert all(result.facts[0].ref == oracle.facts[0].ref
+                   for result in observed)
+        assert not list(Path(ordinary.estate_path).parents[1].glob(
+            ".s2c-native-i03-*",
+        ))
+    with pytest.raises(PreparedSavedI03Error, match="EXACT_EXISTING_SAVED_ADMISSION"):
+        PreparedSavedC11Admission.from_verified_admission(object())
+
+
+def test_plain_to_prepared_rechecks_revoked_current_before_build(tmp_path, monkeypatch):
+    from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
+    grant = {"allowed": True}
+    _, _, _, _, _, admission = _fixture(
+        monkeypatch, tmp_path / "revoked-upgrade", "SAVED-UPGRADE-REV",
+        grant=lambda _roots: grant["allowed"],
+    )
+    ordinary = SavedC11Admission.open(
+        root=Path(admission.estate_path).parents[1],
+        exact_path=admission.estate_path,
+        independently_held_manifest_sha256=admission.manifest_sha256,
+        independently_held_i02=admission.i02,
+        release_ref=admission.release_ref,
+        runtime_catalog=admission._runtime_catalog,
+        current_authorizer=lambda _roots: grant["allowed"],
+    )
+    grant["allowed"] = False
+    with pytest.raises(DirectEstateError, match="current source/operation authority refused"):
+        PreparedSavedC11Admission.from_verified_admission(ordinary)
