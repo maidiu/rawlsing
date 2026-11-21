@@ -73,7 +73,14 @@ class EventLogger:
         self._fh.close()
 
 class Resources:
-    """Measures process+child RSS and output directory disk every 0.5 seconds."""
+    """Sample process-tree CPU, RSS and local output size every 0.5 seconds.
+
+    CPU percentage is relative to ONE logical core; a multithreaded process
+    can exceed 100%. Dividing by logical_cpus gives percent of the machine's
+    advertised logical-CPU capacity. CPU seconds are observed increments
+    since THIS run's admission, not the parent Python process's lifetime.
+    Short-lived children that begin and exit between samples are not counted.
+    """
     def __init__(self, target: Path, emit: EventLogger, ceiling: int = MAX_RSS):
         self.target, self.emit, self.ceiling = target, emit, ceiling
         self.peak_rss = 0
@@ -84,67 +91,128 @@ class Resources:
         self.peak_sampled_cpu_system_s = 0.0
         self.peak_sampled_io_read_bytes = 0
         self.peak_sampled_io_write_bytes = 0
+        self.latest_cpu_percent_one_core = 0.0
+        self.peak_cpu_percent_one_core = 0.0
+        self.logical_cpus = 1
+        self.started = None
+        self._previous_wall = None
+        self._process_cpu = {}
         self._stop = threading.Event()
-        self._thread = threading.Thread(target=self._loop,daemon=True)
+        self._thread = threading.Thread(target=self._loop, daemon=True)
         self._proc = None
+
     def __enter__(self):
         try:
             import psutil
             self._proc = psutil.Process(os.getpid())
+            root_cpu = self._proc.cpu_times()
+            self._process_cpu[(self._proc.pid, self._proc.create_time())] = (
+                root_cpu.user, root_cpu.system
+            )
+            self.logical_cpus = psutil.cpu_count(logical=True) or 1
         except ImportError as exc:
-            raise StoreFailure("psutil required for verified process-tree resource accounting") from exc
+            raise StoreFailure(
+                "psutil required for verified process-tree resource accounting"
+            ) from exc
+        self.started = self._previous_wall = time.monotonic()
         self._thread.start()
         return self
+
     def __exit__(self, *args):
         self._stop.set()
-        # The previous timeout could leave a sampler traversing a large
-        # physical directory after its EventLogger had already been closed.
+        # Never leave a sampler emitting into a closed EventLogger.
         self._thread.join()
-    def _loop(self):
+        # Even short (<0.5 s) arms get a final CPU observation.
+        self._sample(final=True)
+
+    def _sample(self, *, final: bool = False):
         import psutil
-        while not self._stop.is_set():
-            try:
-                procs = [self._proc]+self._proc.children(recursive=True)
-                rss = 0
-                for process in procs:
-                    try:
-                        if process.is_running():
-                            rss += process.memory_info().rss
-                    except (psutil.NoSuchProcess, psutil.ZombieProcess):
-                        # Cold probe subprocesses may exit between discovery
-                        # and the actual RSS read.
+        try:
+            procs = [self._proc] + self._proc.children(recursive=True)
+            rss = 0
+            cpu_user_delta, cpu_system_delta = 0.0, 0.0
+            io_read, io_write = 0, 0
+            for process in procs:
+                try:
+                    if not process.is_running():
                         continue
-                self.peak_rss = max(self.peak_rss,rss)
-                self.peak_disk = max(self.peak_disk,size_tree(self.target))
-                self.sample_count += 1
-                cpu_user,cpu_system,io_read,io_write = 0.,0.,0,0
-                for process in procs:
-                    try:
-                        t=process.cpu_times()
-                        cpu_user+=t.user
-                        cpu_system+=t.system
-                        io=process.io_counters()
-                        io_read+=io.read_bytes
-                        io_write+=io.write_bytes
-                    except Exception:
-                        continue
-                self.peak_sampled_cpu_user_s=max(self.peak_sampled_cpu_user_s,cpu_user)
-                self.peak_sampled_cpu_system_s=max(self.peak_sampled_cpu_system_s,cpu_system)
-                self.peak_sampled_io_read_bytes=max(self.peak_sampled_io_read_bytes,io_read)
-                self.peak_sampled_io_write_bytes=max(self.peak_sampled_io_write_bytes,io_write)
-                if rss > self.ceiling:
-                    self.abort_reason = "process-tree RSS crossed 6 GiB cap"
-                if shutil.disk_usage(self.target).free < 2*1024**3:
-                    self.abort_reason = "output filesystem has less than 2 GiB free"
-                if self.sample_count % 20 == 0:
-                    self.emit(stage="resources", rss_bytes=rss,
-                              peak_rss_bytes=self.peak_rss,
-                              peak_disk_bytes=self.peak_disk)
-            except Exception as exc:
-                self.abort_reason = "resource sampling failed: "+str(exc)
+                    rss += process.memory_info().rss
+                    times = process.cpu_times()
+                    identity = (process.pid, process.create_time())
+                    # Parent starts at a measured baseline. A newly
+                    # discovered child started during this observation
+                    # interval, so its first observed CPU counts from zero.
+                    old = self._process_cpu.get(identity, (0.0, 0.0))
+                    cpu_user_delta += max(0.0, times.user-old[0])
+                    cpu_system_delta += max(0.0, times.system-old[1])
+                    self._process_cpu[identity] = (times.user, times.system)
+                except (psutil.NoSuchProcess, psutil.ZombieProcess,
+                        psutil.AccessDenied):
+                    continue
+                try:
+                    io = process.io_counters()
+                    io_read += io.read_bytes
+                    io_write += io.write_bytes
+                except (psutil.Error, OSError, AttributeError):
+                    # macOS may not support every per-process I/O counter.
+                    pass
+
+            now = time.monotonic()
+            elapsed = max(now-self._previous_wall, 1e-9)
+            self._previous_wall = now
+            self.peak_sampled_cpu_user_s += cpu_user_delta
+            self.peak_sampled_cpu_system_s += cpu_system_delta
+            cpu_percent = 100.0*(cpu_user_delta+cpu_system_delta)/elapsed
+            self.latest_cpu_percent_one_core = cpu_percent
+            self.peak_cpu_percent_one_core = max(
+                self.peak_cpu_percent_one_core, cpu_percent
+            )
+            self.peak_rss = max(self.peak_rss, rss)
+            self.peak_disk = max(self.peak_disk, size_tree(self.target))
+            self.sample_count += 1
+            self.peak_sampled_io_read_bytes = max(
+                self.peak_sampled_io_read_bytes, io_read
+            )
+            self.peak_sampled_io_write_bytes = max(
+                self.peak_sampled_io_write_bytes, io_write
+            )
+            if rss > self.ceiling:
+                self.abort_reason = "process-tree RSS crossed 6 GiB cap"
+            if shutil.disk_usage(self.target).free < 2*1024**3:
+                self.abort_reason = "output filesystem has less than 2 GiB free"
+
+            if final or self.sample_count % 4 == 0:
+                self.emit(
+                    stage="resources_final" if final else "resources",
+                    rss_bytes=rss,
+                    peak_rss_bytes=self.peak_rss,
+                    peak_disk_bytes=self.peak_disk,
+                    cpu_percent_one_core=round(cpu_percent, 2),
+                    cpu_percent_host_capacity=round(
+                        cpu_percent/self.logical_cpus, 2
+                    ),
+                    peak_cpu_percent_one_core=round(
+                        self.peak_cpu_percent_one_core, 2
+                    ),
+                    sampled_cpu_user_s=round(
+                        self.peak_sampled_cpu_user_s, 3
+                    ),
+                    sampled_cpu_system_s=round(
+                        self.peak_sampled_cpu_system_s, 3
+                    ),
+                    logical_cpus=self.logical_cpus,
+                    cpu_measurement_grade="SAMPLED_PROCESS_TREE",
+                    samples=self.sample_count,
+                )
+        except Exception as exc:
+            self.abort_reason = "resource sampling failed: " + str(exc)
+
+    def _loop(self):
+        while not self._stop.wait(0.5):
+            self._sample()
+            if self.abort_reason:
                 break
-            if self._stop.wait(0.5):
-                break
+
     def check(self):
         if self.abort_reason:
             raise StoreFailure(self.abort_reason)
@@ -505,7 +573,11 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
             raise StoreFailure(field+" must be an integer >= "+str(lower))
     output=resolve(root,os.environ.get("PYAT_BENCH_OUTPUT_DIR",config["output_dir"]))
     output.mkdir(parents=True,exist_ok=True)
-    run_tag=config.get("run_id") or datetime.now().strftime("%Y%m%dT%H%M%S")
+    # Two concurrent --only launches must never collide by second-resolution ID.
+    # Explicit run_id remains supported and intentionally refuses overwrites.
+    run_tag=config.get("run_id") or (
+        datetime.now().strftime("%Y%m%dT%H%M%S%f")+"-"+str(os.getpid())
+    )
     run_dir=output/run_tag
     run_dir.mkdir(parents=False,exist_ok=False)
     common=EventLogger(run_dir/"progress.jsonl","COMMON")
@@ -568,10 +640,22 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                         source.source_bytes + size_tree(folder) if arm=="H" else size_tree(folder))
                     report["metrics"]["source_parquet_required_for_queries"]=arm=="H"
                     watch.check()
+                watch.check()
+                cpu_time=(watch.peak_sampled_cpu_user_s+
+                          watch.peak_sampled_cpu_system_s)
+                cpu_elapsed=max(time.monotonic()-watch.started,1e-9)
                 report["resources"]={"peak_process_tree_rss_bytes":watch.peak_rss,
                                      "peak_output_disk_bytes":watch.peak_disk,
-                                     "sampled_cpu_user_s":watch.peak_sampled_cpu_user_s,
-                                     "sampled_cpu_system_s":watch.peak_sampled_cpu_system_s,
+                                     "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+                                     "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+                                     "peak_cpu_percent_one_core":round(watch.peak_cpu_percent_one_core,2),
+                                     "avg_cpu_percent_one_core":round(100*cpu_time/cpu_elapsed,2),
+                                     "peak_cpu_percent_host_capacity":round(
+                                         watch.peak_cpu_percent_one_core/watch.logical_cpus,2),
+                                     "avg_cpu_percent_host_capacity":round(
+                                         100*cpu_time/cpu_elapsed/watch.logical_cpus,2),
+                                     "logical_cpus":watch.logical_cpus,
+                                     "cpu_measurement_grade":"SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN",
                                      "sampled_io_read_bytes":watch.peak_sampled_io_read_bytes,
                                      "sampled_io_write_bytes":watch.peak_sampled_io_write_bytes,
                                      "samples":watch.sample_count}
@@ -642,7 +726,8 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                 writer=csv.writer(f)
                 writer.writerow(["arm","status","required_permanent_bytes",
                                  "build_s","full_audit_s","query_s","peak_rss_bytes",
-                                 "native_issued"])
+                                 "native_issued","avg_cpu_percent_one_core",
+                                 "peak_cpu_percent_one_core","logical_cpus"])
                 for name,a in result["arms"].items():
                     st=a.get("stages_s",{});m=a.get("metrics",{})
                     writer.writerow([
@@ -651,7 +736,10 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                         st.get("full_corpus_body_audit"),
                         st.get("queries_and_persisted_results"),
                         a.get("resources",{}).get("peak_process_tree_rss_bytes"),
-                        len(a.get("query_report",{}).get("native",[]))
+                        len(a.get("query_report",{}).get("native",[])),
+                        a.get("resources",{}).get("avg_cpu_percent_one_core"),
+                        a.get("resources",{}).get("peak_cpu_percent_one_core"),
+                        a.get("resources",{}).get("logical_cpus"),
                     ])
         result["completed"]=utc()
         return result
