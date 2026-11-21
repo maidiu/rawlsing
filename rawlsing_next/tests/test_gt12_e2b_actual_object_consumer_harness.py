@@ -1,4 +1,5 @@
 from __future__ import annotations
+from rawlsing_next.wave1_r5_q86_c11_projection import question_ref
 
 from dataclasses import replace
 from itertools import product
@@ -74,8 +75,8 @@ def _publication_authority(use: str) -> dict[str, object]:
 
 
 def _objects(*, fact_state: str = "SUPPORTED", reverse_targets: bool = False, wrong_risk: bool = False):
-    conditioner = _ref("QUESTION", "Q86B")
-    target = _ref("QUESTION", "Q86A")
+    conditioner = question_ref("Q86B")
+    target = question_ref("Q86A")
     targets = (target, conditioner) if reverse_targets else (conditioner, target)
     c_domain, t_domain = ("0", "1"), ("1", "2")
     domain_by_ref = {

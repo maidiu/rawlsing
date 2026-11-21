@@ -14,6 +14,7 @@ from rawlsing_next.field_forge_conditional_support import (
     produce_exact_conditional_support_profile,
     replay_exact_conditional_support_profile,
 )
+from rawlsing_next.wave1_r5_q86_c11_projection import question_ref
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     EmpiricalFact,
@@ -62,9 +63,9 @@ def _domain_identity(conditioner_ref, target_ref, conditioner_domain, target_dom
     })
 
 
-def _fixture(*, fact_state="SUPPORTED", tamper_domain_identity=False, reverse_targets=False):
-    conditioner_ref = _ref("QUESTION", "Q86B")
-    target_ref = _ref("QUESTION", "Q86A")
+def _fixture(*, fact_state="SUPPORTED", tamper_domain_identity=False, reverse_targets=False, conditioner_ref=None, target_ref=None):
+    conditioner_ref = conditioner_ref or question_ref("Q86B")
+    target_ref = target_ref or question_ref("Q86A")
     conditioner_domain = ("0", "1", "9")
     target_domain = ("1", "2", "9")
     source_auth = _auth()
@@ -245,6 +246,8 @@ def _produce(**overrides):
 def test_exact_count_profile_preserves_q86b_condition_denominators_and_zero_cells():
     relation, _ = _produce()
     assert relation.family == RELATION_FAMILY
+    assert relation.conditioner_ref == question_ref("Q86B")
+    assert relation.target_ref == question_ref("Q86A")
     assert relation.typed_state == "SUPPORTED"
     assert relation.producer_state_blocking is False
     assert relation.semantic_projection()["participant_role_order"] == [CONDITIONER_ROLE, TARGET_ROLE]
@@ -277,6 +280,45 @@ def test_deterministic_identity_and_exact_replay():
 def test_role_order_is_frozen_q86b_conditioner_q86a_target():
     with pytest.raises(FieldForgeConditionalSupportError, match="role/order"):
         _produce(reverse_targets=True)
+
+
+def test_unlike_pair_is_rejected_before_profile_minting():
+    conditioner = ExactRef("QUESTION_IMPLEMENTATION", "question_impl.phase0.99999999999999999999", _h("q99b"))
+    target = ExactRef("QUESTION_IMPLEMENTATION", "question_impl.phase0.88888888888888888888", _h("q99a"))
+    query, fact, conditioner_ref, target_ref = _fixture(conditioner_ref=conditioner, target_ref=target)
+    with pytest.raises(FieldForgeConditionalSupportError, match="exact Q86B/Q86A"):
+        produce_exact_conditional_support_profile(
+            joint_fact=fact,
+            joint_query=query,
+            conditioner_ref=conditioner_ref,
+            target_ref=target_ref,
+            producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",),
+        )
+
+
+def test_q86_object_id_substrings_do_not_satisfy_identity():
+    q86b = question_ref("Q86B")
+    q86a = question_ref("Q86A")
+    wrong_kind = ExactRef("QUESTION", q86b.object_id, q86b.content_hash)
+    query, fact, conditioner_ref, target_ref = _fixture(conditioner_ref=wrong_kind, target_ref=q86a)
+    with pytest.raises(FieldForgeConditionalSupportError, match="exact Q86B/Q86A"):
+        produce_exact_conditional_support_profile(
+            joint_fact=fact,
+            joint_query=query,
+            conditioner_ref=conditioner_ref,
+            target_ref=target_ref,
+            producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",),
+        )
+    wrong_hash = ExactRef("QUESTION_IMPLEMENTATION", q86a.object_id, _h("wrong-q86a-identity"))
+    query, fact, conditioner_ref, target_ref = _fixture(conditioner_ref=q86b, target_ref=wrong_hash)
+    with pytest.raises(FieldForgeConditionalSupportError, match="exact Q86B/Q86A"):
+        produce_exact_conditional_support_profile(
+            joint_fact=fact,
+            joint_query=query,
+            conditioner_ref=conditioner_ref,
+            target_ref=target_ref,
+            producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",),
+        )
 
 
 def test_domain_identity_tamper_fails_closed():
