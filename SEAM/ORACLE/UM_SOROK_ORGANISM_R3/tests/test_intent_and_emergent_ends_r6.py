@@ -170,9 +170,21 @@ class PurposeAndGenesisR6(unittest.TestCase):
         self.rt.step('mother')
         dev=[p for task,p in packets if task=='development']
         exp=[p for task,p in packets if task=='expression']
-        self.assertEqual(len(dev),1)
+        # A parent's action may be personally witnessed by Nadia; each
+        # actor gets a DIFFERENT developmental packet. There is exactly
+        # one private model proposal for this selected actor, while
+        # observed recipients remain independently permitted to develop.
+        parent_dev=[p for p in dev if p.get('actor',{}).get('id')=='mother']
+        child_dev=[p for p in dev if p.get('actor',{}).get('id')=='nadia']
+        self.assertEqual(len(parent_dev),1)
+        self.assertLessEqual(len(child_dev),1)
         self.assertEqual(len(exp),1)
-        self.assertIn('selected_purpose_analytic_only',dev[0])
+        self.assertIn('selected_purpose_analytic_only',parent_dev[0])
+        self.assertEqual(parent_dev[0]['selected_purpose_analytic_only']['status'],
+                         'ACTOR_POLICY_SELECTED_PROJECT_COURSE')
+        if child_dev:
+            self.assertEqual(child_dev[0]['selected_purpose_analytic_only']['status'],
+                             'NO_ACTOR_AUTHORED_ATTEMPT')
         self.assertNotIn('selected_purpose_analytic_only',exp[0])
         self.assertNotIn('motive_hypothesis',str(exp[0]))
         self.assertNotIn('possible_ends',str(exp[0]))
