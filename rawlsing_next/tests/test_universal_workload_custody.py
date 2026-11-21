@@ -26,6 +26,27 @@ HOST = "local-r91-r04"
 PURPOSE = "TEST_ONLY_SOURCEFREE"
 
 
+class _IssuedTestResolver:
+    """Explicit TEST_ONLY current-decision double for multi-workload resume.
+
+    It is constructed separately from the checkpoint and returns the supplied
+    current record. It is not the production issuer.
+    """
+
+    def __init__(self, records):
+        self._records = {record.decision_ref.key: record for record in records}
+
+    def resolve_current(self, decision_ref):
+        try:
+            return self._records[decision_ref.key]
+        except KeyError as exc:
+            raise WorkloadAdmissionError("UNKNOWN_DECISION_REF") from exc
+
+
+def _resolver(issued):
+    return _IssuedTestResolver(tuple(item.record for item in issued))
+
+
 def _issued_workloads(tmp_path):
     path = tmp_path / "r91_r04.sav"
     bundle = build_s3(path, s3_rows(respondents=6, occasions=2))
