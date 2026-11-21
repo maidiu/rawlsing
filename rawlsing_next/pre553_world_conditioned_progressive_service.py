@@ -51,6 +51,51 @@ class WorldConditionedPrefixResult:
         }
 
 
+def _e05_read_date(value: Any) -> str:
+    """E04 tested as-of dates must be canonical ISO dates."""
+    from datetime import date
+    if not isinstance(value, str):
+        raise WorldConditionedProgressiveError("E05_EXACT_FIELD_CLOCK_REQUIRED")
+    try:
+        parsed = date.fromisoformat(value)
+    except ValueError as exc:
+        raise WorldConditionedProgressiveError("E05_EXACT_FIELD_CLOCK_REQUIRED") from exc
+    if parsed.isoformat() != value:
+        raise WorldConditionedProgressiveError("E05_EXACT_FIELD_CLOCK_REQUIRED")
+    return value
+
+
+def _verify_e05_field_read(snapshot: Any, key: str, value: Mapping[str, Any]) -> None:
+    """Original E05 identity and clock checks at EXISTING R112 read boundary."""
+    if value.get("state") != "SUPPORTED_TEST_ONLY":
+        return
+    material = snapshot.material
+    if material.get("schema") != "E04_TEST_ONLY_SELECTED_WORLD_SNAPSHOT@1":
+        raise WorldConditionedProgressiveError("E05_SELECTED_WORLD_SCHEMA_REQUIRED")
+    payload = value.get("payload")
+    if not isinstance(payload, Mapping) or payload.get("key") != key:
+        raise WorldConditionedProgressiveError("E05_FIELD_PRODUCER_BINDING_MISMATCH")
+    root = material.get("source_permission_root")
+    if not root or payload.get("source_root") != root:
+        raise WorldConditionedProgressiveError("E05_FIELD_PERMISSION_ROOT_MISMATCH")
+    valid = _e05_read_date(material.get("valid_at"))
+    start, end = (_e05_read_date(payload.get(name))
+                  for name in ("effective_from", "effective_to"))
+    if not start <= valid < end:
+        raise WorldConditionedProgressiveError("E05_FIELD_EFFECTIVE_CLOCK_OUTSIDE_SELECTION")
+    if _e05_read_date(payload.get("publication")) > _e05_read_date(material.get("published_asof")):
+        raise WorldConditionedProgressiveError("E05_FIELD_PUBLICATION_AFTER_SELECTION")
+    bound = material.get("fields", {}).get(key)
+    if (not isinstance(bound, Mapping) or bound.get("state") != "SUPPORTED_TEST_ONLY"
+            or bound.get("field_ref") != value.get("field_ref")):
+        raise WorldConditionedProgressiveError("E05_SELECTED_FIELD_REF_MISMATCH")
+    if (semantic_hash(payload) != value.get("payload_hash")
+            or value.get("payload_hash") != bound.get("payload_hash")
+            or value.get("value") != payload.get("value")
+            or value.get("unit") != payload.get("unit")):
+        raise WorldConditionedProgressiveError("E05_FIELD_PAYLOAD_HASH_MISMATCH")
+
+
 class _PrefixBoundService:
     def __init__(self, catalog, snapshot, prefix: WorldConditionedPrefix):
         self.catalog = catalog
@@ -60,6 +105,7 @@ class _PrefixBoundService:
 
     def structural(self, snapshot, key, consumer):
         value = self.catalog.read(snapshot, key)
+        _verify_e05_field_read(snapshot, key, value)
         self.value_reads.append({
             "consumer": consumer, "channel": "structural", "key": key,
             "state": value["state"], "value": value.get("value"),
@@ -118,6 +164,12 @@ def consume_world_conditioned_prefixes(
         raise WorldConditionedProgressiveError("NONEMPTY_PREFIXES_REQUIRED")
     consume = _pinned_nonparent_consume()
     empirical = catalog.read(snapshot, "empirical")
+    if empirical.get("state") == "SUPPORTED_TEST_ONLY":
+        if (empirical != snapshot.material.get("empirical")
+                or not snapshot.material.get("source_permission_root")
+                or empirical.get("permission_root")
+                   != snapshot.material.get("source_permission_root")):
+            raise WorldConditionedProgressiveError("E05_EMPIRICAL_PERMISSION_ROOT_MISMATCH")
     if empirical.get("state") != "SUPPORTED_TEST_ONLY":
         return tuple(
             WorldConditionedPrefixResult(
