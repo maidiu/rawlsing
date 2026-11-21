@@ -830,17 +830,17 @@ class ConstitutiveRuntime:
             self.ledger.actors,
             lambda actor_id: self.step(actor_id), beats)
 
-    def advance_to_discontinuity(self,horizon=30):
+    def advance_to_discontinuity(self,horizon=30,processes=None):
         """Cover ordinary time only to the next real material interruption.
 
         A due commitment lets its owner initiate an independently selected
         response; no caller script forces fulfillment or another's consent.
         """
-        return continue_to_discontinuity(self,horizon)
+        return continue_to_discontinuity(self,horizon,processes=processes)
 
     def construct_pre_encounter_history(self,subject_id, target_age_days, *,
                                         horizon_days=365, autonomous_beats=2,
-                                        max_segments=240):
+                                        max_segments=240, period_processes=None):
         """Run sourcefree historical becoming before any user-person meeting.
 
         Reuse background(), advance_to_discontinuity(), autonomous actor
@@ -850,7 +850,8 @@ class ConstitutiveRuntime:
         return continue_pre_encounter(
             self, subject_id, target_age_days,
             horizon_days=horizon_days,
-            autonomous_beats=autonomous_beats, max_segments=max_segments)
+            autonomous_beats=autonomous_beats, max_segments=max_segments,
+            period_processes=period_processes)
 
     def register_sourcefree_food_control(self,spec):
         """Configure a fictional material institution in WORLD, not in psyche.
