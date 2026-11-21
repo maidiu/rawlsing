@@ -4,6 +4,9 @@ on:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
       - agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1
+  pull_request:
+    branches:
+      - agent/neighbormulch-one-world-encounter-r1-20261121
   workflow_dispatch:
 jobs:
   one-world-first-consumer:
