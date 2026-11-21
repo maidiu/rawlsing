@@ -90,7 +90,7 @@ jobs:
               "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII",
               "XVIII", "XIX", "XX"
           )
-          rows = re.findall(r"(?m)^\\| \\*\\*([IVX]+) — ", view[0])
+          rows = re.findall(r"(?m)^\| \*\*([IVX]+) — ", view[0])
           assert tuple(rows) == required_roman, "G4_DHIKRYMULCH_20_ROW_COVERAGE_MISSING"
           for required in (
               "FUNCTION_PARITY.jsonl", "INDEX.jsonl",
