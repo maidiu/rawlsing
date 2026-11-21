@@ -53,7 +53,7 @@ from .plural_care_paths import (
     sourcequalified_reopening)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
-from .continuity_clock import continue_to_discontinuity, continue_pre_encounter
+from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
@@ -168,6 +168,54 @@ class ConstitutiveRuntime:
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
         return {'receipt':receipt['id'],'cue':cue,'grade':GRADE}
+
+    def offer_contingent_world_notice(self,proposal):
+        """Offer a common event *candidate* into this branch's existing world.
+
+        A system-wide calendar or live-news service can propose the same
+        sourcefree notice to multiple separate continuities. No such service
+        is implemented by this method. Each branch independently checks its
+        present world; eligibility admits ONLY a public sensory sign, not
+        scripted physical consequences, actor assent, knowledge, or emotion.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        verdict=qualify_contingent_world_notice(world,actors,proposal)
+        offer_hash=digest(proposal)
+        prior=[c for c in world['cues']
+               if c.get('contingent_offer_id')==proposal['offer_id']]
+        if prior:
+            if (len(prior)!=1 or prior[0].get('contingent_offer_hash')!=offer_hash):
+                raise ValueError('CONTINGENT_NOTICE_CONFLICTING_REPLAY')
+            return {'status':'ALREADY_ADMITTED_IN_THIS_WORLD',
+                    'offer_id':proposal['offer_id'],'cue_ref':prior[0]['id'],
+                    'clock':world['clock'],'no_second_world_event':True,
+                    'grade':GRADE}
+        if verdict['status']!='ELIGIBLE_SOURCEFREE_NOTICE_ONLY':
+            return {**verdict,'no_world_write':True,'grade':GRADE}
+        cue=add_cue(world,proposal['kind'],proposal['tags'],
+                    location=proposal['location'],
+                    description=proposal['description'],
+                    modality='auditory',source_actor=None,
+                    clock_offset=1,lasting_ticks=0)
+        cue['contingent_offer_id']=proposal['offer_id']
+        cue['contingent_offer_hash']=offer_hash
+        cue['external_sign_only_not_verified_news_or_world_damage']=True
+        world['clock']+=1
+        committed=self.ledger.commit(self.world_id,v,world,{}, {},
+             'SOURCEFREE_CONTINGENT_WORLD_NOTICE',None,{
+                'offer_id':proposal['offer_id'],
+                'proposal_hash':offer_hash,
+                'cue_ref':cue['id'],
+                'independent_branch_eligibility':verdict['status'],
+                'world_life_not_user_or_model_autocompleted':True,
+                'not_proof_of_current_real_world_event':True,
+                'not_actor_perception_memory_emotion_or_consent':True,
+                'grade':GRADE})
+        return {'status':'ADMITTED_SOURCEFREE_NOTICE_ONLY',
+                'receipt':committed['id'],'cue_ref':cue['id'],
+                'clock':world['clock'],'offer_id':proposal['offer_id'],
+                'no_material_consequence_inferred':True,'grade':GRADE}
 
     def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
         actor=actors[actor_id]
