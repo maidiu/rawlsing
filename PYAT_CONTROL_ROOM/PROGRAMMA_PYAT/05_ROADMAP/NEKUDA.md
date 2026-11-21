@@ -88,7 +88,7 @@ No negative is retired through author publication alone. Exact status remains CO
 
 **NEKUDA-022 / KUDA-026:** Old I01 progressive-world sourcefree lifecycle remains a distinct *candidate seam* but four historical dependencies are physically absent from #1247; selected stronger S2-G durable M1/M2/B5 and cold N10E/C1 owner already operates. Do not reintroduce a parallel checkpoint/learned product engine, and do not declare I01 unique progressive saved-world function fully covered without a bounded real first-reader parity. **HOLD**, no new code candidate.
 
-All original NEKUDA identities remain and any independent tests, scientific rights and paired protected receiving remain separate.
+**NEKUDA-002/003 / KUDA-002/003/004:** Original B49 selected source administered/held semantic classifier is absent as a separate historical module but cannot be installed as a parallel original-source issuer without authentic per-wave/administration corpus and current R157/NativePreimage binding. Older G50 symbolic grammar and I51 single-target synthetic join overlap current richer R61 enumeration/R03 v2 QUERY issuance; **SOURCE_STATIC_POSSIBLE_SUPERSESSION**, not accepted exact operation-fate parity. Do not resurrect two prospective compilers or infer U/E_pre original rights.\n\nAll original NEKUDA identities remain and any independent tests, scientific rights and paired protected receiving remain separate.
 
 ---
 
