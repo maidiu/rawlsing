@@ -2,7 +2,7 @@
 
 **2026-11-21 · NEIGHBORMULCH-owned ADDITIVE candidate · not a replacement for PROGRAMMA, O-Index, N-T1, or Constitutive Organism.**
 
-## First truth: this is a one-place *navigation and reciprocal digestion surface*, not a new sovereign authority
+## First truth: this is a one-place *navigation, 757-row first-pass theoretical routing and reciprocal digestion surface*, not a new sovereign authority
 
 The user ordered a source-complete, theory-and-code-aware MULCH before further design decisions. The old SORACLE assistant overlooked original SOROK's Birkenstocks materialization / shared seed / H0–H3 and then risked rebuilding what was already developed. That mistake demonstrates that isolated patches without the *whole source estate* are not a defensible architecture process. This directory is an explicit conservation remedy, not a new replacement psychology.
 
@@ -14,7 +14,8 @@ Read in this order:
 4. [**04 — User ideas and exact conversational custody**](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md). Distinguishes exact user phrases from interpretation, and indexes original creative game ideas from the back-and-forth. No hidden partial sources misrepresented as verbatim.
 5. [**05 — Existing capability, actual writer and open consumer crosswalk**](05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md). First reuse, then amend; protect source/actor/room roots and multiple HEADs.
 6. [**06 — Reciprocal mulch: contradiction/reconstruction and falsifiers**](06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md). What source actually forces us to change, what is still unresolved, what we may prototype without a perfected scientific person.
-7. **Prior sibling banks remain:** [R27 source-corrected user-priority NEIGHBOR intake](../R27_RECIPROCAL_SORACLE_CO_MULCHINEERING_INTAKE_20261121.md), [SORACLE 16-entry machine task bank](https://github.com/maidiu/rawlsing/blob/1cc0d2de9844662e2aad9b25c00bb72cf517f87f/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R27_MULCHINEERING_ONE_PER_INTRODUCTION_20261121.json), [NEIGHBOR original 190 H atlas](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/07_THE_ORIGINAL_190_IDEATION_PROPOSITIONS.md), and [123 historical Q questions](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/10_UNFINISHED_EARLY_SOROK_COURTS_AND_123_QUESTION_FRONTIERS.md).
+7. [**07 — Every original source identity receives an explicit first-pass thematic MULCH disposition**](07_THEMATIC_PER_SOURCE_MULCH_COVERAGE_757.json). 757 individually traceable H/Q/O/SOROKUDA entries with original source, relevant owner and falsifier; each row explicitly states that no independent complete same-source/current-code recourt is implied.
+8. **Prior sibling banks remain:** [R27 source-corrected user-priority NEIGHBOR intake](../R27_RECIPROCAL_SORACLE_CO_MULCHINEERING_INTAKE_20261121.md), [SORACLE 16-entry machine task bank](https://github.com/maidiu/rawlsing/blob/1cc0d2de9844662e2aad9b25c00bb72cf517f87f/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R27_MULCHINEERING_ONE_PER_INTRODUCTION_20261121.json), [NEIGHBOR original 190 H atlas](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/07_THE_ORIGINAL_190_IDEATION_PROPOSITIONS.md), and [123 historical Q questions](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/10_UNFINISHED_EARLY_SOROK_COURTS_AND_123_QUESTION_FRONTIERS.md).
 
 ## What counts as 'everything'—and the exact ceiling
 
