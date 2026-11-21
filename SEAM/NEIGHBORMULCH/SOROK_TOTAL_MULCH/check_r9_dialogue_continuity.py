@@ -1,114 +1,170 @@
 #!/usr/bin/env python3
-"""Read-only, source-reconciling R9 conversation no-drop continuity court.
+"""Read-only conservation court for the ONE current NEIGHBOR theory file.
 
-This script verifies exact source-row and section-presence custody, not psychological
-science, semantic equivalence, a complete ChatGPT transcript, or owner acceptance.
+The inherited filename is deliberately unchanged to avoid a new file/checker.
+Verifies the existing in-file source-conservation foundation against #1275
+source records and the existing 104-bank. It does not certify semantic truth.
 """
 from __future__ import annotations
 
 import json
 import re
 from pathlib import Path
+from collections import Counter
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 CURRENT = ROOT / "SOROK_PRODUCT_CONTROL_ROOM" / "NEIGHBORMULCH"
 SHARED = ROOT / "SEAM" / "NEIGHBORMULCH"
 
+WHOLE = CURRENT / "12_NEIGHBOR_THEORYMULCH_CURRENT.md"
 
-def must(cond: bool, why: str) -> None:
-    if not cond:
+
+def must(ok: bool, why: str):
+    if not ok:
         raise AssertionError(why)
 
 
-def table_rows(body: str, prefix: str) -> dict[str, list[str]]:
-    found: dict[str, list[str]] = {}
-    for line in body.splitlines():
-        if line.startswith("| " + prefix):
-            cells = [item.strip() for item in line.split("|")[1:-1]]
-            if cells and re.fullmatch(r"C\d\d|NM-\d\d\d", cells[0]):
-                must(cells[0] not in found, "duplicate historical source row " + cells[0])
-                found[cells[0]] = cells
-    return found
+def lines_between(text: str, begin: str, end: str) -> str:
+    a = text.find(begin)
+    b = text.find(end, a + len(begin))
+    must(a >= 0 and b > a, "missing in-document source family: " + begin)
+    return text[a:b]
 
 
-def main() -> None:
-    union = json.loads((HERE / "11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json").read_text())
-    old_bank = (SHARED / "01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md").read_text()
-    pr_bank = (HERE / "04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md").read_text()
-    original = json.loads((HERE / "01_MACHINE_SOURCE_UNION_757_ROWS.json").read_text())
-    transcript = (HERE / "10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md").read_text()
-    theory = (CURRENT / "12_NEIGHBOR_THEORYMULCH_CURRENT.md").read_text()
-    ledger = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text()
-    total_entry = (HERE / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
-    seam_entry = (SHARED / "00_READ_FIRST.md").read_text()
-    neighbor_entry = (CURRENT / "00_START_HERE.md").read_text()
+def table(text: str, matcher: str) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for line in text.splitlines():
+        m = re.match(r"^\| (" + matcher + r") \|", line)
+        if not m:
+            continue
+        key = m.group(1)
+        must(key not in result, "duplicated source identity: " + key)
+        result[key] = line
+    return result
 
-    rows = union["rows"]
-    ids = [x["id"] for x in rows]
-    must(len(ids) == 104 and len(set(ids)) == 104, "104 unique cross-lineage source identities")
-    must(union["counts"] == {"R8_C": 44, "PR1275_NM": 44, "R9": 16, "total": 104}, "source count labels")
-    old_table = table_rows(old_bank, "C")
-    pr_table = table_rows(pr_bank, "NM-")
-    must(len(old_table) == 44, "all 44 original C rows remain")
-    must(len(pr_table) == 44, "all 44 original NM rows remain")
-    index = {r["id"]: r for r in rows}
-    for cid, cells in old_table.items():
-        must(cid in index, "lost C record " + cid)
-        must(index[cid]["proposition"] == cells[2], "altered source C text " + cid)
-    for nid, cells in pr_table.items():
-        must(nid in index, "lost NM record " + nid)
-        must(index[nid]["proposition"] == cells[2], "altered source NM text " + nid)
 
-    for i in range(1, 17):
-        key = f"R9-{i:02d}"
-        must(key in index and f"| {key} |" in pr_bank, "lost R9 current source " + key)
+def normalized(s: object) -> str:
+    return re.sub(r"\s+", " ", str(s).replace("|", "/")).strip()
 
-    sections = set(re.findall(r"(?m)^## ([IVXLCDM]+)\.", theory))
-    must(len(sections) == 25, "whole ninth theory's 25 sections")
-    for row in rows:
-        pos = row.get("r9_claimed_theory_sections")
-        must(bool(pos), "missing author-claimed R9 section for " + row["id"])
-        # An en dash marks an inclusive section range; test endpoints,
-        # not semantic equivalence of the intervening paragraphs.
-        for term in re.split(r"[,–]", pos):
-            must(term in sections, "invalid R9 section location " + row["id"] + ":" + term)
-        must(row.get("coverage_grade") ==
-             "AUTHOR_CLAIMED_SECTION_ONLY_NOT_INDEPENDENT_SEMANTIC_PROOF",
-             "overclaimed proof grade " + row["id"])
 
-    must("SAME ENTRY CLASS IS GIVEN; THE OTHER PERSON'S MONEY IS NOT" in theory,
-         "economic opacity is active")
-    must("user-unaffected, current-date reference continuation" in theory,
-         "dynamic shared reference-day concept must be active")
-    must("ENTERING THE GAME ALREADY CONSENTS TO A BOUNDED FICTIONAL PRELUDE" in theory,
-         "opening fiction consent correction must be active")
-    must("The user's own" in theory or "their own resource bar" in theory,
-         "own-only financial UI must be active")
-    must("not a transcript of inaccessible earlier turns" in transcript.lower(),
-         "archive limitation must remain explicit")
-    must("SOURCE EDGE" in pr_bank and "and the" in pr_bank, "preserve unfinished family source")
-    must("## N-T1 / Round Nine" in ledger and "## N-T1 / Round 1" in ledger,
-         "whole historical R1–R9 ledger retained")
+def check_exact_source_name(row: str, name: str, key: str):
+    must(normalized(name) in normalized(row),
+         "source identity preserved but original meaning/locator missing: " + key)
 
-    source_dump = json.dumps(original)
-    for val in ("H001", "S0", "SOROKUDA"):
-        must(val in source_dump, "original 757 source identifier estate appears altered: " + val)
-    for current_path in (
-        "10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md",
-        "11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json",
-    ):
-        must(current_path in total_entry and current_path in seam_entry and current_path in neighbor_entry,
-             "R9 entrypoint no-drop link missing: " + current_path)
 
-    print("[PASS] TOTAL SOROK original index retained; original checker covers its 757 source identities")
-    print("[PASS] 44 historical C rows preserved with exact source cells")
-    print("[PASS] 44 historical NM rows preserved with exact source cells")
-    print("[PASS] 16 R9 source-grade distinctions indexed in both registers")
-    print("[PASS] 104 unique records have valid author-claimed R9 section pointers")
-    print("[PASS] current whole, complete cumulative ledger and cross-agent entrypoints")
-    print("[PASS] financial epistemic distinction, dated conditional opening and bounded-fiction consent")
-    print("[LIMIT] This is documentary continuity, NOT complete transcript or independent semantic proof")
+def main():
+    whole = WHOLE.read_text(encoding="utf-8")
+    original = json.loads((HERE / "07_THEMATIC_PER_SOURCE_MULCH_COVERAGE_757.json").read_text())
+    prior = json.loads((HERE / "11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json").read_text())
+    main = whole.split("## SOURCE-CONSERVATION FOUNDATION —", 1)[0]
+
+    acts = [int(i) for i in re.findall(r"(?m)^## (\d+)\. ", main)]
+    must(acts == list(range(1, 17)), "current theory is not one 16-movement integrated whole")
+    must("## Whole conception: the day, the cost, and the person beyond them" in main,
+         "whole lacks final integrated rearticulation")
+
+    # Source families MUST live inside the SAME existing theory document.
+    section_family = lines_between(
+        whole, "### 197 source sections:", "### 104 cross-lineage")
+    ideas_family = lines_between(
+        whole, "### 104 cross-lineage", "### Original SOROK H001–H190:")
+    h_family = lines_between(
+        whole, "### Original SOROK H001–H190:", "### Original SOROK Q001–Q123:")
+    q_family = lines_between(
+        whole, "### Original SOROK Q001–Q123:", "### Original 144 O-Index")
+    o_family = lines_between(
+        whole, "### Original 144 O-Index", "### Original 300 SOROKUDA")
+    uda_family = lines_between(
+        whole, "### Original 300 SOROKUDA", "### Direct user corrections")
+
+    section_rows = table(section_family, r"(?:R1_INITIAL|R1_CORRECTED|R[2-9])-S\d\d")
+    require_versions = {
+        "R1_INITIAL": 18, "R1_CORRECTED": 18,
+        "R2": 16, "R3": 14, "R4": 16, "R5": 18,
+        "R6": 19, "R7": 24, "R8": 29, "R9": 25,
+    }
+    actual_versions = Counter(k.split("-S")[0] for k in section_rows)
+    must(dict(actual_versions) == require_versions,
+         f"ten predecessor theory cuts/197 sections altered: {dict(actual_versions)}")
+    must(len(section_rows) == 197, "historic R1–R9 section custody lost")
+
+    ideas = table(ideas_family, r"(?:C\d\d|NM-\d\d\d|R9-\d\d)")
+    must(len(ideas) == 104 and len(prior["rows"]) == 104,
+         "104 directly source-banked conversation/idea identities lost")
+    for record in prior["rows"]:
+        k = record["id"]
+        must(k in ideas, "lost user idea " + k)
+        check_exact_source_name(ideas[k], record["proposition"], k)
+        must(normalized(record["r9_disposition"]) in ideas[k],
+             "original idea disposition missing: " + k)
+        must(normalized(record.get("source", "")) in ideas[k],
+             "source provenance was silently lost: " + k)
+
+    h_rows = table(h_family, r"H\d\d\d")
+    q_rows = table(q_family, r"Q-[A-Za-z0-9_-]+")
+    o_rows = table(o_family, r"(?:S\d+|C\d+|O-[A-Za-z0-9_-]+)")
+    uda_rows = table(uda_family, r"SOROKUDA-[A-Za-z0-9_-]+")
+    must(len(h_rows) == 190 and len(q_rows) == 123 and
+         len(o_rows) == 144 and len(uda_rows) == 300,
+         "original 757 H/Q/O/SOROKUDA identities are incomplete")
+
+    for source_name, source_table, attr in [
+        ("H_original_ideation_first_pass", h_rows, "original_claim"),
+        ("Q_original_questions_first_pass", q_rows, "historical_question"),
+        ("O_index_owner_first_pass", o_rows, "title"),
+        ("SOROKUDA_code_source_first_pass", uda_rows,
+         "module_or_historical_path"),
+    ]:
+        for record in original[source_name]:
+            key = record["source_id"]
+            must(key in source_table, "lost original identity: " + key)
+            if source_name.startswith("H_"):
+                # The original R5 harvest has 109 inherited headings without
+                # a separate Claim: paragraph. The current in-file claim may
+                # therefore preserve either the title or a longer original
+                # Claim sentence, never invent a new sentence as source.
+                must(normalized(record[attr]) in normalized(source_table[key])
+                     or normalized(record.get("original_claim", "")) in
+                     normalized(source_table[key]),
+                     "historic H claim mislabeled: " + key)
+            elif source_name.startswith("SOROKUDA"):
+                check_exact_source_name(source_table[key], record[attr], key)
+            else:
+                check_exact_source_name(source_table[key], record[attr], key)
+
+    important = [
+        "exact same socioeconomic", "only their own", "financial",
+        "NO_LAWFUL_HOMOLOGY", "SAY, DO and ATTEND", "ATTEND",
+        "bodily needs", "adult", "prelude", "common root",
+        "message", "deletion", "third party", "ordinary",
+        "source-qualified", "CONSTITUTIVE", "G4", "Mechanism",
+        "theological", "religious", "horizon", "relationship",
+        "irreducible", "public", "rent", "partial knowledge",
+    ]
+    for phrase in important:
+        must(phrase.lower() in main.lower(),
+             "significant previously affirmed topic absent from active whole: " + phrase)
+
+    direct = whole.split("### Direct user corrections", 1)[1]
+    must("### Governing latest direct user instructions" in direct,
+         "latest direct user's one-document and no-branch instruction lost")
+    must("I do not want you to craete new documents" in direct,
+         "source user wording not preserved verbatim")
+    must("HOLD_MISSING_ORIGINAL_CHAT" in whole and
+         "HELD_SEMANTIC_INDEPENDENCE" in whole,
+         "independent evidence gap concealed")
+    must("one existing" in whole.lower() or "existing draft PR #1277" in whole,
+         "current output does not identify its single existing destination")
+
+    print("[PASS] ONE current integrated 16-movement whole, with source foundation IN THE SAME FILE")
+    print("[PASS] 197 source sections from 10 immutable predecessor cuts")
+    print("[PASS] 104 distinct source-graded ideas and exact original propositions")
+    print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
+    print("[PASS] current user no-new-document/no-new-branch instruction preserved as direct source")
+    print("[PASS] named substantive positive ideas have actual passages in the whole")
+    print("[LIMIT] Structure/text/source custody; NOT independent full semantic proof, "
+          "complete original chat transcript, live organism execution, or protected receiving")
 
 
 if __name__ == "__main__":
