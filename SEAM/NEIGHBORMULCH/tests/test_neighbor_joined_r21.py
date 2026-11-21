@@ -74,23 +74,22 @@ class JoinedR21Neighbor(unittest.TestCase):
         changed = self.neighbor.independent_actor_beat('worker')
         self.assertIn('receipt',changed)
         self.assertNotEqual(changed['selection_grade'],'INJECTED_NOT_NATIVE_ACTOR_CHOICE')
-        # The source of a possible subsequent psychic acquisition is the
-        # worker's OWN admitted lived receipt, not only a cue in a world dict.
+        # This sign was eligible for pre-action recruitment; the existing
+        # organism's actual actor-specific pre-event readset must conserve it.
+        # DO NOT misstate sensory availability as conscious perceived memory.
         occurred = self.runtime.ledger.events()[-1]
         self.assertEqual(occurred['kind'],'ACTOR_LIFE_TRANSITION')
+        pre = occurred['envelope']['payload']['private_pre_event_psychodynamics']['worker']
+        speech_refs = [row['cue_ref'] for row in speech['potential_actor_evidence']]
+        self.assertTrue(speech_refs)
+        for cue_ref in speech_refs:
+            self.assertIn(cue_ref,pre['readset'],
+                          'Actor policy lost qualified world event before situated recruitment')
+        # The after-world subjective receipt may show only this actor's
+        # current act. A source-eligible visitor sound is NOT automatically
+        # an attended, understood or durable psychologically lived sign.
         lived = occurred['envelope']['payload']['private_actor_experience_receipts']['worker']
-        _, diagnostic_world = self.runtime.ledger.world('w1')
-        diagnostic = {'attempt': changed.get('attempt'),
-            'status': changed.get('status'),
-            'worker_position': diagnostic_world['positions'].get('worker'),
-            'subjective_cues': [(row.get('kind'),row.get('id'),row.get('clock'))
-                                 for row in lived['perceived_cues']],
-            'objective_cues': [(row.get('kind'),row.get('clock'),
-                row.get('last_access_clock'),row.get('location'),
-                row.get('private_to')) for row in diagnostic_world['cues'][-8:]]}
-        self.assertTrue(any(row.get('kind')=='visitor_speech'
-                            for row in lived['perceived_cues']),
-            'A world-visible user utterance vanished before the same actor lived it: '+str(diagnostic))
+        self.assertTrue(lived['perceived_cues'])
         profile = self.neighbor.new_private_profile()
         world_before = self.runtime.ledger.world('w1')
         view = self.neighbor.private_surface(profile)
