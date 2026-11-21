@@ -86,6 +86,8 @@ No negative is retired through author publication alone. Exact status remains CO
 
 **NEKUDA-016 / KUDA-019:** Nearest/latest ungoverned as-of remains prohibited. Old P07 pure temporal candidate does not itself authorize a real N9 selected-world source. No current version-as-of→world content receiver authenticated, so HOLD first-consumer/source issuer; no fake temporal promotion.
 
+**NEKUDA-022 / KUDA-026:** Old I01 progressive-world sourcefree lifecycle remains a distinct *candidate seam* but four historical dependencies are physically absent from #1247; selected stronger S2-G durable M1/M2/B5 and cold N10E/C1 owner already operates. Do not reintroduce a parallel checkpoint/learned product engine, and do not declare I01 unique progressive saved-world function fully covered without a bounded real first-reader parity. **HOLD**, no new code candidate.
+
 All original NEKUDA identities remain and any independent tests, scientific rights and paired protected receiving remain separate.
 
 ---
