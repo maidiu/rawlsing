@@ -60,3 +60,21 @@ jobs:
         run: |
           python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
           python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
+
+      - name: G4 and OATH source-preservation first pass
+        run: |
+          node PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/verify_g4_once_currentness.mjs --self-test
+          node PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/verify_g4_once_currentness.mjs
+          python3 - <<'PY'
+          from pathlib import Path
+          files = ("CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
+                   "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+                   "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md")
+          fronts = [Path(f).read_text().split("<!-- HQ_OATH_R2_FIRST_CONTACT_END -->")[0] for f in files]
+          assert all(x == fronts[0] for x in fronts), "OATH_FIRST_CONTACT_MISMATCH"
+          assert "CLAIM-TO-EVIDENCE DISCIPLINE" in fronts[0], "OATH_CLAIM_EVIDENCE_MISSING"
+          print("OATH_THREE_FRONTDOORS_CLAIM_EVIDENCE_PRESENT__SOURCE_CHECK_ONLY")
+          PY
+      - name: Python syntax check for new S04 and F6 modules
+        run: |
+          python3 -m py_compile rawlsing_next/pre553_interpretation_qualification.py rawlsing_next/pre553_s04_observed_research.py rawlsing_next/pre553_s04_general_joint_algebra.py rawlsing_next/pre553_s04_dhikr_comparative.py rawlsing_next/pre553_s04_adaptive_support.py rawlsing_next/pre553_s04_exploration_admission.py rawlsing_next/pre553_s04_country_refinement.py rawlsing_next/pre553_s04_determinicity_cycle.py rawlsing_next/pre553_s04_partially_identified_repertoire.py rawlsing_next/pre553_s04_uncertain_repertoire.py rawlsing_next/pre553_source_country_registry_adapter.py

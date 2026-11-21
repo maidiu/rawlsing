@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 13,
-  "revision_note": "Rev13 user-direct protected documentary receiving of inherited G4 (782/150/62/82) and three identical HQ OATH claim-to-evidence amendments; protected rev12 REMONT charter conserved. Source-static checks only. No independent reviewer, test execution, native science, original-source or actor rights.",
-  "report_status": "REV13_G4_OATH_USER_DIRECT_DOCUMENTARY_RECEIVED__NO_INDEPENDENT_REVIEW_OR_TEST_EXECUTION__REV12_REMONT_CONSERVED",
+  "revision": 14,
+  "revision_note": "Rev14 user-directed protected PRE-MAIN source-code port: 11 exact inherited S04/Q015–Q020 modules + 10 tests, source-static import check and G4 S04/F6M evidence updates; Q019 absent, Q016 DHIKR MI reuse, Q015/I05 and country issuer held. Not independently reviewed/tested or source/native science accepted. All rev13/rev12 history preserved.",
+  "report_status": "REV14_S04_F6_USER_DIRECT_PROTECTED_CODE_PRESENT_UNTESTED__G4_UPDATED__NO_NATIVE_OR_INDEPENDENT_G5__Q019_RETIRED",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -516,5 +516,34 @@
     "remont_rev12": "PRESERVED",
     "feature_code": "NOT_RECEIVED_BY_THIS_DOCUMENTARY_ACTION",
     "hold": "UNKNOWN_HISTORICAL_SOURCE_JOIN_AND_SEMANTIC_GAP_NOT_PROMOTED"
+  },
+  "s04_f6_source_port_rev14": {
+    "grade": "PROTECTED_SOURCE_PRESENT_ONLY__COMMITTED_UNTESTED",
+    "incoming_source_sha": "ee31f9b98615168ca364ae10f5ea353c9aaf8e18",
+    "origin_candidate_sha": "1b07ee8e43b1e6dfc1543d777fe51b5750633d1c",
+    "prior_protected": "f95852f57e55f7d5469c10909f1ed684c781f1d7",
+    "modules": 11,
+    "tests_authored": 10,
+    "python_tests_executed": false,
+    "independent_review": false,
+    "ci_required": "NOT_ESTABLISHED",
+    "reuse": [
+      "pre553_diagnostics.py",
+      "pre553_discovery_adaptive.py",
+      "pre553_empirical_authority.py",
+      "pre553_empirical_objects.py",
+      "pre553_s04_dhikr_comparative.py::_association"
+    ],
+    "retired": "RMT-Q019_RETIRED_NOT_COPIED",
+    "unresolved": [
+      "pre553_governed_query_issuer_v2 optional issuer import absent",
+      "Q015/I05 ABI parity",
+      "Q017 null/survey-design and minority recall science",
+      "Q018/Q020 original scientific issuer",
+      "Q014 R03/sourcefree court not included in this source port",
+      "external Field Forge first consumer not established",
+      "No real native I03 or C11 economics qualification"
+    ],
+    "source_science_actor_rights": "NO_NEW_GRANTS"
   }
 }

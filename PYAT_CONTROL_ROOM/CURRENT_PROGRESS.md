@@ -1,3 +1,9 @@
+# PYAT PROGRESS REV14 — USER-DIRECT SOURCE CODE PORT (2026-11-20)
+
+**Protected source publication, COMMITTED_UNTESTED; user-authorized self-integration, no independent review.** Incoming source at `ee31f9b98615168ca364ae10f5ea353c9aaf8e18`, based on #1238 `1b07ee8e43b1e6dfc1543d777fe51b5750633d1c`, is 11 reusable S04/Q015–Q020 source modules and 10 sourcefree test files. Exact inherited MI producer reused. Q019 deleted and not copied. Q018 and Q020 are distinct F6 partial-ID constraints; legacy F6M math still authoritative ancestry. Author readback and static import check are not executed tests. The Q016 optional R03 country issuer path `pre553_governed_query_issuer_v2` remains unported/HELD. Q015/I05 ABI and Q017 scientific calibration likewise remain held; no native query, survey science, real FF consumer or SOROK actor rights. Existing G4 S04/F6M records updated without changing 782/150/62/82 cardinalities. **Do not call these production-verified functions, or an independently accredited receiving.** Previous rev13 G4/OATH and rev12 REMONT receipts are preserved intact below.
+
+---
+
 # PYAT PROGRESS REV13 — USER-DIRECT G4 + OATH RECEIVING (2026-11-20)
 
 **PROTECTED_RECEIVED — documentary inventory/instruction only, with same agent author and receiver, no independent reviewer.** Explicit user authorization allows direct receiving, not fictitious independent validation. Exact previous protected PRE-MAIN `9c2ec5a3dc4839bd4e40734fc72faf14eb619a63`; G4 source #1232/#1233 `f99b180c48cd389f49aafc49a7ac433a42d85311`; OATH source #1237 `837ada95b1de8235743e87b1989ca7dd2869b922`.
