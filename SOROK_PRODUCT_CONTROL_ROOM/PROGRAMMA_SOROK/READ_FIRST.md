@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — current guide navigation
 
+**SOROKUDA R10 — candidate cross-HQ custody correction (Nov 21, 2026):** [Four PYAT origins KUDA-087–090 explicitly mapped to existing L01/L07](SOROKUDA.md#r10--pyat-kuda-08790-cross-ledger-custody-2026-11-21), with pinned code source/custody cross-references in [the existing machine index](SOROKUDA_CODE_INDEX.jsonl). Historical 482 R9 records + 4 alias/pointer records = 486 records, not 486 functions. #704 archival sourcefree; #996 J1 unmerged partial; no protected or independent actor receipt.
+
+
 **SOROKUDA R5 — candidate exact-code recovery (not protected received):** [SOROKUDA.md](SOROKUDA.md) and [438 exact source records: 300 R4 source identities, 92 S37–S52 code modules, 36 historical test/support files, and 10 CG-A/G03/ORACLE source bodies](SOROKUDA_CODE_INDEX.jsonl). R4 on the same G4 repair branch; not another owner, permission or whole-code census. Protect tested #1248 source and distinguish later unexecuted R23–R25/REMONT R19.
 
 
