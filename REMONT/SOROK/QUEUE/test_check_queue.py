@@ -26,24 +26,24 @@ class QueueDisciplineTest(unittest.TestCase):
         self.queue = q.validate_queue(q.load_json(q.DEFAULT_QUEUE))
         self.results = self.root / 'LOCAL_COURTS' / 'REMONT_QUEUE'
 
-    def test_queue_eight_pinned_exact_shas_in_newest_first_order(self):
+    def test_queue_nine_pinned_exact_shas_in_newest_first_order(self):
         self.assertEqual([x['pr'] for x in self.queue['candidates']],
-                         [1234,1241,1230,1222,1220,1214,1210,1199])
+                         [1249,1234,1241,1230,1222,1220,1214,1210,1199])
         self.assertEqual(self.queue['candidates'][0]['sha'],
-                         'dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b')
-        self.assertEqual(self.queue['candidates'][1]['sha'],
+                         '40dbbd4c774c6f210c4d0c854b9df35c86a7857c')
+        self.assertEqual(self.queue['candidates'][2]['sha'],
                          'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
-        self.assertEqual(self.queue['candidates'][0]['manifest'], 'PINNED_GIT_TREE')
-        self.assertTrue(self.queue['candidates'][0]['joined_first_consumer'])
+        self.assertEqual(self.queue['candidates'][1]['manifest'], 'PINNED_GIT_TREE')
+        self.assertTrue(self.queue['candidates'][1]['joined_first_consumer'])
         self.assertEqual(self.queue['default_python'], 'python3.11')
 
     def test_joined_branch_requires_explicit_integrated_source_lane(self):
         bad = copy.deepcopy(self.queue)
-        bad['candidates'][0]['joined_first_consumer'] = False
+        bad['candidates'][1]['joined_first_consumer'] = False
         with self.assertRaisesRegex(ValueError, 'INVALID_QUEUE_BRANCH'):
             q.validate_queue(bad)
         bad = copy.deepcopy(self.queue)
-        bad['candidates'][1]['manifest'] = 'PINNED_GIT_TREE'
+        bad['candidates'][0]['manifest'] = 'PINNED_GIT_TREE'
         with self.assertRaisesRegex(ValueError, 'UNAUTHORIZED_GIT_TREE_MODE'):
             q.validate_queue(bad)
 
@@ -129,7 +129,7 @@ class QueueDisciplineTest(unittest.TestCase):
     def test_no_result_is_not_accepted(self):
         s = q.load_state(self.results/'ledger.json')
         s['_results_path']=self.results
-        self.assertTrue(q.needs_execution(s,'1241@'+self.queue['candidates'][0]['sha']))
+        self.assertTrue(q.needs_execution(s,'1249@'+self.queue['candidates'][0]['sha']))
         with redirect_stdout(io.StringIO()) as out:
             q.print_queue(self.queue['candidates'][:1],s)
         self.assertIn('COMPAT_NOT_RUN',out.getvalue())
@@ -145,7 +145,7 @@ class QueueDisciplineTest(unittest.TestCase):
         s['_results_path']=self.results
         self.assertFalse(q.needs_execution(s,k))
         self.assertTrue(q.needs_execution(s,k,force=True))
-        self.assertTrue(q.needs_execution(s,'1241@'+'b'*40))
+        self.assertTrue(q.needs_execution(s,'1249@'+'b'*40))
         self.assertEqual(q.load_json(file)['independent_acceptance'],False)
 
     def test_failed_execution_remains_pending(self):
@@ -179,7 +179,7 @@ class QueueDisciplineTest(unittest.TestCase):
         self.assertIn('## New adversarial probes',text)
 
     def test_deferred_builder_is_not_a_green_receipt_or_default_queued_review(self):
-        joined = self.queue['candidates'][0]
+        joined = self.queue['candidates'][1]
         self.assertTrue(joined['execution_deferred'])
         self.assertEqual(joined['sha'], 'dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b')
         self.assertIn('BUILDER', joined['defer_reason'].upper())
@@ -189,19 +189,19 @@ class QueueDisciplineTest(unittest.TestCase):
             q.print_queue([joined],state)
         self.assertIn('DEFERRED_TO_BUILDER__HISTORICAL_RED',out.getvalue())
         bad=copy.deepcopy(self.queue)
-        bad['candidates'][1]['execution_deferred']=True
+        bad['candidates'][0]['execution_deferred']=True
         with self.assertRaisesRegex(ValueError,'DEFER_ONLY_ACTIVE_BUILDER_LANE'):
             q.validate_queue(bad)
         bad=copy.deepcopy(self.queue)
-        bad['candidates'][0]['execution_deferred']='yes'
+        bad['candidates'][1]['execution_deferred']='yes'
         with self.assertRaisesRegex(ValueError,'INVALID_EXECUTION_DEFER_FLAG'):
             q.validate_queue(bad)
 
     def test_current_r17_review_pin_and_prior_pin_conserved(self):
         old = '6f2e98433822a4fb1246ff72c388b2e901c6ab7f'
         item = next(x for x in self.queue['candidates'] if x['pr']==1230)
-        self.assertEqual(item['sha'],'bd023cccea8912913ace132600c69a97b0eb6a44')
-        self.assertEqual(item['previous_pinned_shas'],[old])
+        self.assertEqual(item['sha'],'28bf7fc48264d433ecf172bd0846744a3476222e')
+        self.assertEqual(item['previous_pinned_shas'],[old, 'bd023cccea8912913ace132600c69a97b0eb6a44'])
         self.assertEqual(next(x for x in self.queue['candidates'] if x['pr']==1241)['sha'],
                          'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
 
