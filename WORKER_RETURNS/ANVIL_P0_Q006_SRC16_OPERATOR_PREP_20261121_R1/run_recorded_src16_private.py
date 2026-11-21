@@ -29,7 +29,7 @@ from rawlsing_next.pre553_anvil_stream_recorded import (
     RecordedUniverseUse,
     build_recorded_operation,
 )
-from rawlsing_next.pre553_empirical_objects import AuthorityRef, ExactRef
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, ExactRef, canonical_json
 
 from src16_operator import (
     OPERATION,
@@ -271,6 +271,12 @@ def prepare_and_run(
         estate=estate, decision=decision,
         decision_verifier=verify_decision, recorded_plan=plan,
     )
+    cell_counts = {
+        canonical_json(row["cell"]): row["raw_numerator_support"]
+        for row in result.facts[0].target_topology.get(
+            "complete_cell_semantic_projection", ()
+        )
+    } if result.facts else {}
     return {
         "schema": "ANVIL_Q006_SRC16_RECORDED_PRIVATE_RESULT@1",
         "source_id": source_id,
@@ -290,6 +296,9 @@ def prepare_and_run(
                 "raw_code": code,
                 "state": state,
                 "cell": _stored_code_cell(code, state),
+                "raw_numerator_support": cell_counts.get(
+                    canonical_json(_stored_code_cell(code, state)), 0
+                ),
             }
             for code, state in prepared.interpretation
         ],

@@ -2,7 +2,7 @@
 
 The stream is built only from the existing nonrespondent sourcefree native
 candidate. It carries SRC16 source identity, a structured owner scope, the
-exact SRC16 historical grade and a saved SCALAR topology. No original SRC16
+exact SRC16 historical grade and the actual saved BINARY_CONTRAST_SINGLE topology. No original SRC16
 bytes, response bodies or private evidence are read.
 """
 from __future__ import annotations
@@ -586,11 +586,11 @@ def test_src16_driver_preflight_and_native_wiring(tmp_path, monkeypatch):
     assert result["asked_eligibility"] == "HELD_NOT_PROVEN"
     assert result["substantive_vote_denominator"] is False
     assert result["stored_code_bins"] == [
-        {"raw_code": "1", "state": "SUBSTANTIVE_RESPONSE", "cell": 1},
-        {"raw_code": "2", "state": "SUBSTANTIVE_RESPONSE", "cell": 2},
-        {"raw_code": "-98", "state": "DK", "cell": {"typed_response_state": "DK"}},
-        {"raw_code": "-99", "state": "MISSING", "cell": {"typed_response_state": "MISSING"}},
-        {"raw_code": "-100", "state": "INAPPLICABLE", "cell": {"typed_response_state": "INAPPLICABLE"}},
+        {"raw_code": "1", "state": "SUBSTANTIVE_RESPONSE", "cell": 1, "raw_numerator_support": 2},
+        {"raw_code": "2", "state": "SUBSTANTIVE_RESPONSE", "cell": 2, "raw_numerator_support": 1},
+        {"raw_code": "-98", "state": "DK", "cell": {"typed_response_state": "DK"}, "raw_numerator_support": 1},
+        {"raw_code": "-99", "state": "MISSING", "cell": {"typed_response_state": "MISSING"}, "raw_numerator_support": 1},
+        {"raw_code": "-100", "state": "INAPPLICABLE", "cell": {"typed_response_state": "INAPPLICABLE"}, "raw_numerator_support": 1},
     ]
     assert len(fact["cells"]) == 5
     assert {canonical_json(row[0]) for row in fact["cells"]} == {

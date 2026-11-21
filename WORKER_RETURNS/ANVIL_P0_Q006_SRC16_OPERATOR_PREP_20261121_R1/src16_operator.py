@@ -244,6 +244,7 @@ def _authority(
     *, owner_sha: str, role: str, operation: str,
     scope: Mapping[str, Any], roots: Mapping[str, str],
     codes: tuple[str, ...], kind: str, families: tuple[str, ...],
+    state_bearing: bool,
     historical_scope_grade: str, historical_ref: ExactRef,
 ) -> AuthoritySnapshot:
     material = {
@@ -284,6 +285,7 @@ def _authority(
             "scope_kind": SCOPE_KIND,
             "asked_eligibility": ASKED_ELIGIBILITY,
             "substantive_vote_denominator": False,
+            "state_bearing_raw_codes": state_bearing,
             "historical_scope_grade": historical_scope_grade,
             "historical_snapshot_ref": historical_ref.as_dict(),
         },
@@ -350,12 +352,14 @@ def materialize(
             "EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0",
             "RoutingEligibilityFact@1.0.0",
         ),
+        state_bearing=_state_bearing(interpretation),
         historical_scope_grade=grade, historical_ref=historical_ref,
     )
     routing_auth = _authority(
         owner_sha=owner_sha, role="ROUTING", operation=operation, scope=scope,
         roots=roots, codes=codes, kind="ROUTING_RISK_SET",
         families=("RoutingEligibilityFact@1.0.0",),
+        state_bearing=_state_bearing(interpretation),
         historical_scope_grade=grade, historical_ref=historical_ref,
     )
     query_auth = _authority(
@@ -365,6 +369,7 @@ def materialize(
             "EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
             "EmpiricalFact@1.0.0",
         ),
+        state_bearing=_state_bearing(interpretation),
         historical_scope_grade=grade, historical_ref=historical_ref,
     )
     suffix = semantic_hash({"owner": owner_sha, "codes": codes, "question": question.as_dict()})
