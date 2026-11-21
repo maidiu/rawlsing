@@ -74,11 +74,22 @@ def enact_currents(constitution, access, active_forms, candidates, relational=No
         action=mediated['action']; polarity=mediated['polarity']
         ref='motif:'+mediated['motif_ref']
         forces.setdefault(action,{}).setdefault(polarity,[]).append(ref)
-        currents.append({'kind':'RELATIONALLY_MEDIATED_ACTION_CURRENT',
+        current={'kind':'RELATIONALLY_MEDIATED_ACTION_CURRENT',
             'action':action,'polarity':polarity,'motif_ref':mediated['motif_ref'],
             'source_form_refs':copy(mediated['source_form_refs']),
             'has_inhibited_source':mediated['has_inhibited_source'],
-            'grade':GRADE,'not_actor_self_knowledge':True})
+            'grade':GRADE,'not_actor_self_knowledge':True}
+        # Exact historical compatibility: the earlier explicit ACTION_CURRENT
+        # still has its old record shape. Only the newly operative relational
+        # transduction carries extra source-causal metadata.
+        if mediated.get('mode') is not None:
+            current.update({
+                'mediation_mode':mediated['mode'],
+                'relation_transduced':mediated['mediation_relation'],
+                'relation_source_ref':mediated['mediation_source_ref'],
+                'relation_target_ref':mediated['mediation_target_ref'],
+                'not_objective_justification_of_conduct':True})
+        currents.append(current)
     for h in (historical or {}).get('currents', []):
         action=h['action'];polarity=h['polarity'];ref='history:'+h['ref']
         forces.setdefault(action,{}).setdefault(polarity,[]).append(ref)
