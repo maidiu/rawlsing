@@ -55,6 +55,12 @@ class R2Custody:
 
     def check_current(self, held) -> bool:
         try:
+            # This single benchmark run was admitted against an exact R2
+            # document. A later edit anywhere in that decision (including a
+            # revocation outside decision_ref) requires fresh admission; do
+            # not silently keep a stale positive snapshot alive.
+            if hashlib.sha256(self.path.read_bytes()).hexdigest() != self._original_decision_sha256:
+                return False
             current=_load(self.path)
             w=current["waves"][self.source_id]
             return (
