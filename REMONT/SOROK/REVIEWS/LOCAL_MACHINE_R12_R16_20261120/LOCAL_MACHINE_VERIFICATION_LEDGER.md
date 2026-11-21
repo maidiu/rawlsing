@@ -84,3 +84,24 @@ R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` u
 **Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. The candidate is explicitly `COMMITTED_UNTESTED`; it is not ready for SORACLE or REMONT receiving. SORACLE owns the ordinary initial RED repair. The `KeyError` locus is hardened in the current R17 preflight (`EVENT_ENVELOPE_MALFORMED` / typed `SOURCE_HISTORY_INVALID`), but #1234 still carries the older storage blob and must be reintegrated and rerun.
 - #1234 SORACLE×REMONT execution review: https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058012755
 - R17 update (289 tests, malformed envelope hardening): https://github.com/maidiu/rawlsing/pull/1230#issuecomment-7058013087
+
+## SORACLE × REMONT #1234 retest — 018d3025
+
+**Exact HEAD:** `018d3025f0829d7b24d5ad108abf0764d3830b39`; Python 3.11.3; detached clean worktree. R17 source inheritance is exact: `storage.py` blob `75087ed…` and `test_r17_source_preflight.py` blob `b25f93b…` match the R17 branch.
+
+**Exact command exits**
+- `compileall`: 0.
+- Focused normal (13 modules): 1 — 137 ran, **3 failures + 8 errors**.
+- Focused `-O` (4 modules): 1 — 50 ran, **2 errors**.
+- Full normal discover: 1 — 549 ran, **5 failures + 22 errors**.
+- Full `-O` discover: 1 — same 5 + 22.
+- pytest: 1 — **27 failed, 522 passed, 37 subtests**.
+- `joined_longitudinal_demo --days 14 --beats 12`: 1 — `CURRENT_TRIAL_NOT_MATURE_MOTIVE`.
+
+**First full-suite RED:** `test_co_regulation_r14.R14IntegratedLife.test_caregiver_absence_prevents_actor_bound_future_call` setUp → `runtime.initialize` → `parents.construct_parent` raises `ValueError('PSEUDO_RESPONDENT_REQUIRED')` (`parents.py:19`, `runtime.py:116`). Expected: valid sourcefree parent construction; observed: missing pseudo-respondent source.
+
+**Grouped distribution:** R6 4E+2F plus R6-integrated 1F; R14 co-regulation 3E; R8 lived-genesis 3E; R15 plural care 3E; joined demo 2E; R11 2E+1F; R9 P017 2E; Nadia backlog 1E; social-vocal 1E; whole-organism 1E+2F.
+
+**Focused first REDs:** R11 `test_practical_option_id_only…` errors with `AttributeError: 'R11IngressContract' object has no attribute 'rt'` (stale test fixture); R11 heuristic then raises `CURRENT_TRIAL_NOT_MATURE_MOTIVE`; R6 `activity_history` KeyError (4 cases) and two behavioral failures; joined demo dies in `continue_without_user → runtime.step → development.admit` at `CURRENT_TRIAL_NOT_MATURE_MOTIVE`, so the two Nadia histories and SQLite cold chain were **not reached**.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is material improvement over `dbfb35c` (no SourcePreflight KeyError; focused R8/R13 pass) but still not executable-received; SORACLE owns ordinary repair and must separately handle stale test fixtures versus production owners.
