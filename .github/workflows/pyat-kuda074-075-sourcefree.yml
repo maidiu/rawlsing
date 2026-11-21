@@ -1,0 +1,33 @@
+name: PYAT KUDA074-075 native-pair S04 first-consumer court
+on:
+  push:
+    branches:
+      - agent/pyat-kuda074-075-gf1-s04-first-consumer-20261121
+permissions:
+  contents: read
+jobs:
+  sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Exact HEAD inherited GF1 and real S04 consumer
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p kuda074-proof
+          python -m pytest -q -o addopts='' --junitxml=kuda074-proof/junit.xml \
+            rawlsing_next/tests/test_gf1_pair_candidate_sourcefree.py \
+            rawlsing_next/tests/test_kuda_gf1_s04_first_consumer.py \
+            rawlsing_next/tests/test_pre553_s04_first_consumer.py
+      - name: Store focused proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuda074-075-gf1-court
+          path: kuda074-proof/
+          if-no-files-found: error
