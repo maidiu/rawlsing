@@ -164,6 +164,30 @@ class HeldRecordedOperation:
     physical_missing_state: str = "SEPARATE_NOT_RECORDED"
 
 
+_CODEC = R5TypedValueCodec()
+
+
+def _unwrap_raw_physical_value(value):
+    """Strict typed unwrap of the projected native token wrapper."""
+    if isinstance(value, dict) and "$raw_physical_value" in value:
+        wrapper = value["$raw_physical_value"]
+        if not isinstance(wrapper, dict) or "token" not in wrapper:
+            raise RecordedResponseError("invalid raw_physical_value wrapper")
+        token = wrapper["token"]
+        if not isinstance(token, dict):
+            raise RecordedResponseError("invalid raw_physical_value token")
+        try:
+            decoded = _CODEC.decode(token)
+        except Exception as exc:
+            raise RecordedResponseError("invalid raw_physical_value token") from exc
+        if isinstance(decoded, float) and decoded.is_integer():
+            return int(decoded)
+        return decoded
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return value
+
+
 def _authority(authorities, ref, label):
     for snapshot in authorities:
         if snapshot.authority_ref == ref:
