@@ -1,0 +1,471 @@
+#!/usr/bin/env python3
+"""Execute pinned sourcefree REMONT checks, write additive machine receipts.
+
+Not an independent reviewer, native issuer, protected receiver, or a daemon.
+Agent must do the source-level hostile review after this runner exits.
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tempfile
+import uuid
+from contextlib import contextmanager
+import fcntl
+
+HERE = Path(__file__).resolve().parent
+DEFAULT_QUEUE = HERE / 'CHECK_QUEUE.json'
+REPO_ROOT = HERE.parents[2]  # REMONT/SOROK/QUEUE -> repository root
+ALLOWED_VERDICTS = {'ACCEPT_SCOPED', 'REVISE_EXACT_DEFECT', 'HOLD'}
+
+
+def utc_now():
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')
+
+
+def atomic_json(path: Path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile('w', encoding='utf-8', dir=path.parent,
+                                     prefix='.pending-', delete=False) as h:
+        json.dump(obj, h, ensure_ascii=False, sort_keys=True, indent=2)
+        h.write('\n')
+        tmp = Path(h.name)
+    os.replace(tmp, path)
+
+
+def load_json(path: Path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def validate_queue(q):
+    if q.get('schema') != 'REMONT_LOCAL_MACHINE_QUEUE_V1':
+        raise ValueError('UNKNOWN_QUEUE_SCHEMA')
+    if q.get('repository') != 'maidiu/rawlsing':
+        raise ValueError('UNEXPECTED_REPOSITORY')
+    items = q.get('candidates')
+    if not isinstance(items, list) or not items:
+        raise ValueError('EMPTY_REMONT_QUEUE')
+    seen_pr = set()
+    for item in items:
+        pr, sha, branch = item.get('pr'), item.get('sha'), item.get('branch')
+        if type(pr) is not int or pr <= 0 or pr in seen_pr:
+            raise ValueError('INVALID_OR_DUPLICATE_QUEUE_PR')
+        if type(sha) is not str or len(sha) != 40 or any(c not in '0123456789abcdef' for c in sha):
+            raise ValueError('INVALID_PINNED_SHA')
+        if type(branch) is not str or not branch.startswith('agent/sorok-remont-') or '..' in branch:
+            raise ValueError('INVALID_QUEUE_BRANCH')
+        if type(item.get('manifest')) is not str or '/' in item['manifest']:
+            raise ValueError('INVALID_MANIFEST')
+        seen_pr.add(pr)
+    return q
+
+
+def run_process(argv, cwd, timeout=180, env=None):
+    try:
+        p = subprocess.run(argv, cwd=cwd, text=True, stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, timeout=timeout, env=env,
+                           check=False)
+        return {'command': [str(x) for x in argv], 'exit_code': p.returncode,
+                'output': p.stdout, 'duration_limit_sec': timeout}
+    except subprocess.TimeoutExpired as e:
+        return {'command': [str(x) for x in argv], 'exit_code': None,
+                'output': str(e), 'timed_out': True, 'duration_limit_sec': timeout}
+    except OSError as e:
+        return {'command': [str(x) for x in argv], 'exit_code': None,
+                'output': str(e), 'launch_failed': True}
+
+
+def require_ok(result, code):
+    if result['exit_code'] != 0:
+        raise QueueFailure(code, result)
+    return result['output'].strip()
+
+
+class QueueFailure(Exception):
+    def __init__(self, code, detail=None):
+        super().__init__(code)
+        self.code = code
+        self.detail = detail
+
+
+def git(repo: Path, *argv, timeout=90):
+    r = run_process(['git', *argv], repo, timeout=timeout)
+    return require_ok(r, 'GIT_' + argv[0].replace('-', '_').upper())
+
+
+def source_manifest_check(src: Path, filename: str):
+    p = src / filename
+    if not p.is_file():
+        raise QueueFailure('SOURCE_MANIFEST_MISSING', str(p))
+    try:
+        m = load_json(p)
+    except (ValueError, OSError) as exc:
+        raise QueueFailure('SOURCE_MANIFEST_UNREADABLE', str(exc)) from exc
+    files = m.get('files')
+    if not isinstance(files, dict) or not files:
+        raise QueueFailure('INVALID_SOURCE_MANIFEST')
+    if m.get('python_file_count') is not None and m['python_file_count'] != len(files):
+        raise QueueFailure('SOURCE_MANIFEST_COUNT_CONTRADICTION')
+    matches = 0
+    for name, data in sorted(files.items()):
+        if type(data) is not dict:
+            raise QueueFailure('INVALID_SOURCE_MANIFEST_ITEM', name)
+        fp = (src / name).resolve()
+        if src.resolve() not in fp.parents or not fp.is_file() or fp.is_symlink():
+            raise QueueFailure('SOURCE_MANIFEST_PATH_INVALID', name)
+        raw = fp.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != data.get('sha256'):
+            raise QueueFailure('SOURCE_SHA256_MISMATCH', name)
+        blob = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+        expected = data.get('git_blob_sha1', data.get('git_blob'))
+        if expected and blob != expected:
+            raise QueueFailure('SOURCE_GIT_BLOB_MISMATCH', name)
+        matches += 1
+    return {'verified_python_files': matches, 'manifest': filename,
+            'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
+
+
+def demo_and_reopen(python: str, src: Path, temp: Path):
+    db = temp / 'remont-queue.sqlite3'
+    cmd = [python, '-m', 'um_sorok_organism', 'demo', '--db', str(db)]
+    rr = run_process(cmd, src, timeout=160)
+    require_ok(rr, 'DEMO_EXECUTION_FAILED')
+    try:
+        d = json.loads(rr['output'])
+        chain = d['sourcefree_chain']
+        cold = d['cold_reopen']['chain']
+        if not (chain['valid'] is True and cold['valid'] is True and
+                chain['last_hash'] == cold['last_hash'] and chain['events'] == cold['events']):
+            raise ValueError('DEMO_CHAIN_AND_COLD_MISMATCH')
+    except (ValueError, KeyError, TypeError) as exc:
+        raise QueueFailure('DEMO_CHAIN_INVALID', str(exc)) from exc
+    # A separate Python interpreter independently opens and closes SQLite.
+    probe = """import json,sys
+from um_sorok_organism.storage import ResearchLedger
+s=ResearchLedger(sys.argv[1]); v=s.verify_chain()
+r=s.events(); ok=s.conn.execute('PRAGMA integrity_check').fetchone()[0]
+print(json.dumps({'valid':v['valid'], 'events':v['events'], 'last_hash':v['last_hash'],
+  'event_ids':[x['id'] for x in r], 'event_hashes':[x['chain_hash'] for x in r],
+  'sqlite_integrity':ok},sort_keys=True)); s.close()
+"""
+    probes = []
+    for _ in range(2):
+        r = run_process([python, '-c', probe, str(db)], src, timeout=60)
+        require_ok(r, 'COLD_SQLITE_REOPEN_FAILED')
+        try:
+            probes.append(json.loads(r['output']))
+        except ValueError as exc:
+            raise QueueFailure('COLD_REOPEN_NOT_JSON', r['output'][-1000:]) from exc
+    if probes[0] != probes[1] or probes[0]['sqlite_integrity'] != 'ok' or not probes[0]['valid']:
+        raise QueueFailure('COLD_SQLITE_INTEGRITY_INCONSISTENT', probes)
+    if probes[0]['last_hash'] != chain['last_hash'] or probes[0]['events'] != chain['events']:
+        raise QueueFailure('DEMO_AND_SEPARATE_COLD_CHAIN_DIVERGE')
+    return {'events': chain['events'], 'last_hash': chain['last_hash'],
+            'cold_reopen_valid': True, 'sqlite_integrity': 'ok',
+            'two_process_identical_event_ids_and_hashes': True}
+
+
+def ensure_machine_version(py: str, workdir: Path):
+    test = run_process([py, '-c',
+                        'import json,sys;print(json.dumps(list(sys.version_info[:3])))'], workdir)
+    require_ok(test, 'PYTHON_EXECUTABLE_MISSING')
+    try:
+        version = json.loads(test['output'])
+    except ValueError as exc:
+        raise QueueFailure('PYTHON_VERSION_UNREADABLE') from exc
+    if version[:2] != [3, 11]:
+        raise QueueFailure('PYTHON_3_11_REQUIRED', str(version))
+    return version
+
+
+def verify_source_ref(repo: Path, item):
+    # The user must reconcile a moved live branch; never silently upgrade SHA.
+    remote = git(repo, 'ls-remote', 'origin', 'refs/heads/' + item['branch'])
+    rows = [x.split() for x in remote.splitlines() if x.strip()]
+    if len(rows) != 1 or rows[0][0] != item['sha']:
+        raise QueueFailure('LIVE_BRANCH_HEAD_CHANGED_HOLD', remote or 'REMOTE_BRANCH_MISSING')
+    return remote
+
+
+def run_candidate(repo: Path, item, py: str, q, *, fetch=False):
+    receipt = {'kind': 'REMONT_LOCAL_MACHINE_COMPATIBILITY_V1',
+               'pr': item['pr'], 'label': item['label'], 'sha': item['sha'],
+               'started_at_utc': utc_now(), 'status': 'STARTED',
+               'independent_acceptance': False, 'protected_received': False,
+               'tests': [], 'review': 'HOSTILE_INDEPENDENT_REVIEW_NOT_PERFORMED_BY_RUNNER'}
+    with tempfile.TemporaryDirectory(prefix='remont-pr-%s-' % item['pr']) as temp:
+        base = Path(temp)
+        wt = base / 'frozen'
+        try:
+            verify_source_ref(repo, item)
+            if fetch:
+                probe = run_process(['git','cat-file','-e',item['sha']+'^{commit}'],repo,timeout=30)
+                if probe['exit_code'] != 0:
+                    git(repo, 'fetch', '--no-tags', 'origin',
+                        'refs/heads/' + item['branch'], timeout=180)
+            git(repo, 'worktree', 'add', '--detach', str(wt), item['sha'], timeout=120)
+            exact = git(wt, 'rev-parse', 'HEAD')
+            if exact != item['sha']:
+                raise QueueFailure('DETACHED_HEAD_MISMATCH', exact)
+            candidate = wt / q['candidate_root']
+            if not candidate.is_dir():
+                raise QueueFailure('CANDIDATE_RUNTIME_MISSING')
+            receipt['python_version'] = ensure_machine_version(py, candidate)
+            receipt['source_manifest'] = source_manifest_check(candidate, item['manifest'])
+            suite = (
+                [py, '-m', 'unittest', 'discover', '-s', 'tests', '-q'],
+                [py, '-O', '-m', 'unittest', 'discover', '-s', 'tests', '-q'],
+                [py, '-m', 'pytest', '-q'],
+            )
+            for i, cmd in enumerate(suite):
+                r = run_process(cmd, candidate, timeout=240)
+                receipt['tests'].append({'kind': ('unittest','unittest_optimized','pytest')[i], **r})
+                require_ok(r, 'TEST_COURT_FAILED_' + ('NORMAL','OPTIMIZED','PYTEST')[i])
+            receipt['sqlite_demo'] = demo_and_reopen(py, candidate, base)
+            tracked = git(wt, 'status', '--porcelain', '--untracked-files=no')
+            if tracked:
+                raise QueueFailure('TESTS_MUTATED_TRACKED_SOURCE', tracked)
+            receipt['status'] = 'COMPAT_PASS__HOSTILE_REVIEW_PENDING'
+        except QueueFailure as e:
+            receipt['status'] = e.code
+            receipt['failure_detail'] = e.detail
+        except (ValueError, OSError, KeyError, TypeError) as e:
+            receipt['status'] = 'UNEXPECTED_EXECUTION_ERROR__HOLD'
+            receipt['failure_detail'] = repr(e)
+        finally:
+            if wt.exists():
+                run_process(['git', 'worktree', 'remove', '--force', str(wt)], repo, timeout=45)
+    receipt['finished_at_utc'] = utc_now()
+    return receipt
+
+
+def state_key(item):
+    return f"{item['pr']}@{item['sha']}"
+
+
+@contextmanager
+def state_lock(results: Path):
+    """Serialize local ledger writers; never lock or alter tracked repository files."""
+    results.mkdir(parents=True, exist_ok=True)
+    with (results / ".ledger.lock").open("a+") as h:
+        fcntl.flock(h.fileno(), fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(h.fileno(), fcntl.LOCK_UN)
+
+
+def load_state(path):
+    if not path.exists():
+        return {'schema': 'REMONT_LOCAL_MACHINE_LEDGER_V1', 'items': {}}
+    obj = load_json(path)
+    if obj.get('schema') != 'REMONT_LOCAL_MACHINE_LEDGER_V1':
+        raise ValueError('INVALID_LOCAL_RESULTS_SCHEMA')
+    return obj
+
+
+def record_receipt(results: Path, key: str, receipt):
+    state_path = results / 'ledger.json'
+    rid = utc_now().replace(':','').replace('+','_') + '_' + uuid.uuid4().hex[:12]
+    target = results / 'runs' / ('pr' + key.split('@')[0] + '_' + rid + '.json')
+    with state_lock(results):
+        state = load_state(state_path)
+        atomic_json(target, receipt)
+        item_state = state['items'].setdefault(key, {'reviews': []})
+        item_state['last_execution'] = str(target.relative_to(results))
+        item_state['last_status'] = receipt['status']
+        state['last_updated_at_utc'] = utc_now()
+        atomic_json(state_path, state)
+    return target
+
+
+def pick(q, arg):
+    items = q['candidates']
+    if arg.pr:
+        items = [x for x in items if x['pr'] in set(arg.pr)]
+        if len(items) != len(set(arg.pr)):
+            raise ValueError('UNKNOWN_REQUESTED_PR')
+    return items
+
+
+def needs_execution(state, key, force=False):
+    if force:
+        return True
+    r = state['items'].get(key, {})
+    if r.get('last_status') != 'COMPAT_PASS__HOSTILE_REVIEW_PENDING':
+        return True
+    return not (r.get('last_execution') and (state['_results_path']/r['last_execution']).is_file())
+
+
+def print_queue(items, state):
+    for i in items:
+        key = state_key(i)
+        row = state['items'].get(key, {})
+        reviews = row.get('reviews', [])
+        disposition = reviews[-1].get('verdict') if reviews else 'HOSTILE_REVIEW_PENDING'
+        print(f"#{i['pr']} {i['sha'][:12]} {row.get('last_status', 'COMPAT_NOT_RUN')} | {disposition} | {i['label']}")
+
+
+def publish_compat(repo: Path, item, receipt, path):
+    if shutil.which('gh') is None:
+        return 'GH_NOT_INSTALLED__PUBLISH_PENDING'
+    result = run_process(['gh', 'pr', 'comment', str(item['pr']), '--repo', 'maidiu/rawlsing',
+                          '--body-file', str(path)], repo, timeout=60)
+    if result['exit_code'] != 0:
+        return 'GH_PUBLISH_FAILED__' + result['output'][-250:]
+    return 'GH_COMMENT_PUBLISHED__' + result['output'].strip()
+
+
+def review_template(item, receipt_rel):
+    return ('# Independent hostile receiving — PR #' + str(item['pr']) + '\n'
+            '\nSource HEAD: `' + item['sha'] + '`\n'
+            'Machine execution receipt: `' + receipt_rel + '`\n'
+            'Verdict: HOLD until a distinct reviewer completes this record.\n'
+            '\n## Source owner inspection\n'
+            'Inspect exact historical first fault, source function, original test and inherited law.\n'
+            '\n## New adversarial probes\n'
+            'Name fresh independently authored negative/positive tests and record actual outputs.\n'
+            '\n## Code reading and causal analysis\n'
+            'Explain why code does or does not close the first fault and conserve older behavior.\n'
+            '\n## Independence and limits\n'
+            'Identify author separation, original P070/P071 author conflict, GitHub credential conflicts, native E holds.\n'
+            '\n## Verdict\n'
+            'ACCEPT_SCOPED / REVISE_EXACT_DEFECT / HOLD. Do not auto-accept.\n'
+            '\n## Evidence\n'
+            'Exact SHA, raw test file paths, command logs, cold SQLite receipts, red/green.\n')
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description='REMONT sourcefree machine verification queue')
+    ap.add_argument('command', nargs='?', default='run', choices=['run','list','record-review','summary'])
+    ap.add_argument('--queue', type=Path, default=DEFAULT_QUEUE)
+    ap.add_argument('--repo', type=Path, default=REPO_ROOT)
+    ap.add_argument('--results', type=Path)
+    ap.add_argument('--python', default=None)
+    ap.add_argument('--pr', type=int, action='append', help='restrict to one or several PR numbers')
+    ap.add_argument('--force', action='store_true', help='repeat even if exact-head compatibility already PASS')
+    ap.add_argument('--publish', action='store_true', help='publish the sourcefree verification receipt via gh pr comment')
+    ap.add_argument('--reviewer', help='reviewer identity, for record-review')
+    ap.add_argument('--independence-basis', help='specific reviewer/author separation, for record-review')
+    ap.add_argument('--evidence', type=Path, help='complete independently written hostile review file')
+    ap.add_argument('--verdict', choices=sorted(ALLOWED_VERDICTS))
+    args = ap.parse_args(argv)
+    q = validate_queue(load_json(args.queue))
+    repo = args.repo.resolve()
+    results = args.results.resolve() if args.results else repo / q['local_results_path']
+    state = load_state(results / 'ledger.json')
+    state['_results_path'] = results
+    items = pick(q, args)
+    if args.command in ('list','summary'):
+        print_queue(items,state)
+        return 0
+    if args.command == 'record-review':
+        if len(items) != 1 or not args.reviewer or not args.independence_basis or not args.evidence or not args.verdict:
+            ap.error('record-review requires a single --pr, --reviewer, --independence-basis, --evidence and --verdict')
+        item = items[0]
+        if args.verdict == 'ACCEPT_SCOPED' and not state['items'].get(state_key(item),{}).get('last_status') == 'COMPAT_PASS__HOSTILE_REVIEW_PENDING':
+            ap.error('cannot ACCEPT_SCOPED without green source-identical 3.11 execution at exact head')
+        text = args.evidence.read_text(encoding='utf-8')
+        headings = ('## Source owner inspection', '## New adversarial probes',
+                    '## Code reading and causal analysis', '## Independence and limits',
+                    '## Verdict', '## Evidence')
+        if (len(text) < 700 or any(h not in text for h in headings) or
+                item['sha'] not in text or
+                (args.verdict == 'ACCEPT_SCOPED' and
+                 ('Verdict: HOLD until a distinct reviewer' in text or
+                  'Name fresh independently authored negative/positive tests' in text or
+                  not any(word in text for word in ('test_', 'negative probe', 'Negative probe'))))):
+            ap.error('review evidence incomplete or untouched template; attach real independent probes')
+        evidence_copy = results / 'reviews' / f"pr{item['pr']}_{uuid.uuid4().hex[:12]}_evidence.md"
+        evidence_copy.parent.mkdir(parents=True, exist_ok=True)
+        evidence_copy.write_text(text, encoding='utf-8')
+        record = {'kind': 'REMONT_INDEPENDENT_HOSTILE_REVIEW_CANDIDATE_V1',
+                  'evidence_file': str(evidence_copy.relative_to(results)),
+                  'pr': item['pr'], 'sha': item['sha'], 'reviewer': args.reviewer,
+                  'independence_basis': args.independence_basis, 'verdict': args.verdict,
+                  'original_author_or_credential_independence_not_self_certified': True,
+                  'native_receiving': False, 'protected_receiving': False,
+                  'evidence_sha256': hashlib.sha256(text.encode()).hexdigest(),
+                  'recorded_at_utc': utc_now()}
+        output = results / 'reviews' / f"pr{item['pr']}_{uuid.uuid4().hex[:12]}.json"
+        atomic_json(output,record)
+        with state_lock(results):
+            live_state = load_state(results/'ledger.json')
+            row = live_state['items'].setdefault(state_key(item),{'reviews': []})
+            row.setdefault('reviews', []).append({'file':str(output.relative_to(results)), **record})
+            live_state['last_updated_at_utc'] = utc_now()
+            atomic_json(results/'ledger.json',live_state)
+        print(f"Review recorded: {output}\nThis is local independent engineering evidence, NOT protected or native acceptance.")
+        if args.publish:
+            msg = results / 'reviews' / f"pr{item['pr']}_{uuid.uuid4().hex[:12]}_comment.md"
+            msg.parent.mkdir(parents=True,exist_ok=True)
+            msg.write_text('# REMONT exact-head hostile review\n\n'+text+'\n',encoding='utf-8')
+            print(publish_compat(repo,item,record,msg))
+        return 0
+    py = args.python or q['default_python']
+    if not shutil.which(py) and not Path(py).is_file():
+        print(f"HOLD: {py} not found; install Python 3.11 or pass --python /path/to/python3.11",file=sys.stderr)
+        return 2
+    if not (repo/'.git').exists():
+        print(f"HOLD: {repo} is not a local Git worktree",file=sys.stderr)
+        return 2
+    # Sync remote refs once, but never change tracked source/queue head.
+    fetched = run_process(['git','fetch','--no-tags','origin'],repo,timeout=180)
+    if fetched['exit_code'] != 0:
+        print('HOLD: git fetch origin failed: '+fetched['output'][-500:],file=sys.stderr)
+        return 2
+    any_failed=False
+    for item in items:
+        key = state_key(item)
+        if not needs_execution(state,key,args.force):
+            print(f"#{item['pr']} pinned compatibility PASS already recorded; hostile review still required unless independently received")
+            continue
+        print(f"Checking #{item['pr']} exact {item['sha']} ...",flush=True)
+        receipt = run_candidate(repo,item,py,q,fetch=True)
+        path = record_receipt(results,key,receipt)
+        state = load_state(results/'ledger.json')
+        state['_results_path']=results
+        print(f"#{item['pr']} {receipt['status']} -> {path}")
+        if receipt['status'] == 'COMPAT_PASS__HOSTILE_REVIEW_PENDING':
+            templ = results / 'review_templates' / ('pr'+str(item['pr'])+'_'+item['sha'][:12]+'.md')
+            templ.parent.mkdir(parents=True, exist_ok=True)
+            if not templ.exists():
+                templ.write_text(review_template(item,str(path.relative_to(results))),encoding='utf-8')
+            print('HOSTILE REVIEW NEXT: inspect source and invent additional tests; fill '+str(templ))
+        else:
+            any_failed=True
+        if args.publish:
+            # gh expects a Markdown body, not raw JSON; title and exact status stay explicit.
+            comment = results / 'runs' / ('pr'+str(item['pr'])+'_'+uuid.uuid4().hex[:12]+'_comment.md')
+            lines = ['## REMONT local exact-head Python compatibility check',
+                     '', 'PR: #' + str(item['pr']),
+                     'Immutable source SHA: `' + item['sha'] + '`',
+                     'Status: **' + receipt['status'] + '**',
+                     'Interpreter: `' + str(receipt.get('python_version','NOT_VERIFIED')) + '`',
+                     'Source manifest: `' + str(receipt.get('source_manifest',{}).get('verified_python_files',0)) + '` Python files independently hashed.',
+                     '', '### Executed courts']
+            for test in receipt.get('tests',[]):
+                lines.extend(['- `' + ' '.join(test['command']) + '` => exit ' + str(test['exit_code']),
+                              '  ' + test.get('output','').strip()[-900:].replace('\n',' | ')])
+            if 'sqlite_demo' in receipt:
+                lines.extend(['', '### SQLite cold-reopen',
+                    '```json', json.dumps(receipt['sqlite_demo'],indent=2), '```'])
+            if receipt.get('failure_detail'):
+                lines.extend(['', 'Failure/hold: `'+str(receipt['failure_detail'])[-1000:]+'`'])
+            lines.extend(['', 'Complete raw local transcript: `'+str(path.relative_to(results))+'`.',
+                '**Automatic compatibility results only. No hostile review, native G5, protected receiving, or scientific accreditation is issued.**'])
+            comment.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+            print('Publish:',publish_compat(repo,item,receipt,comment))
+    print('\nQueue test runs completed. Independently authored hostile reviews still require agent execution; tests alone DO NOT ACCEPT.')
+    return 1 if any_failed else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
