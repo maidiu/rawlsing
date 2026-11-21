@@ -215,6 +215,42 @@ def main():
         must(phrase.lower() in main.lower(),
              "conceptual fusion still reduces Nadia's contradictions: " + phrase)
 
+    # UX-FIRST SOURCE COURT: authenticated original UX phenomena must appear
+    # inside the active one-HOME articulation, not only its source appendix.
+    ux_hits = list(re.finditer(r"(?m)^## (\d+)\. ", main))
+    ux_sections = {int(m.group(1)): main[m.start():(ux_hits[i+1].start() if i+1<len(ux_hits) else len(main))].lower() for i,m in enumerate(ux_hits)}
+    ux_requirements = {
+        1: ("the actual beginning is an invitation", "become neighbor", "first reward"),
+        2: ("the ux question", "first screen", "first contact"),
+        3: ("carry", "homologize", "bracket", "user-select", "habitus friction"),
+        4: ("enter → reveal concrete affordances", "omission delegates", "fractions"),
+        5: ("coarse shared gestalt", "attend", "recognition repertoire"),
+        6: ("calendar", "read-but-unanswered", "meaningful new action"),
+        7: ("terminal/ti-84", "outside", "messaging", "thread"),
+        8: ("self-presentation is not self-verification", "becoming someone", "spectacle"),
+        9: ("reachability", "route", "permission", "access can expand"),
+        10: ("relational warrant", "progress", "moral score"),
+        11: ("human access invitation", "credential", "persona", "commissioned roll"),
+        12: ("optional reflection", "export", "privacy", "real human"),
+        13: ("first-session sequence", "ordinary", "contact"),
+        14: ("endogenous interpersonal difficulty", "guilt", "platform"),
+        15: ("truth api", "public", "object"),
+        16: ("private psychology", "pyat", "person"),
+        17: ("care", "coercion"),
+        18: ("soracle-co", "psyche"),
+        19: ("objectification", "institution"),
+        20: ("self-myth", "reread"),
+        21: ("generative nucleus of the encounter", "history"),
+        22: ("the experience in one uninterrupted line", "independently"),
+    }
+    for section, phrases in ux_requirements.items():
+        for phrase in phrases:
+            must(phrase in ux_sections[section], f"UX source shard missing in movement {section}: {phrase}")
+    must("### November 21 — direct user NEIGHBOR-UX jurisdiction" in whole, "UX correction source missing")
+    must("Jurisdiction and reciprocal horizon — NEIGHBOR-UX, not SORACLE-CO" in main, "UX ownership blurred")
+    must("SORACLE-CO is the distinct theorist and authority" in main, "CO psyche owner distinction blurred")
+    must("original SOROK product and experiential courts" in main.lower(), "source UX court not grounded")
+
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
          "latest direct user's one-document and no-branch instruction lost")
@@ -226,7 +262,9 @@ def main():
     must("ONE existing canonical HOME in #1277" in whole or "existing draft PR #1277" in whole,
          "current output does not identify its single existing destination")
 
-    print("[PASS] ONE current integrated 23-movement whole, with source foundation IN THE SAME FILE")
+    print("[PASS] ONE UX-first 23-movement HOME, with source foundation IN THE SAME FILE")
+    print("[PASS] UX court phenomena, action/attention/access, time/interface/first-session original theories mapped")
+    print("[PASS] SORACLE-NEIGHBOR-UX experiential authority distinct from SORACLE-CO psychic theory")
     print("[PASS] 197 source sections from 10 immutable predecessor cuts")
     print("[PASS] 104 distinct source-graded ideas and exact original propositions")
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
