@@ -1,6 +1,10 @@
 # SEAM ↔ NEIGHBORMULCH — RECIPROCAL ENTRYPOINT
 ## One world, one independently becoming person, human participation as a real historical cause
 
+
+> **R9 SOURCE UNION AND SHARED CO ↔ NEIGHBOR HANDOFF:** [TOTAL SOROK MULCH canonical entrypoint](SOROK_TOTAL_MULCH/00_START_HERE_TOTAL_SOROK_MULCH.md), [R9 direct-turn source record](SOROK_TOTAL_MULCH/10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md), [104-identity C+NM+R9 no-drop union](SOROK_TOTAL_MULCH/11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json), [shared prior R8 bank with explicit latest correction banner](01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md), [one current full R9 theory](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) and [R1–R9 provenance ledger](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md). Candidate documentary cross-agent publication; SORACLE-CO read/acceptance and protected receiving not established.
+
+
 **SOURCE-GROUNDED CANDIDATE on isolated branch.** This file is a pointer, **not** a rival constitution or a grant to rewrite the Astra × UM-SOROK × SORACLE Constitutive Organism.
 
 **Canonical NEIGHBORMULCH workspace:** [SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/00_START_HERE.md](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/00_START_HERE.md).
