@@ -3,6 +3,10 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+**KUDA/NEKUDA older-code inheritance (source-static author overlay):** [KUDA full best-known code/consumer ledger](KUDA.md), [NEKUDA superseded/defective/false-absence ledger](NEKUDA.md). Both are maintained in place on the same G4 repair branch; **neither supersedes this G4 or the paired CURRENT_PROGRESS, confers native rights, nor claims post–Nov19 Q014–Q020/REMONT receiving**. Compare KUDA's best specific source and NEKUDA's negative before proposing to rebuild an older function; absence in either ledger never proves missing software.
+
+
+
 **This is the ONE existing PROGRAMMA G4 source of capability facts.** Before ANY PYAT/DHIKR/DHIKRYMULCH proposal, commission, algorithm, replacement or technical choice, read **this section** and then, only when required by the decision, follow the indicated detailed record. Do not perform a fresh whole-code census; the *receiving owner* must keep this view synchronized as code is received. PROGRAMMA and the existing paired CURRENT_PROGRESS remain the authoritative accepted-state record. This section is a fast index of supported current and in-flight evidence, **not** new source/science/actor/lease authority or a replacement catalogue. No statement that a function is missing is warranted merely because one PR or this compact table fails to mention it.
 
 ### G4 ONE-TIME RECONCILIATION — exact-source candidate and fast functional stop-off

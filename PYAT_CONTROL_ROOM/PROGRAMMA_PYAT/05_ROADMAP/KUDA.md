@@ -43,7 +43,7 @@
 
 ### KUDA-001 — R157 source-configuration factory and 35-source registry
 
-**G4 jurisdiction:** S01–S03; Compare R157 B49 selected-pack ABI, reuse only authorized source-specific factory/reader/registry.. **Placement:** `OLDER_BRANCH_CODE`.
+**G4 jurisdiction:** S01–S03; G3A:CROSS:006; S01/S02/S03. **Placement:** `OLDER_BRANCH_CODE`.
 
 **Exact code:** [build_governed_c11_projection; build_validated_c11_release_from_config](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/factory.py) at `d81bc2c67baf933461ae6cfca468f24779cc7e44`, path `rawlsing_next/source_configuration/factory.py`.
 
@@ -57,9 +57,11 @@
 
 **Smallest nonduplicative operation:** Compare R157 B49 selected-pack ABI, reuse only authorized source-specific factory/reader/registry.
 
+**NEKUDA family and negative comparisons:** NEKUDA-001.
+
 ### KUDA-002 — B49 exact administered source-rule selector
 
-**G4 jurisdiction:** S01/S02; Compare NativeSourcePackage vs SelectedSourceRulePackage contracts before any port.. **Placement:** `OLDER_BRANCH_CODE`.
+**G4 jurisdiction:** S01/S02; S01.2/S02.1–2.4. **Placement:** `OLDER_BRANCH_CODE`.
 
 **Exact code:** [SourceAuthorityCorpus; select_source_rules; all35_coverage_ledger](https://github.com/maidiu/rawlsing/blob/b5600da96358f8526471d635a1befa8daa3f098b/rawlsing_next/pre553_inherited_source_rules.py) at `b5600da96358f8526471d635a1befa8daa3f098b`, path `rawlsing_next/pre553_inherited_source_rules.py`.
 
@@ -73,9 +75,11 @@
 
 **Smallest nonduplicative operation:** Compare NativeSourcePackage vs SelectedSourceRulePackage contracts before any port.
 
+**NEKUDA family and negative comparisons:** NEKUDA-002.
+
 ### KUDA-003 — G50 finite scientific operation grammar
 
-**G4 jurisdiction:** S02/S04; Compare R03 compiler and I05 for exact truly distinct grammar functions.. **Placement:** `OLDER_BRANCH_SOURCEFREE`.
+**G4 jurisdiction:** S02/S04; S02.3/S02.4. **Placement:** `OLDER_BRANCH_SOURCEFREE`.
 
 **Exact code:** [enumerate_frontier; role_disposition](https://github.com/maidiu/rawlsing/blob/d379bafe36b8d89da27ea5bf33614d33aca7f2d2/WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py) at `d379bafe36b8d89da27ea5bf33614d33aca7f2d2`, path `WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py`.
 
@@ -89,9 +93,11 @@
 
 **Smallest nonduplicative operation:** Compare R03 compiler and I05 for exact truly distinct grammar functions.
 
+**NEKUDA family and negative comparisons:** NEKUDA-003.
+
 ### KUDA-004 — I51 B49→G50→existing C11/I03/Batch joined producer
 
-**G4 jurisdiction:** S02–S04; Retain exact source ABI/negative behavior and integrate only where R03 cannot already serve.. **Placement:** `OLDER_BRANCH_SOURCEFREE`.
+**G4 jurisdiction:** S02–S04; S02.3/S03.3. **Placement:** `OLDER_BRANCH_SOURCEFREE`.
 
 **Exact code:** [lower_to_b49; execute_joined](https://github.com/maidiu/rawlsing/blob/9bbf9e0509411beb210331d28160324b005a784e/WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py) at `9bbf9e0509411beb210331d28160324b005a784e`, path `WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py`.
 
@@ -105,9 +111,11 @@
 
 **Smallest nonduplicative operation:** Retain exact source ABI/negative behavior and integrate only where R03 cannot already serve.
 
+**NEKUDA family and negative comparisons:** NEKUDA-003.
+
 ### KUDA-005 — V550 questionnaire source-structure classifier
 
-**G4 jurisdiction:** S01; Use only as candidate annotations, compare R157/B49 and original instrument.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S01; S01.2. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [derive_source_structure_classification](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_source_structure.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_source_structure.py`.
 
@@ -121,9 +129,11 @@
 
 **Smallest nonduplicative operation:** Use only as candidate annotations, compare R157/B49 and original instrument.
 
+**NEKUDA family and negative comparisons:** NEKUDA-004.
+
 ### KUDA-006 — V550 per-question use and meaning compiler
 
-**G4 jurisdiction:** S01/S02; Conserve precise question-specific fields where modern issued-workload semantics lack them.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S01/S02; S01.3/S02.2. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [build_question_use_contract](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_question_use.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_question_use.py`.
 
@@ -137,9 +147,11 @@
 
 **Smallest nonduplicative operation:** Conserve precise question-specific fields where modern issued-workload semantics lack them.
 
+**NEKUDA family and negative comparisons:** NEKUDA-004.
+
 ### KUDA-007 — V550 structural question-relation authority rewrite
 
-**G4 jurisdiction:** S01/S06; Compare with current source-relations guard before reimplementation.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S01/S06; S01.3/S06.1. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [apply_question_relation_authority](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_question_relation_authority.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_question_relation_authority.py`.
 
@@ -153,9 +165,11 @@
 
 **Smallest nonduplicative operation:** Compare with current source-relations guard before reimplementation.
 
+**NEKUDA family and negative comparisons:** NEKUDA-004.
+
 ### KUDA-008 — V550 six-frame per-wave readiness/materialization
 
-**G4 jurisdiction:** S03/S04; Conserve T/S/M preparation economics without copying historical readiness as science.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S03/S04; S03.2/S04.1. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [build_readiness](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_readiness.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_readiness.py`.
 
@@ -169,9 +183,11 @@
 
 **Smallest nonduplicative operation:** Conserve T/S/M preparation economics without copying historical readiness as science.
 
+**NEKUDA family and negative comparisons:** NEKUDA-005.
+
 ### KUDA-009 — V550J fail-closed shared respondent substrate and atomic reuse
 
-**G4 jurisdiction:** S03/S04; Reuse validated-substrate invariants and one-preparation/many-queries economics.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S03/S04; G3A:FUNCTION:G1A-FUNC-006. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [canonicalize_shared_respondent_substrate; validate_shared_respondent_substrate; write_shared_respondent_substrate_atomic](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py`.
 
@@ -185,9 +201,11 @@
 
 **Smallest nonduplicative operation:** Reuse validated-substrate invariants and one-preparation/many-queries economics.
 
+**NEKUDA family and negative comparisons:** NEKUDA-006, NEKUDA-026.
+
 ### KUDA-010 — V550J same-respondent association eligibility funnel
 
-**G4 jurisdiction:** S04; Compare with current I03/S04 source-coherent eligibility and reuse missing exclusions.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S04; G3A:FUNCTION:G1A-FUNC-007/008. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [_association_eligibility_funnel](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550j_joint_patterns.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550j_joint_patterns.py`.
 
@@ -201,9 +219,11 @@
 
 **Smallest nonduplicative operation:** Compare with current I03/S04 source-coherent eligibility and reuse missing exclusions.
 
+**NEKUDA family and negative comparisons:** NEKUDA-007.
+
 ### KUDA-011 — V551 directional response-option stamp audit
 
-**G4 jurisdiction:** S04/S06; Reuse fail/missing states with explicit zero-denominator presentation.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S04/S06; S04.5/S06. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [build_v551_directionality_stamp_audit](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_directionality_expectation.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551_directionality_expectation.py`.
 
@@ -217,9 +237,11 @@
 
 **Smallest nonduplicative operation:** Reuse fail/missing states with explicit zero-denominator presentation.
 
+**NEKUDA family and negative comparisons:** NEKUDA-011.
+
 ### KUDA-012 — V551J cross-run semantic delta comparator
 
-**G4 jurisdiction:** S05/S08; Separate packet semantic delta from P07 and V553 measured histories.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S05/S08; S05.2/S08.1. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [build_v551j_cross_wave_semantic_diff](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_semantic_diff.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551j_semantic_diff.py`.
 
@@ -233,9 +255,11 @@
 
 **Smallest nonduplicative operation:** Separate packet semantic delta from P07 and V553 measured histories.
 
+**NEKUDA family and negative comparisons:** NEKUDA-012.
+
 ### KUDA-013 — V551J explicitly noncertifying review sidecar
 
-**G4 jurisdiction:** S05; Locate a real first consumer before moving it into any current lifecycle.. **Placement:** `HISTORICAL_NO_CALLER`.
+**G4 jurisdiction:** S05; S05.1. **Placement:** `HISTORICAL_NO_CALLER`.
 
 **Exact code:** [build_v551j_reviewable_evidence_sidecar](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_review.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551j_review.py`.
 
@@ -251,7 +275,7 @@
 
 ### KUDA-014 — V552 scale-aware distribution contract recomputation
 
-**G4 jurisdiction:** S04/S06; Use only if current diagnostics lacks a needed separately verified output.. **Placement:** `HISTORICAL_NO_CALLER`.
+**G4 jurisdiction:** S04/S06; S04.5/S06. **Placement:** `HISTORICAL_NO_CALLER`.
 
 **Exact code:** [recompute_v552_distribution_contract](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v552_contract.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v552_contract.py`.
 
@@ -265,9 +289,11 @@
 
 **Smallest nonduplicative operation:** Use only if current diagnostics lacks a needed separately verified output.
 
+**NEKUDA family and negative comparisons:** NEKUDA-013.
+
 ### KUDA-015 — FFX002 R2 actual A/B/C common-manifest comparison orchestrator
 
-**G4 jurisdiction:** S06/S10; Conserve its frozen-common-risk and noncomparable-arm controls.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S06/S10; G3A:FUNCTION:G1A-FUNC-024. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [preflight_integrated_bundle; run_integrated_stack](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ffx002_r2_integrated_stack.py) at `957628a3653e55757404ecf62822c4dd12f77430`, path `data/ddm_build_copy/ffx002_r2_integrated_stack.py`.
 
@@ -281,9 +307,11 @@
 
 **Smallest nonduplicative operation:** Conserve its frozen-common-risk and noncomparable-arm controls.
 
+**NEKUDA family and negative comparisons:** NEKUDA-013, NEKUDA-014.
+
 ### KUDA-016 — FFX002 R2 local geometric position/disposition view
 
-**G4 jurisdiction:** S06; Retain as comparison/negative court for representation choice.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S06; G3A:FUNCTION:G1A-FUNC-025. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [compile_local_geometric_view](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ffx002_r2_local_geometry.py) at `957628a3653e55757404ecf62822c4dd12f77430`, path `data/ddm_build_copy/ffx002_r2_local_geometry.py`.
 
@@ -297,9 +325,11 @@
 
 **Smallest nonduplicative operation:** Retain as comparison/negative court for representation choice.
 
+**NEKUDA family and negative comparisons:** NEKUDA-014.
+
 ### KUDA-017 — F6M partially identified cross-marginal synthesis
 
-**G4 jurisdiction:** S07; Conserve math; compare source-specific issued bounds with later qualified interfaces.. **Placement:** `OLDER_WORKER_SOURCEFREE`.
+**G4 jurisdiction:** S07; G3A:FUNCTION:G1A-FUNC-026. **Placement:** `OLDER_WORKER_SOURCEFREE`.
 
 **Exact code:** [synthesize; complementary_binary_bounds](https://github.com/maidiu/rawlsing/blob/1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa/WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py) at `1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa`, path `WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py`.
 
@@ -313,9 +343,11 @@
 
 **Smallest nonduplicative operation:** Conserve math; compare source-specific issued bounds with later qualified interfaces.
 
+**NEKUDA family and negative comparisons:** NEKUDA-015.
+
 ### KUDA-018 — F6P actual sourcefree partial-bound evidence consumer
 
-**G4 jurisdiction:** S07/S10; Conserve typed evidence states without making numeric bounds into actor routes.. **Placement:** `OLDER_WORKER_SOURCEFREE`.
+**G4 jurisdiction:** S07/S10; G3A:CROSS:008. **Placement:** `OLDER_WORKER_SOURCEFREE`.
 
 **Exact code:** [verify_f6m_bundle; consume_f6m_evidence](https://github.com/maidiu/rawlsing/blob/016870e86913e6f7a811a51db6aba2d741bcfe58/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py) at `016870e86913e6f7a811a51db6aba2d741bcfe58`, path `WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py`.
 
@@ -329,9 +361,11 @@
 
 **Smallest nonduplicative operation:** Conserve typed evidence states without making numeric bounds into actor routes.
 
+**NEKUDA family and negative comparisons:** NEKUDA-015.
+
 ### KUDA-019 — P07 pure F7 comparability and no-fuzzy as-of selection
 
-**G4 jurisdiction:** S08/S09; Retain pure comparator and as-of selector for authorized F7 consumer.. **Placement:** `OLDER_WORKER_TEST_ONLY`.
+**G4 jurisdiction:** S08/S09; G3A:FUNCTION:G1A-FUNC-027. **Placement:** `OLDER_WORKER_TEST_ONLY`.
 
 **Exact code:** [compare_temporal_method; select_as_of_version](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py) at `f8fe03cc6e6a482f428bed9e03c08e50ce1e6479`, path `WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py`.
 
@@ -345,9 +379,11 @@
 
 **Smallest nonduplicative operation:** Retain pure comparator and as-of selector for authorized F7 consumer.
 
+**NEKUDA family and negative comparisons:** NEKUDA-016.
+
 ### KUDA-020 — V553 sparse measured historical temporal production
 
-**G4 jurisdiction:** S08; Repair keyed V553→V554 consumer and status ABI, not V553 calculation from scratch.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S08; G3A:FUNCTION:G1A-FUNC-016/017. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [_build_v553_cross_wave_delta_index; AUTHORIZED_SPARSE_TEMPORAL_KEY](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_temporal_pressure.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v553_temporal_pressure.py`.
 
@@ -361,9 +397,11 @@
 
 **Smallest nonduplicative operation:** Repair keyed V553→V554 consumer and status ABI, not V553 calculation from scratch.
 
+**NEKUDA family and negative comparisons:** NEKUDA-017, NEKUDA-018.
+
 ### KUDA-021 — E41→R08→L01 signed empirical evidence to world-consumer path
 
-**G4 jurisdiction:** S04/S10; Reuse signed binder and genuine sourcefree reader, not a new evidence wrapper.. **Placement:** `SELECTED_SOURCEFREE`.
+**G4 jurisdiction:** S04/S10; S04/S10. **Placement:** `SELECTED_SOURCEFREE`.
 
 **Exact code:** [read_prefix_evidence; EvidenceConsumerReader](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/pre553_evidence_world_consumer.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/pre553_evidence_world_consumer.py`.
 
@@ -377,9 +415,11 @@
 
 **Smallest nonduplicative operation:** Reuse signed binder and genuine sourcefree reader, not a new evidence wrapper.
 
+**NEKUDA family and negative comparisons:** NEKUDA-019, NEKUDA-021, NEKUDA-028.
+
 ### KUDA-022 — GT2 exact empirical joint→Field Forge→PRE-V3→M1→V558 chain
 
-**G4 jurisdiction:** S04/S06/S09; Use as first-reader contract and negative canary, not a broad completeness claim.. **Placement:** `SELECTED_BOUNDED_CANARY`.
+**G4 jurisdiction:** S04/S06/S09; S06/S09/S10. **Placement:** `SELECTED_BOUNDED_CANARY`.
 
 **Exact code:** [40 named tests; field_forge_conditional_support; wave1_ff_prev3_relation_admission](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py`.
 
@@ -393,9 +433,11 @@
 
 **Smallest nonduplicative operation:** Use as first-reader contract and negative canary, not a broad completeness claim.
 
+**NEKUDA family and negative comparisons:** NEKUDA-020.
+
 ### KUDA-023 — GT3/GT4 exact same-source respondent materialization
 
-**G4 jurisdiction:** S03/S04; Use as source-relation regression evidence when extending higher-order joints.. **Placement:** `SELECTED_BOUNDED_CANARY`.
+**G4 jurisdiction:** S03/S04; S03/S04. **Placement:** `SELECTED_BOUNDED_CANARY`.
 
 **Exact code:** [same-source Q2/Q69B/Q86A materializer](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/gt34_q2_q69b_q86a_same_source_materialization.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/gt34_q2_q69b_q86a_same_source_materialization.py`.
 
@@ -409,9 +451,11 @@
 
 **Smallest nonduplicative operation:** Use as source-relation regression evidence when extending higher-order joints.
 
+**NEKUDA family and negative comparisons:** NEKUDA-026.
+
 ### KUDA-024 — I07 independently guarded cross-source pooling/composition
 
-**G4 jurisdiction:** S01/S07/S08; Reuse exact guard, do not build another survey joiner.. **Placement:** `SELECTED_SOURCEFREE`.
+**G4 jurisdiction:** S01/S07/S08; S01/S07. **Placement:** `SELECTED_SOURCEFREE`.
 
 **Exact code:** [guard_sample_pooling; guard_estimand_composition; execute_i03_composite_query_guarded](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/pre553_source_relations.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/pre553_source_relations.py`.
 
@@ -427,7 +471,7 @@
 
 ### KUDA-025 — M2/B5/I4 learned product release, invalidation and composition
 
-**G4 jurisdiction:** S05/S10; Extend only genuine native evidence/first-use gaps, never rebuild generic lifecycle.. **Placement:** `SELECTED_SOURCEFREE`.
+**G4 jurisdiction:** S05/S10; S05. **Placement:** `SELECTED_SOURCEFREE`.
 
 **Exact code:** [LearnedProductLifecycle; alongside pre553_learned_product_release.py and pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/pre553_learned_product_lifecycle.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/pre553_learned_product_lifecycle.py`.
 
@@ -441,9 +485,11 @@
 
 **Smallest nonduplicative operation:** Extend only genuine native evidence/first-use gaps, never rebuild generic lifecycle.
 
+**NEKUDA family and negative comparisons:** NEKUDA-022.
+
 ### KUDA-026 — I01 saved sourcefree world→durable product/lifecycle integration
 
-**G4 jurisdiction:** S05/S09; Compare unique durable handoff behavior with current M2/B5 and recover only that.. **Placement:** `OLDER_WORKER_SOURCEFREE`.
+**G4 jurisdiction:** S05/S09; G3A:FUNCTION:G1A-FUNC-028. **Placement:** `OLDER_WORKER_SOURCEFREE`.
 
 **Exact code:** [open_world_session; build_product; restore_product; invalidate](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py) at `a1dc59411faaee01b3acb1c4f08b2e6f09d56028`, path `rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py`.
 
@@ -457,9 +503,11 @@
 
 **Smallest nonduplicative operation:** Compare unique durable handoff behavior with current M2/B5 and recover only that.
 
+**NEKUDA family and negative comparisons:** NEKUDA-021, NEKUDA-022.
+
 ### KUDA-027 — K04 objective-position exact materializer; already canonical identical blob
 
-**G4 jurisdiction:** S06/S10; Do not commission second materializer; check only actual consumer/permission.. **Placement:** `SELECTED_EXACT_BLOB`.
+**G4 jurisdiction:** S06/S10; G3A:CROSS:013. **Placement:** `SELECTED_EXACT_BLOB`.
 
 **Exact code:** [materialize_objective_position; replay_objective_position; m2_position_ref_handoff](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/prev3_objective_position_materializer.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/prev3_objective_position_materializer.py`.
 
@@ -473,9 +521,11 @@
 
 **Smallest nonduplicative operation:** Do not commission second materializer; check only actual consumer/permission.
 
+**NEKUDA family and negative comparisons:** NEKUDA-023.
+
 ### KUDA-028 — W03/W04 compact event accelerator plus physically cold I03/I05 regression
 
-**G4 jurisdiction:** S03; Measure rather than recreate cache; use if physical efficiency and negative tests justify.. **Placement:** `OLDER_UNMERGED_CANDIDATE`.
+**G4 jurisdiction:** S03; S03 P0. **Placement:** `OLDER_UNMERGED_CANDIDATE`.
 
 **Exact code:** [_CompressedBodies; _BodyCacheWriter; _compact_public_objects](https://github.com/maidiu/rawlsing/blob/46b7325637e68f78ccc7487d4b1abc7009c5ac0b/rawlsing_next/_pre553_c11_execution_view.py) at `46b7325637e68f78ccc7487d4b1abc7009c5ac0b`, path `rawlsing_next/_pre553_c11_execution_view.py`.
 
@@ -489,9 +539,11 @@
 
 **Smallest nonduplicative operation:** Measure rather than recreate cache; use if physical efficiency and negative tests justify.
 
+**NEKUDA family and negative comparisons:** NEKUDA-024, NEKUDA-026.
+
 ### KUDA-029 — V549B same-respondent branch-node attitude anchors
 
-**G4 jurisdiction:** S04; Conserve branch-conditioned question, repair weighting/reporter before reuse.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S04; S04. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [build_branch_node_anchors](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py`.
 
@@ -505,9 +557,11 @@
 
 **Smallest nonduplicative operation:** Conserve branch-conditioned question, repair weighting/reporter before reuse.
 
+**NEKUDA family and negative comparisons:** NEKUDA-008, NEKUDA-027.
+
 ### KUDA-030 — V550 historical position marginals and co-travel distributions
 
-**G4 jurisdiction:** S04; Compare per-product estimands to modern S04 before deciding missing versus existing.. **Placement:** `HISTORICAL_EXECUTABLE`.
+**G4 jurisdiction:** S04; G3A:FUNCTION:G1A-FUNC-005; G3A:CROSS:001. **Placement:** `HISTORICAL_EXECUTABLE`.
 
 **Exact code:** [distribution functions; alongside ddm_v550_position_distribution.py and ddm_v550_clouds.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_distributions.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v550_distributions.py`.
 
@@ -520,6 +574,8 @@
 **Limitation / negative:** Adjacent entropy/recursive code uses incompatible risk sets and top-two truncation.
 
 **Smallest nonduplicative operation:** Compare per-product estimands to modern S04 before deciding missing versus existing.
+
+**NEKUDA family and negative comparisons:** NEKUDA-007, NEKUDA-009, NEKUDA-010, NEKUDA-027.
 
 ## Escalation boundaries
 
