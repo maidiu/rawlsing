@@ -283,6 +283,29 @@ def run_candidate(repo: Path, item, py: str, q, *, fetch=False):
                 raise QueueFailure('CANDIDATE_RUNTIME_MISSING')
             receipt['python_version'] = ensure_machine_version(py, candidate)
             receipt['source_manifest'] = source_manifest_check(candidate, item['manifest'])
+            if item.get('joined_first_consumer') is True:
+                compile_result = run_process(
+                    [py, '-m', 'compileall', '-q', 'um_sorok_organism'],
+                    candidate, timeout=120)
+                receipt['tests'].append({'kind':'joined_compile', **compile_result})
+                require_ok(compile_result, 'JOINED_SOURCE_COMPILE_FAILED')
+                focused = [
+                    'tests.test_r3_r18_joined_faults',
+                    'tests.test_r3_r16_joined_first_consumer',
+                    'tests.test_joined_longitudinal_demo',
+                    'tests.test_r17_source_preflight',
+                    'tests.test_remontathon_r18_p004_selected_means',
+                    'tests.test_remontathon_r13',
+                    'tests.test_cultural_mediation_r3',
+                    'tests.test_social_vocal_development_r3',
+                ]
+                for optimized in (False, True):
+                    cmd = [py] + (['-O'] if optimized else []) + [
+                        '-m', 'unittest', '-v', *focused]
+                    result = run_process(cmd, candidate, timeout=300)
+                    kind = 'joined_focused_optimized' if optimized else 'joined_focused'
+                    receipt['tests'].append({'kind':kind, **result})
+                    require_ok(result, 'TEST_COURT_FAILED_' + kind.upper())
             suite = (
                 [py, '-m', 'unittest', 'discover', '-s', 'tests', '-q'],
                 [py, '-O', '-m', 'unittest', 'discover', '-s', 'tests', '-q'],
@@ -293,6 +316,8 @@ def run_candidate(repo: Path, item, py: str, q, *, fetch=False):
                 receipt['tests'].append({'kind': ('unittest','unittest_optimized','pytest')[i], **r})
                 require_ok(r, 'TEST_COURT_FAILED_' + ('NORMAL','OPTIMIZED','PYTEST')[i])
             receipt['sqlite_demo'] = demo_and_reopen(py, candidate, base)
+            if item.get('joined_first_consumer') is True:
+                receipt['joined_counterfactual'] = joined_nadia_and_reopen(py, candidate, base)
             tracked = git(wt, 'status', '--porcelain', '--untracked-files=no')
             if tracked:
                 raise QueueFailure('TESTS_MUTATED_TRACKED_SOURCE', tracked)
