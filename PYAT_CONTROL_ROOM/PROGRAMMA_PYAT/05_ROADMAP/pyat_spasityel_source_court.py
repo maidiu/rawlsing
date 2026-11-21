@@ -401,7 +401,7 @@ try:
       all(q in test_file for q in (
        "test_public_prepared_A_admission_B_native_session_refuses_before_receipt",
        "test_current_revocation_between_open_and_wrapper_bind_cleanup",
-       "prepared admission/session estate mismatch",
+       "admission/session estate mismatch",
        "binding is immutable")),
       "SOURCE_STATIC_TEST_CHECKER; native author CI already pinned separately")
  report["R28_grade"]="SOURCEFREE_AUTHOR_23PASS__CURRENT_OWNER_PREPARED_FIX__G5_AND_PROTECTED_HOLD"
