@@ -16,7 +16,7 @@ still needed to enforce a hard deadline/RSS on an individual blocking call.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import log2, prod
+from math import prod
 from time import monotonic
 from typing import Any, Callable, Mapping, Sequence
 
@@ -33,6 +33,9 @@ from rawlsing_next.pre553_s04_observed_research import (
     MAX_CELLS as S04_MAX_CELLS,
     ask_s04_common_risk_predictor_evidence, receive_s04_i03_research,
 )
+# Reuse the existing source-coherent RAW same-case association producer.
+# Do not establish a second mathematical definition of information gain here.
+from rawlsing_next.pre553_s04_dhikr_comparative import _association
 
 CONTRACT = "PYAT_S04_SOURCE_ISSUED_COUNTRY_REFINEMENT@1"
 HOLD = "HELD__COUNTRY_SOURCE_OR_RESOURCE"
@@ -192,20 +195,26 @@ def _country_scope(
     return "ISSUED_COUNTRY_AXIS", axis, source_value
 
 
-def _mutual_information(table: Mapping[tuple[str, str], int]) -> float:
-    row: dict[str, int] = {}
-    col: dict[str, int] = {}
-    total = 0
-    for (x, y), n in table.items():
-        if type(n) is not int or n < 0:
+def _inherited_same_case_information(table: Mapping[tuple[str, str], int]) -> float:
+    """Use S04/DHIKR's existing sample MI; do not implement another scorer.
+
+    Country/risk issuance and exact subgroup membership were established
+    upstream. Preserve prior typed negative-count refusal, and check that the
+    inherited owner evaluates exactly the same positive respondent mass.
+    """
+    for count in table.values():
+        if type(count) is not int or count < 0:
             raise CountryRefinementError("BAD_SOURCE_COUNT")
-        row[x] = row.get(x, 0) + n
-        col[y] = col.get(y, 0) + n
-        total += n
-    if total == 0:
+    source_n = sum(table.values())
+    if source_n == 0:
         return 0.0
-    return max(0.0, sum((n / total) * log2(n * total / (row[x] * col[y]))
-                        for (x, y), n in table.items() if n))
+    metric = _association(
+        [((x, y), n) for (x, y), n in table.items()],
+        target=1, axes=(0,),
+    )
+    if metric["raw_n"] != source_n or metric["information_bits"] is None:
+        raise CountryRefinementError("INHERITED_DHIKR_COMMON_RISK_DRIFT")
+    return metric["information_bits"]
 
 
 def run_issued_country_refinement(
@@ -382,7 +391,7 @@ def run_issued_country_refinement(
             "index": candidate,
             "candidate_ref": m["target_refs"][candidate],
             "common_full_case_n": base_n,
-            "unadjusted_mutual_information_bits": _mutual_information(table),
+            "unadjusted_mutual_information_bits": _inherited_same_case_information(table),
             "branches": branch_states,
             "source_s04_evidence_ref": answer["baseline_answer_ref"],
             "source_s04_comparison_ref": answer_receipt.ref.as_dict(),
