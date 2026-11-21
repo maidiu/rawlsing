@@ -93,10 +93,14 @@ def possible_vocal_coordination(actor,experience,event_ref):
                cur["independently_responding_other_ref"])
            and type(v.get("clock")) is int
            and v["clock"]<cur["clock"]
-           and type(v.get("age_days")) is int
-           and cur["age_days"]-v["age_days"]>=MIN_AGE_GAP_DAYS]
+           and type(v.get("age_days")) is int]
     if not prior:return []
     prior=max(prior,key=lambda v:(v["clock"],v["id"]))
+    # A new turn every minute must not repeatedly reuse a much older
+    # demonstration to harvest development. The IMMEDIATELY preceding
+    # relevant turn must itself be separated by embodied lived days.
+    if cur["age_days"]-prior["age_days"]<MIN_AGE_GAP_DAYS:
+        return []
     body=actor.get("body",{})
     ceiling=body.get("language_ceiling")
     current_skill=body.get("language")
