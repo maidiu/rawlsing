@@ -20,7 +20,9 @@ from um_sorok_organism.runtime import ConstitutiveRuntime
 
 
 PARENT={'source_ref':'r14_sourcefree_fictional_parent',
-        'answers':{}, 'fictional_seed':{'projects':[]}}
+        'source_grade':'SOURCEFREE_FIXTURE_NOT_A_SURVEY_RESPONDENT',
+        'answers':{'R14_SOURCEFREE_ONLY':'NO_EMPIRICAL_QUESTIONNAIRE_ANSWER'},
+        'fictional_seed':{'projects':[]}}
 
 
 def period():
