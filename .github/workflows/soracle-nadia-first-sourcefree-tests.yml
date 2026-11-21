@@ -88,6 +88,12 @@ jobs:
         run: |
           python -m unittest -v tests.test_social_vocal_development_r3
           python -O -m unittest -v tests.test_social_vocal_development_r3
+      - name: Joined two-counterfactual Nadia life and cold SQLite
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_joined_longitudinal_demo
+          python -O -m unittest -v tests.test_joined_longitudinal_demo
+          python -m um_sorok_organism.joined_longitudinal_demo --days 14 --beats 12
       - name: Original inherited organism suite
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -v
