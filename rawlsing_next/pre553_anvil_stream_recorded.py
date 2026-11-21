@@ -45,6 +45,14 @@ from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
 class RecordedResponseError(ValueError):
     """The held recorded-response operation cannot be lawfully materialized."""
 
+
+DEFAULT_HISTORICAL_SCOPE_GRADE = "EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY"
+SUPPORTED_HISTORICAL_SCOPE_GRADES = frozenset({
+    DEFAULT_HISTORICAL_SCOPE_GRADE,
+    "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+})
+
+
 @dataclass(frozen=True)
 class RecordedUniverseUse:
     """Operation-scoped historical DEFER use with a backed positive identity."""
@@ -66,6 +74,7 @@ class RecordedUniverseUse:
     interpretation: tuple[tuple[str, str], ...]
     scope: str | Mapping
     current_verifier: Callable[[], bool]
+    historical_scope_grade: str = DEFAULT_HISTORICAL_SCOPE_GRADE
 
     def __post_init__(self) -> None:
         if type(self.historical_snapshot) is not AuthoritySnapshot:
@@ -93,11 +102,31 @@ class RecordedUniverseUse:
             raise RecordedResponseError("historical DEFER identity is absent from universe")
         if self.historical_snapshot.authority_kind != "SOURCE_SEMANTICS_TOPOLOGY":
             raise RecordedResponseError("historical snapshot family mismatch")
-        if self.historical_snapshot.scope_envelope.get("semantic_scope") != "EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY":
-            raise RecordedResponseError("historical snapshot scope mismatch")
+        if self.historical_scope_grade not in SUPPORTED_HISTORICAL_SCOPE_GRADES:
+            raise RecordedResponseError("unsupported historical scope grade")
+        if self.historical_snapshot.scope_envelope.get("semantic_scope") != self.historical_scope_grade:
+            raise RecordedResponseError("historical snapshot scope grade mismatch")
         scope = self.positive_snapshot.scope_envelope
         if not isinstance(scope, Mapping) or not scope:
             raise RecordedResponseError("positive use scope envelope is mandatory")
+        if self.historical_scope_grade != DEFAULT_HISTORICAL_SCOPE_GRADE:
+            if scope.get("historical_scope_grade") != self.historical_scope_grade:
+                raise RecordedResponseError(
+                    "positive use does not bind the exact historical scope grade"
+                )
+            try:
+                bound_historical = exact_ref(
+                    scope.get("historical_snapshot_ref"),
+                    "positive use historical snapshot",
+                )
+            except Exception as exc:
+                raise RecordedResponseError(
+                    "positive use historical snapshot ref is not canonical"
+                ) from exc
+            if bound_historical != self.historical_snapshot.ref:
+                raise RecordedResponseError(
+                    "positive use does not bind the exact historical snapshot"
+                )
         allowed = scope.get("source_universe_refs")
         if allowed is None:
             raise RecordedResponseError("positive use scope has no source_universe_refs")
