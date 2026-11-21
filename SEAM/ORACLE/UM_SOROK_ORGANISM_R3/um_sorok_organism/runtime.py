@@ -832,7 +832,9 @@ class ConstitutiveRuntime:
                  'private_pre_event_psychodynamics':copy(pre_event_psychodynamics),
                  'private_post_event_psychodynamics':copy(post_event_psychodynamics),
                  'relational_dynamics_are_admitted_read_projections_not_actor_claims':True,
-                 'model_service_grade':getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
+                 'model_service_grade':getattr(
+                     getattr(self.semantic,'provider',self.semantic),
+                     'grade','UNSPECIFIED_SEMANTIC_ADAPTER_NO_PROVEN_GRADE'),
                  'sourcefree':True}
         committed=self.ledger.commit(self.world_id,wv,world,actors,actor_versions,
                                      'ACTOR_LIFE_TRANSITION',actor_id,payload)
