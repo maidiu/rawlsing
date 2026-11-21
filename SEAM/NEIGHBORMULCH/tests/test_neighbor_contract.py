@@ -109,7 +109,12 @@ class MIISpy:
         profile['exposures'].append(copy.deepcopy(kw))
 
 
-SOURCE = {'grade':'SOURCEFREE_TEST_ONLY','actor_conditions':{
+SOURCE = {'grade':'SOURCEFREE_TEST_ONLY',
+'user_conditions': {'workshop': {'light':'lit','sightline':'unobstructed',
+                                'hearing':True,'sound_path':'audible'},
+                    'home': {'light':'lit','sightline':'unobstructed',
+                             'hearing':True,'sound_path':'audible'}},
+'actor_conditions':{
     'worker': {'facing':'away','hearing':True,'visual':True,
                'light':'lit','sightline':'unobstructed','sound_path':'audible'},
     'elsewhere': {'facing':'entrance','hearing':True,'visual':True,
@@ -198,6 +203,27 @@ class OneWorldContract(unittest.TestCase):
         self.assertFalse(w['neighbor_users']['visitor']['present'])
         self.assertEqual(self.runtime.calls,[])
         self.assertEqual(w['neighbor_user_events'][-2]['operation'],'WAIT')
+    def test_co_presence_does_not_mint_visibility_or_privileged_tip(self):
+        r=RuntimeSpy();source=copy.deepcopy(SOURCE)
+        source['user_conditions']['workshop'].update(
+            light='dark', sightline='blocked', hearing=False, sound_path='blocked')
+        n=NeighborEncounter(r,'visitor',mii_module=MIISpy())
+        n.install_sourcefree_conditions(source,request_id='dark')
+        n.contribute('come','MOVE',destination='workshop')
+        n.independent_actor_beat('worker')
+        view=n.private_surface(n.new_private_profile())
+        self.assertNotIn('CO_PRESENT_ACTOR',str(view))
+        self.assertNotIn('PUBLIC_TIP',str(view))
+        self.assertEqual(view['available'],{})
+
+    def test_unqualified_user_view_cannot_become_omniscient(self):
+        r=RuntimeSpy();n=NeighborEncounter(r,'visitor',mii_module=MIISpy())
+        invalid=copy.deepcopy(SOURCE)
+        invalid.pop('user_conditions')
+        with self.assertRaisesRegex(EncounterRefusal,'MISSING_USER_SENSORY_CONDITIONS'):
+            n.install_sourcefree_conditions(invalid,request_id='wrong')
+        self.assertEqual(r.ledger.world('w1')[1]['clock'],0)
+
     def test_unqualified_words_cannot_author_outcome(self):
         with self.assertRaisesRegex(EncounterRefusal,'INVALID_USER_SPEECH'):
             self.neighbor.contribute('say','SAY',text='')
