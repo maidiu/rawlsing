@@ -123,7 +123,7 @@ def pinned_git_tree_check(src: Path):
     listing = git(src, 'ls-tree', '-r', 'HEAD', '--', prefix)
     tracked = {}
     for line in listing.splitlines():
-        parts = line.split('\\t', 1)
+        parts = line.split('\t', 1)
         if len(parts) != 2:
             raise QueueFailure('PINNED_TREE_UNREADABLE')
         meta, full = parts
@@ -150,11 +150,11 @@ def pinned_git_tree_check(src: Path):
         if fp.is_symlink() or not fp.is_file():
             raise QueueFailure('PINNED_TREE_SOURCE_MISSING_OR_SYMLINK', rel)
         raw = fp.read_bytes()
-        actual = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\\0' + raw).hexdigest()
+        actual = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
         if actual != expected:
             raise QueueFailure('PINNED_TREE_SOURCE_BLOB_MISMATCH', rel)
-        digest.update((rel + '\\0' + expected + '\\0' +
-                       hashlib.sha256(raw).hexdigest() + '\\n').encode())
+        digest.update((rel + '\0' + expected + '\0' +
+                       hashlib.sha256(raw).hexdigest() + '\n').encode())
     return {'verified_python_files': len(tracked),
             'manifest': 'PINNED_GIT_TREE',
             'sha256': digest.hexdigest(),
