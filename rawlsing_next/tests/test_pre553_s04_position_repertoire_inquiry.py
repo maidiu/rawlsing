@@ -19,6 +19,14 @@ from rawlsing_next.tests.test_pre553_s04_determinicity_cycle import _advance
 from rawlsing_next.tests.test_pre553_s04_partially_identified_repertoire import (
     _observed, _bridge, _ask,
 )
+from rawlsing_next.tests.test_pre553_s04_uncertain_repertoire import (
+    _setup as _uncertain_setup, _invoke as _uncertain_invoke,
+)
+from rawlsing_next.pre553_s04_partially_identified_repertoire import (
+    PartiallyIdentifiedRepertoire, PartialIdentificationError,
+)
+from rawlsing_next.pre553_empirical_objects import canonical_json, semantic_hash
+
 
 
 def _ready(tag="haqqq019"):
@@ -133,7 +141,13 @@ def test_f6_common_frame_constraints_remain_separate_and_not_sampled():
     relation = _ask(a, b, reg, auth)
     out = _inquire(cycle, workspace, request=_request(f6_events=(True, True)),
                    f6_relation=relation,
-                   independently_pinned_f6_ref=relation.ref).material()
+                   independently_pinned_f6_ref=relation.ref,
+                   f6_replay_inputs={
+                       "left": a, "right": b,
+                       "left_event_cell": "1", "right_event_cell": "1",
+                       "authority_registry": reg,
+                       "common_frame_authority_ref": auth,
+                   }).material()
     assert out["forward"]["raw_selected_full_case_n"] == 8
     assert out["f6"]["constraint"]["interval"] == {
         "lower": {"numerator": 3, "denominator": 10},
@@ -168,3 +182,92 @@ def test_storage_budget_is_a_typed_hold_not_truncated_source_evidence():
     _, cycle, workspace = _ready("haqqq019-retention")
     with pytest.raises(PositionRepertoireInquiryError, match="RESULT_STORAGE_BUDGET_HOLD"):
         _inquire(cycle, workspace, request=_request(max_result_bytes=350))
+
+
+def test_q019_f6_finite_frame_replay_cannot_be_skipped_or_self_rehashed():
+    _, cycle, workspace = _ready("q019-cold-finite-replay")
+    a, b = _observed("q019-a", 7), _observed("q019-b", 6)
+    reg, auth = _bridge(a, b)
+    relation = _ask(a, b, reg, auth)
+    with pytest.raises(PartialIdentificationError, match="F6_EXACT_SOURCE_AND_AUTHORITY_REPLAY_REQUIRED"):
+        _inquire(cycle, workspace, request=_request(f6_events=(True, True)),
+                 f6_relation=relation, independently_pinned_f6_ref=relation.ref)
+    m = relation.material()
+    m["bounds"]["A_AND_B"]["lower"] = {"numerator": 0, "denominator": 1}
+    forged = PartiallyIdentifiedRepertoire(canonical_json(m), semantic_hash(m))
+    with pytest.raises(PartialIdentificationError, match="F6_SOURCE_AND_ISSUER_REPLAY_MISMATCH"):
+        _inquire(cycle, workspace, request=_request(f6_events=(True, True)),
+                 f6_relation=forged, independently_pinned_f6_ref=forged.ref,
+                 f6_replay_inputs={
+                     "left": a, "right": b,
+                     "left_event_cell": "1", "right_event_cell": "1",
+                     "authority_registry": reg,
+                     "common_frame_authority_ref": auth,
+                 })
+
+
+def test_q020_existing_inquiry_reads_issued_interval_f6_without_a_fake_joint():
+    _, cycle, workspace = _ready("q020-inquiry-interval")
+    fixture = _uncertain_setup(a_n=10, b_n=13)
+    relation = _uncertain_invoke(fixture)
+    a, b, reg, la, ra, bridge = fixture
+    answer = _inquire(
+        cycle, workspace,
+        request=_request(f6_events=(True, True)),
+        f6_uncertain_relation=relation,
+        independently_pinned_f6_uncertain_ref=relation.ref,
+        f6_uncertain_replay_inputs={
+            "left": a, "right": b,
+            "left_event_cell": "1", "right_event_cell": "1",
+            "registry": reg,
+            "left_interval_authority": la,
+            "right_interval_authority": ra,
+            "common_population_authority": bridge,
+        },
+    ).material()
+    assert answer["state"] == "INQUIRY_ASSEMBLED_SEPARATE_AUTHORITY_LANES"
+    assert answer["f6"]["source_owner"] == "EXISTING_S04_F6_ISSUED_POPULATION_INTERVALS"
+    assert answer["f6"]["constraint"]["interval"] == {
+        "lower": {"numerator": 1, "denominator": 10},
+        "upper": {"numerator": 7, "denominator": 10},
+    }
+    assert answer["f6"]["constraint"]["selected_coupling"] is None
+    assert answer["f6"]["constraint"]["person_or_respondent_created"] is False
+    assert answer["f6"]["not_merged_into_s04_respondent_joint"]
+    assert answer["joint"]["source_fact_ref"] == answer["forward"]["source_fact_ref"]
+
+
+def test_q020_f6_distinct_estimands_no_cross_lane_and_revoked_issuer_no_probability():
+    _, cycle, workspace = _ready("q020-cross-lane")
+    a, b = _observed("q020-a", 7), _observed("q020-b", 6)
+    reg, auth = _bridge(a, b)
+    finite = _ask(a, b, reg, auth)
+    fixture = _uncertain_setup()
+    issued = _uncertain_invoke(fixture)
+    with pytest.raises(PositionRepertoireInquiryError, match="F6_DISTINCT_ESTIMANDS"):
+        _inquire(
+            cycle, workspace, request=_request(f6_events=(True, True)),
+            f6_relation=finite, independently_pinned_f6_ref=finite.ref,
+            f6_uncertain_relation=issued,
+            independently_pinned_f6_uncertain_ref=issued.ref,
+        )
+    ua, ub, ureg, la, ra, bridge = fixture
+    with pytest.raises(PositionRepertoireInquiryError, match="F6_UNCERTAIN_EXACT_REPLAY_INPUTS_REQUIRED"):
+        _inquire(
+            cycle, workspace, request=_request(f6_events=(True, True)),
+            f6_uncertain_relation=issued, independently_pinned_f6_uncertain_ref=issued.ref,
+        )
+    from rawlsing_next.pre553_s04_uncertain_repertoire import UncertainRepertoireError
+    with pytest.raises(UncertainRepertoireError, match="UNCERTAIN_REPERTOIRE_SOURCE_REPLAY_FAILED"):
+        _inquire(
+            cycle, workspace, request=_request(f6_events=(True, True)),
+            f6_uncertain_relation=issued, independently_pinned_f6_uncertain_ref=issued.ref,
+            f6_uncertain_replay_inputs={
+                "left": ua, "right": ub,
+                "left_event_cell": "1", "right_event_cell": "1",
+                "registry": ureg,
+                "left_interval_authority": la,
+                "right_interval_authority": ra,
+                "common_population_authority": None,
+            },
+        )
