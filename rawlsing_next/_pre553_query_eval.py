@@ -730,7 +730,12 @@ def _evaluate_index_group(
 
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
-        used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+        try:
+            used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+        except Pre553AuthorityError:
+            if index.universe_use is None:
+                raise
+            used_auth.extend(index.universe_use.authorize(index.universe, query, predicate))
         exact_risk_set_contract = None
         if runtime_binding is not None:
             exact_risk_set_contract = (

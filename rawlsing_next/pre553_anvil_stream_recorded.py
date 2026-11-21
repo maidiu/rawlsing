@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Mapping
+from typing import Any, Mapping
 import json
 import struct
 
@@ -43,6 +43,43 @@ from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
 
 class RecordedResponseError(ValueError):
     """The held recorded-response operation cannot be lawfully materialized."""
+
+@dataclass(frozen=True)
+class RecordedUniverseUse:
+    """Operation-scoped, exact current use of a historical DEFER universe.
+
+    This is not an authority replacement: it returns both the historical DEFER
+    identity and the positive owner-use identity for native proof/replay.
+    """
+
+    historical_ref: AuthorityRef
+    positive_ref: AuthorityRef
+    owner_decision_sha256: str
+    operation_document_sha256: str
+    source_root: str
+    release_root: str
+    universe_root: str
+    replay_root: str
+    question_ref: ExactRef
+    query_ref: ExactRef
+    predicate_ref: ExactRef
+    scope: str
+    current_verifier: Any | None = None
+
+    def authorize(self, universe, query, predicate) -> tuple[AuthorityRef, AuthorityRef]:
+        if exact_ref(universe.ref) != _stream_exact_universe(self.universe_root):
+            raise RecordedResponseError("universe use is bound to a different universe")
+        refs = tuple(authority_ref(ref, "universe authority") for ref in universe.authority_snapshot_refs)
+        if self.historical_ref not in refs:
+            raise RecordedResponseError("historical DEFER identity is absent from universe")
+        if query.ref != exact_ref(self.query_ref) or predicate.ref != exact_ref(self.predicate_ref):
+            raise RecordedResponseError("universe use query/predicate identity mismatch")
+        if self.scope != "Q103_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY":
+            raise RecordedResponseError("universe use scope mismatch")
+        if self.current_verifier is not None and self.current_verifier() is not True:
+            raise RecordedResponseError("universe use current authority refused")
+        return self.historical_ref, self.positive_ref
+
 
 
 _CODEC = R5TypedValueCodec()

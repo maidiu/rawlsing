@@ -8,6 +8,7 @@ existing native I03 path.  No original estate is touched by the author run.
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import hashlib
 import json
 from pathlib import Path
@@ -17,6 +18,7 @@ from rawlsing_next.pre553_anvil_stream_native_i03 import VerifiedAnvilStreamEsta
 from rawlsing_next.pre553_anvil_stream_issuance import issue_and_execute_stream_i03
 from rawlsing_next.pre553_anvil_stream_recorded import (
     HeldRecordedOperation,
+    RecordedUniverseUse,
     build_recorded_operation,
 )
 from rawlsing_next.pre553_anvil_stream_carrier_qualification import HeldStreamPins
@@ -51,6 +53,8 @@ def main() -> int:
     ap.add_argument("--stream-root", type=Path, required=True)
     ap.add_argument("--release-path", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--universe-use-decision", type=Path, required=True)
+    ap.add_argument("--universe-closure", type=Path, required=True)
     args = ap.parse_args()
     owner_bytes = args.owner_decision.read_bytes()
     owner_sha = hashlib.sha256(owner_bytes).hexdigest()
@@ -130,6 +134,36 @@ def main() -> int:
     decision, plan, missing = build_recorded_operation(
         estate=estate, operation=operation, question_ref=operation.question_ref,
     )
+    use_bytes = args.universe_use_decision.read_bytes()
+    use_sha = hashlib.sha256(use_bytes).hexdigest()
+    use_doc = json.loads(use_bytes)
+    closure = json.loads(args.universe_closure.read_text())
+    if len(closure) != 1 or closure[0]["state"] != "DEFER":
+        raise SystemExit("HISTORICAL_UNIVERSE_DEFER_MISSING")
+    h = closure[0]["ref"].split("|")
+    historical = AuthorityRef(h[0], h[1], h[2])
+    def use_current():
+        return (
+            owner_current()
+            and hashlib.sha256(args.universe_use_decision.read_bytes()).hexdigest() == use_sha
+            and use_sha == "972a56f2f46ec0d5f30d13ae62198df4988755f54016ac65892a288d4848f212"
+        )
+    universe_use = RecordedUniverseUse(
+        historical_ref=historical,
+        positive_ref=AuthorityRef("Q006_RECORDED_UNIVERSE_USE", "Q006-USE-" + use_sha[:24], use_sha),
+        owner_decision_sha256=use_sha,
+        operation_document_sha256=hashlib.sha256(args.operation_json.read_bytes()).hexdigest(),
+        source_root=operation.source_root,
+        release_root=operation.release_root,
+        universe_root=operation.universe_root,
+        replay_root=operation.replay_root,
+        question_ref=operation.question_ref,
+        query_ref=decision.query.ref,
+        predicate_ref=decision.predicate.ref,
+        scope=use_doc["scope"],
+        current_verifier=use_current,
+    )
+    plan = dataclasses.replace(plan, universe_use=universe_use)
     def verify_decision(candidate):
         return (
             owner_current()

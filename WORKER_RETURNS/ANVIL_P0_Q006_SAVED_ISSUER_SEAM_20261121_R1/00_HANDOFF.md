@@ -164,3 +164,16 @@ adopted source-universe/source-semantics successor resolver bound to the
 historical DEFER snapshot, exact source/release/universe/replay roots and the
 q103 recorded-only operation. The smallest owner decision is to issue/adopt one
 current positive source-universe successor for that exact scope.
+
+## Scoped historical DEFER universe use
+
+`RecordedUniverseUse` is attached only to the recorded-operation plan and is
+consulted at the native `index.universe` authorization points in
+`_pre553_query_eval`, not at the early query-only fitness block. Ordinary
+universe validation remains strict; historical DEFER is never rewritten.
+
+The sourcefree full native proof is `UNIVERSE_USE.out`: `SUPPORTED`, repeat
+replay equal, both historical and positive identities retained, missing/wrong
+history/wrong query negatives refused. `REAL_UNIVERSE_USE.out` is a real
+metadata-only preflight over the stored DEFER and issued owner decision:
+`PASS`, no respondent bodies read, no index built, no private IDs published.

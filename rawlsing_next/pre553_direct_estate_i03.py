@@ -633,6 +633,7 @@ class DirectEstateI03Session:
             # The dict preserves their saved physical insertion order.
             native_verified_physical_respondent_order=True,
             routing_lookup=self._routing_facts,
+            universe_use=(self._recorded_plan.universe_use if self._recorded_plan is not None else None),
         )
         return ((universe_ref, index),)
 

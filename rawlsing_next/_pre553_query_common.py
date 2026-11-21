@@ -175,6 +175,7 @@ class _ReleaseIndex:
     # Its respondent mapping was inserted in saved physical row-group order.
     # Legacy C11 and other indexes retain canonical ref-key iteration.
     native_verified_physical_respondent_order: bool = False
+    universe_use: Any | None = None
 
 
 @dataclass(frozen=True)

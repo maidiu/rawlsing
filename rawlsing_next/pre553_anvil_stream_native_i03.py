@@ -44,6 +44,7 @@ class RecordedRoutingPlan:
     risk_set_ref: ExactRef
     facts_by_key: Mapping[tuple[str, str, str], tuple[Any, ...]]
     event_transforms: Mapping[str, Any]
+    universe_use: Any | None = None
     _token: Any = None
 
     def __post_init__(self) -> None:
