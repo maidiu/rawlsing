@@ -1,0 +1,28 @@
+name: PYAT-SPASITYEL 42-KUDA author-side adversarial source court
+on:
+  push:
+    branches:
+      - agent/pyat-g4-one-time-complete-reconciliation-20261120-r1
+permissions:
+  contents: read
+jobs:
+  author-source-court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Exact same HEAD and bounded 42-KUDA source evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/pyat_spasityel_source_court.py
+      - name: Preserve exact source verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-spasityel-g4-author-source-court
+          path: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/pyat_spasityel_source_court_result.json
+          if-no-files-found: warn
