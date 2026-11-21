@@ -259,6 +259,9 @@ class InstitutionalContrastMulchR24(unittest.TestCase):
     def test_world_owned_hall_restriction_can_make_live_personal_contrast(self):
         a=actor_with_history()
         world=blank_world()
+        # The actor's earlier personally received public outcome was at
+        # clock 2; the later world cannot start back at clock 0.
+        world['clock']=3
         world['positions']['mother']='hall'
         outcome=resolve(world,{'mother':a},
                         Attempt(actor='mother',action='OPEN_HALL'))
