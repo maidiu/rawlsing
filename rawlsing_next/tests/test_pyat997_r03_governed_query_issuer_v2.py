@@ -313,3 +313,93 @@ def test_v2_join_refuses_manifest_query_not_issued_by_v2(tmp_path):
             runner=runner, issuer_v2=issue,
         )
     assert runner.receipts == ()
+
+
+def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
+    tmp_path, monkeypatch,
+):
+    """Actual original U/E_pre issuer -> saved Batch -> native I03 -> S04.
+
+    NativeWorkloadResult is the preexisting output owner; no new result store,
+    fabricated role, second native query or scientific permission is added.
+    """
+    _, _, initial, v1, _, _ = s1e._full(tmp_path / "r03-v2-normal-prepared")
+    issue = _issue_compiled_governed_queries_v2(v1)
+    workload = issue.issued.workload
+    assert workload.requests
+    from rawlsing_next.pre553_issued_workload import execute_issued_workload
+    from rawlsing_next.pre553_s04_first_consumer import receive_s04_first_consumer
+    from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+
+    original_build = DirectEstateI03Session._build
+    index_builds = []
+
+    def counted_build(self):
+        index_builds.append(1)
+        return original_build(self)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(DirectEstateI03Session, "_build", counted_build)
+        result = execute_issued_workload(
+            workload, TestOnlyDecisionResolver(issue.issued.record),
+            saved_admission_factory=lambda: _v2_admission(initial, workload.catalog),
+            host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+            allow_test_only=True, reuse_prepared_saved_session=True,
+        )
+    assert len(index_builds) == 1
+    assert result.summary.full_coverage
+    assert result.outputs_by_unit
+    observed_query_count = 0
+    for unit in result.manifest.units:
+        if unit.job_kind != "QUERY":
+            continue
+        native = result.outputs_by_unit[unit.unit_hash]
+        query = workload.catalog.resolve_query_exact(unit.job_ref)
+        s04 = receive_s04_first_consumer(query=query, execution=native)
+        assert s04.execution is native
+        assert s04.knowledge.material()["fact_ref"] == native.facts[0].ref.as_dict()
+        assert s04.receipt.material()["producer_operation"] == (
+            "ONE_PREEXISTING_I03_RESULT__NO_ADDITIONAL_QUERY"
+        )
+        observed_query_count += 1
+    assert observed_query_count == len(workload.requests)
+
+    # Same original issuer, release and query: prepared and default paths
+    # must return identical empirical fact/receipt refs.
+    baseline = execute_issued_workload(
+        workload, TestOnlyDecisionResolver(issue.issued.record),
+        saved_admission_factory=lambda: _v2_admission(initial, workload.catalog),
+        host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+        allow_test_only=True,
+    )
+    def refs(result):
+        return {
+            key: (tuple(f.ref for f in value.facts) if hasattr(value, "facts")
+                  else tuple(x.ref for x in value.receipts))
+            for key, value in result.outputs_by_unit.items()
+        }
+    assert refs(result) == refs(baseline)
+
+
+def test_r03_v2_prepared_saved_flag_refuses_unbacked_or_truthy_grants(tmp_path):
+    _, _, _, v1, _, _ = s1e._full(tmp_path / "r03-v2-no-fake-prepared")
+    issue = _issue_compiled_governed_queries_v2(v1)
+    from rawlsing_next.pre553_issued_workload import (
+        WorkloadAdmissionError, execute_issued_workload,
+    )
+    with pytest.raises(WorkloadAdmissionError, match="PREPARED_SAVED_REQUIRES_SAVED_ADMISSION"):
+        execute_issued_workload(
+            issue.issued.workload, TestOnlyDecisionResolver(issue.issued.record),
+            source_factory=lambda _: (_ for _ in ()).throw(
+                AssertionError("MUST_NOT_OPEN_SOURCE")
+            ),
+            host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+            allow_test_only=True, reuse_prepared_saved_session=True,
+        )
+    with pytest.raises(WorkloadAdmissionError, match="EXACT_PREPARED_SAVED_OPT_IN_REQUIRED"):
+        execute_issued_workload(
+            issue.issued.workload, TestOnlyDecisionResolver(issue.issued.record),
+            saved_admission_factory=lambda: None,
+            host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
+            allow_test_only=True, reuse_prepared_saved_session=1,
+        )
