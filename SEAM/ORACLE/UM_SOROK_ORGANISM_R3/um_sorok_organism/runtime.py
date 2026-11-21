@@ -861,5 +861,17 @@ class ConstitutiveRuntime:
         _,actor=self.ledger.actor(actor_id)
         return render_blind_interview(actor,instrument,self.semantic,world)
 
+    def blind_interview_evidenced(self,actor_id,question_contract):
+        """No respondent answer keys; ungrounded model proposals are refused.
+
+        The qualified PYAT instrument and blind success court are still
+        separate source/owner obligations, not inferred from this interface.
+        """
+        from .blind_parent_probes import blind_operational_interview
+        _,world=self.ledger.world(self.world_id)
+        _,actor=self.ledger.actor(actor_id)
+        return blind_operational_interview(
+            actor,question_contract,self.semantic,world)
+
     def verify(self):return self.ledger.verify_chain()
     def close(self):self.ledger.close()
