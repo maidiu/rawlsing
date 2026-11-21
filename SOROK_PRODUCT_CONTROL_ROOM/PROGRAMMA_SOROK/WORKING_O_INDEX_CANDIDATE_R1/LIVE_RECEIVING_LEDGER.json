@@ -25,6 +25,22 @@
   ],
   "event_history": [
     {
+      "id": "SORACLE-RED-018D",
+      "pr": 1234,
+      "immutable_sha": "018d3025f0829d7b24d5ad108abf0764d3830b39",
+      "event": "EXECUTED_AT_SHA_RED__REVISE_EXACT_DEFECT",
+      "interpreter": "Python 3.11.3",
+      "test": "compileall PASS; full unittest 549 ran 5 FAIL + 22 ERROR normal and -O; pytest 522 PASS 27 FAIL +37 subtests; Nadia 14-day longitudinal demo RED CURRENT_TRIAL_NOT_MATURE_MOTIVE; no two-history SQLite results",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058200406",
+      "inherited_R17_blobs": {
+        "storage": "75087ed57c3a39d82b9ded5ebf8123f949e54c21",
+        "source_preflight_test": "b25f93b2fd81fa814bfeee9be843d7279cf0b31b"
+      },
+      "status_ceiling": "REVISE_EXACT_DEFECT_HOLD__HISTORICAL",
+      "replaced_by": "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8",
+      "protected_received": false
+    },
+    {
       "id": "SORACLE-RED-2553",
       "pr": 1234,
       "immutable_sha": "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8",
@@ -40,7 +56,38 @@
       "event": "EXECUTED_AT_SHA_ACCEPT_SCOPED_SOURCEFREE",
       "test": "Python 3.11.3 551 unittest normal/-O, 551 pytest +37 subtests PASS, 14-day Nadia 2-history PASS",
       "evidence": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997",
-      "protected_received": false
+      "protected_received": false,
+      "interpreter": "Python 3.11.3; clean detached worktree",
+      "full_test_verdict": {
+        "compileall": "PASS",
+        "focused_normal": "146 PASS",
+        "focused_optimized": "71 PASS",
+        "full_normal": "551 PASS",
+        "full_optimized": "551 PASS",
+        "pytest": "551 PASS + 37 subtests",
+        "longitudinal_demo": "PASS 14 days / 12 beats"
+      },
+      "nadia_cold_history": {
+        "spoken": {
+          "father": "SPEAK",
+          "nadia": "INSPECT_PERFORMED",
+          "event_count": 17,
+          "chain_hash": "2bd88d7f497bcc5cd32eddd99acab1e03486dfe1810e4ad130e862c2bb024516",
+          "sqlite_cold_reopen": "VALID",
+          "seals": 2
+        },
+        "unspoken": {
+          "father": "REST",
+          "nadia": "INSPECT_PARTIAL",
+          "event_count": 17,
+          "chain_hash": "e791512755ec2392cd133c49de4bb8cefe19b4e64a58a4d8eca85c6f30232e5e",
+          "sqlite_cold_reopen": "VALID",
+          "seals": 2
+        },
+        "changed_from": "2553e1d because role/age, actual current-sign eligibility, and separate care-acquisition changes altered committed envelopes"
+      },
+      "first_consumer_negative_probes": "Genuine bell/performed_speech reencounter accepted; synthetic coactor_present/material_object_present/public_notice_visible refused. Later caregiver orientation requires distinct subsequent encounter; malformed R17 source preflight and forged trial/world/source refused; no false childhood self-knowledge.",
+      "independence_ceiling": "ACCEPT_SCOPED_LOCAL_SOURCEFREE; not credential-independent G5; not native PYAT respondent science, actor/source grants, adult-person fidelity or protected PROGRAMMA receiving"
     },
     {
       "id": "REMONT-R17-HEAD-SUCCESSION",
@@ -4962,7 +5009,7 @@
       "merged": false,
       "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-21",
       "source_provenance": "https://github.com/maidiu/rawlsing/tree/8d1ff8bbb75b359cc7bd3044b385323600c70b88",
-      "material_functionality_summary": "[SORACLE × REMONT · EXECUTED 551/551 SCOPED PASS · RECEIVING HELD] R3/R18 continuing organism",
+      "material_functionality_summary": "Joined SORACLE R3 × REMONT R18 sourcefree Nadia history circuit; 14-day father SPEAK vs REST yields distinct materially valid actor-inspection and 17-event cold-world histories; nine previously observed RED classes repaired at executed 8d1 source",
       "description_first_claim": "## CURRENT POST-EXECUTION STATUS — November 21, 2026 (this section governs historical author-only statuses below)\n\n**EXECUTED_AT_SHA:** `8d1ff8bbb75b359cc7bd3044b385323600c70b88` (Python 3.11.3, clean detached worktree). [SOROK REMONT/Opencode source-pinned execution and hostile probes](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997): compileall PASS; focused 146/146 normal and 71/71 optimized; full unittest **551/551 normal**, **551/",
       "test": {
         "executed_sha": "8d1ff8bbb75b359cc7bd3044b385323600c70b88",
@@ -5005,7 +5052,7 @@
       ],
       "disposition": "INDEPENDENTLY_REVIEWED_SCOPED_UNMERGED__NATIVE_PROTECTED_HELD",
       "next_receiving_owner": "SOROK HQ protected integrator + distinct empowered G5/owner review",
-      "smallest_next_action": "Preserve exact 8d1 sourcefree grade and user pre-encounter policy; qualified integration with protected parents/P2-P6 only after owner review, no unnecessary rerun"
+      "smallest_next_action": "Preserve 018d/2553 RED and exact 8d1 scoped receiving; do not rerun unchanged 551 tests for paperwork. Qualified owner tests protected P2-P6/parents interface and independent G5/source/actor boundaries if seeking protected admission."
     },
     {
       "id": "PR-1236",
