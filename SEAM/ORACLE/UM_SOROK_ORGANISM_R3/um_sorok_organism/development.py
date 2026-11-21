@@ -448,6 +448,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                      'skill_mastery_not_inferred':True,
                      'original_attempt_purpose_not_rewritten':True,
                      'grade':GRADE}
+            # A specifically experienced responder becomes an *addressed*
+            # practical possibility, never an assumed beneficiary or consent.
+            if end.get('addressed_party_ref') is not None:
+                project['addressed_party_ref']=end['addressed_party_ref']
+                project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
             actor['projects'].append(project)
             end.setdefault('subsequent_takeup',[]).append({
                 'event':event_ref,'experience_ref':experience['ref'],
