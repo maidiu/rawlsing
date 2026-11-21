@@ -33,6 +33,21 @@ jobs:
         run: |
           python -m unittest -v tests.test_conditional_joint_practice_p015
           python -O -m unittest -v tests.test_conditional_joint_practice_p015
+      - name: R2 parent psyche, end-genesis and bound caregiver court
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_nadia_backlog_mulch_r2
+          python -O -m unittest -v tests.test_nadia_backlog_mulch_r2
+      - name: R2 costly parent commitment, real first consumer
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_care_commitment_genesis_r2
+          python -O -m unittest -v tests.test_care_commitment_genesis_r2
+      - name: R2 actual divergent continuing Nadias
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_nadia_longitudinal_backlog_r2
+          python -O -m unittest -v tests.test_nadia_longitudinal_backlog_r2
       - name: Original inherited organism suite
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -v
