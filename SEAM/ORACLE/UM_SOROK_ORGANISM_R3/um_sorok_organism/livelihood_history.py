@@ -126,6 +126,9 @@ def possible_recurrent_work_orientation(actor, experience, event_ref):
                 or type(row.get("event_ref")) is not str
                 or row["event_ref"] == event_ref
                 or type(row.get("event_clock")) is not int
+                or row.get("id") != stable_id("power_exercise", {
+                    "actor": actor["id"], "world_event": row["event_ref"],
+                    "operation": "WORK"})
                 or row["event_clock"] >= clock
                 or row.get("attempt_status_analyst_receipt") not in
                     ("PERFORMED", "PARTIAL", "BLOCKED")
