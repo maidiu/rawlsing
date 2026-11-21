@@ -68,7 +68,7 @@ Exactly ten **review decision families** are currently identified. A family is n
 
 **What a competent independent reviewer would have to decide:** Nonauthor independent exact-source and same-HEAD negative/positive first-consumer review; true ancestry and diverged latest #1253; GF1 generic vs Q86; separate-source F6 vs same-frame S04; source/clock E05; R157 parity test-only; actual GT0 stages. Author 173-pass CI is NOT G5.
 
-**Status:** READY_TO_LOG_NOT_DISPATCHED. **Dispatch:** NOT DISPATCHED. This log does not independently review or receive anything.
+**Status:** READY_FOR_DISTINCT_NONAUTHOR_REVIEW__HANDOFF_POSTED__NO_REVIEWER_ASSIGNED. **Handoff:** [scope-tight PR #1267 comment 7066671932](https://github.com/maidiu/rawlsing/pull/1267#issuecomment-7066671932). **Dispatch/acceptance:** No named distinct reviewer assigned; no independent review submitted, no G5 or receiving. This log does not independently review or receive anything.
 
 ### IR-02 — P0 physical/native joined machine and cost
 
@@ -215,4 +215,13 @@ Exactly ten **review decision families** are currently identified. A family is n
 - **IR-03/04/05/06/07/08/09/10** remain in the original queue: B49 source ownership; P07 exact version→release clock; I01 old wrapper retired pending qualified consumer; S2-F/G cold learner; FF science; B16 archival custody hold; SOROK owner; and G4 + paired protected receiving after independent actor proof. None can be silently self-approved.
 
 **Disposition:** scoped author adverse SOURCE_EVIDENCE_EXECUTED, two corrections to prior overstatements, **zero independent reviews submitted**, zero feature-code or protected progress merges. [PR #1267](https://github.com/maidiu/rawlsing/pull/1267) remains a separate open draft unmerged sourcefree candidate at 102b274e3f99e744c9cfc91aa6f044508c24127a with [author CI 173 PASS](https://github.com/maidiu/rawlsing/actions/runs/44922811690). Review authorization requires a distinct qualified reviewer and lease. **HQ_CURRENTNESS_HOLD** on independent G5/rights/protected receiving.
+
+
+## 6. R18 — ready-to-review handoff *posted*, no independent reviewer assigned (2026-11-21)
+
+**Same existing review docket, not a second tracker or a fresh science/code issuer.** Following R17 exact-source author adversarial court (30/30 and two adverse qualified findings), posted a **single scope-tight receiving handoff on existing draft [PR #1267 comment 7066671932](https://github.com/maidiu/rawlsing/pull/1267#issuecomment-7066671932)** for **IR-01A through IR-01E only**: FF01/C→D exact Q86; experimental GF1 generic pair first reader; source-separated F6M/F6P; E05 R112 **partial** source/clock protection; R157/GT0 **test-only** negatives. Candidate code is frozen at `102b274e3f99e744c9cfc91aa6f044508c24127a`, 173 author-CI passes. R17 G4 guide/source evidence is `d81548644662228651ae70e1f542d950464452df`, independently different branch/source. **A posted handoff is not an assigned or executing independent reviewer**, and cannot award G5 to this author.
+
+**Evidence hierarchy:** exact source+author CI (performed); independently competent nonauthor verdict (NOT PERFORMED); scientific/original-source/actor grants (NOT ISSUED); matched P0 economical persistent C11 1/10/100 and ≤6GiB (NOT PROVED); protected source + paired PYAT progress acceptance (NOT RECEIVED). KUDA-076 nonpooled N9C remains distinct HELD; B16 packed driver remains invalid at source cut and historical 82 negative outcomes are not positive science. No new reviewer, code branch, parallel C11 storage engine, REMONT queue or protected writer lease was manufactured.
+
+**Next decision:** competent Codex HQ reviewer should read only the linked PR comment, exact #1267 diff, relevant original KUDA source and selected consumer; run positive/negative tests and issue distinct **ACCEPT_SCOPED/REVISE/HOLD** by IR-01A–E at immutable head. Any accepted features still require authorized G4 and paired protected receiving after independent evidence; otherwise record exact defects here. IR-02–IR-10 remain one existing conditional docket and are not automatically separate review commissions.
 
