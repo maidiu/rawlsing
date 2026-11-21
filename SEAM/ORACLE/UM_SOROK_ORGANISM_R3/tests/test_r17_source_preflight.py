@@ -135,6 +135,25 @@ class R17SourceCustodyPreflightHostile(unittest.TestCase):
             finally:
                 ledger.close()
 
+    def test_malformed_event_envelope_is_typed_conflict(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
+            try:
+                ledger.conn.execute("UPDATE events SET payload='{}' WHERE seq=1")
+                with self.assertRaises(AssertionError):
+                    ledger.verify_chain()
+                with self.assertRaisesRegex(Conflict, 'SOURCE_HISTORY_INVALID'):
+                    ledger.source('seed')
+                version, world = ledger.world()
+                with self.assertRaisesRegex(Conflict, 'SOURCE_HISTORY_INVALID'):
+                    ledger.commit('w1', version, world, {}, {}, 'OBJECTIVE_CUE', None,
+                                  {'event': 'must not append'})
+                with self.assertRaisesRegex(Conflict, 'SOURCE_HISTORY_INVALID'):
+                    ledger.seal_source('late', 'TEST', {'new': 'sealed'})
+                self.assertEqual(len(ledger.events()), 2)
+            finally:
+                ledger.close()
+
     def test_valid_source_read_and_append_still_work(self):
         with tempfile.TemporaryDirectory() as d:
             ledger = ledger_with_source_and_later_event(Path(d)/'research.sqlite')
