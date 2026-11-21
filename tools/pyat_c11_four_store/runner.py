@@ -68,6 +68,15 @@ class EventLogger:
                    arm=self.arm, stage=event.get("stage","event"),
                    family=event.get("family",""), completed=event.get("completed",""),
                    elapsed_s=event["elapsed_s"])
+        if "cpu_percent_one_core" in event:
+            # Live terminal telemetry as well as durable JSONL fields.
+            msg += (" cpu={:.1f}%/core host={:.1f}%"
+                    " ({:d} logical CPUs) rss={:.2f}GiB").format(
+                event["cpu_percent_one_core"],
+                event["cpu_percent_host_capacity"],
+                event["logical_cpus"],
+                event.get("rss_bytes",0)/(1024**3),
+            )
         print(msg, flush=True)
     def close(self):
         self._fh.close()
