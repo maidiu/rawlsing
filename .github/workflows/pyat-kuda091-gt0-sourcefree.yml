@@ -1,0 +1,33 @@
+name: PYAT KUDA091 real-stage GT0 hostile sourcefree court
+on:
+  push:
+    branches:
+      - agent/pyat-kuda091-gt0-inherited-hostile-falsifiers-20261121
+permissions:
+  contents: read
+jobs:
+  sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install focused test requirements
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Exact HEAD real-stage hostile tests
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p kuda091-proof
+          python -m pytest -q -o addopts='' --junitxml=kuda091-proof/junit.xml \
+            rawlsing_next/tests/test_kuda091_gt0_real_spine_hostiles.py \
+            rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py \
+            rawlsing_next/tests/test_wsc_gt0_protocol.py
+      - name: Persist test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuda091-gt0-court
+          path: kuda091-proof/
+          if-no-files-found: error
