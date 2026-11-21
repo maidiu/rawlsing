@@ -598,3 +598,20 @@ No new development branch or theory file; this is additive provenance in the alr
 | SCE-050 | Groceries task-entry affordance reveal | §4 | SOURCE_PROBE_REPRESENTED__AUTHOR_CLAIMED_NOT_RUN |
 
 **No-drop negative controls represented:** Every scenario remains recoverable as source with its own setup, required contrast and tests, even where the active theory derives several from one common mechanism (for example: SCE-025/038/039/044 from actor autonomy and non-obligatory response, and SCE-026/047/048/049/050 from user agency with task-grain and nonmoral delegation). No code was run against these scenarios in this theory round.
+
+
+### UX-R10 / user correction — the philosophy must travel *inside* the mechanics
+
+**Controlling live user wording (November 21, 2026):**
+
+> "are you keeping the psychology/philosophy present in the fusion though? it's part of it man; it's not just mechanics. the mechanics are chosen because they are generative of user-formation and reflective of the Real, according to the theology/philosophy/sociology/psychology of RAWLSING"
+>
+> "it can't just be mechanics, because then you don't have the juice that they are for traveling with your attempted articulation"
+
+**Source drawn:** \`SOROK_PRODUCT_CONTROL_ROOM/01_PRODUCT_CHARTER.md\`, \`24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md\`, \`25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md\`, \`dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/01_INTERACTION_CONSTITUTION_R1.md\` §14 “Spiritual implication,” and \`dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/03_TENSIONS_AND_HOSTILE_TESTS_R1.md\` at exact historical source cut \`a4211c3ec77e8269097601fe9a3dce2745395ac0\`.
+
+**Dialectical correction:** An UX theory which successfully derives the action grammar but leaves its sociology, theology, psychology and philosophy to a prefatory rationale is not fully fused. The mechanics of finite ATTEND, class-homologous portal, affordance entry, world consequence, actor opacity, changing social access, nonpossessive relationship and noncoercive exit were *chosen because* they instantiate conflicts between knowing and possessing, intention and effect, social formation and agency, care and domination, desire and recognition, practical commitment and human freedom. Their meaning changes when they are understood as possible sites of **actual user-formation through historically situated praxis**, not automated moral instruction.
+
+**New form of the whole:** The opening thesis and movements **3, 4, 5, 8, 10, 12, 21 and 23** carry these relations inside the UX claims. Founding \`contingency → humility → recognition → solidarity → responsibility\` remains a contestable ethical *horizon*, not a prescribed behavioral trajectory or guaranteed progression. Neighbor-love, tikkun-olam, image-bearing and kenotic attention are treated as generative and translatable theological/philosophical orientations; none is used to claim literal consciousness of fictional Nadia or to overrule materialist critique of institutional power. User-formation may deepen recognition, practical responsibility, self-reflection, solidarity, or contrary/ambivalent organization; live consequences remain nonteleological. SORACLE-CO still owns psychological genesis of Nadia. **This is NEIGHBOR-UX's responsibility for what the encounter can form in the real human**, not annexation of CO.
+
+**Grade and limit:** DIRECT_USER_CURRENT + EXPLICIT_PRIOR_THEORY_SOURCE + AUTHORIAL_DIALECTICAL_REARTICULATION. No code test, native psychology issuance, protected receiving or independent exhaustive semantic accreditation is claimed by this theory pass.
