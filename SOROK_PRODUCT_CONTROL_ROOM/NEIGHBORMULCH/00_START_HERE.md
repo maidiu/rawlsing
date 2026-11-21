@@ -1,6 +1,9 @@
 # NEIGHBORMULCH — START HERE
 ## Constitute the encounter without duplicating the person
 
+
+**ROUND EIGHT CONTINUITY REQUIREMENT (2026-11-21):** Reopen the [single whole active encounter theory](12_NEIGHBOR_THEORYMULCH_CURRENT.md), the [cumulative provenance ledger](13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md) and the [shared SORACLE-CO ↔ NEIGHBOR reciprocal bank and no-drop matrix](../../SEAM/NEIGHBORMULCH/01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md) **before any further theory-MULCH**. The bank contains principal-settled exact same-SES/cost-burden entry, persona-derived first-encounter occasion, and the preserved final Round Seven kernel. Future whole replacement must disposition its surviving propositions explicitly rather than claiming no-loss from Git ancestry alone. This remains candidate cross-agent research, not protected receiving.
+
 **21 November 2026 · Founding research/construction workspace · CANDIDATE, NOT PROTECTED-RECEIVED.**
 
 **Repository:** maidiu/rawlsing. **Base:** protected PRE-MAIN at `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This workspace is **not** a new PROGRAMMA, HQ accession, actor/world/empirical/scientific permission, product release, or independent review. Read current protected/live changes again on accession; these dated source cuts are an initial map, not eternal currentness.
