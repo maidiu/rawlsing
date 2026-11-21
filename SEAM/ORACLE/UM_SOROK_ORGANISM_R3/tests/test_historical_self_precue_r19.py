@@ -330,6 +330,71 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertFalse(any(c['kind']=='HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE'
                              for c in situated(mixed_actor).currents))
 
+
+    def test_mulch_r28_real_world_two_meals_offer_lived_orientation_to_semantic_owner(self):
+        """End-to-end actual R27 SQLite world -> lived body -> semantic proposal
+        -> R19 admission -> next pre-cue recruitment -> cold reopen.
+        Neither two co-occurrences nor a model selection prove a human motive.
+        """
+        parent={'source_ref':'R28_MEALS_FICTIONAL_PARENT',
+                'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'r28':'not_a_survey_observation'},
+                'fictional_seed':{'projects':[]}}
+        observed=[]
+        def callback(task,packet):
+            if task=='development':
+                if packet['actor']['id']=='mother':
+                    available=packet.get(
+                        'historically_possible_lived_directional_orientation',[])
+                    observed.append(deepcopy(available))
+                    if available:
+                        self.assertEqual(available[0]['orientation_mode'],'APPROACH')
+                        return {'task':task,'candidates':available}
+                return {'task':task,'candidates':[]}
+            if task=='expression':
+                return {'task':task,'surface':'The household continues.'}
+            if task=='actor_attempt':
+                return {'task':task,'action':'WAIT'}
+            raise AssertionError(task)
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'historically_emergent_direction.sqlite3')
+            rt=ConstitutiveRuntime(db,semantic=ValidatingSemanticService(
+                CallbackLLMProvider(callback)))
+            try:
+                rt.initialize([('mother','Mother',parent),
+                               ('father','Father',parent)])
+                before=rt.situated('mother')
+                self.assertFalse(any(
+                    c.get('source_family')=='NONDECLARATIVE_PRACTICE'
+                    for c in before['currents']))
+                first=rt.step('mother',requested_action='EAT')
+                self.assertEqual(first['status'],'PERFORMED')
+                self.assertFalse(any(observed))
+                second=rt.step('mother',requested_action='EAT')
+                self.assertEqual(second['status'],'PERFORMED')
+                self.assertTrue(any(observed),
+                                'two actual personally received meals required')
+                mother=rt.snapshot('mother')
+                learned=[r for r in mother['historical_orientations']
+                         if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE']
+                self.assertEqual(len(learned),1)
+                self.assertEqual(learned[0]['orientation_mode'],'APPROACH')
+                after=rt.situated('mother')
+                self.assertTrue(any(
+                    c['action']=='EAT' and c['polarity']=='APPROACH'
+                    for c in after['currents']))
+                self.assertTrue(rt.verify()['valid'])
+            finally:
+                rt.close()
+            cold=ConstitutiveRuntime(db)
+            try:
+                self.assertTrue(any(
+                    c.get('action')=='EAT' and c.get('polarity')=='APPROACH'
+                    for c in cold.situated('mother')['currents']))
+                self.assertTrue(cold.verify()['valid'])
+            finally:
+                cold.close()
+
     def test_sqlite_cold_restart_preserves_operative_pre_cue_pressure(self):
         with tempfile.TemporaryDirectory() as d:
             db=str(Path(d)/'one_life.sqlite3')
