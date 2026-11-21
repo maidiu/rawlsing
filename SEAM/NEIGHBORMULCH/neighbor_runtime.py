@@ -220,16 +220,15 @@ class NeighborEncounter:
                 eligible = sensory_evidence(world, actor,
                     {'spoken_text': text}, operation, origin, loc, ref)
                 for sign in eligible:
-                    # R21's actor plan reads at clock t, but its lived
-                    # afterlife reads at t+1 after world resolution. A zero-
-                    # lifetime cue would vanish between the two and silently
-                    # erase the user's actual sensory event from experience.
-                    # One extra *read window* is provisional scheduling law,
-                    # NOT a claim that a footstep or utterance physically lasts.
+                    # A transient user sound remains physically transient.
+                    # R21's pre-action constitution read records the eligible
+                    # cue ref; later *subjective* uptake must be separately
+                    # earned by its competent owner. Extending the lifetime
+                    # cannot authorize an actor memory or perception.
                     cue = add_cue(world, sign['kind'], sign['tags'],
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
-                        private_to=actor_id, lasting_ticks=1)
+                        private_to=actor_id)
                     evidence.append({'actor': actor_id, 'event_ref': ref,
                                      'cue_ref': cue['id'], 'modality': sign['modality'],
                                      'basis': sign['kind'], 'grade': sign['grade']})
