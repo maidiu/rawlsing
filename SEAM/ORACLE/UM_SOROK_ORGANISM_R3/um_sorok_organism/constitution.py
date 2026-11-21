@@ -2,7 +2,7 @@
 No psychology state is minted by materialization. This module is deliberately read-only.
 """
 import math
-from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
+from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE, stable_id
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
@@ -187,6 +187,70 @@ def actor_access(actor,world):
         env.append('WORK')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
+
+
+
+def situated_encounter_aperture(observer, counterpart_ref, world):
+    """One actor's *current* opportunity to encounter another, not omniscience.
+
+    This is an internal first-consumer of the existing bodily, place, sensory,
+    privacy and event-lifetime gates in actor_access(). It cannot issue a human
+    or user-visible meeting, attest the other's identity, interpret a sign's
+    meaning, speak for the Other or read the Other's psychological state.
+
+    Present co-location is necessary but not sufficient: an impaired/unsensing
+    observer is not granted a perceptual license just because the world
+    records another person's position. Only publicly receivable authored
+    event signs may be exposed as source references, not as beliefs or words.
+    """
+    if type(counterpart_ref) is not str or not counterpart_ref:
+        raise ValueError('ENCOUNTER_INVALID_COUNTERPART_REF')
+    if counterpart_ref == observer['id']:
+        raise ValueError('ENCOUNTER_OTHER_MUST_BE_DISTINCT')
+    access=actor_access(observer,world)
+    present=any(c.get('kind')=='coactor_present'
+                and c.get('source_actor')==counterpart_ref
+                for c in access.cues)
+    # The hash is a read-model correlation token only, never a world right,
+    # authentication, actor identity or private autobiographical identifier.
+    presence=stable_id('presence_witness',{
+        'observer':observer['id'],'counterpart':counterpart_ref,
+        'world':world['id'],'clock':world['clock']}) if present else None
+    public_signs=[]
+    if present:
+        for cue in access.cues:
+            if (cue.get('source_actor')!=counterpart_ref
+                    or cue.get('kind') in ('coactor_present',
+                           'material_object_present','public_notice_visible')
+                    or cue.get('private_to') is not None):
+                continue
+            # The analyst's source label is *not* a semantic interpretation
+            # that the observer already understands or has internalized.
+            public_signs.append({
+                'objective_cue_ref':cue['id'],
+                'source_kind_analytic_only':cue['kind'],
+                'sensory_modality':cue.get('modality'),
+                'semantic_content_not_inferred':True,
+                'private_meaning_not_disclosed':True})
+    return {
+        'status':('SENSED_OTHER_PRESENT'
+                  if present else 'NO_CURRENT_SENSED_COPRESENCE'),
+        'world_clock':world['clock'],
+        'observer_location':access.location,
+        'ephemeral_presence_witness_ref':presence,
+        'public_event_sign_refs':public_signs,
+        'counterpart_name':'NOT_ESTABLISHED_BY_COPRESENCE',
+        'counterpart_relationship':'NOT_ESTABLISHED_BY_COPRESENCE',
+        'counterpart_intent':'NOT_OBSERVED',
+        'counterpart_consent':'NOT_GRANTED',
+        'counterpart_internal_history':'NOT_DISCLOSED',
+        'observer_interpretation':'NOT_INFERRED_FROM_PUBLIC_SIGN',
+        'scene_narrated':False,
+        'user_first_meeting_issued':False,
+        'no_actor_action_or_world_transition':True,
+        'no_automatic_adult_role_or_identity':True,
+        'grade':GRADE,
+    }
 
 
 def _tokens(cues):
