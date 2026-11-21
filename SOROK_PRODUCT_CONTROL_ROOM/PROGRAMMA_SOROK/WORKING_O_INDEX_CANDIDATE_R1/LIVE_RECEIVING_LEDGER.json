@@ -22,7 +22,43 @@
     "REMONT/SOROK/OPEN_DEFECTS.json",
     "REMONT/SOROK/QUEUE/CHECK_QUEUE.json"
   ],
-  "event_history": [],
+  "event_history": [
+    {
+      "id": "SORACLE-RED-2553",
+      "pr": 1234,
+      "immutable_sha": "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8",
+      "event": "EXECUTED_AT_SHA_RED",
+      "test": "Python 3.11.3 551 unittest: 6 FAIL + 3 ERROR; pytest 542 PASS / 9 FAIL +37 subtests; Nadia 14-day contrast PASS",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058321059",
+      "replaced_by": "8d1ff8bbb75b359cc7bd3044b385323600c70b88"
+    },
+    {
+      "id": "SORACLE-PASS-8D1",
+      "pr": 1234,
+      "immutable_sha": "8d1ff8bbb75b359cc7bd3044b385323600c70b88",
+      "event": "EXECUTED_AT_SHA_ACCEPT_SCOPED_SOURCEFREE",
+      "test": "Python 3.11.3 551 unittest normal/-O, 551 pytest +37 subtests PASS, 14-day Nadia 2-history PASS",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997",
+      "protected_received": false
+    },
+    {
+      "id": "REMONT-R17-HEAD-SUCCESSION",
+      "pr": 1230,
+      "immutable_sha": "28bf7fc48264d433ecf172bd0846744a3476222e",
+      "event": "SOURCE_HEAD_MOVED_DOC_ONLY",
+      "previous_tested_code_sha": "868d9e4f975efa6cb7ec62b39041c98da424fcb2",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1230#issuecomment-7058013087",
+      "protected_received": false
+    },
+    {
+      "id": "REMONT-R18-SUSPECTED",
+      "pr": 1241,
+      "immutable_sha": "a4a495bbb456bd211b4fbdbd29478c0f0052603f",
+      "event": "AUTHOR_PASS_BUT_SUSPECTED_FURTHER_NONATOMICITY_UNEXECUTED",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1241#issuecomment-7058095388",
+      "protected_received": false
+    }
+  ],
   "records": [
     {
       "id": "PR-559",
@@ -89,14 +125,15 @@
       "material_functionality_summary": "SOROK O-INDEX R3: source-object proofs and six product paths — returned candidate, independent review pending",
       "description_first_claim": "Returned single-worker sourcefree engineering repair at immutable SHA `e50d32eb6816578145d17dcd637a0b90b3a1ef40`, starting from R2 source correction `96af4f15c993c7a4f32da4cc31ef3175903a0d5c`. Worker R3 reports frozen 144 Sorok + 23 Pyat source manifest and 3 references, real Git object verifier, corrected 8 source identity defects, 219 nodes/461 edges/46 ow",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "UNKNOWN",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
+        "verdict": "AUTHOR_REPORTED_21_TESTS_PLUS_FOUR_LINEAGE_SUBTESTS_PASS",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/561",
+        "grade": "SOURCEFREE_AUTHOR_REPORTED",
+        "applied_to_head": true
       },
       "review": {
         "sha": null,
-        "verdict": "UNKNOWN",
+        "verdict": "INDEPENDENT_R3_RECEIVING_NOT_ESTABLISHED",
         "independence": "UNVERIFIED"
       },
       "inherited_from": {
@@ -104,7 +141,7 @@
         "sha": "96af4f15c993c7a4f32da4cc31ef3175903a0d5c",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "TO_RECONCILE_FROM_PINNED_SOURCE",
+      "first_consumer": "PROGRAMMA SOROK living-reference runtime intake; candidate registry not adopted",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -114,9 +151,9 @@
       },
       "dependencies": [],
       "conflicts": [],
-      "disposition": "RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED",
-      "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "disposition": "HELD_O_INDEX_R3_WORKING_CANDIDATE_NOT_PROTECTED",
+      "next_receiving_owner": "SOROK HQ protected custodian + distinct reviewer",
+      "smallest_next_action": "Review original registry and 11 exact blob pins, receive only qualified SOURCEFREE O-INDEX evidence"
     },
     {
       "id": "PR-791",
@@ -300,19 +337,19 @@
       },
       "first_consumer": "TARGETED_SOURCE_READER_TO_RECONCILE",
       "authorities": {
-        "source": "NOT_ISSUED_BY_THIS_RECORD",
-        "science": "NOT_ISSUED_BY_THIS_RECORD",
-        "actor": "NOT_ISSUED_BY_THIS_RECORD",
-        "human": "NOT_ISSUED_BY_THIS_RECORD",
-        "protected_receiving": "PROTECTED_MERGE_EXISTS_CHECK_RECEIPT"
+        "source": "HELD",
+        "science": "HELD",
+        "actor": "HELD",
+        "human": "HELD",
+        "protected_receiving": "MERGED_SOURCEFREE"
       },
       "dependencies": [
         "cd19070fc67627d7398eb2f57d46d6cd03b44fe3"
       ],
       "conflicts": [],
-      "disposition": "PROTECTED_RECEIVED_AT_SCOPED_HISTORIC_SOURCE_SUBJECT_TO_READBACK",
-      "next_receiving_owner": "SOROK protected owner / independent reviewer",
-      "smallest_next_action": "Retain historic protected integration, do not relabel latest sourcefree successor as protected"
+      "disposition": "PROTECTED_RECEIVED_MIII_SOURCEFREE_ENGINEERING_SCOPED",
+      "next_receiving_owner": "SOROK mechanism owner",
+      "smallest_next_action": "Preserve protected MIII sourcefree first reader; do not promote native"
     },
     {
       "id": "PR-905",
@@ -349,19 +386,19 @@
       },
       "first_consumer": "TARGETED_SOURCE_READER_TO_RECONCILE",
       "authorities": {
-        "source": "NOT_ISSUED_BY_THIS_RECORD",
-        "science": "NOT_ISSUED_BY_THIS_RECORD",
-        "actor": "NOT_ISSUED_BY_THIS_RECORD",
-        "human": "NOT_ISSUED_BY_THIS_RECORD",
-        "protected_receiving": "PROTECTED_MERGE_EXISTS_CHECK_RECEIPT"
+        "source": "HELD",
+        "science": "HELD",
+        "actor": "HELD",
+        "human": "HELD",
+        "protected_receiving": "MERGED_SOURCEFREE"
       },
       "dependencies": [
         "9366b42a61a383808071106d70aa1255a769390a"
       ],
       "conflicts": [],
-      "disposition": "PROTECTED_RECEIVED_AT_SCOPED_HISTORIC_SOURCE_SUBJECT_TO_READBACK",
-      "next_receiving_owner": "SOROK protected owner / independent reviewer",
-      "smallest_next_action": "Retain historic protected integration, do not relabel latest sourcefree successor as protected"
+      "disposition": "PROTECTED_RECEIVED_MII_SOURCEFREE_ENGINEERING_SCOPED",
+      "next_receiving_owner": "SOROK mechanism owner",
+      "smallest_next_action": "Preserve protected P6 MII first reader; do not promote native"
     },
     {
       "id": "PR-907",
@@ -583,9 +620,10 @@
         "grade": "NOT_PROMOTED"
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "fc49662603c3dd8148c847cd6f35f2172184fd5a",
+        "verdict": "REVISE_EXACT_DEFECT_AT_R1",
+        "independence": "Nonauthor reviewer; exact R1 code at ac09ac7",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1102"
       },
       "inherited_from": {
         "branch": "integration/pre-main-reconciliation-r1",
@@ -602,9 +640,9 @@
       },
       "dependencies": [],
       "conflicts": [],
-      "disposition": "RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED",
-      "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "disposition": "HELD_PRIOR_CURRENTNESS_IMPLEMENTATION__INDEPENDENT_REVISE",
+      "next_receiving_owner": "SOROK currentness owner, do not reuse as green",
+      "smallest_next_action": "Read later #1104 R2/R3 reviews and protect against stale-baseline/forged-review admission"
     },
     {
       "id": "PR-1098",
@@ -651,9 +689,12 @@
         "6a5c12f04323d74001f9632063ec907f4fc4468e"
       ],
       "conflicts": [],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "Relevant original implementation/issuer/HQ protected owner",
-      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority"
+      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority",
+      "conservation_refs": [
+        "1341c81dfe0e99da030e7dca356f55789a10c6f8"
+      ]
     },
     {
       "id": "PR-1101",
@@ -767,15 +808,16 @@
       "material_functionality_summary": "[SOROK currentness R2] Bind real returns/reviews and live source reconciliation",
       "description_first_claim": "Corrects five independently reproduced R1 defects from #1102. Frozen implementationea5e48cf3240e72e39cd19be3120ad727902eee2, artifact20ae27f802a863370d215d9f4b7ed44e76c54da3, final author evidenced71d52a5cf0c604a0738c0928bcf2b7e7ea8eb12. #1095 static projection/verifier/workflow/two source copies remain untouched.\n\nR2 adds authenticated live GitHub fetch wit",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "UNKNOWN",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "ea5e48cf3240e72e39cd19be3120ad727902eee2",
+        "verdict": "AUTHOR_LOCAL_17_TESTS_AND_WORKFLOW_CHECKS_REPORTED_PASS",
+        "grade": "HISTORICAL_AUTHOR_ONLY",
+        "applied_to_head": false
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f",
+        "verdict": "REVISE_EXACT_DEFECT_R2",
+        "independence": "Distinct local reviewer; not final protected",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1105"
       },
       "inherited_from": {
         "branch": "codex/sorok-automatic-currentness-engine-20261115-r1",
@@ -792,9 +834,9 @@
       },
       "dependencies": [],
       "conflicts": [],
-      "disposition": "RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED",
+      "disposition": "HELD_R2_CURRENTNESS_RECEIVING_RED__R3_SOURCE_SEPARATE",
       "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "smallest_next_action": "Find exact R3 successor and distinct receiving before any operational currentness promotion"
     },
     {
       "id": "PR-1105",
@@ -1221,11 +1263,11 @@
         "e883168ac57a5490ff659d8e9a9705e9269e8b2c"
       ],
       "conflicts": [
-        "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
+        "Sibling #1166; later R18 #1241 is different source ancestry"
       ],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "disposition": "HELD_PARALLEL_SR_P004_SIBLING_NO_AUTO_MERGE",
+      "next_receiving_owner": "REMONT P004 source owner",
+      "smallest_next_action": "Targeted lineage and inherited behavior comparison, no branch overwrite"
     },
     {
       "id": "PR-1166",
@@ -1272,11 +1314,11 @@
         "e883168ac57a5490ff659d8e9a9705e9269e8b2c"
       ],
       "conflicts": [
-        "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
+        "Sibling #1165; later R18 #1241 is different source ancestry"
       ],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "disposition": "HELD_PARALLEL_SR_P004_SIBLING_NO_AUTO_MERGE",
+      "next_receiving_owner": "REMONT P004 source owner",
+      "smallest_next_action": "Targeted lineage and inherited behavior comparison, no branch overwrite"
     },
     {
       "id": "PR-1167",
@@ -1405,7 +1447,7 @@
         "sha": "2073db825bd326b608e421accefe372b82604f6e",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "TO_RECONCILE_FROM_PINNED_SOURCE",
+      "first_consumer": "Canonical SOROK PROGRAMMA/CURRENT_PROGRESS (not yet protected)",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -1413,11 +1455,17 @@
         "human": "NOT_ISSUED_BY_THIS_RECORD",
         "protected_receiving": "NOT_RECEIVED"
       },
-      "dependencies": [],
-      "conflicts": [],
-      "disposition": "RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED",
+      "dependencies": [
+        1167,
+        1168,
+        1171
+      ],
+      "conflicts": [
+        "R3 1167 does not automatically inherit sibling P004 1165 or 1166"
+      ],
+      "disposition": "RETURNED_UNRECEIVED_USER_PRIORITY_DOCUMENTARY_MULCH",
       "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "smallest_next_action": "SOROK HQ reconciles user's parallel theory↔code intent and REMONT dependency via protected receiving without stalling builders"
     },
     {
       "id": "PR-1171",
@@ -1437,22 +1485,24 @@
       "material_functionality_summary": "[SOROK REMONTATHON R10] 53 scoped independent review passes in original ledger; P070/P071 repaired, 180 tests",
       "description_first_claim": "## CURRENT SOROK REMONT R10 — existing PR #1171, not a side PR\n\n**Exact live REMONT HEAD:** `814901bbf5738da50b5c90628f864942e7a70fb3` (R9 frozen ancestor `c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d`). Latest sourcefree repair is in the existing code owners and **both original REMONT ledgers**, not only in reviewer prose.\n\n**Current exact queue: 71 P = 53 independently reviewed PASS at bounded first-fault sourcefree engineering scope, 8 partial, 8 open, and ",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "814901bbf5738da50b5c90628f864942e7a70fb3",
+        "verdict": "AUTHOR_REPORTED_180_NORMAL_AND_OPTIMIZED_PASS_FOR_P070_P071",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1171",
+        "grade": "HISTORICAL_CODE_CUT_NOT_CURRENT_QUEUE_HEAD",
+        "applied_to_head": false
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d",
+        "verdict": "53_SOURCEFREE_FIRST_FAULT_REVIEWS_SCOPED; P070_P071_PENDING",
+        "independence": "Separate review artifacts; GitHub principal identity caveat",
+        "applied_to_head": false
       },
       "inherited_from": {
         "branch": "agent/um-sorok-r3-pressure-genesis-code-20261119",
         "sha": "3dba91136870ab5e766ca14faacd847531dea075",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "ACTUAL_CONSUMER_TEST_AND_INHERITANCE_TO_RECONCILE",
+      "first_consumer": "REMONT/SOROK/QUEUE/check_queue.py; separate OPEN_DEFECTS P-ledger",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -1466,9 +1516,15 @@
       "conflicts": [
         "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
       ],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "REMONT ledger owner + SOROK HQ authorized receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "disposition": "HELD_REMONT_ORIGINAL_QUEUE_ACTIVE_DRAFT__CURRENT_QUEUE_HEAD_UNTESTED",
+      "next_receiving_owner": "REMONT original queue maintainer and local OpenCode runner",
+      "smallest_next_action": "Preserve QIDs; execute source-pinned queued candidates, update specialized queue then pass exact outcomes to O-INDEX",
+      "head_delta": {
+        "from": "814901bbf5738da50b5c90628f864942e7a70fb3",
+        "to": "791620d5eef9200ef8bdca7f9645ba94a8d3a61f",
+        "kind": "REMONT_LEDGER_QUEUE_CONTROLLER_DOC_REVIEW_CHANGES__NOT_COVERED_BY_180_EXECUTION",
+        "checked": "GitHub compare 2026-11-21"
+      }
     },
     {
       "id": "PR-1172",
@@ -1858,7 +1914,7 @@
         "sha": "27e5464f10e8f1339f57cde734b5ae42084b33a8",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "TO_RECONCILE_FROM_PINNED_SOURCE",
+      "first_consumer": "SOROK ConstitutiveRuntime.initialize/step/background candidate C7 (no PYAT authority)",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -1868,9 +1924,12 @@
       },
       "dependencies": [],
       "conflicts": [],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
-      "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "disposition": "HELD_CLOSED_UNMERGED_CROSS_OWNER_PYAT_TO_SOROK",
+      "next_receiving_owner": "SOROK actor/program owner",
+      "smallest_next_action": "Review/accept/narrow or reject C7 source as SOROK-owned only; preserve source on closed PR",
+      "conservation_refs": [
+        "9325fc342f7e1aeeb1c196af872653f5657791cb"
+      ]
     },
     {
       "id": "PR-1180",
@@ -1970,9 +2029,12 @@
       "conflicts": [
         "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
       ],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch",
+      "conservation_refs": [
+        "7e8cf7d050b59c869f46553e9cd715981f23ba7b"
+      ]
     },
     {
       "id": "PR-1183",
@@ -2021,9 +2083,12 @@
       "conflicts": [
         "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
       ],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch",
+      "conservation_refs": [
+        "79ead983395d01a996fb6eeb5f639fed48dcdf1f"
+      ]
     },
     {
       "id": "PR-1186",
@@ -2596,15 +2661,18 @@
       "material_functionality_summary": "[SOROK REMONTATHON R12] R11 independent REVISE repaired: P070/P071, ADD_PROJECT+REORGANIZE_PROJECT trial guards, 71-ledger (248 tests)",
       "description_first_claim": "### Current verification status — 20 November 2026\n\n**Python 3.11.3 compatibility now PASS at this exact immutable HEAD `9db0e6f64bf568409e638ff2215af8b8a414487f`.** A separately executed clean detached-worktree run reported **246/246 unittest normal, 246/246 optimized, pytest 246 passing + 14 subtests**, all six inherited R11 reviewer tests, all five additional R12 repairs tests, and 71 retained P identities. [Exact external test return logged i",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6",
+        "verdict": "248_UNIT_NORMAL_248_OPTIMIZED_PYTEST_248_PLUS16_PASSED",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1199#issuecomment-7054467083",
+        "grade": "EXECUTED_AT_SHA_LOCAL_PY311_REPORTED",
+        "applied_to_head": true
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6",
+        "verdict": "ACCEPT_SCOPED_R11_REPAIR",
+        "independence": "Separate local-machine review, GitHub shared principal caveat",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1199#issuecomment-7054467083",
+        "applied_to_head": true
       },
       "inherited_from": {
         "branch": "agent/sorok-remont-r11-trial-before-motive-integrated-20261120-r1",
@@ -2623,9 +2691,9 @@
         "39f6972089858ee968e73b2e731005c71a8055dd"
       ],
       "conflicts": [],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
+      "disposition": "INDEPENDENTLY_REVIEWED_SCOPED_UNMERGED_SIDE_LINE_NOT_ANCESTOR_OF_R13_R18",
       "next_receiving_owner": "Independent REMONT engineer; SOROK HQ legitimate protected receiver",
-      "smallest_next_action": "Qualify exact code SHA and completed independent tests; preserve code function under next integration"
+      "smallest_next_action": "Conserve R12 scoped repair explicitly; no inherited green to R13–R18"
     },
     {
       "id": "PR-1200",
@@ -3176,9 +3244,17 @@
       "conflicts": [
         "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
       ],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
-      "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "disposition": "SUPERSEDED_UNMERGED_BY_PR_1217__FUNCTION_REPLAY_CLAIMED_NOT_INDEPENDENTLY_VERIFIED",
+      "next_receiving_owner": "SORACLE lineage integrator",
+      "smallest_next_action": "Compare exact source and first-reader P019/P022 behavior at #1217; do not delete #1216 source",
+      "conservation_refs": [
+        "6c02872ef930cac3046315a2c13e13ef79ed3a97"
+      ],
+      "successor_pr": 1217,
+      "retained_capabilities": [
+        "P019 actor practical orientations",
+        "P022 historically operative self-organization"
+      ]
     },
     {
       "id": "PR-1217",
@@ -3249,15 +3325,18 @@
       "material_functionality_summary": "[SOROK REMONTATHON R15] P012 stratified inhibitors + P018 sealed-source/auxiliary integrity (276 tests)",
       "description_first_claim": "## REMONTATHON R15 — TRUE REMONT: bounded P012 and P018 first-owner repairs\n\n**Exact tested/published code HEAD** `6075792420e1d87b30036ebe6f352815783e47c2`, stacked on immutable sourcefree R14 [#1214](https://github.com/maidiu/rawlsing/pull/1214) `f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0`. Draft/isolated; protected PRE-MAIN unchanged.\n\n### First-fault reproduction and correction\n\n**P012 — defeated inhibitor propagates a false veto.** In R14, a h",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "6075792420e1d87b30036ebe6f352815783e47c2",
+        "verdict": "276_AUTHOR_NORMAL_OPTIMIZED_PYTEST_PASS_22_SUBTESTS; 5_P018_INDEPENDENT_RED",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1171#issuecomment-7053151511",
+        "grade": "EXECUTED_AT_SHA_MIXED",
+        "applied_to_head": true
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "6075792420e1d87b30036ebe6f352815783e47c2",
+        "verdict": "ACCEPT_SCOPED_FIRST_FAULT_P012__REVISE_EXACT_DEFECT_P018",
+        "independence": "Separate local hostile review, GitHub shared-principal limit",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1220#pullrequestreview-6000749059",
+        "applied_to_head": true
       },
       "inherited_from": {
         "branch": "agent/sorok-remont-r14-p012-p004-joint-recruitment-purpose-20261120-r1",
@@ -3276,9 +3355,9 @@
         "f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0"
       ],
       "conflicts": [],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "Independent REMONT engineer; SOROK HQ legitimate protected receiver",
-      "smallest_next_action": "Qualify exact code SHA and completed independent tests; preserve code function under next integration"
+      "disposition": "MIXED_SCOPED_P012_ACCEPT_P018_RED__UNMERGED",
+      "next_receiving_owner": "REMONT R17/P018 owner and distinct hostile reviewer",
+      "smallest_next_action": "Preserve P012 scoped acceptance; test P018 negative at descendant #1230 without transferring mixed result"
     },
     {
       "id": "PR-1221",
@@ -3500,22 +3579,23 @@
       "material_functionality_summary": "[SOROK REMONTATHON R17] P018 full source/chain preflight (288 tests)",
       "description_first_claim": "## SOROK REMONTATHON R17 — P018 full source/chain preflight\n\n**Frozen parent:** R16 #1222 `7a8a18c153ee5a36e1c52eca15f4e5e8862296be`.\n**Repair HEAD:** `32036e489` on `agent/sorok-remont-r17-p018-source-preflight-20261120-r1`.\n\nIndependent R12–R16 review reproduced an inherited P018 defect on R16: full `verify_chain()` rejected tampered source histories while `source()` still returned content and `commit()` still appended. Seven hostile cases were",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "868d9e4f975efa6cb7ec62b39041c98da424fcb2",
+        "verdict": "289_UNIT_NORMAL_289_OPTIMIZED_PYTEST_289_PLUS32__REPORTED_PASS",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1230#issuecomment-7058013087",
+        "grade": "EXECUTED_HISTORICAL_CODE_CUT",
+        "applied_to_head": false
       },
       "review": {
         "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "verdict": "INDEPENDENT_HOSTILE_R17_NOT_RECEIVED",
+        "independence": "PENDING"
       },
       "inherited_from": {
         "branch": "agent/sorok-remont-r16-r12-local-machine-source-reconcile-20261120-r1",
         "sha": "7a8a18c153ee5a36e1c52eca15f4e5e8862296be",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "TARGETED_SOURCE_READER_TO_RECONCILE",
+      "first_consumer": "ResearchLedger.source/commit/seal_source strict preflight",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -3527,9 +3607,15 @@
         "7a8a18c153ee5a36e1c52eca15f4e5e8862296be"
       ],
       "conflicts": [],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "Independent REMONT engineer; SOROK HQ legitimate protected receiver",
-      "smallest_next_action": "Qualify exact code SHA and completed independent tests; preserve code function under next integration"
+      "disposition": "RETURNED_R17_CODE_PASS_SCOPED_AUTHOR__CURRENT_DOC_HEAD_UNREVIEWED",
+      "next_receiving_owner": "REMONT independent P018 reviewer",
+      "smallest_next_action": "Review exact R17 code cut and inherited newer malformed-envelope guard; conserve R18 old parent distinction",
+      "head_delta": {
+        "from": "868d9e4f975efa6cb7ec62b39041c98da424fcb2",
+        "to": "28bf7fc48264d433ecf172bd0846744a3476222e",
+        "kind": "ONE_LEDGER_MD_ONLY_FILE_4_COMMITS__CODE_NOT_CHANGED",
+        "checked": "GitHub compare 2026-11-21"
+      }
     },
     {
       "id": "PR-1232",
@@ -3576,9 +3662,12 @@
         "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e"
       ],
       "conflicts": [],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "Relevant original implementation/issuer/HQ protected owner",
-      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority"
+      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority",
+      "conservation_refs": [
+        "f99b180c48cd389f49aafc49a7ac433a42d85311"
+      ]
     },
     {
       "id": "PR-1233",
@@ -3625,9 +3714,12 @@
         "ab2e5b2ce6f29972dbff6971c29e488c17504e73"
       ],
       "conflicts": [],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "Relevant original implementation/issuer/HQ protected owner",
-      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority"
+      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority",
+      "conservation_refs": [
+        "f99b180c48cd389f49aafc49a7ac433a42d85311"
+      ]
     },
     {
       "id": "PR-1234",
@@ -3647,22 +3739,25 @@
       "material_functionality_summary": "[SORACLE × REMONT · EXECUTED 551/551 SCOPED PASS · RECEIVING HELD] R3/R18 continuing organism",
       "description_first_claim": "## CURRENT POST-EXECUTION STATUS — November 21, 2026 (this section governs historical author-only statuses below)\n\n**EXECUTED_AT_SHA:** `8d1ff8bbb75b359cc7bd3044b385323600c70b88` (Python 3.11.3, clean detached worktree). [SOROK REMONT/Opencode source-pinned execution and hostile probes](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997): compileall PASS; focused 146/146 normal and 71/71 optimized; full unittest **551/551 normal**, **551/",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "8d1ff8bbb75b359cc7bd3044b385323600c70b88",
+        "verdict": "PASS_551_NORMAL_551_OPTIMIZED_PYTEST_551_PLUS37__14DAY_12BEAT_TWO_HISTORIES_COLD_VALID",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997",
+        "grade": "EXECUTED_AT_SHA_SOURCEFREE_PY311_LOCAL_RECEIPT",
+        "applied_to_head": true
       },
       "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "sha": "8d1ff8bbb75b359cc7bd3044b385323600c70b88",
+        "verdict": "ACCEPT_SCOPED_SOURCEFREE_REPAIRS_FIRST_CONSUMER",
+        "independence": "Separate local executing reviewer; shared GitHub principal; not credential-independent G5",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997",
+        "applied_to_head": true
       },
       "inherited_from": {
         "branch": "agent/soracle-nadia-cultural-mediated-development-r3-20261120",
         "sha": "f3e6a793b87605b67668c02b40543a9ca3982e51",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "ACTUAL_CONSUMER_TEST_AND_INHERITANCE_TO_RECONCILE",
+      "first_consumer": "joined_longitudinal_demo (14 days/12 beats) + two cold SQLite histories, actual actor INSPECT contrast",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -3671,14 +3766,20 @@
         "protected_receiving": "NOT_RECEIVED"
       },
       "dependencies": [
-        "f3e6a793b87605b67668c02b40543a9ca3982e51"
+        1221,
+        1227,
+        1228,
+        1222,
+        1230,
+        1241
       ],
       "conflicts": [
-        "SORACLE_REMONT_CONCURRENT_LINES_QUALIFIED_JOIN_REQUIRED"
+        "PRE_ENCOUNTER childhood generative history is not user-played scenario",
+        "No protected P2-P6/CAN/ADP or PYAT original science; R18 separate branch remains unreceived"
       ],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "SORACLE builder / independent REMONT receiver",
-      "smallest_next_action": "Preserve historical execution cuts, independently qualify head and reconcile branch fate; do not touch builder branch"
+      "disposition": "INDEPENDENTLY_REVIEWED_SCOPED_UNMERGED__NATIVE_PROTECTED_HELD",
+      "next_receiving_owner": "SOROK HQ protected integrator + distinct empowered G5/owner review",
+      "smallest_next_action": "Preserve exact 8d1 sourcefree grade and user pre-encounter policy; qualified integration with protected parents/P2-P6 only after owner review, no unnecessary rerun"
     },
     {
       "id": "PR-1236",
@@ -3698,36 +3799,36 @@
       "material_functionality_summary": "[PRE-MAIN / REMONT] Canonical builder intake + independent first-fault charter in existing MCR-lite and PROGRAMMA",
       "description_first_claim": "## FINAL PROTECTED RECEIVING — COMPLETE (USER-DIRECT DOCUMENTARY ONLY)\n\n**This PR is merged.** Original exact PR author source `f92c3c48befb51371f1ff299cbd8173afef95177` merged as `498fd7201d64aaf44fcf19bb16ab41debb93aa25` into the protected `integration/pre-main-reconciliation-r1` branch. The paired PYAT rev12 receiving record was then atomically finalized ",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "f92c3c48befb51371f1ff299cbd8173afef95177",
+        "verdict": "AUTHOR_REPORTED_13_SOURCE_STATIC_CHECKS_PASS",
+        "grade": "DOCUMENTARY_NOT_NATIVE",
+        "applied_to_head": true
       },
       "review": {
         "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "verdict": "NO_DISTINCT_INDEPENDENT_REVIEW_USER_DIRECT",
+        "independence": "NOT_INDEPENDENT"
       },
       "inherited_from": {
         "branch": "integration/pre-main-reconciliation-r1",
         "sha": "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "REQUIRES_PINNED_SOURCE_FIRST_READER",
+      "first_consumer": "PRE-MAIN AGENTS/PROGRAMMA/MCR-lite first-fault law",
       "authorities": {
-        "source": "NOT_ISSUED_BY_THIS_RECORD",
-        "science": "NOT_ISSUED_BY_THIS_RECORD",
-        "actor": "NOT_ISSUED_BY_THIS_RECORD",
-        "human": "NOT_ISSUED_BY_THIS_RECORD",
-        "protected_receiving": "MERGE_REPORTED_EXACT_RECEIPT_TO_VERIFY"
+        "source": "HELD",
+        "science": "HELD",
+        "actor": "HELD",
+        "human": "HELD",
+        "protected_receiving": "RECEIVED_SCOPED_DOCUMENTARY_USER_DIRECT"
       },
       "dependencies": [
         "5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e"
       ],
       "conflicts": [],
-      "disposition": "PROTECTED_MERGED_SCOPED_HISTORICAL",
+      "disposition": "PROTECTED_RECEIVED_DOCUMENTARY_MCR_LITE_FIRST_FAULT_ONLY",
       "next_receiving_owner": "Relevant original implementation/issuer/HQ protected owner",
-      "smallest_next_action": "Identify exact review/test/first consumer; do not silently treat documentation or historical closed PR as new authority"
+      "smallest_next_action": "Do not duplicate charter; apply received rule proportionately to new SOROK returns"
     },
     {
       "id": "PR-1237",
@@ -3772,9 +3873,12 @@
       },
       "dependencies": [],
       "conflicts": [],
-      "disposition": "CLOSED_UNMERGED_FATE_REQUIRES_CONSERVATION",
+      "disposition": "HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION",
       "next_receiving_owner": "SOROK HQ or named competent owner; independent nonauthor reviewer where required",
-      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status"
+      "smallest_next_action": "Compare exact head, code/test/review receipts and downstream first consumer; classify without promoting status",
+      "conservation_refs": [
+        "837ada95b1de8235743e87b1989ca7dd2869b922"
+      ]
     },
     {
       "id": "PR-1241",
@@ -3794,22 +3898,24 @@
       "material_functionality_summary": "[SOROK REMONTATHON R18] Stop silent P004 selected-means loss and partial purpose history (296 tests)",
       "description_first_claim": "## R18 — P004 selected-means/actor-purpose atomicity, sourcefree engineering\n\n**Exact code HEAD** `a4a495bbb456bd211b4fbdbd29478c0f0052603f` stacked directly on frozen R17 [#1230](https://github.com/maidiu/rawlsing/pull/1230) `6f2e98433822a4fb1246ff72c388b2e901c6ab7f`; neither the parent nor protected PRE-MAIN is modified.\n\n**Independently identified first fault:** R17 `activity.record_activity_afterlife` silently dropped actor-policy selected pr",
       "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
+        "executed_sha": "a4a495bbb456bd211b4fbdbd29478c0f0052603f",
+        "verdict": "AUTHOR_296_UNIT_NORMAL_OPTIMIZED_PYTEST_PASS_32_SUBTESTS_PY3135",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1241",
+        "grade": "SOURCEFREE_AUTHOR_EXECUTION_REPORTED",
+        "applied_to_head": true
       },
       "review": {
         "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
+        "verdict": "PENDING__SUSPECTED_ALL_SELECTED_DUPLICATE_NONATOMICITY_NOT_EXECUTED",
+        "independence": "INDEPENDENT_HOSTILE_PENDING",
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1241#issuecomment-7058095388"
       },
       "inherited_from": {
         "branch": "agent/sorok-remont-r17-p018-source-preflight-20261120-r1",
         "sha": "6f2e98433822a4fb1246ff72c388b2e901c6ab7f",
         "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
       },
-      "first_consumer": "TARGETED_SOURCE_READER_TO_RECONCILE",
+      "first_consumer": "activity.record_activity_afterlife actor project-history atomicity",
       "authorities": {
         "source": "NOT_ISSUED_BY_THIS_RECORD",
         "science": "NOT_ISSUED_BY_THIS_RECORD",
@@ -3820,10 +3926,13 @@
       "dependencies": [
         "6f2e98433822a4fb1246ff72c388b2e901c6ab7f"
       ],
-      "conflicts": [],
-      "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
-      "next_receiving_owner": "Independent REMONT engineer; SOROK HQ legitimate protected receiver",
-      "smallest_next_action": "Qualify exact code SHA and completed independent tests; preserve code function under next integration"
+      "conflicts": [
+        "Old R17 parent 6f2e984, newer R17 typed malformed-envelope is not inherited"
+      ],
+      "disposition": "HELD_R18_P004_PARTIAL__AUTHOR_GREEN_SUSPECTED_UNTESTED_DUPLICATE_EDGE",
+      "next_receiving_owner": "REMONT P004 independent first-fault reviewer",
+      "smallest_next_action": "Execute A fresh/B duplicate project-event negative; assert atomic rollback, then valid two-project positive"
     }
-  ]
+  ],
+  "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed."
 }
