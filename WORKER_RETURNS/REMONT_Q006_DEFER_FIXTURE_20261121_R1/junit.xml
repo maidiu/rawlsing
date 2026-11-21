@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.304" timestamp="2026-11-21T10:06:52.276853-05:00" hostname="mainMac.lan"><testcase classname="rawlsing_next.tests.test_pre553_anvil_stream_recorded_defer_fixture" name="test_persisted_defer_recorded_entry_reaches_actual_earliest_fault" time="0.718"><failure message="ImportError: cannot import name 'HeldRecordedOperation' from 'rawlsing_next.pre553_anvil_stream_recorded' (<P0_WORKTREE>/rawlsing_next/pre553_anvil_stream_recorded.py)">tmp_path = PosixPath('<TMP>')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x10a7909d0&gt;
+
+    def test_persisted_defer_recorded_entry_reaches_actual_earliest_fault(tmp_path, monkeypatch):
+        source, candidate, root, release, held, historical, universe = _defer_stream(
+            tmp_path, monkeypatch,
+        )
+        # Canonical fixture is persisted before the product import.
+        assert historical.decision_state == "DEFER"
+        assert historical.authority_ref in universe.authority_snapshot_refs
+        assert (release / "manifest.json").exists()
+        # Actual cut 851c has no HeldRecordedOperation class. This import is the
+        # exact earliest product fault after canonical fixture construction.
+&gt;       from rawlsing_next.pre553_anvil_stream_recorded import HeldRecordedOperation  # noqa: F401
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ImportError: cannot import name 'HeldRecordedOperation' from 'rawlsing_next.pre553_anvil_stream_recorded' (<P0_WORKTREE>/rawlsing_next/pre553_anvil_stream_recorded.py)
+
+rawlsing_next/tests/test_pre553_anvil_stream_recorded_defer_fixture.py:189: ImportError</failure></testcase></testsuite></testsuites>
