@@ -251,6 +251,37 @@ def main():
     must("SORACLE-CO is the distinct theorist and authority" in main, "CO psyche owner distinction blurred")
     must("original sorok product and experiential courts" in main.lower(), "source UX court not grounded")
 
+    # The real-visitor-formation requirement is CONSTITUTIVE UX THEORY:
+    # psychological, historical-material, philosophical and theological
+    # motives must travel through the encounter's design, not sit outside it.
+    must("**The mechanics' constitutive reason.**" in main,
+         "UX became a value-neutral action grammar")
+    must("**The original philosophical and theological horizon remains part of the experience" in main,
+         "theology/philosophy excluded from the UX generative center")
+    formation_demands = {
+        3: ("class transposition is an experiential intervention",
+            "material equivalence"),
+        4: ("action decompression has a philosophical task",
+            "the human must actually think and act"),
+        5: ("finite attention is an epistemology made bodily",
+            "knowledge produces justice"),
+        8: ("reciprocity is also the visitor's encounter with their own non-sovereignty",
+            "formation through the other is not obedience"),
+        10: ("the visitor's formation is similarly plural",
+             "attachment, trust, health"),
+        12: ("the platform's political economy is not external to the spiritual wager",
+             "actual human"),
+        21: ("why this is rawlsing ux and not merely a sophisticated story interface",
+             "user-formation is a historically open possibility"),
+    }
+    for chapter, phrases in formation_demands.items():
+        for phrase in phrases:
+            must(phrase in ux_sections[chapter],
+                 f"founding philosophy/user formation detached from movement {chapter}: {phrase}")
+    ledger = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8")
+    must("### UX-R10 / user correction — the philosophy must travel" in ledger,
+         "latest direct user philosophical-UX correction absent from existing ledger")
+
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
          "latest direct user's one-document and no-branch instruction lost")
