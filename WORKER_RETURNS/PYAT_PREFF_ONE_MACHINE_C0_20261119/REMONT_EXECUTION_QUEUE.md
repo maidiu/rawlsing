@@ -21,7 +21,7 @@
 
 **Owner decision:** protected `pre553_discovery_adaptive.py::execute_adaptive_exploration` remains the *sole governed I05 DiscoveryAuthority/sealed-unit frontier/replay owner*. Q015 is at most a *local S04 fixed-issued-joint analytic continuation*, never a substitute I05 governor or independent FF/C4/C5 native consumer. Any future integration into I05 requires a separately authorized DiscoveryAuthority/ABI receiving decision. Static author parity is not independent acceptance.
 
-**No-drop conflict:** Q019 is RETIRED only for the #1223/1231 standalone S04 position/repertoire coordinator. The independent F6 #1224 interval source and its #1225 Q020 replay/rekey branch survive and have **not** been integrated into this branch. Do not run Q020 on Q014–Q018 candidate: its source/tests are not present. Before any F6 convergence, REMONT must reconcile its separate Q020 code branch, actual tests and inherited Q019 stale parent to avoid resurrecting the retired coordinator.
+**No-drop disposition at the integrated successor.** The earlier absence applied before `dd1f5a45830c09ac21f577aa97351d639be1af0d`. That cut contains the Q020 source and tests from #1224/#1225 and an RMT-Q020 runner entry. Q019 remains retired and explicitly refused. Keep Q020's source-conservation receipt separate from an exact-head execution result.
 
 **Execution grade:** `NOT_EXECUTED_AT_CORRECTIVE_HEAD`. Run only when exact newest #1231 candidate SHA is explicitly authorized; source/host rights, test first-fault execution, and independent G5 stay held.
 
