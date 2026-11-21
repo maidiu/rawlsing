@@ -1,3 +1,10 @@
+## CORR-006 UPDATE — Q015 is an S04-local fixed-joint analyst, NOT a second I05 discovery owner
+
+At the latest correctly authorized #1231 source HEAD, run **existing RMT-Q015** in the ONE existing runner; this same test file now contains four additional negative checks for forged self-rehashed Q015 receipts asserting I05 mutation, new I03 issuance, native rights, or scientific-grade promotion (both continuation and S04 first staging reader). Inherited I05's `execute_adaptive_exploration` separately requires real `DiscoveryAuthority` and sealed `AdaptiveExplorationUnit` closure; Q015 does not construct or exercise that authority. Author's static distinction requires an independent I05/S04 owner examination before acceptance. Passing Q015 cannot certify the distinct I05 scheduler, full survey science, C4/C5, or actor readiness.
+
+**Do not lose Q020:** separate F6 interval source #1224 and convergence #1225 remain on another candidate branch. Q019 of #1223 remains RETIRED here. Q020 is not runnable on #1231 because its F6 interval source is not present; await separately reconciled REMONT F6 owner head. Do not copy #1225's retired Q019 coordinator back into this corrected branch by accident. No automatic tests are launched by this update. Subsequent historical launch paragraphs are source-frozen evidence, not current permission.
+
+
 ## SUPERSEDING RUNTIME CORRECTION — Q019 RETIRED; Q016 REUSES THE EXISTING DHIKR NUMERIC OWNER
 
 This existing commission originally told REMONT to run Q014–Q019. **That is superseded for the corrective descendant `agent/pyat-session-reuse-repair-q019-retirement-20261120-r1`.** Q019 was an author-created position/repertoire coordinator without a demonstrated novel first consumer; its implementation and sourcefree tests have been deleted from this candidate and its source is preserved only as historical evidence on immutable ancestor #1223 `429cfc5f47e04a82302860f6f33ad48e53daf45d`. Its QID is not recycled, and invoking `RMT-Q019` intentionally fails with a typed retirement message.
