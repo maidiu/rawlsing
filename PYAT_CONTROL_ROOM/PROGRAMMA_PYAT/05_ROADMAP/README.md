@@ -3,6 +3,10 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+**KUDA-R13 REMONT operational evidence, source-only (new):** [KUDA-R13](KUDA.md#kuda-r13--actual-remont-test-receipts-and-newer-source-fate-corrections-operational-overlay-2026-11-21) now pins the previously unindexed [#1245](https://github.com/maidiu/rawlsing/pull/1245) exact HEAD `8df48d6ada6e4cee228686e06fd2f236fe9f3471`: operator-executed **17/17 QIDs, 374 Python passes on 16 QIDs + Q022 documentary PASS; separately Q005 45 PASS and S2-E 21 PASS** (same SHA, no independent full JUnit readback). [NEKUDA-R8](NEKUDA.md#nekuda-r8--later-wrong-inference-cautions-operational-no-new-historical-ids) preserves the precise newer #1261 Q020-present correction, #1264 issued Q023 four SUPPORTED/six UNAVAILABLE/two ZERO_SUPPORT typed-negative refusal, and nontransferability of #1247's separate 74 cases. Independent/owner/native science/FF02 and protected-code receiving remain **HELD**. This is a later operational overlay, **not** a new historical KUDA ID, not a reclassification of its cutoff corpus, and not an update of the branch's stale PYAT progress rev11. Designated PRE-MAIN remains documentary G4 rev21, while proposed rev22 [#1252](https://github.com/maidiu/rawlsing/pull/1252) is still unreceived.
+
+
+
 ### KUDA C11 architecture no-regression warning (branch-source only)
 
 The historical [KUDA-R11 physical alternative court](KUDA.md#kuda-r11--c11-protected-design-conservation-court-against-stranded-physical-alternatives) and [KUDA-R12 correction](KUDA.md) **do not authorize replacing** selected R157/S2-B/C/D with W03/Route-A/Route-C. R12 withdrew the extra #1259 runtime C11 module, leaving tests-only. Controlling #960/#1006, exact user-selected one-pass 13-family persistence/cold-QUERY goals, independent C11/source/fact no-loss, performance and paired protected receiving remain decisive; the G4 branch is unreceived documentary evidence.

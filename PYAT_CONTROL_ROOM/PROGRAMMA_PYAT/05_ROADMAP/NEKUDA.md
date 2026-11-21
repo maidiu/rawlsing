@@ -4,6 +4,16 @@
 
 **Evidence:** Pre-2026-11-19 ~12:50 ET exact source cuts; sourcefree/author/independent G5/protected/native science remain distinct. A negative may represent a *source-cut warning*, not a defect in every descendant. Do not classify unsupported code as a success, invent a successor, or start another branch. Entries without KUDA successor remain HOLD, not implicit authorization to build.
 
+## NEKUDA-R8 — later wrong-inference cautions (operational; no new historical IDs)
+
+This source-graded overlay sits outside the original pre-Nov19 historical negative cohort; retain all original NEKUDA IDs and link [KUDA-R13](KUDA.md#kuda-r13--actual-remont-test-receipts-and-newer-source-fate-corrections-operational-overlay-2026-11-21).
+
+- **False Q020-missing claim:** [#1261](https://github.com/maidiu/rawlsing/pull/1261) corrects an old queue note; the selected successor has source, tests and runner. Separate #1245 Q020 28/28 PASS **only at its own SHA**. Source presence is not original-survey/uncertainty authorization.
+- **False four-results-are-the-whole-workload claim:** [#1264](https://github.com/maidiu/rawlsing/pull/1264) proves #1247 sourcefree fixture includes four SUPPORTED, six UNAVAILABLE and two ZERO_SUPPORT issued results; negative `RISK_SET_UNAVAILABLE` must remain typed and never get forwarded as a positive S04 fact. Test-only focused execution is not independent G5.
+- **False cross-branch PASS inheritance:** #1245's 17/17 QIDs / 374 Python case executions plus 66 Q005/S2-E passes are at `8df48d6ada6e4cee228686e06fd2f236fe9f3471`; #1247's 74 Q023/Q014 cases are at `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`; #1252's proposed rev22 is still unreceived. Neither source, reviewer grade nor protected status transfers automatically.
+
+**Not an identified production regression in all descendants; not a new engineering commission.** `HQ_CURRENTNESS_HOLD` for credential-independent proof and paired designated-G4 receiving.
+
 | ID | Weaker post-rework state | Better located modern code | Negative reason |
 |---|---|---|---|
 | `NEKUDA-001` | Pre-S1B R157 package exact-case paths and standalone factory | KUDA-001 | Earlier P5 exact-case SRC27–SRC30 bug and standalone source_configuration implementation; adapted post-rework S1-B C11 first reader is  |
