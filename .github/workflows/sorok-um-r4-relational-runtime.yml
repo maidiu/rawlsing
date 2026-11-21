@@ -1,0 +1,37 @@
+name: UM-SOROK R4 relational runtime sourcefree court
+on:
+  push:
+    branches:
+      - 'agent/um-sorok-r4-relational-metabolism-r6-sync-20261120'
+  pull_request:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
+      - '.github/workflows/sorok-um-r4-relational-runtime.yml'
+jobs:
+  research-only:
+    name: Sourcefree integrated Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    defaults:
+      run:
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: exact source head
+        run: git rev-parse HEAD
+      - name: install research package and pytest
+        run: python -m pip install -e . pytest
+      - name: R4 construction integration
+        run: python -m pytest -q -o addopts='' tests/test_relational_metabolism_r4.py
+      - name: inherited organism and REMONT regression
+        run: python -m unittest discover -s tests -v
+      - name: optimized interpreter full court
+        run: python -O -m unittest discover -s tests -q
+      - name: live organism CLI smoke
+        run: python -m um_sorok_organism demo --db /tmp/sorok_r4_ci.sqlite3
