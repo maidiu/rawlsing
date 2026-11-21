@@ -166,6 +166,8 @@ This is a source-static corrected negative fate, not protected receiving.
 
 **Conservation rule:** Use explicit P07 exact temporal attestations; no interpolated authority.
 
+
+**PYAT-SPASITYEL source-fate 2026-11-21:** The heuristic/latest as-of implementation stays **rejected as an authority-producing operation**. KUDA-019 historical exact as-of `select_as_of_version` (blob `f93fc79c182b1962dc3b3a25915b8d93afe7e5c7`) is valuable method capital, but selected R06 `pre553_universal_world_binding.py` (blob `fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d`) has no demonstrated source-issued `selected_ref`→world-version/release consumer. **Do not install P07 as a new engine or turn an R06 `as_of_ref` string into comparable-wave permission.** G4 KUDA-019 retains `UNKNOWN_EXACT_VERSION_TO_WORLD_BINDING` with a narrowly falsifiable source/version/consumer gate; no original science issued.
 ### NEKUDA-021 — J42 earlier wrong-condition joined world sourcefree prototype
 
 **Better candidate:** NO ACCEPTED KUDA SUCCESSOR / HELD. **Exact source:** [WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py](https://github.com/maidiu/rawlsing/blob/f53cb0d2bce52640268c844c398bbd8007d28edc/WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py) at `f53cb0d2bce52640268c844c398bbd8007d28edc`.
@@ -182,6 +184,8 @@ This is a source-static corrected negative fate, not protected receiving.
 
 **Conservation rule:** Only I01 unique world→checkpoint semantics belong in subsequent integration.
 
+
+**PYAT-SPASITYEL source-fate 2026-11-21:** Historical I01 saved progressive-world/M2/B5 `pre553_i01_sourcefree_world_lifecycle_candidate.py` blob `7899846394f079c14eae4864c8200697bd9dee4a` contains actual sourcefree `build_product/restore_product/serve/invalidate` logic. But selected #1247 already retains stronger general S2-G durable learned lifecycle and R107/R112 progressive world first consumers, while the I01 local-unauthed seam imports are absent. **Keep the I01 wrapper as NEKUDA rather than copying it**, and hold only a tested unique progressive-world saved-result→S2-G producer/consumer contract if independently demanded. No source/native/actor grant from local references.
 ### NEKUDA-024 — W03 private compact cache treated as default durable C11 release
 
 **Better candidate:** KUDA-028. **Exact source:** [rawlsing_next/_pre553_c11_execution_view.py](https://github.com/maidiu/rawlsing/blob/46b7325637e68f78ccc7487d4b1abc7009c5ac0b/rawlsing_next/_pre553_c11_execution_view.py) at `46b7325637e68f78ccc7487d4b1abc7009c5ac0b`.
@@ -385,6 +389,8 @@ This is a source-static corrected negative fate, not protected receiving.
 
 **Conservation rule:** Not a general authority override; compare separately with KUDA-062 source admission race correction.
 
+
+**PYAT-SPASITYEL source-fate 2026-11-21 — historical defect now conserved in selected source, not a demonstrated new defect:** KUDA-080 historical C-1 facade blob `a1335c60674963a42bbf1028b70fdf8f2ce5de2e` was compared to chosen #1247 facade blob `f29247b33cb78e5f1e620620d6968ab433ce407a`. Chosen code **retains** recursive `_cache_projection_preimage`, complete `GovernedC11Projection.cache_identity`, decoder/current authority-aware `source_backed_facade_key`, and additionally freezes governed nested rules and has stronger producer-only cache admission. Chosen `test_c1_agent_b_cache_differential.py` blob `d94946349e7f353df3f46adf4c60160db022d5c7` already tests altered row/response/routing/occurrence/decoder, transient semantic mutation, source-backed fact and concurrent-clear behavior. **NEKUDA old vulnerable cache is superseded; NO duplicate repair code.** This is SOURCE-STATIC on unmerged #1247 and has no transferred old 26+136 independent passing result; original survey and protected grade remain held.
 ### NEKUDA-074 — C→D direct bridge stamped frozen source despite relation declaring alien SOURCE_ARTIFACT
 
 **Better candidate:** KUDA-081. **Exact source:** [rawlsing_next/gt12_c_to_d_relation_bridge.py](https://github.com/maidiu/rawlsing/blob/18b189b36b6661865a053b055199f845ea44b156/rawlsing_next/gt12_c_to_d_relation_bridge.py) at `18b189b36b6661865a053b055199f845ea44b156`.
