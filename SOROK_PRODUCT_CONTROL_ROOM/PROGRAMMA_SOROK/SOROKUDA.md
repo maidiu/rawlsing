@@ -284,3 +284,8 @@ Sourcefree Codex/Sorok historical packages not represented at all in the old 300
 - **S52:** 4 source files at [WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52](https://github.com/maidiu/rawlsing/tree/c821b488b3a9a3f0fa01b1981989cc17af637dc1/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52); Historically grounded opportunity to participate in work, explicitly test-only. The exact tests and original negative receiving will be attached separately. Not protected.
 
 **No false completion:** the S37–S52 packages are a *chain of candidate dependencies*, not independent copies of a fully native person. S44's sampled root is explicitly synthetic, S50's V3 is old-code reproduction, S52's paid activity is an option without guaranteed performed employment. Original later S-series 15 code packages are now source-indexed file by file, not yet individually semantically proven equivalent to modern SORACLE/Mechanisms.
+
+### R5 regression custody, tranche 1
+
+The original sourcefree test directories for S37 and S39–S45 add **22** exact Python test/support blob records, including conftest scaffolding. These are original-code regression objects, **NOT** 22 independently passed tests; shared conftest source blobs are duplicated by packaging only. No execution at this R5 cut.
+
