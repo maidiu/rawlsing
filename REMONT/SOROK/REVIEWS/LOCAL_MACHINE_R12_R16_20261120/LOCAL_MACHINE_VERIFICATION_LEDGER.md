@@ -62,3 +62,12 @@ R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` u
 3. R16 is accepted only for its declared P070/determinism/any-end scope; overall source custody stays HOLD until R17 receiving.
 4. Corrected R12 is accepted only for the R11-review repair; R13's cue-tag and later-line changes are not inherited.
 5. Shared GitHub principal means this ledger is not credential-independent G5. No native, scientific, human, production or protected receiving is claimed.
+
+## GitHub review records
+
+- #1199 corrected R12: https://github.com/maidiu/rawlsing/pull/1199#issuecomment-7054467083
+- #1210 R13: https://github.com/maidiu/rawlsing/pull/1210#issuecomment-7054470086
+- #1214 R14: https://github.com/maidiu/rawlsing/pull/1214#issuecomment-7054471195
+- #1220 R15: https://github.com/maidiu/rawlsing/pull/1220#issuecomment-7054473498
+- #1222 R16: https://github.com/maidiu/rawlsing/pull/1222#issuecomment-7054474928
+- #1230 R17 repair: https://github.com/maidiu/rawlsing/pull/1230
