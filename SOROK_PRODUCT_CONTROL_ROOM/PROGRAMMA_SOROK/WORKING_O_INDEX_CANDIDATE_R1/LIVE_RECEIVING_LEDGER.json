@@ -16,7 +16,8 @@
   "search_scope": {
     "date": "2026-11-21",
     "method": "Targeted PR searches, additional SOROK/SEAM/Mechanism cross-check and exact PR metadata",
-    "not_claimed": "COMPLETE_REPOSITORY_WIDE_ENUMERATION"
+    "not_claimed": "COMPLETE_REPOSITORY_WIDE_ENUMERATION",
+    "deduplication_correction": "Mechanism III PR #882 appeared twice in source-backfill, same exact 5aa9bdc1133f75028b20d448504dae03abc88115; one existing identity retained, no functionality/evidence discarded."
   },
   "specialized_queues": [
     "REMONT/SOROK/OPEN_DEFECTS.json",
@@ -987,55 +988,6 @@
       "disposition": "RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE",
       "next_receiving_owner": "SOROK protected owner / independent reviewer",
       "smallest_next_action": "Qualify exact code SHA and completed independent tests; preserve code function under next integration"
-    },
-    {
-      "id": "PR-882",
-      "pr": 882,
-      "title": "MIII: source-bound Nadia scene history in situated model packet",
-      "pr_url": "https://github.com/maidiu/rawlsing/pull/882",
-      "originating_owner_lane": "SOROK Mechanism/psychological-source owner",
-      "git_principal": "maidiu",
-      "branch": "agent/sorok-miii-current-scene-action-context-20261110-r1",
-      "head_sha": "5aa9bdc1133f75028b20d448504dae03abc88115",
-      "base_branch": "agent/sorok-miii-actor-initiative-continuity-20261110-r1",
-      "base_head_observed": "07fa05e1a9aaf808c088b2df19bf7855f7f9dcea",
-      "pr_state": "open",
-      "merged": false,
-      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-21",
-      "source_provenance": "https://github.com/maidiu/rawlsing/tree/5aa9bdc1133f75028b20d448504dae03abc88115",
-      "material_functionality_summary": "MIII: source-bound Nadia scene history in situated model packet",
-      "description_first_claim": "## Reconciled on accepted #880 and independently received\n\n**ACCEPT_SCOPED — sourcefree engineering** at `5aa9bdc1133f75028b20d448504dae03abc88115`. The ordinary merge `7e09c4cd04f47356fae2a7649aaf4d78ab5b9df1` preserves the original #882 head and accepted #880 `07fa05e1a9aaf808c088b2df19bf7855f7f9dcea`.\n\n- OpenCode reconciliation ran 35 local cases across scene context, initiative, hostile controls and inherited P6. Separate OpenCode review ran six focuse",
-      "test": {
-        "executed_sha": null,
-        "verdict": "UNKNOWN_NOT_INDEPENDENTLY_RECHECKED",
-        "receipt": "SOURCE_PR_REPORT_ONLY",
-        "grade": "NOT_PROMOTED"
-      },
-      "review": {
-        "sha": null,
-        "verdict": "UNKNOWN",
-        "independence": "UNVERIFIED"
-      },
-      "inherited_from": {
-        "branch": "agent/sorok-miii-actor-initiative-continuity-20261110-r1",
-        "sha": "07fa05e1a9aaf808c088b2df19bf7855f7f9dcea",
-        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
-      },
-      "first_consumer": "ORIGINAL_FIRST_READER_AND_AUTHORITY_TO_RECONCILE",
-      "authorities": {
-        "source": "NOT_ISSUED_BY_THIS_RECORD",
-        "science": "NOT_ISSUED_BY_THIS_RECORD",
-        "actor": "NOT_ISSUED_BY_THIS_RECORD",
-        "human": "NOT_ISSUED_BY_THIS_RECORD",
-        "protected_receiving": "NOT_RECEIVED"
-      },
-      "dependencies": [
-        "07fa05e1a9aaf808c088b2df19bf7855f7f9dcea"
-      ],
-      "conflicts": [],
-      "disposition": "RETURNED_UNRECEIVED_STATUS_TO_RECONCILE",
-      "next_receiving_owner": "SOROK Mechanism/psychological-source owner and SOROK HQ authorized integrator",
-      "smallest_next_action": "Pin original and eventual successor/first consumer; grade tests/review at exact SHA, no automatic authority promotion"
     },
     {
       "id": "PR-889",
