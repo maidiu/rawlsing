@@ -24,6 +24,12 @@ class ReceivingCheckerAdversaries(unittest.TestCase):
         d, s = fixture()
         self.assertEqual(audit(d, s)[0], [])
 
+    def test_moved_protected_head_blocks_receiving(self):
+        ledger, snapshot = fixture()
+        snapshot['protected_sha'] = 'c' * 40
+        errors, _ = audit(ledger, snapshot)
+        self.assertIn('PROTECTED_HEAD_MOVED_OR_UNOBSERVED', errors)
+
     def test_changed_head_detected(self):
         d, s = fixture()
         s['prs'][0]['head_sha'] = 'b'*40
