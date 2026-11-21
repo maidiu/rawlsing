@@ -170,6 +170,9 @@ class HeuristicSemanticProvider:
             revisions=packet.get('historically_possible_cultural_revisions',[])
             if len(revisions)==1:
                 lived.append(copy(revisions[0]))
+            vocal=packet.get('historically_possible_social_vocal_development',[])
+            if len(vocal)==1:
+                lived.append(copy(vocal[0]))
             lived+=choose_one_grounded_plural_acquisition(
                 packet.get('historically_possible_plural_care',[]))
             lived+=propose_one_reopening(
