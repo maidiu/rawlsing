@@ -26,6 +26,8 @@ printf '%s\n' "$HEAD_SHA" > "$OUT/exact_head.txt"
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/start_utc.txt"
 printf '%s\n' "case_id,exitcode,report_directory" > "$OUT/index.csv"
 failed=0
+held=0
+executed=0
 for id in "${cases[@]}"; do
   tests=()
   case "$id" in
@@ -105,6 +107,43 @@ for id in "${cases[@]}"; do
   printf '%s\n' "$id" > "$dir/case_id.txt"
   printf '%s\n' "$HEAD_SHA" > "$dir/exact_head.txt"
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/start_utc.txt"
+  # Distinguish an absent source/test dependency from an executed regression.
+  # These paths are inherited from existing QIDs; do not invent replacements.
+  required=("${tests[@]}")
+  if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 ||
+        "$id" == RMT-Q010 || "$id" == RMT-Q014 ]]; then
+    required+=(rawlsing_next/tests/run_preff_c0_first_fault_local.sh)
+  fi
+  if [[ "$id" == RMT-Q014 ]]; then
+    required+=(rawlsing_next/pre553_asked_eligible_raw_distribution.py
+               rawlsing_next/tests/test_pre553_asked_eligible_raw_distribution.py)
+  fi
+  if [[ "$id" == RMT-Q016 ]]; then
+    required+=(rawlsing_next/pre553_governed_query_issuer_v2.py)
+  fi
+  if [[ "$id" == RMT-Q022 ]]; then
+    required+=(CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py
+               PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/verify_g4_once_currentness.mjs
+               CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md
+               PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md
+               SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md)
+  fi
+  missing=()
+  for dependency in "${required[@]}"; do
+    if [[ ! -f "$dependency" ]]; then missing+=("$dependency"); fi
+  done
+  if (( ${#missing[@]} > 0 )); then
+    printf '%s\n' "${missing[@]}" > "$dir/missing_dependencies.txt"
+    printf '%s\n' HOLD_MISSING_SOURCE_DEPENDENCY > "$dir/case_status.txt"
+    printf '25\n' > "$dir/exitcode.txt"
+    date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/end_utc.txt"
+    printf '%s,%s,%s\n' "$id" 25 "$dir" >> "$OUT/index.csv"
+    held=$((held+1))
+    echo "REMONT_HELD $id MISSING_SOURCE_DEPENDENCY at $HEAD_SHA"
+    printf '  missing: %s\n' "${missing[@]}"
+    continue
+  fi
+  executed=$((executed+1))
   echo "REMONT_EXECUTING $id at $HEAD_SHA"
   set +e
   if [[ "$id" == RMT-Q005 || "$id" == RMT-Q009 || "$id" == RMT-Q010 || "$id" == RMT-Q014 ]]; then
@@ -138,13 +177,20 @@ for id in "${cases[@]}"; do
   set -e
   date -u '+%Y-%m-%dT%H:%M:%SZ' > "$dir/end_utc.txt"
   printf '%s\n' "$code" > "$dir/exitcode.txt"
+  if [[ "$code" -eq 0 ]]; then
+    printf '%s\n' PASS_EXECUTED_AT_SHA > "$dir/case_status.txt"
+  else
+    printf '%s\n' FAIL_EXECUTED_AT_SHA > "$dir/case_status.txt"
+    failed=$((failed+1))
+  fi
   printf '%s,%s,%s\n' "$id" "$code" "$dir" >> "$OUT/index.csv"
-  if [[ "$code" -ne 0 ]]; then failed=$((failed+1)); fi
   echo "REMONT_RESULT $id exit=$code proof=$dir"
 done
 date -u '+%Y-%m-%dT%H:%M:%SZ' > "$OUT/end_utc.txt"
 printf '%s\n' "$failed" > "$OUT/failed_cases.txt"
-echo "REMONT_QUEUE completed=${#cases[@]} failed=$failed exact_head=$HEAD_SHA proof=$OUT"
-echo "SOURCEFREE AUTHOR/WORKER EXECUTION ONLY; NOT INDEPENDENT G5, ORIGINAL SCIENCE, V3 ACTOR, PROTECTED CAS"
+printf '%s\n' "$held" > "$OUT/held_cases.txt"
+echo "REMONT_QUEUE requested=${#cases[@]} executed=$executed held=$held failed=$failed exact_head=$HEAD_SHA proof=$OUT"
+echo "SOURCEFREE AUTHOR/WORKER EXECUTION ONLY; HELD CASES DID NOT RUN; NOT INDEPENDENT G5, ORIGINAL SCIENCE, V3 ACTOR, PROTECTED CAS"
 if [[ "$failed" -gt 0 ]]; then exit 1; fi
+if [[ "$held" -gt 0 ]]; then exit 25; fi
 exit 0
