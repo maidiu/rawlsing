@@ -5,8 +5,6 @@
 
 Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The typed UNAVAILABLE/UNRESOLVED negative is still PROVE_E because the fixture emitted four SUPPORTED facts. Wider G4 receiving and feature-code adoption remain pending.
 
-- RMT-Q014 JUnit SHA-256 `0a46201ac8cefd8d2a4df1189c2c766d04488bf4d8f2699d933992d7054e4868`
-- RMT-Q023 JUnit SHA-256 `2e1cf739eb9c3bcfd892ed4a9802a7449fe21c9abcaf402393cffaaa0025085f`
 
 ---
 
