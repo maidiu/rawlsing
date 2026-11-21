@@ -225,7 +225,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             # Changes to an existing learned configuration are themselves
             # historically qualified, reversible in documentary history.
             update=copy(found)
-            for key in ('cue_terms','locations','effects','status'):
+            for key in ('cue_terms','locations','effects','status',
+                        'witnessed_source_actor_ref'):
                 if key in c:update[key]=copy(c[key])
             try:validate_motif(update,actor['forms'])
             except InvalidRelationalMotif as exc:
@@ -233,9 +234,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             found.setdefault('motif_history',[]).append({
                 'event':event_ref,
                 'previous':{key:copy(found.get(key)) for key in
-                            ('cue_terms','locations','effects','status')},
+                            ('cue_terms','locations','effects','status',
+                             'witnessed_source_actor_ref')},
                 'experience_ref':experience['ref'],'grade':GRADE})
-            for key in ('cue_terms','locations','effects','status'):
+            for key in ('cue_terms','locations','effects','status',
+                        'witnessed_source_actor_ref'):
                 if key in c:found[key]=copy(update[key])
             report.append({'kind':op,'motif':ident,
                            'status':'ADMITTED_SOURCEFREE_MOTIF_REORGANIZATION'})
