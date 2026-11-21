@@ -259,6 +259,14 @@ def admit_motif(actor, candidate, event_ref, experience, index):
     """Prepare one bounded, actor-owned fictional motif for atomic admission."""
     motif = copy(candidate.get("motif", {}))
     validate_motif(motif, actor["forms"])
+    witness = motif.get("witnessed_source_actor_ref")
+    # A semantic proposal cannot manufacture having recognized or actually
+    # received a particular person's act. This sourcefree witness requirement
+    # applies at acquisition, not only later during recruitment.
+    if witness is not None and not any(
+            isinstance(cue, dict) and cue.get("source_actor") == witness
+            for cue in experience.get("perceived_cues", [])):
+        raise InvalidRelationalMotif("MOTIF_WITNESSED_OTHER_NOT_RECEIVED")
     if (not experience.get("participated")
             and not experience.get("perceived_cues")):
         raise InvalidRelationalMotif("MOTIF_HAS_NO_ACTOR_EXPERIENCE")
