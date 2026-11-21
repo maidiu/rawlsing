@@ -49,8 +49,11 @@ The projection supplies ephemeral `RoutingEligibilityFact` rows with a distinct
 recorded risk ref and member-set replay commitment. A scoped observation view
 maps each stored R5 scalar to a transformed counted event; the original event
 ref is retained in dependency provenance, and the transform commitment is in
-the query/replay identity (`recorded_transform_ref`). Stored Parquet, locators,
-authority and stream refs are not modified.
+the query/replay identity (`recorded_transform_ref`). The transformed event
+binds the materialized source authority and its authority closure is checked
+before the native index, so an original stored event authority cannot surface
+as a late historical-authority failure. Stored Parquet, locators, authority and
+stream refs are not modified.
 
 The existing native I03 evaluator performs all counting; there is no second
 evaluator or manual count.
@@ -112,7 +115,9 @@ The operation JSON is the exact held `HeldRecordedOperation` material:
 source/root/question/operation, authorities, recorded risk/routing/member-set
 refs, measure/response-semantics/domain refs, replay roots and transform ref.
 It is materialized only from the owner decision, held R2 decision and q006
-inputs; no source metadata is inferred.
+inputs; no source metadata is inferred. `validate_operation_authorities` runs
+the same positive-authority checks against the canonical universe mapping
+before the stream/index stage.
 
 The controller's concrete private operation artifact is now present at the
 safe q006 path, mode 0600, SHA-256

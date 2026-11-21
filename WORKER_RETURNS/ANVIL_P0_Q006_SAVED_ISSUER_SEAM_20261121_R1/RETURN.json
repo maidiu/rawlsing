@@ -10,7 +10,7 @@
     "harness_rereads_owner_and_r2": true,
     "true_for_anything_default": false
   },
-  "base_commit": "c6e95a6dde78ce4ae05d67ecf19719997e154ab7",
+  "base_commit": "0391d5062d82bf9ba710922a862921c9ebe7813b",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "modules": [
@@ -31,6 +31,13 @@
     "stdout_counts_emitted": false,
     "unavailable_never_positive": true
   },
+  "first_fault_classification": {
+    "family": "AuthoritySnapshot@1.0.0",
+    "private_ref_published": false,
+    "public": "ORIGINAL_STORED_EVENT_SOURCE_AUTHORITY_ABSENT_FROM_MATERIALIZED_OPERATION",
+    "stage": "native event/topology authority closure before index after fix",
+    "synthetic_materializer_contract": "RED_BEFORE_SOURCE_AUTHORITY_TRANSFORM__GREEN_AFTER"
+  },
   "focused_tests": {
     "native_stream_suite": "8 passed",
     "sourcefree_recorded_operation": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
@@ -47,6 +54,7 @@
     "canonical_source_universe_ref": true,
     "malformed_scope_refusal": true,
     "positive_authority_validation": "PASS",
+    "preflight_before_index": true,
     "private_ids_published": false,
     "wrong_universe_refusal": true
   },
@@ -86,8 +94,7 @@
   "private_operation_artifact": {
     "private_ids_published": false,
     "sha256": "fa0582562c3ccd57194d3fb4f375693d61eb725cfe3efc10261940be5f9afdf3",
-    "status": "PRESENT_PRIVATE_MODE_0600",
-    "written": false
+    "status": "PRESENT_PRIVATE_MODE_0600"
   },
   "protected_edits": false,
   "q103_constraint": {
@@ -282,5 +289,5 @@
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_RETURN@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__MATERIALIZER_SCOPE_FIXED__PRIVATE_ARTIFACT_PRESENT"
+  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_AND_AUTHORITY_PREFLIGHT_GREEN__PRIVATE_ARTIFACT_PRESENT"
 }

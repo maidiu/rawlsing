@@ -29,6 +29,7 @@ from rawlsing_next.pre553_anvil_stream_issuance import (
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
+    authority_ref,
     EmpiricalQuerySpec,
     ExactRef,
     RespondentEvent,
@@ -325,6 +326,17 @@ def build_recorded_operation(
             **fields,
         )
         event_transforms[event.ref.key] = transformed
+
+    operation_authority_keys = {
+        authority.authority_ref.key for authority in operation.authorities
+    }
+    for transformed in event_transforms.values():
+        for ref in transformed.authority_snapshot_refs:
+            if authority_ref(ref, "transformed event authority").key not in operation_authority_keys:
+                raise RecordedResponseError(
+                    "transformed event authority is absent from held operation; "
+                    "refuse before index"
+                )
 
     recorded_routing = []
     for respondent in respondents:
