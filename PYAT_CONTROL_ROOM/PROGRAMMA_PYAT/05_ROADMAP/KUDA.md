@@ -1,6 +1,6 @@
 # KUDA — post-VOZHD DAG reconstruction: stranded, unreceived, incompletely integrated code
 
-**Revision KUDA-R5 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
+**Revision KUDA-R6 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
 
 **Hard exclusion:** Pre-FORGE legacy V542/V550/V550J/V551/V552/V553/V554/V555/V556/V557/V558, historical FFX R2 old DDM, and their questionnaire/storage/temporal/runtime files are not KUDA recoveries. Their history is preserved in [the immutable KUDA-R3 commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/KUDA.md), but **R3 is superseded as the active research ledger**. Post-rework references *to* old code do not confer in-scope status unless an actual rewritten-DAG implementation body is inspected.
 
@@ -43,6 +43,14 @@
 | `KUDA-077` | SUB-VOZHD B20 Route-C CACC1/CACC2 physical accelerator | S03 DVA/CHETIRI | `B20Q3_BOUNDED_QUALIFIED_UNSELECTED` |
 | `KUDA-078` | SUB-VOZHD HB04 exact frozen A/B/C sourcefree execution harness | S03 physical strategy | `HB04_SCOPED_CLOSED_UNSELECTED` |
 | `KUDA-079` | SUB-VOZHD B16 actual LiTS-I→Route-B→I05 full candidate-fate trial | S01/S03 | `REPORTED_REAL_SINGLE_SOURCE__DRIVER_BODY_UNREAD` |
+
+| `KUDA-080` | C-1 stale-C11 semantic/decoder cache identity correction | S01/S03 | `SOURCEFREE_26_PLUS_136_PASS__UNMERGED_G5_HELD` |
+| `KUDA-081` | C-3 GT12 C→D declared-source contradiction and exact-current transport guard | S06 post-FF | `SOURCEFREE_STACKED_REPAIR__UNMERGED_G5_HELD` |
+| `KUDA-082` | #786 all-35 R157-configured fixture→current C11 universal receive layer | S01 C11 intake | `SOURCEFREE_35_OF_35_FIXTURE_ACCEPTED__CLOSED_UNMERGED` |
+| `KUDA-083` | SUB-VOZHD Route-A deterministic compact LONG_SHARDED physical C11 carrier | S03 physical alternative | `ROUTE_A_B19Q2_SCOPED_QUALIFIED__NOT_SELECTED` |
+| `KUDA-084` | SUB-VOZHD R5 exact decoder-normalized physical batch and certified geometry seam | S01/S03 physical | `ROUTE_A_SHADOW_SUBSTRATE__SELECTED_READER_MISSING` |
+| `KUDA-085` | SUB-VOZHD Route-A R5→C05R2A actual source-backed C11 adapter and AUDIT69 | S03 C11→I03 | `ROUTE_A_B19Q2_QUALIFIED__C09_HELD` |
+| `KUDA-086` | R8 frozen GT2 Q86 source-question identity anti-spoof guard | S06 specialized FF | `SOURCEFREE_R8_140_PASS__UNMERGED_NONAUTHOR_REVIEW_HELD` |
 
 ## Full post-rework implementation evidence
 
@@ -398,13 +406,13 @@
 
 **Actual or held first reader:** Existing bounded GT2 Field Forge→PRE-V3/M1 first reader, with #945 96 PASS/1 XFAIL sourcefree test report.
 
-**Why it may be reclaimed:** Repair to currently selected bounded FF relation; not a second Field Forge.
+**Why it may be reclaimed:** Full S3-A FF01 post-rework lineage #921→#925→#931→#933→#936→#943→#945 conserves physical source claims; query/fact predicate, measure and response semantics; operation-specific current issuer; positive-versus-zero support; raw/weighted separation; exact condition-selected target and respondent extent. It remains the existing FF01 semantic owner, NOT a second Field Forge.
 
-**Qualification gap:** Selected November18 FF code different blob; G5 independent at #945 held.
+**Qualification gap:** Selected November18 FF code different blob; G5 independent at #945 held. The separate R8 Q86 exact source-question identity guard KUDA-086 is NOT present in this later S3-A file; it is independently additive, not automatically inherited.
 
 **Shortest nonduplicative comparison:** Compare with current GT2 owner exact denominator membership and authority before any merge.
 
-**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-060.
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-060, NEKUDA-075.
 
 ### KUDA-068 — #997→#1073 exact source-I02→saved physical body handoff
 
@@ -623,6 +631,119 @@
 **Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-071.
 
 
+### KUDA-080 — C-1 stale-C11 semantic/decoder cache identity correction
+
+**DAG organ:** S01/S03. **Fate:** `SOURCEFREE_26_PLUS_136_PASS__UNMERGED_G5_HELD`.
+
+**Exact post-rework code:** [rawlsing_next/pre553_source_backed_c11_facade.py](https://github.com/maidiu/rawlsing/blob/b0ebb531bc61d7ce0435eb6e0a2d85d66f5c3819/rawlsing_next/pre553_source_backed_c11_facade.py) at `b0ebb531bc61d7ce0435eb6e0a2d85d66f5c3819`; Git blob `a1335c60674963a42bbf1028b70fdf8f2ce5de2e`.
+
+**Actual operation and first reader:** _cache_projection_preimage recursively conserves entire governed projection rule preimage; updated source_backed_facade_key and accelerator decoder-context identity bind row→respondent, response/occurrence/routing/weight rules and one-shot authority iterable. Real existing facade→current I03 first consumer in #922 verifies changed Y=1→Y=0 counts with fresh/cached/restore parity.
+
+**Why this is reclaimable:** Actual post-rework cache equivalence repair: the old identical nominal source SHA/projection ref could return a stale C11 release after independent rules/row ownership changed. Distinct from S1-A KUDA-062 concurrency check-put repair.
+
+**Receiving/currentness ceiling:** #922 author reported 26 focused +136 wider passing sourcefree cases at tested cut; final branch head differs from tested source commit due additional return artifacts. No independently accepted G5 or measured original35 O(N) cost. Nov18 selected file Git blob 7c967b8... differs.
+
+**Shortest nonduplicative next check:** Compare this cache-key semantic fix against existing S1-A producer admission/race changes and selected owner; integrate only nonduplicate preimage/decoder identity, measure memory and CPU.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-073.
+
+### KUDA-081 — C-3 GT12 C→D declared-source contradiction and exact-current transport guard
+
+**DAG organ:** S06 post-FF. **Fate:** `SOURCEFREE_STACKED_REPAIR__UNMERGED_G5_HELD`.
+
+**Exact post-rework code:** [rawlsing_next/gt12_c_to_d_relation_bridge.py](https://github.com/maidiu/rawlsing/blob/624ad8d1516d32ecb30657d61103636c6fc966af/rawlsing_next/gt12_c_to_d_relation_bridge.py) at `624ad8d1516d32ecb30657d61103636c6fc966af`; Git blob `2f5066fdb308386f700537c1931655499a99ca13`.
+
+**Actual operation and first reader:** admit_gt12_c_relation rejects a semantically signed FF01 profile declaring an alien physical SOURCE_ARTIFACT even when the consumer would otherwise stamp the frozen GT2 source; additive admit_gt12_c_relation_from_fixed_current_transport checks the actual fixed current profile without recreating a 76,843-ref provenance closure. #921→#925→#931 lineage preserved into #945 exact bridge blob.
+
+**Why this is reclaimable:** This is a separate current C→D actual consumer protection from KUDA-067's upstream FF01 source/denominator/query grammar checks; selected bridge blob ea04ec... does not contain these functions.
+
+**Receiving/currentness ceiling:** Earlier B-only downstream fix was insufficient because FF01 could erase contradictory source before relation minting. Later stacked #945 does not confer independent integration/authority or operative N6/N9. No native/original35 G5.
+
+**Shortest nonduplicative next check:** Qualify coupled FF01 producer at KUDA-067 AND this C→D source guard under identical exact heads; cherry-pick no parallel D producer.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-074, NEKUDA-075.
+
+### KUDA-082 — #786 all-35 R157-configured fixture→current C11 universal receive layer
+
+**DAG organ:** S01 C11 intake. **Fate:** `SOURCEFREE_35_OF_35_FIXTURE_ACCEPTED__CLOSED_UNMERGED`.
+
+**Exact post-rework code:** [rawlsing_next/universal_source_to_c11/consumer.py](https://github.com/maidiu/rawlsing/blob/0dc9a21f9b491d27c711082ad9c39c05509211b0/rawlsing_next/universal_source_to_c11/consumer.py) at `0dc9a21f9b491d27c711082ad9c39c05509211b0`; Git blob `41cfc0f5a1b0528a60f35f08169f2464d425aa60`.
+
+**Actual operation and first reader:** Eight-module universal_source_to_c11 package (registry/consumer/ledger/negative/provenance/cli/cold_restore) invokes existing R157 configuration→GovernedC11Projection→current facade→validate_c11_source_release/ingest→C11Repository, checks native/ingest receipt parity, M01–M18 coverage, exact imported file identities, and cold SRC26 restore. #786 reports 41 focused PASS and 8/8 refusal checks.
+
+**Why this is reclaimable:** A genuine modern all-source metadata-driven C11 receive harness with 35 accepted fixture releases, not a string list of sources; absent entirely from Nov18 selected rawlsing_next, and distinct from S1-B adapter KUDA-001 or #997 source-to-saved KUDA-068.
+
+**Receiving/currentness ceiling:** CRITICAL: all 35 original sources remain original_execution=NOT_RUN, 24 source configs NOT_RUN and 11 scope FIXTURE_ONLY; 18,413 slots and 18,250 joins are metadata, NOT actual read respondent data. PR closed unmerged; imports 456 R157 files with possible stale dependency ABI. Source/rights+workload issuer not granted.
+
+**Shortest nonduplicative next check:** Compare only unique roster→current-C11 receipt/parity and negative tests with selected S1-B/S2-B/S2-D source admission; do not transplant the entire 456-file old source copy or claim all35 native completion.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-076.
+
+### KUDA-083 — SUB-VOZHD Route-A deterministic compact LONG_SHARDED physical C11 carrier
+
+**DAG organ:** S03 physical alternative. **Fate:** `ROUTE_A_B19Q2_SCOPED_QUALIFIED__NOT_SELECTED`.
+
+**Exact post-rework code:** [rawlsing_next/pre553_r5_compact_carrier.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/pre553_r5_compact_carrier.py) at `8676569af1e6580979a7265aeca1c499165fde24`; Git blob `92e364b31eaf27be1bca2081eff65f6ffb779c3d`.
+
+**Actual operation and first reader:** R5CompactLongShardedBuilder/Reader store canonical exact physical/semantics-neutral rows in deterministic gzip compact array members, external sort runs, manifest/root and hash-verified reconstruction. Source adapter KUDA-085 is an actual consumer; SUB-VOZHD B19Q2 reports twice-executed eight-test Route-A C05R2A qualification and HB04 jointly uses Route-A.
+
+**Why this is reclaimable:** Substantial post-VOZHD physical carrier alternative code (31.5 KB) under root rawlsing_next, absent from selected Nov18 PRE-MAIN. No legacy V550 archive was counted.
+
+**Receiving/currentness ceiling:** C09 architecture selection NOT issued; real 2-source WVS7 missing. Branch R5 codec is older than the protected codec, so this carrier must not be copied as an inseparable stale-code bundle; interoperability untested at selected current ABI.
+
+**Shortest nonduplicative next check:** Compare accepted W03/S2-C physical carriers and stable root/typing semantics first; isolate reusable deterministic member/audit operations, do not duplicate canonical carrier by default.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-077, NEKUDA-078.
+
+### KUDA-084 — SUB-VOZHD R5 exact decoder-normalized physical batch and certified geometry seam
+
+**DAG organ:** S01/S03 physical. **Fate:** `ROUTE_A_SHADOW_SUBSTRATE__SELECTED_READER_MISSING`.
+
+**Exact post-rework code:** [rawlsing_next/pre553_r5_seam.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/pre553_r5_seam.py) at `8676569af1e6580979a7265aeca1c499165fde24`; Git blob `cef326ebbc40468428378f7fdbe76e4756179f39`.
+
+**Actual operation and first reader:** R5GeometryCertificate/normalize_decoder_batch/iter_source_native_rows bind exact variable records, raw physical cell/state observations and source geometry without assigning C11 semantic/event-occurrence meaning; KUDA-083 compact carrier and KUDA-085 exact source-backed adapter use its records/certificate.
+
+**Why this is reclaimable:** Operative decoder→physical transport implementation for the redesigned C11 DAG, separate from semantic projection, not old DDM. The branch has explicit real source-shape input operations.
+
+**Receiving/currentness ceiling:** Nov18 selected code lacks the seam; selected R5 codec has additional date/opaque decoder normalization absent from older branch. Need strict source geometry and missingness parity with selected physical decoder; no current direct first-consumer G5 or independently issued source.
+
+**Shortest nonduplicative next check:** Compare exact geometry and decoder-normalization with pre553_physical_decoder and current selected codec, reuse unique seam-only functions without downgrading codec.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-077.
+
+### KUDA-085 — SUB-VOZHD Route-A R5→C05R2A actual source-backed C11 adapter and AUDIT69
+
+**DAG organ:** S03 C11→I03. **Fate:** `ROUTE_A_B19Q2_QUALIFIED__C09_HELD`.
+
+**Exact post-rework code:** [rawlsing_next/pre553_r5_source_backed_adapter.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/pre553_r5_source_backed_adapter.py) at `8676569af1e6580979a7265aeca1c499165fde24`; Git blob `d4915e7e6755ba1850756aebff72f982f73a332b`.
+
+**Actual operation and first reader:** inspect_reopened_r5_physical_source and prepare_r5_exact_physical_cell_stream verify reopened R5 carrier, reconstruct decoder-normalized PhysicalCell exact types, and invoke EXISTING build_source_backed_c11_repository through C05R2A facade. Companion pre553_r5_single_pass_audit69.py (Git blob ffb063b93c86e215604eecb29a9545c7efdff399) performs one-pass complete row/member audit. B19Q2 records two fresh eight-test qualified runs; HB04 imports exact qualified Route-A implementation.
+
+**Why this is reclaimable:** An actual renamed-source/physical→current C11 first consumer for the alternate reworked DAG; both source adapter and audit helper absent selected Nov18 PRE-MAIN.
+
+**Receiving/currentness ceiling:** No independent live port to current selected R5 codec, selected S2-C physical estate or original35 authority. Exact release identity only bounded tests; never infer C09 architecture victory or hard-case real source economics.
+
+**Shortest nonduplicative next check:** Compare adapter's exact PhysicalCell/C11 contract against current S1-B/S2-B and selected producer; transplant individual proof-worthy operations only if not subsumed.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-077, NEKUDA-078.
+
+### KUDA-086 — R8 frozen GT2 Q86 source-question identity anti-spoof guard
+
+**DAG organ:** S06 specialized FF. **Fate:** `SOURCEFREE_R8_140_PASS__UNMERGED_NONAUTHOR_REVIEW_HELD`.
+
+**Exact post-rework code:** [rawlsing_next/field_forge_conditional_support.py](https://github.com/maidiu/rawlsing/blob/9c776b358c5f5a31f2ff2d35460d5350c0dc2bc8/rawlsing_next/field_forge_conditional_support.py) at `9c776b358c5f5a31f2ff2d35460d5350c0dc2bc8`; Git blob `cad7b2e1b1dbaf1478b3d0e2816f49629c31b2a1`.
+
+**Actual operation and first reader:** _frozen_q86_source_identity obtains actual wave1_r5_q86_c11_projection.question_ref(Q86B/Q86A); _validate_frozen_q86_source_identity is invoked by produce_exact_conditional_support_profile before minting frozen GT2 relation. #774 rejects Q99, forged kind/ref/hash/swapped source or roles, source/wave/risk mismatches; author reports 140 focused PASS, 58 C11/facade PASS and 41 receiver PASS.
+
+**Why this is reclaimable:** A distinct specialized source identity guard absent from selected FF blob a70decb..., and also absent in the later broader #945 S3-A FF blob fd8570ec...; latest-looking branch is not the union of separately qualified repairs.
+
+**Receiving/currentness ceiling:** #774 review not independent terminal; inherited GT34 suite 1 fail/3 errors. This specialized guard must NEVER become a universal pair authority; source-free only, general GF1 is separate KUDA-074.
+
+**Shortest nonduplicative next check:** Integrate one exact source-identity guard, if independently received, into current FF01 final code after comparing #945; do NOT overwrite newer FF01 with earlier full file.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-079.
+
+
 ## Existing rewritten-DAG baselines — do NOT call these stranded
 
 - **Selected E41/R08/L01 path:** `rawlsing_next/pre553_evidence_world_consumer.py` at frozen PRE-MAIN `5d387a9a8c72`. Already selected sourcefree first reader; only discover a new branch-specific missing capability, not another binder.
@@ -640,3 +761,7 @@ Search **post-Aug DVA/TRII/CHETIRI/VOZDH-VERKHOVOD DAG lineages and post-rework 
 ## R5 source-specific excluded searches
 
 Exact Git comparisons of six isolated Trii/Chetiri documentary branches (c04 I03, c05 I05, c07 compiled, c08 incremental, d13 retention, d14 materialization) revealed no additional branch-only root rawlsing_next Python production modules. Their source reviews remain important but are not KUDA implementations. The separate post-VOZHD B architecture/compiler branch does contain the executable Route-C and AS4 code recorded above. No legacy V550/V558 code counted. Original source execution and test receipts are historical, not newly executed in R5; no C09 decision or native all35 grant.
+
+## R6 negative-find search: no false duplicate imports
+
+Examined SUB-VOZHD B compiler exact root module deltas and existing current `pre553_r5_codec.py`; the six Route-A physical files are **not** all new: the current selected codec is newer, so only the compact carrier, decoder seam, single-pass audit and R5→C11 adapter remain candidate value. Direct comparisons of selected SDTF R4 D1/rule-currentness/witness/world-redrive and candidate branch found those four production blobs **byte-identical to selected PRE-MAIN** (NOT KUDA). #707 grouped-I03 and #706 C1 k-way precise primary receipt were received through protected PRs, so not counted as strays. #1028 three synthetic source series is a sourcefree preparation return, not a new source producer. The #786 universal all35 receiver does NOT read original source bytes. #774 specialized Q86 source identity and #945 FF01 semantic/denominator repairs are orthogonal and must be compared jointly rather than whole-file merged.

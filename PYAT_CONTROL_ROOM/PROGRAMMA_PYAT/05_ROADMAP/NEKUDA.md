@@ -1,6 +1,6 @@
 # NEKUDA — lesser / defective / rejected **post-VOZHD DAG implementations only**
 
-**Revision NEKUDA-R5 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
+**Revision NEKUDA-R6 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
 
 **Evidence:** Pre-2026-11-19 ~12:50 ET exact source cuts; sourcefree/author/independent G5/protected/native science remain distinct. A negative may represent a *source-cut warning*, not a defect in every descendant. Do not classify unsupported code as a success, invent a successor, or start another branch. Entries without KUDA successor remain HOLD, not implicit authorization to build.
 
@@ -38,6 +38,14 @@
 | `NEKUDA-070` | HB04 and B20Q3 qualified A/B/C misrepresented as selected C09 production | KUDA-077, KUDA-078 | HB04 closure/Route-C qualification are real, but C09 remained closed pending HB01 WVS7, HB05 two-source workload, HB06 parity oracle, H |
 | `NEKUDA-071` | B16 LiTS 82/82 work fates mistaken for 82 scientifically positive candidates | KUDA-079 | All 82 real-source candidate outcomes ended EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED; effective driver is packed i |
 | `NEKUDA-072` | PR #691 claimed R17 GF1 byte identity differs at inspected PR source | KUDA-074 | PR body quotes original R17 blob 746d669314ddd114ec21d3a35c13c452666863fe; direct file at a6b815… has Git blob 079e0397b9b91cea343c9248 |
+
+| `NEKUDA-073` | C11 nominal source/projection cache key aliases changed response and respondent ownership | KUDA-080 | At #922 original protected cut, independently changed row→respondent rule, response rule or decoder digest led cache to return a stale C11 |
+| `NEKUDA-074` | C→D direct bridge stamped frozen source despite relation declaring alien SOURCE_ARTIFACT | KUDA-081 | #921 differential proved original selected D bridge accepted a hash-coherent FF01 relation whose declared physical source differed from th |
+| `NEKUDA-075` | C-3 intermediate FF01 semantic/issuer/zero/extent repairs are not full final accepted code | KUDA-067, KUDA-081 | #921→#925→#931→#933→#936→#943→#945 old-code courts sequentially exposed source-erasure, mismatched query/fact predicate+measure+response,  |
+| `NEKUDA-076` | Universal C11 35 fixture receipts mistaken for all35 actual respondents or completed source issuance | KUDA-082 | #786's own ledger explicitly says source_read_performed=false and original_execution=NOT_RUN for all35; 24 configs NOT_RUN and 11 scopes F |
+| `NEKUDA-077` | Route-A archived R5 codec older than selected PRE-MAIN codec | KUDA-083, KUDA-084, KUDA-085 | SUB-VOZHD branch codec blob 72f8f3c... lacks selected PRE-MAIN's normalize_decoder_physical_value, opaque_decoder_value and date/time norm |
+| `NEKUDA-078` | B19Q2 Route-A limited eight-test qualification interpreted as production topology decision | KUDA-083, KUDA-085 | Route-A exact adapter B19Q2 qualified twice for eight bounded tests, and HB04 qualified three candidates, but C09 remained closed pending  |
+| `NEKUDA-079` | R8 Q86 exact source-identity guard accidentally erased by S3-A cumulative FF01 overwrite | KUDA-086 | #774 source blob cad7b2e... calls _validate_frozen_q86_source_identity; later #945 source blob fd8570ec... implements many additional clos |
 
 ## Full post-rework negative and supersession records
 
@@ -288,6 +296,63 @@
 **Inferior/unsafe claim:** PR body quotes original R17 blob 746d669314ddd114ec21d3a35c13c452666863fe; direct file at a6b815… has Git blob 079e0397b9b91cea343c92480c811e5a60ed4e3c. Cause unverified.
 
 **Preservation rule:** Compare original R17 code before claiming byte-identical transplant; mismatch alone does not prove a semantic defect.
+
+
+### NEKUDA-073 — C11 nominal source/projection cache key aliases changed response and respondent ownership
+
+**Better candidate:** KUDA-080. **Exact source:** [rawlsing_next/pre553_source_backed_c11_facade.py](https://github.com/maidiu/rawlsing/blob/b0ebb531bc61d7ce0435eb6e0a2d85d66f5c3819/rawlsing_next/pre553_source_backed_c11_facade.py) at `b0ebb531bc61d7ce0435eb6e0a2d85d66f5c3819`.
+
+**Limitation or real defect:** At #922 original protected cut, independently changed row→respondent rule, response rule or decoder digest led cache to return a stale C11 logical release with same nominal ref; old I03 fact persisted. Current candidate binds whole projection/decoder context and restored facts.
+
+**Conservation rule:** Not a general authority override; compare separately with KUDA-062 source admission race correction.
+
+### NEKUDA-074 — C→D direct bridge stamped frozen source despite relation declaring alien SOURCE_ARTIFACT
+
+**Better candidate:** KUDA-081. **Exact source:** [rawlsing_next/gt12_c_to_d_relation_bridge.py](https://github.com/maidiu/rawlsing/blob/18b189b36b6661865a053b055199f845ea44b156/rawlsing_next/gt12_c_to_d_relation_bridge.py) at `18b189b36b6661865a053b055199f845ea44b156`.
+
+**Limitation or real defect:** #921 differential proved original selected D bridge accepted a hash-coherent FF01 relation whose declared physical source differed from the frozen source it stamped. B fixed downstream contradiction, but #925 showed contradictory upstream source could be erased before D.
+
+**Conservation rule:** Conserve independent downstream declared-source check AND upstream FF01 source conservation; neither alone sufficient.
+
+### NEKUDA-075 — C-3 intermediate FF01 semantic/issuer/zero/extent repairs are not full final accepted code
+
+**Better candidate:** KUDA-067, KUDA-081. **Exact source:** [rawlsing_next/field_forge_conditional_support.py](https://github.com/maidiu/rawlsing/blob/624ad8d1516d32ecb30657d61103636c6fc966af/rawlsing_next/field_forge_conditional_support.py) at `624ad8d1516d32ecb30657d61103636c6fc966af`.
+
+**Limitation or real defect:** #921→#925→#931→#933→#936→#943→#945 old-code courts sequentially exposed source-erasure, mismatched query/fact predicate+measure+response, unsupported operation-specific issuer, empty issuer, zero supported numerator, weighted RAW leak and respondent member count/risk inconsistency. #945 96 PASS/1 XFAIL is final AUTHOR sourcefree only, not independent G5.
+
+**Conservation rule:** Do not merge intermediate PRs separately, do not assume #945 includes orthogonal R8 Q86 exact identity or grants generic FF authority.
+
+### NEKUDA-076 — Universal C11 35 fixture receipts mistaken for all35 actual respondents or completed source issuance
+
+**Better candidate:** KUDA-082. **Exact source:** [rawlsing_next/universal_source_to_c11/ledger.py](https://github.com/maidiu/rawlsing/blob/0dc9a21f9b491d27c711082ad9c39c05509211b0/rawlsing_next/universal_source_to_c11/ledger.py) at `0dc9a21f9b491d27c711082ad9c39c05509211b0`.
+
+**Limitation or real defect:** #786's own ledger explicitly says source_read_performed=false and original_execution=NOT_RUN for all35; 24 configs NOT_RUN and 11 scopes FIXTURE_ONLY. 35 accepted synthetic/fixture C11 releases and 18,250 metadata relation joins cannot establish empirical evidence.
+
+**Conservation rule:** Maintain all35 metadata and refusal proof, but never convert fixture proof into all35 native scientific evidence.
+
+### NEKUDA-077 — Route-A archived R5 codec older than selected PRE-MAIN codec
+
+**Better candidate:** KUDA-083, KUDA-084, KUDA-085. **Exact source:** [rawlsing_next/pre553_r5_codec.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/pre553_r5_codec.py) at `8676569af1e6580979a7265aeca1c499165fde24`.
+
+**Limitation or real defect:** SUB-VOZHD branch codec blob 72f8f3c... lacks selected PRE-MAIN's normalize_decoder_physical_value, opaque_decoder_value and date/time normalization added in selected blob f5f64d9...; the stored Route-A carrier code may be valid but blind whole-tree copy would regress codec correctness.
+
+**Conservation rule:** Preserve newer selected typed-value source authority and test candidate carrier/adapters explicitly against it. No downgrade.
+
+### NEKUDA-078 — B19Q2 Route-A limited eight-test qualification interpreted as production topology decision
+
+**Better candidate:** KUDA-083, KUDA-085. **Exact source:** [data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/49_B20Q3_ACCEPTANCE_ABC_INTAKE_FREEZE_AND_HB04_AUTHORIZATION_R1.md](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/49_B20Q3_ACCEPTANCE_ABC_INTAKE_FREEZE_AND_HB04_AUTHORIZATION_R1.md) at `8676569af1e6580979a7265aeca1c499165fde24`.
+
+**Limitation or real defect:** Route-A exact adapter B19Q2 qualified twice for eight bounded tests, and HB04 qualified three candidates, but C09 remained closed pending WVS7 HB01 and HB05/HB06/HB07. No native broad-source runtime architecture selected.
+
+**Conservation rule:** Separate physical engineering proof from owner choice of data architecture and real survey permissions.
+
+### NEKUDA-079 — R8 Q86 exact source-identity guard accidentally erased by S3-A cumulative FF01 overwrite
+
+**Better candidate:** KUDA-086. **Exact source:** [rawlsing_next/field_forge_conditional_support.py](https://github.com/maidiu/rawlsing/blob/9c776b358c5f5a31f2ff2d35460d5350c0dc2bc8/rawlsing_next/field_forge_conditional_support.py) at `9c776b358c5f5a31f2ff2d35460d5350c0dc2bc8`.
+
+**Limitation or real defect:** #774 source blob cad7b2e... calls _validate_frozen_q86_source_identity; later #945 source blob fd8570ec... implements many additional closure checks but has no question_ref/wave1_r5_q86_c11_projection/_validate_frozen_q86_source_identity call. Earlier source guard is independently authored and not automatically inherited.
+
+**Conservation rule:** Union only through exact implementation tests; never replace final FF01 with old #774 full file or infer source-identity guard from generalized negative cases.
 
 
 ## Excluded material
