@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `40ee6890d0e26021e6a4a9549b22c7e6f726ce68`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **108-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `36fad3e96b1778ed4c8151eda658bbe694a5e263`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **108-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -172,3 +172,5 @@ R17 P018 has a [scoped sourcefree receipt](https://github.com/maidiu/rawlsing/bl
 #1248 [focused execution](PR1248_FOCUSED_EXECUTION_20261121.json) reproduced seven R21 tests in both modes and two valid cold SQLite chains in the distinct joined demo. Protected receiving remains held.
 
 - [#1257](https://github.com/maidiu/rawlsing/pull/1257) R25 at `d9582aef`. Committed untested. SORACLE owns first-consumer execution.
+
+#1249 [same-host exact execution](PR1249_R19_EXECUTION_20261121.md) at `40dbbd4c` passed 305 tests in normal and optimized Python 3.11. Protected receiving remains held.
