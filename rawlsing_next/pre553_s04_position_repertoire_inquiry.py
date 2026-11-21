@@ -32,6 +32,9 @@ from rawlsing_next.pre553_s04_determinicity_cycle import (
 from rawlsing_next.pre553_s04_partially_identified_repertoire import (
     PartiallyIdentifiedRepertoire, ask_partial_repertoire_configuration,
 )
+from rawlsing_next.pre553_s04_uncertain_repertoire import (
+    UncertainRepertoire, ask_uncertain_repertoire_configuration,
+)
 from rawlsing_next.source_backed_positioned_subject_possibility import (
     PositionedSubjectPossibilityResult,
 )
@@ -178,6 +181,10 @@ def inquire_position_repertoire(
     independently_pinned_n10e_ref: ExactRef | None = None,
     f6_relation: PartiallyIdentifiedRepertoire | None = None,
     independently_pinned_f6_ref: ExactRef | None = None,
+    f6_replay_inputs: Mapping[str, Any] | None = None,
+    f6_uncertain_relation: UncertainRepertoire | None = None,
+    independently_pinned_f6_uncertain_ref: ExactRef | None = None,
+    f6_uncertain_replay_inputs: Mapping[str, Any] | None = None,
 ) -> PositionRepertoireInquiry:
     """Call existing real S04 algebra, attach separately issued owner results.
 
@@ -269,16 +276,33 @@ def inquire_position_repertoire(
     elif independently_pinned_n10e_ref is not None:
         raise PositionRepertoireInquiryError("UNMATCHED_N10E_EXPECTED_PIN")
 
+    # F6 is a separately sourced probability-compatibility lane, never an
+    # I03 respondent join. Exact finite-frame and survey-interval authorities
+    # have distinct estimands and must never be silently substituted.
     f6 = None
+    if f6_relation is not None and f6_uncertain_relation is not None:
+        raise PositionRepertoireInquiryError("F6_DISTINCT_ESTIMANDS_MUST_NOT_BE_MERGED")
     if f6_relation is not None:
         if type(f6_relation) is not PartiallyIdentifiedRepertoire:
             raise PositionRepertoireInquiryError("ACTUAL_F6_RELATION_REQUIRED")
         _require_exact_pin(f6_relation, independently_pinned_f6_ref, "F6")
         if request.f6_events is None:
             raise PositionRepertoireInquiryError("F6_EVENT_ROLES_REQUIRED")
+        if (f6_uncertain_replay_inputs is not None
+                or independently_pinned_f6_uncertain_ref is not None):
+            raise PositionRepertoireInquiryError("F6_CROSS_LANE_ARGUMENTS_FORBIDDEN")
+        replay_kwargs = {}
+        if f6_replay_inputs is not None:
+            if (type(f6_replay_inputs) is not dict
+                    or set(f6_replay_inputs) != {
+                        "left", "right", "left_event_cell", "right_event_cell",
+                        "authority_registry", "common_frame_authority_ref",
+                    }):
+                raise PositionRepertoireInquiryError("F6_EXACT_REPLAY_INPUT_SHAPE_REQUIRED")
+            replay_kwargs = dict(f6_replay_inputs)
         calculated = ask_partial_repertoire_configuration(
             relation=f6_relation, event_a=request.f6_events[0],
-            event_b=request.f6_events[1],
+            event_b=request.f6_events[1], **replay_kwargs,
         )
         f6 = {
             "source_owner": "EXISTING_S04_F6_SEPARATE_COMMON_FRAME",
@@ -287,7 +311,37 @@ def inquire_position_repertoire(
             "not_merged_into_s04_respondent_joint": True,
             "not_a_sampling_probability_or_actor": True,
         }
-    elif request.f6_events is not None or independently_pinned_f6_ref is not None:
+    elif f6_uncertain_relation is not None:
+        if type(f6_uncertain_relation) is not UncertainRepertoire:
+            raise PositionRepertoireInquiryError("ACTUAL_F6_UNCERTAIN_RELATION_REQUIRED")
+        _require_exact_pin(f6_uncertain_relation, independently_pinned_f6_uncertain_ref, "F6_UNCERTAIN")
+        if request.f6_events is None:
+            raise PositionRepertoireInquiryError("F6_EVENT_ROLES_REQUIRED")
+        if f6_replay_inputs is not None or independently_pinned_f6_ref is not None:
+            raise PositionRepertoireInquiryError("F6_CROSS_LANE_ARGUMENTS_FORBIDDEN")
+        if (type(f6_uncertain_replay_inputs) is not dict
+                or set(f6_uncertain_replay_inputs) != {
+                    "left", "right", "left_event_cell", "right_event_cell",
+                    "registry", "left_interval_authority",
+                    "right_interval_authority", "common_population_authority",
+                }):
+            raise PositionRepertoireInquiryError("F6_UNCERTAIN_EXACT_REPLAY_INPUTS_REQUIRED")
+        calculated = ask_uncertain_repertoire_configuration(
+            relation=f6_uncertain_relation, event_a=request.f6_events[0],
+            event_b=request.f6_events[1], **f6_uncertain_replay_inputs,
+        )
+        f6 = {
+            "source_owner": "EXISTING_S04_F6_ISSUED_POPULATION_INTERVALS",
+            "relation_ref": f6_uncertain_relation.ref.as_dict(),
+            "constraint": calculated,
+            "not_merged_into_s04_respondent_joint": True,
+            "not_a_sampling_probability_or_actor": True,
+        }
+    elif (request.f6_events is not None
+            or independently_pinned_f6_ref is not None
+            or f6_replay_inputs is not None
+            or independently_pinned_f6_uncertain_ref is not None
+            or f6_uncertain_replay_inputs is not None):
         raise PositionRepertoireInquiryError("F6_RELATION_AND_EVENTS_REQUIRED")
 
     source_joint_grade = (
