@@ -112,7 +112,7 @@ class ContingentWorldNoticeR27(unittest.TestCase):
         missing=copy(current)
         missing['sites'].pop('home')
         self.assertEqual(qualify_contingent_world_notice(
-            missing,self.a.ledger.actors(),notice())['status'],
+            missing,self.a.ledger.actors(),notice(requires={}))['status'],
             'INAPPLICABLE_SITE_NO_LONGER_EXISTS')
 
     def test_forged_person_and_invalid_offer_fail_before_any_write(self):
