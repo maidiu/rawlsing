@@ -28,12 +28,14 @@ from typing import Iterator
 
 from rawlsing_next.pre553_physical_decoder import (
     PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence,
+    PHYSICAL_METADATA_CONTRACT, build_physical_metadata_payload,
 )
 from rawlsing_next.pre553_r5_codec import (
     R5TypedValueCodec, canonical_json as r5_canonical_json,
 )
 
-SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@1"
+SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@2"
+LEGACY_SCHEMA = "PREFF_C0_SOURCEFREE_PHYSICAL_CELL_JOURNAL@1"
 _CODEC = R5TypedValueCodec()
 
 
@@ -86,6 +88,11 @@ class PhysicalCellJournalReceipt:
     gzip_bytes: int
     path: str
 
+    @property
+    def full_physical_metadata_retained(self) -> bool:
+        """Version 2 retains the actual dictionary; v1 retains only its digest."""
+        return self.schema == SCHEMA
+
     def material(self) -> dict:
         return {
             "schema": self.schema, "source_sha256": self.source_sha256,
@@ -116,6 +123,7 @@ class PhysicalCellJournal:
         self._gzip = None
         self._expected_sha: str | None = None
         self._metadata_digest: str | None = None
+        self._metadata_bytes: bytes | None = None
         self._rows = 0
         self._variables: tuple[tuple[int, str], ...] = ()
         self._seen = 0
@@ -129,6 +137,24 @@ class PhysicalCellJournal:
             raise PhysicalCellJournalError("NEW exact physical-source incidence required")
         self._expected_sha = _sha(incidence.source_sha256)
         self._metadata_digest = _sha(incidence.physical_metadata_digest)
+        # Preserve the full original physical dictionary and reader receipt,
+        # not merely a checksum that becomes uninterpretable after SAV/DTA
+        # removal. This remains physical evidence, never semantic issuance.
+        source_metadata = build_physical_metadata_payload(
+            source_sha256=incidence.source_sha256,
+            source_format=incidence.source_format,
+            reader_configuration=incidence.reader_configuration,
+            file_metadata=incidence.file_metadata,
+            variables=incidence.variables,
+        )
+        self._metadata_bytes = json.dumps(
+            source_metadata, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+        if sha256(self._metadata_bytes).hexdigest() != self._metadata_digest:
+            raise PhysicalCellJournalError(
+                "physical source dictionary differs from decoder metadata digest"
+            )
         self._rows = incidence.row_count
         self._variables = tuple((v.ordinal, v.name) for v in incidence.variables)
         if (type(self._rows) is not int or self._rows < 1
@@ -146,6 +172,12 @@ class PhysicalCellJournal:
                 filename="", mode="wb", fileobj=self._raw_stream, mtime=0,
                 compresslevel=6,
             )
+            metadata_file = self._stage / "physical_metadata.json"
+            with metadata_file.open("xb") as metadata_handle:
+                os.chmod(metadata_file, 0o600)
+                metadata_handle.write(self._metadata_bytes)
+                metadata_handle.flush()
+                os.fsync(metadata_handle.fileno())
             self.state = "writing"
         except BaseException:
             self.abort()
@@ -277,7 +309,8 @@ def read_physical_cells(
     verification pass cannot change what the caller receives. This grants no
     mapping, scientific inference or original-source retention rights.
     """
-    if type(receipt) is not PhysicalCellJournalReceipt or receipt.schema != SCHEMA:
+    if (type(receipt) is not PhysicalCellJournalReceipt
+            or receipt.schema not in (SCHEMA, LEGACY_SCHEMA)):
         raise PhysicalCellJournalError("independently held exact physical receipt required")
     if (type(receipt.row_count) is not int or receipt.row_count < 1
             or type(receipt.cell_count) is not int
@@ -316,6 +349,38 @@ def read_physical_cells(
         raise PhysicalCellJournalError("physical manifest unreadable") from exc
     if material != receipt.material():
         raise PhysicalCellJournalError("physical journal manifest differs from independent receipt")
+
+    # R16 adds exact physical dictionary preservation. Unlike R16's earlier
+    # cold reader, retain the pre-existing private-inode/no-follow checks and
+    # one pinned anonymous compressed snapshot for BOTH validation and replay.
+    metadata_file = target / "physical_metadata.json"
+    if receipt.schema == SCHEMA:
+        try:
+            with _private_regular_reader(metadata_file) as metadata_handle:
+                metadata_bytes = metadata_handle.read()
+            if sha256(metadata_bytes).hexdigest() != receipt.source_metadata_digest:
+                raise PhysicalCellJournalError(
+                    "physical source dictionary differs from retained digest"
+                )
+            dictionary = json.loads(metadata_bytes.decode("utf-8"))
+            if (type(dictionary) is not dict
+                    or dictionary.get("schema") != PHYSICAL_METADATA_CONTRACT
+                    or dictionary.get("source_sha256") != receipt.source_sha256
+                    or type(dictionary.get("variables")) is not list):
+                raise PhysicalCellJournalError("physical dictionary identity differs from decoder")
+            observed = tuple(
+                (v["ordinal"], v["name"]) for v in dictionary["variables"]
+            )
+            if observed != receipt.variables:
+                raise PhysicalCellJournalError("physical dictionary coordinates differ from receipt")
+        except (OSError, UnicodeError, ValueError, TypeError, KeyError) as exc:
+            if isinstance(exc, PhysicalCellJournalError):
+                raise
+            raise PhysicalCellJournalError("physical source dictionary invalid or unreadable") from exc
+    elif metadata_file.exists() or metadata_file.is_symlink():
+        raise PhysicalCellJournalError(
+            "historical v1 physical receipt cannot gain a new v2 source dictionary"
+        )
 
     # This file descriptor is the only read of the published body. The unlinked
     # temporary inode lives inside the explicit private retention root; it is
@@ -415,7 +480,7 @@ def reproject_sourcefree_c11_from_physical_journal(
     return build_validated_source_backed_c11_release_from_stream(stream, projection)
 
 __all__ = [
-    "SCHEMA", "PhysicalCellJournal", "PhysicalCellJournalReceipt",
+    "SCHEMA", "LEGACY_SCHEMA", "PhysicalCellJournal", "PhysicalCellJournalReceipt",
     "PhysicalCellJournalError", "read_physical_cells",
     "reproject_sourcefree_c11_from_physical_journal",
 ]

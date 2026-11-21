@@ -159,6 +159,29 @@ class PreparedSavedC11Admission(SavedC11Admission):
 
     __slots__ = ()
 
+    @classmethod
+    def from_verified_admission(
+        cls, admitted: SavedC11Admission,
+    ) -> "PreparedSavedC11Admission":
+        """Upgrade ONE already authenticated saved estate to prepared reading.
+
+        Reuse the original independently pinned private estate and exact frozen
+        catalog, not a new caller-supplied root, an inferred release, or an
+        extra whole-estate hash pass. The existing _initialize path rechecks
+        release/catalog/current and snapshots its catalog. This is only an
+        execution-local reuse capability, not a source/science permission.
+        """
+        if type(admitted) is not SavedC11Admission:
+            raise PreparedSavedI03Error(
+                "EXACT_EXISTING_SAVED_ADMISSION_REQUIRED"
+            )
+        admitted.check_current()
+        return cls._from_verified_estate(
+            admitted._estate,
+            admitted.release_ref,
+            admitted._runtime_catalog,
+        )
+
     @contextmanager
     def prepared_i03(self) -> Iterator[PreparedI03Session]:
         self.check_current()
