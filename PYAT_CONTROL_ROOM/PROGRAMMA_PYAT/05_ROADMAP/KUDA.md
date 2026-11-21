@@ -1,6 +1,6 @@
 # KUDA — post-VOZHD DAG reconstruction: stranded, unreceived, incompletely integrated code
 
-**Revision KUDA-R4 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
+**Revision KUDA-R5 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
 
 **Hard exclusion:** Pre-FORGE legacy V542/V550/V550J/V551/V552/V553/V554/V555/V556/V557/V558, historical FFX R2 old DDM, and their questionnaire/storage/temporal/runtime files are not KUDA recoveries. Their history is preserved in [the immutable KUDA-R3 commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/KUDA.md), but **R3 is superseded as the active research ledger**. Post-rework references *to* old code do not confer in-scope status unless an actual rewritten-DAG implementation body is inspected.
 
@@ -36,6 +36,13 @@
 | `KUDA-071` | W05 verified physical-order native respondent iterator optimization | S03 | `UNMERGED_AUTHOR_CANDIDATE__UNMEASURED_AT_CUT` |
 | `KUDA-072` | P0 PreparedSavedC11Admission reusable cold saved I03 session | S03/S04 | `UNMERGED_LOCAL_AUTHOR_TESTED__INDEPENDENT_G5_HELD` |
 | `KUDA-073` | #997/#1073 source-to-saved postconsumer fate/readback attribution | S03/S04 | `INDIVIDUAL_SCOPED_ACCEPTED__JOINED_RECEIVING_HELD` |
+
+| `KUDA-074` | GF1 generic non-Q86 native pair relation producer | S04→S06 | `SOURCEFREE_UNMERGED` |
+| `KUDA-075` | GF1 generic pair support-signature first reader | S06 consumer | `SOURCEFREE_VALUE_CONSUMER_UNMERGED` |
+| `KUDA-076` | E05 N9 selected-world atomic snapshot and real two-consumer bridge | S09/S10 | `SOURCEFREE_TEST_ONLY_WORKER_TREE` |
+| `KUDA-077` | SUB-VOZHD B20 Route-C CACC1/CACC2 physical accelerator | S03 DVA/CHETIRI | `B20Q3_BOUNDED_QUALIFIED_UNSELECTED` |
+| `KUDA-078` | SUB-VOZHD HB04 exact frozen A/B/C sourcefree execution harness | S03 physical strategy | `HB04_SCOPED_CLOSED_UNSELECTED` |
+| `KUDA-079` | SUB-VOZHD B16 actual LiTS-I→Route-B→I05 full candidate-fate trial | S01/S03 | `REPORTED_REAL_SINGLE_SOURCE__DRIVER_BODY_UNREAD` |
 
 ## Full post-rework implementation evidence
 
@@ -519,6 +526,103 @@
 
 **Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-061, NEKUDA-063.
 
+### KUDA-074 — GF1 generic non-Q86 native pair relation producer
+
+**DAG organ:** S04→S06. **Fate:** `SOURCEFREE_UNMERGED`.
+
+**Exact code:** [rawlsing_next/_gf1_candidate/generic_native_pair_relation.py](https://github.com/maidiu/rawlsing/blob/a6b815ecc5531c2598887247c2f9e1f8a3bcf17c/rawlsing_next/_gf1_candidate/generic_native_pair_relation.py), head `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c`, blob `079e0397b9b91cea343c92480c811e5a60ed4e3c`.
+
+**Implemented operation and actual first reader:** produce_generic_native_pair_relation consumes actual current EmpiricalFact/EmpiricalQuerySpec, derives native domain roles from real query and issues distinct namespaced GenericNativePairRelation. #691 sourcefree test executes current I03/C11 into this producer and an actual first consumer.
+
+**Reclamation value:** Not limited to hard-coded Q86B→Q86A; preserves specialized GT2 owner separately.
+
+**Negative/receiving limit:** Original generic source/semantic authority unissued. No accepted product integration. PR prose reports an earlier R17 Git blob different from code at inspected head.
+
+**Smallest legitimate operation:** Compare current I03/GT2 ABI and evidence before independent GF1 ownership/receiving.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-066, NEKUDA-072.
+
+### KUDA-075 — GF1 generic pair support-signature first reader
+
+**DAG organ:** S06 consumer. **Fate:** `SOURCEFREE_VALUE_CONSUMER_UNMERGED`.
+
+**Exact code:** [rawlsing_next/_gf1_candidate/gf1_pair_support_consumer.py](https://github.com/maidiu/rawlsing/blob/a6b815ecc5531c2598887247c2f9e1f8a3bcf17c/rawlsing_next/_gf1_candidate/gf1_pair_support_consumer.py), head `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c`, blob `048cd7474af4791e7a480a3de034ba0147a26e83`.
+
+**Implemented operation and actual first reader:** compute_pair_support_signature reads genuine GF1 native 2×2 states/counts and computes separation_class, support_vectors and result hash; #691 tests non-Q86 actual I03 input, count intervention and identity poisoning.
+
+**Reclamation value:** A separate computed output, not a schema-only generic FF aspiration; final code checks exact type and value including bool/int and nonfinite.
+
+**Negative/receiving limit:** Generic FF scientific issuer and actual structural-world first consumer not authorized; no PR-head independent G5 confirmed.
+
+**Smallest legitimate operation:** Compare exact key/denominator law and qualify limited first consuming output before any port.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-067.
+
+### KUDA-076 — E05 N9 selected-world atomic snapshot and real two-consumer bridge
+
+**DAG organ:** S09/S10. **Fate:** `SOURCEFREE_TEST_ONLY_WORKER_TREE`.
+
+**Exact code:** [WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py](https://github.com/maidiu/rawlsing/blob/7628840c4c8e95b320cadc672743355afbe2958a/WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py), head `7628840c4c8e95b320cadc672743355afbe2958a`, blob `642381bc033aaeef878624bdce71f9f94708043d`.
+
+**Implemented operation and actual first reader:** N9SelectedWorldAdapter uses real GenericSelectedWorldService atomic selected snapshot, N9C two-field TEST_ONLY nonpooled readset, one as-of clock, and actual nonparent/scenario consumers. #503 reports 20 PASS with changed empirical and structural values and cold replay.
+
+**Reclamation value:** Actual integration-facing consumer code absent from selected Nov18 product, beyond already-merged E03 progressive-candidate blob.
+
+**Negative/receiving limit:** Copied worker-tree native dependencies; N9C provider/reader identity, OC05, EE13, N9 installation and source/actor authority held; noninstalling by design.
+
+**Smallest legitimate operation:** Resolve N9C exact reader and compare selected L01/R06 before qualified owner integration.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-068.
+
+### KUDA-077 — SUB-VOZHD B20 Route-C CACC1/CACC2 physical accelerator
+
+**DAG organ:** S03 DVA/CHETIRI. **Fate:** `B20Q3_BOUNDED_QUALIFIED_UNSELECTED`.
+
+**Exact code:** [rawlsing_next/pre553_route_c_accelerators.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/pre553_route_c_accelerators.py), head `8676569af1e6580979a7265aeca1c499165fde24`, blob `abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889`.
+
+**Implemented operation and actual first reader:** CACC1 regenerable semantic bundle and CACC2 native predicate/risk-mask bank execute through current I03/I05. SUB-VOZHD B20Q3 documented six full independent outer/inner qualification runs, exact cacheless parity, corruption refusal and delete/regenerate.
+
+**Reclamation value:** Runnable post-VOZHD Route-C alternative, not V550 legacy and not already selected.
+
+**Negative/receiving limit:** No WVS7 or C09 topology selection, no original35 production; an earlier integer-vs-string fixture mismatch was repaired in driver without changing accelerator.
+
+**Smallest legitimate operation:** Compare measured physical economics against selected W03/W05/S2-C with separate architecture authority.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-069, NEKUDA-070.
+
+### KUDA-078 — SUB-VOZHD HB04 exact frozen A/B/C sourcefree execution harness
+
+**DAG organ:** S03 physical strategy. **Fate:** `HB04_SCOPED_CLOSED_UNSELECTED`.
+
+**Exact code:** [rawlsing_next/as4/protocol.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/rawlsing_next/as4/protocol.py), head `8676569af1e6580979a7265aeca1c499165fde24`, blob `590da3a2cc54666bd9786130409170b73310a700`.
+
+**Implemented operation and actual first reader:** as4 loader/protocol/bounded_fixture/run_candidate/run_all authenticate frozen source, grammar and queries and execute A→B→C separately against existing I03/I05. Closure reports two outer 29/29 PASS qualifications, exact parity, fresh-process isolation, cleanup and hostile refusal.
+
+**Reclamation value:** Reusable comparative session/negative court in actual post-VOZHD DVA/CHETIRI rewritten APIs.
+
+**Negative/receiving limit:** Bounded fixture only; C09 never authorized, WVS7 HB01 and HB05–HB07 required source/manifest/oracle/host pieces unavailable.
+
+**Smallest legitimate operation:** Preserve differential test protocol if a current physical owner needs it; no implicit winner selection.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-070.
+
+### KUDA-079 — SUB-VOZHD B16 actual LiTS-I→Route-B→I05 full candidate-fate trial
+
+**DAG organ:** S01/S03. **Fate:** `REPORTED_REAL_SINGLE_SOURCE__DRIVER_BODY_UNREAD`.
+
+**Exact code:** [data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B16_C05R2B_REAL_LITS1_PRODUCTION_I05_R1/01_C05R2B_PRODUCTION_EXECUTION_DRIVER.py](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B16_C05R2B_REAL_LITS1_PRODUCTION_I05_R1/01_C05R2B_PRODUCTION_EXECUTION_DRIVER.py), head `8676569af1e6580979a7265aeca1c499165fde24`, blob `26d1e3ede625499a26c712844bffaff4d77e13da`.
+
+**Implemented operation and actual first reader:** Historical B16 00_RETURN reports two disjoint real 29,002-row LiTS-I DTA executions, 82/82 candidate fates, 140 canonical facts/run and exact oracle/source-delete replay; separate `15_ORACLE_FACING_RECEIPT_NORMALIZER.py` projects complete I05 receipt envelopes.
+
+**Reclamation value:** Real source-backed current-generation RouteB/I05 execution lineage, not a dummy test or DDM V550.
+
+**Negative/receiving limit:** All 82 candidates were missing/conflicting authority or coverage-limited, not affirmative source science. The checked Git file is only a 675-byte compressed-driver launcher; effective source body not decoded/inspected.
+
+**Smallest legitimate operation:** Decode and inspect effective driver SHA256 59ce6903..., preserve only unique current source-fate/receipt code after parity with selected RouteB.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-071.
+
+
 ## Existing rewritten-DAG baselines — do NOT call these stranded
 
 - **Selected E41/R08/L01 path:** `rawlsing_next/pre553_evidence_world_consumer.py` at frozen PRE-MAIN `5d387a9a8c72`. Already selected sourcefree first reader; only discover a new branch-specific missing capability, not another binder.
@@ -532,3 +636,7 @@ The above are **comparison targets**. They are not counted in the KUDA recovery 
 ## Next search law
 
 Search **post-Aug DVA/TRII/CHETIRI/VOZDH-VERKHOVOD DAG lineages and post-rework current owners only**, following source-specific PR/commit custody into present first reader. Prioritize *code with demonstrated modern input/output* and documented receiving divergence; exclude theoretical plans, documentary prong counts, obsolete V550 algorithms, duplicate copies of selected modules and later disputed Q014–Q020 work. Before any action, consult current G4, and compare superior versions; preserve weaker variants in NEKUDA. If no real consuming owner exists, mark it as code-body-only rather than pretending completeness.
+
+## R5 source-specific excluded searches
+
+Exact Git comparisons of six isolated Trii/Chetiri documentary branches (c04 I03, c05 I05, c07 compiled, c08 incremental, d13 retention, d14 materialization) revealed no additional branch-only root rawlsing_next Python production modules. Their source reviews remain important but are not KUDA implementations. The separate post-VOZHD B architecture/compiler branch does contain the executable Route-C and AS4 code recorded above. No legacy V550/V558 code counted. Original source execution and test receipts are historical, not newly executed in R5; no C09 decision or native all35 grant.

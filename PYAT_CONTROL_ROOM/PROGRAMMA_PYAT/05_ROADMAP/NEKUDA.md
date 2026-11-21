@@ -1,6 +1,6 @@
 # NEKUDA — lesser / defective / rejected **post-VOZHD DAG implementations only**
 
-**Revision NEKUDA-R4 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
+**Revision NEKUDA-R5 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
 
 **Evidence:** Pre-2026-11-19 ~12:50 ET exact source cuts; sourcefree/author/independent G5/protected/native science remain distinct. A negative may represent a *source-cut warning*, not a defect in every descendant. Do not classify unsupported code as a success, invent a successor, or start another branch. Entries without KUDA successor remain HOLD, not implicit authorization to build.
 
@@ -30,6 +30,14 @@
 | `NEKUDA-063` | R03 v1 manual-QUERY replacement of 0Q/1D discovery-only issuer | KUDA-070, KUDA-073 | Existing v1 R03 compilation correctly issued 0 QUERY and 1 DISCOVERY in an original-source example; harness manually inserted QUERY, an |
 | `NEKUDA-064` | W05 native physical order assumes verified ordering without independent run proof | KUDA-071 | Native order opt-in is a proposed optimization; author cut not independently benchmarked or accepted on large cold saved estate at insp |
 | `NEKUDA-065` | Prepared session already persists across process restarts | KUDA-072 | PreparedSavedC11Admission reuses one index only inside one execution; a new process still builds it again. |
+
+| `NEKUDA-066` | GF1 generic semantics falsely inherited from specialized Q86 GT2 | KUDA-074 | GT2 hardcodes Q86A/Q86B with its own narrow semantic owner; generic GF1 must issue its own source-query-derived identities. |
+| `NEKUDA-067` | GF1 pre-repair native key coercion and nonfinite handling | KUDA-075 | GF1L consumer doc records earlier str() native-key folding and bool/int identity collisions; final candidate refuses nonfinite/native c |
+| `NEKUDA-068` | E05 sourcefree N9C fixture incorrectly promoted to operative N9 | KUDA-076 | Adapter explicitly keeps OC05 consumer_seam=None, loads TEST_ONLY N9C and copied native owner modules; #503 20 PASS does not install N9 |
+| `NEKUDA-069` | B20 initial Route-C physical integer vs target string fixture bug | KUDA-077 | Native 0/1 was compared to string target domain; existing I03 properly emitted INTEGRITY_FAILURE. B20I03R repaired qualification driver |
+| `NEKUDA-070` | HB04 and B20Q3 qualified A/B/C misrepresented as selected C09 production | KUDA-077, KUDA-078 | HB04 closure/Route-C qualification are real, but C09 remained closed pending HB01 WVS7, HB05 two-source workload, HB06 parity oracle, H |
+| `NEKUDA-071` | B16 LiTS 82/82 work fates mistaken for 82 scientifically positive candidates | KUDA-079 | All 82 real-source candidate outcomes ended EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED; effective driver is packed i |
+| `NEKUDA-072` | PR #691 claimed R17 GF1 byte identity differs at inspected PR source | KUDA-074 | PR body quotes original R17 blob 746d669314ddd114ec21d3a35c13c452666863fe; direct file at a6b815… has Git blob 079e0397b9b91cea343c9248 |
 
 ## Full post-rework negative and supersession records
 
@@ -224,6 +232,63 @@
 **Limitation or actual defect:** PreparedSavedC11Admission reuses one index only inside one execution; a new process still builds it again.
 
 **Conservation rule:** No assertion of cross-process persistency, crash restore or 100k physical native performance from 128/64 respondent fixtures.
+
+### NEKUDA-066 — GF1 generic semantics falsely inherited from specialized Q86 GT2
+
+**Better candidate:** KUDA-074. **Exact evidence:** [rawlsing_next/_gf1_candidate/generic_native_pair_relation.py](https://github.com/maidiu/rawlsing/blob/a6b815ecc5531c2598887247c2f9e1f8a3bcf17c/rawlsing_next/_gf1_candidate/generic_native_pair_relation.py) at `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c`.
+
+**Inferior/unsafe claim:** GT2 hardcodes Q86A/Q86B with its own narrow semantic owner; generic GF1 must issue its own source-query-derived identities.
+
+**Preservation rule:** Never rename Q86 relation as general source-authorized Field Forge.
+
+### NEKUDA-067 — GF1 pre-repair native key coercion and nonfinite handling
+
+**Better candidate:** KUDA-075. **Exact evidence:** [rawlsing_next/_gf1_candidate/gf1_pair_support_consumer.py](https://github.com/maidiu/rawlsing/blob/a6b815ecc5531c2598887247c2f9e1f8a3bcf17c/rawlsing_next/_gf1_candidate/gf1_pair_support_consumer.py) at `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c`.
+
+**Inferior/unsafe claim:** GF1L consumer doc records earlier str() native-key folding and bool/int identity collisions; final candidate refuses nonfinite/native category poisoning before computing values.
+
+**Preservation rule:** Retain exact type+value native key matching; do not restore permissive predecessor.
+
+### NEKUDA-068 — E05 sourcefree N9C fixture incorrectly promoted to operative N9
+
+**Better candidate:** KUDA-076. **Exact evidence:** [WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py](https://github.com/maidiu/rawlsing/blob/7628840c4c8e95b320cadc672743355afbe2958a/WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py) at `7628840c4c8e95b320cadc672743355afbe2958a`.
+
+**Inferior/unsafe claim:** Adapter explicitly keeps OC05 consumer_seam=None, loads TEST_ONLY N9C and copied native owner modules; #503 20 PASS does not install N9 or prove actor/source science.
+
+**Preservation rule:** Keep test-only consumer proof distinct from N9/OC05 real source/actor approval.
+
+### NEKUDA-069 — B20 initial Route-C physical integer vs target string fixture bug
+
+**Better candidate:** KUDA-077. **Exact evidence:** [data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/47_B20I03R_ACCEPTANCE_AND_B20Q3_FULL_ROUTE_C_QUALIFICATION_AUTHORIZATION_R1.md](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/47_B20I03R_ACCEPTANCE_AND_B20Q3_FULL_ROUTE_C_QUALIFICATION_AUTHORIZATION_R1.md) at `8676569af1e6580979a7265aeca1c499165fde24`.
+
+**Inferior/unsafe claim:** Native 0/1 was compared to string target domain; existing I03 properly emitted INTEGRITY_FAILURE. B20I03R repaired qualification driver only.
+
+**Preservation rule:** Do not attribute initial representation mismatch to CACC1/CACC2 nor coerce physical states.
+
+### NEKUDA-070 — HB04 and B20Q3 qualified A/B/C misrepresented as selected C09 production
+
+**Better candidate:** KUDA-077, KUDA-078. **Exact evidence:** [data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/53_B21Q_ACCEPTANCE_HB04_CLOSURE_AND_C09_RESIDUAL_REASSESSMENT_R1.md](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/53_B21Q_ACCEPTANCE_HB04_CLOSURE_AND_C09_RESIDUAL_REASSESSMENT_R1.md) at `8676569af1e6580979a7265aeca1c499165fde24`.
+
+**Inferior/unsafe claim:** HB04 closure/Route-C qualification are real, but C09 remained closed pending HB01 WVS7, HB05 two-source workload, HB06 parity oracle, HB07 launch.
+
+**Preservation rule:** No automatic architecture choice or general native production from bounded A/B/C parity.
+
+### NEKUDA-071 — B16 LiTS 82/82 work fates mistaken for 82 scientifically positive candidates
+
+**Better candidate:** KUDA-079. **Exact evidence:** [data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B16_C05R2B_REAL_LITS1_PRODUCTION_I05_R1/00_RETURN.md](https://github.com/maidiu/rawlsing/blob/8676569af1e6580979a7265aeca1c499165fde24/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B16_C05R2B_REAL_LITS1_PRODUCTION_I05_R1/00_RETURN.md) at `8676569af1e6580979a7265aeca1c499165fde24`.
+
+**Inferior/unsafe claim:** All 82 real-source candidate outcomes ended EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED; effective driver is packed in gzip/base64 chunks, not directly audited here.
+
+**Preservation rule:** Retain real-source execution, but hold original science and source-body recovery.
+
+### NEKUDA-072 — PR #691 claimed R17 GF1 byte identity differs at inspected PR source
+
+**Better candidate:** KUDA-074. **Exact evidence:** [rawlsing_next/_gf1_candidate/generic_native_pair_relation.py](https://github.com/maidiu/rawlsing/blob/a6b815ecc5531c2598887247c2f9e1f8a3bcf17c/rawlsing_next/_gf1_candidate/generic_native_pair_relation.py) at `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c`.
+
+**Inferior/unsafe claim:** PR body quotes original R17 blob 746d669314ddd114ec21d3a35c13c452666863fe; direct file at a6b815… has Git blob 079e0397b9b91cea343c92480c811e5a60ed4e3c. Cause unverified.
+
+**Preservation rule:** Compare original R17 code before claiming byte-identical transplant; mismatch alone does not prove a semantic defect.
+
 
 ## Excluded material
 
