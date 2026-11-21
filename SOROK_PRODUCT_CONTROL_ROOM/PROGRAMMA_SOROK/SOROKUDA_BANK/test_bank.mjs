@@ -15,7 +15,7 @@ const code=fs.readFileSync(path.join(base,"SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_
 const union=j("inputs/NEIGHBOR_SOURCE_UNION_757.json"), thematic=j("inputs/NEIGHBOR_THEMATIC_757.json"),
  ideas=read("inputs/NEIGHBOR_USER_IDEAS_44.md"), co=j("inputs/SORACLE_CO_R27_16.json"),
  locator=j("inputs/NEIGHBOR_CURATED_SOURCE_LOCATOR.json"),dates=j("VERIFIED_COMMIT_AUTHOR_DATES.json").dates;
-const records=jl("ALL_999_NORMALIZED.jsonl");
+const records=jl("ALL_NORMALIZED.jsonl");
 const docs=jl("DOCUMENT_LOCATOR_252.jsonl");
 const of=(id)=>records.find(x=>x.id===id);
 
