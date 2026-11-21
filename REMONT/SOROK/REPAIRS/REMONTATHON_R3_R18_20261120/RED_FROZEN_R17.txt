@@ -1,0 +1,40 @@
+test_blocked_attempt_preserves_selected_historical_course (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_blocked_attempt_preserves_selected_historical_course) ... ok
+test_disclosed_legacy_direct_helper_does_not_claim_policy_selection (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_disclosed_legacy_direct_helper_does_not_claim_policy_selection) ... ok
+test_mixed_purposes_one_incompatible_refuses_atomically (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_mixed_purposes_one_incompatible_refuses_atomically) ... FAIL
+test_multiple_genuine_courses_survive (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_multiple_genuine_courses_survive) ... ok
+test_projectless_policy_selection_remains_projectless (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_projectless_policy_selection_remains_projectless) ... ok
+test_selected_project_allows_exact_exercised_mean (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_selected_project_allows_exact_exercised_mean) ... ok
+test_selected_project_excludes_operation_refuses_before_history (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_selected_project_excludes_operation_refuses_before_history) ... FAIL
+test_unknown_selected_project_refuses_without_silent_drop (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_unknown_selected_project_refuses_without_silent_drop) ... FAIL
+
+======================================================================
+FAIL: test_mixed_purposes_one_incompatible_refuses_atomically (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_mixed_purposes_one_incompatible_refuses_atomically)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r18_frozen_r17/tests/test_remontathon_r18_p004_selected_means.py", line 43, in test_mixed_purposes_one_incompatible_refuses_atomically
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_SELECTED_MEANS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_selected_project_excludes_operation_refuses_before_history (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_selected_project_excludes_operation_refuses_before_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r18_frozen_r17/tests/test_remontathon_r18_p004_selected_means.py", line 37, in test_selected_project_excludes_operation_refuses_before_history
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_SELECTED_MEANS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unknown_selected_project_refuses_without_silent_drop (tests.test_remontathon_r18_p004_selected_means.SelectedActivityMeansR18.test_unknown_selected_project_refuses_without_silent_drop)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r18_frozen_r17/tests/test_remontathon_r18_p004_selected_means.py", line 49, in test_unknown_selected_project_refuses_without_silent_drop
+    with self.assertRaisesRegex(ValueError,'ACTIVITY_SELECTED_MEANS_CONTRADICTION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=3)
