@@ -1,5 +1,16 @@
 # REMONT — Growing sourcefree execution queue (OPEN)
 
+## CORR-006/007 — Q015 narrow I05-ownership proof and Q020 preservation (2026-11-20)
+
+**Existing QID, not a new queue.** Q015 retains `rawlsing_next/tests/test_pre553_s04_determinicity_cycle.py`, now with **four additional parametrized negative falsifiers** in `test_self_rehashed_q015_receipt_cannot_promote_to_i05_or_native`: a self-rehashed local receipt may not falsely claim changed I05 discovery frontier, new I03 queries, original-source rights or upgraded method grade, either on resume or at the first sourcefree positioned-context reader. `pre553_s04_determinicity_cycle.py` has the corresponding runtime refusal. Execute the entire existing Q015 suite rather than creating a duplicate QID, and preserve Q016's inherited-MI differential as a separate test.
+
+**Owner decision:** protected `pre553_discovery_adaptive.py::execute_adaptive_exploration` remains the *sole governed I05 DiscoveryAuthority/sealed-unit frontier/replay owner*. Q015 is at most a *local S04 fixed-issued-joint analytic continuation*, never a substitute I05 governor or independent FF/C4/C5 native consumer. Any future integration into I05 requires a separately authorized DiscoveryAuthority/ABI receiving decision. Static author parity is not independent acceptance.
+
+**No-drop conflict:** Q019 is RETIRED only for the #1223/1231 standalone S04 position/repertoire coordinator. The independent F6 #1224 interval source and its #1225 Q020 replay/rekey branch survive and have **not** been integrated into this branch. Do not run Q020 on Q014–Q018 candidate: its source/tests are not present. Before any F6 convergence, REMONT must reconcile its separate Q020 code branch, actual tests and inherited Q019 stale parent to avoid resurrecting the retired coordinator.
+
+**Execution grade:** `NOT_EXECUTED_AT_CORRECTIVE_HEAD`. Run only when exact newest #1231 candidate SHA is explicitly authorized; source/host rights, test first-fault execution, and independent G5 stay held.
+
+
 **Queue identity:** `PYAT_REMONT_EXECUTION_QUEUE@1` · **Test custodian:** REMONT · **Runner/diagnostician:** OpenCode · **Major repair reviewer:** REMONT Browser · **Forward architecture:** PYAT HQ. This is one continuing commission, not a succession of isolated agents or a replacement PROGRAMMA.
 
 **Repository/branch:** `maidiu/rawlsing` · continuing stacked production #1164 at frozen `84f7eb795676f88bade23051707942ba2e9b353d` → active C6 descendant PR #1173 `agent/pyat-c6-s04-v3-seam-sourcefree-forward-20261120-r1`. Resolve the **latest explicitly authorized active head** when OpenCode is launched; do not run an earlier PR head by habit. Same queue identity, no new commission.
