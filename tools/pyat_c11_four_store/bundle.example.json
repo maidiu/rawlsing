@@ -1,14 +1,16 @@
 {
   "schema": "PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
-  "estate_root": "./C11_SOURCE_ROOT",
-  "estate_path": "./C11_SOURCE_ROOT/releases/EXACT_RELEASE_DIRECTORY",
-  "held_pins": "./authority/held_stream_pins.json",
-  "authority_provider": "./authority/current_authorizer.py",
-  "operations_provider": "./authority/issued_operations.py",
+  "r2_decision_file": "./P0_TWO_SAVED_WAVES_PRIVATE/r2_typed_user_decision_private.json",
+  "source_id": "SRC04",
+  "required_host": "MainMac",
+  "required_purpose": "P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+  "q103_recorded_operation_file": "./P0_TWO_SAVED_WAVES_PRIVATE/q006_q103_execution/q006_q103_operation_fixed.json",
+  "q103_universe_use_decision_file": "./P0_TWO_SAVED_WAVES_PRIVATE/q006_q103_execution/q006_exact_universe_use_owner_decision.json",
   "output_dir": "./benchmark_output_ON_LARGE_LOCAL_OR_EXTERNAL_DISK",
   "minimum_free_gib": 12,
   "physical_question_limit": 100,
   "evidence_sample_limit": 100000,
+  "cold_reopen_limit": 10,
   "batch_commit": 2048,
   "continue_after_arm_failure": true
 }
