@@ -117,3 +117,43 @@ def test_prepared_receipt_after_current_revocation_does_not_claim_current(
             session.receipt()
         grant["live"] = True
         assert session.receipt().manifest_sha256 == admission.manifest_sha256
+
+
+def test_current_revocation_between_open_and_wrapper_bind_cleanup(
+    tmp_path, monkeypatch,
+):
+    """An opened SQLite session must be closed even if the new pin guard fails."""
+    from rawlsing_next.pre553_source_direct_parquet_estate import DirectEstateError
+
+    grant = {"allowed": True}
+    _, _, _, _, _, admission = _fixture(
+        monkeypatch, tmp_path / "late-revoke", "SPASITYEL-072-LATE-REV",
+        grant=lambda _roots: grant["allowed"],
+    )
+    original_enter = DirectEstateI03Session.__enter__
+
+    def revoke_just_after_successful_open(session):
+        result = original_enter(session)
+        grant["allowed"] = False
+        return result
+
+    monkeypatch.setattr(
+        DirectEstateI03Session, "__enter__", revoke_just_after_successful_open,
+    )
+    with pytest.raises(
+        DirectEstateError, match="current source/operation authority refused",
+    ):
+        with admission.prepared_i03():
+            pytest.fail("revoked prepared wrapper must not yield")
+
+    assert not list(Path(admission.estate_path).parents[1].glob(
+        ".s2c-native-i03-*",
+    ))
+
+    grant["allowed"] = True
+    monkeypatch.setattr(DirectEstateI03Session, "__enter__", original_enter)
+    with admission.prepared_i03() as restored:
+        assert restored.receipt().manifest_sha256 == admission.manifest_sha256
+    assert not list(Path(admission.estate_path).parents[1].glob(
+        ".s2c-native-i03-*",
+    ))
