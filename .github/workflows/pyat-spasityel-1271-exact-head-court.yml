@@ -1,0 +1,42 @@
+name: PYAT SPASITYEL #1271 latest sourcefree four-store exact-head runner court
+on:
+  push:
+    branches:
+      - agent/pyat-spasityel-1271-exact-head-cpu-concurrency-court-20261121-r1
+permissions:
+  contents: read
+jobs:
+  sourcefree-physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sourcefree dependencies, no original survey
+        run: python -m pip install --disable-pip-version-check 'pyarrow>=16' 'psutil>=5' pytest
+      - name: Exact SHA latest R2 four-store runner imports
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python -c 'import rawlsing_next.pre553_anvil_stream_native_i03, rawlsing_next.pre553_anvil_stream_recorded, rawlsing_next.pre553_source_direct_parquet_estate, rawlsing_next.pre553_s04_observed_research, rawlsing_next.pre553_s04_ff01_consumer'
+          python -m compileall -q tools/pyat_c11_four_store
+      - name: Existing documented runner self-test
+        run: python -m tools.pyat_c11_four_store.runner --self-test
+      - name: Test same-head sourcefree suites and independent concurrent invocation isolation
+        run: |
+          mkdir -p .spasityel-four-store-proof
+          python -m pytest -q -o addopts='' \
+            --junitxml=.spasityel-four-store-proof/junit.xml \
+            tools/pyat_c11_four_store/test_stores.py \
+            tools/pyat_c11_four_store/test_existing_r2.py \
+            tools/pyat_c11_four_store/test_runner_sourcefree.py \
+            tools/pyat_c11_four_store/test_spasityel_r1271_parallel_invocation.py
+      - name: Retain sourcefree regression result on red or green
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spasityel-r1271-sourcefree-junit
+          path: .spasityel-four-store-proof/
+          include-hidden-files: true
+          if-no-files-found: warn
