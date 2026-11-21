@@ -1,5 +1,18 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R17 P018 — independent scoped sourcefree acceptance, 21 November 2026
+
+**Frozen candidate:** [REMONTATHON R17 #1230](https://github.com/maidiu/rawlsing/pull/1230) at `28bf7fc48264d433ecf172bd0846744a3476222e`. **Independent COMMENT review:** [#6003680448](https://github.com/maidiu/rawlsing/pull/1230#pullrequestreview-6003680448). **Verdict `ACCEPT_SCOPED_SOURCEFREE_ENGINEERING`** for the historical P018 source-read/append preflight only.
+
+Actual exact-source local CPython 3.13.5: 48/48 Git SHA1 / SHA256 / size identities matched (45 inherited + 3 R17 replacements), **289/289 inherited normal and optimized, pytest 289 +32 subtests**; six original R15 hostile reviewer tests normal and optimized PASS; **eight new reviewer-authored hostile tests** normal and optimized PASS; combined **303/303 normal, 303/303 optimized, 303 pytest +96 subtests**. All hostile source history manipulations refuse `source()` including unknown ID, `commit()`, and `seal_source()` without new event/source row; valid late seal, ordinary append and cold reopen work. This reviewer did not author the R17 repair.
+
+**Original P018 defect remains `PARTIAL`** for native issuer authenticity, private disclosure rights, cryptographic trust, privileged database rewrite and scientific authority. The old #1220 R15 RED remains historically correct at that SHA; R17 functional sourcefree repair supersedes that exact defect only. The connected GitHub principal is also the PR author, so COMMENT review does **not** confer credential-independent G5 or protected receiving. Other-machine Python 3.11.3 R17 receipts are **separate**, not locally repeated here.
+
+**Ledger lineage warning:** this longstanding #1171 ledger retains **71** original production P records; R17's later branch has **73** records. This is an additive, SHA-qualified review receipt **without collapsing the 73-record later source into this old 71-record branch**, changing any protected branches, or promoting P018 to CLOSED. [Full report](REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md) · [source/test/evidence manifest](REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/executed_R17_48_SOURCE_SHA256.json). Exact runnable ZIP additionally banked in Library `/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R17_P018_20261121/`.
+
+---
+
+
 ## R12 R2 — published same-trial project motive repair, INDEPENDENT RECEIVING PENDING
 
 **Actual sourcefree code repair: [draft PR #1211](https://github.com/maidiu/rawlsing/pull/1211), immutable HEAD `cc0fe319596ee12258acf48dc6078b552bafd3bc`, parent frozen R12 #1199 `9db0e6f64bf568409e638ff2215af8b8a414487f`.** Independent R12 review #5999820908 reproduced a same-trial `REORGANIZE_PROJECT` mature-motive bypass. Actual existing development owner now refuses `REORGANIZE_PROJECT` containing `object` or `motive` during an **actor-issued current** possible-end trial, before any sourcefree psychic stage mutation. Earlier `ADD_PROJECT` and same-end `TAKE_UP_POSSIBLE_END` guards conserved; nontrial project reorganization and nonpurpose adjustments remain available.

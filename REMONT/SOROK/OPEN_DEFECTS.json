@@ -404,6 +404,15 @@
         "local_tests": 88,
         "grade": "SOURCEFREE_AUTHOR_LOCAL__REVIEW_PENDING",
         "first_fault_scope": "Exact canonical source-seal byte checks; no authoritative historical migration"
+      },
+      "r17_sourcefree_independent_first_fault_review": {
+        "outcome": "ACCEPT_SCOPED",
+        "reviewed_head": "28bf7fc48264d433ecf172bd0846744a3476222e",
+        "review_id": 6003680448,
+        "proof_ref": "REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md",
+        "original_full_defect_status": "PARTIAL__NATIVE_SOURCE_PRIVACY_UNQUALIFIED",
+        "scope": "HISTORICAL_OPERATIONAL_SOURCE_INTEGRITY_ONLY",
+        "receiving_currentness": "R17_73_P_SOURCE_SEPARATE_FROM_1171_71_P_LEDGER"
       }
     },
     {
@@ -2591,5 +2600,53 @@
     "original_remont_receipt_at_head": "a6b5f97b9aa7e1f8c8d4063d2ab8d5869f6fefb1",
     "independent_receiver_required": "OTHER_AGENT__EXACT_1211_HEAD",
     "protected_merge": false
+  },
+  "remont_r17_p018_independent_receiving": {
+    "reviewed_pr": 1230,
+    "reviewed_exact_HEAD": "28bf7fc48264d433ecf172bd0846744a3476222e",
+    "independent_github_comment_review": 6003680448,
+    "sourcefree_first_fault_verdict": "ACCEPT_SCOPED_SOURCEFREE_ENGINEERING",
+    "date": "2026-11-21",
+    "first_fault": "P018 full historical source-integrity prerequisite at read, ordinary append and late source append",
+    "independently_executed": {
+      "cp_python": "3.13.5",
+      "R17_normal": 289,
+      "R17_optimized": 289,
+      "R17_pytest": 289,
+      "R17_pytest_subtests": 32,
+      "original_R15_reviewer": 6,
+      "new_reviewer_cases": 8,
+      "joined_normal": 303,
+      "joined_optimized": 303,
+      "joined_pytest": 303,
+      "joined_pytest_subtests": 96
+    },
+    "source_qualification": {
+      "R17_source_files": 48,
+      "source_exact": true,
+      "GitHub_tree_manifest_matches": 48,
+      "changed_blobs_match": 3,
+      "R16_unchanged_qualified_files": 45,
+      "P018_storage_blob": "75087ed57c3a39d82b9ded5ebf8123f949e54c21",
+      "R17_source_tests_blob": "b25f93b2fd81fa814bfeee9be843d7279cf0b31b"
+    },
+    "local_311_execution": false,
+    "other_machine_source_pinned_311_author_report": "289 normal, 289 optimized, 289 pytest +32 subtests",
+    "prior_R15_review": "REVISE_EXACT_DEFECT_AT_6075792420e1d87b30036ebe6f352815783e47c2__HISTORICAL",
+    "currentness": "R17_NEWER_73_P_LINE_EXISTS__THIS_CONTINUING_1171_LEGACY_REGISTER_HAS_71_P__NO_73_TO_71_QUEUE_COLLAPSE",
+    "original_1171_queue_P_status": "UNCHANGED__P018_PARTIAL",
+    "outside_scope": [
+      "NATIVE_SOURCE_ISSUER",
+      "EXTERNAL_SIGNATURE",
+      "NATIVE_PRIVATE_DISCLOSURE_P009",
+      "PRIVILEGED_DB_REHASH_DEFENSE",
+      "SCIENTIFIC_VALIDATION",
+      "PROTECTED_RECEIVING",
+      "G5_CREDENTIAL_INDEPENDENT_GITHUB_APPROVAL"
+    ],
+    "review_dir": "REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121",
+    "review_zip_sha256": "b0f92a1377a018bfbbc090762eb45a4c4b1f2b16d25022f6fc2f6c68ab1f81c6",
+    "protected_pre_main_changed": false,
+    "authority_grade": "DIFFERENT_AGENT_SOURCEFREE_FUNCTIONAL__CONNECTED_GITHUB_PR_AUTHOR_ACCOUNT__NO_PROTECTED_WRITER"
   }
 }
