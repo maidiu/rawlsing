@@ -473,7 +473,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
     config=json.loads(config_path.read_text())
     if config.get("schema") != "PYAT_FOUR_PERMANENT_STORE_BUNDLE@1":
         raise StoreFailure("wrong bundle/config contract")
-    output=resolve(root,config["output_dir"])
+    output=resolve(root,os.environ.get("PYAT_BENCH_OUTPUT_DIR",config["output_dir"]))
     output.mkdir(parents=True,exist_ok=True)
     run_tag=config.get("run_id") or datetime.now().strftime("%Y%m%dT%H%M%S")
     run_dir=output/run_tag
