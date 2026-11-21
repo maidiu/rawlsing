@@ -54,6 +54,19 @@ assert all(x["source_link"].startswith("https://github.com/maidiu/rawlsing/") fo
 assert all(x["source_link"].startswith("https://github.com/maidiu/rawlsing/") for x in q)
 assert all(x["first_consumer_required"] for x in o)
 assert len(source["source_files"]) == 5
+mulch = json.loads((ROOT / "07_THEMATIC_PER_SOURCE_MULCH_COVERAGE_757.json").read_text())
+assert mulch["counts"]["unique_source_slots"] == 757
+assert mulch["counts"]["embedded_workstreams"] == 17
+for kind, key, src_rows in (
+    ("H", "H_original_ideation_first_pass", h),
+    ("Q", "Q_original_questions_first_pass", q),
+    ("OINDEX", "O_index_owner_first_pass", o),
+    ("SOROKUDA", "SOROKUDA_code_source_first_pass", c),
+):
+    rows = mulch[key]
+    assert len(rows) == len(src_rows), (kind, "MULCH_COUNT")
+    assert [z["source_id"] for z in rows] == [z["id"] for z in src_rows], (kind, "LOSS_OR_REORDER")
+    assert all(z["coverage"] and z.get("source_id") for z in rows)
 assert paths["total_file_entries"] == sum(
     z["type"] == "file" for d in paths["directories"] for z in d.get("rows", [])
 )
@@ -82,5 +95,6 @@ print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
 print("USER_CONVERSATION PASS: NM-001 through NM-044 contiguous; exact latest source snippets preserved")
+print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
