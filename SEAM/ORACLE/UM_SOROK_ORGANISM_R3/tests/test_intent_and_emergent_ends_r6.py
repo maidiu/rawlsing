@@ -18,7 +18,7 @@ from um_sorok_organism.types import adult, copy
 
 PARENT={
     'source_ref':'fictional_intention_test_source',
-    'answers':{},
+    'answers':{'SOURCEFREE_FIXTURE_INSTRUMENT':'UNDETERMINED_NOT_AN_EMPIRICAL_ANSWER'},
     'fictional_seed':{
         'projects':[
             {'object':'comfort my child through song',
