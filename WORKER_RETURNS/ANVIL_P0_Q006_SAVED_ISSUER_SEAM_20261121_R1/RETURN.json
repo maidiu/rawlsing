@@ -354,6 +354,16 @@
       "kind": "SCALAR",
       "one_occurrence": true
     },
+    "source_shape_evidence": {
+      "actual_r7_execution_detail": "query target topology 'SCALAR_SINGULAR' cannot collapse exact C11 carrier topology 'SCALAR'",
+      "actual_r7_p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY",
+      "private_source_read": false,
+      "provenance": "actual R7 carrier evidence plus sourcefree persisted scalar envelope; no private source/estate read",
+      "sourcefree_fixture_envelope": {
+        "index": 0,
+        "kind": "SCALAR"
+      }
+    },
     "translation": "SCALAR -> SCALAR_SINGULAR on the temporary recorded event only",
     "translation_helper": "_translate_saved_scalar_topology"
   },
