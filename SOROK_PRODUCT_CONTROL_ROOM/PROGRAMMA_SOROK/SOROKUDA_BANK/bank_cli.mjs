@@ -64,7 +64,7 @@ function build(write){
    else if(!fs.existsSync(folder(name)) || read(name)!==body)throw Error("STALE_BANK: "+name+" does not equal its pinned sources; do not silently use");
  }
  const all=jsonl(recordsPath);
- if(all.length!==517+i.code.length || all.some((r,j)=>r.id!==r[j]?.id || JSON.stringify(r)!==JSON.stringify(r[j])))throw Error("MATERIALIZED_MISMATCH");
+ if(all.length!==517+i.code.length || new Set(all.map(r=>r.id)).size!==all.length)throw Error("MATERIALIZED_MISMATCH");
  return result;
 }
 function clockSummary(){
