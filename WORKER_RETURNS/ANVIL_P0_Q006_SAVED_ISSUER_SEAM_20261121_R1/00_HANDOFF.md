@@ -79,9 +79,16 @@ This is a sourcefree q103-shaped fixture, not an original SRC04 run.
 ## Private MainMac harness contract
 
 `run_recorded_q103_private.py` is the actual private read harness. It verifies
-the owner decision SHA, uses exact stream roots/current binding, loads an exact
-operation JSON containing the typed authority/ref preimages, builds the same
-recorded operation and executes the existing native I03 evaluator.
+the owner decision SHA, re-reads the held R2 decision at current checks, uses
+exact stream roots, loads the concrete private operation artifact, builds the
+same recorded operation and executes the existing native I03 evaluator.
+
+Its private output now retains `typed_state`, `p02_failure_state`,
+`execution_detail`, uncertainty state, cells, replay ref and release refs. A
+native `UNAVAILABLE` is never reported as accepted positive counts:
+`positive_counts_accepted` is false unless the fact is `SUPPORTED` with a
+positive denominator and at least one cell. Stdout is sanitized and contains no
+counts; private output is mode 0600.
 
 ```bash
 PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER \

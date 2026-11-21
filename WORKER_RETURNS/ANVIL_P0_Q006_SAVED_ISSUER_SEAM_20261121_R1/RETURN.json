@@ -10,7 +10,7 @@
     "harness_rereads_owner_and_r2": true,
     "true_for_anything_default": false
   },
-  "base_commit": "00099cae1f98cd3793024d57eb793943203bdf38",
+  "base_commit": "1e1200bdf5003583b0c04da005b02c84b734923e",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "modules": [
@@ -19,6 +19,17 @@
       "rawlsing_next/pre553_anvil_stream_native_i03.py",
       "rawlsing_next/pre553_direct_estate_i03.py"
     ]
+  },
+  "diagnostic_harness": {
+    "fields_added": [
+      "p02_failure_state",
+      "execution_detail",
+      "uncertainty_method_or_typed_state"
+    ],
+    "private_output_mode": "0600",
+    "real_run2_observed": "UNAVAILABLE_ZERO_CELLS__CAUSE_PENDING_HARNESS_RERUN",
+    "stdout_counts_emitted": false,
+    "unavailable_never_positive": true
   },
   "focused_tests": {
     "native_stream_suite": "8 passed",

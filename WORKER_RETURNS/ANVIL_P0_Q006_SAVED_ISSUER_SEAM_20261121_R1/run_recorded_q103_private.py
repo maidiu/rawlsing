@@ -49,6 +49,7 @@ def main() -> int:
     ap.add_argument("--r2-decision", type=Path, required=True)
     ap.add_argument("--stream-root", type=Path, required=True)
     ap.add_argument("--release-path", type=Path, required=True)
+    ap.add_argument("--output", type=Path, required=True)
     args = ap.parse_args()
     owner_bytes = args.owner_decision.read_bytes()
     owner_sha = hashlib.sha256(owner_bytes).hexdigest()
@@ -157,6 +158,11 @@ def main() -> int:
         "facts": [
             {
                 "typed_state": fact.typed_state,
+                "p02_failure_state": fact.semantic_fields.get("p02_failure_state"),
+                "execution_detail": fact.semantic_fields.get("execution_detail"),
+                "uncertainty_method_or_typed_state": fact.semantic_fields.get(
+                    "uncertainty_method_or_typed_state"
+                ),
                 "raw_denominator_support": fact.raw_denominator_support,
                 "raw_numerator_support": fact.raw_numerator_support,
                 "cells": [
@@ -169,9 +175,33 @@ def main() -> int:
             }
             for fact in result.facts
         ],
+        "positive_counts_accepted": bool(
+            result.facts and result.facts[0].typed_state == "SUPPORTED"
+            and result.facts[0].raw_denominator_support > 0
+            and len(result.facts[0].target_topology.get(
+                "complete_cell_semantic_projection", ()
+            )) > 0
+        ),
         "release_refs": [ref.as_dict() for ref in result.release_refs],
     }
-    print(json.dumps(out, indent=2, sort_keys=True, default=str))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    fd = __import__("os").open(
+        args.output, __import__("os").O_WRONLY | __import__("os").O_CREAT | __import__("os").O_TRUNC,
+        0o600,
+    )
+    with __import__("os").fdopen(fd, "w", encoding="utf-8") as stream:
+        json.dump(out, stream, indent=2, sort_keys=True, default=str)
+        stream.write("\n")
+    __import__("os").chmod(args.output, 0o600)
+    print(json.dumps({
+        "schema": "ANVIL_Q006_Q103_PRIVATE_HARNESS_SUMMARY@1",
+        "status": "PRIVATE_OUTPUT_WRITTEN",
+        "positive_counts_accepted": out["positive_counts_accepted"],
+        "fact_states": [fact["typed_state"] for fact in out["facts"]],
+        "p02_failure_states": [fact["p02_failure_state"] for fact in out["facts"]],
+        "output_sha256": hashlib.sha256(args.output.read_bytes()).hexdigest(),
+        "stdout_counts_emitted": False,
+    }, sort_keys=True))
     return 0
 
 
