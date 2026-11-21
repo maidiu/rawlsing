@@ -90,6 +90,8 @@ No negative is retired through author publication alone. Exact status remains CO
 
 **NEKUDA-002/003 / KUDA-002/003/004:** Original B49 selected source administered/held semantic classifier is absent as a separate historical module but cannot be installed as a parallel original-source issuer without authentic per-wave/administration corpus and current R157/NativePreimage binding. Older G50 symbolic grammar and I51 single-target synthetic join overlap current richer R61 enumeration/R03 v2 QUERY issuance; **SOURCE_STATIC_POSSIBLE_SUPERSESSION**, not accepted exact operation-fate parity. Do not resurrect two prospective compilers or infer U/E_pre original rights.\n\n**KUDA-065 / NEKUDA-058 — no-build exact identity**: recovered historical direct I02 code blob `451727511af7f727b082c518aae2f4a3dbe2ba3a` is byte-identical to #1247 selected current module, and current consumers already exist. Do not re-port; this does not resolve original source rights or real physical economics.
 
+**KUDA-068–072 / NEKUDA-061–065:** Selected #1247 retains source-I02 handoff, cold I03/W05 authenticated physical-order, R03 v2 governed QUERY issuance and original prepared-session owner symbols; added typed response/routing/catalog/current saved-admission guards. Targeted source comparison did not identify a *missing producer*, but no complete semantic parity, real 100k economics, scientific permission or G5 was established. **NO_BUILD at SOURCE_STATIC_SELECTED_OWNER grade**; preserve historical concerns until competent same-head tests and authoritative receiving.
+
 All original NEKUDA identities remain and any independent tests, scientific rights and paired protected receiving remain separate.
 
 ---
