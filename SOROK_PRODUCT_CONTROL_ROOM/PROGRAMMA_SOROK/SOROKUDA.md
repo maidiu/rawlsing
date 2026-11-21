@@ -289,3 +289,7 @@ Sourcefree Codex/Sorok historical packages not represented at all in the old 300
 
 The original sourcefree test directories for S37 and S39–S45 add **22** exact Python test/support blob records, including conftest scaffolding. These are original-code regression objects, **NOT** 22 independently passed tests; shared conftest source blobs are duplicated by packaging only. No execution at this R5 cut.
 
+
+### R5 regression custody, tranche 2
+
+Original S46–S52 test/support directories add **14** source-pinned Python files, preserving complete 15-family initial-source regression directory inventories. The 15 lineages total **36** test/support files, including repeat shared conftests; these are not 36 independent tests passed or terminal G5 proof.
