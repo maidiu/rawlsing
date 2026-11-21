@@ -203,9 +203,14 @@ class JoinedNadiaWorld(unittest.TestCase):
                 self.assertEqual(len(practice_options),1)
                 self.assertEqual(practice_options[0]["world_request"][
                     "material_object_ref"],obj)
-                inspected=rt.step("nadia",requested_action="INSPECT",
-                                  object_ref=obj)
+                # Unlike a researcher-forced INSPECT, Nadia's subsequent
+                # operation is now chosen by HER situated actor policy
+                # because she personally heard this speaker/thing relation.
+                inspected=rt.step("nadia")
+                self.assertEqual(inspected["attempt"],"INSPECT")
                 self.assertEqual(inspected["status"],"PERFORMED")
+                self.assertEqual(inspected["selection_grade"],
+                                 "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE")
                 after=rt.snapshot("nadia")
                 self.assertEqual(len(after["cultural_reference_practices"]),1)
                 self.assertEqual(after["cultural_reference_practices"][0][
