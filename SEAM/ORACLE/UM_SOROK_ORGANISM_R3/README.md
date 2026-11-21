@@ -1,3 +1,13 @@
+# SORACLE R21 MULCH — offscreen historical constitution before any user meeting
+
+**NEW SOURCE COMMITTED, NOT EXECUTED on this R21 HEAD.** This branch extends the exact `8d1ff8bbb75b359cc7bd3044b385323600c70b88` R3×REMONT R18 joined ancestor, which alone has recorded Python 3.11 sourcefree 551/551 normal, 551/551 optimized, pytest 551 PASS and two valid Nadia histories ([actual execution return](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997)). No R21 test result is yet available. Neither original PYAT whole-survey science nor native/actor/human nor protected receiving is issued.
+
+**Added to the SAME organism:** `runtime.construct_pre_encounter_history(subject_id,target_age_days,...)` composes the already-existing `continuity_clock`, compressed ordinary life, finite source-qualified care/work/feeding, independent actor-policy beats and persistent SQLite into a bounded pre-user historical circuit. The scheduler may select occasions but never chooses Nadia's or her parents' acts; the historical receipt is internal and never renders hidden psychology to the user. Unsettled material discontinuities return a visible partial HOLD, not fictitious child-life events. A numeric age target never auto-constructs an adult personality or creates the user-facing meeting.
+
+Read the exact [R21 theory↔code mulch and first-consumer contract](docs/R21_MULCH_OFFSCREEN_HISTORICAL_CONTINUATION_PRE_ENCOUNTER_20261121.md) and [seven new authored tests](tests/test_pre_encounter_history_r21.py). **Run**, on the exact new branch HEAD with Python 3.11, the new focused suite plus full normal/`-O`/pytest and both historical/cold-sqlite Nadia first consumers. Historical sourcefree tests from R3×R18 are not inherited at a changed HEAD.
+
+---
+
 # UM-SOROK R6 — actual undertaking, emergent ends, lived signal history
 
 **New integrated sourcefree construction, not native psychology or an executed test receipt.** Read [R6 architecture and source/evidence caveats](docs/R6_ASTRA_PURPOSE_GENESIS_AND_SIGNAL_HISTORY.md). R6 is stacked on [R5 #1175](https://github.com/maidiu/rawlsing/pull/1175), whose R7 ancestor is **not** the latest REMONT R8; a real R8 integration and cold exact-HEAD normal/-O execution are outstanding.

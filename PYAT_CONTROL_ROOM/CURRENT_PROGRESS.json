@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 20,
-  "revision_note": "Rev20 source-static no-dup: #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff extends ORIGINAL current-governed issued workload saved route with opted-in prepared I03 and reuses NativeWorkloadResult->S04, 2 Q023 tests not executed; G4 S02/S03/S04 and linked component records + paired progress ONLY, no PRE-MAIN feature code, original science/G5/actor held.",
-  "report_status": "PYAT_REV20_DOC_ONLY_NATIVE_ISSUED_NORMAL_PREPARED_I03_FIRST_READER__CODE_UNRECEIVED_TESTS_UNEXECUTED",
+  "revision": 21,
+  "revision_note": "Rev21 operator exact-head Q023 33/33 38.48s + Q014 41/41 1.99s, 74 passed/0 fail/0 held at 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff; per user pasted Mac terminal, not independent JUnit readback; documentary G4+paired progress only, no feature code accepted.",
+  "report_status": "PYAT_REV21_DOC_ONLY_USER_REPORTED_EXECUTED_AT_SHA__Q023_33_PASS_Q014_41_PASS__CODE_UNRECEIVED",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -748,5 +748,47 @@
     "remont_q015": "OWNED_BY_REMONT_NO_CODE_CHANGE",
     "soracle_1234": "UNTOUCHED",
     "observed_query_vs_supported_S04": "ELIGIBLE_QUERY_IS_NOT_AUTOMATICALLY_SUPPORTED_FACT; negatives retained"
+  },
+  "g4_pyat_1247_operator_sourcefree_q014_q023_rev21": {
+    "grade": "USER_REPORTED_EXECUTED_AT_SHA",
+    "candidate_pr": 1247,
+    "candidate_sha": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+    "environment": "oldMac Mac shell zsh; Python pytest 9.1.1; detached worktree /Users/matthewsmith/Desktop/rawlsing-q023-test",
+    "proof_base": "/Users/matthewsmith/Desktop/rawlsing-q023-test/.pyat-preff-remont-proof/53517c4acecf6246ee6ed3ba7974bc7e6297d8ff",
+    "courts": [
+      {
+        "id": "RMT-Q023",
+        "tests_passed": 33,
+        "tests_failed": 0,
+        "held": 0,
+        "exit": 0,
+        "seconds": 38.48,
+        "per_case_status": "PASS_EXECUTED_AT_SHA",
+        "test_scope": "six existing sourcefree test files incl new original issued NORMAL saved I03→S04 plus negative case"
+      },
+      {
+        "id": "RMT-Q014",
+        "tests_passed": 41,
+        "tests_failed": 0,
+        "held": 0,
+        "exit": 0,
+        "seconds": 1.99,
+        "per_case_status": "PASS_EXECUTED_AT_SHA",
+        "test_scope": "R03_ASKED_ELIGIBLE sourcefree first-fault court"
+      }
+    ],
+    "total_executed_passed": 74,
+    "total_failed": 0,
+    "total_held": 0,
+    "basis": "user-pasted original Mac terminal transcript including runner status and Q023 proof index/log readback; log/JUnit bytes not independently fetched",
+    "sourcefree_only": true,
+    "independent_g5": false,
+    "original_source_science": false,
+    "host_cost_proof": false,
+    "protected_code_receiving": false,
+    "remont_issue_comment": 7059561917,
+    "pr_comment": 7059561602,
+    "further_proofs": "bounded high-width 1/10/100 DISTINCT query measurements, independent artifact review, other QIDs/full integrated suite, original-source/native population/FF02 source and actor qualification",
+    "no_new_features_received": true
   }
 }

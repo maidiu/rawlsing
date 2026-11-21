@@ -1,5 +1,14 @@
 # G4 functional-conservation correction — REMONT #1243 → PYAT #1247
 
+## REV21 — operator sourcefree first-fault evidence at #1247 exact SHA
+
+The user ran two separate existing REMONT courts against unchanged code `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` in a clean detached Mac worktree. **Q023: 33/33 PASS, 38.48 s; Q014: 41/41 PASS, 1.99 s; each case exit 0, no holds, zero failures**. The user read back Q023 index/status/log and pasted the terminal output. Pytest 9.1.1. Operator results and locally held JUnit/pytest logs: `/Users/matthewsmith/Desktop/rawlsing-q023-test/.pyat-preff-remont-proof/53517c4acecf6246ee6ed3ba7974bc7e6297d8ff/`. [Received transcript, exact scope, evidence ceiling](https://github.com/maidiu/rawlsing/issues/1162#issuecomment-7059561917).
+
+**Evidence grade is USER_REPORTED_EXECUTED_AT_SHA, not independent readback.** These 74 passing *executions* are not 74 unique tests, not Q015/Q017/Q020, not a comprehensive C11/I05/S04/FF/actor grade, and not evidence of original survey/host source rights. Inherited 1/10/100 sourcefree test names being present and Q023 passing does NOT measure high-width real-data cost or produce source-authorized population inference. The source remains a draft feature candidate; PRE-MAIN receives only documentary G4 and paired progress.
+
+The previous REV20 `COMMITTED_UNTESTED` claim remains an accurate historical timestamp but is **superseded for these exact two executed courts at this immutable SHA**. All other sourcefree/native/source-science/independent/promoted claims remain bounded by their own evidence. No remediation or new queue assignment is required for a 0-fault run.
+
+
 ## REV20 exact functional addition — original issued NORMAL saved workload
 
 **Candidate #1247 @ `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` · COMMITTED_UNTESTED, separate from PRE-MAIN.** Previous rev19 retained the ordinary saved Batch→prepared cold I03 and a separate manually selected I03→S04/FF01 two-query demonstration. The *original* externally governed `pre553_issued_workload.execute_issued_workload` saved-estate route still ran each query through a one-operation cold I03 session.
