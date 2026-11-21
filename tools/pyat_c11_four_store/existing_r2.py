@@ -166,10 +166,12 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
     if use is not None:
         from dataclasses import replace
         from rawlsing_next.pre553_anvil_stream_recorded import RecordedUniverseUse
-        historical_ref=authority_ref(use["historical_snapshot_ref"])
+        historical_key=use["historical_snapshot_ref"]
+        if not isinstance(historical_key,str) or historical_key.count("|") != 2:
+            raise StoreFailure("historical R157 authority identity missing")
         historical=[
             a for a in verified.iter_family("AuthoritySnapshot")
-            if a.authority_ref == historical_ref and a.decision_state=="DEFER"
+            if a.authority_ref.key == historical_key and a.decision_state=="DEFER"
         ]
         positive=[
             a for a in authorities
