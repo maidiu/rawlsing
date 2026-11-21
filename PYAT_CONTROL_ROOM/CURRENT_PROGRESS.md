@@ -1,3 +1,12 @@
+# PYAT CURRENT_PROGRESS REV22 — INDEPENDENT Q023/Q014 EXECUTION RECEIPT
+
+Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The typed UNAVAILABLE/UNRESOLVED negative is still PROVE_E because the fixture emitted four SUPPORTED facts. Wider G4 receiving and feature-code adoption remain pending.
+
+- RMT-Q014 JUnit SHA-256 `0a46201ac8cefd8d2a4df1189c2c766d04488bf4d8f2699d933992d7054e4868`
+- RMT-Q023 JUnit SHA-256 `2e1cf739eb9c3bcfd892ed4a9802a7449fe21c9abcaf402393cffaaa0025085f`
+
+---
+
 # PYAT CURRENT_PROGRESS REV21 — SAME-SHA USER-EXECUTED Q023/Q014 GREEN, DOC ONLY
 
 **Candidate #1247 unchanged** at `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. The user executed **RMT-Q023 33/33 in 38.48 s** and **RMT-Q014 41/41 in 1.99 s** on oldMac / pytest 9.1.1 in detached worktree. Both explicit runner results exit 0, `executed=1 held=0 failed=0`, 74 passing court executions in total; evidence is **USER_REPORTED_EXECUTED_AT_SHA**, supported by pasted terminal and local Q023 proof index/status/log readback but NOT independent GitHub readback of JUnit bytes or G5. [REMONT exact report](https://github.com/maidiu/rawlsing/issues/1162#issuecomment-7059561917). The rev20 `COMMITTED_UNTESTED` notice is corrected ONLY for these two QIDs. No high-width original-source survey cost, original administered/eligible population authority, external FF02 actor, independent technical receiving, full-suite green, or code promotion. PRE-MAIN changes only existing G4/coupled docs; Q015 remains REMONT-owned and SORACLE #1234 untouched.
