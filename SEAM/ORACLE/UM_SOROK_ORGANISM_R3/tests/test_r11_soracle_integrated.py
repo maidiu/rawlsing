@@ -97,7 +97,10 @@ class R11ProspectiveRuntime(unittest.TestCase):
             return {'task':task,'candidates':[]} if task=='development' else {'task':task,'surface':'ok'}
         self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(callback))
         start=self.rt.ledger.world()[1]['clock']
-        with self.assertRaisesRegex(ValueError,'PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT'):
+        # The current owner first refuses the unowned/non-situated project
+        # identity, before an otherwise valid provisional trial can be
+        # interpreted as an attained project. Both are rejection, not success.
+        with self.assertRaisesRegex(ValueError,'MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE'):
             self.rt.step('nadia')
         self.assertEqual(self.rt.ledger.world()[1]['clock'],start)
 
