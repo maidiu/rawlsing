@@ -78,6 +78,8 @@ class Constitution:
     joint_practices: list[dict] = field(default_factory=list)
     care_contribution_episodes: list[dict] = field(default_factory=list)
     care_practical_commitments: list[dict] = field(default_factory=list)
+    cultural_demonstrations: list[dict] = field(default_factory=list)
+    cultural_reference_practices: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -155,6 +157,8 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'joint_practices': [],
         'care_contribution_episodes': [],
         'care_practical_commitments': [],
+        'cultural_demonstrations': [],
+        'cultural_reference_practices': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,
