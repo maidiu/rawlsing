@@ -234,6 +234,120 @@ try:
  report["R24_grade"]="AUTHOR_SOURCE_STATIC_ELIMINATION_ONLY_NOT_INDEPENDENT_G5_NOT_42_DEEP_TESTS"
  report["R24_fates"]=actual_categories
 
+ # R26 — thirteen held historical implementations exact-body identity and selected owner overlap.
+ r26=l.split("## 14. R26 — S1/S2 exact-source adjudication",1)[1]
+ r26rows=re.findall(r"^\| \[(\d{3})\]\(KUDA\.md#kuda-\d{3}\)",r26,re.M)
+ expected_r26=set("028 077 083 067 081 086 078 082 091 017 018 019 076".split())
+ test("R26 exactly thirteen source-specific stop-filter cases",len(r26rows)==13
+      and set(r26rows)==expected_r26,r26rows)
+ historic=[
+  ("028","46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+   "rawlsing_next/_pre553_c11_execution_view.py","986f327aa18053edc61bd837cdded02bbf8388d9"),
+  ("077",B16,"rawlsing_next/pre553_route_c_accelerators.py",
+   "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"),
+  ("083",B16,"rawlsing_next/pre553_r5_compact_carrier.py",
+   "92e364b31eaf27be1bca2081eff65f6ffb779c3d"),
+  ("067","624ad8d1516d32ecb30657d61103636c6fc966af",
+   "rawlsing_next/field_forge_conditional_support.py","fd8570ec6bf6ee6e140abbcb251dd486da5d60cb"),
+  ("081","624ad8d1516d32ecb30657d61103636c6fc966af",
+   "rawlsing_next/gt12_c_to_d_relation_bridge.py","2f5066fdb308386f700537c1931655499a99ca13"),
+  ("086","9c776b358c5f5a31f2ff2d35460d5350c0dc2bc8",
+   "rawlsing_next/field_forge_conditional_support.py","cad7b2e1b1dbaf1478b3d0e2816f49629c31b2a1"),
+  ("078",B16,"rawlsing_next/as4/protocol.py","590da3a2cc54666bd9786130409170b73310a700"),
+  ("082","0dc9a21f9b491d27c711082ad9c39c05509211b0",
+   "rawlsing_next/universal_source_to_c11/consumer.py","41cfc0f5a1b0528a60f35f08169f2464d425aa60"),
+  ("091","c07368ef37202f89ed298fa076c409c579f62202",
+   "rawlsing_next/wsc_gt0_end_to_end.py","1b23013e644582218e3b67de32c163575036d39e"),
+  ("017","1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+   "WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py","2df811d76db258d98d89ffb43c830cb221ff9a7d"),
+  ("018","016870e86913e6f7a811a51db6aba2d741bcfe58",
+   "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py","8fa992899293f454d7abded36831a4b4a362df8e"),
+  ("019","f8fe03cc6e6a482f428bed9e03c08e50ce1e6479",
+   "WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py","f93fc79c182b1962dc3b3a25915b8d93afe7e5c7"),
+  ("076","7628840c4c8e95b320cadc672743355afbe2958a",
+   "WORKER_RETURNS/PYAT-R37-N9J-SELECTED-WORLD-PROGRESSIVE-CONSUMER-R1/native/e05_n9_selected_world_adapter.py","642381bc033aaeef878624bdce71f9f94708043d"),
+ ]
+ historic_body={}
+ for ident,ref,path,expected in historic:
+  historic_body[ident]=exact(ref,path,expected).decode()
+ test("R26 historic unique thirteen exact body identities",set(historic_body)==expected_r26)
+ selected_cut="997ca50869551d292650c710a2c99a43c9119f7a"
+ current_ff=exact(selected_cut,"rawlsing_next/field_forge_conditional_support.py",
+     "a70decb20747d84cbcbe27d1280babc6de88ef33").decode()
+ combined_ff=exact(S1267,"rawlsing_next/field_forge_conditional_support.py",
+     "a22c66dfc73a651a0d7df071d644426411a5d5f7").decode()
+ current_d=exact(selected_cut,"rawlsing_next/gt12_c_to_d_relation_bridge.py",
+     "ea04ec079e8d60e6e5c7236ec5b54898876be4b3").decode()
+ combined_d=exact(S1267,"rawlsing_next/gt12_c_to_d_relation_bridge.py",
+     "2f5066fdb308386f700537c1931655499a99ca13").decode()
+ current_r112=exact(selected_cut,"rawlsing_next/pre553_world_conditioned_progressive_service.py",
+     "809a60c1cbfeb90af625c308a29bea46e3bfee9e").decode()
+ combined_r112=exact(S1267,"rawlsing_next/pre553_world_conditioned_progressive_service.py",
+     "004ec58dbfd8732d1139e32ce7c7a0eb6a7a0380").decode()
+ test("R26 FF01 067 and 086 BOTH coexist in one held combined blob",
+      "_check_positive_respondent_extent" not in current_ff
+      and "_validate_frozen_q86_source_identity" not in current_ff
+      and all(x in combined_ff for x in (
+       "def _check_positive_respondent_extent(",
+       "def _validate_frozen_q86_source_identity(")),
+      "STATIC_UNION_NOT_EXECUTED_AT_COMBINED_SHA")
+ test("R26 D C-to-D 081 distinct selected original source contradiction guard",
+      "def admit_gt12_c_relation_from_fixed_current_transport(" not in current_d
+      and "def admit_gt12_c_relation_from_fixed_current_transport(" in combined_d,
+      "STATIC_NOT_NATIVE_REVIEWED")
+ test("R26 R112 076 postread field check added into existing owner",
+      "def _verify_e05_field_read(" not in current_r112
+      and "def _verify_e05_field_read(" in combined_r112,
+      "TEST_ONLY_CANDIDATE; N9C different held function")
+ f6m=exact(S1267,"rawlsing_next/pre553_heterogeneous_synthesis.py",
+           "2df811d76db258d98d89ffb43c830cb221ff9a7d")
+ f6p=exact(S1267,"rawlsing_next/_f6_candidate/f6p_partial_bound_evidence_consumer.py",
+           "8fa992899293f454d7abded36831a4b4a362df8e")
+ test("R26 017/018 original body exact duplication on held candidate",
+      f6m==historic_body["017"].encode() and f6p==historic_body["018"].encode(),
+      "Does not grant external world receiver")
+ current_g=exact(selected_cut,"rawlsing_next/wsc_gt0_end_to_end.py",
+   "62b6ea39c605874af6d7aef85693472f88087f57").decode()
+ newtests=exact(S1267,"rawlsing_next/tests/test_kuda091_gt0_real_spine_hostiles.py",
+   "3540990bd108f99fb38c314aa7c1dac7408be440").decode()
+ test("R26 091 old fake stage ABI replaced by actual stage hostile assertions",
+      "class GT0StageAPI:" in historic_body["091"]
+      and "class GT0StageAPI:" not in current_g
+      and "test_original_kuda091_v3_rng_state_mutation_detected_in_actual_spine" in newtests
+      and "test_original_kuda091_v2_actor_expression" in newtests,
+      "OLD_OTHER_NEGATIVES_NOT_EXHAUSTIVELY_COMPARED")
+ ftest=exact(S1267,"rawlsing_next/tests/test_kuda082_r157_current_c11_parity.py",
+   "9934459bb2fd43b35830fbbdf5c21c2b41b01110").decode()
+ test("R26 082 test-only original fixture parity/refusal now has selected-owner code",
+      "def receive_fixture_release(" in historic_body["082"]
+      and "original_execution" in historic_body["082"]
+      and "test_independent_current_r157_facade_vs_direct_i02_parity" in ftest
+      and "decode_fixture_config refuses ORIGINAL_SOURCE" in ftest,
+      "35-specific roster negatives not yet shown equivalent")
+ current_view=exact(selected_cut,"rawlsing_next/_pre553_c11_execution_view.py",
+  "de5613301eb54aefaccb002e3c8dc4c657885479").decode()
+ test("R26 028 competing physical compression shape is not same source body",
+      "class _CompressedBodies:" in historic_body["028"]
+      and "class _CompressedBodies:" not in current_view
+      and "def _read_bodies(" in current_view,
+      "NOT A PERFORMANCE VERDICT")
+ test("R26 077 and 083 original alternate physical contracts require selected test",
+      "require_frozen_lits1_scope" in historic_body["077"]
+      and "class R5CompactLongShardedBuilder:" in historic_body["083"]
+      and "class HB04CandidateSession:" in historic_body["078"],
+      "NO SAME-WORKLOAD ORIGINAL WIDTH WIN")
+ test("R26 P07 exact version selector vs selected R06 label not a binding",
+      "def select_as_of_version(" in historic_body["019"]
+      and "class AsOfVersion:" in historic_body["019"]
+      and "def select_world_view(" in exact(selected_cut,
+          "rawlsing_next/pre553_universal_world_binding.py",
+          "fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d").decode(),
+      "CLASS/METHOD COEXISTENCE ONLY; source-issued relation unknown")
+ report["R26_grade"]="13_SOURCE_BODIES_S1_S2_STATIC__SELECTED_FIRST_CONSUMER_DIFFERENTIAL_HELD"
+ report["R26_outcomes"]={"physical_single_comparator":3,"existing_owner_combined_candidate_no_old_port":4,
+                         "legacy_test_oracle_partial":3,"source_science_external_consumer_held":3}
+
+
 
 
 
