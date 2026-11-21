@@ -83,22 +83,35 @@ assert paths["total_file_entries"] == 227, paths["total_file_entries"]
 assert paths["total_directory_entries"] == 25, paths["total_directory_entries"]
 assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
-idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|", ideas, re.M)]
-assert idea_numbers == list(range(1, 67)), idea_numbers
-for excerpt in (
-    "everything is a dialectic", "it needs to be modeled like many overlapping dialectics",
+idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|",
+    ideas.split("## H. SECOND INDEPENDENT HOUSE:", 1)[0], re.M)]
+assert idea_numbers == list(range(1, 86)), idea_numbers
+# The exact originating user words from source essays that were deleted must
+# survive in the EXISTING 04 source register, rather than permanent sub-essays.
+for phrase in (
+    "in a public forest with a borrowed axe",
+    "value I created now lives inside the wood",
+    "the Sabbath was made for man, not man for the Sabbath",
+    "the free hand of the market",
+    "is your brain falling out",
+    "everything is a dialectic",
+    "it needs to be modeled like many overlapping dialectics",
     "also, what I have just said is a riff",
 ):
-    assert excerpt in (ROOT / "10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md").read_text(), excerpt
-five = (ROOT / "11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md").read_text()
-for title in (
-    "THE OBSERVER IS OBSERVABLE",
-    "UNRECOGNIZED GOOD",
-    "HUMAN VALUE IN OBJECTS",
-    "TYRANNICALLY RETCON",
-    "PORTAL'S REALIZED SPEECH",
+    assert phrase in ideas, ("LOST_ORIGINAL_USER_SPEECH", phrase)
+assert "### G1. Overlapping dialectical fields" in ideas
+assert "### G2. Marxian human value" in ideas
+
+# The specific six-case user MULCHINEERING ask belongs in EXISTING 05.
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
+for phrase in (
+    "IV-A. Explicit MULCHINEERING work item",
+    "H053", "H059", "NEIGHBOR R2",
+    "**RC-1**", "**RC-2**", "**RC-3**",
+    "**RC-4**", "**RC-5**", "**RC-6**",
 ):
-    assert title in five, ("FIVE_RECOVERY_MISSING", title)
+    assert phrase in crosswalk, ("LOST_GAZE_ENGINEERING_REQUIREMENT", phrase)
+
 for excerpt in (
     "and then he cheated on mom", "and the", "the family has one",
     "MULCHINEERING", "I want *everything in one place*",
@@ -114,11 +127,120 @@ for leaf in (
 ):
     assert (ROOT / leaf).is_file(), leaf
 
+# An integrity guard against the concrete regression that occurred in this turn:
+# old CI proved source custody while the designated living theory hub (03)
+# was NOT revised by substantive new user/source arguments. This check
+# establishes only that the source themes now appear IN the hub and 05/06;
+# it cannot prove their intellectual adequacy or independent owner adoption.
+theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
+start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
+critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
+# ONE-HOUSE DOC CONSERVATION: 03 is fully reconstituted from two
+# independently authored theory lineages and the executed R28 organism.
+# Structural/semantic-marker evidence only: no claim of human science,
+# full independent 197/104 conceptual adjudication or protected receiving.
+theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
+start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
+critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
+heads = re.findall(r"^## ([IVX]+)\. ", theory, re.M)
+assert heads == ["I","II","III","IV","V","VI","VII","VIII","IX",
+                 "X","XI","XII","XIII","XIV","XV","XVI","XVII"], (
+                 "ONE_HOUSE_CHAPTER_DISPLACEMENT",heads)
+# Length is not theoretical adequacy: abolish the old 68 KB word-count proxy.
+# Require the 17 freshly reconstituted causal movements and no duplicate
+# historical theory passages under an "inherited material" subheading.
+assert len(theory)>=30000 and "STAGING ONLY" not in theory
+assert "**Inherited material, re-read under this stronger causal claim" not in theory, (
+    "OLD_THEORY_STILL_STACKED_UNMULCHED")
+assert "## I. Material birth, labor and institutions precede the encounter" in theory
+assert "## XV. The game is what historical participation feels like" in theory
+for phrase in (
+    "ONE HOUSE", "same-SES", "YOUR RESOURCES",
+    "NO_LAWFUL_HOMOLOGY", "Sabbath", "Mark 2:27", "firewood",
+    "M0–M8", "relational_metabolism", "historical_self_organization",
+    "R28", "R29", "634", "two-meal", "false blame",
+    "Birkenstocks", "H0–H3", "Mechanism I", "MII", "MIII",
+    "S0–S16", "C0–C12", "Q123", "messaging", "F1–F10",
+    "RC1–RC6", "JH1–JH8", "platform", "SES", "co-presence",
+    "source-root", "copy-on-write", "Dawkins", "sex work",
+    "recruitment", "institution", "causal", "NO_CHANGE"
+):
+    # Keep quality checks honest: verifying the claim is articulated cannot
+    # prove the claim is correct or integrated in running source.
+    assert phrase.casefold() in theory.casefold(), (
+        "ONE_HOUSE_THEORY_SPECIFIC_OMISSION",phrase)
+for i in range(1,11):
+    assert ("**F"+str(i)+" " in crosswalk or "**F"+str(i)+" —" in crosswalk), (
+        "LOST_OLD_03_EXECUTABLE_FALSIFIER",i)
+for i in range(1,7):
+    assert "**RC-"+str(i)+"**" in crosswalk, ("LOST_OBSERVER_FIRST_CONSUMER",i)
+for i in range(1,9):
+    assert "JH-"+str(i)+":" in crosswalk, ("MISSING_TWO_HOUSE_FIRST_CONSUMER",i)
+for lo,hi in ((1,12),(13,26),(27,39),(40,52),(53,62),(63,86),
+              (87,99),(100,116),(117,139),(140,163),(164,190)):
+    assert f"H{lo:03d}–H{hi:03d}" in crosswalk, (
+        "LOST_ORIGINAL_H_FAMILY_FALSIFIER",lo,hi)
+assert "ONE FULLY REWRITTEN theory document" in start
+assert "03 — The Dialectical Constitutive Person and Its Game" in start
+assert "Mandatory WHOLE-THEORY replacement rule" in critique
+assert "THEORY_MULCH_INCOMPLETE" in critique
+for doc in (start,crosswalk,critique,theory):
+    assert not re.search(r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)",doc), (
+        "DEAD_SATELLITE_LINK")
+
+# The second house is preserved as provenance, not smuggled as another
+# active theory. 104 cross-lineage propositions: C44 + NM44 + R9-16.
+# 197 predecessor source/fate sections are preserved; rival PR #1277 remains intact.
+rival=ideas.split("## H. SECOND INDEPENDENT HOUSE:",1)[1]
+rival_lineage=rival.split("### 197 source sections:",1)[1].split(
+    "### 104 cross-lineage user/theory propositions",1)[0]
+source_rows=re.findall(r"^\| R[^|]+-S\d+ \|",rival_lineage,re.M)
+assert len(source_rows)==197, ("RIVAL_PREDECESSOR_SOURCE_LOSS",len(source_rows))
+rival_propositions=rival.split("### 104 cross-lineage user/theory propositions",1)[1]
+for prefix,count in (("C",44),("NM-",44),("R9-",16)):
+    if prefix=="C":
+        rows=re.findall(r"^\| C\d{2} \|",rival_propositions,re.M)
+    elif prefix=="NM-":
+        rows=re.findall(r"^\| NM-\d{3} \|",rival_propositions,re.M)
+    else:
+        rows=re.findall(r"^\| R9-\d{2} \|",rival_propositions,re.M)
+    assert len(rows)==count, ("RIVAL_ORIGINAL_PROPOSITION_LOSS",prefix,len(rows))
+assert "original user" in ideas.casefold()
+assert "ONE-HOUSE JOINED FIRST-CONSUMER" in crosswalk
+
+# Terminal cleanup gate: the source essays were intermediate material for
+# the whole-theory rewrite, not permanent documents. Keep the actual original
+# H/Q/O/SOROKUDA source atlas, 04 verbatim and 05 courts.
+superseded = (
+    "03_FULL_REWRITE_STAGING_TEMPORARY.md",
+    "10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md",
+    "11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md",
+    "12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md",
+    "13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md",
+)
+for leaf in superseded:
+    assert not (ROOT / leaf).exists(), ("SUPERSEDED_THEORY_STILL_LIVE", leaf)
+assert [z.name for z in ROOT.glob("03_*.md")] == [
+    "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md"
+], "PARALLEL_03_THEORY_FOUND"
+original_g1 = ideas.split("### G1. Overlapping dialectical fields")[1].split(
+    "### G2. Marxian human value")[0]
+original_g2 = ideas.split("### G2. Marxian human value")[1].split(
+    "**No-drop:**")[0]
+assert len(original_g1) > 3079 and len(original_g2) > 4096, "VERBATIM_USER_QUOTE_LOST"
+assert not re.search(
+    r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)",
+    ideas), "BROKEN_VERBATIM_SOURCE_LINK"
+
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
-print("USER_CONVERSATION PASS: NM-001 through NM-066 contiguous; exact latest source snippets preserved")
+print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
+print("ONE_HOUSE_03_RECONSTITUTION_PASS: 17 material-first causal movements; no pasted inherited old-theory blocks; 104+197 historical rival source claims in 04, original F1-F10/RC1-RC6, JH1-JH8 and actual R29 first-consumer in 05; DOC-level anti-loss, NOT independent semantic/scientific accreditation")
+print("ONE_LIVING_03_NO_SATELLITES_PASS: staging and 10–13 deleted from active tree; 04 original quotes + 05 RC courts preserved")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
