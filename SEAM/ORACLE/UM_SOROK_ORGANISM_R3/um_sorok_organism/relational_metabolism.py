@@ -53,6 +53,12 @@ def validate_motif(motif, forms):
         raise InvalidRelationalMotif("MOTIF_REQUIRES_TWO_TO_FOUR_ACQUIRED_FORMS")
     if any(not forms[x].get("origin") for x in sources):
         raise InvalidRelationalMotif("MOTIF_REQUIRES_ACTUAL_FORM_ANCESTRY")
+    # An actor-specific historical relation to an identifiable Other may
+    # require an actually *received event* from that Other, not mere
+    # co-presence, a generic label or an analyst's claim of authority.
+    witness = motif.get("witnessed_source_actor_ref")
+    if witness is not None and (type(witness) is not str or not witness.strip()):
+        raise InvalidRelationalMotif("INVALID_MOTIF_WITNESSED_SOURCE_ACTOR")
     cues = motif.get("cue_terms", [])
     locations = motif.get("locations", [])
     if (type(cues) is not list or type(locations) is not list
@@ -75,6 +81,18 @@ def validate_motif(motif, forms):
                     effect["source"] == effect["target"] or
                     effect.get("relation") not in RELATIONS):
                 raise InvalidRelationalMotif("MOTIF_RELATION_NOT_QUALIFIED")
+            # A learned relation can *also* carry an operative transduction,
+            # but only into an ability already acquired by its TARGET form.
+            # No learned theology/ideology may conjure a world permission,
+            # physical operation, agency of another person, or fixed morality.
+            if ("mediated_action" in effect or "polarity" in effect):
+                target = forms[effect["target"]]
+                action = effect.get("mediated_action")
+                if (type(action) is not str or action not in ACTIONS
+                        or action not in target.get("enables", [])
+                        or effect.get("polarity") not in POLARITIES):
+                    raise InvalidRelationalMotif(
+                        "MOTIF_MEDIATED_ACTION_NOT_ACQUIRED_BY_TARGET")
         else:
             # A historical configuration can recruit an *already acquired*
             # third form across cues; it cannot invent the target, bypass its
@@ -151,6 +169,14 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
             continue
         if not _in_context(motif, access, cues):
             continue
+        witnessed_actor = motif.get("witnessed_source_actor_ref")
+        if witnessed_actor is not None and not any(
+                cue.get("source_actor") == witnessed_actor
+                and cue.get("kind") not in (
+                    "coactor_present", "material_object_present",
+                    "public_notice_visible")
+                for cue in access.cues):
+            continue
         sources = set(motif["source_forms"])
         if not sources <= situated or not sources & active:
             continue
@@ -184,15 +210,41 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
                     "grade": GRADE,
                 })
             else:
+                # Relational mediation is not merely a diagnostic label.
+                # A historically acquired way of interpreting care through
+                # institutional discipline, for example, can make an
+                # *already acquired* practical operation newly attractive
+                # or aversive. The source may remain inhibited; the TARGET
+                # must remain directly recruited, not be resurrected.
+                operative = "mediated_action" in effect
+                target_direct = effect["target"] in active
                 currents.append({
                     "kind": "ACQUIRED_PERSONAL_SENSE_MEDIATION",
                     "motif_ref": mid,
                     "source_form_ref": effect["source"],
                     "target_form_ref": effect["target"],
                     "relation": effect["relation"],
+                    "has_inhibited_source": effect["source"] in blocked,
+                    "target_directly_recruited": target_direct,
+                    "operative_mediation": operative and target_direct,
+                    "not_objective_justification_of_conduct": True,
                     "no_automatic_motive_fulfillment": True,
                     "grade": GRADE,
                 })
+                if operative and target_direct:
+                    action_currents.append({
+                        "action": effect["mediated_action"],
+                        "polarity": effect["polarity"],
+                        "motif_ref": mid,
+                        "source_form_refs": sorted(sources),
+                        "has_inhibited_source": bool(sources & blocked),
+                        "mode": "HISTORICALLY_ACQUIRED_RELATION_TRANSDUCTION",
+                        "mediation_relation": effect["relation"],
+                        "mediation_source_ref": effect["source"],
+                        "mediation_target_ref": effect["target"],
+                        "not_actor_self_account": True,
+                        "not_objective_justification_of_conduct": True,
+                    })
     return {
         "currents": currents,
         "action_currents": action_currents,
