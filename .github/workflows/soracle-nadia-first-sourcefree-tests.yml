@@ -23,6 +23,21 @@ jobs:
       - name: Compile all organism modules
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m compileall -q um_sorok_organism
+      - name: SORACLE builder-owned R3 x REMONT R18 faults and repaired positive
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_r3_r18_joined_faults
+          python -O -m unittest -v tests.test_r3_r18_joined_faults
+      - name: REMONT R17 P018 source/chain preflight
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_r17_source_preflight
+          python -O -m unittest -v tests.test_r17_source_preflight
+      - name: REMONT R18 P004 selected means atomicity
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_remontathon_r18_p004_selected_means
+          python -O -m unittest -v tests.test_remontathon_r18_p004_selected_means
       - name: R3 x R16 joined child-life / source-ledger first consumer
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |
