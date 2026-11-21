@@ -1,0 +1,349 @@
+{
+  "task_id": "PYAT991-S2D-G5-ALL-SEVEN",
+  "packet_id": "S2-D",
+  "old_obligations": [
+    "P2-05"
+  ],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "contract_frozen_at_sha": "d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "persona_role": "S2D_SAME_DISTINCT_NONAUTHOR_G5_ALL_SEVEN_RECEIVING",
+  "session_id": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat991-s2d-g5-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-g5",
+  "exclusive_allowlist": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/",
+  "base_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+  "tested_code_cut_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+  "prior_g5_return_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+  "prior_qualified_saved_cut": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+  "accepted_s2c_executable": "b7b697b69f0acea12174937ee824c19ac34ac284",
+  "accepted_s2c_tree": "dc416d1f23100d4d52b19bc2120226964bc0be43",
+  "owner_ack": {
+    "path": "WORKER_RETURNS/PYAT991_OWNER_HANDOFF/owner_ack.json",
+    "blob": "dae76ff13b096efe67df9ec526b9d8b99ce28b25",
+    "status": "ACK",
+    "serial_lease": "BATCH-SAVED-ADMISSION-LEASE + ISSUED-WORKLOAD-SAVED-LEASE",
+    "checked": "Actual ACK entries and no-loss bounds read before conclusions. The delta stays within the two-file lease plus the existing S2-D new-module surface; no new owner permission was manufactured. The ACK's inherited-maintainer jurisdiction explicitly does not claim personal R16 Batch authorship."
+  },
+  "exact_delta": {
+    "changed_paths_from_owner_base": [
+      "rawlsing_next/pre553_batch_runner.py",
+      "rawlsing_next/pre553_issued_workload.py",
+      "rawlsing_next/pre553_saved_c11_admission.py",
+      "rawlsing_next/pre553_saved_workload_integration.py",
+      "rawlsing_next/tests/test_pyat991_s2d_five_readers.py",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/00_HANDOFF.md",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/focused-35.txt",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/focused-36.txt",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/native-69.txt",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/receipt.json",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource.err",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource.json",
+      "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource_probe.py"
+    ],
+    "changed_product_paths": [
+      "rawlsing_next/pre553_batch_runner.py",
+      "rawlsing_next/pre553_issued_workload.py",
+      "rawlsing_next/pre553_saved_c11_admission.py",
+      "rawlsing_next/pre553_saved_workload_integration.py",
+      "rawlsing_next/tests/test_pyat991_s2d_five_readers.py"
+    ],
+    "source_blob_pins": {
+      "rawlsing_next/pre553_batch_runner.py": "49e3974c658d66a270815d9faa3798b40d4488b1",
+      "rawlsing_next/pre553_issued_workload.py": "c50be4a54433d429e92bd2232f56e735d11375b2",
+      "rawlsing_next/pre553_saved_c11_admission.py": "22749addc1fca5f0b90e12728847c390aafa7a84",
+      "rawlsing_next/pre553_saved_workload_integration.py": "cc8aa32512378261406d765f0b049c748cb3e11f",
+      "rawlsing_next/tests/test_pyat991_s2d_five_readers.py": "38e339b70eb1ca8f607b75a8a259523504ede731"
+    },
+    "batch_delta": "13 lines: exact SavedC11Admission accepted only with explicit saved_mode=True; ordinary C11Repository guard path and Batch runner/run/receipt/state remain unchanged.",
+    "issued_delta": "Optional lazy saved_admission_factory after fresh admit/current; saved path skips source factory/Route B/full C11 build; optional binding in JoinedWorkloadCheckpoint/capture/restore/resume; legacy source path retained.",
+    "integration_delta": "Actual saved Batch wrapper over BatchExecutionRunner(saved_mode=True), actual normal wrapper over execute_issued_workload, actual resume wrappers over resume_joined_workloads; compatibility no-argument probes retained.",
+    "accepted_s2c_unchanged": true,
+    "prior_returns_unchanged": true,
+    "reviewer_product_edits": false
+  },
+  "verdict": "REVISE_EXACT_DEFECT",
+  "disposition": "REVISE_EXACT_DEFECT",
+  "independent_receiver_decision": "REVISE_EXACT_DEFECT",
+  "stop_state": "REVISE_EXACT_DEFECT__HQ_ADJUDICATION_BEFORE_ANY_REPAIR",
+  "material_open_defects": [
+    {
+      "id": "G5-S2D-PARTIAL-FORGED-BINDING-BEFORE-RESTORE",
+      "severity": "SEV-2",
+      "file": "rawlsing_next/pre553_issued_workload.py",
+      "function": "resume_joined_workloads",
+      "tested_cut": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+      "line_sequence": "1568-1582",
+      "expected": "For a PARTIAL checkpoint, after the fresh CURRENT admission, the exact saved-binding/type/source check must run before any _validate_entry_material, _validate_entry_outputs, _restore_receipt, _restore_output_material, or serve of retained output. A coherently rehashed forged binding must be refused with zero protected-output restores, exactly as the COMPLETED branch does.",
+      "actual": "The PARTIAL branch calls _validate_entry_material and _validate_entry_outputs, then restores prior receipts and prior outputs (two _restore_output_material calls), and only afterwards calls saved_admission_factory()/binding_receipt() and raises JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH.",
+      "runnable_witness": {
+        "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/forged_partial_binding.py",
+        "raw": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/forged_partial_binding.json",
+        "completed_control": {
+          "entry_state": "COMPLETED",
+          "restore_output_calls_before_refusal": 0,
+          "error": "WorkloadAdmissionError: JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH"
+        },
+        "partial_counterexample": {
+          "entry_state": "PARTIAL",
+          "restore_output_calls_before_refusal": 2,
+          "error": "WorkloadAdmissionError: JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH"
+        },
+        "defect_reproduced": true
+      },
+      "author_test_gap": "The author test named test_saved_forged_checkpoint_binding_refused_before_restore only captures a COMPLETED checkpoint; the new PARTIAL branch is not covered by that negative.",
+      "required_correction": "Move the exact saved admission/type/binding/source checks before the PARTIAL entry material/output validation and restoration, then add a PARTIAL forged-binding test that asserts zero protected restores. Re-freeze and obtain a distinct G5 delta recheck; this reviewer did not patch."
+    }
+  ],
+  "closed_findings": [
+    {
+      "id": "G5-S2D-SCOPE-WHITELIST",
+      "state": "CLOSED_CORRECTED",
+      "prior_return": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+      "evidence": "Prior source-scope positive/foreign query+predicate negatives and exact admitted source scope remain preserved in the current 36-focused suite; not reopened."
+    }
+  ],
+  "blocked_ownership": [],
+  "owner_holds_resolved": [
+    "BatchExecutionRunner.__init__ exact SavedC11Admission + SavedReleaseIdentity",
+    "execute_issued_workload optional saved admission path",
+    "resume_joined_workloads / JoinedWorkloadCheckpoint / capture_joined_checkpoint saved binding"
+  ],
+  "seven_reader_status": {
+    "I03": "PASS_SCOPED_ACTUAL_COLD__PRIOR_29_PRESERVED",
+    "I05": "PASS_SCOPED_ACTUAL_COLD__PRIOR_29_PRESERVED__INTEGRATED_I05_FINAL_PARITY",
+    "Batch": "PASS_SCOPED_ACTUAL_NATIVE_SCHEDULER__FRESH_CHILD",
+    "NORMAL": "PASS_SCOPED_ACTUAL_ISSUED_PATH__FULL_RESULT_PARITY",
+    "COMPLETED": "PASS_SCOPED_ACTUAL_RESUME__FACTS_RECEIPTS_REFS_PRESERVED__RETAINED_VIEW_NOTE",
+    "PARTIAL": "FAIL_SCOPED__FORGED_BINDING_RESTORES_TWO_OUTPUTS_BEFORE_REFUSAL",
+    "ABSENT": "PASS_SCOPED_ACTUAL_RESUME__FULL_PARITY"
+  },
+  "gates": {
+    "G1": {
+      "state": "PASS_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Actual owner-integrated five paths exist; owner ACK exact; exact source/release/catalog/workload and prior I03/I05 scope binding; accepted S2-C immutable; legacy C11 path preserved. Full packet remains nonaccepted because G3 fails."
+    },
+    "G2": {
+      "state": "PASS_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Actual cold normal/completed/partial/absent and fresh child normal/completed/partial/absent; our fresh Batch child passed; changed/restored exact outputs; normal full material parity on S3; integrated I05 final facts/receipts/refs parity on discovery fixture."
+    },
+    "G3": {
+      "state": "FAIL_SCOPED",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Forged coherently rehashed binding on a genuine PARTIAL checkpoint is refused only after two protected retained-output restores. This violates the original forged-checkpoint-before-protected-read/serve invariant. Other tested current/source/release/scope/missing-body/forged-completed negatives pass."
+    },
+    "G4": {
+      "state": "PARTIAL_HOLD_EXTERNAL",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "receipt": "Independent 4x2 probe measured retained 320740 B, observed peak staging 555743 B, parent max RSS 122609664 B, max single child RSS 66641920 B, source-factory/full-C11-build calls 0, no orphan PIDs, normal 0.1124 s, partial 0.0710 s, resumes 0.0361/0.1010/0.1257 s. It did NOT capture process-tree aggregate RSS, bounded object count, or SIGKILL crash injection; integrated 100k/6 GiB NOT_RUN. Therefore G4 is not accepted in full; no 6 GiB production claim."
+    },
+    "G5": {
+      "state": "FAIL",
+      "reviewer": "PYAT991-S2D-G5 same distinct nonauthor reviewer, ses_e30c25800ffeT8XbyTuHekRCme; not A and not B",
+      "receipt": "REVISE_EXACT_DEFECT: runnable PARTIAL forged-binding pre-restore counterexample; completed control clean. No reviewer patch, no new A/B round, no protected merge."
+    }
+  },
+  "independent_evidence": {
+    "focused_36": {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py rawlsing_next/tests/test_pyat991_s2d_five_readers.py -q -o addopts=''",
+      "actual": "36 passed in 18.19s",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/focused_36.txt"
+    },
+    "native_69": {
+      "command": "python3 -m pytest -p no:cacheprovider rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pyat940_s1d_current_permissions.py rawlsing_next/tests/test_pyat940_s1d_a_counter_cache_binding.py rawlsing_next/tests/test_pyat940_s1d_b_cache_custody.py -q -o addopts=''",
+      "actual": "69 passed in 67.17s",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/native_69.txt"
+    },
+    "normal_partial_absent_full_parity": {
+      "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/independent_parity.py",
+      "actual": "Normal manifest/receipts/native_outputs/refs/summary/routes/envelope/decision/scope/source/outputs_by_unit all equal; partial and absent full result/output/receipts equal; completed facts/receipts equal but summary None and output-ref order differ (existing retained-view behavior).",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/independent_parity.out"
+    },
+    "integrated_i05_discovery": {
+      "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/independent_discovery.py",
+      "actual": "One I03 + one I05 NORMAL: final native outputs/refs/receipts/summary equal; saved route_results empty vs normal one because saved direct I05 intentionally bypasses Route B source. Partial and completed facts/receipts/refs equal; completed retained discovery view uses refs rather than executed objects.",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/discovery_parity.out"
+    },
+    "fresh_batch": {
+      "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/independent_fresh_batch.py",
+      "actual": "Fresh child process executed actual saved Batch scheduler on saved estate: 2 COMPLETED, manifest hash exact, result refs equal to normal oracle.",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/fresh_batch.out"
+    },
+    "forged_partial": {
+      "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/forged_partial_binding.py",
+      "actual": "Completed control refused with 0 output restores; genuine PARTIAL refused with 2 output restores; both SAVED_BINDING_MISMATCH.",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/forged_partial_binding.json"
+    },
+    "resource": {
+      "script": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/independent_resource_probe.py",
+      "actual": "retained 320740 B; peak staging 555743 B; parent max RSS 122609664 B; max child RSS 66641920 B; source/build calls 0; orphan PIDs none; four fresh child modes returned 0.",
+      "log": "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/resource_independent.json"
+    }
+  },
+  "author_evidence_reviewed": {
+    "author_handoff": "WORKER_RETURNS/PYAT991_FIVE_READERS_A/00_HANDOFF.md",
+    "author_receipt": "WORKER_RETURNS/PYAT991_FIVE_READERS_A/receipt.json",
+    "author_focused_36": "36 passed in 15.65s reported; independently rerun 36 passed",
+    "author_native_69": "69 passed in 60.67s reported; independently rerun 69 passed",
+    "author_resource_gap": "The author probe reports parent RSS only and peak_staging null; it did not capture new-five child RSS or the actual .s2c-stage-* peak. The handoff correctly labels child RSS missing, but G4 PASS_SCOPED is not fully supported by that probe. Our independent probe supplies a bounded child/staging measurement, not a process-tree aggregate.",
+    "author_test_gap": "The seven new tests use a two-query workload with discoveries=(); they do not exercise I05 through integrated NORMAL. Our independent discovery witness does. Author fresh child covers only normal/completed/partial/absent; our fresh Batch witness covers Batch. Author forged-binding test covers only COMPLETED; our defect is PARTIAL."
+  },
+  "no_loss_invariants": {
+    "batch_run_state": "PASS: diff only __init__/type guard; native Batch runner/run/record_receipt/summary/state unchanged; 69 native regressions pass.",
+    "issued_current_legacy": "PASS: CurrentDecisionResolver API, host/purpose, envelope/source/expected jobs/currentness/revocation and legacy source_factory path unchanged; 69 native regressions pass.",
+    "checkpoint_legacy": "PASS: saved_binding optional and omitted from legacy material/hash; old 69 and prior 29 pass.",
+    "accepted_s2c": "PASS: no accepted S2-C writer/layout/reader/test path changed in the 13-path delta.",
+    "prior_scope": "PASS: prior G5-S2D-SCOPE-WHITELIST remains closed; exact source-scope positives/foreign query+predicate negatives pass in focused36.",
+    "reviewer_noninterference": "PASS: no product/test/source/prior-return edits; only WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/."
+  },
+  "resource_evidence": {
+    "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions; not 100k",
+    "source_cut": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "retained_disk_bytes": 320740,
+    "peak_root_tree_bytes": 320740,
+    "peak_staging_bytes": 555743,
+    "peak_staging_monitor": "1 ms sampler over .s2c-stage-*; 66 samples; may miss instantaneous peak",
+    "parent_peak_rss_bytes": 122609664,
+    "max_single_child_rss_bytes": 66641920,
+    "process_tree_aggregate_rss": "NOT_CAPTURED__MAX_SINGLE_CHILD_ONLY",
+    "source_factory_calls": 0,
+    "full_c11_build_calls": 0,
+    "whole_table_fallbacks": 0,
+    "bounded_object_count": "NOT_INDEPENDENTLY_COUNTED",
+    "orphan_child_pids": [],
+    "crash_injection": "NOT_RUN__PROCESS_EXIT_RECOVERY_ONLY",
+    "normal_seconds": 0.11240492900833488,
+    "partial_seconds": 0.07103437802288681,
+    "resume_seconds": {
+      "completed": 0.03609211198636331,
+      "partial": 0.10104858400882222,
+      "absent": 0.12570765599957667
+    },
+    "expected_jobs_at_fixture": 2,
+    "integrated_100k_6GiB": "NOT_RUN",
+    "host": "Darwin/macOS Python 3.11.3; new five-reader modules NOT_RUN on Linux",
+    "no_production_claim": true
+  },
+  "grades": {
+    "engineering": "S2_SOURCEFREE_SAVED_ALL_SEVEN_FIXTURE_ACTUAL__REVISE_ON_PARTIAL_BINDING_ORDER",
+    "scientific": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+    "authority": "TEST_ONLY_SOURCEFREE; production CURRENT/issuer, original35 source/science, Q2/S1-E body-sink/fate join and protected merge remain HOLD"
+  },
+  "external_holds": [
+    {
+      "owner": "HQ/owner review",
+      "minimal_missing": "Adjudicate G5-S2D-PARTIAL-FORGED-BINDING-BEFORE-RESTORE; authorized correction then a distinct G5 delta recheck. No reviewer repair or automatic A/B loop."
+    },
+    {
+      "owner": "production CURRENT/issuer",
+      "minimal_missing": "Production current/as-of/revocation issuer; this packet remains TEST_ONLY."
+    },
+    {
+      "owner": "original35/source science/rights",
+      "minimal_missing": "Original source/respondent/rights and scientific issuer; not read or claimed."
+    },
+    {
+      "owner": "Q2/S1-E",
+      "minimal_missing": "Production body-sink and postconsumer native receipt/fate join."
+    },
+    {
+      "owner": "S2-B",
+      "minimal_missing": "G5-R1 independent recheck remains outstanding."
+    },
+    {
+      "owner": "resource/platform",
+      "minimal_missing": "Process-tree aggregate RSS, bounded object count and SIGKILL crash injection; new modules not run on Linux; 100k/6 GiB NOT_RUN."
+    },
+    {
+      "owner": "protected merge",
+      "minimal_missing": "No protected merge or integration authority."
+    }
+  ],
+  "original_gate_mapping": {
+    "original_G1": "PASS_SCOPED: actual five owner paths and exact bindings; full packet not accepted because G3.",
+    "original_G2": "PASS_SCOPED: actual cold/fresh/change/restore and full normal/partial/absent parity; integrated I05 final parity; retained completed representation note.",
+    "original_G3": "FAIL_SCOPED: PARTIAL forged binding restores two protected outputs before refusal.",
+    "original_G4": "PARTIAL_HOLD_EXTERNAL: independent fixture measurements supply staging/child bounds but not process-tree aggregate/object count/crash injection; 100k/6 GiB NOT_RUN.",
+    "original_G5": "FAIL/REVISE_EXACT_DEFECT: one runnable first-reader counterexample; completed control clean."
+  },
+  "original_task_remaining_hold": "FULL ORIGINAL S2-D REMAINS OPEN AND IS NOT ACCEPTED. I03/I05, Batch, NORMAL, COMPLETED and ABSENT are actual at the sourcefree saved fixture grade; PARTIAL positive path executes, but the forged-binding-before-protected-restore obligation fails. 100k/6 GiB, production CURRENT, original35/science, Q2/S1-E, Linux new-module run and protected merge remain external. Integration UNMERGED.",
+  "engineer_fix_if_authorized": "Only the exact PARTIAL branch ordering in rawlsing_next/pre553_issued_workload.py plus a focused PARTIAL forged-binding regression; no other scope, no reviewer patch, then freeze and re-receive.",
+  "review_commands": [
+    "focused36 => 36 passed in 18.19s",
+    "native69 => 69 passed in 67.17s",
+    "independent_parity.py => normal/partial/absent full material parity; completed facts/receipts equal",
+    "independent_discovery.py => integrated I03+I05 final facts/receipts/refs equal; route_results saved 0 vs normal 1",
+    "forged_partial_binding.py => completed restore calls 0; partial restore calls 2; SAVED_BINDING_MISMATCH",
+    "independent_fresh_batch.py => fresh Batch 2 COMPLETED; result refs equal",
+    "independent_resource_probe.py => retained 320740 B; staging 555743 B; parent 122609664 B; child 66641920 B; source/build 0; no orphans"
+  ],
+  "evidence_files": [
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/focused_36.txt",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/native_69.txt",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/independent_parity.out",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/independent_parity.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/discovery_parity.out",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/discovery_parity_summary.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/forged_partial_binding.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/forged_partial_binding.out",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/fresh_batch.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/fresh_batch.out",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/resource_independent.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/resource_independent.out",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/diffs.txt",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/refs.txt",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/owner_ack.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/author_receipt.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/author_resource.json",
+    "WORKER_RETURNS/PYAT991_ALL_SEVEN_G5/evidence/remote_verification.txt"
+  ],
+  "next_turn": "HQ/owner adjudicates the exact PARTIAL binding-order defect. No new A/B round, no reviewer repair, no optional scope expansion or protected merge. If authorized, correct only the PARTIAL ordering and add the missing regression, then freeze and have this distinct G5 re-receive.",
+  "known_session_cost": "UNKNOWN",
+  "integration": "UNMERGED",
+  "integration_state": "UNMERGED",
+  "signature": {
+    "signed_by_session": "ses_e30c25800ffeT8XbyTuHekRCme",
+    "persona_role": "S2D_SAME_DISTINCT_NONAUTHOR_G5_ALL_SEVEN_RECEIVING",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "tested_code_cut_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "prior_g5_return_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+    "decision": "REVISE_EXACT_DEFECT",
+    "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+    "no_repair_performed": true,
+    "signed_at_utc": "2026-11-13T13:00:00Z",
+    "review_content_commit_sha": "8643e23a795c3a3373622e3b3b1ddc0c345d9bf7"
+  },
+  "remote_verification": {
+    "repository": "https://github.com/maidiu/rawlsing.git",
+    "branch": "agent/pyat991-s2d-g5-r1",
+    "review_content_commit_sha": "8643e23a795c3a3373622e3b3b1ddc0c345d9bf7",
+    "tested_code_cut_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "prior_g5_return_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+    "a_branch_sha": "5df0bbdf3ec4c479724e74651a80d4861ab700a1",
+    "b_branch_sha": "b23d85428e4cd0180231fd7e35727c771de18cab",
+    "code_diff_vs_tested_cut": "EMPTY",
+    "remote_receipt_json_valid": true,
+    "remote_handoff_present": true,
+    "reviewer_product_edits": false,
+    "verified_at_utc": "2026-11-13T13:05:00Z"
+  },
+  "fresh_process_capsule_qualification": {
+    "decision": "LAWFUL_TEST_ONLY_WORKLOAD_ENVELOPE_TRANSPORT__NOT_SOURCE_ROOT_AUTHORITY",
+    "dataflow": [
+      "material(issued.workload) carries the exact projection document, catalog, descriptor, requests/discoveries, source-factory ref and U/E_pre roots.",
+      "The child CapsuleProjection.as_dict returns that exact projection document; workload.envelope() hashes it and admit() verifies the result against the independently serialized issued record envelope_sha256.",
+      "The saved estate opens through the separately supplied exact root/exact_path/manifest SHA/direct I02/reconstructed release ref and exact runtime catalog; no duck projection is used as physical root/source authority.",
+      "The child uses TestOnlyDecisionResolver/current_authorizer=True and allow_test_only=True; it is explicitly TEST_ONLY, not production CURRENT."
+    ],
+    "not_claimed": [
+      "not a production source-stream handoff",
+      "not a production CURRENT authority",
+      "not an unbound duck projection accepted as source/root authority"
+    ],
+    "independent_witness": "Our fresh Batch child used the same exact estate/catalog/manifest and returned exact result refs; the author fresh normal/completed/partial/absent child modes returned 0 in our resource probe."
+  }
+}

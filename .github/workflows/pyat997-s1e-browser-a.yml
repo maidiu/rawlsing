@@ -1,0 +1,40 @@
+name: PYAT 997 S1-E Browser A source-to-saved bridge
+on:
+  push:
+    branches:
+      - "agent/pyat997-s1e-browser-a-20261113-r1"
+  pull_request:
+    paths:
+      - "rawlsing_next/pre553_source_saved_body_bridge.py"
+      - "rawlsing_next/pre553_source_postconsumer_receipts.py"
+      - "rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py"
+      - "rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py"
+      - "rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py"
+      - ".github/workflows/pyat997-s1e-browser-a.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sourcefree-saved-body-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install required sourcefree runtime
+        run: python -m pip install --disable-pip-version-check pytest pyarrow duckdb pandas pyreadstat
+      - name: Compile and execute exact sourcefree bridge court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m py_compile rawlsing_next/pre553_source_saved_body_bridge.py rawlsing_next/pre553_source_postconsumer_receipts.py
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pyat997_s1e_source_saved_body_bridge.py \
+            rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py \
+            rawlsing_next/tests/test_pyat997_s1e_saved_source_bridge.py \
+            rawlsing_next/tests/test_pyat960_s1e_source_i02.py \
+            rawlsing_next/tests/test_pyat960_s1e_body_transport.py \
+            rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py \
+            rawlsing_next/tests/test_pre553_direct_estate_i03.py

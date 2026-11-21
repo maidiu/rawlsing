@@ -14,7 +14,9 @@ from rawlsing_next.pre553_issued_workload import (
     WorkloadAdmissionError, capture_joined_checkpoint,
     restore_joined_checkpoint, resume_joined_workloads,
 )
-from rawlsing_next.pre553_native_workload_binding import execute_test_only_workload
+from rawlsing_next.pre553_native_workload_binding import (
+    TestOnlyDecisionResolver, execute_test_only_workload,
+)
 from rawlsing_next.pre553_universal_workload import compile_universal_workload
 from rawlsing_next.tests.test_universal_source_projection import (
     build_s3, s3_rows,
@@ -24,6 +26,27 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 AS_OF = "2026-10-24"
 HOST = "local-r91-r04"
 PURPOSE = "TEST_ONLY_SOURCEFREE"
+
+
+class _IssuedTestResolver:
+    """Explicit TEST_ONLY current-decision double for multi-workload resume.
+
+    It is constructed separately from the checkpoint and returns the supplied
+    current record. It is not the production issuer.
+    """
+
+    def __init__(self, records):
+        self._records = {record.decision_ref.key: record for record in records}
+
+    def resolve_current(self, decision_ref):
+        try:
+            return self._records[decision_ref.key]
+        except KeyError as exc:
+            raise WorkloadAdmissionError("UNKNOWN_DECISION_REF") from exc
+
+
+def _resolver(issued):
+    return _IssuedTestResolver(tuple(item.record for item in issued))
 
 
 def _issued_workloads(tmp_path):
@@ -70,9 +93,9 @@ def test_r91_partial_resume_matches_uninterrupted_without_rerun(tmp_path):
         calls["count"] += 1
         return bundle.physical_stream
     resumed = resume_joined_workloads(
-        workloads=issued, source_factory=counted,
+        workloads=issued, resolver=_resolver(issued), source_factory=counted,
         host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
     )
     assert len(resumed.completed_results) == 1
     assert len(resumed.resumed_results) == len(issued) - 1
@@ -96,16 +119,18 @@ def test_r91_revoked_and_wrong_source_refuse_before_native(tmp_path):
     )
     with pytest.raises(WorkloadAdmissionError):
         resume_joined_workloads(
-            workloads=(issued[0], revoked), source_factory=lambda _ref: bundle.physical_stream,
+            workloads=(issued[0], revoked), resolver=_resolver((issued[0], revoked)),
+            source_factory=lambda _ref: bundle.physical_stream,
             host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-            expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
         )
     bad_stream = replace(bundle.physical_stream, source_sha256="f" * 64)
     with pytest.raises(WorkloadAdmissionError):
         resume_joined_workloads(
-            workloads=(issued[0], issued[1]), source_factory=lambda _ref: bad_stream,
+            workloads=(issued[0], issued[1]), resolver=_resolver((issued[0], issued[1])),
+            source_factory=lambda _ref: bad_stream,
             host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-            expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
         )
 
 
@@ -129,6 +154,11 @@ from rawlsing_next.pre553_issued_workload import (
 from rawlsing_next.pre553_universal_workload import compile_universal_workload
 from pathlib import Path
 from rawlsing_next.tests.test_universal_source_projection import load_s3
+class _Resolver:
+    def __init__(self, issued):
+        self._records = {item.record.decision_ref.key: item.record for item in issued}
+    def resolve_current(self, ref):
+        return self._records[ref.key]
 bundle = load_s3(Path(sys.argv[1]))
 compilation = compile_universal_workload(
     bundle=bundle, as_of=sys.argv[3], host=sys.argv[4], purpose=sys.argv[5])
@@ -137,9 +167,10 @@ checkpoint = restore_joined_checkpoint(
     json.loads(open(sys.argv[2], encoding="utf-8").read()),
     expected_checkpoint_ref=sys.argv[6])
 result = resume_joined_workloads(
-    workloads=issued, source_factory=lambda _ref: bundle.physical_stream,
+    workloads=issued, resolver=_Resolver(issued),
+    source_factory=lambda _ref: bundle.physical_stream,
     host=sys.argv[4], purpose=sys.argv[5], checkpoint=checkpoint,
-    expected_checkpoint_ref=sys.argv[6])
+    expected_checkpoint_ref=sys.argv[6], allow_test_only=True)
 print(json.dumps({
     "completed": len(result.completed_results),
     "resumed": len(result.resumed_results),
@@ -194,9 +225,11 @@ def test_r91_actual_r03_governed_discovery_capture_and_retained_facts(tmp_path):
     restored = restore_joined_checkpoint(
         checkpoint.material(), expected_checkpoint_ref=pin)
     resumed = resume_joined_workloads(
-        workloads=(compilation.issued,), source_factory=lambda _ref: bundle.physical_stream,
+        workloads=(compilation.issued,),
+        resolver=TestOnlyDecisionResolver(compilation.issued.record),
+        source_factory=lambda _ref: bundle.physical_stream,
         host=HOST, purpose=PURPOSE, checkpoint=restored,
-        expected_checkpoint_ref=pin,
+        expected_checkpoint_ref=pin, allow_test_only=True,
     )
     retained = resumed.completed_results[0]
     original_facts = tuple(fact.ref for fact in native_execution.native_result.empirical_facts)
@@ -283,9 +316,10 @@ def test_r91_partial_multiunit_native_prefix_resume(tmp_path):
     checkpoint = capture_joined_checkpoint((partial,))
     assert checkpoint.entries[0].state == "PARTIAL"
     resumed = resume_joined_workloads(
-        workloads=(multi,), source_factory=lambda _ref: bundle.physical_stream,
+        workloads=(multi,), resolver=resolver,
+        source_factory=lambda _ref: bundle.physical_stream,
         host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
     )
     assert len(resumed.resumed_results) == 1
     final = resumed.resumed_results[0]
@@ -319,9 +353,10 @@ def test_r93_restored_outputs_preserve_query_and_discovery_identity(tmp_path):
     )
     checkpoint = capture_joined_checkpoint((first,))
     restored = resume_joined_workloads(
-        workloads=(issued[0],), source_factory=lambda _ref: bundle.physical_stream,
+        workloads=(issued[0],), resolver=_resolver((issued[0],)),
+        source_factory=lambda _ref: bundle.physical_stream,
         host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
     )
     output = restored.completed_results[0].native_outputs[0]
     assert isinstance(output, QueryExecutionResult)
@@ -348,9 +383,10 @@ def test_r93_restored_outputs_preserve_query_and_discovery_identity(tmp_path):
     )
     resumed = resume_joined_workloads(
         workloads=(compilation.issued,),
+        resolver=TestOnlyDecisionResolver(compilation.issued.record),
         source_factory=lambda _ref: governed_bundle.physical_stream,
         host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
-        expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        expected_checkpoint_ref=checkpoint.checkpoint_hash, allow_test_only=True,
     )
     view = resumed.completed_results[0].native_result
     assert isinstance(view, RetainedDiscoveryResultView)

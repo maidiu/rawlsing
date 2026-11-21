@@ -1,0 +1,163 @@
+{
+  "accepted_s2c": {
+    "executable": "b7b697b69f0acea12174937ee824c19ac34ac284",
+    "reviewed_baseline": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+    "tree": "dc416d1f23100d4d52b19bc2120226964bc0be43"
+  },
+  "actual_first_consumer": {
+    "ABSENT": "resume_joined_workloads saved_admission_factory -> execute_issued_workload",
+    "Batch": "BatchExecutionRunner with saved_mode=True and exact SavedC11Admission -> existing run/record_receipt",
+    "COMPLETED": "resume_joined_workloads saved_admission_factory -> _completed_entry_view",
+    "I03": "SavedC11Admission.execute_i03 -> CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query",
+    "I05": "SavedC11Admission.execute_i05 -> execute_exact_bounded_discovery",
+    "NORMAL": "execute_issued_workload saved_admission_factory -> existing Batch/I03/I05",
+    "PARTIAL": "resume_joined_workloads saved_admission_factory -> execute_issued_workload prior prefix"
+  },
+  "actual_tests": {
+    "focused_36": {
+      "actual": "36 passed in 15.65s",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_direct_estate_i03.py rawlsing_next/tests/test_pyat991_s2d_saved_admission.py rawlsing_next/tests/test_pyat991_s2d_b_adversarial.py rawlsing_next/tests/test_pyat991_s2d_a_counter.py rawlsing_next/tests/test_pyat991_s2d_g5_source_scope.py rawlsing_next/tests/test_pyat991_s2d_five_readers.py -q -o addopts=''"
+    },
+    "fresh_process": "test_saved_normal_and_completed_survive_fresh_process exercises normal, completed, partial and absent child interpreters against the saved estate and checkpoint material; exact output refs.",
+    "native_69": {
+      "actual": "69 passed in 60.67s",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_batch_runner.py rawlsing_next/tests/test_pyat940_s1d_current_permissions.py rawlsing_next/tests/test_pyat940_s1d_a_counter_cache_binding.py rawlsing_next/tests/test_pyat940_s1d_b_cache_custody.py -q -o addopts=''"
+    }
+  },
+  "authority_grade": "TEST_ONLY_SOURCEFREE; production current and original35 HOLD",
+  "base_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+  "branch": "agent/pyat991-s2d-a-r1",
+  "changed_paths": [
+    "rawlsing_next/pre553_batch_runner.py",
+    "rawlsing_next/pre553_issued_workload.py",
+    "rawlsing_next/pre553_saved_c11_admission.py",
+    "rawlsing_next/pre553_saved_workload_integration.py",
+    "rawlsing_next/tests/test_pyat991_s2d_five_readers.py",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/receipt.json",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/00_HANDOFF.md",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/focused-36.txt",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/native-69.txt",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource_probe.py",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource.json",
+    "WORKER_RETURNS/PYAT991_FIVE_READERS_A/resource.err"
+  ],
+  "contract_id": "PYAT991-S2D-PHASE1-R1",
+  "contract_sha": "37d4b7e22035f97ec39bf72c57fbe944be215b3a7273a284a30fbafdf6a87da5",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-D_PHASE1_USER_20261113.md@d7eaaf2363312af96e9bea02f6d85ae69a8cc47f",
+  "disposition": "READY_FOR_RECEIVING",
+  "engineering_grade": "S2_SOURCEFREE_SAVED_ALL_SEVEN_FIXTURE_ACTUAL__PENDING_G5",
+  "gates": {
+    "G1": {
+      "receipt": "Exact accepted S2-C estate/root/reader, exact reconstructed release, immutable saved admission, true five owner paths through actual BatchExecutionRunner and issued/resume owners. Existing C11Repository path and legacy source_factory path remain unchanged.",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "state": "PASS_SCOPED"
+    },
+    "G2": {
+      "receipt": "Actual saved ESTATE drives Batch, NORMAL, COMPLETED, PARTIAL and ABSENT; fresh-process normal/completed/partial/absent and prior fresh I03/I05; changed/restored I03/I05 exact; full manifest/receipt/output/fact parity.",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "state": "PASS_SCOPED"
+    },
+    "G3": {
+      "receipt": "Revoked current, wrong source/roots, missing body, mixed foreign universe/release, forged checkpoint binding, missing checkpoint binding, source-factory tripwire, partial discovery/negative frontier and wrong release checks refuse through actual owners. Legacy behavior preserved.",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "state": "PASS_SCOPED"
+    },
+    "G4": {
+      "receipt": "Actual five-reader fixture: retained 320656 B, peak root 320656 B, parent RSS 119582720 B, normal 0.1357s, partial 0.0693s, completed resume 0.0360s, partial 0.0939s, absent 0.1170s, source opens 0, full C11 builds 0, whole-table fallbacks 0. Fresh child exact paths pass; child RSS separately bounded by the prior independent G5 at 52043776 B. Peak staging not separately captured; 100k/6GiB NOT_RUN.",
+      "scope": "S2_SOURCEFREE_SAVED_FIXTURE",
+      "state": "PASS_SCOPED"
+    },
+    "G5": {
+      "receipt": "READY_FOR_RECEIVING at the sourcefree saved fixture grade; distinct nonauthor G5 required. No self-acceptance.",
+      "reviewer": null,
+      "state": "NOT_RUN"
+    }
+  },
+  "independent_receiver_decision": {
+    "reviewer": null,
+    "state": "NOT_RUN"
+  },
+  "integration": "UNMERGED",
+  "known_session_cost": "UNKNOWN",
+  "material_open_defects": [],
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "old_obligations": [
+    "P2-05"
+  ],
+  "open_defects": [],
+  "original35_claimed": false,
+  "owner_ack": {
+    "batch_current_blob_at_ack": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+    "issued_current_blob_at_ack": "47db61752d08fa5c774436b2c29e489a8d91c3f2",
+    "path": "WORKER_RETURNS/PYAT991_OWNER_HANDOFF/owner_ack.json",
+    "scope": "narrow two-file owner grant: BatchExecutionRunner.__init__ and issued-workload saved/current/checkpoint integration; serial S2-D A/B; G5 by distinct ses_e30c25800ffeT8XbyTuHekRCme",
+    "sha256_blob": "dae76ff13b096efe67df9ec526b9d8b99ce28b25",
+    "status": "ACK"
+  },
+  "owner_holds_external": [
+    "production current/as-of/revocation issuer",
+    "Q2/S1-E body-sink producer and postconsumer operation/fate join",
+    "S2-B G5-R1 independent recheck",
+    "original35/source science/rights",
+    "integrated 100k respondents/6 GiB",
+    "distinct nonauthor S2-D G5"
+  ],
+  "packet_id": "S2-D",
+  "persona_role": "S2D_FIVE_READERS_A",
+  "preserved_functions": [
+    "accepted S2-C VerifiedDirectEstate, DirectEstateI03Session, physical layout and source-scope positive/foreign negative",
+    "existing native I03/I05 facts, domains, negative states, denominators, risk and replay",
+    "existing Batch manifest/order/state/retry/record_receipt/summary semantics; C11Repository path unchanged unless saved_mode=True",
+    "existing issued-workload CurrentDecisionResolver/admit source/host/purpose/envelope/expected-jobs/currentness/revocation semantics",
+    "existing legacy source_factory path; source_factory tripwire remains zero on saved path",
+    "existing checkpoint legacy schema with optional saved_binding omitted; old checkpoint hashes remain unchanged",
+    "no new physical writer, second persistent body corpus, full C11 graph, whole-table fallback or new issuer"
+  ],
+  "production_current_claimed": false,
+  "protected_merge": "NONE",
+  "resource_evidence": {
+    "absent_resume_seconds": 0.11702570700435899,
+    "child_process_peak_rss_bytes": null,
+    "completed_resume_seconds": 0.03598438898916356,
+    "fixture": "S1-D/S3 sourcefree synthetic; 4 respondents/2 occasions; not 100k",
+    "full_c11_builds": 0,
+    "integrated_100k_6GiB": "NOT_RUN",
+    "normal_receipt_count": 2,
+    "normal_seconds": 0.1357498739962466,
+    "note": "Five-reader fixture probe measured parent RSS and retained/root bytes; the fresh-process test exercises exact child output but this probe does not separately report child RSS. No multi-process or 100k claim.",
+    "parent_peak_rss_bytes": 119582720,
+    "partial_receipt_count": 1,
+    "partial_resume_seconds": 0.09393967597861774,
+    "partial_seconds": 0.06931973499013111,
+    "peak_root_tree_bytes": 320656,
+    "peak_staging_bytes": null,
+    "retained_disk_bytes": 320656,
+    "source_opens": 0,
+    "whole_table_fallbacks": 0
+  },
+  "scientific_grade": "NONE_VERIFIED; TEST_ONLY sourcefree engineering only",
+  "session_id": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+  "seven_reader_status": {
+    "ABSENT": "PASS_SCOPED_ACTUAL_RESUME__no_entry",
+    "Batch": "PASS_SCOPED_ACTUAL_NATIVE_SCHEDULER__saved_mode",
+    "COMPLETED": "PASS_SCOPED_ACTUAL_RESUME__saved_binding",
+    "I03": "PASS_SCOPED_ACTUAL_COLD__ALL_PRIOR_REPAIRS_PRESERVED",
+    "I05": "PASS_SCOPED_ACTUAL_COLD__ALL_PRIOR_REPAIRS_PRESERVED",
+    "NORMAL": "PASS_SCOPED_ACTUAL_ISSUED_PATH__lazy_saved_admission",
+    "PARTIAL": "PASS_SCOPED_ACTUAL_RESUME__prior_prefix"
+  },
+  "source_blob_pins": {
+    "accepted_s2c/i03_session": "8b4d5ca2c865e4ef5f5fb609cce15ca3ba64899e",
+    "accepted_s2c/writer": "0e4b34ce4973bb4d23b6105faea55b9056ecf373",
+    "rawlsing_next/pre553_batch_runner.py": "49e3974c658d66a270815d9faa3798b40d4488b1",
+    "rawlsing_next/pre553_issued_workload.py": "c50be4a54433d429e92bd2232f56e735d11375b2",
+    "rawlsing_next/pre553_saved_c11_admission.py": "22749addc1fca5f0b90e12728847c390aafa7a84",
+    "rawlsing_next/pre553_saved_workload_integration.py": "cc8aa32512378261406d765f0b049c748cb3e11f",
+    "rawlsing_next/tests/test_pyat991_s2d_five_readers.py": "38e339b70eb1ca8f607b75a8a259523504ede731"
+  },
+  "sourcefree": true,
+  "startup_sha": "b32f215660def205762f0e9d0eafa2c3dfaa0c36",
+  "stop_state": "READY_FOR_RECEIVING",
+  "task_id": "PYAT991-S2D-FIVE-READERS",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat991-s2d-a"
+}

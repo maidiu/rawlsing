@@ -1,0 +1,29 @@
+name: PYAT S2-C Agent A source-direct physical candidate
+on:
+  pull_request:
+    paths:
+      - "rawlsing_next/pre553_source_direct_parquet_estate.py"
+      - "rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py"
+      - ".github/workflows/pyat-s2c-source-direct-candidate.yml"
+permissions:
+  contents: read
+jobs:
+  sourcefree-direct-estate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install sourcefree runtime
+        run: python -m pip install --disable-pip-version-check pytest pyarrow duckdb pandas pyreadstat
+      - name: Syntax and direct physical hostile regression
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m py_compile rawlsing_next/pre553_source_direct_parquet_estate.py
+          python -B -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_source_direct_parquet_estate.py \
+            rawlsing_next/tests/test_pre553_direct_i02_sourcefree.py \
+            rawlsing_next/tests/test_pre553_external_i02_certificate.py

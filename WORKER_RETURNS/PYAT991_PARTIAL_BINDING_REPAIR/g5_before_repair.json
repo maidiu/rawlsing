@@ -1,0 +1,16 @@
+{
+  "completed_control": {
+    "entry_state": "COMPLETED",
+    "error": "WorkloadAdmissionError: JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH",
+    "restore_output_calls_before_refusal": 0
+  },
+  "defect_reproduced": true,
+  "expected": "forged coherently rehashed saved binding must refuse before any protected retained output/receipt restore for both COMPLETED and PARTIAL",
+  "fixture": "S1-D/S3 sourcefree synthetic 4 respondents/2 occasions",
+  "partial_counterexample": {
+    "entry_state": "PARTIAL",
+    "error": "WorkloadAdmissionError: JOINED_CHECKPOINT_SAVED_BINDING_MISMATCH",
+    "restore_output_calls_before_refusal": 2
+  },
+  "schema": "PYAT991_ALL_SEVEN_G5_FORGED_PARTIAL_BINDING@1"
+}

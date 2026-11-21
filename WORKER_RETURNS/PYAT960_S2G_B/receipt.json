@@ -1,0 +1,506 @@
+{
+  "packet_id": "S2-G",
+  "task_id": "PYAT960-S2G",
+  "old_obligations": [
+    "P2-08"
+  ],
+  "contract_sha": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
+  "contract_source_cut": "WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md@63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+  "contract_frozen_at_sha": "63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+  "persona_role": "B_FOLLOW_UP",
+  "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
+  "model_requested": "opencode-go/deepseek-v4.1-flash#max",
+  "branch": "agent/pyat960-s2g-b-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b",
+  "exclusive_allowlist": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/pre553_learned_product_custody.py (not needed/not created)",
+    "rawlsing_next/tests/test_pyat960_s2g_*.py",
+    "WORKER_RETURNS/PYAT960_S2G_B/"
+  ],
+  "frozen_base_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "startup_sha": "7064daa14d93109211629e72d08f3a6e705a0d57",
+  "a_delivery_sha": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
+  "base_sha": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
+  "a_implementation_sha": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+  "implemented_sha": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+  "code_cut_sha": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+  "changed_paths": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_fresh_process.py",
+    "rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py",
+    "WORKER_RETURNS/PYAT960_S2G_B/receipt.json",
+    "WORKER_RETURNS/PYAT960_S2G_B/00_HANDOFF.md"
+  ],
+  "code_changed_paths": [
+    "rawlsing_next/pre553_durable_learned_lifecycle.py",
+    "rawlsing_next/tests/test_pyat960_s2g_fresh_process.py",
+    "rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py"
+  ],
+  "writer_lease_and_scope": "verified exclusive B writer in pyat960-s2g-b; A terminal/idle; no other worktree writes; existing M1/M2/B5/world/S2-F/I02/Parquet/source/issuer files read-only; Browser #951/#954/#955 and paused W03/W04 untouched",
+  "source_ABI_owner": {
+    "m1_adjudication": "rawlsing_next.pre553_learned_empirical_adjudication (unchanged; actual adjudication used with TEST_ONLY fixture rule)",
+    "m2_release": "rawlsing_next.pre553_learned_product_release (unchanged; constitute_release/closure objects reconstructed)",
+    "b5_lifecycle": "rawlsing_next.pre553_learned_product_lifecycle (unchanged; export_checkpoint/from_checkpoint/resolve_current_as_of/audit_replay)",
+    "i4_world": "rawlsing_next.pre553_learned_world_composition (unchanged; compose_learned_world/evaluate_learned_world_consumer)",
+    "s2f_input": "rawlsing_next.pre553_durable_empirical_closure (unchanged; opened with external root pin and cold discovery result)",
+    "c1_n10e": "rawlsing_next.pre553_analytical_composition + source-free positioned-subject possibility owner (unchanged; actual cold composition)",
+    "new_adapter": "rawlsing_next/pre553_durable_learned_lifecycle.py (B-repaired isolated custody seam only)"
+  },
+  "preserved_functions": [
+    "pre553_learned_world_composition.compose_learned_world",
+    "pre553_learned_world_composition.build_m1_bundle_from_m01",
+    "pre553_learned_world_composition.adapt_m1_disposition_to_m2",
+    "pre553_learned_world_composition.adapt_m2_release_to_b5",
+    "pre553_learned_world_composition.evaluate_learned_world_consumer",
+    "pre553_learned_product_release.constitute_release/constitute_closure/register_producer_subject",
+    "pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.export_checkpoint/from_checkpoint/resolve_current_as_of/select_current/audit_replay",
+    "pre553_learned_empirical_adjudication.adjudicate_learned_empirical and exact M1 preimage shapes",
+    "pre553_analytical_composition.compose_positioned_subject_possibility and actual N10E consumer",
+    "pre553_durable_empirical_closure open/publish/S2-F cold closure contract",
+    "A base artifact root 852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5 and world consumer hash 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597 preserved exactly"
+  ],
+  "gates": {
+    "G1": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Exact M1 disposition/input bundle/family rule/determinant receipt, M2 subject + five closures + release, B5 checkpoint/history/subject/protocol/selection/replay, learned receipt and S2-F root/determinants are retained and cold-reconstructed. B added exact M1-evidence-to-S2-F binding, B5 replay/receipt/protocol conservation, and corrected the contract_frozen_at_sha/Git-blob provenance fields."
+    },
+    "G2": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Actual native physical-cell change (R1/X 1->0, R2/X 0->1) produces a different S2-F root (586d39bd...), M1 disposition (9687134b...), M2 release (5ec7935c...), B5 selection (b81a25b0...), composition identity, artifact root and world consumer hash (4cef580c...) through the actual existing owners. Restoring the original artifact reproduces published=false, root 852498f7... and consumer hash 2690cdbe.... The changed chain is not a different family-rule tag."
+    },
+    "G3": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Coherently self-rehashed fake checkpoint, missing family rule/determinant receipt/history, changed M2 dependency, wrong as-of, unpinned/foreign as-of checkpoint, tampered replay receipt, tampered learned-receipt history, tampered protocol view and tampered M2-closure provenance all refuse. Revoked/wrong-purpose/stale/missing-pin attestations refuse. True NO_CURRENT and supersession/as-of history are preserved. A cross-chain M1 artifact that previously served exact supported now refuses at cold consume."
+    },
+    "G4": {
+      "state": "PASS",
+      "scope": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+      "receipt": "Versioned content-addressed artifact root with external pin; one compressed complete product blob; atomic stage/CAS/fsync; crash before manifest leaves no visible artifact; fresh-process cold read; B5 checkpoint replay/as-of. Retained 32499 bytes (31987 compressed + 512 manifest) vs 283854 logical bytes; peak scratch 31987; parent peak RSS 115941376; cold child process peak RSS 41558016; cold child elapsed 0.2231s, wall 0.6027s; repeat 0.0637s; source opens 0; 6 GiB cap PASS; integrated 100k NOT_RUN."
+    },
+    "G5": {
+      "state": "NOT_RUN",
+      "reviewer": null,
+      "receipt": "No distinct nonauthor reviewer other than A/B has received this SHA. DELEGATED_CANDIDATE, not PASS."
+    }
+  },
+  "mandatory_case_ids": [
+    "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+    "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+    "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+    "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+    "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+    "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+    "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+    "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+    "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+    "B01_REAL_NATIVE_FACT_CHANGE_M1_M2_B5_RESTORE",
+    "B02_CROSS_CHAIN_M1_EVIDENCE_REFUSED",
+    "B03_ASOF_CHECKPOINT_PIN_AND_RETAINED_HISTORY",
+    "B04_REPLAY_RECEIPT_PROTOCOL_HISTORY_CONSERVATION",
+    "B05_FRESH_PROCESS_COLD_RESOURCE_ENVELOPE"
+  ],
+  "mandatory_cases": [
+    {
+      "id": "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g01_real_m1_m2_b5_first_reader -q",
+      "actual": "1 passed. Actual M1 adjudication from native M01 bundle; M2 release and B5 selection retained; cold consumer LEARNED_CONSUMER_EXACT_SUPPORTED; M1 9a7f5e31226f4707c2aba6304dd791da1c4d78a5aa3a1661545c22085b8a3fdd; M2 3423ef93f9c6a4de45574ed89b47554b3062b7b0c97d2b373ad907a4f19747b9; B5 2dd500392ea3b05ef0903fe4a46977f74627d86bbe0a802f2e663e085c98ef14; consumer 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597."
+    },
+    {
+      "id": "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02_changed_input_and_exact_restoration rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g02b_fresh_process_cold_learner rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_real_native_fact_change_m1_m2_b5_then_exact_restore -q",
+      "actual": "3 passed. B01 changes real native physical cells in the same M01 route: S2-F root 586d39bd2a774f179d937ae19840288d5c4a510c4054da21a0a2e20403e7b546, M1 9687134b208e5142bd60efe111de736000f56a8719e34ee0762f527134712494, M2 5ec7935ca13b221c9d3a0e1174d6a7e43a69aa807d30d161ca4c90e2b734ff2a, B5 b81a25b026baf1f0472b47b2f1af172136d665d76dfed4920a1b2e824a0093b7, artifact root 84e99c5fd2ef492b9d2ae8dd6ca043d6a94677a8dff454a9641de28a0c86f291, consumer hash 4cef580c7e79c6ca2ce647749723c17040d9d2f5821a296708084c1bab2f6be7. Restoring the original artifact yields published=false, root 852498f7..., and consumer 2690cdbe.... Fresh child exact matched."
+    },
+    {
+      "id": "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03_current_asof_supersession_and_no_current rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g03b_supersession_and_asof_history rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_unpinned_and_foreign_asof_checkpoints_refused -q",
+      "actual": "3 passed. Own retained checkpoint with external pin resolves CURRENT_SELECTED; unpinned foreign checkpoint raises DurableLearnedLifecycleUntrusted; same foreign checkpoint pinned by its own hash raises DurableLearnedLifecycleRefusal (not on retained event history); supersession/as-of first/second selections and true no-current preserved."
+    },
+    {
+      "id": "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04_independent_issuer_refusals rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g04b_fresh_process_current_attestation -q",
+      "actual": "2 passed. Revoked, wrong-purpose, stale-checkpoint, wrong-selection/key, wrong-root and missing-pin attestations refuse; valid TEST_ONLY attestation works in fresh process; no latest/default API."
+    },
+    {
+      "id": "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g05_self_rehashed_fake_checkpoint_and_wrong_asof rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_tampered_b5_replay_and_receipt_history_refused -q",
+      "actual": "2 passed. Self-rehashed checkpoint with removed events refused; tampered replay event list, tampered learned-receipt history, tampered protocol view and tampered M2-closure provenance all refuse under a new self-hash pin; wrong as-of refused."
+    },
+    {
+      "id": "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g06_missing_rule_receipt_history_and_changed_m2_dependency -q",
+      "actual": "1 passed. Missing determinant receipt, missing exact family rule, removed historical event and changed M2 dependency all refuse."
+    },
+    {
+      "id": "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g07_publish_pointer_crash_and_recovery -q",
+      "actual": "1 passed. Artifact without external pointer refuses current; valid pointer restores current; injected crash before manifest leaves no visible artifact."
+    },
+    {
+      "id": "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pre553_learned_world_composition.py rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py rawlsing_next/tests/test_pre553_learned_product_lifecycle.py rawlsing_next/tests/test_pre553_learned_product_release.py rawlsing_next/tests/test_universal_learned_consumer.py rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py rawlsing_next/tests/test_pyat960_s2g_fresh_process.py rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py -q",
+      "actual": "152 passed in 44.94s. A 147 owner/S2-G tests preserved; B adds 5 adversarial tests. S2-F separate regression: 19 passed in 8.43s."
+    },
+    {
+      "id": "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py::test_g09_resources_and_source_opens rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_fresh_process_cold_resource_envelope -q",
+      "actual": "2 passed. Retained 32499 bytes; compressed 31987; logical 283854; manifest 512; peak scratch 31987; fresh child process peak RSS 41558016; parent peak RSS 115941376; cold child 0.2231s, wall 0.6027s; repeat 0.0637s; source opens 0; 6 GiB cap PASS; 100k NOT_RUN."
+    },
+    {
+      "id": "B01_REAL_NATIVE_FACT_CHANGE_M1_M2_B5_RESTORE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_real_native_fact_change_m1_m2_b5_then_exact_restore -q",
+      "actual": "1 passed. Actual native physical-cell change in the same M01 source/route changes S2-F root, M1 disposition, M2 release, B5 selection, artifact root, composition identity and world consumer hash; exact base restore passes. This is frozen G2 same-chain evidence, not a different fixture tag or family-rule label."
+    },
+    {
+      "id": "B02_CROSS_CHAIN_M1_EVIDENCE_REFUSED",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_cross_chain_m1_evidence_is_refused_by_actual_consumer -q",
+      "actual": "1 passed. An internally valid artifact with a foreign M1 fact/receipt chain but the base S2-F determinants opens under its own pin but cold consume raises DurableLearnedLifecycleError 'M1 input bundle discovery_receipts is not drawn from the declared S2F closure'. Pre-repair the actual consumer returned LEARNED_CONSUMER_EXACT_SUPPORTED."
+    },
+    {
+      "id": "B03_ASOF_CHECKPOINT_PIN_AND_RETAINED_HISTORY",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_unpinned_and_foreign_asof_checkpoints_refused -q",
+      "actual": "1 passed. Own current checkpoint pinned resolves CURRENT_SELECTED; foreign checkpoint unpinned raises Untrusted; foreign checkpoint pinned to its own self-hash raises Refusal. Pre-repair the unpinned foreign checkpoint returned a release not in the artifact history."
+    },
+    {
+      "id": "B04_REPLAY_RECEIPT_PROTOCOL_HISTORY_CONSERVATION",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_tampered_b5_replay_and_receipt_history_refused -q",
+      "actual": "1 passed. Tampered B5 replay event list, tampered learned-receipt event history, tampered protocol product-family ref and tampered learned-receipt M2 authority closure all refuse under a new self-hash pin; unmodified artifact still serves exact result."
+    },
+    {
+      "id": "B05_FRESH_PROCESS_COLD_RESOURCE_ENVELOPE",
+      "result": "PASS",
+      "command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_fresh_process_cold_resource_envelope -q",
+      "actual": "1 passed. Fresh child exact consumer, source_opens=[], child process-tree peak RSS 41558016 bytes < 6 GiB, retained/compressed/manifest/scratch all positive; labels distinguish child process-tree RSS from parent self RSS."
+    }
+  ],
+  "first_consumer": {
+    "native_producer": "real synthetic M01 graph executed by pre553_route_b_production; actual M1 adjudication via pre553_learned_empirical_adjudication with TEST_ONLY native validator fixture",
+    "m1_disposition_ref": "9a7f5e31226f4707c2aba6304dd791da1c4d78a5aa3a1661545c22085b8a3fdd",
+    "m2_release_ref": "3423ef93f9c6a4de45574ed89b47554b3062b7b0c97d2b373ad907a4f19747b9",
+    "b5_selection_receipt_ref": "2dd500392ea3b05ef0903fe4a46977f74627d86bbe0a802f2e663e085c98ef14",
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "artifact_identity": "bb14f54c88515f8c0e0d1806afc0457fa1439d9c4212ad07381b9f7bc8df23eb",
+    "checkpoint_hash": "327a56898cdf8cae9ca1fa3bd778e1d3ede88faea2c5b88f06ed16ec2a69794d",
+    "s2f_root_identity": "eae60b4aaec326ddd028419c640713e20abe347347e1d242ee9a65d6872152e2",
+    "consumer": "rawlsing_next.pre553_learned_world_composition.evaluate_learned_world_consumer",
+    "consumer_state": "LEARNED_CONSUMER_EXACT_SUPPORTED",
+    "consumer_result_hash": "2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597",
+    "composition_identity": "89d6ef6f0241707914b8a8f5d27142cba5c43ad26af30e5dcc9db5e284d51374",
+    "cold_process": "fresh Python subprocess, no native fixtures, only artifact path + external pin + S2-F closure path; source_opens=[]; matches_expected=true",
+    "changed_input_consumer_result_hash": "4cef580c7e79c6ca2ce647749723c17040d9d2f5821a296708084c1bab2f6be7",
+    "changed_input_artifact_root": "84e99c5fd2ef492b9d2ae8dd6ca043d6a94677a8dff454a9641de28a0c86f291"
+  },
+  "sourcefree_grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+  "external_holds": [
+    {
+      "owner": "Pair 2 / accepted S2-E and S2-D upstream",
+      "minimal_missing_witness": "independently accepted complete saved-reader/producer integration; full joined S2-G and integrated 100k remain HOLD_EXTERNAL"
+    },
+    {
+      "owner": "production current/as-of issuer",
+      "minimal_missing_witness": "real independently authenticated issuer/revocation/current root; only TEST_ONLY stand-in exists here"
+    },
+    {
+      "owner": "S2-G full M1/M2/B5 scientific lifecycle owner",
+      "minimal_missing_witness": "competent M1 family validator/science rule and full product-current operating chain; this is sourcefree engineering custody only"
+    },
+    {
+      "owner": "original35/source-native scientific authority",
+      "minimal_missing_witness": "permitted original source/measurement/U/Epre and scientific issuer; not read or claimed"
+    },
+    {
+      "owner": "independent nonauthor G5",
+      "minimal_missing_witness": "one receiver other than A/B to accept or revise exact 0071aefb/final return-freeze SHA at isolated grade"
+    }
+  ],
+  "b_defects": [
+    {
+      "id": "B-D1",
+      "severity": "SEV-1",
+      "case": "G01/G02 cross-chain M1 evidence",
+      "expected": "The M1 disposition/M2/B5 product and the actual world consumer must be built from the declared accepted S2-F closure facts/receipts/queries/predicates and source release.",
+      "observed_before_repair": "An internally valid artifact could be published with an M1 disposition/fact/receipt chain from a different native evidence chain while the determinants pointed to the base S2-F closure. The actual consumer returned LEARNED_CONSUMER_EXACT_SUPPORTED with the same hash, so the positive product was not bound to the declared evidence chain.",
+      "repair": "_m1_evidence_binding now requires the retained M1 bundle, disposition fact/receipt/query/predicate refs, consumer discovery receipt/query/predicate and source release to be exact members of the declared S2-F closure, and requires the bundle preimage to match the disposition's input_bundle_ref.",
+      "evidence": "B02 mutant artifact root 6d86f5cdda7bf4423decb78a38d35e2e4c80d1430bb2b364739a72ee16e23423 opens but cold consume refuses 'M1 input bundle discovery_receipts is not drawn from the declared S2F closure'. Base artifact still serves 2690cdbe...."
+    },
+    {
+      "id": "B-D2",
+      "severity": "SEV-1",
+      "case": "G03/G05 as-of checkpoint trust",
+      "expected": "A historical checkpoint must be independently pinned and must be a prefix of the artifact's retained event/selection/no-current history; a coherent foreign checkpoint is not an independent authority.",
+      "observed_before_repair": "resolve_as_of_checkpoint accepted an unpinned foreign checkpoint from a different executor with the same selection key and returned a release that was not in the artifact's retained history.",
+      "repair": "resolve_as_of_checkpoint now requires expected_checkpoint_hash, and verifies supplied event refs are a prefix of retained events and supplied selection/no-current receipts are subsets of retained history before replay.",
+      "evidence": "B03: unpinned foreign checkpoint raises DurableLearnedLifecycleUntrusted; pinned foreign checkpoint raises DurableLearnedLifecycleRefusal; own pinned checkpoint resolves CURRENT_SELECTED."
+    },
+    {
+      "id": "B-D3",
+      "severity": "SEV-1",
+      "case": "G05/G06/B5 history conservation",
+      "expected": "The retained B5 replay receipt, learned receipt event refs, M2 closure refs, determinant/replay/explanation roots and protocol view must reproduce the retained checkpoint/subject/M2/M1 objects.",
+      "observed_before_repair": "A coherently rewritten replay receipt with one event removed was accepted at open and the artifact served exact supported. A tampered protocol view product_family_ref and tampered learned-receipt event/M2 provenance were also accepted.",
+      "repair": "open_learned_lifecycle now verifies replay receipt against executor.audit_replay, learned receipt event refs against all retained events for the M2 release, learned receipt M2/determinant/replay/explanation refs against reconstructed M2/M1 objects, and every protocol-view field against the retained subject/M2 closures/M1 outcome.",
+      "evidence": "B04: replay event-list tamper, learned-receipt history tamper, protocol product-family tamper and M2 authority-closure tamper all refuse under new self-hash pins; unmodified artifact still opens and serves exact."
+    },
+    {
+      "id": "B-D4",
+      "severity": "SEV-1",
+      "case": "G02 changed-input evidence",
+      "expected": "A changed native fact in the same accepted chain must change the M1 disposition/M2/B5 product and the actual world-consumer result; restoring the original must reproduce the exact prior product and consumer identity.",
+      "observed_before_repair": "A's G02 changed only the M1 family-rule/validator tag/fixture while retaining the same underlying facts. It did not prove a native fact change reaching the product and first reader.",
+      "repair": "Added B01, which changes real native physical cells in the same M01 route, publishes a changed S2-F closure, builds the changed M1 bundle from that changed native output, composes M2/B5 and consumes the changed closure; then restores the exact base artifact.",
+      "evidence": "B01 changed S2-F root 586d39bd..., M1 9687134b..., M2 5ec7935c..., B5 b81a25b0..., consumer 4cef580c... vs base consumer 2690cdbe...; base root/consumer restored exactly."
+    }
+  ],
+  "b_self_attacks": [
+    {
+      "attack": "Cross-chain M1 artifact with foreign facts under the base S2-F determinants",
+      "result": "Cold consume now refuses; the base artifact still serves exact."
+    },
+    {
+      "attack": "Unpinned and pinned foreign as-of checkpoints",
+      "result": "Both refuse; own pinned checkpoint and retained prior-history checkpoint pass."
+    },
+    {
+      "attack": "Coherently self-rehashed replay, learned receipt, protocol and M2-closure tampering",
+      "result": "All refuse at open under new self-hash pins; unmodified artifact still serves exact."
+    },
+    {
+      "attack": "Actual native physical-cell change in the same M01 route",
+      "result": "Changed S2-F/M1/M2/B5/artifact/consumer; restore exact base root and consumer hash."
+    },
+    {
+      "attack": "Full owner + adapter + S2-F regression",
+      "result": "152 owner/S2-G/B tests passed; 19 S2-F regressions passed."
+    },
+    {
+      "attack": "Fresh-process cold consumer resource envelope",
+      "result": "Child exact, source_opens=[], child peak RSS 41558016 < 6 GiB; parent/child labels separated."
+    }
+  ],
+  "self_disclosed_weakest_point": "The M1 evidence binding is enforced at cold consume, not at publication: a foreign M1 artifact can be stored but cannot serve through the declared first consumer. The changed-native proof is a sourcefree synthetic physical-cell change in the same native owner chain, not accepted S2-E/S2-D or a source-native fact. The current/as-of issuer is TEST_ONLY with a caller-supplied external pin; there is no production issuer/revocation service. The M1 validator is a TEST_ONLY native fixture, not science. The B5 replay/protocol checks now bind the stored artifact to the retained owner objects, but a fully coherent rehash plus a caller-supplied new pin remains a different artifact by construction. Resource scope is a small synthetic fixture; the integrated 100k/6 GiB gate is NOT_RUN.",
+  "own_worst_vulnerability": "The strongest residual attack is at the publish boundary rather than the consumer boundary: publish_learned_lifecycle does not itself open the S2-F closure path (only the root identity is supplied), so a foreign M1 artifact can be stored and only refused when the declared consumer runs. A second attack is a fully coherent rewrite of every artifact field plus a new external pin; the external pin is the sole trust anchor.",
+  "missing_proof": "No production current/as-of issuer or revocation service; no accepted S2-E/S2-D complete joined upstream; no scientific M1 family rule; no original35 source; no integrated 100k/6 GiB test; no independent G5.",
+  "strongest_next_falsifier": "Try to publish an artifact with an M1 evidence chain that is a subset of the S2-F closure but not the chain that produced the retained determinant receipt (for example, a different fact from the same closure); try a multi-release closure where the determinant source release is in the M1 bundle but the consumer composition uses a different release; try a B5 history with multiple products/releases where a learned receipt's event refs are a valid product subset but not the complete product history.",
+  "opponent_proven_improvement": {
+    "accepted_strengths": [
+      "A's overall durable M1/M2/B5/world-consumer shape is correct and preserved.",
+      "A's base artifact root 852498f7..., identity bb14f54c..., M1/M2/B5/checkpoint refs and consumer hash 2690cdbe... are exact and unchanged by B's repairs.",
+      "A's external-pin, atomic staging/CAS, crash rollback, supersession/no-current and TEST_ONLY external-attestation shapes reproduce.",
+      "A's 147 owner/adapter tests and 19 S2-F regressions pass after B's repairs."
+    ],
+    "repaired_weaknesses": [
+      "B-D1 cross-chain M1 evidence was not bound to the declared S2-F closure.",
+      "B-D2 as-of checkpoint replay accepted unpinned/foreign checkpoints.",
+      "B-D3 B5 replay/learned-receipt/protocol history was not verified against retained owners.",
+      "B-D4 changed-input evidence did not exercise a real native fact change."
+    ],
+    "concessions": [
+      "The base M1/M2/B5/world consumer is a real native-owner chain and B did not replace it.",
+      "No production issuer, scientific rule, original35 source or protected merge is claimed.",
+      "The isolated TEST_ONLY grade is honest; the full joined S2-G remains HOLD_EXTERNAL."
+    ]
+  },
+  "new_attack_surfaces": [
+    "M1 evidence binding is at consume, not publish; a stored cross-chain artifact is refused but remains on disk.",
+    "The binding requires the M1 bundle to carry the determinant source release in additional_dependency_refs; a future lawful M1 route that records the release elsewhere would fail closed.",
+    "The as-of checkpoint prefix rule assumes append-only B5 event history; a future GC/compaction owner that removes retained prefix events would need an explicit migration rule.",
+    "The replay/protocol checks compare reconstructed owner objects; a future owner ABI change may require adapter updates.",
+    "The fresh-process RSS measurement is a single child process; it is not a multi-process tree benchmark."
+  ],
+  "abi": {
+    "classification": "LOCAL",
+    "detail": "New isolated custody adapter repairs plus B tests. No existing M1/M2/B5/world/S2-F/I02/Parquet/query/discovery/FF/C11 owner or interface modified. Adapter API changes are local/additive: resolve_as_of_checkpoint now requires the external pin it already documented, and the test runner reports child RSS.",
+    "affected_task_ids": [
+      "S2-E",
+      "S2-G",
+      "S1-D"
+    ],
+    "affected_task_relationship": "dependency/consumer integration only; no running contract silently changed",
+    "breaking_interface": false,
+    "source_or_authority_change": false,
+    "scientific_hold": true
+  },
+  "provenance": {
+    "base_a_delivery_commit": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
+    "a_implementation_commit": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
+    "contract_source_cut_commit": "63836a168cc99b0ed8f87f7f7a6e76192f7a1898",
+    "b_code_cut_commit": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+    "git_blob_sha1": {
+      "a_adapter": "8980effc39efe322ccda29ef4f8ff01f1bf2643a",
+      "b_adapter": "d76997f5bb937d06fd099204d4c7828b32ee8d4b",
+      "a_durable_test": "d84b7998994fe2efe5e978aca0d6d8b188490864",
+      "a_fresh_process_test": "5a9a2bbc858efebfd8bf555ade12059656cf4ba1",
+      "b_adversarial_test": "c6860fa6aa68e239549edcbb569cc8f3b61f689b",
+      "b_fresh_process_test": "7c59b9fbb6b86a44d13e3f07de87273f629a0fba"
+    },
+    "documentary_corrections": [
+      "A's receipt used contract_frozen_at_sha 60105d28ba2c79022c7e61ed1531cac76c0e83ee from the earlier #940 packet; this S2-G contract was frozen at 63836a168cc99b0ed8f87f7f7a6e76192f7a1898. B's receipt uses the S2-G freeze commit.",
+      "A's execution_environment_passport.json records the durable test's Git blob SHA1 as a 64-hex value (d84b7998...040864 length mismatch in the historical file); the correct Git blob SHA1 is 40-hex d84b7998994fe2efe5e978aca0d6d8b188490864. B did not edit A's historical evidence; B's own provenance uses Git blob SHA1 values only."
+    ],
+    "g5_witness": "NOT_RUN; the exact new code cut is 0071aefb05d8ebbd75058a10c5e831d994a2f96f and the final return-freeze tip is reported by the pushed branch head."
+  },
+  "evidence": {
+    "receipt": "WORKER_RETURNS/PYAT960_S2G_B/receipt.json",
+    "handoff": "WORKER_RETURNS/PYAT960_S2G_B/00_HANDOFF.md",
+    "b_adversarial_tests": "rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py",
+    "resource_measurement_command": "python3 -m pytest rawlsing_next/tests/test_pyat960_s2g_b_adversarial.py::test_b_fresh_process_cold_resource_envelope -q"
+  },
+  "original_gate_mapping": {
+    "original_G1": "PASS at isolated grade: exact M1 rule/disposition/input bundle, M2 closures/release, B5 checkpoint/history/selection, actual consumer, current/as-of trust boundary, plus B's cross-chain M1 binding and B5 receipt/protocol conservation.",
+    "original_G2": "PASS at isolated grade: real native fact change -> M1 -> M2 -> B5 -> existing world consumer with changed identity; exact base restore. A's original positive base is preserved.",
+    "original_G3": "PASS at isolated grade: hostile checkpoint/issuer/source/dependency/as-of/current/no-current/supersession plus B's unpinned/foreign as-of and replay/receipt/protocol tamper cases.",
+    "original_G4": "PASS at isolated fixture grade for CAS/fsync/crash/recovery/resource/source-open; integrated 100k/6 GiB NOT_RUN.",
+    "original_G5": "NOT_RUN; distinct nonauthor receiver required."
+  },
+  "three_court_grades": {
+    "engineering": "ACCEPT_SCOPED_CANDIDATE at S2_SOURCEFREE_ISOLATED_FIXTURE; independent G5 not run",
+    "scientific": "NONE_VERIFIED; TEST_ONLY synthetic validator only; no original35/scientific issuer",
+    "authority": "TEST_ONLY external current/as-of stand-in only; production issuer/current authority HOLD"
+  },
+  "disposition": "HOLD_EXTERNAL",
+  "stop_state": "READY_FOR_RECEIVING",
+  "integration": "UNMERGED",
+  "independent_receiver_decision": {
+    "state": "NOT_RUN",
+    "reviewer": null,
+    "status": "DELEGATED_CANDIDATE"
+  },
+  "integration_state": "UNMERGED",
+  "material_open_defects": [],
+  "open_defects": [],
+  "nonblocking_deferred": [
+    "Production current/as-of issuer/signature and revocation source are external; TEST_ONLY attestation is not production authority.",
+    "Full joined S2-E/S2-D/S2-G integration and integrated 100k/6 GiB remain future holds.",
+    "The changed-input test uses a native physical-cell change in the same sourcefree route, not a real source or a single mutation inside an accepted S2-E batch.",
+    "Generic FF01 is not implemented; the selected descriptive reader is the existing GT2 Field Forge relation (outside this S2-G adapter)."
+  ],
+  "next_turn": "Fixed A ses_e3120ba1cffeO1w43uU5MLh4yq counterattacks only reproduced in-scope SEV-0/1/2 against B code cut 0071aefb (or the final return-freeze tip), then a distinct nonauthor G5 receives the exact frozen SHA. No broad reconnaissance or optional hardening.",
+  "known_session_cost": "UNKNOWN",
+  "candidate_sha": "0071aefb05d8ebbd75058a10c5e831d994a2f96f",
+  "evidence_grade": "S2_SOURCEFREE_ISOLATED_FIXTURE",
+  "actual_first_consumer": "pre553_learned_world_composition.evaluate_learned_world_consumer over the cold-reconstructed M1/M2/B5 product and accepted S2-F closure",
+  "first_consumer_proof": "Fresh child: state LEARNED_CONSUMER_EXACT_SUPPORTED, consumer hash 2690cdbeadabb0e90179d726029fa8b765995a15a1da26d7fe72bba0819bd597, source_opens=[], matches_expected=true; changed native chain consumer hash 4cef580c7e79c6ca2ce647749723c17040d9d2f5821a296708084c1bab2f6be7; restore base exact.",
+  "mandatory_case_results": [
+    {
+      "id": "G01_REAL_M1_FAMILY_M2_B5_FIRST_READER",
+      "result": "PASS"
+    },
+    {
+      "id": "G02_DURABLE_COLD_CHANGED_INPUT_EXACT_RESTORE",
+      "result": "PASS"
+    },
+    {
+      "id": "G03_CURRENT_ASOF_SUPERSESSION_NO_CURRENT_HISTORY",
+      "result": "PASS"
+    },
+    {
+      "id": "G04_INDEPENDENT_ISSUER_REVOKED_STALE_WRONG_PURPOSE",
+      "result": "PASS"
+    },
+    {
+      "id": "G05_SELF_REHASH_FAKE_CHECKPOINT_WRONG_ROOT_ASOF",
+      "result": "PASS"
+    },
+    {
+      "id": "G06_MISSING_RULE_RECEIPT_HISTORY_CHANGED_M2_DEPENDENCY",
+      "result": "PASS"
+    },
+    {
+      "id": "G07_CRASH_CAS_PUBLISH_POINTER_RECOVERY",
+      "result": "PASS"
+    },
+    {
+      "id": "G08_NONLOSS_NATIVE_LIFECYCLE_CONSUMER_REGRESSION",
+      "result": "PASS"
+    },
+    {
+      "id": "G09_RESOURCE_DISK_RSS_SCRATCH_COLD_REPEAT_SOURCEOPENS",
+      "result": "PASS"
+    },
+    {
+      "id": "B01_REAL_NATIVE_FACT_CHANGE_M1_M2_B5_RESTORE",
+      "result": "PASS"
+    },
+    {
+      "id": "B02_CROSS_CHAIN_M1_EVIDENCE_REFUSED",
+      "result": "PASS"
+    },
+    {
+      "id": "B03_ASOF_CHECKPOINT_PIN_AND_RETAINED_HISTORY",
+      "result": "PASS"
+    },
+    {
+      "id": "B04_REPLAY_RECEIPT_PROTOCOL_HISTORY_CONSERVATION",
+      "result": "PASS"
+    },
+    {
+      "id": "B05_FRESH_PROCESS_COLD_RESOURCE_ENVELOPE",
+      "result": "PASS"
+    }
+  ],
+  "resource_evidence": {
+    "rows": {
+      "b5_events": 3,
+      "m2_closures": 5,
+      "m1_determinant_material_keys": 25,
+      "artifact_files": 2
+    },
+    "process_tree_peak_rss_bytes": 41558016,
+    "parent_peak_rss_bytes": 115941376,
+    "retained_disk_bytes": 32499,
+    "peak_disk_bytes": 32499,
+    "peak_scratch_bytes": 31987,
+    "cold_seconds": 0.2231,
+    "cold_wall_seconds": 0.6027,
+    "repeat_seconds": 0.0637,
+    "source_opens": 0,
+    "compressed_bytes": 31987,
+    "logical_bytes": 283854,
+    "manifest_bytes": 512,
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS",
+    "integrated_100k": "NOT_RUN",
+    "measurement_note": "process_tree_peak_rss_bytes is the fresh child process RUSAGE_SELF peak; parent_peak_rss_bytes is the test parent self peak; retained/peak disk are the fresh single-artifact root (blob+manifest); peak_scratch is the adapter publish scratch counter; no 100k matrix was run."
+  },
+  "resource_cost": {
+    "fixture_grade": "synthetic native M01/M1/M2/B5 plus accepted isolated S2-F closure; not 100k",
+    "artifact_root_identity": "852498f72ed7c1940d55caae0a75bab6869aa854bb83f7a39451debc57be2fe5",
+    "retained_disk_bytes": 32499,
+    "peak_disk_bytes": 32499,
+    "compressed_blob_bytes": 31987,
+    "logical_bytes": 283854,
+    "manifest_bytes": 512,
+    "peak_scratch_bytes": 31987,
+    "cold_seconds": 0.2231,
+    "cold_wall_seconds": 0.6027,
+    "repeat_seconds": 0.0637,
+    "process_tree_peak_rss_bytes": 41558016,
+    "parent_peak_rss_bytes": 115941376,
+    "source_opens": 0,
+    "rows": {
+      "b5_events": 3,
+      "m2_closures": 5,
+      "m1_determinant_material_keys": 25,
+      "artifact_files": 2
+    },
+    "cap_bytes": 6442450944,
+    "cap_result": "PASS",
+    "integrated_100k": "NOT_RUN"
+  }
+}

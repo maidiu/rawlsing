@@ -1,0 +1,129 @@
+{
+  "schema": "PYAT991_OWNER_HANDOFF_ACK_R1",
+  "status": "ACK",
+  "session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
+  "role": "existing S1-D owner A / inherited native Batch-issuer composition acknowledgement",
+  "branch": "agent/pyat991-owner-handoff-r1",
+  "base_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+  "qualified_implementation_sha": "5478210b7aeedf608a3e9754bf891d4d0262817f",
+  "independent_review_sha": "eccc0ad4980261bdf7e77d4e18569f334089d7df",
+  "prior_machine_disposition": "dec3e0290ce1c98e23de7e51761592a68c9a64b9:WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/S2D_G5_FINAL_DISPOSITION.json",
+  "user_direction": "existing HQ960/user 2026-11-13 narrow two-file owner handoff; controller read-only source direction at b4aef58b3",
+  "receiving_pair": {
+    "A": "ses_e3120ba1cffeO1w43uU5MLh4yq",
+    "B": "ses_e3120b9efffegreD5YfH7dOO15",
+    "mode": "SERIAL exclusive descendant of 5478210b7/eccc0ad4; no simultaneous pair writers",
+    "exclusive_branch": "agent/pyat991-s2d-a-r1"
+  },
+  "independent_g5": "ses_e30c25800ffeT8XbyTuHekRCme",
+  "lease": {
+    "valid_until": "frozen terminal independent G5 at the exact implementation SHA",
+    "controlled_by": "existing parent HQ960/controller; serial turns only; no other owner code writes",
+    "excluded_effects": [
+      "production/science/source issuance",
+      "original35 native execution or source/respondent bytes",
+      "production CURRENT issuer minting",
+      "protected merge or integration",
+      "W03/W04 or Q3 resume"
+    ]
+  },
+  "entries": [
+    {
+      "id": "BATCH-SAVED-ADMISSION-LEASE",
+      "file": "rawlsing_next/pre553_batch_runner.py",
+      "current_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "current_unchanged_since": "eb89fb48c6cfa5855b559ffb9bc5536c6d8b5974",
+      "functions": [
+        "BatchExecutionRunner.__init__",
+        "directly indispensable exact saved-identity release resolution used by __init__"
+      ],
+      "actual_granting_owner": "PARENT USER 2026-11-13 DIRECTION + EXISTING HQ960; original #919 S2-D allocation expressly assigns the necessary Batch typed-admission guard replacement; acknowledgement within the existing S1-D owner lane as inherited native Batch/issuer composition maintainer",
+      "a_is_historical_batch_author": false,
+      "historical_batch_provenance": "R16 introduced by eb89fb48c6cfa5855b559ffb9bc5536c6d8b5974; no distinct live Batch-author session is evidenced at this cut",
+      "jurisdiction": "A's personal historical ownership is S1-D, not R16 Batch authorship. This entry does not fabricate a new Batch owner or personal authorship; it records the user/HQ960 functional allocation under original #919 S2-D and the requested inherited-maintainer acknowledgement. If treated as a personal ownership claim it would be unavailable; as the explicit inherited grant requested by the user, it is ACK.",
+      "receiving_worker": "S2-D A ses_e3120ba1cffeO1w43uU5MLh4yq and B ses_e3120b9efffegreD5YfH7dOO15, serial",
+      "exclusive_branch": "agent/pyat991-s2d-a-r1",
+      "valid_until_terminal_g5": "frozen terminal independent G5 by ses_e30c25800ffeT8XbyTuHekRCme; parent HQ controls serial turns",
+      "permitted_scope": "narrowly accept an exact independently certified SavedC11Admission (existing new module) and its identity-only release resolution in BatchExecutionRunner.__init__, then use the actual native Batch engine",
+      "no_loss_invariants": [
+        "Batch remains the existing deterministic sequential scheduler: manifest, schedule, unit order, states, receipts, record_receipt, summary and failure behavior unchanged",
+        "Only exact SavedC11Admission and exact SavedReleaseIdentity may satisfy the saved guard; no fake C11Repository, no fabricated seal, no full C11 graph reconstruction",
+        "Existing genuine C11Repository path remains fully supported and unchanged",
+        "No source/query/discovery selector or cache hit becomes Batch authority",
+        "Wrong/unknown/mismatched release identity refuses before scheduling or positive receipt",
+        "No science math, no native legacy behavior change, no Batch rewrite, no test weakening/deletion",
+        "New tests are limited to test_pyat991_s2d_*; existing native tests are read/run, not modified"
+      ],
+      "scope_exclusions": [
+        "No edits to BatchExecutionRunner.run, record_receipt, schedules, state machine, science or statistical owners",
+        "No edit to pre553_saved_c11_admission.py under this acknowledgement",
+        "No original35/source/science/CURRENT/protected merge effect"
+      ],
+      "status": "ACK",
+      "jurisdiction_basis": "INHERITED_MAINTAINER_ACK_UNDER_PARENT_USER_FUNCTIONAL_ALLOCATION; NOT_PERSONAL_R16_AUTHORSHIP",
+      "supporting_existing_newmodule": {
+        "path": "rawlsing_next/pre553_saved_c11_admission.py",
+        "blob": "10e1a13752f482406e47f3da45b83c10d7c5dd99",
+        "symbols": [
+          "SavedC11Admission.resolve_release_exact",
+          "SavedReleaseIdentity"
+        ],
+        "state": "READONLY_EXISTING_S2D_MODULE_NOT_EDITED_BY_THIS_ACK"
+      },
+      "supporting_integration_stubs": {
+        "path": "rawlsing_next/pre553_saved_workload_integration.py",
+        "blob": "fd3fa4378d2c15f85ee1fa0f68714307bc1de54c",
+        "symbols": [
+          "require_batch_owner_ack",
+          "require_normal_owner_ack",
+          "require_resume_owner_ack"
+        ],
+        "state": "READONLY_EXISTING_S2D_SURFACE; receiving workers own fulfillment outside this ack"
+      }
+    },
+    {
+      "id": "ISSUED-WORKLOAD-SAVED-LEASE",
+      "file": "rawlsing_next/pre553_issued_workload.py",
+      "current_blob": "47db61752d08fa5c774436b2c29e489a8d91c3f2",
+      "functions": [
+        "execute_issued_workload",
+        "resume_joined_workloads",
+        "JoinedWorkloadCheckpoint",
+        "capture_joined_checkpoint",
+        "directly indispensable optional saved-admission/current integration helpers only"
+      ],
+      "actual_granting_owner": "A as existing S1-D implementation owner (original pair terminal implementation dfdbddad946f9a82cb3008148cb9669f8632ba4; A S1-D code ancestry 06c1213149e4649c62dcb6133669dec90cd4d29f) + parent user/HQ960 2026-11-13 direction; original #919 S2-D allocation",
+      "a_is_historical_batch_author": false,
+      "jurisdiction": "S1-D issued-workload/checkpoint/current ownership is A's actual jurisdiction. This is not Batch authorship and not a new issuer/science grant.",
+      "receiving_worker": "S2-D A ses_e3120ba1cffeO1w43uU5MLh4yq and B ses_e3120b9efffegreD5YfH7dOO15, serial",
+      "exclusive_branch": "agent/pyat991-s2d-a-r1",
+      "valid_until_terminal_g5": "frozen terminal independent G5 by ses_e30c25800ffeT8XbyTuHekRCme; parent HQ controls serial turns",
+      "permitted_scope": "add a lawful optional saved-admission path that skips original source/full C11 build; bind checkpoint exact manifest/direct I02/reconstructed release; preserve all normal/COMPLETED/PARTIAL/ABSENT receipts, prefix/output conservation and live current checks",
+      "no_loss_invariants": [
+        "Existing CurrentDecisionResolver API, issuer competence, host/purpose, envelope/source SHA/expected jobs/as-of and revocation/expiry semantics unchanged",
+        "Fresh current admission before any source factory, saved/cache read, protected restore or serve; no fallback to historical item.record",
+        "Legacy normal source/full C11 path remains supported; saved admission is optional and must not become mandatory",
+        "JoinedWorkloadCheckpoint/WorkloadCustodyEntry retains exact manifest, direct I02 and reconstructed release binding; no stale permission or fake seal",
+        "COMPLETED/PARTIAL/ABSENT receipt, prefix, output refs, partial retry and cold recovery conservation preserved",
+        "No new issuer, scientific decision, operation/fate, expected-job or authority promotion",
+        "Existing tests read/run only; new tests limited to test_pyat991_s2d_*; no weakened/deleted native tests"
+      ],
+      "scope_exclusions": [
+        "No edits to unrelated issued-workload functions or public semantics beyond the named checkpoint/saved/current integration",
+        "No production CURRENT/science/source issuance",
+        "No S2-C rewrite, W03/W04 resume, Q3/Q2 code, or protected merge"
+      ],
+      "status": "ACK",
+      "jurisdiction_basis": "ACTUAL_S1D_OWNER_PLUS_PARENT_USER_HQ960_DIRECTION"
+    }
+  ],
+  "authority_boundaries": {
+    "scientific_native_source_owners": "immutable outside narrow admission/transport",
+    "source_current_science": "HOLD; no production issuance",
+    "original35": "HOLD; no source/respondent bytes",
+    "protected_merge": "NOT_GRANTED",
+    "W03_W04_Q3": "USER_PAUSED/NOT_RESUMED",
+    "new_owner_expansion": "NONE"
+  },
+  "confirmation": "Narrow two-file functional lease acknowledged for the five remaining native paths through established S2-D workers; separate parent user/HQ960 Batch allocation and A's actual S1-D ownership are distinguished; no personal R16 authorship claim."
+}
