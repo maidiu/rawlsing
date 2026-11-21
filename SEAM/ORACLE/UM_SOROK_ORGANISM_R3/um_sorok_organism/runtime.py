@@ -35,6 +35,9 @@ from .psychic_genesis import (
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
     conserve_costly_offered_care,candidate_care_commitment)
+from .cultural_mediation import (
+    conserve_personally_heard_reference,
+    possible_cultural_object_inquiry,possible_reference_revision)
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -508,6 +511,13 @@ class ConstitutiveRuntime:
                         'own_action':own,'status':personally_done['status'] if personally_done else 'OBSERVED',
                         'perceived_cues':personal_cues,'participated':participated,
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
+                        # Frozen only if the actor independently selected the
+                        # operation. Research-forced action is not proof that
+                        # the person sought that particular object.
+                        'own_practical_selection':(
+                            copy(actor_attempt.practical_selection)
+                            if personally_done and actor_attempt is not None
+                            and requested_action is None else None),
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
             if personally_done and actor_attempt is not None:
@@ -600,6 +610,16 @@ class ConstitutiveRuntime:
                 world['positions'].get(aid,actors[aid]['location']))
             retain_personal_notice_exposure(actors[aid],experience,objective_ref)
             retain_personal_object_encounter(actors[aid],experience,objective_ref)
+            # A public real speaker's demonstration can enter the listener's
+            # own history even when the listener did not perform the SPEAK.
+            # The sign and actual object must both be personally accessible;
+            # no word, education, agreement or teaching intention is inferred.
+            conserve_personally_heard_reference(
+                actors[aid],experience,objective_ref,world)
+            cultural_reference_candidates=possible_cultural_object_inquiry(
+                actors[aid],experience,objective_ref)
+            cultural_revision_candidates=possible_reference_revision(
+                actors[aid],experience,objective_ref)
             # A model must not invent the child's remembered language or a
             # bodily benefit. Use actual material before/after body plus a
             # sign personally received to propose—not yet admit—one modest
@@ -653,6 +673,14 @@ class ConstitutiveRuntime:
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
                     possible_care_practice),
+                'historically_possible_cultural_references':copy(
+                    cultural_reference_candidates),
+                'historically_possible_cultural_revisions':copy(
+                    cultural_revision_candidates),
+                'actor_personally_heard_cultural_demonstrations_analyst_only':copy(
+                    actors[aid].get('cultural_demonstrations',[])[-16:]),
+                'actor_acquired_cultural_references_analyst_only':copy(
+                    actors[aid].get('cultural_reference_practices',[])[-16:]),
                 'recent_personally_lived_genesis_witnesses_analyst_only':copy(
                     actors[aid].get('lived_genesis_episodes',[])[-8:]),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
