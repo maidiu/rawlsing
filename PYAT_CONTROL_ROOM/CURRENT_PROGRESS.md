@@ -1,3 +1,13 @@
+# PYAT PROGRESS REV17 — CORRECTION: REMOVE UNTESTED CODE FROM PRE-MAIN
+
+**Source removal, not validation.** User explicitly rescinded direct publication of untested feature code. PRE-MAIN rev14 had added 11 S04/F6 source modules and 10 tests without execution or independent functional admission. Rev17 **removes those 21 paths**, removes the new unexecuted G4 Python check source, and restores `.github/workflows/programma-canonical-pre-main.yml` byte-exact from designated PRE-MAIN rev13 `f95852f57e55f7d5469c10909f1ed684c781f1d7`. Old rev14/15/16 documentary receipts remain below as historical evidence of the mistaken promotion, not current accepted functionality. Existing OATH/G4 main documents and REMONT rev12 router are preserved.
+
+**Work preserved, no loss:** all removed candidate functions and tests remain in isolated OpenCode test candidate `dd1f5a45830c09ac21f577aa97351d639be1af0d`; the existing REMONT queue/runner is there, with original Q014–Q018/Q020 and additional Q021 (two nonduplicated S04 tests) and Q022 (G4/OATH/receiving structural checks). Q019 stays retired. This candidate is **COMMITTED_UNTESTED**, not accepted PRE-MAIN or scientific population knowledge. The original Q014/R03 issuer, Q015/I05 parity, Q017 null/rare-minority/calibration, F6 surveyed uncertainty rights, authentic C11/I03 and downstream Field Forge effects are still held; a queued test is not an implemented missing function. OpenCode runs at exact frozen candidate SHA when explicitly invoked in the existing ongoing test workflow, not through GitHub Actions.
+
+**Evidence:** Git tree content and source-provenance checked; no Python/Node or native survey execution for this correction, no independent G5, no protected required Actions check. This is a retracting/refusing act, not certifying software readiness.
+
+---
+
 # PYAT PROGRESS REV16 — USER-DIRECT BRANCH DISPOSITION AND TEST COURT (2026-11-20)
 
 **Branch cleanup recorded inside existing G4, no duplicate authority.** 14 historical duplicate, out-of-PYAT-scope, superseded or documentation-source PRs were closed with exact protected replacement references and explicit reservations; #1238 remains a held historical reference to unported Q014/R03 source. Existing canonical workflow now attempts a ten-file sourcefree S04/F6 Python regression court, in addition to OATH/source guards. **No actual Python test pass at protected HEAD has been observed**; latest Actions runs failed at 0 steps. User-direct same-agent receiving remains precisely source/document grade and GitHub branch still `protected:false`. Do not turn this report into independent G5, original/native survey or actor scientific permission. The code and G4 state from rev14 and structural guard rev15 remain conserved.

@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 16,
-  "revision_note": "Rev16 user-direct G4 S04 branch-fate maintenance after 14 superseded/out-of-scope draft closures + one held #1238 source reference; existing canonical workflow now includes actual 10-file S04/F6 sourcefree pytest command, NOT observed executed; rev12–15 history unchanged, no required CI/actor science claims.",
-  "report_status": "REV16_BRANCH_FATES_USER_DIRECT_RECEIVED__SOURCEFREE_COURT_COMMAND_PRESENT_NOT_EXECUTED__NO_REQUIRED_CI_OR_SCIENTIFIC_G5",
+  "revision": 17,
+  "revision_note": "Rev17 user correction: revert 21 untested S04/F6 candidate source/test files and untested receiving checker from designated PRE-MAIN; restore original rev13 workflow; preserve source on isolated REMONT OpenCode candidate dd1f5a45830c09ac21f577aa97351d639be1af0d with existing QIDs and Q021/Q022; rev14-16 history retained as explicitly retracted source promotion; no test or scientific acceptance.",
+  "report_status": "PYAT_REV17_MISRECEIVED_S04_F6_SOURCE_RETRACTED__REMONT_OPENCODE_QUEUED__G4_OATH_REV13_DOC_INTACT__NO_TEST_PASS_OR_NATIVE_RIGHTS",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -574,5 +574,55 @@
     "branch_required": "NOT_CONFIGURED_PROTECTED_FALSE",
     "original_source_rights": "NO_NEW_GRANTS",
     "remaining": "Q014_R03_ISSUER_AND_S04_SOURCEFREE_TESTS_NOT_PROVED"
+  },
+  "pyat_remont_source_relocation_rev17": {
+    "grade": "PROTECTED_CORRECTIVE_SOURCE_REMOVAL_AND_CANDIDATE_QUEUED__NOT_RUNTIME_PASS",
+    "previous_head": "69f918287537736ee8d825e11102f2ab8c590b8a",
+    "removed_source_paths": [
+      "rawlsing_next/pre553_interpretation_qualification.py",
+      "rawlsing_next/pre553_s04_adaptive_support.py",
+      "rawlsing_next/pre553_s04_country_refinement.py",
+      "rawlsing_next/pre553_s04_determinicity_cycle.py",
+      "rawlsing_next/pre553_s04_dhikr_comparative.py",
+      "rawlsing_next/pre553_s04_exploration_admission.py",
+      "rawlsing_next/pre553_s04_general_joint_algebra.py",
+      "rawlsing_next/pre553_s04_observed_research.py",
+      "rawlsing_next/pre553_s04_partially_identified_repertoire.py",
+      "rawlsing_next/pre553_s04_uncertain_repertoire.py",
+      "rawlsing_next/pre553_source_country_registry_adapter.py",
+      "rawlsing_next/tests/test_pre553_s04_country_multinational_scope.py",
+      "rawlsing_next/tests/test_pre553_s04_country_refinement.py",
+      "rawlsing_next/tests/test_pre553_s04_determinicity_cycle.py",
+      "rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py",
+      "rawlsing_next/tests/test_pre553_s04_observed_research.py",
+      "rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py",
+      "rawlsing_next/tests/test_pre553_s04_support_noise_admission.py",
+      "rawlsing_next/tests/test_pre553_s04_uncertain_repertoire.py",
+      "rawlsing_next/tests/test_pre553_source_country_registry_adapter.py",
+      "rawlsing_next/tests/test_preff_c3_dhikr_comparative.py"
+    ],
+    "removed_structural_checker": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py",
+    "workflow_restored_from": "f95852f57e55f7d5469c10909f1ed684c781f1d7",
+    "candidate_sha": "dd1f5a45830c09ac21f577aa97351d639be1af0d",
+    "queue": "WORKER_RETURNS/PYAT_PREFF_ONE_MACHINE_C0_20261119/REMONT_EXECUTION_QUEUE.md",
+    "runner": "rawlsing_next/tests/run_preff_remont_batch.sh",
+    "qids_already": [
+      "RMT-Q001",
+      "RMT-Q014",
+      "RMT-Q015",
+      "RMT-Q016",
+      "RMT-Q017",
+      "RMT-Q018",
+      "RMT-Q020"
+    ],
+    "new_qids": [
+      "RMT-Q021",
+      "RMT-Q022"
+    ],
+    "test_execution_at_candidate": false,
+    "original_source_science_actor": false,
+    "g4_status": "HISTORICAL_REV14_RETRACTED_NO_FUNCTIONAL_PROMOTION",
+    "has_protected_grade_for_new_code": false,
+    "rev13_g4_and_oath_conserved": true
   }
 }
