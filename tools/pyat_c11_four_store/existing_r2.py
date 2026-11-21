@@ -123,19 +123,22 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
     ):
         if raw[key]!=value:
             raise StoreFailure("original held recorded decision differs in "+key)
+    use = None
+    use_digest = None
     if universe_use_file is not None:
         use=_load(universe_use_file)
+        use_digest=hashlib.sha256(Path(universe_use_file).read_bytes()).hexdigest()
         if (
             use.get("source_id")!=custody.source_id
             or use.get("owner_decision_sha256")!=raw["owner_decision_sha256"]
             or use.get("operation_document_sha256")!=hashlib.sha256(
                 Path(operation_file).read_bytes()).hexdigest()
             or use.get("host")!=custody.host
+            or use.get("source_binding",{}).get("saved_i02")!=dict(custody.pins.roots)
+            or use.get("source_binding",{}).get("decision_ref")!=_load(custody.path)["waves"][custody.source_id]["decision_ref"]
         ):
             raise StoreFailure("original source-specific universe-use decision binding changed")
         if use.get("state") != "ALLOW_EXACT_OPERATION_ONLY":
-            # The historical exact decision state may have a more specific
-            # string: a competent owner must map it explicitly, not guess.
             raise StoreFailure("unrecognized source-specific universe-use decision state")
     authorities=tuple(_authority_from_projection(x) for x in raw["authorities"])
     auth_fields=("query_authority_ref","routing_authority_ref","source_authority_ref")
@@ -160,6 +163,55 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
     decision,plan,missing=build_recorded_operation(
         estate=verified,operation=operation,question_ref=operation.question_ref,
     )
+    if use is not None:
+        from dataclasses import replace
+        from rawlsing_next.pre553_anvil_stream_recorded import RecordedUniverseUse
+        historical_ref=authority_ref(use["historical_snapshot_ref"])
+        historical=[
+            a for a in verified.iter_family("AuthoritySnapshot")
+            if a.authority_ref == historical_ref and a.decision_state=="DEFER"
+        ]
+        positive=[
+            a for a in authorities
+            if a.authority_ref == operation.source_authority_ref
+            and a.decision_state=="ALLOW"
+        ]
+        if len(historical)!=1 or len(positive)!=1:
+            raise StoreFailure("exact historical DEFER/positive source use authority unavailable")
+        def current_universe_use():
+            try:
+                return (
+                    custody.check_current(verified._held)
+                    and hashlib.sha256(Path(universe_use_file).read_bytes()).hexdigest()==use_digest
+                    and hashlib.sha256(Path(operation_file).read_bytes()).hexdigest()
+                        ==use["operation_document_sha256"]
+                )
+            except OSError:
+                return False
+        universe_use=RecordedUniverseUse(
+            historical_snapshot=historical[0],
+            positive_snapshot=positive[0],
+            owner_decision_sha256=operation.owner_decision_sha256,
+            operation_document_sha256=use["operation_document_sha256"],
+            source_id=operation.source_id,
+            source_root=operation.source_root,
+            release_root=operation.release_root,
+            universe_root=operation.universe_root,
+            replay_root=operation.replay_root,
+            question_ref=operation.question_ref,
+            query_ref=decision.query.ref,
+            predicate_ref=decision.predicate.ref,
+            operation=operation.authorized_operation,
+            risk_ref=operation.recorded_risk_ref,
+            interpretation=operation.interpretation,
+            scope=use["scope"],
+            current_verifier=current_universe_use,
+        )
+        # This is the original RecordedRoutingPlan field already consumed by
+        # the existing I03 evaluator, not a new inference authority or bypass.
+        plan=replace(plan,universe_use=universe_use)
+        if not current_universe_use():
+            raise StoreFailure("source-bound Q103 universe-use CURRENT refused")
     return {
         "name":"ORIGINAL_RECORDED_"+operation.question_ref.content_hash,
         "query":decision.query,"predicate":decision.predicate,
