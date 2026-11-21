@@ -12,7 +12,9 @@ from pathlib import Path
 from um_sorok_organism.activity import record_activity_afterlife
 from um_sorok_organism.constitution import compose,materialize,actor_access
 from um_sorok_organism.storage import ResearchLedger,Conflict
-from um_sorok_organism.types import adult,blank_world
+from um_sorok_organism.types import adult,blank_world,stable_id
+from um_sorok_organism.development import admit,InvalidDevelopment
+from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.world import add_cue
 
 
@@ -182,6 +184,103 @@ class JoinedSourcePreflightP018(unittest.TestCase):
                     "SELECT count(*) FROM events").fetchone()[0],1)
             finally:
                 l.close()
+
+
+
+class JoinedTrialIssuerAndCueProvenance(unittest.TestCase):
+    """Regressions previously authored on REMONT R11-R13, now in R3."""
+
+    def fixture(self, *, actor_id='mother'):
+        a=adult(actor_id,actor_id.title())
+        a['possible_ends']=[{
+            'id':'old_end','status':'POSSIBLE_NOT_ACQUIRED_MOTIVE',
+            'origin_event':'world:prior','experience_ref':'lived:prior',
+            'possible_means':['SING'],'possible_object':'possible song',
+            'cue_terms':['song'],
+        }]
+        e={'actor':actor_id,'ref':'lived:now','own_action':'SING',
+           'status':'PERFORMED','participated':True,
+           'felt_enactment':{'attempted_operation':'SING'},
+           'perceived_cues':[]}
+        ticket={'actor':actor_id,'as_of_clock':7,
+                'possible_end_ref':'old_end','operation':'SING',
+                'origin_event':'world:prior',
+                'origin_experience_ref':'lived:prior',
+                'actor_project_ref':None,'functional_bridge_ref':None}
+        ticket['trial_id']=stable_id('end_trial',{
+            'actor':actor_id,'clock':7,'possible_end':'old_end',
+            'operation':'SING','functional_bridge':None})
+        return a,e,ticket
+
+    def test_model_relabels_issued_trial_as_new_durable_project_atomic(self):
+        actor,experience,ticket=self.fixture()
+        before=copy.deepcopy(actor)
+        with self.assertRaisesRegex(
+                InvalidDevelopment,'CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT'):
+            admit(actor,experience,'world:now',[
+                {'kind':'TRACE','cue_terms':['new_song'],'content':'tentative'},
+                {'kind':'ADD_PROJECT','project':{
+                    'object':'my permanent song','motive':'now my destiny',
+                    'means':['SING'],'priority':1}}],
+                issued_trial=ticket)
+        self.assertEqual(actor,before)
+
+    def test_valid_r3_issued_trial_auto_records_once_without_project(self):
+        actor,experience,ticket=self.fixture()
+        records=admit(actor,experience,'world:now',[],issued_trial=ticket)
+        self.assertEqual([r['kind'] for r in records],
+                         ['RECORD_POSSIBLE_END_TRIAL'])
+        self.assertEqual(len(actor['possible_ends'][0]['trial_history']),1)
+        self.assertEqual(actor['projects'],[])
+        with self.assertRaisesRegex(
+                InvalidDevelopment,'POSSIBLE_END_TRIAL_EVENT_ALREADY_CONSUMED'):
+            admit(actor,experience,'world:now',[],issued_trial=ticket)
+        self.assertEqual(len(actor['possible_ends'][0]['trial_history']),1)
+
+    def test_r3_runtime_inserted_trial_record_not_double_written(self):
+        actor,experience,ticket=self.fixture()
+        records=admit(actor,experience,'world:now',[
+            {'kind':'RECORD_POSSIBLE_END_TRIAL','trial':copy.deepcopy(ticket)}],
+            issued_trial=ticket)
+        self.assertEqual(len(records),1)
+        self.assertEqual(len(actor['possible_ends'][0]['trial_history']),1)
+
+    def test_fake_trial_without_issuer_or_with_bad_ticket_is_rejected(self):
+        actor,experience,ticket=self.fixture()
+        before=copy.deepcopy(actor)
+        with self.assertRaisesRegex(InvalidDevelopment,'UNISSUED_POSSIBLE_END_TRIAL'):
+            admit(actor,experience,'world:now',[
+                {'kind':'RECORD_POSSIBLE_END_TRIAL','trial':ticket}])
+        fake={**ticket,'trial_id':'model_forged_trial'}
+        with self.assertRaisesRegex(InvalidDevelopment,'UNISSUED_POSSIBLE_END_TRIAL'):
+            admit(actor,experience,'world:now',[],issued_trial=fake)
+        self.assertEqual(actor,before)
+
+    def test_nontrial_later_new_project_still_legal(self):
+        actor,experience,_=self.fixture()
+        result=admit(actor,experience,'world:later',[
+            {'kind':'ADD_PROJECT','project':{'object':'new later concern',
+                'motive':'unknown provisional','means':['SING'],'priority':.2}}])
+        self.assertEqual(result[0]['kind'],'ADD_PROJECT')
+        self.assertEqual(len(actor['projects']),1)
+
+    def test_cue_falsey_not_coerced_and_explicit_empty_stays_empty(self):
+        with tempfile.TemporaryDirectory() as directory:
+            rt=ConstitutiveRuntime(str(Path(directory)/'tags.sqlite3'))
+            try:
+                rt.initialize()
+                count=rt.verify()['events']
+                for invalid in (False,'',(),0,{}):
+                    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+                        rt.cue('nadia',kind='contact',tags=invalid)
+                    self.assertEqual(rt.verify()['events'],count)
+                result=rt.cue('nadia',kind='contact',tags=[])
+                self.assertEqual(result['cue']['tags'],[])
+                self.assertEqual(rt.verify()['events'],count+1)
+                default=rt.cue('nadia',kind='contact')
+                self.assertEqual(default['cue']['tags'],['contact'])
+            finally:
+                rt.close()
 
 
 if __name__=="__main__":
