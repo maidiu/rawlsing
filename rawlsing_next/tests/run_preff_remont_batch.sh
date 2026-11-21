@@ -18,7 +18,7 @@ fi
 if (( $# )); then
   cases=("$@")
 else
-  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018)
+  cases=(RMT-Q001 RMT-Q002 RMT-Q003 RMT-Q004 RMT-Q007 RMT-Q008 RMT-Q009 RMT-Q010 RMT-Q013 RMT-Q014 RMT-Q015 RMT-Q016 RMT-Q017 RMT-Q018 RMT-Q020)
 fi
 OUT="${REMONT_PROOF_ROOT:-$PWD/.pyat-preff-remont-proof/$HEAD_SHA}"
 mkdir -p "$OUT"
@@ -80,6 +80,10 @@ for id in "${cases[@]}"; do
       ;;
     RMT-Q018) # Separately issued finite-frame F6 sharp partial identification
       tests=(rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py)
+      ;;
+    RMT-Q020) # Issued sampled-population interval F6; separate from retired Q019
+      tests=(rawlsing_next/tests/test_pre553_s04_uncertain_repertoire.py
+             rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py)
       ;;
     RMT-Q019) # RETIRED: no justified first consumer beyond existing S04/C1/C5/N10E
       echo "HELD_RETIRED_Q019__DUPLICATE_COORDINATOR_WITHDRAWN__NO_TEST_OR_AUTHORITY" >&2

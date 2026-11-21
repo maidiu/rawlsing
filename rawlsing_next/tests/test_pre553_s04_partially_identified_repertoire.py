@@ -248,7 +248,9 @@ def test_downstream_compatibility_reader_never_selects_or_generates_coupling(
     reg, auth = _bridge(a, b)
     relation = _ask(a, b, reg, auth)
     result = ask_partial_repertoire_configuration(
-        relation=relation, event_a=a_event, event_b=b_event
+        relation=relation, event_a=a_event, event_b=b_event,
+        left=a, right=b, left_event_cell="1", right_event_cell="1",
+        authority_registry=reg, common_frame_authority_ref=auth,
     )
     assert result["state"] == "CONSTRAINT_CALCULATED_FOR_EXACT_FINITE_FRAME"
     assert result["interval"] == {
@@ -273,7 +275,9 @@ def test_exact_finite_frame_impossibility_is_not_universal_person_impossibility(
     a, b = _observed("all-left", 10), _observed("other-right", 6)
     reg, auth = _bridge(a, b)
     result = ask_partial_repertoire_configuration(
-        relation=_ask(a, b, reg, auth), event_a=False, event_b=True
+        relation=_ask(a, b, reg, auth), event_a=False, event_b=True,
+        left=a, right=b, left_event_cell="1", right_event_cell="1",
+        authority_registry=reg, common_frame_authority_ref=auth,
     )
     assert result["interval"] == {
         "lower": _f(0), "upper": _f(0)
@@ -289,4 +293,50 @@ def test_compatibility_reader_refuses_nonbinary_selector_or_forged_relation():
     with pytest.raises(PartialIdentificationError, match="EXACT_BINARY"):
         ask_partial_repertoire_configuration(
             relation=_ask(a, b), event_a="yes", event_b=True
+        )
+
+
+def test_source_replayed_reader_rejects_validly_rehashed_counterfeit_interval():
+    a, b = _observed("replay-forgery-a", 7), _observed("replay-forgery-b", 6)
+    reg, auth = _bridge(a, b)
+    valid = _ask(a, b, reg, auth)
+    material = valid.material()
+    material["bounds"]["A_AND_B"]["lower"] = _f(0)
+    forged = PartiallyIdentifiedRepertoire(
+        canonical_json(material), semantic_hash(material),
+    )
+    with pytest.raises(PartialIdentificationError, match="F6_SOURCE_AND_ISSUER_REPLAY_MISMATCH"):
+        ask_partial_repertoire_configuration(
+            relation=forged, event_a=True, event_b=True,
+            left=a, right=b, left_event_cell="1", right_event_cell="1",
+            authority_registry=reg, common_frame_authority_ref=auth,
+        )
+
+
+def test_finite_frame_reader_refuses_qualified_output_without_exact_source_replay():
+    a, b = _observed("replay-required-a", 7), _observed("replay-required-b", 6)
+    reg, auth = _bridge(a, b)
+    with pytest.raises(PartialIdentificationError, match="F6_EXACT_SOURCE_AND_AUTHORITY_REPLAY_REQUIRED"):
+        ask_partial_repertoire_configuration(
+            relation=_ask(a, b, reg, auth), event_a=True, event_b=True,
+        )
+
+
+def test_cold_source_change_or_bridge_withdrawal_refuses_old_qualified_relation():
+    a, b = _observed("replay-source-a", 7), _observed("replay-source-b", 6)
+    reg, auth = _bridge(a, b)
+    old = _ask(a, b, reg, auth)
+    replacement = _observed("replay-source-new-b", 5)
+    with pytest.raises(PartialIdentificationError, match="F6_SOURCE_AND_ISSUER_REPLAY_MISMATCH"):
+        ask_partial_repertoire_configuration(
+            relation=old, event_a=True, event_b=True,
+            left=a, right=replacement, left_event_cell="1", right_event_cell="1",
+            authority_registry=reg, common_frame_authority_ref=auth,
+        )
+    denied, denial_auth = _bridge(a, b, state="DENY")
+    with pytest.raises(PartialIdentificationError, match="F6_SOURCE_AND_ISSUER_REPLAY_MISMATCH"):
+        ask_partial_repertoire_configuration(
+            relation=old, event_a=True, event_b=True,
+            left=a, right=b, left_event_cell="1", right_event_cell="1",
+            authority_registry=denied, common_frame_authority_ref=denial_auth,
         )
