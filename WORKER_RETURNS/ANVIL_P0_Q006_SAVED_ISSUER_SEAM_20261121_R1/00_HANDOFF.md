@@ -2,7 +2,7 @@
 
 ## Status
 
-`RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__PRIVATE_OP_REF_PENDING`
+`RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__PRIVATE_OPERATION_ARTIFACT_PRESENT`
 
 One focused old-code continuation only. No protected/shared refs, original data,
 original q103 run, issue post or G5 claim.
@@ -107,13 +107,13 @@ refs, measure/response-semantics/domain refs, replay roots and transform ref.
 It is materialized only from the owner decision, held R2 decision and q006
 inputs; no source metadata is inferred.
 
-`q006_materialize.py` accepts `--question-ref` for the controller's already
-verified full exact q103 ref. In this author environment the sidecar custody
-file exposes only the object ID, so the local fault is
-`Q006_EXACT_QUESTION_REF_MISSING`; no hash was fabricated. With the controller's
-full ref, the materializer writes `q006_q103_operation.json` mode 0600 and the
-private harness below is runnable. This is a local custody-ref input, not a new
-owner gate.
+The controller's concrete private operation artifact is now present at the
+safe q006 path, mode 0600, SHA-256
+`79bd920d4d2831b961180195f504a1deac135976ac1c8ff21b717d04f123b10a`. It carries
+the full exact q103 question ref (`NATIVE_QUESTION|urn:...7f5834521c9c4a400580|7f5834...`)
+and the held owner/R2 binding. `q006_materialize.py` can regenerate it when the
+controller supplies `--question-ref`; the local author sidecar only had the
+object ID, which is the recorded materializer fault. No hash was fabricated.
 
 The original SRC04 execution remains explicitly not run until the controller
 checks the candidate and private authority.
