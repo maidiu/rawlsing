@@ -155,7 +155,7 @@ for phrase in (
     "R28", "628", "two-meal", "false", "Birkenstocks", "H0–H3",
     "Mechanism I", "Mechanism II", "Mechanism III", "MII", "MIII",
     "S0–S16", "C0–C12", "Q123", "messaging", "F1–F10",
-    "RC1–RC6", "platform", "SES", "coincidence", "source"
+    "RC1–RC6", "platform", "SES", "coincident", "source"
 ):
     # Keep quality checks honest: verifying the claim is articulated cannot
     # prove the claim is correct or integrated in running source.
