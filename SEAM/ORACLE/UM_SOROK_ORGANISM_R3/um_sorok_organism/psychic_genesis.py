@@ -121,8 +121,20 @@ def possible_contrast_end(actor,experience,event_ref):
     if not means or not cur["received_sign_refs"]:return []
     # Without personally received cue terms, no globally named "caregiver"
     # or semantic category is installed inside a child.
+    # The present sign vocabulary comes from the person's own sensed cues;
+    # no analyst-named generic category can stand in for an absent sign.
     cues=cur["received_sign_tags"][:12]
-    if not cues:cues=["received_relief"]
+    if not cues:
+        return []
+    # An LLM may offer a fallible interpretation, but cannot *create*
+    # the operative goal by replacing actual episode/operation/need identity
+    # with a more attractive unlicensed narrative.
+    relieved_axis=sorted(cur["received_relief"],
+        key=lambda axis:(-cur["received_relief"][axis],axis))[0]
+    hypothesized_end=(
+        "explore whether "+earlier["actor_felt_attempt"].lower()+
+        " can help obtain "+relieved_axis+
+        " after the earlier unfinished attempt")
     witness=stable_id("contrasted_lived_possibility",{
         "actor":actor["id"],"first":earlier["id"],"later":cur["id"]})
     if any(e.get("genesis_witness_ref")==witness
@@ -134,9 +146,9 @@ def possible_contrast_end(actor,experience,event_ref):
         "prior_unfinished_episode_ref":earlier["id"],
         "later_relief_episode_ref":cur["id"],
         "later_perceived_cue_ref":cur["received_sign_refs"][0],
-        "possible_object":(
-            "seek a repeatable relation between an unfinished attempt "
-            "and subsequently experienced bodily relief"),
+        "possible_object":hypothesized_end,
+        "relieved_bodily_axis":relieved_axis,
+        "genesis_family":"SENSED_INTERRUPTION_THEN_RELIEF",
         "possible_means":means,
         "cue_terms":cues,
         "sourcefree_genesis_not_an_empirical_motive_law":True,
@@ -167,8 +179,15 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
                    for x in cue_terms)):
         raise ValueError("GENESIS_UNRECEIVED_SIGN_GENERALIZATION")
     meaning=proposal.get("possible_object")
-    if type(meaning) is not str or not meaning.strip() or len(meaning)>512:
-        raise ValueError("GENESIS_INVALID_QUALITATIVE_END")
+    # Earlier sourcefree code accepted ANY string, which made the end's
+    # operative content model-authored, not actually constituted by history.
+    # Preserve free interpretation separately from world/actor affordance.
+    if meaning!=expected["possible_object"]:
+        raise ValueError("GENESIS_OPERATIVE_END_NOT_DERIVED_FROM_HISTORY")
+    interpretation=proposal.get("interpretive_hypothesis")
+    if (interpretation is not None and
+            (type(interpretation) is not str or len(interpretation)>512)):
+        raise ValueError("GENESIS_INVALID_INTERPRETIVE_HYPOTHESIS")
     ident=stable_id("historically_emergent_end",{
         "actor":actor["id"],"witness":expected["genesis_witness_ref"]})
     if any(p.get("id")==ident for p in actor.get("possible_ends",[])):
@@ -179,10 +198,14 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
                 if x["id"]==expected["later_relief_episode_ref"])
     end={
         "id":ident,"genesis_witness_ref":expected["genesis_witness_ref"],
-        "possible_object":meaning.strip(),
+        "possible_object":meaning,
+        "genesis_family":expected["genesis_family"],
+        "relieved_bodily_axis":expected["relieved_bodily_axis"],
+        "model_interpretation_hypothesis_not_operative_end":interpretation,
         "possible_means":copy(provided),"cue_terms":copy(cue_terms),
         "status":"POSSIBLE_NOT_ACQUIRED_MOTIVE",
         "origin_event":event_ref,
+        "origin_clock":experience["clock"],
         "experience_ref":experience["ref"],
         "actor_perceived_cue_ref":expected["later_perceived_cue_ref"],
         "eliciting_actor_action":first["actor_felt_attempt"],
