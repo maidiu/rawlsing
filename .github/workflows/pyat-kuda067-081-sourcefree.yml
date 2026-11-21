@@ -1,0 +1,39 @@
+name: PYAT KUDA067-081 S3A FF01-GT12 first-consumer court
+on:
+  push:
+    branches:
+      - agent/pyat-kuda067-081-s3a-ff-d-evidence-r1-20261121
+permissions:
+  contents: read
+jobs:
+  current-first-consumer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree test requirements
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Exact-SHA FF01-S3A and GT12 current first-consumer tests
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p kuda067-proof
+          python -m pytest -q -o addopts='' --junitxml=kuda067-proof/junit.xml \
+            rawlsing_next/tests/test_field_forge_conditional_support.py \
+            rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
+            rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py \
+            rawlsing_next/tests/test_gt12_e2b_real_current_load_checkpoint.py \
+            rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py \
+            rawlsing_next/tests/test_s3a_followupper_query_authority_closure.py \
+            rawlsing_next/tests/test_s3a_r4_partial_resolution_and_measure_closure.py \
+            rawlsing_next/tests/test_s3a_r5_denominator_membership_closure.py \
+            rawlsing_next/tests/test_s3a_round3_positive_zero_support.py
+      - name: Preserve exact sourcefree court JUnit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuda067-081-s3a-court
+          path: kuda067-proof/
+          if-no-files-found: error
