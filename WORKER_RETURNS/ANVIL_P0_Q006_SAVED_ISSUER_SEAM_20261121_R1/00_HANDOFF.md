@@ -1,100 +1,79 @@
-# Q006 saved-stream issuer seam — bounded evidence
+# Q006 saved-stream typed issuance seam — candidate
 
-## Disposition
+## Status
 
-`NO_COMPETENT_SAVED_STREAM_CATALOG_PRODUCER__Q103_ISSUER_BLOCKED`
+`TYPED_ISSUANCE_SEAM_IMPLEMENTED__SOURCEFREE_POSITIVE_NONANSWER_NEGATIVES_GREEN__Q103_SOURCE_DECISION_HELD`
 
-The existing P0 saved-stream reader is a real native I03 consumer only when an
-externally authentic `RuntimeObjectCatalog`, query and predicate are supplied.
-No existing producer derives that catalog/query/predicate from a verified
-`ANVIL_STREAM_C11_ESTATE@1` saved stream. The q103 source authority and
-asked/eligible decision remain missing, so q103 is not issued.
+Isolated candidate only. No q103 original-wave issuance or scientific authority
+is claimed.
 
-## Exact seam
+## Candidate code
 
-`rawlsing_next/pre553_anvil_stream_native_i03.py`:
+`rawlsing_next/pre553_anvil_stream_issuance.py`
 
-- `VerifiedAnvilStreamEstate` verifies the saved stream manifest, all member
-  hashes, row-group geometry, roots and current authority.
-- `execute_anvil_stream_i03(estate, runtime_catalog, query_ref, predicate_ref)`
-  requires:
-  - exact `VerifiedAnvilStreamEstate`;
-  - exact `RuntimeObjectCatalog`;
-  - a query whose condition is the exact predicate;
-  - query/predicate scope exactly the stream universe/release/source.
+`HeldStreamIssuanceDecision` is externally supplied and held. It carries the
+exact stream source/release/universe/replay roots, question ref, authorized
+operation, typed authority snapshots, existing `EmpiricalPredicate` and
+`EmpiricalQuerySpec`, and approved raw/nonanswer domains.
 
-The estate exposes no `runtime_catalog`, query or predicate attribute. The
-existing sourcefree test helper `_stream` creates the catalog from a separate
-sourcefree C11 candidate, not from the saved stream. That is a test fixture,
-not an owner-grade saved-stream producer.
+`issue_and_execute_stream_i03`:
 
-## Reused functions
+1. requires a verified `VerifiedAnvilStreamEstate`;
+2. checks the held source identity and all four roots against the estate;
+3. requires exactly one matching saved `QuestionVariableBinding`;
+4. requires the query condition to be the exact predicate and the query target
+   to be exactly the held question/universe;
+5. requires exact held authorities and an exact authorized operation;
+6. reuses the existing `RuntimeObjectCatalog` constructor;
+7. calls the existing `execute_anvil_stream_i03` native I03 path;
+8. checks approved raw cells and approved nonanswer states;
+9. checks effective live authority before and after execution and rechecks
+   unchanged stream members.
 
-- `VerifiedAnvilStreamEstate`
-- `qualify_saved_stream_manifest` / `HeldStreamPins`
-- `execute_anvil_stream_i03`
-- `DirectEstateI03Session`
-- `execute_empirical_query`
-- `RuntimeObjectCatalog`
-- existing saved-stream qualification and immutable member checks
+No alternate evaluator, issuer, new permanent ref, TEST_ONLY promotion, or
+caller-selected unscoped admission is introduced.
 
-## Executed sourcefree proof
+## Sourcefree executed proof
 
-`proof_stream_catalog_handoff.py` / `PROOF.out`:
+`proof_typed_issuance.py` / `TYPED_ISSUANCE.out`:
 
-- verified sourcefree stream roots: unchanged after execution
-- externally supplied exact catalog: native I03 `SUPPORTED`, denominator 2
-- exact stream release retained: `C11_STREAM_SOURCEFREE_RELEASE|HANDOFF|...`
-- query replay retained: `PRE553_I03_QUERY_REPLAY` SHA `a7bb2e80...`
-- empty/derived catalog: refused `CarrierExecutionBindingError`
-- foreign catalog: refused `DirectEstateError: stream query targets a foreign universe`
-- revoked current authority: refused `DirectEstateError`
-- post-admission member mutation: refused `DirectEstateError`
+- positive: `SUPPORTED`, raw denominator 2, cells `0`/`1`, exact
+  `PRE553_I03_QUERY_REPLAY`, stream release retained, roots unchanged;
+- nonanswer fixture: native `UNRESOLVED`, approved as `UNRESOLVED`, replay
+  retained;
+- wrong source root: refused;
+- wrong release root: refused;
+- wrong universe root: refused;
+- wrong replay root: refused;
+- wrong question ref: refused;
+- wrong authorized operation: refused by exact authority;
+- missing authority: refused;
+- raw outcome outside approved domain: refused;
+- denied current authority: refused;
+- revoked during execution: refused.
 
-No original source, original q103 data, saved estate run, private custody file,
-protected ref, G5 claim or C11 admission rerun was used.
+## q103 constraint
 
-## Missing q103 authority
+The q103 source return `4a35990659f40130f4579a3929d61238dde4b84d` still lacks
+independent decisions for 97/98/99 and asked/eligible routing. This candidate
+does not remap those codes or risk; q103 is not executed. The generic
+`approved_raw_domain`/`approved_nonanswer_states` fields preserve those as
+explicit externally supplied constraints.
 
-The q103 evidence cut (`4a35990659f40130f4579a3929d61238dde4b84d`) records:
+## Reused / pinned
 
-- current SRC04 config maps 97/98 both to DK and 99 to substantive;
-- q103 routing is `row_selector=ALL`, `ROUTING_UNKNOWN`, risk set
-  `urn:rawlsing:r157:original:SRC04:q103:unresolved`;
-- no competent real saved-stream issuer/catalog is present;
-- #1084 is TEST_ONLY sourcefree and #1205 is a policy/fixture surface.
-
-Thus the sourcefree proof cannot legitimately prove q103 97/98/99 nonanswers or
-asked/eligible scope. Those are not relabeled or inferred from rows.
-
-## Smallest code terrain and owner
-
-Smallest candidate terrain: add one saved-stream issuance seam adjacent to
-`execute_anvil_stream_i03` that accepts:
-
-1. a verified estate and its exact stream roots;
-2. the exact saved `QuestionVariableBinding`/universe and current authority;
-3. an owner-issued q103 response-state map and asked/eligible decision;
-4. exact query/predicate refs and replay scope.
-
-It must construct only from those exact owner inputs and must refuse a missing
-or conflicting q103 authority. Do not put this in a TEST_ONLY #1084 path.
-
-Owners needed:
-
-- **R03 / saved-release issuer owner** for the authentic catalog/query/
-  predicate issuance seam and current authority.
-- **SRC04 QSM/source/risk owner** for 97/98/99, system missingness, and
-  asked/eligible denominator (or a narrower recorded-responses-only decision).
-
-No concrete existing q103 path was found. The only executable existing path is
-the verified-estate native I03 consumer with an externally supplied catalog;
-the q103 catalog is absent.
-
-## References
-
-- q103 return: `4a35990659f40130f4579a3929d61238dde4b84d`
-- P0 issuer handoff: `refs/anvil-p0/issuer` @ `357a0fbf...`
-- asked-eligible: `refs/anvil-p0/asked-eligible` @ `c5efdbdf...`
+- P0 issuer handoff: `refs/anvil-p0/issuer` @ `357a0fbf...` (#1084)
+- asked-eligible: `refs/anvil-p0/asked-eligible` @ `c5efdbdf...` (#1205)
 - 1185 bridge: `3eee662d...`
-- existing 997/998 contracts were inspected, not reissued.
+- q103 return: `4a3599065...`
+- existing 997/998 contracts were not reissued or merged.
+
+## Owner
+
+- **R03 / saved-release issuer owner**: accept or amend the held-decision
+  issuance seam and runtime catalog construction.
+- **SRC04 QSM/source/risk owner**: issue q103 97/98/99, system missingness,
+  and asked/eligible decision (or narrower recorded-responses-only scope).
+
+No original source, saved-estate rebuild/write, private custody file, protected
+ref, G5 claim, or original-wave I03 was used.

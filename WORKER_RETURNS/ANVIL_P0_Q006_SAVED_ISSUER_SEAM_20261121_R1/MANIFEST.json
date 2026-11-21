@@ -1,10 +1,18 @@
 {
-  "base_commit": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
-  "estate_run": false,
+  "base_commit": "1a3c84e03b9c2e7288e2bafb7fb4e98ab81d94be",
+  "candidate": {
+    "exports": [
+      "HeldStreamIssuanceDecision",
+      "StreamIssuanceError",
+      "issue_and_execute_stream_i03"
+    ],
+    "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
+    "sha256": "56d5e795ddeb0563e9cffba752780ae04a05927e748764f7718c7f08d1d4eb6c"
+  },
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4210,
-      "sha256": "c657eab0097603389e8238c5003d32cfc1eb20aa7cb381458d0dcfcb4389cc36"
+      "bytes": 3179,
+      "sha256": "df71990280040b1845d4e6e1a42ab6d8e0d4ec6a02429dd162cbe38849f3aa1d"
     },
     "PROOF.err": {
       "bytes": 0,
@@ -15,17 +23,30 @@
       "sha256": "91492220883e018aec8343d1bb5a9a0522740eb38151cf045e1e749a7e4c4a4f"
     },
     "RETURN.json": {
-      "bytes": 4087,
-      "sha256": "e9f707048904ace5be5958bf6a1a4f8466a043cf39f30ec587f21e7a72a8db20"
+      "bytes": 5108,
+      "sha256": "c19bfb1767547a8f0f4e4a5fe2f68ac6a2c07624cc70379df87b6887546138f9"
+    },
+    "TYPED_ISSUANCE.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "TYPED_ISSUANCE.out": {
+      "bytes": 2952,
+      "sha256": "fae18118e9fc3e96ebcdc5e626953a98f34ceef4aa9fd6d127bff9e4bc5e1f94"
     },
     "proof_stream_catalog_handoff.py": {
       "bytes": 7448,
       "sha256": "95dcfe326a915036ee0f8693870aaab03890a97e0b481f335dc2bd9a8f3b0e73"
+    },
+    "proof_typed_issuance.py": {
+      "bytes": 8243,
+      "sha256": "2268cfe26bed2515b0508ae7d6a558853f7199e7270a497b1fddb390cc869593"
     }
   },
   "original_source_accessed": false,
-  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
+  "saved_estate_modified": false,
+  "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_SAVED_ISSUER_SEAM_MANIFEST@1",
   "sourcefree": true,
-  "status": "NO_COMPETENT_SAVED_STREAM_CATALOG_PRODUCER__Q103_ISSUER_BLOCKED"
+  "status": "TYPED_ISSUANCE_SEAM_IMPLEMENTED__SOURCEFREE_POSITIVE_NONANSWER_NEGATIVES_GREEN__Q103_SOURCE_DECISION_HELD"
 }

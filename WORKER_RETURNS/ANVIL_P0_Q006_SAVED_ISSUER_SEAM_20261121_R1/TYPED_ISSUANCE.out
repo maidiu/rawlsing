@@ -1,0 +1,92 @@
+{
+  "estate_writes": false,
+  "negatives": [
+    {
+      "label": "wrong_source",
+      "message": "stream source root differs from held issuance decision",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "wrong_release",
+      "message": "stream release root differs from held issuance decision",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "wrong_universe",
+      "message": "stream universe root differs from held issuance decision",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "wrong_replay",
+      "message": "stream replay root differs from held issuance decision",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "wrong_question",
+      "message": "question ref is not exactly one verified saved-stream binding",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "wrong_operation",
+      "message": "operation not named by exact authority",
+      "refused": true,
+      "type": "Pre553AuthorityError"
+    },
+    {
+      "label": "missing_authority",
+      "message": "exact held authority snapshots required",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "outside_approved_domain",
+      "message": "native raw outcome is outside the approved domain",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    {
+      "label": "denied_current",
+      "message": "effective source/operation authority refused",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    }
+  ],
+  "nonanswer": {
+    "accepted_by_held_nonanswer_state": true,
+    "execution_detail": "positive denominator exists but exact target configuration is unresolved for one or more denominator members",
+    "raw_denominator_support": 2,
+    "typed_state": "UNRESOLVED"
+  },
+  "original_source_accessed": false,
+  "positive": {
+    "raw_cells": [
+      "0",
+      "1"
+    ],
+    "raw_denominator_support": 2,
+    "release_refs": [
+      {
+        "content_hash": "5aed32e74c7dd4a1e9594d403297b0a914976b611e9c1ad3d73d2f50883a6a11",
+        "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+        "object_id": "ISSUANCE"
+      }
+    ],
+    "replay_ref": "{'content_hash': 'fe4ed90366aad4f6b82a16634a9d3c7e80577efec09b00007ce8cb372525746f', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:fe4ed90366aad4f6b82a16634a9d3c7e80577efec09b00007ce8cb372525746f'}",
+    "roots_unchanged": true,
+    "typed_state": "SUPPORTED"
+  },
+  "revoked_during_execution": {
+    "label": "revoked_during_execution",
+    "message": "effective source/operation authority revoked during execution",
+    "refused": true,
+    "type": "StreamIssuanceError"
+  },
+  "schema": "ANVIL_Q006_TYPED_ISSUANCE_PROOF@1",
+  "sourcefree": true,
+  "status": "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"
+}

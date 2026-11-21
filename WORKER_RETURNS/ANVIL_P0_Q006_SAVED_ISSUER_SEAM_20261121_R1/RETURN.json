@@ -1,41 +1,18 @@
 {
-  "base_commit": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+  "base_commit": "1a3c84e03b9c2e7288e2bafb7fb4e98ab81d94be",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
-  "c11_admission_rerun": false,
-  "estate_run": false,
+  "candidate": {
+    "exports": [
+      "HeldStreamIssuanceDecision",
+      "StreamIssuanceError",
+      "issue_and_execute_stream_i03"
+    ],
+    "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
+    "sha256": "56d5e795ddeb0563e9cffba752780ae04a05927e748764f7718c7f08d1d4eb6c"
+  },
   "g5_claim": false,
-  "negatives": {
-    "authority": {
-      "message": "current ANVIL saved-source analytical authority refused",
-      "type": "DirectEstateError"
-    },
-    "foreign_catalog": {
-      "estate_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac|3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac",
-      "foreign_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c|e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c",
-      "result": {
-        "message": "stream query targets a foreign universe",
-        "type": "DirectEstateError"
-      }
-    },
-    "member_mutation": {
-      "message": "stream member changed during execution",
-      "type": "DirectEstateError"
-    },
-    "missing_catalog": {
-      "catalog_constructed_from_estate": false,
-      "empty_catalog_result": {
-        "message": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
-        "type": "CarrierExecutionBindingError"
-      }
-    }
-  },
-  "nonanswers": {
-    "proven_by_sourcefree_fixture": false,
-    "q103_nonanswer_cells": "NOT_PROVEN__SOURCE_AUTHORITY_MISSING",
-    "reason": "the reusable fixture proves the stream/catalog seam only; q103 97/98/99 and asked routing remain outside this sourcefree fixture"
-  },
-  "original_q103_data_accessed": false,
   "original_source_accessed": false,
+  "original_wave_i03": false,
   "owner_needed": [
     "R03 / saved-release issuer owner",
     "SRC04 QSM/source/risk owner"
@@ -43,45 +20,123 @@
   "pins": {
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+    "candidate_module": "56d5e795ddeb0563e9cffba752780ae04a05927e748764f7718c7f08d1d4eb6c",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
-    "proof_out_sha256": "91492220883e018aec8343d1bb5a9a0522740eb38151cf045e1e749a7e4c4a4f",
-    "proof_script_sha256": "95dcfe326a915036ee0f8693870aaab03890a97e0b481f335dc2bd9a8f3b0e73"
+    "proof_output": "fae18118e9fc3e96ebcdc5e626953a98f34ceef4aa9fd6d127bff9e4bc5e1f94",
+    "proof_script": "2268cfe26bed2515b0508ae7d6a558853f7199e7270a497b1fddb390cc869593"
   },
-  "positive": {
-    "fact_replay_ref": "{'content_hash': 'a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916'}",
-    "raw_denominator_support": 2,
-    "release_ref": [
+  "proof": {
+    "estate_writes": false,
+    "negatives": [
       {
-        "content_hash": "b86240e652582087f6707846b654a9a63f1965400f291f1388f4f86c66540783",
-        "kind": "C11_STREAM_SOURCEFREE_RELEASE",
-        "object_id": "HANDOFF"
+        "label": "wrong_source",
+        "message": "stream source root differs from held issuance decision",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "wrong_release",
+        "message": "stream release root differs from held issuance decision",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "wrong_universe",
+        "message": "stream universe root differs from held issuance decision",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "wrong_replay",
+        "message": "stream replay root differs from held issuance decision",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "wrong_question",
+        "message": "question ref is not exactly one verified saved-stream binding",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "wrong_operation",
+        "message": "operation not named by exact authority",
+        "refused": true,
+        "type": "Pre553AuthorityError"
+      },
+      {
+        "label": "missing_authority",
+        "message": "exact held authority snapshots required",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "outside_approved_domain",
+        "message": "native raw outcome is outside the approved domain",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
+        "label": "denied_current",
+        "message": "effective source/operation authority refused",
+        "refused": true,
+        "type": "StreamIssuanceError"
       }
     ],
-    "roots_unchanged": true,
-    "stream_release_matches_estate": true,
-    "typed_state": "SUPPORTED"
+    "nonanswer": {
+      "accepted_by_held_nonanswer_state": true,
+      "execution_detail": "positive denominator exists but exact target configuration is unresolved for one or more denominator members",
+      "raw_denominator_support": 2,
+      "typed_state": "UNRESOLVED"
+    },
+    "original_source_accessed": false,
+    "positive": {
+      "raw_cells": [
+        "0",
+        "1"
+      ],
+      "raw_denominator_support": 2,
+      "release_refs": [
+        {
+          "content_hash": "5aed32e74c7dd4a1e9594d403297b0a914976b611e9c1ad3d73d2f50883a6a11",
+          "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+          "object_id": "ISSUANCE"
+        }
+      ],
+      "replay_ref": "{'content_hash': 'fe4ed90366aad4f6b82a16634a9d3c7e80577efec09b00007ce8cb372525746f', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:fe4ed90366aad4f6b82a16634a9d3c7e80577efec09b00007ce8cb372525746f'}",
+      "roots_unchanged": true,
+      "typed_state": "SUPPORTED"
+    },
+    "revoked_during_execution": {
+      "label": "revoked_during_execution",
+      "message": "effective source/operation authority revoked during execution",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    },
+    "schema": "ANVIL_Q006_TYPED_ISSUANCE_PROOF@1",
+    "sourcefree": true,
+    "status": "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"
   },
-  "private_custody_read": false,
-  "producer_status": "ABSENT",
   "protected_edits": false,
-  "q103_blockers": {
-    "asked_eligible": "ROUTING_UNKNOWN, row_selector ALL, unresolved q103 risk set",
-    "native_i03": "NOT_RUN; q103 not issued",
-    "response_codes": "97 and 98 both DK; 99 substantive in current SRC04 config",
-    "saved_issuer": "no authentic saved-stream RuntimeObjectCatalog/query/predicate producer"
+  "q103_constraint": {
+    "asked_eligible": "not inferred",
+    "native_i03": "NOT_RUN for q103 original-wave",
+    "response_codes": "97/98/99 not remapped",
+    "status": "SOURCE_DECISION_HELD"
   },
   "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
   "reused": [
     "VerifiedAnvilStreamEstate",
-    "qualify_saved_stream_manifest",
+    "RuntimeObjectCatalog",
+    "AuthorityRegistry",
     "execute_anvil_stream_i03",
     "DirectEstateI03Session",
-    "execute_empirical_query",
-    "RuntimeObjectCatalog"
+    "execute_empirical_query"
   ],
-  "schema": "ANVIL_P0_Q006_SAVED_ISSUER_SEAM_RETURN@1",
-  "seam": "VerifiedAnvilStreamEstate -> execute_anvil_stream_i03(estate, runtime_catalog, query_ref, predicate_ref)",
-  "smallest_code_terrain": "A stream-bound issuance seam beside execute_anvil_stream_i03 consuming verified estate + exact saved question/universe + owner q103 source decision + exact query/predicate/replay scope; refuse absent/conflicting authority.",
+  "saved_estate_modified": false,
+  "saved_estate_rebuilt": false,
+  "schema": "ANVIL_P0_Q006_TYPED_ISSUANCE_RETURN@1",
+  "seam": "held decision -> exact roots/question/operation/authority validation -> RuntimeObjectCatalog -> execute_anvil_stream_i03",
   "sourcefree": true,
-  "status": "NO_COMPETENT_SAVED_STREAM_CATALOG_PRODUCER__Q103_ISSUER_BLOCKED"
+  "status": "TYPED_ISSUANCE_SEAM_IMPLEMENTED__SOURCEFREE_POSITIVE_NONANSWER_NEGATIVES_GREEN__Q103_SOURCE_DECISION_HELD"
 }
