@@ -164,7 +164,7 @@ class WitnessedTriadicRelationsR26(unittest.TestCase):
                 self.assertTrue(witness['father'][-1][
                     'not_other_private_state_or_target_consent'])
                 self.assertNotIn('father',rt.snapshot('nadia')['other_models'])
-                self.assertTrue(rt.verify())
+                self.assertTrue(rt.verify()['valid'])
             finally:
                 rt.close()
 
