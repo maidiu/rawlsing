@@ -147,35 +147,51 @@ class InputEstate:
         from rawlsing_next.pre553_anvil_stream_native_i03 import (
             HeldStreamPins, VerifiedAnvilStreamEstate,
         )
-        self.estate_path = resolve(bundle_root,config["estate_path"])
-        self.estate_root = resolve(bundle_root,config["estate_root"])
-        pin_file = resolve(bundle_root,config["held_pins"])
-        pins = json.loads(pin_file.read_text())
-        self.held = HeldStreamPins(
-            source_id=pins["source_id"], source_sha256=pins["source_sha256"],
-            manifest_sha256=pins["manifest_sha256"],
-            exact_release_path=pins["exact_release_path"],
-            roots=pins["roots"],
-        )
-        auth_path = resolve(bundle_root,config["authority_provider"])
-        provider = load_file_module(auth_path,"pyat_bench_external_current_provider")
-        if not callable(getattr(provider,"check_current",None)):
-            raise StoreFailure("independent authority provider must export check_current(held_pins)")
-        self._provider = provider
-        if provider.check_current(self.held) is not True:
+        self.r2_custody = None
+        if config.get("r2_decision_file"):
+            # Original R2 user/source decision directly; no manually written
+            # Python authority hook is needed for this narrower custody mode.
+            from .existing_r2 import R2Custody
+            self.r2_custody = R2Custody(
+                resolve(bundle_root,config["r2_decision_file"]),
+                config["source_id"],
+                required_host=config["required_host"],
+                required_purpose=config["required_purpose"],
+            )
+            self.held=self.r2_custody.pins
+            self.estate_path=self.r2_custody.estate_path
+            self.estate_root=self.r2_custody.estate_root
+            self._provider=self.r2_custody
+        else:
+            self.estate_path = resolve(bundle_root,config["estate_path"])
+            self.estate_root = resolve(bundle_root,config["estate_root"])
+            pin_file = resolve(bundle_root,config["held_pins"])
+            pins = json.loads(pin_file.read_text())
+            self.held = HeldStreamPins(
+                source_id=pins["source_id"], source_sha256=pins["source_sha256"],
+                manifest_sha256=pins["manifest_sha256"],
+                exact_release_path=pins["exact_release_path"],
+                roots=pins["roots"],
+            )
+            auth_path = resolve(bundle_root,config["authority_provider"])
+            self._provider = load_file_module(
+                auth_path,"pyat_bench_external_current_provider")
+            if not callable(getattr(self._provider,"check_current",None)):
+                raise StoreFailure("independent authority provider must export check_current(held_pins)")
+        if self._provider.check_current(self.held) is not True:
             raise StoreFailure("CURRENT/source authority refused before estate admission")
         emit(stage="source_admission", completed="begin")
         self.verified = VerifiedAnvilStreamEstate(
             root=self.estate_root, exact_path=self.estate_path,
             independently_held=self.held,
-            current_authorizer=provider.check_current,
+            current_authorizer=self._provider.check_current,
         )
         self.manifest = json.loads((self.estate_path / "manifest.json").read_text())
         self.identity = {
             "schema": self.manifest["schema"],
-            "manifest_sha256": pins["manifest_sha256"],
-            "roots": dict(pins["roots"]),
-            "source_id": pins["source_id"],
+            "manifest_sha256": self.held.manifest_sha256,
+            "roots": dict(self.held.roots),
+            "source_id": self.held.source_id,
         }
         self.source_bytes = sum((self.estate_path / n).stat().st_size
                               for n in self.manifest["members"])
@@ -270,15 +286,30 @@ class InputEstate:
 
 def _native_operations(config: dict, root: Path, source: InputEstate, emit):
     pathname = config.get("operations_provider")
-    if not pathname:
+    recorded = config.get("q103_recorded_operation_file")
+    if pathname and recorded:
+        raise StoreFailure("select original issued operation provider OR R2 Q103, not both")
+    if recorded:
+        if source.r2_custody is None:
+            raise StoreFailure("R2 Q103 direct operation requires same held R2 custody")
+        from .existing_r2 import read_recorded_operation
+        emit(stage="issued_operations",completed="reconstruct_original_q103_once")
+        use_file=config.get("q103_universe_use_decision_file")
+        supplied=[read_recorded_operation(
+            source.verified,custody=source.r2_custody,
+            operation_file=resolve(root,recorded),
+            universe_use_file=resolve(root,use_file) if use_file else None,
+        )]
+    elif pathname:
+        mod=load_file_module(resolve(root,pathname),"pyat_bench_existing_issued_operations")
+        fn=getattr(mod,"provide_operations",None)
+        if not callable(fn):
+            raise StoreFailure("operations provider must export provide_operations(verified_estate)")
+        emit(stage="issued_operations",completed="building_once_from_existing_source_authority")
+        supplied=list(fn(source.verified))
+    else:
         emit(stage="issued_operations", status="HELD_NO_ORIGINAL_ISSUER")
         return [],"HELD_NO_ORIGINAL_ISSUER"
-    mod=load_file_module(resolve(root,pathname),"pyat_bench_existing_issued_operations")
-    fn=getattr(mod,"provide_operations",None)
-    if not callable(fn):
-        raise StoreFailure("operations provider must export provide_operations(verified_estate)")
-    emit(stage="issued_operations",completed="building_once_from_existing_source_authority")
-    supplied=list(fn(source.verified))
     names=[]
     for op in supplied:
         if not isinstance(op,dict) or not all(k in op for k in ("query","predicate","authority_registry")):
