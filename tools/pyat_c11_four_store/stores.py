@@ -86,6 +86,10 @@ class Store:
             raise StoreFailure("refusing to overwrite another physical store")
         if not create and not self.path.is_file():
             raise StoreFailure("persistent store is missing")
+        # Missing authority metadata must not create an empty database that
+        # then blocks a legitimate later attempt with "refusing overwrite".
+        if create and source_identity is None:
+            raise StoreFailure("source identity required for construction")
         self.db = sqlite3.connect(str(self.path), timeout=120)
         self.db.execute("PRAGMA foreign_keys=ON")
         self.db.execute("PRAGMA journal_mode=WAL")
@@ -99,8 +103,6 @@ class Store:
         self._pq = {}
         self._insert_count = 0
         if create:
-            if source_identity is None:
-                raise StoreFailure("source identity required for construction")
             self._schema()
             self._set_meta("schema", SCHEMA)
             self._set_meta("arm", name)
