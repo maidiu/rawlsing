@@ -1,6 +1,6 @@
 # NEKUDA — lesser, defective, superseded, misleading and nonadoptable iterations
 
-**Revision NEKUDA-R1, 2026-11-21.** Companion to [KUDA strongest code-family records](KUDA.md), on the **same existing G4 branch**, not an additional PR, not a new PROGRAMMA and not a new engineering queue. Research is limited to evidence established before 2026-11-19 ~12:50 ET. Statements describe **exact historical cuts**, and do not automatically apply to later code. NEKUDA preserves failures and supersession relations; `NO_ACCEPTED_KUDA_SUCCESSOR` explicitly avoids inventing a fix. No Python tests executed during this ledger authoring.
+**Revision NEKUDA-R2, 2026-11-21.** Companion to [KUDA strongest code-family records](KUDA.md), on the **same existing G4 branch**, not an additional PR, not a new PROGRAMMA and not a new engineering queue. Research is limited to evidence established before 2026-11-19 ~12:50 ET. Statements describe **exact historical cuts**, and do not automatically apply to later code. NEKUDA preserves failures and supersession relations; `NO_ACCEPTED_KUDA_SUCCESSOR` explicitly avoids inventing a fix. No Python tests executed during this ledger authoring.
 
 **Maintenance:** on each subsequent return, revise the same NEKUDA.md and KUDA.md files in place via exact-head CAS, preserving stable IDs. Retire a predecessor only after actual source-function, consumer and negative comparison; don't collapse distinct scopes. No protected receiving or source/science authority is implied.
 
@@ -34,6 +34,12 @@
 | `NEKUDA-026` | V542 destructive DuckDB --replace four-fact-table loader | KUDA-009, KUDA-023, KUDA-028 | Real old manifest→DuckDB fact loader but --replace deletes respondent/position/response/weight tables and old source use may not b |
 | `NEKUDA-027` | V548 weighted_n is floating respondent count | KUDA-029, KUDA-030 | Historical recursive node uses weighted_n=float(total_n); reported 'weighted' does not mean sampled survey weights. |
 | `NEKUDA-028` | R06 R05-backed P41 single-step versus J42 multi-step | KUDA-021 | Selected P41 R05Provider exposes one retained Y/X step; earlier J42 three conditional steps are different contracts. R06 validates |
+
+| `NEKUDA-029` | V551J review-only sidecar wrongly promoted as certified joint | KUDA-032 | Reviewable evidence is not certified packet output; its import alone is not an executed reader. The separate V551J certificate req |
+| `NEKUDA-030` | FFX Core C conditional estimate treated as world-class causation | KUDA-034 | Respondent P(D|C), Wilson interval and strict-subset backoff are bounded descriptive inference, not causal institutional intervent |
+| `NEKUDA-031` | V556 historical pressure-flow register mistaken for enacted psyche | KUDA-035, KUDA-037 | Historical V556 emits contract rows/registers and renderer prerequisites. Modern M3 validates structural output contract; neither  |
+| `NEKUDA-032` | V558 old runtime-input gate mistaken for an executable persona runtime | KUDA-036, KUDA-038 | build_v558_runtime_input_gate only normalizes/validates V557 input fields. Selected M4 is an exact structural repository, not runt |
+| `NEKUDA-033` | FFX configuration A collapsed into geometric B or conditional C | KUDA-015, KUDA-016, KUDA-033, KUDA-034 | A exact observed configurations, B local geometry, C direct conditional redistribution have different output semantics despite one |
 
 ## Full negative and supersession evidence
 
@@ -316,6 +322,56 @@
 **Why this is NEKUDA, not KUDA:** Selected P41 R05Provider exposes one retained Y|X step; earlier J42 three conditional steps are different contracts. R06 validates supplied receipts, not reexecutes joined J42.
 
 **No-loss / non-promotion rule:** Record both strengths and limits; preserve unexecuted multi-step obligation rather than declaring complete replacement.
+
+### NEKUDA-029 — V551J review-only sidecar wrongly promoted as certified joint
+
+**Kind:** `NONPROMOTABLE_SCOPE_OR_FALSE_EQUIVALENCE`. **Best comparators:** KUDA-032.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v551j_review.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_review.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** Reviewable evidence is not certified packet output; its import alone is not an executed reader. The separate V551J certificate requires a terminal audit.
+
+**No-loss / non-promotion rule:** Retain review lane without automatic M1/M2 release or runtime promotion.
+
+### NEKUDA-030 — FFX Core C conditional estimate treated as world-class causation
+
+**Kind:** `NONPROMOTABLE_SCOPE_OR_FALSE_EQUIVALENCE`. **Best comparators:** KUDA-034.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py) at `957628a3653e55757404ecf62822c4dd12f77430`.
+
+**Why this is NEKUDA, not KUDA:** Respondent P(D|C), Wilson interval and strict-subset backoff are bounded descriptive inference, not causal institutional intervention.
+
+**No-loss / non-promotion rule:** Keep source risk-set and estimand scope; separate the world causation claim.
+
+### NEKUDA-031 — V556 historical pressure-flow register mistaken for enacted psyche
+
+**Kind:** `NONPROMOTABLE_SCOPE_OR_FALSE_EQUIVALENCE`. **Best comparators:** KUDA-035, KUDA-037.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v556_pressureflow.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v556_pressureflow.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** Historical V556 emits contract rows/registers and renderer prerequisites. Modern M3 validates structural output contract; neither makes living psychological action.
+
+**No-loss / non-promotion rule:** Never authorize SOROK/person-state or claim the full causal world machine from a V556 schema.
+
+### NEKUDA-032 — V558 old runtime-input gate mistaken for an executable persona runtime
+
+**Kind:** `NONPROMOTABLE_SCOPE_OR_FALSE_EQUIVALENCE`. **Best comparators:** KUDA-036, KUDA-038.
+
+**Exact historical source:** [data/ddm_build_copy/ddm_v558_runtime_input_gate.py](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_input_gate.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`.
+
+**Why this is NEKUDA, not KUDA:** build_v558_runtime_input_gate only normalizes/validates V557 input fields. Selected M4 is an exact structural repository, not runtime generation.
+
+**No-loss / non-promotion rule:** Retain valid input audit obligations without falsely crediting actor/person simulation.
+
+### NEKUDA-033 — FFX configuration A collapsed into geometric B or conditional C
+
+**Kind:** `NONPROMOTABLE_SCOPE_OR_FALSE_EQUIVALENCE`. **Best comparators:** KUDA-015, KUDA-016, KUDA-033, KUDA-034.
+
+**Exact historical source:** [data/ddm_build_copy/ffx002_r2_integrated_stack.py](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ffx002_r2_integrated_stack.py) at `957628a3653e55757404ecf62822c4dd12f77430`.
+
+**Why this is NEKUDA, not KUDA:** A exact observed configurations, B local geometry, C direct conditional redistribution have different output semantics despite one common-risk harness.
+
+**No-loss / non-promotion rule:** Keep A/B/C as independent measured comparison arms; no representation is silently replaced by another.
 
 ## Distinctions that must survive future KUDA reviews
 

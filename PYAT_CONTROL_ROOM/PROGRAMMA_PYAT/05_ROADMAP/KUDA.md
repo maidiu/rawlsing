@@ -1,6 +1,6 @@
 # KUDA — most complete known conserved/underrecognized capability versions
 
-**Revision: KUDA-R1 (2026-11-21).** Persistent maintenance location: `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` (the existing G4 repair branch; no new branch or PR). KUDA is an **evidence overlay, not the PROGRAMMA capability status authority**. G4's existing INDEX/FUNCTION_PARITY/COMPONENT_STATUS/CURRENT_SEAM_STATES and paired CURRENT_PROGRESS control accepted status. Source body presence, actual execution, independent review, scientific/source authority and protected receiving are independent.
+**Revision: KUDA-R2 (2026-11-21).** Persistent maintenance location: `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` (the existing G4 repair branch; no new branch or PR). KUDA is an **evidence overlay, not the PROGRAMMA capability status authority**. G4's existing INDEX/FUNCTION_PARITY/COMPONENT_STATUS/CURRENT_SEAM_STATES and paired CURRENT_PROGRESS control accepted status. Source body presence, actual execution, independent review, scientific/source authority and protected receiving are independent.
 
 **Historical filter:** only implementation evidence established *before 2026-11-19 ~12:50 America/New_York*, excluding subsequent PRE-MAIN/REMONT/Q014–Q020 turmoil delegated to PYAT HQ. Comparison snapshot `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`; older DDM `25830fe7462bb9e29bc4087e6ae14f3f84cec377`. Source-static and historical reviewed findings only; **no Python suites executed in this return**. Tests described as written or previously reported, not newly passed. This is a deep targeted search, not exhaustive proof that no other source exists.
 
@@ -38,6 +38,15 @@
 | `KUDA-028` | W03/W04 compact event accelerator plus physically cold I03/I05 regression | S03 | `OLDER_UNMERGED_CANDIDATE` |
 | `KUDA-029` | V549B same-respondent branch-node attitude anchors | S04 | `HISTORICAL_EXECUTABLE` |
 | `KUDA-030` | V550 historical position marginals and co-travel distributions | S04 | `HISTORICAL_EXECUTABLE` |
+
+| `KUDA-031` | V551 direct signed relation-evidence atoms and terminal adjudication | S04/S06 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-032` | V551J joint packet construction and certified/rejected index | S04/S05 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-033` | FFX Core A exact configuration distribution producer | S06 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-034` | FFX Core C direct respondent-conditional redistribution | S04/S06 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-035` | M3 selected V556 higher-order structural result-schema firewall | S09/S10 | `SELECTED_SOURCEFREE` |
+| `KUDA-036` | M4 selected V557/V558 exact publication and repository role resolution | S10/S11 | `SELECTED_SOURCEFREE` |
+| `KUDA-037` | V556 historical pressure-flow/attractor prerequisite builder | S09/S10 | `HISTORICAL_EXECUTABLE` |
+| `KUDA-038` | V558 historical runtime-input normalization and review gate | S10/S11 | `HISTORICAL_EXECUTABLE` |
 
 ## Full records — strongest known source version per distinct function
 
@@ -576,6 +585,148 @@
 **Smallest nonduplicative operation:** Compare per-product estimands to modern S04 before deciding missing versus existing.
 
 **NEKUDA family and negative comparisons:** NEKUDA-007, NEKUDA-009, NEKUDA-010, NEKUDA-027.
+
+### KUDA-031 — V551 direct signed relation-evidence atoms and terminal adjudication
+
+**G4 jurisdiction:** S04/S06; G3A:FUNCTION:G1A-FUNC-011. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [build_v551_directional_candidate_adjudication; build_v551_relation_evidence_atoms](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_atoms.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551_atoms.py`.
+
+**What it really does:** Inherited V550 applicability; emits only terminal certified signed response atoms with typed block reasons and lineage/denominator audits.
+
+**Actually established first reader:** Historical V551 compiler consumes canonical candidate evidence; needs verified source/weight science.
+
+**Why KUDA retains it:** Separate real signed-atom producer from simple stamp coverage.
+
+**Limitation / negative:** Historical source/relation authority still requires independent original questionnaire/semantics issuance.
+
+**Smallest nonduplicative operation:** Compare current source-authorized signed evidence and reuse exact block/lineage semantics.
+
+### KUDA-032 — V551J joint packet construction and certified/rejected index
+
+**G4 jurisdiction:** S04/S05; G3A:FUNCTION:G1A-FUNC-009/010. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [certify_v551j_v2_2_3; build_v551j_certified_packet_index](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_certification.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v551j_certification.py`.
+
+**What it really does:** Audits packet source, directionality, component status, contract hash and conflicts; constructs certified/rejection indexes with typed reasons; paired packet builder in ddm_v551j_packets.py.
+
+**Actually established first reader:** Historical packet compiler/certification pipeline, unlike import-only review sidecar.
+
+**Why KUDA retains it:** Distinct strong certification boundary for same-respondent joint packet knowledge.
+
+**Limitation / negative:** Historical native authorization and actual modern first reader unproved; uncertified sidecar remains separate.
+
+**Smallest nonduplicative operation:** Preserve exact terminal before certification; do not infer that a packet schema equals an issued result.
+
+**NEKUDA family and negative comparisons:** NEKUDA-029.
+
+### KUDA-033 — FFX Core A exact configuration distribution producer
+
+**G4 jurisdiction:** S06; G3A:FUNCTION:G1A-FUNC-024. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [produce_exact_configuration_set](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ddm_ffx_exact_configuration.py) at `957628a3653e55757404ecf62822c4dd12f77430`, path `data/ddm_build_copy/ddm_ffx_exact_configuration.py`.
+
+**What it really does:** Computes exact observed state-configuration sets/distributions and query matching over a frozen common risk set, with attestation and loss receipt; no inferred similarity or latent ontology.
+
+**Actually established first reader:** Actually invoked as arm A by FFX002 integrated stack.
+
+**Why KUDA retains it:** Conserves exact configuration knowledge different from local geometry B and conditional redistribution C.
+
+**Limitation / negative:** Not an authority issuer, source-native science or extrapolation engine.
+
+**Smallest nonduplicative operation:** Keep exact A as separate benchmark/control for B/C, not an automatic winner.
+
+**NEKUDA family and negative comparisons:** NEKUDA-033.
+
+### KUDA-034 — FFX Core C direct respondent-conditional redistribution
+
+**G4 jurisdiction:** S04/S06; G3A:FUNCTION:G1A-FUNC-024. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [produce_direct_conditional_redistribution; compile_direct_conditional_bundle](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py) at `957628a3653e55757404ecf62822c4dd12f77430`, path `data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py`.
+
+**What it really does:** Estimates bounded respondent-level P(D|C) or an explicitly declared strict-subset backoff against same frozen input; handles support, weights, Wilson intervals and loss receipts.
+
+**Actually established first reader:** Actually invoked as arm C by FFX002 integrated stack.
+
+**Why KUDA retains it:** Distinct conditional estimator, not the old V551 derived-determinicity socket or local geometry.
+
+**Limitation / negative:** Restricted frozen canary, not general original-survey causal or source-authorized estimator.
+
+**Smallest nonduplicative operation:** Conserve role/denominator support contract and compare scientific estimator against current S04.
+
+**NEKUDA family and negative comparisons:** NEKUDA-030, NEKUDA-033.
+
+### KUDA-035 — M3 selected V556 higher-order structural result-schema firewall
+
+**G4 jurisdiction:** S09/S10; G3A:FUNCTION:G1A-FUNC-019. **Placement:** `SELECTED_SOURCEFREE`.
+
+**Exact code:** [evaluate_m3_v556_higher_order_structural](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/m3_v556_higher_order_structural.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/m3_v556_higher_order_structural.py`.
+
+**What it really does:** Requires exact active participant/source authority, rule and result-contract bindings; validates closed objective-world schema including objective actor references distinct from person-state.
+
+**Actually established first reader:** Selected M3→M4 structural publication contract; not psyche simulation.
+
+**Why KUDA retains it:** Already a substantial typed structure/authority gate beyond old V556 prerequisites.
+
+**Limitation / negative:** Does not infer social-world causal facts or simulate an agent; actor labels are objective identifiers.
+
+**Smallest nonduplicative operation:** Reuse result-schema and authority firewall, require independent material-world source proof.
+
+**NEKUDA family and negative comparisons:** NEKUDA-031.
+
+### KUDA-036 — M4 selected V557/V558 exact publication and repository role resolution
+
+**G4 jurisdiction:** S10/S11; G3A:FUNCTION:G1A-FUNC-020/021/022. **Placement:** `SELECTED_SOURCEFREE`.
+
+**Exact code:** [govern_v557; build_v557_publication_bundle; build_v558_repository_bundle; require_authenticated_dependency_roles](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/rawlsing_next/m4_v557_v558_publication_repository.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`, path `rawlsing_next/m4_v557_v558_publication_repository.py`.
+
+**What it really does:** Converts M1/M2/M3 source-qualified structural objects into exact governed publication, immutable source locators, reference edges, dependency roles and authenticated V558 resolution.
+
+**Actually established first reader:** M3→M4 selected structural repository, GT2 bounded positive tests; not actor runtime.
+
+**Why KUDA retains it:** V557 publication and V558 repository law already exist as substantial sourcefree code.
+
+**Limitation / negative:** No persona generator, SOROK actor warrant or real unissued causal semantics.
+
+**Smallest nonduplicative operation:** Reuse exact repository and roles; compare any historical runtime gate without conflating V558 input with actor generation.
+
+**NEKUDA family and negative comparisons:** NEKUDA-032.
+
+### KUDA-037 — V556 historical pressure-flow/attractor prerequisite builder
+
+**G4 jurisdiction:** S09/S10; G3A:FUNCTION:G1A-FUNC-019. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [build_v556_pressureflow_attractor](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v556_pressureflow.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v556_pressureflow.py`.
+
+**What it really does:** Transforms bounded V555 mediation contracts into pressure-flow registers, attractor requirements, blockers and lawful V557 renderer handoff indexes.
+
+**Actually established first reader:** Historical V555→V556→V557 contract path; direct original actor consumer absent.
+
+**Why KUDA retains it:** Distinct historical pressure/mediation *prerequisite representation* not identical to selected M3 closed result-schema gate.
+
+**Limitation / negative:** Does not compute psyche, living person, causal institutions or an actual attractor trajectory.
+
+**Smallest nonduplicative operation:** Compare semantics with M3 rather than falsely assume complete supersession or drop the pressure-flow questions.
+
+**NEKUDA family and negative comparisons:** NEKUDA-031.
+
+### KUDA-038 — V558 historical runtime-input normalization and review gate
+
+**G4 jurisdiction:** S10/S11; G3A:FUNCTION:G1A-FUNC-021/022. **Placement:** `HISTORICAL_EXECUTABLE`.
+
+**Exact code:** [build_v558_runtime_input_gate; validate_v558_runtime_input_gate](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_input_gate.py) at `25830fe7462bb9e29bc4087e6ae14f3f84cec377`, path `data/ddm_build_copy/ddm_v558_runtime_input_gate.py`.
+
+**What it really does:** Validates V557 renderer contract and allowed runtime input fields, normalizes an admissible runtime input object and writes audit artifacts.
+
+**Actually established first reader:** Historical V557→V558 preparatory handoff; not a model-invocation or persona runtime.
+
+**Why KUDA retains it:** Real input-governance mechanism beyond schema description; possibly useful as comparative boundary evidence.
+
+**Limitation / negative:** No runtime generation, psyche, model sampling or actor permission; modern M4 is a different exact repository ABI.
+
+**Smallest nonduplicative operation:** Do not port unchanged; preserve audit requirements and compare with selected M4 role-authenticated resolution.
+
+**NEKUDA family and negative comparisons:** NEKUDA-032.
 
 ## Escalation boundaries
 
