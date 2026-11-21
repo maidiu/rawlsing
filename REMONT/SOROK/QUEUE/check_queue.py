@@ -236,6 +236,80 @@ print(json.dumps({'valid':v['valid'], 'events':v['events'], 'last_hash':v['last_
             'two_process_identical_event_ids_and_hashes': True}
 
 
+
+def joined_nadia_and_reopen(python: str, src: Path, temp: Path):
+    """Execute two real counterfactual Nadia lives and separate cold reopens."""
+    target = temp / 'joined-life'
+    cmd = [python, '-m', 'um_sorok_organism.joined_longitudinal_demo',
+           '--directory', str(target), '--days', '14', '--beats', '12']
+    run = run_process(cmd, src, timeout=300)
+    require_ok(run, 'JOINED_LONGITUDINAL_EXECUTION_FAILED')
+    try:
+        result = json.loads(run['output'])
+        yes = result['contrast']['spoken']
+        no = result['contrast']['unspoken']
+        if not (result['early_historical_cultural_divergence_observed'] is True
+                and result['nadia_action_not_externally_requested'] is True
+                and result['external_pyat_correspondence'] == 'NOT_ISSUED'
+                and yes['father_source_action'] == 'SPEAK'
+                and no['father_source_action'] == 'REST'
+                and yes['actor_selected_nadia_action'] == 'INSPECT'
+                and yes['actor_selected_nadia_status'] == 'PERFORMED'
+                and len(yes['early_nadia_after']['cultural_practice_refs']) == 1
+                and no['early_nadia_after']['cultural_practice_refs'] == []
+                and yes['independent_beats_reported'] == 12
+                and no['independent_beats_reported'] == 12):
+            raise ValueError('JOINED_COUNTERFACTUAL_CAUSAL_PRECONDITIONS_FAILED')
+    except (ValueError, KeyError, TypeError) as exc:
+        raise QueueFailure('JOINED_LONGITUDINAL_INVALID', str(exc)) from exc
+    probe = """import json,sys
+from um_sorok_organism.storage import ResearchLedger
+s=ResearchLedger(sys.argv[1])
+try:
+ c=s.verify_chain()
+ p=s.conn.execute('PRAGMA integrity_check').fetchone()[0]
+ events=s.events()
+ print(json.dumps({'valid':c['valid'],'events':c['events'],
+  'last_hash':c['last_hash'],'sqlite_integrity':p,
+  'event_ids':[x['id'] for x in events],
+  'event_hashes':[x['chain_hash'] for x in events]},sort_keys=True))
+finally:s.close()
+"""
+    summary = {}
+    for label, file in (('spoken', 'speaking.sqlite3'),
+                        ('unspoken', 'silent.sqlite3')):
+        case = result['contrast'][label]
+        if case['cold_nadia'] != case['later_nadia']:
+            raise QueueFailure('JOINED_NADIA_COLD_PSYCHIC_MISMATCH', label)
+        checks = []
+        for _ in range(2):
+            rr = run_process([python, '-c', probe, str(target / file)],
+                             src, timeout=80)
+            require_ok(rr, 'JOINED_INDEPENDENT_COLD_REOPEN_FAILED')
+            try:
+                checks.append(json.loads(rr['output']))
+            except ValueError as exc:
+                raise QueueFailure('JOINED_COLD_REOPEN_NOT_JSON', label) from exc
+        if (checks[0] != checks[1] or checks[0]['valid'] is not True or
+                checks[0]['sqlite_integrity'] != 'ok' or
+                checks[0]['last_hash'] != case['cold_integrity']['last_hash'] or
+                checks[0]['events'] != case['cold_integrity']['events']):
+            raise QueueFailure('JOINED_INDEPENDENT_COLD_REOPEN_DIVERGED', label)
+        summary[label] = {
+            'events': checks[0]['events'],
+            'last_hash': checks[0]['last_hash'],
+            'sqlite_integrity': checks[0]['sqlite_integrity'],
+            'two_process_event_identity_match': True,
+            'nadia_cold_state_equal': True,
+            'child_cultural_practice_count':
+                len(case['early_nadia_after']['cultural_practice_refs']),
+        }
+    return {'days':14,'beats':12,
+            'early_historical_cultural_divergence_observed': True,
+            'sourcefree_not_human_science': True,
+            'contrasts':summary}
+
+
 def ensure_machine_version(py: str, workdir: Path):
     test = run_process([py, '-c',
                         'import json,sys;print(json.dumps(list(sys.version_info[:3])))'], workdir)
