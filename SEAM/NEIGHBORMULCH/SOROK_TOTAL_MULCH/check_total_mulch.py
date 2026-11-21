@@ -148,15 +148,24 @@ heads = re.findall(r"^## ([IVX]+)\. ", theory, re.M)
 assert heads == ["I","II","III","IV","V","VI","VII","VIII","IX",
                  "X","XI","XII","XIII","XIV","XV","XVI","XVII"], (
                  "ONE_HOUSE_CHAPTER_DISPLACEMENT",heads)
-assert len(theory)>=68000 and "STAGING ONLY" not in theory
+# Length is not theoretical adequacy: abolish the old 68 KB word-count proxy.
+# Require the 17 freshly reconstituted causal movements and no duplicate
+# historical theory passages under an "inherited material" subheading.
+assert len(theory)>=30000 and "STAGING ONLY" not in theory
+assert "**Inherited material, re-read under this stronger causal claim" not in theory, (
+    "OLD_THEORY_STILL_STACKED_UNMULCHED")
+assert "## I. Material birth, labor and institutions precede the encounter" in theory
+assert "## XV. The game is what historical participation feels like" in theory
 for phrase in (
-    "ONE HOUSE", "two former theories", "same-SES", "YOUR RESOURCES",
+    "ONE HOUSE", "same-SES", "YOUR RESOURCES",
     "NO_LAWFUL_HOMOLOGY", "Sabbath", "Mark 2:27", "firewood",
     "M0–M8", "relational_metabolism", "historical_self_organization",
-    "R28", "628", "two-meal", "false", "Birkenstocks", "H0–H3",
-    "Mechanism I", "Mechanism II", "Mechanism III", "MII", "MIII",
+    "R28", "R29", "634", "two-meal", "false blame",
+    "Birkenstocks", "H0–H3", "Mechanism I", "MII", "MIII",
     "S0–S16", "C0–C12", "Q123", "messaging", "F1–F10",
-    "RC1–RC6", "platform", "SES", "co-occurrence", "source"
+    "RC1–RC6", "JH1–JH8", "platform", "SES", "co-presence",
+    "source-root", "copy-on-write", "Dawkins", "sex work",
+    "recruitment", "institution", "causal", "NO_CHANGE"
 ):
     # Keep quality checks honest: verifying the claim is articulated cannot
     # prove the claim is correct or integrated in running source.
@@ -231,7 +240,7 @@ print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicit
 print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
-print("ONE_HOUSE_RECONSTITUTED_STRUCTURE_PASS: 17 chapters, two theory lineages represented, 104 original claims + 197 predecessor references in existing 04, original F1-F10/RC1-RC6 and new JH1-JH8 in existing 05; semantic and runtime claims NOT independently certified")
+print("ONE_HOUSE_03_RECONSTITUTION_PASS: 17 material-first causal movements; no pasted inherited old-theory blocks; 104+197 historical rival source claims in 04, original F1-F10/RC1-RC6, JH1-JH8 and actual R29 first-consumer in 05; DOC-level anti-loss, NOT independent semantic/scientific accreditation")
 print("ONE_LIVING_03_NO_SATELLITES_PASS: staging and 10–13 deleted from active tree; 04 original quotes + 05 RC courts preserved")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
