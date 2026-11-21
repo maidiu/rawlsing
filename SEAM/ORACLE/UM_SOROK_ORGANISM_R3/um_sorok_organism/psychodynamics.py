@@ -78,6 +78,11 @@ def enact_currents(constitution, access, active_forms, candidates, relational=No
             'action':action,'polarity':polarity,'motif_ref':mediated['motif_ref'],
             'source_form_refs':copy(mediated['source_form_refs']),
             'has_inhibited_source':mediated['has_inhibited_source'],
+            'mediation_mode':mediated.get('mode'),
+            'relation_transduced':mediated.get('mediation_relation'),
+            'relation_source_ref':mediated.get('mediation_source_ref'),
+            'relation_target_ref':mediated.get('mediation_target_ref'),
+            'not_objective_justification_of_conduct':True,
             'grade':GRADE,'not_actor_self_knowledge':True})
     for h in (historical or {}).get('currents', []):
         action=h['action'];polarity=h['polarity'];ref='history:'+h['ref']
