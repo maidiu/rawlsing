@@ -231,6 +231,13 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:validate_motif(update,actor['forms'])
             except InvalidRelationalMotif as exc:
                 raise InvalidDevelopment(str(exc)) from exc
+            new_witness=update.get('witnessed_source_actor_ref')
+            if (new_witness != found.get('witnessed_source_actor_ref')
+                    and new_witness is not None
+                    and not any(isinstance(cue,dict)
+                                and cue.get('source_actor')==new_witness
+                                for cue in experience.get('perceived_cues',[]))):
+                raise InvalidDevelopment('MOTIF_WITNESSED_OTHER_NOT_RECEIVED')
             found.setdefault('motif_history',[]).append({
                 'event':event_ref,
                 'previous':{key:copy(found.get(key)) for key in
