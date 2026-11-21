@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+[Scoped F6 closed-PR conservation](G4_F6_CLOSED_PR_CONSERVATION_20261121.md) records the Q018/Q020 successor, Q019 retirement and the stale REMONT queue note.
+
+
 **Rev22 sourcefree execution follow-up.** Q023 33/33 and Q014 41/41 independently reproduced on the same host at #1247 `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. Broader G5 and code receiving remain pending. [independent execution receipt](G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json).
 
 
