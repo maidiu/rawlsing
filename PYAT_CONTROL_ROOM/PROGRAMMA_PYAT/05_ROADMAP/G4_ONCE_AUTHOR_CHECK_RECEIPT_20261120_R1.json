@@ -45,5 +45,21 @@
   "original_repo_node_execution": false,
   "independent_review": false,
   "protected_branch_required_check": false,
-  "grade": "AUTHOR_EXECUTED_PURE_FUNCTION_FIXTURE_AND_JSONL_SOURCE_READBACK"
+  "grade": "AUTHOR_EXECUTED_PURE_FUNCTION_FIXTURE_AND_JSONL_SOURCE_READBACK",
+  "post_repair_original_G4_no_drop_check": {
+    "status": "PASS_AUTHOR_V8_DIRECT_EXACT_SOURCE_COMPARE",
+    "source_base": "ab2e5b2ce6f29972dbff6971c29e488c17504e73",
+    "edited_candidate_branch": "agent/pyat-g4-one-time-complete-reconciliation-20261120-r1",
+    "comparison": "EVERY_ORIGINAL_JSONL_ROW_BYTE_IDENTICAL_IN_ORDER_AFTER_REMOVING_ONLY_g4_once_20261120_EXTENSION",
+    "index": 782,
+    "parity": 150,
+    "components": 62,
+    "seams": 82,
+    "original_nonextended_fields_dropped": 0,
+    "all_original_ids_and_order_preserved": true,
+    "index_extra_fields_only_on_11_original_GUIDE_SECTION_ROWS": true,
+    "parity_components_seams_extra_fields_on_all_original_rows": true,
+    "not_execution_of_python_or_node": true
+  },
+  "reviewer_must_execute": "Node script with original checkout plus edited G4 issue crosslinks, not author selfreview"
 }
