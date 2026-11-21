@@ -126,10 +126,16 @@ def _fixture(*, fact_state="SUPPORTED", tamper_domain_identity=False, reverse_ta
         second_domain, _ = domain_by_ref[targets[1]]
         cells = []
         for first, second in product(first_domain, second_domain):
+            # Role-order rejection must not be preempted by S3-A's stronger
+            # zero-positive SUPPORT guard. Keep a genuine one-member fact.
+            count = (1 if fact_state == "SUPPORTED"
+                     and (first, second) == (first_domain[0], second_domain[0])
+                     else 0)
             cells.append({
                 "cell": [first, second],
-                "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
-                "raw_numerator_support": 0,
+                "cell_state": ("OBSERVED_POSITIVE" if count
+                               else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"),
+                "raw_numerator_support": count,
                 "weighted_numerator_support_if_authorized": None,
             })
         domain_identity = semantic_hash({
@@ -151,7 +157,7 @@ def _fixture(*, fact_state="SUPPORTED", tamper_domain_identity=False, reverse_ta
             "full_domain": [list(v) for v in product(first_domain, second_domain)],
         })
         raw_denominator = 1 if fact_state == "SUPPORTED" else 0
-        raw_numerator = 0
+        raw_numerator = raw_denominator
     else:
         counts = {
             ("0", "1"): 2,
