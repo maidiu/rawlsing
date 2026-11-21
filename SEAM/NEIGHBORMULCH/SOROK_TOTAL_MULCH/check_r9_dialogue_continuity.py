@@ -209,7 +209,7 @@ def main():
         "generative axes", "germinal relations",
         "more pulsatingly, specifically, multiply contradictory and alive",
         "more concrete and internally multiple",
-        "deeper relations multiply Nadia",
+        "contradictions acquire form, intensity, scale",
         "not to reduce complexity",
     ):
         must(phrase.lower() in main.lower(),
