@@ -353,10 +353,20 @@ def compose(constitution,access,limit=50):
     # Seeking, avoiding, staying or leaving can change what evidence was
     # available later. Historical path receipts are NOT observations of
     # counterfactual encounters or proof of a learned causal theory.
+    # A stable person or object co-presence is not a reencounter with the
+    # earlier *signal*.  Cues made by the read model from current spatial
+    # adjacency, posted notice shells or objective object visibility must
+    # not be mistaken for newly received event signs after an unobserved
+    # interval.  The genuinely current sensory world cue has already passed
+    # actor_access's clock, place, private-owner and bodily threshold checks.
+    current_event_signs=_tokens([sign for sign in access.cues
+        if sign.get('kind') not in (
+            'coactor_present','material_object_present',
+            'public_notice_visible')])
     for previous in constitution.evidence_paths[-64:]:
         prior_tags={str(x).lower()
                     for x in previous.get('received_cue_tags',[])}
-        if prior_tags and prior_tags & cues:
+        if prior_tags and prior_tags & current_event_signs:
             candidate_history_refs.add(previous['experience_ref'])
             currents.append({
                 'kind':'HISTORICAL_SIGNAL_PATH_REENCOUNTERED',
