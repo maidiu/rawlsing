@@ -130,6 +130,20 @@ class JoinedPurposeP004(unittest.TestCase):
                 purpose_selection=self._purpose(["care","speak"]))
         self.assertEqual(a,before)
 
+    def test_provisional_end_trial_is_real_projectless_activity_not_a_motive(self):
+        a=self._actor()
+        prior=copy.deepcopy(a)
+        receipts=record_activity_afterlife(
+            a,"SPEAK","PERFORMED","SPEECH_PERFORMED",
+            ["operative_speech"],"evt_trial",
+            purpose_selection={
+                "status":"ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE",
+                "project_id":None,"project_ids":[],
+                "possible_end_ref":"qualified_possible_end_prior"})
+        self.assertEqual(receipts,[])
+        self.assertEqual(a,prior)
+        self.assertEqual(a["activity_history"],prior["activity_history"])
+
     def test_actual_selected_project_retains_its_practical_object(self):
         a=self._actor()
         record_activity_afterlife(
