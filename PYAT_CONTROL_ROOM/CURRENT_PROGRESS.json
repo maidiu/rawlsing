@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 17,
-  "revision_note": "Rev17 user correction: revert 21 untested S04/F6 candidate source/test files and untested receiving checker from designated PRE-MAIN; restore original rev13 workflow; preserve source on isolated REMONT OpenCode candidate dd1f5a45830c09ac21f577aa97351d639be1af0d with existing QIDs and Q021/Q022; rev14-16 history retained as explicitly retracted source promotion; no test or scientific acceptance.",
-  "report_status": "PYAT_REV17_MISRECEIVED_S04_F6_SOURCE_RETRACTED__REMONT_OPENCODE_QUEUED__G4_OATH_REV13_DOC_INTACT__NO_TEST_PASS_OR_NATIVE_RIGHTS",
+  "revision": 18,
+  "revision_note": "Rev18 scoped G4 functional reuse/conservation source comparison across #1238/#1242/#1162 and isolated draft PR #1244; no code received to PRE-MAIN, no exact composite tests, no original source science/actor rights; 13 subjects source-static indexed to existing S02/S03/S04/S06/S07 and COMPONENT_STATUS; historical rev14-16 promotion remains retracted.",
+  "report_status": "PYAT_REV18_G4_EXACT_SOURCE_FUNCTION_COMPARISON__NO_NEW_PROTECTED_FEATURE_CODE__REMONT_UNEXECUTED",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -624,5 +624,63 @@
     "g4_status": "HISTORICAL_REV14_RETRACTED_NO_FUNCTIONAL_PROMOTION",
     "has_protected_grade_for_new_code": false,
     "rev13_g4_and_oath_conserved": true
+  },
+  "g4_functional_reconciliation_rev18": {
+    "grade": "SOURCE_STATIC_DOCUMENTARY_RECEIVING_ONLY__FEATURE_NOT_RECEIVED",
+    "source_cut": "b2b45b1467e90d98df9d8538a6be1f4151400b2f",
+    "candidate_sha": "ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550",
+    "pr": 1244,
+    "comparators": {
+      "PREMAIN": "b2b45b1467e90d98df9d8538a6be1f4151400b2f",
+      "INHERITED_CANDIDATE": "1b07ee8e43b1e6dfc1543d777fe51b5750633d1c",
+      "REMONT_Q015": "9472381c3bc475e2ca69ce6438b25b71886f5aa6",
+      "REMONT_R16": "c0b6f828907fedc7caad05b542a646cee7e3733c",
+      "COMPOSITE": "ede4ed7fc4b3c4a4de1767e6fbd9e0a4c2343550"
+    },
+    "subject_ids": [
+      "COLD-I03-PREPARED",
+      "S04-DYNAMIC",
+      "R03-V2-ISSUER",
+      "I05-S04-FF01",
+      "PHYSICAL-COLD-REPLAY",
+      "SOURCE-I02-PF022",
+      "I03-ABSENT-EMPTY",
+      "Q014-ASKED-ELIGIBLE",
+      "Q015-I05-CYCLE",
+      "Q016-COUNTRY-MI",
+      "Q017-NOISE",
+      "F6-Q018-Q020",
+      "REAL-FF-CONSUMER"
+    ],
+    "sourcefree_consumers_exist": [
+      "pre553_s04_ff01_consumer.receive_ff01_from_s04",
+      "pre553_s04_field_forge_v3_bridge.build_empirical_field_forge_v3_handoff"
+    ],
+    "new_credible_gains": [
+      "R03_V2_ISSUED_QUERY",
+      "S04_DYNAMIC_NATIVE_CATALOG_QUERIES",
+      "S2D_PREPARED_SAVED_BATCH_CONVERSION",
+      "SOURCE_DICTIONARY_COMPLETE_V2",
+      "PINNED_V2_COLD_REPLAY_CONSERVATION",
+      "SOURCE_I02_CLOSE_BEFORE_PUBLISH",
+      "Q015_DHIKR_CODEC_REUSE"
+    ],
+    "exact_head_new_tests_executed": false,
+    "remont_queue_runnable_ids": [
+      "RMT-Q008",
+      "RMT-Q013",
+      "RMT-Q014",
+      "RMT-Q015",
+      "RMT-Q016",
+      "RMT-Q017",
+      "RMT-Q018",
+      "RMT-Q020",
+      "RMT-Q021",
+      "RMT-Q023"
+    ],
+    "separate_structural_q022_held": true,
+    "original_science": false,
+    "field_forge_external_first_consumer": false,
+    "pre_main_feature_code_changed": false
   }
 }
