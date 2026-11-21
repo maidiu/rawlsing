@@ -54,6 +54,18 @@
 | `NEKUDA-084` | WSC002G richer injected-fake-stage assertion harness mistaken for deployed runtime | KUDA-091 | Original branch contains six adversarial tests but its harness is sibling-blind and injected; selected reduced module actually composes  |
 | `NEKUDA-085` | SOROK #704 described as unmerged although GitHub shows merged Nov 6 | KUDA-087, KUDA-088 | The PR body says 'draft and unmerged for receiving,' but PR #704 API has merged_at=2026-11-06T15:48:58Z and actual engine/model code alr |
 
+## NEKUDA-R8 post-cut, non-destructive negative controls — 2026-11-21
+
+**Maintained on the same G4 branch as KUDA, no new NEKUDA IDs.** The historical pre-Nov19 source-cut warnings below remain valid at their own commits. **NEKUDA-060** (conditioned denominator outside selected respondents), **NEKUDA-074/075** (source contradiction and incomplete intermediate FF01 closure) are *addressed as unexecuted historical-source candidate code* by [#1253](https://github.com/maidiu/rawlsing/pull/1253) `37c50faf57e83673e68247011b89f5908d33692a`, which transplants exact #945 KUDA-067/081 modern owner files plus five hostile suites. No tests or independent G5 at this descendant SHA; do **not** relabel those negative cases resolved or retire their IDs.
+
+**NEKUDA-079 / KUDA-086 remains live and unresolved.** Older R8 exact frozen Q86 source-question identity guard was not incorporated into later #945 FF01; a naive blend breaks legacy mock-`QUESTION` fixtures. A source-preserving fixture migration and exact-query first-consumer court is necessary; *neither* generic GF1's native pair semantics nor D's forged/absent source rules grant specialized Q86 original authority.
+
+**NEKUDA-073 / KUDA-080** remains an independent semantic/decoder cache-key equivalence risk despite KUDA-062 race-safe admission already being byte-identical to #1247. **NEKUDA-066/067 / KUDA-074/075** preserves generic GF1 vs specialized GT2 distinction; original sourcefree 2×2 signature classification is not survey-design-qualified predictive ranking or nontrivial psychological formation.
+
+No historical failure has been erased, and no original-source, FF02 causal, V3 actor, independent acceptance or protected paired progress is claimed by this G4-branch author evidence.
+
+---
+
 ## Full post-rework negative and supersession records
 
 ### NEKUDA-001 — Pre-S1B R157 package exact-case paths and standalone factory
