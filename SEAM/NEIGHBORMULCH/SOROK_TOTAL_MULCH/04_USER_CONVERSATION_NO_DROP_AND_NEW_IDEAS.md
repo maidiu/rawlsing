@@ -105,7 +105,7 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 
 ## E. November 21 continuation — explicit new user philosophical riff and five back-catalogue finds
 
-**Exact user utterance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations), section A. The user's distinction **"this is a riff ... not ... dogmatic writ"** is controlling for provenance. Every interpretive objection below remains an **assistant hypothesis** unless separately adopted after competent review. The original 757-source bank is NOT silently reclassified as user instruction.
+**Exact user utterance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md), section A. The user's distinction **"this is a riff ... not ... dogmatic writ"** is controlling for provenance. Every interpretive objection below remains an **assistant hypothesis** unless separately adopted after competent review. The original 757-source bank is NOT silently reclassified as user instruction.
 
 **Five historically recovered candidates with exact sources and current existing-source comparators:** [03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md](03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md). These are source-old, newly *rediscovered by this assistant*, not invented modern architecture.
 
@@ -140,7 +140,7 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 
 ## F. November 21 second continuation — Marxian externalized value, prophetic reversal, and an explicit MULCHINEERING request
 
-**Exact user wording and provenance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md#G-exact-continuations), §I; the passage is **user-authored philosophical correction**, while earlier assistant lines that the user quoted and affirmed retain the distinction “assistant formulation, user-endorsed.” **First-consumer engineering intake:** [05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md](05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md).
+**Exact user wording and provenance:** [04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md), §I; the passage is **user-authored philosophical correction**, while earlier assistant lines that the user quoted and affirmed retain the distinction “assistant formulation, user-endorsed.” **First-consumer engineering intake:** [05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md](05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md).
 
 | ID | Origin | Separately preserved contribution | Source and owner | Status |
 |---|---|---|---|---|
