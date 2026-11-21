@@ -8,6 +8,8 @@
 
 **Separate G4 candidate status:** [#1226](https://github.com/maidiu/rawlsing/pull/1226) and [#1232](https://github.com/maidiu/rawlsing/pull/1232)/[#1233](https://github.com/maidiu/rawlsing/pull/1233) remain distinct unmerged G4/first-look/CI propositions, not incorporated or erased by this scoped charter receiving. When those independently qualify, merge their **non-overlapping intended content** with the now-protected first-contact REMONT pointers, preserving exact governing text, rather than overwriting the protected HEAD. The detailed [builder queue amendment #1235](https://github.com/maidiu/rawlsing/pull/1235) also remains an unmerged candidate; the **core doctrine is already protected here** and should not be redundantly re-created.
 
+**G4 startup precision:** The currently protected G4 README and its linked INDEX/FUNCTION_PARITY/COMPONENT_STATUS/CURRENT_SEAM_STATES are the real inventory to consult. The proposed #1226/#1232/#1233 first-look and enhanced CI guards are **not** on the protected branch and were not accepted by this charter CAS. Root AGENTS now names the real protected G4 entry and linked records instead of implying the candidate first-look already exists.
+
 **Bounded future currentness:** This revision 12 records the present user-directed documentary receiving only. Subsequent substantive PYAT implementation/test/source/science/actor progress must still be established from live exact HEADs, actual execution and competent owner authority and received through the paired PROGRAMMA/G4 process. No claim that this charter fixes the rest of PYAT's open work.
 
 
