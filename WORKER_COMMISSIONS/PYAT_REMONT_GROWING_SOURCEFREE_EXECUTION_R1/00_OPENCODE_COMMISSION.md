@@ -1,3 +1,13 @@
+## Reconciled Q014–Q020 candidate — future REMONT first-fault execution only
+
+**Candidate branch**: agent/pyat-mulch-f6-inquiry-interval-replay-q020-20261120-r1, exact 40-hex HEAD to be frozen by a separately authorized executor. **No tests launched**; no prior green transfers. This branch inherits #1223 Q014–Q019 and copies source-equivalent F6 population-interval producer/tests from #1224 (1330328ccaa481681d18d2cc6c173cc47fe3fefe) without duplicate estimator. It repairs the older finite-frame consumer's missing source+issuer replay and wires the already-built interval reader into the EXISTING Q019 position↔repertoire coordinator.
+
+**Global numbering correction**: #1223's earlier RMT-Q019 remains the inquiry; the later #1224 use of Q019 is preserved historically as an alias and becomes **RMT-Q020** in this integrated queue. REMONT #1162 must adjudicate alias/owner identity. Q018 finite-frame, Q019 inquiry, Q020 parameter-interval are distinct. Q006 original source and Q011–Q012 SOROK remain held.
+
+**When and only when separately explicitly invoked:** reconcile the current authorized integrated head with both upstream owners and check a clean detached checkout. Run the existing runner with RMT-Q014 through RMT-Q020 (or its eligible cumulative default), preserving HEAD/JUnit/host/exit and reporting each real production/test/evidence first fault to REMONT #1162. Do not issue rights, treat sourcefree test doubles as population variance credentials, merge protected PRE-MAIN, self-review, spawn a new suite owner or claim an automatic background run. The preexisting older launch directions below are superseded for source selection, retained as historical context.
+
+---
+
 ## Integrated Q014–Q019 successor candidate — REMONT to execute, PYAT not to repair
 
 **Latest source authority, superseding older frozen target descriptions below:** the isolated Q014–Q019 candidate is `agent/pyat-haqqmulch-q014-q019-position-repertoire-integrated-20261120-r1`, derived from existing #1218 at `d93a9a07984ee3ea6649e6e5111105eb134e5802`. It incorporates byte-exact Q017 noise-control source from #1207 at `b48222d42fb0c638d12af3cc05222260d5f94889`, and byte-exact Q018 F6 partial-identification source/tests from #1219 at `acb7fa6a58af2b62774a34b40c59bcdabf4fd9c1`; Q019 adds a NEW thin owner-reusing PYAT inquiry (S04 general conditional/inverse/co-travel; existing country/DHIKR receipt; N10E/C1 possibility and F6 *separate* evidence lanes) rather than new engines. All six cases retain prior identities: Q014 asked-eligible, Q015 continuing DHIKR, Q016 country issuer, Q017 statistical noise, Q018 partial identification, Q019 connected consumer. Q006 original source and Q011–Q012 SOROK remain HELD.
