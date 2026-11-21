@@ -1,3 +1,17 @@
+## ISSUED NORMAL WORKLOAD P0 FIRST READER — existing RMT-Q023, 2026-11-21
+
+**COMMITTED_UNTESTED, no GitHub Actions.** PYAT #1247 now extends the *original* `pre553_issued_workload.execute_issued_workload` with an exact-boolean **opt-in** `reuse_prepared_saved_session=True`, forwarding through the already-owned `PreparedSavedC11Admission` and `DirectEstateI03Session`. `execute_saved_normal` is the real public first reader; issuer `admit/check_current` remains authoritative per unit. Previously RMT-Q023 covered direct saved Batch and a manually selected cold-S04 consumer; the actual original NORMAL U/E_pre issued-workload route was not reusing a prepared index. This is its narrow new sourcefree test, not another issuer, scheduler, I03 engine, FF01 owner, or RMT ID.
+
+**EXISTING RMT-Q023 TEST FILE, now with two new cases:** `rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py`. One test executes R03 v2 eligible QUERY units through `execute_saved_normal` with its genuine `TestOnlyDecisionResolver`, exact saved catalog and reused single index; retains `NativeWorkloadResult.outputs_by_unit` for S04 (no I03 rerun); checks exact baseline fact/receipt parity. Issued QUERY may still yield UNAVAILABLE/UNRESOLVED I03 evidence and must **not** be promoted to S04; at least one supported q101 S04 witness required. Second test rejects prepared opt-in without saved admission and nonboolean truthy flags before source opening. Any RED is a concrete source/fixture first fault, never a reason to replace the issuer.
+
+**OpenCode exact-head command after checkout of the branch's latest remote 40-char HEAD:**
+```bash
+EXPECTED_PREFF_C0_HEAD="$(git rev-parse HEAD)" bash rawlsing_next/tests/run_preff_remont_batch.sh RMT-Q023
+```
+Run `RMT-Q014` separately if Q023 reports an original administered-risk boundary; do not turn sourcefree TEST_ONLY into native SOURCE_REALIZED. Preserve Q015/#1242-#1243 (REMONT) and SORACLE/#1234 as independent owner work. Require source SHA, full command, runtime dependencies, exact per-test PASS/FAIL/HOLD, JUnit, first traceback, postings builds, and negative/external CURRENT evidence. The addition is a queued executable check, **not** an executed test or protected-code acceptance.
+
+---
+
 ## CURRENT ACTIVE OPENCODE INTAKE — November 20/21 USER CORRECTION
 
 **THIS IS THE SINGLE EXISTING REMONT QUEUE, NOT A SECOND PROCESS.** Previous PYAT HQ incorrectly published unexecuted source modules to designated PRE-MAIN (rev14–rev16). User rescinded that promotion practice: unexecuted S04/F6 work is moved back to an isolated candidate branch while the affected PRE-MAIN engineering source is surgically reverted, retaining the evidence and historical G4 facts. **Do NOT run GitHub Actions as the test executor, DO NOT claim a failed zero-step Actions job is source-code test evidence.**

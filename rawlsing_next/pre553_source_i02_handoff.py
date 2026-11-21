@@ -1333,6 +1333,14 @@ def build_source_i02_handoff(
             operation_fates=operation_fates,
             stats=stats,
         )
+        # Source/spool finalization must happen while the transaction's
+        # exception handler can still abort each published output. A failing
+        # decoder close after 'return handoff' would otherwise be an exception
+        # to the caller with still-published body/journal artifacts.
+        incidence.close()
+        incidence = None
+        spool_paths = None  # the checked _cleanup_spool above already succeeded
+        spool_dir = None
         if physical_journal is not None:
             raw_receipt = physical_journal.finish()
             handoff = replace(handoff, physical_cell_journal=raw_receipt)
@@ -1345,21 +1353,75 @@ def build_source_i02_handoff(
             handoff = replace(handoff, body_transport=body_transport)
         return handoff
     except BaseException as exc:
+        # The body sink, physical journal, and direct-I02 publisher are
+        # separately owned resources in one failed source transaction.
+        # An exception in one abort MUST NOT strand the other resource.
+        # Preserve the original first fault, appending cleanup failures as
+        # diagnostics rather than converting a rollback defect into success.
+        cleanup_errors: list[str] = []
         if sink is not None:
-            sink.abort(exc)
+            try:
+                sink.abort(exc)
+            except BaseException as cleanup_exc:
+                cleanup_errors.append(
+                    f"body sink abort failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
         if physical_journal is not None:
-            physical_journal.abort()
-        if published or (
-            manifest is not None
-            and _target_matches_manifest(target, manifest)
-        ):
-            _invalidate_target(target, exc)
+            try:
+                physical_journal.abort()
+            except BaseException as cleanup_exc:
+                cleanup_errors.append(
+                    f"physical journal abort failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
+        try:
+            if published or (
+                manifest is not None
+                and _target_matches_manifest(target, manifest)
+            ):
+                _invalidate_target(target, exc)
+        except BaseException as cleanup_exc:
+            cleanup_errors.append(
+                f"direct-I02 invalidation failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+            )
+        if cleanup_errors and hasattr(exc, "add_note"):
+            exc.add_note("source-I02 rollback incomplete: " + "; ".join(cleanup_errors))
         raise
     finally:
+        # An error in either cleanup owner must never prevent the other,
+        # nor hide the first source/transaction failure. All successful
+        # transactions have already closed both resources before publication.
+        final_cleanup_errors: list[str] = []
         if spool_paths is not None:
-            _cleanup_spool(spool_paths, spool_dir)
+            try:
+                cleanup_ok, leftovers = _cleanup_spool(spool_paths, spool_dir)
+                if not cleanup_ok:
+                    final_cleanup_errors.append(
+                        f"spool cleanup incomplete: {leftovers}"
+                    )
+            except BaseException as cleanup_exc:
+                final_cleanup_errors.append(
+                    f"spool cleanup failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
         if incidence is not None:
-            incidence.close()
+            try:
+                incidence.close()
+            except BaseException as cleanup_exc:
+                final_cleanup_errors.append(
+                    f"physical decoder close failed: {type(cleanup_exc).__name__}: {cleanup_exc}"
+                )
+        if final_cleanup_errors:
+            import sys
+            active = sys.exc_info()[1]
+            if active is not None and hasattr(active, "add_note"):
+                active.add_note(
+                    "source-I02 final cleanup incomplete: " +
+                    "; ".join(final_cleanup_errors)
+                )
+            elif active is None:
+                raise SourceI02Refusal(
+                    "SOURCE_RESOURCE_CLEANUP_INCOMPLETE",
+                    final_cleanup_errors,
+                )
 
 
 def open_direct_native_i03(

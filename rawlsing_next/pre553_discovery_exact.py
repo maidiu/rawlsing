@@ -80,6 +80,7 @@ TERMINAL_COVERAGE_STATES = frozenset({
     "EVALUATED_NONCOMPARABLE",
     "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
     "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "EVALUATED_UNRESOLVED",
 })
 
 
@@ -865,7 +866,9 @@ def _terminal_fact_class(facts: Sequence[EmpiricalFact]) -> str | None:
         raise ExactBoundedCoverageError("I03 integrity failure cannot be laundered into discovery coverage")
     if states & {"NONCOMPARABLE", "NOT_APPLICABLE"}:
         return "NONCOMPARABLE"
-    if states & {"UNAVAILABLE", "UNRESOLVED"}:
+    if "UNRESOLVED" in states:
+        return "UNRESOLVED"
+    if "UNAVAILABLE" in states:
         return "UNAVAILABLE"
     if all(fact.raw_denominator_support == 0 or fact.typed_state in {"ZERO_SUPPORT", "VALID_EMPTY"} for fact in facts):
         return "VALID_EMPTY"
@@ -1024,6 +1027,8 @@ def _evaluate_candidate(
     terminal = _terminal_fact_class(canonical_facts)
     if terminal == "NONCOMPARABLE":
         return "EVALUATED_NONCOMPARABLE", "NONCOMPARABLE", canonical_facts, support
+    if terminal == "UNRESOLVED":
+        return "EVALUATED_UNRESOLVED", "COVERAGE_LIMITED", canonical_facts, support
     if terminal == "UNAVAILABLE":
         return "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "COVERAGE_LIMITED", canonical_facts, support
     if terminal == "VALID_EMPTY":

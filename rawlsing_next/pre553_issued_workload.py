@@ -9,6 +9,7 @@ matching a hash alone does not establish those rights.
 from __future__ import annotations
 
 from collections import Counter
+from contextlib import ExitStack
 from collections.abc import Mapping
 from dataclasses import dataclass, fields, is_dataclass
 import json
@@ -25,6 +26,7 @@ from rawlsing_next.pre553_saved_c11_admission import (
     SavedBindingReceipt,
     SavedC11Admission,
 )
+from rawlsing_next.pre553_prepared_saved_i03 import PreparedSavedC11Admission
 from rawlsing_next.pre553_discovery_exact import COVERAGE_CLAIM, I05_CONTRACT_ID
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
@@ -351,7 +353,8 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
                             allow_test_only: bool = False, prior_receipts=(),
                             prior_outputs=None, max_units=None,
                             expected_wave: OriginalWaveIdentity | None = None,
-                            group_scope: I03GroupedExecutionScope | None = None):
+                            group_scope: I03GroupedExecutionScope | None = None,
+                            reuse_prepared_saved_session: bool = False):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -367,6 +370,10 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         not isinstance(max_units, int) or isinstance(max_units, bool) or max_units < 1
     ):
         raise WorkloadAdmissionError("POSITIVE_MAX_UNITS_REQUIRED")
+    if type(reuse_prepared_saved_session) is not bool:
+        raise WorkloadAdmissionError("EXACT_PREPARED_SAVED_OPT_IN_REQUIRED")
+    if reuse_prepared_saved_session and saved_admission_factory is None:
+        raise WorkloadAdmissionError("PREPARED_SAVED_REQUIRES_SAVED_ADMISSION")
     record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
                    expected_wave=expected_wave)
     # The native Batch owner verifies receipt structure, not external issuance.
@@ -451,18 +458,23 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     _validate_prior_cache(manifest, prior_receipts, prior_outputs)
     outputs = dict(prior_outputs)
     requests_by_query = {r.query_ref.key: r for r in workload.requests}
+    # Reuse the existing prepared saved reader *inside* the original issuer
+    # owner. Its exact decision, source/current and output-receipt guards
+    # remain mandatory; no second Batch, estimator or issuer is created.
+    prepared_session = None
 
     def execute(unit):
         check_current()
         if saved is not None:
+            saved_reader = prepared_session if prepared_session is not None else saved
             if unit.job_kind == "QUERY":
-                result = saved.execute_i03(
+                result = saved_reader.execute_i03(
                     query_ref=unit.job_ref,
                     predicate_ref=requests_by_query[unit.job_ref.key].predicate_ref,
                 )
                 refs = tuple(f.ref for f in result.facts)
             else:
-                result = saved.execute_i05(
+                result = saved_reader.execute_i05(
                     discovery_authority_ref=unit.job_ref,
                 )
                 refs = tuple(r.ref for r in result.receipts)
@@ -489,9 +501,18 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     )
     try:
         check_current()
-        runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
-                   max_units=max_units)
-        check_current()
+        # One original DirectEstateI03Session is opened only for the explicit
+        # saved-estate opt-in. ExitStack closes it even on failed/deferred
+        # units or CURRENT refusal; legacy default behavior is unchanged.
+        with ExitStack() as stack:
+            if reuse_prepared_saved_session:
+                check_current()
+                prepared_admission = PreparedSavedC11Admission.from_verified_admission(saved)
+                prepared_session = stack.enter_context(prepared_admission.prepared_i03())
+                check_current()
+            runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
+                       max_units=max_units)
+            check_current()
         # Every receipt is a native unit receipt. A partial run retains the full manifest.
         if max_units is None and (len(runner.receipts) != len(manifest.units)
                                  or any(r.state != "COMPLETED" for r in runner.receipts)):

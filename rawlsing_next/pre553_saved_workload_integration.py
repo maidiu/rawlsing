@@ -91,8 +91,15 @@ def execute_saved_batch(
     prior_receipts: Any = (),
     prior_outputs: Mapping[str, Any] | None = None,
     max_units: int | None = None,
+    reuse_prepared_session: bool = False,
 ) -> Any:
-    """Run the actual native Batch scheduler over one admitted saved estate."""
+    """Run the native Batch scheduler; optionally reuse ONE cold I03/I05 index.
+
+    True is an explicit sourcefree P0 throughput opt-in. A plain authenticated
+    SavedC11Admission is elevated only via the existing exact prepared owner.
+    No new I03 kernel, source rights, release, query issuer or Batch runner.
+    The legacy False path is byte-for-byte semantically unchanged.
+    """
 
     if admission is None or manifest is None or predicate_ref_by_query is None:
         require_batch_owner_ack()
@@ -101,6 +108,10 @@ def execute_saved_batch(
             "exact SavedC11Admission or PreparedSavedC11Admission required")
     if not isinstance(predicate_ref_by_query, Mapping):
         raise SavedC11AdmissionError("exact query/predicate binding map required")
+    if type(reuse_prepared_session) is not bool:
+        raise SavedC11AdmissionError(
+            "reuse_prepared_session must be exact bool, not a truthy grant"
+        )
     discovery_refs = dict(discovery_authority_ref_by_key or {})
 
     def execute(unit, prepared=None):
@@ -167,8 +178,15 @@ def execute_saved_batch(
         manifest=manifest, repository=admission,
         prior_receipts=prior_receipts, saved_mode=True,
     )
-    if type(admission) is PreparedSavedC11Admission:
-        with admission.prepared_i03() as prepared:
+    if type(admission) is PreparedSavedC11Admission or reuse_prepared_session:
+        # Existing PreparedSavedC11Admission already has this capability.
+        # A plain admission keeps its own independently held estate pins and
+        # frozen catalog; it may not be retargeted by a different caller.
+        target = (
+            admission if type(admission) is PreparedSavedC11Admission
+            else PreparedSavedC11Admission.from_verified_admission(admission)
+        )
+        with target.prepared_i03() as prepared:
             runner.run(
                 executors=bindings(prepared), max_units=max_units,
             )
