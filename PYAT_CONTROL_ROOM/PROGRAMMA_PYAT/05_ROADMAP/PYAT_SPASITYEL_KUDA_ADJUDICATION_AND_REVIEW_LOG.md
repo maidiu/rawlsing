@@ -23,7 +23,7 @@ Statuses here are **working source-grade judgments**, not formal G4 enum transit
 | [KUDA-018](KUDA.md#kuda-018) | S07/S10 C12 | F6P typed partial/unidentified/revoked/mismatched consumer of real F6M calculation | RECOVERED_1267_AUTHOR_CI | IR-01,IR-07 |
 | [KUDA-019](KUDA.md#kuda-019) | S08/S09 C13 | P07 source-attested time and as-of selection; no exact selected_ref-to-R06 world release proved | CURRENT_FIRST_READER_AND_SCIENCE_HOLD | IR-04? |
 | [KUDA-026](KUDA.md#kuda-026) | S05/S09 C14/C15 | I01 cold saved progressive world to M2/B5; current S2-G and R107/R112 already own general constituents | CURRENT_COMPOSITION_EDGE_UNPROVEN | IR-05? |
-| [KUDA-028](KUDA.md#kuda-028) | S03 C05-C08 | W03/W04 regenerable compressed chunks, not selected canonical Parquet C11 release | NEKUDA_REFERENCE_ONLY_COST_TRIGGER | IR-02 conditional |
+| [KUDA-028](KUDA.md#kuda-028) | S03 C05-C08 | W03/W04 regenerable compressed chunks, not selected canonical Parquet C11 release | REFERENCE_ONLY_NO_IMPORT_UNTIL_MEASURED | IR-02 conditional |
 | [KUDA-059](KUDA.md#kuda-059) | S02/S03 C07/C11 | S1-D independent CURRENT resolver and resume already lives in selected pre553_issued_workload | PRESENT_SELECTED_SOURCE_STATIC | IR-02 |
 | [KUDA-060](KUDA.md#kuda-060) | S03-S05 C14/C15 | S2-F full durable typed empirical-result closure exists in selected #1247 | PRESENT_SELECTED_SOURCE_STATIC | IR-06 |
 | [KUDA-061](KUDA.md#kuda-061) | S05/S09 C14/C15 | S2-G M1/M2/B5 cold learned lifecycle exists in selected #1247 | PRESENT_SELECTED_SOURCE_STATIC | IR-06 |
