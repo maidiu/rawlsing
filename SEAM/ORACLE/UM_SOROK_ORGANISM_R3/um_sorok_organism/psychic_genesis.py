@@ -144,6 +144,8 @@ def possible_contrast_end(actor,experience,event_ref):
     # supply an unseen caregiver, unattained bodily benefit, or invented act.
     licensed=[{
         "mode":"EXPERIMENT_WITH_OWN_PRIOR_OPERATION",
+        "candidate_ref":stable_id("genetic_end_reading",{
+            "actor":actor["id"],"later":cur["id"],"mode":"OWN_ACT"}),
         "object":hypothesized_end,
         "means":means,
         "addressed_party_ref":None,
@@ -164,6 +166,9 @@ def possible_contrast_end(actor,experience,event_ref):
                     "performed_care","performed_feed","performed_signal"))
             licensed.append({
                 "mode":"TRY_ADDRESSING_PERSONALLY_PERCEIVED_RESPONDER",
+                "candidate_ref":stable_id("genetic_end_reading",{
+                    "actor":actor["id"],"later":cur["id"],
+                    "mode":"RESPONDER","other":other}),
                 "object":"try signaling toward a previously sensed "+
                          "responder when seeking "+relieved_axis,
                 "means":["SIGNAL"],"addressed_party_ref":other,
@@ -183,6 +188,7 @@ def possible_contrast_end(actor,experience,event_ref):
         "possible_object":hypothesized_end,
         "licensed_end_constructions":licensed,
         "chosen_end_mode":licensed[0]["mode"],
+        "chosen_end_candidate_ref":licensed[0]["candidate_ref"],
         "relieved_bodily_axis":relieved_axis,
         "genesis_family":"SENSED_INTERRUPTION_THEN_RELIEF",
         "possible_means":means,
@@ -214,12 +220,17 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
             or any(type(x) is not str or x not in expected["cue_terms"]
                    for x in cue_terms)):
         raise ValueError("GENESIS_UNRECEIVED_SIGN_GENERALIZATION")
-    mode=proposal.get("chosen_end_mode",expected["chosen_end_mode"])
+    selected_ref=proposal.get("chosen_end_candidate_ref",
+                              expected["chosen_end_candidate_ref"])
     licensed=[v for v in expected["licensed_end_constructions"]
-              if v["mode"]==mode]
+              if v["candidate_ref"]==selected_ref]
     if len(licensed)!=1:
         raise ValueError("GENESIS_UNLICENSED_QUALITATIVE_END")
     selected=licensed[0]
+    mode=selected["mode"]
+    if (proposal.get("chosen_end_mode",mode)!=mode or
+            type(selected_ref) is not str):
+        raise ValueError("GENESIS_END_MODE_CONFLICT")
     meaning=proposal.get("possible_object")
     # Reconstruct a contextual operation from lived sources, rather than
     # granting an arbitrary LLM-authored goal. A model can choose between
@@ -244,6 +255,7 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
         "id":ident,"genesis_witness_ref":expected["genesis_witness_ref"],
         "possible_object":meaning,
         "genetic_end_mode":mode,
+        "genetic_end_candidate_ref":selected_ref,
         "addressed_party_ref":selected["addressed_party_ref"],
         "source_responding_sign_ref":selected["source_received_sign_ref"],
         "genesis_family":expected["genesis_family"],
