@@ -92,7 +92,7 @@ def test_v1_discovery_is_unchanged_and_v2_jobs_come_only_from_original_eligible_
 
 
 def test_v2_valid_issued_query_runs_actual_saved_batch_without_source_reopen(
-    tmp_path,
+    tmp_path, monkeypatch,
 ):
     _, _, admission, v1, _, _ = s1e._full(
         tmp_path / "r03-v2-batch",
@@ -102,9 +102,21 @@ def test_v2_valid_issued_query_runs_actual_saved_batch_without_source_reopen(
     assert workload.requests
     admission = _v2_admission(admission, workload.catalog)
     manifest, predicates = s1e._issued_manifest(workload, admission)
-    results = s1e.execute_saved_batch(
+    from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+    from rawlsing_next.pre553_saved_workload_integration import execute_saved_batch
+    rebuilds = []
+    original_build = DirectEstateI03Session._build
+
+    def counted_build(self):
+        rebuilds.append(1)
+        return original_build(self)
+
+    monkeypatch.setattr(DirectEstateI03Session, "_build", counted_build)
+    results = execute_saved_batch(
         admission, manifest=manifest, predicate_ref_by_query=predicates,
+        reuse_prepared_session=True,
     )
+    assert len(rebuilds) == 1, "one R03 v2 saved Batch must share one postings build"
     assert len(results.receipts) == len(manifest.units)
     assert all(x.state == "COMPLETED" for x in results.receipts)
     assert any(x.job_kind == "QUERY" for x in manifest.units)
