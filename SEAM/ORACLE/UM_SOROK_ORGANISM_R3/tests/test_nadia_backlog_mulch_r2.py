@@ -219,6 +219,7 @@ class ParticularResponderBecomesNewProspectiveAddress(unittest.TestCase):
                          respondent["candidate_ref"])
         self.assertEqual(n["projects"],[])
         world=blank_world();world["positions"]["nadia"]="home"
+        world["clock"]=2
         view=materialize(n,world)
         near=AccessibleEncounter(actor="nadia",world_clock=2,
             location="home",cues=[{"kind":"coactor_present",
