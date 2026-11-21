@@ -57,7 +57,7 @@ try:
 
  # R20–R21 structure is checked, but source/need judgments are NOT mechanically certified.
  r20=l.split("## 8. R20 — economical seven-part",1)[1].split("## 9. R21 — remaining",1)[0]
- r21=l.split("## 9. R21 — remaining",1)[1]
+ r21=l.split("## 9. R21 — remaining",1)[1].split("## 10. R22 — DEEP TRANCHE 1:",1)[0]
  family_entries=re.findall(r"^\| \*\*([A-J]) — [^\n]*?\*\* \(([^)]+)\) \|",r20,re.M)
  family_ids={}
  for family,source_ids in family_entries:
