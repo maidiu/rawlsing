@@ -55,7 +55,7 @@ class PreEncounterHistoryR21(unittest.TestCase):
         self.assertGreaterEqual(receipt['autonomous_beats_committed'], 1)
         self.assertTrue(receipt['no_user_action_or_other_person_consent_injected'])
         self.assertFalse(receipt['user_visible_childhood_scenes'])
-        self.assertFalse(receipt['public_first_encounter_not_issued'] is False)
+        self.assertTrue(receipt['public_first_encounter_not_issued'])
         self.assertEqual(receipt['continuing_actor_role_not_reclassified'],
                          'child')
         self.assertTrue(all(args == () and kwargs == {}
@@ -65,6 +65,52 @@ class PreEncounterHistoryR21(unittest.TestCase):
         self.assertNotIn('self_model', receipt)
         self.assertNotIn('fictional_seed', str(receipt))
         self.assertTrue(self.rt.verify()['valid'])
+
+    def test_real_registered_care_period_conditions_child_without_diary(self):
+        initial = self.rt.snapshot('nadia')
+        declared = self.rt.register_historical_routine_source({
+            'kind':'QUALIFIED_REPRODUCTIVE_CARE',
+            'actor':'mother','location':'home',
+            'start_clock':0,'end_clock':20,
+            'max_hours_per_active_day':4,
+            'description':'sourcefree nine-day bounded period'})
+        receipt = self.rt.construct_pre_encounter_history(
+            'nadia',9,horizon_days=9,autonomous_beats=0,
+            period_processes=[{
+                'kind':'QUALIFIED_REPRODUCTIVE_CARE',
+                'actor':'mother','recipient':'nadia','location':'home',
+                'source_ref':declared['source_ref'],
+                'hours_per_active_day':4,
+                'provisional_exposure_fraction':.8}])
+        after = self.rt.snapshot('nadia')
+        self.assertEqual(receipt['status'],'HISTORICAL_AGE_CUT_REACHED')
+        self.assertEqual(receipt['autonomous_beats_committed'],0)
+        self.assertEqual(len(after['undergone_care_periods']),1)
+        self.assertGreater(after['body']['comfort'],
+                           initial['body']['comfort'])
+        self.assertEqual(after['co_regulation_orientations'],[])
+        self.assertEqual(receipt['historical_receipts'][0]
+                         ['qualified_period_source_refs'],
+                         [declared['source_ref']])
+        self.assertTrue(self.rt.verify()['valid'])
+        self.assertNotIn('performed_care_speech',str(receipt))
+        self.assertNotIn('actor_gratitude',str(receipt))
+
+    def test_unregistered_period_claim_cannot_invent_care_or_ledger_event(self):
+        original = self.rt.verify()['events']
+        before = self.rt.snapshot('nadia')
+        with self.assertRaisesRegex(
+                ValueError,'HISTORICAL_PROCESS_UNREGISTERED_SOURCE_ENVELOPE'):
+            self.rt.construct_pre_encounter_history(
+                'nadia',9,horizon_days=9,autonomous_beats=0,
+                period_processes=[{
+                    'kind':'QUALIFIED_REPRODUCTIVE_CARE',
+                    'actor':'mother','recipient':'nadia','location':'home',
+                    'source_ref':'fabricated_unregistered_care',
+                    'hours_per_active_day':3,
+                    'provisional_exposure_fraction':.5}])
+        self.assertEqual(self.rt.verify()['events'],original)
+        self.assertEqual(self.rt.snapshot('nadia'),before)
 
     def test_reopen_persists_actual_offscreen_history_without_private_render(self):
         receipt = self.rt.construct_pre_encounter_history(
@@ -146,6 +192,11 @@ class PreEncounterHistoryR21(unittest.TestCase):
                         'nadia', target, horizon_days=horizon,
                         autonomous_beats=beats,max_segments=segments)
                 self.assertEqual(self.rt.verify()['events'], original)
+        with self.assertRaisesRegex(
+                ValueError,'PRE_ENCOUNTER_INVALID_PERIOD_PROCESSES'):
+            self.rt.construct_pre_encounter_history(
+                'nadia',6,period_processes={'invented':'care'})
+        self.assertEqual(self.rt.verify()['events'],original)
         with self.assertRaises(TypeError):
             self.rt.construct_pre_encounter_history(
                 'nadia', 6, requested_action='SPEAK')
