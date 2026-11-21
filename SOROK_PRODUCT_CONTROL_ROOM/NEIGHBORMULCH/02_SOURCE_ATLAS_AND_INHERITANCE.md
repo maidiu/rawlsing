@@ -91,7 +91,7 @@ The order matters: **OATH + currentness → end-product/Mechanisms → single ca
 - [R23 operative relational transduction](https://github.com/maidiu/rawlsing/pull/1250) — COMMITTED_UNTESTED descendant; do not claim PASS
 - [R24 lived institutional contradiction](https://github.com/maidiu/rawlsing/pull/1251) — COMMITTED_UNTESTED descendant
 - [R25 recurrent work pre-cue psychology](https://github.com/maidiu/rawlsing/pull/1257) — COMMITTED_UNTESTED descendant
-- [Held R22 attempted encounter](https://github.com/maidiu/rawlsing/pull/1246) — R22 held elsewhere; do not infer from R21 PR it was inherited
+- [Held R22 situated-encounter aperture branch](https://github.com/maidiu/rawlsing/tree/a5d0d6b404bd0c03429c678cd148bb9dc403b33f/SEAM/ORACLE/UM_SOROK_ORGANISM_R3) — exact isolated experimental R22 SHA; NOT R23–R25 ancestry and NOT independently received; do not transplant thin co-presence over richer protected MIII sensory operations
 
 ## F. Functional conservation, contested variants, separate repair and upstream empirical limits
 
