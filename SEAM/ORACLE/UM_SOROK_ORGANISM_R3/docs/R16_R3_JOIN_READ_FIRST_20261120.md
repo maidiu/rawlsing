@@ -1,0 +1,54 @@
+# SORACLE R3 × REMONT R16 — one-source integration candidate
+
+**Date:** 2026-11-20 (Eastern). **Purpose:** preserve SORACLE's current developmental organism while explicitly inheriting REMONT's real engineering corrections, NOT restart independent archaeology. The local/remote executable readback remains a requirement, not assumed evidence.
+
+## Exact immutable entrances
+
+- SORACLE R3 source branch / PR #1228: `f3e6a793b87605b67668c02b40543a9ca3982e51`. Distinct earlier R2/R1/R19/R20 historical and psychiatric-development line retained by first merge parent.
+- REMONT R16 source branch / PR #1222: `7a8a18c153ee5a36e1c52eca15f4e5e8862296be`, inheriting R15 #1220 / R14 and preceding REMONT repairs. Retained as **second actual Git merge parent**; no R16 source history dropped.
+- Verified common Git merge base before join: `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400`. Different code owners diverged. New merge preserves **SORACLE's expanded psychological modules**, not a destructive wholesale replacement with the earlier R16 world.
+
+## File-level reconciliation
+
+The GitHub diff from the common ancestor showed 136 paths changed on each side and **14 overlapping paths**, all under `SEAM/ORACLE/UM_SOROK_ORGANISM_R3/`. Non-overlapping R16 source/test/proof artifacts have been grafted into the R3 tree (entire `REMONT/SOROK` tree plus R16-only `SEAM/ORACLE/.../` files). This includes all R16 historical test/results custody as preexisting source-specific receipts, not a new test run. For the 14 overlaps, retain SORACLE R3's developed module bodies and use source-aware explicit correction, not blind conflict resolution. THIS IS A STAGED CANDIDATE: remaining R16/P012 equivalences must be reconciled in executable tests, not declared merely from the two-parent ancestry.
+
+Changes deliberately ported to R3's core owners:
+
+1. `storage.py`: take the full compatible R16 ledger source blob (its public `ResearchLedger` API matches R3), preserving native SQLite atomic transactions, original R15 P018 auxiliary source seals/ownership, typed exact canonical actor/world snapshot failures, and the separate verification methods. This is a **sourcefree local integrity** improvement, never native issuer rights.
+2. `constitution.py`: preserve R3's newer pre-cue pressure, developmental motif closure and relational architecture, but sort its final qualified active-form set before materializing forms. This is the necessary R16 deterministic recruitment fix, adapted to R3's different closure rather than replacing it with the older R16 algorithm.
+3. `development.py`: preserve every R3 onward acquired genetic end, relational, caregiving, cultural and vocal developmental operator. Add an optional, issuer-bound current-trial gate to `admit`, refusing *any* same-event `TAKE_UP_POSSIBLE_END` and `REORGANIZE_PROJECT` when an actual actor-issued exploratory trial is active, irrespective of a different end ID. No current-trial event can be promoted into a durable end or altered project. R3's existing `RECORD_POSSIBLE_END_TRIAL` is NOT replaced or duplicated.
+4. `runtime.py`: supply the actually selected `actor_attempt.practical_selection.possible_end_trial` from the pre-event actor to the atomic developmental owner. Never infer a trial from post-event narrative or a researcher's requested operation. Observers and independent nontrial actions carry `None`.
+
+## Frozen tests and new joined first consumer
+
+- R16: original 280 tests at the R16 author's Python 3.13.5 exact source head are **historical evidence**, not a result of this joint tree. Import its whole sourcefree test suite and R16 four targeted tests.
+- SORACLE R3: Nadia-first new R3 tests previously authored but **never executed** on their then-head; preserve these and the earlier R2, R1, R20 other life tests.
+- NEW `tests/test_r3_r16_joined_first_consumer.py`: full runtime parent making artifact → actual public speech → Nadia independent self-selected inspection → acquired cultural practical orientation → R16 exact ledger verification → cold reopen source-anchored child history. Also verifies current-trial inability to mint another end or reorganize projects.
+- Both normal and optimized Python, pytest, independent reviewer, two-seed reproducibility and actual negative-source/P012 source-seal attacks must be run at the final joined SHA. Do not convert authored tests or earlier side-branch results into a green join.
+
+From the source root `SEAM/ORACLE/UM_SOROK_ORGANISM_R3`:
+```sh
+python -m compileall -q um_sorok_organism
+python -m unittest -v tests.test_r3_r16_joined_first_consumer
+python -m unittest -v tests.test_r16_r12_local_machine_reconcile
+python -m unittest -v tests.test_cultural_mediation_r3
+python -m unittest -v tests.test_social_vocal_development_r3
+python -m unittest discover -s tests -v
+python -O -m unittest discover -s tests -v
+python -m pytest -q
+python -m um_sorok_organism demo --db /tmp/soracle_remont_r16_r3_join.sqlite3
+```
+
+## Real remaining integration gaps
+
+**Overlap code not yet proven behaviorally equivalent**: `activity.py`, `parents.py`, `plans.py`, `prospective_horizon.py`, `psychodynamics.py`, `relational_metabolism.py`, `semantics.py`, `types.py`, `world.py`, and changed older test bodies. The R16 source ancestry is conserved, but those R16 old code versions did **not** overwrite R3's richer current ones. Their relevant R14/R15 expectations must pass the imported negative tests; if not, repair the affected latest owner, never replay an obsolete snapshot. R15's conservative P012 inhibitor conflict and R3's motif recruitment have different implementations; a pass/fail head-to-head is mandatory.
+
+**Provenance warning:** R16 `SOURCE_SHA256` historical source hashes refer to the ORIGINAL R16 standalone cut, not the new combined files. They are preserved as immutable reference evidence; new source digests need independent generation once a real executable runner is available.
+
+**Authenticity/epistemic distinction:** no PYAT original-survey binding, whole survey blind parent science or native source authorization was obtained by this merge. No real LLM sampled model was run. No native privacy/actor consent/right owner is superseded by R15 sourcefree source seals. No scientific proof of human psychology or full nonlinear life.
+
+**HQ_CURRENTNESS_HOLD:** This candidate does not have a verified incumbent SOROK HQ protected writer lease or native receiving decision. The protected PROGRAMMA SOROK front door and paired `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md` / `.json` are intentionally untouched. Competent HQ/REMONT receiving must incorporate the exact final join SHA, command exits, independent reviewer and limitations into the EXISTING paired progress, and then decide protected PRE-MAIN receiving. Never invent that outcome.
+
+**Next construction, after execution/repair:** one genuinely *longitudinal* Nadia-life scenario with actual world and independent Others, counterfactual differences in acquired ends/cultural practices/relationships, repeated cold reopening and no scripted adult destination. Protect user's Nadia-first priority from another detour into detached labor/institutional submodules.
+
+**Disposition:** `PROVISIONAL_EXPLICIT_TWO_PARENT_CODE_JOIN__PYTHON_EXECUTION_HELD__P012_RECONCILIATION_HELD__HQ_CURRENTNESS_HOLD`.

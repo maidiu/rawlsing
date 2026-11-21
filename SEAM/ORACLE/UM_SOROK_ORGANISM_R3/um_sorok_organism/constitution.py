@@ -277,7 +277,9 @@ def compose(constitution,access,limit=50):
     else:
         raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
     inhibited.extend(sorted(vetoed))
-    active={fid:copy(forms[fid]) for fid in closure(seed|motif_seeds,vetoed)}
+    # REMONT R16: unordered set iteration must not choose actor-facing
+    # recruitment order, candidate bases or replay-dependent ledger hashes.
+    active={fid:copy(forms[fid]) for fid in sorted(closure(seed|motif_seeds,vetoed))}
     relational=derive_relational_metabolism(constitution,access,active,vetoed)
     for fid,route in sorted(motif_routes.items()):
         if fid in active and fid not in closure(seed,vetoed):

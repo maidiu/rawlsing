@@ -1,0 +1,75 @@
+test_r13_absent_tags_keeps_documented_default (test_remontathon_r13.CueInputR13.test_r13_absent_tags_keeps_documented_default) ... ok
+test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind (test_remontathon_r13.CueInputR13.test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind) ... FAIL
+test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag (test_remontathon_r13.CueInputR13.test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag) ... FAIL
+test_r13_false_tag_input_must_not_silently_become_cue_of_kind (test_remontathon_r13.CueInputR13.test_r13_false_tag_input_must_not_silently_become_cue_of_kind) ... FAIL
+test_r13_current_trial_witness_with_no_durable_project_change_still_admitted (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_current_trial_witness_with_no_durable_project_change_still_admitted) ... ok
+test_r13_distinct_nontrial_event_can_still_reorganize_existing_project (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_distinct_nontrial_event_can_still_reorganize_existing_project) ... ok
+test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event) ... FAIL
+test_r13_same_trial_cannot_enable_dormant_project_through_status (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_same_trial_cannot_enable_dormant_project_through_status) ... FAIL
+test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive) ... FAIL
+
+======================================================================
+FAIL: test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind (test_remontathon_r13.CueInputR13.test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 111, in test_r13_empty_string_tag_input_must_not_silently_become_cue_of_kind
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag (test_remontathon_r13.CueInputR13.test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 117, in test_r13_explicit_empty_tags_stay_empty_without_inventing_kind_tag
+    self.assertEqual(result['cue']['tags'],[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['signal'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'signal'
+
+- ['signal']
++ []
+
+======================================================================
+FAIL: test_r13_false_tag_input_must_not_silently_become_cue_of_kind (test_remontathon_r13.CueInputR13.test_r13_false_tag_input_must_not_silently_become_cue_of_kind)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 105, in test_r13_false_tag_input_must_not_silently_become_cue_of_kind
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 88, in test_r13_runtime_trial_reorganization_rejected_without_partial_ledger_event
+    with self.assertRaisesRegex(InvalidDevelopment,'CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_r13_same_trial_cannot_enable_dormant_project_through_status (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_same_trial_cannot_enable_dormant_project_through_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 45, in test_r13_same_trial_cannot_enable_dormant_project_through_status
+    with self.assertRaisesRegex(InvalidDevelopment,'CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive (test_remontathon_r13.TrialProjectReorganizationR13.test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r13/tests/test_remontathon_r13.py", line 36, in test_r13_same_trial_cannot_relabel_existing_project_as_new_enduring_motive
+    with self.assertRaisesRegex(InvalidDevelopment,'CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.047s
+
+FAILED (failures=6)

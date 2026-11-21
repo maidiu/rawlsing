@@ -49,3 +49,38 @@ Parent 52fcbe5f36952fe671e9c941c85896e5f6149078. R6 newly reproduced SR-P053 (ca
 ## R7 REMONTATHON — independently reproduced typed-world and coactor first faults
 
 After verified R6 parent `a14003df55ed63c9257a8f9bbb2a3501d36bf7dc`, six production identities SR-P058 through SR-P063 were reproduced with fourteen negative failures and patched at existing sourcefree world, psychodynamics, constitution and development owners. They close permissions that matched actor IDs by substring, phantom Other response to an impossible initiating act, wrong-target coactor consent, nonfinite target-body laundering by care, string scope false admission, and malformed cue/link/project source effects. R7 adds 22 tests; complete **153/153 PASS normal + 153/153 PASS optimized**, cold ZIP extraction rerun. Full receipts at `REPAIRS/REMONTATHON_R3_R7_20261119/`. Current total 63 P: 10 open/6 partial/47 author-repaired review-pending, T0/E6. No native or protected promotion.
+
+
+## R8 continuing sourcefree REMONT — 171 normal+optimized tests
+
+From PR #1171 R7 source `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400`, R8 reproduced and repaired SR-P064–069, including actor-A coverage wrongly rewriting actor-B, nontransactional scoped period change, string cue fragmentation, unknown-modality threshold bypass, string-bool project suppression, and false-positive period scope formation. Test-first RED: 14 FAIL + 1 ERROR of 18 targeted tests; combined green 171/171 under normal and optimized Python, fresh cold extraction. New code/test bytes pinned in `REPAIRS/REMONTATHON_R3_R8_20261119/`. Production ledger 69 P (10 OPEN, 6 PARTIAL, 53 AUTHOR-REPAIRED REVIEW PENDING), T0, E6. Protected and native boundaries unchanged.
+
+
+## REMONTATHON R3 R9 — bounded correction of two OPEN defects; 177 normal/optimized PASS
+
+At immutable R8 head `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764`, P011's one-SING automatic enduring project and P017's inaccessible temporal duration through runtime were reproduced RED and fixed in existing sourcefree owners, with actual limits documented. Six added tests; 2 FAIL and 2 ERROR on frozen R8, full 177/177 normal/optimized green afterward. P011/P017 move **OPEN to PARTIAL**, not fully CLOSED or independently accepted. Counts: 69 P = 8 OPEN/8 PARTIAL/53 author-repaired pending independent review, T0, E6. Probes P022/P023 remain PROPOSED_NOT_EXECUTED; native OpenCode runner and G5 have not been invoked. See R9 source/test identities and evidence receipt.
+
+
+## R12 sourcefree review-followon — 246 green, three R11 review defects repaired but not independently received
+
+R11 #1190 `39f6972089858ee968e73b2e731005c71a8055dd` separate independent reviewer found P070/P071 absent, `ADD_PROJECT` same-event motive laundering, and stale 69-ID ledger. R12 author repair inherits original current #1171 `c0b7cd0589a7aa0ca5bd9f53c42f07ab03933ef7` exactly, preserving 71 IDs (53 scoped first-fault reviewed; 8 open; 8 partial; 2 P070/P071 author repair pending), adds no new P identities, and restores sourcefree P070/P071 integrity to the joined organism. Adversarial RED 5 subcases; R12 normal/-O/pytest 246 PASS, 14 pytest subtests, cold chain valid. Original 6 E holds and all native/protected rights remain. Distinct independent R12 rereview + Python 3.11 R12 run outstanding.
+
+
+## REMONT R13 — 255 test repair cut
+
+At frozen R12 `9db0e6f64bf568409e638ff2215af8b8a414487f`, P072 same-event REORGANIZE_PROJECT mature-motive laundering and P073 falsey cue-tag coercion reproduced with six pre-fix failures. Both repaired in first owner, nine new regressions; 255 PASS normal/optimized/pytest (+14 subtests), freshly extracted archive reexecuted. All original 71 P records conserved with #1171 R1198 independent followup and R12 separate receipt. 73 P: 53 scoped reviewed,8 open,8 partial,4 author-tested review pending; T0/E6, no protected or native claim.
+
+
+## REMONTATHON R14 — P012/P004 first-owner partial repairs, 265 executable tests
+
+Exact R13 source `3b9b58b75bdceec901c3ba7aaa18738ea4989923` tested RED 7/10 new cases. R14 `constitution.compose` jointly closes relational motifs and acquired link recruitment/inhibition; `activity.record_activity_afterlife` rejects project-history attribution contradicted by explicit actor-policy purpose selection. 265 normal/-O/pytest pass (+14 subtests) and cold package recheck. 73 P statuses unchanged (53 scoped independent reviews, 8 OPEN, 8 PARTIAL, 4 author repair pending); original #1171 R12-R2 P072 followup metadata conserved. P019/P022 remain SORACLE. No native protected, G5 or scientific issuance.
+
+
+## R15 P012/P018 sourcefree truth-bound repairs — 276 tests
+
+Frozen R14 f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0: six initial failures in nine new first-fault tests; two more source-identity methods failed pre-repair. Fixes in existing constitution recruitment and storage source custody owners. 276 PASS normal/optimized/pytest (+22 subtests), fresh archive reexecution and cold 9-event verify. Both original statuses remain PARTIAL. Existing 73 IDs and 53 scoped reviews unchanged; P019/P022 remain SORACLE; P009 native disclosure held. Distinct independent receiving, Python 3.11 and protected law held.
+
+
+## R16 — carry selective local R12 corrections into current R15 line
+
+External #1199 exact `943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6` (248 Python 3.11.3 sourcefree PASS) reported typed snapshot errors, same-event trial guards and seed-stable active-form order. Already-present R13–R15 REORGANIZE_PROJECT guard was conserved; *missing* typed persisted non-dict snapshot rejection, deterministic final joint-recruitment order, and current-trial cross-end TAKE_UP rejection were reproduced as RED on frozen R15 #1220 `6075792420e1d87b30036ebe6f352815783e47c2`. Bounded R16 first owner repairs passed **280/280 normal/-O/pytest, plus32 subtests**, cold extracted test suite and byte-identical two-seed demo. Existing 73 production identities and statuses unchanged, P012/P018 partial, P019/P022 SORACLE, T0/E6, protected and native receiving held.

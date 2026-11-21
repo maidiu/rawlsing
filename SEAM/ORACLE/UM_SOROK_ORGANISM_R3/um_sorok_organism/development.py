@@ -75,7 +75,7 @@ def validate_activity_priority(value):
     return value
 
 
-def admit(actor,experience,event_ref,candidates):
+def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
     """All-or-nothing psychic admission even for a multi-effect LLM proposal.
 
     Caller owns an actor object whose identity may be held elsewhere. Validate
@@ -83,6 +83,21 @@ def admit(actor,experience,event_ref,candidates):
     operation succeeds. A later rejected effect cannot leave an earlier
     proposed memory, project, or relationship silently installed.
     """
+    # REMONT R16 joined to SORACLE R3: the actual operation's pre-world,
+    # actor-issued trial constrains what this same event can be used to
+    # install. R3 still owns the later typed RECORD_POSSIBLE_END_TRIAL;
+    # copying R16's recorder here would duplicate its historical event.
+    if issued_trial is not None:
+        if type(issued_trial) is not dict or issued_trial.get('actor')!=actor.get('id'):
+            raise InvalidDevelopment('CURRENT_TRIAL_ISSUER_ACTOR_MISMATCH')
+        if any(type(c) is dict and c.get('kind')=='REORGANIZE_PROJECT'
+               for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
+        # Even a DIFFERENT previously noticed possible end cannot become a
+        # durable motive during the event commissioned to trial this one.
+        if any(type(c) is dict and c.get('kind')=='TAKE_UP_POSSIBLE_END'
+               for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
     candidate_actor=copy(actor)
     result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
     actor.clear()

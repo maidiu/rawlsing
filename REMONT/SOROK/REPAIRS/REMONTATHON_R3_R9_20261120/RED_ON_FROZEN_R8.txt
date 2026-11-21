@@ -1,0 +1,49 @@
+test_first_song_records_practice_without_creating_project_in_real_runtime (test_remontathon_r9.P011SingleEpisodeNotEnd.test_first_song_records_practice_without_creating_project_in_real_runtime) ... FAIL
+test_separately_owner_admitted_project_remains_possible (test_remontathon_r9.P011SingleEpisodeNotEnd.test_separately_owner_admitted_project_remains_possible) ... ok
+test_single_successful_song_cannot_heuristically_mint_continuing_project (test_remontathon_r9.P011SingleEpisodeNotEnd.test_single_successful_song_cannot_heuristically_mint_continuing_project) ... FAIL
+test_default_cue_still_expires_and_infinite_lifetime_is_not_assumed (test_remontathon_r9_p017.R9PersistentSignals.test_default_cue_still_expires_and_infinite_lifetime_is_not_assumed) ... ok
+test_explicit_lasting_sign_remains_accessible_until_its_recorded_end (test_remontathon_r9_p017.R9PersistentSignals.test_explicit_lasting_sign_remains_accessible_until_its_recorded_end) ... ERROR
+test_invalid_duration_does_not_append_life_or_world_event (test_remontathon_r9_p017.R9PersistentSignals.test_invalid_duration_does_not_append_life_or_world_event) ... ERROR
+
+======================================================================
+ERROR: test_explicit_lasting_sign_remains_accessible_until_its_recorded_end (test_remontathon_r9_p017.R9PersistentSignals.test_explicit_lasting_sign_remains_accessible_until_its_recorded_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r9_frozen/tests/test_remontathon_r9_p017.py", line 12, in test_explicit_lasting_sign_remains_accessible_until_its_recorded_end
+    row=rt.cue(kind='ringing_bell',tags=['bell','rhythm'],
+               location='home',lasting_ticks=2)
+TypeError: ConstitutiveRuntime.cue() got an unexpected keyword argument 'lasting_ticks'
+
+======================================================================
+ERROR: test_invalid_duration_does_not_append_life_or_world_event (test_remontathon_r9_p017.R9PersistentSignals.test_invalid_duration_does_not_append_life_or_world_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r9_frozen/tests/test_remontathon_r9_p017.py", line 44, in test_invalid_duration_does_not_append_life_or_world_event
+    rt.cue(kind='bell',tags=['bell'],lasting_ticks=invalid)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ConstitutiveRuntime.cue() got an unexpected keyword argument 'lasting_ticks'
+
+======================================================================
+FAIL: test_first_song_records_practice_without_creating_project_in_real_runtime (test_remontathon_r9.P011SingleEpisodeNotEnd.test_first_song_records_practice_without_creating_project_in_real_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r9_frozen/tests/test_remontathon_r9.py", line 40, in test_first_song_records_practice_without_creating_project_in_real_runtime
+    self.assertFalse(any('rhythm' in p.get('object','') for p in person['projects']))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_single_successful_song_cannot_heuristically_mint_continuing_project (test_remontathon_r9.P011SingleEpisodeNotEnd.test_single_successful_song_cannot_heuristically_mint_continuing_project)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r9_frozen/tests/test_remontathon_r9.py", line 28, in test_single_successful_song_cannot_heuristically_mint_continuing_project
+    self.assertFalse(any(x['kind']=='ADD_PROJECT' for x in row['candidates']),
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'one technically performed song cannot prove an enduring project')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : one technically performed song cannot prove an enduring project
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.040s
+
+FAILED (failures=2, errors=2)

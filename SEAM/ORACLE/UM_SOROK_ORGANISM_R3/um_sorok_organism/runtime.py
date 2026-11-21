@@ -728,6 +728,7 @@ class ConstitutiveRuntime:
                     'objective_event_ref':objective_ref},
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental_candidates=copy(proposal['candidates'])
+            issued_trial=None
             if personally_done and actor_attempt is not None:
                 issued_trial=actor_attempt.practical_selection.get('possible_end_trial')
                 if issued_trial:
@@ -739,7 +740,8 @@ class ConstitutiveRuntime:
                         'trial':copy(issued_trial),
                     })
             developmental[aid]=admit(actors[aid],experience,objective_ref,
-                                    developmental_candidates)
+                                    developmental_candidates,
+                                    issued_trial=issued_trial)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately

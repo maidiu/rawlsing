@@ -1,0 +1,276 @@
+======================================================================
+ERROR: test_actual_nadia_development_distinguishes_first_and_later_song (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_actual_nadia_development_distinguishes_first_and_later_song)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 192, in test_actual_nadia_development_distinguishes_first_and_later_song
+    self.assertTrue(any(e['status']=='POSSIBLE_NOT_ACQUIRED_MOTIVE' for e in first['possible_ends']))
+                                                                             ~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'possible_ends'
+
+======================================================================
+ERROR: test_explicitly_multiple_projects_can_both_be_undertaken_without_pooling (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_explicitly_multiple_projects_can_both_be_undertaken_without_pooling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 77, in test_explicitly_multiple_projects_can_both_be_undertaken_without_pooling
+    self.rt.step('mother');a=self.private_actor()
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 134, in step
+    principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 93, in _actor_plan
+    proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
+        'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
+        'requesting_actor':requesting_actor,'requesting_action':requesting_action})
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 160, in proposal
+    out=self.provider.propose(task,packet)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 17, in propose
+    response=self.fn(task,copy(packet))
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 71, in callback
+    selected=[c['project_id'] for c in option['project_courses']]
+                                       ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'project_courses'
+
+======================================================================
+ERROR: test_external_action_injection_does_not_assign_a_project (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_external_action_injection_does_not_assign_a_project)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 101, in test_external_action_injection_does_not_assign_a_project
+    self.assertEqual(self.rt.snapshot('mother')['evidence_paths'][-1]['purpose_status'],
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'evidence_paths'
+
+======================================================================
+ERROR: test_heuristic_must_choose_single_explicit_course (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_heuristic_must_choose_single_explicit_course)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 106, in test_heuristic_must_choose_single_explicit_course
+    self.assertEqual(attempt.purpose_selection['status'],'ACTOR_POLICY_SELECTED_PROJECT_COURSE')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Attempt' object has no attribute 'purpose_selection'
+
+======================================================================
+ERROR: test_later_experience_can_take_up_possible_end_as_distinct_end (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_later_experience_can_take_up_possible_end_as_distinct_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 127, in test_later_experience_can_take_up_possible_end_as_distinct_end
+    a=adult('mother','Mother');admit(a,experience(),'objective:first_song',[{
+                               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':'world:perceived_song',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'possible_object':'continue rhythms with another','possible_means':['SING','PRACTICE'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'cue_terms':['rhythm']}]);ref=a['possible_ends'][0]['id']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 47, in admit
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 67, in _admit_in_place
+    if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+======================================================================
+ERROR: test_later_takeup_cannot_cite_an_unreceived_cue (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_later_takeup_cannot_cite_an_unreceived_cue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 141, in test_later_takeup_cannot_cite_an_unreceived_cue
+    a=adult('mother','Mother');admit(a,experience(),'objective:one',[{
+                               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':'world:perceived_song',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'possible_object':'pursue shared rhythm','possible_means':['SING'],'cue_terms':['sing']}]);before=copy(a)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 47, in admit
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 67, in _admit_in_place
+    if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+======================================================================
+ERROR: test_legacy_explicit_multi_project_call_stays_distinct_from_auto_pool (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_legacy_explicit_multi_project_call_stays_distinct_from_auto_pool)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 231, in test_legacy_explicit_multi_project_call_stays_distinct_from_auto_pool
+    self.assertTrue(all(h['intent_attribution']=='EXPLICIT_LEGACY_PROJECT_BASIS_ASSERTION' for h in histories))
+                    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 231, in <genexpr>
+    self.assertTrue(all(h['intent_attribution']=='EXPLICIT_LEGACY_PROJECT_BASIS_ASSERTION' for h in histories))
+                        ~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'intent_attribution'
+
+======================================================================
+ERROR: test_new_undertaking_may_not_mint_an_unavailable_operation (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_new_undertaking_may_not_mint_an_unavailable_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 181, in test_new_undertaking_may_not_mint_an_unavailable_operation
+    a=adult('mother','Mother');admit(a,experience(),'objective:first',[{
+                               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':'world:perceived_song',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'possible_object':'try melody','possible_means':['SING']}]);old=copy(a)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 47, in admit
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 67, in _admit_in_place
+    if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+======================================================================
+ERROR: test_possible_end_is_not_immediate_project_or_original_intention (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_possible_end_is_not_immediate_project_or_original_intention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 119, in test_possible_end_is_not_immediate_project_or_original_intention
+    r=admit(a,experience(),'objective:first_song',[{'kind':'NOTICE_POSSIBLE_END',
+        'perceived_cue_ref':'world:perceived_song','possible_object':'continue rhythms with another',
+        'possible_means':['SING','PRACTICE'],'cue_terms':['sing','rhythm']}])
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 47, in admit
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 67, in _admit_in_place
+    if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+======================================================================
+ERROR: test_takeup_persists_actual_later_sign_without_motive_certainty (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_takeup_persists_actual_later_sign_without_motive_certainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 150, in test_takeup_persists_actual_later_sign_without_motive_certainty
+    a=adult('mother','Mother');admit(a,experience(),'objective:one',[{
+                               ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':'world:perceived_song',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'possible_object':'explore rhythm','possible_means':['SING'],'cue_terms':['rhythm']}])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 47, in admit
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/development.py", line 67, in _admit_in_place
+    if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+======================================================================
+ERROR: test_two_available_project_courses_do_not_both_become_attempts (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_two_available_project_courses_do_not_both_become_attempts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 58, in test_two_available_project_courses_do_not_both_become_attempts
+    self.assertEqual({c['object'] for c in sing['project_courses']},
+                                           ~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'project_courses'
+
+======================================================================
+ERROR: test_two_composed_projects_same_object_stay_separate_by_project_origin (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_two_composed_projects_same_object_stay_separate_by_project_origin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 205, in test_two_composed_projects_same_object_stay_separate_by_project_origin
+    self.assertEqual({p.project_ref for p in plans},{'first','second'})
+                      ^^^^^^^^^^^^^
+AttributeError: 'ComposedActivity' object has no attribute 'project_ref'
+
+======================================================================
+ERROR: test_unobserved_interval_does_not_fake_same_signal_as_current (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_unobserved_interval_does_not_fake_same_signal_as_current)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 223, in test_unobserved_interval_does_not_fake_same_signal_as_current
+    self.assertTrue(self.rt.snapshot('nadia')['evidence_paths'])
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'evidence_paths'
+
+======================================================================
+FAIL: test_first_new_end_and_actual_signal_path_are_relevant_without_being_motives (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_first_new_end_and_actual_signal_path_are_relevant_without_being_motives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 211, in test_first_new_end_and_actual_signal_path_are_relevant_without_being_motives
+    self.assertIn('HISTORICALLY_NOTICED_POSSIBLE_END',kinds)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'HISTORICALLY_NOTICED_POSSIBLE_END' not found in {'PRACTICE'}
+
+======================================================================
+FAIL: test_hidden_or_invented_cue_cannot_justify_possible_end (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_hidden_or_invented_cue_cannot_justify_possible_end)
+----------------------------------------------------------------------
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 175, in test_hidden_or_invented_cue_cannot_justify_possible_end
+    with self.assertRaisesRegex(InvalidDevelopment,'POSSIBLE_END_MUST_DERIVE_FROM_ACTOR_RECEIVED_SIGN'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "POSSIBLE_END_MUST_DERIVE_FROM_ACTOR_RECEIVED_SIGN" does not match "UNKNOWN_PSYCHIC_OPERATION"
+
+======================================================================
+FAIL: test_no_model_project_choice_means_unattributed_exploration (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_no_model_project_choice_means_unattributed_exploration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 84, in test_no_model_project_choice_means_unattributed_exploration
+    self.provider(include_purpose=False);self.rt.step('mother');a=self.private_actor()
+                                         ~~~~~~~~~~~~^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 134, in step
+    principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 93, in _actor_plan
+    proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
+        'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
+        'requesting_actor':requesting_actor,'requesting_action':requesting_action})
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 160, in proposal
+    out=self.provider.propose(task,packet)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 17, in propose
+    response=self.fn(task,copy(packet))
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 45, in callback
+    self.assertEqual(len(projects),2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_same_event_cannot_retroactively_become_own_purpose (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_same_event_cannot_retroactively_become_own_purpose)
+----------------------------------------------------------------------
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 169, in test_same_event_cannot_retroactively_become_own_purpose
+    with self.assertRaisesRegex(InvalidDevelopment,'POSSIBLE_END_CANNOT_RETROACTIVELY_BECOME_INTENT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "POSSIBLE_END_CANNOT_RETROACTIVELY_BECOME_INTENT" does not match "UNKNOWN_PSYCHIC_OPERATION"
+
+======================================================================
+FAIL: test_selected_purpose_remains_private_to_analytic_model_not_renderer (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_selected_purpose_remains_private_to_analytic_model_not_renderer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 110, in test_selected_purpose_remains_private_to_analytic_model_not_renderer
+    packets=[];self.provider(record=packets);self.rt.step('mother')
+                                             ~~~~~~~~~~~~^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 134, in step
+    principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/runtime.py", line 93, in _actor_plan
+    proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role']},
+        'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},'situated':situated,'options':options,
+        'requesting_actor':requesting_actor,'requesting_action':requesting_action})
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 160, in proposal
+    out=self.provider.propose(task,packet)
+  File "/mnt/data/sorok_r10_red_r9/um_sorok_organism/semantics.py", line 17, in propose
+    response=self.fn(task,copy(packet))
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 45, in callback
+    self.assertEqual(len(projects),2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_wrong_project_ownership_cannot_be_forged_by_model (test_intent_and_emergent_ends_r6_integrated.PurposeAndGenesisR6Integrated.test_wrong_project_ownership_cannot_be_forged_by_model)
+----------------------------------------------------------------------
+ValueError: BAD_DEVELOPMENT_CANDIDATES
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_red_r9/tests/test_intent_and_emergent_ends_r6_integrated.py", line 94, in test_wrong_project_ownership_cannot_be_forged_by_model
+    with self.assertRaisesRegex(ValueError,'MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE" does not match "BAD_DEVELOPMENT_CANDIDATES"
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.128s
+
+FAILED (failures=6, errors=13)
