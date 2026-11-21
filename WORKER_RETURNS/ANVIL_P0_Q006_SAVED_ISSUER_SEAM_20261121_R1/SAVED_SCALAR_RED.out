@@ -1,0 +1,188 @@
+RED_P02 UNSUPPORTED_RESPONSE_TOPOLOGY
+RED_DETAIL query target topology 'SCALAR_SINGULAR' cannot collapse exact C11 carrier topology 'SCALAR'
+RED_DENOMINATOR 0
+F
+=================================== FAILURES ===================================
+______ test_persisted_defer_recorded_entry_reaches_actual_earliest_fault _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-1013/test_persisted_defer_recorded_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c83ad10>
+
+    def test_persisted_defer_recorded_entry_reaches_actual_earliest_fault(tmp_path, monkeypatch):
+        source, candidate, root, release, held, historical, universe = _defer_stream(
+            tmp_path, monkeypatch,
+        )
+        # Canonical fixture is persisted before the product import.
+        assert historical.decision_state == "DEFER"
+        assert historical.authority_ref in universe.authority_snapshot_refs
+        assert (release / "manifest.json").exists()
+        # The exact cut must expose the recorded entry classes.  The scratch
+        # corrected bfa cut restores only the exact earlier definitions.
+        from rawlsing_next.pre553_anvil_stream_recorded import (
+            HeldRecordedOperation, RecordedUniverseUse, RecordedResponseError,
+            build_recorded_operation,
+        )
+        from rawlsing_next.pre553_anvil_stream_issuance import issue_and_execute_stream_i03
+        from rawlsing_next.pre553_anvil_stream_native_i03 import execute_anvil_stream_i03
+        from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+    
+        codes = ("1", "2", "3", "4", "97", "98", "99")
+        interpretation = (
+            ("1", "SUBSTANTIVE_RESPONSE"), ("2", "SUBSTANTIVE_RESPONSE"),
+            ("3", "SUBSTANTIVE_RESPONSE"), ("4", "SUBSTANTIVE_RESPONSE"),
+            ("97", "SOURCE_SPECIFIC_SPECIAL"), ("98", "DK"), ("99", "REFUSAL"),
+        )
+        scope = "Q103_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY"
+        qref = source["qrefs"]["Y"]
+        # Exact stream roots from the fixture source and universe.
+        stream_roots = {
+            "source": held.roots["source"], "release": held.roots["release"],
+            "universe": universe.ref.key, "replay": held.roots["replay"],
+        }
+        owner_sha = sha256(b"q006-sourcefree-fixture-owner").hexdigest()
+        def clone_snapshot(base, *, state, scope_envelope, kind, families, label):
+            fields = dict(base.semantic_fields)
+            fields.update({
+                "authority_id": "Q006-FIXTURE-" + label + "-" + state,
+                "authority_version": "1.0.0",
+                "authority_content_hash": semantic_hash({
+                    "state": state, "scope": scope_envelope,
+                    "owner": owner_sha, "label": label,
+                }),
+                "authority_kind": kind,
+                "decision_state": state,
+                "governed_operations": ("Q103-OP-RECORDED-RESPONSE-ONLY",),
+                "governed_object_families": families,
+                "scope_envelope": scope_envelope,
+            })
+            return AuthoritySnapshot(
+                typed_state=state,
+                authority_snapshot_refs=base.authority_snapshot_refs,
+                dependency_refs=base.dependency_refs,
+                producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+                **fields,
+            )
+        canonical_scope = {
+            "host": "sourcefree-host",
+            "scope": scope,
+            "question_id": "Q103",
+            "questionnaire_sha256": "d" * 64,
+            "denominator": {"asked_risk": "HELD_ROUTING_UNKNOWN"},
+        }
+        positive_scope = {
+            "source_universe_refs": [universe.ref.as_dict()],
+            "scope": canonical_scope,
+            "release": stream_roots["release"],
+            "replay_root": stream_roots["replay"],
+            "source_sha256": stream_roots["source"],
+            "recorded_raw_codes": list(codes),
+        }
+        positive_source = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="SOURCE_SEMANTICS_TOPOLOGY",
+            families=("EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0"),
+            label="SOURCE",
+        )
+        positive_routing = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="ROUTING_RISK_SET", families=("RoutingEligibilityFact@1.0.0",),
+            label="ROUTING",
+        )
+        positive_query = clone_snapshot(
+            source["authorities"][0], state="ALLOW", scope_envelope=positive_scope,
+            kind="PREDICATE_GRAMMAR",
+            families=("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0",
+                      "EmpiricalFact@1.0.0"),
+            label="QUERY",
+        )
+        positive = positive_source
+        risk = ExactRef("RISK_SET", "recorded-response-fixture", semantic_hash({"codes": codes, "owner": owner_sha}))
+        rule = ExactRef("ROUTING_RULE", "recorded-only-fixture", semantic_hash({"scope": scope, "owner": owner_sha}))
+        member = ExactRef("MEMBER_SET", "recorded-members-fixture", semantic_hash({"codes": codes, "owner": owner_sha}))
+        measure = ExactRef("MEASURE_BASIS", "RAW", semantic_hash({"measure": "RAW"}))
+        semantics = ExactRef("RESPONSE_STATE_SEMANTICS", "recorded-only-fixture", semantic_hash({"interpretation": interpretation}))
+        domain = ExactRef("TARGET_DOMAIN", "q103-recorded-fixture", semantic_hash({"question": qref.as_dict(), "codes": codes}))
+        pred_replay = ExactRef("REPLAY_ROOT", "recorded-predicate-fixture", semantic_hash({"kind": "predicate"}))
+        query_replay = ExactRef("REPLAY_ROOT", "recorded-query-fixture", semantic_hash({"kind": "query"}))
+        transform = ExactRef("RECORDED_VALUE_TRANSFORM", "q103-fixture", semantic_hash({"transform": "R5_RAW_TO_RECORDED_OUTCOME"}))
+        operation = HeldRecordedOperation(
+            owner_decision_sha256=owner_sha,
+            source_id="SRC04",
+            source_root=stream_roots["source"],
+            release_root=stream_roots["release"],
+            universe_root=stream_roots["universe"],
+            replay_root=stream_roots["replay"],
+            question_ref=qref,
+            authorized_operation="Q103-OP-RECORDED-RESPONSE-ONLY",
+            allowed_raw_codes=codes,
+            interpretation=interpretation,
+            authorities=(positive_source, positive_routing, positive_query),
+            query_authority_ref=positive_query.authority_ref,
+            routing_authority_ref=positive_routing.authority_ref,
+            source_authority_ref=positive_source.authority_ref,
+            recorded_risk_ref=risk,
+            routing_rule_ref=rule,
+            member_set_replay_ref=member,
+            measure_basis_ref=measure,
+            response_state_semantics_ref=semantics,
+            target_domain_replay_ref=domain,
+            predicate_replay_root=pred_replay,
+            query_replay_root=query_replay,
+            transform_ref=transform,
+            approved_nonanswer_states=("UNRESOLVED",),
+        )
+        estate = VerifiedAnvilStreamEstate(
+            root, exact_path=release, independently_held=held,
+            current_authorizer=lambda _pins: True,
+        )
+        decision, plan, missing = build_recorded_operation(
+            estate=estate, operation=operation, question_ref=qref,
+        )
+        assert missing == {"system_missing": 1, "absent": 1}
+        use_allowed = {"value": True}
+        use = RecordedUniverseUse(
+            historical_snapshot=historical,
+            positive_snapshot=positive,
+            owner_decision_sha256=owner_sha,
+            operation_document_sha256=sha256(b"q006-fixture-operation").hexdigest(),
+            source_id="SRC04",
+            source_root=stream_roots["source"],
+            release_root=stream_roots["release"],
+            universe_root=stream_roots["universe"],
+            replay_root=stream_roots["replay"],
+            question_ref=qref,
+            query_ref=decision.query.ref,
+            predicate_ref=decision.predicate.ref,
+            operation="Q103-OP-RECORDED-RESPONSE-ONLY",
+            risk_ref=risk,
+            interpretation=interpretation,
+            scope=canonical_scope,
+            current_verifier=lambda: use_allowed["value"],
+        )
+        assert use.authorize(universe, decision.query, decision.predicate) == (
+            historical.authority_ref, positive_source.authority_ref,
+        )
+        plan = replace(plan, universe_use=use)
+        first = issue_and_execute_stream_i03(
+            estate=estate, decision=decision,
+            decision_verifier=lambda candidate: candidate == decision,
+            recorded_plan=plan,
+        )
+        second = issue_and_execute_stream_i03(
+            estate=estate, decision=decision,
+            decision_verifier=lambda candidate: candidate == decision,
+            recorded_plan=plan,
+        )
+        fact = first.facts[0]
+        cells = fact.target_topology.get("complete_cell_semantic_projection", ())
+        print("RED_P02", fact.target_topology.get("p02_failure_state"))
+        print("RED_DETAIL", fact.semantic_fields.get("execution_detail"))
+        print("RED_DENOMINATOR", fact.raw_denominator_support)
+>       assert fact.raw_denominator_support == 7
+E       AssertionError: assert 0 == 7
+E        +  where 0 = EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:7e3323f1ea6cc025796e25ef48d45bdda230fb56da3037124110a68e8d77f984', typed_state='UNRESOLVED').raw_denominator_support
+
+../test_scalar_red_detail.py:384: AssertionError
+=========================== short test summary info ============================
+FAILED ../test_scalar_red_detail.py::test_persisted_defer_recorded_entry_reaches_actual_earliest_fault
+1 failed in 0.92s

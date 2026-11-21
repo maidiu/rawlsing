@@ -230,6 +230,30 @@ def _decoded_raw_values(
     return result
 
 
+def _translate_saved_scalar_topology(fields: Any) -> Any:
+    """Translate only the exact, singular saved SCALAR carrier envelope.
+
+    The accepted saved writer records a one-occurrence scalar as SCALAR; the
+    q103 target is SCALAR_SINGULAR.  Only the kind and optional zero index may
+    be present.  Ordered, repeated, unknown, malformed, and non-singular
+    envelopes are returned unchanged so the strict native evaluator refuses
+    them; this is not a global topology alias.
+    """
+    if not isinstance(fields, Mapping) or fields.get("kind") != "SCALAR":
+        return fields
+    if set(fields) - {"kind", "index"}:
+        raise RecordedResponseError(
+            "saved scalar topology has unsupported multiplicity/order fields"
+        )
+    if fields.get("index") not in (None, 0):
+        raise RecordedResponseError(
+            "saved scalar topology is not the singular zero occurrence"
+        )
+    translated = dict(fields)
+    translated["kind"] = "SCALAR_SINGULAR"
+    return translated
+
+
 def build_recorded_operation(
     *,
     estate: VerifiedAnvilStreamEstate,
@@ -400,6 +424,9 @@ def build_recorded_operation(
             continue
         fields = dict(event.semantic_fields)
         fields.pop("typed_state", None)
+        fields["multiplicity_order_rank_fields"] = _translate_saved_scalar_topology(
+            fields.get("multiplicity_order_rank_fields")
+        )
         fields["raw_response_value"] = recorded_raw[respondent.ref.key]
         fields["response_state"] = "SUBSTANTIVE_RESPONSE"
         fields["canonical_response_value_if_authorized"] = None

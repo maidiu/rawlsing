@@ -28,3 +28,14 @@ wrong=dict(base); wrong['source_universe_refs']=[{'kind':u.kind,'object_id':u.ob
 run('wrong_hash',lambda: build(wrong).authorize(SimpleNamespace(ref=u,authority_snapshot_refs=(hist_ref,)),SimpleNamespace(ref=q,risk_set_ref=r),SimpleNamespace(ref=predref)))
 run('substituted_operation',lambda: build(base,opv='OTHER').authorize(SimpleNamespace(ref=u,authority_snapshot_refs=(hist_ref,)),SimpleNamespace(ref=q,risk_set_ref=r),SimpleNamespace(ref=predref)))
 run('missing_current',lambda: build(base,current=lambda:None).authorize(SimpleNamespace(ref=u,authority_snapshot_refs=(hist_ref,)),SimpleNamespace(ref=q,risk_set_ref=r),SimpleNamespace(ref=predref)))
+
+for label, mutate in (
+    ('wrong_individual_host', lambda x: x.__setitem__('host', 'other')),
+    ('wrong_individual_denominator', lambda x: x.__setitem__('denominator', {'asked_risk': 'DIFFERENT'})),
+    ('wrong_scope_shape', lambda x: x.pop('question_id')),
+):
+    expected_wrong = dict(expected)
+    mutate(expected_wrong)
+    env = dict(base)
+    env['scope'] = expected_wrong
+    run(label, lambda env=env: build(env).authorize(SimpleNamespace(ref=u,authority_snapshot_refs=(hist_ref,)),SimpleNamespace(ref=q,risk_set_ref=r),SimpleNamespace(ref=predref)))
