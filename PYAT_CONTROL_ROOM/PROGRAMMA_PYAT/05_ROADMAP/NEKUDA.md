@@ -165,6 +165,8 @@ This is a source-static corrected negative fate, not protected receiving.
 
 **Conservation rule:** Reconcile once at existing source-holder boundary; do not fork source admission.
 
+**PYAT-SPASITYEL R15 exact-source continuation (2026-11-21):** The B49 source-rule classifier (blob `5f6efaceb18d92a362d065d12fdca4076d53fa16`) is distinct as a *documentary P2/FQRA item-wave selection/evidence and no-promotion oracle*. It is not a sufficient native source issuer: selected current `NativeSourcePackage` (blob `a92287282d0d8a22ae8bf76517ae4c52e7f8b83e`) requires value/occurrence/coordinate semantics that B49 does not supply. Its `U_CANDIDATE` requires only nonempty response_binding_status and does not itself guard unknown routing. **Keep KUDA-002 as source-science/ABI-held; NEKUDA-002 remains the old incompatible packaging, not the unique documentary function.** No standalone new source engine.
+
 ### NEKUDA-003 — G50 toy I05 as proxy for actual B49 source-derived issued work
 
 **Better candidate:** KUDA-003, KUDA-004. **Exact source:** [WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py](https://github.com/maidiu/rawlsing/blob/d379bafe36b8d89da27ea5bf33614d33aca7f2d2/WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/native_i05.py) at `d379bafe36b8d89da27ea5bf33614d33aca7f2d2`.
@@ -191,6 +193,9 @@ This is a source-static corrected negative fate, not protected receiving.
 
 
 **PYAT-SPASITYEL source-fate 2026-11-21:** The heuristic/latest as-of implementation stays **rejected as an authority-producing operation**. KUDA-019 historical exact as-of `select_as_of_version` (blob `f93fc79c182b1962dc3b3a25915b8d93afe7e5c7`) is valuable method capital, but selected R06 `pre553_universal_world_binding.py` (blob `fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d`) has no demonstrated source-issued `selected_ref`→world-version/release consumer. **Do not install P07 as a new engine or turn an R06 `as_of_ref` string into comparable-wave permission.** G4 KUDA-019 retains `UNKNOWN_EXACT_VERSION_TO_WORLD_BINDING` with a narrowly falsifiable source/version/consumer gate; no original science issued.
+
+**PYAT-SPASITYEL R15 exact-source continuation (2026-11-21):** Selected P07 exact `select_as_of_version` (blob `f93fc79c182b1962dc3b3a25915b8d93afe7e5c7`) returns an `ExactRef`-shaped `selected_ref` after positive time authority and sole-eligible version. Selected R06 blob `fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d` takes `as_of_ref: str | None` and compares published/valid clock *labels*, so **the exact version→world binding is not implemented merely by passing a string**. Heuristic nearest/latest remains NEKUDA; source-issued version-to-release consumer is KUDA-019 held, not a second P07 engine.
+
 ### NEKUDA-021 — J42 earlier wrong-condition joined world sourcefree prototype
 
 **Better candidate:** NO ACCEPTED KUDA SUCCESSOR / HELD. **Exact source:** [WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py](https://github.com/maidiu/rawlsing/blob/f53cb0d2bce52640268c844c398bbd8007d28edc/WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py) at `f53cb0d2bce52640268c844c398bbd8007d28edc`.
@@ -209,6 +214,9 @@ This is a source-static corrected negative fate, not protected receiving.
 
 
 **PYAT-SPASITYEL source-fate 2026-11-21:** Historical I01 saved progressive-world/M2/B5 `pre553_i01_sourcefree_world_lifecycle_candidate.py` blob `7899846394f079c14eae4864c8200697bd9dee4a` contains actual sourcefree `build_product/restore_product/serve/invalidate` logic. But selected #1247 already retains stronger general S2-G durable learned lifecycle and R107/R112 progressive world first consumers, while the I01 local-unauthed seam imports are absent. **Keep the I01 wrapper as NEKUDA rather than copying it**, and hold only a tested unique progressive-world saved-result→S2-G producer/consumer contract if independently demanded. No source/native/actor grant from local references.
+
+**PYAT-SPASITYEL R15 exact-source continuation (2026-11-21):** Exact I01 source blob `7899846394f079c14eae4864c8200697bd9dee4a` declares `LOCAL_UNAUTHENTICATED`, uses local refs, `ContractOnlySeamConsumer`, own JSON/index and old candidate modules. Current chosen S2-G blob `c261db4f13b6a63d0b41d0cb87855287f3c06347` externally pins exact S2-F I05 receipts, reconstitutes M1/M2/B5, and actually `consume()`s the existing learned consumer cold; selected R107/R112 are separate progressive world readers. **Old I01 wrapper definitively belongs NEKUDA.** Only a genuinely required, source-qualified R107/R112 progressive-result→S2-G publisher ABI can qualify new *in-owner* connection, not this old wrapper. See [single review log](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#4-r15--finished-42-entry-work-selection-triage-four-high-value-sourceconsumer-cases-2026-11-21).
+
 ### NEKUDA-024 — W03 private compact cache treated as default durable C11 release
 
 **Better candidate:** KUDA-028. **Exact source:** [rawlsing_next/_pre553_c11_execution_view.py](https://github.com/maidiu/rawlsing/blob/46b7325637e68f78ccc7487d4b1abc7009c5ac0b/rawlsing_next/_pre553_c11_execution_view.py) at `46b7325637e68f78ccc7487d4b1abc7009c5ac0b`.
@@ -394,6 +402,8 @@ This is a source-static corrected negative fate, not protected receiving.
 **Inferior/unsafe claim:** All 82 real-source candidate outcomes ended EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED; effective driver is packed in gzip/base64 chunks, not directly audited here.
 
 **Preservation rule:** Retain real-source execution, but hold original science and source-body recovery.
+
+**PYAT-SPASITYEL R15 exact-source continuation (2026-11-21):** B16 recorded 2× authentic LiTS-I DTA 29,002×1,198 (34,744,396 cells), 140 I05 facts and eight I03 queries each with replay identity and frozen-oracle historical pass, **but all 82 terminal candidates were authority/coverage-limited**, not 82 scientifically positive. The exact `03_SOURCE_IDENTITY_AND_ACCOUNTING_RECEIPT.json` shows **2 decoder passes/8 high-level source opens per run** and no retained transformed empirical persistence, so B16 does **not** prove the selected one-pass source-direct persisted C11 or modern 100k economics. The effective SHA256-pinned compressed Python driver has not been successfully decoded/source-inspected this author court; no hidden symbol equivalence is asserted. **Retire only the false-positive/old-runtime promotion claim**; preserve the real-source negative/oracle under KUDA-079, with bounded driver forensics conditional on an exact proposed missing *current* first-consumer operation.
 
 ### NEKUDA-072 — PR #691 claimed R17 GF1 byte identity differs at inspected PR source
 
