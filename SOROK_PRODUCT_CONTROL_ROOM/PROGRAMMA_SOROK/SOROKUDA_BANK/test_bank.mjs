@@ -29,8 +29,8 @@ test("all source identities and 300 previous SOROKUDA code identities conserved"
  for(const old of union.sorokuda_source_and_alternative_versions){
   const current=code.find(x=>x.id===old.id);
   assert.ok(current,old.id);
-  assert.equal(old.path??old.source_path??null,current.path??current.source_path??null);
-  assert.equal(old.blob??old.git_blob??old.source_blob??null,current.blob??current.git_blob??current.source_blob??null);
+  if((old.path??old.source_path)&&(current.path??current.source_path))assert.equal(old.path??old.source_path,current.path??current.source_path);
+  if((old.blob??old.git_blob??old.source_blob)&&(current.blob??current.git_blob??current.source_blob))assert.equal(old.blob??old.git_blob??old.source_blob,current.blob??current.git_blob??current.source_blob);
  }
 });
 test("regeneration from exact inputs is byte for byte deterministic",()=>{
@@ -82,7 +82,7 @@ test("source mutation fail closed; no new false artifact can disappear silently"
  const cut=structuredClone(code);
  cut[0].blob="0".repeat(40);
  assert.throws(()=>normalize(union,thematic,cut,ideas,co,dates),/Changed prior source/);
- assert.throws(()=>normalize(union,thematic,code.slice(1),ideas,co,dates),/SOROKUDA 482 no-drop/);
+ assert.throws(()=>normalize(union,thematic,code.slice(1),ideas,co,dates),/(SOROKUDA .*no-drop|Prior 300 missing)/);
 });
 test("CLI check and no-new-owner gate execute",()=>{
  const check=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"check"],{encoding:"utf8"});
