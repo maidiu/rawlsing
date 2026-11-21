@@ -179,6 +179,62 @@ try:
       "SOURCE_STATIC: original authoritative source/science issuer absent")
  report["R23_limit"]="THREE_DEEP_WORK_SELECTION_JUDGMENTS__LEGACY_REJECT_NOT_FUNCTION_RETIREMENT"
 
+ # R24 is an ELIMINATION ONLY docket. The checker enforces no-drop and honest class
+ # accounting, NOT the correctness of 42 separate scientific/implementation rulings.
+ r24=l.split("## 12. R24 — careful whole-KUDA elimination adjudication",1)[1]
+ part_a=r24.split("### 12.1 P0 & physical carriers: A–C (24 IDs)",1)[1].split("### 12.2 D–J:",1)[0]
+ part_b=r24.split("### 12.2 D–J:",1)[1].split("### 12.3 Cross-cutting elimination result:",1)[0]
+ def elimination_rows(section):
+  records=[]
+  for line in section.splitlines():
+   m=re.match(r"^\| \[(\d{3})\]\(KUDA\.md#kuda-(\d{3})\) \| (.+) \|$",line)
+   if not m: continue
+   fields=re.split(r"(?<!\\) \| ",m.group(3))
+   records.append((m.group(1),m.group(2),fields))
+  return records
+ first=elimination_rows(part_a);second=elimination_rows(part_b)
+ elected=first+second
+ test("R24 eliminated-by-function court exact 24 P0 plus 18 downstream",
+      len(first)==24 and len(second)==18,
+      {"p0":len(first),"downstream":len(second)})
+ test("R24 each historic KUDA exactly once with actual matching original link",
+      len(elected)==42 and len({i for i,_,_ in elected})==42
+      and {i for i,_,_ in elected}==set(IDS)
+      and all(i==link_id for i,link_id,_ in elected),
+      {"total":len(elected),"unique":len({i for i,_,_ in elected})})
+ test("R24 every verdict has Q2/Q3/Q1/Q5, conserved necessary function and exact falsifier",
+      all(len(fields)==7 and all(value.strip() for value in fields)
+              for _,_,fields in elected),
+      {"rows":len(elected),"incomplete":[i for i,_,fields in elected if len(fields)!=7]})
+ expected_categories={
+  "STOP_DUPLICATE_PORT":10,"STOP_EXACT_DUPLICATE":1,
+  "STOP_LEGACY_UNSUITABLE":2,"STOP_BROKEN_ARCHIVE":1,
+  "STOP_NO_EXTERNAL_READER":2,"STOP_FOREIGN_OWNER":4,
+  "KEEP_EXISTING_OWNER":9,"HOLD_PHYSICAL_COMPARATOR":3,
+  "HOLD_TEST_ORACLE":3,"HOLD_CONDITIONAL_CONSUMER":3,
+  "HOLD_NARROW_NEGATIVE":3,"HOLD_PARTIAL_DISTINCT":1,
+ }
+ actual_categories={}
+ for _,_,fields in elected:
+  if len(fields)!=7:continue
+  verdict=fields[4]
+  actual_categories[verdict]=actual_categories.get(verdict,0)+1
+ test("R24 exact twelve source-qualified decision classes and 20/9/13 division",
+      actual_categories==expected_categories,
+      actual_categories)
+ for needle in (
+  "UNKNOWN never becomes NO or BUILD",
+  "A STOP rejects a proposed historical module or development ticket",
+  "SOROK actor construction obligation remains live",
+  "NOT FIXED",
+  "not 42 final full seven-criterion executable/scientific acceptances",
+ ):
+  test("R24 source-grade no-false-retirement qualification "+needle,
+       needle.lower() in r24.lower())
+ report["R24_grade"]="AUTHOR_SOURCE_STATIC_ELIMINATION_ONLY_NOT_INDEPENDENT_G5_NOT_42_DEEP_TESTS"
+ report["R24_fates"]=actual_categories
+
+
 
 
  section=n.split("## NEKUDA-R13",1)[1].split("## NEKUDA-R8",1)[0]
