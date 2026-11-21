@@ -34,6 +34,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     RespondentEvent,
     RoutingEligibilityFact,
+    canonicalize,
     exact_ref,
     make_empirical_predicate,
     semantic_hash,
@@ -63,7 +64,7 @@ class RecordedUniverseUse:
     operation: str
     risk_ref: ExactRef
     interpretation: tuple[tuple[str, str], ...]
-    scope: str
+    scope: str | Mapping
     current_verifier: Callable[[], bool]
 
     def __post_init__(self) -> None:
@@ -110,7 +111,10 @@ class RecordedUniverseUse:
             raise RecordedResponseError("positive use universe ref is not canonical full ref") from exc
         if allowed_ref != exact_universe:
             raise RecordedResponseError("positive use universe ref differs including hash")
-        if scope.get("scope") != self.scope:
+        if isinstance(self.scope, Mapping):
+            if canonicalize(scope.get("scope")) != canonicalize(self.scope):
+                raise RecordedResponseError("positive use scope differs from held scope")
+        elif scope.get("scope") != self.scope:
             raise RecordedResponseError("positive use scope differs from held scope")
         if scope.get("release") not in (None, self.release_root):
             raise RecordedResponseError("positive use release binding mismatch")

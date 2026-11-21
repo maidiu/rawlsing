@@ -96,6 +96,19 @@ def main() -> int:
         raise SystemExit("UNIVERSE_USE_HISTORICAL_REF_MISMATCH_BEFORE_READ")
     if use_pre.get("scope") != owner.get("scope"):
         raise SystemExit("UNIVERSE_USE_SCOPE_MISMATCH_BEFORE_READ")
+    expected_scope = {
+        "host": owner["host"],
+        "scope": owner["scope"],
+        "question_id": owner["question_id"],
+        "questionnaire_sha256": owner["questionnaire_sha256"],
+        "denominator": owner["denominator"],
+    }
+    positive_pre = next(
+        (a for a in authorities
+         if a.authority_ref == _authority_ref(doc["source_authority_ref"])), None,
+    )
+    if positive_pre is None or positive_pre.scope_envelope.get("scope") != expected_scope:
+        raise SystemExit("UNIVERSE_USE_POSITIVE_SCOPE_SHAPE_MISMATCH_BEFORE_READ")
     held = HeldStreamPins(
         source_id=owner["source_id"],
         source_sha256=binding["source_sha256"],
@@ -184,7 +197,7 @@ def main() -> int:
         operation=operation.authorized_operation,
         risk_ref=operation.recorded_risk_ref,
         interpretation=operation.interpretation,
-        scope=use_doc["scope"],
+        scope=expected_scope,
         current_verifier=use_current,
     )
     plan = dataclasses.replace(plan, universe_use=universe_use)
