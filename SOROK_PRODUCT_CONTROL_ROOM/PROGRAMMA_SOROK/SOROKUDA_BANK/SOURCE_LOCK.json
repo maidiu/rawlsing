@@ -1,0 +1,44 @@
+{
+  "schema": "SOROKUDA_UNIFIED_BANK_PINNED_SOURCES@1",
+  "assembled_on": "2026-11-21",
+  "as_of_code_ledger_blob": "50eeb0fd7f27abb72c3c817e54dd307929ab36e1",
+  "as_of_code_ledger_records": 486,
+  "input_lineage": {
+    "neighbor_total_757": "be7b32911f3467c870f18887a3d5b0e7a88952dd",
+    "soracle_r27": "d682db603f4c2916d68cfe30334e1ca539190bb5",
+    "sorokuda_source_cut": "a899d2edd0b405eae4e70e40edc474ad0b8aaf10"
+  },
+  "pinned_files": {
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_CODE_INDEX.jsonl": "50eeb0fd7f27abb72c3c817e54dd307929ab36e1",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_SOURCE_UNION_757.json": "a2ec26079457ec39a85be35371b0678eed9aeab1",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_THEMATIC_757.json": "83df824b11d92a242a4b4ee01996e87ecebddfd9",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_CURATED_SOURCE_LOCATOR.json": "abc1cec605cc15cbc5b7c68a1d01362c3d74f8e2",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_USER_IDEAS_44.md": "399ce39e54204b4ef907f580ecf14d4174af7fa6",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/SORACLE_CO_R27_16.json": "b3425bf3399bfca716bc737c64d9d2eea6d7eb86",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/VERIFIED_COMMIT_AUTHOR_DATES.json": "67e2dcc9331418b45e0a7a8f1c273ad54e4557cc",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/normalizer.mjs": "8652c9b5059c99fce46acecc8c5a5f248fd900e9",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs": "27d90561c6970caa772839b07f2923f44056a42b",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/test_bank.mjs": "eb0eaf650ed76f9b97585d5e0a887261436a223f"
+  },
+  "materialized_outputs": {
+    "ALL_NORMALIZED.jsonl": "8d9a6e95beddbaedc947495ce026dac6f2e80b11",
+    "IDEAS.jsonl": "cdec66fa71625213cac9e16ea8f5bcbdf1b8dfbf",
+    "FUNCTIONS.jsonl": "41404a748de478ba12f0c7e7e3781ab374f7fbf9",
+    "CODE_AND_EVIDENCE.jsonl": "321571a02e70b68c1baa06447961d9610f5e2226",
+    "DOCUMENT_LOCATOR_252.jsonl": "042bcea7668dd629355cf71b85b42622fa20eeb4"
+  },
+  "expected": {
+    "ideas": 373,
+    "formal_functions": 144,
+    "code_source_records": 486,
+    "normalized_total": 1003,
+    "original_757_merged_without_300_duplicate": 757,
+    "curated_files": 227,
+    "curated_directories": 25,
+    "verified_version_asof": 689,
+    "verified_current_candidate_path_additions": 117,
+    "verified_original_production_dates": 0
+  },
+  "authority": "DOCUMENTARY_CANDIDATE_NOT_PROTECTED_RECEIVED",
+  "rule": "Changed Git source SHA is a visible CURRENTNESS_HOLD; manually reconcile source first, update lock and derived views in one authorized receiving action. UNKNOWN never means missing."
+}

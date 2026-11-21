@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SOROKUDA unified source record, nonissuing documentary schema",
+  "type": "object",
+  "required": [
+    "id",
+    "bank",
+    "artifact_type",
+    "title",
+    "source",
+    "dates",
+    "meaning",
+    "function",
+    "integration",
+    "evidence",
+    "relationships",
+    "original_record"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bank": {
+      "enum": [
+        "ideas",
+        "functions",
+        "code"
+      ]
+    },
+    "artifact_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "path",
+        "blob",
+        "exact_ref",
+        "url",
+        "origin"
+      ],
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blob": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "exact_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "origin": {
+          "type": "string"
+        }
+      }
+    },
+    "dates": {
+      "type": "object",
+      "required": [
+        "first_produced_on",
+        "first_produced_grade",
+        "selected_version_observed_at",
+        "selected_version_grade",
+        "unverified_reference_date_hint",
+        "banked_on",
+        "note"
+      ],
+      "properties": {
+        "first_produced_on": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_produced_grade": {
+          "type": "string"
+        },
+        "selected_version_observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "selected_version_grade": {
+          "type": "string"
+        },
+        "first_path_committed_on": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "first_path_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "first_path_grade": {
+          "type": "string"
+        },
+        "unverified_reference_date_hint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "banked_on": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "meaning": {
+      "type": "object",
+      "required": [
+        "description",
+        "source_claim_grade",
+        "source_exact_text_available"
+      ]
+    },
+    "function": {
+      "type": "object",
+      "required": [
+        "owner_ids",
+        "owner_link_grade",
+        "first_consumer_text",
+        "actual_current_reader_verified",
+        "producer_text",
+        "required_consumer_text"
+      ]
+    },
+    "integration": {
+      "type": "object",
+      "required": [
+        "state",
+        "protected_received_at_exact_source",
+        "current_selected_consumer_ref",
+        "upstream_implementation_version",
+        "do_not_infer_absence"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_grade",
+        "reported_execution",
+        "reviewer_verdict",
+        "native_science_authority",
+        "actor_authority"
+      ]
+    },
+    "relationships": {
+      "type": "object",
+      "required": [
+        "historical_version_of",
+        "same_source_id_in_other_bank",
+        "mentions_only",
+        "explicit_replacement"
+      ]
+    },
+    "original_record": {
+      "type": "object"
+    }
+  }
+}

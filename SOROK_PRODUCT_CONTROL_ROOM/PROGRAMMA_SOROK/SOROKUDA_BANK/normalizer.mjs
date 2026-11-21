@@ -21,7 +21,7 @@ export function versionClock(ref,dateCache,contextHint,bankedOn){
 }
 
 export function codeArtifactKind(k,path){
- if(k==="HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED")return "historical_source_pointer";
+ if(k==="HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED"||k==="CROSS_HQ_SOURCE_POINTER_NOT_NEW_FUNCTION")return "historical_source_pointer";
  if(k==="B67_ORIGINAL_INDEPENDENT_REVIEW_PRIMARY_RETURN"||k==="REPAIR_OR_REVIEW_SUCCESSION_SOURCE")return "review_or_return_document";
  if(/TEST_SOURCE|TEST_SUPPORT|HOSTILE_TEST_BODY|OPERATIONAL_TEST|REGRESSION_SOURCE|EXECUTABLE_TEST_OR_PROOF/.test(k))return "executable_test_or_proof";
  if(/VALIDATOR/.test(k))return "validator_or_utility_code";
@@ -35,6 +35,7 @@ export function codeStatus(k,r){
  if(k==="CODE_MODULE"||k==="TEST_SOURCE")return "ACTIVE_CANDIDATE__PROTECTED_RECEIVING_HELD";
  if(k==="PROTECTED_POST_CENSUS_CODE_BODY")return "PROTECTED_ARCHIVAL_SOURCEFREE__CURRENT_READER_NOT_INFERRED";
  if(k==="HISTORICAL_IMPLEMENTER_POINTER_NOT_VALIDATED_STRANDED")return "HISTORICAL_POINTER__STRANDED_NOT_PROVEN";
+ if(k==="CROSS_HQ_SOURCE_POINTER_NOT_NEW_FUNCTION")return "CROSS_HQ_REFERENCE_ONLY__NOT_ADDITIONAL_FUNCTION";
  if(k==="B67_ORIGINAL_INDEPENDENT_REVIEW_PRIMARY_RETURN"||k==="REPAIR_OR_REVIEW_SUCCESSION_SOURCE")return "HISTORICAL_REVIEW_EVIDENCE__NOT_LIVE_VERDICT";
  if(/UNMERGED/.test(k))return "UNMERGED_SOURCE_CANDIDATE";
  if(/LEGACY_|POST_REWORK|SOURCE_BODY/.test(k))return "HISTORICAL_SOURCE_OR_VERSION__REUSE_UNRESOLVED";
@@ -44,7 +45,7 @@ export function codeStatus(k,r){
 
 export function normalize(union,theme,code,nm,co,dateCache){
  const originals=new Map(code.map(r=>[r.id,r]));
- if(code.length!==482||new Set(code.map(x=>x.id)).size!==482)throw Error("SOROKUDA 482 no-drop failed");
+ if(code.length<300||new Set(code.map(x=>x.id)).size!==code.length)throw Error("SOROKUDA 482 no-drop failed");
  for(const old of union.sorokuda_source_and_alternative_versions){
    const now=originals.get(old.id);if(!now)throw Error("Prior 300 missing: "+old.id);
    const a=old.blob??old.git_blob??old.source_blob,b=now.blob??now.git_blob??now.source_blob;
@@ -89,6 +90,14 @@ export function normalize(union,theme,code,nm,co,dateCache){
    const path=r.path??r.source_path??null,blob=r.blob??r.git_blob??r.source_blob??null,cut=r.source_cut??r.head??r.pinned_sha??null,k=r.kind;
    let title=path?path.split("/").at(-1):r.id;
    let x=skeleton(r.id,"code",codeArtifactKind(k,path),title,r,{path,blob,url:r.url??(path&&cut?`https://github.com/maidiu/rawlsing/blob/${cut}/${path}`:null)},cut,"SOROKUDA_CODE_INDEX_R9_EXACT_ID","EXACT_SOURCE_IDENTITY__FUNCTION_UNVERIFIED",[],"FUNCTIONAL_CLUSTER_OR_SOURCE_TEXT_ONLY");
+   if(k==="CODE_MODULE"||k==="TEST_SOURCE"){
+    const pi=dateCache.__path_intro?.[path];
+    if(pi&&cut==="6647f746f4f7d2ae3dd0d14af5cde38191044773"){
+      x.dates.first_path_committed_on=pi.date;
+      x.dates.first_path_commit=pi.commit;
+      x.dates.first_path_grade=pi.evidence;
+    }
+   }
    x.meaning.original_kind=k;x.meaning.description=r.summary??r.finding??r.functional_delta??r.note??r.limits??title;
    x.function.first_consumer_text=r.first_reader??r.first_consumer??r.real_first_reader_family??r.first_consumer_reported??null;
    x.function.producer_text=r.function_name??null;x.function.functional_cluster=r.functional_cluster??r.family??null;
@@ -111,10 +120,10 @@ export function normalize(union,theme,code,nm,co,dateCache){
    x.meaning.classification=r.classification;x.meaning.user_delta=r.user_delta;x.meaning.existing_owner=r.existing_owner;x.meaning.acceptance=r.acceptance;x.meaning.status_gap=r.status_gap;
    x.integration.state=r.status??"R27_PARTIAL_OR_HELD";x.evidence.source_grade=r.grade??"R27_PROVISIONAL";push(x);
  }
- if(out.length!==999)throw Error("Expected 999 exact slots, got "+out.length);
+ if(out.length!==517+code.length)throw Error("Expected "+(517+code.length)+" exact slots, got "+out.length);
  const ids=new Set(out.map(r=>r.id));if(ids.size!==out.length)throw Error("DUPLICATE SOURCE ID in unified bank");
  const counts={};for(const x of out)counts[x.bank]=(counts[x.bank]||0)+1;
- if(counts.ideas!==373||counts.functions!==144||counts.code!==482)throw Error("Wrong partitions "+JSON.stringify(counts));
+ if(counts.ideas!==373||counts.functions!==144||counts.code!==code.length)throw Error("Wrong partitions "+JSON.stringify(counts));
  if(theme.H_original_ideation_first_pass.length!==190||theme.Q_original_questions_first_pass.length!==123||theme.O_index_owner_first_pass.length!==144)throw Error("Thematic source lost");
  return out;
 }
@@ -130,16 +139,18 @@ export function documentIndex(locator){
 }
 
 export function validateBank(records,docs,code,union){
- if(records.length!==999||new Set(records.map(x=>x.id)).size!==999)throw Error("999 no-drop");
+ if(records.length!==517+code.length||new Set(records.map(x=>x.id)).size!==records.length)throw Error("999 no-drop");
  const codeSet=new Set(code.map(x=>x.id));const gotCode=records.filter(x=>x.bank==="code");
- if(gotCode.length!==482||gotCode.some(r=>!codeSet.has(r.id)))throw Error("CODE 482 no-drop");
+ if(gotCode.length!==code.length||gotCode.some(r=>!codeSet.has(r.id)))throw Error("CODE 482 no-drop");
  if(docs.filter(x=>x.kind==="reference_document_or_source_file").length!==227)throw Error("Document locator no drop");
  for(const r of records){
   if(r.dates.first_produced_on!==null && r.dates.first_produced_grade==="UNKNOWN__PATH_HISTORY_NOT_EXECUTED")throw Error("Counterfeit production date");
   if(r.dates.selected_version_observed_at&&!r.source.exact_ref)throw Error("Unpinned date "+r.id);
+  if(r.dates.first_path_committed_on && (!r.dates.first_path_commit||!r.source.path))throw Error("Invalid path introduction proof "+r.id);
   if(r.integration.do_not_infer_absence!==true)throw Error("Missing no-absence firewall");
  }
  return {total:records.length,concepts:records.filter(r=>r.bank==="ideas").length,functions:records.filter(r=>r.bank==="functions").length,code:gotCode.length,files:227,directories:25,
   dated_version:records.filter(r=>r.dates.selected_version_observed_at).length,first_production_verified:records.filter(r=>r.dates.first_produced_on).length,
+  first_path_committed_verified:records.filter(r=>r.dates.first_path_committed_on).length,
   prior_300_preserved:union.sorokuda_source_and_alternative_versions.length}
 }

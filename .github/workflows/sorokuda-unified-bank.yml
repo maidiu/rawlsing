@@ -1,0 +1,22 @@
+name: SOROKUDA normalized ideas and code bank
+on:
+  push:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_CODE_INDEX.jsonl'
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/**'
+      - '.github/workflows/sorokuda-unified-bank.yml'
+  workflow_dispatch:
+jobs:
+  exact-source-bank:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify immutable source pins and reproducible normalized bank
+        run: node SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs check
+      - name: Run hostile source no-drop, date and semantic-boundary tests
+        run: node --test SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/test_bank.mjs
