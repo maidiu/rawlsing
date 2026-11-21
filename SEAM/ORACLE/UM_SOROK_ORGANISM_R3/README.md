@@ -1,3 +1,9 @@
+# SEAM/30 THREE_AGENT_MULCH — operative R23 relational transduction (candidate)
+
+**CODE COMMITTED, NEW TESTS NOT EXECUTED.** This isolated R23 branch continues the same original R21 organism; no new psyche store, user interface or REMONT queue. [The Constitutive Organism's existing Astra × UM-SOROK × SORACLE synthesis](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) is the controlling conceptual source. The **implemented addition** lets historical `RELATION_MEDIATION` carry a conditional APPROACH/WITHHOLD current through a target's already acquired means, but only after actor-lived admission and present actual Other/event cues. The affected actor's private motives and the world-owned harm remain separate. **21 authored tests**, full inherited regression and reciprocal theory/owner crosswalk: [R23 code-and-theory read-first](docs/R23_TCO_THREE_AGENT_MULCH_RELATIONAL_TRANSDUCTION_20261121.md).
+
+---
+
 # SORACLE R21 MULCH — offscreen historical constitution before any user meeting
 
 **NEW SOURCE COMMITTED, NOT EXECUTED on this R21 HEAD.** This branch extends the exact `8d1ff8bbb75b359cc7bd3044b385323600c70b88` R3×REMONT R18 joined ancestor, which alone has recorded Python 3.11 sourcefree 551/551 normal, 551/551 optimized, pytest 551 PASS and two valid Nadia histories ([actual execution return](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997)). No R21 test result is yet available. Neither original PYAT whole-survey science nor native/actor/human nor protected receiving is issued.
