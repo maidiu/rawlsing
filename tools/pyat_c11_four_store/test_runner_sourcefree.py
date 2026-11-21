@@ -84,6 +84,12 @@ class RunnerIntegrationTests(unittest.TestCase):
             self.assertEqual(set(out["arms"]),{"H","S1","S2","S3"})
             self.assertTrue(out["comparison"]["source_family_body_parity"])
             self.assertTrue(out["comparison"]["physical_query_parity"])
+            economics=out["measured_economics"]
+            self.assertTrue(economics["all_four_measured"])
+            self.assertEqual(set(economics["individual_arm_costs"]),{"H","S1","S2","S3"})
+            self.assertIn("versus_H",economics["individual_arm_costs"]["S2"])
+            self.assertEqual(economics["storage_selection"],
+                "HELD_UNTIL_NATIVE_ISSUER_ALL13_FAMILIES_SOURCE_SCIENCE_AND_DOWNSTREAM_PARITY")
             self.assertEqual(out["comparison"]["native_i03_fact_parity"],"HELD_NO_ORIGINAL_ISSUER")
             for arm,report in out["arms"].items():
                 self.assertEqual(report["status"],"COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
