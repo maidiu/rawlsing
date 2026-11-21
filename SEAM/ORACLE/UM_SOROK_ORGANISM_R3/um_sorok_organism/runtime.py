@@ -56,6 +56,35 @@ from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
 
+def _bind_actor_trial_particular_object(alternatives, trial):
+    """Choose one perceived thing, not one asserted explanation for perceiving it.
+
+    One objective material object can be represented by an ordinary visible
+    object option AND an independently acquired cultural or historical option.
+    Their shared world referent is not an ambiguous physical object. For a
+    source-object trial, retain the neutral visible-object binding, leaving
+    the cultural alternative unselected rather than laundering its meaning
+    into the actor's provisional purpose.
+    """
+    object_ref=trial.get('source_material_object_ref')
+    if type(object_ref) is not str or not object_ref:
+        raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
+    operation=trial.get('operation')
+    matches=[a for a in alternatives if
+             type(a) is dict and a.get('operation')==operation
+             and a.get('project_id') is None
+             and type(a.get('world_request')) is dict
+             and a['world_request'].get('material_object_ref')==object_ref]
+    neutral=[a for a in matches if
+             a.get('grounds_status')=='PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE'
+             and a.get('binding_status')=='OBJECT_CURRENTLY_VISIBLE_NOT_EVIDENCE_OF_RIGHTS']
+    if len(neutral)==1:
+        return neutral[0]
+    if len(matches)==1:
+        return matches[0]
+    raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
+
+
 class ConstitutiveRuntime:
     def __init__(self,db,semantic=None,world_id='w1'):
         self.ledger=ResearchLedger(db)
@@ -267,14 +296,8 @@ class ConstitutiveRuntime:
             # repair for the actor's historically identified practical thing.
             if trial_choice is not None and trial_choice.get(
                     'source_material_object_ref') is not None:
-                source_object=trial_choice['source_material_object_ref']
-                material_matches=[
-                    a for a in alternatives if
-                    a.get('world_request',{}).get('material_object_ref')
-                    ==source_object]
-                if len(material_matches)!=1:
-                    raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
-                selected_alternative=material_matches[0]
+                selected_alternative=_bind_actor_trial_particular_object(
+                    alternatives,trial_choice)
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             selected=[available[ref] for ref in selected_refs]
