@@ -79,6 +79,16 @@ def project_trial_horizons(constitution, access, candidate_actions,
         means = end.get('possible_means', [])
         if not isinstance(means, list):
             continue
+        historically_perceived_other=end.get('addressed_party_ref')
+        if historically_perceived_other is not None:
+            if type(historically_perceived_other) is not str:
+                raise ValueError('GENETIC_TRIAL_INVALID_PERSON_REFERENCE')
+            # A previously perceived responder is a possible future
+            # address, never a guaranteed available person or response.
+            if not any(c.get('kind')=='coactor_present'
+                       and c.get('source_actor')==historically_perceived_other
+                       for c in access.cues if type(c) is dict):
+                continue
         # The actual history of attempted means is a NEW prospective
         # distinction. Prior technical execution cannot establish that the
         # end was fulfilled or which untried alternative would fare better.
@@ -115,6 +125,9 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'historical_analogy_is_provisional':bool(bridge),
                 'same_object_world_continuity_not_actor_concept':bool(object_continuity),
                 'source_material_object_ref':(source_object if object_continuity else None),
+                'source_qualified_addressee_ref':historically_perceived_other,
+                'addressee_present_but_consent_independent':(
+                    historically_perceived_other is not None),
                 'other_possible_means': sorted(set(
                     x for x in means if type(x) is str and x != operation)),
                 'previous_trials': len(tried),
