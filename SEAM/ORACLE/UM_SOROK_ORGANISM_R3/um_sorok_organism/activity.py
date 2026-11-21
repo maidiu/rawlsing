@@ -58,13 +58,13 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
         attribution='EXPLICIT_LEGACY_PROJECT_BASIS_ASSERTION'
     else:
         if not isinstance(purpose_selection,dict):
-            raise ValueError('INVALID_SELECTED_PURPOSE_RECEIPT')
+            raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
         ident=purpose_selection.get('project_id')
         status_kind=purpose_selection.get('status')
         if status_kind=='ACTOR_POLICY_SELECTED_PROJECT_COURSE':
             if (type(ident) is not str or project_ids!={ident}
                     or purpose_selection.get('project_ids',[ident])!=[ident]):
-                raise ValueError('SELECTED_PURPOSE_NOT_IN_ACTOR_ATTEMPT_BASIS')
+                raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
             project_ids={ident}
         elif status_kind=='ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES':
             refs=purpose_selection.get('project_ids')
@@ -72,7 +72,7 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
                     or not 2<=len(refs)<=8
                     or any(type(x) is not str for x in refs)
                     or set(refs)!=project_ids or len(set(refs))!=len(refs)):
-                raise ValueError('MULTIPLE_SELECTED_PURPOSES_MISMATCH_ATTEMPT')
+                raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
             project_ids=set(refs)
         elif status_kind in (
             'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
@@ -82,9 +82,9 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
             # attributed durable purpose.
             'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE'):
             if ident is not None or project_ids:
-                raise ValueError('PURPOSE_UNKNOWN_BUT_PROJECT_ASSERTED')
+                raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
             project_ids=set()
-        else:raise ValueError('UNKNOWN_SELECTED_PURPOSE_STATUS')
+        else:raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
         attribution=status_kind
         # REMONT R18 P004: a selected purpose is not merely a basis tag.
         # EVERY selected project must exist exactly once, and this exact
