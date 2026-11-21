@@ -140,6 +140,29 @@ class ResearchLedger:
             raise Conflict('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED')
         return anchored
 
+    def _require_valid_history_locked(self):
+        """Full source/chain preflight for reads and appends, not only audits.
+
+        The fast auxiliary check is insufficient for noncanonical historical
+        envelopes or source maps on ordinary events. This bounded owner repair
+        reuses the complete verifier under the existing lock/transaction.
+        """
+        try:
+            self.verify_chain()
+        except AssertionError as exc:
+            message=str(exc)
+            # Preserve inherited P045/P046 diagnostics while still refusing
+            # every malformed/noncanonical or unauthorized source history.
+            if message.startswith('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER'):
+                raise Conflict('UNCOMMITTED_WORLD_STATE') from exc
+            if message.startswith('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER'):
+                raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
+            if message=='MISSING_OBJECTIVE_EVENT_HISTORY':
+                raise Conflict('MISSING_LEDGER_GENESIS') from exc
+            raise Conflict('SOURCE_HISTORY_INVALID: '+message) from exc
+        except (KeyError,TypeError,ValueError,StopIteration) as exc:
+            raise Conflict('SOURCE_HISTORY_INVALID: '+type(exc).__name__+': '+str(exc)) from exc
+
     @staticmethod
     def _validate_source_identity(sid, category):
         if (type(sid) is not str or not sid.strip() or
@@ -215,6 +238,7 @@ class ResearchLedger:
             row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
             if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
             wid,body=row
+            self._require_valid_history_locked()
             self._verify_current_anchor_locked(wid)
             world=json.loads(body)
             sha=digest({'category':category,'content':content})
@@ -234,7 +258,7 @@ class ResearchLedger:
 
     def source(self,sid):
         with self.lock:
-            self._verified_source_seals_locked()
+            self._require_valid_history_locked()
             x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
             return None if not x else {'category':x[0], 'content':json.loads(x[1])}
 
@@ -248,6 +272,7 @@ class ResearchLedger:
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
+            self._require_valid_history_locked()
             self._verify_current_anchor_locked(wid)
             for aid,a in actors.items():
                 cur=self.conn.execute('SELECT version FROM actors WHERE id=?',(aid,)).fetchone()
@@ -309,6 +334,9 @@ class ResearchLedger:
             raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
         for idx,r in enumerate(records):
             envelope=r['envelope']
+            if (type(envelope) is not dict or
+                    any(k not in envelope for k in ('world','clock','actor','kind'))):
+                raise AssertionError('EVENT_ENVELOPE_MALFORMED')
             if canonical(envelope)!=r['envelope_bytes']:
                 raise AssertionError('EVENT_ENVELOPE_NONCANONICAL_BYTES')
             if (r['world_id']!=envelope['world'] or r['clock']!=envelope['clock']

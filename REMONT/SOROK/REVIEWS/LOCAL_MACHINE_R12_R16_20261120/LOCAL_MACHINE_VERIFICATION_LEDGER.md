@@ -1,0 +1,148 @@
+# SOROK REMONT local-machine verification ledger — R12–R17
+
+**Date:** 2026-11-20
+**Reviewer execution:** independent session on the same physical machine; GitHub principal `maidiu` is shared, so this is **not credential-independent G5** and does not confer native, scientific, protected or owner authority. Python **3.11.3**; pytest **9.0.2**.
+**Method:** exact detached worktree per HEAD, full Python 3.11 court, demo and two-process SQLite reopen, source-manifest/blob check, prior first-fault reproduction, and additional adversarial probes.
+
+## Candidate ledger
+
+| PR | Exact review HEAD | Python 3.11 court | Demo / persistence | Verdict |
+|---|---|---|---|---|
+| #1199 corrected R12 | `943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6` | 248/248 normal; 248/248 `-O`; pytest 248 + 16 subtests; R11 reviewer 6/6; R12 hostile repair 6/6 | Seed-stable `bc47d610…`; cold reopen and `PRAGMA integrity_check=ok` | **ACCEPT_SCOPED** for the declared R11-review repair only |
+| #1210 R13 | `3b9b58b75bdceec901c3ba7aaa18738ea4989923` | 255/255 normal; 255/255 `-O`; pytest 255 + 14 subtests | Valid chain/cold reopen; fresh runs differ (`2921bbaa…` vs `18f408ca…`) by hash seed | **REVISE_EXACT_DEFECT** — same-event alternate-end `TAKE_UP` |
+| #1214 R14 | `f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0` | 265/265 normal; 265/265 `-O`; pytest 265 + 14 subtests | Valid chain/cold reopen; hash-seed dependent | **REVISE_EXACT_DEFECT** — inherited alternate-end takeup; P004 silent selected-means omission |
+| #1220 R15 | `6075792420e1d87b30036ebe6f352815783e47c2` | 276/276 normal; 276/276 `-O`; pytest 276 + 22 subtests | Valid chain/cold reopen; hash-seed dependent | **REVISE_EXACT_DEFECT** — alternate-end takeup + P018 source preflight |
+| #1222 R16 | `7a8a18c153ee5a36e1c52eca15f4e5e8862296be` | 280/280 normal; 280/280 `-O`; pytest 280 + 32 subtests | Seed-stable `bc47d610…`; cold reopen and integrity valid | **ACCEPT_SCOPED** for P070 typing, deterministic recruitment and any-end trial guard; **HOLD overall** for inherited P018 |
+| R17 repair (new branch) | `7a8a18c` + source-preflight commits | 289/289 normal; 289/289 `-O`; pytest 289 + 32 subtests | Seed-stable `bc47d610…`; cold reopen and integrity valid | Published sourcefree repair candidate; independent review pending |
+
+## Findings
+
+### R12 corrected `943b52c`
+The declared R11-review repairs pass: `REORGANIZE_PROJECT` and all `TAKE_UP_POSSIBLE_END` are refused inside an issued trial; typed non-object P070 snapshots and deterministic active-form ordering are present. The imported R12 hostile module is 6/6 and the R11 reviewer module is 6/6. This does not accept R13/R14/R15, which are **not descendants** of this commit. The later R13 falsey-cue-tag fix is absent here: on R12, `cue(tags=False/''/{}/())` is accepted and one invalid case still mutates the clock; that is an R13-scope defect, not part of the R12 R11-review claim.
+
+### R13 / R14 / R15 — alternate-end trial takeup
+The prior R13 reviewer's two failure cases reproduce on R13, R14 and R15 under normal and `-O`: index:R13/R14/R15 allow model `TAKE_UP_POSSIBLE_END` for a different end B in the same event that issued a legitimate trial for end A. A new independent probe generalizes this to B with a **different object** (`sing together` trial A, `learn piano` end B): R13/R14/R15 commit the durable project and mark B `TAKEN_UP_AS_PRACTICAL_PROJECT`; R16 refuses with `CURRENT_TRIAL_NOT_MATURE_MOTIVE`. This is the same R13 first fault, not an inherited test passing.
+
+### R15 / R16 — P018 source preflight
+Five prior first-fault cases reproduce on R15 and R16: after rewriting a historical source anchor, injecting a source map into an ordinary event, or making a source event payload noncanonical, full `verify_chain()` rejects the history while `source()` still returns content and `commit()` still appends. Two additional independent cases also fail on R15 and R16: a noncanonical **initialization** payload and a noncanonical **ordinary-event** payload are rejected by `verify_chain()` but `source('seed')` still returns content. The fast preflight is not the full audit.
+
+### R14 P004 — selected means omission
+`record_activity_afterlife` accepts a `purpose_selection` for an existing project whose `means` do not include the performed operation and silently returns `[]` with no history. It does not fabricate history, but a selected purpose that cannot be the operation is dropped rather than refused. This is a hardening gap, subordinate to the R14 takeup finding.
+
+### R13/R14/R15 demo nondeterminism
+Fresh demo runs at the same HEAD produce different event hashes under different `PYTHONHASHSEED` values (`2921bbaa…` and `18f408ca…`) while each chain is internally valid. R16's sorted active-form closure makes fresh R16/R17 runs byte-identical at `bc47d610…`.
+
+### R16 declared scope
+R16 P070 typed snapshot tests, 17-form deterministic recruitment test, R12 hostile module, and R13 alternate-end test all pass. Its declared repairs are admitted at scoped sourcefree engineering. R16 does not repair P018; that inherited defect remains RED.
+
+## Genealogy and custody warning
+
+- R13 `3b9b58b` has commit parent `9db0e6f` (original R12), **not** corrected R12 `943b52c`. PR #1210's base branch pointer is the corrected R12 branch, but the commit genealogy is divergent. Do not treat corrected R12 acceptance as inherited by R13/R14/R15; a merge can also revert R12 correction files.
+- R14 -> R15 -> R16 form the R13-line chain. R16 selectively carries R12 P070/determinism/cross-end fixes; it does not include the R12 `HOSTILE_G5_CORRECTION` receipt or test file.
+- R17 is a new branch stacked on R16; it does not rewrite R13–R16.
+
+## Defect-identity conservation
+
+All reviewed ledgers were checked against the original 71-record source and the 73-record R13 line:
+
+- R12 corrected: 71 P records, original records unchanged; queue_E 6 unchanged.
+- R13: original 71 unchanged; adds `SR-P072`, `SR-P073` (author-repaired, review pending).
+- R14/R15/R16: all 73 IDs present; original 71 statuses unchanged; only P004/P012/P018 annotations added at the later cuts.
+- 53 scoped first-fault review dispositions, 8 open, 8 partial, 4 author-repaired pending review (P070–P073), T=0, E=6 remain.
+- Source manifests match exact HEAD files. No protected PRE-MAIN, canonical PROGRAMMA or paired CURRENT_PROGRESS write was performed.
+
+## Published repair
+
+R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` under lock/transaction in `source()`, `commit()` and `seal_source()`. It passes 288/288 normal and `-O`, pytest 288 + 32 subtests, 8/8 focused P018 tests, imported R15 P018 6/6, and the R13 alternate-end module 5/5. Receipt: `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R17_20261120/REPAIR_RECEIPT.md`.
+
+## Outstanding obligations
+
+1. R13/R14/R15 alternate-end takeup remains RED in those frozen candidates; the repair exists in R16 and must be independently received on its own exact HEAD.
+2. P018 remains RED in R15/R16; R17 is the repair candidate and still needs a distinct independent reviewer.
+3. R16 is accepted only for its declared P070/determinism/any-end scope; overall source custody stays HOLD until R17 receiving.
+4. Corrected R12 is accepted only for the R11-review repair; R13's cue-tag and later-line changes are not inherited.
+5. Shared GitHub principal means this ledger is not credential-independent G5. No native, scientific, human, production or protected receiving is claimed.
+
+## GitHub review records
+
+- #1199 corrected R12: https://github.com/maidiu/rawlsing/pull/1199#issuecomment-7054467083
+- #1210 R13: https://github.com/maidiu/rawlsing/pull/1210#issuecomment-7054470086
+- #1214 R14: https://github.com/maidiu/rawlsing/pull/1214#issuecomment-7054471195
+- #1220 R15: https://github.com/maidiu/rawlsing/pull/1220#issuecomment-7054473498
+- #1222 R16: https://github.com/maidiu/rawlsing/pull/1222#issuecomment-7054474928
+- #1230 R17 repair: https://github.com/maidiu/rawlsing/pull/1230
+
+
+## SORACLE × REMONT #1234 — execution review
+
+**Exact HEAD:** `dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b` (Python 3.11.3). This is the SORACLE builder's R3 × REMONT R18 integration, not an ordinary REMONT repair candidate.
+
+**Execution:** `compileall` PASS. The PR's focused courts are not green: `test_r3_r18_joined_faults` + `test_r3_r16_joined_first_consumer` → 19 ran, 1 ERROR (`P018` corrupt-history test raises untyped `KeyError: 'world'` through `source()`); `test_r17_source_preflight` + R18 P004 + R13 → 25 ran, 1 ERROR (`R13` runtime trial test raises `NO_ACTION_OR_PRACTICAL_OPTION`); `test_joined_longitudinal_demo` → 3 ran, 2 ERROR. Full discover: **524 ran, 27 failures + 51 errors** normal and `-O`. Pytest fails collection on `test_initiative_r9.py` and `test_operative_witness_r9.py` (`ModuleNotFoundError: initiative` / `operative_witness`). The longitudinal demo command fails with `TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE`.
+
+**Representative regressions:** R6 (19 errors), R8 (13 failures + 1 error; cue tag/modality/threshold and contextual-flag guards), R11/R12 (trial and inherited-review errors), R14 activity (3 failures), relational metabolism (4 failures), plus joined demo failures. The claimed source blobs for joined `storage.py`, `cultural_mediation.py` and `social_vocal_development.py` match the exact tree, so this is execution/contract failure, not a source-identity substitution.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. The candidate is explicitly `COMMITTED_UNTESTED`; it is not ready for SORACLE or REMONT receiving. SORACLE owns the ordinary initial RED repair. The `KeyError` locus is hardened in the current R17 preflight (`EVENT_ENVELOPE_MALFORMED` / typed `SOURCE_HISTORY_INVALID`), but #1234 still carries the older storage blob and must be reintegrated and rerun.
+- #1234 SORACLE×REMONT execution review: https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058012755
+- R17 update (289 tests, malformed envelope hardening): https://github.com/maidiu/rawlsing/pull/1230#issuecomment-7058013087
+
+## SORACLE × REMONT #1234 retest — 018d3025
+
+**Exact HEAD:** `018d3025f0829d7b24d5ad108abf0764d3830b39`; Python 3.11.3; detached clean worktree. R17 source inheritance is exact: `storage.py` blob `75087ed…` and `test_r17_source_preflight.py` blob `b25f93b…` match the R17 branch.
+
+**Exact command exits**
+- `compileall`: 0.
+- Focused normal (13 modules): 1 — 137 ran, **3 failures + 8 errors**.
+- Focused `-O` (4 modules): 1 — 50 ran, **2 errors**.
+- Full normal discover: 1 — 549 ran, **5 failures + 22 errors**.
+- Full `-O` discover: 1 — same 5 + 22.
+- pytest: 1 — **27 failed, 522 passed, 37 subtests**.
+- `joined_longitudinal_demo --days 14 --beats 12`: 1 — `CURRENT_TRIAL_NOT_MATURE_MOTIVE`.
+
+**First full-suite RED:** `test_co_regulation_r14.R14IntegratedLife.test_caregiver_absence_prevents_actor_bound_future_call` setUp → `runtime.initialize` → `parents.construct_parent` raises `ValueError('PSEUDO_RESPONDENT_REQUIRED')` (`parents.py:19`, `runtime.py:116`). Expected: valid sourcefree parent construction; observed: missing pseudo-respondent source.
+
+**Grouped distribution:** R6 4E+2F plus R6-integrated 1F; R14 co-regulation 3E; R8 lived-genesis 3E; R15 plural care 3E; joined demo 2E; R11 2E+1F; R9 P017 2E; Nadia backlog 1E; social-vocal 1E; whole-organism 1E+2F.
+
+**Focused first REDs:** R11 `test_practical_option_id_only…` errors with `AttributeError: 'R11IngressContract' object has no attribute 'rt'` (stale test fixture); R11 heuristic then raises `CURRENT_TRIAL_NOT_MATURE_MOTIVE`; R6 `activity_history` KeyError (4 cases) and two behavioral failures; joined demo dies in `continue_without_user → runtime.step → development.admit` at `CURRENT_TRIAL_NOT_MATURE_MOTIVE`, so the two Nadia histories and SQLite cold chain were **not reached**.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is material improvement over `dbfb35c` (no SourcePreflight KeyError; focused R8/R13 pass) but still not executable-received; SORACLE owns ordinary repair and must separately handle stale test fixtures versus production owners.
+
+## SORACLE × REMONT #1234 retest — 2553e1d
+
+**Exact HEAD:** `2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8`; Python 3.11.3; detached clean worktree. R17 inheritance still exact: `storage.py` blob `75087ed…`, `test_r17_source_preflight.py` blob `b25f93b…`. Original `018d3025` RED is preserved separately and not overwritten.
+
+**Exact command exits**
+- `compileall`: 0.
+- Focused normal (9 modules): 1 — 103 ran, **5 failures + 1 error**.
+- Focused `-O` (4 modules): 1 — 44 ran, **1 failure**.
+- Full normal discover: 1 — 551 ran, **6 failures + 3 errors**.
+- Full `-O` discover: 1 — same 6 + 3.
+- pytest: 1 — **9 failed, 542 passed, 37 subtests**.
+- `joined_longitudinal_demo --days 14 --beats 12`: **0 PASS**.
+
+**Two histories / cold chains now reached**
+- Spoken branch: father `SPEAK`, object `material_artifact_41d1e145be7ea9b8`, Nadia `INSPECT` `PERFORMED`, 12/12 independent beats, cultural demonstrations 1, age 14; cold chain 17 events, hash `b2c337e242557878d1c9cf3366dc6b1c663d5dc022fcc700c39a0f498e98035a`, valid, 2 source seals.
+- Unspoken branch: father `REST` on the same object, Nadia `INSPECT` `PARTIAL`, 12/12 beats, cultural demonstrations 0, age 14; cold chain 17 events, hash `006dfe2bf688c27e9968cbe8c6c952907824aaea881d34ac39a44a1f69e45ad8`, valid, 2 source seals.
+- The separate cold-reproducibility test passed.
+
+**Remaining 9 full failures/errors, classified**
+- **Fixture/test**: R14 `TypeError: argument of type 'int' is not iterable` (`test_co_regulation_r14.py:84` iterates `alt[0].values()` and applies `'consent' in x` to an int).
+- **Read-model/test expectation**: Nadia backlog `KeyError: 'age_days'` and social-vocal `KeyError: 'role'`; the public `snapshot()` no longer exposes those ledger actor fields (verified actor record has `age_days=30`, `role=child`; add a typed read-model field or read the actor record).
+- **First genuine source/consumer contract RED**: R6/R6-integrated `HISTORICAL_SIGNAL_PATH_REENCOUNTERED` remains present after an unobserved interval; owner locus `constitution.compose` / `runtime.situated` evidence-path/currentness composition.
+- **Unresolved behavioral contracts**: R6 selected-purpose development packet count `2 != 1`; R15 acquires a co-regulation orientation after two real care events where the legacy test expects none until Nadia `ORIENT`; whole-organism composed-activity options remain empty.
+- **Obsolete diagnostic expectation**: R11 expected `PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT`, but the owner still rejects with `MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE`; negative boundary is conserved, diagnostic string changed.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is a substantial improvement over `018d3025` (demo now passes, two cold chains valid, full court down from 27 to 9), but not all failures are repaired and several require owner/test classification. SORACLE owns ordinary source repair; no protected or independent receiving is claimed.
+
+## SORACLE × REMONT #1234 retest — 8d1ff8b
+
+**Exact HEAD:** `8d1ff8bbb75b359cc7bd3044b385323600c70b88`; Python 3.11.3; clean detached worktree. Original `018d3025` and `2553e1d` REDs are preserved separately; the frozen #1171 `dbfb35c` pin was not repinned. R17 source identity remains exact: `storage.py` blob `75087ed…`, `test_r17_source_preflight.py` blob `b25f93b…`.
+
+**Exact exits:** compileall 0; focused normal 0 (146 tests); focused `-O` 0 (71 tests); full normal 0 (551 tests); full `-O` 0 (551 tests); pytest 0 (**551 passed + 37 subtests**); joined longitudinal demo 0.
+
+**All nine old REDs now pass:** R14 fixture TypeError; Nadia backlog `age_days`; social-vocal `role`; R6 selected-purpose packet count; R6 + R6-integrated false historical-signal current; R15 premature co-regulation orientation; R11 diagnostic expectation; whole-organism composed-activity empty. `types.Constitution`/`materialize` now expose exact ledger `role` and `age_days`.
+
+**Independent positive/negative probes:** actual current event signs (`bell`, `performed_speech`) still produce `HISTORICAL_SIGNAL_PATH_REENCOUNTERED`; synthetic `coactor_present`, `material_object_present` and `public_notice_visible` do not. R15 later caregiver acquisition tests pass; R17 nine-case source-preflight court passes, including typed malformed-envelope conflict; R3/R18 joined and R11 forged-trial/refusal courts pass.
+
+**Two histories / cold chains:** spoken father `SPEAK`, Nadia `INSPECT` `PERFORMED`, cultural demonstrations 1, cold 17 events hash `2bd88d7f497bcc5cd32eddd99acab1e03486dfe1810e4ad130e862c2bb024516`; unspoken father `REST`, Nadia `INSPECT` `PARTIAL`, cultural demonstrations 0, cold 17 events hash `e791512755ec2392cd133c49de4bb8cefe19b4e64a58a4d8eca85c6f30232e5e`. Both valid, 2 source seals, age 14, role child; two separate processes per DB produced identical event hashes. Hashes changed from 2553 (`b2c337…`/`006dfe…`) because the R2 role/age read, R6 current-sign filter and R15 care-acquisition changes alter the envelopes; both histories remain internally valid.
+
+**Verdict:** `ACCEPT_SCOPED` for the 8d1f sourcefree first-consumer repairs and tests; not credential-independent G5, empirical PYAT/whole-survey fidelity, native/source/science/actor rights, or protected PROGRAMMA/CURRENT_PROGRESS receiving.
