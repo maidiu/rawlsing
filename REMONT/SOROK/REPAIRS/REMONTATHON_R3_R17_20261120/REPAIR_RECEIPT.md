@@ -34,7 +34,7 @@ Two inherited R4 assertions that previously called `source()` on an already-tamp
 
 ## Court
 
-- New R17 test module: 8/8 PASS normal and `-O` (the seven hostile cases plus a valid read/append continuation).
+- New R17 test module: 9/9 PASS normal and `-O` (the eight hostile cases plus a valid read/append continuation).
 - Imported R15 P018 test module: 6/6 PASS normal and `-O`.
 - Two new reviewer P018 cases: 2/2 PASS normal and `-O`.
 - Full suite: **288/288 normal**, **288/288 `-O`**, pytest **288 passed + 32 subtests** on Python 3.11.3.
@@ -43,3 +43,8 @@ Two inherited R4 assertions that previously called `source()` on an already-tamp
 ## Boundaries
 
 R17 is a sourcefree local repair candidate, not independent acceptance, native P018 source disclosure authority, scientific accreditation or protected receiving. P070–P073 remain author-repaired pending distinct review; the 73 P records and six E holds are unchanged.
+
+
+## Addendum — malformed envelope and joined #1234 evidence
+
+An integration probe on #1234 exposed that `source()` could surface a raw `KeyError` when a historical envelope lacked required keys, because the preflight wrapped only `AssertionError`. R17 now rejects malformed envelopes as `EVENT_ENVELOPE_MALFORMED` in `verify_chain()` and maps `KeyError`/`TypeError`/`ValueError`/`StopIteration` to `Conflict(SOURCE_HISTORY_INVALID: …)`. The focused R17 module is now 9/9. R17 remains a sourcefree repair candidate; #1234 still carries the older storage blob and needs a new integration after this fix.

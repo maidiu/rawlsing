@@ -13,8 +13,8 @@ python -m unittest tests.test_r17_source_preflight -v
 python -m um_sorok_organism demo --db /tmp/remont_r17_fresh.sqlite3
 ```
 
-**Executed locally on Python 3.11.3:** 288/288 unittest normal, 288/288 `-O`, pytest 288 passed + 32 subtests. Fresh demo outputs are byte-identical across `PYTHONHASHSEED` values, 9 events, last hash `bc47d610…`, cold reopen and `PRAGMA integrity_check` valid.
+**Executed locally on Python 3.11.3:** 289/289 unittest normal, 289/289 `-O`, pytest 289 passed + 32 subtests. Fresh demo outputs are byte-identical across `PYTHONHASHSEED` values, 9 events, last hash `bc47d610…`, cold reopen and `PRAGMA integrity_check` valid.
 
-The repair adds full `verify_chain()` preflight to `source()`, `commit()` and `seal_source()`, preserves the existing specific conflict diagnostics first, and updates two inherited R4 source-seal assertions to inspect the source table directly because `source()` now correctly refuses an already-invalid ledger. See `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R17_20261120/REPAIR_RECEIPT.md`.
+The repair adds full `verify_chain()` preflight to `source()`, `commit()` and `seal_source()`, maps malformed envelopes to typed `EVENT_ENVELOPE_MALFORMED` / `Conflict(SOURCE_HISTORY_INVALID: …)`, preserves the existing specific conflict diagnostics, and updates two inherited R4 source-seal assertions to inspect the source table directly because `source()` now correctly refuses an already-invalid ledger. See `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R17_20261120/REPAIR_RECEIPT.md`.
 
 R17 is sourcefree author-tested, not independently accepted. The 73 P records and six E holds remain unchanged; P070–P073 and all prior receiving histories remain separately attributed.

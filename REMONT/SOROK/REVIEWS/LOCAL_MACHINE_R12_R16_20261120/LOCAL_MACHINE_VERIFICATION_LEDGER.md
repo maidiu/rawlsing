@@ -13,7 +13,7 @@
 | #1214 R14 | `f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0` | 265/265 normal; 265/265 `-O`; pytest 265 + 14 subtests | Valid chain/cold reopen; hash-seed dependent | **REVISE_EXACT_DEFECT** — inherited alternate-end takeup; P004 silent selected-means omission |
 | #1220 R15 | `6075792420e1d87b30036ebe6f352815783e47c2` | 276/276 normal; 276/276 `-O`; pytest 276 + 22 subtests | Valid chain/cold reopen; hash-seed dependent | **REVISE_EXACT_DEFECT** — alternate-end takeup + P018 source preflight |
 | #1222 R16 | `7a8a18c153ee5a36e1c52eca15f4e5e8862296be` | 280/280 normal; 280/280 `-O`; pytest 280 + 32 subtests | Seed-stable `bc47d610…`; cold reopen and integrity valid | **ACCEPT_SCOPED** for P070 typing, deterministic recruitment and any-end trial guard; **HOLD overall** for inherited P018 |
-| R17 repair (new branch) | `7a8a18c` + source-preflight commit | 288/288 normal; 288/288 `-O`; pytest 288 + 32 subtests | Seed-stable `bc47d610…`; cold reopen and integrity valid | Published sourcefree repair candidate; independent review pending |
+| R17 repair (new branch) | `7a8a18c` + source-preflight commits | 289/289 normal; 289/289 `-O`; pytest 289 + 32 subtests | Seed-stable `bc47d610…`; cold reopen and integrity valid | Published sourcefree repair candidate; independent review pending |
 
 ## Findings
 
@@ -71,3 +71,14 @@ R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` u
 - #1220 R15: https://github.com/maidiu/rawlsing/pull/1220#issuecomment-7054473498
 - #1222 R16: https://github.com/maidiu/rawlsing/pull/1222#issuecomment-7054474928
 - #1230 R17 repair: https://github.com/maidiu/rawlsing/pull/1230
+
+
+## SORACLE × REMONT #1234 — execution review
+
+**Exact HEAD:** `dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b` (Python 3.11.3). This is the SORACLE builder's R3 × REMONT R18 integration, not an ordinary REMONT repair candidate.
+
+**Execution:** `compileall` PASS. The PR's focused courts are not green: `test_r3_r18_joined_faults` + `test_r3_r16_joined_first_consumer` → 19 ran, 1 ERROR (`P018` corrupt-history test raises untyped `KeyError: 'world'` through `source()`); `test_r17_source_preflight` + R18 P004 + R13 → 25 ran, 1 ERROR (`R13` runtime trial test raises `NO_ACTION_OR_PRACTICAL_OPTION`); `test_joined_longitudinal_demo` → 3 ran, 2 ERROR. Full discover: **524 ran, 27 failures + 51 errors** normal and `-O`. Pytest fails collection on `test_initiative_r9.py` and `test_operative_witness_r9.py` (`ModuleNotFoundError: initiative` / `operative_witness`). The longitudinal demo command fails with `TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE`.
+
+**Representative regressions:** R6 (19 errors), R8 (13 failures + 1 error; cue tag/modality/threshold and contextual-flag guards), R11/R12 (trial and inherited-review errors), R14 activity (3 failures), relational metabolism (4 failures), plus joined demo failures. The claimed source blobs for joined `storage.py`, `cultural_mediation.py` and `social_vocal_development.py` match the exact tree, so this is execution/contract failure, not a source-identity substitution.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. The candidate is explicitly `COMMITTED_UNTESTED`; it is not ready for SORACLE or REMONT receiving. SORACLE owns the ordinary initial RED repair. The `KeyError` locus is hardened in the current R17 preflight (`EVENT_ENVELOPE_MALFORMED` / typed `SOURCE_HISTORY_INVALID`), but #1234 still carries the older storage blob and must be reintegrated and rerun.
