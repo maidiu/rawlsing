@@ -77,6 +77,10 @@ def conserve_lived_episode(actor,experience,event_ref,before,after,
         "unfinished_own_activity":bool(incomplete),
         "received_relief":copy(relief) if received else {},
         "received_sign_refs":refs,
+        "personally_perceived_sign_sources":[
+            {"cue_ref":c["id"],"kind":c.get("kind"),
+             "source_actor":c.get("source_actor")}
+            for c in cues if type(c.get("id")) is str],
         "received_sign_tags":sorted({str(t).lower()
             for c in cues for t in c.get("tags",[])
             if type(t) is str and t}),
@@ -121,8 +125,55 @@ def possible_contrast_end(actor,experience,event_ref):
     if not means or not cur["received_sign_refs"]:return []
     # Without personally received cue terms, no globally named "caregiver"
     # or semantic category is installed inside a child.
+    # The present sign vocabulary comes from the person's own sensed cues;
+    # no analyst-named generic category can stand in for an absent sign.
     cues=cur["received_sign_tags"][:12]
-    if not cues:cues=["received_relief"]
+    if not cues:
+        return []
+    # An LLM may offer a fallible interpretation, but cannot *create*
+    # the operative goal by replacing actual episode/operation/need identity
+    # with a more attractive unlicensed narrative.
+    relieved_axis=sorted(cur["received_relief"],
+        key=lambda axis:(-cur["received_relief"][axis],axis))[0]
+    hypothesized_end=(
+        "explore whether "+earlier["actor_felt_attempt"].lower()+
+        " can help obtain "+relieved_axis+
+        " after the earlier unfinished attempt")
+    # The same material history can support distinct, competing *possible*
+    # organizations. The LLM may select one typed interpretation; it cannot
+    # supply an unseen caregiver, unattained bodily benefit, or invented act.
+    licensed=[{
+        "mode":"EXPERIMENT_WITH_OWN_PRIOR_OPERATION",
+        "candidate_ref":stable_id("genetic_end_reading",{
+            "actor":actor["id"],"later":cur["id"],"mode":"OWN_ACT"}),
+        "object":hypothesized_end,
+        "means":means,
+        "addressed_party_ref":None,
+        "source_received_sign_ref":cur["received_sign_refs"][0],
+    }]
+    independent_others=sorted({
+        x["source_actor"] for x in cur.get(
+            "personally_perceived_sign_sources",[])
+        if type(x.get("source_actor")) is str
+        and x["source_actor"]!=actor["id"]
+        and x.get("kind") in (
+            "performed_care","performed_feed","performed_signal")})
+    if earlier["actor_felt_attempt"]=="SIGNAL" and (
+            "SIGNAL" in means):
+        for other in independent_others[:2]:
+            sourced=next(x for x in cur["personally_perceived_sign_sources"]
+                if x["source_actor"]==other and x.get("kind") in (
+                    "performed_care","performed_feed","performed_signal"))
+            licensed.append({
+                "mode":"TRY_ADDRESSING_PERSONALLY_PERCEIVED_RESPONDER",
+                "candidate_ref":stable_id("genetic_end_reading",{
+                    "actor":actor["id"],"later":cur["id"],
+                    "mode":"RESPONDER","other":other}),
+                "object":"try signaling toward a previously sensed "+
+                         "responder when seeking "+relieved_axis,
+                "means":["SIGNAL"],"addressed_party_ref":other,
+                "source_received_sign_ref":sourced["cue_ref"],
+            })
     witness=stable_id("contrasted_lived_possibility",{
         "actor":actor["id"],"first":earlier["id"],"later":cur["id"]})
     if any(e.get("genesis_witness_ref")==witness
@@ -134,9 +185,12 @@ def possible_contrast_end(actor,experience,event_ref):
         "prior_unfinished_episode_ref":earlier["id"],
         "later_relief_episode_ref":cur["id"],
         "later_perceived_cue_ref":cur["received_sign_refs"][0],
-        "possible_object":(
-            "seek a repeatable relation between an unfinished attempt "
-            "and subsequently experienced bodily relief"),
+        "possible_object":hypothesized_end,
+        "licensed_end_constructions":licensed,
+        "chosen_end_mode":licensed[0]["mode"],
+        "chosen_end_candidate_ref":licensed[0]["candidate_ref"],
+        "relieved_bodily_axis":relieved_axis,
+        "genesis_family":"SENSED_INTERRUPTION_THEN_RELIEF",
         "possible_means":means,
         "cue_terms":cues,
         "sourcefree_genesis_not_an_empirical_motive_law":True,
@@ -153,7 +207,7 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
         raise ValueError("GENESIS_NO_DISTINCT_LIVED_CONTRAST")
     expected=qualified[0]
     for field in ("genesis_witness_ref","prior_unfinished_episode_ref",
-                  "later_relief_episode_ref","later_perceived_cue_ref"):
+                  "later_relief_episode_ref"):
         if proposal.get(field)!=expected[field]:
             raise ValueError("GENESIS_HISTORICAL_SOURCE_FORGERY_"+field)
     provided=proposal.get("possible_means")
@@ -166,9 +220,35 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
             or any(type(x) is not str or x not in expected["cue_terms"]
                    for x in cue_terms)):
         raise ValueError("GENESIS_UNRECEIVED_SIGN_GENERALIZATION")
+    selected_ref=proposal.get("chosen_end_candidate_ref",
+                              expected["chosen_end_candidate_ref"])
+    licensed=[v for v in expected["licensed_end_constructions"]
+              if v["candidate_ref"]==selected_ref]
+    if len(licensed)!=1:
+        raise ValueError("GENESIS_UNLICENSED_QUALITATIVE_END")
+    selected=licensed[0]
+    # Distinct actually sensed responders may be represented by different
+    # cue identities. The model must identify the EXACT one for its chosen
+    # interpretation, rather than inherit the generic first cue.
+    if proposal.get("later_perceived_cue_ref")!=selected[
+            "source_received_sign_ref"]:
+        raise ValueError("GENESIS_SELECTED_RESPONDER_SIGN_FORGED")
+    mode=selected["mode"]
+    if (proposal.get("chosen_end_mode",mode)!=mode or
+            type(selected_ref) is not str):
+        raise ValueError("GENESIS_END_MODE_CONFLICT")
     meaning=proposal.get("possible_object")
-    if type(meaning) is not str or not meaning.strip() or len(meaning)>512:
-        raise ValueError("GENESIS_INVALID_QUALITATIVE_END")
+    # Reconstruct a contextual operation from lived sources, rather than
+    # granting an arbitrary LLM-authored goal. A model can choose between
+    # *licensed alternative readings* of one contradictory history.
+    if meaning!=selected["object"]:
+        raise ValueError("GENESIS_OPERATIVE_END_NOT_DERIVED_FROM_HISTORY")
+    if any(x not in selected["means"] for x in provided):
+        raise ValueError("GENESIS_SELECTED_END_MEANS_INCOMPATIBLE")
+    interpretation=proposal.get("interpretive_hypothesis")
+    if (interpretation is not None and
+            (type(interpretation) is not str or len(interpretation)>512)):
+        raise ValueError("GENESIS_INVALID_INTERPRETIVE_HYPOTHESIS")
     ident=stable_id("historically_emergent_end",{
         "actor":actor["id"],"witness":expected["genesis_witness_ref"]})
     if any(p.get("id")==ident for p in actor.get("possible_ends",[])):
@@ -179,10 +259,18 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
                 if x["id"]==expected["later_relief_episode_ref"])
     end={
         "id":ident,"genesis_witness_ref":expected["genesis_witness_ref"],
-        "possible_object":meaning.strip(),
+        "possible_object":meaning,
+        "genetic_end_mode":mode,
+        "genetic_end_candidate_ref":selected_ref,
+        "addressed_party_ref":selected["addressed_party_ref"],
+        "source_responding_sign_ref":selected["source_received_sign_ref"],
+        "genesis_family":expected["genesis_family"],
+        "relieved_bodily_axis":expected["relieved_bodily_axis"],
+        "model_interpretation_hypothesis_not_operative_end":interpretation,
         "possible_means":copy(provided),"cue_terms":copy(cue_terms),
         "status":"POSSIBLE_NOT_ACQUIRED_MOTIVE",
         "origin_event":event_ref,
+        "origin_clock":experience["clock"],
         "experience_ref":experience["ref"],
         "actor_perceived_cue_ref":expected["later_perceived_cue_ref"],
         "eliciting_actor_action":first["actor_felt_attempt"],

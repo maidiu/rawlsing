@@ -12,6 +12,7 @@ from .preproject_agency import recruit_preproject_anticipations
 from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .historical_self_organization import pre_cue_pressures
+from .care_commitment_genesis import practiced_care_alternatives
 from .distributed_power import conditional_assistance_options
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
@@ -68,6 +69,10 @@ def materialize(actor,world):
         lived_genesis_episodes=copy(actor.get(
             'lived_genesis_episodes',[])),
         joint_practices=copy(actor.get('joint_practices',[])),
+        care_contribution_episodes=copy(actor.get(
+            'care_contribution_episodes',[])),
+        care_practical_commitments=copy(actor.get(
+            'care_practical_commitments',[])),
         historical_orientations=copy(actor.get('historical_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
@@ -579,6 +584,8 @@ def compose(constitution,access,limit=50):
         option['practical_alternatives']+=addressed_signal_alternatives(
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=project_repeat_feeding(
+            constitution,attention['focus_access'],option)
+        option['practical_alternatives']+=practiced_care_alternatives(
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=situated_suspension_targets(
             constitution,attention['focus_access'],option)

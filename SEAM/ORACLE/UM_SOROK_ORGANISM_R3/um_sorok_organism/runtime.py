@@ -33,6 +33,8 @@ from .livelihood_history import conserve_incomplete_work
 from .psychic_genesis import (
     conserve_lived_episode,possible_contrast_end)
 from .joint_practice_genesis import possible_joint_practice
+from .care_commitment_genesis import (
+    conserve_costly_offered_care,candidate_care_commitment)
 from .labor_dependency import register_work_regime
 from .co_regulation_history import (
     possible_acquired_regulation, record_lived_co_regulation_response,
@@ -303,6 +305,17 @@ class ConstitutiveRuntime:
             basis+=['project:'+ref for ref in selected_refs]
             bound_target=(selected_alternative['world_request']['addressed_party_ref']
                           if selected_alternative else None)
+            if trial_choice is not None and trial_choice.get(
+                    'source_qualified_addressee_ref') is not None:
+                end_target=trial_choice['source_qualified_addressee_ref']
+                if (bound_target not in (None,end_target)
+                        or action not in COOPERATIVE):
+                    raise ValueError('GENETIC_TRIAL_ADDRESSEE_NOT_BINDABLE')
+                if not any(c.get('kind')=='coactor_present'
+                       and c.get('source_actor')==end_target
+                       for c in e.cues):
+                    raise ValueError('GENETIC_TRIAL_OTHER_NOT_PRESENT')
+                bound_target=end_target
             bound_object=(selected_alternative['world_request'].get('material_object_ref')
                           if selected_alternative else None)
             practical={'status':'ACTOR_POLICY_PRACTICAL_ATTEMPT',
@@ -572,6 +585,12 @@ class ConstitutiveRuntime:
                 body_before=bodily_before[aid],body_after=actors[aid]['body'])
             possible_joint_practice_genesis=possible_joint_practice(
                 actors[aid],experience,objective_ref)
+            if personally_done and actor_attempt is not None:
+                conserve_costly_offered_care(
+                    actors[aid],experience,objective_ref,actor_attempt,
+                    summary,bodily_before[aid],actors[aid]['body'])
+            possible_care_practice=candidate_care_commitment(
+                actors[aid],experience,objective_ref)
             # A person can later seek to repeat an actually exercised
             # operation or attempt to practice a formerly joint activity.
             # The source-free rule does NOT confer independent technical
@@ -632,6 +651,8 @@ class ConstitutiveRuntime:
                 'historically_possible_genetic_ends':copy(possible_genetic_end),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
+                'historically_possible_care_practices':copy(
+                    possible_care_practice),
                 'recent_personally_lived_genesis_witnesses_analyst_only':copy(
                     actors[aid].get('lived_genesis_episodes',[])[-8:]),
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
@@ -860,6 +881,18 @@ class ConstitutiveRuntime:
         _,world=self.ledger.world(self.world_id)
         _,actor=self.ledger.actor(actor_id)
         return render_blind_interview(actor,instrument,self.semantic,world)
+
+    def blind_interview_evidenced(self,actor_id,question_contract):
+        """No respondent answer keys; ungrounded model proposals are refused.
+
+        The qualified PYAT instrument and blind success court are still
+        separate source/owner obligations, not inferred from this interface.
+        """
+        from .blind_parent_probes import blind_operational_interview
+        _,world=self.ledger.world(self.world_id)
+        _,actor=self.ledger.actor(actor_id)
+        return blind_operational_interview(
+            actor,question_contract,self.semantic,world)
 
     def verify(self):return self.ledger.verify_chain()
     def close(self):self.ledger.close()

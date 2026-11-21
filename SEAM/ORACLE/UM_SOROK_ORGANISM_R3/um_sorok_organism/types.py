@@ -76,6 +76,8 @@ class Constitution:
     labor_dependency_encounters: list[dict] = field(default_factory=list)
     lived_genesis_episodes: list[dict] = field(default_factory=list)
     joint_practices: list[dict] = field(default_factory=list)
+    care_contribution_episodes: list[dict] = field(default_factory=list)
+    care_practical_commitments: list[dict] = field(default_factory=list)
 
 
 @dataclass
@@ -151,6 +153,8 @@ def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
         'labor_dependency_encounters': [],
         'lived_genesis_episodes': [],
         'joint_practices': [],
+        'care_contribution_episodes': [],
+        'care_practical_commitments': [],
         'memories': [], 'traces': [],
         'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
         'grade': GRADE, 'history_refs': [], 'current_activity': None,

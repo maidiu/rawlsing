@@ -18,6 +18,7 @@ from .historical_self_organization import (
     revise_operative_self)
 from .psychic_genesis import admit_contrast_end
 from .joint_practice_genesis import admit_joint_practice
+from .care_commitment_genesis import admit_care_commitment
 from .prospective_horizon import record_possible_end_trial
 from .functional_correspondence import admit_functional_correspondence
 from .material_investments import admit_material_investment
@@ -51,7 +52,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
-         'ACQUIRE_CONDITIONAL_JOINT_PRACTICE','NO_CHANGE'}
+         'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
+         'ACQUIRE_COSTLY_CARE_PRACTICE','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -257,6 +259,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['forms'][ident]['lifecycle']='DORMANT' if op=='SET_DORMANT' else 'ACTIVE'
             actor['forms'][ident].setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACQUIRE_COSTLY_CARE_PRACTICE':
+            try:
+                report.append(admit_care_commitment(
+                    actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_CONDITIONAL_JOINT_PRACTICE':
             try:
                 report.append(admit_joint_practice(
@@ -374,6 +382,35 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             # an instruction to invent a conscious explanation.
             later_received={cue.get('id') for cue in experience.get('perceived_cues',[])
                 if isinstance(cue,dict) and type(cue.get('id')) is str}
+            if end.get('genesis_family')=='SENSED_INTERRUPTION_THEN_RELIEF':
+                # A mere third event is not enough: an acquired new concern
+                # must be brought into an actually *relevant* later situation.
+                # The old code would accept an unrelated singleton sign as
+                # sufficient to manufacture a qualitatively new project.
+                if (type(experience.get('clock')) is not int
+                        or type(end.get('origin_clock')) is not int
+                        or experience['clock']<=end['origin_clock']):
+                    raise InvalidDevelopment('GENETIC_TAKEUP_NOT_LATER_EXPERIENCE')
+                qualified_signs={cue.get('id') for cue in
+                    experience.get('perceived_cues',[])
+                    if type(cue) is dict
+                    and type(cue.get('id')) is str
+                    and bool({str(t).casefold() for t in
+                        cue.get('tags',[]) if type(t) is str}
+                        & {str(t).casefold() for t in
+                           end.get('cue_terms',[]) if type(t) is str})}
+                if not qualified_signs:
+                    raise InvalidDevelopment('GENETIC_TAKEUP_NO_REENCOUNTERED_SIGN')
+                if (c.get('later_perceived_cue_ref') is not None
+                        and c['later_perceived_cue_ref'] not in qualified_signs):
+                    raise InvalidDevelopment('GENETIC_TAKEUP_UNRELATED_SIGN')
+                if c.get('later_perceived_cue_ref') is None:
+                    # A sourcefree inference can abstain when multiple signs
+                    # compete. It cannot choose arbitrary "first" as cause.
+                    if len(qualified_signs)!=1:
+                        raise InvalidDevelopment('GENETIC_TAKEUP_SIGN_AMBIGUOUS')
+                    c=copy(c)
+                    c['later_perceived_cue_ref']=next(iter(qualified_signs))
             claimed_later_sign=c.get('later_perceived_cue_ref')
             if (claimed_later_sign is not None and
                     (type(claimed_later_sign) is not str or
@@ -419,6 +456,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                      'skill_mastery_not_inferred':True,
                      'original_attempt_purpose_not_rewritten':True,
                      'grade':GRADE}
+            # A specifically experienced responder becomes an *addressed*
+            # practical possibility, never an assumed beneficiary or consent.
+            if end.get('addressed_party_ref') is not None:
+                project['addressed_party_ref']=end['addressed_party_ref']
+                project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
             actor['projects'].append(project)
             end.setdefault('subsequent_takeup',[]).append({
                 'event':event_ref,'experience_ref':experience['ref'],
