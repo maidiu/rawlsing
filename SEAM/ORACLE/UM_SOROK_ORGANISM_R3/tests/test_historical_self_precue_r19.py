@@ -13,7 +13,7 @@ from um_sorok_organism.psychic_genesis import conserve_lived_episode
 from um_sorok_organism.historical_self_organization import possible_lived_directional_orientation
 from copy import deepcopy
 from um_sorok_organism.runtime import ConstitutiveRuntime
-from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService
+from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService, HeuristicSemanticProvider
 
 
 def lived(actor, event, action='SIGNAL', *, clock=1, cue=False):
@@ -342,6 +342,8 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                 'fictional_seed':{'projects':[]}}
         observed=[]
         def callback(task,packet):
+            if task=='adult_constructor':
+                return HeuristicSemanticProvider().propose(task,packet)
             if task=='development':
                 if packet['actor']['id']=='mother':
                     available=packet.get(
