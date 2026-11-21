@@ -1,0 +1,33 @@
+name: PYAT KUDA082 R157 sourcefree two-path parity
+on:
+  push:
+    branches:
+      - agent/pyat-kuda082-r157-current-c11-dual-receipt-20261121
+permissions:
+  contents: read
+jobs:
+  sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree test dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Exact SHA current R157 and C11 diagnostic
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p .kuda082-proof
+          python -m pytest -q -o addopts='' --junitxml=.kuda082-proof/junit.xml \
+            rawlsing_next/tests/test_kuda082_r157_current_c11_parity.py \
+            rawlsing_next/tests/test_pyat940_s1b_support.py
+      - name: Preserve JUnit court evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuda082-r157-c11-sourcefree
+          path: .kuda082-proof/
+          if-no-files-found: error
+          include-hidden-files: true
