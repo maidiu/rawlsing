@@ -63,10 +63,22 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'tags': ['footsteps', 'approach'], 'description': 'Footsteps nearby.',
                        'grade': grade, 'visual_identity_known': False})
     if operation == 'SAY' and sound:
+        # Audibility is not lexical comprehension. The world retains exact
+        # user-authored words, but an immature hearer receives only a sourced
+        # sound opportunity, not the adult analyst's propositional knowledge.
+        # This is a provisional sourcefree capacity gate, not speech science.
+        language = actor.get('body', {}).get('language', 0)
+        if type(language) not in (int, float) or not 0 <= language <= 1:
+            raise EncounterRefusal('INVALID_ACTOR_LANGUAGE_CAPACITY')
+        verbal = language >= 0.35
         result.append({'event_ref': event_ref, 'actor': actor['id'],
                        'modality': 'auditory', 'kind': 'visitor_speech',
-                       'tags': ['speech'], 'description': visitor['spoken_text'],
-                       'grade': grade, 'speaker_identity_confirmed': False})
+                       'tags': ['speech'] if verbal else ['voice', 'speech_sound'],
+                       'description': visitor['spoken_text'] if verbal
+                                      else 'Speech sounds nearby.',
+                       'grade': grade, 'speaker_identity_confirmed': False,
+                       'lexical_comprehension': 'SOURCEFREE_CAPACITY_ELIGIBLE' if verbal
+                                                else 'NOT_ESTABLISHED'})
     if operation == 'MOVE' and visible:
         result.append({'event_ref': event_ref, 'actor': actor['id'],
                        'modality': 'visual', 'kind': 'visitor_arrival',
@@ -208,10 +220,16 @@ class NeighborEncounter:
                 eligible = sensory_evidence(world, actor,
                     {'spoken_text': text}, operation, origin, loc, ref)
                 for sign in eligible:
+                    # R21's actor plan reads at clock t, but its lived
+                    # afterlife reads at t+1 after world resolution. A zero-
+                    # lifetime cue would vanish between the two and silently
+                    # erase the user's actual sensory event from experience.
+                    # One extra *read window* is provisional scheduling law,
+                    # NOT a claim that a footstep or utterance physically lasts.
                     cue = add_cue(world, sign['kind'], sign['tags'],
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
-                        private_to=actor_id)
+                        private_to=actor_id, lasting_ticks=1)
                     evidence.append({'actor': actor_id, 'event_ref': ref,
                                      'cue_ref': cue['id'], 'modality': sign['modality'],
                                      'basis': sign['kind'], 'grade': sign['grade']})
