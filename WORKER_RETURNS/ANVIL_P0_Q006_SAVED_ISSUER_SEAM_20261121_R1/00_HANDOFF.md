@@ -140,3 +140,27 @@ checks the candidate and private authority.
 
 Pins: #1084 `357a0fbf...`, #1205 `c5efdbdf...`, #1185 `3eee662d...`, q103
 `4a3599065...`.
+
+## Held source-universe DEFER — exact first fault
+
+The actual cheap probe shows:
+
+- operation-only registry: `exact historical authority unavailable; no fallback permitted`
+- with the stored snapshot: `EmpiricalUniverse authority closure contains nonpositive exact snapshot`
+
+The sole attached source snapshot is `SOURCE_SEMANTICS_TOPOLOGY` with
+`decision_state=DEFER` and scope `EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY`.
+The consuming stage is `execute_empirical_query` preflight
+`_validate_public_object_authorities` on `EmpiricalUniverse`, before `indices_for`.
+
+No existing route promotes that historical snapshot:
+
+- `resolve_exact_runtime_authority` returns only adopted historical snapshots
+- `authorize_i03_operation_successor` requires a positive `PREDICATE_GRAMMAR`
+- `AuthorityRegistry.resolve_exact` has no fallback
+
+No implementation or relabel was made. The exact missing native interface is an
+adopted source-universe/source-semantics successor resolver bound to the
+historical DEFER snapshot, exact source/release/universe/replay roots and the
+q103 recorded-only operation. The smallest owner decision is to issue/adopt one
+current positive source-universe successor for that exact scope.
