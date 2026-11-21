@@ -1,0 +1,81 @@
+{
+  "authority_negative": {
+    "message": "current ANVIL saved-source analytical authority refused",
+    "type": "DirectEstateError"
+  },
+  "estate_writes": false,
+  "foreign_catalog_negative": {
+    "estate_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac|3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac",
+    "foreign_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c|e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c",
+    "result": {
+      "message": "stream query targets a foreign universe",
+      "type": "DirectEstateError"
+    }
+  },
+  "member_mutation_negative": {
+    "message": "stream member changed during execution",
+    "type": "DirectEstateError"
+  },
+  "missing_catalog_negative": {
+    "catalog_constructed_from_estate": false,
+    "empty_catalog_result": {
+      "message": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+      "type": "CarrierExecutionBindingError"
+    }
+  },
+  "nonanswer_state": {
+    "proven_by_sourcefree_fixture": false,
+    "q103_nonanswer_cells": "NOT_PROVEN__SOURCE_AUTHORITY_MISSING",
+    "reason": "the reusable fixture proves the stream/catalog seam only; q103 97/98/99 and asked routing remain outside this sourcefree fixture"
+  },
+  "original_source_accessed": false,
+  "positive": {
+    "fact_replay_ref": "{'content_hash': 'a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916'}",
+    "raw_denominator_support": 2,
+    "release_ref": [
+      {
+        "content_hash": "b86240e652582087f6707846b654a9a63f1965400f291f1388f4f86c66540783",
+        "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+        "object_id": "HANDOFF"
+      }
+    ],
+    "roots_unchanged": true,
+    "stream_release_matches_estate": true,
+    "typed_state": "SUPPORTED"
+  },
+  "schema": "ANVIL_Q006_SAVED_ISSUER_SEAM_PROOF@1",
+  "sourcefree": true,
+  "status": "NO_SAVED_STREAM_CATALOG_PRODUCER__SEAM_AND_NEGATIVES_EXECUTED",
+  "supplied_catalog": {
+    "authority_count": 5,
+    "origin": "test helper / sourcefree C11 candidate; not produced from VerifiedAnvilStreamEstate",
+    "predicate_count": 1,
+    "predicate_ref": {
+      "content_hash": "7d73d9cd59dfbd65505fd23b46f15ded1704a57d8f825f9f81ea1b8dbc202d7b",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:7d73d9cd59dfbd65505fd23b46f15ded1704a57d8f825f9f81ea1b8dbc202d7b"
+    },
+    "query_count": 1,
+    "query_ref": {
+      "content_hash": "39d7fc3adf3d35189854da46eacc483a7bd92e0c13fdf199728dfe5285d67ca0",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:39d7fc3adf3d35189854da46eacc483a7bd92e0c13fdf199728dfe5285d67ca0"
+    }
+  },
+  "verified_estate": {
+    "catalog_needed_by": "execute_anvil_stream_i03(estate, runtime_catalog, query_ref, predicate_ref)",
+    "has_predicate_attribute": false,
+    "has_query_attribute": false,
+    "has_runtime_catalog_attribute": false,
+    "native_catalog_constructor_from_estate": null,
+    "stream_roots": {
+      "logical": "657da7c5f51b23ce9830ba2bc987b6cab5ff828f571f0dda4345a5a6599c92bd",
+      "physical": "7cd03cf667531339ac336e2d4f192608eb88dcdc8877f6e81f87d11355a6cd93",
+      "release": "C11_STREAM_SOURCEFREE_RELEASE|HANDOFF|b86240e652582087f6707846b654a9a63f1965400f291f1388f4f86c66540783",
+      "replay": "4fb9be475feed527b69cf009faf7cdaa89618badf0c00a278085a97d7e6bbc22",
+      "schema": "ANVIL_STREAM_C11_ESTATE@1",
+      "source": "SOURCE_ARTIFACT|sourcefree|98f1102a49893b84550ff51743960f957015bb4f4394d057250c96023ca631ce",
+      "universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac|3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac"
+    }
+  }
+}

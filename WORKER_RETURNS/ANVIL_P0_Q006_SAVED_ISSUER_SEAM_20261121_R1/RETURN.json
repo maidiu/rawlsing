@@ -1,0 +1,87 @@
+{
+  "base_commit": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+  "branch": "agent/remont-q006-saved-issuer-20261121-r1",
+  "c11_admission_rerun": false,
+  "estate_run": false,
+  "g5_claim": false,
+  "negatives": {
+    "authority": {
+      "message": "current ANVIL saved-source analytical authority refused",
+      "type": "DirectEstateError"
+    },
+    "foreign_catalog": {
+      "estate_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac|3477062145c4f70141221567363dc945cdcc1b23b961e8372ef0c941c692ffac",
+      "foreign_universe": "EmpiricalUniverse@1.0.0|urn:rawlsing:pre553:EmpiricalUniverse:sha256:e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c|e53e0b72d423063d071212f792c0b757d0b5cae18768d462162b024a6b6dc94c",
+      "result": {
+        "message": "stream query targets a foreign universe",
+        "type": "DirectEstateError"
+      }
+    },
+    "member_mutation": {
+      "message": "stream member changed during execution",
+      "type": "DirectEstateError"
+    },
+    "missing_catalog": {
+      "catalog_constructed_from_estate": false,
+      "empty_catalog_result": {
+        "message": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+        "type": "CarrierExecutionBindingError"
+      }
+    }
+  },
+  "nonanswers": {
+    "proven_by_sourcefree_fixture": false,
+    "q103_nonanswer_cells": "NOT_PROVEN__SOURCE_AUTHORITY_MISSING",
+    "reason": "the reusable fixture proves the stream/catalog seam only; q103 97/98/99 and asked routing remain outside this sourcefree fixture"
+  },
+  "original_q103_data_accessed": false,
+  "original_source_accessed": false,
+  "owner_needed": [
+    "R03 / saved-release issuer owner",
+    "SRC04 QSM/source/risk owner"
+  ],
+  "pins": {
+    "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
+    "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+    "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "proof_out_sha256": "91492220883e018aec8343d1bb5a9a0522740eb38151cf045e1e749a7e4c4a4f",
+    "proof_script_sha256": "95dcfe326a915036ee0f8693870aaab03890a97e0b481f335dc2bd9a8f3b0e73"
+  },
+  "positive": {
+    "fact_replay_ref": "{'content_hash': 'a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:a7bb2e80c5ba2d9f88683dc9d5efb6d14b6ad740821422da97cec00186201916'}",
+    "raw_denominator_support": 2,
+    "release_ref": [
+      {
+        "content_hash": "b86240e652582087f6707846b654a9a63f1965400f291f1388f4f86c66540783",
+        "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+        "object_id": "HANDOFF"
+      }
+    ],
+    "roots_unchanged": true,
+    "stream_release_matches_estate": true,
+    "typed_state": "SUPPORTED"
+  },
+  "private_custody_read": false,
+  "producer_status": "ABSENT",
+  "protected_edits": false,
+  "q103_blockers": {
+    "asked_eligible": "ROUTING_UNKNOWN, row_selector ALL, unresolved q103 risk set",
+    "native_i03": "NOT_RUN; q103 not issued",
+    "response_codes": "97 and 98 both DK; 99 substantive in current SRC04 config",
+    "saved_issuer": "no authentic saved-stream RuntimeObjectCatalog/query/predicate producer"
+  },
+  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
+  "reused": [
+    "VerifiedAnvilStreamEstate",
+    "qualify_saved_stream_manifest",
+    "execute_anvil_stream_i03",
+    "DirectEstateI03Session",
+    "execute_empirical_query",
+    "RuntimeObjectCatalog"
+  ],
+  "schema": "ANVIL_P0_Q006_SAVED_ISSUER_SEAM_RETURN@1",
+  "seam": "VerifiedAnvilStreamEstate -> execute_anvil_stream_i03(estate, runtime_catalog, query_ref, predicate_ref)",
+  "smallest_code_terrain": "A stream-bound issuance seam beside execute_anvil_stream_i03 consuming verified estate + exact saved question/universe + owner q103 source decision + exact query/predicate/replay scope; refuse absent/conflicting authority.",
+  "sourcefree": true,
+  "status": "NO_COMPETENT_SAVED_STREAM_CATALOG_PRODUCER__Q103_ISSUER_BLOCKED"
+}
