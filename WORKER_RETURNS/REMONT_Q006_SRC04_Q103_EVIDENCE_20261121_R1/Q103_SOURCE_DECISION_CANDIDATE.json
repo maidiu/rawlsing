@@ -1,0 +1,60 @@
+{
+  "schema": "ANVIL_Q103_SOURCE_OWNER_DECISION_CANDIDATE@1",
+  "issued": false,
+  "owner_signature": null,
+  "decision_scope": "SRC04 Arab Barometer Wave 1 q103",
+  "question": {
+    "question_id": "q103",
+    "native_question_ref": "urn:rawlsing:r157:original:SRC04:item:question_impl.phase0.7f5834521c9c4a400580",
+    "saved_stream_question_binding_present": true,
+    "questionnaire_sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+    "question_text": "How would you rate the economic situation of your family today?",
+    "source_labels": {"1": "Very Good", "2": "Good", "3": "Bad", "4": "Very Bad", "97": "Not clear", "98": "Can't Choose/Don't know", "99": "Decline to Answer"}
+  },
+  "signable_fields": {
+    "question_identity": "SIGNABLE__QUESTIONNAIRE_QSR_AND_SAVED_BINDING_EXACT",
+    "source_category_labels": "SIGNABLE__ACTUAL_QUESTIONNAIRE_LABELS_1_4_97_98_99",
+    "saved_carrier_raw_retention": "EVIDENCE_FOUND__RAW_TYPED_AND_PROVENANCE_FIELDS_PRESENT",
+    "semantic_role": "CURRENT_ITEM_RELATION_SAYS_GOVERNED_QSMV2_RELATION_AUTHORITY__ATTITUDE_PERCEPTION_EVALUATION_OR_INTENTION"
+  },
+  "proposed_response_state_map_requires_owner_signature": {
+    "1": "SUBSTANTIVE_RESPONSE",
+    "2": "SUBSTANTIVE_RESPONSE",
+    "3": "SUBSTANTIVE_RESPONSE",
+    "4": "SUBSTANTIVE_RESPONSE",
+    "97": "SOURCE_SPECIFIC_SPECIAL",
+    "98": "DK",
+    "99": "REFUSAL",
+    "physical_system_missing": "MISSING"
+  },
+  "held_fields": {
+    "q103_response_state_map": {
+      "state": "IRREDUCIBLE_HOLD__NO_COMPETENT_TYPED_CODE_STATE_RECORD",
+      "current_source_config": "97 and 98 both DK; 99 SUBSTANTIVE_RESPONSE",
+      "why_not_adopted": "Current source-preparation mapping conflicts with the actual questionnaire; QSR has no typed state mapping, and no signed QSM/source decision supersedes it."
+    },
+    "q103_asked_risk": {
+      "state": "IRREDUCIBLE_HOLD__ROUTING_UNKNOWN",
+      "current": "row_selector=ALL; typed_state=ROUTING_UNKNOWN; risk_set=urn:rawlsing:r157:original:SRC04:q103:unresolved",
+      "why_not_adopted": "ALL is not evidence of administration; no exact form/country/routing record establishes asked/eligible."
+    },
+    "q103_recorded_response_scope": {
+      "state": "NOT_AUTHORIZED_BY_EXISTING_EVIDENCE",
+      "meaning": "A recorded-response-only estimand is distinct from asked-eligible and may be proposed only by the source/risk owner; it cannot be labeled asked and is not currently covered."
+    }
+  },
+  "carrier_evidence": {
+    "raw_typed_field_nonempty": true,
+    "body_fields_present": ["field_raw_response_value_json", "field_response_state", "field_value_transform_authority_ref", "field_native_question_ref_json", "producer_replay_locator_json"],
+    "raw_int64_field_nonempty": false,
+    "note": "Raw code is retained in the typed/provenance body; no respondent value or count is published."
+  },
+  "real_saved_issuer": {
+    "state": "CODE_ABSENCE_AT_ISSUER_SEAM",
+    "evidence": "#1084 public compile_and_issue_governed_queries_v2 is TEST_ONLY_SOURCEFREE; #1205 asked-eligible is policy/fixture-only; execute_anvil_stream_i03 requires an external authentic RuntimeObjectCatalog/query/predicate."
+  },
+  "disposition": "Q103_SOURCE_DECISION_CANDIDATE__ASKED_RISK_IRREDUCIBLE_HOLD__NO_I03",
+  "smallest_next_input": "SRC04 QSM/source/risk owner signs the q103 state map and exact asked-risk or distinct recorded-response scope; then R03/saved-release owner supplies exact catalog/query/predicate.",
+  "positive_witness": "actual execute_anvil_stream_i03 with exact q103 catalog yields RAW counts with 1-4/97/98/99/system-missing distinct and exact asked denominator, plus replay.",
+  "negative_witness": "collapsing 97/98/99, treating ALL as asked, or substituting a foreign/current-revoked catalog must refuse."
+}
