@@ -133,6 +133,53 @@ try:
   report["holds"].append("KUDA-072_PUBLIC_PREPARED_A_B_ADMISSION_SESSION_RECEIPT_PINNING_REPAIR_REQUIRED")
  report["R22_scope"]="THREE_DEEP_SOURCE_STATIC_JUDGMENTS__ACTUAL_P0_NATIVE_AND_COST_AUTHORITY_HELD"
 
+ # R23 ordered early STOP filters and three source-graded case decisions.
+ r23=l.split("## 11. R23 — CHEAP ELIMINATION GATES",1)[1]
+ deep23=re.findall(r"^### 11\.([123]) KUDA-(\d{3})",r23,re.M)
+ test("R23 next deep tranche exact three IDs, not 42 promotions",
+      deep23==[("1","001"),("2","002"),("3","070")],deep23)
+ for marker in ("A — Q2 necessity","B — Q3 independently necessary reader",
+                "C — Q1 adequate existing successor","D — Q5 obvious unsuitability",
+                "All gates are **three-valued: YES/NO/UNKNOWN**"):
+  test("R23 cheap gate documented "+marker,marker in r23)
+ deep_ref="997ca50869551d292650c710a2c99a43c9119f7a"
+ proj=exact(deep_ref,"rawlsing_next/pre553_r157_projection_adapter.py",
+            "d4d84ef164feba6fb0de0851568738eb5f5e937d").decode()
+ test("KUDA-001 selected source config composes governed C11 without source permission mint",
+      all(needle in proj for needle in (
+       "def validate_source_config(document:",
+       "def build_governed_c11_projection(",
+       "def decode_with_source_read_permission(",
+       "ORIGINAL_SOURCE binding requires SOURCE_PREPARATION",
+       "NOT_PERFORMED_UNDER_R157_PREPARATION")),
+      "SOURCE_STATIC, original item science and rights external")
+ original=exact("b5600da96358f8526471d635a1befa8daa3f098b",
+                "rawlsing_next/pre553_inherited_source_rules.py",
+                "5f6efaceb18d92a362d065d12fdca4076d53fa16").decode()
+ klass=next(n for n in ast.parse(original).body
+            if isinstance(n,ast.FunctionDef) and n.name=="_classify_item")
+ code=ast.get_source_segment(original,klass)
+ test("KUDA-002 historical selector gate requires only nonempty binding, not affirmed grant",
+      "if not item.response_binding_status:" in code
+      and "status=U_CANDIDATE" in code
+      and "reason=\"EXACT_AUTHORITY_SELECTED\"" in code,
+      "SOURCE_STATIC NEGATIVE: hypothetical nonaffirmative nonempty status can pass; no original science claim")
+ missing=fetch(deep_ref,"rawlsing_next/pre553_inherited_source_rules.py",allow404=True)
+ test("KUDA-002 old B49 selector absent selected #1247, missing symbol alone not gap",
+      missing is None,"NOT_IMPLEMENTATION_NECESSITY")
+ issuer=exact(deep_ref,"rawlsing_next/pre553_governed_query_issuer_v2.py",
+              "a55275c4b5f824496f7d18df9d013e1ab883a317").decode()
+ test("KUDA-070 selected v2 issuer is existing separate TEST_ONLY original-role binding",
+      all(needle in issuer for needle in (
+       "def compile_and_issue_governed_queries_v2(",
+       "compile_governed_frontier(",
+       "TEST_ONLY_DECISION",
+       "TEST_ONLY_SCIENTIFIC_PERMISSION",
+       "R03_V2_NONELIGIBLE_SUPPORTED_OPERATION")),
+      "SOURCE_STATIC: original authoritative source/science issuer absent")
+ report["R23_limit"]="THREE_DEEP_WORK_SELECTION_JUDGMENTS__LEGACY_REJECT_NOT_FUNCTION_RETIREMENT"
+
+
 
  section=n.split("## NEKUDA-R13",1)[1].split("## NEKUDA-R8",1)[0]
  transfers=set(re.findall(r"^\| \[KUDA-(\d{3})\]",section,re.M))
