@@ -91,6 +91,7 @@ class NeighborEncounter:
             raise EncounterRefusal('USER_CANNOT_IMPERSONATE_ACTOR')
         self.mii = mii_module
         self._last_actor_tip = None  # read-only, process-local; never a world fact
+        self._last_actor_ref = None
 
     def _world(self):
         return self.runtime.ledger.world(self.runtime.world_id)
@@ -106,6 +107,20 @@ class NeighborEncounter:
         actors = self.runtime.ledger.actors()
         if not set(actor_conditions).issubset(actors):
             raise EncounterRefusal('UNREGISTERED_SENSORY_ACTOR')
+        # User phenomenal eligibility has an independent physical source.
+        # Co-presence alone never licenses a visible body, readable object or
+        # actor-expression tip. A private MII gaze cannot invent geometry.
+        user_conditions = conditions.get('user_conditions')
+        if type(user_conditions) is not dict or not user_conditions:
+            raise EncounterRefusal('MISSING_USER_SENSORY_CONDITIONS')
+        for site, view in user_conditions.items():
+            if site not in self._world()[1]['sites'] or type(view) is not dict:
+                raise EncounterRefusal('INVALID_USER_VIEW_SITE')
+            if (view.get('light') not in ('lit','dark','unknown') or
+                view.get('sightline') not in ('unobstructed','partial','blocked','unknown') or
+                type(view.get('hearing')) is not bool or
+                view.get('sound_path') not in ('audible','blocked','unknown')):
+                raise EncounterRefusal('INVALID_USER_SENSORY_CONDITIONS')
         for actor_id, row in actor_conditions.items():
             if type(row) is not dict or any(key not in row for key in
                 ('facing', 'hearing', 'visual', 'light', 'sightline', 'sound_path')):
@@ -233,6 +248,7 @@ class NeighborEncounter:
         _, world = self._world()
         self._last_actor_tip = (result.get('receipt'), world['clock'],
                                 result.get('public_tip'))
+        self._last_actor_ref = actor_id
         return result
 
     def private_surface(self, profile: dict, *, command: str | None = None,
@@ -245,24 +261,35 @@ class NeighborEncounter:
         if not visitor or not visitor['present']:
             raise EncounterRefusal('USER_NOT_PRESENT')
         loc = visitor['location']
+        source = _bound_source(world)
+        user_view = source.get('user_conditions', {}).get(loc, {})
+        visible = (user_view.get('light') == 'lit' and
+                   user_view.get('sightline') == 'unobstructed')
+        audible = (user_view.get('hearing') is True and
+                   user_view.get('sound_path') == 'audible')
         # Only already admitted public material objects with an explicit
         # observer-eligible surface may supply optional details. Never infer
         # a secret story from the object or an actor's hidden constitution.
         available = {}
         for key, obj in world.get('material_objects', {}).items():
-            if (type(obj) is dict and obj.get('location') == loc and
+            if (visible and type(obj) is dict and obj.get('location') == loc and
                     type(obj.get('public_glance')) is str):
                 available[key] = obj['public_glance']
         selected, basis = self.mii.select_detail(available, profile,
             command=command, target=target, offered=available)
         mandatory = [{'kind': 'LOCATION', 'text': loc}]
         for actor_id, actor_loc in sorted(world['positions'].items()):
-            if actor_loc == loc:
+            if visible and actor_loc == loc:
                 mandatory.append({'kind': 'CO_PRESENT_ACTOR',
                                   'actor_ref': actor_id, 'interpretation': 'NONE'})
         if self._last_actor_tip is not None:
             _, at_clock, tip = self._last_actor_tip
-            if at_clock == world['clock'] and type(tip) is str and tip.strip():
+            # A sourcefree speaker expression is not automatically audible to
+            # a visitor in another room, an occluded chamber or a dark room.
+            # Conservatively require co-location AND a sourced sensory path.
+            actor_location = world['positions'].get(self._last_actor_ref)
+            if (at_clock == world['clock'] and actor_location == loc and
+                    (visible or audible) and type(tip) is str and tip.strip()):
                 mandatory.append({'kind': 'PUBLIC_TIP', 'text': tip[:500],
                                   'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION'})
         view = self.mii.surface(room=loc, orientation='SOURCEFREE_UNKNOWN',
