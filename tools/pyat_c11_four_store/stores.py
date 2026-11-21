@@ -355,6 +355,8 @@ class Store:
         self._ref_cache.clear()
 
     def finish(self, manifest: Mapping[str, Any], family_records: Mapping[str, Mapping[str, Any]]) -> None:
+        if self.get_meta("state") != "BUILDING":
+            raise StoreFailure("physical store can only finish an active build")
         if set(family_records) != set(FAMILIES):
             raise StoreFailure("incomplete thirteen-family C11 census")
         for name, item in family_records.items():
@@ -385,9 +387,10 @@ class Store:
             raise StoreFailure("SQLite foreign key check failed")
         if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise StoreFailure("SQLite b-tree integrity check failed")
-        self._set_meta("state", "COMMITTED")
-        self.db.commit()
-        self.db.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        # A completed row count is NOT a complete physical release. An
+        # interruption before the full canonical-body audit must never leave
+        # a database that a fresh reader accepts as COMMITTED.
+        self._set_meta("state", "AUDIT_PENDING")
         self.db.commit()
 
     def audit_families(self, emit: Callable[..., None] | None = None) -> dict[str, dict[str, Any]]:
@@ -411,6 +414,36 @@ class Store:
         expected = json.loads(self.get_meta("expected_family_records") or "{}")
         if result != expected:
             raise StoreFailure("full thirteen-family canonical body parity FAILED")
+        # The body hash alone does not catch a dropped SQL posting. Catch
+        # orphan, missing, or wrong-family event/respondent index entries
+        # before making a previously incomplete store readable.
+        if self.db.execute("SELECT COUNT(*) FROM events").fetchone()[0] != result["RespondentEvent"]["count"]:
+            raise StoreFailure("physical event index lost original event rows")
+        if self.db.execute("SELECT COUNT(*) FROM respondents").fetchone()[0] != result["RespondentIdentity"]["count"]:
+            raise StoreFailure("physical respondent index lost original respondents")
+        if self.db.execute(
+            "SELECT 1 FROM events e JOIN objects o ON e.oid=o.oid "
+            "WHERE o.family!='RespondentEvent' LIMIT 1"
+        ).fetchone() is not None:
+            raise StoreFailure("physical event index points to wrong family")
+        if self.db.execute(
+            "SELECT 1 FROM events e LEFT JOIN respondents r ON e.rid=r.rid "
+            "WHERE r.rid IS NULL LIMIT 1"
+        ).fetchone() is not None:
+            raise StoreFailure("physical event index has orphan respondent")
+        if self.db.execute("PRAGMA foreign_key_check").fetchone() is not None:
+            raise StoreFailure("physical store has broken SQL foreign keys")
+        if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+            raise StoreFailure("physical store SQLite integrity check failed")
+        state = self.get_meta("state")
+        if state == "AUDIT_PENDING":
+            self._set_meta("state", "COMMITTED")
+            self.db.commit()
+            status = self.db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+            if status is not None and status[0] != 0:
+                raise StoreFailure("physical store WAL checkpoint could not finish")
+        elif state != "COMMITTED":
+            raise StoreFailure("full audit requested for an unbuilt store")
         return result
 
     def _file(self, family: str):
