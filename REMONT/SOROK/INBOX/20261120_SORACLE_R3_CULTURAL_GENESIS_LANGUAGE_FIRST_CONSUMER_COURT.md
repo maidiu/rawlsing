@@ -5,6 +5,15 @@
 **Architecture return:** `SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R3_CULTURAL_MEDIATION_NOT_INSTANT_LANGUAGE.md`.
 **Governing user priority:** `SEAM/ORACLE/00_NADIA_FIRST_CONSTRUCTION_PRIORITY_20261120.md`.
 
+## Observed GitHub Actions evidence — NOT Python execution
+
+At PR #1228's initial HEAD `76300555bcb643031c28a830b50d2e2e83f896d4`, GitHub Actions recorded:
+- [R3 Nadia-first sourcefree run #44845421483](https://github.com/maidiu/rawlsing/actions/runs/44845421483), `failure`, job #136663804406;
+- [Inherited R19 sourcefree run #44845421372](https://github.com/maidiu/rawlsing/actions/runs/44845421372), `failure`, job #136663803888;
+- [Inherited R18 sourcefree run #44845421379](https://github.com/maidiu/rawlsing/actions/runs/44845421379), `failure`, job #136663804137.
+
+**All three jobs returned exactly ZERO recorded steps.** The Nadia R3 decoded job-log endpoint returned `404 BlobNotFound`. Consequently no Python compilation, normal/optimized unittest or original SQLite execution can be identified, much less certified. This is an observable **workflow failure whose cause remains unknown**, not evidence of any failing Python test, passed regression or correct code. Independently establish a functioning runner, freeze the **actual later HEAD**, and execute before any engineering acceptance.
+
 ## Execute at exact source and independent local runner
 
 ```sh
