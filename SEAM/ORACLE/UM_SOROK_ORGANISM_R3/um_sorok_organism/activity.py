@@ -75,6 +75,16 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
                 'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
                 'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')):
             raise ValueError('ACTIVITY_PURPOSE_BASIS_CONTRADICTION')
+        # P004: a truthful actor-selected purpose must actually license this
+        # operation in EACH selected, existing project.  Before this check a
+        # named but incompatible (or missing) project vanished silently; in a
+        # multi-project selection the compatible course was already written.
+        # Validate the entire selection BEFORE any actor-history mutation.
+        projects=actor.get('projects',[])
+        for project_id in selected:
+            matches=[p for p in projects if p.get('id')==project_id]
+            if (len(matches)!=1 or own_action not in matches[0].get('means',[])):
+                raise ValueError('ACTIVITY_SELECTED_MEANS_CONTRADICTION')
     histories=[]
     for project in actor.get('projects',[]):
         if project['id'] not in project_ids or own_action not in project.get('means',[]):

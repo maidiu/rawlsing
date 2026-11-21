@@ -440,3 +440,12 @@ The R12 same-trial `REORGANIZE_PROJECT` guard already overlaps existing REMONT R
 **Court:** 288/288 normal, 288/288 optimized, pytest 288 + 32 subtests on Python 3.11.3; 8/8 focused hostile tests; imported R15 P018 6/6; two new reviewer cases 2/2. Demo is seed-stable at `bc47d610…`, cold reopen and SQLite integrity valid.
 
 **Conservation:** all 73 P identities, 53 scoped first-fault review dispositions, 8 open, 8 partial, four P070–P073 author-repaired pending review, T=0 and six E holds remain unchanged. R17 is author-tested sourcefree repair, not independent acceptance, native source rights or protected receiving.
+
+
+## REMONTATHON R18 — author-tested P004 selected-means correctness (2026-11-20)
+
+Frozen parent [R17 #1230](https://github.com/maidiu/rawlsing/pull/1230) at `6f2e98433822a4fb1246ff72c388b2e901c6ab7f` is **unchanged**, as are all preexisting 73 production defect identities and statuses. The local-machine reviewer identified that `activity.record_activity_afterlife` trusted an actor-policy purpose receipt for projects which could not have supplied the performed operation (and even nonexistent project IDs). A single invalid selection yielded a silent empty history; mixed selected projects yielded partial misleading history. Eight new negative/positive test methods on **unchanged R17 code** resulted in **3 FAIL / 5 PASS**, also 3 FAIL under `python -O`.
+
+In R18, a **preflight of every selected actor-policy project** verifies exactly one actor-owned ID and that the actual operation is among its means **before any actor history mutation**. Legitimate single/multiple selections, projectless action, blocked attempts and explicitly graded legacy direct helper activity survive. The complete joined R17+R18 sourcefree suite **296/296 PASS normal**, **296/296 optimized**, **pytest 296 +32 subtests**, all retested from a fresh runnable ZIP. Two hash-seeded demos produce byte-identical nine-event objective histories; cold SQLite reopen verifies `bc47d610…`. This is **not motive genesis science or native issuer/actor proof**: P004 remains PARTIAL and receiving pending.
+
+P012/P018, P009 native privacy, P019/P022 and the other SORACLE constructions are not promoted, rebuilt or reclassified. Python 3.11 and nonauthor hostile review of the R18 exact HEAD pending. Defect partition remains 73 P = 53 prior bounded independent first-fault reviews, 8 OPEN, 8 PARTIAL, 4 sourcefree author-repaired pending (P070–P073), T0, E6.

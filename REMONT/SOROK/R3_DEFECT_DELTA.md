@@ -88,3 +88,8 @@ External #1199 exact `943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6` (248 Python 3.11
 ## R17 source preflight (2026-11-20)
 
 R17 adds full source/chain verification to `source()`, `commit()` and `seal_source()` on top of R16, closing the inherited P018 fast-preflight gap. No new defect identity, no queue status promotion, no protected merge.
+
+
+## R18 — P004 independent-review first fault repaired at existing activity owner
+
+R17 exact `6f2e98433822a4fb1246ff72c388b2e901c6ab7f`: 8 new tests yielded 3 FAIL+5 PASS on untouched first source, +3 FAIL under optimized mode. R18 validates complete selected project ID/means basis **before** any operation history, conserves valid multi-project and blocked behavior. 296/296 normal and -O and pytest (+32 subtests) after cold ZIP extraction, deterministic nine-event demo. P004 status stays PARTIAL; 73 original identities/status values conserved; SORACLE psychological construction, P018 R17 independent receiving, P009 native privacy, protected receiving all untouched.
