@@ -86,6 +86,54 @@ try:
        "unexpected_column_counts":[len(re.split(r"(?<!\\)\|",line)) for line in case_lines if len(re.split(r"(?<!\\)\|",line))!=10][:8]})
  report["seven_part_limit"]="STRUCTURAL_COVERAGE_ONLY_NOT_INDEPENDENT_QUALITY_OR_NECESSITY_ACCEPTANCE"
 
+ # R22 selective deep-tranche source checks: these confirm observations, NOT science/semantics.
+ r22=l.split("## 10. R22 — DEEP TRANCHE 1:",1)[1]
+ deep_cases=re.findall(r"^### 10\.([123]) KUDA-(\d{3})",r22,re.M)
+ test("R22 deep tranche exact three assessed IDs, no other automatic promotion",
+      deep_cases==[("1","068"),("2","069"),("3","072")],deep_cases)
+ deep_ref="997ca50869551d292650c710a2c99a43c9119f7a"
+ source=exact(deep_ref,"rawlsing_next/pre553_source_i02_handoff.py",
+              "4bed962724efdf68c31f7a13e697533c7552c8aa").decode()
+ test("KUDA-068 original prehash plus one decoded source read, one semantic cell pass",
+      all(phrase in source for phrase in (
+        "source_prehash_passes = 1 if original_source else 0",
+        "source_reads = 1 + source_prehash_passes",
+        "for cell in incidence.iter_cells(batch_size):",
+        "seen: dict[tuple[int, str], set[int]]")),
+      "SOURCE_STATIC_ONLY: no cost benchmark")
+ reader=exact(deep_ref,"rawlsing_next/pre553_direct_estate_i03.py",
+              "9fd39efb858be48c6883e0238266a4991ac6de49").decode()
+ estate=exact(deep_ref,"rawlsing_next/pre553_source_direct_parquet_estate.py",
+              "e8622ac6bf59c4d1ec052e21410e63aab7dd9aa1").decode()
+ test("KUDA-069 exact Parquet member hashes and per-context native posting rebuild",
+      all(phrase in reader for phrase in (
+        "self._temporary = tempfile.TemporaryDirectory(",
+        "self._build()",
+        "self._validate_event_body_truth(body, row)",
+        "CREATE INDEX events_resp_idx ON events(respondent,ref)",
+        "ORDER BY gid,off")) and
+      all(phrase in estate for phrase in (
+        "for name, digest in members.items():",
+        "_hash(member) != digest")),
+      "SOURCE_STATIC_ONLY: cost stage not measured by this test")
+ prepared=exact(deep_ref,"rawlsing_next/pre553_prepared_saved_i03.py",
+                "dd57604f2416f46b912daaad36bd9eedb09ff3ea").decode()
+ klass=next(c for c in ast.parse(prepared).body
+            if isinstance(c,ast.ClassDef) and c.name=="PreparedI03Session")
+ ctor=next(m for m in klass.body if isinstance(m,ast.FunctionDef) and m.name=="__init__")
+ constructor=ast.get_source_segment(prepared,ctor)
+ mismatch=("type(admission) is not PreparedSavedC11Admission" in constructor
+           and "type(session) is not DirectEstateI03Session" in constructor
+           and "session.estate" not in constructor
+           and "admission._estate" not in constructor
+           and not any(isinstance(n,ast.FunctionDef) and n.name=="__setattr__" for n in klass.body))
+ test("KUDA-072 preexisting EXPORTED admission/session pinning defect still in selected source",
+      mismatch,"EXPECTED SOURCE DEFECT / NOT BEHAVIORAL EXPLOIT EXECUTION")
+ if mismatch:
+  report["holds"].append("KUDA-072_PUBLIC_PREPARED_A_B_ADMISSION_SESSION_RECEIPT_PINNING_REPAIR_REQUIRED")
+ report["R22_scope"]="THREE_DEEP_SOURCE_STATIC_JUDGMENTS__ACTUAL_P0_NATIVE_AND_COST_AUTHORITY_HELD"
+
+
  section=n.split("## NEKUDA-R13",1)[1].split("## NEKUDA-R8",1)[0]
  transfers=set(re.findall(r"^\| \[KUDA-(\d{3})\]",section,re.M))
  test("all ten standalone no-reimport fates retained",transfers==TRANSFERS,sorted(transfers))
