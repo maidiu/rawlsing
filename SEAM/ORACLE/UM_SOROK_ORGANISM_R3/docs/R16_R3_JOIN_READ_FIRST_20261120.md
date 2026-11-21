@@ -1,4 +1,41 @@
-# SORACLE R3 × REMONT R16 — one-source integration candidate
+# SORACLE R3 × REMONT R18 — builder-owned joined organism continuation
+
+**AUTHOR RECONCILIATION: THIS VERSION SUPERSEDES THE R16-ONLY CODE STATE DESCRIBED BELOW.** The earlier R16 evidence is retained as historical source ancestry, not as a statement of this branch's current code or test grade.
+
+## What changed since the earlier R16×R3 two-parent source join
+
+- **REMONT R17 source:** `6f2e98433822a4fb1246ff72c388b2e901c6ab7f` (#1230) repaired P018 by running full chain/history preflight under the original source/transaction lock before source read, late seal, or normal commit. Its exact later R18 `storage.py` blob is imported.
+- **REMONT R18 source:** `a4a495bbb456bd211b4fbdbd29478c0f0052603f` (#1241), inheriting R17, repaired P004 truthful actor-policy selected-project history before any project/actor mutation. It was author-executed as 296 normal, 296 optimized, pytest 296+32 subtests **ONLY at its own R18 source HEAD**.
+- **SORACLE integration author:** A true two-parent follow-up merge from the earlier R16×R3 joined code and immutable R18 source conserves R17/R18 Git ancestry and their source/negative tests. The current `activity.py` preserves newer R3 actor-purpose receipts and R18's validate-all-selected-projects-before-mutation rule. It also preflights duplicate event IDs across *all* selected projects to avoid partially appended historical activity.
+- **P012 R15 repair reconstituted:** The previous R3-only motif/positive closure retained conservative potential-source veto and hence **had regressed** REMONT R15's acyclic stratified-inhibitor semantics. It now incorporates R15's fixed-point verification for acyclic inhibition chains **without retiring** R3's historically admitted REINFORCES/ACTIVATES/SUPPRESSES forms and deeper acquired motif recruitment. Cycles and support-dependency remain conservative. Do not call this parity proven before original tests execute.
+- **Further SORACLE source integration repair:** R3 exploratory end trials emit `ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE`. R16 joined `activity.py` rejected that genuine projectless status; the author adapted the existing activity owner to preserve an attempt with no forged durable purpose. No REMONT commission.
+- **Builder regressions:** `tests/test_r3_r18_joined_faults.py` includes stratified inhibition/cycles, missing/incompatible/mixed projects, all-or-nothing history, projectless trial and corrupted-source preflight. `tests/test_r17_source_preflight.py` and `tests/test_remontathon_r18_p004_selected_means.py` retain the original negative courts from their own source.
+- **Longitudinal first consumer:** `um_sorok_organism/joined_longitudinal_demo.py` uses two separate real SQLite worlds with otherwise matched fictional parents. Father makes the same real artifact in both; only one father publicly speaks about it. Subsequent Nadia behavior is selected by her own actor policy, not a player-scripted INSPECT. A source-qualified cultural reference must appear in the spoken-history child and not in the unspoken-history child. Then existing compressed world time, independently actor-selected beats, and cold SQLite reopen must conserve the distinct histories. This is sourcefree developmental causality, *not* a scientifically calibrated child or an adult destination.
+- **New executable court:** `tests/test_joined_longitudinal_demo.py` additionally requires matched material first consumers, distinct acquisition, source/reopen, reproducibility and bounded scheduling.
+
+**Running status as of this documentary update:** `COMMITTED_UNTESTED`. Neither this newer joint R3×R18 source nor its longitudinal demonstration has an original Python execution receipt. GitHub Actions on predecessor #1234 recorded failures with zero steps; do NOT convert them into Python RED/PASS. No local runner with a complete exact checkout has been established in this author environment. The separate R18 296 executed author cases are original-R18-only evidence, not joined-world evidence. Do not dispatch a generic REMONT request for this unfinished builder validation. SORACLE keeps first execution and normal fixes.
+
+**Source-author owner boundaries:** The old general REMONT intake is withdrawn in [PR #1234's correction](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7056666318) under the adopted first-fault discipline. REMONT may later receive an actual pinned P/T/E first fault or independent court on an executable candidate, but does not own routine SORACLE build completion. PYAT empirically qualified original parents, P009 privacy, P018 external source issuer, original psychogenesis/LLM science, SOROK native actor owner and protected paired CURRENT_PROGRESS remain held.
+
+**Run from `SEAM/ORACLE/UM_SOROK_ORGANISM_R3` at the exact final HEAD:**
+
+```sh
+python -m compileall -q um_sorok_organism
+python -m unittest -v tests.test_r3_r18_joined_faults
+python -O -m unittest -v tests.test_r3_r18_joined_faults
+python -m unittest -v tests.test_r17_source_preflight tests.test_remontathon_r18_p004_selected_means
+python -m unittest -v tests.test_joined_longitudinal_demo
+python -O -m unittest -v tests.test_joined_longitudinal_demo
+python -m unittest discover -s tests -v
+python -O -m unittest discover -s tests -v
+python -m um_sorok_organism.joined_longitudinal_demo --days 14 --beats 12
+```
+
+Any first RED on the joined exact cut belongs to SORACLE's builder integration and ordinary repair, with genuine independently found first faults treated under REMONT's stricter intake charter.
+
+---
+
+# SORACLE R3 × REMONT R16 — historical first join (superseded code cut)
 
 **Date:** 2026-11-20 (Eastern). **Purpose:** preserve SORACLE's current developmental organism while explicitly inheriting REMONT's real engineering corrections, NOT restart independent archaeology. The local/remote executable readback remains a requirement, not assumed evidence.
 
