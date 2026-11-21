@@ -19,7 +19,9 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install 'pyarrow>=16' 'psutil>=5'
+      - run: python -c 'import rawlsing_next.pre553_anvil_stream_native_i03, rawlsing_next.pre553_anvil_stream_recorded, rawlsing_next.pre553_source_direct_parquet_estate, rawlsing_next.pre553_s04_observed_research, rawlsing_next.pre553_s04_ff01_consumer'
       - run: python -m compileall -q tools/pyat_c11_four_store
       - run: python -m unittest tools.pyat_c11_four_store.test_stores -v
       - run: python -m tools.pyat_c11_four_store.runner --self-test
       - run: python -m unittest tools.pyat_c11_four_store.test_runner_sourcefree -v
+      - run: python -m unittest tools.pyat_c11_four_store.test_existing_r2 -v
