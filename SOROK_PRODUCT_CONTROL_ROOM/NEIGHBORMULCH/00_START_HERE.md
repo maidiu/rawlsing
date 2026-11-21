@@ -50,6 +50,7 @@ The product objective: an actual human user enters an independently existing, de
 8. [All H001–H190 original numbered ideation propositions, with source lines/dispositions](07_THE_ORIGINAL_190_IDEATION_PROPOSITIONS.md) — not a summary or automatic legal code.
 9. [Original 105-entry control-room tree, dockets, R12 transcript, later additions](08_HISTORICAL_SOROK_CONTROL_ROOM_INVENTORY.md) — restores original materials absent from narrow protected front door.
 10. [Vision to real first-consumer falsifiers](09_ORIGINAL_VISION_TO_FIRST_CONSUMER_FALSIFIERS.md) — 22 user-purpose/source preservation courts.
+11. **[Original unfinished courts and all 123 historical question frontiers](10_UNFINISHED_EARLY_SOROK_COURTS_AND_123_QUESTION_FRONTIERS.md)** — the specific material the September/October courts never fully settled, with source-line anchors, 10 outstanding construction/ethics/UX fronts and exact archived classification; not 123 newly missing runtime functions.
 
 ## Exact opening contradiction
 
