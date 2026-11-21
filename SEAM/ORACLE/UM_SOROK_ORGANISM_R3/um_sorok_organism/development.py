@@ -92,6 +92,14 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         if (type(issued_trial) is not dict
                 or issued_trial.get('actor')!=actor.get('id')):
             raise InvalidDevelopment('CURRENT_TRIAL_ISSUER_ACTOR_MISMATCH')
+        # An issued exploratory operation cannot mature into a declared
+        # enduring project through a synonymous generic ADD_PROJECT.
+        if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
         # The two inherited ticket identities are both real historical
         # issuers: R13 used "end"; R3's prospective horizon uses
         # "possible_end" plus an optional functional bridge. Keep the
@@ -109,14 +117,6 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
         if (type(issued_trial.get('trial_id')) is not str
                 or issued_trial['trial_id'] not in valid_ids):
             raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
-        # An issued exploratory operation cannot mature into a declared
-        # enduring project through a synonymous generic ADD_PROJECT.
-        if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
-            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
-        if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
-            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
-        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
-            raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
         # A physical event can be tried for at most one possible end;
         # copying it into a different end's history cannot multiply lives.
         if any(t.get('event_ref')==event_ref
