@@ -1,0 +1,61 @@
+name: PYAT-SPASITYEL KUDA combined first-consumer court
+on:
+  push:
+    branches:
+      - agent/pyat-spasityel-kuda-integration-20261121-r1
+permissions:
+  contents: read
+jobs:
+  combined:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree dependencies
+        run: python -m pip install --disable-pip-version-check pytest numpy pandas pyarrow pyreadstat
+      - name: Fetch specific inherited S3-A negative comparison commits
+        run: |
+          git fetch --no-tags --depth=1 origin \
+            265526a69c3a7a52365cf908709a4ef85ef9092e \
+            bcb3d5d913ac345d5adf7a9e45ca6d2eac9fb981 \
+            40529f300a3f655210f03d82532cb1e8b9b7c76c \
+            59f1f69f894c1cac982e7385587b097d83235d37 \
+            16a347ce308345b7d0c18b8f81b9af15b754d2b6
+      - name: Exact-SHA union of existing first-consumer and hostile courts
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p spasityel-proof
+          python -m pytest -q -o addopts='' --junitxml=spasityel-proof/junit.xml \
+            rawlsing_next/tests/test_field_forge_conditional_support.py \
+            rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
+            rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py \
+            rawlsing_next/tests/test_gt12_e2b_real_current_load_checkpoint.py \
+            rawlsing_next/tests/test_hqr_s3a_exact_query_fact_closure.py \
+            rawlsing_next/tests/test_s3a_followupper_query_authority_closure.py \
+            rawlsing_next/tests/test_s3a_r4_partial_resolution_and_measure_closure.py \
+            rawlsing_next/tests/test_s3a_r5_denominator_membership_closure.py \
+            rawlsing_next/tests/test_s3a_round3_positive_zero_support.py \
+            rawlsing_next/tests/test_gf1_pair_candidate_sourcefree.py \
+            rawlsing_next/tests/test_kuda_gf1_s04_first_consumer.py \
+            rawlsing_next/tests/test_pre553_s04_first_consumer.py \
+            rawlsing_next/tests/test_kuda_f6m_f6p_integrated.py \
+            rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py \
+            rawlsing_next/tests/test_kuda091_gt0_real_spine_hostiles.py \
+            rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py \
+            rawlsing_next/tests/test_wsc_gt0_protocol.py \
+            rawlsing_next/tests/test_kuda076_e05_selected_world_guard.py \
+            rawlsing_next/tests/test_world_conditioned_progressive_service.py \
+            rawlsing_next/tests/test_l01_reviewed_progressive_world.py \
+            rawlsing_next/tests/test_kuda082_r157_current_c11_parity.py \
+            rawlsing_next/tests/test_pyat940_s1b_support.py \
+            rawlsing_next/tests/test_c1_agent_b_cache_differential.py
+      - name: Retain full combined JUnit receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-spasityel-combined-court
+          path: spasityel-proof/
+          if-no-files-found: error
