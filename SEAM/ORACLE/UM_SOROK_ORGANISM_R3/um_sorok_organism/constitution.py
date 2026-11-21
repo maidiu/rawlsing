@@ -13,6 +13,7 @@ from .prospective_horizon import project_trial_horizons
 from .attention_field import situate_attention
 from .historical_self_organization import pre_cue_pressures
 from .care_commitment_genesis import practiced_care_alternatives
+from .cultural_mediation import cultural_object_alternatives
 from .distributed_power import conditional_assistance_options
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
@@ -73,6 +74,14 @@ def materialize(actor,world):
             'care_contribution_episodes',[])),
         care_practical_commitments=copy(actor.get(
             'care_practical_commitments',[])),
+        cultural_demonstrations=copy(actor.get(
+            'cultural_demonstrations',[])),
+        cultural_reference_practices=copy(actor.get(
+            'cultural_reference_practices',[])),
+        vocal_turn_experiences=copy(actor.get(
+            'vocal_turn_experiences',[])),
+        vocal_coordination_practices=copy(actor.get(
+            'vocal_coordination_practices',[])),
         historical_orientations=copy(actor.get('historical_orientations',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
@@ -581,6 +590,8 @@ def compose(constitution,access,limit=50):
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=object_bound_alternatives(
             constitution,attention['focus_access'],option['action'])
+        option['practical_alternatives']+=cultural_object_alternatives(
+            constitution,attention['focus_access'],option)
         option['practical_alternatives']+=addressed_signal_alternatives(
             constitution,attention['focus_access'],option)
         option['practical_alternatives']+=project_repeat_feeding(

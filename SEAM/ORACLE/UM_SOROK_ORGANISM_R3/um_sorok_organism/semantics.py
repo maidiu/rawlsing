@@ -16,6 +16,7 @@ from .plural_care_paths import (
     choose_one_grounded_plural_acquisition, propose_one_reopening,
     plural_addressed_signal_choice)
 from .caregiving_practice import choose_independent_repeat_feeding
+from .cultural_mediation import choose_culturally_situated_object_inquiry
 from .food_access_struggle import choose_food_petition
 from .institutional_procedure_learning import one_bounded_proposal
 from .material_dependency_history import choose_lived_material_counterpath
@@ -108,6 +109,13 @@ class HeuristicSemanticProvider:
             object_action=choose_qualified_material_care(possibilities)
             if object_action:
                 return {'task':task,**object_action}
+            # A publicly demonstrated actual object may become worth
+            # investigating before the child has a name for the thing.
+            # This heuristic cannot force other people to speak or select an
+            # unseen referent; it abstains on rivals and live projects.
+            cultural=choose_culturally_situated_object_inquiry(possibilities)
+            if cultural:
+                return {'task':task,**cultural}
             # Select at most one historically available undertaking, not the
             # pooled basis of all projects that share the chosen operation.
             # This deterministic priority/tie policy is fictional fallback,
@@ -156,6 +164,15 @@ class HeuristicSemanticProvider:
             care=packet.get('historically_possible_care_practices',[])
             if len(care)==1:
                 lived.append(copy(care[0]))
+            cultural=packet.get('historically_possible_cultural_references',[])
+            if len(cultural)==1:
+                lived.append(copy(cultural[0]))
+            revisions=packet.get('historically_possible_cultural_revisions',[])
+            if len(revisions)==1:
+                lived.append(copy(revisions[0]))
+            vocal=packet.get('historically_possible_social_vocal_development',[])
+            if len(vocal)==1:
+                lived.append(copy(vocal[0]))
             lived+=choose_one_grounded_plural_acquisition(
                 packet.get('historically_possible_plural_care',[]))
             lived+=propose_one_reopening(

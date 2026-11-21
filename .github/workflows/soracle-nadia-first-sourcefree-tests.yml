@@ -48,6 +48,16 @@ jobs:
         run: |
           python -m unittest -v tests.test_nadia_longitudinal_backlog_r2
           python -O -m unittest -v tests.test_nadia_longitudinal_backlog_r2
+      - name: R3 actual public material-object cultural mediation
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_cultural_mediation_r3
+          python -O -m unittest -v tests.test_cultural_mediation_r3
+      - name: R3 social vocal coordination and bodily maturation
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest -v tests.test_social_vocal_development_r3
+          python -O -m unittest -v tests.test_social_vocal_development_r3
       - name: Original inherited organism suite
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -v
