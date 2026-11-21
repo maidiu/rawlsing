@@ -9,10 +9,10 @@ from dataclasses import asdict
 import unittest
 
 from um_sorok_organism.types import (
-    AccessibleEncounter, Constitution, adult, blank_world, copy,
+    AccessibleEncounter, Constitution, Attempt, adult, blank_world, copy,
 )
 from um_sorok_organism.constitution import compose, materialize, actor_access
-from um_sorok_organism.world import add_cue
+from um_sorok_organism.world import add_cue, resolve
 from um_sorok_organism.development import admit, InvalidDevelopment
 from um_sorok_organism.relational_metabolism import (
     validate_motif, InvalidRelationalMotif,
@@ -348,6 +348,35 @@ class ThreeAgentMulchR23(unittest.TestCase):
                 'witnessed_source_actor_ref':'neighbor',
             }])
         self.assertEqual(actor,before)
+
+    def test_personal_moralization_never_overrides_independent_world_harm(self):
+        world=blank_world()
+        world['positions'].update({
+            'mother':'home','pastor':'home','target':'home'})
+        actor=adult('mother','Mother')
+        target=adult('target','Target')
+        actor['forms']=copy(read_model().forms)
+        actor['relational_motifs']=[motif()]
+        actors={'mother':actor,'target':target}
+        add_cue(world,'speech',['corrective_ritual'],location='home',
+                modality='auditory',source_actor='pastor')
+        before=compose(materialize(actor,world),actor_access(actor,world))
+        self.assertEqual(len(mediated(before)),1)
+        # Research-selected IMPOSE is NOT silently attributed to the actor's
+        # own motive just because it is eligible and morally recruited.
+        outcome=resolve(world,actors,Attempt(
+            actor='mother',action='IMPOSE',target='target'))
+        self.assertEqual(outcome.status,'PERFORMED')
+        self.assertEqual(outcome.objective_description,
+                         'UNILATERAL_IMPOSITION_NOT_CONSENT')
+        self.assertEqual(outcome.personal_effects['target']['action'],
+                         'IMPOSED_ON')
+        # An admired authority or actor-level ideological relation cannot
+        # force physical presence or rename an absent target's suffering.
+        absent=resolve(world,actors,Attempt(
+            actor='mother',action='IMPOSE',target='not_present'))
+        self.assertEqual(absent.status,'BLOCKED')
+        self.assertEqual(absent.objective_description,'TARGET_NOT_PRESENT')
 
     def test_read_cannot_write_other_psyche_or_world_permission(self):
         c=read_model()
