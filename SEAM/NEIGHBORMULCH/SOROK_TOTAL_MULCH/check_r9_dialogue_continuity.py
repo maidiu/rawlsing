@@ -60,9 +60,9 @@ def main():
     main = whole.split("## SOURCE-CONSERVATION FOUNDATION —", 1)[0]
 
     acts = [int(i) for i in re.findall(r"(?m)^## (\d+)\. ", main)]
-    must(acts == list(range(1, 18)), "current theory is not one 17-movement integrated whole")
-    must("## 17. The game becomes serious where nobody can know what their action meant" in main,
-         "whole lacks its reconstituted historical circuit")
+    must(acts == list(range(1, 24)), "current theory is not one 23-movement integrated whole")
+    must("## 23. Source-conservation, explicit alternatives, and what this HOME still does not settle" in main,
+         "whole lacks its reconstituted source-accountable circuit")
 
     # Source families MUST live inside the SAME existing theory document.
     section_family = lines_between(
@@ -140,12 +140,12 @@ def main():
 
     important = [
         "same SES", "YOUR RESOURCES", "financial",
-        "untranslatable", "SAY, DO and ATTEND", "ATTEND",
+        "no lawful counterpart", "SAY, DO and ATTEND", "ATTEND",
         "bodily needs", "adult", "prelude", "source-root",
         "message", "deletion", "third", "ordinary",
-        "source-qualified", "CONSTITUTIVE", "G4", "Mechanism",
+        "source-qualified", "CONSTITUTIVE", "PYAT", "historical",
         "God", "religious", "horizon", "relationship",
-        "cannot comprehensively read", "public", "rent", "fallible",
+        "more contextual differentiation", "public", "rent", "fallible",
     ]
     for phrase in important:
         must(phrase.lower() in main.lower(),
@@ -156,16 +156,47 @@ def main():
     # theory, not only the historical source foundation. This is text/source
     # custody, NOT an execution of observer-to-observer world/actor machinery.
     for phrase in (
-        "misrecognized", "actor-local", "false belief",
+        "misrecognition", "actor-local", "false belief",
         "human powers", "objectification", "institutional",
-        "SAY plus covert ATTEND", "single world occurrence",
-        "different sensory", "Nadia's belief",
-        "no computationally preferred", "sourcefree",
-        "same SES as Nadia", "YOUR RESOURCES", "message",
-        "scarce Roll", "unvisited reference",
+        "cover remark", "world history",
+        "perceptual availability", "Nadia can believe",
+        "no computationally preferred", "source",
+        "exactly Nadia's socioeconomic", "YOUR RESOURCES", "message",
+        "scarce", "unvisited reference",
     ):
         must(phrase.lower() in main.lower(),
              "external reciprocal challenge unaccounted for: " + phrase)
+
+    # R10 THEORY-CORPUS FUSION: each inherited source identity must be
+    # accounted for within the currently active unified HOME; historical
+    # R9 locations are not valid as current semantic pointers.
+    for record in prior["rows"]:
+        locations = record.get("fusion_home_sections", "")
+        must(bool(locations), "missing current source-to-whole position: " + record["id"])
+        for section_id in locations.split(","):
+            must(section_id.isdigit() and int(section_id) in acts,
+                 "invalid current section pointer: " + record["id"] + " -> " + section_id)
+        must(record.get("fusion_coverage_grade") ==
+             "AUTHOR_CLAIMED_CONCEPTUAL_PASSAGE_NOT_INDEPENDENT_SEMANTIC_PROOF",
+             "overclaimed no-drop proof grade: " + record["id"])
+
+    # These source-external concepts cut across the current HOME, not just its
+    # conservation appendix; presence alone is NOT proof of semantic sufficiency.
+    fused = (
+        "constrained openness", "care", "self-myth", "reality pressure",
+        "coherent", "contradiction", "ordinary", "time", "source-root",
+        "material", "inhibitions", "unchosen", "no predetermined",
+        "one-to-one", "non-possession", "deletion", "export",
+        "privacy", "attention regime", "recognition", "testimony",
+        "objectification", "institutions", "emotional",
+        "no lawful counterpart", "human access invitation",
+        "persona introduction", "family", "sibling",
+        "pay", "rent", "initial entry", "world",
+        "actor-local", "unvisited reference",
+    )
+    for phrase in fused:
+        must(phrase.lower() in main.lower(),
+             "cross-corpus generative concept absent from current whole: " + phrase)
 
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
@@ -175,10 +206,10 @@ def main():
     must("HELD_MISSING_ORIGINAL_CHAT" in whole and
          "HELD_SEMANTIC_INDEPENDENCE" in whole,
          "independent evidence gap concealed")
-    must("pre-existing file in the existing #1277 branch" in whole or "existing draft PR #1277" in whole,
+    must("ONE existing canonical HOME in #1277" in whole or "existing draft PR #1277" in whole,
          "current output does not identify its single existing destination")
 
-    print("[PASS] ONE current integrated 17-movement whole, with source foundation IN THE SAME FILE")
+    print("[PASS] ONE current integrated 23-movement whole, with source foundation IN THE SAME FILE")
     print("[PASS] 197 source sections from 10 immutable predecessor cuts")
     print("[PASS] 104 distinct source-graded ideas and exact original propositions")
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
