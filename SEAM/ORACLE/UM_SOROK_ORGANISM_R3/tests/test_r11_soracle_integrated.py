@@ -250,11 +250,19 @@ class R11MotiveSpoofGuard(unittest.TestCase):
             finally:rt.close()
 
 class R11IngressContract(unittest.TestCase):
-    def test_practical_option_id_only_is_not_accepted_until_owner_supports_it(self):
+    def test_practical_option_id_only_selects_operation_but_unissued_id_is_refused(self):
+        # R3 deliberately implemented typed practical-option issuance after R11.
+        # The old R11 service-level rejection is now a superseded interface,
+        # not permission to forge a practical option in the runtime.
         callback=ValidatingSemanticService(CallbackLLMProvider(
             lambda task,packet:{'task':task,'practical_option_id':'fictionally_named'}))
-        with self.assertRaisesRegex(ValueError,'NO_ACTION_OR_ISSUED_OPTION'):
-            callback.proposal('actor_attempt',{'options':[]})
+        proposal=callback.proposal('actor_attempt',{'options':[]})
+        self.assertEqual(proposal['practical_option_id'],'fictionally_named')
+        self.rt.semantic=callback
+        before=self.rt.verify()['events']
+        with self.assertRaisesRegex(ValueError,'UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID'):
+            self.rt.step('nadia')
+        self.assertEqual(self.rt.verify()['events'],before)
 
     def test_direct_forged_trial_kwarg_rejected_without_issued_identity(self):
         a=adult('a','A')
