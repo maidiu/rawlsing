@@ -183,6 +183,10 @@ class NativeSourceRule:
     administered: bool = True
     semantic_direction: str = "NOT_CERTIFIED"
     value_aliases: Mapping[str, Any] = field(default_factory=dict)
+    # Only an admitted source/codebook mapping can classify source-native
+    # observed numeric codes (e.g. 98=DK) as non-substantive responses.
+    # Absent rules never guess based on conventional 97/98/99 codes.
+    response_state_by_source_value: Mapping[str, str] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         for name in ("implementation_id", "source_variable_code", "unit"):
@@ -195,6 +199,23 @@ class NativeSourceRule:
         if not isinstance(self.value_aliases, Mapping):
             raise NativePreimageRefusal("SOURCE_RULE_VALUE_ALIASES_REQUIRED",
                                         self.implementation_id)
+        if not isinstance(self.response_state_by_source_value, Mapping):
+            raise NativePreimageRefusal(
+                "SOURCE_RULE_TYPED_NONANSWER_MAP_REQUIRED", self.implementation_id
+            )
+        permitted = {"DK", "REFUSAL", "MISSING", "SOURCE_SPECIFIC_SPECIAL"}
+        for raw, state in self.response_state_by_source_value.items():
+            if (type(raw) is not str or not raw
+                    or type(state) is not str or state not in permitted):
+                raise NativePreimageRefusal(
+                    "SOURCE_RULE_INVALID_TYPED_NONANSWER_MAPPING",
+                    self.implementation_id,
+                )
+            if raw in self.value_aliases:
+                raise NativePreimageRefusal(
+                    "SOURCE_RULE_CONFLICTING_SUBSTANTIVE_AND_NONANSWER_MAPPING",
+                    self.implementation_id,
+                )
 
 
 @dataclass(frozen=True)
@@ -242,7 +263,10 @@ class NativeSourcePackage:
                  "source_variable_code": r.source_variable_code, "unit": r.unit,
                  "administered": r.administered,
                  "semantic_direction": r.semantic_direction,
-                 "value_aliases": dict(r.value_aliases)}
+                 "value_aliases": dict(r.value_aliases),
+                 **({"response_state_by_source_value": dict(
+                     r.response_state_by_source_value
+                 )} if r.response_state_by_source_value else {})}
                 for r in self.selected
             ],
             "excluded": [r.implementation_id for r in self.excluded],
@@ -739,8 +763,13 @@ def materialize_native_preimages(
             if rule_key not in value_rules:
                 if transformed.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
                     raw_token = token(transformed.raw_value)
-                    canonical = rule.value_aliases.get(raw_token, raw_token)
-                    state = "SUBSTANTIVE_RESPONSE"
+                    state = rule.response_state_by_source_value.get(
+                        raw_token, "SUBSTANTIVE_RESPONSE"
+                    )
+                    canonical = (
+                        rule.value_aliases.get(raw_token, raw_token)
+                        if state == "SUBSTANTIVE_RESPONSE" else None
+                    )
                 else:
                     canonical = None
                     state = "MISSING"
