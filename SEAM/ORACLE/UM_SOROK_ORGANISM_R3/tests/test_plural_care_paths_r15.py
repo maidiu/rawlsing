@@ -19,7 +19,9 @@ from um_sorok_organism.runtime import ConstitutiveRuntime
 
 
 PARENT={'source_ref':'r15_sourcefree_fictional_parent',
-        'answers':{},'fictional_seed':{'projects':[]}}
+        'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+        'answers':{'R15_PLURAL_CARE_FIXTURE':'NOT_A_SURVEY_ANSWER'},
+        'fictional_seed':{'projects':[]}}
 
 
 def body(nutrition=.6,comfort=.5):
