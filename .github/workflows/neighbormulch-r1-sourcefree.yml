@@ -1,0 +1,35 @@
+name: NEIGHBORMULCH R1 actual organism first consumer
+on:
+  push:
+    branches:
+      - agent/neighbormulch-one-world-encounter-r1-20261121
+  workflow_dispatch:
+jobs:
+  one-world-first-consumer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile sourcefree neighbor and real R21 consumer
+        run: |
+          python -m py_compile SEAM/NEIGHBORMULCH/neighbor_runtime.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_contract.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_joined_r21.py
+      - name: Contract-spy normal and optimized
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -q
+      - name: Real existing R21 plus protected MII and SQLite cold first consumer
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joined_r21.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joined_r21.py' -q
+      - name: Full inherited R21 organism court normal and optimized
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -q
+          python -O -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -q
