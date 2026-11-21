@@ -1,0 +1,139 @@
+{
+  "c12": {
+    "parent_guard": {
+      "base_perception_count": 1,
+      "base_perception_hash": "730e89019f2c9549d7342330c74627bbaf81990bc0d48da908b8779a806b4d6c",
+      "base_root_hash": "",
+      "code": "C12_PERCEPTION_ONLY_SUFFIX",
+      "fork_cut": 11,
+      "nonperception_last_clock": 10,
+      "perception_last_clock": 11,
+      "state": "FORK_HELD"
+    },
+    "parent_last_clock": 10,
+    "parent_verify": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 1,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "same_count": {
+      "child_guard": {
+        "base_perception_count": 2,
+        "base_perception_hash": "9216978656742b5273bf0eb4fefcd76ae1df58522b7d40f59cf012ed4b3af0ba",
+        "base_root_hash": "20cf729eb54c6079e8d81e0434a4b27e77ffbf9f02f173a4cec1f658445a51f6",
+        "code": "C12_BASE_PERCEPTION_IDENTITY_MISMATCH",
+        "fork_cut": 10,
+        "state": "FORK_HELD"
+      },
+      "child_perceptions": [
+        {
+          "actor_id": "A",
+          "channel": "test",
+          "clock": 10,
+          "event_id": "ev1"
+        },
+        {
+          "actor_id": "A",
+          "channel": "test",
+          "clock": 10,
+          "event_id": "ev3"
+        }
+      ],
+      "child_verify": {
+        "branch_id": "child",
+        "counts": {
+          "checkpoint": 1,
+          "episode": 0,
+          "perception": 2,
+          "world_event": 3
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "parent_guard": {
+        "base_perception_count": 2,
+        "base_perception_hash": "e125cee41e099b21bbf426527b780dda564931961328496bd0a9e6cf6e497b22",
+        "base_root_hash": "",
+        "code": "C12_PERCEPTION_ONLY_SUFFIX",
+        "fork_cut": 11,
+        "nonperception_last_clock": 10,
+        "perception_last_clock": 11,
+        "state": "FORK_HELD"
+      },
+      "parent_perceptions": [
+        {
+          "actor_id": "A",
+          "channel": "test",
+          "clock": 10,
+          "event_id": "ev1"
+        },
+        {
+          "actor_id": "A",
+          "channel": "test",
+          "clock": 11,
+          "event_id": "ev2"
+        }
+      ],
+      "parent_verify": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 1,
+          "episode": 0,
+          "perception": 2,
+          "world_event": 2
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      }
+    },
+    "source": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-join-e/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j",
+    "store_sha256": "bb7bd721fa6b021a5b5163427495fd308236788d1738b8326f9f1093159b3c8b",
+    "verifier_sha256": "534780fe4631caadacac73e457afbb86bcc207686b1ebb433087ad6270abf710",
+    "wrong_base_root_guard": {
+      "base_root_hash": "",
+      "code": "C12_BASE_ROOT_MISMATCH",
+      "state": "FORK_HELD"
+    }
+  },
+  "s36": {
+    "after_readset_hash": "b3cc7c9e4a55ccce935f0cdbea9fbd8db003c59467748f805df317d51310214d",
+    "before_readset_hash": "b3cc7c9e4a55ccce935f0cdbea9fbd8db003c59467748f805df317d51310214d",
+    "old_receipt": {
+      "after_hash": "07d38064535ec54c9d96a570775dc70b4a4d285453ccdcbe739ecb8ba3df01b6",
+      "before_hash": "9c5137f214d299bdb627c72ac8ff1880be98822d56082ec8ecce3eea0ba3fe62",
+      "committed": true,
+      "receipt_hash": "1cec8633d861959c7d4b744c6770f9720110e977f021f460a1608e1aebbf4ee9",
+      "target_branch": "NO_CHANGE",
+      "target_reason": "NO_PROPOSAL"
+    },
+    "source": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/syn02-s36-r2-wt/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1",
+    "source_sha256": "d8d5d36ff68a1fa254c829ffa07a8d19699533769791a6d49b0cdfdd23baa803",
+    "table_count": 7,
+    "tables": [
+      "clock",
+      "event_identity",
+      "occurrence",
+      "receipt",
+      "response",
+      "target_journal",
+      "target_state"
+    ],
+    "unchanged": true
+  },
+  "schema_hashes": {
+    "schema_actor_r3.sql": "0ae69ef5b76177950c0b9c40e7bb20db11cf41d4697a5e4a1d6b08b459c82b90",
+    "schema_mirror_r3.sql": "5f3f2895af2a5443dd87ade6714675677b96be23be15544714fdc16e12f58821"
+  }
+}
