@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 from um_sorok_organism.types import adult, newborn, blank_world, AccessibleEncounter
-from um_sorok_organism.constitution import materialize, compose
+from um_sorok_organism.constitution import materialize, compose, actor_access
 from um_sorok_organism.development import admit, InvalidDevelopment
 from um_sorok_organism.psychic_genesis import conserve_lived_episode
 from um_sorok_organism.historical_self_organization import possible_lived_directional_orientation
@@ -396,6 +396,117 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                 self.assertTrue(cold.verify()['valid'])
             finally:
                 cold.close()
+
+
+    @staticmethod
+    def _r29_lived_in_other_presence(actor,event,clock,other,mode):
+        e=lived(actor['id'],event,clock=clock,cue=True)
+        for counterpart in ([other] if isinstance(other,str) else other):
+            e['perceived_cues'].append({
+                'id':'coactor:'+counterpart+':'+str(clock),
+                'kind':'coactor_present','source_actor':counterpart,
+                'modality':'present','tags':['coactor',counterpart]})
+        before={'comfort':.65,'pain':.1,'nutrition':.7,
+                'rest':.7,'regulation':.6}
+        after=deepcopy(before)
+        if mode=='WITHHOLD':
+            after['pain']+=.11
+        elif mode=='APPROACH':
+            after['comfort']+=.11
+        else:
+            raise AssertionError(mode)
+        conserve_lived_episode(actor,e,'world:'+event,before,after)
+        actor['body'].update(after)
+        return e
+
+    @staticmethod
+    def _r29_situated_beside(actor,*others):
+        world=blank_world()
+        world['positions'][actor['id']]='home'
+        for other in others:
+            world['positions'][other]='home'
+        access=actor_access(actor,world)
+        return compose(materialize(actor,world),access)
+
+    def test_mulch_r29_same_operation_different_other_does_not_transfer(self):
+        actor=adult('nadia','Nadia')
+        self._r29_lived_in_other_presence(actor,'father1',1,'father','WITHHOLD')
+        second=self._r29_lived_in_other_presence(
+            actor,'father2',2,'father','WITHHOLD')
+        available=possible_lived_directional_orientation(
+            actor,second,'world:father2')
+        self.assertEqual(len(available),1)
+        self.assertEqual(available[0]['orientation_mode'],'WITHHOLD')
+        self.assertEqual(available[0]['lived_genesis_basis'][
+            'coexperienced_other_ref'],'father')
+        self.assertTrue(available[0]['lived_genesis_basis'][
+            'other_may_not_have_caused_bodily_course'])
+        receipt=admit(actor,second,'world:father2',available)[0]
+        self.assertEqual(receipt['kind'],'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION')
+        self.assertIsNone(option(self._r29_situated_beside(actor,'father')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor,'mother')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor)))
+        self.assertEqual(len(actor['historical_orientations']),1)
+        self.assertEqual(actor['historical_orientations'][0][
+            'coexperienced_other_ref'],'father')
+        self.assertEqual(actor['historical_orientations'][0]['acquisition'],
+                         'REPEATED_LIVED_BODY_COURSE')
+
+    def test_mulch_r29_cross_other_episodes_cannot_fake_repetition(self):
+        actor=adult('daughter','Daughter')
+        self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
+        e=self._r29_lived_in_other_presence(actor,'b',2,'mother','WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,e,'world:b'),[])
+        self.assertEqual(actor['historical_orientations'],[])
+
+    def test_mulch_r29_different_others_can_acquire_opposing_orientations(self):
+        actor=adult('opposed','Opposed')
+        self._r29_lived_in_other_presence(actor,'f1',1,'father','WITHHOLD')
+        f=self._r29_lived_in_other_presence(actor,'f2',2,'father','WITHHOLD')
+        admit(actor,f,'world:f2',possible_lived_directional_orientation(
+            actor,f,'world:f2'))
+        self._r29_lived_in_other_presence(actor,'m1',3,'mother','APPROACH')
+        m=self._r29_lived_in_other_presence(actor,'m2',4,'mother','APPROACH')
+        choices=possible_lived_directional_orientation(actor,m,'world:m2')
+        self.assertEqual(len(choices),1)
+        self.assertEqual(choices[0]['orientation_mode'],'APPROACH')
+        admit(actor,m,'world:m2',choices)
+        self.assertEqual(len(actor['historical_orientations']),2)
+        father=self._r29_situated_beside(actor,'father')
+        mother=self._r29_situated_beside(actor,'mother')
+        both=self._r29_situated_beside(actor,'father','mother')
+        self.assertTrue(any(c['polarity']=='WITHHOLD' for c in father.currents
+                            if c['source_family']=='NONDECLARATIVE_PRACTICE'))
+        self.assertTrue(any(c['polarity']=='APPROACH' for c in mother.currents
+                            if c['source_family']=='NONDECLARATIVE_PRACTICE'))
+        self.assertFalse(any(c['source_family']=='NONDECLARATIVE_PRACTICE'
+                             for c in both.currents))
+        self.assertIsNone(option(father))
+        self.assertIsNotNone(option(mother))
+
+    def test_mulch_r29_multi_other_presence_is_underdetermined_not_blamed(self):
+        actor=adult('crowd','Crowd')
+        self._r29_lived_in_other_presence(
+            actor,'x',1,['mother','father'],'WITHHOLD')
+        latest=self._r29_lived_in_other_presence(
+            actor,'y',2,['mother','father'],'WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,latest,'world:y'),[])
+        self.assertEqual(actor['historical_orientations'],[])
+
+    def test_mulch_r29_forged_social_source_is_atomically_rejected(self):
+        actor=adult('source','Source')
+        self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
+        now=self._r29_lived_in_other_presence(actor,'b',2,'father','WITHHOLD')
+        valid=possible_lived_directional_orientation(actor,now,'world:b')[0]
+        original=repr(actor)
+        for rewrite in ('mother',None,'institution:fantasy'):
+            bad=deepcopy(valid)
+            bad['lived_genesis_basis']['coexperienced_other_ref']=rewrite
+            with self.assertRaises(InvalidDevelopment):
+                admit(actor,now,'world:b',[bad])
+            self.assertEqual(repr(actor),original)
 
     def test_sqlite_cold_restart_preserves_operative_pre_cue_pressure(self):
         with tempfile.TemporaryDirectory() as d:
