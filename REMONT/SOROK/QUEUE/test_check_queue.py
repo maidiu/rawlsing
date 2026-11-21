@@ -25,9 +25,9 @@ class QueueDisciplineTest(unittest.TestCase):
         self.queue = q.validate_queue(q.load_json(q.DEFAULT_QUEUE))
         self.results = self.root / 'LOCAL_COURTS' / 'REMONT_QUEUE'
 
-    def test_queue_five_pinned_exact_shas_in_newest_first_order(self):
-        self.assertEqual([x['pr'] for x in self.queue['candidates']], [1222,1220,1214,1210,1199])
-        self.assertEqual(self.queue['candidates'][0]['sha'], '7a8a18c153ee5a36e1c52eca15f4e5e8862296be')
+    def test_queue_seven_pinned_exact_shas_in_newest_first_order(self):
+        self.assertEqual([x['pr'] for x in self.queue['candidates']], [1241,1230,1222,1220,1214,1210,1199])
+        self.assertEqual(self.queue['candidates'][0]['sha'], 'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
         self.assertEqual(self.queue['default_python'], 'python3.11')
 
     def test_duplicate_pr_refused(self):
@@ -83,7 +83,7 @@ class QueueDisciplineTest(unittest.TestCase):
     def test_no_result_is_not_accepted(self):
         s = q.load_state(self.results/'ledger.json')
         s['_results_path']=self.results
-        self.assertTrue(q.needs_execution(s,'1222@'+self.queue['candidates'][0]['sha']))
+        self.assertTrue(q.needs_execution(s,'1241@'+self.queue['candidates'][0]['sha']))
         with redirect_stdout(io.StringIO()) as out:
             q.print_queue(self.queue['candidates'][:1],s)
         self.assertIn('COMPAT_NOT_RUN',out.getvalue())
@@ -99,7 +99,7 @@ class QueueDisciplineTest(unittest.TestCase):
         s['_results_path']=self.results
         self.assertFalse(q.needs_execution(s,k))
         self.assertTrue(q.needs_execution(s,k,force=True))
-        self.assertTrue(q.needs_execution(s,'1222@'+'b'*40))
+        self.assertTrue(q.needs_execution(s,'1241@'+'b'*40))
         self.assertEqual(q.load_json(file)['independent_acceptance'],False)
 
     def test_failed_execution_remains_pending(self):
