@@ -30,4 +30,5 @@ jobs:
         with:
           name: kuda076-e05-court
           path: .kuda076-proof/
-          if-no-files-found: warn
+          if-no-files-found: error
+          include-hidden-files: true
