@@ -23,7 +23,11 @@ from um_sorok_organism.runtime import ConstitutiveRuntime
 
 SEED={"source_ref":"SOURCEFREE_FICTIONAL_PARENT_NOT_PYAT",
       "answers":{"fictional_instrument_field":"fictional_no_source_truth"},
-      "fictional_seed":{"projects":[]}}
+      # Sourcefree parent has already acquired capacity to use SPEAK; no
+      # questionnaire answer is assumed to endow the child with language.
+      "fictional_seed":{"projects":[{
+          "object":"participate in already acquired ordinary speech",
+          "means":["SPEAK"],"priority":.2,"cue_terms":["home"]}]}}
 
 
 def world_with_object():
