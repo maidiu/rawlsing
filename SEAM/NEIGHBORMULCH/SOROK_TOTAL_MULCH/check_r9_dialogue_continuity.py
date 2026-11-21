@@ -103,7 +103,7 @@ def main():
 
     h_rows = table(h_family, r"H\d\d\d")
     q_rows = table(q_family, r"Q-[A-Za-z0-9_-]+")
-    o_rows = table(o_family, r"(?:S\d+|C\d+|O-[A-Za-z0-9_-]+)")
+    o_rows = table(o_family, r"[A-Za-z][A-Za-z0-9_-]*")
     uda_rows = table(uda_family, r"SOROKUDA-[A-Za-z0-9_-]+")
     must(len(h_rows) == 190 and len(q_rows) == 123 and
          len(o_rows) == 144 and len(uda_rows) == 300,
@@ -120,21 +120,16 @@ def main():
             key = record["source_id"]
             must(key in source_table, "lost original identity: " + key)
             if source_name.startswith("H_"):
-                # The original R5 harvest has 109 inherited headings without
-                # a separate Claim: paragraph. The current in-file claim may
-                # therefore preserve either the title or a longer original
-                # Claim sentence, never invent a new sentence as source.
-                must(normalized(record[attr]) in normalized(source_table[key])
-                     or normalized(record.get("original_claim", "")) in
-                     normalized(source_table[key]),
-                     "historic H claim mislabeled: " + key)
+                # Both the original heading and its separate Claim paragraph
+                # (where one existed) are now preserved in the single whole.
+                check_exact_source_name(source_table[key], record[attr], key)
             elif source_name.startswith("SOROKUDA"):
                 check_exact_source_name(source_table[key], record[attr], key)
             else:
                 check_exact_source_name(source_table[key], record[attr], key)
 
     important = [
-        "exact same socioeconomic", "only their own", "financial",
+        "same socioeconomic situation", "only their own", "financial",
         "NO_LAWFUL_HOMOLOGY", "SAY, DO and ATTEND", "ATTEND",
         "bodily needs", "adult", "prelude", "common root",
         "message", "deletion", "third party", "ordinary",
