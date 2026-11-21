@@ -26,7 +26,7 @@ from dataclasses import asdict
 import hmac, hashlib, os, json, math
 from decimal import Decimal
 
-COOPERATIVE={'SIGNAL':{'CARE','JOIN','FEED'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
+COOPERATIVE={'SIGNAL':{'CARE','JOIN','FEED','SPEAK'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
              'MAKE_SPACE':{'JOIN','SING'},'SHARE':{'JOIN','CARE'}}
 
 
@@ -677,6 +677,18 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             sign['actor_accessible_care_responder_ref']=partner_attempt.actor
             sign['actual_independent_care_response_not_a_motive']=True
             sign['not_automatic_actor_conscious_identification']=True
+        if (attempt.action=='SIGNAL' and status=='PERFORMED'
+                and partner_attempt is not None and partner_valid
+                and partner_attempt.action=='SPEAK'
+                and output=='JOINT_ACTIVITY_PERFORMED'):
+            # The other person independently answered this particular
+            # nonverbal call with speech. This supplies a real auditory
+            # coordination occasion; it does NOT disclose a word, dictate
+            # the listener's interpretation or teach a language instantly.
+            sign['actor_accessible_speech_responder_ref']=partner_attempt.actor
+            sign['actual_independent_speech_response']=True
+            sign['spoken_content']='NOT_CAPTURED_OR_RECONSTRUCTED'
+            sign['vocal_interchange_not_lexical_comprehension']=True
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     # World-level efficacy is NOT the actor's own explanatory model. Even an
     # independently authored coactor response does not make the principal's
