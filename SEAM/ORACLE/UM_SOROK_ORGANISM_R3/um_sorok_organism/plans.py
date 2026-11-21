@@ -58,17 +58,22 @@ def propose_compositions(situated, max_steps=3):
     # These are compositional *grammars* of already feasible means, not new
     # psychologically preinstalled desires. Purposes derive from actor projects.
     for p in projects:
-        if 'WORK' in options and 'REPAIR' in options:
-            candidate=('WORK','REPAIR')
-        elif 'MAKE_SPACE' in options and 'SING' in options:
-            candidate=('MAKE_SPACE','SING')
-        elif 'PRACTICE' in options and 'SING' in options:
-            candidate=('PRACTICE','SING')
-        elif 'ASK' in options and 'JOIN' in options:
-            candidate=('ASK','JOIN')
-        else:continue
-        if len(candidate)>max_steps:continue
-        refs=tuple(sorted({p['ref']} | {r for a in candidate for r in options[a].get('basis',[]) }))
+        # A globally feasible operation does not become this project's means.
+        # Both component operations must be actor/project-attributed in the
+        # situated candidate set, not merely available through another purpose.
+        owned=set(p.get('means',[]))
+        project_basis='project:'+p['ref']
+        patterns=(('WORK','REPAIR'),('MAKE_SPACE','SING'),
+                  ('PRACTICE','SING'),('ASK','JOIN'))
+        candidate=next((pair for pair in patterns
+            if len(pair)<=max_steps and all(a in owned and a in options
+                and project_basis in options[a].get('basis',[]) for a in pair)),None)
+        if candidate is None:continue
+        # Preserve form evidence; NEVER merge another project's motive/basis
+        # into the object whose course this plan purports to continue.
+        form_refs={r for a in candidate for r in options[a].get('basis',[])
+                   if r!='organism' and not str(r).startswith('project:')}
+        refs=tuple(sorted({project_basis}|form_refs))
         out.append(ComposedActivity(stable_id('composed',{'actor':situated.actor,
           'purpose':p['object'],'steps':candidate,'basis':refs}),
           situated.actor,p['object'],candidate,refs))

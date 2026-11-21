@@ -13,7 +13,7 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
-from .activity import record_activity_afterlife
+from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
@@ -33,9 +33,12 @@ class ConstitutiveRuntime:
             parents.append(person)
         child=newborn(child_id,child_name)
         world['institutions']['hall_board']['members']=[parents[0]['id']] if parents else []
-        self.ledger.initialize(world,parents+[child])
-        for a,_,packet in (parent_packets or []):
-            self.ledger.seal_source('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',packet)
+        # Source conditioning and fictional initialization share one transaction
+        # and one immutable event-chain envelope. There must never be a committed
+        # person with missing or unanchored source qualification.
+        source_seals=[('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',packet)
+                      for a,_,packet in (parent_packets or [])]
+        self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
 
     def snapshot(self,actor_id):
@@ -56,12 +59,13 @@ class ConstitutiveRuntime:
         return asdict(compose(const,access))
 
     def cue(self,actor_id=None,kind='ordinary_contact',tags=None,location='home',
-            description='',modality='visual',private_to=None):
+            description='',modality='visual',private_to=None,lasting_ticks=0):
         """External world fixture change, not an actor psychological event."""
         wv,world=self.ledger.world(self.world_id)
         if actor_id is not None:self.ledger.actor(actor_id)
         cue=add_cue(world,kind,tags or [kind],location=location,description=description,
-                    modality=modality,private_to=private_to,source_actor=actor_id,clock_offset=1)
+                    modality=modality,private_to=private_to,source_actor=actor_id,
+                    clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
@@ -146,7 +150,6 @@ class ConstitutiveRuntime:
                 apply_body(actors[aid],'WAIT','IMPOSED' if summary['action']=='IMPOSE' else 'PARTIAL')
         activity_effects={}
         for row in resolved['performed']:
-            if row['status']!='PERFORMED':continue
             chosen=principal if row['actor']==actor_id else partner
             if chosen is None:continue
             activity_effects[row['actor']]=record_activity_afterlife(actors[row['actor']],
@@ -185,6 +188,9 @@ class ConstitutiveRuntime:
                         'felt_enactment':felt_enactment,'felt_effect':felt_effect,
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
+            # Actor-owned practical afterlife is separate from world objective
+            # outcome. It can later be recruited, but is not motive fulfillment.
+            register_lived_activity_attempt(actors[aid],experience,activity_effects.get(aid,[]))
             # Disabled LLM proposals may truthfully produce no change.
             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
@@ -194,7 +200,13 @@ class ConstitutiveRuntime:
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental[aid]=admit(actors[aid],experience,objective_ref,proposal['candidates'])
         observed=subjective.get(actor_id,{})
-        actual_tip={'action':principal.action,'outcome':summary['outcome'] if observed.get('perceived_cues') else 'UNKNOWN_TO_ACTOR',
+        # A privileged world audit outcome is NOT automatically what this
+        # person saw or can disclose. The event's public sign is deliberately
+        # less informative than the real objective financial/material reason.
+        public_sign=next((cue.get('description','EVENT_PERCEIVED') for cue in
+                         observed.get('perceived_cues',[]) if cue.get('kind','').startswith('performed_')),
+                         'UNKNOWN_TO_ACTOR')
+        actual_tip={'action':principal.action,'outcome':public_sign,
                     'status':summary['status']}
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':observed,

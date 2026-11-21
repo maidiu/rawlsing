@@ -4,7 +4,8 @@ World consequences can be unilateral, imposed, cooperative, or refused.
 from .types import Attempt, Resolution, copy, stable_id, digest
 from .organism import eligible
 from dataclasses import asdict
-import hmac, hashlib, os, json
+import hmac, hashlib, os, json, math
+from decimal import Decimal
 
 COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACTICE':{'CARE','JOIN','MAKE_SPACE'},
              'MAKE_SPACE':{'JOIN','SING'},'SHARE':{'JOIN','CARE'}}
@@ -12,6 +13,26 @@ COOPERATIVE={'SIGNAL':{'CARE','JOIN'},'SING':{'JOIN','SING','MAKE_SPACE'},'PRACT
 
 def add_cue(world,kind,tags,location='all',modality='visual',description='',source_actor=None,
             private_to=None,threshold=.05,clock_offset=0,lasting_ticks=0):
+    # Objective sensory records become actor-accessible, possibly influencing
+    # future recruitment. Reject malformed observations before any world write:
+    # list('care') is not the single cue 'care', and an untyped 'present'
+    # modality must not bypass an organism's sensory threshold.
+    if not isinstance(kind,str) or not kind:
+        raise ValueError('INVALID_CUE_KIND')
+    if (not isinstance(tags,list) or any(not isinstance(t,str) or not t for t in tags)):
+        raise ValueError('INVALID_CUE_TAGS')
+    if modality not in ('visual','auditory','tactile','olfactory'):
+        raise ValueError('INVALID_CUE_MODALITY')
+    if (isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or
+            not math.isfinite(threshold) or not 0<=threshold<=1):
+        raise ValueError('INVALID_CUE_THRESHOLD')
+    if (type(lasting_ticks) is not int or lasting_ticks<0 or
+            type(clock_offset) is not int or clock_offset<0):
+        raise ValueError('INVALID_CUE_TIME')
+    if not isinstance(location,str) or not location:
+        raise ValueError('INVALID_CUE_LOCATION')
+    if private_to is not None and (not isinstance(private_to,str) or not private_to):
+        raise ValueError('INVALID_CUE_PRIVATE_ACTOR')
     moment=world['clock']+clock_offset
     cue={'clock':moment,'last_access_clock':moment+lasting_ticks,'id':stable_id('cue',{'n':world['clock'],'tags':tags,'s':source_actor,'d':description,'index':len(world['cues'])}),
          'kind':kind,'tags':list(tags),'location':location,'modality':modality,
@@ -28,7 +49,94 @@ def _field(world,a,b):
        'continuity':'open','objective_grade':'SOURCEFREE_RESEARCH_PROVISIONAL'})
 
 
+def _qualified_members(owner, field, error):
+    """Return only an actual explicit actor-ID roster, never string substring rights.
+
+    These are world-owner permissions; malformed external/fixture types fail
+    closed before any site, material, or institutional write. No new powers are
+    invented for an actor who merely resembles a listed principal's name.
+    """
+    members=owner.get(field, [])
+    if (not isinstance(members,list) or
+            any(not isinstance(member,str) or not member for member in members)):
+        raise ValueError(error)
+    return members
+
+
 def _site(world,aid):return world['sites'].get(world['positions'].get(aid),{})
+
+def _effective_material_controller(world, loc, site):
+    """Resolve actual institutional control, including non-denormalized sites.
+
+    A site may omit a controller label while an independent institution still
+    controls it (e.g. the hall board). Missing/conflicting declarations must
+    never turn controlled material into free stock.
+    """
+    controllers=[name for name,inst in world['institutions'].items()
+                 if inst.get('controls')==loc]
+    named=site.get('controller')
+    if named is not None and (named not in controllers or len(controllers)!=1):
+        return None,True
+    if len(controllers)>1:
+        return None,True
+    return (named or (controllers[0] if controllers else None)),False
+
+
+def _nonnegative_transfer_amount(raw, error):
+    """Reject invalid fixture economics before world/actor mutations.
+
+    Research accounts are money claims, not a market law or policy scheduler.
+    An invalid negative or nonfinite amount cannot mint money, seize worker
+    balances, or poison canonical ledger serialization.
+    """
+    # Bool is int in Python but not an objective quantity; accepting True as
+    # a wage or price creates fictional monetary claims. Sourcefree world
+    # receipts use explicit finite numeric inputs rather than coerced strings.
+    if isinstance(raw,bool) or not isinstance(raw,(int,float)):
+        raise ValueError(error)
+    try:
+        amount = float(raw)
+    except (TypeError, ValueError, OverflowError):
+        raise ValueError(error) from None
+    if not math.isfinite(amount) or amount < 0:
+        raise ValueError(error)
+    return amount
+
+
+
+def _cash_amount(raw,error):
+    """A monetary claim must survive declared five-decimal storage exactly.
+
+    A positive subtick price/wage must not round to zero and transfer goods or
+    erase owed compensation. Nonrepresentable balances must not mint value on
+    the next transfer. This rejects, rather than silently rounds, input. Not a
+    claim that the sourcefree model has real-world currency-calibration rights.
+    """
+    amount=_nonnegative_transfer_amount(raw,error)
+    if amount != round(amount,5):
+        raise ValueError(error+'_PRECISION')
+    return amount
+
+
+def _exact_material_delta(before, delta, error):
+    """Refuse a material transfer that storage cannot actually represent.
+
+    Current sourcefree accounts and inventories use JSON float numbers. Even
+    individually finite/rounded balances can lose a real unit on addition or
+    subtraction (e.g. 1e20 + 1 == 1e20). Validate the outcome in decimal space
+    then require exact preservation through that existing representation.
+    This is an integrity guard, NOT a new currency or labor law.
+    """
+    intended=Decimal(str(before))+Decimal(str(delta))
+    if intended<0:
+        raise ValueError(error)
+    try:
+        stored=float(intended)
+    except (OverflowError,ValueError):
+        raise ValueError(error) from None
+    if not math.isfinite(stored) or Decimal(str(stored))!=intended:
+        raise ValueError(error)
+    return stored
 
 
 def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None):
@@ -59,61 +167,156 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     performed.insert(0,{'actor':aid,'action':attempt.action,'status':status,'as_willing':True})
     if not allowed:
         output='BODILY_'+reason
+    elif attempt.action in ('EAT','BUY_FOOD','WORK','REPAIR') and loc not in world['sites']:
+        # No phantom production on detached dict returned by _site().
+        status='BLOCKED';output='UNKNOWN_MATERIAL_SITE'
     elif attempt.action=='MOVE':
         if attempt.object_ref in world['sites']:
             site=world['sites'][attempt.object_ref]
-            if site['access']=='public' or aid in site.get('admitted',[]):
+            if (site['access']=='public' or aid in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):
                 world['positions'][aid]=attempt.object_ref;actor['location']=attempt.object_ref
                 output='MOVED'
             else:status='BLOCKED';output='INSTITUTIONAL_ACCESS_DENIED'
         else:status='BLOCKED';output='UNKNOWN_DESTINATION'
     elif attempt.action=='EAT':
         site=_site(world,aid)
-        inventory=world.setdefault('holdings',{}).setdefault(aid,{'food':0})
-        if inventory.get('food',0)>=1:
-            inventory['food']-=1;output='ATE_OWNED_FOOD'
-        elif loc=='home' and site.get('food',0)>=1:
-            site['food']-=1;output='ATE_SHARED_HOUSEHOLD_FOOD'
+        inventory=world.get('holdings',{}).get(aid,{'food':0})
+        owned=_nonnegative_transfer_amount(inventory.get('food',0),'INVALID_OWNED_FOOD')
+        household=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
+        if owned>=1:
+            next_owned=_exact_material_delta(owned,-1,'INVALID_OWNED_FOOD_DELTA')
+            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=next_owned
+            output='ATE_OWNED_FOOD'
+        elif loc=='home' and household>=1:
+            site['food']=_exact_material_delta(household,-1,'INVALID_SITE_FOOD_DELTA');output='ATE_SHARED_HOUSEHOLD_FOOD'
         else:status='BLOCKED';output='NO_ACCESSIBLE_FOOD'
     elif attempt.action=='BUY_FOOD':
-        site=_site(world,aid);cost=float(site.get('food_price',1.0))
-        if site.get('food',0)<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
-        elif world['accounts'].get(aid,0)<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
-        else:
-            site['food']-=1;world['accounts'][aid]=round(world['accounts'][aid]-cost,5)
-            world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']+=1
-            output='FOOD_PURCHASED'
-    elif attempt.action=='WORK':
-        site=_site(world,aid);site['stock']=site.get('stock',0)+2
-        controller=site.get('controller')
-        if controller in world['institutions']:
-            institution=world['institutions'][controller]
-            wage=float(institution.get('wage',0))
-            available=max(0,world['accounts'].get(controller,0))
-            paid=min(available,wage)
-            world['accounts'][controller]=round(available-paid,5)
-            world['accounts'][aid]=round(world['accounts'].get(aid,0)+paid,5)
-            claim={'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
-                   'controller':controller,'wage':paid,'worker_control_of_output':False}
-            world.setdefault('material_claims',[]).append(claim)
-            output='PRODUCED_GOODS_CONTROLLED_BY_OTHER'
-        else:output='MATERIAL_STOCK_PRODUCED'
-    elif attempt.action=='REPAIR':
         site=_site(world,aid)
-        if site.get('stock',0)<1:status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
-        else:site['stock']-=1;output='REPAIR_PERFORMED'
+        cost=_cash_amount(site.get('food_price',1.0), 'INVALID_MATERIAL_PRICE')
+        available_food=_nonnegative_transfer_amount(site.get('food',0),'INVALID_SITE_FOOD')
+        buyer_balance=_cash_amount(world['accounts'].get(aid,0),'INVALID_BUYER_BALANCE')
+        owned_food=_nonnegative_transfer_amount(world.get('holdings',{}).get(aid,{}).get('food',0),
+                                                'INVALID_OWNED_FOOD')
+        # Ownership of offered goods and the monetary recipient must be
+        # objective world relations. Charging the buyer without recording who
+        # received the payment destroyed purchasing claims inside the modeled
+        # economy. A room with food but no identifiable seller is NOT a shop.
+        seller,controller_error=_effective_material_controller(world,loc,site)
+        if available_food<1:status='BLOCKED';output='NO_FOOD_TO_PURCHASE'
+        elif seller!=aid and buyer_balance<cost:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+        elif controller_error:status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif seller is None:status='BLOCKED';output='NO_OBJECTIVE_SELLER'
+        else:
+            seller_balance=_cash_amount(
+                world['accounts'].get(seller,0),'INVALID_SELLER_BALANCE')
+            paid=round(cost,5)
+            if seller!=aid and buyer_balance<paid:status='BLOCKED';output='INSUFFICIENT_CLAIM_ON_FOOD'
+            else:
+                # Compute every transfer before mutating any ledger-owned fact.
+                # Finite individually valid inputs may still overflow or lose
+                # the requested five-decimal or physical-unit change.
+                food_next=_exact_material_delta(available_food,-1,'INVALID_SITE_FOOD_DELTA')
+                holdings_next=_exact_material_delta(owned_food,1,'INVALID_OWNED_FOOD_DELTA')
+                # Existing sourcefree P049 treats self-collection of an owned
+                # shop's food as a *performed* movement of material goods. It
+                # is not a paid market transaction: the same account cannot
+                # be both an outgoing and incoming external claim.
+                if seller!=aid:
+                    buyer_next=_exact_material_delta(buyer_balance,-paid,'INVALID_BUYER_TRANSFER_PRECISION')
+                    seller_next=_exact_material_delta(seller_balance,paid,'INVALID_SELLER_TRANSFER_PRECISION')
+                site['food']=food_next
+                if seller!=aid:
+                    world['accounts'][aid]=buyer_next
+                    world['accounts'][seller]=seller_next
+                world.setdefault('holdings',{}).setdefault(aid,{'food':0})['food']=holdings_next
+                world.setdefault('material_claims',[]).append({
+                    'clock':world['clock'],'kind':('FOOD_PURCHASE' if seller!=aid else 'SELF_STOCK_REALLOCATION'),
+                    'buyer':aid,'site':loc,'seller':seller,'price_paid':(paid if seller!=aid else 0),
+                    'goods_transferred':1,'not_actor_psychic_motive':True})
+                output='FOOD_PURCHASED'
+    elif attempt.action=='WORK':
+        site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
+        if unqualified:
+            # Neither a missing issuer nor a mismatched owner converts an
+            # institutionally controlled worksite into unowned production.
+            status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif controller==aid:
+            # Self-controlled production is not a transfer of wages between
+            # independent parties. Preserve the real performed activity and
+            # stock change without minting a bogus employer-to-self salary.
+            next_stock=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
+            site['stock']=next_stock
+            world.setdefault('material_claims',[]).append({
+                'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
+                'controller':controller,'wage':0,'wage_due':0,'wage_unpaid':0,
+                'worker_control_of_output':True,
+                'economic_grade':'SOURCEFREE_SELF_CONTROL_NO_EXTERNAL_WAGE'})
+            output='SELF_CONTROLLED_GOODS_PRODUCED'
+        elif controller is not None:
+            institution=world['institutions'][controller]
+            wage=_cash_amount(institution.get('wage',0), 'INVALID_WAGE')
+            available=_cash_amount(world['accounts'].get(controller,0),
+                                                      'INVALID_CONTROLLER_BALANCE')
+            worker_balance=_cash_amount(world['accounts'].get(aid,0),
+                                                      'INVALID_WORKER_BALANCE')
+            # Precise within research account's declared five-decimal units.
+            due=round(wage,5)
+            paid=round(min(round(available,5),due),5)
+            unpaid=round(max(0,due-paid),5)
+            # Qualify material and monetary deltas BEFORE any persisted write.
+            # Rounding separately validated operands does not guarantee a real
+            # debit, credit or added stock at large magnitudes.
+            stock_next=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
+            employer_next=_exact_material_delta(available,-paid,'INVALID_EMPLOYER_TRANSFER_PRECISION')
+            worker_next=_exact_material_delta(worker_balance,paid,'INVALID_WORKER_TRANSFER_PRECISION')
+            site['stock']=stock_next
+            world['accounts'][controller]=employer_next
+            world['accounts'][aid]=worker_next
+            claim={'clock':world['clock'],'worker':aid,'site':loc,'goods_produced':2,
+                   'controller':controller,'wage':paid,'wage_due':due,
+                   'wage_unpaid':unpaid,'worker_control_of_output':False}
+            world.setdefault('material_claims',[]).append(claim)
+            if unpaid>0:
+                # A lack of cash does not erase an objectively configured wage
+                # claim. This is an employer liability, not a worker's belief.
+                world.setdefault('wage_arrears',[]).append({'clock':world['clock'],
+                    'worker':aid,'controller':controller,'site':loc,
+                    'amount':unpaid,'material_claim_index':len(world['material_claims'])})
+            output='PRODUCED_GOODS_CONTROLLED_BY_OTHER'
+        else:
+            # No controller exists: this is not a wage relationship.
+            site['stock']=_exact_material_delta(stock,2,'INVALID_SITE_STOCK_DELTA')
+            output='MATERIAL_STOCK_PRODUCED'
+    elif attempt.action=='REPAIR':
+        site=_site(world,aid);controller,unqualified=_effective_material_controller(world,loc,site)
+        stock=_nonnegative_transfer_amount(site.get('stock',0),'INVALID_SITE_STOCK')
+        if unqualified:
+            status='BLOCKED';output='MATERIAL_CONTROLLER_UNQUALIFIED'
+        elif controller is not None and aid not in _qualified_members(site,'material_use_grants','INVALID_MATERIAL_GRANT'):
+            # Public entrance ≠ the right to appropriate a controller's goods.
+            # Grant is an objective world/site relation, never actor assertion.
+            status='BLOCKED';output='MATERIAL_USE_NOT_AUTHORIZED'
+        elif stock<1:
+            status='BLOCKED';output='MISSING_REPAIR_MATERIAL'
+        else:
+            site['stock']=_exact_material_delta(stock,-1,'INVALID_SITE_STOCK_DELTA');output='REPAIR_PERFORMED'
     elif attempt.action=='OPEN_HALL':
-        members=world['institutions']['hall_board']['members']
+        members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:
             world['sites']['hall']['access']='public';output='HALL_OPENED'
     elif attempt.action=='DENY_HALL':
-        members=world['institutions']['hall_board']['members']
+        members=_qualified_members(world['institutions']['hall_board'],'members','INVALID_INSTITUTION_MEMBERSHIP')
         if aid not in members:status='BLOCKED';output='NO_INSTITUTIONAL_AUTHORITY'
         else:world['sites']['hall']['access']='controlled';output='HALL_ACCESS_RESTRICTED'
     elif attempt.action=='CARE':
         if target in actors and world['positions'].get(target)==loc:
-            b=actors[target]['body'];b['comfort']=min(1,b['comfort']+.18)
+            b=actors[target]['body']
+            # A recipient does not silently acquire valid physiology through a
+            # giver's act; validate before the first objective bodily effect.
+            eligible(b,'WAIT')
+            b['comfort']=min(1,b['comfort']+.18)
             b['nutrition']=min(1,b['nutrition']+.06)
             effects[target]={'action':'RECEIVED_CARE','bodily':True}
             output='CARE_GIVEN'
@@ -179,12 +382,20 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                    'object_ref':attempt.object_ref,
                    'material_claim_ref':claim_ref,
                    'co_present_not_verified_witnessing':True}
-    world['public_history'].append(event_summary)
+    # Objective event audit contains the real resolution, but public history
+    # must not publish the actor's private financial/material explanation.
+    # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
+    perceptible_outcome=(output if status=='PERFORMED' else 'ATTEMPT_NOT_COMPLETED')
+    public_event={**event_summary,'outcome':perceptible_outcome}
+    world['public_history'].append(public_event)
     # New cues are actual public world consequences, not actor introspection.
     # World effects persist even when no participant currently perceives them.
-    add_cue(world,'performed_'+attempt.action.lower(),[attempt.action.lower(),output.lower()],
+    # Public, witness-accessible sign is not a world-audit report. A refused
+    # purchase, for example, does not reveal the purchaser's account deficit.
+    add_cue(world,'performed_'+attempt.action.lower(),
+            [attempt.action.lower(),perceptible_outcome.lower()],
             location=loc,modality='auditory' if attempt.action in ('SING','SPEAK','SIGNAL','ASK') else 'visual',
-            description=output,source_actor=aid)
+            description=perceptible_outcome,source_actor=aid)
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     return Resolution(status,performed,{'event':event_summary},effects,witnesses,output)
 
@@ -207,12 +418,15 @@ class IndependentWorldAuthority:
         partner=None;policy_receipt=None
         if (principal.action in COOPERATIVE and principal.target in actors
                 and principal.target!=principal.actor and
-                world['positions'].get(principal.actor)==world['positions'].get(principal.target)):
+                world['positions'].get(principal.actor)==world['positions'].get(principal.target)
+                and eligible(actors[principal.actor]['body'],principal.action)[0]):
             candidate=self.__planner(principal,copy(world),copy(actors))
             if not isinstance(candidate,Attempt) or candidate.actor!=principal.target:
                 raise ValueError('INDEPENDENT_COACTOR_POLICY_INVALID')
             if candidate.action not in COOPERATIVE[principal.action]|{'REFUSE'}:
                 raise ValueError('INDEPENDENT_COACTOR_NOT_ELIGIBLE_TO_JOIN')
+            if candidate.target!=principal.actor:
+                raise ValueError('INDEPENDENT_COACTOR_TARGET_MISMATCH')
             ok,reason=eligible(actors[candidate.actor]['body'],candidate.action)
             if not ok:raise ValueError('COACTOR_BODILY_INELIGIBLE:'+reason)
             partner=candidate

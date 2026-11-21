@@ -1,0 +1,19 @@
+# REMONT R18 receiving currentness / first-owner follow-on — 2026-11-21
+
+## Frozen code and first consumer
+
+- **R18 P004 bounded author repair:** PR #1241 exact source `a4a495bbb456bd211b4fbdbd29478c0f0052603f`, author-confirmed 296/296 normal/-O/pytest +32 subtests on Python 3.13.5; fresh archive checked. Its historical R17 parent is `6f2e98433822a4fb1246ff72c388b2e901c6ab7f`. R18 remains independently **UNRECEIVED**, P004 still **PARTIAL**.
+- **R17 new current successor:** PR #1230 `bd023cccea8912913ace132600c69a97b0eb6a44` descends from the old R17 pin; sourcefree 289/289 Python 3.11.3 reported; typed `EVENT_ENVELOPE_MALFORMED` / `Conflict(SOURCE_HISTORY_INVALID: …)` change for damaged event envelopes; newer `storage.py` SHA-1 `75087ed57c3a39d82b9ded5ebf8123f949e54c21`. R18 original `storage.py` is `a89be36d3fe74b46f94a572be4db77941d7d9083`. **Do not impute R17 successor work to R18's frozen SHA.**
+- **SORACLE joined first consumer:** PR #1234 at historical executed cut `dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b` produced 524 tests, 27 FAIL and 51 ERROR (Python 3.11.3) and an unsuccessful longitudinal demo; this is a distinct builder-owned first RED, not R18 rejection. SORACLE has since moved code several times, including the new R17 storage correction. **The joined current head is not frozen here**, and independent REMONT review is deferred from the default queue until the builder submits a stable, actually executed candidate.
+
+## P004 selected means — remaining atomically consequential edge
+
+The R18 `activity.record_activity_afterlife` preflights the *existence* and *means compatibility* of all actor-policy selected projects before mutation. However, it still discovers a repeated `event_ref` **sequentially during each project's append**. Where project A and B are selected for one operation, A has not seen the event and B has seen it, the function may append A's operational history first, then reject B's duplicate. A valid atomic selection should **not partially mutate either project or actor history**. This is a **SOURCE-READ SUSPECTED FIRST FAULT** pending an independent executed negative on exact R18 SHA; it is **not** represented as an executed failing test. SORACLE joined activity at later source shows a *global duplicate-event preflight*, but that belongs to its own code and must not count as an R18 repair or acceptance.
+
+**Review operator:** construct two actor-owned compatible selected projects A and B, preseed B's `operational_history` with `event_ref`, issue selected multi-project receipt and valid `basis`, and assert `DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT` leaves all actor/project histories byte-identical. Compare this to a successful same-case fresh event. Do not accept the blanket "full atomicity" claim without this negative. Further independent review of P004 motive genesis and actual personhood remains separate.
+
+## Actual queue receiving disposition
+
+The sole REMONT operating queue remains `REMONT/SOROK/QUEUE/CHECK_QUEUE.json` in PR #1171; no new independent queue is created. Its R17 active pin is moved to current `bd023cccea8912913ace132600c69a97b0eb6a44` with previous cut retained. R18 exact pin is unchanged. SORACLE #1234 historical RED is retained in place but defaults to **DEFERRED_TO_SORACLE_BUILDER** (override with explicit `--pr 1234` for conscious historical review); no automatic attribution of pending 1234 RED to REMONT repairs. Default local Python 3.11 machine reviews continue for R18, R17 and original five entries.
+
+**No ordinary builder integration, no change to protected PRE-MAIN, no P or E promotions, no authorized paired PROGRAMMA/CURRENT_PROGRESS receiving, no false independent acceptance.** This is source lineage and queue-currentness maintenance on the existing REMONT branch only. The edited queue controller requires actual local selftest execution and returns a separate T/runner finding if it fails.

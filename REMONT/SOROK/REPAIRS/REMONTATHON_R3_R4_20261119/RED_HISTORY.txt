@@ -1,0 +1,76 @@
+======================================================================
+FAIL: test_p045_uncommitted_actor_cannot_be_legalized_by_external_cue (tests.test_remontathon_r4.TestR4LedgerCausality.test_p045_uncommitted_actor_cannot_be_legalized_by_external_cue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 61, in test_p045_uncommitted_actor_cannot_be_legalized_by_external_cue
+    with self.assertRaisesRegex(Conflict,'UNCOMMITTED_ACTOR_STATE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_p045_uncommitted_actor_cannot_be_legalized_by_next_life_step (tests.test_remontathon_r4.TestR4LedgerCausality.test_p045_uncommitted_actor_cannot_be_legalized_by_next_life_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 51, in test_p045_uncommitted_actor_cannot_be_legalized_by_next_life_step
+    with self.assertRaisesRegex(Conflict,'UNCOMMITTED_ACTOR_STATE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_p045_uncommitted_world_cannot_be_legalized_by_late_source_seal (tests.test_remontathon_r4.TestR4LedgerCausality.test_p045_uncommitted_world_cannot_be_legalized_by_late_source_seal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 71, in test_p045_uncommitted_world_cannot_be_legalized_by_late_source_seal
+    with self.assertRaisesRegex(Conflict,'UNCOMMITTED_WORLD_STATE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_p045_uncommitted_world_cannot_be_legalized_by_next_life_step (tests.test_remontathon_r4.TestR4LedgerCausality.test_p045_uncommitted_world_cannot_be_legalized_by_next_life_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 41, in test_p045_uncommitted_world_cannot_be_legalized_by_next_life_step
+    with self.assertRaisesRegex(Conflict,'UNCOMMITTED_WORLD_STATE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_p046_deleting_genesis_cannot_be_laundered_by_new_source_seal (tests.test_remontathon_r4.TestR4LedgerCausality.test_p046_deleting_genesis_cannot_be_laundered_by_new_source_seal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 81, in test_p046_deleting_genesis_cannot_be_laundered_by_new_source_seal
+    with self.assertRaisesRegex(Conflict,'MISSING_LEDGER_GENESIS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_p046_event_verifier_requires_actual_initialization_genesis (tests.test_remontathon_r4.TestR4LedgerCausality.test_p046_event_verifier_requires_actual_initialization_genesis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 108, in test_p046_event_verifier_requires_actual_initialization_genesis
+    with self.assertRaisesRegex(AssertionError,'NOT_INITIALIZATION_GENESIS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_p047_boolean_passage_not_accepted_as_one_day (tests.test_remontathon_r4.TestR4LedgerCausality.test_p047_boolean_passage_not_accepted_as_one_day)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 129, in test_p047_boolean_passage_not_accepted_as_one_day
+    with self.assertRaisesRegex(ValueError,'UNSUPPORTED_TIME_PASSAGE'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p048_second_world_cannot_be_falsely_initialized_in_same_ledger (tests.test_remontathon_r4.TestR4LedgerCausality.test_p048_second_world_cannot_be_falsely_initialized_in_same_ledger)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r4/tests/test_remontathon_r4.py", line 117, in test_p048_second_world_cannot_be_falsely_initialized_in_same_ledger
+    with self.assertRaisesRegex(Conflict,'MULTIWORLD_RESEARCH_DB_UNSUPPORTED'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.066s
+
+FAILED (failures=8)

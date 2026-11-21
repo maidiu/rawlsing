@@ -7,8 +7,15 @@ objective world fact or another actor's state here.
 from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
+import math
 
 class InvalidDevelopment(ValueError): pass
+
+
+def _text_list(value, error):
+    if not isinstance(value,list) or any(not isinstance(x,str) for x in value):
+        raise InvalidDevelopment(error)
+    return value
 
 ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
@@ -18,8 +25,33 @@ KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONA
 RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS'}
 
 
+def validate_activity_priority(value):
+    # Project importance is deliberately NOT capped at 1: existing acquired
+    # purposes may have intense salience. It must, however, be a finite,
+    # nonnegative number or it corrupts situated ranking and possibility.
+    if (isinstance(value,bool) or not isinstance(value,(int,float)) or
+            not math.isfinite(value) or value<0):
+        raise InvalidDevelopment('INVALID_ACTIVITY_PRIORITY')
+    return value
+
+
 def admit(actor,experience,event_ref,candidates):
-    """Mutates an in-memory actor copy; caller commits atomically with world.
+    """All-or-nothing psychic admission even for a multi-effect LLM proposal.
+
+    Caller owns an actor object whose identity may be held elsewhere. Validate
+    and apply on a detached candidate, then replace content only after every
+    operation succeeds. A later rejected effect cannot leave an earlier
+    proposed memory, project, or relationship silently installed.
+    """
+    candidate_actor=copy(actor)
+    result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
+    actor.clear()
+    actor.update(candidate_actor)
+    return result
+
+
+def _admit_in_place(actor,experience,event_ref,candidates):
+    """Mutates only the stage copy; caller commits atomically with world.
 
     A proposal is admissible only after an event actually occurred to which the
     actor had a qualified exposure. This is *fictional sourcefree* admission,
@@ -43,6 +75,8 @@ def admit(actor,experience,event_ref,candidates):
             ident=form.get('id') or stable_id('form',{'actor':actor['id'],'event':event_ref,'index':idx,'content':form})
             if ident in actor['forms']:raise InvalidDevelopment('DUPLICATE_FORM_ID')
             validate_tendencies(form)
+            if any(not isinstance(op,str) or op not in ACTIONS for op in form.get('enables',[])):
+                raise InvalidDevelopment('UNSUPPORTED_ACQUIRED_OPERATION')
             form.update({'id':ident,'actor':actor['id'],'origin':[event_ref],
                          'grade':GRADE,'lifecycle':form.get('lifecycle','ACTIVE'),
                          'evidence':evidence})
@@ -56,6 +90,7 @@ def admit(actor,experience,event_ref,candidates):
             a,b=c.get('source'),c.get('target')
             if a not in actor['forms'] or b not in actor['forms'] or c.get('relation') not in RELATIONS:
                 raise InvalidDevelopment('UNRESOLVED_LINK')
+            _text_list(c.get('contexts',[]),'INVALID_LINK_CONTEXTS')
             link={'source':a,'target':b,'relation':c['relation'],
                   'contexts':c.get('contexts',[]),'origin':[event_ref],
                   'evidence':evidence,'grade':GRADE}
@@ -65,6 +100,7 @@ def admit(actor,experience,event_ref,candidates):
             src,dst=c.get('source'),c.get('target')
             if src not in actor['forms'] or not any(p['id']==dst for p in actor['projects']):
                 raise InvalidDevelopment('UNQUALIFIED_ACTIVITY_LINK')
+            _text_list(c.get('contexts',[]),'INVALID_LINK_CONTEXTS')
             link={'source':src,'target':dst,'relation':'RECRUITS_ACTIVITY',
                   'contexts':c.get('contexts',[]),'origin':[event_ref],
                   'evidence':evidence,'grade':GRADE}
@@ -110,6 +146,9 @@ def admit(actor,experience,event_ref,candidates):
             if ident not in actor['forms']:raise InvalidDevelopment('UNKNOWN_FORM')
             new_scope=c.get('new_scope')
             if not isinstance(new_scope,dict):raise InvalidDevelopment('BAD_SCOPE')
+            # Scope membership must be typed: a string is a substring matcher,
+            # not a list of established context locations.
+            validate_tendencies({'scope':new_scope})
             form=actor['forms'][ident]
             form.setdefault('prior_scopes',[]).append({'scope':copy(form.get('scope',{})),'event':event_ref})
             form['scope']=copy(new_scope)
@@ -119,7 +158,9 @@ def admit(actor,experience,event_ref,candidates):
             ident=c.get('form_id')
             if ident not in actor['forms']:raise InvalidDevelopment('UNKNOWN_FORM')
             delta=c.get('delta',0)
-            if not isinstance(delta,(int,float)) or abs(delta)>.35:raise InvalidDevelopment('UNBOUNDED_STRENGTH')
+            if (isinstance(delta,bool) or not isinstance(delta,(int,float))
+                    or not math.isfinite(delta) or abs(delta)>.35):
+                raise InvalidDevelopment('UNBOUNDED_STRENGTH')
             f=actor['forms'][ident];f['strength']=round(min(1,max(0,f.get('strength',.4)+delta)),4)
             f.setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
@@ -133,6 +174,12 @@ def admit(actor,experience,event_ref,candidates):
             project=copy(c.get('project',{}))
             if not project.get('object') or not isinstance(project.get('means'),list):
                 raise InvalidDevelopment('INVALID_NEW_PROJECT')
+            if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
+                raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
+            validate_activity_priority(project.get('priority',.4))
+            if 'contextual_only' in project and type(project['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
+            _text_list(project.get('cue_terms',[]),'INVALID_PROJECT_CUE_TERMS')
             ident=project.get('id') or stable_id('project',{'actor':actor['id'],'event':event_ref,'index':idx})
             if any(p['id']==ident for p in actor['projects']):
                 raise InvalidDevelopment('DUPLICATE_PROJECT')
@@ -149,11 +196,18 @@ def admit(actor,experience,event_ref,candidates):
             if project is None:raise InvalidDevelopment('UNKNOWN_PROJECT')
             if 'means' in c and (not isinstance(c['means'],list) or not all(isinstance(x,str) for x in c['means'])):
                 raise InvalidDevelopment('INVALID_PROJECT_MEANS')
+            if 'means' in c and any(x not in ACTIONS for x in c['means']):
+                raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
+            if 'priority' in c:validate_activity_priority(c['priority'])
+            if 'contextual_only' in c and type(c['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
+            if 'cue_terms' in c:_text_list(c['cue_terms'],'INVALID_PROJECT_CUE_TERMS')
             for field in ('priority','means','object','motive','status','cue_terms','contextual_only'):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)
             report.append({'kind':op,'project':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op in ('TRACE','MEMORY'):
+            _text_list(c.get('cue_terms',[]),'INVALID_TRACE_CUES')
             ref=stable_id('trace' if op=='TRACE' else 'memory',{'actor':actor['id'],'event':event_ref,'index':idx})
             entry={'id':ref,'origin':[event_ref],'experience':experience['ref'],
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',
@@ -185,19 +239,55 @@ def admit(actor,experience,event_ref,candidates):
 
 
 def recurring_provisional_growth(actor,period_ref,processes):
-    """No invented microepisodes; only coarse sourced period effects, including null.
-    Repeated activity can provisionally change scope of an *existing* power if
-    explicitly warranted by coverage. This is not a new social memory/event.
+    """Admit only actor-addressed coarse-life effects, all-or-nothing.
+
+    Modelled coverage is NOT an individual experience and may not rewrite a
+    different actor merely because they possess the same reusable form ID.
+    A modeled scope generalization is not an observed microepisode or a law.
     """
+    staged=copy(actor)
     outputs=[]
+    if not isinstance(processes,list):
+        raise InvalidDevelopment('INVALID_PERIOD_PROCESSES')
     for proc in processes:
-        if proc.get('kind')=='practice_access' and proc.get('coverage')=='AGGREGATE_MODELED':
-            fid=proc.get('form_id')
-            if fid in actor['forms'] and proc.get('warrants_scope_change') is True:
-                old=copy(actor['forms'][fid].get('scope',{}))
-                new_locations=sorted(set(old.get('locations',[])+proc.get('locations',[])))
-                actor['forms'][fid]['scope']={**old,'locations':new_locations}
-                actor['forms'][fid].setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
-                    'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
-                outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+        if not isinstance(proc,dict):
+            raise InvalidDevelopment('INVALID_PERIOD_PROCESS')
+        if proc.get('kind')!='practice_access' or proc.get('coverage')!='AGGREGATE_MODELED':
+            continue
+        if proc.get('warrants_scope_change') is not True:
+            continue
+        # A global, unqualified activity-coverage capsule is not a licence to
+        # generalize every similarly named learned form in all family members.
+        claimed_actor=proc.get('actor_id')
+        if not isinstance(claimed_actor,str) or not claimed_actor:
+            raise InvalidDevelopment('PERIOD_PRACTICE_REQUIRES_ACTOR')
+        if claimed_actor!=staged['id']:
+            continue
+        fid=proc.get('form_id')
+        if not isinstance(fid,str) or not fid:
+            raise InvalidDevelopment('INVALID_PERIOD_FORM_REF')
+        if fid not in staged['forms']:
+            # Evidence for an unowned form does not fabricate that form.
+            continue
+        locations=proc.get('locations',[])
+        if (not isinstance(locations,list) or
+                any(not isinstance(place,str) or not place for place in locations)):
+            raise InvalidDevelopment('INVALID_PERIOD_LOCATIONS')
+        form=staged['forms'][fid]
+        old=copy(form.get('scope',{}))
+        try:
+            validate_tendencies({'scope':old})
+        except ValueError as exc:
+            raise InvalidDevelopment('INVALID_PRIOR_FORM_SCOPE') from exc
+        old_locations=old.get('locations',[])
+        novel=sorted(set(old_locations)|set(locations))
+        if set(novel)==set(old_locations):
+            # Period occurred, but the actor's recruitment did not change.
+            continue
+        form['scope']={**old,'locations':novel}
+        form.setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
+            'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
+        outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+    actor.clear()
+    actor.update(staged)
     return outputs

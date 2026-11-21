@@ -12,3 +12,6 @@ Both [REMONT draft #1165](https://github.com/maidiu/rawlsing/pull/1165) @ `480d3
 - **Process:** Recheck the live two PR heads and any new SOROK REMONT successor before a major construction release or handoff; record changes that affect the constitution/activity/world boundary; continue unrelated work without derailment.
 
 **Separate counts and statuses:** Prior R2 P/T/E ledger plus [R3 defect delta](R3_DEFECT_DELTA.md) remain in force. This note is not a new numbered source defect; it is an overlap/dependency receipt for the already registered SR-P004.
+## REMONT R3 integrated candidate — subsequent to the observation above
+
+The initial note correctly described R3 @ `3dba91136870ab5e766ca14faacd847531dea075` **before** the REMONT repair. A *new, isolated*, later REMONT R3 repair candidate integrates the exact #1165 P004 and #1170 P005 fixes into R3 plus preserves R3's pressure-flow and acquired composition source. It does not silently merge #1165/#1166 or confer native acceptance. Both originals remain independent historical returns; #1166's overlapping code is not independently adjudicated. **58/58 local tests PASS** after two test-fixture ABI fields were updated. Refer to `OPEN_DEFECTS.md`, `.json` and `REPAIRS/SR_R3_CONSOLIDATED_REAL_BUGS_20261119_R1.md` for evidence and holds.

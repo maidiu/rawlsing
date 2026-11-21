@@ -153,6 +153,25 @@ class WholeOrganism(unittest.TestCase):
         self.assertIn('workshop',forms2[practice['id']]['scope']['locations'])
         self.assertIn('PRACTICE',{x['action'] for x in self.rt.situated('nadia')['candidate_actions']})
     def test_composed_activity_generates_multiple_world_attempts(self):
+        # A continuing project must be separately proposed, not automatically
+        # inferred from a single SING technical occurrence (SR-P011). Here a
+        # test-only semantic provider explicitly proposes a candidate project;
+        # the existing development owner then admits and exercises it.
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        heuristic=HeuristicSemanticProvider()
+        proposed_project=[False]
+        def proposal(task,packet):
+            result=heuristic.propose(task,packet)
+            if (task=='development' and packet['experience'].get('own_action')=='SING'
+                    and not proposed_project[0]):
+                proposed_project[0]=True
+                result['candidates'].append({'kind':'ADD_PROJECT','project':{
+                    'id':'project:explicit_rhythm_candidate',
+                    'object':'explore whether rhythm can continue',
+                    'means':['PRACTICE','SING'],'priority':.32,
+                    'cue_terms':['sing','rhythm'],'status':'active'}})
+            return result
+        self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(proposal))
         self.rt.background(365)
         self.rt.step('nadia',requested_action='PRACTICE')
         self.rt.step('nadia',requested_action='SING')
@@ -168,7 +187,10 @@ class WholeOrganism(unittest.TestCase):
         self.rt.step('nadia',requested_action='SING')
         person=self.rt.snapshot('nadia')
         self.assertTrue(any(link['relation']=='SUPPORTS' for link in person['links']))
-        self.assertTrue(any('rhythm' in p['object'] for p in person['projects']))
+        # P011: an acquired SING practice does not itself prove a durable
+        # rhythm-oriented project. Project genesis needs an owner-admitted
+        # hypothesis based on richer lived history, not the operation name.
+        self.assertFalse(any('rhythm' in p['object'] for p in person['projects']))
         # Persisted relation means one acquired practice can activate another.
         practice=next(f for f in person['forms'].values() if 'PRACTICE' in f['enables'])
         song=next(f for f in person['forms'].values() if 'SING' in f['enables'])
@@ -335,6 +357,111 @@ class WholeOrganism(unittest.TestCase):
                          {'UNDETERMINED_BY_TECHNICAL_OUTCOME'})
         self.assertNotEqual(a['activity_history'][0]['practical_object'],a['activity_history'][1]['practical_object'])
         self.assertTrue(all(h['event']=='evt_actual' for h in a['activity_history']))
+
+    def test_sr004_blocked_actor_activity_survives_cold_reopen_without_motive_inference(self):
+        from copy import deepcopy
+        packet=deepcopy(MARA)
+        packet['fictional_seed']['acquired_forms']=[]
+        packet['fictional_seed']['projects']=[{'object':'obtain food through the market',
+            'means':['BUY_FOOD'],'priority':3,'cue_terms':['home'],
+            'motive':'household provision remains a hypothesis'}]
+        with tempfile.TemporaryDirectory() as directory:
+            path=str(Path(directory)/'sr004.sqlite3')
+            rt=ConstitutiveRuntime(path)
+            rt.initialize([('worker','Worker',packet)])
+            try:
+                self.assertEqual(rt.situated('worker')['candidate_actions'][0]['action'],'BUY_FOOD')
+                actual=rt.step('worker')
+                self.assertEqual(actual['selection_grade'],'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE')
+                self.assertEqual(actual['status'],'BLOCKED')
+                self.assertEqual(actual['objective_outcome'],'INSUFFICIENT_CLAIM_ON_FOOD')
+                original=rt.ledger.actor('worker')[1]
+                self.assertEqual(len(original['activity_history']),1)
+                episode=original['activity_history'][0]
+                self.assertEqual(episode['performed_status'],'BLOCKED')
+                self.assertEqual(episode['operation_course'],'INTERRUPTED_ATTEMPT')
+                self.assertEqual(episode['object_fulfillment'],'NOT_INFERRED_FROM_OPERATION')
+                self.assertEqual(episode['motive_realized'],'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                self.assertEqual(len(original['lived_activity_history']),1)
+                lived=original['lived_activity_history'][0]
+                self.assertEqual(lived['objective_outcome'],'NOT_INFERRED')
+                self.assertEqual(lived['felt'],'SOMATIC_ATTEMPT_ONLY')
+                self.assertNotIn('INSUFFICIENT_CLAIM_ON_FOOD',str(lived))
+                # The existing actor's next situated constitution now carries
+                # the lived course, not a manufactured fulfilled purpose.
+                ongoing=[c for c in rt.situated('worker')['currents']
+                    if c['kind']=='ONGOING_ACTIVITY' and 'market' in c['object']]
+                self.assertEqual(len(ongoing),1)
+                self.assertEqual(ongoing[0]['latest_lived_attempt'],lived)
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+            reopened=ConstitutiveRuntime(path)
+            try:
+                self.assertTrue(reopened.verify()['valid'])
+                persisted=reopened.ledger.actor('worker')[1]
+                self.assertEqual(persisted['activity_history'][0]['event'],episode['event'])
+                self.assertEqual(persisted['lived_activity_history'][0],lived)
+            finally:reopened.close()
+
+    def test_sr004_externally_injected_action_does_not_steal_an_actor_motive(self):
+        a=self.rt.ledger.actor('mara')[1]
+        # An externally injected operation may coincide with an acquired means
+        # without becoming the actor's own undertaking.
+        self.rt.step('mara',requested_action='SING')
+        after=self.rt.ledger.actor('mara')[1]
+        self.assertEqual(after.get('activity_history',[]),a.get('activity_history',[]))
+        self.assertEqual(after.get('lived_activity_history',[]),a.get('lived_activity_history',[]))
+        self.assertTrue(self.rt.verify()['valid'])
+
+    def test_sr004_partial_and_blocked_activity_not_erased_by_technical_status(self):
+        from um_sorok_organism.activity import record_activity_afterlife
+        a=self.rt.ledger.actor('mara')[1]
+        a['projects']=[{'id':'needs','object':'secure food','means':['BUY_FOOD'],'status':'active'},
+                       {'id':'relations','object':'participate in shared provisioning','means':['BUY_FOOD'],'status':'active'}]
+        partial=record_activity_afterlife(a,'BUY_FOOD','PARTIAL','REQUEST_UNANSWERED',
+            ['project:needs','project:relations'],'objective_one')
+        blocked=record_activity_afterlife(a,'BUY_FOOD','BLOCKED','NO_ACCESSIBLE_FOOD',
+            ['project:needs','project:relations'],'objective_two')
+        self.assertEqual(len(partial),2)
+        self.assertEqual(len(blocked),2)
+        self.assertEqual({x['practical_object'] for x in blocked},{'secure food','participate in shared provisioning'})
+        self.assertEqual({x['operation_course'] for x in partial},{'PARTIAL_ATTEMPT'})
+        self.assertEqual({x['operation_course'] for x in blocked},{'INTERRUPTED_ATTEMPT'})
+        self.assertTrue(all(x['object_fulfillment']=='NOT_INFERRED_FROM_OPERATION'
+            for x in partial+blocked))
+        self.assertTrue(all(len(p['operational_history'])==2 for p in a['projects']))
+        with self.assertRaisesRegex(ValueError,'DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT'):
+            record_activity_afterlife(a,'BUY_FOOD','BLOCKED','NO_ACCESSIBLE_FOOD',
+                ['project:needs'],'objective_two')
+
+    def test_sr004_composed_plan_cannot_graft_unrelated_means_onto_object(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.plans import propose_compositions
+        options=[{'action':a,'score':1,'basis':basis} for a,basis in [
+          ('WORK',['project:livelihood']),('REPAIR',['project:livelihood']),
+          ('PRACTICE',['project:music','form:practice']),
+          ('SING',['project:music','form:song'])]]
+        currents=[{'kind':'ONGOING_ACTIVITY','ref':'music','object':'make music together',
+                   'means':['PRACTICE','SING']},
+                  {'kind':'ONGOING_ACTIVITY','ref':'livelihood','object':'repair the workshop',
+                   'means':['WORK','REPAIR']}]
+        results=propose_compositions(SimpleNamespace(actor='mara',currents=currents,
+                                                      candidate_actions=options,learned_compositions=[]))
+        self.assertEqual(len(results),2)
+        by_object={x.object:x for x in results}
+        self.assertEqual(by_object['make music together'].steps,('PRACTICE','SING'))
+        self.assertEqual(by_object['repair the workshop'].steps,('WORK','REPAIR'))
+        self.assertNotIn('project:livelihood',by_object['make music together'].basis)
+        self.assertNotIn('project:music',by_object['repair the workshop'].basis)
+
+    def test_sr004_global_operations_without_owner_basis_do_not_form_project_plan(self):
+        from types import SimpleNamespace
+        from um_sorok_organism.plans import propose_compositions
+        fake=SimpleNamespace(actor='mara',currents=[{'kind':'ONGOING_ACTIVITY',
+          'ref':'music','object':'music','means':['PRACTICE','SING']}],
+          candidate_actions=[{'action':'PRACTICE','basis':['project:someone_else']},
+                             {'action':'SING','basis':['form:sing']}],learned_compositions=[])
+        self.assertEqual(propose_compositions(fake),[])
 
     def test_bodily_maturation_is_not_automatically_language_competence(self):
         self.rt.background(365*2)

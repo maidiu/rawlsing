@@ -1,0 +1,58 @@
+======================================================================
+FAIL: test_p051_subtick_positive_food_price_not_rounded_into_free_goods (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p051_subtick_positive_food_price_not_rounded_into_free_goods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 16, in test_p051_subtick_positive_food_price_not_rounded_into_free_goods
+    with self.assertRaisesRegex(ValueError,'INVALID_MATERIAL_PRICE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p051_subtick_positive_wage_does_not_disappear (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p051_subtick_positive_wage_does_not_disappear)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 23, in test_p051_subtick_positive_wage_does_not_disappear
+    with self.assertRaisesRegex(ValueError,'INVALID_WAGE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 31, in test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding
+    with self.assertRaisesRegex(ValueError,'INVALID_BUYER_BALANCE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p052_unrepresentable_employer_balance_cannot_create_paid_wages (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p052_unrepresentable_employer_balance_cannot_create_paid_wages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 46, in test_p052_unrepresentable_employer_balance_cannot_create_paid_wages
+    with self.assertRaisesRegex(ValueError,'INVALID_CONTROLLER_BALANCE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p052_unrepresentable_seller_claim_cannot_leak_credit (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p052_unrepresentable_seller_claim_cannot_leak_credit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 38, in test_p052_unrepresentable_seller_claim_cannot_leak_credit
+    with self.assertRaisesRegex(ValueError,'INVALID_SELLER_BALANCE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p052_unrepresentable_worker_balance_cannot_change_paid_wages (tests.test_remontathon_r5.TestR5ExactMonetaryClaims.test_p052_unrepresentable_worker_balance_cannot_change_paid_wages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r5/tests/test_remontathon_r5.py", line 53, in test_p052_unrepresentable_worker_balance_cannot_change_paid_wages
+    with self.assertRaisesRegex(ValueError,'INVALID_WORKER_BALANCE_PRECISION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+FAILED (failures=6)

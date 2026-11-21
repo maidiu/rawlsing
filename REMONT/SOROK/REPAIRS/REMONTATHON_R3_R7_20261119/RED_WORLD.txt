@@ -1,0 +1,68 @@
+test_p058_malformed_hall_membership_string_does_not_authorize_substring_actor (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_hall_membership_string_does_not_authorize_substring_actor) ... FAIL
+test_p058_malformed_material_grants_string_cannot_authorize_repair (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_material_grants_string_cannot_authorize_repair) ... FAIL
+test_p058_malformed_site_admission_string_cannot_authorize_move (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_site_admission_string_cannot_authorize_move) ... FAIL
+test_p058_real_qualified_membership_grants_continue_to_work (test_remontathon_r7.IndependentWorldR7.test_p058_real_qualified_membership_grants_continue_to_work) ... ok
+test_p059_blocked_initiator_never_produces_partner_voluntary_completion (test_remontathon_r7.IndependentWorldR7.test_p059_blocked_initiator_never_produces_partner_voluntary_completion) ... FAIL
+test_p059_qualified_joint_act_still_records_independent_respondent (test_remontathon_r7.IndependentWorldR7.test_p059_qualified_joint_act_still_records_independent_respondent) ... ok
+test_p060_other_policy_response_target_must_match_actual_initiator (test_remontathon_r7.IndependentWorldR7.test_p060_other_policy_response_target_must_match_actual_initiator) ... FAIL
+test_p061_care_cannot_launder_nonfinite_target_body_without_validation (test_remontathon_r7.IndependentWorldR7.test_p061_care_cannot_launder_nonfinite_target_body_without_validation) ... FAIL
+test_p061_valid_care_target_continues_to_receive_material_care (test_remontathon_r7.IndependentWorldR7.test_p061_valid_care_target_continues_to_receive_material_care) ... ok
+
+======================================================================
+FAIL: test_p058_malformed_hall_membership_string_does_not_authorize_substring_actor (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_hall_membership_string_does_not_authorize_substring_actor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 20, in test_p058_malformed_hall_membership_string_does_not_authorize_substring_actor
+    with self.assertRaisesRegex(ValueError,'INVALID_INSTITUTION_MEMBERSHIP'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p058_malformed_material_grants_string_cannot_authorize_repair (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_material_grants_string_cannot_authorize_repair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 37, in test_p058_malformed_material_grants_string_cannot_authorize_repair
+    with self.assertRaisesRegex(ValueError,'INVALID_MATERIAL_GRANT'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p058_malformed_site_admission_string_cannot_authorize_move (test_remontathon_r7.IndependentWorldR7.test_p058_malformed_site_admission_string_cannot_authorize_move)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 28, in test_p058_malformed_site_admission_string_cannot_authorize_move
+    with self.assertRaisesRegex(ValueError,'INVALID_SITE_ADMISSION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p059_blocked_initiator_never_produces_partner_voluntary_completion (test_remontathon_r7.IndependentWorldR7.test_p059_blocked_initiator_never_produces_partner_voluntary_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 63, in test_p059_blocked_initiator_never_produces_partner_voluntary_completion
+    self.assertIsNone(partner)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: Attempt(actor='joann', action='JOIN', target='ann', object_ref=None, means=[], basis=[], intention='', scene_hash='', grade='SOURCEFREE_RESEARCH_PROVISIONAL') is not None
+
+======================================================================
+FAIL: test_p060_other_policy_response_target_must_match_actual_initiator (test_remontathon_r7.IndependentWorldR7.test_p060_other_policy_response_target_must_match_actual_initiator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 82, in test_p060_other_policy_response_target_must_match_actual_initiator
+    with self.assertRaisesRegex(ValueError,'INDEPENDENT_COACTOR_TARGET_MISMATCH'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p061_care_cannot_launder_nonfinite_target_body_without_validation (test_remontathon_r7.IndependentWorldR7.test_p061_care_cannot_launder_nonfinite_target_body_without_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 89, in test_p061_care_cannot_launder_nonfinite_target_body_without_validation
+    with self.assertRaisesRegex(ValueError,'INVALID_BODY_STATE:nutrition'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.003s
+
+FAILED (failures=6)

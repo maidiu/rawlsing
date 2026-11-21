@@ -1,0 +1,40 @@
+======================================================================
+FAIL: test_whitespace_mutation_to_stored_world_and_actor_must_not_verify (reviewer_new_defect.NewP070SnapshotBytes.test_whitespace_mutation_to_stored_world_and_actor_must_not_verify) (table='worlds')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_remont_independent_r9/reviewer_new_defect.py", line 16, in test_whitespace_mutation_to_stored_world_and_actor_must_not_verify
+    with self.assertRaisesRegex(AssertionError,'NONCANONICAL|CHANGED'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_whitespace_mutation_to_stored_world_and_actor_must_not_verify (reviewer_new_defect.NewP070SnapshotBytes.test_whitespace_mutation_to_stored_world_and_actor_must_not_verify) (table='actors')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_remont_independent_r9/reviewer_new_defect.py", line 16, in test_whitespace_mutation_to_stored_world_and_actor_must_not_verify
+    with self.assertRaisesRegex(AssertionError,'NONCANONICAL|CHANGED'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_uncommitted_second_world_must_not_be_certified_as_one_world (reviewer_new_defect.NewP070WorldRoster.test_uncommitted_second_world_must_not_be_certified_as_one_world)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_remont_independent_r9/reviewer_new_defect.py", line 42, in test_uncommitted_second_world_must_not_be_certified_as_one_world
+    with self.assertRaisesRegex(AssertionError,'UNCOMMITTED_WORLD_ROSTER'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: AssertionError not raised
+
+======================================================================
+FAIL: test_nan_actor_sensor_cannot_see_high_threshold_cue (reviewer_new_defect.NewP071MalformedSensoryState.test_nan_actor_sensor_cannot_see_high_threshold_cue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_remont_independent_r9/reviewer_new_defect.py", line 30, in test_nan_actor_sensor_cannot_see_high_threshold_cue
+    with self.assertRaisesRegex(ValueError,'INVALID_BODY_STATE:sensor'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.019s
+
+FAILED (failures=4)

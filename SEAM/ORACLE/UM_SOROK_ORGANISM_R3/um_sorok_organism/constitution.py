@@ -6,6 +6,8 @@ from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
 from .plans import qualified_learned_compositions
+from .world import _qualified_members
+import math
 
 
 def materialize(actor,world):
@@ -21,6 +23,12 @@ def materialize(actor,world):
 
 def actor_access(actor,world):
     """Objective cues are never automatically the actor's concepts or memories."""
+    # Reading an invalid embodied sensor is not a harmless comparison:
+    # NaN < threshold is False, which previously gave an invalid body the
+    # ability to perceive even cues above its sensory capacity. Reuse the
+    # organism owner's validated eligibility contract, without inventing a
+    # psychological capacity, bodily update, or actor authorization.
+    eligible(actor['body'],'WAIT')
     location=world['positions'].get(actor['id'])
     cues=[]; counted=0;receipts=[]
     for x in world['cues']:
@@ -31,7 +39,18 @@ def actor_access(actor,world):
         if x.get('location') not in (location,'all'):
             counted+=1;continue
         sense=x.get('modality','visual')
-        if sense in ('visual','auditory') and actor['body']['sensor']<x.get('threshold',.05):
+        # Fail closed for malformed historic cue payloads; a misspelled or
+        # fabricated modality is not a license to skip bodily sensory gating.
+        # 'present' is generated locally above for co-presence, never world cue.
+        threshold=x.get('threshold',.05)
+        tags=x.get('tags',[])
+        if (sense not in ('visual','auditory','tactile','olfactory') or
+                not isinstance(tags,list) or any(not isinstance(t,str) for t in tags) or
+                not isinstance(x.get('kind',''),str) or
+                isinstance(threshold,bool) or not isinstance(threshold,(int,float)) or
+                not math.isfinite(threshold) or not 0<=threshold<=1):
+            counted+=1;continue
+        if actor['body']['sensor']<threshold:
             counted+=1;continue
         if x.get('private_to') not in (None,actor['id']):
             counted+=1;continue
@@ -47,7 +66,7 @@ def actor_access(actor,world):
                     'modality':'present','description':'co-present other actor'})
     env=[]
     site=world['sites'].get(location,{})
-    if site.get('access')=='public' or actor['id'] in site.get('admitted',[]):env.append('SITE_ACCESS')
+    if (site.get('access')=='public' or actor['id'] in _qualified_members(site,'admitted','INVALID_SITE_ADMISSION')):env.append('SITE_ACCESS')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -87,23 +106,41 @@ def compose(constitution,access,limit=50):
         match=set(str(x).lower() for x in f.get('cues',[]))
         if match & (cues|project_tags) or f.get('always_recruitable'):
             active[fid]=copy(f)
-    # Associations are admissible only if persisted as functional links.
-    for _ in range(3):
-        changed=False
-        for link in constitution.links:
-            src,dst=link.get('source'),link.get('target')
-            if src not in active or dst not in forms:continue
-            if link.get('contexts') and access.location not in link['contexts']:continue
-            if link['relation'] in ('RECRUITS','SUPPORTS') and dst not in active:
-                f=forms[dst]
-                if (f.get('lifecycle') not in ('ENDED','DORMANT')
-                        and f.get('body_min',0)<=constitution.body['motor']
-                        and _form_in_scope(f,access)):
-                    active[dst]=copy(f); changed=True
-            elif link['relation']=='INHIBITS':
-                inhibited.append(dst)
-        if not changed:break
-    for fid in set(inhibited):active.pop(fid,None)
+    # P012: evidence-bounded reachability to a real fixed point, independently
+    # of arbitrary link order or a three-pass depth limit. A qualifying
+    # inhibitor blocks its target's ability to become a recruitment conduit;
+    # it cannot first recruit a descendant and then disappear at the end.
+    #
+    # We use a conservative two-stage lattice: positive possible reachability,
+    # then inhibitor veto by all potential qualified active sources, followed
+    # by positive reachability without vetoed conduits. This may over-suppress
+    # under opposing cycles; it never fabricates the affected form's action.
+    seed=set(active)
+    qualified={fid for fid,f in forms.items()
+        if f.get('lifecycle') not in ('ENDED','DORMANT')
+        and f.get('body_min',0)<=constitution.body['motor']
+        and _form_in_scope(f,access)}
+    valid_links=[link for link in constitution.links
+        if link.get('source') in forms and link.get('target') in forms
+        and (not link.get('contexts') or access.location in link['contexts'])]
+    positive=[link for link in valid_links if link.get('relation') in ('RECRUITS','SUPPORTS')]
+    negative=[link for link in valid_links if link.get('relation')=='INHIBITS']
+
+    def closure(start, blocked=frozenset()):
+        reached=set(start)&qualified-set(blocked)
+        # Monotonic form set grows at most len(qualified) times, cycles stop.
+        while True:
+            added={l['target'] for l in positive
+                   if l['source'] in reached and l['target'] in qualified
+                   and l['target'] not in blocked}
+            newer=reached|added
+            if len(newer)==len(reached):return reached
+            reached=newer
+
+    potentially_active=closure(seed)
+    vetoed={l['target'] for l in negative if l['source'] in potentially_active}
+    inhibited.extend(sorted(vetoed))
+    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
     # History-made links to activities can recruit an ongoing project under
     # a new cue. Its object/motive remains separate from its possible means.
     projects=eligible_activities(constitution,active.keys(),access)
@@ -120,7 +157,9 @@ def compose(constitution,access,limit=50):
                                  'not_personal_investment':True})
     for p in projects:
         if p.get('status','active')=='active':currents.append({'kind':'ONGOING_ACTIVITY','ref':p['id'],'object':p['object'],'motive':p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE'),
-            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[])})
+            'priority':p.get('priority',.5),'recruitment_basis':p.get('recruitment_basis',[]),
+            'means':copy(p.get('means',[])),
+            'latest_lived_attempt':copy(p.get('latest_lived_attempt'))})
     for fid,f in active.items():
         currents.append({'kind':f['kind'],'ref':fid,'object':f.get('object'),'actor_access':f.get('access','tacit')})
     for a in constitution.links:

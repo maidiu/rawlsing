@@ -1,0 +1,76 @@
+======================================================================
+FAIL: test_p062_invalid_form_cue_string_refused (test_remontathon_r7.PsychicScopeTypeR7.test_p062_invalid_form_cue_string_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 114, in test_p062_invalid_form_cue_string_refused
+    with self.assertRaisesRegex(ValueError,'INVALID_ACQUIRED_FORM_PARAMETERS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p062_invalid_scope_counterpart_type_refused (test_remontathon_r7.PsychicScopeTypeR7.test_p062_invalid_scope_counterpart_type_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 109, in test_p062_invalid_scope_counterpart_type_refused
+    with self.assertRaisesRegex(ValueError,'INVALID_ACQUIRED_FORM_PARAMETERS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p062_invalid_scope_location_string_refused_at_admission (test_remontathon_r7.PsychicScopeTypeR7.test_p062_invalid_scope_location_string_refused_at_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 104, in test_p062_invalid_scope_location_string_refused_at_admission
+    with self.assertRaisesRegex(ValueError,'INVALID_ACQUIRED_FORM_PARAMETERS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p062_world_access_reader_must_not_infer_admission_by_substring (test_remontathon_r7.PsychicScopeTypeR7.test_p062_world_access_reader_must_not_infer_admission_by_substring)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 121, in test_p062_world_access_reader_must_not_infer_admission_by_substring
+    with self.assertRaisesRegex(ValueError,'INVALID_SITE_ADMISSION'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_p063_activity_link_context_string_refused (test_remontathon_r7.PsychicScopeTypeR7.test_p063_activity_link_context_string_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 139, in test_p063_activity_link_context_string_refused
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_LINK_CONTEXTS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_p063_link_context_string_refused_before_acquired_relation_installed (test_remontathon_r7.PsychicScopeTypeR7.test_p063_link_context_string_refused_before_acquired_relation_installed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 129, in test_p063_link_context_string_refused_before_acquired_relation_installed
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_LINK_CONTEXTS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_p063_project_cue_terms_must_not_be_string_misread_as_single_char_cues (test_remontathon_r7.PsychicScopeTypeR7.test_p063_project_cue_terms_must_not_be_string_misread_as_single_char_cues)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 146, in test_p063_project_cue_terms_must_not_be_string_misread_as_single_char_cues
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_PROJECT_CUE_TERMS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_p063_trace_cue_terms_must_be_string_list (test_remontathon_r7.PsychicScopeTypeR7.test_p063_trace_cue_terms_must_be_string_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r7/tests/test_remontathon_r7.py", line 153, in test_p063_trace_cue_terms_must_be_string_list
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_TRACE_CUES'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.005s
+
+FAILED (failures=8)

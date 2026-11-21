@@ -1,5 +1,151 @@
 # REMONT / SOROK — OPEN DEFECTS AND HISTORICAL REPAIRS · UM-SOROK R2
 
+## R17 P018 — independent scoped sourcefree acceptance, 21 November 2026
+
+**Frozen candidate:** [REMONTATHON R17 #1230](https://github.com/maidiu/rawlsing/pull/1230) at `28bf7fc48264d433ecf172bd0846744a3476222e`. **Independent COMMENT review:** [#6003680448](https://github.com/maidiu/rawlsing/pull/1230#pullrequestreview-6003680448). **Verdict `ACCEPT_SCOPED_SOURCEFREE_ENGINEERING`** for the historical P018 source-read/append preflight only.
+
+Actual exact-source local CPython 3.13.5: 48/48 Git SHA1 / SHA256 / size identities matched (45 inherited + 3 R17 replacements), **289/289 inherited normal and optimized, pytest 289 +32 subtests**; six original R15 hostile reviewer tests normal and optimized PASS; **eight new reviewer-authored hostile tests** normal and optimized PASS; combined **303/303 normal, 303/303 optimized, 303 pytest +96 subtests**. All hostile source history manipulations refuse `source()` including unknown ID, `commit()`, and `seal_source()` without new event/source row; valid late seal, ordinary append and cold reopen work. This reviewer did not author the R17 repair.
+
+**Original P018 defect remains `PARTIAL`** for native issuer authenticity, private disclosure rights, cryptographic trust, privileged database rewrite and scientific authority. The old #1220 R15 RED remains historically correct at that SHA; R17 functional sourcefree repair supersedes that exact defect only. The connected GitHub principal is also the PR author, so COMMENT review does **not** confer credential-independent G5 or protected receiving. Other-machine Python 3.11.3 R17 receipts are **separate**, not locally repeated here.
+
+**Ledger lineage warning:** this longstanding #1171 ledger retains **71** original production P records; R17's later branch has **73** records. This is an additive, SHA-qualified review receipt **without collapsing the 73-record later source into this old 71-record branch**, changing any protected branches, or promoting P018 to CLOSED. [Full report](REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md) · [source/test/evidence manifest](REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/executed_R17_48_SOURCE_SHA256.json). Exact runnable ZIP additionally banked in Library `/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R17_P018_20261121/`.
+
+---
+
+
+## R12 R2 — published same-trial project motive repair, INDEPENDENT RECEIVING PENDING
+
+**Actual sourcefree code repair: [draft PR #1211](https://github.com/maidiu/rawlsing/pull/1211), immutable HEAD `cc0fe319596ee12258acf48dc6078b552bafd3bc`, parent frozen R12 #1199 `9db0e6f64bf568409e638ff2215af8b8a414487f`.** Independent R12 review #5999820908 reproduced a same-trial `REORGANIZE_PROJECT` mature-motive bypass. Actual existing development owner now refuses `REORGANIZE_PROJECT` containing `object` or `motive` during an **actor-issued current** possible-end trial, before any sourcefree psychic stage mutation. Earlier `ADD_PROJECT` and same-end `TAKE_UP_POSSIBLE_END` guards conserved; nontrial project reorganization and nonpurpose adjustments remain available.
+
+**Executed author evidence**: frozen 246 normal / -O / pytest green, external reviewer-equivalent six scenarios **5 PASS / 1 FAIL on untouched R12**, repaired **256/256 normal, 256/256 optimized, pytest 256 + 20 subtests**, 10 targeted cases PASS, two-process cold SQLite reopen valid, **44/44 Python source Git blobs** and SHA256 match immutable repair HEAD. [Code receipt and exact evidence](https://github.com/maidiu/rawlsing/blob/cc0fe319596ee12258acf48dc6078b552bafd3bc/REMONT/SOROK/REPAIRS/REMONTATHON_R12_R2_TRIAL_MOTIVE_20261120/REPAIR_RECEIPT.md); runnable ZIP banked under `/Rawlsing/SOROK-REMONT/R12_R2_TRIAL_MOTIVE_20261120/`.
+
+**Existing 71 production P entries and their statuses UNCHANGED**, T0/E6 unchanged; R1198 receiving and earlier 53 scoped first-fault review conserved. This is a **repair candidate**, not independently accepted or merged: a different agent must run the exact independent R12 hostile tests, review the implementation and issue `ACCEPT_SCOPED / REVISE_EXACT_DEFECT / HOLD`. SR-P070/P071 additionally remain author-repaired pending an eligible original-author-independent reviewer. No native science/actor rights or protected merge; `HQ_CURRENTNESS_HOLD` for authorized PROGRAMMA/CURRENT_PROGRESS pair intake.
+
+---
+
+
+## R11 repaired exact-head follow-up — scoped review / P070–P071 independence hold (2026-11-20)
+
+**Frozen successor review:** [#1198](https://github.com/maidiu/rawlsing/pull/1198) at `d96f1c0b181b9772b1cd90c093e7393acc66523c`; exact review [#5999778333](https://github.com/maidiu/rawlsing/pull/1198#pullrequestreview-5999778333). This is a **new sourcefree receiving record in the existing REMONT ledger, not a replacement master, protected merge, or native engineering/scientific authorization**.
+
+- **R11-DEF-02 — `ACCEPT_SCOPED`:** current actor-issued trial cannot cause same-event model `ADD_PROJECT` or motive/object-changing `REORGANIZE_PROJECT`, including renamed foreign object, or same-end `TAKE_UP_POSSIBLE_END`. Its independent original trial history remains actor-owned and event-specific. This is a bounded engineering safeguard, not acquired-motive science.
+- **R11-DEF-03 — `ACCEPT_SCOPED`:** all **71/71 original REMONT P records structurally identical** to this register; T0/E6 unchanged, 53 originally scoped first-fault reviews conserved, eight OPEN, eight PARTIAL, P070/P071 still author-repaired/pending independent. Existing historical register below is preserved.
+- **R11-DEF-01 — `FUNCTIONAL_PASS__HOLD_INDEPENDENT_ACCEPTANCE`:** exact P070 original `storage.py` and P071 embodied-sensor gating both execute normally and pass hostile tests; **the reviewing assistant authored those original two fixes on #1171** and cannot independently accept them. A **different reviewer** must challenge their source and tests, after which authorized receiving may consider full R11 succession.
+
+**Fresh independently executed exact-source evidence:** rebuild from frozen ancestor plus five exact changed/new Git blobs; **41/41** Python source/test SHA256 and Git identities match both candidate manifest and published tree; **241/241 normal, 241/241 `-O`, pytest 241 + 12 subtests, five additional independent reviewer tests normal and optimized PASS**. Cold SQLite reopen and forged trial-ID/motive/history attacks checked. Complete evidence ZIP in Library `/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R1198_20261120/` SHA-256 `920458eaba7ace4b418621eb17097e80b549eee6cbd1024c008bcb812824649f`.
+
+**Overall `HOLD` on blanket independent #1198 acceptance until credential- and author-independent P070/P071 receiving; no protected receiving.** Existing canonical PROGRAMMA and paired `CURRENT_PROGRESS.md`/`.json` are unchanged, `HQ_CURRENTNESS_HOLD` remains for the authorized recipient. The user-selected construction-first TCO/SORACLE program continues without promotion of sourcefree machinery to science.
+
+---
+
+
+## CURRENT INDEPENDENT REMONT R11 REVIEW — 2026-11-20
+
+**This is an additive receiving decision in the EXISTING REMONT register; original R10 code and 71-entry P/T/E statuses below are unchanged.** The externally constructed REMONT R10 #1187 and R11 #1190 are independently executable, but they are not yet valid replacements for this branch.
+
+**Reviewer exact-source cuts:** experimental R10 [#1187](https://github.com/maidiu/rawlsing/pull/1187) `9a1f2c4ba2a07d7760bd40940b014263bc1b2a19`, R11 [#1190](https://github.com/maidiu/rawlsing/pull/1190) `39f6972089858ee968e73b2e731005c71a8055dd`. R11 parent is R10 #1187; R10 parent is historical R9 `c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d`, **not the original R10 P070/P071 and 53-receiving branch below**.
+
+**Independent execution:** 213/213 experimental R10 tests normal and `-O`; 232/232 R11 tests normal and `-O`; pytest respective 213/232 PASS + 10 subtests each. R11 39/39 and R10 36/36 source/test Python blobs match GitHub. Independently written six R11 hostile functions **two positives PASS and five negative subcases RED under normal and `-O`**; R10 continuity alone has four RED subcases. Full runnable source-evidence ZIP [banked in REMONT Library](/Rawlsing/SOROK-REMONT/INDEPENDENT_RECEIVING_R11_20261120/SOROK_REMONT_R11_INDEPENDENT_RECEIVING_20261120.zip), SHA256 `b4bdab661667214c30c568941b94d858da16804747e073eb23c5f7eace5847d4`.
+
+**Verdict: `REVISE_EXACT_DEFECT` on R11 #1190, `REVISE_EXACT_DEFECT_FOR_CURRENT_REMONT_SUCCESSION` on #1187.** Detailed GitHub COMMENT reviews: #1190 review `5996097731`, #1187 review `5996104337`.
+
+| Court | First-fault negative | Required repair and conservation |
+|---|---|---|
+| **R11-DEF-01** integration | Original P070 canonical persisted world/actor snapshot, singleton world-identity, and P071 valid embodied actor sensor guards are missing from #1187 and #1190; four reproducible RED subcases | Inherit #1171 original first-source guards and P070/P071 tests **alongside** R4/R5/R6/R11 mechanisms |
+| **R11-DEF-02** psychological authority | An actual malicious model callback selects an issued prospective SING trial, then installs an *already durable* mature motive via same-event `ADD_PROJECT`, bypassing the specific `TAKE_UP_POSSIBLE_END` ban | End-specific historical provenance across **every** project-acquisition route; conserve later-event legitimate takeup |
+| **R11-DEF-03** source custody | #1187 and #1190 ship the old 69-record ledger, not original REMONT's 71-record current queue with 53 separate scoped reviewer receipts | Reconcile the **existing** `.md` and `.json` without loss, requalification or a rival programme |
+
+**Scope:** The actual prospective-trial actor issuance, one-event history and forged-foreign-trial rejection have positive independent executable support. The three #1189 RED-origin hostile tests are preserved verbatim and pass in R11. This does **not** accept the combined R11 or establish motive science. The new SORACLE #1191 research line is separate and unexecuted here.
+
+**Independence boundary:** This review agent did not author #1187 or #1190, but the GitHub connector authenticates with the PR author's account; GitHub refused formal REQUEST_CHANGES and accepted detailed COMMENT reviews. This is independent test execution / engineering reasoning, **not independent GitHub account/G5 credential accreditation**. Crucially, **this same reviewer authored P070/P071 source repairs previously** and does **not** independently accept those original repairs; another reviewer must receive them. Do not change the original 53 sourcefree scoped PASS or 8 OPEN, 8 PARTIAL, 2 new author-tested records below.
+
+**Currentness:** Original REMONT candidate remains 71 P entries. Protected PRE-MAIN and paired `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md` and `.json` unchanged; competent owner/writer receiving still requires `HQ_CURRENTNESS_HOLD` on protected authority, not on continued bounded review.
+
+---
+
+
+## CURRENT R10 — REMONT OWN-LEDGER 53-ID INDEPENDENT REVIEW AND P070/P071 REPAIR (2026-11-20)
+
+**This section is the live SOROK REMONT candidate register, replacing earlier historical summaries below.** Authoritative source is the paired machine ledger [`OPEN_DEFECTS.json`](OPEN_DEFECTS.json), updated in the **existing PR #1171**, not only in separate review/repair PRs. Earlier R2 through R9 tables and claims are retained **as historical snapshots**; in particular their "53 awaiting review" is superseded by this section. No separate REMONT master or protected owner created.
+
+**Frozen reviewed author R9:** `c4e1295a9ab9c5c5aa2135bb3dc33e19354e316d` in #1171. Independent examiner's formal COMMENT review on #1171 ID `5988719917`; [exact all-53 per-ID executable review](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.md) and [machine-readable receipt](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.json) copied into **this same REMONT branch**. Original executable 177/177 normal and 177/177 optimized PASS; independently authored 17/17 cross-family cases PASS. Exact first-fault review **ACCEPT_SCOPED_SOURCEFREE_FUNCTIONAL_ENGINEERING for 53 original identities**, **not credentialed native G5/owner or protected receiving**. Each of the 53 original `queue_P` entries has a status change and retained historical `author_status_before_scoped_review`, scoped receipt/evidence and separate native authority fields; no loss of original first-fault/repaired-source identities.
+
+**Two additional reproduced first faults (R9 original source RED, bounded R10 sourcefree fix locally tested):**
+
+| New ID | First fault actually reproduced | Fix integrated into #1171 | Current status |
+|---|---|---|---|
+| **SR-P070** | `storage.verify_chain` accepted noncanonical persisted world/actor JSON snapshot bytes and extra uncommitted world row, notwithstanding earlier P043 event-byte and P045 preappend fixes | `storage.py`: canonical raw snapshot-byte equality; exact singleton world roster before accepting verification | `REPAIRED_CODE_AUTHOR_TESTED__REVIEW_PENDING` |
+| **SR-P071** | `constitution.actor_access` let NaN actor sensor pass sensory threshold (distinct from P037 bodily action guard and P067 world cue-ingress guard) | `constitution.py`: use existing `organism.eligible(actor.body,'WAIT')` before actor sensory read | `REPAIRED_CODE_AUTHOR_TESTED__REVIEW_PENDING` |
+
+**Actual R10 source/test:** the two exact first-source modules and `tests/test_remont_independent_followons_r10.py` have been integrated into this **existing #1171**, with first-fault source from former draft #1183. Four negative subcases RED on frozen R9, fixed sourcefree candidate **180/180 normal PASS, 180/180 optimized PASS**, plus independently authored 20/20 external cases normal and optimized PASS. Distinct receiving of these *new reviewer-authored repairs* is still pending; reviewing the original 53 does not auto-accept P070/P071. Inherited accepted sourcefree functionality, material world, psychodynamic and actor boundaries remain covered by the complete suite.
+
+**Current disjoint accounting: 71 production records = 53 independently reviewed scoped-functional PASS + 8 historically OPEN + 8 historically PARTIAL + 2 newly authored code-repair candidates awaiting independent receiving.** The 69 inherited production identities remain, T confirmed harness defects 0, E authority/evidence holds 6. The original R9 69-record partition is preserved below as history; P070/P071 are **not** retroactively counted as old defects. No native original-source P2–P6/CAN/ADP/PFF, whole-survey PYAT or psychological scientific qualification, actor/human grant, global G5, or protected PRE-MAIN receiving.
+
+**Authority/canonical currentness:** `integration/pre-main-reconciliation-r1` remains protected at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`. Existing `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md`, `.json` and PROGRAMMA remain unchanged pending a competent receiving/writer lease. **HQ_CURRENTNESS_HOLD** applies there, not to this material REMONT update. First-source code plus defect ledger are now on the same REMONT branch; separated #1182/#1183 remain immutable historical receipts and are not rival live queues.
+
+### Exact 53 first-fault dispositions — R10
+
+| Original defect | Independent disposition | Original first fault preserved |
+|---|---|---|
+| `SR-P001` | **PASS — scoped sourcefree first fault** | R1 objective event cues were indefinitely perceptible |
+| `SR-P002` | **PASS — scoped sourcefree first fault** | R1 associative recruitment bypassed target contextual scope |
+| `SR-P003` | **PASS — scoped sourcefree first fault** | R1 active project generated its own cue/context to summon dormant form |
+| `SR-P007` | **PASS — scoped sourcefree first fault** | Early R2 inferred enduring joint capability from count>=2 encounters |
+| `SR-P008` | **PASS — scoped sourcefree first fault** | R1/early R2 single cooperation installed RELATIONAL_INVESTMENT by default |
+| `SR-P010` | **PASS — scoped sourcefree first fault** | Age maturation was at risk of installing language acquisition without learning |
+| `SR-P021` | **PASS — scoped sourcefree first fault** | Adult initializer accepted model-supplied forms=[] and projects=[] as an operative adult despite no functional psychological constitution |
+| `SR-P024` | **PASS — scoped sourcefree first fault** | R3 accepted acquired action=TELEPORT with valid WITHHOLD polarity, creating impossible psychic operation |
+| `SR-P025` | **PASS — scoped sourcefree first fault** | Adult and developmental acquisition accepted projects and forms claiming executable means such as TELEPORT not supported by organism.ACTIONS |
+| `SR-P026` | **PASS — scoped sourcefree first fault** | WORK at a nonexistent world.positions site returned successful material production but mutated an unowned transient dict, leaving no real produced stock |
+| `SR-P027` | **PASS — scoped sourcefree first fault** | Partial psychic batch survived a later rejected candidate |
+| `SR-P028` | **PASS — scoped sourcefree first fault** | Nonfinite strength delta silently increased acquired form strength |
+| `SR-P029` | **PASS — scoped sourcefree first fault** | Nonfinite buyer and worker account balances bypassed monetary guards |
+| `SR-P030` | **PASS — scoped sourcefree first fault** | Nonfinite site stock could be produced or consumed as if material |
+| `SR-P031` | **PASS — scoped sourcefree first fault** | Blocked purchase's private account reason leaked into public cue |
+| `SR-P032` | **PASS — scoped sourcefree first fault** | Verifier accepted uncommitted extra SQLite actor |
+| `SR-P033` | **PASS — scoped sourcefree first fault** | External adult constructor admitted nonnumeric/acausal form parameters |
+| `SR-P034` | **PASS — scoped sourcefree first fault** | Invalid project priority entered actor and broke situated ranking |
+| `SR-P035` | **PASS — scoped sourcefree first fault** | Outward tip repeated world-audit outcome, not actor-observed sign |
+| `SR-P036` | **PASS — scoped sourcefree first fault** | Nonfinite owned-food holdings corrupted successful purchase |
+| `SR-P037` | **PASS — scoped sourcefree first fault** | NaN motor/other bodily metrics passed eligibility into action |
+| `SR-P038` | **PASS — scoped sourcefree first fault** | Research ledger admitted ghost event actor/position without registered Other |
+| `SR-P039` | **PASS — scoped sourcefree first fault** | World clock regressed while the hash chain still verified |
+| `SR-P040` | **PASS — scoped sourcefree first fault** | SQLite event header columns could be forged without changing hashed envelope, leaving chain valid |
+| `SR-P041` | **PASS — scoped sourcefree first fault** | Optimized Python -O removes assert-based source/event chain/actor checks; tampered ancestry returned valid |
+| `SR-P042` | **PASS — scoped sourcefree first fault** | Deleting every event from an initialized life without source-seals gave a valid empty chain |
+| `SR-P043` | **PASS — scoped sourcefree first fault** | Whitespace-altered stored event JSON remained accepted because digest normalized it first |
+| `SR-P044` | **PASS — scoped sourcefree first fault** | Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair |
+| `SR-P045` | **PASS — scoped sourcefree first fault** | Uncommitted SQLite world or actor state could become verified after the next legitimate life step, external cue, or source seal |
+| `SR-P046` | **PASS — scoped sourcefree first fault** | A deleted initialization genesis could be replaced by a late source seal as an apparently valid first event |
+| `SR-P047` | **PASS — scoped sourcefree first fault** | Boolean True was accepted as one day of historical passage |
+| `SR-P048` | **PASS — scoped sourcefree first fault** | Initializing a second world in one SQLite research ledger inserted a second GENESIS into the same chain |
+| `SR-P049` | **PASS — scoped sourcefree first fault** | Buying food at an institution debited the buyer without crediting the actual goods controller; no seller at unowned site |
+| `SR-P050` | **PASS — scoped sourcefree first fault** | Python coerced boolean money such as price=True or wage=False into numeric monetary transfers |
+| `SR-P051` | **PASS — scoped sourcefree first fault** | Positive food price and wage below five-decimal currency granularity rounded to zero, delivering goods free or erasing owed wage |
+| `SR-P052` | **PASS — scoped sourcefree first fault** | Unrepresentable buyer/seller/controller/worker account balances silently rounded during transfers and could mint/destroy value |
+| `SR-P053` | **PASS — scoped sourcefree first fault** | A purchase debited or credited the wrong amount (sometimes zero, sometimes nonfinite) for individually valid large buyer/seller balances |
+| `SR-P054` | **PASS — scoped sourcefree first fault** | Wage payment changed employer or worker cash by zero at high magnitude and could overflow the worker account; nevertheless stock and wage claim were issued |
+| `SR-P055` | **PASS — scoped sourcefree first fault** | Food, owned holdings and workshop stock at large representable float magnitudes were incremented/decremented without any underlying count change, yet goods were claimed consumed, purchased, repaired or produced |
+| `SR-P056` | **PASS — scoped sourcefree first fault** | Same actor/institution account was credited a wage without an external payer debit, while same-account owned-food reallocation was labeled a positive price_paid; existing owner could be denied own stock for no cash |
+| `SR-P057` | **PASS — scoped sourcefree first fault** | Error-path EAT created a new empty holdings row before rejecting an unrepresentable material transfer |
+| `SR-P058` | **PASS — scoped sourcefree first fault** | Malformed world grant strings awarded access to actor IDs matching an unrelated actor's substring |
+| `SR-P059` | **PASS — scoped sourcefree first fault** | Blocked initiator produced a completed voluntary coactor action and invoked that coactor planner despite physically impossible invitation |
+| `SR-P060` | **PASS — scoped sourcefree first fault** | Independently planned coactor attempt could target an unrelated third party but count as reciprocal cooperation with principal |
+| `SR-P061` | **PASS — scoped sourcefree first fault** | CARE to target with NaN bodily nutrition could turn invalid recipient data into apparently normal body state |
+| `SR-P062` | **PASS — scoped sourcefree first fault** | String scope.locations, non-string counterpart, string form cues and malformed site admission produced false psychological eligibility |
+| `SR-P063` | **PASS — scoped sourcefree first fault** | Untyped relation/activity-link contexts and project/trace cue strings could be admitted and later recruit via character-wise or substring matching |
+| `SR-P064` | **PASS — scoped sourcefree first fault** | Coarse actor-A practice coverage expanded actor-B's psyche merely because both possessed the same form identifier |
+| `SR-P065` | **PASS — scoped sourcefree first fault** | A period with one valid then one malformed scope change partially mutated actor before TypeError; untyped locations were accepted |
+| `SR-P066` | **PASS — scoped sourcefree first fault** | Malformed cue tags string fragmented into character tokens; nontext tags persisted and later crashed contextual recruitment |
+| `SR-P067` | **PASS — scoped sourcefree first fault** | Unknown/forged world cue modality bypassed sensor threshold; negative and NaN thresholds could fabricate access |
+| `SR-P068` | **PASS — scoped sourcefree first fault** | String 'false' in contextual_only treated as truthy and quietly suppressed an acquired project in ADD_PROJECT and REORGANIZE_PROJECT |
+| `SR-P069` | **PASS — scoped sourcefree first fault** | Identical historical practice scope generated a durable PERIOD_SCOPE_CHANGE and actor changes entry without any actual new capability |
+
+**See the existing [full exact-source review](REMONT/SOROK/REVIEWS/INDEPENDENT_R9_53_20261120/R9_53_INDEPENDENT_REVIEW.md) for the personally executed test witness corresponding to each ID and the bounded evidence and limitations.**
+
+---
+
+
 **2026-11-19. Research candidate.** This is a **separate SOROK defect-custody ledger** under `REMONT/SOROK/`, subordinate to existing SOROK PROGRAMMA—not another master programme and not an authorization to alter protected owners. **Governing principal:** build/savage/repair/recover forgotten theory **in code**; defects discovered en route are noted but **do not derail the commissioned construction**. At the end of this construction return, defect ownership moves to a *separate REMONT-qualified agent*, not the construction author. User expressly deferred native integration.
 
 ## Recovered REMONT handling discipline
@@ -17,23 +163,37 @@ Live PYAT REMONT precedent: [PYAT PR #1162](https://github.com/maidiu/rawlsing/p
 | **SR-P001** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | R1 objective event cues were indefinitely perceptible; `constitution.py::actor_access; world.py::add_cue` | `test_historical_cue_expires_without_becoming_memory` | **ADP-010/016/017; PRE-A0 objective/lived/afterlife.** R2 bounded cue receipt window; historical event persists without unqualified present exposure |
 | **SR-P002** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | R1 associative recruitment bypassed target contextual scope; `constitution.py::_form_in_scope / compose; development.py::CHANGE_RECRUITMENT_SCOPE` | `test_recruitment_link_cannot_break_target_scope` | **PFF conditional relational topology; CAN-011 actor-specific qualified acquisition.** R2 respects target scope even when an edge is activated; recorded scope change can then transfer |
 | **SR-P003** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | R1 active project generated its own cue/context to summon dormant form; `activity.py::eligible_activities; constitution.py::compose` | `test_unrecruited_project_does_not_summon_its_own_form` | **Holzkamp practical premises; ADP-010; SEAM/19.** Seed only independently eligible projects; later association cannot bootstrap exposure |
-| **SR-P004** | `PARTIAL_CODE_REPAIRED` / CONFIRMED_CODE | R1 project = weighted action menu; technical success implicitly fulfilled motive; `activity.py::record_activity_afterlife; runtime.py; development.py::LINK_ACTIVITY/REORGANIZE_PROJECT` | `test_one_operation_can_serve_competing_activities_without_motive_deduction` | **SOROK O05 Leontiev/Sève; legacy V3 strivings; Dreier.** R2 object/motive/means split and UNDETERMINED_BY_TECHNICAL_OUTCOME; still weighted options and weak motive genesis |
-| **SR-P005** | `PARTIAL_CODE_REPAIRED` / CONFIRMED_CODE | R1 work raised site stock without recording differentiated appropriation of product; `world.py::WORK; types.py` | `test_objective_labor_and_wage_are_not_technical_fulfillment` | **Sève labor and ownership; Governing Spirit; SEAM/19.** R2 records controller, wages, worker holdings and material claims independently; economic world remains extremely small |
+| **SR-P004** | `PARTIAL_CODE_REPAIRED__R3_COMBINED_58_PASS_RECEIVING_PENDING` / CONFIRMED_CODE | R1 project = weighted action menu; technical success implicitly fulfilled motive; `activity.py::record_activity_afterlife; runtime.py; development.py::LINK_ACTIVITY/REORGANIZE_PROJECT` | `test_one_operation_can_serve_competing_activities_without_motive_deduction` | **SOROK O05 Leontiev/Sève; legacy V3 strivings; Dreier.** R2 object/motive/means split and UNDETERMINED_BY_TECHNICAL_OUTCOME; still weighted options and weak motive genesis |
+| **SR-P005** | `PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING` / CONFIRMED_CODE | R1 work raised site stock without recording differentiated appropriation of product; `world.py::WORK; types.py` | `test_objective_labor_and_wage_are_not_technical_fulfillment` | **Sève labor and ownership; Governing Spirit; SEAM/19.** R2 records controller, wages, worker holdings and material claims independently; economic world remains extremely small |
 | **SR-P006** | `PARTIAL_CODE_REPAIRED` / EXPLICIT_CAPABILITY_BOUND | R1 dyad recorded acts but did not produce joint bodily co-regulation; `world.py::CARE/SIGNAL; runtime.py` | `test_mutual_care_has_world_field_bodily_effect_and_distinct_experience` | **PRE-A0 bid-response; independent dual subject; ADP-015.** R2 sourcefree co-regulation alters infant body plus caregiver cost and separate afterlives; no genuine affective theory |
 | **SR-P007** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | Early R2 inferred enduring joint capability from count>=2 encounters; `world.py::observed_patterns/joint_capabilities` | `test_repetition_is_not_stable_relational_power_or_investment` | **PFF CO-OCCURRENCE != RELATIONAL ORGANIZATION; CAN-011.** Repetition represented as observed recurrence only; joint_capabilities remains empty without qualified formation |
 | **SR-P008** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | R1/early R2 single cooperation installed RELATIONAL_INVESTMENT by default; `semantics.py; runtime.py; development.py` | `test_shared_activity_yields_separately_owned_relational_afterlives` | **PRE-A0 relation/love and recognition not equal approval; PFF.** Keep tentative trace/other-model instead of falsely assigning love, attachment, recognition or enduring investment |
 | **SR-P009** | `PARTIAL_CODE_REPAIRED` / CONFIRMED_CODE | Moving actor could fail to experience own movement because cue was left at origin; `runtime.py::step/felt_enactment/private_actor_experience_receipts` | `test_actor_somatic_feedback_not_equated_with_public_event_cue` | **PRE-A0 causal event vs lived realization vs afterlife; ADP-017.** R2 private proprioceptive candidate separated from world facts; native privacy and actual phenomenology unproven |
 | **SR-P010** | `REPAIRED_CODE_AUTHOR_TESTED` / CONFIRMED_CODE | Age maturation was at risk of installing language acquisition without learning; `organism.py::mature` | `test_bodily_maturation_is_not_automatically_language_competence` | **ADP-007 and CAN-009 organismic capacity; Luria and SEAM/21 cultural learning.** Readiness ceiling rises without magically granting speech or ideology |
 | **SR-P011** | `OPEN_NOT_FIXED` / CONFIRMED_CODE | Offline heuristic can install continuing SING-oriented project on single episode; `semantics.py::OfflineSemanticProvider` | `test_one_operation_can_serve_competing_activities_without_motive_deduction` | **O05 motives arise through object-directed activity; PRE-A0 no caregiver ideological defaults.** Needed: qualified context-specific project genesis instead of one-event end attribution |
-| **SR-P012** | `OPEN_NOT_FIXED` / CREDIBLE_RISK | Two-pass activity/form recruitment may miss cyclic or higher-order jointly required organizations; `constitution.py::compose; activity.py::eligible_activities` | `test_unrecruited_project_does_not_summon_its_own_form` | **PFF context-conditional graph; O05 object-oriented activity.** Need bounded monotone fixed-point or appropriately nonmonotone conflict evaluator; not proved by current test |
+| **SR-P012** | `PARTIAL_CODE_REPAIRED__REMONTATHON_84_LOCAL_PASS_REVIEW_PENDING` / CREDIBLE_RISK | Two-pass activity/form recruitment may miss cyclic or higher-order jointly required organizations; `constitution.py::compose; activity.py::eligible_activities` | `test_unrecruited_project_does_not_summon_its_own_form` | **PFF context-conditional graph; O05 object-oriented activity.** Need bounded monotone fixed-point or appropriately nonmonotone conflict evaluator; not proved by current test |
 | **SR-P013** | `OPEN_NOT_FIXED` / CONFIRMED_CODE | Parent interview returns stored survey-keyed answers rather than inferred answers from operative psyche; `parents.py::interview_readout; runtime.py::interview` | `test_parent_constitution_heterogeneous_and_abductive` | **SEAM/20 and ORACLE parent source-conditioned fictional backfill; whole-respondent independent correspondence.** Need genuinely blind whole-instrument readback, source-qualified PYAT sampling; no claimed survey-science validity |
 | **SR-P014** | `OPEN_NOT_FIXED` / EXPLICIT_CAPABILITY_BOUND | Actual LLM semantic construction provider not invoked in R2; offline heuristics dominate; `model_provider.py; semantics.py` | `test_zero_positive_native_rights` | **PRE-A0 two-call conceptual/expressive separation; user BUILD THE ORGANISM mandate.** Need real provider integration with actor developmental scope and audited semantic formation; not an excuse to halt research build |
 | **SR-P015** | `OPEN_NOT_FIXED` / EXPLICIT_CAPABILITY_BOUND | Observed coactivity has no rule for acquired persistent joint skill or new affective investment; `world.py::relational_fields; semantics.py` | `test_repetition_is_not_stable_relational_power_or_investment` | **PFF persistent relation vs attractor; PRE-A0 mutually productive field.** Need genuine relationally conditioned development; no count-to-love or count-to-competence shortcuts |
 | **SR-P016** | `OPEN_NOT_FIXED` / EXPLICIT_CAPABILITY_BOUND | Objectively independent institutions and class relations are toy site, wage and permission model; `world.py::WORK/material_claims/institutions` | `test_objective_labor_and_wage_are_not_technical_fulfillment` | **Governing Spirit material reproduction; Sève; Wright; SEAM/19/26–29.** Need actual reproduction and differential social positions before claiming social adequacy |
 | **SR-P017** | `OPEN_NOT_FIXED` / CREDIBLE_RISK | Time-windowed cue model may mistakenly erase continuing environmental signals/material signs; `world.py::add_cue; constitution.py::actor_access` | `test_historical_cue_expires_without_becoming_memory` | **ADP-010 difference between persistent affordance and one-time exposure; PRE-A0.** Model persistent objects/signals separately from transient event cues; preserve F01 fix |
-| **SR-P018** | `OPEN_NOT_FIXED` / CREDIBLE_RISK | Research event chain does not cover all auxiliary source-seal state; private receipt inspection is not native privacy; `storage.py::source_seals/verify_chain; runtime.py private receipts` | `test_private_experience_receipts_not_sent_to_public_expression` | **ADP-016/017; actor-bound source/secrecy; PROGRAMMA oath exact evidence.** Bound seal mutability to ledger and enforce disclosure rights if promoted; research-only until then |
+| **SR-P018** | `PARTIAL_CODE_REPAIRED__REMONTATHON_R2_88_LOCAL_PASS_REVIEW_PENDING` / CREDIBLE_RISK | Research event chain does not cover all auxiliary source-seal state; private receipt inspection is not native privacy; `storage.py::source_seals/verify_chain; runtime.py private receipts` | `test_private_experience_receipts_not_sent_to_public_expression` | **ADP-016/017; actor-bound source/secrecy; PROGRAMMA oath exact evidence.** Bound seal mutability to ledger and enforce disclosure rights if promoted; research-only until then |
 | **SR-P019** | `OPEN_NOT_FIXED` / EXPLICIT_CAPABILITY_BOUND | Self-representation is present as a field but lacks operative second-order self-recruitment/development; `constitution.py; types.py::self_model` | `test_newborn_is_not_prepsychologized` | **PRE-A0 acquired self-model; Holzkamp reflexive agency; SEAM/21.** Need actor-derived, revisable self-model applied to future practices without omniscience |
 | **SR-P020** | `HISTORICAL_R0_NOT_FIXED` / CONFIRMED_CODE | Original R0 public perform accepted forged partner_consent bool; distinct R1/R2 public routes now reject analogous path; `R0 initial research artifact; R2 world.py::IndependentWorldAuthority` | `test_no_bool_partner_consent_bypass_public_runtime` | **ADP-015 Other autonomy, PRE-A0 relational alterity.** Leave original R0 historically NOT_FIXED, do not confuse with R2 mitigation |
+
+#### SR-P004 REMONT R1 — attempted course and actor-owned lived distinction (2026-11-19)
+
+**New candidate, NOT independently received.** Based on ORACLE R2 source commit e883168ac57a5490ff659d8e9a9705e9269e8b2c, a separate REMONT branch repairs the first reproduced remaining SR-P004 continuity fault: the original R2 runtime skipped record_activity_afterlife for every operation other than PERFORMED, silently dropping blocked and partial work from the actor's object-directed activity history. R1 now retains separately object-identified courses for PERFORMED, PARTIAL and BLOCKED; marks objective results WORLD AUDIT, NOT ACTOR KNOWLEDGE; keeps object fulfillment and motive realization NOT INFERRED; and creates a distinct actor-owned somatic attempt trace available in the next situated constitution. Externally injected operations cannot counterfeit actor-selected project purposes. Repeated project-event receipts are refused.
+
+**Author-side executable proof:** 37/37 python -m unittest discover -s tests -v PASS locally, up from R2 34/34; source blobs exactly matched the separate GitHub repair commit 79cb280e7082ccd49e08e83813e11e1c2ace6bfb. Includes blocked BUY_FOOD actor auto-selection, different objective versus lived histories, cold SQLite reopen/hash-chain, multiple project objects for partial/blocked means, and an external-injection negative.
+
+**SR-P004 remains PARTIAL_CODE_REPAIRED, not closed:** compose still ranks means with project priorities; motive and activity-genesis are not scientifically constituted. SR-P011 remains OPEN_NOT_FIXED. NEXT: further object-directed activity selection and motive-genesis before moving to SR-P005. No native P2/P3 integration, independent G5, source/science/actor grants, protected receiving or retroactive status changes for other P/T/E rows.
+
+#### SR-P004 REMONT R2 — do not graft foreign means onto an activity (2026-11-19)
+
+**New negative construction, same PARTIAL_CODE_REPAIRED row.** The R2 composed-activity planner could generate any globally eligible two-step operation grammar for any situated project even when neither operation belonged to that project's historically acquired means. It then borrowed the bases of other projects, incorrectly attributing their means to the wrong practical object. Now composition requires every operation to be a declared means of that same project AND to be present in its own situated project-basis. Form evidence may be reused, but another project's purpose is never laundered into this plan.
+
+**Executed after R2 addition:** 39/39 local unittest PASS including the previous 37, new positive separate music versus workshop plans, and negative foreign-project basis refusal. Both component ops reenter world through independently resolved future attempts; this does NOT demonstrate scientific motive genesis, means generalization or completed actor-owned selection.
 
 ### Queue T — genuine test, fixture and harness defects
 
@@ -57,3 +217,181 @@ Live PYAT REMONT precedent: [PYAT PR #1162](https://github.com/maidiu/rawlsing/p
 - **Use PFF/PRE-A0/O05/CAN/ADP as material repair guidance**, not pretexts for uncontrolled ontology expansion or ceasing implementation.
 - **A successful isolated test does not promote native science or authority.** Owner-only receiving, the user sequencing decision and protected CAS remain separate.
 - **Read the companion R2 critical-constructive ledger** `SEAM/ORACLE/UM_SOROK_ORGANISM_R2/docs/HOSTILE_THEORY_CODE_LEDGER_R2.md` for full F01–F12 explanations and code repairs, and `docs/R1_TO_R2_EXECUTABLE_DIFF.patch` for the R1→R2 source diff.
+
+
+## SR-P005 REMONT R1 — material-custody and monetary-integrity bugs (2026-11-19)
+
+**Production source:** independent REMONT candidate stacked on real current #1165 at \`480d3595ef744779cbfce186cd1696d8e8f61e36\` (world implementation unchanged since R2 #1163). SEAM Constitutive Organism conceptual cut #1161 \`b91d857202d8f84a4721cbc185b6d3aeac3349e3\` informs the required world/subject separation, **not** the executably adopted owner code.
+
+**Demonstrated first faults (pre-fix):** (A) \`REPAIR\` consumed workshop stock from a visitor with no institutional material-use grant; (B) the hall institution controlled the hall but its site lacked an explicit controller label, allowing an ungranted visitor to consume its stock; (C) a negative \`food_price\` made \`BUY_FOOD\` credit money to the purchaser; (D) a negative \`wage\` made \`WORK\` debit the worker and credit the employer. An institutional/site controller mismatch also silently fell back to unowned production. These are **real in the sourcefree research world**, not validated claims about native SOROK.
+
+**Bounded repair:** \`world.py\` now derives effective control from consistent, unique institutional and site records. Controlled repair stock requires a *world-owned* \`material_use_grants\` entry; public admission or actor assertion is insufficient. Missing/conflicting controller relations fail closed. Price/wage/controller balances are checked as finite and nonnegative **before material/account mutations**. Ordinary legitimate positive-wage work, explicit material grant, and unowned home production remain available.
+
+**Evidence and precise limits:** Original ORACLE R2 34 tests + 8 new SR-P005 tests **42 PASS, 0 FAIL**, locally executed against the unchanged R2 world base with the exact byte-identical patched \`world.py\`; emitted code/test git blobs equal local tested bytes (\`2c122822d4bf115dbb4741b7fa75f43e1b0e4f04\`, \`4d20203adc5681f7dec1f526c464a13bcb4e09c4\`). Existing #1165's *separate* 39-test report has **NOT** been rerun in combination here; **no claim of combined 47 PASS, CI, or independent acceptance**. Remaining SR-P005: employer hiring/shift/permission, unpaid wages and arrears, actual material grant issuance and revocation, consumption/labor reproduction, richer production relations, access/world event authority. Remains PARTIAL, and older P/T/E defects remain conserved. No protected PROGRAMMA/CURRENT_PROGRESS/CAN/ADP/P2/P3/P6 edits or rights promotion.
+
+
+## REMONT R3 — live-source reconciliation and confirmed defects (2026-11-19)
+
+**Current implementation base:** ORACLE R3 PR #1167 @ `3dba91136870ab5e766ca14faacd847531dea075` (not ORACLE R2 or either prior independent REMONT draft). **Sourcefree staging repair:** combines #1165 SR-P004 (blocked/partial actor-owned afterlife + project-qualified means), #1170 SR-P005 (material grants/controller/money integrity), and R3-origin first-fault repairs SR-P021/SR-P024. Exact source decisions and proof in `REPAIRS/SR_R3_CONSOLIDATED_REAL_BUGS_20261119_R1.md`.
+
+- **SR-P004** remains **PARTIAL**: R3 `activity.py`, `runtime.py`, `constitution.py`, and the *inherited pattern* in `plans.py` now retain personally lived blocked/partial activity and exclude borrowed project means, **without discarding R3 acquired compositions and uncollapsed psychodynamic currents**. Neither an unperformed WITHHOLD nor an injected act becomes an actor's historical undertaking. Weighted choices/motive genesis still open.
+- **SR-P005** remains **PARTIAL**: `world.py` denies institution-controlled stock use without world-owned grant and rejects invalid prices/wages/funds before mutation; sites controlled by an institution remain controlled even without a redundant site controller label. Hiring, wage arrears, source-qualified class and collective production remain open.
+- **SR-P021** (confirmed from R3 before fix): an external LLM adapter's empty adult-constructor return initialized a fictional adult with 0 forms and 0 projects. The sourcefree constructor now **fails visibly** instead of silently admitting an inert adult; no forced nine-strata, trait, or answer-key psyche.
+- **SR-P024** (confirmed from R3 before fix): an acquired `WITHHOLD TELEPORT` tendency passed initial validator although `TELEPORT` is not in supported bodily actions. Tendencies now require a real supported operation at both adult initialization and developmental form admission. Supported operations remain permitted.
+- **SR-P022/P023** remain *unimplemented scientific/generative bounds*: preconceptual attention and acquired-method end genesis are not solved by a rejected invalid packet.
+- **Queue T:** two SR-P004 test fixtures required R3's `learned_compositions=[]` field; this was a versioned test API mismatch, not proof of a runtime/harness defect. Zero confirmed native harness bugs.
+- **Executed combined code, isolated sourcefree:** original R3 42 + P004 5 + P005 8 + R3 negative/positive 3 = **58 tests PASS, 0 FAIL**. The combined Python/test Git blob hashes match the locally executed bytes. No independent G5, protected owner receiving, or native science/actor/POP/DEV/TRANS accreditation.
+
+**Authority:** candidate draft only, E001..E006 persist. Not a mandate to bypass protected PROGRAMMA or paired CURRENT_PROGRESS.
+
+## REMONT R3 R2 — further reproduced production defects (2026-11-19)
+
+**Additional sourcefree P bugs, independently reproduced against the earlier R3-integrated candidate before applying the R2 patch:**
+
+- **SR-P025:** `construct_parent` could persist adult projects whose `means` contained an unsupported `TELEPORT` action; seeded acquired forms could likewise advertise an impossible physical `enables` operation. `development.admit` could add/reorganize projects or acquire forms with the same nonexistent operation. This silently confused a person's **aspirational practical object** with a means they can possibly enact. Repair: require every specified executable means/enabler to exist in the existing `organism.ACTIONS` vocabulary at parent construction and developmental admission; `means=[]` remains permitted for unrealized aims. Invalid proposals fail before any parent ledger commit or affected form/project mutation.
+- **SR-P026:** actor `WORK` at `world.positions[id]='nonexistent_site'` yielded `PERFORMED / MATERIAL_STOCK_PRODUCED` while no site in `world.sites` ever received the goods. Repair: `EAT/BUY_FOOD/WORK/REPAIR` now return `BLOCKED / UNKNOWN_MATERIAL_SITE` if the objective site does not exist; no ghost goods, claims or debits. This is not a new mandatory location ontology, only a fail-closed guard against orphan writes to a temporary empty dictionary.
+
+**Exact combined execution:** 62/62 local unittests PASS, 0 FAIL (prior 58 + 4 new tests; every published Python/test Git blob byte-identical to locally executed files). SR-P004/P005 remain partial; SR-P021/024 have author-tested bounds; SR-P022/023 remain open unimplemented capability bounds. P/T/E original IDs and already published historical receipts remain conserved. Independent reviewer/native authority/protected paired receiving: **not done**.
+
+
+## SOROK REMONTATHON R3 R1 — 84 actual local tests, 13 additional first-fault repairs (2026-11-19)
+
+**Exact parent:** R3 REMONT PR #1171 at `0d40c700e1aea9c2f4d4940827106309baebbd3b`; **builder:** #1167 at `3dba91136870ab5e766ca14faacd847531dea075`; protected PRE-MAIN not modified. Actual changed code/test bytes plus source identities and run log are in `REPAIRS/REMONTATHON_R3_R1_20261119/`. No hidden native authority.
+
+**Reproduced then repaired** SR-P012 and SR-P018 at partial sourcefree grade, plus the additional work under SR-P005 (separate wage due/paid/arrears). Original P004/P005 scientific motive, institutions and employment competence remain incomplete. P022/P023 still unimplemented.
+
+| New defect | Reproduced first fault | Corrected source owner / falsifier |
+|---|---|---|
+| **SR-P027** | Partial psychic batch survived a later rejected candidate | `development.py::admit`; `test_p027_development_batch_rejection_is_all_or_nothing` |
+| **SR-P028** | Nonfinite strength delta silently increased acquired form strength | `development.py::admit::CHANGE_STRENGTH`; `test_p028_nan_strength_delta_does_not_promote_form` |
+| **SR-P029** | Nonfinite buyer and worker account balances bypassed monetary guards | `world.py::BUY_FOOD/WORK`; `test_p029_buyer_nan_balance_fails_before_world_mutation; test_p029_nonfinite_worker_balance_cannot_poison_wage_payment` |
+| **SR-P030** | Nonfinite site stock could be produced or consumed as if material | `world.py::WORK/REPAIR`; `test_p030_nonfinite_site_stock_cannot_be_consumed_or_produced` |
+| **SR-P031** | Blocked purchase's private account reason leaked into public cue | `world.py::add_cue from _resolve_untrusted_core`; `test_p031_failed_purchase_private_money_reason_not_public_cue` |
+| **SR-P032** | Verifier accepted uncommitted extra SQLite actor | `storage.py::verify_chain`; `test_p032_chain_rejects_phantom_uncommitted_actor` |
+| **SR-P033** | External adult constructor admitted nonnumeric/acausal form parameters | `psychodynamics.py::validate_tendencies; parents.py`; `test_p033_bad_seed_form_strength_refused_before_initializing_actor` |
+| **SR-P034** | Invalid project priority entered actor and broke situated ranking | `development.py::validate_activity_priority; parents.py`; `test_p034_bad_project_priority_cannot_break_recruitment` |
+| **SR-P035** | Outward tip repeated world-audit outcome, not actor-observed sign | `runtime.py::step::actual_tip`; `test_p031_tip_does_not_narrate_private_financial_reason` |
+| **SR-P036** | Nonfinite owned-food holdings corrupted successful purchase | `world.py::BUY_FOOD`; `test_p036_nonfinite_holdings_cannot_poison_food_purchase` |
+| **SR-P037** | NaN motor/other bodily metrics passed eligibility into action | `organism.py::eligible`; `test_p037_nonfinite_body_does_not_get_transformed_into_valid_performed_action` |
+| **SR-P038** | Research ledger admitted ghost event actor/position without registered Other | `storage.py::commit`; `test_p038_ghost_event_actor_cannot_be_written_as_world_history; test_p038_ghost_position_cannot_manufacture_copresent_other` |
+| **SR-P039** | World clock regressed while the hash chain still verified | `storage.py::commit`; `test_p039_retrograde_world_clock_cannot_commit` |
+
+All 13 IDs are **local author-tested repair candidates, not independently received closures**. R3 parent 62 tests and the 22 added regression/stress tests executed together: **84 PASS, 0 FAIL**. Additional tests cover cold-reopened source-seal custody, long actor-history continuity, and a rejected two-effect model proposal leaving no partial committed state. A stress fixture initially overestimated a tired actor's bodily eligibility; the fixture was corrected and is not reported as a product bug. No remaining-capability claim about P011/P013/P014/P015/P016/P017/P019/P022/P023 is made. Historical source-seal databases without chain anchors now fail validation and need explicit owner-governed migration, not a false GREEN. No independent G5, PYAT source, live LLM, native P2–P6, protected receiving, or paired CURRENT_PROGRESS update.
+
+
+## REMONTATHON R3 R2 — 88 combined local tests, second hostile integrity sweep (2026-11-19)
+
+Immutable preceding R1 84-test cut: `a4d4f54b825b69c5b2f7ff66e8450babafda6404`. Reproduced further first faults: **SR-P040** forged SQLite event `kind/actor_id/world_id/clock` headers passed a hashed-envelope-only verifier; **SR-P041** running `python -O` eliminated assert-based ancestry and hash checks. Repaired original `storage.py::events/verify_chain` to bind every SQLite header to its hashed envelope and use unconditional fail-closed exceptions. **SR-P018 additional partial:** whitespace mutation of source-seal bytes had preserved a semantically normalized hash, so the verifier now requires exact canonical bytes. **SR-P039 additional partial:** a Boolean objective clock is rejected (no `bool`→`int` coercion).
+
+Four new before-red/after-green tests include an actual optimized Python subprocess. Full combined R3 **88 PASS / 0 FAIL**; historical 62/84 cuts preserved. Current R2 receipt, test log and exact file identity under `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R2_20261119/`. Roster now **41 P, 0 confirmed T, 6 E**. Sourcefree author evidence only; independent receiving, native P2–P6/source rights, scientific POP/DEV/TRANS, protected merger and paired canonical CURRENT_PROGRESS remain unearned.
+
+
+## REMONTATHON R3 R3 — 91 real code tests, exact-byte event custody and public-history repair
+
+Source parent `2986cf5307097a2546bcd22c74371f39415a6751`. Three new first faults were **RED** on that exact code before repair; all pass along with the full organism suite after patch, including **91 tests on normal Python and 91 on `python -O`**. No changes in protected ownership; this is sourcefree research code.
+
+| ID | Reproduced fault | Fixed first source owner |
+|---|---|---|
+| **SR-P042** | Deleting every event from an initialized life without source-seals gave a valid empty chain | `storage.py::verify_chain` (`test_p042_deleting_every_event_cannot_turn_life_into_a_valid_empty_chain`) |
+| **SR-P043** | Whitespace-altered stored event JSON remained accepted because digest normalized it first | `storage.py::events/verify_chain` (`test_p043_ledger_event_payload_byte_mutation_without_semantic_change_is_detected`) |
+| **SR-P044** | Blocked purchase private credit deficit leaked via objective world public_history even after prior cue/tip repair | `world.py::_resolve_untrusted_core` (`test_p044_private_credit_shortfall_is_not_world_public_history`) |
+
+SR-P042 ensures an initialized world may not present an entirely deleted SQLite event history as `valid=True`. SR-P043 requires byte-identical canonical stored event envelopes, not just identical parsed JSON semantics. SR-P044 closes the *remaining* private account shortfall disclosure through `world.public_history`; the privileged `Resolution.world_delta.event` retains the exact objective cause. Previous P031 cue/tip protections and R2 source seal byte identity are conserved. R3 evidence and runnable 91-test archive in `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R3_20261119/` and immutable personal Library `/Rawlsing/SOROK-REMONT/REMONTATHON_R3_20261119_R3/`. Total **44 P, zero confirmed T, six E**. Remaining P005/P012/P018 partial; P011/P022/P023 and broader scientific functions still unresolved. No independently accepted/graded native science or protected merge.
+
+## REMONTATHON R3 R4 — sourcefree 104-test first-fault continuation (2026-11-19)
+
+Exact parent: b29c3d28db66dc4439eb5899826289dd8b6ad6f7 in draft PR #1171. The executable source remains ORACLE R3 #1167; no protected branch or canonical paired progress changes.
+
+Reproduced RED on prior code before repair, then repaired the first source owner:
+
+| Identity | Reproduced defect | Exact repair |
+|---|---|---|
+| **SR-P045** | Uncommitted SQLite world or actor state could become verified after the next legitimate life step, external cue, or source seal | storage.py::commit, seal_source, _verify_current_anchor_locked — Require the current persisted world/actors to match last event's hashed canonical state before appending |
+| **SR-P046** | A deleted initialization genesis could be replaced by a late source seal as an apparently valid first event | storage.py::seal_source, verify_chain — Require real INITIALIZATION ancestry at append and verify; reject forged SOURCE_SEAL genesis |
+| **SR-P047** | Boolean True was accepted as one day of historical passage | ordinary_life.py::passage — Require type(days) is int before maturation |
+| **SR-P048** | Initializing a second world in one SQLite research ledger inserted a second GENESIS into the same chain | storage.py::initialize — Reject second distinct world in the explicitly single-world research DB |
+| **SR-P049** | Buying food at an institution debited the buyer without crediting the actual goods controller; no seller at unowned site | world.py::BUY_FOOD — Credit objectively identified controller and persist FOOD_PURCHASE claim, refuse unknown seller and invalid seller balance |
+| **SR-P050** | Python coerced boolean money such as price=True or wage=False into numeric monetary transfers | world.py::_nonnegative_transfer_amount — Fail closed for bool and nonnumeric amounts before material/account mutation |
+
+Evidence: 13 added regression tests, cumulative 104/104 PASS under normal Python and 104/104 under python -O. Ten targeted failures were observed on frozen source before repairs. Exact code/test Git blobs and red/green receipts are in REMONT/SOROK/REPAIRS/REMONTATHON_R3_R4_20261119/.
+
+**Status bookkeeping is explicitly partitioned:** 50 production records TOTAL = 10 OPEN/NOT FIXED, 6 PARTIAL and 34 AUTHOR-REPAIRED CANDIDATES PENDING INDEPENDENT REVIEW (0 independently accepted). The HISTORICAL_R0_NOT_FIXED row SR-P020 counts as OPEN, not fixed. Open: SR-P011, SR-P013, SR-P014, SR-P015, SR-P016, SR-P017, SR-P019, SR-P020, SR-P022, SR-P023. Partial: SR-P004, SR-P005, SR-P006, SR-P009, SR-P012, SR-P018.
+
+T = zero confirmed test-harness defects; E = six evidence and authority holds unchanged. The prior 91-test and earlier receipts remain immutable historical cuts. No native P2–P6/CAN/ADP rights, qualified PYAT respondent science, live LLM behavior, production security, independent G5, protected merge or paired CURRENT_PROGRESS receiving.
+
+## REMONTATHON R3 R5 — sourcefree five-decimal monetary integrity, 111 PASS (2026-11-19)
+
+**Exact parent:** 54e3cac868bf413e0d8db5e876e91077e2028cc1 at draft PR #1171. R5 does not replace the existing R3 organism, native P2–P6, or SEAM Constitutive Person ownership. Seven additional real tests above 104, of which six failed before repair.
+
+| ID | Reproduced first fault | Source repair |
+|---|---|---|
+| **SR-P051** | Positive food price and wage below five-decimal currency granularity rounded to zero, delivering goods free or erasing owed wage | world.py::BUY_FOOD; WORK; _cash_amount; Reject positive prices/wages that cannot be represented in five-decimal monetary units without silently zeroing; exact representable values continue; test_p051_subtick_positive_food_price_not_rounded_into_free_goods; test_p051_subtick_positive_wage_does_not_disappear; test_p051_valid_five_decimal_money_remains_transferable |
+| **SR-P052** | Unrepresentable buyer/seller/controller/worker account balances silently rounded during transfers and could mint/destroy value | world.py::_cash_amount; BUY_FOOD; WORK; Validate sourcefree money balances for exact five-decimal persistence before goods/wages/accounts mutate; test_p052_unrepresentable_buyer_claim_cannot_mint_value_on_rounding; test_p052_unrepresentable_seller_claim_cannot_leak_credit; test_p052_unrepresentable_employer_balance_cannot_create_paid_wages; test_p052_unrepresentable_worker_balance_cannot_change_paid_wages |
+
+Execution: normal `python -m unittest discover -s tests -v` **111 PASS, 0 FAIL**; optimized `python -O -m unittest discover -s tests -q` **111 PASS, 0 FAIL**. Exact test/source blobs matched the local runnable code. Sourcefree model stores money to five decimal places; rejecting subunit or nonrepresentable input preserves its *declared* economic consistency, not a calibrated monetary theory.
+
+**Continuing precise partition:** 52 production identities = **10 OPEN**, **6 PARTIAL**, **36 AUTHOR-REPAIRED, AWAITING INDEPENDENT RECEIVING**, zero independently accepted. Original P001–050 retained. T confirmed = 0; E = 6 evidence/authority holds unchanged. P005 remains PARTIAL; P011, P020, P022/P023 remain open by their source statuses. Full R5 red/green receipt under REMONT/SOROK/REPAIRS/REMONTATHON_R3_R5_20261119. No protected or canonical paired CURRENT_PROGRESS updates.
+
+## REMONTATHON R3 R6 — 131 sourcefree combined tests, numeric/material conservation
+
+**Immutable parent:** PR #1171 @ 52fcbe5f36952fe671e9c941c85896e5f6149078, stacked on executable ORACLE R3 #1167. R6 fixes real sourcefree accounting and error-path defects at the existing world owner; not an economic or psychological rearchitecture. 20 additional tests vs the 111-test parent. Exact Git/code/test bytes and red/green run transcripts: `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R6_20261119/`.
+
+| New defect | First-fault location | Reproduced failure and bounded correction |
+|---|---|---|
+| **SR-P053** | `world.py::BUY_FOOD; _exact_material_delta` | A purchase debited or credited the wrong amount (sometimes zero, sometimes nonfinite) for individually valid large buyer/seller balances. **Repair:** Validate the actual two-party cash delta against exactly representable stored values before money, stock or claims are changed. **Tests:** `test_p053_tiny_purchase_from_huge_buyer_balance_cannot_be_free; test_p053_tiny_credit_to_huge_seller_account_cannot_vanish; test_p053_overflow_seller_credit_cannot_serialize_nonfinite_cash` |
+| **SR-P054** | `world.py::WORK; _exact_material_delta` | Wage payment changed employer or worker cash by zero at high magnitude and could overflow the worker account; nevertheless stock and wage claim were issued. **Repair:** Compute actual funded debit and paid credit in representable currency first; only then commit labor product and wage receipt. **Tests:** `test_p054_worker_wage_credit_lost_at_large_account; test_p054_employer_wage_debit_lost_at_large_account; test_p054_worker_credit_overflow_before_stock_changes` |
+| **SR-P055** | `world.py::EAT; BUY_FOOD; WORK; REPAIR; _exact_material_delta` | Food, owned holdings and workshop stock at large representable float magnitudes were incremented/decremented without any underlying count change, yet goods were claimed consumed, purchased, repaired or produced. **Repair:** Qualify exactly representable physical material deltas before updating any stock, holdings, money or world receipt. **Tests:** `test_p055_food_stock_large_does_not_claim_decrement_that_never_happened; test_p055_owned_food_large_does_not_claim_eating_without_consumption; test_p055_owned_food_large_cannot_absorb_purchased_goods; test_p055_work_stock_large_cannot_absorb_produced_goods; test_p055_repair_material_stock_large_must_really_decrement; test_p055_shared_food_at_extreme_count_cannot_be_consumed_without_decrement` |
+| **SR-P056** | `world.py::BUY_FOOD; WORK` | Same actor/institution account was credited a wage without an external payer debit, while same-account owned-food reallocation was labeled a positive price_paid; existing owner could be denied own stock for no cash. **Repair:** Preserve previously supported performed self-controlled stock movements without inventing an external wage, paid cash transfer or new social-law restriction. **Tests:** `test_p056_self_wage_cannot_mint_pay_from_self; test_p056_self_purchase_does_not_claim_payment_without_transfer; test_p056_self_owned_food_still_accessible_without_cash` |
+| **SR-P057** | `world.py::EAT::setdefault` | Error-path EAT created a new empty holdings row before rejecting an unrepresentable material transfer. **Repair:** Do not mutate holdings on an EAT path until representability and the owning source have been checked. **Tests:** `test_p055_shared_food_at_extreme_count_cannot_be_consumed_without_decrement` |
+
+**Executed results:** full `python -m unittest discover -s tests -v`: **131 PASS, 0 FAIL**; full optimized `python -O -m unittest discover -s tests -q`: **131 PASS, 0 FAIL**; cold archive re-extraction independently reproduced both totals. First R6 negative source test run: 13 failures/15 probes; further self-owned and rejected-EAT error-path red cases were documented. R4 preexisting positive self-sale test remains green. All changes are within sourcefree existing world.py plus added tests.
+
+**Continuing precise status:** 57 P production identities = **10 OPEN/NOT FIXED, 6 PARTIAL, 41 AUTHOR-REPAIRED / INDEPENDENT REVIEW PENDING, 0 independently accepted**. Confirmed test-harness defects T=0; evidence/authority holds E=6 unaltered. Earlier P001..P052 and historical repair/test evidence conserved. No native, protected, canonical paired CURRENT_PROGRESS, live provider, CAN/ADP scientific issuance or independent G5 claim.
+
+
+## REMONTATHON R3 R7 — 153 integrated tests; real authority/coaction and contextual-recruitment repairs (2026-11-19)
+
+**Frozen R6 source parent:** `a14003df55ed63c9257a8f9bbb2a3501d36bf7dc`; original executable ORACLE R3 #1167 remains the sourcefree builder. 22 new R7 tests, including **14 failed targeted negative cases before their respective patches**, were executed against existing world and development owners. Full combined suite: **153 PASS / 0 FAIL under normal Python and 153 PASS / 0 FAIL under optimized `python -O`**, independently repeated from a fresh extraction of the runnable ZIP. No protected/native authority move.
+
+| ID | Reproduced first fault | Repaired source owner |
+|---|---|---|
+| **SR-P058** | Malformed world grant strings awarded access to actor IDs matching an unrelated actor's substring | `world.py::_qualified_members, MOVE/REPAIR/OPEN_HALL/DENY_HALL` |
+| **SR-P059** | Blocked initiator produced a completed voluntary coactor action and invoked that coactor planner despite physically impossible invitation | `world.py::IndependentWorldAuthority.resolve` |
+| **SR-P060** | Independently planned coactor attempt could target an unrelated third party but count as reciprocal cooperation with principal | `world.py::IndependentWorldAuthority.resolve` |
+| **SR-P061** | CARE to target with NaN bodily nutrition could turn invalid recipient data into apparently normal body state | `world.py::_resolve_untrusted_core::CARE` |
+| **SR-P062** | String scope.locations, non-string counterpart, string form cues and malformed site admission produced false psychological eligibility | `psychodynamics.py::validate_tendencies; constitution.py::actor_access; development.py::CHANGE_RECRUITMENT_SCOPE` |
+| **SR-P063** | Untyped relation/activity-link contexts and project/trace cue strings could be admitted and later recruit via character-wise or substring matching | `development.py::LINK_FORMS/LINK_ACTIVITY/ADD_PROJECT/REORGANIZE_PROJECT/TRACE/MEMORY` |
+
+**Non-regression:** Exact typed hall access, controlled-material grants, real recipient care, lawful independent coaction, source-qualified context lists and project links still work. Permission-bearing strings are not interpreted as membership; malformed historical admissions fail closed rather than pretending to be authorized. R7 adds no new psychological law, compulsory motive, adult destiny or owner. Its repairs are appropriate to a changing Constitutive Organism because they enforce existing typed boundaries without concretizing contested theoretical semantics.
+
+**Continuing precise accounting:** 63 P production defect identities = **10 OPEN/NOT FIXED + 6 PARTIAL + 47 AUTHOR-REPAIRED CANDIDATES NOT INDEPENDENTLY ACCEPTED**. Independently accepted P=0; T=0 confirmed harness failures; E=6 evidence/authority holds unchanged. Old P001–057 preserved exactly. Prior R6 131-test evidence remains historical. R7 exact source Git blob identities, red/green logs and complete test suite under `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R7_20261119/` and Library `/Rawlsing/SOROK-REMONT/REMONTATHON_R3_20261119_R7/`. No protected PRE-MAIN merge, native P2–P6/CAN/ADP, LLM scientific issuance, qualified PYAT whole-survey conditioning, independent acceptance or paired canonical CURRENT_PROGRESS writing.
+
+
+## SOROK REMONTATHON R3 R8 — six further first-fault repairs, 171 tests (2026-11-19)
+
+**Frozen executable:** draft PR #1171 at `5bdaaeb8a6e4fd99d76402a9c85bd1fd0f0e4400` on ORACLE R3 #1167. This operation is a bounded REMONT software repair, not an HQ accession or protected receiving. Exact R7 source blobs independently matched before local edits. New R8 18-test module produced **14 FAIL + 1 ERROR** against the original R7; after source repairs, full combined suite **171 PASS / 0 FAIL normal** and **171 PASS / 0 FAIL optimized**, rerun after fresh ZIP extraction.
+
+| Defect | Demonstrated first fault | Source owner + correction |
+|---|---|---|
+| **SR-P064** | Coarse actor-A practice coverage expanded actor-B's psyche merely because both possessed the same form identifier | `development.py::recurring_provisional_growth; runtime.py::background` — Actor-ID qualification required; do not apply sourcefree period to non-targeted actor |
+| **SR-P065** | A period with one valid then one malformed scope change partially mutated actor before TypeError; untyped locations were accepted | `development.py::recurring_provisional_growth` — Stage actor copy and commit after complete process batch; typed location lists fail closed |
+| **SR-P066** | Malformed cue tags string fragmented into character tokens; nontext tags persisted and later crashed contextual recruitment | `world.py::add_cue; constitution.py::actor_access` — Type-check sensory tags before history append; fail closed for malformed prior cues |
+| **SR-P067** | Unknown/forged world cue modality bypassed sensor threshold; negative and NaN thresholds could fabricate access | `world.py::add_cue; constitution.py::actor_access` — Only qualified sensory modalities and finite [0,1] thresholds can be world-cue admitted; prior malformed cues do not reach actor reader |
+| **SR-P068** | String 'false' in contextual_only treated as truthy and quietly suppressed an acquired project in ADD_PROJECT and REORGANIZE_PROJECT | `development.py::admit` — Require actual Boolean for project contextual_only at both admission and reorganization, preserve valid false |
+| **SR-P069** | Identical historical practice scope generated a durable PERIOD_SCOPE_CHANGE and actor changes entry without any actual new capability | `development.py::recurring_provisional_growth` — No psychic scope-change receipt when proposed locations already admitted; objective period remains recorded |
+
+**Sourcefree scope:** The coarse-history process may not grant one person another person's modeled practice history by sharing a form ID. Sensory event ingress remains typed and bounded, and malformed historical cues cannot bypass bodily access. Contextual project flags must be actual Boolean values. Mere repeated evidence that leaves an existing scope unchanged is not falsely minted as psychic formation. These are first-fault repairs to mutable engineering boundaries, **not** new universal developmental laws, owner rights or a new psyche database. Existing functions and R7 positive tests remain covered.
+
+**Accurate R8 ledger:** 69 production defect records = **10 OPEN / 6 PARTIAL / 53 AUTHOR-REPAIRED AWAITING INDEPENDENT REVIEW**, with **0 independently accepted**. T=0 confirmed test-harness bugs, E=6 separately conserved source/authority holds. SR-P001..063 and earlier local test cuts remain historical. Evidence: `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R8_20261119/`; complete sourcefree archive SHA-256 `d29e6ae7e2d153d3c29aefe95d39266594d2436f22494bb2c135fb5d07b79ffb`. No protected PRE-MAIN merge, native CAN/ADP/P2–P6 receiving, scientific PYAT/LLM validation or paired CURRENT_PROGRESS write.
+
+
+## SOROK REMONTATHON R3 R9 — two formerly OPEN defects now PARTIAL, 177-test sourcefree continuation (2026-11-20)
+
+**Exact source parent** `d03e8a681ad5cf27c6b9ee63f70e8bc80ec88764` (#1171 R8). No design claim about a final Constitutive Organism. Six new R9 tests reproduced 2 FAIL and 2 ERROR on untouched R8; complete joined suite passed **177/177 normal** and **177/177 optimized** after repair. Exact red and full green receipts at `REMONT/SOROK/REPAIRS/REMONTATHON_R3_R9_20261120/`.
+
+- **SR-P011, OPEN → PARTIAL:** `semantics.py` no longer emits a durable project merely because a single SING was successfully performed. This eliminates automatic motive fabrication, while preserving a typed `ADD_PROJECT` when an explicit, qualified semantic proposal is admitted by the existing development owner. Inherited test fixtures were corrected to supply an explicit proposal rather than depend upon the original bug. **Not closed:** repeated-event historical project genesis, real live model source/psychological qualification.
+- **SR-P017, OPEN → PARTIAL:** `runtime.py::cue` exposes the existing `world.add_cue(...,lasting_ticks=...)` capability without creating a new physical-object owner. A signal remains observable for the specified duration, zero-tick signal expires as before, invalid duration fails before ledger mutation. **Not closed:** actual material objects, persistent affordances and independently owned environmental sign scheduling.
+
+**TEST QUEUE IS NOT ALL GREEN:** `SR-P022` (pre-cue historically formed attention/recruitment) and `SR-P023` (historically generated novel end) remain **PROPOSED / NOT EXECUTED**. These are descriptive probes in the original ledger, not ready-made runnable OpenCode job entries. No native OpenCode queue job or independent execution has been claimed. Independent receiving of prior repair sibling PRs #1165/#1166/#1170 also remains pending.
+
+**Exact R9 status partition:** **69 production records = 8 OPEN, 8 PARTIAL, 53 AUTHOR-REPAIRED PENDING INDEPENDENT REVIEW; independently accepted 0.** Confirmed T harness defects 0, E authority/evidence holds 6 unchanged. No protected PRE-MAIN edit, paired canonical CURRENT_PROGRESS update, native owners, scientific PYAT or psychological validity issuance.
