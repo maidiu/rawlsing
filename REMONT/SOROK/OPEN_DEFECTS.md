@@ -430,3 +430,22 @@ The R12 same-trial `REORGANIZE_PROJECT` guard already overlaps existing REMONT R
 **Executed**: four new first-fault test methods RED on frozen R15 (five actor non-object errors, five world mismatches, one unordered recruitment, one cross-end mature-project bypass); **280/280 PASS normal**, **280/280 PASS Python -O**, **pytest 280 +32 subtests**, fresh ZIP extraction/repeat all three. Two demo runs with distinct PYTHONHASHSEED produce identical text and nine-event chain hash `bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363`, valid cold reopen. Author executed **Python 3.13.5**, not independent Python 3.11 at this R16 cut. Read first source/test and receipt at `SEAM/ORACLE/UM_SOROK_ORGANISM_R3/R16_READ_FIRST.md` / `R16_SOURCE_SHA256.json` and REMONT R16 evidence.
 
 **Custody unchanged**: 73 P IDs, prior 53 bounded independent first-fault reviews, 8 OPEN, 8 PARTIAL, 4 author-repaired P070–P073 review pending, T0/E6. P019/P022 remain SORACLE, P009 native privacy remains held. No protected PRE-MAIN, PROGRAMMA or paired CURRENT_PROGRESS writes, and no independent R16 acceptance.
+
+## REMONTATHON R17 — P018 full source/chain preflight (2026-11-20)
+
+**Custody:** frozen parent R16 #1222 `7a8a18c153ee5a36e1c52eca15f4e5e8862296be`. R17 repairs the inherited R15/R16 P018 gap by requiring the complete `verify_chain()` preflight before `source()` returns a row and before `commit()`/`seal_source()` append. The limited auxiliary fast check remains only as an earlier specific-diagnostic layer.
+
+**First fault:** seven independent cases were RED on R16—modified historical source anchor, unauthorized source map on an ordinary event, noncanonical initialization/ordinary/late-seal payloads—all already rejected by full `verify_chain()` but still readable or appendable through the fast preflight. The new R17 module reproduces and closes them under normal and `-O`.
+
+**Court:** 288/288 normal, 288/288 optimized, pytest 288 + 32 subtests on Python 3.11.3; 8/8 focused hostile tests; imported R15 P018 6/6; two new reviewer cases 2/2. Demo is seed-stable at `bc47d610…`, cold reopen and SQLite integrity valid.
+
+**Conservation:** all 73 P identities, 53 scoped first-fault review dispositions, 8 open, 8 partial, four P070–P073 author-repaired pending review, T=0 and six E holds remain unchanged. R17 is author-tested sourcefree repair, not independent acceptance, native source rights or protected receiving.
+
+
+## REMONTATHON R18 — author-tested P004 selected-means correctness (2026-11-20)
+
+Frozen parent [R17 #1230](https://github.com/maidiu/rawlsing/pull/1230) at `6f2e98433822a4fb1246ff72c388b2e901c6ab7f` is **unchanged**, as are all preexisting 73 production defect identities and statuses. The local-machine reviewer identified that `activity.record_activity_afterlife` trusted an actor-policy purpose receipt for projects which could not have supplied the performed operation (and even nonexistent project IDs). A single invalid selection yielded a silent empty history; mixed selected projects yielded partial misleading history. Eight new negative/positive test methods on **unchanged R17 code** resulted in **3 FAIL / 5 PASS**, also 3 FAIL under `python -O`.
+
+In R18, a **preflight of every selected actor-policy project** verifies exactly one actor-owned ID and that the actual operation is among its means **before any actor history mutation**. Legitimate single/multiple selections, projectless action, blocked attempts and explicitly graded legacy direct helper activity survive. The complete joined R17+R18 sourcefree suite **296/296 PASS normal**, **296/296 optimized**, **pytest 296 +32 subtests**, all retested from a fresh runnable ZIP. Two hash-seeded demos produce byte-identical nine-event objective histories; cold SQLite reopen verifies `bc47d610…`. This is **not motive genesis science or native issuer/actor proof**: P004 remains PARTIAL and receiving pending.
+
+P012/P018, P009 native privacy, P019/P022 and the other SORACLE constructions are not promoted, rebuilt or reclassified. Python 3.11 and nonauthor hostile review of the R18 exact HEAD pending. Defect partition remains 73 P = 53 prior bounded independent first-fault reviews, 8 OPEN, 8 PARTIAL, 4 sourcefree author-repaired pending (P070–P073), T0, E6.

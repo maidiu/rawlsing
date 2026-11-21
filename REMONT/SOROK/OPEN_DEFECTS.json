@@ -137,6 +137,31 @@
         "optimized_pass": 265,
         "independent_acceptance": "PENDING",
         "status_not_promoted": true
+      },
+      "r18_repair": {
+        "scope": "BOUNDED_SOURCEFREE_FIRST_OWNER__SELECTED_PROJECT_MEANS_EXISTENCE_AND_ATOMICITY",
+        "base_pr": 1230,
+        "base_sha": "6f2e98433822a4fb1246ff72c388b2e901c6ab7f",
+        "first_fault": "record_activity_afterlife silently skipped selected project with wrong means or absent id; mixed selected valid+invalid wrote partial history instead of refusing whole selection",
+        "repair": "For actor-policy issued selected projects require each id resolves to exactly one actor-owned project and admits the attempted operation before writing any operational/activity history. Legacy without explicit receipt stays disclosed.",
+        "red_on_frozen_R17": {
+          "methods": 8,
+          "failed": 3,
+          "passed": 5,
+          "optimized_failed": 3
+        },
+        "green_author_Python_313": {
+          "normal": 296,
+          "optimized": 296,
+          "pytest": 296,
+          "subtests": 32,
+          "cold_normal": 296,
+          "cold_optimized": 296,
+          "cold_pytest": 296
+        },
+        "independent_review": "PENDING",
+        "status_not_promoted": true,
+        "remaining": "Actual formation of motives and scientifically defensible psychological organization remain SORACLE research; P004 remains PARTIAL"
       }
     },
     {
@@ -2844,5 +2869,84 @@
     "python_311_at_this_R16_HEAD": false,
     "protected_received": false,
     "canonical_progress_updated": false
+  },
+  "remont_r17_p018_source_preflight_20261120": {
+    "date": "2026-11-20",
+    "source_parent_pr": 1222,
+    "source_parent_head": "7a8a18c153ee5a36e1c52eca15f4e5e8862296be",
+    "status": "AUTHOR_REPAIRED_SOURCEFREE_R17__PENDING_DISTINCT_INDEPENDENT_REVIEW",
+    "fault": "Inherited R15/R16 P018: source() and append preflight could read or extend a ledger whose full verify_chain() already failed.",
+    "repair": [
+      "storage.py::source full verify preflight",
+      "storage.py::commit full verify preflight",
+      "storage.py::seal_source full verify preflight"
+    ],
+    "tests": [
+      "tests.test_r17_source_preflight",
+      "tests.test_remontathon_r4 (two source-seal assertions inspect table directly)"
+    ],
+    "test_evidence": {
+      "normal_pass": 288,
+      "optimized_pass": 288,
+      "pytest_pass": 288,
+      "pytest_subtests": 32,
+      "python": "3.11.3",
+      "demo_hash": "bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363",
+      "cold_reopen": true
+    },
+    "queue_accounting": {
+      "P_total": 73,
+      "P_scoped_independent_review_pass": 53,
+      "P_open": 8,
+      "P_partial": 8,
+      "P070_P073_author_repaired_review_pending": 4,
+      "T_confirmed": 0,
+      "E_holds": 6,
+      "native_G5_accepted": 0
+    },
+    "note": "Sourcefree local repair candidate, not independent acceptance or protected receiving; original P identities and statuses unchanged."
+  },
+  "remont_r18_p004_selected_means": {
+    "date": "2026-11-20",
+    "parent_pr": 1230,
+    "parent_sha": "6f2e98433822a4fb1246ff72c388b2e901c6ab7f",
+    "source_change": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/activity.py",
+    "test_change": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_remontathon_r18_p004_selected_means.py",
+    "source_blobs": {
+      "activity.py": "9af345b8cea9282988aab52cfe22badd56633d7e",
+      "test_remontathon_r18_p004_selected_means.py": "f3a3f2edd7e9a9f0ed88dc2d7cfc99504932ead6"
+    },
+    "test_first": {
+      "8": "methods",
+      "failed": 3,
+      "passed": 5
+    },
+    "verified_python_313": {
+      "normal": 296,
+      "optimized": 296,
+      "pytest": 296,
+      "subtests": 32,
+      "cold_zip": true
+    },
+    "demo": {
+      "seed_stable": true,
+      "events": 9,
+      "last_hash": "bc47d6102f9cf402193131bd196cb697aa47930e53ff53cc6329ef3efed5b363",
+      "cold_sqlite_integrity": "ok"
+    },
+    "archive_sha256": "9d06ebd42ef5523c26cfeb0d84a6f653a825b84f09c3f214724b5c7b678962db",
+    "status_partition": {
+      "P": 73,
+      "original_independently_scoped": 53,
+      "OPEN": 8,
+      "PARTIAL": 8,
+      "author_review_pending": 4,
+      "T": 0,
+      "E": 6
+    },
+    "no_new_defect_id": true,
+    "independent_acceptance": false,
+    "protected_received": false,
+    "SORACLE_priority_ownership_preserved": true
   }
 }

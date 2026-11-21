@@ -82,6 +82,23 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
             project_ids=set()
         else:raise ValueError('UNKNOWN_SELECTED_PURPOSE_STATUS')
         attribution=status_kind
+        # REMONT R18 P004: a selected purpose is not merely a basis tag.
+        # EVERY selected project must exist exactly once, and this exact
+        # operation must be among its actual enabled means. Validate the
+        # entire selection before writing even the first historical row.
+        projects=actor.get('projects',[])
+        for project_id in sorted(project_ids):
+            matches=[p for p in projects if p.get('id')==project_id]
+            if (len(matches)!=1 or own_action not in matches[0].get('means',[])):
+                raise ValueError('ACTIVITY_SELECTED_MEANS_CONTRADICTION')
+    # Also preflight event uniqueness for every selected project together:
+    # a previously observed repeat must not append half a multi-project
+    # selection before discovering the second project was duplicated.
+    for project in actor.get('projects',[]):
+        if project.get('id') in project_ids and any(
+                h.get('event')==event_ref for h in
+                project.get('operational_history',[])):
+            raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
     histories=[]
     for project in actor.get('projects',[]):
         if project['id'] not in project_ids or own_action not in project.get('means',[]):

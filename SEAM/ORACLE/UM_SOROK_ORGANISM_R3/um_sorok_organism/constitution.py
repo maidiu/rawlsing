@@ -213,15 +213,13 @@ def compose(constitution,access,limit=50):
         match=set(str(x).lower() for x in f.get('cues',[]))
         if match & (cues|project_tags) or f.get('always_recruitable'):
             active[fid]=copy(f)
-    # P012: evidence-bounded reachability to a real fixed point, independently
-    # of arbitrary link order or a three-pass depth limit. A qualifying
-    # inhibitor blocks its target's ability to become a recruitment conduit;
-    # it cannot first recruit a descendant and then disappear at the end.
+    # SOURCE-JOIN P012 (R15/R18 -> richer R3): an inhibitor that has
+    # itself been defeated in an acyclic inhibition graph cannot veto the
+    # third form. Conservatism is retained for cyclic and support-dependent
+    # configurations, where no uniquely justified winner follows.
     #
-    # We use a conservative two-stage lattice: positive possible reachability,
-    # then inhibitor veto by all potential qualified active sources, followed
-    # by positive reachability without vetoed conduits. This may over-suppress
-    # under opposing cycles; it never fabricates the affected form's action.
+    # Keep R3's historically admitted PRE-A0 relations and extra relation
+    # kinds; do not overwrite them with the older R18 constitution module.
     seed=set(active)
     qualified={fid for fid,f in forms.items()
         if f.get('lifecycle') not in ('ENDED','DORMANT')
@@ -230,56 +228,85 @@ def compose(constitution,access,limit=50):
     valid_links=[link for link in constitution.links
         if link.get('source') in forms and link.get('target') in forms
         and (not link.get('contexts') or access.location in link['contexts'])]
-    # PRE-A0's explicitly admitted relation functions must do work; not
-    # merely appear in a relation-history report. Activation and suppression
-    # still respect the form's own scope and bodily eligibility.
     positive=[link for link in valid_links if link.get('relation') in
               ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')]
     negative=[link for link in valid_links if link.get('relation') in
               ('INHIBITS','SUPPRESSES')]
 
-    def closure(start, blocked=frozenset()):
-        reached=set(start)&qualified-set(blocked)
-        # Monotonic form set grows at most len(qualified) times, cycles stop.
+    def closure(start,blocked=frozenset()):
+        reached=(set(start)&qualified)-set(blocked)
         while True:
-            added={l['target'] for l in positive
-                   if l['source'] in reached and l['target'] in qualified
-                   and l['target'] not in blocked}
+            added={link['target'] for link in positive
+                   if link['source'] in reached
+                   and link['target'] in qualified
+                   and link['target'] not in blocked}
             newer=reached|added
-            if len(newer)==len(reached):return reached
+            if newer==reached:return reached
             reached=newer
 
-    potentially_active=closure(seed)
-    vetoed={l['target'] for l in negative if l['source'] in potentially_active}
-    # Acquired configurations can recruit a third, historically existing
-    # form. The bounded monotonic closure keeps new inhibitors from sneaking
-    # an already vetoed conduit into the current. This is conservative under
-    # contradictory loops (it may over-suppress) and is NOT a global psyche
-    # optimizer, conscious retrieval manager or clinical conflict law.
-    motif_seeds=set()
-    motif_routes={}
-    for _ in range(2*len(qualified)+2):
-        reachable=closure(seed|motif_seeds,vetoed)
-        projection=derive_relational_metabolism(
-            constitution,access,{fid:forms[fid] for fid in reachable},vetoed)
-        proposed={route['target_form'] for route in projection['recruitment_candidates']
-                  if route['target_form'] in qualified}
-        for route in projection['recruitment_candidates']:
-            if route['target_form'] in qualified:
-                motif_routes.setdefault(route['target_form'],route)
-        possible=closure(seed|motif_seeds|proposed)
-        next_veto=vetoed|{l['target'] for l in negative
-                         if l['source'] in possible}
-        next_seeds=motif_seeds|proposed
-        if next_veto==vetoed and next_seeds==motif_seeds:
-            break
-        vetoed=next_veto;motif_seeds=next_seeds
-    else:
+    def joint_recruitment(start,blocked=frozenset()):
+        """Qualified link/motif closure, with no hidden mutable actor state."""
+        reached=closure(start,blocked)
+        routes={}
+        # Every iteration strictly adds an existing qualified form or ends.
+        for _ in range(len(qualified)+1):
+            projected=derive_relational_metabolism(
+                constitution,access,
+                {fid:forms[fid] for fid in sorted(reached)},
+                set(inhibited)|set(blocked))
+            proposed=set()
+            for route in projected['recruitment_candidates']:
+                target=route['target_form']
+                if (target in qualified and target not in blocked
+                        and target not in reached):
+                    proposed.add(target)
+                    routes.setdefault(target,route)
+            following=closure(reached|proposed,blocked)
+            if following==reached:return reached,routes
+            reached=following
         raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
+
+    potentially_active,_=joint_recruitment(seed)
+    conservative_veto={link['target'] for link in negative
+                       if link['source'] in potentially_active}
+    # Only the graph among genuinely reachable forms can discriminate the
+    # acyclic A inhibits B inhibits C case. Absent/cyclic forms cannot be
+    # self-authorized as a stable victor of psychic contradiction.
+    edges={fid:set() for fid in potentially_active}
+    incoming={fid:0 for fid in potentially_active}
+    for link in negative:
+        src=link['source']; dst=link['target']
+        if src in edges and dst in edges and dst not in edges[src]:
+            edges[src].add(dst)
+            incoming[dst]+=1
+    frontier=sorted(fid for fid in edges if incoming[fid]==0)
+    order=[]
+    while frontier:
+        node=frontier.pop(0)
+        order.append(node)
+        for target in sorted(edges[node]):
+            incoming[target]-=1
+            if incoming[target]==0:frontier.append(target)
+        frontier.sort()
+
+    vetoed=conservative_veto
+    if len(order)==len(edges):
+        stratified=set()
+        for source in order:
+            if source not in stratified:
+                stratified.update(edges[source])
+        # A plausible acyclic topological suppression is *not* accepted
+        # unless the survivor set itself yields precisely that veto set.
+        # Support-dependent inhibitors therefore cannot manufacture actions.
+        surviving,_=joint_recruitment(seed,stratified)
+        surviving_veto={link['target'] for link in negative
+                        if link['source'] in surviving}
+        if surviving_veto==stratified:
+            vetoed=stratified
+
     inhibited.extend(sorted(vetoed))
-    # REMONT R16: unordered set iteration must not choose actor-facing
-    # recruitment order, candidate bases or replay-dependent ledger hashes.
-    active={fid:copy(forms[fid]) for fid in sorted(closure(seed|motif_seeds,vetoed))}
+    actual,motif_routes=joint_recruitment(seed,vetoed)
+    active={fid:copy(forms[fid]) for fid in sorted(actual)}
     relational=derive_relational_metabolism(constitution,access,active,vetoed)
     for fid,route in sorted(motif_routes.items()):
         if fid in active and fid not in closure(seed,vetoed):

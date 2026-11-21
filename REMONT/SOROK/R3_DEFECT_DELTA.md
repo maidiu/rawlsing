@@ -84,3 +84,12 @@ Frozen R14 f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0: six initial failures in nin
 ## R16 — carry selective local R12 corrections into current R15 line
 
 External #1199 exact `943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6` (248 Python 3.11.3 sourcefree PASS) reported typed snapshot errors, same-event trial guards and seed-stable active-form order. Already-present R13–R15 REORGANIZE_PROJECT guard was conserved; *missing* typed persisted non-dict snapshot rejection, deterministic final joint-recruitment order, and current-trial cross-end TAKE_UP rejection were reproduced as RED on frozen R15 #1220 `6075792420e1d87b30036ebe6f352815783e47c2`. Bounded R16 first owner repairs passed **280/280 normal/-O/pytest, plus32 subtests**, cold extracted test suite and byte-identical two-seed demo. Existing 73 production identities and statuses unchanged, P012/P018 partial, P019/P022 SORACLE, T0/E6, protected and native receiving held.
+
+## R17 source preflight (2026-11-20)
+
+R17 adds full source/chain verification to `source()`, `commit()` and `seal_source()` on top of R16, closing the inherited P018 fast-preflight gap. No new defect identity, no queue status promotion, no protected merge.
+
+
+## R18 — P004 independent-review first fault repaired at existing activity owner
+
+R17 exact `6f2e98433822a4fb1246ff72c388b2e901c6ab7f`: 8 new tests yielded 3 FAIL+5 PASS on untouched first source, +3 FAIL under optimized mode. R18 validates complete selected project ID/means basis **before** any operation history, conserves valid multi-project and blocked behavior. 296/296 normal and -O and pytest (+32 subtests) after cold ZIP extraction, deterministic nine-event demo. P004 status stays PARTIAL; 73 original identities/status values conserved; SORACLE psychological construction, P018 R17 independent receiving, P009 native privacy, protected receiving all untouched.
