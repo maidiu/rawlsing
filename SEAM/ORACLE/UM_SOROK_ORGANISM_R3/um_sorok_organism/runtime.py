@@ -519,7 +519,8 @@ class ConstitutiveRuntime:
                         'own_practical_selection':(
                             copy(actor_attempt.practical_selection)
                             if personally_done and actor_attempt is not None
-                            and requested_action is None else None),
+                            and (aid!=actor_id or requested_action is None)
+                            else None),
                         'actor_access_grade':GRADE}
             subjective[aid]=copy(experience)
             if personally_done and actor_attempt is not None:
