@@ -357,6 +357,25 @@ def _observation_value_information(
     }
 
 
+
+def _require_local_nonissuing_receipt(material: Mapping[str, Any]) -> None:
+    """Refuse forged promotion of local S04 research into I05/native authority.
+
+    A self-consistent content hash is not a DiscoveryAuthority, a new I03
+    query receipt, or native source permission. This tests only explicit
+    authority claims; it does NOT authenticate arbitrary historical nodes.
+    """
+    if (material.get("contract") != CYCLE_CONTRACT
+            or material.get("method_grade") != METHOD_GRADE
+            or material.get("exact_I05_frontier_modified") is not False
+            or material.get("independent_original_source_rights") is not False
+            or type(material.get("new_I03_queries")) is not int
+            or material["new_I03_queries"] != 0):
+        raise DeterminicityCycleError(
+            "LOCAL_S04_RECEIPT_CANNOT_ISSUE_I05_OR_NATIVE_AUTHORITY"
+        )
+
+
 def _initial(
     *, identity: str, source: dict[str, Any], country_mode: str,
     context: dict[int, Any],
@@ -604,6 +623,7 @@ def advance_country_determinicity(
                 or independently_pinned_prior_ref != prior.ref):
             raise DeterminicityCycleError("INDEPENDENT_PREVIOUS_RECEIPT_PIN_REQUIRED")
         state = prior.material()
+        _require_local_nonissuing_receipt(state)
         if (state.get("identity") != identity or state.get("source") != source
                 or state.get("country_scope_mode") != mode
                 or state.get("completed_nodes") != len(state.get("nodes", []))):
@@ -1172,6 +1192,7 @@ def consume_determinicity_context_for_prev3(
             or (node_id is not None and type(node_id) is not int)):
         raise DeterminicityCycleError("INDEPENDENT_RECEIPT_AND_WORKSPACE_REQUIRED")
     m = receipt.material()
+    _require_local_nonissuing_receipt(m)
     if m["source"]["knowledge_ref"] != workspace._knowledge.ref.as_dict():
         raise DeterminicityCycleError("FOREIGN_SOURCE_OR_UNISSUED_NODE")
     if node_id is None:
