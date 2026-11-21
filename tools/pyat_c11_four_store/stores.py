@@ -13,6 +13,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+import stat
 import time
 import zlib
 from collections import OrderedDict
@@ -40,11 +41,24 @@ def canonical(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 def size_tree(path: Path) -> int:
-    if not path.exists():
+    # WAL/SHM files are created, truncated and removed while the sampler
+    # walks this tree. They may vanish between rglob() and stat(); that is
+    # not an empirical resource failure. Other I/O errors still propagate.
+    try:
+        info=path.stat()
+    except (FileNotFoundError, NotADirectoryError):
         return 0
-    if path.is_file():
-        return path.stat().st_size
-    return sum(p.stat().st_size for p in path.rglob("*") if p.is_file())
+    if stat.S_ISREG(info.st_mode):
+        return info.st_size
+    total=0
+    for p in path.rglob("*"):
+        try:
+            info=p.stat()
+        except (FileNotFoundError, NotADirectoryError):
+            continue
+        if stat.S_ISREG(info.st_mode):
+            total+=info.st_size
+    return total
 
 def _key(value: Any) -> str:
     if value is None or value == "":
