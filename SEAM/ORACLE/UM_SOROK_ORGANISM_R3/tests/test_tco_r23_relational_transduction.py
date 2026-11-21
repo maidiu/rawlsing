@@ -8,8 +8,11 @@ and independent world settlement remain independent.
 from dataclasses import asdict
 import unittest
 
-from um_sorok_organism.types import AccessibleEncounter, Constitution, adult, copy
-from um_sorok_organism.constitution import compose
+from um_sorok_organism.types import (
+    AccessibleEncounter, Constitution, adult, blank_world, copy,
+)
+from um_sorok_organism.constitution import compose, materialize, actor_access
+from um_sorok_organism.world import add_cue
 from um_sorok_organism.development import admit, InvalidDevelopment
 from um_sorok_organism.relational_metabolism import (
     validate_motif, InvalidRelationalMotif,
@@ -235,6 +238,74 @@ class ThreeAgentMulchR23(unittest.TestCase):
                 'witnessed_source_actor_ref':'',
             }])
         self.assertEqual(actor,before)
+
+    def test_real_world_sensory_gate_and_expiring_event_control_mediation(self):
+        world=blank_world()
+        world['positions'].update({'mother':'home','pastor':'home'})
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        actor['relational_motifs']=[motif()]
+        start=compose(materialize(actor,world),actor_access(actor,world))
+        self.assertEqual(mediated(start),[])
+        add_cue(world,'speech',['corrective_ritual'],
+                location='home',modality='auditory',source_actor='pastor')
+        live=compose(materialize(actor,world),actor_access(actor,world))
+        self.assertEqual(len(mediated(live)),1)
+        # The world can keep the pastor nearby; a *past* speech event does
+        # not remain perceptible simply because its speaker is co-present.
+        world['clock']+=1
+        after=compose(materialize(actor,world),actor_access(actor,world))
+        self.assertEqual(mediated(after),[])
+        self.assertTrue(any(
+            cue.get('kind')=='coactor_present' for cue in
+            actor_access(actor,world).cues))
+        self.assertEqual(actor['relational_motifs'][0]['origin'],
+                         ['sourcefree_fictional_prior:care_and_authority'])
+
+    def test_world_gate_refuses_other_person_private_sign_and_weak_sensor(self):
+        world=blank_world()
+        world['positions'].update({'mother':'home','pastor':'home'})
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        actor['relational_motifs']=[motif()]
+        add_cue(world,'speech',['corrective_ritual'],
+                location='home',modality='auditory',
+                source_actor='pastor',private_to='different_actor')
+        self.assertEqual(mediated(
+            compose(materialize(actor,world),actor_access(actor,world))),[])
+        # Replace only the external sensory fixture: the same actor's
+        # history does not override the body's concrete reception gate.
+        world['cues']=[]
+        add_cue(world,'speech',['corrective_ritual'],
+                location='home',modality='auditory',
+                source_actor='pastor',threshold=1.0)
+        self.assertEqual(mediated(
+            compose(materialize(actor,world),actor_access(actor,world))),[])
+
+    def test_same_event_recruits_different_acquired_relational_histories(self):
+        already=compose(read_model(),encounter())
+        without=read_model()
+        without.relational_motifs=[]
+        other=compose(without,encounter())
+        self.assertEqual(len(mediated(already)),1)
+        self.assertEqual(mediated(other),[])
+        self.assertEqual(without.relational_motifs,[])
+        self.assertIn('IMPOSE',{x['action'] for x in other.candidate_actions})
+        # A sourcefree current says nothing about the speaker's actual
+        # moral authority, the target's injury, or the follower's endorsement.
+        self.assertTrue(mediated(already)[0]
+                        ['not_objective_justification_of_conduct'])
+
+    def test_older_descriptive_mediation_keeps_no_implicit_action_current(self):
+        older=motif()
+        older['effects'][0].pop('mediated_action')
+        older['effects'][0].pop('polarity')
+        s=compose(read_model(motif_override=older),encounter())
+        self.assertEqual(mediated(s),[])
+        self.assertTrue(any(c['kind']=='ACQUIRED_PERSONAL_SENSE_MEDIATION'
+                            for c in s.currents))
+        self.assertFalse(any(c['kind']=='RELATIONALLY_MEDIATED_ACTION_CURRENT'
+                             for c in s.currents))
 
     def test_read_cannot_write_other_psyche_or_world_permission(self):
         c=read_model()
