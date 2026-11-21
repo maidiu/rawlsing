@@ -761,203 +761,202 @@ These are **provenance-graded** assertions and candidate claims, not 104 indepen
 | R9-16 | METHOD_REQUIREMENT | No tool exports full original ChatGPT conversation here, so only directly visible turns marked transcribed; older gaps explicit | TRANSCRIPT_GRADE_HOLD |
 
 
-### Original SOROK H001–H190: exact historical harvest claims and statuses
+### Original SOROK H001–H190:
 
-**Source:** `SOROK_PRODUCT_CONTROL_ROOM/12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` at `a4211c3ec77e8269097601fe9a3dce2745395ac0`. All 190 H identities are preserved; where the old historical document omitted a standalone `Claim:` paragraph, its exact original heading supplies the claim identity and the full original source body remains retrievable at the immutable commit. These are historical source concepts, not today’s automatically accepted code.
+Original **190/190** September 29 conversation-harvest headings and historic dispositions are retained below. Where the source supplied a separate `Claim:` passage, both original title and specific claim are preserved. Where it did not, the title is **not** inflated into an invented explanatory paragraph. Original full source: `SOROK_PRODUCT_CONTROL_ROOM/12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` at `a4211c3ec77e8269097601fe9a3dce2745395ac0`. Source is a historically authored conversation harvest, not a verbatim original-chat export.
 
-| ID | Original claim | Historical grade / held-source fate |
-|---|---|---|
-
-| H001 | Rawlsing interaction should be situated participation inside a causally live scene in another person's ongoing life. | BANKED_LAW; source-conserved, independent semantics held |
-| H002 | The persona already has pressures, needs, obligations, other relationships, tasks and events before the user acts. | BANKED_LAW; source-conserved, independent semantics held |
-| H003 | Other actors may continue cooking, parenting, working, leaving, ignoring, delaying or prioritizing something else. | BANKED_LAW; source-conserved, independent semantics held |
-| H004 | The user needs at least SAY, DO and ATTEND. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H005 | The user should be able to type rich embodied/social actions rather than select only canned dialogue responses. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H006 | Structured affordances may exist, but the core experience should not collapse into selecting prewritten response options. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H007 | The user may specify what they try to say/do/attend to, but not feasibility, success, reception, interpretation or consequence. | BANKED_LAW; source-conserved, independent semantics held |
-| H008 | Tone attempt, volume, pace, posture, gesture and expression may be part of the attempted action. | BANKED_LAW; source-conserved, independent semantics held |
-| H009 | “I try to sound apologetic” is lawful; “I sound convincingly apologetic to Nadia” is not user-authoritative. | BANKED_LAW; source-conserved, independent semantics held |
-| H010 | A multi-step action can fail or be interrupted before later steps occur. | BANKED_LAW; source-conserved, independent semantics held |
-| H011 | Another actor can interrupt, walk away, refuse, answer early or change the scene before a long speech completes. | BANKED_LAW; source-conserved, independent semantics held |
-| H012 | Speaking while covertly glancing, gesturing while listening, etc. may overlap rather than serialize. | BANKED_LAW; source-conserved, independent semantics held |
-| H013 | The user cannot directly query hidden affect, motive, private appraisal, hidden memory or relationship score. | BANKED_LAW + INHERITED; source-conserved, independent semantics held |
-| H014 | It reports the user's accessible surface of reality. | BANKED_LAW; source-conserved, independent semantics held |
-| H015 | Prefer observable action to labels such as annoyed, nervous, warm, curt or secretly polite. | BANKED_LAW; source-conserved, independent semantics held |
-| H016 | The narrator may restate behavior/speech but does not adjudicate the mind. | BANKED_LAW; source-conserved, independent semantics held |
-| H017 | Hidden state should cause behavior through the persona's actual organization; the system should not manufacture obvious clues so the player can solve them. | INHERITED + BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H018 | Not every hidden motive must leak into observable behavior. | INHERITED; source-conserved, independent semantics held |
-| H019 | It may appear as verbosity, topic return, avoidance, attentional asymmetry, humor, anecdote choice, delay, etc. | INHERITED; source-conserved, independent semantics held |
-| H020 | It cannot select a detail because hidden system state knows the detail is psychologically important. | BANKED_LAW; source-conserved, independent semantics held |
-| H021 | Finite output can use proximity, motion, sensory intensity, ordinary scene organization and explicit attention target. | BANKED_LAW; source-conserved, independent semantics held |
-| H022 | Surface-only narration should not force the user to ask whether a table or visible child exists. | BANKED_LAW; source-conserved, independent semantics held |
-| H023 | Immediate coarse orientation is cheap/ongoing; focused inspection acquires deeper resolution. | BANKED_LAW; source-conserved, independent semantics held |
-| H024 | Fridge → bill → exact bill text should require increasingly specific attention/access. | BANKED_LAW; source-conserved, independent semantics held |
-| H025 | If the bill is unreadable from here, the narrator cannot walk the user closer. | BANKED_LAW; source-conserved, independent semantics held |
-| H026 | No arbitrary “three investigations per scene” quota. | BANKED_LAW; source-conserved, independent semantics held |
-| H027 | Saying “Percocet” does not instantiate Percocet. | BANKED_LAW; source-conserved, independent semantics held |
-| H028 | If the narrator lawfully says a chipped green mug exists, it exists until causal change removes/alters it. | BANKED_LAW; source-conserved, independent semantics held |
-| H029 | World completion/retrieval precedes narration so prose cannot become accidental world authority. | BANKED_LAW; source-conserved, independent semantics held |
-| H030 | “Is that a shutoff notice?” does not make it one. | BANKED_LAW; source-conserved, independent semantics held |
-| H031 | A drawer can have existed with contents before the system needed to compute them. | BANKED_LAW; source-conserved, independent semantics held |
-| H032 | New detail cannot contradict prior use, narration, memory, ownership or material constraint. | BANKED_LAW; source-conserved, independent semantics held |
-| H033 | An old magnet first resolved on day 30 may have been present for years. | BANKED_HYPOTHESIS / implementation requirement; source-conserved, independent semantics held |
-| H034 | Nadia using an object can require its completion before the user ever sees it. | BANKED_LAW; source-conserved, independent semantics held |
-| H035 | Bills, menus, school schedules and magnets can reveal material/social history if inspected specifically. | BANKED_LAW; source-conserved, independent semantics held |
-| H036 | The fridge contains those objects because the household's life produced them, not to deliver plot information to the player. | BANKED_LAW; source-conserved, independent semantics held |
-| H037 | Which utility, school, lunch menu, restaurant, price, handwriting, magnet, wear pattern, etc. changes what can reasonably be inferred. | BANKED_HYPOTHESIS / world-detail requirement; source-conserved, independent semantics held |
-| H038 | An ordinary magnet can acquire known significance years later without retconning its prior existence. | BANKED_LAW; source-conserved, independent semantics held |
-| H039 | Environmental investigation can improve a model without exhausting the person. | BANKED_LAW; source-conserved, independent semantics held |
-| H040 | Looking, reading and searching are actions in continuous simulated time. | BANKED_LAW; source-conserved, independent semantics held |
-| H041 | Room glance, fridge scan, exact bill reading and exhaustive object inspection have different durations. | BANKED_LAW; source-conserved, independent semantics held |
-| H042 | Temporal scarcity must be physically/socially plausible. | BANKED_LAW; source-conserved, independent semantics held |
-| H043 | Several seconds-long inspections can add up enough to alter the scene. | BANKED_LAW; source-conserved, independent semantics held |
-| H044 | One giant prompt cannot make many actions instantaneous; verbose wording cannot slow identical action. | BANKED_LAW; source-conserved, independent semantics held |
-| H045 | No default “READ BILL = 18.4 seconds.” | BANKED_LAW; source-conserved, independent semantics held |
-| H046 | User may know exact time only from a clock/watch/phone/other lawful cue; otherwise approximate passage. | BANKED_LAW; source-conserved, independent semantics held |
-| H047 | Food burns, buses leave, phones ring, people move and deadlines approach. | BANKED_LAW; source-conserved, independent semantics held |
-| H048 | The player cannot exhaust all evidence; they must decide what to notice and when to act. | BANKED_LAW; source-conserved, independent semantics held |
-| H049 | The loop is not collect all facts → optimal action. | BANKED_PRODUCT_THESIS; source-conserved, independent semantics held |
-| H050 | Perceive incompletely → infer → act → observe → revise. | BANKED_PRODUCT_THESIS; source-conserved, independent semantics held |
-| H051 | What the player chooses to inspect is behavior. | BANKED_LAW / longitudinal hypothesis; source-conserved, independent semantics held |
-| H052 | A highly attentive user can still allocate attention primarily toward self-evaluation, status, practical needs, children, ideology, etc. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H053 | Attention has a body; gaze, dwell, movement and object handling can be noticed. | BANKED_LAW; source-conserved, independent semantics held |
-| H054 | Fast/conspicuous, slow/discreet, open asking, covert glance, handling/searching and third-party inquiry differ. | BANKED_LAW; source-conserved, independent semantics held |
-| H055 | An observation can be quick but conspicuous, slow but discreet, etc. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H056 | Maintaining eye contact while reading a bill may yield only partial text. | BANKED_LAW; source-conserved, independent semantics held |
-| H057 | The user can ask about Rome while trying to glance at the bill. | BANKED_SCENARIO + LAW; source-conserved, independent semantics held |
-| H058 | Nadia may notice, miss, misread or not care. | BANKED_LAW; source-conserved, independent semantics held |
-| H059 | Nadia may think the user saw the bill when they did not; user may then think Nadia caught them. | BANKED_LAW / scenario; source-conserved, independent semantics held |
-| H060 | Physical access to bill, medicine cabinet, photo, Bible, phone, homework does not equal relational permission. | BANKED_LAW; source-conserved, independent semantics held |
-| H061 | Inspecting fridge while Nadia is beside you differs from inspection while she is absent. | BANKED_SCENARIO / law; source-conserved, independent semantics held |
-| H062 | The relevant question is not only “can I know?” but what relation to another person is enacted by acquiring knowledge this way. | BANKED_PRODUCT_THESIS; source-conserved, independent semantics held |
-| H063 | Homework help may feel supportive, intrusive, embarrassing, relieving, etc. depending on generated history and current relation. | BANKED_LAW + INHERITED; source-conserved, independent semantics held |
-| H064 | Annoyance might yield politeness, silence, humor, cleaning, direct confrontation, etc. | INHERITED; source-conserved, independent semantics held |
-| H065 | What the person is causally, what is present to them, how they interpret it and what they show are noncollapsible. | INHERITED; source-conserved, independent semantics held |
-| H066 | Total causal person != standing conscious self | INHERITED; source-conserved, independent semantics held |
-| H067 | Current relational activation != conscious self-knowledge | INHERITED; source-conserved, independent semantics held |
-| H068 | Causal activity may produce felt effect without causal explanation | INHERITED; source-conserved, independent semantics held |
-| H069 | Felt != named | INHERITED; source-conserved, independent semantics held |
-| H070 | Recognition != correct causal attribution | INHERITED; source-conserved, independent semantics held |
-| H071 | Conscious content != communicative intention | INHERITED; source-conserved, independent semantics held |
-| H072 | Communicative intention != rendered wording | INHERITED; source-conserved, independent semantics held |
-| H073 | Defense can operate before, during or after awareness | INHERITED; source-conserved, independent semantics held |
-| H074 | Actor can be sincerely wrong about why they reacted | INHERITED; source-conserved, independent semantics held |
-| H075 | Actor may know what they did without knowing why | INHERITED; source-conserved, independent semantics held |
-| H076 | Expression can produce later self-recognition | INHERITED; source-conserved, independent semantics held |
-| H077 | A rejected candidate response cannot embarrass/change the persona. | INHERITED; source-conserved, independent semantics held |
-| H078 | Current self-insight does not automatically become durable self-model change | INHERITED; source-conserved, independent semantics held |
-| H079 | The LLM may not turn machine-understood nuance into persona self-knowledge for coherence. | INHERITED; source-conserved, independent semantics held |
-| H080 | Renderer variation cannot prove prior hidden motive | INHERITED; source-conserved, independent semantics held |
-| H081 | Toilet-chain failure can remain a weak datum. | BANKED_LAW + INHERITED; source-conserved, independent semantics held |
-| H082 | Later similar events may strengthen “doesn't listen”; contrary history may weaken it. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H083 | Later events/confession may recontextualize old history without retcon. | BANKED_LAW + INHERITED; source-conserved, independent semantics held |
-| H084 | Actor memory != objective event log | BANKED_LAW + INHERITED; source-conserved, independent semantics held |
-| H085 | Memory can fade, retain gist, reactivate, reconsolidate | BANKED_HYPOTHESIS / inherited phenomenon; source-conserved, independent semantics held |
-| H086 | Causal resonance does not imply declarative recall | INHERITED; source-conserved, independent semantics held |
-| H087 | Intention and impact are separate | BANKED_LAW; source-conserved, independent semantics held |
-| H088 | Babysitting can relieve Nadia while widening child's hopes and increasing Nadia's material stress. | BANKED_SCENARIO + LAW; source-conserved, independent semantics held |
-| H089 | One act can affect several actors differently | BANKED_LAW; source-conserved, independent semantics held |
-| H090 | Effects propagate whether user learns them. | BANKED_LAW; source-conserved, independent semantics held |
-| H091 | Unrecognized benefit is real benefit without relational reward | BANKED_LAW / spiritual thesis; source-conserved, independent semantics held |
-| H092 | Hidden harm can be real without detection | BANKED_LAW; source-conserved, independent semantics held |
-| H093 | Secret theft can cause false blame and family conflict | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H094 | Later confession can alter interpretation of old history | BANKED_SCENARIO / law; source-conserved, independent semantics held |
-| H095 | Actual causation != actor attribution | BANKED_LAW; source-conserved, independent semantics held |
-| H096 | User contribution may be one cause among many | BANKED_LAW; source-conserved, independent semantics held |
-| H097 | User may think they caused something they did not | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H098 | World does not owe moral closure | BANKED_LAW; source-conserved, independent semantics held |
-| H099 | Flourishing change cannot be automatically credited/debited to user | BANKED_CONSTRAINT; source-conserved, independent semantics held |
-| H100 | Toilet chain breaks because state + realized action + transition rule, not dramaturgy. | BANKED_LAW; source-conserved, independent semantics held |
-| H101 | Equivalent action/state should be causally stable | BANKED_LAW; source-conserved, independent semantics held |
-| H102 | Bounded stochasticity must be governed outside narration | BANKED_HYPOTHESIS / open implementation; source-conserved, independent semantics held |
-| H103 | Alpha needs bounded action physics, not universal physics | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H104 | User prose cannot conjure resources/capabilities | BANKED_LAW; source-conserved, independent semantics held |
-| H105 | Natural-language ambiguity must not become confident arbitrary action | OPEN; source-conserved, independent semantics held |
-| H106 | Objective event != actor perception | INHERITED + BANKED_LAW; source-conserved, independent semantics held |
-| H107 | Different actors receive different perceptual slices | BANKED_LAW; source-conserved, independent semantics held |
-| H108 | Actor attention is finite | BANKED_LAW + inherited continuity; source-conserved, independent semantics held |
-| H109 | Persona can half-hear, miss, notice late or be occupied | BANKED_LAW; source-conserved, independent semantics held |
-| H110 | Low response does not prove low motive/nonreception | INHERITED; source-conserved, independent semantics held |
-| H111 | Not every user turn must generate insight, memory, conflict, chemistry or dramatic activation. | INHERITED + PRODUCT_CONSTRAINT; source-conserved, independent semantics held |
-| H112 | World events arise from their own causes | BANKED_LAW; source-conserved, independent semantics held |
-| H113 | No hidden kindness tests | BANKED_LAW; source-conserved, independent semantics held |
-| H114 | No engagement-driven crises/drama | BANKED_LAW; source-conserved, independent semantics held |
-| H115 | Institutional events may have no moral function | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H116 | User is not protagonist of causal graph | BANKED_LAW; source-conserved, independent semantics held |
-| H117 | No-avatar != disembodied user | BANKED_LAW; source-conserved, independent semantics held |
-| H118 | Player position, reach and sensory access matter | BANKED_HYPOTHESIS / alpha requirement; source-conserved, independent semantics held |
-| H119 | Random assignment must still have lawful encounter route. | BANKED_LAW; source-conserved, independent semantics held |
-| H120 | Invitation into home, meeting child, keys, exclusion, room access etc. can be relational change without a meter. | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H121 | Real user vs authored shell vs generated presence is a major privacy/product decision. | OPEN; source-conserved, independent semantics held |
-| H122 | Cross-language mediation is real future work | OPEN; source-conserved, independent semantics held |
-| H123 | Do not rerun from-birth V3 naively every turn | SUPERSEDED_FORMULATION / INHERITED ARCHITECTURE; source-conserved, independent semantics held |
-| H124 | Durable/formative V3 and interaction-time processing are distinct grains | INHERITED; source-conserved, independent semantics held |
-| H125 | CAN-008 R2 owns receivability / uptake-appraisal / recruitment / immediate response | INHERITED ADOPTED SEMANTICS; source-conserved, independent semantics held |
-| H126 | PFF does not own a duplicate recruitment/defense/consciousness engine | INHERITED LATER REDUCTION; source-conserved, independent semantics held |
-| H127 | PFF retains bounded interaction specialization and minimal fast carryover | INHERITED/CANDIDATE INTERFACE EVIDENCE; source-conserved, independent semantics held |
-| H128 | V2 renders actor-limited expression and cannot rescue hidden content | INHERITED; source-conserved, independent semantics held |
-| H129 | Actual emitted output becomes causal only after occurrence/admission | INHERITED; source-conserved, independent semantics held |
-| H130 | Repetition/session residue != durable biography | INHERITED; source-conserved, independent semantics held |
-| H131 | User hidden/private reality is ordinarily outside Rawlsing direct authority | INHERITED; source-conserved, independent semantics held |
-| H132 | User self-report != omniscient hidden-state read | INHERITED; source-conserved, independent semantics held |
-| H133 | The conversation entertained allowing the user to author “I genuinely forgot,” but inherited PFF law prevents silently treating this as metaphysical access. | OPEN / CORRECTED; source-conserved, independent semantics held |
-| H134 | Intentional roleplay mode may justify stronger authorial player-state | OPEN; source-conserved, independent semantics held |
-| H135 | Same underlying world/person causality across modes | BANKED_LAW/HYPOTHESIS; source-conserved, independent semantics held |
-| H136 | Harder mode minimizes epistemic/agency scaffolding | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H137 | Assisted mode may support user's own memory/time/commitments | BANKED_HYPOTHESIS; source-conserved, independent semantics held |
-| H138 | Assisted mode still cannot disclose hidden psychology or future consequence | BANKED_LAW; source-conserved, independent semantics held |
-| H139 | Mode naming/branding is not frozen | OPEN; source-conserved, independent semantics held |
-| H140 | Visible game is relationship; deeper game is care | BANKED PRODUCT CHARTER; source-conserved, independent semantics held |
-| H141 | Benefit without recognition is spiritually important | BANKED PRODUCT THESIS; source-conserved, independent semantics held |
-| H142 | The game must not equate approval with benefit | BANKED LAW; source-conserved, independent semantics held |
-| H143 | The game must not equate control with care | BANKED LAW; source-conserved, independent semantics held |
-| H144 | Relationship may become harder with trust/intimacy | BANKED LAW; source-conserved, independent semantics held |
-| H145 | The user learns a particular person, not a generic moral rule | BANKED PRODUCT THESIS; source-conserved, independent semantics held |
-| H146 | Curiosity, attention and inference are part of the moral practice, not side mechanics | BANKED PRODUCT THESIS; source-conserved, independent semantics held |
-| H147 | Bathroom may be occupied / locked / socially restricted | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H148 | Nadia may warn about sensitive toilet chain | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H149 | User may fail repair and choose whether/how to disclose | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H150 | Nadia may be stressed/annoyed yet perform magnanimity | BANKED_SCENARIO + INHERITED mediation; source-conserved, independent semantics held |
-| H151 | Weak annoyance may not “take root” until repeated pattern evidence | BANKED_SCENARIO/HYPOTHESIS; source-conserved, independent semantics held |
-| H152 | Homework help may create gratitude plus boundary concern | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H153 | Babysitting/inspiration may benefit child while stressing Nadia materially | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H154 | Secret theft can create unseen false-blame conflict | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H155 | Anonymous help can produce benefit with no relational reward | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H156 | Rome-magnet cover plus bill glance | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H157 | Same inspection while Nadia absent changes visibility but not necessarily ethics/privacy | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H158 | Over-investigation can cost Nadia the bus | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H159 | Old mundane magnet gains known family meaning later | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H160 | Long speech can be interrupted | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H161 | “I sound sincere” cannot dictate belief | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H162 | Self-evaluative attention may crowd out practical attention | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H163 | Same information may be asked, inspected, covertly obtained or third-party sourced | BANKED_SCENARIO; source-conserved, independent semantics held |
-| H164 | PFF four-band conceptual decomposition | INHERITED; source-conserved, independent semantics held |
-| H165 | Present conscious field is dynamic cross-section, not mandatory durable store | INHERITED; source-conserved, independent semantics held |
-| H166 | Defense is connective causation, not late filter | INHERITED; source-conserved, independent semantics held |
-| H167 | Retrieval is psychic recruitment, not search-to-render | INHERITED; source-conserved, independent semantics held |
-| H168 | Perspective binding survives transformations | INHERITED; source-conserved, independent semantics held |
-| H169 | Actor-local error may be causally real | INHERITED; source-conserved, independent semantics held |
-| H170 | Valid-empty / low-significance event processing must remain lawful | INHERITED / product constraint; source-conserved, independent semantics held |
-| H171 | Actor effort/response coverage != uptake | INHERITED; source-conserved, independent semantics held |
-| H172 | Lawful jaggedness/incompleteness should survive rendering when person-caused | INHERITED; source-conserved, independent semantics held |
-| H173 | Jaggedness must not be random “human-like” noise | INHERITED; source-conserved, independent semantics held |
-| H174 | Audit trace != actor self-knowledge | INHERITED; source-conserved, independent semantics held |
-| H175 | Whole person exists outside prompt | INHERITED; source-conserved, independent semantics held |
-| H176 | Inherited PFF gives mediated personhood; Sorok adds relationally constituted personhood | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H177 | D-band causal personhood must not be read as pre-relational inner substance | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H178 | C-band standing self is partly constituted through real/internalized others, roles and recognition | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H179 | Person-stable does not mean relation-free | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H180 | A specific relation can instantiate a historically formed organization of self-with-other rather than merely selecting a fixed trait. | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H181 | Defense can be understood as historically learned preservation/regulation of relations or positions | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H182 | Needs are relationally organized by target, role and expected cost | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H183 | Isolation is a relational formation, not a zero-relation state | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H184 | Some parts of self become nameable/thinkable only under particular relational safety, role or recognition conditions. | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H185 | Dyad is real without consuming the persons | SOROK_ANTI_COLLAPSE_LAW; source-conserved, independent semantics held |
-| H186 | Personal continuity is cross-relational historical organization, not context-free essence | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H187 | Models of the other and metaperception become constitutive causal material under relational ontology | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H188 | Network/third-party relations can alter the dyad and current person×event processing | SOROK_NOVEL_HYPOTHESIS; source-conserved, independent semantics held |
-| H189 | Intimacy changes causal relational organization, not merely access to hidden lore | SOROK_NOVEL_PRODUCT_THEORY; source-conserved, independent semantics held |
-| H190 | Relations produce persons who enter relations that reproduce, disconfirm or transform persons and worlds. | SOROK_NOVEL_ONTOLOGICAL_THESIS; source-conserved, independent semantics held |
+| ID | Original heading / assertion | Exact explicit Claim paragraph, where present | Original grade / live semantic hold |
+|---|---|---|---|
+| H001 | Interaction is not chat-in-a-void | Rawlsing interaction should be situated participation inside a causally live scene in another person's ongoing life. | BANKED_LAW; further independent meaning review open |
+| H002 | Drop the user into the middle of an already-running life | The persona already has pressures, needs, obligations, other relationships, tasks and events before the user acts. | BANKED_LAW; further independent meaning review open |
+| H003 | The persona is not a service agent waiting for input | Other actors may continue cooking, parenting, working, leaving, ignoring, delaying or prioritizing something else. | BANKED_LAW; further independent meaning review open |
+| H004 | Three high-level interaction verbs | The user needs at least SAY, DO and ATTEND. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H005 | Natural language is the primary open action surface | The user should be able to type rich embodied/social actions rather than select only canned dialogue responses. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H006 | Conventional dialogue-choice menus are not the primary interaction grammar | Structured affordances may exist, but the core experience should not collapse into selecting prewritten response options. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H007 | User controls attempts, not reality | The user may specify what they try to say/do/attend to, but not feasibility, success, reception, interpretation or consequence. | BANKED_LAW; further independent meaning review open |
+| H008 | User may specify delivery | Tone attempt, volume, pace, posture, gesture and expression may be part of the attempted action. | BANKED_LAW; further independent meaning review open |
+| H009 | Intended performance is not achieved reception | “I try to sound apologetic” is lawful; “I sound convincingly apologetic to Nadia” is not user-authoritative. | BANKED_LAW; further independent meaning review open |
+| H010 | Compound user prose is a plan, not a screenplay | A multi-step action can fail or be interrupted before later steps occur. | BANKED_LAW; further independent meaning review open |
+| H011 | The user does not own the conversational floor | Another actor can interrupt, walk away, refuse, answer early or change the scene before a long speech completes. | BANKED_LAW; further independent meaning review open |
+| H012 | Some compound actions are genuinely concurrent | Speaking while covertly glancing, gesturing while listening, etc. may overlap rather than serialize. | BANKED_LAW; further independent meaning review open |
+| H013 | No user access to another person's mind | The user cannot directly query hidden affect, motive, private appraisal, hidden memory or relationship score. | BANKED_LAW + INHERITED; further independent meaning review open |
+| H014 | The narrator is phenomenological, not psychological | It reports the user's accessible surface of reality. | BANKED_LAW; further independent meaning review open |
+| H015 | Hard show-not-tell | Prefer observable action to labels such as annoyed, nervous, warm, curt or secretly polite. | BANKED_LAW; further independent meaning review open |
+| H016 | If asked “is she annoyed?”, return evidence, not hidden-state confirmation | The narrator may restate behavior/speech but does not adjudicate the mind. | BANKED_LAW; further independent meaning review open |
+| H017 | No exaggerated behavioral tells for player convenience | Hidden state should cause behavior through the persona's actual organization; the system should not manufacture obvious clues so the player can solve them. | INHERITED + BANKED_HYPOTHESIS; further independent meaning review open |
+| H018 | Full inhibition without leakage is possible | Not every hidden motive must leak into observable behavior. | INHERITED; further independent meaning review open |
+| H019 | Leakage, when present, need not look like a cliché tell | It may appear as verbosity, topic return, avoidance, attentional asymmetry, humor, anecdote choice, delay, etc. | INHERITED; further independent meaning review open |
+| H020 | Narrator is non-curatorial | It cannot select a detail because hidden system state knows the detail is psychologically important. | BANKED_LAW; further independent meaning review open |
+| H021 | Narrator selection may use perceptual salience | Finite output can use proximity, motion, sensory intensity, ordinary scene organization and explicit attention target. | BANKED_LAW; further independent meaning review open |
+| H022 | Ambient scene frame should provide obvious orientation | Surface-only narration should not force the user to ask whether a table or visible child exists. | BANKED_LAW; further independent meaning review open |
+| H023 | Ambient perception and focused ATTEND are distinct | Immediate coarse orientation is cheap/ongoing; focused inspection acquires deeper resolution. | BANKED_LAW; further independent meaning review open |
+| H024 | Progressive perceptual resolution | Fridge → bill → exact bill text should require increasingly specific attention/access. | BANKED_LAW; further independent meaning review open |
+| H025 | ATTEND cannot silently move/manipulate the user | If the bill is unreadable from here, the narrator cannot walk the user closer. | BANKED_LAW; further independent meaning review open |
+| H026 | User can continue inspecting while reality allows | No arbitrary “three investigations per scene” quota. | BANKED_LAW; further independent meaning review open |
+| H027 | User mention does not create world fact | Saying “Percocet” does not instantiate Percocet. | BANKED_LAW; further independent meaning review open |
+| H028 | Narrated objective facts become binding persistent reality | If the narrator lawfully says a chipped green mug exists, it exists until causal change removes/alters it. | BANKED_LAW; further independent meaning review open |
+| H029 | Internal implementation should admit fact before narrating it | World completion/retrieval precedes narration so prose cannot become accidental world authority. | BANKED_LAW; further independent meaning review open |
+| H030 | Leading questions cannot summon convenient reality | “Is that a shutoff notice?” does not make it one. | BANKED_LAW; further independent meaning review open |
+| H031 | Unmaterialized implementation detail is not diegetic absence | A drawer can have existed with contents before the system needed to compute them. | BANKED_LAW; further independent meaning review open |
+| H032 | Lazy completion must be history-compatible | New detail cannot contradict prior use, narration, memory, ownership or material constraint. | BANKED_LAW; further independent meaning review open |
+| H033 | First computational materialization time != in-world creation time | An old magnet first resolved on day 30 may have been present for years. | BANKED_HYPOTHESIS / implementation requirement; further independent meaning review open |
+| H034 | World specificity may be forced by other actors, not only user curiosity | Nadia using an object can require its completion before the user ever sees it. | BANKED_LAW; further independent meaning review open |
+| H035 | Mundane objects can be dense evidence | Bills, menus, school schedules and magnets can reveal material/social history if inspected specifically. | BANKED_LAW; further independent meaning review open |
+| H036 | Evidence is not authorial clue placement | The fridge contains those objects because the household's life produced them, not to deliver plot information to the player. | BANKED_LAW; further independent meaning review open |
+| H037 | Exact object specificity matters | Which utility, school, lunch menu, restaurant, price, handwriting, magnet, wear pattern, etc. changes what can reasonably be inferred. | BANKED_HYPOTHESIS / world-detail requirement; further independent meaning review open |
+| H038 | The world may be meaningful before the user understands it | An ordinary magnet can acquire known significance years later without retconning its prior existence. | BANKED_LAW; further independent meaning review open |
+| H039 | There is no finite True Nadia clue set | Environmental investigation can improve a model without exhausting the person. | BANKED_LAW; further independent meaning review open |
+| H040 | ATTEND consumes time | Looking, reading and searching are actions in continuous simulated time. | BANKED_LAW; further independent meaning review open |
+| H041 | Different observations take different amounts of time | Room glance, fridge scan, exact bill reading and exhaustive object inspection have different durations. | BANKED_LAW; further independent meaning review open |
+| H042 | A glance should cost glance-time, not punitive game-time | Temporal scarcity must be physically/socially plausible. | BANKED_LAW; further independent meaning review open |
+| H043 | Cheap micro-observations can cumulatively become costly | Several seconds-long inspections can add up enough to alter the scene. | BANKED_LAW; further independent meaning review open |
+| H044 | Prompt verbosity does not determine world duration | One giant prompt cannot make many actions instantaneous; verbose wording cannot slow identical action. | BANKED_LAW; further independent meaning review open |
+| H045 | Exact time cost ordinarily should not be previewed | No default “READ BILL = 18.4 seconds.” | BANKED_LAW; further independent meaning review open |
+| H046 | Temporal knowledge is itself situated | User may know exact time only from a clock/watch/phone/other lawful cue; otherwise approximate passage. | BANKED_LAW; further independent meaning review open |
+| H047 | Observation does not pause the world | Food burns, buses leave, phones ring, people move and deadlines approach. | BANKED_LAW; further independent meaning review open |
+| H048 | Time pressure makes knowing another person inferential | The player cannot exhaust all evidence; they must decide what to notice and when to act. | BANKED_LAW; further independent meaning review open |
+| H049 | Knowing when one knows enough to act is gameplay | The loop is not collect all facts → optimal action. | BANKED_PRODUCT_THESIS; further independent meaning review open |
+| H050 | Core epistemic loop | Perceive incompletely → infer → act → observe → revise. | BANKED_PRODUCT_THESIS; further independent meaning review open |
+| H051 | Attention allocation can itself reveal relational praxis | What the player chooses to inspect is behavior. | BANKED_LAW / longitudinal hypothesis; further independent meaning review open |
+| H052 | Attention capacity != attention allocation | A highly attentive user can still allocate attention primarily toward self-evaluation, status, practical needs, children, ideology, etc. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H053 | The observer is observable | Attention has a body; gaze, dwell, movement and object handling can be noticed. | BANKED_LAW; further independent meaning review open |
+| H054 | Information acquisition has a social visibility profile | Fast/conspicuous, slow/discreet, open asking, covert glance, handling/searching and third-party inquiry differ. | BANKED_LAW; further independent meaning review open |
+| H055 | Temporal cost and social visibility are distinct | An observation can be quick but conspicuous, slow but discreet, etc. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H056 | Divided attention may degrade information | Maintaining eye contact while reading a bill may yield only partial text. | BANKED_LAW; further independent meaning review open |
+| H057 | Cover behavior is an attempted presentation | The user can ask about Rome while trying to glance at the bill. | BANKED_SCENARIO + LAW; further independent meaning review open |
+| H058 | Cover success is actor-owned | Nadia may notice, miss, misread or not care. | BANKED_LAW; further independent meaning review open |
+| H059 | Reciprocal inference can be wrong at multiple levels | Nadia may think the user saw the bill when they did not; user may then think Nadia caught them. | BANKED_LAW / scenario; further independent meaning review open |
+| H060 | Privacy is situated, not object-labeled | Physical access to bill, medicine cabinet, photo, Bible, phone, homework does not equal relational permission. | BANKED_LAW; further independent meaning review open |
+| H061 | Same object, different context, different social consequences | Inspecting fridge while Nadia is beside you differs from inspection while she is absent. | BANKED_SCENARIO / law; further independent meaning review open |
+| H062 | Curiosity itself has relational ethics | The relevant question is not only “can I know?” but what relation to another person is enacted by acquiring knowledge this way. | BANKED_PRODUCT_THESIS; further independent meaning review open |
+| H063 | Same outward event can mean different things to different personas | Homework help may feel supportive, intrusive, embarrassing, relieving, etc. depending on generated history and current relation. | BANKED_LAW + INHERITED; further independent meaning review open |
+| H064 | Same hidden affect can surface differently by person | Annoyance might yield politeness, silence, humor, cleaning, direct confrontation, etc. | INHERITED; further independent meaning review open |
+| H065 | Internal state is not transparent to the persona | What the person is causally, what is present to them, how they interpret it and what they show are noncollapsible. | INHERITED; further independent meaning review open |
+| H066 | Total causal person != standing conscious self | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H067 | Current relational activation != conscious self-knowledge | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H068 | Causal activity may produce felt effect without causal explanation | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H069 | Felt != named | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H070 | Recognition != correct causal attribution | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H071 | Conscious content != communicative intention | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H072 | Communicative intention != rendered wording | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H073 | Defense can operate before, during or after awareness | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H074 | Actor can be sincerely wrong about why they reacted | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H075 | Actor may know what they did without knowing why | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H076 | Expression can produce later self-recognition | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H077 | Self-output re-enters only after actual occurrence | A rejected candidate response cannot embarrass/change the persona. | INHERITED; further independent meaning review open |
+| H078 | Current self-insight does not automatically become durable self-model change | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H079 | Renderer cannot rescue hidden/unknown material | The LLM may not turn machine-understood nuance into persona self-knowledge for coherence. | INHERITED; further independent meaning review open |
+| H080 | Renderer variation cannot prove prior hidden motive | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H081 | One incident need not become a trait judgment | Toilet-chain failure can remain a weak datum. | BANKED_LAW + INHERITED; further independent meaning review open |
+| H082 | Pattern hypotheses accumulate probabilistically/conditionally | Later similar events may strengthen “doesn't listen”; contrary history may weaken it. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H083 | Past occurrence can acquire new significance without changing | Later events/confession may recontextualize old history without retcon. | BANKED_LAW + INHERITED; further independent meaning review open |
+| H084 | Actor memory != objective event log | — inherited; no separate Claim paragraph in source | BANKED_LAW + INHERITED; further independent meaning review open |
+| H085 | Memory can fade, retain gist, reactivate, reconsolidate | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS / inherited phenomenon; further independent meaning review open |
+| H086 | Causal resonance does not imply declarative recall | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H087 | Intention and impact are separate | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H088 | Good intent can produce mixed/bad effects | Babysitting can relieve Nadia while widening child's hopes and increasing Nadia's material stress. | BANKED_SCENARIO + LAW; further independent meaning review open |
+| H089 | One act can affect several actors differently | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H090 | Consequence is not feedback | Effects propagate whether user learns them. | BANKED_LAW; further independent meaning review open |
+| H091 | Unrecognized benefit is real benefit without relational reward | — inherited; no separate Claim paragraph in source | BANKED_LAW / spiritual thesis; further independent meaning review open |
+| H092 | Hidden harm can be real without detection | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H093 | Secret theft can cause false blame and family conflict | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H094 | Later confession can alter interpretation of old history | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO / law; further independent meaning review open |
+| H095 | Actual causation != actor attribution | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H096 | User contribution may be one cause among many | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H097 | User may think they caused something they did not | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H098 | World does not owe moral closure | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H099 | Flourishing change cannot be automatically credited/debited to user | — inherited; no separate Claim paragraph in source | BANKED_CONSTRAINT; further independent meaning review open |
+| H100 | Narrator is not physics engine | Toilet chain breaks because state + realized action + transition rule, not dramaturgy. | BANKED_LAW; further independent meaning review open |
+| H101 | Equivalent action/state should be causally stable | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H102 | Bounded stochasticity must be governed outside narration | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS / open implementation; further independent meaning review open |
+| H103 | Alpha needs bounded action physics, not universal physics | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS; further independent meaning review open |
+| H104 | User prose cannot conjure resources/capabilities | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H105 | Natural-language ambiguity must not become confident arbitrary action | — inherited; no separate Claim paragraph in source | OPEN; further independent meaning review open |
+| H106 | Objective event != actor perception | — inherited; no separate Claim paragraph in source | INHERITED + BANKED_LAW; further independent meaning review open |
+| H107 | Different actors receive different perceptual slices | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H108 | Actor attention is finite | — inherited; no separate Claim paragraph in source | BANKED_LAW + inherited continuity; further independent meaning review open |
+| H109 | Persona can half-hear, miss, notice late or be occupied | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H110 | Low response does not prove low motive/nonreception | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H111 | Valid-empty / low-significance psychic response is lawful | Not every user turn must generate insight, memory, conflict, chemistry or dramatic activation. | INHERITED + PRODUCT_CONSTRAINT; further independent meaning review open |
+| H112 | World events arise from their own causes | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H113 | No hidden kindness tests | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H114 | No engagement-driven crises/drama | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H115 | Institutional events may have no moral function | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H116 | User is not protagonist of causal graph | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H117 | No-avatar != disembodied user | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H118 | Player position, reach and sensory access matter | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS / alpha requirement; further independent meaning review open |
+| H119 | Unchosen persona != magical access | Random assignment must still have lawful encounter route. | BANKED_LAW; further independent meaning review open |
+| H120 | Relationship progression may become visible through access | Invitation into home, meeting child, keys, exclusion, room access etc. can be relational change without a meter. | BANKED_HYPOTHESIS; further independent meaning review open |
+| H121 | What the player socially presents as remains open | Real user vs authored shell vs generated presence is a major privacy/product decision. | OPEN; further independent meaning review open |
+| H122 | Cross-language mediation is real future work | — inherited; no separate Claim paragraph in source | OPEN; further independent meaning review open |
+| H123 | Do not rerun from-birth V3 naively every turn | — inherited; no separate Claim paragraph in source | SUPERSEDED_FORMULATION / INHERITED ARCHITECTURE; further independent meaning review open |
+| H124 | Durable/formative V3 and interaction-time processing are distinct grains | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H125 | CAN-008 R2 owns receivability / uptake-appraisal / recruitment / immediate response | — inherited; no separate Claim paragraph in source | INHERITED ADOPTED SEMANTICS; further independent meaning review open |
+| H126 | PFF does not own a duplicate recruitment/defense/consciousness engine | — inherited; no separate Claim paragraph in source | INHERITED LATER REDUCTION; further independent meaning review open |
+| H127 | PFF retains bounded interaction specialization and minimal fast carryover | — inherited; no separate Claim paragraph in source | INHERITED/CANDIDATE INTERFACE EVIDENCE; further independent meaning review open |
+| H128 | V2 renders actor-limited expression and cannot rescue hidden content | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H129 | Actual emitted output becomes causal only after occurrence/admission | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H130 | Repetition/session residue != durable biography | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H131 | User hidden/private reality is ordinarily outside Rawlsing direct authority | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H132 | User self-report != omniscient hidden-state read | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H133 | User-declared private intention as binding player truth remains open | The conversation entertained allowing the user to author “I genuinely forgot,” but inherited PFF law prevents silently treating this as metaphysical access. | OPEN / CORRECTED; further independent meaning review open |
+| H134 | Intentional roleplay mode may justify stronger authorial player-state | — inherited; no separate Claim paragraph in source | OPEN; further independent meaning review open |
+| H135 | Same underlying world/person causality across modes | — inherited; no separate Claim paragraph in source | BANKED_LAW/HYPOTHESIS; further independent meaning review open |
+| H136 | Harder mode minimizes epistemic/agency scaffolding | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS; further independent meaning review open |
+| H137 | Assisted mode may support user's own memory/time/commitments | — inherited; no separate Claim paragraph in source | BANKED_HYPOTHESIS; further independent meaning review open |
+| H138 | Assisted mode still cannot disclose hidden psychology or future consequence | — inherited; no separate Claim paragraph in source | BANKED_LAW; further independent meaning review open |
+| H139 | Mode naming/branding is not frozen | — inherited; no separate Claim paragraph in source | OPEN; further independent meaning review open |
+| H140 | Visible game is relationship; deeper game is care | — inherited; no separate Claim paragraph in source | BANKED PRODUCT CHARTER; further independent meaning review open |
+| H141 | Benefit without recognition is spiritually important | — inherited; no separate Claim paragraph in source | BANKED PRODUCT THESIS; further independent meaning review open |
+| H142 | The game must not equate approval with benefit | — inherited; no separate Claim paragraph in source | BANKED LAW; further independent meaning review open |
+| H143 | The game must not equate control with care | — inherited; no separate Claim paragraph in source | BANKED LAW; further independent meaning review open |
+| H144 | Relationship may become harder with trust/intimacy | — inherited; no separate Claim paragraph in source | BANKED LAW; further independent meaning review open |
+| H145 | The user learns a particular person, not a generic moral rule | — inherited; no separate Claim paragraph in source | BANKED PRODUCT THESIS; further independent meaning review open |
+| H146 | Curiosity, attention and inference are part of the moral practice, not side mechanics | — inherited; no separate Claim paragraph in source | BANKED PRODUCT THESIS; further independent meaning review open |
+| H147 | Bathroom may be occupied / locked / socially restricted | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H148 | Nadia may warn about sensitive toilet chain | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H149 | User may fail repair and choose whether/how to disclose | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H150 | Nadia may be stressed/annoyed yet perform magnanimity | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO + INHERITED mediation; further independent meaning review open |
+| H151 | Weak annoyance may not “take root” until repeated pattern evidence | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO/HYPOTHESIS; further independent meaning review open |
+| H152 | Homework help may create gratitude plus boundary concern | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H153 | Babysitting/inspiration may benefit child while stressing Nadia materially | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H154 | Secret theft can create unseen false-blame conflict | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H155 | Anonymous help can produce benefit with no relational reward | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H156 | Rome-magnet cover plus bill glance | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H157 | Same inspection while Nadia absent changes visibility but not necessarily ethics/privacy | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H158 | Over-investigation can cost Nadia the bus | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H159 | Old mundane magnet gains known family meaning later | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H160 | Long speech can be interrupted | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H161 | “I sound sincere” cannot dictate belief | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H162 | Self-evaluative attention may crowd out practical attention | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H163 | Same information may be asked, inspected, covertly obtained or third-party sourced | — inherited; no separate Claim paragraph in source | BANKED_SCENARIO; further independent meaning review open |
+| H164 | PFF four-band conceptual decomposition | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H165 | Present conscious field is dynamic cross-section, not mandatory durable store | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H166 | Defense is connective causation, not late filter | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H167 | Retrieval is psychic recruitment, not search-to-render | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H168 | Perspective binding survives transformations | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H169 | Actor-local error may be causally real | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H170 | Valid-empty / low-significance event processing must remain lawful | — inherited; no separate Claim paragraph in source | INHERITED / product constraint; further independent meaning review open |
+| H171 | Actor effort/response coverage != uptake | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H172 | Lawful jaggedness/incompleteness should survive rendering when person-caused | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H173 | Jaggedness must not be random “human-like” noise | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H174 | Audit trace != actor self-knowledge | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H175 | Whole person exists outside prompt | — inherited; no separate Claim paragraph in source | INHERITED; further independent meaning review open |
+| H176 | Inherited PFF gives mediated personhood; Sorok adds relationally constituted personhood | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H177 | D-band causal personhood must not be read as pre-relational inner substance | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H178 | C-band standing self is partly constituted through real/internalized others, roles and recognition | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H179 | Person-stable does not mean relation-free | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H180 | Current B-band relation is not merely a trait activator | A specific relation can instantiate a historically formed organization of self-with-other rather than merely selecting a fixed trait. | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H181 | Defense can be understood as historically learned preservation/regulation of relations or positions | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H182 | Needs are relationally organized by target, role and expected cost | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H183 | Isolation is a relational formation, not a zero-relation state | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H184 | Self-knowledge itself can be relation-conditioned | Some parts of self become nameable/thinkable only under particular relational safety, role or recognition conditions. | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H185 | Dyad is real without consuming the persons | — inherited; no separate Claim paragraph in source | SOROK_ANTI_COLLAPSE_LAW; further independent meaning review open |
+| H186 | Personal continuity is cross-relational historical organization, not context-free essence | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H187 | Models of the other and metaperception become constitutive causal material under relational ontology | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H188 | Network/third-party relations can alter the dyad and current person×event processing | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_HYPOTHESIS; further independent meaning review open |
+| H189 | Intimacy changes causal relational organization, not merely access to hidden lore | — inherited; no separate Claim paragraph in source | SOROK_NOVEL_PRODUCT_THEORY; further independent meaning review open |
+| H190 | Deep recursive theorem | Relations produce persons who enter relations that reproduce, disconfirm or transform persons and worlds. | SOROK_NOVEL_ONTOLOGICAL_THESIS; further independent meaning review open |
 
 ### Original SOROK Q001–Q123: unresolved questions preserved, not declared currently missing
 
