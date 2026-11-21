@@ -183,6 +183,10 @@ Source `03_REAL_ALPHA_SPINE.md` explicitly separates the visible organism from a
 
 Thus "doctrine/spirit" means an **interpretive and adversarial conservation requirement**, not a code generator supplied with theological axioms. The real criterion is whether the computational human encounter operates as **person-independent yet relationally consequential**, with plural world/actor/user temporal centers, lawful opacity, friction, uncertainty, reciprocal history and non-commodification.
 
+## XI-A. The courts did not finish the 123-question frontier
+
+The historic October 1 question accounting counted **117 questions at that earlier date**, while its subsequently appended source-cut register contains **123**. Those comprise 47 historical architecture/implementation items, 25 prototype/human-evidence items, 19 deferred beyond alpha, one still-open alpha-product falsification requirement, and 31 historically nonblocking questions. **This does not mean all remain missing today.** Mandatory: [10 — unfinished SOROK courts, with every original source-line, disposition, and owner boundary](10_UNFINISHED_EARLY_SOROK_COURTS_AND_123_QUESTION_FRONTIERS.md).
+
 ## XII. Specific next steps for the NEIGHBORMULCH agent
 
 **Read FIRST, before an implementation model:** `01`, `02`, `08`, `12` (190), `15`, `16`, `18`, `21A`, `23`, `24`, `25`, `30`, `31`, `35`, `D007`, `50`, `75`, ``80/85/87` and the primary R12 transcript. Then use this atlas's other source maps as needed. Do not reread everything blindly if exact relevant function sources are clear.
