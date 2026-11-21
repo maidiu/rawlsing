@@ -121,7 +121,8 @@ class TCORecurrentWorkR25(unittest.TestCase):
     def test_acquired_withhold_now_changes_future_own_work_recruitment(self):
         a=make_actor();e,ref,g=grounds(a)
         admit(a,e,ref,[proposal(g[0],'WITHHOLD')])
-        world=blank_world();world['positions']['mother']='home'
+        world=blank_world();world['clock']=4
+        world['positions']['mother']='home'
         access=actor_access(a,world)
         c=materialize(a,world)
         result=compose(c,access)
@@ -140,7 +141,8 @@ class TCORecurrentWorkR25(unittest.TestCase):
         admit(approach,e,ref,[proposal(g[0],'APPROACH')])
         abstain=make_actor()
         self.assertEqual(len(abstain['historical_orientations']),0)
-        w=blank_world();w['positions']['mother']='home'
+        w=blank_world();w['clock']=4
+        w['positions']['mother']='home'
         future=compose(materialize(approach,w),actor_access(approach,w))
         self.assertTrue(any(
             x['action']=='WORK' and
@@ -156,7 +158,8 @@ class TCORecurrentWorkR25(unittest.TestCase):
         e4,ref4,g4=grounds(a,clock=4)
         self.assertEqual(len(g4),1)
         admit(a,e4,ref4,[proposal(g4[0],'APPROACH')])
-        w=blank_world();w['positions']['mother']='home'
+        w=blank_world();w['clock']=5
+        w['positions']['mother']='home'
         view=compose(materialize(a,w),actor_access(a,w))
         opposed=[x for x in view.antagonisms if x['action']=='WORK']
         self.assertEqual(len(opposed),1)
