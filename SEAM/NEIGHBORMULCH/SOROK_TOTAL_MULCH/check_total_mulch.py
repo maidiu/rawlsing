@@ -83,7 +83,7 @@ assert paths["total_file_entries"] == 227, paths["total_file_entries"]
 assert paths["total_directory_entries"] == 25, paths["total_directory_entries"]
 assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
-idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|", ideas, re.M)]
+idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|",\n    ideas.split("## H. SECOND INDEPENDENT HOUSE:", 1)[0], re.M)]
 assert idea_numbers == list(range(1, 86)), idea_numbers
 # The exact originating user words from source essays that were deleted must
 # survive in the EXISTING 04 source register, rather than permanent sub-essays.
