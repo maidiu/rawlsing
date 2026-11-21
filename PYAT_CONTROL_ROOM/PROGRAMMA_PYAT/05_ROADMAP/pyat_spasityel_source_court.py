@@ -347,6 +347,35 @@ try:
  report["R26_outcomes"]={"physical_single_comparator":3,"existing_owner_combined_candidate_no_old_port":4,
                          "legacy_test_oracle_partial":3,"source_science_external_consumer_held":3}
 
+ # R27 source and documentary first-reader bank — author CI proof is external run.
+ r27=l.split("## 15. R27 — TESTS-ONLY",1)[1]
+ for key in ("196942c62b8dc919ff787f9eb2017ae2ee70860c",
+             "44952903500","77 PASS / 0 FAIL","44952780251",
+             "76 pass / 1 fail","14726372572",
+             "NOT demonstrated","NO_NEW_RUNTIME_PORT"):
+  test("R27 exact-SHA/sourcegrade/failure ledger "+key,key.lower() in r27.lower())
+ test_code=exact("196942c62b8dc919ff787f9eb2017ae2ee70860c",
+  "rawlsing_next/tests/test_spasityel_joined_s3a_first_consumer.py",
+  "d90985212c7988c9e657d7f910a7219ec156c016").decode()
+ test("R27 uses genuine FF01 and D runtime and both distinct hostile cases",
+      all(v in test_code for v in (
+       "ff.produce_exact_conditional_support_profile(",
+       "d.admit_gt12_c_relation(",
+       "denominator member outside risk set",
+       "exact Q86B/Q86A QUESTION_IMPLEMENTATION",
+       "declared producer source contradicts frozen GT12 physical source",
+       "from dataclasses import replace")),
+      "SOURCE_STATIC_TEST_ONLY; green CI at child head cited, not independently rerun")
+ workflow=exact("196942c62b8dc919ff787f9eb2017ae2ee70860c",
+  ".github/workflows/pyat-spasityel-joined-s3a-sourcefree.yml",
+  "594cb2c005291ab31edac6b6a041c06324b5e258").decode()
+ test("R27 current selected+E05 same sourcefree runner with immutable head check",
+      "test \"$(git rev-parse HEAD)\" = \"$GITHUB_SHA\"" in workflow
+      and "test_kuda076_e05_selected_world_guard.py" in workflow
+      and "test_s3a_r5_denominator_membership_closure.py" in workflow)
+ report["R27_grade"]="AUTHOR_EXECUTED_77_OF_77_AT_TEST_ONLY_SHA_NOT_G5_NOT_ORIGINAL_SOURCE"
+
+
 
 
 
