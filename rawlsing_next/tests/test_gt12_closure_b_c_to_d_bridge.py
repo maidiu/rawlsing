@@ -1,4 +1,5 @@
 from __future__ import annotations
+from rawlsing_next.wave1_r5_q86_c11_projection import question_ref
 
 from dataclasses import replace
 from itertools import product
@@ -21,8 +22,8 @@ def _ref(kind: str, label: str) -> ExactRef:
 
 
 def _fixture(*, fact_state: str = "SUPPORTED", relation_permissions=None):
-    conditioner = _ref("QUESTION", "Q86B")
-    target = _ref("QUESTION", "Q86A")
+    conditioner = question_ref("Q86B")
+    target = question_ref("Q86A")
     c_domain, t_domain = ("0", "1"), ("1", "2")
     auth = AuthorityRef("GT12-CLOSURE-B-SOURCE", "R1", _h("source-authority"))
     risk = ExactRef("RISK_SET", adm.GT2_RISK_SET_ID, adm.GT2_RISK_SET_MEMBER_SET_SHA256)

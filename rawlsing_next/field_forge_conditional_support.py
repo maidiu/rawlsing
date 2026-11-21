@@ -123,6 +123,23 @@ def _auth_dict(ref: AuthorityRef) -> dict[str, str]:
     return ref.as_dict()
 
 
+def _frozen_q86_source_identity() -> tuple[ExactRef, ExactRef]:
+    from rawlsing_next.wave1_r5_q86_c11_projection import question_ref
+
+    return question_ref("Q86B"), question_ref("Q86A")
+
+
+def _validate_frozen_q86_source_identity(
+    conditioner_ref: ExactRef,
+    target_ref: ExactRef,
+) -> None:
+    expected_conditioner, expected_target = _frozen_q86_source_identity()
+    if conditioner_ref != expected_conditioner or target_ref != expected_target:
+        raise FieldForgeConditionalSupportError(
+            "frozen GT2 producer requires exact Q86B/Q86A QUESTION_IMPLEMENTATION source identity; arbitrary pair refs are not accepted"
+        )
+
+
 def _query_component_material(
     query: EmpiricalQuerySpec,
     *,
@@ -660,6 +677,7 @@ def produce_exact_conditional_support_profile(
         joint_fact=joint_fact, joint_query=joint_query)
     conditioner_domain, target_domain, domain_identity = _query_component_material(
         joint_query, conditioner_ref=conditioner, target_ref=target)
+    _validate_frozen_q86_source_identity(conditioner, target)
 
     producer_blocking = joint_fact.typed_state != "SUPPORTED"
     if producer_blocking:
