@@ -78,6 +78,18 @@ No negative is retired through author publication alone. Exact status remains CO
 
 ---
 
+## NEKUDA-R10 — preserved negative fates; no retirement by code publication
+
+**NEKUDA-076 / KUDA-082:** Original #786 all35 is metadata+NONRESPONDENT_FIXTURE, not authenticated original surveys. #1259 `af233d332c19ca560cc01c7461e8bd5ec02b4243` carries only bounded exact dual-receipt parity via selected R157 facade/direct C11 ingress, **UNTESTED**. Original obsolete 456 R157 config import and 35 metadata ledger/cold SRC26 not copied; missing original35 native consumer remains HELD.
+
+**NEKUDA-084 / KUDA-091:** Earlier fake-stage GT0 harness is not preferred over selected real-stage spine. #1260 `e2e38a4cd0d9e05ad67178782d1801f75756ea80` carries only distinctive hostile mutations for actual current V3 RNG, V2 actor/render and receipt hash **UNTESTED**; no production code change. Do not characterize test publication as full-person execution.
+
+**NEKUDA-016 / KUDA-019:** Nearest/latest ungoverned as-of remains prohibited. Old P07 pure temporal candidate does not itself authorize a real N9 selected-world source. No current version-as-of→world content receiver authenticated, so HOLD first-consumer/source issuer; no fake temporal promotion.
+
+All original NEKUDA identities remain and any independent tests, scientific rights and paired protected receiving remain separate.
+
+---
+
 ## Full post-rework negative and supersession records
 
 ### NEKUDA-001 — Pre-S1B R157 package exact-case paths and standalone factory
