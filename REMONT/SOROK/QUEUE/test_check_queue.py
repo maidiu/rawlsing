@@ -8,6 +8,7 @@ import copy
 import hashlib
 import io
 import json
+import subprocess
 from pathlib import Path
 import sys
 import tempfile
@@ -25,10 +26,55 @@ class QueueDisciplineTest(unittest.TestCase):
         self.queue = q.validate_queue(q.load_json(q.DEFAULT_QUEUE))
         self.results = self.root / 'LOCAL_COURTS' / 'REMONT_QUEUE'
 
-    def test_queue_seven_pinned_exact_shas_in_newest_first_order(self):
-        self.assertEqual([x['pr'] for x in self.queue['candidates']], [1241,1230,1222,1220,1214,1210,1199])
-        self.assertEqual(self.queue['candidates'][0]['sha'], 'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
+    def test_queue_eight_pinned_exact_shas_in_newest_first_order(self):
+        self.assertEqual([x['pr'] for x in self.queue['candidates']],
+                         [1234,1241,1230,1222,1220,1214,1210,1199])
+        self.assertEqual(self.queue['candidates'][0]['sha'],
+                         'dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b')
+        self.assertEqual(self.queue['candidates'][1]['sha'],
+                         'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
+        self.assertEqual(self.queue['candidates'][0]['manifest'], 'PINNED_GIT_TREE')
+        self.assertTrue(self.queue['candidates'][0]['joined_first_consumer'])
         self.assertEqual(self.queue['default_python'], 'python3.11')
+
+    def test_joined_branch_requires_explicit_integrated_source_lane(self):
+        bad = copy.deepcopy(self.queue)
+        bad['candidates'][0]['joined_first_consumer'] = False
+        with self.assertRaisesRegex(ValueError, 'INVALID_QUEUE_BRANCH'):
+            q.validate_queue(bad)
+        bad = copy.deepcopy(self.queue)
+        bad['candidates'][1]['manifest'] = 'PINNED_GIT_TREE'
+        with self.assertRaisesRegex(ValueError, 'UNAUTHORIZED_GIT_TREE_MODE'):
+            q.validate_queue(bad)
+
+    def test_pinned_git_tree_checks_every_joined_python_file_and_bytes(self):
+        root = self.root / 'repo'
+        src = root / 'SEAM' / 'ORACLE' / 'UM_SOROK_ORGANISM_R3'
+        (src / 'tests').mkdir(parents=True)
+        source = src / 'example.py'
+        source.write_text('print("source")\n', encoding='utf-8')
+        test = src / 'tests' / 'test_example.py'
+        test.write_text('print("test")\n', encoding='utf-8')
+
+        def git(*args):
+            return subprocess.run(['git', '-C', str(root), *args],
+                                  check=True, capture_output=True, text=True).stdout.strip()
+
+        git('init', '-q')
+        git('add', '.')
+        git('-c', 'user.name=Queue-Test', '-c',
+            'user.email=queue-test@example.invalid', 'commit', '-q', '-m', 'fixture')
+        verified = q.pinned_git_tree_check(src)
+        self.assertEqual(verified['verified_python_files'], 2)
+        self.assertEqual(verified['manifest'], 'PINNED_GIT_TREE')
+        self.assertFalse(verified['precommitted_independent_sha256_manifest'])
+        source.write_text('print("tampered")\n', encoding='utf-8')
+        with self.assertRaisesRegex(q.QueueFailure, 'PINNED_TREE_SOURCE_BLOB_MISMATCH'):
+            q.pinned_git_tree_check(src)
+        source.write_text('print("source")\n', encoding='utf-8')
+        (src / 'rogue.py').write_text('print("untracked")\n', encoding='utf-8')
+        with self.assertRaisesRegex(q.QueueFailure, 'PINNED_TREE_PYTHON_SET_MISMATCH'):
+            q.pinned_git_tree_check(src)
 
     def test_duplicate_pr_refused(self):
         bad = copy.deepcopy(self.queue)
