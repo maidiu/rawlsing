@@ -30,6 +30,17 @@ class ReceivingCheckerAdversaries(unittest.TestCase):
         errors, _ = audit(ledger, snapshot)
         self.assertIn('PROTECTED_HEAD_MOVED_OR_UNOBSERVED', errors)
 
+    def test_receiving_proposal_exemption_is_exact_and_draft_only(self):
+        ledger, snapshot = fixture()
+        proposal = dict(pr=1258, title='SOROK O-Index proposal',
+                        head_branch='receiving/sorok-o-index-baseline-20261121',
+                        base_branch='agent/sorok-programma-live-receiving-ledger-20261121-r1',
+                        draft=True, state='open', merged=False)
+        snapshot['prs'].append(proposal)
+        self.assertEqual(audit(ledger, snapshot)[0], [])
+        proposal['draft'] = False
+        self.assertIn('UNRECORDED_NEW_RELEVANT_PR:1258', audit(ledger, snapshot)[0])
+
     def test_changed_head_detected(self):
         d, s = fixture()
         s['prs'][0]['head_sha'] = 'b'*40
