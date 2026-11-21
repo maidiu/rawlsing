@@ -7,6 +7,9 @@
 
 ### G4 ONE-TIME RECONCILIATION — exact-source candidate and fast functional stop-off
 
+**Inherited historical scientific/consumer adjudications:** [VMESTYE R17, ZAK02/03/04, VOSKRES T/S/M, K1–K3, ANVIL, DHIKR source-graded function and wrong-reader court](G4_ONCE_INHERITED_RESEARCH_EFFECTS_20261120_R1.md) — preserve recovered positive producers, actual consumption deficits and unadopted proposals; read before any claim the corresponding function is absent. This is supplementary evidence *within G4*, not a new authority or a second inventory.
+
+
 **2026-11-20 independent documentary author candidate, NOT protected receiving.** The newer [PR #1226](https://github.com/maidiu/rawlsing/pull/1226) commission **withdraws the proposed fresh full-source manual reaudit**; this repair reuses pinned G1-A (71 assets / 28 functions / nine unresolved), G1-B (161 assets / 57 functional/caller observations / 35 seams / seven unresolved, only 32 central code bodies directly inspected), G1-C (93 assets / 384 memberships / 47 edges), and W1-H (39 input files / 467 source references / **164 ambiguous or unjoined assertions**). Original G4 identities and statuses must survive. Their evidence exists in [INPUT_CUTS.md](INPUT_CUTS.md). **No unknown historical function is 'missing' merely because it was not reopened in this pass.**
 
 **Live reference cuts:** protected PRE-MAIN `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`; initial commission `259ab30ae7117914e36706f42b3ae22970e16722`; changed PR #1226 draft `ab2e5b2ce6f29972dbff6971c29e488c17504e73` (commission amendment, not protected authority). The project still has protected PYAT progress rev11. **Source code present, actual caller, author test, distinct independent review, protected adoption, native original source/science/actor rights, and real terminal consumer are independent dimensions.**
