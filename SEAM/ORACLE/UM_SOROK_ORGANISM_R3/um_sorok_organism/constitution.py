@@ -5,6 +5,7 @@ from .types import Constitution, Situated, AccessibleEncounter, copy
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
+from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
 from .world import _qualified_members
 import math
@@ -18,7 +19,10 @@ def materialize(actor,world):
         composition_methods=copy(actor.get('composition_methods',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
-        relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
+        relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])),
+        relational_motifs=copy(actor.get('relational_motifs',[])),
+        possible_ends=copy(actor.get('possible_ends',[])),
+        evidence_paths=copy(actor.get('evidence_paths',[])))
 
 
 def actor_access(actor,world):
@@ -141,12 +145,47 @@ def compose(constitution,access,limit=50):
     vetoed={l['target'] for l in negative if l['source'] in potentially_active}
     inhibited.extend(sorted(vetoed))
     active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
+    # A historically acquired relational configuration can recruit an already
+    # acquired form even without its ordinary cue. It cannot revive a vetoed
+    # direct action, bypass body/scope, or invent a form. Keep the inhibited
+    # source available for *indirect* mediation, not for direct performance.
+    relational=derive_relational_metabolism(constitution,access,active,inhibited)
+    for candidate in relational['recruitment_candidates']:
+        target=candidate['target_form']
+        if target in qualified and target not in vetoed and target not in active:
+            active[target]=copy(forms[target])
+            currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
+                'ref':target,'motif_ref':candidate['motif_ref'],
+                'had_inhibited_source':candidate['had_inhibited_source'],
+                'grade':relational['grade']})
+    relational=derive_relational_metabolism(constitution,access,active,inhibited)
+    currents.extend(relational['currents'])
     # History-made links to activities can recruit an ongoing project under
     # a new cue. Its object/motive remains separate from its possible means.
     projects=eligible_activities(constitution,active.keys(),access)
     # Trace reads are only admitted trace references, not recovered episodic memory.
     traces=[t for t in constitution.traces if set(t.get('cue_terms',[]))&(cues|project_tags)]
     for t in traces[:limit]:currents.append({'kind':'NONDECLARATIVE_TRACE','ref':t['id'],'manifestation':t.get('manifestation','uninterpreted')})
+    # A historically noticed possibility and a remembered sensory path can
+    # become relevant without becoming an acquired motive, new memory, or
+    # privileged claim about the objective environment.
+    candidate_history_refs=set()
+    for end in constitution.possible_ends:
+        if end.get('status')!='POSSIBLE_NOT_ACQUIRED_MOTIVE':continue
+        if set(str(x).lower() for x in end.get('cue_terms',[])) & cues:
+            candidate_history_refs.add(end['id'])
+            currents.append({'kind':'HISTORICALLY_NOTICED_POSSIBLE_END',
+                'ref':end['id'],'actual_origin_event':end['origin_event'],
+                'possible_object_for_analytic_construction':end['possible_object'],
+                'not_automatically_an_active_motive':True})
+    for old in constitution.evidence_paths[-64:]:
+        if set(str(x).lower() for x in old.get('received_cue_tags',[])) & cues:
+            candidate_history_refs.add(old['experience_ref'])
+            currents.append({'kind':'HISTORICAL_SIGNAL_PATH_REENCOUNTERED',
+                'ref':old['experience_ref'],'old_operation':old.get('own_action'),
+                'old_selected_project_refs':copy(old.get('selected_project_refs',[])),
+                'not_imputed_counterfactual':True,
+                'no_automatic_belief_update':True})
     for field in constitution.relations:
         if 'REPEATED_JOINT_ACT_OBSERVED' in field.get('observed_patterns',[]):
             counterpart=[x for x in field['participants'] if x!=constitution.actor]
@@ -181,6 +220,13 @@ def compose(constitution,access,limit=50):
                 q['score']+=.4*p.get('priority',.5);q['basis'].append('project:'+p['id'])
                 q.setdefault('practical_objects',[]).append(p['object'])
                 q.setdefault('motive_hypotheses',[]).append(p.get('motive','UNKNOWN'))
+                q.setdefault('project_courses',[]).append({
+                    'project_id':p['id'],'object':p['object'],
+                    'motive_hypothesis':p.get('motive','UNKNOWN'),
+                    'priority':p.get('priority',.5),
+                    'recruitment_basis':copy(p.get('recruitment_basis',[])),
+                    'course_grade':'AVAILABLE_PURPOSE_NOT_SELECTED_INTENT'})
+                q['pooled_basis_is_not_actor_selected_purpose']=True
     # Developmentally rudimentary orienting and self-preserving actions remain possible
     # even with no acquired conceptual operations.
     for a in ('WAIT','REST','ORIENT','SIGNAL'):
@@ -192,7 +238,7 @@ def compose(constitution,access,limit=50):
         if a=='REST' and constitution.body['rest']<.45:q['score']+=1.0
         if a=='EAT' and constitution.body['nutrition']<.5:q['score']+=1.0
         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
-    dynamics=enact_currents(constitution,access,active,actions.values())
+    dynamics=enact_currents(constitution,access,active,actions.values(),relational=relational)
     currents+=dynamics['currents']
     # These effects are *derived* from present bodily state and historically
     # acquired forms, never silently committed as an event or a new mind state.
@@ -203,6 +249,6 @@ def compose(constitution,access,limit=50):
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
-       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts)),
+       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts+relational['readset']+list(inhibited)+list(candidate_history_refs))),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)

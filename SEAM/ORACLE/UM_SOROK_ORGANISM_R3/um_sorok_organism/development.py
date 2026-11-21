@@ -7,6 +7,7 @@ objective world fact or another actor's state here.
 from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
+from .relational_metabolism import admit_motif, validate_motif, link_ref, RELATIONS as RELATIONAL_RELATIONS
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -20,7 +21,8 @@ def _text_list(value, error):
 ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
-         'ACQUIRE_COMPOSITION_METHOD','NO_CHANGE'}
+         'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF','REVALUE_RELATION',
+         'REORGANIZE_RELATIONAL_MOTIF','NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 RELATIONS={'RECRUITS','SUPPORTS','INHIBITS','COMPETES','DERIVED_FROM','CONTRADICTS'}
 
@@ -66,6 +68,44 @@ def _admit_in_place(actor,experience,event_ref,candidates):
         op=c.get('kind')
         if op not in ALLOWED: raise InvalidDevelopment('UNKNOWN_PSYCHIC_OPERATION')
         if op=='NO_CHANGE':report.append({'kind':op,'status':'VALID_NO_CHANGE'});continue
+        if op=='ACQUIRE_RELATIONAL_MOTIF':
+            try:
+                motif=admit_motif(actor,c,event_ref,experience,idx)
+            except ValueError as e: raise InvalidDevelopment(str(e)) from e
+            actor.setdefault('relational_motifs',[]).append(motif)
+            report.append({'kind':op,'motif':motif['id'],
+                'status':'ADMITTED_SOURCEFREE_RELATIONAL_FORMATION'})
+            continue
+        if op=='REVALUE_RELATION':
+            ref=c.get('relation_id')
+            row=next((x for x in actor['links'] if link_ref(x)==ref),None)
+            if row is None or c.get('new_relation') not in RELATIONAL_RELATIONS:
+                raise InvalidDevelopment('UNQUALIFIED_RELATION_REVALUATION')
+            row.setdefault('relational_history',[]).append({'event':event_ref,
+                'relation':row['relation'],'revised_relation':c['new_relation'],
+                'experience_ref':experience['ref']})
+            row['id']=ref
+            row['relation']=c['new_relation']
+            report.append({'kind':op,'relation':ref,
+                'status':'ADMITTED_SOURCEFREE_RELATIONAL_REVALUATION'})
+            continue
+        if op=='REORGANIZE_RELATIONAL_MOTIF':
+            mid=c.get('motif_id')
+            old=next((m for m in actor.get('relational_motifs',[]) if m['id']==mid),None)
+            if old is None:raise InvalidDevelopment('UNKNOWN_RELATIONAL_MOTIF')
+            proposal=copy(old)
+            for key in ('effects','cue_terms','locations','status'):
+                if key in c:proposal[key]=copy(c[key])
+            try:validate_motif(proposal,actor['forms'])
+            except ValueError as e:raise InvalidDevelopment(str(e)) from e
+            old.setdefault('motif_history',[]).append({'event':event_ref,
+                    'experience_ref':experience['ref'],
+                    'previous':{k:copy(old.get(k)) for k in ('effects','cue_terms','locations','status')}})
+            for key in ('effects','cue_terms','locations','status'):
+                if key in c:old[key]=copy(c[key])
+            report.append({'kind':op,'motif':mid,
+                'status':'ADMITTED_SOURCEFREE_RELATIONAL_REORGANIZATION'})
+            continue
         evidence={'event':event_ref,'actor':actor['id'],'experience_ref':experience['ref'],
                   'grade':GRADE,'semantic_hypothesis':True}
         if op in ('ADD_FORM','DIFFERENTIATE'):
@@ -170,6 +210,96 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor['forms'][ident]['lifecycle']='DORMANT' if op=='SET_DORMANT' else 'ACTIVE'
             actor['forms'][ident].setdefault('changes',[]).append(evidence)
             report.append({'kind':op,'form':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='NOTICE_POSSIBLE_END':
+            # A newly noticed effect is a candidate END, not the aim of the
+            # first action and not yet an enduring motive.
+            ref=c.get('perceived_cue_ref')
+            received={q.get('id') for q in experience.get('perceived_cues',[])
+                      if isinstance(q,dict) and type(q.get('id')) is str}
+            if type(ref) is not str or ref not in received:
+                raise InvalidDevelopment('POSSIBLE_END_MUST_DERIVE_FROM_ACTOR_RECEIVED_SIGN')
+            obj=c.get('possible_object')
+            if type(obj) is not str or not obj.strip() or len(obj)>512:
+                raise InvalidDevelopment('INVALID_POSSIBLE_END_DESCRIPTION')
+            possible=c.get('possible_means',[])
+            if (type(possible) is not list or not 1<=len(possible)<=8 or
+                    any(type(x) is not str or x not in ACTIONS for x in possible) or
+                    len(set(possible))!=len(possible)):
+                raise InvalidDevelopment('POSSIBLE_END_MEANS_NOT_QUALIFIED')
+            cues=c.get('cue_terms',[])
+            _text_list(cues,'INVALID_POSSIBLE_END_CUES')
+            if len(cues)>16:raise InvalidDevelopment('POSSIBLE_END_CUES_UNBOUNDED')
+            end_id=stable_id('possible_end',{'actor':actor['id'],'event':event_ref,
+                'cue':ref,'index':idx,'object':obj})
+            if any(e['id']==end_id for e in actor.get('possible_ends',[])):
+                raise InvalidDevelopment('DUPLICATE_POSSIBLE_END')
+            end={'id':end_id,'possible_object':obj,
+                 'possible_means':copy(possible),'cue_terms':copy(cues),
+                 'status':'POSSIBLE_NOT_ACQUIRED_MOTIVE',
+                 'origin_event':event_ref,'experience_ref':experience['ref'],
+                 'actor_perceived_cue_ref':ref,
+                 'eliciting_actor_action':experience.get('own_action'),
+                 'initial_event_intent_not_rewritten':True,
+                 'actual_consequence_not_identified_by_actor_perception':True,
+                 'meaning_hypothesis_not_empirical_learning_law':True,
+                 'grade':GRADE}
+            actor.setdefault('possible_ends',[]).append(end)
+            report.append({'kind':op,'possible_end':end_id,
+                           'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op=='TAKE_UP_POSSIBLE_END':
+            ref=c.get('possible_end_ref')
+            ends=[e for e in actor.get('possible_ends',[]) if e.get('id')==ref]
+            if len(ends)!=1:raise InvalidDevelopment('UNKNOWN_OR_AMBIGUOUS_POSSIBLE_END')
+            end=ends[0]
+            if (end['status']!='POSSIBLE_NOT_ACQUIRED_MOTIVE' or
+                    end['origin_event']==event_ref):
+                raise InvalidDevelopment('POSSIBLE_END_CANNOT_RETROACTIVELY_BECOME_INTENT')
+            later_received={q.get('id') for q in experience.get('perceived_cues',[])
+                if isinstance(q,dict) and type(q.get('id')) is str}
+            claimed=c.get('later_perceived_cue_ref')
+            if (claimed is not None and (type(claimed) is not str or
+                    claimed not in later_received)):
+                raise InvalidDevelopment('TAKEUP_SIGN_NOT_ACTOR_RECEIVED')
+            if claimed is None and len(later_received)==1:
+                claimed=next(iter(later_received))
+            evidence_take={
+                'later_event':event_ref,'later_experience_ref':experience['ref'],
+                'actual_received_sign_refs':sorted(later_received),
+                'later_received_sign_ref':claimed,
+                'sign_selection_grade':('LLM_PROPOSED_ACTOR_RECEIVED_SIGN'
+                     if 'later_perceived_cue_ref' in c else
+                     'SINGLE_ACTOR_RECEIVED_SIGN_PROVISIONAL' if claimed
+                     else 'LATER_EXPERIENCE_SIGN_UNSPECIFIED'),
+                'not_a_proven_causal_significance':True,
+                'not_actor_self_account':True,
+                'unobserved_alternatives':'UNKNOWN_NOT_OBSERVED'}
+            requested=c.get('means',end['possible_means'])
+            if (type(requested) is not list or not requested or
+                any(type(m) is not str or m not in end['possible_means'] for m in requested)
+                or len(set(requested))!=len(requested)):
+                raise InvalidDevelopment('UNLICENSED_TAKEUP_MEANS')
+            priority=c.get('priority',.35);validate_activity_priority(priority)
+            project_id=stable_id('emergent_project',{
+                 'actor':actor['id'],'candidate':ref,'event':event_ref})
+            if any(p['id']==project_id for p in actor['projects']):
+                raise InvalidDevelopment('DUPLICATE_EMERGENT_PROJECT')
+            project={'id':project_id,'object':end['possible_object'],
+                'motive':'EMERGENT_PROVISIONAL_END_NOT_INFERRED_FROM_INITIAL_ACT',
+                'means':copy(requested),'cue_terms':copy(end['cue_terms']),
+                'status':'active','priority':priority,'contextual_only':False,
+                'origin':[end['origin_event'],event_ref],
+                'possible_end_ref':ref,'takeup_evidence':copy(evidence_take),
+                'skill_mastery_not_inferred':True,
+                'original_attempt_purpose_not_rewritten':True,
+                'grade':GRADE}
+            actor['projects'].append(project)
+            end.setdefault('subsequent_takeup',[]).append({
+                'event':event_ref,'experience_ref':experience['ref'],
+                'takeup_evidence':copy(evidence_take),'project_ref':project_id,
+                'grade':GRADE})
+            end['status']='TAKEN_UP_AS_PRACTICAL_PROJECT'
+            report.append({'kind':op,'project':project_id,'possible_end':ref,
+                  'status':'ADMITTED_FICTIONAL_LATER_END_TAKEUP'})
         elif op=='ADD_PROJECT':
             project=copy(c.get('project',{}))
             if not project.get('object') or not isinstance(project.get('means'),list):
