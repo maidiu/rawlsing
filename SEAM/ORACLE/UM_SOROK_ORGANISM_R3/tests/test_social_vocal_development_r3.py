@@ -17,6 +17,11 @@ from um_sorok_organism.cultural_mediation import (
 from um_sorok_organism.social_vocal_development import (
     conserve_reciprocated_vocal_turn,possible_vocal_coordination)
 from um_sorok_organism.development import admit,InvalidDevelopment
+from um_sorok_organism.runtime import ConstitutiveRuntime
+from um_sorok_organism.semantics import (
+    HeuristicSemanticProvider,CallbackLLMProvider,ValidatingSemanticService)
+import tempfile
+from pathlib import Path
 
 
 def stage_public_object_speech(child):
@@ -167,6 +172,59 @@ class ActualSocialVocalDevelopment(unittest.TestCase):
                          "father")
         self.assertEqual(cue["spoken_content"],
                          "NOT_CAPTURED_OR_RECONSTRUCTED")
+
+
+
+class JoinedIndependentAdultSpeechAndInfantVocalHistory(unittest.TestCase):
+    def test_actual_world_speaker_different_from_child_self_and_independent_reply(self):
+        seed={
+            "source_ref":"SOURCEFREE_INDEPENDENT_ADULT_STAGED_SPEECH",
+            "answers":{"not_original_PYAT":"fictional_for_world_court"},
+            "fictional_seed":{"projects":[{"object":"continuing situated vocal activity",
+                "means":["SPEAK"],"priority":.2,"cue_terms":["home"]}]}}
+        original=HeuristicSemanticProvider()
+        def other_policy(task,packet):
+            # Deliberately separate adult provider call and actual speaking
+            # from the child's requester. No caller can author adult consent.
+            if (task=="actor_attempt" and
+                packet.get("requesting_actor")=="nadia" and
+                packet.get("requesting_action")=="SIGNAL" and
+                packet.get("actor",{}).get("id")=="father"):
+                return {"task":"actor_attempt","action":"SPEAK",
+                        "project_id":None,
+                        "purpose_selection_grade":"INDEPENDENT_SOURCEFREE_ADULT_RESPONSE"}
+            return original.propose(task,packet)
+        with tempfile.TemporaryDirectory() as folder:
+            runtime=ConstitutiveRuntime(
+                str(Path(folder)/"real_vocal_world.sqlite"),
+                semantic=ValidatingSemanticService(CallbackLLMProvider(
+                    other_policy)))
+            try:
+                runtime.initialize([("father","Father",seed),
+                                    ("mother","Mother",seed)])
+                making=runtime.step(
+                    "father",requested_action="MAKE_OBJECT")
+                self.assertEqual(making["status"],"PERFORMED")
+                obj=next(iter(runtime.ledger.world("w1")[1]["material_objects"]))
+                reference=runtime.step(
+                    "father",requested_action="SPEAK",object_ref=obj)
+                self.assertEqual(reference["status"],"PERFORMED")
+                first=runtime.snapshot("nadia")
+                self.assertEqual(len(first["cultural_demonstrations"]),1)
+                exchange=runtime.step(
+                    "nadia",requested_action="SIGNAL",target="father")
+                self.assertEqual(exchange["status"],"PERFORMED")
+                self.assertEqual(exchange["coactor"],"SPEAK")
+                child=runtime.snapshot("nadia")
+                self.assertEqual(len(child["vocal_turn_experiences"]),1)
+                self.assertEqual(child["vocal_turn_experiences"][0][
+                    "independently_responding_other_ref"],"father")
+                self.assertEqual(child["body"]["language"],0.)
+                self.assertEqual(child["role"],"child")
+                self.assertEqual(child["projects"],[])
+                self.assertTrue(runtime.verify()["valid"])
+            finally:
+                runtime.close()
 
 
 if __name__=="__main__":
