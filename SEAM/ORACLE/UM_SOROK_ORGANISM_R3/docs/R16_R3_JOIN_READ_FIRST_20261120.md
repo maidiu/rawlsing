@@ -1,3 +1,44 @@
+# SORACLE builder repair after executed #1234 RED — November 21, 2026
+
+**EVIDENCE CLASS: `EXECUTED_AT_SHA` RED for the immutable original `dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b`; `COMMITTED_UNTESTED` for the successor source commits below.** Do not transfer the earlier RED to the new HEAD as a new execution result; equally, do not claim that the old RED has disappeared.
+
+**Independent local-machine return:** [#1234 exact RED](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058012755), Python 3.11.3. The original joined candidate compiled, but normal and optimized unittest discover each reported 524 tests, 27 failures and 51 errors. Pytest failed collection with two unqualified imports. R17/P018 source raised untyped `KeyError: 'world'`; actor-issued R13 trial returned `NO_ACTION_OR_PRACTICAL_OPTION`; both 14-day Nadia counterfactual branches hit `TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE`; older R6/R8/R11/R12/R14/R4 tests exposed dropped source contracts. This is actual source integration RED, not GitHub Actions' earlier zero-step runner failure.
+
+## Builder-owned direct source corrections, after original RED
+
+The following changes were committed to **existing** SORACLE owners and inherited tests. Their presence is verified by GitHub branch commits but their complete Python integration has **not yet run**:
+
+1. **P018 typed historical source preflight:** `storage.py` is exactly the newer REMONT R17 blob `75087ed57c3a39d82b9ded5ebf8123f949e54c21` from [R17 #1230](https://github.com/maidiu/rawlsing/pull/1230) `bd023cccea8912913ace132600c69a97b0eb6a44`, not older R18 blob `a89be36d3fe74b46f94a572be4db77941d7d9083`. Retains R17 independent source and chain preflight, now with typed malformed envelope failure. This is *source inheritance*, not proof of joined runtime parity.
+2. **R13/R11 live trial-ID action selection:** `semantics.py::ValidatingSemanticService` now accepts exactly a typed `possible_end_trial_id` without a redundant `action`. The existing `runtime._actor_plan` still independently resolves the ID against the actor's own presently issued trial options, rejects unknown/ambiguous identity, mixed practical option, mismatch action and forbidden project attribution.
+3. **One material thing, several psychological representations:** `runtime._bind_actor_trial_particular_object` binds one exact visible `source_material_object_ref` when R3 carries both ordinary/object-neutral and culturally learned practical alternatives for the *same* objective thing. This preserves physical identity and does not convert heard cultural meaning into a conscious end. Reject two unresolved neutral candidates, foreign objects, and mismatched project/operation. Four added joined negative/positive tests make the distinction executable.
+4. **R8 P066/P067/P071 source guard conservation:** `world.py::add_cue` inherits R18 typed/no-mutation modality/tags/finite threshold guards. `constitution.py::actor_access` inherits finite embodied sensor preflight and malformed historical cue fail-closed filters **without** replacing newer R3 co-present Others, cultural objects, institutional opportunities, posted notices or situated action options.
+5. **R8 P064/P065/P068 compressed life and project context:** `development.py::recurring_provisional_growth` now uses R18's actor-ID-qualified, typed, all-or-nothing sourcefree period receipt and refuses no-effect scope change. `ADD_PROJECT` and `REORGANIZE_PROJECT` only accept actual boolean `contextual_only`; no string-as-bool dormant-state fabrication. All other newer R3 developmental operations remain in place.
+6. **R14/R18 selected-purpose history:** `activity.py` retains R18 existence/means validation for *all* selected projects and R3 actual projectless exploratory purpose; it restores the previously issued `ACTIVITY_PURPOSE_BASIS_CONTRADICTION` diagnostic for forged/mismatched selected-purpose envelopes.
+7. **R4 fictional relational actor construction:** `semantics.py::HeuristicSemanticProvider.adult_constructor` reuses the prior R18 seed-index correspondence for explicitly fictional `relational_motifs`. Only explicitly fictional acquired forms are eligible source indices; source indices and relation-effect references are validated before becoming operative. `parents.construct_parent` remains the actual typed validating owner; no respondent unconscious-truth inference is made.
+8. **Test sources:** R6 parent `answers={}` fixture was invalid under the current original pseudo-respondent qualifier and now uses an explicitly artificial one-question placeholder (following the already repaired companion). R9 pytest imports are package-qualified. One original R11 test incorrectly rejected *all* practical option IDs after R3 implemented that contract; it now positively tests the typed interface and negatively tests a forged option through the actual world runtime without event mutation.
+9. **New joined first faults:** `tests/test_r3_r18_joined_faults.py` has 20 test methods, four new ones for the R13 semantic and R3 exact material object distinction. Original inherited R4/R6/R8/R11/R12/R14/R17/R18 tests are not muted or removed as a tactic to obtain an artificial green.
+
+**Preserve negative evidence:** the red source `dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b` and [REMONT review](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058012755) are immutable historical receipts. The REMONT [local queue](https://github.com/maidiu/rawlsing/pull/1171) now intentionally defers that historical #1234 SHA in default runs. **Do not silently overwrite its pin or mark new source green.** The next run must freeze the new SORACLE builder code SHA and attach a **separate exact-SHA command/execution receipt**. If an independent REMONT later receives that candidate, it must independently challenge all repaired positive and negative contracts.
+
+## Next exact-head builder execution, no protected promotion
+
+Use a fresh detached worktree at this PR's next final source commit (not the frozen old `dbfb35c`), Python 3.11:
+
+```bash
+cd SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+python3.11 -m compileall -q um_sorok_organism
+python3.11 -m unittest -v tests.test_r3_r18_joined_faults tests.test_r3_r16_joined_first_consumer tests.test_r17_source_preflight tests.test_remontathon_r18_p004_selected_means tests.test_remontathon_r13 tests.test_remontathon_r8 tests.test_remontathon_r14_activity tests.test_relational_metabolism_r4 tests.test_relational_metabolism_r4_integrated tests.test_r11_soracle_integrated tests.test_r12_independent_review_repairs tests.test_intent_and_emergent_ends_r6 tests.test_joined_longitudinal_demo
+python3.11 -O -m unittest -v tests.test_r3_r18_joined_faults tests.test_remontathon_r8 tests.test_remontathon_r13 tests.test_joined_longitudinal_demo
+python3.11 -m unittest discover -s tests -v
+python3.11 -O -m unittest discover -s tests -v
+python3.11 -m pytest -q
+python3.11 -m um_sorok_organism.joined_longitudinal_demo --days 14 --beats 12
+```
+
+Preserve command exit codes, raw stderr/tracebacks, first causal RED, complete failure distribution, real Nadia world/actor history and cold SQLite verification if reachable. Only *then* repair remaining first faults in the same original owners. The working source candidate remains a non-accredited fictional research approximation; no whole-survey PYAT person, empirical psyche calibration, native actor/human rights or protected receiving is issued. **`HQ_CURRENTNESS_HOLD`** on protected SOROK paired PROGRAMMA/CURRENT_PROGRESS writer authority; this dossier and PR comment are isolated candidate currentness, not replacements for the protected pair.
+
+---
+
 # SORACLE builder continuation — R3 × REMONT R18, source-line corrections
 
 **2026-11-21 · COMMITTED_UNTESTED on this joined source; no claim of completed integration.** The original joined read-first record below remains historical, not a report that its listed tests have since passed.
