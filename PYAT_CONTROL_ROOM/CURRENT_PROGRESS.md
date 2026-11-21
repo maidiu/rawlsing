@@ -1,3 +1,9 @@
+# PYAT PROGRESS REV16 — USER-DIRECT BRANCH DISPOSITION AND TEST COURT (2026-11-20)
+
+**Branch cleanup recorded inside existing G4, no duplicate authority.** 14 historical duplicate, out-of-PYAT-scope, superseded or documentation-source PRs were closed with exact protected replacement references and explicit reservations; #1238 remains a held historical reference to unported Q014/R03 source. Existing canonical workflow now attempts a ten-file sourcefree S04/F6 Python regression court, in addition to OATH/source guards. **No actual Python test pass at protected HEAD has been observed**; latest Actions runs failed at 0 steps. User-direct same-agent receiving remains precisely source/document grade and GitHub branch still `protected:false`. Do not turn this report into independent G5, original/native survey or actor scientific permission. The code and G4 state from rev14 and structural guard rev15 remain conserved.
+
+---
+
 # PYAT PROGRESS REV15 — AFFECTED-SOURCE G4 RECEIVING ENFORCEMENT (2026-11-20)
 
 **COMMITTED structural checker source, not demonstrated required-branch enforcement.** User-authorized direct installation into EXISTING `programma-canonical-pre-main.yml` of affected-function/G4 and paired CURRENT_PROGRESS change test, supporting push and PR exact source diffs; no new inventory. The checker exact Git blob `c136adda7a6b0ff5853f15327ed18e14c786ea38` matches a local Python fixture whose 6/6 positive/negative tests executed successfully. This does **not** validate S04/F6 production Python or assert the GitHub workflow ran: preceding rev14 Actions failed with **zero recorded steps**, logs unavailable. GitHub API reports branch `protected:false`; no required check configured by this transaction. OATH, G4, rev14 code and rev12 REMONT remain unchanged and present.

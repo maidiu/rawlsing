@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+> **CURRENT RECEIVING — REV16 USER-DIRECT BRANCH FATES AND SOURCEFREE COURT:** Old duplicate/out-of-scope/superseded PRs were closed with replacement source identities; the sole retained Q014/R03 source reference #1238 is OPEN only for unported functions, not as a 356-commit candidate to merge wholesale. Exact fates are appended to existing `INDEX.jsonl` record `ROADMAP:S04`, never an extra registry. Existing canonical workflow now carries a targeted 10-test Python sourcefree execution command, **NOT YET OBSERVED RUNNING**; prior rev14/rev15 Actions had zero recorded steps and unavailable job logs. Branch `protected:false` remains, no REQUIRED check claim. Existing G4 IDs/counts unchanged. 
+
+
 > **CURRENT RECEIVING GUARD — USER-DIRECT REV15:** Existing `programma-canonical-pre-main.yml` now invokes `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py` on PR/push with an exact base SHA; it checks affected PYAT code paths against a changed EXISTING G4 INDEX row and same-event paired CURRENT_PROGRESS MD/JSON revision increment. Six pure-decision self-test cases ran in an isolated Python container against the byte-identical uploaded script blob `c136adda7a6b0ff5853f15327ed18e14c786ea38` (6/6 PASS). This **does not prove repository CI execution, semantic functional equivalence or branch-required enforcement**; previous Actions job had zero steps and unreadable logs, and branch API reported `protected:false`. No parallel inventory or extra approval committee was created. 
 
 

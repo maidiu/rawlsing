@@ -97,3 +97,18 @@ jobs:
           fi
           git cat-file -e "${BASE_SHA}^{commit}"
           python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py --base "$BASE_SHA"
+
+      - name: PYAT S04 F6 sourcefree regression court
+        run: |
+          python3 -m pip install --disable-pip-version-check -q pytest pyarrow numpy pandas
+          PYTHONPATH=. python3 -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_s04_observed_research.py \
+            rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py \
+            rawlsing_next/tests/test_preff_c3_dhikr_comparative.py \
+            rawlsing_next/tests/test_pre553_s04_determinicity_cycle.py \
+            rawlsing_next/tests/test_pre553_s04_country_refinement.py \
+            rawlsing_next/tests/test_pre553_s04_country_multinational_scope.py \
+            rawlsing_next/tests/test_pre553_source_country_registry_adapter.py \
+            rawlsing_next/tests/test_pre553_s04_support_noise_admission.py \
+            rawlsing_next/tests/test_pre553_s04_partially_identified_repertoire.py \
+            rawlsing_next/tests/test_pre553_s04_uncertain_repertoire.py
