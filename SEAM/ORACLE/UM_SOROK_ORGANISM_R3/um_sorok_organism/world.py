@@ -540,7 +540,19 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='SIGNAL':
         output='NONVERBAL_SIGNAL'
     elif attempt.action=='SPEAK':
-        output='SPEECH_PERFORMED'
+        if attempt.object_ref is None:
+            output='SPEECH_PERFORMED'
+        else:
+            # Publicly referring to a thing requires a thing that is
+            # materially THERE. The simulation does not know the word said
+            # or the speaker's inner intention, only the enacted conjunction.
+            referred=[obj for obj in material_objects_present(world,loc)
+                if obj.get('id')==attempt.object_ref]
+            if len(referred)==1:
+                output='SPEECH_WITH_PRESENT_MATERIAL_OBJECT'
+            else:
+                status='PARTIAL'
+                output='ATTEMPTED_SPEECH_ABOUT_UNAVAILABLE_OBJECT'
     elif attempt.action=='ASK':
         output='REQUEST_EXPRESSED_NOT_AUTOMATICALLY_ACCEPTED'
     elif attempt.action=='REFUSE':output='ACTOR_REFUSED'
@@ -643,6 +655,17 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         if worked_material_object and worked_material_object.get('object_ref'):
             sign['material_object_ref']=worked_material_object['object_ref']
             sign['actor_sensed_object_not_full_object_provenance']=True
+        if (attempt.action=='SPEAK' and status=='PERFORMED'
+                and output=='SPEECH_WITH_PRESENT_MATERIAL_OBJECT'):
+            # In the objective world this speaker enacted speech in the
+            # presence of a particular visible material thing. A listener
+            # may hear the public sign; no actual lexical token, original
+            # message, teaching motive or lexical competence is inferred.
+            sign['material_object_ref']=attempt.object_ref
+            sign['actual_spoken_object_demonstration']=True
+            sign['spoke_about_material_object_without_encoded_word']=True
+            sign['unobserved_semantic_content']='NOT_RECONSTRUCTED'
+            sign['tags']+=['public_object_reference','object_present']
         if (attempt.action=='SIGNAL' and status=='PERFORMED'
                 and partner_attempt is not None and partner_valid
                 and partner_attempt.action in ('CARE','FEED')
