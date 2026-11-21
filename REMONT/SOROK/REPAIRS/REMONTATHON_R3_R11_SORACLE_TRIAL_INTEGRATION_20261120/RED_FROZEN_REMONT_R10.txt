@@ -1,0 +1,55 @@
+test_r10_one_world_event_cannot_be_forged_as_two_trial_selections (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_one_world_event_cannot_be_forged_as_two_trial_selections)
+Without a frozen one-ticket proof, two forged options both enter. ... FAIL
+test_r10_semantic_candidate_cannot_mint_trial_after_world_settlement (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_semantic_candidate_cannot_mint_trial_after_world_settlement)
+An actual SING does NOT authorize retrospective trial purpose. ... FAIL
+test_r10_valid_trial_only_llm_choice_must_reach_runtime_issuer (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_valid_trial_only_llm_choice_must_reach_runtime_issuer)
+An issued trial ID is sufficient to identify its operation in runtime. ... ERROR
+
+======================================================================
+ERROR: test_r10_valid_trial_only_llm_choice_must_reach_runtime_issuer (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_valid_trial_only_llm_choice_must_reach_runtime_issuer)
+An issued trial ID is sufficient to identify its operation in runtime.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_frozen/tests/test_soracle_r10_remont_faults.py", line 28, in test_r10_valid_trial_only_llm_choice_must_reach_runtime_issuer
+    chosen = service.proposal('actor_attempt', {'options': []})
+  File "/mnt/data/sorok_r10_frozen/um_sorok_organism/semantics.py", line 223, in proposal
+    if task=='actor_attempt' and 'action' not in out:raise ValueError('NO_ACTION')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: NO_ACTION
+
+======================================================================
+FAIL: test_r10_one_world_event_cannot_be_forged_as_two_trial_selections (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_one_world_event_cannot_be_forged_as_two_trial_selections)
+Without a frozen one-ticket proof, two forged options both enter.
+----------------------------------------------------------------------
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_frozen/tests/test_soracle_r10_remont_faults.py", line 85, in test_r10_one_world_event_cannot_be_forged_as_two_trial_selections
+    with self.assertRaisesRegex(InvalidDevelopment,
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+                                'UNISSUED_POSSIBLE_END_TRIAL'):
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "UNISSUED_POSSIBLE_END_TRIAL" does not match "UNKNOWN_PSYCHIC_OPERATION"
+
+======================================================================
+FAIL: test_r10_semantic_candidate_cannot_mint_trial_after_world_settlement (test_soracle_r10_remont_faults.TrialIssuanceRemont.test_r10_semantic_candidate_cannot_mint_trial_after_world_settlement)
+An actual SING does NOT authorize retrospective trial purpose.
+----------------------------------------------------------------------
+um_sorok_organism.development.InvalidDevelopment: UNKNOWN_PSYCHIC_OPERATION
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/sorok_r10_frozen/tests/test_soracle_r10_remont_faults.py", line 69, in test_r10_semantic_candidate_cannot_mint_trial_after_world_settlement
+    with self.assertRaisesRegex(InvalidDevelopment,
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+                                'UNISSUED_POSSIBLE_END_TRIAL'):
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "UNISSUED_POSSIBLE_END_TRIAL" does not match "UNKNOWN_PSYCHIC_OPERATION"
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=2, errors=1)

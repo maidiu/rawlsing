@@ -75,14 +75,60 @@ def validate_activity_priority(value):
     return value
 
 
-def admit(actor,experience,event_ref,candidates):
-    """All-or-nothing psychic admission even for a multi-effect LLM proposal.
+def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
+    """Atomic actor-owned admission; an issued trial cannot become its own motive.
 
-    Caller owns an actor object whose identity may be held elsewhere. Validate
-    and apply on a detached candidate, then replace content only after every
-    operation succeeds. A later rejected effect cannot leave an earlier
-    proposed memory, project, or relationship silently installed.
+    Preserve R3's one actual trial recorder and R13/R18's separate issuer
+    and durable-project protections. A semantic candidate is never a ticket.
     """
+    if type(candidates) is not list or any(type(c) is not dict for c in candidates):
+        raise InvalidDevelopment('INVALID_DEVELOPMENT_CANDIDATES')
+    records=[c for c in candidates if c.get('kind')=='RECORD_POSSIBLE_END_TRIAL']
+    if records and (issued_trial is None or len(records)!=1
+                    or records[0].get('trial')!=issued_trial):
+        raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
+
+    if issued_trial is not None:
+        if (type(issued_trial) is not dict
+                or issued_trial.get('actor')!=actor.get('id')):
+            raise InvalidDevelopment('CURRENT_TRIAL_ISSUER_ACTOR_MISMATCH')
+        # An issued exploratory operation cannot mature into a declared
+        # enduring project through a synonymous generic ADD_PROJECT.
+        if any(c.get('kind')=='ADD_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_ACQUIRE_DURABLE_PROJECT')
+        if any(c.get('kind')=='REORGANIZE_PROJECT' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_CANNOT_REORGANIZE_DURABLE_PROJECT')
+        if any(c.get('kind')=='TAKE_UP_POSSIBLE_END' for c in candidates):
+            raise InvalidDevelopment('CURRENT_TRIAL_NOT_MATURE_MOTIVE')
+        # The two inherited ticket identities are both real historical
+        # issuers: R13 used "end"; R3's prospective horizon uses
+        # "possible_end" plus an optional functional bridge. Keep the
+        # exact grammars, not arbitrary model-rehashed ticket strings.
+        identity={'actor':actor['id'],
+                  'clock':issued_trial.get('as_of_clock'),
+                  'operation':issued_trial.get('operation')}
+        valid_ids={
+            stable_id('end_trial', {**identity,
+                'end':issued_trial.get('possible_end_ref')}),
+            stable_id('end_trial', {**identity,
+                'possible_end':issued_trial.get('possible_end_ref'),
+                'functional_bridge':issued_trial.get('functional_bridge_ref')}),
+        }
+        if (type(issued_trial.get('trial_id')) is not str
+                or issued_trial['trial_id'] not in valid_ids):
+            raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
+        # A physical event can be tried for at most one possible end;
+        # copying it into a different end's history cannot multiply lives.
+        if any(t.get('event_ref')==event_ref
+               for end in actor.get('possible_ends',[])
+               for t in end.get('trial_history',[]) if type(t) is dict):
+            raise InvalidDevelopment('POSSIBLE_END_TRIAL_EVENT_ALREADY_CONSUMED')
+        if not records:
+            # A genuine sourcefree direct issuer call still records a trial;
+            # runtime's explicit inserted R3 record is accepted only if it
+            # matches the frozen ticket. Never record it twice.
+            candidates=[{'kind':'RECORD_POSSIBLE_END_TRIAL',
+                         'trial':copy(issued_trial)}]+candidates
     candidate_actor=copy(actor)
     result=_admit_in_place(candidate_actor,experience,event_ref,candidates)
     actor.clear()
@@ -524,6 +570,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if any(not isinstance(op,str) or op not in ACTIONS for op in project['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             validate_activity_priority(project.get('priority',.4))
+            if 'contextual_only' in project and type(project['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
             if 'expected_difference' in project:
                 project['expected_difference']=validate_expected_difference(
                     project['expected_difference'])
@@ -547,6 +595,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if 'means' in c and any(x not in ACTIONS for x in c['means']):
                 raise InvalidDevelopment('UNSUPPORTED_ACTIVITY_MEANS')
             if 'priority' in c:validate_activity_priority(c['priority'])
+            if 'contextual_only' in c and type(c['contextual_only']) is not bool:
+                raise InvalidDevelopment('INVALID_PROJECT_CONTEXTUAL_FLAG')
             if 'cue_terms' in c:_text_list(c['cue_terms'],'INVALID_PROJECT_CUE_TERMS')
             if 'expected_difference' in c:
                 validate_expected_difference(c['expected_difference'])
@@ -604,19 +654,55 @@ def _admit_in_place(actor,experience,event_ref,candidates):
 
 
 def recurring_provisional_growth(actor,period_ref,processes):
-    """No invented microepisodes; only coarse sourced period effects, including null.
-    Repeated activity can provisionally change scope of an *existing* power if
-    explicitly warranted by coverage. This is not a new social memory/event.
+    """Admit only actor-addressed coarse-life effects, all-or-nothing.
+
+    Modelled coverage is NOT an individual experience and may not rewrite a
+    different actor merely because they possess the same reusable form ID.
+    A modeled scope generalization is not an observed microepisode or a law.
     """
+    staged=copy(actor)
     outputs=[]
+    if not isinstance(processes,list):
+        raise InvalidDevelopment('INVALID_PERIOD_PROCESSES')
     for proc in processes:
-        if proc.get('kind')=='practice_access' and proc.get('coverage')=='AGGREGATE_MODELED':
-            fid=proc.get('form_id')
-            if fid in actor['forms'] and proc.get('warrants_scope_change') is True:
-                old=copy(actor['forms'][fid].get('scope',{}))
-                new_locations=sorted(set(old.get('locations',[])+proc.get('locations',[])))
-                actor['forms'][fid]['scope']={**old,'locations':new_locations}
-                actor['forms'][fid].setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
-                    'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
-                outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+        if not isinstance(proc,dict):
+            raise InvalidDevelopment('INVALID_PERIOD_PROCESS')
+        if proc.get('kind')!='practice_access' or proc.get('coverage')!='AGGREGATE_MODELED':
+            continue
+        if proc.get('warrants_scope_change') is not True:
+            continue
+        # A global, unqualified activity-coverage capsule is not a licence to
+        # generalize every similarly named learned form in all family members.
+        claimed_actor=proc.get('actor_id')
+        if not isinstance(claimed_actor,str) or not claimed_actor:
+            raise InvalidDevelopment('PERIOD_PRACTICE_REQUIRES_ACTOR')
+        if claimed_actor!=staged['id']:
+            continue
+        fid=proc.get('form_id')
+        if not isinstance(fid,str) or not fid:
+            raise InvalidDevelopment('INVALID_PERIOD_FORM_REF')
+        if fid not in staged['forms']:
+            # Evidence for an unowned form does not fabricate that form.
+            continue
+        locations=proc.get('locations',[])
+        if (not isinstance(locations,list) or
+                any(not isinstance(place,str) or not place for place in locations)):
+            raise InvalidDevelopment('INVALID_PERIOD_LOCATIONS')
+        form=staged['forms'][fid]
+        old=copy(form.get('scope',{}))
+        try:
+            validate_tendencies({'scope':old})
+        except ValueError as exc:
+            raise InvalidDevelopment('INVALID_PRIOR_FORM_SCOPE') from exc
+        old_locations=old.get('locations',[])
+        novel=sorted(set(old_locations)|set(locations))
+        if set(novel)==set(old_locations):
+            # Period occurred, but the actor's recruitment did not change.
+            continue
+        form['scope']={**old,'locations':novel}
+        form.setdefault('changes',[]).append({'period':period_ref,'grade':GRADE,
+            'type':'AGGREGATE_MODELED_SCOPE_GENERALIZATION'})
+        outputs.append({'kind':'PERIOD_SCOPE_CHANGE','form':fid})
+    actor.clear()
+    actor.update(staged)
     return outputs

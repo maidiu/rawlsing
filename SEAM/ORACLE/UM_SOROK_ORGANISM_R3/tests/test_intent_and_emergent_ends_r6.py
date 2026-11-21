@@ -18,7 +18,7 @@ from um_sorok_organism.types import adult, copy
 
 PARENT={
     'source_ref':'fictional_intention_test_source',
-    'answers':{},
+    'answers':{'SOURCEFREE_FIXTURE_INSTRUMENT':'UNDETERMINED_NOT_AN_EMPIRICAL_ANSWER'},
     'fictional_seed':{
         'projects':[
             {'object':'comfort my child through song',
@@ -81,7 +81,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
                          {'comfort my child through song',
                           'experiment with changing a rhythm'})
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         histories=a['activity_history']
         self.assertEqual(len(histories),1)
         self.assertEqual(histories[0]['practical_object'],
@@ -109,7 +109,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
             return {'task':task,'surface':'song perceived'}
         self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(callback))
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(len(a['activity_history']),2)
         self.assertEqual(
             {x['practical_object'] for x in a['activity_history']},
@@ -124,7 +124,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
     def test_no_model_project_choice_means_unattributed_exploration(self):
         self.provider(include_purpose=False)
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(a.get('activity_history',[]),[])
         evidence=a['evidence_paths'][-1]
         self.assertEqual(evidence['purpose_status'],
@@ -143,11 +143,11 @@ class PurposeAndGenesisR6(unittest.TestCase):
             ValueError,'MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE'):
             self.rt.step('mother')
         self.assertEqual(self.rt.ledger.world()[1]['clock'],before)
-        self.assertEqual(self.rt.snapshot('mother')['activity_history'],[])
+        self.assertEqual(self.rt.ledger.actor('mother')[1]['activity_history'],[])
 
     def test_external_action_injection_does_not_assign_a_project(self):
         self.rt.step('mother',requested_action='SING')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(a['activity_history'],[])
         self.assertEqual(a['evidence_paths'][-1]['purpose_status'],
                          'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE')
@@ -170,9 +170,21 @@ class PurposeAndGenesisR6(unittest.TestCase):
         self.rt.step('mother')
         dev=[p for task,p in packets if task=='development']
         exp=[p for task,p in packets if task=='expression']
-        self.assertEqual(len(dev),1)
+        # A parent's action may be personally witnessed by Nadia; each
+        # actor gets a DIFFERENT developmental packet. There is exactly
+        # one private model proposal for this selected actor, while
+        # observed recipients remain independently permitted to develop.
+        parent_dev=[p for p in dev if p.get('actor',{}).get('id')=='mother']
+        child_dev=[p for p in dev if p.get('actor',{}).get('id')=='nadia']
+        self.assertEqual(len(parent_dev),1)
+        self.assertLessEqual(len(child_dev),1)
         self.assertEqual(len(exp),1)
-        self.assertIn('selected_purpose_analytic_only',dev[0])
+        self.assertIn('selected_purpose_analytic_only',parent_dev[0])
+        self.assertEqual(parent_dev[0]['selected_purpose_analytic_only']['status'],
+                         'ACTOR_POLICY_SELECTED_PROJECT_COURSE')
+        if child_dev:
+            self.assertEqual(child_dev[0]['selected_purpose_analytic_only']['status'],
+                             'NO_ACTOR_AUTHORED_ATTEMPT')
         self.assertNotIn('selected_purpose_analytic_only',exp[0])
         self.assertNotIn('motive_hypothesis',str(exp[0]))
         self.assertNotIn('possible_ends',str(exp[0]))

@@ -70,7 +70,8 @@ class TestR4LedgerCausality(unittest.TestCase):
                 self.alter_world(rt)
                 with self.assertRaisesRegex(Conflict,'UNCOMMITTED_WORLD_STATE'):
                     rt.ledger.seal_source('source_1','SURVEY_TEST',{'yes':True})
-                self.assertIsNone(rt.ledger.source('source_1'))
+                self.assertIsNone(rt.ledger.conn.execute(
+                    "SELECT 1 FROM source_seals WHERE id='source_1'").fetchone())
             finally:rt.close()
 
     def test_p046_deleting_genesis_cannot_be_laundered_by_new_source_seal(self):
@@ -80,7 +81,8 @@ class TestR4LedgerCausality(unittest.TestCase):
                 rt.ledger.conn.execute('DELETE FROM events')
                 with self.assertRaisesRegex(Conflict,'MISSING_LEDGER_GENESIS'):
                     rt.ledger.seal_source('source_1','SURVEY_TEST',{'yes':True})
-                self.assertIsNone(rt.ledger.source('source_1'))
+                self.assertIsNone(rt.ledger.conn.execute(
+                    "SELECT 1 FROM source_seals WHERE id='source_1'").fetchone())
                 self.assertEqual(rt.ledger.events(),[])
             finally:rt.close()
 

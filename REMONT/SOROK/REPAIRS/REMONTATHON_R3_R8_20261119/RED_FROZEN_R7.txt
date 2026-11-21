@@ -1,0 +1,182 @@
+test_r8_p064_actor_specific_period_does_not_rewrite_another_actor (test_remontathon_r8.CompressedLifeR8.test_r8_p064_actor_specific_period_does_not_rewrite_another_actor) ... FAIL
+test_r8_p064_unowned_process_cannot_grow_any_person (test_remontathon_r8.CompressedLifeR8.test_r8_p064_unowned_process_cannot_grow_any_person) ... FAIL
+test_r8_p065_period_growth_candidate_batch_atomic_on_invalid_second (test_remontathon_r8.CompressedLifeR8.test_r8_p065_period_growth_candidate_batch_atomic_on_invalid_second) ... ERROR
+test_r8_p065_valid_period_growth_conserves_original_location (test_remontathon_r8.CompressedLifeR8.test_r8_p065_valid_period_growth_conserves_original_location) ... ok
+test_r8_p064_compressed_runtime_period_scope_change_is_actor_specific (test_remontathon_r8.FurtherR8.test_r8_p064_compressed_runtime_period_scope_change_is_actor_specific) ... FAIL
+test_r8_p066_malformed_historical_cue_must_not_poison_recruitment (test_remontathon_r8.FurtherR8.test_r8_p066_malformed_historical_cue_must_not_poison_recruitment) ... FAIL
+test_r8_p067_nan_threshold_must_not_admit_sensory_artifact (test_remontathon_r8.FurtherR8.test_r8_p067_nan_threshold_must_not_admit_sensory_artifact) ... FAIL
+test_r8_p069_no_actual_scope_expansion_is_not_a_developmental_event (test_remontathon_r8.FurtherR8.test_r8_p069_no_actual_scope_expansion_is_not_a_developmental_event) ... FAIL
+test_r8_p068_contextual_only_string_false_must_not_make_project_dormant (test_remontathon_r8.ProjectAdmissionR8.test_r8_p068_contextual_only_string_false_must_not_make_project_dormant) ... FAIL
+test_r8_p068_reorganize_contextual_flag_bool_only_and_atomic (test_remontathon_r8.ProjectAdmissionR8.test_r8_p068_reorganize_contextual_flag_bool_only_and_atomic) ... FAIL
+test_r8_p068_valid_false_flag_keeps_project_available (test_remontathon_r8.ProjectAdmissionR8.test_r8_p068_valid_false_flag_keeps_project_available) ... ok
+test_r8_p066_bad_runtime_cue_does_not_commit_or_poison_recruitment (test_remontathon_r8.SensoryIngressR8.test_r8_p066_bad_runtime_cue_does_not_commit_or_poison_recruitment) ... FAIL
+test_r8_p066_nontext_cue_tag_refused_prior_to_canon (test_remontathon_r8.SensoryIngressR8.test_r8_p066_nontext_cue_tag_refused_prior_to_canon) ... FAIL
+test_r8_p066_string_tags_cannot_expand_into_individual_characters (test_remontathon_r8.SensoryIngressR8.test_r8_p066_string_tags_cannot_expand_into_individual_characters) ... FAIL
+test_r8_p067_negative_threshold_refused_before_issuing_observation (test_remontathon_r8.SensoryIngressR8.test_r8_p067_negative_threshold_refused_before_issuing_observation) ... FAIL
+test_r8_p067_sensor_level_must_not_be_bypassed_by_case_or_unknown_modality (test_remontathon_r8.SensoryIngressR8.test_r8_p067_sensor_level_must_not_be_bypassed_by_case_or_unknown_modality) ... FAIL
+test_r8_p067_unrecognized_modality_must_not_bypass_sensor_gate (test_remontathon_r8.SensoryIngressR8.test_r8_p067_unrecognized_modality_must_not_bypass_sensor_gate) ... FAIL
+test_r8_p067_valid_sensed_cue_and_private_cue_still_recruit (test_remontathon_r8.SensoryIngressR8.test_r8_p067_valid_sensed_cue_and_private_cue_still_recruit) ... ok
+
+======================================================================
+ERROR: test_r8_p065_period_growth_candidate_batch_atomic_on_invalid_second (test_remontathon_r8.CompressedLifeR8.test_r8_p065_period_growth_candidate_batch_atomic_on_invalid_second)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 53, in test_r8_p065_period_growth_candidate_batch_atomic_on_invalid_second
+    recurring_provisional_growth(a,'period1',[valid,invalid])
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/remontathon_r8_old/um_sorok_organism/development.py", line 248, in recurring_provisional_growth
+    new_locations=sorted(set(old.get('locations',[])+proc.get('locations',[])))
+                             ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: can only concatenate list (not "str") to list
+
+======================================================================
+FAIL: test_r8_p064_actor_specific_period_does_not_rewrite_another_actor (test_remontathon_r8.CompressedLifeR8.test_r8_p064_actor_specific_period_does_not_rewrite_another_actor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 34, in test_r8_p064_actor_specific_period_does_not_rewrite_another_actor
+    self.assertEqual(recurring_provisional_growth(b,'period1',[process]),[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'kind': 'PERIOD_SCOPE_CHANGE', 'form': 'shared_form'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'kind': 'PERIOD_SCOPE_CHANGE', 'form': 'shared_form'}
+
+- [{'form': 'shared_form', 'kind': 'PERIOD_SCOPE_CHANGE'}]
++ []
+
+======================================================================
+FAIL: test_r8_p064_unowned_process_cannot_grow_any_person (test_remontathon_r8.CompressedLifeR8.test_r8_p064_unowned_process_cannot_grow_any_person)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 42, in test_r8_p064_unowned_process_cannot_grow_any_person
+    with self.assertRaisesRegex(InvalidDevelopment,'PERIOD_PRACTICE_REQUIRES_ACTOR'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_r8_p064_compressed_runtime_period_scope_change_is_actor_specific (test_remontathon_r8.FurtherR8.test_r8_p064_compressed_runtime_period_scope_change_is_actor_specific)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 182, in test_r8_p064_compressed_runtime_period_scope_change_is_actor_specific
+    self.assertEqual(rt.ledger.actor('b')[1]['forms']['shared_form']['scope']['locations'],['home'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['home', 'workshop'] != ['home']
+
+First list contains 1 additional elements.
+First extra element 1:
+'workshop'
+
+- ['home', 'workshop']
++ ['home']
+
+======================================================================
+FAIL: test_r8_p066_malformed_historical_cue_must_not_poison_recruitment (test_remontathon_r8.FurtherR8.test_r8_p066_malformed_historical_cue_must_not_poison_recruitment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 156, in test_r8_p066_malformed_historical_cue_must_not_poison_recruitment
+    self.assertNotIn('poison',[x['id'] for x in actor_access(a,w).cues])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'poison' unexpectedly found in ['poison']
+
+======================================================================
+FAIL: test_r8_p067_nan_threshold_must_not_admit_sensory_artifact (test_remontathon_r8.FurtherR8.test_r8_p067_nan_threshold_must_not_admit_sensory_artifact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 160, in test_r8_p067_nan_threshold_must_not_admit_sensory_artifact
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_THRESHOLD'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r8_p069_no_actual_scope_expansion_is_not_a_developmental_event (test_remontathon_r8.FurtherR8.test_r8_p069_no_actual_scope_expansion_is_not_a_developmental_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 148, in test_r8_p069_no_actual_scope_expansion_is_not_a_developmental_event
+    self.assertEqual(recurring_provisional_growth(a,'period-no-change',[proc]),[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'kind': 'PERIOD_SCOPE_CHANGE', 'form': 'shared_form'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'kind': 'PERIOD_SCOPE_CHANGE', 'form': 'shared_form'}
+
+- [{'form': 'shared_form', 'kind': 'PERIOD_SCOPE_CHANGE'}]
++ []
+
+======================================================================
+FAIL: test_r8_p068_contextual_only_string_false_must_not_make_project_dormant (test_remontathon_r8.ProjectAdmissionR8.test_r8_p068_contextual_only_string_false_must_not_make_project_dormant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 119, in test_r8_p068_contextual_only_string_false_must_not_make_project_dormant
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_PROJECT_CONTEXTUAL_FLAG'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_r8_p068_reorganize_contextual_flag_bool_only_and_atomic (test_remontathon_r8.ProjectAdmissionR8.test_r8_p068_reorganize_contextual_flag_bool_only_and_atomic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 126, in test_r8_p068_reorganize_contextual_flag_bool_only_and_atomic
+    with self.assertRaisesRegex(InvalidDevelopment,'INVALID_PROJECT_CONTEXTUAL_FLAG'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: InvalidDevelopment not raised
+
+======================================================================
+FAIL: test_r8_p066_bad_runtime_cue_does_not_commit_or_poison_recruitment (test_remontathon_r8.SensoryIngressR8.test_r8_p066_bad_runtime_cue_does_not_commit_or_poison_recruitment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 107, in test_r8_p066_bad_runtime_cue_does_not_commit_or_poison_recruitment
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r8_p066_nontext_cue_tag_refused_prior_to_canon (test_remontathon_r8.SensoryIngressR8.test_r8_p066_nontext_cue_tag_refused_prior_to_canon)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 73, in test_r8_p066_nontext_cue_tag_refused_prior_to_canon
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r8_p066_string_tags_cannot_expand_into_individual_characters (test_remontathon_r8.SensoryIngressR8.test_r8_p066_string_tags_cannot_expand_into_individual_characters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 67, in test_r8_p066_string_tags_cannot_expand_into_individual_characters
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_TAGS'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r8_p067_negative_threshold_refused_before_issuing_observation (test_remontathon_r8.SensoryIngressR8.test_r8_p067_negative_threshold_refused_before_issuing_observation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 92, in test_r8_p067_negative_threshold_refused_before_issuing_observation
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_THRESHOLD'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_r8_p067_sensor_level_must_not_be_bypassed_by_case_or_unknown_modality (test_remontathon_r8.SensoryIngressR8.test_r8_p067_sensor_level_must_not_be_bypassed_by_case_or_unknown_modality)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 88, in test_r8_p067_sensor_level_must_not_be_bypassed_by_case_or_unknown_modality
+    self.assertFalse(any(c.get('id')=='unqualified' for c in actor_access(a,w).cues))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_r8_p067_unrecognized_modality_must_not_bypass_sensor_gate (test_remontathon_r8.SensoryIngressR8.test_r8_p067_unrecognized_modality_must_not_bypass_sensor_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remontathon_r8_old/tests/test_remontathon_r8.py", line 80, in test_r8_p067_unrecognized_modality_must_not_bypass_sensor_gate
+    with self.assertRaisesRegex(ValueError,'INVALID_CUE_MODALITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.019s
+
+FAILED (failures=14, errors=1)

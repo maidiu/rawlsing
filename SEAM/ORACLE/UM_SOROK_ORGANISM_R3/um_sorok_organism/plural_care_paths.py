@@ -102,6 +102,15 @@ def plural_acquisition_candidate(actor,experience,event_ref):
         raise ValueError('PLURAL_CARE_FOREIGN_ACTOR')
     if type(experience.get('clock')) is not int or experience['clock']<0:
         raise ValueError('PLURAL_CARE_INVALID_EXPERIENCE_CLOCK')
+    # The second unsolicited act of CARE belongs to the giver. It is a
+    # lived source for the recipient, not already a later *independent*
+    # occasion on which the recipient's own orientation was recruited.
+    # Without this separation the latest previous care plus mere continuous
+    # co-presence manufactures a new attachment at the very next feeding
+    # despite no distinct child encounter.  A later ORIENT/SIGNAL or other
+    # lived actor act can still establish a provisional particular relation.
+    if experience.get('own_action') in ('RECEIVED_CARE','RECEIVED_FEEDING'):
+        return []
     present={c.get('source_actor'):c.get('id')
              for c in experience.get('perceived_cues',[])
              if type(c) is dict and c.get('kind')=='coactor_present'

@@ -1,0 +1,23 @@
+test_noncanonical_initialization_payload_must_refuse_source_read (__main__.NewP018.test_noncanonical_initialization_payload_must_refuse_source_read) ... FAIL
+test_noncanonical_ordinary_payload_must_refuse_source_read (__main__.NewP018.test_noncanonical_ordinary_payload_must_refuse_source_read) ... FAIL
+
+======================================================================
+FAIL: test_noncanonical_initialization_payload_must_refuse_source_read (__main__.NewP018.test_noncanonical_initialization_payload_must_refuse_source_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/p018_new_cases.py", line 22, in test_noncanonical_initialization_payload_must_refuse_source_read
+    with self.assertRaises(Conflict):
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_noncanonical_ordinary_payload_must_refuse_source_read (__main__.NewP018.test_noncanonical_ordinary_payload_must_refuse_source_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/p018_new_cases.py", line 33, in test_noncanonical_ordinary_payload_must_refuse_source_read
+    with self.assertRaises(Conflict):
+AssertionError: Conflict not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.018s
+
+FAILED (failures=2)

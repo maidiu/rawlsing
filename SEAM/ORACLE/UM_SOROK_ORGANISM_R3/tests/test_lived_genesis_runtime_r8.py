@@ -11,7 +11,9 @@ from pathlib import Path
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService
 
-PARENT = {'source_ref': 'synthetic_CARE_genesis_witness', 'answers': {},
+PARENT = {'source_ref': 'synthetic_CARE_genesis_witness',
+          'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+          'answers': {'R8_LIVED_CARE_FIXTURE':'NOT_A_SURVEY_ANSWER'},
           'fictional_seed': {'projects': []}}
 
 

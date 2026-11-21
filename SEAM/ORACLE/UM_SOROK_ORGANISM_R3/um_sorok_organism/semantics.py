@@ -208,7 +208,13 @@ class HeuristicSemanticProvider:
             # exploratory, not retroactively undertaken for the later end.
             tags={str(tag).lower() for cue in cues
                   for tag in cue.get('tags',[])}
-            for candidate in packet.get('actor_possible_ends',[]):
+            # The exact actor-issued prospective trial is itself an attempt,
+            # NOT a later independent uptake. This analytic-only selection
+            # receipt is produced by runtime._actor_plan, not the model.
+            # A custom model still meets the non-bypassable admission guard.
+            current_trial=((packet.get('selected_purpose_analytic_only') or {})
+                .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
+            for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
                 if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                         and candidate.get('origin_event')!=packet.get(
                              'historical_psychodynamic_context',{}).get('objective_event_ref')
@@ -328,10 +334,37 @@ class HeuristicSemanticProvider:
                     'target':seeded_forms[right]['id'],
                     'relation':edge['relation'], 'contexts':edge.get('contexts',[]),
                     'grade':'FICTIONAL_BACKFILL_HYPOTHESIS'})
+            # Motif source indices identify explicit fictional seeded forms,
+            # never answer-derived forms. Reject unsupported/forged indices.
+            motifs=[]
+            for i,m in enumerate(seeded.get('relational_motifs',[])):
+                refs=m.get('source_indices')
+                if (type(refs) is not list or not 2<=len(refs)<=4 or
+                    any(type(k) is not int or k<0 or k>=len(seeded_forms) for k in refs) or
+                    len(set(refs))!=len(refs)):
+                    raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                mx=copy(m)
+                mx.pop('source_indices',None)
+                mx['source_forms']=[seeded_forms[k]['id'] for k in refs]
+                mx['id']=stable_id('seed_motif',{'actor':packet['actor_id'],'i':i,'motif':m})
+                effects=[]
+                for e in m.get('effects',[]):
+                    item=copy(e)
+                    for key,index in (('source','source_index'),('target','target_index'),
+                                      ('target_form','target_form_index')):
+                        if index in item:
+                            n=item.pop(index)
+                            if type(n) is not int or n<0 or n>=len(seeded_forms):
+                                raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                            item[key]=seeded_forms[n]['id']
+                    effects.append(item)
+                mx['effects']=effects
+                mx['origin']=['fictional_seed:'+packet['actor_id']]
+                motifs.append(mx)
             projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
                  'means':['REST','EAT','WORK','CARE','FEED'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
-            return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
+            return {'task':task,'forms':forms,'links':seeded_links,'relational_motifs':motifs,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
                       'coverage':'HYPOTHETICAL','unknown':['specific childhood scenes']},
                     'semantic_grade':self.grade}
@@ -347,7 +380,8 @@ class ValidatingSemanticService:
         out=self.provider.propose(task,packet)
         if not isinstance(out,dict):raise ValueError('BAD_SEMANTIC_PACKET')
         if (task=='actor_attempt' and 'action' not in out
-                and 'practical_option_id' not in out):
+                and 'practical_option_id' not in out
+                and 'possible_end_trial_id' not in out):
             raise ValueError('NO_ACTION_OR_PRACTICAL_OPTION')
         if task=='development' and not isinstance(out.get('candidates'),list):raise ValueError('BAD_DEVELOPMENT_CANDIDATES')
         return out

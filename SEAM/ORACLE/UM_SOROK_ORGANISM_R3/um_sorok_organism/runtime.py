@@ -56,6 +56,35 @@ from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
 
+def _bind_actor_trial_particular_object(alternatives, trial):
+    """Choose one perceived thing, not one asserted explanation for perceiving it.
+
+    One objective material object can be represented by an ordinary visible
+    object option AND an independently acquired cultural or historical option.
+    Their shared world referent is not an ambiguous physical object. For a
+    source-object trial, retain the neutral visible-object binding, leaving
+    the cultural alternative unselected rather than laundering its meaning
+    into the actor's provisional purpose.
+    """
+    object_ref=trial.get('source_material_object_ref')
+    if type(object_ref) is not str or not object_ref:
+        raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
+    operation=trial.get('operation')
+    matches=[a for a in alternatives if
+             type(a) is dict and a.get('operation')==operation
+             and a.get('project_id') is None
+             and type(a.get('world_request')) is dict
+             and a['world_request'].get('material_object_ref')==object_ref]
+    neutral=[a for a in matches if
+             a.get('grounds_status')=='PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE'
+             and a.get('binding_status')=='OBJECT_CURRENTLY_VISIBLE_NOT_EVIDENCE_OF_RIGHTS']
+    if len(neutral)==1:
+        return neutral[0]
+    if len(matches)==1:
+        return matches[0]
+    raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
+
+
 class ConstitutiveRuntime:
     def __init__(self,db,semantic=None,world_id='w1'):
         self.ledger=ResearchLedger(db)
@@ -114,12 +143,22 @@ class ConstitutiveRuntime:
         return asdict(compose(const,access))
 
     def cue(self,actor_id=None,kind='ordinary_contact',tags=None,location='home',
-            description='',modality='visual',private_to=None):
+            description='',modality='visual',private_to=None,lasting_ticks=0):
         """External world fixture change, not an actor psychological event."""
         wv,world=self.ledger.world(self.world_id)
         if actor_id is not None:self.ledger.actor(actor_id)
-        cue=add_cue(world,kind,tags or [kind],location=location,description=description,
-                    modality=modality,private_to=private_to,source_actor=actor_id,clock_offset=1)
+        # R13/P073: an explicit empty set of signs is not a missing value.
+        # False, empty text, tuples and mixed types cannot be coerced into
+        # a new analyst tag, thereby inventing actor-receivable evidence.
+        if tags is None:
+            terms=[kind]
+        elif type(tags) is not list or any(type(t) is not str for t in tags):
+            raise ValueError('INVALID_CUE_TAGS')
+        else:
+            terms=tags
+        cue=add_cue(world,kind,terms,location=location,description=description,
+                    modality=modality,private_to=private_to,source_actor=actor_id,
+                    clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
@@ -258,14 +297,8 @@ class ConstitutiveRuntime:
             # repair for the actor's historically identified practical thing.
             if trial_choice is not None and trial_choice.get(
                     'source_material_object_ref') is not None:
-                source_object=trial_choice['source_material_object_ref']
-                material_matches=[
-                    a for a in alternatives if
-                    a.get('world_request',{}).get('material_object_ref')
-                    ==source_object]
-                if len(material_matches)!=1:
-                    raise ValueError('TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE')
-                selected_alternative=material_matches[0]
+                selected_alternative=_bind_actor_trial_particular_object(
+                    alternatives,trial_choice)
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             selected=[available[ref] for ref in selected_refs]
@@ -728,6 +761,7 @@ class ConstitutiveRuntime:
                     'objective_event_ref':objective_ref},
                 'grade':'SOURCEFREE_DEVELOPMENTAL_HYPOTHESIS'})
             developmental_candidates=copy(proposal['candidates'])
+            issued_trial=None
             if personally_done and actor_attempt is not None:
                 issued_trial=actor_attempt.practical_selection.get('possible_end_trial')
                 if issued_trial:
@@ -739,7 +773,8 @@ class ConstitutiveRuntime:
                         'trial':copy(issued_trial),
                     })
             developmental[aid]=admit(actors[aid],experience,objective_ref,
-                                    developmental_candidates)
+                                    developmental_candidates,
+                                    issued_trial=issued_trial)
         observed=subjective.get(actor_id,{})
         # A privileged world audit outcome is NOT automatically what this
         # person saw or can disclose. The event's public sign is deliberately

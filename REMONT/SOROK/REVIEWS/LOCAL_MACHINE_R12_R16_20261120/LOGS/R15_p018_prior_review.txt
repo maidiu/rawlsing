@@ -1,0 +1,44 @@
+======================================================================
+FAIL: test_append_refuses_unauthorized_seal_map_on_regular_event (__main__.R15SourceCustodyPreflightHostile.test_append_refuses_unauthorized_seal_map_on_regular_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_r15_independent_receiving.py", line 101, in test_append_refuses_unauthorized_seal_map_on_regular_event
+    with self.assertRaises(Conflict):
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_modified_historical_source_anchor_must_refuse_append (__main__.R15SourceCustodyPreflightHostile.test_modified_historical_source_anchor_must_refuse_append)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_r15_independent_receiving.py", line 77, in test_modified_historical_source_anchor_must_refuse_append
+    with self.assertRaises(Conflict, msg='P018 must not append to invalid historical source anchor'):
+AssertionError: Conflict not raised : P018 must not append to invalid historical source anchor
+
+======================================================================
+FAIL: test_modified_historical_source_anchor_must_refuse_source_read (__main__.R15SourceCustodyPreflightHostile.test_modified_historical_source_anchor_must_refuse_source_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_r15_independent_receiving.py", line 65, in test_modified_historical_source_anchor_must_refuse_source_read
+    with self.assertRaises(Conflict, msg='P018 must not return tampered source'):
+AssertionError: Conflict not raised : P018 must not return tampered source
+
+======================================================================
+FAIL: test_noncanonical_source_seal_event_must_refuse_source_read (__main__.R15SourceCustodyPreflightHostile.test_noncanonical_source_seal_event_must_refuse_source_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_r15_independent_receiving.py", line 117, in test_noncanonical_source_seal_event_must_refuse_source_read
+    with self.assertRaises(Conflict):
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_source_read_refuses_unauthorized_seal_map_on_regular_event (__main__.R15SourceCustodyPreflightHostile.test_source_read_refuses_unauthorized_seal_map_on_regular_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/test_r15_independent_receiving.py", line 89, in test_source_read_refuses_unauthorized_seal_map_on_regular_event
+    with self.assertRaises(Conflict):
+AssertionError: Conflict not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.090s
+
+FAILED (failures=5)

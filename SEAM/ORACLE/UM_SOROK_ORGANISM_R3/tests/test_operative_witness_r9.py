@@ -1,5 +1,5 @@
 import unittest
-from operative_witness import freeze_operative_witness as bind, NONPROJECT_APPROACH as A, NONPROJECT_DEFERRAL as D
+from um_sorok_organism.operative_witness import freeze_operative_witness as bind, NONPROJECT_APPROACH as A, NONPROJECT_DEFERRAL as D
 
 H='SOURCEFREE_RULE_BASED_PLACEHOLDER_NO_LLM'
 

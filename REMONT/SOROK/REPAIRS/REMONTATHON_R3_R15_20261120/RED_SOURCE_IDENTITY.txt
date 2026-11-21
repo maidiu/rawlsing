@@ -1,0 +1,120 @@
+test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) ... 
+  test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='', category='TEST') ... FAIL
+  test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='ok', category='') ... FAIL
+  test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid=None, category='TEST') ... FAIL
+  test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='ok', category=False) ... FAIL
+test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) ... 
+  test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='', category='TEST') ... FAIL
+  test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='valid', category='') ... FAIL
+  test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid=4, category='TEST') ... FAIL
+  test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='ok', category=True) ... FAIL
+
+======================================================================
+FAIL: test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='', category='TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 128, in test_invalid_initial_source_identity_fails_before_genesis
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='ok', category='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 128, in test_invalid_initial_source_identity_fails_before_genesis
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid=None, category='TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 128, in test_invalid_initial_source_identity_fails_before_genesis
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_invalid_initial_source_identity_fails_before_genesis (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_initial_source_identity_fails_before_genesis) (sid='ok', category=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 128, in test_invalid_initial_source_identity_fails_before_genesis
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='', category='TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 142, in test_invalid_late_source_identity_does_not_mutate_chain
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Conflict not raised
+
+======================================================================
+FAIL: test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='valid', category='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/um_sorok_organism/storage.py", line 126, in _verified_source_seals_locked
+    raise ValueError('DUPLICATE_OR_INVALID_SOURCE_SEAL')
+ValueError: DUPLICATE_OR_INVALID_SOURCE_SEAL
+
+The above exception was the direct cause of the following exception:
+
+um_sorok_organism.storage.Conflict: SOURCE_SEAL_EVENT_INVALID
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 142, in test_invalid_late_source_identity_does_not_mutate_chain
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "INVALID_SOURCE_IDENTITY" does not match "SOURCE_SEAL_EVENT_INVALID"
+
+======================================================================
+FAIL: test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid=4, category='TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/um_sorok_organism/storage.py", line 126, in _verified_source_seals_locked
+    raise ValueError('DUPLICATE_OR_INVALID_SOURCE_SEAL')
+ValueError: DUPLICATE_OR_INVALID_SOURCE_SEAL
+
+The above exception was the direct cause of the following exception:
+
+um_sorok_organism.storage.Conflict: SOURCE_SEAL_EVENT_INVALID
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 142, in test_invalid_late_source_identity_does_not_mutate_chain
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "INVALID_SOURCE_IDENTITY" does not match "SOURCE_SEAL_EVENT_INVALID"
+
+======================================================================
+FAIL: test_invalid_late_source_identity_does_not_mutate_chain (tests.test_remontathon_r15_source_and_inhibition.SourceSealTruthR15.test_invalid_late_source_identity_does_not_mutate_chain) (sid='ok', category=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/um_sorok_organism/storage.py", line 126, in _verified_source_seals_locked
+    raise ValueError('DUPLICATE_OR_INVALID_SOURCE_SEAL')
+ValueError: DUPLICATE_OR_INVALID_SOURCE_SEAL
+
+The above exception was the direct cause of the following exception:
+
+um_sorok_organism.storage.Conflict: SOURCE_SEAL_EVENT_INVALID
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/remont_r15/tests/test_remontathon_r15_source_and_inhibition.py", line 142, in test_invalid_late_source_identity_does_not_mutate_chain
+    with self.assertRaisesRegex(Conflict,'INVALID_SOURCE_IDENTITY'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "INVALID_SOURCE_IDENTITY" does not match "SOURCE_SEAL_EVENT_INVALID"
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.039s
+
+FAILED (failures=8)

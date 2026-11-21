@@ -156,6 +156,16 @@ class WholeOrganism(unittest.TestCase):
         self.rt.background(365)
         self.rt.step('nadia',requested_action='PRACTICE')
         self.rt.step('nadia',requested_action='SING')
+        # Two acquired means are not an acquired purpose. R18 prevents
+        # stealing the 'SING' basis from an unrelated or still-unformed
+        # undertaking merely to manufacture a composite project.
+        self.assertEqual(self.rt.possible_composed_activities('nadia'),[])
+        # The existing R6 distinct-event development path can subsequently
+        # take up a genuinely earlier noticed possibility (not retroactive
+        # intention for the first two actions).
+        self.rt.step('nadia',requested_action='SING')
+        self.assertTrue(any(e.get('status')=='TAKEN_UP_AS_PRACTICAL_PROJECT'
+                            for e in self.rt.snapshot('nadia')['possible_ends']))
         options=self.rt.possible_composed_activities('nadia')
         self.assertTrue(options)
         result=self.rt.perform_composed_activity('nadia',options[0]['id'])

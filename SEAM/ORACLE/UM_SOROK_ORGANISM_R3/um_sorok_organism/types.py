@@ -51,6 +51,10 @@ class Constitution:
     relations: list[dict]
     unknowns: list[str]
     history_refs: list[str] = field(default_factory=list)
+    # Objective actor attributes from the ledger; these are not acquired
+    # self-concepts, privileged psychic histories or a mature-life destiny.
+    role: str | None = None
+    age_days: int | None = None
     source_grade: str = GRADE
     composition_methods: list[dict] = field(default_factory=list)
     relational_motifs: list[dict] = field(default_factory=list)
