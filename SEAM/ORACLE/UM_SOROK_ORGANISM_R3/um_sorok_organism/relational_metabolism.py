@@ -289,3 +289,47 @@ def admit_motif(actor, candidate, event_ref, experience, index):
     motif.setdefault("cue_terms", [])
     motif.setdefault("locations", [])
     return motif
+
+
+def possible_witnessed_third_party_relation(actor, experience):
+    """A third person may revalue a relation they actually witnessed.
+
+    The objective source/target and performed act come from the world-owned
+    public sign, subsequently gated by this actor's own sensory access.
+    Earlier other-models are ONLY this actor's provisional hypotheses.
+    The candidate never alters a relation, invents another's motive, or makes
+    an unseen household event into actor memory. A model may propose NO_CHANGE.
+    """
+    if experience.get('actor')!=actor.get('id'):
+        return []
+    previous=actor.get('other_models',{})
+    if type(previous) is not dict:
+        return []
+    candidates=[]
+    for cue in experience.get('perceived_cues',[]):
+        if type(cue) is not dict:
+            continue
+        kind=cue.get('kind')
+        source=cue.get('source_actor')
+        target=cue.get('actor_accessible_target_ref')
+        if (kind not in ('performed_care','performed_feed','performed_impose')
+                or cue.get('public_person_directed_act_not_private_intention') is not True
+                or type(cue.get('id')) is not str
+                or type(source) is not str or type(target) is not str
+                or source==target or actor['id'] in (source,target)):
+            continue
+        old_source=previous.get(source,[])
+        old_target=previous.get(target,[])
+        candidates.append({
+            'kind':'WITNESSED_THIRD_PARTY_RELATION_OCCASION',
+            'actor':actor['id'],'source_actor_ref':source,
+            'target_actor_ref':target,'witnessed_act':kind.removeprefix('performed_').upper(),
+            'witnessed_cue_ref':cue['id'],
+            'prior_source_models_actor_hypotheses_only':copy(
+                old_source[-3:] if type(old_source) is list else []),
+            'prior_target_models_actor_hypotheses_only':copy(
+                old_target[-3:] if type(old_target) is list else []),
+            'no_mandatory_revaluation':True,
+            'no_private_other_psychology_or_consent_inferred':True,
+            'grade':GRADE})
+    return candidates[:4]
