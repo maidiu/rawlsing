@@ -19,20 +19,15 @@
       "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d83ebfb85951e099d167a336077b5dceb7a0647017441761a630a349f9643df5"
     },
     "query_ref": {
-      "content_hash": "b4a305154d35bbcf0051bd6907a47f1f5c3337c113e329f218d0245d1f4552c1",
+      "content_hash": "5415f409efc0b81898ef61a9cedadef5ad94566157af74cdd7af4863431e496a",
       "kind": "EmpiricalQuerySpec@1.0.0",
-      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b4a305154d35bbcf0051bd6907a47f1f5c3337c113e329f218d0245d1f4552c1"
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5415f409efc0b81898ef61a9cedadef5ad94566157af74cdd7af4863431e496a"
     },
     "recorded_routing_facts": 9,
-    "stored_event_states": {
-      "1": "SUBSTANTIVE_RESPONSE",
-      "2": "SUBSTANTIVE_RESPONSE",
-      "3": "SUBSTANTIVE_RESPONSE",
-      "4": "SUBSTANTIVE_RESPONSE",
-      "97": "DK",
-      "98": "DK",
-      "99": "SUBSTANTIVE_RESPONSE",
-      "None": "MISSING"
+    "stored_event_shapes": {
+      "DK": 2,
+      "MISSING": 1,
+      "SUBSTANTIVE_RESPONSE": 5
     },
     "transform_in_query": true,
     "transform_ref": {
@@ -45,41 +40,42 @@
     "absent_excluded": 1,
     "cells": [
       [
-        "1",
+        1,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "2",
+        2,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "3",
+        3,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "4",
+        4,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "97",
+        97,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "98",
+        98,
         1,
         "OBSERVED_POSITIVE"
       ],
       [
-        "99",
+        99,
         1,
         "OBSERVED_POSITIVE"
       ]
     ],
+    "execution_detail": "exact governed target distribution resolved",
     "physical_missing_excluded": {
       "absent": 1,
       "system_missing": 1
@@ -87,13 +83,13 @@
     "raw_denominator_support": 7,
     "raw_numerator_support": 7,
     "recorded_codes_present": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "97",
-      "98",
-      "99"
+      1,
+      2,
+      3,
+      4,
+      97,
+      98,
+      99
     ],
     "release_refs": [
       {
@@ -103,7 +99,7 @@
       }
     ],
     "replay_equal": true,
-    "replay_ref": "{'content_hash': 'e14b0b74bcece598790d0e5dc3d7b74f5aa9c537be0bcf0cce2ce114807f951e', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:e14b0b74bcece598790d0e5dc3d7b74f5aa9c537be0bcf0cce2ce114807f951e'}",
+    "replay_ref": "{'content_hash': 'cf8521b7aef284b5cfba930e4fbda0107e285b0d677e085ef9ed4868ad8b736c', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:cf8521b7aef284b5cfba930e4fbda0107e285b0d677e085ef9ed4868ad8b736c'}",
     "system_missing_excluded": 1,
     "typed_state": "SUPPORTED"
   },
@@ -158,5 +154,17 @@
   "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
   "schema": "ANVIL_Q006_RECORDED_OPERATION_PROOF@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
+  "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7",
+  "wrapper_tests": {
+    "invalid_wrapper": {
+      "label": "invalid_raw_wrapper",
+      "message": "invalid raw_physical_value token",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    "nonintegral_token": 1.5,
+    "ordinary_token": 97,
+    "system_missing_token": null,
+    "unknown_not_missing": true
+  }
 }

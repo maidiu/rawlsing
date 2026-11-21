@@ -7,9 +7,10 @@
       "final output"
     ],
     "decision_verifier_required": true,
+    "harness_rereads_owner_and_r2": true,
     "true_for_anything_default": false
   },
-  "base_commit": "00a33dfbdab03906c9b1814808371b0171c466d3",
+  "base_commit": "00099cae1f98cd3793024d57eb793943203bdf38",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "modules": [
@@ -49,9 +50,9 @@
     "materializer_sha256": "4f3ef199f09004b40a2541d72e17a12fa2490b3ffc11a13cbbc945ee0178ba4f",
     "native_module_sha256": "e89be25ae9bc9d1a4125bf1e0af4f456cffda6d18513b3e15e9bca36a1e961e3",
     "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
-    "recorded_module_sha256": "a6a057dd034c9ea789717263813fa5f2a99327f8d0f033cfd255ecd3ca776884",
-    "recorded_proof_sha256": "dad4a014b4f69feba99400f43764a665b19f8acdf5b3c5ad2076869185099b74",
-    "strategy_module_sha256": "294091697c8c980239fed6c538d421ba9b630f5bbea79bc1b7fa50e40029251a"
+    "recorded_module_sha256": "d29537c80277357605dbbcedf212bb8bc81a046522e917737ceeba354a1fe174",
+    "recorded_proof_sha256": "fcdf0c0e9c83ae8d1299f909e4a18b3cb169dfd0d5bd6fafde594cf03a968708",
+    "strategy_module_sha256": "dd8621031b596fbbe71a0622e2b570b8251a7b7d0f0c9c7a5e9e2008192b31ad"
   },
   "preserved": {
     "keyed_routing_lookup": true,
@@ -65,7 +66,7 @@
   "private_operation_artifact": {
     "fault": "Q006_EXACT_QUESTION_REF_MISSING: independently held custody provides only the native question object ID, not the full kind|object_id|content_hash question ref; supply --question-ref from custody",
     "local_file": "Q006_MATERIALIZE_FAULT.out",
-    "status": "BLOCKED__EXACT_QUESTION_REF_MISSING",
+    "status": "PENDING_CONTROLLER_FULL_QUESTION_REF",
     "written": false
   },
   "protected_edits": false,
@@ -79,6 +80,14 @@
     "stored_shape": "97/98 DK, 99 substantive, one system missing event, one absent event"
   },
   "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
+  "real_wave_red": {
+    "fault": "unknown recorded raw code from projected native token wrapper",
+    "fix": "strict codec unwrap of $raw_physical_value.token; selected-ref raw decode; ref-missing integrity error",
+    "invalid_wrapper": "refused",
+    "nonintegral_token": 1.5,
+    "status": "FIXED",
+    "unknown_not_missing": true
+  },
   "recorded_operation": {
     "built": {
       "allowed_codes": [
@@ -100,20 +109,15 @@
         "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d83ebfb85951e099d167a336077b5dceb7a0647017441761a630a349f9643df5"
       },
       "query_ref": {
-        "content_hash": "b4a305154d35bbcf0051bd6907a47f1f5c3337c113e329f218d0245d1f4552c1",
+        "content_hash": "5415f409efc0b81898ef61a9cedadef5ad94566157af74cdd7af4863431e496a",
         "kind": "EmpiricalQuerySpec@1.0.0",
-        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b4a305154d35bbcf0051bd6907a47f1f5c3337c113e329f218d0245d1f4552c1"
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:5415f409efc0b81898ef61a9cedadef5ad94566157af74cdd7af4863431e496a"
       },
       "recorded_routing_facts": 9,
-      "stored_event_states": {
-        "1": "SUBSTANTIVE_RESPONSE",
-        "2": "SUBSTANTIVE_RESPONSE",
-        "3": "SUBSTANTIVE_RESPONSE",
-        "4": "SUBSTANTIVE_RESPONSE",
-        "97": "DK",
-        "98": "DK",
-        "99": "SUBSTANTIVE_RESPONSE",
-        "None": "MISSING"
+      "stored_event_shapes": {
+        "DK": 2,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 5
       },
       "transform_in_query": true,
       "transform_ref": {
@@ -126,41 +130,42 @@
       "absent_excluded": 1,
       "cells": [
         [
-          "1",
+          1,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "2",
+          2,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "3",
+          3,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "4",
+          4,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "97",
+          97,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "98",
+          98,
           1,
           "OBSERVED_POSITIVE"
         ],
         [
-          "99",
+          99,
           1,
           "OBSERVED_POSITIVE"
         ]
       ],
+      "execution_detail": "exact governed target distribution resolved",
       "physical_missing_excluded": {
         "absent": 1,
         "system_missing": 1
@@ -168,13 +173,13 @@
       "raw_denominator_support": 7,
       "raw_numerator_support": 7,
       "recorded_codes_present": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "97",
-        "98",
-        "99"
+        1,
+        2,
+        3,
+        4,
+        97,
+        98,
+        99
       ],
       "release_refs": [
         {
@@ -184,7 +189,7 @@
         }
       ],
       "replay_equal": true,
-      "replay_ref": "{'content_hash': 'e14b0b74bcece598790d0e5dc3d7b74f5aa9c537be0bcf0cce2ce114807f951e', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:e14b0b74bcece598790d0e5dc3d7b74f5aa9c537be0bcf0cce2ce114807f951e'}",
+      "replay_ref": "{'content_hash': 'cf8521b7aef284b5cfba930e4fbda0107e285b0d677e085ef9ed4868ad8b736c', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:cf8521b7aef284b5cfba930e4fbda0107e285b0d677e085ef9ed4868ad8b736c'}",
       "system_missing_excluded": 1,
       "typed_state": "SUPPORTED"
     },
@@ -239,11 +244,23 @@
     "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
     "schema": "ANVIL_Q006_RECORDED_OPERATION_PROOF@1",
     "sourcefree": true,
-    "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
+    "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7",
+    "wrapper_tests": {
+      "invalid_wrapper": {
+        "label": "invalid_raw_wrapper",
+        "message": "invalid raw_physical_value token",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      "nonintegral_token": 1.5,
+      "ordinary_token": 97,
+      "system_missing_token": null,
+      "unknown_not_missing": true
+    }
   },
   "saved_estate_modified": false,
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_RETURN@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__PRIVATE_OPERATION_REF_BLOCKED"
+  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__PRIVATE_OP_REF_PENDING"
 }

@@ -85,9 +85,9 @@ def _raw_domain(fact) -> tuple[str, ...]:
     result = []
     for row in cells:
         cell = row.get("cell")
-        if not isinstance(cell, str):
-            raise StreamIssuanceError("raw outcome cell is not a scalar source label")
-        result.append(cell)
+        if isinstance(cell, bool) or not isinstance(cell, (str, int, float)):
+            raise StreamIssuanceError("raw outcome cell is not an exact scalar label")
+        result.append(str(cell))
     return tuple(sorted(result))
 
 

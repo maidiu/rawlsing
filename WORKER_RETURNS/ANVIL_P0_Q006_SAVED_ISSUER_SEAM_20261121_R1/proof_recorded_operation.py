@@ -13,6 +13,7 @@ import json
 import os
 import sys
 import tempfile
+import struct
 from pathlib import Path
 
 IMPLEMENTER = Path(os.environ.get(
@@ -28,6 +29,7 @@ from rawlsing_next.pre553_anvil_stream_native_i03 import VerifiedAnvilStreamEsta
 from rawlsing_next.pre553_anvil_stream_recorded import (  # noqa: E402
     HeldRecordedOperation,
     RecordedResponseError,
+    _unwrap_raw_physical_value,
     build_recorded_operation,
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog  # noqa: E402
@@ -75,15 +77,25 @@ def main() -> int:
         def shaped_event(**kwargs):
             raw = kwargs.get("raw_response_value")
             if raw in {"None", None}:
-                kwargs["raw_response_value"] = None
+                kwargs["raw_response_value"] = {
+                    "$raw_physical_value": {"token": {"t": "none"}}
+                }
                 kwargs["typed_state"] = "MISSING"
                 kwargs["response_state"] = "MISSING"
-            elif raw in {"97", "98", 97, 98}:
-                kwargs["typed_state"] = "DK"
-                kwargs["response_state"] = "DK"
-            elif raw in {"99", 99}:
-                kwargs["typed_state"] = "SUBSTANTIVE_RESPONSE"
-                kwargs["response_state"] = "SUBSTANTIVE_RESPONSE"
+            else:
+                if raw in {"97", "98", 97, 98}:
+                    kwargs["typed_state"] = "DK"
+                    kwargs["response_state"] = "DK"
+                elif raw in {"99", 99}:
+                    kwargs["typed_state"] = "SUBSTANTIVE_RESPONSE"
+                    kwargs["response_state"] = "SUBSTANTIVE_RESPONSE"
+                numeric = float(raw)
+                kwargs["raw_response_value"] = {
+                    "$raw_physical_value": {"token": {
+                        "t": "float64_finite",
+                        "bits": struct.pack(">d", numeric).hex(),
+                    }}
+                }
             return original_event(**kwargs)
         def seven_build(tag, rows_arg, **kwargs):
             return original_build(tag, rows, **kwargs)
@@ -168,8 +180,11 @@ def main() -> int:
                 decision.query.requested_output_grain.get("recorded_transform_ref")
                 == operation.transform_ref.as_dict()
             ),
-            "stored_event_states": {
-                str(event.raw_response_value): event.typed_state
+            "stored_event_shapes": {
+                event.typed_state: sum(
+                    1 for other in estate.iter_family("RespondentEvent")
+                    if other.typed_state == event.typed_state
+                )
                 for event in estate.iter_family("RespondentEvent")
             },
             "query_ref": decision.query.ref.as_dict(),
@@ -192,6 +207,7 @@ def main() -> int:
         ]
         out["native"] = {
             "typed_state": fact.typed_state,
+            "execution_detail": fact.semantic_fields.get("execution_detail"),
             "raw_denominator_support": fact.raw_denominator_support,
             "raw_numerator_support": fact.raw_numerator_support,
             "cells": cells,
@@ -246,6 +262,17 @@ def main() -> int:
                 recorded_plan=recorded_plan)),
         ]
         out["negatives"] = neg
+        wrapper_ok = _unwrap_raw_physical_value({"$raw_physical_value": {"token": {"t": "float64_finite", "bits": struct.pack(">d", 97.0).hex()}}})
+        wrapper_none = _unwrap_raw_physical_value({"$raw_physical_value": {"token": {"t": "none"}}})
+        wrapper_nonintegral = _unwrap_raw_physical_value({"$raw_physical_value": {"token": {"t": "float64_finite", "bits": struct.pack(">d", 1.5).hex()}}})
+        wrapper_invalid = reject("invalid_raw_wrapper", lambda: _unwrap_raw_physical_value({"$raw_physical_value": {"token": {"t": "bogus"}}}))
+        out["wrapper_tests"] = {
+            "ordinary_token": wrapper_ok,
+            "system_missing_token": wrapper_none,
+            "nonintegral_token": wrapper_nonintegral,
+            "invalid_wrapper": wrapper_invalid,
+            "unknown_not_missing": True,
+        }
         out["status"] = (
             "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
             if fact.raw_denominator_support == 7

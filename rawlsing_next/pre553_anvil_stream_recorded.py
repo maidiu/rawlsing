@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from types import MappingProxyType
 from typing import Mapping
 import json
+import struct
 
 import pyarrow.parquet as pq
 
@@ -44,6 +45,33 @@ class RecordedResponseError(ValueError):
 
 
 _CODEC = R5TypedValueCodec()
+
+
+def _unwrap_raw_physical_value(value):
+    """Strict typed unwrap of the projected native token wrapper.
+
+    The actual stored event may carry {"$raw_physical_value": {"token": ...}}.
+    Decode the token with the existing R5 codec, preserve None as system missing,
+    and normalize an integral finite numeric token to its exact integer code.
+    Invalid wrappers are an integrity error, never a missing value.
+    """
+    if isinstance(value, dict) and "$raw_physical_value" in value:
+        wrapper = value["$raw_physical_value"]
+        if not isinstance(wrapper, dict) or "token" not in wrapper:
+            raise RecordedResponseError("invalid raw_physical_value wrapper")
+        token = wrapper["token"]
+        if not isinstance(token, dict):
+            raise RecordedResponseError("invalid raw_physical_value token")
+        try:
+            decoded = _CODEC.decode(token)
+        except Exception as exc:
+            raise RecordedResponseError("invalid raw_physical_value token") from exc
+        if isinstance(decoded, float) and decoded.is_integer():
+            return int(decoded)
+        return decoded
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    return value
 
 
 @dataclass(frozen=True)
@@ -103,7 +131,9 @@ def _decoded_raw_values(
                     continue
                 try:
                     encoded = json.loads(row["raw_typed"])
-                    result[row["ref"]] = _CODEC.decode(encoded)
+                    result[row["ref"]] = _unwrap_raw_physical_value(
+                        _CODEC.decode(encoded)
+                    )
                 except Exception as exc:
                     raise RecordedResponseError(
                         "stored R5 raw_typed value cannot be decoded exactly"
@@ -184,7 +214,9 @@ def build_recorded_operation(
             absent.append(respondent)
             continue
         event = occurrences[0]
-        raw = decoded_raw.get(event.ref.key)
+        if event.ref.key not in decoded_raw:
+            raise RecordedResponseError("selected event raw_typed ref is missing")
+        raw = decoded_raw[event.ref.key]
         if raw is None:
             system_missing.append(respondent)
             continue
@@ -248,7 +280,10 @@ def build_recorded_operation(
             "components": [{
                 "target_ref": question_ref,
                 "topology": "SCALAR_SINGULAR",
-                "domain": list(operation.allowed_raw_codes),
+                "domain": [
+                    int(code) if code.isdigit() else code
+                    for code in operation.allowed_raw_codes
+                ],
                 "target_domain_replay_ref": operation.target_domain_replay_ref,
                 "topology_authority_refs": [source_authority.authority_ref],
                 "response_semantic_authority_refs": [source_authority.authority_ref],

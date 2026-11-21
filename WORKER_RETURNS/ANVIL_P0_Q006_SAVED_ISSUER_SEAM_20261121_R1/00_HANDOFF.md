@@ -2,7 +2,7 @@
 
 ## Status
 
-`RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_GREEN__Q103_ORIGINAL_NOT_RUN`
+`RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__PRIVATE_OP_REF_PENDING`
 
 One focused old-code continuation only. No protected/shared refs, original data,
 original q103 run, issue post or G5 claim.
@@ -28,7 +28,11 @@ authority.
 
 It resolves the verified saved scalar occurrences from the stored R5
 `raw_typed` lane using `R5TypedValueCodec`; it never calls `str()` on an
-undecoded raw object. Recorded membership is established only from the held
+undecoded raw object. The real projected native wrapper
+`{"$raw_physical_value":{"token":...}}` is unwrapped strictly through the
+codec. Missing token refs are integrity failures, not system missing; invalid
+wrappers and nonintegral tokens are refused or preserved as unknown rather
+than counted as missing. Recorded membership is established only from the held
 allowed raw codes. A stored system-missing event and a genuinely absent event
 are distinguished and excluded separately from the denominator. Unknown codes
 and duplicate occurrences refuse.
@@ -62,6 +66,8 @@ evaluator or manual count.
 - seven disjoint native cells, each support 1;
 - denominator exactly **7**;
 - system-missing and absent each exactly **1**, excluded separately;
+- ordinary token unwrap `97`, system-missing token `None`, nonintegral token
+  `1.5`, and invalid wrapper refusal are separately exercised;
 - native state `SUPPORTED`;
 - exact repeat replay equal;
 - stream release retained;
@@ -101,17 +107,13 @@ refs, measure/response-semantics/domain refs, replay roots and transform ref.
 It is materialized only from the owner decision, held R2 decision and q006
 inputs; no source metadata is inferred.
 
-`q006_materialize.py` currently stops at the exact missing input:
-
-`Q006_EXACT_QUESTION_REF_MISSING: independently held custody provides only the
-native question object ID, not the full kind|object_id|content_hash question
-ref; supply --question-ref from custody.`
-
-No operation artifact was written from a fabricated question hash. Once the
-controller supplies the full exact q103 question ref, the materializer writes
-`q006_q103_operation.json` mode 0600 and the private harness command below is
-runnable. This is a technical custody-ref dependency, not an owner semantics
-request.
+`q006_materialize.py` accepts `--question-ref` for the controller's already
+verified full exact q103 ref. In this author environment the sidecar custody
+file exposes only the object ID, so the local fault is
+`Q006_EXACT_QUESTION_REF_MISSING`; no hash was fabricated. With the controller's
+full ref, the materializer writes `q006_q103_operation.json` mode 0600 and the
+private harness below is runnable. This is a local custody-ref input, not a new
+owner gate.
 
 The original SRC04 execution remains explicitly not run until the controller
 checks the candidate and private authority.
