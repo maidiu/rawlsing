@@ -328,10 +328,37 @@ class HeuristicSemanticProvider:
                     'target':seeded_forms[right]['id'],
                     'relation':edge['relation'], 'contexts':edge.get('contexts',[]),
                     'grade':'FICTIONAL_BACKFILL_HYPOTHESIS'})
+            # Motif source indices identify explicit fictional seeded forms,
+            # never answer-derived forms. Reject unsupported/forged indices.
+            motifs=[]
+            for i,m in enumerate(seeded.get('relational_motifs',[])):
+                refs=m.get('source_indices')
+                if (type(refs) is not list or not 2<=len(refs)<=4 or
+                    any(type(k) is not int or k<0 or k>=len(seeded_forms) for k in refs) or
+                    len(set(refs))!=len(refs)):
+                    raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                mx=copy(m)
+                mx.pop('source_indices',None)
+                mx['source_forms']=[seeded_forms[k]['id'] for k in refs]
+                mx['id']=stable_id('seed_motif',{'actor':packet['actor_id'],'i':i,'motif':m})
+                effects=[]
+                for e in m.get('effects',[]):
+                    item=copy(e)
+                    for key,index in (('source','source_index'),('target','target_index'),
+                                      ('target_form','target_form_index')):
+                        if index in item:
+                            n=item.pop(index)
+                            if type(n) is not int or n<0 or n>=len(seeded_forms):
+                                raise ValueError('INVALID_FICTIONAL_MOTIF_SEED')
+                            item[key]=seeded_forms[n]['id']
+                    effects.append(item)
+                mx['effects']=effects
+                mx['origin']=['fictional_seed:'+packet['actor_id']]
+                motifs.append(mx)
             projects.append({'id':'project:ordinary_life','object':'maintain everyday life',
                  'means':['REST','EAT','WORK','CARE','FEED'],'priority':.42,'cue_terms':['home','work'],
                  'status':'active','origin':[]})
-            return {'task':task,'forms':forms,'links':seeded_links,'projects':projects,
+            return {'task':task,'forms':forms,'links':seeded_links,'relational_motifs':motifs,'projects':projects,
                     'fictional_backfill':{'summary':'Compressed possible adult life; no source respondent history identified',
                       'coverage':'HYPOTHETICAL','unknown':['specific childhood scenes']},
                     'semantic_grade':self.grade}
