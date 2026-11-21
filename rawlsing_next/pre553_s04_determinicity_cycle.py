@@ -59,6 +59,7 @@ from rawlsing_next.pre553_s04_general_joint_algebra import (
 from rawlsing_next.pre553_s04_dhikr_comparative import (
     DHIKRComparisonRequest, analyze_s04_dhikr,
     read_dhikr_sample_estimate, _association,
+    _estimates_to_semantic_material,
 )
 
 CYCLE_CONTRACT = "PYAT_S04_DHIKR_COUNTRY_BUDGETED_CONTINUING_CYCLE@1"
@@ -322,7 +323,9 @@ def _observation_value_information(
     channel: ObservationChannel,
 ) -> dict[str, Any]:
     """DHIKR's own same-risk MI estimator; missingness is NEVER imputed."""
-    status = _association(cells, target, (channel.status_axis,))
+    status = _estimates_to_semantic_material(
+        _association(cells, target, (channel.status_axis,))
+    )
     observed = []
     nonobs_n = 0
     for row, n in cells:
@@ -338,7 +341,9 @@ def _observation_value_information(
     nobs = sum(v for _, v in observed)
     if nobs + nonobs_n != n:
         raise DeterminicityCycleError("OBSERVATION_PARTITION_CHANGED_RISK")
-    value = _association(observed, target, (channel.value_axis,))
+    value = _estimates_to_semantic_material(
+        _association(observed, target, (channel.value_axis,))
+    )
     bits = value["information_bits"]
     adjusted = (Decimal(str(bits)) * Decimal(nobs) / Decimal(n)
                 if n and bits is not None else Decimal(0))
@@ -925,9 +930,12 @@ def advance_country_determinicity(
                     break
                 before_pair = loads(canonical_json(state))
                 pair_started = monotonic()
-                estimate = _association(
+                # DHIKR's estimator uses finite binary floats internally;
+                # preserve its existing semantic codec before strict reading
+                # or storing this local S04 receipt. Never relax _decimal.
+                estimate = _estimates_to_semantic_material(_association(
                     context_positive, policy.target_axis, pair,
-                )
+                ))
                 pair_elapsed = Decimal(
                     str(round(monotonic() - pair_started, 6))
                 )
