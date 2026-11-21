@@ -512,3 +512,66 @@ Earlier rounds have durable full Git versions and an append-only source ledger, 
 - **Shared root:** first-user visitor contact is branch-owned, not added to unvisited reference. Multiple fork dates complicate root versioning; explicit first consumer needed.
 - **Family field:** active higher-order relations from PR #1275 remain in the present whole, not a mere household NPC graph. Future changed conduct, refusal and no-change are all necessary demonstrations.
 - **Verbatim gap:** a manually captured direct-turn record does NOT guarantee byte-exact complete chat; earlier inaccessible turns and November 15 resources exchange remain source grade gaps. A native export would require actual available external source. Do not silently assert this has been remedied.
+
+
+## N-T1 / ROUND TEN — ONE HISTORY, TWO HORIZONS: SOURCE-CONSERVED RECONSTITUTION OF ALL AVAILABLE ITERATIONS
+
+**Date 2026-11-21. Owner: NEIGHBORMULCH source-conserving independent theory candidate; no SOROK/PYAT HQ appointment, protected receiving or native psychology authorization.**
+
+**One active whole:** \`SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md\`, initial R10 write commit \`3ed74a67a8429ca654fec38f7d77594eec5a2444\`, corrected content blob \`dda4c83ee413c7212ebd599f29b89110c3b866a4\`, 37 sections and 127,080 characters. This is a coherent reconstitution containing the complete substantive R9 treatment redistributed into a deeper causal order plus **12 added source-restorative whole sections**, historical original SOROK cases, a new positive account of the user being in a real game and the person not being a game objective, and final source-specific corrections to optional strict/assisted scaffolding, private relationship count, retry/undo and anti-scalar flourishing. Historical R9 remains in exact Git ancestry at \`e46ec5ce9a4a8e1b90cf6823e13ca44aeaba0c8b\`.
+
+### Ten exact older whole-theory source cuts fetched and preserved
+
+| Source version | Exact commit | Source file |
+|---|---|---|
+| R1 initial | \`1ef137fbe6861c9ea52530f6c7fc0772aaa428f6\` | \`12_NEIGHBOR_THEORYMULCH_CURRENT.md\` |
+| R1 corrected user-model | \`ce0161b2cebdd40b53f493d016fec836c8511741\` | same |
+| R2 | \`6fcb541a85aae783f36b8899d9612d676d163034\` | same |
+| R3 | \`6b850f127335eb70b535f07e5d41e94b02ef07b2\` | same |
+| R4 | \`79d7453bb9a6319a34648f396c95c28b2c5b6238\` | same |
+| R5 | \`c597791f20988420df356386f1bd55cd261f7ba5\` | same |
+| R6 | \`aa94169139d9da8411ae0d661e4e572b03a00f71\` | same |
+| R7 | \`ee42267a4028887797197b27c3e1572f19dd7902\` | same |
+| R8 | \`96765b57a75fbdf0cd013746da8030fc00cafaa7\` | same |
+| R9 | \`e46ec5ce9a4a8e1b90cf6823e13ca44aeaba0c8b\` | same |
+
+**Actual operation:** Every versioned original source body fetched via authenticated GitHub connector. Their **197 source sections** retain immutable cut/blob/heading/length/opening and closing excerpts and a hand-curated current R10 section treatment in [12 exact-source fate matrix](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/12_ALL_TEN_VERSIONED_WHOLE_THEORY_SECTION_FATES_R10.json). An initial automatic keyword section mapping was found to be WRONG and entirely replaced with 197 hand-curated routes after rereading source headings and evidence. Source route existence and reasoning is stronger than archival retrievability but remains author-side, NOT independent full-semantic acceptance.
+
+### Original SOROK source estate drawn and exact-body conservation
+
+- **757 first-pass original source identity records already in #1275** = 144 candidate O-index, 190 H ideas, 123 historical Q and 300 SOROKUDA source/code provenance leads. The 17 S0–S16 are counted **within** 144. This is source-union accounting, not 757 distinct psychological methods.
+- **H190 exact-original body upgrade:** original \`SOROK_PRODUCT_CONTROL_ROOM/12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md\` at \`a4211c3ec77e8269097601fe9a3dce2745395ac0\` blob \`949e9c9fad83da872ac1c2be7e74928e5b7cdd04\`. Every **H001–H190 full original section** is now in [16](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/16_ORIGINAL_H190_FULL_PARAGRAPH_SOURCE_AND_R10_FATES.json). Original 81 explicitly used \`Claim:\`; other 109 inherited statements retain original heading/body/status without fabricated claim paragraph. They are authored historical harvest evidence, not verbatim external chat.
+- **Q123 full original source:** original \`SOROK_PRODUCT_CONTROL_ROOM/registers/QUESTIONS.jsonl\` at same immutable cut, blob \`9c9c62587084f817012c059d4c2855fe8ae0f153\`. Complete original 123 JSON records with priority, dependencies, status, closure, blocking stage and resolution refs in [17](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/17_ORIGINAL_Q123_FULL_SOURCE_AND_R10_FATES.json). Historical Q open status must not be asserted as current code missing.
+- **O-Index and SOROKUDA:** inherited original #1275 exactly graded \`01_MACHINE_SOURCE_UNION_757_ROWS.json\`, \`07_THEMATIC_PER_SOURCE_MULCH_COVERAGE_757.json\` and \`08_FULL_SELECTED_SOROK_AND_SEAM_SOURCE_TREE_374_FILES.json\`. No new repository-wide code audit, no new sovereign owner.
+- **Cross-lineage user ideas:** original 44 C + 44 NM + 16 R9 = **104** evidence identities, individually routed and status-qualified alongside original 757 by [13](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/13_CONVERSATION_AND_757_SOURCE_FATES_R10.json). 104+757=861 source **records**, deliberately overlapping. No 861-feature ontology invented.
+- **Recoverable earlier Library conversation:** [15](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/15_RECOVERED_HISTORICAL_CHAT_EVIDENCE_AND_SOURCE_GAPS_R10.md) preserves original October 3/7 examples and epistemic candidate, and Nov 16 secondary corroboration of Nov 15 resources decision, with exact disclosed source/attribution limitations.
+- **Critique and falsifier:** [14](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/14_R10_HOSTILE_SEMANTIC_CONSERVATION_COURT.md) names what was actually restored, surviving alternatives, and why a source-row/section-pointer checker does not prove correct semantic adoption.
+
+### R10-D01–R10-D16: decision-changing returns to earlier sources
+
+1. **R10-D01** — original \`01_PRODUCT_CHARTER.md\` world-formation purpose and consent nonownership: moral/social vision is a horizon, not a Nadia optimization reward; §§1,31.
+2. **R10-D02** — original \`21A_PERSONA_IS_THE_ALTERNATE_RELATION_IS_THE_VEIL_R1.md\`: persona is alternate possible birth; user carries actual mind and a thin local relation-body, not rewritten from childhood; §§2,8.
+3. **R10-D03** — old R2 and Q-INVITEGRAPH/Q-HUMANINVITE: scarce real human invitation, introduction to existing root, commissioning root by roll, and first fictional contact kept distinct; §3.
+4. **R10-D04** — R8 source direct correction and latest user: exact initial SES is objective, own-resource display only, no Nadia account disclosure, later independently asymmetric financial change unannounced; §§4–7.
+5. **R10-D05** — R4/R5, original Q-PORTALTRANS: identity/language/credential/no lawful homology/realized speech; §8.
+6. **R10-D06** — R1/R2 and original charter: user modeling ≠ authoring user psyche, ≠ Nadia's perception, own source counterevidence and privacy/export/delete, no private relation-count leak; §9.
+7. **R10-D07** — user's latest first-contact insight: same-day condition of source-qualified Nadia at user opening, historical short prelude as real entry consent, no endless pregenerated hooks, common reference/branch provisional; §§10–13.
+8. **R10-D08** — R8 §XXIV, original Q-DUALUI, Q-MSGTIME and no coercive tether: two channels house / asynchronous message, no guaranteed access/delivery/comprehension/reply, elastic or optional stricter time, no absence guilt; §14.
+9. **R10-D09** — original October \`2026.10.07 Sorok chat.txt\`: ATTEND deepens perceptual and material resolution, but not necessarily interpretive significance; source H020–H062; §16.
+10. **R10-D10** — original H001–H190, D002: SAY/DO/ATTEND open grammar, actual user abilities, action attempt vs realization vs another's uptake, interrupt/clarify time, physical consequences and independent Others; §§17,32.
+11. **R10-D11** — original SOROK 60/61/70/80, Mechanism I, H0–H3: Birkenstocks/photo historical detail already owned; no missing-engine reinvention; §18.
+12. **R10-D12** — PRE-A0 §13–14, user southern Lebanese sibling/family case, SORACLE-CO: higher-order relations, multiple actor-local histories; §§19,21,22.
+13. **R10-D13** — original two-entrance (adult parents PYAT-conditioned historical backfill; Nadia open need-bearing childhood), PFF 4-band and CAN/ADP; actual first consumers must be checked, not declared absent; §§20–22,33–34.
+14. **R10-D14** — Q-SELFREAD/Q-FRAMEMETAB original material: historically reinterpreted past, incomplete/tyrannical revisions, counterevidence and no compulsory inner integration; §22.
+15. **R10-D15** — original Charter, R4, R7 tension: player's subjective game really is increasing knowledge and perhaps closeness, but the world cannot optimize affection, access, compliance or ethical learning; §§1,27,31.
+16. **R10-D16** — original Q-RETRY/Q-MODE, S11, S14: no automatic save-scumming, optional stricter/assisted scaffolding, data-control and human exit; §§9,14,28,31,35.
+
+### Reconciliation and continuing custody
+
+**Actual source-conservation improvement:** preserving original 190 complete H bodies, all 123 full Q records, 197 source-section decision routes and 104+757 identity traces is materially more rigorous than earlier append-only ledger and 44-row matrix alone. R10 is one coherent theory document rather than another patch plus a list of source indices.
+
+**Gaps explicitly NOT resolved:** no verified complete ChatGPT original R1–R9 turn export or full original November 15 resources dialogue; no independent nonauthor paragraph-by-paragraph semantic review of 197 historical theory sections; not all original source-body files/branches fully recourted; no sourcefree human alpha to validate pleasure, quality or true psychological development; no new actor/world implementation; no independent SORACLE-CO reciprocal assent; no protected PROGRAMMA/O-Index/PYAT G4 receiving. No author-side source integrity CI can turn these into green status. Existing owner source and original G4 are controlling for any engineering.
+
+**Status:** \`AUTHOR_TOTAL_WHOLE_R10_COMMITTED__HISTORICAL_SOURCE_BODIES_CONSERVED__EXPLICIT_SEMANTIC_FATE_ROUTES__UNRECOVERABLE_CHAT_AND_INDEPENDENT_REVIEW_HOLD\`.
+
+A true subsequent semantic review must use the exact refs above to challenge specific R10 meanings, not certify success by headings, line counts, artifacts or assistant assurance.
