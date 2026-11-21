@@ -9,7 +9,8 @@ import pytest
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_s04_country_refinement import (
     CountryRefinementError, CountryRequest, RefinementBudget, ResourceSample,
-    _has_entailing_country_leaf, run_issued_country_refinement,
+    _has_entailing_country_leaf, _inherited_same_case_information,
+    run_issued_country_refinement,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import (
     _build_source, _branch_predicate, _query, _query_authority,
@@ -183,3 +184,32 @@ def test_or_and_not_cannot_fake_predicate_country_entailment():
 def test_same_risk_source_diagnostic_refuses_target_leakage():
     with pytest.raises(CountryRefinementError, match="TARGET_IS_NOT_ITS_OWN"):
         _run(_real_joint("country-leak"), candidates=(0, 1))
+
+
+def test_country_raw_information_uses_the_same_existing_dhikr_statistic():
+    # Two-category and sparse three-category same-case tables; the country
+    # adapter is not permitted to maintain its own alternate MI mathematics.
+    from rawlsing_next.pre553_s04_dhikr_comparative import _association
+
+    for table in (
+        {("A", "yes"): 5, ("A", "no"): 0,
+         ("B", "yes"): 1, ("B", "no"): 6},
+        {("A", "y1"): 9, ("A", "y2"): 3,
+         ("B", "y1"): 2, ("C", "y3"): 1,
+         ("C", "y2"): 0},
+    ):
+        current = _inherited_same_case_information(table)
+        inherited = _association(
+            [((x, y), n) for (x, y), n in table.items()],
+            target=1, axes=(0,),
+        )
+        assert current == inherited["information_bits"]
+        assert inherited["raw_n"] == sum(table.values())
+
+
+def test_country_information_negative_counts_are_not_reinterpreted():
+    with pytest.raises(CountryRefinementError, match="BAD_SOURCE_COUNT"):
+        _inherited_same_case_information({("A", "yes"): 3, ("B", "no"): -1})
+    with pytest.raises(CountryRefinementError, match="BAD_SOURCE_COUNT"):
+        _inherited_same_case_information({("A", "yes"): True})
+    assert _inherited_same_case_information({("A", "yes"): 0}) == 0.0
