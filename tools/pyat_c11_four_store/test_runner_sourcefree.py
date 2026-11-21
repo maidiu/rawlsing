@@ -15,7 +15,7 @@ from unittest.mock import patch
 
 from . import runner
 from .test_stores import fixture, family_expected
-from .stores import FAMILIES,canonical
+from .stores import FAMILIES,StoreFailure,canonical
 
 class MockVerified:
     def _live(self):
@@ -104,6 +104,47 @@ class RunnerIntegrationTests(unittest.TestCase):
             compare=json.loads((root/"output"/config["run_id"]/"comparison.json").read_text())
             self.assertEqual(compare["status"],"PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
             self.assertTrue((root/"output"/config["run_id"]/"summary.csv").exists())
+
+    def test_single_arm_succeeds_without_false_four_arm_comparison(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output",
+                "run_id":"SOURCEFREE_SINGLE_ARM",
+                "minimum_free_gib":0,
+                "physical_question_limit":3,
+                "evidence_sample_limit":6,
+                "cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            with patch.object(runner,"InputEstate",FixtureSource):
+                result=runner.run(path,only="S2")
+            self.assertEqual(result["status"],
+                "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            self.assertEqual(set(result["arms"]),{"S2"})
+            self.assertFalse(result["comparison"]["four_arm_complete"])
+            self.assertEqual(result["comparison"]["selected_arm"],"S2")
+            self.assertEqual(result["arms"]["S2"]["status"],
+                             "COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
+            self.assertTrue(Path(result["report_directory"]).is_dir())
+
+    def test_invalid_parameters_fail_before_source_admission(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=Path(t)/"bundle.json"
+            for value in (0,-1,True,1.5):
+                with self.subTest(value=value):
+                    path.write_text(json.dumps({
+                        "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                        "output_dir":"output",
+                        "batch_commit":value,
+                    }))
+                    with patch.object(runner,"InputEstate",
+                                      side_effect=AssertionError("source admission must not start")):
+                        with self.assertRaisesRegex(StoreFailure,"batch_commit"):
+                            runner.run(path)
 
 if __name__=="__main__":
     unittest.main()
