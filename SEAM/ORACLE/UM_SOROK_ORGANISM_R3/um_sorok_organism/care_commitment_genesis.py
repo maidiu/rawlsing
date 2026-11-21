@@ -30,17 +30,23 @@ def conserve_costly_offered_care(actor,experience,event_ref,attempt,
             (experience.get("felt_enactment") or {}).get(
                 "attempted_operation")!=attempt.action or
             experience.get("status")!="PERFORMED"
-            or world_event.get("actor")!=actor["id"]
-            or world_event.get("action")!=attempt.action
             or world_event.get("status")!="PERFORMED"):
         return None
     target=getattr(attempt,"target",None)
     if type(target) is not str or not target or target==actor["id"]:
         return None
-    if (world_event.get("target")!=target or
-            world_event.get("outcome") not in (
+    direct=(world_event.get("actor")==actor["id"]
+            and world_event.get("action")==attempt.action
+            and world_event.get("target")==target
+            and world_event.get("outcome") in (
                 "CARE_GIVEN","MATERIAL_FEEDING_SUCCEEDED",
-                "FEEDING_ACTUALLY_PROVIDED")):
+                "FEEDING_ACTUALLY_PROVIDED"))
+    as_other=(world_event.get("coactor")==actor["id"]
+            and world_event.get("coactor_action")==attempt.action
+            and world_event.get("actor")==target
+            and world_event.get("action")=="SIGNAL"
+            and world_event.get("outcome")=="JOINT_ACTIVITY_PERFORMED")
+    if not (direct or as_other):
         return None
     if not any(x.get("kind")=="coactor_present"
                and x.get("source_actor")==target
