@@ -609,6 +609,17 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     ])
         result["completed"]=utc()
         return result
+    except BaseException as exc:
+        result["status"]="SOURCE_AUTHORITY_RESOURCE_OR_RUNNER_HOLD"
+        result["failure"]={
+            "type":type(exc).__name__,
+            "message":str(exc),
+            "traceback":traceback.format_exc(limit=14),
+        }
+        result["completed"]=utc()
+        common(stage="run_failed_or_held",status=result["status"],
+               failure_type=type(exc).__name__)
+        raise
     finally:
         (run_dir/"comparison.json").write_text(json.dumps(result,indent=2,default=str)+"\n")
         common(stage="run_final",status=result["status"])
