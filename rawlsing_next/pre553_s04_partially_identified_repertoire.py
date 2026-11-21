@@ -324,11 +324,46 @@ def identify_unobserved_overlap(
     })
 
 
+def replay_unobserved_overlap(
+    *,
+    relation: PartiallyIdentifiedRepertoire,
+    left: S04ObservedKnowledge,
+    right: S04ObservedKnowledge,
+    left_event_cell: Any,
+    right_event_cell: Any,
+    authority_registry: AuthorityRegistry | None = None,
+    common_frame_authority_ref: AuthorityRef | None = None,
+) -> PartiallyIdentifiedRepertoire:
+    """Recompute from actual S04 sources and CURRENT exact common-frame issuer.
+
+    A content-consistent hash is not evidence of authorization. A changed
+    observation, withdrawn bridge, or self-rehashed forged bound must fail.
+    """
+    if type(relation) is not PartiallyIdentifiedRepertoire:
+        raise PartialIdentificationError("EXACT_PARTIAL_RELATION_REQUIRED")
+    fresh = identify_unobserved_overlap(
+        left=left, right=right,
+        left_event_cell=left_event_cell,
+        right_event_cell=right_event_cell,
+        authority_registry=authority_registry,
+        common_frame_authority_ref=common_frame_authority_ref,
+    )
+    if fresh.ref != relation.ref:
+        raise PartialIdentificationError("F6_SOURCE_AND_ISSUER_REPLAY_MISMATCH")
+    return fresh
+
+
 def ask_partial_repertoire_configuration(
     *,
     relation: PartiallyIdentifiedRepertoire,
     event_a: bool,
     event_b: bool,
+    left: S04ObservedKnowledge | None = None,
+    right: S04ObservedKnowledge | None = None,
+    left_event_cell: Any = None,
+    right_event_cell: Any = None,
+    authority_registry: AuthorityRegistry | None = None,
+    common_frame_authority_ref: AuthorityRef | None = None,
 ) -> dict[str, Any]:
     """Consumer-facing *possibility constraint*, NOT a sampler or case.
 
@@ -342,6 +377,19 @@ def ask_partial_repertoire_configuration(
     if type(event_a) is not bool or type(event_b) is not bool:
         raise PartialIdentificationError("EXACT_BINARY_EVENT_ROLES_REQUIRED")
     m = relation.material()
+    if m["state"] == "SHARP_PARTIAL_IDENTIFICATION_CONDITIONAL_ON_COMMON_FINITE_FRAME":
+        if (type(left) is not S04ObservedKnowledge
+                or type(right) is not S04ObservedKnowledge
+                or type(authority_registry) is not AuthorityRegistry
+                or type(common_frame_authority_ref) is not AuthorityRef):
+            raise PartialIdentificationError("F6_EXACT_SOURCE_AND_AUTHORITY_REPLAY_REQUIRED")
+        replay_unobserved_overlap(
+            relation=relation, left=left, right=right,
+            left_event_cell=left_event_cell,
+            right_event_cell=right_event_cell,
+            authority_registry=authority_registry,
+            common_frame_authority_ref=common_frame_authority_ref,
+        )
     base = {
         "contract": "S04_PARTIAL_REPERTOIRE_CONFIGURATION_CONSTRAINT@1",
         "relation_ref": relation.ref.as_dict(),
@@ -386,5 +434,6 @@ def ask_partial_repertoire_configuration(
 __all__ = [
     "CONTRACT", "BRIDGE_OPERATION", "BRIDGE_KIND", "GRADE",
     "PartialIdentificationError", "PartiallyIdentifiedRepertoire",
-    "identify_unobserved_overlap", "ask_partial_repertoire_configuration",
+    "identify_unobserved_overlap", "replay_unobserved_overlap",
+    "ask_partial_repertoire_configuration",
 ]
