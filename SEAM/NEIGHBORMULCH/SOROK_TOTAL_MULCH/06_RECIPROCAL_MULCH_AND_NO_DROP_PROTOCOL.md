@@ -1,6 +1,6 @@
 # TOTAL SOROK MULCH VI — RECIPROCAL ADJUDICATION, CONTRADICTIONS AND NO-DROP
 
-**2026-11-21 · bounded comprehensive first pass, not 757 individual independent scientific decisions.** This document identifies where the actual SOROK corpus requires revisions to our present architectural view. Source identities, original classifications and competing branches remain in companion 01 and 02, not overwritten.
+**2026-11-21 · RECIPROCAL THEORY×CODE CORRECTION THROUGH NEW ACTIVE HUB 03; bounded source corpus, not 757 individual independent scientific decisions.** This document identifies where the actual SOROK corpus requires revisions to our present architectural view. Source identities, original classifications and competing branches remain in companion 01 and 02, not overwritten.
 
 ## I. Recoveries that change the next construction
 
@@ -10,9 +10,13 @@
 
 **The Constitutive Person changes the burden from event correctness to subject formation.** A program can record immaculate actions for an impoverished psychology; a brilliant interior description can be causally inert. The enduring acquired relational constitution, situated recruitment, actual action and newly organized possibilities must become one continuing event-first history. An LLM must propose source-qualified fictional meaning and functional differentiation, not settle physical events or assert who truly consented. Sourcefree implementation is not a human psychology law.
 
-**The family field was designed in PRE-A0, but R26 does not finish it.** Original PRE-A0 §§13–14 already requires higher-order relational motifs and actor-relative versions of caregiver–caregiver and child–caregiver relations. The unmet challenge is future practical recruitment: if Nadia reinterprets father/mother/brother in light of a source-qualified betrayal, the new operative organization should affect later permitted action or NO_CHANGE, not merely create a graph-edge anecdote.
+**The family field was designed in PRE-A0; some relational recruitment is already operative in R27.** Original PRE-A0 §§13–14 requires higher-order actor-relative caregiver–caregiver and child–caregiver fields. CO R27 `relational_metabolism.derive_relational_metabolism` already emits context-qualified sourcefree motif action currents and form-recruitment candidates; `psychodynamics.enact_currents` consumes mediated currents and preserves unresolved approach/withhold contradictions; `historical_self_organization.pre_cue_pressures` already carries pre-cue acquired orientation into practical possibilities. **Prior shorthand claiming the relation remained only a descriptive graph was false and is now retracted.** The real next join is multiactor and institutionally conditioned *formation* and later practical afterlife, without assuming one sourcefree motif operation covers all family life.
 
 **Shared precontact truth is not one global postcontact Nadia.** Original SOROK 61 provides a shared root and copy-on-write continuing histories. New R27 sourcefree notice tests establish world-local applicability to a common offered occasion in diverged SQLite histories. External world occurrence, branch situation, actor exposure, actor understanding, private response and user-visible surface remain different; real events/news and their physical effects are NOT supplied by R27's notice alone.
+
+**New source-to-theory assimilation, after [03](03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md) was caught stale:** original H053–62 means observing another is itself an observable relationship act; H087–99 means cause and recognition/attribution can diverge; SOROK 54–56 and 71 mean human-produced value is material, actor-relative and sometimes fetishized, never simply a universal object property or an independent meaning subsystem; 72–74 mean self-myth can become tyrannical recruitment without rewriting experience; Court 8C/8E means a limited visitor can have mode-governed realized speech without truth-policing. **The user's new Marxian correction requires more:** externalization of human life/valuation into God-concepts, labor-products, objects and institutions is a general operation that does not itself entail reification, and fetishization emerges when a produced form gains supposedly independent power over people, materially enforced through institutions and wealth. That continuity may be contested philosophically, but it must not be silently narrowed to commodity exchange. PRE-A0 §12 already articulates living relation vs reified THE MARRIAGE/GOOD MOTHER/THE REVOLUTION. These conceptual changes are **now directly integrated in 03**, not just deposited into 10–13. Here in 06, they are tracked as correction/adjudication, not as a competing theory hub.
+
+**The explicit user-demanded engineering intake** is [13, reciprocal observer/cover/false inference/later actual action](13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md), tied to existing H049/H053–62, MII/MIII, R2 visitor world receipt, CO R26–27 sensory/actor-first consumers; six proposed sourcefree RC courts. This is a concrete first-consumer target, **not** new code, not a demand to restart the whole simulator and not the place where the theory itself lives.
 
 ## II. Contradictions that cannot be compressed away
 
@@ -28,6 +32,11 @@
 | Social category vs psyche | Label Lebanese Muslim brother automatically obedient | Actual practice, institutions, history and different actor motivations |
 | Shared date vs divergent worlds | Force identical event/story in all forks | World-level public possibility and branch-local feasibility/experience |
 | Emergent relation vs paid retention | Pay for compliant rare companion | Optional non-extractive generation, no purchased affection, no compulsory moral lesson |
+| Externalization vs fetishization | Treat every loved product as fetish, or confine alienation to commodity prices | Real labor/value relations; emergent autonomous authority only where actor practice + institutional power support it; no global score |
+| Observer's access vs actor’s observation | ATTEND is invisible to the Other | Gaze/cover has material realization and limited, mutually fallible actor perceptions; H053–62 already original |
+| Objective consequence vs social acknowledgment | Every help/betrayal triggers gratitude or revealed truth | Actual causes, benefit/harm, blame, ignorance and later confession are independently recorded and recruited |
+| Recursive self-myth vs historical truth | New interpretation edits past or automatically enlightens | Preserve source events, genuine older pleasure and counterevidence; later myth may dominate access/recruitment without fact overwrite |
+| User speech vs local social position | Every written SAY becomes verbatim local utterance or portal rewrites all lies | Selected mode stable coordinate realization, legible to visitor; false mundane claims remain uttered claims |
 
 ## III. Scalable dialectical social field—provisional algorithmic direction
 
@@ -48,6 +57,8 @@ The crucial proof is that an actor's new construction can become operative in la
 
 ## V. No-drop recurrence protocol
 
+**Mandatory active-theory-hub rule:** source conservation alone is not MULCH. Before closing a substantive conceptual intake, update [03](03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md) **in place**: specify what its current theory said, what the new original/user source contradicts or extends, the newly defended synthesis, the strongest counterclaim, and what actual first consumer/falsifier would differentiate them. The source dialogue stays in 04 and source courts; owner/first-consumer consequences in 05; disagreements and status in this 06; prospective executable tickets in their existing work owners. If 03 is unchanged for substantive new theory, label **`THEORY_MULCH_INCOMPLETE`** instead of claiming unified conceptual digestion. Exact source-identity and contiguous NM checks are necessary evidence, not a sufficient theory-MULCH test.
+
 Every substantive future idea is recorded as:
 
 1. **Exact originating utterance and source** (user, previous research text, theory, tested code, reviewer—not conflated).
@@ -60,7 +71,7 @@ Every substantive future idea is recorded as:
 8. **Executable counterfactual / falsifier** (including unchanged, refusal and offscreen conditions), sourcefree CI, independent review.
 9. **Authorized receiving**, namely NEIGHBORMULCH, existing SOROK O-Index and paired CURRENT_PROGRESS; no worker self-certification.
 
-The [44-row conversation register](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md) must be appended on future substantive turns, not overwritten or summarized away. The [757-record machine source union](01_MACHINE_SOURCE_UNION_757_ROWS.json) is the discovery base, not evidence that every individual row has received completed independent theory adjudication.
+The [85-row conversation register](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md) must be appended on future substantive turns, not overwritten or summarized away. The [757-record machine source union](01_MACHINE_SOURCE_UNION_757_ROWS.json) is the discovery base, not evidence that every individual row has received completed independent theory adjudication.
 
 **No asynchronous guarantee:** ideas uttered in a future ChatGPT conversation do not appear in GitHub by magic. That future turn needs an explicit GitHub receiving/readback. No claim of verbatim universal chat history is justified where a prior transcript/source is partial.
 
