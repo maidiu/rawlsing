@@ -96,6 +96,16 @@ All original NEKUDA identities remain and any independent tests, scientific righ
 
 ---
 
+## NEKUDA-R11 — C11 architecture loss prevention · source-static, 2026-11-21
+
+**Do not confuse a historical sourcefree pass with architecture authority.** Governing P0 user selection #960/#1006 requires config-driven one-pass 13-family sealed, Parquet/Zstd persistent C11 plus independently authenticated cold direct-I02 saved native readers, at useful cost; old W03 attempt exceeded 6 GiB and selected S2-C itself retains a separate measured cost problem. **KUDA-028 W03** chunk compressor is a disposable event accelerator, not authority to bring back whole-object primary path. **KUDA-077 Route-C** is exact but 7-column LiTS-I/19 fixed-role scoped, not generic C11. **KUDA-083/084/085 Route-A** is alternate gzip LONG_SHARDED, C09 unselected, and uses older R5 codec lacking current decoder opaque/date normalization. Historical Route-A seam geometry takes 0-based variable ordinal but selected physical decoder emits 1-based variable ordinals: explicit source ABI conflict, no unmodified transplant. Historical Audit69 is no substitute for selected 13-family complete physical-body/locator anti-join under external I02 root. Keep as comparators; do not replace selected owners.
+
+**KUDA-082 / draft #1259:** A one-fixture independent native facade/direct ingest parity diagnostic is **not** the original all35 fixture registry and not a new production C11 intake capability. Regrade as **REVIEW_TEST_ASSERTIONS_ONLY**, never infer all35 original respondent reads. Preserve only unique negative/assertion if current tests lack it; no new C11 engine. Protected G4/S01/S03 currentness remains separate.
+
+This negative/source-fate clarification is not reviewed, tested or protected received. No historical NEGATIVE or user-selected architecture decision is retired.
+
+---
+
 ## Full post-rework negative and supersession records
 
 ### NEKUDA-001 — Pre-S1B R157 package exact-case paths and standalone factory
