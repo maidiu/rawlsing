@@ -85,38 +85,32 @@ assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
 idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|", ideas, re.M)]
 assert idea_numbers == list(range(1, 86)), idea_numbers
-recent = (ROOT / "12_HUMAN_VALUE_EXTERNALIZATION_FETISH_RELIGION_MARKET_AND_PROPHETIC_REORIENTATION_20261121.md").read_text()
+# The exact originating user words from source essays that were deleted must
+# survive in the EXISTING 04 source register, rather than permanent sub-essays.
 for phrase in (
     "in a public forest with a borrowed axe",
     "value I created now lives inside the wood",
     "the Sabbath was made for man, not man for the Sabbath",
     "the free hand of the market",
     "is your brain falling out",
-    "Externalization is not automatically alienation or fetishism",
-):
-    assert phrase in recent, ("LOST_USER_VALUE_THEORY", phrase)
-intake = (ROOT / "13_TARGETED_MULCHINEERING_RECIPROCAL_ATTENTION_AND_FALSE_INFERENCE_INTAKE_20261121.md").read_text()
-for phrase in (
-    "CONCRETE_USER_REQUESTED_INTEGRATION_BACKLOG_CANDIDATE",
-    "PENDING_ORIGINAL_OWNER_MULCHINEERING",
-    "RC-1", "RC-2", "RC-3", "RC-4", "RC-5", "RC-6",
-    "H053", "H059", "R27 CO",
-):
-    assert phrase in intake, ("LOST_GAZE_MULCHINEERING", phrase)
-for excerpt in (
-    "everything is a dialectic", "it needs to be modeled like many overlapping dialectics",
+    "everything is a dialectic",
+    "it needs to be modeled like many overlapping dialectics",
     "also, what I have just said is a riff",
 ):
-    assert excerpt in (ROOT / "10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md").read_text(), excerpt
-five = (ROOT / "11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md").read_text()
-for title in (
-    "THE OBSERVER IS OBSERVABLE",
-    "UNRECOGNIZED GOOD",
-    "HUMAN VALUE IN OBJECTS",
-    "TYRANNICALLY RETCON",
-    "PORTAL'S REALIZED SPEECH",
+    assert phrase in ideas, ("LOST_ORIGINAL_USER_SPEECH", phrase)
+assert "### G1. Overlapping dialectical fields" in ideas
+assert "### G2. Marxian human value" in ideas
+
+# The specific six-case user MULCHINEERING ask belongs in EXISTING 05.
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
+for phrase in (
+    "IV-A. Explicit MULCHINEERING work item",
+    "H053", "H059", "NEIGHBOR R2",
+    "**RC-1**", "**RC-2**", "**RC-3**",
+    "**RC-4**", "**RC-5**", "**RC-6**",
 ):
-    assert title in five, ("FIVE_RECOVERY_MISSING", title)
+    assert phrase in crosswalk, ("LOST_GAZE_ENGINEERING_REQUIREMENT", phrase)
+
 for excerpt in (
     "and then he cheated on mom", "and the", "the family has one",
     "MULCHINEERING", "I want *everything in one place*",
@@ -141,42 +135,62 @@ theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
 start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
 crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
 critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
-for concept in (
-    "ACTIVE NEIGHBORMULCH THEORY HUB",
-    "Infancy: real reciprocal dependence",
-    "What makes the field dialectical—and what does not",
-    "Actual R26–R27 correction",
-    "M0 material occurrence",
-    "Unrecognized care, objectively real harm",
-    "Observation itself belongs inside the relational field",
-    "Human powers deposited outside their bodies",
+# The central 03 was REWRITTEN as a complete 17-chapter theory, not
+# appended with numbered rival essays; 00 points there, 04 preserves exact
+# speech, 05 accepts first-consumer courts and 06 enforces full reconstitution.
+theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
+start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
+critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
+heads = re.findall(r"^## ([IVX]+)\. ", theory, re.M)
+assert heads == [
+    "I","II","III","IV","V","VI","VII","VIII","IX","X",
+    "XI","XII","XIII","XIV","XV","XVI","XVII"
+], ("THEORY_NOT_FULLY_RECONSTITUTED", heads)
+assert len(theory) >= 68000 and "STAGING ONLY" not in theory
+for phrase in (
+    "The object is neither a dialogue bot",
+    "Material world, social reproduction",
+    "infant activity and caregiver alterity",
+    "Overlapping relational fields",
+    "firewood",
+    "fetishism, God and power",
     "the Sabbath was made for man, not man for the Sabbath",
-    "The visitor is not a godlike spectator",
-    "F4—Observer observed",
-    "F5—Unrecognized consequence",
-    "F6—Externalization versus fetishism",
-    "F7—Self-retcon and portal mediation",
+    "relational_metabolism",
+    "historical_self_organization",
+    "M0",
+    "M8",
+    "Nadia sibling falsifier",
+    "Birkenstocks",
+    "H0–H3",
+    "Mechanism I",
+    "Mechanism II",
+    "Mechanism III",
+    "copy-on-write",
+    "visitor's gaze",
+    "World consequences without social recognition",
+    "The player inhabits a world position",
+    "homologous-peer",
+    "The product itself is a social institution",
+    "One continuing organism",
+    "Falsification, not stage-show confirmation",
+    "Open contradictions and the ongoing duty",
+    "What conservation means here",
+    "S0–S16",
+    "C0–C12",
+    "Q123",
 ):
-    assert concept.casefold() in theory.casefold(), ("THEORY_HUB_NOT_ASSIMILATED", concept)
-for concept in (
-    "One primary living theory document",
-    "03 — The Dialectical Constitutive Person and Its Game",
-    "THEORY_MULCH_INCOMPLETE",
-):
-    assert concept in start, ("HUB_ENTRANCE_DRIFT", concept)
-for concept in (
-    "the revised theory hub",
-    "Observer observed",
-    "Anonymous good/hidden harm",
-    "No new fetishism subsystem",
-):
-    assert concept.casefold() in crosswalk.casefold(), ("HUB_OWNER_CROSSWALK_DRIFT", concept)
-for concept in (
-    "Mandatory active-theory-hub rule",
-    "THEORY_MULCH_INCOMPLETE",
-    "85-row conversation register",
-):
-    assert concept in critique, ("HUB_RECIPROCAL_DRIFT", concept)
+    assert phrase.casefold() in theory.casefold(), ("RECONSTITUTED_THEORY_LOSS", phrase)
+for i in range(1,11):
+    assert ("**F" + str(i) + " " in theory or "**F" + str(i) + " —" in theory), ("MISSING_FALSIFIER", i)
+for lo,hi in ((1,12),(13,26),(27,39),(40,52),(53,62),
+              (63,86),(87,99),(100,116),(117,139),(140,163),(164,190)):
+    assert f"H{lo:03d}–H{hi:03d}" in theory, ("H_SOURCE_FAMILY_NOT_MULCHED", lo, hi)
+assert "ONE FULLY REWRITTEN theory document" in start
+assert "03 — The Dialectical Constitutive Person and Its Game" in start
+assert "Mandatory WHOLE-THEORY replacement rule" in critique
+assert "THEORY_MULCH_INCOMPLETE" in critique
+for doc in (start, crosswalk, critique, theory):
+    assert not re.search(r"\]\((?:10_OVERLAPPING|11_FIVE|12_HUMAN|13_TARGETED)[^)]+\)", doc), "DEAD_SATELLITE_LINK"
 
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
@@ -184,6 +198,6 @@ print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicit
 print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
-print("ACTIVE_THEORY_HUB_ASSIMILATION_SMOKE_PASS: 03 primary + 00 entry + 05 existing consumers + 06 discordant source receiving; document-level presence only, NOT theory quality certification")
+print("WHOLE_THEORY_RECONSTITUTION_DOC_COURT_PASS: 03 rebuilt in 17 chapters, 11 original H-source families, F1-F10 and 04/05/06 integrated; document-level checks, NOT independent philosophical/scientific certification")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
