@@ -3,6 +3,9 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+**R26 AUTHOR CI 101/101 @ EXACT CODE CUT `0b48fe8e9f6fdd63bf9c1c7fe486bb65e5a422e9` (NOT G5):** [Actions run 44952309850](https://github.com/maidiu/rawlsing/actions/runs/44952309850) retained [exact R26 source evidence in same cumulative docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#14-r26--s1s2-exact-source-adjudication-of-all-13-holds-s3s4-targeted-source-first-consumer-triage-2026-11-21). All 13 historic source blobs and selected candidate contrasts executed as **static/source court**; not native original surveys or one integrated multi-branch software test. Full exact source court now 101 PASS/0 FAIL. R24 historical census, SOROKUDA, original rights and paired protected status unaffected.
+
+
 **R26 SECOND-COST ELIMINATION EXECUTED AT EXACT-SOURCE GRADE (13/13 R24 HOLDS):** [Single cumulative R26 docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#14-r26--s1s2-exact-source-adjudication-of-all-13-holds-s3s4-targeted-source-first-consumer-triage-2026-11-21) compared each exact historical Git source/ABI to selected and existing candidate owners. Three physical alternatives 028/077/083 need ONE matched #1006 test; four safeguards 067/081/086/076 already coexist in held combined #1267 (specific exact FF01/D/R112 blobs), **not** four new ports; 078/082/091 historical harness runtimes unnecessary but unique old negatives not all proved covered; F6 017/018 is byte-exact already in #1267 at sourcefree grade but original N9 reader/science absent, P07 019 ExactRef-as-of→R06 release ABI unproven. S3/S4 examined selected actual consumers/tests only where meaningful, no original-source red/green test asserted. R24 20/9/13 original first-pass census remains historically intact. No code adoption/independent G5/protected paired CURRENT_PROGRESS; HQ_CURRENTNESS_HOLD.
 
 
