@@ -58,6 +58,7 @@ from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
+from .relational_metabolism import possible_witnessed_third_party_relation
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
 
 def _bind_actor_trial_particular_object(alternatives, trial):
@@ -763,6 +764,13 @@ class ConstitutiveRuntime:
                     institutional_learning),
                 'historically_possible_institutional_relational_differences':copy(
                     institutional_differences),
+                # A third person's actually witnessed treatment of another
+                # may challenge this actor's inherited loyalty/identification.
+                # This is an actor-local, optional semantic occasion, never
+                # direct access to anyone else's private psyche.
+                'historically_possible_witnessed_third_party_relations':copy(
+                    possible_witnessed_third_party_relation(
+                        actors[aid],experience)),
                 'historically_possible_recurrent_livelihood_orientation':copy(
                     recurrent_work),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
@@ -824,7 +832,9 @@ class ConstitutiveRuntime:
                  'private_pre_event_psychodynamics':copy(pre_event_psychodynamics),
                  'private_post_event_psychodynamics':copy(post_event_psychodynamics),
                  'relational_dynamics_are_admitted_read_projections_not_actor_claims':True,
-                 'model_service_grade':getattr(self.semantic.provider,'grade','INJECTED_EXTERNAL_PROVIDER'),
+                 'model_service_grade':getattr(
+                     getattr(self.semantic,'provider',self.semantic),
+                     'grade','UNSPECIFIED_SEMANTIC_ADAPTER_NO_PROVEN_GRADE'),
                  'sourcefree':True}
         committed=self.ledger.commit(self.world_id,wv,world,actors,actor_versions,
                                      'ACTOR_LIFE_TRANSITION',actor_id,payload)
