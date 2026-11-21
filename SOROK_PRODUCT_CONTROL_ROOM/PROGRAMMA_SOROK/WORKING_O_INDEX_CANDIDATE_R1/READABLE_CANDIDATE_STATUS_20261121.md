@@ -1,0 +1,178 @@
+# O-INDEX readable candidate status — 21 November 2026
+
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `5707148592fc06d0a56f5707ee936381bccc82ef`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **108-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+
+**Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
+
+## Mechanisms / protected and candidates (20 records)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#775](https://github.com/maidiu/rawlsing/pull/775) | `0d566510afd17ea395112fdb1a9f5713f88af835` | `codex/sorok-p5-continuous-experience` | MERGED / PROTECTED_MERGED_HISTORICAL_SCOPED_SOURCE_PENDING_FULL_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#779](https://github.com/maidiu/rawlsing/pull/779) | `ea72ce582e7e3d3b27f6e04bd560dae14b228f75` | `agent/programma-sorok-p6-one-living-house-ahead-of-attention-20261107-r1` | MERGED / PROTECTED_MERGED_HISTORICAL_SCOPED_SOURCE_PENDING_FULL_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#783](https://github.com/maidiu/rawlsing/pull/783) | `acde0e5f614c5bf03b44ccc46df1cd295f97e61d` | `docs/programma-sorok-cirr-user-constitution-and-codex-hq-20261108-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#791](https://github.com/maidiu/rawlsing/pull/791) | `83de56d24c2be2bc69bc596abd26aa808c26cf42` | `agent/sorok-mechanism-i-rolling-historical-materialization-20261108-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#792](https://github.com/maidiu/rawlsing/pull/792) | `094937d3187ed3c2e215fe2c1f7c1c84f50d9006` | `docs/sorok-mechanism-ii-historically-mediated-gaze-execution-20261108-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#794](https://github.com/maidiu/rawlsing/pull/794) | `76d8865b6097d6b8d24a92d2c133e4f40a0a4433` | `research/sorok-actor-local-user-model-and-relational-constitution-20261108-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#823](https://github.com/maidiu/rawlsing/pull/823) | `2d40a660a6392a9e3d28f12540e8f9f703050e2b` | `docs/sorok-mechanism-i-t4-s46-real-dispatch-closure-20261108-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#828](https://github.com/maidiu/rawlsing/pull/828) | `d60ffc3480c48469d368a4508a2b956f610178aa` | `docs/sorok-p5-p6-protected-receiving-factual-closeout-20261108-r1` | MERGED / PROTECTED_MERGED_HISTORICAL_SCOPED_SOURCE_PENDING_FULL_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#857](https://github.com/maidiu/rawlsing/pull/857) | `7d95b93e7a0a78f3c77c7ae498e025fd96408563` | `docs/sorok-nadia-sensory-access-candidate-20261109-r1` | MERGED / PROTECTED_MERGED_HISTORICAL_SCOPED_SOURCE_PENDING_FULL_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#860](https://github.com/maidiu/rawlsing/pull/860) | `f65a0b3c0a4318136421af3eb69dc3e2b234355d` | `docs/sorok-mechanism-iii-live-constituted-encounter-commission-20261109-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#872](https://github.com/maidiu/rawlsing/pull/872) | `75069efda89ef7a0e454c1d57176802bd8dc7a52` | `agent/sorok-miii-situated-encounter-access-correction-20261109-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__SOURCE_FATE_CONSERVATION_PENDING | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#873](https://github.com/maidiu/rawlsing/pull/873) | `a292fa82957f8d6ad3b88dec611fcc1975658921` | `agent/sorok-miii-situated-encounter-20261109-r1` | MERGED / PROTECTED_MERGED_HISTORICAL_SCOPED_SOURCE_PENDING_FULL_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#876](https://github.com/maidiu/rawlsing/pull/876) | `15fcb5ecb0a3b719bad387080351770b4a2849a5` | `agent/sorok-miii-grade-b-adp010-first-consumer-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#878](https://github.com/maidiu/rawlsing/pull/878) | `339c872612aff9aa34f7133a2170108bcde385f6` | `agent/sorok-miii-situated-live-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#880](https://github.com/maidiu/rawlsing/pull/880) | `07fa05e1a9aaf808c088b2df19bf7855f7f9dcea` | `agent/sorok-miii-actor-initiative-continuity-20261110-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#882](https://github.com/maidiu/rawlsing/pull/882) | `5aa9bdc1133f75028b20d448504dae03abc88115` | `agent/sorok-miii-current-scene-action-context-20261110-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#889](https://github.com/maidiu/rawlsing/pull/889) | `0178df262ac04d6fef074a56f6b8448c4d7fdcf9` | `docs/sorok-mechanism-ii-mcr-af-existing-commission-r2` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#891](https://github.com/maidiu/rawlsing/pull/891) | `724b505c2ab07eaa350a4582e317d1d71faa1d27` | `review/sorok-miii-premain-receiving-20261110-r1` | MERGED / PROTECTED_RECEIVED_MIII_SOURCEFREE_ENGINEERING_SCOPED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#905](https://github.com/maidiu/rawlsing/pull/905) | `2be0cf252662ad021571db6f0d38b12c205c56ae` | `review/sorok-mii-premain-integration-20261111-r1` | MERGED / PROTECTED_RECEIVED_MII_SOURCEFREE_ENGINEERING_SCOPED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#907](https://github.com/maidiu/rawlsing/pull/907) | `cb998b7d7752d8db972bce18471230d07f056939` | `review/sorok-mi-premain-integrate-20261111-r1-8422` | MERGED / PROTECTED_RECEIVED_AT_SCOPED_HISTORIC_SOURCE_SUBJECT_TO_READBACK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+
+## PROGRAMMA / controls / cross-HQ (27 records)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#559](https://github.com/maidiu/rawlsing/pull/559) | `cee8a09b33ccfb08e5db7e0bc3be45fda8938766` | `research/sorok-programma-living-reference-operating-constitution-r1-20261031` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#561](https://github.com/maidiu/rawlsing/pull/561) | `e50d32eb6816578145d17dcd637a0b90b3a1ef40` | `agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1` | OPEN / HELD_O_INDEX_R3_WORKING_CANDIDATE_NOT_PROTECTED | AUTHOR_REPORTED_21_TESTS_PLUS_FOUR_LINEAGE_SUBTESTS_PASS |
+| [#703](https://github.com/maidiu/rawlsing/pull/703) | `31c59b6d1c0d452b34b3e133e4a2b01317d00925` | `research/programma-pyat-r01r03-current-source-native-abi-qualification-20261105-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1062](https://github.com/maidiu/rawlsing/pull/1062) | `8bdfbdd22c19d865b5049bde8213eb3bcaea973b` | `codex/sorok1038-custody-g5-20261115-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1063](https://github.com/maidiu/rawlsing/pull/1063) | `74f3fbbace77c6700381a5b95edcc8f1524d0670` | `codex/sorok-classified-hq-queue-20261115-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1089](https://github.com/maidiu/rawlsing/pull/1089) | `5c83a8321dce70fcc40c8f210af06a9edb1f8999` | `codex/sorok1037-b05-r3-independent-g5-20261115-r3` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1091](https://github.com/maidiu/rawlsing/pull/1091) | `24f532de43ab6d1ee8a6480a856ba6c6b56e7f53` | `codex/sorok-c05-projection-r3-independent-g5-20261115-r3` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1095](https://github.com/maidiu/rawlsing/pull/1095) | `75581fa9e2c8576d1ca9a7a9a18759ea840d82e8` | `codex/sorok-operational-currentness-reconciliation-20261115-r1` | OPEN / HELD_PRIOR_CURRENTNESS_IMPLEMENTATION__INDEPENDENT_REVISE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1098](https://github.com/maidiu/rawlsing/pull/1098) | `1341c81dfe0e99da030e7dca356f55789a10c6f8` | `docs/programma-blood-oath-first-contact-20261115-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1101](https://github.com/maidiu/rawlsing/pull/1101) | `ac09ac7f26fa2db8950f563e8f1decb0c32f5af5` | `codex/sorok-automatic-currentness-engine-20261115-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1102](https://github.com/maidiu/rawlsing/pull/1102) | `fc49662603c3dd8148c847cd6f35f2172184fd5a` | `codex/sorok-automatic-currentness-independent-20261115-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1104](https://github.com/maidiu/rawlsing/pull/1104) | `d2883f60b1f8b0d83221051844eca7e11b72dc01` | `codex/sorok-automatic-currentness-repair-20261115-r2` | OPEN / HELD_R2_CURRENTNESS_RECEIVING_RED__R3_SOURCE_SEPARATE | AUTHOR_LOCAL_17_TESTS_AND_WORKFLOW_CHECKS_REPORTED_PASS (historical; not current HEAD) |
+| [#1105](https://github.com/maidiu/rawlsing/pull/1105) | `53fad99fd8da86e4ab1cd12fdcfcd93fc8b2942f` | `codex/sorok-automatic-currentness-r2-receiving-20261116-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1113](https://github.com/maidiu/rawlsing/pull/1113) | `3ee539aa98fa9d059eb25d11294523e2a7423657` | `codex/sorok-automatic-currentness-launch-auth-20261116-r4` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1114](https://github.com/maidiu/rawlsing/pull/1114) | `5300a0c50e7934268856e2a8b14dd3ebe7c63060` | `codex/sorok-automatic-currentness-r4-receiving-20261116-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1142](https://github.com/maidiu/rawlsing/pull/1142) | `2107d04e6fd861685b87a3f4aa9385b98b66b700` | `docs/programma-hq-oath-r2-current-receiving-20261117-r1` | MERGED / PROTECTED_MERGED_SCOPED_HISTORICAL | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1160](https://github.com/maidiu/rawlsing/pull/1160) | `2073db825bd326b608e421accefe372b82604f6e` | `agent/um-sorok-programma-organism-r1-bank-20261119` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1169](https://github.com/maidiu/rawlsing/pull/1169) | `ac66a70ba2b0891e0fa783e53c426fb7dabdfd33` | `docs/sorok-programma-r3-parallel-mulch-candidate-20261119` | OPEN / RETURNED_UNRECEIVED_USER_PRIORITY_DOCUMENTARY_MULCH | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1173](https://github.com/maidiu/rawlsing/pull/1173) | `b0f45c16e0a9901832e13ea7df4a4cff3a346c78` | `agent/pyat-c6-s04-v3-seam-sourcefree-forward-20261120-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1179](https://github.com/maidiu/rawlsing/pull/1179) | `9325fc342f7e1aeeb1c196af872653f5657791cb` | `agent/pyat-c7-c6-to-pinned-sorok-r4-20261120-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED_CROSS_OWNER_PYAT_TO_SOROK | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1194](https://github.com/maidiu/rawlsing/pull/1194) | `9d0ab978bbb2cf641c9427b239397989ed81fbf2` | `research/dhikrymulch-total-reconstitution-20261120-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1195](https://github.com/maidiu/rawlsing/pull/1195) | `4dda2e11d95d7e40d78bcb6e59a2e940cde95b0e` | `agent/premain-mulch-primer-receiving-candidate-20261120` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1197](https://github.com/maidiu/rawlsing/pull/1197) | `ac64e6816aa39aaa31ccaafb615b0abbd40cd598` | `research/pyat-dhikrymulch-sampling-capability-boundary-20261120-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1232](https://github.com/maidiu/rawlsing/pull/1232) | `f99b180c48cd389f49aafc49a7ac433a42d85311` | `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1233](https://github.com/maidiu/rawlsing/pull/1233) | `f99b180c48cd389f49aafc49a7ac433a42d85311` | `agent/pyat-g4-one-time-complete-reconciliation-20261120-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1236](https://github.com/maidiu/rawlsing/pull/1236) | `f92c3c48befb51371f1ff299cbd8173afef95177` | `agent/premain-remont-canonical-discipline-receiving-20261120-r1` | MERGED / PROTECTED_RECEIVED_DOCUMENTARY_MCR_LITE_FIRST_FAULT_ONLY | AUTHOR_REPORTED_13_SOURCE_STATIC_CHECKS_PASS |
+| [#1237](https://github.com/maidiu/rawlsing/pull/1237) | `837ada95b1de8235743e87b1989ca7dd2869b922` | `agent/hq-oath-claim-evidence-r3-20261120` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+
+## REMONT / defect and runner (20 records)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#1165](https://github.com/maidiu/rawlsing/pull/1165) | `480d3595ef744779cbfce186cd1696d8e8f61e36` | `agent/sorok-remont-sr-p004-activity-course-20261119-r1` | OPEN / HELD_PARALLEL_SR_P004_SIBLING_NO_AUTO_MERGE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1166](https://github.com/maidiu/rawlsing/pull/1166) | `0663f3641680360605c5f3f343954fb1b0f602fa` | `agent/sorok-remont-sr004-activity-afterlife-20261119-r1` | OPEN / HELD_PARALLEL_SR_P004_SIBLING_NO_AUTO_MERGE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1170](https://github.com/maidiu/rawlsing/pull/1170) | `1b0bbca8e610d81cea820d200f2c90b73ea3efdc` | `agent/sorok-remont-sr005-material-custody-20261119-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1171](https://github.com/maidiu/rawlsing/pull/1171) | `85e7166aeee3af25e59ebbb3b48115a498bcdc4a` | `agent/sorok-remont-r3-live-p004-p005-p021-p024-20261119-r1` | OPEN / HELD_REMONT_ORIGINAL_QUEUE_ACTIVE_DRAFT__CURRENT_QUEUE_HEAD_UNTESTED | AUTHOR_REPORTED_180_NORMAL_AND_OPTIMIZED_PASS_FOR_P070_P071 (historical; not current HEAD) |
+| [#1178](https://github.com/maidiu/rawlsing/pull/1178) | `c1a64f47f21b6cd6c520101bd03864406cf6c61d` | `agent/sorok-remont-r5-builder-intake-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1182](https://github.com/maidiu/rawlsing/pull/1182) | `7e8cf7d050b59c869f46553e9cd715981f23ba7b` | `agent/sorok-remont-r9-53-independent-receiving-20261120-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1183](https://github.com/maidiu/rawlsing/pull/1183) | `79ead983395d01a996fb6eeb5f639fed48dcdf1f` | `agent/sorok-remont-r9-p070-p071-first-source-repair-20261120-r1` | CLOSED/UNMERGED / HELD_CLOSED_UNMERGED__EXACT_SOURCE_RETAINED_PENDING_CONSERVATION | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1187](https://github.com/maidiu/rawlsing/pull/1187) | `9a1f2c4ba2a07d7760bd40940b014263bc1b2a19` | `agent/sorok-remont-r10-r9-opencode-integrated-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1189](https://github.com/maidiu/rawlsing/pull/1189) | `e1f45198ffdd65b96c3559809d883a9dc5a32ab8` | `agent/sorok-remont-soracle-r10-hostile-red-probes-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1190](https://github.com/maidiu/rawlsing/pull/1190) | `39f6972089858ee968e73b2e731005c71a8055dd` | `agent/sorok-remont-r11-trial-before-motive-integrated-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1198](https://github.com/maidiu/rawlsing/pull/1198) | `d96f1c0b181b9772b1cd90c093e7393acc66523c` | `agent/sorok-remont-r11-exact-defect-repair-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1199](https://github.com/maidiu/rawlsing/pull/1199) | `943b52c08d6b0fa9cdfdff9f7b751ab2eafcccb6` | `agent/sorok-remont-r12-r11-review-repairs-20261120-r1` | OPEN / INDEPENDENTLY_REVIEWED_SCOPED_UNMERGED_SIDE_LINE_NOT_ANCESTOR_OF_R13_R18 | 248_UNIT_NORMAL_248_OPTIMIZED_PYTEST_248_PLUS16_PASSED |
+| [#1210](https://github.com/maidiu/rawlsing/pull/1210) | `3b9b58b75bdceec901c3ba7aaa18738ea4989923` | `agent/sorok-remont-r13-provisional-project-cue-firstfaults-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1211](https://github.com/maidiu/rawlsing/pull/1211) | `cc0fe319596ee12258acf48dc6078b552bafd3bc` | `agent/sorok-remont-r12-r2-project-reorganization-trial-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1214](https://github.com/maidiu/rawlsing/pull/1214) | `f8c0d8dc901116d5fd1bfa7ec992dffa90a9aef0` | `agent/sorok-remont-r14-p012-p004-joint-recruitment-purpose-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1215](https://github.com/maidiu/rawlsing/pull/1215) | `d702e477cda89a1fd6ce5bf579513c8dedb19dd3` | `agent/sorok-remont-r13-alias-takeup-exact-defect-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1220](https://github.com/maidiu/rawlsing/pull/1220) | `6075792420e1d87b30036ebe6f352815783e47c2` | `agent/sorok-remont-r15-p012-p018-source-integrity-20261120-r1` | OPEN / MIXED_SCOPED_P012_ACCEPT_P018_RED__UNMERGED | 276_AUTHOR_NORMAL_OPTIMIZED_PYTEST_PASS_22_SUBTESTS; 5_P018_INDEPENDENT_RED |
+| [#1222](https://github.com/maidiu/rawlsing/pull/1222) | `7a8a18c153ee5a36e1c52eca15f4e5e8862296be` | `agent/sorok-remont-r16-r12-local-machine-source-reconcile-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1230](https://github.com/maidiu/rawlsing/pull/1230) | `28bf7fc48264d433ecf172bd0846744a3476222e` | `agent/sorok-remont-r17-p018-source-preflight-20261120-r1` | OPEN / RETURNED_R17_CODE_PASS_SCOPED_AUTHOR__CURRENT_DOC_HEAD_UNREVIEWED | 289_UNIT_NORMAL_289_OPTIMIZED_PYTEST_289_PLUS32__REPORTED_PASS (historical; not current HEAD) |
+| [#1241](https://github.com/maidiu/rawlsing/pull/1241) | `a4a495bbb456bd211b4fbdbd29478c0f0052603f` | `agent/sorok-remont-r18-p004-selected-means-20261120-r1` | OPEN / HELD_R18_P004_PARTIAL__AUTHOR_GREEN_SUSPECTED_UNTESTED_DUPLICATE_EDGE | AUTHOR_296_UNIT_NORMAL_OPTIMIZED_PYTEST_PASS_32_SUBTESTS_PY3135 |
+
+## SEAM / theory and world (9 records)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#988](https://github.com/maidiu/rawlsing/pull/988) | `6c97920512906301314007a169d2cf0571e6de25` | `docs/SEAM-prev3-v3-joint-opening-20261112-r0` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#989](https://github.com/maidiu/rawlsing/pull/989) | `50a720205ad4d44bbc53bce3d1d4b6399b60360c` | `docs/seam-um-sorok-independent-position-20261112-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1132](https://github.com/maidiu/rawlsing/pull/1132) | `796452b8cb788fa5a02f37a7ce86eafce8312dfe` | `docs/seam-social-field-reverse-requirements-20261116-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1140](https://github.com/maidiu/rawlsing/pull/1140) | `a783c116f37f3f818eb670ce88c638abbe8de5a2` | `docs/seam-um-pyat-specialist-succession-20261117-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1141](https://github.com/maidiu/rawlsing/pull/1141) | `8bd487fb8c2ca3b045900cad332fe2140fe95000` | `docs/seam-post26-crossfield-firstreader-sorok-challenge-20261117-r1` | OPEN / RETURNED_UNRECEIVED_STATUS_GRADE_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1144](https://github.com/maidiu/rawlsing/pull/1144) | `d7e6ff6ec228145c2f325664722923f0f03e8d89` | `docs/seam-oracle-pyat-to-sorok-necessary-emergence-20261117-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1145](https://github.com/maidiu/rawlsing/pull/1145) | `f044c96e02175082e40a4dad11f484d7d7d43a04` | `research/oracle-accession-20261118-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1161](https://github.com/maidiu/rawlsing/pull/1161) | `4d1a6195daca54b4dd63491f55c1eff73907f534` | `docs/sorok-whole-organism-modern-synthesis-20261119-r1` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1168](https://github.com/maidiu/rawlsing/pull/1168) | `6c28d692df80d74baf20af6c2e84a5fe24c0bbc4` | `docs/seam30-um-sorok-r3-code-mulch-bounceback-20261119` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+
+## SORACLE / executable organism (26 records)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#1159](https://github.com/maidiu/rawlsing/pull/1159) | `3ec4817845c644ca84a8a8e08910ac489f5b1a15` | `agent/um-sorok-oracle-organism-r1-evidence-20261119` | OPEN / RETURNED_UNRECEIVED_STATUS_TO_RECONCILE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1163](https://github.com/maidiu/rawlsing/pull/1163) | `e883168ac57a5490ff659d8e9a9705e9269e8b2c` | `agent/um-sorok-r2-theory-code-remont-20261119` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1167](https://github.com/maidiu/rawlsing/pull/1167) | `3dba91136870ab5e766ca14faacd847531dea075` | `agent/um-sorok-r3-pressure-genesis-code-20261119` | OPEN / RETURNED_OR_ACTIVE_UNRECEIVED_STATUS_NOT_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1172](https://github.com/maidiu/rawlsing/pull/1172) | `e675ed0005bffce0aa21d5df641e40170ad36858` | `agent/um-sorok-r4-relational-metabolism-r6-sync-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1174](https://github.com/maidiu/rawlsing/pull/1174) | `7bff10db7adb7b17bcf035a27561ea59e9a3b2be` | `agent/um-sorok-tco-r4-lived-material-genesis-20261119-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1175](https://github.com/maidiu/rawlsing/pull/1175) | `782b7f377bcac4873bbf4a6dccbc567d99c368b5` | `agent/um-sorok-r5-mulchalanche-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1176](https://github.com/maidiu/rawlsing/pull/1176) | `78723b3878a0b6bcbd571bcca0f4314425f717bc` | `agent/um-sorok-tco-r5-functional-reconstitution-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1177](https://github.com/maidiu/rawlsing/pull/1177) | `52dc91457dad3cf29e8a367001275f29bf8440bc` | `agent/um-sorok-tco-r5-executable-transfiguration-20261120-r1` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1180](https://github.com/maidiu/rawlsing/pull/1180) | `ba9c933832459c8d8a8eb1440319ce4fcecdc8c3` | `agent/um-sorok-r6-intent-genesis-mulch-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1186](https://github.com/maidiu/rawlsing/pull/1186) | `045e00a4510808ab14af11d8d6bbe6542498516f` | `agent/soracle-r8-constitutive-agency-mulch-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1188](https://github.com/maidiu/rawlsing/pull/1188) | `d77cbf67aa1b11e710ef9908eea5876018a5fe5c` | `agent/soracle-r10-prospective-trials-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1191](https://github.com/maidiu/rawlsing/pull/1191) | `194f2fada6ab49f3e3a2545c7c9f7318017055dd` | `agent/soracle-r11-astra-mulchathon-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1192](https://github.com/maidiu/rawlsing/pull/1192) | `4cc1b0cd719d3503ed8e256501b4a46f8d0185fe` | `agent/soracle-r12-historical-powers-and-world-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1196](https://github.com/maidiu/rawlsing/pull/1196) | `3e7b835af7f7687aa28e5ec6c5dbe21a98611efa` | `agent/soracle-r13-astra-social-reproduction-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1200](https://github.com/maidiu/rawlsing/pull/1200) | `fdc61e96344675a8d95e5bf76760ce6fa7701859` | `agent/soracle-r14-embodied-coregulation-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1203](https://github.com/maidiu/rawlsing/pull/1203) | `895ab11c15648a7163681d4cb654c7fa37fcd489` | `agent/soracle-r15-plural-care-response-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1206](https://github.com/maidiu/rawlsing/pull/1206) | `6ef8e347a4b38bbb6c0fdfca3008c8d07042f3dc` | `agent/soracle-r16-material-provisioning-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1208](https://github.com/maidiu/rawlsing/pull/1208) | `5598e1e727a62cf2699e02834c13857911349454` | `agent/soracle-r17-institutional-food-power-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1212](https://github.com/maidiu/rawlsing/pull/1212) | `72e4a9b0f42f3a8459df54dc5a2f360dd0d0cdb3` | `agent/soracle-r18-reproduced-food-power-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1213](https://github.com/maidiu/rawlsing/pull/1213) | `e4e80e3101fd3fca31fed53095863f9e4c35243b` | `agent/soracle-r19-labor-dependency-reproduction-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1216](https://github.com/maidiu/rawlsing/pull/1216) | `6c02872ef930cac3046315a2c13e13ef79ed3a97` | `agent/soracle-r19-historical-self-precue-20261120` | CLOSED/UNMERGED / SUPERSEDED_UNMERGED_BY_PR_1217__FUNCTION_REPLAY_CLAIMED_NOT_INDEPENDENTLY_VERIFIED | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1217](https://github.com/maidiu/rawlsing/pull/1217) | `0b27a7e8e30bcb7091ff168bdce94320ab37d5e0` | `agent/soracle-r20-psychic-self-labor-integrated-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1221](https://github.com/maidiu/rawlsing/pull/1221) | `089743b62062c2d6922a5b5599bc789407f8aec4` | `agent/soracle-nadia-first-backlog-construction-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1227](https://github.com/maidiu/rawlsing/pull/1227) | `086de6ff32f6593d3876135f3558a8ddadbe3aa1` | `agent/soracle-nadia-backlog-mulch-r2-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1228](https://github.com/maidiu/rawlsing/pull/1228) | `f3e6a793b87605b67668c02b40543a9ca3982e51` | `agent/soracle-nadia-cultural-mediated-development-r3-20261120` | OPEN / RETURNED_UNRECEIVED_SOURCEFREE_CANDIDATE | UNKNOWN_NOT_INDEPENDENTLY_RECHECKED |
+| [#1234](https://github.com/maidiu/rawlsing/pull/1234) | `8d1ff8bbb75b359cc7bd3044b385323600c70b88` | `agent/soracle-remont-r16-r3-joined-organism-20261120-r1` | OPEN / INDEPENDENTLY_REVIEWED_SCOPED_UNMERGED__NATIVE_PROTECTED_HELD | PASS_551_NORMAL_551_OPTIMIZED_PYTEST_551_PLUS37__14DAY_12BEAT_TWO_HISTORIES_COLD_VALID |
+
+## Immutable tests and explicit route
+
+- SORACLE [#1234](https://github.com/maidiu/rawlsing/pull/1234): prior executed REDs `018d3025f0829d7b24d5ad108abf0764d3830b39` and `2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8`, followed by same-branch `8d1ff8bbb75b359cc7bd3044b385323600c70b88` executed sourcefree scoped PASS are **distinct events**, not contradictory. [Local test / bounded review receipt](https://github.com/maidiu/rawlsing/pull/1234#issuecomment-7058513997).
+- REMONT [#1230](https://github.com/maidiu/rawlsing/pull/1230) author 289-test code cut is an ancestor of latest docs-only HEAD; [#1241](https://github.com/maidiu/rawlsing/pull/1241) R18 author 296 PASS is independently **held for a suspected, unexecuted duplicate-event negative** and for correct R17 lineage. Specialized P/Q queues remain in their existing REMONT owners.
+- Closed [#1216](https://github.com/maidiu/rawlsing/pull/1216) is not deletion; its P019/P022 functional content needs exact comparison against [#1217](https://github.com/maidiu/rawlsing/pull/1217). Closed [#1179](https://github.com/maidiu/rawlsing/pull/1179) cross-owner PYAT C7 remains SOROK actor review HELD.
+- The **named receiving action for every row** is in its machine record (`next_receiving_owner`, `smallest_next_action`, source provenance, first consumer, restrictions and conflicts). Next authorized workflow: source verification → exact bounded test & independent review if needed → competent SOROK protected paired-progress receiving. No author branch modified; no protected merge.
+
+**HQ_CURRENTNESS_HOLD:** competent SOROK HQ / protected PRE-MAIN integrator must review the ledger and both existing progress files; exact live provider/worker leases, independent G5, source/native actor/human credentials and whole-repository completeness are not established by this documentation branch.
+
+R17 P018 has a [scoped sourcefree receipt](https://github.com/maidiu/rawlsing/blob/85e7166aeee3af25e59ebbb3b48115a498bcdc4a/REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.json) at `28bf7fc4` on Python 3.13.5. P018 remains partial. Its review applies to the R17 source cut, with queue HEAD observed separately.
+
+- [#1246](https://github.com/maidiu/rawlsing/pull/1246) at `1dc02f66c63c64ec7124f219f5ce0d8cdf76ebdd`. User Terminal evidence supports 558 sourcefree passes and the two-history run. Protected receiving remains held.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) at `6647f746f4f7d2ae3dd0d14af5cde38191044773`. User Terminal evidence supports 558 sourcefree passes and the two-history run. Protected receiving remains held.
+
+- [#1249](https://github.com/maidiu/rawlsing/pull/1249) at `40dbbd4c774c6f210c4d0c854b9df35c86a7857c`. Reconcile the exact R19 successor against #1171 and review its atomicity independently.
+- [#1250](https://github.com/maidiu/rawlsing/pull/1250) at `eb15248d0a4590846ff5bff02523c1edaf535507`. Retain R23 research candidate and separately qualify the relational transduction first consumer.
+- [#1251](https://github.com/maidiu/rawlsing/pull/1251) at `43a871cd6854b2be617960da98423a18562ba6bc`. Retain R24 research candidate and separately qualify the institutional contrast first consumer.
+
+## Cross-programme discovery dispositions
+
+- [#1148](https://github.com/maidiu/rawlsing/pull/1148) · OUT_OF_SCOPE. PYAT ONE PLAN documentary roadmap/currentness; no code, no G4 capability delta, no SOROK O-Index node; sequencing only.
+- [#1164](https://github.com/maidiu/rawlsing/pull/1164) · PYAT_G4_CROSSLINK_ONLY. PYAT S04/FF01/DHIKR sourcefree code; route to existing G4 capability register, not SOROK O-Index.
+- [#1181](https://github.com/maidiu/rawlsing/pull/1181) · OUT_OF_SCOPE. PYAT documentary currentness bank; body explicitly states no SOROK organism, code, or G4 capability change.
+- [#1184](https://github.com/maidiu/rawlsing/pull/1184) · OUT_OF_SCOPE. DHIKRYMULCH theory only; no code, tests, or G4 capability change.
+- [#1193](https://github.com/maidiu/rawlsing/pull/1193) · OUT_OF_SCOPE. DHIKRYMULCH partial-identification theory only; no code, tests, or G4 capability change.
+- [#1201](https://github.com/maidiu/rawlsing/pull/1201) · PYAT_G4_CROSSLINK_ONLY. PYAT present-machine inventory/build-first delta; explicitly requires reconciliation to existing PROGRAMMA G4.
+- [#1202](https://github.com/maidiu/rawlsing/pull/1202) · PYAT_G4_CROSSLINK_ONLY. General PYAT build-first discipline; defers missing-work determination to G4/function parity; no capability itself.
+- [#1204](https://github.com/maidiu/rawlsing/pull/1204) · PYAT_G4_CROSSLINK_ONLY. PYAT determinicity science/reference code; closed unmerged; G4 cross-link only.
+- [#1205](https://github.com/maidiu/rawlsing/pull/1205) · PYAT_G4_CROSSLINK_ONLY. PYAT R03 asked-eligible RAW/denominator code; G4 cross-link only.
+- [#1219](https://github.com/maidiu/rawlsing/pull/1219) · PYAT_G4_CROSSLINK_ONLY. PYAT F6 partial-ID repertoire code; closed unmerged; G4 cross-link only.
+- [#1223](https://github.com/maidiu/rawlsing/pull/1223) · PYAT_G4_CROSSLINK_ONLY. PYAT Q017-Q019 position/repertoire code; closed unmerged; G4 cross-link only.
+- [#1224](https://github.com/maidiu/rawlsing/pull/1224) · PYAT_G4_CROSSLINK_ONLY. PYAT F6 uncertainty-interval code; closed unmerged; G4 cross-link only.
+- [#1225](https://github.com/maidiu/rawlsing/pull/1225) · PYAT_G4_CROSSLINK_ONLY. PYAT F6/Q019-Q020 interval/replay code; closed unmerged; G4 cross-link only.
+- [#1226](https://github.com/maidiu/rawlsing/pull/1226) · PYAT_G4_CROSSLINK_ONLY. Explicit existing-G4 capability stop-off and CI/AGENTS binding; closed unmerged/conflicting; G4 cross-link only.
+- [#1229](https://github.com/maidiu/rawlsing/pull/1229) · PYAT_G4_CROSSLINK_ONLY. Single-document binding of DHIKRYMULCH chapters to existing PROGRAMMA G4; G4 cross-link only.
+- [#1231](https://github.com/maidiu/rawlsing/pull/1231) · PYAT_G4_CROSSLINK_ONLY. PYAT corrective reuse/retirement code; closed unmerged; G4 cross-link only.
+- [#1235](https://github.com/maidiu/rawlsing/pull/1235) · PYAT_G4_CROSSLINK_ONLY. PYAT REMONT builder-intake routing document; requires G4/currentness consultation; no capability itself.
+
+#1248 [focused execution](PR1248_FOCUSED_EXECUTION_20261121.json) reproduced seven R21 tests in both modes and two valid cold SQLite chains in the distinct joined demo. Protected receiving remains held.
+
+- [#1257](https://github.com/maidiu/rawlsing/pull/1257) R25 at `d9582aef`. Committed untested. SORACLE owns first-consumer execution.
+
+#1249 [same-host exact execution](PR1249_R19_EXECUTION_20261121.md) at `40dbbd4c` passed 305 tests in normal and optimized Python 3.11. Protected receiving remains held.
+
+The original status tables cover the accession set. The six subsequent candidate additions are recorded in the follow-up entries above.
