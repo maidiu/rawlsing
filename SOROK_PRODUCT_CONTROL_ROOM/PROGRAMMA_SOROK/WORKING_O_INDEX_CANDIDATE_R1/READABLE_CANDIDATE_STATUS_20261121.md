@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `4b80e43adcd0f07cc78293b0369e80ccfdf1ebf8`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **107-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `434278d3705aec517a098c2eb4b2a3d23c3d03c3`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **107-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -148,3 +148,23 @@ R17 P018 has a [scoped sourcefree receipt](https://github.com/maidiu/rawlsing/bl
 - [#1249](https://github.com/maidiu/rawlsing/pull/1249) at `40dbbd4c774c6f210c4d0c854b9df35c86a7857c`. Reconcile the exact R19 successor against #1171 and review its atomicity independently.
 - [#1250](https://github.com/maidiu/rawlsing/pull/1250) at `eb15248d0a4590846ff5bff02523c1edaf535507`. Retain R23 research candidate and separately qualify the relational transduction first consumer.
 - [#1251](https://github.com/maidiu/rawlsing/pull/1251) at `43a871cd6854b2be617960da98423a18562ba6bc`. Retain R24 research candidate and separately qualify the institutional contrast first consumer.
+
+## Cross-programme discovery dispositions
+
+- [#1148](https://github.com/maidiu/rawlsing/pull/1148) · OUT_OF_SCOPE. PYAT ONE PLAN documentary roadmap/currentness; no code, no G4 capability delta, no SOROK O-Index node; sequencing only.
+- [#1164](https://github.com/maidiu/rawlsing/pull/1164) · PYAT_G4_CROSSLINK_ONLY. PYAT S04/FF01/DHIKR sourcefree code; route to existing G4 capability register, not SOROK O-Index.
+- [#1181](https://github.com/maidiu/rawlsing/pull/1181) · OUT_OF_SCOPE. PYAT documentary currentness bank; body explicitly states no SOROK organism, code, or G4 capability change.
+- [#1184](https://github.com/maidiu/rawlsing/pull/1184) · OUT_OF_SCOPE. DHIKRYMULCH theory only; no code, tests, or G4 capability change.
+- [#1193](https://github.com/maidiu/rawlsing/pull/1193) · OUT_OF_SCOPE. DHIKRYMULCH partial-identification theory only; no code, tests, or G4 capability change.
+- [#1201](https://github.com/maidiu/rawlsing/pull/1201) · PYAT_G4_CROSSLINK_ONLY. PYAT present-machine inventory/build-first delta; explicitly requires reconciliation to existing PROGRAMMA G4.
+- [#1202](https://github.com/maidiu/rawlsing/pull/1202) · PYAT_G4_CROSSLINK_ONLY. General PYAT build-first discipline; defers missing-work determination to G4/function parity; no capability itself.
+- [#1204](https://github.com/maidiu/rawlsing/pull/1204) · PYAT_G4_CROSSLINK_ONLY. PYAT determinicity science/reference code; closed unmerged; G4 cross-link only.
+- [#1205](https://github.com/maidiu/rawlsing/pull/1205) · PYAT_G4_CROSSLINK_ONLY. PYAT R03 asked-eligible RAW/denominator code; G4 cross-link only.
+- [#1219](https://github.com/maidiu/rawlsing/pull/1219) · PYAT_G4_CROSSLINK_ONLY. PYAT F6 partial-ID repertoire code; closed unmerged; G4 cross-link only.
+- [#1223](https://github.com/maidiu/rawlsing/pull/1223) · PYAT_G4_CROSSLINK_ONLY. PYAT Q017-Q019 position/repertoire code; closed unmerged; G4 cross-link only.
+- [#1224](https://github.com/maidiu/rawlsing/pull/1224) · PYAT_G4_CROSSLINK_ONLY. PYAT F6 uncertainty-interval code; closed unmerged; G4 cross-link only.
+- [#1225](https://github.com/maidiu/rawlsing/pull/1225) · PYAT_G4_CROSSLINK_ONLY. PYAT F6/Q019-Q020 interval/replay code; closed unmerged; G4 cross-link only.
+- [#1226](https://github.com/maidiu/rawlsing/pull/1226) · PYAT_G4_CROSSLINK_ONLY. Explicit existing-G4 capability stop-off and CI/AGENTS binding; closed unmerged/conflicting; G4 cross-link only.
+- [#1229](https://github.com/maidiu/rawlsing/pull/1229) · PYAT_G4_CROSSLINK_ONLY. Single-document binding of DHIKRYMULCH chapters to existing PROGRAMMA G4; G4 cross-link only.
+- [#1231](https://github.com/maidiu/rawlsing/pull/1231) · PYAT_G4_CROSSLINK_ONLY. PYAT corrective reuse/retirement code; closed unmerged; G4 cross-link only.
+- [#1235](https://github.com/maidiu/rawlsing/pull/1235) · PYAT_G4_CROSSLINK_ONLY. PYAT REMONT builder-intake routing document; requires G4/currentness consultation; no capability itself.

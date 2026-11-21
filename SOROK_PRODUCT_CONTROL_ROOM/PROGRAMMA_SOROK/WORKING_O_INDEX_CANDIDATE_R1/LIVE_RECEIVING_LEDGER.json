@@ -5304,7 +5304,7 @@
       "disposition": "HELD_EXACT_HEAD_EXECUTION_AND_RECEIVING_UNVERIFIED",
       "test": {
         "executed_sha": null,
-        "grade": "UNVERIFIED",
+        "grade": "AUTHOR_FUNCTION_LEVEL_8_8_EXACT_TREE_PENDING",
         "applied_to_head": false
       },
       "review": {
@@ -5335,7 +5335,7 @@
       "disposition": "HELD_EXACT_HEAD_EXECUTION_AND_RECEIVING_UNVERIFIED",
       "test": {
         "executed_sha": null,
-        "grade": "UNVERIFIED",
+        "grade": "COMMITTED_UNTESTED",
         "applied_to_head": false
       },
       "review": {
@@ -5366,7 +5366,7 @@
       "disposition": "HELD_EXACT_HEAD_EXECUTION_AND_RECEIVING_UNVERIFIED",
       "test": {
         "executed_sha": null,
-        "grade": "UNVERIFIED",
+        "grade": "COMMITTED_UNTESTED",
         "applied_to_head": false
       },
       "review": {
@@ -5383,5 +5383,177 @@
       }
     }
   ],
-  "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed."
+  "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed.",
+  "discovery_routes": [
+    {
+      "pr": 1148,
+      "head_sha": "f42590b9e3911ac88737b9c7b6b60de55b444f22",
+      "pr_state": "open",
+      "merged": false,
+      "route": "OUT_OF_SCOPE",
+      "reason": "PYAT ONE PLAN documentary roadmap/currentness; no code, no G4 capability delta, no SOROK O-Index node; sequencing only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1148",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1164,
+      "head_sha": "84f7eb795676f88bade23051707942ba2e9b353d",
+      "pr_state": "open",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT S04/FF01/DHIKR sourcefree code; route to existing G4 capability register, not SOROK O-Index.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1164",
+      "evidence_grade": "AUTHOR_REPORTED_218_218_WORKER_EXECUTED_NOT_G5"
+    },
+    {
+      "pr": 1181,
+      "head_sha": "a98e0adcb0ece66de705126ba6016f87f6b9e467",
+      "pr_state": "open",
+      "merged": false,
+      "route": "OUT_OF_SCOPE",
+      "reason": "PYAT documentary currentness bank; body explicitly states no SOROK organism, code, or G4 capability change.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1181",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1184,
+      "head_sha": "86a12c5f733d6a74b800e1bc3bdccb3ceba25e78",
+      "pr_state": "open",
+      "merged": false,
+      "route": "OUT_OF_SCOPE",
+      "reason": "DHIKRYMULCH theory only; no code, tests, or G4 capability change.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1184",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1193,
+      "head_sha": "638bb7a4a1049bd666946e869a7fde7592dd2624",
+      "pr_state": "open",
+      "merged": false,
+      "route": "OUT_OF_SCOPE",
+      "reason": "DHIKRYMULCH partial-identification theory only; no code, tests, or G4 capability change.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1193",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1201,
+      "head_sha": "57838aee7063bf578ef68b57075bc30083cf4769",
+      "pr_state": "open",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT present-machine inventory/build-first delta; explicitly requires reconciliation to existing PROGRAMMA G4.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1201",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1202,
+      "head_sha": "f034a534434dd713bc3ddd936be4b91b636aba34",
+      "pr_state": "open",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "General PYAT build-first discipline; defers missing-work determination to G4/function parity; no capability itself.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1202",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1204,
+      "head_sha": "c7ec8732d78cb6a0a5b472ac79837d7df45cd415",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT determinicity science/reference code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1204",
+      "evidence_grade": "AUTHOR_REPORTED_10_10_SOURCEFREE_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1205,
+      "head_sha": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
+      "pr_state": "open",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT R03 asked-eligible RAW/denominator code; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1205",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_NOT_EXECUTED_HERE"
+    },
+    {
+      "pr": 1219,
+      "head_sha": "acb7fa6a58af2b62774a34b40c59bcdabf4fd9c1",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT F6 partial-ID repertoire code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1219",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1223,
+      "head_sha": "429cfc5f47e04a82302860f6f33ad48e53daf45d",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT Q017-Q019 position/repertoire code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1223",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1224,
+      "head_sha": "1330328ccaa481681d18d2cc6c173cc47fe3fefe",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT F6 uncertainty-interval code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1224",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1225,
+      "head_sha": "358d558086946fb0e7a8681e8813ccd10fecfc38",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT F6/Q019-Q020 interval/replay code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1225",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1226,
+      "head_sha": "ab2e5b2ce6f29972dbff6971c29e488c17504e73",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "Explicit existing-G4 capability stop-off and CI/AGENTS binding; closed unmerged/conflicting; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1226",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1229,
+      "head_sha": "9475e329dfbfd1abaf43d84494f1ad4ac8e62842",
+      "pr_state": "open",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "Single-document binding of DHIKRYMULCH chapters to existing PROGRAMMA G4; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1229",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    },
+    {
+      "pr": 1231,
+      "head_sha": "b29aa8d4a569d5fc579bdd87f1b1ff03204926b4",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT corrective reuse/retirement code; closed unmerged; G4 cross-link only.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1231",
+      "evidence_grade": "AUTHOR_COMMITTED_CODE_TESTS_CLOSED_UNMERGED"
+    },
+    {
+      "pr": 1235,
+      "head_sha": "3e81f8edcde001b882a9d7c1d252bd3a22e510d4",
+      "pr_state": "closed",
+      "merged": false,
+      "route": "PYAT_G4_CROSSLINK_ONLY",
+      "reason": "PYAT REMONT builder-intake routing document; requires G4/currentness consultation; no capability itself.",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1235",
+      "evidence_grade": "METADATA_DIFF_ONLY"
+    }
+  ]
 }

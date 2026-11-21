@@ -146,8 +146,23 @@ def audit(ledger, snapshot, md='', progress=None):
             errors.append('MOVED_HEAD_STALE_LEDGER:' + str(n))
         if p.get('state') != r.get('pr_state') or bool(p.get('merged')) != bool(r.get('merged')):
             errors.append('CHANGED_BRANCH_FATE_STALE_LEDGER:' + str(n))
+    routed = {}
+    for route in ledger.get('discovery_routes', []):
+        n = route.get('pr')
+        if (n in routed or n in indexed
+                or route.get('route') not in {'PYAT_G4_CROSSLINK_ONLY', 'OUT_OF_SCOPE'}
+                or not route.get('reason') or not route.get('evidence')
+                or not SHA.fullmatch(route.get('head_sha', ''))):
+            errors.append('INVALID_DISCOVERY_ROUTE:' + str(n))
+            continue
+        routed[n] = route
+        current = observed.get(n, {})
+        if (current.get('head_sha') != route['head_sha']
+                or current.get('state') != route.get('pr_state')
+                or bool(current.get('merged')) != bool(route.get('merged'))):
+            errors.append('STALE_DISCOVERY_ROUTE:' + str(n))
     for n, p in observed.items():
-        if n not in indexed and RELEVANT.search(p.get('title', '')):
+        if n not in indexed and n not in routed and RELEVANT.search(p.get('title', '')):
             errors.append('UNRECORDED_NEW_RELEVANT_PR:' + str(n))
     for event in ledger.get('event_history', []):
         n, sha = event.get('pr'), event.get('immutable_sha')
@@ -171,7 +186,7 @@ def fetch_live(repo, ledger):
             return json.load(response)
     ref = get('repos/' + repo + '/git/ref/heads/integration/pre-main-reconciliation-r1')
     observed = {}
-    for r in ledger['records']:
+    for r in ledger['records'] + ledger.get('discovery_routes', []):
         p = get('repos/' + repo + '/pulls/' + str(r['pr']))
         observed[r['pr']] = dict(pr=r['pr'], title=p['title'], head_sha=p['head']['sha'], state=p['state'], merged=p['merged'])
     page = 1
