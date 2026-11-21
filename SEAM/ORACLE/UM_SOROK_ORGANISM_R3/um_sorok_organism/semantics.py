@@ -153,6 +153,9 @@ class HeuristicSemanticProvider:
             joint=packet.get('historically_possible_joint_practices',[])
             if len(joint)==1:
                 lived.append(copy(joint[0]))
+            care=packet.get('historically_possible_care_practices',[])
+            if len(care)==1:
+                lived.append(copy(care[0]))
             lived+=choose_one_grounded_plural_acquisition(
                 packet.get('historically_possible_plural_care',[]))
             lived+=propose_one_reopening(
