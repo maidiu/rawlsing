@@ -141,7 +141,19 @@ def main() -> int:
     if len(closure) != 1 or closure[0]["state"] != "DEFER":
         raise SystemExit("HISTORICAL_UNIVERSE_DEFER_MISSING")
     h = closure[0]["ref"].split("|")
-    historical = AuthorityRef(h[0], h[1], h[2])
+    historical_ref = AuthorityRef(h[0], h[1], h[2])
+    historical = next(
+        (a for a in estate.iter_family("AuthoritySnapshot")
+         if a.authority_ref == historical_ref), None,
+    )
+    if historical is None or historical.decision_state != "DEFER":
+        raise SystemExit("VERIFIED_HISTORICAL_DEFER_SNAPSHOT_MISSING")
+    positive = next(
+        (a for a in operation.authorities
+         if a.authority_ref == operation.source_authority_ref), None,
+    )
+    if positive is None or positive.decision_state != "ALLOW":
+        raise SystemExit("VERIFIED_POSITIVE_USE_SNAPSHOT_MISSING")
     def use_current():
         return (
             owner_current()
@@ -149,10 +161,11 @@ def main() -> int:
             and use_sha == "972a56f2f46ec0d5f30d13ae62198df4988755f54016ac65892a288d4848f212"
         )
     universe_use = RecordedUniverseUse(
-        historical_ref=historical,
-        positive_ref=AuthorityRef("Q006_RECORDED_UNIVERSE_USE", "Q006-USE-" + use_sha[:24], use_sha),
+        historical_snapshot=historical,
+        positive_snapshot=positive,
         owner_decision_sha256=use_sha,
         operation_document_sha256=hashlib.sha256(args.operation_json.read_bytes()).hexdigest(),
+        source_id=operation.source_id,
         source_root=operation.source_root,
         release_root=operation.release_root,
         universe_root=operation.universe_root,
@@ -160,28 +173,13 @@ def main() -> int:
         question_ref=operation.question_ref,
         query_ref=decision.query.ref,
         predicate_ref=decision.predicate.ref,
+        operation=operation.authorized_operation,
+        risk_ref=operation.recorded_risk_ref,
+        interpretation=operation.interpretation,
         scope=use_doc["scope"],
         current_verifier=use_current,
     )
     plan = dataclasses.replace(plan, universe_use=universe_use)
-    def verify_decision(candidate):
-        return (
-            owner_current()
-            and candidate.source_id == decision.source_id
-            and candidate.source_root == decision.source_root
-            and candidate.release_root == decision.release_root
-            and candidate.universe_root == decision.universe_root
-            and candidate.replay_root == decision.replay_root
-            and candidate.question_ref == decision.question_ref
-            and candidate.authorized_operation == decision.authorized_operation
-            and candidate.authorities == decision.authorities
-            and candidate.predicate == decision.predicate
-            and candidate.query == decision.query
-            and candidate.approved_denominator_ref == decision.approved_denominator_ref
-            and candidate.approved_response_semantics_ref == decision.approved_response_semantics_ref
-            and candidate.approved_raw_domain == decision.approved_raw_domain
-            and candidate.approved_nonanswer_states == decision.approved_nonanswer_states
-        )
     result = issue_and_execute_stream_i03(
         estate=estate, decision=decision,
         decision_verifier=verify_decision,

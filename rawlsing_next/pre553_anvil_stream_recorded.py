@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 import json
 import struct
 
@@ -46,16 +46,13 @@ class RecordedResponseError(ValueError):
 
 @dataclass(frozen=True)
 class RecordedUniverseUse:
-    """Operation-scoped, exact current use of a historical DEFER universe.
+    """Operation-scoped historical DEFER use with a backed positive identity."""
 
-    This is not an authority replacement: it returns both the historical DEFER
-    identity and the positive owner-use identity for native proof/replay.
-    """
-
-    historical_ref: AuthorityRef
-    positive_ref: AuthorityRef
+    historical_snapshot: AuthoritySnapshot
+    positive_snapshot: AuthoritySnapshot
     owner_decision_sha256: str
     operation_document_sha256: str
+    source_id: str
     source_root: str
     release_root: str
     universe_root: str
@@ -63,84 +60,55 @@ class RecordedUniverseUse:
     question_ref: ExactRef
     query_ref: ExactRef
     predicate_ref: ExactRef
+    operation: str
+    risk_ref: ExactRef
+    interpretation: tuple[tuple[str, str], ...]
     scope: str
-    current_verifier: Any | None = None
+    current_verifier: Callable[[], bool]
+
+    def __post_init__(self) -> None:
+        if type(self.historical_snapshot) is not AuthoritySnapshot:
+            raise RecordedResponseError("historical DEFER snapshot required")
+        if type(self.positive_snapshot) is not AuthoritySnapshot:
+            raise RecordedResponseError("positive owner use snapshot required")
+        if self.historical_snapshot.decision_state != "DEFER":
+            raise RecordedResponseError("historical snapshot is not DEFER")
+        if self.positive_snapshot.decision_state != "ALLOW":
+            raise RecordedResponseError("positive use snapshot is not ALLOW")
+        if not callable(self.current_verifier):
+            raise RecordedResponseError("mandatory current authority verifier required")
+        for value, label in ((self.owner_decision_sha256, "owner decision"), (self.operation_document_sha256, "operation document")):
+            if not isinstance(value, str) or len(value) != 64 or any(c not in "0123456789abcdef" for c in value):
+                raise RecordedResponseError(f"{label} must be exact sha256")
 
     def authorize(self, universe, query, predicate) -> tuple[AuthorityRef, AuthorityRef]:
-        if exact_ref(universe.ref) != _stream_exact_universe(self.universe_root):
+        if self.current_verifier() is not True:
+            raise RecordedResponseError("universe use current authority refused")
+        exact_universe = exact_ref(universe.ref)
+        if exact_universe != _stream_exact_universe(self.universe_root):
             raise RecordedResponseError("universe use is bound to a different universe")
         refs = tuple(authority_ref(ref, "universe authority") for ref in universe.authority_snapshot_refs)
-        if self.historical_ref not in refs:
+        if self.historical_snapshot.authority_ref not in refs:
             raise RecordedResponseError("historical DEFER identity is absent from universe")
+        if self.historical_snapshot.authority_kind != "SOURCE_SEMANTICS_TOPOLOGY":
+            raise RecordedResponseError("historical snapshot family mismatch")
+        if self.historical_snapshot.scope_envelope.get("semantic_scope") != "EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY":
+            raise RecordedResponseError("historical snapshot scope mismatch")
+        if self.positive_snapshot.scope_envelope.get("source_universe_refs") is not None:
+            allowed = self.positive_snapshot.scope_envelope.get("source_universe_refs")
+            if self.universe_root not in {str(x) for x in (allowed if isinstance(allowed, (list, tuple)) else (allowed,))}:
+                # Also accept canonical mapping form already checked by native authority.
+                if not any(isinstance(x, Mapping) and x.get("object_id") == exact_universe.object_id for x in (allowed if isinstance(allowed, (list, tuple)) else (allowed,))):
+                    raise RecordedResponseError("positive use scope does not bind universe")
+        if self.operation not in self.positive_snapshot.governed_operations:
+            raise RecordedResponseError("positive use operation mismatch")
         if query.ref != exact_ref(self.query_ref) or predicate.ref != exact_ref(self.predicate_ref):
             raise RecordedResponseError("universe use query/predicate identity mismatch")
-        if self.scope != "Q103_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY":
-            raise RecordedResponseError("universe use scope mismatch")
-        if self.current_verifier is not None and self.current_verifier() is not True:
-            raise RecordedResponseError("universe use current authority refused")
-        return self.historical_ref, self.positive_ref
-
-
-
-_CODEC = R5TypedValueCodec()
-
-
-def _unwrap_raw_physical_value(value):
-    """Strict typed unwrap of the projected native token wrapper.
-
-    The actual stored event may carry {"$raw_physical_value": {"token": ...}}.
-    Decode the token with the existing R5 codec, preserve None as system missing,
-    and normalize an integral finite numeric token to its exact integer code.
-    Invalid wrappers are an integrity error, never a missing value.
-    """
-    if isinstance(value, dict) and "$raw_physical_value" in value:
-        wrapper = value["$raw_physical_value"]
-        if not isinstance(wrapper, dict) or "token" not in wrapper:
-            raise RecordedResponseError("invalid raw_physical_value wrapper")
-        token = wrapper["token"]
-        if not isinstance(token, dict):
-            raise RecordedResponseError("invalid raw_physical_value token")
-        try:
-            decoded = _CODEC.decode(token)
-        except Exception as exc:
-            raise RecordedResponseError("invalid raw_physical_value token") from exc
-        if isinstance(decoded, float) and decoded.is_integer():
-            return int(decoded)
-        return decoded
-    if isinstance(value, float) and value.is_integer():
-        return int(value)
-    return value
-
-
-@dataclass(frozen=True)
-class HeldRecordedOperation:
-    """Exact source decision; no source semantics are inferred from stream rows."""
-
-    owner_decision_sha256: str
-    source_id: str
-    source_root: str
-    release_root: str
-    universe_root: str
-    replay_root: str
-    question_ref: ExactRef
-    authorized_operation: str
-    allowed_raw_codes: tuple[str, ...]
-    interpretation: tuple[tuple[str, str], ...]
-    authorities: tuple[AuthoritySnapshot, ...]
-    query_authority_ref: AuthorityRef
-    routing_authority_ref: AuthorityRef
-    source_authority_ref: AuthorityRef
-    recorded_risk_ref: ExactRef
-    routing_rule_ref: ExactRef
-    member_set_replay_ref: ExactRef
-    measure_basis_ref: ExactRef
-    response_state_semantics_ref: ExactRef
-    target_domain_replay_ref: ExactRef
-    predicate_replay_root: ExactRef
-    query_replay_root: ExactRef
-    transform_ref: ExactRef
-    approved_nonanswer_states: tuple[str, ...] = ()
-    physical_missing_state: str = "SEPARATE_NOT_RECORDED"
+        if exact_ref(query.risk_set_ref) != exact_ref(self.risk_ref):
+            raise RecordedResponseError("universe use risk identity mismatch")
+        if self.current_verifier() is not True:
+            raise RecordedResponseError("universe use current authority revoked")
+        return self.historical_snapshot.authority_ref, self.positive_snapshot.authority_ref
 
 
 def _authority(authorities, ref, label):
