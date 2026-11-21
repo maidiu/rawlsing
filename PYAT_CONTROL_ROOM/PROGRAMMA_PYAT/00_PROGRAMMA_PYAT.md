@@ -31,6 +31,14 @@
 
 <!-- HQ_OATH_R2_FIRST_CONTACT_END -->
 
+## FIRST STOP-OFF BEFORE ANY NEW FUNCTIONAL DECISION — INHERIT BEFORE INVENTION
+
+**Already adopted law, now proposed for mechanical enforcement.** The controlling requirement is the **2026-10-19** `CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md`, not a new constitution. Its existing §2 function-gap card and §4 backward inheritance search govern **before** choosing an architecture, proposing another algorithm, issuing a worker, selecting a repair, or constructing any PYAT/DHIKR/DHIKRYMULCH component. The first action is source/function-to-owner/first-consumer consultation: current protected and active feature HEADs, existing actual function imports and tests, G4 `05_ROADMAP/FUNCTION_PARITY.jsonl` plus `INDEX.jsonl`/component/seam states, historical counterparts and exact real source/evidence grades. Do not treat a chapter title, old progress, local search result or model recollection as this comparison.
+
+**Exact decision artifact:** Record one source-pinned prospective `CROSS_HQ_CONTROL_ROOM/FUNCTION_REUSE_DECISIONS/<ID>.json` referencing the existing owner symbol(s), G4 parity ID(s), active code HEADs, actual recipient, and the demonstrated **difference** that justifies REUSE / EXTEND / RECOVER / only then NEW. If the required carrier is not confidently located after bounded checking, invoke the October 19 user consultation; status `FUNCTION_CURRENTNESS_HOLD`, not “missing.” The prospective card must be in a **prior commit before new production code or commission**; run `python3 tools/check_function_reuse_preflight.py preflight PATH --online` for a genuinely live check. The existing receiving workflow now has a candidate `verify-prebuild-reuse` test; after protected adoption it must be a **required** branch status. The checker proves consultation evidence, not semantic nonduplication; competent independent owner review remains necessary. Browser/Work launches not loading `AGENTS.md` require this same instruction in their launch contract.
+
+**The outcome must still be a working machine:** this is a scoped, targeted inquiry—not repeated archaeological surveying, duplicate-programme authoring, or a scientific approval gate for unrelated valid engineering. It makes the next decision use the capital PYAT actually has.
+
 ---
 
 # PROGRAMMA PYAT — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
