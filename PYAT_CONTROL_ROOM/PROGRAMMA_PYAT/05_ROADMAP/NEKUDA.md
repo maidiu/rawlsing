@@ -66,6 +66,18 @@ No historical failure has been erased, and no original-source, FF02 causal, V3 a
 
 ---
 
+## NEKUDA-R9 — source-conserved negative fates (2026-11-21)
+
+**No new NEKUDA identities.** KUDA-080/NEKUDA-073's previous stale-source projection cache identity is now *source-static conserved by the later #1247 owner* `f29247b33cb78e5f1e620620d6968ab433ce407a`: all seven original `test_c1_agent_b_cache_differential` cases remain and eight more have been added, including transient mutation, source callbacks, producer-only admission, atomic concurrent clear/reinsert. Do not re-import the inferior historical blob `a1335c60674963a42bbf1028b70fdf8f2ce5de2e`; this is not new performance/native G5.
+
+KUDA-086/NEKUDA-079's source-identity spoof is *provisionally repaired* by a descendant of #1253, [draft #1255](https://github.com/maidiu/rawlsing/pull/1255) `06e395e42df82b7b4e069f5c7b590dd7f2e7df3d`, which preserves the exact R8 specialized Q86 check and migrates actual first-reader mock fixtures. **NOT EXECUTED at new head**, original source/science authority still HELD; failed fixtures must not be waived.
+
+KUDA-017/018/NEKUDA-015's historical **false full coverage when stratum minority support is excluded** is preserved as a falsifier in [draft #1256](https://github.com/maidiu/rawlsing/pull/1256) `2f5ce406f256b5bd9c4aeb85e197155f7c48568c`, which carries the exact repaired F6M/F6P historical producer/consumer source and new actual bounded sourcefree pair tests. **NOT EXECUTED at new head**, no signed original-target model use. Do not conflate finite common-frame S04 Fréchet bounds with stratified survey standardization or treat the latter as a respondent-level pooled joint.
+
+No negative is retired through author publication alone. Exact status remains COMMITTED_UNTESTED / HOLD independent review, owner authority and paired protected progress.
+
+---
+
 ## Full post-rework negative and supersession records
 
 ### NEKUDA-001 — Pre-S1B R157 package exact-case paths and standalone factory
