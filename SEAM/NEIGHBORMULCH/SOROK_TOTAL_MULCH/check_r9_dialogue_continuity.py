@@ -139,13 +139,13 @@ def main():
                 check_exact_source_name(source_table[key], record[attr], key)
 
     important = [
-        "same SES", "only their own", "financial",
+        "same SES", "YOUR RESOURCES", "financial",
         "untranslatable", "SAY, DO and ATTEND", "ATTEND",
-        "bodily needs", "adult", "prelude", "common root",
+        "bodily needs", "adult", "prelude", "source-root",
         "message", "deletion", "third", "ordinary",
         "source-qualified", "CONSTITUTIVE", "G4", "Mechanism",
-        "theological", "religious", "horizon", "relationship",
-        "nonownership", "public", "rent", "partial",
+        "God", "religious", "horizon", "relationship",
+        "cannot fully know", "public", "rent", "fallible",
     ]
     for phrase in important:
         must(phrase.lower() in main.lower(),
@@ -156,12 +156,12 @@ def main():
     # theory, not only the historical source foundation. This is text/source
     # custody, NOT an execution of observer-to-observer world/actor machinery.
     for phrase in (
-        "misrecognition", "actor-local", "false belief",
+        "misrecognized", "actor-local", "false belief",
         "human powers", "objectification", "institutional",
-        "SAY plus covert ATTEND", "one world occurrence",
+        "SAY plus covert ATTEND", "single world occurrence",
         "different sensory", "Nadia's belief",
         "no computationally preferred", "sourcefree",
-        "the same SES", "their own", "message",
+        "same SES as Nadia", "YOUR RESOURCES", "message",
         "scarce Roll", "unvisited reference",
     ):
         must(phrase.lower() in main.lower(),
