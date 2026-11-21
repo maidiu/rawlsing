@@ -44,3 +44,12 @@ The sibling SORACLE R27 draft [PR #1272](https://github.com/maidiu/rawlsing/pull
 - SOROK paired CURRENT_PROGRESS, protected code and native/human/survey/actor authority remain unchanged: `HQ_CURRENTNESS_HOLD` for protected/currentness claims.
 
 **Full one-per-item task bank:** [R27_MULCHINEERING_ONE_PER_INTRODUCTION_20261121.json](https://github.com/maidiu/rawlsing/blob/1cc0d2de9844662e2aad9b25c00bb72cf517f87f/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R27_MULCHINEERING_ONE_PER_INTRODUCTION_20261121.json). The link is pinned to the initial documentary bank SHA and must be refreshed for later source/test commits.
+
+
+## Second live-visit first-consumer R2 now in separate existing NEIGHBOR owner branch
+
+Following this bank, [draft NEIGHBORMULCH R2 #1274](https://github.com/maidiu/rawlsing/pull/1274) was authored **on top of existing NEIGHBORMULCH #1265**, not in this documentary line. Existing neighbor_runtime.NeighborEncounter now supplies continue_independent_life_during_visit: after a physically performed, world-committed user action, an actor's next possible occasion is picked by the ORIGINAL um_sorok_organism.initiative.choose_next_actor, the actor actually performs through existing independent_actor_beat -> runtime.step/world/ResearchLedger, and the visitor's finite observation is derived by the EXISTING MII private_surface. No new world store, no arbitrary visitor choice of actor action, no actor tip leakage for offscreen actions, and repeated user occasion cannot mint extra acting Other.
+
+Five new full-world/MII/SQLite tests are authored (genuine visitor present, double-call guard, user departure, offscreen finite perception and cold state). Source head at this bank update is `6e05792f29964dafa289b884664e9c892dc0e310`; **do not inherit earlier draft's green run to this changed head**. Sourcefree actor-action first consumer is a narrow live interruption: it is not LLM qualified cooking accident/news source/calendar service. Compare with [SORACLE R27 #1272](https://github.com/maidiu/rawlsing/pull/1272) world notice gate and merge ONLY through proper existing owner/source contract.
+
+The SORACLE R27 first world-event slice was actually executed **623/623 normal and optimized at exact repair SHA `d682db603f4c2916d68cfe30334e1ca539190bb5`** in three public Actions jobs; initial RED source cut must remain preserved as historical. Neither branch is protected received or independently reviewed.
