@@ -1,6 +1,6 @@
 import unittest
 from copy import deepcopy
-from initiative import situated_actor_opportunities, choose_next_actor, continue_life
+from um_sorok_organism.initiative import situated_actor_opportunities, choose_next_actor, continue_life
 
 
 def actor(a, *, nutrition=.8, rest=.8, comfort=.8, projects=None):
