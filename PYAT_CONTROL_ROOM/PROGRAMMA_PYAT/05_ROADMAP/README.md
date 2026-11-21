@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+> **CURRENT RECEIVING GUARD — USER-DIRECT REV15:** Existing `programma-canonical-pre-main.yml` now invokes `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py` on PR/push with an exact base SHA; it checks affected PYAT code paths against a changed EXISTING G4 INDEX row and same-event paired CURRENT_PROGRESS MD/JSON revision increment. Six pure-decision self-test cases ran in an isolated Python container against the byte-identical uploaded script blob `c136adda7a6b0ff5853f15327ed18e14c786ea38` (6/6 PASS). This **does not prove repository CI execution, semantic functional equivalence or branch-required enforcement**; previous Actions job had zero steps and unreadable logs, and branch API reported `protected:false`. No parallel inventory or extra approval committee was created. 
+
+
 > **PROTECTED RECEIVING UPDATE — user-direct documentary G4/OATH intake, 2026-11-20:** Existing G4 782/150/62/82 inherited source-grade record and one first-look are being installed from #1232/#1233 `f99b180c48cd389f49aafc49a7ac433a42d85311` on previously protected `9c2ec5a3dc4839bd4e40734fc72faf14eb619a63` (paired PYAT rev12). User directly authorizes self-receiving without separate reviewer. Scope: source-grade inventory and first-contact rule, NOT independent review, native query/science/actor permission, executable CI success or feature code acceptance. Historical draft-only and rev11 statements below are prior source cuts. Subsequent code must be tracked by exact SHA and grade in this G4 and paired CURRENT_PROGRESS.
 
 

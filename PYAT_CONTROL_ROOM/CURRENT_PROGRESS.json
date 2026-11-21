@@ -1,9 +1,9 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 14,
-  "revision_note": "Rev14 user-directed protected PRE-MAIN source-code port: 11 exact inherited S04/Q015–Q020 modules + 10 tests, source-static import check and G4 S04/F6M evidence updates; Q019 absent, Q016 DHIKR MI reuse, Q015/I05 and country issuer held. Not independently reviewed/tested or source/native science accepted. All rev13/rev12 history preserved.",
-  "report_status": "REV14_S04_F6_USER_DIRECT_PROTECTED_CODE_PRESENT_UNTESTED__G4_UPDATED__NO_NATIVE_OR_INDEPENDENT_G5__Q019_RETIRED",
+  "revision": 15,
+  "revision_note": "Rev15 user-direct source-structural G4 affected-function check appended to existing canonical PRE-MAIN workflow, exact uploaded script blob c136adda; local pure self-test 6/6, Actions execution still unproved and branch required check absent; rev14 code and rev13 OATH/G4 and rev12 REMONT fully preserved.",
+  "report_status": "REV15_USER_DIRECT_G4_AFFECTED_SOURCE_GUARD_CODE_COMMITTED_SELFTEST_6_OF_6__NOT_BRANCH_REQUIRED__SCIENCE_AND_RUNTIME_G5_HELD",
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",
   "publication_branch": "integration/pre-main-reconciliation-r1",
   "canonical_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
@@ -545,5 +545,22 @@
       "No real native I03 or C11 economics qualification"
     ],
     "source_science_actor_rights": "NO_NEW_GRANTS"
+  },
+  "pyat_g4_receiving_guard_rev15": {
+    "grade": "LOCAL_PURE_SELF_TEST_6_OF_6__CHECKER_SOURCE_COMMITTED",
+    "checker": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py",
+    "checker_blob": "c136adda7a6b0ff5853f15327ed18e14c786ea38",
+    "tests_executed": "LOCAL_PYTHON_PURE_FUNCTION_SELF_TEST_ONLY",
+    "negative_cases": [
+      "unrelated G4 row change",
+      "missing affected source path",
+      "missing paired MD/JSON",
+      "stale progress rev"
+    ],
+    "workflow": "EXISTING_PROGRAMMA_CANONICAL_PRE_MAIN_EXTENDED",
+    "github_actions_run": "NOT_EXECUTED_AT_THIS_REVISION",
+    "branch_required": "NOT_ESTABLISHED_BRANCH_PROTECTED_FALSE",
+    "scope_limit": "PYAT_CODE_PATHS_AND_G4_INDEX_REFERENCE_NOT_SEMANTIC_CORRECTNESS",
+    "earlier_feature_tests": "UNEXECUTED_AT_PROTECTED_SHA"
   }
 }

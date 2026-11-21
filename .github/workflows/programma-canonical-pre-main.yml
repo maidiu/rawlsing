@@ -78,3 +78,22 @@ jobs:
       - name: Python syntax check for new S04 and F6 modules
         run: |
           python3 -m py_compile rawlsing_next/pre553_interpretation_qualification.py rawlsing_next/pre553_s04_observed_research.py rawlsing_next/pre553_s04_general_joint_algebra.py rawlsing_next/pre553_s04_dhikr_comparative.py rawlsing_next/pre553_s04_adaptive_support.py rawlsing_next/pre553_s04_exploration_admission.py rawlsing_next/pre553_s04_country_refinement.py rawlsing_next/pre553_s04_determinicity_cycle.py rawlsing_next/pre553_s04_partially_identified_repertoire.py rawlsing_next/pre553_s04_uncertain_repertoire.py rawlsing_next/pre553_source_country_registry_adapter.py
+
+      - name: PYAT affected-function same-receiving guard (existing G4 and progress)
+        shell: bash
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py --self-test
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            BASE_SHA="$PR_BASE_SHA"
+          else
+            BASE_SHA="$PUSH_BEFORE_SHA"
+          fi
+          if [[ -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
+            BASE_SHA="$(git rev-parse HEAD^)"
+          fi
+          git cat-file -e "${BASE_SHA}^{commit}"
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_receiving_source_link.py --base "$BASE_SHA"

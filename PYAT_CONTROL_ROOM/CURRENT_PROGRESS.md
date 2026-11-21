@@ -1,3 +1,9 @@
+# PYAT PROGRESS REV15 — AFFECTED-SOURCE G4 RECEIVING ENFORCEMENT (2026-11-20)
+
+**COMMITTED structural checker source, not demonstrated required-branch enforcement.** User-authorized direct installation into EXISTING `programma-canonical-pre-main.yml` of affected-function/G4 and paired CURRENT_PROGRESS change test, supporting push and PR exact source diffs; no new inventory. The checker exact Git blob `c136adda7a6b0ff5853f15327ed18e14c786ea38` matches a local Python fixture whose 6/6 positive/negative tests executed successfully. This does **not** validate S04/F6 production Python or assert the GitHub workflow ran: preceding rev14 Actions failed with **zero recorded steps**, logs unavailable. GitHub API reports branch `protected:false`; no required check configured by this transaction. OATH, G4, rev14 code and rev12 REMONT remain unchanged and present.
+
+---
+
 # PYAT PROGRESS REV14 — USER-DIRECT SOURCE CODE PORT (2026-11-20)
 
 **Protected source publication, COMMITTED_UNTESTED; user-authorized self-integration, no independent review.** Incoming source at `ee31f9b98615168ca364ae10f5ea353c9aaf8e18`, based on #1238 `1b07ee8e43b1e6dfc1543d777fe51b5750633d1c`, is 11 reusable S04/Q015–Q020 source modules and 10 sourcefree test files. Exact inherited MI producer reused. Q019 deleted and not copied. Q018 and Q020 are distinct F6 partial-ID constraints; legacy F6M math still authoritative ancestry. Author readback and static import check are not executed tests. The Q016 optional R03 country issuer path `pre553_governed_query_issuer_v2` remains unported/HELD. Q015/I05 ABI and Q017 scientific calibration likewise remain held; no native query, survey science, real FF consumer or SOROK actor rights. Existing G4 S04/F6M records updated without changing 782/150/62/82 cardinalities. **Do not call these production-verified functions, or an independently accredited receiving.** Previous rev13 G4/OATH and rev12 REMONT receipts are preserved intact below.
