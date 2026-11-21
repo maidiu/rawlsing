@@ -1,6 +1,6 @@
 # KUDA — post-VOZHD DAG reconstruction: stranded, unreceived, incompletely integrated code
 
-**Revision KUDA-R6 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
+**Revision KUDA-R7 — 2026-11-21. Scope corrected by the user.** **This is NOT an archaeological inventory of pre-FORGE DDM/V550–V558 legacy.** KUDA contains code written as part of the **August-and-after post-VOZHD, DVA/TRII/CHETIRI/PYAT/VOZDH-VERKHOVOD DAG rework**, where a potentially valid implementation or material code improvement was written but stranded, unreceived, unintegrated, wrong-versioned, or insufficiently recognized. Modern `pre553_`/current C11/S01–S11 code and explicit post-rework worker branches qualify. A legacy V550 name in a DAG parity document does **not** qualify code from `data/ddm_build_copy`. No new bridge or implementation is commissioned by KUDA.
 
 **Hard exclusion:** Pre-FORGE legacy V542/V550/V550J/V551/V552/V553/V554/V555/V556/V557/V558, historical FFX R2 old DDM, and their questionnaire/storage/temporal/runtime files are not KUDA recoveries. Their history is preserved in [the immutable KUDA-R3 commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/KUDA.md), but **R3 is superseded as the active research ledger**. Post-rework references *to* old code do not confer in-scope status unless an actual rewritten-DAG implementation body is inspected.
 
@@ -51,6 +51,12 @@
 | `KUDA-084` | SUB-VOZHD R5 exact decoder-normalized physical batch and certified geometry seam | S01/S03 physical | `ROUTE_A_SHADOW_SUBSTRATE__SELECTED_READER_MISSING` |
 | `KUDA-085` | SUB-VOZHD Route-A R5→C05R2A actual source-backed C11 adapter and AUDIT69 | S03 C11→I03 | `ROUTE_A_B19Q2_QUALIFIED__C09_HELD` |
 | `KUDA-086` | R8 frozen GT2 Q86 source-question identity anti-spoof guard | S06 specialized FF | `SOURCEFREE_R8_140_PASS__UNMERGED_NONAUTHOR_REVIEW_HELD` |
+
+| `KUDA-087` | SOROK durable owner-governed ordered developmental batch engine | SOROK C12/P2 event integration | `INDEPENDENT_SCOPED_ACCEPTED__MERGED_ARCHIVAL_NOT_NATIVE_PRODUCT` |
+| `KUDA-088` | SOROK recursive provider/model retrospective→prospective batch coordinator | SOROK continuing psyche / model interface | `INDEPENDENT_SCOPED_ACCEPTED__MERGED_ARCHIVAL_NOT_NATIVE_PRODUCT` |
+| `KUDA-089` | SOROK E01 parent activity/decision/committed speech over real P2 and C12 owners | SOROK independent Other / material institution / child recruitment | `J1_PARTIAL_SOURCEFREE_AUTHOR_EXECUTED__UNMERGED` |
+| `KUDA-090` | SOROK E01/J1 three-head real parent→child D03 uptake composition | SOROK C04→P6→D03 consumer | `AUTHOR_10_J1_TESTS_PASS__UNMERGED_PARTIAL_EXACT_BLOCKER` |
+| `KUDA-091` | WSC002G independent GT0 hostile whole-spine semantic-conservation harness | DVA/TRII/CHETIRI→FF→PREV3→V3→V2 test court | `OLDER_POST_REWORK_TEST_COURT__SELECTED_NARROWER_INTEGRATION` |
 
 ## Full post-rework implementation evidence
 
@@ -744,6 +750,97 @@
 **Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-079.
 
 
+### KUDA-087 — SOROK durable owner-governed ordered developmental batch engine
+
+**DAG organ:** SOROK C12/P2 event integration. **Fate:** `INDEPENDENT_SCOPED_ACCEPTED__MERGED_ARCHIVAL_NOT_NATIVE_PRODUCT`.
+
+**Exact post-rework source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`; Git blob `a777692782003e05de6c46280b5861e97516dc90`.
+
+**Actually implemented:** BatchEngine.run_batch reserves each event/operation before owner.realize, uses actor/root/branch/source/current state identity, orders 3–5 proposals, records before/after outcome/readsets/receipts in SQLite and declines ambiguous interrupted re-execution. Sourcefree integration uses existing S39–S47/P2 owner; the Nov6 #704 exact sourcefree return reports independently accepted repairs and 71 author-suite passing tests.
+
+**Established consuming edge:** P2Owner owns actual P2/S47 interval/event realization and later C9 material-state first reader; RecursionCycle calls BatchEngine, and the return demonstrates material ACTUAL versus SCHEDULED_ONLY difference.
+
+**Why preserve:** Real reworked-DAG ordered runtime custody code, not hypothetical schema. Archived under WORKER_RETURNS, byte-preserved in Nov18 and live protected tree; not proven installed as normal product entrypoint.
+
+**Receiving/authority limit:** PR #704 was MERGED Nov6 despite PR prose calling it unmerged; repository receiving ≠ product installation. Native actor/psychological formation, original PYAT source and owner transition rules unissued.
+
+**Smallest legitimate next comparison:** Compare current SOROK runtime C12/P2 event transaction owner for true missing batch reservation/restore behavior; compose existing engine only if no parallel dispatcher and full native tests qualify.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-080, NEKUDA-085.
+
+### KUDA-088 — SOROK recursive provider/model retrospective→prospective batch coordinator
+
+**DAG organ:** SOROK continuing psyche / model interface. **Fate:** `INDEPENDENT_SCOPED_ACCEPTED__MERGED_ARCHIVAL_NOT_NATIVE_PRODUCT`.
+
+**Exact post-rework source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`; Git blob `231cab97b4bc5e2f40de3c45d179a68ba58585c5`.
+
+**Actually implemented:** RecursionCycle.bootstrap/advance/finish coordinates detached accessible history, an external CallProvider retrospective, its proposed next 3–5-event batch, and BatchEngine actual sequential realization. Retrospective impressions remain proposals; no model call between events, no direct state-writer, terminal and cold recovery are explicit.
+
+**Established consuming edge:** run_developmental_recursion.py CLI supplies provider/owner; generic BatchEngine/P2Owner records current actor-view experience for next model call. Scoped sourcefree return includes 3 cold processes, two 3-event batches, 71 author tests and separate repairs independently accepted.
+
+**Why preserve:** Concrete LLM-compatible psychological construction interface beyond a text narrator, with operation/result ownership separation and durable cycle protocol.
+
+**Receiving/authority limit:** No actual native psychological delta, CAN/ADP-016 memory acquisition or scientific calibration. External CallProvider may be a fixture; no actual LLM provider execution proven by sourcefree return. Protected work-tree contains archived code, not native application integration.
+
+**Smallest legitimate next comparison:** Conserve exact call→realization→accessible retrospective contract and compare with current SOROK owned continuation mechanism before product lift.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-081, NEKUDA-085.
+
+### KUDA-089 — SOROK E01 parent activity/decision/committed speech over real P2 and C12 owners
+
+**DAG organ:** SOROK independent Other / material institution / child recruitment. **Fate:** `J1_PARTIAL_SOURCEFREE_AUTHOR_EXECUTED__UNMERGED`.
+
+**Exact post-rework source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py](https://github.com/maidiu/rawlsing/blob/fb061dec16c8386b9caa1b5ea75ec7645aff88a7/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py) at `fb061dec16c8386b9caa1b5ea75ec7645aff88a7`; Git blob `dc018aaaab0714eea4f619ccd8184315c6da5b10`.
+
+**Actually implemented:** Current material household/cash/rent/market/period constraints enter parent activity and purchase selection through parent_decision.py (blob e9ff52ddef...), supporting_actor.py (c2614be...), and parent_speech.py (8cf952...). Parent can actually perform P2 purchase and SPEECH event; C12 retains separate private reason, and child perceives only own P6 receipts, not parent-private data.
+
+**Established consuming edge:** j1_join.py's read_parent_decision and read_child_experience use actual prior C12/P2 owner records; #996 reports 221 PASS / 1 SKIP with cold root and independent failure cases, author only.
+
+**Why preserve:** Real independent-Other/material-consequence code from rewritten SOROK owner, with explicit fiscal separation and performer history; no duplicate scheduler/world. The extended parent modules do not appear at selected Nov18 archived package path.
+
+**Receiving/authority limit:** #996 OPEN/UNMERGED and no G5; parent's deterministic sourcefree decision is not independently formed human psychology. Parent utterance can be caller supplied. No child performed response or durable formation rule.
+
+**Smallest legitimate next comparison:** Owner-reconcile separate parent/C12/RFA mechanisms; preserve only proven unique parent external action/participation and private/public projection without manufacturing independence/actor psychology.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-082.
+
+### KUDA-090 — SOROK E01/J1 three-head real parent→child D03 uptake composition
+
+**DAG organ:** SOROK C04→P6→D03 consumer. **Fate:** `AUTHOR_10_J1_TESTS_PASS__UNMERGED_PARTIAL_EXACT_BLOCKER`.
+
+**Exact post-rework source:** [WORKER_RETURNS/SOROK-E01-J1-995-R1/j1_join.py](https://github.com/maidiu/rawlsing/blob/fb061dec16c8386b9caa1b5ea75ec7645aff88a7/WORKER_RETURNS/SOROK-E01-J1-995-R1/j1_join.py) at `fb061dec16c8386b9caa1b5ea75ec7645aff88a7`; Git blob `de73ae0f732887bf54cb19456b9a280ac28ee7c3`.
+
+**Actually implemented:** compose_j1 verifies committed parent decision/purchase, actual C04 public speech, native P6 child speech receipt, prior P3 organization and D03 immediate uptake in the same actor/source closure. Tested decision, currency, rent, private reason, speech sever/restore and cold P3 persistence. It explicitly returns SUBSEQUENT_CHILD_EVENT_HELD_NO_COMPETENT_PERFORMER.
+
+**Established consuming edge:** Sourcefree owner B/C/D three-head first readers and real J1 test_j1_three_head_join.py (10 PASS); no D04 source-qualified child target or D05 performed child event exists in that frozen composition.
+
+**Why preserve:** Concrete post-VOZHD multi-owner sourcefree causal join, not pre-FORGE mechanics; body is code under WORKER_RETURNS, never merged as product.
+
+**Receiving/authority limit:** #996 remains OPEN; total inherited suite 221 PASS/1 SKIP author-only and no G5. D03 eligible modes are not native actions, durable formation MISSING_RULE, and candidate is not a complete child circuit.
+
+**Smallest legitimate next comparison:** Conserve read-only source/clock/receipt closure, compare current child performer owner before proposing D04/D05; do not convert D03 mode into action.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-083.
+
+### KUDA-091 — WSC002G independent GT0 hostile whole-spine semantic-conservation harness
+
+**DAG organ:** DVA/TRII/CHETIRI→FF→PREV3→V3→V2 test court. **Fate:** `OLDER_POST_REWORK_TEST_COURT__SELECTED_NARROWER_INTEGRATION`.
+
+**Exact post-rework source:** [rawlsing_next/wsc_gt0_end_to_end.py](https://github.com/maidiu/rawlsing/blob/c07368ef37202f89ed298fa076c409c579f62202/rawlsing_next/wsc_gt0_end_to_end.py) at `c07368ef37202f89ed298fa076c409c579f62202`; Git blob `1b23013e644582218e3b67de32c163575036d39e`.
+
+**Actually implemented:** Original sibling-blind GT0EndToEndResult harness uses injected stage APIs and independently asserts exact source F0 identity, upstream receipt link, monotonic permission ceiling, PRE-V3 refusal to mint V555/V556, V3 fingerprint/ledger/RNG/scheduler/cursor zero effect, and V2 no unauthorized expression. Branch has six focused hostile tests in test_wsc_gt0_end_to_end.py (Git blob a5990e3...).
+
+**Established consuming edge:** An independent test double-driven negative court, not direct production consumer. Selected actual rawlsing_next/wsc_gt0_end_to_end.py has smaller 2746-byte integrated real-stage runner with broad source/permissions/zero-effect checks, blob 62b6ea3..., but lacks this exact six-test file and granular separate assertions.
+
+**Why preserve:** Potentially stranded *test assertions*, not missing GT0 runtime. Sourcefree independent dependency/mutation negative test material not ported verbatim to selected harness at frozen comparison.
+
+**Receiving/authority limit:** Old branch September 2. Never claim old injected harness should replace selected genuine-stage integration or that selected violates invariants; no newly executed G5 and equivalent coverage in other tests not exhaustively ruled out.
+
+**Smallest legitimate next comparison:** Port only distinctive hostile falsifiers as tests to current GT0 if not covered elsewhere, keeping selected actual stage orchestration; no module replacement.
+
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-084.
+
+
 ## Existing rewritten-DAG baselines — do NOT call these stranded
 
 - **Selected E41/R08/L01 path:** `rawlsing_next/pre553_evidence_world_consumer.py` at frozen PRE-MAIN `5d387a9a8c72`. Already selected sourcefree first reader; only discover a new branch-specific missing capability, not another binder.
@@ -765,3 +862,7 @@ Exact Git comparisons of six isolated Trii/Chetiri documentary branches (c04 I03
 ## R6 negative-find search: no false duplicate imports
 
 Examined SUB-VOZHD B compiler exact root module deltas and existing current `pre553_r5_codec.py`; the six Route-A physical files are **not** all new: the current selected codec is newer, so only the compact carrier, decoder seam, single-pass audit and R5→C11 adapter remain candidate value. Direct comparisons of selected SDTF R4 D1/rule-currentness/witness/world-redrive and candidate branch found those four production blobs **byte-identical to selected PRE-MAIN** (NOT KUDA). #707 grouped-I03 and #706 C1 k-way precise primary receipt were received through protected PRs, so not counted as strays. #1028 three synthetic source series is a sourcefree preparation return, not a new source producer. The #786 universal all35 receiver does NOT read original source bytes. #774 specialized Q86 source identity and #945 FF01 semantic/denominator repairs are orthogonal and must be compared jointly rather than whole-file merged.
+
+## R7 receiving-status correction and reverse-consumer source examination
+
+The SOROK developmental-recursion R1 engine and model cycle are **already in protected Git**, byte-identically under WORKER_RETURNS, because GitHub PR #704 was MERGED on 2026-11-06. This does not prove native application integration. Separately, the later parent/J1 #996 changed code remains an OPEN unmerged sourcefree candidate with 221 PASS and one skipped author-reported tests; it explicitly refuses terminal child performed-event/formation claims. The WSC002G original six-test, sibling-blind hostile harness is older (2026-09-02) than the compact, actual-stage integration, so only potential missing *negative tests* qualify for conservation. Current G4 machine tables are intentionally unchanged; current owner and paired progress must govern actual receiving decisions. No new Python tests executed in R7.

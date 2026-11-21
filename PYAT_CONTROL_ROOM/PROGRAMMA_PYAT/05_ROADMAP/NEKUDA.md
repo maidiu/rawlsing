@@ -1,6 +1,6 @@
 # NEKUDA — lesser / defective / rejected **post-VOZHD DAG implementations only**
 
-**Revision NEKUDA-R6 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
+**Revision NEKUDA-R7 (2026-11-21), same G4 branch.** **Scope correction:** This ledger is **not** a museum for pre-FORGE DDM V550/V558; it only retains earlier versions, defects, false promotions, incompatible contracts and withheld predecessors of modern post-VOZHD/DVA/TRII/CHETIRI/PYAT DAG-integrating code. R3 legacy observations survive in [immutable previous NEKUDA commit](https://github.com/maidiu/rawlsing/blob/f416acd7f752447007b950cfa7d2437adb66cf75/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/NEKUDA.md), and no longer count toward active totals. The active IDs are deliberately noncontiguous so original prior references cannot silently change meaning. 
 
 **Evidence:** Pre-2026-11-19 ~12:50 ET exact source cuts; sourcefree/author/independent G5/protected/native science remain distinct. A negative may represent a *source-cut warning*, not a defect in every descendant. Do not classify unsupported code as a success, invent a successor, or start another branch. Entries without KUDA successor remain HOLD, not implicit authorization to build.
 
@@ -46,6 +46,13 @@
 | `NEKUDA-077` | Route-A archived R5 codec older than selected PRE-MAIN codec | KUDA-083, KUDA-084, KUDA-085 | SUB-VOZHD branch codec blob 72f8f3c... lacks selected PRE-MAIN's normalize_decoder_physical_value, opaque_decoder_value and date/time norm |
 | `NEKUDA-078` | B19Q2 Route-A limited eight-test qualification interpreted as production topology decision | KUDA-083, KUDA-085 | Route-A exact adapter B19Q2 qualified twice for eight bounded tests, and HB04 qualified three candidates, but C09 remained closed pending  |
 | `NEKUDA-079` | R8 Q86 exact source-identity guard accidentally erased by S3-A cumulative FF01 overwrite | KUDA-086 | #774 source blob cad7b2e... calls _validate_frozen_q86_source_identity; later #945 source blob fd8570ec... implements many additional clos |
+
+| `NEKUDA-080` | SOROK interrupted operation reservation wrongly treated as permission to repeat effect | KUDA-087 | BatchEngine must reserve before owner call and reoffer same operation identity; if P2 owner has no recoverable receipt it refuses ambigu |
+| `NEKUDA-081` | SOROK model retrospective impressions mistaken for canonical developmental memory | KUDA-088 | The external model provides retrospective/prospective proposals only. The coordinator neither applies psychological deltas nor issues CA |
+| `NEKUDA-082` | SOROK J1 parent deterministic sourcefree decision mistaken for independent real person | KUDA-089 | The parent purchase policy is a bounded sourcefree hypothesis over actual material constraints; it is not a generatively formed adult or |
+| `NEKUDA-083` | SOROK J1 D03 eligible response modes mistakenly promoted into performed child event | KUDA-090 | D03 itself reports native_action=NOT_ISSUED_BY_D03_RULE, native_action_performed=false and durable_formation=MISSING_RULE. J1 correctly  |
+| `NEKUDA-084` | WSC002G richer injected-fake-stage assertion harness mistaken for deployed runtime | KUDA-091 | Original branch contains six adversarial tests but its harness is sibling-blind and injected; selected reduced module actually composes  |
+| `NEKUDA-085` | SOROK #704 described as unmerged although GitHub shows merged Nov 6 | KUDA-087, KUDA-088 | The PR body says 'draft and unmerged for receiving,' but PR #704 API has merged_at=2026-11-06T15:48:58Z and actual engine/model code alr |
 
 ## Full post-rework negative and supersession records
 
@@ -353,6 +360,55 @@
 **Limitation or real defect:** #774 source blob cad7b2e... calls _validate_frozen_q86_source_identity; later #945 source blob fd8570ec... implements many additional closure checks but has no question_ref/wave1_r5_q86_c11_projection/_validate_frozen_q86_source_identity call. Earlier source guard is independently authored and not automatically inherited.
 
 **Conservation rule:** Union only through exact implementation tests; never replace final FF01 with old #774 full file or infer source-identity guard from generalized negative cases.
+
+
+### NEKUDA-080 — SOROK interrupted operation reservation wrongly treated as permission to repeat effect
+
+**Better candidate:** KUDA-087. **Exact source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`.
+
+**Limitation or false promotion:** BatchEngine must reserve before owner call and reoffer same operation identity; if P2 owner has no recoverable receipt it refuses ambiguous interrupted effects. This is a genuine limitation of P2 sourcefree owners, not permission to execute twice.
+
+**Conservation rule:** Preserve fail-closed unknown effect and source-bound idempotent owner semantics.
+
+### NEKUDA-081 — SOROK model retrospective impressions mistaken for canonical developmental memory
+
+**Better candidate:** KUDA-088. **Exact source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`.
+
+**Limitation or false promotion:** The external model provides retrospective/prospective proposals only. The coordinator neither applies psychological deltas nor issues CAN/ADP-016 memory; sourcefree two-batch continuity cannot be called acquired psychological organization.
+
+**Conservation rule:** An actual actor-scientific owner must qualify learning/memory before any narrative impression changes psyche.
+
+### NEKUDA-082 — SOROK J1 parent deterministic sourcefree decision mistaken for independent real person
+
+**Better candidate:** KUDA-089. **Exact source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py](https://github.com/maidiu/rawlsing/blob/fb061dec16c8386b9caa1b5ea75ec7645aff88a7/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_decision.py) at `fb061dec16c8386b9caa1b5ea75ec7645aff88a7`.
+
+**Limitation or false promotion:** The parent purchase policy is a bounded sourcefree hypothesis over actual material constraints; it is not a generatively formed adult or autonomous psychological choice. Parent speech may be externally supplied.
+
+**Conservation rule:** Keep real world action/receipt causal chain separate from missing parent psyche/Other autonomy.
+
+### NEKUDA-083 — SOROK J1 D03 eligible response modes mistakenly promoted into performed child event
+
+**Better candidate:** KUDA-090. **Exact source:** [WORKER_RETURNS/SOROK-E01-J1-995-R1/J1_SEAM_BLOCKER.md](https://github.com/maidiu/rawlsing/blob/fb061dec16c8386b9caa1b5ea75ec7645aff88a7/WORKER_RETURNS/SOROK-E01-J1-995-R1/J1_SEAM_BLOCKER.md) at `fb061dec16c8386b9caa1b5ea75ec7645aff88a7`.
+
+**Limitation or false promotion:** D03 itself reports native_action=NOT_ISSUED_BY_D03_RULE, native_action_performed=false and durable_formation=MISSING_RULE. J1 correctly holds at SUBSEQUENT_CHILD_EVENT_HELD_NO_COMPETENT_PERFORMER.
+
+**Conservation rule:** Do not attach performed event or development to mere eligible mode. Require distinct D04 authority and D05 performer.
+
+### NEKUDA-084 — WSC002G richer injected-fake-stage assertion harness mistaken for deployed runtime
+
+**Better candidate:** KUDA-091. **Exact source:** [rawlsing_next/wsc_gt0_end_to_end.py](https://github.com/maidiu/rawlsing/blob/c07368ef37202f89ed298fa076c409c579f62202/rawlsing_next/wsc_gt0_end_to_end.py) at `c07368ef37202f89ed298fa076c409c579f62202`.
+
+**Limitation or false promotion:** Original branch contains six adversarial tests but its harness is sibling-blind and injected; selected reduced module actually composes installed stages and performs broad first-reader checks. Bigger code is not inherently a better runtime.
+
+**Conservation rule:** Conserve missing targeted negatives after de-duplicated test comparison only; never supersede selected production with test-double orchestration.
+
+### NEKUDA-085 — SOROK #704 described as unmerged although GitHub shows merged Nov 6
+
+**Better candidate:** KUDA-087, KUDA-088. **Exact source:** [WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py](https://github.com/maidiu/rawlsing/blob/5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py) at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`.
+
+**Limitation or false promotion:** The PR body says 'draft and unmerged for receiving,' but PR #704 API has merged_at=2026-11-06T15:48:58Z and actual engine/model code already appears byte-identically in Nov18 and live protected WORKER_RETURNS. Its status is archive-merged, not nonexistent/unreceived Git.
+
+**Conservation rule:** Distinguish Git storage from product installation and source/actor accreditation; do not recommission an already banked engine.
 
 
 ## Excluded material
