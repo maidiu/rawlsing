@@ -1,0 +1,25 @@
+name: PYAT four-store sourcefree physical regressions
+on:
+  push:
+    branches:
+      - agent/pyat-c11-four-permanent-store-benchmark-20261121-r1
+    paths:
+      - 'tools/pyat_c11_four_store/**'
+      - '.github/workflows/pyat-c11-four-store-sourcefree.yml'
+  workflow_dispatch:
+jobs:
+  sourcefree-physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'pyarrow>=16' 'psutil>=5'
+      - run: python -m compileall -q tools/pyat_c11_four_store
+      - run: python -m unittest tools.pyat_c11_four_store.test_stores -v
+      - run: python -m tools.pyat_c11_four_store.runner --self-test
+      - run: python -m unittest tools.pyat_c11_four_store.test_runner_sourcefree -v
