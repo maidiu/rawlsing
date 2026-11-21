@@ -327,7 +327,7 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     assert workload.requests
-    from rawlsing_next.pre553_issued_workload import execute_issued_workload
+    from rawlsing_next.pre553_saved_workload_integration import execute_saved_normal
     from rawlsing_next.pre553_s04_first_consumer import receive_s04_first_consumer
     from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
 
@@ -340,7 +340,7 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
 
     with monkeypatch.context() as patch:
         patch.setattr(DirectEstateI03Session, "_build", counted_build)
-        result = execute_issued_workload(
+        result = execute_saved_normal(
             workload, TestOnlyDecisionResolver(issue.issued.record),
             saved_admission_factory=lambda: _v2_admission(initial, workload.catalog),
             host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
@@ -366,7 +366,7 @@ def test_r03_v2_normal_issued_saved_prepared_i03_preserves_native_s04_results(
 
     # Same original issuer, release and query: prepared and default paths
     # must return identical empirical fact/receipt refs.
-    baseline = execute_issued_workload(
+    baseline = execute_saved_normal(
         workload, TestOnlyDecisionResolver(issue.issued.record),
         saved_admission_factory=lambda: _v2_admission(initial, workload.catalog),
         host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE,
