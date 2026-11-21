@@ -76,7 +76,11 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
             project_ids=set(refs)
         elif status_kind in (
             'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE',
-            'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE'):
+            'ACTOR_POLICY_NO_ATTESTED_PROJECT_PURPOSE',
+            # R3 issued an exploration, NOT an acquired project motive:
+            # the selected event remains real activity without any falsely
+            # attributed durable purpose.
+            'ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE'):
             if ident is not None or project_ids:
                 raise ValueError('PURPOSE_UNKNOWN_BUT_PROJECT_ASSERTED')
             project_ids=set()
