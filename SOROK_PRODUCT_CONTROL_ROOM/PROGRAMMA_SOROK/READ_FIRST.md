@@ -1,6 +1,6 @@
 # PROGRAMMA SOROK — current guide navigation
 
-**SOROKUDA — candidate exact-code recovery (not protected received):** [SOROKUDA.md](SOROKUDA.md) and [300 exact source records: 61 runtime modules, 56 tests, 98 historical leads, 67 verified source bodies and 18 later variants](SOROKUDA_CODE_INDEX.jsonl). R4 on the same G4 repair branch; not another owner, permission or whole-code census. Protect tested #1248 source and distinguish later unexecuted R23–R25/REMONT R19.
+**SOROKUDA R5 — candidate exact-code recovery (not protected received):** [SOROKUDA.md](SOROKUDA.md) and [438 exact source records: 300 R4 source identities, 92 S37–S52 code modules, 36 historical test/support files, and 10 CG-A/G03/ORACLE source bodies](SOROKUDA_CODE_INDEX.jsonl). R4 on the same G4 repair branch; not another owner, permission or whole-code census. Protect tested #1248 source and distinguish later unexecuted R23–R25/REMONT R19.
 
 
 **Prospective MCR-lite:** [shared eight-point operating standard](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) applies to all new ordinary MCR commissions. This is a discipline of maximal substantive completion and minimal administrative friction, not permission to invent actor/source science; full MCR-C remains where explicitly required. Live owner progress, not stale candidate paragraphs below, controls current engineering status.
