@@ -105,3 +105,30 @@ R17 closes the inherited P018 preflight gap by requiring full `verify_chain()` u
 **Focused first REDs:** R11 `test_practical_option_id_only…` errors with `AttributeError: 'R11IngressContract' object has no attribute 'rt'` (stale test fixture); R11 heuristic then raises `CURRENT_TRIAL_NOT_MATURE_MOTIVE`; R6 `activity_history` KeyError (4 cases) and two behavioral failures; joined demo dies in `continue_without_user → runtime.step → development.admit` at `CURRENT_TRIAL_NOT_MATURE_MOTIVE`, so the two Nadia histories and SQLite cold chain were **not reached**.
 
 **Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is material improvement over `dbfb35c` (no SourcePreflight KeyError; focused R8/R13 pass) but still not executable-received; SORACLE owns ordinary repair and must separately handle stale test fixtures versus production owners.
+
+## SORACLE × REMONT #1234 retest — 2553e1d
+
+**Exact HEAD:** `2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8`; Python 3.11.3; detached clean worktree. R17 inheritance still exact: `storage.py` blob `75087ed…`, `test_r17_source_preflight.py` blob `b25f93b…`. Original `018d3025` RED is preserved separately and not overwritten.
+
+**Exact command exits**
+- `compileall`: 0.
+- Focused normal (9 modules): 1 — 103 ran, **5 failures + 1 error**.
+- Focused `-O` (4 modules): 1 — 44 ran, **1 failure**.
+- Full normal discover: 1 — 551 ran, **6 failures + 3 errors**.
+- Full `-O` discover: 1 — same 6 + 3.
+- pytest: 1 — **9 failed, 542 passed, 37 subtests**.
+- `joined_longitudinal_demo --days 14 --beats 12`: **0 PASS**.
+
+**Two histories / cold chains now reached**
+- Spoken branch: father `SPEAK`, object `material_artifact_41d1e145be7ea9b8`, Nadia `INSPECT` `PERFORMED`, 12/12 independent beats, cultural demonstrations 1, age 14; cold chain 17 events, hash `b2c337e242557878d1c9cf3366dc6b1c663d5dc022fcc700c39a0f498e98035a`, valid, 2 source seals.
+- Unspoken branch: father `REST` on the same object, Nadia `INSPECT` `PARTIAL`, 12/12 beats, cultural demonstrations 0, age 14; cold chain 17 events, hash `006dfe2bf688c27e9968cbe8c6c952907824aaea881d34ac39a44a1f69e45ad8`, valid, 2 source seals.
+- The separate cold-reproducibility test passed.
+
+**Remaining 9 full failures/errors, classified**
+- **Fixture/test**: R14 `TypeError: argument of type 'int' is not iterable` (`test_co_regulation_r14.py:84` iterates `alt[0].values()` and applies `'consent' in x` to an int).
+- **Read-model/test expectation**: Nadia backlog `KeyError: 'age_days'` and social-vocal `KeyError: 'role'`; the public `snapshot()` no longer exposes those ledger actor fields (verified actor record has `age_days=30`, `role=child`; add a typed read-model field or read the actor record).
+- **First genuine source/consumer contract RED**: R6/R6-integrated `HISTORICAL_SIGNAL_PATH_REENCOUNTERED` remains present after an unobserved interval; owner locus `constitution.compose` / `runtime.situated` evidence-path/currentness composition.
+- **Unresolved behavioral contracts**: R6 selected-purpose development packet count `2 != 1`; R15 acquires a co-regulation orientation after two real care events where the legacy test expects none until Nadia `ORIENT`; whole-organism composed-activity options remain empty.
+- **Obsolete diagnostic expectation**: R11 expected `PROVISIONAL_TRIAL_CANNOT_ASSERT_ESTABLISHED_PROJECT`, but the owner still rejects with `MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE`; negative boundary is conserved, diagnostic string changed.
+
+**Verdict:** `REVISE_EXACT_DEFECT` / `HOLD`. This is a substantial improvement over `018d3025` (demo now passes, two cold chains valid, full court down from 27 to 9), but not all failures are repaired and several require owner/test classification. SORACLE owns ordinary source repair; no protected or independent receiving is claimed.
