@@ -32,7 +32,26 @@ function validateRows(index,parity,components,seams,manifest){
  if(manifest?.open_PR_snapshot?.count!==manifest?.open_PR_snapshot?.all_open_prs_compact?.length)failures.push("OPEN_PR_PATH_LOSS");
  const chapters=new Set(index.filter(x=>x.kind==="GUIDE_SECTION").flatMap(x=>x.g4_once_20261120.chapters_mapped));
  for(const n of ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX"])if(!chapters.has(n))failures.push("MISSING_CHAPTER_"+n);
- return {pass:failures.length===0,failures,counts:Object.fromEntries(specs.map(([x,k,n])=>[k+"_"+n,x.length])),chapters:chapters.size};
+ const sourceGrains={zak02:28,vosk_a:18,vosk_b:26,k1:29,k3_proposals:26,k3_edges:8,vmestye_p4r:14};
+ const recovered=Object.fromEntries(Object.keys(sourceGrains).map(k=>[k,[]]));
+ for(const section of index.filter(x=>x.kind==="GUIDE_SECTION")){
+   const crosswalk=section.g4_once_r2_inherited_source_crosswalk;
+   if(!crosswalk){failures.push("G4_R2_SECTION_WITHOUT_INHERITED_SOURCE_"+section.id);continue;}
+   for(const key of Object.keys(sourceGrains)){
+     const rows=crosswalk.source_adjudications?.[key];
+     if(!Array.isArray(rows)){failures.push("G4_R2_SOURCE_GROUP_MISSING_"+section.id+"_"+key);continue;}
+     recovered[key].push(...rows.map(v=>v.id));
+     if(rows.some(v=>!v.id))failures.push("G4_R2_UNIDENTIFIED_SOURCE_"+section.id+"_"+key);
+   }
+ }
+ for(const [key,n] of Object.entries(sourceGrains)){
+   if(recovered[key].length!==n||new Set(recovered[key]).size!==n)failures.push("G4_R2_SOURCE_LOSS_OR_DUPLICATE_"+key+"_EXPECTED_"+n+"_ACTUAL_"+recovered[key].length);
+ }
+ const joins=index.find(x=>x.id==="ROADMAP:S11")?.g4_once_r2_inherited_source_crosswalk?.unresolved_w1h_custody?.ids||[];
+ if(joins.length!==164||new Set(joins).size!==164)failures.push("G4_R2_W1H_164_UNJOINED_CUSTODY_LOST");
+ const historicLinks=parity.filter(x=>x.g4_once_r2_historical_function_relationship);
+ if(historicLinks.length!==18||historicLinks.some(x=>x.g4_once_r2_historical_function_relationship.preserve_frozen_parity!==x.parity))failures.push("G4_R2_18_HISTORICAL_FUNCTION_LINKS_LOST_OR_PARITY_PROMOTED");
+  return {pass:failures.length===0,failures,counts:Object.fromEntries(specs.map(([x,k,n])=>[k+"_"+n,x.length])),chapters:chapters.size,inherited:Object.fromEntries(Object.keys(sourceGrains).map(k=>[k,recovered[k].length])),w1h_unjoined:joins.length,historical_function_relations:historicLinks.length};
 }
 function selfTest(){
  const E=[{pr:1,head:"aaa",title_based_scope:"POSSIBLY_PYAT"}],same=JSON.parse(JSON.stringify(E));
