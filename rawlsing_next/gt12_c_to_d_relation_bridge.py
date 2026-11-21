@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
-from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, exact_ref, semantic_hash
 
 BRIDGE_CONTRACT_ID = "GT12_C_TO_D_TYPED_LOSSLESS_BRIDGE@1.0.0"
 CLOSURE_PROGRAM_COMMIT = "a473091473f5729dd9aa6e54d68b88de49f9d608"
@@ -85,6 +85,16 @@ def _validate(value: object) -> ff.ExactConditionalSupportProfile:
     if r.producer_fact_ref.kind != "EmpiricalFact@1.0.0" or r.producer_query_ref.kind != "EmpiricalQuerySpec@1.0.0":
         raise GT12CToDBridgeError("producer fact/query exact family mismatch")
     if not r.producer_authority_refs or not r.producer_provenance_refs: raise GT12CToDBridgeError("producer closure missing")
+    # A hash-consistent Field Forge profile can declare a different physical
+    # SOURCE_ARTIFACT while this bridge would otherwise stamp the frozen one.
+    # Reject *contradictory* declared source identities before D can admit them.
+    # This check is not native C11/source authentication: the fixed current
+    # transport has a large release/event provenance closure rather than a
+    # direct SOURCE_ARTIFACT ref. Missing source refs remain an explicit hold.
+    declared_sources = tuple(ref for ref in r.producer_provenance_refs
+                             if ref.kind == "SOURCE_ARTIFACT")
+    if declared_sources and (len(declared_sources) != 1 or declared_sources[0] != _source()):
+        raise GT12CToDBridgeError("declared producer source contradicts frozen GT12 physical source")
     if not set(r.relation_permission_ceiling) <= set(r.producer_permission_ceiling): raise GT12CToDBridgeError("permission widening")
     if r.producer_state_blocking != (r.typed_state != "SUPPORTED"): raise GT12CToDBridgeError("typed-state blocker mismatch")
     if r.producer_state_blocking == bool(r.conditional_count_profile): raise GT12CToDBridgeError("blocking/profile inconsistency")
@@ -133,8 +143,45 @@ def admit_gt12_c_relation(relation: ff.ExactConditionalSupportProfile) -> GT12CT
     receipt = adm.evaluate_gt2_relation_admission(adm.RelationAdmissionRequest(evidence), rule)
     return GT12CToDAdmissionResult(r.ref, evidence, rule, receipt)
 
+def admit_gt12_c_relation_from_fixed_current_transport(
+    relation: ff.ExactConditionalSupportProfile,
+) -> GT12CToDAdmissionResult:
+    """Positive sourcefree C→D admission bound to exact committed current GT12 transport.
+
+    The fixed transport loader verifies its own immutable release/replay manifest
+    and current fact/query identities. Reconstructing the relation against those
+    *actual* objects proves this relation came from that committed transport,
+    not merely from a caller-supplied source label or a matching risk-set name.
+    It does NOT prove original SAV/native source access or current science rights.
+    Legacy admit_gt12_c_relation remains a bounded sourcefree typed admission,
+    not a source-authenticating API.
+    """
+    r = _validate(relation)
+    if r.typed_state != "SUPPORTED" or r.producer_state_blocking:
+        raise GT12CToDBridgeError("fixed current positive transport requires SUPPORTED relation")
+    if (r.producer_permission_ceiling != (adm.GT2_TARGET_USE,)
+            or r.relation_permission_ceiling != (adm.GT2_TARGET_USE,)):
+        raise GT12CToDBridgeError("fixed current transport refuses inferred permission widening")
+    from rawlsing_next.pre553_repo_native_current_payload import (
+        load_current_gt2_query_fact_from_committed_transport,
+    )
+    query, fact = load_current_gt2_query_fact_from_committed_transport()
+    if (r.producer_query_ref != query.ref or r.producer_fact_ref != fact.ref
+            or r.producer_replay_ref != exact_ref(fact.replay_ref, "current fact.replay_ref")):
+        raise GT12CToDBridgeError("relation is not the exact fixed current fact/query/replay")
+    canonical = ff.produce_exact_conditional_support_profile(
+        joint_fact=fact, joint_query=query,
+        conditioner_ref=query.target_refs[0],
+        target_ref=query.target_refs[1],
+        producer_permission_ceiling=(adm.GT2_TARGET_USE,),
+        relation_permission_ceiling=(adm.GT2_TARGET_USE,),
+    )
+    if canonical.ref != r.ref or canonical.semantic_projection() != r.semantic_projection():
+        raise GT12CToDBridgeError("relation differs from fixed current C11 transport replay")
+    return admit_gt12_c_relation(r)
+
 def replay_gt12_c_to_d_admission(relation: ff.ExactConditionalSupportProfile, historical: adm.Prev3FieldForgeRelationAdmission) -> adm.Prev3FieldForgeRelationAdmission:
     e = bridge_gt12_c_relation_to_d_evidence(relation); rule = make_gt12_c_to_d_admission_rule(relation)
     return adm.replay_gt2_relation_admission(relation=e, rule=rule, historical_receipt=historical)
 
-__all__ = ["BRIDGE_CONTRACT_ID","CLOSURE_PROGRAM_COMMIT","EXPECTED_RELATION_OWNER","EXPECTED_RELATION_FAMILY","GT12CToDBridgeError","GT12CToDBridgeTypeError","GT12CToDAdmissionResult","frozen_gt12_c_relation_rule_ref","bridge_gt12_c_relation_to_d_evidence","make_gt12_c_to_d_admission_rule","admit_gt12_c_relation","replay_gt12_c_to_d_admission"]
+__all__ = ["BRIDGE_CONTRACT_ID","CLOSURE_PROGRAM_COMMIT","EXPECTED_RELATION_OWNER","EXPECTED_RELATION_FAMILY","GT12CToDBridgeError","GT12CToDBridgeTypeError","GT12CToDAdmissionResult","frozen_gt12_c_relation_rule_ref","bridge_gt12_c_relation_to_d_evidence","make_gt12_c_to_d_admission_rule","admit_gt12_c_relation","admit_gt12_c_relation_from_fixed_current_transport","replay_gt12_c_to_d_admission"]

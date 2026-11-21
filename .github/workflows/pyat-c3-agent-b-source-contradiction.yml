@@ -1,0 +1,35 @@
+name: PYAT C3 Agent B source-contradiction and preservation (sourcefree)
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+    paths:
+      - 'rawlsing_next/gt12_c_to_d_relation_bridge.py'
+      - 'rawlsing_next/tests/test_c3_agent_b_source_contradiction.py'
+      - '.github/workflows/pyat-c3-agent-b-source-contradiction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c3-sourcefree-abi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # include protected PR-base parent for exact old-code differential
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree test runner
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Exercise source-origin contradiction, actual retained Q86 and downstream ABI
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_c3_agent_b_source_contradiction.py \
+            rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
+            rawlsing_next/tests/test_pre553_gt2_structural_positive_realization_court.py
