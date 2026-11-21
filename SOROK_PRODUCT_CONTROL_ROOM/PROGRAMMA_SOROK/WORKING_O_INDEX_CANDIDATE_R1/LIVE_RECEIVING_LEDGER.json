@@ -5213,6 +5213,81 @@
       "disposition": "HELD_R18_P004_PARTIAL__AUTHOR_GREEN_SUSPECTED_UNTESTED_DUPLICATE_EDGE",
       "next_receiving_owner": "REMONT P004 independent first-fault reviewer",
       "smallest_next_action": "Execute A fresh/B duplicate project-event negative; assert atomic rollback, then valid two-project positive"
+    },
+    {
+      "id": "PR-1246",
+      "pr": 1246,
+      "title": "[SORACLE MULCH R21 · EXECUTED 558/558 SOURCEFREE PASS · RECEIVING HELD] Offscreen historical life",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1246",
+      "head_sha": "1dc02f66c63c64ec7124f219f5ce0d8cdf76ebdd",
+      "base_branch": "agent/soracle-remont-r16-r3-joined-organism-20261120-r1",
+      "pr_state": "open",
+      "merged": false,
+      "originating_owner_lane": "SORACLE forward construction",
+      "next_receiving_owner": "SOROK HQ after distinct runtime receiving",
+      "smallest_next_action": "Retain donor proof at exact cut and route integration through #1248.",
+      "disposition": "EXECUTED_AT_SHA_USER_TERMINAL_SOURCEFREE__RECEIVING_HELD",
+      "test": {
+        "executed_sha": "1dc02f66c63c64ec7124f219f5ce0d8cdf76ebdd",
+        "verdict": "558_NORMAL_558_OPTIMIZED_PYTEST_558_PLUS44_TWO_HISTORIES",
+        "grade": "USER_TERMINAL_SOURCEFREE",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1246",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "applied_to_head": false,
+        "verdict": "HELD"
+      },
+      "authorities": {
+        "source": "NOT_ISSUED",
+        "science": "NOT_ISSUED",
+        "actor": "NOT_ISSUED",
+        "human": "NOT_ISSUED",
+        "protected_receiving": "NOT_ISSUED"
+      },
+      "dependencies": [
+        1234
+      ]
+    },
+    {
+      "id": "PR-1248",
+      "pr": 1248,
+      "title": "[SOROK integration] R21 + #1234 exact source; Mac 558/558 + Nadia cold PASS; independent receiving held",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1248",
+      "head_sha": "6647f746f4f7d2ae3dd0d14af5cde38191044773",
+      "base_branch": "integration/pre-main-reconciliation-r1",
+      "pr_state": "open",
+      "merged": false,
+      "originating_owner_lane": "SOROK integration",
+      "next_receiving_owner": "SOROK HQ after distinct runtime receiving",
+      "smallest_next_action": "Adjudicate exact integration runtime receipts and canonical workflow hold.",
+      "disposition": "EXECUTED_AT_SHA_USER_TERMINAL_SOURCEFREE__RECEIVING_HELD",
+      "test": {
+        "executed_sha": "6647f746f4f7d2ae3dd0d14af5cde38191044773",
+        "verdict": "558_NORMAL_558_OPTIMIZED_PYTEST_558_PLUS44_TWO_HISTORIES",
+        "grade": "USER_TERMINAL_SOURCEFREE",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1248#issuecomment-7060019147",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": "6647f746f4f7d2ae3dd0d14af5cde38191044773",
+        "verdict": "ACCEPT_SCOPED_TREE_AND_NO_DROP",
+        "applied_to_head": true,
+        "evidence": "https://github.com/maidiu/rawlsing/pull/1248/reviews",
+        "independence": "Distinct source review, credential independence not established"
+      },
+      "authorities": {
+        "source": "NOT_ISSUED",
+        "science": "NOT_ISSUED",
+        "actor": "NOT_ISSUED",
+        "human": "NOT_ISSUED",
+        "protected_receiving": "NOT_ISSUED"
+      },
+      "dependencies": [
+        1234,
+        1246
+      ]
     }
   ],
   "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed."
