@@ -258,11 +258,18 @@ class R11IngressContract(unittest.TestCase):
             lambda task,packet:{'task':task,'practical_option_id':'fictionally_named'}))
         proposal=callback.proposal('actor_attempt',{'options':[]})
         self.assertEqual(proposal['practical_option_id'],'fictionally_named')
-        self.rt.semantic=callback
-        before=self.rt.verify()['events']
-        with self.assertRaisesRegex(ValueError,'UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID'):
-            self.rt.step('nadia')
-        self.assertEqual(self.rt.verify()['events'],before)
+        with tempfile.TemporaryDirectory() as directory:
+            rt=ConstitutiveRuntime(str(Path(directory)/'r11_option_ingress.sqlite3'))
+            try:
+                rt.initialize()
+                rt.semantic=callback
+                before=rt.verify()['events']
+                with self.assertRaisesRegex(
+                        ValueError,'UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID'):
+                    rt.step('nadia')
+                self.assertEqual(rt.verify()['events'],before)
+            finally:
+                rt.close()
 
     def test_direct_forged_trial_kwarg_rejected_without_issued_identity(self):
         a=adult('a','A')
