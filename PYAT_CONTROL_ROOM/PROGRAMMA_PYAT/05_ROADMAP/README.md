@@ -3,6 +3,12 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+### KUDA C11 architecture no-regression warning (branch-source only)
+
+The historical [KUDA-R11 physical alternative court](KUDA.md#kuda-r11--c11-protected-design-conservation-court-against-stranded-physical-alternatives) and [KUDA-R12 correction](KUDA.md) **do not authorize replacing** selected R157/S2-B/C/D with W03/Route-A/Route-C. R12 withdrew the extra #1259 runtime C11 module, leaving tests-only. Controlling #960/#1006, exact user-selected one-pass 13-family persistence/cold-QUERY goals, independent C11/source/fact no-loss, performance and paired protected receiving remain decisive; the G4 branch is unreceived documentary evidence.
+
+
+
 **SOROKUDA cross-estate code recovery (candidate, NOT G4 functional authority):** [SOROKUDA — SOROK's separate source-pinned implementation conservator](../../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA.md), with 438 source-index records, including 92 original S37–S52 code modules, 36 sourcefree test/support files, and 10 actual CG-A/G03/ORACLE code bodies; KUDA's five earlier SOROK entries are historic crosslinks, not comprehensive SOROK proof. SOROK PROGRAMMA and paired progress remain authoritative.
 
 

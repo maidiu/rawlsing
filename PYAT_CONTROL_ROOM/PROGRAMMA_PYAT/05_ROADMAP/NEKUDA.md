@@ -96,6 +96,14 @@ All original NEKUDA identities remain and any independent tests, scientific righ
 
 ---
 
+## NEKUDA-R12 — correction: no standalone C11 entrypoint from KUDA-082, 2026-11-21
+
+Previously proposed #1259 `af233d332c19ca560cc01c7461e8bd5ec02b4243` included a new production-looking `pre553_r157_universal_c11_parity.py` despite original selected R157/S2-B/C/D. **It was withdrawn and DELETED at #1259 `d8f5e91e1bf55390e08961688dc502674046c84e`**. Only inherited-owner fixture parity test + exact return survive, **COMMITTED_UNTESTED**, optional tests-only Codex intake. Historical 35-fixture registry and cold SRC26 are NOT imported; no original35/actor/issuer claims. Do not reintroduce W03, older R5 geometry (old 0-based vs chosen 1-based variable ordinal) or Route-C fixed LiTS-I masks as selected C11 architecture on an old suite's strength. Selected source C11 owners and prior source-specific negative invariants remain unchanged.
+
+This is a source-static corrected negative fate, not protected receiving.
+
+---
+
 ## NEKUDA-R11 — C11 architecture loss prevention · source-static, 2026-11-21
 
 **Do not confuse a historical sourcefree pass with architecture authority.** Governing P0 user selection #960/#1006 requires config-driven one-pass 13-family sealed, Parquet/Zstd persistent C11 plus independently authenticated cold direct-I02 saved native readers, at useful cost; old W03 attempt exceeded 6 GiB and selected S2-C itself retains a separate measured cost problem. **KUDA-028 W03** chunk compressor is a disposable event accelerator, not authority to bring back whole-object primary path. **KUDA-077 Route-C** is exact but 7-column LiTS-I/19 fixed-role scoped, not generic C11. **KUDA-083/084/085 Route-A** is alternate gzip LONG_SHARDED, C09 unselected, and uses older R5 codec lacking current decoder opaque/date normalization. Historical Route-A seam geometry takes 0-based variable ordinal but selected physical decoder emits 1-based variable ordinals: explicit source ABI conflict, no unmodified transplant. Historical Audit69 is no substitute for selected 13-family complete physical-body/locator anti-join under external I02 root. Keep as comparators; do not replace selected owners.
