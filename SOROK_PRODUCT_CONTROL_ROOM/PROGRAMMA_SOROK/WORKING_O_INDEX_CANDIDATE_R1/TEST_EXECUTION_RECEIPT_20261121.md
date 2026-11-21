@@ -4,7 +4,7 @@
 
 | File | Source byte count | Git blob SHA (local `git hash-object` = GitHub readback) |
 |---|---:|---|
-| `check_live_receiving.py` | 11218 | `7c861f11ae4e215264fed3e4c7e544fe741b2b01` |
+| `check_live_receiving.py` | 11229 | `cd7cdfa641e9025644137f1d3eb77921af0f1362` |
 | `test_live_receiving.py` | 4132 | `f136ea6763526be3d2a8972c939f3173de88aa2a` |
 
 **Executed commands and results:**
@@ -15,7 +15,7 @@ Python 3.13.5
 
 $ python3 -m unittest -q test_live_receiving.py
 ----------------------------------------------------------------------
-Ran 12 tests in 0.003s
+Ran 12 tests in 0.002s
 
 OK
 
