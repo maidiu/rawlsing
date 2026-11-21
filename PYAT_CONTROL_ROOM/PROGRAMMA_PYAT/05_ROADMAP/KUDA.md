@@ -197,7 +197,7 @@
 
 **Shortest nonduplicative comparison:** Compare with S2-G cold learned lifecycle and retain only nonduplicated persistence/consumer behavior.
 
-**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-022, NEKUDA-027.
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-022.
 
 ### KUDA-028 — W03/W04 compact C11 event bodies and cold I03/I05 reopening
 
@@ -477,7 +477,7 @@
 
 **Shortest nonduplicative comparison:** Compare selected reader/physical ABI and measure effect independently on real held sourcefree saved estate.
 
-**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-064.
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-064, NEKUDA-062.
 
 ### KUDA-072 — P0 PreparedSavedC11Admission reusable cold saved I03 session
 
@@ -497,7 +497,7 @@
 
 **Shortest nonduplicative comparison:** Compare with W05 and #1073 saved direct session; benchmark same source-free workload and cumulative owner first reader.
 
-**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-065.
+**Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-065, NEKUDA-062.
 
 ### KUDA-073 — #997/#1073 source-to-saved postconsumer fate/readback attribution
 
