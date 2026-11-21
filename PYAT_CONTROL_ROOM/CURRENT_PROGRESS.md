@@ -3,7 +3,7 @@
 [Revision 22 execution receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)
 
 
-Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The typed UNAVAILABLE/UNRESOLVED negative is still PROVE_E because the fixture emitted four SUPPORTED facts. Wider G4 receiving and feature-code adoption remain pending.
+Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The Q023 fixture emitted four SUPPORTED, six UNAVAILABLE and two ZERO_SUPPORT facts. The earlier finding mistook the supported subset for the full workload. The test-only successor 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 adds the missing assertions and passed the focused test with its committed test file against the unchanged #1247 checkout. Wider G4 receiving and feature-code adoption remain pending.
 
 
 ---

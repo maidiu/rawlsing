@@ -2,7 +2,7 @@
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
   "revision": 22,
-  "revision_note": "Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The typed UNAVAILABLE/UNRESOLVED negative is still PROVE_E because the fixture emitted four SUPPORTED facts. Wider G4 receiving and feature-code adoption remain pending.",
+  "revision_note": "Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The Q023 fixture emitted four SUPPORTED, six UNAVAILABLE and two ZERO_SUPPORT facts. The earlier finding mistook the supported subset for the full workload. The test-only successor 16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1 adds the missing assertions and passed the focused test with its committed test file against the unchanged #1247 checkout. Wider G4 receiving and feature-code adoption remain pending.",
   "report_status": "PYAT_REV22_DOC_ONLY_INDEPENDENT_EXECUTION_Q023_Q014__CODE_UNRECEIVED",
   "remont_1247_independent_execution": {"candidate": "53517c4acecf6246ee6ed3ba7974bc7e6297d8ff", "tests": {"RMT-Q014": {"tests": 41}, "RMT-Q023": {"tests": 33}}, "artifact_scope": "Case counts and names. Raw JUnit retained on execution host.", "receipt": "PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json"},
   "activity_mode": "K3_DOC_PHASE_TERMINAL_RECEIVED__ANVIL_ARCHITECTURE_INVESTIGATION_ELIGIBLE__P0_C11_ENGINEERING_SEPARATE",

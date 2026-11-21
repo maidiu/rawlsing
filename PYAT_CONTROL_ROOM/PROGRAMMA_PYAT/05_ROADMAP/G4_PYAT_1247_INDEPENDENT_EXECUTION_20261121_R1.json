@@ -89,6 +89,18 @@
   "session": "ses_e02c8ed25ffeM0hJk9Qa7TU8Da",
   "grade": "INDEPENDENT_SAME_HOST_SOURCEFREE_EXECUTION",
   "negative_coverage": {
+    "finding": "UNDER_ASSERTED_ON_BASE",
+    "observed": {
+      "SUPPORTED": 4,
+      "UNAVAILABLE": 6,
+      "ZERO_SUPPORT": 2
+    },
+    "successor_test_commit": "16d3dfb99dc1e6e2a2a7184eecfdca8733cf21d1",
+    "execution": "1 focused pass; committed test blob on unchanged #1247 checkout",
+    "protected_received": false
+  },
+  "artifact_scope": "Case counts and names. Raw JUnit retained on execution host.",
+  "superseded_negative_coverage_finding": {
     "finding": "PROVE_E",
     "observed": {
       "SUPPORTED": 4
@@ -98,6 +110,5 @@
       "UNRESOLVED"
     ],
     "basis": "DeepSeek focused instrumented fixture probe"
-  },
-  "artifact_scope": "Case counts and names. Raw JUnit retained on execution host."
+  }
 }
