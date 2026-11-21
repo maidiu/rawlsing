@@ -8,6 +8,7 @@ actual native I03 evaluator.  No saved estate or original source is touched.
 from __future__ import annotations
 
 import dataclasses
+import hashlib
 import json
 import os
 import sys
@@ -30,7 +31,8 @@ from rawlsing_next.pre553_anvil_stream_issuance import (  # noqa: E402
 from rawlsing_next.pre553_anvil_stream_native_i03 import (  # noqa: E402
     VerifiedAnvilStreamEstate,
 )
-from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref  # noqa: E402
+from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog  # noqa: E402
+from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec, ExactRef, exact_ref  # noqa: E402
 from rawlsing_next.tests.test_pre553_anvil_stream_native_i03 import _stream  # noqa: E402
 
 
@@ -82,6 +84,25 @@ def main() -> int:
         "estate_writes": False,
         "status": "UNKNOWN",
     }
+    owner_path = os.environ.get("ANVIL_Q006_OWNER_DECISION")
+    owner_hash = None
+    owner_codes = ("1", "2", "3", "4", "97", "98", "99")
+    if owner_path:
+        owner_bytes = Path(owner_path).read_bytes()
+        owner_hash = hashlib.sha256(owner_bytes).hexdigest()
+        if owner_hash != "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5":
+            raise SystemExit("OWNER_DECISION_HASH_MISMATCH")
+        owner = json.loads(owner_bytes)
+        owner_codes = tuple(str(code) for code in owner["interpretation"])
+        out["owner_decision"] = {
+            "sha256": owner_hash,
+            "source_id": owner.get("source_id"),
+            "question_id": owner.get("question_id"),
+            "scope": owner.get("scope"),
+            "recorded_codes": list(owner_codes),
+            "asked_risk": owner.get("denominator", {}).get("asked_risk"),
+            "physical_system_missing": owner.get("denominator", {}).get("physical_system_missing"),
+        }
     try:
         (source, auth, predicate, query, catalog, root, release, manifest,
          held, grant) = _stream(scratch, mp, "ISSUANCE", source_id="SRC04")
@@ -143,6 +164,83 @@ def main() -> int:
             "accepted_by_held_nonanswer_state": nfact.typed_state in decision_n.approved_nonanswer_states,
         }
 
+        # Sourcefree seven-code recorded-response-shaped fixture.  The values
+        # stand in for the owner-approved q103 interpretation; this is not an
+        # original SRC04 run.  One row has no response: physical missing remains
+        # a separate denominator/coverage fact, not a fabricated substantive cell.
+        seven_rows = [
+            {"id": f"R{i}", "responses": ({"Y": code} if code is not None else {})}
+            for i, code in enumerate((1, 2, 3, 4, 97, 98, 99, None), 1)
+        ]
+        def seven_build(tag, rows, **kwargs):
+            return original_build(tag, seven_rows, **kwargs)
+        mp.setattr(native, "_build_source", seven_build)
+        (source_s, auth_s, predicate_s, query_s, catalog_s, root_s, release_s,
+         manifest_s, held_s, grant_s) = _stream(
+            scratch, mp, "SEVEN", source_id="SRC04",
+        )
+        fields_s = dict(query_s.semantic_fields)
+        topology_s = dict(fields_s["target_arity_and_topology"])
+        component_s = dict(topology_s["components"][0])
+        component_s["domain"] = ["1", "2", "3", "4", "97", "98", "99"]
+        topology_s["components"] = [component_s]
+        fields_s["target_arity_and_topology"] = topology_s
+        query_s = EmpiricalQuerySpec(
+            typed_state=query_s.typed_state,
+            authority_snapshot_refs=query_s.authority_snapshot_refs,
+            dependency_refs=query_s.dependency_refs,
+            producer_replay_locator_or_reference_root=(
+                query_s.producer_replay_locator_or_reference_root
+            ),
+            **fields_s,
+        )
+        catalog_s = RuntimeObjectCatalog(
+            authorities=tuple((*source_s["authorities"], auth_s)),
+            predicates=(predicate_s,), queries=(query_s,),
+            discovery_authorities=(),
+        )
+        estate_s = VerifiedAnvilStreamEstate(
+            root_s, exact_path=release_s, independently_held=held_s,
+            current_authorizer=grant_s,
+        )
+        decision_s = _decision(
+            estate_s, source_s, auth_s, predicate_s, query_s,
+            nonanswer=("UNRESOLVED",),
+        )
+        decision_s = dataclasses.replace(
+            decision_s, approved_raw_domain=owner_codes,
+        )
+        first_seven = issue_and_execute_stream_i03(
+            estate=estate_s, decision=decision_s,
+            decision_verifier=lambda c: c == decision_s,
+        )
+        second_seven = issue_and_execute_stream_i03(
+            estate=estate_s, decision=decision_s,
+            decision_verifier=lambda c: c == decision_s,
+        )
+        seven_fact = first_seven.facts[0]
+        seven_cells = [
+            (row["cell"], row["raw_numerator_support"])
+            for row in seven_fact.target_topology.get(
+                "complete_cell_semantic_projection", ()
+            )
+        ]
+        out["seven_code_sourcefree"] = {
+            "typed_state": seven_fact.typed_state,
+            "raw_denominator_support": seven_fact.raw_denominator_support,
+            "raw_support_sum": sum(n for _, n in seven_cells),
+            "cells": seven_cells,
+            "physical_missing_separate": (
+                seven_fact.raw_denominator_support - sum(n for _, n in seven_cells)
+            ),
+            "replay_equal": (
+                seven_fact.semantic_fields.get("replay_ref")
+                == second_seven.facts[0].semantic_fields.get("replay_ref")
+            ),
+            "replay_ref": seven_fact.semantic_fields.get("replay_ref"),
+            "note": "sourcefree q103-shaped fixture; not an original SRC04 run",
+        }
+
         # Negative decisions: each is a held-decision mutation, never an
         # inference from the stream.
         bad_source = dataclasses.replace(
@@ -169,6 +267,9 @@ def main() -> int:
         empty_authority = dataclasses.replace(decision, authorities=())
         bad_domain = dataclasses.replace(
             decision, approved_raw_domain=("9",),
+        )
+        duplicate_domain = dataclasses.replace(
+            decision, approved_raw_domain=("0", "0", "1"),
         )
         forged_domain = dataclasses.replace(
             decision, approved_raw_domain=("9",),
@@ -204,6 +305,9 @@ def main() -> int:
             _reject("outside_approved_domain", lambda: issue_and_execute_stream_i03(
                 estate=estate, decision=bad_domain,
                 decision_verifier=lambda c: c == bad_domain)),
+            _reject("duplicate_approved_raw_code", lambda: issue_and_execute_stream_i03(
+                estate=estate, decision=duplicate_domain,
+                decision_verifier=lambda c: c == duplicate_domain)),
             _reject("forged_decision", lambda: issue_and_execute_stream_i03(
                 estate=estate, decision=forged_domain,
                 decision_verifier=verify_decision)),

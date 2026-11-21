@@ -192,6 +192,10 @@ def issue_and_execute_stream_i03(
     approved_raw = tuple(decision.approved_raw_domain)
     if not approved_raw or any(type(x) is not str for x in approved_raw):
         raise StreamIssuanceError("approved raw outcome domain must be non-empty text")
+    if len(set(approved_raw)) != len(approved_raw):
+        raise StreamIssuanceError("approved raw outcome domain contains duplicate codes")
+    if len(set(decision.approved_nonanswer_states)) != len(decision.approved_nonanswer_states):
+        raise StreamIssuanceError("approved nonanswer domain contains duplicate states")
     for fact in result.facts:
         if fact.typed_state in decision.approved_nonanswer_states:
             continue

@@ -1,5 +1,5 @@
 {
-  "base_commit": "520094c79c25efaabed2db6c02150f2912091721",
+  "base_commit": "3302b8daa8a8bdd937dc09506feeab2bd419c160",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "decision_verifier_required": true,
@@ -9,7 +9,7 @@
       "issue_and_execute_stream_i03"
     ],
     "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
-    "sha256": "42e49432b5a1c89b26894f194e7fa32a998e00236975175c893d328c5c788791"
+    "sha256": "13f9aef13f81e8981b36e70907d01b10576a7810996d4071d6299e5a227cc4ee"
   },
   "correction": {
     "bound_fields": [
@@ -34,6 +34,7 @@
       "wrong operation",
       "missing/stale authority",
       "outside approved domain",
+      "duplicate approved code",
       "denied/revoked authority"
     ],
     "true_for_anything_default": false,
@@ -66,17 +67,18 @@
   "pins": {
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
-    "candidate_module_sha256": "42e49432b5a1c89b26894f194e7fa32a998e00236975175c893d328c5c788791",
+    "candidate_module_sha256": "13f9aef13f81e8981b36e70907d01b10576a7810996d4071d6299e5a227cc4ee",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
     "red_witness_sha256": "732b3f584764143a2df7eb9f71f4074858bea6d66c525c1020ecf811af147bc4",
-    "typed_proof_sha256": "130013a2eef92facd37b1419c28edc390fded549d1fbbfac12207de02c9eb8e1"
+    "typed_proof_sha256": "da86557860e8d3ee4d3350071262cbf2c036ee16fe4d7de10473e0509dd5e17b"
   },
   "protected_edits": false,
   "q103_constraint": {
     "asked_eligible": "not inferred",
     "native_i03": "NOT_RUN",
     "original_source": "NOT_READ",
-    "response_codes": "97/98/99 not remapped"
+    "response_codes": "97/98/99 not remapped",
+    "seven_code_sourcefree": "sourcefree q103-shaped fixture only, not original SRC04"
   },
   "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
   "reused": [
@@ -91,7 +93,7 @@
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_TYPED_ISSUANCE_CORRECTION@1",
   "sourcefree": true,
-  "status": "AUTHORITY_BINDING_CORRECTED__MISSING_RESOLVER_RED_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD",
+  "status": "AUTHORITY_BINDING_CORRECTED__SOURCEFREE_SEVEN_CODE_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD",
   "typed_proof": {
     "estate_writes": false,
     "negatives": [
@@ -150,6 +152,12 @@
         "type": "StreamIssuanceError"
       },
       {
+        "label": "duplicate_approved_raw_code",
+        "message": "approved raw outcome domain contains duplicate codes",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      },
+      {
         "label": "forged_decision",
         "message": "held decision verifier refused",
         "refused": true,
@@ -175,6 +183,23 @@
       "typed_state": "UNRESOLVED"
     },
     "original_source_accessed": false,
+    "owner_decision": {
+      "asked_risk": "HELD_ROUTING_UNKNOWN",
+      "physical_system_missing": "separate coverage tally; excluded from recorded outcomes",
+      "question_id": "q103",
+      "recorded_codes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "97",
+        "98",
+        "99"
+      ],
+      "scope": "Q103_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY",
+      "sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
+      "source_id": "SRC04"
+    },
     "positive": {
       "raw_cells": [
         "0",
@@ -205,6 +230,45 @@
       "type": "StreamIssuanceError"
     },
     "schema": "ANVIL_Q006_TYPED_ISSUANCE_PROOF@1",
+    "seven_code_sourcefree": {
+      "cells": [
+        [
+          "1",
+          1
+        ],
+        [
+          "2",
+          1
+        ],
+        [
+          "3",
+          1
+        ],
+        [
+          "4",
+          1
+        ],
+        [
+          "97",
+          1
+        ],
+        [
+          "98",
+          1
+        ],
+        [
+          "99",
+          1
+        ]
+      ],
+      "note": "sourcefree q103-shaped fixture; not an original SRC04 run",
+      "physical_missing_separate": 1,
+      "raw_denominator_support": 8,
+      "raw_support_sum": 7,
+      "replay_equal": true,
+      "replay_ref": "{'content_hash': '258a03fa0a3eefe6e4746acf7016dc9e1c65cc828730e16563cceb6093a68fa6', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:258a03fa0a3eefe6e4746acf7016dc9e1c65cc828730e16563cceb6093a68fa6'}",
+      "typed_state": "UNRESOLVED"
+    },
     "sourcefree": true,
     "status": "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"
   }

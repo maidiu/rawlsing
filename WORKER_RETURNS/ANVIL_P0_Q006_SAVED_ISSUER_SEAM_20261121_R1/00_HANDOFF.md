@@ -56,8 +56,10 @@ builder exists for a verified ANVIL stream:
   its operation/query would require source/schema authority not present here.
 
 The candidate therefore freezes the valid authority-binding correction at the
-adapter and leaves operation-to-query construction as an exact owner seam. It
-does not invent a new source scheme, full R03 compiler or second evaluator.
+adapter and leaves operation-to-query construction as an exact owner seam. The
+seven-code test consumes a sourcefree q103-shaped fixture, not an original SRC04
+issuer. It does not invent a new source scheme, full R03 compiler or second
+evaluator.
 
 ### Required owner terrain
 
@@ -70,12 +72,18 @@ does not invent a new source scheme, full R03 compiler or second evaluator.
 
 `proof_typed_issuance.py` / `TYPED_ISSUANCE.out`:
 
+- owner decision SHA-256 `e3de52e...` verified; recorded codes are
+  `1,2,3,4,97,98,99`, asked risk remains `HELD_ROUTING_UNKNOWN`;
 - positive: `SUPPORTED`, denominator 2, cells `0`/`1`, exact
   `PRE553_I03_QUERY_REPLAY`;
 - nonanswer: `UNRESOLVED`, explicitly approved;
+- seven-code sourcefree shape: all seven codes each `raw_numerator_support=1`,
+  denominator 8, one separate physical-missing occurrence, repeat replay
+  equal; state `UNRESOLVED` because physical missing is separate and not
+  fabricated as substantive;
 - roots unchanged, stream release retained;
 - exact verifier mandatory and called before/after/output;
-- all negatives above refused.
+- all negatives above refused, including duplicate approved raw codes.
 
 ## Pins
 
