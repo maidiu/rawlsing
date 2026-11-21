@@ -24,7 +24,7 @@ Insert immediately **after** the canonical opening OATH (without rewriting any O
 
 **Location:** immediately following current `# Sorok current progress revision39 …` heading; do **not** remove old historical paragraphs.
 
-> **PROPOSED 2026-11-21 LIVE INTAKE (unreceived)** — Isolated O-INDEX operational candidate `agent/sorok-programma-live-receiving-ledger-20261121-r1` holds 108 source-pinned observed PR rows and 5 immutable event transitions in `PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json`. Legacy R3 #561 11 source blobs byte-preserved; its original author tests have not been reexecuted. New checker locally passed 14/14 adversarial tests, without full GitHub-token live scan, original R3 S2 Git verifier or independent credentialed review. Reconcile #1234 `018d3025`/`2553e1d` RED→`8d1ff8b` local scoped sourcefree PASS; #1171 moving queue, #1230 R17 code vs later docs, #1241 R18 P004 partial and suspected unrun atomicity, #1216→#1217 conservation, #1179 jurisdiction hold. No protected receiving, original-source science/actor/human rights, or full-person proof follows. `HQ_CURRENTNESS_HOLD` until source-pinned independent O-INDEX reviewer + competent Sorok HQ protected PRE-MAIN owner accept the exact candidate and reconcile both paired progress files. Historical R39 and MII sourcefree protected receipts remain unchanged.
+> **PROPOSED 2026-11-21 LIVE INTAKE (unreceived)** — Isolated O-INDEX operational candidate `agent/sorok-programma-live-receiving-ledger-20261121-r1` holds 108 source-pinned observed PR rows and 6 immutable event transitions in `PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json`. Legacy R3 #561 11 source blobs byte-preserved; its original author tests have not been reexecuted. New checker locally passed 14/14 adversarial tests, without full GitHub-token live scan, original R3 S2 Git verifier or independent credentialed review. Reconcile #1234 `018d3025`/`2553e1d` RED→`8d1ff8b` local scoped sourcefree PASS; #1171 moving queue, #1230 R17 code vs later docs, #1241 R18 P004 partial and suspected unrun atomicity, #1216→#1217 conservation, #1179 jurisdiction hold. No protected receiving, original-source science/actor/human rights, or full-person proof follows. `HQ_CURRENTNESS_HOLD` until source-pinned independent O-INDEX reviewer + competent Sorok HQ protected PRE-MAIN owner accept the exact candidate and reconcile both paired progress files. Historical R39 and MII sourcefree protected receipts remain unchanged.
 
 ## Proposed additive JSON progress field (add, do not replace or bump revision without protected decision)
 
@@ -49,7 +49,7 @@ Insert immediately **after** the canonical opening OATH (without rewriting any O
     },
     "remont_queue_owner": "REMONT/SOROK/OPEN_DEFECTS.json and REMONT/SOROK/QUEUE/CHECK_QUEUE.json",
     "verifier": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/check_live_receiving.py",
-    "verifier_adversarial_local_tests": "14/14 PASS; authenticated live scan passed at 3779878d2, successor check pending",
+    "verifier_adversarial_local_tests": "14/14 PASS; authenticated live scan passed at 742f3928e with 8 closed-branch holds",
     "next_competent_reviewer": "distinct source/branch conservation and false-green reviewer",
     "next_protected_receiver": "competent SOROK HQ and PRE-MAIN integrator",
     "science_source_actor_human_grants": false,
