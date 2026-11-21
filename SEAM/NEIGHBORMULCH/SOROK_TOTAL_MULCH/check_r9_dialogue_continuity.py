@@ -103,7 +103,7 @@ def main():
 
     h_rows = table(h_family, r"H\d\d\d")
     q_rows = table(q_family, r"Q-[A-Za-z0-9_-]+")
-    o_rows = table(o_family, r"[A-Za-z][A-Za-z0-9_-]*")
+    o_rows = table(o_family, r"(?!ID\b)[A-Za-z][A-Za-z0-9_-]*")
     uda_rows = table(uda_family, r"SOROKUDA-[A-Za-z0-9_-]+")
     must(len(h_rows) == 190 and len(q_rows) == 123 and
          len(o_rows) == 144 and len(uda_rows) == 300,
