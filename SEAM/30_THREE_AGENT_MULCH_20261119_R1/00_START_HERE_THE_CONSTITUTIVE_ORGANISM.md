@@ -1,15 +1,19 @@
-# THE CONSTITUTIVE ORGANISM — R3
-## A historical-relational psychology of the living SOROK person
+# THE CONSTITUTIVE ORGANISM — R4: GENERATIVE HISTORICAL RECONSTITUTION
+## Not less contradiction: a more capable organism for generating historically specific contradictions
 
-**November 19, 2026 · Structural recasting of the Astra ↔ UM-SOROK ↔ SORACLE mulch, with the principal's corrections · For overall SOROK development**
+**The original DCO HOME, rewritten in place in SEAM/30, on existing draft PR #1161.** This is independent SORACLE/CO theoretical work, neither NEIGHBOR #1277 nor the proposed fused #1278. Original R3 Git blob 0fa5706f00a34e444b728063ffbb3db257fb7e09, original R2 in the existing ARCHIVE, and the source/audit companions remain recoverable. Status: provisional source-grounded psychology, not native scientific authority, an implemented new rule or protected receiving.
 
-**Status and intention.** This is an **intellectual, source-grounded, construction-directed synthesis**, not a new psychological source of truth, scientific CAN/ADP rule, software implementation, clinical model, HQ accreditation, or protected receiving. It replaces R2 as this draft's *primary argument*. [R2 remains preserved verbatim](ARCHIVE/00_CONSTITUTIVE_ORGANISM_R2_PRE_RECAST_20261119.md); the [R1 omission audit](01_HOSTILE_SELF_AUDIT_AND_OMISSIONS_R1.md), [R2 convergence audit](02_R2_CONVERGENCE_AND_FIDELITY_AUDIT.md), [original three-agent sources](SOURCES/), [genesis and activity synthesis](03_GENESIS_AND_PSYCHODYNAMICS_RECOVERED_R1.md), [R3 running-code reciprocal review](04_RECIPROCAL_MULCH_R3_THEORY_LEARNS_FROM_RUNNING_CODE_20261119.md), [PRE-A0 psychodynamic recovery](05_PSYCHODYNAMIC_RELATION_HISTORY_AND_UNCONSCIOUS_OPERATION_R1.md), and [productive psychodynamics/ideological recruitment](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md) remain compulsory companion evidence. R3 reorganizes their findings rather than superseding their source record.
+**THE GERMINAL TRANSFORMATION.** A historically acquired form does not simply enter current recruitment as an unchanged item; the relations through which it was constituted can alter what it is capable of doing. Its actual exercise can change independent world/people, and those changes can create practical possibilities and interpretive forms not available in the original actor state. An interpretation learned in this process can itself become a filter or organizer of the actor's subsequent experience, even where objectively false. Each fusion changes the conditions of subsequent fusions. A+B may produce a changed organization AB; C then meets AB rather than two static precursors. This is a demand for source-qualified computational emergence, not mystical multiplication or a universal scalar.
 
-**Controlling priority:** a complete, deeply organized and computationally consequential fictional organism, with substantial integrated code subsequently built through the *existing* competent SOROK owners. This present operation is **conceptual recasting**, explicitly not runtime coding or a demand for another validation-first experiment. Sourcefree algorithms may be defensible approximations. Do not claim their output is an empirically established human psychology.
+**THE CONTRADICTION PRINCIPLE.** Synthesis is an achievement of our explanatory organization, not a demand for Nadia's contradictions to disappear. A person's love can become a method of domination; a liberating doctrine can become coercive; an aesthetically joyful practice can create new means with no prior injury; false memory can create actual new social effects; a genuine material antagonism may never reconcile. The stronger kernel should reduce ad hoc hand-authored explanation while INCREASING the variety and legibility of such lived outcomes. Real objective causes, actor-only models, partial salience, publicly performed acts, institutional power and source provenance may interact without merging into one mind.
+
+**SOURCE/OWNER DISCIPLINE.** [SOROK 55–56](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/56_SOROK_RELATIONAL_SPINE_DERIVATION_CORRECTION_R1.md) demand one inherited relational derivation spine instead of noun-domain psychological engines. SOROK 71–74 explain actor-specific association, interpretive self-myth and recursive reality-metabolism as derived patterns, not new adopted operators. SOROK 38 makes lawful new material particulars sources of unforeseen future opportunities. SOROK 59/83 require sensory and platform membranes. These sources must change the original DCO, not attach five unrelated chapters. The 374 selected SOROK/SEAM file directory and 757 indexed original source identities are retrieval and source-custody, not individually proven completed conceptual or code adjudications. The original CAN/ADP, V3, PFF, Mechanisms and PROGAMMA owner boundaries remain controlling where adopted.
 
 ---
 
-## I. The change of center: not things interacting, but a living organization that makes things what they are
+## I. The germ: reciprocal historical production rather than a final reconciled person
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 An initial psychology of the iceberg might say: a person possesses bodily needs, feelings, motives, practices, attachments, memories, beliefs and defenses; the world cues some of them; relations among them determine the response; development changes those stored things.
 
@@ -31,7 +35,33 @@ The useful smallest unit is therefore not an abstract edge or a wholly isolated 
 
 This center explains why the two earlier open problems—**genesis** and **psychodynamic operation**—belong to one historical process considered at different timescales. The same activity whose constituted relations make this event matter today can help produce new relations that make another event matter tomorrow.
 
-## II. The six realities that must never be merged
+**SOROK's Constitutive Organism is a materially living, historically developing person whose psychological organization is constituted through relations among embodied need, concrete activity, acquired capabilities, affective investments, social categories, institutions, Other-persons, memory, interpretation, practical limitation and experience. These historically produced relations can themselves become relations of activity: they determine what other elements become for the person, which configurations recruit together, what becomes inhibited or indirectly consequential, how existing meanings are reproduced or reversed, what actions become imaginable, and what later experiences can alter the organization again.**
+
+**Its iceberg is always potentially operative, often outside self-knowledge.** Its outward tip is a partial and observer-conditioned consequence, not a conscious manager's chosen excerpt. Its world is independent of its psychology; its Others have their own lives; actual suffering is not canceled by anyone's righteous interpretation. Its psychic production may be care, domination, love, grief, defense, stasis, rebellion, bewilderment, reproduction or transformation, without any guaranteed moral destination. Historical changes retain causal parentage without being constrained by a fictitious conserved quantity of emotional energy.
+
+**Two historically different entrances—whole PYAT-constrained fictional parents and Nadia's open organismic ontogenesis—feed one continuing, owner-qualified person×event metabolism.** LLM semantic construction assists fictional formation under qualified admission; after-the-fact LLM flesh/voice remains faithful to what the machine/world actually computed, and neither process fabricates another person's mind or authority.
+
+**The conceptual construction has now been genuinely re-centered:** the iceberg, recruitment, pressure-flow, relation-history, ideological identification, complex emotion and historical reconstitution are not isolated plates kept spinning by separate philosophies. They are different temporal and material descriptions of **the constitution, reproduction and transformation of the person's relations through activity**.
+
+The next phase is not another ontology. **It is a broad, connected implementation of this inherited and newly clarified relational metabolism through existing SOROK owners**, with honest provisional limitations and subsequent empirical calibration. Nothing in this R3 recast authorizes protected writes or scientific promotion.
+
+---
+
+### Source map (specific, not generic)
+
+**SOROK doctrine:** [PRE-A0 original architectural bank](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md); [CAN-008 R2 / V3–PFF–SDTF authority and self-retcon correction](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md); [PFF/SDTF two-call live design](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/42_PFF_SDTF_LINEAGE_TWO_CALL_LIVE_PIPELINE_R1.md); [PROGRAMMA SOROK / HQ OATH and complete spine](https://github.com/maidiu/rawlsing/tree/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK).
+
+**Recent engineering and reasoning:** [UM-SOROK R3 sourcefree organism](https://github.com/maidiu/rawlsing/tree/3dba91136870ab5e766ca14faacd847531dea075/SEAM/ORACLE/UM_SOROK_ORGANISM_R3); [Astra's research construction](https://github.com/maidiu/rawlsing/blob/5baf3dde14cce3e3366911fbf62e213b42856045/research/oracle-generative-system/ARCHITECTURE.md); [SEAM/ORACLE full problem and retracting earlier shortcuts](https://github.com/maidiu/rawlsing/tree/d7e6ff6ec228145c2f325664722923f0f03e8d89/SEAM/ORACLE); all local source files linked in the preface.
+
+**Theoretical sources directly inspected or reviewed:** user-supplied unabridged Leontiev, *Activity, Consciousness, and Personality*, ch. IV; Sève, *Man in Marxist Theory and the Psychology of Personality*, especially the critique of ahistorical psychic topology and the acts/capacities/time discussion; Lahire, *The Plural Actor*, on conditional dispositions, context inhibition and practical analogy; Dreier, *Psychotherapy in Everyday Life*; Holzkamp, *Grundlegung der Psychologie*; Luria, *Cognitive Development: Its Cultural and Social Foundations*. Additional source trails and caveats for Freud, Jung, Klein, Fromm, Fanon, Gramsci, Althusser, Bourdieu, Foucault, Freire, Vygotsky, Voloshinov, Thelen/Smith and contemporary affect research are preserved in the [previous theoretical recovery](05_PSYCHODYNAMIC_RELATION_HISTORY_AND_UNCONSCIOUS_OPERATION_R1.md) and [ideological transduction note](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md).
+
+**Authority caveat:** This is a draft source-grounded intellectual synthesis, with old versions and arguments recoverable. It is not a claim that any one theorist's psychology has been scientifically validated, nor that the current research-grade organism constitutes a full person.
+
+---
+
+## II. The noncollapsible material, psychic, experiential and epistemic realities
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 The single person is a causal unity, not one sovereign data store or a flat graph. Six different realities, with different authority, must be made to meet.
 
@@ -52,53 +82,102 @@ The single person is a causal unity, not one sovereign data store or a flat grap
 
 These separations are not newly invented by this document. **PRE-A0 §§3–6, 13–17** already describes the canonical causal transition, retained lived artifact, psychic afterlife, changing interpretation and Personal Relational Field. **Adopted CAN-008 R2/PFF** already establishes actor receivability, uptake/appraisal, situated recruitment and multi-stream present response with separate owner effects. R3 recasts their *shared ontological meaning*, not their authority.
 
-## III. The person×event circuit, now properly recursive
+---
 
-The person does not receive a psychologically neutral description, choose an iceberg item, and then ask an LLM to decide how to feel.
+## III. Embodied developmental genesis must generate new methods of becoming
 
-**Historically constituted organization and present-world conditions jointly condition what becomes salient or felt.** Actor receivability and attention can be altered by body and by acquired expectations. Inherited CAN-008's stipulated coupling order remains binding as an interface; this does not force conscious interpretation to precede preconceptual salience. Some reciprocal suboperations may occur inside the lawful current transaction.
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
-**Source-qualified conceptual circuit:**
+A fixed adult list of drives cannot explain the development of Nadia. A purely empty newborn graph cannot either. The body begins with emerging sensory/motor, regulatory, attentional and practical abilities, changing through maturation and life, not a predeclared ideological destiny.
 
-1. **Continuing material life and embodied actor:** actual time, needs, workplace/care/institution, independently acting Others, existing root/branch history and competing ongoing activities. Endogenous initiative and quiet routine do not depend upon an incoming user message.
-2. **Present constitutive encounter:** an actual event, condition, gesture, bodily interruption, remembered cue or unfinished practical process intersects an already operating psychic organization.
-3. **Situated relational recruitment:** contexts and analogical resemblances differentially activate, inhibit, redirect or leave dormant historically formed organizations, including relations **among** forms, relational motifs and previous ways of responding to contradiction.
-4. **Multi-activity psychodynamics:** the same potential act participates in different projects/relations; affect and anticipation may register their differently meaningful consequences; guilt, protection, anger, longing, fear, obligation and bodily pressure can be concurrent without an internal arithmetic vote.
-5. **Possible and actual activity:** what can be conceived, what bodily capability permits, what is socially authorized, what others voluntarily contribute, what can be attempted, and what world conditions actually allow must remain distinct. Quiet, delay, refusal, compromise, concealment, forced compliance and failed attempts are all possible.
-6. **Independently resolved consequences:** the material world, institutions and Others do not automatically concede the actor's intent; unilateral injury does not require victim consent, but cooperative participation cannot be forged.
-7. **Actor-specific lived experience and owner-qualified afterlife:** distinct received sensory/affective consequences, tacit traces, memories, changing relations, practice, eligibility, suppression, revaluation, or legitimate no durable change. Each actor may undergo a different transformation from the same objective event.
-8. **The continuing person and world:** the resulting constitutional and material histories alter the conditions under which future activities become thinkable, salient, possible, wanted or resisted.
+**One historical path to becoming:**
 
-**The LLM's place is constrained by the principal's event-first rule.** The engine computes an admitted persona shift, and later actor-safe LLM realization renders something faithful to it. PRE-A0 may separately use an analytical LLM to **propose** developmental semantic changes, but they become facts *only after competent typed admission* and may not retcon performed world events. The renderer does not supply hidden causes to make a beautiful scene plausible. It is legitimate for the analytic LLM to use sophisticated concepts the actor cannot possess; no such concepts may be quietly installed as the actor's consciousness.
+1. Actual bodily sensation and dependence arise within concrete care or neglect, with limited and developmentally changing access.
+2. Repeated and varied encounters can produce a tacit sensorimotor/affective expectation or nondeclarative causal trace; an analyst's vocabulary is *not* installed into the infant.
+3. Joint activity can organize a new operation; objective coactivity, a mother's help, a child's own contribution and the accomplished effect remain distinct.
+4. A partial cue may recruit the trace and make a **first exploratory attempt** possible before a stable desire or independent competence has been demonstrated.
+5. An originally incidental consequence may become anticipated, sought, resisted or taken as a candidate *end*. Its motivational role must be historically developed and can change.
+6. Practices and signs acquired through Others can become means of coordinating one's own attention, action, recall, inhibition and self-description; a previously social operation may be independently used and later applied to a different project.
+7. Contradictions, failed attempts, material exclusions, love, domination, grief and ordinary repetitions can reproduce, redirect or reorganize a learned practice. The person may acquire a new way of recruiting or bearing an old conflict.
+8. Reflective self-models may eventually form and become objects of practical effort, but remain fallible and only partially govern the iceberg.
 
-**The “tip” is not the psyche's opposite.** Distinguish private situated activation, first-person present, actor-authored attempted/performed conduct, and observer-specific manifestation. Some private current can be stronger than anything outwardly displayed. The engine may know a generated causal history without the person knowing it, but must still grade its fictional and scientific authority.
+This recasts **genesis** as the historical change of relations among embodied capabilities, acquired practices, anticipations, meanings and available activities. **Psychodynamic operation** is those historically formed relations becoming consequential in current activity. They are related causal questions at different temporal scales, not two mystical missing engines. The particular developmental result remains scientifically underdetermined.
 
-## IV. The missing mathematics is not a conserved emotional substance
+A crucial tension must remain: **new possibility can precede proven competence**. An actor may contemplate or attempt a new composition through analogy before acquiring a reproducible method. Conversely, a recognized formal combination of operations may be perfectly computable by the simulator and not yet conceivable or practicable by the actor. Distinguish *simulator combinability, actor-discoverable possibility, attempted combination, actual success, and reproducible acquired ability*.
 
-The principal's image of a **first law of thermodynamics applied to experience** has real methodological force: a blocked or repressed historical organization must not be deleted simply to simplify current action selection. The difficulty of expressing tenderness may make anger more defensive; suppressed dependence may inform moral strictness; inhibited loyalty may produce uncertainty or fixation; unresolved desire may reorganize attention elsewhere. Negation, repression and enforced stasis can be productive of an ongoing organization.
+Leontiev's action–goal–motive transformations, Vygotsky's lived-through person/environment relation, Luria's developing interfunctional relations, Sève's capacity formation/use, Lahire's contextual disposition/analogy, and Dreier/Holzkamp's whole-life practical constraint each illuminate different aspects. None identifies a unique scientific probability law over all future psychological histories.
 
-But a literal law of psychological-energy conservation is unsupported. There is no empirically established transferable scalar of love, grief, psychic force, influence or meaning. Bodily states recover or deteriorate; expectations extinguish; skills decay; memories fade or become inaccessible; a relation can actually end; not every occurrence leaves a persistent individual mark.
+### Nadia's song: historical source, independent exercise, social authority and transformed purpose
 
-**The governing invariant should be causal-historical accountability, not numerically conserved libido.**
+In the shared singing practice, Mother may initially supply coordination, encouragement, rhythm and access to a social setting. Nadia's own actual contribution, bodily pleasure, felt anticipation, and the jointly achieved sound are different causal facts. A second attempt after an interrupted rhythmic gap can occur before a durable motive for singing exists. Repeated variation may make a practice independently exercisable while Mother's historical contribution remains constitutive.
 
-A system must distinguish:
+**Keep separate:** (a) who first enabled the capability; (b) what the child can now bodily and practically perform; (c) whether the original mediator or another participant is still necessary for the present exercise; (d) whom Nadia wants to please or protect; (e) who materially controls the venue, instrument or permission; (f) what Nadia currently understands the practice *to be for*. One of these can change while others remain. This is what Astra's earlier source-of-power versus independent-exercise distinction actually demanded.
 
-- **directly expressed and causally active**;
-- **active in a private/indirect relationship despite outward inhibition**;
-- **temporarily occluded, contextually dormant or presently unrecruited**;
-- **stably suppressed by an acquired defensive organization**;
-- **attenuated, extinguished, displaced or genuinely transformed**;
-- **historically existent but no longer functional**;
-- **not observed, not modeled or source-unknown**;
-- **event with no new durable owner effect**, even though material life continues or an old pattern is reproduced.
+Suppose Father later holds real authority over who may participate, and Nadia notices that someone else's contribution is excluded. A learned *good*—the value of others entering a shared practice—may have been acquired through the very world Father helped organize. It can become a possible ground for refusing his current decision **without erasing gratitude, seeking approval or necessarily possessing the social power to reverse the rule**. She might instead subordinate that good to obedience, rationalize exclusion as care, comply fearfully, imitate Father's sanction or remain conflicted. This is the developmental mirror of the pastor's righteous-discipline case: **the same historical route can produce reproduction of authority or possible immanent criticism, depending on the actor's specific acquired organization and actual contrasts.**
 
-This is not a mandatory flux event for every psychological object each minute. A latent configuration can remain historically constituted without consuming full compute on every tick. What is prohibited is **silently using an inactive/excluded-set flag as proof that the form cannot affect the current psychic configuration by any other available pathway**.
+Not every acquired capacity is a motive. Not every first attempt establishes transfer. Not every transfer is successful, recognized or reproducible. The new relation among acquired capacity, affected Other, learned good and practical authority must itself have a historical path. A dynamically composed practice is a legitimate possible action, not automatically an objective success or a newly installed motive.
 
-Here is the deeper dialectical understanding of “productive”:
+### The empirical-to-lived-world seam: precise upstream jurisdiction
 
-**Production includes formation, reproduction, deformation, preservation-through-negation, inhibition, rerouting, attenuation, and the historically consequential absence of an expected response.** The reproductive continuation of domination may be more important than a freshly created trait. Sublation and sublimation are *candidate historically meaningful outcomes*, not universal three-step algorithms or moral guarantees.
+The PYAT/SEAM offering is deeper than demographic sampling. Its source-qualified architectural chain is **governed instrument/source observations and original35 → durable C11 respondent-level facts → I03/I05 F1–F4 conditional, recursive and higher-order same-person empirical products → FIELD-FORGE claim-graded actor-independent social relations → qualified F6/F7 temporal and multi-field claims → N9 objective world / N10E empirical possibility / N10W conditioned positioned possibility → N11 acceptance and N12 governance**, with ANVIL/related work subject to exact branch authority and currentness. This is a source/owner crosswalk, not a claim every product is issued or operational.
 
-## V. Relational topology: a functional grammar, not a magnetic personality meter
+Differentiate **measured respondent answer**, **independently supported structural relation**, **model-qualified possible world**, and **admitted particular fictional actual event**. No LLM or survey percentage may promote a possible social norm into an enforced institution, a reported answer into a hidden individual's psyche, or a demographic pattern into one person's inevitable ideology. Period, instrument translation, routing, eligibilities, denominators, uncertain minority combinations, underpowered cells, and missingness matter. A sampling zero is not an objectively impossible human life.
+
+A source-qualified **possible encounter** is not yet an actual actor's **material encounter**, and an actual encounter is not yet that actor's **accessible/lived experience**. Outer world/field recruitment must pass through independently admitted real social opportunity before the actor's inner acquired iceberg can be recruited and changed. Population calibration, parent initial questionnaire correspondence and the open-ended child's developmental fidelity are three distinct obligations. See [ORACLE/01](https://github.com/maidiu/rawlsing/blob/d7e6ff6ec228145c2f325664722923f0f03e8d89/SEAM/ORACLE/01_TOTAL_PROBLEM_AND_NONNEGOTIABLE_DIMENSIONS.md) and the [verbatim R2 predecessor](ARCHIVE/00_CONSTITUTIVE_ORGANISM_R2_PRE_RECAST_20261119.md).
+
+---
+
+## IV. Two historical entrances into one socially reproduced life
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
+
+**Mother and Father begin as separately constituted fictional adults.** PYAT must supply genuinely eligible, respondent-coherent *whole configurations* with conditional comparison distributions, denominators, source wordings, missingness, relevant material/historical variables and limits. The LLM **abductively proposes a richly contradictory fictional adult iceberg** and plausible compressed formative backfill; it does not discover the real survey respondent's hidden childhood. A bounded retrospective reconciliation can ensure basic world feasibility, but decades of simulated infancy are not required before an adult can exist.
+
+An independent initial survey read should correspond to the sampled whole target **through the functioning person's constructed meanings and practices**, not a secretly consulted answer key. That qualification is an architectural target, not a verified capability of existing R3. The target does not fix lifelong views or silence minority configurations.
+
+**Why the whole respondent matters:** The Lebanese case supporting equal inheritance and Islamic law's role in inheritance, political attendance without claimed political interest, and different relationships between religion and public authority cannot be “fixed” by discarding inconsistent responses or assigning hypocrisy. The 2010 GSS speech/library configuration appeared in 50 of 1,206 eligible complete national cases with weighted estimate approximately 4.11%; very narrow cells such as 1/22, 1/14 and 1/5 illustrate how selected-person nearest-neighbor comparison becomes extremely unstable. Different actors may give the same answer for unlike reasons, and conflicting reported answers do not establish consciously experienced conflict. **Source-derived responses constrain a fictional adult but cannot uniquely identify their inner relations.**
+
+Mother and Father do not acquire a marriage because a constructor chooses compatible profiles. Their distinct worlds, resources, attraction, conflict, time, family and institutional opportunities have to make a particular shared history possible. They possess separate models of one another and continue outside the child.
+
+**Nadia begins at the other historical entrance:** an immature need-bearing organism with no sampled adult destination. She develops through actual care, play, household labor, peers, institutions, unequal power, symbolic language, practices, world events, ordinary repetition and her own initiatives. The same current recruitment, actor-specific experience and reconstitution semantics must accept both adult-initialized and child-developed psychology. Only the source/provenance of their initial states and the developmental history budget differ.
+
+**Outer social-field recruitment is not inner psychic recruitment.** PYAT/Field Forge source-qualified possible people, relations and institutional carriers may be instantiated into an actual world; Nadia encounters only what is materially and epistemically available. Population dissent cannot be installed as a latent personal ideology just because it exists in a survey. Mandatory universal nine-strata personality ontology is retired; historically particular class, care, law, religion, colonial and institutional relations remain essential material causes.
+
+### Multiple timescales are psychological and product constraints
+
+Besides embodied minutes, daily care and work, biographical years, and historical institutional change, **the live product needs elastic time**: unobserved ordinary life can continue without a narrator forcing a rich event each user message. World depth may be qualified ahead of viewer attention while disclosure and actor knowledge remain separate from physical materialization. Root/seed precontact history may split into irreversible user continuities; restarting may not rewrite an independently existing person's past. An admitted routine coverage capsule is not permission to fabricate detailed performed Other acts or exact remembered conversations.
+
+The organism's first developmental means include **interoception, sensation, orienting, regulation, movement, bodily fatigue and pain**, long before the child possesses adult language, cultural motives or an explicit self-model. Neither bodily process nor history requires an adult conceptual interpreter in order to affect later recruitment.
+
+---
+
+## V. Ordinary life makes genuinely unforeseen material and psychological possibilities
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
+
+A few dramatic events cannot constitute a whole person. **Three to five expensive high-resolution events must be embedded in represented dense everyday life**—feeding, sleeping, care, transport, chores, work, boredom, school, illness, rest, community participation, repetitive exclusion, ordinary tenderness and the use of available time.
+
+Sève's attention to lived time, Dreier's conduct of life and life course, Elder's historical timing, and social-reproduction scholarship all clarify why a day-to-day allocation of labor and attention can gradually reorganize a person's abilities, dependencies and investments, even without an exemplary psychological revelation.
+
+Maintain separate historical granularities: performed individual event; admitted recurring practice or coverage interval; speculative compressed parental prehistory; retained sensory/causal trace; autobiographical memory; present interpretation; actor-access restriction; unresolved historical absence. A coarse routine does not entitle the narrator to invent an exact unperformed conversation. Increasing render detail later cannot violate admitted historical parentage.
+
+The product consequence is severe: **the focal Other exists and has a life before user contact**. The world proceeds through other people and institutions beyond user attention. A common pre-contact canon may branch copy-on-write into irreversible user continuities; user curiosity can deepen lawful materialization or prompt actor-owned disclosure but cannot rewrite the person's own history, command their awareness, or force intimacy. Actual object history differs from actor investment and viewer attribution. The system should not optimize the person's life solely to retain users.
+
+### The earlier negative demonstrations are binding lessons, not proof of personhood
+
+Astra's R0 report describes a lower-level \`perform()\` path accepting caller-supplied \`partner_consent=True\` even when the independent helper's reader returned \`DECLINE\`, while a higher-level coupled path checked that reader. That is **historically reported source evidence**, not independently rerun by this synthesis. Its conserved design lesson is that a voluntary joint act requires independently authored contribution; it does not imply that unilateral bullying, injury, interruption or institutional imposition requires victim consent.
+
+An earlier P4 changed-counterpart \`inspect_alone\` result was an **empty-record fallback**, not evidence of acquired autonomous transfer. P3's historically inspected project/counterpart-scoped sourcefree reader, together with \`native_rule: MISSING_RULE\` and \`memory_formation: MISSING_RULE\`, demonstrates useful bounded software **and** unissued native general psychological formation. R3's actual action-level APPROACH/WITHHOLD currents and acquired composition are valuable and still narrower than the full PRE-A0 relational topology.
+
+**SOROK Mechanism I** retains qualified historical world materialization; **Mechanism II** actor/observer-specific perception, recognition and disclosure; **Mechanism III** independent situated initiative. The person projection or renderer may not replace these with another all-purpose event owner. Legacy V3's fast/slow pressure-flow and inspectable BackboneState must be conserved as *functions*, not its fixed adult trait inventory.
+
+PROGRAMMA's **144 functions, 38 seams and 83 gates** remain an exact engineering/receiving audit estate; a compact conceptual owner table does not certify all their first readers or consumers. Live heads, CURRENT_PROGRESS, independent review and authorized receiving remain necessary for HQ claims, but are not a warrant to halt provisional connected engineering for validation-first microtests.
+
+---
+
+## VI. One relational derivation spine, not an encyclopedia of target meanings
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 PRE-A0 §14 already defines the **Personal Relational Field**, including typed, directed, context-conditional relations and higher-order suppression chains, compensation loops, conflict triangles, public/private partition, identification and defensive cycles.
 
@@ -125,7 +204,87 @@ An acquired psychological element therefore has at least two potentially changin
 
 **Compression is indispensable.** Explicitly materialize historically consequential motific patterns where needed, retain ancestry and source qualification, and recruit bounded context-sensitive neighborhoods rather than every possible edge. A rare tone, odor, gesture or situation may recruit an old configuration through practical analogy, even mistakenly; retrieval cannot be restricted to recent frequent associations. An inhibited organization can have an indirect relation-mediated effect without being promoted to public action. No universal automatically expanding hidden trauma graph.
 
-## VI. The demonstration that rewrites the organization: care becomes a mechanism of cruelty
+---
+
+## VII. The Other, the family and institutional power as bounded overlapping fields
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
+
+A's deep history conditions A's salience, possible initiative, inhibition and tip. B encounters an actual portion of A's world manifestation through B's own body, history and relational organization. B's response is likewise partially opaque to A. **Neither person is an agentic manager above a hidden psychological store.** The world contains material facts beyond both. An actor may acquire limited deliberate self-direction; that acquired ability is part of the same historically constituted person.
+
+**Three relation histories must coexist:**
+
+1. **Objective shared and institutional history**: actions, resources, housing, care, coercion, workplace, property, kinship, law, participation and actual power.
+2. **Each individual's internal relation to the Other(s)**: models, misreadings, trust, affection, erotic and recognition investments, memory, unconscious traces, anticipated authority, resentment and identification.
+3. **Continuing joint practical organization** where one actually develops: recurring care, cooperative production, learned games, marital routines, congregational discipline, peer activities, collective struggles. It is not a merged consciousness.
+
+**Family triads are irreducible to isolated dyads.** Nadia's relation to Father may change through witnessing how Father treats Mother; her understanding of Mother's accommodation may change through learning the objective conditions shaping it. The two parents independently possess lives, psychic investments and relation-specific models. The child may develop within a parental relation before possessing concepts for either “parental relationship” or “institutional power.”
+
+**Power is constitutive, not just a modifier of feelings.** Its practical capacity to decide whose needs matter, who can work, who speaks with authority, who controls resources and which consequences are enforceable can organize recognition, shame, desire and practical means. Neither a correct idea nor intense emotion automatically changes that material structure.
+
+PRE-A0's living-relation versus relational-reification distinction matters here. A person may sacrifice the living spouse to the ideal of THE MARRIAGE, the child to the identity of GOOD MOTHER, or actual comrades to THE REVOLUTION. This is not a command to use theology as native ontology; it is a possible relational reorganization in which a category claiming to preserve a living relationship becomes dominant over the relationship's participants. Preserve the phenomenon, allow “idolatry” or other normative readings only downstream.
+
+Independent Other action does not imply universal consent. A person can bully, interrupt, shame, withdraw care or impose a material harm without the victim's permission. **Only voluntary co-participation must be independently authored by the participating actor.** Actual coercion and its differently experienced afterlives are not forbidden because a consent receipt is absent.
+
+---
+
+## VIII. The person-event circuit as situated reproductive and transformative activity
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
+
+The person does not receive a psychologically neutral description, choose an iceberg item, and then ask an LLM to decide how to feel.
+
+**Historically constituted organization and present-world conditions jointly condition what becomes salient or felt.** Actor receivability and attention can be altered by body and by acquired expectations. Inherited CAN-008's stipulated coupling order remains binding as an interface; this does not force conscious interpretation to precede preconceptual salience. Some reciprocal suboperations may occur inside the lawful current transaction.
+
+**Source-qualified conceptual circuit:**
+
+1. **Continuing material life and embodied actor:** actual time, needs, workplace/care/institution, independently acting Others, existing root/branch history and competing ongoing activities. Endogenous initiative and quiet routine do not depend upon an incoming user message.
+2. **Present constitutive encounter:** an actual event, condition, gesture, bodily interruption, remembered cue or unfinished practical process intersects an already operating psychic organization.
+3. **Situated relational recruitment:** contexts and analogical resemblances differentially activate, inhibit, redirect or leave dormant historically formed organizations, including relations **among** forms, relational motifs and previous ways of responding to contradiction.
+4. **Multi-activity psychodynamics:** the same potential act participates in different projects/relations; affect and anticipation may register their differently meaningful consequences; guilt, protection, anger, longing, fear, obligation and bodily pressure can be concurrent without an internal arithmetic vote.
+5. **Possible and actual activity:** what can be conceived, what bodily capability permits, what is socially authorized, what others voluntarily contribute, what can be attempted, and what world conditions actually allow must remain distinct. Quiet, delay, refusal, compromise, concealment, forced compliance and failed attempts are all possible.
+6. **Independently resolved consequences:** the material world, institutions and Others do not automatically concede the actor's intent; unilateral injury does not require victim consent, but cooperative participation cannot be forged.
+7. **Actor-specific lived experience and owner-qualified afterlife:** distinct received sensory/affective consequences, tacit traces, memories, changing relations, practice, eligibility, suppression, revaluation, or legitimate no durable change. Each actor may undergo a different transformation from the same objective event.
+8. **The continuing person and world:** the resulting constitutional and material histories alter the conditions under which future activities become thinkable, salient, possible, wanted or resisted.
+
+**The LLM's place is constrained by the principal's event-first rule.** The engine computes an admitted persona shift, and later actor-safe LLM realization renders something faithful to it. PRE-A0 may separately use an analytical LLM to **propose** developmental semantic changes, but they become facts *only after competent typed admission* and may not retcon performed world events. The renderer does not supply hidden causes to make a beautiful scene plausible. It is legitimate for the analytic LLM to use sophisticated concepts the actor cannot possess; no such concepts may be quietly installed as the actor's consciousness.
+
+**The “tip” is not the psyche's opposite.** Distinguish private situated activation, first-person present, actor-authored attempted/performed conduct, and observer-specific manifestation. Some private current can be stronger than anything outwardly displayed. The engine may know a generated causal history without the person knowing it, but must still grade its fictional and scientific authority.
+
+---
+
+## IX. Causal preservation through negation without imaginary emotional conservation
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
+
+The principal's image of a **first law of thermodynamics applied to experience** has real methodological force: a blocked or repressed historical organization must not be deleted simply to simplify current action selection. The difficulty of expressing tenderness may make anger more defensive; suppressed dependence may inform moral strictness; inhibited loyalty may produce uncertainty or fixation; unresolved desire may reorganize attention elsewhere. Negation, repression and enforced stasis can be productive of an ongoing organization.
+
+But a literal law of psychological-energy conservation is unsupported. There is no empirically established transferable scalar of love, grief, psychic force, influence or meaning. Bodily states recover or deteriorate; expectations extinguish; skills decay; memories fade or become inaccessible; a relation can actually end; not every occurrence leaves a persistent individual mark.
+
+**The governing invariant should be causal-historical accountability, not numerically conserved libido.**
+
+A system must distinguish:
+
+- **directly expressed and causally active**;
+- **active in a private/indirect relationship despite outward inhibition**;
+- **temporarily occluded, contextually dormant or presently unrecruited**;
+- **stably suppressed by an acquired defensive organization**;
+- **attenuated, extinguished, displaced or genuinely transformed**;
+- **historically existent but no longer functional**;
+- **not observed, not modeled or source-unknown**;
+- **event with no new durable owner effect**, even though material life continues or an old pattern is reproduced.
+
+This is not a mandatory flux event for every psychological object each minute. A latent configuration can remain historically constituted without consuming full compute on every tick. What is prohibited is **silently using an inactive/excluded-set flag as proof that the form cannot affect the current psychic configuration by any other available pathway**.
+
+Here is the deeper dialectical understanding of “productive”:
+
+**Production includes formation, reproduction, deformation, preservation-through-negation, inhibition, rerouting, attenuation, and the historically consequential absence of an expected response.** The reproductive continuation of domination may be more important than a freshly created trait. Sublation and sublimation are *candidate historically meaningful outcomes*, not universal three-step algorithms or moral guarantees.
+
+---
+
+## X. Care, authority and the productive conversion of love into harm
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 The pastor example is not just a new case under “authority.” It shows **why the relation must precede a simple moral polarity in our explanation**.
 
@@ -160,7 +319,11 @@ Gramsci's hegemony explains how rule can become commonsense leadership; Althusse
 
 The victim's independent history must never be rewritten by followers' moral certainty. Outward compliance does not establish inward endorsement. This single scene already demands the whole SOROK organism, not a generic sentiment classifier.
 
-## VII. A second demonstration: love turns painful without having been false
+---
+
+## XI. The historical truth of love and its changing relationship to the self
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 Suppose one actor genuinely admires another's courage, humor, protectiveness and conviction. The positive relationship is neither an illusion nor proof of complete knowledge. Different facets of the Other are visible in different circumstances; the admirer encounters only the outward tip through their own historically conditioned attention.
 
@@ -187,8 +350,11 @@ A later apparently small remark can recruit the whole charged configuration and 
 
 **Absolute Horizon:** a person can develop a changing, partly conflicting practical ordering of limiting claims—what may be sacrificed for what, whose suffering may be imposed or borne, which commitments count as ultimately binding and which institutions are authorized to arbitrate them. This is neither a mandatory religious belief, an ethical goodness score nor the inevitable outcome of liberation. It may remain partly tacit and materially restricted. In the pastor case, a follower may elevate the preservation of a congregation's righteousness over the living congregant's suffering: the **relation between loyalty and care** has been reorganized through an ultimate-seeming category. In a later contrary activity the follower may defend the harmed individual by appeal to an even deeper acquired commitment, but no source guarantees that transformation. The Horizon is therefore one possible *higher-order relational configuration* with historically variable costs and context, not an omniscient sovereign principle choosing actions.
 
+---
 
-## VIII. How adult emotions acquire their strange complexity
+## XII. Complex affect, play, erotic life and actor-owned disclosure
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 The principal's image—adult emotions sometimes resembling hot mustard or oysters to a child—points to a nontrivial developmental phenomenon. An emotion can come to have **another emotion, a relation, an anticipated loss, a symbol or one's own response as its object**.
 
@@ -200,108 +366,39 @@ Consensual BDSM, cuckolding or other erotic power practices illustrate how conse
 
 A simulation that simply sums two emotion labels cannot generate these meanings. A system that represents acquired relational organization **between affect, object, memory, practice, moral interpretation and personal history** has a better conceptual basis. Still, the concrete relation must be generated/earned in the particular life, not selected from a compulsory universal matrix of adult complexities.
 
-## IX. The Other is independent, but two icebergs do not consciously manage themselves
+---
 
-A's deep history conditions A's salience, possible initiative, inhibition and tip. B encounters an actual portion of A's world manifestation through B's own body, history and relational organization. B's response is likewise partially opaque to A. **Neither person is an agentic manager above a hidden psychological store.** The world contains material facts beyond both. An actor may acquire limited deliberate self-direction; that acquired ability is part of the same historically constituted person.
+## XIII. The psychology of acquired interpretations that can falsify one's world
 
-**Three relation histories must coexist:**
+The old DCO knew acquired relations could reorganize current affect, but an actor can acquire **ways of interpreting the world** that also reorganize how later relationships become significant. SOROK 71 separates objective occurrence, causal contribution, recurrent resonance, actor association, actor explanation, self-myth, counterpart explanation, negotiated meaning and later effects. SOROK 72–73 show an actor may read age-23 joy at 29 as embarrassing illusion and at 35 as partly valuable; these later readings are new history without altering what actually occurred. The reading may make future activities imaginable or unthinkable. 
 
-1. **Objective shared and institutional history**: actions, resources, housing, care, coercion, workplace, property, kinship, law, participation and actual power.
-2. **Each individual's internal relation to the Other(s)**: models, misreadings, trust, affection, erotic and recognition investments, memory, unconscious traces, anticipated authority, resentment and identification.
-3. **Continuing joint practical organization** where one actually develops: recurring care, cooperative production, learned games, marital routines, congregational discipline, peer activities, collective struggles. It is not a merged consciousness.
+**A frame may become less accurate as the world confronts it.** A protective father causes harm; Nadia forms a practical association between protection and control; subsequent genuine care is classified as further evidence of domination. The association may illuminate actual patterned injury while misreading other cases. Counterevidence can be appropriated, partitioned, ignored, reinterpreted or confronted. None guarantees enlightenment. SOROK 74 explicitly treats these as historical-pattern descriptions to be implemented, if warranted, through the proper CAN-008, CAN-011, memory, relationship, V3 and rupture owners—not as a new FRAMEWORK_METABOLISM enum engine.
 
-**Family triads are irreducible to isolated dyads.** Nadia's relation to Father may change through witnessing how Father treats Mother; her understanding of Mother's accommodation may change through learning the objective conditions shaping it. The two parents independently possess lives, psychic investments and relation-specific models. The child may develop within a parental relation before possessing concepts for either “parental relationship” or “institutional power.”
-
-**Power is constitutive, not just a modifier of feelings.** Its practical capacity to decide whose needs matter, who can work, who speaks with authority, who controls resources and which consequences are enforceable can organize recognition, shame, desire and practical means. Neither a correct idea nor intense emotion automatically changes that material structure.
-
-PRE-A0's living-relation versus relational-reification distinction matters here. A person may sacrifice the living spouse to the ideal of THE MARRIAGE, the child to the identity of GOOD MOTHER, or actual comrades to THE REVOLUTION. This is not a command to use theology as native ontology; it is a possible relational reorganization in which a category claiming to preserve a living relationship becomes dominant over the relationship's participants. Preserve the phenomenon, allow “idolatry” or other normative readings only downstream.
-
-Independent Other action does not imply universal consent. A person can bully, interrupt, shame, withdraw care or impose a material harm without the victim's permission. **Only voluntary co-participation must be independently authored by the participating actor.** Actual coercion and its differently experienced afterlives are not forbidden because a consent receipt is absent.
-
-## X. How a new psychological organization begins without a preinstalled adult mind
-
-A fixed adult list of drives cannot explain the development of Nadia. A purely empty newborn graph cannot either. The body begins with emerging sensory/motor, regulatory, attentional and practical abilities, changing through maturation and life, not a predeclared ideological destiny.
-
-**One historical path to becoming:**
-
-1. Actual bodily sensation and dependence arise within concrete care or neglect, with limited and developmentally changing access.
-2. Repeated and varied encounters can produce a tacit sensorimotor/affective expectation or nondeclarative causal trace; an analyst's vocabulary is *not* installed into the infant.
-3. Joint activity can organize a new operation; objective coactivity, a mother's help, a child's own contribution and the accomplished effect remain distinct.
-4. A partial cue may recruit the trace and make a **first exploratory attempt** possible before a stable desire or independent competence has been demonstrated.
-5. An originally incidental consequence may become anticipated, sought, resisted or taken as a candidate *end*. Its motivational role must be historically developed and can change.
-6. Practices and signs acquired through Others can become means of coordinating one's own attention, action, recall, inhibition and self-description; a previously social operation may be independently used and later applied to a different project.
-7. Contradictions, failed attempts, material exclusions, love, domination, grief and ordinary repetitions can reproduce, redirect or reorganize a learned practice. The person may acquire a new way of recruiting or bearing an old conflict.
-8. Reflective self-models may eventually form and become objects of practical effort, but remain fallible and only partially govern the iceberg.
-
-This recasts **genesis** as the historical change of relations among embodied capabilities, acquired practices, anticipations, meanings and available activities. **Psychodynamic operation** is those historically formed relations becoming consequential in current activity. They are related causal questions at different temporal scales, not two mystical missing engines. The particular developmental result remains scientifically underdetermined.
-
-A crucial tension must remain: **new possibility can precede proven competence**. An actor may contemplate or attempt a new composition through analogy before acquiring a reproducible method. Conversely, a recognized formal combination of operations may be perfectly computable by the simulator and not yet conceivable or practicable by the actor. Distinguish *simulator combinability, actor-discoverable possibility, attempted combination, actual success, and reproducible acquired ability*.
-
-Leontiev's action–goal–motive transformations, Vygotsky's lived-through person/environment relation, Luria's developing interfunctional relations, Sève's capacity formation/use, Lahire's contextual disposition/analogy, and Dreier/Holzkamp's whole-life practical constraint each illuminate different aspects. None identifies a unique scientific probability law over all future psychological histories.
-
-### Nadia's song: historical source, independent exercise, social authority and transformed purpose
-
-In the shared singing practice, Mother may initially supply coordination, encouragement, rhythm and access to a social setting. Nadia's own actual contribution, bodily pleasure, felt anticipation, and the jointly achieved sound are different causal facts. A second attempt after an interrupted rhythmic gap can occur before a durable motive for singing exists. Repeated variation may make a practice independently exercisable while Mother's historical contribution remains constitutive.
-
-**Keep separate:** (a) who first enabled the capability; (b) what the child can now bodily and practically perform; (c) whether the original mediator or another participant is still necessary for the present exercise; (d) whom Nadia wants to please or protect; (e) who materially controls the venue, instrument or permission; (f) what Nadia currently understands the practice *to be for*. One of these can change while others remain. This is what Astra's earlier source-of-power versus independent-exercise distinction actually demanded.
-
-Suppose Father later holds real authority over who may participate, and Nadia notices that someone else's contribution is excluded. A learned *good*—the value of others entering a shared practice—may have been acquired through the very world Father helped organize. It can become a possible ground for refusing his current decision **without erasing gratitude, seeking approval or necessarily possessing the social power to reverse the rule**. She might instead subordinate that good to obedience, rationalize exclusion as care, comply fearfully, imitate Father's sanction or remain conflicted. This is the developmental mirror of the pastor's righteous-discipline case: **the same historical route can produce reproduction of authority or possible immanent criticism, depending on the actor's specific acquired organization and actual contrasts.**
-
-Not every acquired capacity is a motive. Not every first attempt establishes transfer. Not every transfer is successful, recognized or reproducible. The new relation among acquired capacity, affected Other, learned good and practical authority must itself have a historical path. A dynamically composed practice is a legitimate possible action, not automatically an objective success or a newly installed motive.
+Identification can render a social category invisible as a separate category; alienation can render it visible without establishing correctness. Absolute Horizon remains research concerning what appears ultimately binding and what may be sacrificed for what, not a tenth stratum, religious truth flag or moral score. A new interpretation may become causally powerful and false. Its proper genesis must remain rooted in what the actor could live, notice, learn and attempt, rather than an analyst assigning a hidden explanatory key.
 
 
-### The empirical-to-lived-world seam: precise upstream jurisdiction
-
-The PYAT/SEAM offering is deeper than demographic sampling. Its source-qualified architectural chain is **governed instrument/source observations and original35 → durable C11 respondent-level facts → I03/I05 F1–F4 conditional, recursive and higher-order same-person empirical products → FIELD-FORGE claim-graded actor-independent social relations → qualified F6/F7 temporal and multi-field claims → N9 objective world / N10E empirical possibility / N10W conditioned positioned possibility → N11 acceptance and N12 governance**, with ANVIL/related work subject to exact branch authority and currentness. This is a source/owner crosswalk, not a claim every product is issued or operational.
-
-Differentiate **measured respondent answer**, **independently supported structural relation**, **model-qualified possible world**, and **admitted particular fictional actual event**. No LLM or survey percentage may promote a possible social norm into an enforced institution, a reported answer into a hidden individual's psyche, or a demographic pattern into one person's inevitable ideology. Period, instrument translation, routing, eligibilities, denominators, uncertain minority combinations, underpowered cells, and missingness matter. A sampling zero is not an objectively impossible human life.
-
-A source-qualified **possible encounter** is not yet an actual actor's **material encounter**, and an actual encounter is not yet that actor's **accessible/lived experience**. Outer world/field recruitment must pass through independently admitted real social opportunity before the actor's inner acquired iceberg can be recruited and changed. Population calibration, parent initial questionnaire correspondence and the open-ended child's developmental fidelity are three distinct obligations. See [ORACLE/01](https://github.com/maidiu/rawlsing/blob/d7e6ff6ec228145c2f325664722923f0f03e8d89/SEAM/ORACLE/01_TOTAL_PROBLEM_AND_NONNEGOTIABLE_DIMENSIONS.md) and the [verbatim R2 predecessor](ARCHIVE/00_CONSTITUTIVE_ORGANISM_R2_PRE_RECAST_20261119.md).
 
 
-## XI. Two historical entrances, one continuing organism
 
-**Mother and Father begin as separately constituted fictional adults.** PYAT must supply genuinely eligible, respondent-coherent *whole configurations* with conditional comparison distributions, denominators, source wordings, missingness, relevant material/historical variables and limits. The LLM **abductively proposes a richly contradictory fictional adult iceberg** and plausible compressed formative backfill; it does not discover the real survey respondent's hidden childhood. A bounded retrospective reconciliation can ensure basic world feasibility, but decades of simulated infancy are not required before an adult can exist.
+---
 
-An independent initial survey read should correspond to the sampled whole target **through the functioning person's constructed meanings and practices**, not a secretly consulted answer key. That qualification is an architectural target, not a verified capability of existing R3. The target does not fix lifelong views or silence minority configurations.
+## XIV. Late historical completion versus genuinely open prospective world production
 
-**Why the whole respondent matters:** The Lebanese case supporting equal inheritance and Islamic law's role in inheritance, political attendance without claimed political interest, and different relationships between religion and public authority cannot be “fixed” by discarding inconsistent responses or assigning hypocrisy. The 2010 GSS speech/library configuration appeared in 50 of 1,206 eligible complete national cases with weighted estimate approximately 4.11%; very narrow cells such as 1/22, 1/14 and 1/5 illustrate how selected-person nearest-neighbor comparison becomes extremely unstable. Different actors may give the same answer for unlike reasons, and conflicting reported answers do not establish consciously experienced conflict. **Source-derived responses constrain a fictional adult but cannot uniquely identify their inner relations.**
+SOROK 70 reveals why historical completion and new-world construction must be distinguished. An unresolved old photograph may lawfully acquire past detail through bounded H0–H3 source-constrained historical bridging; what is unspecified is not an unlimited permission to invent a formative childhood cause. The user's question may trigger permitted materialization but cannot determine what the pre-existing historical truth was. Previous objective facts and other witnesses remain constraints. The actor's later interpretation of the photo can nonetheless become a fresh causal event.
 
-Mother and Father do not acquire a marriage because a constructor chooses compatible profiles. Their distinct worlds, resources, attraction, conflict, time, family and institutional opportunities have to make a particular shared history possible. They possess separate models of one another and continue outside the child.
+The opposite process is **prospective material novelty**. SOROK 38 requires that a lawfully admitted new job, coworker, move, invitation, injury, meal or artistic instrument introduce fresh objective relations that condition later activity. The new effects may exceed the candidate's initial purpose: a job changes commuting, income, status, friendships, fatigue and possible love. Two continuations with identical prior psyche may develop differently because different independently settled world opportunities exist. Historical openness is not an endless stock of personality surprises authored for the visitor.
 
-**Nadia begins at the other historical entrance:** an immature need-bearing organism with no sampled adult destination. She develops through actual care, play, household labor, peers, institutions, unequal power, symbolic language, practices, world events, ordinary repetition and her own initiatives. The same current recruitment, actor-specific experience and reconstitution semantics must accept both adult-initialized and child-developed psychology. Only the source/provenance of their initial states and the developmental history budget differ.
-
-**Outer social-field recruitment is not inner psychic recruitment.** PYAT/Field Forge source-qualified possible people, relations and institutional carriers may be instantiated into an actual world; Nadia encounters only what is materially and epistemically available. Population dissent cannot be installed as a latent personal ideology just because it exists in a survey. Mandatory universal nine-strata personality ontology is retired; historically particular class, care, law, religion, colonial and institutional relations remain essential material causes.
-
-### Multiple timescales are psychological and product constraints
-
-Besides embodied minutes, daily care and work, biographical years, and historical institutional change, **the live product needs elastic time**: unobserved ordinary life can continue without a narrator forcing a rich event each user message. World depth may be qualified ahead of viewer attention while disclosure and actor knowledge remain separate from physical materialization. Root/seed precontact history may split into irreversible user continuities; restarting may not rewrite an independently existing person's past. An admitted routine coverage capsule is not permission to fabricate detailed performed Other acts or exact remembered conversations.
-
-The organism's first developmental means include **interoception, sensation, orienting, regulation, movement, bodily fatigue and pain**, long before the child possesses adult language, cultural motives or an explicit self-model. Neither bodily process nor history requires an adult conceptual interpreter in order to affect later recruitment.
+The actor and world continue without the user. Public events enter the synthetic world only when sourced and relevant to actual place/time/social circumstances; each actor learns of them through plausible exposure and situated concerns. The same regional war, wage change or media event can have unlike practical and psychological consequences for Nadia, her brother and their mother. Actor's false testimony, renderer choices and external platform actions do not overwrite world history.
 
 
-## XII. Ordinary life is the medium, not the space between important scenes
-
-A few dramatic events cannot constitute a whole person. **Three to five expensive high-resolution events must be embedded in represented dense everyday life**—feeding, sleeping, care, transport, chores, work, boredom, school, illness, rest, community participation, repetitive exclusion, ordinary tenderness and the use of available time.
-
-Sève's attention to lived time, Dreier's conduct of life and life course, Elder's historical timing, and social-reproduction scholarship all clarify why a day-to-day allocation of labor and attention can gradually reorganize a person's abilities, dependencies and investments, even without an exemplary psychological revelation.
-
-Maintain separate historical granularities: performed individual event; admitted recurring practice or coverage interval; speculative compressed parental prehistory; retained sensory/causal trace; autobiographical memory; present interpretation; actor-access restriction; unresolved historical absence. A coarse routine does not entitle the narrator to invent an exact unperformed conversation. Increasing render detail later cannot violate admitted historical parentage.
-
-The product consequence is severe: **the focal Other exists and has a life before user contact**. The world proceeds through other people and institutions beyond user attention. A common pre-contact canon may branch copy-on-write into irreversible user continuities; user curiosity can deepen lawful materialization or prompt actor-owned disclosure but cannot rewrite the person's own history, command their awareness, or force intimacy. Actual object history differs from actor investment and viewer attribution. The system should not optimize the person's life solely to retain users.
-
-### The earlier negative demonstrations are binding lessons, not proof of personhood
-
-Astra's R0 report describes a lower-level \`perform()\` path accepting caller-supplied \`partner_consent=True\` even when the independent helper's reader returned \`DECLINE\`, while a higher-level coupled path checked that reader. That is **historically reported source evidence**, not independently rerun by this synthesis. Its conserved design lesson is that a voluntary joint act requires independently authored contribution; it does not imply that unilateral bullying, injury, interruption or institutional imposition requires victim consent.
-
-An earlier P4 changed-counterpart \`inspect_alone\` result was an **empty-record fallback**, not evidence of acquired autonomous transfer. P3's historically inspected project/counterpart-scoped sourcefree reader, together with \`native_rule: MISSING_RULE\` and \`memory_formation: MISSING_RULE\`, demonstrates useful bounded software **and** unissued native general psychological formation. R3's actual action-level APPROACH/WITHHOLD currents and acquired composition are valuable and still narrower than the full PRE-A0 relational topology.
-
-**SOROK Mechanism I** retains qualified historical world materialization; **Mechanism II** actor/observer-specific perception, recognition and disclosure; **Mechanism III** independent situated initiative. The person projection or renderer may not replace these with another all-purpose event owner. Legacy V3's fast/slow pressure-flow and inspectable BackboneState must be conserved as *functions*, not its fixed adult trait inventory.
-
-PROGRAMMA's **144 functions, 38 seams and 83 gates** remain an exact engineering/receiving audit estate; a compact conceptual owner table does not certify all their first readers or consumers. Live heads, CURRENT_PROGRESS, independent review and authorized receiving remain necessary for HQ claims, but are not a warrant to halt provisional connected engineering for validation-first microtests.
 
 
-## XIII. The conceptual machinery must not become another owner
+
+---
+
+## XV. Original owners, scene boundaries and the platform's nonpsychic powers
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 The historical estate already includes the central semantic distinctions. The next construction phase must join inherited owners and extend bounded sourcefree capabilities instead of creating a sovereign ConstitutivePerson psychology database.
 
@@ -328,8 +425,11 @@ The value of legacy V3's inspectable BackboneState was **causal continuity acros
 
 This R3 document and its underlying PR remain **draft documentary research**. Any agent claiming operational SOROK HQ authority must first execute the canonical live PROGRAMMA HQ OATH and reconcile exact HEADs, paired CURRENT_PROGRESS, accepted owners, independent reviews and protected receiving. Unissued native scientific law is still unissued, even where sourcefree integration produces useful behavior. This recast neither updates protected CURRENT_PROGRESS nor authorizes an owner merge.
 
+---
 
-## XIV. The theorists, now organized by which missing causal relation they discipline
+## XVI. Theoretical rivalries, source conservation and implementation jurisdiction
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 **Material constitution of actual activity:** Marx; Sève; Bhattacharya/Ferguson; Wright; Kohn/Schooler; Mortimer; Elder. They insist that the causal relationships among labor, property, work, care, biographical time, social reproduction and class positions remain actual world mechanisms, not merely latent traits or atmosphere. Aggregate historical correlations never automatically identify individual motives.
 
@@ -344,8 +444,6 @@ This R3 document and its underlying PR remain **draft documentary research**. An
 **Embodied non-precompiled novelty:** dynamic developmental systems (Thelen and Smith) illuminate gradual sensorimotor emergence from body, context and practice, but cannot by themselves supply class, institutional legitimacy or social meaning.
 
 **These are arguments in tension, not a grand unified scientifically certified school.** SOROK should inherit their strongest questions, local hypotheses and evidence boundaries. It must not translate them into compulsory childhood wound, ideological type, medical diagnosis or universal progressive telos.
-
-## XV. The complete inheritance and no-drop ledger
 
 Everything below remains part of the living target, whether or not a particular runtime currently implements it.
 
@@ -378,7 +476,11 @@ Everything below remains part of the living target, whether or not a particular 
 
 **Prior documents preserved rather than silently erased:** the [full predecessor R2](ARCHIVE/00_CONSTITUTIVE_ORGANISM_R2_PRE_RECAST_20261119.md), [fifteen-item R1 hostile audit](01_HOSTILE_SELF_AUDIT_AND_OMISSIONS_R1.md), [R2 convergence audit](02_R2_CONVERGENCE_AND_FIDELITY_AUDIT.md), [November 19 original source packets](SOURCES/), [Leontiev/Vygotsky/Sève/Lahire genesis synthesis](03_GENESIS_AND_PSYCHODYNAMICS_RECOVERED_R1.md), [R3 code reciprocal mulch](04_RECIPROCAL_MULCH_R3_THEORY_LEARNS_FROM_RUNNING_CODE_20261119.md), [psychodynamic doctrine recovery](05_PSYCHODYNAMIC_RELATION_HISTORY_AND_UNCONSCIOUS_OPERATION_R1.md), and [event-first productive ideological mechanism](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md). Their disagreements and caveats remain live; this document is an organized, not a magically exhaustive, distillation.
 
-## XVI. What remains scientifically and computationally open
+---
+
+## XVII. The machine is the critic: multiplicative falsification and continuing limits
+
+**R4 generative reading of this movement.** Its inherited mechanisms must change the future recruitment and practical possibilities of the other movements, not merely add another stored psychological property. Object, work, family, actor interpretation, bodily need and world action remain separable sources that can reciprocally alter what each becomes. The old concrete cases remain as hostile counterexamples to a simpler schema.
 
 The recast is stronger because it reduces some apparent independent mysteries without pretending their empirical solutions exist.
 
@@ -404,26 +506,6 @@ The recast is stronger because it reduces some apparent independent mysteries wi
 
 ---
 
-## XVII. The final integrated claim
-
-**SOROK's Constitutive Organism is a materially living, historically developing person whose psychological organization is constituted through relations among embodied need, concrete activity, acquired capabilities, affective investments, social categories, institutions, Other-persons, memory, interpretation, practical limitation and experience. These historically produced relations can themselves become relations of activity: they determine what other elements become for the person, which configurations recruit together, what becomes inhibited or indirectly consequential, how existing meanings are reproduced or reversed, what actions become imaginable, and what later experiences can alter the organization again.**
-
-**Its iceberg is always potentially operative, often outside self-knowledge.** Its outward tip is a partial and observer-conditioned consequence, not a conscious manager's chosen excerpt. Its world is independent of its psychology; its Others have their own lives; actual suffering is not canceled by anyone's righteous interpretation. Its psychic production may be care, domination, love, grief, defense, stasis, rebellion, bewilderment, reproduction or transformation, without any guaranteed moral destination. Historical changes retain causal parentage without being constrained by a fictitious conserved quantity of emotional energy.
-
-**Two historically different entrances—whole PYAT-constrained fictional parents and Nadia's open organismic ontogenesis—feed one continuing, owner-qualified person×event metabolism.** LLM semantic construction assists fictional formation under qualified admission; after-the-fact LLM flesh/voice remains faithful to what the machine/world actually computed, and neither process fabricates another person's mind or authority.
-
-**The conceptual construction has now been genuinely re-centered:** the iceberg, recruitment, pressure-flow, relation-history, ideological identification, complex emotion and historical reconstitution are not isolated plates kept spinning by separate philosophies. They are different temporal and material descriptions of **the constitution, reproduction and transformation of the person's relations through activity**.
-
-The next phase is not another ontology. **It is a broad, connected implementation of this inherited and newly clarified relational metabolism through existing SOROK owners**, with honest provisional limitations and subsequent empirical calibration. Nothing in this R3 recast authorizes protected writes or scientific promotion.
-
 ---
 
-### Source map (specific, not generic)
-
-**SOROK doctrine:** [PRE-A0 original architectural bank](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md); [CAN-008 R2 / V3–PFF–SDTF authority and self-retcon correction](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md); [PFF/SDTF two-call live design](https://github.com/maidiu/rawlsing/blob/agent/sorok-prea0-psyche-architecture-r1/SOROK_PRODUCT_CONTROL_ROOM/42_PFF_SDTF_LINEAGE_TWO_CALL_LIVE_PIPELINE_R1.md); [PROGRAMMA SOROK / HQ OATH and complete spine](https://github.com/maidiu/rawlsing/tree/integration/pre-main-reconciliation-r1/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK).
-
-**Recent engineering and reasoning:** [UM-SOROK R3 sourcefree organism](https://github.com/maidiu/rawlsing/tree/3dba91136870ab5e766ca14faacd847531dea075/SEAM/ORACLE/UM_SOROK_ORGANISM_R3); [Astra's research construction](https://github.com/maidiu/rawlsing/blob/5baf3dde14cce3e3366911fbf62e213b42856045/research/oracle-generative-system/ARCHITECTURE.md); [SEAM/ORACLE full problem and retracting earlier shortcuts](https://github.com/maidiu/rawlsing/tree/d7e6ff6ec228145c2f325664722923f0f03e8d89/SEAM/ORACLE); all local source files linked in the preface.
-
-**Theoretical sources directly inspected or reviewed:** user-supplied unabridged Leontiev, *Activity, Consciousness, and Personality*, ch. IV; Sève, *Man in Marxist Theory and the Psychology of Personality*, especially the critique of ahistorical psychic topology and the acts/capacities/time discussion; Lahire, *The Plural Actor*, on conditional dispositions, context inhibition and practical analogy; Dreier, *Psychotherapy in Everyday Life*; Holzkamp, *Grundlegung der Psychologie*; Luria, *Cognitive Development: Its Cultural and Social Foundations*. Additional source trails and caveats for Freud, Jung, Klein, Fromm, Fanon, Gramsci, Althusser, Bourdieu, Foucault, Freire, Vygotsky, Voloshinov, Thelen/Smith and contemporary affect research are preserved in the [previous theoretical recovery](05_PSYCHODYNAMIC_RELATION_HISTORY_AND_UNCONSCIOUS_OPERATION_R1.md) and [ideological transduction note](06_PRODUCTIVE_PSYCHODYNAMICS_EVENT_FIRST_AUTHORITY_AND_TRANSDUCTION_R1.md).
-
-**Authority caveat:** This is a draft source-grounded intellectual synthesis, with old versions and arguments recoverable. It is not a claim that any one theorist's psychology has been scientifically validated, nor that the current research-grade organism constitutes a full person.
+**CURRENT STATUS:** Same DCO HOME, fully reordered theory candidate. Historical original is source-preserved; 374-file/757-row individual adjudication, source-owner parity, psychological science, new executable DCO mechanisms and protected receiving remain HELD. The next source/code witness must be able to falsify this reconstruction; if it does, reconstruct the whole again. **END OF THE DCO R4.**
