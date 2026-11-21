@@ -7,6 +7,8 @@
 
 **USER'S CONTROLLING CORRECTION:** The existing Mechanisms and Constitutive Organism are not two things to connect with a light adapter after each is completed. They must be **conceptually and computationally mulched together** as developed aspects of one historical causal process. **Do significant theory-MULCH before choosing a single writer or replacing anyone's source.** Preserve Mechanism III's finer sensory distinctions, Mechanism I/II's independent-world completion and private-gaze achievements, and the developing, contradictory, partly inaccessible Nadia built within the Constitutive Organism. Do not invent a second Nadia. The psychologically operative person is not the same thing as the displayed character.
 
+**ORIGINAL-IDEATION CORRECTION — MANDATORY:** The first 84-link atlas was engineering/architecture-facing and insufficient on SOROK's September 29–early October original imaginative, ethical and product conception. That original control room contains **190 numbered ideation claims**, a 12-frontier programme, original Courts 1–11, a 3,689-line source transcript, a non-reified theological/relational kernel under open review, and later explicit reversals including rejection of grand 'game loops'. Read documents 06–09 before deciding what a valid user encounter or 'fun' is. The founding charter demands an unchosen neighbor, authentic user action, durable contradiction, noncommodification, no secret health score and noncoercive engagement. These are source-derived product constraints a runtime-only test can silently lose.
+
 **Further user correction:** Nadia's parent/coparent/infant development is normally **offscreen, pre-user historical life**, not a compulsory user scene with a father and child. The user may meet adult Nadia with or without relatives, or encounter another independent fictional adult. A first playable test need not involve Nadia at all.
 
 ### What NEIGHBORMULCH is
@@ -44,6 +46,10 @@ The product objective: an actual human user enters an independently existing, de
 4. [One world / one person conceptual decision court](03_SINGLE_REALITY_CONCEPTUAL_MULCH_COURT.md). **Resolve ontological contradictions BEFORE selecting a writer, adapter or event schema.**
 5. [First fused playable-causal-cell construction and falsifiers](04_FIRST_FUSED_CONSTRUCTION_AND_TEST_COURT.md). Actual first-consumer proof, with ordinary independent adults as possible test actors.
 6. [Agent accession, cross-agent contracts and no-drop](05_AGENT_LAUNCH_AND_RECEIVING_PROTOCOL.md). Expand the source map, but discovery must cause better construction.
+7. **[Original SOROK vision, doctrine, spirit and earliest ideation](06_ORIGINAL_SOROK_VISION_DOCTRINE_SPIRIT_AND_IDEATION_ATLAS.md)** — founding purpose, 12 frontiers, Courts 1–11, later corrections and first-hand human experience.
+8. [All H001–H190 original numbered ideation propositions, with source lines/dispositions](07_THE_ORIGINAL_190_IDEATION_PROPOSITIONS.md) — not a summary or automatic legal code.
+9. [Original 105-entry control-room tree, dockets, R12 transcript, later additions](08_HISTORICAL_SOROK_CONTROL_ROOM_INVENTORY.md) — restores original materials absent from narrow protected front door.
+10. [Vision to real first-consumer falsifiers](09_ORIGINAL_VISION_TO_FIRST_CONSUMER_FALSIFIERS.md) — 22 user-purpose/source preservation courts.
 
 ## Exact opening contradiction
 
