@@ -1,0 +1,41 @@
+{
+  "schema": "ANVIL_Q103_SOURCE_QUALIFICATION@1",
+  "manifest_current_verified": true,
+  "question": {
+    "question_id": "q103",
+    "native_question_ref": "urn:rawlsing:r157:original:SRC04:item:question_impl.phase0.7f5834521c9c4a400580",
+    "questionnaire_sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+    "saved_binding_present": true
+  },
+  "raw_code_evidence": {
+    "raw_physical_value_retained": true,
+    "codec_identity_retained": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "all_observed_codes_within_questionnaire": true,
+    "recoverability": "TOTAL_WITHIN_OBSERVED_Q103_CODES",
+    "typed_state_conflict_with_questionnaire": true,
+    "conflict": "current source config maps 97 and 98 both DK and 99 substantive; questionnaire requires 97 Not clear, 98 DK, 99 Decline"
+  },
+  "provenance_shape": {
+    "producer_replay_locator": true,
+    "response_topology_ref": true,
+    "value_transform_authority_ref": false,
+    "canonical_response_value_if_authorized": false
+  },
+  "asked_route": {
+    "routing_facts_present": true,
+    "observed_states": "ROUTING_UNKNOWN",
+    "asked_membership_proven": false,
+    "reason": "questionnaire/QSR provide no exact form/skip; source config is ALL + ROUTING_UNKNOWN; actual routing facts remain unknown"
+  },
+  "recorded_response_scope": {
+    "physically_available": true,
+    "authorized": false,
+    "definition_if_owner_signs": "respondents with a recorded q103 event; not asked/eligible; no population inference; 1-4 substantive plus 97/98/99 and missing retained",
+    "owner_attestation_required": true
+  },
+  "issuer": "NO_AUTHENTIC_SAVED_STREAM_CATALOG_QUERY_PREDICATE",
+  "native_i03": "NOT_RUN",
+  "public_counts_emitted": false,
+  "source_microdata_read": false,
+  "estate_written": false
+}

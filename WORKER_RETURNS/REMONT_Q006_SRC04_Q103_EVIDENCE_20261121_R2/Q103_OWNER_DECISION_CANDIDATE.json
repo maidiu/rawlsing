@@ -1,0 +1,51 @@
+{
+  "disposition": "Q103_RAW_RECOVERABLE__TYPED_CONFLICT__ASKED_HOLD",
+  "evidence": {
+    "actual_q103_routing_state": "ROUTING_UNKNOWN",
+    "canonical_response_value_if_authorized_present": false,
+    "producer_replay_locator_present": true,
+    "questionnaire_labels": {
+      "1": "Very Good",
+      "2": "Good",
+      "3": "Bad",
+      "4": "Very Bad",
+      "97": "Not clear",
+      "98": "Can't Choose/Don't know",
+      "99": "Decline to Answer"
+    },
+    "raw_code_total_recoverability": true,
+    "raw_codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "response_topology_ref_present": true,
+    "value_transform_authority_ref_present": false
+  },
+  "irreducible_holds": {
+    "asked_eligible_denominator": "ROUTING_UNKNOWN__NO_EXACT_FORM_COUNTRY_RISK_RECORD",
+    "recorded_response_scope": "NOT_AUTHORIZED_BY_EXISTING_EVIDENCE__DISTINCT_ESTIMAND__OWNER_ATTESTATION_REQUIRED",
+    "typed_state_map": "CURRENT_SOURCE_CONFIG_CONFLICTS_WITH_QUESTIONNAIRE__OWNER_MUST_SUPERSEDE"
+  },
+  "issued": false,
+  "native_question_ref": "urn:rawlsing:r157:original:SRC04:item:question_impl.phase0.7f5834521c9c4a400580",
+  "negative_witness": "unknown routing accepted as asked, 97/98/99 collapsed, or current 99=substantive accepted must refuse.",
+  "owner_signature": null,
+  "positive_witness": "actual native I03 with signed q103 catalog yields disjoint 1-4/97/98/99/system-missing and exact signed denominator; replay exact.",
+  "proposed_response_state_map": {
+    "1": "SUBSTANTIVE_RESPONSE",
+    "2": "SUBSTANTIVE_RESPONSE",
+    "3": "SUBSTANTIVE_RESPONSE",
+    "4": "SUBSTANTIVE_RESPONSE",
+    "97": "SOURCE_SPECIFIC_SPECIAL",
+    "98": "DK",
+    "99": "REFUSAL",
+    "physical_system_missing": "MISSING"
+  },
+  "question_id": "q103",
+  "schema": "ANVIL_Q103_OWNER_DECISION_CANDIDATE@1",
+  "shortest_next_input": "Source/QSM/risk owner signs the state map and either exact asked/eligible risk or RECORDED_Q103_RESPONSE_ONLY; R03 saved issuer then supplies exact catalog/query/predicate.",
+  "signable_fields": {
+    "carrier_raw_provenance_shape": "SIGNABLE_BY_SOURCE_OWNER__NOT_SIGNED",
+    "question_identity": "SIGNABLE_BY_SOURCE_OWNER__NOT_SIGNED",
+    "raw_code_recoverability": "SIGNABLE_BY_SOURCE_OWNER__NOT_SIGNED",
+    "semantic_role": "SIGNABLE_BY_SOURCE_OWNER__NOT_SIGNED",
+    "source_labels": "SIGNABLE_BY_SOURCE_OWNER__NOT_SIGNED"
+  }
+}
