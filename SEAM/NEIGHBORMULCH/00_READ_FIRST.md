@@ -20,5 +20,9 @@ NEIGHBORMULCH builds the **encounter's causal entrance and exit**: user action a
 - [03 — single-reality conceptual court](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/03_SINGLE_REALITY_CONCEPTUAL_MULCH_COURT.md)
 - [04 — first joined playable-causal-cell test court](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/04_FIRST_FUSED_CONSTRUCTION_AND_TEST_COURT.md)
 - [05 — complete successor launch and receiving](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/05_AGENT_LAUNCH_AND_RECEIVING_PROTOCOL.md)
+- **[06 — original SOROK September/October founding vision, doctrine, spirit and early UX](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/06_ORIGINAL_SOROK_VISION_DOCTRINE_SPIRIT_AND_IDEATION_ATLAS.md)**
+- [07 — all original 190 numbered September 29 propositions H001–H190](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/07_THE_ORIGINAL_190_IDEATION_PROPOSITIONS.md)
+- [08 — original SOROK control-room, D001/D002/D003/D007 and R12 transcript tree](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/08_HISTORICAL_SOROK_CONTROL_ROOM_INVENTORY.md)
+- [09 — founding doctrine translated into 22 real first-consumer falsifier clusters](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/09_ORIGINAL_VISION_TO_FIRST_CONSUMER_FALSIFIERS.md)
 
 **MULCH outcome must be code and theory both transformed by the executed joined first consumer.** This initial SEAM pointer and the NEIGHBORMULCH primer are documentary and **COMMITTED_UNTESTED as a runtime integration**. Protected PROGRAMMA and paired current progress remain governed by existing competent owners; no duplicate world/actor authority has been minted.
