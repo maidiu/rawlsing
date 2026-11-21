@@ -27,7 +27,9 @@ from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
-from .institutional_procedure_learning import possible_institutional_learning
+from .institutional_procedure_learning import (
+    possible_institutional_learning, possible_lived_institutional_differences,
+)
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import conserve_incomplete_work
 from .psychic_genesis import (
@@ -687,6 +689,11 @@ class ConstitutiveRuntime:
                 actors[aid],experience,objective_ref)
             institutional_learning=possible_institutional_learning(
                 actors[aid],experience,objective_ref)
+            # Two *distinct* actor-lived material-public practices may give
+            # a model a possible contrast, never a mandatory lesson about
+            # the legitimacy of an institution, worker or authority figure.
+            institutional_differences=possible_lived_institutional_differences(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -746,6 +753,8 @@ class ConstitutiveRuntime:
                     care_revision),
                 'historically_possible_public_procedure_learning':copy(
                     institutional_learning),
+                'historically_possible_institutional_relational_differences':copy(
+                    institutional_differences),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),

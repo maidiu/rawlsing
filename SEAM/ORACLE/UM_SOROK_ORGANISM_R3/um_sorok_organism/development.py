@@ -28,7 +28,10 @@ from .material_investments import admit_material_investment
 from .co_regulation_history import (
     admit_co_regulation, admit_co_regulation_revision)
 from .plural_care_paths import admit_reopening
-from .institutional_procedure_learning import admit_public_procedure_expectation
+from .institutional_procedure_learning import (
+    admit_public_procedure_expectation,
+    qualify_lived_institutional_difference,
+)
 import math
 
 class InvalidDevelopment(ValueError): pass
@@ -207,6 +210,22 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 raise InvalidDevelopment('INVALID_RELATIONAL_REVALUATION_SCOPE')
             old={'relation':link['relation'],'contexts':copy(link.get('contexts',[])),
                  'event':event_ref,'prior_origin':copy(link.get('origin',[]))}
+            if 'lived_institutional_difference' in c:
+                # A contradiction in actually experienced public practices
+                # may occasion a different *personal* relation. The model
+                # chooses the new relation; the owner verifies two separately
+                # lived material sources and retains both historical cuts.
+                if (event_ref in link.get('origin',[]) or
+                        c['new_relation']==link['relation']):
+                    raise InvalidDevelopment(
+                        'R24_NOT_A_LATER_RELATIONAL_REVALUATION')
+                try:
+                    difference=qualify_lived_institutional_difference(
+                        actor,experience,event_ref,
+                        c['lived_institutional_difference'])
+                except ValueError as exc:
+                    raise InvalidDevelopment(str(exc)) from exc
+                old['lived_institutional_difference']=difference
             link.setdefault('relational_history',[]).append(old)
             link.setdefault('id',ident)
             link['relation']=c['new_relation']
