@@ -1,4 +1,8 @@
 # SEAM ↔ NEIGHBORMULCH — RECIPROCAL ENTRYPOINT
+
+
+> **LATEST R10 NEIGHBOR + CO RECIPROCAL READING — 2026-11-21:** [TOTAL SOROK one-place source entrance](SOROK_TOTAL_MULCH/00_START_HERE_TOTAL_SOROK_MULCH.md) → [one complete R10 whole](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) → [R10 adversarial no-drop review](SOROK_TOTAL_MULCH/14_R10_HOSTILE_SEMANTIC_CONSERVATION_COURT.md) → [197 exact section fates](SOROK_TOTAL_MULCH/12_ALL_TEN_VERSIONED_WHOLE_THEORY_SECTION_FATES_R10.json) → [104 + 757 source crosswalk](SOROK_TOTAL_MULCH/13_CONVERSATION_AND_757_SOURCE_FATES_R10.json) → [full original H190/Q123 source bodies](SOROK_TOTAL_MULCH/16_ORIGINAL_H190_FULL_PARAGRAPH_SOURCE_AND_R10_FATES.json). R8 shared-bank and R1–R9 cumulative ledger preserved, not alternative current wholes. **Independent SORACLE-CO acceptance still not witnessed.** Historical family relation-of-relations and the person's ongoing activity must actually challenge the encounter, not be recited as compliance.
+
 ## One world, one independently becoming person, human participation as a real historical cause
 
 
