@@ -6,6 +6,7 @@ No event, coactor consent, adult motive, cognition or material right is minted h
 """
 from .types import copy, stable_id, GRADE
 from .organism import ACTIONS, eligible
+from .livelihood_history import qualify_recurrent_work_orientation
 
 MODES = frozenset(('APPROACH', 'WITHHOLD', 'AMBIVALENT'))
 REVISIONS = frozenset(('INHIBIT', 'OPPOSE', 'REINSTATE'))
@@ -71,6 +72,19 @@ def acquire_orientation(actor, experience, event_ref, proposal):
     mode = proposal.get('orientation_mode')
     if mode not in MODES:
         raise ValueError('HISTORICAL_INVALID_POLARITY')
+    work_ground = None
+    if 'recurrent_work_practice' in proposal:
+        # A model cannot promote an employer's accounting decision to an
+        # actor-owned work ethic, competence, permanent class identity or
+        # motive. At most it proposes a revisable orientation to the
+        # operation the actor has actually attempted across three occasions.
+        if action != 'WORK':
+            raise ValueError('R25_WORK_HISTORY_CANNOT_GRANT_OTHER_OPERATION')
+        work_ground = qualify_recurrent_work_orientation(
+            actor, experience, event_ref, proposal['recurrent_work_practice'])
+        if proposal.get('perceived_cue_ref') != work_ground[
+                'present_received_public_sign_ref']:
+            raise ValueError('R25_WORK_ORIENTATION_NO_LIVED_LATEST_SIGN')
     site = experience.get('location', actor.get('location'))
     if type(site) is not str or not site or site != actor.get('location'):
         raise ValueError('HISTORICAL_UNGROUNDED_CONTEXT')
@@ -90,6 +104,11 @@ def acquire_orientation(actor, experience, event_ref, proposal):
         'acquisition': 'LIVED_SOURCEFREE_PRACTICAL_ORIENTATION',
         'not_a_project_or_motive': True, 'grade': GRADE,
     }
+    if work_ground is not None:
+        record['recurrent_livelihood_ground'] = work_ground
+        record['source_specificity'] = (
+            'THREE_ACTOR_LIVED_WORK_EPISODES_NOT_EMPLOYER_PSYCHOLOGY')
+        record['no_inevitable_compliance_resistance_or_conscious_theory'] = True
     prior.append(record)
     return {'kind': 'ACQUIRE_HISTORICAL_ORIENTATION', 'ref': ident,
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}

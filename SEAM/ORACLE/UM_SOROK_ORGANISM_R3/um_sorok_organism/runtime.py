@@ -31,7 +31,9 @@ from .institutional_procedure_learning import (
     possible_institutional_learning, possible_lived_institutional_differences,
 )
 from .material_dependency_history import conserve_sensed_material_nonperformance
-from .livelihood_history import conserve_incomplete_work
+from .livelihood_history import (
+    conserve_incomplete_work, possible_recurrent_work_orientation,
+)
 from .psychic_genesis import (
     conserve_lived_episode,possible_contrast_end)
 from .joint_practice_genesis import possible_joint_practice
@@ -694,6 +696,12 @@ class ConstitutiveRuntime:
             # the legitimacy of an institution, worker or authority figure.
             institutional_differences=possible_lived_institutional_differences(
                 actors[aid],experience,objective_ref)
+            # A later personally attempted WORK event can now give a model
+            # access to a qualified recurring history of this actor's own
+            # material activity. The model may propose no organization at all.
+            # Future pre-cue recruitment belongs to the existing R19 owner.
+            recurrent_work=possible_recurrent_work_orientation(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -755,6 +763,8 @@ class ConstitutiveRuntime:
                     institutional_learning),
                 'historically_possible_institutional_relational_differences':copy(
                     institutional_differences),
+                'historically_possible_recurrent_livelihood_orientation':copy(
+                    recurrent_work),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
