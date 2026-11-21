@@ -59,10 +59,18 @@ def validate_queue(q):
             raise ValueError('INVALID_OR_DUPLICATE_QUEUE_PR')
         if type(sha) is not str or len(sha) != 40 or any(c not in '0123456789abcdef' for c in sha):
             raise ValueError('INVALID_PINNED_SHA')
-        if type(branch) is not str or not branch.startswith('agent/sorok-remont-') or '..' in branch:
+        if (type(branch) is not str or '..' in branch or
+                not (branch.startswith('agent/sorok-remont-') or
+                     (item.get('joined_first_consumer') is True and
+                      branch.startswith('agent/soracle-remont-')))):
             raise ValueError('INVALID_QUEUE_BRANCH')
         if type(item.get('manifest')) is not str or '/' in item['manifest']:
             raise ValueError('INVALID_MANIFEST')
+        if (item['manifest'] == 'PINNED_GIT_TREE' and
+                item.get('joined_first_consumer') is not True):
+            raise ValueError('UNAUTHORIZED_GIT_TREE_MODE')
+        if type(item.get('joined_first_consumer', False)) is not bool:
+            raise ValueError('INVALID_JOINED_CONSUMER_FLAG')
         seen_pr.add(pr)
     return q
 
@@ -100,7 +108,63 @@ def git(repo: Path, *argv, timeout=90):
     return require_ok(r, 'GIT_' + argv[0].replace('-', '_').upper())
 
 
+def pinned_git_tree_check(src: Path):
+    """Verify joined Python source/test bytes against the frozen Git tree.
+
+    Used only for the explicit integration queue. A pinned commit plus
+    complete Git blob checking replaces an outdated historical manifest;
+    it does not claim an independent precommitted SHA256 manifest.
+    """
+    root = Path(git(src, 'rev-parse', '--show-toplevel')).resolve()
+    try:
+        prefix = src.resolve().relative_to(root).as_posix()
+    except ValueError as exc:
+        raise QueueFailure('PINNED_TREE_OUTSIDE_CHECKOUT') from exc
+    listing = git(src, 'ls-tree', '-r', 'HEAD', '--', prefix)
+    tracked = {}
+    for line in listing.splitlines():
+        parts = line.split('\\t', 1)
+        if len(parts) != 2:
+            raise QueueFailure('PINNED_TREE_UNREADABLE')
+        meta, full = parts
+        if not (full.startswith(prefix + '/') and full.endswith('.py')):
+            continue
+        fields = meta.split()
+        if len(fields) != 3 or fields[0] not in ('100644', '100755') or fields[1] != 'blob':
+            raise QueueFailure('PINNED_TREE_PYTHON_NOT_REGULAR', full)
+        rel = full[len(prefix) + 1:]
+        if rel in tracked:
+            raise QueueFailure('PINNED_TREE_DUPLICATE_PATH', rel)
+        tracked[rel] = fields[2]
+    if not tracked:
+        raise QueueFailure('PINNED_TREE_EMPTY_PYTHON_COURT')
+    disk = {p.relative_to(src).as_posix() for p in src.rglob('*.py')
+            if p.is_file() or p.is_symlink()}
+    if disk != set(tracked):
+        raise QueueFailure('PINNED_TREE_PYTHON_SET_MISMATCH', {
+            'untracked': sorted(disk - set(tracked))[:20],
+            'missing': sorted(set(tracked) - disk)[:20]})
+    digest = hashlib.sha256()
+    for rel, expected in sorted(tracked.items()):
+        fp = src / rel
+        if fp.is_symlink() or not fp.is_file():
+            raise QueueFailure('PINNED_TREE_SOURCE_MISSING_OR_SYMLINK', rel)
+        raw = fp.read_bytes()
+        actual = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\\0' + raw).hexdigest()
+        if actual != expected:
+            raise QueueFailure('PINNED_TREE_SOURCE_BLOB_MISMATCH', rel)
+        digest.update((rel + '\\0' + expected + '\\0' +
+                       hashlib.sha256(raw).hexdigest() + '\\n').encode())
+    return {'verified_python_files': len(tracked),
+            'manifest': 'PINNED_GIT_TREE',
+            'sha256': digest.hexdigest(),
+            'identity_basis': 'exact_commit_git_tree_and_content_sha1_sha256',
+            'precommitted_independent_sha256_manifest': False}
+
+
 def source_manifest_check(src: Path, filename: str):
+    if filename == 'PINNED_GIT_TREE':
+        return pinned_git_tree_check(src)
     p = src / filename
     if not p.is_file():
         raise QueueFailure('SOURCE_MANIFEST_MISSING', str(p))
