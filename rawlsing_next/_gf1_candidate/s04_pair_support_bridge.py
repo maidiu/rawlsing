@@ -18,7 +18,7 @@ from rawlsing_next._gf1_candidate.gf1_pair_support_consumer import (
     compute_pair_support_signature,
 )
 from rawlsing_next.pre553_empirical_objects import (
-    EmpiricalQuerySpec, ExactRef, semantic_hash,
+    EmpiricalQuerySpec, ExactRef,
 )
 from rawlsing_next.pre553_s04_first_consumer import S04OnePassResult
 
@@ -65,7 +65,7 @@ def receive_gf1_pair_from_s04(
             "unavailable or unresolved empirical fact cannot become a supported GF1 relation"
         )
     material = s04.knowledge.material()
-    if (material.get("source_query_ref") != query.ref.as_dict()
+    if (material.get("query_ref") != query.ref.as_dict()
             or material.get("fact_ref") != fact.ref.as_dict()
             or s04.receipt.material().get("s04_knowledge_ref")
                 != s04.knowledge.ref.as_dict()
