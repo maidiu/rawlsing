@@ -709,6 +709,21 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             sign['actual_independent_speech_response']=True
             sign['spoken_content']='NOT_CAPTURED_OR_RECONSTRUCTED'
             sign['vocal_interchange_not_lexical_comprehension']=True
+    # R26: world-owned, actually performed person-directed conduct has an
+    # objective two-person history even when neither party interprets it alike.
+    # Give *eligible* witnesses the target identity, not the target's mind,
+    # relational meaning, consent, or a privileged explanation of this act.
+    if (status=='PERFORMED' and attempt.action in ('CARE','FEED','IMPOSE')
+            and type(target) is str and target in actors and target!=aid
+            and world['positions'].get(target)==loc):
+        field=_field(world,aid,target)
+        field['history'].append({
+            'clock':world['clock'],'actor':aid,'target':target,
+            'operation':attempt.action,'performed_status':'PERFORMED',
+            'not_consent_or_private_psychological_meaning':True,
+            'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'})
+        sign['actor_accessible_target_ref']=target
+        sign['public_person_directed_act_not_private_intention']=True
     witnesses=[a for a in actors if world['positions'].get(a)==loc]
     # World-level efficacy is NOT the actor's own explanatory model. Even an
     # independently authored coactor response does not make the principal's
