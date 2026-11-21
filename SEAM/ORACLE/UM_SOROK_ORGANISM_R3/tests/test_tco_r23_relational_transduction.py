@@ -98,7 +98,8 @@ def mediated(s):
 def lived():
     return {'actor':'mother','ref':'lived:mother:new_contrast',
             'participated':True,
-            'perceived_cues':[{'id':'objective:neighbor_contrast'}],
+            'perceived_cues':[{'id':'objective:neighbor_contrast',
+                                'source_actor':'neighbor'}],
             'status':'OBSERVED','own_action':None}
 
 
@@ -306,6 +307,47 @@ class ThreeAgentMulchR23(unittest.TestCase):
                             for c in s.currents))
         self.assertFalse(any(c['kind']=='RELATIONALLY_MEDIATED_ACTION_CURRENT'
                              for c in s.currents))
+
+    def test_new_witnessed_relation_requires_actual_actor_lived_source(self):
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        original=copy(actor)
+        proposal={'kind':'ACQUIRE_RELATIONAL_MOTIF','motif':motif()}
+        with self.assertRaisesRegex(
+                InvalidDevelopment,'MOTIF_WITNESSED_OTHER_NOT_RECEIVED'):
+            admit(actor,lived(),'objective:unrelated_neighbor',[proposal])
+        self.assertEqual(actor,original)
+        perceived=copy(lived())
+        perceived['perceived_cues']=[{
+            'id':'objective:pastor_source','source_actor':'pastor'}]
+        result=admit(actor,perceived,'objective:qualified_pastor',[proposal])
+        self.assertEqual(result[0]['status'],
+                         'ADMITTED_SOURCEFREE_RELATIONAL_FORMATION')
+        self.assertEqual(actor['relational_motifs'][0]['experience_ref'],
+                         perceived['ref'])
+        self.assertEqual(actor['relational_motifs'][0]['origin'],
+                         ['objective:qualified_pastor'])
+        self.assertTrue(any(
+            x['kind']=='RELATIONALLY_MEDIATED_ACTION_CURRENT'
+            for x in compose(
+                read_model(motif_override=actor['relational_motifs'][0]),
+                encounter()).currents))
+
+    def test_relation_cannot_retarget_to_unexperienced_other(self):
+        actor=adult('mother','Mother')
+        actor['forms']=copy(read_model().forms)
+        actor['relational_motifs']=[motif()]
+        before=copy(actor)
+        unqualified=copy(lived())
+        unqualified['perceived_cues']=[{'id':'objective:irrelevant'}]
+        with self.assertRaisesRegex(
+                InvalidDevelopment,'MOTIF_WITNESSED_OTHER_NOT_RECEIVED'):
+            admit(actor,unqualified,'objective:invented_neighbor',[{
+                'kind':'REORGANIZE_RELATIONAL_MOTIF',
+                'motif_id':'historically_learned_care_authority',
+                'witnessed_source_actor_ref':'neighbor',
+            }])
+        self.assertEqual(actor,before)
 
     def test_read_cannot_write_other_psyche_or_world_permission(self):
         c=read_model()
