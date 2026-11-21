@@ -38,7 +38,7 @@ Insert immediately **after** the canonical opening OATH (without rewriting any O
     "o_index_r3_immutable_head": "e50d32eb6816578145d17dcd637a0b90b3a1ef40",
     "live_relative_file": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json",
     "discovery_scope": "102 targeted PRs, not full-repository completeness",
-    "event_count": 5,
+    "event_count": 6,
     "principal_sourcefree_first_reader": {
       "pr": 1234,
       "historical_executed_red_shas": ["018d3025", "2553e1d860e7b75e32d04b9bbe9fd823eb13e5c8"],
