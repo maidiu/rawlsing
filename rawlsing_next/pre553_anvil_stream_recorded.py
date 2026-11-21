@@ -94,14 +94,36 @@ class RecordedUniverseUse:
             raise RecordedResponseError("historical snapshot family mismatch")
         if self.historical_snapshot.scope_envelope.get("semantic_scope") != "EXACT_SOURCE_CODEBOOK_AND_H48_EVIDENCE_ONLY":
             raise RecordedResponseError("historical snapshot scope mismatch")
-        if self.positive_snapshot.scope_envelope.get("source_universe_refs") is not None:
-            allowed = self.positive_snapshot.scope_envelope.get("source_universe_refs")
-            if self.universe_root not in {str(x) for x in (allowed if isinstance(allowed, (list, tuple)) else (allowed,))}:
-                # Also accept canonical mapping form already checked by native authority.
-                if not any(isinstance(x, Mapping) and x.get("object_id") == exact_universe.object_id for x in (allowed if isinstance(allowed, (list, tuple)) else (allowed,))):
-                    raise RecordedResponseError("positive use scope does not bind universe")
+        scope = self.positive_snapshot.scope_envelope
+        if not isinstance(scope, Mapping) or not scope:
+            raise RecordedResponseError("positive use scope envelope is mandatory")
+        allowed = scope.get("source_universe_refs")
+        if allowed is None:
+            raise RecordedResponseError("positive use scope has no source_universe_refs")
+        if isinstance(allowed, Mapping):
+            allowed = (allowed,)
+        if not isinstance(allowed, (tuple, list)) or len(allowed) != 1:
+            raise RecordedResponseError("positive use scope must name exactly one universe")
+        try:
+            allowed_ref = exact_ref(allowed[0], "positive use universe ref")
+        except Exception as exc:
+            raise RecordedResponseError("positive use universe ref is not canonical full ref") from exc
+        if allowed_ref != exact_universe:
+            raise RecordedResponseError("positive use universe ref differs including hash")
+        if scope.get("scope") != self.scope:
+            raise RecordedResponseError("positive use scope differs from held scope")
+        if scope.get("release") not in (None, self.release_root):
+            raise RecordedResponseError("positive use release binding mismatch")
+        if scope.get("replay_root") not in (None, self.replay_root):
+            raise RecordedResponseError("positive use replay binding mismatch")
+        if scope.get("source_sha256") not in (None, self.source_root):
+            raise RecordedResponseError("positive use source binding mismatch")
+        if "recorded_raw_codes" in scope and tuple(str(x) for x in scope["recorded_raw_codes"]) != tuple(str(x) for x, _ in self.interpretation):
+            raise RecordedResponseError("positive use code/interpretation mismatch")
         if self.operation not in self.positive_snapshot.governed_operations:
             raise RecordedResponseError("positive use operation mismatch")
+        if self.operation not in self.historical_snapshot.governed_operations and self.historical_snapshot.decision_state != "DEFER":
+            raise RecordedResponseError("historical operation binding mismatch")
         if query.ref != exact_ref(self.query_ref) or predicate.ref != exact_ref(self.predicate_ref):
             raise RecordedResponseError("universe use query/predicate identity mismatch")
         if exact_ref(query.risk_set_ref) != exact_ref(self.risk_ref):

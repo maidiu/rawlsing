@@ -88,6 +88,14 @@ def main() -> int:
         current_src = current_r2["waves"][owner["source_id"]]
         return {k: current_src[k] for k in expected_binding} == expected_binding
 
+    use_pre = json.loads(args.universe_use_decision.read_text())
+    closure_pre = json.loads(args.universe_closure.read_text())
+    if use_pre.get("operation_document_sha256") != hashlib.sha256(args.operation_json.read_bytes()).hexdigest():
+        raise SystemExit("UNIVERSE_USE_OPERATION_SHA_MISMATCH_BEFORE_READ")
+    if len(closure_pre) != 1 or closure_pre[0].get("ref") != use_pre.get("historical_snapshot_ref") or closure_pre[0].get("state") != "DEFER":
+        raise SystemExit("UNIVERSE_USE_HISTORICAL_REF_MISMATCH_BEFORE_READ")
+    if use_pre.get("scope") != owner.get("scope"):
+        raise SystemExit("UNIVERSE_USE_SCOPE_MISMATCH_BEFORE_READ")
     held = HeldStreamPins(
         source_id=owner["source_id"],
         source_sha256=binding["source_sha256"],

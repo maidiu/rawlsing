@@ -2,8 +2,8 @@
   "base_commit": "00099cae1f98cd3793024d57eb793943203bdf38",
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 8312,
-      "sha256": "cd0b9158a1e00c5d737c19299929693f468e0dc278e41651b19f10e3a8e931c8"
+      "bytes": 9021,
+      "sha256": "575a2b0b158da179c8404c855da7da161ef7de9d020cbfbb8f239e191eb01e1d"
     },
     "REAL_UNIVERSE_USE.err": {
       "bytes": 0,
@@ -14,20 +14,32 @@
       "sha256": "05879e5d7cb7a0e10f835b5ff546111459370bc910e04dfb53dab98716dd111f"
     },
     "RETURN.json": {
-      "bytes": 15595,
-      "sha256": "a43bc8b6e8cf7bb69d7b60317de38e6836363bf8f98e9c5823b01a74c65f2758"
+      "bytes": 16147,
+      "sha256": "b9f087e6bdd22197c425e80bb22a76533d660ffcfe0cb8b9833b7b0eb20bf86c"
     },
     "SOURCE_UNIVERSE_SUCCESSOR_GAP.json": {
       "bytes": 2009,
       "sha256": "42d3283883153f06cf05720c53d1d722a1fdad33af779c7d36eb85f4cdaa42df"
     },
+    "UNIVERSE_SCOPE_DRIVER.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "UNIVERSE_SCOPE_DRIVER.out": {
+      "bytes": 363,
+      "sha256": "a7860fe521d71f206ffe088920b5c2b236c7e454e587f0eb545059b75e9bcc2b"
+    },
     "UNIVERSE_SUCCESSOR_RED.json": {
       "bytes": 2195,
       "sha256": "34ec54fdcdc0ff10d3f7234e12a8d798fd9584d6f80efeac5e8e4479bb089cfc"
     },
+    "driver_universe_use_scope.py": {
+      "bytes": 3760,
+      "sha256": "7ffc1ce6007655e866a5138419a1e6552d25e09e87e86944921a881eb085f764"
+    },
     "probe_real_universe_use.py": {
-      "bytes": 4017,
-      "sha256": "ab7f8ab0fb520811866c66f73d0c60626adc79192bfb65621cb4c766a1e2d7ec"
+      "bytes": 5465,
+      "sha256": "3d8cac1802d52732a3c463b217a7cbbd865b0078e3567d7658f778a1a6faa9a4"
     }
   },
   "original_source_accessed": false,
@@ -45,6 +57,7 @@
     "real_metadata_proof_sha256": "05879e5d7cb7a0e10f835b5ff546111459370bc910e04dfb53dab98716dd111f",
     "recorded_module_sha256": "a1cfab936d307621a9c5db5fe3655a32dadb2115c9aec4384a02baea73c2c270",
     "recorded_proof_sha256": "fcdf0c0e9c83ae8d1299f909e4a18b3cb169dfd0d5bd6fafde594cf03a968708",
+    "scope_driver_sha256": "a7860fe521d71f206ffe088920b5c2b236c7e454e587f0eb545059b75e9bcc2b",
     "strategy_module_sha256": "dd8621031b596fbbe71a0622e2b570b8251a7b7d0f0c9c7a5e9e2008192b31ad",
     "universe_use_proof_sha256": "0367e0386295f69cbcb07492fe89b534b411ee3eb73ebe30dd6a45dba648e8e1"
   },
@@ -64,5 +77,5 @@
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_MANIFEST@1",
   "sourcefree": true,
-  "status": "SOURCE_UNIVERSE_USE_HANDLE_STRICT__REAL_METADATA_PREFLIGHT_PASS__SOURCEFREE_PERSISTED_DEFER_PROOF_NOT_COMPLETE"
+  "status": "UNIVERSE_USE_SCOPE_STRICT__DRIVER_RED_GREEN__REAL_METADATA_PASS__SOURCEFREE_FIXTURE_LANE_SEPARATE"
 }

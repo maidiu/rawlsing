@@ -177,3 +177,13 @@ replay equal, both historical and positive identities retained, missing/wrong
 history/wrong query negatives refused. `REAL_UNIVERSE_USE.out` is a real
 metadata-only preflight over the stored DEFER and issued owner decision:
 `PASS`, no respondent bodies read, no index built, no private IDs published.
+
+## Universe-use scope hardening
+
+`RecordedUniverseUse` now requires mandatory non-empty positive scope with the
+exact canonical full universe ref including content hash, scope, source/release
+pins and operation; it refuses absent scope, same-ID wrong hash, substituted
+operation, missing current and wrong history before data. The targeted driver is
+`UNIVERSE_SCOPE_DRIVER.out`. Real metadata preflight with the stored DEFER and
+issued decision remains `PASS`. A separate worker owns the persisted-DEFER
+fixture native proof.

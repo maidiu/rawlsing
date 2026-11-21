@@ -82,6 +82,7 @@
     "real_metadata_proof_sha256": "05879e5d7cb7a0e10f835b5ff546111459370bc910e04dfb53dab98716dd111f",
     "recorded_module_sha256": "a1cfab936d307621a9c5db5fe3655a32dadb2115c9aec4384a02baea73c2c270",
     "recorded_proof_sha256": "fcdf0c0e9c83ae8d1299f909e4a18b3cb169dfd0d5bd6fafde594cf03a968708",
+    "scope_driver_sha256": "a7860fe521d71f206ffe088920b5c2b236c7e454e587f0eb545059b75e9bcc2b",
     "strategy_module_sha256": "dd8621031b596fbbe71a0622e2b570b8251a7b7d0f0c9c7a5e9e2008192b31ad",
     "universe_use_proof_sha256": "0367e0386295f69cbcb07492fe89b534b411ee3eb73ebe30dd6a45dba648e8e1"
   },
@@ -356,10 +357,37 @@
     ]
   },
   "source_universe_use": {
-    "historical_snapshot_required": "DEFER",
-    "mandatory_current_verifier": true,
-    "positive_snapshot_required": true,
-    "private_ids_published": false,
+    "canonical_full_ref_with_hash": true,
+    "driver": [
+      {
+        "accepted": true,
+        "case": "exact_positive"
+      },
+      {
+        "accepted": false,
+        "case": "absent_scope",
+        "type": "RecordedResponseError"
+      },
+      {
+        "accepted": false,
+        "case": "wrong_hash",
+        "type": "RecordedResponseError"
+      },
+      {
+        "accepted": false,
+        "case": "substituted_operation",
+        "type": "RecordedResponseError"
+      },
+      {
+        "accepted": false,
+        "case": "missing_current",
+        "type": "RecordedResponseError"
+      }
+    ],
+    "empty_scope_refused": true,
+    "exact_positive_accepted": true,
+    "missing_current_refused": true,
+    "positive_scope_required": true,
     "real_metadata_preflight": {
       "historical_identity_retained": true,
       "historical_state": "DEFER",
@@ -370,9 +398,10 @@
       "schema": "ANVIL_Q006_UNIVERSE_USE_METADATA_PREFLIGHT@1",
       "status": "PASS"
     },
-    "sourcefree_persisted_defer_native_proof": "NOT_COMPLETE__fixture_must_persist_DEFER_not_monkeypatch",
-    "strict_handle": true
+    "sourcefree_persisted_defer_native_proof": "SEPARATE_FIXTURE_LANE__not_claimed_here",
+    "substituted_operation_refused": true,
+    "wrong_hash_refused": true
   },
   "sourcefree": true,
-  "status": "SOURCE_UNIVERSE_USE_HANDLE_STRICT__REAL_METADATA_PREFLIGHT_PASS__SOURCEFREE_PERSISTED_DEFER_PROOF_NOT_COMPLETE"
+  "status": "UNIVERSE_USE_SCOPE_STRICT__DRIVER_RED_GREEN__REAL_METADATA_PASS__SOURCEFREE_FIXTURE_LANE_SEPARATE"
 }
