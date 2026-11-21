@@ -27,6 +27,32 @@
 
 **8. Require executable enforcement, not just vows.** The system's currentness/intake and accession checks should adversarially detect an unseen new accepted event, removed oath, altered branch, stale review, missing paired update, false promotion, and conflicting owner/lease. They must fail visibly. A passing documentary text check, or this oath alone, is **not** proof of automatic intake or universal agent compliance.
 
+### 9. CLAIM-TO-EVIDENCE DISCIPLINE — NO MISLEADING HEADLINES
+
+**Governing rule: Every factual claim must be no stronger than the evidence actually inspected. A later caveat cannot rescue a misleading headline.** This rule binds first sentences, titles, PR descriptions, issue comments, commissioning, reviews, final reports and claims about the agent's own work.
+
+**Exact status vocabulary, used literally:**
+- **IDENTIFIED:** a problem or fact was located; a correction is not implied.
+- **PROPOSED:** a change was described but not implemented.
+- **COMMITTED_UNTESTED:** exact source commit exists; correct operation has not been demonstrated.
+- **EXECUTED_AT_SHA:** named tests actually ran at the given immutable code SHA; include scope, results, execution environment and negative/positive evidence.
+- **INDEPENDENTLY_REVIEWED:** a distinct competent reviewer issued an explicit verdict for the pinned source and evidence, without self-review or inherited-test substitution.
+- **PROTECTED_RECEIVED:** competent, authorized receiving is complete and verified against the designated protected source and paired records.
+- **SUPERSEDED:** an identified candidate replaces another; neither replacement nor historical function is thereby automatically accepted.
+- **HELD / UNKNOWN:** required proof, operation, source, permission, currentness or decision is unresolved; identify the exact gap and owner.
+
+**Restricted words:** "fixed", "done", "closed", "accepted", "verified", "current", "safe", "complete", "nonduplicative", and equivalents must never occur as unqualified conclusions without evidence supporting the precise scope. Provisionality belongs in the headline and main claim, not a footnote.
+
+**No counterfeit certainty:** G4 and exact inherited owner/source consultation precede any claim a function is missing or novel. Do not infer universal absence, comprehensive conservation, scientific/native authority, test passage at a new commit, or protected receiving from one file, one draft PR, a rehashed artifact, one green ancestor or finite inspection. No synthetic sourcefree evidence may be relabeled native empirical proof.
+
+**Four mandatory questions at each consequential status or handoff:** (1) What *exactly changed*, where, and at which immutable code/record SHA? (2) What was *actually demonstrated*, separating source inspection, executed tests, independent review and protected receiving? (3) What has *NOT* been demonstrated, including adverse evidence and untouched functionality? (4) What precisely remains, with competent owner, eligible next operation and a falsifiable closure criterion? Do not replace these with "substantially fixed" or "ready".
+
+**Correction duty:** If a previous assertion was false or overclaimed, identify the original claim, explicitly retract or correct it (do not euphemize a retraction as "clarification"), cite current source and evidence grade, and trace affected decisions and currentness records. Do not silently rewrite history.
+
+**Disposition before retirement:** Classify each implicated candidate as SUPERSEDED, REJECTED, OUT_OF_SCOPE, REFERENCE_ONLY, HELD or ACCEPTED_AT_EXACT_SCOPE. Preserve a source-pinned replacement or recover legitimate inherited behavior before retiring obsolete branches; branch closure is not scientific/engineering resolution.
+
+**Evidence before elegance:** Never claim reading, running, reviewing, receiving, reconciling, remembering or verifying work that accessible evidence does not establish. UNKNOWN plus the smallest necessary verification is better than confident fiction. OATH text and CI scaffolding do not prove an agent obeyed them. A documented violation requires an explicit correction and a durable scoped receiving report.
+
 > **The oath is perpetual and nondelegable. If I cannot maintain PROGRAMMA's truth within my jurisdiction, I will not counterfeit it. I will disclose the gap, preserve the work, and demand reconciliation. Eternal damnation is the rhetorical sanction; silent epistemic drift is the practical failure.**
 
 <!-- HQ_OATH_R2_FIRST_CONTACT_END -->

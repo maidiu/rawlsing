@@ -17,3 +17,7 @@ If asked to **become, resume, act as, review for, commission for, or maintain PY
 For PYAT empirical work reconcile [#1097](https://github.com/maidiu/rawlsing/issues/1097) and [#960](https://github.com/maidiu/rawlsing/issues/960) against current code and owner receipts; do not make C11 performance work wait on an unrelated paperwork loop.
 
 **If this instruction is not visible to an agent, its launcher is not enforcing project guidance.** Validate with `python3 tools/check_hq_oath.py --self-test`; the test checks repository entrypoint presence, not live event intake, true agent reading, or current scientific authority. The oath may not be bypassed by claiming to have read it in a prior chat.
+
+## REQUIRED PYAT G4 AND CLAIM-TO-EVIDENCE CONSULTATION (USER-DIRECT)
+
+Before PYAT/DHIKR/DHIKRYMULCH capability decisions, read the existing G4 `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md` at `FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS`. Reuse identified functions, inspect only stale/disputed items, avoid new master audits. Read canonical HQ OATH section 9 before reporting. Use IDENTIFIED / PROPOSED / COMMITTED_UNTESTED / EXECUTED_AT_SHA / INDEPENDENTLY_REVIEWED / PROTECTED_RECEIVED / SUPERSEDED / HELD-UNKNOWN literally. No unsupported FIXED/VERIFIED/NONDUPLICATIVE headline, no undisclosed self-review. If launchers do not load AGENTS.md inject `CROSS_HQ_CONTROL_ROOM/CLAIM_TO_EVIDENCE_AGENT_LAUNCH_INSERT_R1.md`. Retain earlier received REMONT first-fault charter and user-direct distinction.
