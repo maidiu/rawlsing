@@ -84,7 +84,21 @@ assert paths["total_directory_entries"] == 25, paths["total_directory_entries"]
 assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
 idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|", ideas, re.M)]
-assert idea_numbers == list(range(1, 45)), idea_numbers
+assert idea_numbers == list(range(1, 67)), idea_numbers
+for excerpt in (
+    "everything is a dialectic", "it needs to be modeled like many overlapping dialectics",
+    "also, what I have just said is a riff",
+):
+    assert excerpt in (ROOT / "10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md").read_text(), excerpt
+five = (ROOT / "11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md").read_text()
+for title in (
+    "THE OBSERVER IS OBSERVABLE",
+    "UNRECOGNIZED GOOD",
+    "HUMAN VALUE IN OBJECTS",
+    "TYRANNICALLY RETCON",
+    "PORTAL'S REALIZED SPEECH",
+):
+    assert title in five, ("FIVE_RECOVERY_MISSING", title)
 for excerpt in (
     "and then he cheated on mom", "and the", "the family has one",
     "MULCHINEERING", "I want *everything in one place*",
@@ -103,7 +117,7 @@ for leaf in (
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
-print("USER_CONVERSATION PASS: NM-001 through NM-044 contiguous; exact latest source snippets preserved")
+print("USER_CONVERSATION PASS: NM-001 through NM-066 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")

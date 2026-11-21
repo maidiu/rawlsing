@@ -102,3 +102,38 @@ These ideas are grounded in the prior [R27 explicit user-priority intake](../R27
 - If a promised verbatim original chat is missing, name the source gap and keep the earlier source summaries open; **do not claim absolute chat archival completeness**.
 - Passing sourcefree Actions at a fixed SHA authorizes only the scope that was actually executed, never human psychological science or protected HQ status.
 
+
+## E. November 21 continuation — explicit new user philosophical riff and five back-catalogue finds
+
+**Exact user utterance:** [10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md](10_OVERLAPPING_DIALECTICAL_FIELDS_AND_INFANT_WORLD_RIFF_20261121.md), section A. The user's distinction **"this is a riff ... not ... dogmatic writ"** is controlling for provenance. Every interpretive objection below remains an **assistant hypothesis** unless separately adopted after competent review. The original 757-source bank is NOT silently reclassified as user instruction.
+
+**Five historically recovered candidates with exact sources and current existing-source comparators:** [11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md](11_FIVE_UNDERINTEGRATED_BACK_CATALOGUE_DISCOVERIES_AND_MULCH.md). These are source-old, newly *rediscovered by this assistant*, not invented modern architecture.
+
+| ID | Origin | Individually preserved point | Earlier owner / source | Distinctive grade |
+|---|---|---|---|---|
+| NM-045 | User, present riff | Person's tip and iceberg are always constituted in relation to important Others | PRE-A0 §§7–14, R3 | User interpretive hypothesis, substantial old law |
+| NM-046 | User, present riff | "Strata" must be modeled **as different actors experience and conceptualize them**, not just objective labels | PRE-A0 §11; SEAM/26 | Source-aligned additional stress |
+| NM-047 | User, present riff | Overlapping Nadia↔Other, Nadia↔Other2, Nadia↔Other↔Other2 fields require many recursive relations | PRE-A0 §13, R26 triad | Existing partial relational law, deeper joint consumer unproved |
+| NM-048 | User, present riff | Psychological elements are constituted through relations and can themselves be relata | PRE-A0 PRF §14, R3 | Strong hypothesis, not atomistic graph |
+| NM-049 | User, present riff | The historically acquired *relations between elements* change current activation and recruitment | V3/PFF/CAN, CO R27 relational_metabolism | **Already SOURCEFREE operative** for motifs/action currents, not a missing new engine |
+| NM-050 | User, present riff | Pull/pressure/flow must include relational living movement and constraints rather than free-standing psychological force | PRE-A0 §7 | Original theory partially corrects scalar/primitive force |
+| NM-051 | User, present riff | Human valuation becomes objectified/alienated/fetishized; no single universal gradient is yet proven | SOROK 54/55/56, Marx reading | Open analogy; commodity value≠all personal affective significance |
+| NM-052 | User, present riff | The concept of love and actual lived love can resist and reconstitute each other | PRE-A0 §12; SOROK 71–74 | Historical subject/ideal encounter, no guaranteed integration |
+| NM-053 | User, present riff | Infant-caregiver recognition/coaxing shapes desires and possibility from lived material interaction | PRE-A0 §8; SEAM/22 | Original theory, not inferred universal human course |
+| NM-054 | User, present riff | Infant's own active bids/moves elicit caregiver activity; child gradually learns effective ways to move Others | PRE-A0 §8; CO caregiver constitution | Added reciprocity emphasis; no guaranteed caregiver servility |
+| NM-055 | User, present riff | Growing child incompletely learns world does not revolve around own desire; no fully finished adult decentering | PRE-A0 §7–9 | **Literal zero self–world differentiation not scientifically claimed** |
+| NM-056 | User, present riff | Approach toward what feels enlivening and withdrawal from felt insecurity are historically constituted, not simple global traits | PRE-A0 §§7–8, developmental context | User developmental hypothesis |
+| NM-057 | User, present riff | Retrieve five unusually underforegrounded/underimplemented original ideas from back-catalogue and actually MULCH them | Original H/Q/S source atlas, O-Index, SOROKUDA | Bounded targeted original-source×actual-consumer operation |
+| NM-058 | User, present riff | New observations are invitations to criticism and theoretical dialogue—not immutable dogma | User current message | Governing interpretive restraint |
+| NM-059 | Rediscovered original SOROK | The observer is observable; looking is socially visible, cover can fail, ethical privacy is situated | H049/H053–062, Q-OBS | Historical original law, partial P6/MII/R2 first reader |
+| NM-060 | Rediscovered original SOROK | Real good/harm need not be recognized; actor can blame wrong cause; later confession can revise meaning | H087–99, Q-CAUSAL | Original source; full joined first consumer unproved |
+| NM-061 | Rediscovered original SOROK | Material objects bear human relation-specific value; M0–M8 meaning/cause/myth distinctions | SOROK 54–56/71 | Old corrected theory; current object/meaning join incomplete |
+| NM-062 | Rediscovered original SOROK | A self-myth can tyrannically overwrite access/routing **without rewriting history** | SOROK 72–74 | Old corrected theory; no new framework-engine operator enum |
+| NM-063 | Rediscovered original SOROK | Portaled user-authored SAY may differ from governed actually realized SAY, without a truth filter or dossier | SOROK 22C/22E; Q-LANG/Q-REALIZEDSAY | Historical mode candidate; R2 SAY lacks this qualified join |
+| NM-064 | Assistant exact-code correction | Sourcefree R27 relational motifs already create recruitment candidates and actionable currents, not merely stored meaning | relational_metabolism.py + psychodynamics.py at d682db... | Verified code inspection; **does not prove full society/kin field** |
+| NM-065 | Assistant philosophical objection | Actor's concept of stratum remains separate from objective class, labor, institutional power and material law | PRE-A0 §11, SEAM/26, SOROK 54 | Necessary no-collapse, assistant judgment |
+| NM-066 | Assistant philosophical objection | "Everything is relational" need not imply every association is dialectical contradiction; include support, indifference and absence | PRE-A0 §14, CO valid-empty | Analytic counterargument, not newly adopted law |
+
+**Count:** NM-001–NM-066 = 66 individually indexed entries. **Origin grades:** NM-045–NM-058 user-authored riff; NM-059–NM-063 recovered *pre-existing* historical doctrine; NM-064–NM-066 assistant code correction or philosophical argument. Do not treat all 22 rows as user-authored features or 22 missing functions.
+
+**Source limitations:** This updated 04 preserves original user prose at 10 and older exact text from the previous turn in its original section A. It does not claim verbatim recovery of unseen prior ChatGPT source. R27 sourcefree implementation and external currentness require exact review; current real-world medical, psychological and historical claims are not invented here.
