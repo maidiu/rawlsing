@@ -186,7 +186,7 @@ def main():
         "constrained openness", "care", "self-myth", "reality pressure",
         "coherent", "contradiction", "ordinary", "time", "source-root",
         "material", "inhibitions", "unchosen", "no predetermined",
-        "one-to-one", "non-possession", "deletion", "export",
+        "one-for-one", "non-possession", "deletion", "export",
         "privacy", "attention regime", "recognition", "testimony",
         "objectification", "institutions", "emotional",
         "no lawful counterpart", "human access invitation",
@@ -197,6 +197,23 @@ def main():
     for phrase in fused:
         must(phrase.lower() in main.lower(),
              "cross-corpus generative concept absent from current whole: " + phrase)
+
+    # Latest direct user MULCH correction: the kernel/axis must illuminate
+    # *multiplying, historically generated contradiction*, not smoother
+    # personality coherence or automatic resolution.
+    must("### November 21 direct user theoretical clarification" in whole,
+         "latest direct user theoretical correction not conserved verbatim")
+    must("Nadia should only get *more* pulsatingly contradictorily alive" in whole,
+         "latest direct user operative correction missing")
+    for phrase in (
+        "generative axes", "germinal relations",
+        "more pulsatingly, specifically, multiply contradictory and alive",
+        "more concrete and internally multiple",
+        "deeper relations multiply Nadia",
+        "not to reduce complexity",
+    ):
+        must(phrase.lower() in main.lower(),
+             "conceptual fusion still reduces Nadia's contradictions: " + phrase)
 
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
