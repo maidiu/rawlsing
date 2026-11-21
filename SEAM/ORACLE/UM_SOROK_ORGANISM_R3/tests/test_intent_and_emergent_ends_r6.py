@@ -81,7 +81,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
                          {'comfort my child through song',
                           'experiment with changing a rhythm'})
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         histories=a['activity_history']
         self.assertEqual(len(histories),1)
         self.assertEqual(histories[0]['practical_object'],
@@ -109,7 +109,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
             return {'task':task,'surface':'song perceived'}
         self.rt.semantic=ValidatingSemanticService(CallbackLLMProvider(callback))
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(len(a['activity_history']),2)
         self.assertEqual(
             {x['practical_object'] for x in a['activity_history']},
@@ -124,7 +124,7 @@ class PurposeAndGenesisR6(unittest.TestCase):
     def test_no_model_project_choice_means_unattributed_exploration(self):
         self.provider(include_purpose=False)
         self.rt.step('mother')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(a.get('activity_history',[]),[])
         evidence=a['evidence_paths'][-1]
         self.assertEqual(evidence['purpose_status'],
@@ -143,11 +143,11 @@ class PurposeAndGenesisR6(unittest.TestCase):
             ValueError,'MODEL_SELECTED_PURPOSE_NOT_SITUATED_ELIGIBLE'):
             self.rt.step('mother')
         self.assertEqual(self.rt.ledger.world()[1]['clock'],before)
-        self.assertEqual(self.rt.snapshot('mother')['activity_history'],[])
+        self.assertEqual(self.rt.ledger.actor('mother')[1]['activity_history'],[])
 
     def test_external_action_injection_does_not_assign_a_project(self):
         self.rt.step('mother',requested_action='SING')
-        a=self.rt.snapshot('mother')
+        a=self.rt.ledger.actor('mother')[1]
         self.assertEqual(a['activity_history'],[])
         self.assertEqual(a['evidence_paths'][-1]['purpose_status'],
                          'EXTERNALLY_INJECTED_NO_ATTESTED_ACTOR_PURPOSE')
