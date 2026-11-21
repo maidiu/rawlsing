@@ -16,6 +16,7 @@ from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
+from .historical_self_organization import possible_lived_directional_orientation
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
@@ -751,6 +752,13 @@ class ConstitutiveRuntime:
             # Future pre-cue recruitment belongs to the existing R19 owner.
             recurrent_work=possible_recurrent_work_orientation(
                 actors[aid],experience,objective_ref)
+            # R28 MULCH: the actor's OWN repeated bodily courses can now
+            # qualify a directional historical orientation before a model
+            # proposes its meaning. Neither a felt cost nor relief proves
+            # action causation; a single episode or mixed history gives NONE.
+            # This proposal feeds EXISTING R19 acquisition and pre-cue routing.
+            lived_directional_orientation=possible_lived_directional_orientation(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -821,6 +829,8 @@ class ConstitutiveRuntime:
                         actors[aid],experience)),
                 'historically_possible_recurrent_livelihood_orientation':copy(
                     recurrent_work),
+                'historically_possible_lived_directional_orientation':copy(
+                    lived_directional_orientation),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
