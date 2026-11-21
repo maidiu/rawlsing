@@ -1,97 +1,86 @@
-# Q006 saved-stream typed issuance — authority-binding correction
+# Q006 recorded-response operation — candidate
 
 ## Status
 
-`AUTHORITY_BINDING_CORRECTED__MISSING_RESOLVER_RED_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD`
+`RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_GREEN__Q103_ORIGINAL_NOT_RUN`
 
-Isolated candidate only. No q103 original-wave issuance, new source scheme or
-scientific authority is claimed.
+One focused old-code continuation only. No protected/shared refs, original data,
+original q103 run, issue post or G5 claim.
 
-## RED witness — missing resolver
+## Actual constructor
 
-`red_missing_resolver.py` was run against the prior candidate
-`520094c79c25efaabed2db6c02150f2912091721` with
-`effective_current=None`. The positive sourcefree call completed with
-`SUPPORTED`; the absent decision-level check did not block it. See
-`RED_MISSING_RESOLVER.out`.
+`rawlsing_next/pre553_anvil_stream_recorded.py`
 
-## Correction
+`HeldRecordedOperation` is the externally held q103 decision binding. It carries:
 
-`rawlsing_next/pre553_anvil_stream_issuance.py` now requires
-`decision_verifier: Callable[[HeldStreamIssuanceDecision], bool]`; there is no
-optional check and no `lambda: True` default in the adapter. It calls the exact
-held-decision verifier before validation, immediately before native execution,
-after native execution, and at final output. It also validates the held
-source/release/universe/replay roots, source identity, exact question binding,
-query target, denominator, response-state semantics, operation authority and
-current estate.
+- owner-decision SHA-256;
+- exact source/release/universe/replay roots and native question;
+- authorized operation and allowed raw codes;
+- exact source/routing/query authority refs;
+- distinct recorded risk, routing-rule, member-set replay, predicate replay,
+  query replay, measure and response-semantics refs.
 
-`HeldStreamIssuanceDecision` now carries the externally held denominator and
-response-semantics refs. No source semantics are inferred from saved metadata.
+`build_recorded_operation` constructs the existing `EmpiricalPredicate` and
+`EmpiricalQuerySpec` with `make_empirical_predicate` and `EmpiricalQuerySpec`
+directly from that operation. It does not consume a prebuilt query/predicate,
+does not use the TEST_ONLY `_query_for_bundle`, and does not create scientific
+authority.
 
-## Retained refusals
+It resolves the verified saved scalar occurrences using the existing stream
+decoder. Recorded membership is established only from the held allowed raw
+codes. A respondent with no event is an explicit nonmember and is tallied as
+physical missing, outside the native denominator. Unknown codes and duplicate
+occurrences refuse.
 
-The sourcefree proof refuses:
+## Narrow native admission
 
-- forged/stale decision under the expected verifier;
-- missing verifier;
-- wrong source/release/universe/replay/question;
-- wrong operation;
-- missing/stale authority;
-- raw outcome outside the approved domain;
-- denied current authority;
-- revocation during execution and at final output.
+`pre553_direct_estate_i03.DirectEstateI03Session` accepts an optional
+`recorded_routing` tuple. `execute_anvil_stream_i03` forwards it for this one
+read. The normal path is unchanged and ordinary `ROUTING_UNKNOWN` still refuses.
 
-## Operation-to-query construction — exact first fault
+The projection supplies ephemeral `RoutingEligibilityFact` rows with a distinct
+recorded risk ref and member-set replay commitment. Original event refs are
+retained in routing dependencies and native provenance. Stored Parquet,
+locators, authority and stream refs are not modified.
 
-The existing exact saved-stream consumer still requires caller-supplied
-`EmpiricalPredicate` and `EmpiricalQuerySpec`. No production operation-to-query
-builder exists for a verified ANVIL stream:
-
-- `pre553_governed_query_issuer_v2` builds only from a
-  `GovernedFrontierCompilation` and is explicitly `TEST_ONLY_SOURCEFREE`;
-- `pre553_native_workload_binding.build_projection_catalog` is a test-only
-  fixture builder and does not consume a verified saved stream;
-- q103's 97/98/99 and asked/eligible source decision is absent, so constructing
-  its operation/query would require source/schema authority not present here.
-
-The candidate therefore freezes the valid authority-binding correction at the
-adapter and leaves operation-to-query construction as an exact owner seam. The
-seven-code test consumes a sourcefree q103-shaped fixture, not an original SRC04
-issuer. It does not invent a new source scheme, full R03 compiler or second
-evaluator.
-
-### Required owner terrain
-
-- **R03 / saved-release issuer owner**: production operation-to-query/predicate
-  construction from the exact held operation and verified stream scope.
-- **SRC04 QSM/source/risk owner**: q103 97/98/99, system missingness, and
-  asked/eligible denominator (or narrower recorded-responses-only scope).
+The existing native I03 evaluator performs all counting; there is no second
+evaluator or manual count.
 
 ## Sourcefree proof
 
-`proof_typed_issuance.py` / `TYPED_ISSUANCE.out`:
+`proof_recorded_operation.py` / `RECORDED_OPERATION.out`:
 
-- owner decision SHA-256 `e3de52e...` verified; recorded codes are
-  `1,2,3,4,97,98,99`, asked risk remains `HELD_ROUTING_UNKNOWN`;
-- positive: `SUPPORTED`, denominator 2, cells `0`/`1`, exact
-  `PRE553_I03_QUERY_REPLAY`;
-- nonanswer: `UNRESOLVED`, explicitly approved;
-- seven-code sourcefree shape: all seven codes each `raw_numerator_support=1`,
-  denominator 8, one separate physical-missing occurrence, repeat replay
-  equal; state `UNRESOLVED` because physical missing is separate and not
-  fabricated as substantive;
-- roots unchanged, stream release retained;
-- exact verifier mandatory and called before/after/output;
-- all negatives above refused, including duplicate approved raw codes.
+- owner decision SHA-256 `e3de52e...` verified;
+- codes `1,2,3,4,97,98,99`;
+- seven disjoint native cells, each support 1;
+- denominator exactly **7**;
+- one physical-missing occurrence excluded separately;
+- native state `SUPPORTED`;
+- exact repeat replay equal;
+- stream release retained;
+- wrong source/release, missing authority, duplicate code, unknown code and
+  denied verifier refusals.
 
-## Pins
+This is a sourcefree q103-shaped fixture, not an original SRC04 run.
 
-- #1084 issuer: `357a0fbf...`
-- #1205 asked-eligible: `c5efdbdf...`
-- #1185 bridge: `3eee662d...`
-- prior candidate: `520094c79...`
-- q103 return: `4a3599065...`
+## MainMac command
 
-No original source, original q103 data, saved-estate rebuild/modification,
-protected refs, G5 claim, issue posts or original-wave I03 was used.
+```bash
+ANVIL_Q006_OWNER_DECISION=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/P0_TWO_SAVED_WAVES_PRIVATE/q006_q103_owner_decision.json \
+PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER \
+python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/proof_recorded_operation.py
+```
+
+The original SRC04 execution remains explicitly not run until controller checks
+the candidate and private authority.
+
+## Preserved boundaries
+
+- no asked risk synthesized from recorded rows;
+- no stored event/locator/Parquet mutation;
+- no TEST_ONLY R03 path or new source scheme;
+- no full compiler or second evaluator;
+- original q103 data, raw SAV, protected refs, G5 and issue posts untouched.
+
+Pins: #1084 `357a0fbf...`, #1205 `c5efdbdf...`, #1185 `3eee662d...`, q103
+`4a3599065...`.

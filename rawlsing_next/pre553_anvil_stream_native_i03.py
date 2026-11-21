@@ -267,6 +267,7 @@ def _stream_exact_universe(value: str) -> ExactRef:
 def execute_anvil_stream_i03(
     *, estate: VerifiedAnvilStreamEstate, runtime_catalog: Any,
     query_ref: Any, predicate_ref: Any,
+    recorded_routing: tuple[Any, ...] | None = None,
 ) -> Any:
     """Execute the ORIGINAL governed I03 over verified saved ANVIL rows.
 
@@ -287,7 +288,9 @@ def execute_anvil_stream_i03(
     if exact_ref(query.condition_predicate_ref) != predicate.ref:
         raise DirectEstateError("stream query condition is not the exact predicate")
     _require_stream_query_scope(estate, query, predicate)
-    with DirectEstateI03Session(estate) as reader:
+    with DirectEstateI03Session(
+        estate, recorded_routing=recorded_routing,
+    ) as reader:
         result = execute_empirical_query(
             repository=reader, query=query, predicate=predicate,
             authority_registry=runtime_catalog.authority_registry,

@@ -1,0 +1,138 @@
+{
+  "built": {
+    "allowed_codes": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "97",
+      "98",
+      "99"
+    ],
+    "physical_missing_respondents": 1,
+    "predicate_ref": {
+      "content_hash": "26b0f7e4e02167577c946574a409a20801b60237f50033e8b006a93a99335f48",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:26b0f7e4e02167577c946574a409a20801b60237f50033e8b006a93a99335f48"
+    },
+    "query_ref": {
+      "content_hash": "4a3bcc8f718d7b115a9da313d7bd2ea22e4a5dfa5f5d82bbe56c484005ed8792",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:4a3bcc8f718d7b115a9da313d7bd2ea22e4a5dfa5f5d82bbe56c484005ed8792"
+    },
+    "recorded_routing_facts": 8
+  },
+  "native": {
+    "cells": [
+      [
+        "1",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "2",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "3",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "4",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "97",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "98",
+        1,
+        "OBSERVED_POSITIVE"
+      ],
+      [
+        "99",
+        1,
+        "OBSERVED_POSITIVE"
+      ]
+    ],
+    "physical_missing_excluded": 1,
+    "raw_denominator_support": 7,
+    "raw_numerator_support": 7,
+    "recorded_codes_present": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "97",
+      "98",
+      "99"
+    ],
+    "release_refs": [
+      {
+        "content_hash": "b53d2a45aae95677509d7f301492e0ab6f2cd360b8a008434a27782e11e152be",
+        "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+        "object_id": "RECORDED"
+      }
+    ],
+    "replay_equal": true,
+    "replay_ref": "{'content_hash': '786db0cd63ecbcb6644bcc2f4d8a8c49126caf403e1c3b26e532ed545165c774', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:786db0cd63ecbcb6644bcc2f4d8a8c49126caf403e1c3b26e532ed545165c774'}",
+    "typed_state": "SUPPORTED"
+  },
+  "negatives": [
+    {
+      "label": "wrong_release",
+      "message": "recorded release differs from held operation",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    {
+      "label": "wrong_source",
+      "message": "recorded source differs from held operation",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    {
+      "label": "missing_authority",
+      "message": "held query authority is absent",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    {
+      "label": "duplicate_code",
+      "message": "duplicate allowed raw code",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    {
+      "label": "unknown_code",
+      "message": "unknown recorded raw code",
+      "refused": true,
+      "type": "RecordedResponseError"
+    },
+    {
+      "label": "denied_verifier",
+      "message": "held decision verifier refused",
+      "refused": true,
+      "type": "StreamIssuanceError"
+    }
+  ],
+  "original_source_accessed": false,
+  "owner_codes": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "97",
+    "98",
+    "99"
+  ],
+  "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
+  "schema": "ANVIL_Q006_RECORDED_OPERATION_PROOF@1",
+  "sourcefree": true,
+  "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
+}

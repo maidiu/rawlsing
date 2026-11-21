@@ -1,46 +1,46 @@
 {
-  "base_commit": "3302b8daa8a8bdd937dc09506feeab2bd419c160",
+  "authority_binding": {
+    "bound": [
+      "source",
+      "release",
+      "universe",
+      "replay",
+      "question",
+      "operation",
+      "denominator",
+      "response semantics",
+      "authorities",
+      "raw domain",
+      "nonanswer states"
+    ],
+    "checks": [
+      "before validation",
+      "before native execution",
+      "after native execution",
+      "final output"
+    ],
+    "decision_verifier_required": true,
+    "true_for_anything_default": false
+  },
+  "base_commit": "169401663ad383204aa10904fbdc6de0541306b3",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
-    "decision_verifier_required": true,
     "exports": [
+      "HeldRecordedOperation",
+      "RecordedResponseError",
+      "build_recorded_operation",
+      "execute_recorded_response_i03",
       "HeldStreamIssuanceDecision",
-      "StreamIssuanceError",
       "issue_and_execute_stream_i03"
     ],
-    "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
-    "sha256": "13f9aef13f81e8981b36e70907d01b10576a7810996d4071d6299e5a227cc4ee"
+    "modules": [
+      "rawlsing_next/pre553_anvil_stream_recorded.py",
+      "rawlsing_next/pre553_anvil_stream_issuance.py",
+      "rawlsing_next/pre553_anvil_stream_native_i03.py",
+      "rawlsing_next/pre553_direct_estate_i03.py"
+    ]
   },
-  "correction": {
-    "bound_fields": [
-      "source_id",
-      "source_root",
-      "release_root",
-      "universe_root",
-      "replay_root",
-      "question_ref",
-      "authorized_operation",
-      "approved_denominator_ref",
-      "approved_response_semantics_ref",
-      "authorities",
-      "approved_raw_domain",
-      "approved_nonanswer_states"
-    ],
-    "effective_current_optional": false,
-    "retained": [
-      "forged/stale decision",
-      "missing verifier",
-      "wrong source/release/universe/replay/question",
-      "wrong operation",
-      "missing/stale authority",
-      "outside approved domain",
-      "duplicate approved code",
-      "denied/revoked authority"
-    ],
-    "true_for_anything_default": false,
-    "verifier_calls": "before validation, before native execution, after native execution, at final output"
-  },
-  "g5_claim": false,
+  "mainmac_command": "ANVIL_Q006_OWNER_DECISION=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/P0_TWO_SAVED_WAVES_PRIVATE/q006_q103_owner_decision.json PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/proof_recorded_operation.py",
   "missing_resolver_red": {
     "decision_verifier": null,
     "replay_ref": "{'content_hash': '45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8'}",
@@ -48,53 +48,28 @@
     "status": "RED_POSITIVE_RAN_WITHOUT_DECISION_VERIFIER",
     "typed_state": "SUPPORTED"
   },
-  "operation_builder": {
-    "existing_paths": [
-      "pre553_governed_query_issuer_v2 requires GovernedFrontierCompilation and is TEST_ONLY",
-      "pre553_native_workload_binding.build_projection_catalog is a test fixture from NativePreimageBundle, not saved stream"
-    ],
-    "first_fault": "HeldStreamIssuanceDecision still requires caller-supplied EmpiricalPredicate and EmpiricalQuerySpec; no production operation-to-query builder consumes VerifiedAnvilStreamEstate",
-    "not_implemented_because": "q103 exact 97/98/99 and asked/eligible decision is missing; an operation builder would require cross-owner source/schema terrain",
-    "owner_needed": [
-      "R03 / saved-release issuer owner",
-      "SRC04 QSM/source/risk owner"
-    ],
-    "status": "ABSENT__EXACT_OWNER_SEAM"
-  },
-  "original_q103_data_accessed": false,
-  "original_source_accessed": false,
-  "original_wave_i03": false,
   "pins": {
     "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
     "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
-    "candidate_module_sha256": "13f9aef13f81e8981b36e70907d01b10576a7810996d4071d6299e5a227cc4ee",
+    "direct_session_sha256": "d6f337d6d8120e31396eaa394989cba390b1ded74e69cbcec94f90b1d4253c81",
     "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
-    "red_witness_sha256": "732b3f584764143a2df7eb9f71f4074858bea6d66c525c1020ecf811af147bc4",
-    "typed_proof_sha256": "da86557860e8d3ee4d3350071262cbf2c036ee16fe4d7de10473e0509dd5e17b"
+    "native_module_sha256": "2e18e38258bed9fc41b2114de5fa29e79fb0abbea813d95ccae92564212ddbb7",
+    "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
+    "recorded_module_sha256": "7c3d4e9bf5ae647f270a7438035f4583fe30a0085712d86bfeca4799234b5d8a",
+    "recorded_proof_sha256": "db9fcaa5e22e079f6336893e7a55748c2cbf3fafa0e98c0c924af4e397cba668",
+    "strategy_module_sha256": "e06f16b6199a39d5583b567bdd2d3d5fbd894f8a2a932cca07ba08da42ef566d"
   },
-  "protected_edits": false,
-  "q103_constraint": {
-    "asked_eligible": "not inferred",
-    "native_i03": "NOT_RUN",
-    "original_source": "NOT_READ",
-    "response_codes": "97/98/99 not remapped",
-    "seven_code_sourcefree": "sourcefree q103-shaped fixture only, not original SRC04"
+  "preserved": {
+    "no_issue_post": true,
+    "no_new_source_scheme": true,
+    "no_original_data": true,
+    "no_permanent_fabricated_authority": true,
+    "no_second_evaluator": true,
+    "no_test_only_r03": true,
+    "ordinary_unknown_routing": "unchanged; only explicit recorded projection changes one lookup",
+    "stored_parquet_locator_authority": "unchanged"
   },
-  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
-  "reused": [
-    "VerifiedAnvilStreamEstate",
-    "RuntimeObjectCatalog",
-    "AuthorityRegistry",
-    "execute_anvil_stream_i03",
-    "DirectEstateI03Session",
-    "execute_empirical_query"
-  ],
-  "saved_estate_modified": false,
-  "saved_estate_rebuilt": false,
-  "schema": "ANVIL_P0_Q006_TYPED_ISSUANCE_CORRECTION@1",
-  "sourcefree": true,
-  "status": "AUTHORITY_BINDING_CORRECTED__SOURCEFREE_SEVEN_CODE_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD",
-  "typed_proof": {
+  "prior_typed_proof": {
     "estate_writes": false,
     "negatives": [
       {
@@ -271,5 +246,154 @@
     },
     "sourcefree": true,
     "status": "SOURCEFREE_POSITIVE_AND_NONANSWER_GREEN__NEGATIVES_GREEN"
-  }
+  },
+  "q103_constraint": {
+    "asked_risk": "HELD_ROUTING_UNKNOWN",
+    "original_run": "NOT_RUN",
+    "original_source": "NOT_READ",
+    "physical_missing": "separate tally outside denominator",
+    "response_codes": "1,2,3,4,97,98,99 authorized only",
+    "sourcefree_seven": "q103-shaped sourcefree fixture, not original SRC04"
+  },
+  "q103_return": "4a35990659f40130f4579a3929d61238dde4b84d",
+  "recorded_operation": {
+    "built": {
+      "allowed_codes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "97",
+        "98",
+        "99"
+      ],
+      "physical_missing_respondents": 1,
+      "predicate_ref": {
+        "content_hash": "26b0f7e4e02167577c946574a409a20801b60237f50033e8b006a93a99335f48",
+        "kind": "EmpiricalPredicate@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:26b0f7e4e02167577c946574a409a20801b60237f50033e8b006a93a99335f48"
+      },
+      "query_ref": {
+        "content_hash": "4a3bcc8f718d7b115a9da313d7bd2ea22e4a5dfa5f5d82bbe56c484005ed8792",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:4a3bcc8f718d7b115a9da313d7bd2ea22e4a5dfa5f5d82bbe56c484005ed8792"
+      },
+      "recorded_routing_facts": 8
+    },
+    "native": {
+      "cells": [
+        [
+          "1",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "2",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "3",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "4",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "97",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "98",
+          1,
+          "OBSERVED_POSITIVE"
+        ],
+        [
+          "99",
+          1,
+          "OBSERVED_POSITIVE"
+        ]
+      ],
+      "physical_missing_excluded": 1,
+      "raw_denominator_support": 7,
+      "raw_numerator_support": 7,
+      "recorded_codes_present": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "97",
+        "98",
+        "99"
+      ],
+      "release_refs": [
+        {
+          "content_hash": "b53d2a45aae95677509d7f301492e0ab6f2cd360b8a008434a27782e11e152be",
+          "kind": "C11_STREAM_SOURCEFREE_RELEASE",
+          "object_id": "RECORDED"
+        }
+      ],
+      "replay_equal": true,
+      "replay_ref": "{'content_hash': '786db0cd63ecbcb6644bcc2f4d8a8c49126caf403e1c3b26e532ed545165c774', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:786db0cd63ecbcb6644bcc2f4d8a8c49126caf403e1c3b26e532ed545165c774'}",
+      "typed_state": "SUPPORTED"
+    },
+    "negatives": [
+      {
+        "label": "wrong_release",
+        "message": "recorded release differs from held operation",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      {
+        "label": "wrong_source",
+        "message": "recorded source differs from held operation",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      {
+        "label": "missing_authority",
+        "message": "held query authority is absent",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      {
+        "label": "duplicate_code",
+        "message": "duplicate allowed raw code",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      {
+        "label": "unknown_code",
+        "message": "unknown recorded raw code",
+        "refused": true,
+        "type": "RecordedResponseError"
+      },
+      {
+        "label": "denied_verifier",
+        "message": "held decision verifier refused",
+        "refused": true,
+        "type": "StreamIssuanceError"
+      }
+    ],
+    "original_source_accessed": false,
+    "owner_codes": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "97",
+      "98",
+      "99"
+    ],
+    "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
+    "schema": "ANVIL_Q006_RECORDED_OPERATION_PROOF@1",
+    "sourcefree": true,
+    "status": "RECORDED_ONLY_NATIVE_SEVEN_CODE_GREEN__DENOMINATOR_7"
+  },
+  "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_RETURN@1",
+  "status": "RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_GREEN__Q103_ORIGINAL_NOT_RUN"
 }

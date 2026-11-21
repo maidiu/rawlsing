@@ -119,7 +119,11 @@ class DirectEstateI03Session:
     all bodies stay in the independently hashed Parquet estate.
     """
 
-    def __init__(self, estate: VerifiedDirectEstate | VerifiedAnvilStreamEstate):
+    def __init__(
+        self, estate: VerifiedDirectEstate | VerifiedAnvilStreamEstate,
+        *,
+        recorded_routing: tuple[RoutingEligibilityFact, ...] | None = None,
+    ):
         if type(estate) is VerifiedDirectEstate:
             if estate.i02.schema != DIRECT_SCHEMA:
                 raise DirectEstateError("native cold I03 requires exact complete direct-I02 certificate")
@@ -131,6 +135,7 @@ class DirectEstateI03Session:
                 "native cold I03 requires exact independently verified direct or ANVIL stream estate"
             )
         self.estate = estate
+        self._recorded_routing = recorded_routing
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         self._db: sqlite3.Connection | None = None
         self.respondents: dict[str, RespondentIdentity] = {}
@@ -408,7 +413,23 @@ class DirectEstateI03Session:
     def _routing_facts(
         self, *, respondent: str, target: str, risk_set: str,
     ) -> Iterator[RoutingEligibilityFact]:
-        """Yield every exact routing fact for one respondent/target/risk."""
+        """Yield every exact routing fact for one respondent/target/risk.
+
+        A caller may supply an explicit, scoped read-time recorded-response
+        routing projection.  It replaces only this one lookup; stored routing,
+        identity, authority and Parquet are unchanged.  The normal path keeps
+        the original physical/unknown-routing behavior.
+        """
+        if self._recorded_routing is not None:
+            self._require_live()
+            for fact in self._recorded_routing:
+                if (
+                    _key(fact.scoped_respondent_ref) == respondent
+                    and _ref_field(fact, "question_or_target_ref").key == target
+                    and _ref_field(fact, "risk_set_ref").key == risk_set
+                ):
+                    yield fact
+            return
         db = self._require_live()
         rows = db.execute(
             "SELECT fact_ref,gid,off FROM routing_locator "

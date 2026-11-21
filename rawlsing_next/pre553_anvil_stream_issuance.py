@@ -11,7 +11,7 @@ new authority, or create permanent refs.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Callable, Iterable
+from typing import Any, Callable, Iterable
 
 from rawlsing_next.pre553_anvil_stream_native_i03 import (
     VerifiedAnvilStreamEstate,
@@ -96,6 +96,7 @@ def issue_and_execute_stream_i03(
     estate: VerifiedAnvilStreamEstate,
     decision: HeldStreamIssuanceDecision,
     decision_verifier: Callable[[HeldStreamIssuanceDecision], bool],
+    recorded_routing: tuple[Any, ...] | None = None,
 ):
     """Validate a held decision, build the existing catalog, and execute I03.
 
@@ -185,6 +186,7 @@ def issue_and_execute_stream_i03(
         runtime_catalog=catalog,
         query_ref=query.ref,
         predicate_ref=predicate.ref,
+        recorded_routing=recorded_routing,
     )
     if decision_verifier(decision) is not True:
         raise StreamIssuanceError("held decision verifier refused after execution")

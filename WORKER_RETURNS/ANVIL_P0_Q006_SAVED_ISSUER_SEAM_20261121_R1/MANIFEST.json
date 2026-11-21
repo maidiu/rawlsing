@@ -1,19 +1,9 @@
 {
-  "base_commit": "3302b8daa8a8bdd937dc09506feeab2bd419c160",
-  "candidate": {
-    "decision_verifier_required": true,
-    "exports": [
-      "HeldStreamIssuanceDecision",
-      "StreamIssuanceError",
-      "issue_and_execute_stream_i03"
-    ],
-    "path": "rawlsing_next/pre553_anvil_stream_issuance.py",
-    "sha256": "13f9aef13f81e8981b36e70907d01b10576a7810996d4071d6299e5a227cc4ee"
-  },
+  "base_commit": "169401663ad383204aa10904fbdc6de0541306b3",
   "files": {
     "00_HANDOFF.md": {
-      "bytes": 4101,
-      "sha256": "dc1beda5236b5f992e391528302eac186c3ff12767ffbd43098f6148ce25f10e"
+      "bytes": 3563,
+      "sha256": "77b8128bddd65539cca8516a75b9ed2a5ff933f82ec3d360ead1becf858db519"
     },
     "PROOF.err": {
       "bytes": 0,
@@ -22,6 +12,14 @@
     "PROOF.out": {
       "bytes": 4151,
       "sha256": "91492220883e018aec8343d1bb5a9a0522740eb38151cf045e1e749a7e4c4a4f"
+    },
+    "RECORDED_OPERATION.err": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "RECORDED_OPERATION.out": {
+      "bytes": 3420,
+      "sha256": "db9fcaa5e22e079f6336893e7a55748c2cbf3fafa0e98c0c924af4e397cba668"
     },
     "RED_MISSING_RESOLVER.err": {
       "bytes": 0,
@@ -32,8 +30,8 @@
       "sha256": "732b3f584764143a2df7eb9f71f4074858bea6d66c525c1020ecf811af147bc4"
     },
     "RETURN.json": {
-      "bytes": 9487,
-      "sha256": "709cda247177c9f09a4ff7ec4e2e56f5774112d0d9344fd962a31c08611c06c9"
+      "bytes": 12967,
+      "sha256": "74db6906431c62956e73bb3537d49819d3b0029d61ee9fad4a822060e46324ff"
     },
     "TYPED_ISSUANCE.err": {
       "bytes": 0,
@@ -42,6 +40,10 @@
     "TYPED_ISSUANCE.out": {
       "bytes": 5101,
       "sha256": "da86557860e8d3ee4d3350071262cbf2c036ee16fe4d7de10473e0509dd5e17b"
+    },
+    "proof_recorded_operation.py": {
+      "bytes": 10198,
+      "sha256": "3c1db67dde2b5e4dac06714b2f5d7e9f7b4efccc8c31eb79e725c1d824d17e05"
     },
     "proof_stream_catalog_handoff.py": {
       "bytes": 7448,
@@ -53,9 +55,20 @@
     }
   },
   "original_source_accessed": false,
+  "pins": {
+    "asked_eligible_ref": "c5efdbdf32d5b9c66e069c5e00e51dd98f9d7fc5",
+    "bridge_ref": "3eee662d509fd78bc93d3ea26c3058d3199c960f",
+    "direct_session_sha256": "d6f337d6d8120e31396eaa394989cba390b1ded74e69cbcec94f90b1d4253c81",
+    "issuer_ref": "357a0fbf50377788b050f5365089ed54a0548f23",
+    "native_module_sha256": "2e18e38258bed9fc41b2114de5fa29e79fb0abbea813d95ccae92564212ddbb7",
+    "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
+    "recorded_module_sha256": "7c3d4e9bf5ae647f270a7438035f4583fe30a0085712d86bfeca4799234b5d8a",
+    "recorded_proof_sha256": "db9fcaa5e22e079f6336893e7a55748c2cbf3fafa0e98c0c924af4e397cba668",
+    "strategy_module_sha256": "e06f16b6199a39d5583b567bdd2d3d5fbd894f8a2a932cca07ba08da42ef566d"
+  },
   "saved_estate_modified": false,
   "saved_estate_rebuilt": false,
-  "schema": "ANVIL_P0_Q006_SAVED_ISSUER_SEAM_MANIFEST@1",
+  "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_MANIFEST@1",
   "sourcefree": true,
-  "status": "AUTHORITY_BINDING_CORRECTED__SOURCEFREE_SEVEN_CODE_GREEN__OPERATION_TO_QUERY_BUILDER_ABSENT__Q103_SOURCE_HELD"
+  "status": "RECORDED_ONLY_OPERATION_CONSTRUCTOR_IMPLEMENTED__SOURCEFREE_NATIVE_SEVEN_CODE_GREEN__Q103_ORIGINAL_NOT_RUN"
 }
