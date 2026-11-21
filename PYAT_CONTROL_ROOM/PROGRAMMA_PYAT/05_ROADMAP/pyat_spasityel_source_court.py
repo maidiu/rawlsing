@@ -375,6 +375,38 @@ try:
       and "test_s3a_r5_denominator_membership_closure.py" in workflow)
  report["R27_grade"]="AUTHOR_EXECUTED_77_OF_77_AT_TEST_ONLY_SHA_NOT_G5_NOT_ORIGINAL_SOURCE"
 
+ # R28 actual S2-D/prepared provenance binding patch, not protected scientific authority.
+ r28=l.split("## 16. R28 — KUDA-072",1)[1]
+ for text_pin in ("3f725cc3391bf7eae2642ab5921a8e1234290770",
+                  "44953520261","23 PASS / 0 FAIL","14726900447",
+                  "44953388340","22 PASS / 0 FAIL",
+                  "HQ_CURRENTNESS_HOLD"):
+  test("R28 exact candidate/run/fate "+text_pin,text_pin in r28)
+ code=exact("3f725cc3391bf7eae2642ab5921a8e1234290770",
+   "rawlsing_next/pre553_prepared_saved_i03.py",
+   "77c7468ff2ec86b286bbc55161ab404e18fc3c19").decode()
+ test("R28 current prepared owner pins identical physical estate and rechecks receipt",
+      all(token in code for token in (
+       "session.estate is not admission._estate",
+       "def _require_same_estate(self) -> None:",
+       "def __setattr__(self, name: str, value: Any) -> None:",
+       "self._require_same_estate()",
+       "if prepared is None:",
+       "session.__exit__(None, None, None)")),
+      "SOURCE_STATIC_NOT_INDEPENDENT_OR_ORIGINAL_SURVEY")
+ test_file=exact("3f725cc3391bf7eae2642ab5921a8e1234290770",
+    "rawlsing_next/tests/test_kuda072_prepared_estate_pin.py",
+    "70193a2a6323e5c2143f1646bf185035db9a993b").decode()
+ test("R28 A/B and post-open CURRENT revoke executed negative fixture exists",
+      all(q in test_file for q in (
+       "test_public_prepared_A_admission_B_native_session_refuses_before_receipt",
+       "test_current_revocation_between_open_and_wrapper_bind_cleanup",
+       "prepared admission/session estate mismatch",
+       "binding is immutable")),
+      "SOURCE_STATIC_TEST_CHECKER; native author CI already pinned separately")
+ report["R28_grade"]="SOURCEFREE_AUTHOR_23PASS__CURRENT_OWNER_PREPARED_FIX__G5_AND_PROTECTED_HOLD"
+
+
 
 
 

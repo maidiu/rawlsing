@@ -1,5 +1,8 @@
 # PYAT-SPASITYEL — definitive KUDA/NEKUDA rescue and integration mandate
 
+> **R28 KUDA-072 ACTUAL NARROW OWNER CODE REPAIR:** [R28 single cumulative KUDA docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#16-r28--kuda-072-exact-admitted-estate--prepared-native-session-trust-repair-owner-local-2026-11-21) pins [draft PR #1280](https://github.com/maidiu/rawlsing/pull/1280) exact `3f725cc3391bf7eae2642ab5921a8e1234290770` based on unmerged selected #1247. Fixes exported prepared admission/session A/B mismatch, mutable retarget, misleading receipt and late revoke cleanup in **existing** saved I03 owner. [Actions 44953520261](https://github.com/maidiu/rawlsing/actions/runs/44953520261) **23/23 sourcefree author PASS** with JUnit, independent G5/native original source/authorized receiving still held; no new native query engine. Protected paired CURRENT_PROGRESS unchanged.
+
+
 > **R27 EXACT JOINED SOURCEFREE FIRST-READER EVIDENCE:** [One cumulative R27 docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#15-r27--tests-only-exact-same-head-joined-current-s3-a067086gt12-d081-and-r112076-2026-11-21) records draft [test-only PR #1279](https://github.com/maidiu/rawlsing/pull/1279) child of held #1267, exact `196942c62b8dc919ff787f9eb2017ae2ee70860c` **77/77 author-sourcefree at one SHA** with sourcefree FF01→GT12-D normal positive, outsider denominator, wrong Q86 identity, self-resigned alien SOURCE_ARTIFACT refusal, and R112 E05 world reader. Zero feature-code files changed; no blanket #1267 adoption, original source/science or independent receiving. Prior 76/1 test harness deepcopy error corrected in test only and is preserved as history. Protected PRE-MAIN / paired progress HELD.
 
 
