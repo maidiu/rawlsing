@@ -15,7 +15,7 @@ from .preproject_agency import admit_preproject_anticipation, revise_preproject_
 from .reflective_regulation import acquire_reflective_regulation
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
-    revise_operative_self)
+    revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import admit_contrast_end
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
@@ -53,7 +53,8 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'INVEST_MATERIAL_OBJECT','ACQUIRE_CO_REGULATION_ORIENTATION',
          'REVISE_CO_REGULATION_ORIENTATION',
-         'ACQUIRE_HISTORICAL_ORIENTATION','REVISE_HISTORICAL_ORIENTATION',
+         'ACQUIRE_HISTORICAL_ORIENTATION','ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION',
+         'REVISE_HISTORICAL_ORIENTATION',
          'REVISE_OPERATIVE_SELF_ORGANIZATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
@@ -691,6 +692,10 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                            'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='ACQUIRE_HISTORICAL_ORIENTATION':
             try:report.append(acquire_orientation(actor,experience,event_ref,c))
+            except ValueError as err:raise InvalidDevelopment(str(err)) from err
+        elif op=='ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION':
+            try:report.append(admit_lived_directional_orientation(
+                actor,experience,event_ref,c))
             except ValueError as err:raise InvalidDevelopment(str(err)) from err
         elif op=='REVISE_HISTORICAL_ORIENTATION':
             try:report.append(revise_orientation(actor,experience,event_ref,c))
