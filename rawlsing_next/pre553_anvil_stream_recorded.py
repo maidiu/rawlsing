@@ -133,6 +133,37 @@ class RecordedUniverseUse:
         return self.historical_snapshot.authority_ref, self.positive_snapshot.authority_ref
 
 
+@dataclass(frozen=True)
+class HeldRecordedOperation:
+    """Exact source decision; no source semantics are inferred from stream rows."""
+
+    owner_decision_sha256: str
+    source_id: str
+    source_root: str
+    release_root: str
+    universe_root: str
+    replay_root: str
+    question_ref: ExactRef
+    authorized_operation: str
+    allowed_raw_codes: tuple[str, ...]
+    interpretation: tuple[tuple[str, str], ...]
+    authorities: tuple[AuthoritySnapshot, ...]
+    query_authority_ref: AuthorityRef
+    routing_authority_ref: AuthorityRef
+    source_authority_ref: AuthorityRef
+    recorded_risk_ref: ExactRef
+    routing_rule_ref: ExactRef
+    member_set_replay_ref: ExactRef
+    measure_basis_ref: ExactRef
+    response_state_semantics_ref: ExactRef
+    target_domain_replay_ref: ExactRef
+    predicate_replay_root: ExactRef
+    query_replay_root: ExactRef
+    transform_ref: ExactRef
+    approved_nonanswer_states: tuple[str, ...] = ()
+    physical_missing_state: str = "SEPARATE_NOT_RECORDED"
+
+
 def _authority(authorities, ref, label):
     for snapshot in authorities:
         if snapshot.authority_ref == ref:
