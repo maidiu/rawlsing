@@ -21,3 +21,7 @@ jobs:
         run: python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_total_mulch.py
       - name: Original IDs, source file locators and complete current conversation idea register
         run: python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_total_mulch.py
+      - name: Reopen immutable original H/Q/O-Index/SOROKUDA/S0-S16 source blobs directly
+        run: |
+          python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
+          python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
