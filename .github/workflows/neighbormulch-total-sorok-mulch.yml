@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - agent/neighbormulch-total-sorok-source-conservation-r1-20261121
+      - agent/neighbormulch-r9-total1275-conversation-reconciliation-20261121
   pull_request:
     branches:
       - agent/neighbormulch-soracle-r27-reciprocal-intake-20261121-r1
+      - agent/neighbormulch-total-sorok-source-conservation-r1-20261121
   workflow_dispatch:
 jobs:
   exact-source-identity-and-user-ideas:
@@ -25,3 +27,7 @@ jobs:
         run: |
           python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
           python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_immutable_original_sources.py
+      - name: R9 cross-lineage user-conversation source and 104-row coverage court
+        run: |
+          python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_r9_dialogue_continuity.py
+          python SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_r9_dialogue_continuity.py
