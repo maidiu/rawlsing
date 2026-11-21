@@ -128,7 +128,7 @@ class TCORecurrentWorkR25(unittest.TestCase):
         self.assertEqual(historic['currents'][0]['polarity'],'WITHHOLD')
         self.assertTrue(any(x['action']=='WORK'
                             and x['status']=='SITUATED_ACQUIRED_INHIBITION'
-                            for x in result.suspended))
+                            for x in result.suspended_actions))
         self.assertNotIn('WORK',[x['action'] for x in result.candidate_actions])
 
     def test_same_work_history_can_produce_approach_or_no_new_orientation(self):
