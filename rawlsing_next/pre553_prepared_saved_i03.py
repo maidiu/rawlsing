@@ -212,11 +212,17 @@ class PreparedSavedC11Admission(SavedC11Admission):
         self.check_current()
         session = DirectEstateI03Session(self._estate)
         session.__enter__()
-        prepared = PreparedI03Session(self, session)
+        prepared = None
         try:
+            # CURRENT can revoke between opening the postings index and
+            # binding the wrapper. Always release the opened native session.
+            prepared = PreparedI03Session(self, session)
             yield prepared
         finally:
-            prepared.close()
+            if prepared is None:
+                session.__exit__(None, None, None)
+            else:
+                prepared.close()
 
 
 __all__ = [
