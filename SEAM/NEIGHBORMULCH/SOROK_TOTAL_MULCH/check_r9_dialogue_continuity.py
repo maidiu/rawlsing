@@ -60,9 +60,9 @@ def main():
     main = whole.split("## SOURCE-CONSERVATION FOUNDATION —", 1)[0]
 
     acts = [int(i) for i in re.findall(r"(?m)^## (\d+)\. ", main)]
-    must(acts == list(range(1, 17)), "current theory is not one 16-movement integrated whole")
-    must("## Whole conception: the day, the cost, and the person beyond them" in main,
-         "whole lacks final integrated rearticulation")
+    must(acts == list(range(1, 18)), "current theory is not one 17-movement integrated whole")
+    must("## 17. The game becomes serious where nobody can know what their action meant" in main,
+         "whole lacks its reconstituted historical circuit")
 
     # Source families MUST live inside the SAME existing theory document.
     section_family = lines_between(
@@ -139,17 +139,33 @@ def main():
                 check_exact_source_name(source_table[key], record[attr], key)
 
     important = [
-        "same socioeconomic situation", "only their own", "financial",
-        "NO_LAWFUL_HOMOLOGY", "SAY, DO and ATTEND", "ATTEND",
+        "same SES", "only their own", "financial",
+        "untranslatable", "SAY, DO and ATTEND", "ATTEND",
         "bodily needs", "adult", "prelude", "common root",
-        "message", "deletion", "third party", "ordinary",
+        "message", "deletion", "third", "ordinary",
         "source-qualified", "CONSTITUTIVE", "G4", "Mechanism",
         "theological", "religious", "horizon", "relationship",
-        "irreducible", "public", "rent", "partial knowledge",
+        "nonownership", "public", "rent", "partial",
     ]
     for phrase in important:
         must(phrase.lower() in main.lower(),
              "significant previously affirmed topic absent from active whole: " + phrase)
+
+    # External #1278 reciprocal challenge: mere headings are insufficient;
+    # retain a deliberately bounded negative vocabulary across the *active*
+    # theory, not only the historical source foundation. This is text/source
+    # custody, NOT an execution of observer-to-observer world/actor machinery.
+    for phrase in (
+        "misrecognition", "actor-local", "false belief",
+        "human powers", "objectification", "institutional",
+        "SAY plus covert ATTEND", "one world occurrence",
+        "different sensory", "Nadia's belief",
+        "no computationally preferred", "sourcefree",
+        "the same SES", "their own", "message",
+        "scarce Roll", "unvisited reference",
+    ):
+        must(phrase.lower() in main.lower(),
+             "external reciprocal challenge unaccounted for: " + phrase)
 
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
@@ -162,7 +178,7 @@ def main():
     must("one existing" in whole.lower() or "existing draft PR #1277" in whole,
          "current output does not identify its single existing destination")
 
-    print("[PASS] ONE current integrated 16-movement whole, with source foundation IN THE SAME FILE")
+    print("[PASS] ONE current integrated 17-movement whole, with source foundation IN THE SAME FILE")
     print("[PASS] 197 source sections from 10 immutable predecessor cuts")
     print("[PASS] 104 distinct source-graded ideas and exact original propositions")
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
