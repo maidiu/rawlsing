@@ -316,9 +316,10 @@ class NeighborEncounter:
                 'source_user_event_ref':source_ref,
                 'actor_event_receipt':result['receipt'],
                 'world_clock':updated['clock'],
-                'actor_selected_by_existing_initiative':selected['actor'],
-                'actor_operation':result['attempt'],
-                'actor_status':result['status'],
+                # Actor identity, private action and outcome stay in the
+                # existing owner/ledger audit, not in visitor-facing return.
+                # The finite MII surface is the *only* qualified observation.
+                'owner_audit_remains_in_existing_ledger':True,
                 'visitor_surface':view,
                 'new_world_event':True,
                 'no_visitor_selected_actor_intention_or_response':True,
