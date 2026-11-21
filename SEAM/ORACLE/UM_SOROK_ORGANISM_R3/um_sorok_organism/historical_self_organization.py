@@ -114,6 +114,34 @@ def acquire_orientation(actor, experience, event_ref, proposal):
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}
 
 
+def _lived_coexperienced_other(witness):
+    """Qualify a *received social context*, not a cause, role or intention.
+
+    Presence is source-bound actor-eligible sensory evidence. Precisely one
+    co-present Other may individuate repeated bodily courses; zero is a
+    genuinely solo course, and two or more Others are underdetermined for
+    this bounded hypothesis. The actual Other need not have participated
+    in the operation or caused its aftermath.
+    """
+    signs=witness.get('personally_perceived_sign_sources')
+    if type(signs) is not list:
+        return (False,None)
+    others=set()
+    for sign in signs:
+        if type(sign) is not dict:
+            return (False,None)
+        if sign.get('kind')!='coactor_present':
+            continue
+        ref=sign.get('source_actor')
+        if (type(ref) is not str or not ref
+                or type(sign.get('cue_ref')) is not str):
+            return (False,None)
+        others.add(ref)
+    if len(others)>1:
+        return (False,None)
+    return (True, next(iter(others),None))
+
+
 def possible_lived_directional_orientation(actor, experience, event_ref):
     """An acquired polarity offered BY repeated lived courses, not a label.
 
@@ -151,12 +179,21 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     if len(current) != 1:
         return []
     now = current[0]
+    # The earlier R28 actor+operation+room match over-generalized bodily
+    # orientation from one Other to another. A context is RECEIVED,
+    # not a statement that the Other caused the body delta.
+    qualified_other, coexperienced_other = _lived_coexperienced_other(now)
+    if not qualified_other:
+        return []
     older = [r for r in rows
              if r['clock'] < now['clock'] and r['event_ref'] != event_ref]
     # Do not create a psychic pattern by counting different descriptions
     # of one event as multiple courses of experience.
     earlier = {}
     for row in older:
+        known,other=_lived_coexperienced_other(row)
+        if not known or other != coexperienced_other:
+            continue
         if row['event_ref'] not in earlier or (
                 row['clock'], row['id']) > (
                     earlier[row['event_ref']]['clock'],
@@ -192,6 +229,8 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
            and r.get('operation') == action
            and r.get('location') == site
            and r.get('orientation_mode') == mode
+           and r.get('lived_genesis_basis',{}).get(
+               'coexperienced_other_ref') == coexperienced_other
            for r in actor.get('historical_orientations', [])):
         return []
     selected = [first, now]
@@ -206,6 +245,13 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
         'source_experience_refs': [r['experience_ref'] for r in selected],
         'operation': action,
         'location': site,
+        'coexperienced_other_ref': coexperienced_other,
+        'experienced_social_context': (
+            'SINGLE_COPRESENT_OTHER_NOT_CAUSAL_PROOF'
+            if coexperienced_other else
+            'NO_OTHER_PERCEIVED_DURING_EPISODES'),
+        'other_may_not_have_caused_bodily_course': True,
+        'other_consent_intent_and_motive_not_inferred': True,
         'observed_bodily_course': (
             'REPEATED_ACTOR_LIVED_RELIEF' if mode == 'APPROACH'
             else 'REPEATED_ACTOR_LIVED_ADVERSE_COURSE'),
@@ -251,6 +297,10 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
                   if r['id'] == emitted['ref'])
     source['acquisition'] = 'REPEATED_LIVED_BODY_COURSE'
     source['lived_genesis_basis'] = copy(expected['lived_genesis_basis'])
+    # Give the already existing pre-cue owner a source-grounded context
+    # boundary; don't create a new social-learning graph or world writer.
+    source['coexperienced_other_ref'] = expected[
+        'lived_genesis_basis']['coexperienced_other_ref']
     source['interpretive_hypothesis_not_causal_truth'] = interpretation
     source['actor_does_not_know_objective_cause'] = True
     source['does_not_upgrade_sourcefree_to_human_science'] = True
@@ -386,6 +436,20 @@ def pre_cue_pressures(constitution, access):
             continue
         if row.get('location') != access.location:
             continue
+        if row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE':
+            # R29: pre-symbolic source context, not a current motive cue.
+            # Do not recruit a social orientation learned beside one
+            # person simply because the same operation is available
+            # beside a different person in the same room.
+            active_others={
+                c.get('source_actor') for c in access.cues
+                if type(c) is dict and c.get('kind')=='coactor_present'
+                and type(c.get('source_actor')) is str}
+            learned_other = row.get('coexperienced_other_ref')
+            expected_others = ({learned_other}
+                               if learned_other is not None else set())
+            if active_others != expected_others:
+                continue
         if row.get('operation') not in ACTIONS:
             continue
         # Do not grant capability from psyche, self-belief, or source event.
