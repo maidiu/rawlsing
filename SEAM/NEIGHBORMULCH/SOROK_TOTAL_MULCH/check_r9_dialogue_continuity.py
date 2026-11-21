@@ -175,7 +175,7 @@ def main():
     must("HELD_MISSING_ORIGINAL_CHAT" in whole and
          "HELD_SEMANTIC_INDEPENDENCE" in whole,
          "independent evidence gap concealed")
-    must("one existing" in whole.lower() or "existing draft PR #1277" in whole,
+    must("pre-existing file in the existing #1277 branch" in whole or "existing draft PR #1277" in whole,
          "current output does not identify its single existing destination")
 
     print("[PASS] ONE current integrated 17-movement whole, with source foundation IN THE SAME FILE")
