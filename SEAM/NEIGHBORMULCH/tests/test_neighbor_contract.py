@@ -235,13 +235,12 @@ class OneWorldContract(unittest.TestCase):
             n.install_sourcefree_conditions(invalid,request_id='wrong')
         self.assertEqual(r.ledger.world('w1')[1]['clock'],0)
 
-    def test_sensory_receipt_window_survives_one_world_transition(self):
+    def test_transient_sound_does_not_become_persistent_world_noise(self):
         self.neighbor.contribute('come','MOVE',destination='workshop')
         _,world=self.runtime.ledger.world('w1')
         cue=world['cues'][-1]
         self.assertEqual(cue['clock'],world['clock'])
-        self.assertEqual(cue['last_access_clock'],world['clock']+1)
-        self.assertLess(cue['last_access_clock'],world['clock']+2)
+        self.assertEqual(cue['last_access_clock'],world['clock'])
 
     def test_audible_speech_is_not_infant_lexical_understanding(self):
         self.neighbor.contribute('come','MOVE',destination='workshop')
