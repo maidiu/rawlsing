@@ -11,10 +11,11 @@ manifest, source-analysis grant, or protected receiving is introduced.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from types import MappingProxyType
 import json
 from pathlib import Path
 from types import MappingProxyType
-from typing import Any, Callable
+from typing import Any, Callable, Mapping
 
 from rawlsing_next.pre553_anvil_stream_carrier_qualification import (
     HeldStreamPins, STREAM_SCHEMA,
@@ -27,6 +28,39 @@ from rawlsing_next.pre553_source_direct_parquet_estate import (
 
 _STREAM_RELEASE_KIND = "C11_STREAM_SOURCEFREE_RELEASE"
 _STREAM_REPLAY_ROOT_KIND = "ANVILStreamReplayRoot@1"
+
+_RECORDED_PLAN_TOKEN = object()
+
+
+@dataclass(frozen=True)
+class RecordedRoutingPlan:
+    """Internal exact read-time routing plan; never a caller-supplied raw tuple."""
+
+    decision_sha256: str
+    source_root: str
+    release_root: str
+    universe_root: str
+    replay_root: str
+    risk_set_ref: ExactRef
+    facts_by_key: Mapping[tuple[str, str, str], tuple[Any, ...]]
+    event_transforms: Mapping[str, Any]
+    _token: Any = None
+
+    def __post_init__(self) -> None:
+        if self._token is not _RECORDED_PLAN_TOKEN:
+            raise DirectEstateError("recorded routing plan construction is internal only")
+
+    def require_for(self, estate: "VerifiedAnvilStreamEstate") -> None:
+        if type(estate) is not VerifiedAnvilStreamEstate:
+            raise DirectEstateError("recorded routing plan requires verified stream estate")
+        if (
+            self.source_root != estate.i02.source
+            or self.release_root != estate.i02.release
+            or self.universe_root != estate.i02.universe
+            or self.replay_root != estate.i02.replay
+        ):
+            raise DirectEstateError("recorded routing plan roots differ from verified stream")
+
 _FAMILIES = (
     "AuthoritySnapshot", "ComparatorReplayBinding",
     "DiscoveryBranchReplayBinding", "EmpiricalCoordinateFact",
@@ -267,7 +301,7 @@ def _stream_exact_universe(value: str) -> ExactRef:
 def execute_anvil_stream_i03(
     *, estate: VerifiedAnvilStreamEstate, runtime_catalog: Any,
     query_ref: Any, predicate_ref: Any,
-    recorded_routing: tuple[Any, ...] | None = None,
+    recorded_plan: RecordedRoutingPlan | None = None,
 ) -> Any:
     """Execute the ORIGINAL governed I03 over verified saved ANVIL rows.
 
@@ -288,8 +322,12 @@ def execute_anvil_stream_i03(
     if exact_ref(query.condition_predicate_ref) != predicate.ref:
         raise DirectEstateError("stream query condition is not the exact predicate")
     _require_stream_query_scope(estate, query, predicate)
+    if recorded_plan is not None:
+        if type(recorded_plan) is not RecordedRoutingPlan:
+            raise DirectEstateError("exact internal recorded routing plan required")
+        recorded_plan.require_for(estate)
     with DirectEstateI03Session(
-        estate, recorded_routing=recorded_routing,
+        estate, recorded_plan=recorded_plan,
     ) as reader:
         result = execute_empirical_query(
             repository=reader, query=query, predicate=predicate,
@@ -302,6 +340,11 @@ def execute_anvil_stream_i03(
         return result
 
 
+def _make_recorded_routing_plan(**kwargs: Any) -> RecordedRoutingPlan:
+    """Internal factory; no caller-facing raw-tuple override exists."""
+    return RecordedRoutingPlan(_token=_RECORDED_PLAN_TOKEN, **kwargs)
+
+
 __all__ = [
-    "VerifiedAnvilStreamEstate", "execute_anvil_stream_i03",
+    "VerifiedAnvilStreamEstate", "RecordedRoutingPlan", "execute_anvil_stream_i03",
 ]

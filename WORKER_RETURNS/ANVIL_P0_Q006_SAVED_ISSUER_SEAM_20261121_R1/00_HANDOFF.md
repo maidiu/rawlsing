@@ -26,22 +26,27 @@ directly from that operation. It does not consume a prebuilt query/predicate,
 does not use the TEST_ONLY `_query_for_bundle`, and does not create scientific
 authority.
 
-It resolves the verified saved scalar occurrences using the existing stream
-decoder. Recorded membership is established only from the held allowed raw
-codes. A respondent with no event is an explicit nonmember and is tallied as
-physical missing, outside the native denominator. Unknown codes and duplicate
-occurrences refuse.
+It resolves the verified saved scalar occurrences from the stored R5
+`raw_typed` lane using `R5TypedValueCodec`; it never calls `str()` on an
+undecoded raw object. Recorded membership is established only from the held
+allowed raw codes. A stored system-missing event and a genuinely absent event
+are distinguished and excluded separately from the denominator. Unknown codes
+and duplicate occurrences refuse.
 
 ## Narrow native admission
 
-`pre553_direct_estate_i03.DirectEstateI03Session` accepts an optional
-`recorded_routing` tuple. `execute_anvil_stream_i03` forwards it for this one
-read. The normal path is unchanged and ordinary `ROUTING_UNKNOWN` still refuses.
+`pre553_direct_estate_i03.DirectEstateI03Session` accepts an internal
+`RecordedRoutingPlan` from `_make_recorded_routing_plan`; there is no
+public raw-tuple override. The plan is keyed by exact
+`(respondent,target,risk)` and is not scanned per respondent. The normal path
+is unchanged and ordinary `ROUTING_UNKNOWN` still refuses.
 
 The projection supplies ephemeral `RoutingEligibilityFact` rows with a distinct
-recorded risk ref and member-set replay commitment. Original event refs are
-retained in routing dependencies and native provenance. Stored Parquet,
-locators, authority and stream refs are not modified.
+recorded risk ref and member-set replay commitment. A scoped observation view
+maps each stored R5 scalar to a transformed counted event; the original event
+ref is retained in dependency provenance, and the transform commitment is in
+the query/replay identity (`recorded_transform_ref`). Stored Parquet, locators,
+authority and stream refs are not modified.
 
 The existing native I03 evaluator performs all counting; there is no second
 evaluator or manual count.
@@ -51,10 +56,12 @@ evaluator or manual count.
 `proof_recorded_operation.py` / `RECORDED_OPERATION.out`:
 
 - owner decision SHA-256 `e3de52e...` verified;
+- stored shape: `97`/`98` DK, `99` substantive, one stored system-missing
+  event, one separate absent event;
 - codes `1,2,3,4,97,98,99`;
 - seven disjoint native cells, each support 1;
 - denominator exactly **7**;
-- one physical-missing occurrence excluded separately;
+- system-missing and absent each exactly **1**, excluded separately;
 - native state `SUPPORTED`;
 - exact repeat replay equal;
 - stream release retained;
@@ -63,16 +70,29 @@ evaluator or manual count.
 
 This is a sourcefree q103-shaped fixture, not an original SRC04 run.
 
-## MainMac command
+## Private MainMac harness contract
+
+`run_recorded_q103_private.py` is the actual private read harness. It verifies
+the owner decision SHA, uses exact stream roots/current binding, loads an exact
+operation JSON containing the typed authority/ref preimages, builds the same
+recorded operation and executes the existing native I03 evaluator.
 
 ```bash
-ANVIL_Q006_OWNER_DECISION=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/evidence/P0_TWO_SAVED_WAVES_PRIVATE/q006_q103_owner_decision.json \
 PYTHONPATH=/Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER \
-python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/proof_recorded_operation.py
+python3 /Users/matthewsmith/Desktop/ANVIL_ENGINEERING_EXECUTION_20261117/REMONT_Q006_ISSUER/WORKER_RETURNS/ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1/run_recorded_q103_private.py \
+  --owner-decision "$PRIVATE/q006_q103_owner_decision.json" \
+  --operation-json "$PRIVATE/q006_q103_operation.json" \
+  --stream-root "$SRC04_STREAM_ROOT" \
+  --release-path "$SRC04_RELEASE_PATH"
 ```
 
-The original SRC04 execution remains explicitly not run until controller checks
-the candidate and private authority.
+The operation JSON is the exact held `HeldRecordedOperation` material:
+source/root/question/operation, authorities, recorded risk/routing/member-set
+refs, measure/response-semantics/domain refs, replay roots and transform ref.
+It is not produced by this author from metadata.
+
+The original SRC04 execution remains explicitly not run until the controller
+checks the candidate and private authority.
 
 ## Preserved boundaries
 

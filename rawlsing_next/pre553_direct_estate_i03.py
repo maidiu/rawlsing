@@ -122,7 +122,7 @@ class DirectEstateI03Session:
     def __init__(
         self, estate: VerifiedDirectEstate | VerifiedAnvilStreamEstate,
         *,
-        recorded_routing: tuple[RoutingEligibilityFact, ...] | None = None,
+        recorded_plan: Any | None = None,
     ):
         if type(estate) is VerifiedDirectEstate:
             if estate.i02.schema != DIRECT_SCHEMA:
@@ -135,7 +135,12 @@ class DirectEstateI03Session:
                 "native cold I03 requires exact independently verified direct or ANVIL stream estate"
             )
         self.estate = estate
-        self._recorded_routing = recorded_routing
+        if recorded_plan is not None:
+            from rawlsing_next.pre553_anvil_stream_native_i03 import RecordedRoutingPlan
+            if type(recorded_plan) is not RecordedRoutingPlan:
+                raise DirectEstateError("exact internal recorded routing plan required")
+            recorded_plan.require_for(estate)
+        self._recorded_plan = recorded_plan
         self._temporary: tempfile.TemporaryDirectory[str] | None = None
         self._db: sqlite3.Connection | None = None
         self.respondents: dict[str, RespondentIdentity] = {}
@@ -420,15 +425,12 @@ class DirectEstateI03Session:
         identity, authority and Parquet are unchanged.  The normal path keeps
         the original physical/unknown-routing behavior.
         """
-        if self._recorded_routing is not None:
+        if self._recorded_plan is not None:
             self._require_live()
-            for fact in self._recorded_routing:
-                if (
-                    _key(fact.scoped_respondent_ref) == respondent
-                    and _ref_field(fact, "question_or_target_ref").key == target
-                    and _ref_field(fact, "risk_set_ref").key == risk_set
-                ):
-                    yield fact
+            facts = self._recorded_plan.facts_by_key.get(
+                (respondent, target, risk_set), ()
+            )
+            yield from facts
             return
         db = self._require_live()
         rows = db.execute(
@@ -526,6 +528,11 @@ class DirectEstateI03Session:
             if (_key(event.scoped_respondent_ref) != respondent_ref.key
                     or _key(event.empirical_universe_ref) != self.estate.i02.universe):
                 raise DirectEstateError("selected native I03 event breaks exact universe/response join")
+            if self._recorded_plan is not None:
+                transformed = self._recorded_plan.event_transforms.get(event.ref.key)
+                if transformed is not None:
+                    event = transformed
+            self._require_live()
             yield event
 
     def _respondent_family(

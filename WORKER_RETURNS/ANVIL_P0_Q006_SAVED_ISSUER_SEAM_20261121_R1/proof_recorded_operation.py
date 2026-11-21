@@ -31,7 +31,9 @@ from rawlsing_next.pre553_anvil_stream_recorded import (  # noqa: E402
     build_recorded_operation,
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog  # noqa: E402
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash  # noqa: E402
+from rawlsing_next.pre553_empirical_objects import ExactRef, RespondentEvent, semantic_hash  # noqa: E402
+from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest  # noqa: E402
+from dataclasses import replace  # noqa: E402
 from rawlsing_next.tests.test_pre553_anvil_stream_native_i03 import _stream  # noqa: E402
 
 OWNER = Path(os.environ.get(
@@ -64,13 +66,29 @@ def main() -> int:
     }
     try:
         rows = [
-            {"id": f"R{i}", "responses": ({"Y": code} if code is not None else {})}
+            {"id": f"R{i}", "responses": {"Y": code}}
             for i, code in enumerate((1, 2, 3, 4, 97, 98, 99, None), 1)
         ]
+        rows.append({"id": "R9", "responses": {}})
         original_build = native._build_source
+        original_event = native.RespondentEvent
+        def shaped_event(**kwargs):
+            raw = kwargs.get("raw_response_value")
+            if raw in {"None", None}:
+                kwargs["raw_response_value"] = None
+                kwargs["typed_state"] = "MISSING"
+                kwargs["response_state"] = "MISSING"
+            elif raw in {"97", "98", 97, 98}:
+                kwargs["typed_state"] = "DK"
+                kwargs["response_state"] = "DK"
+            elif raw in {"99", 99}:
+                kwargs["typed_state"] = "SUBSTANTIVE_RESPONSE"
+                kwargs["response_state"] = "SUBSTANTIVE_RESPONSE"
+            return original_event(**kwargs)
         def seven_build(tag, rows_arg, **kwargs):
             return original_build(tag, rows, **kwargs)
         mp.setattr(native, "_build_source", seven_build)
+        mp.setattr(native, "RespondentEvent", shaped_event)
         (source, auth, predicate_unused, query_unused, catalog_unused, root, release,
          manifest, held, grant) = _stream(scratch, mp, "RECORDED", source_id="SRC04")
         estate = VerifiedAnvilStreamEstate(
@@ -133,26 +151,39 @@ def main() -> int:
                 "REPLAY_ROOT", "recorded-query-" + owner_sha,
                 semantic_hash({"kind": "query", "owner": owner_sha}),
             ),
+            transform_ref=ExactRef(
+                "RECORDED_VALUE_TRANSFORM", "recorded-q103-" + owner_sha,
+                semantic_hash({"owner": owner_sha, "transform": "R5_RAW_TO_RECORDED_OUTCOME"}),
+            ),
         )
-        decision, recorded_routing, missing = build_recorded_operation(
+        decision, recorded_plan, missing = build_recorded_operation(
             estate=estate, operation=operation, question_ref=question_ref,
         )
         out["built"] = {
             "allowed_codes": list(operation.allowed_raw_codes),
-            "recorded_routing_facts": len(recorded_routing),
-            "physical_missing_respondents": missing,
+            "recorded_routing_facts": sum(len(v) for v in recorded_plan.facts_by_key.values()),
+            "missing_breakdown": missing,
+            "transform_ref": operation.transform_ref.as_dict(),
+            "transform_in_query": (
+                decision.query.requested_output_grain.get("recorded_transform_ref")
+                == operation.transform_ref.as_dict()
+            ),
+            "stored_event_states": {
+                str(event.raw_response_value): event.typed_state
+                for event in estate.iter_family("RespondentEvent")
+            },
             "query_ref": decision.query.ref.as_dict(),
             "predicate_ref": decision.predicate.ref.as_dict(),
         }
         first = issue_and_execute_stream_i03(
             estate=estate, decision=decision,
             decision_verifier=lambda candidate: candidate == decision,
-            recorded_routing=recorded_routing,
+            recorded_plan=recorded_plan,
         )
         second = issue_and_execute_stream_i03(
             estate=estate, decision=decision,
             decision_verifier=lambda candidate: candidate == decision,
-            recorded_routing=recorded_routing,
+            recorded_plan=recorded_plan,
         )
         fact = first.facts[0]
         cells = [
@@ -166,6 +197,8 @@ def main() -> int:
             "cells": cells,
             "recorded_codes_present": [c for c, _, _ in cells],
             "physical_missing_excluded": missing,
+            "system_missing_excluded": missing.get("system_missing", 0),
+            "absent_excluded": missing.get("absent", 0),
             "replay_equal": (
                 fact.semantic_fields.get("replay_ref")
                 == second.facts[0].semantic_fields.get("replay_ref")
@@ -210,7 +243,7 @@ def main() -> int:
             reject("denied_verifier", lambda: issue_and_execute_stream_i03(
                 estate=estate, decision=decision,
                 decision_verifier=lambda candidate: False,
-                recorded_routing=recorded_routing)),
+                recorded_plan=recorded_plan)),
         ]
         out["negatives"] = neg
         out["status"] = (

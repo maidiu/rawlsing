@@ -9,10 +9,16 @@ eligibility, or mints a permanent authority/permanent ref.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from types import MappingProxyType
 from typing import Mapping
+import json
+
+import pyarrow.parquet as pq
 
 from rawlsing_next.pre553_anvil_stream_native_i03 import (
+    RecordedRoutingPlan,
     VerifiedAnvilStreamEstate,
+    _make_recorded_routing_plan,
     _stream_exact_universe,
 )
 from rawlsing_next.pre553_anvil_stream_issuance import (
@@ -24,15 +30,20 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthoritySnapshot,
     EmpiricalQuerySpec,
     ExactRef,
+    RespondentEvent,
     RoutingEligibilityFact,
     exact_ref,
     make_empirical_predicate,
     semantic_hash,
 )
+from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
 
 
 class RecordedResponseError(ValueError):
     """The held recorded-response operation cannot be lawfully materialized."""
+
+
+_CODEC = R5TypedValueCodec()
 
 
 @dataclass(frozen=True)
@@ -61,6 +72,7 @@ class HeldRecordedOperation:
     target_domain_replay_ref: ExactRef
     predicate_replay_root: ExactRef
     query_replay_root: ExactRef
+    transform_ref: ExactRef
     approved_nonanswer_states: tuple[str, ...] = ()
     physical_missing_state: str = "SEPARATE_NOT_RECORDED"
 
@@ -72,12 +84,25 @@ def _authority(authorities, ref, label):
     raise RecordedResponseError(f"held {label} authority is absent")
 
 
-def _recorded_raw(event) -> str | None:
-    value = getattr(event, "raw_response_value", None)
-    if value is None:
-        return None
-    text = str(value)
-    return text
+def _decoded_raw_values(estate: VerifiedAnvilStreamEstate) -> dict[str, object]:
+    """Decode the bounded R5 raw_typed lane, never str() an undecoded object."""
+    result: dict[str, object] = {}
+    parquet = pq.ParquetFile(estate.directory / "RespondentEvent.parquet")
+    try:
+        for batch in parquet.iter_batches(
+            batch_size=1024, columns=["ref", "raw_typed"],
+        ):
+            for row in batch.to_pylist():
+                try:
+                    encoded = json.loads(row["raw_typed"])
+                    result[row["ref"]] = _CODEC.decode(encoded)
+                except Exception as exc:
+                    raise RecordedResponseError(
+                        "stored R5 raw_typed value cannot be decoded exactly"
+                    ) from exc
+    finally:
+        parquet.close()
+    return result
 
 
 def build_recorded_operation(
@@ -85,7 +110,7 @@ def build_recorded_operation(
     estate: VerifiedAnvilStreamEstate,
     operation: HeldRecordedOperation,
     question_ref: ExactRef,
-) -> tuple[HeldStreamIssuanceDecision, tuple[RoutingEligibilityFact, ...], int]:
+) -> tuple[HeldStreamIssuanceDecision, RecordedRoutingPlan, dict[str, int]]:
     """Construct predicate/query and a scoped recorded routing projection.
 
     The operation's allowed codes come only from the held decision.  Recorded
@@ -112,6 +137,16 @@ def build_recorded_operation(
     allowed = {str(code) for code in operation.allowed_raw_codes}
     if len(allowed) != len(operation.allowed_raw_codes):
         raise RecordedResponseError("duplicate allowed raw code")
+    # Resolve the exact operation authority before scanning any saved rows.
+    query_authority = _authority(
+        operation.authorities, operation.query_authority_ref, "query"
+    )
+    routing_authority = _authority(
+        operation.authorities, operation.routing_authority_ref, "routing"
+    )
+    source_authority = _authority(
+        operation.authorities, operation.source_authority_ref, "source"
+    )
     respondents = tuple(
         sorted(estate.iter_family("RespondentIdentity"), key=lambda x: x.ref.key)
     )
@@ -122,37 +157,36 @@ def build_recorded_operation(
             key=lambda x: x.ref.key,
         )
     )
+    decoded_raw = _decoded_raw_values(estate)
     by_respondent: dict[str, list] = {}
     for event in events:
         respondent_ref = exact_ref(event.scoped_respondent_ref, "event respondent")
         by_respondent.setdefault(respondent_ref.key, []).append(event)
 
     recorded: dict[str, object] = {}
-    missing: list[object] = []
+    recorded_raw: dict[str, object] = {}
+    system_missing: list[object] = []
+    absent: list[object] = []
     for respondent in respondents:
         occurrences = by_respondent.get(respondent.ref.key, ())
         if len(occurrences) > 1:
             raise RecordedResponseError("duplicate recorded respondent occurrence")
         if not occurrences:
-            missing.append(respondent)
+            absent.append(respondent)
             continue
         event = occurrences[0]
-        raw = _recorded_raw(event)
-        if raw not in allowed:
+        raw = decoded_raw.get(event.ref.key)
+        if raw is None:
+            system_missing.append(respondent)
+            continue
+        if type(raw) is bool:
+            raise RecordedResponseError("boolean raw code is not a recorded scalar label")
+        if str(raw) not in allowed:
             raise RecordedResponseError("unknown recorded raw code")
         recorded[respondent.ref.key] = event
+        recorded_raw[respondent.ref.key] = raw
     if not recorded:
         raise RecordedResponseError("no recorded respondent membership")
-
-    query_authority = _authority(
-        operation.authorities, operation.query_authority_ref, "query"
-    )
-    routing_authority = _authority(
-        operation.authorities, operation.routing_authority_ref, "routing"
-    )
-    source_authority = _authority(
-        operation.authorities, operation.source_authority_ref, "source"
-    )
 
     members = tuple(
         sorted((respondent.ref for respondent in respondents), key=lambda ref: ref.key)
@@ -222,10 +256,31 @@ def build_recorded_operation(
             "measure_kind": "RAW",
             "risk_set_type": "CUSTOM_GOVERNED_RISK_SET",
             "response_state_semantics_ref": operation.response_state_semantics_ref,
+            "recorded_transform_ref": operation.transform_ref,
             "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
         },
         query_authority_refs=(query_authority.authority_ref,),
     )
+
+    event_transforms: dict[str, object] = {}
+    for respondent in respondents:
+        event = recorded.get(respondent.ref.key)
+        if event is None:
+            continue
+        fields = dict(event.semantic_fields)
+        fields.pop("typed_state", None)
+        fields["raw_response_value"] = recorded_raw[respondent.ref.key]
+        fields["response_state"] = "SUBSTANTIVE_RESPONSE"
+        fields["canonical_response_value_if_authorized"] = None
+        fields["value_transform_authority_ref"] = operation.transform_ref
+        transformed = RespondentEvent(
+            typed_state="SUBSTANTIVE_RESPONSE",
+            authority_snapshot_refs=event.authority_snapshot_refs,
+            dependency_refs=(event.ref,),
+            producer_replay_locator_or_reference_root=operation.transform_ref,
+            **fields,
+        )
+        event_transforms[event.ref.key] = transformed
 
     recorded_routing = []
     for respondent in respondents:
@@ -238,8 +293,9 @@ def build_recorded_operation(
             semantic_hash({
                 "owner_decision_sha256": operation.owner_decision_sha256,
                 "respondent": respondent.ref.as_dict(),
-                "raw_code": _recorded_raw(event) if event is not None else None,
+                "raw_code": recorded_raw.get(respondent.ref.key),
                 "state": state,
+                "observation": "R5_RAW_TYPED_DECODED",
             }),
         )
         recorded_routing.append(RoutingEligibilityFact(
@@ -274,7 +330,28 @@ def build_recorded_operation(
         approved_raw_domain=operation.allowed_raw_codes,
         approved_nonanswer_states=operation.approved_nonanswer_states,
     )
-    return decision, tuple(recorded_routing), len(missing)
+    plan = _make_recorded_routing_plan(
+        decision_sha256=operation.owner_decision_sha256,
+        source_root=operation.source_root,
+        release_root=operation.release_root,
+        universe_root=operation.universe_root,
+        replay_root=operation.replay_root,
+        risk_set_ref=operation.recorded_risk_ref,
+        facts_by_key=MappingProxyType({
+            (
+                fact.scoped_respondent_ref.key if hasattr(fact.scoped_respondent_ref, "key") else exact_ref(fact.scoped_respondent_ref).key,
+                exact_ref(fact.question_or_target_ref).key,
+                exact_ref(fact.risk_set_ref).key,
+            ): (fact,)
+            for fact in recorded_routing
+        }),
+        event_transforms=MappingProxyType(event_transforms),
+    )
+    missing_counts = {
+        "system_missing": len(system_missing),
+        "absent": len(absent),
+    }
+    return decision, plan, missing_counts
 
 
 def execute_recorded_response_i03(
@@ -284,14 +361,14 @@ def execute_recorded_response_i03(
     decision_verifier,
 ):
     """Build operation query and execute the existing native I03 once."""
-    decision, recorded_routing, missing = build_recorded_operation(
+    decision, recorded_plan, missing = build_recorded_operation(
         estate=estate, operation=operation, question_ref=operation.question_ref,
     )
     result = issue_and_execute_stream_i03(
         estate=estate,
         decision=decision,
         decision_verifier=decision_verifier,
-        recorded_routing=recorded_routing,
+        recorded_plan=recorded_plan,
     )
     return result, missing, decision
 
