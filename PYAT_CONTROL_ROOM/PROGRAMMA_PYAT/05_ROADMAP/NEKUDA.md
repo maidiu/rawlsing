@@ -340,6 +340,8 @@ This is a source-static corrected negative fate, not protected receiving.
 
 **Inferior/unsafe claim:** Adapter explicitly keeps OC05 consumer_seam=None, loads TEST_ONLY N9C and copied native owner modules; #503 20 PASS does not install N9 or prove actor/source science.
 
+**2026-11-21 salvage/fate:** The historical duplicate whole E05 selected-world adapter is **NOT installed**; its missing source/field-clock and provenance checks have been extracted into the existing R112 first-reader in [draft #1266](https://github.com/maidiu/rawlsing/pull/1266), with 24 author-GitHub-Actions tests passing at `3d6aea30fbca18ef34763dd05eb07f1b1baa322a`. **NEKUDA for the redundant wrapper**, not for the still potentially useful historical N9C two-native-field nonpooled readset; that unique element remains KUDA-076 HELD pending a real consumer/source interface.
+
 **Preservation rule:** Keep test-only consumer proof distinct from N9/OC05 real source/actor approval.
 
 ### NEKUDA-069 — B20 initial Route-C physical integer vs target string fixture bug

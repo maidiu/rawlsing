@@ -686,7 +686,9 @@ This is a **same-ledger follow-on** to R8, not a new inventory, a new controller
 
 **Negative/receiving limit:** Copied worker-tree native dependencies; N9C provider/reader identity, OC05, EE13, N9 installation and source/actor authority held; noninstalling by design.
 
-**Smallest legitimate operation:** Resolve N9C exact reader and compare selected L01/R06 before qualified owner integration.
+**Recovered element now operative in selected-current test owner (author CI grade, NOT RECEIVED):** [draft #1266](https://github.com/maidiu/rawlsing/pull/1266) at exact `3d6aea30fbca18ef34763dd05eb07f1b1baa322a` adds E05's specific post-read E04 selected-world field source permission root, effective-interval, publication-as-of, exact field-ref/payload-hash and empirical-root checks **inside the already selected R112 `pre553_world_conditioned_progressive_service._PrefixBoundService.structural`/first consumer**. [GitHub Actions 44917590913](https://github.com/maidiu/rawlsing/actions/runs/44917590913): 24 passed (new hostile/positive + current R112/R107), retained JUnit artifact 14712580199. Production source blob `004ec58dbfd8732d1139e32ce7c7a0eb6a7a0380` identical to first source SHA; only CI artifact settings changed later. **This salvages the valuable guard, not E05's old adapter architecture.** Actual historical N9C two-native-field nonpooled reader / OC05 installation stays separately HELD; no original survey authority or causal actor claim, no PRE-MAIN code receipt. Codex HQ narrowly review patch/test only, then competent G4 and paired CURRENT_PROGRESS receiving.
+
+**Remaining distinct operation (not discarded):** Establish N9C's exact two-field reader source/consumer and any currently absent original approved projection before an additional integration; do not port E05's redundant selected-world wrapper.
 
 **Relevant NEKUDA predecessors / nonpromotable variants:** NEKUDA-068.
 
