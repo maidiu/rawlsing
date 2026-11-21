@@ -1,6 +1,8 @@
 import copy
+import tempfile
+from pathlib import Path
 import unittest
-from check_live_receiving import audit, BASE_SHA
+from check_live_receiving import audit, BASE_SHA, verify_readable_status, sha_blob
 
 
 def fixture():
@@ -61,6 +63,22 @@ class ReceivingCheckerAdversaries(unittest.TestCase):
         d, s = fixture()
         s['scope_complete'] = False
         self.assertIn('DISCOVERY_SCOPE_INCOMPLETE_OR_UNAUTHENTICATED', audit(d, s)[0])
+
+    def test_fake_independent_review_claim(self):
+        d, s = fixture()
+        d['records'][0]['disposition'] = 'INDEPENDENTLY_REVIEWED_SCOPED'
+        self.assertIn('UNSUPPORTED_INDEPENDENT_REVIEW_CLAIM:1234', audit(d, s)[0])
+
+    def test_readable_markdown_digest_stale(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            raw = b'{"schema":"sample"}\n'
+            (folder / 'LIVE_RECEIVING_LEDGER.json').write_bytes(raw)
+            (folder / 'READABLE_CANDIDATE_STATUS_20261121.md').write_text(
+                'exact Git **blob `' + sha_blob(raw) + '`**')
+            self.assertEqual(verify_readable_status(folder), [])
+            (folder / 'LIVE_RECEIVING_LEDGER.json').write_bytes(raw + b' ')
+            self.assertIn('READABLE_LEDGER_VIEW_STALE', verify_readable_status(folder))
 
     def test_superseded_without_function_conservation(self):
         d, s = fixture()
