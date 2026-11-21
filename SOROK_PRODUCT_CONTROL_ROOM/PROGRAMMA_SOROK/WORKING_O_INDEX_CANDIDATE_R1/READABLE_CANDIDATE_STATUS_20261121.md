@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `e68b76212d3ab1fd8e6d5e31836740ce97975bf7`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **104-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `4b80e43adcd0f07cc78293b0369e80ccfdf1ebf8`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **107-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -144,3 +144,7 @@ R17 P018 has a [scoped sourcefree receipt](https://github.com/maidiu/rawlsing/bl
 
 - [#1246](https://github.com/maidiu/rawlsing/pull/1246) at `1dc02f66c63c64ec7124f219f5ce0d8cdf76ebdd`. User Terminal evidence supports 558 sourcefree passes and the two-history run. Protected receiving remains held.
 - [#1248](https://github.com/maidiu/rawlsing/pull/1248) at `6647f746f4f7d2ae3dd0d14af5cde38191044773`. User Terminal evidence supports 558 sourcefree passes and the two-history run. Protected receiving remains held.
+
+- [#1249](https://github.com/maidiu/rawlsing/pull/1249) at `40dbbd4c774c6f210c4d0c854b9df35c86a7857c`. Reconcile the exact R19 successor against #1171 and review its atomicity independently.
+- [#1250](https://github.com/maidiu/rawlsing/pull/1250) at `eb15248d0a4590846ff5bff02523c1edaf535507`. Retain R23 research candidate and separately qualify the relational transduction first consumer.
+- [#1251](https://github.com/maidiu/rawlsing/pull/1251) at `43a871cd6854b2be617960da98423a18562ba6bc`. Retain R24 research candidate and separately qualify the institutional contrast first consumer.
