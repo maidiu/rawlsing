@@ -17,6 +17,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    authority_ref,
     EmpiricalFact,
     EmpiricalQuerySpec,
     ExactRef,
@@ -191,6 +192,53 @@ def _query_component_material(
     return domains[0], domains[1], identity
 
 
+def _check_positive_respondent_extent(fact: EmpiricalFact) -> None:
+    """Check declared I03 sourcefree member-set closure, without certifying origin.
+
+    I03 produces both enumerations together. Historical sourcefree D-shaped
+    fixtures sometimes declare neither: retain that ABI, but do not treat
+    absence as authenticated membership. A partial declaration is invalid.
+    Do not demand denominator == all risk members; a condition may select
+    fewer than the complete risk set.
+    """
+    material = fact.semantic_fields
+    risk_present = "risk_set_member_refs" in material
+    denominator_present = "denominator_member_refs" in material
+    if risk_present != denominator_present:
+        raise FieldForgeConditionalSupportError(
+            "risk-set and denominator members must be declared together")
+    if not risk_present:
+        return  # sourcefree content check only; missing extent remains unqualified
+
+    risk_members = tuple(
+        _exact(ref, "fact.risk_set_member_refs")
+        for ref in _sequence(
+            material["risk_set_member_refs"], "fact.risk_set_member_refs",
+            allow_empty=True)
+    )
+    denominator_members = tuple(
+        _exact(ref, "fact.denominator_member_refs")
+        for ref in _sequence(
+            material["denominator_member_refs"], "fact.denominator_member_refs",
+            allow_empty=True)
+    )
+    # The real I03 respondent is a C11 internal RespondentIdentity, not the
+    # distinct public RespondentEvent fact. Preserve the exact native ABI.
+    if any(ref.kind != "C11Internal:RespondentIdentity"
+           for ref in (*risk_members, *denominator_members)):
+        raise FieldForgeConditionalSupportError("respondent member kind mismatch")
+    if len(set(risk_members)) != len(risk_members):
+        raise FieldForgeConditionalSupportError("duplicate risk-set member")
+    if len(set(denominator_members)) != len(denominator_members):
+        raise FieldForgeConditionalSupportError("duplicate denominator member")
+    if len(denominator_members) != fact.raw_denominator_support:
+        raise FieldForgeConditionalSupportError(
+            "denominator member count mismatch with raw denominator")
+    if not set(denominator_members).issubset(set(risk_members)):
+        raise FieldForgeConditionalSupportError(
+            "denominator member outside risk set")
+
+
 def _validate_common_closure(
     *,
     joint_fact: EmpiricalFact,
@@ -209,6 +257,30 @@ def _validate_common_closure(
     if joint_fact.typed_state not in ALLOWED_PRODUCER_STATES:
         raise FieldForgeConditionalSupportError(
             f"unsupported producer typed_state {joint_fact.typed_state!r}")
+    # SUPPORTED is an empirically positive typed state, not merely a positive
+    # risk denominator. The canonical EmpiricalFact family currently validates
+    # the denominator but permits numerator=0 under SUPPORTED. Without this
+    # guard FF01 emits a nonempty all-zero conditional profile, and the
+    # downstream D gate promotes it to ADMITTED structural input. Preserve
+    # genuine OBSERVED_ZERO as a typed negative instead of reclassifying it.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_fact.raw_numerator_support == 0):
+        raise FieldForgeConditionalSupportError(
+            "SUPPORTED empirical fact has zero positive support")
+    # I03 marks a positive but partially resolved target configuration
+    # UNRESOLVED. Re-signing it SUPPORTED cannot legitimize a D-positive.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_fact.raw_numerator_support != joint_fact.raw_denominator_support):
+        raise FieldForgeConditionalSupportError(
+            "SUPPORTED requires fully resolved target denominator")
+    # The exact query hash identifies what was requested, not whether that
+    # operation was authorized. A re-signed positive fact may cite a real
+    # QUERY_UNAUTHORIZED query and otherwise satisfy every closure check.
+    # A typed nonpositive fact is preserved, without permission promotion.
+    if (joint_fact.typed_state == "SUPPORTED"
+            and joint_query.typed_state != "QUERY_AUTHORIZED_RESOLVABLE"):
+        raise FieldForgeConditionalSupportError(
+            "positive fact cannot derive FIELD FORGE relation from non-authorized query state")
 
     fact_query_ref = _exact(joint_fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref")
     if fact_query_ref != joint_query.ref:
@@ -219,6 +291,8 @@ def _validate_common_closure(
     query_risk = _exact(joint_query.risk_set_ref, "query.risk_set_ref")
     if fact_risk != query_risk:
         raise FieldForgeConditionalSupportError("producer fact/query risk-set mismatch")
+    if joint_fact.typed_state == "SUPPORTED":
+        _check_positive_respondent_extent(joint_fact)
 
     fact_universes = _exact_seq(joint_fact.empirical_universe_refs, "fact.empirical_universe_refs")
     query_universes = _exact_seq(joint_query.empirical_universe_refs, "query.empirical_universe_refs")
@@ -231,6 +305,37 @@ def _validate_common_closure(
         raise FieldForgeConditionalSupportError("GT2 relation requires SINGLE_UNIVERSE")
     if grain.get("measure_kind") != "RAW":
         raise FieldForgeConditionalSupportError("GT2 relation is RAW/unweighted only")
+
+    # This projection keeps the fact/query exact references but not their
+    # individual predicate, measure, response semantics or declared risk type.
+    # Their identities must agree *before* FF01 drops the pairwise material:
+    # otherwise a coherent re-signed fact with a different estimand can become
+    # an apparently valid C relation and reach the D first consumer.
+    # These are sourcefree closure checks, not current-source/issuer grants.
+    if _exact(joint_fact.condition_predicate_ref, "fact.condition_predicate_ref") != _exact(
+        joint_query.condition_predicate_ref, "query.condition_predicate_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact predicate mismatch")
+    if _exact(joint_fact.measure_basis_ref, "fact.measure_basis_ref") != _exact(
+        joint_query.measure_basis_ref, "query.measure_basis_ref"
+    ):
+        raise FieldForgeConditionalSupportError("query/fact measure basis mismatch")
+    if grain.get("response_state_semantics_ref") is not None and _exact(
+        joint_fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+    ) != _exact(grain["response_state_semantics_ref"],
+               "query.requested_output_grain.response_state_semantics_ref"):
+        raise FieldForgeConditionalSupportError("query/fact response semantics mismatch")
+    # FF01 projects away producer uncertainty semantics. The exact query and
+    # fact must agree before that semantic assertion is lost at D.
+    if (grain.get("uncertainty_method_or_typed_state") is not None
+            and joint_fact.uncertainty_method_or_typed_state !=
+            grain["uncertainty_method_or_typed_state"]):
+        raise FieldForgeConditionalSupportError(
+            "query/fact uncertainty semantics mismatch")
+    if ("risk_set_type" in joint_fact.semantic_fields
+            and grain.get("risk_set_type") is not None
+            and joint_fact.risk_set_type != grain["risk_set_type"]):
+        raise FieldForgeConditionalSupportError("query/fact risk set type mismatch")
     if getattr(joint_fact, "source_scope_mode", None) not in (None, "SINGLE_UNIVERSE"):
         raise FieldForgeConditionalSupportError("producer fact source scope is not SINGLE_UNIVERSE")
     if getattr(joint_fact, "measure_kind", None) not in (None, "RAW"):
@@ -245,6 +350,31 @@ def _validate_common_closure(
     if not set(query_authorities).issubset(set(authorities)):
         raise FieldForgeConditionalSupportError(
             "producer fact authority closure does not preserve query authorities")
+
+    # Query-wide authority_snapshot_refs do not imply that operation-specific
+    # query_authority_refs have been carried by the fact. The latter are part
+    # of the exact query's permitted-use closure. Check *before* projection
+    # to a profile that retains only the fact's authority snapshot.
+    try:
+        query_use_authorities = {
+            authority_ref(ref, "query.query_authority_refs")
+            for ref in _sequence(joint_query.query_authority_refs,
+                                 "query.query_authority_refs", allow_empty=True)
+        }
+    except Exception as exc:
+        raise FieldForgeConditionalSupportError(
+            "malformed query-specific authority closure") from exc
+    # I03 itself refuses a query with zero operation-specific authorities.
+    # A mathematical empty-set subset would pass the check below and let a
+    # hash-valid SUPPORTED fact reach D despite no query operation issuer.
+    # Preserve negative/held typed facts; they cannot become D positives.
+    if joint_fact.typed_state == "SUPPORTED" and not query_use_authorities:
+        raise FieldForgeConditionalSupportError(
+            "positive query lacks operation-specific authority refs")
+    if (joint_fact.typed_state == "SUPPORTED"
+            and not query_use_authorities.issubset(set(authorities))):
+        raise FieldForgeConditionalSupportError(
+            "producer fact does not preserve query-specific authority refs")
 
     replay_ref = _exact(joint_fact.replay_ref, "fact.replay_ref")
     if isinstance(joint_fact.producer_replay_locator_or_reference_root, ExactRef):
@@ -268,6 +398,36 @@ def _validate_common_closure(
     if not set(provenance).issubset(set(dependencies)):
         raise FieldForgeConditionalSupportError(
             "producer provenance refs are not retained in fact dependency closure")
+
+    # C-3: A legitimate query and fact have *separate* dependency closures.
+    # The C->D bridge sees only the fact's provenance subset. A re-signed
+    # query could therefore declare a contradictory physical source, while
+    # the narrower downstream FF relation still repeats the frozen source.
+    # Inspect every explicit physical-source ref before that information is
+    # projected away. This does NOT authenticate an absent physical source:
+    # original C11 custody and current source-use authority remain external.
+    query_dependencies = _exact_seq(
+        joint_query.dependency_refs, "query.dependency_refs")
+    explicit_query_sources = {
+        ref for ref in query_dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_fact_sources = {
+        ref for ref in dependencies if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_provenance_sources = {
+        ref for ref in provenance if ref.kind == "SOURCE_ARTIFACT"
+    }
+    explicit_sources = (
+        explicit_query_sources
+        | explicit_fact_sources
+        | explicit_provenance_sources
+    )
+    if len(explicit_sources) > 1:
+        raise FieldForgeConditionalSupportError(
+            "contradictory physical SOURCE_ARTIFACT claims across query, fact, and provenance")
+    if explicit_sources and explicit_sources != explicit_provenance_sources:
+        raise FieldForgeConditionalSupportError(
+            "physical SOURCE_ARTIFACT in query/fact closure is missing from producer provenance")
 
     return fact_risk, fact_universes, authorities, replay_ref, provenance
 
@@ -309,6 +469,10 @@ def _cell_profile(
         count = row.get("raw_numerator_support")
         if not isinstance(count, int) or isinstance(count, bool) or count < 0:
             raise FieldForgeConditionalSupportError("joint support count must be nonnegative exact integer")
+        # I03 RAW cells have no weighted numerator; otherwise FF01 silently
+        # drops a distinct measurement while falsely labeling the result RAW.
+        if row.get("weighted_numerator_support_if_authorized") is not None:
+            raise FieldForgeConditionalSupportError("RAW cell carries weighted support")
         cell_state = row.get("cell_state")
         if count == 0 and cell_state not in {
             "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET", "ZERO_SUPPORT"
