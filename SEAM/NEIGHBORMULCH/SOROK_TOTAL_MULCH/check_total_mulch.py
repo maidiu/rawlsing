@@ -132,11 +132,58 @@ for leaf in (
 ):
     assert (ROOT / leaf).is_file(), leaf
 
+# An integrity guard against the concrete regression that occurred in this turn:
+# old CI proved source custody while the designated living theory hub (03)
+# was NOT revised by substantive new user/source arguments. This check
+# establishes only that the source themes now appear IN the hub and 05/06;
+# it cannot prove their intellectual adequacy or independent owner adoption.
+theory = (ROOT / "03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md").read_text()
+start = (ROOT / "00_START_HERE_TOTAL_SOROK_MULCH.md").read_text()
+crosswalk = (ROOT / "05_CAPABILITY_OWNER_AND_FIRST_CONSUMER_CROSSWALK.md").read_text()
+critique = (ROOT / "06_RECIPROCAL_MULCH_AND_NO_DROP_PROTOCOL.md").read_text()
+for concept in (
+    "ACTIVE NEIGHBORMULCH THEORY HUB",
+    "Infancy: real reciprocal dependence",
+    "What makes the field dialectical—and what does not",
+    "Actual R26–R27 correction",
+    "M0 material occurrence",
+    "Unrecognized care, objectively real harm",
+    "Observation itself belongs inside the relational field",
+    "Human powers deposited outside their bodies",
+    "the Sabbath was made for man, not man for the Sabbath",
+    "The visitor is not a godlike spectator",
+    "F4—Observer observed",
+    "F5—Unrecognized consequence",
+    "F6—Externalization versus fetishism",
+    "F7—Self-retcon and portal mediation",
+):
+    assert concept.casefold() in theory.casefold(), ("THEORY_HUB_NOT_ASSIMILATED", concept)
+for concept in (
+    "One primary living theory document",
+    "03 — The Dialectical Constitutive Person and Its Game",
+    "THEORY_MULCH_INCOMPLETE",
+):
+    assert concept in start, ("HUB_ENTRANCE_DRIFT", concept)
+for concept in (
+    "the revised theory hub",
+    "Observer observed",
+    "Anonymous good/hidden harm",
+    "No new fetishism subsystem",
+):
+    assert concept.casefold() in crosswalk.casefold(), ("HUB_OWNER_CROSSWALK_DRIFT", concept)
+for concept in (
+    "Mandatory active-theory-hub rule",
+    "THEORY_MULCH_INCOMPLETE",
+    "85-row conversation register",
+):
+    assert concept in critique, ("HUB_RECIPROCAL_DRIFT", concept)
+
 print("SOURCE_IDENTITY_NO_DROP PASS: 144 + 190 + 123 + 300 = 757 raw records")
 print("S0–S16 PASS: 17 original workstreams are INCLUDED in 144, not additional")
 print("CURATED_DIRECTORY PASS: 227 files + 25 linked directories, scope explicitly limited")
 print("USER_CONVERSATION PASS: NM-001 through NM-085 contiguous; exact latest source snippets preserved")
 print("SELECTED_TREES PASS: 242 original + 78 SEAM + 54 protected = 374 exact file records; 372 distinct paths")
 print("SOURCE_MULCH PASS: all 757 exact source identities have an explicitly scoped thematic/owner coverage row")
+print("ACTIVE_THEORY_HUB_ASSIMILATION_SMOKE_PASS: 03 primary + 00 entry + 05 existing consumers + 06 discordant source receiving; document-level presence only, NOT theory quality certification")
 print("GRADE WARNING: SOURCEFREE/DOCUMENTARY, no native science, independent review or protected receiving")
 sys.exit(0)
