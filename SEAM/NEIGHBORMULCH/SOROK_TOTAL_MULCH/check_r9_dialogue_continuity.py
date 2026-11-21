@@ -145,7 +145,7 @@ def main():
         "message", "deletion", "third", "ordinary",
         "source-qualified", "CONSTITUTIVE", "G4", "Mechanism",
         "God", "religious", "horizon", "relationship",
-        "cannot fully know", "public", "rent", "fallible",
+        "cannot comprehensively read", "public", "rent", "fallible",
     ]
     for phrase in important:
         must(phrase.lower() in main.lower(),
