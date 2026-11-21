@@ -13,7 +13,7 @@
 
 ## B. The first CO C-T1 theoretical construction is now meaningful
 
-**Do not write a "we agree with NEIGHBOR" compatibility memo.** Reread original R3 §§I–XVII and strongest historical constitutive sources, then construct **a fully positive revised theory** of material social participation and psychological becoming that explains how an externally supplied human conduct can be recruited, resisted, inhibited, reinterpreted and differentially transform multiple actors' future histories. CO should challenge the N-T1 where it is normatively and computationally inadequate, including the following specific questions.
+**Do not write a "we agree with NEIGHBOR" compatibility memo.** Reread original R3 ``I–XVII and strongest historical constitutive sources, then construct **a fully positive revised theory** of material social participation and psychological becoming that explains how an externally supplied human conduct can be recruited, resisted, inhibited, reinterpreted and differentially transform multiple actors' future histories. CO should challenge the N-T1 where it is normatively and computationally inadequate, including the following specific questions.
 
 - **A person is not a cache of secrets:** Does our existing actor representation make continuing practical identity through activities rather than personality storage? Which *existing* source-code operations are currently closer to the truth than the N-T1 theory articulates?
 - **A visitor joins several causal histories:** Can existing world action and afterlife carry the same objective event into multiple independent actor-local experienced sources, with different forms and different *degrees of effect*, without a narrator deciding everyone's reaction?
