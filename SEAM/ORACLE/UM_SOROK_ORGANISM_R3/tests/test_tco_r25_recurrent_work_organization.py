@@ -5,7 +5,10 @@ historical self-organization, situated recruitment and objective world owners.
 Nothing here imputes an employer's motives or a worker's political belief.
 """
 import unittest
+import tempfile
+from pathlib import Path
 
+from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.types import (
     adult, blank_world, Attempt, copy, stable_id,
 )
@@ -267,6 +270,53 @@ class TCORecurrentWorkR25(unittest.TestCase):
                              and x.get('recurrent_work_practice')
                              for x in out['candidates']))
         self.assertEqual(a['historical_orientations'],[])
+
+    def test_real_runtime_delivers_its_own_work_history_to_development_model(self):
+        # This is an actual SQLite/runtime/afterlife first consumer; the
+        # scheduler is NOT entitled to declare the actor's reason for working.
+        class ObservingSemantics:
+            def __init__(self):
+                self.base=ValidatingSemanticService()
+                self.packet_history=[]
+            def proposal(self,task,packet):
+                if (task=='development' and
+                        packet.get('actor',{}).get('id')=='mother'):
+                    self.packet_history.append(copy(packet.get(
+                        'historically_possible_recurrent_livelihood_orientation',[])))
+                return self.base.proposal(task,packet)
+
+        fake_parent={
+            'source_ref':'r25_sourcefree_fictional_parent_not_PYAT',
+            'source_grade':'SOURCEFREE_TEST_NOT_SURVEY_EVIDENCE',
+            'answers':{'R25_SYNTHETIC':'NOT_A_RESPONDENT_ANSWER'},
+            'fictional_seed':{'projects':[]}}
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'r25_repeated_livelihood.sqlite3')
+            semantic=ObservingSemantics()
+            rt=ConstitutiveRuntime(db,semantic=semantic)
+            rt.initialize([('father','Father',fake_parent),
+                           ('mother','Mother',fake_parent)])
+            try:
+                for _ in range(3):
+                    rt.step('mother',requested_action='WORK')
+                self.assertEqual(len(semantic.packet_history),3)
+                self.assertEqual(semantic.packet_history[0],[])
+                self.assertEqual(semantic.packet_history[1],[])
+                self.assertEqual(len(semantic.packet_history[2]),1)
+                self.assertEqual(semantic.packet_history[2][0]
+                                 ['possible_operation'],'WORK')
+                self.assertEqual(len(rt.ledger.actor('mother')[1]
+                                     ['historical_orientations']),0)
+                self.assertTrue(rt.verify()['valid'])
+            finally:
+                rt.close()
+            cold=ConstitutiveRuntime(db)
+            try:
+                self.assertTrue(cold.verify()['valid'])
+                self.assertEqual(len(cold.ledger.actor('mother')[1]
+                                     ['power_exercises']),3)
+            finally:
+                cold.close()
 
     def test_real_world_work_events_supply_lived_signs_without_hidden_wage_motive(self):
         a=adult('mother','Mother')
