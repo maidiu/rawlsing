@@ -114,32 +114,35 @@ def acquire_orientation(actor, experience, event_ref, proposal):
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}
 
 
-def _lived_coexperienced_other(witness):
-    """Qualify a *received social context*, not a cause, role or intention.
+def _lived_coexperience_field(witness):
+    """A historical co-presence FIELD, not a privileged causal Other.
 
-    Presence is source-bound actor-eligible sensory evidence. Precisely one
-    co-present Other may individuate repeated bodily courses; zero is a
-    genuinely solo course, and two or more Others are underdetermined for
-    this bounded hypothesis. The actual Other need not have participated
-    in the operation or caused its aftermath.
+    The actor's actual source-qualified perceptual opportunity may contain
+    no one, one Other, or several. All are materially possible. Distinct
+    episodes can ground a bounded *situational association* when their
+    received co-presence sets match. This neither claims the actor attended
+    to each person, nor determines which participant caused a felt outcome.
+    A multi-person household must not be erased to make dyadic math easy.
     """
     signs=witness.get('personally_perceived_sign_sources')
     if type(signs) is not list:
-        return (False,None)
+        return (False,())
     others=set()
     for sign in signs:
         if type(sign) is not dict:
-            return (False,None)
+            return (False,())
         if sign.get('kind')!='coactor_present':
             continue
         ref=sign.get('source_actor')
-        if (type(ref) is not str or not ref
-                or type(sign.get('cue_ref')) is not str):
-            return (False,None)
+        if (type(ref) is not str or not ref or
+                type(sign.get('cue_ref')) is not str):
+            return (False,())
         others.add(ref)
-    if len(others)>1:
-        return (False,None)
-    return (True, next(iter(others),None))
+    # Sorted, bounded, immutable field identity; no new inferred relation.
+    # A large crowd is not an automatically learned individuated field.
+    if len(others)>8:
+        return (False,())
+    return (True,tuple(sorted(others)))
 
 
 def possible_lived_directional_orientation(actor, experience, event_ref):
@@ -182,8 +185,8 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     # The earlier R28 actor+operation+room match over-generalized bodily
     # orientation from one Other to another. A context is RECEIVED,
     # not a statement that the Other caused the body delta.
-    qualified_other, coexperienced_other = _lived_coexperienced_other(now)
-    if not qualified_other:
+    qualified_field, coexperienced_others = _lived_coexperience_field(now)
+    if not qualified_field:
         return []
     older = [r for r in rows
              if r['clock'] < now['clock'] and r['event_ref'] != event_ref]
@@ -191,8 +194,8 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     # of one event as multiple courses of experience.
     earlier = {}
     for row in older:
-        known,other=_lived_coexperienced_other(row)
-        if not known or other != coexperienced_other:
+        known,others=_lived_coexperience_field(row)
+        if not known or others != coexperienced_others:
             continue
         if row['event_ref'] not in earlier or (
                 row['clock'], row['id']) > (
@@ -230,7 +233,7 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
            and r.get('location') == site
            and r.get('orientation_mode') == mode
            and r.get('lived_genesis_basis',{}).get(
-               'coexperienced_other_ref') == coexperienced_other
+               'coexperienced_other_refs') == list(coexperienced_others)
            for r in actor.get('historical_orientations', [])):
         return []
     selected = [first, now]
@@ -245,10 +248,10 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
         'source_experience_refs': [r['experience_ref'] for r in selected],
         'operation': action,
         'location': site,
-        'coexperienced_other_ref': coexperienced_other,
+        'coexperienced_other_refs': list(coexperienced_others),
         'experienced_social_context': (
-            'SINGLE_COPRESENT_OTHER_NOT_CAUSAL_PROOF'
-            if coexperienced_other else
+            'RECURRENT_MULTI_OR_SINGLE_COACTOR_FIELD_NOT_CAUSAL_PROOF'
+            if coexperienced_others else
             'NO_OTHER_PERCEIVED_DURING_EPISODES'),
         'other_may_not_have_caused_bodily_course': True,
         'other_consent_intent_and_motive_not_inferred': True,
@@ -299,8 +302,8 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
     source['lived_genesis_basis'] = copy(expected['lived_genesis_basis'])
     # Give the already existing pre-cue owner a source-grounded context
     # boundary; don't create a new social-learning graph or world writer.
-    source['coexperienced_other_ref'] = expected[
-        'lived_genesis_basis']['coexperienced_other_ref']
+    source['coexperienced_other_refs'] = copy(expected[
+        'lived_genesis_basis']['coexperienced_other_refs'])
     source['interpretive_hypothesis_not_causal_truth'] = interpretation
     source['actor_does_not_know_objective_cause'] = True
     source['does_not_upgrade_sourcefree_to_human_science'] = True
@@ -438,16 +441,14 @@ def pre_cue_pressures(constitution, access):
             continue
         if row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE':
             # R29: pre-symbolic source context, not a current motive cue.
-            # Do not recruit a social orientation learned beside one
-            # person simply because the same operation is available
-            # beside a different person in the same room.
+            # Do not recruit an orientation learned amid one specific
+            # social field simply because the action/site repeats amid
+            # a different constellation of independently acting people.
             active_others={
                 c.get('source_actor') for c in access.cues
                 if type(c) is dict and c.get('kind')=='coactor_present'
                 and type(c.get('source_actor')) is str}
-            learned_other = row.get('coexperienced_other_ref')
-            expected_others = ({learned_other}
-                               if learned_other is not None else set())
+            expected_others = set(row.get('coexperienced_other_refs',[]))
             if active_others != expected_others:
                 continue
         if row.get('operation') not in ACTIONS:
