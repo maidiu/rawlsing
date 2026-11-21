@@ -102,7 +102,7 @@ All original NEKUDA identities remain and any independent tests, scientific righ
 
 **KUDA-082 / draft #1259:** A one-fixture independent native facade/direct ingest parity diagnostic is **not** the original all35 fixture registry and not a new production C11 intake capability. Regrade as **REVIEW_TEST_ASSERTIONS_ONLY**, never infer all35 original respondent reads. Preserve only unique negative/assertion if current tests lack it; no new C11 engine. Protected G4/S01/S03 currentness remains separate.
 
-This negative/source-fate clarification is not reviewed, tested or protected received. No historical NEGATIVE or user-selected architecture decision is retired.
+**Exact selected C11-source parity, no re-ports:** KUDA-062/-063/-064/-066 match selected #1247 by whole-file exact Git blob. Strong prior corrections to cache CAS, HELD/deferred issuance, verified range nonmutation and actual native output provenance therefore survive at the source level. KUDA-059 remains present in an extended selected `pre553_issued_workload.py`; no source-only reason to reinstall the older resolver. Code identity does not prove same-head new test execution or scientific rights.\n\nThis negative/source-fate clarification is not reviewed, tested or protected received. No historical NEGATIVE or user-selected architecture decision is retired.
 
 ---
 
