@@ -1,6 +1,8 @@
 # NEIGHBORMULCH — START HERE
 ## Constitute the encounter without duplicating the person
 
+> **2026-11-21 NEW ADDITIVE SOURCE-CONSERVATION ENTRANCE (candidate on PR #1275, not a replacement for this founding document):** [TOTAL SOROK MULCH — single navigable entrypoint](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/00_START_HERE_TOTAL_SOROK_MULCH.md) integrates the **144** formal O-Index rows (including S0–S16), **190** original H ideas, **123** historical Q questions, **300** SOROKUDA code-source/version records, **227** direct source-file locators, and **44** new conversation ideas, with a **757-row explicitly graded first-pass thematic/owner disposition ledger**, substantive social-field/game synthesis, exact user-source custody and first-consumer crosswalk. GitHub Actions checks source identity coverage only, not complete historical current-code adjudication or psychological/native/human acceptance. This addition comes from the user's express demand that NEIGHBORMULCH keep literally every idea and not program from partial remembered theory. Read the new total bank **together with**, not instead of, the original 00–11 founding documents and live PROGRAMMA/O-Index; protected receiving remains held.
+
 **21 November 2026 · Founding research/construction workspace · CANDIDATE, NOT PROTECTED-RECEIVED.**
 
 **Repository:** maidiu/rawlsing. **Base:** protected PRE-MAIN at `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This workspace is **not** a new PROGRAMMA, HQ accession, actor/world/empirical/scientific permission, product release, or independent review. Read current protected/live changes again on accession; these dated source cuts are an initial map, not eternal currentness.
