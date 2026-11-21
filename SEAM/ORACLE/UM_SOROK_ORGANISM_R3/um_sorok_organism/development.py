@@ -374,6 +374,35 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             # an instruction to invent a conscious explanation.
             later_received={cue.get('id') for cue in experience.get('perceived_cues',[])
                 if isinstance(cue,dict) and type(cue.get('id')) is str}
+            if end.get('genesis_family')=='SENSED_INTERRUPTION_THEN_RELIEF':
+                # A mere third event is not enough: an acquired new concern
+                # must be brought into an actually *relevant* later situation.
+                # The old code would accept an unrelated singleton sign as
+                # sufficient to manufacture a qualitatively new project.
+                if (type(experience.get('clock')) is not int
+                        or type(end.get('origin_clock')) is not int
+                        or experience['clock']<=end['origin_clock']):
+                    raise InvalidDevelopment('GENETIC_TAKEUP_NOT_LATER_EXPERIENCE')
+                qualified_signs={cue.get('id') for cue in
+                    experience.get('perceived_cues',[])
+                    if type(cue) is dict
+                    and type(cue.get('id')) is str
+                    and bool({str(t).casefold() for t in
+                        cue.get('tags',[]) if type(t) is str}
+                        & {str(t).casefold() for t in
+                           end.get('cue_terms',[]) if type(t) is str})}
+                if not qualified_signs:
+                    raise InvalidDevelopment('GENETIC_TAKEUP_NO_REENCOUNTERED_SIGN')
+                if (c.get('later_perceived_cue_ref') is not None
+                        and c['later_perceived_cue_ref'] not in qualified_signs):
+                    raise InvalidDevelopment('GENETIC_TAKEUP_UNRELATED_SIGN')
+                if c.get('later_perceived_cue_ref') is None:
+                    # A sourcefree inference can abstain when multiple signs
+                    # compete. It cannot choose arbitrary "first" as cause.
+                    if len(qualified_signs)!=1:
+                        raise InvalidDevelopment('GENETIC_TAKEUP_SIGN_AMBIGUOUS')
+                    c=copy(c)
+                    c['later_perceived_cue_ref']=next(iter(qualified_signs))
             claimed_later_sign=c.get('later_perceived_cue_ref')
             if (claimed_later_sign is not None and
                     (type(claimed_later_sign) is not str or
