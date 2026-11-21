@@ -116,7 +116,7 @@ inputs; no source metadata is inferred.
 
 The controller's concrete private operation artifact is now present at the
 safe q006 path, mode 0600, SHA-256
-`79bd920d4d2831b961180195f504a1deac135976ac1c8ff21b717d04f123b10a`. It carries
+`fa0582562c3ccd57194d3fb4f375693d61eb725cfe3efc10261940be5f9afdf3`. It carries
 the full exact q103 question ref (`NATIVE_QUESTION|urn:...7f5834521c9c4a400580|7f5834...`)
 and the held owner/R2 binding. `q006_materialize.py` can regenerate it when the
 controller supplies `--question-ref`; the local author sidecar only had the

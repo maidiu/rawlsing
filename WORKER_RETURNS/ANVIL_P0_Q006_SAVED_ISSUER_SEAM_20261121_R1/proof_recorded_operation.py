@@ -33,6 +33,7 @@ from rawlsing_next.pre553_anvil_stream_recorded import (  # noqa: E402
     build_recorded_operation,
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog  # noqa: E402
+from WORKER_RETURNS.ANVIL_P0_Q006_SAVED_ISSUER_SEAM_20261121_R1.q006_materialize import _authority  # noqa: E402
 from rawlsing_next.pre553_empirical_objects import ExactRef, RespondentEvent, semantic_hash  # noqa: E402
 from rawlsing_next.pre553_c11_ingest import build_candidate_replay_manifest  # noqa: E402
 from dataclasses import replace  # noqa: E402
@@ -108,6 +109,11 @@ def main() -> int:
             current_authorizer=grant,
         )
         question_ref = source["qrefs"]["Y"]
+        roots = dataclasses.asdict(estate.i02)
+        sourcefree_owner = owner_sha
+        gen_source = _authority(sourcefree_owner, "SOURCE", "Q103-OP-RECORDED-RESPONSE-ONLY", "SOURCEFREE_RECORDED", roots, codes, "SOURCE_SEMANTICS_TOPOLOGY", ("EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0", "RoutingEligibilityFact@1.0.0"))
+        gen_routing = _authority(sourcefree_owner, "ROUTING", "Q103-OP-RECORDED-RESPONSE-ONLY", "SOURCEFREE_RECORDED", roots, codes, "ROUTING_RISK_SET", ("RoutingEligibilityFact@1.0.0",))
+        gen_query = _authority(sourcefree_owner, "QUERY", "Q103-OP-RECORDED-RESPONSE-ONLY", "SOURCEFREE_RECORDED", roots, codes, "PREDICATE_GRAMMAR", ("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0"))
         risk_ref = ExactRef(
             "RISK_SET",
             "recorded-response-" + owner_sha + "-" + question_ref.content_hash,
@@ -131,16 +137,16 @@ def main() -> int:
             universe_root=estate.i02.universe,
             replay_root=estate.i02.replay,
             question_ref=question_ref,
-            authorized_operation=auth.governed_operations[0],
+            authorized_operation="Q103-OP-RECORDED-RESPONSE-ONLY",
             allowed_raw_codes=codes,
             interpretation=tuple(
                 (str(code), str(owner["interpretation"][code][0]))
                 for code in codes
             ),
-            authorities=tuple((*source["authorities"], auth)),
-            query_authority_ref=auth.authority_ref,
-            routing_authority_ref=source["routing_auth"].authority_ref,
-            source_authority_ref=source["source_auth"].authority_ref,
+            authorities=tuple((*source["authorities"], gen_source, gen_routing, gen_query)),
+            query_authority_ref=gen_query.authority_ref,
+            routing_authority_ref=gen_routing.authority_ref,
+            source_authority_ref=gen_source.authority_ref,
             recorded_risk_ref=risk_ref,
             routing_rule_ref=routing_rule_ref,
             member_set_replay_ref=member_set_ref,

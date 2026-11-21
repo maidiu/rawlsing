@@ -319,7 +319,7 @@ def build_recorded_operation(
         fields["value_transform_authority_ref"] = operation.transform_ref
         transformed = RespondentEvent(
             typed_state="SUBSTANTIVE_RESPONSE",
-            authority_snapshot_refs=event.authority_snapshot_refs,
+            authority_snapshot_refs=(operation.source_authority_ref,),
             dependency_refs=(event.ref,),
             producer_replay_locator_or_reference_root=operation.transform_ref,
             **fields,

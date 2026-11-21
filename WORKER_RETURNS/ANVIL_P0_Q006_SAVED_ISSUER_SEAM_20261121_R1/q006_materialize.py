@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 
+from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
@@ -57,6 +58,7 @@ def _authority(owner_sha, role, operation, scope, roots, codes, kind, families):
         "codes": list(codes),
     }
     digest = semantic_hash(material)
+    universe = _ref(roots["universe"])
     return AuthoritySnapshot(
         typed_state="ALLOW",
         authority_snapshot_refs=(),
@@ -74,7 +76,7 @@ def _authority(owner_sha, role, operation, scope, roots, codes, kind, families):
         governed_operations=(operation,),
         governed_object_families=tuple(families),
         scope_envelope={
-            "source_universe_refs": [roots["universe"]],
+            "source_universe_refs": [universe.as_dict()],
             "source_sha256": roots["source"],
             "release": roots["release"],
             "scope": scope,
@@ -89,6 +91,21 @@ def _authority(owner_sha, role, operation, scope, roots, codes, kind, families):
             "REPLAY_PROTOCOL", "q006-" + role, digest,
         ),
     )
+
+
+def validate_operation_authorities(authorities, operation, universe_root):
+    """Exercise the same positive-authority checks before any estate read."""
+    universe = _ref(universe_root)
+    registry = AuthorityRegistry(tuple(authorities))
+    for authority in authorities:
+        for family in authority.governed_object_families:
+            registry.require(
+                authority.authority_ref,
+                operation=operation,
+                object_family=family,
+                source_universe_ref=universe.as_dict(),
+            )
+    return True
 
 
 def materialize(*, owner_path: Path, r2_path: Path, q006_dir: Path, output: Path, question_ref=None):

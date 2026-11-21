@@ -27,6 +27,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     exact_ref,
 )
+from q006_materialize import validate_operation_authorities
 
 
 def _ref(value):
@@ -66,6 +67,15 @@ def main() -> int:
     )}
     if binding != expected_binding:
         raise SystemExit("OWNER_R2_BINDING_MISMATCH_BEFORE_READ")
+    doc = json.loads(args.operation_json.read_text())
+    authorities = tuple(
+        materialize_public_object(item) for item in doc["authorities"]
+    )
+    if any(type(item) is not AuthoritySnapshot for item in authorities):
+        raise SystemExit("OPERATION_AUTHORITY_FAMILY_MISMATCH")
+    validate_operation_authorities(
+        authorities, doc["authorized_operation"], doc["universe_root"],
+    )
     def owner_current():
         current_owner = args.owner_decision.read_bytes()
         if hashlib.sha256(current_owner).hexdigest() != owner_sha:
@@ -91,12 +101,6 @@ def main() -> int:
             and pins.source_sha256 == binding["source_sha256"]
         ),
     )
-    doc = json.loads(args.operation_json.read_text())
-    authorities = tuple(
-        materialize_public_object(item) for item in doc["authorities"]
-    )
-    if any(type(item) is not AuthoritySnapshot for item in authorities):
-        raise SystemExit("OPERATION_AUTHORITY_FAMILY_MISMATCH")
     operation = HeldRecordedOperation(
         owner_decision_sha256=owner_sha,
         source_id=doc["source_id"],

@@ -10,7 +10,7 @@
     "harness_rereads_owner_and_r2": true,
     "true_for_anything_default": false
   },
-  "base_commit": "1e1200bdf5003583b0c04da005b02c84b734923e",
+  "base_commit": "c6e95a6dde78ce4ae05d67ecf19719997e154ab7",
   "branch": "agent/remont-q006-saved-issuer-20261121-r1",
   "candidate": {
     "modules": [
@@ -43,6 +43,13 @@
     "public_counts_emitted": false,
     "runner": "run_recorded_q103_private.py"
   },
+  "materializer_scope_fix": {
+    "canonical_source_universe_ref": true,
+    "malformed_scope_refusal": true,
+    "positive_authority_validation": "PASS",
+    "private_ids_published": false,
+    "wrong_universe_refusal": true
+  },
   "missing_resolver_red": {
     "decision_verifier": null,
     "replay_ref": "{'content_hash': '45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8', 'kind': 'PRE553_I03_QUERY_REPLAY', 'object_id': 'urn:rawlsing:pre553:i03-query-replay:sha256:45c25906ba56e21242680afa1b2cc0406e1d1747c009a7fdf49bdf8666ff28a8'}",
@@ -62,7 +69,7 @@
     "materializer_sha256": "4f3ef199f09004b40a2541d72e17a12fa2490b3ffc11a13cbbc945ee0178ba4f",
     "native_module_sha256": "e89be25ae9bc9d1a4125bf1e0af4f456cffda6d18513b3e15e9bca36a1e961e3",
     "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
-    "private_operation_sha256": "79bd920d4d2831b961180195f504a1deac135976ac1c8ff21b717d04f123b10a",
+    "private_operation_sha256": "fa0582562c3ccd57194d3fb4f375693d61eb725cfe3efc10261940be5f9afdf3",
     "recorded_module_sha256": "d29537c80277357605dbbcedf212bb8bc81a046522e917737ceeba354a1fe174",
     "recorded_proof_sha256": "fcdf0c0e9c83ae8d1299f909e4a18b3cb169dfd0d5bd6fafde594cf03a968708",
     "strategy_module_sha256": "dd8621031b596fbbe71a0622e2b570b8251a7b7d0f0c9c7a5e9e2008192b31ad"
@@ -77,13 +84,8 @@
     "stored_parquet_locator_authority": "unchanged"
   },
   "private_operation_artifact": {
-    "authority_count": 3,
-    "code_count": 7,
-    "owner_decision_sha256": "e3de52e027cc5418544f3f9bf72f62995ea81ce6ae6148faa000fa3b9f6a96f5",
-    "question_ref_content_hash": "7f5834521c9c4a4005803625b4a95946a94386e805f680284a9a859439cfa97e",
-    "question_ref_kind": "NATIVE_QUESTION",
-    "question_ref_object_id": "urn:rawlsing:r157:original:SRC04:item:question_impl.phase0.7f5834521c9c4a400580",
-    "sha256": "79bd920d4d2831b961180195f504a1deac135976ac1c8ff21b717d04f123b10a",
+    "private_ids_published": false,
+    "sha256": "fa0582562c3ccd57194d3fb4f375693d61eb725cfe3efc10261940be5f9afdf3",
     "status": "PRESENT_PRIVATE_MODE_0600",
     "written": false
   },
@@ -280,5 +282,5 @@
   "saved_estate_rebuilt": false,
   "schema": "ANVIL_P0_Q006_RECORDED_OPERATION_RETURN@1",
   "sourcefree": true,
-  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__PRIVATE_OPERATION_ARTIFACT_PRESENT"
+  "status": "RECORDED_ONLY_NATIVE_SOURCEFREE_SEVEN_CODE_DENOM7_GREEN__REAL_TOKEN_UNWRAP_FIXED__MATERIALIZER_SCOPE_FIXED__PRIVATE_ARTIFACT_PRESENT"
 }
