@@ -5,7 +5,9 @@ optimized, cold SQLite, inherited R20 and independent R15 ancestry reconciliatio
 """
 import copy
 import unittest
-from um_sorok_organism.types import adult,newborn
+from um_sorok_organism.types import adult,newborn,blank_world,AccessibleEncounter
+from um_sorok_organism.constitution import materialize
+from um_sorok_organism.prospective_horizon import project_trial_horizons
 from um_sorok_organism.semantics import ValidatingSemanticService
 from um_sorok_organism.blind_parent_probes import (
     blind_operational_interview,actor_evidence_roster)
@@ -176,6 +178,73 @@ class HistoryGovernsOperativeEnd(unittest.TestCase):
                 "kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":ref,
                 "later_perceived_cue_ref":"cue:same_tick","means":["SIGNAL"]}])
         self.assertFalse(self.n["projects"])
+
+
+
+class ParticularResponderBecomesNewProspectiveAddress(unittest.TestCase):
+    def _life(self):
+        n=newborn("nadia","Nadia")
+        b=copy.deepcopy(n["body"])
+        first=e(n,1,"failed_call","SIGNAL","PARTIAL",["signal"])
+        conserve_lived_episode(n,first,"world:failed_call",b,b)
+        received=e(n,2,"actual_father_care","RECEIVED_CARE",
+                   "OBSERVED",["care","comfort"],felt=False)
+        received["perceived_cues"][0]["kind"]="performed_care"
+        received["perceived_cues"][0]["source_actor"]="father"
+        after=dict(b);after["comfort"]=round(b["comfort"]+.12,5)
+        n["body"]=after
+        conserve_lived_episode(n,received,"world:actual_care",b,after)
+        return n,received
+
+    def test_licensed_model_selection_of_lived_responder_not_a_free_end(self):
+        n,received=self._life()
+        proposals=possible_contrast_end(n,received,"world:actual_care")
+        self.assertEqual(len(proposals),1)
+        variants=proposals[0]["licensed_end_constructions"]
+        self.assertEqual(len(variants),2)
+        respondent=next(v for v in variants
+                        if v["mode"]=="TRY_ADDRESSING_PERSONALLY_PERCEIVED_RESPONDER")
+        self.assertEqual(respondent["addressed_party_ref"],"father")
+        selected=dict(proposals[0])
+        selected.update({
+            "chosen_end_mode":respondent["mode"],
+            "chosen_end_candidate_ref":respondent["candidate_ref"],
+            "possible_object":respondent["object"],
+            "possible_means":respondent["means"],
+            "later_perceived_cue_ref":respondent["source_received_sign_ref"]})
+        admit(n,received,"world:actual_care",[selected])
+        end=n["possible_ends"][0]
+        self.assertEqual(end["addressed_party_ref"],"father")
+        self.assertEqual(end["genetic_end_candidate_ref"],
+                         respondent["candidate_ref"])
+        self.assertEqual(n["projects"],[])
+        world=blank_world();world["positions"]["nadia"]="home"
+        view=materialize(n,world)
+        near=AccessibleEncounter(actor="nadia",world_clock=2,
+            location="home",cues=[{"kind":"coactor_present",
+                "source_actor":"father","tags":["coactor","father"]}],
+            affordances=["SIGNAL"],access_receipts=[])
+        options=[{"action":"SIGNAL"}]
+        trial=project_trial_horizons(view,near,options)
+        self.assertEqual(trial["trials_offered"],1)
+        self.assertEqual(options[0]["possible_end_trials"][0][
+            "source_qualified_addressee_ref"],"father")
+        far=AccessibleEncounter(actor="nadia",world_clock=2,
+            location="home",cues=[],affordances=["SIGNAL"],
+            access_receipts=[])
+        absent=project_trial_horizons(view,far,[{"action":"SIGNAL"}])
+        self.assertEqual(absent["trials_offered"],0)
+
+    def test_unsensed_responder_cannot_be_invented(self):
+        n,received=self._life()
+        original=possible_contrast_end(n,received,"world:actual_care")[0]
+        bad=dict(original)
+        bad["chosen_end_candidate_ref"]="fictional_responder"
+        bad["chosen_end_mode"]="TRY_ADDRESSING_PERSONALLY_PERCEIVED_RESPONDER"
+        bad["possible_object"]="signal towards unknown stranger"
+        with self.assertRaises(InvalidDevelopment):
+            admit(n,received,"world:actual_care",[bad])
+        self.assertEqual(n["possible_ends"],[])
 
 
 if __name__=="__main__":
