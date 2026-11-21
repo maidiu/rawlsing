@@ -115,7 +115,10 @@ class RunnerIntegrationTests(unittest.TestCase):
                 self.assertTrue((root/"output"/config["run_id"]/arm/"progress.jsonl").exists())
             compare=json.loads((root/"output"/config["run_id"]/"comparison.json").read_text())
             self.assertEqual(compare["status"],"PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
-            self.assertTrue((root/"output"/config["run_id"]/"summary.csv").exists())
+            summary=(root/"output"/config["run_id"]/"summary.csv")
+            self.assertTrue(summary.exists())
+            self.assertIn("avg_cpu_percent_one_core",summary.read_text())
+            self.assertIn("peak_cpu_percent_one_core",summary.read_text())
 
     def test_single_arm_succeeds_without_false_four_arm_comparison(self):
         with tempfile.TemporaryDirectory() as t:
