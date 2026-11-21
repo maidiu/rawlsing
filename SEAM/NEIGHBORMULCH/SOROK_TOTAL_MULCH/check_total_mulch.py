@@ -83,7 +83,8 @@ assert paths["total_file_entries"] == 227, paths["total_file_entries"]
 assert paths["total_directory_entries"] == 25, paths["total_directory_entries"]
 assert all(d.get("rows") and not d.get("error") for d in paths["directories"])
 
-idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|",\n    ideas.split("## H. SECOND INDEPENDENT HOUSE:", 1)[0], re.M)]
+idea_numbers = [int(x) for x in re.findall(r"^\| NM-(\d{3}) \|",
+    ideas.split("## H. SECOND INDEPENDENT HOUSE:", 1)[0], re.M)]
 assert idea_numbers == list(range(1, 86)), idea_numbers
 # The exact originating user words from source essays that were deleted must
 # survive in the EXISTING 04 source register, rather than permanent sub-essays.
@@ -182,7 +183,7 @@ for doc in (start,crosswalk,critique,theory):
 
 # The second house is preserved as provenance, not smuggled as another
 # active theory. 104 cross-lineage propositions: C44 + NM44 + R9-16.
-# 197 predecessor source/fate sections are preserved before retirement.
+# 197 predecessor source/fate sections are preserved; rival PR #1277 remains intact.
 rival=ideas.split("## H. SECOND INDEPENDENT HOUSE:",1)[1]
 rival_lineage=rival.split("### 197 source sections:",1)[1].split(
     "### 104 cross-lineage user/theory propositions",1)[0]
