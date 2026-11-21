@@ -12,9 +12,11 @@ from rawlsing_next.pre553_s04_country_refinement import (
 )
 from rawlsing_next.pre553_s04_adaptive_support import AdaptiveSupportPolicy
 from rawlsing_next.pre553_s04_determinicity_cycle import (
-    CyclePolicy, DeterminicityCycleError, ObservationChannel,
-    advance_country_determinicity, consume_determinicity_context_for_prev3,
+    CyclePolicy, DeterminicityCycleError, DeterminicityCycleReceipt,
+    ObservationChannel, advance_country_determinicity,
+    consume_determinicity_context_for_prev3,
 )
+from rawlsing_next.pre553_empirical_objects import canonical_json, semantic_hash
 from rawlsing_next.pre553_s04_observed_research import receive_s04_i03_research
 from rawlsing_next.pre553_s04_general_joint_algebra import S04GeneralJointWorkspace
 from rawlsing_next.tests.test_pre553_s04_country_refinement import _real_joint
@@ -258,3 +260,50 @@ def test_resumed_small_batches_preserve_cross_batch_pair_diagnostics_and_do_not_
     assert root["cross_batch_interactions"]
     assert root["cross_batch_interactions"][0]["axes"] == [1, 2]
     assert receipt.material()["new_I03_queries"] == 0
+
+
+@pytest.mark.parametrize("forged_field,forged_value", [
+    ("exact_I05_frontier_modified", True),
+    ("new_I03_queries", 1),
+    ("independent_original_source_rights", True),
+    ("method_grade", "ORIGINAL_NATIVE_SCIENTIFIC_PERMISSION"),
+])
+def test_self_rehashed_q015_receipt_cannot_promote_to_i05_or_native(
+    forged_field, forged_value,
+):
+    """RMT-Q015 negative: hash self-consistency does not issue discovery rights.
+
+    The inherited I05 frontier is separately authority-governed. A caller
+    must not rehash this LOCAL S04 receipt into a new-query, I05, or original
+    native grant and then resume it or pass it to the C4/C5 staging reader.
+    """
+    real = _real_joint("q015-local-claim-" + forged_field)
+    original = _advance(real)
+    source = original.material()
+    assert source["exact_I05_frontier_modified"] is False
+    assert source["new_I03_queries"] == 0
+    assert source["independent_original_source_rights"] is False
+    source[forged_field] = forged_value
+    forged = DeterminicityCycleReceipt(
+        canonical_json(source), semantic_hash(source),
+    )
+    with pytest.raises(
+        DeterminicityCycleError,
+        match="LOCAL_S04_RECEIPT_CANNOT_ISSUE_I05_OR_NATIVE_AUTHORITY",
+    ):
+        _advance(real, previous=forged, pinned=forged.ref)
+
+    knowledge = receive_s04_i03_research(
+        query=real["query"], execution=real["execution"],
+    )
+    workspace = S04GeneralJointWorkspace(
+        knowledge=knowledge, expected_knowledge_ref=knowledge.ref,
+    )
+    with pytest.raises(
+        DeterminicityCycleError,
+        match="LOCAL_S04_RECEIPT_CANNOT_ISSUE_I05_OR_NATIVE_AUTHORITY",
+    ):
+        consume_determinicity_context_for_prev3(
+            receipt=forged, independently_pinned_receipt_ref=forged.ref,
+            workspace=workspace,
+        )
