@@ -1,5 +1,8 @@
 # PYAT CURRENT_PROGRESS REV22 — INDEPENDENT Q023/Q014 EXECUTION RECEIPT
 
+[Revision 22 execution receipt](PROGRAMMA_PYAT/05_ROADMAP/G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json)
+
+
 Independent DeepSeek execution reproduced Q023 33/33 and Q014 41/41 at #1247 53517c4acecf6246ee6ed3ba7974bc7e6297d8ff. Execution evidence covers these two sourcefree courts. The typed UNAVAILABLE/UNRESOLVED negative is still PROVE_E because the fixture emitted four SUPPORTED facts. Wider G4 receiving and feature-code adoption remain pending.
 
 - RMT-Q014 JUnit SHA-256 `0a46201ac8cefd8d2a4df1189c2c766d04488bf4d8f2699d933992d7054e4868`

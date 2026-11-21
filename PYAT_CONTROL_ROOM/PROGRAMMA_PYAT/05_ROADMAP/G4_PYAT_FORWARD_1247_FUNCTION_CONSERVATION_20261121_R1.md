@@ -1,5 +1,8 @@
 # G4 functional-conservation correction — REMONT #1243 → PYAT #1247
 
+**Rev22 sourcefree execution follow-up.** Q023 33/33 and Q014 41/41 independently reproduced on the same host at #1247 `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. Broader G5 and code receiving remain pending. [independent execution receipt](G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json).
+
+
 ## REV21 — operator sourcefree first-fault evidence at #1247 exact SHA
 
 The user ran two separate existing REMONT courts against unchanged code `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` in a clean detached Mac worktree. **Q023: 33/33 PASS, 38.48 s; Q014: 41/41 PASS, 1.99 s; each case exit 0, no holds, zero failures**. The user read back Q023 index/status/log and pasted the terminal output. Pytest 9.1.1. Operator results and locally held JUnit/pytest logs: `/Users/matthewsmith/Desktop/rawlsing-q023-test/.pyat-preff-remont-proof/53517c4acecf6246ee6ed3ba7974bc7e6297d8ff/`. [Received transcript, exact scope, evidence ceiling](https://github.com/maidiu/rawlsing/issues/1162#issuecomment-7059561917).

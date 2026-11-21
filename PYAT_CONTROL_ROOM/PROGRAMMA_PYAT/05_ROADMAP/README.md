@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+**Rev22 sourcefree execution follow-up.** Q023 33/33 and Q014 41/41 independently reproduced on the same host at #1247 `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff`. Broader G5 and code receiving remain pending. [independent execution receipt](G4_PYAT_1247_INDEPENDENT_EXECUTION_20261121_R1.json).
+
+
 > **CURRENT G4 REV21 — OPERATOR-EXECUTED SOURCEFREE Q023 + Q014 AT ONE EXACT SHA:** User ran [#1247](https://github.com/maidiu/rawlsing/pull/1247) `53517c4acecf6246ee6ed3ba7974bc7e6297d8ff` in a detached Mac worktree with pytest 9.1.1. Existing REMONT Q023: **33/33 PASS, 38.48 s**, existing R03 asked/eligible Q014: **41/41 PASS, 1.99 s**; both exit 0, no held/failed cases. Aggregate **74 passing court executions** (not a claim of 74 unique nodes or wider source/host coverage). Evidence is **USER_REPORTED_EXECUTED_AT_SHA** from pasted terminal and direct Q023 `pytest.log`/status readback; local JUnit/log bytes not independently inspected here. [REMONT execution report](https://github.com/maidiu/rawlsing/issues/1162#issuecomment-7059561917); [PR evidence](https://github.com/maidiu/rawlsing/pull/1247#issuecomment-7059561602). *No feature code entered PRE-MAIN*, no independent G5 or native original-source/scientific/actor approval, no realistic-width resource proof. Rev20 prior COMMITTED_UNTESTED label is now **superseded ONLY for these two exact QIDs at the same SHA**; other functionality remains at its evidence grade. Existing INDEX/COMPONENT identities and paired CURRENT_PROGRESS remain intact.
 
 
