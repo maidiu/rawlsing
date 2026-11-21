@@ -118,7 +118,16 @@ class ConstitutiveRuntime:
         """External world fixture change, not an actor psychological event."""
         wv,world=self.ledger.world(self.world_id)
         if actor_id is not None:self.ledger.actor(actor_id)
-        cue=add_cue(world,kind,tags or [kind],location=location,description=description,
+        # R13/P073: an explicit empty set of signs is not a missing value.
+        # False, empty text, tuples and mixed types cannot be coerced into
+        # a new analyst tag, thereby inventing actor-receivable evidence.
+        if tags is None:
+            terms=[kind]
+        elif type(tags) is not list or any(type(t) is not str for t in tags):
+            raise ValueError('INVALID_CUE_TAGS')
+        else:
+            terms=tags
+        cue=add_cue(world,kind,terms,location=location,description=description,
                     modality=modality,private_to=private_to,source_actor=actor_id,clock_offset=1)
         world['clock']+=1
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
