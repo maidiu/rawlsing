@@ -5,6 +5,7 @@ from .types import Constitution, Situated, AccessibleEncounter, copy
 from .organism import eligible, ACTIONS
 from .activity import eligible_activities
 from .psychodynamics import enact_currents
+from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
 from .world import _qualified_members
 import math
@@ -16,6 +17,7 @@ def materialize(actor,world):
         forms=copy(actor['forms']),links=copy(actor['links']),projects=copy(actor['projects']),
         activity_links=copy(actor.get('activity_links',[])),
         composition_methods=copy(actor.get('composition_methods',[])),
+        relational_motifs=copy(actor.get('relational_motifs',[])),
         memories=copy(actor['memories']),traces=copy(actor['traces']),
         other_models=copy(actor['other_models']),self_model=copy(actor['self_model']),
         relations=world_rels,unknowns=list(actor['unknowns']),history_refs=list(actor.get('history_refs',[])))
@@ -123,8 +125,13 @@ def compose(constitution,access,limit=50):
     valid_links=[link for link in constitution.links
         if link.get('source') in forms and link.get('target') in forms
         and (not link.get('contexts') or access.location in link['contexts'])]
-    positive=[link for link in valid_links if link.get('relation') in ('RECRUITS','SUPPORTS')]
-    negative=[link for link in valid_links if link.get('relation')=='INHIBITS']
+    # PRE-A0's explicitly admitted relation functions must do work; not
+    # merely appear in a relation-history report. Activation and suppression
+    # still respect the form's own scope and bodily eligibility.
+    positive=[link for link in valid_links if link.get('relation') in
+              ('RECRUITS','SUPPORTS','ACTIVATES','REINFORCES')]
+    negative=[link for link in valid_links if link.get('relation') in
+              ('INHIBITS','SUPPRESSES')]
 
     def closure(start, blocked=frozenset()):
         reached=set(start)&qualified-set(blocked)
@@ -139,8 +146,41 @@ def compose(constitution,access,limit=50):
 
     potentially_active=closure(seed)
     vetoed={l['target'] for l in negative if l['source'] in potentially_active}
+    # Acquired configurations can recruit a third, historically existing
+    # form. The bounded monotonic closure keeps new inhibitors from sneaking
+    # an already vetoed conduit into the current. This is conservative under
+    # contradictory loops (it may over-suppress) and is NOT a global psyche
+    # optimizer, conscious retrieval manager or clinical conflict law.
+    motif_seeds=set()
+    motif_routes={}
+    for _ in range(2*len(qualified)+2):
+        reachable=closure(seed|motif_seeds,vetoed)
+        projection=derive_relational_metabolism(
+            constitution,access,{fid:forms[fid] for fid in reachable},vetoed)
+        proposed={route['target_form'] for route in projection['recruitment_candidates']
+                  if route['target_form'] in qualified}
+        for route in projection['recruitment_candidates']:
+            if route['target_form'] in qualified:
+                motif_routes.setdefault(route['target_form'],route)
+        possible=closure(seed|motif_seeds|proposed)
+        next_veto=vetoed|{l['target'] for l in negative
+                         if l['source'] in possible}
+        next_seeds=motif_seeds|proposed
+        if next_veto==vetoed and next_seeds==motif_seeds:
+            break
+        vetoed=next_veto;motif_seeds=next_seeds
+    else:
+        raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
     inhibited.extend(sorted(vetoed))
-    active={fid:copy(forms[fid]) for fid in closure(seed,vetoed)}
+    active={fid:copy(forms[fid]) for fid in closure(seed|motif_seeds,vetoed)}
+    relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    for fid,route in sorted(motif_routes.items()):
+        if fid in active and fid not in closure(seed,vetoed):
+            currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
+                'ref':fid,'motif_ref':route['motif_ref'],
+                'qualified_source_forms':route['source_form_refs'],
+                'had_inhibited_source':bool(route['suppressed_source_refs']),
+                'not_actor_conscious_retrieval':True})
     # History-made links to activities can recruit an ongoing project under
     # a new cue. Its object/motive remains separate from its possible means.
     projects=eligible_activities(constitution,active.keys(),access)
@@ -192,7 +232,11 @@ def compose(constitution,access,limit=50):
         if a=='REST' and constitution.body['rest']<.45:q['score']+=1.0
         if a=='EAT' and constitution.body['nutrition']<.5:q['score']+=1.0
         if a=='SIGNAL' and constitution.body['comfort']<.4:q['score']+=.6
-    dynamics=enact_currents(constitution,access,active,actions.values())
+    # An inhibited form can still have an indirect, historically admitted
+    # effect on another form or action. Never reinstate its direct capabilities.
+    currents+=relational['currents']
+    dynamics=enact_currents(constitution,access,active,actions.values(),
+                             relational=relational)
     currents+=dynamics['currents']
     # These effects are *derived* from present bodily state and historically
     # acquired forms, never silently committed as an event or a new mind state.
@@ -203,6 +247,7 @@ def compose(constitution,access,limit=50):
     return Situated(actor=constitution.actor,clock=constitution.clock,recruited=list(active.values()),
        dormant=sorted(set(dormant)),inhibited=sorted(set(inhibited)),currents=currents,
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
-       readset=sorted(set(list(active)+[t['id'] for t in traces]+access.access_receipts)),
+       readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
+                           [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
        suspended_actions=dynamics['suspended'],learned_compositions=learned)
