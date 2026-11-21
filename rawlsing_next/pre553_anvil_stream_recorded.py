@@ -34,6 +34,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     RespondentEvent,
     RoutingEligibilityFact,
+    canonical_json,
     canonicalize,
     exact_ref,
     make_empirical_predicate,
@@ -195,6 +196,7 @@ class HeldRecordedOperation:
     transform_ref: ExactRef
     approved_nonanswer_states: tuple[str, ...] = ()
     physical_missing_state: str = "SEPARATE_NOT_RECORDED"
+    state_bearing_raw_codes: bool = False
 
 
 _CODEC = R5TypedValueCodec()
@@ -260,27 +262,102 @@ def _decoded_raw_values(
 
 
 def _translate_saved_scalar_topology(fields: Any) -> Any:
-    """Translate only the exact, singular saved SCALAR carrier envelope.
+    """Translate only exact, proven one-occurrence saved scalar envelopes.
 
-    The accepted saved writer records a one-occurrence scalar as SCALAR; the
-    q103 target is SCALAR_SINGULAR.  Only the kind and optional zero index may
-    be present.  Ordered, repeated, unknown, malformed, and non-singular
-    envelopes are returned unchanged so the strict native evaluator refuses
-    them; this is not a global topology alias.
+    Two accepted saved shapes are supported:
+
+    - old sourcefree ``{"kind": "SCALAR", "index": 0}``
+    - actual GSS saved
+      ``{"index": 0, "kind": "BINARY_CONTRAST_SINGLE",
+         "source_manual_topology": "binary_contrast"}``
+
+    Both are one-occurrence cardinality-one carriers for the q103 target.
+    The actual shape is accepted only with all three exact fields and its exact
+    manual topology.  Any ordered/repeated/unknown/malformed envelope is
+    returned unchanged so the strict native evaluator refuses it; this is not
+    a generic topology alias.
     """
-    if not isinstance(fields, Mapping) or fields.get("kind") != "SCALAR":
+    if not isinstance(fields, Mapping):
         return fields
-    if set(fields) - {"kind", "index"}:
-        raise RecordedResponseError(
-            "saved scalar topology has unsupported multiplicity/order fields"
-        )
-    if fields.get("index") not in (None, 0):
-        raise RecordedResponseError(
-            "saved scalar topology is not the singular zero occurrence"
-        )
+    kind = fields.get("kind")
+    if kind == "SCALAR":
+        if set(fields) - {"kind", "index"}:
+            raise RecordedResponseError(
+                "saved scalar topology has unsupported multiplicity/order fields"
+            )
+        if fields.get("index") not in (None, 0):
+            raise RecordedResponseError(
+                "saved scalar topology is not the singular zero occurrence"
+            )
+    elif kind == "BINARY_CONTRAST_SINGLE":
+        if set(fields) != {"index", "kind", "source_manual_topology"}:
+            raise RecordedResponseError(
+                "saved binary-contrast topology has unsupported shape"
+            )
+        if fields.get("index") != 0:
+            raise RecordedResponseError(
+                "saved binary-contrast topology is not the singular zero occurrence"
+            )
+        if fields.get("source_manual_topology") != "binary_contrast":
+            raise RecordedResponseError(
+                "saved binary-contrast manual topology mismatch"
+            )
+    else:
+        return fields
     translated = dict(fields)
     translated["kind"] = "SCALAR_SINGULAR"
     return translated
+
+
+def _signed_int_or_text(code: str) -> Any:
+    text = str(code)
+    body = text[1:] if text.startswith("-") else text
+    return int(text) if body.isdigit() else text
+
+
+def _state_by_code(operation: HeldRecordedOperation) -> dict[str, str]:
+    allowed = tuple(str(code) for code in operation.allowed_raw_codes)
+    if not operation.state_bearing_raw_codes:
+        return {code: "SUBSTANTIVE_RESPONSE" for code in allowed}
+    mapping: dict[str, str] = {}
+    for code, state in operation.interpretation:
+        code = str(code)
+        state = str(state)
+        if code not in allowed:
+            raise RecordedResponseError("interpretation names an unheld raw code")
+        if code in mapping:
+            raise RecordedResponseError("duplicate raw-code interpretation")
+        if state not in {
+            "SUBSTANTIVE_RESPONSE", "DK", "REFUSAL", "MISSING",
+            "INAPPLICABLE", "NOT_ASKED", "SOURCE_SPECIFIC_SPECIAL",
+            "INVALID_UNRESOLVED",
+        }:
+            raise RecordedResponseError("unsupported recorded response state")
+        mapping[code] = state
+    if set(mapping) != set(allowed):
+        raise RecordedResponseError("interpretation does not cover the exact raw domain")
+    seen: dict[str, str] = {}
+    for code, state in mapping.items():
+        if state == "SUBSTANTIVE_RESPONSE":
+            continue
+        if state in seen:
+            raise RecordedResponseError(
+                "non-substantive stored-code bins are not distinguishable"
+            )
+        seen[state] = code
+    cells = {
+        canonical_json(_recorded_domain_cell(code, state))
+        for code, state in mapping.items()
+    }
+    if len(cells) != len(mapping):
+        raise RecordedResponseError("recorded stored-code bins collide")
+    return mapping
+
+
+def _recorded_domain_cell(code: str, state: str) -> Any:
+    if state == "SUBSTANTIVE_RESPONSE":
+        return _signed_int_or_text(code)
+    return {"typed_response_state": state}
 
 
 def build_recorded_operation(
@@ -315,6 +392,7 @@ def build_recorded_operation(
     allowed = {str(code) for code in operation.allowed_raw_codes}
     if len(allowed) != len(operation.allowed_raw_codes):
         raise RecordedResponseError("duplicate allowed raw code")
+    state_by_code = _state_by_code(operation)
     # Resolve the exact operation authority before scanning any saved rows.
     query_authority = _authority(
         operation.authorities, operation.query_authority_ref, "query"
@@ -405,9 +483,18 @@ def build_recorded_operation(
             ),
         ),
     )
-    included_states = frozenset({
-        "SUBSTANTIVE_RESPONSE", "DK", "REFUSAL", "SOURCE_SPECIFIC_SPECIAL",
-    })
+    included_states = (
+        frozenset(state_by_code.values())
+        if operation.state_bearing_raw_codes else
+        frozenset({
+            "SUBSTANTIVE_RESPONSE", "DK", "REFUSAL",
+            "SOURCE_SPECIFIC_SPECIAL",
+        })
+    )
+    domain = tuple(
+        _recorded_domain_cell(str(code), state_by_code[str(code)])
+        for code in operation.allowed_raw_codes
+    )
     query = EmpiricalQuerySpec(
         typed_state="QUERY_AUTHORIZED_RESOLVABLE",
         authority_snapshot_refs=(query_authority.authority_ref,),
@@ -420,10 +507,7 @@ def build_recorded_operation(
             "components": [{
                 "target_ref": question_ref,
                 "topology": "SCALAR_SINGULAR",
-                "domain": [
-                    int(code) if code.isdigit() else code
-                    for code in operation.allowed_raw_codes
-                ],
+                "domain": list(domain),
                 "target_domain_replay_ref": operation.target_domain_replay_ref,
                 "topology_authority_refs": [source_authority.authority_ref],
                 "response_semantic_authority_refs": [source_authority.authority_ref],
@@ -457,11 +541,12 @@ def build_recorded_operation(
             fields.get("multiplicity_order_rank_fields")
         )
         fields["raw_response_value"] = recorded_raw[respondent.ref.key]
-        fields["response_state"] = "SUBSTANTIVE_RESPONSE"
+        response_state = state_by_code[str(recorded_raw[respondent.ref.key])]
+        fields["response_state"] = response_state
         fields["canonical_response_value_if_authorized"] = None
         fields["value_transform_authority_ref"] = operation.transform_ref
         transformed = RespondentEvent(
-            typed_state="SUBSTANTIVE_RESPONSE",
+            typed_state=response_state,
             authority_snapshot_refs=(operation.source_authority_ref,),
             dependency_refs=(event.ref,),
             producer_replay_locator_or_reference_root=operation.transform_ref,
@@ -493,6 +578,10 @@ def build_recorded_operation(
                 "respondent": respondent.ref.as_dict(),
                 "raw_code": recorded_raw.get(respondent.ref.key),
                 "state": state,
+                "code_state": (
+                    state_by_code.get(str(recorded_raw.get(respondent.ref.key)))
+                    if event is not None else None
+                ),
                 "observation": "R5_RAW_TYPED_DECODED",
             }),
         )
@@ -527,6 +616,7 @@ def build_recorded_operation(
         approved_response_semantics_ref=operation.response_state_semantics_ref,
         approved_raw_domain=operation.allowed_raw_codes,
         approved_nonanswer_states=operation.approved_nonanswer_states,
+        state_bearing_raw_codes=operation.state_bearing_raw_codes,
     )
     plan = _make_recorded_routing_plan(
         decision_sha256=operation.owner_decision_sha256,

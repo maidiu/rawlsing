@@ -45,8 +45,14 @@ SUPPORTED_INTERPRETATION_STATES = frozenset({
     "SUBSTANTIVE_RESPONSE",
     "DK",
     "REFUSAL",
+    "MISSING",
+    "INAPPLICABLE",
+    "NOT_ASKED",
     "SOURCE_SPECIFIC_SPECIAL",
+    "INVALID_UNRESOLVED",
 })
+SCOPE_KIND = "OBSERVED_STORED_CODE_FREQUENCIES"
+ASKED_ELIGIBILITY = "HELD_NOT_PROVEN"
 
 
 class Src16OperatorError(ValueError):
@@ -126,19 +132,22 @@ def _owner_interpretation(
         state = value.strip()
         if state not in SUPPORTED_INTERPRETATION_STATES:
             raise Src16Dependency(
-                "SRC16_NONRESPONSE_CLASSIFICATION_REQUIRED",
-                f"code={code} state={state} is outside the existing recorded "
-                "response-state transform",
-            )
-        if state != "SUBSTANTIVE_RESPONSE":
-            raise Src16Dependency(
-                "SRC16_NONRESPONSE_CLASSIFICATION_REQUIRED",
-                f"code={code} state={state} cannot be emitted by the existing "
-                "recorded substantive-only transform",
+                "SRC16_CODE_STATE_CLASSIFICATION_REQUIRED",
+                f"code={code} state={state} is not an exact recorded state",
             )
         result.append((code, state))
     if set(str(x) for x in raw) != set(codes):
         raise Src16OperatorError("SRC16_INTERPRETATION_DOMAIN_MISMATCH")
+    non_substantive = {}
+    for code, state in result:
+        if state == "SUBSTANTIVE_RESPONSE":
+            continue
+        if state in non_substantive:
+            raise Src16OperatorError(
+                "SRC16_STORED_CODE_BIN_COLLISION",
+                f"state={state} has both {non_substantive[state]} and {code}",
+            )
+        non_substantive[state] = code
     return tuple(result)
 
 
@@ -186,6 +195,31 @@ def _owner_question(owner: Mapping[str, Any], question_ref: Any | None) -> Exact
     value = question_ref or owner.get("native_question_ref") or owner.get("question_ref")
     question = _ref(value, "SRC16 native question")
     return question
+
+
+def _state_bearing(interpretation: tuple[tuple[str, str], ...]) -> bool:
+    return any(state != "SUBSTANTIVE_RESPONSE" for _, state in interpretation)
+
+
+def _approved_states(
+    owner: Mapping[str, Any], interpretation: tuple[tuple[str, str], ...],
+) -> tuple[str, ...]:
+    raw = owner.get("approved_nonanswer_states", ())
+    if not isinstance(raw, (list, tuple)):
+        raise Src16OperatorError("SRC16_APPROVED_STATE_DOMAIN_INVALID")
+    approved = tuple(str(x) for x in raw)
+    if len(set(approved)) != len(approved):
+        raise Src16OperatorError("SRC16_APPROVED_STATE_DOMAIN_DUPLICATE")
+    required = {
+        state for _, state in interpretation
+        if state != "SUBSTANTIVE_RESPONSE"
+    }
+    if not required.issubset(set(approved)):
+        raise Src16OperatorError(
+            "SRC16_APPROVED_STATE_DOMAIN_MISMATCH",
+            f"missing={sorted(required - set(approved))}",
+        )
+    return approved
 
 
 def _owner_historical(
@@ -247,6 +281,9 @@ def _authority(
             "replay_root": roots["replay"],
             "scope": dict(scope),
             "recorded_raw_codes": list(codes),
+            "scope_kind": SCOPE_KIND,
+            "asked_eligibility": ASKED_ELIGIBILITY,
+            "substantive_vote_denominator": False,
             "historical_scope_grade": historical_scope_grade,
             "historical_snapshot_ref": historical_ref.as_dict(),
         },
@@ -331,9 +368,7 @@ def materialize(
         historical_scope_grade=grade, historical_ref=historical_ref,
     )
     suffix = semantic_hash({"owner": owner_sha, "codes": codes, "question": question.as_dict()})
-    approved_nonanswer = tuple(
-        str(x) for x in owner.get("approved_nonanswer_states", ())
-    )
+    approved_nonanswer = _approved_states(owner, interpretation)
     doc = {
         "schema": "ANVIL_Q006_SRC16_RACPRES_OPERATION@1",
         "owner_decision_sha256": owner_sha,
@@ -346,6 +381,10 @@ def materialize(
         "authorized_operation": operation,
         "allowed_raw_codes": list(codes),
         "interpretation": [list(x) for x in interpretation],
+        "state_bearing_raw_codes": _state_bearing(interpretation),
+        "scope_kind": SCOPE_KIND,
+        "asked_eligibility": ASKED_ELIGIBILITY,
+        "substantive_vote_denominator": False,
         "historical_scope_grade": grade,
         "historical_snapshot_ref": historical_ref.as_dict(),
         "approved_nonanswer_states": list(approved_nonanswer),
@@ -425,6 +464,7 @@ class Src16Preflight:
     interpretation: tuple[tuple[str, str], ...]
     historical_ref: ExactRef
     historical_scope_grade: str
+    state_bearing_raw_codes: bool
     positive: AuthoritySnapshot
     authorities: tuple[AuthoritySnapshot, ...]
 
@@ -463,6 +503,19 @@ def validate_preflight(
         raise Src16OperatorError("SRC16_OPERATION_RAW_DOMAIN_MISMATCH")
     if tuple(tuple(str(x) for x in pair) for pair in operation.get("interpretation", ())) != interpretation:
         raise Src16OperatorError("SRC16_OPERATION_INTERPRETATION_MISMATCH")
+    if operation.get("state_bearing_raw_codes") is not _state_bearing(interpretation):
+        raise Src16OperatorError("SRC16_OPERATION_STATE_BEARING_MISMATCH")
+    if operation.get("scope_kind") != SCOPE_KIND:
+        raise Src16OperatorError("SRC16_OPERATION_SCOPE_KIND_MISMATCH")
+    if operation.get("asked_eligibility") != ASKED_ELIGIBILITY:
+        raise Src16OperatorError("SRC16_OPERATION_ASKED_ELIGIBILITY_MISMATCH")
+    if operation.get("substantive_vote_denominator") is not False:
+        raise Src16OperatorError("SRC16_OPERATION_SUBSTANTIVE_DENOMINATOR_CLAIM")
+    approved_states = _approved_states(owner, interpretation)
+    if tuple(
+        str(x) for x in operation.get("approved_nonanswer_states", ())
+    ) != approved_states:
+        raise Src16OperatorError("SRC16_OPERATION_APPROVED_STATE_DOMAIN_MISMATCH")
     expected_scope = _owner_scope(owner)
     _validate_structured_scope(expected_scope, codes)
     question = _owner_question(owner, None)
@@ -512,6 +565,12 @@ def validate_preflight(
         raise Src16OperatorError("SRC16_POSITIVE_RAW_DOMAIN_MISMATCH")
     if positive_scope.get("historical_scope_grade") != grade:
         raise Src16OperatorError("SRC16_POSITIVE_HISTORICAL_GRADE_MISMATCH")
+    if positive_scope.get("scope_kind") != SCOPE_KIND:
+        raise Src16OperatorError("SRC16_POSITIVE_SCOPE_KIND_MISMATCH")
+    if positive_scope.get("asked_eligibility") != ASKED_ELIGIBILITY:
+        raise Src16OperatorError("SRC16_POSITIVE_ASKED_ELIGIBILITY_MISMATCH")
+    if positive_scope.get("substantive_vote_denominator") is not False:
+        raise Src16OperatorError("SRC16_POSITIVE_SUBSTANTIVE_DENOMINATOR_CLAIM")
     if _ref(
         positive_scope.get("historical_snapshot_ref"),
         "positive historical snapshot",
@@ -564,6 +623,7 @@ def validate_preflight(
         interpretation=interpretation,
         historical_ref=historical_ref,
         historical_scope_grade=grade,
+        state_bearing_raw_codes=_state_bearing(interpretation),
         positive=positive,
         authorities=authorities,
     )

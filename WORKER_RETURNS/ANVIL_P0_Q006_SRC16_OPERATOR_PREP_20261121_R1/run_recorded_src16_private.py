@@ -19,7 +19,7 @@ import sys
 _ROOT = Path(__file__).resolve().parents[2]
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
-from typing import Any
+from typing import Any, Mapping
 
 from rawlsing_next.pre553_anvil_stream_carrier_qualification import HeldStreamPins
 from rawlsing_next.pre553_anvil_stream_native_i03 import VerifiedAnvilStreamEstate
@@ -58,6 +58,22 @@ def _authority_ref(value: Any) -> AuthorityRef:
         value["authority_id"], value["authority_version"],
         value["authority_content_hash"],
     )
+
+
+def _plain(value: Any) -> Any:
+    if isinstance(value, Mapping):
+        return {str(key): _plain(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_plain(item) for item in value]
+    return value
+
+
+def _stored_code_cell(code: str, state: str) -> Any:
+    if state == "SUBSTANTIVE_RESPONSE":
+        text = str(code)
+        body = text[1:] if text.startswith("-") else text
+        return int(text) if body.isdigit() else text
+    return {"typed_response_state": state}
 
 
 def _write_private(path: Path, value: Any) -> None:
@@ -176,6 +192,9 @@ def prepare_and_run(
         approved_nonanswer_states=tuple(
             str(x) for x in operation_doc.get("approved_nonanswer_states", ())
         ),
+        state_bearing_raw_codes=bool(
+            operation_doc.get("state_bearing_raw_codes", False)
+        ),
     )
     decision, plan, missing = build_recorded_operation(
         estate=estate, operation=operation, question_ref=operation.question_ref,
@@ -260,6 +279,20 @@ def prepare_and_run(
         "historical_snapshot_ref": prepared.historical_ref.as_dict(),
         "positive_snapshot_ref": prepared.positive.ref.as_dict(),
         "missing": missing,
+        "scope_kind": operation_doc.get("scope_kind"),
+        "state_bearing_raw_codes": operation.state_bearing_raw_codes,
+        "asked_eligibility": operation_doc.get("asked_eligibility"),
+        "substantive_vote_denominator": operation_doc.get(
+            "substantive_vote_denominator"
+        ),
+        "stored_code_bins": [
+            {
+                "raw_code": code,
+                "state": state,
+                "cell": _stored_code_cell(code, state),
+            }
+            for code, state in prepared.interpretation
+        ],
         "facts": [
             {
                 "typed_state": fact.typed_state,
@@ -268,12 +301,16 @@ def prepare_and_run(
                 "raw_denominator_support": fact.raw_denominator_support,
                 "raw_numerator_support": fact.raw_numerator_support,
                 "cells": [
-                    [row["cell"], row["raw_numerator_support"], row["cell_state"]]
+                    [
+                        _plain(row["cell"]),
+                        row["raw_numerator_support"],
+                        row["cell_state"],
+                    ]
                     for row in fact.target_topology.get(
                         "complete_cell_semantic_projection", ()
                     )
                 ],
-                "replay_ref": fact.semantic_fields.get("replay_ref"),
+                "replay_ref": _plain(fact.semantic_fields.get("replay_ref")),
             }
             for fact in result.facts
         ],

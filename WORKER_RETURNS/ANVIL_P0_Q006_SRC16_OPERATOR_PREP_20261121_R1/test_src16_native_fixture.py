@@ -25,18 +25,22 @@ pytest.importorskip("pyarrow")
 
 from rawlsing_next.pre553_anvil_stream_carrier_qualification import HeldStreamPins
 from rawlsing_next.pre553_anvil_stream_native_i03 import VerifiedAnvilStreamEstate
-from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, EmpiricalUniverse, ExactRef, exact_ref, semantic_hash
+from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, EmpiricalUniverse, ExactRef, canonical_json, exact_ref, semantic_hash
 from rawlsing_next.pre553_source_direct_parquet_estate import _Sink, _IndexSink, _row
 from rawlsing_next.tests import test_pre553_direct_estate_i03 as native_fixture
 from rawlsing_next.tests import test_pre553_empirical_query as native
 _ORIGINAL_EVENT = native.RespondentEvent
 _REAL_EVENT = native.RespondentEvent
 
-def _scalar_event(**kwargs):
-    kwargs["multiplicity_order_rank_fields"] = {"kind": "SCALAR", "index": 0}
+def _actual_saved_event(**kwargs):
+    kwargs["multiplicity_order_rank_fields"] = {
+        "index": 0,
+        "kind": "BINARY_CONTRAST_SINGLE",
+        "source_manual_topology": "binary_contrast",
+    }
     return _REAL_EVENT(**kwargs)
 
-_ORIGINAL_EVENT = _scalar_event
+_ORIGINAL_EVENT = _actual_saved_event
 
 
 def _digest(path: Path) -> str:
@@ -67,9 +71,9 @@ def _shaped_event(**kwargs):
 def _defer_stream(tmp_path, monkeypatch, tag="RECORDED-DEFER"):
     rows = [
         {"id": f"R{i}", "responses": {"Y": code}}
-        for i, code in enumerate((1, 2, 1, 2, None), 1)
+        for i, code in enumerate((1, 2, 1, -98, -99, -100, None), 1)
     ]
-    rows.append({"id": "R6", "responses": {}})
+    rows.append({"id": "R8", "responses": {}})
     holder = {}
     original_ingest = native.ingest_c11_source_release
     original_build = native._build_source
@@ -231,11 +235,15 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
     from rawlsing_next.pre553_anvil_stream_native_i03 import execute_anvil_stream_i03
     from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 
-    codes = ("1", "2")
+    codes = ("1", "2", "-98", "-99", "-100")
     interpretation = (
-        ("1", "SUBSTANTIVE_RESPONSE"), ("2", "SUBSTANTIVE_RESPONSE"),
+        ("1", "SUBSTANTIVE_RESPONSE"),
+        ("2", "SUBSTANTIVE_RESPONSE"),
+        ("-98", "DK"),
+        ("-99", "MISSING"),
+        ("-100", "INAPPLICABLE"),
     )
-    scope = "SRC16_RACPRES_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY"
+    scope = "SRC16_RACPRES_OBSERVED_STORED_CODE_FREQUENCIES"
     qref = source["qrefs"]["Y"]
     # Exact stream roots from the fixture source and universe.
     stream_roots = {
@@ -272,7 +280,7 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
         "questionnaire_sha256": "d" * 64,
         "denominator": {
             "asked_risk": "HELD_ROUTING_UNKNOWN",
-            "recorded_raw_codes": [1, 2],
+            "recorded_raw_codes": [1, 2, -98, -99, -100],
         },
     }
     positive_scope = {
@@ -282,6 +290,9 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
         "replay_root": stream_roots["replay"],
         "source_sha256": stream_roots["source"],
         "recorded_raw_codes": list(codes),
+        "scope_kind": "OBSERVED_STORED_CODE_FREQUENCIES",
+        "asked_eligibility": "HELD_NOT_PROVEN",
+        "substantive_vote_denominator": False,
         "historical_scope_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
         "historical_snapshot_ref": historical.ref.as_dict(),
     }
@@ -337,7 +348,8 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
         predicate_replay_root=pred_replay,
         query_replay_root=query_replay,
         transform_ref=transform,
-        approved_nonanswer_states=("UNRESOLVED",),
+        approved_nonanswer_states=("DK", "MISSING", "INAPPLICABLE"),
+        state_bearing_raw_codes=True,
     )
     estate = VerifiedAnvilStreamEstate(
         root, exact_path=release, independently_held=held,
@@ -384,9 +396,23 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
     )
     fact = first.facts[0]
     cells = fact.target_topology.get("complete_cell_semantic_projection", ())
-    assert fact.raw_denominator_support == 4
-    assert len(cells) == 2
-    assert {str(row["cell"]) for row in cells} == set(codes)
+    assert fact.raw_denominator_support == 6
+    assert len(cells) == 5
+    assert {canonical_json(row["cell"]) for row in cells} == {
+        canonical_json(1), canonical_json(2),
+        canonical_json({"typed_response_state": "DK"}),
+        canonical_json({"typed_response_state": "MISSING"}),
+        canonical_json({"typed_response_state": "INAPPLICABLE"}),
+    }
+    assert {
+        canonical_json(row["cell"]): row["raw_numerator_support"]
+        for row in cells
+    } == {
+        canonical_json(1): 2, canonical_json(2): 1,
+        canonical_json({"typed_response_state": "DK"}): 1,
+        canonical_json({"typed_response_state": "MISSING"}): 1,
+        canonical_json({"typed_response_state": "INAPPLICABLE"}): 1,
+    }
     assert missing["system_missing"] == 1 and missing["absent"] == 1
     assert fact.semantic_fields.get("replay_ref") == second.facts[0].semantic_fields.get("replay_ref")
     # Both exact refs are carried through the scoped use receipt.
@@ -452,6 +478,20 @@ def test_src16_persisted_defer_recorded_entry_uses_native_scalar(tmp_path, monke
             estate=estate, operation=replace(operation, authorities=()),
             question_ref=qref,
         )
+    with pytest.raises(RecordedResponseError, match="unknown recorded raw code"):
+        build_recorded_operation(
+            estate=estate,
+            operation=replace(
+                operation,
+                allowed_raw_codes=("1", "2"),
+                interpretation=(
+                    ("1", "SUBSTANTIVE_RESPONSE"),
+                    ("2", "SUBSTANTIVE_RESPONSE"),
+                ),
+                approved_nonanswer_states=(),
+            ),
+            question_ref=qref,
+        )
     catalog = RuntimeObjectCatalog(
         authorities=(positive_source, positive_routing, positive_query), predicates=(decision.predicate,),
         queries=(decision.query,), discovery_authorities=(),
@@ -477,12 +517,12 @@ def test_src16_driver_preflight_and_native_wiring(tmp_path, monkeypatch):
     }
     scope = {
         "host": "sourcefree-host",
-        "scope": "SRC16_RACPRES_RAW_UNWEIGHTED_RECORDED_RESPONSE_ONLY",
+        "scope": "SRC16_RACPRES_OBSERVED_STORED_CODE_FREQUENCIES",
         "question_id": "GSS:1972:racpres",
         "questionnaire_sha256": "d" * 64,
         "denominator": {
             "asked_risk": "HELD_ROUTING_UNKNOWN",
-            "recorded_raw_codes": [1, 2],
+            "recorded_raw_codes": [1, 2, -98, -99, -100],
         },
     }
     owner = {
@@ -496,12 +536,16 @@ def test_src16_driver_preflight_and_native_wiring(tmp_path, monkeypatch):
         "questionnaire_sha256": scope["questionnaire_sha256"],
         "denominator": scope["denominator"],
         "interpretation": {
-            "1": ["SUBSTANTIVE_RESPONSE"], "2": ["SUBSTANTIVE_RESPONSE"],
+            "1": ["SUBSTANTIVE_RESPONSE"],
+            "2": ["SUBSTANTIVE_RESPONSE"],
+            "-98": ["DK"],
+            "-99": ["MISSING"],
+            "-100": ["INAPPLICABLE"],
         },
         "authorized_operation": OPERATION,
         "historical_scope_grade": HISTORICAL_GRADE,
         "historical_snapshot_ref": historical.ref.as_dict(),
-        "approved_nonanswer_states": [],
+        "approved_nonanswer_states": ["DK", "MISSING", "INAPPLICABLE"],
     }
     owner_path = tmp_path / "src16-owner.json"
     owner_path.write_text(json.dumps(owner, sort_keys=True))
@@ -517,7 +561,7 @@ def test_src16_driver_preflight_and_native_wiring(tmp_path, monkeypatch):
         "historical_snapshot_ref": historical.ref.as_dict(),
         "scope": scope,
         "operation": OPERATION,
-        "recorded_raw_codes": [1, 2],
+        "recorded_raw_codes": [1, 2, -98, -99, -100],
     }
     use_path = tmp_path / "src16-use.json"
     use_path.write_text(json.dumps(use, sort_keys=True))
@@ -537,8 +581,46 @@ def test_src16_driver_preflight_and_native_wiring(tmp_path, monkeypatch):
     assert result["positive_counts_accepted"] is True
     fact = result["facts"][0]
     assert fact["typed_state"] == "SUPPORTED"
-    assert fact["raw_denominator_support"] == 4
-    assert {str(row[0]) for row in fact["cells"]} == {"1", "2"}
+    assert fact["raw_denominator_support"] == 6
+    assert result["scope_kind"] == "OBSERVED_STORED_CODE_FREQUENCIES"
+    assert result["asked_eligibility"] == "HELD_NOT_PROVEN"
+    assert result["substantive_vote_denominator"] is False
+    assert result["stored_code_bins"] == [
+        {"raw_code": "1", "state": "SUBSTANTIVE_RESPONSE", "cell": 1},
+        {"raw_code": "2", "state": "SUBSTANTIVE_RESPONSE", "cell": 2},
+        {"raw_code": "-98", "state": "DK", "cell": {"typed_response_state": "DK"}},
+        {"raw_code": "-99", "state": "MISSING", "cell": {"typed_response_state": "MISSING"}},
+        {"raw_code": "-100", "state": "INAPPLICABLE", "cell": {"typed_response_state": "INAPPLICABLE"}},
+    ]
+    assert len(fact["cells"]) == 5
+    assert {canonical_json(row[0]) for row in fact["cells"]} == {
+        canonical_json(1), canonical_json(2),
+        canonical_json({"typed_response_state": "DK"}),
+        canonical_json({"typed_response_state": "MISSING"}),
+        canonical_json({"typed_response_state": "INAPPLICABLE"}),
+    }
+
+    # Exercise the actual CLI/result writer, not only the in-process helper.
+    import run_recorded_src16_private as driver_module
+    result_path = tmp_path / "src16-private-result.json"
+    with monkeypatch.context() as patch:
+        patch.setattr(sys, "argv", [
+            "run_recorded_src16_private.py",
+            "--owner-decision", str(owner_path),
+            "--operation-json", str(operation_path),
+            "--r2-decision", str(r2_path),
+            "--stream-root", str(root),
+            "--release-path", str(release),
+            "--universe-use-decision", str(use_path),
+            "--universe-closure", str(closure_path),
+            "--output", str(result_path),
+        ])
+        assert driver_module.main() == 0
+    written = json.loads(result_path.read_text())
+    assert written["positive_counts_accepted"] is True
+    assert written["scope_kind"] == "OBSERVED_STORED_CODE_FREQUENCIES"
+    assert written["facts"][0]["raw_denominator_support"] == 6
+    assert oct(result_path.stat().st_mode & 0o777) == "0o600"
 
     # A stale operation/use document must refuse before the cold estate is
     # even constructed.  This is a wiring assertion, not a native run.

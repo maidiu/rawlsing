@@ -48,9 +48,14 @@ SCOPE = {
 }
 
 
-def _owner(*, codes=("1", "2"), interpretation=None):
+def _owner(*, codes=("1", "2"), interpretation=None, approved_states=None):
     if interpretation is None:
         interpretation = {str(code): ["SUBSTANTIVE_RESPONSE"] for code in codes}
+    scope = dict(SCOPE)
+    scope["denominator"] = {
+        "asked_risk": "HELD_ROUTING_UNKNOWN",
+        "recorded_raw_codes": [int(code) if str(code).lstrip("-").isdigit() else code for code in codes],
+    }
     return {
         "schema": "ANVIL_Q006_SRC16_OWNER_DECISION@1",
         "source_id": "SRC16",
@@ -62,7 +67,7 @@ def _owner(*, codes=("1", "2"), interpretation=None):
             "source_sha256": SOURCE,
         },
         "host": "sourcefree-host",
-        "scope": SCOPE,
+        "scope": scope,
         "question_id": QUESTION_ID,
         "native_question_ref": QUESTION,
         "questionnaire_sha256": "c" * 64,
@@ -74,7 +79,7 @@ def _owner(*, codes=("1", "2"), interpretation=None):
         "authorized_operation": OPERATION,
         "historical_scope_grade": HISTORICAL_GRADE,
         "historical_snapshot_ref": HISTORICAL,
-        "approved_nonanswer_states": [],
+        "approved_nonanswer_states": list(approved_states or ()),
     }
 
 
@@ -172,16 +177,74 @@ def test_src16_preflight_refuses_stale_and_mismatched_shape(tmp_path):
         )
 
 
-def test_src16_nonresponse_classification_is_an_exact_dependency(tmp_path):
+def test_src16_state_bearing_stored_codes_are_explicit_and_binned(tmp_path):
+    codes = ("1", "2", "-98", "-99", "-100")
+    owner = _owner(
+        codes=codes,
+        interpretation={
+            "1": ["SUBSTANTIVE_RESPONSE"],
+            "2": ["SUBSTANTIVE_RESPONSE"],
+            "-98": ["DK"],
+            "-99": ["MISSING"],
+            "-100": ["INAPPLICABLE"],
+        },
+        approved_states=("DK", "MISSING", "INAPPLICABLE"),
+    )
+    owner_path = _write(tmp_path, "owner.json", owner)
+    r2_path = _write(tmp_path, "r2.json", _r2())
+    output = tmp_path / "op.json"
+    materialize(owner_path=owner_path, r2_path=r2_path, output=output)
+    operation = json.loads(output.read_text())
+    assert operation["state_bearing_raw_codes"] is True
+    assert operation["scope_kind"] == "OBSERVED_STORED_CODE_FREQUENCIES"
+    assert operation["asked_eligibility"] == "HELD_NOT_PROVEN"
+    assert operation["substantive_vote_denominator"] is False
+    assert operation["allowed_raw_codes"] == list(codes)
+    assert operation["interpretation"] == [
+        ["1", "SUBSTANTIVE_RESPONSE"],
+        ["2", "SUBSTANTIVE_RESPONSE"],
+        ["-98", "DK"],
+        ["-99", "MISSING"],
+        ["-100", "INAPPLICABLE"],
+    ]
+
+
+def test_src16_unknown_code_state_is_an_exact_dependency(tmp_path):
     owner = _owner(
         codes=("1", "2", "-98"),
         interpretation={
             "1": ["SUBSTANTIVE_RESPONSE"],
             "2": ["SUBSTANTIVE_RESPONSE"],
-            "-98": ["DK"],
+            "-98": ["NOT_A_RECORDED_STATE"],
         },
     )
     owner_path = _write(tmp_path, "owner.json", owner)
     r2_path = _write(tmp_path, "r2.json", _r2())
-    with pytest.raises(Src16Dependency, match="NONRESPONSE_CLASSIFICATION_REQUIRED"):
+    with pytest.raises(Src16Dependency, match="CODE_STATE_CLASSIFICATION_REQUIRED"):
         materialize(owner_path=owner_path, r2_path=r2_path, output=tmp_path / "op.json")
+
+
+def test_saved_binary_contrast_shape_is_exact_not_alias():
+    from rawlsing_next.pre553_anvil_stream_recorded import (
+        RecordedResponseError, _translate_saved_scalar_topology,
+    )
+
+    actual = {
+        "index": 0,
+        "kind": "BINARY_CONTRAST_SINGLE",
+        "source_manual_topology": "binary_contrast",
+    }
+    translated = _translate_saved_scalar_topology(actual)
+    assert translated["kind"] == "SCALAR_SINGULAR"
+    assert translated["source_manual_topology"] == "binary_contrast"
+    for malformed in (
+        {**actual, "index": 1},
+        {**actual, "source_manual_topology": "other"},
+        {**actual, "rank": 1},
+    ):
+        with pytest.raises(RecordedResponseError):
+            _translate_saved_scalar_topology(malformed)
+    ordered = {**actual, "kind": "ORDERED_SEQUENCE"}
+    assert _translate_saved_scalar_topology(ordered) == ordered
+    unknown = {**actual, "kind": "UNKNOWN_TOPOLOGY"}
+    assert _translate_saved_scalar_topology(unknown) == unknown

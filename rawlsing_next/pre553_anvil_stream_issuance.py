@@ -11,7 +11,7 @@ new authority, or create permanent refs.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, Iterable
+from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next.pre553_anvil_stream_native_i03 import (
     VerifiedAnvilStreamEstate,
@@ -59,6 +59,7 @@ class HeldStreamIssuanceDecision:
     approved_response_semantics_ref: ExactRef
     approved_raw_domain: tuple[str, ...]
     approved_nonanswer_states: tuple[str, ...] = ()
+    state_bearing_raw_codes: bool = False
 
 
 def _same_exact_string(value: str, expected: str, label: str) -> None:
@@ -201,9 +202,37 @@ def issue_and_execute_stream_i03(
     for fact in result.facts:
         if fact.typed_state in decision.approved_nonanswer_states:
             continue
-        cells = _raw_domain(fact)
-        if not set(cells).issubset(set(approved_raw)):
-            raise StreamIssuanceError("native raw outcome is outside the approved domain")
+        cells = fact.target_topology.get(
+            "complete_cell_semantic_projection"
+        ) or ()
+        if decision.state_bearing_raw_codes:
+            for row in cells:
+                cell = row.get("cell")
+                if isinstance(cell, Mapping) and set(cell) == {
+                    "typed_response_state"
+                }:
+                    state = cell["typed_response_state"]
+                    if state not in decision.approved_nonanswer_states:
+                        raise StreamIssuanceError(
+                            "state-bearing raw outcome state is not approved"
+                        )
+                    continue
+                if isinstance(cell, bool) or not isinstance(
+                    cell, (str, int, float)
+                ):
+                    raise StreamIssuanceError(
+                        "state-bearing raw outcome cell is not an exact scalar"
+                    )
+                if str(cell) not in approved_raw:
+                    raise StreamIssuanceError(
+                        "state-bearing raw outcome is outside the approved domain"
+                    )
+        else:
+            cells = _raw_domain(fact)
+            if not set(cells).issubset(set(approved_raw)):
+                raise StreamIssuanceError(
+                    "native raw outcome is outside the approved domain"
+                )
     estate._recheck_unchanged_members()
     if decision_verifier(decision) is not True:
         raise StreamIssuanceError("held decision verifier refused at output")
