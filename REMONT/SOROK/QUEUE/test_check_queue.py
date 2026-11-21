@@ -178,5 +178,32 @@ class QueueDisciplineTest(unittest.TestCase):
         self.assertIn(i['sha'],text)
         self.assertIn('## New adversarial probes',text)
 
+    def test_deferred_builder_is_not_a_green_receipt_or_default_queued_review(self):
+        joined = self.queue['candidates'][0]
+        self.assertTrue(joined['execution_deferred'])
+        self.assertEqual(joined['sha'], 'dbfb35c18ed0ec061050acdd1a1e5000e0bacc6b')
+        self.assertIn('BUILDER', joined['defer_reason'].upper())
+        with redirect_stdout(io.StringIO()) as out:
+            state = q.load_state(self.results/'ledger.json')
+            state['_results_path'] = self.results
+            q.print_queue([joined],state)
+        self.assertIn('DEFERRED_TO_BUILDER__HISTORICAL_RED',out.getvalue())
+        bad=copy.deepcopy(self.queue)
+        bad['candidates'][1]['execution_deferred']=True
+        with self.assertRaisesRegex(ValueError,'DEFER_ONLY_ACTIVE_BUILDER_LANE'):
+            q.validate_queue(bad)
+        bad=copy.deepcopy(self.queue)
+        bad['candidates'][0]['execution_deferred']='yes'
+        with self.assertRaisesRegex(ValueError,'INVALID_EXECUTION_DEFER_FLAG'):
+            q.validate_queue(bad)
+
+    def test_current_r17_review_pin_and_prior_pin_conserved(self):
+        old = '6f2e98433822a4fb1246ff72c388b2e901c6ab7f'
+        item = next(x for x in self.queue['candidates'] if x['pr']==1230)
+        self.assertEqual(item['sha'],'bd023cccea8912913ace132600c69a97b0eb6a44')
+        self.assertEqual(item['previous_pinned_shas'],[old])
+        self.assertEqual(next(x for x in self.queue['candidates'] if x['pr']==1241)['sha'],
+                         'a4a495bbb456bd211b4fbdbd29478c0f0052603f')
+
 
 if __name__=='__main__': unittest.main()

@@ -71,6 +71,10 @@ def validate_queue(q):
             raise ValueError('UNAUTHORIZED_GIT_TREE_MODE')
         if type(item.get('joined_first_consumer', False)) is not bool:
             raise ValueError('INVALID_JOINED_CONSUMER_FLAG')
+        if type(item.get('execution_deferred',False)) is not bool:
+            raise ValueError('INVALID_EXECUTION_DEFER_FLAG')
+        if item.get('execution_deferred') is True and item.get('joined_first_consumer') is not True:
+            raise ValueError('DEFER_ONLY_ACTIVE_BUILDER_LANE')
         seen_pr.add(pr)
     return q
 
@@ -473,7 +477,9 @@ def print_queue(items, state):
         row = state['items'].get(key, {})
         reviews = row.get('reviews', [])
         disposition = reviews[-1].get('verdict') if reviews else 'HOSTILE_REVIEW_PENDING'
-        print(f"#{i['pr']} {i['sha'][:12]} {row.get('last_status', 'COMPAT_NOT_RUN')} | {disposition} | {i['label']}")
+        grade = ('DEFERRED_TO_BUILDER__HISTORICAL_RED' if i.get('execution_deferred') is True
+                 else row.get('last_status', 'COMPAT_NOT_RUN'))
+        print(f"#{i['pr']} {i['sha'][:12]} {grade} | {disposition} | {i['label']}")
 
 
 def publish_compat(repo: Path, item, receipt, path):
@@ -587,6 +593,13 @@ def main(argv=None):
     any_failed=False
     for item in items:
         key = state_key(item)
+        # A builder-owned source RED with an actively moving construction HEAD
+        # must not consume the default independent-repair batch repeatedly.
+        # Explicit --pr still permits deliberate historical exact-SHA replay.
+        if item.get('execution_deferred') is True and not args.pr:
+            print(f"#{item['pr']} DEFERRED_TO_SORACLE_BUILDER__HISTORICAL_RED__PIN_UNCHANGED: "
+                  f"{item.get('defer_reason','builder source not frozen')}")
+            continue
         if not needs_execution(state,key,args.force):
             print(f"#{item['pr']} pinned compatibility PASS already recorded; hostile review still required unless independently received")
             continue
