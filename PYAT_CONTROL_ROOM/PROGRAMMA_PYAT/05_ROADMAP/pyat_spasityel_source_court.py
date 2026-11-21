@@ -54,6 +54,38 @@ try:
  test("exact 42 log identities same order",li==expect,len(li))
  reviews=re.findall(r"^### (IR-\d{2})",l,re.M)
  test("single ten-family review queue",reviews==["IR-%02d"%i for i in range(1,11)],reviews)
+
+ # R20–R21 structure is checked, but source/need judgments are NOT mechanically certified.
+ r20=l.split("## 8. R20 — economical seven-part",1)[1].split("## 9. R21 — remaining",1)[0]
+ r21=l.split("## 9. R21 — remaining",1)[1]
+ family_entries=re.findall(r"^\| \*\*([A-J]) — [^\n]*?\*\* \(([^)]+)\) \|",r20,re.M)
+ family_ids={}
+ for family,source_ids in family_entries:
+  family_ids[family]=re.findall(r"KUDA-(\d{3})",source_ids)
+ court_a=re.findall(r"^\| \[(\d{3})\]\(KUDA\.md#kuda-(\d{3})\) · ([A-J]) \|[^\n]+",r20,re.M)
+ court_b=re.findall(r"^\| \[(\d{3})\]\(KUDA\.md#kuda-(\d{3})\) ([A-J]) \|[^\n]+",r21,re.M)
+ proposed=court_a+court_b
+ expected_ids=set(IDS)
+ test("seven-part docket: 10 shared Q1/Q2 necessity baselines",
+      len(family_entries)==10 and set(family_ids)==set("ABCDEFGHIJ")
+      and len(set(i for ids in family_ids.values() for i in ids))==42,
+      {"family_count":len(family_entries),"group_total":sum(map(len,family_ids.values()))})
+ test("seven-part docket: exact 24 P0 + 18 downstream records",
+      len(court_a)==24 and len(court_b)==18,
+      {"P0":len(court_a),"downstream":len(court_b)})
+ test("seven-part docket: each historic KUDA exactly once, no invented ID",
+      len(proposed)==42 and len({i for i,_,_ in proposed})==42
+      and {i for i,_,_ in proposed}==expected_ids
+      and all(i==link_id and i in family_ids.get(family,()) for i,link_id,family in proposed),
+      {"seen":len(proposed),"unique":len({i for i,_,_ in proposed})})
+ case_lines=[line for section in (r20,r21) for line in section.splitlines()
+             if re.match(r"^\| \[\d{3}\]\(KUDA\.md#kuda-\d{3}\)",line)]
+ test("seven-part docket: each record has eight actual table columns",
+      len(case_lines)==42 and all(len(re.split(r"(?<!\\)\|",line))==10 for line in case_lines),
+      {"rows":len(case_lines),
+       "unexpected_column_counts":[len(re.split(r"(?<!\\)\|",line)) for line in case_lines if len(re.split(r"(?<!\\)\|",line))!=10][:8]})
+ report["seven_part_limit"]="STRUCTURAL_COVERAGE_ONLY_NOT_INDEPENDENT_QUALITY_OR_NECESSITY_ACCEPTANCE"
+
  section=n.split("## NEKUDA-R13",1)[1].split("## NEKUDA-R8",1)[0]
  transfers=set(re.findall(r"^\| \[KUDA-(\d{3})\]",section,re.M))
  test("all ten standalone no-reimport fates retained",transfers==TRANSFERS,sorted(transfers))
