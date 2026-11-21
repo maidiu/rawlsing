@@ -165,9 +165,10 @@ def audit(ledger, snapshot, md='', progress=None):
     proposal_matches = (
         proposal.get('head_branch') == 'receiving/sorok-o-index-baseline-20261121'
         and proposal.get('base_branch') == 'agent/sorok-programma-live-receiving-ledger-20261121-r1'
-        and proposal.get('state') == 'open'
-        and proposal.get('draft') is True
-        and proposal.get('merged') is False
+        and (
+            (proposal.get('state'), proposal.get('draft'), proposal.get('merged'))
+            in {('open', True, False), ('closed', False, True)}
+        )
     )
     for n, p in observed.items():
         if n == 1258 and proposal_matches:

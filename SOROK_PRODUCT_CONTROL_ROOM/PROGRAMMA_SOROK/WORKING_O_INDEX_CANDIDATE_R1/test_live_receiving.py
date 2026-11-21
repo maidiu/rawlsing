@@ -40,6 +40,10 @@ class ReceivingCheckerAdversaries(unittest.TestCase):
         self.assertEqual(audit(ledger, snapshot)[0], [])
         proposal['draft'] = False
         self.assertIn('UNRECORDED_NEW_RELEVANT_PR:1258', audit(ledger, snapshot)[0])
+        proposal.update(state='closed', merged=True)
+        self.assertEqual(audit(ledger, snapshot)[0], [])
+        proposal['base_branch'] = 'integration/pre-main-reconciliation-r1'
+        self.assertIn('UNRECORDED_NEW_RELEVANT_PR:1258', audit(ledger, snapshot)[0])
 
     def test_changed_head_detected(self):
         d, s = fixture()
