@@ -66,7 +66,9 @@ class NeighborLiveInterruptionR2(unittest.TestCase):
             profile=self.visitor.new_private_profile())
         self.assertEqual(result['status'],'INDEPENDENT_ACTOR_WORLD_EVENT_COMMITTED')
         self.assertEqual(result['source_user_event_ref'],entered['event_ref'])
-        self.assertEqual(result['actor_selected_by_existing_initiative'],'worker')
+        self.assertNotIn('actor_selected_by_existing_initiative',result)
+        self.assertNotIn('actor_operation',result)
+        self.assertEqual(self.rt.ledger.events()[-1]['envelope']['actor'],'worker')
         self.assertTrue(result['no_visitor_selected_actor_intention_or_response'])
         self.assertEqual(result['visitor_surface']['schema'],'SOROK_MII_SURFACE@1')
         self.assertEqual(self.rt.verify()['events'],before+1)
@@ -116,6 +118,8 @@ class NeighborLiveInterruptionR2(unittest.TestCase):
                              for x in surface.get('narration',[])
                              if isinstance(x,dict)))
         self.assertEqual(self.rt.snapshot('worker')['actor'],'worker')
+        self.assertNotIn('actor_selected_by_existing_initiative',result)
+        self.assertNotIn('actor_operation',result)
         self.assertTrue(self.rt.verify()['valid'])
 
     def test_cold_reopen_keeps_world_and_refuses_repeat(self):
