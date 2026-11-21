@@ -25,5 +25,6 @@ NEIGHBORMULCH builds the **encounter's causal entrance and exit**: user action a
 - [08 — original SOROK control-room, D001/D002/D003/D007 and R12 transcript tree](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/08_HISTORICAL_SOROK_CONTROL_ROOM_INVENTORY.md)
 - [09 — founding doctrine translated into 22 real first-consumer falsifier clusters](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/09_ORIGINAL_VISION_TO_FIRST_CONSUMER_FALSIFIERS.md)
 - **[10 — unfinished early courts, every 123 source-exact historical questions](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/10_UNFINISHED_EARLY_SOROK_COURTS_AND_123_QUESTION_FRONTIERS.md)**
+- **[11 — ordered reciprocal theory-MULCH, non-reduction and co-evolution](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/11_RECIPROCAL_NONREDUCTION_AND_COEVOLUTION_PROTOCOL.md)** — N-T1 encounter theory first, C-T1 independent organism theory in response, N-T2 encounter re-theorization, then mutually transformed theory×code; ongoing builder code proceeds meanwhile.
 
 **MULCH outcome must be code and theory both transformed by the executed joined first consumer.** This initial SEAM pointer and the NEIGHBORMULCH primer are documentary and **COMMITTED_UNTESTED as a runtime integration**. Protected PROGRAMMA and paired current progress remain governed by existing competent owners; no duplicate world/actor authority has been minted.
