@@ -1,4 +1,8 @@
 # NEIGHBORMULCH — START HERE
+
+
+> **R10 CURRENT WHOLE — supersedes R9 theory as live candidate:** [12 full 37-section organism–world–encounter conception](12_NEIGHBOR_THEORYMULCH_CURRENT.md), [13 complete source draw ledger](13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md), [TOTAL SOROK first consultation](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/00_START_HERE_TOTAL_SOROK_MULCH.md), [197 prior theory-section adjudication records](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/12_ALL_TEN_VERSIONED_WHOLE_THEORY_SECTION_FATES_R10.json), [104+757 source route](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/13_CONVERSATION_AND_757_SOURCE_FATES_R10.json), [hostile comparison](../../SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/14_R10_HOSTILE_SEMANTIC_CONSERVATION_COURT.md). Historical retractions retained: a same-SES start does NOT disclose Nadia's money; a current-day actor-derived opening is preferable to endless prewritten hooks but reference/fork design remains provisional; entering the app authorizes a bounded fictional prior encounter, not autopilot of the real human. Original house+text, SAY/DO/ATTEND, no-lawful-homology, original human invite vs persona introduction vs Roll, and user deletion/export are again explicitly operative theories. Do not claim older chats fully recovered or protected adoption.
+
 ## Constitute the encounter without duplicating the person
 
 
