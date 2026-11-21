@@ -375,7 +375,9 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                 second=rt.step('mother',requested_action='EAT')
                 self.assertEqual(second['status'],'PERFORMED')
                 self.assertTrue(any(observed),
-                                'two actual personally received meals required')
+                    'two actually comparable meals needed; candidates='+repr(observed)
+                    +' source_witnesses='+repr(
+                        rt.snapshot('mother').get('lived_genesis_episodes',[])))
                 mother=rt.snapshot('mother')
                 learned=[r for r in mother['historical_orientations']
                          if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE']
