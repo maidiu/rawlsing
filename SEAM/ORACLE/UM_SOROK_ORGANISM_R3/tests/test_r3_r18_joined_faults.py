@@ -14,7 +14,8 @@ from um_sorok_organism.constitution import compose,materialize,actor_access
 from um_sorok_organism.storage import ResearchLedger,Conflict
 from um_sorok_organism.types import adult,blank_world,stable_id
 from um_sorok_organism.development import admit,InvalidDevelopment
-from um_sorok_organism.runtime import ConstitutiveRuntime
+from um_sorok_organism.runtime import ConstitutiveRuntime, _bind_actor_trial_particular_object
+from um_sorok_organism.semantics import ValidatingSemanticService, CallbackLLMProvider
 from um_sorok_organism.world import add_cue
 
 
@@ -281,6 +282,64 @@ class JoinedTrialIssuerAndCueProvenance(unittest.TestCase):
                 self.assertEqual(default['cue']['tags'],['contact'])
             finally:
                 rt.close()
+
+
+
+class JoinedIssuedTrialAndParticularObject(unittest.TestCase):
+    def _option(self, ref, grounds, option_id, *, project=None, binding=None):
+        return {
+            'option_id': option_id,
+            'operation': 'INSPECT',
+            'project_id': project,
+            'grounds_status': grounds,
+            'binding_status': binding or
+                'OBJECT_CURRENTLY_VISIBLE_NOT_EVIDENCE_OF_RIGHTS',
+            'world_request': {
+                'operation': 'INSPECT',
+                'material_object_ref': ref,
+                'addressed_party_ref': None,
+            },
+        }
+
+    def test_trial_object_has_one_world_identity_despite_two_cultural_groundings(self):
+        # The same thing can be visually available AND personally heard about.
+        # Two psychological alternatives must not become two material objects.
+        trial={'operation':'INSPECT','source_material_object_ref':'woodwork-A'}
+        seen=self._option('woodwork-A',
+                          'PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE','visible')
+        heard=self._option('woodwork-A',
+                           'UNTESTED_PERSONALLY_HEARD_PUBLIC_OBJECT_REFERENCE','heard')
+        chosen=_bind_actor_trial_particular_object([heard,seen],trial)
+        self.assertEqual(chosen['option_id'],'visible')
+        self.assertIsNone(chosen['project_id'])
+        self.assertEqual(chosen['world_request']['material_object_ref'],'woodwork-A')
+        self.assertEqual(len([seen,heard]),2)
+
+    def test_trial_never_substitutes_another_object_or_incompatible_project(self):
+        trial={'operation':'INSPECT','source_material_object_ref':'woodwork-A'}
+        foreign=self._option('woodwork-B',
+                             'PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE','foreign')
+        attached=self._option('woodwork-A',
+                              'PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE','project',
+                              project='adult_gift_purpose')
+        with self.assertRaisesRegex(ValueError,'TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE'):
+            _bind_actor_trial_particular_object([foreign,attached],trial)
+
+    def test_two_unresolved_equivalent_objects_require_a_nonambiguous_binding(self):
+        trial={'operation':'INSPECT','source_material_object_ref':'woodwork-A'}
+        a=self._option('woodwork-A','PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE','a')
+        b=self._option('woodwork-A','PRESENT_MATERIAL_OBJECT_NOT_ASSUMED_MOTIVE','b')
+        with self.assertRaisesRegex(ValueError,'TRIAL_MATERIAL_OBJECT_NOT_UNIQUELY_BINDABLE'):
+            _bind_actor_trial_particular_object([a,b],trial)
+
+    def test_semantic_trial_id_is_a_complete_action_selector_without_action(self):
+        semantic=ValidatingSemanticService(CallbackLLMProvider(
+            lambda task,packet: {'task':task,'possible_end_trial_id':'issued_ticket'}))
+        self.assertEqual(semantic.proposal('actor_attempt',{})['possible_end_trial_id'],
+                         'issued_ticket')
+        with self.assertRaisesRegex(ValueError,'NO_ACTION_OR_PRACTICAL_OPTION'):
+            ValidatingSemanticService(CallbackLLMProvider(
+                lambda task,packet:{'task':task})).proposal('actor_attempt',{})
 
 
 if __name__=="__main__":
