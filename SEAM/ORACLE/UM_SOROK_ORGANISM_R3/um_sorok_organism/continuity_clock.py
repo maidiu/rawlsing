@@ -47,7 +47,7 @@ def next_discontinuity(world, actors, horizon):
     return candidates[0] if candidates else None
 
 
-def continue_to_discontinuity(runtime, horizon=30):
+def continue_to_discontinuity(runtime, horizon=30, processes=None):
     """Actual period and actor step, rather than an invented diary montage.
 
     A due obligation gives its bearer an OCCASION, not a forced CARE action.
@@ -57,11 +57,14 @@ def continue_to_discontinuity(runtime, horizon=30):
     """
     if type(horizon) is not int or not 1<=horizon<=MAX_HORIZON:
         raise ValueError('CONTINUITY_UNSUPPORTED_HORIZON')
+    if processes is not None and (
+            type(processes) is not list or len(processes)>512):
+        raise ValueError('CONTINUITY_INVALID_PERIOD_PROCESS_LIST')
     world=runtime.ledger.world(runtime.world_id)[1]
     actors=runtime.ledger.actors()
     target=next_discontinuity(world,actors,horizon)
     if target is None:
-        aggregate=runtime.background(horizon)
+        aggregate=runtime.background(horizon,processes=processes)
         return {'historical_discontinuity':None,
                 'ordinary_interval_receipt':aggregate['receipt'],
                 'high_resolution_actor_event':None,
@@ -70,7 +73,7 @@ def continue_to_discontinuity(runtime, horizon=30):
     advance=target['at']-world['clock']
     ordinary=None
     if advance>0:
-        ordinary=runtime.background(advance)
+        ordinary=runtime.background(advance,processes=processes)
     if target['kind']=='PUBLIC_SIGN_EXPIRES':
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
@@ -93,7 +96,7 @@ def continue_to_discontinuity(runtime, horizon=30):
 
 def continue_pre_encounter(runtime, subject_id, target_age_days, *,
                            horizon_days=365, autonomous_beats=2,
-                           max_segments=240):
+                           max_segments=240, period_processes=None):
     """Construct historical time *before* the user encounters this person.
 
     This composes the EXISTING sourcefree owners: material interruptions,
@@ -115,6 +118,9 @@ def continue_pre_encounter(runtime, subject_id, target_age_days, *,
     ):
         if type(value) is not int or not low <= value <= high:
             raise ValueError(code)
+    if period_processes is not None and (
+            type(period_processes) is not list or len(period_processes)>512):
+        raise ValueError('PRE_ENCOUNTER_INVALID_PERIOD_PROCESSES')
     actors = runtime.ledger.actors()
     if subject_id not in actors or actors[subject_id].get('id') != subject_id:
         raise ValueError('PRE_ENCOUNTER_UNREGISTERED_SUBJECT')
@@ -138,7 +144,12 @@ def continue_pre_encounter(runtime, subject_id, target_age_days, *,
         if before >= target_age_days:
             break
         span = min(horizon_days, target_age_days-before)
-        continuity = runtime.advance_to_discontinuity(horizon=span)
+        # Material reproduction is forwarded to the existing R13 period
+        # allocator, which validates exact source, location, scarce hours,
+        # caregiver cost and historical interval BEFORE its own commit.
+        kw = ({'processes':period_processes}
+              if period_processes is not None else {})
+        continuity = runtime.advance_to_discontinuity(horizon=span, **kw)
         later = runtime.ledger.actor(subject_id)[1]
         after = later.get('age_days')
         if type(after) is not int or after < before or after > before+span:
@@ -150,6 +161,12 @@ def continue_pre_encounter(runtime, subject_id, target_age_days, *,
             'subject_age_after': after,
             'ordinary_interval_receipt':
                 continuity.get('ordinary_interval_receipt'),
+            'qualified_period_source_refs': (
+                [p['source_ref'] for p in period_processes
+                 if type(p) is dict and
+                 type(p.get('source_ref')) is str]
+                if continuity.get('ordinary_interval_receipt')
+                and period_processes is not None else []),
             'material_discontinuity': continuity.get('historical_discontinuity'),
             'independently_resolved_event':
                 continuity.get('high_resolution_actor_event'),
