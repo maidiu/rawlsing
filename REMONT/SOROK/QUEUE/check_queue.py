@@ -120,7 +120,7 @@ def pinned_git_tree_check(src: Path):
         prefix = src.resolve().relative_to(root).as_posix()
     except ValueError as exc:
         raise QueueFailure('PINNED_TREE_OUTSIDE_CHECKOUT') from exc
-    listing = git(src, 'ls-tree', '-r', 'HEAD', '--', prefix)
+    listing = git(root, 'ls-tree', '-r', 'HEAD', '--', prefix)
     tracked = {}
     for line in listing.splitlines():
         parts = line.split('\t', 1)
