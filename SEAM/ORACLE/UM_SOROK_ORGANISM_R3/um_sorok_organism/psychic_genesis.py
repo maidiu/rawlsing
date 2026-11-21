@@ -207,7 +207,7 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
         raise ValueError("GENESIS_NO_DISTINCT_LIVED_CONTRAST")
     expected=qualified[0]
     for field in ("genesis_witness_ref","prior_unfinished_episode_ref",
-                  "later_relief_episode_ref","later_perceived_cue_ref"):
+                  "later_relief_episode_ref"):
         if proposal.get(field)!=expected[field]:
             raise ValueError("GENESIS_HISTORICAL_SOURCE_FORGERY_"+field)
     provided=proposal.get("possible_means")
@@ -227,6 +227,12 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
     if len(licensed)!=1:
         raise ValueError("GENESIS_UNLICENSED_QUALITATIVE_END")
     selected=licensed[0]
+    # Distinct actually sensed responders may be represented by different
+    # cue identities. The model must identify the EXACT one for its chosen
+    # interpretation, rather than inherit the generic first cue.
+    if proposal.get("later_perceived_cue_ref")!=selected[
+            "source_received_sign_ref"]:
+        raise ValueError("GENESIS_SELECTED_RESPONDER_SIGN_FORGED")
     mode=selected["mode"]
     if (proposal.get("chosen_end_mode",mode)!=mode or
             type(selected_ref) is not str):
