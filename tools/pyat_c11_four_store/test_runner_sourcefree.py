@@ -95,6 +95,18 @@ class RunnerIntegrationTests(unittest.TestCase):
                 self.assertEqual(report["status"],"COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
                 self.assertEqual(report["metrics"]["events"],6)
                 self.assertEqual(report["metrics"]["distinct_questions"],3)
+                cpu=report["resources"]
+                self.assertGreaterEqual(cpu["sampled_cpu_user_s"],0)
+                self.assertGreaterEqual(cpu["sampled_cpu_system_s"],0)
+                self.assertGreaterEqual(cpu["peak_cpu_percent_one_core"],0)
+                self.assertGreaterEqual(cpu["avg_cpu_percent_one_core"],0)
+                self.assertGreaterEqual(cpu["logical_cpus"],1)
+                self.assertGreaterEqual(cpu["samples"],1)
+                self.assertEqual(cpu["cpu_measurement_grade"],
+                    "SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN")
+                progress=(root/"output"/config["run_id"]/arm/"progress.jsonl").read_text()
+                self.assertIn('"stage":"resources_final"',progress)
+                self.assertIn('"cpu_percent_one_core":',progress)
                 self.assertEqual(len(report["query_report"]["fresh_process_probes"]),2)
                 for cp in report["query_report"]["fresh_process_probes"]:
                     self.assertIsNotNone(cp["one_body_sha256"])
