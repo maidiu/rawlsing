@@ -150,7 +150,18 @@ class ResearchLedger:
         try:
             self.verify_chain()
         except AssertionError as exc:
-            raise Conflict('SOURCE_HISTORY_INVALID: '+str(exc)) from exc
+            message=str(exc)
+            # Preserve inherited P045/P046 diagnostics while still refusing
+            # every malformed/noncanonical or unauthorized source history.
+            if message.startswith('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER'):
+                raise Conflict('UNCOMMITTED_WORLD_STATE') from exc
+            if message.startswith('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER'):
+                raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
+            if message=='MISSING_OBJECTIVE_EVENT_HISTORY':
+                raise Conflict('MISSING_LEDGER_GENESIS') from exc
+            raise Conflict('SOURCE_HISTORY_INVALID: '+message) from exc
+        except (KeyError,TypeError,ValueError,StopIteration) as exc:
+            raise Conflict('SOURCE_HISTORY_INVALID: '+type(exc).__name__+': '+str(exc)) from exc
 
     @staticmethod
     def _validate_source_identity(sid, category):
@@ -227,8 +238,8 @@ class ResearchLedger:
             row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
             if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
             wid,body=row
-            self._verify_current_anchor_locked(wid)
             self._require_valid_history_locked()
+            self._verify_current_anchor_locked(wid)
             world=json.loads(body)
             sha=digest({'category':category,'content':content})
             prior=self.conn.execute('SELECT chain_hash FROM events ORDER BY seq DESC LIMIT 1').fetchone()
@@ -261,8 +272,8 @@ class ResearchLedger:
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
-            self._verify_current_anchor_locked(wid)
             self._require_valid_history_locked()
+            self._verify_current_anchor_locked(wid)
             for aid,a in actors.items():
                 cur=self.conn.execute('SELECT version FROM actors WHERE id=?',(aid,)).fetchone()
                 if not cur or cur[0]!=actor_versions[aid] or a['id']!=aid:
@@ -323,6 +334,9 @@ class ResearchLedger:
             raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
         for idx,r in enumerate(records):
             envelope=r['envelope']
+            if (type(envelope) is not dict or
+                    any(k not in envelope for k in ('world','clock','actor','kind'))):
+                raise AssertionError('EVENT_ENVELOPE_MALFORMED')
             if canonical(envelope)!=r['envelope_bytes']:
                 raise AssertionError('EVENT_ENVELOPE_NONCANONICAL_BYTES')
             if (r['world_id']!=envelope['world'] or r['clock']!=envelope['clock']

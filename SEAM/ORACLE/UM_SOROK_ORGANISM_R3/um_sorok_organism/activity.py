@@ -85,13 +85,17 @@ def record_activity_afterlife(actor, own_action, status, outcome, basis, event_r
             matches=[p for p in projects if p.get('id')==project_id]
             if (len(matches)!=1 or own_action not in matches[0].get('means',[])):
                 raise ValueError('ACTIVITY_SELECTED_MEANS_CONTRADICTION')
+    # R19/P004: preflight repeated event refs across every selected course.
+    # A duplicate found in later project B must not leave earlier project A
+    # already appended. Also protects explicit legacy asserted project bases.
+    for project in actor.get('projects',[]):
+        if project['id'] in project_ids and own_action in project.get('means',[]):
+            if any(h.get('event')==event_ref for h in project.get('operational_history',[])):
+                raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
     histories=[]
     for project in actor.get('projects',[]):
         if project['id'] not in project_ids or own_action not in project.get('means',[]):
             continue
-        # A repeated dispatch must not duplicate the same objective occurrence.
-        if any(h.get('event')==event_ref for h in project.get('operational_history',[])):
-            raise ValueError('DUPLICATE_ACTIVITY_EVENT_FOR_PROJECT')
         entry={'event':event_ref,'project':project['id'],
             'operation':own_action,'objective_outcome':outcome,'performed_status':status,
             'practical_object':project['object'],'motive_hypothesis':project.get('motive'),
