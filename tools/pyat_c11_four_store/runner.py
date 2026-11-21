@@ -587,6 +587,10 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                                   else "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
         else:
             result["status"]="INCOMPLETE_ARMS_NO_WINNER"
+        from .economics import measured_economics
+        result["measured_economics"]=measured_economics(
+            result["arms"],source_bytes=result.get("source_retained_bytes",0),
+        )
         if completed:
             with (run_dir/"summary.csv").open("w",newline="") as f:
                 writer=csv.writer(f)
