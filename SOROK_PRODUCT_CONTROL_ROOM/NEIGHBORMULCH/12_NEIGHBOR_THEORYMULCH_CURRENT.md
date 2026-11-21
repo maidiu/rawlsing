@@ -136,6 +136,8 @@ The system also must not respond to an inferred player weakness by selecting a N
 The user can learn to attend differently because attention can become practically consequential. Their activity can change actual other lives. It is neither necessary nor legitimate for the app to tell them they have become virtuous. The participant's external human history remains larger than every provisional model the platform builds.
 
 
+**The strongest anti-leak rule on player analytics.** Earlier C05 work specifically raised the risk that the platform's relation indexes and summaries could reveal relationships, their number, or sensitive participation patterns to an actor or user who has never lawfully encountered them. World graph membership, private models, relationship counts, hidden actor labels and internal negative-control evidence are **not public domain facts**. Neither a narrator's “relationship summary” nor Nadia's psychologically fluent reply may reveal private connections merely because an internal readset has them. A truthful source of private information needs lawful perception, testimony, communication or other world admission, with independent data-purpose and actual-user protection.
+
 ## 10. The other person and her day were already living
 
 The game cannot begin from an abstract narrator's command that the human “go meet your neighbor” while Nadia conveniently waits. Her life was already constituted through past episodes, practices, needs, relations, institutions and the current day. Her habits are not a list of personality labels. Her present activity is an effect of a long, compressibly represented historical process with contradictory psychic organizations, a body, a calendar, people she knows and things that must be done.
@@ -206,6 +208,8 @@ Co-presence and messaging have different **phenomenal bandwidths**. One may witn
 
 This is the positive architecture of two channels Round Eight carried and Round Nine had compressed. The tenth whole explicitly restores it without turning communication into a constant availability funnel.
 
+
+**Assisted and more exacting modes.** Historical SOROK explicitly left open an optional distinction between stronger and weaker epistemic scaffolding: the player may prefer reminders of their *own* prior commitments, ordinary timing assistance and accessible summaries, or a more demanding mode with fewer explicit cues. Neither mode may disclose Nadia's hidden state, the future consequences of a choice, the exact meaning of a gesture, or privileged knowledge of her money. A stricter schedule cannot confer prestige or affection; an assisted schedule cannot counterfeit a promise fulfilled or erase a person's refusal. These are different presentations and attention aids within the **same causally owned world**, not an easy/moral and hard/authentic psychology. The exact modality, defaults, data controls and access affordances remain open S11/UX owner decisions.
 
 ## 15. The encounter belongs to Nadia's live activity
 
@@ -397,6 +401,8 @@ Outside the game, real human users may discuss their respective Nadias. That con
 The community should not be organized as a leaderboard ranking the most successful conqueror of a person. Its extraordinary possibility is comparative testimony: many different true fictional branch encounters with a common historical possibility, none exhausting who that person could become.
 
 
+**Undo, retry and irreversible history.** A visitor's first misunderstanding is not a reason to make the service unusably punitive. But “try ten different confessions until Nadia's trust bar fills” would turn her into a controlled branch puzzle. Original Q-RETRY-001 and shared-seed sources preserve a genuine open design question: what can be restarted, when may the visitor enter a new independent continuation, what history is retained for themselves, what counts as a technical correction, and which actions cannot be undone inside a committed branch? A branch snapshot is not moral permission to cancel another person's admitted refusal or pretend the actual user never said something. An irreversible lived event can nevertheless be forgiven, repaired, revisited and differently interpreted. Exact save, restart and fair reroll policy is **not settled**; it must preserve both user exit and actor historical nonownership.
+
 ## 29. The scarce Roll cannot purchase a companion
 
 The user's eventual Roll is deliberately distinct from simply clicking a compatible character or reloading a failed conversation. They may have one or two scarce opportunities under an as-yet undecided compute/funding policy to **cause the generation of a new source-qualified fictional person-root**, which may later enter a shared bank for others' independent continuities. The human initiated the generative event in product time; they do not author the fictional person's historical birth, choose their ethnicity and class for consumption, claim their sexuality, or gain authority over their future willingness.
@@ -464,6 +470,8 @@ A theory that only speaks in kernels can smuggle missing concrete mechanics behi
 
 Each case requires the **same** material world, actor-local history, event admissibility, observer surface, time and continuing reconstitution that governs all the others. The strong theory is one that produces different plausible outcomes across these cases without a separate bespoke rule that transforms each into a hidden test of virtue.
 
+
+**No hidden ethical output score.** The old S0/health workstream explicitly distinguishes approval, health, attachment, dependence, enjoyment, flourishing and actual material benefit. None can be authoritatively compressed into a single scalar nor inferred from the player's retention. A game may benefit from qualitative user research into the feeling of meeting a stranger; a developmental psychological claim requires appropriate independent epistemic qualification. Genuine human love of neighbor may be an ethically productive horizon, but must not be used to train actors toward good outcomes or label a human “mature” because the model likes their diction. The source-negative case where an exploitative visitor gets the access they wanted must remain possible in relevant consenting-adult/harm-bounded fictional circumstances, with actual institutions and downstream effects rather than intervention by a moral narrator.
 
 ## 33. Existing owners, historical conservation and the first actual consumer
 
