@@ -324,6 +324,14 @@ An acquired psychological element therefore has at least two potentially changin
 ## VII. An Other has a life before we need to simulate it: polycentric fields and causal-resolution fidelity
 
 
+### Solitude is a historically formed relation, not the absence of relations
+
+[D001/03 relationalization](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md) explicitly rejects the monadic interpretation of isolation. Someone alone at night can remain shaped by absent parents, coworkers, classed expectations, anticipated judgment, internalized discipline, obligations, longings, remembered voices and institutional constraints. A physically absent father may exercise more practical authority than a physically co-present friend. Conversely physical co-presence can remain psychologically irrelevant. **Current geometric distance, represented social field and operative recruited relation are not interchangeable**.
+
+This distinction limits R29's co-presence-conditioned learning without discarding it: co-presence is a source-grounded exposure cue, not the general unit of all relationally conditioned recruitment. A previously acquired relation may operate across situations because Nadia recognizes a social function, actual sanction, speaker role, anticipated response or remembered category—not because the same people are still in the room. Yet such generalization must be *learned and potentially mistaken*, never inferred automatically from class labels or genealogical roles.
+
+
+
 ### Reachability topology is distinct from relationship structure and personal meaning
 
 [SOROK 52 / Q-ACCESS-001](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/52_Q_ACCESS_001_RELATIONAL_REACHABILITY_TOPOLOGY_R1.md) sharpens Court 9: a relationship can alter *which objective routes into life are actually available*, but route existence, permission, current opportunity, user attempt, realized presence and actor experience are different events. A route needs a target, mode, lawful basis, controller, scope, time conditions, change/revocation semantics, dependencies and provenance. The decisive question is **who can authorize it**. Nadia can invite a visitor into her kitchen, but cannot grant unfettered access to a child's privacy, a friend's thoughts, a workplace's records or an institution's controlled space.
@@ -444,6 +452,14 @@ The LLM may propose source-qualified psychological organizations and material pa
 ---
 
 ## IX. Causal preservation through negation without imaginary emotional conservation
+
+
+### Retrieval, recruitment, recall and narrative self-knowledge are not one memory operation
+
+[D001/02 inherited PFF–V3 mediation](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md) sharpens the temporal afterlife further: **a searchable historical trace, present causal recruitment of an acquired organization, conscious episodic recall, interpretation of what it means now, and durable revision of the self-model are distinct**. A present odor may recruit a bodily withholding pattern without Nadia recalling its first acquisition; an accessible episode may remain peripheral rather than become the current topic; she may accurately recall a conversation and falsely explain its motive. The retrieval component is not itself the psychology. It is a bounded evidence path into already governed present actor computation.
+
+A fully understood encounter may still produce **valid-empty**: no important memory, disclosure, insight, affective reorganization or new investment. Nor does continuing conflict guarantee developmental deepening. Conversely a minor realized expression can acquire unexpected meaning after another actor responds and a further encounter recruits it. The burden of proof is positive and causal in both directions; omitting a memory from the present prompt is not a demonstration that no memory exists.
+
 
 
 ### Causal afterlives that are neither remembered facts nor personality traits
@@ -575,6 +591,14 @@ A later apparently small remark can recruit the whole charged configuration and 
 ---
 
 ## XII. Complex affect, play, erotic life and actor-owned disclosure
+
+
+### The actor can encounter their own performed expression as a new event
+
+The inherited PFF/D001 history specifies a recursion often lost between event-time psychology and voice rendering. The person may feel something without naming it, name it but wrongly attribute its cause, intend a sentence they cannot say, or say something they did not expect to hear themselves say. **Candidate expression is not yet an event**. Only after the exact utterance or bodily action has been lawfully realized can Nadia hear or notice her own conduct and become embarrassed, surprised, relieved, defensive or newly curious about herself. She does not gain omniscient insight simply because the audit trace explains the action. [D001/02 §6 self-output recursion](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md).
+
+**Response coverage is not uptake.** Nadia can understand three topics, care deeply about two and reply to only one because of time, effort, fatigue, strategic restraint or another ongoing activity. Silence or brevity does not prove ignorance, indifference, defense or concealed anger. A conversational surface can be uneven, selective, digressive or seemingly jagged for source-grounded reasons; the renderer must neither polish every real omission into perfect assistant prose nor introduce random stammers as counterfeit humanity. A deliberately vague explanation may preserve truthful uncertainty rather than hide a well-formed secret waiting for the user to unlock it.
+
 
 
 ### Disclosure, concealment and sideways speech are causal activities, not transparency settings
