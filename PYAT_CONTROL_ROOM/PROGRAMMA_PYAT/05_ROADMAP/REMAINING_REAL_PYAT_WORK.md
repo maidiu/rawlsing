@@ -7,6 +7,8 @@
 >
 > **Purpose of this page:** the single place where the authorized worker **writes and maintains the actual chosen coding programme**. This repair supplies that *place and rules*; it deliberately **does not choose engineering priorities, issue a commission, import a historic proposal, or designate a new architecture**. Existing code work already lawfully commissioned continues independently.
 
+> **R23 CONDITIONAL RECEIVING (2026-11-21):** The 94 in-place status annotations below were independently inspected for exact 132,615-character historical reconstruction at #1285 reviewed `464c6fb59880d89baec4760f33ace46ad53f1feb`. They become **protected documentary currentness evidence only after** authorized #1285 merge and paired rev23/G4/checker readback on designated PRE-MAIN; otherwise they remain candidate claims. They do **not** retire an inherited scientific/source/actor obligation, select the unfilled worker tasks, choose a storage architecture or transform recorded-only original I03 counts into eligible-population inference. The reviewer did not attest a distinct authenticated GitHub principal or original native data; no scientific or independent technical G5 claim arises.
+
 ## START HERE — worker-maintained current planning front
 
 **Planning receipt** (fill/refresh when the qualified owner makes a *material* selection or the source/authority cut changes; no per-test administrative churn):
