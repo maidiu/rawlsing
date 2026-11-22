@@ -15,6 +15,14 @@
 
 ## I. The germ: reciprocal historical production rather than a final reconciled person
 
+
+### Relational non-exhaustion without a mystical escape hatch
+
+[D007 whole-conversation kernel harvest](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/01_CONVERSATION_COMPONENT_HARVEST_R1.md) preserves a nested structural asymmetry: the world exceeds any person's current experience; a relation exceeds either party's representation of it; and an actor's historical being exceeds every one of their roles, explanations, encounters or enumerated graph edges. This is not proof of metaphysical machine consciousness and not a justification for inventing behavior at random. It demands independently continuing causal history, partial first-person models, new practical becoming and the possibility that a perfectly sincere account does not explain the whole event.
+
+The matching ethical/experiential distinction is **answerability without possession**. Attention to another person can become more precise without making the Other a puzzle to finish, a moral project to improve, or a reward for the observer's cleverness. Giving up one interpretive monopoly need not mean abandoning one's perspective or denying genuine knowledge. Genuine love may deepen awareness of separateness rather than erasing it. The actor and visitor can still change one another materially, and neither thereby owns the other's meaning.
+
+
 **The new causal test is composition across timescales, not conceptual inclusiveness.** A form learned in history A is not simply a fixed source for a later event B. B can reorganize how A is recruited, and the performed consequences AB can introduce real objects, people, rights, dependencies or occasions that were not there beforehand. C then meets an organism and world transformed by AB. This is a generative relation among relations, not an arithmetic increase in interior emotional complexity. [SOROK 75](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/75_FULL_CHAT_FORENSIC_HARVEST_AND_ORGANISM_COMPRESSION_R1.md) identifies the nonexhaustion of each side of mediation as a kernel clue; the present DCO makes its constructive demand explicit, without claiming the clue has been scientifically adjudicated.
 
 **An adversarial consequence:** the very same mother's care may give a child real safety and aptitude, naturalize an exploitative work division, and foster a generosity by which that child later criticizes the division. The theory must let those histories continue to interact and generate different later acts. If each dimension can only push a static favorability score, the supposed fusion has added descriptions but no new psychological operation. Explanatory understanding becomes deeper so that Nadia can remain more, not less, contradictorily alive.
@@ -171,6 +179,12 @@ A source-qualified **possible encounter** is not yet an actual actor's **materia
 ---
 
 ## IV. Two historical entrances into one socially reproduced life
+
+
+### Chronology and the inverse problem remain genuine constraints
+
+[SEAM/24 seven cracks](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/00_INDEX_AND_REVIEW_PROTOCOL.md) separately preserves acquired semantic openness (SC-01); inverse construction from a sampled maternal target (SC-02); father selection conditioned on the actual encounter, the birth-relevant chronology and an independently coherent paternal history (SC-03); two actors' continuing distinct histories after coupling (SC-04); child's actual access/action/learning evidence (SC-05); ordinary-life coverage with loss-aware provenance (SC-06); and relation motif topology/optional attractor recruitment (SC-07). These seven are **research obligations**, not seven new modules or an accepted implementation order. The stronger parent sequence cannot treat the father as a demographic convenience appearing at birth or create a couple from jointly plausible individual marginals that never became a lawful actual relationship. One engine with different conditioning horizons must still represent both as people before and after their meeting.
+
 
 
 ### The empirical adult, relational household and open child are distinct generative objects
@@ -741,6 +755,14 @@ Everything below remains part of the living target, whether or not a particular 
 ---
 
 ## XVII. The machine is the critic: multiplicative falsification and continuing limits
+
+
+### Source-grain falsifiers for the recovered structural distinctions
+
+A comprehensive court must reject at least these shortcuts: using a parent's sampled need-axis answer as the infant's inborn striving; adding an all-zero or hopeful generic psychology where sources are unknown; generating a child's fraction skill after an unperformed lesson; treating nondeclarative trace as a spoken autobiographical memory; making a chronic rupture heal because a romantic conversation felt profound; treating a person's inwardly acquired belief as an objectively true public-world fact; reading a session's avoidance style as permanent character; mistaking a lucky catch for certified physical competence; letting a relationship repair restore a home key without an actual permission grant; manufacturing a coworker's old motive during actor promotion; assigning equal cultural judgment to two locally similarly situated people; attributing all changes to the visitor although world work changed independently; treating a more fluent personalized render lens as proof of accurate understanding; treating a V2 wording choice as an admitted act; and using a random sample to make an otherwise unlawful development possible.
+
+The same positive actor-world history must also allow the inverse: no durable development after a stressful encounter, useful learning after an awkward explanation, a new practice without a compelling narrative, a child who ignores a formative-looking parental norm, persistent love inside real material disagreement, and a previously tyrannical framework that remains powerful despite acquired evidence of its falsity. Each case must be grounded in actual causal events, admitted sources and lawful owners rather than invented for a theory's demonstration. None of these tests has been newly executed by this documentary sweep.
+
 
 **The proving unit is a counterfactual life whose learned organization changes what next becomes possible.** Construct two distinct historically qualified forms, A and B, that separately alter recruitment. Let their joint activity produce a new acquired operation or new world relation not generated by independent A and B. Then let a later event C encounter that changed AB world/person. Measure actual act availability, world delta, actor-specific experience, acquired interpretation, later recruitment and cold persistence, including cases where nothing durable is gained. A narrative report of “synthesis” is not a proof of synthesis.
 
