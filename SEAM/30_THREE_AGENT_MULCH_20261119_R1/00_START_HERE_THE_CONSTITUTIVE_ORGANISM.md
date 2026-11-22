@@ -127,6 +127,16 @@ The stronger falsifier holds the organismic activity and the spoken response fix
 
 
 
+### Care is two different histories before it becomes one relationship
+
+[care_commitment_genesis.py](https://github.com/maidiu/rawlsing/blob/6647f746f4f7d2ae3dd0d14af5cde38191044773/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/care_commitment_genesis.py) and [co_regulation_history.py](https://github.com/maidiu/rawlsing/blob/6647f746f4f7d2ae3dd0d14af5cde38191044773/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/co_regulation_history.py) together expose a major error in sentimental developmental shorthand. The caregiver's **independently chosen, materially costly and actually performed care** may form the caregiver's conditional practical commitment across repeated episodes. The child's **actual received feeding, regulation or comfort** may form bodily conditions and, later, a possibly fallible orientation toward a particular person. These are *not one shared psychological fact*. A caregiver's expenditure does not prove love, a child's bodily relief does not prove recognized benefaction, and neither person's current orientation guarantees the other's future participation.
+
+An adult may develop a practiced responsibility while the child experiences inconsistent availability; the child may acquire a reliable way of soliciting help from one caregiver who has no consciously endorsed ideal of care; two caregivers may perform equal care labor at different personal costs; the child may mistakenly attribute a benefit to the co-present person who did not cause it. A co-parent can provide the material means that make another parent's care possible while remaining absent from the child's perceptual scene. **Social reproduction produces unequal and partially opaque histories inside a shared material relation.**
+
+The developmental court should distinguish *care offered*, *world-settled benefit*, *recipient bodily change*, *recipient personally sensed signs*, *caregiver acquired investment*, *child's later help-seeking*, *future caregiver independent willingness*, and *other family members' material contribution*. Couple the processes through actual world events, not through a relational affection score. Holding the child's relief constant while changing the real cost and performed history of the caregiver should change the caregiver's later possibilities without fabricating the child's gratitude. Holding caregiver cost constant while altering which signs the child experienced should change the child's potential recruitment without changing what objective labor occurred. A useful family relationship can therefore generate contradictory developmental meanings without any single character being mistaken for the whole household.
+
+
+
 ### Further developmental distinctions recovered from the V3 contracts and SEAM
 
 The body has several different developmental relationships to the psyche, and their differences matter even where no new ontology is needed.
@@ -359,8 +369,6 @@ An acquired psychological element therefore has at least two potentially changin
 
 **Compression is indispensable.** Explicitly materialize historically consequential motific patterns where needed, retain ancestry and source qualification, and recruit bounded context-sensitive neighborhoods rather than every possible edge. A rare tone, odor, gesture or situation may recruit an old configuration through practical analogy, even mistakenly; retrieval cannot be restricted to recent frequent associations. An inhibited organization can have an indirect relation-mediated effect without being promoted to public action. No universal automatically expanding hidden trauma graph.
 
----
-
 
 **The three evidence questions remain separate.** [SEAM SC-07 relational topology ablation](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/07_RELATIONAL_TOPOLOGY_MOTIFS_AND_C5_ABLATION.md) demands a source-grounded acquired content; a *directed, typed functional relation* shown to do something beyond co-occurrence under a shared cause; and only then a slow recurrent motif whose extra effect is demonstrated against a competent contextual-history baseline under equal information and bounded computation. Same nodes can yield a different person if their relations actually alter future recruitment or practiced action, but a graph label is not a causal mechanism. A nine-type Enneagram magnet is a negative control, not developmental science. Any stable motivational attractor is distinct from **Absolute Horizon**—the historically contested ordering of what an actor treats as ultimately binding and may sacrifice for what.
 
@@ -371,6 +379,14 @@ An acquired psychological element therefore has at least two potentially changin
 The first falsifier must vary histories of personally received signs, actual practiced means and independently responding Others while holding objective world and bodily eligibility constant. A lawful reader should recognize an actor-specific prospective option in one history and not another. After a real attempted trial, introduce a new object, material scarcity, third party or institutional authority and check whether learned correspondence stays narrow, transfers incorrectly, broadens after another sourceful trial, or simply does not apply. Compare this with a capable contextual-history reader, without crediting a mere narrative explanation as psychological machinery. A bounded R29 current can remain fully lawful while the richer generalization remains absent. New code must reuse existing development, V3/CAN/ADP, PFF and world owners after exact source/head parity; no parallel universal desire or object interpreter follows from this theory.
 
 ## VII. An Other has a life before we need to simulate it: polycentric fields and causal-resolution fidelity
+
+
+### A relation has two developmental directions before it has any common meaning
+
+The caregiver's repeated real practice and the child's acquired orientation can be **mutually transformative without being reciprocal copies**. Two people may participate in the same episode, but one learns a caregiving operation while the other learns to anticipate relief, resents dependency, or fails to identify the giver. A third person can finance the operation, work elsewhere to make it possible, or supply an interpretive category that later changes what both parties think they were doing. The material field joins their histories while the actor-specific psychic afterlives remain asymmetric.
+
+This changes how the DCO should interpret co-present Others. They are neither one shared relation-state nor mere context labels attached to an independently assembled psyche. The analytic unit is the **coupled but nonidentical historical processes**, each selected under the actor's received access, activity and later re-formation. A relationship is objectively real even when no participant can explain it adequately, and it can organize future practice without any symmetric trust or mutual confession.
+
 
 
 ### Solitude is a historically formed relation, not the absence of relations
@@ -462,6 +478,18 @@ The developmental consequence is concrete: a newly acquired routine can alter wh
 
 
 The strongest pre-R5 person×event circuit was still at risk of treating an LLM-interpreted *sentence of intent* as an accomplished social event. [SOROK 27](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/27_D002_MEDIUM_NATIVE_AGENCY_AND_ACTION_DECOMPRESSION_R1.md) exposes this as a fundamental psychological defect, not a mere interaction inconvenience. “I comfort Nadia,” “I teach the child fractions,” “I make him understand,” and “I apologize sincerely” may announce an intended end; they do not author comfort, knowledge, persuasion, forgiveness or even a correctly recognized apology. A person is formed through actually lived practice. Generating the desired outcome from a verbal goal replaces reciprocal constitution with plot fiat.
+
+### Operational provenance is not unconscious-cause discovery
+
+[operative_witness.py](https://github.com/maidiu/rawlsing/blob/6647f746f4f7d2ae3dd0d14af5cde38191044773/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/operative_witness.py) freezes **which actor-owned sourcefree policy grounds were actually consulted in a decision before objective world settlement**. That can be valuable evidence that a *particular computational selection rule* was executed. It does not demonstrate that the actor consciously intended the outcome, that every eligible current was causally operative, that a hypothesized desire exists as a human psychological mechanism, or that the actor's later explanation is correct. The same output can be produced under a different world condition or a different sourcefree selection policy.
+
+This requires five separate levels of attribution: **(1) source evidence that reached an actor**, **(2) the exact computational rule and grounds used by the selecting mechanism**, **(3) the actual operation and independently settled consequences**, **(4) the actor's acquired, possibly mistaken understanding of why it occurred**, and **(5) an external scientific hypothesis about the adequacy of the mechanism to real human developmental life**. The fifth is not established by passing the fourth, and the fourth is not established by printing the second in a prompt.
+
+[attention_field.py](https://github.com/maidiu/rawlsing/blob/6647f746f4f7d2ae3dd0d14af5cde38191044773/SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/attention_field.py) sharpens the same point before action: objective world signals, actor-receivable cues, a bounded projection of potential focal practical appraisal, the actor's actually deployed attention and their **conscious recognition** are different stages. A scarce attentional field can leave a received weak cue nonfocal without erasing its preattentive effect. An analyst's descriptor of a sensory cue is not automatically the infant's word. Thus “Nadia didn't say she noticed” cannot establish that no sign influenced her, while system audit of a selected cue cannot establish first-person awareness.
+
+**Hostile sourcefree court:** hold final selected act fixed, but change which policy grounds were actually operative and which signs were available to Nadia; downstream lived experience and later recruitment may diverge without the actor knowing why. Then hold frozen selection grounds fixed and alter the independent world consequence; the actor may learn different things through what was personally received. A retrospective narrator must not substitute a psychologically elegant causal story for any of these.
+
+
 
 ### The event's entry, execution, reception, and historical afterlife are different things
 
@@ -927,7 +955,7 @@ Everything below remains part of the living target, whether or not a particular 
 
 ## XVII. The machine is the critic: multiplicative falsification and continuing limits
 
-### Nine unresolved dialectical junctions: specificity before synthetic unity
+### Thirteen unresolved dialectical junctions: specificity before synthetic unity
 
 These are not interchangeable dimensions to normalize into a score. Each is a **different collision between independently real causal authorities**. The collision should create a distinct possible downstream operation; where existing owners already handle it, no new engine is warranted.
 
@@ -942,6 +970,10 @@ These are not interchangeable dimensions to normalize into a score. Each is a **
 | **Acquired contents × directed relations × slow motifs** | Infer a causal graph from co-occurrence or type from an attractor label | Directed relations and any K motif must improve a real later consumer over competent context/history retrieval |
 | **Independent life × user absence × external calendar** | Run player autopilot, freeze Nadia or punish app nonuse | The actual actor, pending event, user choice and bounded time mediation have independent clocks |
 | **Adaptive attention × scientific evidence** | Display hypothesized cues, then treat observed attention as confirming the hypothesis | Objective availability, narrated exposure, attention, action and hypothesis require separate provenance |
+| **Bodily solicitation × possible end × motive** | Call every repeated orienting response an intention or desire | Personally sensed anticipations, actual eligible prospective trials, learned means and later durable projects require separate genesis |
+| **Costly offered care × received relief × mutual recognition** | Treat social reproduction as a single dyadic affection state | Caregiver labor/commitment, recipient bodily history and independently learned association may develop asymmetrically |
+| **Policy witness × subjective causation × scientific validity** | Treat a frozen computational rule-path as proof of unconscious motive | Selection-trace, performed consequence, actor self-explanation and externally validated developmental adequacy have different evidentiary rights |
+| **Actor-accessible signal × focal attention × conscious category** | Treat a cue's available label or auditor projection as first-person knowledge | A sensed sign can be preattentively influential, focal, unnamed, misrecognized or not received at all |
 
 **A candidate center of gravity:** the historical formation and re-formation of **operative possibility**. An organism does not merely possess a list of actions and meanings. Living material relations, learned practices, role categories, obligations and interpretations alter what becomes executable, thinkable, wanted, forbidden, unnoticed or impossible *for this actor*. Performed activity then changes the objective world and other actors' possibilities, in turn altering the original psyche. This common relational form is reciprocal, but its mediations **must remain distinct and non-substitutable**. It is a hypothesis for organizing causal tests, **not a universal possibility score**, an adopted law or a claim that all contradictions resolve.
 
