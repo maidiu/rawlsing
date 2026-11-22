@@ -186,6 +186,10 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
         ]
         if len(historical)!=1 or len(positive)!=1:
             raise StoreFailure("exact historical DEFER/positive source use authority unavailable")
+        held_use_scope = positive[0].scope_envelope.get("scope")
+        if (not isinstance(held_use_scope, Mapping)
+                or held_use_scope.get("scope") != use.get("scope")):
+            raise StoreFailure("source-specific universe-use scope label mismatch")
         def current_universe_use():
             try:
                 return (
@@ -212,7 +216,7 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
             operation=operation.authorized_operation,
             risk_ref=operation.recorded_risk_ref,
             interpretation=operation.interpretation,
-            scope=use["scope"],
+            scope=held_use_scope,
             current_verifier=current_universe_use,
         )
         # This is the original RecordedRoutingPlan field already consumed by
