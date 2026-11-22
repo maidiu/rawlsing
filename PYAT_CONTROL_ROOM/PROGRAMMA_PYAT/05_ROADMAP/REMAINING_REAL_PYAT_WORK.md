@@ -131,7 +131,7 @@ S04 exact F1-F4 + observed contextual joint/conditional/minority research
 
 **Upstream consequences:** S01/S02 source metadata must distinguish self-reports, observed material positions, survey-based proxies and external structural claims before FF interprets them; C11 retains native role/roster/occurrence, objective position-related *measured* fields and source/authority identity without asserting cross-source personal linkage; I03/S04 can project a measured association across the two spaces without using the same survey ancestor twice as “independent position” and “disposition”; FF01 preserves conditional source facts while structural rule fails; FF02 independently issues or refuses actual relation; N6/N9 apply only demanded admitted relation with scope/time and real first reader; N10W requires N9 AND N10E, not references-only AND and not newly invented conditional probabilities. **No new universal Field Forge schema, pressure scalar or FFX stack is selected by this court.**
 
-#### C. Priority-ranked falsification suite to determine only NECESSARY new work
+#### D. Priority-ranked falsification suite to determine only NECESSARY new work
 
 | Court and what changes | Actual supported output (or lawful HOLD) | First owner to challenge |
 | --- | --- | --- |
