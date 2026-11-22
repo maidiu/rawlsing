@@ -410,8 +410,13 @@ def _native_operations(config: dict, root: Path, source: InputEstate, emit):
     emit(stage="issued_operations",completed=len(supplied))
     return supplied,"ORIGINAL_ISSUED_OPERATION_OBJECTS_PROVIDED_BY_EXTERNAL_OWNER"
 
-def _engine_report(store: Store, source: InputEstate, issued: list, emit, resources, config):
-    report = {"physical_probes":[],"native":[],"native_status":None,"evidence_recovery":[]}
+def _engine_report(store: Store, source: InputEstate, issued: list, emit, resources, config,
+                   partial: dict | None = None):
+    # Write progress into the arm's persisted report incrementally. A failure
+    # in the downstream native evaluator must not discard completed 100-probe,
+    # cold-reopen or evidence-query measurements.
+    report = partial if partial is not None else {}
+    report.update({"physical_probes":[],"native":[],"native_status":None,"evidence_recovery":[]})
     refs=store.get_question_refs(min(100,int(config.get("physical_question_limit",100))))
     for n,ref in enumerate(refs):
         t=time.perf_counter()
@@ -619,6 +624,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     "source_identity":source.identity,"host":result["host"],
                     "stages_s":{}, "metrics":{}}
             s=None
+            watch=None
             try:
                 with Resources(folder,emit) as watch:
                     t=time.perf_counter()
@@ -642,7 +648,9 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                             create=False,source_identity=source.identity,progress=emit)
                     report["stages_s"]["fresh_connection_open"]=round(time.perf_counter()-t,4)
                     t=time.perf_counter()
-                    report["query_report"]=_engine_report(s,source,issued,emit,watch,config)
+                    report["query_report"]={}
+                    _engine_report(s,source,issued,emit,watch,config,
+                                   partial=report["query_report"])
                     report["stages_s"]["queries_and_persisted_results"]=round(time.perf_counter()-t,3)
                     report["metrics"]=s.stats()
                     report["metrics"]["required_permanent_bytes"] = (
@@ -672,6 +680,31 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                 report["completed"]=utc()
                 emit(stage="arm_complete",completed=arm)
             except BaseException as exc:
+                # An unqualified native failure must still leave the physical
+                # observations and sampled resource footprint inspectable.
+                if watch is not None and watch.started is not None:
+                    elapsed=max(time.monotonic()-watch.started,1e-9)
+                    cpu_time=(watch.peak_sampled_cpu_user_s+
+                              watch.peak_sampled_cpu_system_s)
+                    report["resources"]={
+                        "peak_process_tree_rss_bytes":watch.peak_rss,
+                        "peak_output_disk_bytes":watch.peak_disk,
+                        "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+                        "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+                        "peak_cpu_percent_one_core":round(
+                            watch.peak_cpu_percent_one_core,2),
+                        "avg_cpu_percent_one_core":round(100*cpu_time/elapsed,2),
+                        "peak_cpu_percent_host_capacity":round(
+                            watch.peak_cpu_percent_one_core/watch.logical_cpus,2),
+                        "avg_cpu_percent_host_capacity":round(
+                            100*cpu_time/elapsed/watch.logical_cpus,2),
+                        "logical_cpus":watch.logical_cpus,
+                        "cpu_measurement_grade":
+                            "SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN",
+                        "samples":watch.sample_count,
+                    }
+                if report.get("query_report") and issued:
+                    report["query_report"]["native_status"]="NATIVE_REFUSED"
                 report["status"]="FAILED_OR_HELD"
                 report["error_type"]=type(exc).__name__
                 report["error"]=str(exc)
