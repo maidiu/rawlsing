@@ -121,6 +121,19 @@ def self_test() -> None:
         sorok.write_text(before.replace(OATH_END, "", 1), encoding="utf-8")
         if not validate(temp):
             raise AssertionError("missing OATH end accepted as priority front")
+        # Hostile R23 actual-OATH body truncation. The old guard only
+        # checks the header and end marker and can accidentally accept this.
+        # The first 1600 characters preserve the separate CURRENT status check,
+        # while the true OATH body is silently replaced by an early end marker.
+        import hashlib
+        original_oath = before[:before.index(OATH_END) + len(OATH_END)]
+        print("SOURCE_OATH_SHA256 " +
+              hashlib.sha256(original_oath.encode("utf-8")).hexdigest())
+        sorok.write_text(before[:1600] + OATH_END
+                         + before[before.index(OATH_END) + len(OATH_END):],
+                         encoding="utf-8")
+        if not validate(temp):
+            raise AssertionError("truncated canonical OATH body was accepted")
         sorok.write_text(before, encoding="utf-8")
         if validate(temp):
             raise AssertionError("restored Sorok front still fails")
