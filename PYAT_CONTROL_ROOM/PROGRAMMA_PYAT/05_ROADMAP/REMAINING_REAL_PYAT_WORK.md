@@ -69,9 +69,9 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ---
 
-## HISTORICAL REQUIREMENTS AND SUPERSEDED AUTHOR-PROPOSED WORK ORDERS — PRESERVED IN FULL
+## INHERITED REQUIREMENTS, EVIDENCE AND DATED WORK-ORDER PROPOSALS — PRESERVED IN FULL
 
-**Boundary rule:** Everything below this line preserves inherited intentions, research, source/code reports, dated ordering and unfinished obligations. It may be indispensable evidence. **None of its old "current", "must build next", "overriding priority", C0–C5 or GAP wording is presently an issued construction order just by appearing below.** A qualified owner must first select the specific operation into the current worker-maintained table above with actual source, consumer, scientific/rights constraints and executable proof. This boundary does **not** retroactively revoke any independently accepted requirement or user directive; higher-priority current user and PROGRAMMA authority remain controlling.
+**Boundary rule:** Everything below this line preserves inherited intentions, **potentially still-binding requirements and unresolved obligations**, research, source/code reports, and dated ordering. **No requirement is retired or declared satisfied by being moved below this heading.** Only the claim that an old priority list automatically determines today's coding order is withdrawn. It may be indispensable evidence. **None of its old "current", "must build next", "overriding priority", C0–C5 or GAP wording is presently an issued construction order just by appearing below.** A qualified owner must first select the specific operation into the current worker-maintained table above with actual source, consumer, scientific/rights constraints and executable proof. This boundary does **not** retroactively revoke any independently accepted requirement or user directive; higher-priority current user and PROGRAMMA authority remain controlling.
 
 ### Historical B00 agenda (2026-11-05; archived order, never automatic current commission)
 
