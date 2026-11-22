@@ -19,6 +19,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Execute sourcefree P6 differential-reception first-consumer boundary
+        run: |
+          python -m pip install --disable-pip-version-check pytest
+          python -B -m pytest -q -p no:cacheprovider --tb=short SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/test_differential_reception_boundary.py
       - name: Compile read-only bank verifier
         run: python -m py_compile SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_total_mulch.py
       - name: Original IDs, source file locators and complete current conversation idea register
