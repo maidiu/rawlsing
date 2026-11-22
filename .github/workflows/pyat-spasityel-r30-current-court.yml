@@ -1,0 +1,37 @@
+name: PYAT SPASITYEL R30 post-audit SOURCE CURRENT physical runner proof
+on:
+  push:
+    branches:
+      - agent/pyat-spasityel-r2-current-post-audit-revocation-20261121-r1
+permissions:
+  contents: read
+jobs:
+  sourcefree-revocation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree dependencies
+        run: python -m pip install --disable-pip-version-check 'pyarrow>=16' 'psutil>=5' pytest
+      - name: Verify immutable source and run original owner self-test
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python -m tools.pyat_c11_four_store.runner --self-test
+      - name: Exact physical post-audit and post-query CURRENT denial
+        run: |
+          mkdir -p .spasityel-r30-proof
+          python -m pytest -q -o addopts='' \
+            --junitxml=.spasityel-r30-proof/junit.xml \
+            tools/pyat_c11_four_store/test_spasityel_r2_post_audit_current.py \
+            tools/pyat_c11_four_store/test_spasityel_r1271_parallel_invocation.py
+      - name: Always preserve first counterexample and JUnit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spasityel-r30-current-court
+          path: .spasityel-r30-proof/
+          include-hidden-files: true
+          if-no-files-found: warn
