@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Canonical PROGRAMMA tree integrity (source conservation; NOT a semantic/scientific proof)."""
 import json
+import os
 import pathlib
+import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
@@ -144,6 +147,117 @@ if prog.is_file():
               "Pyat accepted protected P1 CAS2 receipt missing/downgraded")
     except (TypeError, ValueError) as exc:
         errors.append("Pyat current progress receipt failed to parse: " + str(exc))
+
+# REMONT: actual PYAT progress receiving must not regress through stale branches.
+# This is mechanical paired-record/source-cut protection, NOT semantic accreditation.
+def _pyat_pair_defects(md_text, json_text, guide_text, base_md=None, base_json=None):
+    defects = []
+    try:
+        current = json.loads(json_text)
+    except (TypeError, ValueError) as exc:
+        return ["PYAT_PAIR_JSON_INVALID: " + str(exc)]
+    rev = current.get("revision")
+    if type(rev) is not int or rev < 1:
+        return ["PYAT_PAIR_REVISION_INVALID"]
+    first = md_text.splitlines()[0] if md_text.splitlines() else ""
+    match = re.match(r"^# PYAT CURRENT_PROGRESS REV(?:ISION)?\s*(\d+)\b", first)
+    if not match or int(match.group(1)) != rev:
+        defects.append("PYAT_PAIR_MD_JSON_REVISION_MISMATCH")
+    g4 = re.search(r"^>\s*\*\*G4 REV(\d+)\b", guide_text, re.M)
+    if not g4 or int(g4.group(1)) != rev:
+        defects.append("PYAT_PAIR_G4_REVISION_MISMATCH")
+    if base_md is not None and base_json is not None:
+        try:
+            previous = json.loads(base_json)
+            old_rev = previous.get("revision")
+            if type(old_rev) is not int:
+                defects.append("PYAT_PAIR_BASE_REVISION_INVALID")
+            else:
+                if rev < old_rev:
+                    defects.append("PYAT_PAIR_REVISION_DOWNGRADE")
+                md_changed = md_text != base_md
+                json_changed = json_text != base_json
+                if md_changed != json_changed:
+                    defects.append("PYAT_PAIR_ONE_SIDED_EDIT")
+                if (md_changed or json_changed) and rev <= old_rev:
+                    defects.append("PYAT_PAIR_MATERIAL_EDIT_WITHOUT_REVISION_ADVANCE")
+        except (TypeError, ValueError) as exc:
+            defects.append("PYAT_PAIR_BASE_JSON_INVALID: " + str(exc))
+    return defects
+
+
+def _pyat_pair_selftest():
+    old_md = "# PYAT CURRENT_PROGRESS REV23 — source\n\noriginal\n"
+    old_json = json.dumps({"revision": 23, "report_status": "OLD"})
+    old_g4 = "# G4\n\n> **G4 REV23 — original**\n"
+    valid_md = "# PYAT CURRENT_PROGRESS REV24 — source\n\nnew\n"
+    valid_json = json.dumps({"revision": 24, "report_status": "NEW"})
+    valid_g4 = "# G4\n\n> **G4 REV24 — new**\n"
+    trials = [
+        ("unchanged", old_md, old_json, old_g4, False),
+        ("valid_advance", valid_md, valid_json, valid_g4, False),
+        ("downgrade", "# PYAT CURRENT_PROGRESS REV22 — bad\n", json.dumps({"revision": 22}), old_g4, True),
+        ("md_json_mismatch", valid_md, old_json, valid_g4, True),
+        ("g4_mismatch", valid_md, valid_json, old_g4, True),
+        ("one_sided_md", valid_md, old_json, old_g4, True),
+        ("one_sided_json", old_md, valid_json, old_g4, True),
+        ("silent_same_revision_edit", old_md, json.dumps({"revision": 23, "report_status": "CHANGED"}), old_g4, True),
+        ("paired_same_revision_edit", "# PYAT CURRENT_PROGRESS REV23 — changed\n", json.dumps({"revision": 23, "report_status": "CHANGED"}), old_g4, True),
+    ]
+    for name, md, js, guide, should_fail in trials:
+        actual = bool(_pyat_pair_defects(md, js, guide, old_md, old_json))
+        check(actual == should_fail, "PYAT_PAIR_SELFTEST_" + name)
+    return len(trials)
+
+
+def _pyat_protected_base():
+    """PR-only GitHub base SHA; no arbitrary local old-cut or silent skip."""
+    if os.environ.get("GITHUB_EVENT_NAME") != "pull_request":
+        return None
+    raw = os.environ.get("GITHUB_EVENT_PATH", "")
+    if not raw or not pathlib.Path(raw).is_file():
+        check(False, "PYAT_PAIR_GITHUB_PR_EVENT_MISSING")
+        return None
+    try:
+        payload = json.loads(pathlib.Path(raw).read_text(encoding="utf-8"))
+        sha = payload.get("pull_request", {}).get("base", {}).get("sha")
+    except (TypeError, ValueError, OSError):
+        sha = None
+    if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+        check(False, "PYAT_PAIR_BASE_SHA_UNAVAILABLE")
+        return None
+    return sha
+
+
+def _pyat_git_blob(base_sha, rel):
+    proc = subprocess.run(
+        ["git", "-C", str(ROOT), "show", f"{base_sha}:{rel}"],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+    )
+    if proc.returncode:
+        check(False, "PYAT_PAIR_BASE_CONTENT_NOT_AVAILABLE_" + rel)
+        return None
+    return proc.stdout
+
+
+_pyat_pair_selftest()
+pyat_md = ROOT / "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md"
+pyat_json = ROOT / "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json"
+pyat_g4 = ROOT / (PYAT + "05_ROADMAP/README.md")
+if pyat_md.is_file() and pyat_json.is_file() and pyat_g4.is_file():
+    md_body = pyat_md.read_text(encoding="utf-8")
+    json_body = pyat_json.read_text(encoding="utf-8")
+    g4_body = pyat_g4.read_text(encoding="utf-8")
+    protected_base = _pyat_protected_base()
+    prior_md = prior_json = None
+    if protected_base is not None:
+        prior_md = _pyat_git_blob(protected_base, "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md")
+        prior_json = _pyat_git_blob(protected_base, "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json")
+    if protected_base is None and os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
+        check(False, "PYAT_PAIR_PR_BASE_NOT_VERIFIABLE")
+    if protected_base is None or (prior_md is not None and prior_json is not None):
+        for defect in _pyat_pair_defects(md_body, json_body, g4_body, prior_md, prior_json):
+            check(False, defect)
 
 # Additional conserved evidence families. Structural checks guard against
 # accidental omission or duplicate identity, not scientific/current acceptance.
