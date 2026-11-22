@@ -406,6 +406,43 @@ try:
       "SOURCE_STATIC_TEST_CHECKER; native author CI already pinned separately")
  report["R28_grade"]="SOURCEFREE_AUTHOR_23PASS__CURRENT_OWNER_PREPARED_FIX__G5_AND_PROTECTED_HOLD"
 
+ # R29: #1271 sourcefree exact-head existing-owner runner qualification, no historical port.
+ r29=l.split("## 17. R29 — #1006/#1271",1)[1]
+ for key in ("9ca38c2bae59e6bed33de8e26c56e092a0de75b3",
+             "10ac8c3246816a52b6d153fe5a7c87f8d4272424",
+             "44964435322","15/15 PASS","17/17 PASS",
+             "14730811662","NOT_DISPATCHED","HQ_CURRENTNESS_HOLD"):
+  test("R29 specific code head/court/source hold "+key,key in r29)
+ runner=exact("9ca38c2bae59e6bed33de8e26c56e092a0de75b3",
+              "tools/pyat_c11_four_store/runner.py",
+              "8d12290141fc9c7a0020ac0a75ed4ee44bfa538c").decode()
+ t=exact("9ca38c2bae59e6bed33de8e26c56e092a0de75b3",
+         "tools/pyat_c11_four_store/test_spasityel_r1271_parallel_invocation.py",
+         "570cce651fed3bc13ac4803ad5f9bcbd9c0463bc").decode()
+ w=exact("9ca38c2bae59e6bed33de8e26c56e092a0de75b3",
+         ".github/workflows/pyat-spasityel-1271-exact-head-court.yml",
+         "ddcf3e0fdd3966221085581a44f99467223aa36d").decode()
+ test("R29 existing production SourceInput/Store reused and no new engine",
+      all(s in runner for s in ("class InputEstate:", "class Resources:", "def run(config_path", "def _sample_evidence"))
+      and "from .test_runner_sourcefree import FixtureSource" in t
+      and "patch.object(runner, \"InputEstate\", FixtureSource)" in t)
+ test("R29 distinct simultaneous sourcefree S2 and truthful partial status",
+      "ThreadPoolExecutor(max_workers=2)" in t
+      and "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD" in t
+      and "four_arm_complete" in t
+      and "sampled_cpu_user_s" in t)
+ test("R29 exact explicit collision protected BEFORE source sourcefree",
+      "side_effect=AssertionError(\"source must never open on collision\")" in t
+      and "with self.assertRaises(FileExistsError)" in t
+      and "MUST_NOT_CHANGE" in t)
+ test("R29 runner existing sourcefree same-SHA workflow and full court",
+      "test \"$(git rev-parse HEAD)\" = \"$GITHUB_SHA\"" in w
+      and "runner --self-test" in w
+      and "test_spasityel_r1271_parallel_invocation.py" in w
+      and "sourcefree" in w.lower())
+ report["R29_grade"]="AUTHOR_SOURCEFREE_15PLUS17_OVERLAP__EXACT_1271_CODE__ORIGINAL_HOST_NATIVE_HOLD"
+
+
 
 
 
