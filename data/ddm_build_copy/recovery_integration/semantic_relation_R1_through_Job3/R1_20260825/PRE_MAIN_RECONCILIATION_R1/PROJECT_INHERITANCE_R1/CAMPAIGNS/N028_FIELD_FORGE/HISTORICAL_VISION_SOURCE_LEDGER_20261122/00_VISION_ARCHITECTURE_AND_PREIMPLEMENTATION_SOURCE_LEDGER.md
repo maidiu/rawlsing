@@ -1,20 +1,20 @@
 # FIELD FORGE — HISTORICAL VISION, WISDOM, ARCHITECTURE AND PRE-IMPLEMENTATION SOURCE LEDGER
 
-**Record:** \`FF-N028-VISION-SOURCES-20261122-R1\` · **Created:** 2026-11-22 · **Type:** archival provenance index / historical intellectual capital · **Governance:** \`SOURCE_INDEX_ONLY__NO_NEW_FIELD_FORGE_ONTOLOGY__NO_WORK_SELECTED\`.
+**Record:** `FF-N028-VISION-SOURCES-20261122-R1` · **Created:** 2026-11-22 · **Type:** archival provenance index / historical intellectual capital · **Governance:** `SOURCE_INDEX_ONLY__NO_NEW_FIELD_FORGE_ONTOLOGY__NO_WORK_SELECTED`.
 
-**Exact home:** existing N028 campaign's \`HISTORICAL_VISION_SOURCE_LEDGER_20261122/\` subfolder. This new source index does not replace \`N028_FIELD_FORGE/00_READ_FIRST.md\`, W48/W50 inheritance, the **September 2, 2026 GLOBAL_HQ adopted R2 architectural minimum**, the current PYAT G4 \`S06.1–S06.5\`, or any existing PROGRAMMA/CURRENT_PROGRESS record.
+**Exact home:** existing N028 campaign's `HISTORICAL_VISION_SOURCE_LEDGER_20261122/` subfolder. This new source index does not replace `N028_FIELD_FORGE/00_READ_FIRST.md`, W48/W50 inheritance, the **September 2, 2026 GLOBAL_HQ adopted R2 architectural minimum**, the current PYAT G4 `S06.1–S06.5`, or any existing PROGRAMMA/CURRENT_PROGRESS record.
 
 **Purpose:** conserve the *entire identified historical chain* of vision, architectural reasoning and pre-implementation engineering from the earliest Rawlsing personality-generator discussions through the original N028/FFX research, adopted R2, PYAT/PRE-V3 world machine, SOROK organism and November 2026 DCO. Every row gives an exact retrievable locator (stable pinned GitHub blob when possible; precise Library folder/title otherwise; verbatim historical-chat search handle when a transcript URL was not recovered). **A source that contains interesting possible design is not automatically binding implementation authority**.
 
 **Evidence vocabulary:**
-- \`READ\` / \`READ_HEAD\`: actual source body (or its stated lead) was reopened/inspected during the source-gathering work; **not** independent scientific review.
-- \`CODE_SOURCE\`: exact historical code path and Git SHA identified; no assertion it is protected or currently executed.
-- \`FILE_LOCATED\` / \`LIBRARY_FOLDER\`: name/path verified through protected GitHub directory or native Library listing, but full original source not individually examined.
-- \`SEARCH_EXCERPT\` / \`CONVERSATION_LEAD\` / \`CHAT_HANDLE\`: previously captured chat search/summary or excerpt; **not a recovered stable ChatGPT conversation URL or a verified verbatim original**.
-- \`EXACT_RELATED\` / \`RELATED_CAUTION\`: located historical function or subsequent reception/criticism important to interpreting the architecture; not a substitute for the conceptual source.
-- \`READ_HEAD\` never means that a complete 80KB+ document was exhaustively reviewed. Dates distinguish documented original design/acceptance, Library creation/upload, archive capture and approximate chat leads.
+- `READ` / `READ_HEAD`: actual source body (or its stated lead) was reopened/inspected during the source-gathering work; **not** independent scientific review.
+- `CODE_SOURCE`: exact historical code path and Git SHA identified; no assertion it is protected or currently executed.
+- `FILE_LOCATED` / `LIBRARY_FOLDER`: name/path verified through protected GitHub directory or native Library listing, but full original source not individually examined.
+- `SEARCH_EXCERPT` / `CONVERSATION_LEAD` / `CHAT_HANDLE`: previously captured chat search/summary or excerpt; **not a recovered stable ChatGPT conversation URL or a verified verbatim original**.
+- `EXACT_RELATED` / `RELATED_CAUTION`: located historical function or subsequent reception/criticism important to interpreting the architecture; not a substitute for the conceptual source.
+- `READ_HEAD` never means that a complete 80KB+ document was exhaustively reviewed. Dates distinguish documented original design/acceptance, Library creation/upload, archive capture and approximate chat leads.
 
-**Source recovery rule:** If a GitHub link is pinned to a protected \`827714...\` blob, it is **retrievable text at that immutable cut**, not a representation of the original author's first commit. For first-commit dates consult the indicated original acceptance/branch ancestry. A ChatGPT Library path is a native Library navigator path, **not** an internet URL. For chat leads search quoted phrases in ChatGPT; avoid manufacturing \`chatgpt.com/c/...\` IDs. No duplicate files copied or survey material exposed here.
+**Source recovery rule:** If a GitHub link is pinned to a protected `827714...` blob, it is **retrievable text at that immutable cut**, not a representation of the original author's first commit. For first-commit dates consult the indicated original acceptance/branch ancestry. A ChatGPT Library path is a native Library navigator path, **not** an internet URL. For chat leads search quoted phrases in ChatGPT; avoid manufacturing `chatgpt.com/c/...` IDs. No duplicate files copied or survey material exposed here.
 
 ## Recovered-source chronology (individually locatable records)
 
