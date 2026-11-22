@@ -25,7 +25,8 @@ jobs:
           mkdir -p .spasityel-r30-proof
           python -m pytest -q -o addopts='' \
             --junitxml=.spasityel-r30-proof/junit.xml \
-            tools/pyat_c11_four_store/test_spasityel_r2_post_audit_current.py
+            tools/pyat_c11_four_store/test_spasityel_r2_post_audit_current.py \
+            tools/pyat_c11_four_store/test_spasityel_r1271_parallel_invocation.py
       - name: Always preserve first counterexample and JUnit
         if: always()
         uses: actions/upload-artifact@v4
