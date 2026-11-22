@@ -44,6 +44,8 @@ The product objective: an actual human user enters an independently existing, de
 
 **One life, two directions of construction.** Neither waits for the other to be "finished." Both revise their first-consumer requirements reciprocally, with exact source custody.
 
+> **2026-11-22 CONTROLLING CURRENT-EXPERIENCE CORRECTION / R22 (candidate).** NEIGHBOR is no longer a greenfield theory of every possible social activity. The game is the external real human's situated, potentially reciprocal encounter with one continuing historically constituted Other **because the human wants to know that person**. Her independent institutions and life are causes and conditions, not prescribed gameplay tasks. [12 CURRENT HOME](12_NEIGHBOR_THEORYMULCH_CURRENT.md) has been reconstituted around this positive spine; a single, deliberately subordinate [14 OUTSIDE-HOME BANK](14_OUTSIDE_HOME_META_PREUX_AND_GREENFIELD_HOLD.md) conserves real-human invitations, temporal-mode packaging, platform funding/privacy/content decisions, optional outside solidarity and open early ideation. Do not restore Court 9 institution-building, Court 10 flourishing evaluation, Court 5 charity, R21 failure-philosophy or prescribed dinner as the governing game merely because historical sources mentioned them. The [13 ledger](13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md) records exact dispositions and original immutable HEAD.
+
 ## Required first reading
 
 1. [Canonical SOROK OATH / PROGRAMMA](../PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md), then its [paired progress MD](../CURRENT_PROGRESS.md) and [JSON](../CURRENT_PROGRESS.json). Check exact live heads, author work, independent reviews and protected receiving. State `HQ_CURRENTNESS_HOLD` rather than counterfeit HQ authority.
