@@ -1,4 +1,79 @@
-# Current Execution Agenda — PROGRAMMA Pyat B00 (2026-11-05; ordered S0–S1 candidate)
+# PYAT — ONE EXECUTION AGENDA / WORKER PLAN WORKSPACE
+
+> **USER-AUTHORIZED DOCUMENTARY WORKSPACE RECEIVING, 2026-11-21 — NO IMPLEMENTATION OR SCIENTIFIC AUTHORITY GRANTED.**
+> **Owner of selections:** the user and competent PYAT programme/engineering owners, **not REMONT**.
+> **As-of inspection:** 2026-11-21 (documentary snapshot; refresh the source cut when the qualified worker selects actual work).
+> **Source reality before this receiving:** G4 and paired CURRENT_PROGRESS at **rev21**; this documentary receiving advances the pair to rev22 only for the workspace, not for code; candidate branches, their tests and scientific/native/source rights must be checked independently at **current exact HEAD**. The historical sections below include November 5–19 statements and **cannot be used as live orders merely because they say "current", "one plan" or "priority"**.
+>
+> **Purpose of this page:** the single place where the authorized worker **writes and maintains the actual chosen coding programme**. This repair supplies that *place and rules*; it deliberately **does not choose engineering priorities, issue a commission, import a historic proposal, or designate a new architecture**. Existing code work already lawfully commissioned continues independently.
+
+## START HERE — worker-maintained current planning front
+
+**Planning receipt** (fill/refresh when the qualified owner makes a *material* selection or the source/authority cut changes; no per-test administrative churn):
+
+| Field | Current value to be entered by authorized worker |
+| --- | --- |
+| Selected user goal and success condition | **UNFILLED — NO NEW PRIORITIES SELECTED BY THIS REPAIR** |
+| Planner / approving programme owner / engineering owners | **UNATTESTED** |
+| Last verified protected PROGRAMMA + G4 + paired progress HEAD/revision | **VERIFY BEFORE SELECTION** (workspace receipt at documentation rev22, which does not attest the HEAD of a later coding selection) |
+| Current integration PR(s) and exact source-code HEAD(s) actually being planned against | **VERIFY BEFORE SELECTION**; do not transfer test green from ancestor/different PR |
+| Existing P0 / G4 / PP26 / K3 anchors relevant to the selected work | **SELECT ONLY THE AFFECTED EXISTING IDS** |
+| Source/science/rights, native host, writer lease and independent review constraints | **GRADE PER CLAIM; UNATTESTED IS NOT PERMISSION** |
+| Programme work-order revision / date / evidence link | **WORKSPACE RECEIVED; NO WORKER PLAN SELECTED** |
+
+### Selected executable work — owned by the PYAT planner
+
+**No new coding assignment is selected by this REMONT repair.** The qualified worker enters *only genuinely chosen, currently feasible* operations here, in the user's order. Do not mechanically copy the 27 PP26 items, 49 GAPs, K3 proposals or old C0–C5 closure rows as 27+49+26 new coding tasks.
+
+| Order | Existing obligation / actual outcome | Existing producer → required first consumer | Current owner + exact code grade | Needed action / explicit hold | Positive + adverse acceptance, downstream loss if wrong |
+| --- | --- | --- | --- | --- | --- |
+| *Planner fills on selection* | *Use existing G4/P0 ID* | *Name actual source and reader* | *Use exact commit, not recollection* | *REUSE / INTEGRATE / REPAIR / BUILD / OWNER_DECISION / HELD / NO_BUILD* | *Specify both executable success and falsifier* |
+
+The italic row is a **template, not an issued task**. Remove it when the first real selection is received. One owner may commission several disjoint engineering efforts; **one plan does not mean one branch, one developer, or serial paperwork gates**.
+
+### Work-item card — copy under an actually selected row only
+
+- **Existing ID and user-selected terminal outcome:** exact P0/G4/PP26/K3 obligation; why this work is worth doing now; do not mint a parallel identifier.
+- **Actual producer / consumer / downstream consequence:** existing implementation and its **first actual reader**; where the produced data goes through Field Forge, N9/N10E/N10W, PRE-V3 or SEAM *only where the contract applies*. Preserve respondent-coherence, population/denominator, provenance, minority alternatives, unknowns, material/actor/source limitations required by that receiver; never call a survey finding causal/world/psychic truth without its own authority.
+- **Present evidence:** exact protected and candidate HEADs, relevant G4 section/component/function record, producer/consumer test and review grade, competing/recovered historical implementations already adjudicated; no unsupported "missing" inference.
+- **Smallest necessary transformation:** describe what cannot currently be done (input → operation → output) and whether reuse, composition, repair or new code is justified under **HQ-C1-010** and G4 first consultation. An unknown producer is **OWNER_DECISION**, not permission to invent one.
+- **Owner and physical/source limits:** existing lease/writer and qualified science/source/rights owner; measured compute/host requirements as applicable; hold only the affected claim.
+- **Acceptance and evidence custody:** one real positive and *same-claim* negative/severance + restore, exact-head executable command, first-consumer observation, independent reviewer, and authorized G4/paired-progress receiving. Distinguish sourcefree, native original, science and actor grades.
+- **Current disposition / next authorized handoff:** selected, running, returned, failed, reviewed, received, held or no-build; actual PR/issue + immutable SHA; no automatic retirement of historical obligations.
+
+### Non-selected, blocked, and inherited material
+
+**Not selected ≠ missing, and not yet authorized ≠ an engineering defect.** Keep unselected ideas in the *existing* G4 section/PP26/K3 evidence; put reproducible first faults in existing REMONT #1162; source-authority/operating evidence in existing P0 #1097; commissioning/cut coordination in #960. Do not duplicate those records as another live backlog here.
+
+A scientific/source/rights hold belongs to the precise claim. A storage-performance concern belongs to the existing physical owner/#1006; it must not suspend unrelated sourcefree code. A downstream SEAM need is a *contract constraint on relevant outputs*, not an excuse to manufacture people, relationships, material institutions or the full objective world upstream.
+
+### Pre-commission and return checks — use existing controls, no new tribunal
+
+1. **Task intent first:** programme repair vs engineering vs science/source issuer vs independent review. An agent asked to fix this document **must not choose new PYAT implementation work or open an unrelated code PR**.
+2. **Necessity before code:** identify exact selected row, existing G4 producer/consumer and historical fate; check the currently owned PR/branch; name first failing call or test. No registry-wide archaeology, duplicate backend, new coordinator, unrequested source revival or standalone research demonstration.
+3. **Scope and source grade:** never conflate existing code, candidate, executed tests, independent review, original-science validity and protected receiving. No accepted status from a different SHA; no unissued native/actor permission.
+4. **Material change receiving:** the authorized receiving owner reconciles **this same front**, affected **original G4 records**, and both **CURRENT_PROGRESS.md/.json** as one actual receiving transition, with correct version/HEAD and independently inspected claim-specific evidence. A draft branch is not the protected tree; report a scoped `HQ_CURRENTNESS_HOLD` when exact authority is missing.
+5. **Adversarial continuation:** a fresh worker must be able to find the selected task and why it exists, refuse a historical duplicate, avoid off-mission branching, and name a runnable falsifier without rereading the whole archive. Existing receiving checkers may verify source-cut/paired parity; human independent review still checks substantive necessity. Do not make checker maintenance the prerequisite for doing lawful coding.
+
+### Existing surfaces — **roles**, not rival plans
+
+| Existing surface | Sole role here |
+| --- | --- |
+| [PROGRAMMA PYAT](../00_PROGRAMMA_PYAT.md) and [G4 first consultation](README.md) / original INDEX, FUNCTION_PARITY, COMPONENT_STATUS, SEAM records | Oath, authority, existing functional capital and evidence-grade map — **not automatic selection of every gap** |
+| **This file**, top worker-maintained section | The **single ordered work-selection programme**, filled by authorized worker; historical sections below are evidence |
+| [PYAT P0 #1097](https://github.com/maidiu/rawlsing/issues/1097), [execution coordination #960](https://github.com/maidiu/rawlsing/issues/960), [physical economics #1006](https://github.com/maidiu/rawlsing/issues/1006) | Operating acceptance and real work-state/owner evidence; not independent competing master schedules |
+| [REMONT #1162](https://github.com/maidiu/rawlsing/issues/1162) | Reproducible defects, exact first-fault runs and repair disposition; **REMONT does not select PYAT's global plan** |
+| [Existing ONE PLAN PR #1148](https://github.com/maidiu/rawlsing/pull/1148) | Historical draft that supplied this repaired front; the current protected file receives ONLY the workspace, not the other eight draft-file edits |
+| [#1158](https://github.com/maidiu/rawlsing/pull/1158), [#1243](https://github.com/maidiu/rawlsing/pull/1243), [#1245](https://github.com/maidiu/rawlsing/pull/1245), [#1247](https://github.com/maidiu/rawlsing/pull/1247) | Distinct **candidate code/evidence** lineages; compare exact HEADs and no-drop overlaps under existing owners, never equate with current protected implementation |
+| [PYAT CURRENT_PROGRESS.md](../../CURRENT_PROGRESS.md) / [CURRENT_PROGRESS.json](../../CURRENT_PROGRESS.json) | Paired **accepted-state** receiving record, not a second backlog |
+
+---
+
+## HISTORICAL REQUIREMENTS AND SUPERSEDED AUTHOR-PROPOSED WORK ORDERS — PRESERVED IN FULL
+
+**Boundary rule:** Everything below this line preserves inherited intentions, research, source/code reports, dated ordering and unfinished obligations. It may be indispensable evidence. **None of its old "current", "must build next", "overriding priority", C0–C5 or GAP wording is presently an issued construction order just by appearing below.** A qualified owner must first select the specific operation into the current worker-maintained table above with actual source, consumer, scientific/rights constraints and executable proof. This boundary does **not** retroactively revoke any independently accepted requirement or user directive; higher-priority current user and PROGRAMMA authority remain controlling.
+
+### Historical B00 agenda (2026-11-05; archived order, never automatic current commission)
 
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — user-selected product-science and evidence-completion obligations (CANDIDATE)
 
