@@ -1,0 +1,215 @@
+"""Common research read-models; dictionaries on disk are intentionally JSON-addressable.
+These data classes are output interfaces, NOT a new SOROK canonical ontology.
+"""
+from dataclasses import dataclass, field, asdict
+from typing import Any
+import hashlib, json
+
+GRADE = 'SOURCEFREE_RESEARCH_PROVISIONAL'
+
+
+def canonical(x: Any) -> str:
+    return json.dumps(x, ensure_ascii=False, sort_keys=True, separators=(',', ':'), allow_nan=False)
+
+
+def digest(x: Any) -> str:
+    return hashlib.sha256(canonical(x).encode('utf-8')).hexdigest()
+
+
+def copy(x):
+    return json.loads(canonical(x))
+
+
+def stable_id(prefix: str, value: Any) -> str:
+    return prefix + '_' + digest(value)[:16]
+
+
+@dataclass
+class AccessibleEncounter:
+    actor: str
+    world_clock: int
+    location: str
+    cues: list[dict]
+    affordances: list[str]
+    access_receipts: list[str]
+    inaccessible_count: int = 0
+
+
+@dataclass
+class Constitution:
+    actor: str
+    clock: int
+    body: dict
+    forms: dict
+    links: list[dict]
+    projects: list[dict]
+    activity_links: list[dict]
+    memories: list[dict]
+    traces: list[dict]
+    other_models: dict
+    self_model: dict
+    relations: list[dict]
+    unknowns: list[str]
+    history_refs: list[str] = field(default_factory=list)
+    # Objective actor attributes from the ledger; these are not acquired
+    # self-concepts, privileged psychic histories or a mature-life destiny.
+    role: str | None = None
+    age_days: int | None = None
+    source_grade: str = GRADE
+    composition_methods: list[dict] = field(default_factory=list)
+    relational_motifs: list[dict] = field(default_factory=list)
+    # Sourcefree qualified history: neither an unfinished possible end nor
+    # a signal path is a motive, self-knowledge, or invented counterfactual.
+    possible_ends: list[dict] = field(default_factory=list)
+    evidence_paths: list[dict] = field(default_factory=list)
+    expectations: list[dict] = field(default_factory=list)
+    participation_history: list[dict] = field(default_factory=list)
+    functional_bindings: list[dict] = field(default_factory=list)
+    power_exercises: list[dict] = field(default_factory=list)
+    notice_exposures: list[dict] = field(default_factory=list)
+    object_encounters: list[dict] = field(default_factory=list)
+    material_investments: list[dict] = field(default_factory=list)
+    practice_exposures: list[dict] = field(default_factory=list)
+    undergone_care_periods: list[dict] = field(default_factory=list)
+    co_regulation_orientations: list[dict] = field(default_factory=list)
+    experienced_care_events: list[dict] = field(default_factory=list)
+    performed_feeding_events: list[dict] = field(default_factory=list)
+    institutional_expectations: list[dict] = field(default_factory=list)
+    material_dependency_encounters: list[dict] = field(default_factory=list)
+    historical_orientations: list[dict] = field(default_factory=list)
+    labor_dependency_encounters: list[dict] = field(default_factory=list)
+    lived_genesis_episodes: list[dict] = field(default_factory=list)
+    joint_practices: list[dict] = field(default_factory=list)
+    care_contribution_episodes: list[dict] = field(default_factory=list)
+    care_practical_commitments: list[dict] = field(default_factory=list)
+    cultural_demonstrations: list[dict] = field(default_factory=list)
+    cultural_reference_practices: list[dict] = field(default_factory=list)
+    vocal_turn_experiences: list[dict] = field(default_factory=list)
+    vocal_coordination_practices: list[dict] = field(default_factory=list)
+
+
+@dataclass
+class Situated:
+    actor: str
+    clock: int
+    recruited: list[dict] = field(default_factory=list)
+    dormant: list[str] = field(default_factory=list)
+    inhibited: list[str] = field(default_factory=list)
+    currents: list[dict] = field(default_factory=list)
+    accessible_cues: list[dict] = field(default_factory=list)
+    candidate_actions: list[dict] = field(default_factory=list)
+    disagreements: list[dict] = field(default_factory=list)
+    readset: list[str] = field(default_factory=list)
+    unknowns: list[str] = field(default_factory=list)
+    antagonisms: list[dict] = field(default_factory=list)
+    suspended_actions: list[dict] = field(default_factory=list)
+    learned_compositions: list[dict] = field(default_factory=list)
+    attention_frame: dict = field(default_factory=dict)
+
+
+@dataclass
+class Attempt:
+    actor: str
+    action: str
+    target: str | None = None
+    object_ref: str | None = None
+    means: list[str] = field(default_factory=list)
+    basis: list[str] = field(default_factory=list)
+    intention: str = ''
+    # Actor-selected project purpose is separate from the pooled reasons why
+    # a physical operation was eligible. None is a lawful first attempt.
+    purpose_selection: dict = field(default_factory=dict)
+    # Private actor-policy decision identity; world executes only action/target/object.
+    practical_selection: dict = field(default_factory=dict)
+    scene_hash: str = ''
+    grade: str = GRADE
+
+    def document(self):
+        return asdict(self)
+
+
+@dataclass
+class Resolution:
+    status: str
+    performed: list[dict]
+    world_delta: dict
+    personal_effects: dict
+    witnesses: list[str]
+    objective_description: str
+    grade: str = GRADE
+
+
+def newborn(actor_id: str, name: str, location: str = 'home') -> dict:
+    return {
+        'id': actor_id, 'name': name, 'role': 'child', 'age_days': 0,
+        'location': location,
+        'body': {'nutrition': .78, 'rest': .78, 'comfort': .66, 'pain': 0.0,
+                 'arousal': .40, 'motor': .17, 'sensor': .40, 'language': 0.0,
+                 'illness': 0.0, 'regulation': .28},
+        'forms': {}, 'links': [], 'projects': [], 'activity_links': [], 'composition_methods': [], 'relational_motifs': [], 'activity_history': [],
+        'possible_ends': [], 'evidence_paths': [], 'expectations': [],
+        'participation_history': [], 'functional_bindings': [],
+        'power_exercises': [], 'notice_exposures': [],
+        'object_encounters': [], 'material_investments': [],
+        'practice_exposures': [],
+        'undergone_care_periods': [], 'co_regulation_orientations': [],
+        'experienced_care_events': [],
+        'performed_feeding_events': [],
+        'institutional_expectations': [],
+        'material_dependency_encounters': [],
+        'historical_orientations': [],
+        'labor_dependency_encounters': [],
+        'lived_genesis_episodes': [],
+        'joint_practices': [],
+        'care_contribution_episodes': [],
+        'care_practical_commitments': [],
+        'cultural_demonstrations': [],
+        'cultural_reference_practices': [],
+        'vocal_turn_experiences': [],
+        'vocal_coordination_practices': [],
+        'memories': [], 'traces': [],
+        'other_models': {}, 'self_model': {}, 'unknowns': ['adult_purpose', 'adult_ideology'],
+        'grade': GRADE, 'history_refs': [], 'current_activity': None,
+    }
+
+
+def adult(actor_id: str, name: str, location='home', age_days=30 * 365) -> dict:
+    a = newborn(actor_id, name, location)
+    a['role'] = 'adult'; a['age_days'] = age_days
+    a['body'].update({'motor': .84, 'sensor': .85, 'language': .90, 'regulation': .68,
+                      'rest': .75, 'comfort': .76})
+    a['unknowns'] = ['complete_life_history', 'objective_private_respondent_psyche']
+    return a
+
+
+def blank_world(world_id='w1'):
+    return {'id': world_id, 'clock': 0, 'positions': {},
+            'sites': {'home': {'food': 12, 'stock': 8, 'access': 'public',
+                           'shared_household_food':True,
+                           'mutual_aid_food':0,
+                           'provisioning_rule':'PROPORTIONAL_DECLARED_CLAIMS_R1'},
+                      'workshop': {'food': 1, 'stock': 5, 'access': 'public',
+                                   'controller':'workshop_steward', 'food_price':1.0},
+                      'hall': {'food': 0, 'stock': 2, 'access': 'controlled'}},
+            'relations': {}, 'accounts':{'workshop_steward':12.0},'material_claims':[],
+            'institutions': {'workshop_steward':{'controls':'workshop','wage':.25,'claims_output':True},'hall_board': {'controls': 'hall', 'members': [], 'rule': 'hall_permission',
+                'petition_procedure':{'id':'HALL_PUBLIC_PETITION_R1',
+                    'enabled':True,'quorum':2,'posted_at':['home','workshop'],
+                    'subject':'hall_access','effect':'PUBLIC_ON_QUORUM'},
+                'hall_petition_signatures':[], 'rule_history':[]}},
+            'cues': [], 'historical_periods': [], 'public_history': [],
+            'social_reproductive_labor': [],
+            'material_provisioning_periods': [],
+            'material_feeding_events': [],
+            'food_control_concessions': {},
+            'work_regimes': {},
+            'food_commons_history': [],
+            'scheduled_obligations': [],
+            'positioned_material_records': [],
+            'institutional_access_rules': [],
+            'material_gate_audit': [],
+            'routine_source_registry': {},
+            'public_notices': [],
+            'material_objects': {},
+            'ambient': {'work_shifts': {}, 'material_prices': {'food': 1}, 'weather': 'ordinary'},
+            'grade': GRADE}
