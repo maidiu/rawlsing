@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 from pathlib import Path
 import re
 import shutil
@@ -18,6 +19,11 @@ AGENDA = "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.m
 OATH_END = "<!-- HQ_OATH_R2_FIRST_CONTACT_END -->"
 OATH_FRONT_HEADER = "# HQ OATH — PROGRAMMA FIRST CONTACT\n"
 OATH_BODY_WINDOW = 4096  # from after first mandatory OATH, not from byte zero
+# Full frozen HQ OATH prefix (start through END, UTF-8 SHA256). A title + END
+# marker alone is NOT evidence that the mandatory source text survives.
+# Any authorized OATH revision must update this anchor and all three fronts
+# together, with a distinct source/semantic receiving decision.
+OATH_PREFIX_SHA256 = "ac589c0c918a034c6f54db194abb94ea7b54fa90f5538d025842dd4a7b308dd2"
 
 FRONT = (
     "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
@@ -72,6 +78,9 @@ def validate(root: Path) -> list[str]:
                 or oath_at < 0 or oath_at > 12000):
             errors.append("front door canonical first-contact OATH missing: " + rel)
         else:
+            oath_prefix = body[:oath_at + len(OATH_END)]
+            if hashlib.sha256(oath_prefix.encode("utf-8")).hexdigest() != OATH_PREFIX_SHA256:
+                errors.append("front door canonical first-contact OATH body changed: " + rel)
             subsequent = body[oath_at + len(OATH_END):
                               oath_at + len(OATH_END) + OATH_BODY_WINDOW]
             if MARKER not in subsequent or LENS not in subsequent:
@@ -125,19 +134,27 @@ def self_test() -> None:
         # checks the header and end marker and can accidentally accept this.
         # The first 1600 characters preserve the separate CURRENT status check,
         # while the true OATH body is silently replaced by an early end marker.
-        import hashlib
         original_oath = before[:before.index(OATH_END) + len(OATH_END)]
-        print("SOURCE_OATH_SHA256 " +
-              hashlib.sha256(original_oath.encode("utf-8")).hexdigest())
+        if hashlib.sha256(original_oath.encode("utf-8")).hexdigest() != OATH_PREFIX_SHA256:
+            raise AssertionError("canonical source oath digest mismatch")
         sorok.write_text(before[:1600] + OATH_END
                          + before[before.index(OATH_END) + len(OATH_END):],
                          encoding="utf-8")
         if not validate(temp):
             raise AssertionError("truncated canonical OATH body was accepted")
+        # A small interior mutation must also be detected even if length,
+        # header, END marker, and exact product text all survive.
+        altered = before.replace("perpetual and nondelegable",
+                                 "optional and transferable", 1)
+        if altered == before:
+            raise AssertionError("OATH tamper setup did not change text")
+        sorok.write_text(altered, encoding="utf-8")
+        if not validate(temp):
+            raise AssertionError("interior canonical OATH body tamper was accepted")
         sorok.write_text(before, encoding="utf-8")
         if validate(temp):
             raise AssertionError("restored Sorok front still fails")
-    print("PASS negative self-test: missing row, missing/remote product question, and first-contact oath independently rejected")
+    print("PASS negative self-test: missing row, remote product question, missing OATH, truncated OATH and interior OATH tamper rejected")
 
 
 def main() -> int:
