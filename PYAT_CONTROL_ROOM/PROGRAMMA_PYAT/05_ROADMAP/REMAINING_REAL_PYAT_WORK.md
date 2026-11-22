@@ -7,6 +7,8 @@
 >
 > **Purpose of this page:** the single place where the authorized worker **writes and maintains the actual chosen coding programme**. This repair supplies that *place and rules*; it deliberately **does not choose engineering priorities, issue a commission, import a historic proposal, or designate a new architecture**. Existing code work already lawfully commissioned continues independently.
 
+> **R23 CONDITIONAL RECEIVING (2026-11-21):** The 94 in-place status annotations below were independently inspected for exact 132,615-character historical reconstruction at #1285 reviewed `464c6fb59880d89baec4760f33ace46ad53f1feb`. They become **protected documentary currentness evidence only after** authorized #1285 merge and paired rev23/G4/checker readback on designated PRE-MAIN; otherwise they remain candidate claims. They do **not** retire an inherited scientific/source/actor obligation, select the unfilled worker tasks, choose a storage architecture or transform recorded-only original I03 counts into eligible-population inference. The reviewer did not attest a distinct authenticated GitHub principal or original native data; no scientific or independent technical G5 claim arises.
+
 ## START HERE — worker-maintained current planning front
 
 **Planning receipt** (fill/refresh when the qualified owner makes a *material* selection or the source/authority cut changes; no per-test administrative churn):
@@ -69,6 +71,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ---
 
+> **R23 CURRENTNESS CORRECTION — DOCUMENTARY CANDIDATE ONLY; protected source `a80f60d62d6ed0b8009c2d571b3e9d3dc3633e31` (2026-11-21):** This very file now stamps every historical PP26-01–27, A01–16, GAP-001–049 and GAP-ADD-A01/A02 obligation **in place**. The original dated explanations remain for historical provenance, but their outdated present-tense missing-code and priority claims are superseded only at the exact identified scope. **None of these 94 identities is an automatic coding commission.** Keep the worker-selected table unfilled until a competent owner chooses actual work. This change issues no source, native, scientific, actor, G5, protected receiving or architecture rights.
+
+> **Controlling factual updates:** [#696](https://github.com/maidiu/rawlsing/pull/696) A16 historical receiving: final [independent B08 S0–S1 ACCEPT at exact `915b17ab...`](https://github.com/maidiu/rawlsing/blob/4634c37e10183a0765c543f3893cc6322a28804a/WORKER_RETURNS/PROGRAMMA_PYAT_B08_C8_INDEPENDENT_HOSTILE_696_RECEIVING_20261105_R1/08_FINAL_EXACT_HEAD_915B17_RECEIVING_ACCEPT.md), then protected merged `a02cd4e...` (after **two earlier REVISE** outcomes); [#896](https://github.com/maidiu/rawlsing/pull/896) GAP-038/PP26-20 missing materializer import repaired and protected at `b7ffe3bb...`; A03 historic `git archive` replaced by protected repository-owned `sourcefree_world` in `pre553_universal_world_binding.py` blob `fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d`. [#998 actual SRC04/SRC16 receipts](https://github.com/maidiu/rawlsing/issues/998#issuecomment-7066703848) establish **two recorded-response-only original native I03 results**, not asked/eligible, designs, I05/Batch, all35 or N11. [#1006](https://github.com/maidiu/rawlsing/issues/1006) is comparing four *existing experimental physical arms*, but **does not yet override** the earlier PP26-08 user-selected Parquet primary-release requirement without real original matched evidence and competent explicit architecture decision. Current [#960](https://github.com/maidiu/rawlsing/issues/960) priority is economical generic C11 then joined #998 before bulk all35.
+
+> **Status stamps:** `EXISTS/PARTIAL` = actual bounded code/proof exists, full original terminal requirement open; `OPEN` = stated source/consumer/science evidence still missing; `IF_SELECTED` = conditionally justified, **NO_BUILD by default**; `FIXED/SUPERSEDED` = only the named old defect/order concluded, not downstream authority; `OWNER_DECISION` = unresolved genuinely conflicting selected intent. These are source-grade adjudications pending nonauthor/authorized receiving, not accepted source/native performance or new tests.
+
+> **R23 AUTHOR SOURCEFREE CHECKER REPAIR, ALSO CANDIDATE:** [The existing PP26 visibility verifier](../../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py) previously insisted that all three HQ front doors show the exact product question in the first 2,600 bytes, but the mandatory opening HQ OATH ends only at byte 10,086. At protected rev22, the actual question appears just after the OATH (roughly bytes 10,773–13,409); the old rule was **structurally incapable of passing**. The existing verifier now checks its exact question and marker within the first 4,096 characters **after the mandatory intact OATH**; extra hostile self-tests refuse missing OATH and far-away fake duplicates. This corrects **an inherited false-negative CI guard without removing any gate, moving the OATH, modifying front doors, changing product code or issuing source rights**. The repair is staged with the R23 hygiene PR until competent independent documentary receiving.
+
+> **R23 EXACT-HEAD DOCUMENTARY VALIDATOR FIRST-FAULT COURT (AUTHOR):** [Actions 44985774113](https://github.com/maidiu/rawlsing/actions/runs/44985774113) at `a895685d3db5b6de58700a420b972d81d0618fe8` reproduces a real false pass: the existing OATH check admitted a front with its full binding body cut away after 1600 chars while preserving title, END marker and product question. The new hostile self-test consequently failed red with `AssertionError: truncated canonical OATH body was accepted`. The **existing** checker is now corrected at `dd0734adb22d972d358c4724d483d5115c62eab0` (Git blob `5d2a9fc693ecd1a1f545e67168e073a5f34754c0`): the frozen original 10,123-character OATH prefix is SHA256-pinned as `ac589c0c918a034c6f54db194abb94ea7b54fa90f5538d025842dd4a7b308dd2` and interior mutation and total truncation are independently refused. The exact product question remains required in the immediate 4096-character post-OATH segment; all other controls preserved. **This remains an author sourcefree patch, not independent review or protected receiving.**
+
 ## INHERITED REQUIREMENTS, EVIDENCE AND DATED WORK-ORDER PROPOSALS — PRESERVED IN FULL
 
 **Boundary rule:** Everything below this line preserves inherited intentions, **potentially still-binding requirements and unresolved obligations**, research, source/code reports, and dated ordering. **No requirement is retired or declared satisfied by being moved below this heading.** Only the claim that an old priority list automatically determines today's coding order is withdrawn. It may be indispensable evidence. **None of its old "current", "must build next", "overriding priority", C0–C5 or GAP wording is presently an issued construction order just by appearing below.** A qualified owner must first select the specific operation into the current worker-maintained table above with actual source, consumer, scientific/rights constraints and executable proof. This boundary does **not** retroactively revoke any independently accepted requirement or user directive; higher-priority current user and PROGRAMMA authority remain controlling.
@@ -89,35 +101,35 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 **These PP26 IDs are navigation aliases bound to their original S01–S11 owners, not replacement canonical requirements. Each future BUILD/REPAIR/REVIEW commission must expand the applicable row into an actual MCR-C frozen source/operation/count contract with exact outputs, a discriminating positive and negative test, first consumer and independent receiving.**
 
-| Alias / native section | Current evidence limit | Required executable outcome | Positive and negative completion test |
-| --- | --- | --- | --- |
-| **`PP26-01`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — All35 original source custody and rights | 35-source/18,413-slot prepared custody and partial historical native evidence, NOT full source permission | Bind byte-identical source, instrument, respondent/roster, field scope, rights and exception at every original35 first reader | PASS 35/35 source/use/exception decisions; RED substituted source or fabricated eligibility |
-| **`PP26-02`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Original codebook and administration to projection | Physical decoder preserves labels/storage; GovernedC11Projection requires caller-owned semantics | Prove response options, routing, missingness, repetition and respondent identity from real source documentation through projection to C11/I03 | PASS source value-to-result trace; RED ambiguous source codes guessed from labels |
-| **`PP26-03`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Historical QSM, relation/directionality and canonical registry actually selected | August QSM R1 18,518 rows/3,196 units/4,438 implementations, 41 structural blocked; V550 resolver real; current PRE553 consumption unproved | Trace each applicable question/authority relation into actual projection, prospective operations, F6/F7 and first consumers with explicit blocked exceptions | PASS selected rule/value changes consumer output/refusal; RED historical QSM file present yet silently ignored |
-| **`PP26-04`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Semantic conservation distinct from valid C11 internal seal | I02 validates caller-declared release, not complete V550–V552J/ZAK historical rule succession | Freeze historical source question/use identities and compare applied source→semantic→operation rule ledger, positives and negatives, no-drop | PASS per-applicable-rule first-reader receipts; RED internally valid C11 wrongly labeled historically complete |
-| **`PP26-05`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Reasonable claim-graded U_item/U_unit/U_app/E_pre | R61/R03 compiler sourcefree real; original all35 issuer not proven; 5,630 B RAW includes routing-unknown cases | Allow observed-response RAW with known scope without unnecessary causal/weight demands; require design for population inference, comparability for time, and stronger basis for causal claims | PASS valid unweighted RAW despite optional missing weight; RED unknown applicability turned into certified denominator |
-| **`PP26-06`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Original35 prospective operation/payload compiler | Current compiler consumes frozen frontiers, not all historical original35 source science; B/AB/ABC planned payload was REVISE | Enumerate and issue all applicable source-specific operation IDs, feed actual F2–F4 planned payload through existing R03 into I03/I05/Batch | PASS full ID/fate and first-consumer test; RED fake planned-payload success using an unrelated injected frontier |
-| **`PP26-07`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Original physical source and selected-column cost | SAV/DTA bytes retained conditionally; PhysicalSourceIncidence transient; historical source-projection work mixed | Verify snapshot SHA, physical reader/encoding/topology and measured selected-column equality on qualified real original sources | PASS original selected cells exact at first reader; RED changed source/reader metadata or unmeasured memory overrun |
-| **`PP26-08`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Durable ParquetC11Carrier for EVERY qualified product C11 release | C11LogicalRelease seal exists, Parquet/Zstd carrier exists, persistence NOT automatic; PR #895 cold sourcefree test passes | Require trusted, authorized-host storage of sealed C11 via exact ParquetC11Carrier with hashed manifest before promising product durability/reuse; if no rights/root, return PERSISTENCE_HELD; ephemeral sourcefree tests exempt | PASS fresh process reopen and identical I03/I05 facts/replay; RED missing manifest or unauthorized storage passed as durable |
-| **`PP26-09`** [S03](SECTIONS/03_ROUTE_B_C11.md) — W03/W04 compact cold construction economics | PR #895 reuses reviewed 256-event Zstd blobs and 43-pass CI; previous native SRC10 full materialization ~146s/peak >1GiB | Reconcile compressed on-demand events, canonical Parquet storage and exact cold/warm original-source memory, CPU, I/O, cache bytes and first-consumer timings | PASS actual host-scale fact/ref/replay parity + resource budget; RED cache hides duplicated high-water full-native allocation |
-| **`PP26-10`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Cache currentness, activation, eviction and denial | Current private RAWLSING_C11_ACCELERATOR_DIR, scoped poison/revocation tests; default policy unproven | Activate durable reuse for approved production workloads with exact source, projection, authority, codec, version and currentness/retention; never global silent disk writes | PASS repeated approved warm restart and source revocation refusal; RED cache poisoning/stale authority yields a served fact |
-| **`PP26-11`** [S04](SECTIONS/04_F1_F4_EMPIRICAL.md) — Actual all35 F1–F4 joint, conditional and recursive evidence | Modern sourcefree I03/I05 and 3+-item joint path protected; original35 native first read incomplete | Issue qualified RAW/weighted operations with exact respondent coexposure, risk, zeros, missing, weights, provenance and downstream selection | PASS full original operation/consumer fact material; RED mere row counts/synthetic suite called original35 products |
-| **`PP26-12`** [S05](SECTIONS/05_LEARNED_LIFECYCLE.md) — Learned empirical product universe completeness | R05/P41 sourcefree selected-world consumer exists; complete original35 learned product fates unproved | Enumerate produced/denied/held learned products, actual first-read selection and immutable consumed product identities across all qualified source families | PASS full candidate fate conservation; RED one sourcefree demonstration called universal product coverage |
-| **`PP26-13`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Empirical pressure footprint across observed social positions | Current GT12 Q86 count bridge narrow; historical FFX A/C configuration and P(D given C) real but not current universal | Compute supported conditional redistribution/disposition complexes by position, field, source and period with support, uncertainty, minority alternatives and backoff | PASS exact changed-group contrast and consumer; RED forbid empirical distribution until causal theory or rename association causality |
-| **`PP26-14`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Selective FFX A/B/C recovery and actual ABI comparison | Historic Core A exact joint, B optional geometry, C conditional redistribution and integrated execution present at old cuts | Compare old output/grain/permission to I03/I05 current; reuse needed function only, not a universal master-carrier redesign | PASS missing old functionality demonstrated at real selected reader; RED import whole FFX stack by name without authorization |
-| **`PP26-15`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Independent position/capital and attitude/disposition spaces | Field Forge R1 two-space grammar; selected comprehensive geometric position producer not demonstrated | Model resources, occupational/educational/field location separately from attitude complexes, with disjoint ancestry, anti-circularity and uncertainty | PASS opposite position/attitude measurement source controls; RED respondent opinion determines its own objective class |
-| **`PP26-16`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Political-economic power EPR/GeoEPR and global hegemony | Historic hegemony profile explicitly demands EPR/GeoEPR when lawfully supplied; no demonstrated selected original35 group-power join | Implement exact group/institution/region/time crosswalk and local-vs-global/imperial power relations without assigning group power as a member attitude | PASS externally supported competing group/power profile and first reader; RED population majority or identity label treated as power |
-| **`PP26-17`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Hegemonic, subhegemonic and counterhegemonic evidence profiles | Historic exploratory multidimensional profile exists, not complete operative pipeline | Calculate prevalence, cross-position reach, concentration, elite alignment where proved, field-specific capital conversion, geography/time and counter-complex relationships | PASS equal prevalence but differing power relation distinct profiles; RED >50%=hegemony or minority=subaltern |
-| **`PP26-18`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Interfield contradiction, pressure and mediation | N028 theory covers buffering/deflection/amplification, capital devaluation, contradiction; historical V552 tensor empty | Model rival explanations for resistance, accommodation, domination/internalization, contradictory interests and mediating structures, conditional on relational evidence | PASS distinct social power configurations yield distinct modeled tensions/facilitation; RED correlation directly declared resistance/internalization or scalar magic score |
-| **`PP26-19`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Separate observed, experimental-model and strong-causal claims | Current structural admission requires positive exact rule; no general scientific theory issuance; descriptive outputs shouldn't be blocked by absent causal warrant | Make claim-tiered empirical and explicitly hypothetical structural products usable to N9/N10W with provenance and rival hypotheses; strong causal truth still independently governed | PASS observed/exploratory product survives absent causal permit; RED false mechanism promoted or unweighted RAW globally refused |
-| **`PP26-20`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Repair broken objective-position materializer import | Protected V557/V558 publisher imports missing file; historic source blob 3c7527d3, exact tests; PR #896 39-pass sourcefree test candidate (15 D03 materializer + 24 J04 publication hostile cases) | Independently review and protected-receive the exact K04 materializer/role/replay/typed nonpositive, preserving narrow J04 use and M2/M4 safeguards | PASS existing protected publisher imports and actual scoped use; RED fake person-to-objective bootstrap |
-| **`PP26-21`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Build position producer that materializer cannot supply | The materializer explicitly requires an already-authorized ObjectivePositionInput. W14 P02 ruled the second-position lane BLOCKED at its source cut; later W15 Q03 produced a bounded, Wright-derived `PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION` semantic-admission **candidate**, distinct from Q73A. It has neither independent actor/entity qualification nor a generalized physical source→position-fact producer; Q03 is not an accepted current PREV3POS fact. | Develop source-qualified object/role/field/capital/power position producer with identity, uncertainty, competing meanings, temporal validity and actual N9 consumer | PASS independently sourced exact position/nonpositive outcomes; RED demographic/name/position heuristic minted unproved objective social fact |
-| **`PP26-22`** [S07](SECTIONS/07_F6_FIELDS.md) — F6 cross-survey QSM and independent sample composition | Partial F6M nonpooling and W41 sourcefree views; no universal cross-field native proof | Map comparable question structures, source versions, estimands and positions; compose surveyed field profiles without artificial same-respondent pooled joint | PASS two independent sources combined as separate evidence; RED source label collision treated as identical respondent |
-| **`PP26-23`** [S08](SECTIONS/08_F7_TEMPORAL.md) — F7 cross-wave QSM and historical temporal conditions | Partial historic temporal carriers; qualified source population and question comparability unproved for all waves | Use wave-specific QSM, sample/meaning/time authority to compute compatible persistence, transformation or rupture; noncomparable remains visible | PASS comparability positive and altered-wording negative; RED same question name assumes identical measurement |
-| **`PP26-24`** [S09](SECTIONS/09_N9_WORLD.md) — N9 as-of world serving of material power relations | Protected sourcefree selected-world P41 and bounded world readers, but not native original35 current/as-of global world | Combine qualified local position, field, resource, group power, cross-field/time data into exact served objective world with as-of/currentness and uncertainty; no inventing pressures at N9 | PASS actual source-dependent different-world scene material; RED stale/fuzzy/unauthorized world or unsupported global hegemonic inference |
-| **`PP26-25`** [S10](SECTIONS/10_N10_POSSIBILITY_F8.md) — N10E/N10W progressive situated possibility with real N9 | Bounded R05/E41/P41 N10W sourcefree consumer; general N9+all35 source-science held | Serve the user product lens: what possible, facilitated, inhibited/repressed, by which forces, in contradiction with what and under what changes; conditional paths, support/uncertainty/minority | PASS actual N9+N10E matched-world conditioned possibilities; RED world mismatch or aggregate group attitude forced as destiny |
-| **`PP26-26`** [S11](SECTIONS/11_N11_N12_GATE.md) — N11 complete original35 receiving and product evidence | 62 components/82 seam/49 gaps and 25 W/P historic IDs conserved, but original35 native N11/N12 acceptance not established | Show no-drop complete original35 source/operation/product-to-first-consumer fate or hold, exact grade and independent science/product/actor owners | PASS complete immutable source and learned output identities with negative checks; RED synthetic first-reader called native universal proof |
-| **`PP26-27`** [S10](SECTIONS/10_N10_POSSIBILITY_F8.md) — Sorok V3 genuine actor-developing consumer | Separate P4/P5/P6/MIII actor code and Pyat N10W product; whole actor uptake from original35 not certified | Test N10W conditions as lived affordances, pressure, inhibition and contradiction in a particular actor's experienced history; preserve response/choice/resistance and developmental transformation | PASS altered social world changes situated actor possibilities but not dictated opinions; RED statistical population mean becomes a person fact |
+| Alias / native section | Dated evidence limit | Required terminal outcome (preserved) | Positive/negative acceptance | **R23 current source-grade status; not an order** |
+| --- | --- | --- | --- | --- |
+| **`PP26-01`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — All35 original source custody and rights | 35-source/18,413-slot prepared custody and partial historical native evidence, NOT full source permission | Bind byte-identical source, instrument, respondent/roster, field scope, rights and exception at every original35 first reader | PASS 35/35 source/use/exception decisions; RED substituted source or fabricated eligibility | **R23 SOURCE_OPEN:** 35-source roster exists; current original edition/use permission per selected first reader is not universal. |
+| **`PP26-02`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Original codebook and administration to projection | Physical decoder preserves labels/storage; GovernedC11Projection requires caller-owned semantics | Prove response options, routing, missingness, repetition and respondent identity from real source documentation through projection to C11/I03 | PASS source value-to-result trace; RED ambiguous source codes guessed from labels | **R23 MEASUREMENT_OPEN:** Decoder exists; original questionnaire/route/missing/answer-option semantics require signed source decisions. |
+| **`PP26-03`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Historical QSM, relation/directionality and canonical registry actually selected | August QSM R1 18,518 rows/3,196 units/4,438 implementations, 41 structural blocked; V550 resolver real; current PRE553 consumption unproved | Trace each applicable question/authority relation into actual projection, prospective operations, F6/F7 and first consumers with explicit blocked exceptions | PASS selected rule/value changes consumer output/refusal; RED historical QSM file present yet silently ignored | **R23 CAPITAL_EXISTS_READER_OPEN:** QSM/V550 identities are indexed; selected rules need lawful modern first-consumer proof. |
+| **`PP26-04`** [S01](SECTIONS/01_SOURCE_GOVERNANCE.md) — Semantic conservation distinct from valid C11 internal seal | I02 validates caller-declared release, not complete V550–V552J/ZAK historical rule succession | Freeze historical source question/use identities and compare applied source→semantic→operation rule ledger, positives and negatives, no-drop | PASS per-applicable-rule first-reader receipts; RED internally valid C11 wrongly labeled historically complete | **R23 HISTORICAL_PARITY_CONDITIONAL:** G4 preserves historical functions; compare only required current rule/reader semantics. |
+| **`PP26-05`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Reasonable claim-graded U_item/U_unit/U_app/E_pre | R61/R03 compiler sourcefree real; original all35 issuer not proven; 5,630 B RAW includes routing-unknown cases | Allow observed-response RAW with known scope without unnecessary causal/weight demands; require design for population inference, comparability for time, and stronger basis for causal claims | PASS valid unweighted RAW despite optional missing weight; RED unknown applicability turned into certified denominator | **R23 COMPILER_EXISTS_NATIVE_OPEN:** R01/R03 workload code exists; original U_app/administered and risk authority is not universal. |
+| **`PP26-06`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Original35 prospective operation/payload compiler | Current compiler consumes frozen frontiers, not all historical original35 source science; B/AB/ABC planned payload was REVISE | Enumerate and issue all applicable source-specific operation IDs, feed actual F2–F4 planned payload through existing R03 into I03/I05/Batch | PASS full ID/fate and first-consumer test; RED fake planned-payload success using an unrelated injected frontier | **R23 ISSUER_PARTIAL:** No new compiler; actual planned original payload to existing I03/I05/Batch consumer remains. |
+| **`PP26-07`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Original physical source and selected-column cost | SAV/DTA bytes retained conditionally; PhysicalSourceIncidence transient; historical source-projection work mixed | Verify snapshot SHA, physical reader/encoding/topology and measured selected-column equality on qualified real original sources | PASS original selected cells exact at first reader; RED changed source/reader metadata or unmeasured memory overrun | **R23 ORIGINAL_PHYSICAL_PARTIAL:** SRC04/SRC16 saved estates plus scoped recorded-only native I03 exist; generic original-byte projection and scale unproved. |
+| **`PP26-08`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Durable ParquetC11Carrier for EVERY qualified product C11 release | C11LogicalRelease seal exists, Parquet/Zstd carrier exists, persistence NOT automatic; PR #895 cold sourcefree test passes | Require trusted, authorized-host storage of sealed C11 via exact ParquetC11Carrier with hashed manifest before promising product durability/reuse; if no rights/root, return PERSISTENCE_HELD; ephemeral sourcefree tests exempt | PASS fresh process reopen and identical I03/I05 facts/replay; RED missing manifest or unauthorized storage passed as durable | **R23 OWNER_ARCHITECTURE_DECISION:** November10 Parquet-only product directive vs #1006 H/S1/S2/S3 experiments unresolved; no new primary store chosen or mandate silently rescinded. |
+| **`PP26-09`** [S03](SECTIONS/03_ROUTE_B_C11.md) — W03/W04 compact cold construction economics | PR #895 reuses reviewed 256-event Zstd blobs and 43-pass CI; previous native SRC10 full materialization ~146s/peak >1GiB | Reconcile compressed on-demand events, canonical Parquet storage and exact cold/warm original-source memory, CPU, I/O, cache bytes and first-consumer timings | PASS actual host-scale fact/ref/replay parity + resource budget; RED cache hides duplicated high-water full-native allocation | **R23 P0_ECONOMY_OPEN:** Physical implementations exist; original high-width 1/10/100 cold wall/CPU/RSS/scratch/read parity missing. |
+| **`PP26-10`** [S03](SECTIONS/03_ROUTE_B_C11.md) — Cache currentness, activation, eviction and denial | Current private RAWLSING_C11_ACCELERATOR_DIR, scoped poison/revocation tests; default policy unproven | Activate durable reuse for approved production workloads with exact source, projection, authority, codec, version and currentness/retention; never global silent disk writes | PASS repeated approved warm restart and source revocation refusal; RED cache poisoning/stale authority yields a served fact | **R23 CACHE_CURRENTNESS_OPEN:** Sourcefree cache/negative implementations exist; lawful multi-session original grant/revocation needs proof. |
+| **`PP26-11`** [S04](SECTIONS/04_F1_F4_EMPIRICAL.md) — Actual all35 F1–F4 joint, conditional and recursive evidence | Modern sourcefree I03/I05 and 3+-item joint path protected; original35 native first read incomplete | Issue qualified RAW/weighted operations with exact respondent coexposure, risk, zeros, missing, weights, provenance and downstream selection | PASS full original operation/consumer fact material; RED mere row counts/synthetic suite called original35 products | **R23 F1F4_SOURCEFREE_NATIVE_OPEN:** Joint/conditioned math exists; original coexposure/eligible/weight and complete first-reader evidence open. |
+| **`PP26-12`** [S05](SECTIONS/05_LEARNED_LIFECYCLE.md) — Learned empirical product universe completeness | R05/P41 sourcefree selected-world consumer exists; complete original35 learned product fates unproved | Enumerate produced/denied/held learned products, actual first-read selection and immutable consumed product identities across all qualified source families | PASS full candidate fate conservation; RED one sourcefree demonstration called universal product coverage | **R23 LEARNED_PARTIAL:** M1/M2/B5 sourcefree works; source-issued learned releases/real world reader incomplete. |
+| **`PP26-13`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Empirical pressure footprint across observed social positions | Current GT12 Q86 count bridge narrow; historical FFX A/C configuration and P(D given C) real but not current universal | Compute supported conditional redistribution/disposition complexes by position, field, source and period with support, uncertainty, minority alternatives and backoff | PASS exact changed-group contrast and consumer; RED forbid empirical distribution until causal theory or rename association causality | **R23 FF01_PARTIAL:** Empirical descriptive support code exists; original source/field/position-specific use not generally certified. |
+| **`PP26-14`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Selective FFX A/B/C recovery and actual ABI comparison | Historic Core A exact joint, B optional geometry, C conditional redistribution and integrated execution present at old cuts | Compare old output/grain/permission to I03/I05 current; reuse needed function only, not a universal master-carrier redesign | PASS missing old functionality demonstrated at real selected reader; RED import whole FFX stack by name without authorization | **R23 HISTORICAL_FFX_COMPARE_ONLY:** FFX A/B/C inherited; port only a missing justified real consumer function. |
+| **`PP26-15`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Independent position/capital and attitude/disposition spaces | Field Forge R1 two-space grammar; selected comprehensive geometric position producer not demonstrated | Model resources, occupational/educational/field location separately from attitude complexes, with disjoint ancestry, anti-circularity and uncertainty | PASS opposite position/attitude measurement source controls; RED respondent opinion determines its own objective class | **R23 STRUCTURAL_OWNER_IF:** Objective position/capital distinct from attitudes demands independently sourced facts. |
+| **`PP26-16`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Political-economic power EPR/GeoEPR and global hegemony | Historic hegemony profile explicitly demands EPR/GeoEPR when lawfully supplied; no demonstrated selected original35 group-power join | Implement exact group/institution/region/time crosswalk and local-vs-global/imperial power relations without assigning group power as a member attitude | PASS externally supported competing group/power profile and first reader; RED population majority or identity label treated as power | **R23 STRUCTURAL_OWNER_IF:** Institutional/class/imperial power must not be inferred from survey majority labels. |
+| **`PP26-17`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Hegemonic, subhegemonic and counterhegemonic evidence profiles | Historic exploratory multidimensional profile exists, not complete operative pipeline | Calculate prevalence, cross-position reach, concentration, elite alignment where proved, field-specific capital conversion, geography/time and counter-complex relationships | PASS equal prevalence but differing power relation distinct profiles; RED >50%=hegemony or minority=subaltern | **R23 STRUCTURAL_OWNER_IF:** Hegemony demands independent power/institution/field relations, not prevalence alone. |
+| **`PP26-18`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Interfield contradiction, pressure and mediation | N028 theory covers buffering/deflection/amplification, capital devaluation, contradiction; historical V552 tensor empty | Model rival explanations for resistance, accommodation, domination/internalization, contradictory interests and mediating structures, conditional on relational evidence | PASS distinct social power configurations yield distinct modeled tensions/facilitation; RED correlation directly declared resistance/internalization or scalar magic score | **R23 STRUCTURAL_OWNER_IF:** Contradiction/mediation models are hypothetical without separate material mechanism evidence. |
+| **`PP26-19`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Separate observed, experimental-model and strong-causal claims | Current structural admission requires positive exact rule; no general scientific theory issuance; descriptive outputs shouldn't be blocked by absent causal warrant | Make claim-tiered empirical and explicitly hypothetical structural products usable to N9/N10W with provenance and rival hypotheses; strong causal truth still independently governed | PASS observed/exploratory product survives absent causal permit; RED false mechanism promoted or unweighted RAW globally refused | **R23 CLAIM_GRADE_OPEN:** Keep OBSERVED empirical distinct from EXPLICIT_EXPERIMENTAL and STRONG_CAUSAL; RAW not globally blocked. |
+| **`PP26-20`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Repair broken objective-position materializer import | Protected V557/V558 publisher imports missing file; historic source blob 3c7527d3, exact tests; PR #896 39-pass sourcefree test candidate (15 D03 materializer + 24 J04 publication hostile cases) | Independently review and protected-receive the exact K04 materializer/role/replay/typed nonpositive, preserving narrow J04 use and M2/M4 safeguards | PASS existing protected publisher imports and actual scoped use; RED fake person-to-objective bootstrap | **R23 OLD_IMPORT_FIXED:** PR896 merged b7ffe3bb; protected materializer blob 3c7527d3 now imported by publisher blob 7d2a5dbb; original qualified input separate PP26-21. |
+| **`PP26-21`** [S06](SECTIONS/06_FIELD_FORGE_F5.md) — Build position producer that materializer cannot supply | The materializer explicitly requires an already-authorized ObjectivePositionInput. W14 P02 ruled the second-position lane BLOCKED at its source cut; later W15 Q03 produced a bounded, Wright-derived `PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION` semantic-admission **candidate**, distinct from Q73A. It has neither independent actor/entity qualification nor a generalized physical source→position-fact producer; Q03 is not an accepted current PREV3POS fact. | Develop source-qualified object/role/field/capital/power position producer with identity, uncertainty, competing meanings, temporal validity and actual N9 consumer | PASS independently sourced exact position/nonpositive outcomes; RED demographic/name/position heuristic minted unproved objective social fact | **R23 OBJECTIVE_INPUT_OPEN:** Materializer cannot produce authorized source/objective position facts or world science. |
+| **`PP26-22`** [S07](SECTIONS/07_F6_FIELDS.md) — F6 cross-survey QSM and independent sample composition | Partial F6M nonpooling and W41 sourcefree views; no universal cross-field native proof | Map comparable question structures, source versions, estimands and positions; compose surveyed field profiles without artificial same-respondent pooled joint | PASS two independent sources combined as separate evidence; RED source label collision treated as identical respondent | **R23 F6_CODE_PARTIAL:** Fréchet bounds/candidates exist; independent population/estimand rights and N9 first reader open. |
+| **`PP26-23`** [S08](SECTIONS/08_F7_TEMPORAL.md) — F7 cross-wave QSM and historical temporal conditions | Partial historic temporal carriers; qualified source population and question comparability unproved for all waves | Use wave-specific QSM, sample/meaning/time authority to compute compatible persistence, transformation or rupture; noncomparable remains visible | PASS comparability positive and altered-wording negative; RED same question name assumes identical measurement | **R23 F7_CODE_PARTIAL:** Temporal comparator exists; original wave comparability/qualified world time reader open. |
+| **`PP26-24`** [S09](SECTIONS/09_N9_WORLD.md) — N9 as-of world serving of material power relations | Protected sourcefree selected-world P41 and bounded world readers, but not native original35 current/as-of global world | Combine qualified local position, field, resource, group power, cross-field/time data into exact served objective world with as-of/currentness and uncertainty; no inventing pressures at N9 | PASS actual source-dependent different-world scene material; RED stale/fuzzy/unauthorized world or unsupported global hegemonic inference | **R23 N9_SOURCEFREE_PARTIAL:** Selected-world/current clocks exist; actual original objective material world publication open. |
+| **`PP26-25`** [S10](SECTIONS/10_N10_POSSIBILITY_F8.md) — N10E/N10W progressive situated possibility with real N9 | Bounded R05/E41/P41 N10W sourcefree consumer; general N9+all35 source-science held | Serve the user product lens: what possible, facilitated, inhibited/repressed, by which forces, in contradiction with what and under what changes; conditional paths, support/uncertainty/minority | PASS actual N9+N10E matched-world conditioned possibilities; RED world mismatch or aggregate group attitude forced as destiny | **R23 N10W_SOURCEFREE_PARTIAL:** Sourcefree selected N9+N10E/walkback exists; real original same-world source-qualified read missing. |
+| **`PP26-26`** [S11](SECTIONS/11_N11_N12_GATE.md) — N11 complete original35 receiving and product evidence | 62 components/82 seam/49 gaps and 25 W/P historic IDs conserved, but original35 native N11/N12 acceptance not established | Show no-drop complete original35 source/operation/product-to-first-consumer fate or hold, exact grade and independent science/product/actor owners | PASS complete immutable source and learned output identities with negative checks; RED synthetic first-reader called native universal proof | **R23 N11_OPEN:** N11 artifacts not independent original35 acceptance, applicability/reader evidence incomplete. |
+| **`PP26-27`** [S10](SECTIONS/10_N10_POSSIBILITY_F8.md) — Sorok V3 genuine actor-developing consumer | Separate P4/P5/P6/MIII actor code and Pyat N10W product; whole actor uptake from original35 not certified | Test N10W conditions as lived affordances, pressure, inhibition and contradiction in a particular actor's experienced history; preserve response/choice/resistance and developmental transformation | PASS altered social world changes situated actor possibilities but not dictated opinions; RED statistical population mean becomes a person fact | **R23 SOROK_BOUNDARY:** PYAT upstream data only; actor/dyad/child becoming belongs to SOROK and distinct N12 permission. |
 
 **Historical branch genealogy matters here.** D03's owner/contract branch `agent/rabochii-prev3-w2-d03-objective-position-owner-r1` allocated exact semantic/producer/role/source/currentness authority, without code. K04's still-present branch `agent/rabochii-prev3-w9-k04-position-publication-implementation-r1` contains exact implementation Git blob `3c7527d3129387e8fd010b56dc981cf2e12542f7`, 15 D03 tests (`2e4d0d950444587c966384cb1c3dd47b34ea86f1`) and 24 J04 hostile publication tests (`bf48e285d716d06c2dcedbc4c72231be7c5935cc`); producer court was historical PASS, central PR #367 deliberately closed unmerged. W14 P02's search reported second distinct structural-position owner missing, whereas **later** W15 Q03 `agent/rabochii-prev3-w15-q03-m10-second-objective-position-r1` admitted one *semantic candidate* from Wright's class-relational analysis, **not an actor-indexed position fact**. `Q03_ADMISSION_CURRENT != PREV3POS_FACT_CURRENT != CURRENT_WORLD_TRUTH`; its required productive asset control, active wage relation, exact counterpart and institutional rules remain to be evidenced at the same source/actor/time grain. These are distinct frozen fates, not contradictory contemporaneous results. No broad mechanized class producer exists merely because Q03 semantics were proposed. See existing `PP26-20` and `PP26-21` for integration and the actual missing product.
 
@@ -186,12 +198,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A01 — R53 wrong-condition/negative-state and no-duplicate court (C1)
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A01` / `HISTORICAL_FALSIFIER_RETAIN`:** R53 wrong-condition/zero negatives remain tests; first compare protected R08/R118/P41, no duplicate engine. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S04.5/S09.4/S10.2–.4`, `GAP-020/041/043/044`, `S-F1F4/S-SERVE/S-POSS`, `ASTRA:REQ:N9:N10W` **AND** `ASTRA:REQ:N10E:N10W`; **P0a**, wrong evidence could falsely support a generated world.
 - **Last source/negative; code/consumer:** Historical J42 `f53cb0d2bce52640268c844c398bbd8007d28edc` and P41 `f27d1101048638bba395143a48efb7ef00bfcda4` did 84 sourcefree joins/252 steps; R53 P53T branch `agent/rabochii-pyat-r53-p53t-native-sourcefree-defect-reproduction-r1` actually returned `Y|(A=1)` for requested `Y|(C=1)`, and optimistic ZERO_SUPPORT/absent structural, G50 ID/Y, administered=false and duplicate-occurrence defects. Protected `pre553_universal_world_binding.select_r05_world_view` executes pinned P41; J42 is executed by a protected **test**, not an operative producer. Later R01/R03/R08 accepted sourcefree code is present; current immunity is not proved by historical chronology.
 - **Missing proof/gates/reverse:** Current first reader must reject wrong exact conditioner ID AND typed value, invalid/zero/absent statuses and model mismatch. Compare R08 C2/R118 C9 and existing compositions before any repair; actual `S-SERVE/S-POSS` only unlocks N10W→N11 when both selected N9 and N10E MUST inputs hold, never actor rights.
 - **Eligibility/owner/action/done:** **Parallel S0–S1** C1 independent history/current first-consumer evaluation; no code, source issuance, own review or protected merge. [C1](../../../WORKER_COMMISSIONS/PROGRAMMA_PYAT_F2F4_GF1_RECOVERY_20261105_R1/01_INDEPENDENT_LOSSLESS_SUCCESSION_AND_FIRST_CONSUMER_COURT.md) five-test matrix. **Done:** scoped historical RED preserved, exact current falsifier and NO_BUILD/CONNECT/REPAIR decision with genuine reader.
 
 ### A02 — R08 accepted binder to P41/N10W first consumer (C2)
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A02` / `R08_EXISTS_CONSUMER_OPEN`:** Binder and typed reader already exist; actual selected N10W correct value/identity negative proof required. **No authority or production adoption implied.**
 
 - **IDs/terminal:** `S04.5/S05.4/S09.4/S10.1–.3`, `GAP-020/024/041–044`, `S-SERVE/S-POSS`; **P0a**, incorrect evidence association/typed-zero success poisons N10W.
 - **Last source/negative; code/consumer:** Protected `pre553_universal_evidence_binding.py` blob `3ca860e409f1d063da4cd03dd1691a89c67333f6` matches R61 R08 R8 independent `ACCEPT_SCOPED_LOCAL` `2937966b3fc2388c8853bce2b984fb0cbfcdfa12`; signed K, EvidenceConsumerReader, replay and typed refusal exist. R2 static audit of 154 non-test protected Python files found **no direct external R08 importer** (dynamic/external unknown). `select_r05_world_view` consumes P41, not demonstrated R08; P53T C-vs-A and ZERO_SUPPORT negatives remain historical.
@@ -200,12 +216,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A03 — R118 reviewed branch and P41 cold-install portability (C9)
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A03` / `GIT_ARCHIVE_DEPENDENCY_SUPERSEDED`:** Protected world binding blob fdda8b2f imports repository-owned sourcefree_world with hash check, not donor git archive; native N9/N10W still open. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S09.4/S10.2–.4/S11.2/.4`, `GAP-041/043–045/047/048`, `S-SERVE/S-POSS`, both N9/N10E→N10W MUST edges; **P0a**, historical Git-object executable dependence makes operative PRE-MAIN nonportable.
 - **Last source/negative; code/consumer:** Protected `pre553_universal_world_binding.py` blob `63bf3725ee645fdbdd00d9291b4041f50c37938d` currently `git archive`s P41 `f27d1101…` then imports historical runtime's `p41_service` into `product.nonparent.consume`; J42 archived only for tests with R53 RED. R117 candidate service blob `db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31`, wrapper `dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37`, R118 independent `ACCEPT_SCOPED_LOCAL` at `73de309b24562716761fabe2a0f3cf518734cb2b` after R116 REVISE: **branch-only**, 34+16+3 reported sourcefree tests, no current protected first import.
 - **Missing proof/gates/reverse:** Current-base R118 ABI, model guard, actual four-prefix consumer and C2 exact request/typed negatives; operative protected cold checkout **must not need to fetch or execute historical `git archive` or Git donor objects**. Preserve P41/J42 as historical evidence and explicitly isolated test oracles only. Port/hash-verify a sufficient reviewed runtime or prove current successor; original N9/N10E model permissions separate. Unlocks tested N10W→N11 when actual selected inputs issued.
 - **Eligibility/owner/action/done:** **Parallel read/diff** C9 with C2, serialize code edits, separate reviewer and CAS. [C9](../../../WORKER_COMMISSIONS/PROGRAMMA_PYAT_F2F4_GF1_RECOVERY_20261105_R1/09_R118_REVIEWED_WORLD_SERVICE_AND_PINNED_P41_RUNTIME_RECEIVING.md). **Done:** reviewed cold operative runtime without historical Git archive, wrong-condition/model and denied negatives at real first reader; otherwise explicit HOLD/no production readiness.
 
 ### A04 — R01/R03 heterogeneous source to k-way I03/I05 (C3)
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A04` / `R03_EXISTS_ORIGINAL_PARTIAL`:** Compilers exist; original SRC04 Q103/SRC16 racpres recorded-only I03 passed, general source-issued I05/Batch/F4 open. **No authority or production adoption implied.**
 
 > **B06 R-01/R-02 first-reader precision:** At protected `8ffec40a…`, B01/C1's 154-module non-test source scan found **no direct external** `universal_grammar.enumerate_frontier` or `pre553_universal_workload.execute_governed_frontier` importer. Existing R01/R03 scoped sourcefree calls/tests remain true; a selected operative non-test R01/R03→I03/I05→F4/N10E value-changing consumer is **not proved by that scan**. Dynamic/external readers remain UNKNOWN. C3 must compare current `pre553_issued_workload.py` blob `cfb30701…` against historical `31e84f49…` and demonstrate complete request/condition/value/negative receipts; a direct protected non-test importer plus changing output would falsify this bounded no-import concern. **NO_NEW_ENGINE.** Also treat C6's static observation as a *canary*: `_validate_joint_grain:699–724` exists but is not invoked in the inspected C1 module; `_validate_direct_grain:816–836` checks first target/arity. With first target and arity held fixed, mutate second/third target ref, order and native values through actual I03→C1/E41→N10E first reader. No exploit is established without that discriminating test.
 
@@ -219,6 +239,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A05 — original35 D1–D5/D9, U/Epre and estimands (C6)
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A05` / `ALL35_FIRST_ORDER_STALE`:** Keep 35 source/governance obligations, but #960 prioritizes generic economical C11 plus joined #998 first. **No authority or production adoption implied.**
+
 > **B06 R-03/R-04 two independent holds:** Original survey D4 weights, target population, design variance and use rights are **SOURCE/SCIENCE_OWNER_HELD**. *Separately* I03 already computes governed weighted numerator/denominator support, but protected C1 `_supported_geometry:839–924` leaves `weighted_probability_exact_fraction_if_authorized=None` and `weight_design_estimand_context=None`; weighted N10E has no demonstrated lawful fraction/uncertainty first-reader projection. Require an issued estimand **AND** compatible consumer projection, otherwise typed UNSUPPORTED; RAW is never a weighted population fallback. Historical R157 P6 `d81bc2c…` returned 35/35 nonrespondent fixtures, 18,276 items/18,413 slots with **26 unmatched**; `GAP-008/OBSV:G1B-S35` 119 historical configuration paths lack same-path protected reader qualification at their old cut. C3/C6 should choose *one* actual edition, item/path and issued-workload ABI before deciding minimal adapter; no 119-config rebuild or source grant from fixtures.
 
 
@@ -229,12 +251,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A06 — C11/P2 compact regenerable and W05 grouped numerical path (C4)
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A06` / `P0_ECONOMY_OPEN`:** #1006 four H/S1/S2/S3 arms exist, #1282 currentness sourcefree; real matched original full-width 1/10/100 costs open. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S03.1–.5/S04.1–.4`, `GAP-011–015/016–019`, `S-C11/S-I03/S-BATCH`, `ASTRA:IF:N1:N4:1`, OCT28 W03/P01, W04/P02, W05/P03; **P0b**, repeated k-way queries/slow cold loads may make terminal product infeasible.
 - **Last source/negative; code/consumer:** Protected PR #684 I03 index reuse `2dcef17355e5a3548452cd9bd9c6b9531cf77e03`, PR #686 Arrow compact `_pre553_c11_execution_view.py` and authenticated derived Parquet/Zstd first slice `b9aa712144155bd0b8d5f45907fdf5f921ac9384` (reviewed P1R2 source `cd1e7ccf8419a000817b4a8535879da56c06db98`); canonical `ParquetC11Carrier`, R5 typed codec, C1 fractions and I03 index exist. Actual first reader `CarrierNeutralResearchExecutor.execute_i03`→`execute_empirical_query`→R05/P41 sourcefree. Reported 1328→6 index builds with +4–5 MB RSS; P1R2 cold/warm memory sometimes worse than eager, **no native 16-GiB production economics established**, W05 grouped compute still open.
 - **Missing proof/gates/reverse:** Same risk/release 2/3/4-way counts, reverse/XOR/Simpson and missing/route/zero parity, cache HIT/DELETE/CORRUPT/STALE/REVOKED, cold/warm wall/CPU/RSS/disk/index count and exact unchanged consumer facts. Bitmaps/postings only IF demonstrated gain; October source-authoritative compact-regenerable hybrid goal selected, not second semantic engine or Parquet source of truth. Unlocks economical `S-I03/S-F1F4/S-POSS`, never source permission.
 - **Eligibility/owner/action/done:** **Parallel sourcefree measurement** C4 only after separate actual S2 runner/lease authorization; B00 S2 NOT_RUN, S3 held. Qualified I02/I03 physical owner and independent reviewer decide P2. [C4](../../../WORKER_COMMISSIONS/PROGRAMMA_PYAT_F2F4_GF1_RECOVERY_20261105_R1/04_HYB_COMPACT_GROUPED_KWAY_QUERY_BENCHMARK.md). **Done:** actual parity/performance/cold invalidation result and smallest selected implementation or justified no-extra-technique, not cancellation of W04 capability.
 
 ### A07 — original F1–F4 no-loss E0/E0B/E1/E2, true inverse/cloud
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A07` / `F1F4_PARTIAL`:** I03/C1/E41 conditional/joint sourcefree exists; original F2/F4 risk/weights and first reader open. **No authority or production adoption implied.**
 
 > **B06 R-02/R-03 full-target/measure test:** Sourcefree 3+ joint identity must be checked at the *real* C1/E41/N10E first reader, not inferred from I03's correct k-way tuple production: mutate target #2/#3 refs, order and native values while retaining first target/arity, source/release/risk. C1's uncalled `_validate_joint_grain` is a static coverage concern, **not** a proven current bypass. If end-to-end refuses/mutates properly, `PRESENT_COMPOSED_NO_BUILD`; if falsified, five-test narrow repair with independent review. A design-weighted product requires separately issued D4 measure **and** actual weighted probability/uncertainty projection or typed refusal.
 
@@ -245,6 +271,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 - **Eligibility/owner/action/done:** **Parallel sourcefree ABI/oracle** C1/C3/C6; native S3 after source issuer, independent scientific receiving. **Done:** native or honestly held first F2 reverse/F4 same-person value-bearing consumer, no invented cross-survey higher-order joint.
 
 ### A08 — GF1 narrow S1–S9 owner decision, PR #691 (C5)
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A08` / `GF1_OPTIONAL_NO_CONSUMER`:** #691 2x2 sourcefree repair does not prove selected N5/N6 needs GF1 over direct I03/C1. **No authority or production adoption implied.**
 
 > **B06 R-08 newer evidence:** B02/C5 return at `7474d9e86793c9377727c8e44f9885e304cb56f6` recommends `NO_JUSTIFIED_CONSUMER` for mandatory/production GF1, while S1–S9 competent science owner still holds issuance. Independent B05 exact-head PR #691 `a6b815ecc5531c2598887247c2f9e1f8a3bcf17c` **COMMENTED `ACCEPT_SCOPED_SOURCEFREE`**, closing the two repaired candidate code defects at test-only scope; not a GitHub approval, field science signature, production adoption or protected CAS. Thus the R1 bullet's “awaits independent new-head re-review” is **superseded**, not a live blocker; the real production N5/N6 first importer remains `NONE_PROVEN` and GF1 optional.
 
@@ -258,6 +286,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A09 — M1/M2/B5 learned lifecycle and F5/N5/N6 structure
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A09` / `M2_B5_EXISTS_FF_IF`:** Learned lifecycle sourcefree exists; source-qualified M1/N9 and optional FF02 structural meaning held. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S05.1–.5/S06.1–.5`, `GAP-021–029`, `S-F5`, `ASTRA:IF:N3:N4:3/IF:N3:N10E:2/IF:N4:N5:0/IF:N13:N5:1`, `ASTRA:REQ:N5:N6`; **P1 IF selected**, stale learned evidence or illicit structural meaning infects N9.
 - **Last source/negative; code/consumer:** PR #605 M2/B5 merged `fe3f5b4714b11015813537407f7eb4bbb6bc2c10`, 175 modern sourcefree PASS/28 archived exact, historical 179/14 RED retained. R05 M1/M2/currentness reader and `pre553_learned_world_composition`→E41 sourcefree first consumer real. Historic FFX Core A/B/C, V550 algebra, LiTS D2 preimage are capital, **not issued FF02 structural/causal meaning**. Original learned/model current-as-of N9 import and F5/N6 actual first reader unproved.
 - **Missing proof/gates/reverse:** Source/model-family M1 adjudication, immutable M2 release, B5 current/as-of permission + real N9 reader **IF selected learned family**; separate FF01 ingress, FF02 meaning and demanded N6 consumer **IF structural branch selected**, LiTS D2 only IF relation requires preimages. Unlocks conditional N5/N6→N7/N9/N11, not universal GF1→N10E.
@@ -265,12 +295,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A10 — F6 N7 independent-survey and F7 N8E/N8S temporal branches
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A10` / `F6F7_PARTIAL_SCIENCE_IF`:** Historical/candidate bounds and time tools exist; original distinct-population and paired-wave science conditional. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S07.1–.4/S08.1–.4`, `GAP-030–037`, `S-F6/S-F7/S-F7S`, `ASTRA:IF:N5:N7:0/IF:N6:N7:1/IF:N4:N8E:0/IF:N5:N8S:0/IF:N8E:N8S:1` and existing conditional N7/N8E/N8S→N9; **P1 IF selected**, invented cross-person joins or invalid time comparisons poison world.
 - **Last source/negative; code/consumer:** P07 eight-surface sourcefree temporal/as-of comparator and V553 historical deltas, R06 synthetic same-unit two-field and unequal-unit refusal, changed T0/T1 E04; **not original** nonpooled F6 partial-ID nor qualified paired-wave F7 N8E original measurement. No accepted original source→N9 first reader for either.
 - **Missing proof/gates/reverse:** F6 source/population/estimand transport and partial-ID/nonpool, never respondent-ID join across independent surveys or fabricated k-way from separately observed marginals; F7 comparable sample/wave/item/route/time/variance and changed/not-changed, N8S only IF warranted. These **IF** inputs unlock selected N9→N10W, not mandatory direct N10E.
 - **Eligibility/owner/action/done:** **Parallel source-methodology** with C6, later S3/code sequential after F6/F7 issuer and source/host rights; existing `GAP-030–037`, no extra commissioning. **Done:** honest typed cross-population/temporal N9 first consumer or qualified INAPPLICABLE/HOLD.
 
 ### A11 — N9 actual objective world and R09 host/custody trust
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A11` / `MATERIALIZER_IMPORT_FIXED_WORLD_OPEN`:** PR896 protected import fixed; objective facts, N9 current/as-of and R09 host custody remain. **No authority or production adoption implied.**
 
 > **B06 R-05 N9 negative lineage:** `GAP-038` historical J04 `prev3_objective_position_v557_v558_publication.py` has a static import of missing materializer at that source cut. `GAP-040` / HQ297 N9C preserved **seven independently negative identity/prefix integration cases**. These are *comparison falsifiers* for the current N9/as-of first consumer; they neither prove the operative current module absent nor license wholesale J04/K04 code transplantation. Until the five tests establish necessity, successor insufficiency, actual importer, source/ABI authority and relative gain: `COMPARE_ONLY_UNKNOWN`.
 
@@ -282,12 +316,16 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A12 — F8/N10E + N9 AND N10W progressive service
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A12` / `N10W_SOURCEFREE_PARTIAL`:** N9/N10E bounded joins exist; original matched same-version source and uncertainty unresolved. **No authority or production adoption implied.**
+
 - **IDs/terminal:** `S10.1–.4`, `GAP-042–045`, `S-POSS/S-SERVE`, `ASTRA:IF:N2:N10E:0/IF:N4:N10E:1`, `ASTRA:REQ:N9:N10W` **AND** `ASTRA:REQ:N10E:N10W`, `ASTRA:REQ:N10W:N11`; **P1 terminal**, no plausible historically situated possibility reading without both inputs.
 - **Last source/negative; code/consumer:** Actual protected I03→C1→`pre553_empirical_possibility_provider.provide_empirical_possibility_slice` and E41 port; protected R05/P41 sourcefree one-condition first reader, J42 84 views/252 progressive steps historical, R118 independently scoped branch-only. R53 wrong-condition/false ZERO_SUPPORT, no original35 native N10E or real selected original N9 AND computed N10E current combined first reader. Route probabilities not observed-model probabilities by assertion.
 - **Missing proof/gates/reverse:** One exact source/risk/weights/measure/model/current-asof/release/permission: true F2 inverse and F4 k-way → N10E **and** real selected N9 → unchanged `product.nonparent.consume` per prefix with typed absent/zero/structural and model mismatch, alternatives/uncertainty/walkback; G0b F8 model-use separately issued. A02/A03/A04/A05/A07/A11 converge; GF1/F6/F7 conditional alternatives only if selected. Unlocks N11, never actor directly.
 - **Eligibility/owner/action/done:** **Parallel sourcefree C2/C9 first-consumer** on separate code leases, S3 sequential after N9/source/host/F8 issuers; distinct independent reviewer. Existing #695 and C2/C9/C6. **Done:** real same-version qualified multi-step N9 AND N10E N10W consumer with hostile source and status negatives, else explicit held scope.
 
 ### A13 — N11 0/1890 acceptance and separately authorized N12
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A13` / `N11_N12_OPEN_SEPARATE`:** 0/1890 historical count not current remeasurement; independent N11 then N12 authority remains. **No authority or production adoption implied.**
 
 - **IDs/terminal:** `S11.1–.5`, `GAP-046–049`, `S-ACCEPT/S-WAKE`, `ASTRA:REQ:N0:N11`, `ASTRA:REQ:N10W:N11`, `ASTRA:REQ:N11:N12`; **P1/P2**, no accepted world or actor wake merely from assessor files.
 - **Last source/negative; code/consumer:** A41/A42/I44 physically banked 1,890 assessor cells, J42 receipts and three N11 files; `N11_NOT_READY`, **0/1890 newly original-source-measured**. R06 receipt validator is not F1–F8 issuer or independent N11 acceptor; N12 unissued.
@@ -297,6 +335,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 ## P2 — Sorok boundary, inherited negatives, and independent receiving
 
 ### A14 — Sorok/V3 mother/co-parent dyadic interface (C7)
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A14` / `SOROK_OWNED`:** #697/#699 sourcefree/documentary merged; actual dyad/genealogy/actor is SOROK responsibility. **No authority or production adoption implied.**
 
 > **B00 post-C8 operative A14 currentness (2026-11-06):** B04/C7 six-file interface return at `a792ce534f51cdc015e15e69af9e884e1eb09654` remains documentary `DOCUMENTARY_INTERFACE_SPECIFIED__NATIVE_AND_ACTOR_WAKE_HELD`. Sorok [PR #697](https://github.com/maidiu/rawlsing/pull/697) **MERGED** reviewed S45–S47 sourcefree TEST_ONLY product head `4b2fed81c3f513eb4262ad5de277ce519c74c614` through `913fc49013daefcce1c59235143ddd27f65a74a9`. [PR #699](https://github.com/maidiu/rawlsing/pull/699) **MERGED** scoped documentary reconciliation at protected `33c40a315d3c231cb2021bd8e60f3261547efa62`. Neither receipt is a Pyat N11/N12 selected-world original/native import, Sorok E001/E002 active actor/causal first consumer, dyadic partner/network choice or science/source/actor permission; N12 wake remains held. Former "#697 open" statement is **historical only**.
 
@@ -308,6 +348,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 
 ### A15 — FIABC/LiTS, G01 and C4R2A historical negative custody
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A15` / `FIABC_NEGATIVES_CONDITIONAL`:** Historical 144 PASS/3 FAIL remain; check present pinned blobs only when current receiving court selects it. **No authority or production adoption implied.**
+
 > **B06 R-06 conditional receiving override:** A15 remains **P2 historical documentary custody**; **when** a protected code CAS or governed release gate actually requires the FIABC/LiTS court, its inherited **144 PASS / 3 pinned-blob FAIL** is a **P0 receiving blocker** until competent historical owner disposition or independently justified policy exclusion. Old expected/current blobs may legitimately differ; no blind repin, waiver, global CI green, or attribution to GF1. B05 focused sourcefree `ACCEPT_SCOPED_SOURCEFREE` is *not* governed-court global acceptance.
 
 
@@ -317,6 +359,8 @@ A scientific/source/rights hold belongs to the precise claim. A storage-performa
 - **Eligibility/owner/action/done:** **Parallel S0–S1 evidence** C1/C8; actual code/pin mutation separately owner/independent-review governed, not B00. Existing historical FIABC/LiTS and `GAP-005/029/046/047`. **Done:** explicit competent historical pin disposition and current consumer proof or retained RED/HOLD unchanged.
 
 ### A16 — independent #696 C8 acceptance and protected CAS request
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `A16` / `FINAL_B08_DOCUMENTARY_ACCEPT__PROTECTED_MERGED__NATIVE_HELD`:** The two historical independent C8 **REVISE** verdicts were superseded by [B08 final independent exact-head S0–S1 **ACCEPT**](https://github.com/maidiu/rawlsing/blob/4634c37e10183a0765c543f3893cc6322a28804a/WORKER_RETURNS/PROGRAMMA_PYAT_B08_C8_INDEPENDENT_HOSTILE_696_RECEIVING_20261105_R1/08_FINAL_EXACT_HEAD_915B17_RECEIVING_ACCEPT.md) on PR #696 at `915b17ab7c7aeddf17e886086c3f4b574da1fcd4`, independently confirming 51 strict closures and 13 IF-only paths; PR #696 then **merged** at `a02cd4e164eabed978bc577ed68f1c424b0ab187`, as attested by protected `PROGRAMMA_PYAT_15_RETURN_PROTECTED_RECEIVING_20261106_R1.md` and paired progress `nov06_cas3`. Original A16 documentary receiving/re-review is **DONE AT EXACT S0–S1 SCOPE**, not an outstanding C8 commission; broader original-source, S2/S3, actor, N11/N12 and new-code reviews remain independently HELD. **No additional native authority implied.**
 
 > **B00 post-C8 receiving update (2026-11-06):** Independent B08/C8 returned **REVISE** on B00 `130ec2e00e112c9d897e1f976ad5e52b9430be5f` (source-currentness and N6 IF direct graph), then **REVISE** on `8333e6b180a1a773e595e4c4553ae0c112e92e6c` (transitive IF leakage corrected by the new post-second-C8 overlay), not ACCEPT. This author correction now requires **new independent exact-head re-review**; PR #696 still draft/unmerged. The initial comparison base `8ffec40a…` is archived; live protected `33c40a315d3c231cb2021bd8e60f3261547efa62` includes only scoped Sorok #697/#699 receiving. No protected Pyat native approval or CAS.
 
@@ -404,12 +448,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-001 — Original35 immutable edition/custody matrix
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-001` / `CUSTODY_PARTIAL`:** All35 inventory exists; certify selected actual original edition/country/wave/bytes/source-use and negatives. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S01.1; G1B-S01`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/01_SOURCE_GOVERNANCE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** source owner.
 - **Actual missing cell:** Full SRC01–SRC35 original edition identifiers, files, sha, country/wave, 20 PASS/15 BLOCKED representation evidence and custody negatives.
 - **Smallest credible completion witness:** Original source/custody owner return; no synthetic inference.
 
 ### GAP-002 — Per-item questionnaire and route semantics
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-002` / `FORM_SCIENCE_OPEN`:** Source owner must issue options, routes, missingness, occurrence/polarity, not guess from decoder labels. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S01.2; G1B-S01`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/01_SOURCE_GOVERNANCE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** source-science owner.
@@ -418,6 +466,8 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-003 — Native respondent/statistical design facts
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-003` / `DESIGN_SCIENCE_OPEN`:** Original respondent/household/sample/weight/cluster/frame and estimand facts require source authority. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S01.3; G1B-S02`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/01_SOURCE_GOVERNANCE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** source-science+physical.
 - **Actual missing cell:** Person/household/proxy/roster, weights/strata/clusters, frame/denominator and source-local IDs.
@@ -425,12 +475,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-004 — Current scope/rights/issuer and negative succession
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-004` / `SCOPED_GRANTS_ONLY`:** SRC04/SRC16 MainMac grants were operation bounded; no global source/use/host rights. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S01.4; ASTRA:IF:N0:N4:0`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/01_SOURCE_GOVERNANCE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** original science/authority.
 - **Actual missing cell:** Permissioned current decision by use/version, strict refusal and historical supersession.
 - **Smallest credible completion witness:** Competent signed source/use decision bound by current resolver.
 
 ### GAP-005 — Historical duties without scope inflation
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-005` / `G4_CUSTODY_PARTIAL`:** Original functions indexed, preserve negatives; only challenged exact modern reader parity requires investigation. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S01.5; G2 INDEX`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/01_SOURCE_GOVERNANCE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** guide integration.
@@ -441,12 +495,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-006 — Original U_item/U_unit/U_app prospective enumeration
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-006` / `R03_EXISTS_ORIGINAL_U_OPEN`:** Existing prospective compiler; source-issued administered U_app/eligible/blocked remains. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S02.1–S02.2; G1B-S05,S06`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/02_U_EPRE_WORKLOAD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science issuer+engineering.
 - **Actual missing cell:** All legitimate administered units and bounded source item/condition/joint classes, with permission and HOLD/ABSTAIN.
 - **Smallest credible completion witness:** Original35 issuer-filled ScientificFrontier and per-source operation denominator.
 
 ### GAP-007 — P1 synthetic Epre compatibility repair
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-007` / `ABI_CANDIDATE_PARTIAL`:** Existing prepared and #1247 bridge; select actual source operation/first reader before narrow repair. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S02.3–S02.4; S-WORKLIST; G1B-S07`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/02_U_EPRE_WORKLOAD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering, owner-gated.
@@ -455,6 +513,8 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-008 — R157 119 config path reconciliation
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-008` / `R157_CONFIG_EXISTS`:** Historic 35 config machinery; 119 paths not all native, investigate only actually selected source. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S02.3; G1B-S35`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/02_U_EPRE_WORKLOAD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** source custodian+engineering.
 - **Actual missing cell:** Historic config paths absent same path on PRE-MAIN; exact edition/permission mapping.
@@ -462,12 +522,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-009 — Issued frontier→lowerer→runtime actual native call
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-009` / `R03_EXISTS_NATIVE_PARTIAL`:** Original recorded-only I03 now on SRC04/SRC16; planned source-issued I05/Batch/fate reader open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S02.4; G1B-S06–S08`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/02_U_EPRE_WORKLOAD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering and source owner.
 - **Actual missing cell:** Connect original emitted operations to pre553_universal_workload and execute_issued_workload, preserving current decisions.
 - **Smallest credible completion witness:** Exact source-qualified I03/I05 requests, manifest and a non-test first consumer receipt.
 
 ### GAP-010 — Complete no-drop operation accounting
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-010` / `FATE_CENSUS_ORIGINAL_OPEN`:** Complete original eligible/blocked/unknown/repeat query accounting still not issued. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S02.5; S-ACCEPT`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/02_U_EPRE_WORKLOAD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** source/measurement owner.
@@ -478,12 +542,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-011 — Exact original SAV/DTA/physical carriers
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-011` / `ORIGINAL_ESTATE_PARTIAL`:** SRC04/SRC16 saved physical source proven; generic single-decode SAV/DTA and 13-family correctness/cost pending. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S03.1; S-C11; G1B-S02,S33`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** physical source owner.
 - **Actual missing cell:** Source hashes, decode compatibility/MR/duplicates/display magnitudes and historic G01 reds.
 - **Smallest credible completion witness:** Bounded native physical re-evaluation; PR602 D01/D02 evidence kept scoped.
 
 ### GAP-012 — Qualified C11 projection/release and source authority
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-012` / `C11_CODE_EXISTS_NATIVE_PARTIAL`:** Carrier/projection exists; fully lawful source semantics/permissions/cold replay not generalized. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S03.2; G1B-S03,S04`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** C11/semantic owner.
@@ -492,6 +560,8 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-013 — Native original I03 first computation
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-013` / `ORIGINAL_I03_RECORDED_PROVED_SCOPED`:** #998 SRC04 Q103 and SRC16 racpres MainMac recorded-only I03; asked/eligible/weight/I05/Batch held. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S03.3; S-I03`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering+science.
 - **Actual missing cell:** Original source-qualified query/predicate/denominator/weight; existing RouteB caller works sourcefree.
@@ -499,12 +569,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-014 — Native I05 bounded full frontier
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-014` / `I05_ORIGINAL_OPEN`:** Existing discovery scheduler does not prove source-authorized full finite frontier/unvisited negatives. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S03.4; S-I05`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering+science.
 - **Actual missing cell:** Original DiscoveryAuthority and all admitted finite discovery candidates with unvisited/blocked accounting.
 - **Smallest credible completion witness:** Source-native I05 receipts and explicit frontier coverage.
 
 ### GAP-015 — Batch issued receipt custody and production reader
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-015` / `BATCH_PARTIAL`:** Native Batch/receipt infrastructure exists; prepared identity #1280 draft and original reader qualification open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S03.4–S03.5; S-BATCH; G1B-S08,S11`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering/custody.
@@ -515,12 +589,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-016 — F1 original distributions with exact risk set
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-016` / `F1_RECORDED_PARTIAL`:** Narrow original counts exist; eligible/design-weighted F1/recipient not issued. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S04.1; S-F1F4`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** measurement+engineering.
 - **Actual missing cell:** Original respondent universe, design weights, denominators, no-support, confidence/uncertainty.
 - **Smallest credible completion witness:** Native source F1 product and first current downstream reader.
 
 ### GAP-017 — F2 bidirectional conditioned empirical products
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-017` / `F2_NUMERIC_EXISTS_NATIVE_OPEN`:** Conditional/reverse code exists; real source-issued original numerator/denominator/inverse and consumer open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S04.2; G1B-S12`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** measurement+engineering.
@@ -529,6 +607,8 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-018 — F3 recursive minority/outlier/counter-pattern route
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-018` / `ADAPTIVE_REUSE_SCIENCE_OPEN`:** Existing pre553_discovery_adaptive scheduler; authorized minority search/stop/first reader open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S04.3; G1B-S10`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science+engineering.
 - **Actual missing cell:** Authorized adaptive search, stop rules, branch lineage, opposed and nonmodal results.
@@ -536,12 +616,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-019 — F4 shared-respondent joint/cloud configuration
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-019` / `K_WAY_EXISTS_ORIGINAL_OPEN`:** Same-person sourcefree joint exists; original F4 coexposure/risk/missing/replay/consumer open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S04.4; G1B-S12`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science+engineering.
 - **Actual missing cell:** Historic V550J respondent identity vs V551J aggregate; no marginal-product substitution.
 - **Smallest credible completion witness:** Native k-way respondent join/co-travel product with exact risks and reader.
 
 ### GAP-020 — F1–F4 family routing to qualified first consumers
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-020` / `READERS_PARTIAL`:** E41/N10E/FF01 bounded readers exist; all qualified F1-F4 native no-drop output fate open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S04.5; S-F1F4`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/04_F1_F4_EMPIRICAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering/consumer owners.
@@ -552,12 +636,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-021 — Original M1 family-specific scientific adjudication
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-021` / `M1_SCIENCE_OPEN`:** Learned lifecycle code exists; signed per original source family M1 selection/refusal required. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S05.1; G1B-S16`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** learned science owner.
 - **Actual missing cell:** Accepted/declined/unknown per actual source native family without forcing all direct facts through M1.
 - **Smallest credible completion witness:** Signed exact M1 disposition with source/reviewer scope.
 
 ### GAP-022 — M2 source-valid immutable empirical release
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-022` / `M2_REPOSITORY_EXISTS`:** PR605 sourcefree received; original scientific products populated/released to selected reader open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S05.2; G1B-S17,S18`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** M2 product owner.
@@ -566,12 +654,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-023 — B5 lifecycle current/as-of native selection
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-023` / `B5_SELECTOR_EXISTS`:** PR605 sourcefree accepted; original current/as-of versioned use/negative open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S05.3; G1B-S18,S34`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** B5 owner.
 - **Actual missing cell:** Existing PR605 scoped selector/invalidation needs actual selected source and actor-independent application use.
 - **Smallest credible completion witness:** Current/historical dependency root and authorized exact selection/refusal receipt.
 
 ### GAP-024 — I4 world-consuming first reader; old I01K compatibility
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-024` / `LEARNED_WORLD_READER_PARTIAL`:** R05 selected-world sourcefree exists; original learned N9 first reading unproved. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S05.4–S05.5; G1B-S19,S34`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering/receiver.
@@ -582,12 +674,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-025 — Actual F1–F4/learned empirical FF01 ingress
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-025` / `FF01_EXISTS_ORIGINAL_OPEN`:** FF01 and #1279 GT12 candidate; source-authorized full empirical first consumer not established. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S06.1; G1B-S20`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/06_FIELD_FORGE_F5.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science+engineering.
 - **Actual missing cell:** Existing conditional support profile test has denominators but not source-native real facts.
 - **Smallest credible completion witness:** Admitted empirical exact support profile from native F4 relation.
 
 ### GAP-026 — Independent FF02 structural/material meaning
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-026` / `FF02_IF_SELECTED`:** Structural class/material meaning requires independent source/causal issuer; otherwise descriptive only. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S06.2; S-F5`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/06_FIELD_FORGE_F5.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** original structural science.
@@ -596,6 +692,8 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-027 — Historic FFX A/B/C capability alignment
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-027` / `HISTORICAL_FFX_COMPARE_ONLY`:** Old FFX A/B/C adjudicated; no blanket restore, identify missing current terminal consumer first. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S06.3; G2 Section06`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/06_FIELD_FORGE_F5.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering/guide.
 - **Actual missing cell:** Old FFX002-R2 fuller stack vs present narrow conditional profile and historical geometry.
@@ -603,12 +701,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-028 — N6 demanded objective relation publisher/reader
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-028` / `N6_TO_N9_IF_SELECTED`:** Sourcefree bridges exist; real qualified objective relation publisher/read requires separately selected owner. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S06.4; G1B-S21,S22`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/06_FIELD_FORGE_F5.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** structural owner+engineering.
 - **Actual missing cell:** Existing C→D and D→E bridges test-only; J04 single item objective carrier not general.
 - **Smallest credible completion witness:** Versioned demanded N6 objective with real N9 receiving and owner.
 
 ### GAP-029 — Conditional LiTS D2 preimage binding
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-029` / `LITS_D2_IF_SELECTED`:** Only if N13→N5 selected relation actually demands original D2 preimage. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S06.5; ASTRA:IF:N13:N5:1`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/06_FIELD_FORGE_F5.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** LiTS original owner.
@@ -619,12 +721,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-030 — Independent source, population, target and estimand bridge
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-030` / `INDEPENDENT_SURVEY_SCIENCE_OPEN`:** Distinct source populations/targets/weights/rights and nonpool estimand not issued. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S07.1; G1B-S23`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/07_F6_FIELDS.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science/source owner.
 - **Actual missing cell:** Two+ distinct source families, population mappings, geography/time, weights and permission.
 - **Smallest credible completion witness:** Explicit nonpooling mapping/admission or scoped refusal.
 
 ### GAP-031 — Current F6 nonpooled partial-ID composer
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-031` / `F6M_CODE_CANDIDATE_SCIENCE_OPEN`:** Fréchet numeric candidate exists #1267; lawfully sourced nonpooled estimation/receiver missing. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S07.2; S-F6`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/07_F6_FIELDS.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering+science.
@@ -633,12 +739,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-032 — Historic F6M/F6P/failed S03FO A disposition
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-032` / `F6_HISTORICAL_FATES_ACCOUNTED`:** F6M/F6P historic comparison done; no second math implementation solely from old name. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S07.3; G1B-S24`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/07_F6_FIELDS.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** original owner/engineer.
 - **Actual missing cell:** Exact F6M synthesize historical cut and F6P point refusal; old A drops uncovered mass.
 - **Smallest credible completion witness:** Per-variant source/contract diff and non-loss adoption decision outside this worker.
 
 ### GAP-033 — Real F6→N9 first receiver and version contract
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-033` / `F6_N9_IF_SELECTED`:** Versioned independent-field N7→N9 reader unproven; never fake same-person pool. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S07.4; ASTRA:IF:N7:N9:3`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/07_F6_FIELDS.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** N9 consumer engineer.
@@ -649,12 +759,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-034 — Qualified original comparable-wave pair adjudication
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-034` / `ORIGINAL_PAIR_COMPARABILITY_OPEN`:** Per-wave form/route/meaning/frame/weights/estimand owner must certify wave comparability. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S08.1; G1B-S25`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/08_F7_TEMPORAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** measurement science owner.
 - **Actual missing cell:** 63 candidates require item wording/route/options/weights/frame/timing/design/estimand comparison.
 - **Smallest credible completion witness:** Pair-specific admissible/noncomparable signed verdict.
 
 ### GAP-035 — Measured F7 N8E original change/no-change
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-035` / `TEMPORAL_CODE_EXISTS_NATIVE_OPEN`:** Historic temporal comparison exists; original N8E changed/notchanged/uncertainty open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S08.2; S-F7`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/08_F7_TEMPORAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering+science.
@@ -663,12 +777,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-036 — Structural N8S temporal pressure only if warranted
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-036` / `N8S_IF_SELECTED`:** Independent structural clock/mechanism only if warranted; otherwise typed abstention. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S08.3; ASTRA:IF:N8E:N8S:1`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/08_F7_TEMPORAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** structural science+engineering.
 - **Actual missing cell:** Independent structural clocks, mechanism, and IF N8E use; neither unconditional.
 - **Smallest credible completion witness:** Qualified structural time pressure or typed abstention; explicit condition.
 
 ### GAP-037 — Temporal products first N9 as-of read
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-037` / `F7_N9_IF_SELECTED`:** Actual source-qualified historical world as-of receiver with comparability/negative required. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S08.4; G1B-S26`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/08_F7_TEMPORAL.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** N9 consumer engineer.
@@ -679,12 +797,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-038 — Resolve pinned broken objective materializer import
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-038` / `OLD_IMPORT_FIXED`:** PR896 merged b7ffe3bb; protected materializer 3c7527d3 and publisher import 7d2a5dbb. No repair needed; actual objective producer separate GAP039. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S09.1/S09.3; G1B-S27`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/09_N9_WORLD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering ABI owner.
 - **Actual missing cell:** prev3_objective_position_v557_v558_publication.py imports missing module at line22.
 - **Smallest credible completion witness:** Same exact import exists at selected compatible cut or explicit held version, with no science implication.
 
 ### GAP-039 — Admitted N9 world-content assembler
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-039` / `OBJECTIVE_WORLD_OPEN`:** Mechanical carrier cannot create position/institution/power facts; lawful N9 material world producer needed. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S09.1; S-SERVE`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/09_N9_WORLD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** world/source owners.
@@ -693,12 +815,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-040 — N9 current/as-of selection and invalidation
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-040` / `N9_READER_PARTIAL`:** Selected-world and source clocks exist; original current/as-of material release/rights remain. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S09.2; G1B-S27,S34`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/09_N9_WORLD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** world/version owner.
 - **Actual missing cell:** B5 learned selector does not substitute world release/expiry; old I01K unadopted.
 - **Smallest credible completion witness:** N9 current/as-of chosen source-valid snapshot and replay/invalidated source closure.
 
 ### GAP-041 — N9 first actual N10W reader
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-041` / `N9_N10W_SOURCEFREE_EXISTS`:** Sourcefree current N9→N10W first readers exist; original selected material world first reader open. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S09.4; ASTRA:REQ:N9:N10W`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/09_N9_WORLD.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** world/consumer engineer.
@@ -709,12 +835,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-042 — Original computed N10E conditioned-slice lineage
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-042` / `N10E_SOURCEFREE_EXISTS`:** C1 conditioned slice exists; original legitimate measure/risk/rights and receiver still open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S10.1; S-POSS`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/10_N10_POSSIBILITY_F8.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** empirical owner/engineering.
 - **Actual missing cell:** Existing provider sourcefree calls analytics; native F1–F4 source/denominator/authority absent.
 - **Smallest credible completion witness:** N10E exact original-source measured conditioned slice and first receiver.
 
 ### GAP-043 — Real N9 AND N10E N10W join
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-043` / `N9_N10E_JOIN_SOURCEFREE_EXISTS`:** Actual bounded join code exists; original same-version both-input N10W pending. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S10.2; ASTRA:REQ:N9:N10W,N10E:N10W`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/10_N10_POSSIBILITY_F8.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** engineering/consumer.
@@ -723,12 +853,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-044 — Progressive alternatives/uncertainty preservation
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-044` / `WALKBACK_SOURCEFREE_EXISTS`:** Progressive alternatives/negative code exists; original uncertainty/minority first read open. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S10.3; G1B-S14,S15`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/10_N10_POSSIBILITY_F8.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** science+engineering.
 - **Actual missing cell:** Reconcile fixture 32→16→8 with live uncertainty, minority, contrary evidence and no destiny claims.
 - **Smallest credible completion witness:** Native progressive source-conditioned result with refusal/walkback receipt.
 
 ### GAP-045 — F8 bounded applicability and G0b use authority
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-045` / `F8_IF_SELECTED`:** G0b model/use owner distinct from empirical RAW and Sorok actor grant. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S10.4; G1B-S32`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/10_N10_POSSIBILITY_F8.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** F8 model/use owner.
@@ -739,12 +873,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-046 — Estate acceptance denominator/artifact reconciliation
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-046` / `N11_SOURCE_ESTATE_OPEN`:** Historical N11 files not a complete original source/applicable/held matrix. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S11.1; ASTRA:REQ:N0:N11`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/11_N11_N12_GATE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** N11 reviewer + source owners.
 - **Actual missing cell:** Requires upstream S01/S02 source/native no-drop, avoid duplicate enrollment.
 - **Smallest credible completion witness:** Formal all35 original admissible/held matrix with independently cited upstream source witnesses.
 
 ### GAP-047 — Full applicable F1–F8 receipt and first-reader matrix
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-047` / `N11_APPLICABLE_FAMILY_OPEN`:** Original F1-F8 only where relevant; independent per-product first-reader and negative receipts needed. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S11.2–S11.3; S-ACCEPT`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/11_N11_N12_GATE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** independent science reviewers.
@@ -753,12 +891,16 @@ An available producer is reused: `pre553_universal_workload.py::compile_governed
 
 ### GAP-048 — Formal N11 independent acceptance
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-048` / `INDEPENDENT_N11_OPEN`:** Historic 0/1890 must not be rebranded as current check; formal independent N11 still held. **No authority or production adoption implied.**
+
 - **Evidence / affected function-edge IDs:** `S11.4; G1B-S29`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/11_N11_N12_GATE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** competent N11 owner.
 - **Actual missing cell:** Cannot issue from worker doc; requires N0 AND N10W plus scoped F gates.
 - **Smallest credible completion witness:** Actual f1_f8_acceptance_matrix.json, estate_acceptance_manifest.json, maturity adjudication signed.
 
 ### GAP-049 — Separate N12 wake/defer and Sorok receiving boundary
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-049` / `N12_AND_SOROK_SEPARATE`:** N11 first, distinct N12 owner wake/defer, Sorok actor contact/genealogy separately. **No authority or production adoption implied.**
 
 - **Evidence / affected function-edge IDs:** `S11.5; G1B-S30,S31`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/11_N11_N12_GATE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
 - **Owner/lane:** V3 decision and Sorok independent owners.
@@ -780,10 +922,14 @@ No production code edit, test run, cold use or scientific grant was conducted. A
 
 ### GAP-ADD-A01 — First V548/V549 branch-cohort / cotravel original source and native issuance
 
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-ADD-A01` / `HISTORICAL_SOURCE_FOUND`:** Exact V548/V549 bodies located by G4; chosen current function parity/native science conditional. **No authority or production adoption implied.**
+
 - **Pinned evidence:** [G3-A unresolved fate](https://github.com/maidiu/rawlsing/blob/93c821e419b42918d98c71f87999735e786c92df/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/ASSET_PARITY/UNPLACED_AND_MISSING_SOURCE_FATE.md) `G1A-UNFOUND-04`; [G1-A original gap](https://github.com/maidiu/rawlsing/blob/3ac2bfeca4c79ae794bb896483d79ab195307e92/WORKER_RETURNS/PROG5_G1_A_MAIN_HERITAGE_R1/GITHUB_REFERENCED_BUT_UNFOUND.jsonl#L4); historical [V550 branch_nodes_rows](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_branching.py#L372) is a descendant, not the original issuer.
 - **Sections:** `ROADMAP:S04` (F2/F3 branching), plus original-source custody S01. **First missing condition:** exact first original V548/V549 code blob/run/source cohort and source-science authority; G3-A bounded Git scan did not establish it. No current function equivalence or global absence claimed. **Narrow next action:** source owner identify first named version and same-source native result, then compare to the current first reader; do not alias V550 by version-family name.
 
 ### GAP-ADD-A02 — Eight W1-H unjoined references / 164 unjoined assertions must remain source-identifiable
+
+> **R23 SOURCE-STATIC CURRENT DISPOSITION — `GAP-ADD-A02` / `REF_IDENTITIES_FOUND_ASSERTIONS_OPEN`:** Eight W1-H references pinned; 164 unjoined assertions remain provenance questions, not missing engines. **No authority or production adoption implied.**
 
 - **Pinned evidence:** [G3-A unresolved fate](https://github.com/maidiu/rawlsing/blob/93c821e419b42918d98c71f87999735e786c92df/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/ASSET_PARITY/UNPLACED_AND_MISSING_SOURCE_FATE.md) `UNFOUND-07`, [G1-B exact missing reference row](https://github.com/maidiu/rawlsing/blob/7ee67766503a13d2eae6441afda1a869b83a40e6/WORKER_RETURNS/PROG5_G1_B_CURRENT_OWNERS_R1/EXACT_UNFOUND_GIT_REFERENCES.jsonl#L7). This is a **reported reference-identity shortfall**, not current source-native failure.
 - **Sections:** crosscut S01/S11 provenance/acceptance and referenced portions of S03–S10 where the individual claims actually attach. **First missing condition:** exact eight unavailable ref names and typed identities of 164 unjoined assertions, plus their original H adjudication/input lock. **Narrow next action:** guide integrator/source custodian resolve named references individually; no arbitrary whole-machine search and no inferred runtime coverage.
