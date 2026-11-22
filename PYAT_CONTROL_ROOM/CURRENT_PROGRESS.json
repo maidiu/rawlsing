@@ -878,8 +878,8 @@
       "MATERIAL_PAIR_UPDATE_REQUIRES_BOTH_FILES_AND_REV_ADVANCE",
       "MISSING_PR_BASE_TYPED_HOLD"
     ],
-    "hostile_cases": 9,
-    "status": "COMMITTED_UNEXECUTED_AT_NEW_HEAD__INDEPENDENT_SOURCE_REVIEW_PENDING",
+    "hostile_cases": 13,
+    "status": "AUTHOR_PATCH_B1_REPRODUCED_BY_DISTINCT_SOURCE_REVIEW__SOURCEFREE_EXECUTED_AT_E1803__INDEPENDENT_REREVIEW_AND_PROTECTED_RECEIVING_HELD",
     "receiving": "EFFECTIVE_ONLY_ON_AUTHORIZED_EXACT_HEAD_PROTECTED_MERGE_AND_READBACK",
     "limits": "NO_SOURCE_NATIVE_SCIENCE_ACTOR_G5_OR_FEATURE_CODE_PROMOTION",
     "legacy_plan_1148": {
@@ -890,6 +890,18 @@
       "four_section_notes": "SOURCE_PRESERVED_UNRECEIVED_OWNER_DECISION",
       "selected_pre_v3_plan": "AUTHOR_CANDIDATE_NOT_PROTECTED_ORDER",
       "historical_requirements": "NOT_RETIRED"
+    },
+    "review_correction": {
+      "review": "https://github.com/maidiu/rawlsing/pull/1286#pullrequestreview-6010862923",
+      "review_grade": "CHANGES_REQUIRED_EXACT_SOURCE__B1_MISSING_PYAT_MD",
+      "defect": "PYAT CURRENT_PROGRESS.md missing caused old short-circuit to skip pair validation",
+      "source_fix_sha": "e1803cedc72b55227a25966e3ebdb10a011793eb",
+      "source_fix_git_blob": "2bf171b279aac8b6bcfaf968a56bce31ad83d75c",
+      "added_hostile_checks": "missing current MD, JSON and G4 each rejected by actual temporary-file removal",
+      "sourcefree_ci": "44997483101_SUCCESS_AT_EXACT_SOURCE_FIX_SHA",
+      "independent_re_review": "PENDING",
+      "scope_exclusion": "Non-PR direct-push historical base comparison and branch protection independently unverified",
+      "protected_receiving": "HOLD"
     }
   }
 }
