@@ -13,6 +13,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
+import stat
 import time
 import zlib
 from collections import OrderedDict
@@ -40,11 +41,24 @@ def canonical(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 def size_tree(path: Path) -> int:
-    if not path.exists():
+    # WAL/SHM files are created, truncated and removed while the sampler
+    # walks this tree. They may vanish between rglob() and stat(); that is
+    # not an empirical resource failure. Other I/O errors still propagate.
+    try:
+        info=path.stat()
+    except (FileNotFoundError, NotADirectoryError):
         return 0
-    if path.is_file():
-        return path.stat().st_size
-    return sum(p.stat().st_size for p in path.rglob("*") if p.is_file())
+    if stat.S_ISREG(info.st_mode):
+        return info.st_size
+    total=0
+    for p in path.rglob("*"):
+        try:
+            info=p.stat()
+        except (FileNotFoundError, NotADirectoryError):
+            continue
+        if stat.S_ISREG(info.st_mode):
+            total+=info.st_size
+    return total
 
 def _key(value: Any) -> str:
     if value is None or value == "":
@@ -62,20 +76,37 @@ class Store:
         self, name: str, path: Path, estate_path: Path,
         *, create: bool, source_identity: Mapping[str, Any] | None = None,
         progress: Callable[..., None] | None = None,
+        read_only: bool = False,
     ):
         if name not in ARMS:
             raise StoreFailure("unknown physical arm")
         self.name, self.path, self.estate_path = name, Path(path), Path(estate_path)
         self.progress = progress or (lambda **kwargs: None)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
+        if read_only and create:
+            raise StoreFailure("read-only physical store cannot be created")
+        if not read_only:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
         if create and self.path.exists():
             raise StoreFailure("refusing to overwrite another physical store")
         if not create and not self.path.is_file():
             raise StoreFailure("persistent store is missing")
-        self.db = sqlite3.connect(str(self.path), timeout=120)
+        # Missing authority metadata must not create an empty database that
+        # then blocks a legitimate later attempt with "refusing overwrite".
+        if create and source_identity is None:
+            raise StoreFailure("source identity required for construction")
+        if read_only:
+            # Native-only replay must never alter the expensive committed
+            # permanent SQLite (including queries/results or journal mode).
+            self.db = sqlite3.connect(
+                self.path.resolve().as_uri()+"?mode=ro",
+                uri=True, timeout=120,
+            )
+            self.db.execute("PRAGMA query_only=ON")
+        else:
+            self.db = sqlite3.connect(str(self.path), timeout=120)
+            self.db.execute("PRAGMA journal_mode=WAL")
+            self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA foreign_keys=ON")
-        self.db.execute("PRAGMA journal_mode=WAL")
-        self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA temp_store=FILE")
         self.db.execute("PRAGMA cache_size=-16384")
         self.db.execute("PRAGMA busy_timeout=120000")
@@ -85,8 +116,6 @@ class Store:
         self._pq = {}
         self._insert_count = 0
         if create:
-            if source_identity is None:
-                raise StoreFailure("source identity required for construction")
             self._schema()
             self._set_meta("schema", SCHEMA)
             self._set_meta("arm", name)
@@ -355,6 +384,8 @@ class Store:
         self._ref_cache.clear()
 
     def finish(self, manifest: Mapping[str, Any], family_records: Mapping[str, Mapping[str, Any]]) -> None:
+        if self.get_meta("state") != "BUILDING":
+            raise StoreFailure("physical store can only finish an active build")
         if set(family_records) != set(FAMILIES):
             raise StoreFailure("incomplete thirteen-family C11 census")
         for name, item in family_records.items():
@@ -385,9 +416,10 @@ class Store:
             raise StoreFailure("SQLite foreign key check failed")
         if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
             raise StoreFailure("SQLite b-tree integrity check failed")
-        self._set_meta("state", "COMMITTED")
-        self.db.commit()
-        self.db.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        # A completed row count is NOT a complete physical release. An
+        # interruption before the full canonical-body audit must never leave
+        # a database that a fresh reader accepts as COMMITTED.
+        self._set_meta("state", "AUDIT_PENDING")
         self.db.commit()
 
     def audit_families(self, emit: Callable[..., None] | None = None) -> dict[str, dict[str, Any]]:
@@ -411,6 +443,36 @@ class Store:
         expected = json.loads(self.get_meta("expected_family_records") or "{}")
         if result != expected:
             raise StoreFailure("full thirteen-family canonical body parity FAILED")
+        # The body hash alone does not catch a dropped SQL posting. Catch
+        # orphan, missing, or wrong-family event/respondent index entries
+        # before making a previously incomplete store readable.
+        if self.db.execute("SELECT COUNT(*) FROM events").fetchone()[0] != result["RespondentEvent"]["count"]:
+            raise StoreFailure("physical event index lost original event rows")
+        if self.db.execute("SELECT COUNT(*) FROM respondents").fetchone()[0] != result["RespondentIdentity"]["count"]:
+            raise StoreFailure("physical respondent index lost original respondents")
+        if self.db.execute(
+            "SELECT 1 FROM events e JOIN objects o ON e.oid=o.oid "
+            "WHERE o.family!='RespondentEvent' LIMIT 1"
+        ).fetchone() is not None:
+            raise StoreFailure("physical event index points to wrong family")
+        if self.db.execute(
+            "SELECT 1 FROM events e LEFT JOIN respondents r ON e.rid=r.rid "
+            "WHERE r.rid IS NULL LIMIT 1"
+        ).fetchone() is not None:
+            raise StoreFailure("physical event index has orphan respondent")
+        if self.db.execute("PRAGMA foreign_key_check").fetchone() is not None:
+            raise StoreFailure("physical store has broken SQL foreign keys")
+        if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+            raise StoreFailure("physical store SQLite integrity check failed")
+        state = self.get_meta("state")
+        if state == "AUDIT_PENDING":
+            self._set_meta("state", "COMMITTED")
+            self.db.commit()
+            status = self.db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+            if status is not None and status[0] != 0:
+                raise StoreFailure("physical store WAL checkpoint could not finish")
+        elif state != "COMMITTED":
+            raise StoreFailure("full audit requested for an unbuilt store")
         return result
 
     def _file(self, family: str):

@@ -30,7 +30,10 @@ def measured_economics(reports, *, source_bytes: int, committed_original_source:
         warm=_warm(r)
         cold=[x["elapsed_s"] for x in raw.get("fresh_process_probes",[])
               if x.get("grade")=="PHYSICAL_REOPEN_NOT_SOURCE_AUTHORIZED_NATIVE_I03"]
-        rebuild=st["build_from_already_saved_c11"]+st.get("publish_commit",0)
+        # New stores are not COMMITTED until the digest audit finishes.
+        # Do not double-charge audit+seal as a pre-audit publication step.
+        rebuild=st["build_from_already_saved_c11"]+st.get(
+            "pre_audit_count_checks",st.get("publish_commit",0))
         audit=st.get("full_corpus_body_audit",0)
         permanent=m["required_permanent_bytes"]
         number=warm["distinct_requested"] if warm else 0

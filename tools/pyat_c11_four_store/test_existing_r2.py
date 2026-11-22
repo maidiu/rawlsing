@@ -53,6 +53,21 @@ class ExistingR2Tests(unittest.TestCase):
             path.write_text(json.dumps(value))
             self.assertFalse(custody.check_current(custody.pins))
 
+    def test_other_decision_field_edit_also_revokes_snapshot(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            path,value=self.fixture(root)
+            custody=R2Custody(
+                path,"SRC04",required_host="MainMac",
+                required_purpose="P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+            )
+            self.assertTrue(custody.check_current(custody.pins))
+            # The old guard only compared a handful of identity fields,
+            # incorrectly allowing an out-of-band permission-state change.
+            value["waves"]["SRC04"]["status"]="REVOKED"
+            path.write_text(json.dumps(value))
+            self.assertFalse(custody.check_current(custody.pins))
+
     def test_wrong_host_refused(self):
         with tempfile.TemporaryDirectory() as t:
             path,_=self.fixture(Path(t))

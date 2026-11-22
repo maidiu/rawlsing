@@ -55,6 +55,12 @@ class R2Custody:
 
     def check_current(self, held) -> bool:
         try:
+            # This single benchmark run was admitted against an exact R2
+            # document. A later edit anywhere in that decision (including a
+            # revocation outside decision_ref) requires fresh admission; do
+            # not silently keep a stale positive snapshot alive.
+            if hashlib.sha256(self.path.read_bytes()).hexdigest() != self._original_decision_sha256:
+                return False
             current=_load(self.path)
             w=current["waves"][self.source_id]
             return (
@@ -180,6 +186,10 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
         ]
         if len(historical)!=1 or len(positive)!=1:
             raise StoreFailure("exact historical DEFER/positive source use authority unavailable")
+        held_use_scope = positive[0].scope_envelope.get("scope")
+        if (not isinstance(held_use_scope, Mapping)
+                or held_use_scope.get("scope") != use.get("scope")):
+            raise StoreFailure("source-specific universe-use scope label mismatch")
         def current_universe_use():
             try:
                 return (
@@ -206,7 +216,7 @@ def read_recorded_operation(verified, *, custody:R2Custody, operation_file:Path,
             operation=operation.authorized_operation,
             risk_ref=operation.recorded_risk_ref,
             interpretation=operation.interpretation,
-            scope=use["scope"],
+            scope=held_use_scope,
             current_verifier=current_universe_use,
         )
         # This is the original RecordedRoutingPlan field already consumed by

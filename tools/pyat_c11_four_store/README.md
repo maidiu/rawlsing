@@ -42,13 +42,60 @@ Execute once from anywhere:
 
     PYAT_BENCH_PYTHON=/path/to/your/rawlsing/python sh tools/pyat_c11_four_store/run_all.sh
 
-Use the existing Python environment with rawlsing_next imports, pyarrow and psutil. The script will not run pip, fetch anything, or install anything. The bundle.json schema is PYAT_FOUR_PERMANENT_STORE_BUNDLE@1, pointing to original estate_root, estate_path, held_pins, authority_provider, operations_provider and output_dir. Run an individual arm via run_all.sh --only H, --only S1, --only S2 or --only S3. Physical-only sourcefree smoke tests: python -m tools.pyat_c11_four_store.runner --self-test.
+Use the existing Python environment with rawlsing_next imports, pyarrow and psutil. The script will not run pip, fetch anything, or install anything. The bundle.json schema is PYAT_FOUR_PERMANENT_STORE_BUNDLE@1, pointing to original estate_root, estate_path, held_pins, authority_provider, operations_provider and output_dir. The existing launcher already implements four independent commands:
+```sh
+sh tools/pyat_c11_four_store/run_all.sh --only H
+sh tools/pyat_c11_four_store/run_all.sh --only S1
+sh tools/pyat_c11_four_store/run_all.sh --only S2
+sh tools/pyat_c11_four_store/run_all.sh --only S3
+```
+For two machines, one may run H/S1 and the other S2/S3, **only after each machine has independently valid original-source custody and the exact same saved release**. The bundled recorded R2 decision is pinned to MainMac, **not automatically transferable to another host**; a second machine without an eligible original decision must HOLD, not reuse MainMac authority. Every machine needs a full Rawlsing source checkout at the same SHA, its own local `bundle.json`, the original linked estate, sufficient disk space and distinct output directories. When two invocations start in the same second, automatically generated run IDs include microseconds and PID to prevent output collisions; explicitly configured `run_id` must be unique to each invocation. A successful single arm returns success with a clearly marked SINGLE_ARM status; it cannot be used to claim four-way parity. The existing runner does **not** automatically merge the four reports across hosts. Compare the emitted source identities, physical probe hashes and original native results across computers before asserting parity, and keep machine-specific performance as different host measurements. The self-test command runs physical-store, sourcefree end-to-end and recorded-R2 guard tests: python -m tools.pyat_c11_four_store.runner --self-test.
 
 The four-arm launcher refuses missing original held pins/current rights, altered saved files or manifest, incomplete families, wrong event locators, corrupt compressed canonical bodies, lost exact refs, SHA256 identity collisions, an exhausted resource ceiling, or insufficient free disk. It does NOT silently reuse a fabricated new source/operation grant.
 
+## Resume the original issued Q103 without rebuilding H/S2/S3
+
+If the original arm's physical build and complete thirteen-family body audit
+finished, but the later native I03 call failed, **keep the original
+`ARM/permanent.sqlite`, `ARM/report.json` and run-level
+`held_source_identity.json`**. They are inputs, not expendable scratch.
+
+After updating the checkout to the exact repaired HEAD, execute ONLY the
+already-issued native query against the previously built arm, for example:
+
+```sh
+PYAT_BENCH_CONFIG="/ABSOLUTE/PATH/to/bundle.json" \
+  sh tools/pyat_c11_four_store/run_all.sh \
+  --native-only --only H \
+  --existing-run "/ABSOLUTE/PATH/output/20261121T191049"
+```
+
+This runs **zero physical builds and zero earlier SQL probe batches**.
+It reopens the existing SQLite with `mode=ro` and `query_only=ON`;
+verifies the original held source/manifest, rechecks all thirteen body digests
+against the original report, reconstructs the exact authorized issued operation
+from the original private R2/Q103 documents, then executes the existing I03
+and S04/optional FF01 consumers once. There is **no alternate scientific
+issuer or source grant**. Original-source preflight and original Q103
+construction can still take time; the former full data conversion is skipped.
+
+Output is isolated under
+`EXISTING_RUN/native_replays/H-TIMESTAMP-PID/native_report.json` and
+`progress.jsonl`. The previous `H/report.json`, `comparison.json`,
+SQLite and original saved source remain untouched. A failed replay keeps
+a typed failure receipt; it does not rewrite the old report or claim completed
+four-way parity. Use `--only S2` or `--only S3` with the corresponding
+completed original run folder to replay those arms. Do **not** run against an
+unaudited, `BUILDING` or `AUDIT_PENDING` store.
+
+An original R2 decision authorizing `MainMac` **does not authorize a
+different host**. Copying the SQLite and the decision to another machine
+does not bypass host/custody/source rights. The benchmark remains a test-only
+native reader adapter, not protected native/scientific acceptance.
+
 ## Emissions and persisted results
 
-Each run goes to OUTPUT_DIR/RUN_ID. The common progress.jsonl is flushed while scanning original files; each of H/S1/S2/S3 independently writes:
+Each run goes to OUTPUT_DIR/RUN_ID. The common progress.jsonl is flushed while scanning original files; each of H/S1/S2/S3 independently writes. **CPU telemetry is live**: the arm's `progress.jsonl` emits `resources` approximately every two seconds and `resources_final` at shutdown with `cpu_percent_one_core` (may exceed 100% for multicore activity), `cpu_percent_host_capacity` (normalized by logical CPU count), sampled CPU user/system seconds, RSS and disk. Final `report.json.resources` includes peak and average CPU percentages plus sampled CPU seconds; `summary.csv` includes average/peak one-core CPU percentages. These are sampled process-tree measurements that may miss processes that begin and exit between samples, not kernel-level whole-run accounting.
 
 - progress.jsonl, streaming and flushed JSON stage/row/family/timing/RSS/disk events plus unbuffered terminal output.
 - permanent.sqlite, with source metadata, indexed records and result tables (H still requires original Parquet).
@@ -60,7 +107,7 @@ A completed physical-only test is **not** an answer to the scientific/consumer t
 
 ## Resource and privacy discipline
 
-Output must be on a large local volume: preflight reserves at least 12 GiB free or 5× original estate retained bytes, whichever is greater. The process-tree RSS cap is 6 GiB; arms run sequentially. The live sampler records maximum output directory size (not a complete total of separately retained original source or filesystem-level temporary space), so report that distinction honestly. Existing original saved files are never modified or deleted. Any FAILED/HELD variant retains a trace and an unfinished SQLite marked BUILDING, which will not be considered a committed valid store. SQLite databases should be copied while closed, by SQLite backup API, or with a correct WAL checkpoint; the script checkpoints before readback. Do not run WAL over NFS. Do NOT commit bundle.json, original survey bytes, authority credentials, private result SQLite files or progress logs to GitHub.
+Output must be on a large local volume: preflight reserves at least 12 GiB free or 5× original estate retained bytes, whichever is greater. The process-tree RSS cap is 6 GiB; arms run sequentially. The live sampler records maximum output directory size (not a complete total of separately retained original source or filesystem-level temporary space), so report that distinction honestly. Existing original saved files are never modified or deleted. Any FAILED/HELD variant retains a trace and an unfinished SQLite marked BUILDING, which will not be considered a committed valid store. A fully constructed store remains AUDIT_PENDING until all thirteen complete canonical body digests, event/identity posting counts and SQL integrity checks pass; a killed build cannot be cold-opened as COMMITTED. The original R2 decision document is pinned byte-exact for each run, and any file edit requires new admission. SQLite databases should be copied while closed, by SQLite backup API, or with a correct WAL checkpoint; the script checkpoints before readback. Do not run WAL over NFS. Do NOT commit bundle.json, original survey bytes, authority credentials, private result SQLite files or progress logs to GitHub.
 
 ## Evidentiary limits and exact next milestone
 

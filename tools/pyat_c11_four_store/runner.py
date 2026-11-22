@@ -68,12 +68,28 @@ class EventLogger:
                    arm=self.arm, stage=event.get("stage","event"),
                    family=event.get("family",""), completed=event.get("completed",""),
                    elapsed_s=event["elapsed_s"])
+        if "cpu_percent_one_core" in event:
+            # Live terminal telemetry as well as durable JSONL fields.
+            msg += (" cpu={:.1f}%/core host={:.1f}%"
+                    " ({:d} logical CPUs) rss={:.2f}GiB").format(
+                event["cpu_percent_one_core"],
+                event["cpu_percent_host_capacity"],
+                event["logical_cpus"],
+                event.get("rss_bytes",0)/(1024**3),
+            )
         print(msg, flush=True)
     def close(self):
         self._fh.close()
 
 class Resources:
-    """Measures process+child RSS and output directory disk every 0.5 seconds."""
+    """Sample process-tree CPU, RSS and local output size every 0.5 seconds.
+
+    CPU percentage is relative to ONE logical core; a multithreaded process
+    can exceed 100%. Dividing by logical_cpus gives percent of the machine's
+    advertised logical-CPU capacity. CPU seconds are observed increments
+    since THIS run's admission, not the parent Python process's lifetime.
+    Short-lived children that begin and exit between samples are not counted.
+    """
     def __init__(self, target: Path, emit: EventLogger, ceiling: int = MAX_RSS):
         self.target, self.emit, self.ceiling = target, emit, ceiling
         self.peak_rss = 0
@@ -84,54 +100,128 @@ class Resources:
         self.peak_sampled_cpu_system_s = 0.0
         self.peak_sampled_io_read_bytes = 0
         self.peak_sampled_io_write_bytes = 0
+        self.latest_cpu_percent_one_core = 0.0
+        self.peak_cpu_percent_one_core = 0.0
+        self.logical_cpus = 1
+        self.started = None
+        self._previous_wall = None
+        self._process_cpu = {}
         self._stop = threading.Event()
-        self._thread = threading.Thread(target=self._loop,daemon=True)
+        self._thread = threading.Thread(target=self._loop, daemon=True)
         self._proc = None
+
     def __enter__(self):
         try:
             import psutil
             self._proc = psutil.Process(os.getpid())
+            root_cpu = self._proc.cpu_times()
+            self._process_cpu[(self._proc.pid, self._proc.create_time())] = (
+                root_cpu.user, root_cpu.system
+            )
+            self.logical_cpus = psutil.cpu_count(logical=True) or 1
         except ImportError as exc:
-            raise StoreFailure("psutil required for verified process-tree resource accounting") from exc
+            raise StoreFailure(
+                "psutil required for verified process-tree resource accounting"
+            ) from exc
+        self.started = self._previous_wall = time.monotonic()
         self._thread.start()
         return self
+
     def __exit__(self, *args):
         self._stop.set()
-        self._thread.join(timeout=3)
+        # Never leave a sampler emitting into a closed EventLogger.
+        self._thread.join()
+        # Even short (<0.5 s) arms get a final CPU observation.
+        self._sample(final=True)
+
+    def _sample(self, *, final: bool = False):
+        import psutil
+        try:
+            procs = [self._proc] + self._proc.children(recursive=True)
+            rss = 0
+            cpu_user_delta, cpu_system_delta = 0.0, 0.0
+            io_read, io_write = 0, 0
+            for process in procs:
+                try:
+                    if not process.is_running():
+                        continue
+                    rss += process.memory_info().rss
+                    times = process.cpu_times()
+                    identity = (process.pid, process.create_time())
+                    # Parent starts at a measured baseline. A newly
+                    # discovered child started during this observation
+                    # interval, so its first observed CPU counts from zero.
+                    old = self._process_cpu.get(identity, (0.0, 0.0))
+                    cpu_user_delta += max(0.0, times.user-old[0])
+                    cpu_system_delta += max(0.0, times.system-old[1])
+                    self._process_cpu[identity] = (times.user, times.system)
+                except (psutil.NoSuchProcess, psutil.ZombieProcess,
+                        psutil.AccessDenied):
+                    continue
+                try:
+                    io = process.io_counters()
+                    io_read += io.read_bytes
+                    io_write += io.write_bytes
+                except (psutil.Error, OSError, AttributeError):
+                    # macOS may not support every per-process I/O counter.
+                    pass
+
+            now = time.monotonic()
+            elapsed = max(now-self._previous_wall, 1e-9)
+            self._previous_wall = now
+            self.peak_sampled_cpu_user_s += cpu_user_delta
+            self.peak_sampled_cpu_system_s += cpu_system_delta
+            cpu_percent = 100.0*(cpu_user_delta+cpu_system_delta)/elapsed
+            self.latest_cpu_percent_one_core = cpu_percent
+            self.peak_cpu_percent_one_core = max(
+                self.peak_cpu_percent_one_core, cpu_percent
+            )
+            self.peak_rss = max(self.peak_rss, rss)
+            self.peak_disk = max(self.peak_disk, size_tree(self.target))
+            self.sample_count += 1
+            self.peak_sampled_io_read_bytes = max(
+                self.peak_sampled_io_read_bytes, io_read
+            )
+            self.peak_sampled_io_write_bytes = max(
+                self.peak_sampled_io_write_bytes, io_write
+            )
+            if rss > self.ceiling:
+                self.abort_reason = "process-tree RSS crossed 6 GiB cap"
+            if shutil.disk_usage(self.target).free < 2*1024**3:
+                self.abort_reason = "output filesystem has less than 2 GiB free"
+
+            if final or self.sample_count % 4 == 0:
+                self.emit(
+                    stage="resources_final" if final else "resources",
+                    rss_bytes=rss,
+                    peak_rss_bytes=self.peak_rss,
+                    peak_disk_bytes=self.peak_disk,
+                    cpu_percent_one_core=round(cpu_percent, 2),
+                    cpu_percent_host_capacity=round(
+                        cpu_percent/self.logical_cpus, 2
+                    ),
+                    peak_cpu_percent_one_core=round(
+                        self.peak_cpu_percent_one_core, 2
+                    ),
+                    sampled_cpu_user_s=round(
+                        self.peak_sampled_cpu_user_s, 3
+                    ),
+                    sampled_cpu_system_s=round(
+                        self.peak_sampled_cpu_system_s, 3
+                    ),
+                    logical_cpus=self.logical_cpus,
+                    cpu_measurement_grade="SAMPLED_PROCESS_TREE",
+                    samples=self.sample_count,
+                )
+        except Exception as exc:
+            self.abort_reason = "resource sampling failed: " + str(exc)
+
     def _loop(self):
         while not self._stop.wait(0.5):
-            try:
-                procs = [self._proc]+self._proc.children(recursive=True)
-                rss = sum(p.memory_info().rss for p in procs if p.is_running())
-                self.peak_rss = max(self.peak_rss,rss)
-                self.peak_disk = max(self.peak_disk,size_tree(self.target))
-                self.sample_count += 1
-                cpu_user,cpu_system,io_read,io_write = 0.,0.,0,0
-                for process in procs:
-                    try:
-                        t=process.cpu_times()
-                        cpu_user+=t.user
-                        cpu_system+=t.system
-                        io=process.io_counters()
-                        io_read+=io.read_bytes
-                        io_write+=io.write_bytes
-                    except Exception:
-                        continue
-                self.peak_sampled_cpu_user_s=max(self.peak_sampled_cpu_user_s,cpu_user)
-                self.peak_sampled_cpu_system_s=max(self.peak_sampled_cpu_system_s,cpu_system)
-                self.peak_sampled_io_read_bytes=max(self.peak_sampled_io_read_bytes,io_read)
-                self.peak_sampled_io_write_bytes=max(self.peak_sampled_io_write_bytes,io_write)
-                if rss > self.ceiling:
-                    self.abort_reason = "process-tree RSS crossed 6 GiB cap"
-                if shutil.disk_usage(self.target).free < 2*1024**3:
-                    self.abort_reason = "output filesystem has less than 2 GiB free"
-                if self.sample_count % 20 == 0:
-                    self.emit(stage="resources", rss_bytes=rss,
-                              peak_rss_bytes=self.peak_rss,
-                              peak_disk_bytes=self.peak_disk)
-            except Exception as exc:
-                self.abort_reason = "resource sampling failed: "+str(exc)
+            self._sample()
+            if self.abort_reason:
                 break
+
     def check(self):
         if self.abort_reason:
             raise StoreFailure(self.abort_reason)
@@ -320,8 +410,13 @@ def _native_operations(config: dict, root: Path, source: InputEstate, emit):
     emit(stage="issued_operations",completed=len(supplied))
     return supplied,"ORIGINAL_ISSUED_OPERATION_OBJECTS_PROVIDED_BY_EXTERNAL_OWNER"
 
-def _engine_report(store: Store, source: InputEstate, issued: list, emit, resources, config):
-    report = {"physical_probes":[],"native":[],"native_status":None,"evidence_recovery":[]}
+def _engine_report(store: Store, source: InputEstate, issued: list, emit, resources, config,
+                   partial: dict | None = None):
+    # Write progress into the arm's persisted report incrementally. A failure
+    # in the downstream native evaluator must not discard completed 100-probe,
+    # cold-reopen or evidence-query measurements.
+    report = partial if partial is not None else {}
+    report.update({"physical_probes":[],"native":[],"native_status":None,"evidence_recovery":[]})
     refs=store.get_question_refs(min(100,int(config.get("physical_question_limit",100))))
     for n,ref in enumerate(refs):
         t=time.perf_counter()
@@ -473,14 +568,36 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
     config=json.loads(config_path.read_text())
     if config.get("schema") != "PYAT_FOUR_PERMANENT_STORE_BUNDLE@1":
         raise StoreFailure("wrong bundle/config contract")
+    if only is not None and only not in ARMS:
+        raise StoreFailure("unrecognized individual physical arm")
+    # Validate before any source read, expensive build, or partial output.
+    # Zero/negative sizes formerly produced division-by-zero, backwards
+    # slicing or a nonsensical cold-probe count.
+    numeric_bounds = {
+        "batch_commit": (2048,1),
+        "physical_question_limit": (100,1),
+        "evidence_sample_limit": (100000,1),
+        "cold_reopen_limit": (10,0),
+        "cold_worker_timeout_seconds": (600,1),
+        "minimum_free_gib": (12,0),
+    }
+    for field,(default,lower) in numeric_bounds.items():
+        value=config.get(field,default)
+        if type(value) is not int or value<lower:
+            raise StoreFailure(field+" must be an integer >= "+str(lower))
     output=resolve(root,os.environ.get("PYAT_BENCH_OUTPUT_DIR",config["output_dir"]))
     output.mkdir(parents=True,exist_ok=True)
-    run_tag=config.get("run_id") or datetime.now().strftime("%Y%m%dT%H%M%S")
+    # Two concurrent --only launches must never collide by second-resolution ID.
+    # Explicit run_id remains supported and intentionally refuses overwrites.
+    run_tag=config.get("run_id") or (
+        datetime.now().strftime("%Y%m%dT%H%M%S%f")+"-"+str(os.getpid())
+    )
     run_dir=output/run_tag
     run_dir.mkdir(parents=False,exist_ok=False)
     common=EventLogger(run_dir/"progress.jsonl","COMMON")
     result={"schema":BENCHMARK_SCHEMA,"status":"RUNNING","started":utc(),
             "config_sha256":digest(config_path.read_bytes()),
+            "report_directory":str(run_dir),
             "host":_host_details(),"arms":{},"comparison":None}
     try:
         with Resources(run_dir,common) as common_r:
@@ -507,6 +624,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     "source_identity":source.identity,"host":result["host"],
                     "stages_s":{}, "metrics":{}}
             s=None
+            watch=None
             try:
                 with Resources(folder,emit) as watch:
                     t=time.perf_counter()
@@ -517,8 +635,10 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     report["stages_s"]["build_from_already_saved_c11"]=round(time.perf_counter()-t,3)
                     t=time.perf_counter()
                     s.finish(source.manifest,records)
-                    report["stages_s"]["publish_commit"]=round(time.perf_counter()-t,3)
+                    report["stages_s"]["pre_audit_count_checks"]=round(time.perf_counter()-t,3)
                     t=time.perf_counter()
+                    # Only THIS operation may seal the complete body digest
+                    # and SQL posting counts as a cold-readable store.
                     audited=s.audit_families(emit)
                     report["stages_s"]["full_corpus_body_audit"]=round(time.perf_counter()-t,3)
                     report["family_records"]=audited
@@ -528,17 +648,31 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                             create=False,source_identity=source.identity,progress=emit)
                     report["stages_s"]["fresh_connection_open"]=round(time.perf_counter()-t,4)
                     t=time.perf_counter()
-                    report["query_report"]=_engine_report(s,source,issued,emit,watch,config)
+                    report["query_report"]={}
+                    _engine_report(s,source,issued,emit,watch,config,
+                                   partial=report["query_report"])
                     report["stages_s"]["queries_and_persisted_results"]=round(time.perf_counter()-t,3)
                     report["metrics"]=s.stats()
                     report["metrics"]["required_permanent_bytes"] = (
                         source.source_bytes + size_tree(folder) if arm=="H" else size_tree(folder))
                     report["metrics"]["source_parquet_required_for_queries"]=arm=="H"
                     watch.check()
+                watch.check()
+                cpu_time=(watch.peak_sampled_cpu_user_s+
+                          watch.peak_sampled_cpu_system_s)
+                cpu_elapsed=max(time.monotonic()-watch.started,1e-9)
                 report["resources"]={"peak_process_tree_rss_bytes":watch.peak_rss,
                                      "peak_output_disk_bytes":watch.peak_disk,
-                                     "sampled_cpu_user_s":watch.peak_sampled_cpu_user_s,
-                                     "sampled_cpu_system_s":watch.peak_sampled_cpu_system_s,
+                                     "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+                                     "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+                                     "peak_cpu_percent_one_core":round(watch.peak_cpu_percent_one_core,2),
+                                     "avg_cpu_percent_one_core":round(100*cpu_time/cpu_elapsed,2),
+                                     "peak_cpu_percent_host_capacity":round(
+                                         watch.peak_cpu_percent_one_core/watch.logical_cpus,2),
+                                     "avg_cpu_percent_host_capacity":round(
+                                         100*cpu_time/cpu_elapsed/watch.logical_cpus,2),
+                                     "logical_cpus":watch.logical_cpus,
+                                     "cpu_measurement_grade":"SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN",
                                      "sampled_io_read_bytes":watch.peak_sampled_io_read_bytes,
                                      "sampled_io_write_bytes":watch.peak_sampled_io_write_bytes,
                                      "samples":watch.sample_count}
@@ -546,6 +680,31 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                 report["completed"]=utc()
                 emit(stage="arm_complete",completed=arm)
             except BaseException as exc:
+                # An unqualified native failure must still leave the physical
+                # observations and sampled resource footprint inspectable.
+                if watch is not None and watch.started is not None:
+                    elapsed=max(time.monotonic()-watch.started,1e-9)
+                    cpu_time=(watch.peak_sampled_cpu_user_s+
+                              watch.peak_sampled_cpu_system_s)
+                    report["resources"]={
+                        "peak_process_tree_rss_bytes":watch.peak_rss,
+                        "peak_output_disk_bytes":watch.peak_disk,
+                        "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+                        "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+                        "peak_cpu_percent_one_core":round(
+                            watch.peak_cpu_percent_one_core,2),
+                        "avg_cpu_percent_one_core":round(100*cpu_time/elapsed,2),
+                        "peak_cpu_percent_host_capacity":round(
+                            watch.peak_cpu_percent_one_core/watch.logical_cpus,2),
+                        "avg_cpu_percent_host_capacity":round(
+                            100*cpu_time/elapsed/watch.logical_cpus,2),
+                        "logical_cpus":watch.logical_cpus,
+                        "cpu_measurement_grade":
+                            "SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN",
+                        "samples":watch.sample_count,
+                    }
+                if report.get("query_report") and issued:
+                    report["query_report"]["native_status"]="NATIVE_REFUSED"
                 report["status"]="FAILED_OR_HELD"
                 report["error_type"]=type(exc).__name__
                 report["error"]=str(exc)
@@ -585,6 +744,19 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
             else:
                 result["status"]=("SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY" if issued
                                   else "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+        elif only is not None and only in completed:
+            result["comparison"]={
+                "four_arm_complete":False,
+                "selected_arm":only,
+                "source_family_body_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "physical_query_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "native_i03_fact_parity":"NOT_COMPARABLE_SINGLE_ARM",
+                "automatic_canonical_selection":"NOT_AUTHORIZED",
+            }
+            result["status"]=(
+                "SINGLE_ARM_SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY" if issued
+                else "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD"
+            )
         else:
             result["status"]="INCOMPLETE_ARMS_NO_WINNER"
         from .economics import measured_economics
@@ -596,7 +768,8 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                 writer=csv.writer(f)
                 writer.writerow(["arm","status","required_permanent_bytes",
                                  "build_s","full_audit_s","query_s","peak_rss_bytes",
-                                 "native_issued"])
+                                 "native_issued","avg_cpu_percent_one_core",
+                                 "peak_cpu_percent_one_core","logical_cpus"])
                 for name,a in result["arms"].items():
                     st=a.get("stages_s",{});m=a.get("metrics",{})
                     writer.writerow([
@@ -605,7 +778,10 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                         st.get("full_corpus_body_audit"),
                         st.get("queries_and_persisted_results"),
                         a.get("resources",{}).get("peak_process_tree_rss_bytes"),
-                        len(a.get("query_report",{}).get("native",[]))
+                        len(a.get("query_report",{}).get("native",[])),
+                        a.get("resources",{}).get("avg_cpu_percent_one_core"),
+                        a.get("resources",{}).get("peak_cpu_percent_one_core"),
+                        a.get("resources",{}).get("logical_cpus"),
                     ])
         result["completed"]=utc()
         return result
@@ -625,26 +801,181 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
         common(stage="run_final",status=result["status"])
         common.close()
 
+def run_native_only(config_path: Path, existing_run_dir: Path, *, arm: str) -> dict:
+    """Replay ONLY already-issued native operations on one existing audited store.
+
+    Never call InputEstate.feed, Store(create=True), physical probe builders,
+    or store_result. Keep both the original SQLite and original report intact.
+    All authority/source validation and original operation reconstruction
+    still occur against current ORIGINAL held documents.
+    """
+    if arm not in ARMS:
+        raise StoreFailure("native-only replay requires exactly one known arm")
+    config_path=Path(config_path).resolve()
+    config=json.loads(config_path.read_text())
+    if config.get("schema")!="PYAT_FOUR_PERMANENT_STORE_BUNDLE@1":
+        raise StoreFailure("wrong bundle/config contract")
+    prior=Path(existing_run_dir).expanduser().resolve()
+    if not prior.is_dir():
+        raise StoreFailure("exact existing-run directory is missing")
+    db_path=prior/arm/"permanent.sqlite"
+    original_report_path=prior/arm/"report.json"
+    identity_path=prior/"held_source_identity.json"
+    if not db_path.is_file() or not original_report_path.is_file() or not identity_path.is_file():
+        raise StoreFailure("existing audited arm, report and original held identity required")
+    prior_report=json.loads(original_report_path.read_text())
+    prior_identity=json.loads(identity_path.read_text())
+    if (prior_report.get("arm")!=arm
+            or prior_report.get("source_identity")!=prior_identity
+            or set(prior_report.get("family_records",{}))!=set(FAMILIES)
+            or "full_corpus_body_audit" not in prior_report.get("stages_s",{})):
+        raise StoreFailure("original arm report lacks successful thirteen-family audit evidence")
+    # The original report may say FAILED_OR_HELD because only its subsequent
+    # native call failed. The complete physical audit is re-executed below.
+    old_stat=db_path.stat()
+    out_root=prior/"native_replays"
+    out_root.mkdir(exist_ok=True)
+    replay_dir=out_root/(arm+"-"+datetime.now().strftime("%Y%m%dT%H%M%S%f")+"-"+str(os.getpid()))
+    replay_dir.mkdir(exist_ok=False)
+    emit=EventLogger(replay_dir/"progress.jsonl","NATIVE_ONLY_"+arm)
+    report={
+        "schema":"PYAT_C11_EXISTING_STORE_NATIVE_REPLAY@1",
+        "arm":arm,"started":utc(),
+        "status":"RUNNING",
+        "previous_run":str(prior),
+        "original_store":str(db_path),
+        "original_store_size_bytes":old_stat.st_size,
+        "previous_arm_status":prior_report.get("status"),
+        "report_directory":str(replay_dir),
+        "host":_host_details(),
+        "results":[],"stages_s":{},
+        "no_store_rebuild":True,
+        "original_store_open_mode":"SQLITE_READ_ONLY",
+    }
+    store=None
+    watch=None
+    try:
+        with Resources(replay_dir,emit) as watch:
+            st=time.perf_counter()
+            source=InputEstate(config,config_path.parent,emit)
+            report["stages_s"]["source_admission"]=round(time.perf_counter()-st,3)
+            if source.identity!=prior_identity:
+                raise StoreFailure("existing physical run and currently admitted saved source differ")
+            store=Store(arm,db_path,source.estate_path,create=False,
+                        source_identity=source.identity,progress=emit,read_only=True)
+            report["source_identity"]=source.identity
+            emit(stage="existing_read_only_store",completed=arm)
+            st=time.perf_counter()
+            audited=store.audit_families(emit)
+            report["stages_s"]["repeat_full_body_audit"]=round(time.perf_counter()-st,3)
+            if audited!=prior_report["family_records"]:
+                raise StoreFailure("existing store full audit differs from its original run")
+            report["family_records"]=audited
+            report["original_corpus_verified_against_existing_report"]=True
+            watch.check()
+            st=time.perf_counter()
+            issued,issuer_grade=_native_operations(config,config_path.parent,source,emit)
+            report["stages_s"]["original_issuer_reconstruction"]=round(time.perf_counter()-st,3)
+            report["issuer_grade"]=issuer_grade
+            if not issued:
+                raise StoreFailure("native-only run requires an originally issued operation")
+            report["original_issued_operations"]=len(issued)
+            for op in issued:
+                watch.check()
+                name=op.get("name",op["query"].ref.key)
+                st=time.perf_counter()
+                val=execute_issued(store,source.verified,op)
+                report["results"].append({
+                    "name":str(name),
+                    "output":val,
+                    "elapsed_s":round(time.perf_counter()-st,3),
+                })
+                emit(stage="native_only_complete",completed=str(name))
+            report["native_hash"]=digest(canonical([
+                (item["name"],item["output"]) for item in report["results"]
+            ]).encode())
+            source.verified._live()
+            watch.check()
+        watch.check()
+        cpu_time=watch.peak_sampled_cpu_user_s+watch.peak_sampled_cpu_system_s
+        elapsed=max(time.monotonic()-watch.started,1e-9)
+        report["resources"]={
+            "peak_process_tree_rss_bytes":watch.peak_rss,
+            "peak_output_disk_bytes":watch.peak_disk,
+            "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+            "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+            "avg_cpu_percent_one_core":round(100*cpu_time/elapsed,2),
+            "peak_cpu_percent_one_core":round(watch.peak_cpu_percent_one_core,2),
+            "logical_cpus":watch.logical_cpus,
+            "samples":watch.sample_count,
+            "cpu_measurement_grade":"SAMPLED_PROCESS_TREE",
+        }
+        report["status"]="NATIVE_ONLY_TEST_ADAPTER_EXECUTED"
+    except BaseException as exc:
+        report["status"]="NATIVE_ONLY_REFUSED_OR_FAILED"
+        report["error_type"]=type(exc).__name__
+        report["error"]=str(exc)
+        report["traceback"]=traceback.format_exc(limit=14)
+        emit(stage="native_only_failed_or_held",error_type=type(exc).__name__)
+    finally:
+        if store is not None:
+            store.close()
+        final_stat=db_path.stat()
+        report["original_sqlite_stat_unchanged"]=(
+            old_stat.st_size==final_stat.st_size
+            and old_stat.st_mtime_ns==final_stat.st_mtime_ns
+        )
+        if not report["original_sqlite_stat_unchanged"]:
+            report["status"]="NATIVE_ONLY_REFUSED_OR_FAILED"
+            report["error"]="original SQLite size/mtime changed during supposedly read-only replay"
+        report["completed"]=utc()
+        (replay_dir/"native_report.json").write_text(
+            json.dumps(report,indent=2,default=str)+"\n"
+        )
+        emit(stage="native_only_final",status=report["status"])
+        emit.close()
+    return report
+
+
 def main(argv=None):
     p=argparse.ArgumentParser(description="Four permanent C11 stores, one command and separate reports")
     p.add_argument("--config",type=Path,default=Path("bundle.json"))
     p.add_argument("--only",choices=ARMS)
     p.add_argument("--self-test",action="store_true")
+    p.add_argument("--native-only",action="store_true",
+                   help="run issued native query against one existing completed SQLite, without rebuilding")
+    p.add_argument("--existing-run",type=Path,
+                   help="existing output/RUN_ID directory containing held_source_identity.json and ARM/permanent.sqlite")
     args=p.parse_args(argv)
     if args.self_test:
         import unittest
-        from . import test_stores
-        suite=unittest.defaultTestLoader.loadTestsFromModule(test_stores)
+        from . import test_existing_r2, test_runner_sourcefree, test_stores
+        suite=unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromModule(module)
+            for module in (test_stores, test_existing_r2, test_runner_sourcefree)
+        )
         ret=unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if ret.wasSuccessful() else 1
     try:
+        if args.native_only:
+            if args.existing_run is None or args.only is None:
+                raise StoreFailure("--native-only requires --existing-run and --only ARM")
+            r=run_native_only(args.config,args.existing_run,arm=args.only)
+            print(canonical({
+                "result":r["status"],"report_dir":r["report_directory"],
+                "original_store":r["original_store"],
+            }),flush=True)
+            return 0 if r["status"]=="NATIVE_ONLY_TEST_ADAPTER_EXECUTED" else 2
+        if args.existing_run is not None:
+            raise StoreFailure("--existing-run only applies to --native-only")
         r=run(args.config,only=args.only)
         print(canonical({"result":r["status"],
-                         "report_dir":str(resolve(args.config.resolve().parent,
-                                json.loads(args.config.read_text())["output_dir"]))}),flush=True)
+                         "report_dir":r["report_directory"]}),flush=True)
         return 0 if r["status"] in (
             "SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY",
-            "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD") else 2
+            "PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD",
+            "SINGLE_ARM_SOURCE_STATIC_TEST_COMPLETE__NATIVE_TESTONLY",
+            "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD") else 2
     except Exception as exc:
         print("BENCHMARK_HOLD_OR_FAILURE "+type(exc).__name__+" "+str(exc),
               file=sys.stderr,flush=True)

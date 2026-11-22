@@ -81,6 +81,9 @@ class PhysicalStoresTest(unittest.TestCase):
                 store.add_row(fam,idx,row,0,idx,routing=routing)
             store.commit_batch()
         store.finish({"schema":"ANVIL_STREAM_C11_ESTATE@1"},self.expected)
+        self.assertEqual(store.get_meta("state"),"AUDIT_PENDING")
+        store.audit_families()
+        self.assertEqual(store.get_meta("state"),"COMMITTED")
         return store
 
     def test_all_four_exact_body_and_positive_queries(self):
@@ -108,6 +111,37 @@ class PhysicalStoresTest(unittest.TestCase):
                 reports[name]=[s.probe_query(ref)["digest"] for ref in self.qs]
                 s.close()
         self.assertEqual(len({tuple(v) for v in reports.values()}),1)
+
+    def _build_unsealed(self, name):
+        store=Store(name,self.home/(name+".sqlite"),self.home,
+                    create=True,source_identity=self.identity)
+        for fam,rows in self.data.items():
+            if name=="H":
+                store._pq[fam]=MockParquet(rows)
+            for idx,row in enumerate(rows):
+                routing=(self.qs[0],"RISK|set|"+"d"*64) if fam=="RoutingEligibilityFact" else None
+                store.add_row(fam,idx,row,0,idx,routing=routing)
+            store.commit_batch()
+        store.finish({"schema":"ANVIL_STREAM_C11_ESTATE@1"},self.expected)
+        return store
+
+    def test_unfinished_audit_cannot_publish_or_cold_reopen(self):
+        s=self._build_unsealed("S2")
+        self.assertEqual(s.get_meta("state"),"AUDIT_PENDING")
+        s.close()
+        with self.assertRaisesRegex(StoreFailure,"uncommitted or interrupted"):
+            Store("S2",self.home/"S2.sqlite",self.home,
+                  create=False,source_identity=self.identity)
+
+    def test_index_corruption_before_audit_never_publishes(self):
+        s=self._build_unsealed("S2")
+        s.db.execute("DELETE FROM events WHERE oid=?",(
+            s.find_id(self.data["RespondentEvent"][0]["ref"]),))
+        s.db.commit()
+        with self.assertRaisesRegex(StoreFailure,"event index lost"):
+            s.audit_families()
+        self.assertEqual(s.get_meta("state"),"AUDIT_PENDING")
+        s.close()
 
     def test_wrong_source_reopen_refuses(self):
         s=self.build("S2");s.close()
