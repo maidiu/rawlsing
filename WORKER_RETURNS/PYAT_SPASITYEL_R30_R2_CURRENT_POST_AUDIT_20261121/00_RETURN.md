@@ -1,0 +1,6 @@
+# PYAT-SPASITYEL R30 — SOURCE CURRENT after physical audit, owner-local differential
+
+**Controlling necessity:** #1006 explicitly binds four-arm physical measurement to an independently held original saved source/host/use CURRENT. Runner #1271 checks current source before admission and in source feed row groups, but its full audit/cold physical query and terminal report may continue after the external R2 decision is revoked. Do not label future sourcefree fixtures as original.
+**Baseline:** exact #1271 10ac8c3246816a52b6d153fe5a7c87f8d4272424. A new SOURCEFREE revocable InputEstate fixture runs actual S2 full 13-family writer/audit/reopen/physical query, revoking after audit or after query and demanding fail-closed terminal report; unchanged-current remains positive PHYSICAL_ONLY/ORIGINAL_ISSUER_HOLD.
+**RED before repair:** commit/test+workflow to isolated child and execute on GitHub Actions. Preserve exact JUnit and identify any test harness mistakes before editing production.
+**Eligible repair if RED on actual current owner:** test runner source.verified._live at postaudit, postquery, preterminal status and every arm start/finish; avoid extra source issuer, physical writer, benchmark architecture or actor. Preserve original CURRENT, no source credentials. Sourcefree only until independently authorized MainMac original saved estate is run.
