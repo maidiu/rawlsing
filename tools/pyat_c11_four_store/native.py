@@ -103,8 +103,8 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
             if (exact_ref(obj.scoped_respondent_ref).key != respondent_ref.key
                     or obj.empirical_universe_ref.key != universe_key):
                 raise StoreFailure("wrong-universe or respondent event")
-            if self._recorded_plan is not None:
-                obj = self._recorded_plan.event_transforms.get(ref, obj)
+            if reader._recorded_plan is not None:
+                obj = reader._recorded_plan.event_transforms.get(ref, obj)
             verified._live()
             yield obj
 
@@ -131,9 +131,9 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
             yield obj
 
     def routing(self, *, respondent, target, risk_set):
-        if self._recorded_plan is not None:
+        if reader._recorded_plan is not None:
             verified._live()
-            for obj in self._recorded_plan.facts_by_key.get(
+            for obj in reader._recorded_plan.facts_by_key.get(
                 (respondent,target,risk_set), ()
             ):
                 verified._live()
