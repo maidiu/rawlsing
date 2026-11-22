@@ -61,8 +61,8 @@ def main():
 
     acts = [int(i) for i in re.findall(r"(?m)^## (\d+)\. ", main)]
     must(acts == list(range(1, 24)), "current theory is not one 23-movement integrated whole")
-    must("## 23. Source-conservation, explicit alternatives, and what this HOME still does not settle" in main,
-         "whole lacks its reconstituted source-accountable circuit")
+    must("## 23. Historical inheritance without greenfield restoration" in main,
+         "R22 mature HOME lost its explicit source-custody and scope movement")
 
     # Source families MUST live inside the SAME existing theory document.
     section_family = lines_between(
@@ -138,201 +138,128 @@ def main():
             else:
                 check_exact_source_name(source_table[key], record[attr], key)
 
-    important = [
-        "same SES", "YOUR RESOURCES", "financial",
-        "no lawful counterpart", "SAY, DO and ATTEND", "ATTEND",
-        "bodily needs", "adult", "prelude", "source-root",
-        "message", "deletion", "third", "ordinary",
-        "source-qualified", "CONSTITUTIVE", "PYAT", "historical",
-        "God", "religious", "horizon", "relationship",
-        "more contextual differentiation", "public", "rent", "fallible",
-    ]
-    for phrase in important:
-        must(phrase.lower() in main.lower(),
-             "significant previously affirmed topic absent from active whole: " + phrase)
+    # R22 USER-CONTROLLING RECONSTITUTION:
+    # Keep original source tables IN the unchanged HOME foundation, but route
+    # provisional, early-only meta-product possibilities into exactly one
+    # subordinate OUTSIDE-HOME bank. The older R9/R10/R11 paragraph-by-paragraph
+    # word-for-word active-chapter requirements are historically wrong after
+    # the user's explicit 2026-11-22 redirection.
+    outside_path = CURRENT / "14_OUTSIDE_HOME_META_PREUX_AND_GREENFIELD_HOLD.md"
+    must(outside_path.is_file(), "new R22 outside-HOME provenance bank missing")
+    outside = outside_path.read_text(encoding="utf-8")
+    start = (CURRENT / "00_START_HERE.md").read_text(encoding="utf-8")
+    ledger = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8")
+    old_head = "c449dcd9ebdb9377a1910998cf279a886b2e120e"
 
-    # External #1278 reciprocal challenge: mere headings are insufficient;
-    # retain a deliberately bounded negative vocabulary across the *active*
-    # theory, not only the historical source foundation. This is text/source
-    # custody, NOT an execution of observer-to-observer world/actor machinery.
+    must(old_head in outside and old_head in ledger,
+         "exact prior complete HOME not preserved in routing ledger")
+    must("## N-T1 / Round Twenty-Two" in ledger,
+         "R22 controlling user correction not recorded in cumulative ledger")
+    must("14_OUTSIDE_HOME_META_PREUX_AND_GREENFIELD_HOLD.md" in start,
+         "canonical entrance not updated to explain outside HOME")
+    must("12_NEIGHBOR_THEORYMULCH_CURRENT.md" in start,
+         "canonical current positive HOME lost from entrypoint")
+
+    # The original literal complete speculative §§11 and 12 were moved as
+    # primary historical evidence, NOT silently discarded. Their pre-R22
+    # section titles and substantive source text must be in the outside bank.
     for phrase in (
-        "misrecognition", "actor-local", "false belief",
-        "human powers", "objectification", "institutional",
-        "cover remark", "world history",
-        "perceptual availability", "Nadia can believe",
-        "no computationally preferred", "source",
-        "exactly Nadia's socioeconomic", "YOUR RESOURCES", "message",
-        "scarce", "unvisited reference",
+        "### MOVED §11 / WHOLE",
+        "## 11. The social entrance: invitation, warrant, shared origins",
+        "### MOVED §12 / WHOLE",
+        "## 12. The platform can mediate experience or exploit",
+        "relational warrant", "one-for-one",
+        "mutual-aid", "real-world donations",
+        "time modes", "research", "monetization",
+        "terminal/TI-84", "first dinner",
+        "formal flourishing", "institution",
     ):
-        must(phrase.lower() in main.lower(),
-             "external reciprocal challenge unaccounted for: " + phrase)
+        must(phrase.lower() in outside.lower(),
+             "source-grounded outside-HOME candidate lost: " + phrase)
+    must("Source-conservation" in whole or "SOURCE-CONSERVATION" in whole,
+         "original corpus no longer carried in one master source foundation")
 
-    # R10 THEORY-CORPUS FUSION: each inherited source identity must be
-    # accounted for within the currently active unified HOME; historical
-    # R9 locations are not valid as current semantic pointers.
-    for record in prior["rows"]:
-        locations = record.get("fusion_home_sections", "")
-        must(bool(locations), "missing current source-to-whole position: " + record["id"])
-        for section_id in locations.split(","):
-            must(section_id.isdigit() and int(section_id) in acts,
-                 "invalid current section pointer: " + record["id"] + " -> " + section_id)
-        must(record.get("fusion_coverage_grade") ==
-             "AUTHOR_CLAIMED_CONCEPTUAL_PASSAGE_NOT_INDEPENDENT_SEMANTIC_PROOF",
-             "overclaimed no-drop proof grade: " + record["id"])
-
-    # These source-external concepts cut across the current HOME, not just its
-    # conservation appendix; presence alone is NOT proof of semantic sufficiency.
-    fused = (
-        "constrained openness", "care", "self-myth", "reality pressure",
-        "coherent", "contradiction", "ordinary", "time", "source-root",
-        "material", "inhibitions", "unchosen", "no predetermined",
-        "one-for-one", "non-possession", "deletion", "export",
-        "privacy", "attention regime", "recognition", "testimony",
-        "objectification", "institutions", "emotional",
-        "no lawful counterpart", "human access invitation",
-        "persona introduction", "family", "sibling",
-        "pay", "rent", "initial entry", "world",
-        "actor-local", "unvisited reference",
-    )
-    for phrase in fused:
-        must(phrase.lower() in main.lower(),
-             "cross-corpus generative concept absent from current whole: " + phrase)
-
-    # Latest direct user MULCH correction: the kernel/axis must illuminate
-    # *multiplying, historically generated contradiction*, not smoother
-    # personality coherence or automatic resolution.
-    must("### November 21 direct user theoretical clarification" in whole,
-         "latest direct user theoretical correction not conserved verbatim")
-    must("Nadia should only get *more* pulsatingly contradictorily alive" in whole,
-         "latest direct user operative correction missing")
-    for phrase in (
-        "generative axes", "germinal relations",
-        "more pulsatingly, specifically, multiply contradictory and alive",
-        "more concrete and internally multiple",
-        "contradictions acquire form, intensity, scale",
-        "not to reduce complexity",
-    ):
-        must(phrase.lower() in main.lower(),
-             "conceptual fusion still reduces Nadia's contradictions: " + phrase)
-
-    # UX-FIRST SOURCE COURT: authenticated original UX phenomena must appear
-    # inside the active one-HOME articulation, not only its source appendix.
-    ux_hits = list(re.finditer(r"(?m)^## (\d+)\. ", main))
-    ux_sections = {int(m.group(1)): main[m.start():(ux_hits[i+1].start() if i+1<len(ux_hits) else len(main))].lower() for i,m in enumerate(ux_hits)}
-    ux_requirements = {
-        1: ("the actual beginning is an invitation", "become neighbor", "first reward"),
-        2: ("the ux question", "first screen", "first contact"),
-        3: ("carry", "homologize", "bracket", "user-select", "habitus friction"),
-        4: ("enter → reveal concrete affordances", "omission delegates", "fractions"),
-        5: ("coarse shared gestalt", "attend", "recognition repertoire"),
-        6: ("calendar", "read-but-unanswered", "meaningful new action"),
-        7: ("terminal/ti-84", "outside", "messaging", "thread"),
-        8: ("self-presentation is not self-verification", "becoming someone", "spectacle"),
-        9: ("reachability", "route", "permission", "access can expand"),
-        10: ("relational warrant", "progress", "moral score"),
-        11: ("human access invitation", "credential", "persona", "commissioned roll"),
-        12: ("optional reflection", "export", "privacy", "real human"),
-        13: ("first-session sequence", "ordinary", "contact"),
-        14: ("endogenous interpersonal difficulty", "guilt", "platform"),
-        15: ("truth api", "public", "object"),
-        16: ("private psychology", "pyat", "person"),
-        17: ("care", "coercion"),
-        18: ("soracle-co", "psyche"),
-        19: ("objectification", "institution"),
-        20: ("self-myth", "reread"),
-        21: ("generative nucleus of the encounter", "history"),
-        22: ("the experience in one uninterrupted line", "independently"),
+    # The old cultural, material, phenomenal and psychological kernel remains
+    # positively IN the HOME, but its center is a *person*, not the early
+    # platform's growth strategy, institutional-transformation game or
+    # self-assessment engine. This is a routing court, not philosophical proof.
+    ux_hits = list(re.finditer(r"(?m)^## (\\d+)\\. ", main))
+    ux_sections = {int(m.group(1)): main[m.start():(ux_hits[i+1].start() if i+1<len(ux_hits) else len(main))].lower()
+                   for i, m in enumerate(ux_hits)}
+    governing = {
+        1: ("know someone", "independent"),
+        2: ("first knock", "prelude", "already"),
+        3: ("economic peer", "financial", "socioeconomic"),
+        4: ("say, do and attend", "attempt", "world"),
+        5: ("textual world", "attention", "perceptual"),
+        6: ("day does not wait", "absence", "world"),
+        7: ("door, message, absence", "messaging", "reachable"),
+        8: ("misrecognized", "reciprocity", "interpretation"),
+        9: ("social powers", "permission", "reachability"),
+        10: ("relationship becomes specific", "score", "attachment"),
+        11: ("another encounter possible", "introduction", "permission"),
+        12: ("human can be affected", "diagnoses", "human"),
+        13: ("generated by the day", "say, do and attend", "not"),
+        14: ("difficult encounters", "refusal", "ordinary"),
+        15: ("world history", "testimony", "object"),
+        16: ("not ux's jurisdiction", "pyat", "person"),
+        17: ("care and coercion", "labor", "care"),
+        18: ("contradictory psyche", "soracle-co", "history"),
+        19: ("objects, practices", "material", "meaning"),
+        20: ("person rereads herself", "interpretation", "psyche"),
+        21: ("coming to know someone whose life is not for you", "historically constituted", "ordinary"),
+        22: ("encounter in one continuous motion", "independently", "human"),
+        23: ("historical inheritance", "outside", "source"),
     }
-    for section, phrases in ux_requirements.items():
-        for phrase in phrases:
-            must(phrase in ux_sections[section], f"UX source shard missing in movement {section}: {phrase}")
-    must("### November 21 — direct user NEIGHBOR-UX jurisdiction" in whole, "UX correction source missing")
-    must("Jurisdiction and reciprocal horizon — NEIGHBOR-UX, not SORACLE-CO" in main, "UX ownership blurred")
-    must("SORACLE-CO is the distinct theorist and authority" in main, "CO psyche owner distinction blurred")
-    must("original sorok product and experiential courts" in main.lower(), "source UX court not grounded")
-
-    # The real-visitor-formation requirement is CONSTITUTIVE UX THEORY:
-    # psychological, historical-material, philosophical and theological
-    # motives must travel through the encounter's design, not sit outside it.
-    must("**The mechanics' constitutive reason.**" in main,
-         "UX became a value-neutral action grammar")
-    must("**The original philosophical and theological horizon remains part of the experience" in main,
-         "theology/philosophy excluded from the UX generative center")
-    formation_demands = {
-        3: ("class transposition is an experiential intervention",
-            "material equivalence"),
-        4: ("action decompression has a philosophical task",
-            "the human must actually think and act"),
-        5: ("finite attention is an epistemology made bodily",
-            "knowledge produces justice"),
-        8: ("reciprocity is also the visitor's encounter with their own non-sovereignty",
-            "formation through the other is not obedience"),
-        10: ("the visitor's formation is similarly plural",
-             "attachment, trust, health"),
-        12: ("the platform's political economy is not external to the spiritual wager",
-             "actual human"),
-        21: ("why this is rawlsing ux and not merely a sophisticated story interface",
-             "user-formation is a historically open possibility"),
-    }
-    for chapter, phrases in formation_demands.items():
+    for chapter, phrases in governing.items():
+        must(chapter in ux_sections, "missing reconstituted movement: " + str(chapter))
         for phrase in phrases:
             must(phrase in ux_sections[chapter],
-                 f"founding philosophy/user formation detached from movement {chapter}: {phrase}")
-    ledger = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8")
-    must("### UX-R10 / user correction — the philosophy must travel" in ledger,
-         "latest direct user philosophical-UX correction absent from existing ledger")
+                 f"mature encounter shard missing from movement {chapter}: {phrase}")
 
-    # UX Round 11: demand the actual generative philosophical/experiential
-    # collision at its source-bearing chapters, not a table of names or a
-    # bolt-on summary. Textual coverage remains author-level, NOT independent
-    # philosophical adjudication or executed person/world first consumer.
-    round11 = {
-        1: ("the original game-loop failure makes a philosophical demand",
-            "several native scales"),
-        3: ("the portal makes a difficult experiment",
-            "lexical recognition, strategic signaling"),
-        4: ("the distinction between demonstrated human faculty",
-            "one may succeed through luck"),
-        5: ("the phenomenal lens is the most dangerous instrument",
-            "more faithful rendition of the user's eye"),
-        6: ("historical hypercompression, high-intensity possibility",
-            "no event consumes the person"),
-        8: ("the reciprocal gaze becomes more serious",
-            "no participant is exhausted"),
-        10: ("the sharpest normative counterexample", "local norm"),
-        11: ("shared-origin social play", "retro-resolved precontact canon"),
-        12: ("a fourth party exists",
-             "preserve relational history while minimizing the dossier"),
-        13: ("one ordinary scene gives neighbor a dual obligation",
-             "ontic flesh versus phenomenal flesh"),
-        14: ("a lawful life includes event classes", "ordinary-life re-entry"),
-        15: ("the world is answerable both backward",
-             "backward continuity + forward binding"),
-        16: ("the neighbor/co boundary should sharpen",),
-        17: ("care and social reproduction are not moral abstractions",),
-        19: ("the visitor meets not just private individuals",
-             "objectification is ordinary historical life"),
-        20: ("the right to interpret is distributed among persons",),
-        21: ("the complete encounter is the historical development",
-             "the philosophical and theological motive"),
-        22: ("return to one ordinary evening",),
-        23: ("round eleven / exact source-recovery correction",),
-    }
-    for section, terms in round11.items():
-        for term in terms:
-            must(term in ux_sections[section],
-                 f"Round 11 NEGLECTED UX SOURCE absent from chapter {section}: {term}")
-    must("## N-T1 / Round Eleven — THE LENS, THE OTHER, AND THE HISTORY IT CANNOT OWN" in ledger,
-         "Round 11 exact-source provenance missing from existing ledger")
-    for source in (
+    # The rejected early source has *not* been restored as the governing game.
+    for old_title in (
+        "## 11. The social entrance: invitation, warrant",
+        "## 12. The platform can mediate experience",
+        "## 13. A first dinner teaches the whole",
+        "## 21. The generative kernel is the increasingly capable encounter",
+        "## 22. A human at the threshold of several independently becoming lives",
+    ):
+        must(old_title not in main,
+             "an early/extraneous movement is still installed as controlling: "+old_title)
+    for phrase in (
+        "one historically constituted fictional Other",
+        "actual human",
+        "SORACLE-CO",
+        "finite", "different", "permission", "misunderstanding",
+        "no programmed moral destination",
+        "ordinary", "consequences", "historical",
+    ):
+        must(phrase.lower() in main.lower(),
+             "substantive mature first-consumer theory unexpectedly absent: " + phrase)
+    must("source-conservation foundation" in main.lower(),
+         "source and semantic authority distinction erased")
+
+    # Original November 21 user's opposite (no additional documents) remains
+    # literal in the immutable foundation. Latest November 22 explicitly
+    # authorizes ONE subordinate outside bank, not a second positive theory.
+    must("### November 21 direct user theoretical clarification" in whole,
+         "November 21 correction not preserved verbatim")
+    must("Nadia should only get *more* pulsatingly contradictorily alive" in whole,
+         "November 21 irreducible contradiction correction lost")
+    must("### November 21 — direct user NEIGHBOR-UX jurisdiction" in whole,
+         "jurisdiction source lost from unchanged foundation")
+    must("### UX-R10 / user correction — the philosophy must travel" in ledger,
+         "previous user-philosophy correction not retained in ledger")
+    for historical_source in (
         "dockets/D008_ADAPTIVE_PHENOMENAL_LENS_AND_USER_MODEL/",
         "dockets/D009_HUMAN_FACULTY_CAPABILITY_AUTHORITY_AND_TRANSPOSITION/",
         "dockets/D003_FLOURISHING_INDEPENDENT_OF_ATTACHMENT/",
         "101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
         "ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/",
     ):
-        must(source in ledger,
-             f"Round 11 original UX source omitted from existing ledger: {source}")
+        must(historical_source in ledger,
+             "older exact-source court dropped in the reconstitution: " + historical_source)
 
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
@@ -343,16 +270,16 @@ def main():
          "HELD_SEMANTIC_INDEPENDENCE" in whole,
          "independent evidence gap concealed")
     must("ONE existing canonical HOME in #1277" in whole or "existing draft PR #1277" in whole,
-         "current output does not identify its single existing destination")
+         "historical source custody lost its own one-HOME destination")
 
     print("[PASS] ONE UX-first 23-movement HOME, with source foundation IN THE SAME FILE")
-    print("[PASS] UX court phenomena, action/attention/access, time/interface/first-session original theories mapped")
+    print("[PASS] R22 positive in-game UX reconstitution and separate meta-pre-UX/open-ideation custody")
     print("[PASS] SORACLE-NEIGHBOR-UX experiential authority distinct from SORACLE-CO psychic theory")
     print("[PASS] 197 source sections from 10 immutable predecessor cuts")
     print("[PASS] 104 distinct source-graded ideas and exact original propositions")
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
-    print("[PASS] current user no-new-document/no-new-branch instruction preserved as direct source")
-    print("[PASS] named substantive positive ideas have actual passages in the whole")
+    print("[PASS] historical no-new-doc user source preserved; latest explicit one subordinate bank admitted")
+    print("[PASS] mature encounter features in active HOME; unselected early mechanics preserved outside")
     print("[LIMIT] Structure/text/source custody; NOT independent full semantic proof, "
           "complete original chat transcript, live organism execution, or protected receiving")
 
