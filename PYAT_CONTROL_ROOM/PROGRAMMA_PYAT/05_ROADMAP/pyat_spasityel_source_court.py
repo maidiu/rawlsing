@@ -442,6 +442,38 @@ try:
       and "sourcefree" in w.lower())
  report["R29_grade"]="AUTHOR_SOURCEFREE_15PLUS17_OVERLAP__EXACT_1271_CODE__ORIGINAL_HOST_NATIVE_HOLD"
 
+ # R30 exact source evidence, not original scientific or independent reception.
+ r30=l.split("## 18. R30 — #1006/#1271",1)[1]
+ for token in ("eb892859dc2d284a8730d166edea6e3f449b1aae",
+               "44964765866","1 PASS/2 FAIL",
+               "8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1",
+               "44965013383","15/15 inherited","5/5 joined",
+               "14730744145","NOT_DISPATCHED","HQ_CURRENTNESS_HOLD"):
+  test("R30 exact RED/GREEN/source/receiving hold "+token,token in r30)
+ code=exact("8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1",
+            "tools/pyat_c11_four_store/runner.py",
+            "41eab5cd11f7d89b1ceaa4dfd551aa52bb98f9f7").decode()
+ t=exact("8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1",
+         "tools/pyat_c11_four_store/test_spasityel_r2_post_audit_current.py",
+         "1fa543bf11dab4028cebbbeffd3630e8b4dfb03a").decode()
+ reused=exact("8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1",
+         "tools/pyat_c11_four_store/test_spasityel_r1271_parallel_invocation.py",
+         "570cce651fed3bc13ac4803ad5f9bcbd9c0463bc").decode()
+ test("R30 continuing CURRENT validated in existing runner",
+      code.count("source.verified._live()")>=7
+      and "class InputEstate:" in code and "def run(config_path:" in code)
+ test("R30 sourcefree adverse after actual full audit and physical query",
+      all(s in t for s in ("revoke_at == \"post_audit\"",
+           "revoke_at == \"post_queries\"",
+           "SOURCE_AUTHORITY_RESOURCE_OR_RUNNER_HOLD",
+           "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD",
+           "(result.get(\"comparison\") or {})")))
+ test("R30 reuses byte-exact R29 test, no new bench",
+      "ThreadPoolExecutor(max_workers=2)" in reused
+      and "MUST_NOT_CHANGE" in reused)
+ report["R30_grade"]="SOURCEFREE_AUTHOR_RED2_GREEN5__ORIGINAL_SOURCE_G5_HOLD"
+
+
 
 
 

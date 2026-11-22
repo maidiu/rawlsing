@@ -1,5 +1,8 @@
 # PYAT-SPASITYEL — definitive KUDA/NEKUDA rescue and integration mandate
 
+> **R30 LIVE SOURCE_CURRENT RUNNER BUG REPRODUCED AND CANDIDATE-REPAIRED:** [Existing R30 single docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#18-r30--10061271-actually-executed-late-r2-current-revocation-repair-2026-11-21) / [draft PR #1282](https://github.com/maidiu/rawlsing/pull/1282) final `8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1` sourcefree **15 inherited +5 new PASS**, red first and no new storage/science engine. Preserve all #1006 source/host/original and G5 protected holds; G4 paired CURRENT_PROGRESS not advanced.
+
+
 > **R29 #1271 PHYSICAL EXISTING-OWNER EXACT-HEAD SOURCEFREE EXECUTION:** [R29 one cumulative KUDA docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#17-r29--10061271-existing-four-store-runner-latest-cpu--simultaneous-run-exact-first-consumer-sourcefree-execution-2026-11-21) cites [draft #1281](https://github.com/maidiu/rawlsing/pull/1281) at `9ca38c2bae59e6bed33de8e26c56e092a0de75b3` child of REMONT [#1271](https://github.com/maidiu/rawlsing/pull/1271) CPU runner. Existing `runner --self-test` 15/15, pytest 17/17+12 subtests on one sourcefree child SHA; concurrent S2 run IDs/durable reports and explicit-id collision safety. Zero physical/production code changes; old KUDA-028/077/083 not reimplemented. Four physical H/S1/S2/S3 arms already authored; real same-saved-estate MainMac source authority, all 13 original semantic families/native query/science/real cost and independent G5 held. Original #1006 and #1097 controlling; protected paired progress not updated.
 
 
