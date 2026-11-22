@@ -612,6 +612,9 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
             config["_held_identity_path"]=str(identity_file)
             common_r.check()
         for arm in (ARMS if only is None else (only,)):
+            # R2 CURRENT is a continuing authorization, not just admission.
+            # A later arm must never run under a revoked original grant.
+            source.verified._live()
             folder=run_dir/arm
             folder.mkdir()
             emit=EventLogger(folder/"progress.jsonl",arm)
@@ -626,6 +629,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                             create=True,source_identity=source.identity,progress=emit)
                     records=source.feed(s,emit,watch,
                                         batch_commit=int(config.get("batch_commit",2048)))
+                    source.verified._live()  # no stale source after writer feed
                     report["stages_s"]["build_from_already_saved_c11"]=round(time.perf_counter()-t,3)
                     t=time.perf_counter()
                     s.finish(source.manifest,records)
@@ -634,6 +638,9 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     # Only THIS operation may seal the complete body digest
                     # and SQL posting counts as a cold-readable store.
                     audited=s.audit_families(emit)
+                    # Audit sealing and SOURCE_CURRENT are distinct checks.
+                    # A full-body audit cannot reauthorize a revoked source.
+                    source.verified._live()
                     report["stages_s"]["full_corpus_body_audit"]=round(time.perf_counter()-t,3)
                     report["family_records"]=audited
                     s.close();s=None
@@ -643,13 +650,16 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                     report["stages_s"]["fresh_connection_open"]=round(time.perf_counter()-t,4)
                     t=time.perf_counter()
                     report["query_report"]=_engine_report(s,source,issued,emit,watch,config)
+                    source.verified._live()  # no positive report after revoked read
                     report["stages_s"]["queries_and_persisted_results"]=round(time.perf_counter()-t,3)
                     report["metrics"]=s.stats()
                     report["metrics"]["required_permanent_bytes"] = (
                         source.source_bytes + size_tree(folder) if arm=="H" else size_tree(folder))
                     report["metrics"]["source_parquet_required_for_queries"]=arm=="H"
                     watch.check()
+                    source.verified._live()
                 watch.check()
+                source.verified._live()
                 cpu_time=(watch.peak_sampled_cpu_user_s+
                           watch.peak_sampled_cpu_system_s)
                 cpu_elapsed=max(time.monotonic()-watch.started,1e-9)
@@ -688,6 +698,9 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                 emit.close()
                 result["arms"][arm]=report
                 (run_dir/"comparison.json").write_text(json.dumps(result,indent=2,default=str)+"\n")
+        # Do not summarize a multi-arm comparator as CURRENT if permission
+        # was withdrawn during a prior individual arm's physical work.
+        source.verified._live()
         completed={x:a for x,a in result["arms"].items()
                    if a["status"]=="COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED"}
         if len(completed)==4:
@@ -750,6 +763,7 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
                         a.get("resources",{}).get("peak_cpu_percent_one_core"),
                         a.get("resources",{}).get("logical_cpus"),
                     ])
+        source.verified._live()
         result["completed"]=utc()
         return result
     except BaseException as exc:
