@@ -399,5 +399,45 @@ class R18JoinedRuntime(unittest.TestCase):
         self.assertTrue(self.rt.verify()['valid'])
 
 
+    def test_actor_can_attempt_feeding_without_omniscient_permission_and_later_succeed(self):
+        # DCO MP-2: an affordance is an eligible attempt, NOT a guaranteed
+        # legally permitted outcome or private knowledge of the right.
+        self.assertEqual(self.rt.step(
+            'father',requested_action='INSPECT',
+            object_ref=self.source['notice_ref'])['status'],'PERFORMED')
+        self.assertEqual(self.rt.step(
+            'father',requested_action='INSTALL_PANTRY_GATE')['status'],
+            'PERFORMED')
+        before=self.rt.situated('mother')
+        self.assertIn('FEED',{x['action'] for x in before['candidate_actions']})
+        blocked=self.rt.step('mother',requested_action='FEED',target='nadia')
+        self.assertEqual(blocked['status'],'BLOCKED')
+        self.assertEqual(len(self.rt.snapshot(
+            'mother')['material_dependency_encounters']),1)
+        self.assertEqual(self.rt.snapshot('mother')['self_model'],{})
+        _,world=self.rt.ledger.world('w1')
+        board=world['institutions']['household_food_board']
+        self.assertEqual(board['food_rights'],'CONTROLLED')
+        self.assertFalse(can_draw_shared_food(world,'mother','home'))
+        # Compressed time passes without attributing any actor's consent,
+        # awareness of clock expiry, or fictional offscreen player action.
+        self.rt.background(8)
+        _,world=self.rt.ledger.world('w1')
+        self.assertEqual(world['institutions'][
+            'household_food_board']['food_rights'],'CONTROLLED')
+        self.assertTrue(can_draw_shared_food(world,'mother','home'))
+        later=self.rt.situated('mother')
+        self.assertIn('FEED',{x['action'] for x in later['candidate_actions']})
+        nutrition=self.rt.snapshot('nadia')['body']['nutrition']
+        # This is a disclosed external research choice, not a proof that
+        # the mother spontaneously discovered a lapsed sanction.
+        outcome=self.rt.step('mother',requested_action='FEED',target='nadia')
+        self.assertEqual(outcome['status'],'PERFORMED')
+        self.assertGreater(self.rt.snapshot('nadia')[
+            'body']['nutrition'],nutrition)
+        self.assertEqual(self.rt.snapshot('mother')['self_model'],{})
+        self.assertTrue(self.rt.verify()['valid'])
+
+
 if __name__=='__main__':
     unittest.main()
