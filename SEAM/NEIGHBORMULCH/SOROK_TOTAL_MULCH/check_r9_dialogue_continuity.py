@@ -282,6 +282,58 @@ def main():
     must("### UX-R10 / user correction — the philosophy must travel" in ledger,
          "latest direct user philosophical-UX correction absent from existing ledger")
 
+    # UX Round 11: demand the actual generative philosophical/experiential
+    # collision at its source-bearing chapters, not a table of names or a
+    # bolt-on summary. Textual coverage remains author-level, NOT independent
+    # philosophical adjudication or executed person/world first consumer.
+    round11 = {
+        1: ("the original game-loop failure makes a philosophical demand",
+            "several native scales"),
+        3: ("the portal makes a difficult experiment",
+            "lexical recognition, strategic signaling"),
+        4: ("the distinction between demonstrated human faculty",
+            "one may succeed through luck"),
+        5: ("the phenomenal lens is the most dangerous instrument",
+            "more faithful rendition of the user's eye"),
+        6: ("historical hypercompression, high-intensity possibility",
+            "no event consumes the person"),
+        8: ("the reciprocal gaze becomes more serious",
+            "no participant is exhausted"),
+        10: ("the sharpest normative counterexample", "local norm"),
+        11: ("shared-origin social play", "retro-resolved precontact canon"),
+        12: ("a fourth party exists",
+             "preserve relational history while minimizing the dossier"),
+        13: ("one ordinary scene gives neighbor a dual obligation",
+             "ontic flesh versus phenomenal flesh"),
+        14: ("a lawful life includes event classes", "ordinary-life re-entry"),
+        15: ("the world is answerable both backward",
+             "backward continuity + forward binding"),
+        16: ("the neighbor/co boundary should sharpen",),
+        17: ("care and social reproduction are not moral abstractions",),
+        19: ("the visitor meets not just private individuals",
+             "objectification is ordinary historical life"),
+        20: ("the right to interpret is distributed among persons",),
+        21: ("the complete encounter is the historical development",
+             "the philosophical and theological motive"),
+        22: ("return to one ordinary evening",),
+        23: ("round eleven / exact source-recovery correction",),
+    }
+    for section, terms in round11.items():
+        for term in terms:
+            must(term in ux_sections[section],
+                 f"Round 11 NEGLECTED UX SOURCE absent from chapter {section}: {term}")
+    must("## N-T1 / Round Eleven — THE LENS, THE OTHER, AND THE HISTORY IT CANNOT OWN" in ledger,
+         "Round 11 exact-source provenance missing from existing ledger")
+    for source in (
+        "dockets/D008_ADAPTIVE_PHENOMENAL_LENS_AND_USER_MODEL/",
+        "dockets/D009_HUMAN_FACULTY_CAPABILITY_AUTHORITY_AND_TRANSPOSITION/",
+        "dockets/D003_FLOURISHING_INDEPENDENT_OF_ATTACHMENT/",
+        "101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+        "ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/",
+    ):
+        must(source in ledger,
+             f"Round 11 original UX source omitted from existing ledger: {source}")
+
     direct = whole.split("### Direct user corrections", 1)[1]
     must("### Governing latest direct user instructions" in direct,
          "latest direct user's one-document and no-branch instruction lost")
