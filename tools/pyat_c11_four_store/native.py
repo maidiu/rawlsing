@@ -101,7 +101,7 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
             if type(obj) is not RespondentEvent:
                 raise StoreFailure("saved event body has wrong exact type")
             if (exact_ref(obj.scoped_respondent_ref).key != respondent_ref.key
-                    or obj.empirical_universe_ref.key != universe_key):
+                    or exact_ref(obj.empirical_universe_ref).key != universe_key):
                 raise StoreFailure("wrong-universe or respondent event")
             if reader._recorded_plan is not None:
                 obj = reader._recorded_plan.event_transforms.get(ref, obj)
@@ -122,8 +122,8 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
             obj = _native_object(ref,body)
             if type(obj) is not accepted[family]:
                 raise StoreFailure("bad native side-family type")
-            if (obj.scoped_respondent_ref.key != respondent_key
-                    or obj.empirical_universe_ref.key != universe_key):
+            if (exact_ref(obj.scoped_respondent_ref).key != respondent_key
+                    or exact_ref(obj.empirical_universe_ref).key != universe_key):
                 raise StoreFailure("native side-family exact-scope mismatch")
             material.append(obj)
         for obj in sorted(material, key=lambda x:x.ref.key):
@@ -145,8 +145,8 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
             verified._live()
             obj = _native_object(ref,body)
             if (type(obj) is not RoutingEligibilityFact
-                    or obj.scoped_respondent_ref.key != respondent
-                    or obj.empirical_universe_ref.key != universe_key
+                    or exact_ref(obj.scoped_respondent_ref).key != respondent
+                    or exact_ref(obj.empirical_universe_ref).key != universe_key
                     or exact_ref(obj.question_or_target_ref).key != target
                     or exact_ref(obj.risk_set_ref).key != risk_set):
                 raise StoreFailure("stored native routing identity mismatch")
