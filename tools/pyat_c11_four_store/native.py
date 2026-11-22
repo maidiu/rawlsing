@@ -33,8 +33,9 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
     from rawlsing_next.pre553_anvil_stream_native_i03 import (
         VerifiedAnvilStreamEstate, RecordedRoutingPlan,
     )
+    from rawlsing_next.pre553_c11_integrity import RespondentIdentity
     from rawlsing_next.pre553_empirical_objects import (
-        EmpiricalUniverse, RespondentIdentity, SourceUniverseRelation,
+        EmpiricalUniverse, SourceUniverseRelation,
         RespondentEvent, RoutingEligibilityFact, WeightMeasureFact,
         EmpiricalCoordinateFact, exact_ref,
     )
