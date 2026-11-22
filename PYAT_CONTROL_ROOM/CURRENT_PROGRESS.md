@@ -1,3 +1,13 @@
+# PYAT CURRENT_PROGRESS REV24 — REMONT PAIR/CAS REGRESSION GUARD, PROPOSED RECEIVING ONLY
+
+**Exact engineering change (2026-11-21):** The previously existing `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py` allowed a PYAT progress JSON `revision >= 6` without comparing the actual paired Markdown, current G4 revision, or protected PR base. The scoped existing-owner candidate implements an exact Python `_pyat_pair_defects` mechanical check for PYAT MD/JSON/G4 current revision equality; on GitHub `pull_request`, reads the event's immutable `pull_request.base.sha`, `git show`s the base MD+JSON and refuses revision downgrade, one-sided edit and material same-revision edit. Missing PR event/base evidence is a typed failure, never silently accepted. Nine built-in positive/hostile cases exercise unchanged/legitimate rev advance, downgrade, mismatched pair, mismatched G4 and one-sided/same-revision edits.
+
+**Boundaries:** This is NOT a new checker, census, task, storage engine, science, source use, actor approval, G5, or a blanket hold on unrelated coding. The inherited protected G4 782/150/62/82 and the source-grade 94-item R23 agenda are unchanged. The existing full-OATH and PP26 visibility gate remains separate and intact. Original/source-native science and competent owners remain distinct.
+
+**R24 receiving condition:** New verifier plus G4 rev24 and paired CURRENT_PROGRESS.md/.json rev24 have **no protected force before exact authorized PRE-MAIN merge and readback**. Independent checker-source review and same-head GitHub Actions remain required; source static local code writing is not a completed acceptance. Earlier protected R23 progress follows intact.
+
+---
+
 # PYAT CURRENT_PROGRESS REV23 — USER-AUTHORIZED DOCUMENTARY RECEIVING TARGET (EFFECTIVE ONLY ON VERIFIED PROTECTED CAS)
 
 **Receiving transaction rule:** This same-source candidate was independently examined at exact `464c6fb59880d89baec4760f33ace46ad53f1feb` in [#1285 source-review 6010386593](https://github.com/maidiu/rawlsing/pull/1285) and accepted solely for S0–S1 documentary conservation and the existing PP26/OATH guard repair. The reviewer source grade does **not** confer original-data, science, native, actor, performance, feature-code or G5 status, nor does it prove a distinct authenticated GitHub reviewer identity. **REV23 is protected-received ONLY IF the authorized merge into `integration/pre-main-reconciliation-r1` succeeds and readback confirms this exact paired rev23 MD/JSON, G4, agenda and checker as one receiving cut. Until that event it remains candidate, and no worker tasks are selected by this change.** Author's original pre-receiving assessment follows intact below.
