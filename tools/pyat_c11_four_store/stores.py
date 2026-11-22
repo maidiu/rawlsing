@@ -76,12 +76,16 @@ class Store:
         self, name: str, path: Path, estate_path: Path,
         *, create: bool, source_identity: Mapping[str, Any] | None = None,
         progress: Callable[..., None] | None = None,
+        read_only: bool = False,
     ):
         if name not in ARMS:
             raise StoreFailure("unknown physical arm")
         self.name, self.path, self.estate_path = name, Path(path), Path(estate_path)
         self.progress = progress or (lambda **kwargs: None)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
+        if read_only and create:
+            raise StoreFailure("read-only physical store cannot be created")
+        if not read_only:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
         if create and self.path.exists():
             raise StoreFailure("refusing to overwrite another physical store")
         if not create and not self.path.is_file():
@@ -90,10 +94,19 @@ class Store:
         # then blocks a legitimate later attempt with "refusing overwrite".
         if create and source_identity is None:
             raise StoreFailure("source identity required for construction")
-        self.db = sqlite3.connect(str(self.path), timeout=120)
+        if read_only:
+            # Native-only replay must never alter the expensive committed
+            # permanent SQLite (including queries/results or journal mode).
+            self.db = sqlite3.connect(
+                self.path.resolve().as_uri()+"?mode=ro",
+                uri=True, timeout=120,
+            )
+            self.db.execute("PRAGMA query_only=ON")
+        else:
+            self.db = sqlite3.connect(str(self.path), timeout=120)
+            self.db.execute("PRAGMA journal_mode=WAL")
+            self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA foreign_keys=ON")
-        self.db.execute("PRAGMA journal_mode=WAL")
-        self.db.execute("PRAGMA synchronous=FULL")
         self.db.execute("PRAGMA temp_store=FILE")
         self.db.execute("PRAGMA cache_size=-16384")
         self.db.execute("PRAGMA busy_timeout=120000")
