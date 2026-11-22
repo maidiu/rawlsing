@@ -272,6 +272,10 @@ class JoinedWageLife(unittest.TestCase):
     def test_joined_employer_sanction_and_real_wage_relief(self):
         # Distinct adult action streams and real employer money meet at one
         # continuing world. Nadia never inherits the workers' adult concepts.
+        initial_world=self.rt.ledger.world('w1')[1]
+        initial_stock=initial_world['sites']['workshop']['stock']
+        employer=initial_world['work_regimes']['workshop']['controller']
+        initial_employer_cash=initial_world['accounts'][employer]
         for person in ('mother','father'):
             self.assertEqual(self.rt.step(
                 person,requested_action='MOVE',
@@ -287,9 +291,35 @@ class JoinedWageLife(unittest.TestCase):
             'father',requested_action='WORK')['status'],'PERFORMED')
         self.assertEqual(self.rt.step(
             'mother',requested_action='WORK')['status'],'PERFORMED')
+        # DCO MP-4: the very activity producing paid wages also produces
+        # real stock controlled by the employer, not by either wage-worker.
+        # That stock is NOT automatically profit or employer enforcement cash.
+        produced=self.rt.ledger.world('w1')[1]
+        claims=[c for c in produced['material_claims']
+                if c.get('worker') in ('father','mother')
+                and c.get('site')=='workshop']
+        self.assertEqual(len(claims),2)
+        self.assertTrue(all(c['controller']==employer
+                            and c['worker_control_of_output'] is False
+                            and c['goods_produced']==2 for c in claims))
+        self.assertEqual(produced['sites']['workshop']['stock'],
+                         initial_stock+4)
+        paid_wages=sum(c['wage'] for c in claims)
+        self.assertEqual(produced['accounts'][employer],
+                         initial_employer_cash-paid_wages)
+        father_wage_cash=produced['accounts']['father']
         self.assertEqual(self.rt.step(
             'father',requested_action='CONTRIBUTE_WAGE_RELIEF')['status'],
             'PERFORMED')
+        after_relief=self.rt.ledger.world('w1')[1]
+        self.assertEqual(after_relief['sites']['workshop']['stock'],
+                         initial_stock+4)
+        self.assertEqual(after_relief['accounts'][employer],
+                         initial_employer_cash-paid_wages)
+        self.assertEqual(after_relief['accounts']['father'],
+                         father_wage_cash-.25)
+        self.assertEqual(after_relief['accounts'][
+            self.registered['relief_pool_ref']],.25)
         before=self.rt.ledger.world('w1')[1]
         total_before=sum(before['accounts'].values())
         sanction=self.rt.step('father',requested_action='SUSPEND_WAGE_WORK',
