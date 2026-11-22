@@ -34,6 +34,27 @@ def _delta(before,after):
     return observed
 
 
+def _adverse_body_course(before,after):
+    """Personally measurable cost, NOT proof an attempted act caused harm.
+
+    Bounded sourcefree axes only; never infer another person's intentions,
+    happiness, trauma, or whether the actor ought to avoid the operation.
+    """
+    if type(before) is not dict or type(after) is not dict:
+        raise ValueError("GENESIS_MISSING_BODILY_TRANSITION")
+    observed={}
+    for name,op in (("pain","rises"),("comfort","falls")):
+        b=before.get(name);a=after.get(name)
+        if (type(b) not in (int,float) or type(a) not in (int,float)
+                or not math.isfinite(b) or not math.isfinite(a)
+                or not 0<=b<=1 or not 0<=a<=1):
+            raise ValueError("GENESIS_UNQUALIFIED_BODY")
+        delta=a-b if op=="rises" else b-a
+        if delta>=MIN_RELIEF:
+            observed[name]=round(delta,5)
+    return observed
+
+
 def conserve_lived_episode(actor,experience,event_ref,before,after,
                            source_selection=None):
     """Distinct written subjective/felt witness, never an objective cause."""
@@ -49,6 +70,7 @@ def conserve_lived_episode(actor,experience,event_ref,before,after,
     if len(refs)!=len(set(refs)):
         raise ValueError("GENESIS_DUPLICATED_EXPOSURE")
     relief=_delta(before,after)
+    adverse=_adverse_body_course(before,after)
     own=experience.get("own_action")
     felt=experience.get("felt_enactment") or {}
     attempted=(type(own) is str and own in ACTIONS
@@ -76,6 +98,8 @@ def conserve_lived_episode(actor,experience,event_ref,before,after,
         "actor_felt_attempt":own if attempted else None,
         "unfinished_own_activity":bool(incomplete),
         "received_relief":copy(relief) if received else {},
+        "personally_lived_adverse_course":copy(adverse) if attempted else {},
+        "adverse_course_not_objective_causation":True,
         "received_sign_refs":refs,
         "personally_perceived_sign_sources":[
             {"cue_ref":c["id"],"kind":c.get("kind"),

@@ -114,6 +114,207 @@ def acquire_orientation(actor, experience, event_ref, proposal):
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}
 
 
+def _lived_coexperience_field(witness):
+    """A historical co-presence FIELD, not a privileged causal Other.
+
+    The actor's actual source-qualified perceptual opportunity may contain
+    no one, one Other, or several. All are materially possible. Distinct
+    episodes can ground a bounded *situational association* when their
+    received co-presence sets match. This neither claims the actor attended
+    to each person, nor determines which participant caused a felt outcome.
+    A multi-person household must not be erased to make dyadic math easy.
+    """
+    signs=witness.get('personally_perceived_sign_sources')
+    if type(signs) is not list:
+        return (False,())
+    others=set()
+    for sign in signs:
+        if type(sign) is not dict:
+            return (False,())
+        if sign.get('kind')!='coactor_present':
+            continue
+        ref=sign.get('source_actor')
+        if (type(ref) is not str or not ref or
+                type(sign.get('cue_ref')) is not str):
+            return (False,())
+        others.add(ref)
+    # Sorted, bounded, immutable field identity; no new inferred relation.
+    # A large crowd is not an automatically learned individuated field.
+    if len(others)>8:
+        return (False,())
+    return (True,tuple(sorted(others)))
+
+
+def possible_lived_directional_orientation(actor, experience, event_ref):
+    """An acquired polarity offered BY repeated lived courses, not a label.
+
+    Recover real actor-owned genesis witnesses already admitted by psychic_genesis.
+    Two different personally attempted events, at different clocks, with
+    repeated congruent bodily courses may license a *provisional proposal*.
+    This proves neither that the attempted action caused the bodily change
+    nor that the actor consciously believes the proposal. One adverse event,
+    mixed bodily change, coactor-only relief and sourcefree analyst polarity
+    are insufficient. The old hypothesis-only R19 path remains distinguishable.
+    """
+    if (experience.get('actor') != actor.get('id')
+            or type(event_ref) is not str or not event_ref
+            or type(experience.get('ref')) is not str
+            or experience.get('participated') is not True):
+        return []
+    action = experience.get('own_action')
+    if action not in ACTIONS or (experience.get('felt_enactment') or {}).get(
+            'attempted_operation') != action:
+        return []
+    if not eligible(actor.get('body', {}), action)[0]:
+        return []
+    site = experience.get('location', actor.get('location'))
+    if type(site) is not str or site != actor.get('location'):
+        return []
+    rows = [r for r in actor.get('lived_genesis_episodes', [])
+            if (type(r) is dict and r.get('actor') == actor['id']
+                and r.get('location') == site
+                and r.get('actor_felt_attempt') == action
+                and type(r.get('clock')) is int
+                and type(r.get('event_ref')) is str
+                and type(r.get('id')) is str)]
+    current = [r for r in rows if r.get('event_ref') == event_ref
+               and r.get('experience_ref') == experience['ref']]
+    if len(current) != 1:
+        return []
+    now = current[0]
+    # The earlier R28 actor+operation+room match over-generalized bodily
+    # orientation from one Other to another. A context is RECEIVED,
+    # not a statement that the Other caused the body delta.
+    qualified_field, coexperienced_others = _lived_coexperience_field(now)
+    if not qualified_field:
+        return []
+    older = [r for r in rows
+             if r['clock'] < now['clock'] and r['event_ref'] != event_ref]
+    # Do not create a psychic pattern by counting different descriptions
+    # of one event as multiple courses of experience.
+    earlier = {}
+    for row in older:
+        known,others=_lived_coexperience_field(row)
+        if not known or others != coexperienced_others:
+            continue
+        if row['event_ref'] not in earlier or (
+                row['clock'], row['id']) > (
+                    earlier[row['event_ref']]['clock'],
+                    earlier[row['event_ref']]['id']):
+            earlier[row['event_ref']] = row
+    def direction(row):
+        good = row.get('received_relief', {})
+        bad = row.get('personally_lived_adverse_course', {})
+        if type(good) is not dict or type(bad) is not dict:
+            return None
+        if good and not bad:
+            return 'APPROACH'
+        if bad and not good:
+            return 'WITHHOLD'
+        return None
+    mode = direction(now)
+    if mode is None:
+        return []
+    # An actually contradictory intervening lived course makes a simple
+    # directional hypothesis UNDERDETERMINED, not merely less confident.
+    if any(direction(row) not in (None, mode) for row in earlier.values()):
+        return []
+    witnessed = sorted(
+        (r for r in earlier.values() if direction(r) == mode),
+        key=lambda r: (r['clock'], r['id']))
+    if not witnessed:
+        return []
+    first = witnessed[-1]
+    # Prevent repeated same-valence receipts from manufacturing infinite
+    # pressure. An opposite, separately acquired form may remain possible.
+    if any(r.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'
+           and r.get('actor') == actor['id']
+           and r.get('operation') == action
+           and r.get('location') == site
+           and r.get('orientation_mode') == mode
+           and r.get('lived_genesis_basis',{}).get(
+               'coexperienced_other_refs') == list(coexperienced_others)
+           for r in actor.get('historical_orientations', [])):
+        return []
+    selected = [first, now]
+    cue_ref = next((c.get('id') for c in experience.get('perceived_cues', [])
+                    if type(c) is dict and
+                    type(c.get('id')) is str and c.get('id') in
+                    now.get('received_sign_refs', [])), None)
+    basis = {
+        'first_lived_episode_ref': first['id'],
+        'later_lived_episode_ref': now['id'],
+        'source_event_refs': [r['event_ref'] for r in selected],
+        'source_experience_refs': [r['experience_ref'] for r in selected],
+        'operation': action,
+        'location': site,
+        'coexperienced_other_refs': list(coexperienced_others),
+        'experienced_social_context': (
+            'RECURRENT_MULTI_OR_SINGLE_COACTOR_FIELD_NOT_CAUSAL_PROOF'
+            if coexperienced_others else
+            'NO_OTHER_PERCEIVED_DURING_EPISODES'),
+        'other_may_not_have_caused_bodily_course': True,
+        'other_consent_intent_and_motive_not_inferred': True,
+        'observed_bodily_course': (
+            'REPEATED_ACTOR_LIVED_RELIEF' if mode == 'APPROACH'
+            else 'REPEATED_ACTOR_LIVED_ADVERSE_COURSE'),
+        'two_distinct_episodes_required': True,
+        'not_proof_action_caused_body_course': True,
+        'not_automatic_motive_or_conscious_explanation': True,
+    }
+    candidate = {
+        'kind': 'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION',
+        'operation': action,
+        'orientation_mode': mode,
+        'lived_genesis_basis': basis,
+        'sourcefree_provisional_not_necessary_adaptation': True,
+    }
+    if cue_ref is not None:
+        candidate['perceived_cue_ref'] = cue_ref
+    return [candidate]
+
+
+def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
+    """Same R19 historical owner, source-validated lived genesis, one writer.
+
+    A semantic model can choose to propose NONE or this actual licensed
+    candidate. It cannot flip the valence or forge a source event, actor,
+    body difference, other mind or unsupported future means.
+    """
+    possibilities = possible_lived_directional_orientation(
+        actor, experience, event_ref)
+    if len(possibilities) != 1:
+        raise ValueError('LIVED_ORIENTATION_NO_REPEATED_ACTOR_COURSE')
+    expected = possibilities[0]
+    for field in ('kind', 'operation', 'orientation_mode',
+                  'lived_genesis_basis', 'perceived_cue_ref'):
+        if proposal.get(field) != expected.get(field):
+            raise ValueError('LIVED_ORIENTATION_UNLICENSED_'+field.upper())
+    interpretation = proposal.get('interpretive_hypothesis')
+    if (interpretation is not None and
+            (type(interpretation) is not str or
+             not interpretation.strip() or len(interpretation) > 512)):
+        raise ValueError('LIVED_ORIENTATION_INVALID_INTERPRETATION')
+    emitted = acquire_orientation(actor, experience, event_ref, expected)
+    source = next(r for r in actor['historical_orientations']
+                  if r['id'] == emitted['ref'])
+    source['acquisition'] = 'REPEATED_LIVED_BODY_COURSE'
+    source['lived_genesis_basis'] = copy(expected['lived_genesis_basis'])
+    # Give the already existing pre-cue owner a source-grounded context
+    # boundary; don't create a new social-learning graph or world writer.
+    source['coexperienced_other_refs'] = copy(expected[
+        'lived_genesis_basis']['coexperienced_other_refs'])
+    source['interpretive_hypothesis_not_causal_truth'] = interpretation
+    source['actor_does_not_know_objective_cause'] = True
+    source['does_not_upgrade_sourcefree_to_human_science'] = True
+    return {'kind': 'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION',
+            'ref': emitted['ref'],
+            'status': 'REPEATED_ACTOR_LIVED_PROVISIONAL_RECRUITABLE',
+            'source_event_refs': copy(
+                expected['lived_genesis_basis']['source_event_refs']),
+            'grade': GRADE}
+
+
 def revise_orientation(actor, experience, event_ref, proposal):
     _actor_event(actor, experience, event_ref)
     source = _received(experience, proposal)
@@ -238,6 +439,18 @@ def pre_cue_pressures(constitution, access):
             continue
         if row.get('location') != access.location:
             continue
+        if row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE':
+            # R29: pre-symbolic source context, not a current motive cue.
+            # Do not recruit an orientation learned amid one specific
+            # social field simply because the action/site repeats amid
+            # a different constellation of independently acting people.
+            active_others={
+                c.get('source_actor') for c in access.cues
+                if type(c) is dict and c.get('kind')=='coactor_present'
+                and type(c.get('source_actor')) is str}
+            expected_others = set(row.get('coexperienced_other_refs',[]))
+            if active_others != expected_others:
+                continue
         if row.get('operation') not in ACTIONS:
             continue
         # Do not grant capability from psyche, self-belief, or source event.

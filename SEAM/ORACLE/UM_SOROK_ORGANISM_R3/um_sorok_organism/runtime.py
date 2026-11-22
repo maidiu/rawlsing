@@ -16,6 +16,7 @@ from .ordinary_life import passage
 from .activity import record_activity_afterlife, register_lived_activity_attempt
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
+from .historical_self_organization import possible_lived_directional_orientation
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
@@ -53,7 +54,7 @@ from .plural_care_paths import (
     sourcequalified_reopening)
 from .functional_correspondence import propose_actor_lived_correspondences
 from .initiative import continue_life
-from .continuity_clock import continue_to_discontinuity, continue_pre_encounter
+from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
@@ -168,6 +169,54 @@ class ConstitutiveRuntime:
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
         return {'receipt':receipt['id'],'cue':cue,'grade':GRADE}
+
+    def offer_contingent_world_notice(self,proposal):
+        """Offer a common event *candidate* into this branch's existing world.
+
+        A system-wide calendar or live-news service can propose the same
+        sourcefree notice to multiple separate continuities. No such service
+        is implemented by this method. Each branch independently checks its
+        present world; eligibility admits ONLY a public sensory sign, not
+        scripted physical consequences, actor assent, knowledge, or emotion.
+        """
+        v,world=self.ledger.world(self.world_id)
+        actors=self.ledger.actors()
+        verdict=qualify_contingent_world_notice(world,actors,proposal)
+        offer_hash=digest(proposal)
+        prior=[c for c in world['cues']
+               if c.get('contingent_offer_id')==proposal['offer_id']]
+        if prior:
+            if (len(prior)!=1 or prior[0].get('contingent_offer_hash')!=offer_hash):
+                raise ValueError('CONTINGENT_NOTICE_CONFLICTING_REPLAY')
+            return {'status':'ALREADY_ADMITTED_IN_THIS_WORLD',
+                    'offer_id':proposal['offer_id'],'cue_ref':prior[0]['id'],
+                    'clock':world['clock'],'no_second_world_event':True,
+                    'grade':GRADE}
+        if verdict['status']!='ELIGIBLE_SOURCEFREE_NOTICE_ONLY':
+            return {**verdict,'no_world_write':True,'grade':GRADE}
+        cue=add_cue(world,proposal['kind'],proposal['tags'],
+                    location=proposal['location'],
+                    description=proposal['description'],
+                    modality='auditory',source_actor=None,
+                    clock_offset=1,lasting_ticks=0)
+        cue['contingent_offer_id']=proposal['offer_id']
+        cue['contingent_offer_hash']=offer_hash
+        cue['external_sign_only_not_verified_news_or_world_damage']=True
+        world['clock']+=1
+        committed=self.ledger.commit(self.world_id,v,world,{}, {},
+             'SOURCEFREE_CONTINGENT_WORLD_NOTICE',None,{
+                'offer_id':proposal['offer_id'],
+                'proposal_hash':offer_hash,
+                'cue_ref':cue['id'],
+                'independent_branch_eligibility':verdict['status'],
+                'world_life_not_user_or_model_autocompleted':True,
+                'not_proof_of_current_real_world_event':True,
+                'not_actor_perception_memory_emotion_or_consent':True,
+                'grade':GRADE})
+        return {'status':'ADMITTED_SOURCEFREE_NOTICE_ONLY',
+                'receipt':committed['id'],'cue_ref':cue['id'],
+                'clock':world['clock'],'offer_id':proposal['offer_id'],
+                'no_material_consequence_inferred':True,'grade':GRADE}
 
     def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
         actor=actors[actor_id]
@@ -703,6 +752,13 @@ class ConstitutiveRuntime:
             # Future pre-cue recruitment belongs to the existing R19 owner.
             recurrent_work=possible_recurrent_work_orientation(
                 actors[aid],experience,objective_ref)
+            # R28 MULCH: the actor's OWN repeated bodily courses can now
+            # qualify a directional historical orientation before a model
+            # proposes its meaning. Neither a felt cost nor relief proves
+            # action causation; a single episode or mixed history gives NONE.
+            # This proposal feeds EXISTING R19 acquisition and pre-cue routing.
+            lived_directional_orientation=possible_lived_directional_orientation(
+                actors[aid],experience,objective_ref)
             # Disabled LLM proposals may truthfully produce no change.
             selected=asdict(compose(materialize(actors[aid],world),access))
             post_event_psychodynamics[aid]={
@@ -773,6 +829,8 @@ class ConstitutiveRuntime:
                         actors[aid],experience)),
                 'historically_possible_recurrent_livelihood_orientation':copy(
                     recurrent_work),
+                'historically_possible_lived_directional_orientation':copy(
+                    lived_directional_orientation),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),

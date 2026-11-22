@@ -231,3 +231,59 @@ def _pre_encounter_receipt(runtime, subject_id, initial, target, segments,
             status != 'HISTORICAL_AGE_CUT_REACHED'),
         'grade': GRADE,
     }
+
+
+
+def qualify_contingent_world_notice(world, actors, proposal):
+    """Qualify a *shared candidate occasion* in one independently continuing world.
+
+    The same proposal may be offered to many copy-on-write continuities. The
+    committed world of EACH continuity decides applicability; an inapplicable
+    offer must not advance its clock, alter a person or manufacture an event.
+    This admits only a sourcefree physical notice/sign, NOT an accident,
+    injury, health outcome, treatment effect or actor response. Actual material
+    consequences require the already competent world/event owners.
+    """
+    if type(proposal) is not dict or set(proposal) != {
+            'offer_id', 'at_world_clock', 'location', 'kind', 'tags',
+            'description', 'required_actor_locations'}:
+        raise ValueError('CONTINGENT_NOTICE_INVALID_CONTRACT')
+    offer_id=proposal['offer_id']
+    clock=proposal['at_world_clock']
+    location=proposal['location']
+    kind=proposal['kind']
+    tags=proposal['tags']
+    desc=proposal['description']
+    requires=proposal['required_actor_locations']
+    if (type(offer_id) is not str or not offer_id.strip()
+            or len(offer_id)>120
+            or type(clock) is not int or clock < 0
+            or type(location) is not str or not location
+            or type(kind) is not str or not kind
+            or type(desc) is not str or len(desc)>500
+            or type(tags) is not list or len(tags)>24
+            or any(type(t) is not str or not t for t in tags)
+            or type(requires) is not dict or len(requires)>12):
+        raise ValueError('CONTINGENT_NOTICE_INVALID_SOURCEFREE_PROPOSAL')
+    if (type(world) is not dict or type(actors) is not dict
+            or type(world.get('clock')) is not int
+            or type(world.get('positions')) is not dict
+            or type(world.get('sites')) is not dict):
+        raise ValueError('CONTINGENT_NOTICE_INVALID_WORLD')
+    for aid,site in requires.items():
+        if (type(aid) is not str or aid not in actors
+                or type(site) is not str or site not in world['sites']):
+            raise ValueError('CONTINGENT_NOTICE_UNQUALIFIED_ACTOR_OR_SITE')
+    if clock != world['clock']:
+        return {'status':'INAPPLICABLE_WORLD_CLOCK',
+                'offer_id':offer_id,'world_id':world.get('id')}
+    if location not in world['sites']:
+        return {'status':'INAPPLICABLE_SITE_NO_LONGER_EXISTS',
+                'offer_id':offer_id,'world_id':world.get('id')}
+    if any(world['positions'].get(aid)!=site for aid,site in requires.items()):
+        return {'status':'INAPPLICABLE_ACTOR_LIFE_DIVERGED',
+                'offer_id':offer_id,'world_id':world.get('id')}
+    return {'status':'ELIGIBLE_SOURCEFREE_NOTICE_ONLY',
+            'offer_id':offer_id,'world_id':world.get('id'),
+            'no_world_outcome_or_actor_knowledge_inferred':True,
+            'not_an_external_news_source_verification':True}

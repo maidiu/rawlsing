@@ -7,10 +7,13 @@ import unittest
 from pathlib import Path
 
 from um_sorok_organism.types import adult, newborn, blank_world, AccessibleEncounter
-from um_sorok_organism.constitution import materialize, compose
+from um_sorok_organism.constitution import materialize, compose, actor_access
 from um_sorok_organism.development import admit, InvalidDevelopment
+from um_sorok_organism.psychic_genesis import conserve_lived_episode
+from um_sorok_organism.historical_self_organization import possible_lived_directional_orientation
+from copy import deepcopy
 from um_sorok_organism.runtime import ConstitutiveRuntime
-from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService
+from um_sorok_organism.semantics import CallbackLLMProvider, ValidatingSemanticService, HeuristicSemanticProvider
 
 
 def lived(actor, event, action='SIGNAL', *, clock=1, cue=False):
@@ -210,6 +213,325 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                     'orientation_mode':'APPROACH'}])
         self.assertEqual(before,repr(actor))
         self.assertEqual(len(actor['projects']),0)
+
+
+    @staticmethod
+    def _received_body_course(actor,event,clock,polarity,*,action='SIGNAL'):
+        experience=lived(actor['id'],event,action=action,clock=clock,cue=True)
+        before={'comfort':.65,'pain':.1,'nutrition':.7,
+                'rest':.7,'regulation':.6}
+        after=deepcopy(before)
+        if polarity=='WITHHOLD':
+            after['pain']+=.11
+        elif polarity=='APPROACH':
+            after['comfort']+=.11
+        elif polarity=='MIXED':
+            after['comfort']+=.11
+            after['pain']+=.11
+        else:
+            raise AssertionError(polarity)
+        conserve_lived_episode(actor,experience,'world:'+event,before,after)
+        actor['body'].update(after)
+        return experience
+
+    def test_mulch_r28_repeated_adverse_life_generates_withhold_and_later_recruits(self):
+        actor=adult('learned','L')
+        control=adult('control','C')
+        earlier=self._received_body_course(actor,'one',1,'WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,earlier,'world:one'),[])
+        self.assertIsNotNone(option(situated(actor)))
+        latest=self._received_body_course(actor,'two',2,'WITHHOLD')
+        options=possible_lived_directional_orientation(actor,latest,'world:two')
+        self.assertEqual(len(options),1)
+        chosen=options[0]
+        self.assertEqual(chosen['kind'],'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION')
+        self.assertEqual(chosen['orientation_mode'],'WITHHOLD')
+        self.assertEqual(chosen['lived_genesis_basis']['source_event_refs'],
+                         ['world:one','world:two'])
+        self.assertEqual(actor['historical_orientations'],[])
+        self.assertIsNotNone(option(situated(actor)))
+        receipt=admit(actor,latest,'world:two',[chosen])[0]
+        self.assertEqual(receipt['status'],
+                         'REPEATED_ACTOR_LIVED_PROVISIONAL_RECRUITABLE')
+        learned=actor['historical_orientations'][0]
+        self.assertEqual(learned['acquisition'],'REPEATED_LIVED_BODY_COURSE')
+        self.assertEqual(len(learned['lived_genesis_basis']['source_event_refs']),2)
+        self.assertIsNone(option(situated(actor)))
+        self.assertTrue(any(x['action']=='SIGNAL'
+            for x in situated(actor).suspended_actions))
+        self.assertIsNotNone(option(situated(control)))
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,latest,'world:two'),[])
+        self.assertEqual(actor['projects'],[])
+
+    def test_mulch_r28_bodily_relief_generates_approach_without_motive_truth(self):
+        actor=adult('relief','R')
+        self._received_body_course(actor,'one',1,'APPROACH')
+        latest=self._received_body_course(actor,'two',2,'APPROACH')
+        candidate=possible_lived_directional_orientation(
+            actor,latest,'world:two')[0]
+        self.assertEqual(candidate['orientation_mode'],'APPROACH')
+        candidate['interpretive_hypothesis']='Perhaps this was an enlivening occasion.'
+        receipt=admit(actor,latest,'world:two',[candidate])[0]
+        self.assertEqual(receipt['kind'],'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION')
+        self.assertTrue(any(c['polarity']=='APPROACH'
+             and c['source_family']=='NONDECLARATIVE_PRACTICE'
+             for c in situated(actor).currents))
+        record=actor['historical_orientations'][0]
+        self.assertEqual(record['interpretive_hypothesis_not_causal_truth'],
+                         candidate['interpretive_hypothesis'])
+        self.assertTrue(record['does_not_upgrade_sourcefree_to_human_science'])
+
+    def test_mulch_r28_forged_valence_episodes_and_source_refused_atomically(self):
+        actor=adult('forgery','F')
+        self._received_body_course(actor,'one',1,'WITHHOLD')
+        latest=self._received_body_course(actor,'two',2,'WITHHOLD')
+        qualified=possible_lived_directional_orientation(
+            actor,latest,'world:two')[0]
+        baseline=repr(actor)
+        for mutate in ('mode','source','operation','actor','ref'):
+            trial=deepcopy(qualified)
+            actor_experience=latest
+            if mutate=='mode':
+                trial['orientation_mode']='APPROACH'
+            if mutate=='source':
+                trial['lived_genesis_basis']['source_event_refs'][0]='world:invented'
+            if mutate=='operation':
+                trial['operation']='WORK'
+            if mutate=='actor':
+                actor_experience=deepcopy(latest)
+                actor_experience['actor']='another'
+            if mutate=='ref':
+                trial['perceived_cue_ref']='private:invented'
+            with self.assertRaises(InvalidDevelopment,msg=mutate):
+                admit(actor,actor_experience,'world:two',[trial])
+            self.assertEqual(repr(actor),baseline)
+
+    def test_mulch_r28_mixed_and_single_course_cannot_mint_explanation(self):
+        actor=adult('mixed','M')
+        first=self._received_body_course(actor,'a',1,'WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,first,'world:a'),[])
+        second=self._received_body_course(actor,'b',2,'APPROACH')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,second,'world:b'),[])
+        third=self._received_body_course(actor,'c',3,'WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,third,'world:c'),[])
+        mixed_actor=adult('both','B')
+        self._received_body_course(mixed_actor,'first',1,'MIXED')
+        mixed=self._received_body_course(mixed_actor,'second',2,'MIXED')
+        self.assertEqual(possible_lived_directional_orientation(
+            mixed_actor,mixed,'world:second'),[])
+        stranger=adult('stranger','Stranger')
+        self.assertEqual(possible_lived_directional_orientation(
+            stranger,third,'world:c'),[])
+        self.assertFalse(any(c['kind']=='HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE'
+                             for c in situated(mixed_actor).currents))
+
+
+    def test_mulch_r28_real_world_two_meals_offer_lived_orientation_to_semantic_owner(self):
+        """End-to-end actual R27 SQLite world -> lived body -> semantic proposal
+        -> R19 admission -> next pre-cue recruitment -> cold reopen.
+        Neither two co-occurrences nor a model selection prove a human motive.
+        """
+        parent={'source_ref':'R28_MEALS_FICTIONAL_PARENT',
+                'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'r28':'not_a_survey_observation'},
+                'fictional_seed':{'projects':[]}}
+        observed=[]
+        def callback(task,packet):
+            if task=='adult_constructor':
+                return HeuristicSemanticProvider().propose(task,packet)
+            if task=='development':
+                if packet['actor']['id']=='mother':
+                    available=packet.get(
+                        'historically_possible_lived_directional_orientation',[])
+                    observed.append(deepcopy(available))
+                    if available:
+                        self.assertEqual(available[0]['orientation_mode'],'APPROACH')
+                        return {'task':task,'candidates':available}
+                return {'task':task,'candidates':[]}
+            if task=='expression':
+                return {'task':task,'surface':'The household continues.'}
+            if task=='actor_attempt':
+                return {'task':task,'action':'WAIT'}
+            raise AssertionError(task)
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'historically_emergent_direction.sqlite3')
+            rt=ConstitutiveRuntime(db,semantic=ValidatingSemanticService(
+                CallbackLLMProvider(callback)))
+            try:
+                rt.initialize([('mother','Mother',parent),
+                               ('father','Father',parent)])
+                before=rt.situated('mother')
+                self.assertFalse(any(
+                    c.get('source_family')=='NONDECLARATIVE_PRACTICE'
+                    for c in before['currents']))
+                first=rt.step('mother',requested_action='EAT')
+                self.assertEqual(first['status'],'PERFORMED')
+                self.assertFalse(any(observed))
+                second=rt.step('mother',requested_action='EAT')
+                self.assertEqual(second['status'],'PERFORMED')
+                self.assertTrue(any(observed),
+                    'two actually comparable meals needed; candidates='+repr(observed)
+                    +' source_witnesses='+repr(
+                        rt.snapshot('mother').get('lived_genesis_episodes',[])))
+                mother=rt.snapshot('mother')
+                learned=[r for r in mother['historical_orientations']
+                         if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE']
+                self.assertEqual(len(learned),1)
+                self.assertEqual(learned[0]['orientation_mode'],'APPROACH')
+                after=rt.situated('mother')
+                self.assertTrue(any(
+                    c['action']=='EAT' and c['polarity']=='APPROACH'
+                    for c in after['currents']))
+                self.assertTrue(rt.verify()['valid'])
+            finally:
+                rt.close()
+            cold=ConstitutiveRuntime(db)
+            try:
+                self.assertTrue(any(
+                    c.get('action')=='EAT' and c.get('polarity')=='APPROACH'
+                    for c in cold.situated('mother')['currents']))
+                self.assertTrue(cold.verify()['valid'])
+            finally:
+                cold.close()
+
+
+    @staticmethod
+    def _r29_lived_in_other_presence(actor,event,clock,other,mode):
+        e=lived(actor['id'],event,clock=clock,cue=True)
+        for counterpart in ([other] if isinstance(other,str) else other):
+            e['perceived_cues'].append({
+                'id':'coactor:'+counterpart+':'+str(clock),
+                'kind':'coactor_present','source_actor':counterpart,
+                'modality':'present','tags':['coactor',counterpart]})
+        before={'comfort':.65,'pain':.1,'nutrition':.7,
+                'rest':.7,'regulation':.6}
+        after=deepcopy(before)
+        if mode=='WITHHOLD':
+            after['pain']+=.11
+        elif mode=='APPROACH':
+            after['comfort']+=.11
+        else:
+            raise AssertionError(mode)
+        conserve_lived_episode(actor,e,'world:'+event,before,after)
+        actor['body'].update(after)
+        return e
+
+    @staticmethod
+    def _r29_situated_beside(actor,*others):
+        world=blank_world()
+        world['positions'][actor['id']]='home'
+        for other in others:
+            world['positions'][other]='home'
+        access=actor_access(actor,world)
+        return compose(materialize(actor,world),access)
+
+    def test_mulch_r29_same_operation_different_other_does_not_transfer(self):
+        actor=adult('nadia','Nadia')
+        self._r29_lived_in_other_presence(actor,'father1',1,'father','WITHHOLD')
+        second=self._r29_lived_in_other_presence(
+            actor,'father2',2,'father','WITHHOLD')
+        available=possible_lived_directional_orientation(
+            actor,second,'world:father2')
+        self.assertEqual(len(available),1)
+        self.assertEqual(available[0]['orientation_mode'],'WITHHOLD')
+        self.assertEqual(available[0]['lived_genesis_basis'][
+            'coexperienced_other_refs'],['father'])
+        self.assertTrue(available[0]['lived_genesis_basis'][
+            'other_may_not_have_caused_bodily_course'])
+        receipt=admit(actor,second,'world:father2',available)[0]
+        self.assertEqual(receipt['kind'],'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION')
+        self.assertIsNone(option(self._r29_situated_beside(actor,'father')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor,'mother')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor)))
+        self.assertEqual(len(actor['historical_orientations']),1)
+        self.assertEqual(actor['historical_orientations'][0][
+            'coexperienced_other_refs'],['father'])
+        self.assertEqual(actor['historical_orientations'][0]['acquisition'],
+                         'REPEATED_LIVED_BODY_COURSE')
+
+    def test_mulch_r29_cross_other_episodes_cannot_fake_repetition(self):
+        actor=adult('daughter','Daughter')
+        self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
+        e=self._r29_lived_in_other_presence(actor,'b',2,'mother','WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,e,'world:b'),[])
+        self.assertEqual(actor['historical_orientations'],[])
+
+    def test_mulch_r29_different_others_can_acquire_opposing_orientations(self):
+        actor=adult('opposed','Opposed')
+        self._r29_lived_in_other_presence(actor,'f1',1,'father','WITHHOLD')
+        f=self._r29_lived_in_other_presence(actor,'f2',2,'father','WITHHOLD')
+        admit(actor,f,'world:f2',possible_lived_directional_orientation(
+            actor,f,'world:f2'))
+        self._r29_lived_in_other_presence(actor,'m1',3,'mother','APPROACH')
+        m=self._r29_lived_in_other_presence(actor,'m2',4,'mother','APPROACH')
+        choices=possible_lived_directional_orientation(actor,m,'world:m2')
+        self.assertEqual(len(choices),1)
+        self.assertEqual(choices[0]['orientation_mode'],'APPROACH')
+        admit(actor,m,'world:m2',choices)
+        self.assertEqual(len(actor['historical_orientations']),2)
+        father=self._r29_situated_beside(actor,'father')
+        mother=self._r29_situated_beside(actor,'mother')
+        both=self._r29_situated_beside(actor,'father','mother')
+        self.assertTrue(any(c['polarity']=='WITHHOLD' for c in father.currents
+                            if c['source_family']=='NONDECLARATIVE_PRACTICE'))
+        self.assertTrue(any(c['polarity']=='APPROACH' for c in mother.currents
+                            if c['source_family']=='NONDECLARATIVE_PRACTICE'))
+        self.assertFalse(any(c['source_family']=='NONDECLARATIVE_PRACTICE'
+                             for c in both.currents))
+        self.assertIsNone(option(father))
+        self.assertIsNotNone(option(mother))
+
+    def test_mulch_r29_multi_other_field_matures_without_blame(self):
+        actor=adult('family','Family')
+        self._r29_lived_in_other_presence(
+            actor,'x',1,['mother','father'],'WITHHOLD')
+        latest=self._r29_lived_in_other_presence(
+            actor,'y',2,['mother','father'],'WITHHOLD')
+        proposed=possible_lived_directional_orientation(
+            actor,latest,'world:y')
+        self.assertEqual(len(proposed),1)
+        self.assertEqual(proposed[0]['lived_genesis_basis'][
+            'coexperienced_other_refs'],['father','mother'])
+        self.assertTrue(proposed[0]['lived_genesis_basis'][
+            'other_may_not_have_caused_bodily_course'])
+        admit(actor,latest,'world:y',proposed)
+        # A household field is not a judgment that EITHER parent caused harm.
+        together=self._r29_situated_beside(actor,'mother','father')
+        father=self._r29_situated_beside(actor,'father')
+        mother=self._r29_situated_beside(actor,'mother')
+        self.assertIsNone(option(together))
+        self.assertIsNotNone(option(father))
+        self.assertIsNotNone(option(mother))
+        self.assertEqual(actor['historical_orientations'][0][
+            'coexperienced_other_refs'],['father','mother'])
+
+    def test_mulch_r29_large_crowd_does_not_invent_field_identity(self):
+        actor=adult('many','Many')
+        others=['other'+str(i) for i in range(9)]
+        self._r29_lived_in_other_presence(actor,'a',1,others,'WITHHOLD')
+        now=self._r29_lived_in_other_presence(actor,'b',2,others,'WITHHOLD')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,now,'world:b'),[])
+        self.assertEqual(actor['historical_orientations'],[])
+
+    def test_mulch_r29_forged_social_source_is_atomically_rejected(self):
+        actor=adult('source','Source')
+        self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
+        now=self._r29_lived_in_other_presence(actor,'b',2,'father','WITHHOLD')
+        valid=possible_lived_directional_orientation(actor,now,'world:b')[0]
+        original=repr(actor)
+        for rewrite in (['mother'],[],['institution:fantasy']):
+            bad=deepcopy(valid)
+            bad['lived_genesis_basis']['coexperienced_other_refs']=rewrite
+            with self.assertRaises(InvalidDevelopment):
+                admit(actor,now,'world:b',[bad])
+            self.assertEqual(repr(actor),original)
 
     def test_sqlite_cold_restart_preserves_operative_pre_cue_pressure(self):
         with tempfile.TemporaryDirectory() as d:
