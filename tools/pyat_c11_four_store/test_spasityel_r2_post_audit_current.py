@@ -85,7 +85,7 @@ class RevocationAfterAuditTests(unittest.TestCase):
             result = json.loads(reports[0].read_text())
             self.assertEqual(result["status"], "SOURCE_AUTHORITY_RESOURCE_OR_RUNNER_HOLD")
             self.assertNotEqual(
-                result.get("comparison", {}).get("four_arm_complete"), True,
+                (result.get("comparison") or {}).get("four_arm_complete"), True,
             )
 
     def test_revocation_after_physical_query_refuses_positive_report(self):
