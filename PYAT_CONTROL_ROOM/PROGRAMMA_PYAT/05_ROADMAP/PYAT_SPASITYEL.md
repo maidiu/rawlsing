@@ -1,5 +1,8 @@
 # PYAT-SPASITYEL — definitive KUDA/NEKUDA rescue and integration mandate
 
+> **R30 TEST-ONLY BRANCH RETIREMENT:** redundant [#1281](https://github.com/maidiu/rawlsing/pull/1281) closed UNMERGED with immutable sourcefree evidence and exact Git test blob inherited by current [#1282](https://github.com/maidiu/rawlsing/pull/1282). All legacy function/test and original source, benchmark, independence and protected holds remain tracked in the single R30 docket; closing a redundant draft is NOT an accepted runtime feature.
+
+
 > **R30 LIVE SOURCE_CURRENT RUNNER BUG REPRODUCED AND CANDIDATE-REPAIRED:** [Existing R30 single docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#18-r30--10061271-actually-executed-late-r2-current-revocation-repair-2026-11-21) / [draft PR #1282](https://github.com/maidiu/rawlsing/pull/1282) final `8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1` sourcefree **15 inherited +5 new PASS**, red first and no new storage/science engine. Preserve all #1006 source/host/original and G5 protected holds; G4 paired CURRENT_PROGRESS not advanced.
 
 

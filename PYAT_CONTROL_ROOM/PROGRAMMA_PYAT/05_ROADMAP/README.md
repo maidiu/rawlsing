@@ -3,6 +3,9 @@
 <!-- PROGRAMMA_PYAT_CAPABILITY_CURRENT_FIRST_LOOK_START -->
 ## FIRST CONSULTATION: WHAT PYAT ALREADY HAS / WHAT ACTUALLY REMAINS
 
+**R30 TEST-ONLY DUPLICATE PR CLOSED WITH NO-DROP:** [R30 custody addendum](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#18-r30--10061271-actually-executed-late-r2-current-revocation-repair-2026-11-21): [#1281](https://github.com/maidiu/rawlsing/pull/1281) **CLOSED UNMERGED** after sourcefree two-test Git blob `570cce651fed3bc13ac4803ad5f9bcbd9c0463bc` verified byte-identical and re-executed in still-DRAFT [#1282](https://github.com/maidiu/rawlsing/pull/1282), preserving all red/green and predecessor CI receipts. No protected merge or G5 implied.
+
+
 **R30 #1006 ACTUAL R2 SOURCE_CURRENT RED→GREEN RUNNER REPAIR, DRAFT ONLY:** [Single cumulative R30 KUDA/IR docket](PYAT_SPASITYEL_KUDA_ADJUDICATION_AND_REVIEW_LOG.md#18-r30--10061271-actually-executed-late-r2-current-revocation-repair-2026-11-21). [#1282](https://github.com/maidiu/rawlsing/pull/1282) existing runner now rechecks external SOURCE_CURRENT after physical audit and query, before positive status. RED initial [Actions 44964765866](https://github.com/maidiu/rawlsing/actions/runs/44964765866): 15 inherited PASS but two false-positive sourcefree cases FAIL. GREEN at exact `8d68c9758a6ba1d06b32bb2e3b34c3140de9f7d1` [Actions 44965013383](https://github.com/maidiu/rawlsing/actions/runs/44965013383): 15 inherited +5 joined currentness/R29 parallel tests PASS, artifact `14730744145`; only existing `runner.py` production changed, no new Store/issuer/engine. MainMac R2 source, native original query, independent G5 and protected paired progress still HELD.
 
 
