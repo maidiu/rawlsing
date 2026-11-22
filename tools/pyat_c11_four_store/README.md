@@ -53,6 +53,46 @@ For two machines, one may run H/S1 and the other S2/S3, **only after each machin
 
 The four-arm launcher refuses missing original held pins/current rights, altered saved files or manifest, incomplete families, wrong event locators, corrupt compressed canonical bodies, lost exact refs, SHA256 identity collisions, an exhausted resource ceiling, or insufficient free disk. It does NOT silently reuse a fabricated new source/operation grant.
 
+## Resume the original issued Q103 without rebuilding H/S2/S3
+
+If the original arm's physical build and complete thirteen-family body audit
+finished, but the later native I03 call failed, **keep the original
+`ARM/permanent.sqlite`, `ARM/report.json` and run-level
+`held_source_identity.json`**. They are inputs, not expendable scratch.
+
+After updating the checkout to the exact repaired HEAD, execute ONLY the
+already-issued native query against the previously built arm, for example:
+
+```sh
+PYAT_BENCH_CONFIG="/ABSOLUTE/PATH/to/bundle.json" \
+  sh tools/pyat_c11_four_store/run_all.sh \
+  --native-only --only H \
+  --existing-run "/ABSOLUTE/PATH/output/20261121T191049"
+```
+
+This runs **zero physical builds and zero earlier SQL probe batches**.
+It reopens the existing SQLite with `mode=ro` and `query_only=ON`;
+verifies the original held source/manifest, rechecks all thirteen body digests
+against the original report, reconstructs the exact authorized issued operation
+from the original private R2/Q103 documents, then executes the existing I03
+and S04/optional FF01 consumers once. There is **no alternate scientific
+issuer or source grant**. Original-source preflight and original Q103
+construction can still take time; the former full data conversion is skipped.
+
+Output is isolated under
+`EXISTING_RUN/native_replays/H-TIMESTAMP-PID/native_report.json` and
+`progress.jsonl`. The previous `H/report.json`, `comparison.json`,
+SQLite and original saved source remain untouched. A failed replay keeps
+a typed failure receipt; it does not rewrite the old report or claim completed
+four-way parity. Use `--only S2` or `--only S3` with the corresponding
+completed original run folder to replay those arms. Do **not** run against an
+unaudited, `BUILDING` or `AUDIT_PENDING` store.
+
+An original R2 decision authorizing `MainMac` **does not authorize a
+different host**. Copying the SQLite and the decision to another machine
+does not bypass host/custody/source rights. The benchmark remains a test-only
+native reader adapter, not protected native/scientific acceptance.
+
 ## Emissions and persisted results
 
 Each run goes to OUTPUT_DIR/RUN_ID. The common progress.jsonl is flushed while scanning original files; each of H/S1/S2/S3 independently writes. **CPU telemetry is live**: the arm's `progress.jsonl` emits `resources` approximately every two seconds and `resources_final` at shutdown with `cpu_percent_one_core` (may exceed 100% for multicore activity), `cpu_percent_host_capacity` (normalized by logical CPU count), sampled CPU user/system seconds, RSS and disk. Final `report.json.resources` includes peak and average CPU percentages plus sampled CPU seconds; `summary.csv` includes average/peak one-core CPU percentages. These are sampled process-tree measurements that may miss processes that begin and exit between samples, not kernel-level whole-run accounting.
