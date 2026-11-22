@@ -4,6 +4,8 @@
 
 **Boundaries:** This is NOT a new checker, census, task, storage engine, science, source use, actor approval, G5, or a blanket hold on unrelated coding. The inherited protected G4 782/150/62/82 and the source-grade 94-item R23 agenda are unchanged. The existing full-OATH and PP26 visibility gate remains separate and intact. Original/source-native science and competent owners remain distinct.
 
+**Legacy PR #1148 disposition (source preserved, not adopted):** The 9-file proposed ONE PLAN branch exact `fd4370b1273a68227b5483ca41fb422e49f27bba` was closed **UNMERGED** after #1284/#1285 received the canonical workspace and 94 historical status annotations. It contained unsafe old OATH/G4/rev11 progress overwrites. The later author's PRE-V3 reverse-plan candidate and four S04/S05/S06/S10 section notes survive in the closed PR, **not** as current accepted tasks or as discharged obligations. [Exact closure/fates](https://github.com/maidiu/rawlsing/pull/1148#issuecomment-7074377763). This historic PR fate is documentary only until this R24 receiving cut is protected.
+
 **R24 receiving condition:** New verifier plus G4 rev24 and paired CURRENT_PROGRESS.md/.json rev24 have **no protected force before exact authorized PRE-MAIN merge and readback**. Independent checker-source review and same-head GitHub Actions remain required; source static local code writing is not a completed acceptance. Earlier protected R23 progress follows intact.
 
 ---
