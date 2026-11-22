@@ -184,6 +184,72 @@ class RunnerIntegrationTests(unittest.TestCase):
             )
             self.assertEqual(len(saved["query_report"]["physical_probes"]),3)
 
+    def test_native_only_uses_existing_audited_h_without_rebuild_or_mutation(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_EXISTING_H",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            source=FixtureSource(cfg,root,lambda **kwargs:None)
+            with patch.object(runner,"InputEstate",return_value=source):
+                original=runner.run(path,only="H")
+            self.assertEqual(original["status"],
+                "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            previous=Path(original["report_directory"])
+            db=previous/"H"/"permanent.sqlite"
+            original_report=previous/"H"/"report.json"
+            before_bytes=db.read_bytes()
+            old_report_bytes=original_report.read_bytes()
+            fake_query=SimpleNamespace(ref=SimpleNamespace(key="SOURCEFREE_Q103"))
+            issued=[{"query":fake_query,"name":"SOURCEFREE_Q103"}]
+            with patch.object(runner,"InputEstate",return_value=source), \
+                 patch.object(runner,"_native_operations",
+                              return_value=(issued,"TEST_ONLY_ISSUED")), \
+                 patch.object(runner,"execute_issued",
+                              return_value={"facts":[{"ref":"synthetic"}],
+                                            "grade":"TEST_ONLY"}):
+                replay=runner.run_native_only(path,previous,arm="H")
+            self.assertEqual(replay["status"],"NATIVE_ONLY_TEST_ADAPTER_EXECUTED")
+            self.assertTrue(replay["no_store_rebuild"])
+            self.assertTrue(replay["original_corpus_verified_against_existing_report"])
+            self.assertTrue(replay["original_sqlite_stat_unchanged"])
+            self.assertEqual(len(replay["results"]),1)
+            self.assertEqual(db.read_bytes(),before_bytes)
+            self.assertEqual(original_report.read_bytes(),old_report_bytes)
+            self.assertTrue(
+                (Path(replay["report_directory"])/"native_report.json").is_file()
+            )
+
+    def test_native_only_refuses_different_source_identity_without_renovating_store(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_NATIVE_ID_HOLD",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            source=FixtureSource(cfg,root,lambda **kwargs:None)
+            with patch.object(runner,"InputEstate",return_value=source):
+                previous=Path(runner.run(path,only="H")["report_directory"])
+            saved=(previous/"H"/"report.json").read_bytes()
+            source.identity={**source.identity,"manifest_sha256":"0"*64}
+            with patch.object(runner,"InputEstate",return_value=source):
+                replay=runner.run_native_only(path,previous,arm="H")
+            self.assertEqual(replay["status"],"NATIVE_ONLY_REFUSED_OR_FAILED")
+            self.assertIn("source differ",replay["error"])
+            self.assertEqual((previous/"H"/"report.json").read_bytes(),saved)
+            self.assertTrue(replay["original_sqlite_stat_unchanged"])
+
     def test_invalid_parameters_fail_before_source_admission(self):
         with tempfile.TemporaryDirectory() as t:
             path=Path(t)/"bundle.json"
