@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from . import runner
@@ -145,6 +146,43 @@ class RunnerIntegrationTests(unittest.TestCase):
             self.assertEqual(result["arms"]["S2"]["status"],
                              "COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
             self.assertTrue(Path(result["report_directory"]).is_dir())
+
+    def test_native_reader_imports_real_internal_respondent_identity(self):
+        # Fail at the exact checked-input boundary, NOT at a missing import.
+        from .native import open_native_session
+        with self.assertRaisesRegex(StoreFailure,"actual independently verified"):
+            open_native_session(None,object())
+
+    def test_native_failure_retains_completed_physical_probes(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_NATIVE_FAILURE",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,"continue_after_arm_failure":True,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            fake_query=SimpleNamespace(ref=SimpleNamespace(key="TEST_NATIVE_QUERY"))
+            issued=[{"query":fake_query,"name":"ORIGINAL_TEST_ONLY"}]
+            with patch.object(runner,"InputEstate",FixtureSource), \
+                 patch.object(runner,"_native_operations",return_value=(issued,"SOURCEFREE_TEST_ONLY")), \
+                 patch.object(runner,"execute_issued",side_effect=RuntimeError("synthetic native refusal")):
+                result=runner.run(path,only="H")
+            arm=result["arms"]["H"]
+            self.assertEqual(arm["status"],"FAILED_OR_HELD")
+            self.assertIn("synthetic native refusal",arm["error"])
+            self.assertEqual(arm["query_report"]["native_status"],"NATIVE_REFUSED")
+            self.assertEqual(len(arm["query_report"]["physical_probes"]),3)
+            self.assertEqual(len(arm["query_report"]["fresh_process_probes"]),1)
+            self.assertEqual(len(arm["query_report"]["evidence_recovery"]),4)
+            self.assertIn("peak_process_tree_rss_bytes",arm["resources"])
+            saved=json.loads(
+                (Path(result["report_directory"])/"H"/"report.json").read_text()
+            )
+            self.assertEqual(len(saved["query_report"]["physical_probes"]),3)
 
     def test_invalid_parameters_fail_before_source_admission(self):
         with tempfile.TemporaryDirectory() as t:
