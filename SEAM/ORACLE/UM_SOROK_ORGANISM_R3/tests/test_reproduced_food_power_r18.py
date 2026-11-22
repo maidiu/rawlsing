@@ -153,8 +153,29 @@ class R18WorldPower(unittest.TestCase):
         self.assertFalse(can_draw_shared_food(self.w,'mother','home'))
         self.assertTrue(can_draw_shared_food(self.w,'nadia','home'))
         self.assertEqual(board['food_rights'],'SHARED_BY_COLLECTIVE_ACTS')
+        # DCO MP-2 first consumer: a collective legal victory is not yet the
+        # caregiver's effective power to provision a child. No hidden private
+        # fallback may mask this sanction; the same real stock persists.
+        self.w['holdings']['mother']['food']=0
+        stock_before=self.w['sites']['home']['food']
+        nutrition_before=self.a['nadia']['body']['nutrition']
+        blocked=perform_one_actual_feeding(
+            self.w,self.a,'mother','nadia','home',AUTONOMOUS)
+        self.assertEqual(blocked['status'],'BLOCKED')
+        self.assertEqual(self.w['sites']['home']['food'],stock_before)
+        self.assertEqual(self.a['nadia']['body']['nutrition'],nutrition_before)
+        self.assertEqual(board['food_rights'],'SHARED_BY_COLLECTIVE_ACTS')
+        # No new legal reform, actor motive or child ideology is manufactured:
+        # only the independently clocked paid exclusion has expired.
         self.w['clock']=5
         self.assertTrue(can_draw_shared_food(self.w,'mother','home'))
+        actually_fed=perform_one_actual_feeding(
+            self.w,self.a,'mother','nadia','home',AUTONOMOUS)
+        self.assertEqual(actually_fed['status'],'PERFORMED')
+        self.assertEqual(self.w['sites']['home']['food'],stock_before-1)
+        self.assertGreater(self.a['nadia']['body']['nutrition'],nutrition_before)
+        self.assertEqual(board['food_rights'],'SHARED_BY_COLLECTIVE_ACTS')
+        self.assertEqual(self.a['nadia']['self_model'],{})
 
     def test_material_counterstock_survives_institutional_exclusion(self):
         enact(self.w,self.a)
