@@ -186,6 +186,35 @@ def _pyat_pair_defects(md_text, json_text, guide_text, base_md=None, base_json=N
     return defects
 
 
+def _pyat_pair_presence_defects(md, json_path, g4):
+    """The triplet must exist before version checks; do not silently skip."""
+    return [
+        "PYAT_PAIR_REQUIRED_MISSING_" + p.name
+        for p in (md, json_path, g4) if not p.is_file()
+    ]
+
+
+def _pyat_pair_presence_selftest():
+    """Hostile actual on-disk removal, including the reviewer B1 absent MD."""
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="pyat-pair-required-") as temp:
+        root = pathlib.Path(temp)
+        files = (root / "CURRENT_PROGRESS.md",
+                 root / "CURRENT_PROGRESS.json",
+                 root / "README.md")
+        for p in files:
+            p.write_text("test", encoding="utf-8")
+        check(not _pyat_pair_presence_defects(*files),
+              "PYAT_PAIR_SELFTEST_PRESENCE_COMPLETE")
+        for p in files:
+            p.unlink()
+            defects = _pyat_pair_presence_defects(*files)
+            check(defects == ["PYAT_PAIR_REQUIRED_MISSING_" + p.name],
+                  "PYAT_PAIR_SELFTEST_MISSING_" + p.name)
+            p.write_text("test", encoding="utf-8")
+    return 4
+
+
 def _pyat_pair_selftest():
     old_md = "# PYAT CURRENT_PROGRESS REV23 — source\n\noriginal\n"
     old_json = json.dumps({"revision": 23, "report_status": "OLD"})
@@ -241,9 +270,12 @@ def _pyat_git_blob(base_sha, rel):
 
 
 _pyat_pair_selftest()
+_pyat_pair_presence_selftest()
 pyat_md = ROOT / "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md"
 pyat_json = ROOT / "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json"
 pyat_g4 = ROOT / (PYAT + "05_ROADMAP/README.md")
+for pair_defect in _pyat_pair_presence_defects(pyat_md, pyat_json, pyat_g4):
+    check(False, pair_defect)
 if pyat_md.is_file() and pyat_json.is_file() and pyat_g4.is_file():
     md_body = pyat_md.read_text(encoding="utf-8")
     json_body = pyat_json.read_text(encoding="utf-8")
