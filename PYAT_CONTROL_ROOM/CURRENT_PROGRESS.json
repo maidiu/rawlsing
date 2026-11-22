@@ -18,7 +18,16 @@
     "feature_code_changed": false,
     "original_science_native_actor_rights": "NO_NEW_GRANTS",
     "independent_review": "NOT_CLAIMED",
-    "receiving": "HOLD_UNTIL_AUTHORIZED_DOCUMENTARY_CAS"
+    "receiving": "HOLD_UNTIL_AUTHORIZED_DOCUMENTARY_CAS",
+    "existing_visibility_checker": {
+      "file": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py",
+      "old_protected_git_blob": "a7c7d75d6625902b95eebfb2a7f8ceb78f000290",
+      "candidate_git_blob": "8b127f8f46dd68cc6a5c15e1d8560512fc0d1722",
+      "reason": "mandatory first contact HQ OATH end 10086 bytes; prior first-2600-byte question guard falsely fails on three protected HQ fronts",
+      "repair": "check first canonical OATH and exact question in 4096 character post-OATH front; reject absence and far-away spoof",
+      "sourcefree_execution": "CANONICAL_ACTIONS_PENDING",
+      "authority": "AUTHOR_SOURCEFREE_CANDIDATE_NOT_PROTECTED"
+    }
   },
   "working_hq": {
     "branch": "integration/pre-main-reconciliation-r1",
