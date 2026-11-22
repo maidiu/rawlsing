@@ -246,6 +246,18 @@ The organism's first developmental means include **interoception, sensation, ori
 
 ## V. An ordinary life acquires practical resolution: activity, affordances, temporal depth and novel worlds
 
+
+### The world clock, the simulated-person clock and the user's calendar are not one clock
+
+[SOROK 46 no-autopilot](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/46_PORTAL_OCCUPANCY_USER_ABSENCE_NO_AUTOPILOT_R1.md), [SOROK 47 elastic rendezvous](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/47_ELASTIC_RENDEZVOUS_TIME_AND_MAX_VERISIMILITUDE_R1.md) and [SOROK 48 ambient persistence](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/48_AMBIENT_PERSISTENCE_ELASTIC_TIME_NONTOXIC_TETHER_R1.md) correct a risk inside the DCO's open historical time. Nadia's life should continue without the visitor, and missed contact can have *genuine relational consequences*. But the external human has not thereby authorized the simulation to invent what they do while offline, speak on their behalf or demand their real calendar as a condition of care. **Continuing actor identity is not continuous simulated player agency.**
+
+A planned Friday-at-seven encounter can have one diegetic timestamp and a bounded external access window. While that outcome remains causally pending, dependent future history must not already be finalized. If the visitor later participates within the lawful window, the admitted encounter remains Friday at seven and cannot know facts from Saturday; only after resolution does the remaining world catch up. A soft opportunity or immediate physical emergency may require a shorter window, expire, or be legitimately missed. This is a product compromise, not Nadia's awareness of a grace mechanism.
+
+The ethical distinction remains causal: Nadia may actually feel abandoned after an unkept promise; a platform that deploys streaks, fabricated guilt, notification pressure or a fake crisis to secure engagement is not simulating her independent desire. More stringent synchronization may be offered as optional verisimilitude, not a superior moral path or a condition for the relationship to flourish.
+
+**Hostile case:** create an invited dinner, a cancellable outing and a truly ephemeral event. Resolve them at unlike real-world times and verify that pending-history causality, actor knowledge, genuine absence effects and user non-autopilot are all conserved. The user can become materially important without the platform becoming their invisible coercive partner.
+
+
 ### Being alive is not being rendered
 
 The Constitutive Organism cannot be a small selection of psychologically intense scenes separated by a fictional calendar. What a person can acquire arises through different temporal grains of bodily and collective activity: feeding, work, shopping, school, care, transport, illness, rest, repetition, delight, boredom, arguments, paid and unpaid labor, community, conflict and art. Sève's lived time, Dreier's conduct of life, Elder's historical timing and social-reproduction theory supply different reasons to reject a person constituted by five “formative moments.” Some changes occur as individually performed events; others through recurring practices, bounded coverage intervals and unremarked accumulations. Every source claim needs its correct granularity. A compressed month does not establish the exact words of an unperformed argument; later phenomenal detail is constrained by already admitted historical parentage.
@@ -363,6 +375,18 @@ A recurring coworker has been witnessed refusing to cover Nadia's shift. When la
 ---
 
 ## VIII. The historical circuit crosses a real interface: purpose, effort, occurrence, reception, and psychic afterlife
+
+
+### The actual human subject, their diegetic shell and the audible statement cannot collapse
+
+[SOROK Court 8B](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/22B_COURT8_AUTOBIOGRAPHICAL_TRANSPORT_DESIGN_SPACE_R1.md), [Court 8C portal translation](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/22C_COURT8_PORTAL_TRANSLATION_CONSTITUTION_R1.md) and [Court 8E zero-profile correction](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/22E_COURT8_ZERO_PROFILE_MAIN_MODE_R1.md) reveal a genuine three-way contradiction. The visitor must remain the *actual person exercising judgments*, yet the generated world requires a socially situated, bounded bodily/structural position, and other characters may hear **exact, binding utterances**. Solving this by silently fabricating the visitor's childhood destroys autobiographical fidelity; solving it by giving their typed claims unconditional world authority destroys material reality; solving it by replacing the user with a fictional local actor destroys the activity Rawlsing wanted them actually to exercise.
+
+The provisional solution is **dimension-specific, source-limited translation**, never global psychographic character creation. The world may carry, homologize, bracket or ask the user to choose specific locally relevant coordinates. It may not silently translate sorrow, convictions, memories, relationships or competence into a fictional psychological past. The default first encounter requires no personal dossier or upfront self-taxonomy. A lived autobiographical statement remains *testimony*, not automatically an objective world fact.
+
+The sharpest edge is speech: **an intended utterance is not necessarily the exact diegetically realized utterance, and the realized utterance becomes a binding observable event**. Only a defined constitutive coordinate may be translated, through a stable lawful mapping, and a material translation must be disclosed back to the user. A lie—“I own a car” when the diegetic person owns none—must ordinarily remain a permissible lie, not be corrected into truth by the portal. A fact with no defensible homologue must remain foreign, bracketed, explicitly chosen or unresolved, not prettified by an LLM. What Nadia hears may change her belief; what the user meant and whether the portal faithfully implemented the lawful translation remain separately inspectable. This is not the same as the V2 wording-only semantic renderer.
+
+**Hostile case:** hold Nadia's world and the user's intended words fixed; compare an ordinary false assertion, a lawful location-coordinate translation, and an untranslatable real autobiography. The same model must allow social misunderstanding, correct future replay of the audible words, and no invented personal history behind either participant.
+
 
 
 ### Action resolution has independent semantic axes that a psychological story cannot silently decide
@@ -552,6 +576,16 @@ A later apparently small remark can recruit the whole charged configuration and 
 
 ## XII. Complex affect, play, erotic life and actor-owned disclosure
 
+
+### Disclosure, concealment and sideways speech are causal activities, not transparency settings
+
+[SOROK 40 actor-owned cathexis](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/40_ACTOR_OWNED_DISCLOSURE_RELATIONAL_TENSION_CATHEXIS_R1.md) does more than ban a trust threshold. It identifies different simultaneous conditions for the very *ability* to speak: relation-specific psychic investment, shame and status risk, fatigue, anger, desire to be known, anticipated reception, need for help, authority, privacy, prior reciprocity, specific addressee, task occupancy, and the actor's own uncertain access to what they feel. A truthful disclosure, an intentional lie, an incomplete story, a joke, “I don't know,” a refusal or accidental overdisclosure are **different causal performances**, not stylizations of one hidden fact. The person may be unable to formulate what the system's analyst knows.
+
+Two people folding clothes together may have a conversational possibility that direct face-to-face questioning destroys; silence can be care or resistance; disclosure of a painful experience to a stranger can occur earlier than disclosure of a mundane preference to a partner. **Relational access, intention to ask, psychological readiness, actual articulation, listener uptake and durable change are six separate transitions.** None implies the next.
+
+A sharp proof uses one objective fact and one Nadia but changes who asks, what they are doing together, who else is present, who holds power and what Nadia presently knows about her own history. Responses must be selected by a lawfully situated actor, not by a storyteller seeking intimacy. No novel universal disclosure engine follows from this: existing V3 person, CAN-008, bounded PFF and V2 owners must remain distinguishable.
+
+
 **Complex affect is historically learned organization between feelings, actions, objects and other feelings.** Bittersweetness is not sadness plus pleasure; shame can take delight itself as an object; anger can be directed at one's own dependence; sexuality, play, aesthetic labor and humor can form possibilities without needing to be reactions to domination. The [Governing Spirit](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md) expressly protects the dominated person's agency, pleasure, beauty and ordinary human excess from being swallowed by structural explanation.
 
 **Disclosure is not a reward for high trust.** [SOROK 40](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/40_ACTOR_OWNED_DISCLOSURE_RELATIONAL_TENSION_CATHEXIS_R1.md) treats partial truth, silence, humor, refusal, intentional fabrication and sincere false self-narrative as distinct actor-owned practical moves. Cooking beside a visitor may make something sayable that face-to-face questioning would inhibit. A lie can produce real false beliefs and later practical burdens without rewriting the objective history. Rendering a confession is not proof of its source-qualified psychodynamic genesis.
@@ -627,6 +661,18 @@ Use the same Nadia, equal local material peer-position for the visitor and a sou
 
 ## XIV. Late historical completion versus genuinely open prospective world production
 
+
+### Causal slack is a constrained historical debt, not a license to explain every object
+
+[SOROK 70 historical bridge](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md) differentiates an **unresolved fact** from an **unrepresented cause**. Some generated biography may already establish a real period of change while leaving bounded uncertainty about which particular contacts and practices contributed. Later historical materialization can sometimes supply an episode compatible with that existing causal debt. That does not permit an inspector's sudden discovery of a meditation rug to invent a decisive spiritual conversion that conveniently explains Nadia's politics, sexuality, career, affection and psychological transformation.
+
+The source offers four *impact grades*, not four psychic modules: H0 descriptive detail; H1 episodic/associative contact; H2 bounded contributory or symbolically recurrent history; H3 genuinely formative events, which should usually already be present or be supported by an explicitly unresolved causal allocation with forward compatibility. **Unspecified is not available for retcon.** If present consequences require more causal weight than the remaining history allows, admission must fail or preserve uncertainty; otherwise historical flexibility becomes backward authorship.
+
+The deeper contradiction is between **causal depth and explanatory saturation**. Real history does generate recurring patterns and sometimes powerful symbols, but a synthetic life in which every present detail traces to a single formative secret is less historically plausible, not more coherent. An expensive book may be mere enjoyment; a self-identified socialist may treasure a luxury object; a prayer rug can be retained from an unimportant period; Nadia may sincerely say “I just like it.” No successful ATTEND command is owed a deep revelation. Incompatibility in objective dates must be rejected; disagreement between the person's avowed politics, residual tastes, reflexes, hopes and conduct is often precisely what needs to persist.
+
+The computational test is bounded causal fan-out with cold replay. Late completion may realize an old fact only if it is consistent with exact existing world/actor history; independent subsequent actions may then generate **new** material consequences. An interpretation offered by the visitor can matter enormously in the present without being installed as the purpose of Nadia's unknowingly awaiting past.
+
+
 SOROK 70 reveals why historical completion and new-world construction must be distinguished. An unresolved old photograph may lawfully acquire past detail through bounded H0–H3 source-constrained historical bridging; what is unspecified is not an unlimited permission to invent a formative childhood cause. The user's question may trigger permitted materialization but cannot determine what the pre-existing historical truth was. Previous objective facts and other witnesses remain constraints. The actor's later interpretation of the photo can nonetheless become a fresh causal event.
 
 The opposite process is **prospective material novelty**. SOROK 38 requires that a lawfully admitted new job, coworker, move, invitation, injury, meal or artistic instrument introduce fresh objective relations that condition later activity. The new effects may exceed the candidate's initial purpose: a job changes commuting, income, status, friendships, fatigue and possible love. Two continuations with identical prior psyche may develop differently because different independently settled world opportunities exist. Historical openness is not an endless stock of personality surprises authored for the visitor.
@@ -638,6 +684,18 @@ The actor and world continue without the user. Public events enter the synthetic
 ---
 
 ## XV. Original owners, scene boundaries and the platform's nonpsychic powers
+
+
+### Research can learn from a relationship only without clandestinely becoming a participant in it
+
+[SOROK 59 research and scene-sampling firewall](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/59_POPULATION_LEARNING_RESEARCH_FIREWALL_AND_PHENOMENAL_SCENE_SAMPLING_R1.md) and [SOROK 83 cross-plane audit](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/83_FULL_TRANSCRIPT_CROSS_PLANE_LEAKAGE_AND_EMERGENT_TELEOLOGY_AUDIT_R1.md) expose a measurement paradox. Suppose a platform hypothesizes that the visitor is preoccupied with cleanliness, then displays extra cleanliness cues, and later concludes from the visitor's gaze that the hypothesis was correct. The observed behavior is now partly produced by the measurement instrument. **Behavior without exposure provenance is not interpretable evidence.** Record independently objective world, perceptual availability, what was displayed, what was explicitly attended to, actions, presentation conditions, and system hypotheses.
+
+This concerns more than consent. The user-facing adaptive lens may legitimately supply accessibility and optional ergonomic settings; a hidden hypothesis must not routinely select semantically diagnostic material to confirm itself. Optional research measures require distinct opt-in purpose and storage; aggregated research findings may condition *future audited generator versions*, not silently retarget that donor's Nadia. Players of Rawlsing are self-selected; their observed frequencies cannot be asserted as the general population's without scientifically suitable sampling and external validation.
+
+The **control plane** has no diegetic action authority. Opening a privacy menu, reading a recap, hovering over Restart, declining research consent or changing verbosity does not become Nadia's actor-perceived event. Actually abandoning a continuity changes product access, but still does not put a secret thought about a software button into Nadia's mind. Nor may the platform use its own knowledge of the user's private life to give Nadia mysteriously accurate claims.
+
+The constructive consequence is that the system can improve *the conditions under which people encounter independent Others* without converting their behavior into a self-validating psychological diagnosis or turning the relationship into an experiment optimized to retain them. That boundary is part of the DCO's ethics of historical causality, not peripheral legal boilerplate.
+
 
 
 ### The person is not the interface: the inherited CAN/V2 surface is a sequence of noncausal restrictions
