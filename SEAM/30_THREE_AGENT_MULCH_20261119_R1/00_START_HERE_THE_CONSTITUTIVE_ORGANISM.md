@@ -117,6 +117,16 @@ These separations are not newly invented by this document. **PRE-A0 §§3–6, 1
 ## III. Embodied developmental genesis must generate new methods of becoming
 
 
+### The six movements of psychic life are not six interchangeable words
+
+[PRE-A0 §§7–11](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md) makes a neglected correction: **pressure is not the primitive thing that lives**. Conation is directional activity already underway—reaching, curiosity, mastery, rest, desire, refusal, exploration and delight. Relation is the historically developing organization in which another's presence and flourishing can become significant without being assimilated to the self. Recognition is the experience of being *witnessed as socially real*, not simply receiving approval; hostile witness can recognize while damaging. Power is the differential **capacity to set materially consequential terms** for recognition, access, legitimacy, risk, resource distribution and action. Pressure arises where this living activity meets constraints, incompatible needs or contradictory relations. Flow names the way activity is actually routed through embodied, relational, symbolic and practical means.
+
+These are neither six separate hidden engines nor synonyms. A child may seek to master tying shoes before achievement has become a demand for Father's praise. A caregiver may witness failure without punishing it, or praise achievement while refusing to witness vulnerability. Two children may experience the same visible response under unequal material dependence. An acquired *need to be good* is therefore not already present in the bodily bid for comfort; it may emerge when recognition becomes conditional, when a public category supplies a meaning, and when dependency makes that judgment consequential.
+
+The stronger falsifier holds the organismic activity and the spoken response fixed while varying **the recognition power of the witness and the practical consequences of being categorized**. Conversely, fix the social sanction but vary actual prior conative organization. If the same pressure/approval score explains every resulting action, the DCO has mistaken life's historically produced movement for an undifferentiated intensity.
+
+
+
 ### Further developmental distinctions recovered from the V3 contracts and SEAM
 
 The body has several different developmental relationships to the psyche, and their differences matter even where no new ontology is needed.
@@ -179,6 +189,14 @@ A source-qualified **possible encounter** is not yet an actual actor's **materia
 ---
 
 ## IV. Two historical entrances into one socially reproduced life
+
+
+### Generation order and lived chronology are different clocks
+
+A source-specific correction from [PRE-A0/06 mother-first genealogy](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/06_GENEALOGY_AND_STRUCTURAL_WORLD_CORRECTION_R1.md) and [SEAM/24 SC-03](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md) sharpens the family construction beyond “generate two parents and couple them.” The **computational sequence** may first develop the mother through a small number of long-span conditional recursions, propose alternative conception pathways, and select a lawful path in the light of her *actual developed state* and eligible material circumstances. That selected path can imply a meeting years earlier, previous relationships, and older siblings. The father is then **back-generated conditional on that specific earlier intersection** from his own source-qualified coherent target and independent past; his in-world history must genuinely precede meeting the mother. Both then develop forward through the actual pre-birth household years, including older children when the focal child is not firstborn. **Late computational generation must not mean late fictional existence.**
+
+This creates a real inverse-history constraint: mother-first computation must not make Father's entire life an answer key, or covertly edit Mother's already admitted causal past to secure a conception. Both may bring prior children or relations that resist the selected path; if a proposed conception is incompatible with independent lives, reject or resample lawfully rather than force a tidy couple. Even if their adult survey responses match their separate targets, that is not unique identification of the lives that produced them. The historical design remains a proposal; current full runtime and scientifically justified inverse inference are unproved.
+
 
 
 ### Chronology and the inverse problem remain genuine constraints
@@ -292,6 +310,18 @@ An acquired psychological element therefore has at least two potentially changin
 ---
 
 ## VII. An Other has a life before we need to simulate it: polycentric fields and causal-resolution fidelity
+
+
+### Reachability topology is distinct from relationship structure and personal meaning
+
+[SOROK 52 / Q-ACCESS-001](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/52_Q_ACCESS_001_RELATIONAL_REACHABILITY_TOPOLOGY_R1.md) sharpens Court 9: a relationship can alter *which objective routes into life are actually available*, but route existence, permission, current opportunity, user attempt, realized presence and actor experience are different events. A route needs a target, mode, lawful basis, controller, scope, time conditions, change/revocation semantics, dependencies and provenance. The decisive question is **who can authorize it**. Nadia can invite a visitor into her kitchen, but cannot grant unfettered access to a child's privacy, a friend's thoughts, a workplace's records or an institution's controlled space.
+
+A spare key can enable entry but not blanket inspection; knowing an address does not authorize intrusion; access to an event does not entail disclosure or reciprocal affection. Practical necessity or fear can increase access in a harmful relationship; a healthier boundary can legitimately narrow it. Third parties can establish their own expectations and revocations. An existing route may become a new source of responsibility, but **anticipated availability does not become a user commitment until a lawful promise, role or other binding event actually occurs**.
+
+[SOROK 53 relational grammar](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/53_DIFFERENTIAL_RELATIONAL_MEANING_GENERATION_R1.md) and [SOROK 56 derivational correction](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/56_SOROK_RELATIONAL_SPINE_DERIVATION_CORRECTION_R1.md) show the further noncollapse: the objectively same access convention may mean hospitality, dependence, surveillance, control, work or warmth to different participants. Shared convention ≠ shared meaning. Meaning is derived through their separately acquired relational organization rather than stored as an intrinsic property of the access route.
+
+**Joint falsifier:** grant identical physical kitchen permission under two histories, one freely mutual and one fear-governed; change a third-party controller while holding the focal relationship stable. The engine should produce appropriate differences in feasible action without automatically changing intimacy, and different actor-local interpretations without rewriting route truth.
+
 
 
 ### A relationship is six differently owned causal realities, not a dyadic score
@@ -435,6 +465,16 @@ Here is the deeper dialectical understanding of “productive”:
 ---
 
 ## X. Care, authority and the productive conversion of love into harm
+
+
+### Who has the power to make a category real for another?
+
+[PRE-A0 §§9–12](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/00_PRE_A0_ARCHITECTURAL_BANK_R1.md) requires a sharper set of separations than “ideology affects personality”: actual relationship; imposed or inherited social category; role expectations; identification or alienation from that category; other people's claims about the actor; institutionally effective recognition; and the category's material consequences. An actor can **intellectually reject** “good daughter” while being affectively governed by what Father, church and employer can make that category cost her. Another may sincerely identify as a mother but resist a rule that harms her child. An institution can revoke resources without winning the person's inward consent.
+
+Recognition is not necessarily validation. To be publicly known as “unreliable,” “holy,” “deviant,” “successful” or “one of us” can reorganize the person's feasible activities even if the judgment is false. An ignored private achievement and a stigmatized public failure may have unlike consequences because audiences hold unlike power. The social category can also be reappropriated and used against the institution that invested it with authority. A living relation is subordinated to its category—“THE MARRIAGE,” “GOOD MOTHER,” “THE REVOLUTION”—only in specific acquired and enforced configurations, not because categories as such are bad.
+
+**Distinct causal court:** separate a person's private claim, the dominant witness's claim, alternative witnesses, social sanctions, the actor's knowledge of these claims, and practical opportunities. Change the audience's material authority without changing what it says; then change the actor's identification without changing the sanction. The resulting differences should arise from the existing person×event/relationship/world operators. The problem is not solved by adding “recognition pressure +0.6.”
+
 
 **The most dangerous fusion is not the sum of charity and aggression but charity as a means of aggression.** The pastor's rebuke demonstrates how genuine care becomes the functional support of injurious institutional discipline through learned authorization, expected belonging, livelihood, shame and religious genre. [SOROK 73](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/73_FRAMEWORK_REALITY_METABOLISM_SELF_RETCON_AND_CONTRADICTION_VISIBILITY_R1.md) then exposes how contradictory experience can strengthen a false legitimating framework: disagreement becomes persecution, harm becomes loving correction, resistance becomes proof of disloyalty. [SOROK 74](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md) prohibits turning these patterns into a freestanding adopted framework operator engine.
 
