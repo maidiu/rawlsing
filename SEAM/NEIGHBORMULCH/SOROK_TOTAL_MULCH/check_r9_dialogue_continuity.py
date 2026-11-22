@@ -183,7 +183,7 @@ def main():
     # positively IN the HOME, but its center is a *person*, not the early
     # platform's growth strategy, institutional-transformation game or
     # self-assessment engine. This is a routing court, not philosophical proof.
-    ux_hits = list(re.finditer(r"(?m)^## (\\d+)\\. ", main))
+    ux_hits = list(re.finditer(r"(?m)^## (\d+)\. ", main))
     ux_sections = {int(m.group(1)): main[m.start():(ux_hits[i+1].start() if i+1<len(ux_hits) else len(main))].lower()
                    for i, m in enumerate(ux_hits)}
     governing = {
