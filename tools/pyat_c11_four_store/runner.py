@@ -801,11 +801,151 @@ def run(config_path: Path, *, only: str | None = None) -> dict:
         common(stage="run_final",status=result["status"])
         common.close()
 
+def run_native_only(config_path: Path, existing_run_dir: Path, *, arm: str) -> dict:
+    """Replay ONLY already-issued native operations on one existing audited store.
+
+    Never call InputEstate.feed, Store(create=True), physical probe builders,
+    or store_result. Keep both the original SQLite and original report intact.
+    All authority/source validation and original operation reconstruction
+    still occur against current ORIGINAL held documents.
+    """
+    if arm not in ARMS:
+        raise StoreFailure("native-only replay requires exactly one known arm")
+    config_path=Path(config_path).resolve()
+    config=json.loads(config_path.read_text())
+    if config.get("schema")!="PYAT_FOUR_PERMANENT_STORE_BUNDLE@1":
+        raise StoreFailure("wrong bundle/config contract")
+    prior=Path(existing_run_dir).expanduser().resolve()
+    if not prior.is_dir():
+        raise StoreFailure("exact existing-run directory is missing")
+    db_path=prior/arm/"permanent.sqlite"
+    original_report_path=prior/arm/"report.json"
+    identity_path=prior/"held_source_identity.json"
+    if not db_path.is_file() or not original_report_path.is_file() or not identity_path.is_file():
+        raise StoreFailure("existing audited arm, report and original held identity required")
+    prior_report=json.loads(original_report_path.read_text())
+    prior_identity=json.loads(identity_path.read_text())
+    if (prior_report.get("arm")!=arm
+            or prior_report.get("source_identity")!=prior_identity
+            or set(prior_report.get("family_records",{}))!=set(FAMILIES)
+            or "full_corpus_body_audit" not in prior_report.get("stages_s",{})):
+        raise StoreFailure("original arm report lacks successful thirteen-family audit evidence")
+    # The original report may say FAILED_OR_HELD because only its subsequent
+    # native call failed. The complete physical audit is re-executed below.
+    old_stat=db_path.stat()
+    out_root=prior/"native_replays"
+    out_root.mkdir(exist_ok=True)
+    replay_dir=out_root/(arm+"-"+datetime.now().strftime("%Y%m%dT%H%M%S%f")+"-"+str(os.getpid()))
+    replay_dir.mkdir(exist_ok=False)
+    emit=EventLogger(replay_dir/"progress.jsonl","NATIVE_ONLY_"+arm)
+    report={
+        "schema":"PYAT_C11_EXISTING_STORE_NATIVE_REPLAY@1",
+        "arm":arm,"started":utc(),
+        "status":"RUNNING",
+        "previous_run":str(prior),
+        "original_store":str(db_path),
+        "original_store_size_bytes":old_stat.st_size,
+        "previous_arm_status":prior_report.get("status"),
+        "report_directory":str(replay_dir),
+        "host":_host_details(),
+        "results":[],"stages_s":{},
+        "no_store_rebuild":True,
+        "original_store_open_mode":"SQLITE_READ_ONLY",
+    }
+    store=None
+    watch=None
+    try:
+        with Resources(replay_dir,emit) as watch:
+            st=time.perf_counter()
+            source=InputEstate(config,config_path.parent,emit)
+            report["stages_s"]["source_admission"]=round(time.perf_counter()-st,3)
+            if source.identity!=prior_identity:
+                raise StoreFailure("existing physical run and currently admitted saved source differ")
+            store=Store(arm,db_path,source.estate_path,create=False,
+                        source_identity=source.identity,progress=emit,read_only=True)
+            report["source_identity"]=source.identity
+            emit(stage="existing_read_only_store",completed=arm)
+            st=time.perf_counter()
+            audited=store.audit_families(emit)
+            report["stages_s"]["repeat_full_body_audit"]=round(time.perf_counter()-st,3)
+            if audited!=prior_report["family_records"]:
+                raise StoreFailure("existing store full audit differs from its original run")
+            report["family_records"]=audited
+            report["original_corpus_verified_against_existing_report"]=True
+            watch.check()
+            st=time.perf_counter()
+            issued,issuer_grade=_native_operations(config,config_path.parent,source,emit)
+            report["stages_s"]["original_issuer_reconstruction"]=round(time.perf_counter()-st,3)
+            report["issuer_grade"]=issuer_grade
+            if not issued:
+                raise StoreFailure("native-only run requires an originally issued operation")
+            report["original_issued_operations"]=len(issued)
+            for op in issued:
+                watch.check()
+                name=op.get("name",op["query"].ref.key)
+                st=time.perf_counter()
+                val=execute_issued(store,source.verified,op)
+                report["results"].append({
+                    "name":str(name),
+                    "output":val,
+                    "elapsed_s":round(time.perf_counter()-st,3),
+                })
+                emit(stage="native_only_complete",completed=str(name))
+            report["native_hash"]=digest(canonical([
+                (item["name"],item["output"]) for item in report["results"]
+            ]).encode())
+            source.verified._live()
+            watch.check()
+        watch.check()
+        cpu_time=watch.peak_sampled_cpu_user_s+watch.peak_sampled_cpu_system_s
+        elapsed=max(time.monotonic()-watch.started,1e-9)
+        report["resources"]={
+            "peak_process_tree_rss_bytes":watch.peak_rss,
+            "peak_output_disk_bytes":watch.peak_disk,
+            "sampled_cpu_user_s":round(watch.peak_sampled_cpu_user_s,3),
+            "sampled_cpu_system_s":round(watch.peak_sampled_cpu_system_s,3),
+            "avg_cpu_percent_one_core":round(100*cpu_time/elapsed,2),
+            "peak_cpu_percent_one_core":round(watch.peak_cpu_percent_one_core,2),
+            "logical_cpus":watch.logical_cpus,
+            "samples":watch.sample_count,
+            "cpu_measurement_grade":"SAMPLED_PROCESS_TREE",
+        }
+        report["status"]="NATIVE_ONLY_TEST_ADAPTER_EXECUTED"
+    except BaseException as exc:
+        report["status"]="NATIVE_ONLY_REFUSED_OR_FAILED"
+        report["error_type"]=type(exc).__name__
+        report["error"]=str(exc)
+        report["traceback"]=traceback.format_exc(limit=14)
+        emit(stage="native_only_failed_or_held",error_type=type(exc).__name__)
+    finally:
+        if store is not None:
+            store.close()
+        final_stat=db_path.stat()
+        report["original_sqlite_stat_unchanged"]=(
+            old_stat.st_size==final_stat.st_size
+            and old_stat.st_mtime_ns==final_stat.st_mtime_ns
+        )
+        if not report["original_sqlite_stat_unchanged"]:
+            report["status"]="NATIVE_ONLY_REFUSED_OR_FAILED"
+            report["error"]="original SQLite size/mtime changed during supposedly read-only replay"
+        report["completed"]=utc()
+        (replay_dir/"native_report.json").write_text(
+            json.dumps(report,indent=2,default=str)+"\n"
+        )
+        emit(stage="native_only_final",status=report["status"])
+        emit.close()
+    return report
+
+
 def main(argv=None):
     p=argparse.ArgumentParser(description="Four permanent C11 stores, one command and separate reports")
     p.add_argument("--config",type=Path,default=Path("bundle.json"))
     p.add_argument("--only",choices=ARMS)
     p.add_argument("--self-test",action="store_true")
+    p.add_argument("--native-only",action="store_true",
+                   help="run issued native query against one existing completed SQLite, without rebuilding")
+    p.add_argument("--existing-run",type=Path,
+                   help="existing output/RUN_ID directory containing held_source_identity.json and ARM/permanent.sqlite")
     args=p.parse_args(argv)
     if args.self_test:
         import unittest
@@ -817,6 +957,17 @@ def main(argv=None):
         ret=unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if ret.wasSuccessful() else 1
     try:
+        if args.native_only:
+            if args.existing_run is None or args.only is None:
+                raise StoreFailure("--native-only requires --existing-run and --only ARM")
+            r=run_native_only(args.config,args.existing_run,arm=args.only)
+            print(canonical({
+                "result":r["status"],"report_dir":r["report_directory"],
+                "original_store":r["original_store"],
+            }),flush=True)
+            return 0 if r["status"]=="NATIVE_ONLY_TEST_ADAPTER_EXECUTED" else 2
+        if args.existing_run is not None:
+            raise StoreFailure("--existing-run only applies to --native-only")
         r=run(args.config,only=args.only)
         print(canonical({"result":r["status"],
                          "report_dir":r["report_directory"]}),flush=True)
