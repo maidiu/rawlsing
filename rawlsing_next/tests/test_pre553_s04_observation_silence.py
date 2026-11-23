@@ -121,9 +121,16 @@ def test_source_fact_identity_substitution_and_rehashed_scope_drift_refuse():
     # must compare against the real original I03 fact, not just trust the hash.
     from rawlsing_next.pre553_s04_observed_research import S04ObservedKnowledge
     original = receive_s04_i03_research(query=query, execution=execution)
-    for field in ("risk_set_ref", "response_semantics_ref", "predicate_ref"):
+    substitutions = {
+        "risk_set_ref": other_knowledge.material()["risk_set_ref"],
+        "response_semantics_ref": native._ref(
+            "RESPONSE_STATE_SEMANTICS", "forged-interpretation",
+        ).as_dict(),
+        "predicate_ref": other_knowledge.material()["predicate_ref"],
+    }
+    for field, replacement in substitutions.items():
         altered = original.material()
-        altered[field] = other_knowledge.material()[field]
+        altered[field] = replacement
         forged = S04ObservedKnowledge(canonical_json(altered), semantic_hash(altered))
         with pytest.raises(S04KnowledgeError, match="drift"):
             receive_s04_observation_scope(
