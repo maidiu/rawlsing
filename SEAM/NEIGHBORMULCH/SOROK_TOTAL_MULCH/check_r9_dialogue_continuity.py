@@ -218,6 +218,7 @@ def main():
     # R36 reviewer-corrected primary source routes supersede the deficient R35
     # destination order as CURRENT NAVIGATION ONLY, not as source-level G5.
     # This keeps the historical R35 author rows and all prior conservation checks.
+    ledger = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8")
     must("## N-T1 / Round Thirty-Six" in ledger,
          "R36 independently scoped primary-source route repair missing")
     r36 = ledger.split("## N-T1 / Round Thirty-Six", 1)[1]
