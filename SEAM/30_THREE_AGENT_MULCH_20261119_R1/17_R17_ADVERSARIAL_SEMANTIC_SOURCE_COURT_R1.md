@@ -1,6 +1,6 @@
 # DCO R17 — Adversarial semantic source court, first 38 high-impact determinations
 
-**NONCANONICAL AUTHOR REVIEW, NOT INDEPENDENT RECEIVING · 2026-11-23.** Exact source R16 blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`, original source PR HEAD `98e7a2a54920526239bfd86ad879728324a0f9e7`; current noncanonical rewritten R17 candidate blob `b75981f2e056cf697feaa660bf986d650fda7dc0`, source HEAD `0946e8923c5208f360c52f7055c85af8cdfb492e`. The [R16 fine-grain ledger](15_R17_FINE_GRAIN_SOURCE_ATOM_LEDGER_R1.jsonl) identifies 681 source units, of which 520 are substantive prose. These 38 explicitly reviewed distinctions are a **bounded subset**, not 681/681 semantic no-drop proof. Provisional lexical flags in the larger index cannot be reinterpreted as completed reviews.
+**NONCANONICAL AUTHOR REVIEW, NOT INDEPENDENT RECEIVING · 2026-11-23.** Exact source R16 blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`, original source PR HEAD `98e7a2a54920526239bfd86ad879728324a0f9e7`; current noncanonical rewritten R17 candidate blob `27c363c7ea99c74296e3f5cb380c3671b17d7fde`, source HEAD `0946e8923c5208f360c52f7055c85af8cdfb492e`. The [R16 fine-grain ledger](15_R17_FINE_GRAIN_SOURCE_ATOM_LEDGER_R1.jsonl) identifies 681 source units, of which 520 are substantive prose. These 38 explicitly reviewed distinctions are a **bounded subset**, not 681/681 semantic no-drop proof. Provisional lexical flags in the larger index cannot be reinterpreted as completed reviews.
 
 ## Checked causal distinctions
 
@@ -21,13 +21,13 @@
 | 328 | V | Form versus relations | An acquired organization has both a form of what it can do | Author provisional | 
 | 329 | VI | Relational topology | The practiced form of access | Author provisional | 
 | 331 | VI | History-reader graph comparator | The hard test is to compare a source-qualified relational operation | Author provisional | 
-| 332 | XIII | Slow motif as derived conditional summary | Slow motifs can serve as bounded derived summaries | Author provisional | 
+| 332 | Adj.19 | Slow motif as derived conditional summary | Slow motifs can serve as bounded derived summaries | Author provisional—adjacent source custody |
 | 350 | VII | Institutional genre of harm | A religious authority humiliates a congregant | Author provisional | 
 | 351 | VII | World fact vs moral claim | The event, speaker, target, witnesses, injury | Author provisional | 
 | 358 | VII | Internalization not compulsory | A possible sequence is identification with an authority | Author provisional | 
 | 359 | VII | Institutional performativity | No vocabulary item carries legitimacy | Author provisional | 
 | 369 | VII | Rereading real past | A woman who once understood her father's severity | Author provisional | 
-| 387 | XIII | LLM proposals not human truth | A language model can propose context-sensitive meaning | Author provisional | 
+| 387 | Adj.19 | LLM proposals not human truth | A language model can propose context-sensitive meaning | Author provisional—adjacent source custody |
 | 429 | XIII | No universal formative secret | Explanatory saturation | Author provisional | 
 | 438 | VIII | Pending-world time | A proposed Friday-at-seven meeting | Author provisional | 
 | 439 | VIII | No platform-manufactured dependence | an application that fabricates her distress | Author provisional | 
@@ -36,10 +36,10 @@
 | 540 | XI | Event vs wording authority | SOROK 101's proposed binding actor/world realization | Author provisional | 
 | 546 | XI | Control plane vs actor | A platform transcript, source-root record | Author provisional | 
 | 550 | XI | Stored/visible event consistency | A prose sentence and structured sidecar describing different deeds | Author provisional | 
-| 551 | XIII | Cost and historical truth | A modest, source-truthful event | Author provisional | 
+| 551 | Adj.19 | Cost and historical truth | A modest, source-truthful event | Author provisional—adjacent source custody |
 | 552 | XI | Recognition bounds | A visitor might see lettering without recognizing | Author provisional | 
-| 553 | XIII | Economical source-conditioned recruitment | Read-only derived person projections | Author provisional | 
-| 642 | XIII | No universal attractor | A preinstalled nine-type attractor | Author provisional | 
+| 553 | Adj.19 | Economical source-conditioned recruitment | Read-only derived person projections | Author provisional—adjacent source custody |
+| 642 | Adj.19 | No universal attractor | A preinstalled nine-type attractor | Author provisional—adjacent source custody |
 | 661 | XII | Psychoanalytic rivals | Psychoanalytic accounts of unconscious defense | Author provisional | 
 | 662 | VII | Political theory rivals | Gramsci, Althusser, Bourdieu, Foucault, Fromm, Freire and Fanon | Author provisional | 
 | 664 | XII | Embodied systems under source limits | Dynamic developmental systems proposals | Author provisional | 
@@ -58,3 +58,10 @@ A source row may legitimately be *rewritten into stronger explanatory substance*
 The next hostile checks must include (1) unperformed lesson versus actual child learning; (2) coercion without victim consent; (3) real skill versus lucky success; (4) material permission or key access not restored by emotional reconciliation; (5) source-graded expression and actor self-feedback; (6) cross-cultural unlike forms of cognition; (7) agent-world time, pending events and user absent action; (8) material social reproduction beyond the actor's recognized cause; (9) real nonlinear acquisition without automatic A+B fusion; (10) genuine NO_CHANGE or extinction; and (11) the possibility of accurate relational recognition alongside nontransparent knowledge.
 
 **Disposition: R17_SOURCE_CONSERVATION_HOLD.** R16 remains the single current positive author-branch HOME. The substantial R17 rewritten successor is a candidate only; source and conceptual equivalence are not fully proved, and no protected PROGRAMMA, paired CURRENT_PROGRESS, independent science, new runtime or owner accreditation is asserted. A more coherent manuscript does not authorize itself. No mandatory count of synthesis passes or word quota substitutes for the source challenge.
+
+
+## R17 later source location reconciliation — exact candidate and adjacent custody
+
+The positive theory was corrected to keep implementation-specific hypotheses outside the HOME. This moves the R17 rewrites for R16 source paragraphs **332, 387, 551, 553 and 642** into the subordinate [19 implementation/falsification record](19_R17_ADJACENT_IMPLEMENTATION_AND_FALSIFICATION_COURTS_R1.md), not into a theoretical abyss. Direct readback checked all **38** recorded anchors: **33 exist in the current R17 positive candidate** (blob `27c363c7ea99c74296e3f5cb380c3671b17d7fde`) and **5 exist verbatim in adjacent 19** (blob `8f4927f95a72c381b22db0aa65c83d6c92d09453`). The table above is updated accordingly. Their author provisional grades do not turn into source/scientific authorization, and the unadjudicated 643 other source atoms remain held. The [20 whole-manuscript conceptual court](20_R17_WHOLE_MANUSCRIPT_ADVERSARIAL_CONCEPTUAL_COURT_R1.md) tests all thirteen movements, without claiming 681-unit semantic acceptance.
+
+**Disposition remains `R17_SOURCE_CONSERVATION_HOLD`.** The full rewritten candidate is present, but complete semantic no-loss and independent review are not. The current author-branch HOME is R16 at `00`; do not promote by counting headings or keyword matches.
