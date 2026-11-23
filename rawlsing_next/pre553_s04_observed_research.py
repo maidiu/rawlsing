@@ -519,6 +519,17 @@ def receive_s04_observation_scope(
                 _exact(execution.release_refs[0], "I03 release")
             or _exact(material.get("universe_ref"), "S04 universe") !=
                 _exact(fact.empirical_universe_refs[0], "I03 universe")
+            or _exact(material.get("risk_set_ref"), "S04 source risk") !=
+                _exact(fact.risk_set_ref, "I03 source risk")
+            or _exact(material.get("measure_basis_ref"), "S04 measure") !=
+                _exact(fact.measure_basis_ref, "I03 measure")
+            or _exact(material.get("response_semantics_ref"), "S04 response interpretation") !=
+                _exact(fact.response_state_semantics_ref, "I03 response interpretation")
+            or _exact(material.get("predicate_ref"), "S04 condition") !=
+                _exact(query.condition_predicate_ref, "I03 condition")
+            or material.get("risk_set_type") != fact.risk_set_type
+            or material.get("source_scope_mode") != fact.source_scope_mode
+            or material.get("measure_kind") != fact.measure_kind
             or material.get("raw_eligible_condition_denominator") != fact.raw_denominator_support
             or material.get("raw_fully_resolved_joint_n") != fact.raw_numerator_support):
         raise S04KnowledgeError("observation scope underlying I03 evidence drift")
