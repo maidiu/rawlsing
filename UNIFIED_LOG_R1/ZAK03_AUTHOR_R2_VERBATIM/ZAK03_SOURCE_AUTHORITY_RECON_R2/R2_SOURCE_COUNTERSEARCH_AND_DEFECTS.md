@@ -1,0 +1,14 @@
+# R2 adversarial documentary delta and search correction ledger
+
+**Source:** user-uploaded 28-file `ZAK03_UNIFIED_FUNCTIONAL_RECONNAISSANCE_R1` (retained as read-only opponent baseline); **scope:** read-only S0/S1 source/functional reconnaissance; no code/tests/CI/agents.
+
+1. R1 claimed checked references but 2 `DATA_SHAPES` foreign keys were missing: `SHAPE:UNIVERSE`, `SHAPE:NATIVE_PACKAGE`. R2 added exact source-graded dictionary rows; this is a navigability repair, not proof of selected source.
+2. R1 `MECHANISM_RECONCILIATION.tsv` had 4 nonexisting current OP aliases: `ZAK03:OP:M09:0007`, `ZAK03:OP:M08:0007`, `ZAK03:OP:M11:0010`, `ZAK03:OP:M09:0011`. R2 adds source-qualified STATIC-RELATED op rows using existing current implementations and clearly refuses same-grain equivalence.
+3. R1 had 2 `NO_PROVED_CURRENT_MATCH` strings in an operation foreign-key field. R2 records an empty qualified modern op ID and retains the negative reason.
+4. R1 `COVERAGE.tsv` used `NONE` or narrative strings like `B49;R157;ZAK03S_A;ZAK03S_B` as if they were registered OP IDs; R2 relocates those strings to `qualification` and leaves the unproved operation link empty. A found documentary clue is not an executable OP.
+5. Original-first repo countersearch at `9253064bc9423a0f0ccda4fbdea43c2f54f800c6` recovered **three additional provisional substantive T capabilities** under the same declared historical V550/current PYAT territory: T0012 position-category marginal, T0013 ranked relation co-signature diagnostic, T0014 same-respondent response co-travel diagnostic. These are not duplicates of the F03 source authority, V549b candidate clouds, or V550J certified joint. Original primary owner remains ZAK-02; ZAK-03 provides cross-references.
+6. Precise semantic counterexample: `position_distribution` at blob `651329254244e9f42a8d88c2721ccae6bd768073` emits position category *marginal* shares, not `P(response|position)` conditional response probability. Earlier N006 interpretive evidence used conditional language. That claim cannot be attributed to this table; `position_indicator_summary` requires separate inspection.
+7. `ddm_v552_structural.py` @ historical blob `0df56d70cb3880dee723df00aea2207acd525260`, lines 253–259 accepts `conditional_determinicity` but never uses it to build outputs and makes empty `conditional_determinicity_status_audit`; this is **historical local dead socket**, not an established absence of every successor.
+8. B49 and R157 non-protected relocations independently rechecked by exact alternate commit/blob. Location belongs in `SOURCE_SEARCH_LOG.tsv`; no protected adoption claim follows.
+
+**No functional successions or runtime outcomes are newly accepted by this documentary delta.** The source-bearing R1 11 case records remain readable. R2 has 14 provisional T cases; historical universe remains OPEN.
