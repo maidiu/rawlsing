@@ -203,6 +203,14 @@ At least five questions matter and must not be answered by one categorical emoti
 
 Pleasure, play, attraction, sexual desire, humor, religious devotion, resentment, grief and ordinary boredom require different historically formed objects and practices. The theory cannot use “affect” as a label that turns their differences into one biochemical signal. Erotic life is bodily, learned, socially regulated and relational, but its object, boundaries, actor consent, social meanings and personal history vary. It is not a compulsory outcome of intimacy. Humor can loosen a practice, defend a status hierarchy, signal belonging or conceal embarrassment. Religious experience can organize care, fear, authority, solidarity, ritual competence or practical freedom; no metaphysical verdict about God is needed for a material account of what the experience does in a specific life. These possibilities are not a diagnosis of anyone who displays the behavior.
 
+### Inhibition can preserve a relation without conserving psychic energy
+
+The metaphor of conserving experience has a limited legitimate protest: a learned relation must not disappear merely because it is not selected for today's speech. Inhibited tenderness can color anger, an unexpressed dependency can condition moral rigidity, and a rejected loyalty can remain active in a different practice. Yet there is no first law of psychological thermodynamics, no validated transferable scalar of love, shame, grief or “psychic force.” Practices can weaken, be displaced, become irrelevant, genuinely extinguish or survive solely as objective histories without operative psychological afterlife.
+
+Distinguish a history directly expressed; privately effective despite outward inhibition; dormant or unrecruited in this context; stably suppressed by a learned defensive relation; attenuated, displaced, extinguished or transformed; formerly operative but now causally inert; simply unobserved or source-unknown; and a real occurrence that generated no new durable psychic organization. These are different historical fates, not degrees of hidden affective energy. A restriction can make one child humorous and resistant, another compliant, another aesthetically inventive and another largely unchanged. Nothing mandates an equivalent compensatory pressure after every negation.
+
+An acquired organization has both a form of what it can do and a historically formed network through which its use matters. One can change without the other. A once-gentle method can be recruited as obedience after humiliation; a new technical method can retain an old social meaning. Directed, conditional relations can include inhibition, learned identification, defensive cycles, conflict triangles and public/private separation. But neither a universal psychological graph nor a mere bag of nodes proves causation: only actual differences in later recruitment and activity can justify the proposed relation.
+
 ### 4. Inhibition, conflict, contradictory self-account and no resolution
 
 A person can sincerely believe two things that their practice holds apart. They may want to resist an injustice and dread losing a job; desire a relationship while anticipating humiliation; consider a duty sacred and privately resent it. A conflict can become explicit deliberation, remain an unspoken pattern of avoidance, induce bodily disruption, yield a narrow compromise, generate an entirely new plan or simply continue unresolved. The theory must not presume that dialectical contradiction inherently grants creativity or emancipation.
@@ -263,6 +271,12 @@ Suppose Nadia's mother takes an extra shift to pay for a school instrument. Her 
 
 Care can thus genuinely sustain two lives while producing unequal effects. One person learns the labor of soothing; another learns that relief tends to arrive. The same practice can become a source of trust, dependence, guilt, competence or no enduring special meaning. A third actor might supply the unpaid household work that makes the soothing possible; an employer might determine its timing. Their actual causal contributions must not disappear because the visible pair is emotionally compelling. Neither relational love nor class power monopolizes the explanation.
 
+### The practiced form of access changes what can be said
+
+Two people folding laundry can find a conversational opening that a direct face-to-face interrogation destroys. Silence can be care, refusal, concentration, avoidance or no felt need to speak. A painful disclosure to a stranger may precede an ordinary preference shared with a partner. An objectively possible route, the intention to ask, the other's readiness, actual speech, receipt and later alteration are nonidentical. This makes “relationship topology” more than a proximity map, but does not justify adding a mystical graph whenever relational prose sounds deep.
+
+Absent persons and indirect relations can change action through historically learned expectations; intermediaries may transform the significance of a relationship without the two focal actors sharing an intention. The hard test is to compare a source-qualified relational operation to a competent history reader with identical information and compute budget. If separately materialized edges or slow motifs cause no different warranted behavior, their redundancy is not a new law of psychology. If relations genuinely change what learned operations do, that causal difference belongs to the person.
+
 ### 5. The ethical horizon is neither guaranteed reciprocity nor compulsory solidarity
 
 The possibility of knowing another person is real; one person can become deeply familiar with another's expressive habits, material needs and history. Recognition can be accurate, pleasurable and transformative. But recognition need not be perfect, and gaining access is not an entitlement to the Other's full interior. Misunderstanding may persist after years. The other person may be uninterested in the relationship, be injured by it, change in a direction the focal actor dislikes or simply move into a different life.
@@ -312,6 +326,12 @@ The idea of “slow gravity” names one possible way that a relationship gradua
 
 A woman who once understood her father's severity as protection may later learn that it injured a sibling; she can reject that justification, mourn an affection that was real, feel anger at the cost of loyalty and still find herself acting from patterns learned in that household. At another age she may recover a genuine element of love without retracting her critique. The factual past does not change at each interpretation. Her present orientation changes, perhaps generating new actions and new injustices. This is historical self-reconstitution, not a moral balance sheet in which later truth erases earlier grief.
 
+### Authorized speech and the route through which domination becomes inward
+
+A religious authority humiliates a congregant and calls the act righteous correction. The event, speaker, target, witnesses, injury and consequences are world history. “Righteous” is an actor's claim or audience interpretation, not moral truth canonized by the event record. The speech may recruit a culturally learned genre of correction supported by institutional office, sanctions, loyalty and identification. Another community may reject that language while accepting a blunt insult as holy leadership. No vocabulary item carries legitimacy independently of the lived authority relation.
+
+A possible sequence is identification with an authority, internalized compliance, naturalization of its standards, invisibility of the external origin, and later acting as an agent of those standards. But it is not compulsory. A person can comply only under threat, love a teacher while rejecting a norm, or acquire a useful capacity and later turn it against the institution. Gramsci, Althusser, Bourdieu, Foucault, Fromm, Freire and Fanon help ask unlike questions about hegemony, interpellation, authorized speech, discipline, social character, reproduced oppression and materially racialized recognition. They cannot all be reduced to one obedience parameter.
+
 ### 5. No final reconciliation is owed to the observer
 
 The fact that contradictory practices share one relationship does not imply a higher unity must emerge. A father may remain loving and violent; a child may maintain affection and refuse contact; a person may perform costly care while misrecognizing its necessity; a solidarity practice may coexist with inherited prejudice. Such lives can change, but they need not change in the direction that a theory of alienation or liberation would prefer. A permanently unreconciled relation may be intelligible precisely as the material history of incompatible obligations.
@@ -357,6 +377,12 @@ At twenty-three a person can regard an experience as liberation; at twenty-nine 
 A new way of understanding oneself can be acquired through an intimate encounter, reading, therapy, political practice, religious experience, work, illness or solitary experimentation. Different forms of reflection operate through different cultural means. A learned self-accusation may function as a disciplinary practice even after its ideology is rejected. A person can analyze their behavior persuasively while continuing it. The theory must distinguish a proposed new interpretation, actor endorsement, actual changes in later recruitment and the possibility that an old practical tendency persists alongside revised belief.
 
 Private mental activity is not proof of an objectively shared event. Rehearsing an apology may soften the actor's anticipated hostility, increase anxiety or do nothing; the intended recipient remains unchanged until something actually reaches them. Hearing oneself say the apology later may create new learning, but not erase the earlier rupture. The model must maintain the time order of prospective, attempted, performed, received and subsequently reinterpreted episodes.
+
+### Pending event windows and the platform's separate incentives
+
+A proposed Friday-at-seven meeting has a fixed diegetic time even if the real user receives a bounded opportunity to join. While the event is causally pending, dependent future history must not be finalized; an admitted participation cannot know a Saturday fact while still occurring on Friday. A missed invitation can expire, and a physical emergency may have a much shorter window. This is a clock/world compromise, not knowledge Nadia has about a grace period.
+
+An unread message, a read-but-unanswered message, delivery notification and deliberate refusal are different events. The platform's own read or occupancy receipt cannot become Nadia's knowledge without a lawful worldly channel. Nor can it generate the absent user's meaningful actions. Nadia may genuinely feel abandoned when a promise is broken, but an application that fabricates her distress, deploys guilt streaks or invents crises to force return is producing dependence for engagement, not simulating her life. Anti-coercive product design does not require a sanitized person; it prevents the product from becoming the covert author of her needs.
 
 ### 5. Continuity without autopilot or visitor sovereignty
 
@@ -484,6 +510,12 @@ The human's choices matter. Speaking can create a genuine communicative act; phy
 
 Interface affordances are necessary but not constitutive organs of psychology. A view that emphasizes a gesture is a selected phenomenal presentation; it does not create the gesture's objective cause. A relationship card cannot authorize a promotion in intimacy; an access menu cannot manufacture an invitation; a subjective recollection cannot change world facts. This is why the inherited CAN/V2 phenomenal and salience membranes, relational derivation and actor/perception boundaries must be respected without turning their current code vocabularies into the upper limit of human possibility.
 
+### Exact outward occurrence before observer-specific projection
+
+SOROK 101's proposed binding actor/world realization is not the same as a CAN/V2 wording-only presentation. A model may propose a concrete movement, utterance, sound or object change within a genuinely unresolved and authorized event slot, but proposal is not canonical occurrence. The competent actor/world authority must settle it first; thereafter exact emitted words, observable movements, timing and material effects constrain future history and possible actor self-feedback. A prose sentence and structured sidecar describing different deeds are not two acceptable versions of one settled event; extensional equivalence matters.
+
+The later phenomenal presentation is observer-dependent without becoming fact-creating. A visitor might see lettering without recognizing a product by brand; notice a facial movement without understanding its cause; recognize a familiar room while missing a newly placed object. Rich narration cannot grant acquired expertise or supply inaccessible inner causes. Equally, the actor's true outward expression must not be erased to manufacture artificial mystery. This source-grained binding boundary matters more than beautiful writing and is not established merely because two components are both named “render.”
+
 ### 4. The two reciprocal errors: omniscient narration and artificial opacity
 
 An omniscient interface may narrate exactly why Nadia felt shame, which unconscious fear determined a response, what she will permanently think of the user and which childhood scene “explains” a glance. This can deliver a vivid experience while destroying the very Other it claims to represent. If those facts have not been historically and source-qualifiedly established, it adds impossible knowledge or invented causation. If they have been established in the model but are inaccessible to the visitor, exposing them may still violate the experience's epistemic boundary.
@@ -513,6 +545,12 @@ Some theories will explain different cases better. Some will disagree over an ac
 Psychological capacity is not just a set of human universals whose parameters culture adjusts. Language and communication, property and kinship, labor and learning, ritual and care, disability and accessible environment, bodily expression and self-reflection shape which forms of activity exist for a person at all. What an adult in one setting recognizes as personal intention might be organized through an entirely different practical or relational idiom elsewhere. Not every difference is an exotic ontology, and cross-cultural variation does not mean humans have unrelated biological requirements. The task is to identify actual historically acquired operations and their material conditions without projecting a metropolitan ideal subject as the unmarked human baseline.
 
 The sources also impose boundaries on how far we can claim this. An illustrative contrast between oral and literate practices, or signed and spoken language, cannot establish a universal taxonomy of mental kinds. Luria's historical cultural psychology supplies important cases but also has methodological and political limits that prevent its data from becoming an uncritical hierarchy of populations. A modern computational experiment with an LLM prompt cannot scientifically validate an ontogenetic theory. The DCO's positive requirement is **capacity to represent the emergence of unlike kinds of learned organization**. Which distinctions are scientifically well warranted in a particular cultural case remains a matter of source, empirical evidence and correction.
+
+### Different explanatory families do not share a single scientifically certified mechanism
+
+Psychoanalytic accounts of unconscious defense, ambivalent identification, splitting and affectively toned complexes can help formulate possible histories. Freud, Klein and Jung disagree, and no model may transform their hypotheses into compulsory childhood wounds, Jungian Shadow reconciliation or a three-agency Freudian engine. Intense liking, incentive wanting, learned significance and bodily emotion may diverge without an invariant psychic energy reservoir.
+
+Dynamic developmental systems proposals associated with Thelen and Smith help illuminate sensorimotor novelty emerging from body, context and practice, not from adult precompiled goal lists; they do not themselves determine class power or institutional legitimacy. Cultural-materialist and critical accounts—from Gramsci and Bourdieu to Fanon and Voloshinov—can expose the weakness of treating every socially formed contradiction as isolated intrapsychic pathology. Some mechanisms are complementary in a specified case; others make rival predictions. Their domains and scientific limits must remain explicit rather than being dissolved by a grand unified school.
 
 ### 3. The false promise of a uniquely exact psychological biography
 
@@ -601,6 +639,12 @@ Where the theory lacks a genuinely possible constitutive relation—such as an i
 
 Scientific calibration, adversarial testing and fidelity measures matter. They should challenge actual claims and catch errors rather than indefinitely prevent a working approximation from being built. One imperfect, causally coherent organism that genuinely continues in an independent world can provide stronger scientific and experiential counterevidence than another beautifully documented fragment. That does not make success claims free. A demonstrated seam is evidence for that seam, not proof of a complete person.
 
+### Economy and slow patterns must earn causal status
+
+Historically rich simulation cannot exhaustively replay every memory and relation after each greeting. Recruitment needs source-conditioned relevance across time: a distant odor, tone or gesture can call an old configuration into operation; a frequent recent association may be irrelevant; an inhibited relation can have indirect effects. Slow motifs can serve as bounded derived summaries of historically acquired patterns, but they may be multiple, resisted, compartmentalized, weak, absent or revised. A preinstalled nine-type attractor cannot choose future motives.
+
+Compare a proposed separate motif or relational-graph state against a competent contextual historical reader with equal information and realistic cost. If no actual difference in warranted action or causal economy emerges, no new authority has been earned. Read-only derived person projections, bounded relational recruitment, LLM proposals, actual world resolution and distinct actor/public expression are plausible compositions, not accepted schemas by mention. A modest, source-truthful event whose consequences persist is more constitutive than an extravagant description maintained by covert rewriting. Computational feasibility therefore affects what historical truth can be afforded, rather than excusing its replacement.
+
 ### 6. Falsifiers that a living implementation must survive
 
 **F1 — Different histories, same outward response.** Four people say the same sentence for unlike, source-qualified reasons. The program must preserve different afterlives and must not infer one hidden cause solely from the observed sentence.
@@ -644,6 +688,12 @@ Scientific calibration, adversarial testing and fidelity measures matter. They s
 **F20 — Scientific rivalry remains visible.** Where activity theory, dispositional plurality and reflexive explanation predict different causal requirements, source limitations remain legible rather than being overwritten by one magic parameter.
 
 These falsifiers are not eighteen compulsory narrative episodes, nor scientific tests completed by writing them down. They are boundaries within which a runtime can begin to demonstrate particular, inspectable functions. Their value is in distinguishing failure of implementation, failure of evidentiary authority and failure of theoretical conception.
+
+### Lived intensity is not product inventory
+
+Bittersweetness need not be a weighted average of pleasure and sadness. It may involve the present absence of a treasured person, remembered joy, a learned practice of grieving and the valued ability to remember. A favorite book may be mere enjoyment; a socialist may cherish an expensive object; a prayer rug may have no secret overarching meaning. Not every object yields revelation through attention. Explanatory saturation—making everything in the present a symptom of one formative secret—can be less historically plausible than ordinary taste.
+
+Friendship, sex, intoxication, grief, cruelty, tenderness and ordinary boredom can belong to fictional adult life without becoming collectible achievements, paid content routes or retention rewards. Nadia can decline intimacy, love someone the visitor never meets, be unpleasant or choose ordinary work over the visitor's compelling drama. The platform must not tune her responses to maximize affection or spending. Preserving her human difficulty is different from authoring addictive artificial dependence.
 
 ### 7. The person remains more than the theory of her
 
