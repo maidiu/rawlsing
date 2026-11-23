@@ -6,6 +6,12 @@
 
 **First principle:** the computational substrate is much bigger than the modules literally named `field_forge_*`. Upstream I03/I05/S04 already computes exact shared-respondent distributions; downstream M1/V554–V558 and N9 already computes scoped admitted structural/world values. Field Forge's distinct responsibility is the *lawful actor-independent relational observatory*, not a second survey runner, causal issuer, world simulator or psyche.
 
+## Historical functional lineage — May–August 2026 is the relevant predecessor, NOT 2025
+
+The historical question leading to Field Forge came from already written and progressively repaired **DDM empirical→structural→recipient code**: V549b's separation of same-respondent substantive attitude co-travel from demographic predictors, and V552/V552J/V553's row-level material/semantic fact → temporal consumer handoff. In June 25 generated-output reviews, V552 produced structural rows while V552J/V553 could drop them, replace their identities with packet/permission flags, or emit fallback demo pressure. **These were June 2026 exact-cut failures, not claims about protected/current code today.** The primary located documents are D091–D096 in the source ledger and the 28 directly separated predecessor propositions in 02.
+
+**Code-home duty:** distinguish historical attempted capability, presently existing original-source producer, tested sourcefree consumer, and actual applied downstream material option. No old v3 directive or June bug report creates a new FF owner, and no 2025 typology script is a Field Forge precursor that must be revived. The code inventory below remains indexed to existing G4 source and exact modern code HEAD, not reordered by intellectual chronology.
+
 ## I. Grade and ownership method
 
 | Grade | Meaning |
