@@ -2,6 +2,18 @@
 
 **Status:** `CONCEPTUAL DISPOSITION / SOURCE-STATIC` · **Date:** 2026-11-23. This is not a commission or a proposal for Field Forge to implement all the mechanisms below.
 
+### Recovered June 20 first-person design: three asymmetrical boundaries
+
+**Original source:** uploaded `Rawlsing_located_20261123.zip` → `03_nine_strata_docs/ORIGINAL_CONVERSATION_nine_strata_2026-06-20.txt` (SHA-256 `698b81686bf6f5252d5b79ef80b1708cab0252ea5f852f157e356bfe02561761`; self-reported 2026-06-20 15:50–17:10 EDT). Direct USER passages at original lines 10, 222, 428 and 603, interpreted under adopted later September R2, establish three distinct transfers.
+
+**Relational society → actor-independent source conditions:** Multiple local/national/sectarian/class/imperial contexts can relate *in different ways and directions*, and their relevance to a selected position is not fixed by one universal nine-strata hierarchy. FF can serve qualifying source-local population/Other-position contrasts and separately warranted institutional right/constraint. It **must not** infer actual global hegemony, elite command, or church doctrine from an unobserved questionnaire slot or an illustrative hypothetical.
+
+**Actor-independent source conditions → particular psychological history:** A parent, co-parent or child may learn conflicting loyalty, shame, faith, fear or admiration through real carrier and household practice. June 20's user explicitly states V552–V557 should **not** search for every ideological particular or manufacture the individual's magnetization; SOROK/V3's own experience/recruitment machinery owns that.
+
+**Source co-response → semantic meaning and selected event:** Original v2 V549b **answer-anchored attitude cloud** complements (not substitutes for) branch co-signature, and the v2 positioned-answer law conditions meaning on source position, target/authority, co-response and independently available power context. Even a lawful co-response cannot issue the **actual person's** belief or a competent structural relation without the correct downstream owner.
+
+The original Codex June 20 dialogue is **not** evidence the separately suggested July 6 session has been recovered. Earlier May 11 source-pack contents are now located (D098), but their May 11 creation timestamp is **still held**. See D098–D106 and the [454-claim source court](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md).
+
 ## The original source→structure→person separation preceded Field Forge (May–June 2026)
 
 The May 11 V549b idea and original V550 directive distinguish **observable non-demographic answer co-travel** from position predictors and both from a structural explanation. June 25's V552→V552J→V553 audits show why this distinction matters operationally: actual relation-axis/target/channel facts can exist yet never reach a temporal/world reader, while permission and fallback keys can be mistaken for actual meaning or pressure. Field Forge's later actor-independent contract must preserve these different information kinds, not take custody of the entire downstream chain.
