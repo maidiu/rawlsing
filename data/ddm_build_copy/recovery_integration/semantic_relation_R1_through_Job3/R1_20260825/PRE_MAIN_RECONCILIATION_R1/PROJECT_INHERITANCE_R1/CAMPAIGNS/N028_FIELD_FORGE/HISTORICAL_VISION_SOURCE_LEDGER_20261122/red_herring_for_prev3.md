@@ -80,6 +80,14 @@ Likewise, D010's nine mutually pressuring strata represent an early explanatory 
 
 H088–H090's source-corrected reverse contracts explicitly prohibit: `P(Y_joint|D2)` → observed coactor contact; `D2` minority response → automatically encountered revolutionary claim; actual contact → child heard/understood; child hearing → learned practice/identification; survey-position similarity → psychological homology. These false equalities are genuine alternatives challenged by the original source arguments, not evidence that the other-position empirical fields are unimportant. Preserve lawful OTHER-position conditional responses **as possible alternatives** while the world/actor owner separately particularizes and enacts any selected contact, access, activity and later acquisition.
 
+### What the June 20 source actually rejects
+
+The precise user-origin source `ORIGINAL_CONVERSATION_nine_strata_2026-06-20.txt` (D100, USER L222/L603) explicitly refuses two mechanisms **before** N028 existed: (1) V552–V557 enumerating every local ideology/theological configuration as though it could know them, and (2) forcing every one of nine historical strata into the selected person's source prior when the data/context does not warrant it. The user instead asks for position-conditioned, dynamic and multi-directional relationships.
+
+**Do not reject the intellectual problem while rejecting those mechanisms.** The preserved positive field is a source-qualified, partial, falsifiable set of social/ideological/material relations that can be recomputed for the chosen place, person-position, time and available observed contexts. Downstream actor experience and contrary motivation remain open. The June 20 church/California/Iraq examples are *hypothetical tests for what the system ought to ask*, not field observations or permitted default national/sectarian priors.
+
+V549b's actually recovered v2 contract likewise rejects equating a demographic determinicity table, branch co-signature, answer-anchored cloud, semantic interpretation and actual psychological belief. These are different products requiring different measurements/owners. Historic V549b code did **not** implement full higher-order joint or calibrated survey weighting simply because the original schema called for them. That is a historical implementation limit, not proof a modern capability is absent from current G4.
+
 ## Context-specific rejected plans are NOT rejected human questions
 
 Bourdieu's questions about dominance, conversion, distinction and class reproduction; Gramsci/Hall's questions about hegemony/articulation; Lahire's plural dispositional action; Lamont's symbolic boundaries; working-class/caste/colonial material history; and feminist social reproduction remain intellectually live. What gets rejected is **false authorization or untested computational equivalence**, not the phenomena.
