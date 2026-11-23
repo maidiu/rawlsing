@@ -26,6 +26,9 @@ from rawlsing_next.pre553_s04_first_consumer import (
     S04OnePassResult, receive_s04_first_consumer,
 )
 from rawlsing_next.pre553_s04_general_joint_algebra import S04GeneralJointWorkspace
+from rawlsing_next.pre553_s04_observed_research import (
+    S04ObservationScope, receive_s04_observation_scope,
+)
 from rawlsing_next.pre553_interpretation_qualification import (
     S04InterpretationCurrent,
 )
@@ -52,6 +55,7 @@ class S04DynamicResearchResult:
     """One executed I03 fact and its exact downstream S04-first reader."""
     original: S04OnePassResult
     joint_workspace: S04GeneralJointWorkspace
+    observation_scope: S04ObservationScope | None = None
 
 
 class S04DynamicResearchSession:
@@ -168,7 +172,18 @@ class S04DynamicResearchSession:
             interpretation_current=interpretation,
         )
         self._executed += 1
-        return S04DynamicResearchResult(original=product, joint_workspace=workspace)
+        observation = receive_s04_observation_scope(
+            query=query, execution=actual, knowledge=product.knowledge,
+        )
+        # The observation receipt is upstream metadata about this one actual
+        # I03 result, not source-survey frame authority or an FF relation.
+        repo._live()
+        if interpretation is not None:
+            interpretation.check_current()
+        return S04DynamicResearchResult(
+            original=product, joint_workspace=workspace,
+            observation_scope=observation,
+        )
 
     def ask_many(
         self, questions: Iterable[S04DynamicQuestion],
