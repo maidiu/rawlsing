@@ -59,6 +59,12 @@ Likewise, Core C's fitted weighted destination and Kish/Wilson range are distinc
 
 [The 14 function-grain FFX accounts](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md) state the executable calculations and their hard limits; [the 20 historic H052–H055 propositions](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) preserve which parts are central evidence, conditional method or rejected semantic promotion.
 
+### Other-position distributions are not an obligatory synthetic social-network model
+
+H088–H090 present a serious FF output obligation when a downstream request specifically asks how distinct positional configurations are **available as possible people and counterclaims**. What is required is source-valid `P(Y_joint|D2)` on a qualifying respondent universe, where measurable, plus separately sourced actual institutional/material position. **What has not been justified as universally necessary** is a persistent population-of-Others catalog, inferred social contact graph, simulated marriage probability, country-wide agent society, generalized category-to-person pairing or a new `SocialFieldRecruitmentEngine`.
+
+The original SEAM/29 considers two rival simple interfaces: a **relation-first** source-qualified possible Other selected by the world owner; and an **institution/practice-first** independently enacted public claim or objective right, with no compulsory D2 respondent in the scene. Test an actual first reader and ablate the additional D2 information. If either existing source query or lawful world act answers the selected question, no extra FF object should be issued. The need for broadly modeled contact frequencies, where such a claim is asked, is a **separate external-source problem**, not licensed by respondent microdata.
+
 ## II. One example of preservation without premature construction
 
 Two actual respondent-coherent three-way contingency tables may have the same one-way/two-way margins yet yield opposite values for `P(Y|X,Z)`. The present S04/FF01 direct-joint machinery is the first correct baseline. A future geometric map could discover a surprising local neighborhood that organizes these cells. It earns existence in production only if a consumer cannot recover its necessary answer through lawful query or permitted index—**not because the geometry is elegant**.
