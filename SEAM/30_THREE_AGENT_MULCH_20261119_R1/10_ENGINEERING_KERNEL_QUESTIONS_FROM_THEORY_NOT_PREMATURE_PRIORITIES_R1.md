@@ -1,6 +1,6 @@
 # 10 — ENGINEERING KERNEL QUESTIONS EMERGING FROM THEORY (NOT ITS AUTHORITY)
 
-**Independent adjacent engineering-hierarchy inquiry · DCO R13 theory-completion campaign · 2026-11-22 · nonissuing.**
+**Independent adjacent engineering-hierarchy inquiry · DCO R14 theory-completion campaign · 2026-11-22 · nonissuing.**
 
 **READ THE SINGLE [00 CONSTITUTIVE ORGANISM HOME](00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) FIRST for the *positive person-ontology*.** The [09 existing sourcefree implementation inventory](09_RECOVERED_OPERATIVE_FUNCTIONS_AND_FUSION_FIRST_CONSUMERS_R1.md) records historical machinery and evidence; this file separately explores **what minimal kernel(s) might eventually make the theory operative**. A hard engineering question is neither permission to redefine the theory nor proof its answer is absent. Find existing answer → cite/bring its theoretical substance into HOME; if absent, inspect whether a relation among other established parts already answers it; only then identify a *theoretical question* requiring development. Engineering formulation may expose overlooked ontology; it may not silently govern ontology.
 
@@ -46,6 +46,16 @@ The following historical text was *moved verbatim* from 09 §4, where it imprope
 | K-H **Actual model economy, source trust, temporal scale** | How can generative psychological abduction remain valuable and particular under actual compute budget, sparse time, prompt limits, errors and source admissibility? | Existing LLM provider, verified bounded context packet, developmental admission, world knowledge vs current facts, conditional parents via PYAT, persistence and recovery. | Model suggests illegal history/capability; zero-source proposal should not get native right; overcompression does not erase humanity. |
 
 **Comparative court, NOT settled ranking:** for each candidate find earlier theory's answer, present producer(s), competent owner/consumer, what it truly makes possible, which other constitutive requirements it enables (dependency edges), known costs, limits and a counterexample that existing owners fail. Only an established unmet *causal operation* after this reconciliation may become an engineering commission. A bidirectional dependency or several co-required minimal roots may be the correct answer; do not force one favorite kernel.
+
+
+
+### New theory-depth court pointer (R14) — questions are not implementation shortages
+
+[11 — Adversarial theory-depth, source and rival explanation court](11_ADVERSARIAL_THEORY_DEPTH_DIFFERENCE_COURT_R1.md) now contains twelve differentiated causal/rival confrontations, eight dissimilar counterhistories, and open theory questions O-1–O-8. Each question has an explicit **already inherited**, **genuinely deepened** and **not scientifically resolved** disposition. This is a more exact demand than a broad category named “missing faculty.” The practical comparison in this 10 must not rank as a ready-to-build “kernel” any operation whose scientific/theoretical status is still confused, nor postpone theory closure merely because causal prediction is not uniquely deterministic.
+
+The key theory discoveries now in [00 R14](00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) are: conditional rather than mandatory plural psyche; structurally effective external constraints without conscious recognition; objectification of previously unspecific needs; differences among personal-sense motive, stimulatory motive, feeling and objective success; culturally different kinds of psychological practice; time materially limiting the use of acquired capacities; and **non-integration** as a legitimate future of different acquired organizations. Reconcile these answers before claiming K-A through K-H either sufficient or ranked.
+
+**Dependency review question:** does a candidate kernel genuinely enable the person to have a previously unavailable kind of activity or development while preserving legitimate countercases, or does it only create an index, scheduler, vocabulary or expository analogy for a function whose substantive owner is elsewhere? No engineering proposal may answer this by reducing the positive HOME to its present sourcefree tests. No single mandatory A×B×C fusion engine is implied by the theory.
 
 ## 4. Theory-gap escalation pathway (the purpose of this sidecar)
 
