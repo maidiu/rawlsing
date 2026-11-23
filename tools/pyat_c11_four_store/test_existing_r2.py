@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 from .existing_r2 import R2Custody
 from .stores import StoreFailure
@@ -67,6 +68,41 @@ class ExistingR2Tests(unittest.TestCase):
             # incorrectly allowing an out-of-band permission-state change.
             value["waves"]["SRC04"]["status"]="REVOKED"
             path.write_text(json.dumps(value))
+            self.assertFalse(custody.check_current(custody.pins))
+
+    def test_unchanged_stat_signature_cannot_mask_changed_decision_bytes(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            path,value=self.fixture(root)
+            custody=R2Custody(
+                path,"SRC04",required_host="MainMac",
+                required_purpose="P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+            )
+            self.assertTrue(custody.check_current(custody.pins))
+            before=path.stat()
+            value["waves"]["SRC04"]["decision_ref"]="changed"
+            path.write_text(json.dumps(value))
+            with mock.patch.object(Path,"stat",return_value=before):
+                self.assertFalse(custody.check_current(custody.pins))
+
+    def test_symlink_retarget_cannot_keep_stale_positive(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            first,_=self.fixture(root)
+            other=root/"other.json"
+            other.write_bytes(first.read_bytes())
+            value=json.loads(other.read_text())
+            value["waves"]["SRC04"]["decision_ref"]="retargeted"
+            other.write_text(json.dumps(value))
+            link=root/"current.json"
+            link.symlink_to(first)
+            custody=R2Custody(
+                link,"SRC04",required_host="MainMac",
+                required_purpose="P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+            )
+            self.assertTrue(custody.check_current(custody.pins))
+            link.unlink()
+            link.symlink_to(other)
             self.assertFalse(custody.check_current(custody.pins))
 
     def test_cached_currentness_rechecks_same_size_rewrite_with_restored_mtime(self):
