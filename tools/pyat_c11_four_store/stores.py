@@ -112,6 +112,7 @@ class Store:
         self.db.execute("PRAGMA busy_timeout=120000")
         self.db.row_factory = sqlite3.Row
         self._ref_cache = OrderedDict()
+        self._exact_cache = OrderedDict()
         self._body_cache = OrderedDict()
         self._pq = {}
         self._insert_count = 0
@@ -273,6 +274,9 @@ class Store:
         self._ref_cache[raw] = idx
         if len(self._ref_cache) > 30000:
             self._ref_cache.popitem(last=False)
+        self._exact_cache[idx] = raw
+        if len(self._exact_cache) > 30000:
+            self._exact_cache.popitem(last=False)
         return idx
 
     def find_id(self, ref: Any) -> str | int | None:
@@ -282,6 +286,7 @@ class Store:
         if self.text_keys:
             return raw
         if raw in self._ref_cache:
+            self._ref_cache.move_to_end(raw)
             return self._ref_cache[raw]
         if self.fingerprint_keys:
             row = self.db.execute(
@@ -294,15 +299,30 @@ class Store:
             return None
         if row["ref"] != raw:
             raise StoreFailure("full reference mismatch at SHA256 lookup")
-        return row["id"]
+        idx = row["id"]
+        self._ref_cache[raw] = idx
+        if len(self._ref_cache) > 30000:
+            self._ref_cache.popitem(last=False)
+        self._exact_cache[idx] = raw
+        if len(self._exact_cache) > 30000:
+            self._exact_cache.popitem(last=False)
+        return idx
 
     def exact_ref(self, idx: str | int) -> str:
         if self.text_keys:
             return str(idx)
+        cached = self._exact_cache.get(idx)
+        if cached is not None:
+            self._exact_cache.move_to_end(idx)
+            return cached
         row = self.db.execute("SELECT ref FROM refs WHERE id=?", (idx,)).fetchone()
         if row is None:
             raise StoreFailure("missing canonical exact-reference dictionary entry")
-        return row["ref"]
+        ref = row["ref"]
+        self._exact_cache[idx] = ref
+        if len(self._exact_cache) > 30000:
+            self._exact_cache.popitem(last=False)
+        return ref
 
     def add_row(
         self, family: str, position: int, row: Mapping[str, Any],
@@ -382,6 +402,7 @@ class Store:
     def commit_batch(self) -> None:
         self.db.commit()
         self._ref_cache.clear()
+        self._exact_cache.clear()
 
     def finish(self, manifest: Mapping[str, Any], family_records: Mapping[str, Mapping[str, Any]]) -> None:
         if self.get_meta("state") != "BUILDING":
@@ -554,18 +575,22 @@ class Store:
         tid = self.find_id(target)
         if rid is None or tid is None or (states is not None and not states):
             return
-        if native_only:
-            where, params = "native=?", [tid]
-        elif include_component:
-            where, params = "(native=? OR canonical=? OR component=?)", [tid]*3
-        else:
-            where, params = "(native=? OR canonical=?)", [tid]*2
-        sql = f"SELECT oid FROM events WHERE rid=? AND {where}"
-        args = [rid] + params
-        if states is not None:
-            sql += " AND state IN (" + ",".join("?" for _ in states) + ")"
-            args.extend(sorted(states))
-        sql += " ORDER BY oid"
+        columns = ("native",) if native_only else (
+            ("native", "canonical", "component") if include_component
+            else ("native", "canonical")
+        )
+        parts = []
+        args = []
+        for column in columns:
+            parts.append(
+                f"SELECT oid FROM events WHERE rid=? AND {column}=?"
+                + (" AND state IN (" + ",".join("?" for _ in states) + ")"
+                   if states is not None else "")
+            )
+            args.extend([rid, tid])
+            if states is not None:
+                args.extend(sorted(states))
+        sql = " UNION ".join(parts)
         # SQL integer ordering is not semantic ref-key ordering. Caller
         # restores exact reference ordering before native evaluation.
         keys = [r["oid"] for r in self.db.execute(sql, args)]
