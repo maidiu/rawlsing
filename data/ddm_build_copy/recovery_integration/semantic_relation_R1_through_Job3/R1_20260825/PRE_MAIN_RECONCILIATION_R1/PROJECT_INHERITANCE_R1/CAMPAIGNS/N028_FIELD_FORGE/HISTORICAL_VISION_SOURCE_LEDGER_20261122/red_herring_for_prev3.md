@@ -39,6 +39,8 @@
 | R27 | **Invent universal structural-power rankings or automatic sociological labels for every source/world** (E020/E023/W48). | Data availability, role observability, source law and group power vary sharply; source does not measure everything. | Emit `HELD/OBSERVABILITY_LIMIT` for unsupported claims, reuse exact local precursors. |
 | R28 | **Large documentary build plan = actual established missing functionality** (H076). | Future work packages from partial code inspection can duplicate existing software, consume compute and corrupt G4 work status. | G4 function→actual code→first reader→test failure→smallest specific extension, only when selected. |
 
+| R29 | **Let a labor-organizing, religious conversion, family-trauma, romance or care story become the universal Field Forge organism** (H084–H087). | Later CO R13 explicitly refuses privileging one scenario as the mechanism of a developing person. Different domains of practical life can share a causal grammar without erasing their material specificity or becoming mere allegories. | A domain-general but claim- and source-sensitive actor-independent field of alternatives, with downstream actually lived participation. |
+
 ## Context-specific rejected plans are NOT rejected human questions
 
 Bourdieu's questions about dominance, conversion, distinction and class reproduction; Gramsci/Hall's questions about hegemony/articulation; Lahire's plural dispositional action; Lamont's symbolic boundaries; working-class/caste/colonial material history; and feminist social reproduction remain intellectually live. What gets rejected is **false authorization or untested computational equivalence**, not the phenomena.
