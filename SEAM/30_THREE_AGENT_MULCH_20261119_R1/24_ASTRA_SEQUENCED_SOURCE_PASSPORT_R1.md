@@ -2,6 +2,8 @@
 
 **November 23, 2026 · immutable source cut:** `maidiu/rawlsing`, isolated draft PR #1161, code/documentary HEAD `af62a48716b07aa4642dc4551185e7a2250ac672`. **Document kind:** nonissuing research passport, NOT a new HQ or positive psychological HOME. **Companion:** `23_ASTRA_CONSTITUTIVE_SYNTHESIST_EXACT_COMMISSION_R1.md` contains the sole controlling analytical instructions. This document provides exact-source entrances, grading and the order of exposure; it is not a second theory.
 
+**Reading precedence:** The proposed root [AGENTS.md](../../AGENTS.md) sets the affirmative non-reductive dialectical-unity premise and preserves the user's original anti-procedural execution override for **bounded engineering**, not the constitution of psychological theory. The [23 ASTRA commission](23_ASTRA_CONSTITUTIVE_SYNTHESIST_EXACT_COMMISSION_R1.md) supplies the complete intellectual work instruction. This passport supplies exact source provenance **in staged order**. Do not let the passport's custody categories or negative-case lists become a theory of irreducibly disconnected plural fragments.
+
 ## 0. What must be known before the theory is considered
 
 ### Governing ontology — epistemic sequence in service of affirmative synthesis
