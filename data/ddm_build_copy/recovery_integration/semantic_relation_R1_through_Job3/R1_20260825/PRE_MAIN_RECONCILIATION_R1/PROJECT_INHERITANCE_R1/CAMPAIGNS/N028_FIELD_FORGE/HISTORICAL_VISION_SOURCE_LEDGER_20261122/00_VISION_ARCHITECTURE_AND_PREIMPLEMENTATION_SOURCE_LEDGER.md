@@ -171,7 +171,7 @@ The early models proposed cultural aggregate→psychic driver→Enneagram, fixed
 
 ## Priority return path for any subsequent instruction
 
-1. **Immediate formation, May–August 2026:** D091–D097, then D010/D012, C033, H015–E032 and the original N028 campaign manifests. D091 and D097 remain original-chat leads; the June 25 originals D093–D096 and the V550 directive D092 are directly readable but only historical authority.
+1. **Immediate formation, May–August 2026:** original 2026-05-05 provisional structure D104; v2 V549b first-source law/implementation D098–D099/D103 (original May 11 pack date unverified); actual **June 20** first-person multi-stratum dialogue D100 and guide/handoff D102/D105/D106; June 25 D093–D096 and June 26 D101; then D010/D012, C033, H015–E032 and N028 manifests. D091's May 11 chat and D097's separate July 6 chat remain unverified leads; do not silently replace either with the supplied June 20 transcript.
 2. **Original Field Forge architectural and experimental alternatives:** W035–W042, H043 and FFX A/B/C H051–H055. Preserve distinctions between intended MCA/three spaces and historical actual algorithms.
 3. **September R2 adopted resolution:** H044–H050, particularly the Global-HQ act and adopted capsule. This has controlling historical architecture status at its own exact scope—not blanket current implementation.
 4. **Present code and first consumer:** current G4 S06, H058–H067, actual original source HEAD, historical first readers, real N9/N10 and the connected SOROK requirements H068–H090.
