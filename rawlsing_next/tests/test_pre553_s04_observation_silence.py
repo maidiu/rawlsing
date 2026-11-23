@@ -116,6 +116,20 @@ def test_source_fact_identity_substitution_and_rehashed_scope_drift_refuse():
             query=query, execution=execution, knowledge=other_knowledge,
         )
 
+    # Self-rehashing the S04 envelope can keep the correct fact_ref while
+    # substituting its risk, meaning, or predicate. The observation consumer
+    # must compare against the real original I03 fact, not just trust the hash.
+    from rawlsing_next.pre553_s04_observed_research import S04ObservedKnowledge
+    original = receive_s04_i03_research(query=query, execution=execution)
+    for field in ("risk_set_ref", "response_semantics_ref", "predicate_ref"):
+        altered = original.material()
+        altered[field] = other_knowledge.material()[field]
+        forged = S04ObservedKnowledge(canonical_json(altered), semantic_hash(altered))
+        with pytest.raises(S04KnowledgeError, match="drift"):
+            receive_s04_observation_scope(
+                query=query, execution=execution, knowledge=forged,
+            )
+
 
 def test_native_held_risk_does_not_create_supported_sample_comparison():
     source, qa, _, query, execution = _real()
