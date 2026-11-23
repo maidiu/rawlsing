@@ -1,0 +1,41 @@
+name: PYAT S04 observation-silence sourcefree first-reader
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_s04_observed_research.py'
+      - 'rawlsing_next/pre553_s04_dynamic_research.py'
+      - 'rawlsing_next/tests/test_pre553_s04_observation_silence.py'
+      - 'rawlsing_next/tests/test_pre553_s04_observed_research.py'
+      - 'rawlsing_next/tests/test_pre553_s04_dynamic_research.py'
+      - '.github/workflows/pyat-s04-observation-silence.yml'
+permissions:
+  contents: read
+jobs:
+  s04-observation-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing native-sourcefree test dependencies
+        run: python -m pip install pytest pandas pyreadstat pyarrow duckdb
+      - name: Syntax — exact candidate source and test
+        run: |
+          python -m py_compile rawlsing_next/pre553_s04_observed_research.py rawlsing_next/pre553_s04_dynamic_research.py rawlsing_next/tests/test_pre553_s04_observation_silence.py
+      - name: Actual I03/S04 observation, refusal, and prepared native consumer
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q -o addopts='' \
+            rawlsing_next/tests/test_pre553_s04_observation_silence.py \
+            rawlsing_next/tests/test_pre553_s04_observed_research.py \
+            rawlsing_next/tests/test_pre553_s04_dynamic_research.py \
+            --junitxml=pyat-s04-observation-silence.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-s04-observation-silence-sourcefree
+          path: pyat-s04-observation-silence.xml
+          if-no-files-found: ignore
