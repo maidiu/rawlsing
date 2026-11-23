@@ -130,7 +130,7 @@ Do not turn this additional 39-case source match into **39 accepted authorizatio
 
 **Exact new candidate under review:** `16_R17_RECONSTITUTED_HOME_CANDIDATE_R1.md` blob `1e5bd6e4333881e66882f1cc8a8d3bd753094547` at branch HEAD `6d59c7c9bb68330a7d9a75768ae8cfc7d43498c1`. Original R16 remains at blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`. This is one bounded continuation of the *existing* court, not a second reviewing authority or a declaration that a manuscript is independently accepted. New substantive passages are integrated in R17 movements V, VII, IX and XI, not appended as a spare theory chapter.
 
-The earlier court contains **77 author-side anchor references covering 73 distinct R16 units**; four refer to the same source units by two identifying schemes. These six additions make **83 references to 79 distinct source units**, not 83 independent completed semantic reviews. All remain subject to hostile comparison of the complete source text, not merely anchor existence.
+The earlier court contains **77 author-side anchor references covering 73 distinct R16 units**; four refer to the same source units by two identifying schemes. These six additions make **83 references to 77 distinct source units** (four newly represented units, two already represented but sharpened), not 83 independent completed semantic reviews. All remain subject to hostile comparison of the complete source text, not merely anchor existence.
 
 | R16 source unit (character span) | R17 movement | Distinct causal determination restored | Exact R17 anchor | Hostile differential |
 |---|:---:|---|---|---|
