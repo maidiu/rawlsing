@@ -155,3 +155,41 @@ def test_native_held_risk_does_not_create_supported_sample_comparison():
     ).material()
     assert comparison["state"] == "UNRESOLVED_OR_HELD_COHORT__NO_MEMBERSHIP_COMPARISON"
     assert comparison["identical_known_true_respondent_set"] is None
+
+
+def test_observation_scope_reuses_existing_asked_eligible_typed_nonresponse_producer():
+    from rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution import _case
+    source, qa, predicate, query = _case()
+    execution = native._run(source, qa, predicate, query)
+    assert execution.facts[0].typed_state == "SUPPORTED"
+    scope = _scope(query, execution)
+    m = scope.material()
+    summary = m["source_asked_eligible_raw_summary"]
+    assert summary["state"] == "SOURCE_COHERENT_RAW_ASKED_ELIGIBLE_DISTRIBUTION"
+    assert summary["asked_eligible_n"] == 6
+    assert summary["substantive_response_n"] == 2
+    by_state = {}
+    for row in summary["source_typed_response_counts"]:
+        by_state[row["response_state"]] = (
+            by_state.get(row["response_state"], 0) + row["raw_n"]
+        )
+    assert by_state == {
+        "SUBSTANTIVE_RESPONSE": 2, "MISSING": 1,
+        "DK": 1, "REFUSAL": 1, "SOURCE_SPECIFIC_SPECIAL": 1,
+    }
+    assert m["observed_route_and_nonresponse_cause"] is None
+    assert m["source_frame_population_n"] is None
+    assert m["survey_design_weight_or_variance"] is None
+
+
+def test_observation_scope_does_not_fabricate_asked_counts_from_unqualified_source():
+    from rawlsing_next.tests.test_pre553_asked_eligible_raw_distribution import _case
+    source, qa, predicate, query = _case(absent_event=True)
+    execution = native._run(source, qa, predicate, query)
+    assert execution.facts[0].typed_state == "UNRESOLVED"
+    scope = _scope(query, execution).material()
+    summary = scope["source_asked_eligible_raw_summary"]
+    assert summary["state"] == "UPSTREAM_HELD__NO_COMPLETE_DISTRIBUTION"
+    assert summary["asked_eligible_n"] is None
+    assert scope["verified_eligible_member_set_sha256"] is None
+    assert scope["observed_route_and_nonresponse_cause"] is None
