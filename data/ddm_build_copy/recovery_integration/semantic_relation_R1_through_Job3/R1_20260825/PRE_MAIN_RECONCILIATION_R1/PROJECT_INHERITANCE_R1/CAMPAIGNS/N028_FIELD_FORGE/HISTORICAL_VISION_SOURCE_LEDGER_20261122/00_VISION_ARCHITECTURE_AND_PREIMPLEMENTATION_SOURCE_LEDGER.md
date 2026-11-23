@@ -148,20 +148,20 @@
 | One relationship can yield *different* causal histories for caregiver and child; mutual knowledge is not symmetric | H068–H069, H073–H074 | No shared psyche, no transferred motive, no assumed learned attachment just from an actual care event |
 | A particular actor's first fictional draw, lived consequences and later reconstitution remain SOROK's | H068–H074 | PYAT offers lawful alternatives; it does not author actual person or mutation |
 
-### New direct-source accessibility record — early 2025 PDF precursors (2026-11-23)
+### PRE-MAY-2026 ARCHIVE — specifically demoted, not discarded
 
-The three attached source files `Full Rawlsing Vector Pipeline.pdf` (D004), `Cross Cultural Enneagram Model.pdf` (D005), and `Rawlsing 3.4 Personality Generator Framework v3.4 - Google Docs.pdf` (D003) **were located in Rawlsing Project files**, but a direct native Files page-text read of all 3, 5 and 8 pages respectively returned **“No readable content was found in this file for the requested mode.”** This is a concrete content-extraction blocker, not proof the documents are blank and not a negative scientific verdict. Earlier title-based and summary-derived descriptions remain provenance leads; they **cannot be promoted to direct idea-level extraction** without the actual bytes/text becoming readable by an authorized method. The source ledger grades remain FILE_LOCATED rather than upgraded. Do not count the three as fully intellectually recovered.
+**Corrected previous assertion:** An early native Files page-text request failed for the three 2025 PDFs D003–D005. Later direct original PDF extraction succeeded; the files are **not blank or inaccessible**. The original PDF text/creation metadata can therefore be inspected at the exact attached filenames. But **reading an artifact is not an argument for its relevance**. The user explicitly rejects pre-May-2026 material as Field Forge's origin or controlling design.
 
-The two native Markdown originals D010 and D012 were reopened and text-read; their arguments now have 31 separate proposition dispositions in the positive HOME. Different file accessibility is not an excuse to blur these evidence grades.
+The early models proposed cultural aggregate→psychic driver→Enneagram, fixed permeability/defiance thresholds and a prompt-generated developmental narrative; none is current FF architecture or source-scientific authority. A very limited older question remains conserved: historically specific social contradictions and embodied learning must ultimately matter to an actual developing person. That question is more sharply and materially constrained by the **May V549b, June V552J failures, August N028, September R2, present code and SOROK first-reader** record. Do not restore discarded 2025 equations, old V555/V556 naming, or a psychometric index under the pretext of recovering memory.
 
 ## Priority return path for any subsequent instruction
 
-1. **Original constitutional product**: D003–D012 (2025 beginning through 2026-08-12 V5/APP). D003–D005 PDF text was reportedly reopened by the author; other historical source files and original chats were not all independently recovered. Do not equate PDF text read with verification of the original discussions.
-2. **Original Field Forge excavations**: H015–E032 + D034, then W035–W042 and H043. Original N028 corpus remains exploratory at its exact grain.
-3. **Adopted Field Forge law**: H044–H050 (especially the Global-HQ act H044 and adopted capsule A046). **This later authority supersedes earlier N028 guesses where they conflict.**
-4. **What the earlier design could actually compute**: H051–H059 (FFIF012D, A/B/C, GT12, GF1) together with actual G4 function records H061–H067 and the present exact source.
-5. **Lived organism / first actor reader**: H060, H068–H074 (both SOROK November 11 manuscripts, SEAM, and DCO R5).
-6. **Before any new engineering plan**: reopen latest G4 S06 and its named producer/first consumer, qualified code HEAD and independent receiving. This ledger **does not authorize** the withdrawn speculative FF-P build package in PR #1287.
+1. **Immediate formation, May–August 2026:** D091–D097, then D010/D012, C033, H015–E032 and the original N028 campaign manifests. D091 and D097 remain original-chat leads; the June 25 originals D093–D096 and the V550 directive D092 are directly readable but only historical authority.
+2. **Original Field Forge architectural and experimental alternatives:** W035–W042, H043 and FFX A/B/C H051–H055. Preserve distinctions between intended MCA/three spaces and historical actual algorithms.
+3. **September R2 adopted resolution:** H044–H050, particularly the Global-HQ act and adopted capsule. This has controlling historical architecture status at its own exact scope—not blanket current implementation.
+4. **Present code and first consumer:** current G4 S06, H058–H067, actual original source HEAD, historical first readers, real N9/N10 and the connected SOROK requirements H068–H090.
+5. **Targeted forgotten-thought lookup only:** pre-May D003–D005 and C001–C006, *if* a concrete unresolved Field Forge problem cannot be answered from the primary formation/current corpus.
+6. **Before new engineering selection:** reread exact G4 FIRST CONSULTATION, original producer/consumer, source/test/review authority and paired progress. This archival branch does not authorize the withdrawn speculative FF-P package of PR #1287.
 
 ## Limits and open provenance recoveries
 
