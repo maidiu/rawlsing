@@ -181,8 +181,22 @@ def main():
          "### R35 / 757" in stage35, "source mapping family boundaries lost")
     current197 = stage35.split("### R35 / 197", 1)[1].split("### R35 / 104", 1)[0]
     current104 = stage35.split("### R35 / 104", 1)[1].split("### R35 / 757", 1)[0]
-    route197 = table(current197, r"(?:R1_INITIAL|R1_CORRECTED|R[2-9])-S\\d\\d".replace("\\\\", "\\"))
-    route104 = table(current104, r"(?:C\\d\\d|NM-\\d\\d\\d|R9-\\d\\d)".replace("\\\\", "\\"))
+    # R35 overlays use Markdown code-spanned IDs; inherited foundation tables
+    # intentionally use literal IDs. Parse each format without normalizing away
+    # exact identities or weakening the set-equality checks below.
+    route197, route104 = {}, {}
+    for line in current197.splitlines():
+        match = re.match(r"^\| `((?:R1_INITIAL|R1_CORRECTED|R[2-9])-S\d\d)` \|", line)
+        if match:
+            key = match.group(1)
+            must(key not in route197, "duplicated current 197 locator " + key)
+            route197[key] = line
+    for line in current104.splitlines():
+        match = re.match(r"^\| `((?:C\d\d|NM-\d\d\d|R9-\d\d))` \|", line)
+        if match:
+            key = match.group(1)
+            must(key not in route104, "duplicated current 104 locator " + key)
+            route104[key] = line
     must(set(route197) == set(section_rows) and len(route197) == 197,
          "R35 current 197 historical-section route coverage incomplete")
     must(set(route104) == set(ideas) and len(route104) == 104,
