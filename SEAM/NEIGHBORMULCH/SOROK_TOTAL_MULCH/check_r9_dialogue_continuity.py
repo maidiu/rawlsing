@@ -359,8 +359,10 @@ def main():
     must("HELD_MISSING_ORIGINAL_CHAT" in whole and
          "HELD_SEMANTIC_INDEPENDENCE" in whole,
          "independent evidence gap concealed")
-    must("ONE existing canonical HOME in #1277" in whole or "existing draft PR #1277" in whole,
-         "historical source custody lost its own one-HOME destination")
+    must("12_NEIGHBOR_THEORYMULCH_CURRENT.md" in main and
+         "4e5030e2c526e8491b2b77e005f3ec10bade8da5" in main and
+         "DRAFT PR #1277" in main,
+         "new one-HOME destination, exact prior blob or draft receiving grade missing")
 
     print("[PASS] ONE UX-first 13-movement HOME and SHA256-frozen 238941-character foundation IN SAME FILE")
     print("[PASS] R35 positive reconstitution with original R22 outside custody unchanged")
