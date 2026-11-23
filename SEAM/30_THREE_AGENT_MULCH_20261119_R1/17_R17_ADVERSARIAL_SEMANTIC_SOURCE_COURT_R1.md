@@ -124,3 +124,23 @@ The positive theory was corrected to keep implementation-specific hypotheses out
 ### Remaining prohibitions and open failures
 
 Do not turn this additional 39-case source match into **39 accepted authorizations**. A manuscript may cite one exact destination and still omit a second incompatible causal claim from the same source unit. Full R16 source determination equivalence needs adversarial independent examination, including its historical code and original-science source rights. No code was modified or tested, no native outcome demonstrated, and no protected PROGRAMMA or paired CURRENT_PROGRESS receiving occurred. `R17_SOURCE_CONSERVATION_HOLD` remains in force; R16 remains the single current theory HOME on the branch.
+
+
+## Final receiving onset — six genuine fine-grained source restorations (author-side, November 23)
+
+**Exact new candidate under review:** `16_R17_RECONSTITUTED_HOME_CANDIDATE_R1.md` blob `1e5bd6e4333881e66882f1cc8a8d3bd753094547` at branch HEAD `6d59c7c9bb68330a7d9a75768ae8cfc7d43498c1`. Original R16 remains at blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`. This is one bounded continuation of the *existing* court, not a second reviewing authority or a declaration that a manuscript is independently accepted. New substantive passages are integrated in R17 movements V, VII, IX and XI, not appended as a spare theory chapter.
+
+The earlier court contains **77 author-side anchor references covering 73 distinct R16 units**; four refer to the same source units by two identifying schemes. These six additions make **83 references to 79 distinct source units**, not 83 independent completed semantic reviews. All remain subject to hostile comparison of the complete source text, not merely anchor existence.
+
+| R16 source unit (character span) | R17 movement | Distinct causal determination restored | Exact R17 anchor | Hostile differential |
+|---|:---:|---|---|---|
+| R16A0253 (153480–154026) | V | Affective significance is not technical success | The meaning of an action cannot be read from the success of its immediate operation | Same technical accomplishment, opposite personally meaningful affect; failed task yields genuine joy |
+| R16A0272 (165965–166661) | V | Affect can take affect as its object; delight need not be reactive | Affect can also have other affect as its object | Shame directed at pleasure without pleasure abolished; beauty and sexuality without domination-trigger |
+| R16A0355 (212732–213272) | VII | Institutional care can become practical mediation of injury | A historically formed relation between care, rightful discipline | Warm intention plus real injury; opposing participant uses care against same authority |
+| R16A0467 (279660–280676) | XI | Unverified human claims neither certifiable nor diagnostic | A visitor says they play piano exceptionally well | Unsupported exceptional claim must not be labeled deceit or secretly rewarded by tailored admiration |
+| R16A0478 (286924–287714) | IX | Procedural delegation only after actual entry/earned competence | When a person has already learned how to carry out a routine | Novel ambiguous task first presents affordances; routine may compress without character substitution |
+| R16A0616 (379297–379573) | V | Complex affect without invented universally calibrated physics | Complex configurations can be psychologically causal | Emotional compound remains historical relation, not fixed weighted sum or necessary diagnosis |
+
+**Independent receiving challenge:** For each row, test whether the *negative case* survives in R17 without an added causal premise absent from R16. The exact textual anchor only proves location, not meaning. If the source also carries an independent commitment omitted by the repaired paragraph, log that omission rather than upgrading the entire source unit to conserved. Every source-related correction must preserve the distinction between fictional explanatory possibility, scientifically proven mechanism, implemented operative code, and protected source/actor authority.
+
+**Source-locator integrity checked separately:** 681/681 IDs, offsets, source fingerprints, aligned proposed dispositions and original source blobs match; no structural fault was found. This does **not** convert any of the 681 source rows into independently `semantically_accepted:true`. R17 remains a noncanonical candidate pending the complete determination review and an actually separate nonauthor receiver. `R17_SOURCE_CONSERVATION_HOLD` and protected `HQ_CURRENTNESS_HOLD` remain.
