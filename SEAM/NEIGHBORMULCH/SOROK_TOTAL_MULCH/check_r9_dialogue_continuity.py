@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+import hashlib
 from pathlib import Path
 from collections import Counter
 
@@ -57,12 +58,44 @@ def main():
     whole = WHOLE.read_text(encoding="utf-8")
     original = json.loads((HERE / "07_THEMATIC_PER_SOURCE_MULCH_COVERAGE_757.json").read_text())
     prior = json.loads((HERE / "11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json").read_text())
-    main = whole.split("## SOURCE-CONSERVATION FOUNDATION —", 1)[0]
+    # The historical foundation must be byte-exact, not merely count-correct.
+    marker = "## SOURCE-CONSERVATION FOUNDATION — IN THIS DOCUMENT, NOT A COMPETING THEORY"
+    must(whole.count(marker) == 1, "exact foundation marker not unique")
+    main, suffix = whole.split(marker, 1)
+    foundation = marker + suffix
+    must(len(foundation) == 238941, "historical foundation length differs from frozen source")
+    must(hashlib.sha256(foundation.encode("utf-8")).hexdigest()
+         == "23a896874a157e6c361a0eea7589a7a806dec32a02f374e9303a4421fdb4f1db",
+         "historical foundation SHA256 differs from exact predecessor")
 
-    acts = [int(i) for i in re.findall(r"(?m)^## (\d+)\. ", main)]
-    must(acts == list(range(1, 24)), "current theory is not one 23-movement integrated whole")
-    must("## 23. Historical inheritance without greenfield restoration" in main,
-         "R22 mature HOME lost its explicit source-custody and scope movement")
+    expected_chapters = {
+        "I": "The wish to meet a person who was not made to meet you",
+        "II": "A real human in a materially equal starting position, without a counterfeit childhood",
+        "III": "The world is actual before attention; discovered facts are not invented causes",
+        "IV": "An action has to occur: saying, doing, attending and the return of control",
+        "V": "The textual surface gives finite experience, not a privileged explanation",
+        "VI": "The Other is an active, contradictory organism, not the visible tip of a questionnaire",
+        "VII": "One scene, several real centers: collective activity without a collective mind",
+        "VIII": "The between: pleasurable companionship, learned practices and unequal psychic investment",
+        "IX": "Knowing and becoming known: recursive models, self-giving and resistant evidence",
+        "X": "Time and reachability: another life continues without making the visitor captive",
+        "XI": "Care is material, affection is not vindication, and a difficult person need not be sanitized",
+        "XII": "The past can be reread but not undone: memory, rupture and unfinished becoming",
+        "XIII": "One lived movement; what may not be resolved for the sake of a finished theory",
+    }
+    chapters = list(re.finditer(r"(?m)^## ([IVX]+)\. ([^\n]+)$", main))
+    must([m.group(1) for m in chapters] == list(expected_chapters),
+         "promoted HOME not exactly thirteen ordered Roman movements")
+    must([m.group(2) for m in chapters] == list(expected_chapters.values()),
+         "reviewed 13-movement chapter identity changed without source reconciliation")
+    must(not re.search(r"(?m)^## \d+\. ", main),
+         "old 23-movement structure still active or mixed")
+    must("Branch-local promotion only; protected receiving is still HELD" in main,
+         "candidate falsely portrayed as independently accredited")
+    must("4e5030e2c526e8491b2b77e005f3ec10bade8da5" in main,
+         "exact predecessor Git blob custody lost")
+    must(not (CURRENT / "15_NEIGHBOR_HOME_TOTAL_MULCH_CANDIDATE.md").exists(),
+         "second positive theory still active after single-HOME replacement")
 
     # Source families MUST live inside the SAME existing theory document.
     section_family = lines_between(
@@ -179,43 +212,50 @@ def main():
     must("Source-conservation" in whole or "SOURCE-CONSERVATION" in whole,
          "original corpus no longer carried in one master source foundation")
 
-    # The old cultural, material, phenomenal and psychological kernel remains
-    # positively IN the HOME, but its center is a *person*, not the early
-    # platform's growth strategy, institutional-transformation game or
-    # self-assessment engine. This is a routing court, not philosophical proof.
-    ux_hits = list(re.finditer(r"(?m)^## (\d+)\. ", main))
-    ux_sections = {int(m.group(1)): main[m.start():(ux_hits[i+1].start() if i+1<len(ux_hits) else len(main))].lower()
-                   for i, m in enumerate(ux_hits)}
-    governing = {
-        1: ("know someone", "independent"),
-        2: ("first knock", "prelude", "already"),
-        3: ("economic peer", "financial", "socioeconomic"),
-        4: ("say, do and attend", "attempt", "world"),
-        5: ("textual world", "attention", "perceptual"),
-        6: ("day does not wait", "absence", "world"),
-        7: ("door, message, absence", "messaging", "reachable"),
-        8: ("misrecognized", "reciprocity", "interpretation"),
-        9: ("social powers", "permission", "reachability"),
-        10: ("relationship becomes specific", "score", "attachment"),
-        11: ("another encounter possible", "introduction", "permission"),
-        12: ("human can be affected", "diagnoses", "human"),
-        13: ("generated by the day", "say, do and attend", "not"),
-        14: ("difficult encounters", "consensual", "ordinary"),
-        15: ("world history", "testimony", "object"),
-        16: ("not ux's jurisdiction", "pyat", "person"),
-        17: ("care and coercion", "labor", "care"),
-        18: ("contradictory psyche", "soracle-co", "history"),
-        19: ("objects, practices", "material", "meaning"),
-        20: ("person rereads herself", "interpretation", "history"),
-        21: ("coming to know someone whose life is not for you", "historically constituted", "ordinary"),
-        22: ("encounter in one continuous motion", "independently", "human"),
-        23: ("historical inheritance", "outside", "source"),
+    # Source-conscious new thirteen-movement coverage, not old title token checks.
+    chapter_text = {m.group(1): main[m.start():(chapters[i+1].start() if i+1 < len(chapters) else len(main))].lower()
+                    for i, m in enumerate(chapters)}
+    hard_shards = {
+        "I": ("independent person", "invitation", "ordinary", "interest"),
+        "II": ("socioeconomic", "your resources", "carry", "local body"),
+        "III": ("not_materialized_yet", "counterfactual", "historical", "common root"),
+        "IV": ("say, do and attend", "interrupted", "control", "actual"),
+        "V": ("phenomenal surface", "observer", "accessibility", "attention"),
+        "VI": ("constitution itself is relational", "pyat", "recruitment", "self"),
+        "VII": ("polycentric", "conversational floor", "third party", "independent"),
+        "VIII": ("cathexis", "companionship", "real humans", "shared"),
+        "IX": ("model", "visitor", "self-knowledge", "recognition"),
+        "X": ("calendar", "friday/saturday", "account control plane", "message"),
+        "XI": ("care", "coercion", "flourishing", "material"),
+        "XII": ("reinterpretation", "repair", "irreversible", "past"),
+        "XIII": ("one lived movement", "history", "world", "visitor"),
     }
-    for chapter, phrases in governing.items():
-        must(chapter in ux_sections, "missing reconstituted movement: " + str(chapter))
-        for phrase in phrases:
-            must(phrase in ux_sections[chapter],
-                 f"mature encounter shard missing from movement {chapter}: {phrase}")
+    for roman, shards in hard_shards.items():
+        for shard in shards:
+            must(shard in chapter_text[roman],
+                 f"reviewed 13-movement source distinction missing from {roman}: {shard}")
+
+    # R26 maps every original 23-movement paragraph to the proposed 13-movement
+    # destination. Crosswalk presence does not confer semantic accreditation.
+    must("## N-T1 / Round Twenty-Six" in ledger and
+         "## N-T1 / Round Twenty-Seven" in ledger, "R26 crosswalk absent")
+    crosswalk = ledger.split("## N-T1 / Round Twenty-Six", 1)[1].split(
+        "## N-T1 / Round Twenty-Seven", 1)[0]
+    src_rows = re.findall(r"(?m)^\| `(\d+\.\d+)` \| [^|\n]* \| ([^|\n]+) \|", crosswalk)
+    must(len(src_rows) == 272, "R26 original-to-successor crosswalk lost 272 rows")
+    seen_src, old_sections = set(), {}
+    for source_id, destinations in src_rows:
+        must(source_id not in seen_src, "duplicate crosswalk source: " + source_id)
+        seen_src.add(source_id)
+        old_chapter, old_paragraph = map(int, source_id.split("."))
+        must(1 <= old_chapter <= 23 and old_paragraph >= 1, "bad old source ID")
+        old_sections.setdefault(old_chapter, set()).add(old_paragraph)
+        current = re.findall(r"`([IVX]+)`", destinations)
+        must(current and all(d in chapter_text for d in current),
+             "current Roman source locator missing for " + source_id)
+    must(len(old_sections) == 23 and all(
+         p == set(range(1, len(p)+1)) for p in old_sections.values()),
+         "original 23-movement source paragraphs not preserved by row ID")
 
     # The rejected early source has *not* been restored as the governing game.
     for old_title in (
@@ -228,11 +268,11 @@ def main():
         must(old_title not in main,
              "an early/extraneous movement is still installed as controlling: "+old_title)
     for phrase in (
-        "one historically constituted fictional Other",
+        "historically constituted fictional Other",
         "actual human",
         "SORACLE-CO",
         "finite", "different", "permission", "misunderstanding",
-        "no programmed moral destination",
+        "no mandatory moral",
         "ordinary", "consequences", "historical",
     ):
         must(phrase.lower() in main.lower(),
@@ -272,14 +312,15 @@ def main():
     must("ONE existing canonical HOME in #1277" in whole or "existing draft PR #1277" in whole,
          "historical source custody lost its own one-HOME destination")
 
-    print("[PASS] ONE UX-first 23-movement HOME, with source foundation IN THE SAME FILE")
-    print("[PASS] R22 positive in-game UX reconstitution and separate meta-pre-UX/open-ideation custody")
+    print("[PASS] ONE UX-first 13-movement HOME and SHA256-frozen 238941-character foundation IN SAME FILE")
+    print("[PASS] R35 positive reconstitution with original R22 outside custody unchanged")
     print("[PASS] SORACLE-NEIGHBOR-UX experiential authority distinct from SORACLE-CO psychic theory")
     print("[PASS] 197 source sections from 10 immutable predecessor cuts")
     print("[PASS] 104 distinct source-graded ideas and exact original propositions")
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
     print("[PASS] historical no-new-doc user source preserved; latest explicit one subordinate bank admitted")
-    print("[PASS] mature encounter features in active HOME; unselected early mechanics preserved outside")
+    print("[PASS] source-conscious 272-paragraph destination crosswalk and thirteen active chapters")
+    print("[PASS] unselected early mechanics preserved outside HOME")
     print("[LIMIT] Structure/text/source custody; NOT independent full semantic proof, "
           "complete original chat transcript, live organism execution, or protected receiving")
 
