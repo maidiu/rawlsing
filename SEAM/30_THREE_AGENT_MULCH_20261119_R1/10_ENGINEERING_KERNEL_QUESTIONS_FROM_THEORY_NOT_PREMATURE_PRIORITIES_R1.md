@@ -49,6 +49,14 @@ The following historical text was *moved verbatim* from 09 §4, where it imprope
 
 
 
+### R15 correction — an exact individual-motive selector is not an engineering kernel to build
+
+The original [11 O-1](11_ADVERSARIAL_THEORY_DEPTH_DIFFERENCE_COURT_R1.md) has been reclassified: **historical particularity, contingency and conditioned activity are a positive explanation of why different motives can arise**, not an unsolved demand for a general scientifically validated algorithm to predict a person's exact eventual desire from their unique life. [The sole DCO HOME R15](00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) separates genealogical, contrastive and distributional explanation from the unsupported request for a metaphysical selector.
+
+This **does not** relieve engineering from producing particular, historically warranted psychogenesis: source-constrained alternatives, actual actor/world encounter, composed historically acquired functions, nontrivial alternative outcomes, qualified new ends and persistent effects remain real implementation questions. But their absence of deterministic ground truth for the unobserved real individual's exact interior is NOT evidence that the DCO's constitutive theory is incomplete, and an LLM's invented explanation is not science merely because it is unusually detailed.
+
+A related cross-product caution arises from NEIGHBOR's proposed temporary whole-HOME successor and source-to-determination inventory: thematic discovery should permit *asymmetry, nonrelation and independently effective causes*, not suppose every difference is a contradiction or that all contradictions share one supreme ancestor. A suggested eight-to-twelve drafting batches and a second full synthesis are **optional workflow hypotheses**, not fidelity requirements or a universal law of theory development. This document records no NEIGHBOR instruction or branch change; the UX's independent owner decides its manuscript process.
+
 ### New theory-depth court pointer (R14) — questions are not implementation shortages
 
 [11 — Adversarial theory-depth, source and rival explanation court](11_ADVERSARIAL_THEORY_DEPTH_DIFFERENCE_COURT_R1.md) now contains twelve differentiated causal/rival confrontations, eight dissimilar counterhistories, and open theory questions O-1–O-8. Each question has an explicit **already inherited**, **genuinely deepened** and **not scientifically resolved** disposition. This is a more exact demand than a broad category named “missing faculty.” The practical comparison in this 10 must not rank as a ready-to-build “kernel” any operation whose scientific/theoretical status is still confused, nor postpone theory closure merely because causal prediction is not uniquely deterministic.
