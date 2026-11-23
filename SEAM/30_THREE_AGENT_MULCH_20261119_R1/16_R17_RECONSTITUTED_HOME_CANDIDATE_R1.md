@@ -555,3 +555,110 @@ These are not ten rules that a simulated person must explicitly think through. T
 **Counterhistory: a true recognition that the model forbids.** A long-time friend accurately recognizes Nadia's familiar pattern of reluctance and anticipates what she will say. A model that universally rejects interpersonal knowledge as “projection” falsifies ordinary relational learning. The recognition remains partial, revisable and outside ownership of Nadia's future, but it is real.
 
 **Counterhistory: similar outcomes from unlike processes.** Two adults maintain affectionate care for a dependent family member. One does so from deeply valued commitment, another from material obligation and genuine but secondary affection. Identical outward behavior does not license an invariant inner drive; the actor histories may diverge later when opportunity changes.
+
+
+---
+
+## XIII. The organ that must work: source-qualified construction without mistaking code for psychology
+
+### 1. A theory can describe a person that no present sourcefree implementation can enact
+
+The positive theory cannot be limited by the current state of SOROK's code, however useful and hard-won its experiments. It specifies that a person has continuous living history, changes the ways they can know and act, recruits several unequally accessible organizations at once, meets independent material conditions and Others, expresses only part of the result, and may undergo real psychological reconstitution. A sourcefree runtime that presents three motive values and an evocative sentence is not a full organism. A toy developmental test that increments a language scalar after caregiver signals is not evidence of a child learning a generative language. A test of an internal trace is not a science of human memory.
+
+Equally, the mismatch does not authorize building an entirely new psychological machine whenever a desired capability has been redescribed. PRE-A0 already recovers important conative and self-organizing functions; PFF and SDTF already supply psychic mediation and temporal acquisition concepts; CAN/ADP separate actor organizations, event coupling, relationships, source/perceptual rights and causal traces; legacy V3 has useful temporal continuity and functional distinctions without being a permanent adult personality destination; SEAM/ORACLE experiments contain provisional proposals for learned analogies, mediated efficacy, novel ends and material relations. The correct operation is source-pinned recovery, extension of incomplete functions, and the composition of already available organs in one continuous historical activity.
+
+A mere new name does not constitute a missing function. Neither does finding a file whose name resembles the theory constitute a working implementation. For any proposed construction, determine what the inherited producer actually does, what record it writes, what consumer exercises that record, what test has executed at which exact code HEAD, which psychological or world authority permits the update, and which critical distinction remains absent in operation. Where the capability exists only as candidate prose or sourcefree demonstration, preserve that grade. The positive HOME may demand a richer future than current code supplies; the adjacent engineering register must specify the shortest authorized route to it, not veto the demand.
+
+### 2. The LLM can construct psychology, but cannot be its sovereign historian
+
+A language model can propose context-sensitive meaning, possible objects, unusual combinations of acquired operations, self-interpretations, alternative acts and developmental hypotheses. This is valuable machinery: some particular psychological organizations require semantic abduction beyond a fixed menu. But the proposal must be evaluated against actual actor history, present body and need, available practices, material constraints, relationship-specific knowledge, time, scientific boundaries and the independent world. It must not silently turn a fluent interpretation into an established past event, an inborn property, an inaccessible actor memory, a second person's consent or a future developmental certainty.
+
+For Nadia, a possible new curiosity may be introduced as a prospective, actor-plausible orientation, then require actual further practice to become durable. A model can infer that a prior form of reflective activity makes a new self-question possible; it cannot conclude that the actor has undergone permanent psychological growth before she actually uses the method. For a survey-conditioned parent, it can propose more than one plausible adult history and distinguish uncertainty; once a branch of fictional history is admitted, later outputs must respect it. The producer of interpretation and the native authority to commit a history are not identical. An LLM can be causally important without becoming an omniscient narrator.
+
+This is why the model's own confidence should not become the person's certainty, and why character dialogue is not a privileged path for creating objective world truth. A person can express an inaccurate belief or believe a lie; the world maintains a different fact. A generated interior can be plausible yet unsupported. Sometimes the correct result is no durable acquisition, uncertain meaning or a failed attempt. These outcomes may appear less dramatically engaging; they are essential if psychological life is to resist narrative optimization.
+
+### 3. Whole-person integration is a causal operation, not a shared data bag
+
+A continuous organism needs representations sufficient to preserve embodied current condition, changing needs and maturation, acquired ways of recognizing and acting, material opportunities, actor-owned relations to Others, competing activities and concerns, accessible and inaccessible historical afterlives, possible purposes, current expression and future constraints. The representations do not have to be one giant universal trait vector, nor separate modules for every theoretical chapter. They do have to be connected by actual operations with clear sources and state consequences. A state field that is never used to change later action is not a functioning psychological organization.
+
+The relevant test is whether a source-qualified history can make a later response *causally different* even when the visible situation is the same. An actor who previously learned to trust a particular caregiver may seek them in a new context; another with a different history may avoid the same gesture. An actor who gained a skill in one practice may try a fallible analogy in another. A present bodily limitation can constrain a strongly desired act without abolishing the desire. A life that has adopted a new self-interpretive method may reorganize attention while preserving an old habit. These effects should arise from stored and operative relations rather than post-hoc narration of why the chosen output sounded fitting.
+
+But source and state need not record an imagined psychological totality. The hidden real causes of actual humans are not accessible. The model can represent graded fictional construction, known world facts, actor-accessible interpretations, unrepresented antecedents and bounded uncertainty. Some meanings may be postulated provisionally and tested through future activity. Others may remain unknown. The system should prefer a causally sufficient, independently revisable construction to an elaborate but unfalsifiable account of everything the person allegedly feels.
+
+### 4. One source-qualified circuit must cross the owners without fusing their rights
+
+A concrete episode implicates several irreducible authorities. The person's actual situation comes from a continuing material world; their current psychic organization comes from an actor-owned history; relation-specific expectations depend on actual encounters; possible action depends on bodily and practical means; the world settles material consequences; each Other acquires separate experience; the actor may then reinterpret the result; the presentation surface reveals only what an observer can encounter. A technical interface may connect those operations, but should not let a convenient module write across unrelated jurisdictions.
+
+Consider a caregiver trying to soothe a child. The bodily need belongs to the child's development; the caregiver's time and capacity belong to their separate life; the available food, dwelling, illness and economic situation belong to the world; contact and receipt are actual events; future anticipation may become part of the child without the child knowing the caregiver's motive. A generic “care event improves trust” writer would skip half these distinctions. A more powerful source-qualified operation might produce several possible outcomes, including satiation without trust, trust without immediate relief, resentment under dependence, or no enduring change.
+
+The same test applies outside the household: a library visit, workplace disagreement, romantic invitation, political meeting, medical appointment, artistic practice or period of solitary thought. No one domain should have its own compulsory psychological law if the underlying causal relation is genuinely common; but a common relation must not erase what makes each domain materially and culturally distinctive. **Reuse is warranted by functional identity, not by a desire to keep the module count small.**
+
+### 5. A theory's incompleteness has different meanings that cannot be compressed together
+
+We can have a positive constitutive explanation but no executed runtime. We can have working sourcefree code but no independent scientific warrant. We can have a historically effective skill but no known subjective motive. We can have a novel fictional motive whose world circumstances are plausible but whose human base rate is uncalibrated. We can have an institution's objective power and no evidence that the person recognizes it. We can have a research disagreement among psychological schools and no reason to force a choice before the fictional case requires one. These are different kinds of incompleteness and demand different responses.
+
+Where the theory lacks a genuinely possible constitutive relation—such as an independently evidenced form of nonverbal self-organization not accommodated by existing distinctions—we must deepen the theory. Where the theory is strong but code does not compose its functions, we must build. Where evidence cannot distinguish two humanly plausible explanations, we must preserve uncertainty. Where a protected owner disallows writing a fact, we must obey the jurisdiction or produce an unaccepted candidate outside the protected boundary. Calling all these things “missing functions” produces endless greenfield reconstruction; calling none of them a problem produces fictional omnipotence.
+
+Scientific calibration, adversarial testing and fidelity measures matter. They should challenge actual claims and catch errors rather than indefinitely prevent a working approximation from being built. One imperfect, causally coherent organism that genuinely continues in an independent world can provide stronger scientific and experiential counterevidence than another beautifully documented fragment. That does not make success claims free. A demonstrated seam is evidence for that seam, not proof of a complete person.
+
+### 6. Falsifiers that a living implementation must survive
+
+**F1 — Different histories, same outward response.** Four people say the same sentence for unlike, source-qualified reasons. The program must preserve different afterlives and must not infer one hidden cause solely from the observed sentence.
+
+**F2 — Same intended act, different material result.** A desired action succeeds, fails or causes collateral change because access, material conditions or independent Others differ. Neither intention nor apparent moral worth may override the world.
+
+**F3 — World consequence without conscious recognition.** An institutional change removes a possibility while the actor remains unaware. Later activity must be constrained, but an inner political understanding may not appear without history.
+
+**F4 — Privately originated possibility without performed event.** An actor imaginatively explores a new end; no one else acquires a shared memory of it. It may or may not become motive or act.
+
+**F5 — Acquired capacity with no available use.** A skill persists through a period of deprivation and lost practice time. No learning score can conjure resources.
+
+**F6 — Painful learning without sentimental repair.** A person learns a useful method under humiliating conditions; later skill does not absolve the harm or guarantee gratitude or rebellion.
+
+**F7 — Significant event, no durable psychic change.** A public conflict, loss or celebration can alter worldly conditions without automatically rewriting character motives.
+
+**F8 — Unremarkable repetition, important acquired organization.** Ordinary routines may slowly change attention, competence or practical anticipation without a “formative scene.”
+
+**F9 — Separate Others receive one event differently.** A repair helps one participant and angers another; no reciprocal relationship reward is automatic.
+
+**F10 — Apparent dialogue without objective proof.** A human declares an asset, skill or past action through conversation. The utterance occurs; the material fact must be qualified separately.
+
+**F11 — Genuine involuntary expression versus a viewer's projection.** A bodily leak can be actor-real without disclosing its cause; a viewer's confident interpretation can remain wrong. Conversely a genuinely legible pattern may be accurately recognized.
+
+**F12 — Wrong self-description is causally effective.** The actor holds a sincere, mistaken belief about their own motive or the world; the belief may guide action without becoming objective truth.
+
+**F13 — No generic adult mind in infancy.** A child learns through bodily interaction and culturally accessible practice without being assigned fully verbal introspection, fixed adult motives or predetermined life meaning.
+
+**F14 — Parent reconstruction cannot testify for a respondent.** Two materially and statistically admissible fictional adult histories may diverge; neither is asserted as the surveyed real person's biography.
+
+**F15 — Controlled historical completion.** A consequential secondary Other can acquire additional representational detail only consistent with settled past, not through convenient incompatible backfill.
+
+**F16 — Long ordinary absence without forced dramatic event.** Continuity respects body, obligations, materials and other people while refusing fabricated user choices or a deterministic flood of personal revelations.
+
+**F17 — Conjunction without obligatory synthesis.** Two acquired organizations may interact, conflict, cohabit, remain unrelated or never be co-recruited. A×B is not an automatic new psyche.
+
+**F18 — Nonmonist cross-cultural development.** Two people can acquire different forms of cognitive and practical organization under different histories without one being encoded as a lower score on the other's universal adult faculty.
+
+**F19 — A real harmful act need not be voluntary.** An aggressor may impose harm without victim consent; voluntary cooperation may not be faked after an explicit refusal.
+
+**F20 — Scientific rivalry remains visible.** Where activity theory, dispositional plurality and reflexive explanation predict different causal requirements, source limitations remain legible rather than being overwritten by one magic parameter.
+
+These falsifiers are not eighteen compulsory narrative episodes, nor scientific tests completed by writing them down. They are boundaries within which a runtime can begin to demonstrate particular, inspectable functions. Their value is in distinguishing failure of implementation, failure of evidentiary authority and failure of theoretical conception.
+
+### 7. The person remains more than the theory of her
+
+A human life is not a demand to reconcile every contradiction. It is a historically particular body acting through acquired organizations under conditions it did not choose, amid people whose own lives continue, producing consequences it cannot wholly foresee, sometimes understanding and sometimes misrecognizing what it has become. It can contain cruelty, tenderness, boredom, erotic pleasure, solitary absorption, institutional obedience, refusal, religious devotion, memory without accurate account, false courage, real competence, beauty and unremarkable persistence. No theme is automatically the master scene of this life.
+
+The constructed person must not become an allegory of the analyst's morality. A materialist explanation can expose class domination and identify the historical means of resistance; it cannot force Nadia to become a radical activist. A relational theory can explain care and the costs of dependence; it cannot make every love end in reconciliation. An account of development can identify acquired capacities and changing purposes; it cannot write a successful adult destination backwards into childhood. Even the imaginative scope of the model has to remain answerable to actual possibility, source-specific constraint and the independent world.
+
+This is the aspiration of the Constitutive Organism: **a particular, unfinished, causally operative human life rather than a complete human concept**. Its psychological depth is not how much a narrator claims to know. It is how much historically consequential activity can be made real without granting the narrator ownership of its causes and results. The next theoretical correction must make a distinctive event, relation or negative outcome more intelligible; the next engineering contribution must make such a distinction actually operative through permitted owners. Neither is a reason to shrink the psychological object to what a current test can pass.
+
+---
+
+## R17 source custody and receiving boundary
+
+This R17 successor remains noncanonical until the [R16 source-atom inventory](15_R17_FINE_GRAIN_SOURCE_ATOM_LEDGER_R1.jsonl) has been assigned **substantive semantic dispositions**: carried forward in transformed argument, retained as a distinct negative witness, preserved as a named unresolved rivalry, moved to adjoining engineering/source evidence because it is not positive theory, or explicitly found superseded with a reason. Automatic lexical resemblance is not semantic acceptance. Every high-risk distinction and source-grade limitation requires adjudication against the exact text. Later R16-specific code positions, numerical test heads, source inventory rows and historical status declarations cannot quietly become current R17 authority simply by being mentioned.
+
+A hostile conceptual reviewer must try to defeat the manuscript where it is most persuasive: is “historically particular” an empty refrain? Can we produce a counterhistory that R17 wrongly identifies as the same psychic organization? Does its general account of novelty impose a universal cultural form? Does the actor's own speech acquire omniscient truth? Can objective world power operate without being psychologically recognized? Does the model require contradiction to create innovation? Can a child learn a genuinely different kind of practice and later reinterpret it without retroactive causation? Would a case of ordinary nonchange or apparently effortless accurate recognition be forbidden? If so, R17 has not improved the theory.
+
+**Current source grade:** original authored theoretical manuscript, grounded in the inherited R16 and inspected source traditions; not an independently established law, not proof of scientific or cross-cultural calibration, not a claim that a complete person is implemented, and not owner-issued protected PROGRAMMA receiving. The single current author-branch positive HOME stays R16 at 00 unless actual source and adversarial receiving warrant replacement.
