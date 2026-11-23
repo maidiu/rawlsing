@@ -5,6 +5,7 @@ on:
       - 'rawlsing_next/pre553_s04_observed_research.py'
       - 'rawlsing_next/pre553_s04_dynamic_research.py'
       - 'rawlsing_next/tests/test_pre553_s04_observation_silence.py'
+      - 'rawlsing_next/tests/test_pre553_asked_eligible_raw_distribution.py'
       - 'rawlsing_next/tests/test_pre553_s04_observed_research.py'
       - 'rawlsing_next/tests/test_pre553_s04_dynamic_research.py'
       - '.github/workflows/pyat-s04-observation-silence.yml'
@@ -41,6 +42,7 @@ jobs:
             rawlsing_next/tests/test_pre553_s04_observation_silence.py \
             rawlsing_next/tests/test_pre553_s04_observed_research.py \
             rawlsing_next/tests/test_pre553_s04_dynamic_research.py \
+            rawlsing_next/tests/test_pre553_asked_eligible_raw_distribution.py \
             --junitxml=pyat-s04-observation-silence.xml
       - uses: actions/upload-artifact@v4
         if: always()
