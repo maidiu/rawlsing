@@ -1,0 +1,51 @@
+# DCO R17 — bounded response to the external specialist constitutive-adequacy review
+
+**November 23, 2026 · AUTHOR-BRANCH RESPONSE, NOT INDEPENDENT SEMANTIC RECEIVING, SCIENTIFIC VALIDATION OR PROTECTED PROGRAMMA ACCEPTANCE.**
+
+## 1. Exact review, source and authority
+
+This is a **response to the user-supplied specialist document** titled *THE CONSTITUTIVE ORGANISM — R17: Adversarial review of constitutive adequacy, theoretical integration and source conservation* (uploaded in this conversation as `Pasted text(20261123-190550).txt`, 573 file lines). The review identifies PR #1161's R17 candidate blob `1e5bd6e4333881e66882f1cc8a8d3bd753094547` and the R16 HOME blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`. I independently reopened both repository sources. This specialist assessment is theoretical evidence and critique, not authorization to rewrite protected sources.
+
+The specialist grade is **`INDETERMINATE_EXACT_SOURCE_GAP`**, *not* “rejected,” “fully received” or “scientifically proven.” It provides a qualified positive constitutive assessment, five bounded constructive findings (A–E) and one formal source-conservation blocker (F). The review explicitly disclaims final 681-unit independent semantic receiving. This response has no authority to promote the author candidate into protected PROGRAMMA or to alter paired `CURRENT_PROGRESS`.
+
+**Live author-branch source at this response cut:** draft PR #1161 HEAD `4ff7dc0318168960fe3789dc84fbab44d597728a`; R17 repaired candidate blob **`d7441491171d7ee3a09ba561e3365c5acf66fa88`**, **215,404 characters**; unchanged R16 `00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md`, blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`. One positive HOME remains R16. The future receiving subject is the actual **repaired** candidate, not the review's original `1e5bd6...` blob.
+
+## 2. Dispositions of the external findings
+
+| Specialist finding | Exact author-side treatment | Status |
+|---|---|---|
+| **A — Acquire the capacity not to be governed by a formerly compelling object** | New Movement V subsection `A previously compelling object can lose the power to command without disappearing from history`: material dependence, bodily anticipation, practiced attention, alternative histories and self-direction; distinctions among strategic suppression, habituation, practical exit, dilution, disuse, dissolution, nonattachment, repurposing, sublimation and possible sublation. Same visible nonreaction cannot identify which mechanism occurred. No Buddhist or other spiritual destiny required. | **POSITIVE THEORY DEEPENED, author-side** |
+| **B — Institutionally reproduced identification under harm and alternative attraction** | New Movement VII subsection `Institutional recuperation, genuine attachment and alternative attraction form one contested life`: Father, Brother, Mother, neighbor, independent material livelihoods and shared but differently lived interactions; genuine care and injury; real alternative attraction prior to doctrinal critique; concessions, coercion and reclassification; changed reproduction of outward conformity. | **INTEGRATED ACROSS EXISTING HISTORY, author-side** |
+| **C — No unjustified ontological noninteraction** | Three precise changes in Movements I, IV, XIII replace absolute `never interact`, `not interact at all` and `effectively separate` with bounded claims of absent **identified functional recruitment, combined organization or change in specified causal domain/interval/grain**. Their wider social and material mediation is not denied. Genuine lack of durable acquisition, extinction and NO_CHANGE remain possible. | **LOCAL PRECISION CORRECTED** |
+| **D — One fuller actual recursive historical derivation** | Movement IX subsection `The recursive afterlife of a changed recruitment: extend the same Father–Brother history`; shows historically learned protection/control, neighbor practice, available transport, objective choice, performed refusal/negotiation, Brother/Mother's separately determined responses, and later possibly changed recruitment. Five explicit hostile forks include alternative with no practical independence; exit with continuing inner compulsion; non-compulsion without departure; institutional recapture; and ordinary NO_CHANGE. | **CONNECTED DEVELOPMENTAL DERIVATION ADDED** |
+| **E — Productive difference and the materialist/developmental explanatory division of labor** | Movement XII subsection `Productive difference, historical dialectics and the actual mediation of a life` distinguishes philosophical warnings against preindividuated psychic atoms from empirical accounts of body, practice, institutions and learning. Deleuze/Guattari are not promoted to experimental human science; Hegelian sublation and Deleuzian differentiation are not treated as synonymic or compulsory stages; Leontiev, Sève, Lahire, Dreier, Luria, Holzkamp, dynamic systems and psychoanalytic rivals remain differently scoped. | **PHILOSOPHICAL ARTICULATION DEEPENED** |
+| **F — 681 source units remain independently unreceived** | **No claim of closure.** Existing `15` source index and `18` source-disposition queue retain every R16 source unit, including 520 substantive prose units and 161 source/administrative/table entries. `17` remains an author's partial court; `20` remains a historical author-side conceptual court of an earlier R17 blob; `21` specifies the separate independent exact-source mandate. | **`R17_SOURCE_CONSERVATION_HOLD` MAINTAINED** |
+
+These are the specialist's bounded findings, **not new computational modules**. R17 remains a theoretical manuscript until a permitted runtime actually composes inherited source-qualified operations. The additions do not select a deterministic motive algorithm or change SOROK/PYAT/NEIGHBOR ownership.
+
+## 3. Conservation proof for the repairs, distinct from R16-to-R17 semantic receiving
+
+The original R17 candidate at blob `1e5bd6e4333881e66882f1cc8a8d3bd753094547` has 194,088 characters. The revised candidate at blob `d7441491171d7ee3a09ba561e3365c5acf66fa88` has 215,404 characters. **Exact inverse preservation checked:** removing the four complete new theory subsections at their existing theoretical chapters, and reversing the three narrowly specified noninteraction phrase replacements, reconstructs the original R17 candidate **byte-for-byte**. No old argument or counterhistory was silently excised by these edits. This proves preservation of *R17's prior text*, **not** that R17 conserved all R16 meanings.
+
+**Four new sections:** Movement V 5,000 characters; Movement VII 5,375; Movement IX 5,133; Movement XII 5,337, inclusive of their insertion boundaries. The remaining difference consists of the three local scope-qualifying replacements. Exact verification was performed by reading old and new GitHub blobs and inverting these transformations.
+
+## 4. Tests that can defeat the new positive theory
+
+- Same later public nonreaction, different lawful histories: restraint with continuing dread, habituation, changed world power, acquired non-compulsion, suppression without inner release. No single state of calm certifies emancipation or nonattachment.
+- Real attractive alternative but no material exit; material exit without inner release; change of institutional concessions with renewed identification; sustained materially feasible new practice without departure; absence of enduring learning.
+- One family world; Father, Brother, Mother, Nadia and neighbor bear different histories and distinct causal rights. Family care does not guarantee righteous authority; neighborly competence does not guarantee liberation; recapture can reproduce familiar outward behavior through altered material mechanisms.
+- No observed new direct interaction between two modeled formations **does not** entail an isolated psyche or universally inert organization. Conversely, ontological continuity **does not** require newly committed changes or a universal motive fusion.
+- A supposed Hegelian sublation may be an ordinary altered practice without preserved/negated relations; supposed Deleuzian release may simply be changing economic conditions or a narrator's overinterpretation. Philosophical category is not evidence.
+
+The original review is sufficiently specific to support these bounded tests. It does not establish that any one simulated person's exact development is empirically human-valid or already runnable.
+
+## 5. Receiving and protected-status ceiling
+
+**Disposition: `R17_REPAIRED_SPECIALIST_FINDINGS_A_TO_E_AUTHOR_BRANCH`; `R17_SOURCE_CONSERVATION_HOLD`; `HQ_CURRENTNESS_HOLD` for protected receiving.** One prospective R17 remains in `16`, and one R16 positive HOME remains in `00`. The independent reviewer must evaluate the *new candidate blob* against material R16 determinations; no one may call the specialist review the complete 681-source independent receipt. The source queue must be completed by substantive disposition, not by lexical resemblance or an empty stamp. A genuinely distinct reviewer may find new losses and require repairs.
+
+This response is documentary and theoretical. It does not execute computational-organism tests, change protected PROGRAMMA or paired CURRENT_PROGRESS, confer owner authority, or initiate asynchronous review.
+
+
+## Post-response exact-candidate reconciliation
+
+The positive body at source cut `d7441491171d7ee3a09ba561e3365c5acf66fa88` was subsequently given a **frontmatter-only** correction naming the current 77 distinct author-provisional source mappings and the specialist review response. The final candidate now under review is [R17 `16`](16_R17_RECONSTITUTED_HOME_CANDIDATE_R1.md), blob **`6eaff21f6297f104be31ae31f10e7970bec135cc`**, 215,785 characters, substantive repair head `4ff7dc0318168960fe3789dc84fbab44d597728a` and final candidate edit head `f47dfa1bb9b63a9a4d8fc065534ffe9057f245f2`. The [18 disposition queue](18_R17_PROPOSED_ALL_SOURCE_DISPOSITIONS_R1.jsonl) and [21 independent receiving mandate](21_R17_FINAL_INDEPENDENT_RECEIVING_MANDATE_R1.md) now point at that blob. **R16 `00` remains the only current positive HOME.** No independent complete source receipt has occurred.
