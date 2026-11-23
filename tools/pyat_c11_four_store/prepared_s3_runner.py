@@ -83,27 +83,28 @@ def _native_repeat(store: Store, source: Any, cfg: dict, config_path: Path,
         "live_calls": 0, "live_seconds": 0.0,
         "authorize_calls": 0, "authorize_seconds": 0.0,
     }
-    original_live = source.verified._live
-    original_authorize = source.verified._authorize
+    if os.environ.get("PYAT_S3_PROFILE_OUT") or os.environ.get("PYAT_S3_COUNT_LIVE"):
+        original_live = getattr(source.verified, "_live", None)
+        original_authorize = getattr(source.verified, "_authorize", None)
+        if callable(original_live) and callable(original_authorize):
+            def counted_live():
+                started = time.perf_counter()
+                try:
+                    return original_live()
+                finally:
+                    live_stats["live_calls"] += 1
+                    live_stats["live_seconds"] += time.perf_counter() - started
 
-    def counted_live():
-        started = time.perf_counter()
-        try:
-            return original_live()
-        finally:
-            live_stats["live_calls"] += 1
-            live_stats["live_seconds"] += time.perf_counter() - started
+            def counted_authorize(held):
+                started = time.perf_counter()
+                try:
+                    return original_authorize(held)
+                finally:
+                    live_stats["authorize_calls"] += 1
+                    live_stats["authorize_seconds"] += time.perf_counter() - started
 
-    def counted_authorize(held):
-        started = time.perf_counter()
-        try:
-            return original_authorize(held)
-        finally:
-            live_stats["authorize_calls"] += 1
-            live_stats["authorize_seconds"] += time.perf_counter() - started
-
-    object.__setattr__(source.verified, "_live", counted_live)
-    object.__setattr__(source.verified, "_authorize", counted_authorize)
+            object.__setattr__(source.verified, "_live", counted_live)
+            object.__setattr__(source.verified, "_authorize", counted_authorize)
 
     def checked_execute(*, prepared_session=None):
         source.verified._live()
