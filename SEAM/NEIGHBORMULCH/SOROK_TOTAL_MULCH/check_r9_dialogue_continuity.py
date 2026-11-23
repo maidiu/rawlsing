@@ -171,6 +171,42 @@ def main():
             else:
                 check_exact_source_name(source_table[key], record[attr], key)
 
+    # R35: preserve old addresses while making provisional current Roman
+    # destinations inspectable under the EXISTING ledger/source identity bank.
+    must("## N-T1 / Round Thirty-Five" in (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8"),
+         "R35 source-location overlay missing from existing ledger")
+    stage35 = (CURRENT / "13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md").read_text(encoding="utf-8").split(
+        "## N-T1 / Round Thirty-Five", 1)[1]
+    must("### R35 / 197" in stage35 and "### R35 / 104" in stage35 and
+         "### R35 / 757" in stage35, "source mapping family boundaries lost")
+    current197 = stage35.split("### R35 / 197", 1)[1].split("### R35 / 104", 1)[0]
+    current104 = stage35.split("### R35 / 104", 1)[1].split("### R35 / 757", 1)[0]
+    route197 = table(current197, r"(?:R1_INITIAL|R1_CORRECTED|R[2-9])-S\\d\\d".replace("\\\\", "\\"))
+    route104 = table(current104, r"(?:C\\d\\d|NM-\\d\\d\\d|R9-\\d\\d)".replace("\\\\", "\\"))
+    must(set(route197) == set(section_rows) and len(route197) == 197,
+         "R35 current 197 historical-section route coverage incomplete")
+    must(set(route104) == set(ideas) and len(route104) == 104,
+         "R35 current 104 original conversation/idea route coverage incomplete")
+    permitted = set(expected_chapters)
+    for key, row in route197.items():
+        roman = re.findall(r"`([IVX]+)`", row)
+        must(roman and all(v in permitted for v in roman),
+             "historical theory source has no current Roman candidate: " + key)
+        must("PROVISIONAL" in row, "R35 author candidate falsely upgraded: " + key)
+    for key, row in route104.items():
+        roman = re.findall(r"`([IVX]+)`", row)
+        must((roman and all(v in permitted for v in roman)) or
+             ("OUTSIDE-HOME" in row or "SOURCE_ONLY" in row),
+             "original user idea lacks bounded in-game/outside/source-only disposition: " + key)
+        must(any(status in row for status in
+                 ("PROVISIONAL_SEMANTIC_DESTINATION", "SOURCE_ONLY")),
+             "R35 idea location silently accredited: " + key)
+    must("### Original SOROK H001–H190:" in whole and
+         "### Original SOROK Q001–Q123:" in whole and
+         "### Original 144 O-Index" in whole and
+         "### Original 300 SOROKUDA" in whole,
+         "757 original historical source-family locations lost from canonical file")
+
     # R22 USER-CONTROLLING RECONSTITUTION:
     # Keep original source tables IN the unchanged HOME foundation, but route
     # provisional, early-only meta-product possibilities into exactly one
@@ -320,6 +356,7 @@ def main():
     print("[PASS] 190 H + 123 Q + 144 O + 300 SOROKUDA source identities and original text/path")
     print("[PASS] historical no-new-doc user source preserved; latest explicit one subordinate bank admitted")
     print("[PASS] source-conscious 272-paragraph destination crosswalk and thirteen active chapters")
+    print("[PASS] provisional 197/104 new Roman locators and 757 historic family locators preserved")
     print("[PASS] unselected early mechanics preserved outside HOME")
     print("[LIMIT] Structure/text/source custody; NOT independent full semantic proof, "
           "complete original chat transcript, live organism execution, or protected receiving")
