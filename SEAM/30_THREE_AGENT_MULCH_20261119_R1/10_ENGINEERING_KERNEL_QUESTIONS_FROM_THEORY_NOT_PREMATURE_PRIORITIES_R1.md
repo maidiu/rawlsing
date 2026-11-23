@@ -1,8 +1,14 @@
 # 10 — ENGINEERING KERNEL QUESTIONS EMERGING FROM THEORY (NOT ITS AUTHORITY)
 
-**Independent adjacent engineering-hierarchy inquiry · DCO R14 theory-completion campaign · 2026-11-22 · nonissuing.**
+**Independent adjacent engineering-hierarchy inquiry · DCO R16 reconstituted HOME (historical R14 questions conserved) · 2026-11-23 · nonissuing.**
 
 **READ THE SINGLE [00 CONSTITUTIVE ORGANISM HOME](00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) FIRST for the *positive person-ontology*.** The [09 existing sourcefree implementation inventory](09_RECOVERED_OPERATIVE_FUNCTIONS_AND_FUSION_FIRST_CONSUMERS_R1.md) records historical machinery and evidence; this file separately explores **what minimal kernel(s) might eventually make the theory operative**. A hard engineering question is neither permission to redefine the theory nor proof its answer is absent. Find existing answer → cite/bring its theoretical substance into HOME; if absent, inspect whether a relation among other established parts already answers it; only then identify a *theoretical question* requiring development. Engineering formulation may expose overlooked ontology; it may not silently govern ontology.
+
+## R16 reconstitution — one theory HOME, independent implementation questions
+
+The current author-branch **[00 DCO R16 HOME](00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md)** now integrates all 92 prior substantive determinations under twelve causally composed movements, while [13](13_RECONSTITUTION_SOURCE_DETERMINATION_LEDGER_R1.json) certifies exact R15 source coverage and [14](14_RECONSTITUTION_ADVERSARIAL_CONCEPTUAL_AND_SOURCE_COURT_R1.md) records bounded author-side critique and editorial debt. The old 17-movement coordinates remain historically preserved, not a new engineering ontology. The temporary successor was retired after the single HOME was published and read back on the isolated theory branch.
+
+**Consequently:** do not treat the twelve new theory chapters as twelve code modules, a new deterministic psychological update plan, twelve release phases, or an engineering priority hierarchy. Their distinctions concern historically lived processes; some need separate technical ownership, some can be composed through existing source-qualified machinery, and some remain conceptual or empirical underdetermination that no algorithm can rightly abolish. Recover existing G4 and owner inventories where PYAT-dependent, and exact SOROK/PFF/SDTF operation history where SOROK-dependent, before claiming a missing function or proposing an owner. No protected PROGRAMMA or paired CURRENT_PROGRESS update is performed here. A computational organism still needs actual integrated, source- and time-qualified running construction; the theory manuscript does not itself furnish it.
 
 ## 1. What an engineering hierarchy is and is not
 
