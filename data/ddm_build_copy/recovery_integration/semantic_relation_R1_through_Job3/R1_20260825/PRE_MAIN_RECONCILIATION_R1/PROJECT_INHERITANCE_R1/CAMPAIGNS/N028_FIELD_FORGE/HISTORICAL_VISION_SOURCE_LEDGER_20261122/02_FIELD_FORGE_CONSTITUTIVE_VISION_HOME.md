@@ -1,9 +1,9 @@
 # FIELD FORGE — CONSTITUTIVE VISION HOME
 ## The actor-independent empirical and material-social relational observatory that a developing person needs
 
-**Source-informed full conceptual machine / candidate research synthesis · 2026-11-23 · NOT PROGRAMMA ADOPTION OR CODE COMMISSION.**
+**Source-informed, still-incomplete conceptual synthesis / candidate research HOME · 2026-11-23 · NOT PROGRAMMA ADOPTION OR CODE COMMISSION.** The 87/87 index is a provenance join, not certification of complete original-source extraction.
 
-**Companion:** [01 — EXISTENT CODE & CAPABILITY HOME](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md) is **the current-source, function-grain starting truth**, and is not overwritten by this paper. [Historical 87-entry source ledger](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md) provides a stable path or explicitly qualified chat handle for every source below. [For downstream](for_downstream_from_FF.md), [red herrings](red_herring_for_prev3.md), and [good but unselected](good_but_not_a_fit_for_present_FF.md) prevent conceptual accumulation from being mistaken for in-FIELD-FORGE ownership.
+**Companion:** [01 — EXISTENT CODE & CAPABILITY HOME](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md) is a **source-static, exact-cut function-grain companion snapshot**, not an authority above live G4, original owner source, executed tests or current receiving; it is not overwritten by this paper. [Historical 87-entry source ledger](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md) provides a stable path or explicitly qualified chat handle for every source below. [For downstream](for_downstream_from_FF.md), [red herrings](red_herring_for_prev3.md), and [good but unselected](good_but_not_a_fit_for_present_FF.md) prevent conceptual accumulation from being mistaken for in-FIELD-FORGE ownership.
 
 **Source hierarchy and conflict rule.** Original 2025–26 vision establishes the problem; the August N028 R1 corpus proposes candidate observatories; W48/W50 conserve and correct them; **Global-HQ September 2 R2 is the accepted architecture at its exact grain**; G4 and actual code govern implementation facts; SOROK/V3 owns actual persons. The present paper extracts all identified *forward-useful* thought from that lineage, rejects contradictory earlier implementations, and adds no scientific authority. Particularly: a universal persistent Field Forge carrier, one global geometry, nine strata as primitive ontology, automatic strong FIELD/HEGEMONY/HOMOLOGY/CAUSES labels, and FF-authored actor memories are **not** part of the adopted design.
 
@@ -60,7 +60,7 @@ These constraints are not a bureaucratic tax on the vision. They prevent the mod
 
 ### IV.1. Source capability is not respondent exposure
 
-The original 2026 N028 source stress pass ([E031](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md), Arab Barometer VIII example) establishes at least these distinct questions:
+The original N028 source stress pass ([E031](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md), Arab Barometer VIII example) states these distinctions, but its **authored ledger grade is `FILE_LOCATED`**, not full `READ`. The propositions also appear in separately inspected W48/R2 material. The detailed primary-source-to-synthesis audit remains open:
 
 - Is measurement X in this source/wave/country/form at all?
 - Was respondent i **eligible** and **shown** X under routing, random split and prior answer constraints?
@@ -75,7 +75,7 @@ An FF observable joint is not all columns with matching names; it is a source-qu
 
 ### IV.2. Complete coherent repertoires precede typology
 
-A genuine k-way observed respondent configuration may combine apparent ideological opposites: social welfare support, electoral abstention, low state trust and obligations to religious kin. The empirical object is the *entire observed combination and its conditional support*, not a generic "collectivist", "religious", "alienated" or "Type 6" latent property.
+A genuinely coadministered, fully resolved k-way observed respondent configuration may combine apparent ideological opposites: social welfare support, electoral abstention, low state trust and obligations to religious kin. The empirical object is the *entire observed combination and its conditional support*, not a generic "collectivist", "religious", "alienated" or "Type 6" latent property.
 
 Field Forge should be able to answer, without factorizing away correlations:
 
@@ -156,11 +156,13 @@ Here the original N028 vision is most potent and most easily abused.
 
 ### VIII.1. Neutral footprint
 
-Given source-admitted position configuration `C`, disposition-repertoire joint `Y` and lawful comparison `C'`, calculate:
+Given source-admitted position configuration `C`, disposition-repertoire joint `Y` and lawful comparison `C'`, the **present #1247 FF01 research code** calculates *RAW complete-case descriptive support*, not an unqualified eligible-population probability. Let `n_cc(C,Y=y)` count fully resolved, same-respondent coadministered cells and let `n_cc(C)` count all fully resolved joint cells for that context. Only when `n_cc(C)>0` does the current candidate yield
 
-`p_C(y) = n(C,Y=y) / n(C)`, `p_C'(y) = n(C',Y=y) / n(C')`,
+`p_cc(y|C) = n_cc(C,Y=y) / n_cc(C)`,
 
-under the actual appropriate survey design/weight laws if authorized. Preserve the full vector `{p_C(y)}`, support and nonpositive states, not only an averaged attitude scalar. A descriptive contrast `Δ_C,C'(y) = p_C(y) − p_C'(y)` is a useful **distributional footprint**.
+and similarly for `C'`. Its raw contrast `Δ_cc(y;C,C') = p_cc(y|C) − p_cc(y|C')` describes **respondents complete in the relevant joint**, not all eligible respondents and not a population estimand. The original I03 risk/eligible denominator remains a **separate field**. Missingness, route/exposure eligibility, unresolved values, weights, design, substantive response and source permission cannot be erased by renaming the complete-case ratio `P(Y|C)`.
+
+A weighted/population `P(Y|C)`, missingness adjustment, identification bound or uncertainty interval is **a different operation**, requiring its explicit source-specific estimand, original authorizer, design/routing and adequacy law; **#1247 FF01 currently refuses weighted support**. When a context has no resolved support, preserve typed zero/held without inventing a fraction. Preserve the complete-case distribution and its negative states without treating its conditional difference as a coercive mechanism.
 
 Candidate optional diagnostics include total variation, Jensen–Shannon distance, conditional mutual information, log-linear n-way terms and profile shifts across position-neighborhoods. None by itself proves coercive exposure, a school or family causal mediation, or that a person "internalized" the group's politics.
 
@@ -184,6 +186,12 @@ This is empirical **coupling** as a neutral typed statistic. An actor-independen
 ### VIII.3. Identity and social pressure do not coincide
 
 Two people occupying similar reported income and education positions can confront very different enforceable terms: citizen versus precarious worker, landlord versus tenant, employer versus wage-dependent worker, kin-supported versus care-isolated parent, legally protected versus excluded minoritized group. **Income score is not power.** A meaningful full machine needs a pathway for *independently admitted material institutions and group relations* to qualify downstream opportunities—not an FF classifier that reads a demographic tuple and asserts a class destiny.
+
+### VIII.4. Graded evidence and honest sparse fallback — inherited but not yet stitched
+
+Original exploratory [E029](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md) explicitly distinguishes **E0 direct adequately supported empirical evidence; E1 direct but underpowered; E2 model-supported partial pooling; E3 governed broader-position walkback/proxy; E4 model extrapolation**, plus separate no-evidence and routing/J/role refusal states. These are historical *proposed evidence grades*, **not accepted current ABI enum values** or an instruction to implement five new engines.
+
+The full claim-conditioned answer contract must preserve **which route produced its value**: source-local direct count, source-design-qualified population estimate, explicit uncertainty, independently issued model, governed loss-bearing walkback, or extrapolation with no direct support. E1 must not become observed zero; E2 must not impersonate E0; E3 must disclose the exact position information lost; E4 must not become a survey-verified actor prior. Check existing G4 I03/I05, positioned-subject walkback, model/science and source authority **before** asserting any of these routes needs new FF code. No full E029-to-current-code parity or original-source first-consumer court has yet been demonstrated.
 
 ## IX. The political-economic and hegemonic problem
 
@@ -315,7 +323,7 @@ These are **proposed consumer-facing falsifiers**, not test executions reported 
 
 ## XV. Whole-ledger source-by-source inclusion court (87/87 entries)
 
-**Method:** this table is an *explicit primary disposition of each source entry* in [the original chronology](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md). Every full retrieval path/date/source-grade is preserved in the ledger; the exact ID/title joins here. This table does not grant the conceptual source scientific issuance, and `KEEP_OR_CONDITION_WITHIN_FF` is conditional rather than compulsory. For the four newly recovered sources (H084–H087), downstream CO/NEIGHBOR/SOROK now has a later, stronger source-grounded theory/candidate material-world implementation than the earlier H073/H074 R5 snapshot.
+**Method:** this table is an *explicit primary disposition of each identified source entry*, **not** proof that all useful original conceptual material was read or recovered. At the authored source-grade cut, only 16/87 are marked full `READ` and E020–E032 remain `FILE_LOCATED`. It is an *explicit primary disposition of each source entry* in [the original chronology](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md). Every full retrieval path/date/source-grade is preserved in the ledger; the exact ID/title joins here. This table does not grant the conceptual source scientific issuance, and `KEEP_OR_CONDITION_WITHIN_FF` is conditional rather than compulsory. For the four newly recovered sources (H084–H087), downstream CO/NEIGHBOR/SOROK now has a later, stronger source-grounded theory/candidate material-world implementation than the earlier H073/H074 R5 snapshot.
 
 | Ledger ID | Original identified source | Primary source-preserving disposition | Specific retained knowledge, limit or investigative lead | Source inspection grade |
 | --- | --- | --- | --- | --- |
@@ -435,8 +443,8 @@ The **currently strongest sharply stated missing *proof*** is not "another Field
 
 ## XVII. Explicit limits and currentness duty
 
-- This source-driven conceptual HOME draws its research from original N028 documents, W48, R2 adopted authority, historical canaries, G4, modern code, original 2025 PDFs and SOROK/DCO. **Its 87-row court does not claim that every ZIP or historical chat lead was fully opened**. Unopened source records are indexed with their original inspection grade.
-- The 2025 v3.4 PDF creation timestamp **2025-04-24** has been directly confirmed from the attached PDF's metadata in this session, and its staged developmental conception text extracted. The original source ledger has now been corrected in the same branch to reflect direct pdfinfo inspection and reopened v3.4 text; it still does not claim the original chat's creation timestamp was verified.
+- This conceptual HOME draws its research from selected original N028 material, W48, R2 adopted authority, historical canaries, G4, modern code, original 2025 PDFs and SOROK/DCO. **Its 87-row court establishes index coverage, not full conceptual recovery:** 44 of its original entries are `FILE_LOCATED` only, including all E020–E032, and original chat leads remain unverified. This defeats an unconditional claim to contain *literally every* historical architectural insight. Unopened source records are indexed with their original inspection grade.
+- The ledger author reported checking the 2025 v3.4 PDF creation timestamp **2025-04-24** with `pdfinfo` and extracting its staged developmental conception. This HOME does not independently re-execute that command and the PDF timestamp does not establish the original chat's date. The original source ledger has now been corrected in the same branch to reflect direct pdfinfo inspection and reopened v3.4 text; it still does not claim the original chat's creation timestamp was verified.
 - **No new python tests were executed in this HOME authoring pass; no source code was changed.** Existing execution claims must remain pinned to their original worker environments and exact SHA. A GitHub doc CI pass is not FF code review.
 - Historical FF R2's adoption is **at architecture/canary grain**; it neither installs every exploratory idea nor proves all-original35 material machinery complete.
 - **Do not silently update protected PYAT G4 or paired CURRENT_PROGRESS from this draft.** They remain under separately competent owner, lease and protected receiving. A conceptual document can be issued in the isolated N028 ledger folder without claiming HQ accreditation.
