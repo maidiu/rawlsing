@@ -72,6 +72,24 @@ The original [H065 source-static seam assessment](https://github.com/maidiu/rawl
 
 **Full 11-question statuses are retained at [02/H066](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md).** Some have a local M4→M5 reader; most explicitly have no proved first SOROK consumer. That absence is a proof limit, not authorization for another publication or person engine.
 
+### August 10 V5: the exact boundary between structural evidence and living pressure-flow
+
+Original native Library: `/Rawlsing/ORIENTATION_ROOTS/RAWLSING_V5_INTER_PRESSURING_PERSONHOOD_AND_ABSOLUTE_HORIZON__ORIENTATION_R2.md` (D010, §2–§10). Directly reopened 2026-11-23.
+
+The V5 founding distinction is that **power sets material and symbolic terms**, while an organism's *flow* is a process of activity, interpretation, resistance, adaptation or capitulation within those terms. Only the first is eligible as actor-independent Field Forge evidence; after an actual world actor acts, learns and relates, the second belongs to SOROK. This is not a rule to impoverish Field Forge. Its positive social information question is which rights, obligations, sources of protection/withholding and context-conditioned cultural alternatives exist for later encounters.
+
+| D010 specific source argument | The Field Forge contribution | Actual later operation |
+| --- | --- | --- |
+| D010.02–07: relations of class, institution, dependency, lateral influence and unequal affordability | Source-qualified role, control, eligibility, target, context, power issue/unknown and true nonadditive repertoire, where measured | N6/N9/M4 validate and enact selected structural affordances; SOROK receives actual consequences |
+| D010.08–12: identification/alienation, awareness, contradiction and vitality | Externally circulating frameworks/counterpatterns with source; not person-internal identified schema | SOROK constructs *that actor's* encountered carriers, affective organization, defenses, learned meanings and activity |
+| D010.13–16: Absolute Horizon, legitimacy, practical rupture and finite embeddedness | Material/social constraints persist; no source-issued individual's religion/maturity/goodness variable | SOROK ultimate-priority/relational-affect interpretation under events, not a numeric FF horizon |
+| D010.17–18: parent→partner→child genealogy | Coherent survey adult possibilities and material feasibility constraints, not a survey-measured couple or child | SOROK selects partner possibility, histories and conception encounter; Nadia inherits lived household consequences |
+| D010.20: old V555/V556 were used for lived household mediation and psychology | Conserve *function* not the old stage number | Present PROGRAMMA's V555/V556 are actor-independent route/higher-order structural operations; psychology now downstream SOROK |
+
+Original native Library APP: `/Rawlsing/ORIENTATION_ROOTS/APP_VIABILITY_AND_FORWARD_ITINERARY_R4.md` (D012, APP-GATE A / T06-GATE). Source-observed co-signatures survive even if no special semantic S14 relation exists. **Typed semantic annotation cannot be a precondition for empirical co-travel; empirical co-travel cannot invent typed semantic relation.** The old T06 recalled known norm↔conduct positives separately; the old 25-item work itinerary was time-bound and is not a current commission.
+
+The D010/D012 source-by-proposition recovery is in [02](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md). Their old project layer counts and task sequencing are historical, not a warrant to replace present owner interfaces.
+
 ## II. Transfer contract: what passes the seam
 
 A valid output to the next owner is **claim-specific**, not a fixed Field Forge master-packet. Its minimum supported components, each only if genuinely applicable:
