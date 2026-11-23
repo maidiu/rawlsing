@@ -1836,3 +1836,240 @@ No 757-row new engine inventory is invented. These records are **historical sour
 **Strict checks:** existing `SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_r9_dialogue_continuity.py` retains original 197/104/757 name/proposition/disposition/no-drop assertions; newly enforces exact 13 Roman section identities and primary positive causal shards, all 272 old current paragraphs and their source-to-new crosswalk, **plus immutable historical suffix character count and SHA256**. Neither a title overlap nor a green test can certify all 197/104/757 semantic claims. The temporary `15_NEIGHBOR_HOME_TOTAL_MULCH_CANDIDATE.md` must be retired, so that the draft contains one positive canonical-path HOME and one explicitly outside-game bank, never two competing active theories.
 
 **Still held before PR merge/protected adoption:** exact independent source-grade semantic acceptance and owner receiving; protected CURRENT_PROGRESS and PROGRAMMA paired currentness; source-qualified SES domain, counterfactual world completion and its branch compatibility, private real-human intention, impossible elastic time, operator incentives and empirical worth. This is user-commissioned construction of **source custody around finished theory**, **not** runtime psychological or world-engine construction.
+
+
+## N-T1 / Round Thirty-Six — Independent analytical source-routing repair (no theory reopening)
+
+**Review scope and evidence ceiling · November 23, 2026.** The R35 author overlay retained all original 197 theory-section identities but its automatically chosen up-to-four candidate chapter destinations often failed to put the obvious *primary* meaning in the new section that actually enacts it. This independent analytical pass reopened the frozen source-family identity/heading table, the actual original R1/R2/R4/R6/R7/R8/R9 theory texts at their exact Git cuts (including targeted complete original sections), the entire currently promoted 13-movement argument, and the 104 source-qualified original proposition texts; then manually assigned **one primary** Roman address and at most one cross-domain secondary address for each of **197** historical section identities. The existing R35 rows remain unchanged *as author-side documentary evidence*, not current authoritative navigation. This overlay is the **reviewer-corrected provisional navigation table**, NOT independent G5, not exhaustive word-for-word semantic equivalence for 197 complete original sections, and not a new positive HOME or additional psychology engine.
+
+**Primary failure directly observed:** R1 initial IV and R1 corrected IV concerns *actual human authorship and thin fictional emplacement*, but R35 offered `VI,I,V,VII` or `V,XI,VIII,VII` and omitted `II` and `IV`. R1 XIII concerns the **native playable unit of actual participation** but R35 omitted `IV`. R1 XIV concerns independently real third parties but R35 omitted `VII`. R8 V concerns **YOUR RESOURCES and exact SES**, yet R35 gave `III,X,XI,VIII` and omitted `II`. These are proven **routing defects, not proven losses from the successor thesis**. Correcting an index must not be represented as inventing the missing psychological function.
+
+**Authoritative scope of this new table:** The first address is a defended **primary conceptual destination** on title and sampled-section evidence; the optional second is an adjacent causal junction, not an assertion that either chapter reproduces the entire original section verbatim. No historic sources or original R35 claims were deleted; the newer route supersedes R35 only as a *current navigation aid* pending competent, source-complete independent receiving. Human and institutional control-plane rights remain outside the UX writer's authority.
+
+### R36 / 197 reviewer-corrected primary and adjacent Roman addresses
+
+| Historical source ID | Reviewer primary / optional secondary | Change relative to R35's first address | Grade |
+|---|---|---|---|
+| `R1_INITIAL-S02` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S03` | `I`, `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S04` | `VIII`, `IV` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S05` | `II`, `IV` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S06` | `VII`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S07` | `VI`, `III` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S08` | `V`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S09` | `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S10` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S11` | `VI`, `V` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S12` | `XI`, `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S13` | `I`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S14` | `IV` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S15` | `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S16` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S17` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S18` | `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_INITIAL-S19` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S02` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S03` | `I`, `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S04` | `VIII`, `IV` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S05` | `IV`, `IX` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S06` | `VII`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S07` | `VI`, `III` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S08` | `V`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S09` | `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S10` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S11` | `VI`, `V` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S12` | `XI`, `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S13` | `I`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S14` | `IV` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S15` | `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S16` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S17` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S18` | `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R1_CORRECTED-S19` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S02` | `II`, `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S03` | `VIII`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S04` | `III`, `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S05` | `IV` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S06` | `XI`, `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S07` | `V` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S08` | `V`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S09` | `V`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S10` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S11` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S12` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S13` | `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S14` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S15` | `III` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S16` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R2-S17` | `XIII`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S02` | `I`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S03` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S04` | `V`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S05` | `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S06` | `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S07` | `IV` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S08` | `VII`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S09` | `IX`, `V` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S10` | `XI`, `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S11` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S12` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S13` | `VIII`, `XII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S14` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R3-S15` | `XI`, `IV` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S02` | `II`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S03` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S04` | `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S05` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S06` | `XIII`, `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S07` | `II`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S08` | `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S09` | `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S10` | `VI`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S11` | `IX`, `V` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S12` | `X`, `XII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S13` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S14` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S15` | `XI`, `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S16` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R4-S17` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S01` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S02` | `I`, `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S03` | `I`, `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S04` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S05` | `I`, `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S06` | `VII`, `IV` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S07` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S08` | `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S09` | `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S10` | `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S11` | `VI`, `III` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S12` | `V`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S13` | `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S14` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S15` | `V`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S16` | `VI`, `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S17` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R5-S18` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S02` | `I`, `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S03` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S04` | `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S05` | `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S06` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S07` | `VII`, `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S08` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S09` | `V`, `IV` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S10` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S11` | `III` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S12` | `VI`, `V` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S13` | `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S14` | `VIII`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S15` | `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S16` | `V`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S17` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S18` | `VI`, `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S19` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R6-S20` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S01` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S02` | `III`, `V` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S03` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S04` | `VI`, `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S05` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S06` | `XI`, `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S07` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S08` | `X`, `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S09` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S10` | `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S11` | `II`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S12` | `VI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S13` | `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S14` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S15` | `III`, `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S16` | `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S17` | `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S18` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S19` | `IV`, `V` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S20` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S21` | `X`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S22` | `VI`, `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S23` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R7-S24` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S02` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S03` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S04` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S05` | `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S06` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S07` | `II`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S08` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S09` | `I`, `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S10` | `I`, `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S11` | `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S12` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S13` | `I`, `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S14` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S15` | `III`, `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S16` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S17` | `VII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S18` | `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S19` | `I`, `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S20` | `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S21` | `III` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S22` | `IX`, `V` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S23` | `X`, `VIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S24` | `V`, `XI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S25` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S26` | `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S27` | `VI`, `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S28` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S29` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R8-S30` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S02` | `I`, `II` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S03` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S04` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S05` | `II` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S06` | `II`, `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S07` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S08` | `III`, `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S09` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S10` | `I` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S11` | `I`, `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S12` | `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S13` | `VI` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S14` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S15` | `X` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S16` | `VII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S17` | `III`, `IX` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S18` | `III` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S19` | `VIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S20` | `I` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S21` | `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S22` | `XI` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S23` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S24` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S25` | `XIII` | PRIMARY_DESTINATION_ADDED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+| `R9-S26` | `XIII` | REPRIORITIZED | TITLE_SCOPE_REVIEW__PROVISIONAL |
+
+### R36 / 104 source-status misrouting corrections
+
+These corrections supplement, not replace, the complete historical 104-row bank and R35 table. The exact original source propositions and dispositions remain in the immutable foundation. The following claims must not be falsely promoted into the enacted encounter by a superficially thematic adjacent chapter:
+
+| Idea ID | Corrected current route | Why this overrides the provisional R35 location | Grade |
+|---|---|---|---|
+| `C35` | OUTSIDE-HOME; `VI` is only a scientific boundary | Population-weighted global person draws and adequacy of 1–5 seed samples concern source/science and exterior distribution, not automatically a game event in `III` | SOURCE_SCOPE_REVIEW__PROVISIONAL |
+| `C37` | `I`, `X`; `VIII` adjacent | Visitor has no claim to Nadia's time: real accessibility, invitation and time-structured commitments are `X`, not merely companionship `VIII` | SOURCE_SCOPE_REVIEW__PROVISIONAL |
+| `NM-031` | `VIII` plus OUTSIDE-HOME | Human comparison is positive encounter-adjacent theory; small initial seed-pool policy remains external | SOURCE_SCOPE_REVIEW__PROVISIONAL |
+| `NM-032` | OUTSIDE-HOME (with `I` as nonownership ethical horizon) | The speculative economic act of commissioning a new root and its funding are not an in-fiction relationship mechanism | SOURCE_SCOPE_REVIEW__PROVISIONAL |
+| `NM-037` | OUTSIDE-HOME | Sponsor financing is vendor policy, not an adopted law inside `XI` or a reason for Nadia to act | SOURCE_SCOPE_REVIEW__PROVISIONAL |
+
+**Five negative semantic courts (source-conditioned, NOT executable psychology proofs):**
+
+1. *Real visitor autobiography:* reading R1 IV and going to `VI` (CO psyche) instead of `II` (real human, thin local embodiment) must count as bad routing even if an unrelated word overlaps.
+2. *Actual human thinking:* a request “I teach the child fractions” must lead to `IV` task decompression and native reasoning, not just `VII` third-party organization.
+3. *Material SES:* R8 V's financial bar must point to `II`; only the user's resources are visible and equal burden does not grant Nadia's balance.
+4. *Social otherness:* R1 XIV's independently acting family and coworkers must lead to `VII`; a relationship model alone is not enough.
+5. *Out-of-game product options:* C35/NM-032/NM-037 must not become mandatory game operations just because an existing chapter speaks about power, attachment or socioeconomic conditions.
+
+**Existing original-source proof limits remain:** all R35 `197/104/757` historical identities are preserved; the old 23-movement HOME is still recoverable at `52f8da7d5254dccda2e21250ab95d79aa85a017f`; the unchanged in-file source foundation remains SHA256 `23a896874a157e6c361a0eea7589a7a806dec32a02f374e9303a4421fdb4f1db`. The existing 104 propositions are not 104 scientific grants and the original 757 code/source leads are not 757 implemented functions. Complete source-level and distinct-principal G5, protected paired PROGRAMMA/CURRENT_PROGRESS and owner acceptance are **HELD**. This pass creates no such authority.
+
+**Receiving obligation:** adapt the existing `check_r9_dialogue_continuity.py` to validate the newer 197 primary routes as a *provisional* current index and enforce these five claim-level negative courts; run that exact checker at the new commit and receive its actual result. Do not weaken its earlier count, historic blob hash, crosswalk, external bank, or 757-source identity checks. Do not create a new document, branch or in-game theory.
+
+**Disposition:** `R36_SOURCE_ROUTING_REPAIRS_197_PRIMARY__FIVE_104_SCOPE_CORRECTIONS__PROVISIONAL_ANALYTICAL_REVIEW__G5_PROTECTED_RECEIVING_HOLD`.
