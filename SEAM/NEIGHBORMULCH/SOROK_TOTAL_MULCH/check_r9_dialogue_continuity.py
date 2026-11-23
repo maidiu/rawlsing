@@ -215,6 +215,79 @@ def main():
         must(any(status in row for status in
                  ("PROVISIONAL_SEMANTIC_DESTINATION", "SOURCE_ONLY")),
              "R35 idea location silently accredited: " + key)
+    # R36 reviewer-corrected primary source routes supersede the deficient R35
+    # destination order as CURRENT NAVIGATION ONLY, not as source-level G5.
+    # This keeps the historical R35 author rows and all prior conservation checks.
+    must("## N-T1 / Round Thirty-Six" in ledger,
+         "R36 independently scoped primary-source route repair missing")
+    r36 = ledger.split("## N-T1 / Round Thirty-Six", 1)[1]
+    must("### R36 / 197" in r36 and "### R36 / 104" in r36,
+         "R36 current route/scope tables missing")
+    r36_current = r36.split("### R36 / 197", 1)[1].split(
+        "### R36 / 104", 1)[0]
+    r36_104 = r36.split("### R36 / 104", 1)[1].split(
+        "**Five negative semantic courts", 1)[0]
+    r36_routes = {}
+    for line in r36_current.splitlines():
+        m = re.match(r"^\\| \\x60((?:R1_INITIAL|R1_CORRECTED|R[2-9])-S\\d\\d)\\x60 \\| ([^|]+) \\| ([^|]+) \\| ([^|]+) \\|$", line)
+        if m:
+            key = m.group(1)
+            must(key not in r36_routes, "duplicated reviewer current route: " + key)
+            roman = re.findall(r"\\x60([IVX]+)\\x60", m.group(2))
+            must(1 <= len(roman) <= 2 and all(v in permitted for v in roman)
+                 and len(set(roman)) == len(roman),
+                 "invalid or overbroad reviewer Roman route: " + key)
+            must("PROVISIONAL" in m.group(4),
+                 "current reviewer locator falsely accredited: " + key)
+            r36_routes[key] = (roman, m.group(3))
+    must(set(r36_routes) == set(section_rows) and len(r36_routes) == 197,
+         "R36 reviewer-primary mapping fails exact historic 197 identity set")
+    # Explicit semantic *counterexample* guards: original section's primary
+    # conception must not be hidden behind four semantically irrelevant Romans.
+    primary_courts = {
+        "R1_INITIAL-S05": "II",     # actual human / thin local body
+        "R1_CORRECTED-S05": "IV",   # real authored engagement
+        "R1_INITIAL-S14": "IV",    # native participation, not text turn
+        "R1_INITIAL-S15": "VII",   # independent others
+        "R1_CORRECTED-S15": "VII",
+        "R2-S07": "V",             # acquired perception
+        "R2-S08": "V",             # platform models vs real person
+        "R2-S11": "X",            # specific social routes of access
+        "R4-S09": "XI",           # harm may obtain its objective end
+        "R6-S05": "VIII",         # real-human social parallax
+        "R6-S06": "X",            # unobserved day is historical
+        "R7-S07": "II",           # resource bar, exact situated SES
+        "R7-S14": "II",           # impossible homologous peer
+        "R8-S05": "II",           # YOUR RESOURCES bar
+        "R8-S06": "II",           # identical burden is not identical history
+        "R8-S15": "III",         # common precontact history and forks
+        "R8-S18": "VI",          # actor psyche outside visitor
+        "R9-S03": "II",          # financial HUD, not secret Nadia balance
+        "R9-S12": "VII",         # independent family relationships
+        "R9-S13": "VI",          # operative iceberg
+        "R9-S19": "VIII",        # shared root vs postcontact worlds
+        "R9-S22": "XI",          # sexuality / harm / contradictory care
+    }
+    for key, expected_primary in primary_courts.items():
+        must(r36_routes[key][0][0] == expected_primary,
+             "original theory meaning misrouted by reviewer map: " + key)
+    must("SOURCE_SCOPE_REVIEW__PROVISIONAL" in r36_104,
+         "104 current route review falsely represented as full semantic acceptance")
+    for key, required in {
+        "C35": "OUTSIDE-HOME",
+        "C37": "\\x60X\\x60",
+        "NM-031": "OUTSIDE-HOME",
+        "NM-032": "OUTSIDE-HOME",
+        "NM-037": "OUTSIDE-HOME",
+    }.items():
+        match = re.search(r"(?m)^\\| \\x60" + re.escape(key) +
+                          r"\\x60 \\| ([^\\n]+)$", r36_104)
+        must(match and required.replace("\\x60", "`") in match.group(1),
+             "R36 104 negative routing court missing: " + key)
+    print("[PASS] R36 exact 197 primary navigation overlay preserves old R35 as provenance")
+    print("[PASS] 22 original-source semantic primary courts and 5 outside-policy source courts")
+    print("[LIMIT] Reviewer title and targeted source-body matching; NOT full G5 semantic receiving")
+
     must("### Original SOROK H001–H190:" in whole and
          "### Original SOROK Q001–Q123:" in whole and
          "### Original 144 O-Index" in whole and
