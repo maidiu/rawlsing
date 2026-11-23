@@ -20,6 +20,14 @@
 
 Each `path` below is relative to repository root and pinned to HEAD `af62a48716b07aa4642dc4551185e7a2250ac672` unless a different historical source is explicitly identified. A blob hash is the Git content identity, not the branch HEAD. A URL with the pinned commit is reproducible; if branch HEAD subsequently moves, **record the actual head and differences, do not silently substitute current text for pinned evidence**. The current R16 HOME is authoritative *only on isolated author PR #1161*, NOT protected PROGRAMMA. R17 is a candidate.
 
+### GPT-6.2 Astra source-loading discipline — economic retrieval, full semantic resolution
+
+The API advertises a roughly 1.05-million-token context window for `gpt-6.2-astra`; this is **not** a guarantee that a particular ChatGPT or Work session exposes the same usable window or can perfectly distinguish every detail placed inside it. The API also applies higher rates to requests above **272,000 input tokens**. Hence **do not preload the 430,836-character R16 manuscript, 522,793-character source index, 411,584-character proposed-disposition queue, 215,785-character R17 candidate and all sidecars into every call merely because the window is large**. Prefer the exact staged retrieval already prescribed, with a stable prompt prefix where the tool/runtime supports cache reuse. These are **cost and fidelity controls, not limits on the required conceptual depth**.
+
+At each gate keep a *minimal carryover state*: original source ranges actually examined, irreducible causal distinctions, best contrary cases, unresolved rival mechanisms, the new relations provisionally derived, and the next exact source question. This state is an **index to evidence**, not a replacement for evidence. When a source claim changes the theory, reopen the whole relevant original passage, not only the clipped excerpt. Preserve unexamined source spans explicitly as `UNINSPECTED` or `NOT YET ADJUDICATED`—never mark them accepted from titles, identifiers, keyword proximity, or coverage counts. Limit redundant tool calls and prose, **not the number of genuinely necessary distinctions**.
+
+Before Gate D, record ASTRA's independently derived candidate centers and their strongest contrary histories. Then open R17 and compare **against that frozen provisional snapshot**. This protects against model template-anchoring while permitting the later R17 evidence to overturn the snapshot. If the interface loses context, report the precise gap and reconstruct only from source-verified notes instead of silently assuming prior material was retained.
+
 ### Gate A — acquire the nonnegotiable project constitution before encountering R16/R17
 
 Read *targeted substantive portions*, not the entire HQ administrative bureaucracy as if ASTRA were acceding to HQ.
