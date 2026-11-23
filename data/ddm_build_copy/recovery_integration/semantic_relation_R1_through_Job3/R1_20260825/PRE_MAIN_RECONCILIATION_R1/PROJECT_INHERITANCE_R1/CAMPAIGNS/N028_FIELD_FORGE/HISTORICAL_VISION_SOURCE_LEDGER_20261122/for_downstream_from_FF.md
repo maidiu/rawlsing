@@ -36,6 +36,12 @@
 | **Actor-relative religious/ideological interpretive frameworks** (D010, E020, H068) | Observed distributions, source-local practices/institution facts and co-travel; preserve contradictions. | **SOROK V3** acquires lived meaning through carriers, actual experience and activity, not FF religion→trait rules. |
 | **Nadia becomes historically capable of *misunderstanding*** (H073) | Actor-independent statistical or institutional evidence can remain real despite actor interpretation. | **SOROK/CO** tracks learned false functional analogy, different causal accounts and later confrontation. FF should remain the world/source evidence comparator, not the narrator of Nadia's secret truth. |
 
+### Later November 22 theoretical currentness correction
+
+**[SORACLE-CO R13 HOME](https://github.com/maidiu/rawlsing/blob/0d610622c247ab62541165e246805c38f21315d2/SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md)** (H084) corrects a possible distortion in our Field Forge examples: the developing organism is not fundamentally a labor/sanction-response engine. Material work and institutional power are real social conditions alongside play, learning, affection, religion, ordinary consumption, mistakes and independent activities. A generic Field Forge should supply only actor-independent conditions relevant to the selected historical context; it must not install a universal human drama.
+
+**[NEIGHBOR-UX R9 encounter HOME](https://github.com/maidiu/rawlsing/blob/2502d4e4b2fe4fc025dc4b29eb715af7b9683d73/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md)** (H085) concerns how an actual visitor can attend, act, misrecognize, change or be changed by a distinct person; it is not FF's empirical measurement pipeline. **[Joined person/game R9](https://github.com/maidiu/rawlsing/blob/03f93ad04b499a69117480103d744bbba05d8ede/SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md)** (H086) preserves multi-Other co-presence versus actual psychological attribution. SOROK's **unmerged R27 sourcefree material-world functions** (H087, #1272) establish real limited labor/care/institutional action owners; they do not make that particular example necessary for every individual.
+
 ## II. Transfer contract: what passes the seam
 
 A valid output to the next owner is **claim-specific**, not a fixed Field Forge master-packet. Its minimum supported components, each only if genuinely applicable:
