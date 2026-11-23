@@ -74,6 +74,10 @@ Likewise, D010's nine mutually pressuring strata represent an early explanatory 
 
 [APP-GATE A](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) also prevents a subtly opposite false shortcut: **absence of a typed S14 norm↔conduct relation does not invalidate same-respondent empirical co-travel**. A true source-conditioned attitude configuration is worth preserving independently of the later semantic relation issuer; its presence does not itself issue that relation.
 
+### Another respondent field is not a respondent social network or an acquired identity
+
+H088–H090's source-corrected reverse contracts explicitly prohibit: `P(Y_joint|D2)` → observed coactor contact; `D2` minority response → automatically encountered revolutionary claim; actual contact → child heard/understood; child hearing → learned practice/identification; survey-position similarity → psychological homology. These false equalities are genuine alternatives challenged by the original source arguments, not evidence that the other-position empirical fields are unimportant. Preserve lawful OTHER-position conditional responses **as possible alternatives** while the world/actor owner separately particularizes and enacts any selected contact, access, activity and later acquisition.
+
 ## Context-specific rejected plans are NOT rejected human questions
 
 Bourdieu's questions about dominance, conversion, distinction and class reproduction; Gramsci/Hall's questions about hegemony/articulation; Lahire's plural dispositional action; Lamont's symbolic boundaries; working-class/caste/colonial material history; and feminist social reproduction remain intellectually live. What gets rejected is **false authorization or untested computational equivalence**, not the phenomena.
