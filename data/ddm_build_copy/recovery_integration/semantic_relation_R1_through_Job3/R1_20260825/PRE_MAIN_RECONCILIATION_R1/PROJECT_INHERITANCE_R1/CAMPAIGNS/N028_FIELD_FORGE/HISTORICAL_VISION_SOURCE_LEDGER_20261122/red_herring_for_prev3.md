@@ -66,6 +66,14 @@ The original N028 documents contained alternatives competing to solve real probl
 
 **CAN-006 binding hash is not CAN-001 applicability.** The original post-R2 [H065 seam finding](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_FF_R2_V558_TO_V3_SEAM_ADEQUACY_20261104_R1.md#L15-L17) specifically distinguishes a selected M4 item echoing generated-position refs from qualifying the item against that actor's position. Reject the inference that hash inclusion alone proves application; preserve a hostile two-position experiment and exact current-source owner adjudication. This is a `STATIC_CANDIDATE`, not an executed regression or an implicit command to rewrite M4.
 
+### August V5's historical stage names must not be silently restored
+
+The 2026-08-10 native Library V5 document (D010 §10) named V555 as life-course/household mediation and V556 as psychological vitality dynamics. Those words accurately preserve the **human problem** the original design sought to solve, but conflict with the subsequently instituted V555 actor-independent mediation-route and V556 governed higher-order structural semantics. The historical labels are not present code owners. Restarting V555/V556 as a Field Forge or PRE-V3 psyche generator would duplicate downstream SOROK and corrupt current PROGRAMMA. Preserve the *requirements for a historically constituted person* under the latest owners instead.
+
+Likewise, D010's nine mutually pressuring strata represent an early explanatory scaffold, not nine mandatory Field Forge data structures, and its Absolute Horizon is not a tenth opinion/capability axis. No survey item can lawfully classify a generated person's ultimate loyalty, internal moral worth, or spontaneous fidelity. Those are acquired/contested psychological-historical phenomena rather than FF-issued scores.
+
+[APP-GATE A](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) also prevents a subtly opposite false shortcut: **absence of a typed S14 norm↔conduct relation does not invalidate same-respondent empirical co-travel**. A true source-conditioned attitude configuration is worth preserving independently of the later semantic relation issuer; its presence does not itself issue that relation.
+
 ## Context-specific rejected plans are NOT rejected human questions
 
 Bourdieu's questions about dominance, conversion, distinction and class reproduction; Gramsci/Hall's questions about hegemony/articulation; Lahire's plural dispositional action; Lamont's symbolic boundaries; working-class/caste/colonial material history; and feminist social reproduction remain intellectually live. What gets rejected is **false authorization or untested computational equivalence**, not the phenomena.
