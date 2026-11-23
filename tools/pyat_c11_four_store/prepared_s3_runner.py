@@ -79,6 +79,32 @@ def _native_repeat(store: Store, source: Any, cfg: dict, config_path: Path,
     expected = baseline[0]["output"]
     expected_digest = digest(canonical(expected).encode())
 
+    live_stats = {
+        "live_calls": 0, "live_seconds": 0.0,
+        "authorize_calls": 0, "authorize_seconds": 0.0,
+    }
+    original_live = source.verified._live
+    original_authorize = source.verified._authorize
+
+    def counted_live():
+        started = time.perf_counter()
+        try:
+            return original_live()
+        finally:
+            live_stats["live_calls"] += 1
+            live_stats["live_seconds"] += time.perf_counter() - started
+
+    def counted_authorize(held):
+        started = time.perf_counter()
+        try:
+            return original_authorize(held)
+        finally:
+            live_stats["authorize_calls"] += 1
+            live_stats["authorize_seconds"] += time.perf_counter() - started
+
+    object.__setattr__(source.verified, "_live", counted_live)
+    object.__setattr__(source.verified, "_authorize", counted_authorize)
+
     def checked_execute(*, prepared_session=None):
         source.verified._live()
         val=execute_issued(store,source.verified,op,prepared_session=prepared_session)
@@ -97,6 +123,25 @@ def _native_repeat(store: Store, source: Any, cfg: dict, config_path: Path,
     st=time.perf_counter()
     session=open_native_session(store,source.verified,op.get("recorded_plan"))
     prepare_s=time.perf_counter()-st
+    profile_path = os.environ.get("PYAT_S3_PROFILE_OUT")
+    profile_live = None
+    profile_execution_s = None
+    if profile_path:
+        import cProfile
+        before_live = dict(live_stats)
+        profile = cProfile.Profile()
+        started = time.perf_counter()
+        profile.enable()
+        try:
+            checked_execute(prepared_session=session)
+        finally:
+            profile.disable()
+            profile_execution_s = time.perf_counter() - started
+            profile.dump_stats(profile_path)
+        profile_live = {
+            key: live_stats[key] - before_live[key]
+            for key in live_stats
+        }
     batches=[]
     for n in counts:
         durations=[]
@@ -119,6 +164,20 @@ def _native_repeat(store: Store, source: Any, cfg: dict, config_path: Path,
         "original_native_fact_state":expected["facts"][0]["state"],
         "native_producer":"existing rawlsing_next.pre553_empirical_query.execute_empirical_query",
         "s04_producer":"existing rawlsing_next.pre553_s04_observed_research.receive_s04_i03_research",
+        "live_guard": {
+            "live_calls": live_stats["live_calls"],
+            "live_seconds": round(live_stats["live_seconds"], 6),
+            "authorize_calls": live_stats["authorize_calls"],
+            "authorize_seconds": round(live_stats["authorize_seconds"], 6),
+        },
+        "profile_execution_s": (
+            round(profile_execution_s, 6) if profile_execution_s is not None else None
+        ),
+        "profile_execution_live_guard": (
+            {key: round(value, 6) for key, value in profile_live.items()}
+            if profile_live is not None else None
+        ),
+        "profile_path": profile_path,
     }
 
 
