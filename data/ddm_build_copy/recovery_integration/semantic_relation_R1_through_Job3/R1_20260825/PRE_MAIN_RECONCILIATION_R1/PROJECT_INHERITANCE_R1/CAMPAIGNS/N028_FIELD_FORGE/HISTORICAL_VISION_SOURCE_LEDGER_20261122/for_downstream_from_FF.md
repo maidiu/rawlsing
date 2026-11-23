@@ -62,6 +62,16 @@ The [original-passage proposition court](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME
 
 **Loss boundary:** if a concept's material/empirical information is actually necessary to answer an actor-independent consumer question, it remains FF's informational obligation even when the world **acts** on it downstream. The ability to compute what a rule *would* permit is not the same as an actor having encountered, understood or used that permission.
 
+### Post-R2 first-reader distinction: binding echo is not applicability
+
+The original [H065 source-static seam assessment](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_FF_R2_V558_TO_V3_SEAM_ADEQUACY_20261104_R1.md#L15-L25) and its [11 distinct downstream questions](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_FF_R2_SEAM_STARVATION_MATRIX_20261104_R1.jsonl#L1-L11) are a more exact test than simply transmitting a Field Forge object. A structural alternative must be *applicable* to the generated position, place and event; a selector that only includes the generated binding in its query hash has not thereby checked whether the relation is applicable.
+
+**Current exact code-static scope:** on protected M4, `make_context_query` hashes `generated_binding_refs`, and `resolve_v558` verifies the query hash, selects indexed exact items and permission closures. The visible selection path does not perform a per-item generated-binding applicability predicate. **This remains a static defect candidate, unexecuted, not an accepted new bug**: a competent current owner must check the actual downstream predicate path and run the adversarial CAN-001/006 two-position comparison before determining function failure.
+
+**Distinct jurisdiction:** FF supplies and qualifies the actor-independent source-conditioned alternatives and material facts. M4/M5 serve the selected right-to-use relation. CAN/ADP/SOROK supplies the actor-generated changed position and separate Phase A/Phase B continuation. After real activity the actor may interpret, remember or misinterpret the consequence; FF must not author that uptake. A successful hash echo can coexist with a missing applied consequence, and an existing code path should be repaired rather than replaced if the test exposes a real failure.
+
+**Full 11-question statuses are retained at [02/H066](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md).** Some have a local M4→M5 reader; most explicitly have no proved first SOROK consumer. That absence is a proof limit, not authorization for another publication or person engine.
+
 ## II. Transfer contract: what passes the seam
 
 A valid output to the next owner is **claim-specific**, not a fixed Field Forge master-packet. Its minimum supported components, each only if genuinely applicable:
