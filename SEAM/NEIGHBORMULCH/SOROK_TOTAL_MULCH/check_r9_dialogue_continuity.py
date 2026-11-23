@@ -270,9 +270,9 @@ def main():
     for phrase in (
         "historically constituted fictional Other",
         "actual human",
-        "SORACLE-CO",
+        "Constitutive Organism",
         "finite", "different", "permission", "misunderstanding",
-        "no mandatory moral",
+        "moralized score",
         "ordinary", "consequences", "historical",
     ):
         must(phrase.lower() in main.lower(),
