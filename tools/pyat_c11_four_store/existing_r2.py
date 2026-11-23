@@ -1,9 +1,10 @@
 """Explicit adapter to ORIGINAL MainMac R2 saved-source custody + Q006 Q103 issuance.
 
 This module does NOT mint a new source grant. It requires the exact original
-custody decision and optional Q006 operation document; re-reads the decision
-on every currentness check. The host/purpose must be user-pinned independently
-in bundle.json rather than learned from the file being checked.
+custody decision and optional Q006 operation document; every currentness check
+stats the decision and re-reads/hashes/parses it whenever its identity or
+metadata changes. The host/purpose must be user-pinned independently in
+bundle.json rather than learned from the file being checked.
 
 This is a read-only TEST-ONLY bounded caller under existing ANVIL R2 custody.
 """
@@ -11,6 +12,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -24,6 +26,15 @@ def _load(path: Path):
         raise StoreFailure("held R2 source/operation decision unavailable or malformed") from exc
 
 
+def _decision_signature(stat: os.stat_result) -> tuple[int, ...]:
+    return (
+        stat.st_dev, stat.st_ino, stat.st_size, stat.st_mode,
+        stat.st_uid, stat.st_gid, stat.st_nlink,
+        stat.st_mtime_ns, stat.st_ctime_ns,
+        getattr(stat, "st_flags", 0),
+    )
+
+
 class R2Custody:
     def __init__(self, decision_file: Path, source_id: str, *, required_host: str,
                  required_purpose: str):
@@ -32,7 +43,11 @@ class R2Custody:
         self.source_id=source_id
         self.host=required_host
         self.purpose=required_purpose
-        initial=_load(self.path)
+        self._decision_signature=None
+        self._decision_sha256=None
+        self._decision_document=None
+        self._refresh_decision()
+        initial=self._decision_document
         if not required_host or not required_purpose:
             raise StoreFailure("independently pinned host and purpose required")
         if initial.get("host")!=required_host or initial.get("purpose")!=required_purpose:
@@ -49,19 +64,43 @@ class R2Custody:
         self.estate_path=Path(self.pins.exact_release_path).resolve()
         self.estate_root=self.estate_path.parents[1]
         self._decision_ref=canonical(wave["decision_ref"])
-        self._original_decision_sha256=hashlib.sha256(self.path.read_bytes()).hexdigest()
+        self._original_decision_sha256=self._decision_sha256
         if not self.check_current(self.pins):
             raise StoreFailure("existing R2 custody/currentness decision refused")
+
+    def _refresh_decision(self) -> None:
+        try:
+            before=self.path.stat()
+            signature=_decision_signature(before)
+            data=self.path.read_bytes()
+            after=self.path.stat()
+            if _decision_signature(after)!=signature:
+                raise StoreFailure("R2 decision changed during currentness read")
+            document=json.loads(data.decode("utf-8"))
+        except StoreFailure:
+            raise
+        except (OSError,ValueError,UnicodeError) as exc:
+            raise StoreFailure(
+                "held R2 source/operation decision unavailable or malformed"
+            ) from exc
+        self._decision_signature=signature
+        self._decision_sha256=hashlib.sha256(data).hexdigest()
+        self._decision_document=document
 
     def check_current(self, held) -> bool:
         try:
             # This single benchmark run was admitted against an exact R2
             # document. A later edit anywhere in that decision (including a
             # revocation outside decision_ref) requires fresh admission; do
-            # not silently keep a stale positive snapshot alive.
-            if hashlib.sha256(self.path.read_bytes()).hexdigest() != self._original_decision_sha256:
+            # not silently keep a stale positive snapshot alive. Every call
+            # stats the file; only an unchanged identity/metadata signature
+            # reuses the prior hash and parsed decision.
+            signature=_decision_signature(self.path.stat())
+            if signature != self._decision_signature:
+                self._refresh_decision()
+            if self._decision_sha256 != self._original_decision_sha256:
                 return False
-            current=_load(self.path)
+            current=self._decision_document
             w=current["waves"][self.source_id]
             return (
                 current.get("host")==self.host and
@@ -73,7 +112,7 @@ class R2Custody:
                 held.exact_release_path==w["custody_estate_path"] and
                 dict(held.roots)==w["saved_i02"]
             )
-        except (KeyError,TypeError,ValueError,OSError):
+        except (KeyError,TypeError,ValueError,OSError,StoreFailure):
             return False
 
 

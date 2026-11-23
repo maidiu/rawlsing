@@ -6,6 +6,7 @@ constitute an actual recorded source authorization.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -66,6 +67,24 @@ class ExistingR2Tests(unittest.TestCase):
             # incorrectly allowing an out-of-band permission-state change.
             value["waves"]["SRC04"]["status"]="REVOKED"
             path.write_text(json.dumps(value))
+            self.assertFalse(custody.check_current(custody.pins))
+
+    def test_cached_currentness_rechecks_same_size_rewrite_with_restored_mtime(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            path,value=self.fixture(root)
+            custody=R2Custody(
+                path,"SRC04",required_host="MainMac",
+                required_purpose="P0_TWO_SAVED_WAVES_ANALYTICAL_DOWNSTREAM_R2",
+            )
+            self.assertTrue(custody.check_current(custody.pins))
+            before=path.stat()
+            old=value["waves"]["SRC04"]["decision_ref"]
+            value["waves"]["SRC04"]["decision_ref"]="x"*len(old)
+            encoded=json.dumps(value)
+            self.assertEqual(len(encoded),before.st_size)
+            path.write_text(encoded)
+            os.utime(path,ns=(before.st_atime_ns,before.st_mtime_ns))
             self.assertFalse(custody.check_current(custody.pins))
 
     def test_wrong_host_refused(self):
