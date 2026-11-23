@@ -49,6 +49,16 @@ The title of this document is **not** a verdict that truthful measurement exposu
 
 **Consumer-ablation rule:** preserve an optional method as *unselected* until one named information question cannot be served by the simplest lawful existing upstream function. Demonstrate what the method adds (new valid alternatives, explicit uncertainty, stronger source-graded evidence, or a necessary changed world option), its exact source and falsifier, and its alternative if a cheaper direct query suffices. No new core artifact is entailed by being theoretically attractive.
 
+### Historical FFX computation is real; the MCA speculation is not its algorithm
+
+[H052–H055 original FFX sources](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) contain exact configuration, categorical Hamming/MDS local geometry and weighted direct conditional probability with a **Kish-Wilson approximate interval** under frozen source risk and support. They include a real three-arm integrated query/scoring/ablation producer. These actual functions cannot be classified as simply "good ideas that do not fit": they are **implemented historical capital** with source-static code identity, worth adapting *only if a named present consumer genuinely requires it*.
+
+The R1 N028 ambition for **MCA/GDA with governed active/supplementary modality and source population estimand** is different. Core B uses exact-state Hamming or weighted Hamming, followed by classical MDS; it does **not** implement MCA, nor an independent claim of population social structure. The original MCA/GDA design remains conditional research, not a rediscovered executable.
+
+Likewise, Core C's fitted weighted destination and Kish/Wilson range are distinct from contemporary #1247 FF01/S04 raw complete-case conditional counts, and both are distinct from a scientifically authorized complex survey design variance. Never retire the historical utility of C or promote its confidence interval to source-approved population science. When a consumer requests a weighted estimate, examine existing method/estimand source permissions before porting historical code or writing a new estimator.
+
+[The 14 function-grain FFX accounts](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md) state the executable calculations and their hard limits; [the 20 historic H052–H055 propositions](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) preserve which parts are central evidence, conditional method or rejected semantic promotion.
+
 ## II. One example of preservation without premature construction
 
 Two actual respondent-coherent three-way contingency tables may have the same one-way/two-way margins yet yield opposite values for `P(Y|X,Z)`. The present S04/FF01 direct-joint machinery is the first correct baseline. A future geometric map could discover a surprising local neighborhood that organizes these cells. It earns existence in production only if a consumer cannot recover its necessary answer through lawful query or permitted index—**not because the geometry is elegant**.
