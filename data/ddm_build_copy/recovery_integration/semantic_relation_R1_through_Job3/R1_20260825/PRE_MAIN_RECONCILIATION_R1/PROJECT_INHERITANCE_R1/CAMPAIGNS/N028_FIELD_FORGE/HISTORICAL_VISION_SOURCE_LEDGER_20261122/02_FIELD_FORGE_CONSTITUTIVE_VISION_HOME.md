@@ -1169,7 +1169,7 @@ The May 11 v2 chat is a **dated recovered-context lead**, not a retrieved comple
 
 | Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
 | --- | --- | --- | --- | --- |
-| **D091.01** · May 11 v2 lead | Earlier v1 V540–V558 had respondent source→DDM→profile/strata/household/graft trajectory | Treat as intellectual precursor, not a current stage blueprint; original v1/v2 pack still unrecovered | `HISTORY` | Contemporary FF invents its own provenance of emergence |
+| **D091.01** · May 11 v2 lead | Earlier v1 V540–V558 had respondent source→DDM→profile/strata/household/graft trajectory | Treat as intellectual precursor, not current stage blueprint; actual v2 contents recovered in D098, but the May 11 chat and original pack composition date remain unverified | `HISTORY` | Contemporary FF invents its own provenance of emergence |
 | **D091.02** · May 11 v2 lead | V549b explicitly separates co-travelling non-demographic responses from demographic position predictors | Require actual respondent coadministered answer configurations and conditional minority branches, separate from position covariates | `FF-CORE` | Position correlation alone masquerades a coherent social repertoire |
 
 ### D092 — RAWLSING_V550_CODEX_DIRECTIVE_PACK_v3.md (native Library exact title; §§1–2, 11, 14–16; original date unresolved) (8 distinct immediate-formation arguments)
