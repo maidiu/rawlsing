@@ -159,7 +159,7 @@ def open_native_session(store: Store, verified: Any, recorded_plan: Any = None):
     return reader
 
 
-def execute_issued(store: Store, verified: Any, operation: dict):
+def execute_issued(store: Store, verified: Any, operation: dict, *, prepared_session=None):
     """The only numeric producer is existing rawlsing_next.execute_empirical_query."""
     from rawlsing_next.pre553_empirical_query import execute_empirical_query
     query = operation["query"]
@@ -169,7 +169,23 @@ def execute_issued(store: Store, verified: Any, operation: dict):
     name = operation.get("name", query.ref.key)
     if not name:
         raise StoreFailure("issued operation lacks exact identifier")
-    reader = open_native_session(store, verified, recorded_plan)
+    if prepared_session is None:
+        reader = open_native_session(store, verified, recorded_plan)
+    else:
+        # Additive, opt-in reuse of the SAME exact-type native test adapter.
+        # Do not admit a foreign source, store, query/routing plan, or a
+        # writable SQLite connection as a supposed prepared native session.
+        from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+        reader = prepared_session
+        if (type(reader) is not DirectEstateI03Session
+                or getattr(reader, "estate", None) is not verified
+                or getattr(reader, "_db", None) is not store.db
+                or getattr(reader, "_recorded_plan", None) is not recorded_plan
+                or getattr(reader, "_test_only_four_store", None) != store.name):
+            raise StoreFailure("prepared native session source/store/plan identity mismatch")
+        if store.db.execute("PRAGMA query_only").fetchone()[0] != 1:
+            raise StoreFailure("prepared native session requires read-only SQLite")
+        verified._live()
     # Existing I03 checks query/predicate/source/issuer and builds original
     # EmpiricalFact; adapter changes only how the saved objects are retrieved.
     verified._live()

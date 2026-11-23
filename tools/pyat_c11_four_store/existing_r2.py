@@ -1,9 +1,11 @@
 """Explicit adapter to ORIGINAL MainMac R2 saved-source custody + Q006 Q103 issuance.
 
 This module does NOT mint a new source grant. It requires the exact original
-custody decision and optional Q006 operation document; re-reads the decision
-on every currentness check. The host/purpose must be user-pinned independently
-in bundle.json rather than learned from the file being checked.
+custody decision and optional Q006 operation document; every currentness check
+reads and hashes the decision bytes and parses them only after the hash still
+matches admission. No metadata-only shortcut is used. The host/purpose must be
+user-pinned independently in bundle.json rather than learned from the file
+being checked.
 
 This is a read-only TEST-ONLY bounded caller under existing ANVIL R2 custody.
 """
@@ -11,6 +13,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -28,11 +31,11 @@ class R2Custody:
     def __init__(self, decision_file: Path, source_id: str, *, required_host: str,
                  required_purpose: str):
         from rawlsing_next.pre553_anvil_stream_carrier_qualification import HeldStreamPins
-        self.path=Path(decision_file).resolve()
+        self.path=Path(os.path.abspath(decision_file))
         self.source_id=source_id
         self.host=required_host
         self.purpose=required_purpose
-        initial=_load(self.path)
+        initial_sha256, initial=self._read_decision()
         if not required_host or not required_purpose:
             raise StoreFailure("independently pinned host and purpose required")
         if initial.get("host")!=required_host or initial.get("purpose")!=required_purpose:
@@ -49,19 +52,31 @@ class R2Custody:
         self.estate_path=Path(self.pins.exact_release_path).resolve()
         self.estate_root=self.estate_path.parents[1]
         self._decision_ref=canonical(wave["decision_ref"])
-        self._original_decision_sha256=hashlib.sha256(self.path.read_bytes()).hexdigest()
+        self._original_decision_sha256=initial_sha256
         if not self.check_current(self.pins):
             raise StoreFailure("existing R2 custody/currentness decision refused")
+
+    def _read_decision(self) -> tuple[str, Any]:
+        try:
+            data=self.path.read_bytes()
+            document=json.loads(data.decode("utf-8"))
+        except (OSError,ValueError,UnicodeError) as exc:
+            raise StoreFailure(
+                "held R2 source/operation decision unavailable or malformed"
+            ) from exc
+        return hashlib.sha256(data).hexdigest(), document
 
     def check_current(self, held) -> bool:
         try:
             # This single benchmark run was admitted against an exact R2
             # document. A later edit anywhere in that decision (including a
-            # revocation outside decision_ref) requires fresh admission; do
-            # not silently keep a stale positive snapshot alive.
-            if hashlib.sha256(self.path.read_bytes()).hexdigest() != self._original_decision_sha256:
+            # revocation outside decision_ref) requires fresh admission.
+            # Authenticate the bytes on every call; never trust a metadata
+            # signature, cached hash or previously pinned symlink target.
+            data=self.path.read_bytes()
+            if hashlib.sha256(data).hexdigest() != self._original_decision_sha256:
                 return False
-            current=_load(self.path)
+            current=json.loads(data.decode("utf-8"))
             w=current["waves"][self.source_id]
             return (
                 current.get("host")==self.host and
@@ -73,7 +88,7 @@ class R2Custody:
                 held.exact_release_path==w["custody_estate_path"] and
                 dict(held.roots)==w["saved_i02"]
             )
-        except (KeyError,TypeError,ValueError,OSError):
+        except (KeyError,TypeError,ValueError,OSError,UnicodeError):
             return False
 
 
