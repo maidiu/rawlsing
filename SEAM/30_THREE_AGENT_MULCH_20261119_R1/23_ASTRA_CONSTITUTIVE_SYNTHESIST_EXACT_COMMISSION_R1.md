@@ -1,7 +1,7 @@
 # ASTRA — CONSTITUTIVE SYNTHESIST
 ## Exact intellectual commission · SORACLE-CO / DCO · November 23, 2026
 
-**RUN ON THE USER-SELECTED ASTRA CONFIGURATION. This is a complete research commission, not a request for an accession report, independent reviewer verdict, repository-wide audit, code work, or a new HQ.** The companion [24 SOURCE PASSPORT](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md) is the required ordered grokking data, with exact repository refs and evidence grades. Read that passport **in stages**, not as an invitation to ingest every historical and engineering document before thinking. The latest verified source cut is isolated draft PR #1161 at \`af62a48716b07aa4642dc4551185e7a2250ac672\` before these two handoff documents. Verify present HEAD once on entry and retain exact older source blobs if HEAD moves.
+**RUN ON THE USER-SELECTED ASTRA CONFIGURATION. This is a complete research commission, not a request for an accession report, independent reviewer verdict, repository-wide audit, code work, or a new HQ.** The companion [24 SOURCE PASSPORT](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md) is the required ordered grokking data, with exact repository refs and evidence grades. Read that passport **in stages**, not as an invitation to ingest every historical and engineering document before thinking. The latest verified source cut is isolated draft PR #1161 at `af62a48716b07aa4642dc4551185e7a2250ac672` before these two handoff documents. Verify present HEAD once on entry and retain exact older source blobs if HEAD moves.
 
 ## PART 0 — THE SINGLE TASK, BEFORE THE SOURCES
 
@@ -17,7 +17,7 @@ We are not asking you to explain how a selected list of themes “interact.” W
 
 ## PART 1 — YOUR FIRST GROKKING EXPOSURE: PURPOSE AND BINDING CONSTRAINTS
 
-**Before reading the current R16 or R17 manuscript**, read **Gate A** of [24 SOURCE PASSPORT](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md): user-defined end-product; exact controlling PRE-MAIN and SOROK constitutional *substantive* passages; scientific biocultural criterion \`SEAM/18\`; variable psychological ontology \`SEAM/21\`. Do not recite HQ protocol, apply for appointment, infer adoption from a draft, or process the engineering estate.
+**Before reading the current R16 or R17 manuscript**, read **Gate A** of [24 SOURCE PASSPORT](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md): user-defined end-product; exact controlling PRE-MAIN and SOROK constitutional *substantive* passages; scientific biocultural criterion `SEAM/18`; variable psychological ontology `SEAM/21`. Do not recite HQ protocol, apply for appointment, infer adoption from a draft, or process the engineering estate.
 
 What you are accountable to:
 
@@ -34,9 +34,9 @@ What you are accountable to:
 
 ## PART 2 — RECOVER THE DETERMINATIONS BEFORE THINKING IN CHAPTERS
 
-Read **Gate B** of the passport: \`03\` genesis/psychodynamics, \`05\` relation-history and unconscious operation, \`06\` productive event-first psychodynamics, \`11\` adversarial difference court, \`01\` hostile early omissions. When needed, consult actual primary works of Leontiev, Sève, Lahire, Dreier, Holzkamp, Luria, Archer and other explicitly relevant interlocutors. Sources may disagree; identify the disputed causal claim, not the disciplinary label. Do not mistake an earlier SOROK authority correction for a timeless ban on conceptual deepening, and do not claim that older documentation proves current code completeness.
+Read **Gate B** of the passport: `03` genesis/psychodynamics, `05` relation-history and unconscious operation, `06` productive event-first psychodynamics, `11` adversarial difference court, `01` hostile early omissions. When needed, consult actual primary works of Leontiev, Sève, Lahire, Dreier, Holzkamp, Luria, Archer and other explicitly relevant interlocutors. Sources may disagree; identify the disputed causal claim, not the disciplinary label. Do not mistake an earlier SOROK authority correction for a timeless ban on conceptual deepening, and do not claim that older documentation proves current code completeness.
 
-Then read **Gate C**: the full R16 positive HOME (exact blob \`5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3\`) using the exact \`15\` 681-unit source locator and \`13\` R15→R16 ancestry as references. **Ignore R16's proposed chapter architecture when deciding causal priority.** Extract the claims at their proper grain. One paragraph can yield several distinct determinations; ten paragraphs can contain one determination and nine emphatic repetitions. “520 substantive paragraphs” is a custody count, not the number of psychological atoms.
+Then read **Gate C**: the full R16 positive HOME (exact blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3`) using the exact `15` 681-unit source locator and `13` R15→R16 ancestry as references. **Ignore R16's proposed chapter architecture when deciding causal priority.** Extract the claims at their proper grain. One paragraph can yield several distinct determinations; ten paragraphs can contain one determination and nine emphatic repetitions. “520 substantive paragraphs” is a custody count, not the number of psychological atoms.
 
 For each substantive determination, record a **revisable causal card** with these fields, in analytical prose or a compact machine-readable ledger:
 
@@ -108,7 +108,7 @@ Only now group those verified/defensible relational discoveries by **explanatory
 
 ## PART 6 — CONFRONT PRIOR R17 ONLY AFTER YOUR PROVISIONAL THEORY HAS BEEN INDEPENDENTLY DEVELOPED
 
-**Gate D** of the passport now opens. Read the current R17 candidate blob \`6eaff21f6297f104be31ae31f10e7970bec135cc\` **as a strong competing synthesis**, not your task specification. Then read its \`17\` and \`20\` author-side adversarial courts, \`18\` incomplete source-disposition queue, \`21\` independent receiving mandate and \`22\` specialist review response.
+**Gate D** of the passport now opens. Read the current R17 candidate blob `6eaff21f6297f104be31ae31f10e7970bec135cc` **as a strong competing synthesis**, not your task specification. Then read its `17` and `20` author-side adversarial courts, `18` incomplete source-disposition queue, `21` independent receiving mandate and `22` specialist review response.
 
 This stage must be two-sided:
 
@@ -145,7 +145,7 @@ The return must contain:
 
 **G. A precise closing judgment.** What has been newly understood? What old category is no longer adequate? What remains irreducibly distinct or unsettled? What original source claim did you find that the prior theory really flattened? What would a hostile, independent reviewer need to defeat your result? State which source spans were *actually* inspected. Do not imply the review is complete because the resulting prose sounds comprehensive.
 
-**One positive theory HOME, externally auditable derivation and adjacent implementation questions.** Do not create rival canonical HOMEs, unrequested governance layers or a series of cosmetic R18/R19 drafts. If permitted to save documents, work in an isolated, explicitly noncanonical review branch or handoff files; do not replace the current \`00\` HOME or change protected PROGRAMMA without separate authorization and receiving.
+**One positive theory HOME, externally auditable derivation and adjacent implementation questions.** Do not create rival canonical HOMEs, unrequested governance layers or a series of cosmetic R18/R19 drafts. If permitted to save documents, work in an isolated, explicitly noncanonical review branch or handoff files; do not replace the current `00` HOME or change protected PROGRAMMA without separate authorization and receiving.
 
 ## PART 8 — WHAT A SUCCESSFUL ASTRA RETURN MUST NOT BE
 
