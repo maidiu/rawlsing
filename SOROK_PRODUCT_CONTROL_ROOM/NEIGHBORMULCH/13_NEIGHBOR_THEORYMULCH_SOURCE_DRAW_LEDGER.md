@@ -1480,3 +1480,23 @@ The R31 repairs do **not** establish that all these tensions are reducible to on
 **Open independent-source/consumer obligations explicitly inherited (not invented as further MULCH defects):** `SES_MATCH_DOMAIN_HOLD`, `CAUSAL_COMPLETION_COUNTERFACTUAL_HOLD` (including cross-branch compatibility), `PLAYER_PRIVATE_INTENTION_AUTHORITY_HOLD`, `ELASTIC_TIME_IMPOSSIBILITY_HOLD`, `OPERATOR_INCENTIVE_FIREWALL_HOLD`, `EXPERIENTIAL_WORTH_NOT_ESTABLISHED`. All remain source-grade and unproved; the external review's COMMENT does not override them.
 
 **Disposition:** `SECOND_ADVERSARIAL_REVIEW_THREE_SCOPED_REPAIRS_COMMITTED__CANDIDATE_NONCANONICAL__PROMOTION_AND_INDEPENDENT_FULL_RECEIVING_HELD`.
+
+## N-T1 / Round Thirty-Four — R33 bounded delta review received; no theory-reopening mandate
+
+**Exact review:** [PR #1277 reviewer submission 6026888999](https://github.com/maidiu/rawlsing/pull/1277#pullrequestreview-6026888999), GitHub review state `COMMENTED`, authored under linked account `maidiu`. Reviewer explicitly anchored to candidate HEAD `04d3f80cd7c58b045ee41d5a372c10200eb632f5`, blob `e7e6109ce32a0207e3dae0ff941a05b2719b7b0d`, **149,302 characters, 13 movements**. Compared to reviewed predecessor `b70230c8b057af30004b4da33f15b2af5cc30996`: *three additive passages only* in current `15`, ledger `13` append and start-here `00` update; no active canonical `12`, source foundation, or outside bank modification.
+
+**Three source-checked semantic dispositions, not a promotion:**
+
+| Bounded review court | Review result | Exact candidate destination | Remaining limit |
+|---|---|---|---|
+| **A. Scope of common precontact Nadia** | **PASS** | `15` movement **III**; original provisional SOROK 61 §§2, 7–9, 11 | Shared-root materialization/counterfactual admissibility and implementation not verified; conflicting branch histories cannot silently become a fully identical resolved biography |
+| **B. Real humans' social parallax** | **PASS** | `15` movement **VIII**, instrument versus possibly mistaken childhood music testimony | External human discussion is not a merged fictional postcontact state, automatic private-data exchange or actor receipt |
+| **C. Control-plane/actor epistemic membrane** | **PASS** | `15` movement **X**; original provisional SOROK 58 §§1–2, 9, 12–13, 16–19 | Privacy, deletion, notification and legal/technical governance outside HOME; genuine diegetic acts retain independent causal effects |
+
+**Exact verified CI for reviewed manuscript HEAD:** push workflow [45232797396](https://github.com/maidiu/rawlsing/actions/runs/45232797396) `success`, PR workflow [45232809629](https://github.com/maidiu/rawlsing/actions/runs/45232809629) `success`. Their checks apply to the current *unpromoted* `23`-movement canonical foundation and bounded source/consumer boundaries, **not** a replacement `13`-movement canonical checker or universal semantic proof.
+
+**Reviewer ceiling:** The review states `R33_DELTA_SEMANTIC_PASS__PROMOTION_HOLD` and disclaims independent G5, protected PROGRAMMA receiving, exhaustive 197/104/757 semantic source accreditation and runtime science. It is an accepted **three-correction scope**, not approval to overwrite the canonical single HOME or merge. The earlier second review's explicit retractions of two overstated loss claims remain controlling as analytic corrections; do not revive them as outstanding defects. No new positive theory editing is justified by these three bounded findings.
+
+**Promotion-custody gate preserved:** Separately authorized one-HOME receiving must preserve the old full 23-movement canonical at its frozen exact commit/blob and the full **238,941-character** in-file historical foundation; remap current 197/104/757 source locations and preserve their original identities, wording and dispositions; adapt the preexisting `SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/check_r9_dialogue_continuity.py` from 23 ordered Arabic movements to the authorized 13 Roman movements **without weakening no-drop checks**; execute exact new-HEAD documentary/first-consumer verification; secure genuine independent semantic and owner receiving; and reconcile paired current progress under the governing project discipline. Existing source/science/design holds regarding SES-match domain, counterfactual causal completion, real human intention, impossible temporal receding, operator incentives and experiential worth remain separately tracked. **None is a warrant for more speculative MULCH rounds.**
+
+**Disposition:** `R33_DELTA_SEMANTIC_PASS__PROMOTION_HOLD__REVIEW_RECEIVED_IN_EXISTING_LEDGER`. No construction, no alternate HOME, no promotion and no merge performed in this receiving-record update.
