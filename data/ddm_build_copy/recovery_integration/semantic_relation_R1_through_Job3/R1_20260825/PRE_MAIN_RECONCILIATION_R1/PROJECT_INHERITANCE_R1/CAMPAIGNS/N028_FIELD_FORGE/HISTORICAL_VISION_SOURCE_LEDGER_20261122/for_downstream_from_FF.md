@@ -42,6 +42,26 @@
 
 **[NEIGHBOR-UX R9 encounter HOME](https://github.com/maidiu/rawlsing/blob/2502d4e4b2fe4fc025dc4b29eb715af7b9683d73/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md)** (H085) concerns how an actual visitor can attend, act, misrecognize, change or be changed by a distinct person; it is not FF's empirical measurement pipeline. **[Joined person/game R9](https://github.com/maidiu/rawlsing/blob/03f93ad04b499a69117480103d744bbba05d8ede/SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/03_DIALECTICAL_CONSTITUTIVE_PRODUCT_SYNTHESIS.md)** (H086) preserves multi-Other co-presence versus actual psychological attribution. SOROK's **unmerged R27 sourcefree material-world functions** (H087, #1272) establish real limited labor/care/institutional action owners; they do not make that particular example necessary for every individual.
 
+## I-A. Distinct historically recovered downstream propositions — transfer the *operation*, not its source
+
+The [original-passage proposition court](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md#xv-a-direct-original-passage-proposition-conservation-court--source-static-not-full-archive-closure) splits the original N028 claims instead of moving whole documents wholesale. Each transfer below preserves the upstream information that FF must still serve.
+
+| Origin proposition | Field Forge still owes | Competent downstream operation | What would falsify an improper ownership transfer |
+| --- | --- | --- | --- |
+| E020.09, E024.06, E028.11 | Source-supported current position/trajectory comparisons and uncertainty, where surveyed | SOROK generates actual past, acquired disposition, cleft habitus and contextual activation | A 2010 survey cross-section becomes a character's measured childhood |
+| E020.13–14, E025.08 | Adult source coverage limits, possible parent/peer/institution context without child measurement | SOROK/NEIGHBOR constructs independent youth and peer cultures, encounters and child histories | Adult parent survey answers predetermine Nadia's school friendship or feelings |
+| E021.01, E026.11, A046.10 | An actor-independent complete possibility/relation/negative offer | SOROK commits first fictional individual choice and action; experiences have distinct actual clocks | PYAT's observed co-travel becomes actual psyche or first draw authority |
+| E020.08, E031.09, E032.13–14 | Separately admitted actual resource/value/group relation evidence or explicit missing issuer | N6/M4/M5/N9 validates objective position, rights and world as-of under its own owner; SOROK enacts sanctions | I04 receives a fake EmpiricalFact, or value publication alone counts as enacted work |
+| E022.03, E029.08, E030.09 | Source-local true joint, per-branch direct/model/walkback grade and honest unknown | N10E offer/refine/validate, later SOROK chooses coherent nonmodal adult observable configuration | Pairwise marginals are independently sampled or real respondent row disclosed |
+| E031.07–08, E032.11–12 | Source-specific weight/measurement/estimand and currentness provenance | Source/weight issuer and N9 historical time/world owners bind a legitimate comparison | Calibration is called population social geometry or old wave a longitudinal person |
+| E032.15, E023.06, A046.07 | Neutral survey reach and unobserved external political power remain separable | A competent structural issuer may later admit group-control/hegemony at exact scope; not automatically N9 | Source survey prevalence becomes an objective ruling class |
+| E030.07–08, E028.04, A046.07 | Direct configuration comparison and conditional optional correspondence | The competent downstream explanation/structural issuer may interpret articulation, field or homology only under positive warrant | Named noun or mathematical graph itself grants sociology |
+| W036.02, A046.08–09 | Exact actor-independent source/negative/dependency graph | V553 time, V554 basis, V555 mediation, V556 higher-order, V557/V558 publication, N9 use under existing owners | A transferred ref is treated as a fully applied material constraint |
+
+**Owner unknown is not a transfer completed.** E032's proposed external survey-identity-to-political-group crosswalk is not shown to have a current independently issuing owner. The competent authority may be unlocated; an FF narrative, a consumer's code or a pseudo-survey fact cannot fill that gap. Similarly, the precise employer/care rule → selected N9 world → actual SOROK action seam has not been executed by this HOME author. These are **HELD** applicability/issuer facts, not permissions to build a new FF-owned source, labor runtime or psychology engine.
+
+**Loss boundary:** if a concept's material/empirical information is actually necessary to answer an actor-independent consumer question, it remains FF's informational obligation even when the world **acts** on it downstream. The ability to compute what a rule *would* permit is not the same as an actor having encountered, understood or used that permission.
+
 ## II. Transfer contract: what passes the seam
 
 A valid output to the next owner is **claim-specific**, not a fixed Field Forge master-packet. Its minimum supported components, each only if genuinely applicable:
