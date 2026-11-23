@@ -1,0 +1,29 @@
+# ZAK-02S R6 — Historical V0 certified schema is not preserved by the modern alias alone
+
+**Read-only reconnaissance / documentary GitHub publication only.** Source cuts: original `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; protected `6a5c12f04323d74001f9632063ec907f4fc4468e`; inherited PR head `708e5982a559259e48e095966cffabc45a53f8b3`. No native historical/current implementation execution, CI, agents, engineering or scientific authority promotion.
+
+## R6-A — Filename existence refutes absence, NOT semantic schema mismatch
+
+R5 correctly discovered the selected compiler writes `v551j_certified_packet_index.parquet` as compatibility alias. But source inspection shows it simply passes the v2.2.3 `outputs["certified"]` frame to `write_frame_artifact` ([compiler](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/compile_v551j_joint_evidence_packets.py#L1538), [writer](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v551j_io.py#L65)). The [old V0 certified schema](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v551j_schema.py#L548) requires `certification_basis_json`, `certification_gate_results_json`, `status_resolution_provenance_json`, `certified_at`, `certification_schema_version`, `directionality_limited`; the [new v2.2.3 candidate/certified schema](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v551j_schema.py#L736) does not declare these fields. Positive file-path preservation and negative old-field conservation are **different** findings. EV0134–0137, EDGE0055, GAP0040. No actual old science consumer result.
+
+## R6-B — Real V553 old-ID reader, conditional lost shape
+
+[`ddm_v553_harmonization._load_wave_bundle`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v553_harmonization.py#L386) loads provenance-linked V551J Parquet and extracts `relation_axis_ids_json`, `target_entity_ids_json`, `driver_facet_ids_json` **from certified only**. These three old plural fields are absent from v2.2.3 certified schema. [`_collect_unique_ids`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v553_harmonization.py#L246) skips missing fields and returns empty lists, which feed shared/pairwise wave IDs and report coverage. Therefore a run linking the v2 alias to this legacy V553 reader could yield **empty semantic-ID metadata despite other modern component records retaining meaning**. This is conditional source semantics, not authenticated production harm. Moreover overall V553 readiness is independently gated by wave/overlay structure, not these IDs alone (EV0145). EV0135/0138/0139/0145; EDGE0058, GAP0041.
+
+The same inspected legacy V553 module loads `v551j_reviewable_df` but does not reference that DataFrame afterward; evidence-backed review-only science is **not demonstrated consumed on this path**. This is not a global absence claim (EV0140, EDGE0056).
+
+## R6-C — A thin proxy is not scientific first consumer
+
+The callable [`compile_v552j_thin_layer.py`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/compile_v552j_thin_layer.py#L1) invokes `build_thin_layer`. Its [input inspector](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v5_thin_end_to_end.py#L863) checks old readiness JSON presence/status; [`_payload_v552j`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v5_thin_end_to_end.py#L1146) generates static bounded envelope and does not load certified/review Parquet rows. This caller is real but not evidence of full joint-packet scientific consumption. Canonical V552J follows a different source path. EV0141/0142, EDGE0059, GAP0043.
+
+## R6-D — Legacy semantic-diff expects yet another name
+
+[`ddm_v551j_semantic_diff`](https://github.com/maidiu/rawlsing/blob/6a5c12f04323d74001f9632063ec907f4fc4468e/data/ddm_build_copy/ddm_v551j_semantic_diff.py#L26) expects `packets/v551j_packet_review_surface`; selected compiler publishes `packets/v551j_review_surface` with only old candidate/certified aliases. The diff loader resolves exact base name with suffix fallback and maps absent input to empty frames. Broad indexed exact `v551j_packet_review_surface.parquet` search returned zero source matches. That does **not** prove no historical run ever produced it or that the diff executed unsuccessfully. EV0143/0144, EDGE0057, GAP0042.
+
+## R6-E — Important shared-ID ledger repair
+
+R5 evidence rows were accidentally assigned `ZAK02:EV:124`–`ZAK02:EV:133` although references use zero-padded `ZAK02:EV:0124`–`ZAK02:EV:0133`. This R6 publication corrects those **ten record IDs** without changing their scientific claims, preserving all original archive evidence and prior identities. The source links now resolve to the prescribed shared R1 identifiers. No new provisional T is minted solely for this consumer investigation.
+
+## Status and future utility
+
+19 provisional T, 59 mechanism edges, 145 evidence records, 54 operation traces, 38 reverse consumers, 60 bounded searches, 43 unresolved cases. 228 T×modern-territory cells unchanged: 45 found, 15 unresolved, 168 not inspected. Future read-only work: locate selected V552J provenance links to legacy V553 and current original issuer, compare old V0 certification semantics against v2 audit/component carriers, and find an actual semantic reader of the old review sidecar. Source-level S1; no independent receiving, original35, or protected integration.
