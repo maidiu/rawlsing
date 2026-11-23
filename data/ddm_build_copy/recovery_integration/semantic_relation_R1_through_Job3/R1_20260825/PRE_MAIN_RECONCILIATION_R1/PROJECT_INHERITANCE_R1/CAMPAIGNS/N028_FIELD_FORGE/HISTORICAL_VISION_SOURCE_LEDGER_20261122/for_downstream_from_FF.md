@@ -90,6 +90,16 @@ Original native Library APP: `/Rawlsing/ORIENTATION_ROOTS/APP_VIABILITY_AND_FORW
 
 The D010/D012 source-by-proposition recovery is in [02](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md). Their old project layer counts and task sequencing are historical, not a warrant to replace present owner interfaces.
 
+### November 16–19 reverse contract — differentiated social Others without fictitious interpersonal statistics
+
+Newly recovered primary sources [H088 (SEAM/26)](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/26_CONDITIONED_SOCIAL_FIELD_IDENTIFICATION_AND_GENERATIVE_PERSON_REVERSE_CONTRACT_R1.md), [H089 (SEAM/28)](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/28_POST_SEAM26_SOCIAL_FIELD_RECRUITMENT_AND_ANVIL_LESSONS_20261117_R1.md), and [H090 (SEAM/29)](https://github.com/maidiu/rawlsing/blob/4d1a6195daca54b4dd63491f55c1eff73907f534/SEAM/29_UM_PYAT_TO_UM_SOROK_CROSS_FIELD_RECRUITMENT_FIRST_READER_CHALLENGE_20261117_R1.md) refine this transfer.
+
+**Field Forge information obligation, when actually demanded:** not just a focal parent D1's source-coherent joint, but lawful other-position D2 distributions `P(Y_joint|D2)` with real minority support, source/risk/weights and scope. Such a distribution may be obtained by an ordinary existing source-backed conditional query; it does not require a sampled regional synthetic population or a new Field Forge social-network generator.
+
+**Downstream owner:** N9/N10E/N10W/SOROK must independently authorize a particular coactor, actual encounter, public utterance, institutionally enacted rule and child-accessible cue. The child's learned interpretation requires still further CAN/ADP evidence. No probability over D2 source respondents establishes who encounters whom or whether a child acquires their parent’s beliefs. Actual material power can originate separately (employer, institution, disaster) without an observed adult questionnaire response.
+
+**Exact test:** 0 change D2 only: the eligible Other pool may change, but focal world/psyche remains fixed absent actual encounter. 1 independently particularize coactor or public material claim: the world may change. 2 vary actual access and participation: possible child history differs, with qualified NO_CHANGE. A competing institution/practice-first route may satisfy this without any sampled D2 Other. **Both routes remain science/owner conditional, not yet one demonstrated selected FF→SOROK native chain.** This is a concrete loss boundary, not a mandatory new ABI.
+
 ## II. Transfer contract: what passes the seam
 
 A valid output to the next owner is **claim-specific**, not a fixed Field Forge master-packet. Its minimum supported components, each only if genuinely applicable:
