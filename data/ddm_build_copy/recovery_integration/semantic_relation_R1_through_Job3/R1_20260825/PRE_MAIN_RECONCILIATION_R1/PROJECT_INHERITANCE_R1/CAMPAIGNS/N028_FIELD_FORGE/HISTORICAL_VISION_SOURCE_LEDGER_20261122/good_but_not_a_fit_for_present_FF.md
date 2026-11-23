@@ -2,6 +2,12 @@
 
 **Status:** `RETAIN WITHOUT SELECTING` · **2026-11-23**. These ideas are not rejected as false and are not all correctly assignable to downstream. They **could** contribute useful methods, tests or independent research later, but the adopted capability/relation design does not require them for every Field Forge first reader. A formal new implementation would demand first-consumer evidence and source/authority review.
 
+### Priority boundary: the May–August 2026 product problem beats distant typology archaeology
+
+Do **not** confuse an attractive future statistic or visualization with a necessary first-reader operation. The May V549b source-backed attitude cloud and June V552J failure make the primary question concrete: can the already generated **respondent-coherent, typed, source-qualified structural relation** reach and change the legal next consumer's answer? An optional MCA/MFA/pressure graph can be useful only if direct incumbent queries/records fail a named information demand. A map with no functioning reader is less valuable than a small exact relation that actually governs a world option.
+
+A second question, warranted by August N028 and adopted September R2, is whether local position/disposition correspondence or real material control can be inferred from the *available observations*. When not, choose a typed held/partial result and preserve the original source. This is stronger science and stronger engineering than resurrecting either one universal nine-strata representation or 2025 country-to-psychology scores. D091–D097 now anchor the immediate historical engineering problem in the [ledger](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md), with direct proposition dispositions in [02](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md).
+
 ## I. High-value methods held as claim-conditional, not mandatory organs
 
 | Item | Original source / source-ledger anchors | Valuable idea worth recovering | Why it is **not a present universal FF requirement** | What would earn its future use |
