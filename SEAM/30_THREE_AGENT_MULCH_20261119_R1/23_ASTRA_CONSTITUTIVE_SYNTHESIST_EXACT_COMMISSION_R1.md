@@ -3,6 +3,8 @@
 
 **TARGET MODEL: GPT-6.2 ASTRA (preferred); GPT-6 ASTRA / 6.0 is an acceptable fallback. The intellectual standards are identical, not loosened for cost.**
 
+**STANDING REPOSITORY INSTRUCTIONS:** The proposed root [AGENTS.md](../../AGENTS.md) explicitly makes *affirmative non-reductive dialectical synthesis* the constitutive-research mandate, understands pluralism as internal to dialectical totality, and scopes the original anti-procedural engineering override to bounded tasks. **Neither a failed local fusion nor genuine continuing plurality is permission to abandon synthesis.** This commission supplies the task-specific intellectual method; the [24 passport](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md) supplies the staged exact source corpus. The root file is a draft-branch proposal, not protected approval.
+
 **RUN ON THE USER-SELECTED ASTRA CONFIGURATION. This is a complete research commission, not a request for an accession report, independent reviewer verdict, repository-wide audit, code work, or a new HQ.** The companion [24 SOURCE PASSPORT](24_ASTRA_SEQUENCED_SOURCE_PASSPORT_R1.md) is the required ordered grokking data, with exact repository refs and evidence grades. Read that passport **in stages**, not as an invitation to ingest every historical and engineering document before thinking. The latest verified source cut is isolated draft PR #1161 at `af62a48716b07aa4642dc4551185e7a2250ac672` before these two handoff documents. Verify present HEAD once on entry and retain exact older source blobs if HEAD moves.
 
 ## CONTROLLING PREMISE — PLURALISM IS INTERNAL TO THE DIALECTICAL WHOLE
