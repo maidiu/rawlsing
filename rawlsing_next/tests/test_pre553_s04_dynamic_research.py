@@ -41,6 +41,13 @@ def test_prepared_native_session_serves_distinct_original_questions_then_indefin
             sourcefree_origin_assertion=SOURCEFREE_ONLY_ASSERTION,
         ) as dynamic:
             first = dynamic.ask(S04DynamicQuestion(queries[0].ref, pred.ref))
+            assert first.observation_scope is not None
+            observation = first.observation_scope.material()
+            assert observation["state"] == (
+                "OBSERVED_FULL_CASE_COHORT__DESCRIPTIVE_ONLY"
+            )
+            assert observation["source_frame_population_n"] is None
+            assert observation["fact_ref"] == first.original.execution.facts[0].ref.as_dict()
             assert first.original.execution.query_ref == queries[0].ref
             assert first.original.knowledge.material()["fact_ref"] == first.original.execution.facts[0].ref.as_dict()
             assert first.joint_workspace.query(
