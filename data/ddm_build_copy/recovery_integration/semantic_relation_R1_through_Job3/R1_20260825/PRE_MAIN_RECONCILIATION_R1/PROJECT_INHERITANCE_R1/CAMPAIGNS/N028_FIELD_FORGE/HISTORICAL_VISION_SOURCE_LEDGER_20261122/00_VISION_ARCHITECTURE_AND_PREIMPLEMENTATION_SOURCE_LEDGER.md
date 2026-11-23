@@ -133,6 +133,12 @@
 | One relationship can yield *different* causal histories for caregiver and child; mutual knowledge is not symmetric | H068–H069, H073–H074 | No shared psyche, no transferred motive, no assumed learned attachment just from an actual care event |
 | A particular actor's first fictional draw, lived consequences and later reconstitution remain SOROK's | H068–H074 | PYAT offers lawful alternatives; it does not author actual person or mutation |
 
+### New direct-source accessibility record — early 2025 PDF precursors (2026-11-23)
+
+The three attached source files `Full Rawlsing Vector Pipeline.pdf` (D004), `Cross Cultural Enneagram Model.pdf` (D005), and `Rawlsing 3.4 Personality Generator Framework v3.4 - Google Docs.pdf` (D003) **were located in Rawlsing Project files**, but a direct native Files page-text read of all 3, 5 and 8 pages respectively returned **“No readable content was found in this file for the requested mode.”** This is a concrete content-extraction blocker, not proof the documents are blank and not a negative scientific verdict. Earlier title-based and summary-derived descriptions remain provenance leads; they **cannot be promoted to direct idea-level extraction** without the actual bytes/text becoming readable by an authorized method. The source ledger grades remain FILE_LOCATED rather than upgraded. Do not count the three as fully intellectually recovered.
+
+The two native Markdown originals D010 and D012 were reopened and text-read; their arguments now have 31 separate proposition dispositions in the positive HOME. Different file accessibility is not an excuse to blur these evidence grades.
+
 ## Priority return path for any subsequent instruction
 
 1. **Original constitutional product**: D003–D012 (2025 beginning through 2026-08-12 V5/APP). D003–D005 PDF text was reportedly reopened by the author; other historical source files and original chats were not all independently recovered. Do not equate PDF text read with verification of the original discussions.
