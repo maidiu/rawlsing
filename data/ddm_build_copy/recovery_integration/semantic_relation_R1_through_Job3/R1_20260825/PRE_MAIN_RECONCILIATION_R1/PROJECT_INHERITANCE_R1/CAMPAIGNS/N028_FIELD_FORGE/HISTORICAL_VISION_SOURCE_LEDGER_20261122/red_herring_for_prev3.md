@@ -60,6 +60,12 @@ The original N028 documents contained alternatives competing to solve real probl
 
 **Other numbered warnings above** are epistemic error prohibitions or cautionary examples, not proven historical rival build commissions. Their value is diagnostic, but their numerical count is **not** evidence of a finished competing-architecture adjudication. Conversely a conditional method is **not a red herring merely because it is not universal**.
 
+### R2/historical FFX: two additional precise non-equivalences
+
+**MCA and Hamming/MDS are not the same operation.** The [FFX Core B method](https://github.com/maidiu/rawlsing/blob/957628a3653e55757404ecf62822c4dd12f77430/data/ddm_build_copy/ffx002_r2_local_geometry.py#L159-L239) admits only exact-state Hamming families and classical MDS, not MCA/GDA. Claiming the R1 Bourdieusian MCA/GDA agenda has been implemented because Core B generates coordinates would counterfeit historical functionality and the inferential meaning of the metric. What survives: exact evidence requirements, a bona fide historical local-distance algorithm, and optional new GDA only where its distinct first-reader value can be shown.
+
+**CAN-006 binding hash is not CAN-001 applicability.** The original post-R2 [H065 seam finding](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_FF_R2_V558_TO_V3_SEAM_ADEQUACY_20261104_R1.md#L15-L17) specifically distinguishes a selected M4 item echoing generated-position refs from qualifying the item against that actor's position. Reject the inference that hash inclusion alone proves application; preserve a hostile two-position experiment and exact current-source owner adjudication. This is a `STATIC_CANDIDATE`, not an executed regression or an implicit command to rewrite M4.
+
 ## Context-specific rejected plans are NOT rejected human questions
 
 Bourdieu's questions about dominance, conversion, distinction and class reproduction; Gramsci/Hall's questions about hegemony/articulation; Lahire's plural dispositional action; Lamont's symbolic boundaries; working-class/caste/colonial material history; and feminist social reproduction remain intellectually live. What gets rejected is **false authorization or untested computational equivalence**, not the phenomena.
