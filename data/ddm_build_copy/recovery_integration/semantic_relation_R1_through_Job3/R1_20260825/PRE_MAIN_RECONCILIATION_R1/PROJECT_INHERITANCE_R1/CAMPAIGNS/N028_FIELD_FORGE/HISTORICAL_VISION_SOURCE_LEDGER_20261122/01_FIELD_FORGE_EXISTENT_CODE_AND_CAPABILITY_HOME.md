@@ -27,6 +27,8 @@ The user-provided `Rawlsing_located_20261123.zip` (SHA-256 `fef58bd94913202ffd04
 
 **Conservation result:** The early V549b *design law* required answer-anchored non-demographic co-response beyond demographic determinicity; its **implementation fragments** demonstrate pair-level respondent joins and real calculations, but they do not satisfy a current request for true k-way respondent-coherent configurations or source-authorized structural institutional rules. Current I03/S04/FF01 and original G4 are the first modern producer/capability lookup. Do not commission a third cloud engine because this historical one is incomplete; do not falsely mark it as complete today.
 
+**Do not misclassify missing functionality.** This HOME is a **code estate of Field Forge and its immediately necessary producer/consumer neighbors**, *not* a claim that every missing operation mentioned below should be implemented in Field Forge. The [constitutive HOME's ownership-first court](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md#ownership-first--the-upstream--field-forge--post-forge--seam-distribution-problem) explicitly separates **G4 S01–S05 upstream source, empirical and learned functions; S06 FF relation-specific transformations; conditional S07/F6 and S08/F7; S09–S10 world/possibility; S11 receiving; and later actor SEAM/SOROK**. Strong FIELD/HEGEMONY/PRESSURE/HOMOLOGY issuer is not silently assigned to any of these. **Historical V549b respondent-join/cloud code belongs to the upstream function-conservation court**; merely being recovered as evidence in an FF archive does not put it inside FF. A missing first reader can also be a **connection/consumer** issue, not a missing producer.
+
 ## I. Grade and ownership method
 
 | Grade | Meaning |
