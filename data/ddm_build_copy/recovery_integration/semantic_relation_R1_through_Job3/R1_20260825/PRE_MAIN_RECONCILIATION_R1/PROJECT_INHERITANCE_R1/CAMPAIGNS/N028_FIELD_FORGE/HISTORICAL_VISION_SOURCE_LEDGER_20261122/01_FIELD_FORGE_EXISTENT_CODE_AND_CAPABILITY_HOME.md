@@ -12,6 +12,21 @@ The historical question leading to Field Forge came from already written and pro
 
 **Code-home duty:** distinguish historical attempted capability, presently existing original-source producer, tested sourcefree consumer, and actual applied downstream material option. No old v3 directive or June bug report creates a new FF owner, and no 2025 typology script is a Field Forge precursor that must be revived. The code inventory below remains indexed to existing G4 source and exact modern code HEAD, not reordered by intellectual chronology.
 
+### Recovered V549b original historical code — two distinct actual programs, not proof the old pipeline ran
+
+The user-provided `Rawlsing_located_20261123.zip` (SHA-256 `fef58bd94913202ffd040faa89bdc5da46ed8b2696a4422112dc253adb0a5169`) contains **two historically written V549b cloud producer modules** in `04_V549b_implementation/`. Their original source bytes have been read and parsed statically (Python AST); they were **not executed**, and there is no claim of original35 source permission or continuity with today's protected implementation. Source ledger **D103** gives exact archive-member custody.
+
+| Historical callable / artifact | Exact uploaded source/member line | Actual programmed operation | Scope / disqualifying limit |
+| --- | --- | --- | --- |
+| `crosstab_cramers_v` and candidate lookup | `build_question_response_attitude_cloud_summary_v549b.py:259–277,378–406` | Numeric Cramér's V over anchor-membership × candidate response; source/wave candidate registry and explicit relation-channel export filters | Same-wave survey-association producer, not full joint conditional model or structural power admission |
+| `build_single_answer_anchors`, presence/absence and branch anchors | same module `:421–772` | Source-country-wave keyed anchor groups; builds associated positive candidate rows and conditioned pattern/branch summaries | Only candidate supported by each selected scope; not native current FF01 and not a particular fictional person's observed belief |
+| `confidence` and weighted-n fields | same module `:293–297,528–535` | Computes a manually chosen 0.22+0.34×sample+0.24×support+0.20×signal heuristic; writes `weighted_anchor_n=float(anchor_n)` and `weighted_candidate_valid_n=float(valid_n)` | **Not a calibrated confidence level or actual survey-weighted n**. The weighted column name is misleading at this code cut and must not be promoted as population science |
+| `_emit_attitude_cloud_pair` | `ddm_v550_clouds.py:671–704` | Joins anchor/candidate on `respondent_id`, builds a two-item crosstab, selects its strongest shared response cell, derives local overlap/baseline and association | Genuine row-link logic for a bounded pair, **not arbitrary k-way joint**; a single top cell does not represent the full distribution |
+| `build_attitude_cloud_rows` | `ddm_v550_clouds.py:1014–1041` | Per-question allowed anchor/feature caching and within-state pair emission, with explicit feature-role and semantic guards | Historical within-scope first-reader capability, not issued cross-context or person authority |
+| `V550_question_response_attitude_cloud.csv` | exact archive member `04_V549b_implementation/V550_question_response_attitude_cloud.csv` | **Header only, zero data rows** in supplied attachment | No empirical execution/readback proof follows. Do not read zero supplied rows as zero population co-travel, or as proof historical module never ran elsewhere |
+
+**Conservation result:** The early V549b *design law* required answer-anchored non-demographic co-response beyond demographic determinicity; its **implementation fragments** demonstrate pair-level respondent joins and real calculations, but they do not satisfy a current request for true k-way respondent-coherent configurations or source-authorized structural institutional rules. Current I03/S04/FF01 and original G4 are the first modern producer/capability lookup. Do not commission a third cloud engine because this historical one is incomplete; do not falsely mark it as complete today.
+
 ## I. Grade and ownership method
 
 | Grade | Meaning |
