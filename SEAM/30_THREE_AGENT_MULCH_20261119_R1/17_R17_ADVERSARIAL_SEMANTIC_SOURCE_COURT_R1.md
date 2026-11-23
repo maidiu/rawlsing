@@ -65,3 +65,62 @@ The next hostile checks must include (1) unperformed lesson versus actual child 
 The positive theory was corrected to keep implementation-specific hypotheses outside the HOME. This moves the R17 rewrites for R16 source paragraphs **332, 387, 551, 553 and 642** into the subordinate [19 implementation/falsification record](19_R17_ADJACENT_IMPLEMENTATION_AND_FALSIFICATION_COURTS_R1.md), not into a theoretical abyss. Direct readback checked all **38** recorded anchors: **33 exist in the current R17 positive candidate** (blob `27c363c7ea99c74296e3f5cb380c3671b17d7fde`) and **5 exist verbatim in adjacent 19** (blob `8f4927f95a72c381b22db0aa65c83d6c92d09453`). The table above is updated accordingly. Their author provisional grades do not turn into source/scientific authorization, and the unadjudicated 643 other source atoms remain held. The [20 whole-manuscript conceptual court](20_R17_WHOLE_MANUSCRIPT_ADVERSARIAL_CONCEPTUAL_COURT_R1.md) tests all thirteen movements, without claiming 681-unit semantic acceptance.
 
 **Disposition remains `R17_SOURCE_CONSERVATION_HOLD`.** The full rewritten candidate is present, but complete semantic no-loss and independent review are not. The current author-branch HOME is R16 at `00`; do not promote by counting headings or keyword matches.
+
+
+## Extended hostile source court — contested Absolute Horizon and the independence of lived activity (39 additional source units)
+
+**2026-11-23 · R16 source blob `5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3` · current R17 rewritten candidate blob `4ccde558d1e814b1b9dd6817d479d716b8e1c6d2` · exact author-branch source HEAD `c25e8ee4d5e6273fa293d085b74ce15d76559b23`.** The following 39 distinct R16 source fragments have been re-opened and matched to specific content in the R17 candidate. This is **author-side semantic triage and selected reconstitution**, not independent receiving, and not an assertion that the entire source paragraph is perfectly represented merely because a quoted anchor is present. [15](15_R17_FINE_GRAIN_SOURCE_ATOM_LEDGER_R1.jsonl) retains the exact original; [18](18_R17_PROPOSED_ALL_SOURCE_DISPOSITIONS_R1.jsonl) is still an unaccepted locator queue. Every unreviewed fragment stays open.
+
+| R16 atom | R17 chapter | Specific retained determination | Grounded R17 anchor | Review ceiling |
+|---|:---:|---|---|---|
+| R16A0163 | VII | Learned identities and claims become apparently self-authorizing | ### Absolute Horizon: the acquired good can judge the authority that mediated it | Author provisional | 
+| R16A0206 | VII | Immanent criticism remains compatible with gratitude, dependence, nonaction | She may challenge her father not because his teaching failed, but because it succeeded beyond his control | Author provisional | 
+| R16A0207 | VII | Acquired good, meaningful potential, attempted resistance, success, stable motive distinct | Compare a merely stated ideal with an attempted act | Author provisional | 
+| R16A0355 | VII | Institutional care can recruit its own language into injury | The speech may recruit a culturally learned genre of correction supported by institutional office | Author provisional | 
+| R16A0377 | VII | Absolute Horizon: contested practical ultimacy, not trait or objective morality | a changing, partly tacit and potentially contradictory practical ordering of claims | Author provisional | 
+| R16A0450 | XI | Actual visitor not a fictional person with manufactured prelife | dimension-specific and source-limited translation | Author provisional | 
+| R16A0451 | XI | No autobiographical totalization in visitor translation | Convictions, grief, memories, relationships, private competence and psychological past cannot silently acquire | Author provisional | 
+| R16A0452 | XI | Admitted utterance may contradict objective diegetic fact | A user can say, “I own a car,” | Author provisional | 
+| R16A0455 | IX | Causal hinge, not maximal action granularity | The need for finer action resolution depends on material uncertainty | Author provisional | 
+| R16A0456 | IX | Duration, concurrence, observed method and chance | An action is not an instantaneous bridge from intention to result | Author provisional | 
+| R16A0462 | IX | World/body and Other response interrupt psychology→output | This is the full generative movement | Author provisional | 
+| R16A0472 | XI | Proposed outward event must be admitted before publication | A model may propose a concrete movement, utterance, sound or object change | Author provisional | 
+| R16A0490 | XI | System-provided label not evidence of visitor expertise | A user who sees the word “Vitamix” | Author provisional | 
+| R16A0491 | XI | World detail beyond observer's present knowledge | The environment is objectively fuller than either the visitor's selected view | Author provisional | 
+| R16A0494 | XI | External human can learn common precontact truth without psychic leak | Two visitors may begin from a shared precontact world root | Author provisional | 
+| R16A0496 | XI | Objective bill, glance, two false interpretations, actual concealment | The bill counterhistory | Author provisional | 
+| R16A0507 | XI | Adaptive lens may intensify epistemic closure | A visitor can become practiced at recognizing | Author provisional | 
+| R16A0509 | VII | False interpretive framework can incorporate disconfirmation | The same framework can become more powerful precisely because counterevidence is reclassified | Author provisional | 
+| R16A0511 | XI | Structurally matched visitor carries unlike history | The visitor may have learned forms of politeness, privacy, religious association | Author provisional | 
+| R16A0514 | XI | Policy witness does not certify experience or human science | A convincing account of one response may conflate at least five different things | Author provisional | 
+| R16A0516 | XI | Pre-focal signal not conscious recognition | Attention similarly distinguishes objective cue, actor-receivable signal | Author provisional | 
+| R16A0520 | XI | Tip is real manifestation not total psyche | The person is not identical with a screen, a speaker label | Author provisional | 
+| R16A0522 | V | Same iceberg can express differently without trait mutation | The same outward refusal can arise from several very different histories | Author provisional | 
+| R16A0526 | XI | Exposure-conditioned data cannot validate hypothesis unaided | Suppose a platform hypothesizes that a visitor is preoccupied with cleanliness | Author provisional | 
+| R16A0527 | XI | Research firewall, self-selected data not representative | Aggregated findings may inform future audited system versions | Author provisional | 
+| R16A0528 | XI | Control plane cannot cause diegetic actor knowledge | Opening privacy controls, viewing a recap | Author provisional | 
+| R16A0544 | XI | External person not created by world owner | The visitor is an actual human exercising judgment | Author provisional | 
+| R16A0545 | XI | Skill assertion vs simulated performance vs outside truth | The external human may say they can play a concerto | Author provisional | 
+| R16A0546 | XI | Data deletion vs lawful historic actor afterlife | Deleting an entire fictional continuity has different implications | Author provisional | 
+| R16A0551 | XI | Exact outward event must agree with presentation | A prose sentence and structured sidecar describing different deeds | Author provisional | 
+| R16A0553 | XI | Phenomenal object recognition distinct from world truth | A visitor might see lettering without recognizing a product by brand | Author provisional | 
+| R16A0554 | XII | Sourceful motif/graph must beat competent history reader | No difference would favor a simpler history-sensitive account | Author provisional | 
+| R16A0585 | IX | Voluntary joint consent vs unilateral harm | A voluntary joint practice requires independently recognized cooperation | Author provisional | 
+| R16A0600 | IX | Unperformed lesson never creates child capacity | Remove the actual lesson while keeping the visitor's claim of having taught | Author provisional | 
+| R16A0603 | IX | A+B family meaning interacts with independent material change | Now Father moves away while household money | Author provisional | 
+| R16A0609 | XI | Cross-human truth outside encounter | Two visitors may begin from a shared precontact world root | Author provisional | 
+| R16A0641 | VIII | Unrendered history not empty | A month not simulated at event granularity is not evidence that the actor had no experiences | Author provisional | 
+| R16A0643 | XII | Enneagram derived interpretation not generative attractor | An Enneagram affinity, if used at all, is a tentative interpretation | Author provisional | 
+| R16A0645 | XII | Schools can remain incompatible without forced synthesis | Some mechanisms are complementary in a specified case | Author provisional | 
+
+### What the Absolute Horizon source forces us to keep distinct
+
+**A lived good can become authoritative against its carrier.** In R16 source atoms `R16A0163`, `R16A0206`, `R16A0207`, and `R16A0377`, the historically mediated value may become a criterion for judging the very adult/institution that helped form it; it does **not** thereby become disembedded from material and cultural history. R17 now makes the act of *mediation*, the practical claim of ultimacy and the possible conflict among loyalties explicit in Chapter VII. A child can remain grateful and powerless while recognizing wrongdoing, or comply without inner reconciliation, or refuse without success. Institutional care may acquire the opposite direction: a pastor's sanctioned correction can make care authorize harm. These are **different possible organizations under historical authority**, not a two-direction destiny law.
+
+**Horizon ≠ slow gravity ≠ moral truth ≠ actor speech.** Slow gravity concerns a recurring acquired configuration and its conditional recruitment. Absolute Horizon names a potentially contradictory practical ordering of what may claim binding significance or justify sacrifice, including who is authorized to arbitrate it. The actor's words, felt commitment, actual sacrifice, later practice and the analyst's judgment of its justice can diverge. A historical tie to a parent does not prove the child's learned good is permanently subject to parental permission; neither does the analyst's admiration for disobedience prove a liberated or durable commitment was achieved.
+
+**The immanent-critique differential:** hold Father's exclusion fixed; vary the child's acquired relation to shared participation, dependence upon Father, fear of sanction, actual social allies and available alternative practice. Legitimate results include recognition without action, action without efficacy, increased obedience, resentment, independent cooperation, nonrecognition, or NO_CHANGE. Any mechanism that outputs rebellion merely from detecting a parent–value contradiction fails. Any mechanism that assumes an ideal became operative because the narrator named it “ultimate” also fails. Only subsequent historically sourced activity can establish effective new organization.
+
+### Remaining prohibitions and open failures
+
+Do not turn this additional 39-case source match into **39 accepted authorizations**. A manuscript may cite one exact destination and still omit a second incompatible causal claim from the same source unit. Full R16 source determination equivalence needs adversarial independent examination, including its historical code and original-science source rights. No code was modified or tested, no native outcome demonstrated, and no protected PROGRAMMA or paired CURRENT_PROGRESS receiving occurred. `R17_SOURCE_CONSERVATION_HOLD` remains in force; R16 remains the single current theory HOME on the branch.
