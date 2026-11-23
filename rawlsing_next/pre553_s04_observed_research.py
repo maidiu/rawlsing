@@ -22,6 +22,12 @@ from typing import Any, Mapping, Sequence
 from rawlsing_next.pre553_interpretation_qualification import (
     InterpretationQualificationError, refuse_positive_uninterpreted_support,
 )
+from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+    AskedEligibleDistributionError,
+    POLICY as ASKED_ELIGIBLE_POLICY,
+    PROFILE_FIELD as ASKED_ELIGIBLE_PROFILE_FIELD,
+    summarize_asked_eligible_raw_fact,
+)
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, EmpiricalQuerySpec, ExactRef, authority_ref, canonical_json,
@@ -431,6 +437,255 @@ def receive_s04_i03_research(
     return S04ObservedKnowledge(canonical_json(publication), h)
 
 
+
+OBSERVATION_SCOPE_CONTRACT = "S04_I03_OBSERVATION_AND_SILENCE@1.0.0"
+OBSERVATION_COMPARISON_CONTRACT = "S04_I03_COHORT_COMPARISON@1.0.0"
+
+@dataclass(frozen=True)
+class S04ObservationScope:
+    """Conservative observed-I03 scope; never an administration or survey-frame issuer."""
+    payload_json: str
+    content_hash: str
+
+    def __post_init__(self) -> None:
+        material = loads(self.payload_json)
+        if (canonical_json(material) != self.payload_json
+                or material.get("contract") != OBSERVATION_SCOPE_CONTRACT
+                or semantic_hash(material) != self.content_hash):
+            raise S04KnowledgeError("observation/silence scope identity invalid")
+
+    @property
+    def ref(self) -> ExactRef:
+        return ExactRef(
+            OBSERVATION_SCOPE_CONTRACT,
+            f"urn:rawlsing:s04:observation-scope:sha256:{self.content_hash}",
+            self.content_hash,
+        )
+
+    def material(self) -> dict[str, Any]:
+        return loads(self.payload_json)
+
+
+@dataclass(frozen=True)
+class S04ObservationComparison:
+    """A provenance-checked cohort comparison, never a population estimate."""
+    payload_json: str
+    content_hash: str
+
+    def __post_init__(self) -> None:
+        material = loads(self.payload_json)
+        if (canonical_json(material) != self.payload_json
+                or material.get("contract") != OBSERVATION_COMPARISON_CONTRACT
+                or semantic_hash(material) != self.content_hash):
+            raise S04KnowledgeError("observation comparison identity invalid")
+
+    @property
+    def ref(self) -> ExactRef:
+        return ExactRef(
+            OBSERVATION_COMPARISON_CONTRACT,
+            f"urn:rawlsing:s04:observation-comparison:sha256:{self.content_hash}",
+            self.content_hash,
+        )
+
+    def material(self) -> dict[str, Any]:
+        return loads(self.payload_json)
+
+
+def receive_s04_observation_scope(
+    *,
+    query: EmpiricalQuerySpec,
+    execution: QueryExecutionResult,
+    knowledge: S04ObservedKnowledge,
+) -> S04ObservationScope:
+    """Expose what ONE I03 fact proves about selection, and what it cannot.
+
+    Reuses the already-validated S04 respondent-coherent fact; no C11 reread,
+    invented routing negatives, sampling-frame estimate, or weighted inference.
+    Exact member-set fingerprints are diagnostic equality witnesses only,
+    never recipient-visible respondent identities or source authorization.
+    """
+    if (type(query) is not EmpiricalQuerySpec
+            or type(execution) is not QueryExecutionResult
+            or type(knowledge) is not S04ObservedKnowledge):
+        raise S04KnowledgeError("actual I03 query, execution, and S04 result required")
+    material = _read(knowledge)
+    if (query.typed_state != "QUERY_AUTHORIZED_RESOLVABLE"
+            or semantic_hash(query.semantic_projection()) != query.content_hash
+            or query.ref != execution.query_ref
+            or _exact(material.get("query_ref"), "S04 query") != query.ref
+            or len(execution.facts) != 1
+            or type(execution.facts[0]) is not EmpiricalFact):
+        raise S04KnowledgeError("observation scope query/fact source mismatch")
+    fact = execution.facts[0]
+    if (semantic_hash(fact.semantic_projection()) != fact.content_hash
+            or _exact(material.get("fact_ref"), "S04 fact") != fact.ref
+            or _exact(fact.empirical_query_spec_ref, "I03 fact query") != query.ref
+            or material.get("producer_typed_state") != fact.typed_state
+            or _exact(material.get("release_ref"), "S04 release") !=
+                _exact(execution.release_refs[0], "I03 release")
+            or _exact(material.get("universe_ref"), "S04 universe") !=
+                _exact(fact.empirical_universe_refs[0], "I03 universe")
+            or _exact(material.get("risk_set_ref"), "S04 source risk") !=
+                _exact(fact.risk_set_ref, "I03 source risk")
+            or _exact(material.get("measure_basis_ref"), "S04 measure") !=
+                _exact(fact.measure_basis_ref, "I03 measure")
+            or _exact(material.get("response_semantics_ref"), "S04 response interpretation") !=
+                _exact(fact.response_state_semantics_ref, "I03 response interpretation")
+            or _exact(material.get("predicate_ref"), "S04 condition") !=
+                _exact(query.condition_predicate_ref, "I03 condition")
+            or material.get("risk_set_type") != fact.risk_set_type
+            or material.get("source_scope_mode") != fact.source_scope_mode
+            or material.get("measure_kind") != fact.measure_kind
+            or material.get("raw_eligible_condition_denominator") != fact.raw_denominator_support
+            or material.get("raw_fully_resolved_joint_n") != fact.raw_numerator_support):
+        raise S04KnowledgeError("observation scope underlying I03 evidence drift")
+    risk = _unique_refs(fact.risk_set_member_refs, "source risk members")
+    denom = _unique_refs(fact.denominator_member_refs, "condition denominator members")
+    if any(ref.kind != "C11Internal:RespondentIdentity" for ref in (*risk, *denom)):
+        raise S04KnowledgeError("observation extent has nonrespondent identities")
+    if not set(denom).issubset(risk):
+        raise S04KnowledgeError("condition respondents fall outside original risk")
+    supported = material["state"] == "SUPPORTED_SAMPLE_DESCRIPTIVE"
+    if supported and (len(denom) != fact.raw_denominator_support
+                      or fact.raw_denominator_support != fact.raw_numerator_support):
+        raise S04KnowledgeError("supported sample membership/count drift")
+    # For held facts the native member list is not necessarily complete.
+    # A numeral in an unqualified/partially resolved report must never turn
+    # into a certified cohort. No digest is issued from such evidence.
+    cohort = (
+        semantic_hash({
+            "source_release_ref": material["release_ref"],
+            "source_universe_ref": material["universe_ref"],
+            "eligible_respondents": [
+                ref.as_dict() for ref in sorted(denom, key=lambda x: x.key)
+            ],
+        })
+        if supported else None
+    )
+    unknown_refs = material.get("source_unknown_condition_member_refs")
+    if unknown_refs is not None and (
+        not isinstance(unknown_refs, list)
+        or material.get("source_eligible_risk_n") != len(risk)
+        or len(unknown_refs) > len(risk)
+    ):
+        raise S04KnowledgeError("source condition-uncertainty witness drift")
+    # The original I03 asked-eligible producer can already distinguish
+    # source-typed substantive, DK, refusal, missing and special outcomes.
+    # Reuse that *existing* scientific/descriptive owner on its explicitly
+    # issued profile only. This never invents missingness on an ordinary I03
+    # query, nor reclassifies response states as causal social silencing.
+    source_asked_eligible = None
+    if query.requested_output_grain.get(
+        ASKED_ELIGIBLE_PROFILE_FIELD
+    ) == ASKED_ELIGIBLE_POLICY:
+        try:
+            source_asked_eligible = summarize_asked_eligible_raw_fact(
+                query=query, fact=fact,
+            )
+        except (AskedEligibleDistributionError, KeyError, TypeError) as exc:
+            raise S04KnowledgeError(
+                "source-issued asked/eligible raw summary invalid"
+            ) from exc
+
+    scope = {
+        "contract": OBSERVATION_SCOPE_CONTRACT,
+        "state": (
+            "OBSERVED_FULL_CASE_COHORT__DESCRIPTIVE_ONLY"
+            if supported else "ORIGINAL_I03_NONPOSITIVE__COHORT_NOT_QUALIFIED"
+        ),
+        "grade": "I03_SOURCEFREE_RAW_SAMPLE_DIAGNOSTIC__NO_POPULATION_CLAIM",
+        "knowledge_ref": knowledge.ref.as_dict(),
+        "query_ref": query.ref.as_dict(),
+        "fact_ref": fact.ref.as_dict(),
+        "source_release_ref": material["release_ref"],
+        "source_universe_ref": material["universe_ref"],
+        "source_risk_set_ref": material["risk_set_ref"],
+        "source_measure_basis_ref": material["measure_basis_ref"],
+        "source_response_semantics_ref": material["response_semantics_ref"],
+        "source_predicate_ref": material["predicate_ref"],
+        "original_producer_state": fact.typed_state,
+        "i03_risk_member_extent_n": len(risk),
+        "i03_known_true_condition_n": fact.raw_denominator_support,
+        "i03_resolved_joint_n": fact.raw_numerator_support,
+        "unserved_resolved_n_if_held": (
+            fact.raw_numerator_support if not supported else None
+        ),
+        "condition_membership_unknown_n": (
+            len(unknown_refs) if unknown_refs is not None else None
+        ),
+        "verified_eligible_member_set_sha256": cohort,
+        "source_asked_eligible_raw_summary": source_asked_eligible,
+        "observed_route_and_nonresponse_cause": None,
+        "source_frame_population_n": None,
+        "survey_design_weight_or_variance": None,
+        "interview_mode_language_and_translation": None,
+        "unobserved_off_frame_respondents_n": None,
+        "silence_cannot_be_classified_as": [
+            "NOT_ASKED", "REFUSAL", "INAPPLICABLE", "NONRESPONSE",
+            "OFF_FRAME", "LACK_OF_MEASUREMENT",
+        ],
+        "needed_independent_issuers": [
+            "SOURCE_INSTRUMENT_AND_ROUTING_ADMINISTRATION",
+            "SAMPLING_FRAME_COVERAGE_NONRESPONSE",
+            "WEIGHTS_DESIGN_AND_POPULATION_INFERENCE",
+            "MODE_LANGUAGE_TRANSLATION_AND_MEASUREMENT",
+        ],
+        "no_new_i03_or_source_read": True,
+        "not_a_structural_silencing_or_causal_claim": True,
+    }
+    return S04ObservationScope(canonical_json(scope), semantic_hash(scope))
+
+
+def compare_s04_observation_scopes(
+    left: S04ObservationScope,
+    right: S04ObservationScope,
+) -> S04ObservationComparison:
+    """Compare sample membership, not inferred questionnaire administration.
+
+    Even an identical actual I03 respondent set does not prove two instruments
+    measure the same concept, nor does a difference establish why someone
+    was silent. Source/measure discontinuity is never 'corrected' by pooling.
+    """
+    if type(left) is not S04ObservationScope or type(right) is not S04ObservationScope:
+        raise S04KnowledgeError("two original S04 observation scopes required")
+    a, b = left.material(), right.material()
+    same_release = (a["source_release_ref"] == b["source_release_ref"]
+                    and a["source_universe_ref"] == b["source_universe_ref"])
+    same_basis = (a["source_measure_basis_ref"] == b["source_measure_basis_ref"]
+                  and a["source_response_semantics_ref"] == b["source_response_semantics_ref"])
+    da, db = a["verified_eligible_member_set_sha256"], b["verified_eligible_member_set_sha256"]
+    if not same_release:
+        state = "DISTINCT_SOURCE_UNIVERSES__NO_RESPONDENT_POOLING"
+    elif not same_basis:
+        state = "SOURCE_MEASURE_OR_RESPONSE_SEMANTICS_DIFFER__NO_COMMON_ESTIMAND"
+    elif da is None or db is None:
+        state = "UNRESOLVED_OR_HELD_COHORT__NO_MEMBERSHIP_COMPARISON"
+    elif da != db:
+        state = "DIFFERENT_ACTUAL_RESPONDENT_COHORTS__NO_NAIVE_RATE_COMPARISON"
+    else:
+        state = "SAME_ACTUAL_I03_COHORT__SAMPLE_DESCRIPTIVE_ONLY"
+    payload = {
+        "contract": OBSERVATION_COMPARISON_CONTRACT,
+        "state": state,
+        "left_scope_ref": left.ref.as_dict(),
+        "right_scope_ref": right.ref.as_dict(),
+        "left_query_ref": a["query_ref"],
+        "right_query_ref": b["query_ref"],
+        "source_release_same": same_release,
+        "source_measure_and_response_semantics_same": same_basis,
+        "identical_known_true_respondent_set": (
+            da == db if da is not None and db is not None and same_release else None
+        ),
+        "population_or_survey_design_comparability": None,
+        "administration_and_nonresponse_comparability": None,
+        "scientific_estimator_or_causal_comparison": None,
+        "no_cross_release_join_or_invented_respondent": True,
+        "grade": "SOURCEFREE_COHORT_EQUALITY_DIAGNOSTIC_ONLY",
+    }
+    return S04ObservationComparison(canonical_json(payload), semantic_hash(payload))
+
+
+
 def _read(knowledge: S04ObservedKnowledge) -> dict[str, Any]:
     if type(knowledge) is not S04ObservedKnowledge:
         raise S04KnowledgeError("actual S04 knowledge object required")
@@ -621,4 +876,7 @@ __all__ = [
     "S04KnowledgeError", "S04ObservedKnowledge", "S04ResearchAnswer",
     "receive_s04_i03_research", "ask_s04_exact_condition",
     "ask_s04_common_risk_predictor_evidence",
+    "OBSERVATION_SCOPE_CONTRACT", "OBSERVATION_COMPARISON_CONTRACT",
+    "S04ObservationScope", "S04ObservationComparison",
+    "receive_s04_observation_scope", "compare_s04_observation_scopes",
 ]
