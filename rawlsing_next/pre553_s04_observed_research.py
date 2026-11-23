@@ -22,6 +22,12 @@ from typing import Any, Mapping, Sequence
 from rawlsing_next.pre553_interpretation_qualification import (
     InterpretationQualificationError, refuse_positive_uninterpreted_support,
 )
+from rawlsing_next.pre553_asked_eligible_raw_distribution import (
+    AskedEligibleDistributionError,
+    POLICY as ASKED_ELIGIBLE_POLICY,
+    PROFILE_FIELD as ASKED_ELIGIBLE_PROFILE_FIELD,
+    summarize_asked_eligible_raw_fact,
+)
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact, EmpiricalQuerySpec, ExactRef, authority_ref, canonical_json,
@@ -563,6 +569,24 @@ def receive_s04_observation_scope(
         or len(unknown_refs) > len(risk)
     ):
         raise S04KnowledgeError("source condition-uncertainty witness drift")
+    # The original I03 asked-eligible producer can already distinguish
+    # source-typed substantive, DK, refusal, missing and special outcomes.
+    # Reuse that *existing* scientific/descriptive owner on its explicitly
+    # issued profile only. This never invents missingness on an ordinary I03
+    # query, nor reclassifies response states as causal social silencing.
+    source_asked_eligible = None
+    if query.requested_output_grain.get(
+        ASKED_ELIGIBLE_PROFILE_FIELD
+    ) == ASKED_ELIGIBLE_POLICY:
+        try:
+            source_asked_eligible = summarize_asked_eligible_raw_fact(
+                query=query, fact=fact,
+            )
+        except (AskedEligibleDistributionError, KeyError, TypeError) as exc:
+            raise S04KnowledgeError(
+                "source-issued asked/eligible raw summary invalid"
+            ) from exc
+
     scope = {
         "contract": OBSERVATION_SCOPE_CONTRACT,
         "state": (
@@ -590,6 +614,7 @@ def receive_s04_observation_scope(
             len(unknown_refs) if unknown_refs is not None else None
         ),
         "verified_eligible_member_set_sha256": cohort,
+        "source_asked_eligible_raw_summary": source_asked_eligible,
         "observed_route_and_nonresponse_cause": None,
         "source_frame_population_n": None,
         "survey_design_weight_or_variance": None,
