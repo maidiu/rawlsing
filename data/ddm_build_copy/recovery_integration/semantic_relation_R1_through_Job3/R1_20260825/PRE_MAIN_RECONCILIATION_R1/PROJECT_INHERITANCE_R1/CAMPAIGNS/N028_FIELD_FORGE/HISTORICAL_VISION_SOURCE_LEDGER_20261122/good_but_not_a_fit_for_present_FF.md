@@ -71,6 +71,14 @@ H088–H090 present a serious FF output obligation when a downstream request spe
 
 The original SEAM/29 considers two rival simple interfaces: a **relation-first** source-qualified possible Other selected by the world owner; and an **institution/practice-first** independently enacted public claim or objective right, with no compulsory D2 respondent in the scene. Test an actual first reader and ablate the additional D2 information. If either existing source query or lawful world act answers the selected question, no extra FF object should be issued. The need for broadly modeled contact frequencies, where such a claim is asked, is a **separate external-source problem**, not licensed by respondent microdata.
 
+### Source-original v2 and June 20: necessary information versus obsolete packaging
+
+The exact recovered v2 cloud contract (D098) requires that the *real* co-response field not collapse into demographic predictors. Its proposed durable Parquet/DuckDB `question_response_attitude_cloud_summary` was an original **historic representation**, not a universally mandatory modern FF storage schema. The essential information is actual same-respondent answer/pattern/branch membership, compatible response morphology, common risk/permission and defensible direct counts/uncertainty, whichever current I03/S04/FF01 reader can serve.
+
+The June 20 original conversation (D100) makes *dynamic* stratum salience an original requirement. Its old `V552_TO_V557_LAYER_GUIDE.md` (D102) proposes weighted strata paths, time-indexed pressure and future absorption. Those are not proof a single stratum graph or numerical 'magnetism' model is required today. Try source-qualified scoped comparisons and existing world constraint consumers first; richer topologies or temporal field maps require a named lost answer and actual issuer, not rhetorical attractiveness.
+
+V549b implementation snippets (D103) deserve **historical code conservation**: pair-level `respondent_id` joins and source-local associations exist. But manually calculated 'confidence' and unweighted n written under weighted column names are not credible population inference. The supplied CSV has zero empirical rows. Source and method interest survives; current native SCIENCE and execution remain separately held.
+
 ## II. One example of preservation without premature construction
 
 Two actual respondent-coherent three-way contingency tables may have the same one-way/two-way margins yet yield opposite values for `P(Y|X,Z)`. The present S04/FF01 direct-joint machinery is the first correct baseline. A future geometric map could discover a surprising local neighborhood that organizes these cells. It earns existence in production only if a consumer cannot recover its necessary answer through lawful query or permitted index—**not because the geometry is elegant**.
