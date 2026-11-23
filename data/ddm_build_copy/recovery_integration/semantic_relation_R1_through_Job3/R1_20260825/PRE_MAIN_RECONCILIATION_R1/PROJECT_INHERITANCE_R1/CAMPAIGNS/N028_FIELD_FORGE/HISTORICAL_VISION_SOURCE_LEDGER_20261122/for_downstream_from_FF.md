@@ -2,6 +2,14 @@
 
 **Status:** `CONCEPTUAL DISPOSITION / SOURCE-STATIC` · **Date:** 2026-11-23. This is not a commission or a proposal for Field Forge to implement all the mechanisms below.
 
+## The original source→structure→person separation preceded Field Forge (May–June 2026)
+
+The May 11 V549b idea and original V550 directive distinguish **observable non-demographic answer co-travel** from position predictors and both from a structural explanation. June 25's V552→V552J→V553 audits show why this distinction matters operationally: actual relation-axis/target/channel facts can exist yet never reach a temporal/world reader, while permission and fallback keys can be mistaken for actual meaning or pressure. Field Forge's later actor-independent contract must preserve these different information kinds, not take custody of the entire downstream chain.
+
+**Downstream assignments:** source / questionnaire / respondent / permission truth remains I03/source/semantic ownership; Field Forge qualifies and serves queryable positions, contradictory repertoires and separately admissible actor-independent relations; V553–V558 and N9/N10 execute the existing temporal/selected-world meanings; SOROK alone authors particular people's contacts, experiences, psyche and later acts. A readiness flag is not a structural key; an M4-bound ref is not evidence a selection predicate changed a real option; a changed option is not proof the actor knew of it.
+
+Original source handles: D091–D096 in [the corrected source ledger](00_VISION_ARCHITECTURE_AND_PREIMPLEMENTATION_SOURCE_LEDGER.md) and the distinct source courts in [the constitutive HOME](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md). May/June are historically prior and architecturally illuminating, but historical runtime statuses remain frozen at those cuts.
+
 ## The dividing line
 
 **FIELD FORGE owns lawful actor-independent observed and claim-qualified relational evidence and the capability to reconstruct it.** Downstream systems own *what actually exists in a selected world*, the meaning and temporal force of independently admitted relations, specific alternatives/actions, psychological response, performed world consequence, acquisition and continuing life. Field Forge can produce a qualified contrast relevant to an actor; it must not generate the actor's thought, practice, world-state writer or biographical history.
