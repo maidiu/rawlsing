@@ -21,7 +21,7 @@ class EncounterRefusal(ValueError):
     """A user cannot create world, actor, source or sensory rights by prose."""
 
 
-_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE'})
+_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -62,7 +62,7 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'modality': 'auditory', 'kind': 'visitor_footsteps',
                        'tags': ['footsteps', 'approach'], 'description': 'Footsteps nearby.',
                        'grade': grade, 'visual_identity_known': False})
-    if operation == 'SAY' and sound:
+    if operation in ('SAY', 'LOOK') and sound and type(visitor.get('spoken_text')) is str:
         # Audibility is not lexical comprehension. The world retains exact
         # user-authored words, but an immature hearer receives only a sourced
         # sound opportunity, not the adult analyst's propositional knowledge.
@@ -85,6 +85,16 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'tags': ['movement', 'visitor'],
                        'description': 'A visitor enters the workspace.',
                        'grade': grade, 'gaze_intention_known': False})
+    if operation == 'LOOK' and visible:
+        # A possible visible orientation cannot establish what the visitor
+        # read, meant or concealed; actor notice/interpretation is CO-owned.
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_glance',
+                       'tags': ['visitor', 'visible_orientation'],
+                       'description': 'A visitor visibly turns toward an object.',
+                       'grade': grade, 'target_identity_known': False,
+                       'visitor_knowledge_known': False,
+                       'actor_notice_not_established': True})
     return result
 
 
@@ -156,7 +166,8 @@ class NeighborEncounter:
                 'source_hash': digest(conditions)}
 
     def contribute(self, request_id: str, operation: str, *, text: str | None = None,
-                   destination: str | None = None):
+                   destination: str | None = None, target_object_ref: str | None = None,
+                   cover_text: str | None = None):
         """One user-authored world event with derived actor-eligible signs.
 
         Retries are idempotent *against the durable world request index*;
@@ -174,10 +185,23 @@ class NeighborEncounter:
             destination = _text(destination, 'DESTINATION', 100)
         elif destination is not None:
             raise EncounterRefusal('UNAUTHORED_DESTINATION')
+        if operation == 'LOOK':
+            # Private ATTEND remains MII-only. LOOK is the actual outward
+            # bodily attempt, which an Other may have opportunity to see.
+            target_object_ref = _text(target_object_ref, 'LOOK_TARGET', 100)
+            if cover_text is not None:
+                cover_text = _text(cover_text, 'COVER_SPEECH')
+        elif target_object_ref is not None or cover_text is not None:
+            raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
-        payload_hash = digest({'user': self.user_id, 'operation': operation,
-                               'text': text, 'destination': destination})
+        request_payload = {'user': self.user_id, 'operation': operation,
+                           'text': text, 'destination': destination}
+        if operation == 'LOOK':
+            # Preserve existing operation event IDs and old replay hashes.
+            request_payload.update(target_object_ref=target_object_ref,
+                                   cover_text=cover_text)
+        payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
             if prior['payload_hash'] != payload_hash:
@@ -210,15 +234,28 @@ class NeighborEncounter:
                 person.update(present=True, location=destination)
         elif operation == 'LEAVE':
             person['present'] = False
+        elif operation == 'LOOK':
+            source = _bound_source(world)
+            sight = source.get('user_conditions', {}).get(loc, {})
+            candidate = world.get('material_objects', {}).get(target_object_ref)
+            # Uniform BLOCKED covers unknown, private, distant and occluded
+            # targets. A guess cannot become knowledge or emit cover speech.
+            if (type(candidate) is not dict or
+                candidate.get('location') != loc or
+                type(candidate.get('public_glance')) is not str or
+                sight.get('light') != 'lit' or
+                sight.get('sightline') != 'unobstructed'):
+                status = 'BLOCKED'
         world['clock'] += 1
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
-                    {'spoken_text': text}, operation, origin, loc, ref)
+                    {'spoken_text': cover_text if operation == 'LOOK' else text},
+                    operation, origin, loc, ref)
                 for sign in eligible:
                     # A transient user sound remains physically transient.
                     # R21's pre-action constitution read records the eligible
@@ -239,6 +276,12 @@ class NeighborEncounter:
                  'clock': world['clock'], 'status': status,
                  'perceptual_candidates': evidence,
                  'no_inference_of_actor_uptake': True}
+        if operation == 'LOOK':
+            event.update(target_object_ref=target_object_ref,
+                         authored_cover_text=cover_text,
+                         visitor_reading='NOT_ESTABLISHED',
+                         other_actor_interpretation='NOT_ESTABLISHED',
+                         user_look_is_not_private_mii_attend=True)
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
@@ -249,7 +292,8 @@ class NeighborEncounter:
              'user': self.user_id, 'payload_hash': payload_hash,
              'performed': status == 'PERFORMED',
              'candidate_cue_refs': [e['cue_ref'] for e in evidence],
-             'no_actor_motive_or_consent_issued': True})
+             'no_actor_motive_or_consent_issued': True,
+             'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
         # The world record already contains durable request idempotency. Its
         # canonical event ref is the source for later actor reads, not this
         # returned envelope ID; never make a second write to attach it.
