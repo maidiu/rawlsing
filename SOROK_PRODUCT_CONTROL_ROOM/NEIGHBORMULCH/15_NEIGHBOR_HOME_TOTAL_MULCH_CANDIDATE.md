@@ -1,6 +1,6 @@
 # NEIGHBOR — The Life That Is Not For You
 
-**FULL-THEORY MULCH SUCCESSOR · NONCANONICAL WORKING CANDIDATE · source cut \`52f8da7d5254dccda2e21250ab95d79aa85a017f\` · November 23, 2026.**
+**FULL-THEORY MULCH SUCCESSOR · NONCANONICAL WORKING CANDIDATE · source cut `52f8da7d5254dccda2e21250ab95d79aa85a017f` · November 23, 2026.**
 
 **No promotion implied.** The active authority remains [the single existing NEIGHBOR-UX HOME](12_NEIGHBOR_THEORYMULCH_CURRENT.md) until a completed whole-manuscript adversarial no-loss receiving. This document is a *candidate replacement*, not an additional coequal theory, new game, CODE-MULCH, or programming commission. The original 23 movements, 272 active paragraphs and 238,941-character conservation foundation remain byte-exact at the frozen Git cut. Source identities and dispositions belong in the existing [draw ledger](13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md); greenfield product decisions remain in the single [OUTSIDE-HOME bank](14_OUTSIDE_HOME_META_PREUX_AND_GREENFIELD_HOLD.md).
 
