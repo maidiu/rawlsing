@@ -16,6 +16,15 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Assert exact PR code HEAD, not a synthetic merge commit
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          printf 'exact_source_head=%s\n' "$actual"
+          test "$actual" = "$EXPECTED_HEAD"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
