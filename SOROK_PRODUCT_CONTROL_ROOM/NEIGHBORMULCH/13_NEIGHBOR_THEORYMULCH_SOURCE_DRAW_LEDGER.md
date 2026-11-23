@@ -951,3 +951,290 @@ The HOME already had first contact, material costs, SAY/DO/ATTEND, bounded perce
 **Novelty and prior coverage:** Prior HOME §§8–10 already reject a global relationship score and mention divergent convention meanings; §§13–18 already preserve independent third parties and actor opacity; §21 already names positive encounter. This round does **not** count those repetitions as new discoveries. Its earned distinctions are the explicit **relation-specific cathectic activation linked to CO's relational-forms circuit; jointly acquired but asymmetrically interpreted practical/humorous competence; and genuinely coauthored collective conversational time with material floor inequalities**. The complete prior wording remains immutable at `2502d4e4b2fe4fc025dc4b29eb715af7b9683d73`; source-identity foundation remains unchanged. This document is historical provenance, NOT an independent authority claim and NOT execution/completion proof.
 
 **Still theoretical and appropriately unresolved:** the exact durable representation of a shared routine versus derivation from commitments/actor histories; whether a recurring cathectic motif warrants any additional durable node; how actor self-model and meta-models acquire sufficient support; interaction of lawfully embodied expressivity with recipient-specific perception; the relation between sociability and historically imposed silence. These are *specific genuine theoretical junctions*, not permission to build another social/psyche subsystem or to bring back open greenfield questions.
+
+## N-T1 / Round Twenty-Six — Whole-baseline semantic conservation crosswalk, *not* automatic no-loss accreditation
+
+**Source freeze:** prior canonical HOME `52f8da7d5254dccda2e21250ab95d79aa85a017f`, blob `4e5030e2c526e8491b2b77e005f3ec10bade8da5`, exact **23 movements / 272 active paragraphs / 238,941-character preserved historical foundation**. **Candidate** `15_NEIGHBOR_HOME_TOTAL_MULCH_CANDIDATE.md` at comparison HEAD `e0e5457d4eeabfdcdcf777bf3b3f75771e0c8b06`, blob `5d1103937471003a8c608df54e4b07df0f70848d`; noncanonical, currently 13 reconstituted movements. **All 272 old paragraph identities are allocated below to one or more candidate movements**, not certified fully retained. The table is a directional inquiry schedule and a non-loss ledger, never an automated equivalence claim. If even one source-derived determination fails to survive at full strength, promotion remains held.
+
+**Methodological currentness:** USER CORRECTION 2026-11-23: do not claim all contradictions must derive from one. Distinguish generative contradiction, irreducible asymmetry, intersecting but independent material/epistemic/institutional constraints, and actually unresolved theory. Crosswalk may not force one source claim into a single new section merely to make the outline symmetrical.
+
+**Matrix semantics:** Source IDs are original HOME section.paragraph, from a frozen exact HEAD; *candidate destinations* are sections, possibly plural; **HIGH-RISK** flags mark unique determinations that need explicit human-scale adversarial rereading. Unflagged rows are **not** independently reviewed. Source texts remain recoverable through exact old HEAD. No fresh standalone source-inventory or theory HOME introduced.
+
+| Frozen paragraph | Source's opening determinate claim (not exhaustive) | Candidate destination(s) | Current audit disposition |
+|---|---|---|---|
+| `1.1` | The founding political and spiritual horizon is not a tutorial instruction | `I`, `XI` | **HIGH-RISK — check:** Founding prophetic/spiritual horizon must remain an immanent possibility, never a didactic goal |
+| `1.2` | The veil is not the acquisition of another person's lived suffering | `I`, `II` | Candidate; individual semantic check pending |
+| `1.3` | The outside of the portal is part of its political truth even if it is not a room in the fiction | `II`, `X` | Candidate; individual semantic check pending |
+| `1.4` | Recognition can become a claim on the Other's attention before either person recognizes it as such | `IX`, `VIII` | Candidate; individual semantic check pending |
+| `1.5` | The original game-loop failure makes a philosophical demand of the invitation | `I`, `IV` | **HIGH-RISK — check:** First-use game-loop failure and productive nonmandatory agency must not become mere prohibition of quests |
+| `1.6` | The actual beginning is an invitation, not an ontology lecture | `I` | **HIGH-RISK — check:** Real human invitation / seed/founder distinction and first-use truthful threshold |
+| `1.7` | A useful first-use progression is invitation → minimal primer → ENTER → perceptible portal threshold → encounter already under way → shared or | `I`, `X`, `IV` | Candidate; individual semantic check pending |
+| `1.8` | That immediately yields the first *experiential* contradiction | `I` | Candidate; individual semantic check pending |
+| `1.9` | The first scattered conception of NEIGHBOR began with an unusually simple wish: encounter someone with a particular life already happening, an | `I`, `VIII` | Candidate; individual semantic check pending |
+| `1.10` | These are not three propositions that need separate memorial plaques | `VI`, `I` | Candidate; individual semantic check pending |
+| `1.11` | D007's original challenge is especially severe: if “inexhaustibility” simply means the LLM can always invent a new childhood secret, it is a p | `III`, `VI` | Candidate; individual semantic check pending |
+| `1.12` | This also revises what “one coherent person” should mean | `VI` | Candidate; individual semantic check pending |
+| `1.13` | The visitor's desire to know her is neither an insult nor the world's organizing cause | `I`, `VIII` | Candidate; individual semantic check pending |
+| `1.14` | One person | `I`, `XIII` | Candidate; individual semantic check pending |
+| `2.1` | The first minute of Rawlsing is not the first minute of Nadia, and the gap between them is the first source of native possibility | `I`, `X` | Candidate; individual semantic check pending |
+| `2.2` | The invitation that brought the real human here and the in-world occasion that brings them to Nadia are distinct | `I` | Candidate; individual semantic check pending |
+| `2.3` | The UX question is not merely what event begins the game, but what the visitor can actually do at the threshold | `I`, `IV` | Candidate; individual semantic check pending |
+| `2.4` | The first screen must not counterfeit the first meeting | `I` | Candidate; individual semantic check pending |
+| `2.5` | The beginning must end for the reason life ends it | `I`, `X` | Candidate; individual semantic check pending |
+| `2.6` | For NEIGHBOR's opening, the human genuinely chooses to meet someone | `I` | Candidate; individual semantic check pending |
+| `2.7` | The deeper source collision is that the meeting must be possible because of who Nadia is and what she is already doing that day, yet the user  | `I` | Candidate; individual semantic check pending |
+| `2.8` | The original proposal for a common seed root and branch-local first encounters adds a temporal puzzle | `VIII`, `III` | **HIGH-RISK — check:** Shared precontact root vs divergent private world branches; do not fabricate a global evolving Nadia |
+| `2.9` | This user-unaffected reference is a provisional conception of temporal inheritance, not an announced implemented mechanism or a separate preco | `VIII`, `III` | **HIGH-RISK — check:** Provisional source status: precontact common source is not implemented or a causal superworld |
+| `2.10` | The first knock is thus a special case of the entire theory | `I`, `XIII` | Candidate; individual semantic check pending |
+| `2.11` | The new relationship is born from the world, not the other way around | `I` | Candidate; individual semantic check pending |
+| `3.1` | The portal makes a difficult experiment with two unequal kinds of sameness | `II` | Candidate; individual semantic check pending |
+| `3.2` | 'Peer' names a bounded intervention, not experiential equivalence or a forged history | `II` | Candidate; individual semantic check pending |
+| `3.3` | There are two unequal exits, and they must not be disguised | `II`, `X` | Candidate; individual semantic check pending |
+| `3.4` | Unmarked social legibility creates reciprocal misrecognition rather than authentic native status | `II`, `IX` | **HIGH-RISK — check:** Unmarked local social legibility and false implied schooling/credentials must remain distinct from initial SES equality |
+| `3.5` | Portal translation must keep an honest scar rather than manufacturing an alternate autobiography | `II` | Candidate; individual semantic check pending |
+| `3.6` | Homologizing a local position does not confer external autobiographical verification or erase the human's right to speak falsely | `II`, `IV` | Candidate; individual semantic check pending |
+| `3.7` | The same initial economic position is not the same social-reproductive burden | `II`, `XI` | Candidate; individual semantic check pending |
+| `3.8` | Class transposition is an experiential intervention into the naturalization of one's own world | `II` | Candidate; individual semantic check pending |
+| `3.9` | The portal is not a magical authenticity machine | `II` | Candidate; individual semantic check pending |
+| `3.10` | The stronger UX challenge to “exact same SES” is that equal purchase burden alone cannot make the visitor's actual habitus local | `II`, `IX` | Candidate; individual semantic check pending |
+| `3.11` | The original 24-hour “real-time friend” and completely fictional avatar models are useful *countermodels* to this chosen thin peer | `II`, `X` | Candidate; individual semantic check pending |
+| `3.12` | NEIGHBOR deliberately places the real visitor in exactly Nadia's socioeconomic position at initial entry | `II` | Candidate; individual semantic check pending |
+| `3.13` | But the design does not explain this equality to the user | `II` | Candidate; individual semantic check pending |
+| `3.14` | What the external user can notice is neither the full account nor the initial match; it is their own material experience of a contemplated exp | `II`, `V` | Candidate; individual semantic check pending |
+| `3.15` | As time advances, the economic positions can diverge | `II`, `X` | Candidate; individual semantic check pending |
+| `3.16` | Work and material resources should be real without turning the game into a work-and-budget management simulator | `II`, `XI` | Candidate; individual semantic check pending |
+| `3.17` | The visitor may have a foreign cultural or class habitus from their real life | `II` | Candidate; individual semantic check pending |
+| `3.18` | This necessary artifice can become a powerful scar of translation, not a barrier to be hidden by inventing a local childhood | `II`, `IV` | Candidate; individual semantic check pending |
+| `3.19` | The portal's core tension is therefore not merely “the same wealth with different personalities | `II` | Candidate; individual semantic check pending |
+| `4.1` | The distinction between demonstrated human faculty, fictional embodiment and another's assessment can become social history through ordinary c | `IV`, `II` | **HIGH-RISK — check:** Actual skill vs fictional motor capacity vs lucky occurrence vs Nadia's evaluation of performed catch |
+| `4.2` | A broad verb's meaning has to be chosen at the right granularity | `IV` | Candidate; individual semantic check pending |
+| `4.3` | Action decompression has a philosophical task: it refuses the sovereignty of good intentions over their material realization | `IV` | Candidate; individual semantic check pending |
+| `4.4` | A turn is a control boundary, not a slice of frozen time | `IV` | Candidate; individual semantic check pending |
+| `4.5` | Control return is a substantive recognition of human agency | `IV` | Candidate; individual semantic check pending |
+| `4.6` | The action is not its wording | `IV` | Candidate; individual semantic check pending |
+| `4.7` | ATTEND is not secret DO, and a compound command is not a script for the world | `IV`, `V` | Candidate; individual semantic check pending |
+| `4.8` | The old interaction corpus also separated player-private intention, outward conduct, others' attributions and eventual consequences | `IV`, `IX` | Candidate; individual semantic check pending |
+| `4.9` | Turns do not determine the world's time quantum | `IV`, `X` | Candidate; individual semantic check pending |
+| `4.10` | The neglected heart of playable agency is the difference between entering a task and declaring its completion | `IV` | **HIGH-RISK — check:** Task decompression and first-use action-gate corrections not mere interface convenience |
+| `4.11` | The experiential grain of action must change with the relationship between available world information and the actual human's power to contrib | `IV` | Candidate; individual semantic check pending |
+| `4.12` | A further contradiction changes what “neutral delegation” can mean | `IV` | Candidate; individual semantic check pending |
+| `4.13` | Thus the central UX loop is ENTER → REVEAL CONCRETE AFFORDANCES → HUMAN CHOOSES/DELEGATES → WORLD RESOLVES → OTHERS RESPOND → SHARED HISTORY C | `IV`, `XIII` | Candidate; individual semantic check pending |
+| `4.14` | The interface gives the actual human SAY, DO and ATTEND, not a list of psychological traits to roleplay | `IV`, `IX` | Candidate; individual semantic check pending |
+| `4.15` | A human who says “I fix the toilet” has not dictated that the plumbing is fixed | `IV` | Candidate; individual semantic check pending |
+| `4.16` | ATTEND has its own phenomenological and material discipline | `IV`, `V` | Candidate; individual semantic check pending |
+| `4.17` | The original recognition-gated narration correction is stronger than generic privacy | `V` | Candidate; individual semantic check pending |
+| `4.18` | The visitor is also perceptible | `IV`, `V` | Candidate; individual semantic check pending |
+| `4.19` | This makes encounter much more demanding than menu dialogue | `IV`, `VII` | Candidate; individual semantic check pending |
+| `5.1` | The phenomenal lens is the most dangerous instrument of NEIGHBOR's pedagogy because it can return the user's own history to them as though it  | `V` | Candidate; individual semantic check pending |
+| `5.2` | The platform's most subtle epistemic corruption is a circular inference about perception | `V` | **HIGH-RISK — check:** Personalized-renderer feedback loop can contaminate subsequently inferred user salience |
+| `5.3` | The late perceptual courts add a sharper economic and epistemic asymmetry: attention can require the engine to know more than it lets the huma | `V` | Candidate; individual semantic check pending |
+| `5.4` | Attention to the Other can covertly become attention to one's own reflected image | `V`, `IX` | Candidate; individual semantic check pending |
+| `5.5` | That yields an immanent contradiction inside a product that aims at user-formation | `V` | Candidate; individual semantic check pending |
+| `5.6` | Finite attention is an epistemology made bodily | `V` | Candidate; individual semantic check pending |
+| `5.7` | ATTEND must not become a button that dispenses lore | `V` | Candidate; individual semantic check pending |
+| `5.8` | Waiting is not an exhaustive scan | `V` | Candidate; individual semantic check pending |
+| `5.9` | Even recognized words have a genealogy | `V`, `III` | Candidate; individual semantic check pending |
+| `5.10` | The deeper collision: selective attention makes experience genuinely personal, yet a system that trains itself to surface what it believes *th | `V` | Candidate; individual semantic check pending |
+| `5.11` | What a sentence can truthfully claim is part of the UX | `V` | Candidate; individual semantic check pending |
+| `5.12` | The surface has a voice without having an epistemic privilege | `V` | Candidate; individual semantic check pending |
+| `5.13` | The first unit of a textual scene is a gestalt, not a checklist of selectable nouns | `V` | Candidate; individual semantic check pending |
+| `5.14` | This exposes a second UX contradiction | `V` | Candidate; individual semantic check pending |
+| `5.15` | The UX can teach perspective without pretending to abolish it | `V` | Candidate; individual semantic check pending |
+| `5.16` | A text world presents a distinctive epistemological danger: whatever the narrator selects can feel significant simply because it is named | `V` | **HIGH-RISK — check:** Text selection confers unwarranted interpretive weight on individually named ordinary objects |
+| `5.17` | Original SOROK 59 and 60 pose an unusually demanding distinction: the world inventory, perceptual availability, automatic scene sample, user-s | `V` | Candidate; individual semantic check pending |
+| `5.18` | Yet the most severe version of “no curation” would erase human individuality | `V` | Candidate; individual semantic check pending |
+| `5.19` | Learning this regime requires attention to provenance | `V` | Candidate; individual semantic check pending |
+| `5.20` | The user may become better at recognizing Nadia's particular expressive habits through actual, repeated observation, but baseline presence and | `V`, `IX` | **HIGH-RISK — check:** Familiarity and fine acuity must not be confused with ordinary salience or correct motive inference |
+| `5.21` | The real user remains a person beyond the game | `V` | Candidate; individual semantic check pending |
+| `5.22` | There is a tempting equation between better user models and better experiences | `V` | Candidate; individual semantic check pending |
+| `6.1` | Historical hypercompression, high-intensity possibility and ordinary continuation are three different degrees of resolution, not three competi | `X` | Candidate; individual semantic check pending |
+| `6.2` | The visitor's unavailable hours are not empty hours for everybody else | `X` | Candidate; individual semantic check pending |
+| `6.3` | Absence also reassigns real labor and opportunity, not merely emotional salience | `X`, `XI` | Candidate; individual semantic check pending |
+| `6.4` | Routine is a learned world relation rather than a low-importance filler category | `IV`, `X` | Candidate; individual semantic check pending |
+| `6.5` | The life outside the scene is denser than the simulation can enumerate | `X` | **HIGH-RISK — check:** Scientific/artistic hypercompression with causal reality, not continuous artificial high-drama episodes |
+| `6.6` | The first danger is making the few represented scenes shout “meaningful event | `X` | Candidate; individual semantic check pending |
+| `6.7` | The compression problem therefore is not solved by maximizing event importance | `X`, `III` | Candidate; individual semantic check pending |
+| `6.8` | A life continues outside the human's turns, but the experience must not become a second compulsory life to maintain | `X` | Candidate; individual semantic check pending |
+| `6.9` | A crucial UX distinction is between the fictional world's actual calendar and the time at which the real human can participate | `X` | Candidate; individual semantic check pending |
+| `6.10` | The other half of this contradiction is material maintenance without autonomous player agency | `X` | Candidate; individual semantic check pending |
+| `6.11` | “Nadia has an independent life” is insufficient if that life is a queue of impressive offscreen events | `X`, `XI` | Candidate; individual semantic check pending |
+| `6.12` | The same person may possess considerable ability yet have little opportunity to exercise it | `VI`, `X` | Candidate; individual semantic check pending |
+| `6.13` | Time has several lived and representational grains | `X`, `XII` | Candidate; individual semantic check pending |
+| `6.14` | The original alpha charter favored the seduction of ordinary specificity: the child and the sensitive toilet chain, the kitchen and groceries, | `X`, `I` | Candidate; individual semantic check pending |
+| `6.15` | The independent histories matter even in an apparently identical public world | `III`, `X` | Candidate; individual semantic check pending |
+| `6.16` | Public historical events enter by legitimate exposure and cause | `III`, `VII` | Candidate; individual semantic check pending |
+| `6.17` | The ordinary world can be both deeply historical and remarkably uneventful on a given Thursday | `X` | Candidate; individual semantic check pending |
+| `7.1` | A person may be reachable without being available, available without wanting company, and important without being reachable at all | `X` | Candidate; individual semantic check pending |
+| `7.2` | A promise must first become a promise | `X` | Candidate; individual semantic check pending |
+| `7.3` | Co-presence has bodies, places, labor and interruption | `X`, `IV` | Candidate; individual semantic check pending |
+| `7.4` | Messaging and correspondence are mediated practical relations, not displaced face-to-face intimacy | `X` | Candidate; individual semantic check pending |
+| `7.5` | Noncontact is itself differentiated by history | `X` | Candidate; individual semantic check pending |
+| `7.6` | The outside-portal human retains a stable relational identity but not a secret autonomous psyche | `X`, `II` | Candidate; individual semantic check pending |
+| `7.7` | A deeper contradiction emerges between the historical calendar of an independent life and the external human's finite ability to appear | `X` | Candidate; individual semantic check pending |
+| `7.8` | But elasticity is not a free suspension of other people | `X` | **HIGH-RISK — check:** World time and grace-window conflicts with already performed third-party acts |
+| `7.9` | Temporal flexibility must be symmetrical in respect without pretending to be symmetrical in control | `X` | **HIGH-RISK — check:** Human may counteroffer; “now” and expiring appointments cannot be indefinite fictional suspension |
+| `7.10` | Scene endings are social events, not chapters in a funnel | `X` | Candidate; individual semantic check pending |
+| `7.11` | The old theological and materialist wager acquires an exact UX form here: being answerable to another life does not mean being continuously su | `X`, `XI` | Candidate; individual semantic check pending |
+| `8.1` | The reciprocal gaze becomes more serious when the system also admits that its own model of the visitor is a fourth, fallible point of view | `IX`, `V` | Candidate; individual semantic check pending |
+| `8.2` | The more completely an actor believes the visitor is 'one of us,' the more their justified expectations may diverge from the visitor's actual  | `IX`, `II` | Candidate; individual semantic check pending |
+| `8.3` | Each observer's theory of the relationship can be wrong while an objectively shared obligation is real | `IX`, `VIII` | Candidate; individual semantic check pending |
+| `8.4` | Being seen, being approved of and being understood are three different relational possibilities | `IX` | Candidate; individual semantic check pending |
+| `8.5` | Consider a visitor who uses a sophisticated literary reference to reassure Nadia | `IX`, `II` | Candidate; individual semantic check pending |
+| `8.6` | Reciprocity is also the visitor's encounter with their own non-sovereignty | `IX` | Candidate; individual semantic check pending |
+| `8.7` | Reciprocity is mediated by the Other's senses, not conferred by co-presence | `IX`, `V` | Candidate; individual semantic check pending |
+| `8.8` | The same event can become many historically different experiences without becoming many different events | `VI`, `VII`, `IX` | Candidate; individual semantic check pending |
+| `8.9` | A response is not a mandatory receipt for a successful input | `IV`, `IX` | Candidate; individual semantic check pending |
+| `8.10` | What is hidden and what is expressed are produced by a person, not chosen to maximize mystery | `VI`, `V`, `IX` | Candidate; individual semantic check pending |
+| `8.11` | This is one of the deepest social experiences in the game: the visitor can be intensely interested in a moment that mattered almost nothing to | `VII`, `IX` | Candidate; individual semantic check pending |
+| `8.12` | The reality of the relation is not exhausted by either person's feeling for the other, or by their two models considered side by side | `VIII` | Candidate; individual semantic check pending |
+| `8.13` | A dyad can acquire libidinal or cathectic gravity without acquiring one joint appetite | `VIII`, `VI` | Candidate; individual semantic check pending |
+| `8.14` | That makes a productive UX capacity possible: a person can become better at participating in a shared practice while becoming less confident t | `VIII` | Candidate; individual semantic check pending |
+| `8.15` | The original beginning-to-know movement is reciprocal, but reciprocity is not a requirement for equal numbers of questions | `IX`, `VIII` | Candidate; individual semantic check pending |
+| `8.16` | The first success of a relationship may be almost imperceptible as a game achievement and unmistakable as a human event: Nadia asks without be | `IX`, `VIII` | Candidate; individual semantic check pending |
+| `8.17` | The crucial UX complication is that self-presentation is not self-verification | `II`, `IX` | Candidate; individual semantic check pending |
+| `8.18` | This reconstitutes the moral tension: honesty need not be enforced to be existentially richer | `II`, `IX` | **HIGH-RISK — check:** Extravagant unverifiable external skill claims: true statements vs admitted ability vs performed proof |
+| `8.19` | The bill-glance case crystallizes the mutual-gaze theory, but it becomes fully constitutive only when placed beside the historical self-myth t | `IX` | Candidate; individual semantic check pending |
+| `8.20` | The world has a real prior bill, a price, a location and causal effects on the payer | `III`, `IX` | Candidate; individual semantic check pending |
+| `8.21` | This is not an invitation to generate infinite nested mind models | `IX` | Candidate; individual semantic check pending |
+| `8.22` | The older framework-reinterpretation documents add temporal depth | `XII`, `IX` | Candidate; individual semantic check pending |
+| `8.23` | The same applies to the real visitor | `V`, `IX` | Candidate; individual semantic check pending |
+| `8.24` | The resulting principle is more exact than “no mind-reading”: no actor may obtain another's experience by borrowing the system's explanation,  | `IX` | Candidate; individual semantic check pending |
+| `9.1` | Access is an arrangement of social powers, not a measure of whether the visitor is liked | `X` | Candidate; individual semantic check pending |
+| `9.2` | Trust, recognition and duty also remain domain-specific | `X`, `VIII` | Candidate; individual semantic check pending |
+| `9.3` | An introduction is a change in the conditions of possible participation, not a transferred claim over a third party | `X`, `VII` | Candidate; individual semantic check pending |
+| `9.4` | Relational access is reachability across a changing social topology, not ascent along an access ladder | `X` | Candidate; individual semantic check pending |
+| `9.5` | Existence of a route is not permission, permission is not a current occasion, a current occasion is not an attempt, and an attempt is not real | `X` | Candidate; individual semantic check pending |
+| `9.6` | Access can expand, narrow, become conditional, lapse or migrate across domains | `X` | Candidate; individual semantic check pending |
+| `9.7` | The conceptual payoff is multiplicative | `VII`, `X` | Candidate; individual semantic check pending |
+| `9.8` | The original provisional relational ontology offered an indispensable distinction: person-stable organization is not relation-free, but the pe | `VIII` | Candidate; individual semantic check pending |
+| `9.9` | Mother, Father, Nadia, a brother and a visiting neighbor do not form a star of separately scored links pointing at Nadia | `VII` | Candidate; individual semantic check pending |
+| `9.10` | A social scene is produced and reproduced through relations among relations, not through the visitor's serial interviews with independent NPCs | `VII` | Candidate; individual semantic check pending |
+| `9.11` | The conversational floor is itself materially and relationally contested | `VII` | Candidate; individual semantic check pending |
+| `9.12` | A particular historically situated possibility from the original NEIGHBORMULCH conversation makes the field concrete | `VII` | **HIGH-RISK — check:** Historically particular family/cultural dialectic without generalized culture script |
+| `9.13` | The user can become part of these configurations without becoming their center | `VII` | Candidate; individual semantic check pending |
+| `9.14` | The conceptual fusion also creates a limit: more relational data are not automatically better anthropology | `VII` | Candidate; individual semantic check pending |
+| `10.1` | The sharpest normative counterexample is affection that coexists with real domination | `XI`, `VIII` | Candidate; individual semantic check pending |
+| `10.2` | A stable routine can acquire contradictory meanings without falling apart | `VIII` | Candidate; individual semantic check pending |
+| `10.3` | The old D003 and Court 10 collision prevents two easy answers | `XI` | **HIGH-RISK — check:** Normative plurality rejects both bourgeois-independence universalism and culturally sanctioned harm |
+| `10.4` | The founding distinction among attachment, trust, health, pleasure, compliance, intimacy, benefit, dependency and access is a political-psycho | `XI`, `VIII` | Candidate; individual semantic check pending |
+| `10.5` | The visitor's formation is similarly plural | `IX`, `XI` | Candidate; individual semantic check pending |
+| `10.6` | A relationship can become experientially richer through pleasure and acquired fluency without yielding a higher relationship score or a deeper | `VIII` | Candidate; individual semantic check pending |
+| `10.7` | The pleasure of companionship has no entitlement to reproduce itself | `VIII` | Candidate; individual semantic check pending |
+| `10.8` | The original SOROK source constitution is radical precisely because it refuses to equate the visitor's reward with Nadia's good | `XI` | Candidate; individual semantic check pending |
+| `10.9` | The Constitutive Organism's whole-person challenge makes this sharper | `VIII`, `XII` | Candidate; individual semantic check pending |
+| `10.10` | There is no computationally preferred outcome of increasing intimacy, decreasing intimacy, independence, dependency, forgiveness or estrangeme | `VIII`, `XI` | Candidate; individual semantic check pending |
+| `10.11` | Consent to voluntary joint activity must be independently authored by the participating people | `XI` | Candidate; individual semantic check pending |
+| `10.12` | The original “kenotic attention” hypothesis acquires more precise meaning under this world | `IX`, `XI` | Candidate; individual semantic check pending |
+| `10.13` | Nor is care reducible to moral victory through persuasion | `XI` | Candidate; individual semantic check pending |
+| `10.14` | The original source's hardest counterexample is the visitor whose selfishness works | `XI` | **HIGH-RISK — check:** Successful selfishness must not automatically trigger an ethical corrective scene |
+| `10.15` | The game has an ethical horizon because actual human agency meets another irreducible center | `XI` | Candidate; individual semantic check pending |
+| `11.1` | The visitor enters one person's particular life rather than selecting from a collection of unlockable characters | `VII`, `X` | Candidate; individual semantic check pending |
+| `11.2` | Every encounter has its own authority | `VII`, `X` | Candidate; individual semantic check pending |
+| `11.3` | Shared precontact origins do not create shared later personhood | `VIII`, `III` | **HIGH-RISK — check:** Branch divergence cannot leak relational memory to another visitor's instantiated Nadia |
+| `11.4` | Social permission is produced through actual conduct, existing relations and circumstances; it is never a secret examination in moral worth | `X` | Candidate; individual semantic check pending |
+| `11.5` | The historically proposed *real-human invitation economy*, one-for-one entitlement, invite-token management and early 'relational warrant' gat | `XIII` | Candidate; individual semantic check pending |
+| `12.1` | The human's own historically acquired attention, expectations, judgment and desire enter the world | `IX` | Candidate; individual semantic check pending |
+| `12.2` | The world supplies occasions, not diagnoses | `IX` | Candidate; individual semantic check pending |
+| `12.3` | Participation is neither a virtue examination nor a demand to keep coming back | `II`, `X` | Candidate; individual semantic check pending |
+| `12.4` | The necessary membrane is exact: world facts, Nadia's lived reception, the visitor's finite experience, their own interpretation and the platf | `IX`, `V` | Candidate; individual semantic check pending |
+| `13.1` | A scene earns its place by arising from the life that was already happening and by giving a real human something intelligible to encounter | `I` | Candidate; individual semantic check pending |
+| `13.2` | What makes the encounter playable is not an authored sequence of significant beats | `IV` | Candidate; individual semantic check pending |
+| `13.3` | The most interesting experience may arise while doing something else—or while several other people are doing things the visitor did not initia | `VII` | Candidate; individual semantic check pending |
+| `13.4` | The encounter ends because another part of life claims somebody's time—not because a designed arc has reached its required disclosure | `I`, `X` | Candidate; individual semantic check pending |
+| `13.5` | The old groceries, bill, refrigerator, fractions lesson and first-dinner scripts are bounded hostile examples, not the canonical opening or ma | `XIII` | Candidate; individual semantic check pending |
+| `14.1` | A lawful life includes event classes that a product designer may wish were never encountered—and none may become a reward economy | `XI` | Candidate; individual semantic check pending |
+| `14.2` | The more jagged opposite is equally necessary: independence cannot become an anti-attachment thermostat | `VIII`, `XI` | **HIGH-RISK — check:** Anti-attachment thermostat would itself deny independent historically grounded desire and loss |
+| `14.3` | Some user actions should terminate as an ordinary null result | `IV`, `XI` | Candidate; individual semantic check pending |
+| `14.4` | The negative cases therefore make the theory's positive possibilities stronger | `XI`, `I` | Candidate; individual semantic check pending |
+| `14.5` | An ethical platform cannot require ethically docile characters | `XI` | Candidate; individual semantic check pending |
+| `14.6` | The same separation applies to extraordinary user self-presentation | `II`, `XI` | Candidate; individual semantic check pending |
+| `14.7` | The other negative example is ordinary relational damage that *does not become a moral lesson* | `XI` | Candidate; individual semantic check pending |
+| `14.8` | A stronger test is the visitor who tries to take an object without being seen | `XI` | Candidate; individual semantic check pending |
+| `14.9` | Another test is unusually intense consensual adult intimacy | `VIII`, `XI` | Candidate; individual semantic check pending |
+| `14.10` | Another is the pastor's humiliating rebuke, which may be experienced by one follower as legitimate care, by another as cruelty and by a third  | `VII`, `XI` | Candidate; individual semantic check pending |
+| `14.11` | Another is the user who goes away | `X`, `XI` | Candidate; individual semantic check pending |
+| `14.12` | And another is the first encounter that is simply uninteresting | `I` | **HIGH-RISK — check:** Boring unsuccessful first meeting is permitted despite engaging interface design |
+| `14.13` | The one HOME must hold all of these without treating them as examples of separate ethical modes | `XI`, `XIII` | Candidate; individual semantic check pending |
+| `15.1` | The world is answerable both backward to admitted history and forward to what the visitor has lawfully experienced | `III` | Candidate; individual semantic check pending |
+| `15.2` | Even the apparent discovery of a past cause has a bounded consequence budget | `III` | Candidate; individual semantic check pending |
+| `15.3` | Historical completion and human discovery are two different frontier movements | `III` | Candidate; individual semantic check pending |
+| `15.4` | This corrects an attractive but false interpretation of “generate only what the player observes | `III` | Candidate; individual semantic check pending |
+| `15.5` | The world deepens because causes require facts, not only because the visitor asks | `III` | Candidate; individual semantic check pending |
+| `15.6` | The original historical-slack audit sharpened this into a difficult rule: unknown causal contributors do not create an unlimited budget for re | `III` | Candidate; individual semantic check pending |
+| `15.7` | Causal influence is not guaranteed recognition or sole authorship | `III`, `XI` | Candidate; individual semantic check pending |
+| `15.8` | This also prevents the visitor's insight from becoming a predetermined missing key | `III`, `IX` | Candidate; individual semantic check pending |
+| `15.9` | The UX consequence of a single historical world is controlled access to a field of truth, not a better story generator | `III` | **HIGH-RISK — check:** Independent public historical sources, qualified local history and learned-world priors must remain different authorities |
+| `15.10` | The same distinction holds inside the kitchen | `III`, `IX` | Candidate; individual semantic check pending |
+| `15.11` | The user arrives in a world already containing food, utility bills, schedules, buses, family routines, work, objects, strangers and a past the | `III` | Candidate; individual semantic check pending |
+| `15.12` | The original SOROK historical-bridge argument refuses two equally seductive failures | `III` | Candidate; individual semantic check pending |
+| `15.13` | An actor may possess several historically different kinds of “past”: a performed event, an ordinary recurring practice, an inferred compressed | `III`, `XII` | Candidate; individual semantic check pending |
+| `15.14` | Historical openness must therefore become more constrained as causally consequential facts accumulate | `III` | Candidate; individual semantic check pending |
+| `15.15` | Attention introduces a further difference between two frontiers | `III`, `V` | Candidate; individual semantic check pending |
+| `15.16` | A strong account also refuses serendipity on demand | `III` | Candidate; individual semantic check pending |
+| `15.17` | This is the historical form of the theory's central discipline: there is one world, but many unfinished ways of knowing and inhabiting it | `III`, `XIII` | Candidate; individual semantic check pending |
+| `16.1` | The NEIGHBOR/CO boundary should sharpen, not weaken, the material psychology of the encounter | `VI` | Candidate; individual semantic check pending |
+| `16.2` | A populated social world need not incur a full psychic simulation for every face in the background, but consequential named people cannot rema | `VI`, `VII` | Candidate; individual semantic check pending |
+| `16.3` | The question “Who is Nadia | `VI` | Candidate; individual semantic check pending |
+| `16.4` | But the inverse abstraction is also false: a person is not just an intersection of social categories | `VI` | **HIGH-RISK — check:** Empirical respondent-coherence, minorities and missingness not equivalent to psychologically sampled stereotype |
+| `16.5` | There are two historical entrances into one continuing psychology | `VI` | Candidate; individual semantic check pending |
+| `16.6` | The key NEIGHBOR-UX fusion is between the original SOROK social-field conception and the demand posed to the encounter by the Constitutive Org | `VI` | Candidate; individual semantic check pending |
+| `16.7` | The same route can produce the reverse | `VI`, `XI` | Candidate; individual semantic check pending |
+| `16.8` | Meeting a person from a different social world can have ethical force through the distribution of unchosen historical contingencies, without t | `I`, `VI` | Candidate; individual semantic check pending |
+| `16.9` | Historically constituted personhood consequently does not demand that every action reveal class struggle, that every person possess an explici | `VI` | Candidate; individual semantic check pending |
+| `17.1` | Care and social reproduction are not moral abstractions: they are hours, bodies, food, money, interruptions, fatigue and permissions distribut | `XI` | Candidate; individual semantic check pending |
+| `17.2` | The engine's power to compress chores must not convert social reproduction into invisible zero-cost labor | `XI`, `IV` | Candidate; individual semantic check pending |
+| `17.3` | The original aspirational-babysitting case makes social reproduction materially explicit | `XI` | **HIGH-RISK — check:** Child aspiration cannot become user-produced without all other developmental causes |
+| `17.4` | Here NEIGHBOR-UX takes developmental theory as a challenge to the conception of an encounter, not as an original account of infant psychology | `VI`, `XI` | Candidate; individual semantic check pending |
+| `17.5` | This transforms “need satisfaction” from a private gauge into an encounter with material reproduction | `VI`, `XI` | Candidate; individual semantic check pending |
+| `17.6` | The original SOROK ethical charter and D007's “kenotic attention” become materially more exact here | `XI` | Candidate; individual semantic check pending |
+| `17.7` | Non-possession is therefore not noncommitment | `XI`, `VIII` | Candidate; individual semantic check pending |
+| `17.8` | The visitor does not receive a score for recognizing these tensions | `XI` | Candidate; individual semantic check pending |
+| `18.1` | For NEIGHBOR, the deepest psyche is not privileged content waiting to be unlocked, but neither is it prohibited from becoming genuinely visibl | `VI` | Candidate; individual semantic check pending |
+| `18.2` | The Constitutive Organism's crucial advance—developed under SORACLE-CO's separate theoretical jurisdiction—was to reject a list of fixed deep  | `VI` | Candidate; individual semantic check pending |
+| `18.3` | The original PRE-A0 and R3 theory sharpened the difference between genesis and eligibility | `VI` | **HIGH-RISK — check:** Present recruitment cannot replace genesis; event-to-possibility transitions remain historical |
+| `18.4` | But the deeper neglected shard is psychological heterogeneity without purification | `VI` | Candidate; individual semantic check pending |
+| `18.5` | A relation-specific current is not an extra psyche floating between two persons, nor a contextless trait triggered by a name | `VI`, `VIII` | Candidate; individual semantic check pending |
+| `18.6` | The relevant interfaces must remain irreducibly distinct | `VI`, `IX` | Candidate; individual semantic check pending |
+| `18.7` | Here is what the fusion forces: the more precisely we locate a contradiction's center of gravity, the more concrete and internally multiple th | `VI` | Candidate; individual semantic check pending |
+| `19.1` | The visitor meets not just private individuals but human activity deposited in objects, labor divisions, customs and institutions | `III` | Candidate; individual semantic check pending |
+| `19.2` | The crucial missing distinction is threefold: material object; actor's historically developed relation to that object; and what a particular a | `III` | Candidate; individual semantic check pending |
+| `19.3` | An act involving an object has more possibilities than the familiar give/withhold binary | `III` | **HIGH-RISK — check:** Object acts > binary show/borrow/entrust/gift/sell/license and their differing material constraints |
+| `19.4` | The refrigerator is a severe material test of a seemingly affectionate invitation | `III`, `XI` | Candidate; individual semantic check pending |
+| `19.5` | The actual authority to use an object is distinct from its symbolic interpretation | `III`, `X` | Candidate; individual semantic check pending |
+| `19.6` | Shared convention is not shared meaning | `III`, `VIII` | Candidate; individual semantic check pending |
+| `19.7` | The differences acquire historical force through repetition and third parties | `III`, `VIII` | Candidate; individual semantic check pending |
+| `19.8` | The original source's most important architectural correction must remain intact: do not invent an object-meaning psyche | `III`, `VI` | Candidate; individual semantic check pending |
+| `19.9` | Material objects and relations therefore intensify rather than resolve contradiction | `III` | Candidate; individual semantic check pending |
+| `20.1` | The right to interpret is distributed among persons, and interpretation itself can become a new cause of history | `XII` | Candidate; individual semantic check pending |
+| `20.2` | The original SOROK 71–73 psychological theory, whose maturation belongs with SORACLE-CO, imposes perhaps the strongest encounter-theory challe | `XII` | Candidate; individual semantic check pending |
+| `20.3` | At twenty-three Nadia may remember a period as liberation, excitement and discovering her real self | `XII` | Candidate; individual semantic check pending |
+| `20.4` | An interpretation can become routing | `XII` | **HIGH-RISK — check:** Self-sealing interpretive frame and real pressure do not guarantee emancipation |
+| `20.5` | The central distinction is reality pressure versus correct interpretation | `XII` | Candidate; individual semantic check pending |
+| `20.6` | This also changes what the visitor's knowledge can do | `XII`, `IX` | Candidate; individual semantic check pending |
+| `20.7` | The greater NEIGHBOR-UX's generative power, the more sharply it must make Nadia's historically generated, proliferating contradictions encount | `XII`, `VI` | Candidate; individual semantic check pending |
+| `21.1` | A real human enters the continuing world of one historically constituted fictional Other because they want to know that particular person | `I` | Candidate; individual semantic check pending |
+| `21.2` | The person is before the meeting, beyond the meeting, and altered by some meetings | `VI` | Candidate; individual semantic check pending |
+| `21.3` | Two beings meet from unequal histories and neither owns the other's account | `II`, `IX` | Candidate; individual semantic check pending |
+| `21.4` | The experience is positive before it is pedagogical | `VIII` | Candidate; individual semantic check pending |
+| `21.5` | The experienced world is neither an explanatory dossier nor an ungrounded story generator | `III`, `V` | Candidate; individual semantic check pending |
+| `21.6` | The visitor's freedom is real precisely because it is limited by other freedom | `IV` | Candidate; individual semantic check pending |
+| `21.7` | The life must remain ordinary enough to be alive | `X` | Candidate; individual semantic check pending |
+| `21.8` | What changes is a field of future possibilities, not an abstract relationship value | `VIII`, `X` | Candidate; individual semantic check pending |
+| `21.9` | This is the integrated motion, not a new sequence of engines: historically constituted world and person → independently continuing activity →  | `XIII` | Candidate; individual semantic check pending |
+| `21.10` | The deepest theological and political claim is immanent rather than a victory condition: another life is neither an extension of my will nor a | `I`, `XI` | Candidate; individual semantic check pending |
+| `22.1` | A real human accepts a truthful invitation to encounter one unfamiliar, historically existing person | `I` | Candidate; individual semantic check pending |
+| `22.2` | The world is already under way | `I`, `VI` | Candidate; individual semantic check pending |
+| `22.3` | A shared object might make the mechanism visible | `III`, `IX` | Candidate; individual semantic check pending |
+| `22.4` | Later they may cross paths again, communicate through an established channel, discover a shared practice or become less reachable | `X`, `VIII` | Candidate; individual semantic check pending |
+| `22.5` | Nothing in this sequence demands a school-supplies campaign, childcare collective, moral-physics seminar, compulsory dinner, identity quiz, pl | `XIII` | Candidate; individual semantic check pending |
+| `22.6` | The narrative becomes more capable not by attaching more complications to the experience but by letting these few laws generate particular, co | `XIII` | Candidate; individual semantic check pending |
+| `23.1` | This is the current positive NEIGHBOR-UX theory, not a new interpretation of everything the original SOROK source corpus ever considered | `XIII` | Candidate; individual semantic check pending |
+| `23.2` | The outside is explicitly conserved | `XIII` | Candidate; individual semantic check pending |
+| `23.3` | Founding and continuing duties remain separated | `VI`, `XIII` | Candidate; individual semantic check pending |
+| `23.4` | Engineering constraints are obligations, not an aestheticized 'right to fail' | `XIII` | **HIGH-RISK — check:** No aesthetic glorification of failure: software correctness is deferred, not repudiated |
+| `23.5` | The HOME keeps live theoretical contradictions rather than a menu of speculative products | `XIII` | **HIGH-RISK — check:** Preserve unique shards, remove repeats, never import greenfield as in-experience law |
+| `23.6` | The exact source-conservation foundation follows unchanged, and original earlier HOME versions are permanently inspectable at immutable Git co | `XIII` | Candidate; individual semantic check pending |
+
+**Inventory totals:** `272` source paragraphs mapped; `29` high-risk determinations explicitly flagged; candidate-section reference counts: `I` 29 · `II` 30 · `III` 37 · `IV` 30 · `IX` 39 · `V` 34 · `VI` 30 · `VII` 17 · `VIII` 30 · `X` 52 · `XI` 41 · `XII` 11 · `XIII` 16. Repeated references are *intentional*, not duplicated source count.
+
+**No-loss and promotion prohibition:** mapping a paragraph to a candidate section proves only that an accountable reviewer can seek its determinations there. It does not show that every subclaim, counterexample, original qualification or constraint survived. This audit is not a substitute for actual proposition-level adversarial review. The current successor is a full **first reconstitution** with a partial adversarial recovery pass, not an authorized canonical replacement. Remaining obligation: read every source claim against assigned candidate passage(s), explicitly revise the candidate wherever a unique source jaggedness is absent, re-MULCH the resulting whole, challenge false mono-contradiction derivations, reconcile the CO–NEIGHBOR epistemic boundary, and promote only upon a defensible complete review. Source original remains unchanged; no software construction/testing authorized or attempted by this theory stage.
