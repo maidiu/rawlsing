@@ -6,6 +6,8 @@
 
 **Purpose:** conserve the *entire identified historical chain* of vision, architectural reasoning and pre-implementation engineering from the earliest Rawlsing personality-generator discussions through the original N028/FFX research, adopted R2, PYAT/PRE-V3 world machine, SOROK organism and November 2026 DCO. Every row gives an exact retrievable locator (stable pinned GitHub blob when possible; precise Library folder/title otherwise; verbatim historical-chat search handle when a transcript URL was not recovered). **A source that contains interesting possible design is not automatically binding implementation authority**.
 
+**Review-counted recovery coverage (source grades at the authored cut; not a full intellectual recovery):** the 87 unique entries comprise **16 `READ`, 5 `CODE_SOURCE`, 6 `READ_HEAD`, 44 `FILE_LOCATED`, 7 `CHAT_HANDLE`, 4 `EXACT_RELATED`, 2 `CONVERSATION_LEAD`, 1 `SEARCH_EXCERPT`, 1 `LIBRARY_FOLDER`, and 1 `RELATED_CAUTION`**. A complete ID join means all *identified references* were disposed, **not** that every historical conceptual obligation was extracted. The original N028 sources **E020–E032 are all `FILE_LOCATED` at the author cut**, including the primary observability, pressure and homology texts invoked by the vision. Their concept-by-concept original-source comparison is **HELD**, not silently inherited from W48/G4/R2 summaries. Subsequent targeted reviewer consultation is not retroactively graded as a full author-source reading.
+
 **Evidence vocabulary:**
 - `READ` / `READ_HEAD`: actual source body (or its stated lead) was reopened/inspected during the source-gathering work; **not** independent scientific review.
 - `CODE_SOURCE`: exact historical code path and Git SHA identified; no assertion it is protected or currently executed.
@@ -127,7 +129,7 @@
 
 ## Priority return path for any subsequent instruction
 
-1. **Original constitutional product**: D003–D012 (2025 beginning through 2026-08-12 V5/APP). Read actual original PDF contents if subsequently required; this ledger does not pretend scanned PDFs were parsed.
+1. **Original constitutional product**: D003–D012 (2025 beginning through 2026-08-12 V5/APP). D003–D005 PDF text was reportedly reopened by the author; other historical source files and original chats were not all independently recovered. Do not equate PDF text read with verification of the original discussions.
 2. **Original Field Forge excavations**: H015–E032 + D034, then W035–W042 and H043. Original N028 corpus remains exploratory at its exact grain.
 3. **Adopted Field Forge law**: H044–H050 (especially the Global-HQ act H044 and adopted capsule A046). **This later authority supersedes earlier N028 guesses where they conflict.**
 4. **What the earlier design could actually compute**: H051–H059 (FFIF012D, A/B/C, GT12, GF1) together with actual G4 function records H061–H067 and the present exact source.
