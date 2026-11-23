@@ -1129,6 +1129,90 @@ H085 NEIGHBOR's current encounter theory is separately responsible for a real hu
 - **Keep in SOROK, not FF:** developmental memory, acquired language and practice, conflicting identifications, caregiver activity and later reconstitution—only under actually generated life/events, not prompt-only chronology.
 - **Evidence:** D003 (8-page), D004 (3-page), D005 (5-page) PDFs are *original historical artifacts* inspected by direct extraction, but proof of reading is not proof of implementation, scientific validity or relevance. If a specific *unresolved* present Field Forge question genuinely recurs in a pre-May text, reopen that exact page then; do not place entire 2025 system on equal footing with Field Forge's construction sequence.
 
+### Immediate predecessor reconstruction — May–July 2026, the reason FIELD FORGE became necessary
+
+**Relevance, not merely age:** these 28 original/provenance-grounded claims concern the *actual contradiction* inherited by N028: Rawlsing had an increasingly nuanced empirical source, answer, position and structural-pressure pipeline, yet could compute meaningful structural rows without delivering them as intelligible, legally usable relations to its next consumer. The resulting architecture could masquerade as pressure by counting permissions or demo keys. A fixed nine-strata hierarchy was a poor substitute for answering what differentiated social positions, conflicting repertoires, institutions and actual applicability make possible in a time/place.
+
+The May 11 v2 chat is a **dated recovered-context lead**, not a retrieved complete manuscript. Its key non-demographic V549b cloud claim is independently reflected in the actual V550 v3 Directive's §14. The June 25 assessments are **original inspected historical reviews**, not claims of present runtime regressions. The July 6 earlier strata handoff is a lead; the direct August 10 V5 source and original August 29–31 N028 retain stronger authentication for its interpretation.
+
+**What survives as an operational FF demand today:** actual complete-case/respondent/eligible topology; position≠attitude cloud; typed evidence atom/structural role with source/target/period/permissions; negative/refusal semantics; source-grain integrity through transforms; distinction between statistical association and externally issuable material force; and an exact first-reader operation whose output changes a downstream option. These are the *pre-N028 unresolved functional problems*, not an instruction to reinstate historical V552J/553 code or the old v3 directive as current programme.
+
+### D091 — May 11 2026 earlier ChatGPT conversation (chat search handle; original full v2 not retrieved) (2 distinct immediate-formation arguments)
+
+**Original status:** `CHAT_HANDLE`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D091.01** · May 11 v2 lead | Earlier v1 V540–V558 had respondent source→DDM→profile/strata/household/graft trajectory | Treat as intellectual precursor, not a current stage blueprint; original v1/v2 pack still unrecovered | `HISTORY` | Contemporary FF invents its own provenance of emergence |
+| **D091.02** · May 11 v2 lead | V549b explicitly separates co-travelling non-demographic responses from demographic position predictors | Require actual respondent coadministered answer configurations and conditional minority branches, separate from position covariates | `FF-CORE` | Position correlation alone masquerades a coherent social repertoire |
+
+### D092 — RAWLSING_V550_CODEX_DIRECTIVE_PACK_v3.md (native Library exact title; §§1–2, 11, 14–16; original date unresolved) (8 distinct immediate-formation arguments)
+
+**Original status:** `READ`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D092.01** · §1 / lines 25–72 | A lawful DDM path already distinguished raw observation, mapping, conditioned determinicity, branches, co-signature, structural evidence and downstream life | Conserve functional separation; current I03/S04/G4 replace older stage API names | `FF-CORE;HISTORY` | Raw survey code jumps directly into personhood |
+| **D092.02** · §2 / lines 73–94 | Question structural mapping, response label, determinicity, evidence atom and persona cannot be equated | Maintain source meaning/rights and downstream issuance grades separately | `FF-CORE` | A normalized label creates a structural causal claim |
+| **D092.03** · §2 / lines 84–92 | Outliers, missingness and respondent contradictions are deliberately preserved | Source-coherent rare alternatives and explicit unresolved risk, not modal person typing | `FF-CORE` | Contradictory or rare lives erased as noise |
+| **D092.04** · §11 / lines 1533–1610 | Position determinant tables and clouds have different admissible fields and observed grains | Keep qualified objective position predictors distinct from source response-response co-travel | `FF-CORE` | Survey identity relabeled private belief |
+| **D092.05** · §14 / lines 1715–1755 | Cloud anchor uses branch+question+response with substantive mapped responses only; forbids demographic/context/source columns as cloud features | Reuse legitimate co-response query, do not put respondent identifiers, country, religion, employment or weights into disposition feature set | `FF-CORE` | Cultural position appears as a false belief |
+| **D092.06** · §15 / lines 1755–1820 | Weighted and unweighted evidence, support/quarantine and special responses are different information objects | Preserve raw risk and effective/weighted evidence with exact estimand; do not call one authoritative by default | `FF-CORE;UPSTREAM` | A complete-case ratio mislabeled population law |
+| **D092.07** · §16 / lines 1820–1865 | Old structural-evidence-atom bridge required semantic relation axis, target, stratum relevance and forbidden inference, not raw answer only | Conserve issuer of real structural interpretations without resurrecting fixed strata as semantic primitives | `FF-CORE;HOLD-SCI` | An attitude association becomes coercive power |
+| **D092.08** · §1 / §16 | Early pipeline was described as strata→temporal pressure→persona; this remained an intended scaffold rather than proof of an applied field | Treat this as the *problem that led to FF*: structured information must reach consumer, not merely be produced | `HISTORY;DOWNSTREAM` | Old stage diagram called current software |
+
+### D093 — rawlsing_v552_v552j_dependency_audit_20260625.md (Project file exact title/sections) (4 distinct immediate-formation arguments)
+
+**Original status:** `READ`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D093.01** · Evidence from package inspection | Actual V552 relation-axis, target, driver-facet, structural-channel, horizon and contradiction outputs contained distinct structural keys | Recognize inherited structural producer capital, not just demographic opinion cloud | `HISTORY;FF-CORE` | All structural intelligence mislabeled absent |
+| **D093.02** · Architectural diagnosis | V552→V552J had only artifact-level rows, while V553 required row-level structural fact identity | Separate source-identity/claim-grain from artifact filename or packet ID | `FF-CORE` | No first-reader can bind a particular structural relation |
+| **D093.03** · Non-negotiable rule | Permission flags (ready, temporal allowed, packet type) are not structural entity identity | Typed role/target/material relation must exist before permission grants its use | `FF-CORE` | Readiness score becomes economic pressure |
+| **D093.04** · Required correction | V551J respondent packet is useful evidence but cannot replace V552 structural row spine | Retain both genuine respondent co-travel and independently qualified structural proposition | `FF-CORE;UPSTREAM` | Sociology silently reduced to survey permission |
+
+### D094 — rawlsing_v552_v553_structural_retrofit_assessment_20260625.md (Project file exact title/sections) (5 distinct immediate-formation arguments)
+
+**Original status:** `READ`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D094.01** · Critical defects 1–3 | Blank-field resolver can overwrite valid V552J structural facts; guessed paths and synthetic IDs lose true lineage | Consumer must preserve exact nonblank producer source/row identity and stable provenance | `HISTORY;FF-CORE` | Real structural evidence erased while test remains green |
+| **D094.02** · Major defects 1–2 | Horizon constraint cannot be a universal requirement for channel/axis/target-level structural fact | Select fact-type-specific grain, not one five-field compulsory pressure object | `FF-CORE` | Legitimate field relation denied because horizon absent |
+| **D094.03** · Major defects 3–4 | Broad relation-axis score joins are not valid exact structural matching, and packet-ready ≠ structural-key-ready | A particular objective claim needs typed exact/partial/missing match status and distinct readiness | `FF-CORE;HOLD-SCI` | Accidental many-to-many authority |
+| **D094.04** · Major defect 5 | Shared-column fallback is not a source-qualified structural key | Typed blocked/probe-only output; no false temporal deltas or downstream position power | `FF-CORE` | Source bookkeeping masquerades real social relation |
+| **D094.05** · Major defect 6 | V553 used readiness/permission to fabricate pressure instead of V552's actual structural pressure data | Do not equate approval, quantity, association or admissibility with magnitude of material force | `FF-CORE;HOLD-SCI` | Permission status becomes causal power |
+
+### D095 — rawlsing_v552_v553_latest_reassessment_20260625.md (Project file exact title/sections) (3 distinct immediate-formation arguments)
+
+**Original status:** `READ`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D095.01** · V552 status | Then-executed three waves emitted 171, 683, 846 structural rows, but source paths were blank in handoff | Proof distinction: producer output ≠ consumer-readable evidence | `HISTORY;FF-CORE` | A generated table counts as an active social field |
+| **D095.02** · V552J status | All then-run V553-facing structural dimensions were empty although source structural rows existed | The exact lost field lies at source→reader, not at fictional actor imagination | `HISTORY;HOLD-PROOF` | Another explanatory diagram hides loss of information |
+| **D095.03** · V553 status | One demo/fallback key could produce pressure-looking outputs without genuine V552J structural dimensions | A positive claimed field needs exact source semantic key, no demo substitution | `FF-CORE;HISTORY` | Toy time series treated historical causal reality |
+
+### D096 — rawlsing_v552_v553_three_wave_pack_assessment_20260625.md (Project file exact title/sections) (4 distinct immediate-formation arguments)
+
+**Original status:** `READ`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D096.01** · Gate check | Later V552J had 171/683/846 input rows, many probe-ready, but V553 handoff was zero in all three waves | Explicitly distinguish source produced, input exposed, release granted and actual consumer used | `HISTORY;FF-CORE` | Stale noneffective rows count as successful integration |
+| **D096.02** · Main root causes 1–3 | `ready_for_probe=true` plus blocked-context and `handoff_allowed=false` coexisted; test skipped assertion when handoff empty | An executable non-vacuity first-reader test must fail when supported positive alternatives disappear | `FF-CORE;HOLD-PROOF` | Zero exercised outputs yield reassuring green tests |
+| **D096.03** · Main root causes 4–6 | V553 overwrote resolved dimensions with blanks; required every horizon; failed to record resolution origin | Protect nonempty true-grain source identity and expose exact restoration/blocked reason | `FF-CORE` | Real structural signal replaced by fallback/demo |
+| **D096.04** · Main root cause 7 | `structural_pressure_value=1.0` on one demo key asserted causal force with no original structural fact | Source-qualified magnitude must be separately issued; unknown/null > invented number | `FF-CORE;HOLD-SCI` | Administrative readiness becomes empirical repression |
+
+### D097 — July 6 2026 Rawlsing nine-strata handoff (search lead only; original transcript not retrieved) (2 distinct immediate-formation arguments)
+
+**Original status:** `CHAT_HANDLE`. These are dated source-meaning recoveries, not claims the June 2026 code defects remain present in November. Project file titles are retrieval handles for original text; no invented GitHub permalink for uncommitted native files.
+
+| Primary text passage / source lead | What was being designed or failing | What FIELD FORGE must preserve | Placement | Specific wrong inference |
+| --- | --- | --- | --- | --- |
+| **D097.01** · July 6 lead | Older nine strata described planetary/global→imperial→nation→region→sect/ethno-class→party→neighborhood/household→family→self | Historical scaffold for socially pressured person, not an original verified FF algorithm | `HISTORY;REJECT-UNIVERSAL` | Fixed nested ranks replace cross-cutting social field |
+| **D097.02** · July 6 lead | The intended person was formed through place/time/class/institutions/pressures/agency rather than personality in isolation | Preserve the question but ground current solution in direct August V5/N028 and September R2 | `HISTORY;DOWNSTREAM` | A later theory copied backward into an unverified July chat |
 ### Reverse audit: start from the reconstructed machine, not the archive
 
 | Present HOME claim | Exact contributing original propositions | Independent challenge before using it as authority |
