@@ -1665,8 +1665,7 @@ class PluralActivityAffectR42(unittest.TestCase):
                          'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['wait']}}
                         for p,obj in [('restore','recover strength'),('duty','sustain availability to family'),
                                       ('unselected','ordinary leisure')]]
-                    world=blank_world();world['positions']['worker']='home'
-                    rt.ledger.initialize(world,[a])
+                    rt.ledger.initialize(blank_world(),[a])
                     self.assertEqual(rt.step('worker')['status'],'PERFORMED')
                     x=rt.ledger.actor('worker')[1]
                     es=x['expectations'];self.assertEqual({e['project_id'] for e in es},{'restore','duty'})
