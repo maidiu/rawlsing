@@ -154,7 +154,13 @@ class CountryNativeEconomics(unittest.TestCase):
                 return patch.object(owner,name,wrapped)
             with ExitStack() as stack:
                 for owner,name,label in (
+                    (issued,"admit","issued_full_admission"),
+                    (issued.NativeWorkload,"envelope","full_workload_envelope"),
                     (issued,"build_source_backed_c11_repository","cold_native_prepare"),
+                    (delivery,"_record","delivery_full_admission"),
+                    (delivery,"_s04_manifest","prepublish_s04_manifest"),
+                    (delivery,"_graph","durable_graph"),
+                    (issued.NativeWorkloadResult,"exact_s2e_output_census","native_output_census"),
                     (CarrierNeutralResearchExecutor,"execute_i03","native_I03"),
                     (CarrierNeutralResearchExecutor,"execute_i05","native_I05"),
                     (CountryReader,"_column","authenticated_column_read_decode"),
@@ -171,16 +177,29 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertIsNotNone(pub.release_identity)
             db.unlink()
             t=time.monotonic()
-            cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
-                expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,workload=workload,
-                resolver=resolver,host=host,purpose=purpose)
-            for q in queries:
-                read=cold.read_s04(q.ref,conditioner_index=0 if q==joint else None)
-                fact=read.first_consumer.execution.facts[0]
-                expected=len(chosen) if q in (joint,unary) else int((selected[:,0]==1).sum())
-                self.assertEqual(fact.raw_denominator_support,expected)
-                if q==joint:
-                    self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],len(chosen))
+            timings.clear()
+            with ExitStack() as stack:
+                for owner,name,label in (
+                    (issued.NativeWorkload,"envelope","cold_full_envelope"),
+                    (delivery,"_record","cold_full_admission"),
+                    (delivery,"open_empirical_closure","cold_closure_open"),
+                    (delivery,"census_native_batch","cold_census"),
+                    (delivery,"_graph","cold_graph"),
+                    (delivery,"_read_s04","actual_cold_s04"),
+                ):
+                    stack.enter_context(time_call(owner,name,label))
+                cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
+                    expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,workload=workload,
+                    resolver=resolver,host=host,purpose=purpose)
+                for q in queries:
+                    read=cold.read_s04(q.ref,conditioner_index=0 if q==joint else None)
+                    fact=read.first_consumer.execution.facts[0]
+                    expected=len(chosen) if q in (joint,unary) else int((selected[:,0]==1).sum())
+                    self.assertEqual(fact.raw_denominator_support,expected)
+                    if q==joint:
+                        self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],len(chosen))
+            print("COUNTRY_COLD_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
+                "median_s":median(v),"max_s":max(v)} for k,v in timings.items()}),flush=True)
             result,=cold._closure.discovery_results
             self.assertEqual(result.candidate_count,result.covered_candidate_count)
             self.assertEqual(result.candidate_count,1)
@@ -247,3 +266,102 @@ class CountryNativeEconomics(unittest.TestCase):
                         "distinct_high_unary_median_s":median(times[20:]),
                         "distinct_total_s":sum(times),"identical_warm_median_s":median(warm),
                         "sourcefree":True}),flush=True)
+
+
+from collections.abc import Mapping, Sequence
+from dataclasses import is_dataclass, fields
+from decimal import Decimal
+from fractions import Fraction
+from enum import Enum
+import hashlib
+from rawlsing_next.pre553_empirical_objects import AuthorityRef,CanonicalSemanticObject,Pre553IntegrityError,_decimal_text
+
+def _legacy_material(value: Any) -> Any:
+    """Complete dataclass preimages, including fields omitted by count receipts."""
+    if hasattr(value, "as_dict"):
+        return _legacy_material(value.as_dict())
+    if is_dataclass(value):
+        return {f.name: _legacy_material(getattr(value, f.name)) for f in fields(value)}
+    if isinstance(value, Mapping):
+        return {str(k): _legacy_material(v) for k, v in value.items()}
+    if isinstance(value, (tuple, list)):
+        return [_legacy_material(v) for v in value]
+    if isinstance(value, (set, frozenset)):
+        return sorted((_legacy_material(v) for v in value), key=lambda x: json.dumps(x, sort_keys=True))
+    return value
+
+
+
+def _legacy_canonicalize(value: Any) -> Any:
+    """Return deterministic JSON-safe semantic material.
+
+    Binary floats (including NaN/Infinity) are forbidden. Exact numerics may be
+    represented as integers, Decimal, Fraction, or exact strings.
+    """
+    if value is None or isinstance(value, (str, bool, int)):
+        return value
+    if isinstance(value, float):
+        raise Pre553IntegrityError("float/NaN/Infinity forbidden in semantic identity")
+    if isinstance(value, Decimal):
+        return {"$exact_decimal": _decimal_text(value)}
+    if isinstance(value, Fraction):
+        return {"$exact_fraction": [value.numerator, value.denominator]}
+    if isinstance(value, Enum):
+        return _legacy_canonicalize(value.value)
+    if isinstance(value, ExactRef):
+        return value.as_dict()
+    if isinstance(value, AuthorityRef):
+        return value.as_dict()
+    if isinstance(value, CanonicalSemanticObject):
+        return value.ref.as_dict()
+    if isinstance(value, Mapping):
+        if any(not isinstance(k, str) for k in value):
+            raise Pre553IntegrityError("semantic mapping keys must be strings")
+        return {k: _legacy_canonicalize(value[k]) for k in sorted(value)}
+    if isinstance(value, (set, frozenset)):
+        items = [_legacy_canonicalize(v) for v in value]
+        return sorted(items, key=_legacy_canonical_json)
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_legacy_canonicalize(v) for v in value]
+    raise Pre553IntegrityError(f"unsupported semantic identity type: {type(value).__name__}")
+
+
+def _legacy_canonical_json(value: Any) -> str:
+    return json.dumps(_legacy_canonicalize(value), sort_keys=True, separators=(",", ":"),
+                      ensure_ascii=False, allow_nan=False)
+
+
+def _legacy_semantic_hash(value: Any) -> str:
+    return hashlib.sha256(_legacy_canonical_json(value).encode("utf-8")).hexdigest()
+
+
+
+class MaterialFastPathParity(unittest.TestCase):
+    def test_old_and_new_material_and_canonical_bytes_match(self):
+        from rawlsing_next.pre553_issued_workload import material
+        from rawlsing_next.pre553_empirical_objects import canonical_json,canonicalize
+        from types import MappingProxyType
+        fx=_fixture("material-parity")
+        cases=[None,False,True,0,1,-100,2**100,"é🧠",{"z":[1,"a",None],"a":(False,3)},
+               MappingProxyType({"x":Decimal("1.2300"),"y":Fraction(2,3)}),
+               {3,1,2},fx["projection"],fx["authorities"],fx["universe"]]
+        for value in cases:
+            with self.subTest(kind=type(value).__name__):
+                old=_legacy_material(value)
+                new=material(value)
+                self.assertEqual(new,old)
+                self.assertEqual(canonical_json(new),_legacy_canonical_json(old))
+        for bad in ({"x":1.0},[float("nan")],{1:"not semantic string key"}):
+            with self.assertRaises(Pre553IntegrityError):
+                canonicalize(bad)
+            with self.assertRaises(Pre553IntegrityError):
+                _legacy_canonicalize(bad)
+        self.assertNotEqual(canonical_json(True),canonical_json(1))
+        self.assertNotEqual(canonical_json("1"),canonical_json(1))
+        # Full material is detached anew; mutation must not alias a past
+        # envelope or evade the next full admission hash.
+        mutable={"v":[1,2]}
+        first=material(mutable)
+        mutable["v"][0]=False
+        self.assertEqual(first,{"v":[1,2]})
+        self.assertNotEqual(canonical_json(first),canonical_json(material(mutable)))

@@ -51,6 +51,15 @@ class NativeWorkloadExecutionError(RuntimeError):
 
 def material(value: Any) -> Any:
     """Complete dataclass preimages, including fields omitted by count receipts."""
+    # Exact builtin fast paths. The full issued envelope is still rebuilt and
+    # hashed at every admission boundary. No identity-only or stale hash cache.
+    typ = type(value)
+    if value is None or typ in (str, bool, int, float, bytes):
+        return value
+    if typ is dict:
+        return {str(k): material(v) for k, v in value.items()}
+    if typ is list or typ is tuple:
+        return [material(v) for v in value]
     if hasattr(value, "as_dict"):
         return material(value.as_dict())
     if is_dataclass(value):

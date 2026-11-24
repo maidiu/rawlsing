@@ -184,7 +184,18 @@ def canonicalize(value: Any) -> Any:
     Binary floats (including NaN/Infinity) are forbidden. Exact numerics may be
     represented as integers, Decimal, Fraction, or exact strings.
     """
-    if value is None or isinstance(value, (str, bool, int)):
+    # Fast paths for the common already-materialized JSON containers. Keep
+    # key order, recursive validation and the existing canonical byte contract.
+    typ = type(value)
+    if value is None or typ in (str, bool, int):
+        return value
+    if typ is dict:
+        if any(not isinstance(k, str) for k in value):
+            raise Pre553IntegrityError("semantic mapping keys must be strings")
+        return {k: canonicalize(value[k]) for k in sorted(value)}
+    if typ is list or typ is tuple:
+        return [canonicalize(v) for v in value]
+    if isinstance(value, (str, bool, int)):
         return value
     if isinstance(value, float):
         raise Pre553IntegrityError("float/NaN/Infinity forbidden in semantic identity")
@@ -265,6 +276,13 @@ def _freeze_semantic_descendants(value: Any) -> Any:
 
 def _detach_semantic_descendants(value: Any) -> Any:
     """Return a detached ordinary export preserving the pre-repair public shape."""
+    typ = type(value)
+    if value is None or typ in (str, bool, int):
+        return value
+    if typ is tuple:
+        return tuple(_detach_semantic_descendants(item) for item in value)
+    if typ is list:
+        return [_detach_semantic_descendants(item) for item in value]
     if isinstance(value, Mapping):
         return {key: _detach_semantic_descendants(value[key]) for key in value}
     if isinstance(value, _FrozenSemanticList):
