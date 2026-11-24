@@ -412,22 +412,39 @@ class ColdSavedProduct:
         _require(disposition.adjudication_outcome == "RULE_SATISFIED",
                  "LEARNED_NONPRODUCTIVE_M1:" + disposition.adjudication_outcome)
         self._live()
-        learned = compose_learned_world(
-            product_contract, m2_repository=m2_repository,
-            lifecycle_executor=lifecycle_executor, m1_disposition=disposition,
-        )
-        self._live()
-        receipt = publish_learned_lifecycle(
-            root_dir, learned=learned, executor=lifecycle_executor,
-            determinants=determinants, m1_input_bundle=bundle.as_dict(),
-            m1_family_rule_binding=family_rule_binding.as_dict(),
-        )
-        artifact = open_learned_lifecycle(
-            receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
-        consumed = artifact.consume(self._closure.root_path,
-                                    require_current_selection=require_current_selection)
-        self._live()
-        return receipt, consumed
+        from rawlsing_next.pre553_learned_product_release import M2Repository
+        from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+        _require(type(m2_repository) is M2Repository
+                 and type(lifecycle_executor) is LearnedProductLifecycleExecutor,
+                 "EXACT_LOCAL_LEARNED_OWNERS_REQUIRED")
+        # Lock order M2 -> B5. Both incumbent owners hold their own write
+        # transactions across composition, disk publication, cold validation
+        # and final CURRENT check. A failure rolls back only local state.
+        # An immutable blob/manifest already renamed on disk can survive;
+        # it is historical, never a returned receipt or external selection.
+        with m2_repository._mutation_transaction(), lifecycle_executor._mutation_transaction():
+            self._live()
+            learned = compose_learned_world(
+                product_contract, m2_repository=m2_repository,
+                lifecycle_executor=lifecycle_executor, m1_disposition=disposition,
+            )
+            _require(learned.receipt.terminal_state == "RULE_SATISFIED",
+                     "LEARNED_COMPOSITION_NOT_PRODUCTIVE")
+            self._live()
+            receipt = publish_learned_lifecycle(
+                root_dir, learned=learned, executor=lifecycle_executor,
+                determinants=determinants, m1_input_bundle=bundle.as_dict(),
+                m1_family_rule_binding=family_rule_binding.as_dict(),
+            )
+            artifact = open_learned_lifecycle(
+                receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
+            consumed = artifact.consume(self._closure.root_path,
+                                        require_current_selection=require_current_selection)
+            _require(consumed.state != "REFUSED",
+                     "LEARNED_COLD_CONSUMER_REFUSED:" + str(consumed.reason_code))
+            self._live()
+            return receipt, consumed
+
 
     def _open_learned_for_serving(self, artifact_path, *,
                                   expected_root, expected_purpose_ref):

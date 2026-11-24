@@ -12,6 +12,7 @@ adjudication, consumer permission, structural admission, or source semantics.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager
 from functools import wraps
 from threading import RLock, local
 from dataclasses import dataclass, field
@@ -467,22 +468,8 @@ class ReleaseExplanation:
 def _repository_mutation(method):
     @wraps(method)
     def guarded(self, *args, **kwargs):
-        with self._lock:
-            before = {name: dict(getattr(self, name)) for name in self._store_names}
-            depth = getattr(self._mutation_context, "depth", 0)
-            self._mutation_context.depth = depth + 1
-            try:
-                self._native_mutation_preflight(method.__name__)
-                return method(self, *args, **kwargs)
-            except BaseException:
-                # Restore containers in place: saved store references remain exact.
-                for name, values in before.items():
-                    store = getattr(self, name)
-                    store.clear()
-                    store.update(values)
-                raise
-            finally:
-                self._mutation_context.depth = depth
+        with self._mutation_transaction(method.__name__):
+            return method(self, *args, **kwargs)
     return guarded
 
 
@@ -509,6 +496,30 @@ class M2Repository:
         self._releases: dict[str, ReleaseCore] = {}
         self._representations: dict[str, RepresentationRecord] = {}
         self._bindings: dict[str, PublicationBinding] = {}
+
+    @contextmanager
+    def _mutation_transaction(self, operation="local_composite_publication"):
+        """Local exception rollback across a sequence of native M2 writes.
+
+        Same lock and exact stores as the existing per-operation transaction.
+        Nested calls retain per-operation rollback; outer failure restores
+        the original containers in place. No external issuance or disk atomicity.
+        """
+        with self._lock:
+            before = {name: dict(getattr(self, name)) for name in self._store_names}
+            depth = getattr(self._mutation_context, "depth", 0)
+            self._mutation_context.depth = depth + 1
+            try:
+                self._native_mutation_preflight(operation)
+                yield
+            except BaseException:
+                for name, values in before.items():
+                    store = getattr(self, name)
+                    store.clear()
+                    store.update(values)
+                raise
+            finally:
+                self._mutation_context.depth = depth
 
     @property
     def native_security_mode(self) -> str:
