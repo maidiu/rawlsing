@@ -884,7 +884,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                         if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
     if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
-        event_summary['human_vocal_event_ref'] = human_vocal['user_event_ref']
+        event_summary['human_food_offer_event_ref' if human_vocal.get('operation')=='OFFER_FEED'
+                      else 'human_vocal_event_ref'] = human_vocal['user_event_ref']
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
