@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `fc07b479c72444a841bcd14bedee39a6327a86b2`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **119-PR targeted discovered set (108 older observations + 11 new targeted observations)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `f874dd74db5bbfc2d035322f41e631e5bf1f64cb`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **120-PR targeted discovered set (108 older observations + 11 November 23 observations + 1 protected P3 observation)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -315,3 +315,27 @@ These are the 22 original identities with explicit links in this targeted intake
 - [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Blocked private/inaccessible/stale tip presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
 - [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Visitor-only finance disclosure requirements. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
 
+
+## Protected P3 functional reconciliation — #746
+
+Exact protected source `827714e83743056939894a39736d72ea16bdc6dd`; merged `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`; five selected runtime/test blobs equal reviewed runtime `16275d03fc4724a694c48ed9d447c4eeadbe25f2`. Review source and adverse evidence are linked in the same ledger. No new runtime test execution or full native parity.
+
+| Original function | Actual scoped first reader (protected recourt 19) |
+|---|---|
+| C3 — Individual organization, practice, mediation | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
+| C9 — Canonical actor decision/version and later semantic reader | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
+| C10 — Event/model call and life recursion | RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner; no native C10 pipe |
+| A2 — Historical reentry and changed later action | P3Owner later response readset; no native A2 |
+| N04 — Simultaneous recruitment, tension and regulation | p3.projections.activate read-only contradiction activation |
+| N05 — Durable transition, changed relations and contradiction | PsycheStore.commit_effects typed sourcefree V3MS_MEDIATOR; not full native N05 |
+| N08 — Differentiated impression, intensity, salience and no-change | P3Owner contextual state activation; no ADP memory grant |
+| N11 — User-settled event-batch temporal recursion | Existing RecursionCycle/P2 two batches x three events with P3Owner wrapper |
+| O15 — Actual semantic E2 consumer | P3Owner._result later computed response with native_action_performed=false |
+| E05 — Canonical actor writer to reader | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
+| E09 — Irreversible 3–5 world event batch | Existing RecursionCycle -> BatchEngine -> P3Owner sourcefree |
+| S6 — Persistent life / time / world events | Actual same-root sourcefree development through inherited #704 + P3; no source-native offscreen life |
+| S10 — Memory / persistence / replay / cost | PsycheStore persistent typed effects, exact receipt/cold/replay; not ADP016 formed memory |
+| B1 — B1 test-only E1→mediator→later E2 | B1 bfirst.mode_for/scoped mediator predicates in frozen TEST_ONLY P3 registry, not an independent B1 actor root |
+| S39_S52 — modern Codex S39–S52 series | Existing accepted #704/S39-47 P2 engine reused unchanged; inherited 71 PASS |
+
+31 of 144 identities now carry scoped function-first links (65 links); 113 are not equivalently refreshed, **not missing**. Existing function-first lookup returns the new #746 row. First-consumer succession to CO/NEIGHBOR remains unadjudicated.
