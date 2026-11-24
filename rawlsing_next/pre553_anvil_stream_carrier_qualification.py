@@ -74,8 +74,10 @@ class HeldStreamPins:
     roots: Mapping[str, str]
 
     def __post_init__(self) -> None:
-        if self.source_id not in ("SRC04", "SRC16"):
-            _fail("P0 stream bridge limited to the two explicitly selected waves")
+        if not isinstance(self.source_id, str) or not re.fullmatch(
+            r"SRC(?:0[1-9]|[12][0-9]|3[0-5])", self.source_id
+        ):
+            _fail("exact original35 source identity required")
         if type(self.exact_release_path) is not str or not Path(self.exact_release_path).is_absolute():
             _fail("independently held absolute saved release path required")
         if not (_HEX.fullmatch(self.source_sha256)

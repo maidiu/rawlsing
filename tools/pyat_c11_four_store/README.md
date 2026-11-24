@@ -119,3 +119,21 @@ Output must be on a large local volume: preflight reserves at least 12 GiB free 
 - No test data, fixture or individual-level sources are copied to GitHub by these harness scripts.
 
 Controlling existing owner: #1006 and #1097. G4/KUDA source-grade record is documentary only. This experimental branch does not modify existing protected S2-B/C/D scientific or physical modules.
+
+### Construct a new stream input for S3
+
+Use `python3 -m tools.pyat_c11_four_store.build_stream` for a wave whose
+saved stream does not exist. The command reuses the single-pass operator
+and `ANVIL_STREAM_C11_ESTATE@1` writer from `a51027a7d`. Provide
+`--config`, `--config-sha256`, `--canonical-config-sha256`,
+`--authority-provider` and an existing owner-private `--private-root`.
+The local provider's `construction_inputs(config)` returns the exact
+source path, typed request and incumbent decision resolver.
+
+The default command performs admission without decoding. Use `--execute`
+inside the existing resource-supervised local run after admission and resource
+planning. Use `--resume` only with an authenticated checkpoint in its
+original private root. The construction emits a private candidate receipt
+alongside the release. Receive the emitted pins independently and use the
+separate S3 currentness provider before running `run_all.sh --only S3`.
+The build command never supplies its own S3 admission.
