@@ -7,6 +7,7 @@ or publish original data through that fixture contract.
 """
 from __future__ import annotations
 
+from collections import OrderedDict
 from dataclasses import dataclass
 from pathlib import Path
 from time import monotonic
@@ -26,6 +27,8 @@ from rawlsing_next.pre553_route_b_production import RouteBEmpiricalObjectGraph
 from rawlsing_next.pre553_s2e_exact_conservation import census_native_batch
 from rawlsing_next.pre553_s04_first_consumer import receive_s04_first_consumer
 from rawlsing_next.pre553_s04_observed_research import receive_s04_observation_scope
+from rawlsing_next.pre553_s04_general_joint_algebra import S04GeneralJointWorkspace
+from rawlsing_next.pre553_s04_i05_reception import receive_s04_i05_role
 
 SCHEMA = "PYAT_SAVED_U43_S2F_DELIVERY@1"
 
@@ -119,6 +122,38 @@ def _graph(workload, direct, discovery):
     )
 
 
+def _read_s04(query, execution, conditioner_index=None):
+    first = receive_s04_first_consumer(
+        query=query, execution=execution, conditioner_index=conditioner_index)
+    scope = receive_s04_observation_scope(
+        query=query, execution=execution, knowledge=first.knowledge)
+    return ColdS04Read(first, scope)
+
+
+def _s04_refs(read):
+    return {
+        "knowledge_ref": read.first_consumer.knowledge.ref.as_dict(),
+        "observation_ref": read.observation_scope.ref.as_dict(),
+        "receipt_ref": read.first_consumer.receipt.ref.as_dict(),
+    }
+
+
+def _s04_manifest(workload, direct):
+    """Run actual incumbent S04 before publication; retain refs, not duplicate cells."""
+    manifest = {}
+    for ex in direct:
+        query = workload.catalog.resolve_query_exact(ex.query_ref)
+        if (len(ex.facts) != 1 or ex.source_scope_mode != "SINGLE_UNIVERSE"
+                or ex.facts[0].measure_kind != "RAW"):
+            manifest[query.ref.key] = {"status": "S04_SCOPE_NOT_APPLICABLE"}
+        else:
+            manifest[query.ref.key] = {
+                "status": "S04_RETAINED_NATIVE_BASIS",
+                **_s04_refs(_read_s04(query, ex)),
+            }
+    return manifest
+
+
 @dataclass(frozen=True)
 class SavedPublication:
     receipt: PublishReceipt
@@ -184,6 +219,7 @@ def execute_publish_saved(
             "saved_batch_manifest": result.manifest.semantic_projection(),
             "saved_batch_receipts": [r.projection() for r in result.receipts],
             "saved_batch_census": census.as_dict(),
+            "s04_first_reads": _s04_manifest(workload, direct),
         },
     )
     admission.check_current()
@@ -222,6 +258,8 @@ class ColdSavedProduct:
         self._purpose = purpose
         self._record = record
         self._queries = {r.query_ref.key: r for r in closure.i03_results}
+        self._first_reads = closure.manifest["core"]["native_result"]["typed_states"]["s04_first_reads"]
+        self._cache = OrderedDict()  # bounded, request-process-local derivative cache
 
     def _live(self):
         _require(_record(self._workload, self._resolver, self._host, self._purpose)
@@ -232,13 +270,43 @@ class ColdSavedProduct:
         ref = exact_ref(query_ref)
         execution = self._queries.get(ref.key)
         _require(execution is not None, "QUERY_NOT_IN_RETAINED_DIRECT_WORKLOAD")
+        _require(conditioner_index is None or type(conditioner_index) is int,
+                 "EXACT_CONDITIONER_INDEX_REQUIRED")
+        expected = self._first_reads[ref.key]
+        _require(expected["status"] == "S04_RETAINED_NATIVE_BASIS",
+                 "S04_SCOPE_NOT_APPLICABLE")
+        key = (ref.key, conditioner_index)
+        if key in self._cache:
+            self._cache.move_to_end(key)
+            self._live()
+            return self._cache[key]
         query = self._closure.query_by_ref(ref)
-        read = receive_s04_first_consumer(
-            query=query, execution=execution, conditioner_index=conditioner_index)
-        scope = receive_s04_observation_scope(
-            query=query, execution=execution, knowledge=read.knowledge)
+        read = _read_s04(query, execution, conditioner_index)
+        actual = _s04_refs(read)
+        fields = ("knowledge_ref", "observation_ref", "receipt_ref") if conditioner_index is None else (
+            "knowledge_ref", "observation_ref")
+        _require(all(canonical_json(actual[k]) == canonical_json(expected[k]) for k in fields),
+                 "COLD_S04_FIRST_READ_IDENTITY_DRIFT")
         self._live()
-        return ColdS04Read(read, scope)
+        self._cache[key] = read
+        if len(self._cache) > 16:
+            self._cache.popitem(last=False)
+        return read
+
+    def joint_workspace(self, query_ref: ExactRef):
+        """Reuse the existing S04 algebra, with live guard on later projections."""
+        read = self.read_s04(query_ref)
+        k = read.first_consumer.knowledge
+        return S04GeneralJointWorkspace(
+            knowledge=k, expected_knowledge_ref=k.ref, current_guard=self._live)
+
+    def read_i05_role(self, candidate_receipt_ref: ExactRef, query_role: str):
+        self._live()
+        result = receive_s04_i05_role(
+            discovery=self._closure.i05_result,
+            candidate_receipt_ref=candidate_receipt_ref, query_role=query_role)
+        self._live()
+        return result
 
     def m1_bundle(self):
         self._live()
@@ -276,6 +344,8 @@ def open_saved_product(
     states = native["typed_states"]
     _require(canonical_json(states["saved_batch_manifest"]) ==
              canonical_json(manifest.semantic_projection()), "ARCHIVE_BATCH_MANIFEST_DRIFT")
+    _require(set(states["s04_first_reads"]) == {r.query_ref.key for r in workload.requests},
+             "ARCHIVE_S04_FIRST_READ_CENSUS_DRIFT")
     receipts = tuple(_restore_receipt(row) for row in states["saved_batch_receipts"])
     direct = {r.query_ref.key: r for r in closure.i03_results}
     _require(len(direct) == len(closure.i03_results) == len(workload.requests),
