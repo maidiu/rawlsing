@@ -454,3 +454,71 @@ def test_relay_native_joint_component_order_survives_c1_consumer():
     oracle = {tuple(c["cell"]):c["raw_numerator_support"]
               for c in canonicalize(expected.target_topology)["complete_cell_semantic_projection"]}
     assert {tuple(c["cell"]):c["raw_numerator_support"] for c in geometry["cells"]}==oracle
+
+
+@pytest.mark.parametrize("route",["DISCOVERY","RECURSIVE"])
+def test_relay_joint_routes_require_actual_first_target_and_scope(route):
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_analytical_composition import (
+        compose_positioned_subject_possibility, AnalyticalCompositionError,
+        _validate_discovery_consumption,
+    )
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    tag = "RELAY-JOINT-"+route
+    rows = [{"id":f"R{i}", "responses":{"X":x,"Y":y,"Z":z}}
+            for i,(x,y,z) in enumerate([(0,0,1),(0,0,1),(0,1,0),(1,1,1),(1,1,1)])]
+    source = native._build_source(tag,rows)
+    qa,da = native._query_authority(tag),i05._d_auth(tag+"-discovery")
+    parent = native._branch_predicate(source,qa,tag="all")
+    atom = native._predicate(source,qa,native._response_leaf(source,qa,"X",0),tag="x0")
+    names=tuple(sorted(("Y","Z"),key=lambda n:source["qrefs"][n].key,reverse=True))
+    template = native._query(source,qa,parent,names,tag="joint")
+    family = "RECURSIVE_SUBGROUP_FORK" if route=="RECURSIVE" else "BRANCH_CONDITIONED_COTRAVEL"
+    grammar=i05._grammar(operation="I03-OP-"+tag+"-discovery",
+        atoms=[i05._atom("ALL",parent,"BRANCH"),i05._atom("X0",atom,"RESPONSE")],
+        templates=[i05._qt("J",template)],
+        rules=[i05._rule("joint",family,"SINGLE_ATOM",atom_ids=("X0",),
+                        baseline_atom_id="ALL",query_template_id="J",
+                        validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"})],k=2,j=2)
+    authority=i05._discovery_authority(source,grammar,da,tag=tag)
+    registry=native._registry(source,qa,da)
+    args=dict(repository=source["repo"],discovery_authority=authority,authority_registry=registry,
+        release_refs=(source["release_ref"],),predicate_catalog=(parent,atom),
+        query_template_catalog=(template,))
+    if route=="RECURSIVE":
+        native_result=execute_exact_bounded_discovery_with_handoffs(**args)
+        discovery=native_result.discovery_result
+    else:
+        from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+        discovery=execute_exact_bounded_discovery(**args)
+    receipt=discovery.receipts[0]
+    assert receipt.typed_state=="DISCOVERED_RESULT_SUPPORTED"
+    role=next(r for r in receipt.candidate_identity["query_roles"] if r["role"]=="CONDITION")
+    predicate=next(p for p in discovery.executed_predicates if p.ref==exact_ref(role["predicate_ref"]))
+    query=next(q for q in discovery.executed_queries if q.ref==exact_ref(role["query_ref"]))
+    refs=tuple(exact_ref(r) for r in query.target_refs)
+    universe,release=source["universe"].ref,source["release_ref"]
+    coord,pairing=source["qrefs"]["X"],fx.make_pairing_authority(tag)
+    binding=fx.make_conditioner_binding(binding_id="X",
+        subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",0)),empirical_coordinate_ref=coord,
+        comparability_authority_ref=pairing,source_universe_ref=universe,release_ref=release)
+    def compose(target):
+        consumer=fx.make_multi_conditioner_consumer_query(query_id=tag,
+            subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+            target_ref=target,source_universe_ref=universe,release_ref=release,
+            bindings=[binding],projection_kind="TEST_ONLY_ORDERED_JOINT")
+        witness=fx.build_witness_for_binding(witness_object_id="urn:test:"+tag+":witness",
+            consumer_query=consumer,producer_query=query,producer_predicate=predicate,bindings=[binding],
+            coordinate_value_pairs=[(coord,0)],pairing_authority=pairing,
+            source_universe_ref=universe,release_ref=release)
+        route_args=({"recursive_handoff":native_result.handoffs[0]} if route=="RECURSIVE" else
+                    {"discovery_result":discovery,"discovery_receipt_ref":receipt.ref})
+        return compose_positioned_subject_possibility(repository=source["repo"],empirical_query=query,
+            predicate=predicate,authority_registry=registry,release_refs=(release,),
+            consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+            condition_binding_witness=witness,**route_args)
+    positive=compose(refs[0])
+    assert positive.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert positive.ordered_target_refs==refs and positive.raw_denominator_support==3
+    with pytest.raises(AnalyticalCompositionError,match="TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"):
+        compose(coord)
