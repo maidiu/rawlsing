@@ -17,6 +17,7 @@ on:
       - agent/neighbormulch-r13-material-participation-r33-20261124-r1
       - agent/neighbormulch-r14-collective-material-access-20261124-r1
       - agent/neighbormulch-r15-vocal-joint-practice-r35-20261124-r1
+      - agent/neighbormulch-r16-historical-material-conditioning-20261124-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -49,6 +50,7 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_participation_r13.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_collective_access_r14.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_joint_practice_r15.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_historical_conditioning_r16.py
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -109,6 +111,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joint_practice_r15.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joint_practice_r15.py' -q
+      - name: R16 historical conditioning causal court
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_historical_conditioning_r16.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_historical_conditioning_r16.py' -q
       - name: Full inherited CO R35 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
