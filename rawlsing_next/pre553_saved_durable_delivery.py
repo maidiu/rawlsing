@@ -204,6 +204,8 @@ def execute_publish_saved(
     admissions = []
 
     def factory():
+        _require(_record(workload, resolver, host, purpose) == record,
+                 "CURRENT_CHANGED_BEFORE_SAVED_ADMISSION")
         _require(not admissions, "SAVED_ADMISSION_FACTORY_REENTERED")
         item = saved_admission_factory()
         _require(type(item) is SavedC11Admission, "EXACT_SAVED_ADMISSION_REQUIRED")
@@ -598,6 +600,12 @@ def open_saved_product(
              "ARCHIVE_NATIVE_OUTPUT_CENSUS_DRIFT")
     _require(set(states["s04_first_reads"]) == set(direct),
              "ARCHIVE_S04_FIRST_READ_CENSUS_DRIFT")
+    # A complete S2-E transcript cannot license extra orphan graph objects.
+    # Compare exact refs to the actual completed outputs and admitted catalog.
+    expected_graph = _graph(workload, tuple(direct.values()), tuple(discoveries.values()))
+    _require({o.ref.key for o in expected_graph.public_objects()} ==
+             {o.ref.key for o in closure.object_graph.public_objects()},
+             "ARCHIVE_NATIVE_GRAPH_CONTAINS_UNOWNED_OBJECTS")
     outputs = {}
     for unit in manifest.units:
         catalog = direct if unit.job_kind == "QUERY" else discoveries

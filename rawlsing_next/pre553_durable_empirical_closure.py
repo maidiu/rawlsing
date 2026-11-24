@@ -2235,7 +2235,7 @@ def open_empirical_closure(
             release_identities=release_identities,
             i03_results=tuple(i03_results),
             i05_result=i05,
-                i05_results=i05_results,
+            i05_results=i05_results,
             object_graph=object_graph,
         )
     )
@@ -2249,7 +2249,7 @@ def open_empirical_closure(
         object_graph=object_graph,
         i03_results=tuple(i03_results),
         i05_result=i05,
-                i05_results=i05_results,
+        i05_results=i05_results,
         release_identities=release_identities,
         consumer_binding=(
             None
