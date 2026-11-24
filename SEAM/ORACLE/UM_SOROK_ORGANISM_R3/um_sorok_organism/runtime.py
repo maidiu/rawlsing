@@ -391,6 +391,16 @@ class ConstitutiveRuntime:
                     or selected_alternative.get('project_id')!=object_courses[0]['id']
                     or selected_alternative['world_request'].get('material_object_ref')!=object_courses[0]['material_object_ref']):
                 raise ValueError('INCIDENTAL_PROJECT_EXACT_OBJECT_SELECTION_REQUIRED')
+            conditional_courses=[p for p in actor.get('projects',[])
+                if p['id'] in selected_refs and action in p.get('dependency_conditional_means',{})]
+            if conditional_courses and (len(selected_refs)!=1
+                    or not selected_alternative
+                    or selected_alternative.get('project_id')!=conditional_courses[0]['id']
+                    or selected_alternative.get('dependency_conditional_means_ref')!=
+                       conditional_courses[0]['dependency_conditional_means'][action]['origin_event_ref']
+                    or selected_alternative['world_request'].get('addressed_party_ref')!=
+                       conditional_courses[0]['dependency_conditional_means'][action]['counterpart_ref']):
+                raise ValueError('DEPENDENCY_PROJECT_EXACT_CONDITIONAL_MEANS_REQUIRED')
             selected=[available[ref] for ref in selected_refs]
             selection_grade=proposed.get(
                 'purpose_selection_grade',

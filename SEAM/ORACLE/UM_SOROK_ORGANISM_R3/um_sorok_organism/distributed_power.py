@@ -97,15 +97,38 @@ def _present_counterparts(access):
             and type(c.get('source_actor')) is str}
 
 
+def accessible_human_counterparts(access):
+    """The actual human presence channel, distinct from constituted actors."""
+    return {c.get('visitor_ref') for c in access.cues
+            if type(c) is dict and c.get('kind')=='visitor_vocal_partner'
+            and type(c.get('visitor_ref')) is str}
+
+
+def food_acceptance_alternative(access, invitation):
+    """Extend an already qualified invitation, never imply fresh assent.
+
+    Works for either a historically grounded invitation or a selected
+    project course. The world still requalifies the authored event and stock.
+    """
+    if invitation.get('operation')!='SIGNAL':return None
+    other=invitation['world_request']['addressed_party_ref']
+    sign=current_addressed_food_offers(access).get(other)
+    if sign is None:return None
+    acceptance=copy(invitation)
+    acceptance['human_food_offer_ref']=sign['visitor_event_ref']
+    acceptance['option_id']=stable_id('accept_actual_food_offer',{
+        'option':invitation['option_id'],'offer':acceptance['human_food_offer_ref']})
+    acceptance['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+    return acceptance
+
+
 def current_addressed_food_offers(access):
     """Only currently accessible, particular offers from a visible human.
 
     This is a read of the existing sensory field, not world settlement.
     The world independently requalifies the committed authored event.
     """
-    visitors={c.get('visitor_ref') for c in access.cues
-              if type(c) is dict and c.get('kind')=='visitor_vocal_partner'
-              and type(c.get('visitor_ref')) is str}
+    visitors=accessible_human_counterparts(access)
     offers={}
     for sign in access.cues:
         if (type(sign) is dict and sign.get('kind')=='visitor_food_offer'
@@ -146,10 +169,7 @@ def conditional_assistance_options(constitution, access, option):
     if operation not in COOPERATIVE_OPERATIONS:
         return []
     participants=_present_counterparts(access)
-    visitors = {c['visitor_ref'] for c in access.cues
-                if operation in ('SING','SIGNAL') and type(c) is dict
-                and c.get('kind') == 'visitor_vocal_partner'
-                and type(c.get('visitor_ref')) is str}
+    visitors = accessible_human_counterparts(access) if operation in ('SING','SIGNAL') else set()
     participants |= visitors
     if not participants:
         return []
@@ -226,15 +246,8 @@ def conditional_assistance_options(constitution, access, option):
     # actor-selected acceptance alternative. A generic signal is not enough.
     if operation == 'SIGNAL':
         for row in list(offered):
-            other=row['world_request']['addressed_party_ref']
-            sign=current_addressed_food_offers(access).get(other)
-            if other in visitors and sign is not None:
-                acceptance=copy(row)
-                acceptance['human_food_offer_ref']=sign['visitor_event_ref']
-                acceptance['option_id']=stable_id('accept_actual_food_offer',{
-                    'option':row['option_id'],'offer':acceptance['human_food_offer_ref']})
-                acceptance['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
-                offered.append(acceptance)
+            acceptance=food_acceptance_alternative(access,row)
+            if acceptance is not None:offered.append(acceptance)
     return offered
 
 

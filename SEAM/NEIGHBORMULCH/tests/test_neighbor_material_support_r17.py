@@ -49,7 +49,7 @@ def policy(stage, acquire=False):
 
 
 class MaterialSupportR17(unittest.TestCase):
-    def build(self,name,*,held=2,own=1,blocked=False,user_hearing=True,user_visible=True,actor_visible=True):
+    def build(self,name,*,held=2,own=1,blocked=False,user_hearing=True,user_visible=True,actor_visible=True,actor_setup=None):
         tmp=tempfile.TemporaryDirectory(prefix='neighbor_r17_')
         self.addCleanup(tmp.cleanup)
         db=str(Path(tmp.name)/'world.sqlite')
@@ -68,6 +68,7 @@ class MaterialSupportR17(unittest.TestCase):
         actor['projects']=[{'id':'own-meal','object':'obtain nourishment',
                            'motive':'ordinary material reproduction',
                            'means':['EAT'],'priority':.4,'status':'active'}]
+        if actor_setup is not None:actor_setup(actor)
         rt.ledger.initialize(world,[actor])
         n=NeighborEncounter(rt,'visitor',mii_module=mii)
         n.install_sourcefree_conditions({
