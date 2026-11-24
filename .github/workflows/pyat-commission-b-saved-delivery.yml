@@ -4,6 +4,9 @@ on:
     paths:
       - 'rawlsing_next/pre553_saved_durable_delivery.py'
       - 'rawlsing_next/pre553_durable_learned_lifecycle.py'
+      - 'rawlsing_next/pre553_durable_empirical_closure.py'
+      - 'rawlsing_next/pre553_learned_product_release.py'
+      - 'rawlsing_next/tests/test_pyat_commission_b_general_archive.py'
       - 'rawlsing_next/pre553_s04_dhikr_comparative.py'
       - 'rawlsing_next/pre553_s04_i05_reception.py'
       - 'rawlsing_next/tests/test_pre553_forge_ddm_analytical_a.py'
@@ -34,7 +37,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          python -m py_compile rawlsing_next/pre553_saved_durable_delivery.py rawlsing_next/pre553_durable_learned_lifecycle.py
+          python -m py_compile rawlsing_next/pre553_saved_durable_delivery.py rawlsing_next/pre553_durable_learned_lifecycle.py rawlsing_next/pre553_durable_empirical_closure.py
           python -m pytest -q -s -o addopts='' \
             rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py \
             rawlsing_next/tests/test_kuda072_prepared_estate_pin.py \
