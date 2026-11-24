@@ -102,14 +102,16 @@ class MaterialRefusalR19(unittest.TestCase):
                     self.assertTrue(rt.verify()['valid'])
 
     def test_expired_or_unrelated_offer_cannot_be_refused_as_particular(self):
-        for mode in ('expired','unrelated','no_stock'):
+        for mode in ('expired','unrelated','no_stock','unseen'):
             with self.subTest(mode=mode):
-                rt,n,_=self.build(mode,held=0 if mode=='no_stock' else 2)
+                rt,n,_=self.build(mode,held=0 if mode=='no_stock' else 2,
+                                  actor_visible=mode!='unseen')
                 if mode=='unrelated':
                     # Actual unrelated speech is not a material offer.
                     n.contribute('unrelated','SAY',text='Hello.')
                 else:
-                    n.contribute('offer','OFFER_FEED',target_actor_ref='worker')
+                    offered=n.contribute('offer','OFFER_FEED',target_actor_ref='worker')
+                    if mode=='unseen':self.assertEqual(offered['status'],'PERFORMED')
                     if mode=='expired':n.contribute('elapsed','WAIT')
                 seen=[]
                 rt.semantic=refusal_policy('refuse',seen)
@@ -119,6 +121,30 @@ class MaterialRefusalR19(unittest.TestCase):
                 self.assertNotIn('The offered food is declined.',signs(n.private_surface(n.new_private_profile())))
                 self.assertEqual(rt.ledger.world(mode)[1]['material_feeding_events'],[])
                 self.assertTrue(rt.verify()['valid'])
+
+    def test_stale_refusal_option_cannot_bind_a_later_event(self):
+        rt,n,_=self.build('stale_option')
+        n.contribute('offer','OFFER_FEED',target_actor_ref='worker')
+        seen=[]
+        rt.semantic=refusal_policy('wait',seen)
+        n.independent_actor_beat('worker')
+        self.assertEqual(len(seen),1)
+        old=seen[0]['option_id']
+        n.contribute('fresh','OFFER_FEED',target_actor_ref='worker')
+        before=deepcopy(rt.ledger.world('stale_option'))
+        actors=deepcopy(rt.ledger.actors())
+        count=len(rt.ledger.events())
+        fallback=HeuristicSemanticProvider()
+        def forged(task,packet):
+            if task=='actor_attempt':return {'task':task,'practical_option_id':old}
+            return fallback.propose(task,packet)
+        rt.semantic=ValidatingSemanticService(CallbackLLMProvider(forged))
+        with self.assertRaisesRegex(ValueError,'UNKNOWN_OR_AMBIGUOUS_PRACTICAL_OPTION_ID'):
+            n.independent_actor_beat('worker')
+        self.assertEqual(rt.ledger.world('stale_option'),before)
+        self.assertEqual(rt.ledger.actors(),actors)
+        self.assertEqual(len(rt.ledger.events()),count)
+        self.assertTrue(rt.verify()['valid'])
 
 if __name__=='__main__':
     unittest.main()
