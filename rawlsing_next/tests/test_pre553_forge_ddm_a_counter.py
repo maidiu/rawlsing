@@ -341,9 +341,17 @@ def _positioned_consumer_case(tag, op, subject_value, producer_value="0"):
     auth = native._query_authority(tag)
     xleaf = native._response_leaf(source,auth,"X",producer_value)
     zleaf = native._response_leaf(source,auth,"Z",0)
-    ast = xleaf if op=="LEAF" else (
-        {"op":"NOT","children":[xleaf]} if op=="NOT" else
-        {"op":op,"children":[xleaf,zleaf]})
+    if op=="COMMON_OR":
+        # X=0 is genuinely required on both arms. Do not throw away
+        # legitimate OR discovery merely because its AST is compound.
+        z1 = native._response_leaf(source,auth,"Z",1)
+        ast = {"op":"OR","children":[
+            {"op":"AND","children":[xleaf,zleaf]},
+            {"op":"AND","children":[xleaf,z1]}]}
+    else:
+        ast = xleaf if op=="LEAF" else (
+            {"op":"NOT","children":[xleaf]} if op=="NOT" else
+            {"op":op,"children":[xleaf,zleaf]})
     predicate = native._predicate(source,auth,ast,tag=tag)
     query = native._query(source,auth,predicate,("Y",),tag=tag)
     universe,release = source["universe"].ref,source["release_ref"]
@@ -387,8 +395,9 @@ def test_relay_c1_refuses_false_value_and_nonentailed_conditioners(op,subject_va
         compose()
 
 
-def test_relay_c1_true_exact_condition_preserved():
-    result = _positioned_consumer_case("RELAY-POSITIVE","LEAF","0")()
+@pytest.mark.parametrize("op",["LEAF","COMMON_OR"])
+def test_relay_c1_true_exact_condition_preserved(op):
+    result = _positioned_consumer_case("RELAY-POSITIVE-"+op,op,"0")()
     assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
     assert result.raw_denominator_support==2
     assert sum(c["raw_numerator_support"] for c in result.complete_cell_geometry)==2
