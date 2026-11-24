@@ -40,6 +40,7 @@ jobs:
           python -m py_compile rawlsing_next/pre553_saved_durable_delivery.py rawlsing_next/pre553_durable_learned_lifecycle.py rawlsing_next/pre553_durable_empirical_closure.py
           python -m pytest -q -s -o addopts='' \
             rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py \
+            rawlsing_next/tests/test_pyat_commission_b_general_archive.py \
             rawlsing_next/tests/test_kuda072_prepared_estate_pin.py \
             rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py \
             rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py \
