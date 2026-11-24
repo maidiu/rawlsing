@@ -454,6 +454,119 @@ class NeighborEncounter:
                 'no_unseen_private_psychology_on_visitor_surface':True,
                 'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
 
+    def _own_visit_transitions(self, world):
+        """Derive visits from the existing committed contribution history.
+
+        Repeated LEAVE while already absent is not a new departure; movement
+        within a visit is not a new arrival. Match the world event to its
+        existing ledger receipt rather than admitting an uncommitted record.
+        """
+        receipts = {}
+        for row in self.runtime.ledger.events():
+            env = row.get('envelope', {})
+            payload = env.get('payload', {})
+            if (row.get('kind') == 'NEIGHBOR_USER_CONTRIBUTION'
+                    and env.get('world') == self.runtime.world_id
+                    and payload.get('user') == self.user_id
+                    and payload.get('performed') is True):
+                receipts[payload.get('user_event_ref')] = (row, payload)
+        present = False
+        arrival = departure = None
+        for event in world.get('neighbor_user_events', []):
+            if (event.get('user') != self.user_id
+                    or event.get('status') != 'PERFORMED'
+                    or event.get('operation') not in ('MOVE', 'LEAVE')):
+                continue
+            ref = event.get('event_ref')
+            source = receipts.get(ref)
+            if (source is None or source[0].get('clock') != event.get('clock')
+                    or source[1].get('payload_hash') != event.get('payload_hash')):
+                raise EncounterRefusal('VISIT_TRANSITION_WITHOUT_COMMITTED_SOURCE')
+            if event['operation'] == 'MOVE' and not present:
+                present = True
+                arrival = event
+            elif event['operation'] == 'LEAVE' and present:
+                present = False
+                departure = event
+        if present != bool(world.get('neighbor_users', {}).get(
+                self.user_id, {}).get('present')):
+            raise EncounterRefusal('VISIT_HISTORY_PRESENCE_CONFLICT')
+        return arrival, departure, present
+
+    def continue_absent_life_until(self, departure_ref: str, target_clock: int,
+                                   *, max_segments: int = 24):
+        """Owner-side bounded absence continuation, NOT a visitor action.
+
+        The target is an absolute modeled-world clock, not real wall time or
+        permission to invent a private diary. A retry after committed progress
+        resumes only the remaining interval. Existing CO discontinuities,
+        ordinary passage and autonomous initiative do all life writing.
+        This is a serialized sourcefree research driver; a real multi-user
+        calendar/authorization service is not supplied by this interface.
+        """
+        from um_sorok_organism.continuity_clock import (
+            MAX_HORIZON, next_discontinuity)
+        _text(departure_ref, 'DEPARTURE_REF', 120)
+        if type(target_clock) is not int or target_clock < 0:
+            raise EncounterRefusal('INVALID_ABSENCE_TARGET_CLOCK')
+        if type(max_segments) is not int or not 1 <= max_segments <= 240:
+            raise EncounterRefusal('INVALID_ABSENCE_SEGMENT_BUDGET')
+        _, world = self._world()
+        _, departure, present = self._own_visit_transitions(world)
+        if (present or departure is None
+                or departure['event_ref'] != departure_ref):
+            raise EncounterRefusal('NO_CURRENT_QUALIFIED_DEPARTURE')
+        if target_clock < departure['clock']:
+            raise EncounterRefusal('ABSENCE_TARGET_PRECEDES_DEPARTURE')
+        if target_clock - world['clock'] > MAX_HORIZON:
+            raise EncounterRefusal('ABSENCE_HORIZON_EXCEEDS_OWNER_BOUND')
+
+        def require_no_visitors(w):
+            if any(row.get('present') is True
+                   for row in w.get('neighbor_users', {}).values()):
+                raise EncounterRefusal('WORLD_HAS_PRESENT_VISITOR')
+
+        require_no_visitors(world)
+        initial = world['clock']
+        segments = 0
+        while world['clock'] < target_clock and segments < max_segments:
+            require_no_visitors(world)
+            previous = world['clock']
+            remaining = target_clock - previous
+            actors = self.runtime.ledger.actors()
+            discontinuity = next_discontinuity(world, actors, remaining)
+            if discontinuity is not None:
+                # This owner may settle an actor event at the horizon itself,
+                # advancing one additional tick. Report actual clock, never
+                # backdate reentry to the requested cut.
+                self.runtime.advance_to_discontinuity(horizon=remaining)
+            elif remaining > 1:
+                # Leave one tick for a real independently chosen activity,
+                # instead of narrating all ordinary life from elapsed time.
+                self.runtime.advance_to_discontinuity(horizon=remaining - 1)
+            elif actors:
+                self.runtime.continue_without_user(beats=1)
+            else:
+                self.runtime.advance_to_discontinuity(horizon=1)
+            _, world = self._world()
+            segments += 1
+            if world['clock'] <= previous:
+                break
+        current = world['clock']
+        return {
+            'status': ('AT_OR_PAST_ABSENCE_TARGET' if current >= target_clock
+                       else 'HELD_AT_BOUNDED_ABSENCE_CONTINUATION'),
+            'departure_event_ref': departure_ref,
+            'target_modeled_clock': target_clock,
+            'actual_modeled_clock': current,
+            'modeled_clock_advance_this_call': current - initial,
+            'segments_executed_this_call': segments,
+            'new_world_events': current > initial,
+            'unseen_life_not_a_visitor_report': True,
+            'real_calendar_elapsed_not_established': True,
+            'grade': 'SOURCEFREE_RESEARCH_PROVISIONAL',
+        }
+
     def private_surface(self, profile: dict, *, command: str | None = None,
                         target: str | None = None):
         """Project the existing CO world into the *existing* protected MII reader.
@@ -652,6 +765,20 @@ class NeighborEncounter:
             exit_name='SOURCEFREE_UNQUALIFIED', available=available,
             candidates=available, offered=offered, selected=selected,
             basis=basis, narration=mandatory, recognition={})
+        # On actual reentry expose only the visitor's own elapsed modeled
+        # interval, not the intervening actor audit, motives or a retrospective
+        # story. Subsequent LOOK can disclose currently accessible changes.
+        arrival, departure, present = self._own_visit_transitions(world)
+        if (present and arrival is not None and departure is not None
+                and arrival['clock'] == world['clock']
+                and arrival['clock'] > departure['clock']):
+            view['return_context'] = {
+                'departure_event_ref': departure['event_ref'],
+                'arrival_event_ref': arrival['event_ref'],
+                'modeled_clock_difference': arrival['clock'] - departure['clock'],
+                'real_calendar_elapsed_not_established': True,
+                'intervening_life_not_disclosed': True,
+            }
         # Explicitly distinguish a received institutional assertion from
         # the world's real policy or a successful application. This metadata
         # is recorded by MII with the actual finite exposure, never actor state.
