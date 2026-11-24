@@ -530,3 +530,526 @@ class FunctionalAfterlifeR35(unittest.TestCase):
                 finally:cold.close()
             self.assertEqual(outcomes,{True:'EAT',False:'WAIT'})
 
+
+
+class UpstreamElasticEntranceR36(unittest.TestCase):
+    def packet(self,kind='AUTHORED_WORLD_HISTORY'):
+        return {'input_kind':kind,'source_ref':'fictional:life',
+                'source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                'biographical_context':{'occupation':'weaver','history':'household and workshop'},
+                'fictional_seed':{'acquired_forms':[{'kind':'PRACTICE',
+                    'content':'familiar household provisioning',
+                    'cues':['food'],'enables':['EAT']}],
+                    'projects':[{'object':'sustain household','means':['EAT']}]}}
+    
+    def test_same_runtime_without_survey_and_with_survey(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        seen=[]
+        def callback(task,packet):
+            if task=='adult_constructor':seen.append(copy.deepcopy(packet))
+            return HeuristicSemanticProvider().propose(task,packet)
+        with tempfile.TemporaryDirectory() as d:
+            for i,kind in enumerate(('THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY',
+                                     'SUPPLIED_SURVEY_CONFIGURATION','SAMPLED_SURVEY_CONFIGURATION')):
+                p=self.packet(kind)
+                if kind.endswith('SURVEY_CONFIGURATION'):
+                    p['answers']={'survey_q':'a'}
+                    p['source_grade']='SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL'
+                # Thin biography alone, no authored operative forms.
+                if kind=='THIN_BIOGRAPHY':p.pop('fictional_seed')
+                db=str(Path(d)/str(i))
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize([('mother','Mother',p)])
+                    a=rt.ledger.actor('mother')[1]
+                    self.assertEqual(a['initialization']['input_kind'],kind)
+                    self.assertEqual(a['initialization']['observed_question_count'],
+                                     len(p.get('answers',{})))
+                    self.assertTrue(a['projects'] or a['forms'])
+                    self.assertEqual(rt.ledger.source('fictional_source:mother')['content'],p)
+                    if not p.get('answers'):
+                        self.assertFalse(any('asserted_answer' in f for f in a['forms'].values()))
+                    self.assertEqual(rt.step('mother',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db)
+                try:
+                    self.assertEqual(cold.ledger.actor('mother')[1]['initialization']['input_kind'],kind)
+                    self.assertEqual(cold.ledger.source('fictional_source:mother')['content'],p)
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual([p['input_kind'] for p in seen],
+                 ['THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY','SUPPLIED_SURVEY_CONFIGURATION','SAMPLED_SURVEY_CONFIGURATION'])
+    
+    def structural(self,value):
+        return {'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY','source_ref':'fictional:world',
+          'positions':[{'id':'position0','actor':'mother','field':'ration_access','value':'admitted',
+                        'source_ref':'fictional:initial','effective_from':0,'effective_until':0},
+                       {'id':'position1','actor':'mother','field':'ration_access','value':value,
+                        'source_ref':'fictional:changed','effective_from':1,'effective_until':1}],
+          'rules':[{'id':'ration_rule','operation':'EAT','location':'home',
+                    'source_ref':'fictional:rule','effective_from':0,'effective_until':1,
+                    'all_of':[{'kind':'RECORDED_POSITION','field':'ration_access','equals':'admitted'}]}]}
+    
+    def test_independent_temporal_structure_changes_actual_course_not_initial_psyche(self):
+        with tempfile.TemporaryDirectory() as d:
+            initial=[];courses={};states={}
+            p=self.packet()
+            for value in ('admitted','excluded'):
+                db=str(Path(d)/value)
+                spec=self.structural(value)
+                rt=ConstitutiveRuntime(db)
+                try:
+                    rt.initialize([('mother','Mother',p)],authored_structural_history=spec)
+                    initial.append(rt.ledger.actor('mother')[1])
+                    self.assertEqual(rt.ledger.source('authored_structural_history')['content'],spec)
+                    self.assertEqual(rt.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db)
+                try:
+                    second=cold.step('mother',requested_action='EAT')
+                    courses[value]=second['status']
+                    states[value]=cold.ledger.actor('mother')[1]['body']
+                    self.assertEqual(cold.ledger.world()[1]['material_gate_audit'][-1]
+                         ['objective_rule_evaluation']['readset'],['fictional:rule'])
+                    # At clock 2 the rule expires, not a psychological conversion.
+                    self.assertEqual(cold.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(initial[0],initial[1])
+            self.assertEqual(courses,{'admitted':'PERFORMED','excluded':'BLOCKED'})
+            self.assertNotEqual(states['admitted'],states['excluded'])
+    
+    def test_ambiguous_or_unqualified_inputs_refused_before_genesis(self):
+        from um_sorok_organism.historical_parent_bridge import historically_conditioned_entrances
+        p=self.packet()
+        for bad in ({**p,'answers':{'fake':'a'}},
+                    {**p,'source_grade':'NATIVE_PYAT'},
+                    {**p,'biographical_context':{}},
+                    {**p,'historically_supported_alternatives':[{}]*25}):
+            with self.assertRaises(ValueError):historically_conditioned_entrances(bad)
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'invalid')
+            rt=ConstitutiveRuntime(db)
+            try:
+                spec=self.structural('excluded')
+                spec['positions'][1]['actor']='unknown'
+                with self.assertRaisesRegex(ValueError,'STRUCTURAL_HISTORY_INVALID_POSITION'):
+                    rt.initialize([('mother','Mother',p)],authored_structural_history=spec)
+                self.assertEqual(rt.ledger.actors(),{})
+                rt.initialize([('mother','Mother',p)])
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+
+
+class DependencyContrastR37(unittest.TestCase):
+    def test_interrupted_learned_support_generates_new_prospective_means(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        with tempfile.TemporaryDirectory() as d:
+            outcomes={}
+            for nominate in (True,False):
+                stage='first'
+                offered=[]
+                def callback(task,packet):
+                    if task=='expression':
+                        return {'task':task,'surface':'Ordinary activity.'}
+                    if task=='actor_attempt':
+                        if packet['actor']['id']=='mother':
+                            return {'task':task,'action':'FEED' if stage=='supported' else 'REFUSE'}
+                        if stage=='interrupted':
+                            choices=[o for o in packet['practical_options']
+                                     if o['operation']=='SIGNAL'
+                                     and o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                                     and o['world_request']['addressed_party_ref']=='mother']
+                            self.assertEqual(len(choices),1)
+                            return {'task':task,'action':'SIGNAL','practical_option_id':choices[0]['option_id']}
+                        if stage=='future':
+                            ts=[t for t in packet.get('possible_end_trials',[])
+                                if t['operation']=='EAT']
+                            if ts:
+                                return {'task':task,'possible_end_trial_id':ts[0]['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='supported':
+                            return {'task':task,'candidates':packet.get('historically_possible_joint_practices',[])}
+                        gs=[g for g in packet.get('historically_possible_genetic_ends',[])
+                            if g.get('dependency_loss_basis')]
+                        offered.extend(copy.deepcopy(gs))
+                        return {'task':task,'candidates':gs if nominate else []}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/str(nominate))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    a=adult('worker','Mara')
+                    a['body']['nutrition']=.30
+                    a['forms']['eating']={'id':'eating','kind':'PRACTICE','actor':'worker',
+                        'origin':['fictional_init:worker'],'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION',
+                        'content':'ordinary eating','cues':['eat'],'enables':['EAT'],
+                        'scope':{},'always_recruitable':True,'lifecycle':'ACTIVE'}
+                    mother=adult('mother','Mother')
+                    mother['projects']=[{'id':'care','object':'ordinary care',
+                                        'means':['FEED'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a,mother])
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PARTIAL')
+                    stage='supported'
+                    result=rt.step('worker',requested_action='SIGNAL',target='mother')
+                    self.assertEqual(result['status'],'PERFORMED')
+                    acquired=rt.ledger.actor('worker')[1]['joint_practices']
+                    self.assertEqual(len(acquired),1)
+                    self.assertEqual(len(rt.ledger.world()[1]['material_feeding_events']),1)
+                    stage='interrupted'
+                    result=rt.step('worker')
+                    self.assertEqual((result['attempt'],result['status']),('SIGNAL','PARTIAL'))
+                    self.assertEqual(len(rt.ledger.world()[1]['material_feeding_events']),1)
+                    stage='independent'
+                    self.assertEqual(rt.step('worker',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    basis=offered[0]['dependency_loss_basis']
+                    self.assertEqual(basis['practice_ref'],acquired[0]['id'])
+                    before=rt.ledger.actor('worker')[1]
+                    self.assertEqual(before['joint_practices'],acquired)
+                    ends=[e for e in before['possible_ends'] if e.get('dependency_loss_basis')]
+                    self.assertEqual(len(ends),int(nominate))
+                    if nominate:
+                        self.assertEqual(ends[0]['possible_means'],['EAT'])
+                        self.assertIsNone(ends[0]['addressed_party_ref'])
+                        self.assertEqual(len(ends[0]['actual_contrasted_episode_refs']),3)
+                    else:
+                        episode=next(x for x in before['lived_genesis_episodes']
+                                     if x['id']==basis['independent_episode_ref'])
+                        sign=next(c for c in rt.see('worker')['cues']
+                                  if c['id']==offered[0]['later_perceived_cue_ref'])
+                        exp={'actor':'worker','ref':episode['experience_ref'],'clock':episode['clock'],
+                             'location':'home','own_action':'EAT','participated':True,'status':'PERFORMED',
+                             'felt_enactment':{'attempted_operation':'EAT'},'perceived_cues':[sign]}
+                        forged=copy.deepcopy(offered[0])
+                        forged['dependency_loss_basis']['historical_counterpart_ref']='invented'
+                        old=copy.deepcopy(before)
+                        with self.assertRaisesRegex(InvalidDevelopment,'GENESIS_DEPENDENCY_HISTORY_FORGERY'):
+                            admit(before,exp,episode['event_ref'],[forged])
+                        self.assertEqual(before,old)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                stage='future'
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    outcomes[nominate]=cold.step('worker')['attempt']
+                    self.assertEqual(cold.ledger.actor('worker')[1]['joint_practices'],acquired)
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(outcomes,{True:'EAT',False:'WAIT'})
+
+
+
+class DependencyProjectR38(unittest.TestCase):
+    def test_later_independent_course_can_form_undertaking_without_owning_other(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for takeup in (True,False):
+                stage='first'; offered=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']=='mother':
+                            return {'task':task,'action':'FEED' if stage=='supported' else 'REFUSE'}
+                        if stage=='interrupted':
+                            choices=[o for o in packet['practical_options']
+                                     if o['operation']=='SIGNAL'
+                                     and o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                                     and o['world_request']['addressed_party_ref']=='mother']
+                            self.assertEqual(len(choices),1)
+                            return {'task':task,'action':'SIGNAL','practical_option_id':choices[0]['option_id']}
+                        if stage=='trial':
+                            trials=[x for x in packet['possible_end_trials'] if x['operation']=='EAT']
+                            self.assertEqual(len(trials),1)
+                            return {'task':task,'possible_end_trial_id':trials[0]['trial_id']}
+                        if stage=='revisit':
+                            return {'task':task,'action':'EAT'}
+                        if stage=='project':
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='EAT' and x.get('project_id') is not None]
+                            if choices:
+                                return {'task':task,'action':'EAT','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='supported':
+                            return {'task':task,'candidates':packet['historically_possible_joint_practices']}
+                        if stage=='independent':
+                            return {'task':task,'candidates':[g for g in packet['historically_possible_genetic_ends']
+                                                               if g.get('dependency_loss_basis')]}
+                        cs=packet.get('historically_possible_dependency_takeups',[])
+                        if cs:offered.append((copy.deepcopy(cs),copy.deepcopy(packet['experience'])))
+                        return {'task':task,'candidates':cs if takeup else []}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(takeup)); service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    a=adult('worker','Mara');a['body']['nutrition']=.30
+                    a['forms']['eating']={'id':'eating','kind':'PRACTICE','actor':'worker',
+                        'origin':['fictional_init:worker'],'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION',
+                        'content':'ordinary eating','cues':['eat'],'enables':['EAT'],
+                        'scope':{},'always_recruitable':True,'lifecycle':'ACTIVE'}
+                    mother=adult('mother','Mother')
+                    mother['projects']=[{'id':'care','object':'ordinary care',
+                                        'means':['FEED'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a,mother])
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PARTIAL')
+                    stage='supported'
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PERFORMED')
+                    practice=copy.deepcopy(rt.ledger.actor('worker')[1]['joint_practices'])
+                    self.assertEqual(len(practice),1)
+                    stage='interrupted'
+                    self.assertEqual(rt.step('worker')['status'],'PARTIAL')
+                    stage='independent'
+                    self.assertEqual(rt.step('worker',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(rt.ledger.actor('worker')[1]['possible_ends']),1)
+                    stage='trial'
+                    self.assertEqual(rt.step('worker')['attempt'],'EAT')
+                    self.assertEqual(offered,[])
+                    trial_state=rt.ledger.actor('worker')[1]
+                    self.assertEqual(trial_state['projects'],[])
+                    self.assertEqual(len(trial_state['possible_ends'][0]['trial_history']),1)
+                    stage='wait'
+                    for _ in range(8):rt.step('worker')
+                    self.assertEqual(offered,[])
+                    stage='revisit'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    cs,exp=offered[0];self.assertEqual(len(cs),1)
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),int(takeup))
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(cs[0]['dependency_takeup_basis']['earlier_lived_trial_ref'],
+                        trial_state['possible_ends'][0]['trial_history'][0]['id'])
+                    if takeup:
+                        p=a['projects'][0]
+                        self.assertEqual(p['takeup_evidence']['dependency_takeup_basis'],cs[0]['dependency_takeup_basis'])
+                        self.assertEqual(a['possible_ends'][0]['status'],'TAKEN_UP_AS_PRACTICAL_PROJECT')
+                        self.assertIsNone(p.get('addressed_party_ref'))
+                    else:
+                        bad=copy.deepcopy(cs[0])
+                        bad['dependency_takeup_basis']['earlier_lived_trial_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=cs[0]['dependency_takeup_basis']['source_event_refs'][-1]
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_TAKEUP_NO_QUALIFIED_LATER_COURSE'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                stage='project'
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    final[takeup]=cold.step('worker')['attempt']
+                    a=cold.ledger.actor('worker')[1]
+                    if takeup:
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['operation'],'EAT')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['motive_realized'],
+                                         'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                        # Exhaust actual shared food; the undertaking persists.
+                        for _ in range(14):
+                            out=cold.step('worker')
+                            if out['status']=='BLOCKED':break
+                        self.assertEqual(out['status'],'BLOCKED')
+                        a=cold.ledger.actor('worker')[1]
+                        self.assertEqual(a['projects'][0]['status'],'active')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['performed_status'],'BLOCKED')
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(final,{True:'EAT',False:'WAIT'})
+
+class DependencyProjectReorganizationR39(unittest.TestCase):
+    def test_obstructed_project_can_reorganize_around_renewed_conditional_cooperation(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for reorganize in (True,False):
+                takeup=True
+                stage='first'; offered=[]; revisions=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']=='mother':
+                            return {'task':task,'action':'FEED' if stage in ('supported','renewed','project_signal') else 'REFUSE'}
+                        if stage in ('interrupted','renewed'):
+                            choices=[o for o in packet['practical_options']
+                                     if o['operation']=='SIGNAL'
+                                     and o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                                     and o['world_request']['addressed_party_ref']=='mother']
+                            self.assertEqual(len(choices),1)
+                            return {'task':task,'action':'SIGNAL','practical_option_id':choices[0]['option_id']}
+                        if stage in ('project_signal','project_refused'):
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='SIGNAL' and x.get('project_id') is not None
+                                     and x.get('dependency_conditional_means_ref')]
+                            if choices:
+                                self.assertEqual(len(choices),1)
+                                self.assertEqual(choices[0]['world_request']['addressed_party_ref'],'mother')
+                                return {'task':task,'action':'SIGNAL','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                            return {'task':task,'action':'WAIT'}
+                        if stage=='trial':
+                            trials=[x for x in packet['possible_end_trials'] if x['operation']=='EAT']
+                            self.assertEqual(len(trials),1)
+                            return {'task':task,'possible_end_trial_id':trials[0]['trial_id']}
+                        if stage=='revisit':
+                            return {'task':task,'action':'EAT'}
+                        if stage=='project':
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='EAT' and x.get('project_id') is not None]
+                            if choices:
+                                return {'task':task,'action':'EAT','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='supported':
+                            return {'task':task,'candidates':packet['historically_possible_joint_practices']}
+                        if stage=='independent':
+                            return {'task':task,'candidates':[g for g in packet['historically_possible_genetic_ends']
+                                                               if g.get('dependency_loss_basis')]}
+                        rs=packet.get('historically_possible_dependency_project_reorganizations',[])
+                        if rs:revisions.append((copy.deepcopy(rs),copy.deepcopy(packet['experience'])))
+                        if stage=='renewed':return {'task':task,'candidates':rs if reorganize else []}
+                        cs=packet.get('historically_possible_dependency_takeups',[])
+                        if cs:offered.append((copy.deepcopy(cs),copy.deepcopy(packet['experience'])))
+                        return {'task':task,'candidates':cs if takeup else []}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(reorganize)); service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    w['holdings']={'mother':{'food':3}}
+                    a=adult('worker','Mara');a['body']['nutrition']=.30
+                    a['forms']['eating']={'id':'eating','kind':'PRACTICE','actor':'worker',
+                        'origin':['fictional_init:worker'],'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION',
+                        'content':'ordinary eating','cues':['eat'],'enables':['EAT'],
+                        'scope':{},'always_recruitable':True,'lifecycle':'ACTIVE'}
+                    mother=adult('mother','Mother')
+                    mother['projects']=[{'id':'care','object':'ordinary care',
+                                        'means':['FEED'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a,mother])
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PARTIAL')
+                    stage='supported'
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PERFORMED')
+                    practice=copy.deepcopy(rt.ledger.actor('worker')[1]['joint_practices'])
+                    self.assertEqual(len(practice),1)
+                    stage='interrupted'
+                    self.assertEqual(rt.step('worker')['status'],'PARTIAL')
+                    stage='independent'
+                    self.assertEqual(rt.step('worker',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(rt.ledger.actor('worker')[1]['possible_ends']),1)
+                    stage='trial'
+                    self.assertEqual(rt.step('worker')['attempt'],'EAT')
+                    self.assertEqual(offered,[])
+                    trial_state=rt.ledger.actor('worker')[1]
+                    self.assertEqual(trial_state['projects'],[])
+                    self.assertEqual(len(trial_state['possible_ends'][0]['trial_history']),1)
+                    stage='wait'
+                    for _ in range(8):rt.step('worker')
+                    self.assertEqual(offered,[])
+                    stage='revisit'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    cs,exp=offered[0];self.assertEqual(len(cs),1)
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),int(takeup))
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(cs[0]['dependency_takeup_basis']['earlier_lived_trial_ref'],
+                        trial_state['possible_ends'][0]['trial_history'][0]['id'])
+                    if takeup:
+                        p=a['projects'][0]
+                        self.assertEqual(p['takeup_evidence']['dependency_takeup_basis'],cs[0]['dependency_takeup_basis'])
+                        self.assertEqual(a['possible_ends'][0]['status'],'TAKEN_UP_AS_PRACTICAL_PROJECT')
+                        self.assertIsNone(p.get('addressed_party_ref'))
+                    else:
+                        bad=copy.deepcopy(cs[0])
+                        bad['dependency_takeup_basis']['earlier_lived_trial_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=cs[0]['dependency_takeup_basis']['source_event_refs'][-1]
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_TAKEUP_NO_QUALIFIED_LATER_COURSE'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                stage='project'
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.step('worker')['attempt'],'EAT')
+                    a=cold.ledger.actor('worker')[1]
+                    if takeup:
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['operation'],'EAT')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['motive_realized'],
+                                         'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                        # Exhaust actual shared food; the undertaking persists.
+                        for _ in range(14):
+                            out=cold.step('worker')
+                            if out['status']=='BLOCKED':break
+                        self.assertEqual(out['status'],'BLOCKED')
+                        a=cold.ledger.actor('worker')[1]
+                        self.assertEqual(a['projects'][0]['status'],'active')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['performed_status'],'BLOCKED')
+                        old_project=copy.deepcopy(a['projects'][0])
+                    stage='wait'
+                    for _ in range(12):cold.step('worker')
+                    self.assertEqual(revisions,[])
+                    stage='renewed'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(revisions),1)
+                    rs,exp=revisions[0];self.assertEqual(len(rs),1)
+                    a=cold.ledger.actor('worker')[1]
+                    project=a['projects'][0]
+                    self.assertEqual(project['id'],old_project['id'])
+                    self.assertEqual(project['origin'],old_project['origin'])
+                    self.assertEqual(project['means'],['EAT','SIGNAL'] if reorganize else ['EAT'])
+                    self.assertEqual(project['operational_history'],old_project['operational_history'])
+                    if reorganize:
+                        self.assertEqual(project['dependency_reorganization_history'][0]['previous']['object'],old_project['object'])
+                        self.assertEqual(project['dependency_conditional_means']['SIGNAL']['counterpart_ref'],'mother')
+                    else:
+                        bad=copy.deepcopy(rs[0])
+                        bad['dependency_reorganization_basis']['counterpart_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=rs[0]['dependency_reorganization_basis']['renewed_event_ref']
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_PROJECT_REORGANIZATION_UNQUALIFIED'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertTrue(cold.verify()['valid'])
+                    # Long actual history has depleted bodily rest. Keep that
+                    # constraint operative; real restorative activity precedes
+                    # the next independently solicited course.
+                    from um_sorok_organism.organism import eligible
+                    self.assertEqual(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL'),(False,'FATIGUE'))
+                    stage='wait'
+                    self.assertEqual(cold.step('worker',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL')[0])
+                    cold.close()
+                    stage='project_refused'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    if reorganize:
+                        plan=cold.plan('worker')
+                        self.assertEqual((plan.action,plan.target),('SIGNAL','mother'),
+                            str({'plan':plan,'signal':[x for x in cold.situated('worker')['candidate_actions'] if x['action']=='SIGNAL'],
+                                 'cues':cold.see('worker')['cues']}))
+                    result=cold.step('worker')
+                    final[reorganize]=result['attempt']
+                    if reorganize:
+                        self.assertEqual(result['status'],'PARTIAL')
+                        self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]['operational_history'][-1]['operation'],'SIGNAL')
+                        stage='project_signal'
+                        self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                        self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]['operational_history'][-1]['operation'],'SIGNAL')
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(final,{True:'SIGNAL',False:'WAIT'})

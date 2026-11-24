@@ -10,16 +10,21 @@ from .organism import ACTIONS
 from .development import validate_activity_priority
 from .relational_metabolism import validate_motif, refuse_unissued_cross_context_history
 from .practical_difference import validate_expected_difference
-from .historical_parent_bridge import historically_conditioned_entrances
+from .historical_parent_bridge import historically_conditioned_entrances, adult_conditioning_input
 from .mediated_efficacy import seed_fictional_adult_training
 
 
 def construct_parent(actor_id,name,source_packet,semantic):
-    if not source_packet.get('answers') or not isinstance(source_packet['answers'],dict):
+    # Preserve the legacy refusal diagnostic, while accepting explicit
+    # non-survey historical entrances through the identical constructor.
+    if (type(source_packet) is dict and 'input_kind' not in source_packet
+            and (not source_packet.get('answers') or not isinstance(source_packet['answers'],dict))):
         raise ValueError('PSEUDO_RESPONDENT_REQUIRED')
+    kind,answers=adult_conditioning_input(source_packet)
     person=adult(actor_id,name)
     historical=historically_conditioned_entrances(source_packet)
     result=semantic.proposal('adult_constructor',{'actor_id':actor_id,'name':name,
+        'input_kind':kind,
         'historically_conditioned_alternatives':copy(historical),
         'pseudo_respondent':copy(source_packet),'historical_grade':'FICTIONAL_INVERSE_UNDERIDENTIFIED'})
     for form in result.get('forms',[]):
@@ -74,13 +79,16 @@ def construct_parent(actor_id,name,source_packet,semantic):
     person['fictional_backfill']=copy(result.get('fictional_backfill',{}))
     person['historical_entrances']=copy(historical)
     person['initialization']={'source_ref':source_packet.get('source_ref','UNVERIFIED_INPUT'),
-        'observed_question_count':len(source_packet['answers']),
+        'input_kind':kind,
+        'observed_question_count':len(answers),
         'source_grade':source_packet.get('source_grade','REPRESENTATIVE_TEST_FIXTURE'),
         'abduction_grade':'SOURCEFREE_FICTIONAL_HYPOTHESIS',
-        'questionnaire_as_live_behavior':'UNPROVEN_WITHOUT_BLIND_SURVEY_RECONSTRUCTION',
+        'questionnaire_as_live_behavior':('UNPROVEN_WITHOUT_BLIND_SURVEY_RECONSTRUCTION'
+                                         if answers else 'NO_SOURCE_INSTRUMENT_SUPPLIED'),
         'not_real_respondent_psyche':True}
     person['unknowns'].extend(['private_respondent_life_is_unidentified',
-        'causal_explanation_of_survey_answers_unproved'])
+        'causal_explanation_of_survey_answers_unproved'] if answers else
+        ['fictional_antecedents_underidentified','no_source_instrument_supplied'])
     return person
 
 

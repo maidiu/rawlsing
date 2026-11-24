@@ -17,7 +17,8 @@ from .reflective_regulation import acquire_reflective_regulation
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
-from .psychic_genesis import admit_contrast_end
+from .psychic_genesis import admit_contrast_end, possible_dependency_project_takeups
+from .activity import possible_dependency_project_reorganizations
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
 from .cultural_mediation import (
@@ -557,6 +558,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                         raise InvalidDevelopment('GENETIC_TAKEUP_SIGN_AMBIGUOUS')
                     c=copy(c)
                     c['later_perceived_cue_ref']=next(iter(qualified_signs))
+            dependency_takeup=None
+            if end.get('genesis_family')=='INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF':
+                matches=[p for p in possible_dependency_project_takeups(actor,experience,event_ref)
+                         if p['possible_end_ref']==ref
+                         and p['dependency_takeup_basis']==c.get('dependency_takeup_basis')
+                         and p['later_perceived_cue_ref']==c.get('later_perceived_cue_ref')
+                         and p['means']==c.get('means')]
+                if len(matches)!=1:
+                    raise InvalidDevelopment('DEPENDENCY_TAKEUP_NO_QUALIFIED_LATER_COURSE')
+                dependency_takeup=copy(matches[0]['dependency_takeup_basis'])
+            elif 'dependency_takeup_basis' in c:
+                raise InvalidDevelopment('DEPENDENCY_TAKEUP_WRONG_END_FAMILY')
             claimed_later_sign=c.get('later_perceived_cue_ref')
             if (claimed_later_sign is not None and
                     (type(claimed_later_sign) is not str or
@@ -586,6 +599,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 'not_actor_self_account':True,
                 'unobserved_alternatives':'UNKNOWN_NOT_OBSERVED',
             }
+            if dependency_takeup is not None:
+                takeup_evidence['dependency_takeup_basis']=dependency_takeup
             requested=c.get('means',end['possible_means'])
             if (type(requested) is not list or not requested or
                     any(type(x) is not str or x not in end['possible_means']
@@ -678,6 +693,23 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             ident=c.get('project_id')
             project=next((p for p in actor['projects'] if p['id']==ident),None)
             if project is None:raise InvalidDevelopment('UNKNOWN_PROJECT')
+            dependency_basis=c.get('dependency_reorganization_basis')
+            dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
+            if dependency_basis is not None:
+                if c not in possible_dependency_project_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('DEPENDENCY_PROJECT_REORGANIZATION_UNQUALIFIED')
+                prior={k:copy(project.get(k)) for k in ('means','object','motive')}
+                project.setdefault('dependency_reorganization_history',[]).append({
+                    'event_ref':event_ref,'experience_ref':experience['ref'],
+                    'previous':prior,'basis':copy(dependency_basis),'grade':GRADE})
+                project['dependency_conditional_means']={'SIGNAL':{
+                    'counterpart_ref':dependency_basis['counterpart_ref'],
+                    'location':dependency_basis['location'],
+                    'practice_ref':dependency_basis['practice_ref'],
+                    'origin_event_ref':event_ref}}
+            elif dependency_project and any(k in c for k in
+                    ('means','object','motive','addressed_party_ref','dependency_conditional_means')):
+                raise InvalidDevelopment('DEPENDENCY_PROJECT_MEANS_REQUIRE_LIVED_REORGANIZATION')
             if 'means' in c and (not isinstance(c['means'],list) or not all(isinstance(x,str) for x in c['means'])):
                 raise InvalidDevelopment('INVALID_PROJECT_MEANS')
             if 'means' in c and any(x not in ACTIONS for x in c['means']):

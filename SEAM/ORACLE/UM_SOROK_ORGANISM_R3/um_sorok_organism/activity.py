@@ -166,3 +166,96 @@ def register_lived_activity_attempt(actor, experience, histories):
         actor.setdefault('lived_activity_history',[]).append(trace)
         lived.append(trace)
     return lived
+
+
+def possible_dependency_project_reorganizations(actor,experience,event_ref):
+    """A blocked acquired undertaking can be reconstituted by a lived
+    alternative, including renewed cooperation with the original Other.
+    The new practical relation is conditional, not a right to care.
+    """
+    aid=actor.get('id');clock=experience.get('clock')
+    selected=experience.get('own_practical_selection') or {}
+    request=selected.get('world_request') or {}
+    other=experience.get('reciprocated_partner')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='SIGNAL'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or selected.get('actor')!=aid
+            or selected.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or selected.get('possible_end_trial') is not None
+            or selected.get('selected_project_refs')!=[]
+            or request.get('operation')!='SIGNAL'
+            or type(other) is not str or other==aid
+            or request.get('addressed_party_ref')!=other
+            or type(selected.get('option_id')) is not str):
+        return []
+    episodes=actor.get('lived_genesis_episodes',[])
+    current=[x for x in episodes if x.get('actor')==aid
+             and x.get('event_ref')==event_ref
+             and x.get('experience_ref')==experience.get('ref')
+             and x.get('clock')==clock
+             and x.get('actor_felt_attempt')=='SIGNAL'
+             and x.get('selected_addressed_party_ref')==other
+             and x.get('selected_practical_option_ref')==selected['option_id']
+             and x.get('received_relief',{}).get('nutrition')
+             and x.get('received_sign_refs')
+             and not x.get('unfinished_own_activity')]
+    if len(current)!=1:return []
+    now=current[0]
+    participations=[x for x in actor.get('participation_history',[])
+                    if x.get('actor')==aid and x.get('event_ref')==event_ref
+                    and x.get('experience_ref')==experience.get('ref')
+                    and x.get('joint_participation_perceived')
+                    and x.get('reciprocated_partner_actor_visible')==other
+                    and x.get('own_attempted_operation')=='SIGNAL'
+                    and x.get('own_status')=='PERFORMED']
+    if len(participations)!=1:return []
+    out=[]
+    for project in actor.get('projects',[])[-128:]:
+        dep=project.get('takeup_evidence',{}).get('dependency_takeup_basis')
+        if (not dep or project.get('status')!='active'
+                or project.get('means')!=['EAT']
+                or project.get('addressed_party_ref') is not None
+                or project.get('dependency_conditional_means')):continue
+        practice=[x for x in actor.get('joint_practices',[])
+                  if x.get('id')==dep.get('dependency_practice_ref')
+                  and x.get('actor')==aid and x.get('coactor_ref')==other
+                  and x.get('operation')=='SIGNAL'
+                  and x.get('location')==experience.get('location')
+                  and x.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY']
+        if len(practice)!=1:continue
+        # The project must actually have met the contradiction; not just
+        # a failed unrelated operation or an observer's speculation.
+        courses=project.get('operational_history',[])
+        if not courses:continue
+        course=courses[-1]
+        if (course.get('project')!=project['id']
+                or course.get('operation')!='EAT'
+                or course.get('performed_status')!='BLOCKED'
+                or course.get('selected_at_actor_attempt') is not True):continue
+        lived=[x for x in project.get('lived_attempt_history',[])
+               if x.get('event')==course.get('event')
+               and x.get('project')==project['id']
+               and x.get('attempted_operation')=='EAT'
+               and x.get('accessible_cue_refs')]
+        failed=[x for x in episodes if x.get('actor')==aid
+                and x.get('event_ref')==course.get('event')
+                and x.get('actor_felt_attempt')=='EAT'
+                and x.get('unfinished_own_activity')
+                and x.get('location')==now.get('location')
+                and type(x.get('clock')) is int and x['clock']<clock
+                and not x.get('received_relief',{}).get('nutrition')]
+        if len(lived)!=1 or len(failed)!=1:continue
+        basis={'practice_ref':practice[0]['id'],'counterpart_ref':other,
+               'location':now['location'],'blocked_project_event_ref':course['event'],
+               'blocked_episode_ref':failed[0]['id'],'renewed_episode_ref':now['id'],
+               'renewed_participation_ref':participations[0]['id'],
+               'renewed_event_ref':event_ref,'selected_option_ref':selected['option_id'],
+               'no_future_consent_or_motive_fulfillment_inferred':True}
+        out.append({'kind':'REORGANIZE_PROJECT','project_id':project['id'],
+                    'means':['EAT','SIGNAL'],
+                    'object':'sustain nourishment through own and conditional shared means',
+                    'motive':'PROVISIONAL_REORGANIZATION_OF_NOURISHMENT_UNDERTAKING',
+                    'dependency_reorganization_basis':basis})
+    return out[:3]
