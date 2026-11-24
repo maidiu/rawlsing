@@ -69,3 +69,65 @@ class HostileCountryCurrentness(unittest.TestCase):
                     repo.resolve_object_exact(ref)
             finally:
                 reader.close()
+
+    def test_high_cardinality_numeric_roundtrip_and_cost_witness(self):
+        """Numerical exactness and realistic sparse-dictionary cost, not a policy PASS."""
+        import hashlib
+        import time
+        import pandas as pd
+        import numpy as np
+        import pyreadstat
+        from unittest import mock
+        from rawlsing_next.pre553_physical_decoder import decode_sav
+        from rawlsing_next.pre553_country_numeric_carrier import _encode_cell, _hash
+        n, width = 1600, 40
+        base = np.arange(n, dtype=np.float64)
+        frame = pd.DataFrame({
+            "v" + str(i): base * (1.000001 + i * 0.00001) + i * 0.001
+            for i in range(width)
+        })
+        frame.insert(0, "country", np.where(np.arange(n) % 2 == 0, 1, 2))
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)
+            original = path / "original.sav"
+            pyreadstat.write_sav(frame, str(original))
+            original_bytes = original.stat().st_size
+            digest = hashlib.sha256(original.read_bytes()).hexdigest()
+            with decode_sav(original, expected_source_sha256=digest) as incidence:
+                key = next(incidence.iter_native_column("country")).raw_value
+                expected = [
+                    (c.row_ordinal, c.variable_ordinal, _encode_cell(c))
+                    for c in incidence.iter_country_cells("country", key)
+                ]
+                started = time.monotonic()
+                receipt = build_country(
+                    incidence, country_variable="country", country_value=key,
+                    output=path / "country.sqlite", require_current=lambda: True,
+                    block_rows=128,
+                )
+                elapsed = time.monotonic() - started
+            self.assertEqual(receipt.country_rows, n // 2)
+            with CountryReader(path / "country.sqlite", receipt, require_current=lambda: True) as read:
+                actual = [
+                    (c.row_ordinal, c.variable_ordinal, _encode_cell(c))
+                    for c in read.iter_cells()
+                ]
+                self.assertEqual(actual, expected)
+                # Even a one-variable GROUP intersection requires two full
+                # carrier SHA-256 rehashes under the current cold-reader API.
+                import rawlsing_next.pre553_country_numeric_carrier as carrier
+                with mock.patch.object(carrier, "_hash", wraps=_hash) as hashes:
+                    rows = list(read.matching_rows({"v0": 0.0}))
+                    self.assertEqual(rows, [1])
+                    self.assertEqual(hashes.call_count, 2)
+            print("HOSTILE_HIGH_CARDINALITY_NUMERIC_COST", {
+                "source_rows": n, "native_columns": width + 1,
+                "selected_rows": receipt.country_rows,
+                "selected_cells": receipt.country_rows * (width + 1),
+                "country_sqlite_bytes": receipt.bytes,
+                "original_full_wave_sav_bytes": original_bytes,
+                "relative_db_to_original": round(receipt.bytes / original_bytes, 3),
+                "build_seconds": round(elapsed, 3),
+                "full_carrier_rehashes_per_physical_query": 2,
+                "grade": "SOURCEFREE_PHYSICAL_ONLY_NO_NATIVE_SCALE",
+            })
