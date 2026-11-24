@@ -127,7 +127,15 @@ def validate(c, ledger, registry, pinned=True):
         require(sr["source_bodies"] == [{"path": b["path"], "blob": b["blob"]} for b in source["exact_source_bodies"]], "REFINEMENT_SOURCE_BODY_DRIFT")
         require(sr["criterion_execution"] == "NOT_RUN_AS_COMPLETE_CIC_CRITERION" and sr["review"] == "NOT_INDEPENDENTLY_REVIEWED_AT_CRITERION_SCOPE", "REFINEMENT_FALSE_PROMOTION")
     rounds = c.get("refinement_rounds", [])
-    require(len(rounds) == 1 and set(rounds[0]["added_criterion_ids"]) == set(refined) and rounds[0]["prior_criterion_count"] + len(refined) == len(criteria), "REFINEMENT_DENOMINATOR_DRIFT")
+    require(bool(rounds), "REFINEMENT_DENOMINATOR_DRIFT")
+    added = set()
+    count = len(criteria) - len(refined)
+    for r in rounds:
+        new = r["added_criterion_ids"]
+        require(r["prior_criterion_count"] == count and len(set(new)) == len(new) and not added.intersection(new), "REFINEMENT_DENOMINATOR_DRIFT")
+        added.update(new)
+        count += len(new)
+    require(added == set(refined) and count == len(criteria), "REFINEMENT_DENOMINATOR_DRIFT")
     for j in c["whole_organism_acceptance_candidates"]:
         require(set(j["obligation_ids"]) <= set(obligations) and set(j["criterion_ids"]) <= set(criteria), "JOIN_REFERENCES")
         require(j["state"] == "HELD_CRITERION_SPECIFIC_WHOLE_TRAJECTORY", "FALSE_WHOLE_TRAJECTORY")
@@ -160,7 +168,9 @@ def selftest(c,ledger,registry):
     check(lambda x:child(x).update(paragraph_anchors=["NEIGHBOR-L0309"]),"REFINEMENT_SOURCE_ANCHOR_DRIFT")
     check(lambda x:child(x)["scoped_return"].update(execution_sha="0"*40),"REFINEMENT_RETURN_DRIFT")
     check(lambda x:child(x)["scoped_return"].update(criterion_execution="PASS"),"REFINEMENT_FALSE_PROMOTION")
-    return 19
+    check(lambda x:x["refinement_rounds"][-1].update(prior_criterion_count=0),"REFINEMENT_DENOMINATOR_DRIFT")
+    check(lambda x:x["refinement_rounds"][-1]["added_criterion_ids"].append(x["refinement_rounds"][0]["added_criterion_ids"][0]),"REFINEMENT_DENOMINATOR_DRIFT")
+    return 21
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")

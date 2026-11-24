@@ -1,6 +1,6 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
-**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `34db2e8fe2664c35f16b4e8ca6e290fe598fa53c`. 58 candidate obligation clusters; 138 provisional criteria (122 earlier + 16 narrow refinements); 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
+**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `74337c8b24e91aea3c1a2d3728a91be761905a25`. 58 candidate obligation clusters; 148 provisional criteria (138 earlier + 10 narrow refinements); 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Read first
 
@@ -13,7 +13,7 @@ Deferred review is a conserved obligation, not implicit acceptance or a universa
 
 [Exact G4 instruction](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7123766849) · [CO R33](https://github.com/maidiu/rawlsing/pull/1322#issuecomment-7123765829) · [NEIGHBOR R6](https://github.com/maidiu/rawlsing/pull/1298#issuecomment-7123766306).
 
-**138 criteria × seven review dimensions = 966 criterion/dimension scopes**, initially NOT_REVIEWED at this criterion-specific intake, with earlier scoped receipts referenced, not erased. This does not mean 854 historical mechanisms have never been reviewed. The following 16 named source-specific open scopes are stored under the relevant existing criterion, with exact source and related criterion links. No criterion-specific review newly issued.
+**148 criteria × seven review dimensions = 1,036 criterion/dimension scopes**, initially NOT_REVIEWED at this criterion-specific intake, with earlier scoped receipts referenced, not erased. This does not mean 854 historical mechanisms have never been reviewed. The following 16 named source-specific open scopes are stored under the relevant existing criterion, with exact source and related criterion links. No criterion-specific review newly issued.
 
 | Scope | Criterion | Review dimension | Outstanding examination |
 |---|---|---|---|
@@ -64,6 +64,25 @@ Deferred review is a conserved obligation, not implicit acceptance or a universa
 | NEIGHBOR-CIC-019.03 → NEIGHBOR-CIC-019.02 | NEIGHBOR-L0335, NEIGHBOR-L0337, NEIGHBOR-L0339 | Owner-side absence driver may proceed only within qualified departure and bounded horizon with other presence respected; ordinary independent actor life is not fabricated discretionary visitor conduct. | [#1321](https://github.com/maidiu/rawlsing/pull/1321) · R12 serialized no-present-visitor/departure and cold controls; real human calendar/auth, ordinary visitor maintenance, rendezvous and concurrency remain unproved. |
 
 Each child includes a specific falsifier, actual consumer, exact source and executed-checkout receipt, unresolved scope, and all seven independently conserved review dimensions in the same machine record. The narrower proposals still require competent HOME-owner semantic receiving. No new coverage percentage or universal completion claim.
+
+## Later November 24 — R13/R14 joined material praxis and R34/R35 acquired means
+
+**Current observation supersedes the preceding round's R33 × R12 integration hold at bounded sourcefree scope.** NEIGHBOR #1323 R13 joins the clean R12 and CO R33 lineages (725 tests in each mode); #1326 R14 extends that tree (727 in each mode). CO #1324 R34 (644 each) and #1325 R35 (645 each) are subsequent separately executed developments; R35 × R14 joined execution remains held. Rejected #1294 remains excluded; historical affected R6/R7 evidence not erased. Four PRs added, 35 additional scoped functional links; 138 PR observations, 316 relationships, 144 original identities. Ten narrower criteria added to seven existing clusters; 148 total criteria in 58 clusters, 719 preserved HOME routes, 1,036 review-dimension cells, all 16 previous named deferred scopes retained. No new organism execution by G4, independent review, or native/scientific/actor/human/protected receiving. All current test receipts and source bodies in the existing O-Index.
+
+**What the new circuit actually realizes:** actual authorized visitor repair changes the object's condition and material stocks; separately admitted actor INSPECT and material investment can alter later actor-selected REPAIR vs WAIT after cold continuation. The controlled callback does not establish live LLM formation, worker recognition or gratitude. Distinct user/actor signatures can change institutional access for a third party; no shared motive or learned joint practice follows. R34/R35 distinguish a new one-use possible means, independent later consolidation and suspension after obstruction; original end/history retained, no general learned skill or new motive implied. Neither the full joined trajectory nor the latest CO R35 × NEIGHBOR R14 integration is proved.
+
+| Added criterion → broader parent | HOME anchors | Related execution and remaining scope |
+|---|---|---|
+| CO-CIC-006.03 → CO-CIC-006.01 | CO-L0279, CO-L0283, CO-L0290, CO-L0298, CO-L0300, CO-L0302 | [#1324](https://github.com/maidiu/rawlsing/pull/1324) — R34 one-use source-bound trial from distinct operations/sites; bodily relief is a coarse nomination filter, not social or motivational equivalence. |
+| CO-CIC-006.04 → CO-CIC-006.02 | CO-L0298, CO-L0302, CO-L0309, CO-L0311, CO-L0313, CO-L0315 | [#1325](https://github.com/maidiu/rawlsing/pull/1325) — R35 context-specific repetition and suspension; no general skill/motive formation, reactivation or classed/relational efficacy. |
+| CO-CIC-010.03 → CO-CIC-010.01 | CO-L0476, CO-L0478, CO-L0480, CO-L0519, CO-L0523 | [#1324](https://github.com/maidiu/rawlsing/pull/1324) — R34 local novel operation trial; broader analogy, multiple bindings, material permission and object/Other transfer held. |
+| CO-CIC-010.04 → CO-CIC-010.01 | CO-L0480, CO-L0489, CO-L0504, CO-L0506, CO-L0508, CO-L0510, CO-L0523 | [#1325](https://github.com/maidiu/rawlsing/pull/1325) — R35 context-limited repetition and suspension; project/motif transformation and reactivation not shown. |
+| CO-CIC-027.04 → CO-CIC-027.01 | CO-L1263, CO-L1304 | [#1323](https://github.com/maidiu/rawlsing/pull/1323) — R13 repair -> actual INSPECT -> investment -> cold REPAIR vs WAIT; controlled semantic callback, not native live-model psychology. |
+| CO-CIC-027.05 → CO-CIC-027.01 | CO-L1263 | [#1326](https://github.com/maidiu/rawlsing/pull/1326) — R14 two signatures and quorum alter access for third party; third party move research-injected, no acquired political understanding or learning. |
+| NEIGHBOR-CIC-006.05 → NEIGHBOR-CIC-006.01 | NEIGHBOR-L0097, NEIGHBOR-L0099, NEIGHBOR-L0101, NEIGHBOR-L0103, NEIGHBOR-L0107 | [#1323](https://github.com/maidiu/rawlsing/pull/1323) — R13 site grant and repair; object-specific rights, transfer, bodily costs and labor attribution held. |
+| NEIGHBOR-CIC-007.03 → NEIGHBOR-CIC-007.01 | NEIGHBOR-L0119, NEIGHBOR-L0121, NEIGHBOR-L0125, NEIGHBOR-L0127, NEIGHBOR-L0129 | [#1323](https://github.com/maidiu/rawlsing/pull/1323) — R13 explicit operation and material grant; open-language affordance/method selection, fatigue/time/skill, partial performance and interruption unproved. |
+| NEIGHBOR-CIC-013.03 → NEIGHBOR-CIC-013.01 | NEIGHBOR-L0217, NEIGHBOR-L0229, NEIGHBOR-L0231, NEIGHBOR-L0233, NEIGHBOR-L0235 | [#1326](https://github.com/maidiu/rawlsing/pull/1326) — R14 three-arm fixed quorum and MOVE; not dynamic institutional struggle, learned practice or spontaneous third-party intention. |
+| NEIGHBOR-CIC-014.03 → NEIGHBOR-CIC-014.01 | NEIGHBOR-L0241, NEIGHBOR-L0243, NEIGHBOR-L0249, NEIGHBOR-L0253, NEIGHBOR-L0255 | [#1326](https://github.com/maidiu/rawlsing/pull/1326) — R14 shared access only, no acquisition or learned joint practice; R13 one actor's object investment not reciprocity. |
 
 ## Obligation-first view (derived from same JSON)
 
@@ -124,6 +143,8 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 
 - CO-CIC-006.01: Do not turn repeated orienting into motive; actor-specific acquired expectation may open an actual trial and later project. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / M16). Remaining: Full causal origin and acquired new ends not established across contexts.
 - CO-CIC-006.02: Technical success or failure need not equal realized motive or felt pleasure; later action can differ. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / O01). Remaining: Exact multistream affective court held.
+- CO-CIC-006.03 (refines CO-CIC-006.01): A previously lived end trial and different actual operation may license a local possible means, without equating relief with motive or installing a general new repertoire. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1324](https://github.com/maidiu/rawlsing/pull/1324) / N01). Remaining: R34 one-use source-bound trial from distinct operations/sites; bodily relief is a coarse nomination filter, not social or motivational equivalence.
+- CO-CIC-006.04 (refines CO-CIC-006.02): Distinguish one-use trial, independent later lived reinforcement, optional consolidation, and subsequent obstruction; preserve origin and end when the means no longer recruits. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1325](https://github.com/maidiu/rawlsing/pull/1325) / N01). Remaining: R35 context-specific repetition and suspension; no general skill/motive formation, reactivation or classed/relational efficacy.
 
 #### CO-CIC-007 — Material capacity, social power, access and time
 
@@ -160,6 +181,8 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 
 - CO-CIC-010.01: Personally received reference or lived comparison becomes local practical possibility, not universal analogy. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / E15). Remaining: General transfer and negative analogy court not independently established.
 - CO-CIC-010.02: Remove enabling Other or change object access; distinguish acquired ability, motivation, permission and dependency. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / E14). Remaining: Actual causally necessary relation severance and song example not fully proved.
+- CO-CIC-010.03 (refines CO-CIC-010.01): A functional analogy retains scope of original end and new site and must be actually selectable as a new means; object/Other-bound transfer requires separate evidence. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1324](https://github.com/maidiu/rawlsing/pull/1324) / O06). Remaining: R34 local novel operation trial; broader analogy, multiple bindings, material permission and object/Other transfer held.
+- CO-CIC-010.04 (refines CO-CIC-010.01): A consolidated means can change later activity without necessarily changing motive, project or relational motif; require distinct evidence for each transformation. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1325](https://github.com/maidiu/rawlsing/pull/1325) / N05). Remaining: R35 context-limited repetition and suspension; project/motif transformation and reactivation not shown.
 
 #### CO-CIC-011 — Multistream psychic composition
 
@@ -319,6 +342,8 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 - CO-CIC-027.01: Perform/settle event before reception and durable update; cold later reader uses committed state. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#746](https://github.com/maidiu/rawlsing/pull/746) / E05). Remaining: Protected scoped P3 mechanical proof.
 - CO-CIC-027.02: Only actually performed part of human utterance reaches actor; broad task compression stops at consequential unresolved choice. **CRITERION_EQUIVALENCE_UNRECONCILED** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / M29). Remaining: Human action/utterance and task medium join not demonstrated.
 - CO-CIC-027.03: No human autopilot; unverified user speech stays claim, not world fact. **CRITERION_EQUIVALENCE_UNRECONCILED** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / O11). Remaining: Native user author boundary and ADP017 held.
+- CO-CIC-027.04 (refines CO-CIC-027.01): Actual visitor labor changes independent world; only subsequent personally qualified actor receipt and optional admitted organization can alter later actor recruitment. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1323](https://github.com/maidiu/rawlsing/pull/1323) / C10). Remaining: R13 repair -> actual INSPECT -> investment -> cold REPAIR vs WAIT; controlled semantic callback, not native live-model psychology.
+- CO-CIC-027.05 (refines CO-CIC-027.01): Independently authored participants can change actual opportunity for a nonparticipant without transferring their knowledge, consent or motive. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1326](https://github.com/maidiu/rawlsing/pull/1326) / C8). Remaining: R14 two signatures and quorum alter access for third party; third party move research-injected, no acquired political understanding or learning.
 
 #### CO-CIC-028 — Joined ordinary evening and counterfactual controls
 
@@ -444,6 +469,7 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 - NEIGHBOR-CIC-006.02: Source-time historical facts and branch-local exposure remain distinct; ordinary work/periods persist without every minute being narrated. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#907](https://github.com/maidiu/rawlsing/pull/907) / C6). Remaining: Historical MI scope; source native and broader world-event feed held.
 - NEIGHBOR-CIC-006.03 (refines NEIGHBOR-CIC-006.01): An actual independently manufactured/repaired object enters finite visitor access from existing world owner; later close appearance reflects current condition of the same object, not fabricated ownership, labor history or actor meaning.. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1314](https://github.com/maidiu/rawlsing/pull/1314) / C8). Remaining: R9 actual material owner/MII join and cold control; ownership, loan/return, recognition and actor-specific investment remain separate; provisional appearance mapping.
 - NEIGHBOR-CIC-006.04 (refines NEIGHBOR-CIC-006.02): Separate externally qualified event, admitted branch-local occurrence, current local sign and actual visitor exposure; different branches may admit/refuse the same occasion.. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1320](https://github.com/maidiu/rawlsing/pull/1320) / C8). Remaining: R11 exact sourcefree contingent notice and coarse sound; no real external anchor, causal political/material consequence or general fork proof.
+- NEIGHBOR-CIC-006.05 (refines NEIGHBOR-CIC-006.01): Real human contribution to independent artifact changes actual stock, labor and condition while owner/maker remain unchanged unless separate transfer settles. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1323](https://github.com/maidiu/rawlsing/pull/1323) / C8). Remaining: R13 site grant and repair; object-specific rights, transfer, bodily costs and labor attribution held.
 
 #### NEIGHBOR-CIC-007 — SAY / DO / ATTEND, attempted versus performed, return of control
 
@@ -453,6 +479,7 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 
 - NEIGHBOR-CIC-007.01: Distinguish intended action from feasible method and world-settled effect; return control at consequential fork. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#751](https://github.com/maidiu/rawlsing/pull/751) / S8). Remaining: P4 bounded caller edge; full open human action held.
 - NEIGHBOR-CIC-007.02: Interrupted speech and concurrent doing preserve performed prefix only, not typed unspoken remainder. **CRITERION_EQUIVALENCE_UNRECONCILED** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / M29). Remaining: Actual human text/action interleaving first consumer held.
+- NEIGHBOR-CIC-007.03 (refines NEIGHBOR-CIC-007.01): Structured DO is an actual world-settled act only within granted practical opportunity; successful repair is not general skill, known method or complete human body model. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1323](https://github.com/maidiu/rawlsing/pull/1323) / S8). Remaining: R13 explicit operation and material grant; open-language affordance/method selection, fatigue/time/skill, partial performance and interruption unproved.
 
 #### NEIGHBOR-CIC-008 — Attention is material activity, not privileged access
 
@@ -511,6 +538,7 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 
 - NEIGHBOR-CIC-013.01: Multiple actual coactors pursue independent projects; same utterance may reach separate recipients differently. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#891](https://github.com/maidiu/rawlsing/pull/891) / A3). Remaining: Historic actor movement scope; full polycentric audience court held.
 - NEIGHBOR-CIC-013.02: Recurring Other promotion preserves prior facts and each actor's separate developmental path. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / S4). Remaining: Variable-depth supporting actors and full joint world unresolved.
+- NEIGHBOR-CIC-013.03 (refines NEIGHBOR-CIC-013.01): Collective contributions are separately authored and can alter shared access for nonparticipants; signed participation, available right, exercised access and understanding are independent. **HISTORICAL_OR_BOUNDED_EXECUTION_RELATED** ([#1326](https://github.com/maidiu/rawlsing/pull/1326) / C8). Remaining: R14 three-arm fixed quorum and MOVE; not dynamic institutional struggle, learned practice or spontaneous third-party intention.
 
 #### NEIGHBOR-CIC-014 — Shared practices, pleasure and unequal investments
 
@@ -520,6 +548,7 @@ Each child includes a specific falsifier, actual consumer, exact source and exec
 
 - NEIGHBOR-CIC-014.01: Joint practice learned through actual shared activity affects later efficient operation and distinct actor afterlives. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / M13). Remaining: Real user and learned routine interface held.
 - NEIGHBOR-CIC-014.02: Pleasure, trust, intimacy and availability are not one progress score; actual third-party effects can contradict them. **DIRECT_SOURCE_RELATED_PARTIAL** ([#1272](https://github.com/maidiu/rawlsing/pull/1272) / S4). Remaining: Specific relationship consequences not fully demonstrated.
+- NEIGHBOR-CIC-014.03 (refines NEIGHBOR-CIC-014.01): Distinguish one collective outcome from learned recurring coordination and separate enduring afterlives; third-party benefit or burden need not produce affinity. **CRITERION_EQUIVALENCE_UNRECONCILED** ([#1326](https://github.com/maidiu/rawlsing/pull/1326) / M20). Remaining: R14 shared access only, no acquisition or learned joint practice; R13 one actor's object investment not reciprocity.
 
 #### NEIGHBOR-CIC-015 — Branch-local relationships and cross-human comparison
 
