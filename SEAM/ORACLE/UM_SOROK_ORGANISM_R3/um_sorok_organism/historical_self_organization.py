@@ -233,17 +233,35 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     if not consecutive:
         return []
     first = consecutive[0]
-    # Prevent repeated same-valence receipts from manufacturing infinite
-    # pressure. An opposite, separately acquired form may remain possible.
-    if any(r.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'
-           and r.get('actor') == actor['id']
-           and r.get('operation') == action
-           and r.get('location') == site
-           and r.get('orientation_mode') == mode
-           and r.get('lived_genesis_basis',{}).get(
-               'coexperienced_other_refs') == list(coexperienced_others)
-           for r in actor.get('historical_orientations', [])):
-        return []
+    # Existing same-polarity history is not another independent pressure.
+    # But a previously inhibited organization can be reopened by NEW lived
+    # courses rather than being permanently unavailable or cloned.
+    matching = [r for r in actor.get('historical_orientations', [])
+                if r.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'
+                and r.get('actor') == actor['id']
+                and r.get('operation') == action
+                and r.get('location') == site
+                and r.get('orientation_mode') == mode
+                and r.get('lived_genesis_basis',{}).get(
+                    'coexperienced_other_refs') == list(coexperienced_others)]
+    reopening = None
+    if matching:
+        if len(matching) != 1:
+            return []
+        existing = matching[0]
+        if _polarities(existing):
+            return []
+        revisions = existing.get('revisions', [])
+        inhibition = revisions[-1] if revisions else {}
+        cutoff = inhibition.get('clock')
+        # Older unclocked revisions are retained; do not manufacture a
+        # temporal ordering or reuse the events that preceded inhibition.
+        if (inhibition.get('mode') != 'INHIBIT'
+                or type(cutoff) is not int
+                or first['clock'] <= cutoff
+                or now['clock'] <= cutoff):
+            return []
+        reopening = existing
     selected = [first, now]
     cue_ref = next((c.get('id') for c in experience.get('perceived_cues', [])
                     if type(c) is dict and
@@ -281,6 +299,13 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     }
     if cue_ref is not None:
         candidate['perceived_cue_ref'] = cue_ref
+    if reopening is not None:
+        basis['reopened_orientation_ref'] = reopening['id']
+        basis['inhibition_event_ref'] = reopening['revisions'][-1]['event']
+        basis['inhibition_clock'] = reopening['revisions'][-1]['clock']
+        candidate['kind'] = 'REVISE_HISTORICAL_ORIENTATION'
+        candidate['orientation_ref'] = reopening['id']
+        candidate['revision_mode'] = 'REINSTATE'
     return [candidate]
 
 
@@ -296,6 +321,8 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
     if len(possibilities) != 1:
         raise ValueError('LIVED_ORIENTATION_NO_REPEATED_ACTOR_COURSE')
     expected = possibilities[0]
+    if expected['kind'] != 'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION':
+        raise ValueError('LIVED_ORIENTATION_REOPEN_EXISTING_NOT_DUPLICATE')
     for field in ('kind', 'operation', 'orientation_mode',
                   'lived_genesis_basis', 'perceived_cue_ref'):
         if proposal.get(field) != expected.get(field):
@@ -339,9 +366,32 @@ def revise_orientation(actor, experience, event_ref, proposal):
     mode = proposal.get('revision_mode')
     if mode not in REVISIONS:
         raise ValueError('HISTORICAL_INVALID_REVISION')
-    row['revisions'].append({'event': event_ref, 'experience_ref': experience['ref'],
-                             'source': source, 'mode': mode,
-                             'prior_history_retained': True, 'grade': GRADE})
+    revision = {'event': event_ref, 'experience_ref': experience['ref'],
+                'clock': experience.get('clock'),
+                'source': source, 'mode': mode,
+                'prior_history_retained': True, 'grade': GRADE}
+    if 'lived_genesis_basis' in proposal or (
+            mode == 'REINSTATE' and
+            row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'):
+        possible = possible_lived_directional_orientation(
+            actor, experience, event_ref)
+        if len(possible) != 1 or possible[0].get('kind') != (
+                'REVISE_HISTORICAL_ORIENTATION'):
+            raise ValueError('LIVED_REOPEN_NO_NEW_COMPARABLE_COURSE')
+        expected = possible[0]
+        for field in ('kind', 'orientation_ref', 'revision_mode',
+                      'operation', 'orientation_mode', 'lived_genesis_basis',
+                      'perceived_cue_ref'):
+            if proposal.get(field) != expected.get(field):
+                raise ValueError('LIVED_REOPEN_UNLICENSED_'+field.upper())
+        revision['lived_genesis_basis'] = copy(expected['lived_genesis_basis'])
+        interpretation = proposal.get('interpretive_hypothesis')
+        if (interpretation is not None and
+                (type(interpretation) is not str or
+                 not interpretation.strip() or len(interpretation) > 512)):
+            raise ValueError('LIVED_REOPEN_INVALID_INTERPRETATION')
+        revision['interpretive_hypothesis_not_causal_truth'] = interpretation
+    row['revisions'].append(revision)
     return {'kind': 'REVISE_HISTORICAL_ORIENTATION', 'ref': ident,
             'revision': mode, 'status': 'PROVISIONAL', 'grade': GRADE}
 
