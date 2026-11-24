@@ -328,6 +328,7 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     )
     from rawlsing_next.pre553_durable_learned_lifecycle import (
         LearnedConsumerDeterminants, DurableLearnedLifecycleError,
+        DurableLearnedLifecycleRefusal, DurableLearnedLifecycleUntrusted,
         open_learned_lifecycle,
     )
     from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
@@ -339,6 +340,8 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
         _binding, _m1_authority, _registry,
     )
     from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+    from rawlsing_next.tests.test_pyat960_s2g_durable_lifecycle import _attestation
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import _validator
 
     discovery = closure.i05_result
     tag = "commission-b-saved-learned-" + source_format
@@ -415,14 +418,49 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     executor = LearnedProductLifecycleExecutor()
     repository = M2Repository()
     initial_checkpoint = executor.export_checkpoint()
-    invalid_root = tmp_path / "invalid-learned"
-    with pytest.raises((SavedDeliveryError, DurableLearnedLifecycleError)):
-        cold.publish_learned(**args, m2_repository=repository,
-            lifecycle_executor=executor, root_dir=invalid_root,
-            determinants=replace(determinants, expected_composition_identity="0"*64))
-    assert executor.export_checkpoint() == initial_checkpoint, (
-        "INVALID_CONSUMER_MUTATED_B5_BEFORE_COLD_VALIDATION")
-    assert not invalid_root.exists(), "INVALID_CONSUMER_PUBLISHED_ARTIFACT"
+    def assert_unchanged(root):
+        assert executor.export_checkpoint() == initial_checkpoint, (
+            "INVALID_CONSUMER_MUTATED_B5_BEFORE_COLD_VALIDATION")
+        assert all(not getattr(repository, name) for name in repository._store_names), (
+            "INVALID_CONSUMER_MUTATED_M2_BEFORE_COLD_VALIDATION")
+        assert not root.exists(), "INVALID_CONSUMER_PUBLISHED_ARTIFACT"
+
+    for field in ("expected_composition_identity", "expected_consumer_result_hash"):
+        invalid_root = tmp_path / ("invalid-" + field)
+        with pytest.raises((SavedDeliveryError, DurableLearnedLifecycleError)):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=invalid_root,
+                determinants=replace(determinants, **{field: "0"*64}))
+        assert_unchanged(invalid_root)
+
+    invalid_root = tmp_path / "negative-rule"
+    negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
+    _, negative_disposition = cold.adjudicate_m1(
+        contract=ingress, family_rule_binding=binding,
+        selected_discovery_receipt_refs=(receipt.ref,), requested_scope={"fixture": tag},
+        validator_registry=negative, additional_authority_snapshots=(authority,))
+    assert negative_disposition.adjudication_outcome == "RULE_NOT_SATISFIED"
+    with pytest.raises(SavedDeliveryError, match="LEARNED_NONPRODUCTIVE_M1:RULE_NOT_SATISFIED"):
+        cold.publish_learned(**{**args, "validator_registry": negative},
+            m2_repository=repository, lifecycle_executor=executor, root_dir=invalid_root,
+            determinants=determinants)
+    assert_unchanged(invalid_root)
+
+    # Corrupt after empirical admission but before learned publication. Refuse
+    # before touching the external lifecycle, not after writing an artifact.
+    invalid_root = tmp_path / "corrupt-archive"
+    manifest = closure.root_path / "manifest.json"
+    original = manifest.read_bytes()
+    manifest.write_bytes(b"{}")
+    try:
+        with pytest.raises(DurableEmpiricalClosureError):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=invalid_root,
+                determinants=determinants)
+        assert_unchanged(invalid_root)
+    finally:
+        manifest.write_bytes(original)
+
     learned, consumed = cold.publish_learned(
         **args, m2_repository=repository, lifecycle_executor=executor,
         root_dir=tmp_path / "learned", determinants=determinants)
@@ -436,5 +474,44 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     assert artifact.m1_disposition.ref == consumed.m1_disposition_ref
     assert receipt.ref in artifact.m1_disposition.discovery_result_receipt_refs
     assert fact.ref in artifact.m1_disposition.empirical_fact_refs
+
+    # Historical selected state does not constitute live learned authority.
+    # Exercise the real S2-G current attestation owner separately.
+    good = _attestation(artifact)
+    serve = dict(expected_root=learned.root_identity,
+                 expected_purpose_ref=determinants.purpose_ref)
+    view, current = cold.read_current_learned(learned.artifact_path, **serve,
+        attestation=good, expected_attestation_root=good.content_root)
+    assert view.state == "CURRENT_SELECTED"
+    assert current.consumer_result_hash == consumed.consumer_result_hash
+    with pytest.raises(DurableLearnedLifecycleUntrusted):
+        cold.read_current_learned(learned.artifact_path, **serve,
+            attestation=good, expected_attestation_root=None)
+    revoked = _attestation(artifact, revoked=True)
+    with pytest.raises(DurableLearnedLifecycleRefusal):
+        cold.read_current_learned(learned.artifact_path, **serve,
+            attestation=revoked, expected_attestation_root=revoked.content_root)
+    with pytest.raises(SavedDeliveryError, match="PURPOSE_BINDING_DRIFT"):
+        cold.read_learned(learned.artifact_path,
+            expected_root=learned.root_identity, expected_purpose_ref=consumer.ref)
+    assert cold.read_learned(learned.artifact_path, **serve).consumer_result_hash == (
+        consumed.consumer_result_hash)
+
+    # A legitimate historical product need not be selected CURRENT.
+    historical_contract = _contract(route="M1_M2_B5", binding=binding, tag=tag,
+                                     actions=("REGISTER", "PUBLISH"))
+    historical, h_result = cold.publish_learned(
+        **{**args, "product_contract": historical_contract},
+        m2_repository=M2Repository(), lifecycle_executor=LearnedProductLifecycleExecutor(),
+        root_dir=tmp_path / "historical-learned", determinants=determinants,
+        require_current_selection=False)
+    assert historical.selection_receipt_ref is None
+    assert h_result.consumer_result_hash == consumed.consumer_result_hash
+    archived = dict(expected_root=historical.root_identity,
+                    expected_purpose_ref=determinants.purpose_ref)
+    assert cold.read_learned(historical.artifact_path, **archived).state == "REFUSED"
+    assert cold.read_learned(historical.artifact_path, **archived,
+        require_current_selection=False).consumer_result_hash == consumed.consumer_result_hash
+
     print("SAVED_S2G", source_format, consumed.state, consumed.consumer_result_hash,
           learned.root_identity, learned.compressed_bytes)
