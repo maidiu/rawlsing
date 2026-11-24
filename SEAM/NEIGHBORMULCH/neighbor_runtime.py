@@ -454,7 +454,7 @@ class NeighborEncounter:
                 'no_unseen_private_psychology_on_visitor_surface':True,
                 'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
 
-    def _own_visit_transitions(self, world):
+    def _own_visit_transitions(self, world, history=None):
         """Derive visits from the existing committed contribution history.
 
         Repeated LEAVE while already absent is not a new departure; movement
@@ -462,7 +462,7 @@ class NeighborEncounter:
         existing ledger receipt rather than admitting an uncommitted record.
         """
         receipts = {}
-        for row in self.runtime.ledger.events():
+        for row in (self.runtime.ledger.events() if history is None else history):
             env = row.get('envelope', {})
             payload = env.get('payload', {})
             if (row.get('kind') == 'NEIGHBOR_USER_CONTRIBUTION'
@@ -479,8 +479,16 @@ class NeighborEncounter:
                 continue
             ref = event.get('event_ref')
             source = receipts.get(ref)
+            authored = {'user': self.user_id, 'operation': event['operation'],
+                        'text': None, 'destination': (
+                            event.get('destination') if event['operation'] == 'MOVE'
+                            else None)}
             if (source is None or source[0].get('clock') != event.get('clock')
-                    or source[1].get('payload_hash') != event.get('payload_hash')):
+                    or source[1].get('payload_hash') != event.get('payload_hash')
+                    or digest(authored) != event.get('payload_hash')
+                    or ref != stable_id('neighbor_user', {
+                        'user': self.user_id, 'request_id': event.get('request_id'),
+                        'payload_hash': event.get('payload_hash')})):
                 raise EncounterRefusal('VISIT_TRANSITION_WITHOUT_COMMITTED_SOURCE')
             if event['operation'] == 'MOVE' and not present:
                 present = True
@@ -645,7 +653,8 @@ class NeighborEncounter:
         # not the process-local generated prose. This is a finite MII exposure
         # of the present occurrence, NOT historical reconstruction or a new
         # sensory world. The sound itself does not encode words or identity.
-        last_event = self.runtime.ledger.events()[-1]
+        history = self.runtime.ledger.events()
+        last_event = history[-1]
         envelope = last_event.get('envelope', {})
         actual = envelope.get('payload', {}).get('actual', {})
         current_clock = world['clock']
@@ -749,7 +758,7 @@ class NeighborEncounter:
             # Preserve R2's visible expression only when it is tied to this
             # exact actual one-world actor transition. A future source-typed
             # auditory expression needs MIII/CO owner receiving.
-            last = self.runtime.ledger.events()[-1]
+            last = last_event
             if (visible_identity and actor_location == loc
                     and at_clock == world['clock']
                     and last['id'] == receipt
@@ -768,7 +777,7 @@ class NeighborEncounter:
         # On actual reentry expose only the visitor's own elapsed modeled
         # interval, not the intervening actor audit, motives or a retrospective
         # story. Subsequent LOOK can disclose currently accessible changes.
-        arrival, departure, present = self._own_visit_transitions(world)
+        arrival, departure, present = self._own_visit_transitions(world, history)
         if (present and arrival is not None and departure is not None
                 and arrival['clock'] == world['clock']
                 and arrival['clock'] > departure['clock']):
