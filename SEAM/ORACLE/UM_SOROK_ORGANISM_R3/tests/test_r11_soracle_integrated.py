@@ -1612,7 +1612,7 @@ class PluralActivityAffectR42(unittest.TestCase):
                                    for a in row.get('course_affective_organizations',[])):
                                 return {'task':task,'action':'WAIT'}
                             return {'task':task,'practical_option_id':row['option_id']}
-                        return {'task':task,'action':'WAIT'}
+                        return {'task':task,'action':('REST' if stage in ('wait','hidden') else 'WAIT')}
                     if task=='development':
                         if stage=='appraisal':
                             projects={e['id']:e['project_id'] for e in packet['actor_expectations_analyst_only']}
@@ -1662,10 +1662,11 @@ class PluralActivityAffectR42(unittest.TestCase):
                     a=adult('worker','Mara')
                     a['projects']=[
                         {'id':p,'object':obj,'means':['REST'],'status':'active','priority':.5,
-                         'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['quiet_interval']}}
+                         'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['wait']}}
                         for p,obj in [('restore','recover strength'),('duty','sustain availability to family'),
                                       ('unselected','ordinary leisure')]]
-                    rt.ledger.initialize(blank_world(),[a])
+                    world=blank_world();world['positions']['worker']='home'
+                    rt.ledger.initialize(world,[a])
                     self.assertEqual(rt.step('worker')['status'],'PERFORMED')
                     x=rt.ledger.actor('worker')[1]
                     es=x['expectations'];self.assertEqual({e['project_id'] for e in es},{'restore','duty'})
@@ -1675,8 +1676,10 @@ class PluralActivityAffectR42(unittest.TestCase):
                     self.assertEqual(len(x['activity_history']),2)
                     self.assertTrue(all(e['motive_realized']=='UNDETERMINED_BY_TECHNICAL_OUTCOME'
                                         for e in x['activity_history']))
+                    # A personally performed WAIT supplies the qualified quiet sign;
+                    # a fixture cue may be situationally visible but is not an
+                    # actor-experience receipt merely because it was accessible.
                     stage='appraisal'
-                    rt.cue(kind='ordinary_quiet',tags=['quiet_interval'],lasting_ticks=2)
                     rt.step('worker')
                     x=rt.ledger.actor('worker')[1]
                     self.assertEqual({e['project_id']:e['state'] for e in x['expectations']},
@@ -1687,10 +1690,9 @@ class PluralActivityAffectR42(unittest.TestCase):
                     stage='wait'
                     for _ in range(4):rt.step('worker')
                     stage='hidden'
-                    rt.cue(kind='private_quiet',tags=['quiet_interval'],private_to='other',lasting_ticks=2)
+                    rt.cue(kind='private_quiet',tags=['wait'],private_to='other',lasting_ticks=2)
                     rt.step('worker')
                     stage='affect'
-                    rt.cue(kind='new_quiet',tags=['quiet_interval'],lasting_ticks=2)
                     rt.step('worker')
                     x=rt.ledger.actor('worker')[1]
                     es=x['expectations'];first={e['project_id']:e['affective_organizations'][0] for e in es}
@@ -1699,7 +1701,6 @@ class PluralActivityAffectR42(unittest.TestCase):
                     stage='wait'
                     for _ in range(4):rt.step('worker')
                     stage='compound'
-                    rt.cue(kind='further_quiet',tags=['quiet_interval'],lasting_ticks=2)
                     rt.step('worker')
                     self.assertEqual(len(compound_offers),1)
                     x=rt.ledger.actor('worker')[1]
@@ -1727,7 +1728,7 @@ class PluralActivityAffectR42(unittest.TestCase):
                         return {z['project_id']:z for o in rt.situated('worker')['candidate_actions']
                                 if o['action']=='REST' for z in o['practical_alternatives']}
                     self.assertFalse(any(v.get('course_affective_organizations') for v in courses().values()))
-                    rt.cue(kind='quiet_return',tags=['quiet_interval'],lasting_ticks=3)
+                    rt.cue(kind='quiet_return',tags=['wait'],lasting_ticks=3)
                     stage='later'
                     rows=courses()
                     self.assertEqual(len(rows['restore']['course_affective_organizations']),1)
