@@ -634,5 +634,76 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertIsNone(option(self._r29_situated_beside(actor,'father','mother')))
         self.assertIsNone(actor['historical_orientations'][0]['interpreted_other_ref_provisional'])
 
+    def test_mulch_r30_real_household_wrong_other_interpretation_cold_recruits(self):
+        """Actual two-meal world -> lived body -> potentially mistaken Other
+        interpretation -> R19 admission -> pre-cue recruitment -> cold SQLite.
+        An acquired interpretation never rewrites the objective event/cause.
+        """
+        parent={'source_ref':'R30_FICTIONAL_PARENT','source_grade':
+                'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'r30':'not_a_survey_observation'},
+                'fictional_seed':{'projects':[]}}
+        seen=[]
+        def callback(task,packet):
+            if task=='adult_constructor':
+                return HeuristicSemanticProvider().propose(task,packet)
+            if task=='development':
+                if packet['actor']['id']=='mother':
+                    possibilities=packet.get(
+                        'historically_possible_lived_directional_orientation',[])
+                    if possibilities:
+                        candidate=deepcopy(possibilities[0])
+                        actually_present=candidate['lived_genesis_basis'].get(
+                            'coexperienced_other_refs',[])
+                        self.assertTrue(actually_present,
+                            'R30 requires actual source-qualified co-presence')
+                        candidate['interpreted_other_ref']=actually_present[0]
+                        candidate['interpretive_hypothesis']=(
+                            'I think '+actually_present[0]+
+                            ' is associated with this bodily feeling; maybe wrongly')
+                        seen.append(candidate)
+                        return {'task':task,'candidates':[candidate]}
+                return {'task':task,'candidates':[]}
+            if task=='expression':
+                return {'task':task,'surface':'An ordinary meal happened.'}
+            if task=='actor_attempt':
+                return {'task':task,'action':'WAIT'}
+            raise AssertionError(task)
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'r30_household_cold.sqlite3')
+            rt=ConstitutiveRuntime(db,semantic=ValidatingSemanticService(
+                CallbackLLMProvider(callback)))
+            try:
+                rt.initialize([('mother','Mother',parent),
+                               ('father','Father',parent)])
+                first=rt.step('mother',requested_action='EAT')
+                second=rt.step('mother',requested_action='EAT')
+                self.assertEqual(first['status'],'PERFORMED')
+                self.assertEqual(second['status'],'PERFORMED')
+                self.assertTrue(seen)
+                row=next(r for r in rt.snapshot('mother')['historical_orientations']
+                         if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE')
+                focus=row['interpreted_other_ref_provisional']
+                self.assertIn(focus,row['coexperienced_other_refs'])
+                self.assertTrue(row['actor_does_not_know_objective_cause'])
+                self.assertTrue(row['interpreted_other_is_not_proven_cause_or_attended'])
+                self.assertTrue(any(c['action']=='EAT' and
+                    c['polarity']=='APPROACH' for c in rt.situated('mother')['currents']))
+                self.assertTrue(rt.verify()['valid'])
+            finally:
+                rt.close()
+            cold=ConstitutiveRuntime(db)
+            try:
+                restored=cold.snapshot('mother')
+                row=next(r for r in restored['historical_orientations']
+                         if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE')
+                self.assertEqual(row['interpreted_other_ref_provisional'],focus)
+                self.assertTrue(any(c['action']=='EAT' and
+                    c['polarity']=='APPROACH' for c in cold.situated('mother')['currents']))
+                self.assertTrue(cold.verify()['valid'])
+            finally:
+                cold.close()
+
+
 if __name__=='__main__':
     unittest.main()
