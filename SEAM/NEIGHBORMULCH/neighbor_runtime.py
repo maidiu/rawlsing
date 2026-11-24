@@ -19,6 +19,7 @@ import fcntl
 from um_sorok_organism.types import digest, stable_id, GRADE
 from um_sorok_organism.world import add_cue
 from um_sorok_organism.material_objects import material_objects_present
+from um_sorok_organism.practical_inquiry import notices_present
 
 
 class EncounterRefusal(ValueError):
@@ -79,6 +80,40 @@ def _public_material_projection(world: dict, location: str) -> dict:
                      'public_glance': 'A worked material object is here.',
                      'public_close': appearance,
                      'grade': 'SOURCEFREE_TEST_ONLY'}
+    return view
+
+
+def _public_encounter_projection(world: dict, location: str) -> dict:
+    """Extend the same MII target set with existing institution-owned notices.
+
+    CO notices_present owns spatial and temporal applicability. A readable
+    inscription is the institution's published words, not proof of its
+    underlying rule, motive, truth, access rights, or anyone's agreement.
+    This read-only adapter never posts a notice or performs actor INSPECT.
+    """
+    view = _public_material_projection(world, location)
+    notices = notices_present(world, location, world['clock'])
+    counts = {}
+    for row in notices:
+        counts[row['id']] = counts.get(row['id'], 0) + 1
+    for row in notices:
+        ref = row['id']
+        # Do not let duplicate source identities select a different body
+        # of text or override a real material object's identity.
+        if counts[ref] != 1 or ref in world.get('material_objects', {}):
+            view.pop(ref, None)
+            continue
+        if row.get('public') is not True:
+            continue
+        words = row.get('public_text')
+        view[ref] = {
+            'location': location,
+            'public_glance': 'A public notice is posted here.',
+            'public_close': words if type(words) is str and words.strip()
+                            and len(words) <= 500 else None,
+            'grade': 'SOURCEFREE_TEST_ONLY',
+            'source_kind': 'CO_PUBLIC_NOTICE',
+        }
     return view
 
 
@@ -284,7 +319,7 @@ class NeighborEncounter:
         elif operation == 'LOOK':
             source = _bound_source(world)
             sight = source.get('user_conditions', {}).get(loc, {})
-            candidate = _public_material_projection(world, loc).get(target_object_ref)
+            candidate = _public_encounter_projection(world, loc).get(target_object_ref)
             # P6 outward ORIENT is a bodily attempt, NOT P6 INSPECT_OBJECT.
             # Keep the world-owned physical target/location/public status.
             # Do not ask visitor legibility or attention to authorize turning:
@@ -447,7 +482,7 @@ class NeighborEncounter:
         # already protected P6/MII availability interface. This is a
         # READ-ONLY projection, NOT a second source or an adopted sensor law.
         # MII, not NeighborEncounter, decides glance versus close eligibility.
-        published = _public_material_projection(world, loc)
+        published = _public_encounter_projection(world, loc)
         mii_house = {
             'presentation_conditions': {
                 'grade': 'SOURCEFREE_FIXTURE',
@@ -579,6 +614,17 @@ class NeighborEncounter:
             exit_name='SOURCEFREE_UNQUALIFIED', available=available,
             candidates=available, offered=offered, selected=selected,
             basis=basis, narration=mandatory, recognition={})
+        # Explicitly distinguish a received institutional assertion from
+        # the world's real policy or a successful application. This metadata
+        # is recorded by MII with the actual finite exposure, never actor state.
+        if (selected in offered and
+                published[selected].get('source_kind') == 'CO_PUBLIC_NOTICE'):
+            view['optional']['source_kind'] = 'CO_PUBLIC_NOTICE'
+            view['optional']['published_words_available'] = bool(
+                committed_look is not None and
+                type(published[selected].get('public_close')) is str and
+                self.mii.close_available(mii_house, self.user_id, selected))
+            view['optional']['institutional_truth'] = 'NOT_ESTABLISHED'
         prior_offered = (profile['exposures'][-1].get('offered', {})
                          if profile.get('exposures') else {})
         before = len(profile.get('exposures', []))
