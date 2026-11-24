@@ -704,7 +704,7 @@ def _validate_joint_grain(
 ) -> None:
     """Validate joint/multi-component target configuration."""
     universes = _refs(empirical_query.empirical_universe_refs, "empirical_universe_refs")
-    targets = _refs(empirical_query.target_refs, "target_refs")
+    targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     if len(universes) != 1:
         raise AnalyticalCompositionError("C1 joint path requires SINGLE_UNIVERSE producer scope")
     if universes[0] != consumer_query.source_universe_ref:
@@ -855,7 +855,7 @@ def _validate_direct_grain(
     release_refs: tuple[ExactRef, ...],
 ) -> None:
     universes = _refs(empirical_query.empirical_universe_refs, "empirical_universe_refs")
-    targets = _refs(empirical_query.target_refs, "target_refs")
+    targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     if len(universes) != 1:
         raise AnalyticalCompositionError("C1-01 requires SINGLE_UNIVERSE producer scope")
     if universes[0] != consumer_query.source_universe_ref:
@@ -867,7 +867,15 @@ def _validate_direct_grain(
     topology = canonicalize(empirical_query.target_arity_and_topology)
     if topology.get("arity") != len(targets) or len(topology.get("components", ())) != len(targets):
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
-    if topology["components"][0].get("target_ref") != consumer_query.target_ref.as_dict():
+    # The consumer's anchor is the first producer target, in the *native*
+    # order. A joint is not a set: component/cell positions cannot be sorted.
+    if any(component.get("target_ref") != target.as_dict()
+           for component, target in zip(topology["components"], targets)):
+        raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
+    order = topology.get("joint_order_semantics")
+    if order not in {"SEMANTIC_ORDERED", "CANONICAL_SET_ORDER"}:
+        raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
+    if order == "CANONICAL_SET_ORDER" and targets != tuple(sorted(targets, key=lambda ref: ref.key)):
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
 
 
@@ -910,7 +918,7 @@ def _supported_geometry(
         for component in topology["components"]:
             components.append(component)
         target_info = {
-            "target_refs": [t.as_dict() for t in _refs(empirical_query.target_refs, "target_refs")],
+            "target_refs": [_exact(t, "target_refs").as_dict() for t in empirical_query.target_refs],
             "arity": topology["arity"],
             "joint_order_semantics": topology["joint_order_semantics"],
             "components": components,
@@ -1091,9 +1099,8 @@ def compose_positioned_subject_possibility(
     if recursive_handoff is not None:
         producer_route = PRODUCER_ROUTE_RECURSIVE
         _validate_recursive_consumption(recursive_handoff, consumer_query, predicate, empirical_query)
-        if len(empirical_query.target_refs) == 1:
-            _validate_direct_grain(empirical_query=empirical_query,
-                                   consumer_query=consumer_query, release_refs=release_refs)
+        _validate_direct_grain(empirical_query=empirical_query,
+                               consumer_query=consumer_query, release_refs=release_refs)
         producer_result = execute_empirical_query(
             repository=repository,
             query=empirical_query,
@@ -1117,11 +1124,10 @@ def compose_positioned_subject_possibility(
             receipt_ref=discovery_receipt_ref,
         )
         # I05 selects the actual producer query, not the caller's target
-        # label. Apply the same exact unary grain law as direct I03 before
-        # constructing any consumer geometry. Joint target contracts differ.
-        if len(empirical_query.target_refs) == 1:
-            _validate_direct_grain(empirical_query=empirical_query,
-                                   consumer_query=consumer_query, release_refs=release_refs)
+        # label. All routes share the exact anchor, scope and ordered
+        # component law before constructing consumer geometry.
+        _validate_direct_grain(empirical_query=empirical_query,
+                               consumer_query=consumer_query, release_refs=release_refs)
         if release_refs != _refs(
                 next(r.source_release_refs for r in discovery_result.receipts
                      if r.ref == discovery_receipt_ref), "discovery source releases"):
@@ -1219,7 +1225,7 @@ def compose_positioned_subject_possibility(
     auth_items = list(fact.authority_snapshot_refs)
     auth_items.extend(condition_binding_witness.pairing_authority_refs)
     authorities = _auths(auth_items, "authority_refs")
-    ordered_targets = _refs(empirical_query.target_refs, "target_refs")
+    ordered_targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     measure_kind = getattr(
         fact, "measure_kind", empirical_query.requested_output_grain.get("measure_kind")
     )
