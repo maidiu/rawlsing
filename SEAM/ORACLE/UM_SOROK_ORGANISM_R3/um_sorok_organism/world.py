@@ -10,7 +10,7 @@ from .practical_inquiry import notices_present
 from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
-from .material_provisioning import perform_one_actual_feeding
+from .material_provisioning import perform_one_actual_feeding, visitor_held_food_available
 from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
 from .food_power_reproduction import (
@@ -213,7 +213,8 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     No caller-supplied future consent or other-actor Attempt is accepted.
     Adjacent turn coordination only, not simultaneous singing.
     """
-    if (attempt.action != 'SING' or attempt.intention !=
+    human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED'}.get(attempt.action)
+    if (human_operation is None or attempt.intention !=
             'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
             or attempt.target not in visible_vocal_visitors(
                 world, actor, world['positions'].get(actor['id']))):
@@ -234,10 +235,16 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     if len(matches) != 1:
         return None
     event = matches[0]
-    authored = {'user': attempt.target, 'operation': 'SING',
+    if human_operation == 'OFFER_FEED':
+        if (attempt.practical_selection.get('selected_human_food_offer_ref') != event.get('event_ref')
+                or not visitor_held_food_available(world, attempt.target, loc)
+                or evaluate_material_conjunction(world, attempt.target, loc, 'FEED')['decision']
+                    in ('BLOCKED','UNRESOLVED')):
+            return None
+    authored = {'user': attempt.target, 'operation': human_operation,
                 'text': None, 'destination': None,
                 'target_actor_ref': actor['id']}
-    if (event.get('user') != attempt.target or event.get('operation') != 'SING'
+    if (event.get('user') != attempt.target or event.get('operation') != human_operation
             or event.get('status') != 'PERFORMED'
             or event.get('target_actor_ref') != actor['id']
             or event.get('destination') != loc or event.get('clock') != world['clock']
@@ -249,15 +256,19 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
         return None
     senses = world.get('neighbor_sensory_source', {}).get(
         'actor_conditions', {}).get(actor['id'], {})
-    if senses.get('hearing') is not True or senses.get('sound_path') != 'audible':
+    if human_operation == 'SING' and (senses.get('hearing') is not True or senses.get('sound_path') != 'audible'):
         return None
-    signs = [c for c in world['cues'] if c.get('kind') == 'visitor_vocal_practice'
+    sign_kind = 'visitor_vocal_practice' if human_operation == 'SING' else 'visitor_food_offer'
+    address_key = ('visitor_vocal_addressed_to_recipient' if human_operation == 'SING'
+                   else 'visitor_food_addressed_to_recipient')
+    modality = 'auditory' if human_operation == 'SING' else 'visual'
+    signs = [c for c in world['cues'] if c.get('kind') == sign_kind
              and c.get('visitor_ref') == attempt.target
              and c.get('visitor_event_ref') == event['event_ref']
-             and c.get('visitor_vocal_addressed_to_recipient') is True
+             and c.get(address_key) is True
              and c.get('id') in payload.get('candidate_cue_refs', [])
              and c.get('private_to') == actor['id']
-             and c.get('location') == loc and c.get('modality') == 'auditory'
+             and c.get('location') == loc and c.get('modality') == modality
              and c.get('clock') == world['clock']
              and c.get('last_access_clock', -1) >= world['clock']
              and actor['body']['sensor'] >= c.get('threshold', .05)]
@@ -265,7 +276,7 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
         return None
     return {'visitor_ref': attempt.target, 'actor': actor['id'],
             'user_event_ref': event['event_ref'], 'ledger_ref': ledger_event['id'],
-            'cue': copy(signs[0]), 'clock': world['clock'], 'grade': GRADE}
+            'cue': copy(signs[0]), 'clock': world['clock'], 'operation': human_operation, 'grade': GRADE}
 
 
 def _field(world,a,b):
@@ -714,6 +725,27 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             effects[target]={'action':'IMPOSED_ON','bodily':False}
             output='UNILATERAL_IMPOSITION_NOT_CONSENT'
         else:status='BLOCKED';output='TARGET_NOT_PRESENT'
+    elif attempt.action == 'SIGNAL' and target in world.get('neighbor_users', {}) and target not in actors:
+        # Only a currently qualified OFFER_FEED and independent actor
+        # selection of that actual offer can settle bodily nourishment.
+        status='PARTIAL';output='INDEPENDENT_COACTOR_DID_NOT_JOIN'
+        if human_vocal is not None and human_vocal.get('operation')=='OFFER_FEED':
+            supported=perform_one_actual_feeding(
+                world,actors,target,aid,loc,'HUMAN_AUTHORED_OFFER',
+                qualified_human_offer_ref=human_vocal['user_event_ref'])
+            material_feeding_ref=supported['material_feeding_ref']
+            if supported['status']=='PERFORMED':
+                status='PERFORMED';output='JOINT_ACTIVITY_PERFORMED'
+                effects[aid]['received_assistance']=True
+                _field(world,aid,target)['history'].append({
+                    'clock':world['clock'],'activity':'SIGNAL',
+                    'contributions':[{'actor':aid,'act':'SIGNAL'},
+                        {'human_participant':target,'act':'FEED',
+                         'committed_user_event_ref':human_vocal['user_event_ref']}],
+                    'material_effects':[{'recipient':aid,
+                        'kind':'SOURCE_QUALIFIED_ACTUAL_FEEDING',
+                        'material_feeding_ref':material_feeding_ref}],
+                    'no_future_consent_or_shared_motive':True})
     elif attempt.action == 'SING' and target in world.get('neighbor_users', {}) and target not in actors:
         # Actual prior human contribution is not a prospective synthetic
         # coactor plan. No human body or psyche is updated by this settlement.
