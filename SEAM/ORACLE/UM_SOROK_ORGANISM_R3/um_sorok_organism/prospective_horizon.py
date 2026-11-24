@@ -167,6 +167,24 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'grade': GRADE,
             }
             option.setdefault('possible_end_trials', []).append(trial)
+            # An already licensed prospective SIGNAL trial can be enacted
+            # through a PARTICULAR actual human food offer. Keep generic
+            # trial separate; never pool two independently selectable IDs
+            # or infer assent from an action-only proposal.
+            if operation=='SIGNAL' and historically_perceived_other is None:
+                for alternative in option.get('practical_alternatives',[]):
+                    if (alternative.get('binding_status')!='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+                            or type(alternative.get('human_food_offer_ref')) is not str):
+                        continue
+                    offered_trial=copy(trial)
+                    offered_trial.update(
+                        trial_id=stable_id('end_trial_actual_offer',{
+                            'trial':ident,'option':alternative['option_id'],
+                            'offer':alternative['human_food_offer_ref']}),
+                        selected_offer_option_ref=alternative['option_id'],
+                        selected_human_food_offer_ref=alternative['human_food_offer_ref'],
+                        offered_by_ref=alternative['world_request']['addressed_party_ref'])
+                    option['possible_end_trials'].append(offered_trial)
             qualified.append(operation)
         if qualified:
             readset.append(end['id'])
@@ -307,6 +325,15 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         'not_a_conscious_self_report': True,
         'grade': GRADE,
     }
+    if trial.get('selected_human_food_offer_ref') is not None:
+        selected=experience.get('own_practical_selection') or {}
+        if (selected.get('selected_human_food_offer_ref')!=trial['selected_human_food_offer_ref']
+                or selected.get('option_id')!=trial.get('selected_offer_option_ref')
+                or selected.get('world_request',{}).get('addressed_party_ref')!=trial.get('offered_by_ref')):
+            raise ValueError('POSSIBLE_END_TRIAL_OFFER_NOT_SELECTED')
+        witness['selected_human_food_offer_ref']=trial['selected_human_food_offer_ref']
+        witness['offered_by_ref']=trial['offered_by_ref']
+        witness['selected_offer_option_ref']=trial['selected_offer_option_ref']
     end.setdefault('trial_history', []).append(witness)
     return {'kind': 'RECORD_POSSIBLE_END_TRIAL',
             'trial_history_ref': trial_id, 'possible_end': end['id'],
