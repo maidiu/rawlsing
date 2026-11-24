@@ -141,6 +141,22 @@ class CountryNativeEconomics(unittest.TestCase):
             from rawlsing_next import pre553_issued_workload as issued
             from rawlsing_next import pre553_saved_durable_delivery as delivery
             from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+            # Matched admission microcomparison on the exact same governed
+            # workload and runner, using the frozen pre-repair algorithms.
+            old_times,new_times=[],[]
+            for _ in range(3):
+                t0=time.monotonic()
+                with patch.object(issued,"material",_legacy_material):
+                    old_hash=_legacy_semantic_hash(workload.envelope())
+                old_times.append(time.monotonic()-t0)
+                t0=time.monotonic()
+                new_hash=semantic_hash(workload.envelope())
+                new_times.append(time.monotonic()-t0)
+                self.assertEqual(old_hash,new_hash)
+                self.assertEqual(new_hash,record.envelope_sha256)
+            print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
+                "old_median_s":median(old_times),"new_median_s":median(new_times),
+                "same_exact_hash":True,"repetitions":3}),flush=True)
             timings=defaultdict(list)
             def time_call(owner,name,label):
                 original=getattr(owner,name)
@@ -269,6 +285,7 @@ class CountryNativeEconomics(unittest.TestCase):
 
 
 from collections.abc import Mapping, Sequence
+from typing import Any
 from dataclasses import is_dataclass, fields
 from decimal import Decimal
 from fractions import Fraction
