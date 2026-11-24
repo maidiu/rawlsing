@@ -89,6 +89,9 @@ def enact_currents(constitution, access, active_forms, candidates, relational=No
                 'relation_source_ref':mediated['mediation_source_ref'],
                 'relation_target_ref':mediated['mediation_target_ref'],
                 'not_objective_justification_of_conduct':True})
+        if 'lived_cross_context_revaluation' in mediated:
+            current['lived_cross_context_revaluation']=copy(
+                mediated['lived_cross_context_revaluation'])
         currents.append(current)
     for h in (historical or {}).get('currents', []):
         action=h['action'];polarity=h['polarity'];ref='history:'+h['ref']
