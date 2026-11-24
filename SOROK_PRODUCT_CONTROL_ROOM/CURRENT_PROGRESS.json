@@ -1,4 +1,403 @@
 {
+  "operational_currentness_r1": {
+    "schema": "SOROK_OPERATIONAL_CURRENTNESS_R1",
+    "as_of": "2026-11-15T19:45:00-05:00",
+    "adoption": "PENDING_INDEPENDENT_RECEIVING",
+    "source_grades": "SCOPED_SOURCEFREE_ONLY",
+    "original_packet_source": "227ce149fc7864c83c179a7d3ecaef2b92c5bdab",
+    "gmt_overlay_source": "b066ef84750b99339faf197c8e34a7300f768a8e",
+    "protected_foundations": {
+      "P3": {
+        "pr": 746,
+        "merge_sha": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P4": {
+        "pr": 751,
+        "merge_sha": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P5": {
+        "pr": 775,
+        "merge_sha": "5e266a80ccfc52da10741e15f6b9076138907758",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "P6": {
+        "pr": 779,
+        "merge_sha": "0232a28f519f56b45404c439f1cd2a007005d2f4",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "MI": {
+        "pr": 907,
+        "merge_sha": "1f77f2036427a410429184780ef884ec4f253ad0",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "MII": {
+        "pr": 905,
+        "merge_sha": "521ae459091c5d4e4009f442257d74d50b2c55db",
+        "scope": "SOURCEFREE_PROTECTED"
+      },
+      "MIII": {
+        "pr": 891,
+        "merge_sha": "3e5b1611f5cb043b43ffd39b14c9d707923f1210",
+        "scope": "SOURCEFREE_PROTECTED"
+      }
+    },
+    "tasks": [
+      {
+        "id": "B01",
+        "class": "M",
+        "depends_on": [],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "B02",
+        "class": "M",
+        "depends_on": [
+          "B01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "B03",
+        "class": "M",
+        "depends_on": [
+          "B01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "B04",
+        "class": "M",
+        "depends_on": [
+          "B02",
+          "B03"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "B05",
+        "class": "M",
+        "depends_on": [
+          "B02",
+          "B04"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "code_sha": "cab1f2d6cdab6f6b653ed20e5b41afb90d9facbc",
+        "review_sha": "5c83a8321dce70fcc40c8f210af06a9edb1f8999",
+        "review_pr": 1089,
+        "limitation": "Zero-rent/positive-rent receipt integrity only; not all B05 or actor-native economics",
+        "evidence_note": "Zero-rent/positive-rent receipt integrity only; not all B05 or actor-native economics"
+      },
+      {
+        "id": "C01",
+        "class": "M",
+        "depends_on": [
+          "B01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "C02",
+        "class": "T",
+        "depends_on": [
+          "C01",
+          "B02",
+          "B03"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "C03",
+        "class": "T",
+        "depends_on": [
+          "C02",
+          "B04"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "C04",
+        "class": "T",
+        "depends_on": [
+          "C03"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "code_sha": "ee82397a979e52eab83f2bd4ea48ed9c28ea7ab9",
+        "review_sha": "8bdfbdd22c19d865b5049bde8213eb3bcaea973b",
+        "review_pr": 1062,
+        "limitation": "Child-facing speech custody only, not mother speaker/selector or D03 parent receipt",
+        "evidence_note": "Child-facing speech custody only, not mother speaker/selector or D03 parent receipt"
+      },
+      {
+        "id": "C05",
+        "class": "T",
+        "depends_on": [
+          "C01",
+          "C04"
+        ],
+        "sourcefree_state": "SCOPED_RECEIVED_UNMERGED",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "code_sha": "4b33b8be1127c2186931a66f23e3a2b05feaf0a6",
+        "review_sha": "24f532de43ab6d1ee8a6480a856ba6c6b56e7f53",
+        "review_pr": 1091,
+        "limitation": "Relation record and projection only; true event-time knowledge and actor-authorized exposure held",
+        "evidence_note": "Relation record and projection only; true event-time knowledge and actor-authorized exposure held"
+      },
+      {
+        "id": "D01",
+        "class": "M",
+        "depends_on": [],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "D02",
+        "class": "M",
+        "depends_on": [
+          "D01",
+          "B02",
+          "C01"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "D03",
+        "class": "T",
+        "depends_on": [
+          "D02",
+          "C04"
+        ],
+        "sourcefree_state": "CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "evidence_note": "#1010 A/B/A work completed; actor-owned performed G2 still unissued"
+      },
+      {
+        "id": "D04",
+        "class": "T",
+        "depends_on": [
+          "D01",
+          "D03",
+          "B05"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "D05",
+        "class": "M",
+        "depends_on": [
+          "D04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "E01",
+        "class": "M",
+        "depends_on": [
+          "B04",
+          "C04",
+          "D03"
+        ],
+        "sourcefree_state": "PARTIAL_CANDIDATE",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "evidence_note": "Partial author join #996; no independent full J1 performer"
+      },
+      {
+        "id": "E02",
+        "class": "T",
+        "depends_on": [
+          "E01",
+          "B05",
+          "C05",
+          "D04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "E03",
+        "class": "G",
+        "depends_on": [
+          "E02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "E04",
+        "class": "G",
+        "depends_on": [
+          "E03",
+          "D05"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "F01",
+        "class": "M",
+        "depends_on": [
+          "E02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "F02",
+        "class": "G",
+        "depends_on": [
+          "F01"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "F03",
+        "class": "T",
+        "depends_on": [
+          "F02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "F04",
+        "class": "M",
+        "depends_on": [
+          "F03",
+          "E04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "G01",
+        "class": "G",
+        "depends_on": [
+          "F04"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "G02",
+        "class": "T",
+        "depends_on": [
+          "G01"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      },
+      {
+        "id": "G03",
+        "class": "G",
+        "depends_on": [
+          "G02"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED",
+        "evidence_note": "G03-I0 received #993, not full cohort"
+      },
+      {
+        "id": "G04",
+        "class": "G",
+        "depends_on": [
+          "G02",
+          "G03"
+        ],
+        "sourcefree_state": "HELD_NOT_LAUNCHED",
+        "full_original_claim": "NOT_ESTABLISHED"
+      }
+    ],
+    "work_frontier": [
+      {
+        "id": "PROGRAMMA",
+        "state": "RECONCILIATION_REQUIRED",
+        "owner": "SOROK HQ + protected guide owner",
+        "next_action": "Receive this candidate state against exact immutable PRs, verify source, install runtime intake and merge only with separate protected authority"
+      },
+      {
+        "id": "G2",
+        "state": "HOLD_SOURCE_AUTHORITY",
+        "owner": "Existing competent V3 prospective/performance issuer",
+        "next_action": "Adjudicate alternatives, evaluation, inaction and authentic actor-performed event; #1031"
+      },
+      {
+        "id": "C04/D03",
+        "state": "REPAIR_AND_OWNER_HOLD",
+        "owner": "Existing parent self-reader and D03 P3/P2 receipt owners",
+        "next_action": "First-consumer evidence for parent metadata and caller receipt identity; no substitute language psychology"
+      },
+      {
+        "id": "C05",
+        "state": "FULL_ACTOR_KNOWLEDGE_HELD",
+        "owner": "C05/CAN/ADP actor knowledge issuer",
+        "next_action": "True event-time same-clock knowledge and actor-authorized exposure; #1091 scoped projection stays accepted"
+      },
+      {
+        "id": "E01/J1",
+        "state": "PARTIAL_DEPENDENCY_HOLD",
+        "owner": "Existing Codex integrator #1003",
+        "next_action": "Prove source-qualified mother and Nadia performed events at one joined SHA; not just stored modes"
+      },
+      {
+        "id": "D04/D05",
+        "state": "WAITING_PERFORMED_J1",
+        "owner": "User-operated Browser #1012; Codex receives only handoff #1004",
+        "next_action": "No Browser launch before separate qualified J1, keep D01/D03/B05 original dependencies"
+      },
+      {
+        "id": "E02/J2",
+        "state": "WAITING_E01_B05_C05_D04",
+        "owner": "Existing integrator #1005",
+        "next_action": "Original dependency grades must all qualify, scoped C05 is not full C05"
+      },
+      {
+        "id": "CG-A",
+        "state": "SCOPED_RECEIVED_UNMERGED",
+        "owner": "Source lineage/integration owner",
+        "next_action": "#1066 P3→P6 scoped evidence and exact non-protected ancestor reconcile, no duplicate repair"
+      },
+      {
+        "id": "G03",
+        "state": "I0_RECEIVED_FULL_COHORT_HELD",
+        "owner": "G02 cohort owner then G03 measurement owner",
+        "next_action": "#993 I0 done, full G03 waits on G02, no repeat mini-meter"
+      }
+    ],
+    "browser": {
+      "issue_1008": "A_B_A_COMPLETED_C04_CHILD_CUSTODY_SCOPED",
+      "issue_1010": "A_B_A_COMPLETED_G2_HELD",
+      "issue_1012": "NOT_LAUNCHED_WAITING_J1"
+    },
+    "controllers": {
+      "issue_939": "USER_STOP_AFTER_ORIGINAL_ASSIGNMENTS",
+      "persistent_dispatch": false
+    },
+    "outside_packets": {
+      "G03_I0": "RECEIVED_SCOPED_UNMERGED_PR993",
+      "CG_A": "RECEIVED_SCOPED_UNMERGED_PR1066",
+      "portal_768": "DESIGN_CANDIDATE_NOT_IMPLEMENTED"
+    },
+    "execution": {
+      "locally_verified_live_workers": null,
+      "last_reported_oldmac_five_receipts": "PR1063_TW0_JOB_RECEIVING_20261115"
+    },
+    "unreconciled_external_events": "UNKNOWN_REQUIRES_LIVE_INTAKE",
+    "no_authority_promotion": true
+  },
   "protected_mii_sourcefree_after_r39_20261111": {
     "as_of": "2026-11-11",
     "status": "ADDITIVE_PROTECTED_MII_RECEIVING_AFTER_R39",

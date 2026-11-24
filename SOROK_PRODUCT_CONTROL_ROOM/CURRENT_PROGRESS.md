@@ -1,5 +1,29 @@
 # Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
 
+<!-- SOROK_OPERATIONAL_CURRENT_START -->
+## SOROK operational currentness — generated from paired JSON
+**Cut:** 2026-11-15T19:45:00-05:00 | **Adoption:** PENDING_INDEPENDENT_RECEIVING
+**Evidence grade:** sourcefree engineering where stated; never native, scientific, human or protected integration by implication.
+
+**Protected:** P3 (#746), P4 (#751), P5 (#775), P6 (#779), MI (#907), MII (#905), MIII (#891).
+**Scoped received, unmerged:** B05 (#1089), C04 (#1062), C05 (#1091).
+
+**Current blockers and next owner actions:**
+- PROGRAMMA | RECONCILIATION_REQUIRED | owner: SOROK HQ + protected guide owner | next: Receive this candidate state against exact immutable PRs, verify source, install runtime intake and merge only with separate protected authority
+- G2 | HOLD_SOURCE_AUTHORITY | owner: Existing competent V3 prospective/performance issuer | next: Adjudicate alternatives, evaluation, inaction and authentic actor-performed event; #1031
+- C04/D03 | REPAIR_AND_OWNER_HOLD | owner: Existing parent self-reader and D03 P3/P2 receipt owners | next: First-consumer evidence for parent metadata and caller receipt identity; no substitute language psychology
+- C05 | FULL_ACTOR_KNOWLEDGE_HELD | owner: C05/CAN/ADP actor knowledge issuer | next: True event-time same-clock knowledge and actor-authorized exposure; #1091 scoped projection stays accepted
+- E01/J1 | PARTIAL_DEPENDENCY_HOLD | owner: Existing Codex integrator #1003 | next: Prove source-qualified mother and Nadia performed events at one joined SHA; not just stored modes
+- D04/D05 | WAITING_PERFORMED_J1 | owner: User-operated Browser #1012; Codex receives only handoff #1004 | next: No Browser launch before separate qualified J1, keep D01/D03/B05 original dependencies
+- E02/J2 | WAITING_E01_B05_C05_D04 | owner: Existing integrator #1005 | next: Original dependency grades must all qualify, scoped C05 is not full C05
+- CG-A | SCOPED_RECEIVED_UNMERGED | owner: Source lineage/integration owner | next: #1066 P3→P6 scoped evidence and exact non-protected ancestor reconcile, no duplicate repair
+- G03 | I0_RECEIVED_FULL_COHORT_HELD | owner: G02 cohort owner then G03 measurement owner | next: #993 I0 done, full G03 waits on G02, no repeat mini-meter
+
+**None of the 27 whole original CG-B–G claims is marked complete.**
+**External PR/review events and local runner processes:** must be authenticated at each HQ intake; older comments and stored leases are history, not live state.
+<!-- SOROK_OPERATIONAL_CURRENT_END -->
+
+
 **CURRENT PROTECTED MII FACTUAL ADDENDUM (2026-11-11; after historical R39):** [PR #905](https://github.com/maidiu/rawlsing/pull/905) merged at protected PRE-MAIN `521ae459091c5d4e4009f442257d74d50b2c55db` with exact implementation `5eabd82074fab9318cb50838feeb6e78743dffdd`, distinct sourcefree engineering reviewer `34a70e7069a056972db13a805f736d7813823d3e` (`ACCEPT_SCOPED_SOURCEFREE_ENGINEERING`) and HQ decision `2611bd024195923c45af25713694ba4611c926cc`. MII full E1–E10 and 44 inherited behavioral cases are sourcefree accepted; protected P6 `run_p6.experience` now consumes `SOROK_MII_SURFACE@1` and its separate derivative exposure/gaze. Exact blob, canonical, full MII and inherited MIII joined PR checks PASS; MIII was already merged through #891. Source/evidence [protected integration packet](PROGRAMMA_SOROK/30_MII_PROTECTED_INTEGRATION_RECEIVING_20261111_R1.md). This **addendum is not R40 authority creation**: the underlying last qualified revision remains R39 with the original R37/R38/R39 evidence and 144-function/38-seam/83-gate no-drop. MI [#791](https://github.com/maidiu/rawlsing/pull/791) remains OPEN/unmerged; [Codex MI full completion commission](https://github.com/maidiu/rawlsing/blob/3f04a9cc140c746b30fe303074e4d7119e49a2b2/WORKER_COMMISSIONS/SOROK-MECHANISM-I-EXISTING-IMPLEMENTATION-COMPLETION-20261111-R1/00_COPY_PASTE_CODEX_LAUNCH.md) is ready. Native CAN/ADP scientific, actor permissions, live-provider validation, human wellbeing and production remain separate HELD; inherited FIABC/LiTS 144 PASS / 3 FAIL unchanged. Historical statements about MIII incoming below are now superseded, not erased.
 
 **2026-11-09 CANDIDATE / NOT IMPLEMENTED:** [29 Nadia sensory access to actual user conduct](PROGRAMMA_SOROK/29_NADIA_SENSORY_ACCESS_FROM_PLAYER_CONDUCT_CANDIDATE_20261109_R1.md) has been banked for future one-scene sourcefree engineering. Separate (a) committed world conduct, (b) Nadia's personally accessible auditory/visual/presence cues and (c) Nadia's historically grounded, fallible interpretation and response. P6 protected integration remains finished within sourcefree scope. Mechanism I #791 D8 joint P6 gaze + ordinary dispatch proof is still partial; new perceptible-conduct-to-Nadia test is distinct; Mechanism III incoming, specification not supplied. NOT_RUN, no native/actor-science/human grant; FIABC/LiTS 144 PASS / 3 inherited FAIL.

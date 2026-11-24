@@ -1,0 +1,27 @@
+name: SOROK operational currentness projection
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/**'
+      - '.github/workflows/sorok-operational-currentness-r1.yml'
+  push:
+    branches:
+      - integration/pre-main-reconciliation-r1
+      - 'codex/sorok-operational-currentness-*'
+jobs:
+  currentness:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate scoped currentness, original packet denominator, and known false-state regressions
+        run: |
+          python3 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --self-test
+      - name: Render human work-now view from the same JSON
+        run: |
+          python3 SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/verify_operational_currentness_r1.py --status
