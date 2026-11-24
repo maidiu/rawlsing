@@ -59,7 +59,9 @@ from .historical_parent_bridge import render_blind_interview
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
-from .relational_metabolism import possible_witnessed_third_party_relation
+from .relational_metabolism import (
+    possible_witnessed_third_party_relation,
+    possible_lived_cross_context_revaluations)
 from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
 
 def _bind_actor_trial_particular_object(alternatives, trial):
@@ -831,6 +833,9 @@ class ConstitutiveRuntime:
                     recurrent_work),
                 'historically_possible_lived_directional_orientation':copy(
                     lived_directional_orientation),
+                'historically_possible_lived_cross_context_revaluations':copy(
+                    possible_lived_cross_context_revaluations(
+                        actors[aid],experience,objective_ref)),
                 'bodily_before_actor_analyst_only':copy(bodily_before[aid]),
                 'selected_purpose_analytic_only':copy(own_selection),
                 'evidence_path':copy(actors[aid].get('evidence_paths',[])[-1]),
