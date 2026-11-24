@@ -203,7 +203,7 @@ def possible_activity_affects(actor, experience, event_ref):
                 or sign not in appraisal.get('actual_received_sign_refs',[])
                 or appraisal.get('appraisal') not in
                    ('ACTOR_INTERPRETS_SUPPORTED','ACTOR_INTERPRETS_DISAPPOINTED','MEANING_UNRESOLVED')
-                or not tags.intersection(previous[1].get('received_cue_tags',[]))):continue
+                or not tags.intersection(appraisal.get('appraised_sign_tags',[]))):continue
         for cue in received.values():
             matching=sorted(tags.intersection(str(t).casefold() for t in cue.get('tags',[])))
             if not matching or cue['id']==sign or cue['id'] in previous[1].get('received_cue_refs',[]):continue

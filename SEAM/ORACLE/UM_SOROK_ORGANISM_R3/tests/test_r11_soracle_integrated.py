@@ -1588,3 +1588,176 @@ class DependencyCourseAmbivalenceR41(unittest.TestCase):
                     self.assertTrue(cold.verify()['valid'])
                 finally:cold.close()
             self.assertEqual(final,{True:'WAIT',False:'SIGNAL'})
+
+
+class PluralActivityAffectR42(unittest.TestCase):
+    """Same material act, different projects, different subsequent meaning."""
+    def test_plural_activity_compound_affect_and_cold_actual_selection(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        final={}
+        with tempfile.TemporaryDirectory() as d:
+            for compound in (True,False):
+                stage='start'; admitted=[]; compound_offers=[]; packet_log=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if stage=='start':
+                            return {'task':task,'action':'REST','project_ids':['restore','duty']}
+                        if stage=='later':
+                            alts=[a for a in packet['practical_options']
+                                  if a.get('project_id')=='duty' and a['operation']=='REST']
+                            self.assertEqual(len(alts),1)
+                            row=alts[0]
+                            if any(a['basis']['object_affect_ref'] is not None
+                                   for a in row.get('course_affective_organizations',[])):
+                                return {'task':task,'action':'WAIT'}
+                            return {'task':task,'practical_option_id':row['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if stage=='appraisal':
+                            projects={e['id']:e['project_id'] for e in packet['actor_expectations_analyst_only']}
+                            rows=packet['historically_possible_delayed_appraisals']
+                            self.assertEqual({projects[x['expectation_ref']] for x in rows},{'restore','duty'})
+                            picked={}
+                            for x in rows:picked.setdefault(x['expectation_ref'],x)
+                            return {'task':task,'candidates':[
+                                {'kind':'APPRAISE_EXPECTED_DIFFERENCE','expectation_ref':x['expectation_ref'],
+                                 'perceived_cue_ref':x['source_perceived_cue_ref'],
+                                 'appraisal':('ACTOR_INTERPRETS_SUPPORTED' if projects[x['expectation_ref']]=='restore'
+                                              else 'ACTOR_INTERPRETS_DISAPPOINTED')}
+                                for x in picked.values()]}
+                        offers=packet.get('historically_possible_activity_affects',[])
+                        if stage=='hidden':
+                            self.assertEqual(offers,[])
+                        if stage=='affect':
+                            by_project={}
+                            for x in offers:
+                                if x['object_affect_ref'] is None:by_project.setdefault(x['project_ref'],x)
+                            self.assertEqual(set(by_project),{'restore','duty'})
+                            cs=[{'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':b,
+                                 'affect_name':'relief' if p=='restore' else 'unease',
+                                 'personal_sense':('the quiet interval feels restorative' if p=='restore'
+                                                   else 'rest conflicts with a continuing obligation'),
+                                 'course_orientation':'APPROACH' if p=='restore' else 'NO_DIRECT_TENDENCY'}
+                                for p,b in by_project.items()]
+                            admitted.extend(copy.deepcopy(cs))
+                            return {'task':task,'candidates':cs}
+                        if stage=='compound':
+                            es=packet['actor_expectations_analyst_only']
+                            relief=next(a['id'] for e in es for a in e.get('affective_organizations',[])
+                                        if a['affect_name']=='relief')
+                            rows=[x for x in offers if x['project_ref']=='duty' and x['object_affect_ref']==relief]
+                            self.assertTrue(rows)
+                            c={'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':rows[0],
+                               'affect_name':'shame about relief',
+                               'personal_sense':'the relief itself has become troubling in relation to duty',
+                               'course_orientation':'WITHHOLD'}
+                            compound_offers.append((copy.deepcopy(c),copy.deepcopy(packet['experience'])))
+                            return {'task':task,'candidates':[c] if compound else []}
+                        return {'task':task,'candidates':[]}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(compound));service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[
+                        {'id':p,'object':obj,'means':['REST'],'status':'active','priority':.5,
+                         'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['quiet_interval']}}
+                        for p,obj in [('restore','recover strength'),('duty','sustain availability to family'),
+                                      ('unselected','ordinary leisure')]]
+                    rt.ledger.initialize(blank_world(),[a])
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    x=rt.ledger.actor('worker')[1]
+                    es=x['expectations'];self.assertEqual({e['project_id'] for e in es},{'restore','duty'})
+                    self.assertEqual(len({e['origin_event'] for e in es}),1)
+                    self.assertEqual(len({e['practical_option_id'] for e in es}),2)
+                    self.assertEqual(len({e['shared_selected_operation_ref'] for e in es}),1)
+                    self.assertEqual(len(x['activity_history']),2)
+                    self.assertTrue(all(e['motive_realized']=='UNDETERMINED_BY_TECHNICAL_OUTCOME'
+                                        for e in x['activity_history']))
+                    stage='appraisal'
+                    rt.cue(kind='ordinary_quiet',tags=['quiet_interval'],lasting_ticks=2)
+                    rt.step('worker')
+                    x=rt.ledger.actor('worker')[1]
+                    self.assertEqual({e['project_id']:e['state'] for e in x['expectations']},
+                        {'restore':'ACTOR_INTERPRETS_SUPPORTED','duty':'ACTOR_INTERPRETS_DISAPPOINTED'})
+                    self.assertFalse(any(e.get('affective_organizations') for e in x['expectations']))
+                    # A fresh cue only outside actor's finite sensory access
+                    # cannot form an acquired meaning.
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    stage='hidden'
+                    rt.cue(kind='private_quiet',tags=['quiet_interval'],private_to='other',lasting_ticks=2)
+                    rt.step('worker')
+                    stage='affect'
+                    rt.cue(kind='new_quiet',tags=['quiet_interval'],lasting_ticks=2)
+                    rt.step('worker')
+                    x=rt.ledger.actor('worker')[1]
+                    es=x['expectations'];first={e['project_id']:e['affective_organizations'][0] for e in es}
+                    self.assertEqual({a['affect_name'] for a in first.values()},{'relief','unease'})
+                    self.assertTrue(all(a['depth']==1 for a in first.values()))
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    stage='compound'
+                    rt.cue(kind='further_quiet',tags=['quiet_interval'],lasting_ticks=2)
+                    rt.step('worker')
+                    self.assertEqual(len(compound_offers),1)
+                    x=rt.ledger.actor('worker')[1]
+                    duty=next(e for e in x['expectations'] if e['project_id']=='duty')
+                    self.assertEqual(len(duty['affective_organizations']),2 if compound else 1)
+                    self.assertEqual(duty['affective_organizations'][0],first['duty'])
+                    if compound:
+                        self.assertEqual(duty['affective_organizations'][1]['basis']['object_affect_ref'],first['restore']['id'])
+                    else:
+                        c,exp=compound_offers[0]
+                        bad=copy.deepcopy(c);bad['basis']['object_affect_ref']='unowned-affect'
+                        original=copy.deepcopy(x)
+                        # Even a valid first mutation cannot leak when the
+                        # second proposed mutation has fabricated ancestry.
+                        with self.assertRaisesRegex(InvalidDevelopment,'ACTIVITY_AFFECT_UNQUALIFIED_HISTORY'):
+                            admit(x,exp,c['basis']['current_event_ref'],[c,bad])
+                        self.assertEqual(x,original)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    def courses():
+                        return {z['project_id']:z for o in rt.situated('worker')['candidate_actions']
+                                if o['action']=='REST' for z in o['practical_alternatives']}
+                    self.assertFalse(any(v.get('course_affective_organizations') for v in courses().values()))
+                    rt.cue(kind='quiet_return',tags=['quiet_interval'],lasting_ticks=3)
+                    stage='later'
+                    rows=courses()
+                    self.assertEqual(len(rows['restore']['course_affective_organizations']),1)
+                    self.assertEqual(len(rows['duty']['course_affective_organizations']),2 if compound else 1)
+                    self.assertNotIn('course_affective_organizations',rows['unselected'])
+                    self.assertNotIn('course_affective_organizations',rows[None])
+                    result=rt.step('worker')
+                    final[compound]=result['attempt']
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(final,{True:'WAIT',False:'REST'})
+
+    def test_forged_plural_expectation_course_cannot_partially_write(self):
+        from um_sorok_organism.practical_difference import start_selected_expectations
+        a=adult('worker','Mara')
+        a['projects']=[{'id':p,'object':p,'means':['REST'],
+                        'expected_difference':{'feature':p}} for p in ('a','b')]
+        courses=[]
+        for p in a['projects']:
+            expected=p['expected_difference']
+            ident=stable_id('practical_option',{'actor':'worker','clock':1,'action':'REST',
+                'project_ref':p['id'],'expected_difference':expected,'addressed_party_ref':None})
+            courses.append({'project_id':p['id'],'option_id':ident,'anticipated_difference':expected})
+        courses[1]['option_id']='invented'
+        sel={'actor':'worker','status':'ACTOR_POLICY_PRACTICAL_ATTEMPT','as_of_clock':1,
+             'selected_project_refs':['a','b'],'selected_expectation_courses':courses,
+             'world_request':{'operation':'REST','addressed_party_ref':None,'material_object_ref':None}}
+        exp={'actor':'worker','own_action':'REST','ref':'experienced',
+             'own_practical_selection':sel}
+        before=copy.deepcopy(a)
+        with self.assertRaisesRegex(ValueError,'PLURAL_EXPECTATION_OPTION_CONTRADICTION'):
+            start_selected_expectations(a,sel,exp,'event')
+        self.assertEqual(a,before)

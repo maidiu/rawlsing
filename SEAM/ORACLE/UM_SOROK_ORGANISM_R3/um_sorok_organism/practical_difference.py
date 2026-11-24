@@ -185,6 +185,9 @@ def appraise_expected_difference(actor,experience,event_ref,proposal):
     receipt={'event':event_ref,'experience_ref':experience['ref'],
              'perceived_cue_ref':sign,'appraisal':appraisal,
              'actual_received_sign_refs':sorted(received),
+             'appraised_sign_tags':sorted({str(t).casefold()
+                 for c in experience.get('perceived_cues',[]) if c.get('id')==sign
+                 for t in c.get('tags',[]) if type(t) is str}),
              'observer_causal_attribution':'NOT_ESTABLISHED',
              'objective_success':'NOT_INFERRED','grade':GRADE,
              'actor_interpretation_not_world_truth':True}
