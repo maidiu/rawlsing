@@ -327,6 +327,17 @@ def test_real_recursive_handoff_to_new_native_i05_through_adaptive_resume(tmp_pa
                 unit=unit,discovery=second,expected_replay_ref=second.replay_ref,
                 candidate_receipt_ref=second.receipts[0].ref,query_role="CONDITION",current_guard=lambda:True,
             )
+        # The outer receipt field is not itself part of the binding ref.
+        # A persisted handoff must agree with its sealed deterministic side
+        # material, even when the child and native frontier refs stay intact.
+        forged_parent = replace(parent, receipt_ref=first.replay_ref)
+        assert forged_parent.ref == parent.ref
+        with pytest.raises(S04I05ReceptionError, match="parent handoff"):
+            receive_s04_i05_adaptive_outcome(
+                unit=unit, discovery=second, expected_replay_ref=second.replay_ref,
+                candidate_receipt_ref=second.receipts[0].ref, query_role="CONDITION",
+                current_guard=lambda: True, parent_handoff=forged_parent,
+            )
         return outcome
     with pytest.raises(S04I05ReceptionError,match="winning handoff"):
         receive_s04_i05_adaptive_outcome(
