@@ -442,7 +442,8 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
-            if selected_alternative and selected_alternative.get('human_food_offer_ref'):
+            if (selected_alternative and selected_alternative.get('human_food_offer_ref')
+                    and proposed.get('practical_option_id')==selected_alternative['option_id']):
                 practical['selected_human_food_offer_ref']=selected_alternative['human_food_offer_ref']
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
@@ -597,7 +598,8 @@ class ConstitutiveRuntime:
             if partner and resolved['objective_description']=='JOINT_ACTIVITY_PERFORMED' and personally_done and personal_cues:
                 reciprocal=partner.actor if aid==actor_id else actor_id
             if (aid == actor_id and personally_done and human_vocal is not None
-                    and summary.get('human_vocal_event_ref') == human_vocal['user_event_ref']
+                    and (summary.get('human_vocal_event_ref') or
+                         summary.get('human_food_offer_event_ref')) == human_vocal['user_event_ref']
                     and personally_done['status'] == 'PERFORMED'):
                 # The human act was personally accessible immediately before
                 # the actor's own settlement, not an omniscient reconstruction.
