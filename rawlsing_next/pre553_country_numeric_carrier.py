@@ -545,7 +545,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
             expected_wave=expected_wave,max_units=count)
         identity=reader._certified_identity
         if identity is None or not result.summary.full_coverage:
-            raise CountryCarrierError("country native workload not fully executed")
+            # Retain typed failure codes without disclosing respondent data.
+            codes=tuple((r.state,r.failure_code) for r in result.receipts if r.state!="COMPLETED")
+            raise CountryCarrierError("country native workload not fully executed: "+repr(codes))
         result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
         reader._verify()
         current()

@@ -224,6 +224,20 @@ class CountryNumeric(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d);path=p/"country.sqlite";products=p/"products";products.mkdir()
             receipt=build_country(inc,country_variable="G",country_value="A",output=path,require_current=lambda:None)
+            # Exercise the same exact I03/I05 owners explicitly before the
+            # Batch court, so a failure retains its real exception, not only
+            # the scheduler's privacy-preserving failure code.
+            from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+            with CountryReader(path,receipt,require_current=lambda:None) as reader:
+                repo,rel=reader.native_repository(projection,current_authorities=cat.authorities)
+                executor=CarrierNeutralResearchExecutor(repo,(rel.release_ref,),cat)
+                group=executor.grouped_i03_scope()
+                try:
+                    for req in requests:
+                        executor.execute_i03(query_ref=req.query_ref,predicate_ref=req.predicate_ref,group_scope=group)
+                    executor.execute_i05(discovery_authority_ref=discovery.ref,group_scope=group)
+                finally:
+                    group.close()
             pub=execute_publish_country(workload,resolver,host=host,purpose=purpose,
                 country_path=path,country_receipt=receipt,root_dir=products)
             self.assertTrue(pub.complete)
