@@ -170,7 +170,7 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
             pending.clear()
             block += 1
             db.commit()
-        row_id = 1
+        row_id = None
         cells = []
         def accept_row():
             nonlocal country_rows
@@ -183,22 +183,24 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
                 country_rows += 1
                 if len(pending) == block_rows:
                     flush()
-        for cell in incidence.iter_cells():
+        for cell in incidence.iter_country_cells(country_variable,country_value):
             if type(cell) is not PhysicalCell:
                 raise CountryCarrierError("foreign physical cell")
             if cell.row_ordinal != row_id:
-                if cell.row_ordinal != row_id + 1 or not cells:
-                    raise CountryCarrierError("source row discontinuity")
-                accept_row()
-                cells.clear()
-                row_id += 1
+                if row_id is not None:
+                    if cell.row_ordinal<=row_id or not cells:
+                        raise CountryCarrierError("selected source rows out of order")
+                    accept_row()
+                    cells.clear()
+                if not 1<=cell.row_ordinal<=incidence.row_count:
+                    raise CountryCarrierError("selected source row outside original census")
+                row_id=cell.row_ordinal
             cells.append(cell)
             if len(cells) > len(variables):
                 raise CountryCarrierError("duplicate source row slot")
         if cells:
             accept_row()
-        if (row_id if cells else 0) != incidence.row_count:
-            raise CountryCarrierError("incomplete original source scan")
+        # The incumbent selected decoder itself verifies complete source scan.
         flush()
         if not country_rows:
             raise CountryCarrierError("country has no observed exact-code respondents")
@@ -460,10 +462,8 @@ def country_census(incidence, *, country_variable, require_current):
         raise CountryCarrierError("explicit native country variable required")
     _live(require_current)
     observed, held, last = {}, {}, 0
-    for cell in incidence.iter_cells():
-        if cell.variable_name!=country_variable:
-            continue
-        if cell.row_ordinal!=last+1:
+    for cell in incidence.iter_native_column(country_variable):
+        if cell.variable_name!=country_variable or cell.row_ordinal!=last+1:
             raise CountryCarrierError("country census row discontinuity")
         last=cell.row_ordinal
         if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:

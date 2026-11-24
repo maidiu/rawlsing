@@ -241,3 +241,32 @@ class CountryNumeric(unittest.TestCase):
             resolver._record=replace(record,currentness="REVOKED")
             with self.assertRaises(ValueError):
                 cold.read_s04(query.ref)
+
+
+    def test_compact_storage_scale_sourcefree(self):
+        """Mechanical storage witness only; not original survey or native I03 timing."""
+        import numpy as np
+        import time
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);src=p/"scale.sav"
+            n=4000
+            rng=np.random.default_rng(404)
+            frame=pd.DataFrame({f"q{i}":rng.integers(0,5,n) for i in range(64)})
+            frame.insert(0,"country",np.tile([1,2],n//2))
+            pyreadstat.write_sav(frame,str(src))
+            with decode_sav(src) as inc:
+                key=next(inc.iter_native_column("country")).raw_value
+                start=time.monotonic()
+                receipt=build_country(inc,country_variable="country",country_value=key,
+                    output=p/"one.sqlite",require_current=lambda:None)
+                elapsed=time.monotonic()-start
+                self.assertEqual(receipt.country_rows,n//2)
+            cells=receipt.country_rows*65
+            with CountryReader(p/"one.sqlite",receipt,require_current=lambda:None) as reader:
+                self.assertEqual(len(tuple(reader.row_ordinals())),n//2)
+                self.assertEqual(reader.db.execute("SELECT count(*) FROM lanes").fetchone()[0],130)
+            # A deliberately generous bound for this low-cardinality synthetic
+            # shape; no blanket claim for text/high-cardinality original data.
+            self.assertLess(receipt.bytes,8*cells)
+            print("COUNTRY_NUMERIC_SCALE_FIXTURE",cells,"country_db_bytes",receipt.bytes,
+                  "original_full_wave_sav_bytes",src.stat().st_size,"build_seconds",round(elapsed,4))
