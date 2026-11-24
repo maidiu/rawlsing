@@ -533,7 +533,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action in ('SING','SIGNAL') and principal.target in
+        if (principal.action in ('SING','SIGNAL','REFUSE') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(
@@ -599,12 +599,14 @@ class ConstitutiveRuntime:
                 reciprocal=partner.actor if aid==actor_id else actor_id
             if (aid == actor_id and personally_done and human_vocal is not None
                     and (summary.get('human_vocal_event_ref') or
-                         summary.get('human_food_offer_event_ref')) == human_vocal['user_event_ref']
+                         summary.get('human_food_offer_event_ref') or
+                         summary.get('human_food_offer_refused_event_ref')) == human_vocal['user_event_ref']
                     and personally_done['status'] == 'PERFORMED'):
                 # The human act was personally accessible immediately before
                 # the actor's own settlement, not an omniscient reconstruction.
                 personal_cues.append(copy(human_vocal['cue']))
-                reciprocal = human_vocal['visitor_ref']
+                if summary.get('outcome')=='JOINT_ACTIVITY_PERFORMED':
+                    reciprocal = human_vocal['visitor_ref']
             # Performed action may be proprioceptively available even where its
             # outward cue occurred at the origin of a successful MOVE and the
             # actor is now elsewhere. This is *not* objective outcome knowledge.
