@@ -49,7 +49,7 @@ def policy(stage, acquire=False):
 
 
 class MaterialSupportR17(unittest.TestCase):
-    def build(self,name,*,held=2,own=1,blocked=False,user_hearing=True,user_visible=True):
+    def build(self,name,*,held=2,own=1,blocked=False,user_hearing=True,user_visible=True,actor_visible=True):
         tmp=tempfile.TemporaryDirectory(prefix='neighbor_r17_')
         self.addCleanup(tmp.cleanup)
         db=str(Path(tmp.name)/'world.sqlite')
@@ -77,8 +77,10 @@ class MaterialSupportR17(unittest.TestCase):
                 'hearing':user_hearing,'sound_path':'audible' if user_hearing else 'blocked',
                 'legibility':'readable'}
                 for loc in ('workshop','home')},
-            'actor_conditions':{'worker':{'facing':'entrance','visual':True,'light':'lit',
-                'sightline':'unobstructed','hearing':True,'sound_path':'audible'}}},
+            'actor_conditions':{'worker':{'facing':'entrance','visual':actor_visible,
+                'light':'lit' if actor_visible else 'dark',
+                'sightline':'unobstructed' if actor_visible else 'blocked',
+                'hearing':True,'sound_path':'audible'}}},
             request_id='geometry')
         n.contribute('arrival','MOVE',destination='workshop')
         return rt,n,db
