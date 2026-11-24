@@ -216,7 +216,13 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
         receipt = CountryReceipt(**{k:v for k,v in info.items() if k!="schema"},
                                  sha256=_hash(stage), bytes=stage.stat().st_size)
         # Publish only a complete committed file; link refuses overwrites.
+        _live(require_current)
         os.link(stage,dest)
+        try:
+            _live(require_current)
+        except BaseException:
+            dest.unlink()
+            raise
         return receipt
     finally:
         if db is not None:

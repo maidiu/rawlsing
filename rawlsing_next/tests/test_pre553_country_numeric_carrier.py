@@ -66,3 +66,59 @@ class CountryNumeric(unittest.TestCase):
                                   output=p/"cancel.sqlite",require_current=live,block_rows=1)
             self.assertFalse((p/"cancel.sqlite").exists())
             self.assertEqual(list(p.glob(".country-*")),[])
+
+    def test_country_scoped_native_c11_and_actual_i03_match_direct_replay(self):
+        from dataclasses import replace
+        from rawlsing_next.pre553_physical_decoder import PHYSICAL_METADATA_CONTRACT
+        from rawlsing_next.pre553_source_backed_c11_facade import (
+            ExactPhysicalCellStream, build_validated_source_backed_c11_release_from_stream)
+        from rawlsing_next.pre553_c11_repository import C11Repository
+        from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+        from rawlsing_next.pre553_empirical_query import execute_empirical_query
+        from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture, _source_dict
+        from rawlsing_next.tests.test_pre553_empirical_query import _query_authority, _branch_predicate, _query
+        fx=_fixture("country-compact")
+        # Existing sourcefree governed fixture; its G coordinate stands in for
+        # an explicit country code. This does not issue real country authority.
+        inc=replace(fx["incidence"],file_metadata={
+            "contract_schema":PHYSICAL_METADATA_CONTRACT,
+            "raw_layout_declarations":{}, "normalized_geometry":{},
+            "display_metadata":{}, "decoder_identity":{"fixture":"country-compact"},
+        })
+        chosen=(1,3)
+        original=fx["projection"]
+        respondents=tuple(original.respondents[i-1] for i in chosen)
+        refs={x.ref.as_dict()["object_id"] for x in respondents}
+        subset=replace(original,respondents=respondents,
+            row_bindings=tuple(x for x in original.row_bindings if x.row_ordinal in chosen),
+            routing=tuple(x for x in original.routing
+                if x.scoped_respondent_ref["object_id"] in refs))
+        cells=tuple(c for c in inc.iter_cells() if c.row_ordinal in chosen)
+        direct=build_validated_source_backed_c11_release_from_stream(
+            ExactPhysicalCellStream(inc.source_sha256,len(chosen),lambda:iter(cells)),subset)
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/"country.sqlite"
+            rec=build_country(inc,country_variable="G",country_value="A",
+                    output=path,require_current=lambda:None,block_rows=1)
+            with CountryReader(path,rec,require_current=lambda:None) as reader:
+                with self.assertRaises(CountryCarrierError):
+                    reader.native_release(original)
+                compact=reader.native_release(subset)
+            self.assertEqual(compact.release_ref,direct.release_ref)
+            self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
+            self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+            a=_source_dict(fx,C11Repository((direct,)),direct)
+            b=_source_dict(fx,C11Repository((compact,)),compact)
+            qa=_query_authority("country-compact")
+            pred=_branch_predicate(a,qa,members=respondents,tag="country")
+            registry=AuthorityRegistry((*fx["authorities"],qa))
+            for measure in ("RAW","WEIGHTED"):
+                with self.subTest(measure=measure):
+                    query=_query(a,qa,pred,("Y",),measure=measure,tag="country-"+measure)
+                    x=execute_empirical_query(repository=a["repo"],query=query,predicate=pred,
+                        authority_registry=registry,release_refs=(direct.release_ref,))
+                    y=execute_empirical_query(repository=b["repo"],query=query,predicate=pred,
+                        authority_registry=registry,release_refs=(compact.release_ref,))
+                    self.assertEqual(x,y)
+                    self.assertTrue(x.facts)
+                    self.assertTrue(all(f.typed_state=="SUPPORTED" for f in x.facts))
