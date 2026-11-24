@@ -444,7 +444,7 @@ class _PredicateAuthorityRecorder:
         self.refs={}
     def resolve_exact(self,ref):
         resolution=self.registry.resolve_exact(ref)
-        self.refs[resolution.snapshot.authority_ref.key]=resolution.snapshot.authority_ref
+        self.refs[resolution.ref.key]=resolution.ref
         return resolution
 
 
@@ -456,13 +456,15 @@ class _ConditionMemo:
     preserved, and all evaluated Boolean child evidence is retained. Bound
     only derivative memory; when full, the exact evaluator continues.
     """
-    __slots__=("index","registry","registry_map","predicate","entries","compiled",
+    __slots__=("index","registry","registry_map","predicate_identity","ast","entries","compiled",
                "budget","bytes","hits","misses","capacity_fallbacks")
     def __init__(self,index,registry,predicate,budget):
-        self.index,self.registry,self.predicate=index,registry,predicate
+        self.index,self.registry=index,registry
+        self.predicate_identity=_predicate_identity(predicate)
+        self.ast=predicate.predicate_ast
         self.registry_map=registry._by_key
         self.entries={}
-        self.compiled=_compile_derived_branch_memberships(predicate.predicate_ast)
+        self.compiled=_compile_derived_branch_memberships(self.ast)
         self.budget=budget
         self.bytes=0
         self.hits=self.misses=self.capacity_fallbacks=0
@@ -470,7 +472,7 @@ class _ConditionMemo:
     def compatible(self,index,registry,predicate):
         return (index is self.index and registry is self.registry
                 and registry._by_key is self.registry_map
-                and _predicate_identity(predicate)==_predicate_identity(self.predicate))
+                and _predicate_identity(predicate)==self.predicate_identity)
 
     def evaluate(self,respondent,used,used_auth):
         key=respondent.ref.key
@@ -493,7 +495,7 @@ class _ConditionMemo:
         auth=_UsedAuthorityAccumulator()
         recorder=_PredicateAuthorityRecorder(self.registry)
         try:
-            member=_eval_predicate(self.predicate.predicate_ast,
+            member=_eval_predicate(self.ast,
                 respondent=respondent,index=self.index,registry=recorder,
                 used=own,used_auth=auth,derived_branch_memberships=self.compiled)
         except UnresolvedConditionMember:

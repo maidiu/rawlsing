@@ -10,6 +10,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, asdict
 from collections import OrderedDict
+from array import array
+import shutil
+import sys
 from hashlib import sha256
 from pathlib import Path
 from typing import Callable, Iterator
@@ -235,156 +238,248 @@ class NumericColumn:
                 result.add(i)
         return frozenset(result)
 
-def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
-                  country_value, output: str | Path, require_current: Callable[[], None],
-                  block_rows: int = 1024) -> CountryReceipt:
-    """Scan the content-bound source; retain only ONE explicit country.
+def _check_space(root,min_free_bytes):
+    free=shutil.disk_usage(root).free
+    if free<min_free_bytes:
+        raise CountryCarrierError(f"country build disk reserve: {free} free bytes, "
+                                  f"{min_free_bytes} required; completed files retained")
 
-    Each block stores row ordinals once and one compressed integer code lane
-    per native variable. Country values and labels are not inferred. Repeated
-    source scans are possible; no full-wave C11 staging or per-cell JSON archive.
+
+class _CountryWriter:
+    """One independent country artifact; bounded column dictionaries during build.
+
+    Never retain a row-by-column grid of repeated serialized tokens. Intern
+    each token as it arrives; pending codes use two bytes per cell. For
+    high-cardinality data flush early at a conservative container estimate.
     """
-    if type(incidence) is not PhysicalSourceIncidence:
-        raise CountryCarrierError("incumbent physical decoder incidence required")
-    if type(block_rows) is not int or not 1 <= block_rows <= MAX_ROWS:
-        raise CountryCarrierError("invalid country block size")
-    variables = tuple((v.ordinal, v.name) for v in incidence.variables)
-    if not variables or len(set(variables)) != len(variables) or len({v[1] for v in variables}) != len(variables):
-        raise CountryCarrierError("invalid source variable inventory")
-    if country_variable not in {name for _, name in variables}:
-        raise CountryCarrierError("explicit source-native country variable required")
-    key = canonical_json(_CODEC.encode(country_value))
-    _live(require_current)
-    source = incidence.verify_source_identity()
-    metadata = incidence.physical_metadata_digest
-    dest = Path(output).resolve()
-    if not dest.parent.is_dir() or dest.exists():
-        raise CountryCarrierError("existing private output directory and new output required")
-    fd, tmp = tempfile.mkstemp(prefix=".country-", suffix=".sqlite", dir=dest.parent)
-    os.close(fd)
-    stage = Path(tmp)
-    db = None
-    try:
-        db = sqlite3.connect(stage)
-        db.executescript("""
-          PRAGMA journal_mode=DELETE;
-          PRAGMA synchronous=FULL;
-          CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT NOT NULL);
-          CREATE TABLE vars(ordinal INTEGER PRIMARY KEY,name TEXT NOT NULL UNIQUE);
-          CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER NOT NULL,rows BLOB NOT NULL,digest BLOB NOT NULL);
-          CREATE TABLE lanes(block INTEGER NOT NULL REFERENCES blocks(id),ordinal INTEGER NOT NULL REFERENCES vars(ordinal),
-             width INTEGER NOT NULL,dict BLOB NOT NULL,codes BLOB NOT NULL,digest BLOB NOT NULL,
-             PRIMARY KEY(block,ordinal));
-        """)
-        db.execute("PRAGMA foreign_keys=ON")
-        db.executemany("INSERT INTO vars VALUES(?,?)", variables)
-        pending = []
-        country_rows = 0
-        block = 0
-        def flush():
-            nonlocal block
-            if not pending:
-                return
-            _live(require_current)
-            n = len(pending)
-            row_blob=_pack([row[0] for row in pending],8)
-            db.execute("INSERT INTO blocks VALUES(?,?,?,?)",
-                       (block,n,row_blob,_digest("ROWS",(block,n),row_blob)))
-            for i,(ordinal,_) in enumerate(variables):
-                dictionary, index, codes = [], {}, []
-                for _,tokens in pending:
-                    token = tokens[i]
-                    if token not in index:
-                        index[token] = len(dictionary)
-                        dictionary.append(token)
-                    codes.append(index[token])
-                width = 1 if len(dictionary) <= 256 else 2 if len(dictionary) <= 65536 else 4
-                payload=_pack_dictionary(dictionary)
-                # Dense unique dictionaries already follow original row order.
-                # Store no redundant index lane for the identity permutation.
-                if len(dictionary)==n and codes==list(range(n)):
-                    width,packed=0,b""
-                else:
-                    packed=_pack(codes,width)
-                db.execute("INSERT INTO lanes VALUES(?,?,?,?,?,?)",
-                           (block,ordinal,width,payload,packed,
-                            _digest("LANE",(block,ordinal,width),payload,packed)))
-            pending.clear()
-            block += 1
-            db.commit()
-        row_id = None
-        cells = []
-        def accept_row():
-            nonlocal country_rows
-            if tuple((c.variable_ordinal,c.variable_name) for c in cells) != variables:
-                raise CountryCarrierError("missing, duplicated or reordered physical cell")
-            country = next(c for c in cells if c.variable_name == country_variable)
-            if (country.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE
-                    and canonical_json(_CODEC.encode(country.raw_value)) == key):
-                pending.append((row_id,tuple(_encode_cell(c) for c in cells)))
-                country_rows += 1
-                if len(pending) == block_rows:
-                    flush()
-        for cell in incidence.iter_country_cells(country_variable,country_value):
-            if type(cell) is not PhysicalCell:
-                raise CountryCarrierError("foreign physical cell")
-            if cell.row_ordinal != row_id:
-                if row_id is not None:
-                    if cell.row_ordinal<=row_id or not cells:
-                        raise CountryCarrierError("selected source rows out of order")
-                    accept_row()
-                    cells.clear()
-                if not 1<=cell.row_ordinal<=incidence.row_count:
-                    raise CountryCarrierError("selected source row outside original census")
-                row_id=cell.row_ordinal
-            cells.append(cell)
-            if len(cells) > len(variables):
-                raise CountryCarrierError("duplicate source row slot")
-        if cells:
-            accept_row()
-        # The incumbent selected decoder itself verifies complete source scan.
-        flush()
-        if not country_rows:
-            raise CountryCarrierError("country has no observed exact-code respondents")
-        if incidence.verify_source_identity() != source or incidence.physical_metadata_digest != metadata:
-            raise CountryCarrierError("source changed during country build")
-        _live(require_current)
-        lane_root=_manifest_root(variables,
-            db.execute("SELECT id,n,digest FROM blocks ORDER BY id"),
-            db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
-        info = dict(schema=SCHEMA,source_sha256=source,metadata_digest=metadata,
-                    source_rows=incidence.row_count,country_variable=country_variable,
-                    country_key=key,country_rows=country_rows,lane_root=lane_root)
-        db.executemany("INSERT INTO meta VALUES(?,?)",[(k,canonical_json(v)) for k,v in info.items()])
-        if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok" or db.execute("PRAGMA foreign_key_check").fetchone():
-            raise CountryCarrierError("country SQLite integrity failed")
-        db.commit()
-        db.close()
-        db = None
-        _live(require_current)
-        receipt = CountryReceipt(**{k:v for k,v in info.items() if k!="schema"},
-                                 sha256=_hash(stage), bytes=stage.stat().st_size)
-        # Publish only a complete committed file; link refuses overwrites.
-        _live(require_current)
-        os.link(stage,dest)
+    def __init__(self,incidence,country_variable,key,dest,require_current,
+                 block_rows,pending_budget,min_free_bytes):
+        self.incidence,self.country_variable,self.key=incidence,country_variable,key
+        self.dest=Path(dest).resolve()
+        self.current=require_current
+        self.block_rows,self.budget,self.min_free=block_rows,pending_budget,min_free_bytes
+        self.variables=tuple((v.ordinal,v.name) for v in incidence.variables)
+        self.country_index=next(i for i,(_,n) in enumerate(self.variables) if n==country_variable)
+        if not self.dest.parent.is_dir():
+            raise CountryCarrierError("existing private country destination required")
+        if self.dest.exists():
+            raise CountryCarrierError(f"country file already exists: {self.dest}; "
+                                      "resume with externally retained exact receipt; never overwrite")
+        _live(self.current)
+        _check_space(self.dest.parent,self.min_free)
+        self.source=incidence.source_sha256
+        self.metadata=incidence.physical_metadata_digest
+        self.stage=None
+        self.db=None
+        self.count=self.block=0
+        self.previous=0
         try:
-            # Durable publication of the directory entry; no success on an
-            # interrupted publication. External receipt custody is separate.
-            directory_fd=os.open(dest.parent,os.O_RDONLY)
+            fd,tmp=tempfile.mkstemp(prefix=".country-",suffix=".sqlite",dir=self.dest.parent)
+            os.close(fd)
+            self.stage=Path(tmp)
+            self.db=sqlite3.connect(self.stage)
+            self.db.executescript("""
+              PRAGMA journal_mode=DELETE;
+              PRAGMA synchronous=FULL;
+              PRAGMA cache_size=-1024;
+              PRAGMA foreign_keys=ON;
+              CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT NOT NULL);
+              CREATE TABLE vars(ordinal INTEGER PRIMARY KEY,name TEXT NOT NULL UNIQUE);
+              CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER NOT NULL,rows BLOB NOT NULL,digest BLOB NOT NULL);
+              CREATE TABLE lanes(block INTEGER NOT NULL REFERENCES blocks(id),ordinal INTEGER NOT NULL REFERENCES vars(ordinal),
+                 width INTEGER NOT NULL,dict BLOB NOT NULL,codes BLOB NOT NULL,digest BLOB NOT NULL,
+                 PRIMARY KEY(block,ordinal));
+            """)
+            self.db.executemany("INSERT INTO vars VALUES(?,?)",self.variables)
+            self._reset()
+        except BaseException:
+            self.abort()
+            raise
+
+    def _reset(self):
+        self.rows=array("Q")
+        self.columns=[([],{},array("H")) for _ in self.variables]
+        self.estimated_bytes=256*len(self.variables)
+
+    def append(self,cells):
+        if tuple((c.variable_ordinal,c.variable_name) for c in cells)!=self.variables:
+            raise CountryCarrierError("missing, duplicated or reordered physical cell")
+        row=cells[0].row_ordinal
+        if not self.previous<row<=self.incidence.row_count or any(c.row_ordinal!=row for c in cells):
+            raise CountryCarrierError("country row identity/order mismatch")
+        country=cells[self.country_index]
+        if (country.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE
+            or canonical_json(_CODEC.encode(country.raw_value))!=self.key):
+            raise CountryCarrierError("selected row does not belong to country")
+        # A single row must fit before any data can be published; estimate
+        # unique-token storage and compact code arrays independently.
+        tokens=tuple(_encode_cell(c) for c in cells)
+        def increment():
+            return 16+sum(4+(sys.getsizeof(t)+100 if t not in col[1] else 0)
+                          for col,t in zip(self.columns,tokens))
+        cost=increment()
+        if self.rows and self.estimated_bytes+cost>self.budget:
+            self.flush()
+            cost=increment()
+        if self.estimated_bytes+cost>self.budget:
+            raise CountryCarrierError("one exact source row exceeds country pending-memory budget; "
+                                      "increase explicit budget or reduce selected simultaneous countries")
+        self.rows.append(row)
+        for (dictionary,index,codes),token in zip(self.columns,tokens):
+            code=index.get(token)
+            if code is None:
+                code=len(dictionary)
+                dictionary.append(token)
+                index[token]=code
+            codes.append(code)
+        self.estimated_bytes+=cost
+        self.previous=row
+        self.count+=1
+        if len(self.rows)>=self.block_rows:
+            self.flush()
+
+    def flush(self):
+        if not self.rows:
+            return
+        _live(self.current)
+        _check_space(self.dest.parent,self.min_free)
+        n=len(self.rows)
+        row_blob=_pack(self.rows,8)
+        self.db.execute("INSERT INTO blocks VALUES(?,?,?,?)",
+                        (self.block,n,row_blob,_digest("ROWS",(self.block,n),row_blob)))
+        for (ordinal,_),(dictionary,index,codes) in zip(self.variables,self.columns):
+            width=1 if len(dictionary)<=256 else 2
+            payload=_pack_dictionary(dictionary)
+            if len(dictionary)==n and all(i==code for i,code in enumerate(codes)):
+                width,packed=0,b""
+            else:
+                packed=_pack(codes,width)
+            self.db.execute("INSERT INTO lanes VALUES(?,?,?,?,?,?)",
+                 (self.block,ordinal,width,payload,packed,
+                  _digest("LANE",(self.block,ordinal,width),payload,packed)))
+        self.db.commit()
+        self.block+=1
+        self._reset()
+
+    def finish(self,expected_count=None):
+        if not self.count or (expected_count is not None and self.count!=expected_count):
+            raise CountryCarrierError("country build does not match exact census")
+        self.flush()
+        _live(self.current)
+        lane_root=_manifest_root(self.variables,
+            self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"),
+            self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
+        info=dict(schema=SCHEMA,source_sha256=self.source,metadata_digest=self.metadata,
+            source_rows=self.incidence.row_count,country_variable=self.country_variable,
+            country_key=self.key,country_rows=self.count,lane_root=lane_root)
+        self.db.executemany("INSERT INTO meta VALUES(?,?)",
+            [(k,canonical_json(v)) for k,v in info.items()])
+        if (self.db.execute("PRAGMA integrity_check").fetchone()[0]!="ok"
+                or self.db.execute("PRAGMA foreign_key_check").fetchone()):
+            raise CountryCarrierError("country SQLite integrity failed")
+        self.db.commit()
+        self.db.close()
+        self.db=None
+        _live(self.current)
+        receipt=CountryReceipt(**{k:v for k,v in info.items() if k!="schema"},
+            sha256=_hash(self.stage),bytes=self.stage.stat().st_size)
+        _live(self.current)
+        os.link(self.stage,self.dest)
+        try:
+            directory_fd=os.open(self.dest.parent,os.O_RDONLY)
             try:
                 os.fsync(directory_fd)
             finally:
                 os.close(directory_fd)
-            _live(require_current)
+            _live(self.current)
         except BaseException:
-            dest.unlink()
+            self.dest.unlink()
             raise
         return receipt
+
+    def abort(self):
+        if self.db is not None:
+            self.db.close()
+            self.db=None
+        if self.stage is not None:
+            self.stage.unlink(missing_ok=True)
+            Path(str(self.stage)+"-journal").unlink(missing_ok=True)
+
+
+def _build_limits(incidence,country_variable,block_rows,pending_budget,min_free):
+    if type(incidence) is not PhysicalSourceIncidence:
+        raise CountryCarrierError("incumbent physical decoder incidence required")
+    if type(block_rows) is not int or not 1<=block_rows<=MAX_ROWS:
+        raise CountryCarrierError("invalid country block size")
+    variables=tuple((v.ordinal,v.name) for v in incidence.variables)
+    if (not variables or len(set(variables))!=len(variables)
+            or len({v[1] for v in variables})!=len(variables)):
+        raise CountryCarrierError("invalid source variable inventory")
+    if country_variable not in {name for _,name in variables}:
+        raise CountryCarrierError("explicit source-native country variable required")
+    if type(pending_budget) is not int or pending_budget<=256*len(variables):
+        raise CountryCarrierError("invalid country pending-memory budget")
+    if type(min_free) is not int or min_free<0:
+        raise CountryCarrierError("invalid disk reserve")
+
+
+def _feed_writers(incidence,country_variable,writers,require_current):
+    """One content-bound selected source scan; never a full-wave expanded estate."""
+    _live(require_current)
+    source=incidence.verify_source_identity()
+    metadata=incidence.physical_metadata_digest
+    values=tuple(_CODEC.decode(json.loads(key)) for key in writers)
+    cells=[]
+    previous=0
+    country_index=next(i for i,v in enumerate(incidence.variables) if v.name==country_variable)
+    width=len(incidence.variables)
+    def accept():
+        if len(cells)!=width:
+            raise CountryCarrierError("selected source row incomplete")
+        country=cells[country_index]
+        key=canonical_json(_CODEC.encode(country.raw_value))
+        writer=writers.get(key)
+        if writer is None:
+            raise CountryCarrierError("selected stream returned unrequested country")
+        writer.append(cells)
+    stream=(incidence.iter_country_cells(country_variable,values[0]) if len(values)==1
+            else incidence.iter_countries_cells(country_variable,values))
+    for cell in stream:
+        if type(cell) is not PhysicalCell:
+            raise CountryCarrierError("foreign physical cell")
+        if cell.row_ordinal!=previous:
+            if cells:
+                accept()
+                cells.clear()
+            if not previous<cell.row_ordinal<=incidence.row_count:
+                raise CountryCarrierError("selected source rows out of order")
+            previous=cell.row_ordinal
+        cells.append(cell)
+        if len(cells)>width:
+            raise CountryCarrierError("duplicate source row slot")
+    if cells:
+        accept()
+    if incidence.verify_source_identity()!=source or incidence.physical_metadata_digest!=metadata:
+        raise CountryCarrierError("source changed during country build")
+    _live(require_current)
+
+
+def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
+                  country_value, output: str | Path, require_current: Callable[[], None],
+                  block_rows: int=1024, pending_bytes: int=32*1024*1024,
+                  min_free_bytes: int=64*1024*1024) -> CountryReceipt:
+    """Build one exact country; compact, independent, atomically published."""
+    _build_limits(incidence,country_variable,block_rows,pending_bytes,min_free_bytes)
+    _live(require_current)
+    key=canonical_json(_CODEC.encode(country_value))
+    writer=_CountryWriter(incidence,country_variable,key,output,require_current,
+                          block_rows,pending_bytes,min_free_bytes)
+    try:
+        _feed_writers(incidence,country_variable,{key:writer},require_current)
+        return writer.finish()
     finally:
-        if db is not None:
-            db.close()
-        stage.unlink(missing_ok=True)
-        Path(str(stage)+"-journal").unlink(missing_ok=True)
+        writer.abort()
+
 
 class CountryReader:
     """Cold reader requiring externally retained build receipt and currentness."""
@@ -737,16 +832,22 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         return CountryExecution(result,identity)
 
 def build_country_set(incidence,*,country_variable,root,require_current,
-                      country_keys=None,retained_receipts=(),block_rows=1024):
-    """Sequential, resumable country construction; no full-wave expanded estate.
+                      country_keys=None,retained_receipts=(),block_rows=1024,
+                      max_open_countries=4,pending_bytes=64*1024*1024,
+                      min_free_bytes=64*1024*1024,on_progress=None):
+    """Resumable independent countries; amortize scans over bounded groups.
 
-    country_keys are exact R5 strings from country_census, or None for every
-    observed code. Only externally supplied receipts may authorize reuse.
-    Missing/unknown country rows are explicitly reported in the census.
-    Yields (path,receipt) after each completed country so an operator can bank
-    the independent receipt before proceeding. A failure leaves earlier
-    completed countries intact.
+    Retain only externally receipted completed countries. Missing country
+    rows are reported in the census; no silent assignment. Each completed
+    file/receipt is yielded independently. Unreceipted final files are
+    refused, not adopted or overwritten. max_open_countries=1 retains
+    strictly sequential source scans for constrained hosts.
     """
+    if type(max_open_countries) is not int or not 1<=max_open_countries<=64:
+        raise CountryCarrierError("max_open_countries must be in 1..64")
+    if on_progress is not None and not callable(on_progress):
+        raise CountryCarrierError("progress callback must be callable")
+    _build_limits(incidence,country_variable,block_rows,pending_bytes,min_free_bytes)
     inventory=country_census(incidence,country_variable=country_variable,
                              require_current=require_current)
     keys=tuple(sorted(inventory["observed"])) if country_keys is None else tuple(country_keys)
@@ -764,18 +865,74 @@ def build_country_set(incidence,*,country_variable,root,require_current,
     root=Path(root).resolve()
     if not root.is_dir():
         raise CountryCarrierError("existing private country root required")
-    for key in keys:
+    def progress(**state):
+        if on_progress is not None:
+            on_progress(state)
+    def path_for(key):
+        return root/("country-"+sha256(key.encode("ascii")).hexdigest()+".sqlite")
+    # Retain requested ordering, but coalesce contiguous not-yet-built codes.
+    # Bounded per-country estimates, not a hard process RSS guarantee.
+    width=len(incidence.variables)
+    group_limit=max(1,min(max_open_countries,pending_bytes//max(1,1024*width)))
+    progress(phase="CENSUS",source_rows=inventory["source_rows"],
+             selected_countries=len(keys),held_rows=sum(inventory["held"].values()),
+             max_open_countries=group_limit)
+    offset=0
+    while offset<len(keys):
+        key=keys[offset]
         _live(require_current)
-        path=root/("country-"+sha256(key.encode("ascii")).hexdigest()+".sqlite")
         if key in retained:
-            receipt=retained[key]
+            receipt=retained[key];path=path_for(key)
             with CountryReader(path,receipt,require_current=require_current) as reader:
-                if len(tuple(reader.row_ordinals()))!=receipt.country_rows:
+                if sum(1 for _ in reader.row_ordinals())!=receipt.country_rows:
                     raise CountryCarrierError("retained country census mismatch")
-        else:
-            receipt=build_country(incidence,country_variable=country_variable,
-                country_value=_CODEC.decode(json.loads(key)),output=path,
-                require_current=require_current,block_rows=block_rows)
-            if receipt.country_rows!=inventory["observed"][key]:
-                raise CountryCarrierError("country build census mismatch")
-        yield path,receipt
+            progress(phase="REUSED",country_key=key,rows=receipt.country_rows,bytes=receipt.bytes)
+            yield path,receipt
+            offset+=1
+            continue
+        batch=[]
+        while offset<len(keys) and keys[offset] not in retained and len(batch)<group_limit:
+            batch.append(keys[offset]);offset+=1
+        writers={}
+        try:
+            budget=pending_bytes//len(batch)
+            for item in batch:
+                writers[item]=_CountryWriter(incidence,country_variable,item,path_for(item),
+                    require_current,block_rows,budget,min_free_bytes)
+            progress(phase="SOURCE_SCAN",countries=len(batch))
+            _feed_writers(incidence,country_variable,writers,require_current)
+            # No country is published before the bounded source scan has
+            # completed and all selected row counts are known exact.
+            if any(w.count!=inventory["observed"][k] for k,w in writers.items()):
+                raise CountryCarrierError("country group census mismatch")
+            for item,w in writers.items():
+                receipt=w.finish(inventory["observed"][item])
+                w.abort()
+                progress(phase="BUILT",country_key=item,rows=receipt.country_rows,bytes=receipt.bytes)
+                yield path_for(item),receipt
+        finally:
+            for w in writers.values():
+                w.abort()
+
+
+def country_workspace_status(root,*,retained_receipts=()):
+    """Non-mutating operator inventory. Never turn a local hash into authority."""
+    root=Path(root).resolve()
+    if not root.is_dir():
+        raise CountryCarrierError("existing country root required")
+    pinned={}
+    for receipt in retained_receipts:
+        if type(receipt) is not CountryReceipt:
+            raise CountryCarrierError("external receipt required")
+        name="country-"+sha256(receipt.country_key.encode("ascii")).hexdigest()+".sqlite"
+        if name in pinned:
+            raise CountryCarrierError("duplicate external country receipt")
+        pinned[name]=receipt
+    files={p.name:p for p in root.glob("country-*.sqlite")}
+    return {"pinned_present":sorted(set(files)&set(pinned)),
+            "missing_pinned":sorted(set(pinned)-set(files)),
+            "unreceipted_final":sorted(set(files)-set(pinned)),
+            "uncommitted_stage":[p.name for p in sorted(root.glob(".country-*"))],
+            "free_bytes":shutil.disk_usage(root).free,
+            "note":"Inventory only. Reopen with external receipts and live permission; "
+                   "unreceipted files require owner disposition, not automatic adoption/deletion."}

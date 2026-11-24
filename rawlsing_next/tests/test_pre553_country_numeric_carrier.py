@@ -288,3 +288,47 @@ class CountryNumeric(unittest.TestCase):
             self.assertLess(receipt.bytes,8*cells)
             print("COUNTRY_NUMERIC_SCALE_FIXTURE",cells,"country_db_bytes",receipt.bytes,
                   "original_full_wave_sav_bytes",src.stat().st_size,"build_seconds",round(elapsed,4))
+
+
+    def test_bounded_group_scan_matches_sequential_and_operator_resume(self):
+        from unittest.mock import patch
+        from rawlsing_next.pre553_country_numeric_carrier import (
+            build_country_set,country_workspace_status,CountryReceipt)
+        from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence
+        from dataclasses import asdict
+        import json
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);src=p/"three.sav";one=p/"one";many=p/"many"
+            one.mkdir();many.mkdir()
+            pyreadstat.write_sav(pd.DataFrame({"country":[1,2,3,1,2,3,None],
+                  "q":[0,1,2,3,4,5,6],"text":["a","b","c","a","c","b","held"]}),str(src))
+            with decode_sav(src) as inc:
+                serial=list(build_country_set(inc,country_variable="country",root=one,
+                    require_current=lambda:True,max_open_countries=1,block_rows=2))
+                progress=[]
+                calls=[]
+                original=PhysicalSourceIncidence.iter_countries_cells
+                def counted(self,*args,**kwargs):
+                    calls.append(1)
+                    yield from original(self,*args,**kwargs)
+                with patch.object(PhysicalSourceIncidence,"iter_countries_cells",counted):
+                    grouped=list(build_country_set(inc,country_variable="country",root=many,
+                        require_current=lambda:True,max_open_countries=4,block_rows=2,
+                        on_progress=progress.append))
+                self.assertEqual(len(calls),1)
+                self.assertEqual(progress[0]["held_rows"],1)
+                self.assertEqual(sum(x["phase"]=="SOURCE_SCAN" for x in progress),1)
+                self.assertEqual([r for _,r in serial],[r for _,r in grouped])
+                # Receipt custody belongs to the operator, not local hash inference.
+                receipts=tuple(CountryReceipt(**json.loads(json.dumps(asdict(r)))) for _,r in grouped)
+                status=country_workspace_status(many,retained_receipts=receipts)
+                self.assertEqual(len(status["pinned_present"]),3)
+                self.assertEqual(status["unreceipted_final"],[])
+                self.assertEqual(len(country_workspace_status(many)["unreceipted_final"]),3)
+                self.assertEqual(list(build_country_set(inc,country_variable="country",root=many,
+                    require_current=lambda:True,retained_receipts=receipts)),grouped)
+                with self.assertRaises(CountryCarrierError):
+                    list(build_country_set(inc,country_variable="country",root=many,
+                        require_current=lambda:True))
+                self.assertEqual(country_workspace_status(many,retained_receipts=receipts)["uncommitted_stage"],[])
+                self.assertEqual([r for _,r in grouped],list(receipts))
