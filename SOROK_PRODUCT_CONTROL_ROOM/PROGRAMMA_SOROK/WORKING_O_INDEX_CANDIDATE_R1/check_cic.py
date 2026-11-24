@@ -136,6 +136,13 @@ def validate(c, ledger, registry, pinned=True):
         added.update(new)
         count += len(new)
     require(added == set(refined) and count == len(criteria), "REFINEMENT_DENOMINATOR_DRIFT")
+    u = c["source_contract"]["upstream_elasticity_candidate"]
+    require(u["status"] == "USER_DIRECTION_RECORDED__HOME_AND_PROTECTED_SEMANTIC_RECEIVING_HELD", "UPSTREAM_FALSE_RECEIVING")
+    require({x["pr"] for x in u["candidate_prs"]} == {1330,1331,1332,1333}, "UPSTREAM_SOURCE_DROP")
+    for x in u["candidate_prs"]:
+        r = obs[x["pr"]]
+        require(x["head"] == r["head_sha"] and x["sources"] == r["exact_source_bodies"] and not r["test"]["executed_sha"], "UPSTREAM_SOURCE_DRIFT")
+    require(set(u["criteria"]) == {"CO-CIC-023.04","CO-CIC-023.05","CO-CIC-007.04","NEIGHBOR-CIC-006.06"} and set(u["criteria"]) <= set(criteria) and set(u["implementation_prs"]) == {1329,1335}, "UPSTREAM_CRITERION_DRIFT")
     for j in c["whole_organism_acceptance_candidates"]:
         require(set(j["obligation_ids"]) <= set(obligations) and set(j["criterion_ids"]) <= set(criteria), "JOIN_REFERENCES")
         require(j["state"] == "HELD_CRITERION_SPECIFIC_WHOLE_TRAJECTORY", "FALSE_WHOLE_TRAJECTORY")
@@ -170,7 +177,11 @@ def selftest(c,ledger,registry):
     check(lambda x:child(x)["scoped_return"].update(criterion_execution="PASS"),"REFINEMENT_FALSE_PROMOTION")
     check(lambda x:x["refinement_rounds"][-1].update(prior_criterion_count=0),"REFINEMENT_DENOMINATOR_DRIFT")
     check(lambda x:x["refinement_rounds"][-1]["added_criterion_ids"].append(x["refinement_rounds"][0]["added_criterion_ids"][0]),"REFINEMENT_DENOMINATOR_DRIFT")
-    return 21
+    check(lambda x:x["source_contract"]["upstream_elasticity_candidate"].update(status="RECEIVED"),"UPSTREAM_FALSE_RECEIVING")
+    check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["candidate_prs"].pop(),"UPSTREAM_SOURCE_DROP")
+    check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["candidate_prs"][0].update(head="0"*40),"UPSTREAM_SOURCE_DRIFT")
+    check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["criteria"].pop(),"UPSTREAM_CRITERION_DRIFT")
+    return 25
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")
