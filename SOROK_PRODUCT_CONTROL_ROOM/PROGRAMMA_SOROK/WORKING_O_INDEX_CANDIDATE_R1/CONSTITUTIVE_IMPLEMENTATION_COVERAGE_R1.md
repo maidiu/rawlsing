@@ -1,6 +1,6 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
-**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `5961e2f41c45ed96d9c73d7ebe79dd9bf8462344`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No runtime changes or tests.
+**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `f777412a2665a59ab8dcd4d966aa30a4367d4b7b`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Read first
 

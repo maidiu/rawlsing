@@ -58,3 +58,8 @@ jobs:
           assert all(x['pr'] != 1294 for row in rows for x in row['linked_observations'])
           print(f'144 inherited identities; {len({identity for _, identity in actual})} linked identities; {len(actual)} scoped links; rejected dependency held; no new protected receiving claim.')
           PY
+
+      - name: CIC source and evidence correspondence, adversarial documentary checks
+        run: |
+          python check_cic.py --self-test
+          python check_cic.py --function C3 > "$RUNNER_TEMP/cic-c3.json"
