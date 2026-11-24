@@ -1,0 +1,57 @@
+name: PYAT FORGE DDM A counter and combined circulation
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_s04_i05_reception.py'
+      - 'rawlsing_next/tests/test_pre553_forge_ddm_a_counter.py'
+      - '.github/workflows/pyat-forge-ddm-a-counter.yml'
+permissions:
+  contents: read
+jobs:
+  counter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Pin actual HEAD and predecessor
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "exact_source_head=$actual"
+          test "$actual" = "$EXPECTED"
+          git fetch --depth=1 origin e00c130ca8b6ea96f0840185668437be0af9a56f
+          git show e00c130ca8b6ea96f0840185668437be0af9a56f:rawlsing_next/pre553_s04_dhikr_comparative.py > "$RUNNER_TEMP/forge_a_predecessor.py"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: Native adversarial and combined regression court
+        env:
+          PYTHONPATH: .
+          FORGE_A_PREDECESSOR: ${{ runner.temp }}/forge_a_predecessor.py
+        run: |
+          python -m pytest -q -o addopts='' \
+            rawlsing_next/tests/test_pre553_forge_ddm_a_counter.py \
+            rawlsing_next/tests/test_pre553_forge_ddm_analytical_a.py \
+            rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py \
+            rawlsing_next/tests/test_preff_c3_dhikr_comparative.py \
+            rawlsing_next/tests/test_pre553_s04_determinicity_cycle.py \
+            rawlsing_next/tests/test_pre553_s04_i05_reception.py \
+            rawlsing_next/tests/test_pre553_discovery_adaptive.py \
+            rawlsing_next/tests/test_pre553_recursive_handoff.py \
+            rawlsing_next/tests/test_pre553_discovery_exact.py \
+            rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py \
+            rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py \
+            rawlsing_next/tests/test_kuda072_prepared_estate_pin.py \
+            rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py \
+            rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
+            rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py \
+            --junitxml=forge-a-counter.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forge-a-counter
+          path: forge-a-counter.xml

@@ -1,0 +1,47 @@
+name: PYAT Commission B saved analytical closure
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_saved_durable_delivery.py'
+      - 'rawlsing_next/pre553_prepared_saved_i03.py'
+      - 'rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py'
+      - '.github/workflows/pyat-commission-b-saved-delivery.yml'
+permissions:
+  contents: read
+jobs:
+  saved-durable-delivery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify exact code HEAD
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git rev-parse HEAD
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: Saved native workload durable pipeline and inherited repair court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m py_compile rawlsing_next/pre553_saved_durable_delivery.py
+          python -m pytest -q -s -o addopts='' \
+            rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py \
+            rawlsing_next/tests/test_kuda072_prepared_estate_pin.py \
+            rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py \
+            rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py \
+            rawlsing_next/tests/test_pre553_forge_ddm_analytical_a.py \
+            rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
+            rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py \
+            --junitxml=pyat-b-saved-durable.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-b-saved-durable
+          path: pyat-b-saved-durable.xml
