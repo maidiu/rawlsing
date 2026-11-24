@@ -126,6 +126,10 @@ class CountryNumeric(unittest.TestCase):
                         self.assertEqual(x,y)
                         self.assertTrue(x.facts)
                         self.assertTrue(all(f.typed_state=="SUPPORTED" for f in x.facts))
+            # A returned native repository cannot continue serving cached
+            # selectors after its country reader has closed.
+            with self.assertRaises(CountryCarrierError):
+                compact_repo.resolve_release_exact(compact.release_ref)
 
     def test_country_set_resume_and_missing_country_census(self):
         from rawlsing_next.pre553_country_numeric_carrier import country_census,build_country_set

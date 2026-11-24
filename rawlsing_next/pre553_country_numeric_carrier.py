@@ -80,6 +80,19 @@ class CountryReceipt:
     sha256: str
     bytes: int
 
+    def __post_init__(self):
+        for value in (self.source_sha256,self.metadata_digest,self.sha256):
+            if type(value) is not str or len(value)!=64 or any(c not in "0123456789abcdef" for c in value):
+                raise CountryCarrierError("country receipt requires exact SHA256 pins")
+        if (type(self.source_rows) is not int or type(self.country_rows) is not int
+            or not 0<self.country_rows<=self.source_rows or type(self.bytes) is not int or self.bytes<=0
+            or type(self.country_variable) is not str or not self.country_variable
+            or type(self.country_key) is not str):
+            raise CountryCarrierError("invalid country receipt scope")
+        if canonical_json(_CODEC.encode(_CODEC.decode(json.loads(self.country_key))))!=self.country_key:
+            raise CountryCarrierError("country receipt code must be canonical R5")
+
+
 @dataclass(frozen=True)
 class NumericColumn:
     """Codes and exact R5 value/state dictionary, in original respondent order."""
@@ -223,6 +236,13 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
         _live(require_current)
         os.link(stage,dest)
         try:
+            # Durable publication of the directory entry; no success on an
+            # interrupted publication. External receipt custody is separate.
+            directory_fd=os.open(dest.parent,os.O_RDONLY)
+            try:
+                os.fsync(directory_fd)
+            finally:
+                os.close(directory_fd)
             _live(require_current)
         except BaseException:
             dest.unlink()
@@ -255,6 +275,8 @@ class CountryReader:
             self.db.close()
             raise
     def _verify(self):
+        if getattr(self,"_closed",False):
+            raise CountryCarrierError("country reader closed")
         _live(self.require_current)
         if self.path.stat().st_size != self.receipt.bytes or _hash(self.path) != self.receipt.sha256:
             raise CountryCarrierError("country file differs from held receipt")
@@ -412,6 +434,9 @@ class _CountryEventBodies:
 
     def __len__(self):
         return len(self.locators)
+
+    def check_current(self):
+        self.reader._verify()
 
     def __getitem__(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
