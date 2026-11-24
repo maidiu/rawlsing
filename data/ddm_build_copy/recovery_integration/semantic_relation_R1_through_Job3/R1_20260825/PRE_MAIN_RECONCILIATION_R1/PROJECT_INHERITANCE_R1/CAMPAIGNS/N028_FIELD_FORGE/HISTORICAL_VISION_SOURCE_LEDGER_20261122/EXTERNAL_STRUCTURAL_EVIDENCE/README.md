@@ -1,0 +1,24 @@
+# FIELD FORGE — EXTERNAL STRUCTURAL EVIDENCE
+## Source-to-function design and actual-estate inquiry · 2026-11-24 R1
+
+**Status: USER-DIRECTED DOCUMENTARY INVESTIGATION / PROPOSED SELECTION / NOT SCIENTIFIC ADMISSION OR IMPLEMENTATION.** This is a working subspace of the existing [constitutive HOME](../02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md), not another PROGRAMMA, G4, functional inventory, universal carrier or mandatory pipeline. Maintain it in place.
+
+- [Source-to-function map](01_SOURCE_TO_FUNCTION_MAP.md): fourteen selected source families, requested informational products, correspondence, destinations, evidence ceilings and selection priorities.
+- [OpenCode commission](02_OPENCODE_LOCAL_ESTATE_SURVEY.md): read-only survey of actual local custody and native schemas, coverage, meaning and permissions; no conversion, harmonization, production integration or architecture changes.
+- [Proposed receiving delta](03_RECEIVING_AND_NEXT_DECISION.md): preserve owner and currentness boundaries; return to the existing G4 and paired CURRENT_PROGRESS through competent receiving.
+
+### Governing user intent
+
+The August 30 fixed-source R1 correction remains valid for that campaign. The user now explicitly requests mapping the newly acquired independent structural estate for contemporary FIELD FORGE inquiry. This does not expand original35 or interrupt P0 C11. Favor even geographic coverage, historical depth, practical structural information and high marginal return. Selective activation is not destruction of acquired evidence. Defer MICS/DHS/youth sources, Findex microdata, enterprise microdata and specialist EPR/RAS branches; keep acquired reserves. No more acquisition in this commission. Rawlsing is a not-for-profit philanthropic humanitarian-educational resource; purpose is not a substitute for provider permission, confidentiality, redistribution rights or generative-use authorization.
+
+The last complete local tree supplied in conversation is a 67-directory, 486-file listing from 2026-11-24; ILOSTAT downloads and WID archive were still incomplete/not visible there. User later indicated further acquisition, but no newer actual listing has been received here. Treat tree names only as user-reported custody hints; worker must independently inspect actual current files. Do not infer file contents or completion from names.
+
+### Method
+
+Select the minimum useful source-native granularity; preserve independently observed material/institutional reality separately from respondent distributions. Do not manufacture respondent joins, independent group membership, actual class power, causal mechanisms, enforceability, actor experiences or historical panels. Neutral qualified facts survive where strong interpretations are held. Use qualified as-of dates, distinct source estimates and typed absence/noncomparability. A source can be used as aggregate context or a model calibration without new respondent processing. Source ingestion does not imply a mandatory stop in FF for every independent world fact.
+
+After actual survey return, refine the same source map to exact release/file/table/variable/category and date selectors; establish correspondences and permissible claim types, remove low-value dimensions, identify existing producer and real consumer, and design only the smallest necessary extensions. Only then seek selected implementation and owner authorization. Do not create fourteen new modules.
+
+### Exact evidence cut
+
+Live designated PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, documentary rev23; existing draft HOME #1289 exact parent `bdb8c71364602dcf324c86d5b5eb2a90c6103d93`; #1290 `d35339a91889deeb885fcdd2b072d2a6dadf7eef`. #1289 latest visible nonauthor review at d2bf21… requires narrow terminal synthesis repair; no exact bdb8 independent verdict visible. Do not claim adoption. #1226 closed, its first-look at ab2e5b2… consulted as nonprotected historical candidate, not current authority. Consulted protected [OATH](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md), [G4](https://github.com/maidiu/rawlsing/blob/827714e83743056939894a39736d72ea16bdc6dd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md), four machine-readable registers (782/150/62/82), S06 and paired progress; P0 #1097/#960 remain controlling. HOME's own source-static capability companion and downstream transfer map remain governing context for this proposal. The #896 materializer import is already repaired, not a new task. The actual generalized source-to-world qualification and first reader remain unproved. No code tests executed or source rights conferred by this addition.
