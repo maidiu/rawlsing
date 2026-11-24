@@ -156,7 +156,7 @@ class HeuristicSemanticProvider:
             # interruption and later received bodily benefit can propose a
             # novel possible end. This is NOT an immediate acquired motive.
             genetic=packet.get('historically_possible_genetic_ends',[])
-            if len(genetic)==1:
+            if len(genetic)==1 and not genetic[0].get('dependency_loss_basis'):
                 lived.append(copy(genetic[0]))
             joint=packet.get('historically_possible_joint_practices',[])
             if len(joint)==1:
