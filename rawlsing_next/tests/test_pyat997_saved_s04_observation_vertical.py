@@ -33,6 +33,11 @@ def _issued_q101(compilation):
         if entry.status != "SUPPORTED":
             continue
         for raw in entry.query_refs:
+            # R03's compiler carries the *role* alongside the exact ref.
+            # The original #997 first reader intentionally strips role
+            # metadata before converting the native ref, without reissuing it.
+            if isinstance(raw, dict):
+                raw = {key: raw[key] for key in ("kind", "object_id", "content_hash")}
             query = catalog.resolve_query_exact(exact_ref(raw, "original R03 query"))
             if any(
                 exact_ref(target).kind == "QUESTION_NATIVE"
