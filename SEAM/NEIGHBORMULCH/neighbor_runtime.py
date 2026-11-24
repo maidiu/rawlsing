@@ -283,7 +283,8 @@ class NeighborEncounter:
 
     def contribute(self, request_id: str, operation: str, *, text: str | None = None,
                    destination: str | None = None, target_object_ref: str | None = None,
-                   cover_text: str | None = None):
+                   cover_text: str | None = None,
+                   target_actor_ref: str | None = None):
         """One user-authored world event with derived actor-eligible signs.
 
         Retries are idempotent *against the durable world request index*;
@@ -313,6 +314,10 @@ class NeighborEncounter:
                 raise EncounterRefusal('UNAUTHORED_REPAIR_SPEECH')
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
+        if target_actor_ref is not None:
+            if operation != 'SING':
+                raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
+            target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
         request_payload = {'user': self.user_id, 'operation': operation,
@@ -323,6 +328,8 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
+        elif operation == 'SING':
+            request_payload['target_actor_ref'] = target_actor_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
@@ -373,6 +380,16 @@ class NeighborEncounter:
             if (type(candidate) is not dict or
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
+                status = 'BLOCKED'
+        elif operation == 'SING' and target_actor_ref is not None:
+            # Unaddressed singing is ordinary activity; only an explicitly
+            # authored, presently accessible addressee can qualify a joint
+            # occasion. The visitor cannot bind the addressee's response.
+            sight = _bound_source(world).get('user_conditions', {}).get(loc, {})
+            if (target_actor_ref not in self.runtime.ledger.actors()
+                    or world['positions'].get(target_actor_ref) != loc
+                    or sight.get('light') != 'lit'
+                    or sight.get('sightline') != 'unobstructed'):
                 status = 'BLOCKED'
         elif operation == 'SIGN_HALL_PETITION':
             # A human's authored contribution is not an actor policy or a
@@ -446,6 +463,8 @@ class NeighborEncounter:
                         cue['visitor_event_ref'] = ref
                         if sign.get('visual_identity_eligible') is True:
                             cue['visitor_ref'] = self.user_id
+                            if actor_id == target_actor_ref:
+                                cue['visitor_vocal_addressed_to_recipient'] = True
                     evidence.append({'actor': actor_id, 'event_ref': ref,
                                      'cue_ref': cue['id'], 'modality': sign['modality'],
                                      'basis': sign['kind'], 'grade': sign['grade']})
@@ -466,6 +485,8 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
+        if operation == 'SING':
+            event['target_actor_ref'] = target_actor_ref
         if operation == 'SIGN_HALL_PETITION':
             event.update(material_outcome=material_outcome,
                          institutional_policy_ref=policy_ref,
