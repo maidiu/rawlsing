@@ -66,6 +66,7 @@ def validate(c, ledger, registry, pinned=True):
             require(rv["status"] == "NOT_REVIEWED", "FALSE_CRITERION_REVIEW_PROMOTION")
             require(len(rv["related_evidence"]) == len(q["evidence"]), "PRIOR_REVIEW_RECEIPT_DROP")
             for related, e in zip(rv["related_evidence"], q["evidence"]):
+                require(e["observed_head"] == obs[e["pr"]]["head_sha"], "EVIDENCE_SCOPE_DRIFT")
                 prior = obs[e["pr"]]["review"]
                 require(related["lookup"] == e["lookup"] and related["source_head"] == e["observed_head"] and related["prior_review_sha"] == prior.get("sha") and related["prior_review_verdict"] == prior.get("verdict","UNKNOWN"), "PRIOR_REVIEW_RECEIPT_DRIFT")
             for entry in rv["dimensions"].values():
