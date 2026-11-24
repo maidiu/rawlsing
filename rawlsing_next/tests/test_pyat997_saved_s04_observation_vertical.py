@@ -75,7 +75,14 @@ def test_real_sav_to_saved_native_s04_and_exact_operation_fate_join(tmp_path):
     assert scope["i03_known_true_condition_n"] == 5
     assert scope["source_frame_population_n"] is None
     assert scope["observed_route_and_nonresponse_cause"] is None
-    assert scope["source_asked_eligible_raw_summary"] is None
+    # R03 really issued the ASKED_ELIGIBLE_RAW profile in this sourcefree
+    # q101 operation. Do not erase the inherited scientific/response-state
+    # evidence simply because this new consumer is sample-descriptive.
+    asked = scope["source_asked_eligible_raw_summary"]
+    assert asked["state"] == "SOURCE_COHERENT_RAW_ASKED_ELIGIBLE_DISTRIBUTION"
+    assert asked["asked_eligible_n"] == 5
+    assert asked["resolved_target_event_n"] == 5
+    assert asked["population_inference"] is None
 
     # The existing source-native operation ledger must also reconcile with the
     # real saved Batch, independently of this new S04 first-consumer receipt.
