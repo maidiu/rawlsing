@@ -82,7 +82,7 @@ class LedgerSpy:
     def __init__(self):
         self._world = {'id':'w1','clock':0,
             'positions': {'worker':'workshop', 'elsewhere':'home'},
-            'sites': {'workshop':{}, 'home':{}},
+            'sites': {'workshop':{'access':'public'}, 'home':{'access':'public'}},
             'cues':[], 'material_objects':{}}
         self._version = 0
         self._actors = {'worker':{'id':'worker', 'location':'workshop',
