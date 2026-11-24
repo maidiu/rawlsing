@@ -327,3 +327,106 @@ def test_combined_generated_cold_pipeline_exposes_revised_fibres(tmp_path,monkey
                 r["raw_fraction_of_selected_full_cases"] for r in direct["complete_output_cells"]]
         checked+=1
     assert checked
+
+
+def test_actual_saved_pipeline_s2g_selected_conditional_consumer(tmp_path, monkeypatch):
+    """Actual archived I05 condition -> M1/M2/B5 -> S2-G, not a second bundle."""
+    from rawlsing_next.tests import test_pyat_commission_b_saved_delivery as delivery
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
+    from rawlsing_next.pre553_analytical_composition import (
+        _actual_leaves, _leaf_semantic_ref, compose_positioned_subject_possibility,
+    )
+    from rawlsing_next.pre553_durable_learned_lifecycle import LearnedConsumerDeterminants
+    from rawlsing_next.pre553_learned_product_release import M2Repository
+    from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+        _binding, _m1_authority, _registry,
+    )
+    from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+    opened=[]
+    original=delivery.open_saved_product
+    def capture(*args,**kwargs):
+        cold=original(*args,**kwargs)
+        opened.append(cold)
+        return cold
+    monkeypatch.setattr(delivery,"open_saved_product",capture)
+    delivery.test_generated_joint_source_to_persistent_ff01(tmp_path,monkeypatch,"DTA")
+    cold=opened[0]
+    closure=cold._closure
+    discovery=closure.i05_result
+    release=closure.release_identities[0].release_ref
+    options=[]
+    for receipt in discovery.receipts:
+        if receipt.typed_state!="DISCOVERED_RESULT_SUPPORTED":
+            continue
+        roles=[r for r in receipt.candidate_identity["query_roles"] if r["role"]=="CONDITION"]
+        if len(roles)!=1:
+            continue
+        entry=roles[0]
+        predicate=next(p for p in discovery.executed_predicates if p.ref==exact_ref(entry["predicate_ref"]))
+        query=next(q for q in discovery.executed_queries if q.ref==exact_ref(entry["query_ref"]))
+        if len(query.target_refs)!=1:
+            continue
+        leaves=_actual_leaves(predicate)
+        if len(leaves)==1 and exact_ref(_leaf_semantic_ref(leaves[0]))!=exact_ref(query.target_refs[0]):
+            options.append((receipt,predicate,query,leaves[0]))
+    assert options, "actual saved discovery has no supported single-condition scalar candidate"
+    receipt,predicate,query,leaf=options[0]
+    universe=exact_ref(query.empirical_universe_refs[0])
+    coordinate=exact_ref(_leaf_semantic_ref(leaf))
+    value=canonicalize(leaf["exact_value"])
+    pairing=fx.make_pairing_authority("counter-saved-s2g-TEST_ONLY")
+    subject={"schema":"C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+             "empirical_semantic_ref":coordinate.as_dict(),"exact_value":value}
+    subject_ref=ExactRef("C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+        "urn:test:counter-saved-s2g:subject-fact",semantic_hash(subject))
+    conditioner=fx.make_conditioner_binding(binding_id="observed-condition",subject_fact_ref=subject_ref,
+        empirical_coordinate_ref=coordinate,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release)
+    consumer=fx.make_multi_conditioner_consumer_query(query_id="counter-saved-s2g",
+        subject_ref=subject_ref,target_ref=exact_ref(query.target_refs[0]),source_universe_ref=universe,
+        release_ref=release,bindings=[conditioner],projection_kind="TEST_ONLY_SAVED_CONDITIONAL")
+    # Fixture witness uses actual source-native value, not a guessed string
+    # conversion of a structured response state.
+    projection={"schema":"C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf_id":"observed-condition",
+        "leaf_type":leaf["leaf_type"],"operator":leaf["operator"],"exact_value":value}
+    projection["coordinate_semantic_ref" if leaf["leaf_type"]=="EMPIRICAL_POSITION_COORDINATE"
+               else "question_semantic_ref"]=coordinate.as_dict()
+    leaf_ref=fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",projection)
+    pair=fx._pairing_material(subject_ref,leaf_ref,coordinate,value)
+    pair["required_exact_value"]=value
+    witness=fx.make_multi_conditioner_witness(witness_object_id="urn:test:counter-saved-s2g:witness",
+        consumer_query=consumer,producer_query=query,producer_predicate=predicate,bindings=[conditioner],
+        subject_materials=[subject],leaf_projections=[projection],pairing_materials=[pair],
+        pairing_authority=pairing,source_universe_ref=universe,release_ref=release,
+        subject_preimage_refs=[subject_ref])
+    model=fx.make_model_rule(universe,"counter-saved-s2g")
+    composition=compose_positioned_subject_possibility(repository=None,empirical_query=query,predicate=predicate,
+        authority_registry=closure.historical_authority_registry(),release_refs=(release,),consumer_query=consumer,
+        model_rule=model,condition_binding_witness=witness,discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref)
+    assert composition.analytical_state=="SUPPORTED"
+    assert composition.consumer_result_or_null is not None
+    m1_auth=_m1_authority("counter-saved-s2g-TEST_ONLY")
+    binding=_binding(m1_auth)
+    ingress=_contract(route="M01_M1_M2_B5",binding=binding,tag="counter-saved-s2g")
+    product=_contract(route="M1_M2_B5",binding=binding,tag="counter-saved-s2g",
+        actions=("REGISTER","PUBLISH","SELECT_CURRENT"))
+    determinants=LearnedConsumerDeterminants(s2f_root_identity=closure.root_identity,
+        discovery_receipt_ref=receipt.ref,producer_query_ref=query.ref,producer_predicate_ref=predicate.ref,
+        release_ref=release,consumer_query=consumer,model_rule=model,condition_binding_witness=witness,
+        expected_composition_identity=composition.composed_result_identity_hash,
+        expected_consumer_result_hash=composition.consumer_result_or_null.result_hash,
+        purpose_ref=product.consumer_product_purpose_ref)
+    saved, consumed=cold.publish_learned(ingress_contract=ingress,product_contract=product,
+        family_rule_binding=binding,requested_scope={"fixture":"ACTUAL_SAVED_TEST_ONLY"},
+        validator_registry=_registry(binding),determinants=determinants,m2_repository=M2Repository(),
+        lifecycle_executor=LearnedProductLifecycleExecutor(),root_dir=tmp_path/"learned",
+        additional_authority_snapshots=(m1_auth,))
+    assert consumed.state=="LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert consumed.consumer_result_hash==determinants.expected_consumer_result_hash
+    restored=cold.read_learned(saved.artifact_path,expected_root=saved.root_identity,
+                              expected_purpose_ref=determinants.purpose_ref)
+    assert restored.consumer_result_hash==consumed.consumer_result_hash
+    assert restored.source_open_count==0
