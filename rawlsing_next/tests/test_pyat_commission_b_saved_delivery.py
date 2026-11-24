@@ -312,3 +312,129 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     print("SAVED_JOINT_FF01", source_format, result.batch_census["unit_count"],
           result.execution_seconds, result.publication_seconds,
           result.receipt.referenced_physical_bytes, ff.ref.key)
+
+    _learned_vertical(cold, closure, tmp_path, source_format)
+
+
+def _learned_vertical(cold, closure, tmp_path, source_format):
+    """Actual saved-source I05 -> M1/M2/B5 -> cold S2-G consumer.
+    
+    Only the consumer request, comparator and validator are synthetic
+    authorities; every empirical object comes from the physical source above.
+    """
+    from rawlsing_next.pre553_analytical_composition import (
+        _actual_leaves, _validate_discovery_consumption,
+        compose_positioned_subject_possibility,
+    )
+    from rawlsing_next.pre553_durable_learned_lifecycle import (
+        LearnedConsumerDeterminants, DurableLearnedLifecycleError,
+        open_learned_lifecycle,
+    )
+    from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+    from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref, semantic_hash
+    from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+    from rawlsing_next.pre553_learned_product_release import M2Repository
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+        _binding, _m1_authority, _registry,
+    )
+    from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+
+    discovery = closure.i05_result
+    tag = "commission-b-saved-learned-" + source_format
+    release = closure.release_identities[0].release_ref
+    predicates = {p.ref: p for p in discovery.executed_predicates}
+    queries = {q.ref: q for q in discovery.executed_queries}
+    chosen = None
+    for receipt in discovery.receipts:
+        if (receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
+                or receipt.candidate_identity.get("family") != "BRANCH_CONDITIONED_DISTRIBUTION"):
+            continue
+        predicate = predicates[exact_ref(receipt.winning_predicate_ref)]
+        leaves = _actual_leaves(predicate)
+        roles = [r for r in receipt.candidate_identity["query_roles"]
+                 if r["role"] == "CONDITION" and exact_ref(r["predicate_ref"]) == predicate.ref]
+        if len(leaves) == 1 and len(roles) == 1:
+            leaf = leaves[0]
+            if leaf["leaf_type"] != "SURVEY_RESPONSE_EVENT":
+                continue
+            query = queries[exact_ref(roles[0]["query_ref"])]
+            if len(query.target_refs) == len(query.empirical_universe_refs) == 1:
+                chosen = receipt, query, predicate, leaf
+                break
+    assert chosen is not None, "no actual supported value-conditioned discovery"
+    receipt, query, predicate, leaf = chosen
+    coord = exact_ref(leaf["question_semantic_ref"])
+    value = leaf["exact_value"]
+    universe = exact_ref(query.empirical_universe_refs[0])
+    target = exact_ref(query.target_refs[0])
+    pairing = fx.make_pairing_authority(tag)
+    conditioner = fx.make_conditioner_binding(
+        binding_id="condition", subject_fact_ref=ExactRef(**fx.subject_fact_ref(
+            {"qrefs": {"condition": coord}}, "condition", value)),
+        empirical_coordinate_ref=coord, comparability_authority_ref=pairing,
+        source_universe_ref=universe, release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag, subject_ref=ExactRef("TEST_ONLY_SUBJECT", "urn:test:" + tag,
+                                           semantic_hash({"tag": tag})),
+        target_ref=target, source_universe_ref=universe, release_ref=release,
+        bindings=[conditioner], projection_kind="TEST_ONLY_SAVED_LEARNED")
+    fact, pred, actual_query = _validate_discovery_consumption(
+        discovery_result=discovery, consumer_query=consumer, receipt_ref=receipt.ref)
+    assert actual_query.ref == query.ref and pred.ref == predicate.ref
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:" + tag + ":witness",
+        consumer_query=consumer, producer_query=query, producer_predicate=predicate,
+        bindings=[conditioner], coordinate_value_pairs=[(coord, value)],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release)
+    model = fx.make_model_rule(universe, tag)
+    composition = compose_positioned_subject_possibility(
+        repository=None, empirical_query=query, predicate=predicate,
+        authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+        release_refs=(release,), consumer_query=consumer, model_rule=model,
+        condition_binding_witness=witness, discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref)
+    assert composition.consumer_result_or_null is not None
+    authority = _m1_authority(tag)
+    binding = _binding(authority)
+    ingress = _contract(route="M01_M1_M2_B5", binding=binding, tag=tag)
+    contract = _contract(route="M1_M2_B5", binding=binding, tag=tag,
+                         actions=("REGISTER", "PUBLISH", "SELECT_CURRENT"))
+    determinants = LearnedConsumerDeterminants(
+        s2f_root_identity=closure.root_identity, discovery_receipt_ref=receipt.ref,
+        producer_query_ref=query.ref, producer_predicate_ref=predicate.ref,
+        release_ref=release, consumer_query=consumer, model_rule=model,
+        condition_binding_witness=witness,
+        expected_composition_identity=composition.composed_result_identity_hash,
+        expected_consumer_result_hash=composition.consumer_result_or_null.result_hash,
+        purpose_ref=contract.consumer_product_purpose_ref)
+    args = dict(ingress_contract=ingress, product_contract=contract,
+                family_rule_binding=binding, requested_scope={"fixture": tag},
+                validator_registry=_registry(binding),
+                additional_authority_snapshots=(authority,))
+    executor = LearnedProductLifecycleExecutor()
+    repository = M2Repository()
+    initial_checkpoint = executor.export_checkpoint()
+    invalid_root = tmp_path / "invalid-learned"
+    with pytest.raises((SavedDeliveryError, DurableLearnedLifecycleError)):
+        cold.publish_learned(**args, m2_repository=repository,
+            lifecycle_executor=executor, root_dir=invalid_root,
+            determinants=replace(determinants, expected_composition_identity="0"*64))
+    assert executor.export_checkpoint() == initial_checkpoint, (
+        "INVALID_CONSUMER_MUTATED_B5_BEFORE_COLD_VALIDATION")
+    assert not invalid_root.exists(), "INVALID_CONSUMER_PUBLISHED_ARTIFACT"
+    learned, consumed = cold.publish_learned(
+        **args, m2_repository=repository, lifecycle_executor=executor,
+        root_dir=tmp_path / "learned", determinants=determinants)
+    assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
+    assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
+    retrieved = cold.read_learned(learned.artifact_path,
+        expected_root=learned.root_identity, expected_purpose_ref=determinants.purpose_ref)
+    assert retrieved.consumer_result_hash == consumed.consumer_result_hash
+    artifact = open_learned_lifecycle(learned.artifact_path,
+        expected_root=learned.root_identity).require_trusted()
+    assert artifact.m1_disposition.ref == consumed.m1_disposition_ref
+    assert receipt.ref in artifact.m1_disposition.discovery_result_receipt_refs
+    assert fact.ref in artifact.m1_disposition.empirical_fact_refs
+    print("SAVED_S2G", source_format, consumed.state, consumed.consumer_result_hash,
+          learned.root_identity, learned.compressed_bytes)
