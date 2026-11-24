@@ -90,6 +90,26 @@ def _present_counterparts(access):
             and type(c.get('source_actor')) is str}
 
 
+def current_addressed_food_offers(access):
+    """Only currently accessible, particular offers from a visible human.
+
+    This is a read of the existing sensory field, not world settlement.
+    The world independently requalifies the committed authored event.
+    """
+    visitors={c.get('visitor_ref') for c in access.cues
+              if type(c) is dict and c.get('kind')=='visitor_vocal_partner'
+              and type(c.get('visitor_ref')) is str}
+    offers={}
+    for sign in access.cues:
+        if (type(sign) is dict and sign.get('kind')=='visitor_food_offer'
+                and sign.get('visitor_ref') in visitors
+                and sign.get('visitor_food_addressed_to_recipient') is True
+                and sign.get('clock')==access.world_clock
+                and type(sign.get('visitor_event_ref')) is str):
+            offers.setdefault(sign['visitor_ref'],[]).append(sign)
+    return {other:rows[0] for other,rows in offers.items() if len(rows)==1}
+
+
 def conditional_assistance_options(constitution, access, option):
     """Offer a real future invitation *only* through witnessed support history.
 
@@ -100,6 +120,22 @@ def conditional_assistance_options(constitution, access, option):
     if constitution.actor != access.actor:
         raise ValueError('ASSISTANCE_ACTOR_MISMATCH')
     operation=option.get('action')
+    if operation == 'REFUSE':
+        return [{
+            'option_id':stable_id('refuse_actual_food_offer',{
+                'actor':constitution.actor,'clock':constitution.clock,
+                'visitor':other,'offer':sign['visitor_event_ref']}),
+            'actor':constitution.actor,'as_of_clock':constitution.clock,
+            'operation':'REFUSE','project_id':None,
+            'grounds_status':'CURRENT_PARTICULAR_FOOD_OFFER_REFUSAL',
+            'human_food_offer_ref':sign['visitor_event_ref'],
+            'world_request':{'operation':'REFUSE',
+                'addressed_party_ref':other,'material_object_ref':None},
+            'binding_status':'CURRENT_HELD_FOOD_OFFER_REFUSAL',
+            'anticipated_difference':None,'beneficiary_as_apprehended':None,
+            'source_grade':GRADE,'not_an_acquired_durable_motive':True,
+            'not_future_refusal_or_general_attitude':True,
+        } for other,sign in sorted(current_addressed_food_offers(access).items())]
     if operation not in COOPERATIVE_OPERATIONS:
         return []
     participants=_present_counterparts(access)
@@ -184,14 +220,10 @@ def conditional_assistance_options(constitution, access, option):
     if operation == 'SIGNAL':
         for row in list(offered):
             other=row['world_request']['addressed_party_ref']
-            signs=[c for c in access.cues if c.get('kind')=='visitor_food_offer'
-                   and c.get('visitor_ref')==other
-                   and c.get('visitor_food_addressed_to_recipient') is True
-                   and c.get('clock')==access.world_clock
-                   and type(c.get('visitor_event_ref')) is str]
-            if other in visitors and len(signs)==1:
+            sign=current_addressed_food_offers(access).get(other)
+            if other in visitors and sign is not None:
                 acceptance=copy(row)
-                acceptance['human_food_offer_ref']=signs[0]['visitor_event_ref']
+                acceptance['human_food_offer_ref']=sign['visitor_event_ref']
                 acceptance['option_id']=stable_id('accept_actual_food_offer',{
                     'option':row['option_id'],'offer':acceptance['human_food_offer_ref']})
                 acceptance['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
