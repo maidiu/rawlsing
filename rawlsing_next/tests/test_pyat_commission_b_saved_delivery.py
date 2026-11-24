@@ -513,10 +513,34 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     finally:
         manifest.write_bytes(original)
 
+    # Fail the actual durable writer at its existing owner failpoint after
+    # content has reached disk, not a mock that bypasses all publication.
+    import errno
+    import rawlsing_next.pre553_durable_learned_lifecycle as durable
+    real_publish = durable.publish_learned_lifecycle
+    failure_root = tmp_path / "injected-enospc"
+    def fail_on_manifest(stage):
+        if stage == "before_manifest_replace":
+            raise OSError(errno.ENOSPC, "injected storage exhaustion")
+    def interrupted(*a, **kw):
+        return real_publish(*a, **kw, failpoint=fail_on_manifest)
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(durable, "publish_learned_lifecycle", interrupted)
+        with pytest.raises(OSError, match="storage exhaustion"):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint, (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_B5")
+    assert all(not getattr(repository, name) for name in repository._store_names), (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_M2")
+    assert not list(failure_root.rglob("manifest.json"))
+    # The blob can remain as immutable unreferenced content. Retry must work
+    # with the same owners, not a reset to newly empty owners.
     learned_start = monotonic()
     learned, consumed = cold.publish_learned(
         **args, m2_repository=repository, lifecycle_executor=executor,
-        root_dir=tmp_path / "learned", determinants=determinants)
+        root_dir=failure_root, determinants=determinants)
     learned_seconds = monotonic() - learned_start
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
