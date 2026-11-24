@@ -10,6 +10,11 @@ import resource
 import tempfile
 import time
 import unittest
+from collections import defaultdict
+from contextlib import ExitStack
+from functools import wraps
+from statistics import median
+from unittest.mock import patch
 from dataclasses import replace
 from pathlib import Path
 
@@ -17,16 +22,16 @@ import numpy as np
 import pandas as pd
 import pyreadstat
 
-from rawlsing_next.pre553_country_numeric_carrier import build_country
+from rawlsing_next.pre553_country_numeric_carrier import build_country,CountryReader
 from rawlsing_next.pre553_physical_decoder import decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     PhysicalSlot,RowRespondentBinding,ResponseSlotRule,ResponseValueRule,OccurrenceRule,
     CoordinateSlotRule,WeightSlotRule,physical_value_binding_key,
 )
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef,TypedAbsence,RespondentIdentity,QuestionVariableBinding,RoutingEligibilityFact,
-    semantic_hash,
+    ExactRef,RoutingEligibilityFact,semantic_hash,
 )
+from rawlsing_next.pre553_c11_integrity import TypedAbsence,RespondentIdentity,QuestionVariableBinding
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 from rawlsing_next.pre553_issued_workload import NativeWorkload,IssuedWorkloadRecord,canonical,operation_jobs
 from rawlsing_next.pre553_native_workload_binding import TestOnlyDecisionResolver
@@ -131,8 +136,36 @@ class CountryNativeEconomics(unittest.TestCase):
             print("COUNTRY_NATIVE_SCALE_START",json.dumps({"rows":n,"country_rows":len(chosen),"physical_width":len(frame.columns),
                 "governed_width":governed,"units":len(jobs),"country_bytes":receipt.bytes,
                 "source_bytes":original_bytes,"build_seconds":build_seconds,"projection_seconds":projection_seconds}),flush=True)
-            pub=execute_publish_country(workload,resolver,host=host,purpose=purpose,country_path=db,
-                country_receipt=receipt,root_dir=products)
+            # Inclusive wall time/calls: nested counters deliberately NOT
+            # summed. Retain actual incumbent query and publication owners.
+            from rawlsing_next import pre553_issued_workload as issued
+            from rawlsing_next import pre553_saved_durable_delivery as delivery
+            from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+            timings=defaultdict(list)
+            def time_call(owner,name,label):
+                original=getattr(owner,name)
+                @wraps(original)
+                def wrapped(*args,**kwargs):
+                    started=time.monotonic()
+                    try:
+                        return original(*args,**kwargs)
+                    finally:
+                        timings[label].append(time.monotonic()-started)
+                return patch.object(owner,name,wrapped)
+            with ExitStack() as stack:
+                for owner,name,label in (
+                    (issued,"build_source_backed_c11_repository","cold_native_prepare"),
+                    (CarrierNeutralResearchExecutor,"execute_i03","native_I03"),
+                    (CarrierNeutralResearchExecutor,"execute_i05","native_I05"),
+                    (CountryReader,"_column","authenticated_column_read_decode"),
+                    (CountryReader,"verify_full","full_file_authentication"),
+                    (delivery,"publish_empirical_closure","durable_publish"),
+                ):
+                    stack.enter_context(time_call(owner,name,label))
+                pub=execute_publish_country(workload,resolver,host=host,purpose=purpose,country_path=db,
+                    country_receipt=receipt,root_dir=products)
+            print("COUNTRY_NATIVE_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
+                "median_s":median(v),"max_s":max(v)} for k,v in timings.items()}),flush=True)
             self.assertTrue(pub.complete)
             self.assertEqual(pub.batch_census["unit_count"],len(jobs))
             self.assertIsNotNone(pub.release_identity)
@@ -156,3 +189,61 @@ class CountryNativeEconomics(unittest.TestCase):
                 "closure_referenced_bytes":pub.receipt.referenced_physical_bytes,
                 "peak_process_rss_kib_linux":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
                 "grade":"SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
+
+
+    def test_physical_layout_query_tradeoffs_same_cells(self):
+        """One selected carrier, bounded block-size comparison; not native-I03 proxy."""
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        rng=np.random.default_rng(152)
+        n=2400
+        low=rng.integers(0,5,(n,12))
+        high=rng.random((n,8))
+        frame=pd.DataFrame({f"q{i}":low[:,i].astype(float) for i in range(12)})
+        for i in range(8):
+            frame[f"v{i}"]=high[:,i]
+        frame["country"]=np.where(np.arange(n)%2==0,1.,2.)
+        chosen=np.arange(0,n,2)
+        # Same deterministic distinct predicates in each layout; warm
+        # repeats reported separately from independent cold opening.
+        workloads=[{f"q{i}":float(i%5)} for i in range(10)]
+        workloads += [{f"q{i}":float(i%5),f"q{(i+1)%12}":float((i+2)%5)} for i in range(10)]
+        workloads += [{f"v{i}":float(high[2*i,i])} for i in range(8)]
+        oracle=[]
+        for conditions in workloads:
+            mask=np.ones(len(chosen),dtype=bool)
+            for key,value in conditions.items():
+                mask &= frame[key].to_numpy()[chosen]==value
+            oracle.append(tuple(int(i+1) for i in chosen[mask]))
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);src=p/"mixed.sav"
+            pyreadstat.write_sav(frame,str(src))
+            with decode_sav(src) as inc:
+                for block_rows in (128,1024,4096):
+                    path=p/f"layout-{block_rows}.sqlite"
+                    t=time.monotonic()
+                    receipt=build_country(inc,country_variable="country",country_value=1.,
+                        output=path,require_current=lambda:True,block_rows=block_rows)
+                    build_s=time.monotonic()-t
+                    t=time.monotonic()
+                    with CountryReader(path,receipt,require_current=lambda:True) as reader:
+                        cold_s=time.monotonic()-t
+                        times=[]
+                        for conditions,expected in zip(workloads,oracle):
+                            t=time.monotonic()
+                            actual=tuple(reader.matching_rows(conditions))
+                            times.append(time.monotonic()-t)
+                            self.assertEqual(actual,expected)
+                        warm=[]
+                        for _ in range(10):
+                            t=time.monotonic()
+                            self.assertEqual(tuple(reader.matching_rows(workloads[0])),oracle[0])
+                            warm.append(time.monotonic()-t)
+                        lanes=reader.db.execute("SELECT count(*) FROM lanes").fetchone()[0]
+                    print("COUNTRY_PHYSICAL_QUERY_TRADEOFF",json.dumps({
+                        "block_rows":block_rows,"bytes":receipt.bytes,"lanes":lanes,
+                        "build_s":build_s,"cold_open_s":cold_s,
+                        "distinct_low_unary_median_s":median(times[:10]),
+                        "distinct_low_joint_median_s":median(times[10:20]),
+                        "distinct_high_unary_median_s":median(times[20:]),
+                        "distinct_total_s":sum(times),"identical_warm_median_s":median(warm),
+                        "sourcefree":True}),flush=True)
