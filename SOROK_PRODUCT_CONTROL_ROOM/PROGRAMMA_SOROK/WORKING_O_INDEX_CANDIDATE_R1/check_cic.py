@@ -114,6 +114,20 @@ def validate(c, ledger, registry, pinned=True):
         ranges=sorted((o["home_range"]["start_line"],o["home_range"]["end_line"]) for o in obligations.values() if o["lane"]==lane)
         require(ranges[0][0] == 1 and ranges[-1][1] == c["homes"][lane]["active_end_line"], "HOME_RANGE_BOUNDARY")
         require(all(a[1]+1==b[0] for a,b in zip(ranges,ranges[1:])), "HOME_RANGE_GAP")
+    route_by_anchor = {r["source_anchor"]: r for rows in c["paragraph_routes"].values() for r in rows}
+    refined = {q["id"]: q for q in criteria.values() if "refines" in q}
+    for qid, q in refined.items():
+        oid = qid.rsplit(".", 1)[0]
+        require(q["refines"] in criteria and q["refines"].rsplit(".", 1)[0] == oid and q["refines"] not in refined, "REFINEMENT_PARENT_DRIFT")
+        require(bool(q["paragraph_anchors"]) and all(a in route_by_anchor and oid in route_by_anchor[a]["obligation_ids"] for a in q["paragraph_anchors"]), "REFINEMENT_SOURCE_ANCHOR_DRIFT")
+        require(all(e["original_id"] in obligations[oid]["function_refs"] for e in q["evidence"]), "REFINEMENT_FUNCTION_CROSSWALK")
+        sr = q["scoped_return"]
+        source = obs[sr["pr"]]
+        require(sr["pr"] == q["evidence"][0]["pr"] and sr["execution_sha"] == source["test"]["executed_sha"] and sr["execution_grade"] == source["test"]["grade"] and sr["receipt"] == source["test"]["receipt"] and sr["first_consumer"] == source["first_consumer"], "REFINEMENT_RETURN_DRIFT")
+        require(sr["source_bodies"] == [{"path": b["path"], "blob": b["blob"]} for b in source["exact_source_bodies"]], "REFINEMENT_SOURCE_BODY_DRIFT")
+        require(sr["criterion_execution"] == "NOT_RUN_AS_COMPLETE_CIC_CRITERION" and sr["review"] == "NOT_INDEPENDENTLY_REVIEWED_AT_CRITERION_SCOPE", "REFINEMENT_FALSE_PROMOTION")
+    rounds = c.get("refinement_rounds", [])
+    require(len(rounds) == 1 and set(rounds[0]["added_criterion_ids"]) == set(refined) and rounds[0]["prior_criterion_count"] + len(refined) == len(criteria), "REFINEMENT_DENOMINATOR_DRIFT")
     for j in c["whole_organism_acceptance_candidates"]:
         require(set(j["obligation_ids"]) <= set(obligations) and set(j["criterion_ids"]) <= set(criteria), "JOIN_REFERENCES")
         require(j["state"] == "HELD_CRITERION_SPECIFIC_WHOLE_TRAJECTORY", "FALSE_WHOLE_TRAJECTORY")
@@ -140,7 +154,13 @@ def selftest(c,ledger,registry):
     check(lambda x:x["obligations"][0]["criteria"][0]["review_coverage"]["related_evidence"][0].update(prior_review_sha="0"*40),"PRIOR_REVIEW_RECEIPT_DRIFT")
     check(lambda x:next(q for o in x["obligations"] for q in o["criteria"] if q["review_coverage"]["deferred_source_scopes"])["review_coverage"]["deferred_source_scopes"].pop(),"DROPPED_NAMED_REVIEW_DEBT")
     check(lambda x:x["obligations"][0]["criteria"][0]["review_coverage"].update(execution_coverage="PASS"),"COVERAGE_AXIS_DRIFT")
-    return 15
+    def child(x):
+        return next(q for o in x["obligations"] for q in o["criteria"] if "refines" in q)
+    check(lambda x:child(x).update(refines="NEIGHBOR-CIC-017.01"),"REFINEMENT_PARENT_DRIFT")
+    check(lambda x:child(x).update(paragraph_anchors=["NEIGHBOR-L0309"]),"REFINEMENT_SOURCE_ANCHOR_DRIFT")
+    check(lambda x:child(x)["scoped_return"].update(execution_sha="0"*40),"REFINEMENT_RETURN_DRIFT")
+    check(lambda x:child(x)["scoped_return"].update(criterion_execution="PASS"),"REFINEMENT_FALSE_PROMOTION")
+    return 19
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")
