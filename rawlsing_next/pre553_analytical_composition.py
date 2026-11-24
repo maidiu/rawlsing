@@ -1130,9 +1130,8 @@ def compose_positioned_subject_possibility(
     if recursive_handoff is not None:
         producer_route = PRODUCER_ROUTE_RECURSIVE
         _validate_recursive_consumption(recursive_handoff, consumer_query, predicate, empirical_query)
-        if len(empirical_query.target_refs) == 1:
-            _validate_direct_grain(empirical_query=empirical_query,
-                                   consumer_query=consumer_query, release_refs=release_refs)
+        _validate_direct_grain(empirical_query=empirical_query,
+                               consumer_query=consumer_query, release_refs=release_refs)
         producer_result = execute_empirical_query(
             repository=repository,
             query=empirical_query,
@@ -1156,11 +1155,10 @@ def compose_positioned_subject_possibility(
             receipt_ref=discovery_receipt_ref,
         )
         # I05 selects the actual producer query, not the caller's target
-        # label. Apply the same exact unary grain law as direct I03 before
-        # constructing any consumer geometry. Joint target contracts differ.
-        if len(empirical_query.target_refs) == 1:
-            _validate_direct_grain(empirical_query=empirical_query,
-                                   consumer_query=consumer_query, release_refs=release_refs)
+        # label. All C1 routes use the direct owner's existing ordered first
+        # target convention; preserve the entire native joint topology.
+        _validate_direct_grain(empirical_query=empirical_query,
+                               consumer_query=consumer_query, release_refs=release_refs)
         if release_refs != _refs(
                 next(r.source_release_refs for r in discovery_result.receipts
                      if r.ref == discovery_receipt_ref), "discovery source releases"):
