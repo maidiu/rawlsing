@@ -391,12 +391,12 @@ class _CountryEventBodies:
         self.reader,self.projection=reader,projection
         self.rows={row:(block,rows,i) for block,rows in reader._blocks() for i,row in enumerate(rows)}
         self.respondents={r.ref.key:r for r in projection.respondents}
-        by_respondent={b.respondent_ref.key:b.row_ordinal for b in projection.row_bindings}
-        if len(by_respondent)!=len(projection.row_bindings):
-            raise CountryCarrierError("country respondent must bind one original row")
-        self.slots={slot.question_binding.ref.key:slot for slot in projection.response_slots}
-        if len(self.slots)!=len(projection.response_slots):
-            raise CountryCarrierError("country event resolver requires distinct question bindings")
+        by_respondent={}
+        for b in projection.row_bindings:
+            by_respondent.setdefault(b.respondent_ref.key,[]).append(b.row_ordinal)
+        self.slots={}
+        for slot in projection.response_slots:
+            self.slots.setdefault(slot.question_binding.ref.key,[]).append(slot)
         self.owners={x.slot.key:x for x in projection.slot_owner_sets}
         locators=[]
         for event in events:
@@ -404,7 +404,7 @@ class _CountryEventBodies:
             bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
             if respondent not in by_respondent or len(bindings)!=1:
                 raise CountryCarrierError("sealed event lacks original country row/slot binding")
-            locators.append((by_respondent[respondent],respondent,bindings[0],event.ref))
+            locators.append((tuple(by_respondent[respondent]),respondent,bindings[0],event.ref))
         self.locators=tuple(locators)
         self.cache=OrderedDict()
 
@@ -417,32 +417,33 @@ class _CountryEventBodies:
         if reader._closed:
             raise CountryCarrierError("country event resolver closed")
         _live(reader.require_current)
-        row,respondent,question,expected=self.locators[index]
-        slot=self.slots[question]
-        block,rows,offset=self.rows[row]
-        key=(block,slot.slot.ordinal)
-        lane=self.cache.get(key)
-        if lane is None:
-            lane=reader._column(block,rows,slot.slot.ordinal)
-            self.cache[key]=lane
-            if len(self.cache)>32:
-                self.cache.popitem(last=False)
-        else:
-            self.cache.move_to_end(key)
-        cell=_decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
-        physical=_cell_key(cell)
-        rules=[r for r in slot.values if r.physical_key==physical]
-        if len(rules)!=1:
-            raise CountryCarrierError("country event physical value lacks exact governed rule")
-        owner=self.owners.get(slot.slot.key)
-        auths=owner.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner else ()
-        value=rules[0]
+        source_rows,respondent,question,expected=self.locators[index]
         matches=[]
-        for occ in value.occurrences:
-            event=_event(reader.receipt.source_sha256,row,self.respondents[respondent],
-                         slot,cell,value,occ,self.projection,auths)
-            if event.ref==expected:
-                matches.append(event)
+        for row in source_rows:
+            block,rows,offset=self.rows[row]
+            for slot in self.slots[question]:
+                key=(block,slot.slot.ordinal)
+                lane=self.cache.get(key)
+                if lane is None:
+                    lane=reader._column(block,rows,slot.slot.ordinal)
+                    self.cache[key]=lane
+                    if len(self.cache)>32:
+                        self.cache.popitem(last=False)
+                else:
+                    self.cache.move_to_end(key)
+                cell=_decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
+                physical=_cell_key(cell)
+                rules=[r for r in slot.values if r.physical_key==physical]
+                if len(rules)!=1:
+                    raise CountryCarrierError("country event physical value lacks exact governed rule")
+                owner=self.owners.get(slot.slot.key)
+                auths=owner.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner else ()
+                value=rules[0]
+                for occ in value.occurrences:
+                    event=_event(reader.receipt.source_sha256,row,self.respondents[respondent],
+                                 slot,cell,value,occ,self.projection,auths)
+                    if event.ref==expected:
+                        matches.append(event)
         if len(matches)!=1:
             raise CountryCarrierError("country event reconstruction differs from sealed ref")
         _live(reader.require_current)
@@ -476,3 +477,95 @@ def country_census(incidence, *, country_variable, require_current):
     _live(require_current)
     return {"source_sha256":incidence.source_sha256,"source_rows":last,
             "country_variable":country_variable,"observed":observed,"held":held}
+
+
+@dataclass(frozen=True)
+class CountryExecution:
+    result: object
+    release_identity: object
+
+def execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
+                             require_country_current,allow_test_only=False,expected_wave=None):
+    """Execute an already issued workload from one retained numeric country.
+
+    The separate country custody/currentness callback is mandatory; it is not
+    replaced by U43's source/science decision. Original execution may proceed
+    only through the incumbent independent resolver and actual country grant.
+    This function does not publish original empirical outputs to S2-F.
+    """
+    from .pre553_issued_workload import admit,execute_issued_workload
+    record=admit(workload,resolver,host=host,purpose=purpose,
+                 allow_test_only=allow_test_only,expected_wave=expected_wave)
+    if type(country_receipt) is not CountryReceipt or record.source_sha256!=country_receipt.source_sha256:
+        raise CountryCarrierError("issued source and external country receipt differ")
+    def current():
+        _live(require_country_current)
+        if admit(workload,resolver,host=host,purpose=purpose,
+                 allow_test_only=allow_test_only,expected_wave=expected_wave)!=record:
+            raise CountryCarrierError("country workload decision changed")
+    current()
+    count=len(workload.requests)+len(workload.discoveries)
+    if count<1:
+        raise CountryCarrierError("empty country workload")
+    with CountryReader(country_path,country_receipt,require_current=current) as reader:
+        def factory(ref):
+            current()
+            if ref!=workload.source_factory_ref:
+                raise CountryCarrierError("country source factory identity mismatch")
+            return reader._native_stream(workload.projection)
+        # The original bounded path runs the declared units once, avoiding
+        # the historical preliminary Route B/discovery pass. Require all units.
+        result=execute_issued_workload(workload,resolver,source_factory=factory,
+            host=host,purpose=purpose,allow_test_only=allow_test_only,
+            expected_wave=expected_wave,max_units=count)
+        identity=reader._certified_identity
+        if identity is None or not result.summary.full_coverage:
+            raise CountryCarrierError("country native workload not fully executed")
+        result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
+        reader._verify()
+        current()
+        return CountryExecution(result,identity)
+
+def build_country_set(incidence,*,country_variable,root,require_current,
+                      country_keys=None,retained_receipts=(),block_rows=1024):
+    """Sequential, resumable country construction; no full-wave expanded estate.
+
+    country_keys are exact R5 strings from country_census, or None for every
+    observed code. Only externally supplied receipts may authorize reuse.
+    Missing/unknown country rows are explicitly reported in the census.
+    Yields (path,receipt) after each completed country so an operator can bank
+    the independent receipt before proceeding. A failure leaves earlier
+    completed countries intact.
+    """
+    inventory=country_census(incidence,country_variable=country_variable,
+                             require_current=require_current)
+    keys=tuple(sorted(inventory["observed"])) if country_keys is None else tuple(country_keys)
+    if len(set(keys))!=len(keys) or any(k not in inventory["observed"] for k in keys):
+        raise CountryCarrierError("country selection must use distinct exact observed codes")
+    retained={}
+    for receipt in retained_receipts:
+        if (type(receipt) is not CountryReceipt or receipt.country_key in retained
+            or receipt.source_sha256!=inventory["source_sha256"]
+            or receipt.country_variable!=country_variable
+            or receipt.metadata_digest!=incidence.physical_metadata_digest
+            or receipt.country_rows!=inventory["observed"].get(receipt.country_key)):
+            raise CountryCarrierError("retained country receipt mismatch")
+        retained[receipt.country_key]=receipt
+    root=Path(root).resolve()
+    if not root.is_dir():
+        raise CountryCarrierError("existing private country root required")
+    for key in keys:
+        _live(require_current)
+        path=root/("country-"+sha256(key.encode("ascii")).hexdigest()+".sqlite")
+        if key in retained:
+            receipt=retained[key]
+            with CountryReader(path,receipt,require_current=require_current) as reader:
+                if len(tuple(reader.row_ordinals()))!=receipt.country_rows:
+                    raise CountryCarrierError("retained country census mismatch")
+        else:
+            receipt=build_country(incidence,country_variable=country_variable,
+                country_value=_CODEC.decode(json.loads(key)),output=path,
+                require_current=require_current,block_rows=block_rows)
+            if receipt.country_rows!=inventory["observed"][key]:
+                raise CountryCarrierError("country build census mismatch")
+        yield path,receipt

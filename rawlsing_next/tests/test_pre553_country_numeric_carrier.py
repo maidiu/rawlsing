@@ -126,3 +126,118 @@ class CountryNumeric(unittest.TestCase):
                         self.assertEqual(x,y)
                         self.assertTrue(x.facts)
                         self.assertTrue(all(f.typed_state=="SUPPORTED" for f in x.facts))
+
+    def test_country_set_resume_and_missing_country_census(self):
+        from rawlsing_next.pre553_country_numeric_carrier import country_census,build_country_set
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);src=p/"source.sav"
+            pyreadstat.write_sav(pd.DataFrame({"country":[1,2,1,None,2],"q":[2,3,4,5,6]}),str(src))
+            root=p/"countries";root.mkdir()
+            with decode_sav(src) as inc:
+                census=country_census(inc,country_variable="country",require_current=lambda:None)
+                self.assertEqual(sum(census["observed"].values()),4)
+                self.assertEqual(sum(census["held"].values()),1)
+                first=list(build_country_set(inc,country_variable="country",root=root,require_current=lambda:None))
+                self.assertEqual(len(first),2)
+                resumed=list(build_country_set(inc,country_variable="country",root=root,
+                    require_current=lambda:None,retained_receipts=tuple(r for _,r in first)))
+                self.assertEqual(first,resumed)
+                rows=[]
+                for path,receipt in resumed:
+                    with CountryReader(path,receipt,require_current=lambda:None) as reader:
+                        rows.extend(reader.row_ordinals())
+                self.assertEqual(sorted(rows),[1,2,3,5])
+
+    def test_country_actual_issued_batch_durable_cold_s04_ff01(self):
+        from dataclasses import replace
+        from rawlsing_next.pre553_physical_decoder import PHYSICAL_METADATA_CONTRACT
+        from rawlsing_next.pre553_source_backed_c11_facade import (
+            ExactPhysicalCellStream,build_validated_source_backed_c11_release_from_stream)
+        from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+        from rawlsing_next.pre553_empirical_objects import semantic_hash
+        from rawlsing_next.pre553_issued_workload import (
+            NativeWorkload,IssuedWorkloadRecord,canonical,operation_jobs)
+        from rawlsing_next.pre553_native_workload_binding import TestOnlyDecisionResolver
+        from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
+        from rawlsing_next.pre553_saved_durable_delivery import execute_publish_country,open_country_product
+        from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+        from rawlsing_next.tests.test_pre553_empirical_query import (
+            _ref,_query_authority,_branch_predicate,_query,_predicate,_response_leaf)
+        from rawlsing_next.tests.test_pre553_discovery_exact import (
+            _atom,_d_auth,_discovery_authority,_grammar,_qt,_rule)
+        fx=_fixture("country-durable")
+        inc=replace(fx["incidence"],file_metadata={
+            "contract_schema":PHYSICAL_METADATA_CONTRACT,
+            "raw_layout_declarations":{}, "normalized_geometry":{},
+            "display_metadata":{}, "decoder_identity":{"fixture":"country-durable"},
+        })
+        chosen=(1,3)
+        original=fx["projection"]
+        respondents=tuple(original.respondents[i-1] for i in chosen)
+        refs={x.ref.object_id for x in respondents}
+        projection=replace(original,respondents=respondents,
+            row_bindings=tuple(x for x in original.row_bindings if x.row_ordinal in chosen),
+            routing=tuple(x for x in original.routing if x.scoped_respondent_ref["object_id"] in refs))
+        cells=tuple(c for c in inc.iter_cells() if c.row_ordinal in chosen)
+        direct=build_validated_source_backed_c11_release_from_stream(
+            ExactPhysicalCellStream(inc.source_sha256,len(chosen),lambda:iter(cells)),projection)
+        qa=_query_authority("country-durable")
+        da=_d_auth("country-durable")
+        base=_branch_predicate(fx,qa,members=respondents,tag="country-durable-all")
+        atom=_predicate(fx,qa,_response_leaf(fx,qa,"X","1"),tag="country-durable-x")
+        query=_query(fx,qa,base,("X","Y"),tag="country-durable-joint")
+        unary=_query(fx,qa,base,("Y",),tag="country-durable-y")
+        grammar=_grammar(operation="I03-OP-country-durable",
+            atoms=[_atom("ALL",base,"BRANCH"),_atom("X1",atom,"RESPONSE")],
+            templates=[_qt("Y",unary)],
+            rules=[_rule("pair","PAIR_RESPONSE_COTRAVEL","SINGLE_ATOM",atom_ids=("X1",),
+                baseline_atom_id="ALL",query_template_id="Y",
+                validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"})])
+        discovery=_discovery_authority(fx,grammar,da)
+        cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),(base,atom),(query,unary),(discovery,))
+        requests=tuple(I03ExecutionRequest(q.ref,base.ref) for q in (query,unary))
+        ds=(discovery.ref,)
+        jobs=operation_jobs(requests,ds)
+        root=semantic_hash({"fixture":"country-durable"})
+        frontier=semantic_hash({"jobs":jobs,"root":root})
+        decision=_ref("TEST_ONLY_DECISION","country-durable")
+        host,purpose="test-country","TEST_ONLY_COUNTRY_DURABLE"
+        descriptor=dict(source_edition=inc.source_sha256,native_item_ids=["X","Y"],
+            release_tag=projection.instrument_release_id,routing_and_risk={"fixture":True},
+            carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":"A"},
+            weight_design_estimand={"measure":"RAW"},missing_and_occurrence_policy={"fixture":True},
+            target_conditioner_roles={"joint":["X","Y"]})
+        workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY","country-durable"),
+            descriptor=canonical(descriptor),projection=projection,catalog=cat,requests=requests,
+            discoveries=ds,original_u_root=root,expected_frontier_root=frontier)
+        record=IssuedWorkloadRecord(decision_ref=decision,source_permission_ref=_ref("TEST_ONLY_SOURCE_PERMISSION","country"),
+            scientific_permission_refs=(_ref("TEST_ONLY_SCIENCE_PERMISSION","country"),),
+            host=host,purpose=purpose,source_sha256=inc.source_sha256,
+            envelope_sha256=semantic_hash(workload.envelope()),original_u_root=root,
+            expected_frontier_root=frontier,expected_jobs=jobs,currentness="CURRENT_GRANTED",
+            scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(fx["universe"].ref,))
+        resolver=TestOnlyDecisionResolver(record)
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);path=p/"country.sqlite";products=p/"products";products.mkdir()
+            receipt=build_country(inc,country_variable="G",country_value="A",output=path,require_current=lambda:None)
+            pub=execute_publish_country(workload,resolver,host=host,purpose=purpose,
+                country_path=path,country_receipt=receipt,root_dir=products)
+            self.assertTrue(pub.complete)
+            self.assertEqual(pub.batch_census["unit_count"],3)
+            path.unlink()
+            cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
+                expected_release_ref=direct.release_ref,country_receipt=receipt,workload=workload,
+                resolver=resolver,host=host,purpose=purpose)
+            read=cold.read_s04(query.ref,conditioner_index=0)
+            self.assertEqual(read.first_consumer.execution.facts[0].raw_denominator_support,1)
+            self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],1)
+            result,=cold._closure.discovery_results
+            self.assertEqual(result.candidate_count,result.covered_candidate_count)
+            self.assertEqual(result.candidate_count,1)
+            with self.assertRaises(ValueError):
+                open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
+                    expected_release_ref=direct.release_ref,country_receipt=replace(receipt,sha256="0"*64),
+                    workload=workload,resolver=resolver,host=host,purpose=purpose)
+            resolver._record=replace(record,currentness="REVOKED")
+            with self.assertRaises(ValueError):
+                cold.read_s04(query.ref)

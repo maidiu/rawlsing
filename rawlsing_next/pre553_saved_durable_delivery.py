@@ -696,42 +696,38 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     the compact country. Existing native issuer, Batch and S04 owners do the
     work. No new result format or scientific authorization.
     """
-    from rawlsing_next.pre553_country_numeric_carrier import CountryReader
+    from rawlsing_next.pre553_country_numeric_carrier import execute_country_workload
     record = _record(workload, resolver, host, purpose)
     _country_binding(record, workload, workload.projection.projection_identity_ref, country_receipt)
     def current():
         _require(_record(workload,resolver,host,purpose)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
-    units=len(workload.requests)+len(workload.discoveries)
-    _require(units>0,"COUNTRY_EMPTY_WORKLOAD")
     start=monotonic()
+    # S2-F remains TEST_ONLY. The real-source execution entry separately
+    # requires a competent independent country retention/currentness guard.
+    executed=execute_country_workload(workload,resolver,country_path=country_path,
+        country_receipt=country_receipt,host=host,purpose=purpose,
+        require_country_current=current,allow_test_only=True)
+    result,identity=executed.result,executed.release_identity
+    _require(result.manifest==_manifest(workload,identity.release_ref),
+             "COUNTRY_BATCH_MANIFEST_DRIFT")
+    census=result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
+    _require(census.complete,"COUNTRY_BATCH_INCOMPLETE")
+    direct=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                 if u.job_kind=="QUERY")
+    discoveries=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                      if u.job_kind=="DISCOVERY")
+    output=NativeEmpiricalOutput(
+        source_identity=_country_binding(record,workload,identity.release_ref,country_receipt),
+        release_identities=(identity,),i03_results=direct,i05_result=None,
+        i05_results=discoveries,object_graph=_graph(workload,direct,discoveries),
+        typed_states={"saved_batch_manifest":result.manifest.semantic_projection(),
+            "saved_batch_receipts":[r.projection() for r in result.receipts],
+            "saved_batch_census":census.as_dict(),"saved_batch_complete":True,
+            "s04_first_reads":_s04_manifest(workload,direct)})
+    from rawlsing_next.pre553_country_numeric_carrier import CountryReader
+    # Recheck physical receipt and live decision at publication boundary.
     with CountryReader(country_path,country_receipt,require_current=current) as reader:
-        def factory(ref):
-            _require(ref==workload.source_factory_ref,"COUNTRY_SOURCE_FACTORY_REF_DRIFT")
-            current()
-            return reader._native_stream(workload.projection)
-        # Existing bounded Batch path skips redundant preliminary Route B
-        # execution, but we require complete exact S2-E output afterwards.
-        result=execute_issued_workload(workload,resolver,source_factory=factory,
-            host=host,purpose=purpose,allow_test_only=True,max_units=units)
-        identity=reader._certified_identity
-        _require(identity is not None,"COUNTRY_NATIVE_CERTIFICATION_ABSENT")
-        _require(result.manifest==_manifest(workload,identity.release_ref),
-                 "COUNTRY_BATCH_MANIFEST_DRIFT")
-        census=result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
-        _require(census.complete,"COUNTRY_BATCH_INCOMPLETE")
-        direct=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
-                     if u.job_kind=="QUERY")
-        discoveries=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
-                          if u.job_kind=="DISCOVERY")
-        output=NativeEmpiricalOutput(
-            source_identity=_country_binding(record,workload,identity.release_ref,country_receipt),
-            release_identities=(identity,),i03_results=direct,i05_result=None,
-            i05_results=discoveries,object_graph=_graph(workload,direct,discoveries),
-            typed_states={"saved_batch_manifest":result.manifest.semantic_projection(),
-                "saved_batch_receipts":[r.projection() for r in result.receipts],
-                "saved_batch_census":census.as_dict(),"saved_batch_complete":True,
-                "s04_first_reads":_s04_manifest(workload,direct)})
         reader._verify()
         current()
         elapsed=monotonic()-start
@@ -739,7 +735,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding)
         reader._verify()
         current()
-        return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict())
+    return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict())
 
 
 def open_country_product(closure_path, *, expected_root, expected_release_ref,
