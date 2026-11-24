@@ -11,9 +11,10 @@ from dataclasses import dataclass
 from json import loads
 from typing import Any, Callable, Mapping
 
-from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID, QueryExecutionResult
 from rawlsing_next.pre553_discovery_exact import (
-    ExactBoundedDiscoveryResult, I05_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
+    COVERAGE_CLAIM, ExactBoundedDiscoveryResult, I05_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
+    _derived_ref as _i05_derived_ref,
 )
 from rawlsing_next.pre553_empirical_objects import (
     ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
@@ -182,6 +183,10 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         raise S04I05ReceptionError("incomplete or duplicate I05 frontier receipts")
     cited = set()
     candidate_ids = set()
+    candidate_hashes = set()
+    candidate_identities = []
+    cited_queries = set()
+    cited_predicates = set()
     for receipt in receipts:
         if (semantic_hash(receipt.semantic_projection()) != receipt.content_hash
                 or _ref(receipt.discovery_authority_ref, "authority") != discovery.discovery_authority_ref
@@ -192,9 +197,60 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         if not isinstance(candidate_id, str) or not candidate_id or candidate_id in candidate_ids:
             raise S04I05ReceptionError("duplicate or absent I05 candidate identity")
         candidate_ids.add(candidate_id)
+        identity = receipt.candidate_identity
+        candidate_hash = identity.get("candidate_hash")
+        if (not isinstance(candidate_hash, str) or candidate_hash in candidate_hashes
+                or candidate_id != f"urn:rawlsing:pre553:i05:candidate:sha256:{candidate_hash}"):
+            raise S04I05ReceptionError("invalid or duplicate I05 frontier candidate hash")
+        # Reconstruct the native candidate preimage in native role order.
+        # The receipt is pinned, but the enclosing grammar field is not
+        # independently included in the final replay preimage.
+        roles = identity["query_roles"]
+        material = {
+            "contract": I05_CONTRACT_ID,
+            "family": identity["family"],
+            "rule_id": identity["rule_id"],
+            "winning_predicate_ref": _ref(receipt.winning_predicate_ref, "winner").as_dict(),
+            "query_roles": roles,
+            "validation": identity["validation"],
+            "ancestry_refs": [
+                ref.as_dict() for ref in sorted(
+                    {_ref(value, "ancestry") for value in receipt.branch_or_parent_ancestry_refs},
+                    key=lambda ref: ref.key)
+            ],
+        }
+        if semantic_hash(material) != candidate_hash:
+            raise S04I05ReceptionError("I05 frontier candidate preimage changed")
+        candidate_hashes.add(candidate_hash)
+        candidate_identities.append({"candidate_id": candidate_id, "candidate_hash": candidate_hash})
+        for role in roles:
+            cited_queries.add(_ref(role["query_ref"], "frontier role query"))
+            cited_predicates.add(_ref(role["predicate_ref"], "frontier role predicate"))
         cited.update(_ref(ref, "frontier role fact") for ref in receipt.empirical_fact_refs)
+    # Native _compile_frontier orders by candidate_hash, not receipt ref.
+    # Reconstruct the original frontier using precisely that ordering and
+    # the incumbent I05 reference namespace. No new authority is issued.
+    actual_frontier = _i05_derived_ref("PRE553_I05_EVALUATED_FRONTIER", "frontier", {
+        "contract": I05_CONTRACT_ID,
+        "discovery_authority_ref": discovery.discovery_authority_ref.as_dict(),
+        "candidate_grammar_ref": discovery.candidate_grammar_ref.as_dict(),
+        "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+        "candidate_identities": sorted(candidate_identities, key=lambda item: item["candidate_hash"]),
+        "coverage_claim": COVERAGE_CLAIM,
+    })
+    if (discovery.contract_id != I05_CONTRACT_ID or discovery.coverage_claim != COVERAGE_CLAIM
+            or actual_frontier != discovery.evaluated_frontier_ref):
+        raise S04I05ReceptionError("I05 frontier grammar or candidate identity changed")
+    for objects, expected in ((discovery.executed_queries, cited_queries),
+                              (discovery.executed_predicates, cited_predicates)):
+        if len(objects) != len(expected) or {obj.ref for obj in objects} != expected:
+            raise S04I05ReceptionError("I05 exact frontier role object census changed")
+        if any(semantic_hash(obj.semantic_projection()) != obj.content_hash for obj in objects):
+            raise S04I05ReceptionError("I05 exact frontier role preimage changed")
     if cited != set(discovery.empirical_fact_refs):
         raise S04I05ReceptionError("I05 frontier fact closure changed")
+    if tuple(fact.ref for fact in discovery.empirical_facts) != discovery.empirical_fact_refs:
+        raise S04I05ReceptionError("I05 exact frontier fact preimage census changed")
     for fact in discovery.empirical_facts:
         if semantic_hash(fact.semantic_projection()) != fact.content_hash:
             raise S04I05ReceptionError("altered I05 frontier fact preimage")
