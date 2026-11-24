@@ -9,7 +9,7 @@
 
 ### Actual-estate return received
 
-[ACTUAL_ESTATE_RETURN_R1/](ACTUAL_ESTATE_RETURN_R1/) — completed 2026-11-24 local source-estate reconnaissance. Start with [00_RETURN.md](ACTUAL_ESTATE_RETURN_R1/00_RETURN.md); full dictionaries, coverage, manifests and decision questions are in the same directory. This supersedes the provisional “user-reported / not verified” custody assumptions below. It records actual reconnaissance and verified repository custody only; it is not scientific admission or architectural adoption. Prior substantive intelligence remains preserved.
+[ACTUAL_ESTATE_RETURN_R1/](ACTUAL_ESTATE_RETURN_R1/) — completed 2026-11-24 local source-estate reconnaissance. Start with [00_RETURN.md](ACTUAL_ESTATE_RETURN_R1/00_RETURN.md); full dictionaries, coverage, manifests and decision questions are in the same directory. This supersedes the provisional “user-reported / not verified” custody assumptions below. **R4 correction:** coverage matrix is a geographic key-presence index, not a valid observation matrix (the merge counts exact ISO matches even where valid_count=0). Read R4 of the source map for executed metadata audit, semantic corrections, first-reader limits and the current proposed build slices. It records actual reconnaissance and verified repository custody only; it is not scientific admission or architectural adoption. Prior substantive intelligence remains preserved.
 
 ### Governing user intent
 
@@ -21,7 +21,7 @@ The last complete local tree supplied in conversation is a 67-directory, 486-fil
 
 Select the minimum useful source-native granularity; preserve independently observed material/institutional reality separately from respondent distributions. Do not manufacture respondent joins, independent group membership, actual class power, causal mechanisms, enforceability, actor experiences or historical panels. Neutral qualified facts survive where strong interpretations are held. Use qualified as-of dates, distinct source estimates and typed absence/noncomparability. A source can be used as aggregate context or a model calibration without new respondent processing. Source ingestion does not imply a mandatory stop in FF for every independent world fact.
 
-After actual survey return, refine the same source map to exact release/file/table/variable/category and date selectors; establish correspondences and permissible claim types, remove low-value dimensions, identify existing producer and real consumer, and design only the smallest necessary extensions. Only then seek selected implementation and owner authorization. Do not create fourteen new modules.
+The actual survey return is deposited and the same map now contains R2–R4 source-specific selections, self-adversarial corrections and bounded proposed operations. The original reconnaissance commission is complete at its read-only grade; do not rerun it as the next task. The next eligible operation is competent owner selection of a specific vertical slice, resolving only its exact source/use/reader questions and implementing in existing owners where authorized. No global preflight or all14 prerequisite. Do not create fourteen new modules.
 
 ### Exact evidence cut
 
