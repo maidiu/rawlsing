@@ -513,13 +513,15 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
             runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
                        max_units=max_units)
             check_current()
-        # Every receipt is a native unit receipt. A partial run retains the full manifest.
-        if max_units is None and (len(runner.receipts) != len(manifest.units)
-                                 or any(r.state != "COMPLETED" for r in runner.receipts)):
+        # Coverage is determined by the incumbent Batch owner's latest attempt
+        # per unit, not by the cardinality or state of the immutable history.
+        # A successful retry must preserve FAILED/DEFERRED attempts.
+        summary = runner.summary()
+        if max_units is None and not summary.full_coverage:
             raise NativeWorkloadExecutionError("NATIVE_EXECUTION_INCOMPLETE_SEE_RECEIPTS")
         result = NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
             tuple(ref for r in runner.receipts for ref in r.result_refs),
-            record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
+            record.envelope_sha256, record.decision_ref, record.scope, summary,
             record.original_wave_identity, record.source_sha256, dict(outputs))
     finally:
         if owned_group_scope is not None:

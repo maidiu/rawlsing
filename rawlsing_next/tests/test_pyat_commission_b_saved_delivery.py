@@ -453,8 +453,6 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 determinants=replace(determinants, **{field: "0"*64}))
         assert_unchanged(invalid_root)
 
-    # An adversary can readdress the consumer and witness consistently:
-    # merely checking the resulting composition hash cannot prove target identity.
     # Predecessor #1306 executed the wrong-target false acceptance. Now
     # C1 itself must refuse; S2-G independently refuses before mutation.
     wrong_target = ExactRef("TEST_ONLY_FOREIGN_TARGET", "urn:test:" + tag + ":foreign",
@@ -544,11 +542,72 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     finally:
         manifest.write_bytes(original)
 
+    # Fail the actual durable writer at its existing owner failpoint after
+    # content has reached disk, not a mock that bypasses all publication.
+    import errno
+    import rawlsing_next.pre553_durable_learned_lifecycle as durable
+    real_publish = durable.publish_learned_lifecycle
+    failure_root = tmp_path / "injected-enospc"
+    def fail_on_manifest(stage):
+        if stage == "before_manifest_replace":
+            raise OSError(errno.ENOSPC, "injected storage exhaustion")
+    def interrupted(*a, **kw):
+        return real_publish(*a, **kw, failpoint=fail_on_manifest)
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(durable, "publish_learned_lifecycle", interrupted)
+        with pytest.raises(OSError, match="storage exhaustion"):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint, (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_B5")
+    assert all(not getattr(repository, name) for name in repository._store_names), (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_M2")
+    assert not list(failure_root.rglob("manifest.json"))
+    # Next fail *after* the owner's actual immutable rename, then revoke
+    # the real external resolver after publication. Local state must roll
+    # back, and a retained historical artifact must be reusable on retry.
+    durable_receipts = []
+    def late_io(*a, **kw):
+        receipt = real_publish(*a, **kw)
+        durable_receipts.append(receipt)
+        raise OSError(errno.EIO, "after durable rename")
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(durable, "publish_learned_lifecycle", late_io)
+        with pytest.raises(OSError, match="after durable rename"):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint
+    assert all(not getattr(repository, name) for name in repository._store_names)
+    assert Path(durable_receipts[0].artifact_path).exists()
+    with pytest.raises(DurableLearnedLifecycleUntrusted):
+        open_learned_lifecycle(durable_receipts[0].artifact_path, expected_root=None)
+    original_record = cold._resolver._record
+    with pytest.MonkeyPatch.context() as mp:
+        def revoke_after_publish(*a, **kw):
+            receipt = real_publish(*a, **kw)
+            durable_receipts.append(receipt)
+            mp.setattr(cold._resolver, "_record", replace(original_record, currentness="REVOKED"))
+            return receipt
+        mp.setattr(durable, "publish_learned_lifecycle", revoke_after_publish)
+        with pytest.raises(WorkloadAdmissionError):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint
+    assert all(not getattr(repository, name) for name in repository._store_names)
+    assert durable_receipts[0].root_identity == durable_receipts[1].root_identity
+    # Retry with the same owners, never reset to newly empty owners.
     learned_start = monotonic()
     learned, consumed = cold.publish_learned(
         **args, m2_repository=repository, lifecycle_executor=executor,
-        root_dir=tmp_path / "learned", determinants=determinants)
+        root_dir=failure_root, determinants=determinants)
     learned_seconds = monotonic() - learned_start
+    assert learned.root_identity == durable_receipts[0].root_identity
+    assert not learned.published, "retry must reuse immutable retained artifact"
+    print("LEARNED_LOCAL_ROLLBACK", source_format, learned.root_identity,
+          "before_manifest", "after_rename", "external_revocation", "exact_retry")
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
     retrieved = cold.read_learned(learned.artifact_path,
