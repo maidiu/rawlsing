@@ -6,6 +6,7 @@ Nothing here edits the independent world, grants permission, or identifies a
 real person's unconscious motive. This module is an owner-adjacent read model.
 """
 from .types import GRADE, copy, stable_id
+from .distributed_power import accessible_human_counterparts, food_acceptance_alternative
 
 DIRECTIONS={'MORE','LESS','PRESERVE','CHANGE','UNKNOWN'}
 APPRAISALS={'ACTOR_INTERPRETS_SUPPORTED','ACTOR_INTERPRETS_DISAPPOINTED',
@@ -62,11 +63,15 @@ def practical_alternatives(constitution,access,option):
             continue
         target=project.get('addressed_party_ref')
         conditional=project.get('dependency_conditional_means',{}).get(act)
+        human_counterpart=False
         if conditional is not None:
+            other=conditional.get('counterpart_ref')
+            human_counterpart=(act=='SIGNAL' and other in accessible_human_counterparts(access)
+                               and other not in present)
             # A new project course reuses a particular learned coordination,
             # without turning every operation into an addressed act.
             if (conditional.get('location')!=access.location
-                    or conditional.get('counterpart_ref') not in present
+                    or (other not in present and not human_counterpart)
                     or not any(p.get('id')==conditional.get('practice_ref')
                         and p.get('actor')==actor
                         and p.get('operation')==act
@@ -77,7 +82,7 @@ def practical_alternatives(constitution,access,option):
             target=conditional['counterpart_ref']
         if target is not None and (type(target) is not str or not target):
             raise ValueError('INVALID_PROJECT_ADDRESSED_PARTY')
-        reachable=target is None or target in present
+        reachable=target is None or target in present or human_counterpart
         bound_target=target if reachable else None
         identity={'actor':actor,'clock':clock,'action':act,
                   'project_ref':project['id'],'expected_difference':expected,
@@ -106,6 +111,11 @@ def practical_alternatives(constitution,access,option):
                 'not_a_transparent_self_account':True},
             'source_grade':GRADE,'not_actor_self_account':True,
             'not_world_outcome':True,'priority':project.get('priority',.5)})
+        if human_counterpart:
+            alts[-1]['binding_status']='OTHER_PRESENT_BUT_INDEPENDENT_RESPONSE_REQUIRED'
+            alts[-1]['counterpart_participation_kind']='HUMAN_AUTHORED_NEIGHBOR'
+            accepted=food_acceptance_alternative(access,alts[-1])
+            if accepted is not None:alts.append(accepted)
     if act=='PLEDGE_CARE':
         # An actual addressee matters: a free-floating promise cannot bind
         # some convenient future person assigned by the world narration.
