@@ -11,7 +11,10 @@ identity authentication, developmental science or a complete human encounter.
 from __future__ import annotations
 
 from copy import deepcopy
+from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
+import fcntl
 
 from um_sorok_organism.types import digest, stable_id
 from um_sorok_organism.world import add_cue
@@ -491,3 +494,58 @@ class NeighborEncounter:
         root = self.runtime.ledger.events()[0]['id']
         scope = {'root': root, 'branch': self.runtime.world_id, 'user': self.user_id}
         return self.mii.default_profile(scope)
+    
+    def _mii_scope_session(self):
+        """Only bridge protected MII's scope() read ABI; NOT a P6 world writer."""
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        root = self.runtime.ledger.events()[0]['id']
+        return SimpleNamespace(
+            branch_id=self.runtime.world_id,
+            meta={'user_actor': self.user_id},
+            read_root=lambda: {'root_hash': root},
+        )
+
+    def load_private_profile(self, profile_path):
+        """Reuse protected MII's cold profile reader, scoped to this CO root.
+
+        The path is an application-trusted sidecar location, NOT a path
+        supplied by a visitor utterance or an authenticated real-user ID.
+        MII's tamper/mismatch reset remains the only profile recovery owner.
+        """
+        profile = self.mii.load_profile(
+            Path(profile_path), self._mii_scope_session())
+        if profile.get('scope') != self.new_private_profile()['scope']:
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+        return profile
+
+    def save_private_profile(self, profile_path, profile):
+        """The protected MII writer owns derivative user history; CO does not."""
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        if (type(profile) is not dict or
+                profile.get('scope') != self.new_private_profile()['scope']):
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+        self.mii.save_profile(Path(profile_path), profile)
+
+    def private_surface_stored(self, profile_path, *, command: str | None = None,
+                               target: str | None = None):
+        """One cold-reopenable MII presentation with no world/actor mutation.
+
+        Reuse P6's sidecar and advisory file lock. The app must provide an
+        access-controlled storage path; this does NOT authenticate users or
+        grant access to the private profile of another real human.
+        """
+        path = Path(profile_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        lock_path = path.with_name(path.name + '.lock')
+        with lock_path.open('a') as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            try:
+                profile = self.load_private_profile(path)
+                view = self.private_surface(profile, command=command, target=target)
+                self.save_private_profile(path, profile)
+                return view
+            finally:
+                fcntl.flock(lock, fcntl.LOCK_UN)
+
