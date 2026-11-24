@@ -1026,6 +1026,14 @@ class DependencyProjectReorganizationR39(unittest.TestCase):
                         self.assertEqual(a,saved)
                     self.assertEqual(a['joint_practices'],practice)
                     self.assertTrue(cold.verify()['valid'])
+                    # Long actual history has depleted bodily rest. Keep that
+                    # constraint operative; real restorative activity precedes
+                    # the next independently solicited course.
+                    from um_sorok_organism.organism import eligible
+                    self.assertEqual(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL'),(False,'FATIGUE'))
+                    stage='wait'
+                    self.assertEqual(cold.step('worker',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL')[0])
                     cold.close()
                     stage='project_refused'
                     cold=ConstitutiveRuntime(db,semantic=service)
