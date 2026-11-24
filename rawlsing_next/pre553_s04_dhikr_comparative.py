@@ -15,6 +15,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from decimal import Decimal
+from fractions import Fraction
 from itertools import combinations
 import json
 from math import isfinite, log2, prod
@@ -283,6 +284,60 @@ def _priority_groups(associations):
     return ordered
 
 
+def _conditional_target_fibres(projection_material, min_branch_n):
+    """Read P(target | observed group state, context) from one sealed projection.
+
+    The projection already owns all joint counts. This is a denominator-aware
+    presentation of those counts, not another query, association estimator,
+    population model or source permission. Zero group support is undefined
+    conditional probability, not a population impossibility.
+    """
+    groups = {}
+    for cell in projection_material["complete_output_cells"]:
+        states = cell["output_states"]
+        key = _key(states[:-1])
+        group = groups.setdefault(key, (states[:-1], []))
+        group[1].append((states[-1], cell["raw_count"]))
+    fibres = []
+    for group_states, target_counts in groups.values():
+        n = sum(count for _, count in target_counts)
+        modal_n = max((count for _, count in target_counts), default=0)
+        modal_count = sum(count == modal_n for _, count in target_counts) if n else 0
+        target_rows = []
+        for state, count in target_counts:
+            fraction = Fraction(count, n) if n else None
+            target_rows.append({
+                "target_state": state,
+                "raw_count": count,
+                "conditional_raw_fraction": (
+                    {"$exact_fraction": [fraction.numerator, fraction.denominator]}
+                    if fraction is not None else None
+                ),
+                "sample_modal_disposition": (
+                    "NO_OBSERVED_GROUP_SUPPORT" if not n
+                    else "OBSERVED_ZERO_IN_GROUP" if not count
+                    else ("UNIQUE_MODAL" if modal_count == 1 else "CO_MODAL")
+                    if count == modal_n else "OBSERVED_NONMODAL_ALTERNATIVE"
+                ),
+            })
+        fibres.append({
+            "group_states": group_states,
+            "raw_group_full_case_n": n,
+            "conditional_state": (
+                "OBSERVED_FULL_CASE_SUPPORT" if n
+                else "ZERO_WITHIN_RESOLVED_FULL_CASES"
+            ),
+            "recursion_support": (
+                "MEETS_MINIMUM_N_ONLY" if n >= min_branch_n
+                else "BELOW_MINIMUM_N__NOT_A_GLOBAL_NEGATIVE"
+            ),
+            "target_rows": target_rows,
+        })
+    if sum(fibre["raw_group_full_case_n"] for fibre in fibres) != projection_material["raw_selected_full_case_n"]:
+        raise DHIKRExplorationError("conditional fibres lost original projection support")
+    return fibres
+
+
 def _retain_group_evidence(workspace, request, groups, context, n, remaining_cells):
     """Complete bounded comparison inventory; exact projections are existing S04.
 
@@ -305,6 +360,7 @@ def _retain_group_evidence(workspace, request, groups, context, n, remaining_cel
             "projection_state": "DEFERRED_PROJECTION_CELL_BUDGET",
             "projection_ref": None,
             "projection_material": None,
+            "conditional_target_fibres": None,
         }
         if metrics["raw_n"] != n:
             raise DHIKRExplorationError("group changed common-case denominator")
@@ -318,6 +374,8 @@ def _retain_group_evidence(workspace, request, groups, context, n, remaining_cel
                 "projection_state": "COMPLETE_OBSERVED_DOMAIN_WITH_ALTERNATIVES",
                 "projection_ref": projection.ref.as_dict(),
                 "projection_material": material,
+                "conditional_target_fibres": _conditional_target_fibres(
+                    material, request.min_branch_n),
             })
             used += size
         rows.append(item)
@@ -595,6 +653,7 @@ def analyze_s04_dhikr(
             "search_priority": "IN_SAMPLE_INFORMATION_BITS_PER_GROUP_AXIS",
             "group_order_bound": request.max_interaction_order,
             "minority_policy": "ALL_SOURCE_DOMAIN_CELLS_IN_RETAINED_PROJECTIONS__LEGACY_SUMMARY_NOT_EXHAUSTIVE",
+            "conditional_fibre_policy": "EXACT_GROUP_LOCAL_DENOMINATORS__ZERO_GROUP_UNDEFINED__SAMPLE_MODAL_AND_NONMODAL_ONLY",
             "source_disclosure_authority": None,
         }
         result["group_projection_cells_used"] = 0
@@ -657,20 +716,28 @@ def analyze_s04_dhikr(
         data = selected(keys)
         n = sum(count for _, count in data)
         remaining = tuple(a for a in request.predictor_axes if a not in dict(keys))
+        # The legacy diagnostic pair inventory is independent of the
+        # recursion order limit. Compute each required group once per node,
+        # then reuse that same numerical evidence for all three consumers:
+        # singleton hierarchy, pair interactions and bounded group ranking.
+        evaluated = _group_associations(
+            data, request.target_axis, remaining,
+            max(2, request.max_interaction_order),
+        ) if n >= request.min_branch_n else []
+        by_group = dict(evaluated)
         scores = []
         if n >= request.min_branch_n:
             for axis in remaining:
-                metrics = _association(data, request.target_axis, (axis,))
-                scores.append({"axis": axis, **metrics})
+                scores.append({"axis": axis, **by_group[(axis,)]})
         scores.sort(key=lambda v: (
             -(v["information_bits"] or 0), v["axis"]
         ))
         interactions = []
         if n >= request.min_branch_n:
             for a, b in combinations(remaining, 2):
-                ia = _association(data, request.target_axis, (a,))["information_bits"]
-                ib = _association(data, request.target_axis, (b,))["information_bits"]
-                iab = _association(data, request.target_axis, (a, b))["information_bits"]
+                ia = by_group[(a,)]["information_bits"]
+                ib = by_group[(b,)]["information_bits"]
+                iab = by_group[(a, b)]["information_bits"]
                 interaction = round(iab - ia - ib, 12) if ia is not None and ib is not None and iab is not None else None
                 interactions.append({
                     "axes": [a, b], "joint_information_bits": iab,
@@ -681,9 +748,8 @@ def analyze_s04_dhikr(
                         else "ZERO_OR_UNRESOLVED_SAMPLE_INTERACTION__NONCAUSAL"
                     ),
                 })
-        group_associations = _group_associations(
-            data, request.target_axis, remaining, request.max_interaction_order
-        ) if n >= request.min_branch_n else []
+        group_associations = [(group, metrics) for group, metrics in evaluated
+                              if len(group) <= request.max_interaction_order]
         frontier_groups = _priority_groups(group_associations)
         best = frontier_groups[0] if frontier_groups else None
         split_axis = best[2][0] if best is not None else None
