@@ -9,7 +9,7 @@ from .prospective_horizon import select_bounded_exploratory_trial
 from .distributed_power import choose_uncompelled_assistance
 from .practical_inquiry import choose_grounded_public_inquiry
 from .material_investments import choose_qualified_material_care
-from .unintended_goods import one_sourcefree_provisional_end
+from .unintended_goods import one_sourcefree_provisional_end, qualify_incidental_object_takeup
 from .expectation_afterlife import conservative_appraisal_proposal
 from .co_regulation_history import sourcefree_revision_proposal
 from .plural_care_paths import (
@@ -216,6 +216,10 @@ class HeuristicSemanticProvider:
             current_trial=((packet.get('selected_purpose_analytic_only') or {})
                 .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
             for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
+                if candidate.get('incidental_object_end_basis') is not None:
+                    # No generic cue-only uptake of this stricter material end.
+                    # Semantic provider may select the qualified later basis.
+                    continue
                 if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                         and candidate.get('origin_event')!=packet.get(
                              'historical_psychodynamic_context',{}).get('objective_event_ref')
