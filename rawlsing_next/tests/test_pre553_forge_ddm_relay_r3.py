@@ -60,8 +60,8 @@ def test_c1_narrower_stratum_not_full_subject_condition():
     assert scope["producer_predicate_ref"]==pred.ref.as_dict()
     assert scope["producer_predicate_ast"]==pred.predicate_ast
     assert scope["full_subject_condition_equivalence_established"] is False
-    assert narrow.consumer_result_or_null.reason_code=="EXACT_PRODUCER_STRATUM_SUPPORTED__SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED"
-    assert broad.consumer_result_or_null.reason_code=="EXACT_POSITIONED_STRATUM_SUPPORTED"
+    assert narrow.consumer_result_or_null.exact_reason=="EXACT_PRODUCER_STRATUM_SUPPORTED__SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED"
+    assert broad.consumer_result_or_null.exact_reason=="EXACT_POSITIONED_STRATUM_SUPPORTED"
 
 
 def _weighted_joint(tag, dependent=False, missing=False):
