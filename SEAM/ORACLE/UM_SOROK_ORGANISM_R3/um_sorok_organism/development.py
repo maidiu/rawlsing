@@ -24,6 +24,7 @@ from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
 from .prospective_horizon import record_possible_end_trial
+from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
 from .functional_correspondence import (admit_functional_correspondence,
                                          admit_functional_revision)
 from .material_investments import admit_material_investment
@@ -451,6 +452,16 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                  'actual_consequence_not_identified_by_actor_perception':True,
                  'meaning_hypothesis_not_empirical_learning_law':True,
                  'grade':GRADE}
+            if c.get('incidental_object_end_basis') is not None:
+                matches=[q['incidental_object_end_basis'] for q in
+                    possible_unintended_goods(actor,experience,
+                        experience.get('own_practical_selection'),event_ref)
+                    if q.get('incidental_object_end_basis')==c['incidental_object_end_basis']
+                    and q['source_cue_ref']==ref
+                    and q['world_material_object_ref']==origin_object]
+                if len(matches)!=1 or any(x not in ('INSPECT','REPAIR') for x in possible):
+                    raise InvalidDevelopment('INCIDENTAL_END_SOURCE_NOT_QUALIFIED')
+                end['incidental_object_end_basis']=copy(matches[0])
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
@@ -555,6 +566,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 # One received sign is a *possible contextual anchor*, not
                 # proof it caused the new concern or that the actor knows why.
                 claimed_later_sign=next(iter(later_received))
+            incidental=None
+            if end.get('incidental_object_end_basis') is not None:
+                incidental=qualify_incidental_object_takeup(actor,experience,event_ref,end)
+                if (incidental is None or c.get('incidental_takeup_basis')!=incidental
+                        or claimed_later_sign!=incidental['later_perceived_cue_ref']):
+                    raise InvalidDevelopment('INCIDENTAL_END_NEEDS_DISTINCT_LIVED_TRIAL_AND_REENCOUNTER')
             takeup_evidence={
                 'later_event':event_ref,'later_experience_ref':experience['ref'],
                 'actual_received_sign_refs':sorted(later_received),
@@ -596,6 +613,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if end.get('addressed_party_ref') is not None:
                 project['addressed_party_ref']=end['addressed_party_ref']
                 project['other_future_conduct']='INDEPENDENT_NOT_PROMISED'
+            if incidental is not None:
+                project['material_object_ref']=incidental['source_object_ref']
+                project['incidental_takeup_basis']=copy(incidental)
+                project['contextual_only']=True
+                takeup_evidence['incidental_takeup_basis']=copy(incidental)
+                project['takeup_evidence']=copy(takeup_evidence)
             actor['projects'].append(project)
             end.setdefault('subsequent_takeup',[]).append({
                 'event':event_ref,'experience_ref':experience['ref'],
