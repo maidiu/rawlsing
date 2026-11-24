@@ -187,8 +187,8 @@ def _joint_fixture(root, source_format):
     return s1e._fixed_fixture(fx)
 
 
-@pytest.mark.parametrize("source_format", ["SAV", "DTA"])
-def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source_format):
+@pytest.mark.parametrize("source_format,multi", [("SAV", False), ("DTA", False), ("SAV", True)])
+def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source_format, multi):
     from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
     from rawlsing_next.pre553_saved_c11_admission import SavedReleaseIdentity
     from rawlsing_next.pre553_universal_workload import compile_governed_frontier
@@ -224,6 +224,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     resolver = TestOnlyDecisionResolver(issue.issued.record)
+    if multi:
+        from rawlsing_next.tests.test_pyat_commission_b_general_archive import _issued_shape
+        workload, resolver = _issued_shape(issue.issued, "multi-learned")
     def factory():
         return SavedC11Admission.open(
             root=private, exact_path=estate.path,
@@ -293,8 +296,10 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
     closure = open_empirical_closure(result.receipt.root_path,
                                     expected_root=result.receipt.root_identity).require_trusted()
-    discovery = closure.i05_result
-    candidates = [r for r in discovery.receipts
+    assert len(closure.discovery_results) == (2 if multi else 1)
+    if multi:
+        assert closure.i05_result is None
+    candidates = [r for discovery in closure.discovery_results for r in discovery.receipts
                   if r.typed_state == "DISCOVERED_RESULT_SUPPORTED"]
     assert candidates, "no supported original discovery receipt"
     selected = candidates[0]
@@ -324,10 +329,21 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
           "native", result.execution_seconds, "s2f", result.publication_seconds,
           "cold_open", cold_open_seconds, "ff01", ff_seconds,
           "s2f_referenced_bytes", result.receipt.referenced_physical_bytes)
-    _learned_vertical(cold, closure, tmp_path, source_format)
+    if multi:
+        products = []
+        for i, discovery in enumerate(closure.discovery_results):
+            lane = tmp_path / ("frontier-" + str(i))
+            lane.mkdir()
+            products.append(_learned_vertical(cold, closure, lane, source_format, discovery=discovery))
+        assert products[0][0] != products[1][0], "frontier identity collapsed"
+        assert products[0][1] != products[1][1], "learned archive identity collapsed"
+        print("MULTI_FRONTIER_LEARNED", closure.root_identity,
+              [(receipt.key, root, digest) for receipt, root, digest in products])
+    else:
+        _learned_vertical(cold, closure, tmp_path, source_format)
 
 
-def _learned_vertical(cold, closure, tmp_path, source_format):
+def _learned_vertical(cold, closure, tmp_path, source_format, *, discovery=None):
     """Actual saved-source I05 -> M1/M2/B5 -> cold S2-G consumer.
     
     Only the consumer request, comparator and validator are synthetic
@@ -354,8 +370,9 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     from rawlsing_next.tests.test_pyat960_s2g_durable_lifecycle import _attestation
     from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import _validator
 
-    discovery = closure.i05_result
-    tag = "commission-b-saved-learned-" + source_format
+    discovery = closure.i05_result if discovery is None else discovery
+    assert discovery is not None
+    tag = "commission-b-saved-learned-" + source_format + "-" + discovery.discovery_authority_ref.content_hash[:12]
     release = closure.release_identities[0].release_ref
     predicates = {p.ref: p for p in discovery.executed_predicates}
     queries = {q.ref: q for q in discovery.executed_queries}
@@ -378,6 +395,7 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 break
     assert chosen is not None, "no actual supported value-conditioned discovery"
     receipt, query, predicate, leaf = chosen
+    assert closure.discovery_by_receipt(receipt.ref).replay_ref == discovery.replay_ref
     coord = exact_ref(leaf["question_semantic_ref"])
     value = leaf["exact_value"]
     universe = exact_ref(query.empirical_universe_refs[0])
@@ -610,9 +628,20 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
           "before_manifest", "after_rename", "external_revocation", "exact_retry")
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
+    # Inspect what the actual learned consumer reads, not only a matching
+    # hash. A narrower producer predicate must survive S2-G presentation.
+    expected_lane = composition.consumer_result_or_null.material()["exact_lane"]
+    assert consumed.material["consumer_values_read"]["consumer_values_read"]["exact_lane"] == expected_lane
+    scope = expected_lane["geometry"].get("condition_scope")
+    if scope is not None:
+        assert scope["producer_predicate_ref"] == predicate.ref.as_dict()
+        assert scope["full_subject_condition_equivalence_established"] is False
+        assert expected_lane["reason"].endswith("SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED")
+        print("SAVED_RESTRICTED_SCOPE_CONSERVED", source_format, predicate.ref.key)
     retrieved = cold.read_learned(learned.artifact_path,
         expected_root=learned.root_identity, expected_purpose_ref=determinants.purpose_ref)
     assert retrieved.consumer_result_hash == consumed.consumer_result_hash
+    assert retrieved.material["consumer_values_read"]["consumer_values_read"]["exact_lane"] == expected_lane
     artifact = open_learned_lifecycle(learned.artifact_path,
         expected_root=learned.root_identity).require_trusted()
     assert artifact.m1_disposition.ref == consumed.m1_disposition_ref
@@ -680,3 +709,4 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
           "publish_and_validate_seconds", learned_seconds,
           "fresh_cold_seconds", observed["elapsed_seconds"],
           "fresh_peak_rss_bytes", observed["process_tree_peak_rss_bytes"])
+    return receipt.ref, learned.root_identity, consumed.consumer_result_hash

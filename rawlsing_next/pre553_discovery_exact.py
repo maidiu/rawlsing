@@ -1008,6 +1008,68 @@ def _sign(value: Fraction) -> int:
     return 1 if value > 0 else (-1 if value < 0 else 0)
 
 
+def _reversal_comparison_scope(results):
+    """Qualify actual pooled/stratum membership, not a nominal grid label.
+
+    Selected-grid sign reversal remains a real descriptive observation.
+    Only a conserved disjoint partition warrants the stronger Simpson
+    partition interpretation. No assumption about omitted cases or weights.
+    """
+    pooled = {suffix: results["POOLED_" + suffix].facts[0] for suffix in ("POS", "NEG")}
+    pooled_sets = {suffix: {exact_ref(r) for r in fact.denominator_member_refs}
+                   for suffix, fact in pooled.items()}
+    exposures_disjoint = not bool(pooled_sets["POS"] & pooled_sets["NEG"])
+    partitions = []
+    for suffix, fact in pooled.items():
+        pool = pooled_sets[suffix]
+        union, overlap = set(), set()
+        counts, den = _cell_counts(fact)
+        stratum_counts = {}
+        stratum_den = Fraction(0)
+        comparable = True
+        role_refs = []
+        for role in sorted(results):
+            if not role.startswith("STRATUM:") or not role.endswith(":" + suffix):
+                continue
+            child = results[role].facts[0]
+            members = {exact_ref(r) for r in child.denominator_member_refs}
+            overlap.update(union & members)
+            union.update(members)
+            role_refs.append(child.ref.as_dict())
+            comparable = (comparable and _fact_scope_key(child) == _fact_scope_key(fact)
+                          and _fact_measure_kind(child) == _fact_measure_kind(fact)
+                          and exact_ref(child.measure_basis_ref) == exact_ref(fact.measure_basis_ref))
+            cc, cd = _cell_counts(child)
+            stratum_den += cd
+            for key, count in cc.items():
+                stratum_counts[key] = stratum_counts.get(key, Fraction(0)) + count
+        conserved = (comparable and den == stratum_den and all(
+            counts.get(key, Fraction(0)) == stratum_counts.get(key, Fraction(0))
+            for key in set(counts) | set(stratum_counts)))
+        partitions.append({
+            "exposure_role": "POOLED_" + suffix,
+            "pooled_fact_ref": fact.ref.as_dict(),
+            "stratum_fact_refs": role_refs,
+            "pooled_member_n": len(pool),
+            "covered_pooled_member_n": len(union & pool),
+            "omitted_pooled_member_n": len(pool - union),
+            "foreign_member_n": len(union - pool),
+            "overlap_member_n": len(overlap),
+            "exact_measure_cells_conserved": conserved,
+        })
+    complete = exposures_disjoint and all(
+        not any(row[k] for k in ("omitted_pooled_member_n", "foreign_member_n", "overlap_member_n"))
+        and row["exact_measure_cells_conserved"] for row in partitions)
+    return {
+        "pooled_exposures_disjoint": exposures_disjoint,
+        "complete_disjoint_partition": complete,
+        "exposure_partitions": partitions,
+        "interpretation": ("DESCRIPTIVE_PARTITION_REVERSAL" if complete else
+                           "SELECTED_GRID_REVERSAL_ONLY__NOT_COMPLETE_SIMPSON_PARTITION"),
+        "epistemic_ceiling": "DESCRIPTIVE_SAMPLE_COMPARISON__NO_CAUSAL_OR_POPULATION_INFERENCE",
+    }
+
+
 def _conditional_reversal(results: Mapping[str, QueryExecutionResult], validation: Mapping[str, Any]) -> bool:
     target_cell = validation.get("target_cell")
     pooled_pos = _cell_rate(results["POOLED_POS"], target_cell)
@@ -1100,6 +1162,8 @@ def _evaluate_candidate(
             support["joint_dependence_comparison"] = canonicalize(comparisons)
     elif kind == "CONDITIONAL_REVERSAL":
         supported = _conditional_reversal(results, candidate.validation)
+        if supported:
+            support["conditional_reversal_comparison"] = canonicalize(_reversal_comparison_scope(results))
     elif kind == "TARGET_CELL_SUPPORTED":
         supported = _target_cell_supported(results["BASE"], candidate.validation.get("target_cell"))
     else:

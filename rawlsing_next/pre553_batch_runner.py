@@ -549,12 +549,15 @@ class BatchExecutionRunner:
         *,
         executors: Mapping[str, ExecutorBinding],
         max_units: int | None = None,
+        after_attempt: Callable[[UnitExecutionReceipt], None] | None = None,
     ) -> tuple[UnitExecutionReceipt, ...]:
         """Run pending exact units in deterministic order.
 
         `max_units` is an operational throttle only. Stopping early leaves
         explicit pending coverage and can never become FULL_MANIFEST_COVERAGE.
         """
+        if after_attempt is not None and not callable(after_attempt):
+            raise BatchIntegrityError("after_attempt must be callable")
         if not isinstance(executors, Mapping):
             raise BatchIntegrityError("executors must be a mapping by exact job kind")
         bindings: dict[str, ExecutorBinding] = {}
@@ -593,6 +596,8 @@ class BatchExecutionRunner:
                 )
                 self.record_receipt(receipt)
                 created.append(receipt)
+                if after_attempt is not None:
+                    after_attempt(receipt)
                 continue
 
             try:
@@ -630,6 +635,11 @@ class BatchExecutionRunner:
                 )
             self.record_receipt(receipt)
             created.append(receipt)
+            # The observer sees an already-recorded attempt. Its failure is a
+            # custody failure, not a failed native operation. Never catch it
+            # inside the executor exception conversion or retry this unit.
+            if after_attempt is not None:
+                after_attempt(receipt)
 
         return tuple(created)
 

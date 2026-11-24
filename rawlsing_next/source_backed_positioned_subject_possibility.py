@@ -422,7 +422,14 @@ def evaluate_positioned_subject_possibility(*, query: PositionedSubjectPossibili
     exact = _find(evidence, query, query.conditioner_ids)
     if exact is not None:
         if exact.evidence_state == "SUPPORTED":
-            return _result(query, rule, "EXACT_SUPPORTED", "SUPPORTED", "EXACT_POSITIONED_STRATUM_SUPPORTED", exact, None, (), (exact.evidence_ref,))
+            # The native C1 geometry can be exact for a producer stratum
+            # without establishing coverage of the entire requested subject
+            # condition. Preserve useful evidence, but not the broader label.
+            scope = (exact.geometry or {}).get("condition_scope", {})
+            reason = ("EXACT_PRODUCER_STRATUM_SUPPORTED__SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED"
+                      if scope.get("state") == "ADDITIONAL_OR_UNPROVED_RESTRICTIONS"
+                      else "EXACT_POSITIONED_STRATUM_SUPPORTED")
+            return _result(query, rule, "EXACT_SUPPORTED", "SUPPORTED", reason, exact, None, (), (exact.evidence_ref,))
         if exact.evidence_state == "VALID_EMPTY":
             return _result(query, rule, "VALID_EMPTY", "VALID_EMPTY", "EXACT_POSITIONED_STRATUM_VALID_EMPTY", exact, None, (), (exact.evidence_ref,))
         if exact.evidence_state == "NONCOMPARABLE":

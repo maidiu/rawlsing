@@ -2262,3 +2262,207 @@ def test_pairing_hostile_rejection_precedes_evidence_and_consumer():
         composition_module.evaluate_positioned_subject_possibility = original_consumer
 
     assert touched == [], f"composition reached {touched} before rejecting"
+
+@pytest.mark.parametrize("foreign", [False, True])
+def test_recursive_joint_exact_target_grain(foreign):
+    source = _at11_source()
+    qauth = _query_authority("c1-at11")
+    dauth = _d_auth("c1-at11-discovery")
+    pairing = fx.make_pairing_authority("at11")
+    registry = _registry(source, qauth, dauth)
+
+    parent = _branch_predicate(
+        source,
+        qauth,
+        members=tuple(source["respondents"][rid] for rid in ("R1", "R2", "R3", "R4", "R5", "R6")),
+        tag="c1-at11-parent",
+    )
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="c1-at11-x1")
+    x_query = _query(source, qauth, parent, ("X",), tag="c1-at11-g1-x")
+
+    grammar = _grammar(
+        operation="I03-OP-c1-at11-discovery",
+        atoms=[_atom("PARENT", parent, "BRANCH"), _atom("X1", x1, "RESPONSE")],
+        templates=[_qt("X", x_query)],
+        rules=[_rule(
+            "child", "RECURSIVE_SUBGROUP_FORK", "SINGLE_ATOM",
+            atom_ids=("X1",), baseline_atom_id="PARENT", query_template_id="X",
+            validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+        )],
+        k=2,
+    )
+    authority = _discovery_authority(source, grammar, dauth, tag="c1-at11-g1")
+    g1 = execute_exact_bounded_discovery_with_handoffs(
+        repository=source["repo"],
+        discovery_authority=authority,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        predicate_catalog=(parent, x1),
+        query_template_catalog=(x_query,),
+    )
+    handoff = g1.handoffs[0]
+    assert g1.discovery_result.receipts[0].typed_state == "DISCOVERED_RESULT_SUPPORTED"
+
+    # Compose the child handoff into a positioned-subject possibility for Y
+    child_predicate = handoff.winning_predicate
+    child_query = _query(
+        source,
+        qauth,
+        child_predicate,
+        ("Y", "H"),
+        tag="c1-at11-child-to-yh",
+    )
+
+    subject_ref = ExactRef(
+        "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+        "urn:test:c1-02:at11:subject",
+        semantic_hash({"fixture_id": "AT11"}),
+    )
+    binding = fx.make_conditioner_binding(
+        binding_id="x",
+        subject_fact_ref=ExactRef(**_subject_fact_ref(source, "X", 1)),
+        empirical_coordinate_ref=source["qrefs"]["X"],
+        comparability_authority_ref=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id="c1-at11-consumer",
+        subject_ref=subject_ref,
+        target_ref=source["qrefs"]["X" if foreign else "Y"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[binding],
+        projection_kind="C1_AT11_RECURSIVE_HANDOFF_CONDITIONAL_DISTRIBUTION",
+    )
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:c1-02:at11:witness",
+        consumer_query=consumer_query,
+        producer_query=child_query,
+        producer_predicate=child_predicate,
+        bindings=[binding],
+        coordinate_value_pairs=[(source["qrefs"]["X"], 1)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+
+    def compose():
+        return compose_positioned_subject_possibility(
+            repository=source["repo"],
+            empirical_query=child_query,
+            predicate=child_predicate,
+            authority_registry=registry,
+            release_refs=(source["release_ref"],),
+            consumer_query=consumer_query,
+            model_rule=fx.make_model_rule(source["universe"].ref, "at11"),
+            condition_binding_witness=witness,
+            recursive_handoff=handoff,
+        )
+    
+    if foreign:
+        with pytest.raises(AnalyticalCompositionError, match="TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"):
+            compose()
+        return
+    result = compose()
+    assert result.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert result.joint_component_count == 2
+    geometry = result.consumer_result_or_null.exact_geometry
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+    assert canonical_json(geometry["target"]["target_refs"]) == canonical_json(child_query.target_refs)
+
+
+@pytest.mark.parametrize("foreign", [False, True])
+def test_discovery_joint_exact_target_grain(foreign):
+    source = _at09_source()
+    qauth = _query_authority("c1-at10")
+    dauth = _d_auth("c1-at10-discovery")
+    pairing = fx.make_pairing_authority("at10")
+    registry = _registry(source, qauth, dauth)
+
+    all_p = _branch_predicate(source, qauth, tag="c1-at10-all")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "A", 0), tag="c1-at10-x1")
+    yq = _query(source, qauth, all_p, ("B", "C"), tag="c1-at10-y")
+
+    grammar = _grammar(
+        operation="I03-OP-c1-at10-discovery",
+        atoms=[_atom("ALL", all_p, "BRANCH"), _atom("X1", x1, "RESPONSE")],
+        templates=[_qt("Y", yq)],
+        rules=[_rule(
+            "pair", "BRANCH_CONDITIONED_DISTRIBUTION", "SINGLE_ATOM",
+            atom_ids=("X1",), baseline_atom_id="ALL", query_template_id="Y",
+            validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+        )],
+    )
+    discovery = _execute_discovery(
+        source, qauth, dauth, grammar, (all_p, x1), (yq,), authority=_discovery_authority(source, grammar, dauth, tag="at10")
+    )
+    receipt = discovery.receipts[0]
+    assert receipt.typed_state == "DISCOVERED_RESULT_SUPPORTED"
+
+    # Build a C1 consumer for the discovered X=1 -> Y relation
+    subject_ref = ExactRef(
+        "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+        "urn:test:c1-02:at10:subject",
+        semantic_hash({"fixture_id": "AT10"}),
+    )
+    binding = fx.make_conditioner_binding(
+        binding_id="x",
+        subject_fact_ref=ExactRef(**_subject_fact_ref(source, "A", 0)),
+        empirical_coordinate_ref=source["qrefs"]["A"],
+        comparability_authority_ref=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id="c1-at10-consumer",
+        subject_ref=subject_ref,
+        target_ref=source["qrefs"]["A" if foreign else "B"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=[binding],
+        projection_kind="C1_AT10_DISCOVERY_ROUTE_CONDITIONAL_DISTRIBUTION",
+    )
+
+    # The supplied empirical_query/predicate for discovery route are overridden
+    # by the discovery result; derive the exact producer objects from the receipt.
+    pred_by_ref = {p.ref: p for p in discovery.executed_predicates}
+    query_by_ref = {q.ref: q for q in discovery.executed_queries}
+    fact_by_ref = {f.ref: f for f in discovery.empirical_facts}
+    produced_predicate = pred_by_ref[ExactRef(**receipt.winning_predicate_ref)]
+    produced_fact = fact_by_ref[ExactRef(**receipt.empirical_fact_refs[0])]
+    produced_query = query_by_ref[ExactRef(**produced_fact.empirical_query_spec_ref)]
+
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:c1-02:at10:witness",
+        consumer_query=consumer_query,
+        producer_query=produced_query,
+        producer_predicate=produced_predicate,
+        bindings=[binding],
+        coordinate_value_pairs=[(source["qrefs"]["A"], 0)],
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+
+    def compose():
+        return compose_positioned_subject_possibility(
+            repository=source["repo"],
+            empirical_query=produced_query,
+            predicate=produced_predicate,
+            authority_registry=registry,
+            release_refs=(source["release_ref"],),
+            consumer_query=consumer_query,
+            model_rule=fx.make_model_rule(source["universe"].ref, "at10"),
+            condition_binding_witness=witness,
+            discovery_result=discovery,
+            discovery_receipt_ref=receipt.ref,
+        )
+    
+    if foreign:
+        with pytest.raises(AnalyticalCompositionError, match="TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"):
+            compose()
+        return
+    result = compose()
+    assert result.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert result.joint_component_count == 2

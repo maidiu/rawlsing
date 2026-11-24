@@ -25,6 +25,7 @@ from rawlsing_next.pre553_empirical_objects import (
     semantic_hash,
 )
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
+from rawlsing_next._pre553_query_common import _fraction_from_exact
 from rawlsing_next.pre553_discovery_exact import ExactBoundedDiscoveryResult
 from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
 from rawlsing_next.source_backed_positioned_subject_possibility import (
@@ -707,14 +708,26 @@ def _verify_witness(
             if frozen_leaf.get("exact_value") != subject.get("exact_value"):
                 raise ConditionValueRelationMismatch(
                     f"conditioner {i}: producer/subject exact value mismatch")
-            if not any(
-                frozen_ref == _leaf_semantic_ref(actual_leaf)
+            matching_leaves = [
+                actual_leaf for actual_leaf in actual_leaves
+                if frozen_ref == _leaf_semantic_ref(actual_leaf)
                 and all(frozen_leaf.get(key) == actual_leaf.get(key)
                         for key in ("leaf_type", "operator", "exact_value"))
-                for actual_leaf in actual_leaves
-            ):
+            ]
+            if not matching_leaves:
                 raise ConditionValueRelationMismatch(
                     f"conditioner {i}: no matching producer leaf entailed by predicate")
+            # Native coordinates can be explicitly time-qualified. A
+            # consistently readdressed witness cannot substitute a different
+            # subject time for the actual time in the producer AST.
+            subject_time = canonicalize(binding.effective_time_or_interval)
+            if (frozen_leaf.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE"
+                    and subject_time is not None
+                    and all(leaf.get("effective_or_reference_time") is not None
+                            and canonicalize(leaf["effective_or_reference_time"]) != subject_time
+                            for leaf in matching_leaves)):
+                raise ConditionValueRelationMismatch(
+                    f"conditioner {i}: explicit producer/subject coordinate time mismatch")
 
             # Pairing-ground-truth semantics must be checked on the SUCCESSFUL
             # path. These four comparisons were previously indented under the
@@ -910,6 +923,57 @@ def _validate_direct_grain(
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
 
 
+def _condition_scope_qualification(predicate, witness, consumer_query):
+    """Conservative reverse implication for the already-verified positive witness.
+
+    Entailment producer -> subject does not establish subject -> producer.
+    Keep a narrower or unproved stratum as usable *producer* evidence, not
+    an estimate for every subject matching the listed conditions. Do not
+    invent domain exhaustiveness, complement semantics or branch membership.
+    """
+    def condition_key(leaf, effective_time):
+        return canonical_json({
+            "leaf_type": leaf.get("leaf_type"),
+            "semantic_ref": _leaf_semantic_ref(leaf),
+            "operator": leaf.get("operator"),
+            "exact_value": leaf.get("exact_value"),
+            "effective_time_or_interval": effective_time,
+        })
+    required = {condition_key(leaf, binding.effective_time_or_interval)
+                for leaf, binding in zip(witness.producer_predicate_leaf_projections,
+                                         consumer_query.conditioner_bindings)}
+    def implied(node):
+        op = node.get("op")
+        children = node.get("children", ())
+        if op == "LEAF":
+            return (node.get("leaf_type") in VALUE_BEARING_LEAF_TYPES
+                    and node.get("operator") == "EQ" and "exact_value" in node
+                    and condition_key(node, node.get("effective_or_reference_time")) in required)
+        if op == "AND":
+            return bool(children) and all(implied(child) for child in children)
+        if op == "OR":
+            return any(implied(child) for child in children)
+        if op == "NOT" and len(children) == 1 and children[0].get("op") == "NOT":
+            inner = children[0].get("children", ())
+            return len(inner) == 1 and implied(inner[0])
+        return False
+    ast = canonicalize(predicate.predicate_ast)
+    if implied(ast):
+        return None  # conserve simple equivalent-condition receipt identities
+    return {
+        "state": "ADDITIONAL_OR_UNPROVED_RESTRICTIONS",
+        "producer_predicate_ref": predicate.ref.as_dict(),
+        "producer_predicate_ast": ast,
+        "subject_conditioners": [
+            {"binding_id": b.binding_id,
+             "semantic_ref": b.empirical_coordinate_ref.as_dict(),
+             "effective_time_or_interval": canonicalize(b.effective_time_or_interval)}
+            for b in consumer_query.conditioner_bindings],
+        "full_subject_condition_equivalence_established": False,
+        "interpretation": "EXACT_PRODUCER_STRATUM_ONLY__NO_GENERALIZATION_TO_ALL_SUBJECT_MATCHES",
+    }
+
+
 def _supported_geometry(
     *,
     fact: EmpiricalFact,
@@ -923,9 +987,26 @@ def _supported_geometry(
     if denominator <= 0:
         raise AnalyticalCompositionError("SUPPORTED fact must retain positive denominator")
 
+    measure_kind = fact.measure_kind
+    weighted = measure_kind == "GOVERNED_WEIGHTED"
+    weighted_den = (_fraction_from_exact(fact.weighted_denominator_support_if_authorized,
+                                        "C1 weighted denominator") if weighted else None)
+    if weighted and weighted_den < 0:
+        raise AnalyticalCompositionError("negative weighted denominator")
+    weighted_sum = Fraction(0)
     cells = []
     for cell in canonicalize(fact.target_topology)["complete_cell_semantic_projection"]:
         raw = cell["raw_numerator_support"]
+        weight_count = cell.get("weighted_numerator_support_if_authorized")
+        weighted_probability = None
+        if weighted:
+            exact_weight = _fraction_from_exact(weight_count, "C1 weighted cell")
+            if exact_weight < 0:
+                raise AnalyticalCompositionError("negative weighted cell")
+            weighted_sum += exact_weight
+            if weighted_den:
+                probability = exact_weight / weighted_den
+                weighted_probability = {"$exact_fraction": [probability.numerator, probability.denominator]}
         cells.append(
             {
                 "cell": cell["cell"],
@@ -935,12 +1016,13 @@ def _supported_geometry(
                     "weighted_numerator_support_if_authorized"
                 ),
                 "raw_probability_exact_fraction": _exact_fraction(raw, denominator),
-                "weighted_probability_exact_fraction_if_authorized": None,
+                "weighted_probability_exact_fraction_if_authorized": weighted_probability,
             }
         )
+    if weighted and weighted_sum != weighted_den:
+        raise AnalyticalCompositionError("weighted cells do not conserve producer denominator")
 
     topology = canonicalize(empirical_query.target_arity_and_topology)
-    measure_kind = fact.measure_kind
     weight_basis = empirical_query.requested_output_grain.get("weight_basis_id")
 
     if is_joint:
@@ -966,7 +1048,7 @@ def _supported_geometry(
             "target_domain_identity": fact.target_domain_identity,
         }
 
-    return {
+    geometry = {
         "schema": SLICE_GEOMETRY_SCHEMA,
         "source_fact_ref": fact.ref.as_dict(),
         "producer_query_ref": empirical_query.ref.as_dict(),
@@ -996,6 +1078,14 @@ def _supported_geometry(
         },
         "cells": cells,
     }
+    if weighted:
+        geometry["measure"]["weighted_probability_state"] = (
+            "EXACT_GOVERNED_WEIGHTED_DESCRIPTIVE" if weighted_den
+            else "ZERO_WEIGHT_DENOMINATOR_UNDEFINED")
+    qualification = _condition_scope_qualification(predicate, witness, consumer_query)
+    if qualification is not None:
+        geometry["condition_scope"] = qualification
+    return geometry
 
 
 def _build_evidence(
