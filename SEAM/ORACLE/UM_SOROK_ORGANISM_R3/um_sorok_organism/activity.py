@@ -18,12 +18,17 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
     result=[]
     for p in constitution.projects:
         if p.get('status','active')!='active': continue
+        if p.get('incidental_takeup_basis') is not None:
+            if not any(c.get('kind')=='material_object_present'
+                       and c.get('material_object_ref')==p.get('material_object_ref')
+                       for c in encounter.cues):
+                continue
         cue_match=bool(set(t.lower() for t in p.get('cue_terms',[])) & actual_tags)
         recruiting=[link for link in constitution.activity_links
             if link.get('relation')=='RECRUITS_ACTIVITY'
             and link.get('source') in sources and link.get('target')==p['id']
             and (not link.get('contexts') or encounter.location in link['contexts'])]
-        if p.get('contextual_only') and not (cue_match or recruiting): continue
+        if p.get('contextual_only') and not (cue_match or recruiting or p.get('incidental_takeup_basis') is not None): continue
         x=copy(p)
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
         x['recruitment_basis'] += ['FORM_LINK:'+r['source'] for r in recruiting]
