@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'rawlsing_next/pre553_s04_i05_reception.py'
+      - 'rawlsing_next/pre553_analytical_composition.py'
+      - 'rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py'
       - 'rawlsing_next/tests/test_pre553_forge_ddm_a_counter.py'
       - '.github/workflows/pyat-forge-ddm-a-counter.yml'
 permissions:
@@ -38,6 +40,9 @@ jobs:
         run: |
           python -m pytest -q -o addopts='' \
             rawlsing_next/tests/test_pre553_forge_ddm_a_counter.py \
+            rawlsing_next/tests/test_pre553_analytical_composition.py \
+            rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py \
+            rawlsing_next/tests/test_pre553_empirical_possibility_provider.py \
             rawlsing_next/tests/test_pre553_forge_ddm_analytical_a.py \
             rawlsing_next/tests/test_pre553_s04_general_joint_algebra.py \
             rawlsing_next/tests/test_preff_c3_dhikr_comparative.py \

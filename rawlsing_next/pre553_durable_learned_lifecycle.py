@@ -1082,13 +1082,10 @@ def validate_learned_consumer_determinants(
         raise DurableLearnedLifecycleError("exact consumer determinants required")
     if closure.root_identity != determinants.s2f_root_identity:
         raise DurableLearnedLifecycleError("consumer determinants S2F root mismatch")
+    discovery = closure.discovery_by_receipt(determinants.discovery_receipt_ref)
     receipt = next(
-        (
-            item
-            for item in closure.i05_result.receipts
-            if item.ref == determinants.discovery_receipt_ref
-        ),
-        None,
+        (item for item in discovery.receipts
+         if item.ref == determinants.discovery_receipt_ref), None,
     )
     if receipt is None:
         raise DurableLearnedLifecycleError("declared discovery receipt is absent from S2F closure")
@@ -1107,7 +1104,7 @@ def validate_learned_consumer_determinants(
             "declared consumer release is absent from S2F closure"
         )
     fact, predicate, query = _validate_discovery_consumption(
-        discovery_result=closure.i05_result,
+        discovery_result=discovery,
         consumer_query=determinants.consumer_query,
         receipt_ref=receipt.ref,
     )
@@ -1149,7 +1146,7 @@ def validate_learned_consumer_determinants(
         consumer_query=determinants.consumer_query,
         model_rule=determinants.model_rule,
         condition_binding_witness=determinants.condition_binding_witness,
-        discovery_result=closure.i05_result,
+        discovery_result=discovery,
         discovery_receipt_ref=receipt.ref,
     )
     if composition.composed_result_identity_hash != determinants.expected_composition_identity:

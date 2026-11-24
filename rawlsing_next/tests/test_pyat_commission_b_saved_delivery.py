@@ -453,8 +453,6 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 determinants=replace(determinants, **{field: "0"*64}))
         assert_unchanged(invalid_root)
 
-    # An adversary can readdress the consumer and witness consistently:
-    # merely checking the resulting composition hash cannot prove target identity.
     # Predecessor #1306 executed the wrong-target false acceptance. Now
     # C1 itself must refuse; S2-G independently refuses before mutation.
     wrong_target = ExactRef("TEST_ONLY_FOREIGN_TARGET", "urn:test:" + tag + ":foreign",
@@ -481,6 +479,40 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 condition_binding_witness=wrong_witness))
     assert_unchanged(invalid_root)
     print("SAVED_WRONG_TARGET_REFUSED", source_format, target.key, wrong_target.key)
+
+    # Readdress a *different* subject value and its pairing, while keeping
+    # the actual retained native producer and its real value-bearing leaf.
+    # A well-formed, content-addressed false relation must not reach M2/B5.
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    wrong_value = "1" if float(value) == 0.0 else "0"
+    wrong_binding = replace(conditioner, subject_fact_ref=ExactRef(**fx.subject_fact_ref(
+        {"qrefs": {"condition": coord}}, "condition", wrong_value)))
+    wrong_subject = replace(consumer, conditioner_bindings=(wrong_binding,))
+    wrong_subject_material = fx._subject_material("condition", coord, wrong_value)
+    actual_leaf_material = fx._leaf_projection("condition", coord, value)
+    actual_leaf_ref = fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",actual_leaf_material)
+    wrong_pair = fx._pairing_material(wrong_binding.subject_fact_ref,actual_leaf_ref,coord,wrong_value)
+    wrong_value_witness = fx.make_multi_conditioner_witness(
+        witness_object_id="urn:test:" + tag + ":wrong-value",
+        consumer_query=wrong_subject, producer_query=query, producer_predicate=predicate,
+        bindings=[wrong_binding], subject_materials=[wrong_subject_material],
+        leaf_projections=[actual_leaf_material], pairing_materials=[wrong_pair],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release,
+        subject_preimage_refs=[wrong_binding.subject_fact_ref])
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        compose_positioned_subject_possibility(
+            repository=None, empirical_query=query, predicate=predicate,
+            authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+            release_refs=(release,), consumer_query=wrong_subject, model_rule=model,
+            condition_binding_witness=wrong_value_witness, discovery_result=discovery,
+            discovery_receipt_ref=receipt.ref)
+    invalid_root = tmp_path / "wrong-conditioned-value"
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        cold.publish_learned(**args, m2_repository=repository, lifecycle_executor=executor,
+            root_dir=invalid_root, determinants=replace(determinants, consumer_query=wrong_subject,
+            condition_binding_witness=wrong_value_witness))
+    assert_unchanged(invalid_root)
+    print("SAVED_WRONG_CONDITION_VALUE_REFUSED", source_format, value, wrong_value)
 
     invalid_root = tmp_path / "negative-rule"
     negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
@@ -510,11 +542,72 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     finally:
         manifest.write_bytes(original)
 
+    # Fail the actual durable writer at its existing owner failpoint after
+    # content has reached disk, not a mock that bypasses all publication.
+    import errno
+    import rawlsing_next.pre553_durable_learned_lifecycle as durable
+    real_publish = durable.publish_learned_lifecycle
+    failure_root = tmp_path / "injected-enospc"
+    def fail_on_manifest(stage):
+        if stage == "before_manifest_replace":
+            raise OSError(errno.ENOSPC, "injected storage exhaustion")
+    def interrupted(*a, **kw):
+        return real_publish(*a, **kw, failpoint=fail_on_manifest)
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(durable, "publish_learned_lifecycle", interrupted)
+        with pytest.raises(OSError, match="storage exhaustion"):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint, (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_B5")
+    assert all(not getattr(repository, name) for name in repository._store_names), (
+        "POST_PREFLIGHT_STORAGE_FAILURE_MUTATED_M2")
+    assert not list(failure_root.rglob("manifest.json"))
+    # Next fail *after* the owner's actual immutable rename, then revoke
+    # the real external resolver after publication. Local state must roll
+    # back, and a retained historical artifact must be reusable on retry.
+    durable_receipts = []
+    def late_io(*a, **kw):
+        receipt = real_publish(*a, **kw)
+        durable_receipts.append(receipt)
+        raise OSError(errno.EIO, "after durable rename")
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(durable, "publish_learned_lifecycle", late_io)
+        with pytest.raises(OSError, match="after durable rename"):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint
+    assert all(not getattr(repository, name) for name in repository._store_names)
+    assert Path(durable_receipts[0].artifact_path).exists()
+    with pytest.raises(DurableLearnedLifecycleUntrusted):
+        open_learned_lifecycle(durable_receipts[0].artifact_path, expected_root=None)
+    original_record = cold._resolver._record
+    with pytest.MonkeyPatch.context() as mp:
+        def revoke_after_publish(*a, **kw):
+            receipt = real_publish(*a, **kw)
+            durable_receipts.append(receipt)
+            mp.setattr(cold._resolver, "_record", replace(original_record, currentness="REVOKED"))
+            return receipt
+        mp.setattr(durable, "publish_learned_lifecycle", revoke_after_publish)
+        with pytest.raises(WorkloadAdmissionError):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=failure_root,
+                determinants=determinants)
+    assert executor.export_checkpoint() == initial_checkpoint
+    assert all(not getattr(repository, name) for name in repository._store_names)
+    assert durable_receipts[0].root_identity == durable_receipts[1].root_identity
+    # Retry with the same owners, never reset to newly empty owners.
     learned_start = monotonic()
     learned, consumed = cold.publish_learned(
         **args, m2_repository=repository, lifecycle_executor=executor,
-        root_dir=tmp_path / "learned", determinants=determinants)
+        root_dir=failure_root, determinants=determinants)
     learned_seconds = monotonic() - learned_start
+    assert learned.root_identity == durable_receipts[0].root_identity
+    assert not learned.published, "retry must reuse immutable retained artifact"
+    print("LEARNED_LOCAL_ROLLBACK", source_format, learned.root_identity,
+          "before_manifest", "after_rename", "external_revocation", "exact_retry")
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
     retrieved = cold.read_learned(learned.artifact_path,
