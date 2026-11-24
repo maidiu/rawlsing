@@ -235,9 +235,11 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
         return None
     event = matches[0]
     authored = {'user': attempt.target, 'operation': 'SING',
-                'text': None, 'destination': None}
+                'text': None, 'destination': None,
+                'target_actor_ref': actor['id']}
     if (event.get('user') != attempt.target or event.get('operation') != 'SING'
             or event.get('status') != 'PERFORMED'
+            or event.get('target_actor_ref') != actor['id']
             or event.get('destination') != loc or event.get('clock') != world['clock']
             or event.get('payload_hash') != digest(authored)
             or payload.get('payload_hash') != event['payload_hash']
@@ -252,6 +254,7 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     signs = [c for c in world['cues'] if c.get('kind') == 'visitor_vocal_practice'
              and c.get('visitor_ref') == attempt.target
              and c.get('visitor_event_ref') == event['event_ref']
+             and c.get('visitor_vocal_addressed_to_recipient') is True
              and c.get('id') in payload.get('candidate_cue_refs', [])
              and c.get('private_to') == actor['id']
              and c.get('location') == loc and c.get('modality') == 'auditory'
@@ -983,7 +986,7 @@ class IndependentWorldAuthority:
         if not callable(coactor_planner):raise TypeError('QUALIFIED_COACTOR_PLANNER_REQUIRED')
         self.__planner=coactor_planner
 
-    def resolve(self,world,actors,principal:Attempt, *, human_vocal=None):
+    def resolve(self,world,actors,principal:Attempt, *, committed_human_event=None):
         if principal.actor not in actors:raise ValueError('UNREGISTERED_ACTOR')
         partner=None;policy_receipt=None
         if (principal.action in COOPERATIVE and principal.target in actors
@@ -1004,6 +1007,9 @@ class IndependentWorldAuthority:
                 'actor_state_hash':digest(actors[partner.actor]),
                 'world_state_hash':digest(world),'plan_basis':copy(partner.basis),
                 'policy_grade':'SOURCEFREE_INDEPENDENT_ACTOR_PROSPECTIVE'}
+        human_vocal = (qualified_human_vocal_receipt(
+            world, actors[principal.actor], principal, committed_human_event)
+            if committed_human_event is not None else None)
         out=_resolve_untrusted_core(world,actors,principal,partner,human_vocal=human_vocal)
         return out,partner,policy_receipt
 
@@ -1012,6 +1018,6 @@ def resolve(*args,**kwargs):
     """Deprecated direct function: solo only. The trusted research runtime
     uses IndependentWorldAuthority with an installed other-actor policy.
     """
-    if kwargs.get('human_vocal') is not None or kwargs.get('partner_attempt') is not None or len(args)>=4 and args[3] is not None:
+    if kwargs.get('committed_human_event') is not None or kwargs.get('human_vocal') is not None or kwargs.get('partner_attempt') is not None or len(args)>=4 and args[3] is not None:
         raise ValueError('DIRECT_COACTOR_BYPASS_REFUSED')
     return _resolve_untrusted_core(*args,**kwargs)
