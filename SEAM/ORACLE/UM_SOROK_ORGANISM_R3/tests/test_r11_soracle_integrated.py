@@ -1029,6 +1029,11 @@ class DependencyProjectReorganizationR39(unittest.TestCase):
                     cold.close()
                     stage='project_refused'
                     cold=ConstitutiveRuntime(db,semantic=service)
+                    if reorganize:
+                        plan=cold.plan('worker')
+                        self.assertEqual((plan.action,plan.target),('SIGNAL','mother'),
+                            str({'plan':plan,'signal':[x for x in cold.situated('worker')['candidate_actions'] if x['action']=='SIGNAL'],
+                                 'cues':cold.see('worker')['cues']}))
                     result=cold.step('worker')
                     final[reorganize]=result['attempt']
                     if reorganize:
