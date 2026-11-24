@@ -351,7 +351,26 @@ class NeighborEncounter:
         material_outcome = None
         policy_ref = None
         loc = origin
-        if operation == 'MOVE':
+        # Reuse CO's objective, source-qualified conjunction reader. Thin
+        # worlds need no upstream packet; richer worlds may actually alter
+        # the same authored operation. Unresolved authorization is not an
+        # affirmative denial, even when neither permits a material effect.
+        material_gate = None
+        if operation in ('REPAIR', 'SING', 'SIGN_HALL_PETITION'):
+            from um_sorok_organism.material_conjunction import evaluate_material_conjunction
+            material_gate = evaluate_material_conjunction(
+                world, self.user_id, loc, operation)
+            if material_gate['readset']:
+                world.setdefault('material_gate_audit', []).append({
+                    'clock': world['clock']+1, 'actor': self.user_id,
+                    'participant_kind': 'HUMAN_AUTHORED_NEIGHBOR',
+                    'operation': operation, 'location': loc,
+                    'evaluation': deepcopy(material_gate),
+                    'not_participant_knowledge': True})
+        if material_gate is not None and material_gate['decision'] in ('BLOCKED', 'UNRESOLVED'):
+            status = 'BLOCKED'
+            material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
+        elif operation == 'MOVE':
             if destination not in world['sites']:
                 status = 'BLOCKED'
             elif not self._destination_permitted(world, destination):
@@ -397,18 +416,10 @@ class NeighborEncounter:
             # owns opportunity, duplicate exclusion, quorum and policy.
             from um_sorok_organism.institutional_reproduction import (
                 contribute_to_hall_petition)
-            from um_sorok_organism.material_conjunction import (
-                evaluate_material_conjunction)
-            gate = evaluate_material_conjunction(
-                world, self.user_id, loc, operation)
-            if gate['decision'] in ('BLOCKED', 'UNRESOLVED'):
-                status = 'BLOCKED'
-                material_outcome = 'VISITOR_PROCEDURE_NOT_AVAILABLE'
-            else:
-                actual = contribute_to_hall_petition(world, self.user_id, loc)
-                status = actual['status']
-                material_outcome = actual['outcome']
-                policy_ref = actual.get('policy_receipt')
+            actual = contribute_to_hall_petition(world, self.user_id, loc)
+            status = actual['status']
+            material_outcome = actual['outcome']
+            policy_ref = actual.get('policy_receipt')
         elif operation == 'REPAIR':
             # A thin human participant is not a registered synthetic actor.
             # Existing CO artifact settlement accepts a material worker ID.
@@ -491,6 +502,10 @@ class NeighborEncounter:
             event.update(material_outcome=material_outcome,
                          institutional_policy_ref=policy_ref,
                          no_inferred_common_motive=True)
+        if material_gate is not None and material_gate['readset']:
+            # Analyst/world receipt only, not a visitor or actor concept.
+            event['objective_material_gate_decision'] = material_gate['decision']
+            event['objective_material_gate_source_refs'] = deepcopy(material_gate['readset'])
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,

@@ -24,7 +24,7 @@ import mii
 
 
 class MaterialParticipationR13(unittest.TestCase):
-    def build(self, name, granted, *, observer_facing='entrance'):
+    def build(self, name, granted, *, observer_facing='entrance', world_setup=None):
         tmp=tempfile.TemporaryDirectory(prefix='neighbor_r13_')
         self.addCleanup(tmp.cleanup)
         db=str(Path(tmp.name)/'world.sqlite')
@@ -33,6 +33,8 @@ class MaterialParticipationR13(unittest.TestCase):
         world=blank_world(name)
         world['sites']['workshop']['material_use_grants']=['worker']+(
             ['visitor'] if granted else [])
+        if world_setup is not None:
+            world_setup(world)
         rt.ledger.initialize(world,[adult('worker','Mara','workshop')])
         made=rt.step('worker',requested_action='MAKE_OBJECT')
         self.assertEqual(made['status'],'PERFORMED')
