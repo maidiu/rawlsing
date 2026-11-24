@@ -658,7 +658,7 @@ class DependencyContrastR37(unittest.TestCase):
                         return {'task':task,'surface':'Ordinary activity.'}
                     if task=='actor_attempt':
                         if packet['actor']['id']=='mother':
-                            return {'task':task,'action':'FEED' if stage=='supported' else 'WAIT'}
+                            return {'task':task,'action':'FEED' if stage=='supported' else 'REFUSE'}
                         if stage=='interrupted':
                             choices=[o for o in packet['practical_options']
                                      if o['operation']=='SIGNAL'
