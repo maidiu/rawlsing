@@ -308,6 +308,99 @@ class ColdSavedProduct:
         self._live()
         return result
 
+    def adjudicate_m1(self, *, contract, family_rule_binding,
+                      selected_discovery_receipt_refs, requested_scope,
+                      validator_registry, additional_authority_snapshots=(),
+                      prerequisite_channels=()):
+        """Optional learned input: exact archive graph, explicit rule and validator.
+
+        No RouteB execution receipt is manufactured. The native M1 composer
+        accepts the existing S2-F replay view; the S2-F root itself is a
+        dependency. A typed negative disposition is preserved, not promoted.
+        """
+        from rawlsing_next.pre553_learned_world_composition import (
+            build_m1_bundle_from_m01,
+        )
+        from rawlsing_next.pre553_learned_empirical_adjudication import (
+            adjudicate_learned_empirical,
+        )
+        self._live()
+        bundle = build_m1_bundle_from_m01(
+            self._closure.m01_replay_view(), contract=contract,
+            family_rule_binding=family_rule_binding,
+            selected_discovery_receipt_refs=selected_discovery_receipt_refs,
+            requested_scope=requested_scope,
+            additional_authority_snapshots=additional_authority_snapshots,
+            prerequisite_channels=prerequisite_channels,
+            additional_dependency_refs=(self._closure.exact_ref,),
+        )
+        disposition = adjudicate_learned_empirical(
+            bundle, family_rule_binding, validator_registry=validator_registry)
+        self._live()
+        return bundle, disposition
+
+    def publish_learned(self, *, ingress_contract, product_contract,
+                        family_rule_binding, requested_scope, validator_registry,
+                        determinants, m2_repository, lifecycle_executor,
+                        root_dir, additional_authority_snapshots=(),
+                        prerequisite_channels=()):
+        """Optional sourcefree learned publication through the existing S2-G owner.
+
+        A consumer determinant is not itself permission. Require an exact
+        selected discovery, matching product identity, and actual adjudication.
+        Lifecycle actions and authority are supplied explicitly by their owner.
+        Cold S2-G consumption is checked before returning a delivery receipt.
+        """
+        from rawlsing_next.pre553_learned_world_composition import compose_learned_world
+        from rawlsing_next.pre553_durable_learned_lifecycle import (
+            LearnedConsumerDeterminants, publish_learned_lifecycle,
+            open_learned_lifecycle,
+        )
+        self._live()
+        _require(type(determinants) is LearnedConsumerDeterminants,
+                 "EXACT_LEARNED_DETERMINANTS_REQUIRED")
+        _require(ingress_contract.route == "M01_M1_M2_B5"
+                 and product_contract.route == "M1_M2_B5",
+                 "EXPLICIT_REPLAY_INGRESS_AND_M1_PRODUCT_ROUTES_REQUIRED")
+        for field in ("product_family_ref", "producer_owner_ref",
+                      "producer_contract_ref", "release_subject_kind",
+                      "selection_scope_ref", "producer_permission_ceiling_ref",
+                      "consumer_product_purpose_ref", "m1_family_rule_binding_ref"):
+            _require(getattr(ingress_contract, field) == getattr(product_contract, field),
+                     "LEARNED_PRODUCT_CONTRACT_DRIFT")
+        _require(product_contract.m1_family_rule_binding_ref == family_rule_binding.ref
+                 and determinants.s2f_root_identity == self._closure.root_identity
+                 and determinants.release_ref == self._closure.release_identities[0].release_ref
+                 and determinants.purpose_ref == product_contract.consumer_product_purpose_ref,
+                 "LEARNED_ARCHIVE_OR_PURPOSE_BINDING_DRIFT")
+        bundle, disposition = self.adjudicate_m1(
+            contract=ingress_contract, family_rule_binding=family_rule_binding,
+            selected_discovery_receipt_refs=(determinants.discovery_receipt_ref,),
+            requested_scope=requested_scope, validator_registry=validator_registry,
+            additional_authority_snapshots=additional_authority_snapshots,
+            prerequisite_channels=prerequisite_channels,
+        )
+        _require(determinants.producer_query_ref in disposition.empirical_query_spec_refs
+                 and determinants.producer_predicate_ref in disposition.empirical_predicate_refs
+                 and determinants.discovery_receipt_ref in disposition.discovery_result_receipt_refs,
+                 "LEARNED_DETERMINANTS_NOT_IN_ADJUDICATED_EVIDENCE")
+        self._live()
+        learned = compose_learned_world(
+            product_contract, m2_repository=m2_repository,
+            lifecycle_executor=lifecycle_executor, m1_disposition=disposition,
+        )
+        self._live()
+        receipt = publish_learned_lifecycle(
+            root_dir, learned=learned, executor=lifecycle_executor,
+            determinants=determinants, m1_input_bundle=bundle.as_dict(),
+            m1_family_rule_binding=family_rule_binding.as_dict(),
+        )
+        artifact = open_learned_lifecycle(
+            receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
+        consumed = artifact.consume(self._closure.root_path)
+        self._live()
+        return receipt, consumed
+
     def m1_bundle(self):
         self._live()
         result = self._closure.m1_bundle_from_declared_binding()

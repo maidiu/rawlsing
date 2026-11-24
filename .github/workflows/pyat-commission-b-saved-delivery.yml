@@ -36,6 +36,9 @@ jobs:
             rawlsing_next/tests/test_kuda072_prepared_estate_pin.py \
             rawlsing_next/tests/test_pyat997_r03_governed_query_issuer_v2.py \
             rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py \
+            rawlsing_next/tests/test_pre553_forge_ddm_analytical_a.py \
+            rawlsing_next/tests/test_pyat940_s2f_durable_closure.py \
+            rawlsing_next/tests/test_pyat960_s2g_durable_lifecycle.py \
             --junitxml=pyat-b-saved-durable.xml
       - uses: actions/upload-artifact@v4
         if: always()
