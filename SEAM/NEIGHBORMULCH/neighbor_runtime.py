@@ -26,7 +26,8 @@ class EncounterRefusal(ValueError):
     """A user cannot create world, actor, source or sensory rights by prose."""
 
 
-_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR'})
+_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR',
+                      'SIGN_HALL_PETITION'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -175,6 +176,12 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
+    if operation == 'SIGN_HALL_PETITION' and visible:
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_public_procedure',
+                       'tags': ['public_procedure', 'visible_activity'],
+                       'description': 'Someone makes a contribution to the posted procedure.',
+                       'grade': grade, 'actor_notice_not_established': True})
     if operation == 'REPAIR' and visible:
         # The world has actually settled repair before this projection.
         # No audible tool, identification, intent or approval is invented.
@@ -256,6 +263,19 @@ class NeighborEncounter:
         return {'status': 'SOURCEFREE_BOUND', 'receipt': receipt['id'],
                 'source_hash': digest(conditions)}
 
+    def _destination_permitted(self, world, destination):
+        """Consume the continuing world's actual site rule, not a notice.
+
+        Existing routes still determine reachability; public access is not a
+        route. An unknown/malformed admission roster cannot confer rights.
+        """
+        site = world['sites'][destination]
+        admitted = site.get('admitted', [])
+        return (site.get('access') == 'public' or
+                (type(admitted) is list and
+                 all(type(x) is str for x in admitted) and
+                 self.user_id in admitted))
+
     def contribute(self, request_id: str, operation: str, *, text: str | None = None,
                    destination: str | None = None, target_object_ref: str | None = None,
                    cover_text: str | None = None):
@@ -317,9 +337,12 @@ class NeighborEncounter:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
         material_outcome = None
+        policy_ref = None
         loc = origin
         if operation == 'MOVE':
             if destination not in world['sites']:
+                status = 'BLOCKED'
+            elif not self._destination_permitted(world, destination):
                 status = 'BLOCKED'
             elif person['present']:
                 routes = world.get('neighbor_routes', {})
@@ -346,6 +369,24 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
+        elif operation == 'SIGN_HALL_PETITION':
+            # A human's authored contribution is not an actor policy or a
+            # second vote for a constituted actor. The actual institution
+            # owns opportunity, duplicate exclusion, quorum and policy.
+            from um_sorok_organism.institutional_reproduction import (
+                contribute_to_hall_petition)
+            from um_sorok_organism.material_conjunction import (
+                evaluate_material_conjunction)
+            gate = evaluate_material_conjunction(
+                world, self.user_id, loc, operation)
+            if gate['decision'] in ('BLOCKED', 'UNRESOLVED'):
+                status = 'BLOCKED'
+                material_outcome = 'VISITOR_PROCEDURE_NOT_AVAILABLE'
+            else:
+                actual = contribute_to_hall_petition(world, self.user_id, loc)
+                status = actual['status']
+                material_outcome = actual['outcome']
+                policy_ref = actual.get('policy_receipt')
         elif operation == 'REPAIR':
             # A thin human participant is not a registered synthetic actor.
             # Existing CO artifact settlement accepts a material worker ID.
@@ -377,7 +418,7 @@ class NeighborEncounter:
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
@@ -413,6 +454,10 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
+        if operation == 'SIGN_HALL_PETITION':
+            event.update(material_outcome=material_outcome,
+                         institutional_policy_ref=policy_ref,
+                         no_inferred_common_motive=True)
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
