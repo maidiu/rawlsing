@@ -13,7 +13,19 @@ scientific owners remain in their original modules.
 from __future__ import annotations
 
 from collections.abc import Mapping
+from dataclasses import dataclass
 from typing import Any
+
+from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next.pre553_empirical_objects import (
+    EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash,
+)
+from rawlsing_next.pre553_s04_first_consumer import (
+    S04OnePassResult, receive_s04_first_consumer,
+)
+from rawlsing_next.pre553_s04_observed_research import (
+    S04ObservationScope, receive_s04_observation_scope,
+)
 
 from rawlsing_next.pre553_batch_runner import (
     BatchExecutionRunner,
@@ -45,6 +57,67 @@ def execute_saved_i03(
         raise SavedC11AdmissionError(
             "exact SavedC11Admission or PreparedSavedC11Admission required")
     return admission.execute_i03(query_ref=query_ref, predicate_ref=predicate_ref)
+
+
+
+@dataclass(frozen=True)
+class SavedS04FirstRead:
+    """One actual saved native-I03 fact, actual S04 first reader and scope.
+
+    An execution/receipt is not a publication permission. The caller owns
+    independent original-source/method authorization and later receiving.
+    """
+    execution: QueryExecutionResult
+    first_consumer: S04OnePassResult
+    observation_scope: S04ObservationScope
+
+
+def execute_saved_i03_to_s04(
+    admission: SavedC11Admission,
+    *,
+    query: EmpiricalQuerySpec,
+    predicate_ref: ExactRef,
+    conditioner_index: int | None = None,
+) -> SavedS04FirstRead:
+    """Bound original saved-I03 admission to existing S04 first consumption.
+
+    Unlike a synthetic S04 fixture, this executes the real catalog-issued
+    query on the current, authenticated, persisted thirteen-family estate.
+    The original S04 producer handles its own full-joint interpretation and
+    optional FF01 branch; the existing S04 observation-scoping owner then
+    receives the exact same native fact, not independent marginals.
+
+    A source CURRENT change, changed original query/predicate, held I03 fact,
+    or incompatible S04 target causes the original owner to refuse. No new
+    query issuer, I03 kernel, S04 model, C11 writer, or Field Forge object.
+    """
+    if type(admission) not in (SavedC11Admission, PreparedSavedC11Admission):
+        raise SavedC11AdmissionError("exact saved or prepared admission required")
+    if type(query) is not EmpiricalQuerySpec or type(predicate_ref) is not ExactRef:
+        raise SavedC11AdmissionError("exact original query and predicate ref required")
+    if (
+        semantic_hash(query.semantic_projection()) != query.content_hash
+        or exact_ref(query.condition_predicate_ref, "I03 query predicate") != predicate_ref
+    ):
+        raise SavedC11AdmissionError("saved S04 query/predicate semantic identity drift")
+    admission.check_current()
+    actual = execute_saved_i03(
+        admission, query_ref=query.ref, predicate_ref=predicate_ref,
+    )
+    if type(actual) is not QueryExecutionResult or actual.query_ref != query.ref:
+        raise SavedC11AdmissionError("saved I03 returned wrong original query/result")
+    first = receive_s04_first_consumer(
+        query=query, execution=actual, conditioner_index=conditioner_index,
+    )
+    scope = receive_s04_observation_scope(
+        query=query, execution=actual, knowledge=first.knowledge,
+    )
+    if scope.material()["fact_ref"] != actual.facts[0].ref.as_dict():
+        raise SavedC11AdmissionError("S04 observation lost original I03 fact")
+    admission.check_current()
+    return SavedS04FirstRead(
+        execution=actual, first_consumer=first, observation_scope=scope,
+    )
 
 
 def execute_saved_i05(
