@@ -62,7 +62,8 @@ from .semantics import ValidatingSemanticService
 from .relational_metabolism import (
     possible_witnessed_third_party_relation,
     possible_lived_cross_context_revaluations)
-from .world import IndependentWorldAuthority, COOPERATIVE, add_cue
+from .world import (IndependentWorldAuthority, COOPERATIVE, add_cue,
+                    register_recursive_encounter_paths)
 
 def _bind_actor_trial_particular_object(alternatives, trial):
     """Choose one perceived thing, not one asserted explanation for perceiving it.
@@ -944,6 +945,22 @@ class ConstitutiveRuntime:
             horizon_days=horizon_days,
             autonomous_beats=autonomous_beats, max_segments=max_segments,
             period_processes=period_processes)
+
+    def register_sourcefree_recursive_encounter_paths(self,spec):
+        """Explicit finite material conditions, not actor perception or consent.
+
+        Use the existing ledger and world owner. No NEIGHBOR visitor is
+        created, and no developmental record is manufactured by registration.
+        """
+        version,world=self.ledger.world(self.world_id)
+        source=register_recursive_encounter_paths(
+            world,self.ledger.actors(),spec)
+        receipt=self.ledger.commit(
+            self.world_id,version,world,{}, {},
+            'SOURCEFREE_RECURSIVE_ENCOUNTER_PATHS',None,{
+                'source':source,'world_only_not_actor_experience':True,
+                'no_automatic_perception_or_psychic_change':True,'grade':GRADE})
+        return {'receipt':receipt['id'],**source}
 
     def register_sourcefree_food_control(self,spec):
         """Configure a fictional material institution in WORLD, not in psyche.

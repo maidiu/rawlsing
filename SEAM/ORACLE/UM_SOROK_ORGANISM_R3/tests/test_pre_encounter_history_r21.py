@@ -230,5 +230,140 @@ class PreEncounterHistoryR21(unittest.TestCase):
             self.assertNotEqual(preserved[0],preserved[1])
 
 
+
+class RecursiveEncounterR33(unittest.TestCase):
+    def test_actual_offscreen_speech_differential_exposure_and_cold_afterlife(self):
+        from um_sorok_organism.semantics import (
+            CallbackLLMProvider, ValidatingSemanticService, HeuristicSemanticProvider)
+        with tempfile.TemporaryDirectory() as out:
+            branches={}
+            for audible in (True,False):
+                heard=[]
+                def model(task,packet):
+                    if task=='adult_constructor':
+                        proposal=HeuristicSemanticProvider().propose(task,packet)
+                        proposal.setdefault('forms',[]).append({
+                            'id':'r33_speech_power','kind':'PRACTICE',
+                            'cues':['speech'],'enables':['SPEAK'],
+                            'always_recruitable':True,'scope':{},
+                            'lifecycle':'ACTIVE','body_min':0,
+                            'strength':.8,'access':'tacit'})
+                        return proposal
+                    if task=='actor_attempt':
+                        operation='SPEAK' if packet['actor']['id']=='father' else 'WAIT'
+                        self.assertIn(operation,{x['action'] for x in packet['options']})
+                        return {'task':task,'action':operation}
+                    if task=='expression':
+                        return {'task':task,'surface':'Ordinary life continues.'}
+                    if task=='development':
+                        if packet['actor']['id']=='nadia':
+                            signs=[c for c in packet['experience']['perceived_cues']
+                                   if c['kind']=='heard_voice']
+                            if signs:
+                                heard.extend(signs)
+                                return {'task':task,'candidates':[{
+                                    'kind':'TRACE','cue_terms':['voice'],
+                                    'manifestation':'sourcefree_undergone_voice',
+                                    'content':'Voice encountered; meaning undetermined.'}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(model))
+                db=str(Path(out)/('audible.sqlite' if audible else 'blocked.sqlite'))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize([('father','Father',PARENT),('mother','Mother',PARENT)])
+                    before=rt.snapshot('nadia')
+                    spec={'grade':'SOURCEFREE_TEST_ONLY','source_ref':'R33_DIRECTED_PATH',
+                        'paths':[{'observer':'nadia','source_actor':'father',
+                            'location':'home','from_clock':0,'through_clock':20,
+                            'hearing':audible,'sound_path':'audible' if audible else 'blocked',
+                            'visual':True,'light':'lit','sightline':'unobstructed',
+                            'facing':'away'}]}
+                    source=rt.register_sourcefree_recursive_encounter_paths(spec)
+                    self.assertEqual(rt.snapshot('nadia'),before)
+                    receipt=rt.construct_pre_encounter_history(
+                        'nadia',1,horizon_days=1,autonomous_beats=1)
+                    self.assertEqual(receipt['status'],'HISTORICAL_AGE_CUT_REACHED')
+                    self.assertEqual(receipt['autonomous_beats_committed'],1)
+                    w=rt.ledger.world(rt.world_id)[1]
+                    actual=w['cues'][-1]
+                    self.assertEqual(actual['kind'],'performed_speak')
+                    self.assertEqual(actual['source_actor'],'father')
+                    access=rt.see('nadia')['cues']
+                    self.assertFalse(any(c.get('source_actor')=='father' for c in access))
+                    signs=[c for c in access if c.get('id')==actual['id']]
+                    self.assertEqual(len(signs),int(audible))
+                    if audible:
+                        self.assertEqual(signs[0]['encounter_path_ref'],source['path_refs'][0])
+                        self.assertEqual(signs[0]['lexical_comprehension'],'NOT_ESTABLISHED')
+                        self.assertIsNone(signs[0]['source_actor'])
+                        self.assertEqual(signs[0]['kind'],'heard_voice')
+                    self.assertEqual(len(heard),int(audible))
+                    first=rt.snapshot('nadia')['traces']
+                    self.assertEqual(len(first),int(audible))
+                    self.assertTrue(rt.verify()['valid'])
+                finally:
+                    rt.close()
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.snapshot('nadia')['traces'],first)
+                    again=cold.construct_pre_encounter_history(
+                        'nadia',2,horizon_days=1,autonomous_beats=1)
+                    self.assertEqual(again['status'],'HISTORICAL_AGE_CUT_REACHED')
+                    self.assertEqual(len(cold.snapshot('nadia')['traces']),2*int(audible))
+                    self.assertTrue(cold.verify()['valid'])
+                    self.assertNotIn('neighbor_users',cold.ledger.world(cold.world_id)[1])
+                    branches[audible]=cold.snapshot('nadia')['traces']
+                finally:
+                    cold.close()
+            self.assertNotEqual(branches[True],branches[False])
+
+    def test_directed_channel_identity_language_lifetime_and_world_conservation(self):
+        from um_sorok_organism.types import adult, newborn, blank_world, copy
+        from um_sorok_organism.world import (
+            register_recursive_encounter_paths, add_cue)
+        from um_sorok_organism.constitution import actor_access
+        w=blank_world()
+        actors={'father':adult('father','Father'),'mother':adult('mother','Mother'),
+                'nadia':newborn('nadia','Nadia')}
+        w['positions'].update({x:'home' for x in actors})
+        base={'source_actor':'father','location':'home','from_clock':0,
+            'through_clock':2,'hearing':True,'sound_path':'audible',
+            'visual':True,'light':'lit','sightline':'unobstructed','facing':'source'}
+        spec={'grade':'SOURCEFREE_TEST_ONLY','source_ref':'R33_FINITE_PATH',
+            'paths':[dict(base,observer='nadia'),dict(base,observer='mother')]}
+        register_recursive_encounter_paths(w,actors,spec)
+        cue=add_cue(w,'speech',['private_meaning_not_for_infant'],
+                    location='home',modality='auditory',
+                    description='Adult propositional words.',source_actor='father')
+        old=copy(w)
+        child=next(c for c in actor_access(actors['nadia'],w).cues if c['id']==cue['id'])
+        self.assertEqual(child['kind'],'heard_voice')
+        self.assertEqual(child['source_actor'],'father')
+        self.assertNotIn('private_meaning_not_for_infant',child['tags'])
+        self.assertNotIn('Adult propositional words.',child['description'])
+        mother=next(c for c in actor_access(actors['mother'],w).cues if c['id']==cue['id'])
+        self.assertEqual(mother['description'],'Adult propositional words.')
+        self.assertEqual(w,old)
+        # No overlapping world-source overrides or unregistered pseudo-person.
+        with self.assertRaises(ValueError):
+            register_recursive_encounter_paths(w,actors,spec)
+        self.assertEqual(w,old)
+        invalid=copy(spec);invalid['paths'][0]['observer']='visitor'
+        with self.assertRaises(ValueError):
+            register_recursive_encounter_paths(w,actors,invalid)
+        self.assertEqual(w,old)
+        # A prior heard sign does not survive its material lifetime.
+        w['clock']=1
+        self.assertFalse(any(c['id']==cue['id'] for c in actor_access(actors['nadia'],w).cues))
+        # A future source is not retroactive.
+        w['clock']=3
+        later=add_cue(w,'speech',['later'],location='home',
+                      modality='auditory',source_actor='father')
+        projection=next(c for c in actor_access(actors['nadia'],w).cues
+                        if c['id']==later['id'])
+        self.assertNotIn('encounter_path_ref',projection)
+
+
 if __name__ == '__main__':
     unittest.main()
