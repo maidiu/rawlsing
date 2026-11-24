@@ -9,7 +9,7 @@ from .prospective_horizon import select_bounded_exploratory_trial
 from .distributed_power import choose_uncompelled_assistance
 from .practical_inquiry import choose_grounded_public_inquiry
 from .material_investments import choose_qualified_material_care
-from .unintended_goods import one_sourcefree_provisional_end, qualify_incidental_object_takeup
+from .unintended_goods import one_sourcefree_provisional_end
 from .expectation_afterlife import conservative_appraisal_proposal
 from .co_regulation_history import sourcefree_revision_proposal
 from .plural_care_paths import (
@@ -217,8 +217,18 @@ class HeuristicSemanticProvider:
                 .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
             for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
                 if candidate.get('incidental_object_end_basis') is not None:
-                    # No generic cue-only uptake of this stricter material end.
-                    # Semantic provider may select the qualified later basis.
+                    qualified=[q for q in packet.get('historically_possible_incidental_takeup',[])
+                               if q['possible_end_ref']==candidate['id']]
+                    if len(qualified)==1:
+                        q=qualified[0]
+                        relation_candidates.append({
+                            'kind':'TAKE_UP_POSSIBLE_END',
+                            'possible_end_ref':candidate['id'],
+                            'means':copy(candidate['possible_means']),
+                            'priority':.32,
+                            'later_perceived_cue_ref':q['later_perceived_cue_ref'],
+                            'incidental_takeup_basis':copy(q)})
+                        break
                     continue
                 if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                         and candidate.get('origin_event')!=packet.get(
