@@ -9,6 +9,7 @@ required for native C11/I03; a country shard must never impersonate a full wave.
 from __future__ import annotations
 
 from dataclasses import dataclass, asdict
+from collections import OrderedDict
 from hashlib import sha256
 from pathlib import Path
 from typing import Callable, Iterator
@@ -21,6 +22,7 @@ import zlib
 
 from .pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
 from .pre553_r5_codec import R5TypedValueCodec, canonical_json
+from .pre553_source_backed_c11_facade import ExactPhysicalCellStream
 
 SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@1"
 _CODEC = R5TypedValueCodec()
@@ -238,6 +240,8 @@ class CountryReader:
         self.path, self.receipt, self.require_current = Path(path).resolve(), receipt, require_current
         self._verify()
         self.db = sqlite3.connect(self.path.as_uri()+"?mode=ro",uri=True)
+        self._closed = False
+        self._certified_identity = None
         try:
             self.db.execute("PRAGMA query_only=ON")
             info = {k:json.loads(v) for k,v in self.db.execute("SELECT k,v FROM meta")}
@@ -253,7 +257,9 @@ class CountryReader:
         if self.path.stat().st_size != self.receipt.bytes or _hash(self.path) != self.receipt.sha256:
             raise CountryCarrierError("country file differs from held receipt")
     def close(self):
-        self.db.close()
+        if not self._closed:
+            self._closed = True
+            self.db.close()
     def __enter__(self):
         return self
     def __exit__(self,*args):
@@ -323,9 +329,9 @@ class CountryReader:
         bindings = [r.row_ordinal for r in projection.row_bindings]
         if len(bindings)!=len(selected) or set(bindings)!=selected:
             raise CountryCarrierError("projection must bind exact original country rows, not full wave")
-        return ExactPhysicalCellStream(self.receipt.source_sha256,self.receipt.country_rows,
+        return _CountryPhysicalStream(self.receipt.source_sha256,self.receipt.country_rows,
                  self.iter_cells,transport_identity="COUNTRY_NUMERIC_PHYSICAL@1:"+self.receipt.sha256,
-                 decoder_metadata_digest=self.receipt.metadata_digest)
+                 decoder_metadata_digest=self.receipt.metadata_digest,reader=self)
     def native_release(self, projection):
         """Use actual incumbent C11 owner, only with an explicitly scoped projection."""
         from .pre553_source_backed_c11_facade import build_validated_source_backed_c11_release_from_stream
@@ -345,3 +351,128 @@ class CountryReader:
             current_authorities=current_authorities)
         self._verify()
         return repo, release
+
+@dataclass(frozen=True)
+class _CountryPhysicalStream(ExactPhysicalCellStream):
+    """Recognized only by the incumbent facade; no generic user-supplied body factory."""
+    reader: CountryReader | None = None
+
+    def event_bodies(self, release, events, projection):
+        if type(self.reader) is not CountryReader or self.reader._closed:
+            raise CountryCarrierError("country body resolver requires its live reader")
+        self.reader._verify()
+        if self.transport_identity != "COUNTRY_NUMERIC_PHYSICAL@1:"+self.reader.receipt.sha256:
+            raise CountryCarrierError("country transport pin mismatch")
+        from .pre553_durable_empirical_closure import ReleaseIdentity
+        self.reader._certified_identity = ReleaseIdentity(
+            release.release_ref,release.replay_manifest.ref,release.source_artifact_ref,
+            release.source_release_manifest_hash,release.semantic_release_hash)
+        return _CountryEventBodies(self.reader, projection, events)
+
+class _BodyScalar:
+    __slots__ = ("value",)
+    def __init__(self,value):
+        self.value=value
+    def as_py(self):
+        return self.value
+
+class _CountryEventBodies:
+    """The existing _EventLane's byte-reader ABI, backed by original numeric cells.
+
+    Only original row/slot/expected exact-ref locators are retained for events.
+    No serialized event bodies, no duplicate permanent archive. The existing
+    _event constructor remains the authority on the event's exact preimage.
+    The validated release has already sealed every occurrence. The selected
+    reader must remain open, and current-use checks bracket workload delivery.
+    """
+    __slots__=("reader","projection","rows","slots","owners","respondents","locators","cache")
+    def __init__(self,reader,projection,events):
+        from .pre553_empirical_objects import exact_ref
+        self.reader,self.projection=reader,projection
+        self.rows={row:(block,rows,i) for block,rows in reader._blocks() for i,row in enumerate(rows)}
+        self.respondents={r.ref.key:r for r in projection.respondents}
+        by_respondent={b.respondent_ref.key:b.row_ordinal for b in projection.row_bindings}
+        if len(by_respondent)!=len(projection.row_bindings):
+            raise CountryCarrierError("country respondent must bind one original row")
+        self.slots={slot.question_binding.ref.key:slot for slot in projection.response_slots}
+        if len(self.slots)!=len(projection.response_slots):
+            raise CountryCarrierError("country event resolver requires distinct question bindings")
+        self.owners={x.slot.key:x for x in projection.slot_owner_sets}
+        locators=[]
+        for event in events:
+            respondent=exact_ref(event.scoped_respondent_ref).key
+            bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
+            if respondent not in by_respondent or len(bindings)!=1:
+                raise CountryCarrierError("sealed event lacks original country row/slot binding")
+            locators.append((by_respondent[respondent],respondent,bindings[0],event.ref))
+        self.locators=tuple(locators)
+        self.cache=OrderedDict()
+
+    def __len__(self):
+        return len(self.locators)
+
+    def __getitem__(self,index):
+        from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
+        reader=self.reader
+        if reader._closed:
+            raise CountryCarrierError("country event resolver closed")
+        _live(reader.require_current)
+        row,respondent,question,expected=self.locators[index]
+        slot=self.slots[question]
+        block,rows,offset=self.rows[row]
+        key=(block,slot.slot.ordinal)
+        lane=self.cache.get(key)
+        if lane is None:
+            lane=reader._column(block,rows,slot.slot.ordinal)
+            self.cache[key]=lane
+            if len(self.cache)>32:
+                self.cache.popitem(last=False)
+        else:
+            self.cache.move_to_end(key)
+        cell=_decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
+        physical=_cell_key(cell)
+        rules=[r for r in slot.values if r.physical_key==physical]
+        if len(rules)!=1:
+            raise CountryCarrierError("country event physical value lacks exact governed rule")
+        owner=self.owners.get(slot.slot.key)
+        auths=owner.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner else ()
+        value=rules[0]
+        matches=[]
+        for occ in value.occurrences:
+            event=_event(reader.receipt.source_sha256,row,self.respondents[respondent],
+                         slot,cell,value,occ,self.projection,auths)
+            if event.ref==expected:
+                matches.append(event)
+        if len(matches)!=1:
+            raise CountryCarrierError("country event reconstruction differs from sealed ref")
+        _live(reader.require_current)
+        from .pre553_empirical_objects import canonical_json as semantic_json
+        return _BodyScalar(semantic_json(matches[0].semantic_projection()).encode("utf-8"))
+
+def country_census(incidence, *, country_variable, require_current):
+    """Exact native typed country-code inventory; missing codes explicitly separate.
+
+    Returns R5 typed keys, not inferred country names or semantic authority.
+    Unknown/missing rows are reported, never silently assigned to a country.
+    """
+    if type(incidence) is not PhysicalSourceIncidence or country_variable not in {v.name for v in incidence.variables}:
+        raise CountryCarrierError("explicit native country variable required")
+    _live(require_current)
+    observed, held, last = {}, {}, 0
+    for cell in incidence.iter_cells():
+        if cell.variable_name!=country_variable:
+            continue
+        if cell.row_ordinal!=last+1:
+            raise CountryCarrierError("country census row discontinuity")
+        last=cell.row_ordinal
+        if cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE:
+            bucket,key=observed,canonical_json(_CODEC.encode(cell.raw_value))
+        else:
+            bucket,key=held,cell.missing_state.value
+        bucket[key]=bucket.get(key,0)+1
+    if last!=incidence.row_count:
+        raise CountryCarrierError("country census incomplete")
+    incidence.verify_source_identity()
+    _live(require_current)
+    return {"source_sha256":incidence.source_sha256,"source_rows":last,
+            "country_variable":country_variable,"observed":observed,"held":held}

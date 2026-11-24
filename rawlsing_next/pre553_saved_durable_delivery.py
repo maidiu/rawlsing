@@ -616,15 +616,23 @@ def open_saved_product(
     search, default release or implicit current selection.
     """
     record = _record(workload, resolver, host, purpose)
+    release = exact_ref(expected_release_ref)
+    return _open_native_product(closure_path, expected_root=expected_root,
+        release=release, binding=_binding(record, workload, release, expected_saved_manifest_sha256),
+        workload=workload, resolver=resolver, host=host, purpose=purpose, record=record,
+        allow_partial=allow_partial)
+
+
+def _open_native_product(closure_path, *, expected_root, release, binding,
+                         workload, resolver, host, purpose, record, allow_partial=False):
+    """Shared existing S2-F replay/census/S04 reader; carrier binding is explicit."""
     _require(type(expected_root) is str and len(expected_root) == 64,
              "EXTERNAL_S2F_ROOT_REQUIRED")
-    release = exact_ref(expected_release_ref)
     closure = open_empirical_closure(
         closure_path, expected_root=expected_root).require_trusted()
     closure.assert_no_current_authority()
     native = closure.manifest["core"]["native_result"]
-    _require(canonical_json(native["source_identity"]) == canonical_json(
-        _binding(record, workload, release, expected_saved_manifest_sha256)),
+    _require(canonical_json(native["source_identity"]) == canonical_json(binding),
         "ARCHIVE_WORKLOAD_OR_SAVED_SOURCE_BINDING_DRIFT")
     _require(len(closure.release_identities) == 1
              and closure.release_identities[0].release_ref == release
@@ -667,3 +675,78 @@ def open_saved_product(
              "CURRENT_CHANGED_DURING_COLD_OPEN")
     return ColdSavedProduct(closure, workload, resolver, host, purpose, record,
                             receipts=receipts, outputs=outputs, census=actual)
+
+
+def _country_binding(record, workload, release, receipt):
+    from dataclasses import asdict
+    from rawlsing_next.pre553_country_numeric_carrier import CountryReceipt
+    _require(type(receipt) is CountryReceipt and receipt.source_sha256 == record.source_sha256,
+             "EXTERNAL_COUNTRY_RECEIPT_SOURCE_MISMATCH")
+    base = _binding(record, workload, release, receipt.sha256)
+    base.pop("saved_manifest_sha256")
+    return {**base, "schema":"PYAT_COUNTRY_U43_S2F_DELIVERY@1",
+            "country_receipt":asdict(receipt), "projection_identity":workload.projection.cache_identity}
+
+
+def execute_publish_country(workload, resolver, *, host, purpose, country_path,
+                            country_receipt, root_dir, consumer_binding=None):
+    """Country compact carrier -> actual U43/I03/I05/Batch -> existing S2-F.
+
+    The existing S2-F sourcefree retention ceiling is enforced BEFORE opening
+    the compact country. Existing native issuer, Batch and S04 owners do the
+    work. No new result format or scientific authorization.
+    """
+    from rawlsing_next.pre553_country_numeric_carrier import CountryReader
+    record = _record(workload, resolver, host, purpose)
+    _country_binding(record, workload, workload.projection.projection_identity_ref, country_receipt)
+    def current():
+        _require(_record(workload,resolver,host,purpose)==record,
+                 "COUNTRY_CURRENT_DECISION_CHANGED")
+    units=len(workload.requests)+len(workload.discoveries)
+    _require(units>0,"COUNTRY_EMPTY_WORKLOAD")
+    start=monotonic()
+    with CountryReader(country_path,country_receipt,require_current=current) as reader:
+        def factory(ref):
+            _require(ref==workload.source_factory_ref,"COUNTRY_SOURCE_FACTORY_REF_DRIFT")
+            current()
+            return reader._native_stream(workload.projection)
+        # Existing bounded Batch path skips redundant preliminary Route B
+        # execution, but we require complete exact S2-E output afterwards.
+        result=execute_issued_workload(workload,resolver,source_factory=factory,
+            host=host,purpose=purpose,allow_test_only=True,max_units=units)
+        identity=reader._certified_identity
+        _require(identity is not None,"COUNTRY_NATIVE_CERTIFICATION_ABSENT")
+        _require(result.manifest==_manifest(workload,identity.release_ref),
+                 "COUNTRY_BATCH_MANIFEST_DRIFT")
+        census=result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
+        _require(census.complete,"COUNTRY_BATCH_INCOMPLETE")
+        direct=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                     if u.job_kind=="QUERY")
+        discoveries=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                          if u.job_kind=="DISCOVERY")
+        output=NativeEmpiricalOutput(
+            source_identity=_country_binding(record,workload,identity.release_ref,country_receipt),
+            release_identities=(identity,),i03_results=direct,i05_result=None,
+            i05_results=discoveries,object_graph=_graph(workload,direct,discoveries),
+            typed_states={"saved_batch_manifest":result.manifest.semantic_projection(),
+                "saved_batch_receipts":[r.projection() for r in result.receipts],
+                "saved_batch_census":census.as_dict(),"saved_batch_complete":True,
+                "s04_first_reads":_s04_manifest(workload,direct)})
+        reader._verify()
+        current()
+        elapsed=monotonic()-start
+        published=monotonic()
+        receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding)
+        reader._verify()
+        current()
+        return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict())
+
+
+def open_country_product(closure_path, *, expected_root, expected_release_ref,
+                         country_receipt,workload,resolver,host,purpose):
+    """Cold S04/FF01/learned consumer, no country file or source needed."""
+    record=_record(workload,resolver,host,purpose)
+    release=exact_ref(expected_release_ref)
+    return _open_native_product(closure_path,expected_root=expected_root,release=release,
+        binding=_country_binding(record,workload,release,country_receipt),
+        workload=workload,resolver=resolver,host=host,purpose=purpose,record=record)

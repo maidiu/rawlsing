@@ -106,21 +106,23 @@ class CountryNumeric(unittest.TestCase):
                 compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
                 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
                 self.assertIsInstance(compact.public_objects,_CompactPublicObjects)
-            self.assertEqual(compact.release_ref,direct.release_ref)
-            self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
-            self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
-            a=_source_dict(fx,C11Repository((direct,)),direct)
-            b=_source_dict(fx,compact_repo,compact)
-            qa=_query_authority("country-compact")
-            pred=_branch_predicate(a,qa,members=respondents,tag="country")
-            registry=AuthorityRegistry((*fx["authorities"],qa))
-            for measure in ("RAW","GOVERNED_WEIGHTED"):
-                with self.subTest(measure=measure):
-                    query=_query(a,qa,pred,("Y",),measure=measure,tag="country-"+measure)
-                    x=execute_empirical_query(repository=a["repo"],query=query,predicate=pred,
-                        authority_registry=registry,release_refs=(direct.release_ref,))
-                    y=execute_empirical_query(repository=b["repo"],query=query,predicate=pred,
-                        authority_registry=registry,release_refs=(compact.release_ref,))
-                    self.assertEqual(x,y)
-                    self.assertTrue(x.facts)
-                    self.assertTrue(all(f.typed_state=="SUPPORTED" for f in x.facts))
+                from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+                self.assertIsInstance(compact.public_objects.lane.bodies,_CountryEventBodies)
+                self.assertEqual(compact.release_ref,direct.release_ref)
+                self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
+                self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+                a=_source_dict(fx,C11Repository((direct,)),direct)
+                b=_source_dict(fx,compact_repo,compact)
+                qa=_query_authority("country-compact")
+                pred=_branch_predicate(a,qa,members=respondents,tag="country")
+                registry=AuthorityRegistry((*fx["authorities"],qa))
+                for measure in ("RAW","GOVERNED_WEIGHTED"):
+                    with self.subTest(measure=measure):
+                        query=_query(a,qa,pred,("Y",),measure=measure,tag="country-"+measure)
+                        x=execute_empirical_query(repository=a["repo"],query=query,predicate=pred,
+                            authority_registry=registry,release_refs=(direct.release_ref,))
+                        y=execute_empirical_query(repository=b["repo"],query=query,predicate=pred,
+                            authority_registry=registry,release_refs=(compact.release_ref,))
+                        self.assertEqual(x,y)
+                        self.assertTrue(x.facts)
+                        self.assertTrue(all(f.typed_state=="SUPPORTED" for f in x.facts))

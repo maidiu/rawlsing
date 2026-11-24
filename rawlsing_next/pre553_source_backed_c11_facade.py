@@ -782,6 +782,10 @@ def build_source_backed_c11_repository(
     current_authorities = tuple(current_authorities)
     if cache is not None and not isinstance(cache, SourceBackedC11SessionCache):
         raise SourceBackedC11FacadeError("source-backed cache must be producer-owned session cache")
+    from .pre553_country_numeric_carrier import _CountryPhysicalStream
+    country = type(source) is _CountryPhysicalStream
+    if country and cache is not None:
+        raise SourceBackedC11FacadeError("country repository has live reader; no detached session cache")
     key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     release = cache.get(key) if cache else None
     if release is None:
@@ -804,9 +808,12 @@ def build_source_backed_c11_repository(
 
         public = _compact_public_objects(
             release, physical_binding=physical_binding, projection_binding=key.projection_identity,
+            country_body_factory=(lambda rel, events: source.event_bodies(rel, events, projection)) if country else None,
         )
         if public is not None:
             release = replace(release, public_objects=public)
+        elif country:
+            raise SourceBackedC11FacadeError("country compact native selector unavailable")
         # Frozen dataclasses can still enclose caller-owned mutable mappings.
         # The physical iterator (or a sidecar callback) may mutate them after
         # input admission but before I02 finishes. A valid release computed
