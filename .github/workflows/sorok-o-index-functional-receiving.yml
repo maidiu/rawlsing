@@ -36,11 +36,21 @@ jobs:
           assert doc['mode'] == 'PINNED_DOCUMENTARY_SNAPSHOT_NOT_LIVE_NOT_PARITY'
           assert doc['original_identity_count'] == len(rows) == 144
           assert len({x['original']['id'] for x in rows}) == 144
-          assert sum(bool(x['linked_observations']) for x in rows) == 22
-          assert sum(len(x['linked_observations']) for x in rows) == 50
+          ledger = json.loads(Path('LIVE_RECEIVING_LEDGER.json').read_text())
+          expected = {(r['pr'], f['original_id']) for r in ledger['records'] for f in r.get('functional_relationships', [])}
+          actual = [(o['pr'], row['original']['id']) for row in rows for o in row['linked_observations']]
+          assert len(actual) == len(set(actual)) == len(expected)
+          assert set(actual) == expected
+          # Preserve the frozen November 23 predecessor scope and direct P3 identities.
+          predecessor = {1265, 1274, 1293, 1296, 1297, 1298, 1300, 1272, 1277, 1278, 1294}
+          old = {(pr, identity) for pr, identity in actual if pr in predecessor}
+          assert len(old) == 50 and len({identity for pr, identity in old}) == 22
+          p3 = {identity for pr, identity in actual if pr == 746}
+          assert p3 == {'C3', 'C9', 'C10', 'A2', 'N04', 'N05', 'N08', 'N11', 'O15', 'E05', 'E09', 'S6', 'S10', 'B1', 'S39_S52'}
+          assert all('PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY' in o['relation']['grade'] for row in rows for o in row['linked_observations'] if o['pr'] == 746)
           c8 = json.loads((folder / 'c8.json').read_text())['functions'][0]
           assert c8['original']['id'] == 'C8'
           assert any(x['pr'] == 1300 and 'HELD' in x['relation']['grade'] for x in c8['linked_observations'])
           assert all(x['pr'] != 1294 for row in rows for x in row['linked_observations'])
-          print('144 inherited identities; 22 linked identities; 50 scoped links; rejected dependency held; no protected receiving claim.')
+          print(f'144 inherited identities; {len({identity for _, identity in actual})} linked identities; {len(actual)} scoped links; rejected dependency held; no new protected receiving claim.')
           PY

@@ -195,22 +195,44 @@ The original status tables cover the accession set. The six subsequent candidate
 
 R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBOR contributions must be preserved by their existing owners. No runtime edit. Full historical 108 re-observation, independent receiving and protected receiving remain held.
 
+## Additional protected P3 observation (1 record)
+
+| PR | Observed HEAD | Branch / origin | PR fate / receiving | Evidence at HEAD |
+|---|---|---|---|---|
+| [#746](https://github.com/maidiu/rawlsing/pull/746) | `fe51de7979108df3e922e69ea3fd1d5159c5e293` | `codex/sorok-p3-selective-receiving-20261107-r1` | MERGED / PROTECTED_RECEIVED_P3_SOURCEFREE_TEST_ONLY_SCOPED | Historical reviewer execution at `16275d03...`, selected protected blob match; not rerun at PR head |
+
 ## Function-first lookup — derived from the SAME receiving ledger
 
-These are the 22 original identities with explicit links in this targeted intake. The 122 other original identities remain in the source registry; absence of an added link is not a missing function. All links below preserve their candidate, documentary or rejected-dependency scope. Exact source paths, blob SHA, first reader, test and next owner are in the matching existing JSON record. Use `check_live_receiving.py --function ID` for the full source-pinned snapshot, or `--function all` for all 144 original rows.
+These are the 31 original identities with explicit links in this targeted intake. The 113 other original identities remain in the source registry; absence of an added link is not a missing function. The 65 links preserve their exact protected sourcefree, candidate, documentary or rejected-dependency scopes. Exact source paths, blob SHA, first reader, test and next owner are in the matching existing JSON record. Use `check_live_receiving.py --function ID` for the full source-pinned snapshot, or `--function all` for all 144 original rows.
 
 ### A2 — Historical reentry and changed later action
 
 - [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: User-side profile continuity on reentry only; not actor historical change. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner later response readset; no native A2. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### A3 — Independent ongoing life
 
 - [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Independent actor occasion during visit, not user-commanded. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 
+### B1 — B1 test-only E1→mediator→later E2
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: B1 bfirst.mode_for/scoped mediator predicates in frozen TEST_ONLY P3 registry, not an independent B1 actor root. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
+
+### C10 — Event/model call and life recursion
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Existing runtime offer and historical reentry, not full event recursion parity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner; no native C10 pipe. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
+
+### C12 — Pipeline-produced continuing person and forks
+
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Partial code-tree compatibility; no full person parity. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Common reference and later fork requirement, not completed coupled world. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
+
 ### C3 — Individual organization, practice, mediation
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Acquired orientation from repeated qualified lived-body courses. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 - [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Theory distinguishes material history, association and fallible interpretation. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### C6 — Real time, activity and interstitial continuity
 
@@ -226,18 +248,21 @@ These are the 22 original identities with explicit links in this targeted intake
 - [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Exact actor transition receipt and visible identity required for generic tip. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Contingent notice conditioned on actual branch world. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 
-### C10 — Event/model call and life recursion
+### C9 — Canonical actor decision/version and later semantic reader
 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Existing runtime offer and historical reentry, not full event recursion parity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-
-### C12 — Pipeline-produced continuing person and forks
-
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Partial code-tree compatibility; no full person parity. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Common reference and later fork requirement, not completed coupled world. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### E04 — Independent B real encounter
 
 - [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Independent constituted actor encounter; visitor is not native B. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+
+### E05 — Canonical actor writer to reader
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
+
+### E09 — Irreversible 3–5 world event batch
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle -> BatchEngine -> P3Owner sourcefree. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### E12 — Complete person living/reentry/alpha
 
@@ -246,11 +271,13 @@ These are the 22 original identities with explicit links in this targeted intake
 ### N04 — Simultaneous recruitment, tension and regulation
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Pre-cue recruitment conditioned by actor-owned historical field. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: p3.projections.activate read-only contradiction activation. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### N05 — Durable transition, changed relations and contradiction
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Provisional repeated-course developmental organization. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 - [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: R29 counterexample drives theory of acquired organization; no full genesis. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore.commit_effects typed sourcefree V3MS_MEDIATOR; not full native N05. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### N07 — Independent others, power, care and relational feedback
 
@@ -258,9 +285,21 @@ These are the 22 original identities with explicit links in this targeted intake
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Bounded multi-Other coexperience field; no causal attribution. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 - [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Co-presence versus salience, causation and independent Others. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
 
+### N08 — Differentiated impression, intensity, salience and no-change
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner contextual state activation; no ADP memory grant. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
+
+### N11 — User-settled event-batch temporal recursion
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle/P2 two batches x three events with P3Owner wrapper. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
+
 ### O05 — Acquired practical operation
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historical practical orientation proposal, not issued native science. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+
+### O15 — Actual semantic E2 consumer
+
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner._result later computed response with native_action_performed=false. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### S0 — Governing purpose / integrity
 
@@ -270,27 +309,11 @@ These are the 22 original identities with explicit links in this targeted intake
 
 - [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Relational ontology and multiple causal fields. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
 
-### S7 — Player praxis model
-
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: User-authored finite material contribution, not hidden persona. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Authored outward gaze and speech, not inferred inner intent. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Visitor conduct separate from private attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Bounded prelude consent; no fabricated real user autobiography. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
-
-### S8 — Interaction / action semantics
-
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: SAY/MOVE/WAIT/LEAVE and source-qualified access. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Composite LOOK action, source and target eligibility. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Glance/close eligibility distinct from outward LOOK. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
-
-### S9 — LLM expression
-
-- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Untyped generic tip cannot be presented as heard speech. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
-
 ### S10 — Memory / persistence / replay / cost
 
 - [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Cold MII profile read/write tied to world/root/user. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
 - [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: R5 donor's profile continuity conserved. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore persistent typed effects, exact receipt/cold/replay; not ADP016 formed memory. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
 ### S11 — UX / UI
 
@@ -315,27 +338,27 @@ These are the 22 original identities with explicit links in this targeted intake
 - [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Blocked private/inaccessible/stale tip presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
 - [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Visitor-only finance disclosure requirements. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
 
+### S39_S52 — modern Codex S39–S52 series
 
-## Protected P3 functional reconciliation — #746
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing accepted #704/S39-47 P2 engine reused unchanged; inherited 71 PASS. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
-Exact protected source `827714e83743056939894a39736d72ea16bdc6dd`; merged `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`; five selected runtime/test blobs equal reviewed runtime `16275d03fc4724a694c48ed9d447c4eeadbe25f2`. Review source and adverse evidence are linked in the same ledger. No new runtime test execution or full native parity.
+### S6 — Persistent life / time / world events
 
-| Original function | Actual scoped first reader (protected recourt 19) |
-|---|---|
-| C3 — Individual organization, practice, mediation | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
-| C9 — Canonical actor decision/version and later semantic reader | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
-| C10 — Event/model call and life recursion | RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner; no native C10 pipe |
-| A2 — Historical reentry and changed later action | P3Owner later response readset; no native A2 |
-| N04 — Simultaneous recruitment, tension and regulation | p3.projections.activate read-only contradiction activation |
-| N05 — Durable transition, changed relations and contradiction | PsycheStore.commit_effects typed sourcefree V3MS_MEDIATOR; not full native N05 |
-| N08 — Differentiated impression, intensity, salience and no-change | P3Owner contextual state activation; no ADP memory grant |
-| N11 — User-settled event-batch temporal recursion | Existing RecursionCycle/P2 two batches x three events with P3Owner wrapper |
-| O15 — Actual semantic E2 consumer | P3Owner._result later computed response with native_action_performed=false |
-| E05 — Canonical actor writer to reader | RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads |
-| E09 — Irreversible 3–5 world event batch | Existing RecursionCycle -> BatchEngine -> P3Owner sourcefree |
-| S6 — Persistent life / time / world events | Actual same-root sourcefree development through inherited #704 + P3; no source-native offscreen life |
-| S10 — Memory / persistence / replay / cost | PsycheStore persistent typed effects, exact receipt/cold/replay; not ADP016 formed memory |
-| B1 — B1 test-only E1→mediator→later E2 | B1 bfirst.mode_for/scoped mediator predicates in frozen TEST_ONLY P3 registry, not an independent B1 actor root |
-| S39_S52 — modern Codex S39–S52 series | Existing accepted #704/S39-47 P2 engine reused unchanged; inherited 71 PASS |
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Actual same-root sourcefree development through inherited #704 + P3; no source-native offscreen life. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**.
 
-31 of 144 identities now carry scoped function-first links (65 links); 113 are not equivalently refreshed, **not missing**. Existing function-first lookup returns the new #746 row. First-consumer succession to CO/NEIGHBOR remains unadjudicated.
+### S7 — Player praxis model
+
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: User-authored finite material contribution, not hidden persona. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Authored outward gaze and speech, not inferred inner intent. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Visitor conduct separate from private attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Bounded prelude consent; no fabricated real user autobiography. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**.
+
+### S8 — Interaction / action semantics
+
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: SAY/MOVE/WAIT/LEAVE and source-qualified access. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Composite LOOK action, source and target eligibility. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Glance/close eligibility distinct from outward LOOK. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**.
+
+### S9 — LLM expression
+
+- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Untyped generic tip cannot be presented as heard speech. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**.
