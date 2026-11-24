@@ -111,6 +111,18 @@ class CountryNumeric(unittest.TestCase):
                 self.assertEqual(compact.release_ref,direct.release_ref)
                 self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+                from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
+                events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
+                lane=compact.public_objects.lane
+                self.assertEqual(lane.bodies.locator_bytes,40*len(events))
+                for event in events:
+                    self.assertEqual(compact_repo.resolve_object_exact(event.ref),event)
+                    self.assertNotIn(event.ref.key,compact_repo._objects)
+                    self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
+                mixed=C11Repository((compact,))
+                # A wrong object ID may not exploit a matching digest.
+                with self.assertRaises(KeyError):
+                    mixed.resolve_object_exact(ExactRef(events[0].ref.kind,"wrong",events[0].ref.content_hash))
                 a=_source_dict(fx,C11Repository((direct,)),direct)
                 b=_source_dict(fx,compact_repo,compact)
                 qa=_query_authority("country-compact")
@@ -130,6 +142,8 @@ class CountryNumeric(unittest.TestCase):
             # selectors after its country reader has closed.
             with self.assertRaises(CountryCarrierError):
                 compact_repo.resolve_release_exact(compact.release_ref)
+            with self.assertRaises(CountryCarrierError):
+                compact_repo.resolve_object_exact(events[0].ref)
 
     def test_country_set_resume_and_missing_country_census(self):
         from rawlsing_next.pre553_country_numeric_carrier import country_census,build_country_set

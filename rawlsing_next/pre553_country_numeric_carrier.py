@@ -693,7 +693,9 @@ class _CountryEventBodies:
     The validated release has already sealed every occurrence. The selected
     reader must remain open, and current-use checks bracket workload delivery.
     """
-    __slots__=("reader","projection","rows","slots","owners","respondents","locators","cache")
+    __slots__=("reader","projection","rows","slots","owners","respondents","respondent_keys",
+               "source_rows","question_keys","respondent_codes","question_codes","hashes",
+               "cache","cache_bytes")
     def __init__(self,reader,projection,events):
         from .pre553_empirical_objects import exact_ref
         self.reader,self.projection=reader,projection
@@ -706,18 +708,60 @@ class _CountryEventBodies:
         for slot in projection.response_slots:
             self.slots.setdefault(slot.question_binding.ref.key,[]).append(slot)
         self.owners={x.slot.key:x for x in projection.slot_owner_sets}
-        locators=[]
+        self.respondent_keys=tuple(by_respondent)
+        self.source_rows=tuple(tuple(by_respondent[key]) for key in self.respondent_keys)
+        self.question_keys=tuple(self.slots)
+        ri={key:i for i,key in enumerate(self.respondent_keys)}
+        qi={key:i for i,key in enumerate(self.question_keys)}
+        rc,qc=array("I"),array("I")
+        hashes=bytearray()
+        prior=b""
         for event in events:
             respondent=exact_ref(event.scoped_respondent_ref).key
             bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
-            if respondent not in by_respondent or len(bindings)!=1:
+            if respondent not in ri or len(bindings)!=1:
                 raise CountryCarrierError("sealed event lacks original country row/slot binding")
-            locators.append((tuple(by_respondent[respondent]),respondent,bindings[0],event.ref))
-        self.locators=tuple(locators)
+            ref=event.ref
+            digest=bytes.fromhex(ref.content_hash)
+            if (ref!=self._event_ref(digest) or len(digest)!=32 or digest<=prior):
+                raise CountryCarrierError("sealed event canonical identity/order mismatch")
+            prior=digest
+            rc.append(ri[respondent]);qc.append(qi[bindings[0]]);hashes.extend(digest)
+        self.respondent_codes=memoryview(rc.tobytes()).cast("I")
+        self.question_codes=memoryview(qc.tobytes()).cast("I")
+        self.hashes=bytes(hashes)
         self.cache=OrderedDict()
+        self.cache_bytes=0
+
+    @staticmethod
+    def _event_ref(digest):
+        from .pre553_empirical_objects import ExactRef,RespondentEvent,URN_PREFIX
+        h=digest.hex()
+        return ExactRef(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:{h}",h)
 
     def __len__(self):
-        return len(self.locators)
+        return len(self.respondent_codes)
+
+    @property
+    def locator_bytes(self):
+        return self.respondent_codes.nbytes+self.question_codes.nbytes+len(self.hashes)
+
+    def find_event(self,ref):
+        """Exact membership lookup without a per-event Python hash table."""
+        from .pre553_empirical_objects import ExactRef,RespondentEvent
+        if not isinstance(ref,ExactRef) or ref.kind!=RespondentEvent.FAMILY:
+            return None
+        digest=bytes.fromhex(ref.content_hash)
+        if ref!=self._event_ref(digest):
+            return None
+        lo,hi=0,len(self)
+        while lo<hi:
+            mid=(lo+hi)//2
+            if self.hashes[32*mid:32*(mid+1)]<digest:
+                lo=mid+1
+            else:
+                hi=mid
+        return lo if lo<len(self) and self.hashes[32*lo:32*(lo+1)]==digest else None
 
     def check_current(self):
         self.reader._verify()
@@ -730,7 +774,15 @@ class _CountryEventBodies:
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
         reader=self.reader
         self.check_live()
-        source_rows,respondent,question,expected=self.locators[index]
+        if index<0:
+            index+=len(self)
+        if not 0<=index<len(self):
+            raise IndexError(index)
+        code=self.respondent_codes[index]
+        source_rows=self.source_rows[code]
+        respondent=self.respondent_keys[code]
+        question=self.question_keys[self.question_codes[index]]
+        expected=self._event_ref(self.hashes[32*index:32*(index+1)])
         matches=[]
         for row in source_rows:
             block,rows,offset=self.rows[row]
@@ -739,10 +791,21 @@ class _CountryEventBodies:
                 lane=self.cache.get(key)
                 if lane is None:
                     lane=reader._column(block,rows,slot.slot.ordinal)
-                    self.cache[key]=lane
-                    if len(self.cache)>32:
-                        self.cache.popitem(last=False)
+                    # Bound decoded dictionaries and Python code vectors by
+                    # estimated bytes as well as lane count. Oversized lanes
+                    # are used once, never retained.
+                    size=(sys.getsizeof(lane)+sys.getsizeof(lane.codes)
+                          +sum(sys.getsizeof(x) for x in lane.codes)
+                          +sys.getsizeof(lane.dictionary)
+                          +sum(sys.getsizeof(x) for x in lane.dictionary))
+                    if size<=8*1024*1024:
+                        while self.cache and (len(self.cache)>=32 or self.cache_bytes+size>8*1024*1024):
+                            _,(_,old)=self.cache.popitem(last=False)
+                            self.cache_bytes-=old
+                        self.cache[key]=(lane,size)
+                        self.cache_bytes+=size
                 else:
+                    lane,_=lane
                     self.cache.move_to_end(key)
                 cell=_decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
                 physical=_cell_key(cell)
