@@ -1,0 +1,38 @@
+name: PYAT relay R3 native scientific court
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/tests/test_pre553_forge_ddm_relay_r3.py'
+      - 'rawlsing_next/pre553_discovery_exact.py'
+      - 'rawlsing_next/pre553_analytical_composition.py'
+      - 'rawlsing_next/source_backed_positioned_subject_possibility.py'
+      - '.github/workflows/pyat-forge-ddm-relay-r3.yml'
+permissions:
+  contents: read
+jobs:
+  scientific:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify source
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          echo "exact_source_head=$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: Scientific native counter court
+        env:
+          PYTHONPATH: .
+        run: python -m pytest -q -o addopts='' rawlsing_next/tests/test_pre553_forge_ddm_relay_r3.py --junitxml=relay-r3.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relay-r3
+          path: relay-r3.xml
