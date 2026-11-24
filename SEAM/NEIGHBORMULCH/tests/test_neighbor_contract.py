@@ -30,6 +30,9 @@ fake_types.digest, fake_types.stable_id = digest, stable_id
 fake_types.GRADE = 'SOURCEFREE_RESEARCH_PROVISIONAL'
 fake_world = types.ModuleType('um_sorok_organism.world')
 fake_objects = types.ModuleType('um_sorok_organism.material_objects')
+fake_inquiry = types.ModuleType('um_sorok_organism.practical_inquiry')
+# No notices in this original spy. R10 uses the actual CO reader.
+fake_inquiry.notices_present = lambda world, location, clock: []
 # Contract spy only. R9's separate real-world court exercises the actual owner.
 fake_objects.material_objects_present = lambda world, location: [
     row for row in world.get('material_objects', {}).values()
@@ -54,7 +57,8 @@ def add_cue(world, kind, tags, location='all', modality='visual',
 fake_world.add_cue = add_cue
 _modules = {'um_sorok_organism': fake_pkg,
     'um_sorok_organism.types': fake_types, 'um_sorok_organism.world': fake_world,
-    'um_sorok_organism.material_objects': fake_objects}
+    'um_sorok_organism.material_objects': fake_objects,
+    'um_sorok_organism.practical_inquiry': fake_inquiry}
 _old_modules = {name: sys.modules.get(name) for name in _modules}
 try:
     sys.modules.update(_modules)
