@@ -182,6 +182,8 @@ def execute_publish_saved(
     saved_admission_factory: Callable[[], SavedC11Admission],
     root_dir: str | Path, consumer_binding=None,
     max_units: int | None = None, resume_from: SavedResumePin | None = None,
+    checkpoint_every: int | None = None,
+    checkpoint_observer: Callable[[SavedResumePin, SavedPublication], None] | None = None,
 ) -> SavedPublication:
     """Execute original issued units, archive exact attempts, and resume cold.
 
@@ -189,7 +191,17 @@ def execute_publish_saved(
     results and history. max_units intentionally permits a partial checkpoint.
     A completed resume pin must be served, not executed again. Sudden process
     death before publication is not a checkpoint. External pins are mandatory.
+    Optional checkpoint_every/observer publishes exact attempted prefixes
+    inside the *same* prepared session. The external observer owns custody of
+    each returned pin; an observer failure stops execution, not a native failure.
+    Execution time is cumulative native/session wall time excluding checkpoint
+    publication and observer time; publication time is per retained prefix.
     """
+    _require((checkpoint_every is None) == (checkpoint_observer is None),
+             "CHECKPOINT_INTERVAL_AND_OBSERVER_REQUIRED_TOGETHER")
+    _require(checkpoint_every is None or (
+        type(checkpoint_every) is int and checkpoint_every > 0
+        and callable(checkpoint_observer)), "EXACT_SAVED_CHECKPOINT_OBSERVER_REQUIRED")
     record = _record(workload, resolver, host, purpose)
     prior = None
     if resume_from is not None:
@@ -219,69 +231,102 @@ def execute_publish_saved(
         admissions.append(item)
         return item
 
-    start = monotonic()
+    first_reads = dict(prior._first_reads) if prior is not None else {}
+    last_root = None if prior is None else prior._closure.root_identity
+    last_publication = None
+    last_receipts = None
+    checkpoint_overhead = 0.0
+    started = monotonic()
+
+    def publish_result(result, *, elapsed, require_complete):
+        admission, = admissions
+        _require(result.route_results == (), "EXPECTED_SAVED_NATIVE_RESULTS_NOT_ROUTE_B")
+        _require(result.decision_ref == record.decision_ref
+                 and result.envelope_sha256 == record.envelope_sha256
+                 and result.source_sha256 == record.source_sha256
+                 and result.scope == record.scope, "EXECUTION_ISSUER_DRIFT")
+        _require(result.manifest == _manifest(workload, admission.release_ref),
+                 "EXECUTION_MANIFEST_DRIFT")
+        outputs = result.outputs_by_unit
+        census = census_native_batch(result.manifest, result.receipts, outputs,
+                                     require_complete=require_complete,
+                                     runtime_catalog=workload.catalog)
+        direct = tuple(outputs[u.unit_hash] for u in result.manifest.units
+                       if u.job_kind == "QUERY" and u.unit_hash in outputs)
+        discoveries = tuple(outputs[u.unit_hash] for u in result.manifest.units
+                      if u.job_kind == "DISCOVERY" and u.unit_hash in outputs)
+        # Retain exact prior S04 refs; only newly completed direct outputs need
+        # first-reader execution. Cold reconstruction still verifies their identity.
+        first_reads.update(_s04_manifest(workload, tuple(
+            ex for ex in direct if ex.query_ref.key not in first_reads)))
+        legacy = census.complete and len(discoveries) == 1
+        output = NativeEmpiricalOutput(
+            source_identity=_binding(record, workload, admission.release_ref,
+                                     admission.manifest_sha256),
+            release_identities=(ReleaseIdentity(
+                release_ref=admission.release_ref, replay_ref=admission.replay_ref,
+                source_artifact_ref=admission.source_ref),),
+            i03_results=direct, i05_result=discoveries[0] if legacy else None,
+            i05_results=() if legacy else discoveries,
+            object_graph=_graph(workload, direct, discoveries),
+            typed_states={
+                "saved_batch_manifest": result.manifest.semantic_projection(),
+                "saved_batch_receipts": [r.projection() for r in result.receipts],
+                "saved_batch_census": census.as_dict(),
+                "s04_first_reads": first_reads,
+                **({} if legacy and last_root is None else {
+                    "saved_batch_complete": census.complete,
+                    "resumed_from_root": last_root,
+                }),
+            },
+        )
+        admission.check_current()
+        _require(_record(workload, resolver, host, purpose) == record,
+                 "CURRENT_CHANGED_BEFORE_PUBLICATION")
+        publication_start = monotonic()
+        receipt = publish_empirical_closure(output, root_dir,
+                                            consumer_binding=consumer_binding)
+        # A post-publication refusal leaves historical, non-current content in the
+        # archive. It never returns a positive delivery receipt. S2-F has no
+        # current pointer; this is not an atomic external revocation transaction.
+        admission.check_current()
+        _require(_record(workload, resolver, host, purpose) == record,
+                 "CURRENT_CHANGED_DURING_PUBLICATION")
+        return SavedPublication(receipt, elapsed, monotonic() - publication_start, census.as_dict())
+
+    def checkpoint(result):
+        nonlocal last_publication, last_receipts, last_root, checkpoint_overhead
+        entered = monotonic()
+        publication = publish_result(
+            result, elapsed=entered - started - checkpoint_overhead,
+            require_complete=False)
+        admission, = admissions
+        pin = SavedResumePin(publication.receipt.root_path,
+                             publication.receipt.root_identity,
+                             admission.release_ref, admission.manifest_sha256)
+        # Never infer external custody from a successful filesystem write.
+        # Only the caller can retain this root for a later independent resume.
+        checkpoint_observer(pin, publication)
+        last_publication = publication
+        last_receipts = result.receipts
+        last_root = pin.expected_root
+        checkpoint_overhead += monotonic() - entered
+
     result = execute_issued_workload(
         workload, resolver, host=host, purpose=purpose, allow_test_only=True,
         saved_admission_factory=factory, reuse_prepared_saved_session=True,
         max_units=max_units, prior_receipts=() if prior is None else prior._receipts,
         prior_outputs=None if prior is None else prior._outputs,
+        checkpoint_every=checkpoint_every,
+        checkpoint_observer=checkpoint if checkpoint_observer is not None else None,
     )
-    elapsed = monotonic() - start
-    admission, = admissions
-    _require(result.route_results == (), "EXPECTED_SAVED_NATIVE_RESULTS_NOT_ROUTE_B")
-    _require(result.decision_ref == record.decision_ref
-             and result.envelope_sha256 == record.envelope_sha256
-             and result.source_sha256 == record.source_sha256
-             and result.scope == record.scope, "EXECUTION_ISSUER_DRIFT")
-    _require(result.manifest == _manifest(workload, admission.release_ref),
-             "EXECUTION_MANIFEST_DRIFT")
-    outputs = result.outputs_by_unit
-    census = census_native_batch(result.manifest, result.receipts, outputs,
-                                 require_complete=max_units is None,
-                                 runtime_catalog=workload.catalog)
-    direct = tuple(outputs[u.unit_hash] for u in result.manifest.units
-                   if u.job_kind == "QUERY" and u.unit_hash in outputs)
-    discoveries = tuple(outputs[u.unit_hash] for u in result.manifest.units
-                  if u.job_kind == "DISCOVERY" and u.unit_hash in outputs)
-    # Retain exact prior S04 refs; only newly completed direct outputs need
-    # first-reader execution. Cold reconstruction still verifies their identity.
-    first_reads = dict(prior._first_reads) if prior is not None else {}
-    first_reads.update(_s04_manifest(workload, tuple(
-        ex for ex in direct if ex.query_ref.key not in first_reads)))
-    legacy = census.complete and len(discoveries) == 1
-    output = NativeEmpiricalOutput(
-        source_identity=_binding(record, workload, admission.release_ref,
-                                 admission.manifest_sha256),
-        release_identities=(ReleaseIdentity(
-            release_ref=admission.release_ref, replay_ref=admission.replay_ref,
-            source_artifact_ref=admission.source_ref),),
-        i03_results=direct, i05_result=discoveries[0] if legacy else None,
-        i05_results=() if legacy else discoveries,
-        object_graph=_graph(workload, direct, discoveries),
-        typed_states={
-            "saved_batch_manifest": result.manifest.semantic_projection(),
-            "saved_batch_receipts": [r.projection() for r in result.receipts],
-            "saved_batch_census": census.as_dict(),
-            "s04_first_reads": first_reads,
-            **({} if legacy and prior is None else {
-                "saved_batch_complete": census.complete,
-                "resumed_from_root": None if prior is None else prior._closure.root_identity,
-            }),
-        },
-    )
-    admission.check_current()
-    _require(_record(workload, resolver, host, purpose) == record,
-             "CURRENT_CHANGED_BEFORE_PUBLICATION")
-    start = monotonic()
-    receipt = publish_empirical_closure(output, root_dir,
-                                        consumer_binding=consumer_binding)
-    # A post-publication refusal leaves historical, non-current content in the
-    # archive. It never returns a positive delivery receipt. S2-F has no
-    # current pointer; this is not an atomic external revocation transaction.
-    admission.check_current()
-    _require(_record(workload, resolver, host, purpose) == record,
-             "CURRENT_CHANGED_DURING_PUBLICATION")
-    return SavedPublication(receipt, elapsed, monotonic() - start, census.as_dict())
+    if last_publication is not None:
+        _require(last_receipts == result.receipts, "CHECKPOINT_FINAL_HISTORY_DRIFT")
+        _require(last_publication.complete == result.summary.full_coverage,
+                 "CHECKPOINT_FINAL_COVERAGE_DRIFT")
+        return last_publication
+    return publish_result(result, elapsed=monotonic() - started,
+                          require_complete=max_units is None)
 
 
 @dataclass(frozen=True)
