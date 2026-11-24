@@ -27,6 +27,47 @@ def signature(actor, cue):
                       if type(x) is str and x.strip()))[:16]
 
 
+def _dissimilar_means_basis(actor, experience, event_ref, end, trial, sign):
+    """Two actual lived operations and a shared bodily difference.
+
+    This licenses a fallible new means hypothesis, not sameness of ends.
+    Object-specific and Other-addressed ends retain their original boundary.
+    """
+    op=(experience.get('felt_enactment') or {}).get('attempted_operation')
+    if (not experience.get('participated') or op==trial.get('operation')
+            or op in end.get('possible_means',[])
+            or end.get('origin_material_object_ref') is not None
+            or end.get('addressed_party_ref') is not None
+            or sign.get('source_actor')!=actor['id']
+            or sign.get('kind')!='performed_'+str(op).lower()):
+        return None
+    rows=actor.get('lived_genesis_episodes',[])
+    earlier=[x for x in rows if x.get('actor')==actor['id']
+             and x.get('event_ref')==trial.get('event_ref')
+             and x.get('experience_ref')==trial.get('experience_ref')
+             and x.get('actor_felt_attempt')==trial.get('operation')]
+    later=[x for x in rows if x.get('actor')==actor['id']
+           and x.get('event_ref')==event_ref
+           and x.get('experience_ref')==experience.get('ref')
+           and x.get('actor_felt_attempt')==op
+           and sign['id'] in x.get('received_sign_refs',[])]
+    if len(earlier)!=1 or len(later)!=1:return None
+    a,b=earlier[0],later[0]
+    if (type(a.get('clock')) is not int or type(b.get('clock')) is not int
+            or a['clock']>=b['clock'] or b['clock']!=experience.get('clock')
+            or a.get('location')==b.get('location')
+            or b.get('location')!=experience.get('location')
+            or a.get('unfinished_own_activity') or b.get('unfinished_own_activity')):
+        return None
+    shared=sorted(set(a.get('received_relief',{}))&set(b.get('received_relief',{})))
+    if not shared:return None
+    return {'earlier_episode_ref':a['id'],'later_episode_ref':b['id'],
+            'earlier_operation':trial['operation'],'later_operation':op,
+            'earlier_location':a['location'],'later_location':b['location'],
+            'shared_lived_relief_axes':shared,
+            'not_proof_of_same_good_or_cause':True}
+
+
 def propose_actor_lived_correspondences(actor, experience, event_ref):
     """Evidence-limited candidate for the EXISTING semantic development owner.
 
@@ -51,8 +92,9 @@ def propose_actor_lived_correspondences(actor, experience, event_ref):
         trials=[t for t in end.get('trial_history',[])
                 if type(t) is dict and t.get('event_ref')!=event_ref
                 and t.get('experience_ref')]
-        if not trials or operation not in end.get('possible_means',[]):
+        if not trials:
             continue
+        novel=operation not in end.get('possible_means',[])
         original_terms={x.casefold() for x in end.get('cue_terms',[])
                         if type(x) is str}
         for sign in signs:
@@ -65,6 +107,10 @@ def propose_actor_lived_correspondences(actor, experience, event_ref):
                    and b.get('origin_received_cue_ref')==sign['id']
                    for b in actor.get('functional_bindings',[])):
                 continue
+            basis=None
+            if novel:
+                basis=_dissimilar_means_basis(actor,experience,event_ref,end,trials[-1],sign)
+                if basis is None:continue
             candidate={
                 'kind':'ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
                 'possible_end_ref':end['id'],
@@ -78,6 +124,9 @@ def propose_actor_lived_correspondences(actor, experience, event_ref):
                 'not_necessarily_conscious_analogy':True,
                 'source_grade':'SOURCEFREE_CONTRAST_NOT_EMPIRICAL_ANALOGY',
             }
+            if basis is not None:
+                candidate['dissimilar_means_basis']=basis
+                candidate['hypothesis']='DIFFERENT_OPERATION_MIGHT_MEDIATE_THIS_POSSIBLE_END'
             candidates.append(candidate)
             break
     return candidates[:3]
@@ -104,10 +153,23 @@ def admit_functional_correspondence(actor, experience, event_ref, candidate):
     if len(received)!=1:
         raise ValueError('FUNCTIONAL_CUE_NOT_ACTOR_PERCEIVED')
     operation=candidate.get('candidate_operation')
-    if (operation not in end.get('possible_means',[]) or
-            (experience.get('felt_enactment') or {}).get('attempted_operation')
+    novel=operation not in end.get('possible_means',[])
+    if ((experience.get('felt_enactment') or {}).get('attempted_operation')
             !=operation):
         raise ValueError('FUNCTIONAL_NO_CURRENT_ENACTMENT')
+    basis=None
+    if novel:
+        matches=[p for p in propose_actor_lived_correspondences(actor,experience,event_ref)
+                 if p.get('dissimilar_means_basis') and
+                 p['possible_end_ref']==end_ref and
+                 p['prior_trial_ref']==candidate.get('prior_trial_ref') and
+                 p['perceived_cue_ref']==candidate.get('perceived_cue_ref') and
+                 p['candidate_operation']==operation]
+        if len(matches)!=1 or matches[0]['dissimilar_means_basis']!=candidate.get('dissimilar_means_basis'):
+            raise ValueError('FUNCTIONAL_NO_QUALIFIED_DISSIMILAR_MEANS')
+        basis=copy(matches[0]['dissimilar_means_basis'])
+    elif 'dissimilar_means_basis' in candidate:
+        raise ValueError('FUNCTIONAL_FALSE_NOVEL_MEANS')
     if candidate.get('use_scope')!='ONE_QUALIFIED_PROSPECTIVE_TRIAL':
         raise ValueError('FUNCTIONAL_UNBOUNDED_GENERALIZATION')
     sig=signature(actor,received[0])
@@ -129,6 +191,9 @@ def admit_functional_correspondence(actor, experience, event_ref, candidate):
         'objective_success':'UNKNOWN_NOT_A_CAUSAL_COMPARISON',
         'empirical_learning_law':'NOT_ESTABLISHED','grade':GRADE,
     }
+    if basis is not None:
+        record['dissimilar_means_basis']=basis
+        record['candidate_operation']=operation
     actor.setdefault('functional_bindings',[]).append(record)
     return {'kind':'ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
             'binding_ref':ref,'possible_end_ref':end_ref,
@@ -160,7 +225,7 @@ def project_functional_correspondences(constitution, access):
                  if set(signature(body,cue))&set(bridge.get('signature',[]))]
         if not matches:
             continue
-        active.append({
+        projected={
             'binding_ref':bridge['id'],'possible_end_ref':end['id'],
             'current_perceived_candidate_refs':[
                 c['id'] for c in matches if type(c.get('id')) is str],
@@ -169,7 +234,13 @@ def project_functional_correspondences(constitution, access):
             'not_sameness_proof':True,
             'not_actor_conscious_reason':True,
             'grade':GRADE,
-        })
+        }
+        if bridge.get('dissimilar_means_basis'):
+            if access.location!=bridge['dissimilar_means_basis']['later_location']:
+                continue
+            projected['candidate_operation']=bridge['candidate_operation']
+            projected['dissimilar_means_basis']=copy(bridge['dissimilar_means_basis'])
+        active.append(projected)
         readset.append(bridge['id'])
     return {'active':active,'readset':sorted(set(readset)),
             'identity_to_means_not_proved':True,'grade':GRADE}
