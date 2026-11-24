@@ -18,7 +18,8 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
                        possible_dependency_means_revisions)
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
-from .historical_self_organization import possible_lived_directional_orientation
+from .historical_self_organization import (possible_lived_directional_orientation,
+                                           possible_dependency_ambivalence)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
@@ -465,6 +466,9 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if selected_alternative and selected_alternative.get('course_historical_currents'):
+                practical['course_historical_currents_analytic_only']=copy(
+                    selected_alternative['course_historical_currents'])
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -814,6 +818,8 @@ class ConstitutiveRuntime:
                     possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_means_revisions':copy(
                     possible_dependency_means_revisions(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_ambivalence':copy(
+                    possible_dependency_ambivalence(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
