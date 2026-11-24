@@ -328,3 +328,235 @@ def test_combined_generated_cold_pipeline_exposes_revised_fibres(tmp_path,monkey
         checked+=1
     assert checked
 
+
+
+def _positioned_consumer_case(tag, op, subject_value, producer_value="0"):
+    """Real respondent data: X=0 selects 2, OR selects 3, NOT selects 2."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    rows = [{"id":f"R{x}{z}", "responses":{"X":x,"Z":z,"Y":x}}
+            for x,z in product((0,1),repeat=2)]
+    source = native._build_source(tag, rows)
+    auth = native._query_authority(tag)
+    xleaf = native._response_leaf(source,auth,"X",producer_value)
+    zleaf = native._response_leaf(source,auth,"Z",0)
+    if op=="COMMON_OR":
+        # X=0 is genuinely required on both arms. Do not throw away
+        # legitimate OR discovery merely because its AST is compound.
+        z1 = native._response_leaf(source,auth,"Z",1)
+        ast = {"op":"OR","children":[
+            {"op":"AND","children":[xleaf,zleaf]},
+            {"op":"AND","children":[xleaf,z1]}]}
+    else:
+        ast = xleaf if op=="LEAF" else (
+            {"op":"NOT","children":[xleaf]} if op=="NOT" else
+            {"op":op,"children":[xleaf,zleaf]})
+    predicate = native._predicate(source,auth,ast,tag=tag)
+    query = native._query(source,auth,predicate,("Y",),tag=tag)
+    universe,release = source["universe"].ref,source["release_ref"]
+    coord = source["qrefs"]["X"]
+    pairing = fx.make_pairing_authority(tag)
+    binding = fx.make_conditioner_binding(
+        binding_id="X",subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",subject_value)),
+        empirical_coordinate_ref=coord,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag,subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+        target_ref=source["qrefs"]["Y"],source_universe_ref=universe,release_ref=release,
+        bindings=[binding],projection_kind="TEST_ONLY_EXACT_CONDITIONAL")
+    # Each independently sealed subject/leaf/pair is genuine for its claimed
+    # value, but the relation can be false: subject X=1 paired with X=0.
+    subject = fx._subject_material("X",coord,subject_value)
+    leaf = fx._leaf_projection("X",coord,producer_value)
+    leaf_ref = fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",leaf)
+    pair = fx._pairing_material(binding.subject_fact_ref,leaf_ref,coord,subject_value)
+    witness = fx.make_multi_conditioner_witness(
+        witness_object_id="urn:test:"+tag+":witness",consumer_query=consumer,
+        producer_query=query,producer_predicate=predicate,bindings=[binding],
+        subject_materials=[subject],leaf_projections=[leaf],pairing_materials=[pair],
+        pairing_authority=pairing,source_universe_ref=universe,release_ref=release,
+        subject_preimage_refs=[binding.subject_fact_ref])
+    native_result = native._run(source,auth,predicate,query)
+    assert native_result.facts[0].typed_state=="SUPPORTED"
+    assert native_result.facts[0].raw_denominator_support == (3 if op=="OR" else 1 if op=="AND" else 2)
+    return lambda: compose_positioned_subject_possibility(
+        repository=source["repo"],empirical_query=query,predicate=predicate,
+        authority_registry=native._registry(source,auth),release_refs=(release,),
+        consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+        condition_binding_witness=witness)
+
+
+@pytest.mark.parametrize("op,subject_value", [("LEAF","1"),("OR","0"),("NOT","0")])
+def test_relay_c1_refuses_false_value_and_nonentailed_conditioners(op,subject_value):
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    compose = _positioned_consumer_case("RELAY-"+op,op,subject_value)
+    with pytest.raises(ConditionValueRelationMismatch):
+        compose()
+
+
+@pytest.mark.parametrize("op",["LEAF","COMMON_OR"])
+def test_relay_c1_true_exact_condition_preserved(op):
+    result = _positioned_consumer_case("RELAY-POSITIVE-"+op,op,"0")()
+    assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert result.raw_denominator_support==2
+    assert sum(c["raw_numerator_support"] for c in result.complete_cell_geometry)==2
+
+
+def test_relay_native_joint_component_order_survives_c1_consumer():
+    """Semantic order is not a set: native Y,Z must not become Z,Y."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash, canonicalize
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    tag = "RELAY-ORDER"
+    rows = [
+        {"id":"R0","responses":{"X":0,"Y":0,"Z":1}},
+        {"id":"R1","responses":{"X":0,"Y":0,"Z":1}},
+        {"id":"R2","responses":{"X":0,"Y":1,"Z":0}},
+        {"id":"R3","responses":{"X":1,"Y":1,"Z":1}},
+    ]
+    source = native._build_source(tag,rows)
+    auth = native._query_authority(tag)
+    predicate = native._predicate(source,auth,native._response_leaf(source,auth,"X",0),tag=tag)
+    targets = tuple(sorted(("Y","Z"),key=lambda name:source["qrefs"][name].key,reverse=True))
+    query = native._query(source,auth,predicate,targets,tag=tag)
+    refs = tuple(exact_ref(r) for r in query.target_refs)
+    assert refs == tuple(source["qrefs"][name] for name in targets)
+    assert refs != tuple(sorted(refs,key=lambda r:r.key))
+    expected = native._run(source,auth,predicate,query).facts[0]
+    assert expected.typed_state=="SUPPORTED" and expected.raw_denominator_support==3
+    universe,release = source["universe"].ref,source["release_ref"]
+    coord,pairing = source["qrefs"]["X"],fx.make_pairing_authority(tag)
+    binding = fx.make_conditioner_binding(
+        binding_id="X",subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",0)),
+        empirical_coordinate_ref=coord,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag,subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+        target_ref=refs[0],source_universe_ref=universe,release_ref=release,
+        bindings=[binding],projection_kind="TEST_ONLY_ORDERED_JOINT")
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:"+tag+":witness",consumer_query=consumer,
+        producer_query=query,producer_predicate=predicate,bindings=[binding],
+        coordinate_value_pairs=[(coord,0)],pairing_authority=pairing,
+        source_universe_ref=universe,release_ref=release)
+    result = compose_positioned_subject_possibility(
+        repository=source["repo"],empirical_query=query,predicate=predicate,
+        authority_registry=native._registry(source,auth),release_refs=(release,),
+        consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+        condition_binding_witness=witness)
+    assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert result.producer_fact_ref==expected.ref
+    assert result.ordered_target_refs==refs
+    geometry=result.consumer_result_or_null.exact_geometry
+    assert geometry["target"]["target_refs"]==[r.as_dict() for r in refs]
+    assert [c["target_ref"] for c in geometry["target"]["components"]]==[r.as_dict() for r in refs]
+    oracle = {tuple(c["cell"]):c["raw_numerator_support"]
+              for c in canonicalize(expected.target_topology)["complete_cell_semantic_projection"]}
+    assert {tuple(c["cell"]):c["raw_numerator_support"] for c in geometry["cells"]}==oracle
+
+
+@pytest.mark.parametrize("route",["DISCOVERY","RECURSIVE"])
+def test_relay_joint_routes_require_actual_first_target_and_scope(route):
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_analytical_composition import (
+        compose_positioned_subject_possibility, AnalyticalCompositionError,
+        _validate_discovery_consumption,
+    )
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    tag = "RELAY-JOINT-"+route
+    rows = [{"id":f"R{i}", "responses":{"X":x,"Y":y,"Z":z}}
+            for i,(x,y,z) in enumerate([(0,0,1),(0,0,1),(0,1,0),(1,1,1),(1,1,1)])]
+    source = native._build_source(tag,rows)
+    qa,da = native._query_authority(tag),i05._d_auth(tag+"-discovery")
+    parent = native._branch_predicate(source,qa,tag="all")
+    atom = native._predicate(source,qa,native._response_leaf(source,qa,"X",0),tag="x0")
+    names=tuple(sorted(("Y","Z"),key=lambda n:source["qrefs"][n].key,reverse=True))
+    template = native._query(source,qa,parent,names,tag="joint")
+    family = "RECURSIVE_SUBGROUP_FORK" if route=="RECURSIVE" else "BRANCH_CONDITIONED_COTRAVEL"
+    grammar=i05._grammar(operation="I03-OP-"+tag+"-discovery",
+        atoms=[i05._atom("ALL",parent,"BRANCH"),i05._atom("X0",atom,"RESPONSE")],
+        templates=[i05._qt("J",template)],
+        rules=[i05._rule("joint",family,"SINGLE_ATOM",atom_ids=("X0",),
+                        baseline_atom_id="ALL",query_template_id="J",
+                        validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"})],k=2,j=2)
+    authority=i05._discovery_authority(source,grammar,da,tag=tag)
+    registry=native._registry(source,qa,da)
+    args=dict(repository=source["repo"],discovery_authority=authority,authority_registry=registry,
+        release_refs=(source["release_ref"],),predicate_catalog=(parent,atom),
+        query_template_catalog=(template,))
+    if route=="RECURSIVE":
+        native_result=execute_exact_bounded_discovery_with_handoffs(**args)
+        discovery=native_result.discovery_result
+    else:
+        from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+        discovery=execute_exact_bounded_discovery(**args)
+    receipt=discovery.receipts[0]
+    assert receipt.typed_state=="DISCOVERED_RESULT_SUPPORTED"
+    role=next(r for r in receipt.candidate_identity["query_roles"] if r["role"]=="CONDITION")
+    predicate=next(p for p in discovery.executed_predicates if p.ref==exact_ref(role["predicate_ref"]))
+    query=next(q for q in discovery.executed_queries if q.ref==exact_ref(role["query_ref"]))
+    refs=tuple(exact_ref(r) for r in query.target_refs)
+    universe,release=source["universe"].ref,source["release_ref"]
+    coord,pairing=source["qrefs"]["X"],fx.make_pairing_authority(tag)
+    binding=fx.make_conditioner_binding(binding_id="X",
+        subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",0)),empirical_coordinate_ref=coord,
+        comparability_authority_ref=pairing,source_universe_ref=universe,release_ref=release)
+    def compose(target):
+        consumer=fx.make_multi_conditioner_consumer_query(query_id=tag,
+            subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+            target_ref=target,source_universe_ref=universe,release_ref=release,
+            bindings=[binding],projection_kind="TEST_ONLY_ORDERED_JOINT")
+        witness=fx.build_witness_for_binding(witness_object_id="urn:test:"+tag+":witness",
+            consumer_query=consumer,producer_query=query,producer_predicate=predicate,bindings=[binding],
+            coordinate_value_pairs=[(coord,0)],pairing_authority=pairing,
+            source_universe_ref=universe,release_ref=release)
+        route_args=({"recursive_handoff":native_result.handoffs[0]} if route=="RECURSIVE" else
+                    {"discovery_result":discovery,"discovery_receipt_ref":receipt.ref})
+        return compose_positioned_subject_possibility(repository=source["repo"],empirical_query=query,
+            predicate=predicate,authority_registry=registry,release_refs=(release,),
+            consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+            condition_binding_witness=witness,**route_args)
+    positive=compose(refs[0])
+    assert positive.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert positive.ordered_target_refs==refs and positive.raw_denominator_support==3
+    with pytest.raises(AnalyticalCompositionError,match="TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"):
+        compose(coord)
+
+
+@pytest.mark.parametrize("extra_x", [0,1])
+def test_relay_joint_discovery_uses_same_case_marginals_not_different_risk_sets(extra_x):
+    """The four common eligible cases are independent; separate X risk is skewed."""
+    tag="RELAY-RISK-"+str(extra_x)
+    rows=[{"id":f"R{x}{y}", "responses":{"X":x,"Y":y}}
+          for x,y in product((0,1),repeat=2)]
+    rows.extend({"id":f"E{i}","responses":{"X":extra_x,"Y":0}} for i in range(2))
+    common={r["id"] for r in rows[:4]}
+    all_ids={r["id"] for r in rows}
+    source=native._build_source(tag,rows,risk_sets={"R":{"X":all_ids,"Y":common}})
+    qa,da=native._query_authority(tag),i05._d_auth(tag+"-discovery")
+    pred=native._branch_predicate(source,qa,tag="all")
+    joint=native._query(source,qa,pred,("X","Y"),tag="joint")
+    xq=native._query(source,qa,pred,("X",),tag="X")
+    yq=native._query(source,qa,pred,("Y",),tag="Y")
+    grammar=i05._grammar(operation="I03-OP-"+tag+"-discovery",
+        atoms=[i05._atom("ALL",pred,"BRANCH")],
+        templates=[i05._qt("J",joint),i05._qt("X",xq),i05._qt("Y",yq)],
+        rules=[i05._rule("joint","PAIR_RESPONSE_COTRAVEL","JOINT_DEPENDENCE",
+            baseline_atom_id="ALL",joint_template_id="J",marginal_template_ids=("X","Y"),
+            validation={"kind":"JOINT_NOT_PRODUCT_OF_MARGINALS"})],j=2)
+    result=i05._execute(source,qa,da,grammar,(pred,),(joint,xq,yq))
+    receipt=result.receipts[0]
+    refs=receipt.support_uncertainty_state["query_role_fact_refs"]
+    facts={f.ref:f for f in result.empirical_facts}
+    jf,xf,yf=(facts[exact_ref(refs[role][0])] for role in ("JOINT","MARGINAL_0","MARGINAL_1"))
+    assert (jf.raw_denominator_support,xf.raw_denominator_support,yf.raw_denominator_support)==(4,6,4)
+    assert all(f.typed_state=="SUPPORTED" for f in (jf,xf,yf))
+    assert sorted(c["raw_numerator_support"] for c in jf.target_topology["complete_cell_semantic_projection"])==[1,1,1,1]
+    # Genuine same-case independence, not a claim of population independence.
+    # Keep all three executed native facts; do not use the external margin
+    # from six people to invent co-travel in the four common cases.
+    assert receipt.typed_state=="VALID_EMPTY"
+    assert receipt.coverage_state=="EVALUATED_VALID_EMPTY"
+    assert receipt.support_uncertainty_state["joint_dependence_comparison"][0]["basis"]=="JOINT_COMPLETE_CASE_MARGINAL_PROJECTIONS"
+    assert set(result.empirical_fact_refs)=={jf.ref,xf.ref,yf.ref}

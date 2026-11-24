@@ -45,7 +45,18 @@ def _issued_shape(issued, mode):
         grammar = canonicalize(old.candidate_universe_definition)
         rules = grammar["rules"]
         assert len(rules) >= 2
-        partitions = (rules[:1], rules[1:])
+        if mode == "multi-learned":
+            # Two actual disjoint native frontiers with eligible conditional
+            # rules on each, rather than two copies of the same result.
+            conditional = [rule for rule in rules
+                           if rule["family"] == "BRANCH_CONDITIONED_DISTRIBUTION"]
+            others = [rule for rule in rules
+                      if rule["family"] != "BRANCH_CONDITIONED_DISTRIBUTION"]
+            assert len(conditional) >= 2
+            partitions = (conditional[::2] + others[::2],
+                          conditional[1::2] + others[1::2])
+        else:
+            partitions = (rules[:1], rules[1:])
         snapshots = []
         objects = []
         for i, part in enumerate(partitions):
@@ -226,3 +237,133 @@ def test_failed_and_deferred_attempts_retained_without_reexecuting_completed_uni
                for k,v in part.batch_census["per_unit_full_preimage_sha256"].items())
     print("RETAINED_RETRY", final.batch_census["unit_count"], len(end._receipts),
           "failed_deferred_retained", final.receipt.root_identity)
+
+
+def test_inflight_checkpoint_survives_abrupt_process_loss(tmp_path, monkeypatch):
+    """Kill a publisher mid-attempt, then recover from independently held root.
+
+    Only the caller's pin and persisted C11/S2-F survive. Fork is used to carry
+    the already-issued test-only catalog, not a live native result/session.
+    Uncommitted work may be repeated; completed checkpointed units must not.
+    """
+    import json
+    import os
+    import multiprocessing
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+    from rawlsing_next.pre553_direct_estate_i03 import DirectEstateI03Session
+
+    if "fork" not in multiprocessing.get_all_start_methods():
+        pytest.skip("OS fork required for abrupt process-loss court")
+    handoff, estate, initial, v1, _, _ = s1e._full(tmp_path/"source")
+    issued = _issue_compiled_governed_queries_v2(v1).issued
+    workload, resolver = _issued_shape(issued, "query-only")
+    for p in (tmp_path/"source").rglob("*.sav"):
+        p.unlink()
+    common = dict(workload=workload, resolver=resolver, host=s1e._NATIVE_HOST,
+                  purpose=s1e._NATIVE_PURPOSE)
+    root = tmp_path/"products"
+    journal = tmp_path/"external-pins.jsonl"
+    calls = tmp_path/"native-calls.jsonl"
+    builds = tmp_path/"prepared-builds.jsonl"
+    original = PreparedI03Session.execute_i03
+    original_build = DirectEstateI03Session._build
+    parent_pid = os.getpid()
+    attempt_count = 0
+
+    def append(path, item):
+        # Independent test custodian: fsync each returned pin before
+        # acknowledging it; never discover a pin by scanning archive names.
+        with path.open("a", encoding="utf8") as stream:
+            stream.write(json.dumps(item, sort_keys=True) + "\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+
+    def rows(path):
+        return [json.loads(line) for line in path.read_text().splitlines()]
+
+    def query(self, *, query_ref, predicate_ref):
+        nonlocal attempt_count
+        attempt_count += 1
+        output = original(self, query_ref=query_ref, predicate_ref=predicate_ref)
+        append(calls, {"pid": os.getpid(), "query": query_ref.key})
+        if os.getpid() != parent_pid and attempt_count == 5:
+            # No Python finally/ExitStack cleanup, after real native work,
+            # before the fifth attempt can return to the Batch owner.
+            os._exit(73)
+        return output
+
+    def build(self):
+        append(builds, {"pid": os.getpid()})
+        return original_build(self)
+
+    monkeypatch.setattr(PreparedI03Session, "execute_i03", query)
+    monkeypatch.setattr(DirectEstateI03Session, "_build", build)
+    def factory():
+        return _v2_admission(initial, workload.catalog)
+
+    def observe(pin, publication):
+        append(journal, {
+            "path": str(pin.closure_path), "root": pin.expected_root,
+            "release": pin.expected_release_ref.as_dict(),
+            "saved_manifest": pin.expected_saved_manifest_sha256,
+            "completed": publication.batch_census["completed_count"],
+            "hashes": publication.batch_census["per_unit_full_preimage_sha256"],
+        })
+
+    def run():
+        execute_publish_saved(**common, saved_admission_factory=factory,
+                              root_dir=root, checkpoint_every=3,
+                              checkpoint_observer=observe)
+
+    process = multiprocessing.get_context("fork").Process(target=run)
+    process.start()
+    process.join(120)
+    if process.is_alive():
+        process.kill()
+        process.join()
+        pytest.fail("publisher did not terminate at real process-loss failpoint")
+    assert process.exitcode == 73, "publisher did not reach the injected abrupt exit"
+    first, = rows(journal)
+    assert first["completed"] == 3
+    assert len(rows(calls)) == 5
+    assert len(rows(builds)) == 1
+    pin = SavedResumePin(first["path"], first["root"], exact_ref(first["release"]),
+                         first["saved_manifest"])
+    cold = open_saved_product(pin.closure_path, expected_root=pin.expected_root,
+        expected_release_ref=pin.expected_release_ref,
+        expected_saved_manifest_sha256=pin.expected_saved_manifest_sha256,
+        **common, allow_partial=True)
+    assert cold.batch_census["completed_count"] == 3
+    retained_queries = {r.query_ref.key for r in cold._closure.i03_results}
+    assert retained_queries == {r["query"] for r in rows(calls)[:3]}
+    result = execute_publish_saved(**common, saved_admission_factory=factory,
+        root_dir=root, resume_from=pin, checkpoint_every=3,
+        checkpoint_observer=observe)
+    assert result.complete
+    entries = rows(journal)
+    assert [x["completed"] for x in entries] == [3, 6, 9, 12]
+    assert entries[-1]["root"] == result.receipt.root_identity
+    assert len(rows(builds)) == 2, "each process must reuse one prepared saved reader"
+    history = rows(calls)
+    frequencies = Counter(x["query"] for x in history)
+    assert all(frequencies[key] == 1 for key in retained_queries)
+    assert len(frequencies) == len(workload.requests)
+    assert sum(frequencies.values()) == len(workload.requests) + 2
+    assert all(result.batch_census["per_unit_full_preimage_sha256"][k] == v
+               for k, v in first["hashes"].items())
+    # Every root is independently cold readable; explicit prior-root ancestry
+    # is conserved even across process death.
+    shutil.rmtree(estate.path)
+    monkeypatch.setattr(SavedC11Admission, "open", lambda *a, **k: pytest.fail("cold reopened C11"))
+    for idx, item in enumerate(entries):
+        reopened = open_saved_product(item["path"], expected_root=item["root"],
+            expected_release_ref=exact_ref(item["release"]),
+            expected_saved_manifest_sha256=item["saved_manifest"],
+            **common, allow_partial=True)
+        assert reopened.batch_census["completed_count"] == item["completed"]
+        assert reopened._closure.manifest["core"]["native_result"]["typed_states"]["resumed_from_root"] == (
+            None if idx == 0 else entries[idx-1]["root"])
+    assert len([cold.read_s04(r.query_ref) for r in cold._closure.i03_results]) == 3
+    print("ABRUPT_RECOVERY", process.exitcode, [x["completed"] for x in entries],
+          "native_calls", len(history), "checkpointed_no_repeat", len(retained_queries),
+          "prepared_builds", len(rows(builds)), "final", result.receipt.root_identity)

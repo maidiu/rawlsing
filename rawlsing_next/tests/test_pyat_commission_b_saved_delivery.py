@@ -187,8 +187,8 @@ def _joint_fixture(root, source_format):
     return s1e._fixed_fixture(fx)
 
 
-@pytest.mark.parametrize("source_format", ["SAV", "DTA"])
-def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source_format):
+@pytest.mark.parametrize("source_format,multi", [("SAV", False), ("DTA", False), ("SAV", True)])
+def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source_format, multi):
     from rawlsing_next.pre553_source_saved_body_bridge import SourceSavedBodySink
     from rawlsing_next.pre553_saved_c11_admission import SavedReleaseIdentity
     from rawlsing_next.pre553_universal_workload import compile_governed_frontier
@@ -224,6 +224,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     issue = _issue_compiled_governed_queries_v2(v1)
     workload = issue.issued.workload
     resolver = TestOnlyDecisionResolver(issue.issued.record)
+    if multi:
+        from rawlsing_next.tests.test_pyat_commission_b_general_archive import _issued_shape
+        workload, resolver = _issued_shape(issue.issued, "multi-learned")
     def factory():
         return SavedC11Admission.open(
             root=private, exact_path=estate.path,
@@ -293,8 +296,10 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
     closure = open_empirical_closure(result.receipt.root_path,
                                     expected_root=result.receipt.root_identity).require_trusted()
-    discovery = closure.i05_result
-    candidates = [r for r in discovery.receipts
+    assert len(closure.discovery_results) == (2 if multi else 1)
+    if multi:
+        assert closure.i05_result is None
+    candidates = [r for discovery in closure.discovery_results for r in discovery.receipts
                   if r.typed_state == "DISCOVERED_RESULT_SUPPORTED"]
     assert candidates, "no supported original discovery receipt"
     selected = candidates[0]
@@ -324,10 +329,21 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
           "native", result.execution_seconds, "s2f", result.publication_seconds,
           "cold_open", cold_open_seconds, "ff01", ff_seconds,
           "s2f_referenced_bytes", result.receipt.referenced_physical_bytes)
-    _learned_vertical(cold, closure, tmp_path, source_format)
+    if multi:
+        products = []
+        for i, discovery in enumerate(closure.discovery_results):
+            lane = tmp_path / ("frontier-" + str(i))
+            lane.mkdir()
+            products.append(_learned_vertical(cold, closure, lane, source_format, discovery=discovery))
+        assert products[0][0] != products[1][0], "frontier identity collapsed"
+        assert products[0][1] != products[1][1], "learned archive identity collapsed"
+        print("MULTI_FRONTIER_LEARNED", closure.root_identity,
+              [(receipt.key, root, digest) for receipt, root, digest in products])
+    else:
+        _learned_vertical(cold, closure, tmp_path, source_format)
 
 
-def _learned_vertical(cold, closure, tmp_path, source_format):
+def _learned_vertical(cold, closure, tmp_path, source_format, *, discovery=None):
     """Actual saved-source I05 -> M1/M2/B5 -> cold S2-G consumer.
     
     Only the consumer request, comparator and validator are synthetic
@@ -354,8 +370,9 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     from rawlsing_next.tests.test_pyat960_s2g_durable_lifecycle import _attestation
     from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import _validator
 
-    discovery = closure.i05_result
-    tag = "commission-b-saved-learned-" + source_format
+    discovery = closure.i05_result if discovery is None else discovery
+    assert discovery is not None
+    tag = "commission-b-saved-learned-" + source_format + "-" + discovery.discovery_authority_ref.content_hash[:12]
     release = closure.release_identities[0].release_ref
     predicates = {p.ref: p for p in discovery.executed_predicates}
     queries = {q.ref: q for q in discovery.executed_queries}
@@ -378,6 +395,7 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 break
     assert chosen is not None, "no actual supported value-conditioned discovery"
     receipt, query, predicate, leaf = chosen
+    assert closure.discovery_by_receipt(receipt.ref).replay_ref == discovery.replay_ref
     coord = exact_ref(leaf["question_semantic_ref"])
     value = leaf["exact_value"]
     universe = exact_ref(query.empirical_universe_refs[0])
@@ -479,6 +497,40 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 condition_binding_witness=wrong_witness))
     assert_unchanged(invalid_root)
     print("SAVED_WRONG_TARGET_REFUSED", source_format, target.key, wrong_target.key)
+
+    # Readdress a *different* subject value and its pairing, while keeping
+    # the actual retained native producer and its real value-bearing leaf.
+    # A well-formed, content-addressed false relation must not reach M2/B5.
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    wrong_value = "1" if float(value) == 0.0 else "0"
+    wrong_binding = replace(conditioner, subject_fact_ref=ExactRef(**fx.subject_fact_ref(
+        {"qrefs": {"condition": coord}}, "condition", wrong_value)))
+    wrong_subject = replace(consumer, conditioner_bindings=(wrong_binding,))
+    wrong_subject_material = fx._subject_material("condition", coord, wrong_value)
+    actual_leaf_material = fx._leaf_projection("condition", coord, value)
+    actual_leaf_ref = fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",actual_leaf_material)
+    wrong_pair = fx._pairing_material(wrong_binding.subject_fact_ref,actual_leaf_ref,coord,wrong_value)
+    wrong_value_witness = fx.make_multi_conditioner_witness(
+        witness_object_id="urn:test:" + tag + ":wrong-value",
+        consumer_query=wrong_subject, producer_query=query, producer_predicate=predicate,
+        bindings=[wrong_binding], subject_materials=[wrong_subject_material],
+        leaf_projections=[actual_leaf_material], pairing_materials=[wrong_pair],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release,
+        subject_preimage_refs=[wrong_binding.subject_fact_ref])
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        compose_positioned_subject_possibility(
+            repository=None, empirical_query=query, predicate=predicate,
+            authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+            release_refs=(release,), consumer_query=wrong_subject, model_rule=model,
+            condition_binding_witness=wrong_value_witness, discovery_result=discovery,
+            discovery_receipt_ref=receipt.ref)
+    invalid_root = tmp_path / "wrong-conditioned-value"
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        cold.publish_learned(**args, m2_repository=repository, lifecycle_executor=executor,
+            root_dir=invalid_root, determinants=replace(determinants, consumer_query=wrong_subject,
+            condition_binding_witness=wrong_value_witness))
+    assert_unchanged(invalid_root)
+    print("SAVED_WRONG_CONDITION_VALUE_REFUSED", source_format, value, wrong_value)
 
     invalid_root = tmp_path / "negative-rule"
     negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
@@ -646,3 +698,4 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
           "publish_and_validate_seconds", learned_seconds,
           "fresh_cold_seconds", observed["elapsed_seconds"],
           "fresh_peak_rss_bytes", observed["process_tree_peak_rss_bytes"])
+    return receipt.ref, learned.root_identity, consumed.consumer_result_hash

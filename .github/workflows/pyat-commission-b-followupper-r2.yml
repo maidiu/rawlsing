@@ -1,0 +1,42 @@
+name: PYAT B R2 adversarial court
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_analytical_composition.py'
+      - 'rawlsing_next/pre553_saved_durable_delivery.py'
+      - 'rawlsing_next/pre553_durable_empirical_closure.py'
+      - 'rawlsing_next/pre553_durable_learned_lifecycle.py'
+      - 'rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py'
+      - 'rawlsing_next/tests/test_pyat_commission_b_general_archive.py'
+      - 'rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py'
+      - '.github/workflows/pyat-commission-b-followupper-r2.yml'
+permissions:
+  contents: read
+jobs:
+  adversarial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify exact checkout
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git rev-parse HEAD
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: Native C1 and actual saved archive court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q -s -o addopts='' rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pyat_commission_b_general_archive.py rawlsing_next/tests/test_pyat_commission_b_saved_delivery.py --junitxml=pyat-b-r2.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-b-r2
+          path: pyat-b-r2.xml
