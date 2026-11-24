@@ -7,6 +7,10 @@
 - [OpenCode commission](02_OPENCODE_LOCAL_ESTATE_SURVEY.md): read-only survey of actual local custody and native schemas, coverage, meaning and permissions; no conversion, harmonization, production integration or architecture changes.
 - [Proposed receiving delta](03_RECEIVING_AND_NEXT_DECISION.md): preserve owner and currentness boundaries; return to the existing G4 and paired CURRENT_PROGRESS through competent receiving.
 
+### Actual-estate return received
+
+[ACTUAL_ESTATE_RETURN_R1/](ACTUAL_ESTATE_RETURN_R1/) — completed 2026-11-24 local source-estate reconnaissance. Start with [00_RETURN.md](ACTUAL_ESTATE_RETURN_R1/00_RETURN.md); full dictionaries, coverage, manifests and decision questions are in the same directory. This supersedes the provisional “user-reported / not verified” custody assumptions below. It records actual reconnaissance and verified repository custody only; it is not scientific admission or architectural adoption. Prior substantive intelligence remains preserved.
+
 ### Governing user intent
 
 The August 30 fixed-source R1 correction remains valid for that campaign. The user now explicitly requests mapping the newly acquired independent structural estate for contemporary FIELD FORGE inquiry. This does not expand original35 or interrupt P0 C11. Favor even geographic coverage, historical depth, practical structural information and high marginal return. Selective activation is not destruction of acquired evidence. Defer MICS/DHS/youth sources, Findex microdata, enterprise microdata and specialist EPR/RAS branches; keep acquired reserves. No more acquisition in this commission. Rawlsing is a not-for-profit philanthropic humanitarian-educational resource; purpose is not a substitute for provider permission, confidentiality, redistribution rights or generative-use authorization.
