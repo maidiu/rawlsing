@@ -1,0 +1,46 @@
+name: SOROK O-Index documentary functional receiving
+on:
+  push:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/**'
+      - '.github/workflows/sorok-o-index-functional-receiving.yml'
+  pull_request:
+    paths:
+      - 'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/**'
+      - '.github/workflows/sorok-o-index-functional-receiving.yml'
+permissions:
+  contents: read
+jobs:
+  documentary:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Existing receiving checker adversaries
+        run: python -m unittest -v test_live_receiving.py
+      - name: Function-first readback from the same ledger
+        run: |
+          python check_live_receiving.py --function all > "$RUNNER_TEMP/all-functions.json"
+          python check_live_receiving.py --function C8 > "$RUNNER_TEMP/c8.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          folder = Path(os.environ['RUNNER_TEMP'])
+          doc = json.loads((folder / 'all-functions.json').read_text())
+          rows = doc['functions']
+          assert doc['mode'] == 'PINNED_DOCUMENTARY_SNAPSHOT_NOT_LIVE_NOT_PARITY'
+          assert doc['original_identity_count'] == len(rows) == 144
+          assert len({x['original']['id'] for x in rows}) == 144
+          assert sum(bool(x['linked_observations']) for x in rows) == 22
+          assert sum(len(x['linked_observations']) for x in rows) == 50
+          c8 = json.loads((folder / 'c8.json').read_text())['functions'][0]
+          assert c8['original']['id'] == 'C8'
+          assert any(x['pr'] == 1300 and 'HELD' in x['relation']['grade'] for x in c8['linked_observations'])
+          assert all(x['pr'] != 1294 for row in rows for x in row['linked_observations'])
+          print('144 inherited identities; 22 linked identities; 50 scoped links; rejected dependency held; no protected receiving claim.')
+          PY
