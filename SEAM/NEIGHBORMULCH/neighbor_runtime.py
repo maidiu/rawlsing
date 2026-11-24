@@ -453,6 +453,69 @@ class NeighborEncounter:
             if visible_identity and actor_loc == loc:
                 mandatory.append({'kind': 'CO_PRESENT_ACTOR',
                                   'actor_ref': actor_id, 'interpretation': 'NONE'})
+        # Existing CO world.resolve publishes a modality-typed performed_*
+        # sign and public_history row, while runtime.step binds that occurrence
+        # to the immutable ACTOR_LIFE_TRANSITION. Read those actual producers,
+        # not the process-local generated prose. This is a finite MII exposure
+        # of the present occurrence, NOT historical reconstruction or a new
+        # sensory world. The sound itself does not encode words or identity.
+        last_event = self.runtime.ledger.events()[-1]
+        envelope = last_event.get('envelope', {})
+        actual = envelope.get('payload', {}).get('actual', {})
+        current_clock = world['clock']
+        if (last_event.get('kind') == 'ACTOR_LIFE_TRANSITION'
+                and last_event.get('clock') == current_clock
+                and envelope.get('world') == self.runtime.world_id
+                and type(actual) is dict and actual.get('clock') == current_clock
+                and actual.get('actor') == last_event.get('actor_id')
+                and actual.get('status') == 'PERFORMED'
+                and world.get('public_history') and world.get('cues')):
+            historical_public = world['public_history'][-1]
+            cue = world['cues'][-1]
+            action = actual.get('action')
+            # CO currently appends exactly one primary sign as the last cue
+            # for this world resolution; refuse mismatches rather than guess.
+            # Both the committed public row and the cue must agree with the
+            # transition. Never expose the objective audit payload or tags.
+            if (type(action) is str and type(historical_public) is dict
+                    and historical_public.get('actor') == actual.get('actor')
+                    and historical_public.get('clock') == current_clock
+                    and historical_public.get('action') == action
+                    and historical_public.get('status') == 'PERFORMED'
+                    and type(cue) is dict and type(cue.get('id')) is str
+                    and cue.get('kind') == 'performed_' + action.lower()
+                    and cue.get('source_actor') == actual.get('actor')
+                    and cue.get('clock') == current_clock
+                    and cue.get('last_access_clock', -1) >= current_clock
+                    and cue.get('location') == loc
+                    and cue.get('private_to') is None):
+                # The existing owner qualifies these four actions as
+                # auditory; descriptions of outcomes are NOT spoken text.
+                # A nearby sound is not recognition of its source or meaning.
+                sounds = {'SPEAK': 'Speech sounds nearby.',
+                          'SING': 'Singing sounds nearby.',
+                          'SIGNAL': 'A vocal signal sounds nearby.',
+                          'ASK': 'Speech sounds nearby.'}
+                movements = {'MOVE': 'Someone moves nearby.',
+                             'ORIENT': 'Someone turns nearby.'}
+                if (audible and cue.get('modality') == 'auditory'
+                        and action in sounds):
+                    mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                        'text': sounds[action], 'modality': 'auditory',
+                        'source_event_ref': last_event['id'],
+                        'source_cue_ref': cue['id'],
+                        'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
+                        'speaker_identity': 'NOT_ESTABLISHED',
+                        'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                        'interpretation': 'NONE'})
+                elif (visible_identity and cue.get('modality') == 'visual'
+                        and action in movements):
+                    mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                        'text': movements[action], 'modality': 'visual',
+                        'source_event_ref': last_event['id'],
+                        'source_cue_ref': cue['id'],
+                        'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
+                        'interpretation': 'NONE'})
         if self._last_actor_tip is not None:
             receipt, at_clock, tip = self._last_actor_tip
             actor_location = world['positions'].get(self._last_actor_ref)
