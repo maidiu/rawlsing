@@ -36,7 +36,7 @@ from .livelihood_history import (
     conserve_incomplete_work, possible_recurrent_work_orientation,
 )
 from .psychic_genesis import (
-    conserve_lived_episode,possible_contrast_end)
+    conserve_lived_episode,possible_contrast_end,possible_dependency_project_takeups)
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
     conserve_costly_offered_care,candidate_care_commitment)
@@ -797,6 +797,8 @@ class ConstitutiveRuntime:
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'historically_possible_genetic_ends':copy(possible_genetic_end),
+                'historically_possible_dependency_takeups':copy(
+                    possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(

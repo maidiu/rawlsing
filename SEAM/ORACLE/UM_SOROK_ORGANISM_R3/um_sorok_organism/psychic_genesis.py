@@ -421,3 +421,84 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
             "genesis_witness_ref":expected["genesis_witness_ref"],
             "status":"ADMITTED_CONTRASTED_POSSIBILITY_NOT_YET_MOTIVE",
             "grade":GRADE}
+
+
+def possible_dependency_project_takeups(actor, experience, event_ref):
+    """Offer a later enduring undertaking, not a reward for successful eating.
+
+    The same dependency-derived end must have recruited an actual earlier
+    trial. A distinct later self-selected nontrial course supplies the
+    occasion for optional semantic reorganization. Original relation,
+    event and practical power remain distinct from the newly acquired end.
+    """
+    aid=actor.get("id")
+    clock=experience.get("clock")
+    selected=experience.get("own_practical_selection") or {}
+    request=selected.get("world_request") or {}
+    if (experience.get("actor")!=aid or type(clock) is not int
+            or experience.get("own_action")!="EAT"
+            or experience.get("status")!="PERFORMED"
+            or not experience.get("participated")
+            or (experience.get("felt_enactment") or {}).get("attempted_operation")!="EAT"
+            or selected.get("actor")!=aid
+            or selected.get("status")!="ACTOR_POLICY_PRACTICAL_ATTEMPT"
+            or selected.get("possible_end_trial") is not None
+            or selected.get("selected_project_refs")!=[]
+            or type(selected.get("option_id")) is not str
+            or request.get("operation")!="EAT"
+            or request.get("addressed_party_ref") is not None
+            or experience.get("reciprocated_partner") is not None):
+        return []
+    rows=actor.get("lived_genesis_episodes",[])
+    now=[x for x in rows if x.get("actor")==aid and x.get("event_ref")==event_ref
+         and x.get("experience_ref")==experience.get("ref") and x.get("clock")==clock
+         and x.get("actor_felt_attempt")=="EAT"
+         and x.get("selected_practical_option_ref")==selected["option_id"]
+         and x.get("received_relief",{}).get("nutrition")
+         and not x.get("unfinished_own_activity")
+         and not x.get("personally_lived_adverse_course")]
+    if len(now)!=1:return []
+    cur=now[0]
+    signs=[c for c in experience.get("perceived_cues",[])
+           if c.get("kind")=="performed_eat" and c.get("source_actor")==aid
+           and c.get("id") in cur["received_sign_refs"]]
+    if len(signs)!=1:return []
+    candidates=[]
+    for end in actor.get("possible_ends",[])[-128:]:
+        if (end.get("status")!="POSSIBLE_NOT_ACQUIRED_MOTIVE"
+                or end.get("genesis_family")!="INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF"
+                or end.get("possible_means")!=["EAT"]
+                or not end.get("dependency_loss_basis")):continue
+        origin=end["dependency_loss_basis"]
+        seed=[x for x in rows if x.get("id")==origin.get("independent_episode_ref")
+              and x.get("actor")==aid and x.get("event_ref")==end.get("origin_event")]
+        if len(seed)!=1 or seed[0].get("location")!=cur.get("location"):continue
+        if not ({str(t).casefold() for t in signs[0].get("tags",[])}
+                & {str(t).casefold() for t in end.get("cue_terms",[])}):continue
+        trials=[]
+        for t in end.get("trial_history",[]):
+            if (t.get("operation")!="EAT" or t.get("actor_experienced_status")!="PERFORMED"
+                    or t.get("eliciting_possible_end_ref")!=end["id"]
+                    or t.get("event_ref")==event_ref):continue
+            lived=[x for x in rows if x.get("actor")==aid and x.get("event_ref")==t.get("event_ref")
+                   and x.get("experience_ref")==t.get("experience_ref")
+                   and x.get("actor_felt_attempt")=="EAT"
+                   and seed[0]["clock"]<x["clock"]<clock
+                   and x.get("location")==cur.get("location")
+                   and x.get("received_relief",{}).get("nutrition")
+                   and not x.get("unfinished_own_activity")
+                   and not x.get("personally_lived_adverse_course")
+                   and set(t.get("received_sign_refs",[]))&set(x.get("received_sign_refs",[]))]
+            if len(lived)==1:trials.append((t,lived[0]))
+        if not trials:continue
+        t,prior=max(trials,key=lambda pair:pair[1]["clock"])
+        basis={"dependency_practice_ref":origin["practice_ref"],
+               "origin_independent_episode_ref":seed[0]["id"],
+               "earlier_lived_trial_ref":t["id"],"earlier_trial_episode_ref":prior["id"],
+               "later_independent_episode_ref":cur["id"],"later_selected_option_ref":selected["option_id"],
+               "source_event_refs":[seed[0]["event_ref"],prior["event_ref"],event_ref],
+               "not_proof_of_motive_fulfillment_or_mastery":True}
+        candidates.append({"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":end["id"],
+                           "later_perceived_cue_ref":signs[0]["id"],"means":["EAT"],
+                           "priority":.4,"dependency_takeup_basis":basis})
+    return candidates[:3]
