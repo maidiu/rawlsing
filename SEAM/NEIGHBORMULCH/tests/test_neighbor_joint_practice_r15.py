@@ -73,7 +73,7 @@ class JointPracticeR15(unittest.TestCase):
                 self.assertEqual(first['attempt'],'SING')
                 self.assertEqual(first['status'],'PARTIAL')
                 before=deepcopy(rt.ledger.actors())
-                actual=n.contribute('sing','SING')
+                actual=n.contribute('sing','SING',target_actor_ref='worker')
                 self.assertEqual(actual['status'],'PERFORMED')
                 self.assertEqual(rt.ledger.actors(),before)
                 rt.semantic=policy('explore',acquire)
@@ -93,7 +93,7 @@ class JointPracticeR15(unittest.TestCase):
                                  actual['event_ref'])
                 self.assertNotIn('visitor',rt.ledger.actors())
                 old_count=rt.verify()['events']
-                self.assertTrue(n.contribute('sing','SING')['idempotent_replay'])
+                self.assertTrue(n.contribute('sing','SING',target_actor_ref='worker')['idempotent_replay'])
                 self.assertEqual(rt.verify()['events'],old_count)
                 rt.close()
                 cold=ConstitutiveRuntime(db,world_id=name,semantic=policy('recruit'))
@@ -103,7 +103,7 @@ class JointPracticeR15(unittest.TestCase):
                 self.assertEqual(later['attempt'],'SING' if acquire else 'WAIT')
                 self.assertEqual(later['status'],'PARTIAL' if acquire else 'PERFORMED')
                 self.assertEqual(len(cold.ledger.world(name)[1]['relations']['rel:visitor:worker']['history']),1)
-                nn.contribute('fresh','SING')
+                nn.contribute('fresh','SING',target_actor_ref='worker')
                 fresh=nn.independent_actor_beat('worker')
                 self.assertEqual(fresh['attempt'],'SING' if acquire else 'WAIT')
                 self.assertEqual(fresh['status'],'PERFORMED')
@@ -123,7 +123,7 @@ class JointPracticeR15(unittest.TestCase):
                 name='negative'+str(hearing)+facing+str(stale)
                 rt,n,_=self.build(name,hearing=hearing,facing=facing)
                 n.independent_actor_beat('worker')
-                out=n.contribute('sing','SING')
+                out=n.contribute('sing','SING',target_actor_ref='worker')
                 self.assertEqual(out['status'],'PERFORMED')
                 if stale:n.contribute('elapsed','WAIT')
                 rt.semantic=policy('explore',True)
@@ -132,6 +132,22 @@ class JointPracticeR15(unittest.TestCase):
                 self.assertEqual(rt.ledger.actor('worker')[1]['joint_practices'],[])
                 self.assertNotIn('rel:visitor:worker',rt.ledger.world(name)[1]['relations'])
                 self.assertTrue(rt.verify()['valid'])
+
+    def test_unaddressed_singing_is_not_consent_and_cannot_bind_replay(self):
+        from neighbor_runtime import EncounterRefusal
+        rt,n,_=self.build('unaddressed')
+        n.independent_actor_beat('worker')
+        out=n.contribute('song','SING')
+        self.assertEqual(out['status'],'PERFORMED')
+        self.assertTrue(out['potential_actor_evidence'])
+        with self.assertRaises(EncounterRefusal):
+            n.contribute('song','SING',target_actor_ref='worker')
+        rt.semantic=policy('explore',True)
+        result=n.independent_actor_beat('worker')
+        self.assertEqual(result['status'],'PARTIAL')
+        self.assertEqual(rt.ledger.actor('worker')[1]['joint_practices'],[])
+        self.assertNotIn('rel:visitor:worker',rt.ledger.world('unaddressed')[1]['relations'])
+        self.assertTrue(rt.verify()['valid'])
 
 if __name__=='__main__':
     unittest.main()
