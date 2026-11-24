@@ -631,7 +631,7 @@ def _learned_vertical(cold, closure, tmp_path, source_format, *, discovery=None)
     # Inspect what the actual learned consumer reads, not only a matching
     # hash. A narrower producer predicate must survive S2-G presentation.
     expected_lane = composition.consumer_result_or_null.material()["exact_lane"]
-    assert consumed.material["consumer_values_read"]["exact_lane"] == expected_lane
+    assert consumed.material["consumer_values_read"]["consumer_values_read"]["exact_lane"] == expected_lane
     scope = expected_lane["geometry"].get("condition_scope")
     if scope is not None:
         assert scope["producer_predicate_ref"] == predicate.ref.as_dict()
@@ -641,7 +641,7 @@ def _learned_vertical(cold, closure, tmp_path, source_format, *, discovery=None)
     retrieved = cold.read_learned(learned.artifact_path,
         expected_root=learned.root_identity, expected_purpose_ref=determinants.purpose_ref)
     assert retrieved.consumer_result_hash == consumed.consumer_result_hash
-    assert retrieved.material["consumer_values_read"]["exact_lane"] == expected_lane
+    assert retrieved.material["consumer_values_read"]["consumer_values_read"]["exact_lane"] == expected_lane
     artifact = open_learned_lifecycle(learned.artifact_path,
         expected_root=learned.root_identity).require_trusted()
     assert artifact.m1_disposition.ref == consumed.m1_disposition_ref
