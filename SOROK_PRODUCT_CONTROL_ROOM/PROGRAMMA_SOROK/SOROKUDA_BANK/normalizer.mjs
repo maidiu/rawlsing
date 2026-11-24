@@ -43,7 +43,7 @@ export function codeStatus(k,r){
  return "SOURCE_PRESENT__CURRENT_INTEGRATION_NOT_ESTABLISHED"
 }
 
-export function normalize(union,theme,code,nm,co,dateCache){
+export function normalize(union,theme,code,nm,co,dateCache,r9){
  const originals=new Map(code.map(r=>[r.id,r]));
  if(code.length<300||new Set(code.map(x=>x.id)).size!==code.length)throw Error("SOROKUDA 482 no-drop failed");
  for(const old of union.sorokuda_source_and_alternative_versions){
@@ -120,10 +120,29 @@ export function normalize(union,theme,code,nm,co,dateCache){
    x.meaning.classification=r.classification;x.meaning.user_delta=r.user_delta;x.meaning.existing_owner=r.existing_owner;x.meaning.acceptance=r.acceptance;x.meaning.status_gap=r.status_gap;
    x.integration.state=r.status??"R27_PARTIAL_OR_HELD";x.evidence.source_grade=r.grade??"R27_PROVISIONAL";push(x);
  }
- if(out.length!==517+code.length)throw Error("Expected "+(517+code.length)+" exact slots, got "+out.length);
+
+ const rows=r9?.rows;
+ if(!Array.isArray(rows)||rows.length!==104||new Set(rows.map(x=>x.id)).size!==104)throw Error("R9_SOURCE_104_HOLD");
+ const C=rows.filter(x=>/^C\d\d$/.test(x.id)),NM=rows.filter(x=>/^NM-\d{3}$/.test(x.id)),R=rows.filter(x=>/^R9-\d\d$/.test(x.id));
+ if(C.length!==44||NM.length!==44||R.length!==16)throw Error("R9_LINEAGES_HOLD");
+ const previousNM=new Set(parse44(nm).map(x=>x.id));
+ if(NM.some(x=>!previousNM.has(x.id)))throw Error("R9_PREVIOUS_NM_ID_HOLD");
+ for(const r of [...C,...R]){
+   const cut="3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2",path="SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json";
+   const x=skeleton(r.id.startsWith("C")?"NEIGHBOR-R8-"+r.id:"NEIGHBOR-"+r.id,"ideas",r.id.startsWith("C")?"prior_neighbor_r8_conversation_proposition":"neighbor_r9_conversation_proposition",r.proposition,r,
+    {path,blob:"12c92bf0be2ba2f6e635ed9190a748b647aec9af",url:"https://github.com/maidiu/rawlsing/blob/"+cut+"/"+path},cut,"NEIGHBOR_R9_UNION:"+r.source,"PINNED_R9_ORIGINAL_PROPOSITION__SEMANTIC_ACCEPTANCE_HELD");
+   x.dates.banked_on="2026-11-23";x.meaning.description=r.proposition;x.meaning.source_exact_text_available=true;
+   x.meaning.origin_fidelity=r.source;x.meaning.r9_disposition=r.r9_disposition??null;
+   x.meaning.claimed_synthesis_sections=r.fusion_home_sections??null;x.meaning.coverage_grade=r.coverage_grade??null;
+   x.function.owner_link_grade="HISTORICAL_CONCEPTUAL_SOURCE__NOT_VERIFIED_CONSUMER";
+   x.integration.state="CONVERSATION_SOURCE_BANKED__OPERATIVE_PARITY_UNVERIFIED";
+   x.relationships.historical_version_of=r.id.startsWith("C")?"R8_SHARED_BANK:"+r.id:null;
+   push(x);
+ }
+ if(out.length!==577+code.length)throw Error("Expected "+(577+code.length)+" exact slots, got "+out.length);
  const ids=new Set(out.map(r=>r.id));if(ids.size!==out.length)throw Error("DUPLICATE SOURCE ID in unified bank");
  const counts={};for(const x of out)counts[x.bank]=(counts[x.bank]||0)+1;
- if(counts.ideas!==373||counts.functions!==144||counts.code!==code.length)throw Error("Wrong partitions "+JSON.stringify(counts));
+ if(counts.ideas!==433||counts.functions!==144||counts.code!==code.length)throw Error("Wrong partitions "+JSON.stringify(counts));
  if(theme.H_original_ideation_first_pass.length!==190||theme.Q_original_questions_first_pass.length!==123||theme.O_index_owner_first_pass.length!==144)throw Error("Thematic source lost");
  return out;
 }
@@ -139,7 +158,7 @@ export function documentIndex(locator){
 }
 
 export function validateBank(records,docs,code,union){
- if(records.length!==517+code.length||new Set(records.map(x=>x.id)).size!==records.length)throw Error("999 no-drop");
+ if(records.length!==577+code.length||new Set(records.map(x=>x.id)).size!==records.length)throw Error("999 no-drop");
  const codeSet=new Set(code.map(x=>x.id));const gotCode=records.filter(x=>x.bank==="code");
  if(gotCode.length!==code.length||gotCode.some(r=>!codeSet.has(r.id)))throw Error("CODE 482 no-drop");
  if(docs.filter(x=>x.kind==="reference_document_or_source_file").length!==227)throw Error("Document locator no drop");

@@ -2,14 +2,14 @@
 
 **SOURCE-PINNED CANDIDATE · November 21, 2026. Not protected PROGRAMMA, original science, production or independent G5.** Read the [SOROK HQ OATH](../00_PROGRAMMA_SOROK.md) and [PYAT G4 first consultation](../../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md) before a consequential engineering claim. This extends existing [SOROKUDA](../SOROKUDA.md), original 144 O-Index functions and [NEIGHBORMULCH TOTAL MULCH #1275](https://github.com/maidiu/rawlsing/pull/1275); it does not replace them.
 
-## The operative unified bank — **1003 source identities, not 1003 capabilities**
+## The operative unified bank — **1063 source identities, not 1003 capabilities**
 
 | View | Source identities | Exact source ownership |
 |---|---:|---|
-| [IDEAS.jsonl](IDEAS.jsonl) | **373** | 190 original H ideas, 123 historical Q problems, 44 source-distinguished later user ideas (NM), 16 SORACLE-CO R27 introductions |
+| [IDEAS.jsonl](IDEAS.jsonl) | **433** | 190 original H ideas, 123 historical Q problems, 44 source-distinguished later user ideas (NM), 16 SORACLE-CO R27 introductions, 44 R8 C and 16 R9 source identities |
 | [FUNCTIONS.jsonl](FUNCTIONS.jsonl) | **144** | Original O-Index functional owner contracts, including S0–S16 (17) |
 | [CODE_AND_EVIDENCE.jsonl](CODE_AND_EVIDENCE.jsonl) | **486** | Complete current SOROKUDA R10 source identities: runtime modules, test sources, versions, historical pointers, reviewer evidence, four cross-HQ reference-only leads; 300 already included in NEIGHBORMULCH's 757, NOT repeated |
-| [ALL_NORMALIZED.jsonl](ALL_NORMALIZED.jsonl) | **1003** | Exactly 373 + 144 + 486, with common schema, history and original record preserved |
+| [ALL_NORMALIZED.jsonl](ALL_NORMALIZED.jsonl) | **1063** | Exactly 433 + 144 + 486, with common schema, history and original record preserved |
 | [DOCUMENT_LOCATOR_252.jsonl](DOCUMENT_LOCATOR_252.jsonl) | 227 files and 25 directory entrances | Curated whole theory/source documents, including historic SOROK, SEAM/30 and source graphs — **locator**, not 252 separate adopted ideas |
 
 These are **source identities**, not unique concepts. Similarity is not equivalence: two records can express a prior idea, implement related functions or name the same file at different code cuts. Do not count a new MULCH proposal as new function merely because its wording differs. This bank is not an exhaustive all-Git-branches or all-ChatGPT-conversations proof.
@@ -48,12 +48,6 @@ A SORACLE-CO agent recently warned against/reinvented historical materialization
 
 **Currentness / ownership:** This is an isolated additive G4 branch candidate; it does not edit protected PRE-MAIN or paired `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md` + `.json`, does not hold a competent receiving lease, and does not install existing code. Source cuts `SOURCE_LOCK.json` are the **only** dates/versions covered by this delivered snapshot. See [receiving proposal](RECEIVING_CANDIDATE.md) for the exact qualified path to protected adoption.
 
-## R11 — source-locked incremental intake (2026-11-23)
+## R12 — single materialization, scope correction (2026-11-23)
 
-The original **1003 materialized** records and their byte-exact derived views are unchanged. The exact #1277 104-row conversation-source union is pinned: 44 historical C + 44 already-bank NM + 16 R9. Only the additional 44 C and 16 R9 rows are *new* searchable identities; NM44 is verified but never counted twice. R9 preserves direct user versus researcher inference and namespaces C10–C12 to avoid original O-Index collisions.
-
-Two extra exact source blobs from the **existing** SORACLE R29/R30 owner and inherited tests are searchable. [R30 #1294](https://github.com/maidiu/rawlsing/pull/1294) and its [successful focused 3-new-test normal/-O court](https://github.com/maidiu/rawlsing/actions/runs/45296334747) are sourcefree only. No native psychologist, independent G5, privileged mind-reading or new world owner is implied.
-
-**Current CLI discoverability = 1065 (1003 baseline + 62 source-locked incremental) — NOT 1065 materialized rows.** The same `bank_cli.mjs search/show/gate-new/coverage` uses the additive exact-source helper. `check` verifies the original 1003-byte derivation plus R11 cardinality and all source-lock pins. Full re-normalization into 433/144/488 derived views remains a separately held no-drop receiving task. [ONE HOUSE #1278](https://github.com/maidiu/rawlsing/pull/1278) is a theory lead, not 17 implemented functions.
-
-**R11b exact-head execution update:** R30's new actual two-meal household → actor interpretation → pre-cue recruitment → SQLite cold reopen test has been added in the existing R19/R29 test source. The [focused normal/-O Actions #45297542614](https://github.com/maidiu/rawlsing/actions/runs/45297542614) passed at immutable `31e33859cf7c5389faa49baae55ebe3ff73a2187`. The original owner code blob remains `5261a1543e2bface6d924fceebf5530f90bcd6f6`; the updated test blob is `399218f21c28de6ac8c2548f61a8bc8aef6923f0`. This does not infer that the actor correctly identified the actual cause, saw attention, or had the human/empirical truth modeled. Independent receiver and protected pair remain held.
+The 104 exact NEIGHBOR conversation rows remain pinned. 44 existing NM identities are counted once; 60 provenance-distinguished additions are normalized by the existing deterministic normalizer. Original 1,003 rows remain unchanged. The two unauthorized R30 source entries have been removed from operational search and normalized views. [#1294](https://github.com/maidiu/rawlsing/pull/1294) closed unmerged; its branch reset to #1272 parent. Its historical references and executed results do not give reuse, implementation or owner authority. R6/R7 descendants that inherited R30 require their existing owner's disposition, not a SOROKUDA code change. **1063 = 433 ideas + 144 original functions + 486 code/evidence**. No source/actor/science/engineering grant. O-Index #1262 is the functional-spine receiving candidate, SOROKUDA its recovery companion, and neither replaces protected PROGRAMMA or its paired progress.

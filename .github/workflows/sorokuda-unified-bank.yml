@@ -23,9 +23,6 @@ jobs:
       - name: Exercise reciprocal NEIGHBOR and SORACLE source-before-build gate
         shell: bash
         run: |
-          node SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs gate-new "mistaken Other" > /tmp/sorokuda-r30-reuse.json
-          grep -q 'NO_BUILD_RIGHT_ISSUED' /tmp/sorokuda-r30-reuse.json
-          grep -q 'SOROKUDA-R11-R30-OWNER' /tmp/sorokuda-r30-reuse.json
           node SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs gate-new "Same SES" > /tmp/sorokuda-r9-reuse.json
           grep -q 'NEIGHBOR-R9-01' /tmp/sorokuda-r9-reuse.json
           node SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs check

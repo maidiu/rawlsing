@@ -15,17 +15,18 @@ const code=fs.readFileSync(path.join(base,"SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_
 const union=j("inputs/NEIGHBOR_SOURCE_UNION_757.json"), thematic=j("inputs/NEIGHBOR_THEMATIC_757.json"),
  ideas=read("inputs/NEIGHBOR_USER_IDEAS_44.md"), co=j("inputs/SORACLE_CO_R27_16.json"),
  locator=j("inputs/NEIGHBOR_CURATED_SOURCE_LOCATOR.json"),dates=j("VERIFIED_COMMIT_AUTHOR_DATES.json").dates;
+const r9=j("inputs/NEIGHBOR_R9_CROSS_LINEAGE_104.json");
 const records=jl("ALL_NORMALIZED.jsonl");
 const docs=jl("DOCUMENT_LOCATOR_252.jsonl");
 const of=(id)=>records.find(x=>x.id===id);
 
 test("all source identities and 300 previous SOROKUDA code identities conserved",()=>{
  assert.deepEqual(validateBank(records,docs,code,union),{
-  total:1003,concepts:373,functions:144,code:486,files:227,directories:25,
+  total:1063,concepts:433,functions:144,code:486,files:227,directories:25,
   dated_version:689,first_production_verified:0,first_path_committed_verified:117,prior_300_preserved:300
  });
  assert.equal(code.length,486);
- assert.equal(new Set(records.map(x=>x.id)).size,1003);
+ assert.equal(new Set(records.map(x=>x.id)).size,1063);
  for(const old of union.sorokuda_source_and_alternative_versions){
   const current=code.find(x=>x.id===old.id);
   assert.ok(current,old.id);
@@ -34,10 +35,10 @@ test("all source identities and 300 previous SOROKUDA code identities conserved"
  }
 });
 test("regeneration from exact inputs is byte for byte deterministic",()=>{
- const fresh=normalize(union,thematic,code,ideas,co,dates);
+ const fresh=normalize(union,thematic,code,ideas,co,dates,r9);
  assert.equal(fresh.map(JSON.stringify).join("\n")+"\n",read("ALL_NORMALIZED.jsonl"));
  assert.equal(documentIndex(locator).map(JSON.stringify).join("\n")+"\n",read("DOCUMENT_LOCATOR_252.jsonl"));
- for(const [bank,file,n] of [["ideas","IDEAS.jsonl",373],["functions","FUNCTIONS.jsonl",144],["code","CODE_AND_EVIDENCE.jsonl",486]]){
+ for(const [bank,file,n] of [["ideas","IDEAS.jsonl",433],["functions","FUNCTIONS.jsonl",144],["code","CODE_AND_EVIDENCE.jsonl",486]]){
   assert.equal(records.filter(r=>r.bank===bank).length,n);
   assert.equal(read(file),records.filter(x=>x.bank===bank).map(JSON.stringify).join("\n")+"\n");
  }
@@ -81,8 +82,8 @@ test("time stamps are not fake first-production dates",()=>{
 test("source mutation fail closed; no new false artifact can disappear silently",()=>{
  const cut=structuredClone(code);
  cut[0].blob="0".repeat(40);
- assert.throws(()=>normalize(union,thematic,cut,ideas,co,dates),/Changed prior source/);
- assert.throws(()=>normalize(union,thematic,code.slice(1),ideas,co,dates),/(SOROKUDA .*no-drop|Prior 300 missing)/);
+ assert.throws(()=>normalize(union,thematic,cut,ideas,co,dates,r9),/Changed prior source/);
+ assert.throws(()=>normalize(union,thematic,code.slice(1),ideas,co,dates,r9),/(SOROKUDA .*no-drop|Prior 300 missing)/);
 });
 
 test("R11 incremental source is queryable without duplicating 44 NM rows",()=>{
@@ -93,11 +94,13 @@ test("R11 incremental source is queryable without duplicating 44 NM rows",()=>{
  const p=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"coverage"],{encoding:"utf8"});
  assert.equal(p.status,0,p.stderr);
  const counts=JSON.parse(p.stdout).counts;
- assert.deepEqual([counts.all,counts.materialized_base,counts.incremental_source_overlay],[1065,1003,62]);
- const g=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"gate-new","mistaken Other"],{encoding:"utf8"});
+ assert.deepEqual([counts.all,counts.materialized_base,counts.incremental_source_overlay],[1063,1063,0]);
+ const g=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"gate-new","same SES"],{encoding:"utf8"});
  assert.equal(g.status,0,g.stderr);
  assert.match(g.stdout,/NO_BUILD_RIGHT_ISSUED/);
- assert.match(g.stdout,/SOROKUDA-R11-R30-OWNER/);
+ assert.match(g.stdout,/NEIGHBOR-R9-01/);
+ assert.equal(records.some(x=>x.id.startsWith("SOROKUDA-R11-R30-")),false);
+ assert.throws(()=>normalize(union,thematic,code,ideas,co,dates,{rows:r9.rows.slice(1)}),/R9_SOURCE_104_HOLD/);
  const s=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"show","NEIGHBOR-R9-01"],{encoding:"utf8"});
  assert.equal(s.status,0,s.stderr);
  assert.equal(JSON.parse(s.stdout).meaning.origin_fidelity,"DIRECT_USER");

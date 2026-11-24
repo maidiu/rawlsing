@@ -8,7 +8,7 @@
     "soracle_r27": "d682db603f4c2916d68cfe30334e1ca539190bb5",
     "sorokuda_source_cut": "a899d2edd0b405eae4e70e40edc474ad0b8aaf10",
     "neighbor_r9_104": "12c92bf0be2ba2f6e635ed9190a748b647aec9af",
-    "soracle_r30_exact_head": "31e33859cf7c5389faa49baae55ebe3ff73a2187"
+    "retired_out_of_scope_pr1294": "CLOSED_UNMERGED__NOT_ACTIVE"
   },
   "pinned_files": {
     "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_CODE_INDEX.jsonl": "50eeb0fd7f27abb72c3c817e54dd307929ab36e1",
@@ -18,35 +18,32 @@
     "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_USER_IDEAS_44.md": "399ce39e54204b4ef907f580ecf14d4174af7fa6",
     "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/SORACLE_CO_R27_16.json": "b3425bf3399bfca716bc737c64d9d2eea6d7eb86",
     "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/VERIFIED_COMMIT_AUTHOR_DATES.json": "67e2dcc9331418b45e0a7a8f1c273ad54e4557cc",
-    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/normalizer.mjs": "8652c9b5059c99fce46acecc8c5a5f248fd900e9",
-    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs": "d65f5c41f7d7ace68221a47b278166ef7a1bbb7a",
-    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/test_bank.mjs": "1379db57de7a14e649fdf294da692629cc5dbeb0",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/normalizer.mjs": "c3e8690fbc50fa412ae0b662960d911820d00d58",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/bank_cli.mjs": "1ccaf5abe5850ad46a6ab6fdee005a4c542e9a26",
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/test_bank.mjs": "389db60c6fc284bf145bdb46800f2e00940d2a08",
     "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/NEIGHBOR_R9_CROSS_LINEAGE_104.json": "12c92bf0be2ba2f6e635ed9190a748b647aec9af",
-    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/SORACLE_R30_TWO_SOURCE_IDENTITIES.json": "7f7824dcbbd2c4ab369d4f60b8da7f241528b799",
-    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/r11_incremental.mjs": "1394428655c121da5122d59859dca27c4c099ca1"
+    "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA_BANK/inputs/SORACLE_R30_TWO_SOURCE_IDENTITIES.json": "ffb53a2e92069281a875ebe923af948f6f5eebd2"
   },
   "materialized_outputs": {
-    "ALL_NORMALIZED.jsonl": "8d9a6e95beddbaedc947495ce026dac6f2e80b11",
-    "IDEAS.jsonl": "cdec66fa71625213cac9e16ea8f5bcbdf1b8dfbf",
+    "ALL_NORMALIZED.jsonl": "27874946ed756c2c225a51e358c44a94b56873da",
+    "IDEAS.jsonl": "80b95f671c69edae2cecd33f0ed3a265810b67ff",
     "FUNCTIONS.jsonl": "41404a748de478ba12f0c7e7e3781ab374f7fbf9",
     "CODE_AND_EVIDENCE.jsonl": "321571a02e70b68c1baa06447961d9610f5e2226",
     "DOCUMENT_LOCATOR_252.jsonl": "042bcea7668dd629355cf71b85b42622fa20eeb4"
   },
   "expected": {
-    "ideas": 373,
+    "ideas": 433,
     "formal_functions": 144,
     "code_source_records": 486,
-    "normalized_total": 1003,
+    "normalized_total": 1063,
     "original_757_merged_without_300_duplicate": 757,
     "curated_files": 227,
     "curated_directories": 25,
     "verified_version_asof": 689,
     "verified_current_candidate_path_additions": 117,
     "verified_original_production_dates": 0,
-    "r11_incremental_identity_count": 62,
-    "r11_discoverable_count": 1065,
-    "materialized_count_still": 1003
+    "neighbor_r9_additional_source_identities": 60
   },
   "authority": "DOCUMENTARY_CANDIDATE_NOT_PROTECTED_RECEIVED",
-  "rule": "Changed Git source SHA is a visible CURRENTNESS_HOLD; manually reconcile source first, update lock and derived views in one authorized receiving action. UNKNOWN never means missing. R11 is an in-bank pinned search overlay; 1065 is navigable, not fully normalized/received."
+  "rule": "Changed source SHA is CURRENTNESS_HOLD. Original 1003 records preserved, R9 60 additional source identities in same deterministic materialization; no active PR1294 implementation. Unknown never means missing."
 }
