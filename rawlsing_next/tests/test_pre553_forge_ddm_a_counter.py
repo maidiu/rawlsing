@@ -129,3 +129,59 @@ def test_rehashed_winning_handoff_cannot_substitute_immediate_baseline():
     with pytest.raises(S04I05ReceptionError):
         _receive(discovery,root,candidate_receipt_ref=receipt.ref,query_role="CONDITION",
                  next_handoff=counterfeit,proposal_units=(child,))
+
+
+def test_all_native_parents_survive_persist_reload_and_intersection(tmp_path):
+    from rawlsing_next.pre553_recursive_handoff import (
+        write_recursive_handoff_bundle, load_recursive_handoff_bundle,
+    )
+    source, _, parents, authority, registry, third = _two_parents()
+    p1,p2 = parents
+    result = third.discovery_result
+    path = tmp_path/"parents.json"
+    pin = write_recursive_handoff_bundle(path,parents)
+    restored_pin, restored = load_recursive_handoff_bundle(path)
+    assert restored_pin == pin and {p.ref for p in restored} == {p1.ref,p2.ref}
+    _,_,_,unit,_ = _unit(result,"counter-multi-positive",extra=(
+        p1.ref,p2.ref,p1.winning_predicate.ref,p2.winning_predicate.ref))
+    kwargs = dict(candidate_receipt_ref=result.receipts[0].ref,query_role="CONDITION")
+    observed, role, outcome = _receive(result,unit,**kwargs,
+        parent_handoffs=restored,discovery_authority=authority)
+    assert observed.material()["raw_fully_resolved_joint_n"] == 2
+    assert outcome.proposal_basis_ref == role.ref
+    for wrong in (dict(parent_handoffs=restored),dict(parent_handoffs=(p1,p1),discovery_authority=authority),
+                  dict(parent_handoffs=(p1,),discovery_authority=authority)):
+        with pytest.raises(S04I05ReceptionError):
+            _receive(result,unit,**kwargs,**wrong)
+
+
+def test_default_dhikr_exact_predecessor_identity_across_noncanonical_contexts():
+    import importlib.util
+    import os
+    import sys
+    from rawlsing_next.pre553_s04_dhikr_comparative import DHIKRComparisonRequest
+    path = os.environ.get("FORGE_A_PREDECESSOR")
+    if not path:
+        pytest.skip("exact predecessor source supplied by counter CI")
+    spec = importlib.util.spec_from_file_location("forge_a_frozen_predecessor",path)
+    frozen = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = frozen
+    try:
+        spec.loader.exec_module(frozen)
+        names = ("A","B","C","D","E","Y")
+        rows = []
+        for a,b,c,d,e in product((0,1),repeat=5):
+            for i in range(2):
+                y = (a ^ b ^ c) if d else (e ^ int(i==0 and a==1))
+                rows.append({"id":f"R{a}{b}{c}{d}{e}{i}","responses":dict(zip(names,(a,b,c,d,e,y)))})
+        _,_,_,q,ex = _actual("COUNTER-LEGACY-PARITY",rows,names)
+        ws = _workspace(q,ex)
+        for order, depth, context, bootstrap in product((1,2,3),(0,2),((),((3,"0"),)),(0,12)):
+            args = dict(target_axis=5,predictor_axes=(4,2,0,3,1),max_interaction_order=order,
+                        max_depth=depth,fixed_context=context,bootstrap_replicates=bootstrap)
+            prior = frozen.analyze_s04_dhikr(ws,frozen.DHIKRComparisonRequest(**args))
+            actual = ws.compare_dhikr(DHIKRComparisonRequest(**args))
+            assert actual.ref == prior.ref
+            assert actual.payload_json == prior.payload_json
+    finally:
+        sys.modules.pop(spec.name,None)
