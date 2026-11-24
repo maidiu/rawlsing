@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `5707148592fc06d0a56f5707ee936381bccc82ef`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **108-PR targeted discovered set**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `2b46cd4442ad9f105609f33cd259c7f40243e112`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **119-PR targeted discovered set (108 older observations + 11 new targeted observations)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -176,3 +176,21 @@ R17 P018 has a [scoped sourcefree receipt](https://github.com/maidiu/rawlsing/bl
 #1249 [same-host exact execution](PR1249_R19_EXECUTION_20261121.md) at `40dbbd4c` passed 305 tests in normal and optimized Python 3.11. Protected receiving remains held.
 
 The original status tables cover the accession set. The six subsequent candidate additions are recorded in the follow-up entries above.
+
+## 2026-11-23 targeted NEIGHBOR/CO functional intake — candidate, no new function IDs
+
+| PR | Exact head | Existing original IDs (scoped relevance, NOT completed parity) | Fate |
+|---|---|---|---|
+| [#1265](https://github.com/maidiu/rawlsing/pull/1265) | `18a307cfb30f24c03fa7815ede674f84b73753a6` | C8, E04, S7, S8, S11 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1274](https://github.com/maidiu/rawlsing/pull/1274) | `6e05792f29964dafa289b884664e9c892dc0e310` | A3, C6, C8, N07 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1293](https://github.com/maidiu/rawlsing/pull/1293) | `f4b840e837af8b6293dd8f719a6560d182169642` | C8, S7, S8, S11 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1296](https://github.com/maidiu/rawlsing/pull/1296) | `5b4334b6145074c3563286258779ff8f0a00b560` | C8, S7, S8, S11, S14 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1297](https://github.com/maidiu/rawlsing/pull/1297) | `1c959b6b1eb91355eeb88953a2bb67f9ee894778` | A2, S10, S11, S14 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1298](https://github.com/maidiu/rawlsing/pull/1298) | `3dd615548bdce06de0ec1f173a3c5089e1345da7` | C8, C12, E12, S10, S11 | EXECUTED_AT_SHA__DEPENDENCY_REJECTED_RECEIVING_HELD |
+| [#1300](https://github.com/maidiu/rawlsing/pull/1300) | `0277999a212978c92359eeecfe6c15eab77a5f7a` | C8, S9, S11, S14 | EXECUTED_AT_SHA__DEPENDENCY_REJECTED_RECEIVING_HELD |
+| [#1272](https://github.com/maidiu/rawlsing/pull/1272) | `731f71b61fad5764eb021776ae937a376a54e8a8` | C3, C8, C10, N04, N05, N07, O05 | EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD |
+| [#1277](https://github.com/maidiu/rawlsing/pull/1277) | `3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2` | S0, S7, S11, S13, S14, C12 | DOCUMENTARY_SOURCE_CANDIDATE__SEMANTIC_RECEIVING_HELD |
+| [#1278](https://github.com/maidiu/rawlsing/pull/1278) | `03f93ad04b499a69117480103d744bbba05d8ede` | C3, N05, N07, S1, S11, S13 | DOCUMENTARY_SOURCE_CANDIDATE__SEMANTIC_RECEIVING_HELD |
+| [#1294](https://github.com/maidiu/rawlsing/pull/1294) | `31e33859cf7c5389faa49baae55ebe3ff73a2187` | None; historical rejection | REJECTED_OUT_OF_SCOPE_CLOSED_UNMERGED |
+
+R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBOR contributions must be preserved by their existing owners. No runtime edit. Full historical 108 re-observation, independent receiving and protected receiving remain held.

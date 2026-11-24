@@ -17,7 +17,26 @@
     "date": "2026-11-21",
     "method": "Targeted PR searches, additional SOROK/SEAM/Mechanism cross-check and exact PR metadata",
     "not_claimed": "COMPLETE_REPOSITORY_WIDE_ENUMERATION",
-    "deduplication_correction": "Mechanism III PR #882 appeared twice in source-backfill, same exact 5aa9bdc1133f75028b20d448504dae03abc88115; one existing identity retained, no functionality/evidence discarded."
+    "deduplication_correction": "Mechanism III PR #882 appeared twice in source-backfill, same exact 5aa9bdc1133f75028b20d448504dae03abc88115; one existing identity retained, no functionality/evidence discarded.",
+    "additive_20261123": {
+      "observed_prs": [
+        1265,
+        1274,
+        1293,
+        1296,
+        1297,
+        1298,
+        1300,
+        1272,
+        1277,
+        1278,
+        1294
+      ],
+      "original_108_unchanged": true,
+      "additional": 11,
+      "observed_protected_head": "827714e83743056939894a39736d72ea16bdc6dd",
+      "scope": "Targeted NEIGHBOR R1-R7 + CO R27/R29 + theory + retirement; NOT full 108 live refresh or whole-repo discovery."
+    }
   },
   "specialized_queues": [
     "REMONT/SOROK/OPEN_DEFECTS.json",
@@ -112,6 +131,28 @@
       "immutable_sha": "28bf7fc48264d433ecf172bd0846744a3476222e",
       "event": "ACCEPT_SCOPED_SOURCEFREE_PY313_303_CASES_P018_PARTIAL",
       "evidence": "https://github.com/maidiu/rawlsing/blob/85e7166aeee3af25e59ebbb3b48115a498bcdc4a/REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.json",
+      "protected_received": false
+    },
+    {
+      "id": "PR1294-USER-REJECTED",
+      "pr": 1294,
+      "immutable_sha": "31e33859cf7c5389faa49baae55ebe3ff73a2187",
+      "event": "OUT_OF_SCOPE_USER_DIRECTED_REJECTED_CLOSED_UNMERGED",
+      "evidence": "https://github.com/maidiu/rawlsing/pull/1294#issuecomment-7119208110",
+      "protected_received": false,
+      "dependency_held": [
+        1298,
+        1300
+      ]
+    },
+    {
+      "id": "NEIGHBOR-R7-PRIOR-RED",
+      "pr": 1300,
+      "immutable_sha": "8e83c19a5d9f496e7f16bc864995b8cc1f97a903",
+      "event": "EXECUTED_AT_SHA_RED",
+      "evidence": "https://github.com/maidiu/rawlsing/actions/runs/45297216492",
+      "status_ceiling": "AUTHOR_REPORTED_TEST_EXPECTATION_REPAIR_NOT_INDEPENDENT",
+      "replaced_by": "0277999a212978c92359eeecfe6c15eab77a5f7a",
       "protected_received": false
     }
   ],
@@ -5422,9 +5463,1043 @@
         "actor": "NOT_ISSUED",
         "human": "NOT_ISSUED"
       }
+    },
+    {
+      "id": "PR-1265",
+      "pr": 1265,
+      "title": "[NEIGHBORMULCH R1] One-world human contribution × constituted actor × MIII/MII finite encounter",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1265",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-one-world-encounter-r1-20261121",
+      "head_sha": "18a307cfb30f24c03fa7815ede674f84b73753a6",
+      "base_branch": "integration/sorok-organism-continuing-r1",
+      "base_head_observed": "6647f746f4f7d2ae3dd0d14af5cde38191044773",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/18a307cfb30f24c03fa7815ede674f84b73753a6",
+      "material_functionality_summary": "One-world visitor contribution, observer-specific sensory opportunity, continuing actor step and private MII surface",
+      "description_first_claim": "## NEIGHBORMULCH R1 — one world, real human contribution, constituted Other (SOURCEFREE CANDIDATE)\n\n**Commission:** [Founding NEIGHBORMULCH #1263](https://github.com/maidiu/rawlsing/pull/1263), documents `00`–`10` plus SEAM reciprocal entrypoint. Original SOROK Charter, D002/D003, CIRR, Mechanisms I–III/P4–P6, BP2/BP4/R30A/R31E and the full Constitutive Organism have been selectively consulted. Full analysis: [01_FIRST_RECIPROCAL_MULCH_RETURN.md](SEAM/NEIGHBORMULCH/docs/01_FIRST_RECIPROCAL_MULCH_RETURN.md).\n\n**Exact executable donor:** [R21 sourcefree integrated #1248](https://github.com/maidi",
+      "test": {
+        "executed_sha": "18a307cfb30f24c03fa7815ede674f84b73753a6",
+        "verdict": "Exact Actions success observed; numerical counts not independently reopened",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/44917653975",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "integration/sorok-organism-continuing-r1",
+        "sha": "6647f746f4f7d2ae3dd0d14af5cde38191044773",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "NeighborEncounter.contribute -> ResearchLedger -> ConstitutiveRuntime.step -> private_surface",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "d501b64bc3f84a3d1de8aefeb8549e44ef5028eb",
+          "symbols": [
+            "contribute",
+            "sensory_evidence",
+            "independent_actor_beat",
+            "private_surface"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "E04",
+          "original_title": "Independent B real encounter",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S7",
+          "original_title": "Player praxis model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S8",
+          "original_title": "Interaction / action semantics",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1274",
+      "pr": 1274,
+      "title": "NEIGHBORMULCH R2 — independent actor event during actual visitor presence (same world)",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1274",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1",
+      "head_sha": "6e05792f29964dafa289b884664e9c892dc0e310",
+      "base_branch": "agent/neighbormulch-one-world-encounter-r1-20261121",
+      "base_head_observed": "18a307cfb30f24c03fa7815ede674f84b73753a6",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/6e05792f29964dafa289b884664e9c892dc0e310",
+      "material_functionality_summary": "Independent actor occasion during visit, not a visitor-commanded actor act; same visitor event idempotence",
+      "description_first_claim": "**Stacked on existing NEIGHBORMULCH R1 PR #1265 at exact `18a307cfb30f24c03fa7815ede674f84b73753a6`**; separate from documentary R27 intake PR #1273 and sourcefree world-event R27 PR #1272.\n\n**Actual joined first consumer:** extend existing `NeighborEncounter` inside its existing one-world writer path with `continue_independent_life_during_visit()`. Requires the visitor actually present and a previously performed visitor event; selects which Other gets an occasion using **the existing `um_sorok_organism.initiative.choose_next_actor`** rather than caller target; settles choice through existing ",
+      "test": {
+        "executed_sha": "6e05792f29964dafa289b884664e9c892dc0e310",
+        "verdict": "Exact Actions success observed; numerical counts not independently reopened",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/44943608724",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-one-world-encounter-r1-20261121",
+        "sha": "18a307cfb30f24c03fa7815ede674f84b73753a6",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "continue_independent_life_during_visit -> initiative.choose_next_actor -> runtime.step",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1265
+      ],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Conserve autonomous continuation in successor NEIGHBOR; native actor authority not issued.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "514212f99c082eba23812964350de41ab13fe29f",
+          "symbols": [
+            "continue_independent_life_during_visit",
+            "independent_actor_beat"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "A3",
+          "original_title": "Independent ongoing life",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "C6",
+          "original_title": "Real time, activity and interstitial continuity",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "N07",
+          "original_title": "Independent others, power, care and relational feedback",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1293",
+      "pr": 1293,
+      "title": "NEIGHBORMULCH R3 — one-world observable LOOK, cover speech, and actor-specific sensory gates",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1293",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1",
+      "head_sha": "f4b840e837af8b6293dd8f719a6560d182169642",
+      "base_branch": "agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1",
+      "base_head_observed": "6e05792f29964dafa289b884664e9c892dc0e310",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/f4b840e837af8b6293dd8f719a6560d182169642",
+      "material_functionality_summary": "Outward LOOK and optional cover speech on same ledger; separate actor-relative visual/audio opportunities",
+      "description_first_claim": "> **LATEST EXECUTION RECEIPT — EXECUTED_AT_SHA sourcefree (2026-11-23):** exact HEAD `f4b840e837af8b6293dd8f719a6560d182169642`, [Actions run 45289155309](https://github.com/maidiu/rawlsing/actions/runs/45289155309), job `138093158498` **SUCCESS**. Direct job logs: 15 R1 contract + 4 actual R21/MII/SQLite + 5 R2 actor/visitor + 10 new R3 LOOK + 558 inherited organism tests = **592 passing cases each in Python normal and optimized modes**. No failed step; tests run on the recorded immutable branch SHA. This is *not* independently reviewed G5, original scientific/actor-source authority or protec",
+      "test": {
+        "executed_sha": "f4b840e837af8b6293dd8f719a6560d182169642",
+        "verdict": "592 each normal/optimized per PR receipt; exact Actions success observed",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/45289155309",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1",
+        "sha": "6e05792f29964dafa289b884664e9c892dc0e310",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "contribute -> sensory_evidence -> CO access -> private_surface",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1274
+      ],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "R4 qualifies earlier physical LOOK/visibility conflation; retain sensory distinction.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "6451b8c826a23d9e033b9d7c000290b4c580b7b1",
+          "symbols": [
+            "contribute",
+            "sensory_evidence",
+            "private_surface"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S7",
+          "original_title": "Player praxis model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S8",
+          "original_title": "Interaction / action semantics",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1296",
+      "pr": 1296,
+      "title": "NEIGHBORMULCH R4 — mulch protected MII gaze/close with existing outward world event and CO actor access",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1296",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r4-mii-p6-sourcefree-visibility-20261123-r1",
+      "head_sha": "5b4334b6145074c3563286258779ff8f0a00b560",
+      "base_branch": "agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1",
+      "base_head_observed": "f4b840e837af8b6293dd8f719a6560d182169642",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/5b4334b6145074c3563286258779ff8f0a00b560",
+      "material_functionality_summary": "Physical orientation distinguished from MII legible close detail; protected MII/P6 functions used in sourcefree NEIGHBOR",
+      "description_first_claim": "> **LATEST EXECUTION RECEIPT — EXECUTED_AT_SHA SOURCEFREE (2026-11-23):** `5b4334b6145074c3563286258779ff8f0a00b560`, [Actions run 45295016404](https://github.com/maidiu/rawlsing/actions/runs/45295016404), job `138113081005` **SUCCESS**. Direct logs: 15 R1 spy + 4 real R21/MII + 5 R2 independent visitor + 10 R3 outward LOOK + **9 new R4 actual MII-P6-CO** + 558 inherited CO = **601/601 passing normal Python 3.11 and the SAME 601 passing optimized**. No failed test or job step. Not independent G5, protected receiving, native scientific authority or full personhood. PR-creation `COMMITTED_UNTEST",
+      "test": {
+        "executed_sha": "5b4334b6145074c3563286258779ff8f0a00b560",
+        "verdict": "601 each normal/optimized per PR receipt; exact Actions success observed",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/45295016404",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1",
+        "sha": "f4b840e837af8b6293dd8f719a6560d182169642",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "private_surface -> MII glance_available/close_available/record_exposure -> visitor only",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1293
+      ],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Preserve exact first consumer and limits: actual actor notice and inference remain unproved.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "9a19cb7ce5d3b43c6e5677bb886a038da962e2c7",
+          "symbols": [
+            "contribute",
+            "sensory_evidence",
+            "private_surface"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S7",
+          "original_title": "Player praxis model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S8",
+          "original_title": "Interaction / action semantics",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S14",
+          "original_title": "Safety / privacy / abuse",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1297",
+      "pr": 1297,
+      "title": "NEIGHBORMULCH R5 — cold personal MII exposure continuity, same CO world and private human learning",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1297",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r5-mii-cold-personal-continuity-20261123-r1",
+      "head_sha": "1c959b6b1eb91355eeb88953a2bb67f9ee894778",
+      "base_branch": "agent/neighbormulch-r4-mii-p6-sourcefree-visibility-20261123-r1",
+      "base_head_observed": "5b4334b6145074c3563286258779ff8f0a00b560",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/1c959b6b1eb91355eeb88953a2bb67f9ee894778",
+      "material_functionality_summary": "Cold private MII profile return scoped by visitor/world/root; no actor/world writer",
+      "description_first_claim": "> **EXECUTED_AT_SHA SOURCEFREE — 2026-11-23:** `1c959b6b1eb91355eeb88953a2bb67f9ee894778`, [Actions 45295842611](https://github.com/maidiu/rawlsing/actions/runs/45295842611), job `138115872516` **SUCCESS**. Actual job logs: 15 original contract + 4 R21/MII + 5 independent visitor + 10 R3 + 9 R4 + **6 R5 cold MII** + 558 CO = **607 passing cases normal Python 3.11 and the same 607 optimized**. Sourcefree current-tree positive and negative; no independent G5, protected PROGRAMMA or native psychological authority. Earlier COMMITTED_UNTESTED remains a creation-time statement, superseded for this S",
+      "test": {
+        "executed_sha": "1c959b6b1eb91355eeb88953a2bb67f9ee894778",
+        "verdict": "607 each normal/optimized per PR receipt; exact Actions success observed",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/45295842611",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-r4-mii-p6-sourcefree-visibility-20261123-r1",
+        "sha": "5b4334b6145074c3563286258779ff8f0a00b560",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "private_surface_stored -> MII load/save_profile + private_surface",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1296
+      ],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Preserve R5 donor; no real-user authentication or actor-private historical-change proof.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "30192d5c927e52c3a8256f5a5ab8ebd0a17e0080",
+          "symbols": [
+            "load_private_profile",
+            "save_private_profile",
+            "private_surface_stored",
+            "_mii_scope_session"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "A2",
+          "original_title": "Historical reentry and changed later action",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S10",
+          "original_title": "Memory / persistence / replay / cost",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "S14",
+          "original_title": "Safety / privacy / abuse",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1298",
+      "pr": 1298,
+      "title": "NEIGHBORMULCH R6 — one executable tree: protected MII/P6 + NEIGHBOR R5 + emerging SORACLE-CO R30",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1298",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r6-join-co-r30-exact-owned-tree-20261123-r1",
+      "head_sha": "3dd615548bdce06de0ec1f173a3c5089e1345da7",
+      "base_branch": "agent/soracle-r30-sourcebounded-misattribution-20261123-r1",
+      "base_head_observed": "731f71b61fad5764eb021776ae937a376a54e8a8",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/3dd615548bdce06de0ec1f173a3c5089e1345da7",
+      "material_functionality_summary": "R5 exact NEIGHBOR donor in combined CO/MII/P6 tree; rejected R30 remains inherited",
+      "description_first_claim": "> **EXACT-SOURCE COMBINED EXECUTION — SOURCEFREE PASS 2026-11-23:** branch HEAD `3dd615548bdce06de0ec1f173a3c5089e1345da7`, based on CO R30 code `a5b966f2e701a88c78131307704c5b845b063b1d`; [Actions run 45296391346](https://github.com/maidiu/rawlsing/actions/runs/45296391346), job `138117749623` **SUCCESS**. Direct logs: NEIGHBOR R1–R5 15+4+5+10+9+6=49; newer CO including R29/R30 638 => **687/687 tests normal and the SAME 687/687 optimized**. No failed job steps. R30 latest `dbe53c4facb1fd6233d0f865e80008e5803c1584` differs from the merged-in CO code source by **one workflow file only**; source",
+      "test": {
+        "executed_sha": "3dd615548bdce06de0ec1f173a3c5089e1345da7",
+        "verdict": "687 each normal/optimized per PR receipt; exact Actions success observed",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/45296391346",
+        "grade": "HISTORICAL_EXECUTED_AT_SHA_AFFECTED_SOURCE",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/soracle-r30-sourcebounded-misattribution-20261123-r1",
+        "sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "R5 identical runtime blob in combined tree",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1297,
+        1272,
+        1294
+      ],
+      "conflicts": [
+        "Exact rejected R30 blob 5261a154... directly observed in candidate tree; green tests do not resolve authority"
+      ],
+      "disposition": "EXECUTED_AT_SHA__DEPENDENCY_REJECTED_RECEIVING_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "30192d5c927e52c3a8256f5a5ab8ebd0a17e0080",
+          "symbols": [
+            "private_surface_stored",
+            "continue_independent_life_during_visit"
+          ]
+        },
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py",
+          "blob": "5261a1543e2bface6d924fceebf5530f90bcd6f6",
+          "symbols": [
+            "interpreted_other_ref_provisional"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "C12",
+          "original_title": "Pipeline-produced continuing person and forks",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "E12",
+          "original_title": "Complete person living/reentry/alpha",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "S10",
+          "original_title": "Memory / persistence / replay / cost",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1300",
+      "pr": 1300,
+      "title": "NEIGHBORMULCH R7 — stop untyped CO public expression from becoming unheard knowledge on MII surface",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1300",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r7-typed-public-tip-source-gate-20261123-r1",
+      "head_sha": "0277999a212978c92359eeecfe6c15eab77a5f7a",
+      "base_branch": "agent/neighbormulch-r6-join-co-r30-exact-owned-tree-20261123-r1",
+      "base_head_observed": "3dd615548bdce06de0ec1f173a3c5089e1345da7",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/0277999a212978c92359eeecfe6c15eab77a5f7a",
+      "material_functionality_summary": "Existing private_surface gates generic CO tip on visual identity and actual actor-transition receipt; rejected R30 inherited",
+      "description_first_claim": "> **LATEST EXECUTION RECEIPT — SOURCEFREE EXECUTED_AT_SHA, 2026-11-23:** HEAD `0277999a212978c92359eeecfe6c15eab77a5f7a`, [Actions run 45297329576](https://github.com/maidiu/rawlsing/actions/runs/45297329576), job `138120931904` **SUCCESS**: existing 49 NEIGHBOR R1–R5 cases + **5 new R7 actual CO/MII public-tip positives/hostiles** + 638 inherited CO R30 cases = **692 passing cases normal and same 692 optimized Python 3.11**. All workflow steps successful. **First prior author SHA** `8e83c19a5d9f496e7f16bc864995b8cc1f97a903` [run 45297216492](https://github.com/maidiu/rawlsing/actions/runs/452",
+      "test": {
+        "executed_sha": "0277999a212978c92359eeecfe6c15eab77a5f7a",
+        "verdict": "692 each normal/optimized per PR receipt; exact Actions success observed",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/45297329576",
+        "grade": "HISTORICAL_EXECUTED_AT_SHA_AFFECTED_SOURCE",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-r6-join-co-r30-exact-owned-tree-20261123-r1",
+        "sha": "3dd615548bdce06de0ec1f173a3c5089e1345da7",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "CO ACTOR_LIFE_TRANSITION/public_tip -> private_surface -> MII visual surface",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1298,
+        1294
+      ],
+      "conflicts": [
+        "Exact rejected R30 blob 5261a154... directly observed in candidate tree; green tests do not resolve authority"
+      ],
+      "disposition": "EXECUTED_AT_SHA__DEPENDENCY_REJECTED_RECEIVING_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Owners conserve R7 gate, resolve rejected dependency and independently qualify any successor; prior RED retained.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+          "blob": "e15f11451df7107dba10d86e8a58944374c0b567",
+          "symbols": [
+            "private_surface",
+            "SOURCEFREE_VISUAL_ONLY_UNTYPED"
+          ]
+        },
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py",
+          "blob": "5261a1543e2bface6d924fceebf5530f90bcd6f6",
+          "symbols": [
+            "interpreted_other_ref_provisional"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "S9",
+          "original_title": "LLM expression",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        },
+        {
+          "original_id": "S14",
+          "original_title": "Safety / privacy / abuse",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1272",
+      "pr": 1272,
+      "title": "SORACLE-CO R27 — Mulchineering source conservation, contingent-world notices, and 16 product joins",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1272",
+      "originating_owner_lane": "SORACLE-CO existing organism owner",
+      "git_principal": "maidiu",
+      "branch": "agent/soracle-co-r27-mulchineering-contingent-event-reentry-20261121-r1",
+      "head_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
+      "base_branch": "agent/soracle-co-r26-witnessed-triadic-relations-20261121-r1",
+      "base_head_observed": "608b31e0f4f059e766fd5809467a45b758dde552",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/731f71b61fad5764eb021776ae937a376a54e8a8",
+      "material_functionality_summary": "Existing CO contingent-world notice and R29 actor-lived multi-Other repeated body course/pre-cue recruitment; 16 R27 requirements not all implemented",
+      "description_first_claim": "**Isolated R26-descended sourcefree first-consumer candidate; no protected receiving.**\n\n**Source correction:** original SOROK 60/61/70/80 already implement the law for canonical Birkenstocks/photo historical materialization, H0–H3, shared precontact root and COW distinct user continuities. MI #907, MII #905, MIII #891, P6 live-house are genuine inherited sourcefree producers. Do NOT reinvent them; prior assistant error explicitly retracted.\n\n**New user requirements banked one-per-introduction (16 distinct tasks)** in `SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R27_MULCHINEERING_ONE_PER_INTRODUCTIO",
+      "test": {
+        "executed_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
+        "verdict": "Exact Actions success observed; numerical counts not independently reopened",
+        "receipt": "https://github.com/maidiu/rawlsing/actions/runs/44992075105",
+        "grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED",
+        "applied_to_head": true
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/soracle-co-r26-witnessed-triadic-relations-20261121-r1",
+        "sha": "608b31e0f4f059e766fd5809467a45b758dde552",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "qualify_contingent_world_notice -> runtime.offer_contingent_world_notice; lived_genesis -> historical_self_organization -> pre_cue_pressures",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "EXECUTED_AT_SHA_SOURCEFREE__INDEPENDENT_PROTECTED_HELD",
+      "next_receiving_owner": "SORACLE-CO existing organism owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py",
+          "blob": "1c919fd8d55c09f07b37f684bad05915e94a720f",
+          "symbols": [
+            "offer_contingent_world_notice",
+            "step"
+          ]
+        },
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/continuity_clock.py",
+          "blob": "6113b9c4b5a7f765ab7df8fd63fdbb35375d979b",
+          "symbols": [
+            "qualify_contingent_world_notice"
+          ]
+        },
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py",
+          "blob": "bbba8a6b2a20ca2c029ca3ad1ee26009dd8fd8c2",
+          "symbols": [
+            "possible_lived_directional_orientation",
+            "pre_cue_pressures"
+          ]
+        },
+        {
+          "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/docs/R27_MULCHINEERING_ONE_PER_INTRODUCTION_20261121.json",
+          "blob": "b3425bf3399bfca716bc737c64d9d2eea6d7eb86",
+          "symbols": [
+            "rows:16"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "C3",
+          "original_title": "Individual organization, practice, mediation",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "C8",
+          "original_title": "Independent world occurrence and access",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "C10",
+          "original_title": "Event/model call and life recursion",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "N04",
+          "original_title": "Simultaneous recruitment, tension and regulation",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "N05",
+          "original_title": "Durable transition, changed relations and contradiction",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "N07",
+          "original_title": "Independent others, power, care and relational feedback",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        },
+        {
+          "original_id": "O05",
+          "original_title": "Acquired practical operation",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1277",
+      "pr": 1277,
+      "title": "NEIGHBORMULCH R9 — conserve chat corrections, reconcile TOTAL SOROK #1275, 104-row no-drop",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1277",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-r9-total1275-conversation-reconciliation-20261121",
+      "head_sha": "3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2",
+      "base_branch": "agent/neighbormulch-total-sorok-source-conservation-r1-20261121",
+      "base_head_observed": "be7b32911f3467c870f18887a3d5b0e7a88952dd",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2",
+      "material_functionality_summary": "R36 semantic receiving, 104-source union, same initial SES but private finances and bounded prelude consent",
+      "description_first_claim": "**Source provenance / reason:** stacked candidate onto NEIGHBORMULCH TOTAL SOROK source-conservation draft #1275, exact frozen parent \\`be7b32911f3467c870f18887a3d5b0e7a88952dd\\`. Preserves original 757-source ID and 44 NM idea estate instead of duplicating it. Reconciles an independently developed R1–R8 whole-theory/ledger/SEAM shared-bank lineage that was *not present* at #1275's head.\n\n**Current direct user corrections:**\n1. Exact same SES and equivalent ordinary purchasing burden at first contact **does not** entitle the player to know Nadia's actual resources. Only their **own** bar may b",
+      "test": {
+        "executed_sha": null,
+        "verdict": "NOT_ADJUDICATED_IN_THIS_INTAKE",
+        "receipt": null,
+        "grade": "NO_OPERATIONAL_ACCEPTANCE",
+        "applied_to_head": false
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-total-sorok-source-conservation-r1-20261121",
+        "sha": "be7b32911f3467c870f18887a3d5b0e7a88952dd",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "No executable first consumer established by documentary register",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "DOCUMENTARY_SOURCE_CANDIDATE__SEMANTIC_RECEIVING_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.",
+      "exact_source_bodies": [
+        {
+          "path": "SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json",
+          "blob": "12c92bf0be2ba2f6e635ed9190a748b647aec9af",
+          "symbols": [
+            "rows:104",
+            "C44/NM44/R9-16"
+          ]
+        }
+      ],
+      "functional_relationships": [
+        {
+          "original_id": "S0",
+          "original_title": "Governing purpose / integrity",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S7",
+          "original_title": "Player praxis model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S13",
+          "original_title": "Monetization / business model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S14",
+          "original_title": "Safety / privacy / abuse",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "C12",
+          "original_title": "Pipeline-produced continuing person and forks",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1278",
+      "pr": 1278,
+      "title": "NEIGHBORMULCH — ONE HOUSE: 03 whole theory reconstituted against executing R29 multi-Other genesis",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1278",
+      "originating_owner_lane": "NEIGHBOR existing owner",
+      "git_principal": "maidiu",
+      "branch": "agent/neighbormulch-riff-value-reification-recursive-gaze-intake-20261121-r1",
+      "head_sha": "03f93ad04b499a69117480103d744bbba05d8ede",
+      "base_branch": "agent/neighbormulch-five-neglected-fields-value-20261121-r1",
+      "base_head_observed": "60d193e64e7245fc8612fc1a5c2a5cce1a3d2216",
+      "pr_state": "open",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/03f93ad04b499a69117480103d744bbba05d8ede",
+      "material_functionality_summary": "ONE HOUSE theoretical synthesis drawing on R29, not 17 runtime mechanisms",
+      "description_first_claim": "# ONE HOUSE — reciprocal theory×running-code MULCH, existing 03\n\n**Exact candidate HEAD:** `03f93ad04b499a69117480103d744bbba05d8ede` on the EXISTING draft PR #1278 branch. **#1277 IS PRESERVED, OPEN AND UNTOUCHED** at its separately verified source HEAD `1e649b9a1021dba99e5a6c2799aa17b4de332958`; no deletion, closure, merge, rewrite or retirement of #1277 is authorized or contemplated. No new theory file or new branch.\n\n## ONE ACTIVE THEORY, RECONSTITUTED IN PLACE\n\nThe only active NEIGHBORMULCH theory in this branch is `SEAM/NEIGHBORMULCH/SOROK_TOTAL_MULCH/03_DIALECTICAL_CONSTITUTIVE_PRODUCT_",
+      "test": {
+        "executed_sha": null,
+        "verdict": "NOT_ADJUDICATED_IN_THIS_INTAKE",
+        "receipt": null,
+        "grade": "NO_OPERATIONAL_ACCEPTANCE",
+        "applied_to_head": false
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/neighbormulch-five-neglected-fields-value-20261121-r1",
+        "sha": "60d193e64e7245fc8612fc1a5c2a5cce1a3d2216",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "Theory references #1272; no independent runtime proof",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [
+        1272,
+        1277
+      ],
+      "conflicts": [
+        "Sourcefree or documentary scope only; original/native/actor/human/protected status unchanged"
+      ],
+      "disposition": "DOCUMENTARY_SOURCE_CANDIDATE__SEMANTIC_RECEIVING_HELD",
+      "next_receiving_owner": "NEIGHBOR existing owner; competent SOROK HQ protected receiver",
+      "smallest_next_action": "NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.",
+      "exact_source_bodies": [],
+      "functional_relationships": [
+        {
+          "original_id": "C3",
+          "original_title": "Individual organization, practice, mediation",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "N05",
+          "original_title": "Durable transition, changed relations and contradiction",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "N07",
+          "original_title": "Independent others, power, care and relational feedback",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S1",
+          "original_title": "Relational ontology",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S11",
+          "original_title": "UX / UI",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        },
+        {
+          "original_id": "S13",
+          "original_title": "Monetization / business model",
+          "relation": "SCOPED_RELEVANCE_TO_ORIGINAL_FUNCTION_NOT_EQUIVALENCE",
+          "grade": "REQUIREMENT_RELATION_NOT_IMPLEMENTATION"
+        }
+      ],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
+    },
+    {
+      "id": "PR-1294",
+      "pr": 1294,
+      "title": "SORACLE R30 — source-bounded fallible Other focus in existing developmental owner",
+      "pr_url": "https://github.com/maidiu/rawlsing/pull/1294",
+      "originating_owner_lane": "SOROKUDA out-of-scope historical tombstone",
+      "git_principal": "maidiu",
+      "branch": "agent/soracle-r30-sourcebounded-misattribution-20261123-r1",
+      "head_sha": "31e33859cf7c5389faa49baae55ebe3ff73a2187",
+      "base_branch": "agent/soracle-co-r27-mulchineering-contingent-event-reentry-20261121-r1",
+      "base_head_observed": "731f71b61fad5764eb021776ae937a376a54e8a8",
+      "pr_state": "closed",
+      "merged": false,
+      "live_head_observed_as": "GITHUB_PR_METADATA_2026-11-23_LOCAL",
+      "source_provenance": "https://github.com/maidiu/rawlsing/tree/31e33859cf7c5389faa49baae55ebe3ff73a2187",
+      "material_functionality_summary": "Out-of-scope R30 rejected by user; closed unmerged, own branch reset; minimal historical tombstone",
+      "description_first_claim": "Isolated additive candidate on #1272 exact source 731f71b61fad5764eb021776ae937a376a54e8a8. Revises existing historical_self_organization.py and its existing R19/R29 test file, plus a bounded receiving note. The R29 multi-Other lived source field is preserved; optional source-validated and possibly WRONG Other attribution changes later pre-cue recruitment without changing world history, consent or objective causation. Forged/unreceived source, malformed explanation, and default R29 behavior are covered by three targeted new tests. Pinned commit a5b966f2e701a88c78131307704c5b845b063b1d. Tests a",
+      "test": {
+        "executed_sha": null,
+        "verdict": "HISTORICAL_ONLY_REJECTED",
+        "receipt": "https://github.com/maidiu/rawlsing/pull/1294#issuecomment-7119208110",
+        "grade": "NO_OPERATIONAL_ACCEPTANCE",
+        "applied_to_head": false
+      },
+      "review": {
+        "sha": null,
+        "verdict": "NOT_INDEPENDENTLY_ADJUDICATED_BY_THIS_INTAKE",
+        "applied_to_head": false
+      },
+      "inherited_from": {
+        "branch": "agent/soracle-co-r27-mulchineering-contingent-event-reentry-20261121-r1",
+        "sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
+        "grade": "BRANCH_BASE_NOT_PROOF_OF_ACCEPTANCE"
+      },
+      "first_consumer": "NONE_AUTHORIZED",
+      "authorities": {
+        "source": "NOT_ISSUED_BY_THIS_RECORD",
+        "science": "NOT_ISSUED_BY_THIS_RECORD",
+        "actor": "NOT_ISSUED_BY_THIS_RECORD",
+        "human": "NOT_ISSUED_BY_THIS_RECORD",
+        "protected_receiving": "NOT_RECEIVED"
+      },
+      "dependencies": [],
+      "conflicts": [
+        "User rejected jurisdiction; branch reset to 731f71b...; dependent PRs still contain source"
+      ],
+      "disposition": "REJECTED_OUT_OF_SCOPE_CLOSED_UNMERGED",
+      "next_receiving_owner": "SOROKUDA out-of-scope historical tombstone; competent SOROK HQ protected receiver",
+      "smallest_next_action": "No adoption, active capability entry or operational reuse; dependent #1298/#1300 owner dispositions held.",
+      "exact_source_bodies": [],
+      "functional_relationships": [],
+      "functional_parity": "NOT_CERTIFIED__ORIGINAL_144_IDENTITIES_UNCHANGED"
     }
   ],
-  "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed.",
+  "protected_currentness_gap": "SOROK CURRENT_PROGRESS is still qualified R39; newer SORACLE and REMONT branches not protected received. Owner-authorized paired receiving needed. 2026-11-23 targeted intake: protected observed 827714e... differs from frozen fbc2080...; full existing live verification and authorized paired receiver HELD. R6/R7 contain rejected #1294 exact source; no clean combined receiving.",
   "discovery_routes": [
     {
       "pr": 1148,
