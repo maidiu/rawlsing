@@ -304,7 +304,7 @@ def test_combined_generated_cold_pipeline_exposes_revised_fibres(tmp_path,monkey
     monkeypatch.setattr(delivery,"open_saved_product",capture)
     # Actual owner's complete generated-source -> deleted native estate ->
     # pinned S2-F -> FF01 and M1 test. No new source or custody implementation.
-    delivery.test_generated_joint_source_to_persistent_ff01(tmp_path,monkeypatch,source_format)
+    delivery.test_generated_joint_source_to_persistent_ff01(tmp_path,monkeypatch,source_format,multi=False)
     cold=opened[0]
     closure=cold._closure
     assert closure.i05_result.receipts
