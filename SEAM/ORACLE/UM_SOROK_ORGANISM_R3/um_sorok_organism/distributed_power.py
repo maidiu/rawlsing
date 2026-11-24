@@ -104,7 +104,7 @@ def conditional_assistance_options(constitution, access, option):
         return []
     participants=_present_counterparts(access)
     visitors = {c['visitor_ref'] for c in access.cues
-                if operation == 'SING' and type(c) is dict
+                if operation in ('SING','SIGNAL') and type(c) is dict
                 and c.get('kind') == 'visitor_vocal_partner'
                 and type(c.get('visitor_ref')) is str}
     participants |= visitors
@@ -170,7 +170,8 @@ def conditional_assistance_options(constitution, access, option):
                 'visitor':visitor,'operation':operation}),
             'actor':constitution.actor,'as_of_clock':constitution.clock,
             'operation':operation,'project_id':None,
-            'grounds_status':'EXPLORATORY_VISITOR_VOCAL_INVITATION',
+            'grounds_status':('EXPLORATORY_VISITOR_VOCAL_INVITATION' if operation=='SING'
+                              else 'EXPLORATORY_VISITOR_SUPPORT_SIGNAL'),
             'world_request':{'operation':operation,'addressed_party_ref':visitor,
                              'material_object_ref':None},
             'binding_status':'OTHER_PRESENT_BUT_INDEPENDENT_RESPONSE_REQUIRED',
@@ -178,6 +179,23 @@ def conditional_assistance_options(constitution, access, option):
             'partner_consent':'MUST_BE_INDEPENDENTLY_AUTHORED',
             'source_grade':GRADE,'not_an_acquired_durable_motive':True,
             'not_an_observed_future':True})
+    # An actual, currently accessible food offer qualifies a distinct
+    # actor-selected acceptance alternative. A generic signal is not enough.
+    if operation == 'SIGNAL':
+        for row in list(offered):
+            other=row['world_request']['addressed_party_ref']
+            signs=[c for c in access.cues if c.get('kind')=='visitor_food_offer'
+                   and c.get('visitor_ref')==other
+                   and c.get('visitor_food_addressed_to_recipient') is True
+                   and c.get('clock')==access.world_clock
+                   and type(c.get('visitor_event_ref')) is str]
+            if other in visitors and len(signs)==1:
+                acceptance=copy(row)
+                acceptance['human_food_offer_ref']=signs[0]['visitor_event_ref']
+                acceptance['option_id']=stable_id('accept_actual_food_offer',{
+                    'option':row['option_id'],'offer':acceptance['human_food_offer_ref']})
+                acceptance['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+                offered.append(acceptance)
     return offered
 
 

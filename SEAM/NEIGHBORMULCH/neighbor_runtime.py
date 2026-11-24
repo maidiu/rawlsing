@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR',
-                      'SIGN_HALL_PETITION', 'SING'})
+                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -176,6 +176,11 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
+    if operation == 'OFFER_FEED' and visible:
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_food_offer',
+                       'tags': ['food', 'offer'], 'description': 'A visitor offers food.',
+                       'grade': grade, 'visual_identity_eligible': True})
     if operation == 'SING' and sound:
         result.append({'event_ref': event_ref, 'actor': actor['id'],
                        'modality': 'auditory', 'kind': 'visitor_vocal_practice',
@@ -315,9 +320,11 @@ class NeighborEncounter:
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         if target_actor_ref is not None:
-            if operation != 'SING':
+            if operation not in ('SING', 'OFFER_FEED'):
                 raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
             target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
+        if operation == 'OFFER_FEED' and target_actor_ref is None:
+            raise EncounterRefusal('FOOD_OFFER_REQUIRES_ADDRESSEE')
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
         request_payload = {'user': self.user_id, 'operation': operation,
@@ -328,7 +335,7 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
-        elif operation == 'SING':
+        elif operation in ('SING', 'OFFER_FEED'):
             request_payload['target_actor_ref'] = target_actor_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
@@ -356,10 +363,10 @@ class NeighborEncounter:
         # the same authored operation. Unresolved authorization is not an
         # affirmative denial, even when neither permits a material effect.
         material_gate = None
-        if operation in ('REPAIR', 'SING', 'SIGN_HALL_PETITION'):
+        if operation in ('REPAIR', 'SING', 'SIGN_HALL_PETITION', 'OFFER_FEED'):
             from um_sorok_organism.material_conjunction import evaluate_material_conjunction
             material_gate = evaluate_material_conjunction(
-                world, self.user_id, loc, operation)
+                world, self.user_id, loc, 'FEED' if operation == 'OFFER_FEED' else operation)
             if material_gate['readset']:
                 world.setdefault('material_gate_audit', []).append({
                     'clock': world['clock']+1, 'actor': self.user_id,
@@ -400,7 +407,7 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
-        elif operation == 'SING' and target_actor_ref is not None:
+        elif operation in ('SING', 'OFFER_FEED') and target_actor_ref is not None:
             # Unaddressed singing is ordinary activity; only an explicitly
             # authored, presently accessible addressee can qualify a joint
             # occasion. The visitor cannot bind the addressee's response.
@@ -410,6 +417,10 @@ class NeighborEncounter:
                     or sight.get('light') != 'lit'
                     or sight.get('sightline') != 'unobstructed'):
                 status = 'BLOCKED'
+            if operation == 'OFFER_FEED':
+                from um_sorok_organism.material_provisioning import visitor_held_food_available
+                if not visitor_held_food_available(world, self.user_id, loc):
+                    status = 'BLOCKED'
         elif operation == 'SIGN_HALL_PETITION':
             # A human's authored contribution is not an actor policy or a
             # second vote for a constituted actor. The actual institution
@@ -451,13 +462,18 @@ class NeighborEncounter:
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
                     {'spoken_text': cover_text if operation == 'LOOK' else text},
                     operation, origin, loc, ref)
                 for sign in eligible:
+                    if operation == 'OFFER_FEED' and actor_id != target_actor_ref:
+                        # This scoped implementation only supplies the
+                        # addressee's qualified offer; bystander witnessing
+                        # remains a separate, unimplemented projection.
+                        continue
                     # A transient user sound remains physically transient.
                     # R21's pre-action constitution read records the eligible
                     # cue ref; later *subjective* uptake must be separately
@@ -467,7 +483,7 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
-                    if operation == 'SING':
+                    if operation in ('SING', 'OFFER_FEED'):
                         # Actual human authorship is not a synthetic actor.
                         # Only a simultaneously eligible visual channel can
                         # bind this provisional encounter participant identity.
@@ -475,7 +491,8 @@ class NeighborEncounter:
                         if sign.get('visual_identity_eligible') is True:
                             cue['visitor_ref'] = self.user_id
                             if actor_id == target_actor_ref:
-                                cue['visitor_vocal_addressed_to_recipient'] = True
+                                cue['visitor_vocal_addressed_to_recipient' if operation == 'SING'
+                                    else 'visitor_food_addressed_to_recipient'] = True
                     evidence.append({'actor': actor_id, 'event_ref': ref,
                                      'cue_ref': cue['id'], 'modality': sign['modality'],
                                      'basis': sign['kind'], 'grade': sign['grade']})
@@ -496,7 +513,7 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
-        if operation == 'SING':
+        if operation in ('SING', 'OFFER_FEED'):
             event['target_actor_ref'] = target_actor_ref
         if operation == 'SIGN_HALL_PETITION':
             event.update(material_outcome=material_outcome,

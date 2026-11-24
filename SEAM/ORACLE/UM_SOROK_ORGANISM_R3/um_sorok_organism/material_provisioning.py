@@ -233,18 +233,37 @@ def settle_provisioning(world, actors, allocation):
     return outcomes
 
 
+def visitor_held_food_available(world, giver, location):
+    """A human may offer only existing held stock, not another's pantry."""
+    person=world.get("neighbor_users",{}).get(giver,{})
+    return (person.get("present") is True
+            and person.get("location")==location
+            and giver not in world.get("positions",{})
+            and _quantity(world.get("holdings",{}).get(giver,{}).get(
+                "food",0),"VISITOR_HELD_FOOD")>=1)
+
+
 def perform_one_actual_feeding(world,actors,giver,recipient,location,
-                               actor_selection_source='UNKNOWN_NOT_ISSUED'):
+                               actor_selection_source='UNKNOWN_NOT_ISSUED',
+                               *, qualified_human_offer_ref=None):
     """One independently authored, actual FEED transfers a full food unit.
 
     No infant duty or assumed caregiver motive. This operation belongs to
     the world action resolver, not to the simulated child's self-understanding.
     """
-    if (giver not in actors or recipient not in actors or giver==recipient
+    human_offer=(qualified_human_offer_ref is not None)
+    if human_offer and (type(qualified_human_offer_ref) is not str
+            or not qualified_human_offer_ref or giver in actors
+            or not visitor_held_food_available(world,giver,location)):
+        return {"status":"BLOCKED","outcome":"NO_QUALIFIED_HUMAN_HELD_FOOD",
+                "material_feeding_ref":None}
+    if (recipient not in actors or giver==recipient
             or location not in world.get("sites",{})
-            or any(world.get("positions",{}).get(x)!=location
-                   or actors[x].get("location")!=location
-                   for x in (giver,recipient))):
+            or (not human_offer and (giver not in actors
+                or world.get("positions",{}).get(giver)!=location
+                or actors[giver].get("location")!=location))
+            or world.get("positions",{}).get(recipient)!=location
+            or actors[recipient].get("location")!=location):
         return {"status":"BLOCKED","outcome":"RECIPIENT_NOT_PRESENT",
                 "material_feeding_ref":None}
     held=_quantity(world.get("holdings",{}).get(
@@ -252,6 +271,9 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
     if held>=1:
         origin="GIVER_HELD_FOOD"
         next_food=held-Decimal(1)
+    elif human_offer:
+        return {"status":"BLOCKED","outcome":"NO_QUALIFIED_HUMAN_HELD_FOOD",
+                "material_feeding_ref":None}
     else:
         # A collectively built store is not the controller's original pantry
         # and does not inherit that pantry's unilateral title.
@@ -313,13 +335,19 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
         "caregiver_intent_or_love":"NOT_INFERRED",
         "not_compressed_fiction":True,
         "grade":GRADE}
+    if human_offer:
+        receipt.update(human_authored_offer_ref=qualified_human_offer_ref,
+                       actor_independently_selected_this_attempt=False,
+                       human_authored_offer_not_actor_selection=True,
+                       recipient_independently_accepted=True)
     world.setdefault("material_feeding_events",[]).append(receipt)
     world.setdefault("social_reproductive_labor",[]).append({
         "id":identity+":labor","giver":giver,"recipient":recipient,
         "site":location,"clock":world["clock"]+1,
         "work_kind":"DIRECT_MATERIAL_FEEDING",
         "material_feed_ref":identity,
-        "caregiver_bodily_cost":"PHYSICAL_ACTION_FEED",
+        "caregiver_bodily_cost":("HUMAN_BODILY_COST_NOT_MODELED"
+                              if human_offer else "PHYSICAL_ACTION_FEED"),
         "grade":GRADE})
     return {"status":"PERFORMED","outcome":"MATERIAL_FOOD_GIVEN",
             "material_feeding_ref":identity}
