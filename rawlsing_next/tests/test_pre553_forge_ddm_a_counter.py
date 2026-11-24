@@ -522,3 +522,41 @@ def test_relay_joint_routes_require_actual_first_target_and_scope(route):
     assert positive.ordered_target_refs==refs and positive.raw_denominator_support==3
     with pytest.raises(AnalyticalCompositionError,match="TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"):
         compose(coord)
+
+
+@pytest.mark.parametrize("extra_x", [0,1])
+def test_relay_joint_discovery_uses_same_case_marginals_not_different_risk_sets(extra_x):
+    """The four common eligible cases are independent; separate X risk is skewed."""
+    tag="RELAY-RISK-"+str(extra_x)
+    rows=[{"id":f"R{x}{y}", "responses":{"X":x,"Y":y}}
+          for x,y in product((0,1),repeat=2)]
+    rows.extend({"id":f"E{i}","responses":{"X":extra_x,"Y":0}} for i in range(2))
+    common={r["id"] for r in rows[:4]}
+    all_ids={r["id"] for r in rows}
+    source=native._build_source(tag,rows,risk_sets={"R":{"X":all_ids,"Y":common}})
+    qa,da=native._query_authority(tag),i05._d_auth(tag+"-discovery")
+    pred=native._branch_predicate(source,qa,tag="all")
+    joint=native._query(source,qa,pred,("X","Y"),tag="joint")
+    xq=native._query(source,qa,pred,("X",),tag="X")
+    yq=native._query(source,qa,pred,("Y",),tag="Y")
+    grammar=i05._grammar(operation="I03-OP-"+tag+"-discovery",
+        atoms=[i05._atom("ALL",pred,"BRANCH")],
+        templates=[i05._qt("J",joint),i05._qt("X",xq),i05._qt("Y",yq)],
+        rules=[i05._rule("joint","PAIR_RESPONSE_COTRAVEL","JOINT_DEPENDENCE",
+            baseline_atom_id="ALL",joint_template_id="J",marginal_template_ids=("X","Y"),
+            validation={"kind":"JOINT_NOT_PRODUCT_OF_MARGINALS"})],j=2)
+    result=i05._execute(source,qa,da,grammar,(pred,),(joint,xq,yq))
+    receipt=result.receipts[0]
+    refs=receipt.support_uncertainty_state["query_role_fact_refs"]
+    facts={f.ref:f for f in result.empirical_facts}
+    jf,xf,yf=(facts[exact_ref(refs[role][0])] for role in ("JOINT","MARGINAL_0","MARGINAL_1"))
+    assert (jf.raw_denominator_support,xf.raw_denominator_support,yf.raw_denominator_support)==(4,6,4)
+    assert all(f.typed_state=="SUPPORTED" for f in (jf,xf,yf))
+    assert sorted(c["raw_numerator_support"] for c in jf.target_topology["complete_cell_semantic_projection"])==[1,1,1,1]
+    # Genuine same-case independence, not a claim of population independence.
+    # Keep all three executed native facts; do not use the external margin
+    # from six people to invent co-travel in the four common cases.
+    assert receipt.typed_state=="VALID_EMPTY"
+    assert receipt.coverage_state=="EVALUATED_VALID_EMPTY"
+    assert receipt.support_uncertainty_state["joint_dependence_comparison"][0]["basis"]=="JOINT_COMPLETE_CASE_MARGINAL_PROJECTIONS"
+    assert set(result.empirical_fact_refs)=={jf.ref,xf.ref,yf.ref}
