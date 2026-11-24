@@ -1083,6 +1083,22 @@
       "failed": 6,
       "defect": "Custody tests omit mandatory resolver; inherited signature/test mismatch source-static; baseline execution not performed",
       "remont_issue": 1162
+    },
+    "joint_operating_requirements": {
+      "status": "USER_DIRECTED__RECEIVING_CANDIDATE",
+      "verbatim_corrections": [
+        "speed of* queryability",
+        "but if \"queryability\" could mean anything else, that too"
+      ],
+      "dimensions": [
+        "storage_space",
+        "usability",
+        "speed_of_querying",
+        "broader_queryability"
+      ],
+      "rule": "Report each dimension, measured tradeoffs and unknowns; none expendable; existing S03/#1006/#1097; targeted construction checks and representative integration workload",
+      "source_head": "1038893440b77d9d35d29e5ff38ba27d187b1136",
+      "hold": "Independent and protected receiving; original-source and joint operational qualification not established"
     }
   }
 }
