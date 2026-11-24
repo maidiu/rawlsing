@@ -454,15 +454,26 @@ class NeighborEncounter:
                 mandatory.append({'kind': 'CO_PRESENT_ACTOR',
                                   'actor_ref': actor_id, 'interpretation': 'NONE'})
         if self._last_actor_tip is not None:
-            _, at_clock, tip = self._last_actor_tip
+            receipt, at_clock, tip = self._last_actor_tip
             actor_location = world['positions'].get(self._last_actor_ref)
-            # Unchanged provisional R2 expression gate; physical modality
-            # typing is a separately held CO/MIII owner-first-consumer task.
-            if (at_clock == world['clock'] and actor_location == loc
-                    and (visible_identity or audible)
+            # A CO public_tip is generic prose, NOT a modality-typed emitted
+            # sound. Audibility alone cannot turn a silent world action into
+            # heard speech or grant the visitor an actor's internal report.
+            # Preserve R2's visible expression only when it is tied to this
+            # exact actual one-world actor transition. A future source-typed
+            # auditory expression needs MIII/CO owner receiving.
+            last = self.runtime.ledger.events()[-1]
+            if (visible_identity and actor_location == loc
+                    and at_clock == world['clock']
+                    and last['id'] == receipt
+                    and last['kind'] == 'ACTOR_LIFE_TRANSITION'
+                    and last['actor_id'] == self._last_actor_ref
+                    and last['clock'] == world['clock']
+                    and last['envelope'].get('world') == self.runtime.world_id
                     and type(tip) is str and tip.strip()):
                 mandatory.append({'kind': 'PUBLIC_TIP', 'text': tip[:500],
-                                  'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION'})
+                                  'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION',
+                                  'modality_grade': 'SOURCEFREE_VISUAL_ONLY_UNTYPED'})
         view = self.mii.surface(room=loc, orientation='SOURCEFREE_UNKNOWN',
             exit_name='SOURCEFREE_UNQUALIFIED', available=available,
             candidates=available, offered=offered, selected=selected,
