@@ -200,3 +200,34 @@ class HostileCountryCurrentness(unittest.TestCase):
                     repo.resolve_object_exact(ref)
             finally:
                 reader.close()
+
+
+    def test_legacy_country_v1_remains_readable_with_full_authentication(self):
+        import sqlite3
+        from unittest import mock
+        import rawlsing_next.pre553_country_numeric_carrier as c
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        from dataclasses import asdict
+        import json,zlib
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/"legacy.sqlite"
+            info=dict(source_sha256="1"*64,metadata_digest="2"*64,source_rows=1,
+                country_variable="G",country_key=c.canonical_json(c._CODEC.encode("A")),country_rows=1)
+            with sqlite3.connect(path) as db:
+                db.executescript("CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT);"
+                    "CREATE TABLE vars(ordinal INTEGER PRIMARY KEY,name TEXT);"
+                    "CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER,rows BLOB);"
+                    "CREATE TABLE lanes(block INTEGER,ordinal INTEGER,width INTEGER,dict BLOB,codes BLOB);")
+                db.executemany("INSERT INTO meta VALUES(?,?)",[(k,c.canonical_json(v)) for k,v in
+                    dict(schema=c.LEGACY_SCHEMA,**info).items()])
+                db.execute("INSERT INTO vars VALUES(1,'G')")
+                db.execute("INSERT INTO blocks VALUES(0,1,?)",(c._pack([1],8),))
+                token=c._encode_cell(PhysicalCell(1,1,"G","A",PhysicalMissingState.OBSERVED_STORAGE_VALUE,None,None))
+                db.execute("INSERT INTO lanes VALUES(0,1,1,?,?)",
+                    (zlib.compress(c.canonical_json([token]).encode("ascii")),c._pack([0],1)))
+            receipt=c.CountryReceipt(**info,sha256=c._hash(path),bytes=path.stat().st_size)
+            self.assertIsNone(receipt.lane_root)
+            with c.CountryReader(path,receipt,require_current=lambda:True) as reader:
+                with mock.patch.object(c,"_hash",wraps=c._hash) as hashes:
+                    self.assertEqual(list(reader.matching_rows({"G":"A"})),[1])
+                    self.assertEqual(hashes.call_count,2)

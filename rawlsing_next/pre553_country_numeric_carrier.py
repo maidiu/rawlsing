@@ -274,7 +274,7 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
           CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER NOT NULL,rows BLOB NOT NULL,digest BLOB NOT NULL);
           CREATE TABLE lanes(block INTEGER NOT NULL REFERENCES blocks(id),ordinal INTEGER NOT NULL REFERENCES vars(ordinal),
              width INTEGER NOT NULL,dict BLOB NOT NULL,codes BLOB NOT NULL,digest BLOB NOT NULL,
-             PRIMARY KEY(block,ordinal)) WITHOUT ROWID;
+             PRIMARY KEY(block,ordinal));
         """)
         db.execute("PRAGMA foreign_keys=ON")
         db.executemany("INSERT INTO vars VALUES(?,?)", variables)
@@ -300,7 +300,12 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
                     codes.append(index[token])
                 width = 1 if len(dictionary) <= 256 else 2 if len(dictionary) <= 65536 else 4
                 payload=_pack_dictionary(dictionary)
-                packed=_pack(codes,width)
+                # Dense unique dictionaries already follow original row order.
+                # Store no redundant index lane for the identity permutation.
+                if len(dictionary)==n and codes==list(range(n)):
+                    width,packed=0,b""
+                else:
+                    packed=_pack(codes,width)
                 db.execute("INSERT INTO lanes VALUES(?,?,?,?,?,?)",
                            (block,ordinal,width,payload,packed,
                             _digest("LANE",(block,ordinal,width),payload,packed)))
@@ -455,7 +460,7 @@ class CountryReader:
         previous, total = 0, 0
         seen=[]
         for block,n,payload in self.db.execute("SELECT id,n,rows FROM blocks ORDER BY id"):
-            self._verify()
+            self._check_live_file()
             if self._block_auth is not None and self._block_auth.get(block)!=(n,_digest("ROWS",(block,n),payload)):
                 raise CountryCarrierError("row block authentication failed")
             seen.append(block)
@@ -474,7 +479,12 @@ class CountryReader:
         if self._lane_auth is not None and self._lane_auth.get((block,ordinal))!=_digest("LANE",(block,ordinal,width),payload,codes):
             raise CountryCarrierError("column lane authentication failed")
         dictionary = _read_dictionary(payload)
-        ids = _unpack(codes,width,len(rows))
+        if width==0:
+            if self.receipt.lane_root is None or codes!=b"" or len(dictionary)!=len(rows):
+                raise CountryCarrierError("invalid implicit identity code lane")
+            ids=tuple(range(len(rows)))
+        else:
+            ids = _unpack(codes,width,len(rows))
         if not dictionary or any(i>=len(dictionary) for i in ids):
             raise CountryCarrierError("invalid column dictionary codes")
         return NumericColumn(rows,ids,dictionary)
@@ -605,7 +615,7 @@ class _CountryEventBodies:
 
     def check_live(self):
         """Every existing country-backed exact-object reader must remain CURRENT."""
-        self.reader._verify()
+        self.reader._check_live_file()
 
     def __getitem__(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
@@ -640,7 +650,7 @@ class _CountryEventBodies:
                         matches.append(event)
         if len(matches)!=1:
             raise CountryCarrierError("country event reconstruction differs from sealed ref")
-        reader._verify()
+        reader._check_live_file()
         from .pre553_empirical_objects import canonical_json as semantic_json
         return _BodyScalar(semantic_json(matches[0].semantic_projection()).encode("utf-8"))
 

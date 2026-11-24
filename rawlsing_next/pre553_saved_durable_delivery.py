@@ -159,6 +159,9 @@ class SavedPublication:
     execution_seconds: float
     publication_seconds: float
     batch_census: dict
+    # Country publication supplies the native identity as an external
+    # operator-retainable pin; legacy saved-estate publications unchanged.
+    release_identity: ReleaseIdentity | None = None
 
     @property
     def complete(self) -> bool:
@@ -738,7 +741,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         reader._verify()
         current()
         _require(_record(workload,resolver,host,purpose)==record,"COUNTRY_CURRENT_DECISION_CHANGED")
-    return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict())
+    return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict(),identity)
 
 
 def open_country_product(closure_path, *, expected_root, expected_release_ref,
