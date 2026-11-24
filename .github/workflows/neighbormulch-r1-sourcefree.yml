@@ -1,0 +1,99 @@
+name: NEIGHBORMULCH R1 actual organism first consumer
+on:
+  push:
+    branches:
+      - agent/neighbormulch-one-world-encounter-r1-20261121
+      - agent/neighbormulch-r2-live-independent-actor-occurrence-20261121-r1
+      - agent/neighbormulch-r3-observable-visitor-conduct-20261123-r1
+      - agent/neighbormulch-r4-mii-p6-sourcefree-visibility-20261123-r1
+      - agent/neighbormulch-r5-mii-cold-personal-continuity-20261123-r1
+      - agent/neighbormulch-r6-join-co-r30-exact-owned-tree-20261123-r1
+      - agent/neighbormulch-r7-typed-public-tip-source-gate-20261123-r1
+      - agent/neighbormulch-r8-clean-co-public-world-signs-20261124-r1
+      - agent/neighbormulch-r9-material-world-to-mii-20261124-r1
+      - agent/neighbormulch-r10-public-notice-mii-20261124-r1
+      - agent/neighbormulch-r11-contingent-world-encounter-20261124-r1
+      - agent/neighbormulch-r12-absence-return-20261124-r1
+  pull_request:
+    branches:
+      - agent/neighbormulch-one-world-encounter-r1-20261121
+  workflow_dispatch:
+jobs:
+  one-world-first-consumer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile sourcefree neighbor and real R21 consumer
+        run: |
+          python -m py_compile SEAM/NEIGHBORMULCH/neighbor_runtime.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_contract.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_joined_r21.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_live_interrupt_r2.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_observable_look_r3.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_mii_p6_join_r4.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_mii_cold_profile_r5.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_public_tip_source_r7.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_public_occurrence_r8.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_world_r9.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_public_notice_r10.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_contingent_world_r11.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_absence_return_r12.py
+      - name: Contract-spy normal and optimized
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -q
+      - name: Real existing R21 plus protected MII and SQLite cold first consumer
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joined_r21.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_joined_r21.py' -q
+      - name: R2 actual visitor-present independent actor beat and cold SQLite first consumer
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_live_interrupt_r2.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_live_interrupt_r2.py' -q
+      - name: R3 actual outward LOOK and differential actor sensory receipt with SQLite
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_observable_look_r3.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_observable_look_r3.py' -q
+      - name: R4 sourcefree MII glance-close and outward CO actor continuity
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_mii_p6_join_r4.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_mii_p6_join_r4.py' -q
+      - name: R5 real MII cold sidecar and CO independent world continuity
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_mii_cold_profile_r5.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_mii_cold_profile_r5.py' -q
+      - name: R7 exact CO event-qualified visible public tip and auditory severance
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_tip_source_r7.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_tip_source_r7.py' -q
+      - name: R8 actual modality typed public world occurrences and cold MII reader
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_occurrence_r8.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_occurrence_r8.py' -q
+      - name: R9 actual CO material life to finite MII encounter
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_world_r9.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_world_r9.py' -q
+      - name: R10 actual CO public notice and finite MII reading
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_notice_r10.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_notice_r10.py' -q
+      - name: R11 actual branch-local CO contingent occurrence to finite MII
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contingent_world_r11.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contingent_world_r11.py' -q
+      - name: R12 actual absent life versus immediate return
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_absence_return_r12.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_absence_return_r12.py' -q
+      - name: Full inherited CO R27 organism court normal and optimized
+        env:
+          PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: |
+          python -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -q
+          python -O -m unittest discover -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -q
