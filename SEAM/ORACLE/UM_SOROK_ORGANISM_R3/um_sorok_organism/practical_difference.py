@@ -6,6 +6,7 @@ Nothing here edits the independent world, grants permission, or identifies a
 real person's unconscious motive. This module is an owner-adjacent read model.
 """
 from .types import GRADE, copy, stable_id
+from .historical_self_organization import project_dependency_course_currents
 
 DIRECTIONS={'MORE','LESS','PRESERVE','CHANGE','UNKNOWN'}
 APPRAISALS={'ACTOR_INTERPRETS_SUPPORTED','ACTOR_INTERPRETS_DISAPPOINTED',
@@ -77,7 +78,15 @@ def practical_alternatives(constitution,access,option):
         identity={'actor':actor,'clock':clock,'action':act,
                   'project_ref':project['id'],'expected_difference':expected,
                   'addressed_party_ref':target}
+        historical_currents=project_dependency_course_currents(
+            constitution,access,project,act,conditional)
+        polarities={c['polarity'] for c in historical_currents}
         alts.append({
+            **({'course_historical_currents':historical_currents,
+                'course_psychodynamic_status':(
+                    'UNRESOLVED_CONTRADICTION' if polarities=={'APPROACH','WITHHOLD'}
+                    else 'SITUATED_HISTORICAL_COURSE_ORIENTATION')}
+               if historical_currents else {}),
             'option_id':stable_id('practical_option',identity),
             'actor':actor,'as_of_clock':clock,'operation':act,
             'project_id':project['id'],'grounds_status':'AVAILABLE_SINGLE_PROJECT_COURSE',
