@@ -75,6 +75,10 @@ class C11Repository:
         self._by_ref: dict[str, C11LogicalRelease] = {}
         self._by_release_id: dict[str, str] = {}
         self._objects: dict[str, CanonicalSemanticObject | C11InternalRecord | _EventLocator] = {}
+        # Object-scoped currentness: country-backed non-events and internal
+        # records must not escape by resolving a ref without its release.
+        # Event locators already perform their own checked body retrieval.
+        self._country_object_guards: dict[str, tuple[Any, ...]] = {}
         # Derived I03 topology only, scoped to this exact append-only repository.
         self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
         self._i03_index_lock = Lock()
@@ -117,7 +121,11 @@ class C11Repository:
         obj = self._objects.get(ref.key)
         if obj is None:
             raise KeyError("exact C11 object unavailable; no fallback permitted")
-        return obj.materialize() if isinstance(obj, _EventLocator) else obj
+        if isinstance(obj, _EventLocator):
+            return obj.materialize()
+        for guard in self._country_object_guards.get(ref.key, ()):
+            guard.check_live()
+        return obj
 
     def _commit_validated(self, release: C11LogicalRelease) -> None:
         """Atomic commit primitive used only after complete ingest validation."""
@@ -132,7 +140,13 @@ class C11Repository:
 
         # Stage all exact object identities before mutating repository state.
         staged = dict(self._objects)
+        staged_guards = dict(self._country_object_guards)
         public = release.public_objects
+        country_guard = None
+        if isinstance(public, _CompactPublicObjects):
+            from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+            if type(public.lane.bodies) is _CountryEventBodies:
+                country_guard = public.lane.bodies
         entries = public.exact_entries() if isinstance(public, _CompactPublicObjects) else public
         for obj in chain(entries, release.internal_records, (release.replay_manifest,)):
             obj_ref = obj.ref
@@ -140,8 +154,15 @@ class C11Repository:
             if prior is not None and prior.ref.content_hash != obj_ref.content_hash:
                 raise C11AtomicityError("exact object ref collision has conflicting content")
             staged[obj_ref.key] = obj
+            if country_guard is not None and not isinstance(obj, _EventLocator):
+                # Shared exact objects may belong to more than one country
+                # release. Conservatively respect *every* live country owner.
+                guards = staged_guards.get(obj_ref.key, ())
+                if not any(g is country_guard for g in guards):
+                    staged_guards[obj_ref.key] = (*guards, country_guard)
 
         self._objects = staged
+        self._country_object_guards = staged_guards
         self._by_ref[ref.key] = release
         self._by_release_id[release.release_id] = release.semantic_release_hash
 
