@@ -15,6 +15,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from decimal import Decimal
+from fractions import Fraction
 from itertools import combinations
 import json
 from math import isfinite, log2, prod
@@ -283,6 +284,59 @@ def _priority_groups(associations):
     return ordered
 
 
+def _conditional_target_fibres(projection_material, min_branch_n):
+    """Read P(target | observed group state, context) from one sealed projection.
+
+    The projection already owns all joint counts. This is a denominator-aware
+    presentation of those counts, not another query, association estimator,
+    population model or source permission. Zero group support is undefined
+    conditional probability, not a population impossibility.
+    """
+    groups = {}
+    for cell in projection_material["complete_output_cells"]:
+        states = cell["output_states"]
+        key = _key(states[:-1])
+        group = groups.setdefault(key, (states[:-1], []))
+        group[1].append((states[-1], cell["raw_count"]))
+    fibres = []
+    for group_states, target_counts in groups.values():
+        n = sum(count for _, count in target_counts)
+        modal_n = max((count for _, count in target_counts), default=0)
+        target_rows = []
+        for state, count in target_counts:
+            fraction = Fraction(count, n) if n else None
+            target_rows.append({
+                "target_state": state,
+                "raw_count": count,
+                "conditional_raw_fraction": (
+                    {"$exact_fraction": [fraction.numerator, fraction.denominator]}
+                    if fraction is not None else None
+                ),
+                "sample_modal_disposition": (
+                    "NO_OBSERVED_GROUP_SUPPORT" if not n
+                    else "OBSERVED_ZERO_IN_GROUP" if not count
+                    else "CO_MODAL" if count == modal_n
+                    else "OBSERVED_NONMODAL_ALTERNATIVE"
+                ),
+            })
+        fibres.append({
+            "group_states": group_states,
+            "raw_group_full_case_n": n,
+            "conditional_state": (
+                "OBSERVED_FULL_CASE_SUPPORT" if n
+                else "ZERO_WITHIN_RESOLVED_FULL_CASES"
+            ),
+            "recursion_support": (
+                "MEETS_MINIMUM_N_ONLY" if n >= min_branch_n
+                else "BELOW_MINIMUM_N__NOT_A_GLOBAL_NEGATIVE"
+            ),
+            "target_rows": target_rows,
+        })
+    if sum(fibre["raw_group_full_case_n"] for fibre in fibres) != projection_material["raw_selected_full_case_n"]:
+        raise DHIKRExplorationError("conditional fibres lost original projection support")
+    return fibres
+
+
 def _retain_group_evidence(workspace, request, groups, context, n, remaining_cells):
     """Complete bounded comparison inventory; exact projections are existing S04.
 
@@ -305,6 +359,7 @@ def _retain_group_evidence(workspace, request, groups, context, n, remaining_cel
             "projection_state": "DEFERRED_PROJECTION_CELL_BUDGET",
             "projection_ref": None,
             "projection_material": None,
+            "conditional_target_fibres": None,
         }
         if metrics["raw_n"] != n:
             raise DHIKRExplorationError("group changed common-case denominator")
@@ -318,6 +373,8 @@ def _retain_group_evidence(workspace, request, groups, context, n, remaining_cel
                 "projection_state": "COMPLETE_OBSERVED_DOMAIN_WITH_ALTERNATIVES",
                 "projection_ref": projection.ref.as_dict(),
                 "projection_material": material,
+                "conditional_target_fibres": _conditional_target_fibres(
+                    material, request.min_branch_n),
             })
             used += size
         rows.append(item)
@@ -595,6 +652,7 @@ def analyze_s04_dhikr(
             "search_priority": "IN_SAMPLE_INFORMATION_BITS_PER_GROUP_AXIS",
             "group_order_bound": request.max_interaction_order,
             "minority_policy": "ALL_SOURCE_DOMAIN_CELLS_IN_RETAINED_PROJECTIONS__LEGACY_SUMMARY_NOT_EXHAUSTIVE",
+            "conditional_fibre_policy": "EXACT_GROUP_LOCAL_DENOMINATORS__ZERO_GROUP_UNDEFINED__SAMPLE_MODAL_AND_NONMODAL_ONLY",
             "source_disclosure_authority": None,
         }
         result["group_projection_cells_used"] = 0
