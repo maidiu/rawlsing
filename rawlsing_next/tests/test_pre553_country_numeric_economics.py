@@ -187,10 +187,10 @@ class CountryNativeEconomics(unittest.TestCase):
             # deliberately repeated routing list is NOT a valid C11 release;
             # it tests only exact digest streaming and bounded retention.
             if not wide:
-                wide=replace(workload,projection=replace(workload.projection,
+                mechanical=replace(workload,projection=replace(workload.projection,
                     routing=workload.projection.routing*3))
-                wide_hash=semantic_hash(wide.envelope())
-                wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash,max_bytes=1024*1024)
+                wide_hash=semantic_hash(mechanical.envelope())
+                wide_prepared=issued._PreparedRoutingEnvelope.prepare(mechanical,wide_hash,max_bytes=1024*1024)
                 self.assertIsNotNone(wide_prepared)
                 self.assertEqual(wide_prepared.digest(),wide_hash)
                 self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
@@ -200,7 +200,7 @@ class CountryNativeEconomics(unittest.TestCase):
                     "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
                     "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
                     "exact_hash_equal":True}),flush=True)
-                del wide_prepared,wide
+                del wide_prepared,mechanical
             self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
                 workload,record.envelope_sha256,max_bytes=16))
             # Reject substituted body/tuple and re-hash all nonrouting input.
