@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from decimal import Decimal
 from itertools import combinations
 import json
-from math import isfinite, log2
+from math import isfinite, log2, prod
 from random import Random
 from typing import Any, Mapping
 
@@ -50,6 +50,8 @@ class DHIKRComparisonRequest:
     max_interaction_order: int = 3
     bootstrap_replicates: int = 0
     bootstrap_case_cap: int = 4096
+    include_group_evidence: bool = False
+    max_group_projection_cells: int = 4096
 
 
 @dataclass(frozen=True)
@@ -257,14 +259,69 @@ def _candidate_groups(
     Zero-signal groups are not a discovery result. The groups are exploratory
     same-case sample associations, never a science-issued predictor ranking.
     """
-    ordered: list[tuple[float, float, tuple[int, ...]]] = []
-    for width in range(1, min(max_order, len(predictors)) + 1):
-        for group in combinations(predictors, width):
-            signal = _association(cells, target, group)["information_bits"]
-            if signal is not None and signal > 1e-12:
-                ordered.append((signal / width, signal, group))
+    return _priority_groups(_group_associations(cells, target, predictors, max_order))
+
+
+def _group_associations(cells, target, predictors, max_order):
+    """One incumbent numerical producer; retain zero-signal groups too."""
+    return [
+        (group, _association(cells, target, group))
+        for width in range(1, min(max_order, len(predictors)) + 1)
+        for group in combinations(predictors, width)
+    ]
+
+
+def _priority_groups(associations):
+    """Search priority is distinct from comparative raw information."""
+    ordered = [
+        (metrics["information_bits"] / len(group), metrics["information_bits"], group)
+        for group, metrics in associations
+        if metrics["information_bits"] is not None
+        and metrics["information_bits"] > 1e-12
+    ]
     ordered.sort(key=lambda row: (-row[0], -row[1], row[2]))
     return ordered
+
+
+def _retain_group_evidence(workspace, request, groups, context, n, remaining_cells):
+    """Complete bounded comparison inventory; exact projections are existing S04.
+
+    A budget-limited projection is explicitly deferred, NOT a zero or a
+    negative finding. Every evaluated group keeps its same-case information
+    estimates, including zero information and degenerate target entropy.
+    """
+    ranked = sorted(groups, key=lambda item: (
+        -(item[1]["information_bits"] or 0), len(item[0]), item[0]
+    ))
+    rows = []
+    used = 0
+    for group, metrics in ranked:
+        axes = (*group, request.target_axis)
+        size = prod(len(workspace._domains[axis]) for axis in axes)
+        item = {
+            "axes": list(group),
+            **metrics,
+            "projection_domain_cells": size,
+            "projection_state": "DEFERRED_PROJECTION_CELL_BUDGET",
+            "projection_ref": None,
+            "projection_material": None,
+        }
+        if metrics["raw_n"] != n:
+            raise DHIKRExplorationError("group changed common-case denominator")
+        if size <= remaining_cells - used:
+            projection = workspace.query(S04Projection(axes, context))
+            material = projection.material()
+            if (material["raw_selected_full_case_n"] != n
+                    or len(material["complete_output_cells"]) != size):
+                raise DHIKRExplorationError("group projection lost source support or domain")
+            item.update({
+                "projection_state": "COMPLETE_OBSERVED_DOMAIN_WITH_ALTERNATIVES",
+                "projection_ref": projection.ref.as_dict(),
+                "projection_material": material,
+            })
+            used += size
+        rows.append(item)
+    return rows, used
 
 
 def _bootstrap_stability(
@@ -451,7 +508,10 @@ def _validate_request(request: DHIKRComparisonRequest, arity: int, domains):
             or type(request.bootstrap_replicates) is not int
             or not 0 <= request.bootstrap_replicates <= 200
             or type(request.bootstrap_case_cap) is not int
-            or not 1 <= request.bootstrap_case_cap <= 4096):
+            or not 1 <= request.bootstrap_case_cap <= 4096
+            or type(request.include_group_evidence) is not bool
+            or type(request.max_group_projection_cells) is not int
+            or not 0 <= request.max_group_projection_cells <= 65536):
         raise DHIKRExplorationError("resource bounds not finite/qualified")
 
 
@@ -525,6 +585,26 @@ def analyze_s04_dhikr(
         "no_new_I03_or_source_reads": True,
         "no_cross_release_risk_pooling": True,
     }
+    if request.include_group_evidence:
+        # Native references make the contextual hierarchy readable without
+        # guessing what an ordinal axis means. No new mapping is asserted.
+        source = workspace._knowledge.material()
+        result["group_evidence_policy"] = {
+            "max_group_projection_cells": request.max_group_projection_cells,
+            "rank_order": "DESCENDING_SAMPLE_INFORMATION_BITS__TIES_NOT_RESOLVED_SCIENTIFICALLY",
+            "search_priority": "IN_SAMPLE_INFORMATION_BITS_PER_GROUP_AXIS",
+            "group_order_bound": request.max_interaction_order,
+            "minority_policy": "ALL_SOURCE_DOMAIN_CELLS_IN_RETAINED_PROJECTIONS__LEGACY_SUMMARY_NOT_EXHAUSTIVE",
+            "source_disclosure_authority": None,
+        }
+        result["group_projection_cells_used"] = 0
+        result["source_predicate_ref"] = source["predicate_ref"]
+        result["source_replay_ref"] = source["replay_ref"]
+        result["source_universe_ref"] = full["source_universe_ref"]
+        result["source_measure_basis_ref"] = full["source_measure_basis_ref"]
+        result["source_axis_bindings"] = full["output_axes"]
+        result["source_interpretation_version_ref"] = full["interpretation_version_ref"]
+
     if result["state"] != "SOURCE_COHERENT_SAMPLE_COMPARISON":
         result["bootstrap_rank_instability"] = {
             "state": "UPSTREAM_HELD__NO_SAMPLE_INFERENCE"}
@@ -601,9 +681,10 @@ def analyze_s04_dhikr(
                         else "ZERO_OR_UNRESOLVED_SAMPLE_INTERACTION__NONCAUSAL"
                     ),
                 })
-        frontier_groups = _candidate_groups(
+        group_associations = _group_associations(
             data, request.target_axis, remaining, request.max_interaction_order
         ) if n >= request.min_branch_n else []
+        frontier_groups = _priority_groups(group_associations)
         best = frontier_groups[0] if frontier_groups else None
         split_axis = best[2][0] if best is not None else None
         node_id = len(result["nodes"])
@@ -636,6 +717,26 @@ def analyze_s04_dhikr(
             "split_axis": split_axis,
             "terminal_reason": None,
         }
+        if request.include_group_evidence:
+            context_values = {a: next(v for v in workspace._domains[a] if _key(v) == key)
+                              for a, key in keys}
+            group_rows, used = _retain_group_evidence(
+                workspace, request, group_associations, context_values, n,
+                request.max_group_projection_cells - result["group_projection_cells_used"],
+            )
+            result["group_projection_cells_used"] += used
+            detail["comparative_group_evidence"] = group_rows
+            detail["comparative_group_state"] = (
+                "HELD_BELOW_MINIMUM_CONTEXT_SUPPORT" if n < request.min_branch_n
+                else "NO_UNCONDITIONED_PREDICTORS" if not remaining
+                else "ALL_GROUPS_WITHIN_DECLARED_ORDER_EVALUATED"
+            )
+            detail["group_projection_coverage"] = (
+                "NOT_APPLICABLE" if not group_rows
+                else "PARTIAL_EXPLICIT_CELL_BUDGET"
+                if any(row["projection_material"] is None for row in group_rows)
+                else "COMPLETE_FOR_EVALUATED_GROUPS"
+            )
         result["nodes"].append(detail)
         n_processed += 1
         if n < request.min_branch_n:

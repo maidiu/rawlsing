@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from json import loads
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_discovery_exact import (
@@ -167,7 +167,72 @@ def receive_s04_i05_role(
     return observed, S04I05RoleKnowledge(canonical_json(material), h)
 
 
+def receive_s04_i05_adaptive_outcome(
+    *,
+    unit,
+    discovery: ExactBoundedDiscoveryResult,
+    expected_replay_ref: ExactRef,
+    candidate_receipt_ref: ExactRef,
+    query_role: str,
+    current_guard: Callable[[], Any],
+    proposal_units=(),
+):
+    """Bridge a real sealed I05 frontier into the existing adaptive scheduler.
+
+    This is not a scheduler or an issuer. The caller must obtain the
+    expected native replay identity independently and supply already-issued
+    units. A selected validation receipt can be VALID_EMPTY while its role
+    fact is supported; preserve both states. Child requests must bind the
+    actual parent's role receipt AND complete frontier replay identity.
+    The existing adaptive scheduler verifies its own rule, generation,
+    determinant and frontier bounds; subsequent native execution must still
+    validate its separately issued discovery authority.
+    """
+    from rawlsing_next.pre553_discovery_adaptive import (
+        AdaptiveExplorationUnit, AdaptiveUnitOutcome,
+    )
+
+    if not callable(current_guard):
+        raise S04I05ReceptionError("bound current guard required")
+
+    def check():
+        result = current_guard()
+        if result is not None and result is not True:
+            raise S04I05ReceptionError("source CURRENT denied")
+
+    check()
+    if (type(unit) is not AdaptiveExplorationUnit
+            or type(discovery) is not ExactBoundedDiscoveryResult
+            or type(expected_replay_ref) is not ExactRef
+            or expected_replay_ref != discovery.replay_ref
+            or discovery.discovery_authority_ref not in unit.determinant_refs):
+        raise S04I05ReceptionError("unit/native discovery authority or replay identity mismatch")
+    observed, role = receive_s04_i05_role(
+        discovery=discovery, candidate_receipt_ref=candidate_receipt_ref,
+        query_role=query_role,
+    )
+    proposals = tuple(proposal_units)
+    if proposals and observed.material()["state"] != "SUPPORTED_SAMPLE_DESCRIPTIVE":
+        raise S04I05ReceptionError("held role cannot supply positive proposal evidence")
+    for child in proposals:
+        if (type(child) is not AdaptiveExplorationUnit
+                or child.parent_unit_ref != unit.unit_ref
+                or child.generation != unit.generation + 1
+                or expected_replay_ref not in child.determinant_refs
+                or role.ref not in child.determinant_refs):
+            raise S04I05ReceptionError("child proposal must bind exact parent evidence")
+    outcome = AdaptiveUnitOutcome(
+        unit_ref=unit.unit_ref,
+        sealed_result_ref=expected_replay_ref,
+        proposal_basis_ref=role.ref,
+        unit_result_state=role.material()["candidate_validation_state"],
+        proposal_units=proposals,
+    )
+    check()
+    return observed, role, outcome
+
+
 __all__ = [
     "CONTRACT", "S04I05ReceptionError", "S04I05RoleKnowledge",
-    "receive_s04_i05_role",
+    "receive_s04_i05_role", "receive_s04_i05_adaptive_outcome",
 ]
