@@ -315,18 +315,33 @@ class CountryReader:
             for record in zip(*columns):
                 yield from record
         self._verify()
-    def native_release(self, projection):
-        """Use actual incumbent C11 owner, only with an explicitly scoped projection."""
-        from .pre553_source_backed_c11_facade import (
-            ExactPhysicalCellStream, GovernedC11Projection,
-            build_validated_source_backed_c11_release_from_stream,
-        )
+    def _native_stream(self, projection):
+        from .pre553_source_backed_c11_facade import ExactPhysicalCellStream, GovernedC11Projection
         if type(projection) is not GovernedC11Projection:
             raise CountryCarrierError("explicit country-scoped governed projection required")
         selected = set(self.row_ordinals())
         bindings = [r.row_ordinal for r in projection.row_bindings]
         if len(bindings)!=len(selected) or set(bindings)!=selected:
             raise CountryCarrierError("projection must bind exact original country rows, not full wave")
-        stream = ExactPhysicalCellStream(self.receipt.source_sha256,self.receipt.country_rows,
-                 self.iter_cells,decoder_metadata_digest=self.receipt.metadata_digest)
-        return build_validated_source_backed_c11_release_from_stream(stream,projection)
+        return ExactPhysicalCellStream(self.receipt.source_sha256,self.receipt.country_rows,
+                 self.iter_cells,transport_identity="COUNTRY_NUMERIC_PHYSICAL@1:"+self.receipt.sha256,
+                 decoder_metadata_digest=self.receipt.metadata_digest)
+    def native_release(self, projection):
+        """Use actual incumbent C11 owner, only with an explicitly scoped projection."""
+        from .pre553_source_backed_c11_facade import build_validated_source_backed_c11_release_from_stream
+        release = build_validated_source_backed_c11_release_from_stream(self._native_stream(projection),projection)
+        self._verify()
+        return release
+    def native_repository(self, projection, *, cache=None, current_authorities=()):
+        """Use incumbent compact event selector and shared I03 repository.
+
+        Country logical projection is currently materialized once to certify it;
+        existing compact selectors serve subsequent queries. This is not an
+        independent grant to use a returned repository after source revocation.
+        """
+        from .pre553_source_backed_c11_facade import build_source_backed_c11_repository
+        repo, release = build_source_backed_c11_repository(
+            self._native_stream(projection),projection,cache=cache,
+            current_authorities=current_authorities)
+        self._verify()
+        return repo, release

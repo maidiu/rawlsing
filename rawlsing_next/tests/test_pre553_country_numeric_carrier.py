@@ -103,12 +103,14 @@ class CountryNumeric(unittest.TestCase):
             with CountryReader(path,rec,require_current=lambda:None) as reader:
                 with self.assertRaises(CountryCarrierError):
                     reader.native_release(original)
-                compact=reader.native_release(subset)
+                compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
+                self.assertIsInstance(compact.public_objects,_CompactPublicObjects)
             self.assertEqual(compact.release_ref,direct.release_ref)
             self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
             self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
             a=_source_dict(fx,C11Repository((direct,)),direct)
-            b=_source_dict(fx,C11Repository((compact,)),compact)
+            b=_source_dict(fx,compact_repo,compact)
             qa=_query_authority("country-compact")
             pred=_branch_predicate(a,qa,members=respondents,tag="country")
             registry=AuthorityRegistry((*fx["authorities"],qa))
