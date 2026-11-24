@@ -628,9 +628,20 @@ def _learned_vertical(cold, closure, tmp_path, source_format, *, discovery=None)
           "before_manifest", "after_rename", "external_revocation", "exact_retry")
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
+    # Inspect what the actual learned consumer reads, not only a matching
+    # hash. A narrower producer predicate must survive S2-G presentation.
+    expected_lane = composition.consumer_result_or_null.material()["exact_lane"]
+    assert consumed.material["consumer_values_read"]["exact_lane"] == expected_lane
+    scope = expected_lane["geometry"].get("condition_scope")
+    if scope is not None:
+        assert scope["producer_predicate_ref"] == predicate.ref.as_dict()
+        assert scope["full_subject_condition_equivalence_established"] is False
+        assert expected_lane["reason"].endswith("SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED")
+        print("SAVED_RESTRICTED_SCOPE_CONSERVED", source_format, predicate.ref.key)
     retrieved = cold.read_learned(learned.artifact_path,
         expected_root=learned.root_identity, expected_purpose_ref=determinants.purpose_ref)
     assert retrieved.consumer_result_hash == consumed.consumer_result_hash
+    assert retrieved.material["consumer_values_read"]["exact_lane"] == expected_lane
     artifact = open_learned_lifecycle(learned.artifact_path,
         expected_root=learned.root_identity).require_trusted()
     assert artifact.m1_disposition.ref == consumed.m1_disposition_ref

@@ -708,14 +708,26 @@ def _verify_witness(
             if frozen_leaf.get("exact_value") != subject.get("exact_value"):
                 raise ConditionValueRelationMismatch(
                     f"conditioner {i}: producer/subject exact value mismatch")
-            if not any(
-                frozen_ref == _leaf_semantic_ref(actual_leaf)
+            matching_leaves = [
+                actual_leaf for actual_leaf in actual_leaves
+                if frozen_ref == _leaf_semantic_ref(actual_leaf)
                 and all(frozen_leaf.get(key) == actual_leaf.get(key)
                         for key in ("leaf_type", "operator", "exact_value"))
-                for actual_leaf in actual_leaves
-            ):
+            ]
+            if not matching_leaves:
                 raise ConditionValueRelationMismatch(
                     f"conditioner {i}: no matching producer leaf entailed by predicate")
+            # Native coordinates can be explicitly time-qualified. A
+            # consistently readdressed witness cannot substitute a different
+            # subject time for the actual time in the producer AST.
+            subject_time = canonicalize(binding.effective_time_or_interval)
+            if (frozen_leaf.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE"
+                    and subject_time is not None
+                    and all(leaf.get("effective_or_reference_time") is not None
+                            and canonicalize(leaf["effective_or_reference_time"]) != subject_time
+                            for leaf in matching_leaves)):
+                raise ConditionValueRelationMismatch(
+                    f"conditioner {i}: explicit producer/subject coordinate time mismatch")
 
             # Pairing-ground-truth semantics must be checked on the SUCCESSFUL
             # path. These four comparisons were previously indented under the
@@ -911,7 +923,7 @@ def _validate_direct_grain(
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
 
 
-def _condition_scope_qualification(predicate, witness):
+def _condition_scope_qualification(predicate, witness, consumer_query):
     """Conservative reverse implication for the already-verified positive witness.
 
     Entailment producer -> subject does not establish subject -> producer.
@@ -919,21 +931,24 @@ def _condition_scope_qualification(predicate, witness):
     an estimate for every subject matching the listed conditions. Do not
     invent domain exhaustiveness, complement semantics or branch membership.
     """
-    def condition_key(leaf):
+    def condition_key(leaf, effective_time):
         return canonical_json({
             "leaf_type": leaf.get("leaf_type"),
             "semantic_ref": _leaf_semantic_ref(leaf),
             "operator": leaf.get("operator"),
             "exact_value": leaf.get("exact_value"),
+            "effective_time_or_interval": effective_time,
         })
-    required = {condition_key(leaf) for leaf in witness.producer_predicate_leaf_projections}
+    required = {condition_key(leaf, binding.effective_time_or_interval)
+                for leaf, binding in zip(witness.producer_predicate_leaf_projections,
+                                         consumer_query.conditioner_bindings)}
     def implied(node):
         op = node.get("op")
         children = node.get("children", ())
         if op == "LEAF":
             return (node.get("leaf_type") in VALUE_BEARING_LEAF_TYPES
                     and node.get("operator") == "EQ" and "exact_value" in node
-                    and condition_key(node) in required)
+                    and condition_key(node, node.get("effective_or_reference_time")) in required)
         if op == "AND":
             return bool(children) and all(implied(child) for child in children)
         if op == "OR":
@@ -949,6 +964,11 @@ def _condition_scope_qualification(predicate, witness):
         "state": "ADDITIONAL_OR_UNPROVED_RESTRICTIONS",
         "producer_predicate_ref": predicate.ref.as_dict(),
         "producer_predicate_ast": ast,
+        "subject_conditioners": [
+            {"binding_id": b.binding_id,
+             "semantic_ref": b.empirical_coordinate_ref.as_dict(),
+             "effective_time_or_interval": canonicalize(b.effective_time_or_interval)}
+            for b in consumer_query.conditioner_bindings],
         "full_subject_condition_equivalence_established": False,
         "interpretation": "EXACT_PRODUCER_STRATUM_ONLY__NO_GENERALIZATION_TO_ALL_SUBJECT_MATCHES",
     }
@@ -1062,7 +1082,7 @@ def _supported_geometry(
         geometry["measure"]["weighted_probability_state"] = (
             "EXACT_GOVERNED_WEIGHTED_DESCRIPTIVE" if weighted_den
             else "ZERO_WEIGHT_DENOMINATOR_UNDEFINED")
-    qualification = _condition_scope_qualification(predicate, witness)
+    qualification = _condition_scope_qualification(predicate, witness, consumer_query)
     if qualification is not None:
         geometry["condition_scope"] = qualification
     return geometry
