@@ -1,6 +1,6 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
-**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `f777412a2665a59ab8dcd4d966aa30a4367d4b7b`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
+**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `39eae8ca5b4bb33b227075b313488808451400c2`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Read first
 
@@ -332,7 +332,7 @@ CO R16 [positive HOME](https://github.com/maidiu/rawlsing/blob/b0eb752897fa4cc17
 
 #### NEIGHBOR-CIC-002 — Truthful opening, independent life and ordinary pleasure
 
-[HOME lines 15–42](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L15-L42) · Antecedent interest may be real; opening is a world-derived opportunity, not a retention hook, and can end ordinarily.
+[HOME lines 15–44](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L15-L44) · Antecedent interest may be real; opening is a world-derived opportunity, not a retention hook, and can end ordinarily.
 
 **O-Index:** A3 · C6 · C8 · S0 · S6 · S11 · S13 | **27-task candidate:** F02 · F03 · F04 | **19 seams:** E009 · E011 · E015
 
@@ -351,7 +351,7 @@ CO R16 [positive HOME](https://github.com/maidiu/rawlsing/blob/b0eb752897fa4cc17
 
 #### NEIGHBOR-CIC-004 — Translation, authored speech, embodied capacity and asymmetric exits
 
-[HOME lines 59–76](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L59-L76) · Carry/homologize/bracket/user-select, claim vs actual performance and chance, no counterfeit biography; actual external human can leave.
+[HOME lines 59–78](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L59-L78) · Carry/homologize/bracket/user-select, claim vs actual performance and chance, no counterfeit biography; actual external human can leave.
 
 **O-Index:** S7 · S8 · S14 · C1 · C8 · N08 | **27-task candidate:** D02 · F02 · F03 | **19 seams:** E004 · E012 · E015
 
@@ -460,7 +460,7 @@ CO R16 [positive HOME](https://github.com/maidiu/rawlsing/blob/b0eb752897fa4cc17
 
 #### NEIGHBOR-CIC-016 — Recursive models, self-giving and resistant evidence
 
-[HOME lines 273–304](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L273-L304) · Knowing/approval/recognition distinct; actor curiosity, intentional lie, false model, selective disclosure and access provenance can change behavior.
+[HOME lines 273–306](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L273-L306) · Knowing/approval/recognition distinct; actor curiosity, intentional lie, false model, selective disclosure and access provenance can change behavior.
 
 **O-Index:** C5 · C9 · N07 · N09 · M07 · M20 · O11 · O12 · E08 · S7 | **27-task candidate:** C04 · C05 · D03 · D04 · F03 | **19 seams:** E005 · E009 · E010 · E015
 
@@ -506,7 +506,7 @@ CO R16 [positive HOME](https://github.com/maidiu/rawlsing/blob/b0eb752897fa4cc17
 
 #### NEIGHBOR-CIC-021 — Flourishing, harm, autonomy and no commercial captivity
 
-[HOME lines 355–374](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L355-L374) · Care and coercion may coexist, no universal moral scalar, no compelled attachment/sexual or distress reward; material effect may be unacknowledged.
+[HOME lines 355–376](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md#L355-L376) · Care and coercion may coexist, no universal moral scalar, no compelled attachment/sexual or distress reward; material effect may be unacknowledged.
 
 **O-Index:** S0 · S5 · S13 · S14 · C7 · N07 · M06 | **27-task candidate:** B04 · D03 · F02 · G04 | **19 seams:** E004 · E016 · E017
 
