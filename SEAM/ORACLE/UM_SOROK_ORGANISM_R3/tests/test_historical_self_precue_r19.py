@@ -572,5 +572,67 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
                 cold.close()
 
 
+    def test_mulch_r30_bounded_misattribution_changes_later_action_not_world(self):
+        # Both parents were present for both adverse courses; the system
+        # cannot establish which parent, if either, produced them.
+        actor=adult('daughter-r30','Daughter')
+        self._r29_lived_in_other_presence(
+            actor,'first',1,['mother','father'],'WITHHOLD')
+        latest=self._r29_lived_in_other_presence(
+            actor,'second',2,['mother','father'],'WITHHOLD')
+        candidate=possible_lived_directional_orientation(
+            actor,latest,'world:second')[0]
+        candidate['interpretive_hypothesis']='perhaps father was responsible'
+        candidate['interpreted_other_ref']='father'
+        receipt=admit(actor,latest,'world:second',[candidate])[0]
+        self.assertEqual(receipt['kind'],'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION')
+        row=actor['historical_orientations'][0]
+        self.assertEqual(row['coexperienced_other_refs'],['father','mother'])
+        self.assertEqual(row['interpreted_other_ref_provisional'],'father')
+        self.assertTrue(row['actor_does_not_know_objective_cause'])
+        self.assertTrue(row['interpreted_other_is_not_proven_cause_or_attended'])
+        # She may now withhold near father even when mother is absent.
+        self.assertIsNone(option(self._r29_situated_beside(actor,'father')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor,'mother')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor)))
+        self.assertIsNone(option(self._r29_situated_beside(actor,'father','mother')))
+        self.assertEqual(len(actor['lived_genesis_episodes']),2)
+        self.assertEqual([r['event_ref'] for r in actor['lived_genesis_episodes']],
+                         ['world:first','world:second'])
+
+    def test_mulch_r30_unreceived_other_and_unissued_explanation_fail_atomically(self):
+        actor=adult('negative-r30','Negative')
+        self._r29_lived_in_other_presence(
+            actor,'one',1,['mother','father'],'WITHHOLD')
+        latest=self._r29_lived_in_other_presence(
+            actor,'two',2,['mother','father'],'WITHHOLD')
+        original=repr(actor)
+        for focus,interpretation in [
+                ('invisible_person','I think they did it'),
+                ('institution:invented','I think it did it'),
+                (['father'],'list is not an actor'),
+                ('father',None),('father',''),('father','x'*513)]:
+            c=possible_lived_directional_orientation(
+                actor,latest,'world:two')[0]
+            c['interpreted_other_ref']=focus
+            if interpretation is not None:
+                c['interpretive_hypothesis']=interpretation
+            with self.assertRaises(InvalidDevelopment):
+                admit(actor,latest,'world:two',[c])
+            self.assertEqual(repr(actor),original)
+
+    def test_mulch_r30_no_attribution_keeps_r29_full_field_and_no_false_consciousness(self):
+        actor=adult('no-focus-r30','Unattributed')
+        self._r29_lived_in_other_presence(
+            actor,'a',1,['mother','father'],'WITHHOLD')
+        latest=self._r29_lived_in_other_presence(
+            actor,'b',2,['mother','father'],'WITHHOLD')
+        c=possible_lived_directional_orientation(actor,latest,'world:b')[0]
+        admit(actor,latest,'world:b',[c])
+        self.assertIsNotNone(option(self._r29_situated_beside(actor,'father')))
+        self.assertIsNotNone(option(self._r29_situated_beside(actor,'mother')))
+        self.assertIsNone(option(self._r29_situated_beside(actor,'father','mother')))
+        self.assertIsNone(actor['historical_orientations'][0]['interpreted_other_ref_provisional'])
+
 if __name__=='__main__':
     unittest.main()

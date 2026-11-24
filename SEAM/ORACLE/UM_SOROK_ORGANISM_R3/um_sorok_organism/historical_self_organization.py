@@ -295,6 +295,17 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
             (type(interpretation) is not str or
              not interpretation.strip() or len(interpretation) > 512)):
         raise ValueError('LIVED_ORIENTATION_INVALID_INTERPRETATION')
+    # R30: an actor may form a mistaken, revisable interpretation of which
+    # actually co-experienced Other matters. This is an actor hypothesis,
+    # NOT an objective causal finding, attendance receipt or Other's motive.
+    # Preverbal actors retain R29's nondeclarative full-field association.
+    focus = proposal.get('interpreted_other_ref')
+    if focus is not None:
+        if (type(focus) is not str or focus not in
+                expected['lived_genesis_basis']['coexperienced_other_refs']):
+            raise ValueError('LIVED_ORIENTATION_UNEXPERIENCED_OTHER_FOCUS')
+        if interpretation is None or actor['body'].get('language',0)<.25:
+            raise ValueError('LIVED_ORIENTATION_UNGROUNDED_INTERPRETATION')
     emitted = acquire_orientation(actor, experience, event_ref, expected)
     source = next(r for r in actor['historical_orientations']
                   if r['id'] == emitted['ref'])
@@ -305,6 +316,8 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
     source['coexperienced_other_refs'] = copy(expected[
         'lived_genesis_basis']['coexperienced_other_refs'])
     source['interpretive_hypothesis_not_causal_truth'] = interpretation
+    source['interpreted_other_ref_provisional'] = focus
+    source['interpreted_other_is_not_proven_cause_or_attended'] = True
     source['actor_does_not_know_objective_cause'] = True
     source['does_not_upgrade_sourcefree_to_human_science'] = True
     return {'kind': 'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION',
@@ -449,7 +462,17 @@ def pre_cue_pressures(constitution, access):
                 if type(c) is dict and c.get('kind')=='coactor_present'
                 and type(c.get('source_actor')) is str}
             expected_others = set(row.get('coexperienced_other_refs',[]))
-            if active_others != expected_others:
+            focus = row.get('interpreted_other_ref_provisional')
+            # An explicitly acquired (possibly false) actor interpretation
+            # can later recruit in the presence of its presumed Other even
+            # when the wider historical field differs. It never changes
+            # objective facts. Without such an interpretation, retain R29's
+            # strict whole-field matching rather than inventing attribution.
+            if focus is not None:
+                if (type(focus) is not str or focus not in expected_others
+                        or focus not in active_others):
+                    continue
+            elif active_others != expected_others:
                 continue
         if row.get('operation') not in ACTIONS:
             continue
