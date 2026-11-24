@@ -539,7 +539,7 @@ class ConstitutiveRuntime:
             actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
         else:
             actual,partner,coactor_policy_receipt=self.authority.resolve(
-                world,actors,principal,human_vocal=human_vocal)
+                world,actors,principal,committed_human_event=history[-1])
         resolved=asdict(actual)
         summary=resolved['world_delta']['event']
         objective_ref=stable_id('objective',{'world':self.world_id,'summary':summary})
