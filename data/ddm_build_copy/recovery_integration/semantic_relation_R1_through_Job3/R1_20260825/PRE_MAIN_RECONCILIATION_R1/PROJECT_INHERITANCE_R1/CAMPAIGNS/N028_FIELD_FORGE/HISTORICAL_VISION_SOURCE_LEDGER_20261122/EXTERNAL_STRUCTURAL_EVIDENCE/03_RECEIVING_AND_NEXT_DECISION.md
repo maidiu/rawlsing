@@ -24,3 +24,8 @@ User's 2026-11-24 governing purpose correction: maximize historically inhabited 
 ### R6 native file reading receipt
 
 Actual user-provided priority pack, local seven native tests passed against exact code blobs (see R6 in existing architecture). Proposed receiving annotation to current G4/paired status as native-file read candidate with scope unchanged; actual source/role/science/world reader and protected adoption held. No new production owner or work commission. No raw source uploaded.
+
+
+### R7 — HOME convergence and current receiving disposition
+
+R6 exact e3571ecea6e2b01e25aba062c4b9d65dada1372a; current existing 01 II.K/IV.B and 02 I-B/V-A/IX-B/XI-C/XVI-B integrate R1–R6 into the original 127-source/479-proposition HOME. Source ledger 00 adds dated provenance, external README directs to the existing HOMEs. R7 is documentary only, no new runtime/test or source-grade upgrade. Preserve R6 seven prior executed tests at exact blobs. Proposed competent G4/paired progress annotation to existing S06/PP26-13–19/21 and S09/S10/PP26-24/25 and relevant seam rows: native retrieval candidate and constitutive/functional HOME convergence, exact recipient gaps unchanged; current user purpose prioritizes inhabited persona sufficiency over full macro attribution. No new obligation IDs or protected edit. HQ_CURRENTNESS_HOLD for protected receipt, actual source and independent role/rule authority and actual N9/N10W/SOROK first-reader proofs. P0 #1097/#960 unchanged. No new commission or branch.

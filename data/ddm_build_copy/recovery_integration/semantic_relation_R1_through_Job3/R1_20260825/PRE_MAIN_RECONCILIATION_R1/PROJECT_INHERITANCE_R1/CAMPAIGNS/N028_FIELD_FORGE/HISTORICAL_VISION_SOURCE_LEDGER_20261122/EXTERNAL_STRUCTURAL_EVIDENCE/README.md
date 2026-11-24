@@ -36,3 +36,8 @@ Live designated PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, documentary
 ### R6 — first actual native reader
 
 The uploaded priority pack is now locally readable and the four core tables plus ED/TEK have an executable provisional context reader. [Code](native_priority_readers.py) · [Native tests](test_native_priority_readers.py) · [Execution and source corrections](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r6--actual-native-source-construction-2026-11-24). ILOSTAT RDS decoder unavailable in Browser; RAS withheld. No raw data or results exported. R5 architecture and prior source evidence preserved.
+
+
+### R7 — canonical HOME convergence
+
+The existing [01 capability HOME](../01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md) and [02 constitutive HOME](../02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) now internalize the R1–R6 development. The source-specific evidence, executable reader and detailed architecture/move log here support those HOMEs. Read 02 XVI-B and 01 II.K/IV.B for the current integrated construction target and actual residual. This is not a second programme or an invitation to redo the reconnaissance. All source and implementation evidence retained at original grade.
