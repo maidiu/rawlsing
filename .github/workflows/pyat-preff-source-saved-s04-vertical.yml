@@ -1,0 +1,48 @@
+name: PYAT source SAV/DTA to saved-I03/S04 first reader
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/pre553_saved_workload_integration.py'
+      - 'rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py'
+      - '.github/workflows/pyat-preff-source-saved-s04-vertical.yml'
+permissions:
+  contents: read
+jobs:
+  source-saved-s04:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Assert exact source HEAD (not PR synthetic merge)
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          actual="$(git rev-parse HEAD)"
+          printf 'exact_source_head=%s\n' "$actual"
+          test "$actual" = "$EXPECTED"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install inherited sourcefree runner dependencies
+        run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - name: Exact syntax and sourcefree SAV/DTA native first-consumer court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m py_compile \
+            rawlsing_next/pre553_saved_workload_integration.py \
+            rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py
+          python -m pytest -q -o addopts='' \
+            rawlsing_next/tests/test_pyat997_saved_s04_observation_vertical.py \
+            rawlsing_next/tests/test_pyat997_s1e_saved_native_first_consumer.py \
+            rawlsing_next/tests/test_pyat960_s1e_source_i02.py \
+            rawlsing_next/tests/test_pre553_s04_observation_silence.py \
+            --junitxml=pyat-preff-source-saved-s04.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-preff-source-saved-s04
+          path: pyat-preff-source-saved-s04.xml
+          if-no-files-found: ignore
