@@ -24,7 +24,8 @@ import mii
 
 
 class MaterialParticipationR13(unittest.TestCase):
-    def build(self, name, granted, *, observer_facing='entrance', world_setup=None):
+    def build(self, name, granted, *, observer_facing='entrance', world_setup=None,
+              actor_setup=None, initial_semantic=None):
         tmp=tempfile.TemporaryDirectory(prefix='neighbor_r13_')
         self.addCleanup(tmp.cleanup)
         db=str(Path(tmp.name)/'world.sqlite')
@@ -35,8 +36,12 @@ class MaterialParticipationR13(unittest.TestCase):
             ['visitor'] if granted else [])
         if world_setup is not None:
             world_setup(world)
-        rt.ledger.initialize(world,[adult('worker','Mara','workshop')])
-        made=rt.step('worker',requested_action='MAKE_OBJECT')
+        actor=adult('worker','Mara','workshop')
+        if actor_setup is not None:actor_setup(actor)
+        rt.ledger.initialize(world,[actor])
+        if initial_semantic is not None:rt.semantic=initial_semantic
+        made=(rt.step('worker',requested_action='MAKE_OBJECT')
+              if initial_semantic is None else rt.step('worker'))
         self.assertEqual(made['status'],'PERFORMED')
         obj=rt.ledger.world(name)[1]['public_history'][-1]['worked_material_object_ref']
         n=NeighborEncounter(rt,'visitor',mii_module=mii)
