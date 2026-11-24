@@ -341,12 +341,16 @@ def possible_dependency_means_revisions(actor,experience,event_ref):
             failed=(e.get('unfinished_own_activity') and not e.get('received_relief',{}).get('nutrition')
                     and part.get('own_status') in ('PARTIAL','BLOCKED')
                     and not part.get('joint_participation_perceived')
+                    and e.get('selected_project_refs')==[p['id']]
+                    and e.get('selected_possible_end_trial_ref') is None
                     and e['event_ref'] in courses
                     and courses[e['event_ref']].get('performed_status') in ('PARTIAL','BLOCKED'))
             renewed=(not e.get('unfinished_own_activity') and e.get('received_relief',{}).get('nutrition')
                      and part.get('own_status')=='PERFORMED'
                      and part.get('joint_participation_perceived')
                      and part.get('reciprocated_partner_actor_visible')==other
+                     and e.get('selected_project_refs')==[]
+                     and e.get('selected_possible_end_trial_ref') is None
                      and e['event_ref'] not in courses)
             rows.append((e,part,'SUSPEND' if failed else 'REOPEN' if renewed else None))
         last=rows[-2:]
