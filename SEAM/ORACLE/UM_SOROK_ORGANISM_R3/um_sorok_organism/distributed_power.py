@@ -77,6 +77,13 @@ def record_actor_participation(actor, experience, actual, event_ref,
         'other_private_motives':'NOT_OBSERVED',
         'source_grade':GRADE,
     }
+    selection=experience.get('own_practical_selection') or {}
+    request=selection.get('world_request') or {}
+    if (selection.get('actor')==actor['id'] and request.get('operation')==operation
+            and type(request.get('addressed_party_ref')) is str):
+        # A personally undertaken directed operation, not the Other's
+        # intention, actual availability, or an analyst's explanation.
+        record['own_selected_addressed_party_ref']=request['addressed_party_ref']
     actor.setdefault('participation_history',[]).append(record)
     return {'kind':'RETAIN_EXPERIENCED_PARTICIPATION',
             'participation_ref':ref,
