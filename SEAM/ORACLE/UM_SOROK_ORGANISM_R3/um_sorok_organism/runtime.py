@@ -262,21 +262,6 @@ class ConstitutiveRuntime:
             practical={'status':'EXTERNAL_RESEARCH_OPERATION',
                        'option_id':None,'project_id':None,
                        'anticipated_difference':None,
-                       # Preserve per-purpose identity, not an unlabelled
-                       # bag of projected anticipated differences. This bounded
-                       # multi-course entrance is only for unaddressed,
-                       # object-unbound alternatives sharing the same act.
-                       'selected_expectation_courses':([
-                           {'project_id':pid,'option_id':matches[0]['option_id'],
-                            'anticipated_difference':copy(matches[0]['anticipated_difference'])}
-                           for pid in selected_refs
-                           for matches in [[a for a in alternatives
-                               if a.get('project_id')==pid
-                               and a.get('grounds_status')=='AVAILABLE_SINGLE_PROJECT_COURSE'
-                               and a.get('binding_status')=='NO_ADDRESSED_PARTY'
-                               and a.get('world_request',{}).get('material_object_ref') is None]]
-                           if len(matches)==1 and matches[0].get('anticipated_difference') is not None]
-                           if len(selected_refs)>1 else []),
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
                        'conscious_availability':'NOT_INFERRED',
                        'operative_selection_witness':{
@@ -469,6 +454,21 @@ class ConstitutiveRuntime:
                        'anticipated_differences':([
                            copy(a.get('anticipated_difference')) for a in alternatives
                            if a['project_id'] in selected_refs]
+                           if len(selected_refs)>1 else []),
+                       # Preserve per-purpose identity, not an unlabelled
+                       # bag of projected anticipated differences. This bounded
+                       # multi-course entrance is only for unaddressed,
+                       # object-unbound alternatives sharing the same act.
+                       'selected_expectation_courses':([
+                           {'project_id':pid,'option_id':matches[0]['option_id'],
+                            'anticipated_difference':copy(matches[0]['anticipated_difference'])}
+                           for pid in selected_refs
+                           for matches in [[a for a in alternatives
+                               if a.get('project_id')==pid
+                               and a.get('grounds_status')=='AVAILABLE_SINGLE_PROJECT_COURSE'
+                               and a.get('binding_status')=='NO_ADDRESSED_PARTY'
+                               and a.get('world_request',{}).get('material_object_ref') is None]]
+                           if len(matches)==1 and matches[0].get('anticipated_difference') is not None]
                            if len(selected_refs)>1 else []),
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
                        'conscious_availability':'NOT_INFERRED',
