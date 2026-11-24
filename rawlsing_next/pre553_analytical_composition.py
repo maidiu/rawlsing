@@ -19,6 +19,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     Pre553IntegrityError,
     authority_ref,
+    canonical_json,
     canonicalize,
     exact_ref,
     semantic_hash,
