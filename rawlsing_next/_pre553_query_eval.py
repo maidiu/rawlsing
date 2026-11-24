@@ -470,11 +470,15 @@ class _ConditionMemo:
         self.hits=self.misses=self.capacity_fallbacks=0
 
     def compatible(self,index,registry,predicate):
-        return (index is self.index and registry is self.registry
-                and registry._by_key is self.registry_map
-                and _predicate_identity(predicate)==self.predicate_identity)
+        # RuntimeObjectCatalog constructs an independently validated registry
+        # per operation; equal exact refs alone are insufficient for this
+        # memo. Require the same immutable snapshot objects at every key.
+        return (index is self.index
+                and _predicate_identity(predicate)==self.predicate_identity
+                and len(registry._by_key)==len(self.registry_map)
+                and all(registry._by_key.get(k) is v for k,v in self.registry_map.items()))
 
-    def evaluate(self,respondent,used,used_auth):
+    def evaluate(self,respondent,registry,used,used_auth):
         key=respondent.ref.key
         entry=self.entries.get(key)
         if entry is not None:
@@ -482,7 +486,7 @@ class _ConditionMemo:
             # Explicit leaf authorities may not appear in provenance for
             # empty matches. Revalidate them too, not only used authorities.
             for ref in checked:
-                if self.registry.resolve_exact(ref).snapshot.typed_state!="ALLOW":
+                if registry.resolve_exact(ref).snapshot.typed_state!="ALLOW":
                     raise Pre553AuthorityError("condition memo authority is no longer positive")
             used.extend(objects)
             used_auth.extend(authorities)
@@ -493,7 +497,7 @@ class _ConditionMemo:
         self.misses+=1
         own=_UsedObjectAccumulator()
         auth=_UsedAuthorityAccumulator()
-        recorder=_PredicateAuthorityRecorder(self.registry)
+        recorder=_PredicateAuthorityRecorder(registry)
         try:
             member=_eval_predicate(self.ast,
                 respondent=respondent,index=self.index,registry=recorder,
@@ -519,7 +523,7 @@ class _ConditionMemo:
 
 def _condition_for(predicate,respondent,index,registry,used,used_auth,compiled,memo=None):
     if memo is not None:
-        return memo.evaluate(respondent,used,used_auth)
+        return memo.evaluate(respondent,registry,used,used_auth)
     return _eval_predicate(predicate.predicate_ast,respondent=respondent,index=index,
                            registry=registry,used=used,used_auth=used_auth,
                            derived_branch_memberships=compiled)
@@ -567,7 +571,8 @@ def _evaluate_index_group_core(
     unresolved_condition_members: list[ExactRef] = []
     inapplicable_count = 0
     component_positive = [False] * plan.arity
-    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
+    derived_branch_memberships = (condition_memo.compiled if condition_memo is not None
+                                  else _compile_derived_branch_memberships(predicate.predicate_ast))
 
     used.extend([index.universe, index.release.replay_manifest])
     used_auth.extend(_validate_public_object_authorities(index.universe, registry))

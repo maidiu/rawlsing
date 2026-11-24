@@ -278,6 +278,18 @@ def _compact_public_objects(
     selectors = []
     groups: dict[tuple[ExactRef, str], list[int]] = {}
     dimensions: dict[tuple[str, str, str], tuple[str, str, str]] = {}
+    # In country lanes share true-grain repeated immutable metadata rather
+    # than retaining the unique event object's copy. Bound intern tables;
+    # high-cardinality values fall back to original exact immutable objects.
+    value_pools=({}, {}, {})
+    authority_pool={}
+    def shared(value,pool):
+        if country_body_factory is None or len(pool)>=8192:
+            return value
+        key=canonical_json(value)
+        if len(key)>2048:
+            return value
+        return pool.setdefault(key,value)
 
     def dimension(event: RespondentEvent, field: str) -> tuple[str, str, str] | None:
         value = getattr(event, field)
@@ -294,14 +306,18 @@ def _compact_public_objects(
         row = len(events)
         entries.append(row)
         events.append(obj)
+        auth=tuple((ref.authority_id, ref.authority_version, ref.authority_content_hash)
+                   for ref in obj.authority_snapshot_refs)
+        if country_body_factory is not None and len(authority_pool)<8192:
+            auth=authority_pool.setdefault(auth,auth)
         selectors.append(_EventRead(
             _ref_identity(obj.ref), obj.typed_state, dimension(obj, "native_question_ref"),
             dimension(obj, "canonical_question_ref_if_authorized"),
-            dimension(obj, "component_or_subitem_ref"),
-            tuple((ref.authority_id, ref.authority_version, ref.authority_content_hash)
-                  for ref in obj.authority_snapshot_refs),
-            obj.raw_response_value, obj.canonical_response_value_if_authorized,
-            obj.multiplicity_order_rank_fields, obj.response_event_id_or_deterministic_index,
+            dimension(obj, "component_or_subitem_ref"), auth,
+            shared(obj.raw_response_value,value_pools[0]),
+            shared(obj.canonical_response_value_if_authorized,value_pools[1]),
+            shared(obj.multiplicity_order_rank_fields,value_pools[2]),
+            obj.response_event_id_or_deterministic_index,
         ))
         universe = dimension(obj, "empirical_universe_ref")
         respondent = dimension(obj, "scoped_respondent_ref")

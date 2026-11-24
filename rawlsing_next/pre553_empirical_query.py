@@ -599,6 +599,10 @@ class I03GroupedExecutionScope:
         if entry is not None and entry[0] is registry:
             return entry[1]
         identity = _registry_fingerprint(registry)
+        # Catalog may create one validated registry per operation. Do not
+        # retain every registry for a long distinct-query workload.
+        if len(self._registry_identities)>=8:
+            self._registry_identities.pop(next(iter(self._registry_identities)))
         self._registry_identities[id(registry)] = (registry, identity)
         return identity
 
@@ -648,7 +652,7 @@ class I03GroupedExecutionScope:
         from rawlsing_next.pre553_runtime_context import current_runtime_binding
         if current_runtime_binding() is not None:
             return None
-        key=(self._index_identity(index),id(registry),_predicate_identity(predicate))
+        key=(self._index_identity(index),self._registry_identity(registry),_predicate_identity(predicate))
         memo=self._condition_memos.get(key)
         if memo is not None:
             return memo if memo.compatible(index,registry,predicate) else None

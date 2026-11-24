@@ -608,10 +608,16 @@ class CountryReader:
             yield from rows
         self._verify()
     def iter_cells(self):
-        """Replay exact incumbent PhysicalCell values, without renumbering."""
+        """Replay every native cell, without renumbering."""
+        yield from self._iter_slots(tuple(self.variables.items()))
+
+    def _iter_slots(self,slots):
+        """Exact authenticated selected slots; full physical API remains available."""
+        if not slots or any(self.variables.get(i)!=n for i,n in slots):
+            raise CountryCarrierError("governed slot absent from authenticated variable inventory")
         self._verify()
         for block,rows in self._blocks():
-            columns = [self._column(block,rows,i).cells(i,n) for i,n in self.variables.items()]
+            columns=[self._column(block,rows,i).cells(i,n) for i,n in slots]
             for record in zip(*columns):
                 yield from record
         self._verify()
@@ -623,8 +629,16 @@ class CountryReader:
         bindings = [r.row_ordinal for r in projection.row_bindings]
         if len(bindings)!=len(selected) or set(bindings)!=selected:
             raise CountryCarrierError("projection must bind exact original country rows, not full wave")
+        projected={rule.slot.key for rules in (projection.response_slots,projection.coordinate_slots,
+                                                  projection.weight_slots) for rule in rules}
+        slots=tuple((i,n) for i,n in self.variables.items() if (i,n) in projected)
+        if set(slots)!=projected:
+            raise CountryCarrierError("projection slot identity absent from country carrier")
+        # The existing facade consumes only projected slots and independently
+        # validates every required row/slot. Unowned columns remain stored,
+        # queryable via the physical API and available for future projections.
         return _CountryPhysicalStream(self.receipt.source_sha256,self.receipt.country_rows,
-                 self.iter_cells,transport_identity="COUNTRY_NUMERIC_PHYSICAL@1:"+self.receipt.sha256,
+                 lambda:self._iter_slots(slots),transport_identity="COUNTRY_NUMERIC_PHYSICAL@1:"+self.receipt.sha256,
                  decoder_metadata_digest=self.receipt.metadata_digest,reader=self)
     def native_release(self, projection):
         """Use actual incumbent C11 owner, only with an explicitly scoped projection."""

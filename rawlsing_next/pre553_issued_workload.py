@@ -343,6 +343,7 @@ class _PreparedRoutingEnvelope:
     after_routing: Any
     encoded_routing_bytes: int
     retained_pin_bytes: int
+    fast_pins: tuple | None = None
 
     @classmethod
     def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
@@ -369,6 +370,14 @@ class _PreparedRoutingEnvelope:
         prefix=digest.copy().digest()
         pins=hashlib.sha256()
         mappings=[]
+        # Small scopes may retain inexpensive immutable scalar tuples for
+        # faster comparison; large scopes use the streaming pin digest.
+        # Account for tuple structure only, not existing shared strings.
+        fast=[] if 512*len(routing)+256<=max_bytes//2 else None
+        fast_bytes=0
+        def tuple_bytes(value):
+            return (sys.getsizeof(value)+sum(tuple_bytes(v) for v in value)
+                    if type(value) is tuple else 0)
         digest.update(b"[")
         encoded_bytes=2
         for i,obj in enumerate(routing):
@@ -382,6 +391,12 @@ class _PreparedRoutingEnvelope:
             digest.update(encoded)
             encoded_bytes+=len(encoded)
             mappings.append(obj.semantic_fields)
+            if fast is not None:
+                fast.append(pin)
+                fast_bytes+=tuple_bytes(pin)+16
+                if fast_bytes+24*len(routing)>max_bytes//2:
+                    fast=None
+                    fast_bytes=0
         digest.update(b"]")
         after=digest.copy()
         for part in pieces:
@@ -392,7 +407,8 @@ class _PreparedRoutingEnvelope:
             return None
         held=tuple(mappings)
         return cls(workload,routing,held,pins.digest(),prefix,after,encoded_bytes,
-                   sys.getsizeof(held)+sys.getsizeof(after)+128)
+                   sys.getsizeof(held)+sys.getsizeof(after)+128+fast_bytes,
+                   tuple(fast) if fast is not None else None)
 
     def digest(self):
         workload=self.workload
@@ -401,13 +417,18 @@ class _PreparedRoutingEnvelope:
                 or len(self.mappings)!=len(self.routing)):
             return None
         pins=hashlib.sha256()
-        for obj,mapping in zip(self.routing,self.mappings):
+        for i,(obj,mapping) in enumerate(zip(self.routing,self.mappings)):
             if obj.semantic_fields is not mapping:
                 return None
             pin=_routing_pin(obj)
-            if pin is None or not _update_routing_pin(pins,pin):
+            if pin is None:
                 return None
-        if pins.digest()!=self.pin_digest:
+            if self.fast_pins is not None:
+                if pin!=self.fast_pins[i]:
+                    return None
+            elif not _update_routing_pin(pins,pin):
+                return None
+        if self.fast_pins is None and pins.digest()!=self.pin_digest:
             return None
         digest=hashlib.sha256()
         pieces=_routing_envelope_parts(workload)

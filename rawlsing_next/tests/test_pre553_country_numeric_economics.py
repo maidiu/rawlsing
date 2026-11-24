@@ -160,14 +160,20 @@ class CountryNativeEconomics(unittest.TestCase):
             prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
             self.assertIsNotNone(prepared)
             self.assertEqual(prepared.digest(),record.envelope_sha256)
-            self.assertLess(prepared.retained_pin_bytes,prepared.encoded_routing_bytes//20)
+            self.assertLess(prepared.retained_pin_bytes,prepared.encoded_routing_bytes//2)
+            compact=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256,max_bytes=512*1024)
+            self.assertIsNotNone(compact)
+            self.assertIsNone(compact.fast_pins)
+            self.assertEqual(compact.digest(),record.envelope_sha256)
+            self.assertLess(compact.retained_pin_bytes,compact.encoded_routing_bytes//20)
+            del compact
             # Envelope mechanics above the previous 16,384-record cap. This
             # deliberately repeated routing list is NOT a valid C11 release;
             # it tests only exact digest streaming and bounded retention.
             wide=replace(workload,projection=replace(workload.projection,
                 routing=workload.projection.routing*3))
             wide_hash=semantic_hash(wide.envelope())
-            wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash)
+            wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash,max_bytes=1024*1024)
             self.assertIsNotNone(wide_prepared)
             self.assertEqual(wide_prepared.digest(),wide_hash)
             self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
@@ -227,6 +233,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "normal_median_s":median(new_times),"prepared_median_s":median(prepared_times),
                 "encoded_routing_bytes_avoided":prepared.encoded_routing_bytes,
                 "retained_pin_bytes_estimate":prepared.retained_pin_bytes,"routing_records":len(prepared.routing),
+                "fast_pin_tuples":prepared.fast_pins is not None,
                 "exact_hash_equal":True}),flush=True)
             del prepared
             timings=defaultdict(list)
