@@ -872,7 +872,7 @@ def _verify_output_graph(output: NativeEmpiricalOutput) -> None:
         for query in i05.executed_queries:
             if query.ref.key not in graph_keys["executed_queries"]:
                 raise DurableEmpiricalClosureError("i05 query is absent")
-        if i05.valid_empty != all(
+        if type(i05.valid_empty) is not bool or i05.valid_empty != all(
             receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
         ):
             raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
@@ -2194,6 +2194,10 @@ def open_empirical_closure(
             receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
         ):
             raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
+        # Do not coerce an internally rehashed string count/bool, reorder
+        # a frontier, or silently discard undeclared fields on cold read.
+        if canonical_json(i05_entry) != canonical_json(_i05_envelope(i05)):
+            raise DurableEmpiricalClosureError("native I05 envelope is not exact")
         return i05
 
     if "discovery_envelope_schema" in native:

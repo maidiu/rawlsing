@@ -175,3 +175,54 @@ def test_physical_source_general_archive_resume(tmp_path, monkeypatch, mode):
           len(cold._closure.discovery_results), final.receipt.root_identity,
           "checkpoint_completed", 3, 5, final.batch_census["completed_count"],
           "native_calls", sum(counts.values()))
+
+
+def test_failed_and_deferred_attempts_retained_without_reexecuting_completed_units(tmp_path, monkeypatch):
+    from rawlsing_next.pre553_batch_runner import BatchDeferred
+    handoff, estate, initial, v1, _, _ = s1e._full(tmp_path/"source")
+    issued = _issue_compiled_governed_queries_v2(v1).issued
+    workload, resolver = _issued_shape(issued, "query-only")
+    common = dict(workload=workload, resolver=resolver, host=s1e._NATIVE_HOST,
+                  purpose=s1e._NATIVE_PURPOSE)
+    def factory():
+        return _v2_admission(initial, workload.catalog)
+    calls = Counter()
+    failure_refs = []
+    actual = PreparedI03Session.execute_i03
+    def fail_twice(self, *, query_ref, predicate_ref):
+        calls[query_ref.key] += 1
+        if sum(calls.values()) == 1:
+            failure_refs.append(query_ref)
+            raise OSError("injected interrupted native operation")
+        if sum(calls.values()) == 2:
+            failure_refs.append(query_ref)
+            raise BatchDeferred("TEST_ONLY_PENDING_DEPENDENCY", "explicit retry required")
+        return actual(self, query_ref=query_ref, predicate_ref=predicate_ref)
+    monkeypatch.setattr(PreparedI03Session, "execute_i03", fail_twice)
+    root = tmp_path/"products"
+    part = execute_publish_saved(**common, saved_admission_factory=factory,
+                                 root_dir=root, max_units=3)
+    assert part.batch_census["completed_count"] == 1
+    pinned = dict(expected_release_ref=initial.release_ref,
+                  expected_saved_manifest_sha256=initial.manifest_sha256)
+    cold = open_saved_product(part.receipt.root_path, expected_root=part.receipt.root_identity,
+                              **pinned, **common, allow_partial=True)
+    assert {r.state for r in cold._receipts} == {"COMPLETED", "FAILED", "DEFERRED"}
+    for ref in failure_refs:
+        with pytest.raises(SavedDeliveryError, match="QUERY_NOT_IN_RETAINED"):
+            cold.read_s04(ref)
+    final = execute_publish_saved(**common, saved_admission_factory=factory, root_dir=root,
+        resume_from=SavedResumePin(part.receipt.root_path, part.receipt.root_identity, **pinned))
+    assert final.complete
+    end = open_saved_product(final.receipt.root_path, expected_root=final.receipt.root_identity,
+                              **pinned, **common)
+    assert len(end._receipts) == len(workload.requests) + 2
+    assert {r.state for r in end._receipts} == {"COMPLETED", "FAILED", "DEFERRED"}
+    for ref in failure_refs:
+        assert calls[ref.key] == 2
+        assert end.read_s04(ref).first_consumer.execution.query_ref == ref
+    assert all(n == 1 for key,n in calls.items() if key not in {ref.key for ref in failure_refs})
+    assert all(final.batch_census["per_unit_full_preimage_sha256"][k] == v
+               for k,v in part.batch_census["per_unit_full_preimage_sha256"].items())
+    print("RETAINED_RETRY", final.batch_census["unit_count"], len(end._receipts),
+          "failed_deferred_retained", final.receipt.root_identity)
