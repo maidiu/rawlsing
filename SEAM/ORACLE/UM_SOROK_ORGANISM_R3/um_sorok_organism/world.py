@@ -1,7 +1,7 @@
 """Independent objective world with material effects and separately authored coactivity.
 World consequences can be unilateral, imposed, cooperative, or refused.
 """
-from .types import Attempt, Resolution, copy, stable_id, digest
+from .types import Attempt, Resolution, copy, stable_id, digest, GRADE
 from .organism import eligible
 from .institutional_reproduction import (
     contribute_to_hall_petition, retain_material_care)
