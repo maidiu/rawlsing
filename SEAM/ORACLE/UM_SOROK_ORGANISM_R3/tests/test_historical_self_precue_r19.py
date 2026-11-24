@@ -454,6 +454,73 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
         self.assertEqual(actor['historical_orientations'][0]['acquisition'],
                          'REPEATED_LIVED_BODY_COURSE')
 
+    def test_mulch_r30_opposing_later_course_can_form_without_erasing_earlier(self):
+        """Two new comparable relief episodes can contradict an acquired
+        withholding orientation. A single relief, or a broken run, cannot.
+        The later first consumer must receive BOTH historical currents.
+        """
+        actor=adult('counterhistory','Counterhistory')
+        first=self._r29_lived_in_other_presence(
+            actor,'adverse1',1,'father','WITHHOLD')
+        second=self._r29_lived_in_other_presence(
+            actor,'adverse2',2,'father','WITHHOLD')
+        negative=adult('one_relief','One Relief')
+        # Keep a separate actual history with identical first two courses,
+        # rather than injecting a sourcefree orientation into a control.
+        self._r29_lived_in_other_presence(
+            negative,'adverse1',1,'father','WITHHOLD')
+        negative_second=self._r29_lived_in_other_presence(
+            negative,'adverse2',2,'father','WITHHOLD')
+        for person,episode in ((actor,second),(negative,negative_second)):
+            candidates=possible_lived_directional_orientation(
+                person,episode,'world:adverse2')
+            self.assertEqual(len(candidates),1)
+            admit(person,episode,'world:adverse2',candidates)
+        relief1=self._r29_lived_in_other_presence(
+            actor,'relief1',3,'father','APPROACH')
+        control_relief=self._r29_lived_in_other_presence(
+            negative,'relief1',3,'father','APPROACH')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,relief1,'world:relief1'),[])
+        self.assertEqual(possible_lived_directional_orientation(
+            negative,control_relief,'world:relief1'),[])
+        relief2=self._r29_lived_in_other_presence(
+            actor,'relief2',4,'father','APPROACH')
+        proposals=possible_lived_directional_orientation(
+            actor,relief2,'world:relief2')
+        self.assertEqual(len(proposals),1)
+        self.assertEqual(proposals[0]['orientation_mode'],'APPROACH')
+        self.assertEqual(proposals[0]['lived_genesis_basis'][
+            'source_event_refs'],['world:relief1','world:relief2'])
+        self.assertTrue(proposals[0]['lived_genesis_basis'][
+            'older_opposing_orientations_not_deleted'])
+        admitted=admit(actor,relief2,'world:relief2',proposals)
+        self.assertEqual(admitted[0]['status'],
+                         'REPEATED_ACTOR_LIVED_PROVISIONAL_RECRUITABLE')
+        father=self._r29_situated_beside(actor,'father')
+        currents=[c for c in father.currents
+                  if c['kind']=='HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE']
+        self.assertEqual({c['polarity'] for c in currents},
+                         {'APPROACH','WITHHOLD'})
+        self.assertEqual(len(actor['historical_orientations']),2)
+        self.assertEqual(option(father)['psychodynamic_status'],
+                         'UNRESOLVED_CONTRADICTION')
+        control=self._r29_situated_beside(negative,'father')
+        self.assertIsNone(option(control))
+        self.assertEqual(len(negative['historical_orientations']),1)
+        self.assertEqual(first['clock'],1)
+
+    def test_mulch_r30_intervening_opposition_blocks_spurious_repetition(self):
+        actor=adult('interrupted','Interrupted')
+        sequence=('APPROACH','WITHHOLD','APPROACH')
+        now=None
+        for clock,polarity in enumerate(sequence,1):
+            now=self._r29_lived_in_other_presence(
+                actor,'course'+str(clock),clock,'mother',polarity)
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,now,'world:course3'),[])
+        self.assertEqual(actor['historical_orientations'],[])
+
     def test_mulch_r29_cross_other_episodes_cannot_fake_repetition(self):
         actor=adult('daughter','Daughter')
         self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
