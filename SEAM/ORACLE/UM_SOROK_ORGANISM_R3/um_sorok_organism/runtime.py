@@ -353,6 +353,15 @@ class ConstitutiveRuntime:
             # concerning that *particular continuing object*. Never let an
             # action-only fallback silently substitute a site-wide generic
             # repair for the actor's historically identified practical thing.
+            if trial_choice is not None and trial_choice.get('selected_offer_option_ref') is not None:
+                qualified=[a for a in alternatives
+                    if a.get('option_id')==trial_choice['selected_offer_option_ref']
+                    and a.get('binding_status')=='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+                    and a.get('human_food_offer_ref')==trial_choice['selected_human_food_offer_ref']
+                    and a['world_request']['addressed_party_ref']==trial_choice['offered_by_ref']]
+                if len(qualified)!=1:
+                    raise ValueError('POSSIBLE_END_TRIAL_OFFER_NO_LONGER_QUALIFIED')
+                selected_alternative=qualified[0]
             if trial_choice is not None and trial_choice.get(
                     'source_material_object_ref') is not None:
                 selected_alternative=_bind_actor_trial_particular_object(
@@ -443,7 +452,8 @@ class ConstitutiveRuntime:
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
             if (selected_alternative and selected_alternative.get('human_food_offer_ref')
-                    and proposed.get('practical_option_id')==selected_alternative['option_id']):
+                    and (proposed.get('practical_option_id')==selected_alternative['option_id']
+                         or (trial_choice is not None and trial_choice.get('selected_offer_option_ref')==selected_alternative['option_id']))):
                 practical['selected_human_food_offer_ref']=selected_alternative['human_food_offer_ref']
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
