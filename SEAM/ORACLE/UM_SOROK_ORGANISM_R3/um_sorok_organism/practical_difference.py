@@ -54,6 +54,12 @@ def practical_alternatives(constitution,access,option):
                       if p['id']==course['project_id']),None)
         if project is None:continue
         expected=validate_expected_difference(project.get('expected_difference'))
+        object_ref=project.get('material_object_ref') if project.get('incidental_takeup_basis') is not None else None
+        if project.get('incidental_takeup_basis') is not None and (
+                act not in ('INSPECT','REPAIR') or type(object_ref) is not str
+                or not any(c.get('kind')=='material_object_present'
+                           and c.get('material_object_ref')==object_ref for c in access.cues)):
+            continue
         target=project.get('addressed_party_ref')
         if target is not None and (type(target) is not str or not target):
             raise ValueError('INVALID_PROJECT_ADDRESSED_PARTY')
@@ -62,6 +68,7 @@ def practical_alternatives(constitution,access,option):
         identity={'actor':actor,'clock':clock,'action':act,
                   'project_ref':project['id'],'expected_difference':expected,
                   'addressed_party_ref':target}
+        if object_ref is not None:identity['material_object_ref']=object_ref
         alts.append({
             'option_id':stable_id('practical_option',identity),
             'actor':actor,'as_of_clock':clock,'operation':act,
@@ -70,7 +77,7 @@ def practical_alternatives(constitution,access,option):
             'beneficiary_as_apprehended':(
                  expected.get('beneficiary_ref') if expected else None),
             'world_request':{'operation':act,'addressed_party_ref':bound_target,
-                             'material_object_ref':None},
+                             'material_object_ref':object_ref},
             'binding_status':('QUALIFIED_AS_PRESENT' if target and reachable else
                     'NO_ADDRESSED_PARTY' if target is None else 'UNBOUND_PARTY_NOT_PRESENT'),
             'recruitment_pressures':{

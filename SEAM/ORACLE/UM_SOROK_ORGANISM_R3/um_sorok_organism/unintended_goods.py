@@ -15,7 +15,7 @@ Nadia's preverbal mind.
 
 No deterministic human learning law is claimed.
 """
-from .types import GRADE, copy
+from .types import GRADE, copy, stable_id
 
 
 def _source_received_signs(experience):
@@ -58,7 +58,25 @@ def possible_unintended_goods(actor, experience, practical_selection, event_ref)
             # This event may still surprise in other respects, but the
             # sourcefree shortcut cannot distinguish an unanticipated end.
             continue
+        # A stricter optional construction: a personally performed material
+        # activity has an explicitly selected prior project and a received
+        # sign outside its stated expected difference. This is novelty
+        # relative to that expectation, not proof of unconscious intention.
+        selection=practical_selection or {}
+        project=selection.get('project_id')
+        strict=(operation=='MAKE_OBJECT' and experience.get('status')=='PERFORMED'
+                and cue.get('kind')=='performed_make_object'
+                and type(project) is str and bool(anticipated_terms)
+                and bool(sign_terms) and not (anticipated_terms & sign_terms))
+        basis=({'id':stable_id('incidental_object_end',{
+                    'actor':actor['id'],'event':event_ref,'cue':cue['id'],
+                    'object':obj,'project':project}),
+                'original_project_ref':project,'origin_event_ref':event_ref,
+                'source_cue_ref':cue['id'],'world_material_object_ref':obj,
+                'original_expected_difference':copy(expected)}
+               if strict else None)
         possible.append({
+            **({'incidental_object_end_basis':basis} if basis is not None else {}),
             'source_cue_ref':cue['id'],
             'world_material_object_ref':obj,
             'historical_action':operation,
@@ -102,7 +120,38 @@ def one_sourcefree_provisional_end(qualifications, actor):
         # never claims of already articulated human categories.
         'cue_terms':['material_object'],
         'origin_material_object_ref':obj,
+        **({'incidental_object_end_basis':copy(q['incidental_object_end_basis'])}
+           if q.get('incidental_object_end_basis') is not None else {}),
         'not_a_preexisting_actor_goal':True,
         'not_the_event_original_purpose':True,
         'semantic_grade':'SOURCEFREE_PROVISIONAL_OBJECT_POSSIBILITY',
     }]
+
+def qualify_incidental_object_takeup(actor, experience, event_ref, end):
+    """Distinct completed exploratory trial followed by another actual
+    independent same-object operation, not arbitrary shared cue vocabulary."""
+    basis=end.get('incidental_object_end_basis')
+    if type(basis) is not dict or experience.get('actor')!=actor.get('id'):
+        return None
+    obj=basis['world_material_object_ref']
+    if (experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or experience.get('own_action') not in ('INSPECT','REPAIR')
+            or event_ref==end['origin_event']):
+        return None
+    selection=experience.get('own_practical_selection') or {}
+    if (selection.get('possible_end_trial') is not None
+            or selection.get('world_request',{}).get('material_object_ref')!=obj):
+        return None
+    actual=[c for c in _source_received_signs(experience)
+            if c.get('kind')=='performed_'+experience['own_action'].lower()
+            and c.get('material_object_ref')==obj]
+    trials=[t for t in end.get('trial_history',[])
+            if t.get('event_ref') not in (end['origin_event'],event_ref)
+            and t.get('operation') in ('INSPECT','REPAIR')
+            and t.get('actor_experienced_status')=='PERFORMED'
+            and t.get('source_material_object_ref')==obj]
+    if len(actual)!=1 or not trials:return None
+    return {'possible_end_ref':end['id'],'later_perceived_cue_ref':actual[0]['id'],
+            'source_trial_ref':trials[-1]['id'],'source_object_ref':obj,
+            'origin_incidental_good_ref':basis['id']}

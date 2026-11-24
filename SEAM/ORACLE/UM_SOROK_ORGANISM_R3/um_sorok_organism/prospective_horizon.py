@@ -316,6 +316,7 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         'eliciting_possible_end_ref': end['id'],
         'original_end_origin_event': end['origin_event'],
         'functional_bridge_ref': trial.get('functional_bridge_ref'),
+        'source_material_object_ref': trial.get('source_material_object_ref'),
         'conditional_means_revision_ref':trial.get('conditional_means_revision_ref'),
         'means_substitution_proposed_before_event': bool(
             trial.get('is_means_substitution')),

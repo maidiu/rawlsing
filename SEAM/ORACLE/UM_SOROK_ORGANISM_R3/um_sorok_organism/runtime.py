@@ -22,7 +22,7 @@ from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
-from .unintended_goods import possible_unintended_goods
+from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
 from .expectation_afterlife import source_qualified_appraisal_candidates
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
@@ -368,6 +368,16 @@ class ConstitutiveRuntime:
                     alternatives,trial_choice)
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
+            # The selected object-specific project may not silently fall
+            # back to a generic site operation, even in a multi-course act.
+            object_courses=[p for p in actor.get('projects',[])
+                            if p['id'] in selected_refs
+                            and p.get('incidental_takeup_basis') is not None]
+            if object_courses and (len(selected_refs)!=1
+                    or not selected_alternative
+                    or selected_alternative.get('project_id')!=object_courses[0]['id']
+                    or selected_alternative['world_request'].get('material_object_ref')!=object_courses[0]['material_object_ref']):
+                raise ValueError('INCIDENTAL_PROJECT_EXACT_OBJECT_SELECTION_REQUIRED')
             selected=[available[ref] for ref in selected_refs]
             selection_grade=proposed.get(
                 'purpose_selection_grade',
@@ -845,6 +855,11 @@ class ConstitutiveRuntime:
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
                     possible_incidental_goods),
+                'historically_possible_incidental_takeup':[
+                    q for end in actors[aid].get('possible_ends',[])
+                    if end.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
+                    for q in [qualify_incidental_object_takeup(
+                        actors[aid],experience,objective_ref,end)] if q is not None],
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
                 'historically_possible_co_regulation':copy(care_genesis),

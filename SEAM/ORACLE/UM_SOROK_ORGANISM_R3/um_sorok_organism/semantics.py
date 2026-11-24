@@ -216,6 +216,20 @@ class HeuristicSemanticProvider:
             current_trial=((packet.get('selected_purpose_analytic_only') or {})
                 .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
             for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
+                if candidate.get('incidental_object_end_basis') is not None:
+                    qualified=[q for q in packet.get('historically_possible_incidental_takeup',[])
+                               if q['possible_end_ref']==candidate['id']]
+                    if len(qualified)==1:
+                        q=qualified[0]
+                        relation_candidates.append({
+                            'kind':'TAKE_UP_POSSIBLE_END',
+                            'possible_end_ref':candidate['id'],
+                            'means':copy(candidate['possible_means']),
+                            'priority':.32,
+                            'later_perceived_cue_ref':q['later_perceived_cue_ref'],
+                            'incidental_takeup_basis':copy(q)})
+                        break
+                    continue
                 if (candidate.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'
                         and candidate.get('origin_event')!=packet.get(
                              'historical_psychodynamic_context',{}).get('objective_event_ref')
