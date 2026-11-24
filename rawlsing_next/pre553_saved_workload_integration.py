@@ -441,6 +441,8 @@ __all__ = [
     "execute_saved_batch",
     "execute_saved_completed",
     "execute_saved_i03",
+    "execute_saved_i03_to_s04",
+    "SavedS04FirstRead",
     "execute_saved_i05",
     "execute_saved_normal",
     "execute_saved_partial",
