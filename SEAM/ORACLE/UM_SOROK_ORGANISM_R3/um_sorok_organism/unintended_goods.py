@@ -76,6 +76,7 @@ def possible_unintended_goods(actor, experience, practical_selection, event_ref)
                 'original_expected_difference':copy(expected)}
                if strict else None)
         possible.append({
+            **({'incidental_object_end_basis':basis} if basis is not None else {}),
             'source_cue_ref':cue['id'],
             'world_material_object_ref':obj,
             'historical_action':operation,
@@ -119,6 +120,8 @@ def one_sourcefree_provisional_end(qualifications, actor):
         # never claims of already articulated human categories.
         'cue_terms':['material_object'],
         'origin_material_object_ref':obj,
+        **({'incidental_object_end_basis':copy(q['incidental_object_end_basis'])}
+           if q.get('incidental_object_end_basis') is not None else {}),
         'not_a_preexisting_actor_goal':True,
         'not_the_event_original_purpose':True,
         'semantic_grade':'SOURCEFREE_PROVISIONAL_OBJECT_POSSIBILITY',
