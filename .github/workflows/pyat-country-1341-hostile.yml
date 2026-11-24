@@ -15,5 +15,5 @@ jobs:
       - run: python -m pip install pandas pyreadstat pyarrow pytest
       - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - run: python -m unittest rawlsing_next.tests.test_pre553_country_numeric_carrier rawlsing_next.tests.test_pre553_country_numeric_hostile -v
-      - run: python -m unittest rawlsing_next.tests.test_pre553_empirical_objects_authority -v
+      - run: python -m pytest -q rawlsing_next/tests/test_pre553_empirical_objects_authority.py rawlsing_next/tests/test_pre553_i03_grouping.py rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py
       - run: python -m unittest rawlsing_next.tests.test_pre553_country_numeric_economics -v
