@@ -258,9 +258,14 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     ff = read.first_consumer.ff01
     assert ff is not None
     assert ff.semantic_projection()["raw_fully_resolved_joint_n"] == 5
-    cells = {tuple(row["cell"]): row["raw_support"]
-             for row in ff.semantic_projection()["complete_cells"]}
-    assert sorted(cells.values()) == [1, 1, 1, 2]
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+    rows = ff.semantic_projection()["complete_cells"]
+    cells = {canonical_json(row["cell"]): row["raw_support"] for row in rows}
+    assert len(cells) == len(rows)
+    # The profile explicitly includes zero-support special-state cells.
+    assert sorted(n for n in cells.values() if n > 0) == [1, 1, 1, 2]
+    assert sum(cells.values()) == 5
+    assert all(n >= 0 for n in cells.values())
     assert ff.ref == receive_ff01_observed_joint(
         query=query, execution=read.first_consumer.execution, conditioner_index=0,
         producer_permission_ceiling=("FF01_DESCRIPTIVE_SOURCEFREE",)).ref
@@ -268,6 +273,7 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     ws = cold.joint_workspace(query.ref)
     projection_result = ws.query(S04Projection((0,1), {}))
     assert projection_result.material()["raw_selected_full_case_n"] == 5
+    assert ws.query_by_refs(tuple(exact_ref(r) for r in query.target_refs), {}).ref == projection_result.ref
     print("SAVED_JOINT_FF01", source_format, result.batch_census["unit_count"],
           result.execution_seconds, result.publication_seconds,
           result.receipt.referenced_physical_bytes, ff.ref.key)
