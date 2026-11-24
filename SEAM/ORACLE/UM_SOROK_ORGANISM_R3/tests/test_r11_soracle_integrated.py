@@ -1265,8 +1265,15 @@ class DependencyMeansHistoryR40(unittest.TestCase):
                     self.assertEqual(len(means_revisions),1)
                     self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]
                         ['dependency_conditional_means']['SIGNAL']['status'],'SUSPENDED')
+                    # Success at bodily saturation is not another lived
+                    # nutritional differential. Let ordinary need recur.
+                    stage='wait'
+                    cold.step('worker',requested_action='REST')
+                    for _ in range(10):cold.step('worker')
+                    stage='renew_means'
                     self.assertEqual(cold.step('worker')['status'],'PERFORMED')
-                    self.assertEqual(len(means_revisions),2)
+                    self.assertEqual(len(means_revisions),2,
+                        str(cold.ledger.actor('worker')[1]['lived_genesis_episodes'][-14:]))
                     cs,exp=means_revisions[-1]
                     self.assertEqual(cs[0]['dependency_means_revision_basis']['mode'],'REOPEN')
                     a=cold.ledger.actor('worker')[1]
