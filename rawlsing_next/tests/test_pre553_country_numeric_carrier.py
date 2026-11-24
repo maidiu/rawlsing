@@ -182,7 +182,7 @@ class CountryNumeric(unittest.TestCase):
         direct=build_validated_source_backed_c11_release_from_stream(
             ExactPhysicalCellStream(inc.source_sha256,len(chosen),lambda:iter(cells)),projection)
         qa=_query_authority("country-durable")
-        da=_d_auth("country-durable")
+        da=_d_auth("country-durable-discovery")
         base=_branch_predicate(fx,qa,members=respondents,tag="country-durable-all")
         atom=_predicate(fx,qa,_response_leaf(fx,qa,"X","1"),tag="country-durable-x")
         query=_query(fx,qa,base,("X","Y"),tag="country-durable-joint")
