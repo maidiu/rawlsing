@@ -43,8 +43,11 @@ jobs:
           assert set(actual) == expected
           # Preserve the frozen November 23 predecessor scope and direct P3 identities.
           predecessor = {1265, 1274, 1293, 1296, 1297, 1298, 1300, 1272, 1277, 1278, 1294}
-          old = {(pr, identity) for pr, identity in actual if pr in predecessor}
+          old = {(pr, identity) for pr, identity in actual if pr in predecessor and (pr != 1272 or identity in {'C3', 'C8', 'C10', 'N04', 'N05', 'N07', 'O05'})}
           assert len(old) == 50 and len({identity for pr, identity in old}) == 22
+          legacy = {identity for pr, identity in actual if pr == 1272 and identity.startswith('M')}
+          assert legacy == {f'M{i:02d}' for i in range(1,41)}
+          assert {identity for pr, identity in actual if pr == 1272 and identity.startswith('RCFB_')} == {'RCFB_E3','RCFB_E4','RCFB_E5','RCFB_E6','RCFB_E7'}
           p3 = {identity for pr, identity in actual if pr == 746}
           assert p3 == {'C3', 'C9', 'C10', 'A2', 'N04', 'N05', 'N08', 'N11', 'O15', 'E05', 'E09', 'S6', 'S10', 'B1', 'S39_S52'}
           assert all('PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY' in o['relation']['grade'] for row in rows for o in row['linked_observations'] if o['pr'] == 746)
