@@ -11,9 +11,10 @@ from dataclasses import dataclass
 from json import loads
 from typing import Any, Callable, Mapping
 
-from rawlsing_next._pre553_query_common import QueryExecutionResult
+from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID, QueryExecutionResult
 from rawlsing_next.pre553_discovery_exact import (
-    ExactBoundedDiscoveryResult, I05_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
+    COVERAGE_CLAIM, ExactBoundedDiscoveryResult, I05_CONTRACT_ID, TERMINAL_COVERAGE_STATES,
+    _derived_ref as _i05_derived_ref,
 )
 from rawlsing_next.pre553_empirical_objects import (
     ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
@@ -182,6 +183,10 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         raise S04I05ReceptionError("incomplete or duplicate I05 frontier receipts")
     cited = set()
     candidate_ids = set()
+    candidate_hashes = set()
+    candidate_identities = []
+    cited_queries = set()
+    cited_predicates = set()
     for receipt in receipts:
         if (semantic_hash(receipt.semantic_projection()) != receipt.content_hash
                 or _ref(receipt.discovery_authority_ref, "authority") != discovery.discovery_authority_ref
@@ -192,9 +197,60 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         if not isinstance(candidate_id, str) or not candidate_id or candidate_id in candidate_ids:
             raise S04I05ReceptionError("duplicate or absent I05 candidate identity")
         candidate_ids.add(candidate_id)
+        identity = receipt.candidate_identity
+        candidate_hash = identity.get("candidate_hash")
+        if (not isinstance(candidate_hash, str) or candidate_hash in candidate_hashes
+                or candidate_id != f"urn:rawlsing:pre553:i05:candidate:sha256:{candidate_hash}"):
+            raise S04I05ReceptionError("invalid or duplicate I05 frontier candidate hash")
+        # Reconstruct the native candidate preimage in native role order.
+        # The receipt is pinned, but the enclosing grammar field is not
+        # independently included in the final replay preimage.
+        roles = identity["query_roles"]
+        material = {
+            "contract": I05_CONTRACT_ID,
+            "family": identity["family"],
+            "rule_id": identity["rule_id"],
+            "winning_predicate_ref": _ref(receipt.winning_predicate_ref, "winner").as_dict(),
+            "query_roles": roles,
+            "validation": identity["validation"],
+            "ancestry_refs": [
+                ref.as_dict() for ref in sorted(
+                    {_ref(value, "ancestry") for value in receipt.branch_or_parent_ancestry_refs},
+                    key=lambda ref: ref.key)
+            ],
+        }
+        if semantic_hash(material) != candidate_hash:
+            raise S04I05ReceptionError("I05 frontier candidate preimage changed")
+        candidate_hashes.add(candidate_hash)
+        candidate_identities.append({"candidate_id": candidate_id, "candidate_hash": candidate_hash})
+        for role in roles:
+            cited_queries.add(_ref(role["query_ref"], "frontier role query"))
+            cited_predicates.add(_ref(role["predicate_ref"], "frontier role predicate"))
         cited.update(_ref(ref, "frontier role fact") for ref in receipt.empirical_fact_refs)
+    # Native _compile_frontier orders by candidate_hash, not receipt ref.
+    # Reconstruct the original frontier using precisely that ordering and
+    # the incumbent I05 reference namespace. No new authority is issued.
+    actual_frontier = _i05_derived_ref("PRE553_I05_EVALUATED_FRONTIER", "frontier", {
+        "contract": I05_CONTRACT_ID,
+        "discovery_authority_ref": discovery.discovery_authority_ref.as_dict(),
+        "candidate_grammar_ref": discovery.candidate_grammar_ref.as_dict(),
+        "query_execution_contract": QUERY_EXECUTION_CONTRACT_ID,
+        "candidate_identities": sorted(candidate_identities, key=lambda item: item["candidate_hash"]),
+        "coverage_claim": COVERAGE_CLAIM,
+    })
+    if (discovery.contract_id != I05_CONTRACT_ID or discovery.coverage_claim != COVERAGE_CLAIM
+            or actual_frontier != discovery.evaluated_frontier_ref):
+        raise S04I05ReceptionError("I05 frontier grammar or candidate identity changed")
+    for objects, expected in ((discovery.executed_queries, cited_queries),
+                              (discovery.executed_predicates, cited_predicates)):
+        if len(objects) != len(expected) or {obj.ref for obj in objects} != expected:
+            raise S04I05ReceptionError("I05 exact frontier role object census changed")
+        if any(semantic_hash(obj.semantic_projection()) != obj.content_hash for obj in objects):
+            raise S04I05ReceptionError("I05 exact frontier role preimage changed")
     if cited != set(discovery.empirical_fact_refs):
         raise S04I05ReceptionError("I05 frontier fact closure changed")
+    if tuple(fact.ref for fact in discovery.empirical_facts) != discovery.empirical_fact_refs:
+        raise S04I05ReceptionError("I05 exact frontier fact preimage census changed")
     for fact in discovery.empirical_facts:
         if semantic_hash(fact.semantic_projection()) != fact.content_hash:
             raise S04I05ReceptionError("altered I05 frontier fact preimage")
@@ -213,6 +269,29 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
                       f"urn:rawlsing:pre553:i05:frontier-replay:sha256:{digest}", digest)
     if actual != expected_replay_ref or actual != discovery.replay_ref:
         raise S04I05ReceptionError("I05 complete frontier replay identity mismatch")
+
+
+def _require_handoff_material(handoff, label):
+    """Recheck incumbent handoff side material at S04's receiving boundary."""
+    from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
+    if type(handoff) is not RecursiveBranchHandoff:
+        raise S04I05ReceptionError(f"recursive {label} handoff not present")
+    try:
+        # The existing owner's constructor verifies scope/grammar/coverage
+        # side hashes. Re-run that law because mappings can be changed after
+        # construction, and bind the outer receipt to the sealed side data.
+        handoff.__post_init__()
+        deterministic = handoff.deterministic_parameters
+        if (_ref(deterministic["receipt_ref"], "handoff receipt") != handoff.receipt_ref
+                or _ref(deterministic["winning_predicate_ref"], "handoff winner")
+                    != handoff.winning_predicate.ref
+                or _ref(deterministic["immediate_parent_branch_ref"], "handoff ancestor")
+                    != handoff.immediate_parent_branch_ref
+                or semantic_hash(handoff.winning_predicate.semantic_projection())
+                    != handoff.winning_predicate.content_hash):
+            raise S04I05ReceptionError("handoff outer fields disagree with sealed material")
+    except (ValueError, TypeError, KeyError, AttributeError) as exc:
+        raise S04I05ReceptionError(f"recursive {label} handoff material mismatch") from exc
 
 
 def receive_s04_i05_adaptive_outcome(
@@ -275,6 +354,7 @@ def receive_s04_i05_adaptive_outcome(
     ancestry_parents = tuple(ref for ref in ancestral
                              if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
     if declared_parents or ancestry_parents or parent_handoff is not None:
+        _require_handoff_material(parent_handoff, "parent")
         if (type(parent_handoff) is not RecursiveBranchHandoff
                 or parent_handoff.ref not in declared_parents
                 or parent_handoff.ref not in ancestral
@@ -286,10 +366,13 @@ def receive_s04_i05_adaptive_outcome(
         raise S04I05ReceptionError("held role cannot supply positive proposal evidence")
     family = receipt.candidate_identity["family"]
     if next_handoff is not None or (proposals and family in RECURSIVE_BRANCH_FAMILIES):
+        _require_handoff_material(next_handoff, "winning")
         if (family not in RECURSIVE_BRANCH_FAMILIES
                 or type(next_handoff) is not RecursiveBranchHandoff
                 or receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
                 or next_handoff.receipt_ref != receipt.ref
+                or canonical_json(next_handoff.deterministic_parameters["candidate_identity"])
+                    != canonical_json(receipt.candidate_identity)
                 or next_handoff.discovery_authority_ref != discovery.discovery_authority_ref
                 or next_handoff.evaluated_frontier_ref != discovery.evaluated_frontier_ref
                 or next_handoff.source_release_refs != releases
