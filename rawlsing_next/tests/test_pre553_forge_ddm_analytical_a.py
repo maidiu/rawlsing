@@ -364,3 +364,35 @@ def test_s2f_original_native_closure_recreates_exact_analytical_outputs(tmp_path
     assert cold.facts[0].ref == actual.facts[0].ref
     assert after.query(S04Projection((0,3),{1:"0"})).ref == projected.ref
     assert after.compare_dhikr(request).ref == compared.ref
+
+
+def test_native_position_predicates_change_conditional_and_reverse_distributions():
+    rows = []
+    for group, x, z in product(("A", "B"), (0, 1), (0, 1)):
+        for i in range(4):
+            y = (x if group == "A" else z) ^ int(i == 0)
+            rows.append({"id": f"R{group}{x}{z}{i}",
+                         "responses": {"X": x, "Z": z, "Y": y},
+                         "coords": {"G": group}})
+    source = native._build_source("FORGE-A-NATIVE-POSITION", rows)
+    auth = native._query_authority("FORGE-A-NATIVE-POSITION")
+    roots = []
+    for group in ("A", "B"):
+        pred = native._predicate(source, auth, native._coordinate_leaf(source, "G", group),
+                                 tag=f"position-{group}")
+        query = native._query(source, auth, pred, ("X", "Z", "Y"), tag=f"position-{group}")
+        execution = native._run(source, auth, pred, query)
+        assert execution.facts[0].typed_state == "SUPPORTED"
+        ws = _workspace(query, execution)
+        x, z, y = tuple(exact_ref(r) for r in query.target_refs)
+        predictor = x if group == "A" else z
+        assert _counts(ws.query_by_refs((y,), {predictor: "0"})) == {("0",): 6, ("1",): 2}
+        assert _counts(ws.query_by_refs((predictor,), {y: "0"})) == {("0",): 6, ("1",): 2}
+        receipt = ws.compare_dhikr(DHIKRComparisonRequest(
+            2, (0, 1), include_group_evidence=True, max_depth=0)).material()
+        assert receipt["source_predicate_ref"] == pred.ref.as_dict()
+        root = receipt["nodes"][0]
+        assert root["raw_same_case_n"] == 16
+        roots.append(root)
+    assert _score(roots[0], (0,)) > _score(roots[0], (1,))
+    assert _score(roots[1], (1,)) > _score(roots[1], (0,))

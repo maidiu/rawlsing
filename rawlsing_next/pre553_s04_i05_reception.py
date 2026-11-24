@@ -195,6 +195,9 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         cited.update(_ref(ref, "frontier role fact") for ref in receipt.empirical_fact_refs)
     if cited != set(discovery.empirical_fact_refs):
         raise S04I05ReceptionError("I05 frontier fact closure changed")
+    for fact in discovery.empirical_facts:
+        if semantic_hash(fact.semantic_projection()) != fact.content_hash:
+            raise S04I05ReceptionError("altered I05 frontier fact preimage")
     empty = not receipts or all(r.typed_state == "VALID_EMPTY" for r in receipts)
     if type(discovery.valid_empty) is not bool or discovery.valid_empty != empty:
         raise S04I05ReceptionError("I05 frontier empty claim contradicts candidate fates")
@@ -269,7 +272,9 @@ def receive_s04_i05_adaptive_outcome(
     ancestral = tuple(_ref(ref, "branch ancestry") for ref in receipt.branch_or_parent_ancestry_refs)
     declared_parents = tuple(ref for ref in unit.determinant_refs
                              if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
-    if declared_parents or parent_handoff is not None:
+    ancestry_parents = tuple(ref for ref in ancestral
+                             if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
+    if declared_parents or ancestry_parents or parent_handoff is not None:
         if (type(parent_handoff) is not RecursiveBranchHandoff
                 or parent_handoff.ref not in declared_parents
                 or parent_handoff.ref not in ancestral
@@ -281,7 +286,8 @@ def receive_s04_i05_adaptive_outcome(
         raise S04I05ReceptionError("held role cannot supply positive proposal evidence")
     family = receipt.candidate_identity["family"]
     if next_handoff is not None or (proposals and family in RECURSIVE_BRANCH_FAMILIES):
-        if (type(next_handoff) is not RecursiveBranchHandoff
+        if (family not in RECURSIVE_BRANCH_FAMILIES
+                or type(next_handoff) is not RecursiveBranchHandoff
                 or receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
                 or next_handoff.receipt_ref != receipt.ref
                 or next_handoff.discovery_authority_ref != discovery.discovery_authority_ref
