@@ -16,7 +16,7 @@ from typing import Callable
 from rawlsing_next.pre553_batch_runner import BatchManifest, BatchUnitSpec
 from rawlsing_next.pre553_empirical_objects import ExactRef, canonical_json, exact_ref
 from rawlsing_next.pre553_issued_workload import (
-    NativeWorkload, admit, execute_issued_workload, _restore_receipt,
+    NativeWorkload, admit, _admit, _PreparedRoutingEnvelope, execute_issued_workload, _restore_receipt,
 )
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_durable_empirical_closure import (
@@ -42,9 +42,10 @@ def _require(ok, message):
         raise SavedDeliveryError(message)
 
 
-def _record(workload, resolver, host, purpose):
-    record = admit(workload, resolver, host=host, purpose=purpose,
-                   allow_test_only=True)
+def _record(workload, resolver, host, purpose, *, prepared=None):
+    record = (admit(workload, resolver, host=host, purpose=purpose,allow_test_only=True)
+              if prepared is None else _admit(workload,resolver,host=host,purpose=purpose,
+                    allow_test_only=True,prepared=prepared))
     _require(record.scope == "TEST_ONLY_SOURCEFREE",
              "S2F_ORIGINAL_RETENTION_AND_SERVING_AUTHORITY_HELD")
     return record
@@ -346,7 +347,7 @@ class ColdSavedProduct:
     """
 
     def __init__(self, closure, workload, resolver, host, purpose, record,
-                 *, receipts, outputs, census):
+                 *, receipts, outputs, census, prepare_country_envelope=False):
         self._closure = closure
         self._workload = workload
         self._resolver = resolver
@@ -359,6 +360,10 @@ class ColdSavedProduct:
         self._queries = {r.query_ref.key: r for r in closure.i03_results}
         self._first_reads = closure.manifest["core"]["native_result"]["typed_states"]["s04_first_reads"]
         self._cache = OrderedDict()  # bounded, request-process-local derivative cache
+        self._prepared_envelope = (
+            _PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+            if prepare_country_envelope and record.scope=="TEST_ONLY_SOURCEFREE" else None
+        )
 
     @property
     def complete(self) -> bool:
@@ -369,7 +374,8 @@ class ColdSavedProduct:
         return self._census.as_dict()
 
     def _live(self):
-        _require(_record(self._workload, self._resolver, self._host, self._purpose)
+        _require(_record(self._workload, self._resolver, self._host, self._purpose,
+                         prepared=self._prepared_envelope)
                  == self._record, "CURRENT_CHANGED_DURING_COLD_SERVING")
 
     def read_s04(self, query_ref: ExactRef, *, conditioner_index=None):
@@ -677,7 +683,8 @@ def _open_native_product(closure_path, *, expected_root, release, binding,
     _require(_record(workload, resolver, host, purpose) == record,
              "CURRENT_CHANGED_DURING_COLD_OPEN")
     return ColdSavedProduct(closure, workload, resolver, host, purpose, record,
-                            receipts=receipts, outputs=outputs, census=actual)
+                            receipts=receipts, outputs=outputs, census=actual,
+                            prepare_country_envelope=binding.get("schema")=="PYAT_COUNTRY_U43_S2F_DELIVERY@1")
 
 
 def _country_binding(record, workload, release, receipt):

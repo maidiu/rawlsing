@@ -157,6 +157,59 @@ class CountryNativeEconomics(unittest.TestCase):
             print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
                 "old_median_s":median(old_times),"new_median_s":median(new_times),
                 "same_exact_hash":True,"repetitions":3}),flush=True)
+            prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+            self.assertIsNotNone(prepared)
+            self.assertEqual(prepared.digest(),record.envelope_sha256)
+            self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
+                workload,record.envelope_sha256,max_bytes=16))
+            # Reject substituted body/tuple and re-hash all nonrouting input.
+            obj=workload.projection.routing[0]
+            prior=obj.typed_state
+            try:
+                object.__setattr__(obj,"typed_state","NOT_ASKED")
+                self.assertIsNone(prepared.digest())
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                        allow_test_only=True,prepared=prepared)
+            finally:
+                object.__setattr__(obj,"typed_state",prior)
+            prior_routing=workload.projection.routing
+            try:
+                object.__setattr__(workload.projection,"routing",tuple(reversed(prior_routing)))
+                self.assertIsNone(prepared.digest())
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                        allow_test_only=True,prepared=prepared)
+            finally:
+                object.__setattr__(workload.projection,"routing",prior_routing)
+            prior_descriptor=workload.descriptor
+            try:
+                changed=json.loads(prior_descriptor)
+                changed["routing_and_risk"]={"fixture":"different"}
+                object.__setattr__(workload,"descriptor",canonical(changed))
+                self.assertNotEqual(prepared.digest(),record.envelope_sha256)
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                        allow_test_only=True,prepared=prepared)
+            finally:
+                object.__setattr__(workload,"descriptor",prior_descriptor)
+            resolver._record=replace(record,currentness="REVOKED")
+            try:
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                        allow_test_only=True,prepared=prepared)
+            finally:
+                resolver._record=record
+            prepared_times=[]
+            for _ in range(3):
+                t0=time.monotonic()
+                self.assertEqual(prepared.digest(),record.envelope_sha256)
+                prepared_times.append(time.monotonic()-t0)
+            print("COUNTRY_PREPARED_ENVELOPE_MATCHED",json.dumps({
+                "normal_median_s":median(new_times),"prepared_median_s":median(prepared_times),
+                "fragment_bytes":len(prepared.fragment),"routing_records":len(prepared.routing),
+                "exact_hash_equal":True}),flush=True)
+            del prepared
             timings=defaultdict(list)
             def time_call(owner,name,label):
                 original=getattr(owner,name)
@@ -170,7 +223,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 return patch.object(owner,name,wrapped)
             with ExitStack() as stack:
                 for owner,name,label in (
-                    (issued,"admit","issued_full_admission"),
+                    (issued,"_admit","issued_full_admission"),
+                    (issued._PreparedRoutingEnvelope,"digest","prepared_routing_digest"),
                     (issued.NativeWorkload,"envelope","full_workload_envelope"),
                     (issued,"build_source_backed_c11_repository","cold_native_prepare"),
                     (delivery,"_record","delivery_full_admission"),
@@ -197,6 +251,7 @@ class CountryNativeEconomics(unittest.TestCase):
             with ExitStack() as stack:
                 for owner,name,label in (
                     (issued.NativeWorkload,"envelope","cold_full_envelope"),
+                    (issued._PreparedRoutingEnvelope,"digest","cold_prepared_routing_digest"),
                     (delivery,"_record","cold_full_admission"),
                     (delivery,"open_empirical_closure","cold_closure_open"),
                     (delivery,"census_native_batch","cold_census"),
