@@ -269,6 +269,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
 def admit_motif(actor, candidate, event_ref, experience, index):
     """Prepare one bounded, actor-owned fictional motif for atomic admission."""
     motif = copy(candidate.get("motif", {}))
+    refuse_unissued_cross_context_history(motif)
     validate_motif(motif, actor["forms"])
     witness = motif.get("witnessed_source_actor_ref")
     # A semantic proposal cannot manufacture having recognized or actually
@@ -344,6 +345,14 @@ def possible_witnessed_third_party_relation(actor, experience):
             'grade':GRADE})
     return candidates[:4]
 
+def refuse_unissued_cross_context_history(motif):
+    """The R32 provenance key is owned by later typed reorganization only."""
+    if type(motif) is dict and any(
+            type(row) is dict and 'lived_cross_context_basis' in row
+            for row in (motif.get('motif_history') or [])):
+        raise InvalidRelationalMotif('CROSS_CONTEXT_UNISSUED_HISTORY')
+
+
 def possible_lived_cross_context_revaluations(actor, experience, event_ref):
     """Optional reorganization of an OLD motif through a different lived site.
 
@@ -361,7 +370,8 @@ def possible_lived_cross_context_revaluations(actor, experience, event_ref):
     if (experience.get('actor')!=aid or type(clock) is not int
             or type(event_ref) is not str or not event_ref
             or type(site) is not str or not site or site!=actor.get('location')
-            or operation not in ACTIONS
+            or type(operation) is not str or operation not in ACTIONS
+            or not actor.get('relational_motifs')
             or experience.get('participated') is not True
             or (experience.get('felt_enactment') or {}).get(
                 'attempted_operation')!=operation):
