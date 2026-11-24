@@ -20,6 +20,7 @@ on:
       - agent/neighbormulch-r16-historical-material-conditioning-20261124-r1
       - agent/neighbormulch-r17-material-support-20261124-r1
       - agent/neighbormulch-r18-reciprocal-material-exposure-20261124-r1
+      - agent/neighbormulch-r19-material-refusal-20261124-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -55,6 +56,7 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_historical_conditioning_r16.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_support_r17.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_reciprocal_material_exposure_r18.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_refusal_r19.py
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -127,6 +129,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_material_exposure_r18.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_reciprocal_material_exposure_r18.py' -q
+      - name: R19 particular material refusal and fresh independent response
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_refusal_r19.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_refusal_r19.py' -q
       - name: Full inherited CO R35 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
