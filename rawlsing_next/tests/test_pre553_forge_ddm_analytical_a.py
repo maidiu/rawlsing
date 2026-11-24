@@ -1,6 +1,7 @@
 """Commission A: native empirical production, sourcefree only.
 No independently sampled survey pooling, new issuer, or replacement scheduler.
 """
+from dataclasses import replace
 from itertools import product
 
 import pytest
@@ -218,9 +219,148 @@ def test_actual_i05_to_existing_adaptive_scheduler_retains_visited_and_unknown()
         determinant_state_ref=determinant,initial_units=(root,other),evaluate_unit=evaluate,budget=3,
         resume_from=first.checkpoint)
     assert final.visited_unit_refs == (root.unit_ref,child.unit_ref,other.unit_ref)
-    assert final.checkpoint.visits[1].outcome.unit_result_state == "VALID_EMPTY"
+    assert final.checkpoint.visits[1].outcome.unit_result_state == "I05_COMPLETE_FRONTIER__SELECTED_VALID_EMPTY"
     assert final.global_negative_claim is False
     for guard,replay in ((lambda:False,discovery.replay_ref),(lambda:True,root.unit_ref)):
         with pytest.raises(S04I05ReceptionError):
             receive_s04_i05_adaptive_outcome(unit=root,discovery=discovery,expected_replay_ref=replay,
                 candidate_receipt_ref=positive.ref,query_role="BASE",current_guard=guard)
+
+
+def test_pinned_frontier_rejects_dropped_receipts_and_false_empty():
+    discovery = _real_frontier()
+    positive = next(r for r in discovery.receipts if r.typed_state == "DISCOVERED_RESULT_SUPPORTED")
+    _, _, rule, _ = adaptive._authority("forged-frontier")
+    determinant = adaptive._ref("DETERMINANT","forged-frontier")
+    root = adaptive._unit("root",determinant,rule,rank=0,extra=(discovery.discovery_authority_ref,))
+    # Native dataclass alone permits a changed receipt tuple with the old
+    # claimed replay. The new sealed-result receiver checks the actual closure.
+    smaller = tuple(r for r in discovery.receipts if r.ref != discovery.receipts[-1].ref
+                    or r.ref == positive.ref)
+    if len(smaller) == len(discovery.receipts):
+        smaller = tuple(r for r in discovery.receipts if r.ref != discovery.receipts[0].ref
+                        or r.ref == positive.ref)
+    assert len(smaller) == len(discovery.receipts)-1
+    for counterfeit in (
+        replace(discovery, receipts=smaller),
+        replace(discovery, receipts=smaller, candidate_count=len(smaller), covered_candidate_count=len(smaller)),
+        replace(discovery, valid_empty=True),
+    ):
+        with pytest.raises(S04I05ReceptionError):
+            receive_s04_i05_adaptive_outcome(
+                unit=root,discovery=counterfeit,expected_replay_ref=discovery.replay_ref,
+                candidate_receipt_ref=positive.ref,query_role="BASE",current_guard=lambda:True,
+            )
+
+
+def test_real_recursive_handoff_to_new_native_i05_through_adaptive_resume(tmp_path):
+    from rawlsing_next.pre553_recursive_handoff import (
+        execute_exact_bounded_discovery_with_handoffs, recursive_parent_atom,
+        write_recursive_handoff_bundle, load_recursive_handoff_bundle,
+        replay_recursive_branch_membership,
+    )
+    from rawlsing_next.tests import test_pre553_recursive_handoff as recursive
+    from rawlsing_next.tests import test_pre553_discovery_exact as i05
+    source, auth = recursive._fixture()
+    _, gen1, reg1 = recursive._generation_one(source,auth)
+    first = gen1.discovery_result
+    original_handoff = gen1.handoffs[0]
+    assert len(replay_recursive_branch_membership(
+        repository=source["repo"],handoff=original_handoff,authority_registry=reg1)) == 4
+    first_receipt = first.receipts[0]
+    _, basis = receive_s04_i05_role(discovery=first,candidate_receipt_ref=first_receipt.ref,query_role="CONDITION")
+    authority, registry, rule, child_rule = adaptive._authority("forge-a-recursive")
+    determinant = adaptive._ref("DETERMINANT","forge-a-recursive")
+    root = adaptive._unit("root",determinant,rule,rank=1,extra=(first.discovery_authority_ref,))
+    # Persist/reopen the original owner handoff before constructing generation 2.
+    handoff_path = tmp_path/"branch.json"
+    bundle = write_recursive_handoff_bundle(handoff_path,gen1.handoffs)
+    loaded_bundle, handoffs = load_recursive_handoff_bundle(handoff_path)
+    assert loaded_bundle == bundle
+    parent = handoffs[0]
+    assert parent.ref == original_handoff.ref
+    h1 = native._predicate(source,auth,native._response_leaf(source,auth,"H",1),tag="mx01r2-h1")
+    q = native._query(source,auth,parent.winning_predicate,("H",),tag="mx01r2-g2-h")
+    da = i05._d_auth("mx01r2-g2-discovery")
+    grammar = i05._grammar(
+        operation="I03-OP-mx01r2-g2-discovery",
+        atoms=[recursive_parent_atom(parent,"CHILD"),i05._atom("H1",h1,"RESPONSE")],
+        templates=[i05._qt("H",q)],
+        rules=[i05._rule("grandchild","RECURSIVE_SUBGROUP_FORK","SINGLE_ATOM",
+                         atom_ids=("H1",),baseline_atom_id="CHILD",query_template_id="H",
+                         validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"})],k=2,
+    )
+    da2 = i05._discovery_authority(source,grammar,da,tag="mx01r2-g2")
+    reg2 = native._registry(source,auth,da)
+    child = adaptive._unit("child",determinant,child_rule,rank=2,generation=1,parent=root.unit_ref,
+        extra=(da2.ref,first.replay_ref,basis.ref,parent.ref,parent.winning_predicate.ref))
+    executions = []
+    def evaluate(unit,history):
+        if unit == root:
+            return receive_s04_i05_adaptive_outcome(
+                unit=unit,discovery=first,expected_replay_ref=first.replay_ref,
+                candidate_receipt_ref=first_receipt.ref,query_role="CONDITION",current_guard=lambda:True,
+                proposal_units=(child,),next_handoff=parent,
+            )[2]
+        # The child is NOT a replay of the old candidate; run a newly issued
+        # native exact frontier with the persisted discovered branch predicate.
+        assert unit == child and len(history)==1
+        actual = execute_exact_bounded_discovery_with_handoffs(
+            repository=source["repo"],discovery_authority=da2,authority_registry=reg2,
+            release_refs=(source["release_ref"],),predicate_catalog=(parent.winning_predicate,h1),
+            query_template_catalog=(q,),
+        )
+        second = actual.discovery_result
+        executions.append(second.replay_ref)
+        assert second.replay_ref != first.replay_ref
+        assert len(replay_recursive_branch_membership(
+            repository=source["repo"],handoff=actual.handoffs[0],authority_registry=reg2)) == 2
+        observed, role, outcome = receive_s04_i05_adaptive_outcome(
+            unit=unit,discovery=second,expected_replay_ref=second.replay_ref,
+            candidate_receipt_ref=second.receipts[0].ref,query_role="CONDITION",
+            current_guard=lambda:True,parent_handoff=parent,
+        )
+        assert observed.material()["raw_fully_resolved_joint_n"] == 2
+        # Ancestor hash in a scheduler determinant is not enough by itself.
+        with pytest.raises(S04I05ReceptionError,match="parent handoff"):
+            receive_s04_i05_adaptive_outcome(
+                unit=unit,discovery=second,expected_replay_ref=second.replay_ref,
+                candidate_receipt_ref=second.receipts[0].ref,query_role="CONDITION",current_guard=lambda:True,
+            )
+        return outcome
+    with pytest.raises(S04I05ReceptionError,match="winning handoff"):
+        receive_s04_i05_adaptive_outcome(
+            unit=root,discovery=first,expected_replay_ref=first.replay_ref,
+            candidate_receipt_ref=first_receipt.ref,query_role="CONDITION",current_guard=lambda:True,
+            proposal_units=(child,),
+        )
+    partial = execute_adaptive_exploration(discovery_authority=authority,authority_registry=registry,
+        determinant_state_ref=determinant,initial_units=(root,),evaluate_unit=evaluate,budget=1)
+    assert partial.unvisited_unit_refs == (child.unit_ref,) and not executions
+    restored = adaptive.AdaptiveSearchCheckpoint.from_dict(partial.checkpoint.as_dict())
+    resumed = execute_adaptive_exploration(discovery_authority=authority,authority_registry=registry,
+        determinant_state_ref=determinant,initial_units=(root,),evaluate_unit=evaluate,budget=1,resume_from=restored)
+    assert len(executions)==1 and resumed.unvisited_unit_refs==()
+    assert resumed.checkpoint.visits[-1].outcome.sealed_result_ref == executions[0]
+    assert resumed.global_negative_claim is False
+
+
+def test_s2f_original_native_closure_recreates_exact_analytical_outputs(tmp_path):
+    from rawlsing_next.pre553_durable_empirical_closure import publish_empirical_closure, open_empirical_closure
+    from rawlsing_next.tests.test_pyat940_s2f_durable_closure import _k_way_output
+    native_output = _k_way_output()
+    actual = native_output.i03_results[0]
+    query = next(q for q in native_output.object_graph.executed_queries if q.ref == actual.query_ref)
+    before = _workspace(query,actual)
+    request = DHIKRComparisonRequest(3,(0,1,2),max_depth=1,include_group_evidence=True)
+    projected = before.query(S04Projection((0,3),{1:"0"}))
+    compared = before.compare_dhikr(request)
+    saved = publish_empirical_closure(native_output,tmp_path/"cas")
+    restored = open_empirical_closure(saved.root_path,expected_root=saved.root_identity).require_trusted()
+    restored.assert_no_current_authority()
+    cold = restored.i03_results[0]
+    cold_query = next(q for q in restored.object_graph.executed_queries if q.ref == cold.query_ref)
+    after = _workspace(cold_query,cold)
+    assert cold.facts[0].ref == actual.facts[0].ref
+    assert after.query(S04Projection((0,3),{1:"0"})).ref == projected.ref
+    assert after.compare_dhikr(request).ref == compared.ref

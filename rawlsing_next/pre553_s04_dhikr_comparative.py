@@ -725,6 +725,12 @@ def analyze_s04_dhikr(
                 request.max_group_projection_cells - result["group_projection_cells_used"],
             )
             result["group_projection_cells_used"] += used
+            for row in group_rows:
+                row["recursion_disposition"] = (
+                    "MAX_DEPTH_NOT_RECURSIVELY_EXPLORED" if depth >= request.max_depth
+                    else "PRIORITY_GROUP_FIRST_AXIS_SELECTED" if best and row["axes"] == list(best[2])
+                    else "EVALUATED_GROUP_NOT_SELECTED_FOR_RECURSION"
+                )
             detail["comparative_group_evidence"] = group_rows
             detail["comparative_group_state"] = (
                 "HELD_BELOW_MINIMUM_CONTEXT_SUPPORT" if n < request.min_branch_n
