@@ -87,6 +87,10 @@ def situated_exercised_repertoire(constitution, access):
     prior=getattr(constitution,'power_exercises',[])
     present={x.get('source_actor') for x in access.cues
              if isinstance(x,dict) and x.get('kind')=='coactor_present'}
+    # Human counterpart is a distinct access channel, not a roster actor.
+    present |= {x.get('visitor_ref') for x in access.cues
+                if x.get('kind')=='visitor_vocal_partner'
+                and type(x.get('visitor_ref')) is str}
     eligible_at_site={}
     held_back=[]
     for x in prior[-512:]:
