@@ -530,3 +530,115 @@ class FunctionalAfterlifeR35(unittest.TestCase):
                 finally:cold.close()
             self.assertEqual(outcomes,{True:'EAT',False:'WAIT'})
 
+
+
+class UpstreamElasticEntranceR36(unittest.TestCase):
+    def packet(self,kind='AUTHORED_WORLD_HISTORY'):
+        return {'input_kind':kind,'source_ref':'fictional:life',
+                'source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                'biographical_context':{'occupation':'weaver','history':'household and workshop'},
+                'fictional_seed':{'acquired_forms':[{'kind':'PRACTICE',
+                    'content':'familiar household provisioning',
+                    'cues':['food'],'enables':['EAT']}],
+                    'projects':[{'object':'sustain household','means':['EAT']}]}}
+    
+    def test_same_runtime_without_survey_and_with_survey(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        seen=[]
+        def callback(task,packet):
+            if task=='adult_constructor':seen.append(copy.deepcopy(packet))
+            return HeuristicSemanticProvider().propose(task,packet)
+        with tempfile.TemporaryDirectory() as d:
+            for i,kind in enumerate(('THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY',
+                                     'SUPPLIED_SURVEY_CONFIGURATION','SAMPLED_SURVEY_CONFIGURATION')):
+                p=self.packet(kind)
+                if kind.endswith('SURVEY_CONFIGURATION'):
+                    p['answers']={'survey_q':'a'}
+                    p['source_grade']='SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL'
+                # Thin biography alone, no authored operative forms.
+                if kind=='THIN_BIOGRAPHY':p.pop('fictional_seed')
+                db=str(Path(d)/str(i))
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize([('mother','Mother',p)])
+                    a=rt.ledger.actor('mother')[1]
+                    self.assertEqual(a['initialization']['input_kind'],kind)
+                    self.assertEqual(a['initialization']['observed_question_count'],
+                                     len(p.get('answers',{})))
+                    self.assertTrue(a['projects'] or a['forms'])
+                    self.assertEqual(rt.ledger.source('fictional_source:mother')['content'],p)
+                    if not p.get('answers'):
+                        self.assertFalse(any('asserted_answer' in f for f in a['forms'].values()))
+                    self.assertEqual(rt.step('mother',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db)
+                try:
+                    self.assertEqual(cold.ledger.actor('mother')[1]['initialization']['input_kind'],kind)
+                    self.assertEqual(cold.ledger.source('fictional_source:mother')['content'],p)
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual([p['input_kind'] for p in seen],
+                 ['THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY','SUPPLIED_SURVEY_CONFIGURATION','SAMPLED_SURVEY_CONFIGURATION'])
+    
+    def structural(self,value):
+        return {'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY','source_ref':'fictional:world',
+          'positions':[{'id':'position0','actor':'mother','field':'ration_access','value':'admitted',
+                        'source_ref':'fictional:initial','effective_from':0,'effective_until':0},
+                       {'id':'position1','actor':'mother','field':'ration_access','value':value,
+                        'source_ref':'fictional:changed','effective_from':1,'effective_until':1}],
+          'rules':[{'id':'ration_rule','operation':'EAT','location':'home',
+                    'source_ref':'fictional:rule','effective_from':0,'effective_until':1,
+                    'all_of':[{'kind':'RECORDED_POSITION','field':'ration_access','equals':'admitted'}]}]}
+    
+    def test_independent_temporal_structure_changes_actual_course_not_initial_psyche(self):
+        with tempfile.TemporaryDirectory() as d:
+            initial=[];courses={};states={}
+            p=self.packet()
+            for value in ('admitted','excluded'):
+                db=str(Path(d)/value)
+                spec=self.structural(value)
+                rt=ConstitutiveRuntime(db)
+                try:
+                    rt.initialize([('mother','Mother',p)],authored_structural_history=spec)
+                    initial.append(rt.ledger.actor('mother')[1])
+                    self.assertEqual(rt.ledger.source('authored_structural_history')['content'],spec)
+                    self.assertEqual(rt.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db)
+                try:
+                    second=cold.step('mother',requested_action='EAT')
+                    courses[value]=second['status']
+                    states[value]=cold.ledger.actor('mother')[1]['body']
+                    self.assertEqual(cold.ledger.world()[1]['material_gate_audit'][-1]
+                         ['objective_rule_evaluation']['readset'],['fictional:rule'])
+                    # At clock 2 the rule expires, not a psychological conversion.
+                    self.assertEqual(cold.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(initial[0],initial[1])
+            self.assertEqual(courses,{'admitted':'PERFORMED','excluded':'BLOCKED'})
+            self.assertNotEqual(states['admitted'],states['excluded'])
+    
+    def test_ambiguous_or_unqualified_inputs_refused_before_genesis(self):
+        from um_sorok_organism.historical_parent_bridge import historically_conditioned_entrances
+        p=self.packet()
+        for bad in ({**p,'answers':{'fake':'a'}},
+                    {**p,'source_grade':'NATIVE_PYAT'},
+                    {**p,'biographical_context':{}},
+                    {**p,'historically_supported_alternatives':[{}]*25}):
+            with self.assertRaises(ValueError):historically_conditioned_entrances(bad)
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'invalid')
+            rt=ConstitutiveRuntime(db)
+            try:
+                spec=self.structural('excluded')
+                spec['positions'][1]['actor']='unknown'
+                with self.assertRaisesRegex(ValueError,'STRUCTURAL_HISTORY_INVALID_POSITION'):
+                    rt.initialize([('mother','Mother',p)],authored_structural_history=spec)
+                self.assertEqual(rt.ledger.actors(),{})
+                rt.initialize([('mother','Mother',p)])
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
