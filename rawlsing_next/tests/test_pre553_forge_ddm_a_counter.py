@@ -328,3 +328,67 @@ def test_combined_generated_cold_pipeline_exposes_revised_fibres(tmp_path,monkey
         checked+=1
     assert checked
 
+
+
+def _positioned_consumer_case(tag, op, subject_value, producer_value="0"):
+    """Real respondent data: X=0 selects 2, OR selects 3, NOT selects 2."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    rows = [{"id":f"R{x}{z}", "responses":{"X":x,"Z":z,"Y":x}}
+            for x,z in product((0,1),repeat=2)]
+    source = native._build_source(tag, rows)
+    auth = native._query_authority(tag)
+    xleaf = native._response_leaf(source,auth,"X",producer_value)
+    zleaf = native._response_leaf(source,auth,"Z",0)
+    ast = xleaf if op=="LEAF" else (
+        {"op":"NOT","children":[xleaf]} if op=="NOT" else
+        {"op":op,"children":[xleaf,zleaf]})
+    predicate = native._predicate(source,auth,ast,tag=tag)
+    query = native._query(source,auth,predicate,("Y",),tag=tag)
+    universe,release = source["universe"].ref,source["release_ref"]
+    coord = source["qrefs"]["X"]
+    pairing = fx.make_pairing_authority(tag)
+    binding = fx.make_conditioner_binding(
+        binding_id="X",subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",subject_value)),
+        empirical_coordinate_ref=coord,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag,subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+        target_ref=source["qrefs"]["Y"],source_universe_ref=universe,release_ref=release,
+        bindings=[binding],projection_kind="TEST_ONLY_EXACT_CONDITIONAL")
+    # Each independently sealed subject/leaf/pair is genuine for its claimed
+    # value, but the relation can be false: subject X=1 paired with X=0.
+    subject = fx._subject_material("X",coord,subject_value)
+    leaf = fx._leaf_projection("X",coord,producer_value)
+    leaf_ref = fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",leaf)
+    pair = fx._pairing_material(binding.subject_fact_ref,leaf_ref,coord,subject_value)
+    witness = fx.make_multi_conditioner_witness(
+        witness_object_id="urn:test:"+tag+":witness",consumer_query=consumer,
+        producer_query=query,producer_predicate=predicate,bindings=[binding],
+        subject_materials=[subject],leaf_projections=[leaf],pairing_materials=[pair],
+        pairing_authority=pairing,source_universe_ref=universe,release_ref=release,
+        subject_preimage_refs=[binding.subject_fact_ref])
+    native_result = native._run(source,auth,predicate,query)
+    assert native_result.facts[0].typed_state=="SUPPORTED"
+    assert native_result.facts[0].raw_denominator_support == (3 if op=="OR" else 1 if op=="AND" else 2)
+    return lambda: compose_positioned_subject_possibility(
+        repository=source["repo"],empirical_query=query,predicate=predicate,
+        authority_registry=native._registry(source,auth),release_refs=(release,),
+        consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+        condition_binding_witness=witness)
+
+
+@pytest.mark.parametrize("op,subject_value", [("LEAF","1"),("OR","0"),("NOT","0")])
+def test_relay_c1_refuses_false_value_and_nonentailed_conditioners(op,subject_value):
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    compose = _positioned_consumer_case("RELAY-"+op,op,subject_value)
+    with pytest.raises(ConditionValueRelationMismatch):
+        compose()
+
+
+def test_relay_c1_true_exact_condition_preserved():
+    result = _positioned_consumer_case("RELAY-POSITIVE","LEAF","0")()
+    assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert result.raw_denominator_support==2
+    assert sum(c["raw_numerator_support"] for c in result.complete_cell_geometry)==2
