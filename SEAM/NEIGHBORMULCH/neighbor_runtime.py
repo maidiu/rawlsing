@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR',
-                      'SIGN_HALL_PETITION'})
+                      'SIGN_HALL_PETITION', 'SING'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -176,6 +176,11 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
+    if operation == 'SING' and sound:
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'auditory', 'kind': 'visitor_vocal_practice',
+                       'tags': ['voice', 'singing'], 'description': 'Singing nearby.',
+                       'grade': grade, 'visual_identity_eligible': visible})
     if operation == 'SIGN_HALL_PETITION' and visible:
         result.append({'event_ref': event_ref, 'actor': actor['id'],
                        'modality': 'visual', 'kind': 'visitor_public_procedure',
@@ -418,7 +423,7 @@ class NeighborEncounter:
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
@@ -434,6 +439,13 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation == 'SING':
+                        # Actual human authorship is not a synthetic actor.
+                        # Only a simultaneously eligible visual channel can
+                        # bind this provisional encounter participant identity.
+                        cue['visitor_event_ref'] = ref
+                        if sign.get('visual_identity_eligible') is True:
+                            cue['visitor_ref'] = self.user_id
                     evidence.append({'actor': actor_id, 'event_ref': ref,
                                      'cue_ref': cue['id'], 'modality': sign['modality'],
                                      'basis': sign['kind'], 'grade': sign['grade']})
