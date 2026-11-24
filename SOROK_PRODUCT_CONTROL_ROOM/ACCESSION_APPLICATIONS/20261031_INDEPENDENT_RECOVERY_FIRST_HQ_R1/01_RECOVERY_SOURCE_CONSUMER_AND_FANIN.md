@@ -1,0 +1,52 @@
+# Programma Sorok — R recovery, version conflicts and fan-in decisions
+
+**Status:** Candidate read-only dossier. Repo maidiu/rawlsing PRIVATE. PRE-MAIN verified at `5fc1d43e3d5412194d1f1eaa30ff448f84635e99`. This investigation read source via authenticated GitHub; **no native Mac runtime, no tests re-executed, no source/actor authorization, no integration**.
+
+## I. Recovered inheritance and source-quality verdict
+
+The first independent 294-name/shard court (PR #518, HEAD `47e9c80a66027a8937c0c697ec82dba801c36b54`) reconciled A98 `ae31a41e2135483d43fa5d0ba97e708f33c7dece`, B67 `c1dab70f0b02c7d976c76ae48b6d7074decdf14f`, C69 `231d5abe9d94416d0aa9b20c04e0050e59fad172`, and D60 `c243ba12945bea83c653c1a9d9cf32262d758d24`. **294 branch identities are not 294 distinct functions and not 294 adopted code modules.** A22/A23/A24/A26/A28 share historical actor-producer blob `e84f6cfd34d8b7811d29bcd91f1c04593065beb3`. H358 `ea40306bacb899147799330898e9ab91a950205f` screened another 358 path-significant and 2366 outside branches; 11+32 source-deep, 20+13 code-family equivalents and most remaining machine-only. Eighteen candidate source clusters are not eighteen scientific rulings. F3I `97dbe712e4cce8fedd1632d9ac64b4e57a0ac25e` corrected the HQ292 saved-world source attribution; H358I3 `724f257e64f22d15a2ee41d3c29972b78d983342` remains PARTIAL and has source/consumer RED.
+
+**Direct independent read of all 40 historical M README and 12 Neo N README:** M01 BackboneState, M21 pressure/flow with transaction and memory, M25 ordered yearly engine, M26 stored/derived distinction, M29 render nonmutation and M30 V3-under-V2 separation contain genuine reusable engineering principles. All are historic or provisional with current person caller untraced. M15/M36 assign 50/50/50 and hopeful needs when caregivers unknown; M31 retroactive Enneagram end matching is unsuitable as causal person law; M34 fabricates fallback practice events when proposal/selection empty; **retire these fabrications**. M37 structural-year stubs are already excluded from persona_sheet/memory, so do not exaggerate the old failure. Historic 19-step year clock needs event and interstitial activity clocks; old flow charge bookkeeping does not grant universal psychological quantities. None of 40×12 = 480 possible cells is automatically decided by presence of row/column README.
+
+## II. Actual current PRE-MAIN source compare — directly checked at 5fc1 SHA
+
+| Current real rawlsing_next path | Current exact blob | Source status and necessary next actual consumer |
+|---|---|---|
+| field_forge_conditional_support.py | `a70decb20747d84cbcbe27d1280babc6de88ef33` | GT12-C byte-identical, ALREADY PRESENT; DO NOT PORT AGAIN; verify real current importer and source permissions |
+| m3_v556_higher_order_structural.py | `9a4b26b214686364a43d108dabf0d57dac0ed3b2` | M3 byte-identical, ALREADY PRESENT; M4 consumer to be actually verified |
+| f07_second_canary_prev3_admission.py | `06c312209148ab5bdd2c2077f3c887bdc9f948c8` | F07 byte-identical, ALREADY PRESENT |
+| wave1_ff_prev3_relation_admission.py | `c5fb675fd6f95cb7dc9e0ad505224803839cc645` | GT12-D DRIFT versus `f6d02bf30edac183d82364271af745c974569ab7`; direct GT12 C→D/M4 import tests |
+| wsc_gt0_prev3_bridge.py | `8f237bd55151c3adfc8e5dfd8f110fa34a8d18be` | WSC DRIFT versus `0f3dfcc5ab1bb10d14ad72244927e767b9abee33`; call `wsc_gt0_end_to_end.run_gt0_end_to_end` |
+| objective_consumer_bounded_evidence.py | `f30fca20e7b56e00348e82765d95f974b4b6a195` | W3 DRIFT versus `9738399d5e454808235a91b10a2d473cdd851d97`; current objective first consumer cannot inherit old version's negative proof |
+| pre553_i01_sourcefree_world_lifecycle_candidate.py | **ABSENT, verified 404 at 5fc1** | HQ292 real recovered original `7899846394f079c14eae4864c8200697bd9dee4a` and test `e57f8a107f83eb5e3bb73e83ae6d8eda65baa799`; compare variants/current receiving selected-world lifecycle BEFORE port |
+| pre553_n9_n10w_progressive_candidate.py | `84d404147547767be8ecd4b6e1541f5fa3a8c8a2` | Already present synthetic progression (`synthetic_world_rows`, `build_synthetic_world`), not original35 world or C8 event |
+
+## III. Sourcefree products already achieved, and exact negative preservation
+
+- Historical B1 E1→mediator→later response, B2 synthetic independent event admission, B3 acquired TEST_ONLY practical state/reopen/later use exist. Original X3 documented rejected event ghost-write; B3A/B3AS repaired bounded SQL readset and received independent ACCEPT_SCOPED at `1a25b19dd01e8e7954e38c59ffc7e52c50739c9f`. PR #516 at `748752e688da23e0bb9ca3be92fad888d4736d5d` physically staged recovered code but remains draft unmerged; no native competence.
+- BP2P4J has a physically joined TEST_ONLY C8→E1→CAN rule candidate→C9→independently performed E2→C12/A0–A3 sequence, not merely documentation. Original severance wrapper's any-exception-as-RED possibility weakens named causal claims. Preserve this code, do not reconstruct its basics.
+- PR #514 `b8923db14ef20d5c61c9b4495d7e4efa361e268b` physically stages C9-R3B writer/readers and tests, still **draft/unmerged and descended from historic 299f cut**; cannot blindly select canonical actor writer.
+- M04R `8f200fd6ff6ce10e9effb017d2c265163e287105`, original return blob `aef2bbecc09ac7a79536088ccf56ea81d57a4709`: author reported 51/51 repaired, 587/587 inherited, two unjournaled ADP017 restoration faults denied; **nine original CAN3 FAIL** persist.
+- BP4R `693d25bf40f76b09ccf2cc1ec5218a262e201fcd`, original return `01f63bc8de6a2f55640398fee3595af223d966a2`: real episode fork immutability/origin repaired and actual C9 `c12_fork_guard` now rejects unsupported BP4_C12_STORE@2; author 57 PASS/1 SKIP, old C9 test 14 PASS/**1 FAIL** at test_c9_r3.py:476 retained. No original external anchor, writer version owner or native C12 accepted.
+- F1CR `03be5c225b8ec5832c1c648b9c1799419f0c4066`, original return `e630935aa50f6831cc4ecb41c0e3af2ff52afeb5`: author reports 13/13 established material/B cost and 3 live A/B/shared mutation refusals before C8. Same sourcefree `r31j.assertion.p01` true with admitted B source and false when source severed. JOIN targetless refusal carrier **is not** compatible with F1C REFUSE/SILENCE input; sourcefree source fix cannot issue actual B private agency or native RULE_A/T.
+- G17I2 `95f15026cd95f6467455d0dfab4369d2cc7b427c` independently accepted narrowly on original forged material/future child; does not erase other original C8/actor-source RED.
+
+**Grade rule:** code exists ≠ exact tested current caller ≠ independently accepted sourcefree ≠ original owner native issuance ≠ human product.
+
+## IV. The R→O existing flight, not an invented new queue
+
+**R54** source/version/callgraph local S2 investigator: commission under `WORKER_COMMISSIONS/SOROK-R54-SOURCE-FAMILY-REINTEGRATION-R1/00_FULL_COMMISSION.md` at `2a3795b2fc58b42aa22642f640f4b7ecb56ace79`, sealed start historical `750548ddbb9b4392a16ce93097b856f349e16182`, session record status `SEALED_NOT_LAUNCHED`, host/model/effort/session unknown. Its task is 18 family conflicts, 7 R95/R107, five I01, four F6 versions and actual current consumers/negative tests, not a new branch-name census. Appropriate S2 local Mac + user-selected OpenCode/DeepSeek V4.1-Flash verified MAX if qualified; do not presume entitlement.
+
+**O54** original complete 40×12 developmental theory and architecture investigator: `research/sorok-o-whole-v3-developmental-trajectory-synthesis-20261030-r1@fae9a589ac0fb07ec1b7f8b23e35edd2c2004476`, S0/S1 documentary source, Browser GPT-6 High proposed but user model choice required, session `SEALED_NOT_LAUNCHED`. Both can be parallel after competent dispatch and local lease check. PR #527 at `838039bba8d64200e983ab3a9991bc7e30341a80` is initial **24 nodes/24 edges**, not a finished O science/consumer graph. PERSON01 at `456f234abdfe869907874f4d97778ba11c5b3203` is **DEFERRED_NOT_LAUNCHED** after wrong early priority.
+
+**Newer activity noncollision:** a separate concurrent Sorok accession PR #548 reports RCF A/B/C/D, O1, I1, R5, C9C12-R2 `c78404724052496fdec8608c8b0e833c0f7c4ecc`, B-F1CR-R2 `bf3273c294c704ad7c631559b9866d351bb4f103` as remote returns and user-reported CP-A5-R2 and V3CORE-R1 host sessions without verified return. This applicant has **NOT** independently inspected each reported remote function or current Mac lease. Incumbent must avoid duplicating/restarting same producer and compare newer code before source ports.
+
+## V. Actual fan-in sequence after return (no admin theater)
+
+1. For each candidate family, pin original branch SHA + source blob + code callable + author/test + reviewer and original RED, compare **current** PRE-MAIN import and receiving function, mark `ALREADY_PRESENT_IDENTICAL`, `CURRENT_DRIFT`, `ABSENT_CODE`, `INCOMPATIBLE_OWNER_VERSION`, `SCIENTIFIC_DECISION_MISSING`, `NATIVE_PERMISSION_MISSING`, or `NO_TERMINAL_VALUE`. A remote branch existing is not evidence of running agent.
+2. Preserve competing version/function semantics until exact receiving first consumer and source-negative falsifier discriminate; don't declare one branch superior by recency or source format. Recover actual old capability rather than building generic replacements.
+3. Only qualified sourcefree candidate on separately permitted branch, original frozen tests untouched, actual consumer positive → sever the claimed source edge → **same assertion** RED → restoration. Held native original CAN/ADP/Pyat/C8 security grants remain held; sourcefree productive code proceeds independently.
+4. Distinct reviewer on material claim, original rightful adoption/first-consumer owner, actual safe PRE-MAIN CAS if authorized and compatible; no unprotected GitHub Settings demand as universal product blocker (user source `6e3749fe314211f1c0ac5d5ae61718a8446ce463`).
+5. Feed exact adopted/held source-function into existing Programma Sorok graph and Sorok S0–S16 product scope, then rank whole-person developmental, B/world, memory and user encounter work across C/A19, M40, N12, O16, E15. A Rule A/T or C9 step may be essential but is never the whole program.
+
+**Decision now:** `R_RECOVERY_SOURCE_FUNCTION_RECONCILIATION_INCOMPLETE__FANIN_NOT_YET_GRANTED__O_WHOLE_TRAJECTORY_STAGED__CANDIDATE_READ_ONLY`. Product legitimacy remains the independent continuing historical person and real A5 human encounter. This candidate issued no workers, no original semantics, no production or PRE-MAIN mutation.
