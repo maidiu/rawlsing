@@ -22,7 +22,7 @@ from json import loads
 from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, canonical_json, canonicalize, semantic_hash,
+    ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_s04_observed_research import (
     S04ObservedKnowledge, S04KnowledgeError, SAMPLE_GRADE, UNISSUED,
@@ -369,6 +369,34 @@ class S04GeneralJointWorkspace:
         }
         self._check_current()
         return S04ProjectionAnswer(canonical_json(payload), semantic_hash(payload))
+
+    def query_by_refs(
+        self, output_refs: tuple[ExactRef, ...],
+        conditions: Mapping[ExactRef, Any],
+    ) -> S04ProjectionAnswer:
+        """Select actual source semantic target identities, not guessed positions.
+
+        Reuses the same ordered projection, support and CURRENT machinery.
+        A repeated target identity is ambiguous, not a license to select its
+        first occurrence. Native labels/mapping editions are not inferred.
+        """
+        self._check_current()
+        if (type(output_refs) is not tuple or not isinstance(conditions, Mapping)
+                or any(type(ref) is not ExactRef for ref in output_refs)
+                or any(type(ref) is not ExactRef for ref in conditions)):
+            raise S04GeneralAlgebraError("exact ordered semantic target refs required")
+        targets = tuple(exact_ref(ref) for ref in self._material["target_refs"])
+
+        def resolve(ref: ExactRef) -> int:
+            matches = [i for i, target in enumerate(targets) if target == ref]
+            if len(matches) != 1:
+                raise S04GeneralAlgebraError("unknown or ambiguous exact target reference")
+            return matches[0]
+
+        return self.query(S04Projection(
+            tuple(resolve(ref) for ref in output_refs),
+            {resolve(ref): value for ref, value in conditions.items()},
+        ))
 
     def compare_dhikr(self, request: "DHIKRComparisonRequest") -> "DHIKRComparisonReceipt":
         """Bounded actual same-source comparative inquiry, not a second I03.
