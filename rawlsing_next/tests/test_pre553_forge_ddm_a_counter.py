@@ -401,3 +401,56 @@ def test_relay_c1_true_exact_condition_preserved(op):
     assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
     assert result.raw_denominator_support==2
     assert sum(c["raw_numerator_support"] for c in result.complete_cell_geometry)==2
+
+
+def test_relay_native_joint_component_order_survives_c1_consumer():
+    """Semantic order is not a set: native Y,Z must not become Z,Y."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash, canonicalize
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    tag = "RELAY-ORDER"
+    rows = [
+        {"id":"R0","responses":{"X":0,"Y":0,"Z":1}},
+        {"id":"R1","responses":{"X":0,"Y":0,"Z":1}},
+        {"id":"R2","responses":{"X":0,"Y":1,"Z":0}},
+        {"id":"R3","responses":{"X":1,"Y":1,"Z":1}},
+    ]
+    source = native._build_source(tag,rows)
+    auth = native._query_authority(tag)
+    predicate = native._predicate(source,auth,native._response_leaf(source,auth,"X",0),tag=tag)
+    targets = tuple(sorted(("Y","Z"),key=lambda name:source["qrefs"][name].key,reverse=True))
+    query = native._query(source,auth,predicate,targets,tag=tag)
+    refs = tuple(exact_ref(r) for r in query.target_refs)
+    assert refs == tuple(source["qrefs"][name] for name in targets)
+    assert refs != tuple(sorted(refs,key=lambda r:r.key))
+    expected = native._run(source,auth,predicate,query).facts[0]
+    assert expected.typed_state=="SUPPORTED" and expected.raw_denominator_support==3
+    universe,release = source["universe"].ref,source["release_ref"]
+    coord,pairing = source["qrefs"]["X"],fx.make_pairing_authority(tag)
+    binding = fx.make_conditioner_binding(
+        binding_id="X",subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"X",0)),
+        empirical_coordinate_ref=coord,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag,subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+        target_ref=refs[0],source_universe_ref=universe,release_ref=release,
+        bindings=[binding],projection_kind="TEST_ONLY_ORDERED_JOINT")
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:"+tag+":witness",consumer_query=consumer,
+        producer_query=query,producer_predicate=predicate,bindings=[binding],
+        coordinate_value_pairs=[(coord,0)],pairing_authority=pairing,
+        source_universe_ref=universe,release_ref=release)
+    result = compose_positioned_subject_possibility(
+        repository=source["repo"],empirical_query=query,predicate=predicate,
+        authority_registry=native._registry(source,auth),release_refs=(release,),
+        consumer_query=consumer,model_rule=fx.make_model_rule(universe,tag),
+        condition_binding_witness=witness)
+    assert result.consumer_result_or_null.result_state=="EXACT_SUPPORTED"
+    assert result.producer_fact_ref==expected.ref
+    assert result.ordered_target_refs==refs
+    geometry=result.consumer_result_or_null.exact_geometry
+    assert geometry["target"]["target_refs"]==[r.as_dict() for r in refs]
+    assert [c["target_ref"] for c in geometry["target"]["components"]]==[r.as_dict() for r in refs]
+    oracle = {tuple(c["cell"]):c["raw_numerator_support"]
+              for c in canonicalize(expected.target_topology)["complete_cell_semantic_projection"]}
+    assert {tuple(c["cell"]):c["raw_numerator_support"] for c in geometry["cells"]}==oracle
