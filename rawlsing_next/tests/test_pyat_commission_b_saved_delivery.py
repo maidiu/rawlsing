@@ -480,6 +480,40 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     assert_unchanged(invalid_root)
     print("SAVED_WRONG_TARGET_REFUSED", source_format, target.key, wrong_target.key)
 
+    # Readdress a *different* subject value and its pairing, while keeping
+    # the actual retained native producer and its real value-bearing leaf.
+    # A well-formed, content-addressed false relation must not reach M2/B5.
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    wrong_value = "1" if float(value) == 0.0 else "0"
+    wrong_binding = replace(conditioner, subject_fact_ref=ExactRef(**fx.subject_fact_ref(
+        {"qrefs": {"condition": coord}}, "condition", wrong_value)))
+    wrong_subject = replace(consumer, conditioner_bindings=(wrong_binding,))
+    wrong_subject_material = fx._subject_material("condition", coord, wrong_value)
+    actual_leaf_material = fx._leaf_projection("condition", coord, value)
+    actual_leaf_ref = fx._ref("C1_CONDITION_VALUE_LEAF_PROJECTION@1","leaf-0",actual_leaf_material)
+    wrong_pair = fx._pairing_material(wrong_binding.subject_fact_ref,actual_leaf_ref,coord,wrong_value)
+    wrong_value_witness = fx.make_multi_conditioner_witness(
+        witness_object_id="urn:test:" + tag + ":wrong-value",
+        consumer_query=wrong_subject, producer_query=query, producer_predicate=predicate,
+        bindings=[wrong_binding], subject_materials=[wrong_subject_material],
+        leaf_projections=[actual_leaf_material], pairing_materials=[wrong_pair],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release,
+        subject_preimage_refs=[wrong_binding.subject_fact_ref])
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        compose_positioned_subject_possibility(
+            repository=None, empirical_query=query, predicate=predicate,
+            authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+            release_refs=(release,), consumer_query=wrong_subject, model_rule=model,
+            condition_binding_witness=wrong_value_witness, discovery_result=discovery,
+            discovery_receipt_ref=receipt.ref)
+    invalid_root = tmp_path / "wrong-conditioned-value"
+    with pytest.raises(ConditionValueRelationMismatch, match="producer/subject exact value mismatch"):
+        cold.publish_learned(**args, m2_repository=repository, lifecycle_executor=executor,
+            root_dir=invalid_root, determinants=replace(determinants, consumer_query=wrong_subject,
+            condition_binding_witness=wrong_value_witness))
+    assert_unchanged(invalid_root)
+    print("SAVED_WRONG_CONDITION_VALUE_REFUSED", source_format, value, wrong_value)
+
     invalid_root = tmp_path / "negative-rule"
     negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
     _, negative_disposition = cold.adjudicate_m1(

@@ -19,6 +19,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     Pre553IntegrityError,
     authority_ref,
+    canonical_json,
     canonicalize,
     exact_ref,
     semantic_hash,
@@ -187,6 +188,43 @@ def _actual_leaves(predicate: EmpiricalPredicate) -> list[Mapping[str, Any]]:
 
     collect(ast)
     return leaves
+
+
+def _entailed_value_leaves(predicate: EmpiricalPredicate) -> list[Mapping[str, Any]]:
+    """Return positive exact EQ leaves required by the native Boolean AST.
+
+    An OR does not entail its individual alternatives, and a NOT does not
+    entail the leaf it negates. Preserve exact common leaves across OR arms,
+    and all required leaves across AND. This is a conservative implication
+    check for C1's existing positive-value witness contract, not a predicate
+    evaluator, grammar issuer, or restriction on native I03/I05 discovery.
+    """
+    def required(node):
+        op = node.get("op")
+        if op == "LEAF":
+            if (node.get("leaf_type") in VALUE_BEARING_LEAF_TYPES
+                    and node.get("operator") == "EQ" and "exact_value" in node):
+                return {canonical_json(node): node}
+            return {}
+        children = node.get("children", ())
+        if op == "AND":
+            result = {}
+            for child in children:
+                result.update(required(child))
+            return result
+        if op == "OR" and children:
+            result = required(children[0])
+            for child in children[1:]:
+                other = required(child)
+                result = {key: leaf for key, leaf in result.items() if key in other}
+            return result
+        # A syntactic double negation conserves the original implication.
+        if op == "NOT" and len(children) == 1 and children[0].get("op") == "NOT":
+            inner = children[0].get("children", ())
+            if len(inner) == 1:
+                return required(inner[0])
+        return {}
+    return list(required(canonicalize(predicate.predicate_ast)).values())
 
 
 class ConditionValueBindingWitness:
@@ -486,7 +524,7 @@ def _verify_witness(
 ) -> str:
     """Verify witness for multiple conditioners (new format) or single conditioner (legacy format)."""
     witness.verify_identity()
-    actual_leaves = _actual_leaves(predicate)
+    actual_leaves = _entailed_value_leaves(predicate)
     identity = canonicalize(witness.identity_material)
 
     # Detect legacy vs new format by identity material keys
@@ -520,6 +558,9 @@ def _verify_witness(
                 f"witness identity field set mismatch: missing={missing!r}; extra={extra!r}"
             )
 
+        if len(bindings) != 1 or len(actual_leaves) != 1:
+            raise ConditionValueRelationMismatch(
+                "legacy exact-value witness requires one entailed value-bearing condition")
         fingerprint = _binding_fingerprint(bindings[0])
         expected_fields = {
             "consumer_query_ref": consumer_query.ref.as_dict(),
@@ -658,24 +699,22 @@ def _verify_witness(
 
         for i, binding in enumerate(bindings):
             frozen_leaf = canonicalize(witness.producer_predicate_leaf_projections[i])
-            frozen_ref = frozen_leaf.get("coordinate_semantic_ref") if (
-                frozen_leaf.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE"
-            ) else frozen_leaf.get("question_semantic_ref")
-            match_found = False
-            for actual_leaf in actual_leaves:
-                if (frozen_ref == _leaf_semantic_ref(actual_leaf) and
-                    frozen_leaf.get("exact_value") == actual_leaf.get("exact_value")):
-                    match_found = True
-                    for key in ("leaf_type", "operator", "exact_value"):
-                        if frozen_leaf.get(key) != actual_leaf.get(key):
-                            raise ConditionValueRelationMismatch(f"conditioner {i}: actual producer leaf mismatch: {key}")
-                    if _leaf_semantic_ref(frozen_leaf) != _leaf_semantic_ref(actual_leaf):
-                        raise ConditionValueRelationMismatch(
-                            f"conditioner {i}: actual producer leaf semantic ref mismatch"
-                        )
-                    break
-            if not match_found:
-                raise ConditionValueRelationMismatch(f"conditioner {i}: no matching producer leaf found")
+            frozen_ref = _leaf_semantic_ref(frozen_leaf)
+            subject = canonicalize(witness.subject_condition_preimage_materials[i])
+            if frozen_ref != subject.get("empirical_semantic_ref"):
+                raise ConditionValueRelationMismatch(
+                    f"conditioner {i}: producer/subject semantic ref mismatch")
+            if frozen_leaf.get("exact_value") != subject.get("exact_value"):
+                raise ConditionValueRelationMismatch(
+                    f"conditioner {i}: producer/subject exact value mismatch")
+            if not any(
+                frozen_ref == _leaf_semantic_ref(actual_leaf)
+                and all(frozen_leaf.get(key) == actual_leaf.get(key)
+                        for key in ("leaf_type", "operator", "exact_value"))
+                for actual_leaf in actual_leaves
+            ):
+                raise ConditionValueRelationMismatch(
+                    f"conditioner {i}: no matching producer leaf entailed by predicate")
 
             # Pairing-ground-truth semantics must be checked on the SUCCESSFUL
             # path. These four comparisons were previously indented under the
@@ -867,15 +906,7 @@ def _validate_direct_grain(
     topology = canonicalize(empirical_query.target_arity_and_topology)
     if topology.get("arity") != len(targets) or len(topology.get("components", ())) != len(targets):
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
-    # The consumer's anchor is the first producer target, in the *native*
-    # order. A joint is not a set: component/cell positions cannot be sorted.
-    if any(component.get("target_ref") != target.as_dict()
-           for component, target in zip(topology["components"], targets)):
-        raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
-    order = topology.get("joint_order_semantics")
-    if order not in {"SEMANTIC_ORDERED", "CANONICAL_SET_ORDER"}:
-        raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
-    if order == "CANONICAL_SET_ORDER" and targets != tuple(sorted(targets, key=lambda ref: ref.key)):
+    if topology["components"][0].get("target_ref") != consumer_query.target_ref.as_dict():
         raise AnalyticalCompositionError("TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH")
 
 
@@ -918,7 +949,7 @@ def _supported_geometry(
         for component in topology["components"]:
             components.append(component)
         target_info = {
-            "target_refs": [_exact(t, "target_refs").as_dict() for t in empirical_query.target_refs],
+            "target_refs": [t.as_dict() for t in tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)],
             "arity": topology["arity"],
             "joint_order_semantics": topology["joint_order_semantics"],
             "components": components,
@@ -1124,8 +1155,8 @@ def compose_positioned_subject_possibility(
             receipt_ref=discovery_receipt_ref,
         )
         # I05 selects the actual producer query, not the caller's target
-        # label. All routes share the exact anchor, scope and ordered
-        # component law before constructing consumer geometry.
+        # label. All C1 routes use the direct owner's existing ordered first
+        # target convention; preserve the entire native joint topology.
         _validate_direct_grain(empirical_query=empirical_query,
                                consumer_query=consumer_query, release_refs=release_refs)
         if release_refs != _refs(
