@@ -1,0 +1,30 @@
+name: SORACLE R30 source-bounded misattribution first-reader court
+on:
+  push:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_historical_self_precue_r19.py'
+      - '.github/workflows/soracle-r30-sourcebounded-misattribution.yml'
+  pull_request:
+    paths:
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_self_organization.py'
+      - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_historical_self_precue_r19.py'
+      - '.github/workflows/soracle-r30-sourcebounded-misattribution.yml'
+jobs:
+  r30-owner-first-consumer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: R19/R29/R30 actual owner first-consumer (normal)
+        env:
+          PYTHONPATH: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -v -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p 'test_historical_self_precue_r19.py'
+      - name: R19/R29/R30 actual owner first-consumer (optimized)
+        env:
+          PYTHONPATH: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -O -m unittest discover -v -s SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests -p 'test_historical_self_precue_r19.py'
