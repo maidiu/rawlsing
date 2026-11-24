@@ -137,3 +137,11 @@ original private root. The construction emits a private candidate receipt
 alongside the release. Receive the emitted pins independently and use the
 separate S3 currentness provider before running `run_all.sh --only S3`.
 The build command never supplies its own S3 admission.
+
+For a locally issued R157 decision, use
+`--authority-provider tools/pyat_c11_four_store/construction_authority.py`.
+Set `PYAT_CONSTRUCTION_DECISION` to the absolute private JSON path,
+`PYAT_CONSTRUCTION_DECISION_SHA256` to its independently held pin and
+`PYAT_CONSTRUCTION_SOURCE` to the absolute original file path. The adapter
+requires a timezone-qualified ISO 8601 `start/end` effective interval,
+uses the existing R157 request checks and rereads the decision each time.
