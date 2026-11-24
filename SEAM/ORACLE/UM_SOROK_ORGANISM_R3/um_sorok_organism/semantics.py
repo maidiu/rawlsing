@@ -304,6 +304,16 @@ class HeuristicSemanticProvider:
                     'lifecycle':'ACTIVE','body_min':0,'origin':[], 'object':question,
                     'asserted_answer':answer,'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION'})
             seeded=target.get('fictional_seed',{})
+            # A thin explicitly fictional input has no stored answer to
+            # imitate. Reuse seeded practices/projects where supplied;
+            # otherwise one openly provisional ordinary-life undertaking
+            # makes the offline entrance executable, not empirically true.
+            if (not answers and packet.get('input_kind') in
+                    ('THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY')
+                    and not seeded.get('acquired_forms') and not seeded.get('projects')):
+                seeded=copy(seeded)
+                seeded['projects']=[{'object':'sustain ordinary embodied life',
+                                     'means':['REST'],'priority':.5}]
             for i,spec in enumerate(seeded.get('acquired_forms',[])):
                 fid=stable_id('seed_form',{'actor':packet['actor_id'],'i':i,'spec':spec})
                 forms.append({'id':fid,'kind':spec.get('kind','PRACTICE'),
