@@ -13,7 +13,8 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
-from .activity import record_activity_afterlife, register_lived_activity_attempt
+from .activity import (record_activity_afterlife, register_lived_activity_attempt,
+                       possible_dependency_project_reorganizations)
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import possible_lived_directional_orientation
@@ -799,6 +800,8 @@ class ConstitutiveRuntime:
                 'historically_possible_genetic_ends':copy(possible_genetic_end),
                 'historically_possible_dependency_takeups':copy(
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_project_reorganizations':copy(
+                    possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(

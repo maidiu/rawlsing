@@ -55,6 +55,20 @@ def practical_alternatives(constitution,access,option):
         if project is None:continue
         expected=validate_expected_difference(project.get('expected_difference'))
         target=project.get('addressed_party_ref')
+        conditional=project.get('dependency_conditional_means',{}).get(act)
+        if conditional is not None:
+            # A new project course reuses a particular learned coordination,
+            # without turning every operation into an addressed act.
+            if (conditional.get('location')!=access.location
+                    or conditional.get('counterpart_ref') not in present
+                    or not any(p.get('id')==conditional.get('practice_ref')
+                        and p.get('actor')==actor
+                        and p.get('operation')==act
+                        and p.get('coactor_ref')==conditional.get('counterpart_ref')
+                        and p.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY'
+                        for p in getattr(constitution,'joint_practices',[]))):
+                continue
+            target=conditional['counterpart_ref']
         if target is not None and (type(target) is not str or not target):
             raise ValueError('INVALID_PROJECT_ADDRESSED_PARTY')
         reachable=target is None or target in present
@@ -71,6 +85,10 @@ def practical_alternatives(constitution,access,option):
                  expected.get('beneficiary_ref') if expected else None),
             'world_request':{'operation':act,'addressed_party_ref':bound_target,
                              'material_object_ref':None},
+            **({'dependency_conditional_means_ref':conditional['origin_event_ref'],
+                'acquired_joint_practice_ref':conditional['practice_ref'],
+                'partner_consent':'MUST_BE_INDEPENDENTLY_AUTHORED'}
+               if conditional is not None else {}),
             'binding_status':('QUALIFIED_AS_PRESENT' if target and reachable else
                     'NO_ADDRESSED_PARTY' if target is None else 'UNBOUND_PARTY_NOT_PRESENT'),
             'recruitment_pressures':{
