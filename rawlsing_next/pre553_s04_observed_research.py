@@ -584,7 +584,10 @@ def receive_s04_observation_scope(
     # issued profile only. This never invents missingness on an ordinary I03
     # query, nor reclassifies response states as causal social silencing.
     source_asked_eligible = None
-    if query.requested_output_grain.get(
+    # The asked-eligible summary owns unary distributions only. Native
+    # joint facts may carry that profile, but their exact joint remains the
+    # evidence; do not force it through a unary denominator contract.
+    if len(query.target_refs) == 1 and query.requested_output_grain.get(
         ASKED_ELIGIBLE_PROFILE_FIELD
     ) == ASKED_ELIGIBLE_POLICY:
         try:
