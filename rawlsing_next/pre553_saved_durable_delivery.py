@@ -1,9 +1,9 @@
 """Saved U43 -> S2-E -> existing S2-F -> cold S04/FF01 delivery.
 
 No source decoder, evaluator, structural issuer, or result store here.
-S2-F v1 has one *actual* exact bounded discovery envelope and a sourcefree
-evidence/rights ceiling; do not counterfeit an I05 result for unary-only work
-or publish original data through that fixture contract.
+S2-F retains actual native completed units, with a versioned zero/many-I05
+envelope for query-only, multiple-discovery and partial runs. The sourcefree
+rights ceiling is unchanged; no counterfeit discovery or original rights.
 """
 from __future__ import annotations
 
@@ -47,8 +47,6 @@ def _record(workload, resolver, host, purpose):
                    allow_test_only=True)
     _require(record.scope == "TEST_ONLY_SOURCEFREE",
              "S2F_ORIGINAL_RETENTION_AND_SERVING_AUTHORITY_HELD")
-    _require(len(workload.discoveries) == 1,
-             "S2F_V1_REQUIRES_ONE_ACTUAL_ISSUED_DISCOVERY")
     return record
 
 
@@ -94,21 +92,21 @@ def _unique(objects, key=lambda x: x.ref.key):
     return tuple(found[k] for k in sorted(found))
 
 
-def _graph(workload, direct, discovery):
+def _graph(workload, direct, discoveries):
     cat = workload.catalog
     direct_query_refs = {r.query_ref for r in direct}
     queries = _unique((
         *(cat.resolve_query_exact(r.query_ref) for r in direct),
-        *discovery.executed_queries,
+        *(q for d in discoveries for q in d.executed_queries),
     ))
     predicates = _unique((
         *(cat.resolve_predicate_exact(q.condition_predicate_ref)
           for q in queries if q.ref in direct_query_refs),
-        *discovery.executed_predicates,
+        *(p for d in discoveries for p in d.executed_predicates),
     ))
     facts = _unique((
         *(f for r in direct for f in r.facts),
-        *discovery.empirical_facts,
+        *(f for d in discoveries for f in d.empirical_facts),
     ))
     return RouteBEmpiricalObjectGraph(
         authority_snapshots=_unique(cat.authorities,
@@ -116,9 +114,10 @@ def _graph(workload, direct, discovery):
         executed_predicates=predicates,
         executed_queries=queries,
         empirical_facts=facts,
-        discovery_authorities=(
-            cat.resolve_discovery_authority_exact(discovery.discovery_authority_ref),),
-        discovery_receipts=_unique(discovery.receipts),
+        discovery_authorities=_unique(
+            cat.resolve_discovery_authority_exact(d.discovery_authority_ref)
+            for d in discoveries),
+        discovery_receipts=_unique(r for d in discoveries for r in d.receipts),
     )
 
 
@@ -161,28 +160,62 @@ class SavedPublication:
     publication_seconds: float
     batch_census: dict
 
+    @property
+    def complete(self) -> bool:
+        return self.batch_census["complete"]
+
+
+@dataclass(frozen=True)
+class SavedResumePin:
+    """Externally retained archive identity and original saved-estate pin.
+
+    No inline caller-created receipt or output map is accepted on resume.
+    """
+    closure_path: str | Path
+    expected_root: str
+    expected_release_ref: ExactRef
+    expected_saved_manifest_sha256: str
+
 
 def execute_publish_saved(
     workload: NativeWorkload, resolver, *, host: str, purpose: str,
     saved_admission_factory: Callable[[], SavedC11Admission],
     root_dir: str | Path, consumer_binding=None,
+    max_units: int | None = None, resume_from: SavedResumePin | None = None,
 ) -> SavedPublication:
-    """Run the original complete issued saved workload once, then archive it.
+    """Execute original issued units, archive exact attempts, and resume cold.
 
-    The existing runner alone executes queries. The existing S2-E court checks
-    every actual output and attempt. All positive and negative fates survive.
-    No publication for partial or multiple-I05 runs under frozen S2-F v1.
-    The caller owns the private root and externally retains the returned root.
+    The original Batch owner alone executes pending units; S2-E audits actual
+    results and history. max_units intentionally permits a partial checkpoint.
+    A completed resume pin must be served, not executed again. Sudden process
+    death before publication is not a checkpoint. External pins are mandatory.
     """
     record = _record(workload, resolver, host, purpose)
+    prior = None
+    if resume_from is not None:
+        _require(type(resume_from) is SavedResumePin, "EXACT_SAVED_RESUME_PIN_REQUIRED")
+        prior = open_saved_product(
+            resume_from.closure_path, expected_root=resume_from.expected_root,
+            expected_release_ref=resume_from.expected_release_ref,
+            expected_saved_manifest_sha256=resume_from.expected_saved_manifest_sha256,
+            workload=workload, resolver=resolver, host=host, purpose=purpose,
+            allow_partial=True)
+        _require(not prior.complete, "WORKLOAD_ALREADY_COMPLETE_USE_COLD_PRODUCT")
     admissions = []
 
     def factory():
+        _require(_record(workload, resolver, host, purpose) == record,
+                 "CURRENT_CHANGED_BEFORE_SAVED_ADMISSION")
         _require(not admissions, "SAVED_ADMISSION_FACTORY_REENTERED")
         item = saved_admission_factory()
         _require(type(item) is SavedC11Admission, "EXACT_SAVED_ADMISSION_REQUIRED")
         _require(item.binding_receipt().runtime_catalog == workload.catalog.receipt(),
                  "SAVED_CATALOG_DIFFERS_FROM_ISSUED_WORKLOAD")
+        if prior is not None:
+            _require(item.release_ref == resume_from.expected_release_ref
+                     and item.manifest_sha256 == resume_from.expected_saved_manifest_sha256
+                     and item.replay_ref == prior._closure.release_identities[0].replay_ref,
+                     "RESUME_SAVED_ESTATE_DRIFT")
         admissions.append(item)
         return item
 
@@ -190,6 +223,8 @@ def execute_publish_saved(
     result = execute_issued_workload(
         workload, resolver, host=host, purpose=purpose, allow_test_only=True,
         saved_admission_factory=factory, reuse_prepared_saved_session=True,
+        max_units=max_units, prior_receipts=() if prior is None else prior._receipts,
+        prior_outputs=None if prior is None else prior._outputs,
     )
     elapsed = monotonic() - start
     admission, = admissions
@@ -202,24 +237,36 @@ def execute_publish_saved(
              "EXECUTION_MANIFEST_DRIFT")
     outputs = result.outputs_by_unit
     census = census_native_batch(result.manifest, result.receipts, outputs,
-                                 require_complete=True, runtime_catalog=workload.catalog)
+                                 require_complete=max_units is None,
+                                 runtime_catalog=workload.catalog)
     direct = tuple(outputs[u.unit_hash] for u in result.manifest.units
-                   if u.job_kind == "QUERY")
-    discovery, = (outputs[u.unit_hash] for u in result.manifest.units
-                  if u.job_kind == "DISCOVERY")
+                   if u.job_kind == "QUERY" and u.unit_hash in outputs)
+    discoveries = tuple(outputs[u.unit_hash] for u in result.manifest.units
+                  if u.job_kind == "DISCOVERY" and u.unit_hash in outputs)
+    # Retain exact prior S04 refs; only newly completed direct outputs need
+    # first-reader execution. Cold reconstruction still verifies their identity.
+    first_reads = dict(prior._first_reads) if prior is not None else {}
+    first_reads.update(_s04_manifest(workload, tuple(
+        ex for ex in direct if ex.query_ref.key not in first_reads)))
+    legacy = census.complete and len(discoveries) == 1
     output = NativeEmpiricalOutput(
         source_identity=_binding(record, workload, admission.release_ref,
                                  admission.manifest_sha256),
         release_identities=(ReleaseIdentity(
             release_ref=admission.release_ref, replay_ref=admission.replay_ref,
             source_artifact_ref=admission.source_ref),),
-        i03_results=direct, i05_result=discovery,
-        object_graph=_graph(workload, direct, discovery),
+        i03_results=direct, i05_result=discoveries[0] if legacy else None,
+        i05_results=() if legacy else discoveries,
+        object_graph=_graph(workload, direct, discoveries),
         typed_states={
             "saved_batch_manifest": result.manifest.semantic_projection(),
             "saved_batch_receipts": [r.projection() for r in result.receipts],
             "saved_batch_census": census.as_dict(),
-            "s04_first_reads": _s04_manifest(workload, direct),
+            "s04_first_reads": first_reads,
+            **({} if legacy and prior is None else {
+                "saved_batch_complete": census.complete,
+                "resumed_from_root": None if prior is None else prior._closure.root_identity,
+            }),
         },
     )
     admission.check_current()
@@ -250,16 +297,28 @@ class ColdSavedProduct:
     saved manifest pin are required. This is not a source/consumer rights issuer.
     """
 
-    def __init__(self, closure, workload, resolver, host, purpose, record):
+    def __init__(self, closure, workload, resolver, host, purpose, record,
+                 *, receipts, outputs, census):
         self._closure = closure
         self._workload = workload
         self._resolver = resolver
         self._host = host
         self._purpose = purpose
         self._record = record
+        self._receipts = receipts
+        self._outputs = dict(outputs)
+        self._census = census
         self._queries = {r.query_ref.key: r for r in closure.i03_results}
         self._first_reads = closure.manifest["core"]["native_result"]["typed_states"]["s04_first_reads"]
         self._cache = OrderedDict()  # bounded, request-process-local derivative cache
+
+    @property
+    def complete(self) -> bool:
+        return self._census.complete
+
+    @property
+    def batch_census(self):
+        return self._census.as_dict()
 
     def _live(self):
         _require(_record(self._workload, self._resolver, self._host, self._purpose)
@@ -303,7 +362,7 @@ class ColdSavedProduct:
     def read_i05_role(self, candidate_receipt_ref: ExactRef, query_role: str):
         self._live()
         result = receive_s04_i05_role(
-            discovery=self._closure.i05_result,
+            discovery=self._closure.discovery_by_receipt(candidate_receipt_ref),
             candidate_receipt_ref=candidate_receipt_ref, query_role=query_role)
         self._live()
         return result
@@ -412,22 +471,39 @@ class ColdSavedProduct:
         _require(disposition.adjudication_outcome == "RULE_SATISFIED",
                  "LEARNED_NONPRODUCTIVE_M1:" + disposition.adjudication_outcome)
         self._live()
-        learned = compose_learned_world(
-            product_contract, m2_repository=m2_repository,
-            lifecycle_executor=lifecycle_executor, m1_disposition=disposition,
-        )
-        self._live()
-        receipt = publish_learned_lifecycle(
-            root_dir, learned=learned, executor=lifecycle_executor,
-            determinants=determinants, m1_input_bundle=bundle.as_dict(),
-            m1_family_rule_binding=family_rule_binding.as_dict(),
-        )
-        artifact = open_learned_lifecycle(
-            receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
-        consumed = artifact.consume(self._closure.root_path,
-                                    require_current_selection=require_current_selection)
-        self._live()
-        return receipt, consumed
+        from rawlsing_next.pre553_learned_product_release import M2Repository
+        from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+        _require(type(m2_repository) is M2Repository
+                 and type(lifecycle_executor) is LearnedProductLifecycleExecutor,
+                 "EXACT_LOCAL_LEARNED_OWNERS_REQUIRED")
+        # Lock order M2 -> B5. Both incumbent owners hold their own write
+        # transactions across composition, disk publication, cold validation
+        # and final CURRENT check. A failure rolls back only local state.
+        # An immutable blob/manifest already renamed on disk can survive;
+        # it is historical, never a returned receipt or external selection.
+        with m2_repository._mutation_transaction(), lifecycle_executor._mutation_transaction():
+            self._live()
+            learned = compose_learned_world(
+                product_contract, m2_repository=m2_repository,
+                lifecycle_executor=lifecycle_executor, m1_disposition=disposition,
+            )
+            _require(learned.receipt.terminal_state == "RULE_SATISFIED",
+                     "LEARNED_COMPOSITION_NOT_PRODUCTIVE")
+            self._live()
+            receipt = publish_learned_lifecycle(
+                root_dir, learned=learned, executor=lifecycle_executor,
+                determinants=determinants, m1_input_bundle=bundle.as_dict(),
+                m1_family_rule_binding=family_rule_binding.as_dict(),
+            )
+            artifact = open_learned_lifecycle(
+                receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
+            consumed = artifact.consume(self._closure.root_path,
+                                        require_current_selection=require_current_selection)
+            _require(consumed.state != "REFUSED",
+                     "LEARNED_COLD_CONSUMER_REFUSED:" + str(consumed.reason_code))
+            self._live()
+            return receipt, consumed
+
 
     def _open_learned_for_serving(self, artifact_path, *,
                                   expected_root, expected_purpose_ref):
@@ -487,6 +563,7 @@ def open_saved_product(
     closure_path: str | Path, *, expected_root: str,
     expected_release_ref: ExactRef, expected_saved_manifest_sha256: str,
     workload: NativeWorkload, resolver, host: str, purpose: str,
+    allow_partial: bool = False,
 ) -> ColdSavedProduct:
     """Reopen the existing S2-F archive and reproduce its U43/S2-E proof.
 
@@ -512,25 +589,36 @@ def open_saved_product(
     states = native["typed_states"]
     _require(canonical_json(states["saved_batch_manifest"]) ==
              canonical_json(manifest.semantic_projection()), "ARCHIVE_BATCH_MANIFEST_DRIFT")
-    _require(set(states["s04_first_reads"]) == {r.query_ref.key for r in workload.requests},
-             "ARCHIVE_S04_FIRST_READ_CENSUS_DRIFT")
+    _require(type(allow_partial) is bool, "EXPLICIT_PARTIAL_READ_REQUIRED")
     receipts = tuple(_restore_receipt(row) for row in states["saved_batch_receipts"])
     direct = {r.query_ref.key: r for r in closure.i03_results}
-    _require(len(direct) == len(closure.i03_results) == len(workload.requests),
-             "ARCHIVE_DIRECT_QUERY_CENSUS_DRIFT")
+    discoveries = {r.discovery_authority_ref.key: r for r in closure.discovery_results}
+    _require(len(direct) == len(closure.i03_results)
+             and len(discoveries) == len(closure.discovery_results)
+             and set(direct) <= {r.query_ref.key for r in workload.requests}
+             and set(discoveries) <= {r.key for r in workload.discoveries},
+             "ARCHIVE_NATIVE_OUTPUT_CENSUS_DRIFT")
+    _require(set(states["s04_first_reads"]) == set(direct),
+             "ARCHIVE_S04_FIRST_READ_CENSUS_DRIFT")
+    # A complete S2-E transcript cannot license extra orphan graph objects.
+    # Compare exact refs to the actual completed outputs and admitted catalog.
+    expected_graph = _graph(workload, tuple(direct.values()), tuple(discoveries.values()))
+    _require({o.ref.key for o in expected_graph.public_objects()} ==
+             {o.ref.key for o in closure.object_graph.public_objects()},
+             "ARCHIVE_NATIVE_GRAPH_CONTAINS_UNOWNED_OBJECTS")
     outputs = {}
     for unit in manifest.units:
-        if unit.job_kind == "QUERY":
-            _require(unit.job_ref.key in direct, "ARCHIVE_DIRECT_QUERY_ABSENT")
-            outputs[unit.unit_hash] = direct[unit.job_ref.key]
-        else:
-            _require(closure.i05_result.discovery_authority_ref == unit.job_ref,
-                     "ARCHIVE_DISCOVERY_DRIFT")
-            outputs[unit.unit_hash] = closure.i05_result
+        catalog = direct if unit.job_kind == "QUERY" else discoveries
+        if unit.job_ref.key in catalog:
+            outputs[unit.unit_hash] = catalog[unit.job_ref.key]
     actual = census_native_batch(manifest, receipts, outputs,
-                                require_complete=True, runtime_catalog=workload.catalog)
+                                require_complete=False, runtime_catalog=workload.catalog)
+    _require(actual.complete or allow_partial, "ARCHIVE_PARTIAL_EXPLICIT_OPT_IN_REQUIRED")
+    _require(states.get("saved_batch_complete", True) is actual.complete,
+             "ARCHIVE_COMPLETION_STATE_DRIFT")
     _require(canonical_json(actual.as_dict()) ==
              canonical_json(states["saved_batch_census"]), "ARCHIVE_S2E_CENSUS_DRIFT")
     _require(_record(workload, resolver, host, purpose) == record,
              "CURRENT_CHANGED_DURING_COLD_OPEN")
-    return ColdSavedProduct(closure, workload, resolver, host, purpose, record)
+    return ColdSavedProduct(closure, workload, resolver, host, purpose, record,
+                            receipts=receipts, outputs=outputs, census=actual)
