@@ -8,6 +8,7 @@ from .types import stable_id, copy, GRADE
 from .psychodynamics import validate_tendencies
 from .relational_metabolism import (
     RELATIONS, link_ref, validate_motif, admit_motif, InvalidRelationalMotif,
+    qualify_lived_cross_context_revaluation,
 )
 from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
@@ -244,6 +245,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 raise InvalidDevelopment('UNKNOWN_RELATIONAL_MOTIF')
             # Changes to an existing learned configuration are themselves
             # historically qualified, reversible in documentary history.
+            cross_context_basis=None
+            if 'lived_cross_context_basis' in c:
+                try:
+                    cross_context_basis, changed_effects=(
+                        qualify_lived_cross_context_revaluation(
+                            actor,experience,event_ref,c))
+                except InvalidRelationalMotif as exc:
+                    raise InvalidDevelopment(str(exc)) from exc
+                c={'kind':op,'motif_id':ident,'effects':changed_effects}
             update=copy(found)
             for key in ('cue_terms','locations','effects','status',
                         'witnessed_source_actor_ref'):
@@ -264,6 +274,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                             ('cue_terms','locations','effects','status',
                              'witnessed_source_actor_ref')},
                 'experience_ref':experience['ref'],'grade':GRADE})
+            if cross_context_basis is not None:
+                found['motif_history'][-1]['lived_cross_context_basis']=cross_context_basis
             for key in ('cue_terms','locations','effects','status',
                         'witnessed_source_actor_ref'):
                 if key in c:found[key]=copy(update[key])

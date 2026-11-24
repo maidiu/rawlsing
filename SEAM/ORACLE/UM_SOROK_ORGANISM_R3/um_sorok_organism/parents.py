@@ -8,7 +8,7 @@ from .types import adult, copy, stable_id, GRADE
 from .psychodynamics import validate_tendencies
 from .organism import ACTIONS
 from .development import validate_activity_priority
-from .relational_metabolism import validate_motif
+from .relational_metabolism import validate_motif, refuse_unissued_cross_context_history
 from .practical_difference import validate_expected_difference
 from .historical_parent_bridge import historically_conditioned_entrances
 from .mediated_efficacy import seed_fictional_adult_training
@@ -35,6 +35,7 @@ def construct_parent(actor_id,name,source_packet,semantic):
     # Source-conditioned adult history is an explicitly FICTIONAL construction.
     # No questionnaire answer is assumed to reveal a hidden psychodynamic motif.
     for motif in result.get('relational_motifs',[]):
+        refuse_unissued_cross_context_history(motif)
         validate_motif(motif,person['forms'])
         if (not isinstance(motif.get('id'),str) or not motif['id'] or
                 any(x.get('id')==motif['id'] for x in person['relational_motifs'])):

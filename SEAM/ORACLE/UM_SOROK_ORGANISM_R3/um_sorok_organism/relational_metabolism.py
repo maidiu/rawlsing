@@ -192,7 +192,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
             "not_a_self_known_reason": True,
             "grade": GRADE,
         })
-        for effect in motif["effects"]:
+        for effect_index, effect in enumerate(motif["effects"]):
             if effect["kind"] == "ACTION_CURRENT":
                 action_currents.append({
                     "action": effect["action"],
@@ -233,6 +233,15 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
                     "grade": GRADE,
                 })
                 if operative and target_direct:
+                    latest=(motif.get("motif_history") or [{}])[-1]
+                    bridge=latest.get("lived_cross_context_basis",{})
+                    provenance=({"lived_cross_context_revaluation": {
+                        "historical_orientation_ref":bridge["historical_orientation_ref"],
+                        "earlier_location":bridge["earlier_location"],
+                        "later_location":bridge["later_location"],
+                        "revaluation_event":latest["event"],
+                        "not_actor_self_knowledge":True}}
+                        if bridge.get("effect_index")==effect_index else {})
                     action_currents.append({
                         "action": effect["mediated_action"],
                         "polarity": effect["polarity"],
@@ -245,6 +254,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
                         "mediation_target_ref": effect["target"],
                         "not_actor_self_account": True,
                         "not_objective_justification_of_conduct": True,
+                        **provenance,
                     })
     return {
         "currents": currents,
@@ -259,6 +269,7 @@ def derive_relational_metabolism(constitution, access, active_forms, inhibited):
 def admit_motif(actor, candidate, event_ref, experience, index):
     """Prepare one bounded, actor-owned fictional motif for atomic admission."""
     motif = copy(candidate.get("motif", {}))
+    refuse_unissued_cross_context_history(motif)
     validate_motif(motif, actor["forms"])
     witness = motif.get("witnessed_source_actor_ref")
     # A semantic proposal cannot manufacture having recognized or actually
@@ -333,3 +344,191 @@ def possible_witnessed_third_party_relation(actor, experience):
             'no_private_other_psychology_or_consent_inferred':True,
             'grade':GRADE})
     return candidates[:4]
+
+def refuse_unissued_cross_context_history(motif):
+    """The R32 provenance key is owned by later typed reorganization only."""
+    if type(motif) is dict and any(
+            type(row) is dict and 'lived_cross_context_basis' in row
+            for row in (motif.get('motif_history') or [])):
+        raise InvalidRelationalMotif('CROSS_CONTEXT_UNISSUED_HISTORY')
+
+
+def possible_lived_cross_context_revaluations(actor, experience, event_ref):
+    """Optional reorganization of an OLD motif through a different lived site.
+
+    A narrow provisional bridge: the same personally enacted operation occurs
+    in two material settings, but its relational significance need not be the
+    same. R28-R31 supply the earlier acquired orientation and actual episodes;
+    R4/R23 supply the existing motif and its acquired means. The semantic
+    owner, not a valence conversion rule, proposes how the relation changes.
+    No orientation is copied into the new setting or declared conscious.
+    """
+    aid=actor.get('id')
+    clock=experience.get('clock')
+    operation=experience.get('own_action')
+    site=experience.get('location')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or type(event_ref) is not str or not event_ref
+            or type(site) is not str or not site or site!=actor.get('location')
+            or type(operation) is not str or operation not in ACTIONS
+            or not actor.get('relational_motifs')
+            or experience.get('participated') is not True
+            or (experience.get('felt_enactment') or {}).get(
+                'attempted_operation')!=operation):
+        return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if type(c) is dict]
+    # The shared operation must be personally received, not an ambient
+    # co-presence or analyst-supplied abstract similarity.
+    kind='performed_'+operation.lower()
+    received=[c for c in signs if c.get('kind')==kind
+              and c.get('source_actor')==aid and type(c.get('id')) is str]
+    if len(received)!=1:
+        return []
+    sign=received[0]
+    episodes=actor.get('lived_genesis_episodes',[])
+    now=[w for w in episodes if w.get('actor')==aid
+         and w.get('event_ref')==event_ref
+         and w.get('experience_ref')==experience.get('ref')
+         and w.get('clock')==clock and w.get('location')==site
+         and w.get('actor_felt_attempt')==operation
+         and sign['id'] in w.get('received_sign_refs',[])]
+    if len(now)!=1:
+        return []
+    current=now[0]
+    # At least a personally lived bodily difference or incomplete operation
+    # is required; mere repetition of a word cannot revalue a relation.
+    if not (current.get('received_relief')
+            or current.get('personally_lived_adverse_course')
+            or current.get('unfinished_own_activity')):
+        return []
+    sources=[]
+    by_id={w.get('id'):w for w in episodes if w.get('actor')==aid}
+    for row in actor.get('historical_orientations',[])[-128:]:
+        if (row.get('actor')!=aid or row.get('acquisition')!=
+                'REPEATED_LIVED_BODY_COURSE'
+                or row.get('operation')!=operation
+                or row.get('location')==site
+                or type(row.get('origin_clock')) is not int
+                or row['origin_clock']>=clock
+                or type(row.get('id')) is not str):
+            continue
+        basis=row.get('lived_genesis_basis',{})
+        witnesses=[by_id.get(basis.get(k)) for k in (
+            'first_lived_episode_ref','later_lived_episode_ref')]
+        if any(w is None for w in witnesses):
+            continue
+        if (witnesses[0]['id']==witnesses[1]['id']
+                or [w.get('event_ref') for w in witnesses]!=basis.get('source_event_refs')
+                or [w.get('experience_ref') for w in witnesses]!=basis.get('source_experience_refs')
+                or any(w.get('event_ref')==event_ref
+                       or w.get('location')!=row['location']
+                       or w.get('actor_felt_attempt')!=operation
+                       or type(w.get('clock')) is not int
+                       or w['clock']>=clock
+                       or not any(c.get('kind')==kind and c.get('source_actor')==aid
+                                  for c in w.get('personally_perceived_sign_sources',[]))
+                       for w in witnesses)
+                or witnesses[0]['clock']>=witnesses[1]['clock']
+                or witnesses[1]['event_ref']!=row.get('origin_event')
+                or witnesses[1]['clock']!=row['origin_clock']):
+            continue
+        sources.append((row,witnesses))
+    candidates=[]
+    terms={str(v).lower() for c in signs
+           for v in c.get('tags',[])+[c.get('kind','')]}
+    forms=actor.get('forms',{})
+    for motif in actor.get('relational_motifs',[]):
+        if (motif.get('status','ACTIVE')!='ACTIVE'
+                or not motif.get('origin') or event_ref in motif['origin']
+                or any(h.get('event')==event_ref for h in motif.get('motif_history',[]))
+                or (motif.get('locations') and site not in motif['locations'])
+                or (motif.get('cue_terms') and not
+                    terms.intersection(t.lower() for t in motif['cue_terms']))):
+            continue
+        witness=motif.get('witnessed_source_actor_ref')
+        if witness is not None and not any(
+                c.get('source_actor')==witness and c.get('kind') not in
+                ('coactor_present','material_object_present','public_notice_visible')
+                for c in signs):
+            continue
+        validate_motif(motif,forms)
+        if any(forms[f].get('actor')!=aid or
+               event_ref in forms[f].get('origin',[])
+               for f in motif['source_forms']):
+            continue
+        for i,effect in enumerate(motif['effects']):
+            if (effect.get('kind')!='RELATION_MEDIATION'
+                    or effect.get('mediated_action')!=operation):
+                continue
+            for row,witnesses in sources:
+                # This is an optional historical connection, not proof of
+                # similarity of goods, an obligation to heal, or a motive.
+                candidates.append({
+                    'kind':'REORGANIZE_RELATIONAL_MOTIF',
+                    'motif_id':motif['id'],
+                    'lived_cross_context_basis':{
+                        'historical_orientation_ref':row['id'],
+                        'earlier_location':row['location'],
+                        'later_location':site,
+                        'earlier_orientation_mode':row['orientation_mode'],
+                        'earlier_episode_refs':[w['id'] for w in witnesses],
+                        'earlier_event_refs':[w['event_ref'] for w in witnesses],
+                        'later_episode_ref':current['id'],
+                        'later_event_ref':event_ref,
+                        'later_experience_ref':experience['ref'],
+                        'later_received_sign_ref':sign['id'],
+                        'shared_enacted_operation':operation,
+                        'effect_index':i,
+                        'previous_effect':copy(effect),
+                        'not_proof_of_functional_equivalence_or_causation':True,
+                    },
+                    'semantic_choice_required':{
+                        'new_relation':sorted(RELATIONS),
+                        'new_polarity':sorted(POLARITIES),
+                        'or_no_change':True},
+                    'grade':GRADE,
+                })
+                if len(candidates)>=12:
+                    return candidates
+    return candidates
+
+
+def qualify_lived_cross_context_revaluation(actor, experience, event_ref, candidate):
+    """Recompute the occasion; revise just one existing effect, never a form.
+
+    The model can choose either polarity and any existing relation family;
+    no change remains possible by abstaining. Context, action, endpoints,
+    witnesses and all other effects are conserved by the existing motif owner.
+    """
+    permitted={'kind','motif_id','lived_cross_context_basis','new_relation',
+               'new_polarity','interpretive_hypothesis'}
+    if set(candidate)-permitted:
+        raise InvalidRelationalMotif('CROSS_CONTEXT_UNQUALIFIED_REWRITE')
+    matches=[p for p in possible_lived_cross_context_revaluations(
+        actor,experience,event_ref) if p['motif_id']==candidate.get('motif_id')
+        and p['lived_cross_context_basis']==candidate.get('lived_cross_context_basis')]
+    if len(matches)!=1:
+        raise InvalidRelationalMotif('CROSS_CONTEXT_NO_ACTOR_LIVED_BRIDGE')
+    basis=copy(matches[0]['lived_cross_context_basis'])
+    relation=candidate.get('new_relation')
+    polarity=candidate.get('new_polarity')
+    if (type(relation) is not str or relation not in RELATIONS
+            or type(polarity) is not str or polarity not in POLARITIES):
+        raise InvalidRelationalMotif('CROSS_CONTEXT_INVALID_SEMANTIC_CHOICE')
+    hypothesis=candidate.get('interpretive_hypothesis')
+    if hypothesis is not None and (type(hypothesis) is not str
+            or not hypothesis.strip() or len(hypothesis)>512):
+        raise InvalidRelationalMotif('CROSS_CONTEXT_INVALID_HYPOTHESIS')
+    motif=next(m for m in actor['relational_motifs']
+               if m['id']==candidate['motif_id'])
+    effects=copy(motif['effects'])
+    effect=effects[basis['effect_index']]
+    if (effect['relation'],effect['polarity'])==(relation,polarity):
+        raise InvalidRelationalMotif('CROSS_CONTEXT_NO_RELATIONAL_CHANGE')
+    effect.update({'relation':relation,'polarity':polarity})
+    basis['interpretive_hypothesis_not_causal_truth']=hypothesis
+    basis['new_relation']=relation
+    basis['new_polarity']=polarity
+    return basis,effects
+
