@@ -121,6 +121,22 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
                 'possible_end':issued_trial.get('possible_end_ref'),
                 'functional_bridge':issued_trial.get('functional_bridge_ref')}),
         }
+        if issued_trial.get('selected_offer_option_ref') is not None:
+            selected=experience.get('own_practical_selection') or {}
+            offer=issued_trial.get('selected_human_food_offer_ref')
+            option=issued_trial['selected_offer_option_ref']
+            other=issued_trial.get('offered_by_ref')
+            if (issued_trial.get('operation')!='SIGNAL'
+                    or any(type(x) is not str or not x for x in (offer,option,other))
+                    or selected.get('option_id')!=option
+                    or selected.get('selected_human_food_offer_ref')!=offer
+                    or selected.get('world_request',{}).get('addressed_party_ref')!=other):
+                raise InvalidDevelopment('UNISSUED_POSSIBLE_END_OFFER_TRIAL')
+            base=stable_id('end_trial',{**identity,
+                'possible_end':issued_trial.get('possible_end_ref'),
+                'functional_bridge':issued_trial.get('functional_bridge_ref')})
+            valid_ids={stable_id('end_trial_actual_offer',{
+                'trial':base,'option':option,'offer':offer})}
         if (type(issued_trial.get('trial_id')) is not str
                 or issued_trial['trial_id'] not in valid_ids):
             raise InvalidDevelopment('UNISSUED_POSSIBLE_END_TRIAL')
