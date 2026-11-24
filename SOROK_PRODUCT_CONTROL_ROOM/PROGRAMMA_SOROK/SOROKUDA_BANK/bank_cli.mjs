@@ -10,6 +10,7 @@ import {fileURLToPath} from "node:url";
 import {spawnSync} from "node:child_process";
 import {createHash} from "node:crypto";
 import {normalize,documentIndex,validateBank} from "./normalizer.mjs";
+import {incrementalRows} from "./r11_incremental.mjs";
 
 const here=path.dirname(fileURLToPath(import.meta.url));
 const repo=path.resolve(here,"../../..");
@@ -82,7 +83,7 @@ function tokenize(s){
 function search(q,limit=20,bank=null){
  const words=tokenize(q);
  if(words.length===0)throw Error("Nonempty search query required");
- const records=jsonl(recordsPath);
+ const records=[...jsonl(recordsPath),...incrementalRows()];
  const ranked=[];
  for(const r of records){
   if(bank&&r.bank!==bank)continue;
@@ -142,6 +143,7 @@ function main(argv){
  const [command,...rest]=argv;
  checkLocks();
  if(command==="build"||command==="check"){
+   if(incrementalRows().length!==62)throw Error("R11_DELTA_HOLD");
    const result=build(command==="build");
    console.log(JSON.stringify({command,validated:result,clock:clockSummary(),status:command==="check"?"EXACT_INPUT_DERIVATION_VERIFIED":"BUILT_FROM_PINNED_INPUTS__NOT_PROTECTED_RECEIVED"},null,2));return;
  }
@@ -154,10 +156,10 @@ function main(argv){
    printSearch(query,20,bank);return;
  }
  if(command==="show"){
-   const all=jsonl(recordsPath),r=all.find(x=>x.id===rest[0]);if(!r)throw Error("UNKNOWN_ID_NOT_PROOF_OF_ABSENCE");
+   const all=[...jsonl(recordsPath),...incrementalRows()],r=all.find(x=>x.id===rest[0]);if(!r)throw Error("UNKNOWN_ID_NOT_PROOF_OF_ABSENCE");
    console.log(JSON.stringify(r,null,2));return;
  }
- if(command==="coverage"){const r=jsonl(recordsPath),counts={all:r.length,ideas:r.filter(x=>x.bank==="ideas").length,functions:r.filter(x=>x.bank==="functions").length,code:r.filter(x=>x.bank==="code").length,document_locators:227,directory_entrances:25}; console.log(JSON.stringify({counts,dates:clockSummary(),
+ if(command==="coverage"){const old=jsonl(recordsPath),delta=incrementalRows(),r=[...old,...delta],counts={all:r.length,ideas:r.filter(x=>x.bank==="ideas").length,functions:r.filter(x=>x.bank==="functions").length,code:r.filter(x=>x.bank==="code").length,materialized_base:old.length,incremental_source_overlay:delta.length,document_locators:227,directory_entrances:25}; console.log(JSON.stringify({counts,dates:clockSummary(),
    gap:"Not exhaustive every idea in every Git branch/chat; only exact 757+182+44+16 source collection; individual current owner/first-reader adjudication incomplete."},null,2));return}
  if(command==="enrich-dates"){
     const v=rest.find(x=>x.startsWith("--limit=")),max=v?Number(v.slice(8)):30;

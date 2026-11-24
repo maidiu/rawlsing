@@ -84,6 +84,25 @@ test("source mutation fail closed; no new false artifact can disappear silently"
  assert.throws(()=>normalize(union,thematic,cut,ideas,co,dates),/Changed prior source/);
  assert.throws(()=>normalize(union,thematic,code.slice(1),ideas,co,dates),/(SOROKUDA .*no-drop|Prior 300 missing)/);
 });
+
+test("R11 incremental source is queryable without duplicating 44 NM rows",()=>{
+ const source=j("inputs/NEIGHBOR_R9_CROSS_LINEAGE_104.json");
+ assert.equal(source.rows.length,104);
+ assert.equal(source.rows.filter(x=>/^NM-\d{3}$/.test(x.id)).length,44);
+ for(const r of source.rows.filter(x=>/^NM-\d{3}$/.test(x.id)))assert.ok(of(r.id),r.id);
+ const p=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"coverage"],{encoding:"utf8"});
+ assert.equal(p.status,0,p.stderr);
+ const counts=JSON.parse(p.stdout).counts;
+ assert.deepEqual([counts.all,counts.materialized_base,counts.incremental_source_overlay],[1065,1003,62]);
+ const g=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"gate-new","mistaken Other"],{encoding:"utf8"});
+ assert.equal(g.status,0,g.stderr);
+ assert.match(g.stdout,/NO_BUILD_RIGHT_ISSUED/);
+ assert.match(g.stdout,/SOROKUDA-R11-R30-OWNER/);
+ const s=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"show","NEIGHBOR-R9-01"],{encoding:"utf8"});
+ assert.equal(s.status,0,s.stderr);
+ assert.equal(JSON.parse(s.stdout).meaning.origin_fidelity,"DIRECT_USER");
+});
+
 test("CLI check and no-new-owner gate execute",()=>{
  const check=spawnSync(process.execPath,[path.join(root,"bank_cli.mjs"),"check"],{encoding:"utf8"});
  assert.equal(check.status,0,check.stderr);
