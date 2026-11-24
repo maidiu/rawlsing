@@ -326,7 +326,11 @@ def receive_s04_i05_adaptive_outcome(
     actual parent's role receipt AND complete frontier replay identity.
     The existing adaptive scheduler verifies its own rule, generation,
     determinant and frontier bounds; subsequent native execution must still
-    validate its separately issued discovery authority.
+    validate its separately issued discovery authority. A zero-candidate
+    frontier returns (None, None, outcome); an explicit receipt-only read
+    (query_role=None) retains a native fate but cannot propose new work.
+    Neither issues an S04 fact. Plural branch ancestry requires the exact
+    original discovery authority preimage and all matching handoffs.
     """
     from rawlsing_next.pre553_discovery_adaptive import (
         AdaptiveExplorationUnit, AdaptiveUnitOutcome,
@@ -373,11 +377,22 @@ def receive_s04_i05_adaptive_outcome(
         )
         check()
         return None, None, outcome
-    observed, role = receive_s04_i05_role(
-        discovery=discovery, candidate_receipt_ref=candidate_receipt_ref,
-        query_role=query_role,
-    )
-    receipt = next(r for r in discovery.receipts if r.ref == candidate_receipt_ref)
+    # Receipt-only closure is explicit, not an exception-to-positive
+    # fallback. It preserves native fates whose shape/measure is outside
+    # S04's RAW scalar contract, without manufacturing a descriptive fact.
+    selected = [r for r in discovery.receipts if r.ref == candidate_receipt_ref]
+    if len(selected) != 1:
+        raise S04I05ReceptionError("candidate receipt not uniquely present in I05 frontier")
+    receipt = selected[0]
+    if query_role is None:
+        if proposals or next_handoff is not None:
+            raise S04I05ReceptionError("native receipt-only closure cannot recruit a child")
+        observed = role = None
+    else:
+        observed, role = receive_s04_i05_role(
+            discovery=discovery, candidate_receipt_ref=candidate_receipt_ref,
+            query_role=query_role,
+        )
     releases = tuple(_ref(ref, "release") for ref in receipt.source_release_refs)
     # A resumed recursively issued native operation must actually consume
     # its persisted parent, not merely carry an unconnected hash in the unit.
@@ -447,10 +462,11 @@ def receive_s04_i05_adaptive_outcome(
     outcome = AdaptiveUnitOutcome(
         unit_ref=unit.unit_ref,
         sealed_result_ref=expected_replay_ref,
-        proposal_basis_ref=role.ref,
+        proposal_basis_ref=role.ref if role is not None else receipt.ref,
         # Never report a selected candidate's VALID_EMPTY as emptiness of
-        # the complete sealed frontier. The original role receipt retains it.
-        unit_result_state="I05_COMPLETE_FRONTIER__SELECTED_" + receipt.typed_state,
+        # the complete sealed frontier. No projection in receipt-only mode.
+        unit_result_state=("I05_COMPLETE_FRONTIER__SELECTED_" + receipt.typed_state
+                           + ("__NATIVE_RECEIPT_ONLY" if role is None else "")),
         proposal_units=proposals,
     )
     check()

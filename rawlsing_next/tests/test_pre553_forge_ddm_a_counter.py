@@ -36,12 +36,26 @@ def _receive(discovery, unit, **kw):
 def test_genuine_zero_candidate_frontier_closes_scheduler_without_invented_fact():
     source = native._build_source("COUNTER-EMPTY", [
         {"id": "R0", "responses": {"Y":0}}, {"id":"R1","responses":{"Y":1}}])
-    qa, da = native._query_authority("COUNTER-EMPTY"), i05._d_auth("COUNTER-EMPTY")
+    qa, da = native._query_authority("COUNTER-EMPTY"), i05._d_auth("COUNTER-EMPTY-discovery")
     grammar = i05._grammar(operation="I03-OP-COUNTER-EMPTY", atoms=(),
                             templates=(), rules=(), allow_empty=True)
     result = i05._execute(source,qa,da,grammar,(),())
     assert result.valid_empty and result.candidate_count == 0
     authority, registry, determinant, root, _ = _unit(result,"counter-empty")
+    import os, importlib.util, sys
+    old_path = os.environ.get("FORGE_B_PREDECESSOR_I05")
+    if old_path:
+        spec = importlib.util.spec_from_file_location("forge_b_frozen_receiver",old_path)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        try:
+            spec.loader.exec_module(module)
+            with pytest.raises(module.S04I05ReceptionError, match="nonempty role"):
+                module.receive_s04_i05_adaptive_outcome(
+                    unit=root,discovery=result,expected_replay_ref=result.replay_ref,
+                    candidate_receipt_ref=None,query_role=None,current_guard=lambda:True)
+        finally:
+            sys.modules.pop(spec.name,None)
     def evaluate(unit, history):
         knowledge, role, outcome = _receive(result,unit,candidate_receipt_ref=None,query_role=None)
         assert knowledge is None and role is None
@@ -185,3 +199,131 @@ def test_default_dhikr_exact_predecessor_identity_across_noncanonical_contexts()
             assert actual.payload_json == prior.payload_json
     finally:
         sys.modules.pop(spec.name,None)
+
+
+def test_all_eleven_native_candidate_families_and_every_role_reach_reception():
+    from rawlsing_next.pre553_discovery_exact import CANDIDATE_FAMILIES
+    rows = [{"id":f"R{x}{y}{g}","responses":{"X":x,"Y":y,"Z":x^y},
+             "coords":{"G":g}} for x,y,g in product((0,1),(0,1),("A","B"))]
+    source = native._build_source("COUNTER-FAMILIES",rows)
+    qa, da = native._query_authority("COUNTER-FAMILIES"), i05._d_auth("COUNTER-FAMILIES-discovery")
+    all_p = native._branch_predicate(source,qa,tag="all")
+    x1 = native._predicate(source,qa,native._response_leaf(source,qa,"X",1),tag="x1")
+    x0 = native._predicate(source,qa,native._response_leaf(source,qa,"X",0),tag="x0")
+    ga = native._predicate(source,qa,native._coordinate_leaf(source,"G","A"),tag="ga")
+    gb = native._predicate(source,qa,native._coordinate_leaf(source,"G","B"),tag="gb")
+    yq = native._query(source,qa,all_p,("Y",),tag="Y")
+    jq = native._query(source,qa,all_p,("X","Y","Z"),tag="J")
+    mq = [native._query(source,qa,all_p,(name,),tag="m"+name) for name in ("X","Y","Z")]
+    rules = []
+    for family in sorted(CANDIDATE_FAMILIES - {"BOUNDED_K_WAY_RESPONSE_CONFIGURATION","CONDITIONAL_REVERSAL_OR_SIMPSON"}):
+        if family in {"RESPONSE_X_COORDINATE_CONJUNCTION","BOUNDED_COORDINATE_CONJUNCTION"}:
+            form, args = "AND_COMBINATIONS",dict(atom_ids=("X1","GA") if family.startswith("RESPONSE") else ("GA","GB"),arity=2)
+        else:
+            form, args = "SINGLE_ATOM",dict(atom_ids=("GA",) if family in {"RESPONSE_X_EMPIRICAL_COORDINATE","UNARY_SOCIAL_FORK","MINORITY_OR_NONMODAL_DEPARTURE"} else ("X1",))
+        rules.append(i05._rule(family,family,form,baseline_atom_id="ALL",query_template_id="Y",
+                               validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"},**args))
+    rules.extend([
+        i05._rule("joint","BOUNDED_K_WAY_RESPONSE_CONFIGURATION","JOINT_DEPENDENCE",
+            baseline_atom_id="ALL",joint_template_id="J",marginal_template_ids=("M0","M1","M2"),
+            validation={"kind":"JOINT_NOT_PRODUCT_OF_MARGINALS"}),
+        i05._rule("reversal","CONDITIONAL_REVERSAL_OR_SIMPSON","REVERSAL_GRID",
+            baseline_atom_id="ALL",exposure_positive_atom_id="X1",exposure_negative_atom_id="X0",
+            stratum_atom_ids=("GA","GB"),query_template_id="Y",
+            validation={"kind":"CONDITIONAL_REVERSAL","target_cell":"1"}),
+    ])
+    grammar = i05._grammar(operation="I03-OP-COUNTER-FAMILIES-discovery",
+        atoms=[i05._atom(k,p,kind) for k,p,kind in
+               (("ALL",all_p,"BRANCH"),("X1",x1,"RESPONSE"),("X0",x0,"RESPONSE"),("GA",ga,"COORDINATE"),("GB",gb,"COORDINATE"))],
+        templates=[i05._qt("Y",yq),i05._qt("J",jq),*[i05._qt("M"+str(i),q) for i,q in enumerate(mq)]],
+        rules=rules,k=2,j=3)
+    result = i05._execute(source,qa,da,grammar,(all_p,x1,x0,ga,gb),(yq,jq,*mq))
+    assert {r.candidate_identity["family"] for r in result.receipts} == CANDIDATE_FAMILIES
+    _require_pinned_frontier(result,result.replay_ref)
+    _,_,_,unit,_ = _unit(result,"counter-families")
+    observed_roles = set()
+    for receipt in result.receipts:
+        for entry in receipt.candidate_identity["query_roles"]:
+            knowledge, role, outcome = _receive(result,unit,candidate_receipt_ref=receipt.ref,query_role=entry["role"])
+            assert role.material()["candidate_validation_state"] == receipt.typed_state
+            assert knowledge.material()["query_ref"] == dict(entry["query_ref"])
+            observed_roles.add(entry["role"])
+            assert not outcome.global_negative_claim
+    assert {"JOINT","MARGINAL_0","CONDITION","BASELINE","POOLED_POS","STRATUM:GA:NEG"} <= observed_roles
+
+
+@pytest.mark.parametrize("case,coverage",[
+    ("empty","EVALUATED_VALID_EMPTY"),
+    ("underpowered","EVALUATED_UNDERPOWERED"),
+    ("unresolved","EVALUATED_UNRESOLVED"),
+    ("unavailable","EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY"),
+])
+def test_native_nonpositive_fates_can_close_without_inventing_s04(case,coverage):
+    from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+    from rawlsing_next.tests.mx01r2_fresh_process_runner import _authority_with_minimum
+    tag="counter-fate-"+case
+    source = native._build_source(tag,[{"id":"R0","responses":{"Y":0}},{"id":"R1","responses":{"Y":1}}],
+        topology_by_question={"Y":"UNORDERED_MULTISELECT_SET"} if case=="unresolved" else None)
+    qa,da=native._query_authority(tag),i05._d_auth(tag+"-discovery")
+    pred=native._branch_predicate(source,qa,tag="all")
+    q=native._query(source,qa,pred,("Y",),tag=tag)
+    cell="1" if case!="empty" else "0"
+    if case=="empty":
+        pred=native._branch_predicate(source,qa,members=(),tag="empty")
+        q=native._query(source,qa,pred,("Y",),tag=tag)
+    grammar=i05._grammar(operation="I03-OP-"+tag+"-discovery",
+        atoms=[i05._atom("ALL",pred,"BRANCH")],templates=[i05._qt("Y",q)],
+        rules=[i05._rule("cell","UNARY_SOCIAL_FORK","BASE_QUERY",baseline_atom_id="ALL",query_template_id="Y",
+                        target_cells=(cell,),validation={"kind":"TARGET_CELL_SUPPORTED"})])
+    auth=_authority_with_minimum(source,grammar,da,3,tag=tag) if case=="underpowered" else i05._discovery_authority(source,grammar,da,tag=tag)
+    release=native._ref("C11LogicalRelease","missing-counter") if case=="unavailable" else source["release_ref"]
+    result=execute_exact_bounded_discovery(repository=source["repo"],discovery_authority=auth,
+        authority_registry=native._registry(source,qa,da),release_refs=(release,),predicate_catalog=(pred,),
+        query_template_catalog=(q,))
+    receipt=result.receipts[0]
+    assert receipt.coverage_state==coverage
+    _,_,_,unit,_=_unit(result,tag)
+    knowledge,role,outcome=_receive(result,unit,candidate_receipt_ref=receipt.ref,query_role=None)
+    assert knowledge is None and role is None
+    assert outcome.proposal_basis_ref==receipt.ref
+    assert outcome.unit_result_state.endswith("__NATIVE_RECEIPT_ONLY")
+    assert not outcome.global_negative_claim and not outcome.semantic_truth_effect
+
+
+@pytest.mark.parametrize("source_format",["SAV","DTA"])
+def test_combined_generated_cold_pipeline_exposes_revised_fibres(tmp_path,monkeypatch,source_format):
+    from rawlsing_next.tests import test_pyat_commission_b_saved_delivery as delivery
+    from rawlsing_next.pre553_s04_dhikr_comparative import DHIKRComparisonRequest
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+    opened=[]
+    original=delivery.open_saved_product
+    def capture(*args,**kwargs):
+        cold=original(*args,**kwargs)
+        opened.append(cold)
+        return cold
+    monkeypatch.setattr(delivery,"open_saved_product",capture)
+    # Actual owner's complete generated-source -> deleted native estate ->
+    # pinned S2-F -> FF01 and M1 test. No new source or custody implementation.
+    delivery.test_generated_joint_source_to_persistent_ff01(tmp_path,monkeypatch,source_format)
+    cold=opened[0]
+    closure=cold._closure
+    assert closure.i05_result.receipts
+    _require_pinned_frontier(closure.i05_result,closure.i05_result.replay_ref)
+    checked=0
+    for execution in closure.i03_results:
+        q=closure.query_by_ref(execution.query_ref)
+        if len(q.target_refs)!=2 or execution.facts[0].typed_state!="SUPPORTED":
+            continue
+        ws=cold.joint_workspace(q.ref)
+        comparison=ws.compare_dhikr(DHIKRComparisonRequest(1,(0,),max_depth=0,include_group_evidence=True))
+        node=comparison.material()["nodes"][0]
+        if not node["comparative_group_evidence"]:
+            continue
+        group=node["comparative_group_evidence"][0]
+        for fibre in group["conditional_target_fibres"]:
+            direct=ws.query(S04Projection((1,),{0:fibre["group_states"][0]})).material()
+            assert fibre["raw_group_full_case_n"]==direct["raw_selected_full_case_n"]
+            assert [r["conditional_raw_fraction"] for r in fibre["target_rows"]]==[
+                r["raw_fraction_of_selected_full_cases"] for r in direct["complete_output_cells"]]
+        checked+=1
+    assert checked

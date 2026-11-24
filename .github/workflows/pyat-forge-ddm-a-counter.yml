@@ -24,6 +24,8 @@ jobs:
           test "$actual" = "$EXPECTED"
           git fetch --depth=1 origin e00c130ca8b6ea96f0840185668437be0af9a56f
           git show e00c130ca8b6ea96f0840185668437be0af9a56f:rawlsing_next/pre553_s04_dhikr_comparative.py > "$RUNNER_TEMP/forge_a_predecessor.py"
+          git fetch --depth=1 origin 8323d4d392bd305fe019a8fb0fc7d7faef4edbb6
+          git show 8323d4d392bd305fe019a8fb0fc7d7faef4edbb6:rawlsing_next/pre553_s04_i05_reception.py > "$RUNNER_TEMP/forge_b_predecessor_i05.py"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -32,6 +34,7 @@ jobs:
         env:
           PYTHONPATH: .
           FORGE_A_PREDECESSOR: ${{ runner.temp }}/forge_a_predecessor.py
+          FORGE_B_PREDECESSOR_I05: ${{ runner.temp }}/forge_b_predecessor_i05.py
         run: |
           python -m pytest -q -o addopts='' \
             rawlsing_next/tests/test_pre553_forge_ddm_a_counter.py \
