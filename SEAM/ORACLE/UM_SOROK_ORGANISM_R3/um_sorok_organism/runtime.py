@@ -442,6 +442,8 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if selected_alternative and selected_alternative.get('human_food_offer_ref'):
+                practical['selected_human_food_offer_ref']=selected_alternative['human_food_offer_ref']
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -530,7 +532,7 @@ class ConstitutiveRuntime:
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
         human_vocal = None
-        if (principal.action == 'SING' and principal.target in
+        if (principal.action in ('SING','SIGNAL') and principal.target in
                 world.get('neighbor_users', {}) and requested_action is None):
             history = self.ledger.events()
             human_vocal = qualified_human_vocal_receipt(
