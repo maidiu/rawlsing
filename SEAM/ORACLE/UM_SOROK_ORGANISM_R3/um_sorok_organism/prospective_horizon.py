@@ -140,6 +140,8 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'matching_present_terms': sorted(original_match),
                 'functional_bridge_ref':op_bridge.get('binding_ref') if op_bridge else None,
                 'historical_analogy_is_provisional':bool(op_bridge),
+                'conditional_means_revision_ref':(
+                    op_bridge.get('conditional_means_revision_ref') if op_bridge else None),
                 'same_object_world_continuity_not_actor_concept':bool(object_continuity),
                 'source_material_object_ref':(source_object if object_continuity else None),
                 'source_qualified_addressee_ref':historically_perceived_other,
@@ -256,12 +258,21 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
                  if b.get('id')==trial.get('functional_bridge_ref')
                  and b.get('actor')==actor['id']
                  and b.get('possible_end_ref')==end['id']
-                 and b.get('status')=='POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF'
+                 and b.get('status') in ('POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF',
+                                          'ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS')
                  and b.get('scope')=='ONE_QUALIFIED_PROSPECTIVE_TRIAL'
                  and b.get('candidate_operation')==trial['operation']
                  and b.get('dissimilar_means_basis',{}).get('later_location')==experience.get('location')]
-        if (len(matches)!=1 or any(t.get('functional_bridge_ref')==matches[0]['id']
-                                  for t in end.get('trial_history',[]))):
+        if len(matches)!=1:
+            raise ValueError('POSSIBLE_END_TRIAL_UNQUALIFIED_NOVEL_MEANS')
+        binding=matches[0]
+        if binding['status']=='ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS':
+            if (not binding.get('revision_history')
+                    or trial.get('conditional_means_revision_ref')!=binding['revision_history'][-1]['id']):
+                raise ValueError('POSSIBLE_END_TRIAL_STALE_CONDITIONAL_MEANS')
+        elif (trial.get('conditional_means_revision_ref') is not None
+              or any(t.get('functional_bridge_ref')==binding['id']
+                     for t in end.get('trial_history',[]))):
             raise ValueError('POSSIBLE_END_TRIAL_UNQUALIFIED_NOVEL_MEANS')
     if (end.get('origin_event') == event_ref or
             trial.get('origin_event') != end['origin_event']):
@@ -287,6 +298,7 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         'eliciting_possible_end_ref': end['id'],
         'original_end_origin_event': end['origin_event'],
         'functional_bridge_ref': trial.get('functional_bridge_ref'),
+        'conditional_means_revision_ref':trial.get('conditional_means_revision_ref'),
         'means_substitution_proposed_before_event': bool(
             trial.get('is_means_substitution')),
         'experience_proves_cause': False,

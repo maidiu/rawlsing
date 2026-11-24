@@ -201,6 +201,133 @@ def admit_functional_correspondence(actor, experience, event_ref, candidate):
             'grade':GRADE}
 
 
+def possible_functional_revisions(actor, experience, event_ref):
+    """Historically earned local consolidation or inhibition of a lived means.
+
+    The first exploratory trial is not its own consolidation. An independent
+    later relevant episode must be lived, and the semantic owner may abstain.
+    The old possibility and its attempted courses are never deleted.
+    """
+    aid=actor.get('id')
+    operation=experience.get('own_action')
+    clock=experience.get('clock')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or type(operation) is not str or not experience.get('participated')
+            or (experience.get('felt_enactment') or {}).get('attempted_operation')!=operation):
+        return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if type(c) is dict and c.get('source_actor')==aid
+           and c.get('kind')=='performed_'+operation.lower()
+           and type(c.get('id')) is str]
+    if len(signs)!=1:return []
+    rows=actor.get('lived_genesis_episodes',[])
+    current=[e for e in rows if e.get('actor')==aid
+             and e.get('event_ref')==event_ref
+             and e.get('experience_ref')==experience.get('ref')
+             and e.get('clock')==clock
+             and e.get('location')==experience.get('location')
+             and e.get('actor_felt_attempt')==operation
+             and signs[0]['id'] in e.get('received_sign_refs',[])]
+    if len(current)!=1:return []
+    current=current[0]
+    ends={e['id']:e for e in actor.get('possible_ends',[])
+          if e.get('status')=='POSSIBLE_NOT_ACQUIRED_MOTIVE'}
+    by_id={e['id']:e for e in rows if e.get('actor')==aid}
+    by_event={(e.get('event_ref'),e.get('experience_ref')):e
+              for e in rows if e.get('actor')==aid}
+    candidates=[]
+    for bridge in actor.get('functional_bindings',[])[-128:]:
+        status=bridge.get('status')
+        if status not in ('POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF',
+                          'ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS'):
+            continue
+        basis=bridge.get('dissimilar_means_basis')
+        end=ends.get(bridge.get('possible_end_ref'))
+        if (type(basis) is not dict or not end or bridge.get('actor')!=aid
+                or bridge.get('candidate_operation')!=operation
+                or basis.get('later_location')!=current['location']
+                or end.get('origin_material_object_ref') is not None
+                or end.get('addressed_party_ref') is not None):
+            continue
+        history=bridge.get('revision_history',[])
+        if any(h.get('event_ref')==event_ref for h in history):continue
+        seed=by_id.get(basis.get('later_episode_ref'))
+        if not seed or seed.get('event_ref')!=bridge.get('origin_event'):continue
+        trials=[t for t in end.get('trial_history',[])
+                if t.get('functional_bridge_ref')==bridge['id']
+                and t.get('operation')==operation
+                and t.get('event_ref')!=event_ref]
+        if not trials:continue
+        first=trials[0]
+        tested=by_event.get((first.get('event_ref'),first.get('experience_ref')))
+        if (not tested or tested.get('actor_felt_attempt')!=operation
+                or tested.get('location')!=current['location']
+                or not seed['clock']<tested['clock']<clock):
+            continue
+        shared=set(basis.get('shared_lived_relief_axes',[]))
+        reproduced=sorted(shared & set(seed.get('received_relief',{}))
+                          & set(tested.get('received_relief',{}))
+                          & set(current.get('received_relief',{})))
+        adverse=bool(current.get('unfinished_own_activity')
+                     or current.get('personally_lived_adverse_course'))
+        if status=='POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF':
+            if (history or adverse or not reproduced
+                    or first.get('actor_experienced_status')!='PERFORMED'
+                    or experience.get('status')!='PERFORMED'
+                    or (experience.get('own_practical_selection') or {}).get('possible_end_trial')):
+                continue
+            mode='CONSOLIDATE'
+        else:
+            if (not history or history[-1].get('mode')!='CONSOLIDATE'
+                    or history[-1].get('clock',clock)>=clock or not adverse):
+                continue
+            mode='SUSPEND'
+        candidates.append({
+            'kind':'REVISE_FUNCTIONAL_CORRESPONDENCE',
+            'binding_ref':bridge['id'],'mode':mode,
+            'revision_basis':{
+                'possible_end_ref':end['id'],
+                'initial_episode_ref':seed['id'],
+                'first_bridge_trial_ref':first['id'],
+                'first_bridge_trial_episode_ref':tested['id'],
+                'later_episode_ref':current['id'],
+                'later_event_ref':event_ref,'later_experience_ref':experience['ref'],
+                'later_received_sign_ref':signs[0]['id'],
+                'operation':operation,'location':current['location'],
+                'reproduced_relief_axes':reproduced,
+                'later_incomplete':bool(current.get('unfinished_own_activity')),
+                'later_adverse_axes':sorted(current.get('personally_lived_adverse_course',{})),
+                'prior_status':status,
+                'previous_revision_ref':history[-1]['id'] if history else None,
+            },
+        })
+        if len(candidates)>=3:break
+    return candidates
+
+
+def admit_functional_revision(actor, experience, event_ref, candidate):
+    """Same actor, same bridge identity, recomputed historical occasion."""
+    if set(candidate)!={'kind','binding_ref','mode','revision_basis'}:
+        raise ValueError('FUNCTIONAL_REVISION_UNQUALIFIED_FIELDS')
+    matches=[c for c in possible_functional_revisions(actor,experience,event_ref)
+             if c==candidate]
+    if len(matches)!=1:raise ValueError('FUNCTIONAL_REVISION_NO_LIVED_BASIS')
+    bridge=next(b for b in actor['functional_bindings'] if b['id']==candidate['binding_ref'])
+    mode=candidate['mode']
+    previous=bridge['status']
+    status=('ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS' if mode=='CONSOLIDATE'
+            else 'SUSPENDED_CONDITIONAL_FUNCTIONAL_MEANS')
+    revision={'id':stable_id('functional_revision',{'binding':bridge['id'],
+                  'event':event_ref,'mode':mode}),
+              'event_ref':event_ref,'clock':experience['clock'],'mode':mode,
+              'previous_status':previous,'new_status':status,
+              'basis':copy(candidate['revision_basis']),'grade':GRADE}
+    bridge.setdefault('revision_history',[]).append(revision)
+    bridge['status']=status
+    return {'kind':candidate['kind'],'binding_ref':bridge['id'],
+            'revision_ref':revision['id'],'status':status,'grade':GRADE}
+
+
 def project_functional_correspondences(constitution, access):
     if constitution.actor!=access.actor:
         raise ValueError('FUNCTIONAL_COMPOSITION_ACTOR_MISMATCH')
@@ -213,7 +340,8 @@ def project_functional_correspondences(constitution, access):
     }
     body={'body':constitution.body}
     for bridge in getattr(constitution,'functional_bindings',[]):
-        if (bridge.get('status')!='POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF'
+        reusable=bridge.get('status')=='ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS'
+        if not reusable and (bridge.get('status')!='POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF'
                 or bridge.get('id') in already_used):
             continue
         end=next((x for x in constitution.possible_ends
@@ -240,6 +368,9 @@ def project_functional_correspondences(constitution, access):
                 continue
             projected['candidate_operation']=bridge['candidate_operation']
             projected['dissimilar_means_basis']=copy(bridge['dissimilar_means_basis'])
+            if reusable:
+                projected['conditional_means_revision_ref']=bridge['revision_history'][-1]['id']
+                projected['reusable_contextual_means_not_motive']=True
         active.append(projected)
         readset.append(bridge['id'])
     return {'active':active,'readset':sorted(set(readset)),

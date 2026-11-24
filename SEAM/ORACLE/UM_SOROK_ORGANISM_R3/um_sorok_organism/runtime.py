@@ -52,7 +52,8 @@ from .co_regulation_history import (
 from .plural_care_paths import (
     conserve_lived_high_resolution_care, plural_acquisition_candidate,
     sourcequalified_reopening)
-from .functional_correspondence import propose_actor_lived_correspondences
+from .functional_correspondence import (propose_actor_lived_correspondences,
+                                        possible_functional_revisions)
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import render_blind_interview
@@ -805,6 +806,8 @@ class ConstitutiveRuntime:
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),
+                'historically_possible_functional_revisions':copy(
+                    possible_functional_revisions(actors[aid],experience,objective_ref)),
                 'historically_possible_material_meanings':copy(
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(
