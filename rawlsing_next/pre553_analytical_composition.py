@@ -742,7 +742,7 @@ def _validate_joint_grain(
 ) -> None:
     """Validate joint/multi-component target configuration."""
     universes = _refs(empirical_query.empirical_universe_refs, "empirical_universe_refs")
-    targets = _refs(empirical_query.target_refs, "target_refs")
+    targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     if len(universes) != 1:
         raise AnalyticalCompositionError("C1 joint path requires SINGLE_UNIVERSE producer scope")
     if universes[0] != consumer_query.source_universe_ref:
@@ -893,7 +893,7 @@ def _validate_direct_grain(
     release_refs: tuple[ExactRef, ...],
 ) -> None:
     universes = _refs(empirical_query.empirical_universe_refs, "empirical_universe_refs")
-    targets = _refs(empirical_query.target_refs, "target_refs")
+    targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     if len(universes) != 1:
         raise AnalyticalCompositionError("C1-01 requires SINGLE_UNIVERSE producer scope")
     if universes[0] != consumer_query.source_universe_ref:
@@ -948,7 +948,7 @@ def _supported_geometry(
         for component in topology["components"]:
             components.append(component)
         target_info = {
-            "target_refs": [t.as_dict() for t in _refs(empirical_query.target_refs, "target_refs")],
+            "target_refs": [t.as_dict() for t in tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)],
             "arity": topology["arity"],
             "joint_order_semantics": topology["joint_order_semantics"],
             "components": components,
@@ -1257,7 +1257,7 @@ def compose_positioned_subject_possibility(
     auth_items = list(fact.authority_snapshot_refs)
     auth_items.extend(condition_binding_witness.pairing_authority_refs)
     authorities = _auths(auth_items, "authority_refs")
-    ordered_targets = _refs(empirical_query.target_refs, "target_refs")
+    ordered_targets = tuple(_exact(ref, "target_refs") for ref in empirical_query.target_refs)
     measure_kind = getattr(
         fact, "measure_kind", empirical_query.requested_output_grain.get("measure_kind")
     )
