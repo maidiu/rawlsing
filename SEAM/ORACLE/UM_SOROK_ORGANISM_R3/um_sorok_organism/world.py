@@ -61,6 +61,135 @@ def add_cue(world,kind,tags,location='all',modality='visual',description='',sour
     return cue
 
 
+
+# Source adaptation: NEIGHBOR R6 neighbor_runtime.sensory_evidence,
+# exact donor 3dd615548bdce06de0ec1f173a3c5089e1345da7,
+# blob 30192d5c927e52c3a8256f5a5ab8ebd0a17e0080 (P6/MIII-derived).
+# Unlike visitor ingress, this reader concerns two constituted actors.
+# Directional paths are explicitly fictional WORLD conditions, not inferred
+# by a semantic proposal, a viewer's private gaze, or actor co-presence.
+
+def register_recursive_encounter_paths(world, actors, spec):
+    """Install finite, directed material paths in the existing world owner."""
+    if (type(spec) is not dict or set(spec)!={'grade','source_ref','paths'}
+            or spec['grade']!='SOURCEFREE_TEST_ONLY'
+            or type(spec['source_ref']) is not str or not spec['source_ref']
+            or type(spec['paths']) is not list or not 1<=len(spec['paths'])<=256):
+        raise ValueError('ENCOUNTER_PATH_SOURCE_UNQUALIFIED')
+    fields={'observer','source_actor','location','from_clock','through_clock',
+            'hearing','sound_path','visual','light','sightline','facing'}
+    history=world.get('recursive_encounter_paths',[])
+    if type(history) is not list:
+        raise ValueError('ENCOUNTER_PATH_HISTORY_INVALID')
+    prepared=[]
+    for row in spec['paths']:
+        if type(row) is not dict or set(row)!=fields:
+            raise ValueError('ENCOUNTER_PATH_INVALID_FIELDS')
+        observer=row['observer']; source=row['source_actor']
+        start=row['from_clock']; end=row['through_clock']
+        if (type(observer) is not str or type(source) is not str
+                or observer==source or observer not in actors or source not in actors
+                or type(row['location']) is not str
+                or row['location'] not in world['sites']
+                or type(start) is not int or type(end) is not int
+                or start<world['clock'] or not start<=end<=start+3650
+                or type(row['hearing']) is not bool or type(row['visual']) is not bool
+                or row['sound_path'] not in ('audible','blocked','unknown')
+                or row['light'] not in ('lit','dark','unknown')
+                or row['sightline'] not in ('unobstructed','partial','blocked','unknown')
+                or row['facing'] not in ('source','away','unknown')):
+            raise ValueError('ENCOUNTER_PATH_INVALID_CONDITION')
+        for prior in history+prepared:
+            if (all(prior.get(k)==row[k] for k in (
+                    'observer','source_actor','location'))
+                    and max(prior['from_clock'],start)<=min(prior['through_clock'],end)):
+                raise ValueError('ENCOUNTER_PATH_OVERLAPPING_SOURCE')
+        sealed=copy(row)
+        sealed.update({'source_ref':spec['source_ref'],'grade':spec['grade'],
+                       'id':stable_id('recursive_sensory_path',{
+                           'world':world['id'],'source_ref':spec['source_ref'],'path':row})})
+        prepared.append(sealed)
+    world.setdefault('recursive_encounter_paths',[]).extend(prepared)
+    return {'path_refs':[row['id'] for row in prepared],
+            'source_ref':spec['source_ref'],
+            'not_actor_exposure_or_attention':True,'grade':spec['grade']}
+
+
+def recursive_encounter_channels(world, observer, source, location):
+    """Pure directional channel read; None preserves the inherited coarse gate.
+
+    A missing active path is UNKNOWN at the original approximation grade,
+    not proof of sound or visibility. An explicit blocked/unknown channel
+    does not qualify access. The read is anchored in current world time.
+    """
+    if source==observer or source is None:
+        return None
+    matches=[p for p in world.get('recursive_encounter_paths',[])
+             if p.get('observer')==observer and p.get('source_actor')==source
+             and p.get('location')==location
+             and p['from_clock']<=world['clock']<=p['through_clock']]
+    if not matches:return None
+    if len(matches)!=1 or matches[0].get('grade')!='SOURCEFREE_TEST_ONLY':
+        raise ValueError('ENCOUNTER_PATH_AMBIGUOUS_OR_UNQUALIFIED')
+    p=matches[0]
+    return {'path_ref':p['id'],
+            'audible':p['hearing'] is True and p['sound_path']=='audible',
+            'visible':p['visual'] is True and p['light']=='lit'
+                and p['sightline']=='unobstructed' and p['facing']=='source'}
+
+
+def project_recursive_actor_sign(world, actor, cue, location):
+    """Adapt NEIGHBOR's auditory/visual distinction to CO's existing cue read.
+
+    Never mutate the world cue. An anonymous auditory sign retains its exact
+    objective cue ID for audit but omits source identity, target, outcome and
+    referent. This is not proof of actor attention or speaker recognition.
+    """
+    source=cue.get('source_actor')
+    if source==actor['id']:
+        return copy(cue)
+    channels=recursive_encounter_channels(world,actor['id'],source,location)
+    if channels is None:return copy(cue)
+    modality=cue.get('modality','visual')
+    if modality=='visual' and not channels['visible']:return None
+    if modality=='auditory' and not channels['audible']:return None
+    # This source qualifies auditory/visual paths only; inherited tactile and
+    # olfactory receipts continue under their own coarse access law.
+    if modality not in ('visual','auditory'):return copy(cue)
+    speech=cue.get('kind') in ('speech','performed_speak','visitor_speech')
+    language=actor.get('body',{}).get('language',0)
+    if type(language) not in (int,float) or not math.isfinite(language) or not 0<=language<=1:
+        raise ValueError('ENCOUNTER_INVALID_LANGUAGE')
+    if modality=='auditory' and (not channels['visible'] or (speech and language<.35)):
+        # A child can have a real voice encounter without inheriting an adult
+        # propositional description. Preserve source identity only when the
+        # simultaneous visual channel is qualified, never by sound alone.
+        result={k:copy(cue[k]) for k in (
+            'id','clock','last_access_clock','location','modality','threshold')
+            if k in cue}
+        result.update({'kind':'heard_voice' if speech else 'heard_sound',
+            'tags':['voice','speech_sound'] if speech else ['sound'],
+            'description':'Speech sounds nearby.' if speech else 'A sound nearby.',
+            'source_actor':source if channels['visible'] else None,
+            'lexical_comprehension':'NOT_ESTABLISHED',
+            'source_identity_visually_eligible_not_recognition':channels['visible'],
+            'encounter_path_ref':channels['path_ref'],
+            'not_actor_attention_or_understanding':True})
+        return result
+    result=copy(cue)
+    result['encounter_path_ref']=channels['path_ref']
+    result['not_actor_attention_or_understanding']=True
+    # A visible principal does not confer visibility of other participants.
+    for field in ('actor_accessible_target_ref',
+                  'actor_accessible_care_responder_ref',
+                  'actor_accessible_speech_responder_ref'):
+        other=result.get(field)
+        other_path=recursive_encounter_channels(world,actor['id'],other,location)
+        if other_path is not None and not other_path['visible']:
+            result.pop(field,None)
+    return result
+
+
 def _field(world,a,b):
     ids=sorted((a,b));key='rel:'+':'.join(ids)
     return world['relations'].setdefault(key,{'id':key,'participants':ids,
