@@ -521,6 +521,139 @@ class HistoricalSelfAndPrecueR19(unittest.TestCase):
             actor,now,'world:course3'),[])
         self.assertEqual(actor['historical_orientations'],[])
 
+    def test_mulch_r31_reopen_requires_two_new_courses_and_keeps_identity(self):
+        actor=adult('reopen','Reopen')
+        self._r29_lived_in_other_presence(actor,'a',1,'father','APPROACH')
+        e=self._r29_lived_in_other_presence(actor,'b',2,'father','APPROACH')
+        ref=admit(actor,e,'world:b',possible_lived_directional_orientation(
+            actor,e,'world:b'))[0]['ref']
+        inhibit=lived(actor['id'],'inhibit',clock=3)
+        admit(actor,inhibit,'world:inhibit',[{
+            'kind':'REVISE_HISTORICAL_ORIENTATION',
+            'orientation_ref':ref,'revision_mode':'INHIBIT'}])
+        old=deepcopy(actor['historical_orientations'][0])
+        first=self._r29_lived_in_other_presence(
+            actor,'c',4,'father','APPROACH')
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,first,'world:c'),[])
+        self.assertFalse(any(c.get('ref')==ref for c in
+            self._r29_situated_beside(actor,'father').currents))
+        latest=self._r29_lived_in_other_presence(
+            actor,'d',5,'father','APPROACH')
+        candidate=possible_lived_directional_orientation(
+            actor,latest,'world:d')[0]
+        self.assertEqual(candidate['kind'],'REVISE_HISTORICAL_ORIENTATION')
+        self.assertEqual(candidate['revision_mode'],'REINSTATE')
+        self.assertEqual(candidate['orientation_ref'],ref)
+        self.assertEqual(candidate['lived_genesis_basis']['source_event_refs'],
+                         ['world:c','world:d'])
+        before=deepcopy(actor)
+        forged=deepcopy(candidate)
+        forged['lived_genesis_basis']['source_event_refs'][0]='world:a'
+        for bad in (forged,{'kind':'REVISE_HISTORICAL_ORIENTATION',
+                            'orientation_ref':ref,'revision_mode':'REINSTATE'},
+                    {**candidate,'kind':'ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION'}):
+            with self.assertRaises(InvalidDevelopment):
+                admit(actor,latest,'world:d',[bad])
+            self.assertEqual(actor,before)
+        admit(actor,latest,'world:d',[candidate])
+        self.assertEqual(len(actor['historical_orientations']),1)
+        row=actor['historical_orientations'][0]
+        self.assertEqual(row['id'],ref)
+        self.assertEqual(row['origin_event'],old['origin_event'])
+        self.assertEqual(row['lived_genesis_basis'],old['lived_genesis_basis'])
+        self.assertEqual(row['revisions'][0],old['revisions'][0])
+        self.assertEqual(row['revisions'][1]['lived_genesis_basis'],
+                         candidate['lived_genesis_basis'])
+        self.assertTrue(any(c.get('ref')==ref for c in
+            self._r29_situated_beside(actor,'father').currents))
+        self.assertFalse(any(c.get('ref')==ref for c in
+            self._r29_situated_beside(actor,'mother').currents))
+        self.assertEqual(possible_lived_directional_orientation(
+            actor,latest,'world:d'),[])
+
+    def test_mulch_r31_runtime_reinstates_one_history_across_two_cold_reopens(self):
+        parent={'source_ref':'R31_FICTIONAL_PARENT',
+                'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'r31':'not_a_survey_observation'},
+                'fictional_seed':{'projects':[]}}
+        control={'inhibit':None}
+        offered=[]
+        def callback(task,packet):
+            if task=='adult_constructor':
+                return HeuristicSemanticProvider().propose(task,packet)
+            if task=='development':
+                if packet['actor']['id']=='mother':
+                    if (control['inhibit'] is not None and
+                            packet['experience'].get('own_action')=='WAIT'):
+                        return {'task':task,'candidates':[{
+                            'kind':'REVISE_HISTORICAL_ORIENTATION',
+                            'orientation_ref':control['inhibit'],
+                            'revision_mode':'INHIBIT'}]}
+                    available=packet.get(
+                        'historically_possible_lived_directional_orientation',[])
+                    offered.extend(deepcopy(available))
+                    return {'task':task,'candidates':available}
+                return {'task':task,'candidates':[]}
+            if task=='expression':
+                return {'task':task,'surface':'The household continues.'}
+            if task=='actor_attempt':
+                return {'task':task,'action':'WAIT'}
+            raise AssertionError(task)
+        service=ValidatingSemanticService(CallbackLLMProvider(callback))
+        def orientation_rows(rt):
+            return [r for r in rt.snapshot('mother')['historical_orientations']
+                    if r.get('acquisition')=='REPEATED_LIVED_BODY_COURSE'
+                    and r['operation']=='REST']
+        def recruited(rt,ref):
+            return any(c.get('ref')==ref and c.get('polarity')=='APPROACH'
+                       for c in rt.situated('mother')['currents'])
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'r31.sqlite3')
+            rt=ConstitutiveRuntime(db,semantic=service)
+            try:
+                rt.initialize([('mother','Mother',parent),
+                               ('father','Father',parent)])
+                for _ in range(2):
+                    self.assertEqual(rt.step('mother',requested_action='REST')[
+                        'status'],'PERFORMED')
+                rows=orientation_rows(rt)
+                self.assertEqual(len(rows),1)
+                ref=rows[0]['id']
+                self.assertTrue(recruited(rt,ref))
+                control['inhibit']=ref
+                rt.step('mother',requested_action='WAIT')
+                control['inhibit']=None
+                self.assertFalse(recruited(rt,ref))
+                self.assertTrue(rt.verify()['valid'])
+            finally:
+                rt.close()
+            cold=ConstitutiveRuntime(db,semantic=service)
+            try:
+                self.assertFalse(recruited(cold,ref))
+                cold.step('mother',requested_action='REST')
+                self.assertFalse(recruited(cold,ref))
+                self.assertEqual(len(orientation_rows(cold)[0]['revisions']),1)
+                cold.step('mother',requested_action='REST')
+                self.assertTrue(recruited(cold,ref))
+                rows=orientation_rows(cold)
+                self.assertEqual(len(rows),1)
+                self.assertEqual(rows[0]['id'],ref)
+                self.assertEqual([v['mode'] for v in rows[0]['revisions']],
+                                 ['INHIBIT','REINSTATE'])
+                self.assertEqual(offered[-1]['kind'],
+                                 'REVISE_HISTORICAL_ORIENTATION')
+                self.assertTrue(cold.verify()['valid'])
+            finally:
+                cold.close()
+            restored=ConstitutiveRuntime(db)
+            try:
+                self.assertTrue(recruited(restored,ref))
+                self.assertEqual(len(orientation_rows(restored)),1)
+                self.assertTrue(restored.verify()['valid'])
+            finally:
+                restored.close()
+
     def test_mulch_r29_cross_other_episodes_cannot_fake_repetition(self):
         actor=adult('daughter','Daughter')
         self._r29_lived_in_other_presence(actor,'a',1,'father','WITHHOLD')
