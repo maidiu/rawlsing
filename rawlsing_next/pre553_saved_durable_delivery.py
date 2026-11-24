@@ -401,6 +401,24 @@ class ColdSavedProduct:
         self._live()
         return receipt, consumed
 
+    def read_learned(self, artifact_path, *, expected_root, expected_purpose_ref):
+        """Reuse a retained S2-G product; historical sourcefree scope only.
+
+        The archive pin and purpose are supplied by the caller, not discovered
+        from the archive. Current lifecycle authority remains external.
+        """
+        from rawlsing_next.pre553_durable_learned_lifecycle import open_learned_lifecycle
+        self._live()
+        artifact = open_learned_lifecycle(
+            artifact_path, expected_root=expected_root).require_trusted()
+        _require(artifact.determinants.s2f_root_identity == self._closure.root_identity
+                 and artifact.determinants.release_ref == self._closure.release_identities[0].release_ref
+                 and artifact.determinants.purpose_ref == exact_ref(expected_purpose_ref),
+                 "LEARNED_ARCHIVE_OR_PURPOSE_BINDING_DRIFT")
+        result = artifact.consume(self._closure.root_path)
+        self._live()
+        return result
+
     def m1_bundle(self):
         self._live()
         result = self._closure.m1_bundle_from_declared_binding()

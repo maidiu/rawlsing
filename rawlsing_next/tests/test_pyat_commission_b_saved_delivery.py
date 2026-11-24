@@ -274,6 +274,41 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     projection_result = ws.query(S04Projection((0,1), {}))
     assert projection_result.material()["raw_selected_full_case_n"] == 5
     assert ws.query_by_refs(tuple(exact_ref(r) for r in query.target_refs), {}).ref == projection_result.ref
+    from rawlsing_next.pre553_s04_dhikr_comparative import DHIKRComparisonRequest
+    comparison = ws.compare_dhikr(DHIKRComparisonRequest(
+        1, (0,), max_depth=0, include_group_evidence=True))
+    assert comparison.material()["nodes"][0]["raw_same_case_n"] == 5
+    # Real archived discovery evidence, not an independently invented M1 bundle.
+    from rawlsing_next.pre553_durable_empirical_closure import open_empirical_closure
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+        _binding, _m1_authority, _registry,
+    )
+    from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+    closure = open_empirical_closure(result.receipt.root_path,
+                                    expected_root=result.receipt.root_identity).require_trusted()
+    discovery = closure.i05_result
+    candidates = [r for r in discovery.receipts
+                  if r.typed_state == "DISCOVERED_RESULT_SUPPORTED"]
+    assert candidates, "no supported original discovery receipt"
+    selected = candidates[0]
+    authority = _m1_authority("commission-b-generated-" + source_format)
+    binding = _binding(authority)
+    ingress = _contract(route="M01_M1_M2_B5", binding=binding,
+                        tag="commission-b-generated-" + source_format)
+    bundle, disposition = cold.adjudicate_m1(
+        contract=ingress, family_rule_binding=binding,
+        selected_discovery_receipt_refs=(selected.ref,),
+        requested_scope={"fixture": "GENERATED_SOURCEFREE_SAVED_PIPELINE"},
+        validator_registry=_registry(binding),
+        additional_authority_snapshots=(authority,),
+    )
+    assert selected.ref in disposition.discovery_result_receipt_refs
+    assert {f.ref for f in bundle.empirical_facts}.issubset(
+        {f.ref for f in closure.object_graph.empirical_facts})
+    assert closure.exact_ref in bundle.additional_dependency_refs
+    assert exact_ref(disposition.determinant_explanation_receipt.input_bundle_ref) == bundle.ref
+    print("SAVED_M1", source_format, disposition.adjudication_outcome, selected.ref.key,
+          canonical_json(selected.candidate_identity))
     print("SAVED_JOINT_FF01", source_format, result.batch_census["unit_count"],
           result.execution_seconds, result.publication_seconds,
           result.receipt.referenced_physical_bytes, ff.ref.key)
