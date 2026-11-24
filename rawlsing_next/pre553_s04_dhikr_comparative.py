@@ -302,6 +302,7 @@ def _conditional_target_fibres(projection_material, min_branch_n):
     for group_states, target_counts in groups.values():
         n = sum(count for _, count in target_counts)
         modal_n = max((count for _, count in target_counts), default=0)
+        modal_count = sum(count == modal_n for _, count in target_counts) if n else 0
         target_rows = []
         for state, count in target_counts:
             fraction = Fraction(count, n) if n else None
@@ -315,8 +316,8 @@ def _conditional_target_fibres(projection_material, min_branch_n):
                 "sample_modal_disposition": (
                     "NO_OBSERVED_GROUP_SUPPORT" if not n
                     else "OBSERVED_ZERO_IN_GROUP" if not count
-                    else "CO_MODAL" if count == modal_n
-                    else "OBSERVED_NONMODAL_ALTERNATIVE"
+                    else ("UNIQUE_MODAL" if modal_count == 1 else "CO_MODAL")
+                    if count == modal_n else "OBSERVED_NONMODAL_ALTERNATIVE"
                 ),
             })
         fibres.append({
@@ -715,20 +716,28 @@ def analyze_s04_dhikr(
         data = selected(keys)
         n = sum(count for _, count in data)
         remaining = tuple(a for a in request.predictor_axes if a not in dict(keys))
+        # The legacy diagnostic pair inventory is independent of the
+        # recursion order limit. Compute each required group once per node,
+        # then reuse that same numerical evidence for all three consumers:
+        # singleton hierarchy, pair interactions and bounded group ranking.
+        evaluated = _group_associations(
+            data, request.target_axis, remaining,
+            max(2, request.max_interaction_order),
+        ) if n >= request.min_branch_n else []
+        by_group = dict(evaluated)
         scores = []
         if n >= request.min_branch_n:
             for axis in remaining:
-                metrics = _association(data, request.target_axis, (axis,))
-                scores.append({"axis": axis, **metrics})
+                scores.append({"axis": axis, **by_group[(axis,)]})
         scores.sort(key=lambda v: (
             -(v["information_bits"] or 0), v["axis"]
         ))
         interactions = []
         if n >= request.min_branch_n:
             for a, b in combinations(remaining, 2):
-                ia = _association(data, request.target_axis, (a,))["information_bits"]
-                ib = _association(data, request.target_axis, (b,))["information_bits"]
-                iab = _association(data, request.target_axis, (a, b))["information_bits"]
+                ia = by_group[(a,)]["information_bits"]
+                ib = by_group[(b,)]["information_bits"]
+                iab = by_group[(a, b)]["information_bits"]
                 interaction = round(iab - ia - ib, 12) if ia is not None and ib is not None and iab is not None else None
                 interactions.append({
                     "axes": [a, b], "joint_information_bits": iab,
@@ -739,9 +748,8 @@ def analyze_s04_dhikr(
                         else "ZERO_OR_UNRESOLVED_SAMPLE_INTERACTION__NONCAUSAL"
                     ),
                 })
-        group_associations = _group_associations(
-            data, request.target_axis, remaining, request.max_interaction_order
-        ) if n >= request.min_branch_n else []
+        group_associations = [(group, metrics) for group, metrics in evaluated
+                              if len(group) <= request.max_interaction_order]
         frontier_groups = _priority_groups(group_associations)
         best = frontier_groups[0] if frontier_groups else None
         split_axis = best[2][0] if best is not None else None
