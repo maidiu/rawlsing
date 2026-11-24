@@ -1,0 +1,930 @@
+"""NEIGHBORMULCH sourcefree one-writer encounter-side research consumer.
+
+The *existing* UM-SOROK ResearchLedger is the sole world/actor transaction
+writer. Visitors are world participants, NOT fictitious psychological actors.
+P6/MIII sensory distinctions are recovered into actor-qualified world evidence;
+P6's separate session writer is never called. MII remains a private reader.
+
+This is a bounded first-consumer candidate, not native P2/P6 integration,
+identity authentication, developmental science or a complete human encounter.
+"""
+from __future__ import annotations
+
+from copy import deepcopy
+from pathlib import Path
+from types import SimpleNamespace
+from typing import Any
+import fcntl
+
+from um_sorok_organism.types import digest, stable_id, GRADE
+from um_sorok_organism.world import add_cue
+from um_sorok_organism.material_objects import material_objects_present
+from um_sorok_organism.practical_inquiry import notices_present
+
+
+class EncounterRefusal(ValueError):
+    """A user cannot create world, actor, source or sensory rights by prose."""
+
+
+_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR'})
+
+
+def _text(value: Any, label: str, maximum: int = 500) -> str:
+    if type(value) is not str or not value.strip() or len(value) > maximum:
+        raise EncounterRefusal('INVALID_' + label)
+    return value
+
+
+def _bound_source(world: dict) -> dict:
+    conditions = world.get('neighbor_sensory_source')
+    if not isinstance(conditions, dict) or conditions.get('grade') != 'SOURCEFREE_TEST_ONLY':
+        raise EncounterRefusal('NO_QUALIFIED_SENSORY_SOURCE')
+    return conditions
+
+
+def _public_material_projection(world: dict, location: str) -> dict:
+    """Finite read projection of actual CO artifacts into protected MII.
+
+    The existing material owner determines which actual artifacts are visible
+    and where. No ownership, maker, objective labor/condition history or
+    actor meanings enter this view. Keep R4's explicitly public fixture text
+    for legacy objects; an actual CO artifact cannot be overridden by it.
+    Appearance bands are the existing CO world INSPECT convention (.65/.95),
+    provisionally mirrored for the visitor's close surface, not a material
+    law or an inferred repair history. A shared owner helper is future work.
+    """
+    view = {}
+    for ref, row in world.get('material_objects', {}).items():
+        if (type(ref) is str and type(row) is dict
+                and row.get('location') == location
+                and row.get('visible') is not False
+                and row.get('kind') != 'WORKED_MATERIAL_ARTIFACT'
+                and type(row.get('public_glance')) is str):
+            view[ref] = {'location': location,
+                         'public_glance': row['public_glance'],
+                         'public_close': row.get('public_close'),
+                         'grade': row.get('grade')}
+    for row in material_objects_present(world, location):
+        ref = row['id']
+        condition = row.get('condition')
+        if (row.get('kind') != 'WORKED_MATERIAL_ARTIFACT'
+                or row.get('grade') != GRADE
+                or world['material_objects'].get(ref) is not row
+                or type(condition) not in (int, float)
+                or not 0 <= condition <= 1):
+            continue
+        appearance = ('It appears worn.' if condition < .65 else
+                      'It appears repaired.' if condition < .95 else
+                      'It appears sound.')
+        view[ref] = {'location': location,
+                     'public_glance': 'A worked material object is here.',
+                     'public_close': appearance,
+                     'grade': 'SOURCEFREE_TEST_ONLY'}
+    return view
+
+
+def _public_encounter_projection(world: dict, location: str) -> dict:
+    """Extend the same MII target set with existing institution-owned notices.
+
+    CO notices_present owns spatial and temporal applicability. A readable
+    inscription is the institution's published words, not proof of its
+    underlying rule, motive, truth, access rights, or anyone's agreement.
+    This read-only adapter never posts a notice or performs actor INSPECT.
+    """
+    view = _public_material_projection(world, location)
+    notices = notices_present(world, location, world['clock'])
+    counts = {}
+    for row in notices:
+        counts[row['id']] = counts.get(row['id'], 0) + 1
+    for row in notices:
+        ref = row['id']
+        # Do not let duplicate source identities select a different body
+        # of text or override a real material object's identity.
+        if counts[ref] != 1 or ref in world.get('material_objects', {}):
+            view.pop(ref, None)
+            continue
+        if row.get('public') is not True:
+            continue
+        words = row.get('public_text')
+        view[ref] = {
+            'location': location,
+            'public_glance': 'A public notice is posted here.',
+            'public_close': words if type(words) is str and words.strip()
+                            and len(words) <= 500 else None,
+            'grade': 'SOURCEFREE_TEST_ONLY',
+            'source_kind': 'CO_PUBLIC_NOTICE',
+        }
+    return view
+
+
+def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
+                     origin: str | None, destination: str, event_ref: str) -> list[dict]:
+    """MIII law: auditory evidence can arrive behind; visual identity cannot.
+
+    Sourcefree geometry is *precommitted* in this same world, never supplied by
+    an interpretive LLM or the caller at the decision moment. These are
+    materially possible signs, NOT proof of actor attention or understanding.
+    """
+    source = _bound_source(world)
+    row = source.get('actor_conditions', {}).get(actor['id'])
+    if not isinstance(row, dict):
+        return []
+    if world['positions'].get(actor['id']) != destination:
+        return []
+    sound = row.get('hearing') is True and row.get('sound_path') == 'audible'
+    visible = (row.get('visual') is True and row.get('light') == 'lit'
+               and row.get('sightline') == 'unobstructed'
+               and row.get('facing') == 'entrance')
+    grade = 'SOURCEFREE_TEST_ONLY'
+    result = []
+    if operation == 'MOVE' and sound:
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'auditory', 'kind': 'visitor_footsteps',
+                       'tags': ['footsteps', 'approach'], 'description': 'Footsteps nearby.',
+                       'grade': grade, 'visual_identity_known': False})
+    if operation in ('SAY', 'LOOK') and sound and type(visitor.get('spoken_text')) is str:
+        # Audibility is not lexical comprehension. The world retains exact
+        # user-authored words, but an immature hearer receives only a sourced
+        # sound opportunity, not the adult analyst's propositional knowledge.
+        # This is a provisional sourcefree capacity gate, not speech science.
+        language = actor.get('body', {}).get('language', 0)
+        if type(language) not in (int, float) or not 0 <= language <= 1:
+            raise EncounterRefusal('INVALID_ACTOR_LANGUAGE_CAPACITY')
+        verbal = language >= 0.35
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'auditory', 'kind': 'visitor_speech',
+                       'tags': ['speech'] if verbal else ['voice', 'speech_sound'],
+                       'description': visitor['spoken_text'] if verbal
+                                      else 'Speech sounds nearby.',
+                       'grade': grade, 'speaker_identity_confirmed': False,
+                       'lexical_comprehension': 'SOURCEFREE_CAPACITY_ELIGIBLE' if verbal
+                                                else 'NOT_ESTABLISHED'})
+    if operation == 'MOVE' and visible:
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_arrival',
+                       'tags': ['movement', 'visitor'],
+                       'description': 'A visitor enters the workspace.',
+                       'grade': grade, 'gaze_intention_known': False})
+    if operation == 'LOOK' and visible:
+        # A possible visible orientation cannot establish what the visitor
+        # read, meant or concealed; actor notice/interpretation is CO-owned.
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_glance',
+                       'tags': ['visitor', 'visible_orientation'],
+                       'description': 'A visitor visibly turns toward an object.',
+                       'grade': grade, 'target_identity_known': False,
+                       'visitor_knowledge_known': False,
+                       'actor_notice_not_established': True})
+    if operation == 'REPAIR' and visible:
+        # The world has actually settled repair before this projection.
+        # No audible tool, identification, intent or approval is invented.
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_material_work',
+                       'tags': ['material_work', 'visible_activity'],
+                       'description': 'Someone works on a nearby object.',
+                       'grade': grade, 'target_identity_known': False,
+                       'actor_notice_not_established': True})
+    return result
+
+
+class NeighborEncounter:
+    """Encounter-side writer request and MII viewer; no new psyche or world DB.
+
+    Only ledger.commit determines world/event history. runtime.step is the
+    existing independent organism decision/world/afterlife transaction. No
+    user text is allowed to select an actor motive, project or reaction.
+    """
+
+    def __init__(self, runtime, user_id: str, *, mii_module=None):
+        self.runtime = runtime
+        self.user_id = _text(user_id, 'USER_ID', 100)
+        if user_id in runtime.ledger.actors():
+            raise EncounterRefusal('USER_CANNOT_IMPERSONATE_ACTOR')
+        self.mii = mii_module
+        self._last_actor_tip = None  # read-only, process-local; never a world fact
+        self._last_actor_ref = None
+
+    def _world(self):
+        return self.runtime.ledger.world(self.runtime.world_id)
+
+    def install_sourcefree_conditions(self, conditions: dict, *, request_id: str):
+        """Explicit immutable demo conditions; never an implicit universal sensor law."""
+        _text(request_id, 'REQUEST_ID', 120)
+        if type(conditions) is not dict or conditions.get('grade') != 'SOURCEFREE_TEST_ONLY':
+            raise EncounterRefusal('UNQUALIFIED_SENSORY_CONDITIONS')
+        actor_conditions = conditions.get('actor_conditions')
+        if type(actor_conditions) is not dict or not actor_conditions:
+            raise EncounterRefusal('MISSING_ACTOR_CONDITIONS')
+        actors = self.runtime.ledger.actors()
+        if not set(actor_conditions).issubset(actors):
+            raise EncounterRefusal('UNREGISTERED_SENSORY_ACTOR')
+        # User phenomenal eligibility has an independent physical source.
+        # Co-presence alone never licenses a visible body, readable object or
+        # actor-expression tip. A private MII gaze cannot invent geometry.
+        user_conditions = conditions.get('user_conditions')
+        if type(user_conditions) is not dict or not user_conditions:
+            raise EncounterRefusal('MISSING_USER_SENSORY_CONDITIONS')
+        for site, view in user_conditions.items():
+            if site not in self._world()[1]['sites'] or type(view) is not dict:
+                raise EncounterRefusal('INVALID_USER_VIEW_SITE')
+            if (view.get('light') not in ('lit','dark','unknown') or
+                view.get('sightline') not in ('unobstructed','partial','blocked','unknown') or
+                type(view.get('hearing')) is not bool or
+                view.get('sound_path') not in ('audible','blocked','unknown') or
+                view.get('legibility', 'unknown') not in
+                    ('readable', 'unreadable', 'unknown')):
+                raise EncounterRefusal('INVALID_USER_SENSORY_CONDITIONS')
+        for actor_id, row in actor_conditions.items():
+            if type(row) is not dict or any(key not in row for key in
+                ('facing', 'hearing', 'visual', 'light', 'sightline', 'sound_path')):
+                raise EncounterRefusal('INCOMPLETE_SENSORY_CONDITIONS')
+            if row['facing'] not in ('entrance', 'away') or any(
+                    type(row[k]) is not bool for k in ('hearing', 'visual')):
+                raise EncounterRefusal('INVALID_SENSORY_CONDITIONS')
+        version, world = self._world()
+        existing = world.get('neighbor_sensory_source')
+        if existing is not None:
+            if existing != conditions:
+                raise EncounterRefusal('SENSORY_SOURCE_ALREADY_BOUND')
+            return {'status': 'ALREADY_BOUND', 'source_hash': digest(existing)}
+        world['neighbor_sensory_source'] = deepcopy(conditions)
+        world['clock'] += 1
+        receipt = self.runtime.ledger.commit(self.runtime.world_id, version, world,
+            {}, {}, 'NEIGHBOR_SOURCEFREE_GEOMETRY', None,
+            {'request_id': request_id, 'source_hash': digest(conditions),
+             'not_native_sensor_law': True})
+        return {'status': 'SOURCEFREE_BOUND', 'receipt': receipt['id'],
+                'source_hash': digest(conditions)}
+
+    def contribute(self, request_id: str, operation: str, *, text: str | None = None,
+                   destination: str | None = None, target_object_ref: str | None = None,
+                   cover_text: str | None = None):
+        """One user-authored world event with derived actor-eligible signs.
+
+        Retries are idempotent *against the durable world request index*;
+        different payload under one request ID is refused. No second writer,
+        no narrative coactor consent and no user-psyche interpretation.
+        """
+        request_id = _text(request_id, 'REQUEST_ID', 120)
+        if operation not in _ALLOWED:
+            raise EncounterRefusal('UNKNOWN_USER_OPERATION')
+        if operation == 'SAY':
+            text = _text(text, 'USER_SPEECH')
+        elif text is not None:
+            raise EncounterRefusal('UNAUTHORED_EXTRA_SPEECH')
+        if operation == 'MOVE':
+            destination = _text(destination, 'DESTINATION', 100)
+        elif destination is not None:
+            raise EncounterRefusal('UNAUTHORED_DESTINATION')
+        if operation == 'LOOK':
+            # Private ATTEND remains MII-only. LOOK is the actual outward
+            # bodily attempt, which an Other may have opportunity to see.
+            target_object_ref = _text(target_object_ref, 'LOOK_TARGET', 100)
+            if cover_text is not None:
+                cover_text = _text(cover_text, 'COVER_SPEECH')
+        elif operation == 'REPAIR':
+            target_object_ref = _text(target_object_ref, 'REPAIR_TARGET', 100)
+            if cover_text is not None:
+                raise EncounterRefusal('UNAUTHORED_REPAIR_SPEECH')
+        elif target_object_ref is not None or cover_text is not None:
+            raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
+        version, world = self._world()
+        req_key = self.user_id + ':' + request_id
+        request_payload = {'user': self.user_id, 'operation': operation,
+                           'text': text, 'destination': destination}
+        if operation == 'LOOK':
+            # Preserve existing operation event IDs and old replay hashes.
+            request_payload.update(target_object_ref=target_object_ref,
+                                   cover_text=cover_text)
+        elif operation == 'REPAIR':
+            request_payload['target_object_ref'] = target_object_ref
+        payload_hash = digest(request_payload)
+        prior = world.get('neighbor_user_requests', {}).get(req_key)
+        if prior:
+            if prior['payload_hash'] != payload_hash:
+                raise EncounterRefusal('REQUEST_REPLAY_CHANGED_PAYLOAD')
+            existing = next((e['id'] for e in self.runtime.ledger.events()
+                if e['kind'] == 'NEIGHBOR_USER_CONTRIBUTION'
+                and e['envelope']['payload'].get('user_event_ref') == prior['event_ref']), None)
+            if existing is None:
+                raise EncounterRefusal('REQUEST_INDEX_WITHOUT_COMMITTED_EVENT')
+            return {'status': prior['status'], 'event_ref': prior['event_ref'],
+                    'idempotent_replay': True, 'receipt': existing}
+        participants = world.setdefault('neighbor_users', {})
+        person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
+        origin = person['location']
+        if operation != 'MOVE' and operation != 'LEAVE' and not person['present']:
+            raise EncounterRefusal('USER_NOT_PRESENT')
+        status = 'PERFORMED'
+        material_outcome = None
+        loc = origin
+        if operation == 'MOVE':
+            if destination not in world['sites']:
+                status = 'BLOCKED'
+            elif person['present']:
+                routes = world.get('neighbor_routes', {})
+                if destination not in routes.get(origin, []):
+                    status = 'BLOCKED'
+            elif destination not in ('home', 'workshop'):
+                status = 'BLOCKED'
+            if status == 'PERFORMED':
+                loc = destination
+                person.update(present=True, location=destination)
+        elif operation == 'LEAVE':
+            person['present'] = False
+        elif operation == 'LOOK':
+            source = _bound_source(world)
+            sight = source.get('user_conditions', {}).get(loc, {})
+            candidate = _public_encounter_projection(world, loc).get(target_object_ref)
+            # P6 outward ORIENT is a bodily attempt, NOT P6 INSPECT_OBJECT.
+            # Keep the world-owned physical target/location/public status.
+            # Do not ask visitor legibility or attention to authorize turning:
+            # that is a separate, private, source-qualified MII operation.
+            # Unknown, nonpublic and absent objects uniformly block the
+            # object-targeted attempt, without emitting the cover sentence.
+            if (type(candidate) is not dict or
+                candidate.get('location') != loc or
+                type(candidate.get('public_glance')) is not str):
+                status = 'BLOCKED'
+        elif operation == 'REPAIR':
+            # A thin human participant is not a registered synthetic actor.
+            # Existing CO artifact settlement accepts a material worker ID.
+            # Public entrance is not a grant to consume someone else's stock.
+            # Even at a controllerless site require an explicit visitor grant.
+            from um_sorok_organism.material_objects import repair_artifact
+            source = _bound_source(world)
+            sight = source.get('user_conditions', {}).get(loc, {})
+            site = world.get('sites', {}).get(loc, {})
+            grants = site.get('material_use_grants', [])
+            target = world.get('material_objects', {}).get(target_object_ref)
+            allowed = (type(grants) is list and self.user_id in grants
+                       and type(target) is dict
+                       and target.get('kind') == 'WORKED_MATERIAL_ARTIFACT'
+                       and target.get('id') == target_object_ref
+                       and target.get('location') == loc
+                       and target.get('visible') is True
+                       and target.get('grade') == GRADE
+                       and sight.get('light') == 'lit'
+                       and sight.get('sightline') == 'unobstructed')
+            if allowed:
+                actual = repair_artifact(world, self.user_id, loc, target_object_ref)
+                status = actual['status']
+                material_outcome = actual['outcome']
+            else:
+                status = 'BLOCKED'
+                material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
+        world['clock'] += 1
+        ref = stable_id('neighbor_user', {'user': self.user_id,
+            'request_id': request_id, 'payload_hash': payload_hash})
+        evidence = []
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR'):
+            _bound_source(world)
+            for actor_id, actor in self.runtime.ledger.actors().items():
+                eligible = sensory_evidence(world, actor,
+                    {'spoken_text': cover_text if operation == 'LOOK' else text},
+                    operation, origin, loc, ref)
+                for sign in eligible:
+                    # A transient user sound remains physically transient.
+                    # R21's pre-action constitution read records the eligible
+                    # cue ref; later *subjective* uptake must be separately
+                    # earned by its competent owner. Extending the lifetime
+                    # cannot authorize an actor memory or perception.
+                    cue = add_cue(world, sign['kind'], sign['tags'],
+                        location=loc, modality=sign['modality'],
+                        description=sign['description'], source_actor=None,
+                        private_to=actor_id)
+                    evidence.append({'actor': actor_id, 'event_ref': ref,
+                                     'cue_ref': cue['id'], 'modality': sign['modality'],
+                                     'basis': sign['kind'], 'grade': sign['grade']})
+        participants[self.user_id] = person
+        event = {'event_ref': ref, 'request_id': request_id, 'user': self.user_id,
+                 'operation': operation, 'payload_hash': payload_hash,
+                 'authored_text': text, 'origin': origin, 'destination': loc,
+                 'clock': world['clock'], 'status': status,
+                 'perceptual_candidates': evidence,
+                 'no_inference_of_actor_uptake': True}
+        if operation == 'LOOK':
+            event.update(target_object_ref=target_object_ref,
+                         authored_cover_text=cover_text,
+                         visitor_reading='NOT_ESTABLISHED',
+                         other_actor_interpretation='NOT_ESTABLISHED',
+                         user_look_is_not_private_mii_attend=True)
+        if operation == 'REPAIR':
+            event.update(target_object_ref=target_object_ref,
+                         material_outcome=material_outcome,
+                         actor_meaning_not_established=True)
+        world.setdefault('neighbor_user_events', []).append(event)
+        world.setdefault('neighbor_user_requests', {})[req_key] = {
+            'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
+            'ledger_receipt': None}
+        receipt = self.runtime.ledger.commit(self.runtime.world_id, version, world,
+            {}, {}, 'NEIGHBOR_USER_CONTRIBUTION', None,
+            {'user_event_ref': ref, 'source': 'SOURCEFREE_USER_SUBMITTED',
+             'user': self.user_id, 'payload_hash': payload_hash,
+             'performed': status == 'PERFORMED',
+             'candidate_cue_refs': [e['cue_ref'] for e in evidence],
+             'no_actor_motive_or_consent_issued': True,
+             'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
+        # The world record already contains durable request idempotency. Its
+        # canonical event ref is the source for later actor reads, not this
+        # returned envelope ID; never make a second write to attach it.
+        return {'status': status, 'event_ref': ref, 'receipt': receipt['id'],
+                'idempotent_replay': False, 'potential_actor_evidence': evidence,
+                'actor_uptake': 'NOT_ESTABLISHED'}
+
+    def independent_actor_beat(self, actor_id: str):
+        """Use the actual continuing actor's own plan, not a supplied reply."""
+        if actor_id not in self.runtime.ledger.actors():
+            raise EncounterRefusal('NO_CONSTITUTED_ACTOR')
+        result = self.runtime.step(actor_id)  # NEVER pass requested_action
+        _, world = self._world()
+        self._last_actor_tip = (result.get('receipt'), world['clock'],
+                                result.get('public_tip'))
+        self._last_actor_ref = actor_id
+        return result
+
+    def continue_independent_life_during_visit(self, *, profile=None):
+        """One genuinely independent actor/world beat while a visitor is present.
+
+        This is NOT an LLM-selected scene or player request for a particular
+        person's response. Reuse the existing organism initiative scheduler,
+        actor/world writer and MII bounded visitor surface. One new performed
+        user contribution is the causal *opportunity* for at most one beat;
+        retries must not create an extra actor event.
+        """
+        _, world = self._world()
+        visitor=world.get('neighbor_users',{}).get(self.user_id)
+        if not isinstance(visitor,dict) or visitor.get('present') is not True:
+            raise EncounterRefusal('VISITOR_NOT_PRESENT_FOR_LIVE_OCCASION')
+        # User may not supply a target actor or an action: the existing
+        # independent actor scheduler owns the decision opportunity.
+        history=self.runtime.ledger.events()
+        user_indices=[i for i,event in enumerate(history)
+            if event.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+            and event.get('envelope',{}).get('payload',{}).get('user')==self.user_id
+            and event.get('envelope',{}).get('payload',{}).get('performed') is True]
+        if not user_indices:
+            raise EncounterRefusal('NO_QUALIFIED_USER_LIFE_OCCASION')
+        source_index=user_indices[-1]
+        source_event=history[source_index]
+        source_ref=source_event['envelope']['payload']['user_event_ref']
+        subsequent=history[source_index+1:]
+        # A later committed life transition is enough to conservatively
+        # refuse to create another one on an identical preceding user turn.
+        # No extra marker store, no second world author, no fabricated event.
+        if any(e.get('kind')=='ACTOR_LIFE_TRANSITION' for e in subsequent):
+            return {'status':'ALREADY_ADVANCED_AFTER_USER_OCCASION',
+                    'source_user_event_ref':source_ref,
+                    'new_world_event':False,'actor_response_not_commanded':True}
+        from um_sorok_organism.initiative import choose_next_actor
+        selected=choose_next_actor(world,self.runtime.ledger.actors())
+        if selected is None:
+            return {'status':'NO_ELIGIBLE_INDEPENDENT_ACTOR',
+                    'source_user_event_ref':source_ref,
+                    'new_world_event':False,'actor_response_not_commanded':True}
+        result=self.independent_actor_beat(selected['actor'])
+        if result.get('selection_grade')=='INJECTED_NOT_NATIVE_ACTOR_CHOICE':
+            raise EncounterRefusal('LIVE_OCCASION_FORGED_ACTOR_SELECTION')
+        _, updated=self._world()
+        view=self.private_surface(profile) if profile is not None else None
+        return {'status':'INDEPENDENT_ACTOR_WORLD_EVENT_COMMITTED',
+                'source_user_event_ref':source_ref,
+                'actor_event_receipt':result['receipt'],
+                'world_clock':updated['clock'],
+                # Actor identity, private action and outcome stay in the
+                # existing owner/ledger audit, not in visitor-facing return.
+                # The finite MII surface is the *only* qualified observation.
+                'owner_audit_remains_in_existing_ledger':True,
+                'visitor_surface':view,
+                'new_world_event':True,
+                'no_visitor_selected_actor_intention_or_response':True,
+                'no_unseen_private_psychology_on_visitor_surface':True,
+                'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+
+    def _own_visit_transitions(self, world, history=None):
+        """Derive visits from the existing committed contribution history.
+
+        Repeated LEAVE while already absent is not a new departure; movement
+        within a visit is not a new arrival. Match the world event to its
+        existing ledger receipt rather than admitting an uncommitted record.
+        """
+        receipts = {}
+        for row in (self.runtime.ledger.events() if history is None else history):
+            env = row.get('envelope', {})
+            payload = env.get('payload', {})
+            if (row.get('kind') == 'NEIGHBOR_USER_CONTRIBUTION'
+                    and env.get('world') == self.runtime.world_id
+                    and payload.get('user') == self.user_id
+                    and payload.get('performed') is True):
+                receipts[payload.get('user_event_ref')] = (row, payload)
+        present = False
+        arrival = departure = None
+        for event in world.get('neighbor_user_events', []):
+            if (event.get('user') != self.user_id
+                    or event.get('status') != 'PERFORMED'
+                    or event.get('operation') not in ('MOVE', 'LEAVE')):
+                continue
+            ref = event.get('event_ref')
+            source = receipts.get(ref)
+            authored = {'user': self.user_id, 'operation': event['operation'],
+                        'text': None, 'destination': (
+                            event.get('destination') if event['operation'] == 'MOVE'
+                            else None)}
+            if (source is None or source[0].get('clock') != event.get('clock')
+                    or source[1].get('payload_hash') != event.get('payload_hash')
+                    or digest(authored) != event.get('payload_hash')
+                    or ref != stable_id('neighbor_user', {
+                        'user': self.user_id, 'request_id': event.get('request_id'),
+                        'payload_hash': event.get('payload_hash')})):
+                raise EncounterRefusal('VISIT_TRANSITION_WITHOUT_COMMITTED_SOURCE')
+            if event['operation'] == 'MOVE' and not present:
+                present = True
+                arrival = event
+            elif event['operation'] == 'LEAVE' and present:
+                present = False
+                departure = event
+        if present != bool(world.get('neighbor_users', {}).get(
+                self.user_id, {}).get('present')):
+            raise EncounterRefusal('VISIT_HISTORY_PRESENCE_CONFLICT')
+        return arrival, departure, present
+
+    def continue_absent_life_until(self, departure_ref: str, target_clock: int,
+                                   *, max_segments: int = 24):
+        """Owner-side bounded absence continuation, NOT a visitor action.
+
+        The target is an absolute modeled-world clock, not real wall time or
+        permission to invent a private diary. A retry after committed progress
+        resumes only the remaining interval. Existing CO discontinuities,
+        ordinary passage and autonomous initiative do all life writing.
+        This is a serialized sourcefree research driver; a real multi-user
+        calendar/authorization service is not supplied by this interface.
+        """
+        from um_sorok_organism.continuity_clock import (
+            MAX_HORIZON, next_discontinuity)
+        _text(departure_ref, 'DEPARTURE_REF', 120)
+        if type(target_clock) is not int or target_clock < 0:
+            raise EncounterRefusal('INVALID_ABSENCE_TARGET_CLOCK')
+        if type(max_segments) is not int or not 1 <= max_segments <= 240:
+            raise EncounterRefusal('INVALID_ABSENCE_SEGMENT_BUDGET')
+        _, world = self._world()
+        _, departure, present = self._own_visit_transitions(world)
+        if (present or departure is None
+                or departure['event_ref'] != departure_ref):
+            raise EncounterRefusal('NO_CURRENT_QUALIFIED_DEPARTURE')
+        if target_clock < departure['clock']:
+            raise EncounterRefusal('ABSENCE_TARGET_PRECEDES_DEPARTURE')
+        if target_clock - world['clock'] > MAX_HORIZON:
+            raise EncounterRefusal('ABSENCE_HORIZON_EXCEEDS_OWNER_BOUND')
+
+        def require_no_visitors(w):
+            if any(row.get('present') is True
+                   for row in w.get('neighbor_users', {}).values()):
+                raise EncounterRefusal('WORLD_HAS_PRESENT_VISITOR')
+
+        require_no_visitors(world)
+        initial = world['clock']
+        segments = 0
+        while world['clock'] < target_clock and segments < max_segments:
+            require_no_visitors(world)
+            previous = world['clock']
+            remaining = target_clock - previous
+            actors = self.runtime.ledger.actors()
+            discontinuity = next_discontinuity(world, actors, remaining)
+            if discontinuity is not None:
+                # This owner may settle an actor event at the horizon itself,
+                # advancing one additional tick. Report actual clock, never
+                # backdate reentry to the requested cut.
+                self.runtime.advance_to_discontinuity(horizon=remaining)
+            elif remaining > 1:
+                # Leave one tick for a real independently chosen activity,
+                # instead of narrating all ordinary life from elapsed time.
+                self.runtime.advance_to_discontinuity(horizon=remaining - 1)
+            elif actors:
+                self.runtime.continue_without_user(beats=1)
+            else:
+                self.runtime.advance_to_discontinuity(horizon=1)
+            _, world = self._world()
+            segments += 1
+            if world['clock'] <= previous:
+                break
+        current = world['clock']
+        return {
+            'status': ('AT_OR_PAST_ABSENCE_TARGET' if current >= target_clock
+                       else 'HELD_AT_BOUNDED_ABSENCE_CONTINUATION'),
+            'departure_event_ref': departure_ref,
+            'target_modeled_clock': target_clock,
+            'actual_modeled_clock': current,
+            'modeled_clock_advance_this_call': current - initial,
+            'segments_executed_this_call': segments,
+            'new_world_events': current > initial,
+            'unseen_life_not_a_visitor_report': True,
+            'real_calendar_elapsed_not_established': True,
+            'grade': 'SOURCEFREE_RESEARCH_PROVISIONAL',
+        }
+
+    def private_surface(self, profile: dict, *, command: str | None = None,
+                        target: str | None = None):
+        """Project the existing CO world into the *existing* protected MII reader.
+
+        P6 makes outward ORIENT and close INSPECT distinct operations. A user
+        can turn toward a public object without reading it. The world records
+        the bodily attempt; MII alone qualifies visitor availability and
+        optional close detail; CO alone owns any actor-local interpretation.
+        This projection does not install a rival P6 world or MII profile store.
+        """
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        if (type(profile) is not dict or
+                profile.get('scope') != self.new_private_profile()['scope']):
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+        _, world = self._world()
+        visitor = world.get('neighbor_users', {}).get(self.user_id)
+        if not visitor or not visitor['present']:
+            raise EncounterRefusal('USER_NOT_PRESENT')
+        loc = visitor['location']
+        source = _bound_source(world)
+        user_view = source.get('user_conditions', {}).get(loc, {})
+        audible = (user_view.get('hearing') is True and
+                   user_view.get('sound_path') == 'audible')
+        # Translate the precommitted, sourcefree world conditions into the
+        # already protected P6/MII availability interface. This is a
+        # READ-ONLY projection, NOT a second source or an adopted sensor law.
+        # MII, not NeighborEncounter, decides glance versus close eligibility.
+        published = _public_encounter_projection(world, loc)
+        mii_house = {
+            'presentation_conditions': {
+                'grade': 'SOURCEFREE_FIXTURE',
+                'observer': self.user_id,
+                'light': user_view.get('light', 'unknown'),
+                'sightline': user_view.get('sightline', 'unknown'),
+                'legibility': user_view.get('legibility', 'unknown'),
+                'objects': {},
+            },
+            'objects': {key: {'room': obj.get('location')}
+                        for key, obj in published.items()},
+        }
+        available = self.mii.candidate_details(
+            mii_house, loc, {key: obj['public_glance']
+                             for key, obj in published.items()}, self.user_id)
+        selected, basis = self.mii.select_detail(
+            available, profile, command=command, target=target, offered=available)
+        offered = {selected: available[selected]} if selected in available else {}
+        # A close reading requires ALL of: actual world-owned LOOK, correct
+        # user + target + world clock, source-graded public close text,
+        # and MII's *existing* close availability. The actor sees none of
+        # these private eligibility/attention facts.
+        committed_look = next((
+            event for event in reversed(world.get('neighbor_user_events', []))
+            if event.get('user') == self.user_id
+            and event.get('operation') == 'LOOK'
+            and event.get('status') == 'PERFORMED'
+            and event.get('target_object_ref') == selected
+            and event.get('destination') == loc
+            and event.get('clock') == world['clock']
+        ), None) if command == 'look' and target == selected else None
+        if (committed_look is not None and selected in offered
+                and published[selected].get('grade') == 'SOURCEFREE_TEST_ONLY'
+                and type(published[selected].get('public_close')) is str
+                and self.mii.close_available(mii_house, self.user_id, selected)):
+            offered[selected] = published[selected]['public_close']
+        visible_identity = (self.mii.glance_available(mii_house, self.user_id)
+                            and user_view.get('sightline') == 'unobstructed')
+        mandatory = [{'kind': 'LOCATION', 'text': loc}]
+        for actor_id, actor_loc in sorted(world['positions'].items()):
+            if visible_identity and actor_loc == loc:
+                mandatory.append({'kind': 'CO_PRESENT_ACTOR',
+                                  'actor_ref': actor_id, 'interpretation': 'NONE'})
+        # Existing CO world.resolve publishes a modality-typed performed_*
+        # sign and public_history row, while runtime.step binds that occurrence
+        # to the immutable ACTOR_LIFE_TRANSITION. Read those actual producers,
+        # not the process-local generated prose. This is a finite MII exposure
+        # of the present occurrence, NOT historical reconstruction or a new
+        # sensory world. The sound itself does not encode words or identity.
+        history = self.runtime.ledger.events()
+        last_event = history[-1]
+        envelope = last_event.get('envelope', {})
+        actual = envelope.get('payload', {}).get('actual', {})
+        current_clock = world['clock']
+        if (last_event.get('kind') == 'ACTOR_LIFE_TRANSITION'
+                and last_event.get('clock') == current_clock
+                and envelope.get('world') == self.runtime.world_id
+                and type(actual) is dict and actual.get('clock') == current_clock
+                and actual.get('actor') == last_event.get('actor_id')
+                and actual.get('status') == 'PERFORMED'
+                and world.get('public_history') and world.get('cues')):
+            historical_public = world['public_history'][-1]
+            cue = world['cues'][-1]
+            action = actual.get('action')
+            # CO currently appends exactly one primary sign as the last cue
+            # for this world resolution; refuse mismatches rather than guess.
+            # Both the committed public row and the cue must agree with the
+            # transition. Never expose the objective audit payload or tags.
+            if (type(action) is str and type(historical_public) is dict
+                    and historical_public.get('actor') == actual.get('actor')
+                    and historical_public.get('clock') == current_clock
+                    and historical_public.get('action') == action
+                    and historical_public.get('status') == 'PERFORMED'
+                    and type(cue) is dict and type(cue.get('id')) is str
+                    and cue.get('kind') == 'performed_' + action.lower()
+                    and cue.get('source_actor') == actual.get('actor')
+                    and cue.get('clock') == current_clock
+                    and cue.get('last_access_clock', -1) >= current_clock
+                    and cue.get('location') == loc
+                    and cue.get('private_to') is None):
+                # The existing owner qualifies these four actions as
+                # auditory; descriptions of outcomes are NOT spoken text.
+                # A nearby sound is not recognition of its source or meaning.
+                sounds = {'SPEAK': 'Speech sounds nearby.',
+                          'SING': 'Singing sounds nearby.',
+                          'SIGNAL': 'A signal sounds nearby.',
+                          'ASK': 'Speech sounds nearby.'}
+                movements = {'MOVE': 'Someone moves nearby.',
+                             'ORIENT': 'Someone turns nearby.'}
+                if (audible and cue.get('modality') == 'auditory'
+                        and action in sounds):
+                    mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                        'text': sounds[action], 'modality': 'auditory',
+                        'source_event_ref': last_event['id'],
+                        'source_cue_ref': cue['id'],
+                        'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
+                        'speaker_identity': 'NOT_ESTABLISHED',
+                        'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                        'interpretation': 'NONE'})
+                elif (visible_identity and cue.get('modality') == 'visual'
+                        and action in movements):
+                    mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                        'text': movements[action], 'modality': 'visual',
+                        'source_event_ref': last_event['id'],
+                        'source_cue_ref': cue['id'],
+                        'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
+                        'interpretation': 'NONE'})
+        # R27's existing branch-local common-occurrence admission produces
+        # an actual sourcefree auditory sign, NOT verified real-world news
+        # or a scripted event with an assigned actor response. Receive only
+        # the committed local sign. Do not render its analyst description as
+        # spoken words or expose its proposal's required actor locations.
+        if (audible and last_event.get('kind') == 'SOURCEFREE_CONTINGENT_WORLD_NOTICE'
+                and last_event.get('clock') == current_clock
+                and envelope.get('world') == self.runtime.world_id
+                and world.get('cues')):
+            source_receipt = envelope.get('payload', {})
+            cue = world['cues'][-1]
+            if (type(source_receipt) is dict
+                    and source_receipt.get('independent_branch_eligibility')
+                        == 'ELIGIBLE_SOURCEFREE_NOTICE_ONLY'
+                    and source_receipt.get('not_proof_of_current_real_world_event') is True
+                    and source_receipt.get('grade') == GRADE
+                    and type(cue) is dict and type(cue.get('id')) is str
+                    and cue['id'] == source_receipt.get('cue_ref')
+                    and type(cue.get('contingent_offer_id')) is str
+                    and cue['contingent_offer_id'] == source_receipt.get('offer_id')
+                    and type(cue.get('contingent_offer_hash')) is str
+                    and cue['contingent_offer_hash'] == source_receipt.get('proposal_hash')
+                    and cue.get('external_sign_only_not_verified_news_or_world_damage') is True
+                    and cue.get('clock') == current_clock
+                    and cue.get('last_access_clock', -1) >= current_clock
+                    and cue.get('location') == loc
+                    and cue.get('modality') == 'auditory'
+                    and cue.get('source_actor') is None
+                    and cue.get('private_to') is None):
+                mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                    'text': 'An external sound is audible nearby.',
+                    'modality': 'auditory',
+                    'source_event_ref': last_event['id'],
+                    'source_cue_ref': cue['id'],
+                    'source': 'EXISTING_CO_BRANCH_LOCAL_CONTINGENT_SIGN',
+                    'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                    'external_event_truth': 'NOT_ESTABLISHED',
+                    'interpretation': 'NONE'})
+        if self._last_actor_tip is not None:
+            receipt, at_clock, tip = self._last_actor_tip
+            actor_location = world['positions'].get(self._last_actor_ref)
+            # A CO public_tip is generic prose, NOT a modality-typed emitted
+            # sound. Audibility alone cannot turn a silent world action into
+            # heard speech or grant the visitor an actor's internal report.
+            # Preserve R2's visible expression only when it is tied to this
+            # exact actual one-world actor transition. A future source-typed
+            # auditory expression needs MIII/CO owner receiving.
+            last = last_event
+            if (visible_identity and actor_location == loc
+                    and at_clock == world['clock']
+                    and last['id'] == receipt
+                    and last['kind'] == 'ACTOR_LIFE_TRANSITION'
+                    and last['actor_id'] == self._last_actor_ref
+                    and last['clock'] == world['clock']
+                    and last['envelope'].get('world') == self.runtime.world_id
+                    and type(tip) is str and tip.strip()):
+                mandatory.append({'kind': 'PUBLIC_TIP', 'text': tip[:500],
+                                  'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION',
+                                  'modality_grade': 'SOURCEFREE_VISUAL_ONLY_UNTYPED'})
+        view = self.mii.surface(room=loc, orientation='SOURCEFREE_UNKNOWN',
+            exit_name='SOURCEFREE_UNQUALIFIED', available=available,
+            candidates=available, offered=offered, selected=selected,
+            basis=basis, narration=mandatory, recognition={})
+        # On actual reentry expose only the visitor's own elapsed modeled
+        # interval, not the intervening actor audit, motives or a retrospective
+        # story. Subsequent LOOK can disclose currently accessible changes.
+        arrival, departure, present = self._own_visit_transitions(world, history)
+        if (present and arrival is not None and departure is not None
+                and arrival['clock'] == world['clock']
+                and arrival['clock'] > departure['clock']):
+            view['return_context'] = {
+                'departure_event_ref': departure['event_ref'],
+                'arrival_event_ref': arrival['event_ref'],
+                'modeled_clock_difference': arrival['clock'] - departure['clock'],
+                'real_calendar_elapsed_not_established': True,
+                'intervening_life_not_disclosed': True,
+            }
+        # Explicitly distinguish a received institutional assertion from
+        # the world's real policy or a successful application. This metadata
+        # is recorded by MII with the actual finite exposure, never actor state.
+        if (selected in offered and
+                published[selected].get('source_kind') == 'CO_PUBLIC_NOTICE'):
+            view['optional']['source_kind'] = 'CO_PUBLIC_NOTICE'
+            view['optional']['published_words_available'] = bool(
+                committed_look is not None and
+                type(published[selected].get('public_close')) is str and
+                self.mii.close_available(mii_house, self.user_id, selected))
+            view['optional']['institutional_truth'] = 'NOT_ESTABLISHED'
+        prior_offered = (profile['exposures'][-1].get('offered', {})
+                         if profile.get('exposures') else {})
+        before = len(profile.get('exposures', []))
+        self.mii.record_exposure(profile, turn=world['clock'], clock=world['clock'],
+            available=available, candidates=available, offered=offered,
+            selected=selected, rendered=view, basis=basis,
+            request_id=(committed_look.get('event_ref') if committed_look else None),
+            context={'room': loc, 'world': self.runtime.world_id,
+                     'command': command,
+                     'user_close_granted_by_mii': bool(
+                        committed_look and selected in offered
+                        and offered[selected] != available[selected])})
+        # Reuse MII's existing private, optional acquired-attention mechanic.
+        # It is never a world event or evidence that Nadia watched the gaze.
+        if (len(profile.get('exposures', [])) > before
+                and committed_look is not None):
+            self.mii.update_attention(
+                profile, target=selected, prior_offered=prior_offered,
+                command='look', turn=world['clock'])
+        return view
+
+    def new_private_profile(self):
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        root = self.runtime.ledger.events()[0]['id']
+        scope = {'root': root, 'branch': self.runtime.world_id, 'user': self.user_id}
+        return self.mii.default_profile(scope)
+    
+    def _mii_scope_session(self):
+        """Only bridge protected MII's scope() read ABI; NOT a P6 world writer."""
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        root = self.runtime.ledger.events()[0]['id']
+        return SimpleNamespace(
+            branch_id=self.runtime.world_id,
+            meta={'user_actor': self.user_id},
+            read_root=lambda: {'root_hash': root},
+        )
+
+    def load_private_profile(self, profile_path):
+        """Reuse protected MII's cold profile reader, scoped to this CO root.
+
+        The path is an application-trusted sidecar location, NOT a path
+        supplied by a visitor utterance or an authenticated real-user ID.
+        MII's tamper/mismatch reset remains the only profile recovery owner.
+        """
+        profile = self.mii.load_profile(
+            Path(profile_path), self._mii_scope_session())
+        if profile.get('scope') != self.new_private_profile()['scope']:
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+        return profile
+
+    def save_private_profile(self, profile_path, profile):
+        """The protected MII writer owns derivative user history; CO does not."""
+        if self.mii is None:
+            raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        if (type(profile) is not dict or
+                profile.get('scope') != self.new_private_profile()['scope']):
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+        self.mii.save_profile(Path(profile_path), profile)
+
+    def private_surface_stored(self, profile_path, *, command: str | None = None,
+                               target: str | None = None):
+        """One cold-reopenable MII presentation with no world/actor mutation.
+
+        Reuse P6's sidecar and advisory file lock. The app must provide an
+        access-controlled storage path; this does NOT authenticate users or
+        grant access to the private profile of another real human.
+        """
+        path = Path(profile_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        lock_path = path.with_name(path.name + '.lock')
+        with lock_path.open('a') as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            try:
+                profile = self.load_private_profile(path)
+                view = self.private_surface(profile, command=command, target=target)
+                self.save_private_profile(path, profile)
+                return view
+            finally:
+                fcntl.flock(lock, fcntl.LOCK_UN)
+
