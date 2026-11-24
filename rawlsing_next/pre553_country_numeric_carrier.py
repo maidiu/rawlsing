@@ -24,7 +24,9 @@ from .pre553_physical_decoder import PhysicalCell, PhysicalMissingState, Physica
 from .pre553_r5_codec import R5TypedValueCodec, canonical_json
 from .pre553_source_backed_c11_facade import ExactPhysicalCellStream
 
-SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@1"
+LEGACY_SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@1"
+SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@2"
+_BINARY_DICTIONARY = b"R5N2"
 _CODEC = R5TypedValueCodec()
 MAX_ROWS = 4096
 MAX_BYTES = 64 * 1024 * 1024
@@ -61,6 +63,120 @@ def _unpack(payload, width, n):
     tag = {1:"B", 2:"H", 4:"I", 8:"Q"}[width]
     return struct.unpack("<" + tag * n, data)
 
+def _bounded_decompress(payload, limit=MAX_BYTES):
+    d = zlib.decompressobj()
+    raw = d.decompress(payload,limit+1)
+    if len(raw)>limit or not d.eof or d.unused_data or d.unconsumed_tail:
+        raise CountryCarrierError("invalid bounded dictionary compression")
+    return raw
+
+def _shuffle_words(words):
+    # Byte planes: exact IEEE bits/int64, not quantization or numeric rounding.
+    return bytes(b for i in range(8) for word in words for b in word[i:i+1])
+
+def _unshuffle_words(raw,n):
+    if len(raw)!=8*n:
+        raise CountryCarrierError("numeric dictionary word census mismatch")
+    return tuple(bytes(raw[i*n+j] for i in range(8)) for j in range(n))
+
+def _pack_dictionary(dictionary):
+    """Choose smaller of legacy full R5 token and split exact numeric dictionary.
+
+    The R5 owner still defines every typed value. Finite IEEE words and inline
+    integer words are stored as bit-exact binary planes. Exceptional R5 values
+    remain canonical escapes. State/declaration/label live in a separate
+    shared metadata dictionary. No numeric coercion, missing-value collapse,
+    reinterpretation of dates, or assumption of unique numeric values.
+    """
+    legacy=canonical_json(dictionary).encode("ascii")
+    if len(legacy)>MAX_BYTES:
+        raise CountryCarrierError("dictionary block too large")
+    old=zlib.compress(legacy)
+    tags=bytearray()
+    floats,ints,escapes,meta,meta_codes=[],[],[],[],[]
+    meta_index={}
+    for token in dictionary:
+        obj=json.loads(token)
+        if obj.get("t")!="tuple" or len(obj.get("v",()))!=4:
+            raise CountryCarrierError("invalid R5 cell token")
+        raw,*tail=obj["v"]
+        tag=raw["t"]
+        if tag=="float64_finite":
+            tags.append(0);floats.append(bytes.fromhex(raw["bits"]))
+        elif tag=="int":
+            tags.append(1);ints.append(struct.pack(">q",int(raw["v"])))
+        else:
+            tags.append(2);escapes.append(raw)
+        key=canonical_json(tail)
+        if key not in meta_index:
+            meta_index[key]=len(meta);meta.append(tail)
+        meta_codes.append(meta_index[key])
+    if not floats and not ints:
+        return old
+    side=canonical_json([escapes,meta]).encode("ascii")
+    n=len(dictionary)
+    body=(struct.pack("<IIII",n,len(floats),len(ints),len(side))+bytes(tags)
+          +_shuffle_words(floats)+_shuffle_words(ints)
+          +struct.pack("<"+"H"*n,*meta_codes)+side)
+    if len(body)>MAX_BYTES:
+        return old
+    new=_BINARY_DICTIONARY+zlib.compress(body)
+    return new if len(new)<len(old) else old
+
+def _read_dictionary(payload):
+    if not payload.startswith(_BINARY_DICTIONARY):
+        return tuple(json.loads(_bounded_decompress(payload)))
+    body=_bounded_decompress(payload[len(_BINARY_DICTIONARY):])
+    if len(body)<16:
+        raise CountryCarrierError("truncated binary R5 dictionary")
+    n,nf,ni,side_n=struct.unpack_from("<IIII",body)
+    if not 1<=n<=MAX_ROWS or nf+ni>n:
+        raise CountryCarrierError("invalid binary R5 dictionary census")
+    end=16+n+8*(nf+ni)+2*n
+    if end+side_n!=len(body):
+        raise CountryCarrierError("binary R5 dictionary extent mismatch")
+    tags=body[16:16+n]
+    if tags.count(0)!=nf or tags.count(1)!=ni or tags.count(2)!=n-nf-ni:
+        raise CountryCarrierError("invalid binary R5 dictionary type lanes")
+    off=16+n
+    floats=iter(_unshuffle_words(body[off:off+8*nf],nf));off+=8*nf
+    ints=iter(_unshuffle_words(body[off:off+8*ni],ni));off+=8*ni
+    codes=struct.unpack_from("<"+"H"*n,body,off)
+    escapes,meta=json.loads(body[end:])
+    if len(escapes)!=n-nf-ni or not meta or any(c>=len(meta) for c in codes):
+        raise CountryCarrierError("invalid binary R5 exception/metadata census")
+    if any(not isinstance(x,list) or len(x)!=3 for x in meta):
+        raise CountryCarrierError("invalid R5 cell metadata")
+    other=iter(escapes);tokens=[]
+    for tag,code in zip(tags,codes):
+        if tag==0:
+            raw={"t":"float64_finite","bits":next(floats).hex()}
+        elif tag==1:
+            raw={"t":"int","v":str(struct.unpack(">q",next(ints))[0])}
+        else:
+            raw=next(other)
+        tokens.append(canonical_json({"t":"tuple","v":[raw,*meta[code]]}))
+    return tuple(tokens)
+
+def _digest(kind,coordinates,*payloads):
+    """Domain- and coordinate-bound authentication of exact stored bytes."""
+    h=sha256(canonical_json([kind,*coordinates]).encode("ascii"))
+    for blob in payloads:
+        h.update(struct.pack("<Q",len(blob)))
+        h.update(blob)
+    return h.digest()
+
+def _manifest_root(variables,blocks,lanes):
+    return sha256(canonical_json([
+        SCHEMA,list(variables),
+        [[i,n,d.hex()] for i,n,d in blocks],
+        [[i,j,d.hex()] for i,j,d in lanes],
+    ]).encode("ascii")).hexdigest()
+
+def _stat_signature(path):
+    st=path.stat()
+    return st.st_dev,st.st_ino,st.st_size,st.st_mtime_ns,st.st_ctime_ns
+
 def _encode_cell(cell: PhysicalCell) -> str:
     return canonical_json(_CODEC.encode((cell.raw_value, cell.missing_state.value,
                                         cell.source_missing_declaration, cell.raw_value_label)))
@@ -79,11 +195,17 @@ class CountryReceipt:
     country_rows: int
     sha256: str
     bytes: int
+    # Optional only for backwards reading v1 files. All new builds carry
+    # this independently retained authenticated row/column inventory root.
+    lane_root: str | None = None
 
     def __post_init__(self):
         for value in (self.source_sha256,self.metadata_digest,self.sha256):
             if type(value) is not str or len(value)!=64 or any(c not in "0123456789abcdef" for c in value):
                 raise CountryCarrierError("country receipt requires exact SHA256 pins")
+        if self.lane_root is not None and (type(self.lane_root) is not str
+            or len(self.lane_root)!=64 or any(c not in "0123456789abcdef" for c in self.lane_root)):
+            raise CountryCarrierError("country receipt requires exact lane inventory root")
         if (type(self.source_rows) is not int or type(self.country_rows) is not int
             or not 0<self.country_rows<=self.source_rows or type(self.bytes) is not int or self.bytes<=0
             or type(self.country_variable) is not str or not self.country_variable
@@ -149,9 +271,10 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
           PRAGMA synchronous=FULL;
           CREATE TABLE meta(k TEXT PRIMARY KEY,v TEXT NOT NULL);
           CREATE TABLE vars(ordinal INTEGER PRIMARY KEY,name TEXT NOT NULL UNIQUE);
-          CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER NOT NULL,rows BLOB NOT NULL);
+          CREATE TABLE blocks(id INTEGER PRIMARY KEY,n INTEGER NOT NULL,rows BLOB NOT NULL,digest BLOB NOT NULL);
           CREATE TABLE lanes(block INTEGER NOT NULL REFERENCES blocks(id),ordinal INTEGER NOT NULL REFERENCES vars(ordinal),
-             width INTEGER NOT NULL,dict BLOB NOT NULL,codes BLOB NOT NULL,PRIMARY KEY(block,ordinal)) WITHOUT ROWID;
+             width INTEGER NOT NULL,dict BLOB NOT NULL,codes BLOB NOT NULL,digest BLOB NOT NULL,
+             PRIMARY KEY(block,ordinal)) WITHOUT ROWID;
         """)
         db.execute("PRAGMA foreign_keys=ON")
         db.executemany("INSERT INTO vars VALUES(?,?)", variables)
@@ -164,8 +287,9 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
                 return
             _live(require_current)
             n = len(pending)
-            db.execute("INSERT INTO blocks VALUES(?,?,?)",
-                       (block,n,_pack([row[0] for row in pending],8)))
+            row_blob=_pack([row[0] for row in pending],8)
+            db.execute("INSERT INTO blocks VALUES(?,?,?,?)",
+                       (block,n,row_blob,_digest("ROWS",(block,n),row_blob)))
             for i,(ordinal,_) in enumerate(variables):
                 dictionary, index, codes = [], {}, []
                 for _,tokens in pending:
@@ -175,11 +299,11 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
                         dictionary.append(token)
                     codes.append(index[token])
                 width = 1 if len(dictionary) <= 256 else 2 if len(dictionary) <= 65536 else 4
-                raw = canonical_json(dictionary).encode("ascii")
-                if len(raw) > MAX_BYTES:
-                    raise CountryCarrierError("dictionary block too large")
-                db.execute("INSERT INTO lanes VALUES(?,?,?,?,?)",
-                           (block,ordinal,width,zlib.compress(raw),_pack(codes,width)))
+                payload=_pack_dictionary(dictionary)
+                packed=_pack(codes,width)
+                db.execute("INSERT INTO lanes VALUES(?,?,?,?,?,?)",
+                           (block,ordinal,width,payload,packed,
+                            _digest("LANE",(block,ordinal,width),payload,packed)))
             pending.clear()
             block += 1
             db.commit()
@@ -220,9 +344,12 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
         if incidence.verify_source_identity() != source or incidence.physical_metadata_digest != metadata:
             raise CountryCarrierError("source changed during country build")
         _live(require_current)
+        lane_root=_manifest_root(variables,
+            db.execute("SELECT id,n,digest FROM blocks ORDER BY id"),
+            db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
         info = dict(schema=SCHEMA,source_sha256=source,metadata_digest=metadata,
                     source_rows=incidence.row_count,country_variable=country_variable,
-                    country_key=key,country_rows=country_rows)
+                    country_key=key,country_rows=country_rows,lane_root=lane_root)
         db.executemany("INSERT INTO meta VALUES(?,?)",[(k,canonical_json(v)) for k,v in info.items()])
         if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok" or db.execute("PRAGMA foreign_key_check").fetchone():
             raise CountryCarrierError("country SQLite integrity failed")
@@ -260,26 +387,62 @@ class CountryReader:
         if type(receipt) is not CountryReceipt:
             raise CountryCarrierError("external country receipt required")
         self.path, self.receipt, self.require_current = Path(path).resolve(), receipt, require_current
-        self._verify()
-        self.db = sqlite3.connect(self.path.as_uri()+"?mode=ro",uri=True)
         self._closed = False
+        self._signature = _stat_signature(self.path)
+        # Authenticate the complete retained artifact once on cold opening.
+        self.verify_full()
+        self._block_auth,self._lane_auth=None,None
+        self.db = sqlite3.connect(self.path.as_uri()+"?mode=ro"+("&immutable=1" if receipt.lane_root else ""),uri=True)
         self._certified_identity = None
         try:
             self.db.execute("PRAGMA query_only=ON")
             info = {k:json.loads(v) for k,v in self.db.execute("SELECT k,v FROM meta")}
-            expected = {k:v for k,v in asdict(receipt).items() if k not in ("sha256","bytes")}
-            if info != dict(schema=SCHEMA,**expected):
+            expected = {k:v for k,v in asdict(receipt).items() if k not in ("sha256","bytes") and v is not None}
+            if info != dict(schema=SCHEMA if receipt.lane_root else LEGACY_SCHEMA,**expected):
                 raise CountryCarrierError("country receipt/metadata mismatch")
-            self.variables = dict(self.db.execute("SELECT ordinal,name FROM vars ORDER BY ordinal"))
+            variables=tuple(self.db.execute("SELECT ordinal,name FROM vars ORDER BY ordinal"))
+            self.variables = dict(variables)
+            if receipt.lane_root:
+                blocks=tuple(self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"))
+                lanes=tuple(self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
+                if _manifest_root(variables,blocks,lanes)!=receipt.lane_root:
+                    raise CountryCarrierError("country lane inventory differs from external receipt")
+                self._block_auth={i:(n,d) for i,n,d in blocks}
+                self._lane_auth={(i,j):d for i,j,d in lanes}
+                if (tuple(self._block_auth)!=tuple(range(len(blocks)))
+                    or sum(n for _,n,_ in blocks)!=receipt.country_rows
+                    or set(self._lane_auth)!={(i,j) for i in self._block_auth for j in self.variables}):
+                    raise CountryCarrierError("country authenticated lane inventory incomplete")
+            self._verify()
         except BaseException:
             self.db.close()
             raise
-    def _verify(self):
-        if getattr(self,"_closed",False):
+    def _check_live_file(self):
+        if self._closed:
             raise CountryCarrierError("country reader closed")
         _live(self.require_current)
-        if self.path.stat().st_size != self.receipt.bytes or _hash(self.path) != self.receipt.sha256:
+        try:
+            same=_stat_signature(self.path)==self._signature
+        except OSError as exc:
+            raise CountryCarrierError("country file no longer available") from exc
+        if not same:
+            raise CountryCarrierError("country file changed during reader session")
+
+    def verify_full(self):
+        self._check_live_file()
+        if self._signature[2]!=self.receipt.bytes or _hash(self.path)!=self.receipt.sha256:
             raise CountryCarrierError("country file differs from held receipt")
+        self._check_live_file()
+
+    def _verify(self):
+        # Stat checks are a mutation alarm, NEVER the v2 authentication
+        # proof: the held root authenticates inventory, and each selected
+        # row/column blob is authenticated before decoding. Old v1 files
+        # have no per-lane pin and therefore keep the old full-hash path.
+        if self.receipt.lane_root is None:
+            self.verify_full()
+        else:
+            self._check_live_file()
     def close(self):
         if not self._closed:
             self._closed = True
@@ -290,25 +453,27 @@ class CountryReader:
         self.close()
     def _blocks(self):
         previous, total = 0, 0
+        seen=[]
         for block,n,payload in self.db.execute("SELECT id,n,rows FROM blocks ORDER BY id"):
-            _live(self.require_current)
+            self._verify()
+            if self._block_auth is not None and self._block_auth.get(block)!=(n,_digest("ROWS",(block,n),payload)):
+                raise CountryCarrierError("row block authentication failed")
+            seen.append(block)
             rows = _unpack(payload,8,n)
             if not rows or rows[0]<=previous or any(a>=b for a,b in zip(rows,rows[1:])) or rows[-1]>self.receipt.source_rows:
                 raise CountryCarrierError("invalid source ordinal lane")
             previous, total = rows[-1],total+n
             yield block,rows
-        if total != self.receipt.country_rows:
+        if total != self.receipt.country_rows or (self._block_auth is not None and tuple(seen)!=tuple(self._block_auth)):
             raise CountryCarrierError("country row census mismatch")
     def _column(self, block, rows, ordinal):
         lane = self.db.execute("SELECT width,dict,codes FROM lanes WHERE block=? AND ordinal=?",(block,ordinal)).fetchone()
         if lane is None:
             raise CountryCarrierError("country variable lane missing")
         width,payload,codes = lane
-        d = zlib.decompressobj()
-        raw = d.decompress(payload,MAX_BYTES+1)
-        if len(raw)>MAX_BYTES or not d.eof or d.unused_data or d.unconsumed_tail:
-            raise CountryCarrierError("invalid dictionary compression")
-        dictionary = tuple(json.loads(raw))
+        if self._lane_auth is not None and self._lane_auth.get((block,ordinal))!=_digest("LANE",(block,ordinal,width),payload,codes):
+            raise CountryCarrierError("column lane authentication failed")
+        dictionary = _read_dictionary(payload)
         ids = _unpack(codes,width,len(rows))
         if not dictionary or any(i>=len(dictionary) for i in ids):
             raise CountryCarrierError("invalid column dictionary codes")
@@ -440,9 +605,7 @@ class _CountryEventBodies:
 
     def check_live(self):
         """Every existing country-backed exact-object reader must remain CURRENT."""
-        if self.reader._closed:
-            raise CountryCarrierError("country object resolver closed")
-        _live(self.reader.require_current)
+        self.reader._verify()
 
     def __getitem__(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
@@ -477,7 +640,7 @@ class _CountryEventBodies:
                         matches.append(event)
         if len(matches)!=1:
             raise CountryCarrierError("country event reconstruction differs from sealed ref")
-        _live(reader.require_current)
+        reader._verify()
         from .pre553_empirical_objects import canonical_json as semantic_json
         return _BodyScalar(semantic_json(matches[0].semantic_projection()).encode("utf-8"))
 
@@ -529,8 +692,11 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         raise CountryCarrierError("issued source and external country receipt differ")
     def current():
         _live(require_country_current)
-        if admit(workload,resolver,host=host,purpose=purpose,
-                 allow_test_only=allow_test_only,expected_wave=expected_wave)!=record:
+        # Full immutable workload admission occurs before opening, inside
+        # the incumbent U43 executor, and again after execution. Frequent
+        # physical reads compare the independently returned exact decision,
+        # rather than reserializing the entire projection per event.
+        if resolver.resolve_current(workload.decision_ref)!=record:
             raise CountryCarrierError("country workload decision changed")
     current()
     count=len(workload.requests)+len(workload.discoveries)
@@ -555,6 +721,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
         reader._verify()
         current()
+        if admit(workload,resolver,host=host,purpose=purpose,
+                 allow_test_only=allow_test_only,expected_wave=expected_wave)!=record:
+            raise CountryCarrierError("country workload decision changed before serving")
         return CountryExecution(result,identity)
 
 def build_country_set(incidence,*,country_variable,root,require_current,

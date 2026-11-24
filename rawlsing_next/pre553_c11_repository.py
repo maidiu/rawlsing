@@ -121,11 +121,9 @@ class C11Repository:
         obj = self._objects.get(ref.key)
         if obj is None:
             raise KeyError("exact C11 object unavailable; no fallback permitted")
-        if isinstance(obj, _EventLocator):
-            return obj.materialize()
         for guard in self._country_object_guards.get(ref.key, ()):
             guard.check_live()
-        return obj
+        return obj.materialize() if isinstance(obj, _EventLocator) else obj
 
     def _commit_validated(self, release: C11LogicalRelease) -> None:
         """Atomic commit primitive used only after complete ingest validation."""
@@ -154,7 +152,7 @@ class C11Repository:
             if prior is not None and prior.ref.content_hash != obj_ref.content_hash:
                 raise C11AtomicityError("exact object ref collision has conflicting content")
             staged[obj_ref.key] = obj
-            if country_guard is not None and not isinstance(obj, _EventLocator):
+            if country_guard is not None:
                 # Shared exact objects may belong to more than one country
                 # release. Conservatively respect *every* live country owner.
                 guards = staged_guards.get(obj_ref.key, ())

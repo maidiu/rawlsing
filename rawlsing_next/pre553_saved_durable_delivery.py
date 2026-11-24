@@ -685,7 +685,8 @@ def _country_binding(record, workload, release, receipt):
     base = _binding(record, workload, release, receipt.sha256)
     base.pop("saved_manifest_sha256")
     return {**base, "schema":"PYAT_COUNTRY_U43_S2F_DELIVERY@1",
-            "country_receipt":asdict(receipt), "projection_identity":workload.projection.cache_identity}
+            "country_receipt":{k:v for k,v in asdict(receipt).items() if v is not None},
+            "projection_identity":workload.projection.cache_identity}
 
 
 def execute_publish_country(workload, resolver, *, host, purpose, country_path,
@@ -700,7 +701,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     record = _record(workload, resolver, host, purpose)
     _country_binding(record, workload, workload.projection.projection_identity_ref, country_receipt)
     def current():
-        _require(_record(workload,resolver,host,purpose)==record,
+        _require(resolver.resolve_current(workload.decision_ref)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
     start=monotonic()
     # S2-F remains TEST_ONLY. The real-source execution entry separately
@@ -730,11 +731,13 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     with CountryReader(country_path,country_receipt,require_current=current) as reader:
         reader._verify()
         current()
+        _require(_record(workload,resolver,host,purpose)==record,"COUNTRY_CURRENT_DECISION_CHANGED")
         elapsed=monotonic()-start
         published=monotonic()
         receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding)
         reader._verify()
         current()
+        _require(_record(workload,resolver,host,purpose)==record,"COUNTRY_CURRENT_DECISION_CHANGED")
     return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict())
 
 

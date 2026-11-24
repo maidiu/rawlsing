@@ -113,13 +113,16 @@ class HostileCountryCurrentness(unittest.TestCase):
                     for c in read.iter_cells()
                 ]
                 self.assertEqual(actual, expected)
-                # Even a one-variable GROUP intersection requires two full
-                # carrier SHA-256 rehashes under the current cold-reader API.
+                # Historical #1345 measured two full rehashes per query.
+                # V2 authenticates each selected lane against the external
+                # root, after one full cold-open SHA check.
                 import rawlsing_next.pre553_country_numeric_carrier as carrier
                 with mock.patch.object(carrier, "_hash", wraps=_hash) as hashes:
                     rows = list(read.matching_rows({"v0": 0.0}))
                     self.assertEqual(rows, [1])
-                    self.assertEqual(hashes.call_count, 2)
+                    self.assertEqual(hashes.call_count, 0)
+            self.assertLess(receipt.bytes,original_bytes)
+            self.assertLess(receipt.bytes,1171456//2)
             print("HOSTILE_HIGH_CARDINALITY_NUMERIC_COST", {
                 "source_rows": n, "native_columns": width + 1,
                 "selected_rows": receipt.country_rows,
@@ -128,6 +131,72 @@ class HostileCountryCurrentness(unittest.TestCase):
                 "original_full_wave_sav_bytes": original_bytes,
                 "relative_db_to_original": round(receipt.bytes / original_bytes, 3),
                 "build_seconds": round(elapsed, 3),
-                "full_carrier_rehashes_per_physical_query": 2,
+                "full_carrier_rehashes_per_physical_query": 0,
                 "grade": "SOURCEFREE_PHYSICAL_ONLY_NO_NATIVE_SCALE",
             })
+
+
+    def test_binary_dictionary_preserves_exact_R5_exceptions_and_bits(self):
+        import struct
+        from decimal import Decimal
+        from rawlsing_next.pre553_country_numeric_carrier import (
+            _pack_dictionary,_read_dictionary,_encode_cell,_BINARY_DICTIONARY,
+        )
+        from rawlsing_next.pre553_r5_codec import R5OpaqueValue
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        values=[float(i)*1.000001 for i in range(512)]
+        values.extend([-0.0,0.0,float("nan"),float("inf"),float("-inf"),None,
+                       0,True,"0",2**100,-2**60,Decimal("-0.000"),
+                       R5OpaqueValue("test",b"\x00\xff"),"a\x00é"])
+        tokens=tuple(_encode_cell(PhysicalCell(i+1,1,"q",v,
+            PhysicalMissingState.SYSTEM_MISSING if v is None else PhysicalMissingState.OBSERVED_STORAGE_VALUE,
+            {"tag":"decl"} if i%13==0 else None,"label" if i%17==0 else None))
+            for i,v in enumerate(values))
+        packed=_pack_dictionary(tokens)
+        self.assertTrue(packed.startswith(_BINARY_DICTIONARY))
+        self.assertEqual(_read_dictionary(packed),tokens)
+        self.assertNotEqual(tokens[512],tokens[513])
+        # No type conflation: float zero, integer zero, bool, string distinct.
+        self.assertEqual(len(set(tokens[517:521])),4)
+
+    def test_selected_lane_pin_and_external_root_refuse_substitution(self):
+        import sqlite3
+        from unittest import mock
+        import rawlsing_next.pre553_country_numeric_carrier as carrier
+        with tempfile.TemporaryDirectory() as d:
+            reader,repo,release,ref=_country_repository(d,lambda:True)
+            try:
+                block,rows=next(reader._blocks())
+                row=reader.db.execute("SELECT width,dict,codes FROM lanes WHERE block=? AND ordinal=1",(block,)).fetchone()
+                real=reader.db
+                class MutatedDB:
+                    def execute(self,sql,args=()):
+                        if sql.startswith("SELECT width,dict,codes"):
+                            return self
+                        return real.execute(sql,args)
+                    def fetchone(self):
+                        return row[0],row[1],row[2]+b"corruption"
+                reader.db=MutatedDB()
+                try:
+                    with self.assertRaisesRegex(CountryCarrierError,"lane authentication failed"):
+                        reader._column(block,rows,1)
+                finally:
+                    reader.db=real
+                # Correct file hash alone cannot repair a substituted external root.
+                with self.assertRaisesRegex(CountryCarrierError,"metadata mismatch|inventory"):
+                    CountryReader(reader.path,replace(reader.receipt,lane_root="0"*64),require_current=lambda:True)
+            finally:
+                reader.close()
+
+    def test_reopened_reader_detects_mutated_file_during_session(self):
+        with tempfile.TemporaryDirectory() as d:
+            reader,repo,release,ref=_country_repository(d,lambda:True)
+            try:
+                with reader.path.open("ab") as f:
+                    f.write(b"changed")
+                with self.assertRaises(CountryCarrierError):
+                    list(reader.matching_rows({"G":"A"}))
+                with self.assertRaises(CountryCarrierError):
+                    repo.resolve_object_exact(ref)
+            finally:
+                reader.close()
