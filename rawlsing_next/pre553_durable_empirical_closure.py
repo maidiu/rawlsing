@@ -96,6 +96,10 @@ DURABLE_CLOSURE_CONTRACT_ID = (
     "PYAT_S2F_DURABLE_COMPLETE_EMPIRICAL_RESULT_CLOSURE@1.0.0"
 )
 DURABLE_CLOSURE_SCHEMA = "PYAT_S2F_DURABLE_EMPIRICAL_CLOSURE_MANIFEST@1.0.0"
+# Explicit envelope extension inside the existing content-addressed container.
+# Legacy one-frontier bytes and roots remain unchanged. A v1-only reader
+# cannot parse the null singular field, so it fails closed on the new shape.
+NATIVE_DISCOVERY_ENVELOPE_V2 = "PYAT_S2F_NATIVE_DISCOVERY_SET@2"
 DURABLE_ROOT_SCHEMA = "PYAT_S2F_DURABLE_EMPIRICAL_CLOSURE_ROOT@1.0.0"
 DURABLE_CLOSURE_CONTRACT_SHA = (
     "2d7517456846d41c06b5bf0355b79626142b5608db90a546e7252831ae3e2716"
@@ -324,13 +328,18 @@ class NativeEmpiricalOutput:
     source_identity: Mapping[str, Any]
     release_identities: tuple[ReleaseIdentity, ...]
     i03_results: tuple[QueryExecutionResult, ...]
-    i05_result: ExactBoundedDiscoveryResult
+    i05_result: ExactBoundedDiscoveryResult | None
     object_graph: RouteBEmpiricalObjectGraph
     typed_states: Mapping[str, Any] | None = None
     learned_empirical_execution_receipt: Mapping[str, Any] | None = None
     replay_receipt_identity: str | None = None
     replay_receipt_header: Mapping[str, Any] | None = None
     native_result_identity: str | None = None
+    i05_results: tuple[ExactBoundedDiscoveryResult, ...] = ()
+
+    @property
+    def discovery_results(self) -> tuple[ExactBoundedDiscoveryResult, ...]:
+        return (self.i05_result,) if self.i05_result is not None else self.i05_results
 
     def __post_init__(self) -> None:
         object.__setattr__(
@@ -348,10 +357,19 @@ class NativeEmpiricalOutput:
             "release_identities",
             tuple(sorted(releases, key=lambda item: item.release_ref.key)),
         )
-        if not isinstance(self.i05_result, ExactBoundedDiscoveryResult):
-            raise DurableEmpiricalClosureError(
-                "exact ExactBoundedDiscoveryResult is required"
-            )
+        if self.i05_result is not None and (
+            not isinstance(self.i05_result, ExactBoundedDiscoveryResult)
+            or self.i05_results
+        ):
+            raise DurableEmpiricalClosureError("ambiguous singular/plural I05 envelope")
+        if type(self.i05_results) is not tuple or not all(
+            type(item) is ExactBoundedDiscoveryResult for item in self.i05_results
+        ):
+            raise DurableEmpiricalClosureError("exact native I05 tuple required")
+        ordered = tuple(sorted(self.i05_results, key=lambda item: item.discovery_authority_ref.key))
+        if len({item.discovery_authority_ref for item in ordered}) != len(ordered):
+            raise DurableEmpiricalClosureError("duplicate native discovery authority")
+        object.__setattr__(self, "i05_results", ordered)
         if not isinstance(self.object_graph, RouteBEmpiricalObjectGraph):
             raise DurableEmpiricalClosureError(
                 "exact RouteBEmpiricalObjectGraph is required"
@@ -824,44 +842,50 @@ def _verify_output_graph(output: NativeEmpiricalOutput) -> None:
             if fact.ref.key not in graph_keys["empirical_facts"]:
                 raise DurableEmpiricalClosureError("i03 result fact is absent from the object graph")
 
-    # I05 result closure.
-    i05 = output.i05_result
-    if i05.discovery_authority_ref.key not in graph_keys["discovery_authorities"]:
-        raise DurableEmpiricalClosureError("i05 discovery authority is absent")
-    for receipt in i05.receipts:
-        if receipt.ref.key not in graph_keys["discovery_receipts"]:
-            raise DurableEmpiricalClosureError("i05 receipt is absent")
-    for fact_ref in i05.empirical_fact_refs:
-        if fact_ref.key not in graph_keys["empirical_facts"]:
-            raise DurableEmpiricalClosureError("i05 fact is absent")
-    for predicate in i05.executed_predicates:
-        if predicate.ref.key not in graph_keys["executed_predicates"]:
-            raise DurableEmpiricalClosureError("i05 predicate is absent")
-    for query in i05.executed_queries:
-        if query.ref.key not in graph_keys["executed_queries"]:
-            raise DurableEmpiricalClosureError("i05 query is absent")
-
-    if i05.valid_empty and not all(
-        receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
-    ):
-        raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
-    if i05.candidate_count != i05.covered_candidate_count:
-        raise DurableEmpiricalClosureError("i05 frontier is not completely covered")
-    if i05.candidate_count != len(i05.receipts):
-        raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
-
-    # No extra object is smuggled into the closure beyond the declared native graph.
-    declared = set().union(*graph_keys.values())
-    referenced = {
-        result.query_ref.key for result in output.i03_results
-    } | {
+    # Each actual native I05 result retains its own frontier and replay.
+    # In v2 neither absent discovery nor distinct frontiers are synthesized.
+    referenced = {result.query_ref.key for result in output.i03_results} | {
         fact.ref.key for result in output.i03_results for fact in result.facts
-    } | {i05.discovery_authority_ref.key} | {
-        receipt.ref.key for receipt in i05.receipts
-    } | {ref.key for ref in i05.empirical_fact_refs} | {
-        obj.ref.key for obj in i05.executed_predicates
-    } | {obj.ref.key for obj in i05.executed_queries}
-    if not referenced.issubset(declared):
+    }
+    actual_receipts = set()
+    actual_discoveries = set()
+    for i05 in output.discovery_results:
+        if i05.discovery_authority_ref.key not in graph_keys["discovery_authorities"]:
+            raise DurableEmpiricalClosureError("i05 discovery authority is absent")
+        actual_discoveries.add(i05.discovery_authority_ref.key)
+        for receipt in i05.receipts:
+            if (receipt.ref.key not in graph_keys["discovery_receipts"]
+                or receipt.ref.key in actual_receipts):
+                raise DurableEmpiricalClosureError("i05 receipt absent or shared across frontiers")
+            if (_exact(receipt.discovery_authority_ref, "receipt authority") != i05.discovery_authority_ref
+                or _exact(receipt.evaluated_frontier_ref, "receipt frontier") != i05.evaluated_frontier_ref):
+                raise DurableEmpiricalClosureError("i05 receipt frontier/authority mismatch")
+            actual_receipts.add(receipt.ref.key)
+        if tuple(f.ref for f in i05.empirical_facts) != i05.empirical_fact_refs:
+            raise DurableEmpiricalClosureError("i05 fact envelope mismatch")
+        for fact_ref in i05.empirical_fact_refs:
+            if fact_ref.key not in graph_keys["empirical_facts"]:
+                raise DurableEmpiricalClosureError("i05 fact is absent")
+        for predicate in i05.executed_predicates:
+            if predicate.ref.key not in graph_keys["executed_predicates"]:
+                raise DurableEmpiricalClosureError("i05 predicate is absent")
+        for query in i05.executed_queries:
+            if query.ref.key not in graph_keys["executed_queries"]:
+                raise DurableEmpiricalClosureError("i05 query is absent")
+        if i05.valid_empty != all(
+            receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
+        ):
+            raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
+        if i05.candidate_count != i05.covered_candidate_count or i05.candidate_count != len(i05.receipts):
+            raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
+        referenced |= ({i05.discovery_authority_ref.key}
+            | {r.ref.key for r in i05.receipts}
+            | {r.key for r in i05.empirical_fact_refs}
+            | {obj.ref.key for obj in i05.executed_predicates}
+            | {obj.ref.key for obj in i05.executed_queries})
+    if actual_receipts != graph_keys["discovery_receipts"] or actual_discoveries != graph_keys["discovery_authorities"]:
+        raise DurableEmpiricalClosureError("unowned discovery object in closure")
+    if not referenced.issubset(set().union(*graph_keys.values())):
         raise DurableEmpiricalClosureError("referenced native objects are not declared in the graph")
 
 
@@ -1226,6 +1250,7 @@ def _build_census(output: NativeEmpiricalOutput) -> Mapping[str, Any]:
                 set(CONSERVED_RECEIPT_STATES) - set(receipt_state_counts)
             ),
             "unvisited_state": (
+                "NO_NATIVE_DISCOVERY_EXECUTED" if not output.discovery_results else
                 "NONE__EXACT_FRONTIER_EVALUATES_ALL_CANDIDATES"
                 if not unvisited
                 else "DECLARED_UNVISITED_RECEIPTS"
@@ -1239,6 +1264,26 @@ def _build_census(output: NativeEmpiricalOutput) -> Mapping[str, Any]:
             "F3_minority_receipt_refs": sorted(f3_refs, key=canonical_json),
             "F4_same_respondent_joint_fact_refs": sorted(f4_refs, key=canonical_json),
         },
+    }
+
+
+def _i05_envelope(i05: ExactBoundedDiscoveryResult) -> Mapping[str, Any]:
+    return {
+        "contract_id": i05.contract_id,
+        "discovery_authority_ref": i05.discovery_authority_ref.as_dict(),
+        "candidate_grammar_ref": i05.candidate_grammar_ref.as_dict(),
+        "evaluated_frontier_ref": i05.evaluated_frontier_ref.as_dict(),
+        "coverage_claim": i05.coverage_claim,
+        "candidate_count": i05.candidate_count,
+        "covered_candidate_count": i05.covered_candidate_count,
+        "valid_empty": i05.valid_empty,
+        "replay_ref": i05.replay_ref.as_dict(),
+        "receipt_refs": [receipt.ref.as_dict() for receipt in i05.receipts],
+        "empirical_fact_refs": [ref.as_dict() for ref in i05.empirical_fact_refs],
+        "executed_predicate_refs": [
+            obj.ref.as_dict() for obj in i05.executed_predicates
+        ],
+        "executed_query_refs": [obj.ref.as_dict() for obj in i05.executed_queries],
     }
 
 
@@ -1256,23 +1301,11 @@ def _native_envelope(output: NativeEmpiricalOutput) -> Mapping[str, Any]:
             }
             for result in output.i03_results
         ],
-        "i05": {
-            "contract_id": i05.contract_id,
-            "discovery_authority_ref": i05.discovery_authority_ref.as_dict(),
-            "candidate_grammar_ref": i05.candidate_grammar_ref.as_dict(),
-            "evaluated_frontier_ref": i05.evaluated_frontier_ref.as_dict(),
-            "coverage_claim": i05.coverage_claim,
-            "candidate_count": i05.candidate_count,
-            "covered_candidate_count": i05.covered_candidate_count,
-            "valid_empty": i05.valid_empty,
-            "replay_ref": i05.replay_ref.as_dict(),
-            "receipt_refs": [receipt.ref.as_dict() for receipt in i05.receipts],
-            "empirical_fact_refs": [ref.as_dict() for ref in i05.empirical_fact_refs],
-            "executed_predicate_refs": [
-                obj.ref.as_dict() for obj in i05.executed_predicates
-            ],
-            "executed_query_refs": [obj.ref.as_dict() for obj in i05.executed_queries],
-        },
+        "i05": _i05_envelope(i05) if i05 is not None else None,
+        **({} if i05 is not None else {
+            "discovery_envelope_schema": NATIVE_DISCOVERY_ENVELOPE_V2,
+            "i05_results": [_i05_envelope(item) for item in output.discovery_results],
+        }),
         "typed_states": canonicalize(output.typed_states) if output.typed_states is not None else None,
         "learned_empirical_execution_receipt": (
             canonicalize(output.learned_empirical_execution_receipt)
@@ -1325,33 +1358,26 @@ def _replay_documents(
                 "material": canonicalize(material),
             }
         )
-    frontier = _frontier_replay_material(
-        output.object_graph.discovery_receipts, output.i05_result
-    )
-    frontier_digest = semantic_hash(frontier)
-    if frontier_digest != _exact(
-        output.i05_result.evaluated_frontier_ref, "frontier"
-    ).content_hash:
-        raise DurableEmpiricalClosureError(
-            "reconstructed frontier preimage does not reproduce the native frontier identity"
-        )
-    final = _final_replay_material(output.i05_result)
-    final_digest = semantic_hash(final)
-    if final_digest != _exact(
-        output.i05_result.replay_ref, "i05 replay"
-    ).content_hash:
-        raise DurableEmpiricalClosureError(
-            "reconstructed final replay preimage does not reproduce the native replay identity"
-        )
-    return (
-        {
-            "facts": fact_materials,
-            "receipts": receipt_materials,
+    def discovery_replay(i05):
+        frontier = _frontier_replay_material(i05.receipts, i05)
+        frontier_digest = semantic_hash(frontier)
+        if frontier_digest != _exact(i05.evaluated_frontier_ref, "frontier").content_hash:
+            raise DurableEmpiricalClosureError("reconstructed frontier preimage does not reproduce the native frontier identity")
+        final = _final_replay_material(i05)
+        final_digest = semantic_hash(final)
+        if final_digest != _exact(i05.replay_ref, "i05 replay").content_hash:
+            raise DurableEmpiricalClosureError("reconstructed final replay preimage does not reproduce the native replay identity")
+        return {
             "frontier": {"material": canonicalize(frontier), "material_hash": frontier_digest},
             "i05_final": {"material": canonicalize(final), "material_hash": final_digest},
-        },
-        {},
-    )
+        }
+    discovery_docs = (discovery_replay(output.i05_result)
+        if output.i05_result is not None else {
+            "discovery_replays": [
+                {"discovery_authority_ref": item.discovery_authority_ref.as_dict(),
+                 **discovery_replay(item)} for item in output.discovery_results
+            ]})
+    return ({"facts": fact_materials, "receipts": receipt_materials, **discovery_docs}, {})
 
 
 def _object_entries(
@@ -1745,11 +1771,24 @@ class DurableEmpiricalClosure:
     manifest: Mapping[str, Any]
     object_graph: RouteBEmpiricalObjectGraph
     i03_results: tuple[QueryExecutionResult, ...]
-    i05_result: ExactBoundedDiscoveryResult
+    i05_result: ExactBoundedDiscoveryResult | None
     release_identities: tuple[ReleaseIdentity, ...]
     consumer_binding: Mapping[str, Any] | None
     descriptive_consumer: Mapping[str, Any] | None
     census: Mapping[str, Any]
+    i05_results: tuple[ExactBoundedDiscoveryResult, ...] = ()
+
+    @property
+    def discovery_results(self) -> tuple[ExactBoundedDiscoveryResult, ...]:
+        return (self.i05_result,) if self.i05_result is not None else self.i05_results
+
+    def discovery_by_receipt(self, receipt_ref: ExactRef) -> ExactBoundedDiscoveryResult:
+        ref = _exact(receipt_ref, "discovery receipt")
+        matches = [item for item in self.discovery_results
+                   if any(r.ref == ref for r in item.receipts)]
+        if len(matches) != 1:
+            raise DurableEmpiricalClosureError("discovery receipt not uniquely retained")
+        return matches[0]
 
     @property
     def exact_ref(self) -> ExactRef:
@@ -2093,67 +2132,84 @@ def open_empirical_closure(
             )
         )
 
-    i05_entry = _mapping(native.get("i05"), "i05 envelope")
-    receipts = []
-    for raw in _sequence(i05_entry.get("receipt_refs"), "i05 receipt refs"):
-        ref = _exact(raw, "i05 receipt ref")
-        receipt = receipt_by_key.get(ref.key)
-        if receipt is None:
-            raise DurableEmpiricalClosureError("i05 receipt preimage is absent")
-        receipts.append(receipt)
-    i05_fact_refs = tuple(
-        _exact(raw, "i05 fact ref")
-        for raw in _sequence(i05_entry.get("empirical_fact_refs"), "i05 fact refs")
-    )
-    i05_facts = []
-    for ref in i05_fact_refs:
-        fact = fact_by_key.get(ref.key)
-        if fact is None:
-            raise DurableEmpiricalClosureError("i05 fact preimage is absent")
-        i05_facts.append(fact)
-    i05_predicates = []
-    for raw in _sequence(i05_entry.get("executed_predicate_refs"), "i05 predicate refs"):
-        ref = _exact(raw, "i05 predicate ref")
-        predicate = predicate_by_key.get(ref.key)
-        if predicate is None:
-            raise DurableEmpiricalClosureError("i05 predicate preimage is absent")
-        i05_predicates.append(predicate)
-    i05_queries = []
-    for raw in _sequence(i05_entry.get("executed_query_refs"), "i05 query refs"):
-        ref = _exact(raw, "i05 query ref")
-        query = query_by_key.get(ref.key)
-        if query is None:
-            raise DurableEmpiricalClosureError("i05 query preimage is absent")
-        i05_queries.append(query)
-    i05 = ExactBoundedDiscoveryResult(
-        contract_id=_text(i05_entry.get("contract_id"), "i05 contract"),
-        discovery_authority_ref=_exact(
-            i05_entry.get("discovery_authority_ref"), "i05 discovery authority"
-        ),
-        candidate_grammar_ref=_exact(
-            i05_entry.get("candidate_grammar_ref"), "i05 candidate grammar"
-        ),
-        evaluated_frontier_ref=_exact(
-            i05_entry.get("evaluated_frontier_ref"), "i05 frontier"
-        ),
-        coverage_claim=_text(i05_entry.get("coverage_claim"), "i05 coverage claim"),
-        candidate_count=int(i05_entry.get("candidate_count")),
-        covered_candidate_count=int(i05_entry.get("covered_candidate_count")),
-        receipts=tuple(sorted(receipts, key=lambda receipt: receipt.ref.key)),
-        empirical_fact_refs=tuple(sorted(i05_fact_refs, key=lambda ref: ref.key)),
-        empirical_facts=tuple(sorted(i05_facts, key=lambda fact: fact.ref.key)),
-        executed_predicates=tuple(sorted(i05_predicates, key=lambda obj: obj.ref.key)),
-        executed_queries=tuple(sorted(i05_queries, key=lambda obj: obj.ref.key)),
-        valid_empty=bool(i05_entry.get("valid_empty")),
-        replay_ref=_exact(i05_entry.get("replay_ref"), "i05 replay"),
-    )
+    def parse_discovery(i05_entry):
+        i05_entry = _mapping(i05_entry, "i05 envelope")
+        receipts = []
+        for raw in _sequence(i05_entry.get("receipt_refs"), "i05 receipt refs"):
+            ref = _exact(raw, "i05 receipt ref")
+            receipt = receipt_by_key.get(ref.key)
+            if receipt is None:
+                raise DurableEmpiricalClosureError("i05 receipt preimage is absent")
+            receipts.append(receipt)
+        i05_fact_refs = tuple(
+            _exact(raw, "i05 fact ref")
+            for raw in _sequence(i05_entry.get("empirical_fact_refs"), "i05 fact refs")
+        )
+        i05_facts = []
+        for ref in i05_fact_refs:
+            fact = fact_by_key.get(ref.key)
+            if fact is None:
+                raise DurableEmpiricalClosureError("i05 fact preimage is absent")
+            i05_facts.append(fact)
+        i05_predicates = []
+        for raw in _sequence(i05_entry.get("executed_predicate_refs"), "i05 predicate refs"):
+            ref = _exact(raw, "i05 predicate ref")
+            predicate = predicate_by_key.get(ref.key)
+            if predicate is None:
+                raise DurableEmpiricalClosureError("i05 predicate preimage is absent")
+            i05_predicates.append(predicate)
+        i05_queries = []
+        for raw in _sequence(i05_entry.get("executed_query_refs"), "i05 query refs"):
+            ref = _exact(raw, "i05 query ref")
+            query = query_by_key.get(ref.key)
+            if query is None:
+                raise DurableEmpiricalClosureError("i05 query preimage is absent")
+            i05_queries.append(query)
+        i05 = ExactBoundedDiscoveryResult(
+            contract_id=_text(i05_entry.get("contract_id"), "i05 contract"),
+            discovery_authority_ref=_exact(
+                i05_entry.get("discovery_authority_ref"), "i05 discovery authority"
+            ),
+            candidate_grammar_ref=_exact(
+                i05_entry.get("candidate_grammar_ref"), "i05 candidate grammar"
+            ),
+            evaluated_frontier_ref=_exact(
+                i05_entry.get("evaluated_frontier_ref"), "i05 frontier"
+            ),
+            coverage_claim=_text(i05_entry.get("coverage_claim"), "i05 coverage claim"),
+            candidate_count=int(i05_entry.get("candidate_count")),
+            covered_candidate_count=int(i05_entry.get("covered_candidate_count")),
+            receipts=tuple(sorted(receipts, key=lambda receipt: receipt.ref.key)),
+            empirical_fact_refs=tuple(sorted(i05_fact_refs, key=lambda ref: ref.key)),
+            empirical_facts=tuple(sorted(i05_facts, key=lambda fact: fact.ref.key)),
+            executed_predicates=tuple(sorted(i05_predicates, key=lambda obj: obj.ref.key)),
+            executed_queries=tuple(sorted(i05_queries, key=lambda obj: obj.ref.key)),
+            valid_empty=bool(i05_entry.get("valid_empty")),
+            replay_ref=_exact(i05_entry.get("replay_ref"), "i05 replay"),
+        )
 
-    if i05.candidate_count != len(i05.receipts) or i05.covered_candidate_count != len(i05.receipts):
-        raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
-    if i05.valid_empty != all(
-        receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
-    ):
-        raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
+        if i05.candidate_count != len(i05.receipts) or i05.covered_candidate_count != len(i05.receipts):
+            raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
+        if i05.valid_empty != all(
+            receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
+        ):
+            raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
+        return i05
+
+    if "discovery_envelope_schema" in native:
+        if (native["discovery_envelope_schema"] != NATIVE_DISCOVERY_ENVELOPE_V2
+                or native.get("i05") is not None):
+            raise DurableEmpiricalClosureError("invalid plural native discovery envelope")
+        i05 = None
+        i05_results = tuple(parse_discovery(row) for row in _sequence(
+            native.get("i05_results"), "plural native I05 envelopes"))
+        if tuple(sorted(i05_results, key=lambda item: item.discovery_authority_ref.key)) != i05_results:
+            raise DurableEmpiricalClosureError("plural discovery envelopes not canonical")
+    else:
+        if "i05_results" in native:
+            raise DurableEmpiricalClosureError("unversioned plural native discovery envelope")
+        i05 = parse_discovery(native.get("i05"))
+        i05_results = ()
 
     census = _mapping(core.get("census"), "census")
     if canonical_json(census) != canonical_json(
@@ -2163,13 +2219,14 @@ def open_empirical_closure(
                 release_identities=release_identities,
                 i03_results=tuple(i03_results),
                 i05_result=i05,
+                i05_results=i05_results,
                 object_graph=object_graph,
             )
         )
     ):
         raise DurableEmpiricalClosureError("closure census does not reproduce the native output")
 
-    _verify_replay_documents(core, object_graph, i05, releases, fragments)
+    _verify_replay_documents(core, object_graph, i05, releases, fragments, i05_results=i05_results)
     _verify_authority_closure(object_graph)
     _verify_native_replay_receipt(native, object_graph)
     _verify_output_graph(
@@ -2178,6 +2235,7 @@ def open_empirical_closure(
             release_identities=release_identities,
             i03_results=tuple(i03_results),
             i05_result=i05,
+                i05_results=i05_results,
             object_graph=object_graph,
         )
     )
@@ -2191,6 +2249,7 @@ def open_empirical_closure(
         object_graph=object_graph,
         i03_results=tuple(i03_results),
         i05_result=i05,
+                i05_results=i05_results,
         release_identities=release_identities,
         consumer_binding=(
             None
@@ -2237,9 +2296,11 @@ def _load_blob(path: Path, expected_hash: str, entry: Mapping[str, Any]) -> Any:
 def _verify_replay_documents(
     core: Mapping[str, Any],
     graph: RouteBEmpiricalObjectGraph,
-    i05: ExactBoundedDiscoveryResult,
+    i05: ExactBoundedDiscoveryResult | None,
     releases: Mapping[str, ReleaseIdentity],
     fragments: Mapping[str, Any],
+    *,
+    i05_results: tuple[ExactBoundedDiscoveryResult, ...] = (),
 ) -> None:
     replays = _mapping(core.get("replays"), "replays")
     fact_docs = {
@@ -2277,28 +2338,46 @@ def _verify_replay_documents(
             raise DurableEmpiricalClosureError("receipt replay preimage does not match its exact ref")
         if canonical_json(item.get("material")) != canonical_json(material):
             raise DurableEmpiricalClosureError("receipt replay stored preimage is not exact")
-    frontier_item = _mapping(replays.get("frontier"), "frontier replay")
-    frontier = _frontier_replay_material(graph.discovery_receipts, i05)
-    if semantic_hash(frontier) != _text(
-        frontier_item.get("material_hash"), "frontier material hash"
-    ):
-        raise DurableEmpiricalClosureError("frontier replay material hash drift")
-    if semantic_hash(frontier) != _exact(
-        i05.evaluated_frontier_ref, "i05 frontier"
-    ).content_hash:
-        raise DurableEmpiricalClosureError("frontier replay does not match the exact frontier ref")
-    if canonical_json(frontier_item.get("material")) != canonical_json(frontier):
-        raise DurableEmpiricalClosureError("frontier replay stored preimage is not exact")
-    final_item = _mapping(replays.get("i05_final"), "final replay")
-    final = _final_replay_material(i05)
-    if semantic_hash(final) != _text(
-        final_item.get("material_hash"), "final material hash"
-    ):
-        raise DurableEmpiricalClosureError("final replay material hash drift")
-    if semantic_hash(final) != _exact(i05.replay_ref, "i05 replay").content_hash:
-        raise DurableEmpiricalClosureError("final replay does not match the exact i05 replay ref")
-    if canonical_json(final_item.get("material")) != canonical_json(final):
-        raise DurableEmpiricalClosureError("final replay stored preimage is not exact")
+    def verify_discovery(i05, doc):
+        frontier_item = _mapping(doc.get("frontier"), "frontier replay")
+        frontier = _frontier_replay_material(i05.receipts, i05)
+        if semantic_hash(frontier) != _text(
+            frontier_item.get("material_hash"), "frontier material hash"
+        ):
+            raise DurableEmpiricalClosureError("frontier replay material hash drift")
+        if semantic_hash(frontier) != _exact(
+            i05.evaluated_frontier_ref, "i05 frontier"
+        ).content_hash:
+            raise DurableEmpiricalClosureError("frontier replay does not match the exact frontier ref")
+        if canonical_json(frontier_item.get("material")) != canonical_json(frontier):
+            raise DurableEmpiricalClosureError("frontier replay stored preimage is not exact")
+        final_item = _mapping(doc.get("i05_final"), "final replay")
+        final = _final_replay_material(i05)
+        if semantic_hash(final) != _text(
+            final_item.get("material_hash"), "final material hash"
+        ):
+            raise DurableEmpiricalClosureError("final replay material hash drift")
+        if semantic_hash(final) != _exact(i05.replay_ref, "i05 replay").content_hash:
+            raise DurableEmpiricalClosureError("final replay does not match the exact i05 replay ref")
+        if canonical_json(final_item.get("material")) != canonical_json(final):
+            raise DurableEmpiricalClosureError("final replay stored preimage is not exact")
+
+
+    if i05 is not None:
+        if "discovery_replays" in replays:
+            raise DurableEmpiricalClosureError("ambiguous singular/plural discovery replay")
+        verify_discovery(i05, replays)
+    else:
+        if "frontier" in replays or "i05_final" in replays:
+            raise DurableEmpiricalClosureError("singular replay in plural archive")
+        docs = _sequence(replays.get("discovery_replays"), "discovery replays")
+        if len(docs) != len(i05_results):
+            raise DurableEmpiricalClosureError("discovery replay census mismatch")
+        for item, doc in zip(i05_results, docs):
+            doc = _mapping(doc, "discovery replay")
+            if _exact(doc.get("discovery_authority_ref"), "discovery replay authority") != item.discovery_authority_ref:
+                raise DurableEmpiricalClosureError("discovery replay identity mismatch")
+            verify_discovery(item, doc)
 
 
 def _verify_authority_closure(graph: RouteBEmpiricalObjectGraph) -> None:
