@@ -27,6 +27,60 @@ def signature(actor, cue):
                       if type(x) is str and x.strip()))[:16]
 
 
+def _interrupted_supported_trial(actor, trial, earlier, later):
+    """Same-place alternative only after actually experienced lost cooperation.
+
+    A supported trial and a subsequent unsuccessful directed attempt must
+    precede the new, separately enacted operation. A change in relation is
+    a change in practical circumstances; mere proximity is not evidence.
+    """
+    other=trial.get('offered_by_ref')
+    if (trial.get('operation')!='SIGNAL' or type(other) is not str
+            or type(trial.get('selected_human_food_offer_ref')) is not str
+            or trial.get('actor_experienced_status')!='PERFORMED'
+            or later.get('actor_felt_attempt')!='EAT'):
+        return None
+    rows=actor.get('participation_history',[])
+    before=[r for r in rows if r.get('actor')==actor['id']
+        and r.get('event_ref')==earlier['event_ref']
+        and r.get('experience_ref')==earlier['experience_ref']
+        and r.get('own_status')=='PERFORMED'
+        and r.get('own_attempted_operation')=='SIGNAL'
+        and r.get('joint_participation_perceived') is True
+        and r.get('reciprocated_partner_actor_visible')==other
+        and r.get('own_selected_addressed_party_ref')==other]
+    current=[r for r in rows if r.get('actor')==actor['id']
+        and r.get('event_ref')==later['event_ref']
+        and r.get('experience_ref')==later['experience_ref']
+        and r.get('own_status')=='PERFORMED'
+        and r.get('own_attempted_operation')=='EAT'
+        and r.get('joint_participation_perceived') is False]
+    if len(before)!=1 or len(current)!=1:return None
+    episodes={e['event_ref']:e for e in actor.get('lived_genesis_episodes',[])
+              if e.get('actor')==actor['id']}
+    interruptions=[]
+    for r in rows:
+        e=episodes.get(r.get('event_ref'))
+        if (r.get('actor')==actor['id'] and e
+                and e.get('experience_ref')==r.get('experience_ref')
+                and e.get('location')==earlier['location']
+                and earlier['clock']<e['clock']<later['clock']
+                and e.get('unfinished_own_activity') is True
+                and r.get('own_attempted_operation')=='SIGNAL'
+                and r.get('own_selected_addressed_party_ref')==other
+                and r.get('own_status') in ('PARTIAL','BLOCKED')
+                and r.get('joint_participation_perceived') is False):
+            interruptions.append((e,r))
+    if not interruptions:return None
+    e,r=interruptions[-1]
+    return {'supporting_trial_participation_ref':before[0]['id'],
+            'interrupted_participation_ref':r['id'],
+            'interrupted_episode_ref':e['id'],
+            'new_solo_participation_ref':current[0]['id'],
+            'previously_received_other_ref':other,
+            'other_reason_or_future_willingness_not_inferred':True}
+
+
 def _dissimilar_means_basis(actor, experience, event_ref, end, trial, sign):
     """Two actual lived operations and a shared bodily difference.
 
@@ -55,17 +109,22 @@ def _dissimilar_means_basis(actor, experience, event_ref, end, trial, sign):
     a,b=earlier[0],later[0]
     if (type(a.get('clock')) is not int or type(b.get('clock')) is not int
             or a['clock']>=b['clock'] or b['clock']!=experience.get('clock')
-            or a.get('location')==b.get('location')
             or b.get('location')!=experience.get('location')
             or a.get('unfinished_own_activity') or b.get('unfinished_own_activity')):
         return None
     shared=sorted(set(a.get('received_relief',{}))&set(b.get('received_relief',{})))
     if not shared:return None
-    return {'earlier_episode_ref':a['id'],'later_episode_ref':b['id'],
+    interrupted=None
+    if a.get('location')==b.get('location'):
+        interrupted=_interrupted_supported_trial(actor,trial,a,b)
+        if interrupted is None:return None
+    result={'earlier_episode_ref':a['id'],'later_episode_ref':b['id'],
             'earlier_operation':trial['operation'],'later_operation':op,
             'earlier_location':a['location'],'later_location':b['location'],
             'shared_lived_relief_axes':shared,
             'not_proof_of_same_good_or_cause':True}
+    if interrupted is not None:result['interrupted_supported_trial_basis']=interrupted
+    return result
 
 
 def propose_actor_lived_correspondences(actor, experience, event_ref):
