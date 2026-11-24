@@ -25,7 +25,8 @@ from .material_investments import (
     invested_material_action_options, annotate_material_alternatives)
 from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
-from .world import _qualified_members, _nonnegative_transfer_amount
+from .world import (_qualified_members, _nonnegative_transfer_amount,
+                    recursive_encounter_channels, project_recursive_actor_sign)
 from .institutional_reproduction import current_institutional_opportunities
 from .expectation_afterlife import annotate_practical_expectations
 from .co_regulation_history import (
@@ -117,12 +118,21 @@ def actor_access(actor,world):
             counted+=1;continue
         if x.get('private_to') not in (None,actor['id']):
             counted+=1;continue
-        cues.append(copy(x));receipts.append(x['id'])
+        projection=project_recursive_actor_sign(world,actor,x,location)
+        if projection is None:
+            counted+=1;continue
+        cues.append(projection);receipts.append(x['id'])
     # Co-presence is an objective present opportunity, not an assertion about
     # the other's intentions, consent, feelings, or accessible psychology.
     if actor['body']['sensor'] >= .05:
         for other,where in sorted(world['positions'].items()):
             if other!=actor['id'] and where==location:
+                channels=recursive_encounter_channels(
+                    world,actor['id'],other,location)
+                # Shared coordinates are still an objective practical fact,
+                # not automatic sensory recognition of the other person.
+                if channels is not None and not channels['visible']:
+                    continue
                 cues.append({'id':'presence:'+other+':'+str(world['clock']),
                     'clock':world['clock'],'kind':'coactor_present',
                     'tags':['coactor',other],'source_actor':other,'location':location,
