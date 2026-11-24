@@ -13,7 +13,8 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
-from .activity import record_activity_afterlife, register_lived_activity_attempt
+from .activity import (record_activity_afterlife, register_lived_activity_attempt,
+                       possible_dependency_project_reorganizations)
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import possible_lived_directional_orientation
@@ -36,7 +37,7 @@ from .livelihood_history import (
     conserve_incomplete_work, possible_recurrent_work_orientation,
 )
 from .psychic_genesis import (
-    conserve_lived_episode,possible_contrast_end)
+    conserve_lived_episode,possible_contrast_end,possible_dependency_project_takeups)
 from .joint_practice_genesis import possible_joint_practice
 from .care_commitment_genesis import (
     conserve_costly_offered_care,candidate_care_commitment)
@@ -57,6 +58,7 @@ from .functional_correspondence import (propose_actor_lived_correspondences,
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import render_blind_interview
+from .material_conjunction import admit_authored_structural_history
 from .operative_witness import freeze_operative_witness
 from .parents import construct_parent, interview_readout
 from .semantics import ValidatingSemanticService
@@ -119,8 +121,16 @@ class ConstitutiveRuntime:
         return cls(db,semantic=ValidatingSemanticService(provider),
                    world_id=world_id)
 
-    def initialize(self,parent_packets=None,child_id='nadia',child_name='Nadia'):
+    def initialize(self,parent_packets=None,child_id='nadia',child_name='Nadia',
+                   *, authored_structural_history=None):
         world=blank_world(self.world_id)
+        parent_packets=list(parent_packets or [])
+        # World source is independent of the semantic construction of adults.
+        # Validate before asking a model to construct anyone.
+        if authored_structural_history is not None:
+            admit_authored_structural_history(
+                world,{a for a,_,_ in parent_packets}|{child_id},
+                authored_structural_history)
         parents=[]
         for actor_id,name,packet in (parent_packets or []):
             person=construct_parent(actor_id,name,packet,self.semantic)
@@ -132,6 +142,9 @@ class ConstitutiveRuntime:
         # person with missing or unanchored source qualification.
         source_seals=[('fictional_source:'+a,'CONDITIONING_NOT_REAL_PERSON',packet)
                       for a,_,packet in (parent_packets or [])]
+        if authored_structural_history is not None:
+            source_seals.append(('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',
+                                 authored_structural_history))
         self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
 
@@ -828,6 +841,10 @@ class ConstitutiveRuntime:
                 # automatically functioning motives or public self-knowledge.
                 'actor_possible_ends':copy(actors[aid].get('possible_ends',[])),
                 'historically_possible_genetic_ends':copy(possible_genetic_end),
+                'historically_possible_dependency_takeups':copy(
+                    possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_project_reorganizations':copy(
+                    possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(

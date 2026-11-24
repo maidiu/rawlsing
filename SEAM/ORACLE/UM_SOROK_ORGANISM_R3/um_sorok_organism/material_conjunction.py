@@ -4,7 +4,65 @@ Only source-qualified material rules can block a world action. Contradictory or
 missing positioned evidence stays unresolved. A blocked actor sees a public
 refusal, not the world's privileged administrative explanation.
 """
-from .types import GRADE
+from .types import GRADE, copy
+from .organism import ACTIONS
+
+
+def admit_authored_structural_history(world, actor_ids, spec):
+    """Initialize existing conjunctive material reader from authored inputs.
+
+    No survey answers, psychology proposal, or self-declared scientific
+    receipt can issue objective facts. Caller supplies explicit fictional
+    world premises. All checks precede mutation of the world.
+    """
+    if (type(spec) is not dict or set(spec)!={'grade','source_ref','positions','rules'}
+            or spec['grade']!='EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY'
+            or type(spec['source_ref']) is not str or not spec['source_ref'].strip()
+            or type(spec['positions']) is not list or type(spec['rules']) is not list
+            or len(spec['positions'])>256 or len(spec['rules'])>128):
+        raise ValueError('STRUCTURAL_HISTORY_UNQUALIFIED')
+    def nonempty(x):return type(x) is str and bool(x.strip())
+    def interval(row):
+        a,b=row.get('effective_from'),row.get('effective_until')
+        return type(a) is int and a>=0 and (b is None or type(b) is int and b>=a)
+    positions=copy(spec['positions']);rules=copy(spec['rules'])
+    ids=set()
+    for row in positions:
+        if (type(row) is not dict or set(row)!={'id','actor','field','value','source_ref',
+                                               'effective_from','effective_until'}
+                or not all(nonempty(row[k]) for k in ('id','actor','field','value','source_ref'))
+                or row['actor'] not in actor_ids or not interval(row)
+                or row['id'] in ids):
+            raise ValueError('STRUCTURAL_HISTORY_INVALID_POSITION')
+        ids.add(row['id'])
+    for row in rules:
+        if (type(row) is not dict or set(row)!={'id','operation','location','source_ref',
+                                               'all_of','effective_from','effective_until'}
+                or not all(nonempty(row[k]) for k in ('id','operation','location','source_ref'))
+                or row['operation'] not in ACTIONS or
+                row['location'] not in (*world['sites'],'*') or not interval(row)
+                or row['id'] in ids or type(row['all_of']) is not list
+                or not 1<=len(row['all_of'])<=12):
+            raise ValueError('STRUCTURAL_HISTORY_INVALID_RULE')
+        ids.add(row['id'])
+        for clause in row['all_of']:
+            if type(clause) is not dict:raise ValueError('STRUCTURAL_HISTORY_INVALID_CLAUSE')
+            kind=clause.get('kind')
+            if kind=='RECORDED_POSITION':
+                valid=set(clause)=={'kind','field','equals'} and all(
+                    nonempty(clause[k]) for k in ('field','equals'))
+            elif kind=='CURRENT_SITE':
+                valid=set(clause)=={'kind','equals'} and clause['equals'] in world['sites']
+            elif kind in ('HAS_SITE_PERMISSION','SHIFT_OCCUPIED'):
+                valid=set(clause)=={'kind'}
+            else:valid=False
+            if not valid:raise ValueError('STRUCTURAL_HISTORY_INVALID_CLAUSE')
+    world['positioned_material_records'].extend(positions)
+    world['institutional_access_rules'].extend(rules)
+    world['structural_history_origin']={'source_ref':spec['source_ref'],
+            'grade':spec['grade'],'native_structural_authority':False,
+            'position_refs':[p['id'] for p in positions],
+            'rule_refs':[p['id'] for p in rules]}
 
 
 def _predicate(world,actor,location,p):
@@ -51,7 +109,9 @@ def evaluate_material_conjunction(world,actor,location,operation):
     rules=[r for r in world.get('institutional_access_rules',[])
            if type(r) is dict and r.get('status','ACTIVE')=='ACTIVE'
            and r.get('operation')==operation
-           and r.get('location') in (location,'*')]
+           and r.get('location') in (location,'*')
+           and r.get('effective_from',0)<=world['clock']
+           and (r.get('effective_until') is None or r['effective_until']>=world['clock'])]
     if not rules:
         return {'decision':'NO_ADDITIONAL_RULE','readset':[],
                 'unknown_not_denial':True,'grade':GRADE}

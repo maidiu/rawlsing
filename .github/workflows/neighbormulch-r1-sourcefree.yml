@@ -23,6 +23,7 @@ on:
       - agent/neighbormulch-r19-material-refusal-20261124-r1
       - agent/neighbormulch-r20-supported-means-afterlife-20261124-r1
       - agent/neighbormulch-r21-incidental-object-end-20261124-r1
+      - agent/neighbormulch-r22-reciprocal-r21-r39-20261124-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -145,7 +146,7 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_incidental_object_end_r21.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_incidental_object_end_r21.py' -q
-      - name: Full inherited CO R35 organism court normal and optimized
+      - name: Full inherited CO R39 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |

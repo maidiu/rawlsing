@@ -8,11 +8,37 @@ SOURCEFREE: conditional inputs must be supplied by a PYAT-qualified caller.
 from .types import GRADE, copy, stable_id
 
 
-def historically_conditioned_entrances(source_packet):
-    if type(source_packet) is not dict or type(source_packet.get('answers')) is not dict:
+def adult_conditioning_input(source_packet):
+    """A single adult entrance, without requiring a questionnaire.
+
+    Explicit non-survey modes are authored hypotheses, not native PYAT
+    receipts. Legacy survey packets retain their original validation.
+    """
+    if type(source_packet) is not dict:
         raise ValueError('PARENT_WHOLE_JOINT_MISSING')
-    if not source_packet['answers']:
+    kind=source_packet.get('input_kind','SUPPLIED_SURVEY_CONFIGURATION')
+    if kind not in ('SUPPLIED_SURVEY_CONFIGURATION','SAMPLED_SURVEY_CONFIGURATION',
+                    'THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY'):
+        raise ValueError('PARENT_UNSUPPORTED_INPUT_KIND')
+    answers=source_packet.get('answers',{})
+    if type(answers) is not dict:
+        raise ValueError('PARENT_WHOLE_JOINT_MISSING')
+    if kind in ('THIN_BIOGRAPHY','AUTHORED_WORLD_HISTORY'):
+        if answers:
+            raise ValueError('PARENT_NONSURVEY_ANSWERS_AMBIGUOUS')
+        if (source_packet.get('source_grade')!='EXPLICIT_FICTIONAL_HISTORICAL_INPUT'
+                or type(source_packet.get('source_ref')) is not str
+                or not source_packet['source_ref'].strip()
+                or type(source_packet.get('biographical_context')) is not dict
+                or not source_packet['biographical_context']):
+            raise ValueError('PARENT_NONSURVEY_CONTEXT_UNQUALIFIED')
+    elif not answers:
         raise ValueError('PARENT_NO_OBSERVED_INSTRUMENT')
+    return kind,answers
+
+
+def historically_conditioned_entrances(source_packet):
+    kind,answers=adult_conditioning_input(source_packet)
     source=source_packet.get('source_ref','UNVERIFIED_SURVEY_INPUT')
     support=source_packet.get('conditional_support',{})
     if type(support) is not dict:
@@ -24,7 +50,10 @@ def historically_conditioned_entrances(source_packet):
     if type(alternatives) is not list:
         raise ValueError('PARENT_INVALID_HISTORICAL_ALTERNATIVES')
     qualified=[]
-    for index,alt in enumerate(alternatives[:24]):
+    # Reject overflow rather than silently thinning supplied rich inputs.
+    if len(alternatives)>24:
+        raise ValueError('PARENT_HISTORICAL_ALTERNATIVES_CAPACITY_EXCEEDED')
+    for index,alt in enumerate(alternatives):
         if type(alt) is not dict or type(alt.get('source_ref')) is not str:
             raise ValueError('PARENT_ALTERNATIVE_WITHOUT_SOURCE_WARRANT')
         if type(alt.get('historical_scope')) is not str:
@@ -43,7 +72,11 @@ def historically_conditioned_entrances(source_packet):
         })
     return {
         'source_ref':source,
-        'observed_instrument_size':len(source_packet['answers']),
+        'input_kind':kind,
+        'observed_instrument_size':len(answers),
+        'biographical_context':copy(source_packet.get('biographical_context',{})),
+        'survey_conditioning_state':('NO_SURVEY_SUPPLIED' if not answers
+                                     else 'SUPPLIED_NOT_INDEPENDENTLY_QUALIFIED'),
         'observational_universe':source_packet.get(
             'respondent_universe','UNQUALIFIED'),
         'source_weighting':source_packet.get('weighting','NOT_PROVIDED'),
@@ -56,7 +89,8 @@ def historically_conditioned_entrances(source_packet):
             'MULTIPLE_UNDERIDENTIFIED_COMPATIBLE_ANTEDECENTS'),
         'fictional_prehistory_not_observed_respondent':True,
         'sampled_answers_not_an_adult_motive_algorithm':True,
-        'requires_authorized_PYAT_conditioning':True,'grade':GRADE,
+        'requires_authorized_PYAT_conditioning':bool(answers),
+        'native_PYAT_authority_not_issued_here':True,'grade':GRADE,
     }
 
 
