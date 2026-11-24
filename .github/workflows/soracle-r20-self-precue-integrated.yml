@@ -12,6 +12,7 @@ on:
       - agent/soracle-co-mulchineer-dependency-new-means-20261124-r1
       - agent/soracle-co-mulchineer-dependency-project-20261124-r1
       - agent/soracle-co-mulchineer-project-reorganization-20261124-r1
+      - agent/soracle-co-mulchineer-project-means-history-20261124-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -50,7 +51,7 @@ jobs:
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_r11_soracle_integrated.py' -v
       - name: R36 upstream elasticity focus
-        if: github.ref_name == 'agent/soracle-co-mulchineer-elastic-entrance-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-new-means-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-project-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-reorganization-20261124-r1'
+        if: github.ref_name == 'agent/soracle-co-mulchineer-elastic-entrance-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-new-means-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-project-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-reorganization-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-means-history-20261124-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_r11_soracle_integrated.py' -v
       - name: Full inherited R3-R20 normal
