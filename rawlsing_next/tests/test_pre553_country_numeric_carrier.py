@@ -191,7 +191,7 @@ class CountryNumeric(unittest.TestCase):
         atom=_predicate(fx,qa,_response_leaf(fx,qa,"X","1"),tag="country-durable-x")
         query=_query(fx,qa,base,("X","Y"),tag="country-durable-joint")
         unary=_query(fx,qa,base,("Y",),tag="country-durable-y")
-        grammar=_grammar(operation="I03-OP-country-durable",
+        grammar=_grammar(operation="I03-OP-country-durable-discovery",
             atoms=[_atom("ALL",base,"BRANCH"),_atom("X1",atom,"RESPONSE")],
             templates=[_qt("Y",unary)],
             rules=[_rule("pair","PAIR_RESPONSE_COTRAVEL","SINGLE_ATOM",atom_ids=("X1",),
