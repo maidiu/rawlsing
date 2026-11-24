@@ -271,6 +271,29 @@ def _require_pinned_frontier(discovery, expected_replay_ref):
         raise S04I05ReceptionError("I05 complete frontier replay identity mismatch")
 
 
+def _require_handoff_material(handoff, label):
+    """Recheck incumbent handoff side material at S04's receiving boundary."""
+    from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
+    if type(handoff) is not RecursiveBranchHandoff:
+        raise S04I05ReceptionError(f"recursive {label} handoff not present")
+    try:
+        # The existing owner's constructor verifies scope/grammar/coverage
+        # side hashes. Re-run that law because mappings can be changed after
+        # construction, and bind the outer receipt to the sealed side data.
+        handoff.__post_init__()
+        deterministic = handoff.deterministic_parameters
+        if (_ref(deterministic["receipt_ref"], "handoff receipt") != handoff.receipt_ref
+                or _ref(deterministic["winning_predicate_ref"], "handoff winner")
+                    != handoff.winning_predicate.ref
+                or _ref(deterministic["immediate_parent_branch_ref"], "handoff ancestor")
+                    != handoff.immediate_parent_branch_ref
+                or semantic_hash(handoff.winning_predicate.semantic_projection())
+                    != handoff.winning_predicate.content_hash):
+            raise S04I05ReceptionError("handoff outer fields disagree with sealed material")
+    except (ValueError, TypeError, KeyError, AttributeError) as exc:
+        raise S04I05ReceptionError(f"recursive {label} handoff material mismatch") from exc
+
+
 def receive_s04_i05_adaptive_outcome(
     *,
     unit,
@@ -331,6 +354,7 @@ def receive_s04_i05_adaptive_outcome(
     ancestry_parents = tuple(ref for ref in ancestral
                              if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
     if declared_parents or ancestry_parents or parent_handoff is not None:
+        _require_handoff_material(parent_handoff, "parent")
         if (type(parent_handoff) is not RecursiveBranchHandoff
                 or parent_handoff.ref not in declared_parents
                 or parent_handoff.ref not in ancestral
@@ -342,10 +366,13 @@ def receive_s04_i05_adaptive_outcome(
         raise S04I05ReceptionError("held role cannot supply positive proposal evidence")
     family = receipt.candidate_identity["family"]
     if next_handoff is not None or (proposals and family in RECURSIVE_BRANCH_FAMILIES):
+        _require_handoff_material(next_handoff, "winning")
         if (family not in RECURSIVE_BRANCH_FAMILIES
                 or type(next_handoff) is not RecursiveBranchHandoff
                 or receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
                 or next_handoff.receipt_ref != receipt.ref
+                or canonical_json(next_handoff.deterministic_parameters["candidate_identity"])
+                    != canonical_json(receipt.candidate_identity)
                 or next_handoff.discovery_authority_ref != discovery.discovery_authority_ref
                 or next_handoff.evaluated_frontier_ref != discovery.evaluated_frontier_ref
                 or next_handoff.source_release_refs != releases
