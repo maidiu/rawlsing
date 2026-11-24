@@ -1,0 +1,269 @@
+"""Sourcefree end-to-end runner integration: deliberately no issued science.
+
+The actual InputEstate constructor is mocked, never represented as authorized
+source or native I03. Tests all FOUR complete physical stores and fresh
+new-Python-process reopen against a local 13-family miniature Parquet corpus.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
+
+from . import runner
+from .test_stores import fixture, family_expected
+from .stores import FAMILIES,StoreFailure,canonical
+
+class MockVerified:
+    def _live(self):
+        return True
+
+class FixtureSource:
+    def __init__(self, conf, root, emit):
+        self.data,self.qs,self.people=fixture()
+        self.manifest={
+            "schema":"ANVIL_STREAM_C11_ESTATE@1",
+            "family_counts":{k:len(v) for k,v in self.data.items()},
+            "members":{},
+        }
+        self.identity={
+            "schema":"ANVIL_STREAM_C11_ESTATE@1",
+            "source_id":"SOURCEFREE_INTEGRATION_TEST_ONLY",
+            "manifest_sha256":"f"*64,
+            "roots":{"logical":"b"*64},
+        }
+        self.estate_root=root
+        self.estate_path=root/"fixture_estate"
+        self.estate_path.mkdir()
+        self.verified=MockVerified()
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+        for family,rows in self.data.items():
+            p=self.estate_path/(family+".parquet")
+            pq.write_table(pa.Table.from_pylist(rows),p)
+            self.manifest["members"][family+".parquet"]="TEST_ONLY"
+        p=self.estate_path/"event_locator.parquet"
+        pq.write_table(pa.table({"ref":[]}),p)
+        self.manifest["members"][p.name]="TEST_ONLY"
+        self.source_bytes=sum(x.stat().st_size for x in self.estate_path.iterdir())
+        emit(stage="fixture_sourcefree_only",completed="synthetic_rows")
+    def feed(self,store,progress,resources,batch_commit=2048):
+        results=family_expected(self.data)
+        for fam,rows in self.data.items():
+            for position,row in enumerate(rows):
+                routing=(self.qs[0],"RISK|set|"+"d"*64) if fam=="RoutingEligibilityFact" else None
+                store.add_row(fam,position,row,0,position,routing=routing)
+            store.commit_batch()
+            progress(stage="fixture_build",family=fam,completed=len(rows))
+            resources.check()
+        return results
+
+class RunnerIntegrationTests(unittest.TestCase):
+    def test_four_arms_single_launch_and_unqualified_native_hold(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            config={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output",
+                "run_id":"SOURCEFREE_4ARM_CI",
+                "minimum_free_gib":0,
+                "physical_question_limit":3,
+                "evidence_sample_limit":6,
+                "cold_reopen_limit":2,
+                "batch_commit":2,
+                "continue_after_arm_failure":False,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(config))
+            with patch.object(runner,"InputEstate",FixtureSource):
+                out=runner.run(path)
+            self.assertEqual(out["status"],"PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            self.assertEqual(set(out["arms"]),{"H","S1","S2","S3"})
+            self.assertTrue(out["comparison"]["source_family_body_parity"])
+            self.assertTrue(out["comparison"]["physical_query_parity"])
+            economics=out["measured_economics"]
+            self.assertTrue(economics["all_four_measured"])
+            self.assertEqual(set(economics["individual_arm_costs"]),{"H","S1","S2","S3"})
+            self.assertIn("versus_H",economics["individual_arm_costs"]["S2"])
+            self.assertEqual(economics["storage_selection"],
+                "HELD_UNTIL_NATIVE_ISSUER_ALL13_FAMILIES_SOURCE_SCIENCE_AND_DOWNSTREAM_PARITY")
+            self.assertEqual(out["comparison"]["native_i03_fact_parity"],"HELD_NO_ORIGINAL_ISSUER")
+            for arm,report in out["arms"].items():
+                self.assertEqual(report["status"],"COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
+                self.assertEqual(report["metrics"]["events"],6)
+                self.assertEqual(report["metrics"]["distinct_questions"],3)
+                cpu=report["resources"]
+                self.assertGreaterEqual(cpu["sampled_cpu_user_s"],0)
+                self.assertGreaterEqual(cpu["sampled_cpu_system_s"],0)
+                self.assertGreaterEqual(cpu["peak_cpu_percent_one_core"],0)
+                self.assertGreaterEqual(cpu["avg_cpu_percent_one_core"],0)
+                self.assertGreaterEqual(cpu["logical_cpus"],1)
+                self.assertGreaterEqual(cpu["samples"],1)
+                self.assertEqual(cpu["cpu_measurement_grade"],
+                    "SAMPLED_PROCESS_TREE_CPU_SECONDS_MAY_MISS_SHORT_LIVED_CHILDREN")
+                progress=(root/"output"/config["run_id"]/arm/"progress.jsonl").read_text()
+                self.assertIn('"stage":"resources_final"',progress)
+                self.assertIn('"cpu_percent_one_core":',progress)
+                self.assertEqual(len(report["query_report"]["fresh_process_probes"]),2)
+                for cp in report["query_report"]["fresh_process_probes"]:
+                    self.assertIsNotNone(cp["one_body_sha256"])
+                self.assertTrue((root/"output"/config["run_id"]/arm/"permanent.sqlite").exists())
+                self.assertTrue((root/"output"/config["run_id"]/arm/"report.json").exists())
+                self.assertTrue((root/"output"/config["run_id"]/arm/"progress.jsonl").exists())
+            compare=json.loads((root/"output"/config["run_id"]/"comparison.json").read_text())
+            self.assertEqual(compare["status"],"PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            summary=(root/"output"/config["run_id"]/"summary.csv")
+            self.assertTrue(summary.exists())
+            self.assertIn("avg_cpu_percent_one_core",summary.read_text())
+            self.assertIn("peak_cpu_percent_one_core",summary.read_text())
+
+    def test_single_arm_succeeds_without_false_four_arm_comparison(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output",
+                "run_id":"SOURCEFREE_SINGLE_ARM",
+                "minimum_free_gib":0,
+                "physical_question_limit":3,
+                "evidence_sample_limit":6,
+                "cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            with patch.object(runner,"InputEstate",FixtureSource):
+                result=runner.run(path,only="S2")
+            self.assertEqual(result["status"],
+                "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            self.assertEqual(set(result["arms"]),{"S2"})
+            self.assertFalse(result["comparison"]["four_arm_complete"])
+            self.assertEqual(result["comparison"]["selected_arm"],"S2")
+            self.assertEqual(result["arms"]["S2"]["status"],
+                             "COMPLETED_PHYSICAL_AND_NATIVE_WHERE_ISSUED")
+            self.assertTrue(Path(result["report_directory"]).is_dir())
+
+    def test_native_reader_imports_real_internal_respondent_identity(self):
+        # Fail at the exact checked-input boundary, NOT at a missing import.
+        from .native import open_native_session
+        with self.assertRaisesRegex(StoreFailure,"actual independently verified"):
+            open_native_session(None,object())
+
+    def test_native_failure_retains_completed_physical_probes(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_NATIVE_FAILURE",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,"continue_after_arm_failure":True,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            fake_query=SimpleNamespace(ref=SimpleNamespace(key="TEST_NATIVE_QUERY"))
+            issued=[{"query":fake_query,"name":"ORIGINAL_TEST_ONLY"}]
+            with patch.object(runner,"InputEstate",FixtureSource), \
+                 patch.object(runner,"_native_operations",return_value=(issued,"SOURCEFREE_TEST_ONLY")), \
+                 patch.object(runner,"execute_issued",side_effect=RuntimeError("synthetic native refusal")):
+                result=runner.run(path,only="H")
+            arm=result["arms"]["H"]
+            self.assertEqual(arm["status"],"FAILED_OR_HELD")
+            self.assertIn("synthetic native refusal",arm["error"])
+            self.assertEqual(arm["query_report"]["native_status"],"NATIVE_REFUSED")
+            self.assertEqual(len(arm["query_report"]["physical_probes"]),3)
+            self.assertEqual(len(arm["query_report"]["fresh_process_probes"]),1)
+            self.assertEqual(len(arm["query_report"]["evidence_recovery"]),4)
+            self.assertIn("peak_process_tree_rss_bytes",arm["resources"])
+            saved=json.loads(
+                (Path(result["report_directory"])/"H"/"report.json").read_text()
+            )
+            self.assertEqual(len(saved["query_report"]["physical_probes"]),3)
+
+    def test_native_only_uses_existing_audited_h_without_rebuild_or_mutation(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_EXISTING_H",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            source=FixtureSource(cfg,root,lambda **kwargs:None)
+            with patch.object(runner,"InputEstate",return_value=source):
+                original=runner.run(path,only="H")
+            self.assertEqual(original["status"],
+                "SINGLE_ARM_PHYSICAL_COMPLETE__ORIGINAL_ISSUER_HOLD")
+            previous=Path(original["report_directory"])
+            db=previous/"H"/"permanent.sqlite"
+            original_report=previous/"H"/"report.json"
+            before_bytes=db.read_bytes()
+            old_report_bytes=original_report.read_bytes()
+            fake_query=SimpleNamespace(ref=SimpleNamespace(key="SOURCEFREE_Q103"))
+            issued=[{"query":fake_query,"name":"SOURCEFREE_Q103"}]
+            with patch.object(runner,"InputEstate",return_value=source), \
+                 patch.object(runner,"_native_operations",
+                              return_value=(issued,"TEST_ONLY_ISSUED")), \
+                 patch.object(runner,"execute_issued",
+                              return_value={"facts":[{"ref":"synthetic"}],
+                                            "grade":"TEST_ONLY"}):
+                replay=runner.run_native_only(path,previous,arm="H")
+            self.assertEqual(replay["status"],"NATIVE_ONLY_TEST_ADAPTER_EXECUTED")
+            self.assertTrue(replay["no_store_rebuild"])
+            self.assertTrue(replay["original_corpus_verified_against_existing_report"])
+            self.assertTrue(replay["original_sqlite_stat_unchanged"])
+            self.assertEqual(len(replay["results"]),1)
+            self.assertEqual(db.read_bytes(),before_bytes)
+            self.assertEqual(original_report.read_bytes(),old_report_bytes)
+            self.assertTrue(
+                (Path(replay["report_directory"])/"native_report.json").is_file()
+            )
+
+    def test_native_only_refuses_different_source_identity_without_renovating_store(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t)
+            cfg={
+                "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                "output_dir":"output","run_id":"SOURCEFREE_NATIVE_ID_HOLD",
+                "minimum_free_gib":0,"physical_question_limit":3,
+                "evidence_sample_limit":6,"cold_reopen_limit":1,
+                "batch_commit":2,
+            }
+            path=root/"bundle.json"
+            path.write_text(json.dumps(cfg))
+            source=FixtureSource(cfg,root,lambda **kwargs:None)
+            with patch.object(runner,"InputEstate",return_value=source):
+                previous=Path(runner.run(path,only="H")["report_directory"])
+            saved=(previous/"H"/"report.json").read_bytes()
+            source.identity={**source.identity,"manifest_sha256":"0"*64}
+            with patch.object(runner,"InputEstate",return_value=source):
+                replay=runner.run_native_only(path,previous,arm="H")
+            self.assertEqual(replay["status"],"NATIVE_ONLY_REFUSED_OR_FAILED")
+            self.assertIn("source differ",replay["error"])
+            self.assertEqual((previous/"H"/"report.json").read_bytes(),saved)
+            self.assertTrue(replay["original_sqlite_stat_unchanged"])
+
+    def test_invalid_parameters_fail_before_source_admission(self):
+        with tempfile.TemporaryDirectory() as t:
+            path=Path(t)/"bundle.json"
+            for value in (0,-1,True,1.5):
+                with self.subTest(value=value):
+                    path.write_text(json.dumps({
+                        "schema":"PYAT_FOUR_PERMANENT_STORE_BUNDLE@1",
+                        "output_dir":"output",
+                        "batch_commit":value,
+                    }))
+                    with patch.object(runner,"InputEstate",
+                                      side_effect=AssertionError("source admission must not start")):
+                        with self.assertRaisesRegex(StoreFailure,"batch_commit"):
+                            runner.run(path)
+
+if __name__=="__main__":
+    unittest.main()
