@@ -26,7 +26,8 @@ from .material_investments import (
 from .mediated_efficacy import situated_component_efficacy
 from .functional_correspondence import project_functional_correspondences
 from .world import (_qualified_members, _nonnegative_transfer_amount,
-                    recursive_encounter_channels, project_recursive_actor_sign)
+                    recursive_encounter_channels, project_recursive_actor_sign,
+                    visible_vocal_visitors)
 from .institutional_reproduction import current_institutional_opportunities
 from .expectation_afterlife import annotate_practical_expectations
 from .co_regulation_history import (
@@ -137,6 +138,16 @@ def actor_access(actor,world):
                     'clock':world['clock'],'kind':'coactor_present',
                     'tags':['coactor',other],'source_actor':other,'location':location,
                     'modality':'present','description':'co-present other actor'})
+    # A human participant remains outside the constituted actor roster.
+    # Only the existing qualified visual path makes this bounded identity
+    # available for a vocal-practice invitation; no recognition/motive proof.
+    for visitor in visible_vocal_visitors(world, actor, location):
+        cues.append({'id':'visitor_vocal_presence:'+visitor+':'+str(world['clock']),
+                     'clock':world['clock'],'kind':'visitor_vocal_partner',
+                     'visitor_ref':visitor,'source_actor':None,'location':location,
+                     'tags':['visitor','vocal_practice'],'modality':'visual',
+                     'description':'a visible visitor available to address',
+                     'recognition_not_established':True})
     # An objectively posted notice is an opportunity to inspect public
     # information, not automatic possession of its words or an explanation
     # of an earlier obstruction. Reading requires an actual later operation.
@@ -195,6 +206,8 @@ def actor_access(actor,world):
     if work_permission(world,actor['id'],location)==(
             'QUALIFIED_WORK_CONTRACT_ACTIVE'):
         env.append('WORK')
+    if any(c.get('kind')=='visitor_vocal_partner' for c in cues):
+        env.append('SING')
     env+=['REST','WAIT','ORIENT','SIGNAL']
     return AccessibleEncounter(actor['id'],world['clock'],location,cues,sorted(set(env)),receipts,counted)
 
@@ -600,6 +613,10 @@ def compose(constitution,access,limit=50):
                 'action':'PLEDGE_CARE','score':.045,
                 'basis':['ACTUAL_CO_PRESENT_POSSIBLE_ADDRESSEE'],
                 'opportunity':'PROMISE_CAN_BE_MADE_NOT_FUTURE_FULFILLED'})
+    if 'SING' in access.affordances and eligible(constitution.body,'SING')[0]:
+        actions.setdefault('SING',{'action':'SING','score':.055,
+            'basis':['SITUATED_VOCAL_PRACTICE_OPPORTUNITY'],
+            'opportunity':'INVITATION_NOT_ASSURED_RESPONSE'})
     if 'SIGN_HALL_PETITION' in access.affordances:
         status,why=eligible(constitution.body,'SIGN_HALL_PETITION')
         if status:

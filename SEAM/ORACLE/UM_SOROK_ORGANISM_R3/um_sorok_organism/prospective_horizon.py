@@ -87,6 +87,12 @@ def project_trial_horizons(constitution, access, candidate_actions,
         means = end.get('possible_means', [])
         if not isinstance(means, list):
             continue
+        # A new means is a one-trial local possibility, not a mutation of
+        # the end's durable repertoire. Only the actual issued bridge can
+        # license it, and it must still be a situated eligible operation.
+        bridge_operation=bridge.get('candidate_operation') if bridge else None
+        if bridge_operation is not None:
+            means=([*means,bridge_operation] if original_match else [bridge_operation])
         historically_perceived_other=end.get('addressed_party_ref')
         if historically_perceived_other is not None:
             if type(historically_perceived_other) is not str:
@@ -111,12 +117,15 @@ def project_trial_horizons(constitution, access, candidate_actions,
             option = op_index.get(operation)
             if not option:
                 continue
+            # An R34 novel-means bridge is consumed only by its own new
+            # operation, never by an unrelated original-cue trial.
+            op_bridge=bridge if bridge_operation in (None,operation) else None
             ident = stable_id('end_trial', {
                 'actor': constitution.actor,
                 'clock': constitution.clock,
                 'possible_end': end['id'],
                 'operation': operation,
-                'functional_bridge':bridge.get('binding_ref') if bridge else None,
+                'functional_bridge':op_bridge.get('binding_ref') if op_bridge else None,
             })
             trial = {
                 'trial_id': ident,
@@ -129,8 +138,10 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'eliciting_actor_action': end.get('eliciting_actor_action'),
                 'hypothesized_difference': end.get('possible_object'),
                 'matching_present_terms': sorted(original_match),
-                'functional_bridge_ref':bridge.get('binding_ref') if bridge else None,
-                'historical_analogy_is_provisional':bool(bridge),
+                'functional_bridge_ref':op_bridge.get('binding_ref') if op_bridge else None,
+                'historical_analogy_is_provisional':bool(op_bridge),
+                'conditional_means_revision_ref':(
+                    op_bridge.get('conditional_means_revision_ref') if op_bridge else None),
                 'same_object_world_continuity_not_actor_concept':bool(object_continuity),
                 'source_material_object_ref':(source_object if object_continuity else None),
                 'source_qualified_addressee_ref':historically_perceived_other,
@@ -241,8 +252,29 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
     if len(matches) != 1 or matches[0].get('status') != 'POSSIBLE_NOT_ACQUIRED_MOTIVE':
         raise ValueError('POSSIBLE_END_TRIAL_NO_LIVE_END')
     end = matches[0]
+    novel=trial['operation'] not in end.get('possible_means',[])
+    if novel:
+        matches=[b for b in actor.get('functional_bindings',[])
+                 if b.get('id')==trial.get('functional_bridge_ref')
+                 and b.get('actor')==actor['id']
+                 and b.get('possible_end_ref')==end['id']
+                 and b.get('status') in ('POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF',
+                                          'ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS')
+                 and b.get('scope')=='ONE_QUALIFIED_PROSPECTIVE_TRIAL'
+                 and b.get('candidate_operation')==trial['operation']
+                 and b.get('dissimilar_means_basis',{}).get('later_location')==experience.get('location')]
+        if len(matches)!=1:
+            raise ValueError('POSSIBLE_END_TRIAL_UNQUALIFIED_NOVEL_MEANS')
+        binding=matches[0]
+        if binding['status']=='ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS':
+            if (not binding.get('revision_history')
+                    or trial.get('conditional_means_revision_ref')!=binding['revision_history'][-1]['id']):
+                raise ValueError('POSSIBLE_END_TRIAL_STALE_CONDITIONAL_MEANS')
+        elif (trial.get('conditional_means_revision_ref') is not None
+              or any(t.get('functional_bridge_ref')==binding['id']
+                     for t in end.get('trial_history',[]))):
+            raise ValueError('POSSIBLE_END_TRIAL_UNQUALIFIED_NOVEL_MEANS')
     if (end.get('origin_event') == event_ref or
-            trial['operation'] not in end.get('possible_means', []) or
             trial.get('origin_event') != end['origin_event']):
         raise ValueError('POSSIBLE_END_TRIAL_INVALID_HISTORY')
     if trial.get('actor_project_ref') is not None:
@@ -266,6 +298,7 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         'eliciting_possible_end_ref': end['id'],
         'original_end_origin_event': end['origin_event'],
         'functional_bridge_ref': trial.get('functional_bridge_ref'),
+        'conditional_means_revision_ref':trial.get('conditional_means_revision_ref'),
         'means_substitution_proposed_before_event': bool(
             trial.get('is_means_substitution')),
         'experience_proves_cause': False,

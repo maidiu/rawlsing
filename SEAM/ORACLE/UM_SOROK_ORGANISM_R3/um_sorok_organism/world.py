@@ -1,7 +1,7 @@
 """Independent objective world with material effects and separately authored coactivity.
 World consequences can be unilateral, imposed, cooperative, or refused.
 """
-from .types import Attempt, Resolution, copy, stable_id, digest
+from .types import Attempt, Resolution, copy, stable_id, digest, GRADE
 from .organism import eligible
 from .institutional_reproduction import (
     contribute_to_hall_petition, retain_material_care)
@@ -190,6 +190,84 @@ def project_recursive_actor_sign(world, actor, cue, location):
     return result
 
 
+def visible_vocal_visitors(world, actor, location):
+    """Sourcefree bridge, not recognition or a synthetic actor position.
+    Preserve the existing NEIGHBOR geometry owner and distinct roster.
+    """
+    source = world.get('neighbor_sensory_source', {})
+    row = source.get('actor_conditions', {}).get(actor['id'], {})
+    if (source.get('grade') != 'SOURCEFREE_TEST_ONLY'
+            or actor['body']['sensor'] < .05
+            or not (row.get('visual') is True and row.get('light') == 'lit'
+                    and row.get('sightline') == 'unobstructed'
+                    and row.get('facing') == 'entrance')):
+        return []
+    return sorted(ref for ref, person in world.get('neighbor_users', {}).items()
+                  if type(ref) is str and ref not in world['positions']
+                  and type(person) is dict and person.get('present') is True
+                  and person.get('location') == location)
+
+
+def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
+    """Read the immediately preceding, actually committed human act.
+    No caller-supplied future consent or other-actor Attempt is accepted.
+    Adjacent turn coordination only, not simultaneous singing.
+    """
+    if (attempt.action != 'SING' or attempt.intention !=
+            'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+            or attempt.target not in visible_vocal_visitors(
+                world, actor, world['positions'].get(actor['id']))):
+        return None
+    loc = world['positions'][actor['id']]
+    if type(ledger_event) is not dict:
+        return None
+    env = ledger_event.get('envelope', {})
+    payload = env.get('payload', {})
+    if (ledger_event.get('kind') != 'NEIGHBOR_USER_CONTRIBUTION'
+            or env.get('world') != world['id']
+            or ledger_event.get('clock') != world['clock']
+            or payload.get('user') != attempt.target
+            or payload.get('performed') is not True):
+        return None
+    matches = [e for e in world.get('neighbor_user_events', [])
+               if e.get('event_ref') == payload.get('user_event_ref')]
+    if len(matches) != 1:
+        return None
+    event = matches[0]
+    authored = {'user': attempt.target, 'operation': 'SING',
+                'text': None, 'destination': None,
+                'target_actor_ref': actor['id']}
+    if (event.get('user') != attempt.target or event.get('operation') != 'SING'
+            or event.get('status') != 'PERFORMED'
+            or event.get('target_actor_ref') != actor['id']
+            or event.get('destination') != loc or event.get('clock') != world['clock']
+            or event.get('payload_hash') != digest(authored)
+            or payload.get('payload_hash') != event['payload_hash']
+            or event['event_ref'] != stable_id('neighbor_user', {
+                'user': attempt.target, 'request_id': event.get('request_id'),
+                'payload_hash': event['payload_hash']})):
+        return None
+    senses = world.get('neighbor_sensory_source', {}).get(
+        'actor_conditions', {}).get(actor['id'], {})
+    if senses.get('hearing') is not True or senses.get('sound_path') != 'audible':
+        return None
+    signs = [c for c in world['cues'] if c.get('kind') == 'visitor_vocal_practice'
+             and c.get('visitor_ref') == attempt.target
+             and c.get('visitor_event_ref') == event['event_ref']
+             and c.get('visitor_vocal_addressed_to_recipient') is True
+             and c.get('id') in payload.get('candidate_cue_refs', [])
+             and c.get('private_to') == actor['id']
+             and c.get('location') == loc and c.get('modality') == 'auditory'
+             and c.get('clock') == world['clock']
+             and c.get('last_access_clock', -1) >= world['clock']
+             and actor['body']['sensor'] >= c.get('threshold', .05)]
+    if len(signs) != 1:
+        return None
+    return {'visitor_ref': attempt.target, 'actor': actor['id'],
+            'user_event_ref': event['event_ref'], 'ledger_ref': ledger_event['id'],
+            'cue': copy(signs[0]), 'clock': world['clock'], 'grade': GRADE}
+
+
 def _field(world,a,b):
     ids=sorted((a,b));key='rel:'+':'.join(ids)
     return world['relations'].setdefault(key,{'id':key,'participants':ids,
@@ -287,7 +365,7 @@ def _exact_material_delta(before, delta, error):
     return stored
 
 
-def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None):
+def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt|None=None, *, human_vocal=None):
     """Contributions must be independently supplied by a trusted runtime planner.
     The world never accepts a caller-provided consent boolean. Consent is not
     required for IMPOSITION; imposed consequences do not imply willing contribution.
@@ -636,6 +714,24 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             effects[target]={'action':'IMPOSED_ON','bodily':False}
             output='UNILATERAL_IMPOSITION_NOT_CONSENT'
         else:status='BLOCKED';output='TARGET_NOT_PRESENT'
+    elif attempt.action == 'SING' and target in world.get('neighbor_users', {}) and target not in actors:
+        # Actual prior human contribution is not a prospective synthetic
+        # coactor plan. No human body or psyche is updated by this settlement.
+        if (human_vocal is not None and human_vocal.get('actor') == aid
+                and human_vocal.get('visitor_ref') == target
+                and human_vocal.get('clock') == world['clock']):
+            field = _field(world, aid, target)
+            field['history'].append({'clock': world['clock'],
+                'activity': 'SING', 'contributions': [
+                    {'actor': aid, 'act': 'SING'},
+                    {'human_participant': target, 'act': 'SING',
+                     'committed_user_event_ref': human_vocal['user_event_ref']}],
+                'material_effects': [], 'adjacent_turn_vocal_coordination': True,
+                'no_future_consent_or_shared_motive': True})
+            output = 'JOINT_ACTIVITY_PERFORMED'
+        else:
+            status = 'PARTIAL'
+            output = 'INDEPENDENT_COACTOR_DID_NOT_JOIN'
     elif attempt.action in COOPERATIVE and target:
         if partner_attempt and partner_attempt.actor==target and partner_valid and partner_attempt.action in COOPERATIVE[attempt.action]:
             field=_field(world,aid,target)
@@ -755,6 +851,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                         inspected_material_object['id']
                         if inspected_material_object else None),
                    'co_present_not_verified_witnessing':True}
+    if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
+        event_summary['human_vocal_event_ref'] = human_vocal['user_event_ref']
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
@@ -864,6 +962,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             attempt.action in COOPERATIVE and
             partner_attempt.action in COOPERATIVE[attempt.action] and
             status=='PERFORMED') else [])
+    if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
+        genuinely_joined.append(human_vocal['visitor_ref'])
     arrangement=objective_arrangement(
         actors[aid],world,attempt.action,loc,
         actual_other_participants=genuinely_joined)
@@ -886,7 +986,7 @@ class IndependentWorldAuthority:
         if not callable(coactor_planner):raise TypeError('QUALIFIED_COACTOR_PLANNER_REQUIRED')
         self.__planner=coactor_planner
 
-    def resolve(self,world,actors,principal:Attempt):
+    def resolve(self,world,actors,principal:Attempt, *, committed_human_event=None):
         if principal.actor not in actors:raise ValueError('UNREGISTERED_ACTOR')
         partner=None;policy_receipt=None
         if (principal.action in COOPERATIVE and principal.target in actors
@@ -907,7 +1007,10 @@ class IndependentWorldAuthority:
                 'actor_state_hash':digest(actors[partner.actor]),
                 'world_state_hash':digest(world),'plan_basis':copy(partner.basis),
                 'policy_grade':'SOURCEFREE_INDEPENDENT_ACTOR_PROSPECTIVE'}
-        out=_resolve_untrusted_core(world,actors,principal,partner)
+        human_vocal = (qualified_human_vocal_receipt(
+            world, actors[principal.actor], principal, committed_human_event)
+            if committed_human_event is not None else None)
+        out=_resolve_untrusted_core(world,actors,principal,partner,human_vocal=human_vocal)
         return out,partner,policy_receipt
 
 
@@ -915,6 +1018,6 @@ def resolve(*args,**kwargs):
     """Deprecated direct function: solo only. The trusted research runtime
     uses IndependentWorldAuthority with an installed other-actor policy.
     """
-    if kwargs.get('partner_attempt') is not None or len(args)>=4 and args[3] is not None:
+    if kwargs.get('committed_human_event') is not None or kwargs.get('human_vocal') is not None or kwargs.get('partner_attempt') is not None or len(args)>=4 and args[3] is not None:
         raise ValueError('DIRECT_COACTOR_BYPASS_REFUSED')
     return _resolve_untrusted_core(*args,**kwargs)

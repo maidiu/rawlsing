@@ -184,7 +184,8 @@ class HeuristicSemanticProvider:
             if status not in ('PERFORMED','PARTIAL'):
                 return {'task':task,'candidates':lived,'semantic_grade':self.grade}
             relation_candidates=lived+copy(
-                packet.get('historically_proposed_functional',[]))
+                [p for p in packet.get('historically_proposed_functional',[])
+                 if not p.get('dissimilar_means_basis')])
             relation_candidates+=one_sourcefree_provisional_end(
                 packet.get('historically_possible_incidental_goods',[]),
                 {'possible_ends':packet.get('actor_possible_ends',[])})

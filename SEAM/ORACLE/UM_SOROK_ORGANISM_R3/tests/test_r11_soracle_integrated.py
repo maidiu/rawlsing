@@ -203,6 +203,102 @@ class R11ProspectiveComposition(unittest.TestCase):
             admit(actor,experience,'event_now',[],issued_trial=ticket)
         self.assertEqual(actor,before)
 
+
+class DissimilarMeansR34(unittest.TestCase):
+    def test_new_means_is_lived_local_one_use_and_changes_future(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        from um_sorok_organism.functional_correspondence import (
+            propose_actor_lived_correspondences)
+        parent={'source_ref':'r34_fictional_parent',
+                'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'R34':'not a respondent'},'fictional_seed':{'projects':[]}}
+        with tempfile.TemporaryDirectory() as d:
+            outcomes={}
+            for nominate in (True,False):
+                offered=[]
+                def callback(task,packet):
+                    if task=='adult_constructor':
+                        return HeuristicSemanticProvider().propose(task,packet)
+                    if task=='expression':
+                        return {'task':task,'surface':'Ordinary life.'}
+                    if task=='actor_attempt':
+                        trials=packet.get('possible_end_trials',[])
+                        pick=next((x for x in trials if x['operation']=='EAT'),None)
+                        if pick is None:
+                            pick=next((x for x in trials if x['operation']=='REST'),None)
+                        if pick:
+                            return {'task':task,'possible_end_trial_id':pick['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task!='development':raise AssertionError(task)
+                    if packet['actor']['id']!='mother':
+                        return {'task':task,'candidates':[]}
+                    e=packet['experience']
+                    if e.get('own_action')=='REST' and not packet.get('actor_possible_ends'):
+                        sign=next(c for c in e['perceived_cues'] if c['kind']=='performed_rest')
+                        return {'task':task,'candidates':[
+                            {'kind':'ADD_FORM','form':{'id':'r34_eat','kind':'PRACTICE',
+                              'cues':['eat'],'enables':['EAT'],'always_recruitable':True,'scope':{}}},
+                            {'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':sign['id'],
+                             'possible_object':'seek a respite from bodily strain',
+                             'possible_means':['REST'],'cue_terms':['rest']}]}
+                    gs=[g for g in packet.get('historically_proposed_functional',[])
+                        if g.get('dissimilar_means_basis')]
+                    offered.extend(copy.deepcopy(gs))
+                    return {'task':task,'candidates':gs if nominate and len(offered)==len(gs) else []}
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/('admit.db' if nominate else 'abstain.db'))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize([('mother','Mother',parent)])
+                    rt.step('mother',requested_action='MOVE',object_ref='workshop')
+                    rt.step('mother',requested_action='REST')
+                    self.assertEqual(rt.step('mother')['attempt'],'REST')
+                    prior=rt.snapshot('mother')['possible_ends'][0]
+                    self.assertEqual(len(prior['trial_history']),1)
+                    rt.step('mother',requested_action='MOVE',object_ref='home')
+                    self.assertEqual(rt.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    basis=offered[0]['dissimilar_means_basis']
+                    self.assertEqual((basis['earlier_operation'],basis['later_operation']),('REST','EAT'))
+                    self.assertIn('comfort',basis['shared_lived_relief_axes'])
+                    after=rt.snapshot('mother')
+                    self.assertEqual(after['possible_ends'][0],prior)
+                    bindings=[b for b in after['functional_bindings'] if b.get('dissimilar_means_basis')]
+                    self.assertEqual(len(bindings),int(nominate))
+                    if not nominate:
+                        actor=rt.ledger.actor('mother')[1]
+                        episode=next(x for x in actor['lived_genesis_episodes'] if x['id']==basis['later_episode_ref'])
+                        sign=next(c for c in rt.see('mother')['cues'] if c['id']==offered[0]['perceived_cue_ref'])
+                        experience={'actor':'mother','ref':episode['experience_ref'],
+                            'clock':episode['clock'],'location':'home','own_action':'EAT',
+                            'participated':True,'felt_enactment':{'attempted_operation':'EAT'},
+                            'perceived_cues':[sign]}
+                        bad=copy.deepcopy(offered[0]);bad['dissimilar_means_basis']['shared_lived_relief_axes']=['fabricated']
+                        old=copy.deepcopy(actor)
+                        with self.assertRaises(InvalidDevelopment):
+                            admit(actor,experience,episode['event_ref'],[bad])
+                        self.assertEqual(actor,old)
+                        self.assertEqual(len(propose_actor_lived_correspondences(actor,experience,episode['event_ref'])),1)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.snapshot('mother')['functional_bindings'],after['functional_bindings'])
+                    result=cold.step('mother')
+                    outcomes[nominate]=result['attempt']
+                    end=cold.snapshot('mother')['possible_ends'][0]
+                    self.assertEqual(end['possible_means'],['REST'])
+                    self.assertEqual(len(end['trial_history']),1+int(nominate))
+                    if nominate:
+                        self.assertEqual(end['trial_history'][-1]['operation'],'EAT')
+                        self.assertEqual(end['trial_history'][-1]['functional_bridge_ref'],bindings[0]['id'])
+                        self.assertFalse(any(t.get('functional_bridge_ref')==bindings[0]['id']
+                            for o in cold.situated('mother')['candidate_actions']
+                            for t in o.get('possible_end_trials',[])))
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(outcomes,{True:'EAT',False:'WAIT'})
+
 if __name__=='__main__':unittest.main()
 
 class R11NoMotiveFromCurrentTrial(unittest.TestCase):
@@ -309,3 +405,128 @@ class R11ConflictingOption(unittest.TestCase):
                     rt.step('nadia')
                 self.assertEqual(rt.ledger.world()[1]['clock'],before)
             finally:rt.close()
+
+
+class FunctionalAfterlifeR35(unittest.TestCase):
+    def test_consumed_bridge_can_consolidate_then_be_suspended_without_erasure(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        parent={'source_ref':'r35_fictional_parent',
+                'source_grade':'SOURCEFREE_TEST_FIXTURE_NOT_EMPIRICAL',
+                'answers':{'R35':'not a respondent'},'fictional_seed':{'projects':[]}}
+        with tempfile.TemporaryDirectory() as d:
+            outcomes={}
+            for consolidate in (True,False):
+                acquired=[]; revisions=[]
+                def callback(task,packet):
+                    if task=='adult_constructor':
+                        return HeuristicSemanticProvider().propose(task,packet)
+                    if task=='expression':
+                        return {'task':task,'surface':'Ordinary life.'}
+                    if task=='actor_attempt':
+                        trials=packet.get('possible_end_trials',[])
+                        pick=next((x for x in trials if x['operation']=='EAT'),None)
+                        if pick is None:
+                            pick=next((x for x in trials if x['operation']=='REST'),None)
+                        if pick:
+                            return {'task':task,'possible_end_trial_id':pick['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task!='development':raise AssertionError(task)
+                    if packet['actor']['id']!='mother':
+                        return {'task':task,'candidates':[]}
+                    e=packet['experience']
+                    if e.get('own_action')=='REST' and not packet.get('actor_possible_ends'):
+                        sign=next(c for c in e['perceived_cues'] if c['kind']=='performed_rest')
+                        return {'task':task,'candidates':[
+                            {'kind':'ADD_FORM','form':{'id':'r35_eat','kind':'PRACTICE',
+                              'cues':['eat'],'enables':['EAT'],'always_recruitable':True,'scope':{}}},
+                            {'kind':'NOTICE_POSSIBLE_END','perceived_cue_ref':sign['id'],
+                             'possible_object':'seek a respite from bodily strain',
+                             'possible_means':['REST'],'cue_terms':['rest']}]}
+                    gs=[g for g in packet.get('historically_proposed_functional',[])
+                        if g.get('dissimilar_means_basis')]
+                    if gs and not acquired:
+                        acquired.extend(copy.deepcopy(gs))
+                        return {'task':task,'candidates':gs}
+                    rs=packet.get('historically_possible_functional_revisions',[])
+                    revisions.extend(copy.deepcopy(rs))
+                    return {'task':task,'candidates':rs if consolidate else []}
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/('consolidate.db' if consolidate else 'abstain.db'))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize([('mother','Mother',parent)])
+                    rt.step('mother',requested_action='MOVE',object_ref='workshop')
+                    rt.step('mother',requested_action='REST')
+                    self.assertEqual(rt.step('mother')['attempt'],'REST')
+                    rt.step('mother',requested_action='MOVE',object_ref='home')
+                    self.assertEqual(rt.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    bridge=next(b for b in rt.snapshot('mother')['functional_bindings']
+                                if b.get('dissimilar_means_basis'))
+                    self.assertEqual(rt.step('mother')['attempt'],'EAT')
+                    self.assertEqual(revisions,[])
+                    end=rt.snapshot('mother')['possible_ends'][0]
+                    self.assertEqual(len(end['trial_history']),2)
+                    self.assertFalse(any(t.get('functional_bridge_ref')==bridge['id']
+                        for o in rt.situated('mother')['candidate_actions']
+                        for t in o.get('possible_end_trials',[])))
+                    # Real intervening activity lowers comfort; do not write
+                    # a fabricated favorable body state or historical episode.
+                    for _ in range(10):rt.step('mother',requested_action='WAIT')
+                    self.assertEqual(rt.step('mother',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(revisions),1)
+                    self.assertEqual(revisions[0]['mode'],'CONSOLIDATE')
+                    self.assertIn('comfort',revisions[0]['revision_basis']['reproduced_relief_axes'])
+                    before=rt.snapshot('mother')
+                    b=next(b for b in before['functional_bindings'] if b['id']==bridge['id'])
+                    self.assertEqual(b['status'],'ACQUIRED_CONDITIONAL_FUNCTIONAL_MEANS'
+                                     if consolidate else 'POSSIBLE_FUNCTIONAL_SIMILARITY_NOT_BELIEF')
+                    self.assertEqual(before['possible_ends'][0],end)
+                    self.assertEqual(b['dissimilar_means_basis'],bridge['dissimilar_means_basis'])
+                    if not consolidate:
+                        actor=rt.ledger.actor('mother')[1]
+                        rev=revisions[0]
+                        row=next(x for x in actor['lived_genesis_episodes']
+                                 if x['id']==rev['revision_basis']['later_episode_ref'])
+                        sign=next(c for c in rt.see('mother')['cues']
+                                  if c['id']==rev['revision_basis']['later_received_sign_ref'])
+                        exp={'actor':'mother','ref':row['experience_ref'],'clock':row['clock'],
+                             'location':'home','own_action':'EAT','participated':True,
+                             'status':'PERFORMED','felt_enactment':{'attempted_operation':'EAT'},
+                             'perceived_cues':[sign]}
+                        forged=copy.deepcopy(rev)
+                        forged['revision_basis']['first_bridge_trial_ref']='invented'
+                        old=copy.deepcopy(actor)
+                        with self.assertRaisesRegex(InvalidDevelopment,'FUNCTIONAL_REVISION_NO_LIVED_BASIS'):
+                            admit(actor,exp,row['event_ref'],[forged])
+                        self.assertEqual(actor,old)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.snapshot('mother')['functional_bindings'],before['functional_bindings'])
+                    outcomes[consolidate]=cold.step('mother')['attempt']
+                    if consolidate:
+                        revision_ref=b['revision_history'][0]['id']
+                        self.assertEqual(cold.snapshot('mother')['possible_ends'][0]['trial_history'][-1]
+                                         ['conditional_means_revision_ref'],revision_ref)
+                        self.assertEqual(cold.step('mother')['attempt'],'EAT')
+                        # Consume actual finite household stock until the
+                        # material world blocks an attempted course.
+                        for _ in range(15):
+                            result=cold.step('mother',requested_action='EAT')
+                            if result['status']=='BLOCKED':break
+                        self.assertEqual(result['status'],'BLOCKED')
+                        self.assertEqual(revisions[-1]['mode'],'SUSPEND')
+                        final=next(x for x in cold.snapshot('mother')['functional_bindings']
+                                   if x['id']==bridge['id'])
+                        self.assertEqual(final['status'],'SUSPENDED_CONDITIONAL_FUNCTIONAL_MEANS')
+                        self.assertEqual([h['mode'] for h in final['revision_history']],
+                                         ['CONSOLIDATE','SUSPEND'])
+                        self.assertEqual(final['revision_history'][0],b['revision_history'][0])
+                        self.assertEqual(final['dissimilar_means_basis'],bridge['dissimilar_means_basis'])
+                        self.assertEqual(cold.snapshot('mother')['possible_ends'][0]['possible_means'],['REST'])
+                        self.assertEqual(cold.step('mother')['attempt'],'WAIT')
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(outcomes,{True:'EAT',False:'WAIT'})
+

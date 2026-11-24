@@ -24,7 +24,8 @@ from .cultural_mediation import (
     admit_cultural_reference,admit_reference_revision)
 from .social_vocal_development import admit_vocal_coordination
 from .prospective_horizon import record_possible_end_trial
-from .functional_correspondence import admit_functional_correspondence
+from .functional_correspondence import (admit_functional_correspondence,
+                                         admit_functional_revision)
 from .material_investments import admit_material_investment
 from .co_regulation_history import (
     admit_co_regulation, admit_co_regulation_revision)
@@ -52,6 +53,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
+         'REVISE_FUNCTIONAL_CORRESPONDENCE',
          'INVEST_MATERIAL_OBJECT','ACQUIRE_CO_REGULATION_ORIENTATION',
          'REVISE_CO_REGULATION_ORIENTATION',
          'ACQUIRE_HISTORICAL_ORIENTATION','ACQUIRE_LIVED_DIRECTIONAL_ORIENTATION',
@@ -463,6 +465,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:
                 report.append(admit_material_investment(
                     actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='REVISE_FUNCTIONAL_CORRESPONDENCE':
+            try:
+                report.append(admit_functional_revision(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_FUNCTIONAL_CORRESPONDENCE':

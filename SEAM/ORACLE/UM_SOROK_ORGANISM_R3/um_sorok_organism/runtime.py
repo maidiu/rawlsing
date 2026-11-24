@@ -52,7 +52,8 @@ from .co_regulation_history import (
 from .plural_care_paths import (
     conserve_lived_high_resolution_care, plural_acquisition_candidate,
     sourcequalified_reopening)
-from .functional_correspondence import propose_actor_lived_correspondences
+from .functional_correspondence import (propose_actor_lived_correspondences,
+                                        possible_functional_revisions)
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
 from .historical_parent_bridge import render_blind_interview
@@ -63,7 +64,7 @@ from .relational_metabolism import (
     possible_witnessed_third_party_relation,
     possible_lived_cross_context_revaluations)
 from .world import (IndependentWorldAuthority, COOPERATIVE, add_cue,
-                    register_recursive_encounter_paths)
+                    register_recursive_encounter_paths, qualified_human_vocal_receipt)
 
 def _bind_actor_trial_particular_object(alternatives, trial):
     """Choose one perceived thing, not one asserted explanation for perceiving it.
@@ -528,7 +529,17 @@ class ConstitutiveRuntime:
         if object_ref is not None:principal.object_ref=object_ref
         # A caller never supplies another actor's response. The world owner
         # obtains it from the installed independently constituted actor policy.
-        actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
+        human_vocal = None
+        if (principal.action == 'SING' and principal.target in
+                world.get('neighbor_users', {}) and requested_action is None):
+            history = self.ledger.events()
+            human_vocal = qualified_human_vocal_receipt(
+                world, actors[actor_id], principal, history[-1] if history else None)
+        if human_vocal is None:
+            actual,partner,coactor_policy_receipt=self.authority.resolve(world,actors,principal)
+        else:
+            actual,partner,coactor_policy_receipt=self.authority.resolve(
+                world,actors,principal,committed_human_event=history[-1])
         resolved=asdict(actual)
         summary=resolved['world_delta']['event']
         objective_ref=stable_id('objective',{'world':self.world_id,'summary':summary})
@@ -583,6 +594,13 @@ class ConstitutiveRuntime:
             reciprocal=None
             if partner and resolved['objective_description']=='JOINT_ACTIVITY_PERFORMED' and personally_done and personal_cues:
                 reciprocal=partner.actor if aid==actor_id else actor_id
+            if (aid == actor_id and personally_done and human_vocal is not None
+                    and summary.get('human_vocal_event_ref') == human_vocal['user_event_ref']
+                    and personally_done['status'] == 'PERFORMED'):
+                # The human act was personally accessible immediately before
+                # the actor's own settlement, not an omniscient reconstruction.
+                personal_cues.append(copy(human_vocal['cue']))
+                reciprocal = human_vocal['visitor_ref']
             # Performed action may be proprioceptively available even where its
             # outward cue occurred at the origin of a successful MOVE and the
             # actor is now elsewhere. This is *not* objective outcome knowledge.
@@ -805,6 +823,8 @@ class ConstitutiveRuntime:
                 'actor_expectations_analyst_only':copy(actors[aid].get('expectations',[])),
                 'historically_proposed_preproject':copy(history_genesis),
                 'historically_proposed_functional':copy(functional_genesis),
+                'historically_possible_functional_revisions':copy(
+                    possible_functional_revisions(actors[aid],experience,objective_ref)),
                 'historically_possible_material_meanings':copy(
                     material_meaning_proposals),
                 'historically_possible_incidental_goods':copy(

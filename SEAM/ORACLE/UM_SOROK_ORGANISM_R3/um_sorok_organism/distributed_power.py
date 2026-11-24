@@ -103,6 +103,11 @@ def conditional_assistance_options(constitution, access, option):
     if operation not in COOPERATIVE_OPERATIONS:
         return []
     participants=_present_counterparts(access)
+    visitors = {c['visitor_ref'] for c in access.cues
+                if operation == 'SING' and type(c) is dict
+                and c.get('kind') == 'visitor_vocal_partner'
+                and type(c.get('visitor_ref')) is str}
+    participants |= visitors
     if not participants:
         return []
     history=getattr(constitution,'participation_history',[])
@@ -156,6 +161,23 @@ def conditional_assistance_options(constitution, access, option):
             'not_an_acquired_durable_motive':True,
             'not_an_observed_future':True,
         })
+    # The first invitation need not have an already learned joint practice.
+    # This bounded opportunity is separate from the historical alternative.
+    for visitor in sorted(visitors - set(grounded)):
+        offered.append({
+            'option_id':stable_id('visitor_vocal_invitation',{
+                'actor':constitution.actor,'clock':constitution.clock,
+                'visitor':visitor,'operation':operation}),
+            'actor':constitution.actor,'as_of_clock':constitution.clock,
+            'operation':operation,'project_id':None,
+            'grounds_status':'EXPLORATORY_VISITOR_VOCAL_INVITATION',
+            'world_request':{'operation':operation,'addressed_party_ref':visitor,
+                             'material_object_ref':None},
+            'binding_status':'OTHER_PRESENT_BUT_INDEPENDENT_RESPONSE_REQUIRED',
+            'anticipated_difference':None,'beneficiary_as_apprehended':None,
+            'partner_consent':'MUST_BE_INDEPENDENTLY_AUTHORED',
+            'source_grade':GRADE,'not_an_acquired_durable_motive':True,
+            'not_an_observed_future':True})
     return offered
 
 
