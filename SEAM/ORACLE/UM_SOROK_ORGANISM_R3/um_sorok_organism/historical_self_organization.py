@@ -215,16 +215,24 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
     mode = direction(now)
     if mode is None:
         return []
-    # An actually contradictory intervening lived course makes a simple
-    # directional hypothesis UNDERDETERMINED, not merely less confident.
-    if any(direction(row) not in (None, mode) for row in earlier.values()):
+    # A previously acquired polarity is not a lifelong veto on subsequent
+    # formation. Look only at the most recent UNINTERRUPTED run of comparable
+    # lived courses. Earlier opposite courses remain in actor history and
+    # their acquired orientation remains operative: this is a new, possibly
+    # opposed organization, NOT the erasure or automatic reversal of the old.
+    # A mixed/unknown intervening course interrupts the run too; two matching
+    # receipts separated by an opposite course cannot manufacture repetition.
+    chronological = sorted(earlier.values(),
+                           key=lambda r: (r['clock'], r['id']),
+                           reverse=True)
+    consecutive = []
+    for row in chronological:
+        if direction(row) != mode:
+            break
+        consecutive.append(row)
+    if not consecutive:
         return []
-    witnessed = sorted(
-        (r for r in earlier.values() if direction(r) == mode),
-        key=lambda r: (r['clock'], r['id']))
-    if not witnessed:
-        return []
-    first = witnessed[-1]
+    first = consecutive[0]
     # Prevent repeated same-valence receipts from manufacturing infinite
     # pressure. An opposite, separately acquired form may remain possible.
     if any(r.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'
@@ -259,6 +267,8 @@ def possible_lived_directional_orientation(actor, experience, event_ref):
             'REPEATED_ACTOR_LIVED_RELIEF' if mode == 'APPROACH'
             else 'REPEATED_ACTOR_LIVED_ADVERSE_COURSE'),
         'two_distinct_episodes_required': True,
+        'consecutive_comparable_course_required': True,
+        'older_opposing_orientations_not_deleted': True,
         'not_proof_action_caused_body_course': True,
         'not_automatic_motive_or_conscious_explanation': True,
     }
