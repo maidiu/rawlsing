@@ -1,10 +1,40 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
-**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `39eae8ca5b4bb33b227075b313488808451400c2`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
+**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `10f1221939bd2b26a75db0c73c56348d932efee4`. 58 candidate obligation clusters; 122 provisional criteria; 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Read first
 
 CO R16 [positive HOME](https://github.com/maidiu/rawlsing/blob/b0eb752897fa4cc1719a47caa27423ba8fe19f02/SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md) remains sole author-branch active theory; R17 is separate unreceived candidate. NEIGHBOR R36 [positive HOME](https://github.com/maidiu/rawlsing/blob/3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2/SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) remains provisional. Existing 08 (22 seams), 09 (144), 19 (144/38/83), and 27-task #1095 control are reused by ID, not copied or superseded. The machine map uses the same O-Index PR/function links and bank lookup. Every criterion distinguishes implementation, consumption, integration, execution, independent review, source/scientific/actor/human authorization and receiving. No aggregate fulfillment percentage.
+
+
+## Review conservation and cumulative refinement — mandatory user direction, 2026-11-24
+
+Deferred review is a conserved obligation, not implicit acceptance or a universal construction gate. Implementation, execution and review coverage are independent. Refinement must deepen realization, critically inspect touched inherited code/architecture/causal tests and integration, and explicitly discharge or carry forward each relevant outstanding scope. Record exact source and consumer, reviewer identity and independence, scope/path/symbol, depth/method, verdict, limits and remaining scope. Distinguish author inspection, author execution and independent review; retain prior receipts at their original revisions, mark stale/nontransferable after source or dependency change unless explicit equivalence is established. A same-author refinement is not independent review. Only consequential defects/contested evidence enter existing REMONT; missing functionality and deferred review remain here. No separate register or automatic review commission.
+
+[Exact G4 instruction](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7123766849) · [CO R33](https://github.com/maidiu/rawlsing/pull/1322#issuecomment-7123765829) · [NEIGHBOR R6](https://github.com/maidiu/rawlsing/pull/1298#issuecomment-7123766306).
+
+**122 criteria × seven review dimensions = 854 criterion/dimension scopes**, initially NOT_REVIEWED at this criterion-specific intake, with earlier scoped receipts referenced, not erased. This does not mean 854 historical mechanisms have never been reviewed. The following 16 named source-specific open scopes are stored under the relevant existing criterion, with exact source and related criterion links. No criterion-specific review newly issued.
+
+| Scope | Criterion | Review dimension | Outstanding examination |
+|---|---|---|---|
+| R33-FORMATION | CO-CIC-012.01 | causal_adequacy | Real model formation versus controlled semantic nomination; inspect actor-owned trace and later recruitment, not only callback admission. |
+| R33-COACTION | CO-CIC-017.01 | causal_adequacy | Coaction consequences of withholding synthetic presence; inspect actual downstream actor receipt and null rather than treating co-presence as knowledge. |
+| R32-REVALUATION | CO-CIC-018.01 | independent_review | Scope-specific independent review of controlled cross-context motif revaluation; original lived origin, source recomputation, actual later REST vs WAIT, abstention and forgery/atomicity. No controlled callback as live-model evidence. |
+| R31-REINSTATEMENT | CO-CIC-018.02 | independent_review | Scope-specific independent review of historically earned reopening of inhibited organization; preserve original identity, post-inhibition evidence, counterhistory, source forgery, unclocked legacy hold and actual later consumer. |
+| R33-ANONYMOUS | CO-CIC-029.01 | implementation_correctness | Anonymous cue projection and cross-participant identity/target leakage; inspect visibility/audibility partition and recipient-specific fields. |
+| R33-P6-MIII | CO-CIC-029.01 | historical_inheritance | Native P6/MIII parity and remaining historical sensory coverage; compare original protected owners, scoped tests and first consumers without assuming transfer. |
+| R33-GEOMETRY | CO-CIC-029.02 | implementation_correctness | Directed geometry provenance and expired-path coarse fallback; inspect actual temporal/directional material-path admission and fallback. |
+| R33-ATTENTION | CO-CIC-029.02 | architectural_fidelity | Actual attention versus sensory eligibility; eligibility must not automatically imply noticed or interpreted sign. |
+| R33-ECONOMY | CO-CIC-032.01 | computational_economy | Long-history economics of path records, actor-access projection and cold continuation; review actual scaling assumptions and measure scope. |
+| R6-SENSORY | NEIGHBOR-CIC-008.01 | causal_adequacy | Sensory source/recipient access and actual performed/received distinctions; distinguish visitor lens from CO actor access. |
+| R6-MII-PRIVATE | NEIGHBOR-CIC-009.02 | implementation_correctness | MII private perceptual economy and actor/user separation, actual learning/exposure read path and leakage controls; resource scaling review separately required. |
+| R6-RELATIONSHIP | NEIGHBOR-CIC-014.01 | architectural_fidelity | Relationship and shared encounter operations: actual separate actor histories, reciprocity without shared psyche, no manufactured visitor biography. |
+| R6-ROOT-FORK | NEIGHBOR-CIC-015.01 | historical_inheritance | Common root, branch-local history and fork/cold behavior; compare prior source and actual consumer, preserve no-propagation negatives. |
+| R33-JOIN | NEIGHBOR-CIC-024.01 | integration | Joined CO/NEIGHBOR current head; same-tree source-specific interaction evidence including donor and rejected R30 boundary; no old green transfer. |
+| R6-ENCOUNTER | NEIGHBOR-CIC-024.01 | integration | Shared encounter actual joined source and user/actor/world owner boundaries; no inherited separate-tree pass as review. |
+| R6-ECONOMY | NEIGHBOR-CIC-024.02 | computational_economy | Scaling and private MII economy under repeated encounter and cold continuation; combined test count is not scaling evidence. |
+
+**Refinement return:** criterion and original function → prior and new source/consumer → actual implementation delta → exact executed cases and conditions → review performed (reviewer, depth, scope, verdict, source SHA) → retained or discharged residuals → evidence of transfer or stale scope → REMONT only for actual defects/contested evidence → competent paired receiving. No review gate for ordinary construction; no criterion-specific grade promotion from historical green tests.
 
 ## Obligation-first view (derived from same JSON)
 
