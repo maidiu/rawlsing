@@ -31,3 +31,8 @@ Live designated PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, documentary
 ### R5 — inhabited social field: current constructive architecture
 
 [Read the integrated connection architecture and move log](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md). User correction: optimize for subjectivity-formation within inhabited historical/material and mass-intersubjective conditions, not exhaustive objective-world political economy. Remote power matters through material/public/social routes or an explicit historical attribution demand; do not make a global ownership dataset a prerequisite. R1–R4 remain conserved as source-selection/evidence corrections. R5 connects the actual fourteen-family estate, PYAT D1/D2 repertoires, overlapping formations, independent institutions and Others, both SOROK entrances and continuing development. Provisional fictional construction is distinct from actual-source claims. No new acquisition, branch, commission or production implementation. Use the existing receiving path.
+
+
+### R6 — first actual native reader
+
+The uploaded priority pack is now locally readable and the four core tables plus ED/TEK have an executable provisional context reader. [Code](native_priority_readers.py) · [Native tests](test_native_priority_readers.py) · [Execution and source corrections](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r6--actual-native-source-construction-2026-11-24). ILOSTAT RDS decoder unavailable in Browser; RAS withheld. No raw data or results exported. R5 architecture and prior source evidence preserved.

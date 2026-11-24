@@ -269,3 +269,8 @@ Second slice: JOIN/ILOSTAT native partition + independent Findex margins; retain
 ## R5 connection design — governing purpose refinement
 
 [04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md) extends this same source map into the inhabited-world architecture. Its explicit user correction narrows R4's global-power gap as a persona-construction prerequisite: full international ownership/debt/causal network is not required; retain enough relevant material consequences, collective public meanings and actual historical context. Preserve PP26-16's stronger actual-world claim limitation. All source definitions, R4 coverage/estimand corrections and prior selected source intelligence remain intact. The new document is connection design, not another capability inventory. No data acquisition or source upgrade.
+
+
+### R6 native evidence correction
+
+Actual native reads and selected documentation now establish that JOIN employment partition and Findex selected percentages are stored as fractions; EPR annual reference dates are Jan 1 with first-independence-year exception, not continuous effective-time claims. WBL's standardized legal case is scope-limited. [R6 evidence and implementation](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r6--actual-native-source-construction-2026-11-24) supersedes conflicting earlier conjecture. Code is provisional native read not source admission or first world reader.
