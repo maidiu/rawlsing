@@ -327,6 +327,17 @@ def test_real_recursive_handoff_to_new_native_i05_through_adaptive_resume(tmp_pa
                 unit=unit,discovery=second,expected_replay_ref=second.replay_ref,
                 candidate_receipt_ref=second.receipts[0].ref,query_role="CONDITION",current_guard=lambda:True,
             )
+        # The outer receipt field is not itself part of the binding ref.
+        # A persisted handoff must agree with its sealed deterministic side
+        # material, even when the child and native frontier refs stay intact.
+        forged_parent = replace(parent, receipt_ref=first.replay_ref)
+        assert forged_parent.ref == parent.ref
+        with pytest.raises(S04I05ReceptionError, match="parent handoff"):
+            receive_s04_i05_adaptive_outcome(
+                unit=unit, discovery=second, expected_replay_ref=second.replay_ref,
+                candidate_receipt_ref=second.receipts[0].ref, query_role="CONDITION",
+                current_guard=lambda: True, parent_handoff=forged_parent,
+            )
         return outcome
     with pytest.raises(S04I05ReceptionError,match="winning handoff"):
         receive_s04_i05_adaptive_outcome(
@@ -396,3 +407,131 @@ def test_native_position_predicates_change_conditional_and_reverse_distributions
         roots.append(root)
     assert _score(roots[0], (0,)) > _score(roots[0], (1,))
     assert _score(roots[1], (1,)) > _score(roots[1], (0,))
+
+
+def test_followup_pinned_replay_binds_actual_candidate_grammar_and_role_census():
+    """A replay pin must also bind the grammar and exact executed-role census."""
+    discovery = _real_frontier()
+    positive = next(r for r in discovery.receipts if r.typed_state == "DISCOVERED_RESULT_SUPPORTED")
+    _, _, rule, _ = adaptive._authority("followup-grammar")
+    determinant = adaptive._ref("DETERMINANT", "followup-grammar")
+    root = adaptive._unit("root", determinant, rule, rank=0,
+                          extra=(discovery.discovery_authority_ref,))
+    def receive(value):
+        return receive_s04_i05_adaptive_outcome(
+            unit=root, discovery=value, expected_replay_ref=discovery.replay_ref,
+            candidate_receipt_ref=positive.ref, query_role="BASE",
+            current_guard=lambda: True,
+        )
+    assert receive(discovery)[2].sealed_result_ref == discovery.replay_ref
+    grammar = discovery.candidate_grammar_ref
+    counterfeit = replace(discovery, candidate_grammar_ref=ExactRef(
+        grammar.kind, grammar.object_id, semantic_hash("foreign grammar")))
+    with pytest.raises(S04I05ReceptionError, match="frontier"):
+        receive(counterfeit)
+
+
+def test_followup_exact_frontier_refuses_unissued_extra_query_preimage():
+    discovery = _real_frontier()
+    positive = next(r for r in discovery.receipts if r.typed_state == "DISCOVERED_RESULT_SUPPORTED")
+    _, _, rule, _ = adaptive._authority("followup-extra-query")
+    determinant = adaptive._ref("DETERMINANT", "followup-extra-query")
+    root = adaptive._unit("root", determinant, rule, rank=0,
+                          extra=(discovery.discovery_authority_ref,))
+    _, _, _, foreign, _ = _real(tag="FORGE-FOLLOWUP-FOREIGN")
+    assert foreign.ref not in {q.ref for q in discovery.executed_queries}
+    counterfeit = replace(discovery, executed_queries=tuple(sorted(
+        (*discovery.executed_queries, foreign), key=lambda q: q.ref.key)))
+    with pytest.raises(S04I05ReceptionError, match="role"):
+        receive_s04_i05_adaptive_outcome(
+            unit=root, discovery=counterfeit, expected_replay_ref=discovery.replay_ref,
+            candidate_receipt_ref=positive.ref, query_role="BASE", current_guard=lambda: True,
+        )
+
+
+def test_followup_group_local_denominators_minorities_and_zero_condition_support():
+    # Both source domains exist but cross-combinations do not.  One group
+    # has 3:1, another 1:1.  Their conditionals are not the overall joint.
+    rows = [
+        {"id": f"R{i}", "responses": {"X": x, "Z": z, "Y": y}}
+        for i, (x,z,y) in enumerate(
+            [(0,0,0)]*3 + [(0,0,1)] + [(1,1,0), (1,1,1)])
+    ]
+    _, _, _, q, ex = _actual("FORGE-FOLLOWUP-FIBRES", rows, ("X","Z","Y"))
+    ws = _workspace(q, ex)
+    request = DHIKRComparisonRequest(
+        2, (0,1), max_depth=0, include_group_evidence=True,
+        min_branch_n=3,
+    )
+    material = ws.compare_dhikr(request).material()
+    group = next(g for g in material["nodes"][0]["comparative_group_evidence"]
+                 if g["axes"] == [0,1])
+    fibres = {tuple(f["group_states"]): f for f in group["conditional_target_fibres"]}
+    assert set(fibres) == {("0","0"), ("0","1"), ("1","0"), ("1","1")}
+    assert sum(f["raw_group_full_case_n"] for f in fibres.values()) == 6
+    for key, fibre in fibres.items():
+        # Differential: incumbent exact joint projection with the same
+        # predictor values conditioned, including both zero-support groups.
+        direct = ws.query(S04Projection((2,), {0:key[0], 1:key[1]})).material()
+        assert fibre["raw_group_full_case_n"] == direct["raw_selected_full_case_n"]
+        assert fibre["conditional_state"] == direct["state"]
+        assert {r["target_state"]: (r["raw_count"], r["conditional_raw_fraction"])
+                for r in fibre["target_rows"]} == {
+                    c["output_states"][0]: (c["raw_count"], c["raw_fraction_of_selected_full_cases"])
+                    for c in direct["complete_output_cells"]
+                }
+    modal = fibres[("0","0")]
+    assert modal["raw_group_full_case_n"] == 4
+    assert modal["target_rows"][0]["conditional_raw_fraction"] == {"$exact_fraction":[3,4]}
+    assert modal["target_rows"][0]["sample_modal_disposition"] == "UNIQUE_MODAL"
+    assert modal["target_rows"][1]["sample_modal_disposition"] == "OBSERVED_NONMODAL_ALTERNATIVE"
+    tied = fibres[("1","1")]
+    assert tied["recursion_support"] == "BELOW_MINIMUM_N__NOT_A_GLOBAL_NEGATIVE"
+    assert all(r["sample_modal_disposition"] == "CO_MODAL" for r in tied["target_rows"])
+    for key in (("0","1"), ("1","0")):
+        assert all(r["conditional_raw_fraction"] is None for r in fibres[key]["target_rows"])
+    deferred = ws.compare_dhikr(replace(request, max_group_projection_cells=0)).material()
+    assert all(g["conditional_target_fibres"] is None
+               for g in deferred["nodes"][0]["comparative_group_evidence"])
+    # Default/legacy consumers are not made dependent on the opt-in product.
+    legacy = ws.compare_dhikr(replace(request, include_group_evidence=False)).material()
+    assert "comparative_group_evidence" not in legacy["nodes"][0]
+
+
+def test_followup_comparative_group_evaluation_reused_without_dropping_pair_diagnostics(monkeypatch):
+    from collections import Counter
+    from itertools import combinations
+    from rawlsing_next import pre553_s04_dhikr_comparative as dhikr
+    names = ("A","B","C","Y")
+    rows = [{"id": f"R{a}{b}{c}", "responses": dict(zip(names,(a,b,c,a^b^c)))}
+            for a,b,c in product((0,1), repeat=3)]
+    _, _, _, query, execution = _actual("FORGE-FOLLOWUP-REUSE", rows, names)
+    ws = _workspace(query, execution)
+    original = dhikr._association
+    calls = Counter()
+    def counted(cells, target, axes):
+        calls[axes] += 1
+        return original(cells, target, axes)
+    monkeypatch.setattr(dhikr, "_association", counted)
+    # Noncanonical input order is intentional: output semantics and legacy
+    # pair ordering must survive the local computation reuse.
+    predictors = (2,0,1)
+    for order in (1,2,3):
+        calls.clear()
+        material = ws.compare_dhikr(DHIKRComparisonRequest(
+            3, predictors, max_depth=0, max_interaction_order=order,
+            include_group_evidence=True,
+        )).material()
+        expected = {g:1 for k in range(1, max(2,order)+1)
+                    for g in combinations(predictors,k)}
+        assert calls == expected
+        node = material["nodes"][0]
+        assert len(node["pairwise_conditional_interactions"]) == 3
+        assert all(read_dhikr_sample_estimate(r["joint_information_bits"]) == 0
+                   for r in node["pairwise_conditional_interactions"])
+        assert {tuple(r["axes"]) for r in node["comparative_group_evidence"]} == {
+            g for k in range(1,order+1) for g in combinations(predictors,k)}
+        if order == 3:
+            assert _score(node,predictors) == 1
+        else:
+            assert node["priority_group"] == []

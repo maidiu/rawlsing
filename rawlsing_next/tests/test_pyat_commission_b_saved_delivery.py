@@ -1,6 +1,7 @@
 """Actual generated SAV -> saved C11 -> issued Batch -> S2-F -> cold S04."""
 from dataclasses import replace
 from pathlib import Path
+from time import monotonic
 import shutil
 import pytest
 
@@ -202,7 +203,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     private.mkdir(mode=0o700)
     sink = SourceSavedBodySink(certificate_path=tmp_path / "q2.sqlite",
                                authorized_private_root=private, chunk_rows=2)
+    ingestion_start = monotonic()
     handoff = s1e.build(tmp_path, fx, name="q2.sqlite", body_sink=sink, chunk_size=2)
+    ingestion_seconds = monotonic() - ingestion_start
     estate = sink.receipt
     projection = fx["projection"]
     bundle = s1e._native_bundle(handoff, fx, projection,
@@ -239,11 +242,13 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
         pytest.fail("cold retrieval attempted native computation")
     monkeypatch.setattr(SavedC11Admission, "open", forbidden)
     monkeypatch.setattr(DirectEstateI03Session, "_build", forbidden)
+    cold_start = monotonic()
     cold = open_saved_product(
         result.receipt.root_path, expected_root=result.receipt.root_identity,
         expected_release_ref=estate.reconstructed_v1_release_ref,
         expected_saved_manifest_sha256=estate.manifest_sha256, workload=workload,
         resolver=resolver, host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE)
+    cold_open_seconds = monotonic() - cold_start
     supported = []
     for req in workload.requests:
         query = workload.catalog.resolve_query_exact(req.query_ref)
@@ -254,7 +259,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
             supported.append(query)
     assert supported, "the actual two-item governed source never issued a supported joint"
     query = supported[0]
+    ff_start = monotonic()
     read = cold.read_s04(query.ref, conditioner_index=0)
+    ff_seconds = monotonic() - ff_start
     ff = read.first_consumer.ff01
     assert ff is not None
     assert ff.semantic_projection()["raw_fully_resolved_joint_n"] == 5
@@ -312,3 +319,274 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     print("SAVED_JOINT_FF01", source_format, result.batch_census["unit_count"],
           result.execution_seconds, result.publication_seconds,
           result.receipt.referenced_physical_bytes, ff.ref.key)
+
+    print("SAVED_PIPELINE_COST", source_format, "ingest", ingestion_seconds,
+          "native", result.execution_seconds, "s2f", result.publication_seconds,
+          "cold_open", cold_open_seconds, "ff01", ff_seconds,
+          "s2f_referenced_bytes", result.receipt.referenced_physical_bytes)
+    _learned_vertical(cold, closure, tmp_path, source_format)
+
+
+def _learned_vertical(cold, closure, tmp_path, source_format):
+    """Actual saved-source I05 -> M1/M2/B5 -> cold S2-G consumer.
+    
+    Only the consumer request, comparator and validator are synthetic
+    authorities; every empirical object comes from the physical source above.
+    """
+    from rawlsing_next.pre553_analytical_composition import (
+        _actual_leaves, _validate_discovery_consumption,
+        compose_positioned_subject_possibility,
+    )
+    from rawlsing_next.pre553_durable_learned_lifecycle import (
+        LearnedConsumerDeterminants, DurableLearnedLifecycleError,
+        DurableLearnedLifecycleRefusal, DurableLearnedLifecycleUntrusted,
+        open_learned_lifecycle,
+    )
+    from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+    from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref, semantic_hash
+    from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+    from rawlsing_next.pre553_learned_product_release import M2Repository
+    from rawlsing_next.tests import c1_at08_at13_fixture as fx
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+        _binding, _m1_authority, _registry,
+    )
+    from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+    from rawlsing_next.tests.test_pyat960_s2g_durable_lifecycle import _attestation
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import _validator
+
+    discovery = closure.i05_result
+    tag = "commission-b-saved-learned-" + source_format
+    release = closure.release_identities[0].release_ref
+    predicates = {p.ref: p for p in discovery.executed_predicates}
+    queries = {q.ref: q for q in discovery.executed_queries}
+    chosen = None
+    for receipt in discovery.receipts:
+        if (receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
+                or receipt.candidate_identity.get("family") != "BRANCH_CONDITIONED_DISTRIBUTION"):
+            continue
+        predicate = predicates[exact_ref(receipt.winning_predicate_ref)]
+        leaves = _actual_leaves(predicate)
+        roles = [r for r in receipt.candidate_identity["query_roles"]
+                 if r["role"] == "CONDITION" and exact_ref(r["predicate_ref"]) == predicate.ref]
+        if len(leaves) == 1 and len(roles) == 1:
+            leaf = leaves[0]
+            if leaf["leaf_type"] != "SURVEY_RESPONSE_EVENT":
+                continue
+            query = queries[exact_ref(roles[0]["query_ref"])]
+            if len(query.target_refs) == len(query.empirical_universe_refs) == 1:
+                chosen = receipt, query, predicate, leaf
+                break
+    assert chosen is not None, "no actual supported value-conditioned discovery"
+    receipt, query, predicate, leaf = chosen
+    coord = exact_ref(leaf["question_semantic_ref"])
+    value = leaf["exact_value"]
+    universe = exact_ref(query.empirical_universe_refs[0])
+    target = exact_ref(query.target_refs[0])
+    pairing = fx.make_pairing_authority(tag)
+    conditioner = fx.make_conditioner_binding(
+        binding_id="condition", subject_fact_ref=ExactRef(**fx.subject_fact_ref(
+            {"qrefs": {"condition": coord}}, "condition", value)),
+        empirical_coordinate_ref=coord, comparability_authority_ref=pairing,
+        source_universe_ref=universe, release_ref=release)
+    consumer = fx.make_multi_conditioner_consumer_query(
+        query_id=tag, subject_ref=ExactRef("TEST_ONLY_SUBJECT", "urn:test:" + tag,
+                                           semantic_hash({"tag": tag})),
+        target_ref=target, source_universe_ref=universe, release_ref=release,
+        bindings=[conditioner], projection_kind="TEST_ONLY_SAVED_LEARNED")
+    fact, pred, actual_query = _validate_discovery_consumption(
+        discovery_result=discovery, consumer_query=consumer, receipt_ref=receipt.ref)
+    assert actual_query.ref == query.ref and pred.ref == predicate.ref
+    witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:" + tag + ":witness",
+        consumer_query=consumer, producer_query=query, producer_predicate=predicate,
+        bindings=[conditioner], coordinate_value_pairs=[(coord, value)],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release)
+    model = fx.make_model_rule(universe, tag)
+    composition = compose_positioned_subject_possibility(
+        repository=None, empirical_query=query, predicate=predicate,
+        authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+        release_refs=(release,), consumer_query=consumer, model_rule=model,
+        condition_binding_witness=witness, discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref)
+    assert composition.consumer_result_or_null is not None
+    assert composition.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    # Independent physical five-row oracle: both columns have two zeroes
+    # and three ones; the conditioned joint fibre is (1,1) or (1,2).
+    assert float(value) in (0., 1.)
+    expected_counts = [1, 1] if float(value) == 0. else [1, 2]
+    assert fact.raw_denominator_support == sum(expected_counts)
+    assert sorted(cell["raw_numerator_support"] for cell in
+                  composition.consumer_result_or_null.exact_geometry["cells"]
+                  if cell["raw_numerator_support"] > 0) == expected_counts
+    authority = _m1_authority(tag)
+    binding = _binding(authority)
+    ingress = _contract(route="M01_M1_M2_B5", binding=binding, tag=tag)
+    contract = _contract(route="M1_M2_B5", binding=binding, tag=tag,
+                         actions=("REGISTER", "PUBLISH", "SELECT_CURRENT"))
+    determinants = LearnedConsumerDeterminants(
+        s2f_root_identity=closure.root_identity, discovery_receipt_ref=receipt.ref,
+        producer_query_ref=query.ref, producer_predicate_ref=predicate.ref,
+        release_ref=release, consumer_query=consumer, model_rule=model,
+        condition_binding_witness=witness,
+        expected_composition_identity=composition.composed_result_identity_hash,
+        expected_consumer_result_hash=composition.consumer_result_or_null.result_hash,
+        purpose_ref=contract.consumer_product_purpose_ref)
+    args = dict(ingress_contract=ingress, product_contract=contract,
+                family_rule_binding=binding, requested_scope={"fixture": tag},
+                validator_registry=_registry(binding),
+                additional_authority_snapshots=(authority,))
+    executor = LearnedProductLifecycleExecutor()
+    repository = M2Repository()
+    initial_checkpoint = executor.export_checkpoint()
+    def assert_unchanged(root):
+        assert executor.export_checkpoint() == initial_checkpoint, (
+            "INVALID_CONSUMER_MUTATED_B5_BEFORE_COLD_VALIDATION")
+        assert all(not getattr(repository, name) for name in repository._store_names), (
+            "INVALID_CONSUMER_MUTATED_M2_BEFORE_COLD_VALIDATION")
+        assert not root.exists(), "INVALID_CONSUMER_PUBLISHED_ARTIFACT"
+
+    for field in ("expected_composition_identity", "expected_consumer_result_hash"):
+        invalid_root = tmp_path / ("invalid-" + field)
+        with pytest.raises((SavedDeliveryError, DurableLearnedLifecycleError)):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=invalid_root,
+                determinants=replace(determinants, **{field: "0"*64}))
+        assert_unchanged(invalid_root)
+
+    # An adversary can readdress the consumer and witness consistently:
+    # merely checking the resulting composition hash cannot prove target identity.
+    # C1's existing discovery path is exercised unchanged, exposing the
+    # wrong-target result; S2-G must refuse it before any lifecycle mutation.
+    wrong_target = ExactRef("TEST_ONLY_FOREIGN_TARGET", "urn:test:" + tag + ":foreign",
+                            semantic_hash({"foreign": tag}))
+    wrong_consumer = replace(consumer, target_ref=wrong_target)
+    wrong_witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:" + tag + ":wrong-target",
+        consumer_query=wrong_consumer, producer_query=query, producer_predicate=predicate,
+        bindings=[conditioner], coordinate_value_pairs=[(coord, value)],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release)
+    wrong_composition = compose_positioned_subject_possibility(
+        repository=None, empirical_query=query, predicate=predicate,
+        authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+        release_refs=(release,), consumer_query=wrong_consumer, model_rule=model,
+        condition_binding_witness=wrong_witness, discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref)
+    assert wrong_composition.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert wrong_composition.consumer_result_or_null.target_ref == wrong_target
+    assert wrong_composition.consumer_result_or_null.exact_geometry["target"]["target_ref"] == target.as_dict()
+    invalid_root = tmp_path / "wrong-target"
+    with pytest.raises(DurableLearnedLifecycleError, match="unary target differs"):
+        cold.publish_learned(**args, m2_repository=repository,
+            lifecycle_executor=executor, root_dir=invalid_root,
+            determinants=replace(determinants, consumer_query=wrong_consumer,
+                condition_binding_witness=wrong_witness,
+                expected_composition_identity=wrong_composition.composed_result_identity_hash,
+                expected_consumer_result_hash=wrong_composition.consumer_result_or_null.result_hash))
+    assert_unchanged(invalid_root)
+    print("SAVED_WRONG_TARGET_REFUSED", source_format, target.key, wrong_target.key)
+
+    invalid_root = tmp_path / "negative-rule"
+    negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
+    _, negative_disposition = cold.adjudicate_m1(
+        contract=ingress, family_rule_binding=binding,
+        selected_discovery_receipt_refs=(receipt.ref,), requested_scope={"fixture": tag},
+        validator_registry=negative, additional_authority_snapshots=(authority,))
+    assert negative_disposition.adjudication_outcome == "RULE_NOT_SATISFIED"
+    with pytest.raises(SavedDeliveryError, match="LEARNED_NONPRODUCTIVE_M1:RULE_NOT_SATISFIED"):
+        cold.publish_learned(**{**args, "validator_registry": negative},
+            m2_repository=repository, lifecycle_executor=executor, root_dir=invalid_root,
+            determinants=determinants)
+    assert_unchanged(invalid_root)
+
+    # Corrupt after empirical admission but before learned publication. Refuse
+    # before touching the external lifecycle, not after writing an artifact.
+    invalid_root = tmp_path / "corrupt-archive"
+    manifest = closure.root_path / "manifest.json"
+    original = manifest.read_bytes()
+    manifest.write_bytes(b"{}")
+    try:
+        with pytest.raises(DurableEmpiricalClosureError):
+            cold.publish_learned(**args, m2_repository=repository,
+                lifecycle_executor=executor, root_dir=invalid_root,
+                determinants=determinants)
+        assert_unchanged(invalid_root)
+    finally:
+        manifest.write_bytes(original)
+
+    learned_start = monotonic()
+    learned, consumed = cold.publish_learned(
+        **args, m2_repository=repository, lifecycle_executor=executor,
+        root_dir=tmp_path / "learned", determinants=determinants)
+    learned_seconds = monotonic() - learned_start
+    assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
+    assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
+    retrieved = cold.read_learned(learned.artifact_path,
+        expected_root=learned.root_identity, expected_purpose_ref=determinants.purpose_ref)
+    assert retrieved.consumer_result_hash == consumed.consumer_result_hash
+    artifact = open_learned_lifecycle(learned.artifact_path,
+        expected_root=learned.root_identity).require_trusted()
+    assert artifact.m1_disposition.ref == consumed.m1_disposition_ref
+    assert receipt.ref in artifact.m1_disposition.discovery_result_receipt_refs
+    assert fact.ref in artifact.m1_disposition.empirical_fact_refs
+
+    # Historical selected state does not constitute live learned authority.
+    # Exercise the real S2-G current attestation owner separately.
+    good = _attestation(artifact)
+    serve = dict(expected_root=learned.root_identity,
+                 expected_purpose_ref=determinants.purpose_ref)
+    view, current = cold.read_current_learned(learned.artifact_path, **serve,
+        attestation=good, expected_attestation_root=good.content_root)
+    assert view.state == "CURRENT_SELECTED"
+    assert current.consumer_result_hash == consumed.consumer_result_hash
+    with pytest.raises(DurableLearnedLifecycleUntrusted):
+        cold.read_current_learned(learned.artifact_path, **serve,
+            attestation=good, expected_attestation_root=None)
+    revoked = _attestation(artifact, revoked=True)
+    with pytest.raises(DurableLearnedLifecycleRefusal):
+        cold.read_current_learned(learned.artifact_path, **serve,
+            attestation=revoked, expected_attestation_root=revoked.content_root)
+    with pytest.raises(SavedDeliveryError, match="PURPOSE_BINDING_DRIFT"):
+        cold.read_learned(learned.artifact_path,
+            expected_root=learned.root_identity, expected_purpose_ref=consumer.ref)
+    assert cold.read_learned(learned.artifact_path, **serve).consumer_result_hash == (
+        consumed.consumer_result_hash)
+
+    # A legitimate historical product need not be selected CURRENT.
+    historical_contract = _contract(route="M1_M2_B5", binding=binding, tag=tag,
+                                     actions=("REGISTER", "PUBLISH"))
+    historical, h_result = cold.publish_learned(
+        **{**args, "product_contract": historical_contract},
+        m2_repository=M2Repository(), lifecycle_executor=LearnedProductLifecycleExecutor(),
+        root_dir=tmp_path / "historical-learned", determinants=determinants,
+        require_current_selection=False)
+    assert historical.selection_receipt_ref is None
+    assert h_result.consumer_result_hash == consumed.consumer_result_hash
+    archived = dict(expected_root=historical.root_identity,
+                    expected_purpose_ref=determinants.purpose_ref)
+    assert cold.read_learned(historical.artifact_path, **archived).state == "REFUSED"
+    assert cold.read_learned(historical.artifact_path, **archived,
+        require_current_selection=False).consumer_result_hash == consumed.consumer_result_hash
+
+    # Reuse the incumbent fresh-process reader against THIS actual saved
+    # pipeline's artifact, with no generated survey or C11 available.
+    import json
+    import os
+    import subprocess
+    import sys
+    runner = Path(__file__).with_name("test_pyat960_s2g_fresh_process.py")
+    env = dict(os.environ, PYTHONPATH=str(Path(__file__).resolve().parents[2]),
+               PYTHONDONTWRITEBYTECODE="1")
+    child = subprocess.run(
+        [sys.executable, str(runner), learned.artifact_path, learned.root_identity,
+         str(closure.root_path), consumed.consumer_result_hash],
+        cwd=tmp_path, env=env, capture_output=True, text=True, timeout=120)
+    assert child.returncode == 0, child.stderr
+    observed = json.loads(child.stdout)
+    assert observed["state"] == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert observed["matches_expected"] and observed["source_opens"] == []
+    assert observed["consumer_result_hash"] == consumed.consumer_result_hash
+    print("SAVED_S2G", source_format, consumed.state, consumed.consumer_result_hash,
+          learned.root_identity, learned.compressed_bytes,
+          "publish_and_validate_seconds", learned_seconds,
+          "fresh_cold_seconds", observed["elapsed_seconds"],
+          "fresh_peak_rss_bytes", observed["process_tree_peak_rss_bytes"])
