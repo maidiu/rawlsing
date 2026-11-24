@@ -14,7 +14,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, fields, is_dataclass
 import json
 import hashlib
-from io import BytesIO
+import sys
 from types import MappingProxyType
 from typing import Any, Callable, Protocol
 
@@ -289,87 +289,141 @@ def _routing_pin(obj):
     return scalar,auth_material,dep_material,replay
 
 
+def _routing_envelope_parts(workload):
+    """Stream the canonical prefix and suffix around the sole routing array."""
+    envelope=workload._envelope(omit_routing=True)
+    def pieces(values, projection=False):
+        yield b"{"
+        keys=sorted((*values.keys(),"routing")) if projection else sorted(values)
+        for i,key in enumerate(keys):
+            if i:
+                yield b","
+            yield canonical_json(key).encode("utf-8")
+            yield b":"
+            if projection and key=="routing":
+                yield None
+            elif not projection and key=="projection":
+                yield from pieces(values[key],True)
+            else:
+                yield canonical_json(values[key]).encode("utf-8")
+        yield b"}"
+    return pieces(envelope)
+
+
+def _update_routing_pin(digest,pin):
+    # Pin material consists solely of exact strings and nested tuples. Python
+    # repr of these primitives is unambiguous, including embedded controls.
+    # This is private in-process mutation detection, not the U43 wire hash.
+    def valid(value):
+        return type(value) is str or (type(value) is tuple and all(valid(v) for v in value))
+    if not valid(pin):
+        return False
+    digest.update(repr(pin).encode("utf-8"))
+    digest.update(b"\n")
+    return True
+
+
 @dataclass(frozen=True)
 class _PreparedRoutingEnvelope:
-    """Bounded immutable JSON fragment within the original U43 envelope.
+    """Reuse an exact SHA continuation, not a second serialized routing graph.
 
-    Only routing public objects are reused; all other projection/catalog/
-    descriptor inputs are serialized fresh. Full SHA-256 and live issuer
-    admission are still checked on every boundary. No ref-only digest,
-    independent authority, persisted duplicate archive, or stale hash cache.
-    Falls back to the existing complete hash on any unsupported/drifted
-    input. Limit the extra resident representation; do not assume this
-    sourcefree optimization solves full original-wave preparation.
+    Admission still compares the exact externally issued complete envelope
+    digest. The canonical prefix is freshly hashed, and only if it equals the
+    prepared prefix do we copy the SHA state *after* the routing list. All
+    suffix bytes are freshly hashed. Routing public objects' detached
+    immutable mappings remain pinned by identity and their public scalar/ref
+    fields are checked with a streaming private pin digest. No routing JSON
+    retained, no original-source opt-in, no arbitrary Python memory defense.
     """
     workload: NativeWorkload
     routing: tuple
-    pins: tuple
-    fragment: bytes
+    mappings: tuple
+    pin_digest: bytes
+    prefix_digest: bytes
+    after_routing: Any
+    encoded_routing_bytes: int
+    retained_pin_bytes: int
 
     @classmethod
     def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
-                max_records=16384):
+                max_records=4_000_000):
         if (type(workload) is not NativeWorkload
                 or type(workload.projection) is not GovernedC11Projection):
             return None
         routing=workload.projection.routing
         if type(routing) is not tuple or len(routing)>max_records:
             return None
-        pins=[]
-        out=BytesIO()
-        out.write(b"[")
+        # Bound the temporary list + retained tuple of mapping references,
+        # with conservative pointer/container allowance. No encoded-size cap:
+        # large routing arrays are hashed in a stream, never held as JSON.
+        if 256+24*len(routing)>max_bytes:
+            return None
+        digest=hashlib.sha256()
+        pieces=_routing_envelope_parts(workload)
+        for part in pieces:
+            if part is None:
+                break
+            digest.update(part)
+        else:
+            return None
+        prefix=digest.copy().digest()
+        pins=hashlib.sha256()
+        mappings=[]
+        digest.update(b"[")
+        encoded_bytes=2
         for i,obj in enumerate(routing):
             pin=_routing_pin(obj)
-            if pin is None:
+            if pin is None or not _update_routing_pin(pins,pin):
                 return None
             encoded=canonical_json(material(obj)).encode("utf-8")
-            if out.tell()+len(encoded)+2>max_bytes:
-                return None
             if i:
-                out.write(b",")
-            out.write(encoded)
-            # Hold the original private immutable mapping, not its id alone.
-            pins.append((obj.semantic_fields,pin))
-        out.write(b"]")
-        result=cls(workload,routing,tuple(pins),out.getvalue())
-        # Exact full-envelope equivalence is checked at preparation. A
-        # fragment mismatch is never grounds to reinterpret the issued hash.
-        if result.digest()!=expected_hash:
+                digest.update(b",")
+                encoded_bytes+=1
+            digest.update(encoded)
+            encoded_bytes+=len(encoded)
+            mappings.append(obj.semantic_fields)
+        digest.update(b"]")
+        after=digest.copy()
+        for part in pieces:
+            if part is None:
+                return None
+            digest.update(part)
+        if digest.hexdigest()!=expected_hash:
             return None
-        return result
+        held=tuple(mappings)
+        return cls(workload,routing,held,pins.digest(),prefix,after,encoded_bytes,
+                   sys.getsizeof(held)+sys.getsizeof(after)+128)
 
     def digest(self):
         workload=self.workload
         if (type(workload.projection) is not GovernedC11Projection
                 or workload.projection.routing is not self.routing
-                or len(self.pins)!=len(self.routing)):
+                or len(self.mappings)!=len(self.routing)):
             return None
-        for obj,(mapping,pin) in zip(self.routing,self.pins):
-            if obj.semantic_fields is not mapping or _routing_pin(obj)!=pin:
+        pins=hashlib.sha256()
+        for obj,mapping in zip(self.routing,self.mappings):
+            if obj.semantic_fields is not mapping:
                 return None
-        # Compose the same canonical JSON bytes using the incumbent
-        # canonical_json owner on each uncached value. The only pre-encoded
-        # material is the attested routing list, at its exact projection key.
-        envelope=workload._envelope(omit_routing=True)
+            pin=_routing_pin(obj)
+            if pin is None or not _update_routing_pin(pins,pin):
+                return None
+        if pins.digest()!=self.pin_digest:
+            return None
         digest=hashlib.sha256()
-        def emit(value):
-            digest.update(canonical_json(value).encode("utf-8"))
-        def write_dict(values, *, projection=False):
-            digest.update(b"{")
-            keys=sorted((*values.keys(),"routing")) if projection else sorted(values)
-            for i,key in enumerate(keys):
-                if i:
-                    digest.update(b",")
-                emit(key)
-                digest.update(b":")
-                if projection and key=="routing":
-                    digest.update(self.fragment)
-                elif not projection and key=="projection":
-                    write_dict(values[key],projection=True)
-                else:
-                    emit(values[key])
-            digest.update(b"}")
-        write_dict(envelope)
+        pieces=_routing_envelope_parts(workload)
+        for part in pieces:
+            if part is None:
+                if digest.digest()!=self.prefix_digest:
+                    return None
+                digest=self.after_routing.copy()
+                break
+            digest.update(part)
+        else:
+            return None
+        for part in pieces:
+            if part is None:
+                return None
+            digest.update(part)
         return digest.hexdigest()
 
 

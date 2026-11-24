@@ -793,3 +793,56 @@ def test_grouped_scope_member_capacity_hit_and_exhausted_miss():
     assert zero.as_dict() == zero_baseline.as_dict()
     assert scope.receipt()["early_capacity_fallbacks"] == 1
     assert scope.receipt()["capacity_fallbacks"] == 1
+
+
+def test_cross_target_condition_reuse_preserves_exact_evidence_and_risk():
+    source,ops,catalog=_main_data("condition-reuse",n=48)
+    baseline=_run(_executor(source,catalog),ops)
+    # A single full target core can fit, but all distinct targets may reuse
+    # the small independently bounded condition memo on fallback.
+    scope=I03GroupedExecutionScope(max_groups=1)
+    candidate=_run(_executor(source,catalog),ops,scope)
+    _facts_equal(baseline,candidate)
+    receipt=scope.receipt()
+    assert receipt["condition_cache_hits"]>48
+    assert receipt["condition_cache_bytes_estimate"]>0
+    assert receipt["condition_cache_bytes_estimate"]<=16*1024*1024
+    assert receipt["core_builds"]==1
+    scope.close()
+    assert scope.receipt()["condition_cache_bytes_estimate"]==0
+    tiny=I03GroupedExecutionScope(max_condition_bytes=1)
+    _facts_equal(baseline,_run(_executor(source,catalog),ops,tiny))
+    assert tiny.receipt()["condition_capacity_fallbacks"]>0
+    assert tiny.receipt()["condition_cache_bytes_estimate"]==0
+
+
+def test_indexed_country_postings_exact_selector_order_and_aliases():
+    from array import array
+    from rawlsing_next._pre553_c11_execution_view import _EventRead,_EventLane,_RespondentEvents,_ref_identity
+    x,y,z=(_ref("QUESTION_NATIVE",name) for name in ("x","y","z"))
+    auth=_query_authority("postings").authority_ref
+    selectors=[]
+    for i in range(80):
+        native=(x,y,z)[i%3]
+        canonical=x if i%5==0 else None
+        component=y if i%7==0 else None
+        selectors.append(_EventRead(_ref_identity(_ref("RespondentEvent",str(i))),
+            "SUBSTANTIVE_RESPONSE" if i%2 else "MISSING",_ref_identity(native),
+            _ref_identity(canonical) if canonical else None,
+            _ref_identity(component) if component else None,
+            ((auth.authority_id,auth.authority_version,auth.authority_content_hash),),
+            i,None,{"kind":"SCALAR_SINGULAR"},str(i)))
+    lane=_EventLane(None,tuple(selectors))
+    rows=tuple(range(80))
+    postings=[]
+    for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
+        ordered=sorted((i for i in rows if getattr(selectors[i],field) is not None),
+                       key=lambda i:getattr(selectors[i],field))
+        postings.append(memoryview(array("I",ordered).tobytes()).cast("I"))
+    old=_RespondentEvents(lane,rows);new=_RespondentEvents(lane,rows,tuple(postings))
+    for target in (x,y,z,_ref("QUESTION_NATIVE","absent")):
+        for native_only in (False,True):
+            for component in (False,True):
+                for states in (None,frozenset(),frozenset({"MISSING"})):
+                    kwargs=dict(native_only=native_only,include_component=component,states=states)
+                    assert tuple(old.select(target,**kwargs))==tuple(new.select(target,**kwargs))

@@ -160,6 +160,24 @@ class CountryNativeEconomics(unittest.TestCase):
             prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
             self.assertIsNotNone(prepared)
             self.assertEqual(prepared.digest(),record.envelope_sha256)
+            self.assertLess(prepared.retained_pin_bytes,prepared.encoded_routing_bytes//20)
+            # Envelope mechanics above the previous 16,384-record cap. This
+            # deliberately repeated routing list is NOT a valid C11 release;
+            # it tests only exact digest streaming and bounded retention.
+            wide=replace(workload,projection=replace(workload.projection,
+                routing=workload.projection.routing*3))
+            wide_hash=semantic_hash(wide.envelope())
+            wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash)
+            self.assertIsNotNone(wide_prepared)
+            self.assertEqual(wide_prepared.digest(),wide_hash)
+            self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
+            self.assertLess(wide_prepared.retained_pin_bytes,1024*1024)
+            print("COUNTRY_ROUTING_WIDE_ENVELOPE",json.dumps({
+                "records":len(wide_prepared.routing),
+                "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
+                "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
+                "exact_hash_equal":True}),flush=True)
+            del wide_prepared,wide
             self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
                 workload,record.envelope_sha256,max_bytes=16))
             # Reject substituted body/tuple and re-hash all nonrouting input.
@@ -207,7 +225,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 prepared_times.append(time.monotonic()-t0)
             print("COUNTRY_PREPARED_ENVELOPE_MATCHED",json.dumps({
                 "normal_median_s":median(new_times),"prepared_median_s":median(prepared_times),
-                "fragment_bytes":len(prepared.fragment),"routing_records":len(prepared.routing),
+                "encoded_routing_bytes_avoided":prepared.encoded_routing_bytes,
+                "retained_pin_bytes_estimate":prepared.retained_pin_bytes,"routing_records":len(prepared.routing),
                 "exact_hash_equal":True}),flush=True)
             del prepared
             timings=defaultdict(list)
