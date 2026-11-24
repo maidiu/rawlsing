@@ -343,20 +343,29 @@ class ColdSavedProduct:
                         family_rule_binding, requested_scope, validator_registry,
                         determinants, m2_repository, lifecycle_executor,
                         root_dir, additional_authority_snapshots=(),
-                        prerequisite_channels=()):
+                        prerequisite_channels=(), require_current_selection=True):
         """Optional sourcefree learned publication through the existing S2-G owner.
 
         A consumer determinant is not itself permission. Require an exact
         selected discovery, matching product identity, and actual adjudication.
         Lifecycle actions and authority are supplied explicitly by their owner.
+        Validate the actual retained C1 determinants before touching M2/B5.
+        A selected historical checkpoint is not external CURRENT authority;
+        the latter has a separate serving API below. An explicit false
+        require_current_selection permits archival publication without selection.
         Cold S2-G consumption is checked before returning a delivery receipt.
         """
         from rawlsing_next.pre553_learned_world_composition import compose_learned_world
         from rawlsing_next.pre553_durable_learned_lifecycle import (
             LearnedConsumerDeterminants, publish_learned_lifecycle,
-            open_learned_lifecycle,
+            open_learned_lifecycle, validate_learned_consumer_determinants,
         )
         self._live()
+        _require(type(require_current_selection) is bool,
+                 "EXPLICIT_BOOLEAN_SELECTION_REQUIREMENT")
+        _require(not require_current_selection
+                 or "SELECT_CURRENT" in product_contract.lifecycle_actions,
+                 "LEARNED_SELECTION_REQUIRED_BY_REQUEST")
         _require(type(determinants) is LearnedConsumerDeterminants,
                  "EXACT_LEARNED_DETERMINANTS_REQUIRED")
         _require(ingress_contract.route == "M01_M1_M2_B5"
@@ -373,6 +382,19 @@ class ColdSavedProduct:
                  and determinants.release_ref == self._closure.release_identities[0].release_ref
                  and determinants.purpose_ref == product_contract.consumer_product_purpose_ref,
                  "LEARNED_ARCHIVE_OR_PURPOSE_BINDING_DRIFT")
+        # Validate the very archive bytes the cold consumer will later open.
+        # This is a retained-result read, not native execution or C11 reopening.
+        verified_closure = open_empirical_closure(
+            self._closure.root_path,
+            expected_root=self._closure.root_identity).require_trusted()
+        composition, _, _, _ = validate_learned_consumer_determinants(
+            verified_closure, determinants)
+        if determinants.expected_consumer_result_hash is not None:
+            expected = composition.consumer_result_or_null
+            _require(expected is not None and expected.result_hash ==
+                     determinants.expected_consumer_result_hash,
+                     "LEARNED_EXPECTED_CONSUMER_RESULT_DRIFT")
+        self._live()
         bundle, disposition = self.adjudicate_m1(
             contract=ingress_contract, family_rule_binding=family_rule_binding,
             selected_discovery_receipt_refs=(determinants.discovery_receipt_ref,),
@@ -384,6 +406,11 @@ class ColdSavedProduct:
                  and determinants.producer_predicate_ref in disposition.empirical_predicate_refs
                  and determinants.discovery_receipt_ref in disposition.discovery_result_receipt_refs,
                  "LEARNED_DETERMINANTS_NOT_IN_ADJUDICATED_EVIDENCE")
+        # S2-G v1 publishes productive products only. Preserve nonproductive
+        # M1 dispositions via adjudicate_m1; never create B5 events for an
+        # artifact that this publisher is contractually unable to retain.
+        _require(disposition.adjudication_outcome == "RULE_SATISFIED",
+                 "LEARNED_NONPRODUCTIVE_M1:" + disposition.adjudication_outcome)
         self._live()
         learned = compose_learned_world(
             product_contract, m2_repository=m2_repository,
@@ -397,16 +424,14 @@ class ColdSavedProduct:
         )
         artifact = open_learned_lifecycle(
             receipt.artifact_path, expected_root=receipt.root_identity).require_trusted()
-        consumed = artifact.consume(self._closure.root_path)
+        consumed = artifact.consume(self._closure.root_path,
+                                    require_current_selection=require_current_selection)
         self._live()
         return receipt, consumed
 
-    def read_learned(self, artifact_path, *, expected_root, expected_purpose_ref):
-        """Reuse a retained S2-G product; historical sourcefree scope only.
-
-        The archive pin and purpose are supplied by the caller, not discovered
-        from the archive. Current lifecycle authority remains external.
-        """
+    def _open_learned_for_serving(self, artifact_path, *,
+                                  expected_root, expected_purpose_ref):
+        """Resolve the exact archive and its purpose without minting rights."""
         from rawlsing_next.pre553_durable_learned_lifecycle import open_learned_lifecycle
         self._live()
         artifact = open_learned_lifecycle(
@@ -415,7 +440,39 @@ class ColdSavedProduct:
                  and artifact.determinants.release_ref == self._closure.release_identities[0].release_ref
                  and artifact.determinants.purpose_ref == exact_ref(expected_purpose_ref),
                  "LEARNED_ARCHIVE_OR_PURPOSE_BINDING_DRIFT")
-        result = artifact.consume(self._closure.root_path)
+        return artifact
+
+    def read_learned(self, artifact_path, *, expected_root, expected_purpose_ref,
+                     require_current_selection=True):
+        """Historical sourcefree retrieval, optionally requiring archived B5 selection.
+
+        Neither an archived selected state nor a self-hash establishes CURRENT.
+        Explicit false permits a published, unselected historical product.
+        """
+        _require(type(require_current_selection) is bool,
+                 "EXPLICIT_BOOLEAN_SELECTION_REQUIREMENT")
+        artifact = self._open_learned_for_serving(
+            artifact_path, expected_root=expected_root,
+            expected_purpose_ref=expected_purpose_ref)
+        result = artifact.consume(self._closure.root_path,
+                                  require_current_selection=require_current_selection)
+        self._live()
+        return result
+
+    def read_current_learned(self, artifact_path, *, expected_root,
+                             expected_purpose_ref, attestation,
+                             expected_attestation_root):
+        """Invoke the incumbent S2-G externally pinned CURRENT reader.
+
+        The caller must supply a separately held attestation pin; the empirical
+        workload resolver does not issue learned-product currentness.
+        """
+        artifact = self._open_learned_for_serving(
+            artifact_path, expected_root=expected_root,
+            expected_purpose_ref=expected_purpose_ref)
+        result = artifact.consume_current(
+            self._closure.root_path, attestation=attestation,
+            expected_attestation_root=expected_attestation_root)
         self._live()
         return result
 
