@@ -146,7 +146,18 @@ def summarize_asked_eligible_raw_fact(
                 "response_state_semantics_ref"
             ])):
         raise AskedEligibleDistributionError("FACT_SOURCE_RISK_OR_SEMANTICS_MISMATCH")
-    if len(query.target_refs) != 1 or fact.target_topology["arity"] != 1:
+    # The native negative envelope retains the requested topology rather
+    # than a computed target domain. An unavailable risk is not a malformed
+    # unary request, nor is it a complete asked/eligible distribution.
+    topology = fact.target_topology
+    arity = topology.get("arity")
+    if arity is None and fact.typed_state != "SUPPORTED":
+        requested = topology.get("requested_target_arity_and_topology")
+        if requested is not None and canonical_json(requested) == canonical_json(
+            query.target_arity_and_topology
+        ):
+            arity = requested.get("arity")
+    if len(query.target_refs) != 1 or arity != 1:
         raise AskedEligibleDistributionError(
             "SUMMARY_REQUIRES_SINGLE_TARGET__JOINT_I03_REMAINS_UNCHANGED"
         )

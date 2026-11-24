@@ -62,6 +62,17 @@ def test_generated_sav_saved_workload_durable_cold_delivery(tmp_path, monkeypatc
         r.query_ref for r in workload.requests}
     assert {r.first_consumer.knowledge.material()["state"] for r in reads} >= {
         "SUPPORTED_SAMPLE_DESCRIPTIVE", "PRODUCER_TYPED_HELD"}
+    negative_scope_count = 0
+    for read in reads:
+        native_fact = read.first_consumer.execution.facts[0]
+        if not hasattr(native_fact, "risk_set_member_refs"):
+            negative_scope_count += 1
+            scope = read.observation_scope.material()
+            assert scope["i03_risk_member_extent_n"] is None
+            assert scope["i03_known_true_condition_n"] is None
+            assert scope["verified_eligible_member_set_sha256"] is None
+            assert scope["state"] == "ORIGINAL_I03_NONPOSITIVE__COHORT_NOT_QUALIFIED"
+    assert negative_scope_count > 0
     for request, read in zip(workload.requests, reads):
         assert read.first_consumer.execution.query_ref == request.query_ref
         assert read.observation_scope.material()["fact_ref"] == (

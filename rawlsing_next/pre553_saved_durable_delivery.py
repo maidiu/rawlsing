@@ -93,13 +93,14 @@ def _unique(objects, key=lambda x: x.ref.key):
 
 def _graph(workload, direct, discovery):
     cat = workload.catalog
+    direct_query_refs = {r.query_ref for r in direct}
     queries = _unique((
         *(cat.resolve_query_exact(r.query_ref) for r in direct),
         *discovery.executed_queries,
     ))
     predicates = _unique((
         *(cat.resolve_predicate_exact(q.condition_predicate_ref)
-          for q in queries if q.ref in {r.query_ref for r in direct}),
+          for q in queries if q.ref in direct_query_refs),
         *discovery.executed_predicates,
     ))
     facts = _unique((

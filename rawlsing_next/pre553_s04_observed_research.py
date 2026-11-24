@@ -539,13 +539,21 @@ def receive_s04_observation_scope(
             or material.get("raw_eligible_condition_denominator") != fact.raw_denominator_support
             or material.get("raw_fully_resolved_joint_n") != fact.raw_numerator_support):
         raise S04KnowledgeError("observation scope underlying I03 evidence drift")
-    risk = _unique_refs(fact.risk_set_member_refs, "source risk members")
-    denom = _unique_refs(fact.denominator_member_refs, "condition denominator members")
+    # Native typed-negative I03 may have no resolved membership preimage.
+    # Preserve absence as unknown, never turn it into a certified empty cohort.
+    risk_raw = getattr(fact, "risk_set_member_refs", None)
+    denom_raw = getattr(fact, "denominator_member_refs", None)
+    supported = material["state"] == "SUPPORTED_SAMPLE_DESCRIPTIVE"
+    if (risk_raw is None) != (denom_raw is None) or (
+        supported and risk_raw is None
+    ):
+        raise S04KnowledgeError("incomplete native member witness")
+    risk = _unique_refs(risk_raw if risk_raw is not None else (), "source risk members")
+    denom = _unique_refs(denom_raw if denom_raw is not None else (), "condition denominator members")
     if any(ref.kind != "C11Internal:RespondentIdentity" for ref in (*risk, *denom)):
         raise S04KnowledgeError("observation extent has nonrespondent identities")
     if not set(denom).issubset(risk):
         raise S04KnowledgeError("condition respondents fall outside original risk")
-    supported = material["state"] == "SUPPORTED_SAMPLE_DESCRIPTIVE"
     if supported and (len(denom) != fact.raw_denominator_support
                       or fact.raw_denominator_support != fact.raw_numerator_support):
         raise S04KnowledgeError("supported sample membership/count drift")
@@ -565,6 +573,7 @@ def receive_s04_observation_scope(
     unknown_refs = material.get("source_unknown_condition_member_refs")
     if unknown_refs is not None and (
         not isinstance(unknown_refs, list)
+        or risk_raw is None
         or material.get("source_eligible_risk_n") != len(risk)
         or len(unknown_refs) > len(risk)
     ):
@@ -604,11 +613,11 @@ def receive_s04_observation_scope(
         "source_response_semantics_ref": material["response_semantics_ref"],
         "source_predicate_ref": material["predicate_ref"],
         "original_producer_state": fact.typed_state,
-        "i03_risk_member_extent_n": len(risk),
-        "i03_known_true_condition_n": fact.raw_denominator_support,
-        "i03_resolved_joint_n": fact.raw_numerator_support,
+        "i03_risk_member_extent_n": len(risk) if risk_raw is not None else None,
+        "i03_known_true_condition_n": fact.raw_denominator_support if denom_raw is not None else None,
+        "i03_resolved_joint_n": fact.raw_numerator_support if denom_raw is not None else None,
         "unserved_resolved_n_if_held": (
-            fact.raw_numerator_support if not supported else None
+            fact.raw_numerator_support if not supported and denom_raw is not None else None
         ),
         "condition_membership_unknown_n": (
             len(unknown_refs) if unknown_refs is not None else None
