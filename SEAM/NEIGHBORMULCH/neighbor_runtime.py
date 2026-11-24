@@ -815,7 +815,113 @@ class NeighborEncounter:
         envelope = last_event.get('envelope', {})
         actual = envelope.get('payload', {}).get('actual', {})
         current_clock = world['clock']
-        if (last_event.get('kind') == 'ACTOR_LIFE_TRANSITION'
+        # A partial joint settlement may contain an actually enacted signal.
+        # Only the CO owner's explicit performed-prefix receipt can qualify
+        # it; an arbitrary partial attempt, plan or narration cannot.
+        directed_signal = (last_event.get('kind') == 'ACTOR_LIFE_TRANSITION'
+                and last_event.get('clock') == current_clock
+                and envelope.get('world') == self.runtime.world_id
+                and type(actual) is dict and actual.get('clock') == current_clock
+                and actual.get('actor') == last_event.get('actor_id')
+                and envelope.get('payload',{}).get('actor_selection_grade')
+                    == 'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                and actual.get('action') == 'SIGNAL'
+                and actual.get('status') in ('PERFORMED','PARTIAL')
+                and actual.get('target') in world.get('neighbor_users', {})
+                and actual.get('human_directed_signal_prefix_performed') is True
+                and world.get('public_history') and world.get('cues'))
+        if directed_signal:
+            public = world['public_history'][-1]
+            cue = world['cues'][-1]
+            prefix_ref = actual.get('human_directed_signal_cue_ref')
+            if (type(prefix_ref) is str
+                    and public.get('human_directed_signal_cue_ref') == prefix_ref
+                    and public.get('human_directed_signal_prefix_performed') is True
+                    and all(public.get(k) == actual.get(k) for k in
+                            ('actor','target','action','status','clock'))
+                    and cue.get('id') == prefix_ref
+                    and cue.get('kind') == 'performed_signal'
+                    and cue.get('human_directed_signal_prefix_performed') is True
+                    and cue.get('source_actor') == actual['actor']
+                    and cue.get('clock') == current_clock
+                    and cue.get('last_access_clock',-1) >= current_clock
+                    and cue.get('location') == loc
+                    and cue.get('modality') == 'auditory'
+                    and cue.get('private_to') is None):
+                if audible:
+                    addressed = (visible_identity and actual['target'] == self.user_id)
+                    mandatory.append({'kind':'CO_PUBLIC_OCCURRENCE',
+                        'text': ('A signal is directed toward you.' if addressed
+                                 else 'A signal sounds nearby.'),
+                        'modality':'auditory',
+                        'source_event_ref':last_event['id'],
+                        'source_cue_ref':prefix_ref,
+                        'source':'EXISTING_CO_PERFORMED_SIGNAL_PREFIX',
+                        'speaker_identity':'NOT_ESTABLISHED',
+                        'lexical_content':'NOT_CAPTURED_OR_RECONSTRUCTED',
+                        'interpretation':'NONE'})
+                # A visible material handoff is not inferred from the sound.
+                # It requires this visitor's own actual offer, exact material
+                # settlement and a separately committed, locally visible sign.
+                if (visible_identity and actual['target'] == self.user_id
+                        and actual['status'] == 'PERFORMED'
+                        and actual.get('outcome') == 'JOINT_ACTIVITY_PERFORMED'):
+                    transfer_ref = actual.get('human_food_transfer_cue_ref')
+                    feeding_ref = actual.get('material_feeding_ref')
+                    offer_ref = actual.get('human_food_offer_event_ref')
+                    if (all(type(x) is str and x for x in
+                            (transfer_ref, feeding_ref, offer_ref))
+                            and public.get('human_food_transfer_cue_ref') == transfer_ref
+                            and public.get('material_feeding_ref') == feeding_ref
+                            and public.get('human_food_offer_event_ref') == offer_ref):
+                        signs = [c for c in world['cues']
+                                 if c.get('id') == transfer_ref]
+                        settlements = [e for e in world.get('material_feeding_events',[])
+                                       if e.get('id') == feeding_ref]
+                        offers = [e for e in world.get('neighbor_user_events',[])
+                                  if e.get('event_ref') == offer_ref]
+                        if len(signs)==len(settlements)==len(offers)==1:
+                            sign, settlement, offer = signs[0], settlements[0], offers[0]
+                            prev = history[-2] if len(history)>1 else {}
+                            prior = prev.get('envelope',{}).get('payload',{})
+                            if (sign.get('kind')=='performed_human_food_transfer'
+                                    and sign.get('modality')=='visual'
+                                    and sign.get('private_to')==self.user_id
+                                    and sign.get('source_actor')==actual['actor']
+                                    and sign.get('location')==loc
+                                    and sign.get('clock')==current_clock
+                                    and sign.get('last_access_clock',-1)>=current_clock
+                                    and sign.get('material_feeding_ref')==feeding_ref
+                                    and sign.get('human_offer_event_ref')==offer_ref
+                                    and settlement.get('clock')==current_clock
+                                    and settlement.get('giver')==self.user_id
+                                    and settlement.get('recipient')==actual['actor']
+                                    and settlement.get('site')==loc
+                                    and settlement.get('human_authored_offer_ref')==offer_ref
+                                    and settlement.get('food_source')=='GIVER_HELD_FOOD'
+                                    and settlement.get('food_consumed')==1
+                                    and settlement.get('recipient_independently_accepted') is True
+                                    and offer.get('user')==self.user_id
+                                    and offer.get('target_actor_ref')==actual['actor']
+                                    and offer.get('operation')=='OFFER_FEED'
+                                    and offer.get('status')=='PERFORMED'
+                                    and offer.get('destination')==loc
+                                    and offer.get('clock')==current_clock-1
+                                    and prev.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+                                    and prev.get('clock')==current_clock-1
+                                    and prev.get('envelope',{}).get('world')==self.runtime.world_id
+                                    and prior.get('user_event_ref')==offer_ref
+                                    and prior.get('user')==self.user_id
+                                    and prior.get('performed') is True
+                                    and prior.get('payload_hash')==offer.get('payload_hash')):
+                                mandatory.append({'kind':'CO_PUBLIC_OCCURRENCE',
+                                    'text':'The offered food is taken.',
+                                    'modality':'visual',
+                                    'source_event_ref':last_event['id'],
+                                    'source_cue_ref':transfer_ref,
+                                    'source':'EXISTING_CO_MATERIAL_SETTLEMENT_SIGN',
+                                    'interpretation':'NONE'})
+        if (not directed_signal and last_event.get('kind') == 'ACTOR_LIFE_TRANSITION'
                 and last_event.get('clock') == current_clock
                 and envelope.get('world') == self.runtime.world_id
                 and type(actual) is dict and actual.get('clock') == current_clock
@@ -916,7 +1022,13 @@ class NeighborEncounter:
             # exact actual one-world actor transition. A future source-typed
             # auditory expression needs MIII/CO owner receiving.
             last = last_event
-            if (visible_identity and actor_location == loc
+            # This scoped interaction has typed enacted signs. Do not let
+            # an untyped prose tip substitute for a blocked/unheard signal
+            # or disclose the actor's private conditions of acceptance.
+            human_signal_attempt = (type(actual) is dict
+                and actual.get('action')=='SIGNAL'
+                and actual.get('target') in world.get('neighbor_users',{}))
+            if (not human_signal_attempt and visible_identity and actor_location == loc
                     and at_clock == world['clock']
                     and last['id'] == receipt
                     and last['kind'] == 'ACTOR_LIFE_TRANSITION'
