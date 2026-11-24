@@ -115,6 +115,22 @@ class MIISpy:
                 'history':[],'learning_enabled':False}
     def select_detail(self,objects,profile,*,command=None,target=None,offered=None):
         return (target,'EXPLICIT_USER_TARGET') if target in offered else (None,'NONE')
+    # Only a contract spy. Real tests exercise protected P6/MII methods.
+    def glance_available(self,house,user,target=None):
+        p=house['presentation_conditions']
+        return (p['grade']=='SOURCEFREE_FIXTURE'
+                and p['observer']==user and p['light']=='lit'
+                and p['sightline'] in ('partial','unobstructed'))
+    def close_available(self,house,user,target=None):
+        p=house['presentation_conditions']
+        return (self.glance_available(house,user,target)
+                and p['sightline']=='unobstructed'
+                and p['legibility']=='readable')
+    def candidate_details(self,house,room,objects,user):
+        return {key:text for key,text in objects.items()
+                if house['objects'].get(key,{}).get('room')==room
+                and self.glance_available(house,user,key)}
+    def update_attention(self,profile,**kw):return False
     def surface(self,**kw):return {'schema':'SOROK_MII_SURFACE@1', **kw}
     def record_exposure(self,profile,**kw):
         profile['exposures'].append(copy.deepcopy(kw))

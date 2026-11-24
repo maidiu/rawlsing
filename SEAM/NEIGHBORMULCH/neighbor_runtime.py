@@ -141,7 +141,9 @@ class NeighborEncounter:
             if (view.get('light') not in ('lit','dark','unknown') or
                 view.get('sightline') not in ('unobstructed','partial','blocked','unknown') or
                 type(view.get('hearing')) is not bool or
-                view.get('sound_path') not in ('audible','blocked','unknown')):
+                view.get('sound_path') not in ('audible','blocked','unknown') or
+                view.get('legibility', 'unknown') not in
+                    ('readable', 'unreadable', 'unknown')):
                 raise EncounterRefusal('INVALID_USER_SENSORY_CONDITIONS')
         for actor_id, row in actor_conditions.items():
             if type(row) is not dict or any(key not in row for key in
@@ -238,13 +240,15 @@ class NeighborEncounter:
             source = _bound_source(world)
             sight = source.get('user_conditions', {}).get(loc, {})
             candidate = world.get('material_objects', {}).get(target_object_ref)
-            # Uniform BLOCKED covers unknown, private, distant and occluded
-            # targets. A guess cannot become knowledge or emit cover speech.
+            # P6 outward ORIENT is a bodily attempt, NOT P6 INSPECT_OBJECT.
+            # Keep the world-owned physical target/location/public status.
+            # Do not ask visitor legibility or attention to authorize turning:
+            # that is a separate, private, source-qualified MII operation.
+            # Unknown, nonpublic and absent objects uniformly block the
+            # object-targeted attempt, without emitting the cover sentence.
             if (type(candidate) is not dict or
                 candidate.get('location') != loc or
-                type(candidate.get('public_glance')) is not str or
-                sight.get('light') != 'lit' or
-                sight.get('sightline') != 'unobstructed'):
+                type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
         world['clock'] += 1
         ref = stable_id('neighbor_user', {'user': self.user_id,
@@ -372,9 +376,19 @@ class NeighborEncounter:
 
     def private_surface(self, profile: dict, *, command: str | None = None,
                         target: str | None = None):
-        """Real MII operations over finite, public facts; no world/actor writes."""
+        """Project the existing CO world into the *existing* protected MII reader.
+
+        P6 makes outward ORIENT and close INSPECT distinct operations. A user
+        can turn toward a public object without reading it. The world records
+        the bodily attempt; MII alone qualifies visitor availability and
+        optional close detail; CO alone owns any actor-local interpretation.
+        This projection does not install a rival P6 world or MII profile store.
+        """
         if self.mii is None:
             raise EncounterRefusal('MII_READER_NOT_INSTALLED')
+        if (type(profile) is not dict or
+                profile.get('scope') != self.new_private_profile()['scope']):
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
         _, world = self._world()
         visitor = world.get('neighbor_users', {}).get(self.user_id)
         if not visitor or not visitor['present']:
@@ -382,43 +396,93 @@ class NeighborEncounter:
         loc = visitor['location']
         source = _bound_source(world)
         user_view = source.get('user_conditions', {}).get(loc, {})
-        visible = (user_view.get('light') == 'lit' and
-                   user_view.get('sightline') == 'unobstructed')
         audible = (user_view.get('hearing') is True and
                    user_view.get('sound_path') == 'audible')
-        # Only already admitted public material objects with an explicit
-        # observer-eligible surface may supply optional details. Never infer
-        # a secret story from the object or an actor's hidden constitution.
-        available = {}
-        for key, obj in world.get('material_objects', {}).items():
-            if (visible and type(obj) is dict and obj.get('location') == loc and
-                    type(obj.get('public_glance')) is str):
-                available[key] = obj['public_glance']
-        selected, basis = self.mii.select_detail(available, profile,
-            command=command, target=target, offered=available)
+        # Translate the precommitted, sourcefree world conditions into the
+        # already protected P6/MII availability interface. This is a
+        # READ-ONLY projection, NOT a second source or an adopted sensor law.
+        # MII, not NeighborEncounter, decides glance versus close eligibility.
+        published = {
+            key: obj for key, obj in world.get('material_objects', {}).items()
+            if type(key) is str and type(obj) is dict
+            and type(obj.get('public_glance')) is str
+        }
+        mii_house = {
+            'presentation_conditions': {
+                'grade': 'SOURCEFREE_FIXTURE',
+                'observer': self.user_id,
+                'light': user_view.get('light', 'unknown'),
+                'sightline': user_view.get('sightline', 'unknown'),
+                'legibility': user_view.get('legibility', 'unknown'),
+                'objects': {},
+            },
+            'objects': {key: {'room': obj.get('location')}
+                        for key, obj in published.items()},
+        }
+        available = self.mii.candidate_details(
+            mii_house, loc, {key: obj['public_glance']
+                             for key, obj in published.items()}, self.user_id)
+        selected, basis = self.mii.select_detail(
+            available, profile, command=command, target=target, offered=available)
+        offered = {selected: available[selected]} if selected in available else {}
+        # A close reading requires ALL of: actual world-owned LOOK, correct
+        # user + target + world clock, source-graded public close text,
+        # and MII's *existing* close availability. The actor sees none of
+        # these private eligibility/attention facts.
+        committed_look = next((
+            event for event in reversed(world.get('neighbor_user_events', []))
+            if event.get('user') == self.user_id
+            and event.get('operation') == 'LOOK'
+            and event.get('status') == 'PERFORMED'
+            and event.get('target_object_ref') == selected
+            and event.get('destination') == loc
+            and event.get('clock') == world['clock']
+        ), None) if command == 'look' and target == selected else None
+        if (committed_look is not None and selected in offered
+                and published[selected].get('grade') == 'SOURCEFREE_TEST_ONLY'
+                and type(published[selected].get('public_close')) is str
+                and self.mii.close_available(mii_house, self.user_id, selected)):
+            offered[selected] = published[selected]['public_close']
+        visible_identity = (self.mii.glance_available(mii_house, self.user_id)
+                            and user_view.get('sightline') == 'unobstructed')
         mandatory = [{'kind': 'LOCATION', 'text': loc}]
         for actor_id, actor_loc in sorted(world['positions'].items()):
-            if visible and actor_loc == loc:
+            if visible_identity and actor_loc == loc:
                 mandatory.append({'kind': 'CO_PRESENT_ACTOR',
                                   'actor_ref': actor_id, 'interpretation': 'NONE'})
         if self._last_actor_tip is not None:
             _, at_clock, tip = self._last_actor_tip
-            # A sourcefree speaker expression is not automatically audible to
-            # a visitor in another room, an occluded chamber or a dark room.
-            # Conservatively require co-location AND a sourced sensory path.
             actor_location = world['positions'].get(self._last_actor_ref)
-            if (at_clock == world['clock'] and actor_location == loc and
-                    (visible or audible) and type(tip) is str and tip.strip()):
+            # Unchanged provisional R2 expression gate; physical modality
+            # typing is a separately held CO/MIII owner-first-consumer task.
+            if (at_clock == world['clock'] and actor_location == loc
+                    and (visible_identity or audible)
+                    and type(tip) is str and tip.strip()):
                 mandatory.append({'kind': 'PUBLIC_TIP', 'text': tip[:500],
                                   'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION'})
         view = self.mii.surface(room=loc, orientation='SOURCEFREE_UNKNOWN',
             exit_name='SOURCEFREE_UNQUALIFIED', available=available,
-            candidates=available, offered=available, selected=selected,
+            candidates=available, offered=offered, selected=selected,
             basis=basis, narration=mandatory, recognition={})
+        prior_offered = (profile['exposures'][-1].get('offered', {})
+                         if profile.get('exposures') else {})
+        before = len(profile.get('exposures', []))
         self.mii.record_exposure(profile, turn=world['clock'], clock=world['clock'],
-            available=available, candidates=available, offered=available,
+            available=available, candidates=available, offered=offered,
             selected=selected, rendered=view, basis=basis,
-            request_id=None, context={'room': loc, 'world': self.runtime.world_id})
+            request_id=(committed_look.get('event_ref') if committed_look else None),
+            context={'room': loc, 'world': self.runtime.world_id,
+                     'command': command,
+                     'user_close_granted_by_mii': bool(
+                        committed_look and selected in offered
+                        and offered[selected] != available[selected])})
+        # Reuse MII's existing private, optional acquired-attention mechanic.
+        # It is never a world event or evidence that Nadia watched the gaze.
+        if (len(profile.get('exposures', [])) > before
+                and committed_look is not None):
+            self.mii.update_attention(
+                profile, target=selected, prior_offered=prior_offered,
+                command='look', turn=world['clock'])
         return view
 
     def new_private_profile(self):
