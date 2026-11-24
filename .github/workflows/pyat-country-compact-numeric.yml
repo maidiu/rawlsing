@@ -1,0 +1,17 @@
+name: PYAT country compact numeric sourcefree
+on:
+  push:
+    branches: [agent/pyat-country-compact-numeric-20261124-r1]
+  workflow_dispatch:
+jobs:
+  country:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pandas pyreadstat pyarrow pytest
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m unittest rawlsing_next.tests.test_pre553_country_numeric_carrier -v

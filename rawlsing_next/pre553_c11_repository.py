@@ -102,6 +102,13 @@ class C11Repository:
         release = self._by_ref.get(ref.key)
         if release is None:
             raise KeyError("exact C11 release unavailable; no fallback permitted")
+        # A country-backed compact lane is a live, receipt-bound reader, not
+        # an independently reusable detached in-memory release.
+        if isinstance(release.public_objects,_CompactPublicObjects):
+            from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+            bodies=release.public_objects.lane.bodies
+            if type(bodies) is _CountryEventBodies:
+                bodies.check_current()
         return release
 
     def resolve_object_exact(self, ref: ExactRef) -> CanonicalSemanticObject | C11InternalRecord:

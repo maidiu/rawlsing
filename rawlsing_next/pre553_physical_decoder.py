@@ -181,11 +181,29 @@ class PhysicalSourceIncidence:
             )
 
     def iter_batches(self, batch_size: int = 10_000) -> Iterator[tuple[PhysicalCell, ...]]:
-        """Yield bounded cell batches with stable source row ordinals.
+        """Yield the complete physical stream, with stable source ordinals."""
+        yield from self._iter_batches(batch_size)
 
-        The decoder retains only the current bounded reader window; it never
-        retains a complete cell-object universe.
+    def iter_native_column(self, variable_name: str, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
+        """Read one explicitly named physical column; NOT a full source stream."""
+        for batch in self._iter_batches(batch_size, only_variable=variable_name):
+            yield from batch
+
+    def iter_country_cells(self, country_variable: str, country_value: Any,
+                           batch_size: int = 10_000) -> Iterator[PhysicalCell]:
+        """Exact physical country filter. Never renumbers rows or infers labels.
+
+        The source reader still scans bounded native chunks. Other countries
+        do not construct full cell objects, and only the selected rows leave
+        the decoder. A filtered stream is not a full-wave I02 release.
         """
+        from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
+        codec=R5TypedValueCodec()
+        for batch in self._iter_batches(batch_size,
+                country_selector=(country_variable,codec.typed_key(country_value))):
+            yield from batch
+
+    def _iter_batches(self, batch_size, *, only_variable=None, country_selector=None):
         if not isinstance(batch_size, int) or isinstance(batch_size, bool) or batch_size < 1:
             raise ValueError("batch_size must be a positive integer")
         variables = self.variables
@@ -197,34 +215,53 @@ class PhysicalSourceIncidence:
             floor_rows=(MIN_READ_ROWS if self.source_format == "DTA" else 1),
         )
 
+        from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
+        by_name={v.name:i for i,v in enumerate(variables)}
+        if only_variable is not None and only_variable not in by_name:
+            raise DecoderError("unknown native column")
+        if country_selector is not None and country_selector[0] not in by_name:
+            raise DecoderError("unknown native country variable")
+        if only_variable is not None and country_selector is not None:
+            raise DecoderError("ambiguous physical selection")
+        country_index=by_name[country_selector[0]] if country_selector is not None else None
+        indices=(by_name[only_variable],) if only_variable is not None else range(len(variables))
+        codec=R5TypedValueCodec() if country_selector is not None else None
+
+        def physical_cell(variable, value, row_ordinal):
+            raw = _physical_value(value)
+            state, declaration = classify_physical_value(raw, declarations[variable.name])
+            if (
+                state is PhysicalMissingState.OBSERVED_STORAGE_VALUE
+                and self._reader_kind == "DTA"
+                and str(variable.storage_type).lower() not in {"string", "str"}
+                and isinstance(raw, str)
+                and len(raw) == 1
+                and raw.lower() in "abcdefghijklmnopqrstuvwxyz"
+            ):
+                declaration = {
+                    "kind": "extended", "reader_token": raw, "stata_token": "." + raw.lower(),
+                }
+                state = PhysicalMissingState.FORMAT_EXTENDED_MISSING
+            return PhysicalCell(row_ordinal,variable.ordinal,variable.name,raw,state,
+                                declaration,variable.value_labels.get(str(raw)))
+
         def emit(frame: Any, row_offset: int) -> Iterator[tuple[PhysicalCell, ...]]:
             batch: list[PhysicalCell] = []
             for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
-                for variable, value in zip(variables, row):
-                    raw = _physical_value(value)
-                    state, declaration = classify_physical_value(raw, declarations[variable.name])
-                    if (
-                        state is PhysicalMissingState.OBSERVED_STORAGE_VALUE
-                        and self._reader_kind == "DTA"
-                        and str(variable.storage_type).lower() not in {"string", "str"}
-                        and isinstance(raw, str)
-                        and len(raw) == 1
-                        and raw.lower() in "abcdefghijklmnopqrstuvwxyz"
-                    ):
-                        # Stata extended missing tokens are storage values, not
-                        # survey labels.  Readstat returns the one-letter token
-                        # for a numeric column; if per-chunk metadata did not
-                        # surface it, preserve the exact native representation
-                        # rather than degrading it to an observed string.
-                        declaration = {
-                            "kind": "extended",
-                            "reader_token": raw,
-                            "stata_token": "." + raw.lower(),
-                        }
-                        state = PhysicalMissingState.FORMAT_EXTENDED_MISSING
-                    batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
-                                              declaration, variable.value_labels.get(str(raw))))
-                    if len(batch) >= batch_size:
+                if len(row)!=len(variables):
+                    raise DecoderError("physical reader column census changed")
+                ordinal=row_offset+local_row
+                selected=None
+                if country_index is not None:
+                    selected=physical_cell(variables[country_index],row[country_index],ordinal)
+                    if (selected.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE
+                        or codec.typed_key(selected.raw_value)!=country_selector[1]):
+                        continue
+                for index in indices:
+                    cell=(selected if index==country_index else
+                          physical_cell(variables[index],row[index],ordinal))
+                    batch.append(cell)
+                    if len(batch)>=batch_size:
                         yield tuple(batch)
                         batch.clear()
             if batch:
@@ -235,6 +272,8 @@ class PhysicalSourceIncidence:
             # decode_dta never set _frame; file-backed sources must take the
             # bounded chunk path below.
             yield from emit(self._frame, 0)
+            if (only_variable is not None or country_selector is not None) and len(self._frame)!=self.row_count:
+                raise DecoderError("selected physical stream source row census changed")
             return
         if self._reader_kind is None or self._source_snapshot is None:
             raise DecoderError("physical source has no content-bound snapshot for lazy byte reads")
@@ -266,6 +305,8 @@ class PhysicalSourceIncidence:
             yield from emit(frame, row_offset)
             row_offset += len(frame)
         snapshot.verify()
+        if (only_variable is not None or country_selector is not None) and row_offset!=self.row_count:
+            raise DecoderError("selected physical stream source row census changed")
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):

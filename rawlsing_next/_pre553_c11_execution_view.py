@@ -239,6 +239,7 @@ def _write_bodies(path: Path, key: str, bodies) -> None:
 def _compact_public_objects(
     release: C11LogicalRelease, *, physical_binding: Callable[[], Any],
     projection_binding: str,
+    country_body_factory=None,
 ) -> _CompactPublicObjects | None:
     """Derive selectors from current I02 objects and authenticate cached bodies to their refs."""
     try:
@@ -286,8 +287,10 @@ def _compact_public_objects(
     if not events:
         return None
     selectors = tuple(selectors)
-    directory = _cache_directory()
-    bodies = None
+    # The explicitly bound country transport resolves exact bodies from its
+    # persistent numeric lanes. Do not write a duplicate canonical-body cache.
+    directory = _cache_directory() if country_body_factory is None else None
+    bodies = country_body_factory(release, events) if country_body_factory is not None else None
     path = None
     binding = physical_binding() if directory is not None else None
     if binding is not None:
