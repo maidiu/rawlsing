@@ -396,3 +396,43 @@ def test_native_position_predicates_change_conditional_and_reverse_distributions
         roots.append(root)
     assert _score(roots[0], (0,)) > _score(roots[0], (1,))
     assert _score(roots[1], (1,)) > _score(roots[1], (0,))
+
+
+def test_followup_pinned_replay_binds_actual_candidate_grammar_and_role_census():
+    """A replay pin must also bind the grammar and exact executed-role census."""
+    discovery = _real_frontier()
+    positive = next(r for r in discovery.receipts if r.typed_state == "DISCOVERED_RESULT_SUPPORTED")
+    _, _, rule, _ = adaptive._authority("followup-grammar")
+    determinant = adaptive._ref("DETERMINANT", "followup-grammar")
+    root = adaptive._unit("root", determinant, rule, rank=0,
+                          extra=(discovery.discovery_authority_ref,))
+    def receive(value):
+        return receive_s04_i05_adaptive_outcome(
+            unit=root, discovery=value, expected_replay_ref=discovery.replay_ref,
+            candidate_receipt_ref=positive.ref, query_role="BASE",
+            current_guard=lambda: True,
+        )
+    assert receive(discovery)[2].sealed_result_ref == discovery.replay_ref
+    grammar = discovery.candidate_grammar_ref
+    counterfeit = replace(discovery, candidate_grammar_ref=ExactRef(
+        grammar.kind, grammar.object_id, semantic_hash("foreign grammar")))
+    with pytest.raises(S04I05ReceptionError, match="frontier"):
+        receive(counterfeit)
+
+
+def test_followup_exact_frontier_refuses_unissued_extra_query_preimage():
+    discovery = _real_frontier()
+    positive = next(r for r in discovery.receipts if r.typed_state == "DISCOVERED_RESULT_SUPPORTED")
+    _, _, rule, _ = adaptive._authority("followup-extra-query")
+    determinant = adaptive._ref("DETERMINANT", "followup-extra-query")
+    root = adaptive._unit("root", determinant, rule, rank=0,
+                          extra=(discovery.discovery_authority_ref,))
+    _, _, _, foreign, _ = _real(tag="FORGE-FOLLOWUP-FOREIGN")
+    assert foreign.ref not in {q.ref for q in discovery.executed_queries}
+    counterfeit = replace(discovery, executed_queries=tuple(sorted(
+        (*discovery.executed_queries, foreign), key=lambda q: q.ref.key)))
+    with pytest.raises(S04I05ReceptionError, match="role"):
+        receive_s04_i05_adaptive_outcome(
+            unit=root, discovery=counterfeit, expected_replay_ref=discovery.replay_ref,
+            candidate_receipt_ref=positive.ref, query_role="BASE", current_guard=lambda: True,
+        )
