@@ -15,6 +15,7 @@ on:
       - agent/neighbormulch-r11-contingent-world-encounter-20261124-r1
       - agent/neighbormulch-r12-absence-return-20261124-r1
       - agent/neighbormulch-r13-material-participation-r33-20261124-r1
+      - agent/neighbormulch-r14-collective-material-access-20261124-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -45,6 +46,7 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_contingent_world_r11.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_absence_return_r12.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_participation_r13.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_collective_access_r14.py
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -97,6 +99,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_participation_r13.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_participation_r13.py' -q
+      - name: R14 actual collective material access and cold continuation
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_collective_access_r14.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_collective_access_r14.py' -q
       - name: Full inherited CO R33 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
