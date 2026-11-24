@@ -10,6 +10,7 @@ on:
       - agent/neighbormulch-r6-join-co-r30-exact-owned-tree-20261123-r1
       - agent/neighbormulch-r7-typed-public-tip-source-gate-20261123-r1
       - agent/neighbormulch-r8-clean-co-public-world-signs-20261124-r1
+      - agent/neighbormulch-r9-material-world-to-mii-20261124-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -35,6 +36,7 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_mii_cold_profile_r5.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_public_tip_source_r7.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_public_occurrence_r8.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_material_world_r9.py
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -67,6 +69,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_occurrence_r8.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_public_occurrence_r8.py' -q
+      - name: R9 actual CO material life to finite MII encounter
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_world_r9.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_material_world_r9.py' -q
       - name: Full inherited CO R27 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

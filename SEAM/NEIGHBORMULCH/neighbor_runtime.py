@@ -16,8 +16,9 @@ from types import SimpleNamespace
 from typing import Any
 import fcntl
 
-from um_sorok_organism.types import digest, stable_id
+from um_sorok_organism.types import digest, stable_id, GRADE
 from um_sorok_organism.world import add_cue
+from um_sorok_organism.material_objects import material_objects_present
 
 
 class EncounterRefusal(ValueError):
@@ -38,6 +39,47 @@ def _bound_source(world: dict) -> dict:
     if not isinstance(conditions, dict) or conditions.get('grade') != 'SOURCEFREE_TEST_ONLY':
         raise EncounterRefusal('NO_QUALIFIED_SENSORY_SOURCE')
     return conditions
+
+
+def _public_material_projection(world: dict, location: str) -> dict:
+    """Finite read projection of actual CO artifacts into protected MII.
+
+    The existing material owner determines which actual artifacts are visible
+    and where. No ownership, maker, objective labor/condition history or
+    actor meanings enter this view. Keep R4's explicitly public fixture text
+    for legacy objects; an actual CO artifact cannot be overridden by it.
+    Appearance bands are the existing CO world INSPECT convention (.65/.95),
+    provisionally mirrored for the visitor's close surface, not a material
+    law or an inferred repair history. A shared owner helper is future work.
+    """
+    view = {}
+    for ref, row in world.get('material_objects', {}).items():
+        if (type(ref) is str and type(row) is dict
+                and row.get('location') == location
+                and row.get('visible') is not False
+                and row.get('kind') != 'WORKED_MATERIAL_ARTIFACT'
+                and type(row.get('public_glance')) is str):
+            view[ref] = {'location': location,
+                         'public_glance': row['public_glance'],
+                         'public_close': row.get('public_close'),
+                         'grade': row.get('grade')}
+    for row in material_objects_present(world, location):
+        ref = row['id']
+        condition = row.get('condition')
+        if (row.get('kind') != 'WORKED_MATERIAL_ARTIFACT'
+                or row.get('grade') != GRADE
+                or world['material_objects'].get(ref) is not row
+                or type(condition) not in (int, float)
+                or not 0 <= condition <= 1):
+            continue
+        appearance = ('It appears worn.' if condition < .65 else
+                      'It appears repaired.' if condition < .95 else
+                      'It appears sound.')
+        view[ref] = {'location': location,
+                     'public_glance': 'A worked material object is here.',
+                     'public_close': appearance,
+                     'grade': 'SOURCEFREE_TEST_ONLY'}
+    return view
 
 
 def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
@@ -242,7 +284,7 @@ class NeighborEncounter:
         elif operation == 'LOOK':
             source = _bound_source(world)
             sight = source.get('user_conditions', {}).get(loc, {})
-            candidate = world.get('material_objects', {}).get(target_object_ref)
+            candidate = _public_material_projection(world, loc).get(target_object_ref)
             # P6 outward ORIENT is a bodily attempt, NOT P6 INSPECT_OBJECT.
             # Keep the world-owned physical target/location/public status.
             # Do not ask visitor legibility or attention to authorize turning:
@@ -405,11 +447,7 @@ class NeighborEncounter:
         # already protected P6/MII availability interface. This is a
         # READ-ONLY projection, NOT a second source or an adopted sensor law.
         # MII, not NeighborEncounter, decides glance versus close eligibility.
-        published = {
-            key: obj for key, obj in world.get('material_objects', {}).items()
-            if type(key) is str and type(obj) is dict
-            and type(obj.get('public_glance')) is str
-        }
+        published = _public_material_projection(world, loc)
         mii_house = {
             'presentation_conditions': {
                 'grade': 'SOURCEFREE_FIXTURE',
