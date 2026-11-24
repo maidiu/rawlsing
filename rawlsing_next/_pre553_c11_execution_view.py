@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Iterator, Sequence
+from array import array
+from bisect import bisect_left,bisect_right
 from dataclasses import dataclass
 from hashlib import sha256
 import json
@@ -100,6 +102,9 @@ class _EventLocator:
 class _RespondentEvents(Sequence[RespondentEvent]):
     lane: _EventLane
     rows: tuple[int, ...]
+    # Optional compact, immutable postings for wide country respondents.
+    # Native, canonical and component identities retain separate semantics.
+    question_rows: tuple[Any,Any,Any] | None = None
 
     def __len__(self) -> int:
         return len(self.rows)
@@ -114,7 +119,25 @@ class _RespondentEvents(Sequence[RespondentEvent]):
         include_component: bool = False, states: frozenset[str] | None = None,
     ) -> Iterator[_EventRead]:
         target_identity = _ref_identity(target)
-        for row in self.rows:
+        rows=self.rows
+        if self.question_rows is not None:
+            selectors=self.lane.selectors
+            fields=("_native_question_identity","_canonical_question_identity","_component_identity")
+            hits=set()
+            for i,(field,posting) in enumerate(zip(fields,self.question_rows)):
+                if i>0 and (native_only or (i==2 and not include_component)):
+                    continue
+                if not len(posting):
+                    continue
+                def key(row):
+                    return getattr(selectors[row],field)
+                lo=bisect_left(posting,target_identity,key=key)
+                hi=bisect_right(posting,target_identity,key=key)
+                hits.update(posting[lo:hi])
+            # Original selector index order is the preexisting canonical
+            # occurrence traversal; do not reorder/multiply matching events.
+            rows=sorted(hits)
+        for row in rows:
             event = self.lane.selectors[row]
             matches = event._native_question_identity == target_identity or (
                 not native_only and (
@@ -255,6 +278,18 @@ def _compact_public_objects(
     selectors = []
     groups: dict[tuple[ExactRef, str], list[int]] = {}
     dimensions: dict[tuple[str, str, str], tuple[str, str, str]] = {}
+    # In country lanes share true-grain repeated immutable metadata rather
+    # than retaining the unique event object's copy. Bound intern tables;
+    # high-cardinality values fall back to original exact immutable objects.
+    value_pools=({}, {}, {})
+    authority_pool={}
+    def shared(value,pool):
+        if country_body_factory is None or len(pool)>=8192:
+            return value
+        key=canonical_json(value)
+        if len(key)>2048:
+            return value
+        return pool.setdefault(key,value)
 
     def dimension(event: RespondentEvent, field: str) -> tuple[str, str, str] | None:
         value = getattr(event, field)
@@ -271,14 +306,18 @@ def _compact_public_objects(
         row = len(events)
         entries.append(row)
         events.append(obj)
+        auth=tuple((ref.authority_id, ref.authority_version, ref.authority_content_hash)
+                   for ref in obj.authority_snapshot_refs)
+        if country_body_factory is not None and len(authority_pool)<8192:
+            auth=authority_pool.setdefault(auth,auth)
         selectors.append(_EventRead(
             _ref_identity(obj.ref), obj.typed_state, dimension(obj, "native_question_ref"),
             dimension(obj, "canonical_question_ref_if_authorized"),
-            dimension(obj, "component_or_subitem_ref"),
-            tuple((ref.authority_id, ref.authority_version, ref.authority_content_hash)
-                  for ref in obj.authority_snapshot_refs),
-            obj.raw_response_value, obj.canonical_response_value_if_authorized,
-            obj.multiplicity_order_rank_fields, obj.response_event_id_or_deterministic_index,
+            dimension(obj, "component_or_subitem_ref"), auth,
+            shared(obj.raw_response_value,value_pools[0]),
+            shared(obj.canonical_response_value_if_authorized,value_pools[1]),
+            shared(obj.multiplicity_order_rank_fields,value_pools[2]),
+            obj.response_event_id_or_deterministic_index,
         ))
         universe = dimension(obj, "empirical_universe_ref")
         respondent = dimension(obj, "scoped_respondent_ref")
@@ -321,8 +360,21 @@ def _compact_public_objects(
         if path is not None:
             _write_bodies(path, key, bodies)
     lane = _EventLane(bodies, selectors)
+    def respondent_events(rows):
+        original=tuple(rows)
+        if country_body_factory is None or len(original)<32:
+            return _RespondentEvents(lane,original)
+        # Four bytes/occurrence per populated posting (8 if truly necessary),
+        # not a Python dictionary per respondent/variable.
+        tag="I" if len(selectors)<2**32 else "Q"
+        postings=[]
+        for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
+            selected=sorted((row for row in original if getattr(selectors[row],field) is not None),
+                            key=lambda row:getattr(selectors[row],field))
+            postings.append(memoryview(array(tag,selected).tobytes()).cast(tag))
+        return _RespondentEvents(lane,original,tuple(postings))
     return _CompactPublicObjects(
         release.release_ref, release.replay_manifest.ref, lane, tuple(entries), tuple(non_events),
-        MappingProxyType({key: _RespondentEvents(lane, tuple(rows)) for key, rows in groups.items()}),
+        MappingProxyType({key: respondent_events(rows) for key, rows in groups.items()}),
         frozenset(selector.typed_state for selector in selectors),
     )

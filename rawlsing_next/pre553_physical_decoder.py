@@ -200,7 +200,18 @@ class PhysicalSourceIncidence:
         from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
         codec=R5TypedValueCodec()
         for batch in self._iter_batches(batch_size,
-                country_selector=(country_variable,codec.typed_key(country_value))):
+                country_selector=(country_variable,frozenset((codec.typed_key(country_value),)))):
+            yield from batch
+
+    def iter_countries_cells(self,country_variable: str,country_values,
+                             batch_size: int=10_000) -> Iterator[PhysicalCell]:
+        """One bounded scan for several exact country codes, original rows intact."""
+        from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
+        codec=R5TypedValueCodec()
+        keys=frozenset(codec.typed_key(v) for v in country_values)
+        if not keys:
+            raise ValueError("nonempty explicit country selection required")
+        for batch in self._iter_batches(batch_size,country_selector=(country_variable,keys)):
             yield from batch
 
     def _iter_batches(self, batch_size, *, only_variable=None, country_selector=None):
@@ -255,7 +266,7 @@ class PhysicalSourceIncidence:
                 if country_index is not None:
                     selected=physical_cell(variables[country_index],row[country_index],ordinal)
                     if (selected.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE
-                        or codec.typed_key(selected.raw_value)!=country_selector[1]):
+                        or codec.typed_key(selected.raw_value) not in country_selector[1]):
                         continue
                 for index in indices:
                     cell=(selected if index==country_index else

@@ -572,7 +572,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
     if source_sha256 != projection.expected_source_sha256:
         raise SourceBackedC11FacadeError("source SHA mismatch")
     respondent_by_ref = {r.ref: r for r in projection.respondents}
-    rows = {x.row_ordinal: respondent_by_ref[x.respondent_ref] for x in projection.row_bindings}
+    rows = {x.row_ordinal: (i,respondent_by_ref[x.respondent_ref])
+            for i,x in enumerate(projection.row_bindings)}
     if len(rows) != row_count:
         raise SourceBackedC11FacadeError("row/respondent replay map cardinality differs from exact physical stream")
     rs = {x.slot.key: x for x in projection.response_slots}
@@ -580,7 +581,13 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
     ws = {x.slot.key: x for x in projection.weight_slots}
     owner_sets = {x.slot.key: x for x in projection.slot_owner_sets}
     projected = set(rs) | set(cs) | set(ws)
-    seen = {s: set() for s in projected}
+    # One bit of coverage per required row/slot, not a Python set per
+    # variable retaining one integer object for every response.
+    seen={s:bytearray((row_count+7)//8) for s in projected}
+    counts={s:0 for s in projected}
+    response_values={key:{x.physical_key:x for x in slot.values} for key,slot in rs.items()}
+    coordinate_values={key:{x.physical_key:x for x in slot.values} for key,slot in cs.items()}
+    weight_values={key:{x.physical_key:x for x in slot.values} for key,slot in ws.items()}
     events = []
     coords = []
     weights = []
@@ -592,16 +599,18 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
             continue
         if cell.row_ordinal not in rows:
             raise SourceBackedC11FacadeError("cell row outside replay map")
-        if cell.row_ordinal in seen[key]:
+        position,respondent=rows[cell.row_ordinal]
+        byte,bit=divmod(position,8)
+        mask=1<<bit
+        if seen[key][byte]&mask:
             raise SourceBackedC11FacadeError("duplicate physical row/slot")
-        seen[key].add(cell.row_ordinal)
-        respondent = rows[cell.row_ordinal]
+        seen[key][byte]|=mask
+        counts[key]+=1
         pv = _cell_key(cell)
         owner_set = owner_sets.get(key)
         if key in rs:
             slot = rs[key]
-            by = {x.physical_key: x for x in slot.values}
-            value = by.get(pv)
+            value = response_values[key].get(pv)
             if value is None:
                 raise SourceBackedC11FacadeError("unbound response value/state; no label/frequency/missingness inference")
             auths = owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner_set else ()
@@ -609,16 +618,15 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
                           for o in value.occurrences)
         if key in cs:
             slot = cs[key]
-            rule = {x.physical_key: x for x in slot.values}.get(pv)
+            rule = coordinate_values[key].get(pv)
             auths = owner_set.authority_refs_for(COORDINATE_OWNER_FAMILY) if owner_set else ()
             coords.append(_coordinate(source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths))
         if key in ws:
             slot = ws[key]
-            rule = {x.physical_key: x for x in slot.values}.get(pv)
+            rule = weight_values[key].get(pv)
             auths = owner_set.authority_refs_for(WEIGHT_OWNER_FAMILY) if owner_set else ()
             weights.append(_weight(source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths))
-    expected = set(rows)
-    if any(v != expected for v in seen.values()):
+    if any(v!=row_count for v in counts.values()):
         raise SourceBackedC11FacadeError("projected slot incomplete; absent physical cell is not semantic absence")
     events = tuple(sorted(events, key=lambda x: x.ref.key))
     coords = tuple(sorted(coords, key=lambda x: x.ref.key))

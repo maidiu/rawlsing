@@ -1,5 +1,6 @@
 """Exact denominator, target, measure and EmpiricalFact construction for PRE553 I03."""
 from dataclasses import replace
+import sys
 
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
@@ -435,6 +436,99 @@ def _registry_fingerprint(registry: AuthorityRegistry) -> str:
     ])
 
 
+class _PredicateAuthorityRecorder:
+    """Record all authority resolutions, including empty/false leaf matches."""
+    __slots__=("registry","refs")
+    def __init__(self,registry):
+        self.registry=registry
+        self.refs={}
+    def resolve_exact(self,ref):
+        resolution=self.registry.resolve_exact(ref)
+        self.refs[resolution.ref.key]=resolution.ref
+        return resolution
+
+
+class _ConditionMemo:
+    """Execution-local, lazy respondent membership and exact evidence reuse.
+
+    Never evaluate ineligible respondents speculatively. Target routing/risk
+    and measures remain independently evaluated on every target. UNKNOWN is
+    preserved, and all evaluated Boolean child evidence is retained. Bound
+    only derivative memory; when full, the exact evaluator continues.
+    """
+    __slots__=("index","registry","registry_map","predicate_identity","ast","entries","compiled",
+               "budget","bytes","hits","misses","capacity_fallbacks")
+    def __init__(self,index,registry,predicate,budget):
+        self.index,self.registry=index,registry
+        self.predicate_identity=_predicate_identity(predicate)
+        self.ast=predicate.predicate_ast
+        self.registry_map=registry._by_key
+        self.entries={}
+        self.compiled=_compile_derived_branch_memberships(self.ast)
+        self.budget=budget
+        self.bytes=0
+        self.hits=self.misses=self.capacity_fallbacks=0
+
+    def compatible(self,index,registry,predicate):
+        # RuntimeObjectCatalog constructs an independently validated registry
+        # per operation; equal exact refs alone are insufficient for this
+        # memo. Require the same immutable snapshot objects at every key.
+        return (index is self.index
+                and _predicate_identity(predicate)==self.predicate_identity
+                and len(registry._by_key)==len(self.registry_map)
+                and all(registry._by_key.get(k) is v for k,v in self.registry_map.items()))
+
+    def evaluate(self,respondent,registry,used,used_auth):
+        key=respondent.ref.key
+        entry=self.entries.get(key)
+        if entry is not None:
+            member,objects,authorities,checked=entry
+            # Explicit leaf authorities may not appear in provenance for
+            # empty matches. Revalidate them too, not only used authorities.
+            for ref in checked:
+                if registry.resolve_exact(ref).snapshot.typed_state!="ALLOW":
+                    raise Pre553AuthorityError("condition memo authority is no longer positive")
+            used.extend(objects)
+            used_auth.extend(authorities)
+            self.hits+=1
+            if member is None:
+                raise UnresolvedConditionMember("cached exact unresolved condition member")
+            return member
+        self.misses+=1
+        own=_UsedObjectAccumulator()
+        auth=_UsedAuthorityAccumulator()
+        recorder=_PredicateAuthorityRecorder(registry)
+        try:
+            member=_eval_predicate(self.ast,
+                respondent=respondent,index=self.index,registry=recorder,
+                used=own,used_auth=auth,derived_branch_memberships=self.compiled)
+        except UnresolvedConditionMember:
+            member=None
+        objects,authorities,checked=tuple(own),tuple(auth),tuple(recorder.refs.values())
+        entry=(member,objects,authorities,checked)
+        # Approximate retained incremental Python containers, conservatively
+        # including dict overhead/key string; existing immutable objects shared.
+        cost=128+sys.getsizeof(key)+sum(sys.getsizeof(x) for x in (entry,objects,authorities,checked))
+        if self.budget(cost):
+            self.entries[key]=entry
+            self.bytes+=cost
+        else:
+            self.capacity_fallbacks+=1
+        used.extend(objects)
+        used_auth.extend(authorities)
+        if member is None:
+            raise UnresolvedConditionMember("exact unresolved condition member")
+        return member
+
+
+def _condition_for(predicate,respondent,index,registry,used,used_auth,compiled,memo=None):
+    if memo is not None:
+        return memo.evaluate(respondent,registry,used,used_auth)
+    return _eval_predicate(predicate.predicate_ast,respondent=respondent,index=index,
+                           registry=registry,used=used,used_auth=used_auth,
+                           derived_branch_memberships=compiled)
+
+
 def _evaluate_index_group_core(
     index: _ReleaseIndex,
     *,
@@ -443,6 +537,7 @@ def _evaluate_index_group_core(
     plan: _TargetPlan,
     profile: _ExecutionProfile,
     registry: AuthorityRegistry,
+    condition_memo: _ConditionMemo | None = None,
 ) -> _GroupCore:
     """Compute the exact measure-independent I03 core for one release index."""
     try:
@@ -476,7 +571,8 @@ def _evaluate_index_group_core(
     unresolved_condition_members: list[ExactRef] = []
     inapplicable_count = 0
     component_positive = [False] * plan.arity
-    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
+    derived_branch_memberships = (condition_memo.compiled if condition_memo is not None
+                                  else _compile_derived_branch_memberships(predicate.predicate_ast))
 
     used.extend([index.universe, index.release.replay_manifest])
     used_auth.extend(_validate_public_object_authorities(index.universe, registry))
@@ -505,15 +601,8 @@ def _evaluate_index_group_core(
             continue
         risk_members.append(respondent.ref)
         try:
-            condition = _eval_predicate(
-                predicate.predicate_ast,
-                respondent=respondent,
-                index=index,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
-            )
+            condition = _condition_for(predicate,respondent,index,registry,
+                used,used_auth,derived_branch_memberships,condition_memo)
         except UnresolvedConditionMember:
             # Unknown condition is neither false nor a denominator member.
             # Retain its eligible respondent and exact source evidence.
@@ -736,6 +825,13 @@ def _evaluate_index_group(
         )
 
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
+        # Capacity exhaustion of the full target core need not discard the
+        # smaller cross-target membership cache. No composite/runtime opt-in.
+        condition_memo = (
+            group_scope._condition_memo_for(index,registry,predicate)
+            if group_scope is not None and len(indices)==1 and runtime_binding is None
+               and hasattr(group_scope,"_condition_memo_for") else None
+        )
         used.extend([index.universe, index.release.replay_manifest])
         used_auth.extend(_validate_public_object_authorities(index.universe, registry))
         exact_risk_set_contract = None
@@ -786,15 +882,8 @@ def _evaluate_index_group(
                 continue
             risk_members.append(respondent.ref)
             try:
-                condition = _eval_predicate(
-                    predicate.predicate_ast,
-                    respondent=respondent,
-                    index=index,
-                    registry=registry,
-                    used=used,
-                    used_auth=used_auth,
-                    derived_branch_memberships=derived_branch_memberships,
-                )
+                condition = _condition_for(predicate,respondent,index,registry,
+                    used,used_auth,derived_branch_memberships,condition_memo)
             except UnresolvedConditionMember:
                 unresolved_condition_members.append(respondent.ref)
                 continue

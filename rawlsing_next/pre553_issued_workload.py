@@ -13,6 +13,9 @@ from contextlib import ExitStack
 from collections.abc import Mapping
 from dataclasses import dataclass, fields, is_dataclass
 import json
+import hashlib
+import sys
+from types import MappingProxyType
 from typing import Any, Callable, Protocol
 
 from rawlsing_next.pre553_batch_runner import (
@@ -33,7 +36,8 @@ from rawlsing_next._pre553_external_i02_certificate import ExternalI02Roots
 from types import SimpleNamespace
 from rawlsing_next.pre553_empirical_objects import (
     DiscoveryResultReceipt, EmpiricalFact, EmpiricalPredicate,
-    EmpiricalQuerySpec, ExactRef, exact_ref, semantic_hash,
+    EmpiricalQuerySpec, ExactRef, AuthorityRef, RoutingEligibilityFact,
+    canonical_json, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest, execute_route_b_production
 from rawlsing_next.pre553_source_backed_c11_facade import (
@@ -51,6 +55,15 @@ class NativeWorkloadExecutionError(RuntimeError):
 
 def material(value: Any) -> Any:
     """Complete dataclass preimages, including fields omitted by count receipts."""
+    # Exact builtin fast paths. The full issued envelope is still rebuilt and
+    # hashed at every admission boundary. No identity-only or stale hash cache.
+    typ = type(value)
+    if value is None or typ in (str, bool, int, float, bytes):
+        return value
+    if typ is dict:
+        return {str(k): material(v) for k, v in value.items()}
+    if typ is list or typ is tuple:
+        return [material(v) for v in value]
     if hasattr(value, "as_dict"):
         return material(value.as_dict())
     if is_dataclass(value):
@@ -219,13 +232,21 @@ class NativeWorkload:
     original_wave_identity: OriginalWaveIdentity | None = None
 
     def envelope(self):
+        return self._envelope()
+
+    def _envelope(self, *, omit_routing=False):
         descriptor = json.loads(self.descriptor)
         if set(descriptor) != DESCRIPTOR_FIELDS or canonical(descriptor) != self.descriptor:
             raise WorkloadAdmissionError("CLOSED_CANONICAL_COMPLETE_DESCRIPTOR_REQUIRED")
         if any(v is None or v == "UNBOUND" for v in descriptor.values()):
             raise WorkloadAdmissionError("ISSUED_DESCRIPTOR_HAS_UNBOUND_REQUIRED_FIELD")
+        projection = (
+            {f.name: material(getattr(self.projection, f.name))
+             for f in fields(self.projection) if f.name != "routing"}
+            if omit_routing else material(self.projection)
+        )
         envelope = dict(
-            descriptor=descriptor, projection=material(self.projection),
+            descriptor=descriptor, projection=projection,
             catalog=material(self.catalog), source_factory_ref=self.source_factory_ref.as_dict(),
             requests=[r.as_dict() for r in self.requests],
             discoveries=[r.as_dict() for r in self.discoveries],
@@ -236,9 +257,209 @@ class NativeWorkload:
         return envelope
 
 
+def _routing_pin(obj):
+    """Pin the existing deeply immutable canonical object, not a caller ref.
+
+    CanonicalSemanticObject owns its detached mapping-proxy descendants.
+    Recheck the public scalar and ref fields (including ref preimages), and
+    retain the original semantic-fields mapping by identity. This is the
+    same in-process immutable-data boundary as I03 index attestation, not
+    security against arbitrary Python-memory modification.
+    """
+    if type(obj) is not RoutingEligibilityFact or obj._frozen is not True:
+        return None
+    if type(obj.semantic_fields) is not MappingProxyType:
+        return None
+    scalar=(obj.schema_id,obj.schema_version,obj.typed_state,obj.object_id,obj.content_hash)
+    if any(type(v) is not str for v in scalar):
+        return None
+    auth=obj.authority_snapshot_refs
+    deps=obj.dependency_refs
+    if (type(auth) is not tuple or type(deps) is not tuple
+        or any(type(v) is not AuthorityRef for v in auth)
+        or any(type(v) is not ExactRef for v in deps)):
+        return None
+    auth_material=tuple((v.authority_id,v.authority_version,v.authority_content_hash) for v in auth)
+    dep_material=tuple((v.kind,v.object_id,v.content_hash) for v in deps)
+    replay=obj.producer_replay_locator_or_reference_root
+    if type(replay) is ExactRef:
+        replay=(replay.kind,replay.object_id,replay.content_hash)
+    elif type(replay) is not str:
+        return None
+    return scalar,auth_material,dep_material,replay
+
+
+def _routing_envelope_parts(workload):
+    """Stream the canonical prefix and suffix around the sole routing array."""
+    envelope=workload._envelope(omit_routing=True)
+    def pieces(values, projection=False):
+        yield b"{"
+        keys=sorted((*values.keys(),"routing")) if projection else sorted(values)
+        for i,key in enumerate(keys):
+            if i:
+                yield b","
+            yield canonical_json(key).encode("utf-8")
+            yield b":"
+            if projection and key=="routing":
+                yield None
+            elif not projection and key=="projection":
+                yield from pieces(values[key],True)
+            else:
+                yield canonical_json(values[key]).encode("utf-8")
+        yield b"}"
+    return pieces(envelope)
+
+
+def _update_routing_pin(digest,pin):
+    # Pin material consists solely of exact strings and nested tuples. Python
+    # repr of these primitives is unambiguous, including embedded controls.
+    # This is private in-process mutation detection, not the U43 wire hash.
+    def valid(value):
+        return type(value) is str or (type(value) is tuple and all(valid(v) for v in value))
+    if not valid(pin):
+        return False
+    digest.update(repr(pin).encode("utf-8"))
+    digest.update(b"\n")
+    return True
+
+
+@dataclass(frozen=True)
+class _PreparedRoutingEnvelope:
+    """Reuse an exact SHA continuation, not a second serialized routing graph.
+
+    Admission still compares the exact externally issued complete envelope
+    digest. The canonical prefix is freshly hashed, and only if it equals the
+    prepared prefix do we copy the SHA state *after* the routing list. All
+    suffix bytes are freshly hashed. Routing public objects' detached
+    immutable mappings remain pinned by identity and their public scalar/ref
+    fields are checked with a streaming private pin digest. No routing JSON
+    retained, no original-source opt-in, no arbitrary Python memory defense.
+    """
+    workload: NativeWorkload
+    routing: tuple
+    mappings: tuple
+    pin_digest: bytes
+    prefix_digest: bytes
+    after_routing: Any
+    encoded_routing_bytes: int
+    retained_pin_bytes: int
+    fast_pins: tuple | None = None
+
+    @classmethod
+    def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
+                max_records=4_000_000):
+        if (type(workload) is not NativeWorkload
+                or type(workload.projection) is not GovernedC11Projection):
+            return None
+        routing=workload.projection.routing
+        if type(routing) is not tuple or len(routing)>max_records:
+            return None
+        # Bound the temporary list + retained tuple of mapping references,
+        # with conservative pointer/container allowance. No encoded-size cap:
+        # large routing arrays are hashed in a stream, never held as JSON.
+        if 256+24*len(routing)>max_bytes:
+            return None
+        digest=hashlib.sha256()
+        pieces=_routing_envelope_parts(workload)
+        for part in pieces:
+            if part is None:
+                break
+            digest.update(part)
+        else:
+            return None
+        prefix=digest.copy().digest()
+        pins=hashlib.sha256()
+        mappings=[]
+        # Small scopes may retain inexpensive immutable scalar tuples for
+        # faster comparison; large scopes use the streaming pin digest.
+        # Account for tuple structure only, not existing shared strings.
+        fast=[] if 512*len(routing)+256<=max_bytes//2 else None
+        fast_bytes=0
+        def tuple_bytes(value):
+            return (sys.getsizeof(value)+sum(tuple_bytes(v) for v in value)
+                    if type(value) is tuple else 0)
+        digest.update(b"[")
+        encoded_bytes=2
+        for i,obj in enumerate(routing):
+            pin=_routing_pin(obj)
+            if pin is None or not _update_routing_pin(pins,pin):
+                return None
+            encoded=canonical_json(material(obj)).encode("utf-8")
+            if i:
+                digest.update(b",")
+                encoded_bytes+=1
+            digest.update(encoded)
+            encoded_bytes+=len(encoded)
+            mappings.append(obj.semantic_fields)
+            if fast is not None:
+                fast.append(pin)
+                fast_bytes+=tuple_bytes(pin)+16
+                if fast_bytes+24*len(routing)>max_bytes//2:
+                    fast=None
+                    fast_bytes=0
+        digest.update(b"]")
+        after=digest.copy()
+        for part in pieces:
+            if part is None:
+                return None
+            digest.update(part)
+        if digest.hexdigest()!=expected_hash:
+            return None
+        held=tuple(mappings)
+        return cls(workload,routing,held,pins.digest(),prefix,after,encoded_bytes,
+                   sys.getsizeof(held)+sys.getsizeof(after)+128+fast_bytes,
+                   tuple(fast) if fast is not None else None)
+
+    def digest(self):
+        workload=self.workload
+        if (type(workload.projection) is not GovernedC11Projection
+                or workload.projection.routing is not self.routing
+                or len(self.mappings)!=len(self.routing)):
+            return None
+        pins=hashlib.sha256()
+        for i,(obj,mapping) in enumerate(zip(self.routing,self.mappings)):
+            if obj.semantic_fields is not mapping:
+                return None
+            pin=_routing_pin(obj)
+            if pin is None:
+                return None
+            if self.fast_pins is not None:
+                if pin!=self.fast_pins[i]:
+                    return None
+            elif not _update_routing_pin(pins,pin):
+                return None
+        if self.fast_pins is None and pins.digest()!=self.pin_digest:
+            return None
+        digest=hashlib.sha256()
+        pieces=_routing_envelope_parts(workload)
+        for part in pieces:
+            if part is None:
+                if digest.digest()!=self.prefix_digest:
+                    return None
+                digest=self.after_routing.copy()
+                break
+            digest.update(part)
+        else:
+            return None
+        for part in pieces:
+            if part is None:
+                return None
+            digest.update(part)
+        return digest.hexdigest()
+
+
 def admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: str,
           purpose: str, allow_test_only: bool = False,
           expected_wave: OriginalWaveIdentity | None = None) -> IssuedWorkloadRecord:
+    """Public admission always validates the complete ordinary envelope."""
+    return _admit(workload,resolver,host=host,purpose=purpose,
+                  allow_test_only=allow_test_only,expected_wave=expected_wave)
+
+
+def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: str,
+           purpose: str, allow_test_only: bool = False,
+           expected_wave: OriginalWaveIdentity | None = None,
+           prepared: _PreparedRoutingEnvelope | None = None) -> IssuedWorkloadRecord:
     """Refuse copied/rehash descriptors and no-drop violations before source open.
 
     ``resolver`` is an independent external reader, never the historical
@@ -298,7 +519,11 @@ def admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: 
     if record.source_sha256 != workload.projection.expected_source_sha256:
         raise WorkloadAdmissionError("ISSUED_SOURCE_EDITION_MISMATCH")
     try:
-        envelope_sha256 = semantic_hash(workload.envelope())
+        envelope_sha256 = None
+        if type(prepared) is _PreparedRoutingEnvelope and prepared.workload is workload:
+            envelope_sha256 = prepared.digest()
+        if envelope_sha256 is None:
+            envelope_sha256 = semantic_hash(workload.envelope())
     except WorkloadAdmissionError:
         raise
     except (TypeError, ValueError) as exc:
@@ -391,9 +616,16 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     prior_receipts = tuple(prior_receipts)
     prior_outputs = dict(prior_outputs or {})
 
+    prepared = None
+
     def check_current():
-        current = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
-                        expected_wave=expected_wave)
+        if prepared is None:
+            current = admit(workload, resolver, host=host, purpose=purpose,
+                            allow_test_only=allow_test_only,expected_wave=expected_wave)
+        else:
+            current = _admit(workload,resolver,host=host,purpose=purpose,
+                             allow_test_only=allow_test_only,expected_wave=expected_wave,
+                             prepared=prepared)
         if current != record:
             raise WorkloadAdmissionError("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
 
@@ -434,6 +666,11 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         if source.source_sha256 != record.source_sha256:
             raise WorkloadAdmissionError("SOURCE_FACTORY_RETURNED_WRONG_EDITION")
         check_current()
+        # Bounded sourcefree country opt-in only. Original sources and other
+        # carriers retain the incumbent admission path until qualified.
+        from rawlsing_next.pre553_country_numeric_carrier import _CountryPhysicalStream
+        if type(source) is _CountryPhysicalStream and record.scope=="TEST_ONLY_SOURCEFREE":
+            prepared = _PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
         # No invented empty DiscoveryAuthority: query-only scopes use actual C11/I03.
         routes_list = []
         if max_units is None:

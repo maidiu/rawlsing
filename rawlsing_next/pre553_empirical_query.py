@@ -37,6 +37,7 @@ from rawlsing_next._pre553_query_common import (
 from rawlsing_next.pre553_empirical_authority import require_positive_authority
 from rawlsing_next._pre553_query_eval import (
     _build_fact,
+    _ConditionMemo,
     _build_negative_fact,
     _evaluate_index_group,
     _evaluate_index_group_core,
@@ -510,6 +511,7 @@ class I03GroupedExecutionScope:
         *,
         max_groups: int = 64,
         max_cached_members: int = 500_000,
+        max_condition_bytes: int = 16*1024*1024,
     ) -> None:
         if not isinstance(max_groups, int) or isinstance(max_groups, bool) or max_groups < 1:
             raise ValueError("max_groups must be a positive integer")
@@ -519,6 +521,11 @@ class I03GroupedExecutionScope:
             or max_cached_members < 1
         ):
             raise ValueError("max_cached_members must be a positive integer")
+        if type(max_condition_bytes) is not int or max_condition_bytes<0:
+            raise ValueError("max_condition_bytes must be a nonnegative integer")
+        self._max_condition_bytes=max_condition_bytes
+        self._condition_bytes=0
+        self._condition_memos={}
         self._max_groups = max_groups
         self._max_cached_members = max_cached_members
         self._cache: dict[tuple, Any] = {}
@@ -545,6 +552,8 @@ class I03GroupedExecutionScope:
 
     def close(self) -> None:
         self._cache.clear()
+        self._condition_memos.clear()
+        self._condition_bytes=0
         self._index_identities.clear()
         self._registry_identities.clear()
         self._closed = True
@@ -556,6 +565,10 @@ class I03GroupedExecutionScope:
             "open_groups": len(self._cache),
             "max_groups": self._max_groups,
             "max_cached_members": self._max_cached_members,
+            "condition_cache_bytes_estimate":self._condition_bytes,
+            "condition_cache_hits":sum(m.hits for m in self._condition_memos.values()),
+            "condition_cache_misses":sum(m.misses for m in self._condition_memos.values()),
+            "condition_capacity_fallbacks":sum(m.capacity_fallbacks for m in self._condition_memos.values()),
             **self._stats,
         }
 
@@ -586,6 +599,10 @@ class I03GroupedExecutionScope:
         if entry is not None and entry[0] is registry:
             return entry[1]
         identity = _registry_fingerprint(registry)
+        # Catalog may create one validated registry per operation. Do not
+        # retain every registry for a long distinct-query workload.
+        if len(self._registry_identities)>=8:
+            self._registry_identities.pop(next(iter(self._registry_identities)))
         self._registry_identities[id(registry)] = (registry, identity)
         return identity
 
@@ -625,6 +642,31 @@ class I03GroupedExecutionScope:
             self._registry_identity(registry),
             "MEASURE_INDEPENDENT_CORE",
         )
+
+    def _condition_memo_for(self,index,registry,predicate):
+        if self._closed or not self._max_condition_bytes:
+            return None
+        if (index.runtime_authorities is not None or index.runtime_repository is not None
+                or index.runtime_predicate_grammar_authority_ref is not None):
+            return None
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+        if current_runtime_binding() is not None:
+            return None
+        key=(self._index_identity(index),self._registry_identity(registry),_predicate_identity(predicate))
+        memo=self._condition_memos.get(key)
+        if memo is not None:
+            return memo if memo.compatible(index,registry,predicate) else None
+        # Cap the number of condition plans as well as retained row evidence.
+        if len(self._condition_memos)>=self._max_groups:
+            return None
+        def budget(cost):
+            if self._condition_bytes+cost>self._max_condition_bytes:
+                return False
+            self._condition_bytes+=cost
+            return True
+        memo=_ConditionMemo(index,registry,predicate,budget)
+        self._condition_memos[key]=memo
+        return memo
 
     def _miss_capacity_exhausted(self, cached_members: int) -> bool:
         """Return True only when no new core can fit the current bounds.
@@ -704,6 +746,7 @@ class I03GroupedExecutionScope:
                 plan=plan,
                 profile=profile,
                 registry=registry,
+                condition_memo=self._condition_memo_for(index,registry,predicate),
             )
         except Exception:
             self._stats["fallbacks"] += 1

@@ -79,6 +79,10 @@ class C11Repository:
         # records must not escape by resolving a ref without its release.
         # Event locators already perform their own checked body retrieval.
         self._country_object_guards: dict[str, tuple[Any, ...]] = {}
+        # Country event identity tables are packed and sorted. Keep only the
+        # lane per sealed release, not a string key, locator and guard tuple
+        # for each event. Exact shared-owner checks remain conjunctive.
+        self._country_event_lanes: tuple[Any, ...] = ()
         # Derived I03 topology only, scoped to this exact append-only repository.
         self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
         self._i03_index_lock = Lock()
@@ -119,13 +123,23 @@ class C11Repository:
         if not isinstance(ref, ExactRef):
             raise KeyError("exact object ref required")
         obj = self._objects.get(ref.key)
-        if obj is None:
+        matches=[]
+        for lane in self._country_event_lanes:
+            index=lane.bodies.find_event(ref)
+            if index is not None:
+                lane.bodies.check_live()
+                matches.append((lane,index))
+        if obj is None and not matches:
             raise KeyError("exact C11 object unavailable; no fallback permitted")
-        if isinstance(obj, _EventLocator):
-            return obj.materialize()
         for guard in self._country_object_guards.get(ref.key, ()):
             guard.check_live()
-        return obj
+        if matches:
+            lane,index=matches[-1]
+            event=lane.materialize(index)
+            if event.ref!=ref:
+                raise C11AtomicityError("packed event identity mismatch")
+            return event
+        return obj.materialize() if isinstance(obj, _EventLocator) else obj
 
     def _commit_validated(self, release: C11LogicalRelease) -> None:
         """Atomic commit primitive used only after complete ingest validation."""
@@ -147,14 +161,15 @@ class C11Repository:
             from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
             if type(public.lane.bodies) is _CountryEventBodies:
                 country_guard = public.lane.bodies
-        entries = public.exact_entries() if isinstance(public, _CompactPublicObjects) else public
+        entries = (public.non_events if country_guard is not None
+                   else public.exact_entries() if isinstance(public, _CompactPublicObjects) else public)
         for obj in chain(entries, release.internal_records, (release.replay_manifest,)):
             obj_ref = obj.ref
             prior = staged.get(obj_ref.key)
             if prior is not None and prior.ref.content_hash != obj_ref.content_hash:
                 raise C11AtomicityError("exact object ref collision has conflicting content")
             staged[obj_ref.key] = obj
-            if country_guard is not None and not isinstance(obj, _EventLocator):
+            if country_guard is not None:
                 # Shared exact objects may belong to more than one country
                 # release. Conservatively respect *every* live country owner.
                 guards = staged_guards.get(obj_ref.key, ())
@@ -163,6 +178,8 @@ class C11Repository:
 
         self._objects = staged
         self._country_object_guards = staged_guards
+        if country_guard is not None:
+            self._country_event_lanes=(*self._country_event_lanes,public.lane)
         self._by_ref[ref.key] = release
         self._by_release_id[release.release_id] = release.semantic_release_hash
 
