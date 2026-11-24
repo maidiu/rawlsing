@@ -438,12 +438,16 @@ class _CountryEventBodies:
     def check_current(self):
         self.reader._verify()
 
+    def check_live(self):
+        """Every existing country-backed exact-object reader must remain CURRENT."""
+        if self.reader._closed:
+            raise CountryCarrierError("country object resolver closed")
+        _live(self.reader.require_current)
+
     def __getitem__(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
         reader=self.reader
-        if reader._closed:
-            raise CountryCarrierError("country event resolver closed")
-        _live(reader.require_current)
+        self.check_live()
         source_rows,respondent,question,expected=self.locators[index]
         matches=[]
         for row in source_rows:

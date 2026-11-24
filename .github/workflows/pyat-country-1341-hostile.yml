@@ -1,0 +1,17 @@
+name: PYAT 1341 independent country hostile object-access court
+on:
+  push:
+    branches: [agent/pyat-country-1341-hostile-review-r1]
+  workflow_dispatch:
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pandas pyreadstat pyarrow pytest
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - run: python -m unittest rawlsing_next.tests.test_pre553_country_numeric_carrier rawlsing_next.tests.test_pre553_country_numeric_hostile -v
