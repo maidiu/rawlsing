@@ -26,7 +26,7 @@ class EncounterRefusal(ValueError):
     """A user cannot create world, actor, source or sensory rights by prose."""
 
 
-_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK'})
+_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -175,6 +175,15 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
+    if operation == 'REPAIR' and visible:
+        # The world has actually settled repair before this projection.
+        # No audible tool, identification, intent or approval is invented.
+        result.append({'event_ref': event_ref, 'actor': actor['id'],
+                       'modality': 'visual', 'kind': 'visitor_material_work',
+                       'tags': ['material_work', 'visible_activity'],
+                       'description': 'Someone works on a nearby object.',
+                       'grade': grade, 'target_identity_known': False,
+                       'actor_notice_not_established': True})
     return result
 
 
@@ -273,6 +282,10 @@ class NeighborEncounter:
             target_object_ref = _text(target_object_ref, 'LOOK_TARGET', 100)
             if cover_text is not None:
                 cover_text = _text(cover_text, 'COVER_SPEECH')
+        elif operation == 'REPAIR':
+            target_object_ref = _text(target_object_ref, 'REPAIR_TARGET', 100)
+            if cover_text is not None:
+                raise EncounterRefusal('UNAUTHORED_REPAIR_SPEECH')
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         version, world = self._world()
@@ -283,6 +296,8 @@ class NeighborEncounter:
             # Preserve existing operation event IDs and old replay hashes.
             request_payload.update(target_object_ref=target_object_ref,
                                    cover_text=cover_text)
+        elif operation == 'REPAIR':
+            request_payload['target_object_ref'] = target_object_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
@@ -301,6 +316,7 @@ class NeighborEncounter:
         if operation != 'MOVE' and operation != 'LEAVE' and not person['present']:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
+        material_outcome = None
         loc = origin
         if operation == 'MOVE':
             if destination not in world['sites']:
@@ -330,11 +346,38 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
+        elif operation == 'REPAIR':
+            # A thin human participant is not a registered synthetic actor.
+            # Existing CO artifact settlement accepts a material worker ID.
+            # Public entrance is not a grant to consume someone else's stock.
+            # Even at a controllerless site require an explicit visitor grant.
+            from um_sorok_organism.material_objects import repair_artifact
+            source = _bound_source(world)
+            sight = source.get('user_conditions', {}).get(loc, {})
+            site = world.get('sites', {}).get(loc, {})
+            grants = site.get('material_use_grants', [])
+            target = world.get('material_objects', {}).get(target_object_ref)
+            allowed = (type(grants) is list and self.user_id in grants
+                       and type(target) is dict
+                       and target.get('kind') == 'WORKED_MATERIAL_ARTIFACT'
+                       and target.get('id') == target_object_ref
+                       and target.get('location') == loc
+                       and target.get('visible') is True
+                       and target.get('grade') == GRADE
+                       and sight.get('light') == 'lit'
+                       and sight.get('sightline') == 'unobstructed')
+            if allowed:
+                actual = repair_artifact(world, self.user_id, loc, target_object_ref)
+                status = actual['status']
+                material_outcome = actual['outcome']
+            else:
+                status = 'BLOCKED'
+                material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
         world['clock'] += 1
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
@@ -366,6 +409,10 @@ class NeighborEncounter:
                          visitor_reading='NOT_ESTABLISHED',
                          other_actor_interpretation='NOT_ESTABLISHED',
                          user_look_is_not_private_mii_attend=True)
+        if operation == 'REPAIR':
+            event.update(target_object_ref=target_object_ref,
+                         material_outcome=material_outcome,
+                         actor_meaning_not_established=True)
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
