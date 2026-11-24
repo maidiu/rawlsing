@@ -107,8 +107,8 @@ class LedgerSpy:
         self._world=copy.deepcopy(world)
         self._version+=1
         eid='evt_'+str(self._version)
-        self._events.append({'id':eid,'kind':kind,
-            'envelope':{'payload':copy.deepcopy(payload)}})
+        self._events.append({'id':eid,'kind':kind,'clock':world['clock'],
+            'envelope':{'world':wid,'payload':copy.deepcopy(payload)}})
         return {'id':eid}
 
 
