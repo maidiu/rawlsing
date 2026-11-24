@@ -207,7 +207,10 @@ class OneWorldContract(unittest.TestCase):
         self.neighbor.independent_actor_beat('worker')
         self.assertEqual(self.runtime.calls,[('step','worker')])
         p=self.neighbor.new_private_profile();view=self.neighbor.private_surface(p)
-        self.assertIn('The worker continues',str(view['narration']))
+        # A spy.step that returns a prose tip but never commits a real
+        # ACTOR_LIFE_TRANSITION must NOT certify it as publicly observed.
+        # The actual CO positive path is exercised in the joined R7 court.
+        self.assertNotIn('The worker continues',str(view['narration']))
     def test_blocked_move_is_world_history_not_teleport(self):
         self.neighbor.contribute('come','MOVE',destination='workshop')
         a=self.neighbor.contribute('blocked','MOVE',destination='hall')
