@@ -589,6 +589,44 @@ class NeighborEncounter:
                         'source_cue_ref': cue['id'],
                         'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
                         'interpretation': 'NONE'})
+        # R27's existing branch-local common-occurrence admission produces
+        # an actual sourcefree auditory sign, NOT verified real-world news
+        # or a scripted event with an assigned actor response. Receive only
+        # the committed local sign. Do not render its analyst description as
+        # spoken words or expose its proposal's required actor locations.
+        if (audible and last_event.get('kind') == 'SOURCEFREE_CONTINGENT_WORLD_NOTICE'
+                and last_event.get('clock') == current_clock
+                and envelope.get('world') == self.runtime.world_id
+                and world.get('cues')):
+            source_receipt = envelope.get('payload', {})
+            cue = world['cues'][-1]
+            if (type(source_receipt) is dict
+                    and source_receipt.get('independent_branch_eligibility')
+                        == 'ELIGIBLE_SOURCEFREE_NOTICE_ONLY'
+                    and source_receipt.get('not_proof_of_current_real_world_event') is True
+                    and source_receipt.get('grade') == GRADE
+                    and type(cue) is dict and type(cue.get('id')) is str
+                    and cue['id'] == source_receipt.get('cue_ref')
+                    and type(cue.get('contingent_offer_id')) is str
+                    and cue['contingent_offer_id'] == source_receipt.get('offer_id')
+                    and type(cue.get('contingent_offer_hash')) is str
+                    and cue['contingent_offer_hash'] == source_receipt.get('proposal_hash')
+                    and cue.get('external_sign_only_not_verified_news_or_world_damage') is True
+                    and cue.get('clock') == current_clock
+                    and cue.get('last_access_clock', -1) >= current_clock
+                    and cue.get('location') == loc
+                    and cue.get('modality') == 'auditory'
+                    and cue.get('source_actor') is None
+                    and cue.get('private_to') is None):
+                mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
+                    'text': 'An external sound is audible nearby.',
+                    'modality': 'auditory',
+                    'source_event_ref': last_event['id'],
+                    'source_cue_ref': cue['id'],
+                    'source': 'EXISTING_CO_BRANCH_LOCAL_CONTINGENT_SIGN',
+                    'lexical_content': 'NOT_CAPTURED_OR_RECONSTRUCTED',
+                    'external_event_truth': 'NOT_ESTABLISHED',
+                    'interpretation': 'NONE'})
         if self._last_actor_tip is not None:
             receipt, at_clock, tip = self._last_actor_tip
             actor_location = world['positions'].get(self._last_actor_ref)
