@@ -45,7 +45,18 @@ def _issued_shape(issued, mode):
         grammar = canonicalize(old.candidate_universe_definition)
         rules = grammar["rules"]
         assert len(rules) >= 2
-        partitions = (rules[:1], rules[1:])
+        if mode == "multi-learned":
+            # Two actual disjoint native frontiers with eligible conditional
+            # rules on each, rather than two copies of the same result.
+            conditional = [rule for rule in rules
+                           if rule["family"] == "BRANCH_CONDITIONED_DISTRIBUTION"]
+            others = [rule for rule in rules
+                      if rule["family"] != "BRANCH_CONDITIONED_DISTRIBUTION"]
+            assert len(conditional) >= 2
+            partitions = (conditional[::2] + others[::2],
+                          conditional[1::2] + others[1::2])
+        else:
+            partitions = (rules[:1], rules[1:])
         snapshots = []
         objects = []
         for i, part in enumerate(partitions):
