@@ -974,6 +974,67 @@ class NeighborEncounter:
                         'source_cue_ref': cue['id'],
                         'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',
                         'interpretation': 'NONE'})
+        # R19: a particular material offer can be refused, independently of
+        # its benefit. Do not interpret silence, WAIT, or a generic refusal
+        # as a response to this human's offer. Only the actual source-bound
+        # outward event qualifies, in the giver's current visual field.
+        if (visible_identity and last_event.get('kind')=='ACTOR_LIFE_TRANSITION'
+                and last_event.get('clock')==current_clock
+                and envelope.get('world')==self.runtime.world_id
+                and type(actual) is dict and actual.get('clock')==current_clock
+                and actual.get('actor')==last_event.get('actor_id')
+                and actual.get('action')=='REFUSE'
+                and actual.get('status')=='PERFORMED'
+                and actual.get('target')==self.user_id
+                and actual.get('outcome')=='PARTICULAR_HUMAN_FOOD_OFFER_REFUSED'
+                and envelope.get('payload',{}).get('actor_selection_grade')
+                    =='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                and world.get('public_history') and world.get('cues')):
+            public=world['public_history'][-1]
+            cue=world['cues'][-1]
+            offer_ref=actual.get('human_food_offer_refused_event_ref')
+            sign_ref=actual.get('human_food_refusal_cue_ref')
+            prev=history[-2] if len(history)>1 else {}
+            prior=prev.get('envelope',{}).get('payload',{})
+            offers=[e for e in world.get('neighbor_user_events',[])
+                    if e.get('event_ref')==offer_ref]
+            if (type(offer_ref) is str and type(sign_ref) is str
+                    and len(offers)==1
+                    and all(public.get(k)==actual.get(k) for k in
+                        ('clock','actor','target','action','status','outcome',
+                         'human_food_offer_refused_event_ref','human_food_refusal_cue_ref'))
+                    and cue.get('id')==sign_ref
+                    and cue.get('kind')=='performed_refuse'
+                    and cue.get('source_actor')==actual['actor']
+                    and cue.get('human_food_offer_refused_event_ref')==offer_ref
+                    and cue.get('clock')==current_clock
+                    and cue.get('last_access_clock',-1)>=current_clock
+                    and cue.get('location')==loc
+                    and cue.get('modality')=='visual'
+                    and cue.get('private_to') is None
+                    and actual.get('material_feeding_ref') is None
+                    and not any(x.get('human_authored_offer_ref')==offer_ref
+                                for x in world.get('material_feeding_events',[]))
+                    and prev.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+                    and prev.get('clock')==current_clock-1
+                    and prev.get('envelope',{}).get('world')==self.runtime.world_id
+                    and prior.get('user_event_ref')==offer_ref
+                    and prior.get('user')==self.user_id
+                    and prior.get('performed') is True):
+                offer=offers[0]
+                if (offer.get('user')==self.user_id
+                        and offer.get('target_actor_ref')==actual['actor']
+                        and offer.get('operation')=='OFFER_FEED'
+                        and offer.get('status')=='PERFORMED'
+                        and offer.get('destination')==loc
+                        and offer.get('clock')==current_clock-1
+                        and prior.get('payload_hash')==offer.get('payload_hash')):
+                    mandatory.append({'kind':'CO_PUBLIC_OCCURRENCE',
+                        'text':'The offered food is declined.',
+                        'modality':'visual','source_event_ref':last_event['id'],
+                        'source_cue_ref':sign_ref,
+                        'source':'EXISTING_CO_PARTICULAR_REFUSAL_SIGN',
+                        'interpretation':'NONE'})
         # R27's existing branch-local common-occurrence admission produces
         # an actual sourcefree auditory sign, NOT verified real-world news
         # or a scripted event with an assigned actor response. Receive only
@@ -1028,7 +1089,11 @@ class NeighborEncounter:
             human_signal_attempt = (type(actual) is dict
                 and actual.get('action')=='SIGNAL'
                 and actual.get('target') in world.get('neighbor_users',{}))
-            if (not human_signal_attempt and visible_identity and actor_location == loc
+            particular_refusal = (type(actual) is dict
+                and actual.get('action')=='REFUSE'
+                and actual.get('human_food_offer_refused_event_ref') is not None)
+            if (not human_signal_attempt and not particular_refusal
+                    and visible_identity and actor_location == loc
                     and at_clock == world['clock']
                     and last['id'] == receipt
                     and last['kind'] == 'ACTOR_LIFE_TRANSITION'

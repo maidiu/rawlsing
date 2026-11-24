@@ -15,7 +15,7 @@ from .attention_field import situate_attention
 from .historical_self_organization import pre_cue_pressures
 from .care_commitment_genesis import practiced_care_alternatives
 from .cultural_mediation import cultural_object_alternatives
-from .distributed_power import conditional_assistance_options
+from .distributed_power import conditional_assistance_options, current_addressed_food_offers
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
 from .material_objects import (
@@ -624,6 +624,10 @@ def compose(constitution,access,limit=50):
                 'action':'SIGN_HALL_PETITION','score':.055,
                 'basis':['WORLD_PUBLISHED_INSTITUTIONAL_PROCEDURE'],
                 'opportunity':'PUBLIC_RIGHT_NOT_PREASSIGNED_SOLIDARITY'})
+    if current_addressed_food_offers(access) and eligible(constitution.body,'REFUSE')[0]:
+        actions.setdefault('REFUSE',{'action':'REFUSE','score':.055,
+            'basis':['CURRENT_ACTOR_ACCESSIBLE_MATERIAL_OFFER'],
+            'opportunity':'PARTICULAR_OFFER_MAY_BE_REFUSED_NOT_REQUIRED'})
     for a,q in actions.items():
         if a in ('WORK','REPAIR','SING','JOIN','MAKE_SPACE','OPEN_HALL') and access.location not in ('workshop','home','hall'):
             q['score']*=.45
