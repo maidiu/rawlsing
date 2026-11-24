@@ -763,6 +763,10 @@ def _compile_frontier(
                 mt = template(template_id)
                 if int(_mapping(mt.query.target_arity_and_topology, "marginal topology").get("arity", 0)) != 1:
                     raise ExactBoundedDiscoveryError("joint dependence marginals must be scalar target templates")
+                if (len(mt.query.target_refs) != 1
+                        or len(joint_t.query.target_refs) != joint_arity
+                        or exact_ref(mt.query.target_refs[0]) != exact_ref(joint_t.query.target_refs[idx])):
+                    raise ExactBoundedDiscoveryError("joint dependence marginal target must match ordered joint axis")
                 roles.append(_QueryRole(
                     f"MARGINAL_{idx}", baseline.predicate,
                     _clone_query(mt.query, baseline.predicate, role_material={"rule": rule_id, "role": f"MARGINAL_{idx}"}),
@@ -898,39 +902,87 @@ def _distribution_differs(condition: QueryExecutionResult, baseline: QueryExecut
     return changed
 
 
-def _joint_dependence(results: Mapping[str, QueryExecutionResult]) -> bool:
+def _joint_dependence(results: Mapping[str, QueryExecutionResult], comparisons=None) -> bool:
+    """Test factorization on the actual joint's common resolved respondents.
+
+    Separately issued marginal queries retain their own risk and response
+    denominators; comparing those proportions to a joint from different
+    cases manufactures dependence. Project the exact native joint counts to
+    its own axes before evaluating the already-governed factorization law.
+    No new I03 fact, estimate, cohort membership or authority is issued.
+    """
     joint = results["JOINT"]
-    marginal_roles = sorted(role for role in results if role.startswith("MARGINAL_"))
+    marginal_roles = sorted(
+        (role for role in results if role.startswith("MARGINAL_")),
+        key=lambda role: int(role.split("_")[-1]),
+    )
     joint_by_scope = {_fact_scope_key(f): f for f in joint.facts}
     marginals_by_role = {
         role: {_fact_scope_key(f): f for f in results[role].facts} for role in marginal_roles
     }
+    if any(set(marginals_by_role[role]) != set(joint_by_scope) for role in marginal_roles):
+        raise ExactBoundedCoverageError("joint/marginal source scopes differ")
+    dependent = False
     for scope, jf in joint_by_scope.items():
-        if any(scope not in marginals_by_role[role] for role in marginal_roles):
-            raise ExactBoundedCoverageError("joint/marginal source scopes differ")
         jc, jd = _cell_counts(jf)
         if jd == 0:
             continue
-        marg_material = []
-        for role in marginal_roles:
-            mf = marginals_by_role[role][scope]
-            mc, md = _cell_counts(mf)
-            if md == 0:
-                raise ExactBoundedCoverageError("joint positive support has zero-support marginal")
-            marg_material.append((mc, md))
+        if sum(jc.values(), Fraction(0, 1)) != jd:
+            raise ExactBoundedCoverageError("joint cells do not conserve their exact measure denominator")
+        projected = [{} for _ in marginal_roles]
+        decoded = []
         for cell_key, observed in jc.items():
             cell = canonicalize(__import__("json").loads(cell_key))
-            if not isinstance(cell, Sequence) or isinstance(cell, str) or len(cell) != len(marg_material):
+            if not isinstance(cell, Sequence) or isinstance(cell, str) or len(cell) != len(projected):
                 raise ExactBoundedDiscoveryError("joint cell arity does not match marginal templates")
-            lhs = observed
-            rhs = jd
-            for idx, (counts, denominator) in enumerate(marg_material):
-                lhs *= denominator
+            decoded.append((cell, observed))
+            for idx, value in enumerate(cell):
+                key = canonical_json(value)
+                projected[idx][key] = projected[idx].get(key, Fraction(0, 1)) + observed
+        # Keep all actual issued marginal role facts. Only their projections
+        # on the *joint* common cases are the factorization operands.
+        details = []
+        for idx, role in enumerate(marginal_roles):
+            mf = marginals_by_role[role][scope]
+            mc, md = _cell_counts(mf)
+            same_cases = (
+                tuple(jf.denominator_member_refs) == tuple(mf.denominator_member_refs)
+            )
+            same_measure = (_fact_measure_kind(jf) == _fact_measure_kind(mf)
+                            and exact_ref(jf.measure_basis_ref) == exact_ref(mf.measure_basis_ref))
+            same_counts = (jd == md and all(
+                projected[idx].get(key, Fraction(0, 1)) == mc.get(key, Fraction(0, 1))
+                for key in set(projected[idx]) | set(mc)
+            ))
+            details.append({
+                "role": role, "fact_ref": mf.ref.as_dict(),
+                "raw_denominator": mf.raw_denominator_support,
+                "same_exact_denominator_members": same_cases,
+                "same_measure_basis": same_measure,
+                "same_projected_counts": same_counts,
+            })
+        # Preserve unchanged receipt identities when the old and corrected
+        # law coincide. Explicitly qualify changed-cohort/measure comparisons.
+        if comparisons is not None and any(
+            not (d["same_exact_denominator_members"] and d["same_measure_basis"]
+                 and d["same_projected_counts"]) for d in details
+        ):
+            comparisons.append({
+                "basis": "JOINT_COMPLETE_CASE_MARGINAL_PROJECTIONS",
+                "joint_fact_ref": jf.ref.as_dict(),
+                "joint_raw_denominator": jf.raw_denominator_support,
+                "separately_executed_marginals": details,
+                "interpretation": "DESCRIPTIVE_JOINT_MEASURE_FACTORIZATION__NO_POPULATION_OR_CAUSAL_CLAIM",
+            })
+        for cell, observed in decoded:
+            lhs = observed * jd ** (len(projected) - 1)
+            rhs = Fraction(1, 1)
+            for idx, counts in enumerate(projected):
                 rhs *= counts.get(canonical_json(cell[idx]), Fraction(0, 1))
-            # observed/jd != product(count_i/den_i)
             if lhs != rhs:
-                return True
-    return False
+                dependent = True
+                break
+    return dependent
 
 
 def _target_cell_supported(result: QueryExecutionResult, target_cell: Any) -> bool:
@@ -1042,7 +1094,10 @@ def _evaluate_candidate(
     if kind == "DISTRIBUTION_DIFFERS_FROM_BASELINE":
         supported = _distribution_differs(results["CONDITION"], results["BASELINE"])
     elif kind == "JOINT_NOT_PRODUCT_OF_MARGINALS":
-        supported = _joint_dependence(results)
+        comparisons = []
+        supported = _joint_dependence(results, comparisons)
+        if comparisons:
+            support["joint_dependence_comparison"] = canonicalize(comparisons)
     elif kind == "CONDITIONAL_REVERSAL":
         supported = _conditional_reversal(results, candidate.validation)
     elif kind == "TARGET_CELL_SUPPORTED":
