@@ -1,6 +1,7 @@
 """Actual generated SAV -> saved C11 -> issued Batch -> S2-F -> cold S04."""
 from dataclasses import replace
 from pathlib import Path
+from time import monotonic
 import shutil
 import pytest
 
@@ -202,7 +203,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
     private.mkdir(mode=0o700)
     sink = SourceSavedBodySink(certificate_path=tmp_path / "q2.sqlite",
                                authorized_private_root=private, chunk_rows=2)
+    ingestion_start = monotonic()
     handoff = s1e.build(tmp_path, fx, name="q2.sqlite", body_sink=sink, chunk_size=2)
+    ingestion_seconds = monotonic() - ingestion_start
     estate = sink.receipt
     projection = fx["projection"]
     bundle = s1e._native_bundle(handoff, fx, projection,
@@ -239,11 +242,13 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
         pytest.fail("cold retrieval attempted native computation")
     monkeypatch.setattr(SavedC11Admission, "open", forbidden)
     monkeypatch.setattr(DirectEstateI03Session, "_build", forbidden)
+    cold_start = monotonic()
     cold = open_saved_product(
         result.receipt.root_path, expected_root=result.receipt.root_identity,
         expected_release_ref=estate.reconstructed_v1_release_ref,
         expected_saved_manifest_sha256=estate.manifest_sha256, workload=workload,
         resolver=resolver, host=s1e._NATIVE_HOST, purpose=s1e._NATIVE_PURPOSE)
+    cold_open_seconds = monotonic() - cold_start
     supported = []
     for req in workload.requests:
         query = workload.catalog.resolve_query_exact(req.query_ref)
@@ -254,7 +259,9 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
             supported.append(query)
     assert supported, "the actual two-item governed source never issued a supported joint"
     query = supported[0]
+    ff_start = monotonic()
     read = cold.read_s04(query.ref, conditioner_index=0)
+    ff_seconds = monotonic() - ff_start
     ff = read.first_consumer.ff01
     assert ff is not None
     assert ff.semantic_projection()["raw_fully_resolved_joint_n"] == 5
@@ -313,6 +320,10 @@ def test_generated_joint_source_to_persistent_ff01(tmp_path, monkeypatch, source
           result.execution_seconds, result.publication_seconds,
           result.receipt.referenced_physical_bytes, ff.ref.key)
 
+    print("SAVED_PIPELINE_COST", source_format, "ingest", ingestion_seconds,
+          "native", result.execution_seconds, "s2f", result.publication_seconds,
+          "cold_open", cold_open_seconds, "ff01", ff_seconds,
+          "s2f_referenced_bytes", result.receipt.referenced_physical_bytes)
     _learned_vertical(cold, closure, tmp_path, source_format)
 
 
@@ -398,6 +409,15 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
         condition_binding_witness=witness, discovery_result=discovery,
         discovery_receipt_ref=receipt.ref)
     assert composition.consumer_result_or_null is not None
+    assert composition.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    # Independent physical five-row oracle: both columns have two zeroes
+    # and three ones; the conditioned joint fibre is (1,1) or (1,2).
+    assert float(value) in (0., 1.)
+    expected_counts = [1, 1] if float(value) == 0. else [1, 2]
+    assert fact.raw_denominator_support == sum(expected_counts)
+    assert sorted(cell["raw_numerator_support"] for cell in
+                  composition.consumer_result_or_null.exact_geometry["cells"]
+                  if cell["raw_numerator_support"] > 0) == expected_counts
     authority = _m1_authority(tag)
     binding = _binding(authority)
     ingress = _contract(route="M01_M1_M2_B5", binding=binding, tag=tag)
@@ -433,6 +453,38 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
                 determinants=replace(determinants, **{field: "0"*64}))
         assert_unchanged(invalid_root)
 
+    # An adversary can readdress the consumer and witness consistently:
+    # merely checking the resulting composition hash cannot prove target identity.
+    # C1's existing discovery path is exercised unchanged, exposing the
+    # wrong-target result; S2-G must refuse it before any lifecycle mutation.
+    wrong_target = ExactRef("TEST_ONLY_FOREIGN_TARGET", "urn:test:" + tag + ":foreign",
+                            semantic_hash({"foreign": tag}))
+    wrong_consumer = replace(consumer, target_ref=wrong_target)
+    wrong_witness = fx.build_witness_for_binding(
+        witness_object_id="urn:test:" + tag + ":wrong-target",
+        consumer_query=wrong_consumer, producer_query=query, producer_predicate=predicate,
+        bindings=[conditioner], coordinate_value_pairs=[(coord, value)],
+        pairing_authority=pairing, source_universe_ref=universe, release_ref=release)
+    wrong_composition = compose_positioned_subject_possibility(
+        repository=None, empirical_query=query, predicate=predicate,
+        authority_registry=AuthorityRegistry(closure.object_graph.authority_snapshots),
+        release_refs=(release,), consumer_query=wrong_consumer, model_rule=model,
+        condition_binding_witness=wrong_witness, discovery_result=discovery,
+        discovery_receipt_ref=receipt.ref)
+    assert wrong_composition.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert wrong_composition.consumer_result_or_null.target_ref == wrong_target
+    assert wrong_composition.consumer_result_or_null.exact_geometry["target"]["target_ref"] == target.as_dict()
+    invalid_root = tmp_path / "wrong-target"
+    with pytest.raises(DurableLearnedLifecycleError, match="unary target differs"):
+        cold.publish_learned(**args, m2_repository=repository,
+            lifecycle_executor=executor, root_dir=invalid_root,
+            determinants=replace(determinants, consumer_query=wrong_consumer,
+                condition_binding_witness=wrong_witness,
+                expected_composition_identity=wrong_composition.composed_result_identity_hash,
+                expected_consumer_result_hash=wrong_composition.consumer_result_or_null.result_hash))
+    assert_unchanged(invalid_root)
+    print("SAVED_WRONG_TARGET_REFUSED", source_format, target.key, wrong_target.key)
+
     invalid_root = tmp_path / "negative-rule"
     negative = _registry(binding, _validator(outcome="RULE_NOT_SATISFIED"))
     _, negative_disposition = cold.adjudicate_m1(
@@ -461,9 +513,11 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     finally:
         manifest.write_bytes(original)
 
+    learned_start = monotonic()
     learned, consumed = cold.publish_learned(
         **args, m2_repository=repository, lifecycle_executor=executor,
         root_dir=tmp_path / "learned", determinants=determinants)
+    learned_seconds = monotonic() - learned_start
     assert consumed.state == "LEARNED_CONSUMER_EXACT_SUPPORTED", consumed.reason_code
     assert consumed.consumer_result_hash == composition.consumer_result_or_null.result_hash
     retrieved = cold.read_learned(learned.artifact_path,
@@ -513,5 +567,26 @@ def _learned_vertical(cold, closure, tmp_path, source_format):
     assert cold.read_learned(historical.artifact_path, **archived,
         require_current_selection=False).consumer_result_hash == consumed.consumer_result_hash
 
+    # Reuse the incumbent fresh-process reader against THIS actual saved
+    # pipeline's artifact, with no generated survey or C11 available.
+    import json
+    import os
+    import subprocess
+    import sys
+    runner = Path(__file__).with_name("test_pyat960_s2g_fresh_process.py")
+    env = dict(os.environ, PYTHONPATH=str(Path(__file__).resolve().parents[2]),
+               PYTHONDONTWRITEBYTECODE="1")
+    child = subprocess.run(
+        [sys.executable, str(runner), learned.artifact_path, learned.root_identity,
+         str(closure.root_path), consumed.consumer_result_hash],
+        cwd=tmp_path, env=env, capture_output=True, text=True, timeout=120)
+    assert child.returncode == 0, child.stderr
+    observed = json.loads(child.stdout)
+    assert observed["state"] == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+    assert observed["matches_expected"] and observed["source_opens"] == []
+    assert observed["consumer_result_hash"] == consumed.consumer_result_hash
     print("SAVED_S2G", source_format, consumed.state, consumed.consumer_result_hash,
-          learned.root_identity, learned.compressed_bytes)
+          learned.root_identity, learned.compressed_bytes,
+          "publish_and_validate_seconds", learned_seconds,
+          "fresh_cold_seconds", observed["elapsed_seconds"],
+          "fresh_peak_rss_bytes", observed["process_tree_peak_rss_bytes"])
