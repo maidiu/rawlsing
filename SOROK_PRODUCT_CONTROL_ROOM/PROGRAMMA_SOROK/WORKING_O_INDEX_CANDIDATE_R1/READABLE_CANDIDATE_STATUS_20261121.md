@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `14f9a0e4013bbf95a9aab6f62455164910a9e8e6`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **122-PR targeted discovered set (108 older + 11 November 23 + 1 P3 + 2 historical P2/P4)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `084c1fcef21f64dfd34e1a3760edc7574b9ad381`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **125-PR targeted discovered set (122 prior + 3 recovered PR observations)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -218,107 +218,189 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 122 PR observations, 170 scoped comparison/receiving links to 91/144 original IDs (53 not equivalently linked). All 40 original legacy V3 identities now have explicit source comparison at CO #1272, including unresolved and design-conservation findings; nine additional CAN/ADP-related edge comparisons. All 121 prior relationships remain unchanged. The historical reviewed [RCF-A ledger](https://github.com/maidiu/rawlsing/blob/e66dc53a5d7eeb2b6b3259000eb04b8e79e1f6f7/WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json) is directly reopened; original archive container hash mismatch and selected-file hash grade retained. Five original V3 paths were not found at examined V3 Git cut; **not new direct historical archive-body inspection**. [RCF-B historical actor/person ledger](https://github.com/maidiu/rawlsing/blob/397c6d61d73825d83e1282753e254c39f4b5a80e/WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json) preserves test-only Rule A/T, separate C9 stores, old 14/1 RED, targetless and fork/authenticity holds. Exact CO source paths/blobs and original reuse/negative notes now appear in the same #1272 record. Default heuristic is explicitly not an LLM; current native CAN/ADP science, PYAT authority, full old/new parity and complete person not established. No new execution or organism code. #1248 historical green does not transfer.
 
+## November 24 — original 144-identity denominator closure (not functional completion)
+
+125 tracked PR observations; 223 explicit scoped relationships across 144/144 original identities, including documentary-only, unresolved, candidate, sourcefree and historical negative evidence. All 170 previous links preserved; 53 newly linked identities. No new functional IDs. Reopened original RCF-A, COMMAND 02, S0–S16 map, RCF-B, historical executable/return bodies and #715/#549/#550. #1145 sourcefree C11→P4 receipt is not native Pyat weld; #1272 has actual read-only `adapters.from_p3_records` (actor/root/branch/time and issued semantics gates), live consumption unresolved. #549 retains four returned assets and old REDs, #715 protected documentary reuse correction not runtime adoption. #1278 theory is not implementation, #559 proposed workstream handoff not accepted. Historic F1CR patch absent at observed evidence; reconstruction distinct. RFA R1 invalid-for-estimate abort retained. No new runtime tests, owner/science/native/human grant or protected receiving. 144/144 means discoverability, not completed, validated, exhaustive or installed functionality. Next: actual current source/caller/effect, comparative parity, unresolved science, owner receiving and expanded historical estate beyond original denominator.
+
+| Historical PR | Exact observed HEAD | Scope |
+|---|---|---|
+| [#549](https://github.com/maidiu/rawlsing/pull/549) | `cce5dad68cb9f5bfbddb9f7cf379a69db7b7aad7` | Sorok Programma: preserve four returned candidate assets and R→O recovery-to-map boundary (nonadopting) |
+| [#550](https://github.com/maidiu/rawlsing/pull/550) | `39f99d43a4b7cc98d4634c7014eba2728f0c676d` | [DRAFT / READ-ONLY] Independent Sorok 08 recovery-first HQ accession — 15 categories, exact source/consumer R fan-in |
+| [#715](https://github.com/maidiu/rawlsing/pull/715) | `8d6175c41f190dff00809c86de4900dd9825d6af` | PROGRAMMA SOROK P3 — recover prebuilt developmental code and preliminary science decisions |
+
 ## Function-first lookup — derived from the SAME receiving ledger
 
-91 original identities with explicit scoped links, including unresolved and design-conservation comparison rows; 53 others remain in registry, not missing. 170 links. Exact historical/modern source pins and remaining boundaries in the same JSON.
+144 original identities with explicit scoped links; 223 links; no automatic completeness, adoption or runtime parity. Exact source, owner, first consumer, test, historical negative and boundary in same JSON.
+
+### A0 — Existing pipeline-generated individual
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Fictional parent construction from pseudo-respondent answers, historical alternatives, source seal and operative forms/projects.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not a native pipeline-generated person or whole-survey correspondence.
+
+### A1 — Bounded live continuing life engine
+
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Historical integrated step/continue_life and two cold Nadia trajectories; actual selected action after divergence.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: No complete native A0→A1→A2, product integration or protected receiving.
 
 ### A2 — Historical reentry and changed later action
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Cross-context recruitment and matched household Nadia selects and performs INSPECT; cold continuation. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: User-side profile continuity on reentry only; not actor historical change. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner later response readset; no native A2. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Cross-context recruitment and matched household Nadia selects and performs INSPECT; cold continuation. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: User-side profile continuity on reentry only; not actor historical change. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve R5 donor; no real-user authentication or actor-private historical-change proof.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner later response readset; no native A2. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
 
 ### A3 — Independent ongoing life
 
-- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Other continues material task independently of user attention. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actor-selected MOVE can independently occur. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Initiative independently chooses actor and action. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Independent actor occasion during visit, not user-commanded. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
+- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Other continues material task independently of user attention. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO independent life/actor attention is related; user gaze invariance and invitation pacing not established in CO. P5 PR reports independent receiving pending.
+- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actor-selected MOVE can independently occur. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO IndependentWorldAuthority/initiative related autonomy, but old selected MOVE receipt into P6/P5 next turn needs joined proof. Native ADP010 not granted.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Initiative independently chooses actor and action. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Independent actor occasion during visit, not user-commanded. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Conserve autonomous continuation in successor NEIGHBOR; native actor authority not issued.
+
+### A4 — Generalized persons and ecologies
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Newborn and abductively constructed adult entrances; independent actor-world coactivity.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Generality across persons/ecologies and qualified calibration held.
+
+### A5 — Authorized human-facing alpha
+
+- [#549](https://github.com/maidiu/rawlsing/pull/549) @ `cce5dad68cb9`: Retained CP-A5 R2 author-tested read-only multicontext encounter; explicitly non-human.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: 59 reported passes; human evaluation, external anchor, native source and durable C9 readset held.
+
+### B-F1CR-R2 — targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct
+
+- [#549](https://github.com/maidiu/rawlsing/pull/549) @ `cce5dad68cb9`: Direct targetless consumer map: REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED; HELD_MISSING_RULE distinct from evaluated NO_CHANGE; 14+8+5 passes reported.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original patch missing and original three live-history REDs retained; native B/C10 held.
 
 ### B1 — B1 test-only E1→mediator→later E2
 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: B1 bfirst.mode_for/scoped mediator predicates in frozen TEST_ONLY P3 registry, not an independent B1 actor root. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: B1 bfirst.mode_for/scoped mediator predicates in frozen TEST_ONLY P3 registry, not an independent B1 actor root. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+
+### B2 — B2 four-return physical developmental bridge
+
+- [#715](https://github.com/maidiu/rawlsing/pull/715) @ `8d6175c41f19`: Direct exact Bridge/d1_gate; historical 81 author cases, synthetic witness admission.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Independent review found authored labels; native F1 RED.
+
+### B3 — B3 coupled synthetic event/meaning
+
+- [#715](https://github.com/maidiu/rawlsing/pull/715) @ `8d6175c41f19`: Direct synthetic OtherActor/World.execute and B3 Integration; later T9 eligible not performed.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original X3 partial-write RED; do not transplant original.
+
+### B3A — B3A X3 atomic repair
+
+- [#715](https://github.com/maidiu/rawlsing/pull/715) @ `8d6175c41f19`: Direct earlier repaired Integration source, source-qualified admission and SQL effects.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Earlier repair precedes full schema/readset correction; compare B3AS.
+
+### B3AS — B3AS schema/readset corrected
+
+- [#715](https://github.com/maidiu/rawlsing/pull/715) @ `8d6175c41f19`: Direct exact d3a324… corrected Integration; independent ACCEPT_SCOPED logical schema/readset/cold/refusal repair. #516 stages this exact source.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: #516 draft/unmerged; binary closure external original source; not naturalistic habit or native writer.
+
+### BP2P4J — BP2P4J JoinedProduct sourcefree actual consumer
+
+- [#715](https://github.com/maidiu/rawlsing/pull/715) @ `8d6175c41f19`: Direct JoinedProduct subclass/source-binding/reopen; historical 98 author tests and 7 cuts, actual performed E2.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: No full independent acceptance/native Pyat/actor science; C12 raw SQL and severance caveats.
 
 ### C0 — Source-qualified historical world and possibility
 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Qualified H1 historical materialization and source invalidation/recovery (PR-reported). **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Qualified H1 historical materialization and source invalidation/recovery (PR-reported). **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
 
 ### C1 — Situated subject and actual activity
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actual independent material activity and experienced consequence. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Material action and actor response. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actual independent material activity and experienced consequence. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Material action and actor response. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO step and independent coactor are not proof of caller-controlled invitation clock boundary.
 
 ### C10 — Event/model call and life recursion
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Iterative step/continue_life, not user-settled batch protocol. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Existing runtime offer and historical reentry, not full event recursion parity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner; no native C10 pipe. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
-- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Sequential irreversible owner events, retrospective then next proposal. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Iterative step/continue_life, not user-settled batch protocol. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Existing runtime offer and historical reentry, not full event recursion parity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner; no native C10 pipe. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Sequential irreversible owner events, retrospective then next proposal. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO autonomous beats do not establish old model-call cadence, retrospective or user settlement.
+
+### C11 — Actual PRE-V3/Pyat physical weld
+
+- [#1145](https://github.com/maidiu/rawlsing/pull/1145) @ `f044c96e0217`: Exact sourcefree I03 joint changes fresh P4 root; recognized/imposed/no-record P3 formations and invitation differ; selected inspection performed in recognized run.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not original native C11/C12 weld, no transfer to CO; G4/PYAT owner retains source authority. #1173 b0f45c16e0a9901832e13ea7df4a4cff3a346c78 authored-not-executed; prior results at fa11b273 only.
 
 ### C12 — Pipeline-produced continuing person and forks
 
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Partial code-tree compatibility; no full person parity. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Common reference and later fork requirement, not completed coupled world. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Partial code-tree compatibility; no full person parity. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Common reference and later fork requirement, not completed coupled world. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
 
 ### C2 — Needs, objects and motives
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actor body and motive-conditioned alternatives, not native CAN. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actor body and motive-conditioned alternatives, not native CAN. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 
 ### C3 — Individual organization, practice, mediation
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Lived episode and acquired orientation -> later recruitment. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Acquired orientation from repeated qualified lived-body courses. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Theory distinguishes material history, association and fallible interpretation. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Lived episode and acquired orientation -> later recruitment. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Acquired orientation from repeated qualified lived-body courses. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Theory distinguishes material history, association and fallible interpretation. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
 
 ### C4 — Material social lives and generation
 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Source-backed historical depth enters activity. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Source-backed historical depth enters activity. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
 
 ### C5 — Differentiated expectations and relational history
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Relational metabolism and separately owned afterlives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Relational metabolism and separately owned afterlives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 
 ### C6 — Real time, activity and interstitial continuity
 
-- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Caller pacing permits ongoing actor work. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Finite rolling T2 and S46 activity. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Initiative and offscreen history use actual clock. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Interstitial actor continuation on same world clock. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
+- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Caller pacing permits ongoing actor work. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO independent life/actor attention is related; user gaze invariance and invitation pacing not established in CO. P5 PR reports independent receiving pending.
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Finite rolling T2 and S46 activity. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Initiative and offscreen history use actual clock. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Interstitial actor continuation on same world clock. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Conserve autonomous continuation in successor NEIGHBOR; native actor authority not issued.
+
+### C7 — Historical differentiated response under social powers
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historically situated orientations, coactivity and public procedure learning condition later composition under material constraints.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Class-differentiated general response and native Rule A held.
 
 ### C8 — Independent world occurrence and access
 
-- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: World-authorized committed actor event. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Ordinary world/inspection consumes admitted historical property. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent world and actor-access privacy negatives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Visitor-owned world action and actor-relative access, no second world writer. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Actor action settles as world event; optional access remains separate. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: One LOOK/optional cover-speech world event with separate sensory opportunity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Physical outward orientation versus permitted perceptual detail. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Combined same-world sourcefree runtime; rejected dependency held. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Exact actor transition receipt and visible identity required for generic tip. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Contingent notice conditioned on actual branch world. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
+- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: World-authorized committed actor event. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO IndependentWorldAuthority/initiative related autonomy, but old selected MOVE receipt into P6/P5 next turn needs joined proof. Native ADP010 not granted.
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Ordinary world/inspection consumes admitted historical property. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent world and actor-access privacy negatives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Visitor-owned world action and actor-relative access, no second world writer. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.
+- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: Actor action settles as world event; optional access remains separate. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Conserve autonomous continuation in successor NEIGHBOR; native actor authority not issued.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: One LOOK/optional cover-speech world event with separate sensory opportunity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: R4 qualifies earlier physical LOOK/visibility conflation; retain sensory distinction.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Physical outward orientation versus permitted perceptual detail. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve exact first consumer and limits: actual actor notice and inference remain unproved.
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Combined same-world sourcefree runtime; rejected dependency held. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.
+- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Exact actor transition receipt and visible identity required for generic tip. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Owners conserve R7 gate, resolve rejected dependency and independently qualify any successor; prior RED retained.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Contingent notice conditioned on actual branch world. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
 
 ### C9 — Canonical actor decision/version and later semantic reader
 
-- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actor-owned situated selection and event receipt. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Versioned ResearchLedger commit -> subsequent actor reader. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actor-owned situated selection and event receipt. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO IndependentWorldAuthority/initiative related autonomy, but old selected MOVE receipt into P6/P5 next turn needs joined proof. Native ADP010 not granted.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Versioned ResearchLedger commit -> subsequent actor reader. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+
+### C9C12-R2 — c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read
+
+- [#549](https://github.com/maidiu/rawlsing/pull/549) @ `cce5dad68cb9`: Direct writer/reader contract; composite snapshot and guarded cold read; 6 new +2 E2 PASS reported.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Old C9 14/1 and BP4R 7/2 RED retained; mirror ACK and canonical CAS unissued.
+
+### CP-A5-R2 — cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion
+
+- [#549](https://github.com/maidiu/rawlsing/pull/549) @ `cce5dad68cb9`: Direct trace receipt; 59 author PASS reported, same-person multicontext read-only encounter.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not human A5; external anchor/C9 readset held.
+
+### E01 — Rule A response
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Actor-relative compose -> performed event/subjective reception; related Rule A surface.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: P3 adapter accepts only issued functional semantics; no native CAN008 E2 read.
+
+### E02 — Acquired practice and qualified nochange
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Typed NO_CHANGE and acquired practice affect eligible alternatives.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Distinguish held rule vs evaluated no-change; earned native later action not established.
+
+### E03 — Needs/material motive and activity
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Body and material world constrain action; technical fulfillment not motive realization.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original needs/motive science held.
 
 ### E04 — Independent B real encounter
 
-- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actual near-term actor activity reaches subsequent encounter. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Independent constituted actor encounter; visitor is not native B. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Situated caller action and Other response. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Actual near-term actor activity reaches subsequent encounter. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO IndependentWorldAuthority/initiative related autonomy, but old selected MOVE receipt into P6/P5 next turn needs joined proof. Native ADP010 not granted.
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Independent constituted actor encounter; visitor is not native B. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.
+- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Situated caller action and Other response. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO step and independent coactor are not proof of caller-controlled invitation clock boundary.
 
 ### E05 — Canonical actor writer to reader
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Versioned ledger commit and later actor reader. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Versioned ledger commit and later actor reader. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: RecursionCycle -> BatchEngine -> P3Owner.realize -> unchanged P2Owner.realize -> P3Owner._effect/PsycheStore.commit_effects -> P3Owner._result later computed response; P3Owner.snapshot binds P2 and store heads. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+
+### E06 — Perception-preserving C12 fork
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Versioned state and verified chain; adapter binds root/branch.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: C12 perception-preserving fork guard not equivalent to separate cold histories or branch-bound reads; actual COW unresolved.
 
 ### E07 — F0 transport/source custody
 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Provider and admission source custody. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Provider and admission source custody. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
 
 ### E08 — Actor-safe memory and SCI05
 
@@ -326,12 +408,44 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 ### E09 — Irreversible 3–5 world event batch
 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle -> BatchEngine -> P3Owner sourcefree. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
-- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Actual two three-event batches and pre-effect controls. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle -> BatchEngine -> P3Owner sourcefree. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Actual two three-event batches and pre-effect controls. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO autonomous beats do not establish old model-call cadence, retrospective or user settlement.
+
+### E10 — Mother-first genealogy
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Adult fictional construction and child pre-encounter development share runtime.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Mother-first antecedent generation and original C4→child continuity not proved.
+
+### E11 — Pyat original world weld
+
+- [#1145](https://github.com/maidiu/rawlsing/pull/1145) @ `f044c96e0217`: Exact sourcefree I03 joint changes fresh P4 root; recognized/imposed/no-record P3 formations and invitation differ; selected inspection performed in recognized run.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not original native C11/C12 weld, no transfer to CO; G4/PYAT owner retains source authority. #1173 b0f45c16e0a9901832e13ea7df4a4cff3a346c78 authored-not-executed; prior results at fa11b273 only.
 
 ### E12 — Complete person living/reentry/alpha
 
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Joined sourcefree execution, not native life/reentry/alpha. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: Joined sourcefree execution, not native life/reentry/alpha. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.
+
+### E13 — Scoped care and challenge expectations
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Received care/nonresponse/reopening can affect later anticipation.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Independent original care/challenge qualification and counterfactual limits held.
+
+### E14 — Causally necessary interfunctional relation
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Learned correspondence/motif affects options; form ancestry and scope validated.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Causal necessity severance and native CAN011/E2 court not shown by source.
+
+### E15 — Socially learned conceptual life
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Cultural object inquiry and procedure expectations connected to alternatives.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Bounded sourcefree learning only; later ideological conceptual life unproved.
+
+### F1CR_CLAIMED_PATCH — Claimed historical F1CR patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: Claimed bf7e625… patched executable remains missing in source-custody evidence; archive reconciliation document directly read.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Do not claim exact patch recovered; reconstruction distinct.
+
+### F1CR_R5_RECONSTRUCTION — R5 reconstructed F1CR live history verifier
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: Direct exact c6e64b… reconstructed source; original 3 RED/reconstruction 3 PASS reported.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Reconstruction is not original patch; no native B or CO parity.
+
+### F1C_ORIGINAL — Original F1C executable exact loose Git blob 104f5bd7826c8676192eac96753d980e35d8a80a
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: Direct exact executable 104f5bd… freeze/intervene tool conservation and receiver.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original three live-history mutation REDs retained; not reconstructed repair.
 
 ### M01 — persistent BackboneState pattern
 
@@ -435,8 +549,8 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 ### M26 — stored-versus-derived separation
 
-- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Stored exposure/recognition vs selected presentation. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Private subjective/operative evidence distinct from public expression. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Stored exposure/recognition vs selected presentation. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO constitution/attention_field is actor-side, not MII user-side exposure. NEIGHBOR R6/R7 dependency remains held.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Private subjective/operative evidence distinct from public expression. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Pure composition/access projection separate from versioned ledger writes; actual step commits and public expression separate.. **DIRECT_CO_SOURCE_COMPARISON__HISTORICAL_ARCHIVE_LEDGER_REVIEWED__NO_NATIVE_OR_FULL_PARITY**. Boundary: Original DerivedIndices exact dependency invariant not globally re-proven.
 
 ### M27 — Pass 1 LLM proposal
@@ -497,51 +611,87 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 ### N01 — Needs, desires, motives and practical objects
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Material body/motive activity distinct from narrated choice. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Material body/motive activity distinct from narrated choice. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+
+### N02 — Thick, scoped expectations and early care
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Personally received care, bodily delta, plural caregiver histories and reopening feed later addressed alternatives.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Thick scoped baseline and opposing cases not fully validated; repetition alone insufficient.
+
+### N03 — Challenge, complication, threat and repair
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Nonresponse and later restorative care can revise acquired regulation; actor appraisal distinct from world success.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Objective danger vs perceived danger and simultaneous challenge/threat/repair formal science held.
 
 ### N04 — Simultaneous recruitment, tension and regulation
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Compose calls pre_cue_pressures; opposed motifs remain unresolved. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Pre-cue recruitment conditioned by actor-owned historical field. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: p3.projections.activate read-only contradiction activation. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Compose calls pre_cue_pressures; opposed motifs remain unresolved. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Pre-cue recruitment conditioned by actor-owned historical field. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: p3.projections.activate read-only contradiction activation. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
 
 ### N05 — Durable transition, changed relations and contradiction
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Qualified acquired formation and retained relation revisions. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Provisional repeated-course developmental organization. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: R29 counterexample drives theory of acquired organization; no full genesis. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore.commit_effects typed sourcefree V3MS_MEDIATOR; not full native N05. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Qualified acquired formation and retained relation revisions. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Provisional repeated-course developmental organization. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: R29 counterexample drives theory of acquired organization; no full genesis. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore.commit_effects typed sourcefree V3MS_MEDIATOR; not full native N05. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
 
 ### N06 — Interstitial activity, life-stages and social reproduction
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Offscreen compressed life. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Offscreen compressed life. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 
 ### N07 — Independent others, power, care and relational feedback
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent refusal and distinct relational afterlives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: One independently selected Other, not generic multi-Other dynamics. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Bounded multi-Other coexperience field; no causal attribution. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Co-presence versus salience, causation and independent Others. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent refusal and distinct relational afterlives. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1274](https://github.com/maidiu/rawlsing/pull/1274) @ `6e05792f2996`: One independently selected Other, not generic multi-Other dynamics. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Conserve autonomous continuation in successor NEIGHBOR; native actor authority not issued.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Bounded multi-Other coexperience field; no causal attribution. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Co-presence versus salience, causation and independent Others. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
 
 ### N08 — Differentiated impression, intensity, salience and no-change
 
-- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Historically mediated exposed detail, user-side. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actor-specific cues and somatic feedback; not user gaze. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner contextual state activation; no ADP memory grant. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Historically mediated exposed detail, user-side. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO constitution/attention_field is actor-side, not MII user-side exposure. NEIGHBOR R6/R7 dependency remains held.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Actor-specific cues and somatic feedback; not user gaze. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner contextual state activation; no ADP memory grant. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+
+### N09 — Actor's fallible autobiographical memory and meaning
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Separate trace and memory stores, actor-relative access, private receipts and typed TRACE/MEMORY.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: No full fallible autobiographical reconstruction, forgetting or lifecycle nonmutation; preserve historical prose-to-state leak negative.
+
+### N10 — Later ideology, theology and cosmological rearticulation
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Personally heard material reference and experienced procedure can alter later alternatives.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: No general ideology/theology/cosmological rearticulation law; no adult concepts backdated to infant memory.
 
 ### N11 — User-settled event-batch temporal recursion
 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle/P2 two batches x three events with P3Owner wrapper. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
-- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: User-settled 3–5 event batches; distinct bootstrap/advance/finish. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing RecursionCycle/P2 two batches x three events with P3Owner wrapper. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: User-settled 3–5 event batches; distinct bootstrap/advance/finish. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO autonomous beats do not establish old model-call cadence, retrospective or user settlement.
+
+### N12 — Actual C12 person, coupled world and human encounter
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Persistent actor/world runtime and explicit P3 supplementary read adapter.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Native C12 owner, original PYAT/human grant and live adapter invocation not proved.
+
+### O01 — Need-object-motive
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Bodily eligibility, project and lived attempt distinguished from inferred motive realization.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: CAN009/010/011 warrant for motive constitution held.
+
+### O02 — Care and early scoped expectations
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Plural received care and later independent addressed response, including repair.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original CAN/ADP decision separate; no imposed attachment/wound.
 
 ### O03 — Situated multistream Rule A
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Situated multi-stream composition precedes independent world resolution; actor-specific consequences admitted separately.. **DIRECT_CO_SOURCE_COMPARISON__HISTORICAL_TEST_ONLY_EDGE__NATIVE_HELD**. Boundary: No native CAN008 Rule A or full semantic measurement.
 
+### O04 — Challenge and repair
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Received appraisal and nonresponse/revision source qualification.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Distinct challenge/threat/repair operators and CAN008/011/012 decision held.
+
 ### O05 — Acquired practical operation
 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Lived activity rewires recruitment. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historical practical orientation proposal, not issued native science. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Lived activity rewires recruitment. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historical practical orientation proposal, not issued native science. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: CO owner validates actual first-consumer scope; no automatic attention, attribution, outside news or native psychology.
+
+### O06 — New functional relation
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Actor-owned correspondence and motif admission can affect later composition and scoped operation.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original causal necessity and native CAN relation issuance not proved.
 
 ### O07 — Persistence, dormancy and nochange
 
@@ -549,25 +699,57 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 ### O08 — Independent coactor and material labor
 
-- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Independent coactor conduct. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent coactivity; no forged consent. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#891](https://github.com/maidiu/rawlsing/pull/891) @ `724b505c2ab0`: Independent coactor conduct. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO IndependentWorldAuthority/initiative related autonomy, but old selected MOVE receipt into P6/P5 next turn needs joined proof. Native ADP010 not granted.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Independent coactivity; no forged consent. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 
 ### O09 — Material activity and intervals
 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Source-backed H1 permits S46 work, unsupported held. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: World-owned work, wages and activity distinction. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Source-backed H1 permits S46 work, unsupported held. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: World-owned work, wages and activity distinction. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 
 ### O10 — Trace versus remembered episode
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Separate traces, memories and private actor experience receipts; TRACE/MEMORY typed operations.. **DIRECT_CO_SOURCE_COMPARISON__HISTORICAL_TEST_ONLY_EDGE__NATIVE_HELD**. Boundary: No full ADP formed-memory validity/SCI05 or actor autobiographical authority.
 
+### O11 — Sourced mistaken belief
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Actor Other/self models and source-bounded procedure expectation exist.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Native ADP017 sourced false proposition or belief revision not established; HQ300 relevant test-only.
+
+### O12 — Reflection/SCI05
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Reflective regulation typed admission and semantic development proposal.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: No SCI05 original issuance or N+1 second-half batch authorization equivalence.
+
+### O13 — Socially learned concepts
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Received sign/object and learned procedure alter practical possibilities.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: General conceptual life and native CAN/SCI05 held.
+
+### O14 — Native Pyat C11 world weld
+
+- [#1145](https://github.com/maidiu/rawlsing/pull/1145) @ `f044c96e0217`: Exact sourcefree I03 joint changes fresh P4 root; recognized/imposed/no-record P3 formations and invitation differ; selected inspection performed in recognized run.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not original native C11/C12 weld, no transfer to CO; G4/PYAT owner retains source authority. #1173 b0f45c16e0a9901832e13ea7df4a4cff3a346c78 authored-not-executed; prior results at fa11b273 only.
+
 ### O15 — Actual semantic E2 consumer
 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner._result later computed response with native_action_performed=false. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: P3Owner._result later computed response with native_action_performed=false. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
 
 ### O16 — Irreversible event batch policy
 
-- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Batch chronology and irreversible execution policy. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Batch chronology and irreversible execution policy. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO autonomous beats do not establish old model-call cadence, retrospective or user settlement.
+
+### R15_V2 — R15 RFA model-renderer feasibility
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historical RFA R1 abort: fixture ID unavailable to model, local mismatch; R2 binds required_fixture_id in grammar. CO expression is related, not RFA parity.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original attempts invalid for primary estimate; no live model or full RFA completion inferred.
+
+### RCFB_E1 — R31J/F1CR B material owner + fixed A/B/shared history -> B event
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: F1C sourcefree nonretroactive shared-world receiver; TEST_ONLY B intervention; R31JProduct/p01 attributed.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Original patched executable absent; targetless JOIN refusal read-only; no native B.
+
+### RCFB_E10 — OC5/C8 provenance and capsule trust
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: TEST_ONLY OC5 custody/capsule protocol; none adopted.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: C8 provenance and capsule trust must be owner-issued, not self-issued.
+
+### RCFB_E2 — A/B shared history -> C8 event owner/receipt/access
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: BP2 joined producer TEST_ONLY C8; bp2p4.reunion/CandidateStore/bp4.c10.receive.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: C8 source-native/CAN008 grant absent, external anchor test-only.
 
 ### RCFB_E3 — C8 -> CAN008 test-only A -> CAN011 test-only T/no-change
 
@@ -589,79 +771,119 @@ R6/R7 source trees contain the exact rejected R30 blob; their legitimate NEIGHBO
 
 - [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: CO actual public expression receives performed tip; external user-facing product join separate.. **DIRECT_CO_SOURCE_COMPARISON__HISTORICAL_TEST_ONLY_EDGE__NATIVE_HELD**. Boundary: Historical BP2P4J A0-A3 CLI only, no native human A0-A5 or C11 weld; no new renderer grant.
 
+### RCFB_E8 — G17 material/C9 handoff component
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: G17 TEST_ONLY material handoff; continue_person/c9_handoff_consumer.receive_handoff component.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: M2/MP and native C9 E1/Rule A/T/E2 held; no durable C9 adopter.
+
+### RCFB_E9 — M04R journaled claim provenance component
+
+- [#550](https://github.com/maidiu/rawlsing/pull/550) @ `39f99d43a4b7`: M03/M04 TEST_ONLY journaled claim provenance; cell.Cell.read_owner component.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Nine CAN3 RED; no native CAN3/C9 or integration.
+
 ### S0 — Governing purpose / integrity
 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Source-conservation and governing purpose correction. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Source-conservation and governing purpose correction. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
 
 ### S1 — Relational ontology
 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Relational ontology and multiple causal fields. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Relational ontology and multiple causal fields. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
 
 ### S10 — Memory / persistence / replay / cost
 
-- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Scoped durable recognition and attention. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Durable jobs and leases. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Cold same actor state and tamper-detecting chain. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Cold MII profile read/write tied to world/root/user. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: R5 donor's profile continuity conserved. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore persistent typed effects, exact receipt/cold/replay; not ADP016 formed memory. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
-- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Persisted cycle and cold replay. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Scoped durable recognition and attention. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO constitution/attention_field is actor-side, not MII user-side exposure. NEIGHBOR R6/R7 dependency remains held.
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Durable jobs and leases. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Cold same actor state and tamper-detecting chain. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Cold MII profile read/write tied to world/root/user. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve R5 donor; no real-user authentication or actor-private historical-change proof.
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: R5 donor's profile continuity conserved. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: PsycheStore persistent typed effects, exact receipt/cold/replay; not ADP016 formed memory. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+- [#704](https://github.com/maidiu/rawlsing/pull/704) @ `d7a598bef85a`: Persisted cycle and cold replay. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO autonomous beats do not establish old model-call cadence, retrospective or user settlement.
 
 ### S11 — UX / UI
 
-- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Gaze-selected presentation. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Available/candidate/offered/selected presentation and exposure. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Private MII presentation without actor-world overwrite. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Presentation separated from actor-visible orientation. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: MII detail selection and private exposure. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Durable adaptive visitor-side attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: R5 visitor surface carried unchanged. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: MII finite source-qualified visual presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Initial equal burden versus limited user knowledge, no runtime grant. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Historically contingent encounter and limited knowing. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Gaze-selected presentation. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO independent life/actor attention is related; user gaze invariance and invitation pacing not established in CO. P5 PR reports independent receiving pending.
+- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Available/candidate/offered/selected presentation and exposure. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO constitution/attention_field is actor-side, not MII user-side exposure. NEIGHBOR R6/R7 dependency remains held.
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: Private MII presentation without actor-world overwrite. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Presentation separated from actor-visible orientation. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: R4 qualifies earlier physical LOOK/visibility conflation; retain sensory distinction.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: MII detail selection and private exposure. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve exact first consumer and limits: actual actor notice and inference remain unproved.
+- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Durable adaptive visitor-side attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve R5 donor; no real-user authentication or actor-private historical-change proof.
+- [#1298](https://github.com/maidiu/rawlsing/pull/1298) @ `3dd615548bdc`: R5 visitor surface carried unchanged. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Competent NEIGHBOR/CO owners adjudicate R30 dependency without losing legitimate R5 join.
+- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: MII finite source-qualified visual presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Owners conserve R7 gate, resolve rejected dependency and independently qualify any successor; prior RED retained.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Initial equal burden versus limited user knowledge, no runtime grant. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Historically contingent encounter and limited knowing. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
+
+### S12 — Social layer
+
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: ONE HOUSE retains distinct visitor, platform, Other and branch-world positions.. **DOCUMENTARY_CANDIDATE__SEMANTIC_RECEIVING_HELD**. Boundary: Original inter-user/reputation and abuse architecture deferred until single-user core credible; no implemented social layer inferred.
 
 ### S13 — Monetization / business model
 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Material cost/privacy requirements; not business-model implementation. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
-- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Platform institutional power and financial burden; conceptual only. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Material cost/privacy requirements; not business-model implementation. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: Platform institutional power and financial burden; conceptual only. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: NEIGHBORMULCH semantic receiver verifies theory-to-code correspondence and preserves original material.
 
 ### S14 — Safety / privacy / abuse
 
-- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Reported identical conduct/different gaze world invariance. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Scoped user profile, no actor/world truth writes from gaze. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: User-private profile and actor access separation. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Scope mismatch and tamper refusal; not authenticated human identity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Blocked private/inaccessible/stale tip presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Visitor-only finance disclosure requirements. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
+- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Reported identical conduct/different gaze world invariance. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO independent life/actor attention is related; user gaze invariance and invitation pacing not established in CO. P5 PR reports independent receiving pending.
+- [#905](https://github.com/maidiu/rawlsing/pull/905) @ `2be0cf252662`: Scoped user profile, no actor/world truth writes from gaze. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO constitution/attention_field is actor-side, not MII user-side exposure. NEIGHBOR R6/R7 dependency remains held.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: User-private profile and actor access separation. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve exact first consumer and limits: actual actor notice and inference remain unproved.
+- [#1297](https://github.com/maidiu/rawlsing/pull/1297) @ `1c959b6b1eb9`: Scope mismatch and tamper refusal; not authenticated human identity. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve R5 donor; no real-user authentication or actor-private historical-change proof.
+- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Blocked private/inaccessible/stale tip presentation. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Owners conserve R7 gate, resolve rejected dependency and independently qualify any successor; prior RED retained.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Visitor-only finance disclosure requirements. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
+
+### S15 — Alpha / evaluation
+
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: 558 historical normal/optimized cases and dual Nadia histories provide bounded engineering evaluation evidence.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not authorized human alpha, qualitative/quantitative product evaluation or full core theorem falsification.
+
+### S16 — Product→engineering handoff
+
+- [#559](https://github.com/maidiu/rawlsing/pull/559) @ `cee8a09b33cc`: Proposed continuous evidence/owner/requirements return propagation and cross-HQ receiving boundary.. **DOCUMENTARY_CANDIDATE__NOT_PROTECTED_ADOPTED**. Boundary: Not new engineering commission or protected handoff acceptance.
+
+### S2 — PRE-V3 / V3 / runtime crosswalk
+
+- [#559](https://github.com/maidiu/rawlsing/pull/559) @ `cee8a09b33cc`: Proposed whole-estate reference requires PRE-V3/V3/Neo-V3/current runtime crosswalk and exact consumers with Pyat interface.. **DOCUMENTARY_CANDIDATE__NOT_PROTECTED_ADOPTED**. Boundary: Proposed documentary contract; no full crosswalk or native handoff accepted.
+
+### S3 — V3 relational redevelopment
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Historically constituted relational motifs and pre-cue orientations operationalize part of relational redevelopment.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Not approved relational-prior architecture or calibrated person.
 
 ### S39_S52 — modern Codex S39–S52 series
 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing accepted #704/S39-47 P2 engine reused unchanged; inherited 71 PASS. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Existing accepted #704/S39-47 P2 engine reused unchanged; inherited 71 PASS. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+
+### S4 — Relationship engine / game mechanics
+
+- [#1272](https://github.com/maidiu/rawlsing/pull/1272) @ `731f71b61fad`: Independent Other, care, nonresponse, contradiction and reopening.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Human-facing relationship consequence laws and reciprocal user model not proved.
+
+### S5 — Persona health / flourishing
+
+- [#1278](https://github.com/maidiu/rawlsing/pull/1278) @ `03f93ad04b49`: ONE HOUSE distinguishes actual social/material effects, actor interpretation and visitor's limited knowledge; refuses persona as moral lesson.. **DOCUMENTARY_CANDIDATE__SEMANTIC_RECEIVING_HELD**. Boundary: Not validated normative flourishing model or anti-therapist-God implementation.
 
 ### S6 — Persistent life / time / world events
 
-- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Continuous situated clock. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Rolling history. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
-- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Pre-encounter life and autonomous beats. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. 
-- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Actual same-root sourcefree development through inherited #704 + P3; no source-native offscreen life. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. 
-- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Inspection return and explicit interval separated. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#775](https://github.com/maidiu/rawlsing/pull/775) @ `0d566510afd1`: Continuous situated clock. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO independent life/actor attention is related; user gaze invariance and invitation pacing not established in CO. P5 PR reports independent receiving pending.
+- [#907](https://github.com/maidiu/rawlsing/pull/907) @ `cb998b7d7752`: Rolling history. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO pre-encounter history and contingent notices do not establish H1 source-time transitive graph, leases/T2, invalidation/recovery or shared root/COW. #791 is earlier unmerged draft.
+- [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Pre-encounter life and autonomous beats. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
+- [#746](https://github.com/maidiu/rawlsing/pull/746) @ `fe51de797910`: Actual same-root sourcefree development through inherited #704 + P3; no source-native offscreen life. **PROTECTED_RECEIVED_SOURCEFREE_TEST_ONLY__FULL_NATIVE_PARITY_HELD**. Boundary: Original gate/owner/first consumer remains at separately proved scope; no entire function closure by adjacency No native CAN/ADP, positive fork migration, or modern CO/NEIGHBOR runtime equivalence inferred.
+- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Inspection return and explicit interval separated. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO step and independent coactor are not proof of caller-controlled invitation clock boundary.
 
 ### S7 — Player praxis model
 
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: User-authored finite material contribution, not hidden persona. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Authored outward gaze and speech, not inferred inner intent. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Visitor conduct separate from private attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Bounded prelude consent; no fabricated real user autobiography. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. 
-- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Explicit caller edge decision. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: User-authored finite material contribution, not hidden persona. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Authored outward gaze and speech, not inferred inner intent. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: R4 qualifies earlier physical LOOK/visibility conflation; retain sensory distinction.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Visitor conduct separate from private attention. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve exact first consumer and limits: actual actor notice and inference remain unproved.
+- [#1277](https://github.com/maidiu/rawlsing/pull/1277) @ `3ac178f0b3b2`: Bounded prelude consent; no fabricated real user autobiography. **REQUIREMENT_RELATION_NOT_IMPLEMENTATION**. Boundary: Existing R36 semantic receiver adjudicates original claims and historical routes; no new functional identity.
+- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Explicit caller edge decision. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO step and independent coactor are not proof of caller-controlled invitation clock boundary.
 
 ### S8 — Interaction / action semantics
 
-- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: SAY/MOVE/WAIT/LEAVE and source-qualified access. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Composite LOOK action, source and target eligibility. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Glance/close eligibility distinct from outward LOOK. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. 
-- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Caller speech/inspection/optional then-wait. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. 
+- [#1265](https://github.com/maidiu/rawlsing/pull/1265) @ `18a307cfb30f`: SAY/MOVE/WAIT/LEAVE and source-qualified access. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: NEIGHBOR owner receives scoped interface; preserve successor R2-R5 deltas.
+- [#1293](https://github.com/maidiu/rawlsing/pull/1293) @ `f4b840e837af`: Composite LOOK action, source and target eligibility. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: R4 qualifies earlier physical LOOK/visibility conflation; retain sensory distinction.
+- [#1296](https://github.com/maidiu/rawlsing/pull/1296) @ `5b4334b61450`: Glance/close eligibility distinct from outward LOOK. **SCOPED_CANDIDATE_RELATION__NOT_FULL_FUNCTION_PARITY**. Boundary: Preserve exact first consumer and limits: actual actor notice and inference remain unproved.
+- [#751](https://github.com/maidiu/rawlsing/pull/751) @ `80bce19efeae`: Caller speech/inspection/optional then-wait. **PROTECTED_SOURCE_PRESENT__HISTORICAL_RECEIPT_SCOPED__FULL_PARITY_HELD**. Boundary: CO step and independent coactor are not proof of caller-controlled invitation clock boundary.
 
 ### S9 — LLM expression
 
-- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Untyped generic tip cannot be presented as heard speech. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. 
+- [#1300](https://github.com/maidiu/rawlsing/pull/1300) @ `0277999a2129`: Untyped generic tip cannot be presented as heard speech. **SOURCE_AND_EXECUTION_HISTORICAL__DEPENDENCY_HELD**. Boundary: Owners conserve R7 gate, resolve rejected dependency and independently qualify any successor; prior RED retained.
+
+### V3CORE-R1 — v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct
+
+- [#549](https://github.com/maidiu/rawlsing/pull/549) @ `cce5dad68cb9`: Direct I1 market event restricted capacity projection; 40 old +46 adapter +8 I1 PASS reported, 19-step order mutation RED; schedule equality and frozen derived diagnostics.. **DIRECT_SOURCE_COMPARISON__HISTORICAL_EVIDENCE__FULL_NATIVE_HELD**. Boundary: Material projection only, 16 steps held; no native psychological law or CO import.
 
