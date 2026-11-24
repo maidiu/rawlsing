@@ -16,7 +16,7 @@ from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions)
-from .practical_difference import start_expectation
+from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence)
@@ -26,7 +26,8 @@ from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods
-from .expectation_afterlife import source_qualified_appraisal_candidates
+from .expectation_afterlife import (source_qualified_appraisal_candidates,
+                                    possible_activity_affects)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
@@ -454,6 +455,21 @@ class ConstitutiveRuntime:
                            copy(a.get('anticipated_difference')) for a in alternatives
                            if a['project_id'] in selected_refs]
                            if len(selected_refs)>1 else []),
+                       # Preserve per-purpose identity, not an unlabelled
+                       # bag of projected anticipated differences. This bounded
+                       # multi-course entrance is only for unaddressed,
+                       # object-unbound alternatives sharing the same act.
+                       'selected_expectation_courses':([
+                           {'project_id':pid,'option_id':matches[0]['option_id'],
+                            'anticipated_difference':copy(matches[0]['anticipated_difference'])}
+                           for pid in selected_refs
+                           for matches in [[a for a in alternatives
+                               if a.get('project_id')==pid
+                               and a.get('grounds_status')=='AVAILABLE_SINGLE_PROJECT_COURSE'
+                               and a.get('binding_status')=='NO_ADDRESSED_PARTY'
+                               and a.get('world_request',{}).get('material_object_ref') is None]]
+                           if len(matches)==1 and matches[0].get('anticipated_difference') is not None]
+                           if len(selected_refs)>1 else []),
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
                        'conscious_availability':'NOT_INFERRED',
                        'not_premature_fulfillment':True,
@@ -469,6 +485,14 @@ class ConstitutiveRuntime:
             if selected_alternative and selected_alternative.get('course_historical_currents'):
                 practical['course_historical_currents_analytic_only']=copy(
                     selected_alternative['course_historical_currents'])
+            # Retain the exact private affective alternatives offered, not a
+            # causal assertion about which affect actually decided the attempt.
+            affect_courses=[{'project_id':a['project_id'],'option_id':a['option_id'],
+                             'affects':copy(a['course_affective_organizations'])}
+                            for a in alternatives if a.get('project_id') in selected_refs
+                            and a.get('course_affective_organizations')]
+            if affect_courses:
+                practical['selected_course_affects_analytic_only']=affect_courses
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -645,8 +669,8 @@ class ConstitutiveRuntime:
                 # Anticipation is formed at the time of this actor's attempt,
                 # distinct from how the world actually settled it. It can
                 # remain pending after the objective event has committed.
-                start_expectation(actors[aid],actor_attempt.practical_selection,
-                                  experience,objective_ref)
+                start_selected_expectations(actors[aid],actor_attempt.practical_selection,
+                                            experience,objective_ref)
             # An action changes the opportunities and signals subsequently
             # accessible to its author. We retain the actually received path,
             # without inventing the counterfactual evidence they did not meet.
@@ -849,6 +873,8 @@ class ConstitutiveRuntime:
                     possible_incidental_goods),
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
+                'historically_possible_activity_affects':copy(
+                    possible_activity_affects(actors[aid],experience,objective_ref)),
                 'historically_possible_co_regulation':copy(care_genesis),
                 'historically_possible_plural_care':copy(plural_care_genesis),
                 'historically_possible_reopened_care':copy(

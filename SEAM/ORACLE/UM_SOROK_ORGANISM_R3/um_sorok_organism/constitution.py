@@ -28,7 +28,7 @@ from .functional_correspondence import project_functional_correspondences
 from .world import (_qualified_members, _nonnegative_transfer_amount,
                     recursive_encounter_channels, project_recursive_actor_sign)
 from .institutional_reproduction import current_institutional_opportunities
-from .expectation_afterlife import annotate_practical_expectations
+from .expectation_afterlife import annotate_practical_expectations, annotate_activity_affects
 from .co_regulation_history import (
     recruit_co_regulation, addressed_signal_alternatives)
 from .caregiving_practice import project_repeat_feeding
@@ -681,6 +681,9 @@ def compose(constitution,access,limit=50):
                 for ref in option['candidate_notice_refs']]
     expectation_afterlife=annotate_practical_expectations(
         constitution,dynamics['candidate_actions'])
+    affective_afterlife=annotate_activity_affects(
+        constitution,attention['focus_access'],dynamics['candidate_actions'])
+    currents+=affective_afterlife['currents']
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -708,7 +711,7 @@ def compose(constitution,access,limit=50):
                             if food_collective else [])+
                            inquiry['readset']+
                            functional['readset']+
-                           expectation_afterlife['readset']+
+                           expectation_afterlife['readset']+affective_afterlife['readset']+
                            prospective['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),

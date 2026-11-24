@@ -12,6 +12,7 @@ from .relational_metabolism import (
 )
 from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
+from .expectation_afterlife import admit_activity_affect
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation
 from .historical_self_organization import (
@@ -52,7 +53,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
-         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_PREPROJECT_ANTICIPATION',
+         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'REVISE_FUNCTIONAL_CORRESPONDENCE',
@@ -621,6 +622,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 # psychodynamic owners, not by a parallel will controller.
                 validate_tendencies(actor['forms'][receipt['form']])
                 report.append(receipt)
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_ACTIVITY_AFFECT':
+            try:
+                report.append(admit_activity_affect(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='APPRAISE_EXPECTED_DIFFERENCE':

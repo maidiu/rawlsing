@@ -185,6 +185,9 @@ def appraise_expected_difference(actor,experience,event_ref,proposal):
     receipt={'event':event_ref,'experience_ref':experience['ref'],
              'perceived_cue_ref':sign,'appraisal':appraisal,
              'actual_received_sign_refs':sorted(received),
+             'appraised_sign_tags':sorted({str(t).casefold()
+                 for c in experience.get('perceived_cues',[]) if c.get('id')==sign
+                 for t in c.get('tags',[]) if type(t) is str}),
              'observer_causal_attribution':'NOT_ESTABLISHED',
              'objective_success':'NOT_INFERRED','grade':GRADE,
              'actor_interpretation_not_world_truth':True}
@@ -192,3 +195,52 @@ def appraise_expected_difference(actor,experience,event_ref,proposal):
     prior['state']=appraisal
     return {'kind':'APPRAISE_EXPECTED_DIFFERENCE','expectation':ident,
             'state':appraisal,'grade':GRADE}
+
+
+def start_selected_expectations(actor, selection, experience, event_ref):
+    """One performed operation may serve multiple ACTUALLY selected ends.
+
+    Reuse the existing expectation writer. Never allocate unselected pooled
+    possibilities, or synthesize project identity from array order. No claim
+    of fulfillment, motive or actual conscious expectation follows.
+    """
+    if not selection:return []
+    if selection.get('project_id') is not None:
+        one=start_expectation(actor,selection,experience,event_ref)
+        return [one] if one is not None else []
+    selected=selection.get('selected_project_refs',[])
+    courses=selection.get('selected_expectation_courses',[])
+    if not courses:return []
+    if (experience.get('own_practical_selection')!=selection
+            or selection.get('actor')!=actor.get('id')
+            or selection.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or selection.get('possible_end_trial') is not None
+            or len(selected)<2 or len(selected)!=len(set(selected))
+            or selection.get('world_request',{}).get('addressed_party_ref') is not None
+            or selection.get('world_request',{}).get('material_object_ref') is not None
+            or len({c['project_id'] for c in courses})!=len(courses)):
+        raise ValueError('PLURAL_EXPECTATION_SELECTION_UNQUALIFIED')
+    # Validate all associations before writing any.
+    for c in courses:
+        p=[p for p in actor.get('projects',[]) if p.get('id')==c['project_id']]
+        if (c['project_id'] not in selected or len(p)!=1
+                or experience.get('own_action') not in p[0].get('means',[])
+                or p[0].get('addressed_party_ref') is not None
+                or validate_expected_difference(p[0].get('expected_difference'))!=c['anticipated_difference']):
+            raise ValueError('PLURAL_EXPECTATION_COURSE_CONTRADICTION')
+        ident=stable_id('practical_option',{'actor':actor['id'],
+            'clock':selection['as_of_clock'],'action':experience['own_action'],
+            'project_ref':c['project_id'],'expected_difference':c['anticipated_difference'],
+            'addressed_party_ref':None})
+        if ident!=c['option_id']:
+            raise ValueError('PLURAL_EXPECTATION_OPTION_CONTRADICTION')
+        if any(e.get('id')==stable_id('expectation',{'actor':actor['id'],
+                  'event':event_ref,'option':ident}) for e in actor.get('expectations',[])):
+            raise ValueError('DUPLICATE_ACTOR_EXPECTATION')
+    out=[]
+    for c in courses:
+        e=start_expectation(actor,c,experience,event_ref)
+        e['shared_selected_operation_ref']=selection['option_id']
+        e['shared_selected_project_refs']=copy(selected)
+        out.append(e)
+    return out
