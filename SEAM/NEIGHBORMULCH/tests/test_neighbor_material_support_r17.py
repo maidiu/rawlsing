@@ -49,7 +49,7 @@ def policy(stage, acquire=False):
 
 
 class MaterialSupportR17(unittest.TestCase):
-    def build(self,name,*,held=2,own=1,blocked=False):
+    def build(self,name,*,held=2,own=1,blocked=False,user_hearing=True,user_visible=True):
         tmp=tempfile.TemporaryDirectory(prefix='neighbor_r17_')
         self.addCleanup(tmp.cleanup)
         db=str(Path(tmp.name)/'world.sqlite')
@@ -72,8 +72,10 @@ class MaterialSupportR17(unittest.TestCase):
         n=NeighborEncounter(rt,'visitor',mii_module=mii)
         n.install_sourcefree_conditions({
             'grade':'SOURCEFREE_TEST_ONLY',
-            'user_conditions':{loc:{'light':'lit','sightline':'unobstructed',
-                'hearing':True,'sound_path':'audible','legibility':'readable'}
+            'user_conditions':{loc:{'light':'lit' if user_visible else 'dark',
+                'sightline':'unobstructed' if user_visible else 'blocked',
+                'hearing':user_hearing,'sound_path':'audible' if user_hearing else 'blocked',
+                'legibility':'readable'}
                 for loc in ('workshop','home')},
             'actor_conditions':{'worker':{'facing':'entrance','visual':True,'light':'lit',
                 'sightline':'unobstructed','hearing':True,'sound_path':'audible'}}},

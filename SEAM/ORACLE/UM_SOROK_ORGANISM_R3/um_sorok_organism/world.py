@@ -410,6 +410,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     inspected_public_notice=None
     inspected_material_object=None
     worked_material_object=None
+    human_signal_prefix=False
     if partner_attempt:
         ok,why=eligible(actors[partner_attempt.actor]['body'],partner_attempt.action)
         partner_valid=(ok and world['positions'].get(partner_attempt.actor)==loc)
@@ -729,6 +730,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
         # Only a currently qualified OFFER_FEED and independent actor
         # selection of that actual offer can settle bodily nourishment.
         status='PARTIAL';output='INDEPENDENT_COACTOR_DID_NOT_JOIN'
+        # In this branch bodily and material feasibility have already passed.
+        # An independently selected signal can really occur although joint
+        # completion fails. Do not generalize this to all PARTIAL attempts.
+        visitor=world['neighbor_users'][target]
+        human_signal_prefix=(attempt.intention=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+            and visitor.get('present') is True and visitor.get('location')==loc)
         if human_vocal is not None and human_vocal.get('operation')=='OFFER_FEED':
             supported=perform_one_actual_feeding(
                 world,actors,target,aid,loc,'HUMAN_AUTHORED_OFFER',
@@ -886,6 +893,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     if human_vocal is not None and output == 'JOINT_ACTIVITY_PERFORMED':
         event_summary['human_food_offer_event_ref' if human_vocal.get('operation')=='OFFER_FEED'
                       else 'human_vocal_event_ref'] = human_vocal['user_event_ref']
+    if human_signal_prefix:
+        event_summary['human_directed_signal_prefix_performed']=True
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
@@ -896,6 +905,21 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     # World effects persist even when no participant currently perceives them.
     # Public, witness-accessible sign is not a world-audit report. A refused
     # purchase, for example, does not reveal the purchaser's account deficit.
+    if (human_signal_prefix and status=='PERFORMED'
+            and output=='JOINT_ACTIVITY_PERFORMED'
+            and material_feeding_ref is not None
+            and human_vocal is not None and human_vocal.get('operation')=='OFFER_FEED'):
+        # A real material settlement can have a visible sign independent of
+        # the concurrent signal. Preserve the existing primary cue as LAST
+        # for the CO experience reader. This extra sign is scoped to the
+        # giver's current encounter, not a disclosure to every bystander.
+        transfer_sign=add_cue(world,'performed_human_food_transfer',
+            ['material_transfer'],location=loc,modality='visual',
+            description='Offered food is taken.',source_actor=aid,private_to=target)
+        transfer_sign['material_feeding_ref']=material_feeding_ref
+        transfer_sign['human_offer_event_ref']=human_vocal['user_event_ref']
+        event_summary['human_food_transfer_cue_ref']=transfer_sign['id']
+        public_event['human_food_transfer_cue_ref']=transfer_sign['id']
     if inspected_public_notice is not None:
         # The personally received cue contains only what the institution
         # actually put on its public notice, not its private causal archive.
@@ -932,6 +956,10 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 location=loc,modality='auditory' if attempt.action in (
                     'SING','SPEAK','SIGNAL','ASK') else 'visual',
                 description=perceptible_outcome,source_actor=aid)
+        if human_signal_prefix:
+            sign['human_directed_signal_prefix_performed']=True
+            event_summary['human_directed_signal_cue_ref']=sign['id']
+            public_event['human_directed_signal_cue_ref']=sign['id']
         if worked_material_object and worked_material_object.get('object_ref'):
             sign['material_object_ref']=worked_material_object['object_ref']
             sign['actor_sensed_object_not_full_object_provenance']=True
