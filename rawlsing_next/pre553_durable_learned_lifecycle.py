@@ -1067,6 +1067,96 @@ def _read_blob(path: Path, expected_hash: str, entry: Mapping[str, Any]) -> Any:
     return value
 
 
+def validate_learned_consumer_determinants(
+    closure: DurableEmpiricalClosure,
+    determinants: LearnedConsumerDeterminants,
+) -> tuple[Any, ExactRef, ExactRef, int]:
+    """Run the existing exact cold C1 reader before any lifecycle write.
+
+    This shared owner operation validates empirical determinants only; M1
+    product-to-evidence binding and CURRENT attestation remain separate.
+    It opens no source, issues no authority, and mutates no M2/B5 state.
+    """
+    closure.require_trusted()
+    if type(determinants) is not LearnedConsumerDeterminants:
+        raise DurableLearnedLifecycleError("exact consumer determinants required")
+    if closure.root_identity != determinants.s2f_root_identity:
+        raise DurableLearnedLifecycleError("consumer determinants S2F root mismatch")
+    receipt = next(
+        (
+            item
+            for item in closure.i05_result.receipts
+            if item.ref == determinants.discovery_receipt_ref
+        ),
+        None,
+    )
+    if receipt is None:
+        raise DurableLearnedLifecycleError("declared discovery receipt is absent from S2F closure")
+    receipt_releases = {
+        _exact(dict(ref), "receipt source release").key
+        for ref in receipt.source_release_refs
+    }
+    if determinants.release_ref.key not in receipt_releases:
+        raise DurableLearnedLifecycleError(
+            "declared consumer release is not owned by the discovery receipt"
+        )
+    if determinants.release_ref not in {
+        identity.release_ref for identity in closure.release_identities
+    }:
+        raise DurableLearnedLifecycleError(
+            "declared consumer release is absent from S2F closure"
+        )
+    fact, predicate, query = _validate_discovery_consumption(
+        discovery_result=closure.i05_result,
+        consumer_query=determinants.consumer_query,
+        receipt_ref=receipt.ref,
+    )
+    selected_fact_releases = {
+        _exact(dict(ref), "selected fact source release").key
+        for ref in fact.source_empirical_provenance_refs
+        if _exact(dict(ref), "selected fact source release").kind
+        == "C11LogicalRelease"
+    }
+    if determinants.release_ref.key not in selected_fact_releases:
+        raise DurableLearnedLifecycleRefusal(
+            "consumer determinant release is not the selected fact source release"
+        )
+    if predicate.ref != determinants.producer_predicate_ref:
+        raise DurableLearnedLifecycleError("cold producer predicate differs from declared")
+    if query.ref != determinants.producer_query_ref:
+        raise DurableLearnedLifecycleError("cold producer query differs from declared")
+    # The discovery route must not rename a unary observed distribution
+    # as a different target or attach it to a foreign release/universe.
+    # Joint consumer target topology remains owned by C1.
+    consumer = determinants.consumer_query
+    if consumer.release_ref != determinants.release_ref:
+        raise DurableLearnedLifecycleError("consumer query release differs from declared")
+    if consumer.source_universe_ref not in {
+        _exact(ref, "producer universe") for ref in query.empirical_universe_refs
+    }:
+        raise DurableLearnedLifecycleError("consumer query universe differs from producer")
+    if len(query.target_refs) == 1 and consumer.target_ref != _exact(
+        query.target_refs[0], "producer target"
+    ):
+        raise DurableLearnedLifecycleError("consumer unary target differs from producer")
+    registry = AuthorityRegistry(closure.object_graph.authority_snapshots)
+    composition = compose_positioned_subject_possibility(
+        repository=None,
+        empirical_query=query,
+        predicate=predicate,
+        authority_registry=registry,
+        release_refs=(determinants.release_ref,),
+        consumer_query=determinants.consumer_query,
+        model_rule=determinants.model_rule,
+        condition_binding_witness=determinants.condition_binding_witness,
+        discovery_result=closure.i05_result,
+        discovery_receipt_ref=receipt.ref,
+    )
+    if composition.composed_result_identity_hash != determinants.expected_composition_identity:
+        raise DurableLearnedLifecycleError("cold composition identity differs from declared")
+    return composition, predicate.ref, query.ref, len(closure.object_graph.empirical_facts)
+
+
 @dataclass(frozen=True)
 class DurableLearnedLifecycle:
     artifact_path: Path
@@ -1254,65 +1344,7 @@ class DurableLearnedLifecycle:
             expected_root=self.determinants.s2f_root_identity,
         ).require_trusted()
         self._m1_evidence_binding(closure)
-        receipt = next(
-            (
-                item
-                for item in closure.i05_result.receipts
-                if item.ref == self.determinants.discovery_receipt_ref
-            ),
-            None,
-        )
-        if receipt is None:
-            raise DurableLearnedLifecycleError("declared discovery receipt is absent from S2F closure")
-        receipt_releases = {
-            _exact(dict(ref), "receipt source release").key
-            for ref in receipt.source_release_refs
-        }
-        if self.determinants.release_ref.key not in receipt_releases:
-            raise DurableLearnedLifecycleError(
-                "declared consumer release is not owned by the discovery receipt"
-            )
-        if self.determinants.release_ref not in {
-            identity.release_ref for identity in closure.release_identities
-        }:
-            raise DurableLearnedLifecycleError(
-                "declared consumer release is absent from S2F closure"
-            )
-        fact, predicate, query = _validate_discovery_consumption(
-            discovery_result=closure.i05_result,
-            consumer_query=self.determinants.consumer_query,
-            receipt_ref=receipt.ref,
-        )
-        selected_fact_releases = {
-            _exact(dict(ref), "selected fact source release").key
-            for ref in fact.source_empirical_provenance_refs
-            if _exact(dict(ref), "selected fact source release").kind
-            == "C11LogicalRelease"
-        }
-        if self.determinants.release_ref.key not in selected_fact_releases:
-            raise DurableLearnedLifecycleRefusal(
-                "consumer determinant release is not the selected fact source release"
-            )
-        if predicate.ref != self.determinants.producer_predicate_ref:
-            raise DurableLearnedLifecycleError("cold producer predicate differs from declared")
-        if query.ref != self.determinants.producer_query_ref:
-            raise DurableLearnedLifecycleError("cold producer query differs from declared")
-        registry = AuthorityRegistry(closure.object_graph.authority_snapshots)
-        composition = compose_positioned_subject_possibility(
-            repository=None,
-            empirical_query=query,
-            predicate=predicate,
-            authority_registry=registry,
-            release_refs=(self.determinants.release_ref,),
-            consumer_query=self.determinants.consumer_query,
-            model_rule=self.determinants.model_rule,
-            condition_binding_witness=self.determinants.condition_binding_witness,
-            discovery_result=closure.i05_result,
-            discovery_receipt_ref=receipt.ref,
-        )
-        if composition.composed_result_identity_hash != self.determinants.expected_composition_identity:
-            raise DurableLearnedLifecycleError("cold composition identity differs from declared")
-        return composition, predicate.ref, query.ref, len(closure.object_graph.empirical_facts)
+        return validate_learned_consumer_determinants(closure, self.determinants)
 
     def consume(
         self,
