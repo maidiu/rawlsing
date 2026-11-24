@@ -47,16 +47,26 @@ from rawlsing_next.tests.test_pre553_discovery_exact import (
 
 class CountryNativeEconomics(unittest.TestCase):
     def test_mixed_cardinality_sav_distinct_native_batch_and_cold_product(self):
-        tag="country-native-economics"
-        n,governed,extras=800,16,23
+        self._native_batch(wide=False)
+
+    def test_wide_100_distinct_native_batch_and_cold_product(self):
+        import os
+        if os.environ.get("PYAT_WIDE_ECONOMICS")!="1":
+            self.skipTest("separate wide economics CI job")
+        self._native_batch(wide=True)
+
+    def _native_batch(self,*,wide):
+        tag="country-native-wide" if wide else "country-native-economics"
+        n,governed,extras=(512,80,218) if wide else (800,16,23)
         rng=np.random.default_rng(312)
         values=rng.integers(0,2,(n,governed))
         names=tuple("q"+str(i) for i in range(governed))
-        frame=pd.DataFrame({q:values[:,i].astype(str) for i,q in enumerate(names)})
+        data={q:values[:,i].astype(str) for i,q in enumerate(names)}
         for i in range(extras):
-            frame["v"+str(i)]=np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
-        frame["G"]=np.where(np.arange(n)%2==0,"A","B")
-        frame["W"]=1.+(np.arange(n)%3)
+            data["v"+str(i)]=np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
+        data["G"]=np.where(np.arange(n)%2==0,"A","B")
+        data["W"]=1.+(np.arange(n)%3)
+        frame=pd.DataFrame(data)
         chosen=tuple(range(1,n+1,2))
         selected=values[::2,:]
         with tempfile.TemporaryDirectory() as d:
@@ -106,7 +116,9 @@ class CountryNativeEconomics(unittest.TestCase):
             atom=_predicate(fx,qa,_response_leaf(fx,qa,"q0","1"),tag=tag+"-q0")
             joint=_query(fx,qa,base,("q0","q1"),tag=tag+"-joint")
             # Distinct actual predicates/targets, not repeated identical query.
-            conditional=tuple(_query(fx,qa,atom,(q,),tag=tag+"-"+q) for q in names[2:11])
+            atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide else None
+            conditional=tuple(_query(fx,qa,atom,(q,),tag=tag+"-"+q) for q in names[2:(52 if wide else 11)])
+            alternate=tuple(_query(fx,qa,atom2,(q,),tag=tag+"-alt-"+q) for q in names[30:78]) if wide else ()
             unary=_query(fx,qa,base,("q1",),tag=tag+"-unary")
             grammar=_grammar(operation="I03-OP-"+tag+"-discovery",
                 atoms=[_atom("ALL",base,"BRANCH"),_atom("X1",atom,"RESPONSE")],
@@ -114,9 +126,13 @@ class CountryNativeEconomics(unittest.TestCase):
                     atom_ids=("X1",),baseline_atom_id="ALL",query_template_id="Y",
                     validation={"kind":"DISTRIBUTION_DIFFERS_FROM_BASELINE"})])
             discovery=_discovery_authority(fx,grammar,da)
-            queries=(joint,*conditional,unary)
-            cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),(base,atom),queries,(discovery,))
-            requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom.ref) for q in queries)
+            queries=(joint,*conditional,*alternate,unary)
+            preds=(base,atom,atom2) if wide else (base,atom)
+            cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),preds,queries,(discovery,))
+            requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
+            if wide:
+                self.assertEqual(len({q.ref.key for q in queries}),100)
+                self.assertEqual(len(routing),20480)
             ds=(discovery.ref,);jobs=operation_jobs(requests,ds)
             root=semantic_hash({"fixture":tag});frontier=semantic_hash({"jobs":jobs,"root":root})
             decision=_ref("TEST_ONLY_DECISION",tag);host,purpose="test-country","TEST_ONLY_COUNTRY_ECONOMICS"
@@ -170,20 +186,21 @@ class CountryNativeEconomics(unittest.TestCase):
             # Envelope mechanics above the previous 16,384-record cap. This
             # deliberately repeated routing list is NOT a valid C11 release;
             # it tests only exact digest streaming and bounded retention.
-            wide=replace(workload,projection=replace(workload.projection,
-                routing=workload.projection.routing*3))
-            wide_hash=semantic_hash(wide.envelope())
-            wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash,max_bytes=1024*1024)
-            self.assertIsNotNone(wide_prepared)
-            self.assertEqual(wide_prepared.digest(),wide_hash)
-            self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
-            self.assertLess(wide_prepared.retained_pin_bytes,1024*1024)
-            print("COUNTRY_ROUTING_WIDE_ENVELOPE",json.dumps({
-                "records":len(wide_prepared.routing),
-                "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
-                "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
-                "exact_hash_equal":True}),flush=True)
-            del wide_prepared,wide
+            if not wide:
+                wide=replace(workload,projection=replace(workload.projection,
+                    routing=workload.projection.routing*3))
+                wide_hash=semantic_hash(wide.envelope())
+                wide_prepared=issued._PreparedRoutingEnvelope.prepare(wide,wide_hash,max_bytes=1024*1024)
+                self.assertIsNotNone(wide_prepared)
+                self.assertEqual(wide_prepared.digest(),wide_hash)
+                self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
+                self.assertLess(wide_prepared.retained_pin_bytes,1024*1024)
+                print("COUNTRY_ROUTING_WIDE_ENVELOPE",json.dumps({
+                    "records":len(wide_prepared.routing),
+                    "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
+                    "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
+                    "exact_hash_equal":True}),flush=True)
+                del wide_prepared,wide
             self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
                 workload,record.envelope_sha256,max_bytes=16))
             # Reject substituted body/tuple and re-hash all nonrouting input.
@@ -291,8 +308,20 @@ class CountryNativeEconomics(unittest.TestCase):
                 for q in queries:
                     read=cold.read_s04(q.ref,conditioner_index=0 if q==joint else None)
                     fact=read.first_consumer.execution.facts[0]
-                    expected=len(chosen) if q in (joint,unary) else int((selected[:,0]==1).sum())
-                    self.assertEqual(fact.raw_denominator_support,expected)
+                    mask=(np.ones(len(chosen),dtype=bool) if q in (joint,unary)
+                          else selected[:,1]==0 if q in alternate else selected[:,0]==1)
+                    self.assertEqual(fact.raw_denominator_support,int(mask.sum()))
+                    from rawlsing_next.tests.test_pre553_empirical_query import _cell_map
+                    reverse={ref.key:i for i,(name,ref) in enumerate(qrefs.items())}
+                    from rawlsing_next.pre553_empirical_objects import exact_ref
+                    target_indices=tuple(reverse[exact_ref(ref).key] for ref in q.target_refs)
+                    cells=_cell_map(fact)
+                    for cell,row in cells.items():
+                        vals=(cell,) if isinstance(cell,str) else cell
+                        expected_cell=mask.copy()
+                        for col,val in zip(target_indices,vals):
+                            expected_cell &= selected[:,col]==int(val)
+                        self.assertEqual(row["raw_numerator_support"],int(expected_cell.sum()))
                     if q==joint:
                         self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],len(chosen))
             print("COUNTRY_COLD_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
@@ -304,7 +333,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "publication_seconds":pub.publication_seconds,"cold_s04_seconds":time.monotonic()-t,
                 "closure_referenced_bytes":pub.receipt.referenced_physical_bytes,
                 "peak_process_rss_kib_linux":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
-                "grade":"SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
+                "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
 
     def test_physical_layout_query_tradeoffs_same_cells(self):
