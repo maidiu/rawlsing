@@ -8,6 +8,7 @@ respondent-bearing artifact is needed. A prior result does not prove CURRENT.
 from __future__ import annotations
 
 import argparse
+import ast
 from fractions import Fraction
 from hashlib import sha256
 import json
@@ -35,9 +36,15 @@ def _key(value):
 
 def _ref(value):
     if isinstance(value, str):
-        pieces = value.split("|")
-        _require(len(pieces) == 3, "EXACT_REF_REQUIRED")
-        value = dict(zip(("kind", "object_id", "content_hash"), pieces))
+        # Q103's existing JSON default=str serializes its frozen replay
+        # mapping as the literal repr of a dict. SRC16 uses a plain dict.
+        # Decode that one historical representation, not arbitrary Python.
+        if value.startswith("{") and len(value) <= 4096:
+            value = ast.literal_eval(value)
+        else:
+            pieces = value.split("|")
+            _require(len(pieces) == 3, "EXACT_REF_REQUIRED")
+            value = dict(zip(("kind", "object_id", "content_hash"), pieces))
     _require(isinstance(value, dict) and set(value) == {"kind", "object_id", "content_hash"}
              and all(isinstance(x, str) and x for x in value.values())
              and re.fullmatch(r"[0-9a-f]{64}", value["content_hash"]) is not None,
@@ -269,7 +276,7 @@ def main():
         _write_private(args.output, json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
         if args.markdown_output:
             _write_private(args.markdown_output, markdown(report))
-    except (RecordedDeliveryError, KeyError, TypeError, ValueError, OSError) as exc:
+    except (RecordedDeliveryError, KeyError, TypeError, ValueError, SyntaxError, OSError) as exc:
         # Input content, paths and counts deliberately never reach stdout.
         print(json.dumps({"status": "REFUSED", "error_type": type(exc).__name__,
                           "reason": str(exc) if isinstance(exc, RecordedDeliveryError) else "INVALID_OR_UNAVAILABLE_PRIVATE_INPUT"}))

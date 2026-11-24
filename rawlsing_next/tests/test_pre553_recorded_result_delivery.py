@@ -30,6 +30,8 @@ def _files(tmp_path, schema):
         "missing":{"system_missing":1,"absent":2},"facts":[{"typed_state":"SUPPORTED","raw_denominator_support":4,
         "raw_numerator_support":4,"replay_ref":_ref("query-replay"),"cells":[[1,1,"OBSERVED_POSITIVE"],[value,3,"OBSERVED_POSITIVE"]]}]}
     if schema==Q103:
+        # Actual Q103 writer uses json.dump(default=str) on frozen replay.
+        result["facts"][0]["replay_ref"]=repr(result["facts"][0]["replay_ref"])
         result.update(query_ref=_ref("query"),predicate_ref=_ref("predicate"),release_refs=[release])
     else:
         result.update(source_id=source,question_ref=op["question_ref"],historical_snapshot_ref=op["historical_snapshot_ref"],
