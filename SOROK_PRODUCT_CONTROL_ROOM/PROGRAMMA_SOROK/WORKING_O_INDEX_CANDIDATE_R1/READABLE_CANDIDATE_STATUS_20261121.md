@@ -1,6 +1,6 @@
 # O-INDEX readable candidate status — 21 November 2026
 
-**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `0d3cd94305839c2b28c10225b2ddedb04d95d9c7`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **138-PR targeted discovered set (134 prior + 4 current CO/NEIGHBOR advances)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
+**Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `2726ab42f24981f2f605af3de6c2ff254e15d1d8`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **138-PR targeted discovered set (134 prior + 4 current CO/NEIGHBOR advances)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
 
@@ -257,7 +257,7 @@ Prior separate R33/R12 hold superseded at bounded sourcefree scope by #1323/#132
 
 ## Function-first lookup — derived from the SAME receiving ledger
 
-144 original identities with explicit scoped links; 315 links; no automatic completeness, adoption or runtime parity.
+144 original identities with explicit scoped links; 316 links; no automatic completeness, adoption or runtime parity.
 
 ### A0 — Existing pipeline-generated individual
 
@@ -684,6 +684,8 @@ Prior separate R33/R12 hold superseded at bounded sourcefree scope by #1323/#132
 
 - [#1248](https://github.com/maidiu/rawlsing/pull/1248) @ `6647f746f4f7`: Material body/motive activity distinct from narrated choice. **INTEGRATED_SOURCEFREE_EXECUTION_REPORTED_AT_EXACT_1248__PROTECTED_AND_NATIVE_HELD**. Boundary: Exact #1248 Mac execution reported 558 normal/optimized, 558+44 subtests and two cold Nadia histories; no new execution, independent G5, exact current CO runtime promotion or full legacy contract equivalence.
 - [#1324](https://github.com/maidiu/rawlsing/pull/1324) @ `2082edbeeb83`: New possible means may be learned through dissimilar lived activity; source recomputed, end and original means retained, bounded bridge consumed by actual trial.. **DIRECT_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD**. Boundary: Coarse shared bodily relief nomination not general social/motive analogy, skill, durable repertoire, or live LLM; object/Other-bound ends excluded; competing bridges, scope and cost held.
+- [#1325](https://github.com/maidiu/rawlsing/pull/1325) @ `67785ecce69f`: Conditional means to an existing possible end can consolidate or suspend after independent lived courses; not motive acquisition.. **DIRECT_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD**. Boundary: No general learned skill/motive or reactivation after suspension; multiple competing bridges, graded effects, dynamic scope and project/motif transformation, live-model adequacy, economy and latest NEIGHBOR join held.
+
 
 ### N02 — Thick, scoped expectations and early care
 
