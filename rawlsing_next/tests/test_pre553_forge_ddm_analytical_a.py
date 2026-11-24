@@ -483,6 +483,7 @@ def test_followup_group_local_denominators_minorities_and_zero_condition_support
     modal = fibres[("0","0")]
     assert modal["raw_group_full_case_n"] == 4
     assert modal["target_rows"][0]["conditional_raw_fraction"] == {"$exact_fraction":[3,4]}
+    assert modal["target_rows"][0]["sample_modal_disposition"] == "UNIQUE_MODAL"
     assert modal["target_rows"][1]["sample_modal_disposition"] == "OBSERVED_NONMODAL_ALTERNATIVE"
     tied = fibres[("1","1")]
     assert tied["recursion_support"] == "BELOW_MINIMUM_N__NOT_A_GLOBAL_NEGATIVE"
@@ -495,3 +496,42 @@ def test_followup_group_local_denominators_minorities_and_zero_condition_support
     # Default/legacy consumers are not made dependent on the opt-in product.
     legacy = ws.compare_dhikr(replace(request, include_group_evidence=False)).material()
     assert "comparative_group_evidence" not in legacy["nodes"][0]
+
+
+def test_followup_comparative_group_evaluation_reused_without_dropping_pair_diagnostics(monkeypatch):
+    from collections import Counter
+    from itertools import combinations
+    from rawlsing_next import pre553_s04_dhikr_comparative as dhikr
+    names = ("A","B","C","Y")
+    rows = [{"id": f"R{a}{b}{c}", "responses": dict(zip(names,(a,b,c,a^b^c)))}
+            for a,b,c in product((0,1), repeat=3)]
+    _, _, _, query, execution = _actual("FORGE-FOLLOWUP-REUSE", rows, names)
+    ws = _workspace(query, execution)
+    original = dhikr._association
+    calls = Counter()
+    def counted(cells, target, axes):
+        calls[axes] += 1
+        return original(cells, target, axes)
+    monkeypatch.setattr(dhikr, "_association", counted)
+    # Noncanonical input order is intentional: output semantics and legacy
+    # pair ordering must survive the local computation reuse.
+    predictors = (2,0,1)
+    for order in (1,2,3):
+        calls.clear()
+        material = ws.compare_dhikr(DHIKRComparisonRequest(
+            3, predictors, max_depth=0, max_interaction_order=order,
+            include_group_evidence=True,
+        )).material()
+        expected = {g:1 for k in range(1, max(2,order)+1)
+                    for g in combinations(predictors,k)}
+        assert calls == expected
+        node = material["nodes"][0]
+        assert len(node["pairwise_conditional_interactions"]) == 3
+        assert all(read_dhikr_sample_estimate(r["joint_information_bits"]) == 0
+                   for r in node["pairwise_conditional_interactions"])
+        assert {tuple(r["axes"]) for r in node["comparative_group_evidence"]} == {
+            g for k in range(1,order+1) for g in combinations(predictors,k)}
+        if order == 3:
+            assert _score(node,predictors) == 1
+        else:
+            assert node["priority_group"] == []
