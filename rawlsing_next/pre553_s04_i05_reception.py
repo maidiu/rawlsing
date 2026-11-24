@@ -17,7 +17,7 @@ from rawlsing_next.pre553_discovery_exact import (
     _derived_ref as _i05_derived_ref,
 )
 from rawlsing_next.pre553_empirical_objects import (
-    ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
+    DiscoveryAuthority, ExactRef, canonical_json, canonicalize, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_s04_observed_research import (
     S04ObservedKnowledge, receive_s04_i03_research,
@@ -281,6 +281,15 @@ def _require_handoff_material(handoff, label):
         # side hashes. Re-run that law because mappings can be changed after
         # construction, and bind the outer receipt to the sealed side data.
         handoff.__post_init__()
+        binding = handoff.branch_replay_binding
+        # Internal record identity is cached. Recompute its semantic material
+        # before accepting an externally pinned branch ref.
+        digest = semantic_hash(binding.semantic_projection())
+        if binding.ref != ExactRef(
+                "C11Internal:DiscoveryBranchReplayBinding",
+                f"urn:rawlsing:pre553:c11:DiscoveryBranchReplayBinding:sha256:{digest}",
+                digest):
+            raise S04I05ReceptionError("cached handoff binding identity changed")
         deterministic = handoff.deterministic_parameters
         if (_ref(deterministic["receipt_ref"], "handoff receipt") != handoff.receipt_ref
                 or _ref(deterministic["winning_predicate_ref"], "handoff winner")
@@ -299,12 +308,14 @@ def receive_s04_i05_adaptive_outcome(
     unit,
     discovery: ExactBoundedDiscoveryResult,
     expected_replay_ref: ExactRef,
-    candidate_receipt_ref: ExactRef,
-    query_role: str,
+    candidate_receipt_ref: ExactRef | None,
+    query_role: str | None,
     current_guard: Callable[[], Any],
     proposal_units=(),
     parent_handoff=None,
     next_handoff=None,
+    parent_handoffs=(),
+    discovery_authority: DiscoveryAuthority | None = None,
 ):
     """Bridge a real sealed I05 frontier into the existing adaptive scheduler.
 
@@ -315,7 +326,11 @@ def receive_s04_i05_adaptive_outcome(
     actual parent's role receipt AND complete frontier replay identity.
     The existing adaptive scheduler verifies its own rule, generation,
     determinant and frontier bounds; subsequent native execution must still
-    validate its separately issued discovery authority.
+    validate its separately issued discovery authority. A zero-candidate
+    frontier returns (None, None, outcome); an explicit receipt-only read
+    (query_role=None) retains a native fate but cannot propose new work.
+    Neither issues an S04 fact. Plural branch ancestry requires the exact
+    original discovery authority preimage and all matching handoffs.
     """
     from rawlsing_next.pre553_discovery_adaptive import (
         AdaptiveExplorationUnit, AdaptiveUnitOutcome,
@@ -340,37 +355,91 @@ def receive_s04_i05_adaptive_outcome(
             or discovery.discovery_authority_ref not in unit.determinant_refs):
         raise S04I05ReceptionError("unit/native discovery authority or replay identity mismatch")
     _require_pinned_frontier(discovery, expected_replay_ref)
-    observed, role = receive_s04_i05_role(
-        discovery=discovery, candidate_receipt_ref=candidate_receipt_ref,
-        query_role=query_role,
-    )
-    receipt = next(r for r in discovery.receipts if r.ref == candidate_receipt_ref)
+    proposals = tuple(proposal_units)
+    supplied_parents = tuple(parent_handoffs)
+    if parent_handoff is not None:
+        if supplied_parents:
+            raise S04I05ReceptionError("use one parent_handoff or plural parent_handoffs")
+        supplied_parents = (parent_handoff,)
+    declared_parents = {ref for ref in unit.determinant_refs
+                        if ref.kind == "C11Internal:DiscoveryBranchReplayBinding"}
+    if not discovery.receipts:
+        # A genuinely empty declared grammar is a complete scheduler unit,
+        # but has no role, empirical fact, or positive recruitment evidence.
+        if (candidate_receipt_ref is not None or query_role is not None
+                or proposals or supplied_parents or declared_parents
+                or next_handoff is not None):
+            raise S04I05ReceptionError("zero-candidate frontier cannot supply selected role, ancestry or proposal")
+        outcome = AdaptiveUnitOutcome(
+            unit_ref=unit.unit_ref, sealed_result_ref=expected_replay_ref,
+            proposal_basis_ref=expected_replay_ref,
+            unit_result_state="I05_COMPLETE_DECLARED_FRONTIER__ZERO_CANDIDATES",
+        )
+        check()
+        return None, None, outcome
+    # Receipt-only closure is explicit, not an exception-to-positive
+    # fallback. It preserves native fates whose shape/measure is outside
+    # S04's RAW scalar contract, without manufacturing a descriptive fact.
+    selected = [r for r in discovery.receipts if r.ref == candidate_receipt_ref]
+    if len(selected) != 1:
+        raise S04I05ReceptionError("candidate receipt not uniquely present in I05 frontier")
+    receipt = selected[0]
+    if query_role is None:
+        if proposals or next_handoff is not None:
+            raise S04I05ReceptionError("native receipt-only closure cannot recruit a child")
+        observed = role = None
+    else:
+        observed, role = receive_s04_i05_role(
+            discovery=discovery, candidate_receipt_ref=candidate_receipt_ref,
+            query_role=query_role,
+        )
     releases = tuple(_ref(ref, "release") for ref in receipt.source_release_refs)
     # A resumed recursively issued native operation must actually consume
     # its persisted parent, not merely carry an unconnected hash in the unit.
     ancestral = tuple(_ref(ref, "branch ancestry") for ref in receipt.branch_or_parent_ancestry_refs)
-    declared_parents = tuple(ref for ref in unit.determinant_refs
-                             if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
-    ancestry_parents = tuple(ref for ref in ancestral
-                             if ref.kind == "C11Internal:DiscoveryBranchReplayBinding")
-    if declared_parents or ancestry_parents or parent_handoff is not None:
-        _require_handoff_material(parent_handoff, "parent")
-        if (type(parent_handoff) is not RecursiveBranchHandoff
-                or parent_handoff.ref not in declared_parents
-                or parent_handoff.ref not in ancestral
-                or parent_handoff.winning_predicate.ref not in unit.determinant_refs
-                or parent_handoff.source_release_refs != releases):
+    ancestry_parents = {ref for ref in ancestral
+                        if ref.kind == "C11Internal:DiscoveryBranchReplayBinding"}
+    for parent in supplied_parents:
+        _require_handoff_material(parent, "parent")
+        if (parent.winning_predicate.ref not in unit.determinant_refs
+                or parent.source_release_refs != releases):
             raise S04I05ReceptionError("recursive unit lost exact issued parent handoff")
-    proposals = tuple(proposal_units)
+    supplied_refs = {parent.ref for parent in supplied_parents}
+    if (len(supplied_refs) != len(supplied_parents)
+            or supplied_refs != declared_parents or supplied_refs != ancestry_parents):
+        raise S04I05ReceptionError("recursive unit lost exact issued parent handoff census")
+    if len(supplied_parents) > 1 or discovery_authority is not None:
+        # The candidate commits ancestry refs, not the binding of each parent
+        # ref to the actual grammar atom. Require the issued grammar preimage
+        # for plural ancestry without minting it.
+        if (type(discovery_authority) is not DiscoveryAuthority
+                or discovery_authority.ref != discovery.discovery_authority_ref
+                or semantic_hash(discovery_authority.semantic_projection()) != discovery_authority.content_hash
+                or _ref(discovery_authority.candidate_grammar_ref, "issued grammar") != discovery.candidate_grammar_ref
+                or semantic_hash(discovery_authority.candidate_universe_definition)
+                    != discovery.candidate_grammar_ref.content_hash):
+            raise S04I05ReceptionError("multi-parent reception requires exact issued grammar preimage")
+        atoms = discovery_authority.candidate_universe_definition["atoms"]
+        for parent in supplied_parents:
+            bindings = [atom for atom in atoms if parent.ref in {
+                _ref(ref, "atom ancestry") for ref in atom.get("ancestry_refs", ())}]
+            if (not bindings or any(atom["kind"] != "BRANCH"
+                    or _ref(atom["predicate_ref"], "parent atom predicate")
+                        != parent.winning_predicate.ref for atom in bindings)):
+                raise S04I05ReceptionError("parent handoff not bound to issued branch atom")
     if proposals and observed.material()["state"] != "SUPPORTED_SAMPLE_DESCRIPTIVE":
         raise S04I05ReceptionError("held role cannot supply positive proposal evidence")
     family = receipt.candidate_identity["family"]
     if next_handoff is not None or (proposals and family in RECURSIVE_BRANCH_FAMILIES):
         _require_handoff_material(next_handoff, "winning")
+        baseline_refs = [_ref(item["predicate_ref"], "baseline role")
+                         for item in receipt.candidate_identity["query_roles"]
+                         if item["role"] == "BASELINE"]
         if (family not in RECURSIVE_BRANCH_FAMILIES
                 or type(next_handoff) is not RecursiveBranchHandoff
                 or receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED"
                 or next_handoff.receipt_ref != receipt.ref
+                or baseline_refs != [next_handoff.immediate_parent_branch_ref]
                 or canonical_json(next_handoff.deterministic_parameters["candidate_identity"])
                     != canonical_json(receipt.candidate_identity)
                 or next_handoff.discovery_authority_ref != discovery.discovery_authority_ref
@@ -393,10 +462,11 @@ def receive_s04_i05_adaptive_outcome(
     outcome = AdaptiveUnitOutcome(
         unit_ref=unit.unit_ref,
         sealed_result_ref=expected_replay_ref,
-        proposal_basis_ref=role.ref,
+        proposal_basis_ref=role.ref if role is not None else receipt.ref,
         # Never report a selected candidate's VALID_EMPTY as emptiness of
-        # the complete sealed frontier. The original role receipt retains it.
-        unit_result_state="I05_COMPLETE_FRONTIER__SELECTED_" + receipt.typed_state,
+        # the complete sealed frontier. No projection in receipt-only mode.
+        unit_result_state=("I05_COMPLETE_FRONTIER__SELECTED_" + receipt.typed_state
+                           + ("__NATIVE_RECEIPT_ONLY" if role is None else "")),
         proposal_units=proposals,
     )
     check()
