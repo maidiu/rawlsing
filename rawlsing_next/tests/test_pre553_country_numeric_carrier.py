@@ -112,7 +112,7 @@ class CountryNumeric(unittest.TestCase):
             qa=_query_authority("country-compact")
             pred=_branch_predicate(a,qa,members=respondents,tag="country")
             registry=AuthorityRegistry((*fx["authorities"],qa))
-            for measure in ("RAW","WEIGHTED"):
+            for measure in ("RAW","GOVERNED_WEIGHTED"):
                 with self.subTest(measure=measure):
                     query=_query(a,qa,pred,("Y",),measure=measure,tag="country-"+measure)
                     x=execute_empirical_query(repository=a["repo"],query=query,predicate=pred,
