@@ -182,7 +182,7 @@ def conditional_assistance_options(constitution, access, option):
     # An actual, currently accessible food offer qualifies a distinct
     # actor-selected acceptance alternative. A generic signal is not enough.
     if operation == 'SIGNAL':
-        for row in offered:
+        for row in list(offered):
             other=row['world_request']['addressed_party_ref']
             signs=[c for c in access.cues if c.get('kind')=='visitor_food_offer'
                    and c.get('visitor_ref')==other
@@ -190,10 +190,12 @@ def conditional_assistance_options(constitution, access, option):
                    and c.get('clock')==access.world_clock
                    and type(c.get('visitor_event_ref')) is str]
             if other in visitors and len(signs)==1:
-                row['human_food_offer_ref']=signs[0]['visitor_event_ref']
-                row['option_id']=stable_id('accept_actual_food_offer',{
-                    'option':row['option_id'],'offer':row['human_food_offer_ref']})
-                row['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+                acceptance=copy(row)
+                acceptance['human_food_offer_ref']=signs[0]['visitor_event_ref']
+                acceptance['option_id']=stable_id('accept_actual_food_offer',{
+                    'option':row['option_id'],'offer':acceptance['human_food_offer_ref']})
+                acceptance['binding_status']='CURRENT_HELD_FOOD_OFFER_ACCEPTANCE'
+                offered.append(acceptance)
     return offered
 
 
