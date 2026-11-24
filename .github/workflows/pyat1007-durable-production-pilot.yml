@@ -1,0 +1,35 @@
+name: PYAT1007 cross-family production pilot preparation
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/tests/test_pyat1007_saved_durable_three_series.py'
+      - 'rawlsing_next/pre553_original_saved_pilot.py'
+      - 'rawlsing_next/tests/test_pre553_original_saved_pilot.py'
+      - 'WORKER_RETURNS/PYAT1007_DUAL_SERIES_PREP_R1/**'
+      - '.github/workflows/pyat1007-durable-production-pilot.yml'
+permissions:
+  contents: read
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify exact checkout
+        env:
+          EXPECTED: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git rev-parse HEAD
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest pandas pyreadstat pyarrow duckdb psutil
+      - run: PYTHONPATH=. python -m pytest -q -s -o addopts='' rawlsing_next/tests/test_pyat1007_saved_durable_three_series.py --junitxml=pyat1007-durable.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat1007-durable
+          path: pyat1007-durable.xml
