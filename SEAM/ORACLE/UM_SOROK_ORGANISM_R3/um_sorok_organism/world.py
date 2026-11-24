@@ -213,7 +213,7 @@ def qualified_human_vocal_receipt(world, actor, attempt, ledger_event):
     No caller-supplied future consent or other-actor Attempt is accepted.
     Adjacent turn coordination only, not simultaneous singing.
     """
-    human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED'}.get(attempt.action)
+    human_operation = {'SING':'SING', 'SIGNAL':'OFFER_FEED', 'REFUSE':'OFFER_FEED'}.get(attempt.action)
     if (human_operation is None or attempt.intention !=
             'ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
             or attempt.target not in visible_vocal_visitors(
@@ -839,7 +839,16 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 output='ATTEMPTED_SPEECH_ABOUT_UNAVAILABLE_OBJECT'
     elif attempt.action=='ASK':
         output='REQUEST_EXPRESSED_NOT_AUTOMATICALLY_ACCEPTED'
-    elif attempt.action=='REFUSE':output='ACTOR_REFUSED'
+    elif attempt.action=='REFUSE':
+        output='ACTOR_REFUSED'
+        if human_vocal is not None and human_vocal.get('operation')=='OFFER_FEED':
+            output='PARTICULAR_HUMAN_FOOD_OFFER_REFUSED'
+            _field(world,aid,target)['history'].append({
+                'clock':world['clock'],'activity':'REFUSE',
+                'human_offer_ref':human_vocal['user_event_ref'],
+                'actor':aid,'human_participant':target,
+                'no_material_transfer':True,
+                'future_consent_or_motive_not_inferred':True})
     elif attempt.action=='REST':output='BODY_RESTED'
     elif attempt.action=='ORIENT':output='ORIENTING_PERFORMED'
     elif attempt.action=='INSPECT':
@@ -895,6 +904,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                       else 'human_vocal_event_ref'] = human_vocal['user_event_ref']
     if human_signal_prefix:
         event_summary['human_directed_signal_prefix_performed']=True
+    if human_vocal is not None and output=='PARTICULAR_HUMAN_FOOD_OFFER_REFUSED':
+        event_summary['human_food_offer_refused_event_ref']=human_vocal['user_event_ref']
     # Objective event audit contains the real resolution, but public history
     # must not publish the actor's private financial/material explanation.
     # A blocked act is observable as an unfinished attempt, not an accounting diagnosis.
@@ -956,6 +967,11 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 location=loc,modality='auditory' if attempt.action in (
                     'SING','SPEAK','SIGNAL','ASK') else 'visual',
                 description=perceptible_outcome,source_actor=aid)
+        if output=='PARTICULAR_HUMAN_FOOD_OFFER_REFUSED':
+            # A bounded outward refusal, not an utterance or attitude.
+            sign['human_food_offer_refused_event_ref']=human_vocal['user_event_ref']
+            event_summary['human_food_refusal_cue_ref']=sign['id']
+            public_event['human_food_refusal_cue_ref']=sign['id']
         if human_signal_prefix:
             sign['human_directed_signal_prefix_performed']=True
             event_summary['human_directed_signal_cue_ref']=sign['id']
