@@ -354,7 +354,9 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
                             prior_outputs=None, max_units=None,
                             expected_wave: OriginalWaveIdentity | None = None,
                             group_scope: I03GroupedExecutionScope | None = None,
-                            reuse_prepared_saved_session: bool = False):
+                            reuse_prepared_saved_session: bool = False,
+                            checkpoint_every: int | None = None,
+                            checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -370,6 +372,13 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         not isinstance(max_units, int) or isinstance(max_units, bool) or max_units < 1
     ):
         raise WorkloadAdmissionError("POSITIVE_MAX_UNITS_REQUIRED")
+    if (checkpoint_every is None) != (checkpoint_observer is None):
+        raise WorkloadAdmissionError("CHECKPOINT_INTERVAL_AND_OBSERVER_REQUIRED_TOGETHER")
+    if checkpoint_every is not None and (
+        type(checkpoint_every) is not int or checkpoint_every < 1
+        or not callable(checkpoint_observer) or saved_admission_factory is None
+    ):
+        raise WorkloadAdmissionError("EXACT_SAVED_CHECKPOINT_OBSERVER_REQUIRED")
     if type(reuse_prepared_saved_session) is not bool:
         raise WorkloadAdmissionError("EXACT_PREPARED_SAVED_OPT_IN_REQUIRED")
     if reuse_prepared_saved_session and saved_admission_factory is None:
@@ -499,6 +508,30 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         manifest=manifest, repository=repository, prior_receipts=prior_receipts,
         saved_mode=saved is not None,
     )
+    def snapshot():
+        return NativeWorkloadResult(
+            routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
+            tuple(ref for r in runner.receipts for ref in r.result_refs),
+            record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
+            record.original_wave_identity, record.source_sha256, dict(outputs))
+
+    attempts_since_checkpoint = 0
+
+    def checkpoint():
+        nonlocal attempts_since_checkpoint
+        check_current()
+        saved.check_current()
+        checkpoint_observer(snapshot())
+        saved.check_current()
+        check_current()
+        attempts_since_checkpoint = 0
+
+    def after_attempt(_receipt):
+        nonlocal attempts_since_checkpoint
+        attempts_since_checkpoint += 1
+        if attempts_since_checkpoint == checkpoint_every:
+            checkpoint()
+
     try:
         check_current()
         # One original DirectEstateI03Session is opened only for the explicit
@@ -511,7 +544,12 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
                 prepared_session = stack.enter_context(prepared_admission.prepared_i03())
                 check_current()
             runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
-                       max_units=max_units)
+                       max_units=max_units,
+                       after_attempt=after_attempt if checkpoint_observer is not None else None)
+            # Publish the final attempted prefix even if some units failed.
+            # The unbounded run still refuses incomplete success below.
+            if checkpoint_observer is not None and attempts_since_checkpoint:
+                checkpoint()
             check_current()
         # Coverage is determined by the incumbent Batch owner's latest attempt
         # per unit, not by the cardinality or state of the immutable history.
@@ -519,10 +557,7 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         summary = runner.summary()
         if max_units is None and not summary.full_coverage:
             raise NativeWorkloadExecutionError("NATIVE_EXECUTION_INCOMPLETE_SEE_RECEIPTS")
-        result = NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
-            tuple(ref for r in runner.receipts for ref in r.result_refs),
-            record.envelope_sha256, record.decision_ref, record.scope, summary,
-            record.original_wave_identity, record.source_sha256, dict(outputs))
+        result = snapshot()
     finally:
         if owned_group_scope is not None:
             owned_group_scope.close()

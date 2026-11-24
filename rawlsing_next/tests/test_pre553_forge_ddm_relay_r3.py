@@ -145,3 +145,51 @@ def test_reversal_retains_exact_partition_qualification(omitted,overlap):
                                  "SELECTED_GRID_REVERSAL_ONLY__NOT_COMPLETE_SIMPSON_PARTITION")
     assert any(x["omitted_pooled_member_n"]>0 for x in q["exposure_partitions"]) is (omitted or overlap)
     assert any(x["overlap_member_n"]>0 for x in q["exposure_partitions"]) is overlap
+
+
+def _temporal_coordinate_case(tag, producer_time, subject_time):
+    rows=[{"id":"R0","responses":{"Y":0},"coords":{"G":"A"}},
+          {"id":"R1","responses":{"Y":1},"coords":{"G":"B"}}]
+    source=native._build_source(tag,rows)
+    qa=native._query_authority(tag)
+    leaf=native._coordinate_leaf(source,"G","A")
+    if producer_time is not None:
+        leaf["effective_or_reference_time"]=producer_time
+    pred=native._predicate(source,qa,leaf,tag=tag)
+    q=native._query(source,qa,pred,("Y",),tag=tag)
+    actual=native._run(source,qa,pred,q).facts[0]
+    assert actual.typed_state=="SUPPORTED" and actual.raw_denominator_support==1
+    universe,release=source["universe"].ref,source["release_ref"]
+    coord,pairing=source["crefs"]["G"],fx.make_pairing_authority(tag)
+    binding=fx.make_conditioner_binding(binding_id="G",subject_fact_ref=ExactRef(**fx.subject_fact_ref(source,"G","A")),
+        empirical_coordinate_ref=coord,comparability_authority_ref=pairing,
+        source_universe_ref=universe,release_ref=release,effective_time_or_interval=subject_time)
+    consumer=fx.make_multi_conditioner_consumer_query(query_id=tag,
+        subject_ref=ExactRef("TEST_ONLY_SUBJECT","urn:test:"+tag,semantic_hash(tag)),
+        target_ref=source["qrefs"]["Y"],source_universe_ref=universe,release_ref=release,
+        bindings=[binding],projection_kind="TEST_ONLY_TEMPORAL_CONDITION")
+    witness=fx.build_witness_for_binding(witness_object_id="urn:test:"+tag+":witness",
+        consumer_query=consumer,producer_query=q,producer_predicate=pred,bindings=[binding],
+        coordinate_value_pairs=[(coord,"A")],pairing_authority=pairing,source_universe_ref=universe,
+        release_ref=release,leaf_type="EMPIRICAL_POSITION_COORDINATE")
+    return compose_positioned_subject_possibility(repository=source["repo"],empirical_query=q,predicate=pred,
+        authority_registry=native._registry(source,qa),release_refs=(release,),consumer_query=consumer,
+        model_rule=fx.make_model_rule(universe,tag),condition_binding_witness=witness)
+
+
+def test_c1_explicit_coordinate_time_mismatch_refused():
+    from rawlsing_next.pre553_analytical_composition import ConditionValueRelationMismatch
+    with pytest.raises(ConditionValueRelationMismatch,match="time"):
+        _temporal_coordinate_case("R3-time-mismatch","2026-01","2026-11")
+
+
+@pytest.mark.parametrize("producer_time,subject_time",[
+    ("2026-01","2026-01"),("2026-01",None),(None,"2026-01"),
+])
+def test_c1_coordinate_time_exact_or_explicitly_qualified(producer_time,subject_time):
+    result=_temporal_coordinate_case(f"R3-time-{producer_time}-{subject_time}",producer_time,subject_time)
+    consumer=result.consumer_result_or_null
+    assert consumer.result_state=="EXACT_SUPPORTED"
+    assert (consumer.exact_geometry.get("condition_scope") is not None) is (producer_time!=subject_time)
+    if producer_time!=subject_time:
+        assert consumer.exact_reason.endswith("SUBJECT_CONDITION_COVERAGE_NOT_ESTABLISHED")
