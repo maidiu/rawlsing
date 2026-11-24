@@ -2,6 +2,8 @@
 
 **SOURCE-PINNED CANDIDATE · November 21, 2026. Not protected PROGRAMMA, original science, production or independent G5.** Read the [SOROK HQ OATH](../00_PROGRAMMA_SOROK.md) and [PYAT G4 first consultation](../../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md) before a consequential engineering claim. This extends existing [SOROKUDA](../SOROKUDA.md), original 144 O-Index functions and [NEIGHBORMULCH TOTAL MULCH #1275](https://github.com/maidiu/rawlsing/pull/1275); it does not replace them.
 
+**MANDATORY FOR ALL SOROK / SORACLE / CO / NEIGHBOR HQ SUCCESSORS (including MULCHINEERING):** [MANDATORY ESTATE FIRST CONTACT AND NO-DROP MAINTENANCE](../SOROKUDA.md#mandatory-sorok-estate-first-contact-and-no-drop-maintenance--user-direction-2026-11-23). This is the division of responsibility, reciprocal resource navigation, before-work consultation and material-change/receiving/handoff duty. Do not mistake bank consultation for fulfillment of the O-Index, REMONT, PROGRAMMA and paired-progress maintenance obligations; use competent owner routes. Owner/protected adoption remains pending.
+
 ## The operative unified bank — **1063 source identities, not 1003 capabilities**
 
 | View | Source identities | Exact source ownership |
