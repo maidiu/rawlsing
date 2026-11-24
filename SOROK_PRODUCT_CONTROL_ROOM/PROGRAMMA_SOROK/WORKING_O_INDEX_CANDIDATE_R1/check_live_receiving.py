@@ -184,6 +184,73 @@ def audit(ledger, snapshot, md='', progress=None):
     return sorted(set(errors)), sorted(set(holds))
 
 
+
+def functional_link_errors(ledger, registry):
+    """Check documentary crosslinks against the original identity registry."""
+    original = {r['id']: r for r in registry['rows']}
+    problems = []
+    for record in ledger.get('records', []):
+        seen = set()
+        for link in record.get('functional_relationships', []):
+            identity = link.get('original_id')
+            label = f"{record.get('pr')}:{identity}"
+            if identity in seen:
+                problems.append('DUPLICATE_FUNCTION_LINK:' + label)
+            seen.add(identity)
+            if identity not in original:
+                problems.append('UNKNOWN_ORIGINAL_FUNCTION:' + label)
+                continue
+            if link.get('original_title') != original[identity].get('title'):
+                problems.append('FUNCTION_TITLE_DRIFT:' + label)
+            if not link.get('grade') or not link.get('relation'):
+                problems.append('UNQUALIFIED_FUNCTION_LINK:' + label)
+            if 'REJECTED' in record.get('disposition', '') and 'HELD' not in record.get('disposition', ''):
+                problems.append('REJECTED_RETURN_FUNCTION_LINK:' + label)
+            if 'DEPENDENCY_REJECTED' in record.get('disposition', '') and 'HELD' not in link.get('grade', ''):
+                problems.append('REJECTED_DEPENDENCY_NOT_HELD:' + label)
+    return sorted(set(problems))
+
+
+def function_snapshot(ledger, registry, identity):
+    """A derived view only. Missing link is UNKNOWN, never absence."""
+    original = {r['id']: r for r in registry['rows']}
+    if identity != 'all' and identity not in original:
+        raise ValueError('UNKNOWN_ORIGINAL_FUNCTION_ID:' + identity)
+    selected = original if identity == 'all' else {identity: original[identity]}
+    output = []
+    for key, original_row in selected.items():
+        matches = []
+        for record in ledger.get('records', []):
+            for link in record.get('functional_relationships', []):
+                if link.get('original_id') != key:
+                    continue
+                matches.append({
+                    'relation': link,
+                    'pr': record.get('pr'),
+                    'head_sha': record.get('head_sha'),
+                    'source_bodies': record.get('exact_source_bodies', []),
+                    'first_consumer': record.get('first_consumer'),
+                    'disposition': record.get('disposition'),
+                    'test': record.get('test'),
+                    'review': record.get('review'),
+                    'authorities': record.get('authorities'),
+                    'next_receiving_owner': record.get('next_receiving_owner'),
+                    'smallest_next_action': record.get('smallest_next_action'),
+                })
+        output.append({
+            'original': original_row if identity != 'all' else {
+                'id': key, 'title': original_row.get('title'),
+                'owner': original_row.get('owner'),
+                'historical_status': original_row.get('status'),
+            },
+            'observation_status': 'LINKED_OBSERVATIONS_NOT_PARITY' if matches else
+                                  'UNKNOWN_AT_THIS_INTAKE_NOT_MISSING',
+            'linked_observations': matches,
+        })
+    return {'mode': 'PINNED_DOCUMENTARY_SNAPSHOT_NOT_LIVE_NOT_PARITY',
+            'original_identity_count': len(original), 'functions': output}
+
+
 def fetch_live(repo, ledger):
     token = os.getenv('GITHUB_TOKEN') or os.getenv('GH_TOKEN')
     if not token:
@@ -225,12 +292,21 @@ def main():
     mode = ap.add_mutually_exclusive_group(required=True)
     mode.add_argument('--live', action='store_true')
     mode.add_argument('--snapshot', type=Path)
+    mode.add_argument('--function', metavar='ID_OR_ALL')
     ap.add_argument('--root', type=Path, default=ROOT)
     ap.add_argument('--progress-dir', type=Path, default=ROOT.parent.parent)
     args = ap.parse_args()
     problems = verify_inherited_files(args.root) + verify_readable_status(args.root)
     try:
         ledger = json.loads((args.root / 'LIVE_RECEIVING_LEDGER.json').read_text())
+        registry = json.loads((args.root / '01_SOURCE_OF_TRUTH_REGISTRY.json').read_text())
+        problems += functional_link_errors(ledger, registry)
+        if args.function:
+            if problems:
+                print(json.dumps({'status': 'RED_HQ_CURRENTNESS_HOLD', 'errors': sorted(set(problems))}, indent=2))
+                return 1
+            print(json.dumps(function_snapshot(ledger, registry, args.function), indent=2))
+            return 0
         if args.live:
             snapshot = fetch_live('maidiu/rawlsing', ledger)
         else:
