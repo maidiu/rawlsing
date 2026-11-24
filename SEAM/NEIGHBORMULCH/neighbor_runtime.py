@@ -494,7 +494,7 @@ class NeighborEncounter:
                 # A nearby sound is not recognition of its source or meaning.
                 sounds = {'SPEAK': 'Speech sounds nearby.',
                           'SING': 'Singing sounds nearby.',
-                          'SIGNAL': 'A vocal signal sounds nearby.',
+                          'SIGNAL': 'A signal sounds nearby.',
                           'ASK': 'Speech sounds nearby.'}
                 movements = {'MOVE': 'Someone moves nearby.',
                              'ORIENT': 'Someone turns nearby.'}
