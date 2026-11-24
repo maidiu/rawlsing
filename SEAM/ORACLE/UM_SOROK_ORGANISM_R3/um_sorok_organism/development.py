@@ -18,7 +18,8 @@ from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import admit_contrast_end, possible_dependency_project_takeups
-from .activity import possible_dependency_project_reorganizations
+from .activity import (possible_dependency_project_reorganizations,
+                       possible_dependency_means_revisions)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
 from .cultural_mediation import (
@@ -656,7 +657,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             if project is None:raise InvalidDevelopment('UNKNOWN_PROJECT')
             dependency_basis=c.get('dependency_reorganization_basis')
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
-            if dependency_basis is not None:
+            revision_basis=c.get('dependency_means_revision_basis')
+            if revision_basis is not None:
+                if c not in possible_dependency_means_revisions(actor,experience,event_ref):
+                    raise InvalidDevelopment('DEPENDENCY_MEANS_REVISION_UNQUALIFIED')
+                bound=project['dependency_conditional_means']['SIGNAL']
+                previous=bound.get('status','ACTIVE')
+                bound['status']='SUSPENDED' if revision_basis['mode']=='SUSPEND' else 'ACTIVE'
+                bound.setdefault('revision_history',[]).append({
+                    'event_ref':event_ref,'experience_ref':experience['ref'],
+                    'previous_status':previous,'new_status':bound['status'],
+                    'basis':copy(revision_basis),'grade':GRADE})
+            elif dependency_basis is not None:
                 if c not in possible_dependency_project_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('DEPENDENCY_PROJECT_REORGANIZATION_UNQUALIFIED')
                 prior={k:copy(project.get(k)) for k in ('means','object','motive')}

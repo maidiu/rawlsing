@@ -59,7 +59,8 @@ def practical_alternatives(constitution,access,option):
         if conditional is not None:
             # A new project course reuses a particular learned coordination,
             # without turning every operation into an addressed act.
-            if (conditional.get('location')!=access.location
+            if (conditional.get('status','ACTIVE')!='ACTIVE'
+                    or conditional.get('location')!=access.location
                     or conditional.get('counterpart_ref') not in present
                     or not any(p.get('id')==conditional.get('practice_ref')
                         and p.get('actor')==actor

@@ -14,7 +14,8 @@ from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
-                       possible_dependency_project_reorganizations)
+                       possible_dependency_project_reorganizations,
+                       possible_dependency_means_revisions)
 from .practical_difference import start_expectation
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import possible_lived_directional_orientation
@@ -370,6 +371,15 @@ class ConstitutiveRuntime:
                     'source_material_object_ref') is not None:
                 selected_alternative=_bind_actor_trial_particular_object(
                     alternatives,trial_choice)
+            # A project-specific addressed means may not be selected via
+            # generic or multi-project dispatch when its bound option was
+            # absent from focal practical alternatives.
+            conditional_projects=[p for p in actor.get('projects',[])
+                if p['id'] in selected_refs and action in p.get('dependency_conditional_means',{})]
+            if conditional_projects and (len(selected_refs)!=1 or selected_alternative is None
+                    or not selected_alternative.get('dependency_conditional_means_ref')
+                    or selected_alternative.get('project_id')!=conditional_projects[0]['id']):
+                raise ValueError('DEPENDENCY_MEANS_REQUIRES_BOUND_PROJECT_OPTION')
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             selected=[available[ref] for ref in selected_refs]
@@ -802,6 +812,8 @@ class ConstitutiveRuntime:
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
                     possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_means_revisions':copy(
+                    possible_dependency_means_revisions(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
