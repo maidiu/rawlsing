@@ -1,5 +1,14 @@
 # SEAM ↔ NEIGHBORMULCH — RECIPROCAL ENTRYPOINT
+
+## 2026-11-25 — Reciprocal PYAT intelligence (user-directed)
+
+[Existing G4 integrated first consultation](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains), [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342): for rich Rawlsing world, independently qualified historical changes in institutional conditions and empirical repertoire redistribution are distinct from the participant's or Nadia's actual knowledge. Preserve independently operative access, limited personal disclosure and actor-specific appropriation. Empirical rarity/partial overlap does not grant encounter access, disclose private beliefs or force individual conduct. Use the existing world/SEAM owner, not raw survey facts at UX; authored/thin world remains lawful. Documentary integration only, not runtime or source/actor adoption.
+
 ## One world, one independently becoming person, human participation as a real historical cause
+
+
+> **R9 SOURCE UNION AND SHARED CO ↔ NEIGHBOR HANDOFF:** [TOTAL SOROK MULCH canonical entrypoint](SOROK_TOTAL_MULCH/00_START_HERE_TOTAL_SOROK_MULCH.md), [R9 direct-turn source record](SOROK_TOTAL_MULCH/10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md), [104-identity C+NM+R9 no-drop union](SOROK_TOTAL_MULCH/11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json), [shared prior R8 bank with explicit latest correction banner](01_SHARED_SORACLE_CO_NEIGHBOR_MULCH_BANK.md), [one current full R9 theory](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md) and [R1–R9 provenance ledger](../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md). Candidate documentary cross-agent publication; SORACLE-CO read/acceptance and protected receiving not established.
+
 
 **SOURCE-GROUNDED CANDIDATE on isolated branch.** This file is a pointer, **not** a rival constitution or a grant to rewrite the Astra × UM-SOROK × SORACLE Constitutive Organism.
 

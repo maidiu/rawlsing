@@ -1,5 +1,9 @@
 # TOTAL SOROK MULCH — ONE ENTRYPOINT, SOURCE CONFINED, IDEAS NOT LOST
 
+
+
+> **LATEST SOURCE-CONSERVATION AND THEORY-MULCH UPDATE — 2026-11-21 (candidate descendant of draft PR #1275 at be7b32911f3467c870f18887a3d5b0e7a88952dd):** Read [10 — partial direct user-turn conversation source with explicit verbatim gaps](10_PARTIAL_DIALOGUE_TRANSCRIPT_AND_SOURCE_LIMITS_20261121.md), [11 — cross-lineage 104-identity no-drop union](11_CROSS_LINEAGE_CONVERSATION_NO_DROP_UNION.json), the updated [04 — original 44 NM idea record plus 16 R9 corrections](04_USER_CONVERSATION_NO_DROP_AND_NEW_IDEAS.md), the copied [R1–R9 source ledger](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/13_NEIGHBOR_THEORYMULCH_SOURCE_DRAW_LEDGER.md), and the [single new R9 whole theory](../../../SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md). **These augment and do not replace original 01–09 and all 757 source identities.** Direct user correction: exactly same SES at entry is NOT actual knowledge of Nadia's accounts; only the visitor's own resource bar is visible, later financial divergence is not automatically announced. Initial encounter may be generated from Nadia's user-unaffected *condition that day*, with bounded fictional prelude consent authorized by entering the game. The common reference-day/fork model is **provisional**, not an implemented new owner. No full original ChatGPT transcript was available to export; 10 is accurately labeled partial. Original #1275 green CI does not cover this later branch.
+
 **2026-11-21 · NEIGHBORMULCH-owned ADDITIVE candidate · not a replacement for PROGRAMMA, O-Index, N-T1, or Constitutive Organism.**
 
 ## First truth: this is a one-place *navigation, 757-row first-pass theoretical routing and reciprocal digestion surface*, not a new sovereign authority
