@@ -123,6 +123,7 @@ class _CountryEventHeader:
     scoped_respondent_ref: ExactRef
     dependency_refs: tuple[ExactRef, ...]
     event_group_id: str
+    source_coordinates: tuple[int,int,int]  # private original row, slot ordinal, occurrence position
 
     @property
     def ref(self):
@@ -169,7 +170,7 @@ class _CountryHeaderBuilder:
             return value
         return pool.setdefault(key,value)
 
-    def add(self,obj):
+    def add(self,obj,*,source_coordinates):
         auth=tuple((ref.authority_id,ref.authority_version,ref.authority_content_hash)
                    for ref in obj.authority_snapshot_refs)
         if len(self.authorities)<8192:
@@ -185,7 +186,7 @@ class _CountryHeaderBuilder:
         )
         return _CountryEventHeader(selector,self.ref(obj.empirical_universe_ref),
             self.ref(obj.scoped_respondent_ref),tuple(self.ref(ref) for ref in obj.dependency_refs),
-            obj.event_group_id)
+            obj.event_group_id,source_coordinates)
 
 
 @dataclass(frozen=True, slots=True)
@@ -197,6 +198,14 @@ class _EventLane:
         from rawlsing_next.pre553_carrier_execution import materialize_public_object
 
         ref = self.selectors[row].ref
+        # The country reader already constructs and authenticates the exact
+        # incumbent RespondentEvent. Avoid encode -> JSON parse -> second event.
+        from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+        if type(self.bodies) is _CountryEventBodies:
+            event = self.bodies.materialize(row)
+            if event.ref != ref:
+                raise ValueError("country event selector/body identity drift")
+            return event
         body = json.loads(self.bodies[row].as_py())
         body.update(object_id=ref.object_id, content_hash=ref.content_hash)
         return materialize_public_object(body)
