@@ -26,7 +26,7 @@ class EncounterRefusal(ValueError):
     """A user cannot create world, actor, source or sensory rights by prose."""
 
 
-_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR',
+_ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR', 'MAKE_OBJECT',
                       'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'})
 
 
@@ -201,7 +201,7 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'tags': ['public_procedure', 'visible_activity'],
                        'description': 'Someone makes a contribution to the posted procedure.',
                        'grade': grade, 'actor_notice_not_established': True})
-    if operation == 'REPAIR' and visible:
+    if operation in ('REPAIR','MAKE_OBJECT') and visible:
         # The world has actually settled repair before this projection.
         # No audible tool, identification, intent or approval is invented.
         result.append({'event_ref': event_ref, 'actor': actor['id'],
@@ -366,6 +366,8 @@ class NeighborEncounter:
                 raise EncounterRefusal('REQUEST_INDEX_WITHOUT_COMMITTED_EVENT')
             return {'status': prior['status'], 'event_ref': prior['event_ref'],
                     'idempotent_replay': True, 'receipt': existing,
+                    **({'made_object_ref':prior['made_object_ref']}
+                       if prior.get('made_object_ref') is not None else {}),
                     **({'human_offer_commitment_ref':prior['human_offer_commitment_ref']}
                        if prior.get('human_offer_commitment_ref') is not None else {})}
         participants = world.setdefault('neighbor_users', {})
@@ -375,6 +377,7 @@ class NeighborEncounter:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
         material_outcome = None
+        made_object_ref = None
         policy_ref = None
         loc = origin
         # Reuse CO's objective, source-qualified conjunction reader. Thin
@@ -382,7 +385,7 @@ class NeighborEncounter:
         # the same authored operation. Unresolved authorization is not an
         # affirmative denial, even when neither permits a material effect.
         material_gate = None
-        if operation in ('REPAIR', 'SING', 'SIGN_HALL_PETITION', 'OFFER_FEED'):
+        if operation in ('REPAIR', 'MAKE_OBJECT', 'SING', 'SIGN_HALL_PETITION', 'OFFER_FEED'):
             from um_sorok_organism.material_conjunction import evaluate_material_conjunction
             material_gate = evaluate_material_conjunction(
                 world, self.user_id, loc, 'FEED' if operation == 'OFFER_FEED' else operation)
@@ -450,6 +453,26 @@ class NeighborEncounter:
             status = actual['status']
             material_outcome = actual['outcome']
             policy_ref = actual.get('policy_receipt')
+        elif operation == 'MAKE_OBJECT':
+            # A human-authored material contribution is not a generated
+            # actor's technical power. The existing owner settles actual
+            # stock, artifact identity and ownership. Explicit local grant
+            # remains necessary even at a controllerless site.
+            from um_sorok_organism.material_objects import produce_artifact
+            sight = _bound_source(world).get('user_conditions', {}).get(loc, {})
+            site = world.get('sites', {}).get(loc, {})
+            grants = site.get('material_use_grants', [])
+            if (type(grants) is list and self.user_id in grants
+                    and sight.get('light') == 'lit'
+                    and sight.get('sightline') == 'unobstructed'):
+                actual = produce_artifact(world, self.user_id, loc)
+                status = actual['status']
+                material_outcome = actual['outcome']
+                if status == 'PERFORMED':
+                    made_object_ref = actual['object_ref']
+            else:
+                status = 'BLOCKED'
+                material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
         elif operation == 'REPAIR':
             # A thin human participant is not a registered synthetic actor.
             # Existing CO artifact settlement accepts a material worker ID.
@@ -495,7 +518,7 @@ class NeighborEncounter:
             commitment_ref=record_authored_food_offer(
                 world,self.user_id,target_actor_ref,loc,ref)
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'MAKE_OBJECT', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
@@ -516,6 +539,10 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation=='MAKE_OBJECT':
+                        # Link the actual authored occurrence for audit;
+                        # no inferred maker recognition or actor attention.
+                        cue['visitor_event_ref'] = ref
                     if operation=='PLEDGE_OFFER':
                         cue.update(visitor_event_ref=ref,visitor_ref=self.user_id,
                                    commitment_ref=commitment_ref,due_clock=due_clock,
@@ -546,6 +573,10 @@ class NeighborEncounter:
                          visitor_reading='NOT_ESTABLISHED',
                          other_actor_interpretation='NOT_ESTABLISHED',
                          user_look_is_not_private_mii_attend=True)
+        if operation == 'MAKE_OBJECT':
+            event.update(material_outcome=material_outcome,
+                         made_object_ref=made_object_ref,
+                         actor_meaning_not_established=True)
         if operation == 'REPAIR':
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
@@ -568,6 +599,7 @@ class NeighborEncounter:
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
             'ledger_receipt': None,
+            **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
             **({'human_offer_commitment_ref':commitment_ref}
                if commitment_ref is not None else {})}
         receipt = self.runtime.ledger.commit(self.runtime.world_id, version, world,
@@ -576,6 +608,7 @@ class NeighborEncounter:
              'user': self.user_id, 'payload_hash': payload_hash,
              'performed': status == 'PERFORMED',
              'candidate_cue_refs': [e['cue_ref'] for e in evidence],
+             **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
              'no_actor_motive_or_consent_issued': True,
              'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
         # The world record already contains durable request idempotency. Its
@@ -584,6 +617,7 @@ class NeighborEncounter:
         return {'status': status, 'event_ref': ref, 'receipt': receipt['id'],
                 'idempotent_replay': False, 'potential_actor_evidence': evidence,
                 'actor_uptake': 'NOT_ESTABLISHED',
+                **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
                 **({'human_offer_commitment_ref':commitment_ref}
                    if commitment_ref is not None else {})}
 
