@@ -219,13 +219,6 @@ class PhysicalSourceIncidence:
             raise ValueError("batch_size must be a positive integer")
         variables = self.variables
         declarations = {v.name: v.missing_declarations for v in variables}
-        width = max(1, len(variables))
-        rows_per_chunk = _bounded_rows_per_chunk(
-            width,
-            batch_size,
-            floor_rows=(MIN_READ_ROWS if self.source_format == "DTA" else 1),
-        )
-
         from rawlsing_next.pre553_r5_codec import R5TypedValueCodec
         by_name={v.name:i for i,v in enumerate(variables)}
         if only_variable is not None and only_variable not in by_name:
@@ -236,6 +229,17 @@ class PhysicalSourceIncidence:
             raise DecoderError("ambiguous physical selection")
         country_index=by_name[country_selector[0]] if country_selector is not None else None
         indices=(by_name[only_variable],) if only_variable is not None else range(len(variables))
+        # Decode only the requested column at the native reader boundary. The
+        # legacy in-memory incidence and country selection still use full rows.
+        # A projected reader position is NOT the original source ordinal.
+        projected = only_variable is not None and self._frame is None
+        frame_variables = (variables[by_name[only_variable]],) if projected else variables
+        emit_indices = (0,) if projected else indices
+        rows_per_chunk = _bounded_rows_per_chunk(
+            len(frame_variables),
+            batch_size,
+            floor_rows=(MIN_READ_ROWS if self.source_format == "DTA" else 1),
+        )
         codec=R5TypedValueCodec() if country_selector is not None else None
 
         def physical_cell(variable, value, row_ordinal):
@@ -258,8 +262,10 @@ class PhysicalSourceIncidence:
 
         def emit(frame: Any, row_offset: int) -> Iterator[tuple[PhysicalCell, ...]]:
             batch: list[PhysicalCell] = []
+            if projected and tuple(frame.columns) != (only_variable,):
+                raise DecoderError("selected physical reader column identity changed")
             for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
-                if len(row)!=len(variables):
+                if len(row)!=len(frame_variables):
                     raise DecoderError("physical reader column census changed")
                 ordinal=row_offset+local_row
                 selected=None
@@ -268,9 +274,9 @@ class PhysicalSourceIncidence:
                     if (selected.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE
                         or codec.typed_key(selected.raw_value) not in country_selector[1]):
                         continue
-                for index in indices:
+                for index in emit_indices:
                     cell=(selected if index==country_index else
-                          physical_cell(variables[index],row[index],ordinal))
+                          physical_cell(frame_variables[index],row[index],ordinal))
                     batch.append(cell)
                     if len(batch)>=batch_size:
                         yield tuple(batch)
@@ -310,6 +316,7 @@ class PhysicalSourceIncidence:
         chunks = pyreadstat.read_file_in_chunks(
             bounded_reader, snapshot.reader_path, chunksize=rows_per_chunk,
             encoding=self._encoding, apply_value_formats=False, user_missing=True,
+            **({"usecols": [only_variable]} if projected else {}),
         )
         for frame, _metadata in chunks:
             snapshot.check_stable()

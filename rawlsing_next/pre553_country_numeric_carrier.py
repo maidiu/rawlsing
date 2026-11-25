@@ -170,11 +170,27 @@ def _digest(kind,coordinates,*payloads):
     return h.digest()
 
 def _manifest_root(variables,blocks,lanes):
-    return sha256(canonical_json([
-        SCHEMA,list(variables),
-        [[i,n,d.hex()] for i,n,d in blocks],
-        [[i,j,d.hex()] for i,j,d in lanes],
-    ]).encode("ascii")).hexdigest()
+    """Hash the exact v2 canonical JSON preimage without building its full body.
+
+    Each record is still canonicalized by R5. Array punctuation is identical
+    to canonical_json([SCHEMA, list(variables), ..., ...]); no new schema,
+    digest algorithm, ordering, scope or receipt identity is introduced.
+    """
+    h=sha256()
+    h.update(b"[")
+    h.update(canonical_json(SCHEMA).encode("ascii"))
+    for rows in (variables, ([i,n,d.hex()] for i,n,d in blocks),
+                 ([i,j,d.hex()] for i,j,d in lanes)):
+        h.update(b",[")
+        first=True
+        for row in rows:
+            if not first:
+                h.update(b",")
+            h.update(canonical_json(row).encode("ascii"))
+            first=False
+        h.update(b"]")
+    h.update(b"]")
+    return h.hexdigest()
 
 def _stat_signature(path):
     st=path.stat()
@@ -509,9 +525,17 @@ class CountryReader:
                     raise CountryCarrierError("country lane inventory differs from external receipt")
                 self._block_auth={i:(n,d) for i,n,d in blocks}
                 self._lane_auth={(i,j):d for i,j,d in lanes}
-                if (tuple(self._block_auth)!=tuple(range(len(blocks)))
+                # Unique keys + exact product cardinality + membership imply
+                # complete rectangular coverage, without allocating a second
+                # pair of potentially huge Cartesian key sets. Reject duplicate
+                # records explicitly rather than allowing dict collapse.
+                if (len(self._block_auth)!=len(blocks)
+                    or any(i!=expected for expected,i in enumerate(self._block_auth))
                     or sum(n for _,n,_ in blocks)!=receipt.country_rows
-                    or set(self._lane_auth)!={(i,j) for i in self._block_auth for j in self.variables}):
+                    or len(self._lane_auth)!=len(lanes)
+                    or len(self._lane_auth)!=len(blocks)*len(self.variables)
+                    or any(i not in self._block_auth or j not in self.variables
+                           for i,j in self._lane_auth)):
                     raise CountryCarrierError("country authenticated lane inventory incomplete")
             self._verify()
         except BaseException:

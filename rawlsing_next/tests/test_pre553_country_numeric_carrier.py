@@ -11,6 +11,64 @@ from rawlsing_next.pre553_country_numeric_carrier import (
 )
 
 class CountryNumeric(unittest.TestCase):
+    def test_native_column_pushdown_retains_exact_full_stream_cells(self):
+        from unittest.mock import patch
+        from rawlsing_next.pre553_physical_decoder import _bounded_rows_per_chunk, MIN_READ_ROWS
+        from rawlsing_next.pre553_country_numeric_carrier import country_census
+        # Non-first country column, heterogeneous physical types, many
+        # unrequested columns, and multiple batches. Use actual SAV and DTA.
+        for ext,writer,decoder in (("sav",pyreadstat.write_sav,decode_sav),
+                                   ("dta",pyreadstat.write_dta,decode_dta)):
+            with self.subTest(ext=ext), tempfile.TemporaryDirectory() as d:
+                src=Path(d)/("wide."+ext)
+                data={"unused_text":["x","y","z","u","v","w"],
+                      "country":[1,2,1,float("nan"),2,1]}
+                data.update({f"unused_{i}":[i+j for j in range(6)] for i in range(96)})
+                writer(pd.DataFrame(data),str(src))
+                with decoder(src) as incidence:
+                    expected=[c for c in incidence.iter_cells(batch_size=17)
+                              if c.variable_name=="country"]
+                    real=pyreadstat.read_file_in_chunks
+                    calls=[]
+                    def observe(*args,**kwargs):
+                        calls.append(dict(kwargs))
+                        yield from real(*args,**kwargs)
+                    with patch.object(pyreadstat,"read_file_in_chunks",side_effect=observe):
+                        actual=list(incidence.iter_native_column("country",batch_size=3))
+                        census=country_census(incidence,country_variable="country",
+                                               require_current=lambda:True)
+                    self.assertEqual(len(actual),len(expected))
+                    self.assertEqual([(c.row_ordinal,c.variable_ordinal,_encode_cell(c)) for c in actual],
+                                     [(c.row_ordinal,c.variable_ordinal,_encode_cell(c)) for c in expected])
+                    self.assertEqual([c.row_ordinal for c in actual],list(range(1,7)))
+                    self.assertTrue(all(c.variable_ordinal==expected[0].variable_ordinal for c in actual))
+                    self.assertEqual(sum(census["observed"].values()),5)
+                    self.assertEqual(sum(census["held"].values()),1)
+                    self.assertEqual(len(calls),2)
+                    self.assertTrue(all(c.get("usecols")==["country"] for c in calls))
+                    self.assertEqual(calls[0]["chunksize"],_bounded_rows_per_chunk(
+                        1,3,floor_rows=MIN_READ_ROWS if ext=="dta" else 1))
+                    with self.assertRaisesRegex(ValueError,"unknown native column"):
+                        list(incidence.iter_native_column("not_a_source_column"))
+
+    def test_manifest_stream_matches_exact_v2_canonical_preimage(self):
+        from rawlsing_next.pre553_country_numeric_carrier import _manifest_root, SCHEMA
+        from rawlsing_next.pre553_r5_codec import canonical_json
+        for n,p in ((0,0),(1,1),(3,7),(37,101)):
+            variables=tuple((j,("é雪"+str(j))) for j in range(p))
+            blocks=tuple((i,i+1,hashlib.sha256(f"block{i}".encode()).digest()) for i in range(n))
+            lanes=tuple((i,j,hashlib.sha256(f"lane{i}:{j}".encode()).digest())
+                        for i in range(n) for j in range(p))
+            oracle=hashlib.sha256(canonical_json([
+                SCHEMA,list(variables),[[i,k,d.hex()] for i,k,d in blocks],
+                [[i,j,d.hex()] for i,j,d in lanes],
+            ]).encode("ascii")).hexdigest()
+            self.assertEqual(_manifest_root(iter(variables),iter(blocks),iter(lanes)),oracle)
+            if len(lanes)>1:
+                self.assertNotEqual(_manifest_root(variables,blocks,reversed(lanes)),oracle)
+            if lanes:
+                self.assertNotEqual(_manifest_root(variables,blocks,lanes[:-1]),oracle)
+
     def test_real_formats_and_direct_intersection(self):
         for ext,writer,decoder in (("sav",pyreadstat.write_sav,decode_sav),
                                    ("dta",pyreadstat.write_dta,decode_dta)):
