@@ -11,6 +11,87 @@ from rawlsing_next.pre553_country_numeric_carrier import (
 )
 
 class CountryNumeric(unittest.TestCase):
+    def test_packed_lane_digest_geometry_and_coherently_rehashed_gap(self):
+        import sqlite3
+        from dataclasses import replace
+        from rawlsing_next.pre553_country_numeric_carrier import (
+            _PackedLaneDigests,_manifest_root)
+        ordinals=(2,9,31)
+        expected={(b,j):hashlib.sha256(f"{b}:{j}".encode()).digest()
+                  for b in range(7) for j in ordinals}
+        pins=_PackedLaneDigests(ordinals,b"".join(expected.values()))
+        self.assertEqual(len(pins),len(expected))
+        self.assertEqual(len(pins._digests),32*len(expected))
+        for key,digest in expected.items():
+            self.assertEqual(pins.get(key),digest)
+        for key in ((-1,2),(7,2),(0,3)):
+            self.assertIsNone(pins.get(key))
+        with self.assertRaises(CountryCarrierError):
+            _PackedLaneDigests(ordinals,b"bad")
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);src=root/"source.sav";path=root/"country.sqlite"
+            pyreadstat.write_sav(pd.DataFrame({"country":[1.,1.,1.],"q":[2.,3.,4.]}),str(src))
+            with decode_sav(src) as incidence:
+                receipt=build_country(incidence,country_variable="country",country_value=1.,
+                    output=path,require_current=lambda:True,block_rows=1)
+            with CountryReader(path,receipt,require_current=lambda:True) as read:
+                self.assertIsInstance(read._lane_auth,_PackedLaneDigests)
+                self.assertEqual(list(read.matching_rows({"q":3.})),[2])
+            # Rehash a structurally incomplete rectangle. Content authentication
+            # alone cannot establish completeness, even with a matching root.
+            with sqlite3.connect(path) as db:
+                db.execute("DELETE FROM lanes WHERE block=1 AND ordinal=(SELECT min(ordinal) FROM vars)")
+                root_hash=_manifest_root(db.execute("SELECT ordinal,name FROM vars ORDER BY ordinal"),
+                    db.execute("SELECT id,n,digest FROM blocks ORDER BY id"),
+                    db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
+                import json
+                db.execute("UPDATE meta SET v=? WHERE k='lane_root'",(json.dumps(root_hash),))
+            bad=replace(receipt,lane_root=root_hash,
+                sha256=hashlib.sha256(path.read_bytes()).hexdigest(),bytes=path.stat().st_size)
+            with self.assertRaisesRegex(CountryCarrierError,"inventory"):
+                CountryReader(path,bad,require_current=lambda:True)
+
+    def test_virtual_event_order_and_packed_posting_differential(self):
+        from rawlsing_next._pre553_c11_execution_view import (
+            _CountryEventEntries,_EventRead,_EventLane,_country_respondent_events,_RespondentEvents)
+        from rawlsing_next.pre553_empirical_objects import ExactRef
+        base=("a","b","c")
+        for boundary in range(4):
+            for count in (0,1,97):
+                seq=_CountryEventEntries(base,boundary,count)
+                oracle=base[:boundary]+tuple(range(count))+base[boundary:]
+                self.assertEqual(tuple(seq),oracle)
+                self.assertEqual(seq[::-2],oracle[::-2])
+                for i in range(-len(oracle),len(oracle)):
+                    self.assertEqual(seq[i],oracle[i])
+                with self.assertRaises(IndexError):
+                    _=seq[len(oracle)]
+        target=("question","q","a"*64)
+        other=("question","other","b"*64)
+        selectors=tuple(_EventRead(("event",str(i),hashlib.sha256(str(i).encode()).hexdigest()),
+            "OBSERVED" if i%3 else "MISSING",target if i%2 else other,
+            target if i%5 else other,target if i%7==0 else None,(),i,i,{},str(i))
+            for i in range(103))
+        lane=_EventLane(None,selectors)
+        rows=tuple(range(len(selectors)))
+        old=_RespondentEvents(lane,rows)
+        new=_country_respondent_events(lane,rows)
+        self.assertTrue(new.rows.readonly)
+        self.assertEqual(tuple(new.rows),rows)
+        self.assertEqual(new.rows.nbytes,4*len(rows))
+        for q in (target,other):
+            for native in (False,True):
+                for component in (False,True):
+                    for states in (None,frozenset({"OBSERVED"}),frozenset({"MISSING"}),frozenset()):
+                        args=dict(native_only=native,include_component=component,states=states)
+                        self.assertEqual(tuple(new.select(ExactRef(*q),**args)),
+                                         tuple(old.select(ExactRef(*q),**args)))
+        from dataclasses import replace
+        same=_EventLane(None,tuple(replace(s,_canonical_question_identity=s._native_question_identity)
+                                   for s in selectors))
+        shared=_country_respondent_events(same,rows)
+        self.assertIs(shared.question_rows[0],shared.question_rows[1])
+
     def test_native_column_pushdown_retains_exact_full_stream_cells(self):
         from unittest.mock import patch
         from rawlsing_next.pre553_physical_decoder import _bounded_rows_per_chunk, MIN_READ_ROWS
@@ -215,6 +296,12 @@ class CountryNumeric(unittest.TestCase):
                 with self.assertRaises(C11IntegrityError):
                     _PackedClosureRefs(((kind,prefix,b"x"*32),),(2,))
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+                from rawlsing_next._pre553_c11_execution_view import _CountryEventEntries
+                self.assertIsInstance(compact.public_objects.entries.base,_CountryEventEntries)
+                self.assertEqual(tuple(x.ref for x in compact.public_objects[::-3]),
+                                 tuple(x.ref for x in direct.public_objects[::-3]))
+                self.assertEqual(tuple(x.ref for x in compact.public_objects.exact_entries()),
+                                 tuple(x.ref for x in direct.public_objects))
                 from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
                 routes=tuple(x for x in direct.public_objects if isinstance(x,RoutingEligibilityFact))
                 self.assertEqual(len(compact.public_objects.routing),len(routes))
