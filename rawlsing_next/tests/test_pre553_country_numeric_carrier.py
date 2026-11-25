@@ -11,6 +11,107 @@ from rawlsing_next.pre553_country_numeric_carrier import (
 )
 
 class CountryNumeric(unittest.TestCase):
+    def test_writer_scalar_memo_exact_tokens_and_bounded_fallback(self):
+        from decimal import Decimal
+        from dataclasses import replace
+        from unittest.mock import patch
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        from rawlsing_next.pre553_r5_codec import R5OpaqueValue
+        state=PhysicalMissingState.OBSERVED_STORAGE_VALUE
+        values=(False,True,0,1,0.,-0.,1.,None,"0","é",b"0",2**100,
+                Decimal("0.00"),float("nan"),float("inf"),0.12345,
+                R5OpaqueValue("x",b"abc"),{"v":[1]}, "x"*1025)
+        cells=[PhysicalCell(i+1,1,"q",value,state,None,label)
+               for i,value in enumerate(values) for label in (None,True,0,-0.,"0")]
+        oracle=[carrier._encode_cell(c) for c in cells]
+        memo=carrier._CellTokenMemo(16)
+        with patch.object(carrier,"_encode_cell",wraps=carrier._encode_cell) as encode:
+            self.assertEqual([memo.token(c) for c in cells],oracle)
+            self.assertEqual([memo.token(c) for c in cells],oracle)
+            self.assertLess(encode.call_count,2*len(cells))
+            self.assertLessEqual(len(memo.entries),16)
+        c=cells[0]
+        self.assertNotEqual(memo.token(c),memo.token(replace(c,raw_value=0)))
+        self.assertNotEqual(memo.token(replace(c,raw_value=0.)),memo.token(replace(c,raw_value=-0.)))
+        # Mutable metadata is evaluated on every request, never memoized.
+        declaration={"nested":[1]}
+        c=replace(c,source_missing_declaration=declaration)
+        before=memo.token(c)
+        declaration["nested"][0]=2
+        self.assertNotEqual(before,memo.token(c))
+        self.assertEqual(memo.token(c),carrier._encode_cell(c))
+        with self.assertRaises(AttributeError):
+            memo.token(replace(cells[0],missing_state=state.value))
+        # Disabled cache uses the exact original codec.
+        self.assertEqual([carrier._CellTokenMemo(0).token(c) for c in cells],oracle)
+
+    def test_writer_memo_preserves_persistent_bytes_and_census(self):
+        from unittest.mock import patch
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);src=root/"source.sav"
+            pyreadstat.write_sav(pd.DataFrame({
+                "country":[1.]*65,
+                "categorical":[float(i%5) for i in range(65)],
+                "unique":[i*1.000123 for i in range(65)],
+                "text":["é" if i%2 else "0" for i in range(65)],
+            }),str(src))
+            def build(path):
+                with decode_sav(src) as inc:
+                    return build_country(inc,country_variable="country",country_value=1.,
+                         output=path,block_rows=16,require_current=lambda:True)
+            with patch.object(carrier._CellTokenMemo,"token",lambda self,c:carrier._encode_cell(c)):
+                old=build(root/"old.sqlite")
+            new=build(root/"new.sqlite")
+            self.assertEqual(old,new)
+            self.assertEqual((root/"old.sqlite").read_bytes(),(root/"new.sqlite").read_bytes())
+            with CountryReader(root/"new.sqlite",new,require_current=lambda:True) as read:
+                self.assertEqual(list(read.matching_rows({"categorical":2.})),list(range(3,66,5)))
+
+    def test_opaque_dictionary_accounting_counts_payload_once(self):
+        from rawlsing_next.pre553_country_numeric_carrier import _TypedCellDictionary
+        from rawlsing_next.pre553_r5_codec import R5OpaqueValue
+        from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
+        blob=b"x"*(1024*1024)
+        opaque=R5OpaqueValue("fixture",blob)
+        state=PhysicalMissingState.OBSERVED_STORAGE_VALUE.value
+        small=_TypedCellDictionary(((R5OpaqueValue("fixture",b"x"),state,None,None),))
+        big=_TypedCellDictionary(((opaque,state,None,None),))
+        repeated=_TypedCellDictionary(((opaque,state,None,None),(opaque,state,None,"label")))
+        self.assertGreaterEqual(big.retained_bytes()-small.retained_bytes(),len(blob)-1)
+        self.assertLess(repeated.retained_bytes()-big.retained_bytes(),4096)
+
+    def test_packed_selector_filters_before_object_materialization(self):
+        from array import array
+        from unittest.mock import patch
+        from rawlsing_next._pre553_c11_execution_view import (
+            _PackedCountrySelectors,_EventLane,_RespondentEvents,_country_respondent_events)
+        from rawlsing_next.pre553_empirical_objects import ExactRef
+        q=("question","q","a"*64);other=("question","other","b"*64)
+        payloads=(("OBSERVED",q,q,None,(),1,1,{}),
+                  ("MISSING",other,q,q,(),None,None,{}))
+        n=64
+        digests=b"".join(hashlib.sha256(str(i).encode()).digest() for i in range(n))
+        packed=_PackedCountrySelectors(digests,digests,
+            memoryview(array("I",(i%2 for i in range(n))).tobytes()).cast("I"),payloads)
+        lane=_EventLane(None,packed)
+        oracle=_RespondentEvents(_EventLane(None,tuple(packed)),tuple(range(n)))
+        for rows in (tuple(range(10)),tuple(range(n))):
+            actual=_country_respondent_events(lane,rows)
+            expected=_RespondentEvents(oracle.lane,rows)
+            for target in (q,other):
+                for native in (False,True):
+                    for component in (False,True):
+                        for states in (None,frozenset({"OBSERVED"}),frozenset({"MISSING"}),frozenset()):
+                            args=dict(native_only=native,include_component=component,states=states)
+                            self.assertEqual(tuple(actual.select(ExactRef(*target),**args)),
+                                tuple(expected.select(ExactRef(*target),**args)))
+            # A negative state selector must not construct even one object.
+            with patch.object(_PackedCountrySelectors,"__getitem__",
+                    side_effect=AssertionError("rejected selector materialized")):
+                self.assertEqual(tuple(actual.select(ExactRef(*q),states=frozenset())),())
+
     def test_packed_lane_digest_geometry_and_coherently_rehashed_gap(self):
         import sqlite3
         from dataclasses import replace
