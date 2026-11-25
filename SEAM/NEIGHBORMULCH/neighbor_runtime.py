@@ -176,7 +176,8 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
-    if operation == 'PLEDGE_OFFER' and visible and sound:
+    if (operation == 'PLEDGE_OFFER' and visible and sound
+            and actor.get('body',{}).get('language',0)>=.35):
         # A structured outward undertaking. Not an actor's agreement,
         # comprehension, expected future receipt, or emotional appraisal.
         result.append({'event_ref':event_ref,'actor':actor['id'],
@@ -364,7 +365,9 @@ class NeighborEncounter:
             if existing is None:
                 raise EncounterRefusal('REQUEST_INDEX_WITHOUT_COMMITTED_EVENT')
             return {'status': prior['status'], 'event_ref': prior['event_ref'],
-                    'idempotent_replay': True, 'receipt': existing}
+                    'idempotent_replay': True, 'receipt': existing,
+                    **({'human_offer_commitment_ref':prior['human_offer_commitment_ref']}
+                       if prior.get('human_offer_commitment_ref') is not None else {})}
         participants = world.setdefault('neighbor_users', {})
         person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
         origin = person['location']
@@ -476,11 +479,12 @@ class NeighborEncounter:
                 material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
         # Existing continuity owner shares the same transaction as the
         # authored act. No discretionary human offer during absent passage.
-        from um_sorok_organism.continuity_clock import (
-            settle_human_offer_deadlines, record_human_offer_commitment,
-            record_authored_food_offer)
         world['clock'] += 1
-        settle_human_offer_deadlines(world)
+        if world.get('scheduled_obligations') or operation in ('PLEDGE_OFFER','OFFER_FEED'):
+            from um_sorok_organism.continuity_clock import (
+                settle_human_offer_deadlines, record_human_offer_commitment,
+                record_authored_food_offer)
+            settle_human_offer_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         commitment_ref=None
@@ -563,7 +567,9 @@ class NeighborEncounter:
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
-            'ledger_receipt': None}
+            'ledger_receipt': None,
+            **({'human_offer_commitment_ref':commitment_ref}
+               if commitment_ref is not None else {})}
         receipt = self.runtime.ledger.commit(self.runtime.world_id, version, world,
             {}, {}, 'NEIGHBOR_USER_CONTRIBUTION', None,
             {'user_event_ref': ref, 'source': 'SOURCEFREE_USER_SUBMITTED',
