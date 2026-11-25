@@ -329,7 +329,12 @@ class CountryNumeric(unittest.TestCase):
                         "authority_snapshot_refs","raw_response_value",
                         "canonical_response_value_if_authorized","multiplicity_order_rank_fields",
                         "response_event_id_or_deterministic_index"):
-                        self.assertEqual(getattr(selector,field),getattr(event,field))
+                        observed=getattr(selector,field)
+                        expected=getattr(event,field)
+                        if isinstance(observed,ExactRef) and not isinstance(expected,ExactRef):
+                            from rawlsing_next.pre553_empirical_objects import exact_ref
+                            expected=exact_ref(expected)
+                        self.assertEqual(observed,expected)
                 self.assertEqual(lane.bodies.locator_bytes,40*len(events))
                 self.assertTrue(lane.bodies.direct)
                 from rawlsing_next import pre553_source_backed_c11_facade as facade
