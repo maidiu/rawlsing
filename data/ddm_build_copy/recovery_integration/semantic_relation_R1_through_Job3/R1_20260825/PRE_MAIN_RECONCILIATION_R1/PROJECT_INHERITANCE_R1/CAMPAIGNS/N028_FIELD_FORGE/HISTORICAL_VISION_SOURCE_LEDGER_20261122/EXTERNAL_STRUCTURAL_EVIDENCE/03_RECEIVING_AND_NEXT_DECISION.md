@@ -1,5 +1,8 @@
 # Receiving and next decision — exact proposed delta
 
+**FIELD-AUTHORITY — proposed existing G4 / paired receiving (2026-11-25):** [Campaign HOME](../FIELD-AUTHORITY/README.md). User directed campaign location and epistemic discipline. G4 S01.2/.3, S06.1/.2; PP26-02/03/04/13/15/17–19/21. 48 codebook files, 22,863 physical rows locally counted; targeted actual labels inspected. Reuse existing QSM/V550/E024/E116/E124, no competing authority, no native issuance or new code/tests; R24 competent owner receive same scoped note in paired MD/JSON, no status change. P0 unchanged. Complete populated reconciliation, source rights, independent adjudication, native first consumer and protected pair held.
+
+
 ## R18 — return to the empirical substrate: native source-local diagnostic (2026-11-25)
 
 **User governing correction:** FIELD FORGE investigates actual social reality; fictional world/person constitution belongs downstream. Creative hypotheses are questions for empirical confrontation, not supplied material facts. Retain R17 only as the scoped authored transport experiment in the preceding correction. The neglected function selected here is actual source/role/response grounding of survey-internal social dialectic (PP26-11/13/15/17/19/21), rather than more fictional receiving.

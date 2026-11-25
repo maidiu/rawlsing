@@ -348,3 +348,6 @@ The user-held `Rawlsing 35 waves of savs & dtas.zip` was actually mounted and in
 
 Proposed G4 / paired R24 delta, existing IDs only: S04.5/S06.1 PARTIAL; PP26-11/13/15/17/19/21 add exact locally executed independent original-file diagnostic, metadata defect, and source-authority/cohort/currentness gates, no promotion. Existing #1342 R24 `810ca1302836b4f545750c3e6ae5656ac942dffe` still has R17 receipt; receive prior epistemic retraction as well. Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, paired rev23, protected G4 and unreceived #1226 consulted. HQ_CURRENTNESS_HOLD on original source authority/rights, C11 exact native admission and independent review, R17 correction receiving, protected pair and first qualified terminal consumer. No new branch, inventory, production estimator or world writer.
 
+
+
+**FIELD-AUTHORITY campaign established (2026-11-25):** [HOME](../FIELD-AUTHORITY/README.md). User required exact distinctions among material reports, framework-conditioned link and stronger personal inference. Actual physical codebook census and selected label inspection, inherited contracts assessed, entire phased campaign specified. No source authority promoted or code changed. Prior R17 correction and R18 evidence retained.

@@ -1,5 +1,8 @@
 # FIELD FORGE — CONSTITUTIVE VISION HOME
 
+**FIELD-AUTHORITY — user-directed campaign (2026-11-25):** [Campaign HOME](FIELD-AUTHORITY/README.md). The empirical substrate must distinguish literal measurement, reported position, framework-specific relational relevance, observed association and strong structural/person interpretation. Explicit relation-target links are not verdicts about persons. Existing E024/E116/E124 retained and operationalized through source-grounded adjudication. No fictional constitution.
+
+
 ## R18 — return to the empirical substrate: native source-local diagnostic (2026-11-25)
 
 **User governing correction:** FIELD FORGE investigates actual social reality; fictional world/person constitution belongs downstream. Creative hypotheses are questions for empirical confrontation, not supplied material facts. Retain R17 only as the scoped authored transport experiment in the preceding correction. The neglected function selected here is actual source/role/response grounding of survey-internal social dialectic (PP26-11/13/15/17/19/21), rather than more fictional receiving.

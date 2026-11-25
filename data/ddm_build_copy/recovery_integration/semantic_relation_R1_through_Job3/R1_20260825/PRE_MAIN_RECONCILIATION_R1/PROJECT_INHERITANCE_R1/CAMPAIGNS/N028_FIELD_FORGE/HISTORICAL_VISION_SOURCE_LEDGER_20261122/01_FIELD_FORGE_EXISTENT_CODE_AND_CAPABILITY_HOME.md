@@ -1,5 +1,8 @@
 # FIELD FORGE — EXISTENT COMPUTATIONAL ESTATE / CAPABILITY HOME
 
+**FIELD-AUTHORITY — active campaign HOME (2026-11-25):** [Read the campaign](FIELD-AUTHORITY/README.md) before selecting role/semantic work. Recover and enrich existing QSM/V550/E024 authority; 48 derived codebooks/22,863 physical rows locally counted, not unique items. R14–16 caller roles need qualified consumption. No native issuance, new register or protected promotion.
+
+
 ## R18 — return to the empirical substrate: native source-local diagnostic (2026-11-25)
 
 **User governing correction:** FIELD FORGE investigates actual social reality; fictional world/person constitution belongs downstream. Creative hypotheses are questions for empirical confrontation, not supplied material facts. Retain R17 only as the scoped authored transport experiment in the preceding correction. The neglected function selected here is actual source/role/response grounding of survey-internal social dialectic (PP26-11/13/15/17/19/21), rather than more fictional receiving.
