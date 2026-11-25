@@ -643,7 +643,14 @@ class _CountryEventCollector:
     def finish(self):
         if self.finished is not None:
             raise C11IntegrityError("country event collector already finalized")
-        self.finished=tuple(sorted(self.headers,key=lambda x:x.ref.key))
+        # Country event refs share the exact deterministic family/prefix.
+        # Byte ordering is identical to their canonical lowercase hex keys,
+        # without allocating a full reference key for every retained header.
+        if all(type(h.event_identity) is bytes and len(h.event_identity)==32
+               for h in self.headers):
+            self.finished=tuple(sorted(self.headers,key=lambda x:x.event_identity))
+        else:
+            self.finished=tuple(sorted(self.headers,key=lambda x:x.ref.key))
         self.headers.clear()
         self.builder=None
         return self.finished

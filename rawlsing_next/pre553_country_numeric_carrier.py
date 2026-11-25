@@ -26,7 +26,7 @@ import tempfile
 import zlib
 
 from .pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
-from .pre553_r5_codec import R5TypedValueCodec, canonical_json
+from .pre553_r5_codec import R5OpaqueValue, R5TypedValueCodec, canonical_json
 from .pre553_source_backed_c11_facade import ExactPhysicalCellStream
 
 LEGACY_SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@1"
@@ -230,6 +230,9 @@ class _TypedCellDictionary(Sequence):
                 total+=sum(size(x) for x in value)
             elif isinstance(value,dict):
                 total+=sum(size(k)+size(v) for k,v in value.items())
+            elif type(value) is R5OpaqueValue:
+                # The frozen wrapper is small; its bytes payload need not be.
+                total+=size(vars(value))
             return total
         return sys.getsizeof(self)+size(self._entries)+size(self._detach)+size(self._tokens)
 
@@ -280,6 +283,59 @@ def _stat_signature(path):
 def _encode_cell(cell: PhysicalCell) -> str:
     return canonical_json(_CODEC.encode((cell.raw_value, cell.missing_state.value,
                                         cell.source_missing_declaration, cell.raw_value_label)))
+
+def _scalar_memo_key(value):
+    """Bounded exact builtin subset of R5; None means use the full codec.
+
+    Type tags prevent bool/int/float equality from collapsing identities.
+    IEEE bits preserve signed zero. Nonbuiltin and mutable values never
+    enter the shortcut. No alternate persisted encoding is introduced.
+    """
+    kind=type(value)
+    if value is None:
+        return (0,None)
+    if kind is bool:
+        return (1,value)
+    if kind is int and -32768<=value<=32767:
+        return (2,value)
+    if kind is float and -32768<=value<=32767 and value.is_integer():
+        return (3,struct.pack(">d",value))
+    if kind is str and len(value)<=64:
+        return (4,value)
+    if kind is bytes and len(value)<=64:
+        return (5,value)
+    return None
+
+
+class _CellTokenMemo:
+    """Block-scoped, bounded admission of common immutable physical cells.
+
+    Keep at most 256 entries, each with a bounded key and canonical token.
+    Cold high-cardinality values use the incumbent encoder. No eviction
+    churn, no mutable metadata alias, no authority or schema change.
+    """
+    __slots__=("entries","limit")
+    def __init__(self,limit=256):
+        self.entries={}
+        self.limit=limit
+
+    def token(self,cell):
+        if (not self.limit or cell.source_missing_declaration is not None
+                or type(cell.missing_state) is not PhysicalMissingState):
+            return _encode_cell(cell)
+        raw=_scalar_memo_key(cell.raw_value)
+        label=_scalar_memo_key(cell.raw_value_label)
+        if raw is None or label is None:
+            return _encode_cell(cell)
+        key=(raw,cell.missing_state,label)
+        hit=self.entries.get(key)
+        if hit is not None:
+            return hit
+        token=_encode_cell(cell)
+        if len(self.entries)<self.limit and len(token)<=1024:
+            self.entries[key]=token
+        return token
+
 
 def _decode_cell(row, ordinal, name, token):
     raw, state, declaration, label = _CODEC.decode(json.loads(token))
@@ -406,6 +462,10 @@ class _CountryWriter:
         self.rows=array("Q")
         self.columns=[([],{},array("H")) for _ in self.variables]
         self.estimated_bytes=256*len(self.variables)
+        # Separate small, bounded acceleration allowance; do not change
+        # the incumbent pending-token estimate or physical block geometry.
+        # Disable for tight explicit pending budgets.
+        self.token_memo=_CellTokenMemo(min(256,max(0,self.budget//65536)))
 
     def append(self,cells):
         if tuple((c.variable_ordinal,c.variable_name) for c in cells)!=self.variables:
@@ -419,7 +479,7 @@ class _CountryWriter:
             raise CountryCarrierError("selected row does not belong to country")
         # A single row must fit before any data can be published; estimate
         # unique-token storage and compact code arrays independently.
-        tokens=tuple(_encode_cell(c) for c in cells)
+        tokens=tuple(self.token_memo.token(c) for c in cells)
         def increment():
             return 16+sum(4+(sys.getsizeof(t)+100 if t not in col[1] else 0)
                           for col,t in zip(self.columns,tokens))

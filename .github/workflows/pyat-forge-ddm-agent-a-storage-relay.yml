@@ -1,7 +1,7 @@
 name: PYAT storage relay matched courts
 on:
   push:
-    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4]
+    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4, agent/pyat-forge-ddm-agent-b-storage-relay-r5]
   workflow_dispatch:
 concurrency:
   group: pyat-storage-relay-${{ github.ref }}
@@ -41,7 +41,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install pandas==3.1.1 numpy==2.4.6 pyreadstat==1.3.8 pyarrow==26.0.1 pytest==9.2.0
-      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"; git fetch --no-tags --depth=1 origin f5e9c9a03ccddb5bdfab2114c5f5f551002914f6 9e8572463f731fb1c3c9da1501bec48c80ad6143 d988a39f7741a839e89ac37bf13f5acfe1c2936a 45315663f3e0f20c39b8075acbd1e6e77bf8296f; lscpu; free -h
+      - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"; git fetch --no-tags --depth=1 origin f5e9c9a03ccddb5bdfab2114c5f5f551002914f6 9e8572463f731fb1c3c9da1501bec48c80ad6143 d988a39f7741a839e89ac37bf13f5acfe1c2936a 45315663f3e0f20c39b8075acbd1e6e77bf8296f 2df75b925542088b14cbf54acc37b632d84b79c4; lscpu; free -h
       - run: python -m tools.pyat_country_storage_relay_benchmark
   matched_selector:
     runs-on: ubuntu-latest
@@ -53,6 +53,7 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install pandas==3.1.1 numpy==2.4.6 pyreadstat==1.3.8 pyarrow==26.0.1 pytest==9.2.0
       - run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"; lscpu; free -h
+      - run: git fetch --no-tags --depth=1 origin 2df75b925542088b14cbf54acc37b632d84b79c4
       - run: python -m tools.pyat_country_selector_resident_court
         env:
           PYAT_WIDE_ECONOMICS: '1'

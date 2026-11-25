@@ -17,7 +17,7 @@ from types import MappingProxyType
 from typing import Any, ClassVar, TYPE_CHECKING
 
 from rawlsing_next.pre553_empirical_objects import (
-    AuthorityRef, CanonicalSemanticObject, ExactRef, RespondentEvent, canonical_json, exact_ref,
+    AuthorityRef, CanonicalSemanticObject, ExactRef, RespondentEvent, URN_PREFIX, canonical_json, exact_ref,
     semantic_hash,
 )
 
@@ -111,37 +111,78 @@ class _RoutingRead:
         return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
 
 
+_COUNTRY_EVENT_PREFIX=f"{URN_PREFIX}:RespondentEvent:sha256:"
+_COUNTRY_OCCURRENCE_PREFIX="urn:rawlsing:pre553:c05r2a:event:sha256:"
+_COUNTRY_GROUP_PREFIX="urn:rawlsing:pre553:c05r2a:event-group:sha256:"
+
+
+def _compact_identity(value,prefix):
+    # Never infer identity from a suffix alone. Preserve every noncanonical
+    # value in an explicit fallback envelope (including non-string values).
+    if type(value) is str and value.startswith(prefix) and len(value)==len(prefix)+64:
+        try:
+            digest=bytes.fromhex(value[len(prefix):])
+        except ValueError:
+            pass
+        else:
+            if len(digest)==32 and prefix+digest.hex()==value:
+                return digest
+    return (value,)
+
+
+def _expand_identity(value,prefix):
+    return prefix+value.hex() if type(value) is bytes else value[0]
+
+
 @dataclass(frozen=True, slots=True)
 class _CountryEventHeader:
-    """Transient private I02 header, never a public semantic object.
+    """Transient I02 header at identity/payload grain, not an _EventRead.
 
-    Full source events are validated before this reduction. The exact ref,
-    occurrence/scope checks, selectors and reconstruction dependencies
-    survive; the canonical body does not remain resident.
+    The full event is still validated before emission. Three identities
+    remain distinct; only their canonical digest-backed spelling is elided.
+    The private selector interface remains available for legacy consumers.
     """
-    selector: _EventRead
+    event_identity: bytes | tuple
+    occurrence_identity: bytes | tuple
+    payload: tuple
     empirical_universe_ref: ExactRef
     scoped_respondent_ref: ExactRef
     dependency_refs: tuple[ExactRef, ...]
-    event_group_id: str
-    source_coordinates: tuple[int,int,int]  # private original row, slot ordinal, occurrence position
+    group_identity: bytes | tuple
+    source_coordinates: tuple[int,int,int]
+
+    @property
+    def ref_identity(self):
+        if type(self.event_identity) is bytes:
+            h=self.event_identity.hex()
+            return RespondentEvent.FAMILY,_COUNTRY_EVENT_PREFIX+h,h
+        return self.event_identity
+
+    @property
+    def selector(self):
+        return _EventRead(self.ref_identity,*self.payload,self.response_event_id_or_deterministic_index)
 
     @property
     def ref(self):
-        return self.selector.ref
+        return ExactRef(*self.ref_identity)
     @property
     def content_hash(self):
-        return self.selector.ref.content_hash
+        return self.event_identity.hex() if type(self.event_identity) is bytes else self.event_identity[2]
+    @property
+    def typed_state(self):
+        return self.payload[0]
     @property
     def native_question_ref(self):
-        return self.selector.native_question_ref
+        return ExactRef(*self.payload[1])
     @property
     def component_or_subitem_ref(self):
-        return self.selector.component_or_subitem_ref
+        return ExactRef(*self.payload[3]) if self.payload[3] else None
     @property
     def response_event_id_or_deterministic_index(self):
-        return self.selector.response_event_id_or_deterministic_index
-
+        return _expand_identity(self.occurrence_identity,_COUNTRY_OCCURRENCE_PREFIX)
+    @property
+    def event_group_id(self):
+        return _expand_identity(self.group_identity,_COUNTRY_GROUP_PREFIX)
 
 class _CountryHeaderBuilder:
     """Shared immutable field interning at true repeated information grain."""
@@ -150,12 +191,16 @@ class _CountryHeaderBuilder:
         self.refs={}
         self.values=({}, {}, {})
         self.authorities={}
+        self.payloads={}
 
     def ref(self,value):
         ref=exact_ref(value)
         key=_ref_identity(ref)
         # Detach from the producer's ref instance, then share exact strings.
-        return self.refs.setdefault(key,ExactRef(*key))
+        shared=self.refs.get(key)
+        if shared is None:
+            shared=self.refs[key]=ExactRef(*key)
+        return shared
 
     def dimension(self,value):
         if value is None:
@@ -176,18 +221,26 @@ class _CountryHeaderBuilder:
                    for ref in obj.authority_snapshot_refs)
         if len(self.authorities)<8192:
             auth=self.authorities.setdefault(auth,auth)
-        selector=_EventRead(
-            _ref_identity(obj.ref),obj.typed_state,self.dimension(obj.native_question_ref),
+        payload=(obj.typed_state,self.dimension(obj.native_question_ref),
             self.dimension(obj.canonical_question_ref_if_authorized),
             self.dimension(obj.component_or_subitem_ref),auth,
             self.value(obj.raw_response_value,self.values[0]),
             self.value(obj.canonical_response_value_if_authorized,self.values[1]),
-            self.value(obj.multiplicity_order_rank_fields,self.values[2]),
-            obj.response_event_id_or_deterministic_index,
-        )
-        return _CountryEventHeader(selector,self.ref(obj.empirical_universe_ref),
+            self.value(obj.multiplicity_order_rank_fields,self.values[2]))
+        key=tuple(id(v) for v in payload)
+        shared=self.payloads.get(key)
+        if shared is None:
+            shared=payload
+            if len(self.payloads)<8192:
+                self.payloads[key]=shared
+        ref=_ref_identity(obj.ref)
+        identity=(bytes.fromhex(ref[2]) if ref[0]==RespondentEvent.FAMILY
+                  and ref[1]==_COUNTRY_EVENT_PREFIX+ref[2] else ref)
+        return _CountryEventHeader(identity,
+            _compact_identity(obj.response_event_id_or_deterministic_index,_COUNTRY_OCCURRENCE_PREFIX),
+            shared,self.ref(obj.empirical_universe_ref),
             self.ref(obj.scoped_respondent_ref),tuple(self.ref(ref) for ref in obj.dependency_refs),
-            obj.event_group_id,source_coordinates)
+            _compact_identity(obj.event_group_id,_COUNTRY_GROUP_PREFIX),source_coordinates)
 
 
 @dataclass(frozen=True, slots=True)
@@ -218,24 +271,32 @@ class _PackedCountrySelectors(Sequence):
         occurrence=bytearray()
         payloads=[]; pooled={}
         for i,header in enumerate(headers):
-            s=header.selector
-            kind,oid,h=s._ref_identity
-            eid=s.response_event_id_or_deterministic_index
-            if (kind!=RespondentEvent.FAMILY or oid!=prefix+h
-                    or bytes.fromhex(h)!=bodies.hashes[32*i:32*(i+1)]
-                    or type(eid) is not str or not eid.startswith(cls._prefix)):
-                return tuple(x.selector for x in headers)
-            try:
-                digest=bytes.fromhex(eid[len(cls._prefix):])
-            except ValueError:
-                return tuple(x.selector for x in headers)
-            if len(digest)!=32 or cls._prefix+digest.hex()!=eid:
-                return tuple(x.selector for x in headers)
-            occurrence.extend(digest)
-            payload=(s.typed_state,s._native_question_identity,
-                     s._canonical_question_identity,s._component_identity,
-                     s._authority_identities,s.raw_response_value,
-                     s.canonical_response_value_if_authorized,s.multiplicity_order_rank_fields)
+            if type(header) is _CountryEventHeader:
+                digest=header.event_identity
+                occ=header.occurrence_identity
+                if (type(digest) is not bytes or type(occ) is not bytes
+                        or len(digest)!=32 or len(occ)!=32
+                        or digest!=bodies.hashes[32*i:32*(i+1)]):
+                    return tuple(x.selector for x in headers)
+                occurrence.extend(occ)
+                payload=header.payload
+            else:
+                # Historical header transport: keep the original exact gate.
+                s=header.selector
+                kind,oid,h=s._ref_identity
+                eid=s.response_event_id_or_deterministic_index
+                if (kind!=RespondentEvent.FAMILY or oid!=prefix+h
+                        or bytes.fromhex(h)!=bodies.hashes[32*i:32*(i+1)]
+                        or type(eid) is not str or not eid.startswith(cls._prefix)):
+                    return tuple(x.selector for x in headers)
+                occ=_compact_identity(eid,cls._prefix)
+                if type(occ) is not bytes:
+                    return tuple(x.selector for x in headers)
+                occurrence.extend(occ)
+                payload=(s.typed_state,s._native_question_identity,
+                         s._canonical_question_identity,s._component_identity,
+                         s._authority_identities,s.raw_response_value,
+                         s.canonical_response_value_if_authorized,s.multiplicity_order_rank_fields)
             # Identity sharing is exact, even for unhashable semantic values.
             # Equal but independently allocated objects need not be pooled.
             key=tuple(id(v) for v in payload)
@@ -254,6 +315,12 @@ class _PackedCountrySelectors(Sequence):
 
     def dimension(self,row,field):
         return self.payloads[self.codes[row]][1+self._dimensions.index(field)]
+
+    def matches(self,row,target,native_only,include_component,states):
+        payload=self.payloads[self.codes[row]]
+        return ((states is None or payload[0] in states) and
+            (payload[1]==target or (not native_only and
+             (payload[2]==target or (include_component and payload[3]==target)))))
 
     def __getitem__(self,i):
         if isinstance(i,slice):
@@ -345,8 +412,16 @@ class _RespondentEvents(Sequence[RespondentEvent]):
             # Original selector index order is the preexisting canonical
             # occurrence traversal; do not reorder/multiply matching events.
             rows=sorted(hits)
+        selectors=self.lane.selectors
+        if type(selectors) is _PackedCountrySelectors:
+            # Reject through the packed dimensions before reconstructing
+            # identities, occurrence strings and the full selector object.
+            for row in rows:
+                if selectors.matches(row,target_identity,native_only,include_component,states):
+                    yield selectors[row]
+            return
         for row in rows:
-            event = self.lane.selectors[row]
+            event = selectors[row]
             matches = event._native_question_identity == target_identity or (
                 not native_only and (
                     event._canonical_question_identity == target_identity
@@ -510,7 +585,8 @@ def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,ro
         non_events=_InsertedRoutingEntries(nonrouting,insertion,routing,bodies)
     return _CompactPublicObjects(release_ref,replay_ref,lane,entries,non_events,
         MappingProxyType({key:_country_respondent_events(lane,rows) for key,rows in groups.items()}),
-        frozenset(header.selector.typed_state for header in headers),routing,nonrouting)
+        frozenset(header.typed_state if type(header) is _CountryEventHeader else header.selector.typed_state
+                  for header in headers),routing,nonrouting)
 
 
 def _cache_directory() -> Path | None:
