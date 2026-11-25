@@ -87,13 +87,13 @@
     },
     "o_index": {
       "commit": "571a0284222d9d291f427da89419e305128fe98c",
-      "ledger_blob": "8a566be0dfc87102c6c78b3f4b24b10ff20bde64",
+      "ledger_blob": "2c4be2b388d219340e8b60189fa412423cb6a511",
       "registry_blob": "f530cf193cc0f8c3d93324b5e2b865a4efa3bd34",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json",
       "original_functions": 144,
-      "relationships": 559,
-      "pr_observations": 168,
-      "ledger_intake_parent": "2dfc84867edb955010610cda8e90ef35b9985ebb"
+      "relationships": 565,
+      "pr_observations": 169,
+      "ledger_intake_parent": "6e0f5651d903d95393a188698b4469e15366f10d"
     },
     "sorokuda": {
       "commit": "9b8fcc86e3614f90f4be560004d77a181ad99d1c",
@@ -132,7 +132,7 @@
         },
         {
           "pr": 1331,
-          "head": "3dc736ac53636611c7df716400dde25aa33d5002",
+          "head": "c598ff3e9466ef135f05aa993ce6ade0b1417aab",
           "sources": [
             {
               "path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
@@ -145,6 +145,12 @@
               "blob": "a98849a6d36dc2a2dff5fab399ff94efe99fe63a",
               "line": 554,
               "observed_at": "3dc736ac53636611c7df716400dde25aa33d5002"
+            },
+            {
+              "path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+              "blob": "a408e1a0d8e5b98f3fb11c50cfeef610a1ef6648",
+              "line": 827,
+              "observed_at": "c598ff3e9466ef135f05aa993ce6ade0b1417aab"
             }
           ],
           "prior_cut": {
@@ -157,17 +163,55 @@
                 "observed_at": "84c5e8898b4b33d67c8150a8e13b7451bd983505"
               }
             ]
-          }
+          },
+          "prior_cuts": [
+            {
+              "head": "3dc736ac53636611c7df716400dde25aa33d5002",
+              "sources": [
+                {
+                  "path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+                  "blob": "5aaf2781de697e62e2fe778714e5488deeb13dd0",
+                  "line": 5,
+                  "observed_at": "84c5e8898b4b33d67c8150a8e13b7451bd983505"
+                },
+                {
+                  "path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+                  "blob": "a98849a6d36dc2a2dff5fab399ff94efe99fe63a",
+                  "line": 554,
+                  "observed_at": "3dc736ac53636611c7df716400dde25aa33d5002"
+                }
+              ]
+            }
+          ]
         },
         {
           "pr": 1332,
-          "head": "e83068c2e894f50e53df5021e6bc2846ba01c958",
+          "head": "f1ed9d41ea8c5d004786b8218dfeec86a9afbf82",
           "sources": [
             {
               "path": "SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md",
               "blob": "74ec6bc31d3103b13c28f7f64b624de916d02619",
               "line": 6,
               "observed_at": "e83068c2e894f50e53df5021e6bc2846ba01c958"
+            },
+            {
+              "path": "SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md",
+              "blob": "951fae9c22dc39dd526a635b047dc33e5aaa57bf",
+              "line": 251,
+              "observed_at": "f1ed9d41ea8c5d004786b8218dfeec86a9afbf82"
+            }
+          ],
+          "prior_cuts": [
+            {
+              "head": "e83068c2e894f50e53df5021e6bc2846ba01c958",
+              "sources": [
+                {
+                  "path": "SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md",
+                  "blob": "74ec6bc31d3103b13c28f7f64b624de916d02619",
+                  "line": 6,
+                  "observed_at": "e83068c2e894f50e53df5021e6bc2846ba01c958"
+                }
+              ]
             }
           ]
         },
@@ -561,7 +605,7 @@
   },
   "counts": {
     "obligations": 58,
-    "criteria": 171,
+    "criteria": 174,
     "CO": 34,
     "NEIGHBOR": 24,
     "active_source_blocks": {
@@ -570,17 +614,17 @@
     },
     "criterion_status_counts": {
       "HISTORICAL_OR_BOUNDED_EXECUTION_RELATED": 60,
-      "CRITERION_EQUIVALENCE_UNRECONCILED": 42,
+      "CRITERION_EQUIVALENCE_UNRECONCILED": 45,
       "DIRECT_SOURCE_RELATED_PARTIAL": 49,
       "DOCUMENTARY_RELATED_ONLY": 15,
       "RELATED_EXECUTION_AFFECTED_BY_REJECTED_DEPENDENCY": 5
     },
     "review_coverage": {
-      "criterion_count": 171,
-      "dimension_count": 1197,
+      "criterion_count": 174,
+      "dimension_count": 1218,
       "criterion_specific_review_evidenced": 0,
       "criterion_dimension_status_counts": {
-        "NOT_REVIEWED": 1197
+        "NOT_REVIEWED": 1218
       },
       "explicit_deferred_source_scopes": 16,
       "scope_note": "No claim historical reviews are absent; source-specific review debt count is initial named intake, not total review denominator."
@@ -7796,6 +7840,19 @@
                 "pr": 1359,
                 "original_id": "M19"
               }
+            },
+            {
+              "pr": 1365,
+              "original_id": "M07",
+              "observed_head": "d689e19c5d12240fbee07884108df403ff49e019",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Bounded related sourcefree execution, not full criterion",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1365,
+                "original_id": "M07"
+              }
             }
           ],
           "remaining_boundary": "Specific private-life receipt and first-consumer court unresolved | 2026-11-25 remaining whole-organism scope: Nonverbal and plural-memory activity, independently costly and interrupted private action, inaccessible or forgotten rehearsal, spontaneous recurrence, different material possibility with same rehearsal, no-rehearsal/no-change and private/public receipt leakage across broader interfaces.",
@@ -7890,6 +7947,30 @@
                   "field": "test"
                 },
                 "execution_sha": "11499ea8ff958c48ff475d089b8e10dfe54da25f",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "original_id": "M07"
+                },
+                "source_head": "d689e19c5d12240fbee07884108df403ff49e019",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No qualifying independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "test"
+                },
+                "execution_sha": "d689e19c5d12240fbee07884108df403ff49e019",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -9924,6 +10005,209 @@
             },
             "scope": "SOROK 39 differentiates aggregate, incidental, persistent, formative and focal fidelity as provisional cost/causal-burden categories, not psychological ontologies or fixed tiers to implement. SOROK 70 separates bounded unresolved causal allocation from unrestricted invention; history-compatible does not mean explanatory harmony, H0/H1/H2/H3 are impact classes not new obligatory slots. R5 thin witnessed counterpart may have objective identity and admitted effects before full interior elaboration, but later elaboration cannot retroactively originate independently chosen past acts. If prior independent choice matters, enough operative actor state must precede it. Reuse existing person. Do not resolve all lives or all causal residues just because someone is encountered.",
             "owner_work": "Existing CO world/storage, historical_parent_bridge, constructor and genealogy owners: examine existing identity reuse and qualified late internal state without rewriting previously settled objective history; distinguish authored witness/independent act/actor receipt; compare protected MI H1 historical graph and P2/P3 world/psych conservation for bounded forward effects, not a new history writer. NEIGHBOR owns real visitor exposure, no autopilot and birth/undertaking clock composition. Compare causal burden, actual operation, no-drop and costs at sparse ordinary vs formative actor resolution. No compulsory fixed tiers, numerical maturity scoring or serial validation gate."
+          }
+        },
+        {
+          "id": "CO-CIC-016.03",
+          "acceptance_candidate": "An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Hold admitted world/history and permissions fixed; vary legitimate causal need and source support independently of visitor interpretation; observe actual qualified/held world read, independently performed later action and actor-specific reception or no-change. Refuse retcon, unsupported choice, hidden source transfer and rewritten committed history.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement CO-CIC-016.03; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship. Residual: Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-016.02",
+          "paragraph_anchors": [
+            "CO-L0798",
+            "CO-L0800"
+          ],
+          "refinement_scope": "Independent historical depth/operative actor boundary",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "An already witnessed persistent Other retains one identity and actual earlier effects through increased operative resolution; actor-local access, personal memory, independently originated choice and objective commitment are distinct. Sufficient actor state must precede any choice claimed independent; late elaboration can constrain future independent choice without retroactively certifying earlier authorship.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "MI H1 is real protected sourcefree capital: query_relations rebuilds canonical graph and revalidates support; unknown node returns UNKNOWN, source mismatch refuses, query_depth is WORLD-only and explicitly grants neither actor nor user knowledge. advance_independent_activity consumes qualified physical depth then actual P4 S46 ordinary activity; missing/invalid depth HELD, not negative, no gaze prerequisite. Independent reviewer closure at 0b0eb94... found old postdating RED repaired, source withholding makes graph read refuse and exact restoration restores qualified read; protected #907 receives exact reviewed code at 1f77f203... . This is source-qualified objective depth, not proof of past independent actor choice or psychic memory. R26 is distinct actual forward actor-owned receipt and change, not H1 backfill. R49 admission only for family counterpart/child preserves prior actor/world history; existing identity reuse and previous shared effects held. SOROK 39 causal burden + 70 bounded slack + SEAM/24 R5 distinguish objective history, source support, sufficient operative state before independent choice and new actor-specific reception. Reuse current owners; do not copy an H1 event into memory or use old events to manufacture motive. REMONT R17 #1230 P018 303 normal/optimized accepts full history-integrity preflight at reviewed 28bf7fc... only; chain integrity does not certify source truth or MI/R26 compatibility; queue P018 partial. No claim of direct MI import into R26. Treat source invalidation, admission time vs effective time, actor access and subsequent action as different facts. Preserve exact commitments and uncertainty, including conflicting branch-local completions; never force all-fork shared truth.",
+            "next_owner_work": "Existing CO family-only roster admission is not generic promotion; compare actual world/actor owners against SOROK 39/70/R5; preserve already binding facts/negative constraints and no invented formative memories. Owner qualification and actual joined trajectory unestablished.",
+            "evidence_limit": "Protected MI scoped sourcefree and separate R26 actual forward integration; no composed criterion execution. Empty evidence is not absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1365,
+              "field": "historical_world_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "rawlsing_next/sorok_history/owner.py",
+                "blob": "4352415bc120e37abab4da989c00193221266af6",
+                "line": 1126,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "rawlsing_next/sorok_history/activity.py",
+                "blob": "71124572ba1d7ab56992469bbe6f45cedd8296e1",
+                "line": 325,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 66,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/01_CLOSURE_R2.md",
+                "blob": "2cf593d02c56f995904d7d6860610f5faa549790",
+                "line": 49,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md",
+                "blob": "8e6e270337f280fb4336d70219e645d02ffd7ce2",
+                "line": 100,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md",
+                "blob": "9ae2a42049014b7af2b00185d52ad144d0b5aa5d",
+                "line": 114,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md",
+                "blob": "9d256c8a3ce3b64c9d8be67a5a7f137ffe29406f",
+                "line": 29,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 491,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 1070,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_private_reception_r26.py",
+                "blob": "f99fb3d6e942f42682a710c08ef585fdeafd481b",
+                "line": 14,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/storage.py",
+                "blob": "94268795ef5b2255c56eb51cffd3960890f3d2e0",
+                "line": 267,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "edaa17c6aa88caa3a98bd4088ddd838c29503bec",
+                "line": 165,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              }
+            ]
           }
         }
       ],
@@ -16431,6 +16715,212 @@
               }
             },
             "deferred_source_scopes": []
+          }
+        },
+        {
+          "id": "CO-CIC-025.03",
+          "acceptance_candidate": "Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Hold admitted world/history and permissions fixed; vary legitimate causal need and source support independently of visitor interpretation; observe actual qualified/held world read, independently performed later action and actor-specific reception or no-change. Refuse retcon, unsupported choice, hidden source transfer and rewritten committed history.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement CO-CIC-025.03; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history. Residual: MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-025.01",
+          "paragraph_anchors": [
+            "CO-L1163",
+            "CO-L1165",
+            "CO-L1167",
+            "CO-L1169",
+            "CO-L1172"
+          ],
+          "refinement_scope": "Independent historical depth/operative actor boundary",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "Source-qualified bounded old objective detail can affect actual independent material activity without visitor attention or automatically entering any psyche. Distinguish valid source read, unresolved, refusal, source withdrawal and restoration; present actor receipt and later psychological change require their own history.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "MI H1 is real protected sourcefree capital: query_relations rebuilds canonical graph and revalidates support; unknown node returns UNKNOWN, source mismatch refuses, query_depth is WORLD-only and explicitly grants neither actor nor user knowledge. advance_independent_activity consumes qualified physical depth then actual P4 S46 ordinary activity; missing/invalid depth HELD, not negative, no gaze prerequisite. Independent reviewer closure at 0b0eb94... found old postdating RED repaired, source withholding makes graph read refuse and exact restoration restores qualified read; protected #907 receives exact reviewed code at 1f77f203... . This is source-qualified objective depth, not proof of past independent actor choice or psychic memory. R26 is distinct actual forward actor-owned receipt and change, not H1 backfill. R49 admission only for family counterpart/child preserves prior actor/world history; existing identity reuse and previous shared effects held. SOROK 39 causal burden + 70 bounded slack + SEAM/24 R5 distinguish objective history, source support, sufficient operative state before independent choice and new actor-specific reception. Reuse current owners; do not copy an H1 event into memory or use old events to manufacture motive. REMONT R17 #1230 P018 303 normal/optimized accepts full history-integrity preflight at reviewed 28bf7fc... only; chain integrity does not certify source truth or MI/R26 compatibility; queue P018 partial. No claim of direct MI import into R26. Treat source invalidation, admission time vs effective time, actor access and subsequent action as different facts. Preserve exact commitments and uncertainty, including conflicting branch-local completions; never force all-fork shared truth.",
+            "next_owner_work": "MI H1/P4 S46 independently reviewed protected sourcefree operation exists. Actual present CO consumer of equivalent canonical graph, temporal support and dependency invalidation/restoration versus actual current forward actor consequence remains unreconciled; no H2/H3 grant or arbitrary retcon.",
+            "evidence_limit": "Protected MI scoped sourcefree and separate R26 actual forward integration; no composed criterion execution. Empty evidence is not absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1365,
+              "field": "historical_world_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "rawlsing_next/sorok_history/owner.py",
+                "blob": "4352415bc120e37abab4da989c00193221266af6",
+                "line": 1126,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "rawlsing_next/sorok_history/activity.py",
+                "blob": "71124572ba1d7ab56992469bbe6f45cedd8296e1",
+                "line": 325,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 66,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/01_CLOSURE_R2.md",
+                "blob": "2cf593d02c56f995904d7d6860610f5faa549790",
+                "line": 49,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md",
+                "blob": "8e6e270337f280fb4336d70219e645d02ffd7ce2",
+                "line": 100,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md",
+                "blob": "9ae2a42049014b7af2b00185d52ad144d0b5aa5d",
+                "line": 114,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md",
+                "blob": "9d256c8a3ce3b64c9d8be67a5a7f137ffe29406f",
+                "line": 29,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 491,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 1070,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_private_reception_r26.py",
+                "blob": "f99fb3d6e942f42682a710c08ef585fdeafd481b",
+                "line": 14,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/storage.py",
+                "blob": "94268795ef5b2255c56eb51cffd3960890f3d2e0",
+                "line": 267,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "edaa17c6aa88caa3a98bd4088ddd838c29503bec",
+                "line": 165,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              }
+            ]
           }
         }
       ],
@@ -23429,6 +23919,212 @@
             "scope": "SOROK 39 differentiates aggregate, incidental, persistent, formative and focal fidelity as provisional cost/causal-burden categories, not psychological ontologies or fixed tiers to implement. SOROK 70 separates bounded unresolved causal allocation from unrestricted invention; history-compatible does not mean explanatory harmony, H0/H1/H2/H3 are impact classes not new obligatory slots. R5 thin witnessed counterpart may have objective identity and admitted effects before full interior elaboration, but later elaboration cannot retroactively originate independently chosen past acts. If prior independent choice matters, enough operative actor state must precede it. Reuse existing person. Do not resolve all lives or all causal residues just because someone is encountered.",
             "owner_work": "Existing CO world/storage, historical_parent_bridge, constructor and genealogy owners: examine existing identity reuse and qualified late internal state without rewriting previously settled objective history; distinguish authored witness/independent act/actor receipt; compare protected MI H1 historical graph and P2/P3 world/psych conservation for bounded forward effects, not a new history writer. NEIGHBOR owns real visitor exposure, no autopilot and birth/undertaking clock composition. Compare causal burden, actual operation, no-drop and costs at sparse ordinary vs formative actor resolution. No compulsory fixed tiers, numerical maturity scoring or serial validation gate."
           }
+        },
+        {
+          "id": "NEIGHBOR-CIC-005.03",
+          "acceptance_candidate": "Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Hold admitted world/history and permissions fixed; vary legitimate causal need and source support independently of visitor interpretation; observe actual qualified/held world read, independently performed later action and actor-specific reception or no-change. Refuse retcon, unsupported choice, hidden source transfer and rewritten committed history.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement NEIGHBOR-CIC-005.03; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory. Residual: MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "NEIGHBOR-CIC-005.01",
+          "paragraph_anchors": [
+            "NEIGHBOR-L0083",
+            "NEIGHBOR-L0085",
+            "NEIGHBOR-L0087",
+            "NEIGHBOR-L0089",
+            "NEIGHBOR-L0091"
+          ],
+          "refinement_scope": "Independent historical depth/operative actor boundary",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "NEIGHBOR",
+            "home_commit": "3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2",
+            "home_blob": "fa9ccd65aede455f1826d1812512e3d27714521f",
+            "home_path": "SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md",
+            "source_basis": "Historical admission authority must be invariant under visitor framing with fixed actual causal need/root; distinguish unresolved common root, later compatible all-dependent-branch completion, incompatible branch-local completions, and postcontact events. An admitted objective fact is not visitor knowledge or actor memory.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "MI H1 is real protected sourcefree capital: query_relations rebuilds canonical graph and revalidates support; unknown node returns UNKNOWN, source mismatch refuses, query_depth is WORLD-only and explicitly grants neither actor nor user knowledge. advance_independent_activity consumes qualified physical depth then actual P4 S46 ordinary activity; missing/invalid depth HELD, not negative, no gaze prerequisite. Independent reviewer closure at 0b0eb94... found old postdating RED repaired, source withholding makes graph read refuse and exact restoration restores qualified read; protected #907 receives exact reviewed code at 1f77f203... . This is source-qualified objective depth, not proof of past independent actor choice or psychic memory. R26 is distinct actual forward actor-owned receipt and change, not H1 backfill. R49 admission only for family counterpart/child preserves prior actor/world history; existing identity reuse and previous shared effects held. SOROK 39 causal burden + 70 bounded slack + SEAM/24 R5 distinguish objective history, source support, sufficient operative state before independent choice and new actor-specific reception. Reuse current owners; do not copy an H1 event into memory or use old events to manufacture motive. REMONT R17 #1230 P018 303 normal/optimized accepts full history-integrity preflight at reviewed 28bf7fc... only; chain integrity does not certify source truth or MI/R26 compatibility; queue P018 partial. No claim of direct MI import into R26. Treat source invalidation, admission time vs effective time, actor access and subsequent action as different facts. Preserve exact commitments and uncertainty, including conflicting branch-local completions; never force all-fork shared truth.",
+            "next_owner_work": "MI branch-scoped historical graph and R26 actual private reception are different established scopes; all-fork publication, conflict and same-person qualified shared root, real joined historical consumer and sensory permissions remain open. No forced global completion or retcon.",
+            "evidence_limit": "Protected MI scoped sourcefree and separate R26 actual forward integration; no composed criterion execution. Empty evidence is not absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1365,
+              "field": "historical_world_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "rawlsing_next/sorok_history/owner.py",
+                "blob": "4352415bc120e37abab4da989c00193221266af6",
+                "line": 1126,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "rawlsing_next/sorok_history/activity.py",
+                "blob": "71124572ba1d7ab56992469bbe6f45cedd8296e1",
+                "line": 325,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 66,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/01_CLOSURE_R2.md",
+                "blob": "2cf593d02c56f995904d7d6860610f5faa549790",
+                "line": 49,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md",
+                "blob": "8e6e270337f280fb4336d70219e645d02ffd7ce2",
+                "line": 100,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md",
+                "blob": "9ae2a42049014b7af2b00185d52ad144d0b5aa5d",
+                "line": 114,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "REMONT/SOROK/REVIEWS/INDEPENDENT_R17_P018_20261121/R17_P018_INDEPENDENT_ACCEPTANCE.md",
+                "blob": "9d256c8a3ce3b64c9d8be67a5a7f137ffe29406f",
+                "line": 29,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 491,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "7a8d4413bd8d0676aeb5c6caca5c98661a7b546f",
+                "line": 1070,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_private_reception_r26.py",
+                "blob": "f99fb3d6e942f42682a710c08ef585fdeafd481b",
+                "line": 14,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/storage.py",
+                "blob": "94268795ef5b2255c56eb51cffd3960890f3d2e0",
+                "line": 267,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "edaa17c6aa88caa3a98bd4088ddd838c29503bec",
+                "line": 165,
+                "observed_at": "d689e19c5d12240fbee07884108df403ff49e019"
+              }
+            ]
+          }
         }
       ],
       "paragraph_route_grade": "PROVISIONAL_CLUSTER_ROUTE_NOT_INDIVIDUAL_SEMANTIC_RECEIVING",
@@ -27166,6 +27862,19 @@
                 "pr": 1361,
                 "original_id": "M07"
               }
+            },
+            {
+              "pr": 1365,
+              "original_id": "S9",
+              "observed_head": "d689e19c5d12240fbee07884108df403ff49e019",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Bounded related sourcefree execution, not full criterion",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1365,
+                "original_id": "S9"
+              }
             }
           ],
           "remaining_boundary": "Actual expressive repertoire and self-reception not fully joined",
@@ -27237,6 +27946,30 @@
                 },
                 "execution_sha": "c47926fa844a7bef77866afe35f6cb4dcc9a4fc6",
                 "execution_grade": "SOURCEFREE_PR_MERGE_CHECKOUT_EXECUTED__HEAD_TREE_IDENTICAL"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "original_id": "S9"
+                },
+                "source_head": "d689e19c5d12240fbee07884108df403ff49e019",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No qualifying independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "test"
+                },
+                "execution_sha": "d689e19c5d12240fbee07884108df403ff49e019",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -30071,6 +30804,19 @@
                 "pr": 1272,
                 "original_id": "O11"
               }
+            },
+            {
+              "pr": 1365,
+              "original_id": "C5",
+              "observed_head": "d689e19c5d12240fbee07884108df403ff49e019",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Bounded related sourcefree execution, not full criterion",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1365,
+                "original_id": "C5"
+              }
             }
           ],
           "remaining_boundary": "Native false belief and recursive model court not established",
@@ -30118,6 +30864,30 @@
                 },
                 "execution_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
                 "execution_grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "original_id": "C5"
+                },
+                "source_head": "d689e19c5d12240fbee07884108df403ff49e019",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No qualifying independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1365,
+                  "field": "test"
+                },
+                "execution_sha": "d689e19c5d12240fbee07884108df403ff49e019",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -44038,6 +44808,24 @@
       "cross_lineage_join": "R25 × R44 only; R50 direct branch execution not joined",
       "home_visibility_defect": "At #1331 current exact HOME lines 554–565 the added living-flow/caregiver passage is inside the R15-SOURCE S051 HTML comment; raw source present, rendered prose hidden. CO HOME owner should move addition outside comment preserving marker and earlier text. The original pressureflow.txt, Aug10 orientation and Nov19 user wording are owner-attributed within this raw amendment, not independently reopened in this intake.",
       "source_comparison": "CAN-008 v1 conserves atomic stream-specific causal history and targeted BUFFER/AMPLIFY/DEFLECT/REROUTE/TRANSFORM/BLOCK effects; no direct raw structure→psyche, no inherited groove scalar, valid empty ≠ absent. M21 historical required reader run_one_year→run_pressure_flow_cycle (SOROKUDA function row/RCF-A historical ledger), original raw archive not reopened. R50 is bounded partial nonnumeric succession, not equivalence to six operators or native authority. Positive caregiver-enabled child capacity and later independent initiative must retain separate child performance/receipt, actual caregiver cost and received recognition, no compulsory praise or dyadic causality. Existing R49 child/care, R47 received-sign, R25 conditional cooperation and historical M04 reproduction constraints are starting capital, not proof of this composite."
+    },
+    {
+      "id": "CIC-REFINE-20261125-H1-OTHER-1",
+      "predecessor_commit": "6e0f5651d903d95393a188698b4469e15366f10d",
+      "predecessor_blob": "95307b64ece362bfb2b6d9f8e3e4b12a87103f83",
+      "prior_criterion_count": 171,
+      "added_criterion_ids": [
+        "CO-CIC-016.03",
+        "CO-CIC-025.03",
+        "NEIGHBOR-CIC-005.03"
+      ],
+      "source_blocks": "719 prior routes conserved; exact CO and NEIGHBOR active pinned anchors plus latest owner passages",
+      "new_prs": [
+        1365
+      ],
+      "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD",
+      "cross_lineage_join": "R26 × R49 executed, R50 separate; MI separate protected sourcefree scope",
+      "historical_source_comparison": "MI H1 is real protected sourcefree capital: query_relations rebuilds canonical graph and revalidates support; unknown node returns UNKNOWN, source mismatch refuses, query_depth is WORLD-only and explicitly grants neither actor nor user knowledge. advance_independent_activity consumes qualified physical depth then actual P4 S46 ordinary activity; missing/invalid depth HELD, not negative, no gaze prerequisite. Independent reviewer closure at 0b0eb94... found old postdating RED repaired, source withholding makes graph read refuse and exact restoration restores qualified read; protected #907 receives exact reviewed code at 1f77f203... . This is source-qualified objective depth, not proof of past independent actor choice or psychic memory. R26 is distinct actual forward actor-owned receipt and change, not H1 backfill. R49 admission only for family counterpart/child preserves prior actor/world history; existing identity reuse and previous shared effects held. SOROK 39 causal burden + 70 bounded slack + SEAM/24 R5 distinguish objective history, source support, sufficient operative state before independent choice and new actor-specific reception. Reuse current owners; do not copy an H1 event into memory or use old events to manufacture motive. REMONT R17 #1230 P018 303 normal/optimized accepts full history-integrity preflight at reviewed 28bf7fc... only; chain integrity does not certify source truth or MI/R26 compatibility; queue P018 partial. No claim of direct MI import into R26. Treat source invalidation, admission time vs effective time, actor access and subsequent action as different facts. Preserve exact commitments and uncertainty, including conflicting branch-local completions; never force all-fork shared truth."
     }
   ]
 }
