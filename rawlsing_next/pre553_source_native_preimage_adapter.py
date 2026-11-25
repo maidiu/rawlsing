@@ -12,6 +12,10 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+from array import array
+from bisect import bisect_left
+from collections.abc import Mapping as ABCMapping
+from types import MappingProxyType
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Mapping
 
@@ -35,7 +39,8 @@ from rawlsing_next.pre553_physical_decoder import (
 from rawlsing_next.pre553_source_backed_c11_facade import (
     CoordinateSlotRule,
     ExactPhysicalCellStream,
-    GovernedC11Projection,
+    GovernedC11Projection, _PackedRoutingFacts,
+    _RoutingColumnBuilder, _routing_column_value,
     OccurrenceRule,
     PhysicalSlot,
     ResponseSlotRule,
@@ -511,6 +516,141 @@ def _row_cells(cells: Iterable[PhysicalCell], row_count: int) -> dict[int, dict[
     return rows
 
 
+@dataclass(frozen=True, slots=True)
+class _NativeCellColumn:
+    """Private detached replay view, using the existing exact R5 cell codec.
+
+    Dense canonical rows need no per-cell row index; arbitrary sparse or
+    permuted rows retain an explicit sorted ordinal -> input-position lane.
+    Variable ordinal changes remain explicit, not silently normalized.
+    """
+    name: str
+    count: int
+    ordinal: int | memoryview
+    values: tuple
+    row_index: memoryview | None
+    positions: memoryview | None
+
+    def position(self,row):
+        if self.row_index is None:
+            return row-1 if 1<=row<=self.count else None
+        i=bisect_left(self.row_index,row)
+        if i==len(self.row_index) or self.row_index[i]!=row:
+            return None
+        return self.positions[i]
+
+    def cell(self,row):
+        from rawlsing_next.pre553_country_numeric_carrier import _decode_cell
+        p=self.position(row)
+        if p is None:
+            raise KeyError(self.name)
+        ordinal=self.ordinal if type(self.ordinal) is int else self.ordinal[p]
+        return _decode_cell(row,ordinal,self.name,_routing_column_value(self.values,p))
+
+
+@dataclass(frozen=True,slots=True)
+class _NativeCellRow(ABCMapping):
+    row: int
+    columns: Mapping
+
+    def __getitem__(self,key):
+        return self.columns[key].cell(self.row)
+
+    def __iter__(self):
+        return (key for key,col in self.columns.items() if col.position(self.row) is not None)
+
+    def __len__(self):
+        return sum(1 for _ in self)
+
+
+@dataclass(frozen=True,slots=True)
+class _PackedNativeRows(ABCMapping):
+    """Retain exact source cells, not an object graph or a live file callback."""
+    rows: tuple
+    columns: Mapping
+
+    def __iter__(self):
+        return iter(self.rows)
+
+    def __len__(self):
+        return len(self.rows)
+
+    def __getitem__(self,row):
+        if type(row) is not int or not 1<=row<=len(self.rows):
+            raise KeyError(row)
+        return _NativeCellRow(row,self.columns)
+
+    @classmethod
+    def build(cls,cells,row_count):
+        from rawlsing_next.pre553_country_numeric_carrier import _encode_cell,_decode_cell
+        from rawlsing_next.pre553_r5_codec import R5CodecError
+        builders={}
+        row_order={}
+        for cell in cells:
+            row,name,ordinal=cell.row_ordinal,cell.variable_name,cell.variable_ordinal
+            if type(row) is not int or not 1<=row<=row_count:
+                raise NativePreimageRefusal("INCIDENCE_ROW_ORDINALS_INCOMPLETE",str(row))
+            if type(ordinal) is not int or not 0<=ordinal<2**64 or type(name) is not str:
+                raise NativePreimageRefusal("PACKED_PHYSICAL_IDENTITY_UNSUPPORTED",str(name))
+            row_order.setdefault(row,None)
+            if name not in builders:
+                builders[name]=(array("Q"),array("Q"),_RoutingColumnBuilder())
+            row_ids,ordinals,values=builders[name]
+            row_ids.append(row);ordinals.append(ordinal)
+            try:
+                token=_encode_cell(cell)
+                # Do not accept an unrepresentable host value by changing its
+                # physical meaning. Decoder-state NaN is intentionally R5's
+                # existing equivalence, not a claim of arbitrary NaN payloads.
+                decoded=_decode_cell(row,ordinal,name,token)
+                def same_shape(a,b):
+                    # R5's source decoder already normalizes supported date
+                    # types to opaque carriers. Do not silently introduce
+                    # that conversion for arbitrary user-supplied streams.
+                    if isinstance(a,ABCMapping) and isinstance(b,ABCMapping):
+                        return len(a)==len(b) and all(k in b and same_shape(v,b[k]) for k,v in a.items())
+                    if type(a) is not type(b):
+                        return False
+                    if type(a) in (tuple,list):
+                        return len(a)==len(b) and all(same_shape(x,y) for x,y in zip(a,b))
+                    return True
+                if (_encode_cell(decoded)!=token
+                        or not all(same_shape(a,b) for a,b in (
+                            (cell.raw_value,decoded.raw_value),
+                            (cell.source_missing_declaration,decoded.source_missing_declaration),
+                            (cell.raw_value_label,decoded.raw_value_label)))):
+                    raise NativePreimageRefusal("PACKED_PHYSICAL_CELL_DRIFT",name)
+                values.add(token.encode("ascii"))
+            except R5CodecError as error:
+                raise NativePreimageRefusal("PACKED_PHYSICAL_CELL_UNSUPPORTED",str(error)) from error
+        if len(row_order)!=row_count:
+            raise NativePreimageRefusal("INCIDENCE_ROW_ORDINALS_INCOMPLETE",
+                                        f"observed={sorted(row_order)} expected={row_count}")
+        columns={}
+        for name,(rows,ordinals,values) in builders.items():
+            n=len(rows)
+            dense=n==row_count and all(row==i+1 for i,row in enumerate(rows))
+            indices=positions=None
+            if not dense:
+                order=sorted(range(n),key=rows.__getitem__)
+                sorted_rows=array("Q",(rows[i] for i in order))
+                for a,b in zip(sorted_rows,sorted_rows[1:]):
+                    if a==b:
+                        raise NativePreimageRefusal("DUPLICATE_PHYSICAL_CELL",f"row={a}:{name}")
+                indices=memoryview(sorted_rows.tobytes()).cast("Q")
+                positions=memoryview(array("Q",order).tobytes()).cast("Q")
+            ordinal=ordinals[0] if all(x==ordinals[0] for x in ordinals) else memoryview(ordinals.tobytes()).cast("Q")
+            columns[name]=_NativeCellColumn(name,n,ordinal,values.finish(),indices,positions)
+        return cls(tuple(row_order),MappingProxyType(columns))
+
+    @property
+    def payload_bytes(self):
+        return sum(sum(len(x) for x in c.values)
+                   +(0 if type(c.ordinal) is int else c.ordinal.nbytes)
+                   +(0 if c.row_index is None else c.row_index.nbytes+c.positions.nbytes)
+                   for c in self.columns.values())
+
+
 def _require_observed_cell(row: Mapping[str, PhysicalCell], variable: str,
                            *, context: str) -> PhysicalCell:
     cell = row.get(variable)
@@ -550,6 +690,8 @@ def materialize_native_preimages(
     package: NativeSourcePackage,
     incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
     row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
+    compact_routing: bool = False,
+    compact_cells: bool = False,
 ) -> NativePreimageBundle:
     """Materialize a governed C11 release from exact source cells.
 
@@ -570,12 +712,15 @@ def materialize_native_preimages(
                 "SOURCE_FORMAT_MISMATCH",
                 f"incidence={incidence.source_format} package={package.source.source_format}")
 
-    all_cells = tuple(incidence.iter_cells())
-    rows = _row_cells(all_cells, incidence.row_count)
+    # Consume the physical reader once; the returned replay stream remains
+    # detached and includes ungoverned columns. No source read on replay.
+    rows = (_PackedNativeRows.build(incidence.iter_cells(),incidence.row_count)
+            if compact_cells else _row_cells(incidence.iter_cells(),incidence.row_count))
     source = package.source
     authorities = build_authority_set(source=source, as_of=package.as_of)
     source_auth, mapping_auth, coord_auth, routing_auth, weight_auth, replay_auth, projection_auth = authorities
-    variable_names = {name for row in rows.values() for name in row}
+    variable_names = (set(rows.columns) if type(rows) is _PackedNativeRows
+                      else {name for row in rows.values() for name in row})
     for required in (package.coordinate_variable,):
         if required not in variable_names:
             raise NativePreimageRefusal("COORDINATE_VARIABLE_ABSENT", required)
@@ -598,6 +743,8 @@ def materialize_native_preimages(
 
     respondent_token_by_row: dict[int, str] = {}
     occasion_token_by_row: dict[int, str] = {}
+    source_token_by_row: dict[int,str] = {}
+    source_tokens_by_respondent: dict[str,set[str]] = {}
     if row_occurrence_plan is None:
         for row_ordinal in sorted(rows):
             respondent_token_by_row[row_ordinal] = f"ROW-{row_ordinal:04d}"
@@ -614,14 +761,13 @@ def materialize_native_preimages(
                 row, row_occurrence_plan.occasion_variable, context="occasion")
             respondent_token_by_row[row_ordinal] = mapping[respondent_token]
             occasion_token_by_row[row_ordinal] = token(occasion_cell.raw_value)
+            source_token_by_row[row_ordinal]=respondent_token
+            source_tokens_by_respondent.setdefault(mapping[respondent_token],set()).add(respondent_token)
 
     respondent_keys = sorted(set(respondent_token_by_row.values()))
     by_respondent_key = {}
     for key in respondent_keys:
-        source_tokens = sorted(
-            {token(rows[row][row_occurrence_plan.respondent_variable].raw_value)
-             for row in rows if respondent_token_by_row[row] == key}
-        ) if row_occurrence_plan else (key,)
+        source_tokens = sorted(source_tokens_by_respondent[key]) if row_occurrence_plan else (key,)
         by_respondent_key[key] = _ref(
             "SOURCE_RESPONDENT", f"{source.source_id}-{key}",
             {"source_tokens": source_tokens})
@@ -821,7 +967,9 @@ def materialize_native_preimages(
         copy_observed_raw=True,
     )
     risk_ref = _ref("RISK_SET", f"{source.source_id}-whole")
-    routing = tuple(
+    # Opt-in engineering representation; source administration/routing
+    # decisions remain exactly those of the existing producer.
+    routing = (_PackedRoutingFacts if compact_routing else tuple)(
         RoutingEligibilityFact(
             typed_state="ELIGIBLE_APPLICABLE",
             authority_snapshot_refs=(routing_auth.authority_ref,),
@@ -867,7 +1015,7 @@ def materialize_native_preimages(
     stream = ExactPhysicalCellStream(
         source_sha256=source.declared_sha256,
         row_count=incidence.row_count,
-        cell_iter_factory=lambda: tuple(transformed_cells()),
+        cell_iter_factory=transformed_cells if compact_cells else lambda: tuple(transformed_cells()),
         decoder_metadata_digest=_accelerator_decoder_digest(incidence),
     )
     projection = GovernedC11Projection(
@@ -920,7 +1068,7 @@ def materialize_native_preimages(
     respondent_rows = tuple({
         "row": row, "respondent_key": respondent_token_by_row[row],
         "source_respondent": (
-            token(rows[row][row_occurrence_plan.respondent_variable].raw_value)
+            source_token_by_row[row]
             if row_occurrence_plan else f"ROW-{row:04d}"),
         "source_occasion": occasion_token_by_row.get(row),
         "projected_respondent_ref": respondent_by_key[respondent_token_by_row[row]].ref.as_dict(),

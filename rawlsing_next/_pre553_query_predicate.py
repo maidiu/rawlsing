@@ -22,7 +22,7 @@ class UnresolvedConditionMember(EmpiricalQueryResolutionError):
     """
 
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
-    if isinstance(event, RoutingEligibilityFact):
+    if isinstance(event,(RoutingEligibilityFact,_RoutingRead)):
         return _ref_field(event, "question_or_target_ref") == target
     native = _ref_field(event, "native_question_ref")
     canonical = _ref_field(event, "canonical_question_ref_if_authorized", allow_none=True)
@@ -88,16 +88,33 @@ class _CountryRoutingLookup:
     dimensions: Mapping
     rows: Mapping
     postings: Mapping
+    by_target: Mapping
 
     @classmethod
     def build(cls,rows):
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingRows
+        import json
         dimensions={}
         postings={}
+        decoded={}
         for respondent,facts in rows.items():
             pairs=[]
-            for i,fact in enumerate(facts):
-                key=(_ref_field(fact,"question_or_target_ref").key,
-                     _ref_field(fact,"risk_set_ref").key)
+            if type(facts) is _PackedRoutingRows:
+                def keys():
+                    for i in range(len(facts)):
+                        raw=facts.dimension_bytes(i)
+                        key=decoded.get(raw)
+                        if key is None:
+                            key=tuple(exact_ref(json.loads(v)).key for v in raw)
+                            if len(decoded)<16384:
+                                decoded[raw]=key
+                        yield key
+            else:
+                def keys():
+                    for fact in facts:
+                        yield (_ref_field(fact,"question_or_target_ref").key,
+                               _ref_field(fact,"risk_set_ref").key)
+            for i,key in enumerate(keys()):
                 code=dimensions.setdefault(key,len(dimensions))
                 pairs.append((code,i))
             pairs.sort()
@@ -106,21 +123,46 @@ class _CountryRoutingLookup:
             offsets=array(tag,(b for a,b in pairs))
             postings[respondent]=(memoryview(codes.tobytes()).cast(tag),
                                   memoryview(offsets.tobytes()).cast(tag))
-        return cls(MappingProxyType(dimensions),rows,MappingProxyType(postings))
+        by_target={}
+        for (target,_),code in dimensions.items():
+            by_target.setdefault(target,[]).append(code)
+        return cls(MappingProxyType(dimensions),rows,MappingProxyType(postings),
+                   MappingProxyType({k:tuple(v) for k,v in by_target.items()}))
 
-    def __call__(self,*,respondent,target,risk_set):
-        facts=self.rows[respondent]
-        code=self.dimensions.get((target,risk_set))
-        if code is None:
-            return ()
+    def _positions(self,respondent,code):
         codes,offsets=self.postings[respondent]
         lo,hi=bisect_left(codes,code),bisect_right(codes,code)
-        return tuple(facts[offsets[i]] for i in range(lo,hi))
+        return (offsets[i] for i in range(lo,hi))
+
+    def __call__(self,*,respondent,target,risk_set):
+        # Existing complete-fact locator ABI retained.
+        facts=self.rows[respondent]
+        code=self.dimensions.get((target,risk_set))
+        return () if code is None else tuple(facts[i] for i in self._positions(respondent,code))
+
+    def _selected(self,respondent,positions):
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingRows
+        facts=self.rows[respondent]
+        read=facts._selector if type(facts) is _PackedRoutingRows else facts.__getitem__
+        return tuple(read(i) for i in positions)
+
+    def select(self,*,respondent,target,risk_set):
+        code=self.dimensions.get((target,risk_set))
+        return () if code is None else self._selected(respondent,self._positions(respondent,code))
+
+    def select_target(self,*,respondent,target):
+        # Routing predicate semantics require every matching risk-set fact,
+        # in original canonical order, not only the query's selected risk.
+        positions=sorted(i for code in self.by_target.get(target,())
+                         for i in self._positions(respondent,code))
+        return self._selected(respondent,positions)
 
 
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
     public = release.public_objects
-    universes = [o for o in release._public_non_events if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
+    packed=isinstance(public,_CompactPublicObjects) and public.routing is not None
+    other=public.nonrouting if packed else release._public_non_events
+    universes = [o for o in other if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
     if len(universes) != 1:
         raise EmpiricalQueryResolutionError("exact universe must resolve once inside sealed C11 release")
     universe = universes[0]
@@ -136,7 +178,7 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
     weights: dict[str, list[WeightMeasureFact]] = {key: [] for key in respondents}
     relations: list[SourceUniverseRelation] = []
-    for obj in release._public_non_events:
+    for obj in other:
         if isinstance(obj, SourceUniverseRelation):
             if universe_ref.as_dict() in tuple(obj.source_universe_refs):
                 relations.append(obj)
@@ -164,7 +206,8 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             for key, objects in rows.items()
         })
 
-    routing_rows=freeze_rows(routing)
+    routing_rows=(MappingProxyType(public.routing.scoped_rows(universe_ref,respondents))
+                  if packed else freeze_rows(routing))
     lookup=None
     if isinstance(public,_CompactPublicObjects):
         from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
@@ -441,7 +484,10 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("routing predicate requires exact routing_state")
         result = False
-        for fact in index.routing_by_respondent[respondent_key]:
+        routing=(index.routing_lookup.select_target(respondent=respondent_key,target=question_ref.key)
+                 if type(index.routing_lookup) is _CountryRoutingLookup
+                 else index.routing_by_respondent[respondent_key])
+        for fact in routing:
             if not _question_matches(fact, question_ref):
                 continue
             if routing_auth not in fact.authority_snapshot_refs:

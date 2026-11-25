@@ -83,6 +83,7 @@ class C11Repository:
         # lane per sealed release, not a string key, locator and guard tuple
         # for each event. Exact shared-owner checks remain conjunctive.
         self._country_event_lanes: tuple[Any, ...] = ()
+        self._country_routing_lanes: tuple[Any, ...] = ()
         # Derived I03 topology only, scoped to this exact append-only repository.
         self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
         self._i03_index_lock = Lock()
@@ -129,10 +130,23 @@ class C11Repository:
             if index is not None:
                 lane.bodies.check_live()
                 matches.append((lane,index))
-        if obj is None and not matches:
+        route_matches=[]
+        for routing,guard in self._country_routing_lanes:
+            index=routing.find(ref)
+            if index is not None:
+                guard.check_live()
+                route_matches.append((routing,index,guard))
+        if obj is None and not matches and not route_matches:
             raise KeyError("exact C11 object unavailable; no fallback permitted")
         for guard in self._country_object_guards.get(ref.key, ()):
             guard.check_live()
+        if route_matches:
+            routing,index,guard=route_matches[-1]
+            fact=routing[index]
+            if fact.ref!=ref:
+                raise C11AtomicityError("packed routing identity mismatch")
+            guard.check_live()
+            return fact
         if matches:
             lane,index=matches[-1]
             event=lane.materialize(index)
@@ -161,8 +175,9 @@ class C11Repository:
             from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
             if type(public.lane.bodies) is _CountryEventBodies:
                 country_guard = public.lane.bodies
-        entries = (public.non_events if country_guard is not None
-                   else public.exact_entries() if isinstance(public, _CompactPublicObjects) else public)
+        entries = ((public.nonrouting if public.routing is not None else public.non_events)
+                   if country_guard is not None else
+                   public.exact_entries() if isinstance(public,_CompactPublicObjects) else public)
         for obj in chain(entries, release.internal_records, (release.replay_manifest,)):
             obj_ref = obj.ref
             prior = staged.get(obj_ref.key)
@@ -180,6 +195,8 @@ class C11Repository:
         self._country_object_guards = staged_guards
         if country_guard is not None:
             self._country_event_lanes=(*self._country_event_lanes,public.lane)
+            if public.routing is not None:
+                self._country_routing_lanes=(*self._country_routing_lanes,(public.routing,country_guard))
         self._by_ref[ref.key] = release
         self._by_release_id[release.release_id] = release.semantic_release_hash
 

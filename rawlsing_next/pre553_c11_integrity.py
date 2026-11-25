@@ -8,7 +8,9 @@ relations.
 from __future__ import annotations
 
 from dataclasses import dataclass, fields
+from bisect import bisect_right
 from functools import cached_property
+import hashlib
 from types import MappingProxyType
 from typing import Any, ClassVar, Iterable, Mapping, Sequence
 
@@ -26,6 +28,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalUniverse,
     ExactRef,
     INTERNAL_C11_RECORD_FAMILIES,
+    PUBLIC_OBJECT_FAMILIES, URN_PREFIX,
     Pre553IntegrityError,
     Pre553SemanticCollapseError,
     RespondentEvent,
@@ -301,6 +304,152 @@ class StructuralAdmissionReplayBinding(C11InternalRecord):
             _require_authority_ref(ref, "negative_limit_authority_refs")
 
 
+@dataclass(frozen=True, slots=True, eq=False)
+class _PackedClosureRefs(Sequence[ExactRef]):
+    """Private country I02 replay census at exact reference grain.
+
+    Contiguous derivable IDs share kind and ID prefix; only 32 digest bytes
+    per identity remain. Non-derivable refs retain all three exact strings.
+    No deduplication, reordering, or reference inversion. Immutable bytes
+    and detached strings, never a caller-owned ExactRef instance.
+    """
+    runs: tuple
+    ends: tuple[int, ...]
+
+    @staticmethod
+    def _derived_prefix(kind):
+        if kind in PUBLIC_OBJECT_FAMILIES:
+            return f"{URN_PREFIX}:{kind.split('@',1)[0]}:sha256:"
+        if kind.startswith("C11Internal:") and kind.split(":",1)[1] in INTERNAL_C11_RECORD_FAMILIES:
+            return f"{URN_PREFIX}:c11:{kind.split(':',1)[1]}:sha256:"
+        return None
+
+    def __post_init__(self):
+        self.validate()
+
+    def validate(self):
+        # Validate the exact physical representation without inflating the
+        # per-identity ref objects. Every 32-byte digest yields one legal
+        # lowercase SHA256 and its deterministic ID, with no omitted state.
+        if type(self.runs) is not tuple or type(self.ends) is not tuple or len(self.runs)!=len(self.ends):
+            raise C11IntegrityError("packed replay run/offset shape drift")
+        count=0
+        for run,end in zip(self.runs,self.ends):
+            if type(run) is not tuple or len(run)!=3 or type(end) is not int:
+                raise C11IntegrityError("packed replay run shape drift")
+            kind,prefix,payload=run
+            if type(kind) is not str or type(prefix) is not str:
+                raise C11IntegrityError("packed replay ref string drift")
+            if type(payload) is bytes:
+                if prefix!=self._derived_prefix(kind) or not payload or len(payload)%32:
+                    raise C11IntegrityError("packed replay derived lane drift")
+                count+=len(payload)//32
+            elif type(payload) is str:
+                ref=ExactRef(kind,prefix,payload)
+                if (ref.kind,ref.object_id,ref.content_hash)!=run:
+                    raise C11IntegrityError("packed replay explicit reference drift")
+                count+=1
+            else:
+                raise C11IntegrityError("packed replay payload type drift")
+            if end!=count:
+                raise C11IntegrityError("packed replay run offset drift")
+
+    @classmethod
+    def pack(cls, refs):
+        runs,ends=[],[]
+        active=None
+        lane=bytearray()
+        count=0
+        def flush():
+            if active is not None:
+                runs.append((*active,bytes(lane)))
+                ends.append(count)
+                lane.clear()
+        for ref in refs:
+            if type(ref) is not ExactRef:
+                raise C11IntegrityError("packed replay requires exact canonical refs")
+            kind,oid,digest=ref.kind,ref.object_id,ref.content_hash
+            # Only canonical deterministic IDs are reducible. An arbitrary
+            # string ending in a hash is not a license to infer its ID.
+            if any(type(v) is not str for v in (kind,oid,digest)):
+                raise C11IntegrityError("packed replay requires exact string leaves")
+            prefix=cls._derived_prefix(kind)
+            if prefix is not None and oid==prefix+digest:
+                binary=bytes.fromhex(digest)
+                if len(binary)!=32 or binary.hex()!=digest:
+                    raise C11IntegrityError("packed replay digest is not exact lowercase SHA256")
+                key=(kind,prefix)
+                if active!=key:
+                    flush()
+                    active=key
+                lane.extend(binary)
+                count+=1
+            else:
+                flush()
+                active=None
+                count+=1
+                runs.append((kind,oid,digest))
+                ends.append(count)
+        flush()
+        return cls(tuple(runs),tuple(ends))
+
+    def __len__(self):
+        return self.ends[-1] if self.ends else 0
+
+    @staticmethod
+    def _ref(run, offset):
+        kind,prefix,payload=run
+        if type(payload) is str:
+            return ExactRef(kind,prefix,payload)
+        h=payload[32*offset:32*(offset+1)].hex()
+        return ExactRef(kind,prefix+h,h)
+
+    def __iter__(self):
+        for run in self.runs:
+            payload=run[2]
+            for i in range(1 if type(payload) is str else len(payload)//32):
+                yield self._ref(run,i)
+
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return tuple(self[i] for i in range(*index.indices(len(self))))
+        if index<0:
+            index+=len(self)
+        if not 0<=index<len(self):
+            raise IndexError(index)
+        run=bisect_right(self.ends,index)
+        return self._ref(self.runs[run],index-(self.ends[run-1] if run else 0))
+
+    def __eq__(self,other):
+        if type(other) is _PackedClosureRefs:
+            return self.runs==other.runs and self.ends==other.ends
+        if type(other) is tuple:
+            return len(self)==len(other) and all(a==b for a,b in zip(self,other))
+        return NotImplemented
+
+    def __hash__(self):
+        return hash(tuple(self))
+
+    @property
+    def digest_bytes(self):
+        return sum(len(r[2]) for r in self.runs if type(r[2]) is bytes)
+
+    def digest_lane(self,kind,prefix):
+        matches=[r[2] for r in self.runs if r[:2]==(kind,prefix) and type(r[2]) is bytes]
+        return matches[0] if len(matches)==1 else None
+
+    def canonical_ref_bytes(self):
+        """Emit byte-identical canonical ref JSON without constructing refs."""
+        for kind,prefix,payload in self.runs:
+            if type(payload) is str:
+                yield canonical_json(ExactRef(kind,prefix,payload).as_dict()).encode("utf-8")
+                continue
+            middle=b'","kind":'+canonical_json(kind).encode("utf-8")+b',"object_id":'+canonical_json(prefix).encode("utf-8")[:-1]
+            for offset in range(0,len(payload),32):
+                h=payload[offset:offset+32].hex().encode("ascii")
+                yield b'{"content_hash":"'+h+middle+h+b'"}'
+
+
 @dataclass(frozen=True)
 class ReplayManifest(C11InternalRecord):
     RECORD_FAMILY: ClassVar[str] = "ReplayManifest"
@@ -312,7 +461,44 @@ class ReplayManifest(C11InternalRecord):
     deterministic_tie_order_rules_ref: ExactRef
     replay_protocol_version: str
     replay_protocol_authority_ref: AuthorityRef
-    closure_refs: tuple[ExactRef, ...]
+    closure_refs: Sequence[ExactRef]
+
+    @cached_property
+    def content_hash(self) -> str:
+        # Same canonical internal record preimage; the potentially millions
+        # of closure refs are emitted one at a time instead of expanded into
+        # a simultaneous graph of dictionaries and one giant JSON string.
+        if type(self.closure_refs) not in (tuple,_PackedClosureRefs):
+            return semantic_hash(self.semantic_projection())
+        h=hashlib.sha256()
+        def emit(value):
+            h.update(canonical_json(value).encode("utf-8"))
+        h.update(b'{"record_family":')
+        emit(self.RECORD_FAMILY)
+        h.update(b',"record_version":"1.0.0","semantic_fields":{')
+        for i,f in enumerate(sorted(fields(self),key=lambda f:f.name)):
+            if i:
+                h.update(b",")
+            emit(f.name)
+            h.update(b":")
+            value=getattr(self,f.name)
+            if f.name=="closure_refs":
+                h.update(b"[")
+                if type(value) is _PackedClosureRefs:
+                    for j,encoded in enumerate(value.canonical_ref_bytes()):
+                        if j:
+                            h.update(b",")
+                        h.update(encoded)
+                else:
+                    for j,ref in enumerate(value):
+                        if j:
+                            h.update(b",")
+                        emit(_internal_value(ref))
+                h.update(b"]")
+            else:
+                emit(_internal_value(value))
+        h.update(b"}}")
+        return h.hexdigest()
 
     def _validate(self) -> None:
         _require_text(self.frontier_version, "frontier_version")
@@ -326,8 +512,11 @@ class ReplayManifest(C11InternalRecord):
                                "replay_protocol_authority_ref")
         for ref in self.source_substrate_content_refs:
             _require_exact_ref(ref, "source_substrate_content_refs")
-        for ref in self.closure_refs:
-            _require_exact_ref(ref, "closure_refs")
+        if type(self.closure_refs) is _PackedClosureRefs:
+            self.closure_refs.validate()
+        else:
+            for ref in self.closure_refs:
+                _require_exact_ref(ref, "closure_refs")
 
 
 def assert_internal_carrier_record(record: Any) -> C11InternalRecord:
@@ -485,7 +674,10 @@ def canonical_section_refs(records: Iterable[Any]) -> tuple[ExactRef, ...]:
 
 
 def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None:
-    seen: dict[str, str] = {}
+    # A digest collision can only conservatively refuse a package, never
+    # collapse two occurrences or admit a duplicate. Avoid retaining an
+    # expanded canonical occurrence JSON string for every source cell.
+    seen: set[bytes] = set()
     for event in events:
         universe = _field_ref(event, "empirical_universe_ref")
         respondent = _field_ref(event, "scoped_respondent_ref")
@@ -499,12 +691,11 @@ def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None
             "event_group_id": event.event_group_id,
             "event_id": event.response_event_id_or_deterministic_index,
         }
-        key = canonical_json(occurrence_material)
-        previous = seen.get(key)
-        if previous is not None:
+        key=hashlib.sha256(canonical_json(occurrence_material).encode("utf-8")).digest()
+        if key in seen:
             raise C11IntegrityError(
                 "duplicate response occurrence identity detected; storage duplication is not a new event")
-        seen[key] = event.content_hash
+        seen.add(key)
 
 
 def make_m01_m18_coverage(

@@ -5,7 +5,7 @@ import sys
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
-    UnresolvedConditionMember,
+    _CountryRoutingLookup, UnresolvedConditionMember,
     _eval_predicate,
     _question_matches,
     _select_respondent_events,
@@ -61,11 +61,10 @@ def _routing_fact_for(
     used_auth: list[AuthorityRef],
 ) -> RoutingEligibilityFact:
     if index.routing_lookup is not None:
-        routing_rows = index.routing_lookup(
-            respondent=respondent.ref.key,
-            target=target_ref.key,
-            risk_set=risk_set_ref.key,
-        )
+        lookup=index.routing_lookup
+        select=lookup.select if type(lookup) is _CountryRoutingLookup else lookup
+        routing_rows=select(respondent=respondent.ref.key,target=target_ref.key,
+                            risk_set=risk_set_ref.key)
     else:
         routing_rows = index.routing_by_respondent[respondent.ref.key]
     matches = [

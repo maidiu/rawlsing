@@ -71,6 +71,123 @@ class _EventRead:
         return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
 
 
+@dataclass(frozen=True,slots=True)
+class _RoutingRead:
+    """Selected I03 fields from an already I02-validated exact routing body.
+
+    Like _EventRead, this is a private evaluator view, not a public fact or
+    a new authority. Full exact objects remain available via the repository.
+    All exported references are detached from immutable primitive backing.
+    """
+    schema_id: ClassVar[str] = "RoutingEligibilityFact"
+    _ref_identity: tuple[str,str,str]
+    typed_state: str
+    routing_state: str
+    applicability_state: str
+    _question_identity: tuple[str,str,str]
+    _risk_identity: tuple[str,str,str]
+    _member_identity: tuple[str,str,str]
+    _authority_identities: tuple[tuple[str,str,str],...]
+
+    @property
+    def ref(self):
+        return ExactRef(*self._ref_identity)
+
+    @property
+    def question_or_target_ref(self):
+        return ExactRef(*self._question_identity)
+
+    @property
+    def risk_set_ref(self):
+        return ExactRef(*self._risk_identity)
+
+    @property
+    def member_set_replay_ref(self):
+        return ExactRef(*self._member_identity)
+
+    @property
+    def authority_snapshot_refs(self):
+        return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
+
+
+@dataclass(frozen=True, slots=True)
+class _CountryEventHeader:
+    """Transient private I02 header, never a public semantic object.
+
+    Full source events are validated before this reduction. The exact ref,
+    occurrence/scope checks, selectors and reconstruction dependencies
+    survive; the canonical body does not remain resident.
+    """
+    selector: _EventRead
+    empirical_universe_ref: ExactRef
+    scoped_respondent_ref: ExactRef
+    dependency_refs: tuple[ExactRef, ...]
+    event_group_id: str
+
+    @property
+    def ref(self):
+        return self.selector.ref
+    @property
+    def content_hash(self):
+        return self.selector.ref.content_hash
+    @property
+    def native_question_ref(self):
+        return self.selector.native_question_ref
+    @property
+    def component_or_subitem_ref(self):
+        return self.selector.component_or_subitem_ref
+    @property
+    def response_event_id_or_deterministic_index(self):
+        return self.selector.response_event_id_or_deterministic_index
+
+
+class _CountryHeaderBuilder:
+    """Shared immutable field interning at true repeated information grain."""
+    def __init__(self):
+        self.dimensions={}
+        self.refs={}
+        self.values=({}, {}, {})
+        self.authorities={}
+
+    def ref(self,value):
+        ref=exact_ref(value)
+        key=_ref_identity(ref)
+        # Detach from the producer's ref instance, then share exact strings.
+        return self.refs.setdefault(key,ExactRef(*key))
+
+    def dimension(self,value):
+        if value is None:
+            return None
+        key=_ref_identity(exact_ref(value))
+        return self.dimensions.setdefault(key,key)
+
+    def value(self,value,pool):
+        if len(pool)>=8192:
+            return value
+        key=canonical_json(value)
+        if len(key)>2048:
+            return value
+        return pool.setdefault(key,value)
+
+    def add(self,obj):
+        auth=tuple((ref.authority_id,ref.authority_version,ref.authority_content_hash)
+                   for ref in obj.authority_snapshot_refs)
+        if len(self.authorities)<8192:
+            auth=self.authorities.setdefault(auth,auth)
+        selector=_EventRead(
+            _ref_identity(obj.ref),obj.typed_state,self.dimension(obj.native_question_ref),
+            self.dimension(obj.canonical_question_ref_if_authorized),
+            self.dimension(obj.component_or_subitem_ref),auth,
+            self.value(obj.raw_response_value,self.values[0]),
+            self.value(obj.canonical_response_value_if_authorized,self.values[1]),
+            self.value(obj.multiplicity_order_rank_fields,self.values[2]),
+            obj.response_event_id_or_deterministic_index,
+        )
+        return _CountryEventHeader(selector,self.ref(obj.empirical_universe_ref),
+            self.ref(obj.scoped_respondent_ref),tuple(self.ref(ref) for ref in obj.dependency_refs),
+            obj.event_group_id)
+
+
 @dataclass(frozen=True, slots=True)
 class _EventLane:
     bodies: Any  # Arrow immutable binary array or chunked array
@@ -149,15 +266,46 @@ class _RespondentEvents(Sequence[RespondentEvent]):
                 yield event
 
 
+@dataclass(frozen=True,slots=True)
+class _InsertedRoutingEntries(Sequence):
+    """Insert one contiguous canonical-family lane without per-row objects."""
+    base: tuple
+    start: int
+    routing: Any
+    guard: Any = None
+
+    def __len__(self):
+        return len(self.base)+len(self.routing)
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[j] for j in range(*i.indices(len(self))))
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        offset=i-self.start
+        if offset<0:
+            return self.base[i]
+        if offset<len(self.routing):
+            if self.guard is None:
+                return -offset-1
+            self.guard.check_live()
+            return self.routing[offset]
+        return self.base[i-len(self.routing)]
+
+
 @dataclass(frozen=True, slots=True, eq=False, repr=False)
 class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
     release_ref: ExactRef
     replay_ref: ExactRef
     lane: _EventLane
-    entries: tuple[CanonicalSemanticObject | int, ...]
-    non_events: tuple[CanonicalSemanticObject, ...]
+    entries: Sequence[CanonicalSemanticObject | int]
+    non_events: Sequence[CanonicalSemanticObject]
     by_respondent: MappingProxyType
     event_states: frozenset[str]
+    routing: Any = None
+    nonrouting: tuple | None = None
 
     def __len__(self) -> int:
         return len(self.entries)
@@ -173,11 +321,56 @@ class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
         return len(self) == len(other) and all(a == b for a, b in zip(self, other))
 
     def _materialize(self, entry: CanonicalSemanticObject | int) -> CanonicalSemanticObject:
-        return self.lane.materialize(entry) if isinstance(entry, int) else entry
+        if isinstance(entry,int) and entry<0 and self.routing is not None:
+            self.lane.bodies.check_live()
+            return self.routing[-entry-1]
+        return self.lane.materialize(entry) if isinstance(entry,int) else entry
 
     def exact_entries(self) -> Iterator[CanonicalSemanticObject | _EventLocator]:
         for entry in self.entries:
-            yield _EventLocator(self.lane, entry) if isinstance(entry, int) else entry
+            if isinstance(entry,int) and entry<0 and self.routing is not None:
+                yield self._materialize(entry)
+            else:
+                yield _EventLocator(self.lane,entry) if isinstance(entry,int) else entry
+
+
+def _country_respondent_events(lane,rows):
+    original=tuple(rows)
+    if len(original)<32:
+        return _RespondentEvents(lane,original)
+    selectors=lane.selectors
+    tag="I" if len(selectors)<2**32 else "Q"
+    postings=[]
+    for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
+        selected=sorted((row for row in original if getattr(selectors[row],field) is not None),
+                        key=lambda row:getattr(selectors[row],field))
+        postings.append(memoryview(array(tag,selected).tobytes()).cast(tag))
+    return _RespondentEvents(lane,original,tuple(postings))
+
+
+def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,routing=None):
+    """Assemble the existing compact public view directly, with no event bodies."""
+    if not headers or len(bodies)!=len(headers):
+        raise ValueError("country compact event census mismatch")
+    selectors=tuple(header.selector for header in headers)
+    lane=_EventLane(bodies,selectors)
+    groups={}
+    for row,header in enumerate(headers):
+        groups.setdefault((header.empirical_universe_ref,header.scoped_respondent_ref.key),[]).append(row)
+    entries=tuple(sorted((*non_events,*range(len(headers))),
+        key=lambda entry:selectors[entry].ref.key if isinstance(entry,int) else entry.ref.key))
+    non_events=tuple(non_events)
+    nonrouting=None
+    if routing is not None:
+        family="RoutingEligibilityFact@1.0.0"
+        nonrouting=non_events
+        insertion=bisect_left(entries,family,key=lambda e:selectors[e].ref.kind if isinstance(e,int) else e.ref.kind)
+        entries=_InsertedRoutingEntries(entries,insertion,routing)
+        insertion=bisect_left(nonrouting,family,key=lambda e:e.ref.kind)
+        non_events=_InsertedRoutingEntries(nonrouting,insertion,routing,bodies)
+    return _CompactPublicObjects(release_ref,replay_ref,lane,entries,non_events,
+        MappingProxyType({key:_country_respondent_events(lane,rows) for key,rows in groups.items()}),
+        frozenset(selector.typed_state for selector in selectors),routing,nonrouting)
 
 
 def _cache_directory() -> Path | None:

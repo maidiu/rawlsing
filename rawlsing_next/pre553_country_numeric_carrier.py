@@ -649,7 +649,7 @@ class CountryReader:
     def native_repository(self, projection, *, cache=None, current_authorities=()):
         """Use incumbent compact event selector and shared I03 repository.
 
-        Country logical projection is currently materialized once to certify it;
+        I02 validates actual events while emitting compact headers;
         existing compact selectors serve subsequent queries. This is not an
         independent grant to use a returned repository after source revocation.
         """
@@ -665,16 +665,27 @@ class _CountryPhysicalStream(ExactPhysicalCellStream):
     """Recognized only by the incumbent facade; no generic user-supplied body factory."""
     reader: CountryReader | None = None
 
-    def event_bodies(self, release, events, projection):
+    def _verify_binding(self):
         if type(self.reader) is not CountryReader or self.reader._closed:
             raise CountryCarrierError("country body resolver requires its live reader")
         self.reader._verify()
         if self.transport_identity != "COUNTRY_NUMERIC_PHYSICAL@1:"+self.reader.receipt.sha256:
             raise CountryCarrierError("country transport pin mismatch")
+    def compact_events(self,release_ref,replay_ref,non_events,headers,projection,closure_refs,routing=None):
+        self._verify_binding()
+        from ._pre553_c11_execution_view import _compact_country_headers
+        bodies=_CountryEventBodies(self.reader,projection,headers,closure_refs=closure_refs)
+        return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,routing)
+
+    def certify_release(self,release):
+        self._verify_binding()
         from .pre553_durable_empirical_closure import ReleaseIdentity
         self.reader._certified_identity = ReleaseIdentity(
             release.release_ref,release.replay_manifest.ref,release.source_artifact_ref,
             release.source_release_manifest_hash,release.semantic_release_hash)
+
+    def event_bodies(self, release, events, projection):
+        self.certify_release(release)
         return _CountryEventBodies(self.reader, projection, events)
 
 class _BodyScalar:
@@ -696,8 +707,13 @@ class _CountryEventBodies:
     __slots__=("reader","projection","rows","slots","owners","respondents","respondent_keys",
                "source_rows","question_keys","respondent_codes","question_codes","hashes",
                "cache","cache_bytes")
-    def __init__(self,reader,projection,events):
-        from .pre553_empirical_objects import exact_ref
+    def __init__(self,reader,projection,events,*,closure_refs=None):
+        from .pre553_empirical_objects import exact_ref, RespondentEvent, URN_PREFIX
+        from .pre553_c11_integrity import _PackedClosureRefs
+        shared=(closure_refs.digest_lane(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:")
+                if type(closure_refs) is _PackedClosureRefs else None)
+        if shared is not None and len(shared)!=32*len(events):
+            raise CountryCarrierError("sealed replay event lane cardinality drift")
         self.reader,self.projection=reader,projection
         self.rows={row:(block,rows,i) for block,rows in reader._blocks() for i,row in enumerate(rows)}
         self.respondents={r.ref.key:r for r in projection.respondents}
@@ -716,7 +732,7 @@ class _CountryEventBodies:
         rc,qc=array("I"),array("I")
         hashes=bytearray()
         prior=b""
-        for event in events:
+        for offset,event in enumerate(events):
             respondent=exact_ref(event.scoped_respondent_ref).key
             bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
             if respondent not in ri or len(bindings)!=1:
@@ -726,10 +742,14 @@ class _CountryEventBodies:
             if (ref!=self._event_ref(digest) or len(digest)!=32 or digest<=prior):
                 raise CountryCarrierError("sealed event canonical identity/order mismatch")
             prior=digest
-            rc.append(ri[respondent]);qc.append(qi[bindings[0]]);hashes.extend(digest)
+            rc.append(ri[respondent]);qc.append(qi[bindings[0]])
+            if shared is None:
+                hashes.extend(digest)
+            elif shared[32*offset:32*(offset+1)]!=digest:
+                raise CountryCarrierError("sealed replay event lane identity drift")
         self.respondent_codes=memoryview(rc.tobytes()).cast("I")
         self.question_codes=memoryview(qc.tobytes()).cast("I")
-        self.hashes=bytes(hashes)
+        self.hashes=shared if shared is not None else bytes(hashes)
         self.cache=OrderedDict()
         self.cache_bytes=0
 
@@ -860,6 +880,19 @@ class CountryExecution:
 
 def execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
                              require_country_current,allow_test_only=False,expected_wave=None):
+    """Public country entry: own the admission scope, never take one from a caller."""
+    from .pre553_issued_workload import _CountryAdmissionScope
+    scope=(_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,
+                                  allow_test_only=allow_test_only,expected_wave=expected_wave)
+           if allow_test_only else None)
+    return _execute_country_workload(workload,resolver,country_path=country_path,
+        country_receipt=country_receipt,host=host,purpose=purpose,
+        require_country_current=require_country_current,allow_test_only=allow_test_only,
+        expected_wave=expected_wave,_country_scope=scope)
+
+
+def _execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
+                             require_country_current,allow_test_only=False,expected_wave=None,_country_scope=None):
     """Execute an already issued workload from one retained numeric country.
 
     The separate country custody/currentness callback is mandatory; it is not
@@ -867,9 +900,10 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
     only through the incumbent independent resolver and actual country grant.
     This function does not publish original empirical outputs to S2-F.
     """
-    from .pre553_issued_workload import admit,execute_issued_workload
-    record=admit(workload,resolver,host=host,purpose=purpose,
-                 allow_test_only=allow_test_only,expected_wave=expected_wave)
+    from .pre553_issued_workload import admit,execute_issued_workload,_execute_issued_workload
+    record=(_country_scope.check() if _country_scope is not None else
+            admit(workload,resolver,host=host,purpose=purpose,
+                  allow_test_only=allow_test_only,expected_wave=expected_wave))
     if type(country_receipt) is not CountryReceipt or record.source_sha256!=country_receipt.source_sha256:
         raise CountryCarrierError("issued source and external country receipt differ")
     def current():
@@ -878,7 +912,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         # the incumbent U43 executor, and again after execution. Frequent
         # physical reads compare the independently returned exact decision,
         # rather than reserializing the entire projection per event.
-        if resolver.resolve_current(workload.decision_ref)!=record:
+        if _country_scope is not None:
+            _country_scope.current_only()
+        elif resolver.resolve_current(workload.decision_ref)!=record:
             raise CountryCarrierError("country workload decision changed")
     current()
     count=len(workload.requests)+len(workload.discoveries)
@@ -892,9 +928,14 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
             return reader._native_stream(workload.projection)
         # The original bounded path runs the declared units once, avoiding
         # the historical preliminary Route B/discovery pass. Require all units.
-        result=execute_issued_workload(workload,resolver,source_factory=factory,
-            host=host,purpose=purpose,allow_test_only=allow_test_only,
-            expected_wave=expected_wave,max_units=count)
+        if _country_scope is None:
+            result=execute_issued_workload(workload,resolver,source_factory=factory,
+                host=host,purpose=purpose,allow_test_only=allow_test_only,
+                expected_wave=expected_wave,max_units=count)
+        else:
+            result=_execute_issued_workload(workload,resolver,source_factory=factory,
+                host=host,purpose=purpose,allow_test_only=allow_test_only,
+                expected_wave=expected_wave,max_units=count,_country_scope=_country_scope)
         identity=reader._certified_identity
         if identity is None or not result.summary.full_coverage:
             # Retain typed failure codes without disclosing respondent data.
@@ -903,8 +944,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
         reader._verify()
         current()
-        if admit(workload,resolver,host=host,purpose=purpose,
-                 allow_test_only=allow_test_only,expected_wave=expected_wave)!=record:
+        if (_country_scope.check() if _country_scope is not None else
+                admit(workload,resolver,host=host,purpose=purpose,
+                      allow_test_only=allow_test_only,expected_wave=expected_wave))!=record:
             raise CountryCarrierError("country workload decision changed before serving")
         return CountryExecution(result,identity)
 

@@ -96,6 +96,8 @@ class CountryNumeric(unittest.TestCase):
         cells=tuple(c for c in inc.iter_cells() if c.row_ordinal in chosen)
         direct=build_validated_source_backed_c11_release_from_stream(
             ExactPhysicalCellStream(inc.source_sha256,len(chosen),lambda:iter(cells)),subset)
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+        subset=replace(subset,routing=_PackedRoutingFacts(iter(subset.routing)))
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/"country.sqlite"
             rec=build_country(inc,country_variable="G",country_value="A",
@@ -103,14 +105,67 @@ class CountryNumeric(unittest.TestCase):
             with CountryReader(path,rec,require_current=lambda:None) as reader:
                 with self.assertRaises(CountryCarrierError):
                     reader.native_release(original)
-                compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                from unittest.mock import patch
+                # The new path may not first construct the old full public
+                # event graph and then call the old compactor.
+                with patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
+                           side_effect=AssertionError("eager event graph compactor")):
+                    compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                # A copied transport cannot substitute its physical cell factory.
+                from rawlsing_next.pre553_source_backed_c11_facade import build_source_backed_c11_repository
+                tripwire=replace(reader._native_stream(subset),
+                    cell_iter_factory=lambda:(_ for _ in ()).throw(AssertionError("foreign cell factory")))
+                _, rebound=build_source_backed_c11_repository(tripwire,subset,current_authorities=fx["authorities"])
+                self.assertEqual(rebound.release_ref,compact.release_ref)
+                from rawlsing_next.pre553_empirical_objects import semantic_hash
+                self.assertEqual(compact.replay_manifest.content_hash,
+                                 semantic_hash(compact.replay_manifest.semantic_projection()))
                 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
                 self.assertIsInstance(compact.public_objects,_CompactPublicObjects)
                 from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
                 self.assertIsInstance(compact.public_objects.lane.bodies,_CountryEventBodies)
                 self.assertEqual(compact.release_ref,direct.release_ref)
                 self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
+                from rawlsing_next.pre553_c11_integrity import _PackedClosureRefs
+                from rawlsing_next.pre553_empirical_objects import URN_PREFIX,RespondentEvent
+                packed=compact.replay_manifest.closure_refs
+                self.assertIsInstance(packed,_PackedClosureRefs)
+                self.assertEqual(tuple(packed),direct.replay_manifest.closure_refs)
+                self.assertEqual(compact.replay_manifest.as_dict(),direct.replay_manifest.as_dict())
+                self.assertEqual(packed[-1],direct.replay_manifest.closure_refs[-1])
+                self.assertEqual(packed[::-2],direct.replay_manifest.closure_refs[::-2])
+                self.assertIs(compact.public_objects.lane.bodies.hashes,
+                    packed.digest_lane(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:"))
+                # Preserve ordering, duplicates, arbitrary external IDs and
+                # full string identity rather than assuming any hash suffix.
+                from rawlsing_next.pre553_empirical_objects import ExactRef,canonical_json
+                arbitrary=ExactRef("external|kind","external-ü-"+ "a"*64,"a"*64)
+                sample=(packed[0],arbitrary,packed[-1],packed[-1])
+                repacked=_PackedClosureRefs.pack(sample)
+                self.assertEqual(tuple(repacked),sample)
+                self.assertEqual(hash(repacked),hash(sample))
+                self.assertEqual(b"["+b",".join(repacked.canonical_ref_bytes())+b"]",
+                    canonical_json([ref.as_dict() for ref in sample]).encode("utf-8"))
+                self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[:-1]))
+                self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[::-1]))
+                from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+                kind=RespondentEvent.FAMILY
+                prefix=f"{URN_PREFIX}:RespondentEvent:sha256:"
+                for bad in (((kind,prefix,b"x"*31),),((kind,prefix+"wrong",b"x"*32),)):
+                    with self.assertRaises(C11IntegrityError):
+                        _PackedClosureRefs(bad,(1,))
+                with self.assertRaises(C11IntegrityError):
+                    _PackedClosureRefs(((kind,prefix,b"x"*32),),(2,))
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+                from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
+                routes=tuple(x for x in direct.public_objects if isinstance(x,RoutingEligibilityFact))
+                self.assertEqual(len(compact.public_objects.routing),len(routes))
+                for route in routes:
+                    self.assertEqual(compact_repo.resolve_object_exact(route.ref).as_dict(),route.as_dict())
+                    self.assertNotIn(route.ref.key,compact_repo._objects)
+                    self.assertNotIn(route.ref.key,compact_repo._country_object_guards)
+                    with self.assertRaises(KeyError):
+                        compact_repo.resolve_object_exact(ExactRef(route.ref.kind,"wrong",route.ref.content_hash))
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
                 lane=compact.public_objects.lane
@@ -136,6 +191,17 @@ class CountryNumeric(unittest.TestCase):
                         risk=_ref_field(fact,"risk_set_ref")
                         want=tuple(x for x in facts if _question_matches(x,target) and _ref_field(x,"risk_set_ref")==risk)
                         self.assertEqual(idx.routing_lookup(respondent=respondent,target=target.key,risk_set=risk.key),want)
+                        from rawlsing_next._pre553_c11_execution_view import _RoutingRead
+                        selected=idx.routing_lookup.select(respondent=respondent,target=target.key,risk_set=risk.key)
+                        self.assertTrue(all(type(x) is _RoutingRead for x in selected))
+                        self.assertEqual(tuple(x.ref for x in selected),tuple(x.ref for x in want))
+                        for x,y in zip(selected,want):
+                            self.assertEqual((x.typed_state,x.routing_state,x.applicability_state,x.authority_snapshot_refs),
+                                             (y.typed_state,y.routing_state,y.applicability_state,y.authority_snapshot_refs))
+                            self.assertEqual(x.member_set_replay_ref,_ref_field(y,"member_set_replay_ref"))
+                        self.assertEqual(tuple(x.ref for x in idx.routing_lookup.select_target(
+                            respondent=respondent,target=target.key)),
+                            tuple(x.ref for x in facts if _question_matches(x,target)))
                     self.assertEqual(idx.routing_lookup(respondent=respondent,target="absent",risk_set="absent"),())
                 attestation=_i03_index_attestation(idx)
                 object.__setattr__(idx,"routing_lookup",None)
@@ -161,6 +227,76 @@ class CountryNumeric(unittest.TestCase):
                 compact_repo.resolve_release_exact(compact.release_ref)
             with self.assertRaises(CountryCarrierError):
                 compact_repo.resolve_object_exact(events[0].ref)
+
+    def test_native_preimage_packed_source_preserves_detached_replay(self):
+        from dataclasses import replace
+        from rawlsing_next.pre553_source_native_preimage_adapter import (
+            NativeSourceIdentity,NativeSourcePackage,NativeSourceRule,
+            NativePreimageRefusal,materialize_native_preimages,_PackedNativeRows,
+            GovernedRowOccurrencePlan,VariableOccurrencePlan,OccurrenceBinding)
+        from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
+        from rawlsing_next.pre553_country_numeric_carrier import _encode_cell
+        from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        fx=_fixture("packed-native-preimage")
+        inc=fx["incidence"]
+        package=NativeSourcePackage(NativeSourceIdentity(
+            "packed-source","TEST","1","source.sav",inc.source_sha256,"SYNTHETIC",3),
+            (NativeSourceRule("x","X"),NativeSourceRule("y","Y")),coordinate_variable="G")
+        cells=tuple(inc.iter_cells())
+        # Non-governed sparse cells, ordinal variation, noncanonical input
+        # order and detached metadata must survive, even if not used by I03.
+        cells=tuple(c for c in cells if not (c.row_ordinal==2 and c.variable_name=="W"))
+        cells=tuple(replace(c,variable_ordinal=99) if c.row_ordinal==3 and c.variable_name=="W" else c for c in cells)
+        cells=tuple(reversed(cells))
+        calls=[0]
+        def once():
+            calls[0]+=1
+            if calls[0]>1:
+                raise AssertionError("source reread")
+            return iter(cells)
+        direct=materialize_native_preimages(package=package,incidence=ExactPhysicalCellStream(
+            inc.source_sha256,3,lambda:iter(cells)))
+        compact=materialize_native_preimages(package=package,incidence=ExactPhysicalCellStream(
+            inc.source_sha256,3,once),compact_cells=True,compact_routing=True)
+        self.assertEqual(compact.bundle_hash,direct.bundle_hash)
+        self.assertEqual(compact.projection.cache_identity,direct.projection.cache_identity)
+        self.assertEqual(compact.release.replay_manifest.ref,direct.release.replay_manifest.ref)
+        self.assertEqual(compact.respondent_rows,direct.respondent_rows)
+        def material(stream):
+            return [(c.row_ordinal,c.variable_ordinal,c.variable_name,_encode_cell(c)) for c in stream.iter_cells()]
+        self.assertEqual(material(compact.physical_stream),material(direct.physical_stream))
+        self.assertEqual(material(compact.physical_stream),material(direct.physical_stream))
+        self.assertEqual(calls,[1])
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build(iter((*cells,cells[0])),3)
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build((c for c in cells if c.row_ordinal!=1),3)
+        # A caller-supplied non-decoder-normalized date must not acquire
+        # a different physical representation merely by choosing packing.
+        import datetime
+        changed=(replace(c,raw_value=datetime.date(2020,1,1)) if c.variable_name=="W" else c for c in cells)
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build(changed,3)
+        # Repeated respondent/occasion: equal response values are distinct
+        # events, explicit ordering and source binding survive replay.
+        sha=inc.source_sha256
+        repeated=[]
+        for row,rid,occasion,value in ((1,"a","t1","1"),(2,"a","t2","1"),(3,"b","t1","0")):
+            for ordinal,name,raw in ((1,"X",value),(2,"G","A"),(3,"RID",rid),(4,"TIME",occasion)):
+                repeated.append(PhysicalCell(row,ordinal,name,raw,PhysicalMissingState.OBSERVED_STORAGE_VALUE,None))
+        plan=GovernedRowOccurrencePlan("RID","TIME",(VariableOccurrencePlan("X","REPEATED_MEASUREMENT",(
+            OccurrenceBinding("t1","t1",{"kind":"REPEATED_MEASUREMENT","index":0}),
+            OccurrenceBinding("t2","t2",{"kind":"REPEATED_MEASUREMENT","index":1}))),),{"a":"A","b":"B"})
+        package=replace(package,selected=(NativeSourceRule("x","X"),))
+        stream=ExactPhysicalCellStream(sha,3,lambda:iter(repeated))
+        a=materialize_native_preimages(package=package,incidence=stream,row_occurrence_plan=plan)
+        b=materialize_native_preimages(package=package,incidence=stream,row_occurrence_plan=plan,compact_cells=True,compact_routing=True)
+        self.assertEqual(a.bundle_hash,b.bundle_hash)
+        self.assertEqual(a.projection.cache_identity,b.projection.cache_identity)
+        self.assertEqual(a.occurrence_bindings,b.occurrence_bindings)
+        self.assertEqual(a.respondent_rows,b.respondent_rows)
+        self.assertEqual(material(a.physical_stream),material(b.physical_stream))
 
     def test_country_set_resume_and_missing_country_census(self):
         from rawlsing_next.pre553_country_numeric_carrier import country_census,build_country_set
@@ -277,6 +413,36 @@ class CountryNumeric(unittest.TestCase):
             cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                 expected_release_ref=direct.release_ref,country_receipt=receipt,workload=workload,
                 resolver=resolver,host=host,purpose=purpose)
+            # Physical transport is compact but the canonical root and
+            # all cold reader identities are unchanged. Old plain manifests
+            # remain readable, and ambiguous/corrupt transports fail closed.
+            from rawlsing_next import pre553_durable_empirical_closure as durable
+            from rawlsing_next.pre553_empirical_objects import canonical_json
+            root_path=Path(pub.receipt.root_path)
+            packed_path=root_path/durable.COMPACT_MANIFEST_NAME
+            plain_path=root_path/durable.MANIFEST_NAME
+            packed=packed_path.read_bytes()
+            plain=canonical_json(cold._closure.manifest).encode("utf-8")
+            self.assertLess(len(packed),len(plain))
+            self.assertEqual(pub.receipt.manifest_bytes,len(packed))
+            plain_path.write_bytes(plain)
+            try:
+                with self.assertRaises(durable.DurableEmpiricalClosureError):
+                    durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                packed_path.unlink()
+                legacy=durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                self.assertEqual(legacy.exact_ref,cold._closure.exact_ref)
+                self.assertEqual(canonical_json(legacy.manifest),canonical_json(cold._closure.manifest))
+            finally:
+                plain_path.unlink()
+                packed_path.write_bytes(packed)
+            for bad in (packed[:-1],packed+b"trailing", (2**32).to_bytes(8,"big")+packed[8:]):
+                try:
+                    packed_path.write_bytes(bad)
+                    with self.assertRaises(durable.DurableEmpiricalClosureError):
+                        durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                finally:
+                    packed_path.write_bytes(packed)
             read=cold.read_s04(query.ref,conditioner_index=0)
             self.assertEqual(read.first_consumer.execution.facts[0].raw_denominator_support,1)
             self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],1)
@@ -287,6 +453,17 @@ class CountryNumeric(unittest.TestCase):
                 open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                     expected_release_ref=direct.release_ref,country_receipt=replace(receipt,sha256="0"*64),
                     workload=workload,resolver=resolver,host=host,purpose=purpose)
+            # A resolver returning the same dataclass instance is not proof
+            # its issuing material is unchanged. Country scope pins it by
+            # detached value and rejects in-place mutation at the reader.
+            old=record.source_permission_ref
+            try:
+                object.__setattr__(record,"source_permission_ref",
+                                   _ref("TEST_ONLY_SOURCE_PERMISSION","changed-in-place"))
+                with self.assertRaises(ValueError):
+                    cold.read_s04(query.ref)
+            finally:
+                object.__setattr__(record,"source_permission_ref",old)
             # Bulk serving must not leak a successful prefix on mid-batch revocation.
             from unittest.mock import patch
             original_read=cold._read_s04_retained
