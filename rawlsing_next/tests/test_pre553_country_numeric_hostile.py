@@ -27,10 +27,11 @@ def _country_repository(folder, current):
     chosen = (1, 3)
     respondents = tuple(original.respondents[i - 1] for i in chosen)
     ids = {r.ref.object_id for r in respondents}
+    from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
     scoped = replace(
         original, respondents=respondents,
         row_bindings=tuple(b for b in original.row_bindings if b.row_ordinal in chosen),
-        routing=tuple(r for r in original.routing if r.scoped_respondent_ref["object_id"] in ids),
+        routing=_PackedRoutingFacts(r for r in original.routing if r.scoped_respondent_ref["object_id"] in ids),
     )
     path = Path(folder) / "country.sqlite"
     receipt = build_country(incidence, country_variable="G", country_value="A",
@@ -48,7 +49,11 @@ class HostileCountryCurrentness(unittest.TestCase):
     def test_closed_reader_refuses_direct_non_event_object_resolution(self):
         with tempfile.TemporaryDirectory() as d:
             reader, repo, release, ref = _country_repository(d, lambda: True)
+            route_ref=release.public_objects.routing.row_ref(0)
+            self.assertEqual(repo.resolve_object_exact(route_ref).ref,route_ref)
             reader.close()
+            with self.assertRaises(CountryCarrierError):
+                repo.resolve_object_exact(route_ref)
             with self.assertRaises(CountryCarrierError):
                 repo.resolve_release_exact(release.release_ref)
             # This exact-object path must not evade the same country custody.
@@ -62,7 +67,10 @@ class HostileCountryCurrentness(unittest.TestCase):
                 return state["current"]
             reader, repo, release, ref = _country_repository(d, current)
             try:
+                route_ref=release.public_objects.routing.row_ref(0)
                 state["current"] = False
+                with self.assertRaises(CountryCarrierError):
+                    repo.resolve_object_exact(route_ref)
                 with self.assertRaises(CountryCarrierError):
                     repo.resolve_release_exact(release.release_ref)
                 with self.assertRaises(CountryCarrierError):

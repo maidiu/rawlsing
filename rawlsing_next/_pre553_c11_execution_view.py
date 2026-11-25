@@ -227,15 +227,46 @@ class _RespondentEvents(Sequence[RespondentEvent]):
                 yield event
 
 
+@dataclass(frozen=True,slots=True)
+class _InsertedRoutingEntries(Sequence):
+    """Insert one contiguous canonical-family lane without per-row objects."""
+    base: tuple
+    start: int
+    routing: Any
+    guard: Any = None
+
+    def __len__(self):
+        return len(self.base)+len(self.routing)
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[j] for j in range(*i.indices(len(self))))
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        offset=i-self.start
+        if offset<0:
+            return self.base[i]
+        if offset<len(self.routing):
+            if self.guard is None:
+                return -offset-1
+            self.guard.check_live()
+            return self.routing[offset]
+        return self.base[i-len(self.routing)]
+
+
 @dataclass(frozen=True, slots=True, eq=False, repr=False)
 class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
     release_ref: ExactRef
     replay_ref: ExactRef
     lane: _EventLane
-    entries: tuple[CanonicalSemanticObject | int, ...]
-    non_events: tuple[CanonicalSemanticObject, ...]
+    entries: Sequence[CanonicalSemanticObject | int]
+    non_events: Sequence[CanonicalSemanticObject]
     by_respondent: MappingProxyType
     event_states: frozenset[str]
+    routing: Any = None
+    nonrouting: tuple | None = None
 
     def __len__(self) -> int:
         return len(self.entries)
@@ -251,11 +282,17 @@ class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
         return len(self) == len(other) and all(a == b for a, b in zip(self, other))
 
     def _materialize(self, entry: CanonicalSemanticObject | int) -> CanonicalSemanticObject:
-        return self.lane.materialize(entry) if isinstance(entry, int) else entry
+        if isinstance(entry,int) and entry<0 and self.routing is not None:
+            self.lane.bodies.check_live()
+            return self.routing[-entry-1]
+        return self.lane.materialize(entry) if isinstance(entry,int) else entry
 
     def exact_entries(self) -> Iterator[CanonicalSemanticObject | _EventLocator]:
         for entry in self.entries:
-            yield _EventLocator(self.lane, entry) if isinstance(entry, int) else entry
+            if isinstance(entry,int) and entry<0 and self.routing is not None:
+                yield self._materialize(entry)
+            else:
+                yield _EventLocator(self.lane,entry) if isinstance(entry,int) else entry
 
 
 def _country_respondent_events(lane,rows):
@@ -272,7 +309,7 @@ def _country_respondent_events(lane,rows):
     return _RespondentEvents(lane,original,tuple(postings))
 
 
-def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies):
+def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,routing=None):
     """Assemble the existing compact public view directly, with no event bodies."""
     if not headers or len(bodies)!=len(headers):
         raise ValueError("country compact event census mismatch")
@@ -283,9 +320,18 @@ def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies):
         groups.setdefault((header.empirical_universe_ref,header.scoped_respondent_ref.key),[]).append(row)
     entries=tuple(sorted((*non_events,*range(len(headers))),
         key=lambda entry:selectors[entry].ref.key if isinstance(entry,int) else entry.ref.key))
-    return _CompactPublicObjects(release_ref,replay_ref,lane,entries,tuple(non_events),
+    non_events=tuple(non_events)
+    nonrouting=None
+    if routing is not None:
+        family="RoutingEligibilityFact@1.0.0"
+        nonrouting=non_events
+        insertion=bisect_left(entries,family,key=lambda e:selectors[e].ref.kind if isinstance(e,int) else e.ref.kind)
+        entries=_InsertedRoutingEntries(entries,insertion,routing)
+        insertion=bisect_left(nonrouting,family,key=lambda e:e.ref.kind)
+        non_events=_InsertedRoutingEntries(nonrouting,insertion,routing,bodies)
+    return _CompactPublicObjects(release_ref,replay_ref,lane,entries,non_events,
         MappingProxyType({key:_country_respondent_events(lane,rows) for key,rows in groups.items()}),
-        frozenset(selector.typed_state for selector in selectors))
+        frozenset(selector.typed_state for selector in selectors),routing,nonrouting)
 
 
 def _cache_directory() -> Path | None:

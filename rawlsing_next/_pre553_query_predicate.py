@@ -91,13 +91,29 @@ class _CountryRoutingLookup:
 
     @classmethod
     def build(cls,rows):
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingRows
+        import json
         dimensions={}
         postings={}
+        decoded={}
         for respondent,facts in rows.items():
             pairs=[]
-            for i,fact in enumerate(facts):
-                key=(_ref_field(fact,"question_or_target_ref").key,
-                     _ref_field(fact,"risk_set_ref").key)
+            if type(facts) is _PackedRoutingRows:
+                def keys():
+                    for i in range(len(facts)):
+                        raw=facts.dimension_bytes(i)
+                        key=decoded.get(raw)
+                        if key is None:
+                            key=tuple(exact_ref(json.loads(v)).key for v in raw)
+                            if len(decoded)<16384:
+                                decoded[raw]=key
+                        yield key
+            else:
+                def keys():
+                    for fact in facts:
+                        yield (_ref_field(fact,"question_or_target_ref").key,
+                               _ref_field(fact,"risk_set_ref").key)
+            for i,key in enumerate(keys()):
                 code=dimensions.setdefault(key,len(dimensions))
                 pairs.append((code,i))
             pairs.sort()
@@ -120,7 +136,9 @@ class _CountryRoutingLookup:
 
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
     public = release.public_objects
-    universes = [o for o in release._public_non_events if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
+    packed=isinstance(public,_CompactPublicObjects) and public.routing is not None
+    other=public.nonrouting if packed else release._public_non_events
+    universes = [o for o in other if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
     if len(universes) != 1:
         raise EmpiricalQueryResolutionError("exact universe must resolve once inside sealed C11 release")
     universe = universes[0]
@@ -136,7 +154,7 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
     weights: dict[str, list[WeightMeasureFact]] = {key: [] for key in respondents}
     relations: list[SourceUniverseRelation] = []
-    for obj in release._public_non_events:
+    for obj in other:
         if isinstance(obj, SourceUniverseRelation):
             if universe_ref.as_dict() in tuple(obj.source_universe_refs):
                 relations.append(obj)
@@ -164,7 +182,8 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             for key, objects in rows.items()
         })
 
-    routing_rows=freeze_rows(routing)
+    routing_rows=(MappingProxyType(public.routing.scoped_rows(universe_ref,respondents))
+                  if packed else freeze_rows(routing))
     lookup=None
     if isinstance(public,_CompactPublicObjects):
         from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies

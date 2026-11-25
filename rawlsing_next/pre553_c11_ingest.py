@@ -287,6 +287,16 @@ def _country_replay_section_refs(candidate,section,events):
     instead of re-sorting and retaining a second complete reference array.
     Other sections retain the original order-independent canonical sort.
     """
+    from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+    if type(section) is _SortedPackedRoutingFacts:
+        prior=None
+        for j in range(len(section)):
+            ref=section.row_ref(j)
+            if prior is not None and ref.key<prior:
+                raise C11IntegrityError("private country routing order drift")
+            prior=ref.key
+            yield ref
+        return
     ordered=(candidate.empirical_universes,candidate.respondent_identities,
              candidate.question_variable_bindings,events,
              candidate.routing_eligibility_facts_or_exact_rules,
@@ -468,11 +478,11 @@ def _iter_internal_records(candidate: C11SourceReleaseCandidate) -> tuple[C11Int
     return tuple(records)
 
 
-def _iter_public_objects(candidate: C11SourceReleaseCandidate, *, include_events=True) -> tuple[CanonicalSemanticObject, ...]:
+def _iter_public_objects(candidate: C11SourceReleaseCandidate, *, include_events=True, include_routing=True) -> tuple[CanonicalSemanticObject, ...]:
     objects: list[CanonicalSemanticObject] = [
         *candidate.empirical_universes,
         *(candidate.respondent_events if include_events else ()),
-        *candidate.routing_eligibility_facts_or_exact_rules,
+        *(candidate.routing_eligibility_facts_or_exact_rules if include_routing else ()),
         *candidate.empirical_coordinate_facts,
         *candidate.authority_snapshots,
     ]
@@ -651,7 +661,8 @@ def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_colle
             # Both registries independently validate snapshot identities.
             # The collector used detached exact snapshot preimages.
         objects=(_iter_public_objects(candidate) if country_collector is None
-                 else _iter_public_objects(candidate,include_events=False))
+                 else chain(_iter_public_objects(candidate,include_events=False,include_routing=False),
+                            candidate.routing_eligibility_facts_or_exact_rules))
         for obj in objects:
             validate_public_carrier_object(obj, registry)
             for ref in _walk_authority_refs(obj.semantic_fields):
@@ -695,13 +706,32 @@ def _validate_universe_and_respondent_scope(candidate: C11SourceReleaseCandidate
         respondent_pair.add(pair)
         respondent_by_key[respondent.ref.key] = respondent
 
-    for obj in chain(candidate.respondent_events,
-        candidate.routing_eligibility_facts_or_exact_rules,
+    from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+    route_section=candidate.routing_eligibility_facts_or_exact_rules
+    packed=type(route_section) is _SortedPackedRoutingFacts
+    objects=chain(candidate.respondent_events,() if packed else route_section,
         candidate.empirical_coordinate_facts,
         (candidate.weight_measure_facts_or_typed_absence
-          if not isinstance(candidate.weight_measure_facts_or_typed_absence, TypedAbsence) else ())):
-        universe_ref = exact_ref(obj.empirical_universe_ref)
-        respondent_ref = exact_ref(obj.scoped_respondent_ref)
+          if not isinstance(candidate.weight_measure_facts_or_typed_absence,TypedAbsence) else ()))
+    scopes=((exact_ref(obj.empirical_universe_ref),exact_ref(obj.scoped_respondent_ref)) for obj in objects)
+    if packed:
+        # Authorities above independently checked every complete materialized
+        # body. Namespace validation reads those same exact field bytes.
+        import json
+        def packed_scopes():
+            cache={}
+            def decode(raw):
+                ref=cache.get(raw)
+                if ref is None:
+                    ref=exact_ref(json.loads(raw))
+                    if len(cache)<16384:
+                        cache[raw]=ref
+                return ref
+            for j in range(len(route_section)):
+                yield (decode(route_section.field_bytes(j,"empirical_universe_ref")),
+                       decode(route_section.field_bytes(j,"scoped_respondent_ref")))
+        scopes=chain(scopes,packed_scopes())
+    for universe_ref,respondent_ref in scopes:
         respondent = respondent_by_key.get(respondent_ref.key)
         if universe_ref.key not in universe_by_key or respondent is None:
             raise C11IngestValidationError(
@@ -898,10 +928,15 @@ def _validate_c11_source_release(candidate,*,country_collector=None,compact_buil
     if country_collector is None:
         public_objects=tuple(sorted(_iter_public_objects(candidate),key=lambda obj:obj.ref.key))
     else:
-        non_events=tuple(sorted(_iter_public_objects(candidate,include_events=False),key=lambda obj:obj.ref.key))
+        from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+        routing=candidate.routing_eligibility_facts_or_exact_rules
+        packed=type(routing) is _SortedPackedRoutingFacts
+        non_events=tuple(sorted(_iter_public_objects(candidate,include_events=False,include_routing=not packed),
+                                key=lambda obj:obj.ref.key))
         release_ref=ExactRef("C11LogicalRelease",candidate.source_release_manifest.release_id,projection_hash)
         public_objects=compact_builder(release_ref,replay_manifest.ref,non_events,
-                                       country_collector.finished,replay_manifest.closure_refs)
+                                       country_collector.finished,replay_manifest.closure_refs,
+                                       routing if packed else None)
     internal_records = tuple(sorted(_iter_internal_records(candidate), key=lambda obj: obj.ref.key))
     return _make_validated_release(
         release_id=candidate.source_release_manifest.release_id,

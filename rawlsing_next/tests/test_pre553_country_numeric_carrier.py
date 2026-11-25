@@ -96,6 +96,8 @@ class CountryNumeric(unittest.TestCase):
         cells=tuple(c for c in inc.iter_cells() if c.row_ordinal in chosen)
         direct=build_validated_source_backed_c11_release_from_stream(
             ExactPhysicalCellStream(inc.source_sha256,len(chosen),lambda:iter(cells)),subset)
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+        subset=replace(subset,routing=_PackedRoutingFacts(iter(subset.routing)))
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/"country.sqlite"
             rec=build_country(inc,country_variable="G",country_value="A",
@@ -155,6 +157,15 @@ class CountryNumeric(unittest.TestCase):
                 with self.assertRaises(C11IntegrityError):
                     _PackedClosureRefs(((kind,prefix,b"x"*32),),(2,))
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
+                from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
+                routes=tuple(x for x in direct.public_objects if isinstance(x,RoutingEligibilityFact))
+                self.assertEqual(len(compact.public_objects.routing),len(routes))
+                for route in routes:
+                    self.assertEqual(compact_repo.resolve_object_exact(route.ref).as_dict(),route.as_dict())
+                    self.assertNotIn(route.ref.key,compact_repo._objects)
+                    self.assertNotIn(route.ref.key,compact_repo._country_object_guards)
+                    with self.assertRaises(KeyError):
+                        compact_repo.resolve_object_exact(ExactRef(route.ref.kind,"wrong",route.ref.content_hash))
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
                 lane=compact.public_objects.lane

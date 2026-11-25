@@ -16,6 +16,7 @@ import json
 import struct
 from array import array
 from bisect import bisect_right
+from functools import lru_cache
 from collections.abc import Sequence
 from typing import Any, Callable, Iterable, Mapping
 
@@ -333,6 +334,11 @@ def _routing_column_value(column,row):
     return blob[lo:hi]
 
 
+@lru_cache(maxsize=256)
+def _routing_field_key_bytes(key):
+    return canonical_json(key).encode("utf-8")+b":"
+
+
 class _PackedRoutingFacts(Sequence):
     """Detached, lossless private governed routing input at field grain.
 
@@ -405,7 +411,7 @@ class _PackedRoutingFacts(Sequence):
         keys,columns,digests=run
         h=digests[32*row:32*(row+1)].hex().encode("ascii")
         def pair(k,v):
-            return canonical_json(k).encode("utf-8")+b":"+v
+            return _routing_field_key_bytes(k)+v
         values={key:_routing_column_value(col,row) for key,col in zip(cls._top,columns)}
         values["content_hash"]=b'"'+h+b'"'
         values["object_id"]=b'"'+cls._prefix.encode("ascii")+h+b'"'
@@ -421,16 +427,27 @@ class _PackedRoutingFacts(Sequence):
                 yield self._row_bytes(run,row)
             start=end
 
-    def row_ref(self,index):
+    def _location(self,index):
         runs,ends=self._storage
         if index<0:
             index+=len(self)
         if not 0<=index<len(self):
             raise IndexError(index)
         run=bisect_right(ends,index)
-        row=index-(ends[run-1] if run else 0)
-        h=runs[run][2][32*row:32*(row+1)].hex()
+        return runs[run],index-(ends[run-1] if run else 0)
+
+    def digest_at(self,index):
+        run,row=self._location(index)
+        return run[2][32*row:32*(row+1)]
+
+    def row_ref(self,index):
+        h=self.digest_at(index).hex()
         return ExactRef(RoutingEligibilityFact.FAMILY,self._prefix+h,h)
+
+    def field_bytes(self,index,name):
+        run,row=self._location(index)
+        keys,columns,_=run
+        return _routing_column_value(columns[len(self._top)+keys.index(name)],row)
 
     def __getitem__(self,index):
         if isinstance(index,slice):
@@ -454,6 +471,107 @@ class _PackedRoutingFacts(Sequence):
     def payload_bytes(self):
         return sum(len(digests)+sum(sum(len(v) for v in col) for col in cols)
                    for _,cols,digests in self._storage[0])
+
+
+@dataclass(frozen=True,slots=True)
+class _SortedPackedRoutingFacts(Sequence):
+    """I02's canonical ordering over the same detached routing field lanes."""
+    source: _PackedRoutingFacts
+    storage: tuple
+    order: bytes
+
+    @classmethod
+    def build(cls,source):
+        storage=source.immutable_storage()
+        detached=object.__new__(_PackedRoutingFacts)
+        object.__setattr__(detached,"_storage",storage)
+        order=array("Q",sorted(range(len(detached)),key=detached.digest_at))
+        return cls(detached,storage,_routing_le(order))
+
+    def __len__(self):
+        return len(self.order)//8
+
+    def _ordinal(self,i):
+        if self.source._storage is not self.storage:
+            raise SourceBackedC11FacadeError("sealed routing backing replaced")
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        return struct.unpack_from("<Q",self.order,8*i)[0]
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[n] for n in range(*i.indices(len(self))))
+        return self.source[self._ordinal(i)]
+
+    def row_ref(self,i):
+        return self.source.row_ref(self._ordinal(i))
+
+    def field_bytes(self,i,name):
+        return self.source.field_bytes(self._ordinal(i),name)
+
+    def find(self,ref):
+        if ref.kind!=RoutingEligibilityFact.FAMILY:
+            return None
+        h=bytes.fromhex(ref.content_hash)
+        if ref.object_id!=_PackedRoutingFacts._prefix+ref.content_hash:
+            return None
+        lo,hi=0,len(self)
+        while lo<hi:
+            mid=(lo+hi)//2
+            if self.source.digest_at(self._ordinal(mid))<h:
+                lo=mid+1
+            else:
+                hi=mid
+        if lo<len(self) and self.row_ref(lo)==ref:
+            return lo
+        return None
+
+    def scoped_rows(self,universe_ref,respondent_keys):
+        # Build ordinals by exact respondent/universe. Decode shared dimension
+        # values once per distinct byte string; no expanded per-route objects.
+        universe=canonical_json(universe_ref.as_dict()).encode("utf-8")
+        grouped={key:array("Q") for key in respondent_keys}
+        keys={}
+        for i in range(len(self)):
+            if self.field_bytes(i,"empirical_universe_ref")!=universe:
+                continue
+            raw=self.field_bytes(i,"scoped_respondent_ref")
+            key=keys.get(raw)
+            if key is None:
+                key=exact_ref(json.loads(raw)).key
+                keys[raw]=key
+            if key not in grouped:
+                raise SourceBackedC11FacadeError("sealed routing respondent outside selected universe")
+            grouped[key].append(i)
+        return {key:_PackedRoutingRows(self,_routing_le(rows)) for key,rows in grouped.items()}
+
+
+@dataclass(frozen=True,slots=True)
+class _PackedRoutingRows(Sequence):
+    lane: _SortedPackedRoutingFacts
+    ordinals: bytes
+
+    def __len__(self):
+        return len(self.ordinals)//8
+
+    def _ordinal(self,i):
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        return struct.unpack_from("<Q",self.ordinals,8*i)[0]
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[n] for n in range(*i.indices(len(self))))
+        return self.lane[self._ordinal(i)]
+
+    def dimension_bytes(self,i):
+        row=self._ordinal(i)
+        return (self.lane.field_bytes(row,"question_or_target_ref"),
+                self.lane.field_bytes(row,"risk_set_ref"))
 
 
 def _freeze_governed_input(value: Any) -> Any:
@@ -869,7 +987,10 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
     candidate = C11SourceReleaseCandidate(
         source_release_manifest=manifest, empirical_universes=tuple(sorted(projection.universes, key=lambda x: x.ref.key)),
         respondent_identities=tuple(sorted(projection.respondents, key=lambda x: x.ref.key)), question_variable_bindings=tuple(sorted(projection.questions, key=lambda x: x.ref.key)),
-        respondent_events=events, routing_eligibility_facts_or_exact_rules=tuple(sorted(projection.routing, key=lambda x: x.ref.key)), empirical_coordinate_facts=coords,
+        respondent_events=events, routing_eligibility_facts_or_exact_rules=(
+            _SortedPackedRoutingFacts.build(projection.routing)
+            if _event_collector is not None and type(projection.routing) is _PackedRoutingFacts
+            else tuple(sorted(projection.routing,key=lambda x:x.ref.key))), empirical_coordinate_facts=coords,
         weight_measure_facts_or_typed_absence=weight_section, authority_snapshots=tuple(sorted(projection.authority_snapshots, key=lambda x: x.authority_ref.key)),
         source_universe_relations_or_explicit_distinct_default=projection.source_relations, predicate_replay_bindings_when_retained_objects_require_them=projection.predicate_replay,
         comparator_replay_bindings_or_typed_deferred_state=projection.comparator_replay, discovery_branch_replay_bindings_or_typed_deferred_state=projection.discovery_replay,
@@ -1044,8 +1165,8 @@ def build_source_backed_c11_repository(
             return candidate
         release=_validate_country_produced_release(produce=produce,
             authority_snapshots=projection.authority_snapshots,
-            compact_builder=lambda ref,replay,non_events,headers,closure_refs:
-                source.compact_events(ref,replay,non_events,headers,projection,closure_refs))
+            compact_builder=lambda ref,replay,non_events,headers,closure_refs,routing:
+                source.compact_events(ref,replay,non_events,headers,projection,closure_refs,routing))
         if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))

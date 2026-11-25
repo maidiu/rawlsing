@@ -671,11 +671,11 @@ class _CountryPhysicalStream(ExactPhysicalCellStream):
         self.reader._verify()
         if self.transport_identity != "COUNTRY_NUMERIC_PHYSICAL@1:"+self.reader.receipt.sha256:
             raise CountryCarrierError("country transport pin mismatch")
-    def compact_events(self,release_ref,replay_ref,non_events,headers,projection,closure_refs):
+    def compact_events(self,release_ref,replay_ref,non_events,headers,projection,closure_refs,routing=None):
         self._verify_binding()
         from ._pre553_c11_execution_view import _compact_country_headers
         bodies=_CountryEventBodies(self.reader,projection,headers,closure_refs=closure_refs)
-        return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies)
+        return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,routing)
 
     def certify_release(self,release):
         self._verify_binding()
