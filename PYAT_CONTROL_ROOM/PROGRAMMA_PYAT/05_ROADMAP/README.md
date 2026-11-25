@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+> **G4 REV24 — integrated R24 documentary receiving candidate, NOT PROTECTED.** Same existing revision transaction; protected rev23 remains the current accepted cut. Previous rev23 and all earlier history below preserved. R24 must be received as one paired transaction against protected rev23, not as a same-revision edit on an already accepted R24.
+
+
 ## 2026-11-25 — #1354 remaining expansion points / whole-machine conservation (author candidate)
 
 User demands nonmyopic construction and no repeat historical work. OATH, G4 protected and candidate inventory 782/150/62/82, S03 historical economics, S04 consumers, #960/#1097 C01–C17 and #1006 reconsulted. No new architecture or authority.
