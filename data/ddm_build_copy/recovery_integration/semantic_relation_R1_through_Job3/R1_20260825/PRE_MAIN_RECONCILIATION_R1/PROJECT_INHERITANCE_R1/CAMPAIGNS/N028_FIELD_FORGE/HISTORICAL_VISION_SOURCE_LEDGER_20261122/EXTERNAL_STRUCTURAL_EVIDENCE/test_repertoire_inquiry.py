@@ -14,6 +14,7 @@ from relational_context import inquire_repertoire_fracture
 
 
 def _session(tmp_path, monkeypatch, parity, current=lambda _: True):
+    tmp_path.mkdir(parents=True, exist_ok=True)
     captured = {}
     ingest = native.ingest_c11_source_release
 
@@ -110,7 +111,7 @@ def test_revocation_during_interpretation_refuses_return(tmp_path, monkeypatch):
     def revoke(view, proposal, reverse):
         allowed["current"] = False
         return revise(view, proposal, reverse)
-    with session, pytest.raises(Exception, match="(?i)current|revok|authoriz"):
+    with session, pytest.raises(cold.DirectEstateError, match="(?i)current|revok|authoriz"):
         run(session, q, revise=revoke)
 
 
