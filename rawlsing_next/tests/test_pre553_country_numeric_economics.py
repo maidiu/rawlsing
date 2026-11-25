@@ -55,17 +55,21 @@ class CountryNativeEconomics(unittest.TestCase):
             self.skipTest("separate wide economics CI job")
         self._native_batch(wide=True)
 
-    def _native_batch(self,*,wide):
+    def test_interrupted_country_campaign_resumes_only_pending_exact_units(self):
+        self._native_batch(wide=False,resume_court=True)
+
+    def _native_batch(self,*,wide,resume_court=False):
         import os
         # Real operational wide path never owns an expanded routing tuple.
         # Keep the older full-object/hostile comparison executable on demand
         # (and default for the smaller test), without contaminating this
         # process's memory high-water with the historical representation.
-        direct_pack=wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1"
+        direct_pack=resume_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
         from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
         from rawlsing_next import pre553_issued_workload as issued
-        tag="country-native-wide" if wide else "country-native-economics"
-        n,governed,extras=(512,80,218) if wide else (800,16,23)
+        tag=("country-native-resume" if resume_court else
+             "country-native-wide" if wide else "country-native-economics")
+        n,governed,extras=(64,16,23) if resume_court else (512,80,218) if wide else (800,16,23)
         rng=np.random.default_rng(312)
         values=rng.integers(0,2,(n,governed))
         names=tuple("q"+str(i) for i in range(governed))
@@ -180,6 +184,9 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            if resume_court:
+                return self._country_continuity(p,db,receipt,products,workload,resolver,
+                                                record,queries,host,purpose)
             from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
             if direct_pack:
                 # Independent canonical projection hash, exact original
@@ -592,6 +599,130 @@ class CountryNativeEconomics(unittest.TestCase):
                 "direct_packed_producer":direct_pack,
                 "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
+
+    def _country_continuity(self,root,db,receipt,products,workload,resolver,record,
+                            queries,host,purpose):
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        import collections
+
+        common=dict(workload=workload,resolver=resolver,host=host,purpose=purpose,
+                    country_receipt=receipt)
+        def run(destination,**kwargs):
+            return delivery.execute_publish_country(**common,country_path=db,
+                                                     root_dir=destination,**kwargs)
+        def open_product(pub,**kwargs):
+            return delivery.open_country_product(pub.receipt.root_path,
+                expected_root=pub.receipt.root_identity,
+                expected_release_ref=pub.release_identity.release_ref,**common,**kwargs)
+        baseline=run(products)
+        baseline_reader=open_product(baseline)
+        self.assertTrue(baseline.complete)
+        campaign=root/"campaign"
+        campaign.mkdir()
+        pins=[]
+        class Interrupted(RuntimeError): pass
+        def interrupt(pin,pub):
+            pins.append((pin,pub))
+            raise Interrupted("operator interrupted after retaining exact root")
+        start=time.monotonic()
+        with self.assertRaises(Interrupted):
+            run(campaign,checkpoint_every=3,checkpoint_observer=interrupt)
+        interruption_s=time.monotonic()-start
+        pin,partial=pins[0]
+        self.assertEqual(len(pins),1)
+        self.assertFalse(partial.complete)
+        self.assertEqual(partial.batch_census["completed_count"],3)
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"PARTIAL"):
+            open_product(partial)
+        saved=open_product(partial,allow_partial=True)
+        self.assertFalse(saved.complete)
+        self.assertEqual(saved._closure.release_identities[0],baseline.release_identity)
+        for receipt0 in saved._receipts:
+            self.assertEqual(receipt0.state,"COMPLETED")
+        manifest=delivery._manifest(workload,baseline.release_identity.release_ref)
+        prior_by_ref={r.unit_ref.key:r for r in saved._receipts}
+        pending=tuple(u for u in manifest.units if u.unit_ref.key not in prior_by_ref)
+        # Wrong root and country pin fail before any native unit can be executed.
+        for bad,exception in ((replace(pin,expected_root="0"*64),durable.DurableEmpiricalClosureError),
+                              (replace(pin,expected_country_sha256="0"*64),delivery.SavedDeliveryError)):
+            with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                    side_effect=AssertionError("bad resume executed I03")), patch.object(
+                    CarrierNeutralResearchExecutor,"execute_i05",
+                    side_effect=AssertionError("bad resume executed I05")):
+                with self.assertRaises(exception):
+                    run(campaign,resume_from=bad)
+        resolver._record=replace(record,currentness="REVOKED")
+        try:
+            with self.assertRaises(issued.WorkloadAdmissionError):
+                run(campaign,resume_from=pin)
+        finally:
+            resolver._record=record
+        # A current semantic decision cannot excuse missing selected physical bytes.
+        missing=db.with_suffix(".missing")
+        db.rename(missing)
+        try:
+            with self.assertRaises((OSError,ValueError)):
+                run(campaign,resume_from=pin)
+        finally:
+            missing.rename(db)
+
+        actual=[]
+        old_i03=CarrierNeutralResearchExecutor.execute_i03
+        old_i05=CarrierNeutralResearchExecutor.execute_i05
+        def count_i03(self,**kwargs):
+            actual.append(("QUERY",kwargs["query_ref"].key))
+            return old_i03(self,**kwargs)
+        def count_i05(self,**kwargs):
+            actual.append(("DISCOVERY",kwargs["discovery_authority_ref"].key))
+            return old_i05(self,**kwargs)
+        continued=[]
+        def retain(pin,pub):
+            continued.append((pin,pub))
+        start=time.monotonic()
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",count_i03), patch.object(
+                CarrierNeutralResearchExecutor,"execute_i05",count_i05):
+            final=run(campaign,resume_from=pin,checkpoint_every=4,checkpoint_observer=retain)
+        resume_s=time.monotonic()-start
+        self.assertTrue(final.complete)
+        self.assertEqual(final,continued[-1][1])
+        self.assertEqual(collections.Counter(actual),
+            collections.Counter((u.job_kind,u.job_ref.key) for u in pending))
+        self.assertEqual(final.batch_census,baseline.batch_census)
+        restored=open_product(final)
+        self.assertEqual(restored._receipts,baseline_reader._receipts)
+        self.assertEqual(restored._closure.release_identities,baseline_reader._closure.release_identities)
+        self.assertEqual(restored._closure.i03_results,baseline_reader._closure.i03_results)
+        self.assertEqual(tuple(r.replay_ref for r in restored._closure.discovery_results),
+                         tuple(r.replay_ref for r in baseline_reader._closure.discovery_results))
+        plans=tuple((q.ref,0 if len(q.target_refs)>1 else None) for q in queries)
+        self.assertEqual(tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)),
+                         tuple(delivery._s04_refs(r) for r in baseline_reader.read_s04_many(plans)))
+        self.assertTrue(continued)
+        final_pin=continued[-1][0]
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"ALREADY_COMPLETE"):
+            run(campaign,resume_from=final_pin)
+        # Source and country may now disappear; complete retained product still
+        # supplies actual consumer reads through the selected and full paths.
+        db.unlink()
+        select=delivery.read_country_s04_selected(final.receipt.root_path,
+            expected_root=final.receipt.root_identity,
+            expected_release_ref=final.release_identity.release_ref,**common,
+            requests=plans)
+        self.assertEqual(tuple(delivery._s04_refs(r) for r in select.reads),
+                         tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)))
+        footprint=lambda path:sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
+        print("COUNTRY_CAMPAIGN_CONTINUITY",json.dumps({
+            "country_rows":receipt.country_rows,"units":len(manifest.units),
+            "completed_before_interrupt":3,"resumed_actual_executions":len(actual),
+            "checkpoint_count":1+len(continued),"full_output_census_parity":True,
+            "selected_after_source_and_country_deleted":len(select.reads),
+            "baseline_retained_bytes":footprint(products),"campaign_retained_bytes":footprint(campaign),
+            "interruption_seconds":interruption_s,"resume_seconds":resume_s,
+            "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
+        }),flush=True)
 
     def test_physical_layout_query_tradeoffs_same_cells(self):
         """One selected carrier, bounded block-size comparison; not native-I03 proxy."""
