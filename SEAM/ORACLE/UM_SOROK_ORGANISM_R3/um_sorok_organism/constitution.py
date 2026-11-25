@@ -18,6 +18,7 @@ from .cultural_mediation import cultural_object_alternatives
 from .distributed_power import conditional_assistance_options, current_addressed_food_offers
 from .practical_powers import situated_exercised_repertoire
 from .practical_inquiry import offer_actor_inquiry, notices_present
+from .institutional_procedure_learning import annotate_notice_expectations
 from .material_objects import (
     material_objects_present, can_make, object_bound_alternatives,
     material_opportunity_from_history)
@@ -705,6 +706,8 @@ def compose(constitution,access,limit=50):
     affective_afterlife=annotate_activity_affects(
         constitution,attention['focus_access'],dynamics['candidate_actions'])
     currents+=affective_afterlife['currents']
+    notice_afterlife=annotate_notice_expectations(constitution,access,dynamics['candidate_actions'])
+    currents+=notice_afterlife['currents']
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -733,7 +736,7 @@ def compose(constitution,access,limit=50):
                            inquiry['readset']+
                            functional['readset']+
                            expectation_afterlife['readset']+affective_afterlife['readset']+
-                           prospective['readset']+
+                           prospective['readset']+notice_afterlife['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],

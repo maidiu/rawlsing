@@ -17,6 +17,11 @@ on:
       - agent/soracle-co-mulchineer-plural-activity-affect-20261124-r1
       - agent/soracle-co-mulchineer-private-rehearsal-20261125-r1
       - agent/soracle-co-mulchineer-structural-periods-20261125-r1
+      - agent/soracle-co-mulchineer-focal-reception-20261125-r1
+      - agent/soracle-co-mulchineer-acquired-material-facility-20261125-r1
+      - agent/soracle-co-mulchineer-expressive-body-20261125-r1
+      - agent/soracle-co-mulchineer-fallible-institutional-expectation-20261125-r1
+      - agent/soracle-co-mulchineer-staged-genealogy-20261125-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -47,7 +52,7 @@ jobs:
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v
       - name: R33 recursive encounter focus
-        if: github.ref_name == 'agent/soracle-co-mulchineer-recursive-encounter-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-structural-periods-20261125-r1'
+        if: github.ref_name == 'agent/soracle-co-mulchineer-recursive-encounter-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-structural-periods-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-focal-reception-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-acquired-material-facility-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-expressive-body-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-fallible-institutional-expectation-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-staged-genealogy-20261125-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_pre_encounter_history_r21.py' -v
       - name: R34 dissimilar means focus
@@ -55,7 +60,7 @@ jobs:
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_r11_soracle_integrated.py' -v
       - name: R36 upstream elasticity focus
-        if: github.ref_name == 'agent/soracle-co-mulchineer-elastic-entrance-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-new-means-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-project-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-reorganization-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-means-history-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-course-ambivalence-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-plural-activity-affect-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-private-rehearsal-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-structural-periods-20261125-r1'
+        if: github.ref_name == 'agent/soracle-co-mulchineer-elastic-entrance-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-new-means-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-dependency-project-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-reorganization-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-project-means-history-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-course-ambivalence-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-plural-activity-affect-20261124-r1' || github.ref_name == 'agent/soracle-co-mulchineer-private-rehearsal-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-structural-periods-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-focal-reception-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-acquired-material-facility-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-expressive-body-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-fallible-institutional-expectation-20261125-r1' || github.ref_name == 'agent/soracle-co-mulchineer-staged-genealogy-20261125-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_r11_soracle_integrated.py' -v
       - name: Full inherited R3-R20 normal

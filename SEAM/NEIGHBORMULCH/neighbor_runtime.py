@@ -1062,8 +1062,18 @@ class NeighborEncounter:
                              'ORIENT': 'Someone turns nearby.'}
                 if (audible and cue.get('modality') == 'auditory'
                         and action in sounds):
+                    # R47 emits a physical vocal manner, not private affect.
+                    # Only this committed, presently audible sign may carry it.
+                    text = sounds[action]
+                    if action == 'SPEAK':
+                        from um_sorok_organism.expectation_afterlife import CADENCES
+                        cadence = cue.get('vocal_cadence')
+                        if (type(cadence) is str and cadence in CADENCES
+                                and cue.get('description') == CADENCES[cadence]
+                                and ('vocal_cadence:' + cadence.lower()) in cue.get('tags', [])):
+                            text = CADENCES[cadence]
                     mandatory.append({'kind': 'CO_PUBLIC_OCCURRENCE',
-                        'text': sounds[action], 'modality': 'auditory',
+                        'text': text, 'modality': 'auditory',
                         'source_event_ref': last_event['id'],
                         'source_cue_ref': cue['id'],
                         'source': 'EXISTING_CO_PUBLIC_WORLD_SIGN',

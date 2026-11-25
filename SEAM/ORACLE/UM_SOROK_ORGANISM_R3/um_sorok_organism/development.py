@@ -12,9 +12,11 @@ from .relational_metabolism import (
 )
 from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
-from .expectation_afterlife import admit_activity_affect
+from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
+from .attention_field import received_undertaking_attention
+from .practical_powers import admit_repair_technique
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
@@ -35,7 +37,7 @@ from .co_regulation_history import (
     admit_co_regulation, admit_co_regulation_revision)
 from .plural_care_paths import admit_reopening
 from .institutional_procedure_learning import (
-    admit_public_procedure_expectation,
+    admit_public_procedure_expectation, admit_notice_expectation, admit_notice_revision,
     qualify_lived_institutional_difference,
 )
 import math
@@ -54,7 +56,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','NOTICE_PRIVATE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
-         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_PREPROJECT_ANTICIPATION',
+         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_EXPRESSIVE_PRACTICE','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'REVISE_FUNCTIONAL_CORRESPONDENCE',
@@ -65,12 +67,13 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REVISE_OPERATIVE_SELF_ORGANIZATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
+         'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
          'ACQUIRE_COSTLY_CARE_PRACTICE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
-         'ACQUIRE_SOCIAL_VOCAL_COORDINATION','NO_CHANGE'}
+         'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -411,6 +414,16 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_EXPRESSIVE_PRACTICE':
+            try:
+                report.append(admit_expressive_practice(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_REPAIR_TECHNIQUE':
+            try:
+                report.append(admit_repair_technique(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='NOTICE_PRIVATE_POSSIBLE_END':
             try:
                 report.append(admit_private_possible_end(actor,experience,event_ref,c))
@@ -473,6 +486,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op in ('ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION'):
+            try:
+                fn=admit_notice_expectation if op=='ACQUIRE_NOTICE_EXPECTATION' else admit_notice_revision
+                report.append(fn(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION':
             try:
                 report.append(admit_public_procedure_expectation(
@@ -776,6 +795,21 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',
                    'cue_terms':c.get('cue_terms',[]),'content':c.get('content',''),
                    'manifestation':c.get('manifestation','uninterpreted')}
+            if 'undertaking_attention_ref' in c:
+                receipt=received_undertaking_attention(actor,
+                    experience.get('own_practical_selection'),experience)
+                paths=[p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+                       and p.get('undertaking_attention')==receipt]
+                if (op!='MEMORY' or not receipt or receipt!=experience.get('undertaking_attention_receipt')
+                        or c['undertaking_attention_ref']!=receipt['attention_id'] or len(paths)!=1
+                        or type(entry['content']) is not str or not entry['content'].strip()
+                        or len(entry['content'])>512
+                        or any(m.get('undertaking_attention',{}).get('attention_id')==receipt['attention_id']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('UNDERTAKING_MEMORY_UNQUALIFIED_ATTENTION')
+                entry['undertaking_attention']=copy(receipt)
+                entry['remembered_meaning_not_objective_future_truth']=True
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':

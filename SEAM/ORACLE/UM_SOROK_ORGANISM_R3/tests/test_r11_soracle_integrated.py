@@ -1929,3 +1929,565 @@ class PrivateRehearsalR43(unittest.TestCase):
                 self.assertEqual(rt.ledger.world()[1],before)
                 self.assertTrue(rt.verify()['valid'])
             finally:rt.close()
+
+
+class UndertakingAttentionR45(unittest.TestCase):
+    def test_actual_outward_undertaking_deliberate_reception_memory_private_trial(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.attention_field import offer_undertaking_attention
+        outcomes={}
+        with tempfile.TemporaryDirectory() as d:
+            for attend in (True,False):
+                stage='pledge';receipts=[];rehearsals=[]
+                def callback(task,packet):
+                    if task=='expression':
+                        self.assertNotIn('undertaking_attention_receipt',packet['actor_accessible'])
+                        return {'task':task,'surface':'An ordinary interval.'}
+                    if task=='actor_attempt':
+                        if packet['actor']['id']!='worker':
+                            return {'task':task,'action':'WAIT'}
+                        if stage=='attend':
+                            rows=packet['undertaking_attention_options']
+                            self.assertEqual(len(rows),1)
+                            self.assertEqual(rows[0]['source_kind'],'INDEPENDENT_COMPUTATIONAL_ACTOR')
+                            self.assertEqual(rows[0]['counterpart_ref'],'mother')
+                            self.assertNotIn('status',rows[0])
+                            if attend:return {'task':task,'action':'ORIENT',
+                                'undertaking_attention_id':rows[0]['attention_id']}
+                            return {'task':task,'action':'ORIENT'}
+                        if stage=='rehearse':
+                            rows=[x for x in packet['private_rehearsal_options']
+                                  if x.get('undertaking_attention')]
+                            self.assertEqual(len(rows),int(attend))
+                            if rows:return {'task':task,'action':'WAIT',
+                                'private_rehearsal_id':rows[0]['rehearsal_id'],
+                                'private_rehearsal_content':'Perhaps rest need not wait for her return.'}
+                        if stage=='trial':
+                            rows=[x for x in packet['possible_end_trials']
+                                  if x.get('private_rehearsal_ref')]
+                            if rows:return {'task':task,'possible_end_trial_id':rows[0]['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        rec=packet.get('actual_undertaking_attention_analyst_only')
+                        if rec:
+                            receipts.append((copy.deepcopy(rec),copy.deepcopy(packet['experience']),
+                                             packet['evidence_path']['event']))
+                            return {'task':task,'candidates':[{'kind':'MEMORY',
+                                'undertaking_attention_ref':rec['attention_id'],
+                                'cue_terms':['pledge_care'],'content':'She said she would care later.'}]}
+                        rec=packet.get('actual_private_rehearsal_analyst_only')
+                        if rec:
+                            rehearsals.append(copy.deepcopy(rec))
+                            return {'task':task,'candidates':[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                                'rehearsal_ref':rec['id'],'possible_object':'rest without awaiting care',
+                                'possible_means':['REST']}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(attend))
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.ledger.initialize(blank_world(),[adult('worker','Mara'),
+                        adult('mother','Mother'),adult('bystander','Bystander')])
+                    # Actual sourcefree injected outward act by a distinct
+                    # computational actor; no claim of native choice of pledge.
+                    self.assertEqual(rt.step('mother',requested_action='PLEDGE_CARE',
+                                             target='worker')['status'],'PERFORMED')
+                    a=rt.ledger.actor('worker')[1];world=rt.ledger.world()[1]
+                    b=rt.ledger.actor('bystander')[1]
+                    access=actor_access(b,world)
+                    self.assertEqual(offer_undertaking_attention(b,world,access,
+                        [c['id'] for c in access.cues]),[])
+                    self.assertEqual(a['memories'],[])
+                    stage='attend'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(receipts),int(attend))
+                    self.assertEqual(len(a['memories']),int(attend))
+                    self.assertEqual(a['possible_ends'],[])
+                    if attend:
+                        rec,exp,event=receipts[0]
+                        self.assertEqual(a['memories'][0]['undertaking_attention'],rec)
+                        self.assertEqual(rec['commitment_ref'],world['scheduled_obligations'][0]['id'])
+                        self.assertIn(rec['cue_ref'],a['evidence_paths'][-1]['received_cue_refs'])
+                        bad={'kind':'MEMORY','undertaking_attention_ref':'forged',
+                             'content':'not my receipt'}
+                        old=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'UNDERTAKING_MEMORY_UNQUALIFIED'):
+                            admit(a,exp,event,[bad])
+                        self.assertEqual(a,old)
+                    # Ordinary world time passes independently; no deadline
+                    # appraisal, automatic recollection or imposed response.
+                    rt.background(5)
+                    self.assertEqual(rt.ledger.actor('worker')[1]['memories'],a['memories'])
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='rehearse';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(rehearsals),int(attend))
+                    self.assertEqual(len(a['possible_ends']),int(attend))
+                    if attend:
+                        end=a['possible_ends'][0]
+                        self.assertEqual(end['private_undertaking_attention'],receipts[0][0])
+                        self.assertIsNone(end['actor_perceived_cue_ref'])
+                    stage='trial';outcomes[attend]=rt.step('worker')['attempt']
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(outcomes,{True:'REST',False:'WAIT'})
+
+    def test_injected_orient_does_not_retain_deliberate_undertaking(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.attention_field import offer_undertaking_attention
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'),semantic=ValidatingSemanticService(
+                CallbackLLMProvider(lambda task,p: {'task':task,'candidates':[]} if task=='development'
+                    else {'task':task,'surface':'ordinary'} if task=='expression'
+                    else {'task':task,'action':'WAIT'})))
+            try:
+                rt.ledger.initialize(blank_world(),[adult('worker','Mara'),adult('mother','Mother')])
+                rt.step('mother',requested_action='PLEDGE_CARE',target='worker')
+                a=rt.ledger.actor('worker')[1];w=rt.ledger.world()[1];e=actor_access(a,w)
+                self.assertEqual(len(offer_undertaking_attention(a,w,e,[c['id'] for c in e.cues])),1)
+                # A source candidate without its actual authored row cannot
+                # become a deliberate reception option.
+                forged=copy.deepcopy(w);forged['scheduled_obligations']=[]
+                self.assertEqual(offer_undertaking_attention(a,forged,e,[c['id'] for c in e.cues]),[])
+                rt.step('worker',requested_action='ORIENT')
+                self.assertFalse(any(x.get('undertaking_attention') for x in
+                                     rt.ledger.actor('worker')[1]['evidence_paths']))
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+
+
+class AcquiredRepairFacilityR46(unittest.TestCase):
+    def test_structurally_qualified_ordinary_practice_and_actual_repairs_change_later_material_result(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        from um_sorok_organism.practical_powers import active_repair_technique
+        results={}
+        with tempfile.TemporaryDirectory() as d:
+            for allowed,nominate in ((True,True),(True,False),(False,True)):
+                target=None;offered=[];phase='ordinary'
+                def callback(task,packet):
+                    if task=='expression':return {'task':task,'surface':'Ordinary work.'}
+                    if task=='actor_attempt':
+                        if phase=='repair':
+                            choices=[x for x in packet['practical_options']
+                                if x['operation']=='REPAIR'
+                                and x.get('world_request',{}).get('material_object_ref')==target
+                                and x.get('project_id') is None]
+                            self.assertTrue(choices)
+                            return {'task':task,'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        cs=packet.get('historically_possible_repair_techniques',[])
+                        if cs:offered.append((copy.deepcopy(cs[0]),copy.deepcopy(packet['experience']),
+                                             packet['evidence_path']['event']))
+                        return {'task':task,'candidates':cs if nominate else []}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/str((allowed,nominate)))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world();w['sites']['home']['stock']=20
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'repair_training','object':'practice repair',
+                        'means':['REPAIR'],'priority':.5,'status':'active'}]
+                    spec={'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY',
+                          'source_ref':'fictional:repair_training',
+                          'positions':[{'id':'training','actor':'worker','field':'training_access',
+                            'value':'admitted' if allowed else 'excluded','source_ref':'fictional:training',
+                            'effective_from':0,'effective_until':6}],
+                          'rules':[{'id':'training_gate','operation':'REPAIR','location':'home',
+                            'source_ref':'fictional:training_gate','effective_from':0,'effective_until':6,
+                            'all_of':[{'kind':'RECORDED_POSITION','field':'training_access','equals':'admitted'}]}]}
+                    admit_authored_structural_history(w,{'worker'},spec)
+                    rt.ledger.initialize(w,[a],source_seals=[
+                        ('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',spec)])
+                    source=rt.register_historical_routine_source({
+                        'kind':'QUALIFIED_ROUTINE_PRACTICE','actor':'worker','location':'home',
+                        'start_clock':0,'end_clock':7,'max_hours_per_active_day':3,
+                        'description':'bounded modeled component practice'})
+                    rt.background(7,processes=[{'kind':'QUALIFIED_ROUTINE_PRACTICE',
+                        'actor':'worker','location':'home','source_ref':source['source_ref'],
+                        'hours_per_active_day':3,'provisional_exposure_fraction':1.,
+                        'operation':'REPAIR','mode':'SOLO_COMPONENT_PRACTICE'}])
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['practice_exposures']),int(allowed))
+                    self.assertEqual(a['power_exercises'],[])
+                    self.assertEqual(a['memories'],[])
+                    # Three distinct materially produced artifacts, not
+                    # injected success or simulated technical measurements.
+                    refs=[]
+                    for _ in range(3):
+                        phase='ordinary';rt.step('worker',requested_action='REST')
+                        before=set(rt.ledger.world()[1]['material_objects'])
+                        self.assertEqual(rt.step('worker',requested_action='MAKE_OBJECT')['status'],'PERFORMED')
+                        created=set(rt.ledger.world()[1]['material_objects'])-before
+                        self.assertEqual(len(created),1)
+                        refs.append(created.pop())
+                    for target in refs[:2]:
+                        phase='ordinary';rt.step('worker',requested_action='REST')
+                        phase='repair';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                        self.assertEqual(rt.ledger.world()[1]['material_objects'][target]['condition'],.8)
+                    self.assertEqual(len(offered),int(allowed))
+                    a=rt.ledger.actor('worker')[1]
+                    technique=active_repair_technique(a,'home')
+                    self.assertEqual(bool(technique),allowed and nominate)
+                    self.assertIsNone(active_repair_technique(a,'workshop'))
+                    if allowed and not nominate:
+                        c,exp,event=offered[0];bad=copy.deepcopy(c)
+                        bad['basis']['distinct_worked_objects'][0]='invented'
+                        old=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'REPAIR_TECHNIQUE_UNQUALIFIED'):
+                            admit(a,exp,event,[bad])
+                        self.assertEqual(a,old)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    phase='ordinary';rt.step('worker',requested_action='REST')
+                    target=refs[2];phase='repair'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    obj=rt.ledger.world()[1]['material_objects'][target]
+                    results[(allowed,nominate)]=obj['condition']
+                    self.assertEqual(obj['owner'],'worker')
+                    row=obj['objective_labor_history'][-1]
+                    self.assertEqual(row['material_stock_units'],1)
+                    self.assertEqual(bool(row.get('acquired_component_technique_ref')),allowed and nominate)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(results,{(True,True):.9,(True,False):.8,(False,True):.8})
+
+
+class AcquiredExpressiveBodyR47(unittest.TestCase):
+    def test_same_affect_different_acquired_vocal_manner_and_differential_receipt(self):
+        from um_sorok_organism.types import blank_world
+        outputs={}
+        with tempfile.TemporaryDirectory() as d:
+            for learn in (True,False):
+                stage='start'; offers=[]; final_receipts={}
+                def policy(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']!='worker':return {'task':task,'action':'WAIT'}
+                        if stage=='start':return {'task':task,'action':'REST','project_id':'duty'}
+                        if stage in ('speech','final'):
+                            rows=[x for x in packet['practical_options']
+                                  if x.get('project_id')=='duty' and x['operation']=='SPEAK']
+                            self.assertEqual(len(rows),1)
+                            self.assertTrue(rows[0].get('course_affective_organizations'))
+                            return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='expression':
+                        self.assertNotIn('selected_course_affects_analytic_only',
+                            (packet['actor_accessible'].get('own_practical_selection') or {}))
+                        return {'task':task,'surface':'Ordinary speech.'}
+                    if task=='development':
+                        aid=packet['actor']['id'];exp=packet['experience']
+                        if stage=='final':
+                            final_receipts[aid]=copy.deepcopy(exp)
+                        if aid!='worker':return {'task':task,'candidates':[]}
+                        if stage=='appraise':
+                            row=packet['historically_possible_delayed_appraisals'][0]
+                            return {'task':task,'candidates':[{'kind':'APPRAISE_EXPECTED_DIFFERENCE',
+                                'expectation_ref':row['expectation_ref'],
+                                'perceived_cue_ref':row['source_perceived_cue_ref'],
+                                'appraisal':'ACTOR_INTERPRETS_DISAPPOINTED'}]}
+                        if stage=='affect':
+                            row=packet['historically_possible_activity_affects'][0]
+                            return {'task':task,'candidates':[{'kind':'ACQUIRE_ACTIVITY_AFFECT',
+                                'basis':row,'affect_name':'private unease',
+                                'personal_sense':'quiet conflicts with duty',
+                                'course_orientation':'NO_DIRECT_TENDENCY'}]}
+                        if stage=='speech':
+                            rows=packet['historically_possible_expressive_practices']
+                            if rows:
+                                candidate={'kind':'ACQUIRE_EXPRESSIVE_PRACTICE',
+                                           'basis':rows[0]['basis'],'cadence':'HALTING'}
+                                offers.append((copy.deepcopy(candidate),copy.deepcopy(exp),
+                                               packet['evidence_path']['event']))
+                                return {'task':task,'candidates':[candidate] if learn else []}
+                        if stage=='final' and learn:
+                            return {'task':task,'candidates':[{'kind':'MEMORY',
+                                'cue_terms':['vocal_cadence:halting'],
+                                'content':'I heard my own speech pause.'}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                db=str(Path(d)/str(learn));rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'duty','object':'sustain availability',
+                        'means':['REST','SPEAK'],'status':'active','priority':.5,
+                        'expected_difference':{'feature':'availability','direction':'PRESERVE',
+                                               'sign_tags':['wait']}}]
+                    rt.ledger.initialize(blank_world(),[a,adult('hearer','Hearer'),
+                        adult('blocked','Blocked')])
+                    rt.register_sourcefree_recursive_encounter_paths({
+                        'grade':'SOURCEFREE_TEST_ONLY','source_ref':'R47_SOUND',
+                        'paths':[{'observer':aid,'source_actor':'worker','location':'home',
+                            'from_clock':0,'through_clock':30,'hearing':audible,
+                            'sound_path':'audible' if audible else 'blocked',
+                            'visual':True,'light':'lit','sightline':'unobstructed','facing':'away'}
+                            for aid,audible in [('hearer',True),('blocked',False)]]})
+                    rt.step('worker')
+                    stage='appraise';rt.step('worker')
+                    stage='affect';rt.step('worker')
+                    for _ in range(2):
+                        stage='quiet';rt.step('worker')
+                        stage='speech';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                        self.assertNotIn('vocal_cadence',rt.ledger.world()[1]['cues'][-1])
+                    self.assertEqual(len(offers),1)
+                    actor=rt.ledger.actor('worker')[1]
+                    aff=actor['expectations'][0]['affective_organizations'][0]
+                    self.assertEqual(bool(aff.get('expressive_practice')),learn)
+                    if not learn:
+                        c,exp,event=offers[0];c['basis']['earlier_cue_ref']='invented'
+                        saved=copy.deepcopy(actor)
+                        with self.assertRaisesRegex(InvalidDevelopment,'EXPRESSIVE_PRACTICE_UNQUALIFIED'):
+                            admit(actor,exp,event,[c])
+                        self.assertEqual(actor,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='quiet';rt.step('worker')
+                    stage='final';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    cue=rt.ledger.world()[1]['cues'][-1]
+                    self.assertEqual(cue.get('vocal_cadence'),'HALTING' if learn else None)
+                    self.assertNotIn('private unease',str(cue))
+                    self.assertNotIn('sustain availability',str(cue))
+                    hear=next(c for c in final_receipts['hearer']['perceived_cues'] if c['id']==cue['id'])
+                    self.assertIsNone(hear['source_actor'])
+                    self.assertEqual(hear.get('vocal_cadence'),'HALTING' if learn else None)
+                    self.assertNotIn('blocked',final_receipts)
+                    own=rt.snapshot('worker')['evidence_paths'][-1]['own_vocal_reception']
+                    self.assertEqual(own['cadence_as_sensed'],'HALTING' if learn else 'NOT_DIFFERENTIATED')
+                    self.assertEqual(len(rt.snapshot('worker')['memories']),int(learn))
+                    self.assertTrue(rt.verify()['valid'])
+                    outputs[learn]=cue.get('vocal_cadence')
+                finally:rt.close()
+            self.assertEqual(outputs,{True:'HALTING',False:None})
+
+
+class FallibleInstitutionalExpectationR48(unittest.TestCase):
+    def test_same_public_account_and_actual_gate_different_actor_afterlife(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        results={}
+        with tempfile.TemporaryDirectory() as d:
+            for revise in (True,False):
+                stage='read';offered=[];revision_offers=[]
+                def policy(task,packet):
+                    if task=='expression':
+                        self.assertNotIn('notice_expectation',
+                            (packet['actor_accessible'].get('own_practical_selection') or {}))
+                        return {'task':task,'surface':'Ordinary activity.'}
+                    if task=='actor_attempt':
+                        rows=[x for o in packet['options'] if o['action']=='EAT'
+                              for x in o.get('fallible_notice_expectations',[])]
+                        if stage in ('attempt','later'):
+                            self.assertEqual(len(rows),1)
+                            if rows[0]['anticipated_availability']=='AVAILABLE':
+                                return {'task':task,'action':'EAT','project_id':'food',
+                                        'notice_expectation_ref':rows[0]['expectation_ref']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if stage=='read':
+                            rows=packet['historically_possible_notice_expectations']
+                            self.assertEqual(len(rows),1)
+                            c={'kind':'ACQUIRE_NOTICE_EXPECTATION','basis':rows[0],
+                               'anticipated_availability':'AVAILABLE'}
+                            offered.append(copy.deepcopy(c))
+                            return {'task':task,'candidates':[c]}
+                        if stage=='attempt':
+                            rows=packet['historically_possible_notice_revisions']
+                            self.assertEqual(len(rows),1)
+                            self.assertEqual(rows[0]['own_course'],'INCOMPLETE')
+                            self.assertEqual(rows[0]['actual_hidden_cause'],'NOT_KNOWN')
+                            c={'kind':'REVISE_NOTICE_EXPECTATION','basis':rows[0],
+                               'revision':'UNAVAILABLE' if revise else 'RETAIN'}
+                            revision_offers.append((copy.deepcopy(c),copy.deepcopy(packet['experience']),
+                                                    packet['evidence_path']['event']))
+                            return {'task':task,'candidates':[c]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(revise));service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    w['public_notices']=[{'id':'food_notice','public':True,'location':'home',
+                        'public_terms':['eat','available'],'public_text':'Food is available here.',
+                        'effective_from':0,'effective_until':20}]
+                    spec={'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY','source_ref':'fictional:gate',
+                          'positions':[{'id':'position','actor':'worker','field':'food_access',
+                            'value':'excluded','source_ref':'fictional:position','effective_from':0,
+                            'effective_until':1}],
+                          'rules':[{'id':'gate','operation':'EAT','location':'home',
+                            'source_ref':'fictional:gate','effective_from':0,'effective_until':1,
+                            'all_of':[{'kind':'RECORDED_POSITION','field':'food_access','equals':'admitted'}]}]}
+                    admit_authored_structural_history(w,{'worker'},spec)
+                    a=adult('worker','Mara');a['projects']=[{'id':'food','object':'sustain nutrition',
+                         'means':['EAT'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a],source_seals=[
+                        ('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',spec)])
+                    self.assertEqual(rt.step('worker',requested_action='INSPECT',
+                                             object_ref='food_notice')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    a=rt.ledger.actor('worker')[1];x=a['institutional_expectations'][0]
+                    self.assertEqual(x['anticipated_availability'],'AVAILABLE')
+                    stage='attempt'
+                    before=rt.ledger.world()[1]['sites']['home']['food']
+                    self.assertEqual(rt.step('worker')['status'],'BLOCKED')
+                    self.assertEqual(rt.ledger.world()[1]['sites']['home']['food'],before)
+                    a=rt.ledger.actor('worker')[1];x=a['institutional_expectations'][0]
+                    self.assertEqual(x['anticipated_availability'],'UNAVAILABLE' if revise else 'AVAILABLE')
+                    self.assertEqual(x['revisions'][0]['own_course'],'INCOMPLETE')
+                    c,exp,event=revision_offers[0]
+                    bad=copy.deepcopy(c);bad['basis']['received_sign_ref']='invented'
+                    saved=copy.deepcopy(a)
+                    with self.assertRaisesRegex(InvalidDevelopment,'NOTICE_REVISION_UNQUALIFIED'):
+                        admit(a,exp,event,[bad])
+                    self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='later'
+                    before=rt.ledger.world()[1]['sites']['home']['food']
+                    result=rt.step('worker')
+                    results[revise]=(result['attempt'],rt.ledger.world()[1]['sites']['home']['food']-before)
+                    self.assertEqual(rt.ledger.world()[1]['public_notices'][0]['public_text'],
+                                     'Food is available here.')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(results,{True:('WAIT',0),False:('EAT',-1)})
+
+
+class StagedFamilyGenesisR49(unittest.TestCase):
+    def packet(self,who,purpose):
+        return {'input_kind':'THIN_BIOGRAPHY','source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                'source_ref':'fictional:'+who,'biographical_context':{'ordinary_life':purpose},
+                'fictional_seed':{'projects':[{'object':purpose,'means':['REST'],'priority':.5}]}}
+
+    def test_actual_maternal_life_selects_distinct_counterpart_and_child_birth_cold(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        from um_sorok_organism.storage import Conflict
+        outcomes={}
+        with tempfile.TemporaryDirectory() as d:
+            for first in ('REST','WAIT'):
+                chosen=[];constructed=[]
+                fallback=HeuristicSemanticProvider()
+                def callback(task,packet):
+                    if task=='adult_constructor':
+                        constructed.append(packet['actor_id'])
+                    if task=='family_pathway_selection':
+                        self.assertEqual(len(packet['eligible_pathways']),2)
+                        self.assertNotIn('counterpart_packet',str(packet['eligible_pathways']))
+                        self.assertEqual(packet['mother']['lived_genesis_episodes'][-1]['actor_felt_attempt'],first)
+                        pid='path-rest' if first=='REST' else 'path-wait'
+                        chosen.append(pid)
+                        return {'task':task,'pathway_id':pid}
+                    if task=='actor_attempt':
+                        return {'task':task,'action':first if packet['actor']['id']=='mother' else 'WAIT'}
+                    if task=='development':return {'task':task,'candidates':[]}
+                    return fallback.propose(task,packet)
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/first)
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize_antecedent_adult('mother','Mother',self.packet('mother','ordinary embodied life'))
+                    self.assertEqual(set(rt.ledger.actors()),{'mother'})
+                    rows=[{'id':'path-'+suffix,'source_ref':'fictional:path:'+suffix,
+                           'intersection_clock':1,'intersection_site':'home',
+                           'conception_clock':2,'birth_clock':5,
+                           'counterpart_id':'father-'+suffix,'counterpart_name':'Father '+suffix,
+                           'counterpart_packet':self.packet('father-'+suffix,'independent life '+suffix),
+                           'child_id':'nadia','child_name':'Nadia',
+                           'prior_shared_effects':'UNMODELED_NO_RETROACTIVE_WRITE'}
+                          for suffix in ('rest','wait')]
+                    sid=rt.register_family_pathways('mother',rows)['source_seal_id']
+                    with self.assertRaisesRegex(ValueError,'FAMILY_NO_SITUATED_PATHWAY'):
+                        rt.select_family_intersection(sid)
+                    self.assertEqual(constructed,['mother'])
+                    rt.step('mother')
+                    maternal=copy.deepcopy(rt.ledger.actor('mother')[1])
+                    earlier_events=copy.deepcopy(rt.ledger.events())
+                    entered=rt.select_family_intersection(sid)
+                    father=entered['actor'];self.assertEqual(father,'father-'+first.lower())
+                    self.assertEqual(constructed,['mother',father])
+                    self.assertEqual(rt.ledger.actor('mother')[1],maternal)
+                    self.assertEqual(rt.ledger.events()[:len(earlier_events)],earlier_events)
+                    world=rt.ledger.world()[1];family=world['family_genesis']
+                    self.assertNotEqual(family['selected_pathway']['maternal_proposal_state_digest'],
+                                        family['selected_pathway']['maternal_selection_state_digest'])
+                    self.assertEqual(world['relations'],{})
+                    self.assertEqual(set(rt.ledger.actors()),{'mother',father})
+                    self.assertEqual(rt.ledger.actor(father)[1]['projects'][0]['object'],
+                                     'independent life '+first.lower())
+                    with self.assertRaisesRegex(ValueError,'FAMILY_CONCEPTION_WRONG_SOURCE_OR_CLOCK'):
+                        rt.admit_family_conception()
+                    self.assertEqual(rt.step(father,requested_action='CARE',target='mother')['status'],'PERFORMED')
+                    rt.admit_family_conception()
+                    self.assertNotIn('nadia',rt.ledger.actors())
+                    v,original=rt.ledger.world()
+                    forged=copy.deepcopy(original)
+                    forged['family_genesis']['stage']='CHILD_BORN'
+                    with self.assertRaisesRegex(Conflict,'FAMILY_TRANSITION_REQUIRES_QUALIFIED_EVENT'):
+                        rt.ledger.commit(rt.world_id,v,forged,{}, {},'ORDINARY_WORLD_EVENT',None,{})
+                    self.assertEqual(rt.ledger.world()[1],original)
+                    w=rt.ledger.world()[1];actors=rt.ledger.actors();count=rt.verify()['events']
+                    with self.assertRaisesRegex(Conflict,'FAMILY_BIRTH_BOUNDARY'):
+                        rt.background(4)
+                    self.assertEqual(rt.ledger.world()[1],w)
+                    self.assertEqual(rt.ledger.actors(),actors)
+                    self.assertEqual(rt.verify()['events'],count)
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    for _ in range(4):
+                        if 'nadia' in rt.ledger.actors():break
+                        rt.advance_to_discontinuity(horizon=5-rt.ledger.world()[1]['clock'] or 1)
+                    self.assertEqual(rt.ledger.world()[1]['clock'],5)
+                    self.assertEqual(rt.ledger.actor('nadia')[1],newborn('nadia','Nadia'))
+                    self.assertEqual(rt.ledger.world()[1]['family_genesis']['birth']['biological_lineage_refs'],
+                                     ['mother',father])
+                    self.assertEqual(rt.ledger.world()[1]['family_genesis']['stage'],'CHILD_BORN')
+                    self.assertFalse(any('nadia' in x['participants'] for x in
+                                         rt.ledger.world()[1]['relations'].values()))
+                    self.assertEqual(rt.step('mother',requested_action='CARE',target='nadia')['status'],'PERFORMED')
+                    child=rt.ledger.actor('nadia')[1]
+                    self.assertGreater(child['body']['comfort'],.66)
+                    self.assertTrue(child['experienced_care_events'])
+                    self.assertTrue(rt.verify()['valid'])
+                    outcomes[first]=(father,child['body']['comfort'])
+                finally:rt.close()
+            self.assertNotEqual(outcomes['REST'][0],outcomes['WAIT'][0])
+
+    def test_no_lived_history_or_impossible_location_cannot_admit_counterpart(self):
+        from um_sorok_organism.storage import Conflict
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'))
+            try:
+                rt.initialize_antecedent_adult('mother','Mother',self.packet('mother','ordinary life'))
+                row={'id':'path','source_ref':'fictional:path','intersection_clock':1,
+                     'intersection_site':'workshop','conception_clock':2,'birth_clock':5,
+                     'counterpart_id':'father','counterpart_name':'Father',
+                     'counterpart_packet':self.packet('father','independent life'),
+                     'child_id':'nadia','child_name':'Nadia',
+                     'prior_shared_effects':'UNMODELED_NO_RETROACTIVE_WRITE'}
+                bad=copy.deepcopy(row);bad['counterpart_id']='workshop_steward'
+                with self.assertRaisesRegex(ValueError,'FAMILY_PATHWAY_OVERLAP_OR_IDENTITY'):
+                    rt.register_family_pathways('mother',[bad])
+                sid=rt.register_family_pathways('mother',[row])['source_seal_id']
+                rt.background(1)
+                before=rt.ledger.world()[1]
+                with self.assertRaisesRegex(ValueError,'FAMILY_NO_SITUATED_PATHWAY'):
+                    rt.select_family_intersection(sid)
+                self.assertEqual(rt.ledger.world()[1],before)
+                self.assertEqual(set(rt.ledger.actors()),{'mother'})
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()

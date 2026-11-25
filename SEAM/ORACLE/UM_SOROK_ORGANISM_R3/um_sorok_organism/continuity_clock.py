@@ -76,6 +76,12 @@ def next_discontinuity(world, actors, horizon):
         raise ValueError('CONTINUITY_INVALID_WORLD_CLOCK')
     end=clock+horizon
     candidates=[]
+    family=world.get('family_genesis',{})
+    if family.get('stage')=='CONCEPTION_ADMITTED':
+        birth=family['selected_pathway']['birth_clock']
+        if clock<=birth<=end:
+            candidates.append({'at':birth,'kind':'CONDITIONAL_FAMILY_BIRTH','actor':None,
+                'source_ref':family['conception']['id'],'grade':GRADE})
     for obligation in world.get('scheduled_obligations',[]):
         if not isinstance(obligation,dict) or obligation.get('status')!='PENDING':
             continue
@@ -107,6 +113,7 @@ def next_discontinuity(world, actors, horizon):
     structural=next_material_gate_discontinuity(world,actors,horizon)
     if structural:candidates.append(structural)
     candidates.sort(key=lambda d:(d['at'],
+                        -1 if d['kind']=='CONDITIONAL_FAMILY_BIRTH' else
                         0 if d['kind']=='OBLIGATION_DUE' else
                         1 if d['kind']=='STRUCTURAL_GATE_TRANSITION' else 2,
                         str(d.get('source_ref'))))
@@ -140,6 +147,12 @@ def continue_to_discontinuity(runtime, horizon=30, processes=None):
     ordinary=None
     if advance>0:
         ordinary=runtime.background(advance,processes=processes)
+    if target['kind']=='CONDITIONAL_FAMILY_BIRTH':
+        birth=runtime.realize_family_birth()
+        return {'historical_discontinuity':target,
+                'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
+                'high_resolution_actor_event':None,'family_birth_receipt':birth['receipt'],
+                'new_actor':birth['actor'],'unwritten_microevents_remain_unknown':True,'grade':GRADE}
     if target['kind']=='HUMAN_OFFER_WINDOW_ELAPSES':
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,

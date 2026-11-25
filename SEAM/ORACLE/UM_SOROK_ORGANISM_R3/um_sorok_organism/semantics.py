@@ -303,6 +303,9 @@ class HeuristicSemanticProvider:
             return {'task':task,'responses':{},
                 'status':'NO_INDEPENDENT_FALLBACK_INTERVIEW_EVALUATOR',
                 'semantic_grade':self.grade}
+        if task=='family_pathway_selection':
+            # No arbitrary first-candidate selection or assumed maternal will.
+            return {'task':task,'pathway_id':None,'semantic_grade':self.grade}
         if task=='adult_constructor':
             target=packet['pseudo_respondent']
             answers=target.get('answers',{})

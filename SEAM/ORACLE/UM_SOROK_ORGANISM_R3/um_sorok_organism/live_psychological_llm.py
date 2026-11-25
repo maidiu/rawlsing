@@ -24,7 +24,7 @@ class _NoRedirect(HTTPRedirectHandler):
 
 
 _ALLOWED=("actor_attempt","development","adult_constructor",
-          "blind_adult_interview","expression")
+          "blind_adult_interview","expression","family_pathway_selection")
 
 
 class ExplicitJSONLLMProvider:
@@ -120,6 +120,33 @@ class ExplicitJSONLLMProvider:
             "nominate an exact REVISE_FUNCTIONAL_CORRESPONDENCE candidate or abstain. "
             "Consolidation permits repeated context-bound exploration, not a durable "
             "motive; suspension conserves the history. Do not invent a revision basis. "
+            "For historically_possible_notice_expectations you may nominate "
+            "ACQUIRE_NOTICE_EXPECTATION with exact basis and anticipated_availability "
+            "AVAILABLE, UNAVAILABLE or UNRESOLVED. An inspected notice need not be "
+            "true or correctly interpreted. An actor_attempt may select its exact "
+            "notice_expectation_ref on an otherwise offered operation, not a grant. "
+            "For historically_possible_notice_revisions nominate REVISE_NOTICE_EXPECTATION "
+            "with exact basis and revision RETAIN, AVAILABLE, UNAVAILABLE, UNRESOLVED "
+            "or SUSPEND, or abstain. A personally incomplete act does not reveal "
+            "the hidden institutional cause or entail correction. "
+            "For historically_possible_expressive_practices, you may optionally nominate "
+            "ACQUIRE_EXPRESSIVE_PRACTICE with exact basis and one allowed cadence. "
+            "This is a particular acquired manner of vocal enactment, not a universal "
+            "emotion display, diagnosis, intentional disclosure or lexical content. "
+            "A later actually performed speech may manifest it without revealing its "
+            "private origin. The actor's own received sound can become further experience. "
+            "For historically_possible_repair_techniques, distinct personally selected "
+            "and received object repairs after qualified modeled practice may license "
+            "an exact ACQUIRE_REPAIR_TECHNIQUE candidate or abstention. No fabricated "
+            "microevents, universal skill, motive or material permission follows. "
+            "For actor_attempt you may deliberately orient to an issued undertaking "
+            "with action ORIENT and exact undertaking_attention_id, without any other "
+            "project/trial or private rehearsal selection. This apprehends a particular "
+            "outward sign, not future fulfilment or the Other's intentions. "
+            "For development, actual_undertaking_attention_analyst_only may support "
+            "a MEMORY with undertaking_attention_ref equal to its attention_id and "
+            "fallible personally construed content; or abstain. The objective passage "
+            "of a deadline does not itself become actor experience or knowledge. "
             "For actor_attempt, an offered private_rehearsal_options may be selected "
             "with action WAIT, exact private_rehearsal_id and private_rehearsal_content "
             "(bounded imagined comparison), no other purpose or trial selection. "
@@ -161,6 +188,10 @@ class ExplicitJSONLLMProvider:
             "is optional: an actual learned coordination, later failed addressed use, "
             "then distinct independently enacted relief. Nominate the exact basis or "
             "abstain. Do not infer abandonment, affection, or mastery. "
+            "For family_pathway_selection choose an exact eligible pathway_id or null "
+            "using the actually changed maternal state; this is analyst conditional "
+            "story selection, not proof of maternal reproductive consent, "
+            "empirical couple probability or a retroactive shared history. "
             "For adult_constructor all history is explicitly fictional. "
             "THIN_BIOGRAPHY or AUTHORED_WORLD_HISTORY may have no instrument. "
             "Construct operative historically plausible forms and projects "
