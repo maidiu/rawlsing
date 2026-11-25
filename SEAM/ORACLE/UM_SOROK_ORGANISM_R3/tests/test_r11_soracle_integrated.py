@@ -1761,3 +1761,171 @@ class PluralActivityAffectR42(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'PLURAL_EXPECTATION_OPTION_CONTRADICTION'):
             start_selected_expectations(a,sel,exp,'event')
         self.assertEqual(a,before)
+
+
+class PrivateRehearsalR43(unittest.TestCase):
+    def test_private_rehearsal_of_acquired_affect_changes_actual_future_course(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.reflective_regulation import offer_private_rehearsals
+        secret='Perhaps I could make room for quiet without earning it first.'
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for choose in (True,False):
+                stage='start'; private_receipts=[]; exposed=[]
+                def callback(task,packet):
+                    if task=='expression':
+                        self.assertNotIn(secret,str(packet))
+                        return {'task':task,'surface':'An ordinary interval.'}
+                    if packet.get('actor',{}).get('id')!='worker':
+                        if task=='actor_attempt':
+                            self.assertNotIn(secret,str(packet))
+                            return {'task':task,'action':'WAIT'}
+                        if task=='development':
+                            self.assertNotIn(secret,str(packet))
+                            return {'task':task,'candidates':[]}
+                    if task=='actor_attempt':
+                        if stage=='start':
+                            return {'task':task,'action':'REST','project_id':'duty'}
+                        if stage=='rehearse':
+                            opts=packet['private_rehearsal_options']
+                            linked=[o for o in opts if o['affective_object'] is not None]
+                            self.assertEqual(len(linked),1)
+                            self.assertEqual(linked[0]['affective_object']['affect_name'],'unease')
+                            self.assertTrue(any(o['affect_ref'] is None for o in opts))
+                            if choose:
+                                return {'task':task,'action':'WAIT',
+                                    'private_rehearsal_id':linked[0]['rehearsal_id'],
+                                    'private_rehearsal_content':secret}
+                        if stage=='trial':
+                            opts=[t for t in packet['possible_end_trials']
+                                  if t.get('private_rehearsal_ref')]
+                            if opts:
+                                self.assertEqual(len(opts),1)
+                                self.assertEqual(opts[0]['matching_present_terms'],[])
+                                return {'task':task,'possible_end_trial_id':opts[0]['trial_id']}
+                        if stage=='later':
+                            return {'task':task,'action':'REST'}
+                        if stage=='project':
+                            rows=[x for x in packet['practical_options']
+                                  if x.get('project_id') not in (None,'duty')
+                                  and x['operation']=='REST']
+                            if rows:return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        exp=packet['experience']
+                        if stage=='appraise':
+                            rows=packet['historically_possible_delayed_appraisals']
+                            self.assertTrue(rows)
+                            return {'task':task,'candidates':[{'kind':'APPRAISE_EXPECTED_DIFFERENCE',
+                                    'expectation_ref':rows[0]['expectation_ref'],
+                                    'perceived_cue_ref':rows[0]['source_perceived_cue_ref'],
+                                    'appraisal':'ACTOR_INTERPRETS_DISAPPOINTED'}]}
+                        if stage=='affect':
+                            rows=packet['historically_possible_activity_affects']
+                            self.assertTrue(rows)
+                            return {'task':task,'candidates':[
+                                {'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':rows[0],
+                                 'affect_name':'unease','personal_sense':'quiet conflicts with duty',
+                                 'course_orientation':'WITHHOLD'},
+                                {'kind':'MEMORY','cue_terms':['wait'],
+                                 'content':'An uneasy quiet interval'}]}
+                        receipt=packet.get('actual_private_rehearsal_analyst_only')
+                        if receipt:
+                            private_receipts.append(copy.deepcopy(receipt))
+                            exposed.append(copy.deepcopy(exp))
+                            return {'task':task,'candidates':[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                                'rehearsal_ref':receipt['id'],'possible_object':'make room for quiet',
+                                'possible_means':['REST']}]}
+                        if stage=='later' and choose:
+                            end=next(e for e in packet['actor_possible_ends']
+                                     if e.get('private_rehearsal_ref'))
+                            return {'task':task,'candidates':[{'kind':'TAKE_UP_POSSIBLE_END',
+                                    'possible_end_ref':end['id'],'means':['REST']}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(choose));service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'duty','object':'sustain availability',
+                        'means':['REST'],'status':'active','priority':.5,
+                        'expected_difference':{'feature':'availability','direction':'PRESERVE',
+                                               'sign_tags':['wait']}}]
+                    rt.ledger.initialize(blank_world(),[a,adult('other','Other')])
+                    rt.step('worker')
+                    stage='appraise';rt.step('worker')
+                    stage='affect';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['memories']),1)
+                    self.assertEqual(len(a['expectations'][0]['affective_organizations']),1)
+                    stage='rehearse'
+                    # An externally requested WAIT cannot fabricate the
+                    # private act, even when the same private option exists.
+                    rt.step('worker',requested_action='WAIT')
+                    self.assertEqual(private_receipts,[])
+                    before=rt.ledger.world()[1]
+                    rt.step('worker')
+                    after=rt.ledger.world()[1]
+                    self.assertEqual(after['clock'],before['clock']+1)
+                    self.assertEqual(after['sites'],before['sites'])
+                    self.assertNotIn(secret,str(after))
+                    self.assertNotIn(secret,str(rt.ledger.actor('other')[1]))
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(private_receipts),int(choose))
+                    self.assertEqual(len(a['possible_ends']),int(choose))
+                    self.assertEqual(len(a['memories'][0].get('private_rehearsals',[])),int(choose))
+                    self.assertEqual(len(a['projects']),1)
+                    if choose:
+                        end=a['possible_ends'][0];rec=private_receipts[0]
+                        self.assertEqual(end['private_rehearsal_ref'],rec['id'])
+                        self.assertIsNone(end['actor_perceived_cue_ref'])
+                        self.assertEqual(end['cue_terms'],[])
+                        self.assertEqual(rec['affect_ref'],a['expectations'][0]['affective_organizations'][0]['id'])
+                        bad={'kind':'NOTICE_PRIVATE_POSSIBLE_END','rehearsal_ref':'forged',
+                             'possible_object':'fake','possible_means':['REST']}
+                        saved=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'PRIVATE_END_NO_ACTUAL_REHEARSAL'):
+                            admit(a,exposed[0],rec['event_ref'],[bad])
+                        self.assertEqual(saved,a)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='trial'
+                    res=rt.step('worker')
+                    final[choose]=res['attempt']
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),1)
+                    if choose:
+                        self.assertEqual(len(a['possible_ends'][0]['trial_history']),1)
+                        self.assertEqual(a['possible_ends'][0]['trial_history'][0]['private_rehearsal_ref'],
+                                         private_receipts[0]['id'])
+                    stage='later';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),2 if choose else 1)
+                    if choose:
+                        self.assertEqual(a['projects'][1]['takeup_evidence']['private_takeup_basis']
+                                         ['rehearsal_ref'],private_receipts[0]['id'])
+                    stage='project'
+                    self.assertEqual(rt.step('worker')['attempt'],'REST' if choose else 'WAIT')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(final,{True:'REST',False:'WAIT'})
+
+    def test_private_rehearsal_cannot_use_unowned_or_preverbal_source(self):
+        from um_sorok_organism.reflective_regulation import offer_private_rehearsals
+        from um_sorok_organism.types import blank_world
+        child=newborn('child','Child')
+        self.assertEqual(offer_private_rehearsals(child,0,'home',['WAIT','REST']),[])
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'),semantic=ValidatingSemanticService(
+                CallbackLLMProvider(lambda task,p: {'task':task,'action':'WAIT',
+                    'private_rehearsal_id':'forged','private_rehearsal_content':'invented'})))
+            try:
+                rt.ledger.initialize(blank_world(),[adult('worker','Mara')])
+                before=rt.ledger.world()[1]
+                with self.assertRaisesRegex(ValueError,'PRIVATE_REHEARSAL_UNISSUED'):
+                    rt.step('worker')
+                self.assertEqual(rt.ledger.world()[1],before)
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
