@@ -1,5 +1,27 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+## Anticipatory engineering continuation — 2026-11-25, #1353/#1354 (author receiving candidate)
+
+User: “if you have not exhausted them, knuckle down and get into your absolute best”. Continue the already banked anticipatory mandate; no new research gate, no claims that author engineering has exhausted all solutions, no competing architecture. Exact linear implementation lineage #1346 → #1353 → #1354; protected PRE-MAIN not modified. The GitHub ref-update operation repeatedly returned GraphQL errors despite exact unchanged expected refs; separate stacked draft PRs preserve the existing branch lineage rather than force or overwrite it.
+
+Construction in existing S03/I02/I03/S04/FF01 owners:
+- `e786c9290abca65e24db33f653de93e7e48ccb49`: ordered cold product bulk read, one full admission bracket, independent current authority pre/post each item, request refs detached; no successful partial return on revocation. Individual read contract preserved. Negative revocation test.
+- `ccdb7654221ef9558dcbc3d8cd7afc1b3195a2a4`: stream exact sourcefree U43 envelope and projection cache hashes instead of expanding routing graph; linear catalog lookup, packed target/risk routing postings in existing lookup ABI, locator/ordering attestation. Full canonical routing remains resident; this is not an O(1) authority claim.
+- `190593fa2ef9be80bb3e198a7fc346fd3523e9fa`: private I02 collector validates each actual response event and authority during emission, keeps compact headers/selectors, preserves full occurrence/scope/question/replay/coverage validation and reconstructs exact bodies from numeric lanes. Replay manifest hash streams closure refs; occurrence digest collision conservatively refuses, never silently merges. Existing public ingest retains full-object contract; no public header bypass.
+- `162c88b222fe4ad542f6577edefb08c09db99729`: bind compact path to live reader, not caller-provided cell factory; preserve validation order. Direct release, replay, complete event refs, weighted/raw parity and eager-compactor tripwire tested.
+
+Exact execution: generated sourcefree country 256 respondents × 300 physical columns / 80 governed, 20,480 routing facts, 100 distinct native I03 plus one I05; numerical cell numerator/denominator oracle; cold actual existing products. Separate CI runs, not controlled per-change causal estimates or original host evidence:
+
+| PR / exact run | Native preparation s | 100 I03 s | Native + S04 s | Cold S04 s | Peak process memory |
+|---|---:|---:|---:|---:|---:|
+| [#1346](https://github.com/maidiu/rawlsing/actions/runs/45512724872) | 18.19 | 15.02 | 79.17 | 43.79 | 545 MiB |
+| [#1353](https://github.com/maidiu/rawlsing/actions/runs/45652409276) | — | 4.83 | 58.75 | 17.50 | 443 MiB |
+| [#1354](https://github.com/maidiu/rawlsing/actions/runs/45652822714) | 14.2603 | 4.1394 | 53.0811 | 15.74462 | 452644 KiB |
+
+#1354 exact `162c88b222fe4ad542f6577edefb08c09db99729`: wide PASS (job 139341508417); 14 country/hostile PASS, 3 smaller economics PASS + 1 skipped; broader 49 PASS / 6 FAIL (inherited custody test callers omit mandatory resolver; no weakening, #1162). Source 1,244,944 bytes full generated SAV; country 495,616 bytes; publication 5.94485s; 100 cold reads once open 3.349786s; closure referenced 13,797,513 bytes. Memory includes fixture/test hash controls. Small fixture native 10.5987s, preparation 4.5598s, publication 1.3713s, cold 3.78165s. Distinct query and exact consumer pass is real but generated-source only.
+
+Remaining actual bottleneck: 214 admission checks 28.30s including 206 prepared routing digest calls 19.98s. Eager issued routing graph and closure refs still resident; durable archive 13.8 MB for 100 queries warrants accounting at realistic breadth. Continue true-grain routing/proof ownership and replay/closure economy in existing owners; do not substitute raised caps, weakened live authority, caller identity cache or opaque scientific shortcuts. Original survey rights, scoped projections/weights, actual host/operator resume and FIELD-FORGE downstream acceptance remain unqualified. Independent review and equivalent-carrier/protected receiving pending. HQ_CURRENTNESS_HOLD__R24_COUNTRY_NUMERIC_RECEIVING_PENDING. No reactivation of S3 expansion as a shipping prerequisite.
+
 ## Anticipatory implementation advance — 2026-11-24, #1346
 
 User mandate above now materially affects the existing S03 carrier, native query and delivery owners. Exact candidate HEAD 24ec40c085520051dc3b07ef028792116e4d7ede; protected PRE-MAIN not modified; independent receiving pending. No new carrier, analytical engine, research gate or scientific authorization. Construction changes:
