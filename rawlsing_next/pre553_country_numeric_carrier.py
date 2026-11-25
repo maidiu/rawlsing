@@ -10,6 +10,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass, asdict
 from collections import OrderedDict
+from collections.abc import Sequence
+from copy import deepcopy
 from array import array
 import shutil
 import sys
@@ -126,9 +128,15 @@ def _pack_dictionary(dictionary):
     new=_BINARY_DICTIONARY+zlib.compress(body)
     return new if len(new)<len(old) else old
 
-def _read_dictionary(payload):
+def _read_dictionary(payload, *, typed=False):
+    """Keep the old token export; actual readers request typed R5 entries."""
     if not payload.startswith(_BINARY_DICTIONARY):
-        return tuple(json.loads(_bounded_decompress(payload)))
+        tokens=tuple(json.loads(_bounded_decompress(payload)))
+        if not typed:
+            return tokens
+        return _TypedCellDictionary(
+            tuple(_CODEC.decode(json.loads(token)) for token in tokens),
+            tokens=tokens)
     body=_bounded_decompress(payload[len(_BINARY_DICTIONARY):])
     if len(body)<16:
         raise CountryCarrierError("truncated binary R5 dictionary")
@@ -151,6 +159,10 @@ def _read_dictionary(payload):
     if any(not isinstance(x,list) or len(x)!=3 for x in meta):
         raise CountryCarrierError("invalid R5 cell metadata")
     other=iter(escapes);tokens=[]
+    # Metadata is genuinely shared across raw dictionary values. Decode it
+    # once; mutable descendants are detached only at the cell export boundary.
+    tails=tuple(tuple(_CODEC.decode(part) for part in tail) for tail in meta) if typed else ()
+    entries=[]
     for tag,code in zip(tags,codes):
         if tag==0:
             raw={"t":"float64_finite","bits":next(floats).hex()}
@@ -158,8 +170,68 @@ def _read_dictionary(payload):
             raw={"t":"int","v":str(struct.unpack(">q",next(ints))[0])}
         else:
             raw=next(other)
-        tokens.append(canonical_json({"t":"tuple","v":[raw,*meta[code]]}))
-    return tuple(tokens)
+        if typed:
+            entries.append((_CODEC.decode(raw),*tails[code]))
+        else:
+            tokens.append(canonical_json({"t":"tuple","v":[raw,*meta[code]]}))
+    return _TypedCellDictionary(tuple(entries)) if typed else tuple(tokens)
+
+
+def _needs_detach(value):
+    # R5 decoding produces builtin containers, immutable scalars and the
+    # frozen opaque escape. Nested tuples can still contain mutable members.
+    if type(value) in (dict,list):
+        return True
+    return type(value) is tuple and any(_needs_detach(x) for x in value)
+
+
+class _TypedCellDictionary(Sequence):
+    """One decoded value/state tuple per distinct R5 cell token.
+
+    No binary->JSON text->JSON parse roundtrip. Shared mutable metadata never
+    escapes as an alias. The original canonical-token sequence remains
+    available on demand for consumers that explicitly need a wire witness.
+    """
+    __slots__=("_entries","_detach","_tokens")
+    def __init__(self,entries,*,tokens=None):
+        for entry in entries:
+            if type(entry) is not tuple or len(entry)!=4:
+                raise CountryCarrierError("invalid typed R5 cell dictionary entry")
+            PhysicalMissingState(entry[1])
+        self._entries=entries
+        self._detach=bytes(_needs_detach(entry) for entry in entries)
+        self._tokens=tokens
+    def __len__(self):
+        return len(self._entries)
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return tuple(self[i] for i in range(*index.indices(len(self))))
+        if self._tokens is not None:
+            return self._tokens[index]
+        return canonical_json(_CODEC.encode(self._entries[index]))
+    def decoded(self,index):
+        entry=self._entries[index]
+        return deepcopy(entry) if self._detach[index] else entry
+    def observed_codes_for(self,value):
+        target=_CODEC.typed_key(value)
+        return frozenset(i for i,(raw,state,_,_) in enumerate(self._entries)
+            if state==PhysicalMissingState.OBSERVED_STORAGE_VALUE.value and _CODEC.typed_key(raw)==target)
+    def retained_bytes(self):
+        # Conservative shallow+recursive accounting of distinct reachable
+        # Python objects, not a serialization of each token or process RSS.
+        seen=set()
+        def size(value):
+            identity=id(value)
+            if identity in seen:
+                return 0
+            seen.add(identity)
+            total=sys.getsizeof(value)
+            if isinstance(value,(tuple,list)):
+                total+=sum(size(x) for x in value)
+            elif isinstance(value,dict):
+                total+=sum(size(k)+size(v) for k,v in value.items())
+            return total
+        return sys.getsizeof(self)+size(self._entries)+size(self._detach)+size(self._tokens)
 
 def _digest(kind,coordinates,*payloads):
     """Domain- and coordinate-bound authentication of exact stored bytes."""
@@ -248,13 +320,22 @@ class NumericColumn:
     """Codes and exact R5 value/state dictionary, in original respondent order."""
     row_ordinals: tuple[int, ...]
     codes: tuple[int, ...]
-    dictionary: tuple[str, ...]
+    dictionary: Sequence[str]
+
+    def cell_at(self, offset, ordinal, name):
+        row,code=self.row_ordinals[offset],self.codes[offset]
+        if type(self.dictionary) is _TypedCellDictionary:
+            raw,state,declaration,label=self.dictionary.decoded(code)
+            return PhysicalCell(row,ordinal,name,raw,PhysicalMissingState(state),declaration,label)
+        return _decode_cell(row,ordinal,name,self.dictionary[code])
 
     def cells(self, ordinal, name):
-        for row, code in zip(self.row_ordinals, self.codes):
-            yield _decode_cell(row, ordinal, name, self.dictionary[code])
+        for offset in range(len(self.row_ordinals)):
+            yield self.cell_at(offset,ordinal,name)
 
     def observed_codes_for(self, value):
+        if type(self.dictionary) is _TypedCellDictionary:
+            return self.dictionary.observed_codes_for(value)
         target = _CODEC.typed_key(value)
         result = set()
         for i, token in enumerate(self.dictionary):
@@ -648,7 +729,7 @@ class CountryReader:
         width,payload,codes = lane
         if self._lane_auth is not None and self._lane_auth.get((block,ordinal))!=_digest("LANE",(block,ordinal,width),payload,codes):
             raise CountryCarrierError("column lane authentication failed")
-        dictionary = _read_dictionary(payload)
+        dictionary = _read_dictionary(payload,typed=True)
         if width==0:
             if self.receipt.lane_root is None or codes!=b"" or len(dictionary)!=len(rows):
                 raise CountryCarrierError("invalid implicit identity code lane")
@@ -917,8 +998,8 @@ class _CountryEventBodies:
             lane=self.reader._column(block,rows,slot.slot.ordinal)
             size=(sys.getsizeof(lane)+sys.getsizeof(lane.codes)
                   +sum(sys.getsizeof(x) for x in lane.codes)
-                  +sys.getsizeof(lane.dictionary)
-                  +sum(sys.getsizeof(x) for x in lane.dictionary))
+                  + (lane.dictionary.retained_bytes() if type(lane.dictionary) is _TypedCellDictionary
+                     else sys.getsizeof(lane.dictionary)+sum(sys.getsizeof(x) for x in lane.dictionary)))
             if size<=8*1024*1024:
                 while self.cache and (len(self.cache)>=32 or self.cache_bytes+size>8*1024*1024):
                     _,(_,old)=self.cache.popitem(last=False)
@@ -928,7 +1009,7 @@ class _CountryEventBodies:
         else:
             lane,_=lane
             self.cache.move_to_end(key)
-        return _decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
+        return lane.cell_at(offset,slot.slot.ordinal,slot.slot.name)
 
     def materialize(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
