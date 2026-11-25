@@ -873,6 +873,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     else:output='ACT_COMPLETED'
     performed[0]['status']=status
     world['clock']+=1
+    from .continuity_clock import settle_human_offer_deadlines
+    settle_human_offer_deadlines(world)
     # A receipt may only identify a material claim if this action really
     # produced one; a blocked WORK attempt or a non-employer site does not.
     last_claim=world.get('material_claims',[])[-1] if world.get('material_claims') else None

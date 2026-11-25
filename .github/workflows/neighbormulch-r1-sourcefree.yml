@@ -25,6 +25,7 @@ on:
       - agent/neighbormulch-r21-incidental-object-end-20261124-r1
       - agent/neighbormulch-r22-reciprocal-r21-r39-20261124-r1
       - agent/neighbormulch-r23-human-project-reconstitution-20261124-r1
+      - agent/neighbormulch-r24-explicit-commitment-time-20261125-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -64,6 +65,7 @@ jobs:
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_supported_means_afterlife_r20.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_incidental_object_end_r21.py
           python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_human_project_reconstitution_r23.py
+          python -m py_compile SEAM/NEIGHBORMULCH/tests/test_neighbor_commitment_time_r24.py
       - name: Contract-spy normal and optimized
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_contract.py' -v
@@ -152,6 +154,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_human_project_reconstitution_r23.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_human_project_reconstitution_r23.py' -q
+      - name: R24 explicit human commitment and modeled temporal boundary
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_commitment_time_r24.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_commitment_time_r24.py' -q
       - name: Full inherited CO R39 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR',
-                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED'})
+                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -176,6 +176,15 @@ def sensory_evidence(world: dict, actor: dict, visitor: dict, operation: str,
                        'grade': grade, 'target_identity_known': False,
                        'visitor_knowledge_known': False,
                        'actor_notice_not_established': True})
+    if (operation == 'PLEDGE_OFFER' and visible and sound
+            and actor.get('body',{}).get('language',0)>=.35):
+        # A structured outward undertaking. Not an actor's agreement,
+        # comprehension, expected future receipt, or emotional appraisal.
+        result.append({'event_ref':event_ref,'actor':actor['id'],
+                       'modality':'auditory','kind':'visitor_offer_undertaking',
+                       'tags':['visitor','food','future_offer'],
+                       'description':'A visitor undertakes to offer food later.',
+                       'grade':grade,'visual_identity_eligible':True})
     if operation == 'OFFER_FEED' and visible:
         result.append({'event_ref': event_ref, 'actor': actor['id'],
                        'modality': 'visual', 'kind': 'visitor_food_offer',
@@ -289,7 +298,8 @@ class NeighborEncounter:
     def contribute(self, request_id: str, operation: str, *, text: str | None = None,
                    destination: str | None = None, target_object_ref: str | None = None,
                    cover_text: str | None = None,
-                   target_actor_ref: str | None = None):
+                   target_actor_ref: str | None = None,
+                   due_clock: int | None = None):
         """One user-authored world event with derived actor-eligible signs.
 
         Retries are idempotent *against the durable world request index*;
@@ -320,11 +330,16 @@ class NeighborEncounter:
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         if target_actor_ref is not None:
-            if operation not in ('SING', 'OFFER_FEED'):
+            if operation not in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
                 raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
             target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
-        if operation == 'OFFER_FEED' and target_actor_ref is None:
+        if operation in ('OFFER_FEED','PLEDGE_OFFER') and target_actor_ref is None:
             raise EncounterRefusal('FOOD_OFFER_REQUIRES_ADDRESSEE')
+        if operation == 'PLEDGE_OFFER':
+            if type(due_clock) is not int or due_clock<0:
+                raise EncounterRefusal('INVALID_HUMAN_OFFER_DEADLINE')
+        elif due_clock is not None:
+            raise EncounterRefusal('UNAUTHORED_DEADLINE')
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
         request_payload = {'user': self.user_id, 'operation': operation,
@@ -335,8 +350,10 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
-        elif operation in ('SING', 'OFFER_FEED'):
+        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             request_payload['target_actor_ref'] = target_actor_ref
+            if operation=='PLEDGE_OFFER':
+                request_payload['due_clock']=due_clock
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
@@ -348,7 +365,9 @@ class NeighborEncounter:
             if existing is None:
                 raise EncounterRefusal('REQUEST_INDEX_WITHOUT_COMMITTED_EVENT')
             return {'status': prior['status'], 'event_ref': prior['event_ref'],
-                    'idempotent_replay': True, 'receipt': existing}
+                    'idempotent_replay': True, 'receipt': existing,
+                    **({'human_offer_commitment_ref':prior['human_offer_commitment_ref']}
+                       if prior.get('human_offer_commitment_ref') is not None else {})}
         participants = world.setdefault('neighbor_users', {})
         person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
         origin = person['location']
@@ -407,7 +426,7 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
-        elif operation in ('SING', 'OFFER_FEED') and target_actor_ref is not None:
+        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
             # Unaddressed singing is ordinary activity; only an explicitly
             # authored, presently accessible addressee can qualify a joint
             # occasion. The visitor cannot bind the addressee's response.
@@ -458,18 +477,32 @@ class NeighborEncounter:
             else:
                 status = 'BLOCKED'
                 material_outcome = 'VISITOR_MATERIAL_ATTEMPT_NOT_AVAILABLE'
+        # Existing continuity owner shares the same transaction as the
+        # authored act. No discretionary human offer during absent passage.
         world['clock'] += 1
+        if world.get('scheduled_obligations') or operation in ('PLEDGE_OFFER','OFFER_FEED'):
+            from um_sorok_organism.continuity_clock import (
+                settle_human_offer_deadlines, record_human_offer_commitment,
+                record_authored_food_offer)
+            settle_human_offer_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
+        commitment_ref=None
+        if status=='PERFORMED' and operation=='PLEDGE_OFFER':
+            commitment_ref=record_human_offer_commitment(
+                world,self.user_id,target_actor_ref,loc,due_clock,ref)
+        elif status=='PERFORMED' and operation=='OFFER_FEED':
+            commitment_ref=record_authored_food_offer(
+                world,self.user_id,target_actor_ref,loc,ref)
         evidence = []
-        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED'):
+        if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             _bound_source(world)
             for actor_id, actor in self.runtime.ledger.actors().items():
                 eligible = sensory_evidence(world, actor,
                     {'spoken_text': cover_text if operation == 'LOOK' else text},
                     operation, origin, loc, ref)
                 for sign in eligible:
-                    if operation == 'OFFER_FEED' and actor_id != target_actor_ref:
+                    if operation in ('OFFER_FEED','PLEDGE_OFFER') and actor_id != target_actor_ref:
                         # This scoped implementation only supplies the
                         # addressee's qualified offer; bystander witnessing
                         # remains a separate, unimplemented projection.
@@ -483,6 +516,10 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation=='PLEDGE_OFFER':
+                        cue.update(visitor_event_ref=ref,visitor_ref=self.user_id,
+                                   commitment_ref=commitment_ref,due_clock=due_clock,
+                                   no_recipient_consent_or_comprehension_established=True)
                     if operation in ('SING', 'OFFER_FEED'):
                         # Actual human authorship is not a synthetic actor.
                         # Only a simultaneously eligible visual channel can
@@ -513,8 +550,12 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
-        if operation in ('SING', 'OFFER_FEED'):
+        if operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             event['target_actor_ref'] = target_actor_ref
+        if operation=='PLEDGE_OFFER':
+            event['due_clock']=due_clock
+        if commitment_ref is not None:
+            event['human_offer_commitment_ref']=commitment_ref
         if operation == 'SIGN_HALL_PETITION':
             event.update(material_outcome=material_outcome,
                          institutional_policy_ref=policy_ref,
@@ -526,7 +567,9 @@ class NeighborEncounter:
         world.setdefault('neighbor_user_events', []).append(event)
         world.setdefault('neighbor_user_requests', {})[req_key] = {
             'event_ref': ref, 'payload_hash': payload_hash, 'status': status,
-            'ledger_receipt': None}
+            'ledger_receipt': None,
+            **({'human_offer_commitment_ref':commitment_ref}
+               if commitment_ref is not None else {})}
         receipt = self.runtime.ledger.commit(self.runtime.world_id, version, world,
             {}, {}, 'NEIGHBOR_USER_CONTRIBUTION', None,
             {'user_event_ref': ref, 'source': 'SOURCEFREE_USER_SUBMITTED',
@@ -540,7 +583,56 @@ class NeighborEncounter:
         # returned envelope ID; never make a second write to attach it.
         return {'status': status, 'event_ref': ref, 'receipt': receipt['id'],
                 'idempotent_replay': False, 'potential_actor_evidence': evidence,
-                'actor_uptake': 'NOT_ESTABLISHED'}
+                'actor_uptake': 'NOT_ESTABLISHED',
+                **({'human_offer_commitment_ref':commitment_ref}
+                   if commitment_ref is not None else {})}
+
+    def own_food_commitments(self):
+        """Own authored contract history, not another person's private life.
+
+        Cross-check against the existing immutable contribution ledger.
+        Reading does not advance time, acknowledge an offer or create a cue.
+        """
+        from um_sorok_organism.continuity_clock import HUMAN_OFFER_KIND
+        _,world=self._world()
+        history=self.runtime.ledger.events()
+        committed={e['envelope']['payload'].get('user_event_ref'):e
+                   for e in history if e['kind']=='NEIGHBOR_USER_CONTRIBUTION'
+                   and e['envelope']['world']==self.runtime.world_id
+                   and e['envelope']['payload'].get('user')==self.user_id
+                   and e['envelope']['payload'].get('performed') is True}
+        result=[]
+        for row in world.get('scheduled_obligations',[]):
+            if row.get('kind')!=HUMAN_OFFER_KIND or row.get('responsible_actor')!=self.user_id:
+                continue
+            event=committed.get(row['source_user_event_ref'])
+            sources=[e for e in world.get('neighbor_user_events',[])
+                     if e.get('event_ref')==row['source_user_event_ref']]
+            if (event is None or len(sources)!=1
+                    or sources[0].get('operation')!='PLEDGE_OFFER'
+                    or sources[0].get('human_offer_commitment_ref')!=row['id']
+                    or sources[0].get('target_actor_ref')!=row['recipient']
+                    or sources[0].get('due_clock')!=row['due_clock']
+                    or sources[0].get('clock')!=row['origin_clock']
+                    or sources[0].get('payload_hash')!=event['envelope']['payload'].get('payload_hash')):
+                raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_COMMITMENT')
+            if row['status']=='OFFER_AUTHORED_IN_WINDOW':
+                f=committed.get(row['fulfillment_user_event_ref'])
+                matching=[e for e in world.get('neighbor_user_events',[])
+                          if e.get('event_ref')==row['fulfillment_user_event_ref']]
+                if (f is None or len(matching)!=1
+                        or matching[0].get('operation')!='OFFER_FEED'
+                        or matching[0].get('human_offer_commitment_ref')!=row['id']
+                        or matching[0].get('target_actor_ref')!=row['recipient']
+                        or matching[0].get('clock')!=row['settled_at_clock']
+                        or not row['origin_clock']<row['settled_at_clock']<row['due_clock']
+                        or matching[0].get('payload_hash')!=f['envelope']['payload'].get('payload_hash')):
+                    raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_FULFILLMENT')
+            result.append({k:deepcopy(row[k]) for k in (
+                'id','recipient','location','origin_clock','due_clock','status',
+                'source_user_event_ref','settled_at_clock',
+                'fulfillment_user_event_ref') if k in row})
+        return result
 
     def independent_actor_beat(self, actor_id: str):
         """Use the actual continuing actor's own plan, not a supplied reply."""
