@@ -1929,3 +1929,134 @@ class PrivateRehearsalR43(unittest.TestCase):
                 self.assertEqual(rt.ledger.world()[1],before)
                 self.assertTrue(rt.verify()['valid'])
             finally:rt.close()
+
+
+class UndertakingAttentionR45(unittest.TestCase):
+    def test_actual_outward_undertaking_deliberate_reception_memory_private_trial(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.attention_field import offer_undertaking_attention
+        outcomes={}
+        with tempfile.TemporaryDirectory() as d:
+            for attend in (True,False):
+                stage='pledge';receipts=[];rehearsals=[]
+                def callback(task,packet):
+                    if task=='expression':
+                        self.assertNotIn('undertaking_attention_receipt',packet['actor_accessible'])
+                        return {'task':task,'surface':'An ordinary interval.'}
+                    if task=='actor_attempt':
+                        if packet['actor']['id']!='worker':
+                            return {'task':task,'action':'WAIT'}
+                        if stage=='attend':
+                            rows=packet['undertaking_attention_options']
+                            self.assertEqual(len(rows),1)
+                            self.assertEqual(rows[0]['source_kind'],'INDEPENDENT_COMPUTATIONAL_ACTOR')
+                            self.assertEqual(rows[0]['counterpart_ref'],'mother')
+                            self.assertNotIn('status',rows[0])
+                            if attend:return {'task':task,'action':'ORIENT',
+                                'undertaking_attention_id':rows[0]['attention_id']}
+                            return {'task':task,'action':'ORIENT'}
+                        if stage=='rehearse':
+                            rows=[x for x in packet['private_rehearsal_options']
+                                  if x.get('undertaking_attention')]
+                            self.assertEqual(len(rows),int(attend))
+                            if rows:return {'task':task,'action':'WAIT',
+                                'private_rehearsal_id':rows[0]['rehearsal_id'],
+                                'private_rehearsal_content':'Perhaps rest need not wait for her return.'}
+                        if stage=='trial':
+                            rows=[x for x in packet['possible_end_trials']
+                                  if x.get('private_rehearsal_ref')]
+                            if rows:return {'task':task,'possible_end_trial_id':rows[0]['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        rec=packet.get('actual_undertaking_attention_analyst_only')
+                        if rec:
+                            receipts.append((copy.deepcopy(rec),copy.deepcopy(packet['experience']),
+                                             packet['evidence_path']['event']))
+                            return {'task':task,'candidates':[{'kind':'MEMORY',
+                                'undertaking_attention_ref':rec['attention_id'],
+                                'cue_terms':['pledge_care'],'content':'She said she would care later.'}]}
+                        rec=packet.get('actual_private_rehearsal_analyst_only')
+                        if rec:
+                            rehearsals.append(copy.deepcopy(rec))
+                            return {'task':task,'candidates':[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                                'rehearsal_ref':rec['id'],'possible_object':'rest without awaiting care',
+                                'possible_means':['REST']}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(attend))
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.ledger.initialize(blank_world(),[adult('worker','Mara'),
+                        adult('mother','Mother'),adult('bystander','Bystander')])
+                    # Actual sourcefree injected outward act by a distinct
+                    # computational actor; no claim of native choice of pledge.
+                    self.assertEqual(rt.step('mother',requested_action='PLEDGE_CARE',
+                                             target='worker')['status'],'PERFORMED')
+                    a=rt.ledger.actor('worker')[1];world=rt.ledger.world()[1]
+                    b=rt.ledger.actor('bystander')[1]
+                    access=actor_access(b,world)
+                    self.assertEqual(offer_undertaking_attention(b,world,access,
+                        [c['id'] for c in access.cues]),[])
+                    self.assertEqual(a['memories'],[])
+                    stage='attend'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(receipts),int(attend))
+                    self.assertEqual(len(a['memories']),int(attend))
+                    self.assertEqual(a['possible_ends'],[])
+                    if attend:
+                        rec,exp,event=receipts[0]
+                        self.assertEqual(a['memories'][0]['undertaking_attention'],rec)
+                        self.assertEqual(rec['commitment_ref'],world['scheduled_obligations'][0]['id'])
+                        self.assertIn(rec['cue_ref'],a['evidence_paths'][-1]['received_cue_refs'])
+                        bad={'kind':'MEMORY','undertaking_attention_ref':'forged',
+                             'content':'not my receipt'}
+                        old=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'UNDERTAKING_MEMORY_UNQUALIFIED'):
+                            admit(a,exp,event,[bad])
+                        self.assertEqual(a,old)
+                    # Ordinary world time passes independently; no deadline
+                    # appraisal, automatic recollection or imposed response.
+                    rt.background(5)
+                    self.assertEqual(rt.ledger.actor('worker')[1]['memories'],a['memories'])
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='rehearse';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(rehearsals),int(attend))
+                    self.assertEqual(len(a['possible_ends']),int(attend))
+                    if attend:
+                        end=a['possible_ends'][0]
+                        self.assertEqual(end['private_undertaking_attention'],receipts[0][0])
+                        self.assertIsNone(end['actor_perceived_cue_ref'])
+                    stage='trial';outcomes[attend]=rt.step('worker')['attempt']
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(outcomes,{True:'REST',False:'WAIT'})
+
+    def test_injected_orient_does_not_retain_deliberate_undertaking(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.attention_field import offer_undertaking_attention
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'),semantic=ValidatingSemanticService(
+                CallbackLLMProvider(lambda task,p: {'task':task,'candidates':[]} if task=='development'
+                    else {'task':task,'surface':'ordinary'} if task=='expression'
+                    else {'task':task,'action':'WAIT'})))
+            try:
+                rt.ledger.initialize(blank_world(),[adult('worker','Mara'),adult('mother','Mother')])
+                rt.step('mother',requested_action='PLEDGE_CARE',target='worker')
+                a=rt.ledger.actor('worker')[1];w=rt.ledger.world()[1];e=actor_access(a,w)
+                self.assertEqual(len(offer_undertaking_attention(a,w,e,[c['id'] for c in e.cues])),1)
+                # A source candidate without its actual authored row cannot
+                # become a deliberate reception option.
+                forged=copy.deepcopy(w);forged['scheduled_obligations']=[]
+                self.assertEqual(offer_undertaking_attention(a,forged,e,[c['id'] for c in e.cues]),[])
+                rt.step('worker',requested_action='ORIENT')
+                self.assertFalse(any(x.get('undertaking_attention') for x in
+                                     rt.ledger.actor('worker')[1]['evidence_paths']))
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
