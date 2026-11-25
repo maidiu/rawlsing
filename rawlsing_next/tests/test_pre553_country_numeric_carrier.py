@@ -228,10 +228,31 @@ class CountryNumeric(unittest.TestCase):
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
                 lane=compact.public_objects.lane
                 self.assertEqual(lane.bodies.locator_bytes,40*len(events))
-                for event in events:
-                    self.assertEqual(compact_repo.resolve_object_exact(event.ref),event)
-                    self.assertNotIn(event.ref.key,compact_repo._objects)
-                    self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
+                self.assertTrue(lane.bodies.direct)
+                from rawlsing_next import pre553_source_backed_c11_facade as facade
+                with patch.object(facade,"_event",wraps=facade._event) as constructs, patch(
+                        "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+                        side_effect=AssertionError("redundant event wire reconstruction")):
+                    for event in events:
+                        self.assertEqual(compact_repo.resolve_object_exact(event.ref),event)
+                        self.assertNotIn(event.ref.key,compact_repo._objects)
+                        self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
+                    self.assertEqual(constructs.call_count,len(events))
+                # Deliberate locator substitution must never produce a different
+                # positive exact object even when the addressed cell is valid.
+                bodies=lane.bodies
+                original_codes=bodies.question_codes
+                from array import array
+                wrong=array("I",original_codes)
+                alternate=next(i for i,v in enumerate(wrong) if v!=wrong[0])
+                wrong[0]=wrong[alternate]
+                bodies.question_codes=memoryview(wrong.tobytes()).cast("I")
+                try:
+                    with self.assertRaises(CountryCarrierError):
+                        bodies.materialize(0)
+                finally:
+                    bodies.question_codes=original_codes
+                self.assertEqual(bodies.materialize(0),events[0])
                 mixed=C11Repository((compact,))
                 # A wrong object ID may not exploit a matching digest.
                 with self.assertRaises(KeyError):
