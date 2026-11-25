@@ -148,6 +148,9 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=semantic_hash(workload.envelope()),original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
+            self.assertEqual(projection.cache_identity,semantic_hash({
+                "contract":CONTRACT_ID,"projection":_cache_projection_preimage(projection)}))
             projection_seconds=time.monotonic()-t
             print("COUNTRY_NATIVE_SCALE_START",json.dumps({"rows":n,"country_rows":len(chosen),"physical_width":len(frame.columns),
                 "governed_width":governed,"units":len(jobs),"country_bytes":receipt.bytes,
@@ -170,6 +173,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 new_times.append(time.monotonic()-t0)
                 self.assertEqual(old_hash,new_hash)
                 self.assertEqual(new_hash,record.envelope_sha256)
+            self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
             print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
                 "old_median_s":median(old_times),"new_median_s":median(new_times),
                 "same_exact_hash":True,"repetitions":3}),flush=True)

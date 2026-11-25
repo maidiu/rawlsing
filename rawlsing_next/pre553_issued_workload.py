@@ -310,6 +310,22 @@ def _routing_envelope_parts(workload):
     return pieces(envelope)
 
 
+def _stream_workload_digest(workload):
+    """Same complete canonical U43 hash, without retaining routing JSON."""
+    digest=hashlib.sha256()
+    for part in _routing_envelope_parts(workload):
+        if part is not None:
+            digest.update(part)
+            continue
+        digest.update(b"[")
+        for i,obj in enumerate(workload.projection.routing):
+            if i:
+                digest.update(b",")
+            digest.update(canonical_json(material(obj)).encode("utf-8"))
+        digest.update(b"]")
+    return digest.hexdigest()
+
+
 def _update_routing_pin(digest,pin):
     # Pin material consists solely of exact strings and nested tuples. Python
     # repr of these primitives is unambiguous, including embedded controls.
@@ -523,20 +539,41 @@ def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host:
         if type(prepared) is _PreparedRoutingEnvelope and prepared.workload is workload:
             envelope_sha256 = prepared.digest()
         if envelope_sha256 is None:
-            envelope_sha256 = semantic_hash(workload.envelope())
+            if (record.scope=="TEST_ONLY_SOURCEFREE"
+                    and type(workload) is NativeWorkload
+                    and type(workload.projection) is GovernedC11Projection
+                    and type(workload.projection.routing) is tuple):
+                envelope_sha256=_stream_workload_digest(workload)
+            else:
+                envelope_sha256 = semantic_hash(workload.envelope())
     except WorkloadAdmissionError:
         raise
     except (TypeError, ValueError) as exc:
         raise WorkloadAdmissionError("CLOSED_CANONICAL_COMPLETE_DESCRIPTOR_REQUIRED") from exc
     if envelope_sha256 != record.envelope_sha256:
         raise WorkloadAdmissionError("ENTIRE_EXECUTION_DESCRIPTOR_NOT_THE_ISSUED_ENVELOPE")
+    # One exact local lookup per validated envelope, not repeated full
+    # catalog scans for every job. Duplicate/custom inputs use old resolver.
+    cat=workload.catalog
+    query_map=predicate_map=discovery_map=None
+    if type(cat) is RuntimeObjectCatalog:
+        query_map={obj.ref:obj for obj in cat.queries}
+        predicate_map={obj.ref:obj for obj in cat.predicates}
+        discovery_map={obj.ref:obj for obj in cat.discovery_authorities}
+        if (len(query_map)!=len(cat.queries) or len(predicate_map)!=len(cat.predicates)
+                or len(discovery_map)!=len(cat.discovery_authorities)):
+            query_map=predicate_map=discovery_map=None
     for r in workload.requests:
-        q = workload.catalog.resolve_query_exact(r.query_ref)
-        workload.catalog.resolve_predicate_exact(r.predicate_ref)
+        q=(query_map.get(r.query_ref) if query_map is not None else None)
+        if q is None:
+            q=cat.resolve_query_exact(r.query_ref)
         if material(q.condition_predicate_ref) != r.predicate_ref.as_dict():
             raise WorkloadAdmissionError("QUERY_TARGET_CONDITION_DIRECTION_MISMATCH")
+        if predicate_map is None or r.predicate_ref not in predicate_map:
+            cat.resolve_predicate_exact(r.predicate_ref)
     for ref in workload.discoveries:
-        workload.catalog.resolve_discovery_authority_exact(ref)
+        if discovery_map is None or ref not in discovery_map:
+            cat.resolve_discovery_authority_exact(ref)
     return record
 
 

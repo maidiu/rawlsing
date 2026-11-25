@@ -81,6 +81,7 @@ _I03_INDEX_ATTESTED_FIELDS = (
     "coordinates_by_respondent", "routing_by_respondent",
     "weights_by_respondent", "source_relations", "runtime_authorities",
     "runtime_repository", "runtime_predicate_grammar_authority_ref",
+    "routing_lookup", "native_verified_physical_respondent_order",
 )
 _I03_INDEX_MISSING = object()
 

@@ -123,6 +123,23 @@ class CountryNumeric(unittest.TestCase):
                 # A wrong object ID may not exploit a matching digest.
                 with self.assertRaises(KeyError):
                     mixed.resolve_object_exact(ExactRef(events[0].ref.kind,"wrong",events[0].ref.content_hash))
+                # Verify every exact route/risk posting and absence against
+                # the original tuple traversal, including cache attestation.
+                from rawlsing_next._pre553_query_predicate import _build_release_index,_question_matches
+                from rawlsing_next._pre553_query_common import _ref_field
+                from rawlsing_next.pre553_empirical_query import _i03_index_attestation,_i03_index_attestation_matches
+                idx=_build_release_index(compact,subset.universes[0].ref)
+                self.assertIsNotNone(idx.routing_lookup)
+                for respondent,facts in idx.routing_by_respondent.items():
+                    for fact in facts:
+                        target=_ref_field(fact,"question_or_target_ref")
+                        risk=_ref_field(fact,"risk_set_ref")
+                        want=tuple(x for x in facts if _question_matches(x,target) and _ref_field(x,"risk_set_ref")==risk)
+                        self.assertEqual(idx.routing_lookup(respondent=respondent,target=target.key,risk_set=risk.key),want)
+                    self.assertEqual(idx.routing_lookup(respondent=respondent,target="absent",risk_set="absent"),())
+                attestation=_i03_index_attestation(idx)
+                object.__setattr__(idx,"routing_lookup",None)
+                self.assertFalse(_i03_index_attestation_matches(idx,attestation))
                 a=_source_dict(fx,C11Repository((direct,)),direct)
                 b=_source_dict(fx,compact_repo,compact)
                 qa=_query_authority("country-compact")
