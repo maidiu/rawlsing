@@ -8,6 +8,8 @@
 
 **Review conservation (mandatory user instruction):** [CIC review coverage/refinement discipline](https://github.com/maidiu/rawlsing/blob/8504ce3f1ccd51dfb39048bf60928d0b743a635b/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.md#review-conservation-and-cumulative-refinement--mandatory-user-direction-2026-11-24); never infer review from execution or silently drop a deferred scope.
 
+**Current functional consultation:** [2026-11-25 whole-organism inheritance](../SOROKUDA.md#whole-organism-functional-inheritance--2026-11-25) connects the existing bank to the exact current O-Index/CIC intake, historical PFF/CAN/ADP memory distinctions and independent temporal obligations. Preserve source-lock unchanged; new PR return evidence belongs to the existing live ledger, not duplicate normalized identities.
+
 ## The operative unified bank — **1063 source identities, not 1003 capabilities**
 
 | View | Source identities | Exact source ownership |
