@@ -393,14 +393,51 @@ class _PackedRoutingFacts(Sequence):
         object.__setattr__(self,"_storage",(tuple(runs),tuple(ends)))
 
     def immutable_storage(self):
-        # Recursively validate the pin's actual builtin storage once, not a
-        # caller assertion that a frozen wrapper is deeply immutable.
-        def immutable(value):
-            return type(value) in (bytes,int,str) or (
-                type(value) is tuple and all(immutable(v) for v in value))
-        if not immutable(self._storage):
-            raise SourceBackedC11FacadeError("packed routing has mutable storage")
-        return self._storage
+        # Validate the actual builtin storage and its complete row geometry.
+        # Canonical iteration, random access and sorted replay must describe
+        # exactly the same rows, including after a malformed caller-side swap.
+        def refuse():
+            raise SourceBackedC11FacadeError("packed routing storage/row geometry drift")
+        storage=self._storage
+        if type(storage) is not tuple or len(storage)!=2:
+            refuse()
+        runs,ends=storage
+        if type(runs) is not tuple or type(ends) is not tuple or len(runs)!=len(ends):
+            refuse()
+        count=0
+        for run,end in zip(runs,ends):
+            if type(run) is not tuple or len(run)!=3 or type(end) is not int:
+                refuse()
+            keys,columns,digests=run
+            if (type(keys) is not tuple or any(type(k) is not str for k in keys)
+                    or keys!=tuple(sorted(set(keys)))
+                    or not RoutingEligibilityFact.REQUIRED_FIELDS.issubset(keys)
+                    or type(columns) is not tuple or len(columns)!=len(self._top)+len(keys)
+                    or type(digests) is not bytes or not digests or len(digests)%32):
+                refuse()
+            rows=len(digests)//32
+            count+=rows
+            if end!=count:
+                refuse()
+            for col in columns:
+                if type(col) is not tuple or len(col)!=3 or any(type(x) is not bytes for x in col):
+                    refuse()
+                blob,offsets,codes=col
+                if len(offsets)<16 or len(offsets)%8 or len(codes)%4:
+                    refuse()
+                entries=len(offsets)//8-1
+                if (codes and len(codes)!=4*rows) or (not codes and entries!=rows):
+                    refuse()
+                prior=-1
+                for offset, in struct.iter_unpack("<Q",offsets):
+                    if (prior<0 and offset!=0) or offset<=prior or offset>len(blob):
+                        refuse()
+                    prior=offset
+                if prior!=len(blob):
+                    refuse()
+                if codes and any(code>=entries for code, in struct.iter_unpack("<I",codes)):
+                    refuse()
+        return storage
 
     def __len__(self):
         ends=self._storage[1]
@@ -498,21 +535,23 @@ class _SortedPackedRoutingFacts(Sequence):
     source: _PackedRoutingFacts
     storage: tuple
     order: bytes
+    _order_pin: bytes
 
     @classmethod
     def build(cls,source):
         storage=source.immutable_storage()
         detached=object.__new__(_PackedRoutingFacts)
         object.__setattr__(detached,"_storage",storage)
-        order=array("Q",sorted(range(len(detached)),key=detached.digest_at))
-        return cls(detached,storage,_routing_le(order))
+        order=_routing_le(array("Q",sorted(range(len(detached)),key=detached.digest_at)))
+        return cls(detached,storage,order,order)
 
     def __len__(self):
         return len(self.order)//8
 
     def _ordinal(self,i):
-        if self.source._storage is not self.storage:
-            raise SourceBackedC11FacadeError("sealed routing backing replaced")
+        if (self.source._storage is not self.storage or self.order is not self._order_pin
+                or type(self.order) is not bytes):
+            raise SourceBackedC11FacadeError("sealed routing backing/order replaced")
         if i<0:
             i+=len(self)
         if not 0<=i<len(self):

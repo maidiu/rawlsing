@@ -376,6 +376,18 @@ class CountryNativeEconomics(unittest.TestCase):
                                   allow_test_only=True,prepared=packed_prepared)
             finally:
                 object.__setattr__(packed,"_storage",storage)
+            # A malformed geometry may not hash one row stream and expose
+            # another through random access; refuse before preparing it.
+            from rawlsing_next.pre553_source_backed_c11_facade import SourceBackedC11FacadeError
+            runs,ends=storage
+            for bad in ((runs,(*ends[:-1],ends[-1]+1)),
+                        (runs,()),(((*runs[0][:-1],runs[0][-1][:-1]),*runs[1:]),ends)):
+                try:
+                    object.__setattr__(packed,"_storage",bad)
+                    with self.assertRaises(SourceBackedC11FacadeError):
+                        issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+                finally:
+                    object.__setattr__(packed,"_storage",storage)
             print("COUNTRY_PACKED_ROUTING",json.dumps({
                 "records":len(packed),"payload_bytes":packed.payload_bytes,
                 "canonical_bytes":packed_prepared.encoded_routing_bytes,
