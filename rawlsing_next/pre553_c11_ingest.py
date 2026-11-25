@@ -579,8 +579,12 @@ class _CountryEventCollector:
         if self.finished is not None or type(event) is not RespondentEvent:
             raise C11IntegrityError("country event collector closed or wrong family")
         validate_public_carrier_object(event,self.registry)
-        for ref in _walk_authority_refs(event.semantic_fields):
-            self.registry.resolve_exact(ref)
+        try:
+            for ref in _walk_authority_refs(event.semantic_fields):
+                self.registry.resolve_exact(ref)
+        except Pre553AuthorityError as exc:
+            raise C11IngestValidationError(
+                IngestDisposition.BLOCKED_MISSING_REQUIRED_AUTHORITY,str(exc)) from exc
         self.headers.append(self.builder.add(event))
 
     def finish(self):
@@ -603,8 +607,9 @@ def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_colle
                 raise C11IntegrityError("country construction authority/header scope changed")
             # Both registries independently validate snapshot identities.
             # The collector used detached exact snapshot preimages.
-        for obj in chain(_iter_public_objects(candidate,include_events=False),
-                         candidate.respondent_events if country_collector is None else ()):
+        objects=(_iter_public_objects(candidate) if country_collector is None
+                 else _iter_public_objects(candidate,include_events=False))
+        for obj in objects:
             validate_public_carrier_object(obj, registry)
             for ref in _walk_authority_refs(obj.semantic_fields):
                 registry.resolve_exact(ref)

@@ -824,6 +824,13 @@ def build_source_backed_c11_repository(
         raise SourceBackedC11FacadeError("country repository has live reader; no detached session cache")
     key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     if country:
+        # Rebind to the live reader's own selected decoder, not a caller's
+        # replacement cell_iter_factory on a copied country transport.
+        source._verify_binding()
+        trusted=source.reader._native_stream(projection)
+        if source_backed_facade_key(trusted,projection,current_authorities=current_authorities)!=key:
+            raise SourceBackedC11FacadeError("country source transport differs from live reader")
+        source=trusted
         # The I02 owner validates each actual event as the physical producer
         # emits it, then seals the same logical package from exact headers.
         # No complete event-object graph or second body archive is retained.

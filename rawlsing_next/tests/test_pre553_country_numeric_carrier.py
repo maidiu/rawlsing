@@ -109,6 +109,12 @@ class CountryNumeric(unittest.TestCase):
                 with patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
                            side_effect=AssertionError("eager event graph compactor")):
                     compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                # A copied transport cannot substitute its physical cell factory.
+                from rawlsing_next.pre553_source_backed_c11_facade import build_source_backed_c11_repository
+                tripwire=replace(reader._native_stream(subset),
+                    cell_iter_factory=lambda:(_ for _ in ()).throw(AssertionError("foreign cell factory")))
+                _, rebound=build_source_backed_c11_repository(tripwire,subset,current_authorities=fx["authorities"])
+                self.assertEqual(rebound.release_ref,compact.release_ref)
                 from rawlsing_next.pre553_empirical_objects import semantic_hash
                 self.assertEqual(compact.replay_manifest.content_hash,
                                  semantic_hash(compact.replay_manifest.semantic_projection()))
