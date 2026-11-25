@@ -160,3 +160,143 @@ def formation_repertoire_contrast(pack, left, right, left_answer, right_answer):
             "question": "Does independent group position distinguish the practical force of comparable repertoires?",
             "unresolved": ["qualified source-position to EPR correspondence", "public recognition and practice",
                            "actual resource/control relation", "world rule and applicable reader"]}
+
+
+def inquire_repertoire_fracture(session, question, *, position_states, repertoire_axes,
+                                response_act_meanings, modeled_context, propose, revise,
+                                pack=None, context_requests=()):
+    """R11 internal, sourcefree inquiry through the actual #1292 dynamic owner.
+
+    One existing catalog query, then three forward projections and one proposed
+    reverse inquiry on its live workspace. No new I03 execution for followups.
+    Interpretation callbacks are proposal machinery, never source/science/world
+    issuers. Their input is aggregate only and explicitly SOURCEFREE. This is
+    not an original-source disclosure surface or a downstream person packet.
+    """
+    from rawlsing_next.pre553_s04_dynamic_research import (
+        S04DynamicQuestion, S04DynamicResearchSession,
+    )
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+    from authored_world_handoff import select_world_evidence
+
+    if type(session) is not S04DynamicResearchSession or type(question) is not S04DynamicQuestion:
+        raise TypeError("actual sourcefree dynamic research session/question required")
+    position = question.conditioner_index
+    if (type(position) is not int or position < 0 or type(repertoire_axes) is not tuple
+            or len(repertoire_axes) < 2 or any(type(a) is not int or a < 0 for a in repertoire_axes)
+            or len(set(repertoire_axes)) != len(repertoire_axes) or position in repertoire_axes):
+        raise ValueError("distinct position and at least two repertoire axes required")
+    if (type(position_states) is not tuple or len(position_states) != 2
+            or _json(position_states[0]) == _json(position_states[1])):
+        raise ValueError("two distinct explicitly selected reported positions required")
+    if (type(response_act_meanings) is not dict
+            or set(response_act_meanings) != {position, *repertoire_axes}
+            or any(not isinstance(v, str) or not v.strip() for v in response_act_meanings.values())):
+        raise ValueError("explicit caller-proposed meanings for each selected axis required")
+    if not isinstance(modeled_context, str) or not modeled_context.strip():
+        raise ValueError("explicit fictional institutional context required")
+    if not callable(propose) or not callable(revise):
+        raise TypeError("proposal and revision callbacks required")
+    requests = tuple(context_requests)
+    if requests and pack is None:
+        raise ValueError("native context selection requires a pack")
+    # Do not send native context values to the sourcefree proposal callbacks.
+    # The separate read remains internal, without a crosswalk or use grant.
+    native_context = (select_world_evidence(pack, requests) if requests else
+                      {"grade": "HELD_NO_SELECTED_NATIVE_CONTEXT", "observations": []})
+    result = session.ask(question)
+    original = result.original
+    knowledge = original.knowledge.material()
+    ff = original.ff01.semantic_projection()
+    obs = result.observation_scope.material()
+    if (ff["producer_fact_ref"] != knowledge["fact_ref"]
+            or ff["conditioner_index"] != position
+            or obs["knowledge_ref"] != original.knowledge.ref.as_dict()
+            or obs["fact_ref"] != knowledge["fact_ref"]):
+        raise ValueError("inconsistent incumbent FF01/S04/observation identity")
+    axes = (position, *repertoire_axes)
+    if any(a >= knowledge["target_arity"] for a in axes):
+        raise ValueError("selected role outside source target domain")
+
+    def ask(output_axes, conditions):
+        answer = result.joint_workspace.query(S04Projection(output_axes, conditions))
+        exported = _projection(answer)
+        if exported["material"]["knowledge_ref"] != original.knowledge.ref.as_dict():
+            raise ValueError("workspace escaped retained source knowledge")
+        return answer, exported
+
+    _, baseline = ask(repertoire_axes, {})
+    left, _ = ask(repertoire_axes, {position: position_states[0]})
+    right, _ = ask(repertoire_axes, {position: position_states[1]})
+    contrast = repertoire_contrast(left, right)
+    # Full receipt is local only. In particular do not pass the observation
+    # cohort fingerprint, respondent refs or authority chain to a callback.
+    obs_public = {k: deepcopy(v) for k, v in obs.items()
+                  if k not in ("verified_eligible_member_set_sha256",
+                               "source_asked_eligible_raw_summary")}
+    packet = {
+        "grade": "INTERNAL_SOURCEFREE_FF_INQUIRY_NOT_SOURCE_OR_WORLD_ISSUANCE",
+        "ff01_ref": original.ff01.ref.as_dict(),
+        "knowledge_ref": original.knowledge.ref.as_dict(),
+        "observation_ref": result.observation_scope.ref.as_dict(),
+        "observation": obs_public,
+        "baseline": baseline,
+        "contrast": contrast,
+        "independent_native_context": native_context,
+        "context_alignment": "NO_SURVEY_TO_MATERIAL_CROSSWALK",
+        "modeled_context": {"grade": "EXPLICIT_FICTIONAL_PREMISE", "description": modeled_context},
+        "response_act_meanings": {str(k): v for k, v in response_act_meanings.items()},
+        "meaning_grade": "CALLER_PROPOSED_NOT_SOURCE_SEMANTIC_ISSUANCE",
+        "proposal": None, "reverse": None, "revision": None,
+    }
+    if contrast["state"] != "SAME_FACT_DESCRIPTIVE_FULL_CASE_CONTRAST":
+        return dict(packet, state="NO_POSITIVE_CONTRAST__OBSERVATION_LIMIT_RETAINED")
+
+    def aggregate(export):
+        m = export["material"]
+        return {k: deepcopy(m[k]) for k in (
+            "state", "output_axes", "conditions", "raw_selected_full_case_n",
+            "raw_source_eligible_n", "raw_original_full_joint_resolved_n",
+            "complete_output_cells",
+        )}
+
+    view = {
+        "grade": "SYNTHETIC_SOURCEFREE_SAMPLE_ONLY",
+        "axis_meanings": packet["response_act_meanings"],
+        "position_axis": position,
+        "repertoire_axes": list(repertoire_axes),
+        "baseline": aggregate(baseline),
+        "left": aggregate(contrast["left"]),
+        "right": aggregate(contrast["right"]),
+        "differences": deepcopy(contrast["cells"]),
+        "observation_limits": {
+            k: deepcopy(obs[k]) for k in (
+                "state", "source_frame_population_n", "survey_design_weight_or_variance",
+                "condition_membership_unknown_n", "observed_route_and_nonresponse_cause",
+            )
+        },
+        "fictional_institution": modeled_context,
+        "native_context": "SEPARATE_INTERNAL_READ_NOT_AVAILABLE_FOR_ALIGNMENT",
+    }
+    proposal = deepcopy(propose(deepcopy(view)))
+    if (type(proposal) is not dict or set(proposal) != {"concept", "rival", "question", "motif"}
+            or any(not isinstance(proposal[k], str) or not proposal[k].strip()
+                   for k in ("concept", "rival", "question"))
+            or type(proposal["motif"]) is not list or len(proposal["motif"]) != len(repertoire_axes)):
+        raise ValueError("concept, rival, question and exact joint motif required")
+    # Reverse conditioning is a genuine subsequent existing S04 operation;
+    # invalid native response states are rejected by its own typed algebra.
+    _, reverse = ask((position,), dict(zip(repertoire_axes, proposal["motif"])))
+    revision = deepcopy(revise(deepcopy(view), deepcopy(proposal), aggregate(reverse)))
+    if (type(revision) is not dict or set(revision) != {"interpretation", "remaining_question", "recipient_possibility"}
+            or any(not isinstance(v, str) or not v.strip() for v in revision.values())):
+        raise ValueError("explicit provisional interpretation, residual question and recipient possibility required")
+    # Check CURRENT once more after the external interpretation callback,
+    # including when the callback returns normally after source revocation.
+    _, final_reverse = ask((position,), dict(zip(repertoire_axes, proposal["motif"])))
+    if final_reverse != reverse:
+        raise ValueError("reverse source result changed during interpretation")
+    return dict(packet, state="PROVISIONAL_CONCEPT_REVISED_NOT_CERTIFIED",
+                proposal=proposal, reverse=reverse, revision=revision,
+                revision_grade="ABDUCTIVE_PROPOSAL_NOT_EMPIRICAL_ADJUDICATION",
+                recipient_state="POSSIBILITY_ONLY__C6_AND_WORLD_OWNER_RECEIVING_HELD")

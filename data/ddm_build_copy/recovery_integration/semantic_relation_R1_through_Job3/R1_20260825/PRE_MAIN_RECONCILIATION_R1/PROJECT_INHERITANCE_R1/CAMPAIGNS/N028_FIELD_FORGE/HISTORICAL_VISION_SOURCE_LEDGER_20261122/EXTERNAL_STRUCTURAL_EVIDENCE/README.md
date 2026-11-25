@@ -70,3 +70,7 @@ Future work appends to this existing index and detailed log. No additional branc
 
 
 | R10 whole-HOME selection and HULCH | this commit (parent R9 fc26d25911776a985bbc4a62cfcdd02b356d51e7) | 01 II.N, 02 VI-B/XVI-B, [04 R10](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r10--whole-home-mulch-selection-reciprocal-consultation-and-hulch-2026-11-25) |
+
+### R11 — differentiated repertoire and reverse inquiry (candidate, execution pending)
+
+Existing R8 relational_context.py extended with `inquire_repertoire_fracture` using #1292 actual dynamic S04/FF01/observation workspace. See 01 II.O, 02 VI-B continuation and 04 R11 for actual code, questions, limits and runner. `test_repertoire_inquiry.py` exercises saved synthetic C11, true triple, callback-selected reverse question and adverse cases; NOT RUN in this harness. Independent native context optional via existing R9 selector; not aligned to survey. No native science or C6 receipt. No new source acquisition.
