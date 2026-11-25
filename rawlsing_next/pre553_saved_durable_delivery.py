@@ -785,6 +785,8 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     record=scope.record
     _require(record.scope=="TEST_ONLY_SOURCEFREE","S2F_ORIGINAL_RETENTION_AND_SERVING_AUTHORITY_HELD")
     _country_binding(record,workload,workload.projection.projection_identity_ref,country_receipt)
+    from dataclasses import asdict
+    receipt_pin=canonical_json(asdict(country_receipt))
     prior=None
     if resume_from is not None:
         _require(type(resume_from) is CountryResumePin,"EXACT_COUNTRY_RESUME_PIN_REQUIRED")
@@ -807,7 +809,12 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     def current():
         scope.current_only()
 
+    def check_receipt():
+        _require(canonical_json(asdict(country_receipt))==receipt_pin,
+                 "COUNTRY_RECEIPT_CHANGED_DURING_DELIVERY")
+
     def publish_result(executed,reader,*,elapsed,require_complete):
+        check_receipt()
         result,identity=executed.result,executed.release_identity
         _require(result.route_results==() and result.decision_ref==record.decision_ref
             and result.envelope_sha256==record.envelope_sha256
@@ -842,6 +849,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         published=monotonic()
         receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding,
                                             compact_manifest=True)
+        check_receipt()
         reader._verify()
         current()
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
@@ -857,10 +865,16 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                              executed.release_identity.release_ref,country_receipt.sha256)
         # External observer owns pin custody. Failed observer stops the
         # existing Batch run; the file is not a silently adopted checkpoint.
-        checkpoint_observer(pin,publication)
+        # Keep internal custody detached from the operator callback.
+        # The callback can retain or reject the pin; it cannot rewrite the
+        # next archive's parent or the returned cumulative census.
+        from copy import deepcopy
+        published_root=pin.expected_root
+        checkpoint_observer(deepcopy(pin),deepcopy(publication))
+        check_receipt()
         last_publication=publication
         last_receipts=executed.result.receipts
-        last_root=pin.expected_root
+        last_root=published_root
         checkpoint_overhead+=monotonic()-entered
 
     executed=_execute_country_workload(workload,resolver,country_path=country_path,
@@ -868,6 +882,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         require_country_current=current,allow_test_only=True,_country_scope=scope,
         _max_units=max_units,_prior_product=prior,_checkpoint_every=checkpoint_every,
         _checkpoint_observer=checkpoint if checkpoint_observer is not None else None)
+    check_receipt()
     if last_publication is not None:
         _require(last_receipts==executed.result.receipts,"CHECKPOINT_FINAL_HISTORY_DRIFT")
         _require(last_publication.complete==executed.result.summary.full_coverage,
