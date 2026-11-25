@@ -29,6 +29,7 @@ PARENT = "f5e9c9a03ccddb5bdfab2114c5f5f551002914f6"
 B = "9e8572463f731fb1c3c9da1501bec48c80ad6143"
 A = "d988a39f7741a839e89ac37bf13f5acfe1c2936a"
 R3 = "45315663f3e0f20c39b8075acbd1e6e77bf8296f"
+R4 = "2df75b925542088b14cbf54acc37b632d84b79c4"
 
 
 def historical(sha, name):
@@ -84,7 +85,8 @@ def main():
     # and compare A vs R3 for actual authenticated cold reading.
     ds={"parent":old_decoder,"B":b_decoder,"A":decoder}
     r3_carrier=historical(R3,"pre553_country_numeric_carrier")
-    cs={"parent":old_carrier,"B":b_carrier,"A":a_carrier,"B_R3":r3_carrier,"A_R4":carrier}
+    r4_carrier=historical(R4,"pre553_country_numeric_carrier")
+    cs={"parent":old_carrier,"B":b_carrier,"A":a_carrier,"B_R3":r3_carrier,"A_R4":r4_carrier,"B_R5":carrier}
     n,p=3072,193
     values=np.arange(n,dtype=np.float64)
     frame=pd.DataFrame({"v"+str(i): (values+i)%7 if i%2==0
@@ -124,7 +126,7 @@ def main():
             with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
                 # Same exact file, externally pinned receipt and selected query.
                 return (tuple(reader.matching_rows({"v0":0.})),len(reader._lane_auth))
-        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()},repetitions=5)
+        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()},repetitions=6)
         with carrier.CountryReader(path,receipt,require_current=lambda:True) as read:
             lanes=len(read._lane_auth)
         print("RELAY_COLD_INVENTORY",json.dumps({"country_rows":receipt.country_rows,
@@ -150,7 +152,7 @@ def main():
                                 count+=1
                     assert count==receipt.country_rows*len(names)
                     return h.hexdigest()
-            result=measure({"R3":lambda:scan(r3_carrier),"R4":lambda:scan(carrier)},repetitions=4)
+            result=measure({"R3":lambda:scan(r3_carrier),"R4":lambda:scan(r4_carrier),"R5":lambda:scan(carrier)},repetitions=3)
             print("RELAY_TYPED_SELECTED_SCAN",json.dumps({"names":names,"rows":receipt.country_rows,
                     "block_rows":512,"bytes":receipt.bytes,"measurements":result}),flush=True)
         # Separate selective code intersection (no output JSON hashing).
@@ -159,9 +161,32 @@ def main():
             with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
                 return tuple(tuple(reader.matching_rows({"v0":float(i),"v2":float((i+2)%7)}))
                              for i in range(7))
-        result=measure({"R3":lambda:query(r3_carrier),"R4":lambda:query(carrier)},repetitions=4)
+        result=measure({"R3":lambda:query(r3_carrier),"R4":lambda:query(r4_carrier),"R5":lambda:query(carrier)},repetitions=3)
         print("RELAY_TYPED_INTERSECTIONS",json.dumps({"queries":7,"rows":receipt.country_rows,
                     "measurements":result}),flush=True)
+        # Real writer comparisons. Both versions must produce identical
+        # SQLite bytes (not merely equally sized or semantically similar).
+        for geometry in ("mixed", "high_cardinality"):
+            m,w=1024,65
+            vals=np.arange(m,dtype=np.float64)
+            fixture=pd.DataFrame({"v"+str(i):
+                (vals+i)%7 if geometry=="mixed" and i%2==0
+                else vals*1.000123+i/13 for i in range(w-1)})
+            fixture.insert(17,"country",np.ones(m))
+            source=root/("writer-"+geometry+".sav")
+            pyreadstat.write_sav(fixture,str(source))
+            source_sha=hashlib.sha256(source.read_bytes()).hexdigest()
+            def write(mod):
+                with tempfile.TemporaryDirectory(dir=root) as temp:
+                    with decoder.decode_sav(source,expected_source_sha256=source_sha) as inc:
+                        rec=mod.build_country(inc,country_variable="country",country_value=1.,
+                            output=Path(temp)/"country.sqlite",block_rows=512,
+                            require_current=lambda:True)
+                    assert rec.country_rows==m
+                    return rec.sha256,rec.lane_root,rec.bytes
+            result=measure({"R4":lambda:write(r4_carrier),"R5":lambda:write(carrier)},repetitions=4)
+            print("RELAY_WRITER",json.dumps({"geometry":geometry,"rows":m,"width":w,
+                 "block_rows":512,"exact_sqlite_byte_parity":True,"measurements":result}),flush=True)
     # Inventory hash isolated from SQLite and caller allocations. The input is
     # shared identically before tracing begins; only temporary allocations count.
     v=tuple((j,"é"+str(j)) for j in range(300))
@@ -169,7 +194,7 @@ def main():
     l=tuple((i,j,hashlib.sha256(f"{i}:{j}".encode()).digest())
             for i in range(256) for j in range(300))
     result=measure({name:lambda mod=mod:mod._manifest_root(v,b,l)
-                    for name,mod in cs.items()},repetitions=5)
+                    for name,mod in cs.items()},repetitions=6)
     print("RELAY_MANIFEST_HASH",json.dumps({"lanes":len(l),"measurements":result}),flush=True)
 
 
