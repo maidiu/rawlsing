@@ -30,6 +30,23 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
             and (not link.get('contexts') or encounter.location in link['contexts'])]
         if p.get('contextual_only') and not (cue_match or recruiting or p.get('incidental_takeup_basis') is not None): continue
         x=copy(p)
+        # Retain the stored project and its means, but only project currently
+        # available conditional courses into recruitment. An inaccessible
+        # Other or a suspended means cannot cast a project-pressure vote.
+        bindings=p.get('dependency_conditional_means',{})
+        if bindings:
+            present={c.get('source_actor') for c in encounter.cues
+                     if c.get('kind')=='coactor_present'}
+            x['means']=[m for m in p.get('means',[]) if m not in bindings or (
+                bindings[m].get('status','ACTIVE')=='ACTIVE'
+                and bindings[m].get('location')==encounter.location
+                and bindings[m].get('counterpart_ref') in present
+                and any(j.get('id')==bindings[m].get('practice_ref')
+                        and j.get('actor')==constitution.actor
+                        and j.get('operation')==m
+                        and j.get('coactor_ref')==bindings[m].get('counterpart_ref')
+                        and j.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY'
+                        for j in getattr(constitution,'joint_practices',[])))]
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
         x['recruitment_basis'] += ['FORM_LINK:'+r['source'] for r in recruiting]
         x['motive']=p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE')
@@ -258,4 +275,101 @@ def possible_dependency_project_reorganizations(actor,experience,event_ref):
                     'object':'sustain nourishment through own and conditional shared means',
                     'motive':'PROVISIONAL_REORGANIZATION_OF_NOURISHMENT_UNDERTAKING',
                     'dependency_reorganization_basis':basis})
+    return out[:3]
+
+
+def possible_dependency_means_revisions(actor,experience,event_ref):
+    """Local reversible change in a project-specific conditional means.
+
+    Two comparable, actually lived courses after the last revision support
+    optional suspension or reopening. Neither co-presence nor one refusal
+    proves changed love or permanent unavailability. Unrelated operations
+    are not evidence, but an intervening contrary addressed course interrupts
+    the series. Keep the project, earlier practice and all receipts.
+    """
+    aid=actor.get('id');clock=experience.get('clock')
+    sel=experience.get('own_practical_selection') or {}
+    req=sel.get('world_request') or {}
+    other=req.get('addressed_party_ref')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='SIGNAL'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or sel.get('possible_end_trial') is not None
+            or req.get('operation')!='SIGNAL'
+            or type(other) is not str or other==aid
+            or type(sel.get('option_id')) is not str):
+        return []
+    episodes=actor.get('lived_genesis_episodes',[])
+    participation=actor.get('participation_history',[])
+    out=[]
+    for p in actor.get('projects',[])[-128:]:
+        bound=p.get('dependency_conditional_means',{}).get('SIGNAL')
+        if (not bound or p.get('status')!='active' or 'SIGNAL' not in p.get('means',[])
+                or bound.get('counterpart_ref')!=other
+                or bound.get('location')!=experience.get('location')):continue
+        status=bound.get('status','ACTIVE')
+        if status not in ('ACTIVE','SUSPENDED'):continue
+        mode='SUSPEND' if status=='ACTIVE' else 'REOPEN'
+        if sel.get('selected_project_refs')!=([p['id']] if mode=='SUSPEND' else []):continue
+        # Scope and origin must be real existing actor-owned practice.
+        practice=[j for j in actor.get('joint_practices',[])
+                  if j.get('id')==bound.get('practice_ref') and j.get('actor')==aid
+                  and j.get('coactor_ref')==other and j.get('operation')=='SIGNAL'
+                  and j.get('location')==bound['location']
+                  and j.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY']
+        if len(practice)!=1:continue
+        history=bound.get('revision_history',[])
+        prior_ref=history[-1]['event_ref'] if history else bound['origin_event_ref']
+        origins=[e for e in episodes if e.get('event_ref')==prior_ref and e.get('actor')==aid]
+        if len(origins)!=1:continue
+        after=origins[0]['clock']
+        # Project attribution is a separate receipt, not inferred from SIGNAL.
+        courses={x['event']:x for x in p.get('operational_history',[])
+                 if x.get('project')==p['id'] and x.get('operation')=='SIGNAL'
+                 and x.get('selected_at_actor_attempt') is True}
+        rows=[]
+        for e in episodes:
+            if (e.get('actor')!=aid or e.get('location')!=bound['location']
+                    or e.get('actor_felt_attempt')!='SIGNAL'
+                    or e.get('selected_addressed_party_ref')!=other
+                    or type(e.get('selected_practical_option_ref')) is not str
+                    or e.get('selection_source')!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+                    or not after<e['clock']<=clock):continue
+            parts=[x for x in participation if x.get('actor')==aid
+                   and x.get('event_ref')==e['event_ref']
+                   and x.get('experience_ref')==e['experience_ref']
+                   and x.get('own_attempted_operation')=='SIGNAL']
+            if len(parts)!=1:
+                rows.append((e,None,None));continue
+            part=parts[0]
+            failed=(e.get('unfinished_own_activity') and not e.get('received_relief',{}).get('nutrition')
+                    and part.get('own_status') in ('PARTIAL','BLOCKED')
+                    and not part.get('joint_participation_perceived')
+                    and e.get('selected_project_refs')==[p['id']]
+                    and e.get('selected_possible_end_trial_ref') is None
+                    and e['event_ref'] in courses
+                    and courses[e['event_ref']].get('performed_status') in ('PARTIAL','BLOCKED'))
+            renewed=(not e.get('unfinished_own_activity') and e.get('received_relief',{}).get('nutrition')
+                     and part.get('own_status')=='PERFORMED'
+                     and part.get('joint_participation_perceived')
+                     and part.get('reciprocated_partner_actor_visible')==other
+                     and e.get('selected_project_refs')==[]
+                     and e.get('selected_possible_end_trial_ref') is None
+                     and e['event_ref'] not in courses)
+            rows.append((e,part,'SUSPEND' if failed else 'REOPEN' if renewed else None))
+        last=rows[-2:]
+        if (len(last)!=2 or any(v[2]!=mode for v in last)
+                or last[-1][0]['event_ref']!=event_ref
+                or last[-1][0]['experience_ref']!=experience.get('ref')
+                or last[-1][0]['selected_practical_option_ref']!=sel['option_id']
+                or last[0][0]['clock']>=last[1][0]['clock']):continue
+        basis={'mode':mode,'practice_ref':bound['practice_ref'],'counterpart_ref':other,
+               'location':bound['location'],'previous_revision_event_ref':prior_ref,
+               'episode_refs':[x[0]['id'] for x in last],
+               'participation_refs':[x[1]['id'] for x in last],
+               'event_refs':[x[0]['event_ref'] for x in last],
+               'no_relationship_or_future_consent_inference':True}
+        out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
+                    'dependency_means_revision_basis':basis})
     return out[:3]

@@ -114,6 +114,11 @@ def conserve_lived_episode(actor,experience,event_ref,before,after,
             .get("addressed_party_ref")),
         "selected_practical_option_ref":(
             (experience.get("own_practical_selection") or {}).get("option_id")),
+        "selected_project_refs":copy(
+            (experience.get("own_practical_selection") or {}).get("selected_project_refs")),
+        "selected_possible_end_trial_ref":(
+            ((experience.get("own_practical_selection") or {}).get("possible_end_trial") or {})
+            .get("trial_id")),
         "does_not_prove_original_willingness":True,
         "actor_does_not_know_objective_cause":True,
         "not_a_retrospectively_invented_episode":True,

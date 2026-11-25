@@ -11,7 +11,7 @@ First reader: existing constitution practical alternatives and semantic choice.
 This is a sourcefree fictional policy, not a universal preference for truth,
 a measured updating law, or an imported theory of conscious reflection.
 """
-from .types import GRADE, copy
+from .types import GRADE, copy, stable_id
 
 
 def source_qualified_appraisal_candidates(actor, experience, event_ref):
@@ -134,3 +134,164 @@ def annotate_practical_expectations(constitution,options):
             'readset':sorted(set(
                 x['id'] for group in known.values() for x in group)),
             'actor_interpretation_not_objective_event':True,'grade':GRADE}
+
+
+# This is an extension of the existing expectation/activity afterlife, not
+# a universal emotion ontology. The semantic constructor supplies the
+# particular meaning and may abstain, including in materially identical lives.
+def possible_activity_affects(actor, experience, event_ref):
+    """Offer personally grounded affective organization and higher-order objects.
+
+    Prior actor-selected activity, actual later received appraisal sign, and
+    a DISTINCT current matching encounter are necessary for this bounded
+    family. Neither success nor a semantic appraisal dictates a feeling.
+    Older affect is a possible object only within the same undertaking or
+    the same genuinely multiply selected historical activity.
+    """
+    aid=actor.get('id')
+    if experience.get('actor')!=aid or not event_ref:return []
+    paths=actor.get('evidence_paths',[])
+    by_event={}
+    for index,path in enumerate(paths):
+        ref=path.get('event')
+        if ref in by_event:by_event[ref]=None
+        else:by_event[ref]=(index,path)
+    current=by_event.get(event_ref)
+    if (current is None or current[1].get('experience_ref')!=experience.get('ref')
+            or type(experience.get('location')) is not str):return []
+    received={c['id']:c for c in experience.get('perceived_cues',[])
+              if type(c) is dict and type(c.get('id')) is str
+              and c['id'] in current[1].get('received_cue_refs',[])}
+    if not received:return []
+    projects={p['id']:p for p in actor.get('projects',[]) if p.get('status','active')=='active'}
+    expectations=[e for e in actor.get('expectations',[])[-128:]
+                  if e.get('actor')==aid and e.get('project_id') in projects]
+    prior_affects=[]
+    for exp in expectations:
+        for aff in exp.get('affective_organizations',[])[-16:]:
+            anchor=by_event.get(aff.get('origin_event_ref'))
+            if (aff.get('actor')==aid and aff.get('expectation_ref')==exp['id']
+                    and anchor is not None and anchor[0]<current[0]
+                    and aff.get('depth')==1):
+                prior_affects.append((exp,aff))
+    offers=[]
+    for exp in expectations:
+        origin=by_event.get(exp.get('origin_event'))
+        pid=exp['project_id']
+        if (origin is None or origin[0]>=current[0]
+                or origin[1].get('experience_ref')!=exp.get('origin_experience_ref')
+                or pid not in origin[1].get('selected_project_refs',[])
+                or origin[1].get('purpose_status') not in
+                   ('ACTOR_POLICY_SELECTED_PROJECT_COURSE','ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES')):
+            continue
+        if exp.get('shared_selected_operation_ref') is not None:
+            if (exp['shared_selected_operation_ref']!=origin[1].get('practical_option_ref')
+                    or exp.get('shared_selected_project_refs')!=origin[1].get('selected_project_refs')):continue
+        elif exp.get('practical_option_id')!=origin[1].get('practical_option_ref'):continue
+        tags={str(t).casefold() for t in exp.get('anticipated_difference',{}).get('sign_tags',[])}
+        if not tags:continue
+        appraisals=exp.get('appraisal_history',[])
+        # Latest interpretation, not arbitrary cherry-picking of older
+        # appraisals after a contradictory subsequent interpretation.
+        if not appraisals:continue
+        appraisal=appraisals[-1]
+        previous=by_event.get(appraisal.get('event'))
+        sign=appraisal.get('perceived_cue_ref')
+        if (previous is None or not origin[0]<previous[0]<current[0]
+                or previous[1].get('experience_ref')!=appraisal.get('experience_ref')
+                or sign not in previous[1].get('received_cue_refs',[])
+                or sign not in appraisal.get('actual_received_sign_refs',[])
+                or appraisal.get('appraisal') not in
+                   ('ACTOR_INTERPRETS_SUPPORTED','ACTOR_INTERPRETS_DISAPPOINTED','MEANING_UNRESOLVED')
+                or not tags.intersection(appraisal.get('appraised_sign_tags',[]))):continue
+        for cue in received.values():
+            matching=sorted(tags.intersection(str(t).casefold() for t in cue.get('tags',[])))
+            if not matching or cue['id']==sign or cue['id'] in previous[1].get('received_cue_refs',[]):continue
+            objects=[None]
+            for other,aff in prior_affects:
+                shared=(other.get('shared_selected_operation_ref') is not None
+                        and other.get('shared_selected_operation_ref')==exp.get('shared_selected_operation_ref')
+                        and other.get('origin_event')==exp.get('origin_event'))
+                if other['id']==exp['id'] or shared:
+                    objects.append(aff['id'])
+            for target in sorted(set(x for x in objects if x is not None))+[None]:
+                # An appraisal/object pair supplies at most one enduring
+                # organization here. Another experienced appraisal can
+                # develop another, without rewriting this one's ancestry.
+                if any(a.get('basis',{}).get('appraisal_event_ref')==appraisal['event']
+                       and a.get('basis',{}).get('object_affect_ref')==target
+                       for a in exp.get('affective_organizations',[])):continue
+                basis={'expectation_ref':exp['id'],'project_ref':pid,
+                       'origin_event_ref':exp['origin_event'],
+                       'appraisal_event_ref':appraisal['event'],
+                       'appraisal_cue_ref':sign,'actor_appraisal':appraisal['appraisal'],
+                       'current_event_ref':event_ref,'current_experience_ref':experience['ref'],
+                       'current_cue_ref':cue['id'],'cue_terms':matching,
+                       'location':experience['location'],'object_affect_ref':target}
+                offers.append(basis)
+                if len(offers)>=12:return offers
+    return offers
+
+
+def admit_activity_affect(actor, experience, event_ref, proposal):
+    allowed={'kind','basis','affect_name','personal_sense','course_orientation'}
+    if set(proposal)!=allowed or proposal['basis'] not in possible_activity_affects(actor,experience,event_ref):
+        raise ValueError('ACTIVITY_AFFECT_UNQUALIFIED_HISTORY')
+    for k,limit in (('affect_name',80),('personal_sense',400)):
+        v=proposal[k]
+        if type(v) is not str or not v.strip() or len(v)>limit:
+            raise ValueError('ACTIVITY_AFFECT_INVALID_SEMANTIC_CONTENT')
+    if proposal['course_orientation'] not in ('APPROACH','WITHHOLD','NO_DIRECT_TENDENCY'):
+        raise ValueError('ACTIVITY_AFFECT_INVALID_COURSE_ORIENTATION')
+    b=proposal['basis']
+    exp=next(e for e in actor['expectations'] if e['id']==b['expectation_ref'])
+    ident=stable_id('activity_affect',{'actor':actor['id'],'basis':b})
+    rec={'id':ident,'actor':actor['id'],'expectation_ref':exp['id'],
+         'project_ref':b['project_ref'],'origin_event_ref':event_ref,
+         'basis':copy(b),'affect_name':proposal['affect_name'],
+         'personal_sense':proposal['personal_sense'],
+         'course_orientation':proposal['course_orientation'],
+         'depth':2 if b['object_affect_ref'] is not None else 1,
+         'grade':GRADE,'fictional_semantic_construction_not_diagnosis':True,
+         'not_conscious_reason_or_world_truth':True}
+    exp.setdefault('affective_organizations',[]).append(rec)
+    return {'kind':'ACQUIRE_ACTIVITY_AFFECT','affect_ref':ident,
+            'expectation_ref':exp['id'],'grade':GRADE}
+
+
+def annotate_activity_affects(constitution, access, options):
+    """Recruit the actual directed, potentially opposed historical formations.
+
+    Affective significance is scoped to the particular project course and
+    currently accessible context. It grants no action, changes no eligibility
+    and is never summed into a universal affect score. No disclosure follows.
+    """
+    tags={str(t).casefold() for cue in access.cues for t in cue.get('tags',[])}
+    by_project={}
+    for exp in constitution.expectations[-256:]:
+        if exp.get('actor')!=constitution.actor:continue
+        for aff in exp.get('affective_organizations',[]):
+            b=aff.get('basis',{})
+            if (aff.get('actor')!=constitution.actor or aff.get('expectation_ref')!=exp['id']
+                    or aff.get('project_ref')!=exp.get('project_id')
+                    or b.get('location')!=access.location
+                    or not tags.intersection(b.get('cue_terms',[]))):continue
+            by_project.setdefault(exp['project_id'],[]).append(aff)
+    readset=set();currents=[]
+    for opt in options:
+        for alt in opt.get('practical_alternatives',[]):
+            rows=by_project.get(alt.get('project_id'),[])
+            if not rows or alt.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':continue
+            # Each relation is preserved, even if no action tendency follows.
+            alt['course_affective_organizations']=[copy(a) for a in rows]
+            orientations={a['course_orientation'] for a in rows}
+            alt['affective_course_status']=('OPPOSED_AFFECTIVE_ORIENTATIONS'
+                    if {'APPROACH','WITHHOLD'}<=orientations else 'DIFFERENTIATED_AFFECTIVE_SIGNIFICANCE')
+            for a in rows:
+                readset.add(a['id'])
+                currents.append({'kind':'ACTIVITY_AFFECT_CURRENT','ref':a['id'],
+                                 'project_ref':alt['project_id'],'option_ref':alt['option_id'],
+                                 'operation':opt['action'],'orientation':a['course_orientation'],
+                                 'object_affect_ref':a['basis']['object_affect_ref'],
+                                 'not_public_self_knowledge':True})
+    return {'readset':sorted(readset),'currents':currents}

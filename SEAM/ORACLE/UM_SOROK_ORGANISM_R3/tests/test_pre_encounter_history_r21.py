@@ -367,3 +367,131 @@ class RecursiveEncounterR33(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class StructuralOrdinaryLifeR44(unittest.TestCase):
+    def initialize(self,db):
+        from um_sorok_organism.types import adult,newborn,blank_world
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        from um_sorok_organism.semantics import CallbackLLMProvider,ValidatingSemanticService
+        def policy(task,packet):
+            if task=='development':return {'task':task,'candidates':[]}
+            if task=='expression':return {'task':task,'surface':'Ordinary activity.'}
+            return {'task':task,'action':'WAIT'}
+        rt=ConstitutiveRuntime(db,semantic=ValidatingSemanticService(CallbackLLMProvider(policy)))
+        w=blank_world()
+        parent=adult('mother','Mother')
+        parent['projects']=[{'id':'care','object':'care for child','means':['CARE'],
+                            'status':'active','priority':.5},
+                            {'id':'practice','object':'practice movement','means':['PRACTICE'],
+                             'status':'active','priority':.5}]
+        child=newborn('nadia','Nadia')
+        spec={'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY','source_ref':'fictional:period_world',
+              'positions':[{'id':'p0','actor':'mother','field':'care_access','value':'admitted',
+                            'source_ref':'fictional:p0','effective_from':0,'effective_until':2},
+                           {'id':'p1','actor':'mother','field':'care_access','value':'excluded',
+                            'source_ref':'fictional:p1','effective_from':3,'effective_until':5}],
+              'rules':[{'id':'care_gate','operation':'CARE','location':'home',
+                        'source_ref':'fictional:care_gate','effective_from':0,'effective_until':5,
+                        'all_of':[{'kind':'RECORDED_POSITION','field':'care_access','equals':'admitted'}]}]}
+        admit_authored_structural_history(w,{'mother','nadia'},spec)
+        rt.ledger.initialize(w,[parent,child],
+            source_seals=[('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',spec)])
+        rows=[]
+        for kind in ('QUALIFIED_REPRODUCTIVE_CARE','QUALIFIED_ROUTINE_PRACTICE'):
+            registered=rt.register_historical_routine_source({
+                'kind':kind,'actor':'mother','location':'home','start_clock':0,
+                'end_clock':12,'max_hours_per_active_day':3,
+                'description':'bounded fictional routine'})
+            row={'kind':kind,'actor':'mother','location':'home',
+                 'source_ref':registered['source_ref'],'hours_per_active_day':3,
+                 'provisional_exposure_fraction':1.0}
+            if kind=='QUALIFIED_REPRODUCTIVE_CARE':row['recipient']='nadia'
+            else:row.update({'operation':'PRACTICE','mode':'SOLO_COMPONENT_PRACTICE'})
+            rows.append(row)
+        return rt,rows
+
+    def test_structural_transition_splits_compressed_history_without_inventing_care(self):
+        from um_sorok_organism.mediated_efficacy import situated_component_efficacy
+        with tempfile.TemporaryDirectory() as d:
+            db=str(Path(d)/'period')
+            rt,rows=self.initialize(db)
+            try:
+                before=rt.ledger.world()[1]
+                actors=rt.ledger.actors()
+                n=rt.verify()['events']
+                with self.assertRaisesRegex(ValueError,'HISTORICAL_TIME_SPLIT_AT_STRUCTURAL_GATE'):
+                    rt.background(9,processes=rows)
+                self.assertEqual(rt.ledger.world()[1],before)
+                self.assertEqual(rt.ledger.actors(),actors)
+                self.assertEqual(rt.verify()['events'],n)
+                first=rt.advance_to_discontinuity(horizon=9,processes=rows)
+                self.assertEqual(first['historical_discontinuity']['at'],3)
+                self.assertEqual(first['historical_discontinuity']['after_decision'],'BLOCKED')
+                self.assertIsNone(first['high_resolution_actor_event'])
+                first_child=rt.snapshot('nadia')
+                self.assertEqual(len(first_child['undergone_care_periods']),1)
+                self.assertEqual(first_child['evidence_paths'],[])
+                self.assertEqual(first_child['memories'],[])
+                first_parent=rt.snapshot('mother')
+                self.assertEqual(len(first_parent['practice_exposures']),1)
+                self.assertEqual(first_child['age_days'],3)
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
+            cold=ConstitutiveRuntime(db)
+            try:
+                second=cold.advance_to_discontinuity(horizon=6,processes=rows)
+                self.assertEqual(second['historical_discontinuity']['at'],6)
+                self.assertEqual(second['historical_discontinuity']['after_decision'],'NO_ADDITIONAL_RULE')
+                self.assertIsNone(second['high_resolution_actor_event'])
+                world=cold.ledger.world()[1]
+                period=world['historical_periods'][-1]
+                held=period['structurally_withheld_processes']
+                self.assertEqual(len(held),1)
+                self.assertEqual(held[0]['operation'],'CARE')
+                self.assertEqual(held[0]['objective_rule_evaluation']['decision'],'BLOCKED')
+                self.assertEqual(held[0]['source_ref'],rows[0]['source_ref'])
+                self.assertEqual(held[0]['actual_time_lost_or_actor_experience'],'NOT_INFERRED')
+                self.assertEqual(period['care_period_refs'],[])
+                self.assertEqual([x['kind'] for x in period['processes']],['QUALIFIED_ROUTINE_PRACTICE'])
+                self.assertEqual(period['actor_time_claims']['mother'],3.0)
+                child=cold.snapshot('nadia')
+                self.assertEqual(child['age_days'],6)
+                self.assertEqual(child['undergone_care_periods'],first_child['undergone_care_periods'])
+                self.assertEqual(child['evidence_paths'],[])
+                parent=cold.snapshot('mother')
+                self.assertEqual(len(parent['practice_exposures']),2)
+                self.assertGreater(situated_component_efficacy(parent,'PRACTICE','home')['provisional_exposure_dose'],
+                                   situated_component_efficacy(first_parent,'PRACTICE','home')['provisional_exposure_dose'])
+                third=cold.advance_to_discontinuity(horizon=3,processes=rows)
+                self.assertIsNone(third['historical_discontinuity'])
+                child=cold.snapshot('nadia')
+                self.assertEqual(child['age_days'],9)
+                self.assertEqual(len(child['undergone_care_periods']),2)
+                self.assertEqual(child['evidence_paths'],[])
+                self.assertEqual(child['memories'],[])
+                self.assertEqual(child['co_regulation_orientations'],[])
+                self.assertEqual(len(cold.snapshot('mother')['practice_exposures']),3)
+                self.assertTrue(cold.verify()['valid'])
+            finally:cold.close()
+
+    def test_same_rule_bites_actual_care_and_expiry_does_not_create_experience(self):
+        with tempfile.TemporaryDirectory() as d:
+            rt,rows=self.initialize(str(Path(d)/'actual'))
+            try:
+                rt.advance_to_discontinuity(horizon=6,processes=rows)
+                before=rt.snapshot('nadia')
+                blocked=rt.step('mother',requested_action='CARE',target='nadia')
+                self.assertEqual(blocked['status'],'BLOCKED')
+                child=rt.snapshot('nadia')
+                self.assertEqual(child['undergone_care_periods'],before['undergone_care_periods'])
+                self.assertEqual(child['body']['comfort'],before['body']['comfort'])
+                # After the actual obstruction, time can pass without
+                # retrospectively inventing care or a child's interpretation.
+                rt.background(2)
+                self.assertEqual(rt.ledger.world()[1]['clock'],6)
+                performed=rt.step('mother',requested_action='CARE',target='nadia')
+                self.assertEqual(performed['status'],'PERFORMED')
+                self.assertGreater(rt.snapshot('nadia')['body']['comfort'],child['body']['comfort'])
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()

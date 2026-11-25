@@ -7,6 +7,7 @@ scheduling threshold was an experienced violation, or close other actors'
 rights. The actual runtime/world owners still author their own transactions.
 """
 from .types import GRADE, stable_id
+from .material_conjunction import next_material_gate_discontinuity
 
 MAX_HORIZON=3650
 
@@ -100,8 +101,11 @@ def next_discontinuity(world, actors, horizon):
             candidates.append({'at':expiry+1,'kind':'PUBLIC_SIGN_EXPIRES',
                 'actor':None,'source_ref':cue.get('id'),
                 'expiration_not_actor_forgetting':True})
+    structural=next_material_gate_discontinuity(world,actors,horizon)
+    if structural:candidates.append(structural)
     candidates.sort(key=lambda d:(d['at'],
-                        0 if d['kind']=='OBLIGATION_DUE' else 1,
+                        0 if d['kind']=='OBLIGATION_DUE' else
+                        1 if d['kind']=='STRUCTURAL_GATE_TRANSITION' else 2,
                         str(d.get('source_ref'))))
     return candidates[0] if candidates else None
 
@@ -139,6 +143,12 @@ def continue_to_discontinuity(runtime, horizon=30, processes=None):
                 'high_resolution_actor_event':None,
                 'no_human_action_or_actor_appraisal_injected':True,
                 'grade':GRADE}
+    if target['kind']=='STRUCTURAL_GATE_TRANSITION':
+        return {'historical_discontinuity':target,
+                'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
+                'high_resolution_actor_event':None,
+                'objective_change_not_actor_exposure_or_conduct':True,
+                'unwritten_microevents_remain_unknown':True,'grade':GRADE}
     if target['kind']=='PUBLIC_SIGN_EXPIRES':
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,

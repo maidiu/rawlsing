@@ -1053,3 +1053,879 @@ class DependencyProjectReorganizationR39(unittest.TestCase):
                     self.assertTrue(cold.verify()['valid'])
                 finally:cold.close()
             self.assertEqual(final,{True:'SIGNAL',False:'WAIT'})
+
+class DependencyMeansHistoryR40(unittest.TestCase):
+    def test_repeated_interruption_and_renewal_revise_same_project_means_without_erasure(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for reopen in (True,False):
+                reorganize=True
+                takeup=True
+                stage='first'; offered=[]; revisions=[]; means_revisions=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']=='mother':
+                            return {'task':task,'action':('REST' if stage=='restore_mother' else 'FEED' if stage in ('supported','renewed','project_signal','renew_means') else 'REFUSE')}
+                        if stage in ('interrupted','renewed','renew_means'):
+                            choices=[o for o in packet['practical_options']
+                                     if o['operation']=='SIGNAL'
+                                     and o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                                     and o['world_request']['addressed_party_ref']=='mother']
+                            self.assertEqual(len(choices),1)
+                            return {'task':task,'action':'SIGNAL','practical_option_id':choices[0]['option_id']}
+                        if stage in ('project_signal','project_refused'):
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='SIGNAL' and x.get('project_id') is not None
+                                     and x.get('dependency_conditional_means_ref')]
+                            if choices:
+                                self.assertEqual(len(choices),1)
+                                self.assertEqual(choices[0]['world_request']['addressed_party_ref'],'mother')
+                                return {'task':task,'action':'SIGNAL','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                            return {'task':task,'action':'WAIT'}
+                        if stage=='trial':
+                            trials=[x for x in packet['possible_end_trials'] if x['operation']=='EAT']
+                            self.assertEqual(len(trials),1)
+                            return {'task':task,'possible_end_trial_id':trials[0]['trial_id']}
+                        if stage=='revisit':
+                            return {'task':task,'action':'EAT'}
+                        if stage=='project':
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='EAT' and x.get('project_id') is not None]
+                            if choices:
+                                return {'task':task,'action':'EAT','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='supported':
+                            return {'task':task,'candidates':packet['historically_possible_joint_practices']}
+                        if stage=='independent':
+                            return {'task':task,'candidates':[g for g in packet['historically_possible_genetic_ends']
+                                                               if g.get('dependency_loss_basis')]}
+                        rs=packet.get('historically_possible_dependency_project_reorganizations',[])
+                        if rs:revisions.append((copy.deepcopy(rs),copy.deepcopy(packet['experience'])))
+                        if stage=='renewed':return {'task':task,'candidates':rs if reorganize else []}
+                        ms=packet.get('historically_possible_dependency_means_revisions',[])
+                        if ms:
+                            means_revisions.append((copy.deepcopy(ms),copy.deepcopy(packet['experience'])))
+                            return {'task':task,'candidates':ms if ms[0]['dependency_means_revision_basis']['mode']=='SUSPEND' or reopen else []}
+                        cs=packet.get('historically_possible_dependency_takeups',[])
+                        if cs:offered.append((copy.deepcopy(cs),copy.deepcopy(packet['experience'])))
+                        return {'task':task,'candidates':cs if takeup else []}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(reopen)); service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    w['holdings']={'mother':{'food':6}}
+                    a=adult('worker','Mara');a['body']['nutrition']=.30
+                    a['forms']['eating']={'id':'eating','kind':'PRACTICE','actor':'worker',
+                        'origin':['fictional_init:worker'],'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION',
+                        'content':'ordinary eating','cues':['eat'],'enables':['EAT'],
+                        'scope':{},'always_recruitable':True,'lifecycle':'ACTIVE'}
+                    mother=adult('mother','Mother')
+                    mother['projects']=[{'id':'care','object':'ordinary care',
+                                        'means':['FEED'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a,mother])
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PARTIAL')
+                    stage='supported'
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PERFORMED')
+                    practice=copy.deepcopy(rt.ledger.actor('worker')[1]['joint_practices'])
+                    self.assertEqual(len(practice),1)
+                    stage='interrupted'
+                    self.assertEqual(rt.step('worker')['status'],'PARTIAL')
+                    stage='independent'
+                    self.assertEqual(rt.step('worker',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(rt.ledger.actor('worker')[1]['possible_ends']),1)
+                    stage='trial'
+                    self.assertEqual(rt.step('worker')['attempt'],'EAT')
+                    self.assertEqual(offered,[])
+                    trial_state=rt.ledger.actor('worker')[1]
+                    self.assertEqual(trial_state['projects'],[])
+                    self.assertEqual(len(trial_state['possible_ends'][0]['trial_history']),1)
+                    stage='wait'
+                    for _ in range(8):rt.step('worker')
+                    self.assertEqual(offered,[])
+                    stage='revisit'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    cs,exp=offered[0];self.assertEqual(len(cs),1)
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),int(takeup))
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(cs[0]['dependency_takeup_basis']['earlier_lived_trial_ref'],
+                        trial_state['possible_ends'][0]['trial_history'][0]['id'])
+                    if takeup:
+                        p=a['projects'][0]
+                        self.assertEqual(p['takeup_evidence']['dependency_takeup_basis'],cs[0]['dependency_takeup_basis'])
+                        self.assertEqual(a['possible_ends'][0]['status'],'TAKEN_UP_AS_PRACTICAL_PROJECT')
+                        self.assertIsNone(p.get('addressed_party_ref'))
+                    else:
+                        bad=copy.deepcopy(cs[0])
+                        bad['dependency_takeup_basis']['earlier_lived_trial_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=cs[0]['dependency_takeup_basis']['source_event_refs'][-1]
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_TAKEUP_NO_QUALIFIED_LATER_COURSE'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                stage='project'
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.step('worker')['attempt'],'EAT')
+                    a=cold.ledger.actor('worker')[1]
+                    if takeup:
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['operation'],'EAT')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['motive_realized'],
+                                         'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                        # Exhaust actual shared food; the undertaking persists.
+                        for _ in range(14):
+                            out=cold.step('worker')
+                            if out['status']=='BLOCKED':break
+                        self.assertEqual(out['status'],'BLOCKED')
+                        a=cold.ledger.actor('worker')[1]
+                        self.assertEqual(a['projects'][0]['status'],'active')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['performed_status'],'BLOCKED')
+                        old_project=copy.deepcopy(a['projects'][0])
+                    stage='wait'
+                    for _ in range(12):cold.step('worker')
+                    self.assertEqual(revisions,[])
+                    stage='renewed'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(revisions),1)
+                    rs,exp=revisions[0];self.assertEqual(len(rs),1)
+                    a=cold.ledger.actor('worker')[1]
+                    project=a['projects'][0]
+                    self.assertEqual(project['id'],old_project['id'])
+                    self.assertEqual(project['origin'],old_project['origin'])
+                    self.assertEqual(project['means'],['EAT','SIGNAL'] if reorganize else ['EAT'])
+                    self.assertEqual(project['operational_history'],old_project['operational_history'])
+                    if reorganize:
+                        self.assertEqual(project['dependency_reorganization_history'][0]['previous']['object'],old_project['object'])
+                        self.assertEqual(project['dependency_conditional_means']['SIGNAL']['counterpart_ref'],'mother')
+                    else:
+                        bad=copy.deepcopy(rs[0])
+                        bad['dependency_reorganization_basis']['counterpart_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=rs[0]['dependency_reorganization_basis']['renewed_event_ref']
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_PROJECT_REORGANIZATION_UNQUALIFIED'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertTrue(cold.verify()['valid'])
+                    # Long actual history has depleted bodily rest. Keep that
+                    # constraint operative; real restorative activity precedes
+                    # the next independently solicited course.
+                    from um_sorok_organism.organism import eligible
+                    self.assertEqual(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL'),(False,'FATIGUE'))
+                    stage='wait'
+                    self.assertEqual(cold.step('worker',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL')[0])
+                    cold.close()
+                    stage='project_refused'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    if reorganize:
+                        plan=cold.plan('worker')
+                        self.assertEqual((plan.action,plan.target),('SIGNAL','mother'),
+                            str({'plan':plan,'signal':[x for x in cold.situated('worker')['candidate_actions'] if x['action']=='SIGNAL'],
+                                 'cues':cold.see('worker')['cues']}))
+                    result=cold.step('worker')
+                    self.assertEqual(result['status'],'PARTIAL')
+                    self.assertEqual(means_revisions,[])
+                    self.assertEqual(cold.step('worker')['status'],'PARTIAL')
+                    self.assertEqual(len(means_revisions),1)
+                    suspended=cold.ledger.actor('worker')[1]
+                    p=suspended['projects'][0]
+                    binding=p['dependency_conditional_means']['SIGNAL']
+                    self.assertEqual(binding['status'],'SUSPENDED')
+                    self.assertEqual(binding['revision_history'][0]['basis']['mode'],'SUSPEND')
+                    self.assertEqual(p['means'],['EAT','SIGNAL'])
+                    self.assertEqual(p['id'],old_project['id'])
+                    self.assertEqual(suspended['joint_practices'],practice)
+                    self.assertEqual(p['status'],'active')
+                    # Stored SIGNAL no longer recruits the project; the
+                    # actor can still seek assistance for other reasons.
+                    self.assertFalse(any(x.get('project_id')==p['id'] for a in cold.situated('worker')['candidate_actions']
+                        if a['action']=='SIGNAL' for x in a.get('practical_alternatives',[])))
+                    self.assertEqual(cold.plan('worker').action,'WAIT')
+                    self.assertTrue(cold.verify()['valid'])
+                    cold.close()
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    # Actual rest and independent support, not injected
+                    # relief receipts or bypassed physiological constraints.
+                    stage='wait'
+                    cold.step('worker',requested_action='REST')
+                    cold.step('mother',requested_action='REST')
+                    stage='renew_means'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(means_revisions),1)
+                    self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]
+                        ['dependency_conditional_means']['SIGNAL']['status'],'SUSPENDED')
+                    # Success at bodily saturation is not another lived
+                    # nutritional differential. Let ordinary need recur.
+                    stage='wait'
+                    cold.step('worker',requested_action='REST')
+                    for _ in range(10):cold.step('worker')
+                    stage='renew_means'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(means_revisions),2,
+                        str(cold.ledger.actor('worker')[1]['lived_genesis_episodes'][-14:]))
+                    cs,exp=means_revisions[-1]
+                    self.assertEqual(cs[0]['dependency_means_revision_basis']['mode'],'REOPEN')
+                    a=cold.ledger.actor('worker')[1]
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(a['projects'][0]['id'],p['id'])
+                    b=a['projects'][0]['dependency_conditional_means']['SIGNAL']
+                    self.assertEqual(b['status'],'ACTIVE' if reopen else 'SUSPENDED')
+                    self.assertEqual(len(b['revision_history']),2 if reopen else 1)
+                    if not reopen:
+                        forged=copy.deepcopy(cs[0])
+                        forged['dependency_means_revision_basis']['episode_refs'][0]='invented'
+                        before=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_MEANS_REVISION_UNQUALIFIED'):
+                            admit(a,exp,cs[0]['dependency_means_revision_basis']['event_refs'][-1],[forged])
+                        self.assertEqual(a,before)
+                    cold.close()
+                    stage='project_refused'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    result=cold.step('worker')
+                    final[reopen]=result['attempt']
+                    if reopen:
+                        self.assertEqual(result['status'],'PARTIAL')
+                        self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]
+                             ['dependency_conditional_means']['SIGNAL']['status'],'ACTIVE')
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(final,{True:'SIGNAL',False:'WAIT'})
+
+class DependencyCourseAmbivalenceR41(unittest.TestCase):
+    def test_available_course_can_carry_opposed_historical_currents_without_global_veto(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for nominate in (True,False):
+                reopen=True
+                reorganize=True
+                takeup=True
+                stage='first'; offered=[]; revisions=[]; means_revisions=[]; ambivalence=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']=='mother':
+                            return {'task':task,'action':('REST' if stage=='restore_mother' else 'FEED' if stage in ('supported','renewed','project_signal','renew_means') else 'REFUSE')}
+                        if stage in ('interrupted','renewed','renew_means'):
+                            choices=[o for o in packet['practical_options']
+                                     if o['operation']=='SIGNAL'
+                                     and o.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                                     and o['world_request']['addressed_party_ref']=='mother']
+                            self.assertEqual(len(choices),1)
+                            return {'task':task,'action':'SIGNAL','practical_option_id':choices[0]['option_id']}
+                        if stage in ('project_signal','project_refused','later_course'):
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='SIGNAL' and x.get('project_id') is not None
+                                     and x.get('dependency_conditional_means_ref')]
+                            if choices:
+                                self.assertEqual(len(choices),1)
+                                self.assertEqual(choices[0]['world_request']['addressed_party_ref'],'mother')
+                                if stage=='later_course' and choices[0].get('course_psychodynamic_status')=='UNRESOLVED_CONTRADICTION':
+                                    return {'task':task,'action':'WAIT'}
+                                return {'task':task,'action':'SIGNAL','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                            return {'task':task,'action':'WAIT'}
+                        if stage=='trial':
+                            trials=[x for x in packet['possible_end_trials'] if x['operation']=='EAT']
+                            self.assertEqual(len(trials),1)
+                            return {'task':task,'possible_end_trial_id':trials[0]['trial_id']}
+                        if stage=='revisit':
+                            return {'task':task,'action':'EAT'}
+                        if stage=='project':
+                            choices=[x for x in packet['practical_options']
+                                     if x['operation']=='EAT' and x.get('project_id') is not None]
+                            if choices:
+                                return {'task':task,'action':'EAT','project_id':choices[0]['project_id'],
+                                        'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='supported':
+                            return {'task':task,'candidates':packet['historically_possible_joint_practices']}
+                        if stage=='independent':
+                            return {'task':task,'candidates':[g for g in packet['historically_possible_genetic_ends']
+                                                               if g.get('dependency_loss_basis')]}
+                        rs=packet.get('historically_possible_dependency_project_reorganizations',[])
+                        if rs:revisions.append((copy.deepcopy(rs),copy.deepcopy(packet['experience'])))
+                        if stage=='renewed':return {'task':task,'candidates':rs if reorganize else []}
+                        amb=packet.get('historically_possible_dependency_ambivalence',[])
+                        if amb:
+                            ambivalence.append((copy.deepcopy(amb),copy.deepcopy(packet['experience'])))
+                            return {'task':task,'candidates':amb if nominate else []}
+                        ms=packet.get('historically_possible_dependency_means_revisions',[])
+                        if ms:
+                            means_revisions.append((copy.deepcopy(ms),copy.deepcopy(packet['experience'])))
+                            return {'task':task,'candidates':ms if ms[0]['dependency_means_revision_basis']['mode']=='SUSPEND' or reopen else []}
+                        cs=packet.get('historically_possible_dependency_takeups',[])
+                        if cs:offered.append((copy.deepcopy(cs),copy.deepcopy(packet['experience'])))
+                        return {'task':task,'candidates':cs if takeup else []}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(nominate)); service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    w['holdings']={'mother':{'food':6}}
+                    a=adult('worker','Mara');a['body']['nutrition']=.30
+                    a['forms']['eating']={'id':'eating','kind':'PRACTICE','actor':'worker',
+                        'origin':['fictional_init:worker'],'grade':'FICTIONAL_ABDUCTIVE_INITIALIZATION',
+                        'content':'ordinary eating','cues':['eat'],'enables':['EAT'],
+                        'scope':{},'always_recruitable':True,'lifecycle':'ACTIVE'}
+                    mother=adult('mother','Mother')
+                    mother['projects']=[{'id':'care','object':'ordinary care',
+                                        'means':['FEED'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a,mother])
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PARTIAL')
+                    stage='supported'
+                    self.assertEqual(rt.step('worker',requested_action='SIGNAL',target='mother')['status'],'PERFORMED')
+                    practice=copy.deepcopy(rt.ledger.actor('worker')[1]['joint_practices'])
+                    self.assertEqual(len(practice),1)
+                    stage='interrupted'
+                    self.assertEqual(rt.step('worker')['status'],'PARTIAL')
+                    stage='independent'
+                    self.assertEqual(rt.step('worker',requested_action='EAT')['status'],'PERFORMED')
+                    self.assertEqual(len(rt.ledger.actor('worker')[1]['possible_ends']),1)
+                    stage='trial'
+                    self.assertEqual(rt.step('worker')['attempt'],'EAT')
+                    self.assertEqual(offered,[])
+                    trial_state=rt.ledger.actor('worker')[1]
+                    self.assertEqual(trial_state['projects'],[])
+                    self.assertEqual(len(trial_state['possible_ends'][0]['trial_history']),1)
+                    stage='wait'
+                    for _ in range(8):rt.step('worker')
+                    self.assertEqual(offered,[])
+                    stage='revisit'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    cs,exp=offered[0];self.assertEqual(len(cs),1)
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),int(takeup))
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(cs[0]['dependency_takeup_basis']['earlier_lived_trial_ref'],
+                        trial_state['possible_ends'][0]['trial_history'][0]['id'])
+                    if takeup:
+                        p=a['projects'][0]
+                        self.assertEqual(p['takeup_evidence']['dependency_takeup_basis'],cs[0]['dependency_takeup_basis'])
+                        self.assertEqual(a['possible_ends'][0]['status'],'TAKEN_UP_AS_PRACTICAL_PROJECT')
+                        self.assertIsNone(p.get('addressed_party_ref'))
+                    else:
+                        bad=copy.deepcopy(cs[0])
+                        bad['dependency_takeup_basis']['earlier_lived_trial_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=cs[0]['dependency_takeup_basis']['source_event_refs'][-1]
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_TAKEUP_NO_QUALIFIED_LATER_COURSE'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                stage='project'
+                cold=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    self.assertEqual(cold.step('worker')['attempt'],'EAT')
+                    a=cold.ledger.actor('worker')[1]
+                    if takeup:
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['operation'],'EAT')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['motive_realized'],
+                                         'UNDETERMINED_BY_TECHNICAL_OUTCOME')
+                        # Exhaust actual shared food; the undertaking persists.
+                        for _ in range(14):
+                            out=cold.step('worker')
+                            if out['status']=='BLOCKED':break
+                        self.assertEqual(out['status'],'BLOCKED')
+                        a=cold.ledger.actor('worker')[1]
+                        self.assertEqual(a['projects'][0]['status'],'active')
+                        self.assertEqual(a['projects'][0]['operational_history'][-1]['performed_status'],'BLOCKED')
+                        old_project=copy.deepcopy(a['projects'][0])
+                    stage='wait'
+                    for _ in range(12):cold.step('worker')
+                    self.assertEqual(revisions,[])
+                    stage='renewed'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(revisions),1)
+                    rs,exp=revisions[0];self.assertEqual(len(rs),1)
+                    a=cold.ledger.actor('worker')[1]
+                    project=a['projects'][0]
+                    self.assertEqual(project['id'],old_project['id'])
+                    self.assertEqual(project['origin'],old_project['origin'])
+                    self.assertEqual(project['means'],['EAT','SIGNAL'] if reorganize else ['EAT'])
+                    self.assertEqual(project['operational_history'],old_project['operational_history'])
+                    if reorganize:
+                        self.assertEqual(project['dependency_reorganization_history'][0]['previous']['object'],old_project['object'])
+                        self.assertEqual(project['dependency_conditional_means']['SIGNAL']['counterpart_ref'],'mother')
+                    else:
+                        bad=copy.deepcopy(rs[0])
+                        bad['dependency_reorganization_basis']['counterpart_ref']='forged'
+                        saved=copy.deepcopy(a)
+                        ref=rs[0]['dependency_reorganization_basis']['renewed_event_ref']
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_PROJECT_REORGANIZATION_UNQUALIFIED'):
+                            admit(a,exp,ref,[bad])
+                        self.assertEqual(a,saved)
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertTrue(cold.verify()['valid'])
+                    # Long actual history has depleted bodily rest. Keep that
+                    # constraint operative; real restorative activity precedes
+                    # the next independently solicited course.
+                    from um_sorok_organism.organism import eligible
+                    self.assertEqual(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL'),(False,'FATIGUE'))
+                    stage='wait'
+                    self.assertEqual(cold.step('worker',requested_action='REST')['status'],'PERFORMED')
+                    self.assertTrue(eligible(cold.ledger.actor('worker')[1]['body'],'SIGNAL')[0])
+                    cold.close()
+                    stage='project_refused'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    if reorganize:
+                        plan=cold.plan('worker')
+                        self.assertEqual((plan.action,plan.target),('SIGNAL','mother'),
+                            str({'plan':plan,'signal':[x for x in cold.situated('worker')['candidate_actions'] if x['action']=='SIGNAL'],
+                                 'cues':cold.see('worker')['cues']}))
+                    result=cold.step('worker')
+                    self.assertEqual(result['status'],'PARTIAL')
+                    self.assertEqual(means_revisions,[])
+                    self.assertEqual(cold.step('worker')['status'],'PARTIAL')
+                    self.assertEqual(len(means_revisions),1)
+                    suspended=cold.ledger.actor('worker')[1]
+                    p=suspended['projects'][0]
+                    binding=p['dependency_conditional_means']['SIGNAL']
+                    self.assertEqual(binding['status'],'SUSPENDED')
+                    self.assertEqual(binding['revision_history'][0]['basis']['mode'],'SUSPEND')
+                    self.assertEqual(p['means'],['EAT','SIGNAL'])
+                    self.assertEqual(p['id'],old_project['id'])
+                    self.assertEqual(suspended['joint_practices'],practice)
+                    self.assertEqual(p['status'],'active')
+                    # Stored SIGNAL no longer recruits the project; the
+                    # actor can still seek assistance for other reasons.
+                    self.assertFalse(any(x.get('project_id')==p['id'] for a in cold.situated('worker')['candidate_actions']
+                        if a['action']=='SIGNAL' for x in a.get('practical_alternatives',[])))
+                    self.assertEqual(cold.plan('worker').action,'WAIT')
+                    self.assertTrue(cold.verify()['valid'])
+                    cold.close()
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    # Actual rest and independent support, not injected
+                    # relief receipts or bypassed physiological constraints.
+                    stage='wait'
+                    cold.step('worker',requested_action='REST')
+                    cold.step('mother',requested_action='REST')
+                    stage='renew_means'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(means_revisions),1)
+                    self.assertEqual(cold.ledger.actor('worker')[1]['projects'][0]
+                        ['dependency_conditional_means']['SIGNAL']['status'],'SUSPENDED')
+                    # Success at bodily saturation is not another lived
+                    # nutritional differential. Let ordinary need recur.
+                    stage='wait'
+                    cold.step('worker',requested_action='REST')
+                    for _ in range(10):cold.step('worker')
+                    stage='renew_means'
+                    self.assertEqual(cold.step('worker')['status'],'PERFORMED')
+                    self.assertEqual(len(means_revisions),2,
+                        str(cold.ledger.actor('worker')[1]['lived_genesis_episodes'][-14:]))
+                    cs,exp=means_revisions[-1]
+                    self.assertEqual(cs[0]['dependency_means_revision_basis']['mode'],'REOPEN')
+                    a=cold.ledger.actor('worker')[1]
+                    self.assertEqual(a['joint_practices'],practice)
+                    self.assertEqual(a['projects'][0]['id'],p['id'])
+                    b=a['projects'][0]['dependency_conditional_means']['SIGNAL']
+                    self.assertEqual(b['status'],'ACTIVE' if reopen else 'SUSPENDED')
+                    self.assertEqual(len(b['revision_history']),2 if reopen else 1)
+                    if not reopen:
+                        forged=copy.deepcopy(cs[0])
+                        forged['dependency_means_revision_basis']['episode_refs'][0]='invented'
+                        before=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_MEANS_REVISION_UNQUALIFIED'):
+                            admit(a,exp,cs[0]['dependency_means_revision_basis']['event_refs'][-1],[forged])
+                        self.assertEqual(a,before)
+                    cold.close()
+                    stage='project_refused'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    result=cold.step('worker')
+                    self.assertEqual(result['status'],'PARTIAL')
+                    self.assertEqual(len(ambivalence),1)
+                    cs,exp=ambivalence[0];self.assertEqual(len(cs),1)
+                    a=cold.ledger.actor('worker')[1]
+                    p=a['projects'][0]
+                    self.assertEqual(p['dependency_conditional_means']['SIGNAL']['status'],'ACTIVE')
+                    self.assertEqual(a['joint_practices'],practice)
+                    rows=[x for x in a['historical_orientations'] if x.get('dependency_ambivalence_basis')]
+                    self.assertEqual(len(rows),int(nominate))
+                    if nominate:
+                        self.assertEqual(rows[0]['orientation_mode'],'AMBIVALENT')
+                        self.assertEqual(rows[0]['dependency_ambivalence_basis'],cs[0]['dependency_ambivalence_basis'])
+                    else:
+                        bad=copy.deepcopy(cs[0]);bad['dependency_ambivalence_basis']['approach_episode_refs'][0]='invented'
+                        old=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'DEPENDENCY_AMBIVALENCE_UNQUALIFIED'):
+                            admit(a,exp,cs[0]['dependency_ambivalence_basis']['latest_event_ref'],[bad])
+                        self.assertEqual(a,old)
+                    self.assertTrue(cold.verify()['valid'])
+                    cold.close()
+                    stage='later_course'
+                    cold=ConstitutiveRuntime(db,semantic=service)
+                    options=cold.situated('worker')['candidate_actions']
+                    signal=next(x for x in options if x['action']=='SIGNAL')
+                    self.assertNotEqual(signal.get('psychodynamic_status'),'UNRESOLVED_CONTRADICTION')
+                    bound=[x for x in signal['practical_alternatives'] if x.get('dependency_conditional_means_ref')]
+                    self.assertEqual(len(bound),1)
+                    self.assertEqual(bound[0].get('course_psychodynamic_status'),
+                        'UNRESOLVED_CONTRADICTION' if nominate else None)
+                    self.assertEqual({x['polarity'] for x in bound[0].get('course_historical_currents',[])},
+                        {'APPROACH','WITHHOLD'} if nominate else set())
+                    self.assertTrue(any(x.get('grounds_status')=='HISTORICALLY_ACQUIRED_CONDITIONAL_JOINT_PRACTICE'
+                        and not x.get('course_historical_currents') for x in signal['practical_alternatives']))
+                    self.assertFalse(any(x.get('course_historical_currents') for x in options
+                        if x['action']=='EAT' for x in x.get('practical_alternatives',[])))
+                    result=cold.step('worker')
+                    final[nominate]=result['attempt']
+                    self.assertTrue(cold.verify()['valid'])
+                finally:cold.close()
+            self.assertEqual(final,{True:'WAIT',False:'SIGNAL'})
+
+
+class PluralActivityAffectR42(unittest.TestCase):
+    """Same material act, different projects, different subsequent meaning."""
+    def test_plural_activity_compound_affect_and_cold_actual_selection(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        final={}
+        with tempfile.TemporaryDirectory() as d:
+            for compound in (True,False):
+                stage='start'; admitted=[]; compound_offers=[]; packet_log=[]
+                def callback(task,packet):
+                    if task=='actor_attempt':
+                        if stage=='start':
+                            return {'task':task,'action':'REST','project_ids':['restore','duty']}
+                        if stage=='later':
+                            alts=[a for a in packet['practical_options']
+                                  if a.get('project_id')=='duty' and a['operation']=='REST']
+                            self.assertEqual(len(alts),1)
+                            row=alts[0]
+                            if any(a['basis']['object_affect_ref'] is not None
+                                   for a in row.get('course_affective_organizations',[])):
+                                return {'task':task,'action':'WAIT'}
+                            return {'task':task,'practical_option_id':row['option_id']}
+                        return {'task':task,'action':('REST' if stage in ('wait','hidden') else 'WAIT')}
+                    if task=='development':
+                        if stage=='appraisal':
+                            projects={e['id']:e['project_id'] for e in packet['actor_expectations_analyst_only']}
+                            rows=packet['historically_possible_delayed_appraisals']
+                            self.assertEqual({projects[x['expectation_ref']] for x in rows},{'restore','duty'})
+                            picked={}
+                            for x in rows:picked.setdefault(x['expectation_ref'],x)
+                            return {'task':task,'candidates':[
+                                {'kind':'APPRAISE_EXPECTED_DIFFERENCE','expectation_ref':x['expectation_ref'],
+                                 'perceived_cue_ref':x['source_perceived_cue_ref'],
+                                 'appraisal':('ACTOR_INTERPRETS_SUPPORTED' if projects[x['expectation_ref']]=='restore'
+                                              else 'ACTOR_INTERPRETS_DISAPPOINTED')}
+                                for x in picked.values()]}
+                        offers=packet.get('historically_possible_activity_affects',[])
+                        if stage=='hidden':
+                            self.assertEqual(offers,[])
+                        if stage=='affect':
+                            by_project={}
+                            for x in offers:
+                                if x['object_affect_ref'] is None:by_project.setdefault(x['project_ref'],x)
+                            self.assertEqual(set(by_project),{'restore','duty'})
+                            cs=[{'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':b,
+                                 'affect_name':'relief' if p=='restore' else 'unease',
+                                 'personal_sense':('the quiet interval feels restorative' if p=='restore'
+                                                   else 'rest conflicts with a continuing obligation'),
+                                 'course_orientation':'APPROACH' if p=='restore' else 'NO_DIRECT_TENDENCY'}
+                                for p,b in by_project.items()]
+                            admitted.extend(copy.deepcopy(cs))
+                            return {'task':task,'candidates':cs}
+                        if stage=='compound':
+                            es=packet['actor_expectations_analyst_only']
+                            relief=next(a['id'] for e in es for a in e.get('affective_organizations',[])
+                                        if a['affect_name']=='relief')
+                            rows=[x for x in offers if x['project_ref']=='duty' and x['object_affect_ref']==relief]
+                            self.assertTrue(rows)
+                            c={'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':rows[0],
+                               'affect_name':'shame about relief',
+                               'personal_sense':'the relief itself has become troubling in relation to duty',
+                               'course_orientation':'WITHHOLD'}
+                            compound_offers.append((copy.deepcopy(c),copy.deepcopy(packet['experience'])))
+                            return {'task':task,'candidates':[c] if compound else []}
+                        return {'task':task,'candidates':[]}
+                    return HeuristicSemanticProvider().propose(task,packet)
+                db=str(Path(d)/str(compound));service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[
+                        {'id':p,'object':obj,'means':['REST'],'status':'active','priority':.5,
+                         'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['wait']}}
+                        for p,obj in [('restore','recover strength'),('duty','sustain availability to family'),
+                                      ('unselected','ordinary leisure')]]
+                    rt.ledger.initialize(blank_world(),[a])
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    x=rt.ledger.actor('worker')[1]
+                    es=x['expectations'];self.assertEqual({e['project_id'] for e in es},{'restore','duty'})
+                    self.assertEqual(len({e['origin_event'] for e in es}),1)
+                    self.assertEqual(len({e['practical_option_id'] for e in es}),2)
+                    self.assertEqual(len({e['shared_selected_operation_ref'] for e in es}),1)
+                    self.assertEqual(len(x['activity_history']),2)
+                    self.assertTrue(all(e['motive_realized']=='UNDETERMINED_BY_TECHNICAL_OUTCOME'
+                                        for e in x['activity_history']))
+                    # A personally performed WAIT supplies the qualified quiet sign;
+                    # a fixture cue may be situationally visible but is not an
+                    # actor-experience receipt merely because it was accessible.
+                    stage='appraisal'
+                    rt.step('worker')
+                    x=rt.ledger.actor('worker')[1]
+                    self.assertEqual({e['project_id']:e['state'] for e in x['expectations']},
+                        {'restore':'ACTOR_INTERPRETS_SUPPORTED','duty':'ACTOR_INTERPRETS_DISAPPOINTED'})
+                    self.assertFalse(any(e.get('affective_organizations') for e in x['expectations']))
+                    # A fresh cue only outside actor's finite sensory access
+                    # cannot form an acquired meaning.
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    stage='hidden'
+                    rt.cue(kind='private_quiet',tags=['wait'],private_to='other',lasting_ticks=2)
+                    rt.step('worker')
+                    stage='affect'
+                    rt.step('worker')
+                    x=rt.ledger.actor('worker')[1]
+                    es=x['expectations'];first={e['project_id']:e['affective_organizations'][0] for e in es}
+                    self.assertEqual({a['affect_name'] for a in first.values()},{'relief','unease'})
+                    self.assertTrue(all(a['depth']==1 for a in first.values()))
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    stage='compound'
+                    rt.step('worker')
+                    self.assertEqual(len(compound_offers),1)
+                    x=rt.ledger.actor('worker')[1]
+                    duty=next(e for e in x['expectations'] if e['project_id']=='duty')
+                    self.assertEqual(len(duty['affective_organizations']),2 if compound else 1)
+                    self.assertEqual(duty['affective_organizations'][0],first['duty'])
+                    if compound:
+                        self.assertEqual(duty['affective_organizations'][1]['basis']['object_affect_ref'],first['restore']['id'])
+                    else:
+                        c,exp=compound_offers[0]
+                        bad=copy.deepcopy(c);bad['basis']['object_affect_ref']='unowned-affect'
+                        original=copy.deepcopy(x)
+                        # Even a valid first mutation cannot leak when the
+                        # second proposed mutation has fabricated ancestry.
+                        with self.assertRaisesRegex(InvalidDevelopment,'ACTIVITY_AFFECT_UNQUALIFIED_HISTORY'):
+                            admit(x,exp,c['basis']['current_event_ref'],[c,bad])
+                        self.assertEqual(x,original)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='wait'
+                    for _ in range(4):rt.step('worker')
+                    def courses():
+                        return {z['project_id']:z for o in rt.situated('worker')['candidate_actions']
+                                if o['action']=='REST' for z in o['practical_alternatives']}
+                    self.assertFalse(any(v.get('course_affective_organizations') for v in courses().values()))
+                    rt.cue(kind='quiet_return',tags=['wait'],lasting_ticks=3)
+                    stage='later'
+                    rows=courses()
+                    self.assertEqual(len(rows['restore']['course_affective_organizations']),1)
+                    self.assertEqual(len(rows['duty']['course_affective_organizations']),2 if compound else 1)
+                    self.assertNotIn('course_affective_organizations',rows['unselected'])
+                    self.assertNotIn('course_affective_organizations',rows[None])
+                    result=rt.step('worker')
+                    final[compound]=result['attempt']
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(final,{True:'WAIT',False:'REST'})
+
+    def test_forged_plural_expectation_course_cannot_partially_write(self):
+        from um_sorok_organism.practical_difference import start_selected_expectations
+        a=adult('worker','Mara')
+        a['projects']=[{'id':p,'object':p,'means':['REST'],
+                        'expected_difference':{'feature':p}} for p in ('a','b')]
+        courses=[]
+        for p in a['projects']:
+            expected=p['expected_difference']
+            ident=stable_id('practical_option',{'actor':'worker','clock':1,'action':'REST',
+                'project_ref':p['id'],'expected_difference':expected,'addressed_party_ref':None})
+            courses.append({'project_id':p['id'],'option_id':ident,'anticipated_difference':expected})
+        courses[1]['option_id']='invented'
+        sel={'actor':'worker','status':'ACTOR_POLICY_PRACTICAL_ATTEMPT','as_of_clock':1,
+             'selected_project_refs':['a','b'],'selected_expectation_courses':courses,
+             'world_request':{'operation':'REST','addressed_party_ref':None,'material_object_ref':None}}
+        exp={'actor':'worker','own_action':'REST','ref':'experienced',
+             'own_practical_selection':sel}
+        before=copy.deepcopy(a)
+        with self.assertRaisesRegex(ValueError,'PLURAL_EXPECTATION_OPTION_CONTRADICTION'):
+            start_selected_expectations(a,sel,exp,'event')
+        self.assertEqual(a,before)
+
+
+class PrivateRehearsalR43(unittest.TestCase):
+    def test_private_rehearsal_of_acquired_affect_changes_actual_future_course(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.reflective_regulation import offer_private_rehearsals
+        secret='Perhaps I could make room for quiet without earning it first.'
+        with tempfile.TemporaryDirectory() as d:
+            final={}
+            for choose in (True,False):
+                stage='start'; private_receipts=[]; exposed=[]
+                def callback(task,packet):
+                    if task=='expression':
+                        self.assertNotIn(secret,str(packet))
+                        return {'task':task,'surface':'An ordinary interval.'}
+                    if packet.get('actor',{}).get('id')!='worker':
+                        if task=='actor_attempt':
+                            self.assertNotIn(secret,str(packet))
+                            return {'task':task,'action':'WAIT'}
+                        if task=='development':
+                            self.assertNotIn(secret,str(packet))
+                            return {'task':task,'candidates':[]}
+                    if task=='actor_attempt':
+                        if stage=='start':
+                            return {'task':task,'action':'REST','project_id':'duty'}
+                        if stage=='rehearse':
+                            opts=packet['private_rehearsal_options']
+                            linked=[o for o in opts if o['affective_object'] is not None]
+                            self.assertEqual(len(linked),1)
+                            self.assertEqual(linked[0]['affective_object']['affect_name'],'unease')
+                            self.assertTrue(any(o['affect_ref'] is None for o in opts))
+                            if choose:
+                                return {'task':task,'action':'WAIT',
+                                    'private_rehearsal_id':linked[0]['rehearsal_id'],
+                                    'private_rehearsal_content':secret}
+                        if stage=='trial':
+                            opts=[t for t in packet['possible_end_trials']
+                                  if t.get('private_rehearsal_ref')]
+                            if opts:
+                                self.assertEqual(len(opts),1)
+                                self.assertEqual(opts[0]['matching_present_terms'],[])
+                                return {'task':task,'possible_end_trial_id':opts[0]['trial_id']}
+                        if stage=='later':
+                            return {'task':task,'action':'REST'}
+                        if stage=='project':
+                            rows=[x for x in packet['practical_options']
+                                  if x.get('project_id') not in (None,'duty')
+                                  and x['operation']=='REST']
+                            if rows:return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        exp=packet['experience']
+                        if stage=='appraise':
+                            rows=packet['historically_possible_delayed_appraisals']
+                            self.assertTrue(rows)
+                            return {'task':task,'candidates':[{'kind':'APPRAISE_EXPECTED_DIFFERENCE',
+                                    'expectation_ref':rows[0]['expectation_ref'],
+                                    'perceived_cue_ref':rows[0]['source_perceived_cue_ref'],
+                                    'appraisal':'ACTOR_INTERPRETS_DISAPPOINTED'}]}
+                        if stage=='affect':
+                            rows=packet['historically_possible_activity_affects']
+                            self.assertTrue(rows)
+                            return {'task':task,'candidates':[
+                                {'kind':'ACQUIRE_ACTIVITY_AFFECT','basis':rows[0],
+                                 'affect_name':'unease','personal_sense':'quiet conflicts with duty',
+                                 'course_orientation':'WITHHOLD'},
+                                {'kind':'MEMORY','cue_terms':['wait'],
+                                 'content':'An uneasy quiet interval'}]}
+                        receipt=packet.get('actual_private_rehearsal_analyst_only')
+                        if receipt:
+                            private_receipts.append(copy.deepcopy(receipt))
+                            exposed.append(copy.deepcopy(exp))
+                            return {'task':task,'candidates':[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                                'rehearsal_ref':receipt['id'],'possible_object':'make room for quiet',
+                                'possible_means':['REST']}]}
+                        if stage=='later' and choose:
+                            end=next(e for e in packet['actor_possible_ends']
+                                     if e.get('private_rehearsal_ref'))
+                            return {'task':task,'candidates':[{'kind':'TAKE_UP_POSSIBLE_END',
+                                    'possible_end_ref':end['id'],'means':['REST']}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(choose));service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'duty','object':'sustain availability',
+                        'means':['REST'],'status':'active','priority':.5,
+                        'expected_difference':{'feature':'availability','direction':'PRESERVE',
+                                               'sign_tags':['wait']}}]
+                    rt.ledger.initialize(blank_world(),[a,adult('other','Other')])
+                    rt.step('worker')
+                    stage='appraise';rt.step('worker')
+                    stage='affect';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['memories']),1)
+                    self.assertEqual(len(a['expectations'][0]['affective_organizations']),1)
+                    stage='rehearse'
+                    # An externally requested WAIT cannot fabricate the
+                    # private act, even when the same private option exists.
+                    rt.step('worker',requested_action='WAIT')
+                    self.assertEqual(private_receipts,[])
+                    before=rt.ledger.world()[1]
+                    rt.step('worker')
+                    after=rt.ledger.world()[1]
+                    self.assertEqual(after['clock'],before['clock']+1)
+                    self.assertEqual(after['sites'],before['sites'])
+                    self.assertNotIn(secret,str(after))
+                    self.assertNotIn(secret,str(rt.ledger.actor('other')[1]))
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(private_receipts),int(choose))
+                    self.assertEqual(len(a['possible_ends']),int(choose))
+                    self.assertEqual(len(a['memories'][0].get('private_rehearsals',[])),int(choose))
+                    self.assertEqual(len(a['projects']),1)
+                    if choose:
+                        end=a['possible_ends'][0];rec=private_receipts[0]
+                        self.assertEqual(end['private_rehearsal_ref'],rec['id'])
+                        self.assertIsNone(end['actor_perceived_cue_ref'])
+                        self.assertEqual(end['cue_terms'],[])
+                        self.assertEqual(rec['affect_ref'],a['expectations'][0]['affective_organizations'][0]['id'])
+                        bad={'kind':'NOTICE_PRIVATE_POSSIBLE_END','rehearsal_ref':'forged',
+                             'possible_object':'fake','possible_means':['REST']}
+                        saved=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'PRIVATE_END_NO_ACTUAL_REHEARSAL'):
+                            admit(a,exposed[0],rec['event_ref'],[bad])
+                        self.assertEqual(saved,a)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='trial'
+                    res=rt.step('worker')
+                    final[choose]=res['attempt']
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),1)
+                    if choose:
+                        self.assertEqual(len(a['possible_ends'][0]['trial_history']),1)
+                        self.assertEqual(a['possible_ends'][0]['trial_history'][0]['private_rehearsal_ref'],
+                                         private_receipts[0]['id'])
+                    stage='later';rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['projects']),2 if choose else 1)
+                    if choose:
+                        self.assertEqual(a['projects'][1]['takeup_evidence']['private_takeup_basis']
+                                         ['rehearsal_ref'],private_receipts[0]['id'])
+                    stage='project'
+                    self.assertEqual(rt.step('worker')['attempt'],'REST' if choose else 'WAIT')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(final,{True:'REST',False:'WAIT'})
+
+    def test_private_rehearsal_cannot_use_unowned_or_preverbal_source(self):
+        from um_sorok_organism.reflective_regulation import offer_private_rehearsals
+        from um_sorok_organism.types import blank_world
+        child=newborn('child','Child')
+        self.assertEqual(offer_private_rehearsals(child,0,'home',['WAIT','REST']),[])
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'),semantic=ValidatingSemanticService(
+                CallbackLLMProvider(lambda task,p: {'task':task,'action':'WAIT',
+                    'private_rehearsal_id':'forged','private_rehearsal_content':'invented'})))
+            try:
+                rt.ledger.initialize(blank_world(),[adult('worker','Mara')])
+                before=rt.ledger.world()[1]
+                with self.assertRaisesRegex(ValueError,'PRIVATE_REHEARSAL_UNISSUED'):
+                    rt.step('worker')
+                self.assertEqual(rt.ledger.world()[1],before)
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()

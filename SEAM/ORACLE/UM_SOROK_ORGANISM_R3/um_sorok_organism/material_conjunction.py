@@ -136,3 +136,86 @@ def evaluate_material_conjunction(world,actor,location,operation):
         'readset':[v['source_ref'] for v in evaluations],
         'unknown_not_denial':True,'actor_explanation_not_inferred':True,
         'no_additive_demographic_weights':True,'grade':GRADE}
+
+
+def temporal_material_gate_boundaries(world,actor,location,operation,start,end):
+    """Read actual source-qualified changes in the existing gate, not psyche.
+
+    Time interval (start,end]; authored effective_until is inclusive.
+    Only the existing relevant rule predicates and clocks are considered;
+    compare exactly the same gate that settles a high-resolution attempt.
+    This does not claim the actor sees the gate or its source.
+    """
+    if type(start) is not int or type(end) is not int or not 0<=start<=end:
+        raise ValueError('STRUCTURAL_GATE_INVALID_INTERVAL')
+    rules=[r for r in world.get('institutional_access_rules',[])
+           if type(r) is dict and r.get('status','ACTIVE')=='ACTIVE'
+           and r.get('operation')==operation and r.get('location') in (location,'*')]
+    if not rules:return []
+    times=set()
+    def add(t):
+        if type(t) is int and start<t<=end:times.add(t)
+    def interval(r):
+        add(r.get('effective_from',0))
+        until=r.get('effective_until')
+        if type(until) is int:add(until+1)
+    fields=set();shift=False
+    for r in rules:
+        interval(r)
+        for p in r.get('all_of',[]):
+            if p.get('kind')=='RECORDED_POSITION':fields.add(p.get('field'))
+            if p.get('kind')=='SHIFT_OCCUPIED':shift=True
+    for row in world.get('positioned_material_records',[]):
+        if type(row) is dict and row.get('actor')==actor and row.get('field') in fields:
+            interval(row)
+    if shift:
+        schedule=world.get('ambient',{}).get('work_shifts',{})
+        if type(schedule) is dict:
+            shifts=schedule.get(actor,[])
+            if type(shifts) is list:
+                for s in shifts:
+                    if type(s) is dict and s.get('source_ref'):
+                        add(s.get('start'));add(s.get('end'))
+    out=[]
+    for t in sorted(times):
+        before=evaluate_material_conjunction({**world,'clock':t-1},actor,location,operation)
+        after=evaluate_material_conjunction({**world,'clock':t},actor,location,operation)
+        if before!=after:
+            out.append({'at':t,'kind':'STRUCTURAL_GATE_TRANSITION',
+                        'actor':actor,'location':location,'operation':operation,
+                        'source_refs':sorted(set(before['readset']+after['readset'])),
+                        'before_decision':before['decision'],'after_decision':after['decision'],
+                        'objective_clock_not_actor_experience':True,'grade':GRADE})
+    return out
+
+
+def next_material_gate_discontinuity(world,actors,horizon):
+    """Find the earliest currently situated gate transition, without an act."""
+    start=world['clock'];end=start+horizon
+    best=None
+    for actor in sorted(actors):
+        location=world.get('positions',{}).get(actor)
+        if location not in world.get('sites',{}):continue
+        ops=sorted({r['operation'] for r in world.get('institutional_access_rules',[])
+                    if type(r) is dict and r.get('status','ACTIVE')=='ACTIVE'
+                    and r.get('location') in (location,'*') and r.get('operation') in ACTIONS})
+        for op in ops:
+            rows=temporal_material_gate_boundaries(world,actor,location,op,start,end)
+            if rows and (best is None or rows[0]['at']<best['at']):
+                best=rows[0]
+                end=best['at']
+    return best
+
+
+def qualify_aggregate_material_gate(world,actor,location,operation,start,days):
+    """Do not let compressed exposure bypass the high-resolution rule.
+
+    A transition inside the interval requires a split; a boundary exactly
+    at the end is lawful. A wholly denied/unknown modeled interval may
+    proceed in time but cannot materialize that proposed participation.
+    """
+    if operation not in ACTIONS:return None
+    if temporal_material_gate_boundaries(world,actor,location,operation,
+                                         start,start+days-1):
+        raise ValueError('HISTORICAL_TIME_SPLIT_AT_STRUCTURAL_GATE')
+    return evaluate_material_conjunction({**world,'clock':start},actor,location,operation)

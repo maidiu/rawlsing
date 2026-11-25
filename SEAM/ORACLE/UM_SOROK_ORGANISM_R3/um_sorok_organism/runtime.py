@@ -12,19 +12,23 @@ from .storage import ResearchLedger
 from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
+from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
-                       possible_dependency_project_reorganizations)
-from .practical_difference import start_expectation
+                       possible_dependency_project_reorganizations,
+                       possible_dependency_means_revisions)
+from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
-from .historical_self_organization import possible_lived_directional_orientation
+from .historical_self_organization import (possible_lived_directional_orientation,
+                                           possible_dependency_ambivalence)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
-from .expectation_afterlife import source_qualified_appraisal_candidates
+from .expectation_afterlife import (source_qualified_appraisal_candidates,
+                                    possible_activity_affects)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
@@ -274,15 +278,28 @@ class ConstitutiveRuntime:
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
+            private_options=(offer_private_rehearsals(actor,world['clock'],e.location,
+                [o['action'] for o in options]) if requesting_actor is None else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
                 'possible_end_trials':flat_trials,
+                'private_rehearsal_options':copy(private_options),
                 'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
+            private_choice=None
+            if 'private_rehearsal_id' in proposed or 'private_rehearsal_content' in proposed:
+                rows=[o for o in private_options if o['rehearsal_id']==proposed.get('private_rehearsal_id')]
+                content=proposed.get('private_rehearsal_content')
+                if (len(rows)!=1 or proposed.get('action')!='WAIT'
+                        or any(proposed.get(k) is not None for k in
+                               ('project_id','project_ids','practical_option_id','possible_end_trial_id'))
+                        or type(content) is not str or not content.strip() or len(content)>512):
+                    raise ValueError('PRIVATE_REHEARSAL_UNISSUED_OR_CONFLICTING_SELECTION')
+                private_choice={'option':copy(rows[0]),'imagined_content':content}
             requested_option=proposed.get('practical_option_id')
             requested_trial=proposed.get('possible_end_trial_id')
             trial_choice=None
@@ -379,6 +396,15 @@ class ConstitutiveRuntime:
                     'source_material_object_ref') is not None:
                 selected_alternative=_bind_actor_trial_particular_object(
                     alternatives,trial_choice)
+            # A project-specific addressed means may not be selected via
+            # generic or multi-project dispatch when its bound option was
+            # absent from focal practical alternatives.
+            conditional_projects=[p for p in actor.get('projects',[])
+                if p['id'] in selected_refs and action in p.get('dependency_conditional_means',{})]
+            if conditional_projects and (len(selected_refs)!=1 or selected_alternative is None
+                    or not selected_alternative.get('dependency_conditional_means_ref')
+                    or selected_alternative.get('project_id')!=conditional_projects[0]['id']):
+                raise ValueError('DEPENDENCY_MEANS_REQUIRES_BOUND_PROJECT_OPTION')
             if selected_alternative and selected_alternative.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':
                 raise ValueError('ACTOR_SELECTED_UNAVAILABLE_ADDRESSED_PARTY')
             # The selected object-specific project may not silently fall
@@ -472,6 +498,21 @@ class ConstitutiveRuntime:
                            copy(a.get('anticipated_difference')) for a in alternatives
                            if a['project_id'] in selected_refs]
                            if len(selected_refs)>1 else []),
+                       # Preserve per-purpose identity, not an unlabelled
+                       # bag of projected anticipated differences. This bounded
+                       # multi-course entrance is only for unaddressed,
+                       # object-unbound alternatives sharing the same act.
+                       'selected_expectation_courses':([
+                           {'project_id':pid,'option_id':matches[0]['option_id'],
+                            'anticipated_difference':copy(matches[0]['anticipated_difference'])}
+                           for pid in selected_refs
+                           for matches in [[a for a in alternatives
+                               if a.get('project_id')==pid
+                               and a.get('grounds_status')=='AVAILABLE_SINGLE_PROJECT_COURSE'
+                               and a.get('binding_status')=='NO_ADDRESSED_PARTY'
+                               and a.get('world_request',{}).get('material_object_ref') is None]]
+                           if len(matches)==1 and matches[0].get('anticipated_difference') is not None]
+                           if len(selected_refs)>1 else []),
                        'actor_has_explicit_reason':'NOT_ESTABLISHED',
                        'conscious_availability':'NOT_INFERRED',
                        'not_premature_fulfillment':True,
@@ -488,6 +529,19 @@ class ConstitutiveRuntime:
                     and (proposed.get('practical_option_id')==selected_alternative['option_id']
                          or (trial_choice is not None and trial_choice.get('selected_offer_option_ref')==selected_alternative['option_id']))):
                 practical['selected_human_food_offer_ref']=selected_alternative['human_food_offer_ref']
+            if selected_alternative and selected_alternative.get('course_historical_currents'):
+                practical['course_historical_currents_analytic_only']=copy(
+                    selected_alternative['course_historical_currents'])
+            # Retain the exact private affective alternatives offered, not a
+            # causal assertion about which affect actually decided the attempt.
+            affect_courses=[{'project_id':a['project_id'],'option_id':a['option_id'],
+                             'affects':copy(a['course_affective_organizations'])}
+                            for a in alternatives if a.get('project_id') in selected_refs
+                            and a.get('course_affective_organizations')]
+            if affect_courses:
+                practical['selected_course_affects_analytic_only']=affect_courses
+            if private_choice is not None:
+                practical['private_rehearsal']=private_choice
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -567,6 +621,8 @@ class ConstitutiveRuntime:
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
+            raise ValueError('PRIVATE_REHEARSAL_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:principal.target=target
@@ -684,8 +740,8 @@ class ConstitutiveRuntime:
                 # Anticipation is formed at the time of this actor's attempt,
                 # distinct from how the world actually settled it. It can
                 # remain pending after the objective event has committed.
-                start_expectation(actors[aid],actor_attempt.practical_selection,
-                                  experience,objective_ref)
+                start_selected_expectations(actors[aid],actor_attempt.practical_selection,
+                                            experience,objective_ref)
             # An action changes the opportunities and signals subsequently
             # accessible to its author. We retain the actually received path,
             # without inventing the counterfactual evidence they did not meet.
@@ -838,11 +894,15 @@ class ConstitutiveRuntime:
                 'antagonisms':copy(selected['antagonisms']),
                 'grade':GRADE,'not_a_public_tip':True,
             }
+            private_rehearsal=(perform_private_rehearsal(actors[aid],experience,objective_ref,
+                actor_attempt.practical_selection,bodily_before[aid])
+                if personally_done and actor_attempt is not None else None)
             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actor_historical_orientations_analyst_only':copy(
                     actors[aid].get('historical_orientations',[])),
                 'actor_self_model_analyst_only':copy(
@@ -855,6 +915,10 @@ class ConstitutiveRuntime:
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
                     possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_means_revisions':copy(
+                    possible_dependency_means_revisions(actors[aid],experience,objective_ref)),
+                'historically_possible_dependency_ambivalence':copy(
+                    possible_dependency_ambivalence(actors[aid],experience,objective_ref)),
                 'historically_possible_joint_practices':copy(
                     possible_joint_practice_genesis),
                 'historically_possible_care_practices':copy(
@@ -889,6 +953,8 @@ class ConstitutiveRuntime:
                         actors[aid],experience,objective_ref,end)] if q is not None],
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
+                'historically_possible_activity_affects':copy(
+                    possible_activity_affects(actors[aid],experience,objective_ref)),
                 'historically_possible_co_regulation':copy(care_genesis),
                 'historically_possible_plural_care':copy(plural_care_genesis),
                 'historically_possible_reopened_care':copy(
@@ -953,8 +1019,11 @@ class ConstitutiveRuntime:
                          'UNKNOWN_TO_ACTOR')
         actual_tip={'action':principal.action,'outcome':public_sign,
                     'status':summary['status']}
+        expression_access=copy(observed)
+        if expression_access.get('own_practical_selection'):
+            expression_access['own_practical_selection'].pop('private_rehearsal',None)
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
-               'actor_accessible':observed,
+               'actor_accessible':expression_access,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
                  'external_research_plan_context':copy(research_plan_context),
