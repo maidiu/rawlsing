@@ -207,7 +207,7 @@ class ConstitutiveRuntime:
         row.update({'mother':mother['id'],'counterpart':father['id'],'admitted_clock':world['clock'],
                     'proposal_clock':source['proposal_clock'],
                     'maternal_proposal_state_digest':source['maternal_proposal_state_digest'],
-                    'maternal_selection_state_digest':stable_id('maternal_selection',mother),
+                    'maternal_selection_state_digest':stable_id('maternal_proposal',mother),
                     'prior_shared_effects':'UNKNOWN_NOT_ADMITTED'})
         family={'stage':'COUNTERPART_ADMITTED','source_seal_id':source_seal_id,
                 'source_digest':sha,'selected_pathway':row,

@@ -166,7 +166,7 @@ def qualify_family_pathways(world,mother,rows):
     if (mother.get('role')!='adult' or world['positions'].get(mother['id'])!=mother['location']
             or type(rows) is not list or not 1<=len(rows)<=16):
         raise ValueError('FAMILY_PATHWAY_UNQUALIFIED_MATERNAL_SOURCE')
-    known=set(world['positions']);ids=set()
+    known=set(world['positions'])|set(world.get('accounts',{}))|set(world.get('holdings',{}))|set(world.get('neighbor_users',{}));ids=set()
     for x in rows:
         if type(x) is not dict or set(x)!=FAMILY_FIELDS:
             raise ValueError('FAMILY_PATHWAY_INVALID_FIELDS')
@@ -197,7 +197,7 @@ def situated_family_pathways(world,mother,source):
     # passage of time or a narrative about her development.
     if not any(e.get('actor')==mother['id']
                and e.get('clock',-1)>source['proposal_clock']
-               and e.get('own_action') is not None
+               and e.get('actor_felt_attempt') is not None
                for e in mother.get('lived_genesis_episodes',[])):return []
     out=[]
     for x in source['candidates']:
@@ -220,6 +220,6 @@ def family_encounter_evidence(world,selected):
             if e.get('clock',-1)>selected['admitted_clock']
             and e.get('clock',-1)<=world['clock']
             and e.get('status')=='PERFORMED'
-            and e.get('action') in ('CARE','FEED','PLEDGE_CARE','SPEAK','SIGNAL')
+            and e.get('action') in ('CARE','FEED','PLEDGE_CARE')
             and e.get('actor') in pair and e.get('target') in pair
             and e['actor']!=e['target']]

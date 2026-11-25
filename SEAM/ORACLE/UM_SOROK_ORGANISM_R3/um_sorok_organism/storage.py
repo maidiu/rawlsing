@@ -290,12 +290,34 @@ class ResearchLedger:
                 prior_world=json.loads(self.conn.execute('SELECT body FROM worlds WHERE id=?',(wid,)).fetchone()[0])
                 aid=_family_actor.get('id');loc=_family_actor.get('location')
                 if (actors or actor_versions or aid!=actor_id or aid in full_actors
+                        or aid in prior_world.get('accounts',{}) or aid in prior_world.get('holdings',{})
+                        or aid in prior_world.get('neighbor_users',{})
                         or loc not in prior_world['sites'] or world['clock']!=prior_world['clock']
                         or payload.get('admitted_actor')!=aid):raise Conflict('FAMILY_INVALID_ROSTER_ADMISSION')
                 source=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(payload.get('source_seal_id'),)).fetchone()
                 if (not source or source[0]!='FICTIONAL_FAMILY_PATHWAY_CANDIDATES'
                         or digest({'category':source[0],'content':json.loads(source[1])})!=payload.get('source_digest')):
                     raise Conflict('FAMILY_UNSEALED_PATHWAY')
+                family=payload['family_genesis'];path=family['selected_pathway']
+                content=json.loads(source[1]);matches=[x for x in content['candidates'] if x['id']==path['id']]
+                if (len(matches)!=1 or content['mother']!=path['mother']
+                        or family['source_seal_id']!=payload['source_seal_id']
+                        or family['source_digest']!=payload['source_digest']):
+                    raise Conflict('FAMILY_PATHWAY_SOURCE_MISMATCH')
+                chosen=matches[0]
+                if (any(path[k]!=chosen[k] for k in ('id','source_ref','intersection_clock','intersection_site','conception_clock','birth_clock','child_id','child_name'))
+                        or path['counterpart']!=chosen['counterpart_id']):
+                    raise Conflict('FAMILY_PATHWAY_SOURCE_MISMATCH')
+                if kind=='FAMILY_COUNTERPART_ADMITTED':
+                    if (family['stage']!='COUNTERPART_ADMITTED' or aid!=path['counterpart']
+                            or loc!=path['intersection_site'] or world['clock']!=path['intersection_clock']
+                            or prior_world['positions'].get(path['mother'])!=loc):
+                        raise Conflict('FAMILY_COUNTERPART_BOUNDARY_MISMATCH')
+                elif (family['stage']!='CHILD_BORN' or aid!=path['child_id']
+                        or world['clock']!=path['birth_clock'] or loc!=prior_world['positions'].get(path['mother'])
+                        or prior_world.get('family_genesis',{}).get('selected_pathway')!=path
+                        or prior_world.get('family_genesis',{}).get('conception')!=family.get('conception')):
+                    raise Conflict('FAMILY_BIRTH_BOUNDARY_MISMATCH')
                 expected=copy(prior_world)
                 expected['positions'][aid]=loc
                 expected.setdefault('accounts',{})[aid]=0.0
