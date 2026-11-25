@@ -46,3 +46,24 @@ The existing [01 capability HOME](../01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY
 ### R8 — executable relational comparison
 
 [Code](relational_context.py) · [Tests](test_relational_context.py) · [move log](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r8--native-relational-operation-and-construction-move-log-2026-11-25). Native structural comparisons and provisional S04 export comparison; eight author tests passed, empirical exports synthetic only. See existing HOME 01 II.L and 02 XVI-B continuation. No new inventory.
+
+
+
+### Chronological construction and evidence navigation (continuing in place)
+
+This is a navigation index into existing records, not a new inventory. Every substantive development and failed/held operation belongs in the dated move sections of [04](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md); before R5, the dated source map/return records carry the moves. Existing 00 records provenance; 01 and 02 retain the actual functionality and constitutive implications. Exact commit history is [PR #1327](https://github.com/maidiu/rawlsing/pull/1327).
+
+| Development | Exact cut | Existing record |
+| --- | --- | --- |
+| R1 source map and commission | 92bf8876ef47abee0c05776f0afb2540914c0e10 | 01_SOURCE_TO_FUNCTION_MAP.md, 02_OPENCODE_LOCAL_ESTATE_SURVEY.md |
+| Actual-estate receipt | d0f480e289dd9b7a30d4437a7b8fc491ef1efbe8 | ACTUAL_ESTATE_RETURN_R1/ |
+| R2 source-exact selection | 9e8a43ae0518f1cef094151c4e3132a2836d454d | 01_SOURCE_TO_FUNCTION_MAP.md |
+| R3 operation design | 42000ccfe8e74ef5b564094baef8d8c22202722e | 01_SOURCE_TO_FUNCTION_MAP.md R3 |
+| R4 self-adversarial repair | b680391ef754404415a52d7b08c89fc074d2fac5 | 01_SOURCE_TO_FUNCTION_MAP.md R4 |
+| R5 inhabited-field architecture | 48747108da227eb53dcbab320221738e35945a27 | 04 §§0–12 and move log |
+| R6 native reader | e3571ecea6e2b01e25aba062c4b9d65dada1372a | 04 R6, native_priority_readers.py, tests |
+| R7 HOME convergence | 29bf26ae95a1f90cc1ac56251a8212a2ee6075d0 | 00/01/02, 02 XVI-B move log |
+| R8 relational reader | 5bbca99887caa03ae31a2dfab1aec69fda052bf0 | 04 R8, relational_context.py, tests |
+| R9 existing material-gate handoff | this commit (parent R8) | [04 R9](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r9--chronological-move-receipt-authored-structural-history-recipient-2026-11-25), [code](authored_world_handoff.py), [tests](test_authored_world_handoff.py), 01 II.M, 02 XVI-B continuation |
+
+Future work appends to this existing index and detailed log. No additional branch or documentation centre.

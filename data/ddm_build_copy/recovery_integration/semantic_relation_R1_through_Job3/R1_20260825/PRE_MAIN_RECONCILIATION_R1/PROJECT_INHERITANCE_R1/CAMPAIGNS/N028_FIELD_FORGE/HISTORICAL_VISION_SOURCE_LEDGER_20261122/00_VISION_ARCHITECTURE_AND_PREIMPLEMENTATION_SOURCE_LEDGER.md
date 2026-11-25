@@ -233,3 +233,8 @@ No additional source acquisition is selected. The earlier fixed-source restricti
 ### November 25 R8 construction
 
 R8 · 2026-11-25 · Native structural comparison and provisional S04 export connection. Code blob 40e2792748b51cead90c25892c11a12658084add; tests 29bcf051ff1fd86ec4c69adb305268fcc0603e15. Eight author-executed tests passed (7.571 s); native EPR/WBL/JOIN/Findex selection and actual native comparisons, synthetic S04 export fixtures only. No live original35 query or actual downstream reader execution. [Capability HOME](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md), [constitutive HOME](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md), [exact code and move log](EXTERNAL_STRUCTURAL_EVIDENCE/04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r8--native-relational-operation-and-construction-move-log-2026-11-25). Existing historical counts and previous work unchanged.
+
+
+### November 25 R9 construction
+
+R9 · 2026-11-25 · Demand-selective native context → explicit authored structural history → actual incumbent R36 material gate. Code blob `0db20c3a1e5459a49985220083c78f1a67b5976d`; test blob `5586e87fa4cbf8cc31d457f888f87f1335b752de`. Six local author tests passed in 7.413s. Actual native JOIN/Findex and byte-identical R36 material_conjunction.py, with narrow injected dependencies; NOT full SOROK runtime, native structural admission, live PYAT or independent acceptance. Existing [04 move log](EXTERNAL_STRUCTURAL_EVIDENCE/04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md), [01](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md), [02](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) and downstream companion preserve the actual source and operation. No historical source count reinterpreted.
