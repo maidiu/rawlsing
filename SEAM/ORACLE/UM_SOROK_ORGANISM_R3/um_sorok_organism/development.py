@@ -36,7 +36,7 @@ from .co_regulation_history import (
     admit_co_regulation, admit_co_regulation_revision)
 from .plural_care_paths import admit_reopening
 from .institutional_procedure_learning import (
-    admit_public_procedure_expectation,
+    admit_public_procedure_expectation, admit_notice_expectation, admit_notice_revision,
     qualify_lived_institutional_difference,
 )
 import math
@@ -66,6 +66,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'REVISE_OPERATIVE_SELF_ORGANIZATION',
          'REOPEN_CO_REGULATION_ORIENTATION',
          'ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION',
+         'ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION',
          'ACQUIRE_GENETIC_POSSIBLE_END',
          'ACQUIRE_CONDITIONAL_JOINT_PRACTICE',
          'ACQUIRE_COSTLY_CARE_PRACTICE',
@@ -458,6 +459,12 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             actor.setdefault('possible_ends',[]).append(end)
             report.append({'kind':op,'possible_end':end_id,
                            'status':'ADMITTED_PROVISIONAL_END_NOT_YET_MOTIVE'})
+        elif op in ('ACQUIRE_NOTICE_EXPECTATION','REVISE_NOTICE_EXPECTATION'):
+            try:
+                fn=admit_notice_expectation if op=='ACQUIRE_NOTICE_EXPECTATION' else admit_notice_revision
+                report.append(fn(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_SITUATED_PUBLIC_PROCEDURE_EXPECTATION':
             try:
                 report.append(admit_public_procedure_expectation(

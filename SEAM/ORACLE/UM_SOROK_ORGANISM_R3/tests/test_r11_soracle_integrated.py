@@ -2271,3 +2271,97 @@ class AcquiredExpressiveBodyR47(unittest.TestCase):
                     outputs[learn]=cue.get('vocal_cadence')
                 finally:rt.close()
             self.assertEqual(outputs,{True:'HALTING',False:None})
+
+
+class FallibleInstitutionalExpectationR48(unittest.TestCase):
+    def test_same_public_account_and_actual_gate_different_actor_afterlife(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        results={}
+        with tempfile.TemporaryDirectory() as d:
+            for revise in (True,False):
+                stage='read';offered=[];revision_offers=[]
+                def policy(task,packet):
+                    if task=='expression':
+                        self.assertNotIn('notice_expectation',
+                            (packet['actor_accessible'].get('own_practical_selection') or {}))
+                        return {'task':task,'surface':'Ordinary activity.'}
+                    if task=='actor_attempt':
+                        rows=[x for o in packet['options'] if o['action']=='EAT'
+                              for x in o.get('fallible_notice_expectations',[])]
+                        if stage in ('attempt','later'):
+                            self.assertEqual(len(rows),1)
+                            if rows[0]['anticipated_availability']=='AVAILABLE':
+                                return {'task':task,'action':'EAT','project_id':'food',
+                                        'notice_expectation_ref':rows[0]['expectation_ref']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if stage=='read':
+                            rows=packet['historically_possible_notice_expectations']
+                            self.assertEqual(len(rows),1)
+                            c={'kind':'ACQUIRE_NOTICE_EXPECTATION','basis':rows[0],
+                               'anticipated_availability':'AVAILABLE'}
+                            offered.append(copy.deepcopy(c))
+                            return {'task':task,'candidates':[c]}
+                        if stage=='attempt':
+                            rows=packet['historically_possible_notice_revisions']
+                            self.assertEqual(len(rows),1)
+                            self.assertEqual(rows[0]['own_course'],'INCOMPLETE')
+                            self.assertEqual(rows[0]['actual_hidden_cause'],'NOT_KNOWN')
+                            c={'kind':'REVISE_NOTICE_EXPECTATION','basis':rows[0],
+                               'revision':'UNAVAILABLE' if revise else 'RETAIN'}
+                            revision_offers.append((copy.deepcopy(c),copy.deepcopy(packet['experience']),
+                                                    packet['evidence_path']['event']))
+                            return {'task':task,'candidates':[c]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                db=str(Path(d)/str(revise));service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world()
+                    w['public_notices']=[{'id':'food_notice','public':True,'location':'home',
+                        'public_terms':['eat','available'],'public_text':'Food is available here.',
+                        'effective_from':0,'effective_until':20}]
+                    spec={'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY','source_ref':'fictional:gate',
+                          'positions':[{'id':'position','actor':'worker','field':'food_access',
+                            'value':'excluded','source_ref':'fictional:position','effective_from':0,
+                            'effective_until':1}],
+                          'rules':[{'id':'gate','operation':'EAT','location':'home',
+                            'source_ref':'fictional:gate','effective_from':0,'effective_until':1,
+                            'all_of':[{'kind':'RECORDED_POSITION','field':'food_access','equals':'admitted'}]}]}
+                    admit_authored_structural_history(w,{'worker'},spec)
+                    a=adult('worker','Mara');a['projects']=[{'id':'food','object':'sustain nutrition',
+                         'means':['EAT'],'priority':.5,'status':'active'}]
+                    rt.ledger.initialize(w,[a],source_seals=[
+                        ('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',spec)])
+                    self.assertEqual(rt.step('worker',requested_action='INSPECT',
+                                             object_ref='food_notice')['status'],'PERFORMED')
+                    self.assertEqual(len(offered),1)
+                    a=rt.ledger.actor('worker')[1];x=a['institutional_expectations'][0]
+                    self.assertEqual(x['anticipated_availability'],'AVAILABLE')
+                    stage='attempt'
+                    before=rt.ledger.world()[1]['sites']['home']['food']
+                    self.assertEqual(rt.step('worker')['status'],'BLOCKED')
+                    self.assertEqual(rt.ledger.world()[1]['sites']['home']['food'],before)
+                    a=rt.ledger.actor('worker')[1];x=a['institutional_expectations'][0]
+                    self.assertEqual(x['anticipated_availability'],'UNAVAILABLE' if revise else 'AVAILABLE')
+                    self.assertEqual(x['revisions'][0]['own_course'],'INCOMPLETE')
+                    c,exp,event=revision_offers[0]
+                    bad=copy.deepcopy(c);bad['basis']['received_sign_ref']='invented'
+                    saved=copy.deepcopy(a)
+                    with self.assertRaisesRegex(InvalidDevelopment,'NOTICE_REVISION_UNQUALIFIED'):
+                        admit(a,exp,event,[bad])
+                    self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='later'
+                    before=rt.ledger.world()[1]['sites']['home']['food']
+                    result=rt.step('worker')
+                    results[revise]=(result['attempt'],rt.ledger.world()[1]['sites']['home']['food']-before)
+                    self.assertEqual(rt.ledger.world()[1]['public_notices'][0]['public_text'],
+                                     'Food is available here.')
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(results,{True:('WAIT',0),False:('EAT',-1)})
