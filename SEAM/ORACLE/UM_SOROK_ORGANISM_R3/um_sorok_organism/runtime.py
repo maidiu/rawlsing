@@ -17,7 +17,8 @@ from .attention_field import offer_undertaking_attention, received_undertaking_a
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                        possible_dependency_project_reorganizations,
-                       possible_dependency_means_revisions)
+                       possible_dependency_means_revisions, qualify_interactivity_deferral,
+                       possible_interactivity_relations)
 from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
@@ -651,6 +652,18 @@ class ConstitutiveRuntime:
                     and (proposed.get('practical_option_id')==selected_alternative['option_id']
                          or (trial_choice is not None and trial_choice.get('selected_offer_option_ref')==selected_alternative['option_id']))):
                 practical['selected_human_food_offer_ref']=selected_alternative['human_food_offer_ref']
+            if 'defer_course_option_id' in proposed:
+                if (len(selected_refs)!=1 or requesting_actor is not None or trial_choice is not None
+                        or private_choice is not None or undertaking_choice is not None):
+                    raise ValueError('INTERACTIVITY_CONFLICTING_SELECTION')
+                practical['interactivity_deferral']=qualify_interactivity_deferral(
+                    flat_alternatives,selected_alternative,proposed['defer_course_option_id'],e.location)
+            if 'interactivity_relation_ref' in proposed:
+                rows=[x for x in (selected_alternative or {}).get('interactivity_currents',[])
+                      if x['relation_ref']==proposed['interactivity_relation_ref']]
+                if len(rows)!=1 or len(selected_refs)!=1:
+                    raise ValueError('INTERACTIVITY_UNISSUED_RELATION')
+                practical['interactivity_relation_analytic_only']=copy(rows[0])
             if selected_alternative and selected_alternative.get('course_historical_currents'):
                 practical['course_historical_currents_analytic_only']=copy(
                     selected_alternative['course_historical_currents'])
@@ -907,6 +920,8 @@ class ConstitutiveRuntime:
                 'selected_project_refs':copy(own_selection.get(
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
+                **({'interactivity_deferral':copy(experience['own_practical_selection']['interactivity_deferral'])}
+                   if (experience.get('own_practical_selection') or {}).get('interactivity_deferral') else {}),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
                 **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
@@ -1106,6 +1121,8 @@ class ConstitutiveRuntime:
                     delayed_expectation_appraisals),
                 'historically_possible_expressive_practices':copy(
                     possible_expressive_practices(actors[aid],experience,objective_ref)),
+                'historically_possible_interactivity_relations':copy(
+                    possible_interactivity_relations(actors[aid],experience,objective_ref)),
                 'historically_possible_activity_affects':copy(
                     possible_activity_affects(actors[aid],experience,objective_ref)),
                 'historically_possible_co_regulation':copy(care_genesis),
@@ -1181,6 +1198,8 @@ class ConstitutiveRuntime:
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
             expression_access['own_practical_selection'].pop('notice_expectation',None)
+            expression_access['own_practical_selection'].pop('interactivity_deferral',None)
+            expression_access['own_practical_selection'].pop('interactivity_relation_analytic_only',None)
             expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
             expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
         expression_access.pop('undertaking_attention_receipt',None)

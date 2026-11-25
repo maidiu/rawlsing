@@ -28,6 +28,7 @@ on:
       - agent/neighbormulch-r24-explicit-commitment-time-20261125-r1
       - agent/neighbormulch-r25-reciprocal-structural-time-20261125-r1
       - agent/neighbormulch-r26-reciprocal-private-reception-20261125-r1
+      - agent/neighbormulch-r27-polycentric-presence-20261125-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -169,7 +170,11 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_private_reception_r26.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_private_reception_r26.py' -q
-      - name: Full inherited CO R49 organism court normal and optimized
+      - name: R27 actual polycentric present life and acquired interactivity
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_polycentric_presence_r27.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_polycentric_presence_r27.py' -q
+      - name: Full inherited CO R50 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |

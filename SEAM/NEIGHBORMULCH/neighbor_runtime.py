@@ -703,6 +703,101 @@ class NeighborEncounter:
                 'no_unseen_private_psychology_on_visitor_surface':True,
                 'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
 
+    def continue_present_life_until(self, occasion_ref: str, target_clock: int,
+                                    *, max_beats: int = 24, profile=None):
+        """Owner-side bounded continuation of a present, polycentric occasion.
+
+        Absolute modeled clock, not wall time or visitor instruction to act.
+        Existing initiative owns WHO, existing semantic runtime owns WHAT,
+        and existing MII owns finite exposure after each committed beat.
+        Recover interval counts from the ledger, not a new scheduler store.
+        Serialized sourcefree driver: a new human contribution or other
+        owner transition cuts this occasion; never silently replay a scene.
+        """
+        from um_sorok_organism.initiative import MAX_BEATS, choose_next_actor
+        _text(occasion_ref, 'OCCASION_REF', 120)
+        if type(target_clock) is not int or target_clock < 0:
+            raise EncounterRefusal('INVALID_PRESENT_TARGET_CLOCK')
+        if type(max_beats) is not int or not 1 <= max_beats <= MAX_BEATS:
+            raise EncounterRefusal('INVALID_PRESENT_BEAT_BUDGET')
+        if profile is not None and (type(profile) is not dict or
+                profile.get('scope') != self.new_private_profile()['scope']):
+            raise EncounterRefusal('MII_PROFILE_SCOPE_MISMATCH')
+
+        def current_occasion():
+            _, world = self._world()
+            visitor = world.get('neighbor_users', {}).get(self.user_id)
+            if not isinstance(visitor, dict) or visitor.get('present') is not True:
+                raise EncounterRefusal('VISITOR_NOT_PRESENT_FOR_LIVE_OCCASION')
+            history = self.runtime.ledger.events()
+            matches = [(i,e) for i,e in enumerate(history)
+                       if e.get('kind') == 'NEIGHBOR_USER_CONTRIBUTION'
+                       and e.get('envelope',{}).get('world') == self.runtime.world_id
+                       and e.get('envelope',{}).get('payload',{}).get('user') == self.user_id
+                       and e.get('envelope',{}).get('payload',{}).get('performed') is True
+                       and e.get('envelope',{}).get('payload',{}).get('user_event_ref') == occasion_ref]
+            if len(matches) != 1:
+                raise EncounterRefusal('NO_QUALIFIED_USER_LIFE_OCCASION')
+            index, source = matches[0]
+            rows = [e for e in world.get('neighbor_user_events',[])
+                    if e.get('event_ref') == occasion_ref
+                    and e.get('user') == self.user_id and e.get('status') == 'PERFORMED'
+                    and e.get('clock') == source.get('clock')]
+            if len(rows) != 1:
+                raise EncounterRefusal('NO_QUALIFIED_USER_LIFE_OCCASION')
+            suffix = history[index+1:]
+            if any(e.get('kind') != 'ACTOR_LIFE_TRANSITION'
+                   or e.get('envelope',{}).get('world') != self.runtime.world_id
+                   for e in suffix):
+                raise EncounterRefusal('PRESENT_OCCASION_INTERRUPTED')
+            if target_clock < source['clock'] or target_clock-source['clock'] > MAX_BEATS:
+                raise EncounterRefusal('PRESENT_OCCASION_HORIZON_OUT_OF_BOUNDS')
+            counts = {}
+            for event in suffix:
+                aid = event.get('actor_id')
+                if type(aid) is not str:
+                    raise EncounterRefusal('PRESENT_OCCASION_UNQUALIFIED_ACTOR_EVENT')
+                counts[aid] = counts.get(aid,0)+1
+            return world, counts, len(suffix)
+
+        world, counts, prior_beats = current_occasion()
+        initial = world['clock']
+        frames = []
+        committed = 0
+        while world['clock'] < target_clock and committed < max_beats:
+            if prior_beats + committed >= MAX_BEATS:
+                break
+            decision = choose_next_actor(world, self.runtime.ledger.actors(), counts)
+            if decision is None:
+                break
+            previous = world['clock']
+            result = self.independent_actor_beat(decision['actor'])
+            if result.get('selection_grade') == 'INJECTED_NOT_NATIVE_ACTOR_CHOICE':
+                raise EncounterRefusal('LIVE_OCCASION_FORGED_ACTOR_SELECTION')
+            committed += 1
+            # An actual present surface must be read now, before it is
+            # superseded. A retry does NOT fabricate missed exposures.
+            world, counts, total = current_occasion()
+            if total != prior_beats + committed or world['clock'] <= previous:
+                raise EncounterRefusal('PRESENT_OCCASION_UNEXPECTED_OWNER_ADVANCE')
+            if profile is not None:
+                frames.append({'modeled_clock':world['clock'],
+                               'visitor_surface':self.private_surface(profile)})
+        current = world['clock']
+        return {'status':('AT_OR_PAST_PRESENT_TARGET' if current >= target_clock
+                          else 'HELD_AT_BOUNDED_PRESENT_CONTINUATION'),
+                'source_user_event_ref':occasion_ref,
+                'target_modeled_clock':target_clock,
+                'actual_modeled_clock':current,
+                'modeled_clock_advance_this_call':current-initial,
+                'beats_committed_this_call':committed,
+                'new_world_events':committed>0,
+                'new_present_surfaces':frames,
+                'no_unseen_history_reconstructed':True,
+                'no_visitor_selected_actor_intention_or_response':True,
+                'real_calendar_elapsed_not_established':True,
+                'grade':'SOURCEFREE_RESEARCH_PROVISIONAL'}
+
     def _own_visit_transitions(self, world, history=None):
         """Derive visits from the existing committed contribution history.
 
