@@ -272,6 +272,12 @@ class CountryNumeric(unittest.TestCase):
             _PackedNativeRows.build(iter((*cells,cells[0])),3)
         with self.assertRaises(NativePreimageRefusal):
             _PackedNativeRows.build((c for c in cells if c.row_ordinal!=1),3)
+        # A caller-supplied non-decoder-normalized date must not acquire
+        # a different physical representation merely by choosing packing.
+        import datetime
+        changed=(replace(c,raw_value=datetime.date(2020,1,1)) if c.variable_name=="W" else c for c in cells)
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build(changed,3)
         # Repeated respondent/occasion: equal response values are distinct
         # events, explicit ordering and source binding survive replay.
         sha=inc.source_sha256

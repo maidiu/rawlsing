@@ -602,7 +602,23 @@ class _PackedNativeRows(ABCMapping):
                 # Do not accept an unrepresentable host value by changing its
                 # physical meaning. Decoder-state NaN is intentionally R5's
                 # existing equivalence, not a claim of arbitrary NaN payloads.
-                if _encode_cell(_decode_cell(row,ordinal,name,token))!=token:
+                decoded=_decode_cell(row,ordinal,name,token)
+                def same_shape(a,b):
+                    # R5's source decoder already normalizes supported date
+                    # types to opaque carriers. Do not silently introduce
+                    # that conversion for arbitrary user-supplied streams.
+                    if isinstance(a,ABCMapping) and isinstance(b,ABCMapping):
+                        return len(a)==len(b) and all(k in b and same_shape(v,b[k]) for k,v in a.items())
+                    if type(a) is not type(b):
+                        return False
+                    if type(a) in (tuple,list):
+                        return len(a)==len(b) and all(same_shape(x,y) for x,y in zip(a,b))
+                    return True
+                if (_encode_cell(decoded)!=token
+                        or not all(same_shape(a,b) for a,b in (
+                            (cell.raw_value,decoded.raw_value),
+                            (cell.source_missing_declaration,decoded.source_missing_declaration),
+                            (cell.raw_value_label,decoded.raw_value_label)))):
                     raise NativePreimageRefusal("PACKED_PHYSICAL_CELL_DRIFT",name)
                 values.add(token.encode("ascii"))
             except R5CodecError as error:

@@ -431,6 +431,8 @@ class _NonRoutingEnvelopePin:
             if used>max_bytes:
                 raise Unsupported
         def attr(obj,names):
+            if cls._has_serialization_override(obj):
+                raise Unsupported
             vals=tuple(getattr(obj,n) for n in names)
             attrs.append((obj,type(obj),names,vals))
             budget(128+16*len(names))
@@ -485,9 +487,19 @@ class _NonRoutingEnvelopePin:
             return None
         return cls(tuple(attrs),tuple(mappings),used)
 
+    @staticmethod
+    def _has_serialization_override(obj):
+        # The pin covers known incumbent field representations, not
+        # instance-overridden serialization behavior.
+        own=getattr(obj,"__dict__",{})
+        return any(k in own for k in ("as_dict","semantic_projection","envelope",
+                                      "_envelope","request_identity"))
+
     def matches(self):
+        missing=object()
         for obj,typ,names,vals in self.attrs:
-            if type(obj) is not typ or any(getattr(obj,n,None) is not v for n,v in zip(names,vals)):
+            if (type(obj) is not typ or self._has_serialization_override(obj)
+                    or any(getattr(obj,n,missing) is not v for n,v in zip(names,vals))):
                 return False
         for obj,items in self.mappings:
             if len(obj)!=len(items) or any(k not in obj or obj[k] is not v for k,v in items):

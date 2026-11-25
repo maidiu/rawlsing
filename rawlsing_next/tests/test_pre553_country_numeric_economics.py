@@ -385,6 +385,14 @@ class CountryNativeEconomics(unittest.TestCase):
                 finally:
                     object.__setattr__(owner,field,prior)
             self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
+            # An instance-level serializer override may not inherit a pin.
+            target=workload.catalog.queries[0]
+            try:
+                object.__setattr__(target,"as_dict",lambda: {})
+                self.assertIsNone(packed_prepared.digest())
+            finally:
+                object.__delattr__(target,"as_dict")
+            self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
             bounded=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256,max_bytes=1024)
             self.assertIsNone(bounded.nonrouting_pin)
             self.assertEqual(bounded.digest(),record.envelope_sha256)
