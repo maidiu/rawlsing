@@ -918,16 +918,16 @@
     "owner": "#1006 / S03 / PP26-07–10; coordinate #1315 A/B",
     "physical_destination": "COUNTRY_AT_A_TIME_COMPACT_NUMERIC_RECONSTRUCTIBLE_LOGICAL_C11",
     "s3": "REFERENCE_FALLBACK_NOT_EXPANDED_SHIPPING_PREREQUISITE",
-    "code_grade": "SOURCEFREE_EXECUTED_AT_28AB5E4A__LATEST_COMPACT_CANDIDATE_IN_PROGRESS__BROAD_CUSTODY_RED",
+    "code_grade": "LATEST_WIDE_SOURCEFREE_PASS__BROAD_CUSTODY_RED__ORIGINAL_AND_RECEIVING_HELD",
     "remaining": [
       "true-grain issued routing/logical materialization and repeated linear admission checks without weakening authority",
       "closure bytes at representative breadth, native host RSS and operator resume, original source rights/projections/weights and S2-F/S05",
       "independent review and equivalent-carrier protected paired receiving"
     ],
     "hold": "HQ_CURRENTNESS_HOLD__R24_COUNTRY_NUMERIC_RECEIVING_PENDING",
-    "sourcefree_executed_at_sha": "28ab5e4a26cbfcd9b6b7c192308d21072840b99a",
-    "sourcefree_executed_tests": "28ab5e4a wide 100 distinct I03 + I05 oracle PASS; latest compact candidate scoped status in nov25_v8_persistence_continuation",
-    "exact_head_run": 45681864769,
+    "sourcefree_executed_at_sha": "bfbc18b1165e74205736ad660f89dfc4d5d7a45a",
+    "sourcefree_executed_tests": "14 carrier/hostile PASS; 3 economics PASS/1 skip; 100 distinct I03 + I05 exact oracle/cold PASS; broader 49 PASS/6 inherited mandatory resolver FAIL",
+    "exact_head_run": 45682619861,
     "prior_run": 45500498743,
     "mechanical_fixture": {
       "cells": 130000,
@@ -1245,10 +1245,45 @@
       },
       "latest_run": 45682619861,
       "latest_wide_job": 139446822169,
-      "latest_wide_status": "in_progress",
+      "latest_wide_status": "success",
       "latest_hostile_job": 139446823188,
-      "latest_hostile_status": "in_progress",
-      "latest_metrics": null,
+      "latest_hostile_status": "failure",
+      "latest_metrics": {
+        "wide_job": 139446822169,
+        "wide_status": "PASS",
+        "execution_s": 52.788400487,
+        "admissions_s": 20.609217002,
+        "routing_digest_s": 18.777973913,
+        "prepare_s": 18.651602869,
+        "i03_100_s": 5.413760727,
+        "publication_s": 6.34460731,
+        "cold_s": 17.872184469,
+        "cold_bulk_open_100_s": 4.073903341,
+        "peak_kib": 453220,
+        "unique_file_bytes": 7582429,
+        "allocated_bytes": 8343552,
+        "manifest_bytes": 1361840,
+        "logical_manifest_bytes": 7575161,
+        "cas_new_bytes": 6220589,
+        "files": 264,
+        "peak_publish_scratch_bytes": 7582429,
+        "hostile": "14 PASS; smaller economics 3 PASS / 1 skip; broad 49 PASS / 6 FAIL mandatory resolver",
+        "other_runs": [
+          {
+            "id": 45682630399,
+            "status": "PASS_48"
+          },
+          {
+            "id": 45682630333,
+            "status": "PASS_154_SKIP_2"
+          },
+          {
+            "id": 45682630391,
+            "status": "PASS_ALL_STEPS"
+          }
+        ],
+        "grade": "SOURCEFREE_SEPARATE_CI_NOT_CAUSAL_SPEED_COMPARISON"
+      },
       "prior_compact_run": {
         "sha": "83a4d064ef6488971ce45758272b2ed5caad2fb9",
         "run": 45682270697,
