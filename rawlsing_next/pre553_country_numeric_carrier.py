@@ -1173,7 +1173,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
 
 
 def _execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
-                             require_country_current,allow_test_only=False,expected_wave=None,_country_scope=None):
+                             require_country_current,allow_test_only=False,expected_wave=None,_country_scope=None,
+                             _max_units=None,_prior_product=None,_checkpoint_every=None,
+                             _checkpoint_observer=None):
     """Execute an already issued workload from one retained numeric country.
 
     The separate country custody/currentness callback is mandatory; it is not
@@ -1187,6 +1189,28 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
                   allow_test_only=allow_test_only,expected_wave=expected_wave))
     if type(country_receipt) is not CountryReceipt or record.source_sha256!=country_receipt.source_sha256:
         raise CountryCarrierError("issued source and external country receipt differ")
+    bounded=_max_units is not None
+    if bounded and (type(_max_units) is not int or _max_units<1):
+        raise CountryCarrierError("positive exact country max_units required")
+    if (_checkpoint_every is None)!=(_checkpoint_observer is None):
+        raise CountryCarrierError("country checkpoint interval and observer required together")
+    if _checkpoint_every is not None and (type(_checkpoint_every) is not int
+            or _checkpoint_every<1 or not callable(_checkpoint_observer)):
+        raise CountryCarrierError("exact country checkpoint observer required")
+    if (bounded or _prior_product is not None or _checkpoint_observer is not None):
+        if _country_scope is None or record.scope!="TEST_ONLY_SOURCEFREE":
+            raise CountryCarrierError("country continuation requires private sourcefree delivery scope")
+    prior_receipts=()
+    prior_outputs=None
+    expected_identity=None
+    if _prior_product is not None:
+        from .pre553_saved_durable_delivery import ColdSavedProduct
+        if type(_prior_product) is not ColdSavedProduct or _prior_product.complete:
+            raise CountryCarrierError("exact incomplete country product required")
+        _prior_product._live()
+        prior_receipts=_prior_product._receipts
+        prior_outputs=_prior_product._outputs
+        expected_identity,=_prior_product._closure.release_identities
     def current():
         _live(require_country_current)
         # Full immutable workload admission occurs before opening, inside
@@ -1202,6 +1226,15 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
     if count<1:
         raise CountryCarrierError("empty country workload")
     with CountryReader(country_path,country_receipt,require_current=current) as reader:
+        def checkpoint(result):
+            reader._verify()
+            current()
+            identity=reader._certified_identity
+            if identity is None:
+                raise CountryCarrierError("country checkpoint lacks certified release")
+            _checkpoint_observer(CountryExecution(result,identity),reader)
+            reader._verify()
+            current()
         def factory(ref):
             current()
             if ref!=workload.source_factory_ref:
@@ -1216,13 +1249,17 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
         else:
             result=_execute_issued_workload(workload,resolver,source_factory=factory,
                 host=host,purpose=purpose,allow_test_only=allow_test_only,
-                expected_wave=expected_wave,max_units=count,_country_scope=_country_scope)
+                expected_wave=expected_wave,max_units=_max_units if bounded else count,
+                _country_scope=_country_scope,prior_receipts=prior_receipts,
+                prior_outputs=prior_outputs,_expected_country_identity=expected_identity,
+                checkpoint_every=_checkpoint_every,
+                checkpoint_observer=checkpoint if _checkpoint_observer is not None else None)
         identity=reader._certified_identity
-        if identity is None or not result.summary.full_coverage:
+        if identity is None or (not bounded and not result.summary.full_coverage):
             # Retain typed failure codes without disclosing respondent data.
             codes=tuple((r.state,r.failure_code) for r in result.receipts if r.state!="COMPLETED")
             raise CountryCarrierError("country native workload not fully executed: "+repr(codes))
-        result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
+        result.exact_s2e_output_census(require_complete=not bounded,runtime_catalog=workload.catalog)
         reader._verify()
         current()
         if (_country_scope.check() if _country_scope is not None else
