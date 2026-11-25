@@ -1,5 +1,12 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
+## 2026-11-25 — integrated cross-owner functional intelligence (user-directed)
+
+**Operational reading:** documentary integration of exact existing candidate evidence, not new code adoption or new science/actor rights. Protected PRE-MAIN remains 827714e83743056939894a39736d72ea16bdc6dd rev23; this R24 candidate preserves all current economics work and P0. No additional engineering queue. Read the relevant actual source before extending.
+
+Historical change: PP26-23/A10/GAP-034–037; HQ211 strict compare (c3db090f), P07 compare/as-of (f8fe03cc), V553 keyed measured field and historical V554 wrong heuristic reader (ZAK04 R7 69804f88), protected M1 admission blob e8bd6376 are distinct. R13 FF historical redistribution requires comparable position/repertoire/risk/estimand and observation scope; N8E != N8S != individual conversion. #896 materializer import repaired in protected b7ffe3bb, present blob 3c7527d3. General as-of N9 remains unproved. [Exact receiving evidence](https://github.com/maidiu/rawlsing/pull/1342#issuecomment-7172310423).
+
+
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S08 exact science-to-product work (candidate; not accepted)
 
 **Mandatory product question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? Source of complete obligations: [27-row PROGRAMMA agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). This section remains governed by its native existing ROADMAP/GAP/IF/AND identities and competent source/science/actor owner; alias visibility does not mint a new obligation grade. Future commission writing must freeze evidence, source IDs, first reader and negative checks under MCR-C.
