@@ -39,3 +39,8 @@ R8 · 2026-11-25 · Native structural comparison and provisional S04 export conn
 ### R9 receiving proposal
 
 R9 · 2026-11-25 · Demand-selective native context → explicit authored structural history → actual incumbent R36 material gate. Code blob `0db20c3a1e5459a49985220083c78f1a67b5976d`; test blob `5586e87fa4cbf8cc31d457f888f87f1335b752de`. Six local author tests passed in 7.413s. Actual native JOIN/Findex and byte-identical R36 material_conjunction.py, with narrow injected dependencies; NOT full SOROK runtime, native structural admission, live PYAT or independent acceptance. Existing S06.2/.4, PP26-15–19/21, S09.1/S10.2 PP26-24/25 and relevant seams: add actual candidate demand-selective native reader plus exact-blob R36 authored-structural-history gate test, sourcefree modeled scope and injected dependencies. Not native N9+N10E or real runtime/actor receipt. Paired CURRENT_PROGRESS annotation through competent owner; no protected edits or status promotions. HQ_CURRENTNESS_HOLD for protected receiving, native source/role authority, full actual recipient and live empirical connection. P0 unchanged.
+
+
+### R10 receiving proposal
+
+Existing S06.1–.4 PP26-13–19/21 and S09/S10 relevant recipient seams, paired progress: annotate exact 01/02 convergence with HULCH concept revision, source-local alternatives, reciprocal discriminating inquiry, neighboring actual recipient advances. This is documentary selection, no runtime or science promotion, no new obligation IDs, no protected edit, no change to P0. Competent receiving remains required.

@@ -238,3 +238,8 @@ R8 · 2026-11-25 · Native structural comparison and provisional S04 export conn
 ### November 25 R9 construction
 
 R9 · 2026-11-25 · Demand-selective native context → explicit authored structural history → actual incumbent R36 material gate. Code blob `0db20c3a1e5459a49985220083c78f1a67b5976d`; test blob `5586e87fa4cbf8cc31d457f888f87f1335b752de`. Six local author tests passed in 7.413s. Actual native JOIN/Findex and byte-identical R36 material_conjunction.py, with narrow injected dependencies; NOT full SOROK runtime, native structural admission, live PYAT or independent acceptance. Existing [04 move log](EXTERNAL_STRUCTURAL_EVIDENCE/04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md), [01](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md), [02](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md) and downstream companion preserve the actual source and operation. No historical source count reinterpreted.
+
+
+### November 25 R10 — HULCH and reciprocal selection
+
+Direct user purpose and twin MULCH, [HULCH #1184](https://github.com/maidiu/rawlsing/pull/1184) / [#1193](https://github.com/maidiu/rawlsing/blob/638bb7a4a1049bd666946e869a7fde7592dd2624/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/DHIKRYMULCH/00_DHIKRYMULCH.md), [CIC](https://github.com/maidiu/rawlsing/blob/abb5afca28ab7f41c3e778a4542fdea479000a44/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.md), CO R44/R45 and NEIGHBOR R25 supply constructive refinement, not new scientific or implementation grades. See 01 II.N, 02 VI-B/XVI-B and 04 R10 chronological receipt. Prior source identities retained.

@@ -67,3 +67,6 @@ This is a navigation index into existing records, not a new inventory. Every sub
 | R9 existing material-gate handoff | this commit (parent R8) | [04 R9](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r9--chronological-move-receipt-authored-structural-history-recipient-2026-11-25), [code](authored_world_handoff.py), [tests](test_authored_world_handoff.py), 01 II.M, 02 XVI-B continuation |
 
 Future work appends to this existing index and detailed log. No additional branch or documentation centre.
+
+
+| R10 whole-HOME selection and HULCH | this commit (parent R9 fc26d25911776a985bbc4a62cfcdd02b356d51e7) | 01 II.N, 02 VI-B/XVI-B, [04 R10](04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r10--whole-home-mulch-selection-reciprocal-consultation-and-hulch-2026-11-25) |
