@@ -29,7 +29,8 @@ from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
-                                    possible_activity_affects)
+                                    possible_activity_affects, own_vocal_reception,
+                                    possible_expressive_practices)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
@@ -745,6 +746,8 @@ class ConstitutiveRuntime:
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
+                **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
+                   if own_vocal_reception(actors[aid],experience) is not None else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -932,6 +935,8 @@ class ConstitutiveRuntime:
                     possible_incidental_goods),
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
+                'historically_possible_expressive_practices':copy(
+                    possible_expressive_practices(actors[aid],experience,objective_ref)),
                 'historically_possible_activity_affects':copy(
                     possible_activity_affects(actors[aid],experience,objective_ref)),
                 'historically_possible_co_regulation':copy(care_genesis),
@@ -1002,6 +1007,8 @@ class ConstitutiveRuntime:
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
+            expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
+            expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
         expression_access.pop('undertaking_attention_receipt',None)
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':expression_access,

@@ -12,7 +12,7 @@ from .relational_metabolism import (
 )
 from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
-from .expectation_afterlife import admit_activity_affect
+from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
 from .attention_field import received_undertaking_attention
@@ -55,7 +55,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','NOTICE_PRIVATE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
-         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_PREPROJECT_ANTICIPATION',
+         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_EXPRESSIVE_PRACTICE','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'REVISE_FUNCTIONAL_CORRESPONDENCE',
@@ -394,6 +394,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:
                 report.append(admit_contrast_end(
                     actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_EXPRESSIVE_PRACTICE':
+            try:
+                report.append(admit_expressive_practice(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_REPAIR_TECHNIQUE':

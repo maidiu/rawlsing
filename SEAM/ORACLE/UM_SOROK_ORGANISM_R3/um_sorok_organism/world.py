@@ -10,6 +10,7 @@ from .practical_inquiry import notices_present
 from .material_objects import (
     produce_artifact, repair_artifact, material_objects_present)
 from .mediated_efficacy import objective_arrangement
+from .expectation_afterlife import realized_vocal_cadence, CADENCES
 from .material_provisioning import perform_one_actual_feeding
 from .food_access_struggle import (
     contribute_food_petition,can_draw_shared_food)
@@ -175,6 +176,9 @@ def project_recursive_actor_sign(world, actor, cue, location):
             'source_identity_visually_eligible_not_recognition':channels['visible'],
             'encounter_path_ref':channels['path_ref'],
             'not_actor_attention_or_understanding':True})
+        if speech and cue.get('vocal_cadence') in CADENCES:
+            result['vocal_cadence']=cue['vocal_cadence']
+            result['description']=CADENCES[cue['vocal_cadence']]
         return result
     result=copy(cue)
     result['encounter_path_ref']=channels['path_ref']
@@ -838,6 +842,12 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
             sign['actual_independent_speech_response']=True
             sign['spoken_content']='NOT_CAPTURED_OR_RECONSTRUCTED'
             sign['vocal_interchange_not_lexical_comprehension']=True
+    if status=='PERFORMED' and attempt.action=='SPEAK':
+        cadence=realized_vocal_cadence(actors[aid],attempt,loc)
+        if cadence is not None:
+            sign['vocal_cadence']=cadence
+            sign['description']=CADENCES[cadence]
+            sign['tags'].append('vocal_cadence:'+cadence.lower())
     # R26: world-owned, actually performed person-directed conduct has an
     # objective two-person history even when neither party interprets it alike.
     # Give *eligible* witnesses the target identity, not the target's mind,
