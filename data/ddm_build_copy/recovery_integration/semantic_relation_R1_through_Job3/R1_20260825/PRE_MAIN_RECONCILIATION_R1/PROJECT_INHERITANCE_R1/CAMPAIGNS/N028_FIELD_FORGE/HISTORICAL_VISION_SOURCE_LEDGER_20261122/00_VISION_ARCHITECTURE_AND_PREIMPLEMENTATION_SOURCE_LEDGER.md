@@ -228,3 +228,8 @@ The early models proposed cultural aggregate→psychic driver→Enneagram, fixed
 
 No additional source acquisition is selected. The earlier fixed-source restriction was superseded for the actually acquired external estate by user direction, not by agent speculation. Preserve historical fixed-source reasoning as history; do not use it to discard this authorized evidence or to license further acquisition. Strong actual-world international-power attribution remains bounded, not a prerequisite for fictional persona construction.
 
+
+
+### November 25 R8 construction
+
+R8 · 2026-11-25 · Native structural comparison and provisional S04 export connection. Code blob 40e2792748b51cead90c25892c11a12658084add; tests 29bcf051ff1fd86ec4c69adb305268fcc0603e15. Eight author-executed tests passed (7.571 s); native EPR/WBL/JOIN/Findex selection and actual native comparisons, synthetic S04 export fixtures only. No live original35 query or actual downstream reader execution. [Capability HOME](01_FIELD_FORGE_EXISTENT_CODE_AND_CAPABILITY_HOME.md), [constitutive HOME](02_FIELD_FORGE_CONSTITUTIVE_VISION_HOME.md), [exact code and move log](EXTERNAL_STRUCTURAL_EVIDENCE/04_INHABITED_SOCIAL_FIELD_CONNECTION_ARCHITECTURE.md#r8--native-relational-operation-and-construction-move-log-2026-11-25). Existing historical counts and previous work unchanged.
