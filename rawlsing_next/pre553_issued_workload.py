@@ -928,7 +928,8 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
                             group_scope: I03GroupedExecutionScope | None = None,
                             reuse_prepared_saved_session: bool = False,
                             checkpoint_every: int | None = None,
-                            checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None, _country_scope=None):
+                            checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None, _country_scope=None,
+                            _expected_country_identity=None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -948,9 +949,12 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
         raise WorkloadAdmissionError("CHECKPOINT_INTERVAL_AND_OBSERVER_REQUIRED_TOGETHER")
     if checkpoint_every is not None and (
         type(checkpoint_every) is not int or checkpoint_every < 1
-        or not callable(checkpoint_observer) or saved_admission_factory is None
+        or not callable(checkpoint_observer)
+        or (saved_admission_factory is None and _country_scope is None)
     ):
         raise WorkloadAdmissionError("EXACT_SAVED_CHECKPOINT_OBSERVER_REQUIRED")
+    if _expected_country_identity is not None and _country_scope is None:
+        raise WorkloadAdmissionError("COUNTRY_RESUME_REQUIRES_PRIVATE_ADMISSION_SCOPE")
     if type(reuse_prepared_saved_session) is not bool:
         raise WorkloadAdmissionError("EXACT_PREPARED_SAVED_OPT_IN_REQUIRED")
     if reuse_prepared_saved_session and saved_admission_factory is None:
@@ -965,6 +969,9 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
                 or saved_admission_factory is not None):
             raise WorkloadAdmissionError("COUNTRY_ADMISSION_SCOPE_MISMATCH")
         record=_country_scope.check()
+        if ((checkpoint_observer is not None or _expected_country_identity is not None)
+                and record.scope!="TEST_ONLY_SOURCEFREE"):
+            raise WorkloadAdmissionError("COUNTRY_CHECKPOINT_ORIGINAL_RETENTION_HELD")
     else:
         record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
                        expected_wave=expected_wave)
@@ -1050,6 +1057,13 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
             source, workload.projection, current_authorities=workload.catalog.authorities,
         )
         check_current()
+        # The authenticated prior product binds the complete release, not
+        # merely its source hash or a caller-supplied release id. Verify before
+        # any pending unit can consume the newly certified country.
+        if _expected_country_identity is not None:
+            source._verify_binding()
+            if source.reader._certified_identity!=_expected_country_identity:
+                raise WorkloadAdmissionError("RESUME_COUNTRY_RELEASE_OR_REPLAY_DRIFT")
         executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
         owned_group_scope = None
         if group_scope is None and len(workload.requests) + len(workload.discoveries) > 1:
@@ -1120,9 +1134,15 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
     def checkpoint():
         nonlocal attempts_since_checkpoint
         check_current()
-        saved.check_current()
+        if saved is not None:
+            saved.check_current()
+        else:
+            source._verify_binding()
         checkpoint_observer(snapshot())
-        saved.check_current()
+        if saved is not None:
+            saved.check_current()
+        else:
+            source._verify_binding()
         check_current()
         attempts_since_checkpoint = 0
 
