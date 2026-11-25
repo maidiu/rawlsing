@@ -23,7 +23,7 @@ from rawlsing_next.pre553_issued_workload import (
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_durable_empirical_closure import (
     NativeEmpiricalOutput, ReleaseIdentity, PublishReceipt,
-    open_empirical_closure, publish_empirical_closure,
+    open_empirical_closure, publish_empirical_closure, _SelectedI03Archive,
 )
 from rawlsing_next.pre553_route_b_production import RouteBEmpiricalObjectGraph
 from rawlsing_next.pre553_s2e_exact_conservation import census_native_batch
@@ -802,6 +802,104 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
     return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict(),identity)
+
+
+@dataclass(frozen=True)
+class SelectedCountryS04Reads:
+    """Selected exact reads, not a statement of complete archival integrity."""
+    root_identity: str
+    selected_unit_hashes: tuple[str,...]
+    reads: tuple[ColdS04Read,...]
+    blobs_read: int
+    verification_scope: str = "SELECTED_I03_S04_ONLY__NOT_FULL_ARCHIVE_AUDIT"
+
+
+def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
+                              country_receipt,workload,resolver,host,purpose,requests):
+    """Cold request-scoped reading from existing S2-F CAS without full hydration.
+
+    Uses the full independent U43 decision and external root. Verifies only
+    selected native units' full S2-E transcript, constitutive objects, replay
+    and retained S04 identities. Unselected corruption is not audited and is
+    not a reason to claim full closure health. Full open is unchanged.
+    """
+    _require(type(requests) in (tuple,list) and bool(requests),"EXPLICIT_NONEMPTY_S04_BATCH_REQUIRED")
+    plan=[]
+    for item in requests:
+        _require(type(item) in (tuple,list) and len(item)==2,"EXACT_S04_BATCH_REQUEST_REQUIRED")
+        ref=exact_ref(item[0])
+        index=item[1]
+        _require(index is None or type(index) is int,"EXACT_CONDITIONER_INDEX_REQUIRED")
+        plan.append((ExactRef(ref.kind,ref.object_id,ref.content_hash),index))
+    scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
+    record=_record(workload,resolver,host,purpose,country_scope=scope)
+    release=exact_ref(expected_release_ref)
+    binding=_country_binding(record,workload,release,country_receipt)
+    archive=_SelectedI03Archive(closure_path,expected_root=expected_root)
+    _require(canonical_json(archive.native["source_identity"])==canonical_json(binding),
+             "ARCHIVE_WORKLOAD_OR_SAVED_SOURCE_BINDING_DRIFT")
+    _require(len(archive.release_identities)==1 and archive.release_identities[0].release_ref==release
+             and archive.release_identities[0].source_artifact_ref.content_hash==record.source_sha256,
+             "ARCHIVE_RELEASE_OR_SOURCE_DRIFT")
+    manifest=_manifest(workload,release)
+    states=archive.native["typed_states"]
+    _require(canonical_json(states["saved_batch_manifest"])==canonical_json(manifest.semantic_projection()),
+             "ARCHIVE_BATCH_MANIFEST_DRIFT")
+    _require(states.get("saved_batch_complete") is True,"SELECTED_COUNTRY_COMPLETE_PUBLICATION_REQUIRED")
+    units={u.job_ref.key:u for u in manifest.units if u.job_kind=="QUERY"}
+    _require(set(archive.direct)<=set(units) and set(states["s04_first_reads"])==set(archive.direct),
+             "ARCHIVE_NATIVE_OUTPUT_CENSUS_DRIFT")
+    _require(all(ref.key in units and ref.key in archive.direct for ref,_ in plan),
+             "QUERY_NOT_IN_RETAINED_DIRECT_WORKLOAD")
+    selected_units={units[ref.key].unit_ref.key:units[ref.key] for ref,_ in plan}
+    receipts=[]
+    for row in states["saved_batch_receipts"]:
+        if exact_ref(row["unit_ref"]).key in selected_units:
+            receipt=_restore_receipt(row)
+            _require(canonical_json(row)==canonical_json(receipt.projection()),"SELECTED_RECEIPT_PREIMAGE_DRIFT")
+            receipts.append(receipt)
+    authorities=archive.authorities()
+    _require({a.authority_ref.key:a.ref.key for a in authorities}==
+             {a.authority_ref.key:a.ref.key for a in workload.catalog.authorities},
+             "SELECTED_ARCHIVE_AUTHORITY_CATALOG_DRIFT")
+    outputs={}
+    queries={}
+    for ref,_ in plan:
+        if ref.key in queries:
+            continue
+        scope.current_only()
+        query,predicate,execution=archive.query(ref,authorities)
+        _require(query==workload.catalog.resolve_query_exact(ref)
+                 and predicate==workload.catalog.resolve_predicate_exact(query.condition_predicate_ref),
+                 "SELECTED_ARCHIVE_QUERY_CATALOG_DRIFT")
+        outputs[units[ref.key].unit_hash]=execution
+        queries[ref.key]=query
+        scope.current_only()
+    # Reuse the incumbent S2-E full-preimage transcript for these exact
+    # units under the ORIGINAL manifest. Other units are unvisited here;
+    # their completed status is not synthesized or certified by this reader.
+    selected=census_native_batch(manifest,tuple(receipts),outputs,require_complete=False,
+                                 runtime_catalog=workload.catalog)
+    declared=states["saved_batch_census"]["per_unit_full_preimage_sha256"]
+    _require(selected.completed_count==len(outputs)
+             and set(selected.per_unit_full_preimage_sha256)==set(outputs)
+             and all(declared.get(k)==v for k,v in selected.per_unit_full_preimage_sha256.items()),
+             "SELECTED_S2E_FULL_PREIMAGE_DRIFT")
+    reads=[]
+    for ref,index in plan:
+        scope.current_only()
+        expected=states["s04_first_reads"][ref.key]
+        _require(expected["status"]=="S04_RETAINED_NATIVE_BASIS","S04_SCOPE_NOT_APPLICABLE")
+        read=_read_s04(queries[ref.key],outputs[units[ref.key].unit_hash],index)
+        actual=_s04_refs(read)
+        fields=("knowledge_ref","observation_ref","receipt_ref") if index is None else ("knowledge_ref","observation_ref")
+        _require(all(canonical_json(actual[k])==canonical_json(expected[k]) for k in fields),
+                 "COLD_S04_FIRST_READ_IDENTITY_DRIFT")
+        reads.append(read)
+        scope.current_only()
+    _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
+             "CURRENT_CHANGED_DURING_SELECTED_COLD_SERVING")
+    return SelectedCountryS04Reads(archive.root,tuple(sorted(outputs)),tuple(reads),archive.blobs_read)
 
 
 def open_country_product(closure_path, *, expected_root, expected_release_ref,

@@ -2013,19 +2013,8 @@ def _freeze_config(value: Any) -> Any:
     return value
 
 
-def open_empirical_closure(
-    closure_path: str | Path,
-    *,
-    expected_root: str | None,
-    allow_unpinned: bool = False,
-) -> DurableEmpiricalClosure:
-    """Open and verify one closure without source access.
-
-    ``expected_root`` is mandatory for a trusted read.  If it is absent the
-    closure is still structurally verified but is marked ``UNPINNED_SELF_HASH``
-    and refused unless the caller explicitly asks for an untrusted replay.
-    """
-
+def _read_verified_manifest(closure_path,*,expected_root,allow_unpinned=False):
+    """Shared exact root verification, deliberately not a complete blob audit."""
     path = Path(closure_path)
     if path.is_file():
         path = path.parent
@@ -2062,6 +2051,167 @@ def open_empirical_closure(
             "closure has no independent external root pin; self-hash is not trust"
         )
 
+    return (path,manifest,core,closure_identity,root_identity,trust_state,
+            object_entries,fragment_entries)
+
+
+def _load_exact_closure_object(blob_dir,item,fragments):
+    ref=_exact(item.get("ref"),"object ref")
+    digest=_text(item.get("document_hash"),"document_hash")
+    if len(digest)!=64 or any(ch not in "0123456789abcdef" for ch in digest):
+        raise DurableEmpiricalClosureError("malformed exact document digest")
+    packed=_load_blob(blob_dir/f"{digest}{BLOB_SUFFIX}",digest,item)
+    if sorted(_markers(packed))!=list(item.get("fragment_refs",())):
+        raise DurableEmpiricalClosureError("closure object fragment inventory drift")
+    document=_mapping(hydrate_canonical_preimage(packed,fragments),"hydrated object")
+    try:
+        obj=materialize_public_object(document)
+    except Exception as exc:
+        raise DurableEmpiricalClosureError(
+            f"closure object cannot be re-materialized exactly: {exc}") from exc
+    if obj.ref!=ref or obj.family!=item.get("family"):
+        raise DurableEmpiricalClosureError("closure object ref/family does not match identity")
+    if canonical_json(obj.as_dict())!=canonical_json(document):
+        raise DurableEmpiricalClosureError("closure object preimage is not byte-exact")
+    if canonicalize(obj.semantic_projection())!=canonicalize({
+        key:document[key] for key in ("schema_id","schema_version","typed_state",
+            "authority_snapshot_refs","dependency_refs","producer_replay_locator_or_reference_root",
+            "semantic_fields")}):
+        raise DurableEmpiricalClosureError("closure object semantic projection drift")
+    return obj
+
+
+def _unique_archive_index(rows,key,description):
+    result={}
+    for row in rows:
+        key_value=key(row)
+        if key_value in result:
+            raise DurableEmpiricalClosureError(f"duplicate {description} in closure")
+        result[key_value]=row
+    return result
+
+
+class _SelectedI03Archive:
+    """Private root-pinned selected-unit reader, NOT a DurableEmpiricalClosure.
+
+    Full manifest authentication is retained. Only selected object/replay
+    fragments are loaded. Unvisited objects and discovery frontiers are NOT
+    audited by this view, and it cannot issue a complete-closure or authority
+    claim. Full open_empirical_closure remains the audit operation.
+    """
+    def __init__(self,closure_path,*,expected_root):
+        (path,manifest,core,_,root,trust,objects,fragments)=_read_verified_manifest(
+            closure_path,expected_root=expected_root)
+        if trust!="EXTERNALLY_PINNED":
+            raise DurableEmpiricalClosureUntrusted("selected archive requires external root")
+        if (core.get("rights_state")!=RIGHTS_STATE or core.get("source_access_state")!=SOURCE_ACCESS_STATE
+                or _mapping(core.get("ab_contract"),"ab_contract").get("scientific_authority")!="SEPARATE_OWNER_NOT_MINTED"):
+            raise DurableEmpiricalClosureError("selected archive rights boundary drift")
+        self.root=root
+        self.core=core
+        self.native=_mapping(core.get("native_result"),"native_result")
+        # Aggregate native receipt audit requires the full graph. Do not
+        # pretend selected material can reproduce it. Country S2-F has none.
+        if any(self.native.get(k) is not None for k in (
+            "replay_receipt_identity","replay_receipt_header","native_result_identity")):
+            raise DurableEmpiricalClosureError("selected read requires nonaggregate country closure")
+        self.release_identities=tuple(ReleaseIdentity.from_dict(item) for item in
+            _sequence(self.native.get("release_identities"),"release identities"))
+        self.releases={r.release_ref.key:r for r in self.release_identities}
+        self.objects=_unique_archive_index(objects,lambda x:_exact(x.get("ref"),"object ref").key,"object ref")
+        self.fragment_entries=_unique_archive_index(fragments,lambda x:_text(x.get("fragment_hash"),"fragment hash"),"fragment")
+        self.direct=_unique_archive_index(_sequence(self.native.get("i03_results"),"i03 results"),
+                    lambda x:_exact(x.get("query_ref"),"query ref").key,"direct query")
+        self.fact_replays=_unique_archive_index(_sequence(_mapping(core.get("replays"),"replays").get("facts"),"fact replays"),
+                    lambda x:_exact(x.get("fact_ref"),"fact ref").key,"fact replay")
+        self.fact_rows=_unique_archive_index(_sequence(_mapping(_mapping(core.get("census"),"census").get("declared"),"declared census").get("fact_rows"),"fact rows"),
+                    lambda x:_exact(x.get("ref"),"fact census ref").key,"fact census")
+        self.blob_dir=path.parent.parent/CAS_DIR/BLOB_DIR
+        self._fragments={}
+        self._objects={}
+        self.blobs_read=0
+
+    def _fragment(self,digest):
+        if digest not in self._fragments:
+            entry=self.fragment_entries.get(digest)
+            if entry is None or len(digest)!=64 or any(ch not in "0123456789abcdef" for ch in digest):
+                raise DurableEmpiricalClosureError("selected fragment absent or malformed")
+            self._fragments[digest]=_load_blob(self.blob_dir/f"{digest}{BLOB_SUFFIX}",digest,entry)
+            self.blobs_read+=1
+        return self._fragments[digest]
+
+    def object(self,ref,expected_type):
+        ref=_exact(ref,"selected object ref")
+        obj=self._objects.get(ref.key)
+        if obj is None:
+            entry=self.objects.get(ref.key)
+            if entry is None:
+                raise DurableEmpiricalClosureError("selected object preimage absent")
+            # Load only declared references; shared helper independently
+            # compares that inventory to the actual authenticated packed body.
+            fragments={digest:self._fragment(digest) for digest in
+                       _sequence(entry.get("fragment_refs"),"object fragments")}
+            obj=_load_exact_closure_object(self.blob_dir,entry,fragments)
+            self._objects[ref.key]=obj
+            self.blobs_read+=1
+        if type(obj) is not expected_type or obj.ref!=ref:
+            raise DurableEmpiricalClosureError("selected exact object family/ref mismatch")
+        return obj
+
+    def authorities(self):
+        return tuple(sorted((self.object(_exact(entry["ref"],"authority ref"),AuthoritySnapshot)
+              for entry in self.objects.values() if entry["family"]=="AuthoritySnapshot@1.0.0"),
+              key=lambda x:x.authority_ref.key))
+
+    def query(self,ref,authorities):
+        ref=_exact(ref,"selected query ref")
+        entry=self.direct.get(ref.key)
+        if entry is None:
+            raise DurableEmpiricalClosureError("query not retained as direct I03 output")
+        query=self.object(ref,EmpiricalQuerySpec)
+        predicate=self.object(query.condition_predicate_ref,EmpiricalPredicate)
+        facts=tuple(self.object(v,EmpiricalFact) for v in _sequence(entry.get("fact_refs"),"selected fact refs"))
+        ex=QueryExecutionResult(ref,facts,_text(entry.get("source_scope_mode"),"source scope"),
+                                _refs(entry.get("release_refs"),"selected release refs"))
+        expected_entry={"query_ref":ref.as_dict(),"source_scope_mode":ex.source_scope_mode,
+                        "release_refs":[x.as_dict() for x in ex.release_refs],
+                        "fact_refs":[x.ref.as_dict() for x in facts]}
+        if canonical_json(entry)!=canonical_json(expected_entry):
+            raise DurableEmpiricalClosureError("selected I03 envelope drift")
+        graph=RouteBEmpiricalObjectGraph(authorities,(predicate,),(query,),facts,(),())
+        _verify_output_graph(NativeEmpiricalOutput(
+            source_identity=self.native["source_identity"],release_identities=self.release_identities,
+            i03_results=(ex,),i05_result=None,object_graph=graph))
+        for fact in facts:
+            row=_fact_rows(fact,{query.ref.key:query},{predicate.ref.key:predicate})
+            row["is_i03_result"]=True
+            if canonical_json(row)!=canonical_json(self.fact_rows.get(fact.ref.key)):
+                raise DurableEmpiricalClosureError("selected fact census drift")
+            replay=self.fact_replays.get(fact.ref.key)
+            if replay is None:
+                raise DurableEmpiricalClosureError("mandatory selected fact replay absent")
+            fragments={digest:self._fragment(digest) for digest in _markers(replay.get("material"))}
+            _verify_fact_replay_document(fact,replay,self.releases,fragments)
+        return query,predicate,ex
+
+
+def open_empirical_closure(
+    closure_path: str | Path,
+    *,
+    expected_root: str | None,
+    allow_unpinned: bool = False,
+) -> DurableEmpiricalClosure:
+    """Open and verify one closure without source access.
+
+    ``expected_root`` is mandatory for a trusted read.  If it is absent the
+    closure is still structurally verified but is marked ``UNPINNED_SELF_HASH``
+    and refused unless the caller explicitly asks for an untrusted replay.
+    """
+
+    (path,manifest,core,closure_identity,root_identity,trust_state,
+     object_entries,fragment_entries)=_read_verified_manifest(
+        closure_path,expected_root=expected_root,allow_unpinned=allow_unpinned)
+
     root = path.parent.parent
     blob_dir = root / CAS_DIR / BLOB_DIR
     fragments: dict[str, Any] = {}
@@ -2090,38 +2240,7 @@ def open_empirical_closure(
         family_key = next(
             key for key, value in _FAMILY_OBJECT_NAME.items() if value == family
         )
-        packed = _load_blob(
-            blob_dir / f"{_text(item.get('document_hash'), 'document_hash')}{BLOB_SUFFIX}",
-            _text(item.get("document_hash"), "document_hash"),
-            item,
-        )
-        hydrated = hydrate_canonical_preimage(packed, fragments)
-        document = _mapping(hydrated, "hydrated object")
-        try:
-            obj = materialize_public_object(document)
-        except Exception as exc:
-            raise DurableEmpiricalClosureError(
-                f"closure object cannot be re-materialized exactly: {exc}"
-            ) from exc
-        if obj.ref != ref:
-            raise DurableEmpiricalClosureError("closure object ref does not match its identity")
-        if canonical_json(obj.as_dict()) != canonical_json(document):
-            raise DurableEmpiricalClosureError("closure object preimage is not byte-exact")
-        if canonicalize(obj.semantic_projection()) != canonicalize(
-            {
-                key: document[key]
-                for key in (
-                    "schema_id",
-                    "schema_version",
-                    "typed_state",
-                    "authority_snapshot_refs",
-                    "dependency_refs",
-                    "producer_replay_locator_or_reference_root",
-                    "semantic_fields",
-                )
-            }
-        ):
-            raise DurableEmpiricalClosureError("closure object semantic projection drift")
+        obj=_load_exact_closure_object(blob_dir,item,fragments)
         objects_by_family[family_key].append(obj)
 
     for family, objects in objects_by_family.items():
@@ -2340,6 +2459,18 @@ def _load_blob(path: Path, expected_hash: str, entry: Mapping[str, Any]) -> Any:
     return value
 
 
+def _verify_fact_replay_document(fact,item,releases,fragments):
+    material = _fact_replay_material(fact, releases)
+    digest = semantic_hash(material)
+    if digest != _text(item.get("material_hash"), "fact material hash"):
+        raise DurableEmpiricalClosureError("fact replay material hash drift")
+    if digest != _exact(fact.replay_ref, "fact replay").content_hash:
+        raise DurableEmpiricalClosureError("fact replay preimage does not match its exact ref")
+    stored = hydrate_canonical_preimage(item.get("material"), fragments)
+    if canonical_json(stored) != canonical_json(material):
+        raise DurableEmpiricalClosureError("fact replay stored preimage is not exact")
+
+
 def _verify_replay_documents(
     core: Mapping[str, Any],
     graph: RouteBEmpiricalObjectGraph,
@@ -2358,15 +2489,7 @@ def _verify_replay_documents(
         item = fact_docs.get(fact.ref.key)
         if item is None:
             raise DurableEmpiricalClosureError("mandatory fact replay preimage is absent")
-        material = _fact_replay_material(fact, releases)
-        digest = semantic_hash(material)
-        if digest != _text(item.get("material_hash"), "fact material hash"):
-            raise DurableEmpiricalClosureError("fact replay material hash drift")
-        if digest != _exact(fact.replay_ref, "fact replay").content_hash:
-            raise DurableEmpiricalClosureError("fact replay preimage does not match its exact ref")
-        stored = hydrate_canonical_preimage(item.get("material"), fragments)
-        if canonical_json(stored) != canonical_json(material):
-            raise DurableEmpiricalClosureError("fact replay stored preimage is not exact")
+        _verify_fact_replay_document(fact,item,releases,fragments)
     receipt_docs = {
         _exact(item.get("receipt_ref"), "replay receipt ref").key: item
         for item in _sequence(replays.get("receipts"), "receipt replays")

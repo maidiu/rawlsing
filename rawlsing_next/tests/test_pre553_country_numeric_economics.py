@@ -463,6 +463,21 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertEqual(pub.batch_census["unit_count"],len(jobs))
             self.assertIsNotNone(pub.release_identity)
             db.unlink()
+            # A real cold selected read before the complete archive open,
+            # no original source or country file, no unrelated body hydration.
+            selected_plan=((queries[0].ref,0),(queries[-1].ref,None))
+            selected_kwargs=dict(expected_root=pub.receipt.root_identity,
+                expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,
+                workload=workload,resolver=resolver,host=host,purpose=purpose,requests=selected_plan)
+            t_selected=time.monotonic()
+            with patch.object(delivery,"open_empirical_closure",side_effect=AssertionError("full archive expansion")):
+                selective=delivery.read_country_s04_selected(pub.receipt.root_path,**selected_kwargs)
+            selective_s=time.monotonic()-t_selected
+            self.assertEqual(len(selective.reads),2)
+            self.assertEqual(len(selective.selected_unit_hashes),2)
+            self.assertIn("NOT_FULL_ARCHIVE_AUDIT",selective.verification_scope)
+            print("COUNTRY_COLD_SELECTED_READ",json.dumps({"units":2,"seconds":selective_s,
+                "blobs_read":selective.blobs_read,"scope":selective.verification_scope}),flush=True)
             t=time.monotonic()
             timings.clear()
             with ExitStack() as stack:
@@ -490,6 +505,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 for i in (0,len(queries)-1):
                     single=cold.read_s04(plans[i][0],conditioner_index=plans[i][1])
                     self.assertEqual(delivery._s04_refs(single),delivery._s04_refs(reads[i]))
+                self.assertEqual(tuple(delivery._s04_refs(x) for x in selective.reads),
+                                 (delivery._s04_refs(reads[0]),delivery._s04_refs(reads[-1])))
                 for q,read in zip(queries,reads):
                     fact=read.first_consumer.execution.facts[0]
                     mask=(np.ones(len(chosen),dtype=bool) if q in (joint,unary)
@@ -524,6 +541,39 @@ class CountryNativeEconomics(unittest.TestCase):
                 "peak_publish_scratch_bytes":pub.receipt.peak_scratch_bytes}),flush=True)
             print("COUNTRY_COLD_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
                 "median_s":median(v),"max_s":max(v)} for k,v in timings.items()}),flush=True)
+            # Selected read must not touch unrelated fact blobs. Full audit
+            # must still refuse their absence, and selected corruption refuses.
+            if not wide:
+                from rawlsing_next import pre553_durable_empirical_closure as durable
+                entries={issued.exact_ref(x["ref"]).key:x for x in cold._closure.manifest["core"]["objects"]}
+                selected_fact=reads[0].first_consumer.execution.facts[0]
+                unrelated_fact=reads[1].first_consumer.execution.facts[0]
+                def blob_for(fact):
+                    return products/durable.CAS_DIR/durable.BLOB_DIR/(entries[fact.ref.key]["document_hash"]+durable.BLOB_SUFFIX)
+                self.assertLess(selective.blobs_read,len(tuple((products/durable.CAS_DIR/durable.BLOB_DIR).glob("*"))))
+                unrelated=blob_for(unrelated_fact);backup=unrelated.read_bytes();unrelated.unlink()
+                try:
+                    again=delivery.read_country_s04_selected(pub.receipt.root_path,**selected_kwargs)
+                    self.assertEqual(tuple(delivery._s04_refs(x) for x in again.reads),
+                                     tuple(delivery._s04_refs(x) for x in selective.reads))
+                    with self.assertRaises(durable.DurableEmpiricalClosureError):
+                        durable.open_empirical_closure(pub.receipt.root_path,expected_root=pub.receipt.root_identity)
+                finally:
+                    unrelated.write_bytes(backup)
+                selected_blob=blob_for(selected_fact);backup=selected_blob.read_bytes();selected_blob.unlink()
+                try:
+                    with self.assertRaises(durable.DurableEmpiricalClosureError):
+                        delivery.read_country_s04_selected(pub.receipt.root_path,**selected_kwargs)
+                finally:
+                    selected_blob.write_bytes(backup)
+                with self.assertRaises(durable.DurableEmpiricalClosureError):
+                    delivery.read_country_s04_selected(pub.receipt.root_path,**{**selected_kwargs,"expected_root":"0"*64})
+                resolver._record=replace(record,currentness="REVOKED")
+                try:
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        delivery.read_country_s04_selected(pub.receipt.root_path,**selected_kwargs)
+                finally:
+                    resolver._record=record
             result,=cold._closure.discovery_results
             self.assertEqual(result.candidate_count,result.covered_candidate_count)
             self.assertEqual(result.candidate_count,1)
