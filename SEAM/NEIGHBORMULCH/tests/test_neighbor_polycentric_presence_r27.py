@@ -23,10 +23,11 @@ class PolycentricPresenceR27(unittest.TestCase):
         def policy(task,p):
             aid=p.get('actor',{}).get('id')
             if task=='actor_attempt':
-                if aid=='other':
-                    return {'task':task,'action':'MAKE_OBJECT'}
-                if aid=='remote':
-                    return {'task':task,'action':'SPEAK'}
+                if aid in ('other','remote'):
+                    operation,pid=('MAKE_OBJECT','production') if aid=='other' else ('SPEAK','communication')
+                    rows=[x for x in p['practical_options'] if x['operation']==operation and x.get('project_id')==pid]
+                    self.assertEqual(len(rows),1, (aid,p['practical_options']))
+                    return {'task':task,'practical_option_id':rows[0]['option_id']}
                 phase=stage['phase']
                 if phase=='joint':
                     return {'task':task,'action':'REST','project_ids':['restore','duty']}
@@ -82,6 +83,8 @@ class PolycentricPresenceR27(unittest.TestCase):
                                   ('duty','sustain availability',['REST','SPEAK'])]]
         other=adult('other','Other','home')
         remote=adult('remote','Remote','workshop')
+        other['projects']=[{'id':'production','object':'produce a household artifact','means':['MAKE_OBJECT'],'priority':.5,'status':'active'}]
+        remote['projects']=[{'id':'communication','object':'practice speaking','means':['SPEAK'],'priority':.5,'status':'active'}]
         w=blank_world(name);w['sites']['home']['stock']=20
         rt.ledger.initialize(w,[a,other,remote])
         rt.step('worker')
