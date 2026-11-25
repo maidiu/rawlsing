@@ -120,7 +120,7 @@ class SharedMaterialPracticeR28(unittest.TestCase):
                     self.assertEqual(obj['condition'],.8)
                     self.assertEqual([x['actor'] for x in obj['objective_labor_history']],['visitor','worker'])
                 self.assertEqual(len(offers),int(allowed))
-                technique=active_repair_technique(rt.snapshot('worker'),'workshop')
+                technique=active_repair_technique(rt.ledger.actor('worker')[1],'workshop')
                 self.assertEqual(bool(technique),allowed and nominate)
                 if technique:self.assertEqual(technique['basis']['distinct_worked_objects'],refs)
                 rt.close()
