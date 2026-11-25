@@ -628,7 +628,7 @@ class _CountryEventCollector:
         self.headers=[]
         self.finished=None
 
-    def add(self,event):
+    def add(self,event,*,source_coordinates):
         if self.finished is not None or type(event) is not RespondentEvent:
             raise C11IntegrityError("country event collector closed or wrong family")
         validate_public_carrier_object(event,self.registry)
@@ -638,7 +638,7 @@ class _CountryEventCollector:
         except Pre553AuthorityError as exc:
             raise C11IngestValidationError(
                 IngestDisposition.BLOCKED_MISSING_REQUIRED_AUTHORITY,str(exc)) from exc
-        self.headers.append(self.builder.add(event))
+        self.headers.append(self.builder.add(event,source_coordinates=source_coordinates))
 
     def finish(self):
         if self.finished is not None:

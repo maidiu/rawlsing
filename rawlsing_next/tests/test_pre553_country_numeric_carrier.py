@@ -228,10 +228,50 @@ class CountryNumeric(unittest.TestCase):
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
                 lane=compact.public_objects.lane
                 self.assertEqual(lane.bodies.locator_bytes,40*len(events))
-                for event in events:
-                    self.assertEqual(compact_repo.resolve_object_exact(event.ref),event)
-                    self.assertNotIn(event.ref.key,compact_repo._objects)
-                    self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
+                self.assertTrue(lane.bodies.direct)
+                from rawlsing_next import pre553_source_backed_c11_facade as facade
+                with patch.object(facade,"_event",wraps=facade._event) as constructs, patch(
+                        "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+                        side_effect=AssertionError("redundant event wire reconstruction")):
+                    for event in events:
+                        self.assertEqual(compact_repo.resolve_object_exact(event.ref),event)
+                        self.assertNotIn(event.ref.key,compact_repo._objects)
+                        self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
+                    self.assertEqual(constructs.call_count,len(events))
+                # Compare the inherited expanded-event compatibility
+                # reconstruction on the identical reader and exact events.
+                enumerating=_CountryEventBodies(reader,subset,tuple(events))
+                self.assertFalse(enumerating.direct)
+                with patch.object(facade,"_event",wraps=facade._event) as old_constructs:
+                    for i,event in enumerate(events):
+                        self.assertEqual(enumerating.materialize(i),event)
+                self.assertGreater(old_constructs.call_count,len(events))
+                print("RELAY_EVENT_RECONSTRUCTION",{"events":len(events),
+                      "direct_constructor_calls":len(events),
+                      "enumerating_constructor_calls":old_constructs.call_count,
+                      "locator_bytes":lane.bodies.locator_bytes})
+                # A duplicate physical value rule must not be laundered
+                # through the new shared lookup dictionary.
+                first=subset.response_slots[0]
+                ambiguous=replace(subset,response_slots=(replace(first,
+                    values=first.values+(first.values[0],)),*subset.response_slots[1:]))
+                with self.assertRaisesRegex(CountryCarrierError,"ambiguous physical value rules"):
+                    reader.native_repository(ambiguous,current_authorities=fx["authorities"])
+                # Deliberate locator substitution must never produce a different
+                # positive exact object even when the addressed cell is valid.
+                bodies=lane.bodies
+                original_codes=bodies.question_codes
+                from array import array
+                wrong=array("I",original_codes)
+                alternate=next(i for i,v in enumerate(wrong) if v!=wrong[0])
+                wrong[0]=wrong[alternate]
+                bodies.question_codes=memoryview(wrong.tobytes()).cast("I")
+                try:
+                    with self.assertRaises(CountryCarrierError):
+                        bodies.materialize(0)
+                finally:
+                    bodies.question_codes=original_codes
+                self.assertEqual(bodies.materialize(0),events[0])
                 mixed=C11Repository((compact,))
                 # A wrong object ID may not exploit a matching digest.
                 with self.assertRaises(KeyError):

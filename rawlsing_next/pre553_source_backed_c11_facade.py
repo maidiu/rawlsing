@@ -1020,12 +1020,12 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
             if value is None:
                 raise SourceBackedC11FacadeError("unbound response value/state; no label/frequency/missingness inference")
             auths = owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner_set else ()
-            for occurrence in value.occurrences:
+            for occurrence_index, occurrence in enumerate(value.occurrences):
                 event=_event(source_sha256,cell.row_ordinal,respondent,slot,cell,value,occurrence,projection,auths)
                 if _event_collector is None:
                     events.append(event)
                 else:
-                    _event_collector.add(event)
+                    _event_collector.add(event, source_coordinates=(cell.row_ordinal, cell.variable_ordinal, occurrence_index))
         if key in cs:
             slot = cs[key]
             rule = coordinate_values[key].get(pv)

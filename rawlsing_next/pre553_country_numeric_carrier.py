@@ -176,6 +176,7 @@ def _manifest_root(variables,blocks,lanes):
     to canonical_json([SCHEMA, list(variables), ..., ...]); no new schema,
     digest algorithm, ordering, scope or receipt identity is introduced.
     """
+    from itertools import islice
     h=sha256()
     h.update(b"[")
     h.update(canonical_json(SCHEMA).encode("ascii"))
@@ -183,10 +184,18 @@ def _manifest_root(variables,blocks,lanes):
                  ([i,j,d.hex()] for i,j,d in lanes)):
         h.update(b",[")
         first=True
-        for row in rows:
+        records=iter(rows)
+        # A bounded chunk preserves B's memory law while amortizing Python
+        # encoder calls. Strip only the outer array punctuation; the same
+        # canonical encoder owns all members and their escaping.
+        while True:
+            chunk=tuple(islice(records,256))
+            if not chunk:
+                break
             if not first:
                 h.update(b",")
-            h.update(canonical_json(row).encode("ascii"))
+            encoded=canonical_json(chunk).encode("ascii")
+            h.update(memoryview(encoded)[1:-1])
             first=False
         h.update(b"]")
     h.update(b"]")
@@ -519,23 +528,29 @@ class CountryReader:
             variables=tuple(self.db.execute("SELECT ordinal,name FROM vars ORDER BY ordinal"))
             self.variables = dict(variables)
             if receipt.lane_root:
-                blocks=tuple(self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"))
-                lanes=tuple(self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
-                if _manifest_root(variables,blocks,lanes)!=receipt.lane_root:
+                # Stream the SQL inventory directly into its final lookup
+                # maps while hashing the same external canonical preimage.
+                # No complete cursor tuple survives alongside those maps.
+                self._block_auth={}
+                self._lane_auth={}
+                def blocks():
+                    for i,n,d in self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"):
+                        if (i!=len(self._block_auth) or not 1<=n<=MAX_ROWS
+                                or type(d) is not bytes or len(d)!=32):
+                            raise CountryCarrierError("invalid authenticated row block inventory")
+                        self._block_auth[i]=(n,d)
+                        yield i,n,d
+                def lanes():
+                    for i,j,d in self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"):
+                        if (i not in self._block_auth or j not in self.variables
+                                or (i,j) in self._lane_auth or type(d) is not bytes or len(d)!=32):
+                            raise CountryCarrierError("invalid authenticated column lane inventory")
+                        self._lane_auth[i,j]=d
+                        yield i,j,d
+                if _manifest_root(variables,blocks(),lanes())!=receipt.lane_root:
                     raise CountryCarrierError("country lane inventory differs from external receipt")
-                self._block_auth={i:(n,d) for i,n,d in blocks}
-                self._lane_auth={(i,j):d for i,j,d in lanes}
-                # Unique keys + exact product cardinality + membership imply
-                # complete rectangular coverage, without allocating a second
-                # pair of potentially huge Cartesian key sets. Reject duplicate
-                # records explicitly rather than allowing dict collapse.
-                if (len(self._block_auth)!=len(blocks)
-                    or any(i!=expected for expected,i in enumerate(self._block_auth))
-                    or sum(n for _,n,_ in blocks)!=receipt.country_rows
-                    or len(self._lane_auth)!=len(lanes)
-                    or len(self._lane_auth)!=len(blocks)*len(self.variables)
-                    or any(i not in self._block_auth or j not in self.variables
-                           for i,j in self._lane_auth)):
+                if (sum(n for n,_ in self._block_auth.values())!=receipt.country_rows
+                    or len(self._lane_auth)!=len(self._block_auth)*len(self.variables)):
                     raise CountryCarrierError("country authenticated lane inventory incomplete")
             self._verify()
         except BaseException:
@@ -730,7 +745,8 @@ class _CountryEventBodies:
     """
     __slots__=("reader","projection","rows","slots","owners","respondents","respondent_keys",
                "source_rows","question_keys","respondent_codes","question_codes","hashes",
-               "cache","cache_bytes")
+               "cache","cache_bytes","direct","row_ordinals","row_respondents",
+               "slot_occurrences","value_rules")
     def __init__(self,reader,projection,events,*,closure_refs=None):
         from .pre553_empirical_objects import exact_ref, RespondentEvent, URN_PREFIX
         from .pre553_c11_integrity import _PackedClosureRefs
@@ -740,37 +756,80 @@ class _CountryEventBodies:
             raise CountryCarrierError("sealed replay event lane cardinality drift")
         self.reader,self.projection=reader,projection
         self.rows={row:(block,rows,i) for block,rows in reader._blocks() for i,row in enumerate(rows)}
+        from ._pre553_c11_execution_view import _CountryEventHeader
+        self.direct=bool(events) and type(events[0]) is _CountryEventHeader
         self.respondents={r.ref.key:r for r in projection.respondents}
-        by_respondent={}
-        for b in projection.row_bindings:
-            by_respondent.setdefault(b.respondent_ref.key,[]).append(b.row_ordinal)
-        self.slots={}
-        for slot in projection.response_slots:
-            self.slots.setdefault(slot.question_binding.ref.key,[]).append(slot)
         self.owners={x.slot.key:x for x in projection.slot_owner_sets}
-        self.respondent_keys=tuple(by_respondent)
-        self.source_rows=tuple(tuple(by_respondent[key]) for key in self.respondent_keys)
-        self.question_keys=tuple(self.slots)
-        ri={key:i for i,key in enumerate(self.respondent_keys)}
-        qi={key:i for i,key in enumerate(self.question_keys)}
+        self.slots={}
+        if self.direct:
+            # Two uint32 lanes replace (not supplement) respondent/question
+            # codes. Sparse original row ordinals are shared once per row.
+            self.row_ordinals=tuple(self.rows)
+            row_index={row:i for i,row in enumerate(self.row_ordinals)}
+            self.row_respondents={b.row_ordinal:self.respondents[b.respondent_ref.key]
+                                  for b in projection.row_bindings}
+            slots={s.slot.ordinal:s for s in projection.response_slots}
+            pairs=[]; pair_index={}
+            self.value_rules={s.slot.ordinal:{r.physical_key:r for r in s.values}
+                              for s in projection.response_slots}
+            # The prior enumerating body reader refused ambiguous physical
+            # rules rather than allowing dict collapse. Keep that refusal.
+            if any(len(self.value_rules[s.slot.ordinal])!=len(s.values)
+                   for s in projection.response_slots):
+                raise CountryCarrierError("country response slot has ambiguous physical value rules")
+            self.respondent_keys=self.source_rows=self.question_keys=()
+        else:
+            # Compatibility for the older expanded-event transport only.
+            self.row_ordinals=self.slot_occurrences=()
+            self.row_respondents=self.value_rules={}
+            by_respondent={}
+            for b in projection.row_bindings:
+                by_respondent.setdefault(b.respondent_ref.key,[]).append(b.row_ordinal)
+            for slot in projection.response_slots:
+                self.slots.setdefault(slot.question_binding.ref.key,[]).append(slot)
+            self.respondent_keys=tuple(by_respondent)
+            self.source_rows=tuple(tuple(by_respondent[key]) for key in self.respondent_keys)
+            self.question_keys=tuple(self.slots)
+            ri={key:i for i,key in enumerate(self.respondent_keys)}
+            qi={key:i for i,key in enumerate(self.question_keys)}
         rc,qc=array("I"),array("I")
         hashes=bytearray()
         prior=b""
         for offset,event in enumerate(events):
             respondent=exact_ref(event.scoped_respondent_ref).key
-            bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
-            if respondent not in ri or len(bindings)!=1:
-                raise CountryCarrierError("sealed event lacks original country row/slot binding")
+            if self.direct:
+                if type(event) is not _CountryEventHeader:
+                    raise CountryCarrierError("mixed country event locator representation")
+                row,ordinal,occurrence=event.source_coordinates
+                slot=slots.get(ordinal)
+                bound=self.row_respondents.get(row)
+                if (row not in row_index or bound is None or bound.ref.key!=respondent
+                        or slot is None or slot.question_binding.ref not in event.dependency_refs
+                        or type(occurrence) is not int or occurrence<0):
+                    raise CountryCarrierError("sealed event lacks exact emitted physical coordinates")
+                pair=(ordinal,occurrence)
+                code=pair_index.get(pair)
+                if code is None:
+                    code=len(pairs)
+                    pair_index[pair]=code
+                    pairs.append((slot,occurrence))
+                rc.append(row_index[row]);qc.append(code)
+            else:
+                bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
+                if respondent not in ri or len(bindings)!=1:
+                    raise CountryCarrierError("sealed event lacks original country row/slot binding")
+                rc.append(ri[respondent]);qc.append(qi[bindings[0]])
             ref=event.ref
             digest=bytes.fromhex(ref.content_hash)
             if (ref!=self._event_ref(digest) or len(digest)!=32 or digest<=prior):
                 raise CountryCarrierError("sealed event canonical identity/order mismatch")
             prior=digest
-            rc.append(ri[respondent]);qc.append(qi[bindings[0]])
             if shared is None:
                 hashes.extend(digest)
             elif shared[32*offset:32*(offset+1)]!=digest:
                 raise CountryCarrierError("sealed replay event lane identity drift")
+        if self.direct:
+            self.slot_occurrences=tuple(pairs)
         self.respondent_codes=memoryview(rc.tobytes()).cast("I")
         self.question_codes=memoryview(qc.tobytes()).cast("I")
         self.hashes=shared if shared is not None else bytes(hashes)
@@ -814,7 +873,28 @@ class _CountryEventBodies:
         """Every existing country-backed exact-object reader must remain CURRENT."""
         self.reader._check_live_file()
 
-    def __getitem__(self,index):
+    def _cell(self,row,slot):
+        block,rows,offset=self.rows[row]
+        key=(block,slot.slot.ordinal)
+        lane=self.cache.get(key)
+        if lane is None:
+            lane=self.reader._column(block,rows,slot.slot.ordinal)
+            size=(sys.getsizeof(lane)+sys.getsizeof(lane.codes)
+                  +sum(sys.getsizeof(x) for x in lane.codes)
+                  +sys.getsizeof(lane.dictionary)
+                  +sum(sys.getsizeof(x) for x in lane.dictionary))
+            if size<=8*1024*1024:
+                while self.cache and (len(self.cache)>=32 or self.cache_bytes+size>8*1024*1024):
+                    _,(_,old)=self.cache.popitem(last=False)
+                    self.cache_bytes-=old
+                self.cache[key]=(lane,size)
+                self.cache_bytes+=size
+        else:
+            lane,_=lane
+            self.cache.move_to_end(key)
+        return _decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
+
+    def materialize(self,index):
         from .pre553_source_backed_c11_facade import _cell_key,_event,RESPONSE_OWNER_FAMILY
         reader=self.reader
         self.check_live()
@@ -822,53 +902,53 @@ class _CountryEventBodies:
             index+=len(self)
         if not 0<=index<len(self):
             raise IndexError(index)
-        code=self.respondent_codes[index]
-        source_rows=self.source_rows[code]
-        respondent=self.respondent_keys[code]
-        question=self.question_keys[self.question_codes[index]]
         expected=self._event_ref(self.hashes[32*index:32*(index+1)])
-        matches=[]
-        for row in source_rows:
-            block,rows,offset=self.rows[row]
-            for slot in self.slots[question]:
-                key=(block,slot.slot.ordinal)
-                lane=self.cache.get(key)
-                if lane is None:
-                    lane=reader._column(block,rows,slot.slot.ordinal)
-                    # Bound decoded dictionaries and Python code vectors by
-                    # estimated bytes as well as lane count. Oversized lanes
-                    # are used once, never retained.
-                    size=(sys.getsizeof(lane)+sys.getsizeof(lane.codes)
-                          +sum(sys.getsizeof(x) for x in lane.codes)
-                          +sys.getsizeof(lane.dictionary)
-                          +sum(sys.getsizeof(x) for x in lane.dictionary))
-                    if size<=8*1024*1024:
-                        while self.cache and (len(self.cache)>=32 or self.cache_bytes+size>8*1024*1024):
-                            _,(_,old)=self.cache.popitem(last=False)
-                            self.cache_bytes-=old
-                        self.cache[key]=(lane,size)
-                        self.cache_bytes+=size
-                else:
-                    lane,_=lane
-                    self.cache.move_to_end(key)
-                cell=_decode_cell(row,slot.slot.ordinal,slot.slot.name,lane.dictionary[lane.codes[offset]])
-                physical=_cell_key(cell)
-                rules=[r for r in slot.values if r.physical_key==physical]
-                if len(rules)!=1:
-                    raise CountryCarrierError("country event physical value lacks exact governed rule")
-                owner=self.owners.get(slot.slot.key)
-                auths=owner.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner else ()
-                value=rules[0]
-                for occ in value.occurrences:
-                    event=_event(reader.receipt.source_sha256,row,self.respondents[respondent],
-                                 slot,cell,value,occ,self.projection,auths)
-                    if event.ref==expected:
-                        matches.append(event)
-        if len(matches)!=1:
-            raise CountryCarrierError("country event reconstruction differs from sealed ref")
+        def reconstruct(row,slot,cell,value,occ,respondent):
+            owner=self.owners.get(slot.slot.key)
+            auths=owner.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner else ()
+            return _event(reader.receipt.source_sha256,row,respondent,slot,cell,value,occ,self.projection,auths)
+        if self.direct:
+            # Direct addresses are acceleration only. The selected bytes and
+            # the fully reconstructed semantic object's exact sealed ref
+            # remain mandatory. No mutable locator can authorize another body.
+            try:
+                row=self.row_ordinals[self.respondent_codes[index]]
+                slot,position=self.slot_occurrences[self.question_codes[index]]
+                cell=self._cell(row,slot)
+                value=self.value_rules[slot.slot.ordinal][_cell_key(cell)]
+                occ=value.occurrences[position]
+                event=reconstruct(row,slot,cell,value,occ,self.row_respondents[row])
+            except (IndexError,KeyError) as exc:
+                raise CountryCarrierError("country event physical locator differs from sealed rule") from exc
+            if event.ref!=expected:
+                raise CountryCarrierError("country event reconstruction differs from sealed ref")
+        else:
+            code=self.respondent_codes[index]
+            respondent=self.respondents[self.respondent_keys[code]]
+            question=self.question_keys[self.question_codes[index]]
+            matches=[]
+            for row in self.source_rows[code]:
+                for slot in self.slots[question]:
+                    cell=self._cell(row,slot)
+                    physical=_cell_key(cell)
+                    rules=[r for r in slot.values if r.physical_key==physical]
+                    if len(rules)!=1:
+                        raise CountryCarrierError("country event physical value lacks exact governed rule")
+                    value=rules[0]
+                    for occ in value.occurrences:
+                        candidate=reconstruct(row,slot,cell,value,occ,respondent)
+                        if candidate.ref==expected:
+                            matches.append(candidate)
+            if len(matches)!=1:
+                raise CountryCarrierError("country event reconstruction differs from sealed ref")
+            event=matches[0]
         reader._check_live_file()
+        return event
+
+    def __getitem__(self,index):
         from .pre553_empirical_objects import canonical_json as semantic_json
-        return _BodyScalar(semantic_json(matches[0].semantic_projection()).encode("utf-8"))
+        return _BodyScalar(semantic_json(self.materialize(index).semantic_projection()).encode("utf-8"))
+
 
 def country_census(incidence, *, country_variable, require_current):
     """Exact native typed country-code inventory; missing codes explicitly separate.
