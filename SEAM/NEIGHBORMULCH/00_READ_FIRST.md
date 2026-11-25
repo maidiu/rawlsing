@@ -1,4 +1,9 @@
 # SEAM ↔ NEIGHBORMULCH — RECIPROCAL ENTRYPOINT
+
+## 2026-11-25 — Reciprocal PYAT intelligence (user-directed)
+
+[Existing G4 integrated first consultation](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains), [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342): for rich Rawlsing world, independently qualified historical changes in institutional conditions and empirical repertoire redistribution are distinct from the participant's or Nadia's actual knowledge. Preserve independently operative access, limited personal disclosure and actor-specific appropriation. Empirical rarity/partial overlap does not grant encounter access, disclose private beliefs or force individual conduct. Use the existing world/SEAM owner, not raw survey facts at UX; authored/thin world remains lawful. Documentary integration only, not runtime or source/actor adoption.
+
 ## One world, one independently becoming person, human participation as a real historical cause
 
 
