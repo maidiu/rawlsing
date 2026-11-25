@@ -1,5 +1,10 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
+## 2026-11-25 — Reciprocal PYAT integration (user-directed)
+
+[Existing G4 first consultation, exact integrated commit 26ac87ad](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains) and [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342) now carry the temporal, F6, learned, FF R15 and situated-alternative reconciliation in actual G4 files and paired progress. Use existing full-PYAT recipient criteria (including CIC-023.05 where applicable) for qualified historical redistribution, partial-ID bounds versus observed joint, and supported situated alternatives. N9 actual institutional access and N10E empirical possibility are distinct; actor appropriation and conversion belong to CO, independent access/practices to NEIGHBOR. Thin/no-survey remains the same psychology. This is a reciprocal navigation addition, not a new ledger observation, CIC criterion, status promotion or protected runtime receiving; existing machine-readable O-Index/CIC records unchanged.
+
+
 **Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `95307b64ece362bfb2b6d9f8e3e4b12a87103f83`. 58 candidate obligation clusters; 171 provisional criteria (169 previous + 2 independent HOME-derived living-flow refinements); 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Whole-organism first consultation — 2026-11-25

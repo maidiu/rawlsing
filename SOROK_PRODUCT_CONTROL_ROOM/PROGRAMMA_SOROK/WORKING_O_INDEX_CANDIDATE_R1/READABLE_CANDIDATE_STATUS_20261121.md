@@ -1,5 +1,10 @@
 # O-INDEX readable candidate status — 21 November 2026
 
+## 2026-11-25 — Reciprocal PYAT integration (user-directed)
+
+[Existing G4 first consultation, exact integrated commit 26ac87ad](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains) and [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342) now carry the temporal, F6, learned, FF R15 and situated-alternative reconciliation in actual G4 files and paired progress. Use existing full-PYAT recipient criteria (including CIC-023.05 where applicable) for qualified historical redistribution, partial-ID bounds versus observed joint, and supported situated alternatives. N9 actual institutional access and N10E empirical possibility are distinct; actor appropriation and conversion belong to CO, independent access/practices to NEIGHBOR. Thin/no-survey remains the same psychology. This is a reciprocal navigation addition, not a new ledger observation, CIC criterion, status promotion or protected runtime receiving; existing machine-readable O-Index/CIC records unchanged.
+
+
 **Snapshot view of the existing single [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json)** at exact Git **blob `8a566be0dfc87102c6c78b3f4b24b10ff20bde64`**. Source target: `maidiu/rawlsing`, protected baseline `fbc2080403607d85cd67a025b8a9a4ebd41e70c1`. This is a **168-PR targeted discovered set (167 prior + 1 engineering return)**, not a complete authoritative 2026-11-21 repository scan; revalidate every moving HEAD when using. A table row is a GitHub PR metadata/evidence custody record, not a self-issued executed-test result.
 
 **Legend:** `HELD` unresolved receiving; `UNRECEIVED` source exists but not protected; `INDEPENDENTLY_REVIEWED_SCOPED` bounded sourcefree local receiving at recorded exact SHA, **not** credentialed G5; `PROTECTED_RECEIVED` only when the source PR is merged and separately qualified for historical scope; `SUPERSEDED` historical source must remain conserved. `UNKNOWN` means unverified, not failed or passed.
