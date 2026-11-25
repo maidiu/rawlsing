@@ -37,6 +37,7 @@ from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import (
     possible_institutional_learning, possible_lived_institutional_differences,
+    possible_notice_expectations, possible_notice_revisions,
 )
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import (
@@ -343,6 +344,14 @@ class ConstitutiveRuntime:
                 action=proposed['action']
             opt=next((o for o in options if o['action']==action),None)
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
+            notice_choice=None
+            if 'notice_expectation_ref' in proposed:
+                rows=[x for x in opt.get('fallible_notice_expectations',[])
+                      if x['expectation_ref']==proposed.get('notice_expectation_ref')]
+                if (len(rows)!=1 or requesting_actor is not None or private_choice is not None
+                        or undertaking_choice is not None or trial_choice is not None):
+                    raise ValueError('NOTICE_EXPECTATION_UNISSUED_SELECTION')
+                notice_choice=copy(rows[0])
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
             # A single operation may genuinely serve SEVERAL projects, but
@@ -522,6 +531,8 @@ class ConstitutiveRuntime:
                             and a.get('course_affective_organizations')]
             if affect_courses:
                 practical['selected_course_affects_analytic_only']=affect_courses
+            if notice_choice is not None:
+                practical['notice_expectation']=notice_choice
             if private_choice is not None:
                 practical['private_rehearsal']=private_choice
             if undertaking_choice is not None:
@@ -746,6 +757,8 @@ class ConstitutiveRuntime:
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
+                **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
+                   if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
@@ -947,6 +960,10 @@ class ConstitutiveRuntime:
                     actual_lived_care['id'] if actual_lived_care else None),
                 'historically_possible_co_regulation_revision':copy(
                     care_revision),
+                'historically_possible_notice_expectations':copy(
+                    possible_notice_expectations(actors[aid],experience,objective_ref)),
+                'historically_possible_notice_revisions':copy(
+                    possible_notice_revisions(actors[aid],experience,objective_ref)),
                 'historically_possible_public_procedure_learning':copy(
                     institutional_learning),
                 'historically_possible_institutional_relational_differences':copy(
@@ -1007,6 +1024,7 @@ class ConstitutiveRuntime:
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
+            expression_access['own_practical_selection'].pop('notice_expectation',None)
             expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
             expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
         expression_access.pop('undertaking_attention_receipt',None)
