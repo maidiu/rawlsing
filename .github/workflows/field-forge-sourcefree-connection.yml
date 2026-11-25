@@ -1,0 +1,57 @@
+name: Field Forge sourcefree incumbent and recipient court
+on:
+  push:
+    branches:
+      - agent/field-forge-external-source-integration-20261124-r1
+    paths:
+      - 'data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/*.py'
+      - '.github/workflows/field-forge-sourcefree-connection.yml'
+permissions:
+  contents: read
+jobs:
+  exact-sourcefree-connection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          path: ff
+          sparse-checkout: |
+            data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/
+      - uses: actions/checkout@v4
+        with:
+          ref: 192b0e908476352690b1a7936d23ce296af18f9e
+          persist-credentials: false
+          path: pyat
+          sparse-checkout: |
+            rawlsing_next
+      - uses: actions/checkout@v4
+        with:
+          ref: 0d7032ba181231779efa3061666d3a754eced47c
+          persist-credentials: false
+          path: co
+          sparse-checkout: |
+            SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install sourcefree dependencies
+        run: python -m pip install pytest pandas pyarrow duckdb pyreadstat
+      - name: Exact identities and actual selected sourcefree tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C ff rev-parse HEAD
+          test "$(git -C pyat rev-parse HEAD)" = 192b0e908476352690b1a7936d23ce296af18f9e
+          test "$(git -C co rev-parse HEAD)" = 0d7032ba181231779efa3061666d3a754eced47c
+          export PYTHONPATH="$PWD/pyat:$PWD/ff/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/:$PWD/co/SEAM/ORACLE/UM_SOROK_ORGANISM_R3"
+          cd pyat
+          python -m pytest -q -o addopts='' "../ff/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/test_repertoire_inquiry.py" "../ff/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/test_repertoire_world_handoff.py" --junitxml=../ff-connection.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ff-connection-junit
+          path: ff-connection.xml
+          if-no-files-found: ignore
