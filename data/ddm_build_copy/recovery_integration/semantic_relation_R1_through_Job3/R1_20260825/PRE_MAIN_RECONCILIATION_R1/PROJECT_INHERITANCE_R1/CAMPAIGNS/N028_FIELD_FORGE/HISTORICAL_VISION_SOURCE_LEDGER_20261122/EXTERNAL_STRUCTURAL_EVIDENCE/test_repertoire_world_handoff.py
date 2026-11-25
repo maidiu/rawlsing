@@ -247,3 +247,88 @@ def test_r17_distinct_cohorts_and_unselected_inquiries_remain_separate(tmp_path,
     assert len({s["knowledge_ref"]["content_hash"] for s in out["slices"]})==2
     assert out["unexamined"]==[{"id":"authority","state":"UNKNOWN_SCHEDULED"}]
     assert out["pooled_joint"] is None
+
+
+def test_r17_rival_formation_public_accounts_can_both_enter_actual_life(tmp_path,monkeypatch):
+    """Actual R48 reception of two authored rival accounts, not survey belief assignment."""
+    from authored_world_handoff import prepare_formation_authored_history
+    session,inquiries=_concept_session(tmp_path/"survey",monkeypatch)
+    with session:
+        concept=_develop_run(session,inquiries)
+    initial=_formation_case(concept,"admitted")
+    choices=deepcopy(initial["evidence"]["formation_choices"])
+    choices[0]["public_notice_ids"]=["patron_account"]
+    choices[1]["public_notice_ids"]=["collective_account"]
+    choice=deepcopy(initial["fictional_choice"])
+    choice["positions"][0]["effective_until"]=20
+    choice["rules"][0]["effective_until"]=20
+    notices=[{"id":ident,"public":True,"location":"home","public_terms":["eat",term],
+              "public_text":message,"effective_from":0,"effective_until":20}
+             for ident,term,message in [
+                 ("patron_account","unavailable","Only approved dependents can eat here."),
+                 ("collective_account","available","Households can eat here together.")]]
+    packet=prepare_formation_authored_history(concept,formation_choices=choices,
+        public_notices=notices,**choice)
+    stage="patron_account"
+    def policy(task,p):
+        if task=="expression":
+            return {"task":task,"surface":"Ordinary activity."}
+        if task=="development":
+            if stage in ("patron_account","collective_account"):
+                rows=p["historically_possible_notice_expectations"]
+                assert len(rows)==1
+                return {"task":task,"candidates":[{
+                    "kind":"ACQUIRE_NOTICE_EXPECTATION","basis":rows[0],
+                    "anticipated_availability":"UNAVAILABLE" if stage=="patron_account" else "AVAILABLE"}]}
+            if stage=="attempt":
+                rows=p["historically_possible_notice_revisions"]
+                assert len(rows)==1 and rows[0]["own_course"]=="COMPLETED"
+                return {"task":task,"candidates":[{"kind":"REVISE_NOTICE_EXPECTATION",
+                        "basis":rows[0],"revision":"AVAILABLE"}]}
+            return {"task":task,"candidates":[]}
+        if task=="actor_attempt":
+            if stage=="attempt":
+                rows=[x for o in p["options"] if o["action"]=="EAT"
+                      for x in o.get("fallible_notice_expectations",[])]
+                assert {x["anticipated_availability"] for x in rows}=={"AVAILABLE","UNAVAILABLE"}
+                # The actor may test a negative expectation rather than
+                # automatically follow the positive public account.
+                x=next(x for x in rows if x["anticipated_availability"]=="UNAVAILABLE")
+                return {"task":task,"action":"EAT","project_id":"food",
+                        "notice_expectation_ref":x["expectation_ref"]}
+            return {"task":task,"action":"WAIT"}
+        raise AssertionError(task)
+    service=ValidatingSemanticService(CallbackLLMProvider(policy))
+    db=str(tmp_path/"rival-accounts.db")
+    rt=ConstitutiveRuntime(db,semantic=service)
+    try:
+        w=blank_world()
+        w["public_notices"]=deepcopy(packet["evidence"]["public_notices"])
+        admit_authored_structural_history(w,{"worker"},packet["authored_structural_history"])
+        actor=adult("worker","Mara")
+        actor["projects"]=[{"id":"food","object":"sustain nutrition",
+                            "means":["EAT"],"priority":.5,"status":"active"}]
+        rt.ledger.initialize(w,[actor],source_seals=repertoire_source_seals(packet))
+        assert not rt.ledger.actor("worker")[1].get("institutional_expectations")
+        for stage in ("patron_account","collective_account"):
+            assert rt.step("worker",requested_action="INSPECT",object_ref=stage)["status"]=="PERFORMED"
+        acquired=rt.ledger.actor("worker")[1]["institutional_expectations"]
+        assert len(acquired)==2
+        assert {x["anticipated_availability"] for x in acquired}=={"AVAILABLE","UNAVAILABLE"}
+        assert len({x["public_notice_ref"] for x in acquired})==2
+        stage="attempt"
+        assert rt.step("worker")["status"]=="PERFORMED"
+        final=rt.ledger.actor("worker")[1]["institutional_expectations"]
+        assert len(final)==2
+        assert {x["anticipated_availability"] for x in final}=={"AVAILABLE"}
+        assert sum(len(x["revisions"]) for x in final)==1
+        assert rt.verify()["valid"]
+    finally:
+        rt.close()
+    rt=ConstitutiveRuntime(db,semantic=service)
+    try:
+        assert rt.ledger.source(packet["authored_structural_history"]["source_ref"])["content"]==packet
+        assert len(rt.ledger.actor("worker")[1]["institutional_expectations"])==2
+        assert rt.verify()["valid"]
+    finally:
+        rt.close()
