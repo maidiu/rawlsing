@@ -187,3 +187,56 @@ Protected progress revision remains 39. #791 is still open/unmerged, but MI sour
 ## November 25 — genealogy / adult entrance documentary intake
 
 Existing ledger and CIC now carry R46 inherited adult-entrance and blind-packet controls and exact PRE-A0/SEAM/ADP-015/P2/P3 correspondence. Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`; paired blobs a565e6239ee730bf8aae796d1c5afb35207b1e93 / f2081d41452a5fb5d7061fcf340af725e4ee07af rechecked. Existing #1095 27-task candidate unchanged at 75581fa9e2c8576d1ca9a7a9a18759ea840d82e8. For competent paired receiving: record qualified sourcefree adult common entrance and target-withholding receipt, distinguish co-initialization from genealogical sequence, retain independent and native holds, preserve protected grade and earlier MI factual correction. Actual record in [CIC](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json) and [existing ledger](LIVE_RECEIVING_LEDGER.json), not a proposal-only repository. No protected lease assumed; HQ_CURRENTNESS_HOLD for unresolved source/owner/full correspondence, not documentary work.
+
+
+## November 25 — exact additive paired receiving proposal (R39 retained)
+
+Apply only by competent protected receiver after current-head CAS and independent documentary receiving. Current protected `827714e83743056939894a39736d72ea16bdc6dd`, MD blob a565e6239ee730bf8aae796d1c5afb35207b1e93 and JSON blob f2081d41452a5fb5d7061fcf340af725e4ee07af; do not overwrite later changes. Preserve previous MI correction proposal, MII and R39; the following is a proposed matching additive paragraph/JSON field, not protected receiving.
+
+**Proposed Markdown paragraph:** November 25 sourcefree operational candidates (not protected): R25 #1358 joins R24 × R44; R45–48 remain separate CO candidates. R47 and R48 executed at tree-identical PR merge cuts, 663 and 664 normal/optimized tests per mode. Earlier adult-input and blind probe controls remain bounded single-question/sourcefree; full native genealogy, independent semantic correspondence, integration and receiving held. Exact O-Index/CIC candidate links; no revised qualified phase, source/science/actor/human authority or production claim.
+
+**Proposed additive JSON field** `sorok_g4_operational_candidate_20261125`:
+
+```json
+{
+  "status": "PROPOSED_OPERATIONAL_CANDIDATE_ADDENDUM_NOT_PROTECTED_RECEIVED",
+  "qualified_revision": 39,
+  "protected_base": "827714e83743056939894a39736d72ea16bdc6dd",
+  "o_index_pr": 1302,
+  "ledger_blob": "62524c581b6338eab018d3a1b4a750b9b77f0a3e",
+  "cic_blob": "91f0af43cfd1faff8d32e8c703dc9980fb49cd64",
+  "actual_join": {
+    "common_r44": "62b898eba8cbcd6c52b5f13111550406c4602a93",
+    "neighbor_r25": "9155676523685b421ac0b862ac73fb5e683f795d",
+    "co_r48": "0d7032ba181231779efa3061666d3a754eced47c",
+    "comparison": "GitHub exact compare reports CO 14 commits ahead, 119 behind NEIGHBOR from shared R44; counts are ancestry, not function counts.",
+    "scope": "Existing R25 actual absent life and R24 authored undertaking producer remain separate from R45 focal receipt, R46 site-bound repair power, R47 typed vocal cadence and R48 learned testimony. Preserve R25 human boundary and prior R23 SIGNAL repair; join shared owner changes without dropping either line. Verify actual human undertaking -> selected receipt/memory/rehearsal; learned repair -> actual material outcome; actual vocal cadence -> lawful MII/NEIGHBOR auditory exposure only; fallible testimony -> actual constraint/course, with separate observer access. No requirement all four in one artificial demo; no engineering commission by G4."
+  },
+  "returns": [
+    {
+      "pr": 1361,
+      "head": "8ceb1d63102acabe0a81bd076ec358c60f93cc52",
+      "executed_merge": "c47926fa844a7bef77866afe35f6cb4dcc9a4fc6",
+      "tree": "934e0e7472f33a733afc4ebb5678b716decb45cc",
+      "job": 139381981844,
+      "normal": 663,
+      "optimized": 663
+    },
+    {
+      "pr": 1362,
+      "head": "0d7032ba181231779efa3061666d3a754eced47c",
+      "executed_merge": "e31d4296fa56299dc325ed090577baf9bc91b499",
+      "tree": "b414edfbacc47f008c2bcfc11dfa6b61d123078f",
+      "job": 139383268347,
+      "normal": 664,
+      "optimized": 664
+    }
+  ],
+  "whole_instrument": "BOUNDED_SINGLE_QUESTION_CONTROLS_EXECUTED__FULL_CORRESPONDENCE_HELD",
+  "genealogy": "MOTHER_FORWARD_FATHER_BACK_CONDITIONED_ACTUAL_JOIN_HELD",
+  "independent_review": "HELD",
+  "protected_received": false,
+  "native": false,
+  "human": false
+}
+```
