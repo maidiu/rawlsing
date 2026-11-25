@@ -320,7 +320,8 @@ class _CellTokenMemo:
         self.limit=limit
 
     def token(self,cell):
-        if not self.limit or cell.source_missing_declaration is not None:
+        if (not self.limit or cell.source_missing_declaration is not None
+                or type(cell.missing_state) is not PhysicalMissingState):
             return _encode_cell(cell)
         raw=_scalar_memo_key(cell.raw_value)
         label=_scalar_memo_key(cell.raw_value_label)
