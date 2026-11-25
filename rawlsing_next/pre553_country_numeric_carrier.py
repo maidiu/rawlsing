@@ -519,23 +519,29 @@ class CountryReader:
             variables=tuple(self.db.execute("SELECT ordinal,name FROM vars ORDER BY ordinal"))
             self.variables = dict(variables)
             if receipt.lane_root:
-                blocks=tuple(self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"))
-                lanes=tuple(self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"))
-                if _manifest_root(variables,blocks,lanes)!=receipt.lane_root:
+                # Stream the SQL inventory directly into its final lookup
+                # maps while hashing the same external canonical preimage.
+                # No complete cursor tuple survives alongside those maps.
+                self._block_auth={}
+                self._lane_auth={}
+                def blocks():
+                    for i,n,d in self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"):
+                        if (i!=len(self._block_auth) or not 1<=n<=MAX_ROWS
+                                or type(d) is not bytes or len(d)!=32):
+                            raise CountryCarrierError("invalid authenticated row block inventory")
+                        self._block_auth[i]=(n,d)
+                        yield i,n,d
+                def lanes():
+                    for i,j,d in self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"):
+                        if (i not in self._block_auth or j not in self.variables
+                                or (i,j) in self._lane_auth or type(d) is not bytes or len(d)!=32):
+                            raise CountryCarrierError("invalid authenticated column lane inventory")
+                        self._lane_auth[i,j]=d
+                        yield i,j,d
+                if _manifest_root(variables,blocks(),lanes())!=receipt.lane_root:
                     raise CountryCarrierError("country lane inventory differs from external receipt")
-                self._block_auth={i:(n,d) for i,n,d in blocks}
-                self._lane_auth={(i,j):d for i,j,d in lanes}
-                # Unique keys + exact product cardinality + membership imply
-                # complete rectangular coverage, without allocating a second
-                # pair of potentially huge Cartesian key sets. Reject duplicate
-                # records explicitly rather than allowing dict collapse.
-                if (len(self._block_auth)!=len(blocks)
-                    or any(i!=expected for expected,i in enumerate(self._block_auth))
-                    or sum(n for _,n,_ in blocks)!=receipt.country_rows
-                    or len(self._lane_auth)!=len(lanes)
-                    or len(self._lane_auth)!=len(blocks)*len(self.variables)
-                    or any(i not in self._block_auth or j not in self.variables
-                           for i,j in self._lane_auth)):
+                if (sum(n for n,_ in self._block_auth.values())!=receipt.country_rows
+                    or len(self._lane_auth)!=len(self._block_auth)*len(self.variables)):
                     raise CountryCarrierError("country authenticated lane inventory incomplete")
             self._verify()
         except BaseException:
