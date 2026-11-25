@@ -279,6 +279,38 @@ def _candidate_projection(candidate: C11SourceReleaseCandidate) -> dict[str, Any
     }
 
 
+def _country_replay_section_refs(candidate,section,events):
+    """Exact ordered reference stream from the incumbent private country producer.
+
+    Its large event/routing and respondent/question/coordinate/weight sections
+    are already sorted by exact ref key. Check that invariant as we consume,
+    instead of re-sorting and retaining a second complete reference array.
+    Other sections retain the original order-independent canonical sort.
+    """
+    ordered=(candidate.empirical_universes,candidate.respondent_identities,
+             candidate.question_variable_bindings,events,
+             candidate.routing_eligibility_facts_or_exact_rules,
+             candidate.empirical_coordinate_facts,
+             candidate.weight_measure_facts_or_typed_absence)
+    if not any(section is value for value in ordered):
+        yield from canonical_section_refs(section)
+        return
+    from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+    prior=None
+    for item in section:
+        if section is events:
+            if type(item) is not _CountryEventHeader:
+                raise C11IntegrityError("invalid private country event header")
+        elif not isinstance(item,(CanonicalSemanticObject,C11InternalRecord)):
+            raise C11IntegrityError("unsupported C11 section member")
+        ref=item.ref
+        key=ref.key
+        if prior is not None and key<prior:
+            raise C11IntegrityError("private country replay section order drift")
+        prior=key
+        yield ref
+
+
 def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> str:
     """Hash the canonical candidate projection without materializing ref dictionaries.
 
@@ -296,14 +328,18 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *,
         if isinstance(section, TypedAbsence):
             write(canonical_json(section.as_dict()))
             return
+        if _country_events is not None:
+            packed=_PackedClosureRefs.pack(_country_replay_section_refs(candidate,section,_country_events))
+            h.update(b"[")
+            for index,encoded in enumerate(packed.canonical_ref_bytes()):
+                if index:
+                    h.update(b",")
+                h.update(encoded)
+            h.update(b"]")
+            return
         refs: list[ExactRef] = []
         for item in section:
-            if _country_events is not None and section is _country_events:
-                from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
-                if type(item) is not _CountryEventHeader:
-                    raise C11IntegrityError("invalid private country event header")
-                refs.append(item.ref)
-            elif isinstance(item, CanonicalSemanticObject):
+            if isinstance(item, CanonicalSemanticObject):
                 refs.append(item.ref)
             elif isinstance(item, C11InternalRecord):
                 refs.append(item.ref)
@@ -379,23 +415,13 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_even
         candidate.structural_admission_replay_bindings_or_typed_not_applicable_state,
     )
     if _country_events is not None:
-        # The country producer already orders its large sections. Verify
-        # monotonicity before exploiting it; preserve arbitrary smaller
-        # sections with their ordinary exact sort. Merge at reference grain,
-        # never build a second country-wide list of expanded refs.
-        def ordered(section):
-            prior=None
-            for item in section:
-                key=item.ref.key
-                if prior is not None and key<prior:
-                    return iter(canonical_section_refs(section))
-                prior=key
-            return (item.ref for item in section)
+        # Merge ordered, checked producer sections at reference grain;
+        # independent validation traverses the actual current candidate again.
         streams=[iter(sorted(refs,key=lambda r:r.key))]
         for section in sections:
             if isinstance(section,TypedAbsence):
                 continue
-            streams.append(ordered(section))
+            streams.append(_country_replay_section_refs(candidate,section,_country_events))
         return _PackedClosureRefs.pack(merge(*streams,key=lambda r:r.key))
     for section in sections:
         if not isinstance(section,TypedAbsence):

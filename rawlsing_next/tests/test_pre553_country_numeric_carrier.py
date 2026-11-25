@@ -146,6 +146,14 @@ class CountryNumeric(unittest.TestCase):
                     canonical_json([ref.as_dict() for ref in sample]).encode("utf-8"))
                 self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[:-1]))
                 self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[::-1]))
+                from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+                kind=RespondentEvent.FAMILY
+                prefix=f"{URN_PREFIX}:RespondentEvent:sha256:"
+                for bad in (((kind,prefix,b"x"*31),),((kind,prefix+"wrong",b"x"*32),)):
+                    with self.assertRaises(C11IntegrityError):
+                        _PackedClosureRefs(bad,(1,))
+                with self.assertRaises(C11IntegrityError):
+                    _PackedClosureRefs(((kind,prefix,b"x"*32),),(2,))
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]

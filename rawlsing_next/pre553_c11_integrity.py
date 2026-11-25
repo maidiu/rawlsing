@@ -316,6 +316,44 @@ class _PackedClosureRefs(Sequence[ExactRef]):
     runs: tuple
     ends: tuple[int, ...]
 
+    @staticmethod
+    def _derived_prefix(kind):
+        if kind in PUBLIC_OBJECT_FAMILIES:
+            return f"{URN_PREFIX}:{kind.split('@',1)[0]}:sha256:"
+        if kind.startswith("C11Internal:") and kind.split(":",1)[1] in INTERNAL_C11_RECORD_FAMILIES:
+            return f"{URN_PREFIX}:c11:{kind.split(':',1)[1]}:sha256:"
+        return None
+
+    def __post_init__(self):
+        self.validate()
+
+    def validate(self):
+        # Validate the exact physical representation without inflating the
+        # per-identity ref objects. Every 32-byte digest yields one legal
+        # lowercase SHA256 and its deterministic ID, with no omitted state.
+        if type(self.runs) is not tuple or type(self.ends) is not tuple or len(self.runs)!=len(self.ends):
+            raise C11IntegrityError("packed replay run/offset shape drift")
+        count=0
+        for run,end in zip(self.runs,self.ends):
+            if type(run) is not tuple or len(run)!=3 or type(end) is not int:
+                raise C11IntegrityError("packed replay run shape drift")
+            kind,prefix,payload=run
+            if type(kind) is not str or type(prefix) is not str:
+                raise C11IntegrityError("packed replay ref string drift")
+            if type(payload) is bytes:
+                if prefix!=self._derived_prefix(kind) or not payload or len(payload)%32:
+                    raise C11IntegrityError("packed replay derived lane drift")
+                count+=len(payload)//32
+            elif type(payload) is str:
+                ref=ExactRef(kind,prefix,payload)
+                if (ref.kind,ref.object_id,ref.content_hash)!=run:
+                    raise C11IntegrityError("packed replay explicit reference drift")
+                count+=1
+            else:
+                raise C11IntegrityError("packed replay payload type drift")
+            if end!=count:
+                raise C11IntegrityError("packed replay run offset drift")
+
     @classmethod
     def pack(cls, refs):
         runs,ends=[],[]
@@ -333,18 +371,18 @@ class _PackedClosureRefs(Sequence[ExactRef]):
             kind,oid,digest=ref.kind,ref.object_id,ref.content_hash
             # Only canonical deterministic IDs are reducible. An arbitrary
             # string ending in a hash is not a license to infer its ID.
-            if kind in PUBLIC_OBJECT_FAMILIES:
-                prefix=f"{URN_PREFIX}:{kind.split('@',1)[0]}:sha256:"
-            elif kind.startswith("C11Internal:"):
-                prefix=f"{URN_PREFIX}:c11:{kind.split(':',1)[1]}:sha256:"
-            else:
-                prefix=None
+            if any(type(v) is not str for v in (kind,oid,digest)):
+                raise C11IntegrityError("packed replay requires exact string leaves")
+            prefix=cls._derived_prefix(kind)
             if prefix is not None and oid==prefix+digest:
+                binary=bytes.fromhex(digest)
+                if len(binary)!=32 or binary.hex()!=digest:
+                    raise C11IntegrityError("packed replay digest is not exact lowercase SHA256")
                 key=(kind,prefix)
                 if active!=key:
                     flush()
                     active=key
-                lane.extend(bytes.fromhex(digest))
+                lane.extend(binary)
                 count+=1
             else:
                 flush()
@@ -474,8 +512,11 @@ class ReplayManifest(C11InternalRecord):
                                "replay_protocol_authority_ref")
         for ref in self.source_substrate_content_refs:
             _require_exact_ref(ref, "source_substrate_content_refs")
-        for ref in self.closure_refs:
-            _require_exact_ref(ref, "closure_refs")
+        if type(self.closure_refs) is _PackedClosureRefs:
+            self.closure_refs.validate()
+        else:
+            for ref in self.closure_refs:
+                _require_exact_ref(ref, "closure_refs")
 
 
 def assert_internal_carrier_record(record: Any) -> C11InternalRecord:
