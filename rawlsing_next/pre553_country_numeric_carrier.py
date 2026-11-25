@@ -506,6 +506,35 @@ def build_country(incidence: PhysicalSourceIncidence, *, country_variable: str,
         writer.abort()
 
 
+class _PackedLaneDigests:
+    """Exact rectangular lane inventory, in authenticated SQL key order.
+
+    Block ids are dense from zero; variable ordinals need not be dense.
+    The only retained per-lane payload is the original 32-byte digest.
+    """
+    __slots__=("_positions","_width","_digests")
+    def __init__(self,ordinals,digests):
+        self._positions={ordinal:i for i,ordinal in enumerate(ordinals)}
+        self._width=len(ordinals)
+        if not self._width or len(self._positions)!=self._width or len(digests)%(32*self._width):
+            raise CountryCarrierError("invalid packed lane digest extent")
+        self._digests=bytes(digests)
+
+    def __len__(self):
+        return len(self._digests)//32
+
+    def get(self,key,default=None):
+        block,ordinal=key
+        position=self._positions.get(ordinal)
+        if position is None or type(block) is not int or block<0:
+            return default
+        index=block*self._width+position
+        if index>=len(self):
+            return default
+        start=32*index
+        return self._digests[start:start+32]
+
+
 class CountryReader:
     """Cold reader requiring externally retained build receipt and currentness."""
     def __init__(self, path, receipt: CountryReceipt, *, require_current):
@@ -532,7 +561,10 @@ class CountryReader:
                 # maps while hashing the same external canonical preimage.
                 # No complete cursor tuple survives alongside those maps.
                 self._block_auth={}
-                self._lane_auth={}
+                ordinals=tuple(self.variables)
+                if not ordinals or len(ordinals)!=len(variables):
+                    raise CountryCarrierError("invalid authenticated variable inventory")
+                lane_digests=bytearray()
                 def blocks():
                     for i,n,d in self.db.execute("SELECT id,n,digest FROM blocks ORDER BY id"):
                         if (i!=len(self._block_auth) or not 1<=n<=MAX_ROWS
@@ -542,16 +574,20 @@ class CountryReader:
                         yield i,n,d
                 def lanes():
                     for i,j,d in self.db.execute("SELECT block,ordinal,digest FROM lanes ORDER BY block,ordinal"):
-                        if (i not in self._block_auth or j not in self.variables
-                                or (i,j) in self._lane_auth or type(d) is not bytes or len(d)!=32):
+                        block,position=divmod(len(lane_digests)//32,len(ordinals))
+                        # Exact ordered rectangular census: no duplicate, gap,
+                        # alien coordinate or reordering can enter the lane.
+                        if (i!=block or i not in self._block_auth or j!=ordinals[position]
+                                or type(d) is not bytes or len(d)!=32):
                             raise CountryCarrierError("invalid authenticated column lane inventory")
-                        self._lane_auth[i,j]=d
+                        lane_digests.extend(d)
                         yield i,j,d
                 if _manifest_root(variables,blocks(),lanes())!=receipt.lane_root:
                     raise CountryCarrierError("country lane inventory differs from external receipt")
                 if (sum(n for n,_ in self._block_auth.values())!=receipt.country_rows
-                    or len(self._lane_auth)!=len(self._block_auth)*len(self.variables)):
+                    or len(lane_digests)!=32*len(self._block_auth)*len(ordinals)):
                     raise CountryCarrierError("country authenticated lane inventory incomplete")
+                self._lane_auth=_PackedLaneDigests(ordinals,lane_digests)
             self._verify()
         except BaseException:
             self.db.close()
