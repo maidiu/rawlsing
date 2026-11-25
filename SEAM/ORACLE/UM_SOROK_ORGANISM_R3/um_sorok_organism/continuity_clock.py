@@ -24,12 +24,15 @@ def settle_human_offer_deadlines(world):
     visitor offer can occur during aggregate passage. A missed offer is not
     proof of refusal, culpability, emotion, or an actor's knowledge.
     """
+    settled=[]
     for row in world.get('scheduled_obligations',[]):
         if (row.get('kind')==HUMAN_OFFER_KIND and row.get('status')=='PENDING'
                 and world['clock']>=row['due_clock']):
             row['status']='WINDOW_ELAPSED_WITHOUT_AUTHORED_OFFER'
             row['settled_at_clock']=row['due_clock']
             row['no_recipient_appraisal_or_motive_inferred']=True
+            settled.append(row['id'])
+    return settled
 
 
 def record_human_offer_commitment(world, user, recipient, location, due, event_ref):
