@@ -1,5 +1,10 @@
 # FIELD FORGE — EXISTENT COMPUTATIONAL ESTATE / CAPABILITY HOME
 
+## 2026-11-25 — Reciprocal PYAT integration (user-directed)
+
+[Existing G4 first consultation, exact integrated commit 26ac87ad](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains) and [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342) now contain R13–R15 and the S05/S07/S08/S10 reciprocal evidence in actual G4 files and paired progress. R15 actual I05/DHIKR discovery and R14 exact joint/reverse composition remain distinct from F6 unobserved bounds; R13 descriptive positionality need not wait for external institutional issuance. For historical persistence/redistribution use S08 qualified comparable-wave evidence, distinct from independent N8S rule clocks. For non-coadministered axes use S07 finite-frame, issued interval or target-standardized partial evidence under their different premises, otherwise separate source-local findings. S05 candidate cold/learned multi-frontier evidence exists. S10 preserve observed rival/rare alternatives, typed absences and explicit specificity walkback; do not turn them into assigned beliefs. No compulsory F6/F7, external pack, new scheduler/estimator or protected science/actor grants. This is working-document integration, not runtime adoption.
+
+
 ## R13 — operative first consultation: the survey-internal social dialectic (2026-11-25)
 
 ### R15 — existing I05/DHIKR/R14 composition, no new scheduler
