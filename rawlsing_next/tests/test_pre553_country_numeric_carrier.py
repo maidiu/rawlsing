@@ -291,6 +291,36 @@ class CountryNumeric(unittest.TestCase):
             cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                 expected_release_ref=direct.release_ref,country_receipt=receipt,workload=workload,
                 resolver=resolver,host=host,purpose=purpose)
+            # Physical transport is compact but the canonical root and
+            # all cold reader identities are unchanged. Old plain manifests
+            # remain readable, and ambiguous/corrupt transports fail closed.
+            from rawlsing_next import pre553_durable_empirical_closure as durable
+            from rawlsing_next.pre553_empirical_objects import canonical_json
+            root_path=Path(pub.receipt.root_path)
+            packed_path=root_path/durable.COMPACT_MANIFEST_NAME
+            plain_path=root_path/durable.MANIFEST_NAME
+            packed=packed_path.read_bytes()
+            plain=canonical_json(cold._closure.manifest).encode("utf-8")
+            self.assertLess(len(packed),len(plain))
+            self.assertEqual(pub.receipt.manifest_bytes,len(packed))
+            plain_path.write_bytes(plain)
+            try:
+                with self.assertRaises(durable.DurableEmpiricalClosureError):
+                    durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                packed_path.unlink()
+                legacy=durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                self.assertEqual(legacy.exact_ref,cold._closure.exact_ref)
+                self.assertEqual(canonical_json(legacy.manifest),canonical_json(cold._closure.manifest))
+            finally:
+                plain_path.unlink()
+                packed_path.write_bytes(packed)
+            for bad in (packed[:-1],packed+b"trailing", (2**32).to_bytes(8,"big")+packed[8:]):
+                try:
+                    packed_path.write_bytes(bad)
+                    with self.assertRaises(durable.DurableEmpiricalClosureError):
+                        durable.open_empirical_closure(root_path,expected_root=pub.receipt.root_identity)
+                finally:
+                    packed_path.write_bytes(packed)
             read=cold.read_s04(query.ref,conditioner_index=0)
             self.assertEqual(read.first_consumer.execution.facts[0].raw_denominator_support,1)
             self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],1)

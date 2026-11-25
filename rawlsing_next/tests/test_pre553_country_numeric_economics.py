@@ -374,6 +374,7 @@ class CountryNativeEconomics(unittest.TestCase):
             print("COUNTRY_CLOSURE_FOOTPRINT",json.dumps({
                 "unique_file_bytes":unique_bytes,"allocated_file_bytes":allocated_bytes,
                 "file_count":len(physical_files),"manifest_bytes":pub.receipt.manifest_bytes,
+                "logical_manifest_bytes":len(canonical_json(cold._closure.manifest).encode("utf-8")),
                 "cas_new_bytes":pub.receipt.cas_new_bytes,
                 "referenced_bytes":pub.receipt.referenced_physical_bytes,
                 "peak_publish_scratch_bytes":pub.receipt.peak_scratch_bytes}),flush=True)

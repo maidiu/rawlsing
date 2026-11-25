@@ -110,6 +110,12 @@ SOURCE_ACCESS_STATE = "DISABLED__NO_ORIGINAL_SOURCE_BYTES_RETAINED"
 BLOB_FORMAT = "canonical-json+deflate-9"
 BLOB_SUFFIX = ".json.z"
 MANIFEST_NAME = "manifest.json"
+# Optional physical transport for the same canonical manifest and root.
+# Legacy readers fail closed; no second copy of the logical manifest.
+COMPACT_MANIFEST_NAME = "manifest.v1.json.z"
+# Larger legitimate manifests retain the plain transport. This is a
+# bounded compressed decoder, not a limit on the analytical query grammar.
+MAX_COMPACT_MANIFEST_RAW = 256 * 1024 * 1024
 CAS_DIR = "cas"
 BLOB_DIR = "blobs"
 CLOSURES_DIR = "closures"
@@ -1504,6 +1510,7 @@ def publish_empirical_closure(
     descriptive_consumer: Mapping[str, Any] | None = None,
     expected_root: str | None = None,
     failpoint: Any | None = None,
+    compact_manifest: bool = False,
 ) -> PublishReceipt:
     """Publish one complete native output closure exactly once.
 
@@ -1511,6 +1518,8 @@ def publish_empirical_closure(
     idempotent only for that exact root.  It is never inferred from the closure.
     """
 
+    if type(compact_manifest) is not bool:
+        raise DurableEmpiricalClosureError("explicit compact manifest selection required")
     started = time.monotonic()
     root = Path(root_dir)
     root.mkdir(parents=True, exist_ok=True)
@@ -1593,6 +1602,12 @@ def publish_empirical_closure(
         "core": core,
     }
     manifest_bytes = _canonical_bytes(manifest)
+    manifest_name = MANIFEST_NAME
+    if compact_manifest and len(manifest_bytes) <= MAX_COMPACT_MANIFEST_RAW:
+        packed = len(manifest_bytes).to_bytes(8,"big") + zlib.compress(manifest_bytes,6)
+        if len(packed) < len(manifest_bytes):
+            manifest_name = COMPACT_MANIFEST_NAME
+            manifest_bytes = packed
     final_dir = closures_dir / f"closure-{closure_identity}"
     receipt_kwargs = dict(
         root_path=str(final_dir),
@@ -1613,7 +1628,8 @@ def publish_empirical_closure(
         dedup_ratio=0.0,
     )
     if final_dir.exists():
-        existing = _read_json_file(final_dir / MANIFEST_NAME)
+        existing_path = _manifest_file(final_dir)
+        existing = _read_json_file(existing_path)
         existing_root = _mapping(existing.get("publication"), "publication").get(
             "root_identity"
         )
@@ -1626,10 +1642,12 @@ def publish_empirical_closure(
         # matches.
         open_empirical_closure(final_dir, expected_root=root_identity).require_trusted()
         referenced_blobs = sum(item["compressed_bytes"] for item in blobs)
-        referenced_total = referenced_blobs + (final_dir / MANIFEST_NAME).stat().st_size
+        actual_manifest_bytes = existing_path.stat().st_size
+        referenced_total = referenced_blobs + actual_manifest_bytes
         return PublishReceipt(
             **{
                 **receipt_kwargs,
+                "manifest_bytes": actual_manifest_bytes,
                 "published": False,
                 "referenced_physical_bytes": int(referenced_total),
                 "referenced_blob_bytes": int(referenced_blobs),
@@ -1645,6 +1663,7 @@ def publish_empirical_closure(
     staged_dir = closures_dir / f"{STAGING_PREFIX}{os.getpid()}-{uuid.uuid4().hex}"
     staged_dir.mkdir(parents=False, exist_ok=False)
     cas_new = 0
+    published = True
     try:
         for digest in sorted(set(object_blobs) | set(fragment_blobs)):
             data = object_blobs.get(digest, fragment_blobs.get(digest))
@@ -1679,7 +1698,7 @@ def publish_empirical_closure(
         _fsync_dir(blob_dir)
         if failpoint is not None:
             failpoint("after_blob_write")
-        manifest_path = staged_dir / MANIFEST_NAME
+        manifest_path = staged_dir / manifest_name
         scratch.add(len(manifest_bytes))
         with open(manifest_path, "wb") as handle:
             handle.write(manifest_bytes)
@@ -1693,13 +1712,15 @@ def publish_empirical_closure(
         except OSError:
             if not final_dir.exists():
                 raise
-            existing = _read_json_file(final_dir / MANIFEST_NAME)
+            existing = _read_json_file(_manifest_file(final_dir))
             if _mapping(existing.get("publication"), "publication").get(
                 "root_identity"
             ) != root_identity:
                 raise DurableEmpiricalClosureError(
                     "concurrent publication produced a different closure root"
                 )
+            open_empirical_closure(final_dir,expected_root=root_identity).require_trusted()
+            published = False
         _fsync_dir(closures_dir)
         if failpoint is not None:
             failpoint("after_manifest_replace")
@@ -1712,11 +1733,13 @@ def publish_empirical_closure(
             shutil.rmtree(staged_dir, ignore_errors=True)
 
     referenced_blobs = sum(item["compressed_bytes"] for item in blobs)
-    referenced_total = referenced_blobs + len(manifest_bytes)
+    actual_manifest_bytes = _manifest_file(final_dir).stat().st_size
+    referenced_total = referenced_blobs + actual_manifest_bytes
     return PublishReceipt(
         **{
             **receipt_kwargs,
-            "published": True,
+            "manifest_bytes": actual_manifest_bytes,
+            "published": published,
             "referenced_physical_bytes": int(referenced_total),
             "referenced_blob_bytes": int(referenced_blobs),
             "peak_scratch_bytes": int(scratch.peak),
@@ -1743,6 +1766,14 @@ def _row_counts(output: NativeEmpiricalOutput, census: Mapping[str, Any]) -> dic
     }
 
 
+def _manifest_file(directory: Path) -> Path:
+    choices = tuple(directory / name for name in (MANIFEST_NAME,COMPACT_MANIFEST_NAME)
+                    if (directory / name).exists())
+    if len(choices) != 1 or not choices[0].is_file():
+        raise DurableEmpiricalClosureError("exactly one closure manifest transport required")
+    return choices[0]
+
+
 def _read_json_file(path: Path) -> Mapping[str, Any]:
     try:
         with open(path, "rb") as handle:
@@ -1752,8 +1783,20 @@ def _read_json_file(path: Path) -> Mapping[str, Any]:
     import json
 
     try:
+        if path.name == COMPACT_MANIFEST_NAME:
+            if len(value) <= 8:
+                raise ValueError("truncated compact manifest")
+            size = int.from_bytes(value[:8],"big")
+            if not 0 < size <= MAX_COMPACT_MANIFEST_RAW:
+                raise ValueError("compact manifest expansion outside transport bound")
+            decoder = zlib.decompressobj()
+            raw = decoder.decompress(value[8:],size+1)
+            if (len(raw) != size or not decoder.eof or decoder.unconsumed_tail
+                    or decoder.unused_data):
+                raise ValueError("compact manifest length or framing drift")
+            value = raw
         document = json.loads(value.decode("utf-8"))
-    except (UnicodeDecodeError, ValueError) as exc:
+    except (UnicodeDecodeError, ValueError, zlib.error) as exc:
         raise DurableEmpiricalClosureError(f"closure file is not canonical JSON: {path}") from exc
     if not isinstance(document, Mapping):
         raise DurableEmpiricalClosureError(f"closure file is not a mapping: {path}")
@@ -1986,7 +2029,7 @@ def open_empirical_closure(
     path = Path(closure_path)
     if path.is_file():
         path = path.parent
-    manifest = _read_json_file(path / MANIFEST_NAME)
+    manifest = _read_json_file(_manifest_file(path))
     if manifest.get("schema") != DURABLE_CLOSURE_SCHEMA:
         raise DurableEmpiricalClosureError("closure manifest schema mismatch")
     if manifest.get("contract") != DURABLE_CLOSURE_CONTRACT_ID:

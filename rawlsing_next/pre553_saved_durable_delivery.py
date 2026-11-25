@@ -795,7 +795,8 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
         elapsed=monotonic()-start
         published=monotonic()
-        receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding)
+        receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding,
+                                         compact_manifest=True)
         reader._verify()
         current()
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
