@@ -316,6 +316,20 @@ class CountryNumeric(unittest.TestCase):
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
                 lane=compact.public_objects.lane
+                from rawlsing_next._pre553_c11_execution_view import _PackedCountrySelectors,_EventRead
+                self.assertIsInstance(lane.selectors,_PackedCountrySelectors)
+                self.assertIs(lane.selectors.hashes,lane.bodies.hashes)
+                self.assertEqual(len(lane.selectors.occurrence_hashes),32*len(events))
+                self.assertTrue(lane.selectors.codes.readonly)
+                self.assertEqual(lane.selectors[::-2],tuple(lane.selectors)[::-2])
+                for selector,event in zip(lane.selectors,events):
+                    self.assertIs(type(selector),_EventRead)
+                    for field in ("ref","typed_state","native_question_ref",
+                        "canonical_question_ref_if_authorized","component_or_subitem_ref",
+                        "authority_snapshot_refs","raw_response_value",
+                        "canonical_response_value_if_authorized","multiplicity_order_rank_fields",
+                        "response_event_id_or_deterministic_index"):
+                        self.assertEqual(getattr(selector,field),getattr(event,field))
                 self.assertEqual(lane.bodies.locator_bytes,40*len(events))
                 self.assertTrue(lane.bodies.direct)
                 from rawlsing_next import pre553_source_backed_c11_facade as facade
