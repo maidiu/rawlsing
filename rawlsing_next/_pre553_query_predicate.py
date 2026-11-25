@@ -1,5 +1,8 @@
 """Exact C11 indexing and empirical predicate evaluation for PRE553 I03."""
 from collections.abc import Iterator
+from array import array
+from bisect import bisect_left,bisect_right
+from dataclasses import dataclass
 
 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _RespondentEvents
 from rawlsing_next._pre553_verified_semantic_range import CertifiedRespondentEvents
@@ -75,6 +78,46 @@ def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> b
     return ref == native or (canonical is not None and ref == canonical)
 
 
+@dataclass(frozen=True,slots=True)
+class _CountryRoutingLookup:
+    """Packed target/risk postings over existing sealed routing tuples.
+
+    Complete tuples remain available for predicates and evidence. The
+    existing evaluator independently checks selected facts and authorities.
+    """
+    dimensions: Mapping
+    rows: Mapping
+    postings: Mapping
+
+    @classmethod
+    def build(cls,rows):
+        dimensions={}
+        postings={}
+        for respondent,facts in rows.items():
+            pairs=[]
+            for i,fact in enumerate(facts):
+                key=(_ref_field(fact,"question_or_target_ref").key,
+                     _ref_field(fact,"risk_set_ref").key)
+                code=dimensions.setdefault(key,len(dimensions))
+                pairs.append((code,i))
+            pairs.sort()
+            tag="I" if len(facts)<2**32 and len(dimensions)<2**32 else "Q"
+            codes=array(tag,(a for a,b in pairs))
+            offsets=array(tag,(b for a,b in pairs))
+            postings[respondent]=(memoryview(codes.tobytes()).cast(tag),
+                                  memoryview(offsets.tobytes()).cast(tag))
+        return cls(MappingProxyType(dimensions),rows,MappingProxyType(postings))
+
+    def __call__(self,*,respondent,target,risk_set):
+        facts=self.rows[respondent]
+        code=self.dimensions.get((target,risk_set))
+        if code is None:
+            return ()
+        codes,offsets=self.postings[respondent]
+        lo,hi=bisect_left(codes,code),bisect_right(codes,code)
+        return tuple(facts[offsets[i]] for i in range(lo,hi))
+
+
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
     public = release.public_objects
     universes = [o for o in release._public_non_events if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
@@ -121,6 +164,12 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             for key, objects in rows.items()
         })
 
+    routing_rows=freeze_rows(routing)
+    lookup=None
+    if isinstance(public,_CompactPublicObjects):
+        from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies
+        if type(public.lane.bodies) is _CountryEventBodies:
+            lookup=_CountryRoutingLookup.build(routing_rows)
     return _ReleaseIndex(
         release=release,
         universe=universe,
@@ -132,7 +181,8 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             if isinstance(public, _CompactPublicObjects) else freeze_rows(events)
         ),
         coordinates_by_respondent=freeze_rows(coords),
-        routing_by_respondent=freeze_rows(routing),
+        routing_by_respondent=routing_rows,
+        routing_lookup=lookup,
         weights_by_respondent=freeze_rows(weights),
         source_relations=tuple(sorted(relations, key=lambda r: r.ref.key)),
     )

@@ -148,6 +148,9 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=semantic_hash(workload.envelope()),original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
+            self.assertEqual(projection.cache_identity,semantic_hash({
+                "contract":CONTRACT_ID,"projection":_cache_projection_preimage(projection)}))
             projection_seconds=time.monotonic()-t
             print("COUNTRY_NATIVE_SCALE_START",json.dumps({"rows":n,"country_rows":len(chosen),"physical_width":len(frame.columns),
                 "governed_width":governed,"units":len(jobs),"country_bytes":receipt.bytes,
@@ -170,6 +173,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 new_times.append(time.monotonic()-t0)
                 self.assertEqual(old_hash,new_hash)
                 self.assertEqual(new_hash,record.envelope_sha256)
+            self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
             print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
                 "old_median_s":median(old_times),"new_median_s":median(new_times),
                 "same_exact_hash":True,"repetitions":3}),flush=True)
@@ -305,8 +309,16 @@ class CountryNativeEconomics(unittest.TestCase):
                 cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                     expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,workload=workload,
                     resolver=resolver,host=host,purpose=purpose)
-                for q in queries:
-                    read=cold.read_s04(q.ref,conditioner_index=0 if q==joint else None)
+                plans=tuple((q.ref,0 if q==joint else None) for q in queries)
+                t_bulk=time.monotonic()
+                reads=cold.read_s04_many(plans)
+                bulk_s=time.monotonic()-t_bulk
+                self.assertEqual(len(reads),len(queries))
+                print("COUNTRY_COLD_BULK_READ",json.dumps({"units":len(reads),"seconds":bulk_s}),flush=True)
+                for i in (0,len(queries)-1):
+                    single=cold.read_s04(plans[i][0],conditioner_index=plans[i][1])
+                    self.assertEqual(delivery._s04_refs(single),delivery._s04_refs(reads[i]))
+                for q,read in zip(queries,reads):
                     fact=read.first_consumer.execution.facts[0]
                     mask=(np.ones(len(chosen),dtype=bool) if q in (joint,unary)
                           else selected[:,1]==0 if q in alternate else selected[:,0]==1)

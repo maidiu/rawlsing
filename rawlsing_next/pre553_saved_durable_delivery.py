@@ -17,6 +17,7 @@ from rawlsing_next.pre553_batch_runner import BatchManifest, BatchUnitSpec
 from rawlsing_next.pre553_empirical_objects import ExactRef, canonical_json, exact_ref
 from rawlsing_next.pre553_issued_workload import (
     NativeWorkload, admit, _admit, _PreparedRoutingEnvelope, execute_issued_workload, _restore_receipt,
+    IssuedWorkloadRecord, material,
 )
 from rawlsing_next.pre553_saved_c11_admission import SavedC11Admission
 from rawlsing_next.pre553_durable_empirical_closure import (
@@ -380,6 +381,47 @@ class ColdSavedProduct:
 
     def read_s04(self, query_ref: ExactRef, *, conditioner_index=None):
         self._live()
+        read=self._read_s04_retained(query_ref,conditioner_index=conditioner_index)
+        self._live()
+        return read
+
+    def read_s04_many(self, requests):
+        """Atomic finite archive reads: full admission brackets the transaction.
+
+        Each item checks the independent current record before and after;
+        no result escapes before final full admission. Only the authenticated
+        archive (not the caller's projection/catalog) supplies calculations.
+        Individual read_s04 retains its original admission boundary.
+        """
+        if type(requests) not in (tuple,list) or not requests:
+            raise SavedDeliveryError("EXPLICIT_NONEMPTY_S04_BATCH_REQUIRED")
+        plan=[]
+        for item in requests:
+            if type(item) not in (tuple,list) or len(item)!=2:
+                raise SavedDeliveryError("EXACT_S04_BATCH_REQUEST_REQUIRED")
+            ref=exact_ref(item[0])
+            index=item[1]
+            _require(index is None or type(index) is int,"EXACT_CONDITIONER_INDEX_REQUIRED")
+            plan.append((ExactRef(ref.kind,ref.object_id,ref.content_hash),index))
+        self._live()
+        record_pin=canonical_json(material(self._record))
+        decision=self._record.decision_ref
+        decision=ExactRef(decision.kind,decision.object_id,decision.content_hash)
+        def live_item():
+            current=self._resolver.resolve_current(decision)
+            _require(type(current) is IssuedWorkloadRecord
+                     and canonical_json(material(current))==record_pin,
+                     "CURRENT_CHANGED_DURING_COLD_BATCH_SERVING")
+        results=[]
+        for ref,index in plan:
+            live_item()
+            results.append(self._read_s04_retained(ref,conditioner_index=index))
+            live_item()
+        self._live()
+        live_item()
+        return tuple(results)
+
+    def _read_s04_retained(self, query_ref: ExactRef, *, conditioner_index=None):
         ref = exact_ref(query_ref)
         execution = self._queries.get(ref.key)
         _require(execution is not None, "QUERY_NOT_IN_RETAINED_DIRECT_WORKLOAD")
@@ -391,7 +433,6 @@ class ColdSavedProduct:
         key = (ref.key, conditioner_index)
         if key in self._cache:
             self._cache.move_to_end(key)
-            self._live()
             return self._cache[key]
         query = self._closure.query_by_ref(ref)
         read = _read_s04(query, execution, conditioner_index)
@@ -400,7 +441,6 @@ class ColdSavedProduct:
             "knowledge_ref", "observation_ref")
         _require(all(canonical_json(actual[k]) == canonical_json(expected[k]) for k in fields),
                  "COLD_S04_FIRST_READ_IDENTITY_DRIFT")
-        self._live()
         self._cache[key] = read
         if len(self._cache) > 16:
             self._cache.popitem(last=False)

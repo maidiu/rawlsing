@@ -28,7 +28,7 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef, AuthoritySnapshot, CanonicalSemanticObject, EmpiricalCoordinateFact, EmpiricalPredicate,
     EmpiricalQuerySpec, EmpiricalUniverse, ExactRef, RespondentEvent,
     RoutingEligibilityFact, SourceUniverseRelation, WeightMeasureFact,
-    authority_ref, canonicalize, exact_ref, semantic_hash,
+    authority_ref, canonicalize, canonical_json, exact_ref, semantic_hash,
 )
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
@@ -438,10 +438,31 @@ class GovernedC11Projection:
         absence and canonical semantic references. This is cache isolation,
         not original-source/science/current-use authorization.
         """
-        return semantic_hash({
-            "contract": CONTRACT_ID,
-            "projection": _cache_projection_preimage(self),
-        })
+        # Same canonical projection hash, stream one sequence member
+        # at a time rather than expanding every routing preimage in RAM.
+        h=hashlib.sha256()
+        def emit(value):
+            h.update(canonical_json(value).encode("utf-8"))
+        h.update(b'{"contract":')
+        emit(CONTRACT_ID)
+        h.update(b',"projection":{')
+        for i,f in enumerate(sorted(fields(self),key=lambda f:f.name)):
+            if i:
+                h.update(b",")
+            emit(f.name)
+            h.update(b":")
+            value=getattr(self,f.name)
+            if type(value) in (tuple,list):
+                h.update(b"[")
+                for j,item in enumerate(value):
+                    if j:
+                        h.update(b",")
+                    emit(_cache_projection_preimage(item))
+                h.update(b"]")
+            else:
+                emit(_cache_projection_preimage(value))
+        h.update(b"}}")
+        return h.hexdigest()
 
 
 def _owner_material(owner_authority_refs: Iterable[AuthorityRef]) -> tuple[AuthorityRef, ...]:
