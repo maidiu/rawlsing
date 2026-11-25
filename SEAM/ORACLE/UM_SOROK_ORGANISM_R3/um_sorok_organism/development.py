@@ -15,6 +15,7 @@ from .practical_difference import validate_expected_difference, appraise_expecte
 from .expectation_afterlife import admit_activity_affect
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
+from .attention_field import received_undertaking_attention
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
@@ -737,6 +738,21 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                    'grade':GRADE,'status':'NONDECLARATIVE' if op=='TRACE' else 'ACTOR_ACCESSIBLE',
                    'cue_terms':c.get('cue_terms',[]),'content':c.get('content',''),
                    'manifestation':c.get('manifestation','uninterpreted')}
+            if 'undertaking_attention_ref' in c:
+                receipt=received_undertaking_attention(actor,
+                    experience.get('own_practical_selection'),experience)
+                paths=[p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+                       and p.get('undertaking_attention')==receipt]
+                if (op!='MEMORY' or not receipt or receipt!=experience.get('undertaking_attention_receipt')
+                        or c['undertaking_attention_ref']!=receipt['attention_id'] or len(paths)!=1
+                        or type(entry['content']) is not str or not entry['content'].strip()
+                        or len(entry['content'])>512
+                        or any(m.get('undertaking_attention',{}).get('attention_id')==receipt['attention_id']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('UNDERTAKING_MEMORY_UNQUALIFIED_ATTENTION')
+                entry['undertaking_attention']=copy(receipt)
+                entry['remembered_meaning_not_objective_future_truth']=True
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':

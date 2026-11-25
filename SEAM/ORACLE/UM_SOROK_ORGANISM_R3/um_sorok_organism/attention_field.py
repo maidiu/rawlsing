@@ -130,3 +130,94 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
             'grade':GRADE,
         }
     }
+
+
+# Explicitly undertaken focal reception is distinct from the read-only
+# attention budget. The producer's authored act and the recipient's own
+# experienced sign must remain two different historical events.
+from .types import stable_id
+
+def offer_undertaking_attention(actor, world, access, focal_refs):
+    """Existing actor pledge and R24 visitor undertaking, one recipient law.
+
+    Objective history validates provenance; only the already eligible
+    outward sign supplies content. Neither its deadline outcome nor the
+    Other's intentions enter the option. No new world write.
+    """
+    aid=actor['id'];clock=world['clock'];location=access.location
+    if access.actor!=aid or access.world_clock!=clock:return []
+    if actor['body'].get('language',0)<.35:return []
+    out=[]
+    for cue in access.cues:
+        if cue.get('id') not in focal_refs:continue
+        kind=cue.get('kind')
+        if kind=='visitor_offer_undertaking':
+            # This is the exact source contract of NEIGHBOR R24, not a
+            # synthetic Other or new human contribution writer.
+            ev=[e for e in world.get('neighbor_user_events',[])
+                if e.get('event_ref')==cue.get('visitor_event_ref')
+                and e.get('operation')=='PLEDGE_OFFER' and e.get('status')=='PERFORMED'
+                and e.get('target_actor_ref')==aid and e.get('destination')==location
+                and e.get('user')==cue.get('visitor_ref')
+                and e.get('clock')==cue.get('clock')
+                and e.get('human_offer_commitment_ref')==cue.get('commitment_ref')
+                and any(x.get('actor')==aid and x.get('cue_ref')==cue['id']
+                        and x.get('event_ref')==e['event_ref']
+                        and x.get('basis')==kind for x in e.get('perceptual_candidates',[]))]
+            if len(ev)!=1:continue
+            e=ev[0];other=e['user'];source=e['event_ref'];commit=e['human_offer_commitment_ref']
+            if not isinstance(commit,str) or not commit:continue
+            if not any(o.get('id')==commit and o.get('kind')=='HUMAN_PROMISED_FOOD_OFFER'
+                       and o.get('responsible_actor')==other and o.get('recipient')==aid
+                       and o.get('source_user_event_ref')==source
+                       for o in world.get('scheduled_obligations',[])):continue
+            family='HUMAN_AUTHORED_NEIGHBOR'
+        elif kind=='performed_pledge_care':
+            ev=[e for e in world.get('public_history',[])
+                if e.get('action')=='PLEDGE_CARE' and e.get('status')=='PERFORMED'
+                and e.get('actor')==cue.get('source_actor')
+                and e.get('target')==aid and e.get('clock')==cue.get('clock')
+                and e.get('future_care_obligation_ref')]
+            if len(ev)!=1:continue
+            e=ev[0];other=e['actor'];commit=e['future_care_obligation_ref']
+            if not any(o.get('id')==commit and o.get('kind')=='ACTOR_PROMISED_FUTURE_CARE'
+                       and o.get('responsible_actor')==other and o.get('recipient')==aid
+                       and o.get('origin_clock')==e['clock']
+                       for o in world.get('scheduled_obligations',[])):continue
+            source=commit
+            family='INDEPENDENT_COMPUTATIONAL_ACTOR'
+        else:continue
+        if type(other) is not str or other==aid:continue
+        if any(x.get('undertaking_attention',{}).get('commitment_ref')==commit
+               for x in actor.get('evidence_paths',[])):continue
+        # Never include status, fulfilment, internal deadline settlement, or
+        # the objective proposition as if it were already actor knowledge.
+        basis={'actor':aid,'as_of_clock':clock,'location':location,
+               'cue_ref':cue['id'],'counterpart_ref':other,'source_kind':family,
+               'source_event_ref':source,'commitment_ref':commit}
+        out.append({**basis,'attention_id':stable_id('undertaking_attention',basis),
+                    'operation':'ORIENT','outward_sign':copy(cue),
+                    'not_understanding_consent_or_future_outcome':True,'grade':GRADE})
+        if len(out)>=8:break
+    return out
+
+
+def received_undertaking_attention(actor, selection, experience):
+    """Recompute the exact selected-sign receipt for atomic memory admission."""
+    chosen=(selection or {}).get('undertaking_attention')
+    if not isinstance(chosen,dict):return None
+    if (selection.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or selection.get('actor')!=actor['id'] or chosen.get('actor')!=actor['id']
+            or experience.get('actor')!=actor['id']
+            or experience.get('own_action')!='ORIENT' or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or experience.get('clock')!=chosen.get('as_of_clock',-2)+1
+            or experience.get('location')!=chosen.get('location')
+            or selection.get('selected_project_refs')!=[]
+            or selection.get('possible_end_trial') is not None):return None
+    cue=chosen.get('outward_sign')
+    if not isinstance(cue,dict) or cue.get('id')!=chosen.get('cue_ref'):return None
+    if sum(c==cue for c in experience.get('perceived_cues',[]))!=1:return None
+    return {k:copy(chosen[k]) for k in ('attention_id','actor','cue_ref',
+                'source_event_ref','commitment_ref','source_kind','counterpart_ref',
+                'location','as_of_clock')}

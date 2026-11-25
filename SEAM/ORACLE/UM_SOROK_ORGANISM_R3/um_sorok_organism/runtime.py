@@ -13,6 +13,7 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
+from .attention_field import offer_undertaking_attention, received_undertaking_attention
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                        possible_dependency_project_reorganizations,
@@ -280,6 +281,9 @@ class ConstitutiveRuntime:
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
             private_options=(offer_private_rehearsals(actor,world['clock'],e.location,
                 [o['action'] for o in options]) if requesting_actor is None else [])
+            undertaking_options=(offer_undertaking_attention(actor,world,e,
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]))
+                if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
@@ -287,6 +291,7 @@ class ConstitutiveRuntime:
                 'practical_options':flat_alternatives,
                 'possible_end_trials':flat_trials,
                 'private_rehearsal_options':copy(private_options),
+                'undertaking_attention_options':copy(undertaking_options),
                 'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
@@ -300,6 +305,15 @@ class ConstitutiveRuntime:
                         or type(content) is not str or not content.strip() or len(content)>512):
                     raise ValueError('PRIVATE_REHEARSAL_UNISSUED_OR_CONFLICTING_SELECTION')
                 private_choice={'option':copy(rows[0]),'imagined_content':content}
+            undertaking_choice=None
+            if 'undertaking_attention_id' in proposed:
+                rows=[o for o in undertaking_options
+                      if o['attention_id']==proposed.get('undertaking_attention_id')]
+                if (len(rows)!=1 or proposed.get('action')!='ORIENT' or private_choice is not None
+                        or any(proposed.get(k) is not None for k in
+                               ('project_id','project_ids','practical_option_id','possible_end_trial_id'))):
+                    raise ValueError('UNDERTAKING_ATTENTION_UNISSUED_OR_CONFLICTING')
+                undertaking_choice=copy(rows[0])
             requested_option=proposed.get('practical_option_id')
             requested_trial=proposed.get('possible_end_trial_id')
             trial_choice=None
@@ -509,6 +523,8 @@ class ConstitutiveRuntime:
                 practical['selected_course_affects_analytic_only']=affect_courses
             if private_choice is not None:
                 practical['private_rehearsal']=private_choice
+            if undertaking_choice is not None:
+                practical['undertaking_attention']=undertaking_choice
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -588,6 +604,8 @@ class ConstitutiveRuntime:
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        if principal.practical_selection.get('undertaking_attention') is not None and (target is not None or object_ref is not None):
+            raise ValueError('UNDERTAKING_ATTENTION_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
             raise ValueError('PRIVATE_REHEARSAL_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if target is not None and principal.target not in (None,target):
@@ -637,6 +655,17 @@ class ConstitutiveRuntime:
                 personal_cues += [x for x in access.cues
                     if x.get('kind')=='coactor_present'
                     and x.get('source_actor')!=aid]
+            # A deliberately selected, source-checked prior sign can have
+            # been received during this orienting interval even if its
+            # transient world cue expired at settlement. Never retain it
+            # for a passive observer, an injected ORIENT or an unsuccessful act.
+            if (aid==actor_id and requested_action is None and personally_done
+                    and personally_done['action']=='ORIENT' and personally_done['status']=='PERFORMED'):
+                chosen=principal.practical_selection.get('undertaking_attention')
+                if chosen is not None:
+                    cue=copy(chosen['outward_sign'])
+                    if not any(c['id']==cue['id'] for c in personal_cues):
+                        personal_cues.append(cue)
             if not participated and not personal_cues:continue
             own=(personally_done['action'] if personally_done else
                  ('RECEIVED_FEEDING' if aid in affected and
@@ -682,6 +711,10 @@ class ConstitutiveRuntime:
                             and (aid!=actor_id or requested_action is None)
                             else None),
                         'actor_access_grade':GRADE}
+            attention_receipt=received_undertaking_attention(
+                actors[aid],experience.get('own_practical_selection'),experience)
+            if attention_receipt:
+                experience['undertaking_attention_receipt']=attention_receipt
             subjective[aid]=copy(experience)
             if personally_done and actor_attempt is not None:
                 # Anticipation is formed at the time of this actor's attempt,
@@ -711,6 +744,7 @@ class ConstitutiveRuntime:
                 'selected_project_refs':copy(own_selection.get(
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
+                **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -850,6 +884,7 @@ class ConstitutiveRuntime:
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
+                'actual_undertaking_attention_analyst_only':copy(attention_receipt),
                 'actor_historical_orientations_analyst_only':copy(
                     actors[aid].get('historical_orientations',[])),
                 'actor_self_model_analyst_only':copy(
@@ -964,6 +999,8 @@ class ConstitutiveRuntime:
         expression_access=copy(observed)
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
+            expression_access['own_practical_selection'].pop('undertaking_attention',None)
+        expression_access.pop('undertaking_attention_receipt',None)
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':expression_access,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
