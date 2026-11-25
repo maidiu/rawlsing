@@ -281,6 +281,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "fast_pin_tuples":prepared.fast_pins is not None,
                 "exact_hash_equal":True}),flush=True)
             del prepared
+            from rawlsing_next import pre553_c11_ingest as c11_ingest
             timings=defaultdict(list)
             def time_call(owner,name,label):
                 original=getattr(owner,name)
@@ -299,6 +300,8 @@ class CountryNativeEconomics(unittest.TestCase):
                     (issued._PreparedRoutingEnvelope,"prepare","routing_preparation"),
                     (issued.NativeWorkload,"envelope","full_workload_envelope"),
                     (issued,"build_source_backed_c11_repository","cold_native_prepare"),
+                    (c11_ingest,"_all_nonmanifest_refs","replay_closure_census"),
+                    (c11_ingest,"_candidate_projection_semantic_hash","replay_projection_hash"),
                     (delivery,"_record","delivery_full_admission"),
                     (delivery,"_s04_manifest","prepublish_s04_manifest"),
                     (delivery,"_graph","durable_graph"),

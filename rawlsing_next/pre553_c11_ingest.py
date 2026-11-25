@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 from itertools import chain
+from heapq import merge
 from enum import Enum
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
@@ -44,7 +45,7 @@ from rawlsing_next.pre553_c11_integrity import (
     DiscoveryBranchReplayBinding,
     EmpiricalPredicateReplayBinding,
     QuestionVariableBinding,
-    ReplayManifest,
+    ReplayManifest, _PackedClosureRefs,
     RespondentIdentity,
     StructuralAdmissionReplayBinding,
     TypedAbsence,
@@ -357,12 +358,12 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *,
     return h.hexdigest()
 
 
-def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> tuple[ExactRef, ...]:
+def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> Sequence[ExactRef]:
     refs: list[ExactRef] = [
         candidate.source_release_manifest.source_artifact_ref,
         candidate.source_release_manifest.source_snapshot_retention_ref,
     ]
-    for section in (
+    sections = (
         candidate.empirical_universes,
         candidate.respondent_identities,
         candidate.question_variable_bindings,
@@ -376,12 +377,28 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_even
         candidate.comparator_replay_bindings_or_typed_deferred_state,
         candidate.discovery_branch_replay_bindings_or_typed_deferred_state,
         candidate.structural_admission_replay_bindings_or_typed_not_applicable_state,
-    ):
-        if isinstance(section, TypedAbsence):
-            continue
-        if _country_events is not None and section is _country_events:
-            refs.extend(item.ref for item in section)
-        else:
+    )
+    if _country_events is not None:
+        # The country producer already orders its large sections. Verify
+        # monotonicity before exploiting it; preserve arbitrary smaller
+        # sections with their ordinary exact sort. Merge at reference grain,
+        # never build a second country-wide list of expanded refs.
+        def ordered(section):
+            prior=None
+            for item in section:
+                key=item.ref.key
+                if prior is not None and key<prior:
+                    return iter(canonical_section_refs(section))
+                prior=key
+            return (item.ref for item in section)
+        streams=[iter(sorted(refs,key=lambda r:r.key))]
+        for section in sections:
+            if isinstance(section,TypedAbsence):
+                continue
+            streams.append(ordered(section))
+        return _PackedClosureRefs.pack(merge(*streams,key=lambda r:r.key))
+    for section in sections:
+        if not isinstance(section,TypedAbsence):
             refs.extend(canonical_section_refs(section))
     return tuple(sorted(refs, key=lambda r: r.key))
 
@@ -757,7 +774,14 @@ def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRe
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "source artifact identity/hash differs from replay manifest",
         )
-    if tuple(manifest.closure_refs) != _all_nonmanifest_refs(candidate,_country_events=_country_events):
+    expected_refs=_all_nonmanifest_refs(candidate,_country_events=_country_events)
+    actual_refs=manifest.closure_refs
+    if (type(actual_refs) is _PackedClosureRefs and type(expected_refs) is _PackedClosureRefs):
+        matches=actual_refs==expected_refs
+    else:
+        matches=(len(actual_refs)==len(expected_refs)
+                 and all(a==b for a,b in zip(actual_refs,expected_refs)))
+    if not matches:
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "replay manifest closure refs do not exactly cover candidate package",
@@ -850,7 +874,8 @@ def _validate_c11_source_release(candidate,*,country_collector=None,compact_buil
     else:
         non_events=tuple(sorted(_iter_public_objects(candidate,include_events=False),key=lambda obj:obj.ref.key))
         release_ref=ExactRef("C11LogicalRelease",candidate.source_release_manifest.release_id,projection_hash)
-        public_objects=compact_builder(release_ref,replay_manifest.ref,non_events,country_collector.finished)
+        public_objects=compact_builder(release_ref,replay_manifest.ref,non_events,
+                                       country_collector.finished,replay_manifest.closure_refs)
     internal_records = tuple(sorted(_iter_internal_records(candidate), key=lambda obj: obj.ref.key))
     return _make_validated_release(
         release_id=candidate.source_release_manifest.release_id,

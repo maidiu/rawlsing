@@ -671,10 +671,10 @@ class _CountryPhysicalStream(ExactPhysicalCellStream):
         self.reader._verify()
         if self.transport_identity != "COUNTRY_NUMERIC_PHYSICAL@1:"+self.reader.receipt.sha256:
             raise CountryCarrierError("country transport pin mismatch")
-    def compact_events(self,release_ref,replay_ref,non_events,headers,projection):
+    def compact_events(self,release_ref,replay_ref,non_events,headers,projection,closure_refs):
         self._verify_binding()
         from ._pre553_c11_execution_view import _compact_country_headers
-        bodies=_CountryEventBodies(self.reader,projection,headers)
+        bodies=_CountryEventBodies(self.reader,projection,headers,closure_refs=closure_refs)
         return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies)
 
     def certify_release(self,release):
@@ -707,8 +707,13 @@ class _CountryEventBodies:
     __slots__=("reader","projection","rows","slots","owners","respondents","respondent_keys",
                "source_rows","question_keys","respondent_codes","question_codes","hashes",
                "cache","cache_bytes")
-    def __init__(self,reader,projection,events):
-        from .pre553_empirical_objects import exact_ref
+    def __init__(self,reader,projection,events,*,closure_refs=None):
+        from .pre553_empirical_objects import exact_ref, RespondentEvent, URN_PREFIX
+        from .pre553_c11_integrity import _PackedClosureRefs
+        shared=(closure_refs.digest_lane(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:")
+                if type(closure_refs) is _PackedClosureRefs else None)
+        if shared is not None and len(shared)!=32*len(events):
+            raise CountryCarrierError("sealed replay event lane cardinality drift")
         self.reader,self.projection=reader,projection
         self.rows={row:(block,rows,i) for block,rows in reader._blocks() for i,row in enumerate(rows)}
         self.respondents={r.ref.key:r for r in projection.respondents}
@@ -727,7 +732,7 @@ class _CountryEventBodies:
         rc,qc=array("I"),array("I")
         hashes=bytearray()
         prior=b""
-        for event in events:
+        for offset,event in enumerate(events):
             respondent=exact_ref(event.scoped_respondent_ref).key
             bindings=[r.key for r in event.dependency_refs if r.key in self.slots]
             if respondent not in ri or len(bindings)!=1:
@@ -737,10 +742,14 @@ class _CountryEventBodies:
             if (ref!=self._event_ref(digest) or len(digest)!=32 or digest<=prior):
                 raise CountryCarrierError("sealed event canonical identity/order mismatch")
             prior=digest
-            rc.append(ri[respondent]);qc.append(qi[bindings[0]]);hashes.extend(digest)
+            rc.append(ri[respondent]);qc.append(qi[bindings[0]])
+            if shared is None:
+                hashes.extend(digest)
+            elif shared[32*offset:32*(offset+1)]!=digest:
+                raise CountryCarrierError("sealed replay event lane identity drift")
         self.respondent_codes=memoryview(rc.tobytes()).cast("I")
         self.question_codes=memoryview(qc.tobytes()).cast("I")
-        self.hashes=bytes(hashes)
+        self.hashes=shared if shared is not None else bytes(hashes)
         self.cache=OrderedDict()
         self.cache_bytes=0
 

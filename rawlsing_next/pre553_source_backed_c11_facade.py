@@ -842,8 +842,8 @@ def build_source_backed_c11_repository(
             return candidate
         release=_validate_country_produced_release(produce=produce,
             authority_snapshots=projection.authority_snapshots,
-            compact_builder=lambda ref,replay,non_events,headers:
-                source.compact_events(ref,replay,non_events,headers,projection))
+            compact_builder=lambda ref,replay,non_events,headers,closure_refs:
+                source.compact_events(ref,replay,non_events,headers,projection,closure_refs))
         if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))

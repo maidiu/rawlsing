@@ -124,6 +124,28 @@ class CountryNumeric(unittest.TestCase):
                 self.assertIsInstance(compact.public_objects.lane.bodies,_CountryEventBodies)
                 self.assertEqual(compact.release_ref,direct.release_ref)
                 self.assertEqual(compact.replay_manifest.ref,direct.replay_manifest.ref)
+                from rawlsing_next.pre553_c11_integrity import _PackedClosureRefs
+                from rawlsing_next.pre553_empirical_objects import URN_PREFIX,RespondentEvent
+                packed=compact.replay_manifest.closure_refs
+                self.assertIsInstance(packed,_PackedClosureRefs)
+                self.assertEqual(tuple(packed),direct.replay_manifest.closure_refs)
+                self.assertEqual(compact.replay_manifest.as_dict(),direct.replay_manifest.as_dict())
+                self.assertEqual(packed[-1],direct.replay_manifest.closure_refs[-1])
+                self.assertEqual(packed[::-2],direct.replay_manifest.closure_refs[::-2])
+                self.assertIs(compact.public_objects.lane.bodies.hashes,
+                    packed.digest_lane(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:"))
+                # Preserve ordering, duplicates, arbitrary external IDs and
+                # full string identity rather than assuming any hash suffix.
+                from rawlsing_next.pre553_empirical_objects import ExactRef,canonical_json
+                arbitrary=ExactRef("external|kind","external-ü-"+ "a"*64,"a"*64)
+                sample=(packed[0],arbitrary,packed[-1],packed[-1])
+                repacked=_PackedClosureRefs.pack(sample)
+                self.assertEqual(tuple(repacked),sample)
+                self.assertEqual(hash(repacked),hash(sample))
+                self.assertEqual(b"["+b",".join(repacked.canonical_ref_bytes())+b"]",
+                    canonical_json([ref.as_dict() for ref in sample]).encode("utf-8"))
+                self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[:-1]))
+                self.assertNotEqual(repacked,_PackedClosureRefs.pack(sample[::-1]))
                 self.assertEqual(tuple(x.ref for x in compact.public_objects),tuple(x.ref for x in direct.public_objects))
                 from rawlsing_next.pre553_empirical_objects import RespondentEvent,ExactRef
                 events=[x for x in direct.public_objects if isinstance(x,RespondentEvent)]
