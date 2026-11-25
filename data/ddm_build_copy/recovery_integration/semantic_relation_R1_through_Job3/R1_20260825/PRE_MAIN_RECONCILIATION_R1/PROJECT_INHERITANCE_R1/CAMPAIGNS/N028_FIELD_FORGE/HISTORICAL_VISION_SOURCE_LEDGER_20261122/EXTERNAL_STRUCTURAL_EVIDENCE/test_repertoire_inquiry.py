@@ -132,7 +132,8 @@ def test_real_native_context_remains_separate(tmp_path, monkeypatch):
 
 
 # R14 reuses the same actual cold I03 test harness, with a four-axis joint.
-def _social_session(tmp_path, monkeypatch, rows, current=lambda _: True):
+def _social_session(tmp_path, monkeypatch, rows, current=lambda _: True,
+                    targets=("X", "W", "Y", "Z")):
     tmp_path.mkdir(parents=True, exist_ok=True)
     captured = {}
     ingest = native.ingest_c11_source_release
@@ -145,7 +146,7 @@ def _social_session(tmp_path, monkeypatch, rows, current=lambda _: True):
         source = native._build_source(tag, rows, question_namespace="FF-R14-QUESTIONS")
     qa = native._query_authority(tag)
     predicate = native._branch_predicate(source, qa)
-    query = native._query(source, qa, predicate, ("X", "W", "Y", "Z"), tag="ff-r14")
+    query = native._query(source, qa, predicate, targets, tag="ff-r14")
     root, receipt = cold._cold(tmp_path, captured["candidate"], source["universe"].ref, tag)
     estate = cold.VerifiedDirectEstate(root, exact_path=receipt.path,
         independently_held_manifest_sha256=receipt.manifest_sha256,
@@ -260,11 +261,17 @@ def _discover_run(session,q,**kwargs):
                            else "apparently undifferentiated repertoire",
                 "rival":"hidden intersection", "question":"Follow the next position interaction",
                 "preferred_axis":next(iter(view["eligible_extension_axes"]),None)}
+    def revise_discovered(view, proposal, motifs):
+        # Include actual reverse position distributions, not just symmetric
+        # low/high fractions whose values can be equal in the two worlds.
+        return {"interpretation": str([m["reverse"]["cells"] for m in motifs]),
+                "remaining_question":"Which institutional resources make the alignment consequential?",
+                "recipient_possibility":"Offer observed alternatives without assigning an actor belief."}
     opts=dict(position_axes=(0,1),repertoire_axes=(2,3),
         axis_meanings={0:"resource",1:"credential",2:"gender priority",3:"national priority"},
         active_ancestry={i:(f"fixture-{i}",) for i in range(4)},
         discovery_authority=authority,authority_registry=registry,root_rule=root,child_rule=child,
-        budget=3,max_position_order=2,min_position_n=2,interpret=interpret,revise=_social_revise)
+        budget=3,max_position_order=2,min_position_n=2,interpret=interpret,revise=revise_discovered)
     opts.update(kwargs)
     return discover_social_field(session,q,**opts)
 
@@ -326,3 +333,38 @@ def test_discover_revocation_even_on_null_marginal(tmp_path,monkeypatch):
         return {"concept":"x","rival":"y","question":"z","preferred_axis":None}
     with session,pytest.raises(cold.DirectEstateError,match="(?i)current|revok|authoriz"):
         _discover_run(session,q,interpret=revoke)
+
+
+def test_discover_semantic_feedback_changes_actual_scheduled_question(tmp_path,monkeypatch):
+    rows=[{"id":f"R{x}{w}{v}{y}", "responses":{"X":x,"W":w,"V":v,"Y":y,"Z":x^w^v^y}}
+          for x,w,v,y in product((0,1),repeat=4)]
+    results=[]
+    for preference in (1,2):
+        session,q=_social_session(tmp_path/str(preference),monkeypatch,rows,
+                                   targets=("X","W","V","Y","Z"))
+        def interpret(view):
+            # The first root may be any of the three axes under the
+            # incumbent tie rule. Ensure all reachable alternatives are
+            # visited and the preferred child ranks above other children.
+            available=view["eligible_extension_axes"]
+            return {"concept":"hidden alignment","rival":"independence","question":"probe interaction",
+                    "preferred_axis":preference if preference in available else None}
+        with session:
+            out=_discover_run(session,q,position_axes=(0,1,2),repertoire_axes=(3,4),
+                axis_meanings={i:f"axis-{i}" for i in range(5)},
+                active_ancestry={i:(f"fixture-{i}",) for i in range(5)},
+                max_position_order=3,budget=7,interpret=interpret)
+        assert out["completeness_state"]=="EXPLORATORY_POLICY_FRONTIER_EXHAUSTED"
+        records=out["records"]
+        root=next(r for r in records if r["position_axes"]==[0])
+        assert root["interpretation"]["preferred_axis"]==preference
+        visits=out["checkpoint"]["visits"]
+        # The selected child of root 0 must have the higher actual
+        # scheduler rank and be visited before its sibling.
+        first=next(i for i,r in enumerate(records) if r["position_axes"]==[0,preference])
+        other=next(i for i,r in enumerate(records) if r["position_axes"]==[0,3-preference])
+        assert first<other
+        triple=next(r for r in records if r["position_axes"]==[0,1,2])
+        assert triple["followthrough"] is not None
+        results.append([r["position_axes"] for r in records])
+    assert results[0]!=results[1]

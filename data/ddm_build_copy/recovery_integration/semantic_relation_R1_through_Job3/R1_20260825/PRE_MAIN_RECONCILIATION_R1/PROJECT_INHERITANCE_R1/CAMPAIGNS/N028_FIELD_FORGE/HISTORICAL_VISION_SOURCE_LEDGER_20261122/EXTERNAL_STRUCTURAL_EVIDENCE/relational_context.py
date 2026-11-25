@@ -656,15 +656,16 @@ def discover_social_field(session, question, *, position_axes, repertoire_axes,
         # exact fractions already issued by S04. Keep all searched motifs,
         # including constant profiles and rare positive alternatives.
         candidates = []
+        context_cells = [(_json(cond), {_json(cell["output_states"]): cell
+                         for cell in exp["material"]["complete_output_cells"]})
+                         for cond, _, exp in contexts]
         for b in baseline["material"]["complete_output_cells"]:
             if b["raw_count"] <= 0 or len(contexts) < 2:
                 continue
             key = _json(b["output_states"])
             supported = []
-            for cond, answer, exp in contexts:
-                cell = next(c for c in exp["material"]["complete_output_cells"]
-                            if _json(c["output_states"]) == key)
-                supported.append((fraction(cell), cond, answer, exp))
+            for (cond, answer, exp), (_, cells) in zip(contexts, context_cells):
+                supported.append((fraction(cells[key]), cond, answer, exp))
             supported.sort(key=lambda x: (x[0], _json(x[1])))
             low, high = supported[0], supported[-1]
             gap = high[0] - low[0]
@@ -685,8 +686,12 @@ def discover_social_field(session, question, *, position_axes, repertoire_axes,
                 "excluded": excluded,
                 "candidates": [{k: deepcopy(v) for k,v in x.items() if not k.endswith("_ref")}
                                for x in candidates],
-                "earlier_questions": [records[v.unit.unit_ref.key]["interpretation"]["question"]
-                                      for v in history],
+                "earlier_inquiries": [
+                    {"position_axes": records[v.unit.unit_ref.key]["position_axes"],
+                     "interpretation": records[v.unit.unit_ref.key]["interpretation"],
+                     "revision": (records[v.unit.unit_ref.key]["followthrough"]["revision"]
+                                  if records[v.unit.unit_ref.key]["followthrough"] else None)}
+                    for v in history],
                 "eligible_extension_axes": [a for a in order if a > subset[-1]
                                              and len(subset) < max_position_order
                                              and unit.generation < generation_cap]}
