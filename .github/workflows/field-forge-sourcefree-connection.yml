@@ -6,16 +6,22 @@ on:
     paths:
       - 'data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/*.py'
       - '.github/workflows/field-forge-sourcefree-connection.yml'
+  pull_request:
+    paths:
+      - 'data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/EXTERNAL_STRUCTURAL_EVIDENCE/*.py'
+      - '.github/workflows/field-forge-sourcefree-connection.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   exact-sourcefree-connection:
+    if: github.event.pull_request.head.ref == 'agent/field-forge-external-source-integration-20261124-r1' || github.ref_name == 'agent/field-forge-external-source-integration-20261124-r1'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
           path: ff
           sparse-checkout: |

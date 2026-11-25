@@ -77,3 +77,5 @@ Existing R8 relational_context.py extended with `inquire_repertoire_fracture` us
 
 ### R12 — sourcefree repertoire-to-institutional-expectation connection candidate
 Existing authored_world_handoff.py extended; test_repertoire_world_handoff.py connects R11 actual saved synthetic I03/S04/FF01 to R48 full runtime with explicit alternative fictional allocation premises and separately retained public account. Branch-scoped exact-source runner `.github/workflows/field-forge-sourcefree-connection.yml` now targets both R11 and R12. See 01 II.P, 02 VI-B/XI-A and 04 R12. Native pack not mounted, actual WVS/whole-survey entrance held.
+
+R12 continuing sourcefree custody: `repertoire_source_seals` uses existing CO ledger; cold source readback and tamper negative in the same test. No native disclosure. Exact corrected code/test/runner in 01 II.P / 04 R12.

@@ -145,3 +145,23 @@ def verify_handoff(packet):
             evidence["inquiry"], public_notices=evidence["public_notices"],
             **packet["fictional_choice"]) == packet
     return prepare_authored_history(evidence, **packet["fictional_choice"]) == packet
+
+
+def repertoire_source_seals(packet):
+    """Prepare actual ResearchLedger genesis input for sourcefree sidecar custody.
+
+    The receiving owner performs the atomic initialization and verifies the
+    chain. The content address is the sidecar's lookup key, not a credential.
+    Native R9 packets MUST NOT be published through this experimental path.
+    No new store, native disclosure, actor memory or source-use grant.
+    """
+    if (packet.get("evidence", {}).get("grade") !=
+            "SOURCEFREE_REPERTOIRE_AND_FICTIONAL_ACCOUNT_NOT_WORLD_AUTHORITY"
+            or not verify_handoff(packet)):
+        raise ValueError("exact sourcefree repertoire sidecar required")
+    spec = packet["authored_structural_history"]
+    return [
+        ("authored_structural_history", "FICTIONAL_WORLD_CONDITIONING", deepcopy(spec)),
+        (spec["source_ref"], "FICTIONAL_FF_REPERTOIRE_CONDITIONING_NOT_NATIVE_ISSUANCE",
+         deepcopy(packet)),
+    ]
