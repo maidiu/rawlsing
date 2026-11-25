@@ -368,3 +368,115 @@ def possible_dependency_means_revisions(actor,experience,event_ref):
         out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
                     'dependency_means_revision_basis':basis})
     return out[:3]
+
+
+# Relations between ongoing activities are not additional universal drives.
+def qualify_interactivity_deferral(alternatives, selected, deferred_id, location):
+    if selected is None or selected.get('project_id') is None:
+        raise ValueError('INTERACTIVITY_NO_SELECTED_COURSE')
+    rows=[x for x in alternatives if x['option_id']==deferred_id
+          and x.get('project_id') not in (None,selected['project_id'])
+          and x['operation']!=selected['operation']
+          and x.get('binding_status')=='NO_ADDRESSED_PARTY'
+          and selected.get('binding_status')=='NO_ADDRESSED_PARTY'
+          and not x.get('world_request',{}).get('material_object_ref')
+          and not selected.get('world_request',{}).get('material_object_ref')]
+    if len(rows)!=1:raise ValueError('INTERACTIVITY_UNISSUED_DEFERRED_COURSE')
+    x=rows[0]
+    return {'selected_project':selected['project_id'],'selected_operation':selected['operation'],
+            'selected_option_ref':selected['option_id'],'deferred_project':x['project_id'],
+            'deferred_operation':x['operation'],'deferred_option_ref':x['option_id'],
+            'location':location,'not_a_performed_alternative_or_abandoned_motive':True}
+
+def _interactivity_history(actor,selected,deferred,event_ref):
+    paths={p['event']:p for p in actor.get('evidence_paths',[])}
+    active={p['id'] for p in actor.get('projects',[]) if p.get('status','active')=='active'}
+    if not {selected,deferred}<=active or selected==deferred:return None
+    ex=actor.get('expectations',[])[-128:]
+    for first in reversed(ex):
+        if first.get('project_id')!=selected or first.get('actor')!=actor['id']:continue
+        for other in reversed(ex):
+            if (other.get('project_id')!=deferred or other.get('actor')!=actor['id']
+                    or first.get('origin_event')!=other.get('origin_event')
+                    or not first.get('shared_selected_operation_ref')
+                    or first['shared_selected_operation_ref']!=other.get('shared_selected_operation_ref')):continue
+            origin=paths.get(first['origin_event'],{})
+            if (origin.get('purpose_status')!='ACTOR_POLICY_SELECTED_MULTIPLE_PROJECT_COURSES'
+                    or not {selected,deferred}<=set(origin.get('selected_project_refs',[]))
+                    or origin.get('practical_option_ref')!=first['shared_selected_operation_ref']):continue
+            apps=[x.get('appraisal_history',[])[-1:] for x in (first,other)]
+            if not all(apps):continue
+            x,y=(v[0] for v in apps)
+            if {x.get('appraisal'),y.get('appraisal')}!={'ACTOR_INTERPRETS_SUPPORTED','ACTOR_INTERPRETS_DISAPPOINTED'}:continue
+            if not all(v.get('event') not in (event_ref,first['origin_event'])
+                    and v.get('perceived_cue_ref') in paths.get(v.get('event'),{}).get('received_cue_refs',[])
+                    and v.get('perceived_cue_ref') in v.get('actual_received_sign_refs',[])
+                    for v in (x,y)):continue
+            return {'shared_origin_event':first['origin_event'],
+                    'selected_expectation_ref':first['id'],'deferred_expectation_ref':other['id'],
+                    'selected_appraisal_event':x['event'],'deferred_appraisal_event':y['event'],
+                    'selected_appraisal':x['appraisal'],'deferred_appraisal':y['appraisal']}
+    return None
+
+def possible_interactivity_relations(actor,experience,event_ref):
+    sel=experience.get('own_practical_selection') or {}
+    choice=sel.get('interactivity_deferral')
+    if (not isinstance(choice,dict) or actor['id']!=experience.get('actor')
+            or sel.get('actor')!=actor['id'] or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or experience.get('participated') is not True or experience.get('status')!='PERFORMED'
+            or experience.get('own_action')!=choice.get('selected_operation')
+            or sel.get('selected_project_refs')!=[choice.get('selected_project')]
+            or choice.get('location')!=experience.get('location')):return []
+    paths=[p for p in actor.get('evidence_paths',[]) if p.get('event')==event_ref
+           and p.get('experience_ref')==experience.get('ref') and p.get('interactivity_deferral')==choice]
+    if len(paths)!=1:return []
+    cues=[x for x in experience.get('perceived_cues',[]) if x.get('source_actor')==actor['id']
+          and x.get('kind')=='performed_'+experience['own_action'].lower()
+          and x.get('id') in paths[0].get('received_cue_refs',[])]
+    if len(cues)!=1:return []
+    selected=choice['selected_project'];deferred=choice['deferred_project']
+    prior=_interactivity_history(actor,selected,deferred,event_ref)
+    if not prior:return []
+    p=next(p for p in actor['projects'] if p['id']==selected)
+    if any(x['basis']['deferred_project']==deferred and x['basis']['location']==choice['location']
+           for x in p.get('interactivity_relations',[])):return []
+    return [{**copy(choice),**prior,'actor':actor['id'],'origin_event':event_ref,
+             'experience_ref':experience['ref'],'received_own_sign_ref':cues[0]['id'],'grade':GRADE}]
+
+def admit_interactivity_relation(actor,experience,event_ref,candidate):
+    if (set(candidate)!={'kind','basis','personal_sense'}
+            or candidate['basis'] not in possible_interactivity_relations(actor,experience,event_ref)
+            or type(candidate['personal_sense']) is not str
+            or not 1<=len(candidate['personal_sense'].strip())<=400):
+        raise ValueError('INTERACTIVITY_RELATION_UNQUALIFIED_HISTORY')
+    b=candidate['basis'];ident=stable_id('interactivity_relation',b)
+    p=next(p for p in actor['projects'] if p['id']==b['selected_project'])
+    p.setdefault('interactivity_relations',[]).append({'id':ident,'basis':copy(b),
+        'personal_sense':candidate['personal_sense'],'status':'ACTIVE',
+        'not_global_priority_or_lost_counterfactual':True,'grade':GRADE})
+    return {'kind':candidate['kind'],'relation_ref':ident,'grade':GRADE}
+
+def annotate_interactivity_relations(constitution,access,options):
+    """Both activities remain possible; only their actual co-recruitment
+    makes this particular relation available. No automatic winner."""
+    alts=[x for o in options for x in o.get('practical_alternatives',[])]
+    currents=[];readset=set()
+    for p in constitution.projects[-128:]:
+        for rec in p.get('interactivity_relations',[])[-16:]:
+            b=rec.get('basis',{})
+            if (rec.get('status')!='ACTIVE' or b.get('actor')!=constitution.actor
+                    or b.get('selected_project')!=p['id'] or b.get('location')!=access.location
+                    or rec.get('id')!=stable_id('interactivity_relation',b)):continue
+            left=[x for x in alts if x.get('project_id')==b['selected_project']
+                  and x['operation']==b['selected_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
+            right=[x for x in alts if x.get('project_id')==b['deferred_project']
+                   and x['operation']==b['deferred_operation'] and x.get('binding_status')=='NO_ADDRESSED_PARTY']
+            if len(left)!=1 or len(right)!=1:continue
+            row={'relation_ref':rec['id'],'selected_project':b['selected_project'],
+                 'deferred_project':b['deferred_project'],'selected_option_ref':left[0]['option_id'],
+                 'deferred_option_ref':right[0]['option_id'],'personal_sense':rec['personal_sense'],
+                 'not_an_automatic_deferral':True,'grade':GRADE}
+            for x in left+right:x.setdefault('interactivity_currents',[]).append(copy(row))
+            currents.append({'kind':'INTERACTIVITY_HISTORICAL_CURRENT',**copy(row)})
+            readset.add(rec['id'])
+    return {'currents':currents,'readset':sorted(readset)}
