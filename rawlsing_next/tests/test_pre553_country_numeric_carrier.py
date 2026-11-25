@@ -84,6 +84,51 @@ class CountryNumeric(unittest.TestCase):
         self.assertGreater(big.retained_bytes()-small.retained_bytes(),len(blob)-4096)
         self.assertLess(repeated.retained_bytes()-big.retained_bytes(),4096)
 
+    def test_emitted_header_preserves_distinct_identities_and_fallback(self):
+        from types import SimpleNamespace
+        from rawlsing_next._pre553_c11_execution_view import (
+            _CountryHeaderBuilder,_COUNTRY_EVENT_PREFIX,_COUNTRY_OCCURRENCE_PREFIX,
+            _COUNTRY_GROUP_PREFIX,_PackedCountrySelectors,_compact_identity)
+        from rawlsing_next.pre553_empirical_objects import ExactRef,RespondentEvent
+        h="a"*64;occ="b"*64;group="c"*64
+        q=ExactRef("question","q","d"*64)
+        universe=ExactRef("universe","u","e"*64)
+        respondent=ExactRef("respondent","r","f"*64)
+        event=SimpleNamespace(ref=ExactRef(RespondentEvent.FAMILY,_COUNTRY_EVENT_PREFIX+h,h),
+            typed_state="OBSERVED",native_question_ref=q,canonical_question_ref_if_authorized=q,
+            component_or_subitem_ref=None,authority_snapshot_refs=(),raw_response_value=1,
+            canonical_response_value_if_authorized=1,multiplicity_order_rank_fields={},
+            response_event_id_or_deterministic_index=_COUNTRY_OCCURRENCE_PREFIX+occ,
+            event_group_id=_COUNTRY_GROUP_PREFIX+group,empirical_universe_ref=universe,
+            scoped_respondent_ref=respondent,dependency_refs=(respondent,q))
+        builder=_CountryHeaderBuilder()
+        first=builder.add(event,source_coordinates=(17,9,2))
+        second=builder.add(event,source_coordinates=(17,9,3))
+        self.assertEqual(first.event_identity,bytes.fromhex(h))
+        self.assertEqual(first.occurrence_identity,bytes.fromhex(occ))
+        self.assertEqual(first.group_identity,bytes.fromhex(group))
+        self.assertEqual(first.ref,event.ref)
+        self.assertEqual(first.event_group_id,event.event_group_id)
+        self.assertEqual(first.response_event_id_or_deterministic_index,
+                         event.response_event_id_or_deterministic_index)
+        self.assertEqual(first.source_coordinates,(17,9,2))
+        self.assertIs(first.payload,second.payload)
+        self.assertEqual(first.selector.ref,event.ref)
+        # A future noncanonical producer may not be silently rewritten.
+        event.ref=ExactRef(RespondentEvent.FAMILY,"foreign:"+h,h)
+        event.response_event_id_or_deterministic_index="foreign:"+occ
+        event.event_group_id=b"opaque group"
+        third=builder.add(event,source_coordinates=(17,9,4))
+        self.assertEqual(third.ref,event.ref)
+        self.assertEqual(third.event_group_id,event.event_group_id)
+        self.assertEqual(third.selector.response_event_id_or_deterministic_index,
+                         event.response_event_id_or_deterministic_index)
+        self.assertEqual(_compact_identity(_COUNTRY_OCCURRENCE_PREFIX+occ.upper(),_COUNTRY_OCCURRENCE_PREFIX),
+                         (_COUNTRY_OCCURRENCE_PREFIX+occ.upper(),))
+        old=_PackedCountrySelectors.build((third,),SimpleNamespace(hashes=bytes.fromhex(h)))
+        self.assertIs(type(old),tuple)
+        self.assertEqual(old[0],third.selector)
+
     def test_packed_selector_filters_before_object_materialization(self):
         from array import array
         from unittest.mock import patch
@@ -352,8 +397,12 @@ class CountryNumeric(unittest.TestCase):
                 from unittest.mock import patch
                 # The new path may not first construct the old full public
                 # event graph and then call the old compactor.
+                from unittest.mock import PropertyMock
+                from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
                 with patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
-                           side_effect=AssertionError("eager event graph compactor")):
+                           side_effect=AssertionError("eager event graph compactor")), patch.object(
+                           _CountryEventHeader,"selector",new_callable=PropertyMock,
+                           side_effect=AssertionError("validated header expanded before selection")):
                     compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
                 # A copied transport cannot substitute its physical cell factory.
                 from rawlsing_next.pre553_source_backed_c11_facade import build_source_backed_c11_repository
