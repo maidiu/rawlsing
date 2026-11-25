@@ -6,9 +6,62 @@ chooses the action. This does not invent unperformed micro-events, pretend a
 scheduling threshold was an experienced violation, or close other actors'
 rights. The actual runtime/world owners still author their own transactions.
 """
-from .types import GRADE
+from .types import GRADE, stable_id
 
 MAX_HORIZON=3650
+
+
+# A human can explicitly undertake a bounded act in this modeled world.
+# This is not a reciprocal agreement, a calendar notification, or evidence
+# that its recipient understood the undertaking.
+HUMAN_OFFER_KIND='HUMAN_PROMISED_FOOD_OFFER'
+
+def settle_human_offer_deadlines(world):
+    """Expire only this explicitly authored, fully covered event contract.
+
+    The modeled clock is exclusive at due_clock. No unwritten discretionary
+    visitor offer can occur during aggregate passage. A missed offer is not
+    proof of refusal, culpability, emotion, or an actor's knowledge.
+    """
+    for row in world.get('scheduled_obligations',[]):
+        if (row.get('kind')==HUMAN_OFFER_KIND and row.get('status')=='PENDING'
+                and world['clock']>=row['due_clock']):
+            row['status']='WINDOW_ELAPSED_WITHOUT_AUTHORED_OFFER'
+            row['settled_at_clock']=row['due_clock']
+            row['no_recipient_appraisal_or_motive_inferred']=True
+
+
+def record_human_offer_commitment(world, user, recipient, location, due, event_ref):
+    """Called only by the existing committed human contribution owner."""
+    if type(due) is not int or not world['clock']<due<=world['clock']+MAX_HORIZON:
+        raise ValueError('HUMAN_OFFER_INVALID_DEADLINE')
+    if any(row.get('kind')==HUMAN_OFFER_KIND and row.get('status')=='PENDING'
+           and row.get('responsible_actor')==user and row.get('recipient')==recipient
+           for row in world.get('scheduled_obligations',[])):
+        raise ValueError('HUMAN_OFFER_ALREADY_PENDING')
+    row={'id':stable_id('human_offer_commitment',{'world':world['id'],'event':event_ref}),
+         'kind':HUMAN_OFFER_KIND,'responsible_actor':user,'recipient':recipient,
+         'location':location,'origin_clock':world['clock'],'due_clock':due,
+         'source_user_event_ref':event_ref,'status':'PENDING',
+         'recipient_consent_not_assumed':True,'grade':GRADE}
+    world.setdefault('scheduled_obligations',[]).append(row)
+    return row['id']
+
+
+def record_authored_food_offer(world,user,recipient,location,event_ref):
+    """Fulfillment is the promised OFFER, not recipient assent or feeding."""
+    matches=[r for r in world.get('scheduled_obligations',[])
+        if r.get('kind')==HUMAN_OFFER_KIND and r.get('status')=='PENDING'
+        and r.get('responsible_actor')==user and r.get('recipient')==recipient
+        and r.get('location')==location
+        and r['origin_clock']<world['clock']<r['due_clock']]
+    if len(matches)>1:raise ValueError('AMBIGUOUS_HUMAN_OFFER_COMMITMENT')
+    if not matches:return None
+    row=matches[0]
+    row.update(status='OFFER_AUTHORED_IN_WINDOW',
+               settled_at_clock=world['clock'],fulfillment_user_event_ref=event_ref,
+               actual_transfer_not_established=True)
+    return row['id']
 
 
 def next_discontinuity(world, actors, horizon):
@@ -26,6 +79,12 @@ def next_discontinuity(world, actors, horizon):
         actor=obligation.get('responsible_actor')
         if type(due) is not int or due < 0:
             raise ValueError('CONTINUITY_INVALID_DUE_CLOCK')
+        if obligation.get('kind')==HUMAN_OFFER_KIND:
+            if clock<due<=end:
+                candidates.append({'at':due,'kind':'HUMAN_OFFER_WINDOW_ELAPSES',
+                    'actor':None,'source_ref':obligation['id'],
+                    'not_actor_knowledge_or_moral_breach':True})
+            continue
         if actor not in actors:
             # A record remains objectively pending even when its bearer is
             # unavailable; inventing a substitute would be false coactivity.
@@ -74,6 +133,12 @@ def continue_to_discontinuity(runtime, horizon=30, processes=None):
     ordinary=None
     if advance>0:
         ordinary=runtime.background(advance,processes=processes)
+    if target['kind']=='HUMAN_OFFER_WINDOW_ELAPSES':
+        return {'historical_discontinuity':target,
+                'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
+                'high_resolution_actor_event':None,
+                'no_human_action_or_actor_appraisal_injected':True,
+                'grade':GRADE}
     if target['kind']=='PUBLIC_SIGN_EXPIRES':
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
