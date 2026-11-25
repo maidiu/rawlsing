@@ -176,6 +176,7 @@ def _manifest_root(variables,blocks,lanes):
     to canonical_json([SCHEMA, list(variables), ..., ...]); no new schema,
     digest algorithm, ordering, scope or receipt identity is introduced.
     """
+    from itertools import islice
     h=sha256()
     h.update(b"[")
     h.update(canonical_json(SCHEMA).encode("ascii"))
@@ -183,10 +184,18 @@ def _manifest_root(variables,blocks,lanes):
                  ([i,j,d.hex()] for i,j,d in lanes)):
         h.update(b",[")
         first=True
-        for row in rows:
+        records=iter(rows)
+        # A bounded chunk preserves B's memory law while amortizing Python
+        # encoder calls. Strip only the outer array punctuation; the same
+        # canonical encoder owns all members and their escaping.
+        while True:
+            chunk=tuple(islice(records,256))
+            if not chunk:
+                break
             if not first:
                 h.update(b",")
-            h.update(canonical_json(row).encode("ascii"))
+            encoded=canonical_json(chunk).encode("ascii")
+            h.update(memoryview(encoded)[1:-1])
             first=False
         h.update(b"]")
     h.update(b"]")
@@ -763,6 +772,11 @@ class _CountryEventBodies:
             pairs=[]; pair_index={}
             self.value_rules={s.slot.ordinal:{r.physical_key:r for r in s.values}
                               for s in projection.response_slots}
+            # The prior enumerating body reader refused ambiguous physical
+            # rules rather than allowing dict collapse. Keep that refusal.
+            if any(len(self.value_rules[s.slot.ordinal])!=len(s.values)
+                   for s in projection.response_slots):
+                raise CountryCarrierError("country response slot has ambiguous physical value rules")
             self.respondent_keys=self.source_rows=self.question_keys=()
         else:
             # Compatibility for the older expanded-event transport only.
