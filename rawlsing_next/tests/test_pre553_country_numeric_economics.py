@@ -207,6 +207,30 @@ class CountryNativeEconomics(unittest.TestCase):
                 del wide_prepared,mechanical
             self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
                 workload,record.envelope_sha256,max_bytes=16))
+            # A prepared fast path must not recreate canonical per-route
+            # tuples. Mutating a *nested* reference must still be detected.
+            # Explicitly require the fast layout at this fixture geometry.
+            self.assertIsNotNone(prepared.fast_pins)
+            self.assertIsNotNone(prepared.fast_ref_pins)
+            with patch.object(issued,"_routing_pin",side_effect=AssertionError("repacked route")):
+                self.assertEqual(prepared.digest(),record.envelope_sha256)
+            ref=workload.projection.routing[0].producer_replay_locator_or_reference_root
+            old=ref.content_hash
+            try:
+                object.__setattr__(ref,"content_hash","0"*64)
+                self.assertIsNone(prepared.digest())
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                        allow_test_only=True,prepared=prepared)
+            finally:
+                object.__setattr__(ref,"content_hash",old)
+            auth=workload.projection.routing[-1].authority_snapshot_refs[0]
+            old=auth.authority_content_hash
+            try:
+                object.__setattr__(auth,"authority_content_hash","0"*64)
+                self.assertIsNone(prepared.digest())
+            finally:
+                object.__setattr__(auth,"authority_content_hash",old)
             # Reject substituted body/tuple and re-hash all nonrouting input.
             obj=workload.projection.routing[0]
             prior=obj.typed_state
@@ -336,6 +360,19 @@ class CountryNativeEconomics(unittest.TestCase):
                         self.assertEqual(row["raw_numerator_support"],int(expected_cell.sum()))
                     if q==joint:
                         self.assertEqual(read.first_consumer.ff01.semantic_projection()["raw_fully_resolved_joint_n"],len(chosen))
+            # Measure actual unique retained files in the dedicated estate,
+            # not merely the per-closure reference census. st_blocks counts
+            # filesystem allocation, not logical bytes or process memory.
+            physical_files=tuple(f for f in products.rglob("*") if f.is_file())
+            unique_bytes=sum(f.stat().st_size for f in physical_files)
+            allocated_bytes=sum(f.stat().st_blocks*512 for f in physical_files)
+            self.assertEqual(unique_bytes,pub.receipt.cas_new_bytes+pub.receipt.manifest_bytes)
+            print("COUNTRY_CLOSURE_FOOTPRINT",json.dumps({
+                "unique_file_bytes":unique_bytes,"allocated_file_bytes":allocated_bytes,
+                "file_count":len(physical_files),"manifest_bytes":pub.receipt.manifest_bytes,
+                "cas_new_bytes":pub.receipt.cas_new_bytes,
+                "referenced_bytes":pub.receipt.referenced_physical_bytes,
+                "peak_publish_scratch_bytes":pub.receipt.peak_scratch_bytes}),flush=True)
             print("COUNTRY_COLD_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
                 "median_s":median(v),"max_s":max(v)} for k,v in timings.items()}),flush=True)
             result,=cold._closure.discovery_results

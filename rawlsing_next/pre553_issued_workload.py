@@ -339,6 +339,54 @@ def _update_routing_pin(digest,pin):
     return True
 
 
+def _fast_routing_row(obj):
+    """Keep immutable leaf identities and shared link objects, not their JSON.
+
+    Strong references pin all old leaves, including equal-but-distinct strings.
+    The tuple's members cannot be replaced. Ref contents are verified separately
+    once per *actual reference object*, not once per route that uses it.
+    """
+    return (obj.schema_id, obj.schema_version, obj.typed_state,
+            obj.object_id, obj.content_hash, obj.authority_snapshot_refs,
+            obj.dependency_refs, obj.producer_replay_locator_or_reference_root)
+
+
+def _fast_routing_row_matches(obj, mapping, row):
+    # Identity, not user-defined equality: all original scalar leaves were
+    # exact builtins, all original link tuples were exact tuples, and the
+    # original semantic mapping is detached and deeply frozen.
+    return (type(obj) is RoutingEligibilityFact and obj._frozen is True
+            and obj.semantic_fields is mapping
+            and obj.schema_id is row[0] and obj.schema_version is row[1]
+            and obj.typed_state is row[2] and obj.object_id is row[3]
+            and obj.content_hash is row[4] and obj.authority_snapshot_refs is row[5]
+            and obj.dependency_refs is row[6]
+            and obj.producer_replay_locator_or_reference_root is row[7])
+
+
+def _fast_ref_pin(ref):
+    if type(ref) is AuthorityRef:
+        values=(ref.authority_id,ref.authority_version,ref.authority_content_hash)
+    elif type(ref) is ExactRef:
+        values=(ref.kind,ref.object_id,ref.content_hash)
+    else:
+        raise TypeError("noncanonical routing reference")
+    if any(type(v) is not str for v in values):
+        raise TypeError("noncanonical routing reference preimage")
+    return (ref,*values)
+
+
+def _fast_ref_matches(row):
+    ref=row[0]
+    if type(ref) is AuthorityRef:
+        return (ref.authority_id is row[1] and ref.authority_version is row[2]
+                and ref.authority_content_hash is row[3])
+    if type(ref) is ExactRef:
+        return (ref.kind is row[1] and ref.object_id is row[2]
+                and ref.content_hash is row[3])
+    return False
+
+
 @dataclass(frozen=True)
 class _PreparedRoutingEnvelope:
     """Reuse an exact SHA continuation, not a second serialized routing graph.
@@ -360,6 +408,7 @@ class _PreparedRoutingEnvelope:
     encoded_routing_bytes: int
     retained_pin_bytes: int
     fast_pins: tuple | None = None
+    fast_ref_pins: tuple | None = None
 
     @classmethod
     def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
@@ -386,14 +435,14 @@ class _PreparedRoutingEnvelope:
         prefix=digest.copy().digest()
         pins=hashlib.sha256()
         mappings=[]
-        # Small scopes may retain inexpensive immutable scalar tuples for
-        # faster comparison; large scopes use the streaming pin digest.
-        # Account for tuple structure only, not existing shared strings.
-        fast=[] if 512*len(routing)+256<=max_bytes//2 else None
+        # The fast layout holds one shallow row per route, plus one leaf
+        # pin per distinct *actual* reference object. Never deduplicate
+        # mutable reference instances merely because their values agree.
+        # Limit estimated additional pointer/tuple/dict capacity; the old
+        # streaming layout remains the bounded fallback at larger scales.
+        fast=[] if 128*len(routing)+256<=max_bytes//2 else None
+        ref_pins={} if fast is not None else None
         fast_bytes=0
-        def tuple_bytes(value):
-            return (sys.getsizeof(value)+sum(tuple_bytes(v) for v in value)
-                    if type(value) is tuple else 0)
         digest.update(b"[")
         encoded_bytes=2
         for i,obj in enumerate(routing):
@@ -408,10 +457,20 @@ class _PreparedRoutingEnvelope:
             encoded_bytes+=len(encoded)
             mappings.append(obj.semantic_fields)
             if fast is not None:
-                fast.append(pin)
-                fast_bytes+=tuple_bytes(pin)+16
+                row=_fast_routing_row(obj)
+                fast.append(row)
+                fast_bytes+=sys.getsizeof(row)+24
+                for ref in (*row[5],*row[6],*((row[7],) if type(row[7]) is ExactRef else ())):
+                    key=id(ref)
+                    if key not in ref_pins:
+                        ref_pin=_fast_ref_pin(ref)
+                        ref_pins[key]=ref_pin
+                        # Include conservative allowance for temporary dict,
+                        # final tuple pointers, and key integer.
+                        fast_bytes+=sys.getsizeof(ref_pin)+128
                 if fast_bytes+24*len(routing)>max_bytes//2:
                     fast=None
+                    ref_pins=None
                     fast_bytes=0
         digest.update(b"]")
         after=digest.copy()
@@ -424,7 +483,8 @@ class _PreparedRoutingEnvelope:
         held=tuple(mappings)
         return cls(workload,routing,held,pins.digest(),prefix,after,encoded_bytes,
                    sys.getsizeof(held)+sys.getsizeof(after)+128+fast_bytes,
-                   tuple(fast) if fast is not None else None)
+                   tuple(fast) if fast is not None else None,
+                   tuple(ref_pins.values()) if ref_pins is not None else None)
 
     def digest(self):
         workload=self.workload
@@ -432,20 +492,26 @@ class _PreparedRoutingEnvelope:
                 or workload.projection.routing is not self.routing
                 or len(self.mappings)!=len(self.routing)):
             return None
-        pins=hashlib.sha256()
-        for i,(obj,mapping) in enumerate(zip(self.routing,self.mappings)):
-            if obj.semantic_fields is not mapping:
+        if self.fast_pins is not None:
+            if (self.fast_ref_pins is None
+                    or len(self.fast_pins)!=len(self.routing)):
                 return None
-            pin=_routing_pin(obj)
-            if pin is None:
-                return None
-            if self.fast_pins is not None:
-                if pin!=self.fast_pins[i]:
+            for obj,mapping,row in zip(self.routing,self.mappings,self.fast_pins):
+                if not _fast_routing_row_matches(obj,mapping,row):
                     return None
-            elif not _update_routing_pin(pins,pin):
+            for row in self.fast_ref_pins:
+                if not _fast_ref_matches(row):
+                    return None
+        else:
+            pins=hashlib.sha256()
+            for obj,mapping in zip(self.routing,self.mappings):
+                if obj.semantic_fields is not mapping:
+                    return None
+                pin=_routing_pin(obj)
+                if pin is None or not _update_routing_pin(pins,pin):
+                    return None
+            if pins.digest()!=self.pin_digest:
                 return None
-        if self.fast_pins is None and pins.digest()!=self.pin_digest:
-            return None
         digest=hashlib.sha256()
         pieces=_routing_envelope_parts(workload)
         for part in pieces:
