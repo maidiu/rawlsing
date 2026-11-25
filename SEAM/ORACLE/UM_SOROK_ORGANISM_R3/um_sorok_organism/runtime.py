@@ -12,6 +12,7 @@ from .storage import ResearchLedger
 from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
+from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                        possible_dependency_project_reorganizations,
@@ -277,15 +278,28 @@ class ConstitutiveRuntime:
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
+            private_options=(offer_private_rehearsals(actor,world['clock'],e.location,
+                [o['action'] for o in options]) if requesting_actor is None else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
                 'situated':situated,'options':options,
                 'practical_options':flat_alternatives,
                 'possible_end_trials':flat_trials,
+                'private_rehearsal_options':copy(private_options),
                 'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
+            private_choice=None
+            if 'private_rehearsal_id' in proposed or 'private_rehearsal_content' in proposed:
+                rows=[o for o in private_options if o['rehearsal_id']==proposed.get('private_rehearsal_id')]
+                content=proposed.get('private_rehearsal_content')
+                if (len(rows)!=1 or proposed.get('action')!='WAIT'
+                        or any(proposed.get(k) is not None for k in
+                               ('project_id','project_ids','practical_option_id','possible_end_trial_id'))
+                        or type(content) is not str or not content.strip() or len(content)>512):
+                    raise ValueError('PRIVATE_REHEARSAL_UNISSUED_OR_CONFLICTING_SELECTION')
+                private_choice={'option':copy(rows[0]),'imagined_content':content}
             requested_option=proposed.get('practical_option_id')
             requested_trial=proposed.get('possible_end_trial_id')
             trial_choice=None
@@ -493,6 +507,8 @@ class ConstitutiveRuntime:
                             and a.get('course_affective_organizations')]
             if affect_courses:
                 practical['selected_course_affects_analytic_only']=affect_courses
+            if private_choice is not None:
+                practical['private_rehearsal']=private_choice
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -572,6 +588,8 @@ class ConstitutiveRuntime:
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
+            raise ValueError('PRIVATE_REHEARSAL_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if target is not None and principal.target not in (None,target):
             raise ValueError('CALLER_TARGET_CONFLICTS_WITH_ACTOR_PRACTICAL_ALTERNATIVE')
         if target is not None:principal.target=target
@@ -823,11 +841,15 @@ class ConstitutiveRuntime:
                 'antagonisms':copy(selected['antagonisms']),
                 'grade':GRADE,'not_a_public_tip':True,
             }
+            private_rehearsal=(perform_private_rehearsal(actors[aid],experience,objective_ref,
+                actor_attempt.practical_selection,bodily_before[aid])
+                if personally_done and actor_attempt is not None else None)
             proposal=self.semantic.proposal('development',{'actor':{'id':aid,'role':actors[aid]['role'],
                 'body':copy(actors[aid]['body']),'location':actors[aid]['location']},
                 'clock':world['clock'],'experience':experience,
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
+                'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actor_historical_orientations_analyst_only':copy(
                     actors[aid].get('historical_orientations',[])),
                 'actor_self_model_analyst_only':copy(
@@ -939,8 +961,11 @@ class ConstitutiveRuntime:
                          'UNKNOWN_TO_ACTOR')
         actual_tip={'action':principal.action,'outcome':public_sign,
                     'status':summary['status']}
+        expression_access=copy(observed)
+        if expression_access.get('own_practical_selection'):
+            expression_access['own_practical_selection'].pop('private_rehearsal',None)
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
-               'actor_accessible':observed,
+               'actor_accessible':expression_access,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
                  'external_research_plan_context':copy(research_plan_context),

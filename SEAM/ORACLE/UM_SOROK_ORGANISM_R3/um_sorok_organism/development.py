@@ -14,7 +14,7 @@ from .organism import ACTIONS
 from .practical_difference import validate_expected_difference, appraise_expected_difference
 from .expectation_afterlife import admit_activity_affect
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
-from .reflective_regulation import acquire_reflective_regulation
+from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
@@ -52,7 +52,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
-         'NOTICE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
+         'NOTICE_POSSIBLE_END','NOTICE_PRIVATE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
          'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
@@ -394,6 +394,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
+        elif op=='NOTICE_PRIVATE_POSSIBLE_END':
+            try:
+                report.append(admit_private_possible_end(actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
         elif op=='NOTICE_POSSIBLE_END':
             # An experience can make a *previously unchosen* consequence
             # interesting without retroactively making it the purpose of the
@@ -533,6 +538,25 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                         raise InvalidDevelopment('GENETIC_TAKEUP_SIGN_AMBIGUOUS')
                     c=copy(c)
                     c['later_perceived_cue_ref']=next(iter(qualified_signs))
+            private_takeup=None
+            if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL':
+                ground=private_end_ground(actor.get('memories',[]),end,actor['id'],
+                                           experience.get('location'),experience.get('clock',-1))
+                trials=[t for t in end.get('trial_history',[])
+                        if t.get('private_rehearsal_ref')==end.get('private_rehearsal_ref')
+                        and t.get('actor_experienced_status')=='PERFORMED'
+                        and t.get('event_ref')!=event_ref]
+                sel=experience.get('own_practical_selection') or {}
+                if (not ground or not trials
+                        or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+                        or sel.get('selected_project_refs')!=[]
+                        or sel.get('possible_end_trial') is not None
+                        or experience.get('status')!='PERFORMED'
+                        or experience.get('own_action') not in [t['operation'] for t in trials]
+                        or not later_received):
+                    raise InvalidDevelopment('PRIVATE_END_TAKEUP_REQUIRES_LATER_LIVED_COURSE')
+                private_takeup={'rehearsal_ref':ground['id'],'prior_trial_ref':trials[-1]['id'],
+                                'later_event_ref':event_ref}
             dependency_takeup=None
             if end.get('genesis_family')=='INTERRUPTED_ACQUIRED_SUPPORT_THEN_INDEPENDENT_RELIEF':
                 matches=[p for p in possible_dependency_project_takeups(actor,experience,event_ref)
@@ -570,6 +594,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             }
             if dependency_takeup is not None:
                 takeup_evidence['dependency_takeup_basis']=dependency_takeup
+            if private_takeup is not None:
+                takeup_evidence['private_takeup_basis']=private_takeup
             requested=c.get('means',end['possible_means'])
             if (type(requested) is not list or not requested or
                     any(type(x) is not str or x not in end['possible_means']
