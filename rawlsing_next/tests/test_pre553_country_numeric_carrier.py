@@ -238,6 +238,25 @@ class CountryNumeric(unittest.TestCase):
                         self.assertNotIn(event.ref.key,compact_repo._objects)
                         self.assertNotIn(event.ref.key,compact_repo._country_object_guards)
                     self.assertEqual(constructs.call_count,len(events))
+                # Compare the inherited expanded-event compatibility
+                # reconstruction on the identical reader and exact events.
+                enumerating=_CountryEventBodies(reader,subset,tuple(events))
+                self.assertFalse(enumerating.direct)
+                with patch.object(facade,"_event",wraps=facade._event) as old_constructs:
+                    for i,event in enumerate(events):
+                        self.assertEqual(enumerating.materialize(i),event)
+                self.assertGreater(old_constructs.call_count,len(events))
+                print("RELAY_EVENT_RECONSTRUCTION",{"events":len(events),
+                      "direct_constructor_calls":len(events),
+                      "enumerating_constructor_calls":old_constructs.call_count,
+                      "locator_bytes":lane.bodies.locator_bytes})
+                # A duplicate physical value rule must not be laundered
+                # through the new shared lookup dictionary.
+                first=subset.response_slots[0]
+                ambiguous=replace(subset,response_slots=(replace(first,
+                    values=first.values+(first.values[0],)),*subset.response_slots[1:]))
+                with self.assertRaisesRegex(CountryCarrierError,"ambiguous physical value rules"):
+                    reader.native_repository(ambiguous,current_authorities=fx["authorities"])
                 # Deliberate locator substitution must never produce a different
                 # positive exact object even when the addressed cell is valid.
                 bodies=lane.bodies
