@@ -56,6 +56,14 @@ class CountryNativeEconomics(unittest.TestCase):
         self._native_batch(wide=True)
 
     def _native_batch(self,*,wide):
+        import os
+        # Real operational wide path never owns an expanded routing tuple.
+        # Keep the older full-object/hostile comparison executable on demand
+        # (and default for the smaller test), without contaminating this
+        # process's memory high-water with the historical representation.
+        direct_pack=wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1"
+        from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+        from rawlsing_next import pre553_issued_workload as issued
         tag="country-native-wide" if wide else "country-native-economics"
         n,governed,extras=(512,80,218) if wide else (800,16,23)
         rng=np.random.default_rng(312)
@@ -98,12 +106,14 @@ class CountryNativeEconomics(unittest.TestCase):
                     (OccurrenceRule("0",_ref("TOPOLOGY",tag+"-"+q),{"kind":"SCALAR_SINGULAR","index":0}),),
                     v,mapping_auth.authority_ref) for v in ("0","1"))) for q,binding in zip(names,questions))
             risk=fx["risk_refs"]["R"];state="ELIGIBLE_APPLICABLE"
-            routing=tuple(RoutingEligibilityFact(typed_state=state,authority_snapshot_refs=(fx["routing_auth"].authority_ref,),
+            def original_routes():
+                return (RoutingEligibilityFact(typed_state=state,authority_snapshot_refs=(fx["routing_auth"].authority_ref,),
                 dependency_refs=(),producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT",f"{tag}-{row}-{q}"),
                 empirical_universe_ref=universe.ref,scoped_respondent_ref=person.ref,question_or_target_ref=qrefs[q],
                 risk_set_ref=risk,routing_rule_ref=_ref("ROUTING_RULE",tag+"-"+q),applicability_state=state,routing_state=state,
                 parent_predicate_refs=(),member_set_replay_ref=_ref("MEMBER_SET",tag+"-"+q))
-                for q in names for row,person in zip(chosen,respondents))
+                    for q in names for row,person in zip(chosen,respondents))
+            routing=(_PackedRoutingFacts if direct_pack else tuple)(original_routes())
             projection=replace(original,expected_source_sha256=sha,
                 source_snapshot_retention_ref=ExactRef("SOURCE_SNAPSHOT","urn:test:"+tag,sha),
                 respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
@@ -143,160 +153,214 @@ class CountryNativeEconomics(unittest.TestCase):
             workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY",tag),
                 descriptor=canonical(descriptor),projection=projection,catalog=cat,requests=requests,discoveries=ds,
                 original_u_root=root,expected_frontier_root=frontier)
+            if direct_pack:
+                # Independently issue the old canonical envelope using the
+                # original producer stream, not the packed lane's own hash.
+                # This is the same full wire, with no simultaneous object graph.
+                digest=hashlib.sha256()
+                for part in issued._routing_envelope_parts(workload):
+                    if part is not None:
+                        digest.update(part)
+                    else:
+                        digest.update(b"[")
+                        count=0
+                        for fact in original_routes():
+                            if count:
+                                digest.update(b",")
+                            digest.update(issued.canonical_json(fact.as_dict()).encode("utf-8"))
+                            count+=1
+                        self.assertEqual(count,len(routing))
+                        digest.update(b"]")
+                issued_hash=digest.hexdigest()
+                self.assertEqual(issued._stream_workload_digest(workload),issued_hash)
+            else:
+                issued_hash=semantic_hash(workload.envelope())
             record=IssuedWorkloadRecord(decision_ref=decision,source_permission_ref=_ref("TEST_ONLY_SOURCE_PERMISSION",tag),
                 scientific_permission_refs=(_ref("TEST_ONLY_SCIENCE_PERMISSION",tag),),host=host,purpose=purpose,source_sha256=sha,
-                envelope_sha256=semantic_hash(workload.envelope()),original_u_root=root,expected_frontier_root=frontier,
+                envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
             from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
-            self.assertEqual(projection.cache_identity,semantic_hash({
-                "contract":CONTRACT_ID,"projection":_cache_projection_preimage(projection)}))
+            if direct_pack:
+                # Independent canonical projection hash, exact original
+                # routing bodies streamed one at a time as above.
+                from dataclasses import fields
+                h=hashlib.sha256()
+                def emit(value):
+                    h.update(issued.canonical_json(value).encode("utf-8"))
+                h.update(b'{"contract":')
+                emit(CONTRACT_ID)
+                h.update(b',"projection":{')
+                for i,f in enumerate(sorted(fields(projection),key=lambda f:f.name)):
+                    if i:
+                        h.update(b",")
+                    emit(f.name)
+                    h.update(b":")
+                    if f.name=="routing":
+                        h.update(b"[")
+                        for j,fact in enumerate(original_routes()):
+                            if j:
+                                h.update(b",")
+                            emit(fact.as_dict())
+                        h.update(b"]")
+                    else:
+                        emit(_cache_projection_preimage(getattr(projection,f.name)))
+                h.update(b"}}")
+                self.assertEqual(projection.cache_identity,h.hexdigest())
+            else:
+                self.assertEqual(projection.cache_identity,semantic_hash({
+                    "contract":CONTRACT_ID,"projection":_cache_projection_preimage(projection)}))
             projection_seconds=time.monotonic()-t
             print("COUNTRY_NATIVE_SCALE_START",json.dumps({"rows":n,"country_rows":len(chosen),"physical_width":len(frame.columns),
                 "governed_width":governed,"units":len(jobs),"country_bytes":receipt.bytes,
-                "source_bytes":original_bytes,"build_seconds":build_seconds,"projection_seconds":projection_seconds}),flush=True)
+                "source_bytes":original_bytes,"build_seconds":build_seconds,"projection_seconds":projection_seconds,
+                "direct_packed_producer":direct_pack}),flush=True)
             # Inclusive wall time/calls: nested counters deliberately NOT
             # summed. Retain actual incumbent query and publication owners.
             from rawlsing_next import pre553_issued_workload as issued
             from rawlsing_next import pre553_saved_durable_delivery as delivery
             from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
-            # Matched admission microcomparison on the exact same governed
-            # workload and runner, using the frozen pre-repair algorithms.
-            old_times,new_times=[],[]
-            for _ in range(3):
-                t0=time.monotonic()
-                with patch.object(issued,"material",_legacy_material):
-                    old_hash=_legacy_semantic_hash(workload.envelope())
-                old_times.append(time.monotonic()-t0)
-                t0=time.monotonic()
-                new_hash=semantic_hash(workload.envelope())
-                new_times.append(time.monotonic()-t0)
-                self.assertEqual(old_hash,new_hash)
-                self.assertEqual(new_hash,record.envelope_sha256)
-            self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
-            print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
-                "old_median_s":median(old_times),"new_median_s":median(new_times),
-                "same_exact_hash":True,"repetitions":3}),flush=True)
-            prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
-            self.assertIsNotNone(prepared)
-            self.assertEqual(prepared.digest(),record.envelope_sha256)
-            self.assertLess(prepared.retained_pin_bytes,prepared.encoded_routing_bytes//2)
-            compact=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256,max_bytes=512*1024)
-            self.assertIsNotNone(compact)
-            self.assertIsNone(compact.fast_pins)
-            self.assertEqual(compact.digest(),record.envelope_sha256)
-            self.assertLess(compact.retained_pin_bytes,compact.encoded_routing_bytes//20)
-            del compact
-            # Envelope mechanics above the previous 16,384-record cap. This
-            # deliberately repeated routing list is NOT a valid C11 release;
-            # it tests only exact digest streaming and bounded retention.
-            if not wide:
-                mechanical=replace(workload,projection=replace(workload.projection,
-                    routing=workload.projection.routing*3))
-                wide_hash=semantic_hash(mechanical.envelope())
-                wide_prepared=issued._PreparedRoutingEnvelope.prepare(mechanical,wide_hash,max_bytes=1024*1024)
-                self.assertIsNotNone(wide_prepared)
-                self.assertEqual(wide_prepared.digest(),wide_hash)
-                self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
-                self.assertLess(wide_prepared.retained_pin_bytes,1024*1024)
-                print("COUNTRY_ROUTING_WIDE_ENVELOPE",json.dumps({
-                    "records":len(wide_prepared.routing),
-                    "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
-                    "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
+            if not direct_pack:
+                # Matched admission microcomparison on the exact same governed
+                # workload and runner, using the frozen pre-repair algorithms.
+                old_times,new_times=[],[]
+                for _ in range(3):
+                    t0=time.monotonic()
+                    with patch.object(issued,"material",_legacy_material):
+                        old_hash=_legacy_semantic_hash(workload.envelope())
+                    old_times.append(time.monotonic()-t0)
+                    t0=time.monotonic()
+                    new_hash=semantic_hash(workload.envelope())
+                    new_times.append(time.monotonic()-t0)
+                    self.assertEqual(old_hash,new_hash)
+                    self.assertEqual(new_hash,record.envelope_sha256)
+                self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
+                print("COUNTRY_ADMISSION_SERIALIZATION_MATCHED",json.dumps({
+                    "old_median_s":median(old_times),"new_median_s":median(new_times),
+                    "same_exact_hash":True,"repetitions":3}),flush=True)
+                prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+                self.assertIsNotNone(prepared)
+                self.assertEqual(prepared.digest(),record.envelope_sha256)
+                self.assertLess(prepared.retained_pin_bytes,prepared.encoded_routing_bytes//2)
+                compact=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256,max_bytes=512*1024)
+                self.assertIsNotNone(compact)
+                self.assertIsNone(compact.fast_pins)
+                self.assertEqual(compact.digest(),record.envelope_sha256)
+                self.assertLess(compact.retained_pin_bytes,compact.encoded_routing_bytes//20)
+                del compact
+                # Envelope mechanics above the previous 16,384-record cap. This
+                # deliberately repeated routing list is NOT a valid C11 release;
+                # it tests only exact digest streaming and bounded retention.
+                if not wide:
+                    mechanical=replace(workload,projection=replace(workload.projection,
+                        routing=workload.projection.routing*3))
+                    wide_hash=semantic_hash(mechanical.envelope())
+                    wide_prepared=issued._PreparedRoutingEnvelope.prepare(mechanical,wide_hash,max_bytes=1024*1024)
+                    self.assertIsNotNone(wide_prepared)
+                    self.assertEqual(wide_prepared.digest(),wide_hash)
+                    self.assertGreater(wide_prepared.encoded_routing_bytes,32*1024*1024)
+                    self.assertLess(wide_prepared.retained_pin_bytes,1024*1024)
+                    print("COUNTRY_ROUTING_WIDE_ENVELOPE",json.dumps({
+                        "records":len(wide_prepared.routing),
+                        "encoded_bytes_avoided":wide_prepared.encoded_routing_bytes,
+                        "retained_pin_bytes_estimate":wide_prepared.retained_pin_bytes,
+                        "exact_hash_equal":True}),flush=True)
+                    del wide_prepared,mechanical
+                self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
+                    workload,record.envelope_sha256,max_bytes=16))
+                # A prepared fast path must not recreate canonical per-route
+                # tuples. Mutating a *nested* reference must still be detected.
+                # Explicitly require the fast layout at this fixture geometry.
+                self.assertIsNotNone(prepared.fast_pins)
+                self.assertIsNotNone(prepared.fast_ref_pins)
+                with patch.object(issued,"_routing_pin",side_effect=AssertionError("repacked route")):
+                    self.assertEqual(prepared.digest(),record.envelope_sha256)
+                ref=workload.projection.routing[0].producer_replay_locator_or_reference_root
+                old=ref.content_hash
+                try:
+                    object.__setattr__(ref,"content_hash","0"*64)
+                    self.assertIsNone(prepared.digest())
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        issued._admit(workload,resolver,host=host,purpose=purpose,
+                            allow_test_only=True,prepared=prepared)
+                finally:
+                    object.__setattr__(ref,"content_hash",old)
+                auth=workload.projection.routing[-1].authority_snapshot_refs[0]
+                old=auth.authority_content_hash
+                try:
+                    object.__setattr__(auth,"authority_content_hash","0"*64)
+                    self.assertIsNone(prepared.digest())
+                finally:
+                    object.__setattr__(auth,"authority_content_hash",old)
+                # Reject substituted body/tuple and re-hash all nonrouting input.
+                obj=workload.projection.routing[0]
+                prior=obj.typed_state
+                try:
+                    object.__setattr__(obj,"typed_state","NOT_ASKED")
+                    self.assertIsNone(prepared.digest())
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        issued._admit(workload,resolver,host=host,purpose=purpose,
+                            allow_test_only=True,prepared=prepared)
+                finally:
+                    object.__setattr__(obj,"typed_state",prior)
+                prior_routing=workload.projection.routing
+                try:
+                    object.__setattr__(workload.projection,"routing",tuple(reversed(prior_routing)))
+                    self.assertIsNone(prepared.digest())
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        issued._admit(workload,resolver,host=host,purpose=purpose,
+                            allow_test_only=True,prepared=prepared)
+                finally:
+                    object.__setattr__(workload.projection,"routing",prior_routing)
+                prior_descriptor=workload.descriptor
+                try:
+                    changed=json.loads(prior_descriptor)
+                    changed["routing_and_risk"]={"fixture":"different"}
+                    object.__setattr__(workload,"descriptor",canonical(changed))
+                    self.assertNotEqual(prepared.digest(),record.envelope_sha256)
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        issued._admit(workload,resolver,host=host,purpose=purpose,
+                            allow_test_only=True,prepared=prepared)
+                finally:
+                    object.__setattr__(workload,"descriptor",prior_descriptor)
+                resolver._record=replace(record,currentness="REVOKED")
+                try:
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        issued._admit(workload,resolver,host=host,purpose=purpose,
+                            allow_test_only=True,prepared=prepared)
+                finally:
+                    resolver._record=record
+                prepared_times=[]
+                for _ in range(3):
+                    t0=time.monotonic()
+                    self.assertEqual(prepared.digest(),record.envelope_sha256)
+                    prepared_times.append(time.monotonic()-t0)
+                print("COUNTRY_PREPARED_ENVELOPE_MATCHED",json.dumps({
+                    "normal_median_s":median(new_times),"prepared_median_s":median(prepared_times),
+                    "encoded_routing_bytes_avoided":prepared.encoded_routing_bytes,
+                    "retained_pin_bytes_estimate":prepared.retained_pin_bytes,"routing_records":len(prepared.routing),
+                    "fast_pin_tuples":prepared.fast_pins is not None,
                     "exact_hash_equal":True}),flush=True)
-                del wide_prepared,mechanical
-            self.assertIsNone(issued._PreparedRoutingEnvelope.prepare(
-                workload,record.envelope_sha256,max_bytes=16))
-            # A prepared fast path must not recreate canonical per-route
-            # tuples. Mutating a *nested* reference must still be detected.
-            # Explicitly require the fast layout at this fixture geometry.
-            self.assertIsNotNone(prepared.fast_pins)
-            self.assertIsNotNone(prepared.fast_ref_pins)
-            with patch.object(issued,"_routing_pin",side_effect=AssertionError("repacked route")):
-                self.assertEqual(prepared.digest(),record.envelope_sha256)
-            ref=workload.projection.routing[0].producer_replay_locator_or_reference_root
-            old=ref.content_hash
-            try:
-                object.__setattr__(ref,"content_hash","0"*64)
-                self.assertIsNone(prepared.digest())
-                with self.assertRaises(issued.WorkloadAdmissionError):
-                    issued._admit(workload,resolver,host=host,purpose=purpose,
-                        allow_test_only=True,prepared=prepared)
-            finally:
-                object.__setattr__(ref,"content_hash",old)
-            auth=workload.projection.routing[-1].authority_snapshot_refs[0]
-            old=auth.authority_content_hash
-            try:
-                object.__setattr__(auth,"authority_content_hash","0"*64)
-                self.assertIsNone(prepared.digest())
-            finally:
-                object.__setattr__(auth,"authority_content_hash",old)
-            # Reject substituted body/tuple and re-hash all nonrouting input.
-            obj=workload.projection.routing[0]
-            prior=obj.typed_state
-            try:
-                object.__setattr__(obj,"typed_state","NOT_ASKED")
-                self.assertIsNone(prepared.digest())
-                with self.assertRaises(issued.WorkloadAdmissionError):
-                    issued._admit(workload,resolver,host=host,purpose=purpose,
-                        allow_test_only=True,prepared=prepared)
-            finally:
-                object.__setattr__(obj,"typed_state",prior)
-            prior_routing=workload.projection.routing
-            try:
-                object.__setattr__(workload.projection,"routing",tuple(reversed(prior_routing)))
-                self.assertIsNone(prepared.digest())
-                with self.assertRaises(issued.WorkloadAdmissionError):
-                    issued._admit(workload,resolver,host=host,purpose=purpose,
-                        allow_test_only=True,prepared=prepared)
-            finally:
-                object.__setattr__(workload.projection,"routing",prior_routing)
-            prior_descriptor=workload.descriptor
-            try:
-                changed=json.loads(prior_descriptor)
-                changed["routing_and_risk"]={"fixture":"different"}
-                object.__setattr__(workload,"descriptor",canonical(changed))
-                self.assertNotEqual(prepared.digest(),record.envelope_sha256)
-                with self.assertRaises(issued.WorkloadAdmissionError):
-                    issued._admit(workload,resolver,host=host,purpose=purpose,
-                        allow_test_only=True,prepared=prepared)
-            finally:
-                object.__setattr__(workload,"descriptor",prior_descriptor)
-            resolver._record=replace(record,currentness="REVOKED")
-            try:
-                with self.assertRaises(issued.WorkloadAdmissionError):
-                    issued._admit(workload,resolver,host=host,purpose=purpose,
-                        allow_test_only=True,prepared=prepared)
-            finally:
-                resolver._record=record
-            prepared_times=[]
-            for _ in range(3):
-                t0=time.monotonic()
-                self.assertEqual(prepared.digest(),record.envelope_sha256)
-                prepared_times.append(time.monotonic()-t0)
-            print("COUNTRY_PREPARED_ENVELOPE_MATCHED",json.dumps({
-                "normal_median_s":median(new_times),"prepared_median_s":median(prepared_times),
-                "encoded_routing_bytes_avoided":prepared.encoded_routing_bytes,
-                "retained_pin_bytes_estimate":prepared.retained_pin_bytes,"routing_records":len(prepared.routing),
-                "fast_pin_tuples":prepared.fast_pins is not None,
-                "exact_hash_equal":True}),flush=True)
-            del prepared
-            # Move to the producer's detached field-grain representation
-            # before actual country execution. Keep the old hostile court
-            # above; the new input must preserve its independently issued
-            # envelope and projection identities, not issue a new decision.
-            from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
-            old_identity=projection.cache_identity
-            packed=_PackedRoutingFacts(iter(routing))
-            self.assertEqual(len(packed),len(routing))
-            self.assertEqual(packed[0].as_dict(),routing[0].as_dict())
-            self.assertEqual(packed[-1].as_dict(),routing[-1].as_dict())
-            self.assertEqual(packed.row_ref(-1),routing[-1].ref)
-            self.assertTrue(all(a==issued.canonical_json(b.as_dict()).encode("utf-8")
-                                for a,b in zip(packed.canonical_rows(),routing)))
-            workload=replace(workload,projection=replace(projection,routing=packed))
-            self.assertEqual(workload.projection.cache_identity,old_identity)
-            self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
+                del prepared
+                # Move to the producer's detached field-grain representation
+                # before actual country execution. Keep the old hostile court
+                # above; the new input must preserve its independently issued
+                # envelope and projection identities, not issue a new decision.
+                from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+                old_identity=projection.cache_identity
+                packed=_PackedRoutingFacts(iter(routing))
+                self.assertEqual(len(packed),len(routing))
+                self.assertEqual(packed[0].as_dict(),routing[0].as_dict())
+                self.assertEqual(packed[-1].as_dict(),routing[-1].as_dict())
+                self.assertEqual(packed.row_ref(-1),routing[-1].ref)
+                self.assertTrue(all(a==issued.canonical_json(b.as_dict()).encode("utf-8")
+                                    for a,b in zip(packed.canonical_rows(),routing)))
+                workload=replace(workload,projection=replace(projection,routing=packed))
+                self.assertEqual(workload.projection.cache_identity,old_identity)
+                self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
+            else:
+                packed=routing
+                self.assertIs(workload.projection.routing,packed)
             packed_prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
             self.assertIsNotNone(packed_prepared)
             self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
@@ -317,7 +381,12 @@ class CountryNativeEconomics(unittest.TestCase):
                 "canonical_bytes":packed_prepared.encoded_routing_bytes,
                 "additional_pin_bytes_estimate":packed_prepared.retained_pin_bytes,
                 "exact_envelope_and_projection":True}),flush=True)
-            del packed_prepared,routing,projection,prior_routing,ref,auth,obj
+            del packed_prepared,routing,projection
+            if not direct_pack:
+                del prior_routing,ref,auth,obj
+            print("COUNTRY_NATIVE_PRE_EXECUTION_RSS",json.dumps({
+                "peak_process_rss_kib_linux":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+                "direct_packed_producer":direct_pack}),flush=True)
             from rawlsing_next import pre553_c11_ingest as c11_ingest
             timings=defaultdict(list)
             def time_call(owner,name,label):
@@ -427,6 +496,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "publication_seconds":pub.publication_seconds,"cold_s04_seconds":time.monotonic()-t,
                 "closure_referenced_bytes":pub.receipt.referenced_physical_bytes,
                 "peak_process_rss_kib_linux":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+                "direct_packed_producer":direct_pack,
                 "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
 
