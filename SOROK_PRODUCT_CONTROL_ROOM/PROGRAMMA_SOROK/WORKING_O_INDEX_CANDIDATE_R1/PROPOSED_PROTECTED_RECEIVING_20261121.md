@@ -172,3 +172,8 @@ Competent paired CURRENT_PROGRESS receiving proposal: preserve the new user-dire
 ## November 25 — intermediate proposal integrated into candidate records
 
 The preceding eleven engineering observations have been incorporated in [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json) and related [CIC criteria](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), with exact consumer/source and execution bounds. This proposal is retained for historical and authorized paired receiving only, not a second live inventory. Protected pair unchanged: qualified R39 + MII addendum. HOME #1331–1333 semantic source delta, full currentness, competent review/receiving remain held. No halt to lawful construction or documentary work.
+
+
+## SOROK-G4 HQ — 2026-11-25 exact candidate intake
+
+Existing O-Index/CIC receives four current engineering candidates and the three exact additive HOME/PROGRAMMA source changes, with old source cuts conserved. Protected pair remains R39 plus MII at PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; competent owner receiving required. No new runtime/authority claim. See same current ledger and CIC reciprocal section rather than duplicating implementation details here.

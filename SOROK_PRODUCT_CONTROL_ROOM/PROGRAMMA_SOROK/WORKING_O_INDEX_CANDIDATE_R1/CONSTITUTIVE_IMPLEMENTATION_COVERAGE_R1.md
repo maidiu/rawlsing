@@ -1,6 +1,6 @@
 # CIC — Constitutive Implementation Coverage (initial proposed O-Index relationship layer)
 
-**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `a6a9ae4b43439156460a315f015a795fc6a87ca2`. 58 candidate obligation clusters; 161 provisional criteria (148 earlier + 13 narrow refinements); 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
+**Not a new inventory, theory HOME, execution agenda, defect ledger or protected receiving.** Exact machine data: [CIC JSON](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.json), blob `a3c3e591d846724262f3541a7368542a5e286b58`. 58 candidate obligation clusters; 161 provisional criteria (148 earlier + 13 narrow refinements); 719 active source blocks routed at exact HOME line ranges. Source routing ≠ paragraph-semantic receiving, criterion-specific demonstration or whole-organism completion. Historical in-file foundations remain exact at their HOME objects and original source-ledgers. No organism runtime changes or new organism tests. Exact paragraph route readback from frozen HOME bodies verified; semantic adjudication remains outstanding.
 
 ## Whole-organism first consultation — 2026-11-25
 
@@ -766,3 +766,28 @@ An unrealized constitutive demand does not need a PR or execution receipt to bec
 - Next owner examination: Compare existing P4/task execution and NEIGHBOR conditional joint practice before extension; trace actual operation, choice and independent consequence.
 
 All five are provisional HOME interpretations, not a new inventory, new runtime claims or engineering commissions. The 161 prior criteria, 719 source routes, 16 named review obligations and earlier receiving record are retained; the new denominator is 166 criteria and 1,162 review dimension slots. Counts are conservation checks only.
+
+
+## November 25 — reciprocal construction and SOROK-G4 HQ
+
+User renamed the SOROK estate custodian SOROK-G4 HQ; PYAT G4 is a separate sister stewardship. No branch/registry/authority duplication. Exact HOME/PROGRAMMA candidates #1331/#1332/#1333 now incorporate MULCH YOUR NEIGHBOR alongside whole-first and upstream elasticity. Earlier versions are preserved in the same ledger event history; frozen HOME paragraph routes remain unchanged. Candidate source is not protected receiving.
+
+| Return | Exact HEAD | Functional contribution | Execution |
+|---|---|---|---|
+| [#1357](https://github.com/maidiu/rawlsing/pull/1357) | `62b898eba8cbcd6c52b5f13111550406c4602a93` | Structural contradictions operate across compressed ordinary life | 659 per mode; [exact job](https://github.com/maidiu/rawlsing/actions/runs/45655147382/job/139349705535) |
+| [#1358](https://github.com/maidiu/rawlsing/pull/1358) | `9155676523685b421ac0b862ac73fb5e683f795d` | Reciprocal R44 inheritance and actual structurally constrained absent life | 766 per mode; [exact job](https://github.com/maidiu/rawlsing/actions/runs/45657466252/job/139357888751) |
+| [#1359](https://github.com/maidiu/rawlsing/pull/1359) | `11499ea8ff958c48ff475d089b8e10dfe54da25f` | Deliberate recipient apprehension of an undertaking, private memory and prospective action | 661 per mode; [exact job](https://github.com/maidiu/rawlsing/actions/runs/45657583616/job/139358324906) |
+| [#1360](https://github.com/maidiu/rawlsing/pull/1360) | `a04c8059845076267b89afca1de2df58e6090ae9` | Structural opportunity and lived practice constitute a new operative technical facility | 662 per mode; [exact job](https://github.com/maidiu/rawlsing/actions/runs/45658113213/job/139360212546) |
+
+R25 actual two-parent ancestor R24 × R44 inherits R40–44; R45/R46 remain separate. Independent review and complete parity held. R25 prior red and repair lineage retained in ledger. For actual functional junctions, consult CIC CO-004/007/012/024/029 and NEIGHBOR-017/019/020. REMONT original ledger #1171 at 85e7166a remains sole defect register; scoped crosslinks in its O-Index record route SR-P001/002/018/021/024/070/071 without transferring review.
+
+### Consequential joined organs and remaining work
+
+- **CO-CIC-024.03:** R44/R25 now exercise source-qualified structural boundaries in ordinary modeled passage; a blocked process is not a lived failed episode, lost labor, or a durable psyche. Compare historical M25 ordered scheduler and MI source-time S46/T2, not old annual scalar. R46 makes admitted prior practice operative in an actual third repair. Remaining: changing independently active worlds/sites, time budget and unknown intervals, life-scale replay/economy; distinguish ordered history from invented microevents.
+- **CO-CIC-024.04:** R44/R25 age changes independently of withheld care, other qualified practice continues; R46 gives one actor-local repair effect from qualified practice plus actual exercise. Not infant developmental calibration or general motor/language/cultural learning; inspect C1/C2/N01 embodied owner, not a new scalar age module.
+- **CO-CIC-012.01:** R45 adds actually selected focal ORIENT of a source-bound undertaking, optional exact receipt memory, then private rehearsal. ADP-016/017 prior memory/access/claim distinctions remain intact. R45 uses computational PLEDGE_CARE; actual R24 visitor PLEDGE_OFFER still unexecuted on that CO branch. No consent/comprehension or knowledge of breach from a world row.
+- **NEIGHBOR-CIC-017.04:** R25 exercises coincident actual pledge deadline and material care cutoff; 9 modeled care labor-hours difference, same expired undertaking in both arms, no user act or implied affect. R45 recipient memory is separate prospective consumer; not integrated with R25 human source yet. No inferred missed labor from objective lapse.
+- **CO-CIC-004.02:** R46 is a partial succession of historical V3/PFF acquired facility and situated exercise: exact practice evidence plus actual repairs changes third-object outcome. Provisional numerical effect is not a general law of capacity. Preserve distinction between eligibility, effective opportunity, performed operation, learning, current recruitment and objective result.
+- **CO-CIC-029.02:** R45's focal source-checked option distinguishes accessibility from selected attention, received cue and optional memory. R24 actual human source producer is integration opportunity, not completed joined evidence. REMONT SR-P001/P071 remain exact-source guard routes; no general privacy/attention parity.
+
+These are related consumer evidence additions to existing criteria, not newly established complete criterion execution. All prior review obligations remain; independent HOME-derived refinements remain independently motivated.
