@@ -191,9 +191,89 @@ class _CountryHeaderBuilder:
 
 
 @dataclass(frozen=True, slots=True)
+class _PackedCountrySelectors(Sequence):
+    """Country selectors at their actual grain; no repeated exact ref strings.
+
+    Event content digest is already retained by the sealed body reader.
+    Occurrence identity is a separate digest and MUST NOT be conflated with
+    it. Shared semantic payloads use bounded identity interning; unusual
+    high-cardinality payloads retain exact values without lossy coercion.
+    """
+    hashes: bytes
+    occurrence_hashes: bytes
+    codes: memoryview
+    payloads: tuple
+    _prefix: ClassVar[str] = "urn:rawlsing:pre553:c05r2a:event:sha256:"
+    _dimensions: ClassVar[tuple] = ("_native_question_identity",
+        "_canonical_question_identity","_component_identity")
+
+    @classmethod
+    def build(cls,headers,bodies):
+        # All country-produced events use the incumbent deterministic ID.
+        # Retain the conventional view if a future owner supplies a different
+        # identity form. No assumption based solely on a string's suffix.
+        from .pre553_empirical_objects import URN_PREFIX
+        prefix=f"{URN_PREFIX}:RespondentEvent:sha256:"
+        codes=array("I" if len(headers)<2**32 else "Q")
+        occurrence=bytearray()
+        payloads=[]; pooled={}
+        for i,header in enumerate(headers):
+            s=header.selector
+            kind,oid,h=s._ref_identity
+            eid=s.response_event_id_or_deterministic_index
+            if (kind!=RespondentEvent.FAMILY or oid!=prefix+h
+                    or bytes.fromhex(h)!=bodies.hashes[32*i:32*(i+1)]
+                    or type(eid) is not str or not eid.startswith(cls._prefix)):
+                return tuple(x.selector for x in headers)
+            try:
+                digest=bytes.fromhex(eid[len(cls._prefix):])
+            except ValueError:
+                return tuple(x.selector for x in headers)
+            if len(digest)!=32 or cls._prefix+digest.hex()!=eid:
+                return tuple(x.selector for x in headers)
+            occurrence.extend(digest)
+            payload=(s.typed_state,s._native_question_identity,
+                     s._canonical_question_identity,s._component_identity,
+                     s._authority_identities,s.raw_response_value,
+                     s.canonical_response_value_if_authorized,s.multiplicity_order_rank_fields)
+            # Identity sharing is exact, even for unhashable semantic values.
+            # Equal but independently allocated objects need not be pooled.
+            key=tuple(id(v) for v in payload)
+            code=pooled.get(key)
+            if code is None:
+                code=len(payloads)
+                payloads.append(payload)
+                if len(pooled)<8192:
+                    pooled[key]=code
+            codes.append(code)
+        return cls(bodies.hashes,bytes(occurrence),
+                   memoryview(codes.tobytes()).cast(codes.typecode),tuple(payloads))
+
+    def __len__(self):
+        return len(self.codes)
+
+    def dimension(self,row,field):
+        return self.payloads[self.codes[row]][1+self._dimensions.index(field)]
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[j] for j in range(*i.indices(len(self))))
+        i=_sequence_index(i)
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        from .pre553_empirical_objects import URN_PREFIX
+        h=self.hashes[32*i:32*(i+1)].hex()
+        ref=(RespondentEvent.FAMILY,f"{URN_PREFIX}:RespondentEvent:sha256:{h}",h)
+        eid=self._prefix+self.occurrence_hashes[32*i:32*(i+1)].hex()
+        return _EventRead(ref,*self.payloads[self.codes[i]],eid)
+
+
+@dataclass(frozen=True, slots=True)
 class _EventLane:
     bodies: Any  # Arrow immutable binary array or chunked array
-    selectors: tuple[_EventRead, ...]
+    selectors: Sequence[_EventRead]
 
     def materialize(self, row: int) -> RespondentEvent:
         from rawlsing_next.pre553_carrier_execution import materialize_public_object
@@ -257,7 +337,8 @@ class _RespondentEvents(Sequence[RespondentEvent]):
                 if not len(posting):
                     continue
                 def key(row):
-                    return getattr(selectors[row],field)
+                    return (selectors.dimension(row,field) if type(selectors) is _PackedCountrySelectors
+                            else getattr(selectors[row],field))
                 lo=bisect_left(posting,target_identity,key=key)
                 hi=bisect_right(posting,target_identity,key=key)
                 hits.update(posting[lo:hi])
@@ -385,8 +466,10 @@ def _country_respondent_events(lane,rows):
     original=memoryview(array(tag,rows).tobytes()).cast(tag)
     postings=[]
     for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
-        selected=sorted((row for row in original if getattr(selectors[row],field) is not None),
-                        key=lambda row:getattr(selectors[row],field))
+        def dimension(row):
+            return (selectors.dimension(row,field) if type(selectors) is _PackedCountrySelectors
+                    else getattr(selectors[row],field))
+        selected=sorted((row for row in original if dimension(row) is not None),key=dimension)
         posting=memoryview(array(tag,selected).tobytes()).cast(tag) if selected else ()
         # Share native/canonical postings only when the entire order agrees.
         if postings and posting==postings[0]:
@@ -399,7 +482,7 @@ def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,ro
     """Assemble the existing compact public view directly, with no event bodies."""
     if not headers or len(bodies)!=len(headers):
         raise ValueError("country compact event census mismatch")
-    selectors=tuple(header.selector for header in headers)
+    selectors=_PackedCountrySelectors.build(headers,bodies)
     lane=_EventLane(bodies,selectors)
     groups={}
     tag="I" if len(headers)<2**32 else "Q"
@@ -427,7 +510,7 @@ def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,ro
         non_events=_InsertedRoutingEntries(nonrouting,insertion,routing,bodies)
     return _CompactPublicObjects(release_ref,replay_ref,lane,entries,non_events,
         MappingProxyType({key:_country_respondent_events(lane,rows) for key,rows in groups.items()}),
-        frozenset(selector.typed_state for selector in selectors),routing,nonrouting)
+        frozenset(header.selector.typed_state for header in headers),routing,nonrouting)
 
 
 def _cache_directory() -> Path | None:
