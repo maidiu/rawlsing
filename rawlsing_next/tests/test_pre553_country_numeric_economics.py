@@ -72,6 +72,14 @@ class CountryNativeEconomics(unittest.TestCase):
         n,governed,extras=(64,16,23) if resume_court else (512,80,218) if wide else (800,16,23)
         rng=np.random.default_rng(312)
         values=rng.integers(0,2,(n,governed))
+        if resume_court:
+            # Exactly balanced pairwise marginals but a genuine three-way XOR.
+            # A rare conjunction has one actual member, not a pruned branch.
+            for i in range(n):
+                values[i,0],values[i,1]=(i//2)%2,(i//4)%2
+            values[:,2]=values[:,0]^values[:,1]
+            values[:,3]=0
+            values[6,3]=1
         names=tuple("q"+str(i) for i in range(governed))
         data={q:values[:,i].astype(str) for i,q in enumerate(names)}
         for i in range(extras):
@@ -128,9 +136,9 @@ class CountryNativeEconomics(unittest.TestCase):
             qa=_query_authority(tag);da=_d_auth(tag+"-discovery")
             base=_branch_predicate(fx,qa,members=respondents,tag=tag+"-all")
             atom=_predicate(fx,qa,_response_leaf(fx,qa,"q0","1"),tag=tag+"-q0")
-            joint=_query(fx,qa,base,("q0","q1"),tag=tag+"-joint")
+            joint=_query(fx,qa,base,("q0","q1","q2") if resume_court else ("q0","q1"),tag=tag+"-joint")
             # Distinct actual predicates/targets, not repeated identical query.
-            atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide else None
+            atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide or resume_court else None
             conditional=tuple(_query(fx,qa,atom,(q,),tag=tag+"-"+q) for q in names[2:(52 if wide else 11)])
             alternate=tuple(_query(fx,qa,atom2,(q,),tag=tag+"-alt-"+q) for q in names[30:78]) if wide else ()
             unary=_query(fx,qa,base,("q1",),tag=tag+"-unary")
@@ -143,7 +151,22 @@ class CountryNativeEconomics(unittest.TestCase):
             queries=(joint,*conditional,*alternate,unary)
             preds=(base,atom,atom2) if wide else (base,atom)
             cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),preds,queries,(discovery,))
-            requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
+            if resume_court:
+                rare=_predicate(fx,qa,{"op":"AND","children":[
+                    {"op":"AND","children":[_response_leaf(fx,qa,"q0","1"),
+                                              _response_leaf(fx,qa,"q1","1")]},
+                    _response_leaf(fx,qa,"q3","1")]},tag=tag+"-rare")
+                forward=_query(fx,qa,atom,("q1",),tag=tag+"-forward")
+                inverse=_query(fx,qa,atom2,("q0",),tag=tag+"-inverse")
+                rare_query=_query(fx,qa,rare,("q4",),tag=tag+"-rare")
+                queries=(*queries,forward,inverse,rare_query)
+                preds=(base,atom,atom2,rare)
+                cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),preds,queries,(discovery,))
+                from rawlsing_next.pre553_empirical_objects import exact_ref
+                requests=tuple(I03ExecutionRequest(q.ref,exact_ref(q.condition_predicate_ref))
+                               for q in queries)
+            else:
+                requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
             if wide:
                 self.assertEqual(len({q.ref.key for q in queries}),100)
                 self.assertEqual(len(routing),20480)
@@ -186,7 +209,7 @@ class CountryNativeEconomics(unittest.TestCase):
             resolver=TestOnlyDecisionResolver(record)
             if resume_court:
                 return self._country_continuity(p,db,receipt,products,workload,resolver,
-                                                record,queries,host,purpose)
+                                                record,queries,host,purpose,selected,qrefs)
             from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
             if direct_pack:
                 # Independent canonical projection hash, exact original
@@ -601,7 +624,7 @@ class CountryNativeEconomics(unittest.TestCase):
 
 
     def _country_continuity(self,root,db,receipt,products,workload,resolver,record,
-                            queries,host,purpose):
+                            queries,host,purpose,selected,qrefs):
         from rawlsing_next import pre553_saved_durable_delivery as delivery
         from rawlsing_next import pre553_issued_workload as issued
         from rawlsing_next import pre553_durable_empirical_closure as durable
@@ -697,7 +720,51 @@ class CountryNativeEconomics(unittest.TestCase):
         self.assertEqual(restored._closure.i03_results,baseline_reader._closure.i03_results)
         self.assertEqual(tuple(r.replay_ref for r in restored._closure.discovery_results),
                          tuple(r.replay_ref for r in baseline_reader._closure.discovery_results))
-        plans=tuple((q.ref,0 if len(q.target_refs)>1 else None) for q in queries)
+        # Cold higher-order products and rare/inverse conditioning are
+        # independently counted from source rows, not just compared to a
+        # second run of the same evaluator.
+        from rawlsing_next.tests.test_pre553_empirical_query import _cell_map
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+        index_by_ref={r.key:i for i,r in enumerate(qrefs.values())}
+        joint=queries[0];forward,inverse,rare=queries[-3:]
+        for query,mask in ((joint,np.ones(len(selected),dtype=bool)),
+                (forward,selected[:,0]==1),(inverse,selected[:,1]==0),
+                (rare,(selected[:,0]==1)&(selected[:,1]==1)&(selected[:,3]==1))):
+            read=restored.read_s04(query.ref)
+            fact=read.first_consumer.execution.facts[0]
+            self.assertEqual(fact.raw_denominator_support,int(mask.sum()))
+            axes=tuple(index_by_ref[exact_ref(r).key] for r in query.target_refs)
+            cells=_cell_map(fact)
+            self.assertEqual(len(cells),2**len(axes))
+            for cell,row in cells.items():
+                vals=(cell,) if isinstance(cell,str) else cell
+                actual_mask=mask.copy()
+                for axis,val in zip(axes,vals):
+                    actual_mask &= selected[:,axis]==int(val)
+                self.assertEqual(row["raw_numerator_support"],int(actual_mask.sum()))
+        self.assertEqual(restored.read_s04(rare.ref).first_consumer.execution.facts[0].raw_denominator_support,1)
+        # FIELD FORGE's existing local joint algebra must use a stored fact
+        # without calling the native evaluator again.
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                side_effect=AssertionError("retained joint replay executed I03")):
+            workspace=restored.joint_workspace(joint.ref)
+            for request in (S04Projection((1,),{0:"1"}),
+                            S04Projection((0,),{1:"0"}),
+                            S04Projection((2,),{0:"1",1:"1"}),
+                            S04Projection((2,),{0:"1",1:"1"})):
+                result=workspace.query(request).material()
+                self.assertTrue(result["no_second_i03_or_source_query"])
+                query_mask=np.ones(len(selected),dtype=bool)
+                for axis,value in request.conditions.items():
+                    query_mask &= selected[:,axis]==int(value)
+                self.assertEqual(result["raw_selected_full_case_n"],int(query_mask.sum()))
+                for cell in result["complete_output_cells"]:
+                    mask=query_mask.copy()
+                    for axis,value in zip(request.output_axes,cell["output_states"]):
+                        mask &= selected[:,axis]==int(value)
+                    self.assertEqual(cell["raw_count"],int(mask.sum()))
+        plans=tuple((q.ref,None) for q in queries)
         self.assertEqual(tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)),
                          tuple(delivery._s04_refs(r) for r in baseline_reader.read_s04_many(plans)))
         self.assertTrue(continued)
@@ -718,6 +785,7 @@ class CountryNativeEconomics(unittest.TestCase):
             "country_rows":receipt.country_rows,"units":len(manifest.units),
             "completed_before_interrupt":3,"resumed_actual_executions":len(actual),
             "checkpoint_count":1+len(continued),"full_output_census_parity":True,
+            "three_way_xor_rare_inverse_source_count_and_local_joint_reuse":True,
             "selected_after_source_and_country_deleted":len(select.reads),
             "baseline_retained_bytes":footprint(products),"campaign_retained_bytes":footprint(campaign),
             "interruption_seconds":interruption_s,"resume_seconds":resume_s,
