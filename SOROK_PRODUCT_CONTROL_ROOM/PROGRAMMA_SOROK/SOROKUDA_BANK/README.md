@@ -10,6 +10,8 @@
 
 **Current functional consultation:** [2026-11-25 whole-organism inheritance](../SOROKUDA.md#whole-organism-functional-inheritance--2026-11-25) connects the existing bank to the exact current O-Index/CIC intake, historical PFF/CAN/ADP memory distinctions and independent temporal obligations. Preserve source-lock unchanged; new PR return evidence belongs to the existing live ledger, not duplicate normalized identities.
 
+**Role naming:** [SOROK-G4 HQ reciprocal functional stewardship](../SOROKUDA.md#sorok-g4-hq--reciprocal-functional-stewardship-user-2026-11-25) is the existing SOROK estate role, separate from PYAT G4 HQ. The source-lock and original normalized identities stay unchanged.
+
 ## The operative unified bank — **1063 source identities, not 1003 capabilities**
 
 | View | Source identities | Exact source ownership |
