@@ -151,3 +151,75 @@ def render_blind_interview(actor,instrument,semantic,world=None):
         'whole_joint_correspondence':'NOT_EVALUATED_IN_THIS_CALL',
         'grade':GRADE,
     }
+
+
+# Selected-route first construction of SEAM/20 and SC-03. This is a
+# sourcefree staged forward meeting/conception/birth path, NOT the full
+# later-selection/backward-father inverse chronology.
+FAMILY_GRADE='EXPLICIT_SOURCEFREE_CONDITIONAL_GENEALOGY'
+FAMILY_SOURCE='FICTIONAL_FAMILY_PATHWAY_CANDIDATES'
+FAMILY_FIELDS={'id','source_ref','intersection_clock','intersection_site',
+               'conception_clock','birth_clock','counterpart_id','counterpart_name',
+               'counterpart_packet','child_id','child_name','prior_shared_effects'}
+
+def qualify_family_pathways(world,mother,rows):
+    if (mother.get('role')!='adult' or world['positions'].get(mother['id'])!=mother['location']
+            or type(rows) is not list or not 1<=len(rows)<=16):
+        raise ValueError('FAMILY_PATHWAY_UNQUALIFIED_MATERNAL_SOURCE')
+    known=set(world['positions'])|set(world.get('accounts',{}))|set(world.get('holdings',{}))|set(world.get('neighbor_users',{}));ids=set()
+    for x in rows:
+        if type(x) is not dict or set(x)!=FAMILY_FIELDS:
+            raise ValueError('FAMILY_PATHWAY_INVALID_FIELDS')
+        if any(type(x[k]) is not str or not x[k].strip() for k in
+               ('id','source_ref','intersection_site','counterpart_id','counterpart_name',
+                'child_id','child_name','prior_shared_effects')):
+            raise ValueError('FAMILY_PATHWAY_INVALID_IDENTITY')
+        if (x['id'] in ids or x['counterpart_id'] in known or x['child_id'] in known
+                or x['counterpart_id']==x['child_id'] or x['intersection_site'] not in world['sites']
+                or x['prior_shared_effects']!='UNMODELED_NO_RETROACTIVE_WRITE'):
+            raise ValueError('FAMILY_PATHWAY_OVERLAP_OR_IDENTITY')
+        ids.add(x['id'])
+        t,c,b=(x[k] for k in ('intersection_clock','conception_clock','birth_clock'))
+        if (any(type(v) is not int for v in (t,c,b))
+                or not world['clock']<t<c<b<=world['clock']+120*365):
+            raise ValueError('FAMILY_PATHWAY_INVALID_CLOCKS')
+        adult_conditioning_input(x['counterpart_packet'])
+    return {'grade':FAMILY_GRADE,'mother':mother['id'],'proposal_clock':world['clock'],
+            'maternal_proposal_state_digest':stable_id('maternal_proposal',mother),
+            'candidates':copy(rows),'unknown_prior_shared_effects_not_denied':True,
+            'not_empirical_couple_probability_or_reproductive_consent':True}
+
+def situated_family_pathways(world,mother,source):
+    if (source.get('grade')!=FAMILY_GRADE or source.get('mother')!=mother['id']
+            or world['clock']<=source.get('proposal_clock',world['clock'])
+            or world.get('family_genesis',{}).get('selected_pathway')):return []
+    # At least one actual lived maternal attempt after proposal, not merely
+    # passage of time or a narrative about her development.
+    if not any(e.get('actor')==mother['id']
+               and e.get('clock',-1)>source['proposal_clock']
+               and e.get('actor_felt_attempt') is not None
+               for e in mother.get('lived_genesis_episodes',[])):return []
+    out=[]
+    for x in source['candidates']:
+        site=world['sites'][x['intersection_site']]
+        if (world['clock']!=x['intersection_clock']
+                or world['positions'].get(mother['id'])!=x['intersection_site']
+                or x['counterpart_id'] in world['positions'] or x['child_id'] in world['positions']
+                or (site.get('access')!='public' and x['counterpart_id'] not in site.get('admitted',[]))):continue
+        # Do not put the other candidate's survey or private source packet
+        # into the maternal semantic selection call.
+        out.append({k:copy(x[k]) for k in ('id','source_ref','intersection_clock',
+                        'intersection_site','conception_clock','birth_clock')})
+    return out
+
+def family_encounter_evidence(world,selected):
+    """An actual directed performed act after roster admission, not a
+    proof of reciprocity, sexual consent, affection or shared household."""
+    pair={selected['mother'],selected['counterpart']}
+    return [copy(e) for e in world.get('public_history',[])
+            if e.get('clock',-1)>selected['admitted_clock']
+            and e.get('clock',-1)<=world['clock']
+            and e.get('status')=='PERFORMED'
+            and e.get('action') in ('CARE','FEED','PLEDGE_CARE')
+            and e.get('actor') in pair and e.get('target') in pair
+            and e['actor']!=e['target']]
