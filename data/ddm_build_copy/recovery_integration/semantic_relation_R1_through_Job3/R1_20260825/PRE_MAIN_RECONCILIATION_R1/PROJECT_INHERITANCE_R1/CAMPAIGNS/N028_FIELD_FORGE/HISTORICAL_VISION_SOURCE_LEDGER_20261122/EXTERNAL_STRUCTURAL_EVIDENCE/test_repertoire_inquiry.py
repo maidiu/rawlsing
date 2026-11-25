@@ -368,3 +368,149 @@ def test_discover_semantic_feedback_changes_actual_scheduled_question(tmp_path,m
         assert triple["followthrough"] is not None
         results.append([r["position_axes"] for r in records])
     assert results[0]!=results[1]
+
+
+# R16: distinct actual catalog questions, one saved source, different
+# proposition domains and optionally a different actual eligible cohort.
+def _concept_session(tmp_path, monkeypatch, current=lambda _: True):
+    tmp_path.mkdir(parents=True,exist_ok=True)
+    captured={}
+    ingest=native.ingest_c11_source_release
+    def catch(candidate,repo):
+        captured["candidate"]=candidate
+        return ingest(candidate,repo)
+    rows=[]
+    for x,w,y in product((0,1),repeat=3):
+        for rep in range(2):
+            rows.append({"id":f"R{x}{w}{y}{rep}","responses":{
+                "X":x,"W":w,"Y":y,"Z":x^w^y,
+                "P":y,"Q":1^(x^w^y),"A":y,"B":y}})
+    names=("X","W","Y","Z","P","Q","A","B")
+    all_ids={r["id"] for r in rows}
+    half={r["id"] for r in rows if r["id"].endswith("0")}
+    risk={"R":{n:all_ids for n in names},"S":{n:half for n in names}}
+    tag="FF-R16-"+tmp_path.name
+    with monkeypatch.context() as guard:
+        guard.setattr(native,"ingest_c11_source_release",catch)
+        source=native._build_source(tag,rows,risk_sets=risk)
+    qa=native._query_authority(tag)
+    predicate=native._branch_predicate(source,qa)
+    qs=[native._query(source,qa,predicate,targets,risk=risk,tag=tag+str(i))
+        for i,(targets,risk) in enumerate([
+          (("X","W","Y","Z"),"R"),(("X","W","P","Q"),"R"),(("X","W","A","B"),"S")])]
+    root,receipt=cold._cold(tmp_path,captured["candidate"],source["universe"].ref,tag)
+    estate=cold.VerifiedDirectEstate(root,exact_path=receipt.path,
+        independently_held_manifest_sha256=receipt.manifest_sha256,
+        independently_held_i02=receipt.i02,current_authorizer=current)
+    catalog=cold.RuntimeObjectCatalog(authorities=tuple((*source["authorities"],qa)),
+        predicates=(predicate,),queries=tuple(qs),discovery_authorities=())
+    executor=cold.CarrierNeutralResearchExecutor(repository=estate,
+        release_refs=(source["release_ref"],),runtime_catalog=catalog)
+    session=S04DynamicResearchSession(executor=executor,sourcefree_origin_assertion=SOURCEFREE_ONLY_ASSERTION)
+    inquiries={}
+    for key,q,meanings in zip(("entitlement","property","authority"),qs,
+        (("gender priority","national priority"),("property claim","redistribution"),
+         ("authority","obedience"))):
+        inquiries[key]={"question":S04DynamicQuestion(q.ref,predicate.ref,conditioner_index=0),
+            "description":key+" fixture propositions","position_axes":(0,1),"repertoire_axes":(2,3),
+            "axis_meanings":{0:"resources",1:"credentials",2:meanings[0],3:meanings[1]},
+            "active_ancestry":{0:("X",),1:("W",),2:(key+"-a",),3:(key+"-b",)},
+            "budget":3,"max_position_order":2,"min_position_n":2}
+    return session,inquiries
+
+
+def _develop_run(session,inquiries,**kwargs):
+    from relational_context import develop_social_concept
+    from rawlsing_next.tests import test_pre553_discovery_adaptive as adaptive
+    auth,reg,root,child=adaptive._authority("ff-r16")
+    def interpret(view):
+        return {"concept":view["concept_context"]["concept_before"],
+                "rival":"different domain-specific organization","question":"Where does it fracture?",
+                "preferred_axis":next(iter(view["eligible_extension_axes"]),None)}
+    def develop(view):
+        positive=any(r["candidates"] and r["candidates"][0]["gap"]!=[0,1]
+                     for r in view["evidence"]["records"])
+        key=view["inquiry"]
+        if key=="entitlement":
+            assert positive
+            return {"concept":"selective privilege","rival":"domain-specific entitlement",
+                "disposition":"REVISE","reason":"Observed joint positional redistribution",
+                "measurement_question":"Does property reproduce the same organization?",
+                "next_inquiry":"property"}
+        if key=="property":
+            assert positive
+            assert view["concept_before"]=="selective privilege"
+            return {"concept":"domain-dependent privilege","rival":"unified privilege",
+                "disposition":"FRACTURE","reason":"Separate property response evidence requires its own interpretation",
+                "measurement_question":"Does authority also redistribute?",
+                "next_inquiry":"authority"}
+        assert not positive
+        return {"concept":"bounded domain-dependent entitlement","rival":"unified privilege",
+            "disposition":"NEGATE","reason":"No positive searched authority contrast; not a global negative",
+            "measurement_question":"Does narrower authority wording measure the same concept?",
+            "next_inquiry":None}
+    opts=dict(inquiries=inquiries,seed="entitlement",initial_concept="universal exclusion",
+        discovery_authority=auth,authority_registry=reg,root_rule=root,child_rule=child,
+        query_budget=3,interpret=interpret,revise=_social_revise,develop=develop)
+    opts.update(kwargs)
+    return develop_social_concept(session,**opts)
+
+
+def test_concept_development_reenters_actual_catalog_and_retains_cohort_boundaries(tmp_path,monkeypatch):
+    session,inquiries=_concept_session(tmp_path,monkeypatch)
+    with session:
+        out=_develop_run(session,inquiries)
+        assert session.stats()["original_native_i03_queries_executed"]==3
+    assert [r["inquiry"] for r in out["records"]]==["entitlement","property","authority"]
+    assert [r["development"]["disposition"] for r in out["records"]]==["REVISE","FRACTURE","NEGATE"]
+    assert out["concept"]=="bounded domain-dependent entitlement"
+    assert out["records"][1]["cohort_comparisons"][0]["material"]["state"]=="SAME_ACTUAL_I03_COHORT__SAMPLE_DESCRIPTIVE_ONLY"
+    assert all(c["material"]["state"]=="DIFFERENT_ACTUAL_RESPONDENT_COHORTS__NO_NAIVE_RATE_COMPARISON"
+               for c in out["records"][2]["cohort_comparisons"])
+    assert len({r["local_discovery"]["knowledge_ref"]["content_hash"] for r in out["records"]})==3
+    assert out["pooled_joint"] is None and not out["global_negative_claim"]
+    assert not out["unexamined"]
+
+
+def test_concept_choice_changes_actual_query_not_just_label(tmp_path,monkeypatch):
+    session,inquiries=_concept_session(tmp_path,monkeypatch)
+    def develop(view):
+        return {"concept":"alternate hypothesis","rival":"initial","disposition":"UNRESOLVED",
+            "reason":"Investigate authority first","measurement_question":"Is authority relevant?",
+            "next_inquiry":"authority" if view["inquiry"]=="entitlement" else None}
+    with session:
+        out=_develop_run(session,inquiries,develop=develop)
+        assert session.stats()["original_native_i03_queries_executed"]==2
+    assert [r["inquiry"] for r in out["records"]]==["entitlement","authority"]
+    assert out["unexamined"]==[{"id":"property","state":"UNKNOWN_NOT_SELECTED"}]
+
+
+def test_concept_budget_preserves_demanded_and_unselected_questions(tmp_path,monkeypatch):
+    session,inquiries=_concept_session(tmp_path,monkeypatch)
+    with session:
+        out=_develop_run(session,inquiries,query_budget=1)
+        assert session.stats()["original_native_i03_queries_executed"]==1
+    assert out["scheduler_state"]=="PARTIAL_BUDGET_EXHAUSTED"
+    assert out["unexamined"]==[{"id":"authority","state":"UNKNOWN_NOT_SELECTED"},
+                              {"id":"property","state":"UNKNOWN_SCHEDULED"}]
+
+
+def test_concept_refuses_invented_query_choice(tmp_path,monkeypatch):
+    session,inquiries=_concept_session(tmp_path,monkeypatch)
+    def invent(view):
+        return {"concept":"x","rival":"y","disposition":"REVISE","reason":"z",
+                "measurement_question":"q","next_inquiry":"noncatalog"}
+    with session,pytest.raises(ValueError,match="unvisited offered inquiry"):
+        _develop_run(session,inquiries,develop=invent)
+
+
+def test_concept_refuses_revocation_during_cross_joint_revision(tmp_path,monkeypatch):
+    allowed={"current":True}
+    session,inquiries=_concept_session(tmp_path,monkeypatch,lambda _:allowed["current"])
+    def develop(view):
+        if view["inquiry"]=="property":
+            allowed["current"]=False
+        return {"concept":"x","rival":"y","disposition":"REVISE","reason":"z",
+                "measurement_question":"q","next_inquiry":"property" if view["inquiry"]=="entitlement" else None}
+    with session,pytest.raises(cold.DirectEstateError,match="(?i)current|revok|authoriz"):
+        _develop_run(session,inquiries,develop=develop)

@@ -534,6 +534,19 @@ def discover_social_field(session, question, *, position_axes, repertoire_axes,
                           axis_meanings, active_ancestry, discovery_authority,
                           authority_registry, root_rule, child_rule, budget,
                           max_position_order, min_position_n, interpret, revise):
+    """Public R15 discovery entry; evaluate one catalog-issued joint."""
+    return _discover_social_field(session, question, position_axes=position_axes,
+        repertoire_axes=repertoire_axes, axis_meanings=axis_meanings,
+        active_ancestry=active_ancestry, discovery_authority=discovery_authority,
+        authority_registry=authority_registry, root_rule=root_rule, child_rule=child_rule,
+        budget=budget, max_position_order=max_position_order,
+        min_position_n=min_position_n, interpret=interpret, revise=revise)
+
+
+def _discover_social_field(session, question, *, position_axes, repertoire_axes,
+                          axis_meanings, active_ancestry, discovery_authority,
+                          authority_registry, root_rule, child_rule, budget,
+                          max_position_order, min_position_n, interpret, revise, _result=None):
     """R15: productive discovery within one admitted sourcefree joint.
 
     Existing I05 adaptive scheduler owns scheduling, budget and coverage.
@@ -558,7 +571,7 @@ def discover_social_field(session, question, *, position_axes, repertoire_axes,
             or type(min_position_n) is not int or min_position_n < 2
             or not callable(interpret) or not callable(revise)):
         raise ValueError("explicit positive search budget, position order, support and callbacks required")
-    result = session.ask(question)
+    result = session.ask(question) if _result is None else _result
     original, knowledge, obs = _validate_social_result(
         result, question, axes, position_axes, repertoire_axes)
     workspace = result.joint_workspace
@@ -775,3 +788,193 @@ def discover_social_field(session, question, *, position_axes, repertoire_axes,
                            "state": "UNKNOWN_UNVISITED"} for u in search.unvisited_unit_refs],
             "global_negative_claim": False, "semantic_truth_effect": False,
             "actor_v3_effect": False}
+
+
+def develop_social_concept(session, *, inquiries, seed, initial_concept,
+                           discovery_authority, authority_registry, root_rule, child_rule,
+                           query_budget, interpret, revise, develop):
+    """R16: conceptual development across distinct catalog-issued joints.
+
+    The caller supplies a finite menu of sourcefree candidate questions and
+    provisional role/meaning declarations, not results or a fixed order.
+    R15 performs actual discovery within each chosen question. The existing
+    I05 adaptive scheduler owns the outer sealed inquiry frontier as well.
+    A semantic callback can revise/split/negate its own conceptual proposal
+    and demand a different question from the remaining menu. No arithmetic
+    pooling, transfer of respondent identity, or source/meaning issuance.
+    """
+    from rawlsing_next.pre553_discovery_adaptive import (
+        AdaptiveExplorationUnit, AdaptiveUnitOutcome, execute_adaptive_exploration,
+    )
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+    from rawlsing_next.pre553_s04_observed_research import compare_s04_observation_scopes
+
+    if (type(inquiries) is not dict or not inquiries or seed not in inquiries
+            or not isinstance(initial_concept,str) or not initial_concept.strip()
+            or type(query_budget) is not int or query_budget < 1
+            or not all(callable(fn) for fn in (interpret,revise,develop))):
+        raise ValueError("explicit inquiry menu, seed, concept, positive budget and callbacks required")
+    # Snapshot only caller metadata and immutable typed query handles.
+    menu = {}
+    signatures = set()
+    expected = {"question","description","position_axes","repertoire_axes",
+                "axis_meanings","active_ancestry","budget","max_position_order","min_position_n"}
+    for key, spec in inquiries.items():
+        if (not isinstance(key,str) or not key.strip() or type(spec) is not dict
+                or set(spec) != expected or not isinstance(spec["description"],str)
+                or not spec["description"].strip()):
+            raise ValueError("invalid inquiry menu entry")
+        spec = deepcopy(spec)
+        q = spec["question"]
+        _validate_social_roles(session,q,spec["position_axes"],spec["repertoire_axes"],
+                               spec["axis_meanings"],spec["active_ancestry"])
+        sig = (q.query_ref.key,q.predicate_ref.key,q.conditioner_index)
+        if sig in signatures:
+            raise ValueError("duplicate actual query/predicate/conditioner in menu")
+        signatures.add(sig)
+        if (type(spec["budget"]) is not int or spec["budget"]<1
+                or type(spec["max_position_order"]) is not int
+                or not 1<=spec["max_position_order"]<=len(spec["position_axes"])
+                or type(spec["min_position_n"]) is not int or spec["min_position_n"]<2):
+            raise ValueError("invalid inner discovery budget or support")
+        menu[key] = spec
+
+    def seal(kind, payload):
+        digest = semantic_hash(payload)
+        return ExactRef(kind,"urn:rawlsing:ff:r16:"+kind.lower()+":"+digest,digest)
+
+    def manifest(key, spec):
+        q=spec["question"]
+        return {"id":key,"query_ref":q.query_ref.as_dict(),"predicate_ref":q.predicate_ref.as_dict(),
+                "conditioner_index":q.conditioner_index,"description":spec["description"],
+                "position_axes":list(spec["position_axes"]),"repertoire_axes":list(spec["repertoire_axes"]),
+                "axis_meanings":{str(k):v for k,v in spec["axis_meanings"].items()},
+                "active_ancestry":{str(k):list(v) for k,v in spec["active_ancestry"].items()},
+                "budget":spec["budget"],"max_position_order":spec["max_position_order"],
+                "min_position_n":spec["min_position_n"]}
+
+    manifest_rows=[manifest(k,menu[k]) for k in sorted(menu)]
+    determinant=seal("FF_CONCEPT_INQUIRY_DETERMINANT",{
+        "menu":manifest_rows,"seed":seed,"initial_concept":initial_concept,
+        "policy":"R16_CATALOG_MENU_LOCAL_EVIDENCE_ONLY"})
+    cap=discovery_authority.candidate_universe_definition
+    generation_cap=cap["maximum_generation"]
+    frontier_cap=cap["maximum_frontier_size"]
+    selected, records, workspaces = {}, {}, {}
+
+    def unit(key,parent=None,sealed=None):
+        ref=seal("FF_CONCEPT_INQUIRY_UNIT",{"determinant":determinant.as_dict(),"id":key})
+        u=AdaptiveExplorationUnit(unit_ref=ref,proposal_rule_ref=root_rule if parent is None else child_rule,
+            generation=0 if parent is None else parent.generation+1,heuristic_rank=0,
+            determinant_refs=(determinant,) if parent is None else (determinant,sealed),
+            parent_unit_ref=None if parent is None else parent.unit_ref)
+        selected[ref.key]=key
+        return u
+
+    def current():
+        # Recheck all actually visited source/interpretation scopes before
+        # accepting further semantic work or returning a result.
+        for r in workspaces.values():
+            r.joint_workspace.query(S04Projection((),{}))
+
+    def evaluate(u,history):
+        key=selected[u.unit_ref.key]
+        spec=menu[key]
+        previous=[records[v.unit.unit_ref.key] for v in history]
+        prior=previous[-1]["development"]["concept"] if previous else initial_concept
+        current()
+        result=session.ask(spec["question"])  # actual catalog resolves exact identities
+        workspaces[key]=result
+        local_context={"inquiry":key,"description":spec["description"],"concept_before":prior,
+            "earlier_developments":[{"inquiry":p["inquiry"],"development":p["development"]}
+                                    for p in previous]}
+        opts={k:v for k,v in spec.items() if k not in ("question","description")}
+        local=_discover_social_field(session,spec["question"],**opts,
+            discovery_authority=discovery_authority,authority_registry=authority_registry,
+            root_rule=root_rule,child_rule=child_rule,
+            interpret=lambda view: interpret(dict(deepcopy(view),concept_context=deepcopy(local_context))),
+            revise=lambda view,proposal,motifs: revise(
+                dict(deepcopy(view),concept_context=deepcopy(local_context)),proposal,motifs),
+            _result=result)
+        comparisons=[]
+        for p in previous:
+            other=workspaces[p["inquiry"]]
+            cmp=compare_s04_observation_scopes(other.observation_scope,result.observation_scope)
+            comparisons.append({"previous":p["inquiry"],"ref":cmp.ref.as_dict(),"material":cmp.material()})
+        # Give the semantic callback actual aggregate evidence, including
+        # zero/held/excluded and unvisited states; no raw identities or
+        # synthetic cross-joint counts, even if cohort membership matches.
+        public=[]
+        for r in local["records"]:
+            f=r["followthrough"]
+            public.append({"position_axes":r["position_axes"],
+                "candidates":[{k:deepcopy(v) for k,v in x.items() if not k.endswith("_ref")}
+                              for x in r["candidates"]],
+                "excluded":r["excluded"],"not_proposed":r["not_proposed"],
+                "interpretation":r["interpretation"],
+                "revision":f["revision"] if f else None,
+                "reverse_motifs":[{"motif":m["motif"],
+                    "baseline_count":m["baseline_count"],
+                    "reverse_cells":m["reverse"]["material"]["complete_output_cells"]}
+                    for m in f["motifs"]] if f else []})
+        available=[k for k in sorted(menu) if k not in workspaces]
+        view=dict(deepcopy(local_context), evidence={
+            "state":local["completeness_state"],
+            "baseline":local["baseline"]["material"]["complete_output_cells"],
+            "baseline_state":local["baseline"]["material"]["state"],
+            "resolved_n":local["baseline"]["material"]["raw_original_full_joint_resolved_n"],
+            "records":public,
+            "unvisited":[x["axes"] for x in local["unvisited"]]},
+            cohort_relations=[{"previous":x["previous"],"state":x["material"]["state"]}
+                              for x in comparisons],
+            available_inquiries=[{"id":k,"description":menu[k]["description"],
+                "axis_meanings":{str(a):v for a,v in menu[k]["axis_meanings"].items()}}
+                for k in available],
+            scope="SOURCE_LOCAL_CONCEPTUAL_COMPARISON_ONLY__NO_POOLED_ESTIMAND")
+        development=deepcopy(develop(deepcopy(view)))
+        if (type(development) is not dict or set(development)!=
+                {"concept","rival","disposition","reason","measurement_question","next_inquiry"}
+                or any(not isinstance(development[k],str) or not development[k].strip()
+                       for k in ("concept","rival","reason","measurement_question"))
+                or development["disposition"] not in
+                    ("RETAIN","ENRICH","REVISE","FRACTURE","NEGATE","UNRESOLVED")
+                or (development["next_inquiry"] is not None and
+                    (type(development["next_inquiry"]) is not str or development["next_inquiry"] not in available))):
+            raise ValueError("concept development must select an unvisited offered inquiry or stop")
+        current()
+        next_key=development["next_inquiry"]
+        limit=None
+        if next_key is not None:
+            if u.generation>=generation_cap:
+                limit="AUTHORITY_GENERATION_LIMIT__UNKNOWN"
+            elif len(selected)>=frontier_cap:
+                limit="AUTHORITY_FRONTIER_LIMIT__UNKNOWN"
+        record={"inquiry":key,"query":manifest(key,spec),"concept_before":prior,
+                "local_discovery":local,"cohort_comparisons":comparisons,
+                "development":development,"next_inquiry_limit":limit,
+                "interpretation_grade":"PROVISIONAL_CONCEPT_HYPOTHESIS_NOT_SOURCE_MEANING_OR_TRUTH"}
+        records[u.unit_ref.key]=record
+        sealed=seal("FF_CONCEPT_INQUIRY_RESULT",record)
+        children=() if next_key is None or limit else (unit(next_key,u,sealed),)
+        return AdaptiveUnitOutcome(unit_ref=u.unit_ref,sealed_result_ref=sealed,
+            proposal_basis_ref=seal("FF_CONCEPT_INQUIRY_PROPOSAL",{
+                "parent_result":sealed.as_dict(),"requested":next_key,"limit":limit}),
+            unit_result_state="SEALED_SOURCEFREE_CONCEPT_INQUIRY",
+            proposal_units=children)
+
+    search=execute_adaptive_exploration(discovery_authority=discovery_authority,
+        authority_registry=authority_registry,determinant_state_ref=determinant,
+        initial_units=(unit(seed),),evaluate_unit=evaluate,budget=query_budget)
+    current()
+    completed=[records[v.unit.unit_ref.key] for v in search.checkpoint.visits]
+    pending={selected[r.key] for r in search.unvisited_unit_refs}
+    return {"grade":"INTERNAL_SOURCEFREE_CONCEPT_DEVELOPMENT__NO_SOURCE_OR_WORLD_ISSUANCE",
+            "initial_concept":initial_concept,"concept":completed[-1]["development"]["concept"],
+            "records":completed,"menu":manifest_rows,"determinant_ref":determinant.as_dict(),
+            "search_ref":search.result_ref.as_dict(),"checkpoint":search.checkpoint.as_dict(),
+            "scheduler_state":search.completeness_state,
+            "unexamined":[{"id":k,"state":"UNKNOWN_SCHEDULED" if k in pending else "UNKNOWN_NOT_SELECTED"}
+                          for k in sorted(menu) if k not in workspaces],
+            "global_negative_claim":False,"semantic_truth_effect":False,
+            "actor_v3_effect":False,"pooled_joint":None}
