@@ -59,7 +59,8 @@ def validate(c, ledger, registry, pinned=True):
             require(q["dimensions"]["demonstrated"] == "NO_NEW_CRITERION_EXECUTION", "FALSE_EXECUTION")
             require(q["dimensions"]["independent_review"] == "NOT_ISSUED_FOR_CIC_CRITERION", "FALSE_INDEPENDENT_REVIEW")
             require(all(q["dimensions"][k] == "NO_NEW_GRANT" for k in ("source_authority","actor_authority","human_authority")), "FALSE_AUTHORITY")
-            require(bool(q["acceptance_candidate"] and q["remaining_boundary"] and q["falsifier"] and q["evidence"]), "EMPTY_COURT")
+            require(bool(q["acceptance_candidate"] and q["remaining_boundary"] and q["falsifier"] and (q["evidence"] or q.get("requirement_origin",{}).get("kind") == "HOME_DERIVED_INDEPENDENT_OF_RETURN")), "EMPTY_COURT")
+            require("requirement_origin" not in q or "refines" in q, "HOME_REFINEMENT_SOURCE_DRIFT")
             rv = q["review_coverage"]
             require(rv["implementation_coverage"] == q["dimensions"]["current_implementation"] and rv["execution_coverage"] == q["dimensions"]["demonstrated"], "COVERAGE_AXIS_DRIFT")
             require(set(rv["dimensions"]) == set(REVIEW_DIMENSIONS), "REVIEW_DIMENSION_DROP")
@@ -121,6 +122,14 @@ def validate(c, ledger, registry, pinned=True):
         require(q["refines"] in criteria and q["refines"].rsplit(".", 1)[0] == oid and q["refines"] not in refined, "REFINEMENT_PARENT_DRIFT")
         require(bool(q["paragraph_anchors"]) and all(a in route_by_anchor and oid in route_by_anchor[a]["obligation_ids"] for a in q["paragraph_anchors"]), "REFINEMENT_SOURCE_ANCHOR_DRIFT")
         require(all(e["original_id"] in obligations[oid]["function_refs"] for e in q["evidence"]), "REFINEMENT_FUNCTION_CROSSWALK")
+        if "requirement_origin" in q:
+            origin = q["requirement_origin"]
+            lane = obligations[oid]["lane"]
+            home = c["homes"][lane]
+            require(origin.get("kind") == "HOME_DERIVED_INDEPENDENT_OF_RETURN" and origin.get("lane") == lane and origin.get("home_commit") == home["commit"] and origin.get("home_blob") == home["blob"] and origin.get("home_path") == home["path"] and bool(origin.get("source_basis")) and origin.get("status") == "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD", "HOME_REFINEMENT_SOURCE_DRIFT")
+            require("scoped_return" not in q and q["criterion_status"] == "CRITERION_EQUIVALENCE_UNRECONCILED" and q["dimensions"]["current_implementation"] == "UNRECONCILED_AT_CRITERION_SCOPE", "HOME_REFINEMENT_FALSE_PROMOTION")
+            require(bool(q.get("whole_organism_navigation",{}).get("existing_capital")) and bool(q["whole_organism_navigation"].get("next_owner_work")), "HOME_REFINEMENT_NAVIGATION_DROP")
+            continue
         sr = q["scoped_return"]
         source = obs[sr["pr"]]
         require(sr["pr"] == q["evidence"][0]["pr"] and sr["execution_sha"] == source["test"]["executed_sha"] and sr["execution_grade"] == source["test"]["grade"] and sr["receipt"] == source["test"]["receipt"] and sr["first_consumer"] == source["first_consumer"], "REFINEMENT_RETURN_DRIFT")
@@ -161,7 +170,7 @@ def selftest(c,ledger,registry):
     check(lambda x:x["paragraph_routes"]["CO"].pop(),"SOURCE_ROUTE_COUNT")
     check(lambda x:x["paragraph_routes"]["CO"][0].update(obligation_ids=["NEIGHBOR-CIC-001"]),"WRONG_ROUTE_HOME")
     check(lambda x:x["paragraph_routes"]["CO"][0].update(route_grade="ACCEPTED"),"FALSE_SEMANTIC_RECEIVING")
-    check(lambda x:next(q for o in x["obligations"] for q in o["criteria"] if q["evidence"][0]["pr"]==1300).update(criterion_status="PASS"),"R30_FALSE_PROMOTION")
+    check(lambda x:next(q for o in x["obligations"] for q in o["criteria"] if q["evidence"] and q["evidence"][0]["pr"]==1300).update(criterion_status="PASS"),"R30_FALSE_PROMOTION")
     check(lambda x:x["whole_organism_acceptance_candidates"][0].update(state="PASS"),"FALSE_WHOLE_TRAJECTORY")
     check(lambda x:x["obligations"][0]["criteria"][0]["review_coverage"]["dimensions"].pop("integration"),"REVIEW_DIMENSION_DROP")
     check(lambda x:x["obligations"][0]["criteria"][0]["review_coverage"]["dimensions"]["integration"].update(outstanding_scope=[]),"DROPPED_DEFERRED_REVIEW")
@@ -181,7 +190,14 @@ def selftest(c,ledger,registry):
     check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["candidate_prs"].pop(),"UPSTREAM_SOURCE_DROP")
     check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["candidate_prs"][0].update(head="0"*40),"UPSTREAM_SOURCE_DRIFT")
     check(lambda x:x["source_contract"]["upstream_elasticity_candidate"]["criteria"].pop(),"UPSTREAM_CRITERION_DRIFT")
-    return 25
+    def homechild(x):
+        return next(q for o in x["obligations"] for q in o["criteria"] if "requirement_origin" in q)
+    check(lambda x:homechild(x)["requirement_origin"].update(home_blob="0"*40),"HOME_REFINEMENT_SOURCE_DRIFT")
+    check(lambda x:homechild(x).update(scoped_return={"criterion_execution":"PASS"}),"HOME_REFINEMENT_FALSE_PROMOTION")
+    check(lambda x:homechild(x).update(criterion_status="PASS"),"HOME_REFINEMENT_FALSE_PROMOTION")
+    check(lambda x:homechild(x)["requirement_origin"].update(source_basis=""),"HOME_REFINEMENT_SOURCE_DRIFT")
+    check(lambda x:homechild(x)["whole_organism_navigation"].pop("existing_capital"),"HOME_REFINEMENT_NAVIGATION_DROP")
+    return 30
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")
