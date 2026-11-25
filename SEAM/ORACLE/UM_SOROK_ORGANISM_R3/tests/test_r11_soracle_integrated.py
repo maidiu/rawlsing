@@ -2241,7 +2241,7 @@ class AcquiredExpressiveBodyR47(unittest.TestCase):
                         stage='speech';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
                         self.assertNotIn('vocal_cadence',rt.ledger.world()[1]['cues'][-1])
                     self.assertEqual(len(offers),1)
-                    actor=rt.snapshot('worker')
+                    actor=rt.ledger.actor('worker')[1]
                     aff=actor['expectations'][0]['affective_organizations'][0]
                     self.assertEqual(bool(aff.get('expressive_practice')),learn)
                     if not learn:
