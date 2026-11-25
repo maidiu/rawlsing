@@ -255,6 +255,12 @@ class _PackedCountrySelectors(Sequence):
     def dimension(self,row,field):
         return self.payloads[self.codes[row]][1+self._dimensions.index(field)]
 
+    def matches(self,row,target,native_only,include_component,states):
+        payload=self.payloads[self.codes[row]]
+        return ((states is None or payload[0] in states) and
+            (payload[1]==target or (not native_only and
+             (payload[2]==target or (include_component and payload[3]==target)))))
+
     def __getitem__(self,i):
         if isinstance(i,slice):
             return tuple(self[j] for j in range(*i.indices(len(self))))
@@ -345,8 +351,16 @@ class _RespondentEvents(Sequence[RespondentEvent]):
             # Original selector index order is the preexisting canonical
             # occurrence traversal; do not reorder/multiply matching events.
             rows=sorted(hits)
+        selectors=self.lane.selectors
+        if type(selectors) is _PackedCountrySelectors:
+            # Reject through the packed dimensions before reconstructing
+            # identities, occurrence strings and the full selector object.
+            for row in rows:
+                if selectors.matches(row,target_identity,native_only,include_component,states):
+                    yield selectors[row]
+            return
         for row in rows:
-            event = self.lane.selectors[row]
+            event = selectors[row]
             matches = event._native_question_identity == target_identity or (
                 not native_only and (
                     event._canonical_question_identity == target_identity
