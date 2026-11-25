@@ -479,7 +479,7 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='REPAIR':
         if attempt.object_ref is not None:
             worked_material_object=repair_artifact(
-                world,aid,loc,attempt.object_ref)
+                world,aid,loc,attempt.object_ref,actor_state=actors[aid])
             status=worked_material_object['status']
             output=worked_material_object['outcome']
         else:

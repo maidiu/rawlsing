@@ -68,6 +68,23 @@ def retain_exercised_power(actor, experience, objective_ref, location):
         'objective_success_not_a_motive':'NOT_INFERRED',
         'grade':GRADE,
     }
+    # A particular physically worked object is not an inferred project or
+    # generic motor score. Preserve only an actually self-selected and
+    # personally received repair of that object.
+    sel=experience.get('own_practical_selection') or {}
+    obj=(sel.get('world_request') or {}).get('material_object_ref')
+    if (operation=='REPAIR' and status=='PERFORMED' and not partner
+            and sel.get('status')=='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            and sel.get('actor')==actor['id'] and type(obj) is str
+            and sel.get('possible_end_trial') is None):
+        signs=[c for c in experience.get('perceived_cues',[])
+               if c.get('kind')=='performed_repair' and c.get('source_actor')==actor['id']
+               and c.get('material_object_ref')==obj
+               and 'material_artifact_repaired' in c.get('tags',[])]
+        if len(signs)==1:
+            receipt['worked_object_ref']=obj
+            receipt['own_selected_repair_sign_ref']=signs[0]['id']
+            receipt['own_selected_option_ref']=sel['option_id']
     prior.append(receipt)
     return {'kind':'RETAIN_EXERCISED_POWER',
             'ref':key,'configuration':configuration,
@@ -153,3 +170,80 @@ def situated_exercised_repertoire(constitution, access):
             'readset':sorted(set(r for row in out
                         for r in row['source_event_refs'])),
             'no_a_priori_independent_mastery':True,'grade':GRADE}
+
+
+def _qualified_repair_basis(actor,location,current):
+    """Bounded convergence of aggregate practice and distinct actual objects.
+
+    Modeled exposure is not a series of invented successes. Two actually
+    selected and personally received repairs are a separate requirement.
+    """
+    if current.get('actor')!=actor['id'] or current.get('operation')!='REPAIR' or not current.get('worked_object_ref'):
+        return None
+    def valid(x):
+        return (x.get('actor')==actor['id'] and x.get('operation')=='REPAIR'
+                and x.get('encounter_location')==location
+                and x.get('attempt_status_analyst_receipt')=='PERFORMED'
+                and x.get('participation_configuration')=='NO_PERCEIVED_JOINT_PARTICIPATION'
+                and type(x.get('worked_object_ref')) is str
+                and type(x.get('event_clock')) is int
+                and any(p.get('event')==x.get('event_ref')
+                        and p.get('experience_ref')==x.get('experience_ref')
+                        and p.get('practical_option_ref')==x.get('own_selected_option_ref')
+                        and x.get('own_selected_repair_sign_ref') in p.get('received_cue_refs',[])
+                        for p in actor.get('evidence_paths',[])))
+    if not valid(current):return None
+    prior=[x for x in actor.get('power_exercises',[]) if valid(x)
+           and x['event_clock']<current['event_clock']
+           and x['worked_object_ref']!=current['worked_object_ref']]
+    if not prior:return None
+    earlier=max(prior,key=lambda x:x['event_clock'])
+    periods=[p for p in actor.get('practice_exposures',[])
+             if p.get('actor')==actor['id'] and p.get('operation')=='REPAIR'
+             and p.get('location')==location
+             and p.get('grade')=='SOURCEFREE_CONDITIONED_AGGREGATE_PRACTICE'
+             and p.get('support_configuration')=='SOLO_COMPONENT_PRACTICE'
+             and type(p.get('end_clock')) is int and p['end_clock']<earlier['event_clock']
+             and type(p.get('modeled_participation_days')) in (int,float)
+             and p['modeled_participation_days']>0 and p.get('source_ref')]
+    if sum(p['modeled_participation_days'] for p in periods)<7:return None
+    return {'actor':actor['id'],'location':location,'operation':'REPAIR',
+            'aggregate_practice_refs':[p['id'] for p in periods],
+            'earlier_exercise_ref':earlier['id'],'later_exercise_ref':current['id'],
+            'distinct_worked_objects':[earlier['worked_object_ref'],current['worked_object_ref']],
+            'event_refs':[earlier['event_ref'],current['event_ref']],
+            'provisional_condition_increment':.34,
+            'not_universal_mastery_or_material_permission':True,'grade':GRADE}
+
+
+def possible_repair_technique(actor,experience,event_ref):
+    if experience.get('actor')!=actor['id']:return []
+    location=experience.get('location')
+    if active_repair_technique(actor,location):return []
+    rows=[x for x in actor.get('power_exercises',[])
+          if x.get('event_ref')==event_ref and x.get('experience_ref')==experience.get('ref')]
+    if len(rows)!=1:return []
+    basis=_qualified_repair_basis(actor,location,rows[0])
+    return [{'kind':'ACQUIRE_REPAIR_TECHNIQUE','basis':basis}] if basis else []
+
+
+def admit_repair_technique(actor,experience,event_ref,proposal):
+    if proposal not in possible_repair_technique(actor,experience,event_ref):
+        raise ValueError('REPAIR_TECHNIQUE_UNQUALIFIED_HISTORY')
+    b=proposal['basis'];row=next(x for x in actor['power_exercises'] if x['id']==b['later_exercise_ref'])
+    ident=stable_id('acquired_repair_technique',b)
+    row['acquired_repair_technique']={'id':ident,'basis':copy(b),
+        'fictional_component_facility_not_measured_skill':True,'grade':GRADE}
+    return {'kind':proposal['kind'],'technique_ref':ident,'grade':GRADE}
+
+
+def active_repair_technique(actor,location):
+    # Existing actor-local exercise state is the only source of the technical
+    # change. Neither the world request nor a semantic label can mint it.
+    for row in reversed(actor.get('power_exercises',[])):
+        rec=row.get('acquired_repair_technique')
+        if not rec or rec.get('basis',{}).get('location')!=location:continue
+        basis=_qualified_repair_basis(actor,location,row)
+        if basis and rec.get('basis')==basis and rec.get('id')==stable_id('acquired_repair_technique',basis):
+            return rec
+    return None

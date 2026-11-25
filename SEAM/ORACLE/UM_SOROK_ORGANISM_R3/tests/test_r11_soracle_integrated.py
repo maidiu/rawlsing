@@ -2060,3 +2060,104 @@ class UndertakingAttentionR45(unittest.TestCase):
                                      rt.ledger.actor('worker')[1]['evidence_paths']))
                 self.assertTrue(rt.verify()['valid'])
             finally:rt.close()
+
+
+class AcquiredRepairFacilityR46(unittest.TestCase):
+    def test_structurally_qualified_ordinary_practice_and_actual_repairs_change_later_material_result(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.material_conjunction import admit_authored_structural_history
+        from um_sorok_organism.practical_powers import active_repair_technique
+        results={}
+        with tempfile.TemporaryDirectory() as d:
+            for allowed,nominate in ((True,True),(True,False),(False,True)):
+                target=None;offered=[];phase='ordinary'
+                def callback(task,packet):
+                    if task=='expression':return {'task':task,'surface':'Ordinary work.'}
+                    if task=='actor_attempt':
+                        if phase=='repair':
+                            choices=[x for x in packet['practical_options']
+                                if x['operation']=='REPAIR'
+                                and x.get('world_request',{}).get('material_object_ref')==target
+                                and x.get('project_id') is None]
+                            self.assertTrue(choices)
+                            return {'task':task,'practical_option_id':choices[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        cs=packet.get('historically_possible_repair_techniques',[])
+                        if cs:offered.append((copy.deepcopy(cs[0]),copy.deepcopy(packet['experience']),
+                                             packet['evidence_path']['event']))
+                        return {'task':task,'candidates':cs if nominate else []}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/str((allowed,nominate)))
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    w=blank_world();w['sites']['home']['stock']=20
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'repair_training','object':'practice repair',
+                        'means':['REPAIR'],'priority':.5,'status':'active'}]
+                    spec={'grade':'EXPLICIT_SOURCEFREE_STRUCTURAL_HISTORY',
+                          'source_ref':'fictional:repair_training',
+                          'positions':[{'id':'training','actor':'worker','field':'training_access',
+                            'value':'admitted' if allowed else 'excluded','source_ref':'fictional:training',
+                            'effective_from':0,'effective_until':6}],
+                          'rules':[{'id':'training_gate','operation':'REPAIR','location':'home',
+                            'source_ref':'fictional:training_gate','effective_from':0,'effective_until':6,
+                            'all_of':[{'kind':'RECORDED_POSITION','field':'training_access','equals':'admitted'}]}]}
+                    admit_authored_structural_history(w,{'worker'},spec)
+                    rt.ledger.initialize(w,[a],source_seals=[
+                        ('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',spec)])
+                    source=rt.register_historical_routine_source({
+                        'kind':'QUALIFIED_ROUTINE_PRACTICE','actor':'worker','location':'home',
+                        'start_clock':0,'end_clock':7,'max_hours_per_active_day':3,
+                        'description':'bounded modeled component practice'})
+                    rt.background(7,processes=[{'kind':'QUALIFIED_ROUTINE_PRACTICE',
+                        'actor':'worker','location':'home','source_ref':source['source_ref'],
+                        'hours_per_active_day':3,'provisional_exposure_fraction':1.,
+                        'operation':'REPAIR','mode':'SOLO_COMPONENT_PRACTICE'}])
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(a['practice_exposures']),int(allowed))
+                    self.assertEqual(a['power_exercises'],[])
+                    self.assertEqual(a['memories'],[])
+                    # Three distinct materially produced artifacts, not
+                    # injected success or simulated technical measurements.
+                    refs=[]
+                    for _ in range(3):
+                        phase='ordinary';rt.step('worker',requested_action='REST')
+                        before=set(rt.ledger.world()[1]['material_objects'])
+                        self.assertEqual(rt.step('worker',requested_action='MAKE_OBJECT')['status'],'PERFORMED')
+                        created=set(rt.ledger.world()[1]['material_objects'])-before
+                        self.assertEqual(len(created),1)
+                        refs.append(created.pop())
+                    for target in refs[:2]:
+                        phase='ordinary';rt.step('worker',requested_action='REST')
+                        phase='repair';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                        self.assertEqual(rt.ledger.world()[1]['material_objects'][target]['condition'],.8)
+                    self.assertEqual(len(offered),int(allowed))
+                    a=rt.ledger.actor('worker')[1]
+                    technique=active_repair_technique(a,'home')
+                    self.assertEqual(bool(technique),allowed and nominate)
+                    self.assertIsNone(active_repair_technique(a,'workshop'))
+                    if allowed and not nominate:
+                        c,exp,event=offered[0];bad=copy.deepcopy(c)
+                        bad['basis']['distinct_worked_objects'][0]='invented'
+                        old=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'REPAIR_TECHNIQUE_UNQUALIFIED'):
+                            admit(a,exp,event,[bad])
+                        self.assertEqual(a,old)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    phase='ordinary';rt.step('worker',requested_action='REST')
+                    target=refs[2];phase='repair'
+                    self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    obj=rt.ledger.world()[1]['material_objects'][target]
+                    results[(allowed,nominate)]=obj['condition']
+                    self.assertEqual(obj['owner'],'worker')
+                    row=obj['objective_labor_history'][-1]
+                    self.assertEqual(row['material_stock_units'],1)
+                    self.assertEqual(bool(row.get('acquired_component_technique_ref')),allowed and nominate)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(results,{(True,True):.9,(True,False):.8,(False,True):.8})

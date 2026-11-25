@@ -16,6 +16,7 @@ from .expectation_afterlife import admit_activity_affect
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
 from .attention_field import received_undertaking_attention
+from .practical_powers import admit_repair_technique
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
@@ -70,7 +71,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_COSTLY_CARE_PRACTICE',
          'ACQUIRE_SITUATED_CULTURAL_REFERENCE',
          'REVISE_SITUATED_CULTURAL_REFERENCE',
-         'ACQUIRE_SOCIAL_VOCAL_COORDINATION','NO_CHANGE'}
+         'ACQUIRE_SOCIAL_VOCAL_COORDINATION','ACQUIRE_REPAIR_TECHNIQUE','NO_CHANGE'}
 KINDS={'MEDIATOR','TENSION','PRACTICE','EXPECTATION','DISCRIMINATION','RELATIONAL_INVESTMENT'}
 # The typed historic PRE-A0 relational family is supplied by the
 # owner-adjacent sourcefree relational read, not redefined locally.
@@ -393,6 +394,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             try:
                 report.append(admit_contrast_end(
                     actor,experience,event_ref,c))
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_REPAIR_TECHNIQUE':
+            try:
+                report.append(admit_repair_technique(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='NOTICE_PRIVATE_POSSIBLE_END':
