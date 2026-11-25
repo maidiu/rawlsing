@@ -5,6 +5,7 @@ single performed operation can belong to multiple contradictory activities.
 This is a derived and then actor-owned *research* process, not native V3.
 """
 from .types import copy, stable_id, GRADE
+from .distributed_power import accessible_human_counterparts
 
 
 def eligible_activities(constitution, recruited_form_ids, encounter):
@@ -40,7 +41,9 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
             x['means']=[m for m in p.get('means',[]) if m not in bindings or (
                 bindings[m].get('status','ACTIVE')=='ACTIVE'
                 and bindings[m].get('location')==encounter.location
-                and bindings[m].get('counterpart_ref') in present
+                and (bindings[m].get('counterpart_ref') in present
+                     or (m=='SIGNAL' and bindings[m].get('counterpart_ref')
+                         in accessible_human_counterparts(encounter)))
                 and any(j.get('id')==bindings[m].get('practice_ref')
                         and j.get('actor')==constitution.actor
                         and j.get('operation')==m
