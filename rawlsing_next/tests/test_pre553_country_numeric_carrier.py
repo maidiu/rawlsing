@@ -270,7 +270,17 @@ class CountryNumeric(unittest.TestCase):
                 open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                     expected_release_ref=direct.release_ref,country_receipt=replace(receipt,sha256="0"*64),
                     workload=workload,resolver=resolver,host=host,purpose=purpose)
-            resolver._record=replace(record,currentness="REVOKED")
+            # Bulk serving must not leak a successful prefix on mid-batch revocation.
+            from unittest.mock import patch
+            original_read=cold._read_s04_retained
+            def revoke(*args,**kwargs):
+                value=original_read(*args,**kwargs)
+                resolver._record=replace(record,currentness="REVOKED")
+                return value
+            with patch.object(cold,"_read_s04_retained",side_effect=revoke) as read_one:
+                with self.assertRaises(ValueError):
+                    cold.read_s04_many(((query.ref,0),(unary.ref,None)))
+                self.assertEqual(read_one.call_count,1)
             with self.assertRaises(ValueError):
                 cold.read_s04(query.ref)
 
