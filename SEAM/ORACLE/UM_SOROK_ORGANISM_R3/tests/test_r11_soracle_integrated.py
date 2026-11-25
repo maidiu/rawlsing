@@ -2365,3 +2365,123 @@ class FallibleInstitutionalExpectationR48(unittest.TestCase):
                     self.assertTrue(rt.verify()['valid'])
                 finally:rt.close()
             self.assertEqual(results,{True:('WAIT',0),False:('EAT',-1)})
+
+
+class StagedFamilyGenesisR49(unittest.TestCase):
+    def packet(self,who,purpose):
+        return {'input_kind':'THIN_BIOGRAPHY','source_grade':'EXPLICIT_FICTIONAL_HISTORICAL_INPUT',
+                'source_ref':'fictional:'+who,'biographical_context':{'ordinary_life':purpose},
+                'fictional_seed':{'projects':[{'object':purpose,'means':['REST'],'priority':.5}]}}
+
+    def test_actual_maternal_life_selects_distinct_counterpart_and_child_birth_cold(self):
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        from um_sorok_organism.storage import Conflict
+        outcomes={}
+        with tempfile.TemporaryDirectory() as d:
+            for first in ('REST','WAIT'):
+                chosen=[];constructed=[]
+                fallback=HeuristicSemanticProvider()
+                def callback(task,packet):
+                    if task=='adult_constructor':
+                        constructed.append(packet['actor_id'])
+                    if task=='family_pathway_selection':
+                        self.assertEqual(len(packet['eligible_pathways']),2)
+                        self.assertNotIn('counterpart_packet',str(packet['eligible_pathways']))
+                        self.assertEqual(packet['mother']['lived_genesis_episodes'][-1]['actor_felt_attempt'],first)
+                        pid='path-rest' if first=='REST' else 'path-wait'
+                        chosen.append(pid)
+                        return {'task':task,'pathway_id':pid}
+                    if task=='actor_attempt':
+                        return {'task':task,'action':first if packet['actor']['id']=='mother' else 'WAIT'}
+                    if task=='development':return {'task':task,'candidates':[]}
+                    return fallback.propose(task,packet)
+                service=ValidatingSemanticService(CallbackLLMProvider(callback))
+                db=str(Path(d)/first)
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    rt.initialize_antecedent_adult('mother','Mother',self.packet('mother','ordinary embodied life'))
+                    self.assertEqual(set(rt.ledger.actors()),{'mother'})
+                    rows=[{'id':'path-'+suffix,'source_ref':'fictional:path:'+suffix,
+                           'intersection_clock':1,'intersection_site':'home',
+                           'conception_clock':2,'birth_clock':5,
+                           'counterpart_id':'father-'+suffix,'counterpart_name':'Father '+suffix,
+                           'counterpart_packet':self.packet('father-'+suffix,'independent life '+suffix),
+                           'child_id':'nadia','child_name':'Nadia',
+                           'prior_shared_effects':'UNMODELED_NO_RETROACTIVE_WRITE'}
+                          for suffix in ('rest','wait')]
+                    sid=rt.register_family_pathways('mother',rows)['source_seal_id']
+                    with self.assertRaisesRegex(ValueError,'FAMILY_NO_SITUATED_PATHWAY'):
+                        rt.select_family_intersection(sid)
+                    self.assertEqual(constructed,['mother'])
+                    rt.step('mother')
+                    maternal=copy.deepcopy(rt.ledger.actor('mother')[1])
+                    earlier_events=copy.deepcopy(rt.ledger.events())
+                    entered=rt.select_family_intersection(sid)
+                    father=entered['actor'];self.assertEqual(father,'father-'+first.lower())
+                    self.assertEqual(constructed,['mother',father])
+                    self.assertEqual(rt.ledger.actor('mother')[1],maternal)
+                    self.assertEqual(rt.ledger.events()[:len(earlier_events)],earlier_events)
+                    world=rt.ledger.world()[1];family=world['family_genesis']
+                    self.assertNotEqual(family['selected_pathway']['maternal_proposal_state_digest'],
+                                        family['selected_pathway']['maternal_selection_state_digest'])
+                    self.assertEqual(world['relations'],{})
+                    self.assertEqual(set(rt.ledger.actors()),{'mother',father})
+                    self.assertEqual(rt.ledger.actor(father)[1]['projects'][0]['object'],
+                                     'independent life '+first.lower())
+                    with self.assertRaisesRegex(ValueError,'FAMILY_CONCEPTION_WRONG_SOURCE_OR_CLOCK'):
+                        rt.admit_family_conception()
+                    self.assertEqual(rt.step(father,requested_action='CARE',target='mother')['status'],'PERFORMED')
+                    rt.admit_family_conception()
+                    self.assertNotIn('nadia',rt.ledger.actors())
+                    w=rt.ledger.world()[1];actors=rt.ledger.actors();count=rt.verify()['events']
+                    with self.assertRaisesRegex(Conflict,'FAMILY_BIRTH_BOUNDARY'):
+                        rt.background(4)
+                    self.assertEqual(rt.ledger.world()[1],w)
+                    self.assertEqual(rt.ledger.actors(),actors)
+                    self.assertEqual(rt.verify()['events'],count)
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    for _ in range(4):
+                        if 'nadia' in rt.ledger.actors():break
+                        rt.advance_to_discontinuity(horizon=5-rt.ledger.world()[1]['clock'] or 1)
+                    self.assertEqual(rt.ledger.world()[1]['clock'],5)
+                    self.assertEqual(rt.ledger.actor('nadia')[1],newborn('nadia','Nadia'))
+                    self.assertEqual(rt.ledger.world()[1]['family_genesis']['birth']['biological_lineage_refs'],
+                                     ['mother',father])
+                    self.assertEqual(rt.ledger.world()[1]['family_genesis']['stage'],'CHILD_BORN')
+                    self.assertFalse(any('nadia' in x['participants'] for x in
+                                         rt.ledger.world()[1]['relations'].values()))
+                    self.assertEqual(rt.step('mother',requested_action='CARE',target='nadia')['status'],'PERFORMED')
+                    child=rt.ledger.actor('nadia')[1]
+                    self.assertGreater(child['body']['comfort'],.66)
+                    self.assertTrue(child['experienced_care_events'])
+                    self.assertTrue(rt.verify()['valid'])
+                    outcomes[first]=(father,child['body']['comfort'])
+                finally:rt.close()
+            self.assertNotEqual(outcomes['REST'][0],outcomes['WAIT'][0])
+
+    def test_no_lived_history_or_impossible_location_cannot_admit_counterpart(self):
+        from um_sorok_organism.storage import Conflict
+        with tempfile.TemporaryDirectory() as d:
+            rt=ConstitutiveRuntime(str(Path(d)/'db'))
+            try:
+                rt.initialize_antecedent_adult('mother','Mother',self.packet('mother','ordinary life'))
+                row={'id':'path','source_ref':'fictional:path','intersection_clock':1,
+                     'intersection_site':'workshop','conception_clock':2,'birth_clock':5,
+                     'counterpart_id':'father','counterpart_name':'Father',
+                     'counterpart_packet':self.packet('father','independent life'),
+                     'child_id':'nadia','child_name':'Nadia',
+                     'prior_shared_effects':'UNMODELED_NO_RETROACTIVE_WRITE'}
+                bad=copy.deepcopy(row);bad['counterpart_id']='workshop_steward'
+                with self.assertRaisesRegex(ValueError,'FAMILY_PATHWAY_OVERLAP_OR_IDENTITY'):
+                    rt.register_family_pathways('mother',[bad])
+                sid=rt.register_family_pathways('mother',[row])['source_seal_id']
+                rt.background(1)
+                before=rt.ledger.world()[1]
+                with self.assertRaisesRegex(ValueError,'FAMILY_NO_SITUATED_PATHWAY'):
+                    rt.select_family_intersection(sid)
+                self.assertEqual(rt.ledger.world()[1],before)
+                self.assertEqual(set(rt.ledger.actors()),{'mother'})
+                self.assertTrue(rt.verify()['valid'])
+            finally:rt.close()
