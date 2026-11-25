@@ -918,16 +918,16 @@
     "owner": "#1006 / S03 / PP26-07–10; coordinate #1315 A/B",
     "physical_destination": "COUNTRY_AT_A_TIME_COMPACT_NUMERIC_RECONSTRUCTIBLE_LOGICAL_C11",
     "s3": "REFERENCE_FALLBACK_NOT_EXPANDED_SHIPPING_PREREQUISITE",
-    "code_grade": "SOURCEFREE_EXECUTED_AT_D40727F0__LATEST_IN_PROGRESS__BROAD_CUSTODY_RED",
+    "code_grade": "LATEST_WIDE_SOURCEFREE_PASS__BROAD_CUSTODY_RED__ORIGINAL_AND_RECEIVING_HELD",
     "remaining": [
       "true-grain issued routing/logical materialization and repeated linear admission checks without weakening authority",
       "closure bytes at representative breadth, native host RSS and operator resume, original source rights/projections/weights and S2-F/S05",
       "independent review and equivalent-carrier protected paired receiving"
     ],
     "hold": "HQ_CURRENTNESS_HOLD__R24_COUNTRY_NUMERIC_RECEIVING_PENDING",
-    "sourcefree_executed_at_sha": "d40727f0be20661af7be2899422957983e987e4a",
-    "sourcefree_executed_tests": "d40727f0 wide 100 distinct I03 + I05 oracle PASS; latest sourcefree candidate scoped status in nov25_true_grain_replay_continuation",
-    "exact_head_run": 45684218987,
+    "sourcefree_executed_at_sha": "e6f89588237acd05388c4a6a6112915fa06f6c98",
+    "sourcefree_executed_tests": "14 carrier/hostile PASS; 3 economics PASS/1 skip; 100 distinct I03 + I05 exact oracle/cold PASS; broader 49 PASS/6 inherited mandatory resolver FAIL",
+    "exact_head_run": 45684457534,
     "prior_run": 45500498743,
     "mechanical_fixture": {
       "cells": 130000,
@@ -1335,10 +1335,31 @@
       },
       "latest_run": 45684457534,
       "latest_wide_job": 139453248096,
-      "latest_wide_status": "in_progress",
+      "latest_wide_status": "success",
       "latest_hostile_job": 139453247598,
-      "latest_hostile_status": "in_progress",
-      "latest_metrics": null,
+      "latest_hostile_status": "failure",
+      "latest_metrics": {
+        "wide_job": 139453248096,
+        "wide_status": "PASS",
+        "execution_s": 41.124926649,
+        "admissions_s": 17.002960789,
+        "routing_digest_s": 15.576010854,
+        "prepare_s": 13.552171024,
+        "replay_projection_hash_s": 0.337801223,
+        "replay_census_s": 0.323099902,
+        "i03_100_s": 4.216159526,
+        "publication_s": 5.266036907,
+        "cold_s": 14.346077112,
+        "cold_bulk_open_100_s": 3.389128212,
+        "peak_kib": 452756,
+        "unique_file_bytes": 7581798,
+        "allocated_bytes": 8343552,
+        "manifest_bytes": 1361669,
+        "logical_manifest_bytes": 7575161,
+        "cas_new_bytes": 6220129,
+        "hostile": "14 PASS; smaller economics 3 PASS / 1 skip; broad 49 PASS / 6 FAIL mandatory resolver",
+        "grade": "SOURCEFREE_SEPARATE_CI_NOT_CAUSAL_SPEED_COMPARISON"
+      },
       "owner_paths": [
         "rawlsing_next/pre553_c11_integrity.py",
         "rawlsing_next/pre553_c11_ingest.py",
@@ -1353,7 +1374,20 @@
         "Cold canonical closure expansion, incremental useful outputs, host RSS and production lifecycle still unqualified; original source/retention rights, independent review and protected receiving held",
         "Six inherited custody failures mandatory resolver #1162; no waiver; full FIABC RUN5 six-terminal comparison and unbanked host logs remain unverified"
       ],
-      "hold": "HQ_CURRENTNESS_HOLD__R24_COUNTRY_NUMERIC_RECEIVING_PENDING"
+      "hold": "HQ_CURRENTNESS_HOLD__R24_COUNTRY_NUMERIC_RECEIVING_PENDING",
+      "next_owner_source": {
+        "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "function": "materialize_native_preimages",
+        "lines": [
+          570,
+          571,
+          824,
+          845
+        ],
+        "other_owner_pr": 1315,
+        "other_owner_head": "291019ca70635a85dbb12d99b7cad0f979ad6f27",
+        "grade": "SOURCE_STATIC_AT_LATEST_SHA_NOT_IMPLEMENTED"
+      }
     }
   }
 }
