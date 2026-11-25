@@ -288,6 +288,8 @@ class _CountryEventEntries(Sequence):
     def __getitem__(self,i):
         if isinstance(i,slice):
             return tuple(self[j] for j in range(*i.indices(len(self))))
+        from operator import index
+        i=index(i)
         if i<0:
             i+=len(self)
         if not 0<=i<len(self):
@@ -320,6 +322,8 @@ class _InsertedRoutingEntries(Sequence):
     def __getitem__(self,i):
         if isinstance(i,slice):
             return tuple(self[j] for j in range(*i.indices(len(self))))
+        from operator import index
+        i=index(i)
         if i<0:
             i+=len(self)
         if not 0<=i<len(self):
