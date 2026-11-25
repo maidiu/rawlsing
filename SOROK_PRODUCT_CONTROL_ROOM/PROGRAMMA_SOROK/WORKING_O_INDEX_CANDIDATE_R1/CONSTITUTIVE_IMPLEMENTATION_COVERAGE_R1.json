@@ -87,13 +87,13 @@
     },
     "o_index": {
       "commit": "571a0284222d9d291f427da89419e305128fe98c",
-      "ledger_blob": "2c4be2b388d219340e8b60189fa412423cb6a511",
+      "ledger_blob": "72cc3610abb16012b253f3150fca98f156a88c15",
       "registry_blob": "f530cf193cc0f8c3d93324b5e2b865a4efa3bd34",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json",
       "original_functions": 144,
-      "relationships": 565,
-      "pr_observations": 169,
-      "ledger_intake_parent": "6e0f5651d903d95393a188698b4469e15366f10d"
+      "relationships": 574,
+      "pr_observations": 171,
+      "ledger_intake_parent": "a9c93a3b8ef8d540718aaf57280cf3761b2bc0ba"
     },
     "sorokuda": {
       "commit": "9b8fcc86e3614f90f4be560004d77a181ad99d1c",
@@ -605,7 +605,7 @@
   },
   "counts": {
     "obligations": 58,
-    "criteria": 174,
+    "criteria": 177,
     "CO": 34,
     "NEIGHBOR": 24,
     "active_source_blocks": {
@@ -614,17 +614,17 @@
     },
     "criterion_status_counts": {
       "HISTORICAL_OR_BOUNDED_EXECUTION_RELATED": 60,
-      "CRITERION_EQUIVALENCE_UNRECONCILED": 45,
+      "CRITERION_EQUIVALENCE_UNRECONCILED": 48,
       "DIRECT_SOURCE_RELATED_PARTIAL": 49,
       "DOCUMENTARY_RELATED_ONLY": 15,
       "RELATED_EXECUTION_AFFECTED_BY_REJECTED_DEPENDENCY": 5
     },
     "review_coverage": {
-      "criterion_count": 174,
-      "dimension_count": 1218,
+      "criterion_count": 177,
+      "dimension_count": 1239,
       "criterion_specific_review_evidenced": 0,
       "criterion_dimension_status_counts": {
-        "NOT_REVIEWED": 1218
+        "NOT_REVIEWED": 1239
       },
       "explicit_deferred_source_scopes": 16,
       "scope_note": "No claim historical reviews are absent; source-specific review debt count is initial named intake, not total review denominator."
@@ -3955,6 +3955,19 @@
                 "pr": 1360,
                 "original_id": "C4"
               }
+            },
+            {
+              "pr": 1367,
+              "original_id": "C7",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C7"
+              }
             }
           ],
           "remaining_boundary": "Cross-domain material and original source scope held",
@@ -4025,6 +4038,30 @@
                   "field": "test"
                 },
                 "execution_sha": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C7"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -4657,6 +4694,303 @@
               }
             },
             "deferred_source_scopes": []
+          }
+        },
+        {
+          "id": "CO-CIC-007.05",
+          "acceptance_candidate": "An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [
+            {
+              "pr": 1367,
+              "original_id": "C7",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C7"
+              }
+            },
+            {
+              "pr": 1367,
+              "original_id": "M04",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "M04"
+              }
+            }
+          ],
+          "remaining_boundary": "R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Compare matched actual conditions while independently varying the actor's acquired means, the effective rights/controller/resource arrangement and received evidence; conserve labor time, stock, settled claims and separate actor outcomes. Refuse invented consent, inferred title, fictitious transfer or costless reproduction; allow legitimate null and divergent appraisal.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement CO-CIC-007.05; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C7"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "M04"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              }
+            ],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted. Residual: R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-007.01",
+          "paragraph_anchors": [
+            "CO-L0323",
+            "CO-L0325",
+            "CO-L0331",
+            "CO-L0339",
+            "CO-L0352",
+            "CO-L0354",
+            "CO-L0389",
+            "CO-L0391"
+          ],
+          "refinement_scope": "Material/institutional agency and independent ordinary reproduction; no new function identity or engineering commission",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "An actual ordinary act of work/care/practice may develop an actor's own means while reproducing an independently controlled material condition. Distinguish who performs, who owns/controls the means and output, who pays material and temporal costs, who can subsequently use them, and what each actor receives or learns. Vary effective access independently of acquired capacity and subsequent agency; actual appropriation/constraint need not be known or accepted.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "C7 historical differentiated response under social powers requires C9 consumer; O08 independent coactor/material labor, M04 reproduction constraints, M12 collective infrastructure, C4 material social lives and C8 world occurrence/access. SOROK N09 is fallible autobiographical memory/meaning, not institutional access; do not confuse with similarly numbered upstream N9. R17 distinguishes stock/access/title/actual feeding and distinct signers' change of shared rights; R19 world-owned controller, terms receipt/acceptance, actual output, paid vs due/unpaid wage, employer-funded sanction/relief and household reproduction. R14 actual separate contributions change shared material access for nonparticipants. R44 compressed structural temporal condition, R46 acquired repair technique, R48 notice vs world enforcement and revisable actor expectation are complementary, not equivalent. R28 joins R46-derived facility to actual visitor material production and independent repair; R27 joins R50 into a polycentric interval. P4 advance -> P5 experience/attention -> P6 earned object recognition are protected sourcefree access/continuity capital, not institutional science. Effective enforceable arrangement, objective material contribution/cost/appropriation, personally received condition, acquired means, prospective end, actual exercise, later private meaning and collective transformation must vary separately; no universal power or moral score. Preserve everyday reproduction and invisible third-party cost without converting every encounter into labor-game or political instruction.",
+            "next_owner_work": "R28 demonstrates sequential material production and independently acquired technique under qualified access, not generalized wage/household/institutional reproduction. R17/R19 and R44/R46/R48 are bounded antecedent capital. Preserve P005 partial, P016 open. No general social power or causal rate claim.",
+            "evidence_limit": "Related bounded implementation; no full criterion execution/independent review; owner semantic receiving held.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1367,
+              "field": "historical_material_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "eaab63f13e5e9592d1ea5558d8aa5effd46cd946",
+                "line": 273,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c6560494af1cbf960836c345c337b0480b5fd72f",
+                "line": 84,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "5598e1e727a62cf2699e02834c13857911349454"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 41,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py",
+                "blob": "260e44580f93da53fd0d8bf1f82c3e5dee5e584c",
+                "line": 24,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+                "blob": "af556c143e7e4eaa2f60a68fa402954091737dd4",
+                "line": 114,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "REMONT/SOROK/OPEN_DEFECTS.md",
+                "blob": "92dd597a753b995ff8776a853615f0aabeb0af10",
+                "line": 167,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "91e46a205cfa688f4196c849ec514c2dd55974b0",
+                "line": 456,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_shared_material_practice_r28.py",
+                "blob": "5ac296931d0eee6f89393651edfbcbe0e5b64fb4",
+                "line": 110,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_objects.py",
+                "blob": "3b0f2fd54d1624e98ee603ec234839c22d5917c7",
+                "line": 37,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_powers.py",
+                "blob": "02a80b65de129c74ab07d2e9df0e513cc2c1eff6",
+                "line": 244,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "9c7629c29664e7f08b4cd48cbacad12a58d72cdc",
+                "line": 309,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c5f283c28eae9916685fa3cf48c2caadf23ce18a",
+                "line": 232,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              }
+            ]
           }
         }
       ],
@@ -6788,6 +7122,19 @@
                 "pr": 1364,
                 "original_id": "M21"
               }
+            },
+            {
+              "pr": 1366,
+              "original_id": "M21",
+              "observed_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1366,
+                "original_id": "M21"
+              }
             }
           ],
           "remaining_boundary": "Specific relational necessity and R30 receiving held",
@@ -6882,6 +7229,30 @@
                   "field": "test"
                 },
                 "execution_sha": "85d893d5ae8c7baffaed3f8278803dc5eb5781d9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "original_id": "M21"
+                },
+                "source_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "test"
+                },
+                "execution_sha": "01df93ee35271098970b54f1a7a983024e26fb18",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -10809,6 +11180,19 @@
                 "pr": 1364,
                 "original_id": "C5"
               }
+            },
+            {
+              "pr": 1366,
+              "original_id": "M21",
+              "observed_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1366,
+                "original_id": "M21"
+              }
             }
           ],
           "remaining_boundary": "Counterfactual causal necessity not automatic; rejected R30 cannot count",
@@ -10879,6 +11263,30 @@
                   "field": "test"
                 },
                 "execution_sha": "85d893d5ae8c7baffaed3f8278803dc5eb5781d9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "original_id": "M21"
+                },
+                "source_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "test"
+                },
+                "execution_sha": "01df93ee35271098970b54f1a7a983024e26fb18",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -12798,6 +13206,265 @@
               }
             },
             "deferred_source_scopes": []
+          }
+        },
+        {
+          "id": "CO-CIC-020.03",
+          "acceptance_candidate": "Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [
+            {
+              "pr": 1367,
+              "original_id": "C7",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C7"
+              }
+            }
+          ],
+          "remaining_boundary": "R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Compare matched actual conditions while independently varying the actor's acquired means, the effective rights/controller/resource arrangement and received evidence; conserve labor time, stock, settled claims and separate actor outcomes. Refuse invented consent, inferred title, fictitious transfer or costless reproduction; allow legitimate null and divergent appraisal.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement CO-CIC-020.03; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C7"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              }
+            ],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome. Residual: R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-020.01",
+          "paragraph_anchors": [
+            "CO-L0924",
+            "CO-L0928",
+            "CO-L0939",
+            "CO-L0956",
+            "CO-L0962",
+            "CO-L0964",
+            "CO-L0968"
+          ],
+          "refinement_scope": "Material/institutional agency and independent ordinary reproduction; no new function identity or engineering commission",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "Institutional authority is a historically produced effective relation, not a permission label or an actor's assent. Distinguish actual resource/controller power, finite cost of its enforcement, a public claim/legitimate genre, actor-specific learned expectation, refusal/collective transformation, and independently binding consequences for nonparticipants. An institution can sustain life while reproducing domination; no universal harm, approval, or consciousness outcome.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "C7 historical differentiated response under social powers requires C9 consumer; O08 independent coactor/material labor, M04 reproduction constraints, M12 collective infrastructure, C4 material social lives and C8 world occurrence/access. SOROK N09 is fallible autobiographical memory/meaning, not institutional access; do not confuse with similarly numbered upstream N9. R17 distinguishes stock/access/title/actual feeding and distinct signers' change of shared rights; R19 world-owned controller, terms receipt/acceptance, actual output, paid vs due/unpaid wage, employer-funded sanction/relief and household reproduction. R14 actual separate contributions change shared material access for nonparticipants. R44 compressed structural temporal condition, R46 acquired repair technique, R48 notice vs world enforcement and revisable actor expectation are complementary, not equivalent. R28 joins R46-derived facility to actual visitor material production and independent repair; R27 joins R50 into a polycentric interval. P4 advance -> P5 experience/attention -> P6 earned object recognition are protected sourcefree access/continuity capital, not institutional science. Effective enforceable arrangement, objective material contribution/cost/appropriation, personally received condition, acquired means, prospective end, actual exercise, later private meaning and collective transformation must vary separately; no universal power or moral score. Preserve everyday reproduction and invisible third-party cost without converting every encounter into labor-game or political instruction.",
+            "next_owner_work": "R17 food access/collective change, R19 employer-funded sanction/relief, R14 separate actual contributions, R48 fallible notice and dated gate and R28 bounded structural access are complementary sourcefree courts. A common longitudinal reproduction/authority/actor-interpretation trajectory across unequal roles, cost, exits and changed conditions is not established by these scopes. Native law and science held.",
+            "evidence_limit": "Related bounded implementation; no full criterion execution/independent review; owner semantic receiving held.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1367,
+              "field": "historical_material_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "eaab63f13e5e9592d1ea5558d8aa5effd46cd946",
+                "line": 273,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c6560494af1cbf960836c345c337b0480b5fd72f",
+                "line": 84,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "5598e1e727a62cf2699e02834c13857911349454"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 41,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py",
+                "blob": "260e44580f93da53fd0d8bf1f82c3e5dee5e584c",
+                "line": 24,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+                "blob": "af556c143e7e4eaa2f60a68fa402954091737dd4",
+                "line": 114,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "REMONT/SOROK/OPEN_DEFECTS.md",
+                "blob": "92dd597a753b995ff8776a853615f0aabeb0af10",
+                "line": 167,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "91e46a205cfa688f4196c849ec514c2dd55974b0",
+                "line": 456,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_shared_material_practice_r28.py",
+                "blob": "5ac296931d0eee6f89393651edfbcbe0e5b64fb4",
+                "line": 110,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_objects.py",
+                "blob": "3b0f2fd54d1624e98ee603ec234839c22d5917c7",
+                "line": 37,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_powers.py",
+                "blob": "02a80b65de129c74ab07d2e9df0e513cc2c1eff6",
+                "line": 244,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "9c7629c29664e7f08b4cd48cbacad12a58d72cdc",
+                "line": 309,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c5f283c28eae9916685fa3cf48c2caadf23ce18a",
+                "line": 232,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              }
+            ]
           }
         }
       ],
@@ -24243,6 +24910,19 @@
                 "pr": 1360,
                 "original_id": "C8"
               }
+            },
+            {
+              "pr": 1367,
+              "original_id": "C8",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C8"
+              }
             }
           ],
           "remaining_boundary": "Full user object/custody consequence matrix held",
@@ -24313,6 +24993,30 @@
                   "field": "test"
                 },
                 "execution_sha": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C8"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
                 "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
@@ -25201,6 +25905,301 @@
               }
             },
             "deferred_source_scopes": []
+          }
+        },
+        {
+          "id": "NEIGHBOR-CIC-006.07",
+          "acceptance_candidate": "Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [
+            {
+              "pr": 1367,
+              "original_id": "C8",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C8"
+              }
+            },
+            {
+              "pr": 1367,
+              "original_id": "C4",
+              "observed_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1367,
+                "original_id": "C4"
+              }
+            }
+          ],
+          "remaining_boundary": "R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Compare matched actual conditions while independently varying the actor's acquired means, the effective rights/controller/resource arrangement and received evidence; conserve labor time, stock, settled claims and separate actor outcomes. Refuse invented consent, inferred title, fictitious transfer or costless reproduction; allow legitimate null and divergent appraisal.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived refinement NEIGHBOR-CIC-006.07; no criterion review",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C8"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "original_id": "C4"
+                },
+                "source_head": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1367,
+                  "field": "test"
+                },
+                "execution_sha": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+              }
+            ],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "architectural_fidelity: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "implementation_correctness: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "causal_adequacy: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "integration: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "computational_economy: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "historical_inheritance: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "independent_review: Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs. Residual: R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-NEIGHBOR-UX (interpretation/user surface); CO/P2-P6/MI-III/world owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "NEIGHBOR-CIC-006.01",
+          "paragraph_anchors": [
+            "NEIGHBOR-L0097",
+            "NEIGHBOR-L0099",
+            "NEIGHBOR-L0101",
+            "NEIGHBOR-L0103",
+            "NEIGHBOR-L0105",
+            "NEIGHBOR-L0107"
+          ],
+          "refinement_scope": "Material/institutional agency and independent ordinary reproduction; no new function identity or engineering commission",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "NEIGHBOR",
+            "home_commit": "3ac178f0b3b24ca4d4fe0f5d08b9f2100a8623a2",
+            "home_blob": "fa9ccd65aede455f1826d1812512e3d27714521f",
+            "home_path": "SOROK_PRODUCT_CONTROL_ROOM/NEIGHBORMULCH/12_NEIGHBOR_THEORYMULCH_CURRENT.md",
+            "source_basis": "Actual visitor and actor labor can leave distinct enduring produced effects on the same object while maker, worker, possessor, controller, ownership, compensation, legal use and relational meaning remain separate. Distinguish shared material history from coordinated intention, recognition, technical transmission and transfer of title; allow finite exposure to consequence without hidden knowledge and actual independently incurred third-party costs.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "C7 historical differentiated response under social powers requires C9 consumer; O08 independent coactor/material labor, M04 reproduction constraints, M12 collective infrastructure, C4 material social lives and C8 world occurrence/access. SOROK N09 is fallible autobiographical memory/meaning, not institutional access; do not confuse with similarly numbered upstream N9. R17 distinguishes stock/access/title/actual feeding and distinct signers' change of shared rights; R19 world-owned controller, terms receipt/acceptance, actual output, paid vs due/unpaid wage, employer-funded sanction/relief and household reproduction. R14 actual separate contributions change shared material access for nonparticipants. R44 compressed structural temporal condition, R46 acquired repair technique, R48 notice vs world enforcement and revisable actor expectation are complementary, not equivalent. R28 joins R46-derived facility to actual visitor material production and independent repair; R27 joins R50 into a polycentric interval. P4 advance -> P5 experience/attention -> P6 earned object recognition are protected sourcefree access/continuity capital, not institutional science. Effective enforceable arrangement, objective material contribution/cost/appropriation, personally received condition, acquired means, prospective end, actual exercise, later private meaning and collective transformation must vary separately; no universal power or moral score. Preserve everyday reproduction and invisible third-party cost without converting every encounter into labor-game or political instruction.",
+            "next_owner_work": "R28 actual maker/owner divergence, stock debit, distinct repair histories and cold technical difference .90 vs .80; denied grant, replay and finite view. Sequential work not joint coordination, title transfer, legal power, wage exchange, mutual recognition or full actor/human deployment. R14 collective access and R19 labor/cost are adjacent capital.",
+            "evidence_limit": "Related bounded implementation; no full criterion execution/independent review; owner semantic receiving held.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1367,
+              "field": "historical_material_correspondence"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "eaab63f13e5e9592d1ea5558d8aa5effd46cd946",
+                "line": 273,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c6560494af1cbf960836c345c337b0480b5fd72f",
+                "line": 84,
+                "observed_at": "e4e80e3101fd3fca31fed53095863f9e4c35243b"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "5598e1e727a62cf2699e02834c13857911349454"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+                "blob": "c5418662159aa81be8d51bc8a0578744f59758fa",
+                "line": 41,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py",
+                "blob": "260e44580f93da53fd0d8bf1f82c3e5dee5e584c",
+                "line": 24,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
+                "blob": "af556c143e7e4eaa2f60a68fa402954091737dd4",
+                "line": 114,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "REMONT/SOROK/OPEN_DEFECTS.md",
+                "blob": "92dd597a753b995ff8776a853615f0aabeb0af10",
+                "line": 167,
+                "observed_at": "85e7166aeee3af25e59ebbb3b48115a498bcdc4a"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/NEIGHBORMULCH/neighbor_runtime.py",
+                "blob": "91e46a205cfa688f4196c849ec514c2dd55974b0",
+                "line": 456,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/NEIGHBORMULCH/tests/test_neighbor_shared_material_practice_r28.py",
+                "blob": "5ac296931d0eee6f89393651edfbcbe0e5b64fb4",
+                "line": 110,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/material_objects.py",
+                "blob": "3b0f2fd54d1624e98ee603ec234839c22d5917c7",
+                "line": 37,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/practical_powers.py",
+                "blob": "02a80b65de129c74ab07d2e9df0e513cc2c1eff6",
+                "line": 244,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/world.py",
+                "blob": "9c7629c29664e7f08b4cd48cbacad12a58d72cdc",
+                "line": 309,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_labor_dependency_r19.py",
+                "blob": "c5f283c28eae9916685fa3cf48c2caadf23ce18a",
+                "line": 232,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_institutional_food_power_r17.py",
+                "blob": "558b9b5bfd093b38f0c08168862638edf89c99d7",
+                "line": 151,
+                "observed_at": "d73a57ad9bc3252fd3cca46ce7aa27d34b201cab"
+              }
+            ]
           }
         }
       ],
@@ -28819,6 +29818,19 @@
                 "pr": 891,
                 "original_id": "A3"
               }
+            },
+            {
+              "pr": 1366,
+              "original_id": "O08",
+              "observed_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "Related bounded sourcefree actual consumer; not complete criterion execution",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1366,
+                "original_id": "O08"
+              }
             }
           ],
           "remaining_boundary": "Historic actor movement scope; full polycentric audience court held",
@@ -28866,6 +29878,30 @@
                 },
                 "execution_sha": null,
                 "execution_grade": "NOT_PROMOTED"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "original_id": "O08"
+                },
+                "source_head": "01df93ee35271098970b54f1a7a983024e26fb18",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "NO_SUBMITTED_PR_REVIEW_OBSERVED__INDEPENDENT_SCOPE_HELD",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No independent criterion review",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1366,
+                  "field": "test"
+                },
+                "execution_sha": "01df93ee35271098970b54f1a7a983024e26fb18",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -44826,6 +45862,25 @@
       "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD",
       "cross_lineage_join": "R26 × R49 executed, R50 separate; MI separate protected sourcefree scope",
       "historical_source_comparison": "MI H1 is real protected sourcefree capital: query_relations rebuilds canonical graph and revalidates support; unknown node returns UNKNOWN, source mismatch refuses, query_depth is WORLD-only and explicitly grants neither actor nor user knowledge. advance_independent_activity consumes qualified physical depth then actual P4 S46 ordinary activity; missing/invalid depth HELD, not negative, no gaze prerequisite. Independent reviewer closure at 0b0eb94... found old postdating RED repaired, source withholding makes graph read refuse and exact restoration restores qualified read; protected #907 receives exact reviewed code at 1f77f203... . This is source-qualified objective depth, not proof of past independent actor choice or psychic memory. R26 is distinct actual forward actor-owned receipt and change, not H1 backfill. R49 admission only for family counterpart/child preserves prior actor/world history; existing identity reuse and previous shared effects held. SOROK 39 causal burden + 70 bounded slack + SEAM/24 R5 distinguish objective history, source support, sufficient operative state before independent choice and new actor-specific reception. Reuse current owners; do not copy an H1 event into memory or use old events to manufacture motive. REMONT R17 #1230 P018 303 normal/optimized accepts full history-integrity preflight at reviewed 28bf7fc... only; chain integrity does not certify source truth or MI/R26 compatibility; queue P018 partial. No claim of direct MI import into R26. Treat source invalidation, admission time vs effective time, actor access and subsequent action as different facts. Preserve exact commitments and uncertainty, including conflicting branch-local completions; never force all-fork shared truth."
+    },
+    {
+      "id": "CIC-REFINE-20261125-MATERIAL-AGENCY-1",
+      "predecessor_commit": "a9c93a3b8ef8d540718aaf57280cf3761b2bc0ba",
+      "predecessor_blob": "b1c13839e567da3967bc79549b20f351b31ec7bb",
+      "prior_criterion_count": 174,
+      "added_criterion_ids": [
+        "CO-CIC-007.05",
+        "CO-CIC-020.03",
+        "NEIGHBOR-CIC-006.07"
+      ],
+      "source_blocks": "719 frozen HOME routes conserved; current CO #1331 material-power L343–427 and NEIGHBOR #1332 material object and care passages; owner receiving held",
+      "new_prs": [
+        1366,
+        1367
+      ],
+      "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD",
+      "cross_lineage_join": "R27 joins R26 × R50; R28 actual reciprocal R46 facility consumer; exact branch tests",
+      "historical_source_comparison": "C7 historical differentiated response under social powers requires C9 consumer; O08 independent coactor/material labor, M04 reproduction constraints, M12 collective infrastructure, C4 material social lives and C8 world occurrence/access. SOROK N09 is fallible autobiographical memory/meaning, not institutional access; do not confuse with similarly numbered upstream N9. R17 distinguishes stock/access/title/actual feeding and distinct signers' change of shared rights; R19 world-owned controller, terms receipt/acceptance, actual output, paid vs due/unpaid wage, employer-funded sanction/relief and household reproduction. R14 actual separate contributions change shared material access for nonparticipants. R44 compressed structural temporal condition, R46 acquired repair technique, R48 notice vs world enforcement and revisable actor expectation are complementary, not equivalent. R28 joins R46-derived facility to actual visitor material production and independent repair; R27 joins R50 into a polycentric interval. P4 advance -> P5 experience/attention -> P6 earned object recognition are protected sourcefree access/continuity capital, not institutional science. Effective enforceable arrangement, objective material contribution/cost/appropriation, personally received condition, acquired means, prospective end, actual exercise, later private meaning and collective transformation must vary separately; no universal power or moral score. Preserve everyday reproduction and invisible third-party cost without converting every encounter into labor-game or political instruction."
     }
   ]
 }
