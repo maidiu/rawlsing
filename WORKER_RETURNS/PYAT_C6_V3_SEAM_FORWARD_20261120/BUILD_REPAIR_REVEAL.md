@@ -56,3 +56,8 @@ Only when C5/C6 first fault is actually green at the new **exact repair HEAD**, 
 - **Authority:** independent nonauthor G5, original source permission, scientific issuer, V3/actor law, host/lease attestations and protected PRE-MAIN/CURRENT_PROGRESS paired CAS are unissued. #1148 remains a live one-PROGRAMMA draft. Add evidence receipt there and #1097; do NOT modify another active author-owned plan or REMONT ledger.
 
 **Status:** `PYAT_C6_AUTHENTICITY_REPAIR_COMMITTED__22_22_C5_AND_33_34_C6_WORKER_MAC_AT_BB559505__REPAIR_SHA_NOT_EXECUTED__EXTERNAL_C6_PIN_REQUIRED__NO_ACTOR_OR_PARTNER_ISSUER__HQ_CURRENTNESS_HOLD__PROTECTED_CAS_HELD`.
+
+
+### Reciprocal PYAT G4 — observation and silence at C6 (2026-11-25)
+
+[Working G4 exact receipt](https://github.com/maidiu/rawlsing/commit/b8647a0e299300745a587164bd89889a2db451b0); [Field Forge HOME](https://github.com/maidiu/rawlsing/commit/21f4bb92be7b6eebd127d1bebb13e1335f660eea). Existing #1292 at `192b0e908476352690b1a7936d23ce296af18f9e` attaches a scope receipt to the same I03 fact, with respondent-cohort comparison, typed nonanswer, asked-eligible versus substantive-only denominator and unresolved absence. Preserve these distinctions if an empirical profile enters the existing C6 proposal: source silence is not a negative attitude, psychological trait, absence of capacity or prohibition on a possible person. A known-zero observed configuration and unknown support are distinct. Recorded-only #1316 original outputs do not supply full I03/FF01 eligible evidence. Use already-issued exact scope; do not infer population/design/administration/causal silencing or create another source reader. Actual C6 consumption not proved, not a universal prerequisite for independent SOROK; no new work or ownership change.
