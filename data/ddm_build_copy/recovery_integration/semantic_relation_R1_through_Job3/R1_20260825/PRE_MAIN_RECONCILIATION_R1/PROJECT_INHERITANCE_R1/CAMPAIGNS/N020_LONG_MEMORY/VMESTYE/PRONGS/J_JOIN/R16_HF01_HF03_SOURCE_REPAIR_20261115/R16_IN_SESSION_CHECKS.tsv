@@ -1,0 +1,23 @@
+check_id	class	description	outcome	scope
+P01	POSITIVE	R15 8512→R16 8508 relations	PASS	DOCUMENTARY_IN_SESSION
+P02	POSITIVE	all 8503 pre-existing relation ids preserved	PASS	DOCUMENTARY_IN_SESSION
+P03	POSITIVE	exactly 4 bad R15 relations removed	PASS	DOCUMENTARY_IN_SESSION
+P04	POSITIVE	five legal new relations remain	PASS	DOCUMENTARY_IN_SESSION
+P05	POSITIVE	no fake authority or hard dependency	PASS	DOCUMENTARY_IN_SESSION
+P06	POSITIVE	both COMPOSED_FROM and MUST legal	PASS	DOCUMENTARY_IN_SESSION
+P07	POSITIVE	R9 REL001 source comment corrected	PASS	DOCUMENTARY_IN_SESSION
+P08	POSITIVE	V551J source input corrected	PASS	DOCUMENTARY_IN_SESSION
+P09	POSITIVE	R15 342 edges preserved as IDs	PASS	DOCUMENTARY_IN_SESSION
+P10	POSITIVE	only EDGE005 corrected, no extra old edge edits	PASS	DOCUMENTARY_IN_SESSION
+P11	POSITIVE	five original unissued consumers remain typed as held	PASS	DOCUMENTARY_IN_SESSION
+P12	POSITIVE	ten novel edges remain open proof gap	PASS	DOCUMENTARY_IN_SESSION
+P13	POSITIVE	R15→R16 six exact repairs	PASS	DOCUMENTARY_IN_SESSION
+P14	POSITIVE	no operation/authority/decision row edited	PASS	DOCUMENTARY_IN_SESSION
+N01	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N02	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N03	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N04	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N05	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N06	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N07	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
+N08	NEGATIVE	Injected invalid variant refused	REJECTED	DOCUMENTARY_IN_SESSION
