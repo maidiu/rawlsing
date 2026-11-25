@@ -81,13 +81,13 @@ def main():
         # retained view. Both builders saw the identical validated events.
         previous_headers=tuple(sorted(r4_headers,key=lambda h:h.ref.key))
         assert len(previous_headers)==len(headers)
-        fields=("ref","content_hash","typed_state","native_question_ref",
+        fields=("ref","typed_state","native_question_ref",
             "canonical_question_ref_if_authorized","component_or_subitem_ref",
             "authority_snapshot_refs","raw_response_value",
             "canonical_response_value_if_authorized","multiplicity_order_rank_fields",
             "response_event_id_or_deterministic_index")
         for previous,current in zip(previous_headers,headers):
-            assert previous.ref==current.ref
+            assert previous.ref==current.ref and previous.content_hash==current.content_hash
             for field in ("empirical_universe_ref","scoped_respondent_ref","dependency_refs",
                           "event_group_id","source_coordinates"):
                 assert getattr(previous,field)==getattr(current,field),field
