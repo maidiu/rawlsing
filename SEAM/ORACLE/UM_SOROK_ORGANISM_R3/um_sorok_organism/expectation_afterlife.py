@@ -295,3 +295,115 @@ def annotate_activity_affects(constitution, access, options):
                                  'object_affect_ref':a['basis']['object_affect_ref'],
                                  'not_public_self_knowledge':True})
     return {'readset':sorted(readset),'currents':currents}
+
+
+# A historically formed manner of vocal enactment is neither the affect
+# itself nor a diagnostic sign. Reuse the actual course/affect owner and
+# evidence paths rather than introduce a universal emotion-to-face table.
+CADENCES={'HALTING':'Speech with brief pauses.',
+          'QUICKENED':'Speech in quick succession.',
+          'EVEN':'Speech with an even cadence.'}
+
+def own_vocal_reception(actor,experience):
+    if (experience.get('actor')!=actor['id']
+            or experience.get('own_action')!='SPEAK'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True):return None
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('kind')=='performed_speak' and c.get('source_actor')==actor['id']
+           and c.get('modality')=='auditory' and type(c.get('id')) is str]
+    if len(signs)!=1:return None
+    cue=signs[0]
+    sel=experience.get('own_practical_selection') or {}
+    ids=[a['id'] for row in sel.get('selected_course_affects_analytic_only',[])
+         for a in row.get('affects',[]) if type(a.get('id')) is str]
+    return {'cue_ref':cue['id'],'location':experience.get('location'),
+            'selected_affect_refs_analytic_only':sorted(set(ids)),
+            'cadence_as_sensed':cue.get('vocal_cadence','NOT_DIFFERENTIATED'),
+            'not_self_explanation':True}
+
+def _expressive_basis(actor,aff,path):
+    voice=path.get('own_vocal_reception') or {}
+    if (path.get('own_action')!='SPEAK'
+            or path.get('purpose_status')!='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+            or aff['project_ref'] not in path.get('selected_project_refs',[])
+            or aff['id'] not in voice.get('selected_affect_refs_analytic_only',[])
+            or voice.get('cue_ref') not in path.get('received_cue_refs',[])
+            or voice.get('location')!=aff.get('basis',{}).get('location')):return None
+    paths=actor.get('evidence_paths',[])
+    origin=next((i for i,p in enumerate(paths)
+                 if p.get('event')==aff.get('origin_event_ref')),None)
+    if origin is None:return None
+    current=next((i for i,p in enumerate(paths) if p.get('event')==path['event']),None)
+    if current is None or current<=origin:return None
+    prior=[p for p in paths[origin+1:current]
+           if p.get('own_action')=='SPEAK'
+           and p.get('purpose_status')=='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+           and aff['project_ref'] in p.get('selected_project_refs',[])
+           and aff['id'] in (p.get('own_vocal_reception') or {}).get('selected_affect_refs_analytic_only',[])
+           and (p.get('own_vocal_reception') or {}).get('location')==voice['location']
+           and (p.get('own_vocal_reception') or {}).get('cue_ref') in p.get('received_cue_refs',[])
+           and (p.get('own_vocal_reception') or {}).get('cue_ref')!=voice['cue_ref']]
+    if not prior:return None
+    earlier=prior[-1]
+    return {'actor':actor['id'],'affect_ref':aff['id'],'project_ref':aff['project_ref'],
+            'location':voice['location'],'earlier_event_ref':earlier['event'],
+            'later_event_ref':path['event'],'later_experience_ref':path['experience_ref'],
+            'earlier_cue_ref':earlier['own_vocal_reception']['cue_ref'],
+            'later_cue_ref':voice['cue_ref'],'grade':GRADE}
+
+def possible_expressive_practices(actor,experience,event_ref):
+    if experience.get('actor')!=actor['id']:return []
+    paths=[p for p in actor.get('evidence_paths',[])
+           if p.get('event')==event_ref and p.get('experience_ref')==experience.get('ref')]
+    if len(paths)!=1 or own_vocal_reception(actor,experience)!=paths[0].get('own_vocal_reception'):return []
+    out=[]
+    for exp in actor.get('expectations',[])[-128:]:
+        for aff in exp.get('affective_organizations',[])[-16:]:
+            if aff.get('actor')!=actor['id'] or aff.get('expectation_ref')!=exp.get('id') or aff.get('expressive_practice'):continue
+            b=_expressive_basis(actor,aff,paths[0])
+            if b:out.append({'basis':b,'allowed_cadences':list(CADENCES)})
+            if len(out)>=8:return out
+    return out
+
+def admit_expressive_practice(actor,experience,event_ref,proposal):
+    if (set(proposal)!={'kind','basis','cadence'}
+            or proposal['cadence'] not in CADENCES
+            or not any(x['basis']==proposal['basis'] for x in possible_expressive_practices(actor,experience,event_ref))):
+        raise ValueError('EXPRESSIVE_PRACTICE_UNQUALIFIED_HISTORY')
+    b=proposal['basis']
+    aff=next(a for e in actor['expectations'] for a in e.get('affective_organizations',[])
+             if a['id']==b['affect_ref'])
+    ident=stable_id('expressive_practice',{'basis':b,'cadence':proposal['cadence']})
+    aff['expressive_practice']={'id':ident,'basis':copy(b),'cadence':proposal['cadence'],
+        'not_a_universal_emotion_display_or_conscious_intention':True,'grade':GRADE}
+    return {'kind':proposal['kind'],'practice_ref':ident,'grade':GRADE}
+
+def realized_vocal_cadence(actor,attempt,location):
+    """Actual world writer reads acquired history, emits only physical manner.
+
+    No private cause, project, affect name or receipt ID enters the public cue.
+    A single unambiguous acquired manner can operate without a chosen display.
+    Contradictory manners are unresolved, not averaged into a diagnosis.
+    """
+    if (attempt.action!='SPEAK' or attempt.actor!=actor['id']
+            or actor['body'].get('language',0)<.35
+            or actor['body'].get('rest',0)<.12):return None
+    sel=attempt.practical_selection
+    if sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT' or len(sel.get('selected_project_refs',[]))!=1:return None
+    recruited={a['id'] for row in sel.get('selected_course_affects_analytic_only',[])
+               if row.get('project_id') in sel['selected_project_refs']
+               for a in row.get('affects',[]) if type(a.get('id')) is str}
+    manners=set()
+    for exp in actor.get('expectations',[])[-128:]:
+        for aff in exp.get('affective_organizations',[])[-16:]:
+            rec=aff.get('expressive_practice')
+            if (aff.get('id') not in recruited or not rec or aff.get('actor')!=actor['id']
+                    or aff.get('project_ref') not in sel['selected_project_refs']
+                    or rec.get('basis',{}).get('location')!=location):continue
+            path=next((p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==rec['basis'].get('later_event_ref')),None)
+            if not path or _expressive_basis(actor,aff,path)!=rec['basis']:continue
+            if rec.get('cadence') in CADENCES and rec.get('id')==stable_id('expressive_practice',{'basis':rec['basis'],'cadence':rec['cadence']}):
+                manners.add(rec['cadence'])
+    return next(iter(manners)) if len(manners)==1 else None

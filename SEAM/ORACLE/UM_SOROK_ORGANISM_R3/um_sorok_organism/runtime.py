@@ -13,6 +13,7 @@ from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
 from .development import admit, recurring_provisional_growth
 from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
+from .attention_field import offer_undertaking_attention, received_undertaking_attention
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                        possible_dependency_project_reorganizations,
@@ -22,19 +23,21 @@ from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence)
 from .distributed_power import record_actor_participation
-from .practical_powers import retain_exercised_power
+from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
 from .unintended_goods import possible_unintended_goods, qualify_incidental_object_takeup
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
-                                    possible_activity_affects)
+                                    possible_activity_affects, own_vocal_reception,
+                                    possible_expressive_practices)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import (
     possible_institutional_learning, possible_lived_institutional_differences,
+    possible_notice_expectations, possible_notice_revisions,
 )
 from .material_dependency_history import conserve_sensed_material_nonperformance
 from .livelihood_history import (
@@ -61,10 +64,11 @@ from .functional_correspondence import (propose_actor_lived_correspondences,
                                         possible_functional_revisions)
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
-from .historical_parent_bridge import render_blind_interview
+from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
+    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE)
 from .material_conjunction import admit_authored_structural_history
 from .operative_witness import freeze_operative_witness
-from .parents import construct_parent, interview_readout
+from .parents import construct_parent, interview_readout, select_staged_counterpart
 from .semantics import ValidatingSemanticService
 from .relational_metabolism import (
     possible_witnessed_third_party_relation,
@@ -151,6 +155,103 @@ class ConstitutiveRuntime:
                                  authored_structural_history))
         self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
+
+    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None):
+        """Alternative entrance: one actually continuing adult, no precreated child."""
+        world=blank_world(self.world_id)
+        if authored_structural_history is not None:
+            admit_authored_structural_history(world,{actor_id},authored_structural_history)
+        person=construct_parent(actor_id,name,packet,self.semantic)
+        seals=[('fictional_source:'+actor_id,'CONDITIONING_NOT_REAL_PERSON',packet)]
+        if authored_structural_history is not None:
+            seals.append(('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',authored_structural_history))
+        self.ledger.initialize(world,[person],source_seals=seals)
+        return {'world':self.world_id,'actors':[actor_id],'grade':GRADE}
+
+    def register_family_pathways(self,mother_id,candidates):
+        version,world=self.ledger.world(self.world_id)
+        mother=self.ledger.actor(mother_id)[1]
+        source=qualify_family_pathways(world,mother,candidates)
+        sid='family_pathways:'+mother_id
+        self.ledger.seal_source(sid,FAMILY_SOURCE,source,expected_world=version)
+        return {'source_seal_id':sid,'proposal_clock':source['proposal_clock'],
+                'candidate_ids':[x['id'] for x in source['candidates']], 'grade':FAMILY_GRADE}
+
+    def _family_source(self,sid):
+        row=self.ledger.source(sid)
+        if not row or row['category']!=FAMILY_SOURCE:raise ValueError('FAMILY_SOURCE_NOT_SEALED')
+        return row['content'],digest(row)
+
+    def _admit_family_actor(self,version,world,actor,family,kind,sid,sha):
+        aid=actor['id']
+        if aid in world['positions']:raise ValueError('FAMILY_ACTOR_ALREADY_PRESENT')
+        world['positions'][aid]=actor['location']
+        world.setdefault('accounts',{})[aid]=0.0
+        world.setdefault('holdings',{})[aid]={'food':0}
+        world['family_genesis']=copy(family)
+        result=self.ledger.commit(self.world_id,version,world,{}, {},kind,aid,
+                {'admitted_actor':aid,'source_seal_id':sid,'source_digest':sha,
+                 'family_genesis':family,'no_automatic_actor_experience':True,'grade':FAMILY_GRADE},
+                _family_actor=actor)
+        return {'receipt':result['id'],'actor':aid,'stage':family['stage'],'grade':FAMILY_GRADE}
+
+    def select_family_intersection(self,source_seal_id):
+        version,world=self.ledger.world(self.world_id)
+        source,sha=self._family_source(source_seal_id)
+        mother=self.ledger.actor(source['mother'])[1]
+        selected=select_staged_counterpart(world,mother,source,self.semantic)
+        if selected is None:return {'status':'ABSTAINED','grade':FAMILY_GRADE}
+        path,father=selected
+        row={k:copy(path[k]) for k in ('id','source_ref','intersection_clock','intersection_site',
+                 'conception_clock','birth_clock','child_id','child_name')}
+        row.update({'mother':mother['id'],'counterpart':father['id'],'admitted_clock':world['clock'],
+                    'proposal_clock':source['proposal_clock'],
+                    'maternal_proposal_state_digest':source['maternal_proposal_state_digest'],
+                    'maternal_selection_state_digest':stable_id('maternal_proposal',mother),
+                    'prior_shared_effects':'UNKNOWN_NOT_ADMITTED'})
+        family={'stage':'COUNTERPART_ADMITTED','source_seal_id':source_seal_id,
+                'source_digest':sha,'selected_pathway':row,
+                'not_relationship_household_consent_or_conception':True}
+        return self._admit_family_actor(version,world,father,family,'FAMILY_COUNTERPART_ADMITTED',
+                                        source_seal_id,sha)
+
+    def admit_family_conception(self):
+        """Explicit branch premise, not a deduction from social conduct."""
+        version,world=self.ledger.world(self.world_id)
+        family=world.get('family_genesis',{})
+        if family.get('stage')!='COUNTERPART_ADMITTED':raise ValueError('FAMILY_NO_SELECTED_COUNTERPART')
+        path=family['selected_pathway'];source,sha=self._family_source(family['source_seal_id'])
+        if sha!=family['source_digest'] or world['clock']!=path['conception_clock']:
+            raise ValueError('FAMILY_CONCEPTION_WRONG_SOURCE_OR_CLOCK')
+        if not all(world['positions'].get(a)==path['intersection_site'] for a in (path['mother'],path['counterpart'])):
+            raise ValueError('FAMILY_CONCEPTION_LOCATION_UNQUALIFIED')
+        encounters=family_encounter_evidence(world,path)
+        if not encounters:raise ValueError('FAMILY_NO_ACTUAL_DIRECTED_ENCOUNTER')
+        family['stage']='CONCEPTION_ADMITTED'
+        family['conception']={'id':stable_id('conditional_conception',path),
+             'clock':world['clock'],'encounter_evidence':encounters[-1],
+             'sourcefree_branch_premise_not_biological_or_consent_inference':True,
+             'no_child_actor_yet':True,'grade':FAMILY_GRADE}
+        result=self.ledger.commit(self.world_id,version,world,{}, {},
+                'FAMILY_CONCEPTION',None,{'family_genesis':copy(family),'grade':FAMILY_GRADE})
+        return {'receipt':result['id'],'stage':family['stage'],'grade':FAMILY_GRADE}
+
+    def realize_family_birth(self):
+        version,world=self.ledger.world(self.world_id)
+        family=world.get('family_genesis',{})
+        if family.get('stage')!='CONCEPTION_ADMITTED':raise ValueError('FAMILY_NO_ADMITTED_CONCEPTION')
+        path=family['selected_pathway'];source,sha=self._family_source(family['source_seal_id'])
+        if sha!=family['source_digest'] or world['clock']!=path['birth_clock']:
+            raise ValueError('FAMILY_BIRTH_WRONG_SOURCE_OR_CLOCK')
+        location=world['positions'][path['mother']]
+        child=newborn(path['child_id'],path['child_name'],location)
+        family['stage']='CHILD_BORN'
+        family['birth']={'id':stable_id('conditional_birth',path),'clock':world['clock'],
+            'child':child['id'],'biological_lineage_refs':[path['mother'],path['counterpart']],
+            'conception_ref':family['conception']['id'],'location':location,
+            'household_care_relationship_and_psyche_not_inferred':True,'grade':FAMILY_GRADE}
+        return self._admit_family_actor(version,world,child,family,'FAMILY_CHILD_BORN',
+                                        family['source_seal_id'],sha)
 
     def snapshot(self,actor_id):
         _,world=self.ledger.world(self.world_id)
@@ -280,6 +381,9 @@ class ConstitutiveRuntime:
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
             private_options=(offer_private_rehearsals(actor,world['clock'],e.location,
                 [o['action'] for o in options]) if requesting_actor is None else [])
+            undertaking_options=(offer_undertaking_attention(actor,world,e,
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]))
+                if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},
                 'accessible':{k:v for k,v in asdict(e).items() if k!='inaccessible_count'},
@@ -287,6 +391,7 @@ class ConstitutiveRuntime:
                 'practical_options':flat_alternatives,
                 'possible_end_trials':flat_trials,
                 'private_rehearsal_options':copy(private_options),
+                'undertaking_attention_options':copy(undertaking_options),
                 'possible_end_trial_does_not_establish_motive':True,
                 'selected_option_is_not_conscious_intent':True,
                 'requesting_actor':requesting_actor,'requesting_action':requesting_action})
@@ -300,6 +405,15 @@ class ConstitutiveRuntime:
                         or type(content) is not str or not content.strip() or len(content)>512):
                     raise ValueError('PRIVATE_REHEARSAL_UNISSUED_OR_CONFLICTING_SELECTION')
                 private_choice={'option':copy(rows[0]),'imagined_content':content}
+            undertaking_choice=None
+            if 'undertaking_attention_id' in proposed:
+                rows=[o for o in undertaking_options
+                      if o['attention_id']==proposed.get('undertaking_attention_id')]
+                if (len(rows)!=1 or proposed.get('action')!='ORIENT' or private_choice is not None
+                        or any(proposed.get(k) is not None for k in
+                               ('project_id','project_ids','practical_option_id','possible_end_trial_id'))):
+                    raise ValueError('UNDERTAKING_ATTENTION_UNISSUED_OR_CONFLICTING')
+                undertaking_choice=copy(rows[0])
             requested_option=proposed.get('practical_option_id')
             requested_trial=proposed.get('possible_end_trial_id')
             trial_choice=None
@@ -328,6 +442,14 @@ class ConstitutiveRuntime:
                 action=proposed['action']
             opt=next((o for o in options if o['action']==action),None)
             if opt is None:raise ValueError('MODEL_ATTEMPT_NOT_ACTOR_ELIGIBLE')
+            notice_choice=None
+            if 'notice_expectation_ref' in proposed:
+                rows=[x for x in opt.get('fallible_notice_expectations',[])
+                      if x['expectation_ref']==proposed.get('notice_expectation_ref')]
+                if (len(rows)!=1 or requesting_actor is not None or private_choice is not None
+                        or undertaking_choice is not None or trial_choice is not None):
+                    raise ValueError('NOTICE_EXPECTATION_UNISSUED_SELECTION')
+                notice_choice=copy(rows[0])
             ok,why=eligible(actor['body'],action)
             if not ok:raise ValueError('MODEL_ACTION_BODILY_INELIGIBLE:'+why)
             # A single operation may genuinely serve SEVERAL projects, but
@@ -540,8 +662,12 @@ class ConstitutiveRuntime:
                             and a.get('course_affective_organizations')]
             if affect_courses:
                 practical['selected_course_affects_analytic_only']=affect_courses
+            if notice_choice is not None:
+                practical['notice_expectation']=notice_choice
             if private_choice is not None:
                 practical['private_rehearsal']=private_choice
+            if undertaking_choice is not None:
+                practical['undertaking_attention']=undertaking_choice
             if trial_choice is not None:
                 # Freeze actor's already issued option before the world settles.
                 practical['possible_end_trial']=copy(trial_choice)
@@ -621,6 +747,8 @@ class ConstitutiveRuntime:
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        if principal.practical_selection.get('undertaking_attention') is not None and (target is not None or object_ref is not None):
+            raise ValueError('UNDERTAKING_ATTENTION_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
             raise ValueError('PRIVATE_REHEARSAL_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if target is not None and principal.target not in (None,target):
@@ -680,6 +808,17 @@ class ConstitutiveRuntime:
                 personal_cues += [x for x in access.cues
                     if x.get('kind')=='coactor_present'
                     and x.get('source_actor')!=aid]
+            # A deliberately selected, source-checked prior sign can have
+            # been received during this orienting interval even if its
+            # transient world cue expired at settlement. Never retain it
+            # for a passive observer, an injected ORIENT or an unsuccessful act.
+            if (aid==actor_id and requested_action is None and personally_done
+                    and personally_done['action']=='ORIENT' and personally_done['status']=='PERFORMED'):
+                chosen=principal.practical_selection.get('undertaking_attention')
+                if chosen is not None:
+                    cue=copy(chosen['outward_sign'])
+                    if not any(c['id']==cue['id'] for c in personal_cues):
+                        personal_cues.append(cue)
             if not participated and not personal_cues:continue
             own=(personally_done['action'] if personally_done else
                  ('RECEIVED_FEEDING' if aid in affected and
@@ -735,6 +874,10 @@ class ConstitutiveRuntime:
                             and (aid!=actor_id or requested_action is None)
                             else None),
                         'actor_access_grade':GRADE}
+            attention_receipt=received_undertaking_attention(
+                actors[aid],experience.get('own_practical_selection'),experience)
+            if attention_receipt:
+                experience['undertaking_attention_receipt']=attention_receipt
             subjective[aid]=copy(experience)
             if personally_done and actor_attempt is not None:
                 # Anticipation is formed at the time of this actor's attempt,
@@ -764,6 +907,11 @@ class ConstitutiveRuntime:
                 'selected_project_refs':copy(own_selection.get(
                     'project_ids',([own_selection['project_id']]
                         if own_selection.get('project_id') else []))),
+                **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
+                **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
+                   if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
+                **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
+                   if own_vocal_reception(actors[aid],experience) is not None else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -903,6 +1051,9 @@ class ConstitutiveRuntime:
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
+                'actual_undertaking_attention_analyst_only':copy(attention_receipt),
+                'historically_possible_repair_techniques':copy(
+                    possible_repair_technique(actors[aid],experience,objective_ref)),
                 'actor_historical_orientations_analyst_only':copy(
                     actors[aid].get('historical_orientations',[])),
                 'actor_self_model_analyst_only':copy(
@@ -953,6 +1104,8 @@ class ConstitutiveRuntime:
                         actors[aid],experience,objective_ref,end)] if q is not None],
                 'historically_possible_delayed_appraisals':copy(
                     delayed_expectation_appraisals),
+                'historically_possible_expressive_practices':copy(
+                    possible_expressive_practices(actors[aid],experience,objective_ref)),
                 'historically_possible_activity_affects':copy(
                     possible_activity_affects(actors[aid],experience,objective_ref)),
                 'historically_possible_co_regulation':copy(care_genesis),
@@ -963,6 +1116,10 @@ class ConstitutiveRuntime:
                     actual_lived_care['id'] if actual_lived_care else None),
                 'historically_possible_co_regulation_revision':copy(
                     care_revision),
+                'historically_possible_notice_expectations':copy(
+                    possible_notice_expectations(actors[aid],experience,objective_ref)),
+                'historically_possible_notice_revisions':copy(
+                    possible_notice_revisions(actors[aid],experience,objective_ref)),
                 'historically_possible_public_procedure_learning':copy(
                     institutional_learning),
                 'historically_possible_institutional_relational_differences':copy(
@@ -1022,6 +1179,11 @@ class ConstitutiveRuntime:
         expression_access=copy(observed)
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
+            expression_access['own_practical_selection'].pop('undertaking_attention',None)
+            expression_access['own_practical_selection'].pop('notice_expectation',None)
+            expression_access['own_practical_selection'].pop('selected_course_affects_analytic_only',None)
+            expression_access['own_practical_selection'].pop('course_historical_currents_analytic_only',None)
+        expression_access.pop('undertaking_attention_receipt',None)
         expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':expression_access,
                'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})

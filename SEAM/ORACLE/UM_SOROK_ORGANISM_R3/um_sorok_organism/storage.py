@@ -225,7 +225,7 @@ class ResearchLedger:
     def actors(self):
         return {a:json.loads(b) for a,b in self.conn.execute('SELECT id,body FROM actors')}
 
-    def seal_source(self, sid, category, content):
+    def seal_source(self, sid, category, content, *, expected_world=None):
         """Optional late source seal: chain-anchor atomically, never an orphan row.
 
         A source insertion is a historical data act, not psychology formation.
@@ -238,6 +238,8 @@ class ResearchLedger:
             row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
             if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
             wid,body=row
+            if expected_world is not None and self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()[0]!=expected_world:
+                raise Conflict('STALE_WORLD')
             self._require_valid_history_locked()
             self._verify_current_anchor_locked(wid)
             world=json.loads(body)
@@ -262,13 +264,15 @@ class ResearchLedger:
             x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
             return None if not x else {'category':x[0], 'content':json.loads(x[1])}
 
-    def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload):
+    def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload,*,_family_actor=None):
         """All research state is committed atomically with immutable objective receipt."""
         if world['id']!=wid: raise Conflict('wrong world')
         # Reserved source-identity events are issued only by seal_source()
         # alongside the actual source_seals table row in one transaction.
         if kind in ('INITIALIZATION','SOURCE_SEAL'):
             raise Conflict('RESERVED_SOURCE_EVENT_KIND')
+        family_entry=kind in ('FAMILY_COUNTERPART_ADMITTED','FAMILY_CHILD_BORN')
+        if family_entry!=(_family_actor is not None):raise Conflict('FAMILY_ROSTER_AUTHORITY_REQUIRED')
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
@@ -282,6 +286,79 @@ class ResearchLedger:
             prev=prior[0] if prior else 'GENESIS'
             full_actors={aid:json.loads(blob) for aid,blob in self.conn.execute('SELECT id,body FROM actors')}
             full_actors.update(actors)
+            prior_world=json.loads(self.conn.execute('SELECT body FROM worlds WHERE id=?',(wid,)).fetchone()[0])
+            if family_entry:
+                aid=_family_actor.get('id');loc=_family_actor.get('location')
+                if (actors or actor_versions or aid!=actor_id or aid in full_actors
+                        or aid in prior_world.get('accounts',{}) or aid in prior_world.get('holdings',{})
+                        or aid in prior_world.get('neighbor_users',{})
+                        or loc not in prior_world['sites'] or world['clock']!=prior_world['clock']
+                        or payload.get('admitted_actor')!=aid):raise Conflict('FAMILY_INVALID_ROSTER_ADMISSION')
+                source=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(payload.get('source_seal_id'),)).fetchone()
+                if (not source or source[0]!='FICTIONAL_FAMILY_PATHWAY_CANDIDATES'
+                        or digest({'category':source[0],'content':json.loads(source[1])})!=payload.get('source_digest')):
+                    raise Conflict('FAMILY_UNSEALED_PATHWAY')
+                family=payload['family_genesis'];path=family['selected_pathway']
+                content=json.loads(source[1]);matches=[x for x in content['candidates'] if x['id']==path['id']]
+                if (len(matches)!=1 or content['mother']!=path['mother']
+                        or family['source_seal_id']!=payload['source_seal_id']
+                        or family['source_digest']!=payload['source_digest']):
+                    raise Conflict('FAMILY_PATHWAY_SOURCE_MISMATCH')
+                chosen=matches[0]
+                if (any(path[k]!=chosen[k] for k in ('id','source_ref','intersection_clock','intersection_site','conception_clock','birth_clock','child_id','child_name'))
+                        or path['counterpart']!=chosen['counterpart_id']):
+                    raise Conflict('FAMILY_PATHWAY_SOURCE_MISMATCH')
+                if kind=='FAMILY_COUNTERPART_ADMITTED':
+                    if (family['stage']!='COUNTERPART_ADMITTED' or aid!=path['counterpart']
+                            or loc!=path['intersection_site'] or world['clock']!=path['intersection_clock']
+                            or prior_world['positions'].get(path['mother'])!=loc):
+                        raise Conflict('FAMILY_COUNTERPART_BOUNDARY_MISMATCH')
+                elif (family['stage']!='CHILD_BORN' or aid!=path['child_id']
+                        or world['clock']!=path['birth_clock'] or loc!=prior_world['positions'].get(path['mother'])
+                        or prior_world.get('family_genesis',{}).get('selected_pathway')!=path
+                        or prior_world.get('family_genesis',{}).get('conception')!=family.get('conception')):
+                    raise Conflict('FAMILY_BIRTH_BOUNDARY_MISMATCH')
+                expected=copy(prior_world)
+                expected['positions'][aid]=loc
+                expected.setdefault('accounts',{})[aid]=0.0
+                expected.setdefault('holdings',{})[aid]={'food':0}
+                expected['family_genesis']=copy(payload['family_genesis'])
+                if world!=expected:raise Conflict('FAMILY_ADMISSION_REWRITES_WORLD')
+                if kind=='FAMILY_CHILD_BORN':
+                    from .types import newborn
+                    if (_family_actor!=newborn(aid,_family_actor.get('name'),loc)
+                            or prior_world.get('family_genesis',{}).get('stage')!='CONCEPTION_ADMITTED'):
+                        raise Conflict('FAMILY_CHILD_NOT_SPARSE_OR_NO_CONCEPTION')
+                elif (_family_actor.get('role')!='adult' or prior_world.get('family_genesis')):
+                    raise Conflict('FAMILY_COUNTERPART_NOT_INDEPENDENT_ADULT')
+                full_actors[aid]=_family_actor
+            prior_family=prior_world.get('family_genesis',{})
+            if kind=='FAMILY_CONCEPTION':
+                from .historical_parent_bridge import family_encounter_evidence, FAMILY_GRADE
+                from .types import stable_id
+                if (actors or actor_versions or actor_id is not None
+                        or prior_family.get('stage')!='COUNTERPART_ADMITTED'):
+                    raise Conflict('FAMILY_CONCEPTION_AUTHORITY_REQUIRED')
+                path=prior_family['selected_pathway']
+                encounters=family_encounter_evidence(prior_world,path)
+                if (prior_world['clock']!=path['conception_clock'] or not encounters
+                        or any(prior_world['positions'].get(a)!=path['intersection_site']
+                               for a in (path['mother'],path['counterpart']))):
+                    raise Conflict('FAMILY_CONCEPTION_UNQUALIFIED_HISTORY')
+                expected_family=copy(prior_family)
+                expected_family['stage']='CONCEPTION_ADMITTED'
+                expected_family['conception']={'id':stable_id('conditional_conception',path),
+                    'clock':prior_world['clock'],'encounter_evidence':encounters[-1],
+                    'sourcefree_branch_premise_not_biological_or_consent_inference':True,
+                    'no_child_actor_yet':True,'grade':FAMILY_GRADE}
+                expected=copy(prior_world);expected['family_genesis']=expected_family
+                if world!=expected or payload.get('family_genesis')!=expected_family:
+                    raise Conflict('FAMILY_CONCEPTION_REWRITES_HISTORY')
+            elif not family_entry and world.get('family_genesis',{})!=prior_family:
+                raise Conflict('FAMILY_TRANSITION_REQUIRES_QUALIFIED_EVENT')
+            if (prior_family.get('stage')=='CONCEPTION_ADMITTED' and not family_entry
+                    and world['clock']>prior_family['selected_pathway']['birth_clock']):
+                raise Conflict('FAMILY_BIRTH_BOUNDARY_REQUIRES_REALIZATION')
             if actor_id is not None and actor_id not in full_actors:
                 raise Conflict('UNKNOWN_EVENT_ACTOR')
             # A fabricated position is a fabricated co-present Other. Actor IDs,
@@ -306,6 +383,8 @@ class ResearchLedger:
             for aid,a in actors.items():
                 self.conn.execute('UPDATE actors SET version=?,body=? WHERE id=?',
                                   (actor_versions[aid]+1,canonical(a),aid))
+            if family_entry:
+                self.conn.execute('INSERT INTO actors VALUES(?,?,?)',(_family_actor['id'],0,canonical(_family_actor)))
             self.conn.execute('INSERT INTO events(eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash) VALUES(?,?,?,?,?,?,?,?)',
                               (eid,wid,world['clock'],actor_id,kind,canonical(envelope),prev,chain))
             return {'id':eid,'chain_hash':chain,'envelope':envelope}
@@ -328,7 +407,7 @@ class ResearchLedger:
         conditioning; semantically identical whitespace is still a changed
         source seal. This is local integrity, not native cryptographic issuer.
         """
-        prior='GENESIS';count=0;anchored={}
+        prior='GENESIS';count=0;anchored={};previous_roster=None;previous_actor_digests=None
         records=self.events()
         if not records:
             raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
@@ -372,6 +451,23 @@ class ResearchLedger:
                         not sid or not sha or sid in anchored):
                     raise AssertionError('SOURCE_SEAL_DUPLICATE_OR_INVALID_ANCHOR')
                 anchored[sid]=sha
+            roster=set(envelope['actor_digests'])
+            if r['kind'] in ('FAMILY_COUNTERPART_ADMITTED','FAMILY_CHILD_BORN'):
+                detail=envelope['payload'];aid=detail.get('admitted_actor')
+                if (previous_roster is None or aid in previous_roster or aid!=r['actor_id']
+                        or roster!=previous_roster|{aid}
+                        or anchored.get(detail.get('source_seal_id'))!=detail.get('source_digest')
+                        or any(envelope['actor_digests'][old]!=previous_actor_digests[old]
+                               for old in previous_roster)):
+                    raise AssertionError('FAMILY_ADMISSION_ANCESTRY_INVALID')
+            elif previous_roster is not None and roster!=previous_roster:
+                raise AssertionError('UNAUTHORIZED_HISTORICAL_ROSTER_CHANGE')
+            if r['kind']=='FAMILY_CONCEPTION' and (envelope['actor_digests']!=previous_actor_digests
+                    or anchored.get(envelope['payload']['family_genesis']['source_seal_id'])!=
+                       envelope['payload']['family_genesis']['source_digest']):
+                raise AssertionError('FAMILY_CONCEPTION_ANCESTRY_INVALID')
+            previous_roster=roster
+            previous_actor_digests=envelope['actor_digests']
             prior=r['chain_hash'];count+=1
         if self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone():
             raise AssertionError('UNANCHORED_CONSTRAINTS_STATE')

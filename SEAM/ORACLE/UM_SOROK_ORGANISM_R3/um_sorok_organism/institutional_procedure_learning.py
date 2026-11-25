@@ -236,3 +236,110 @@ def qualify_lived_institutional_difference(actor, experience, event_ref, claim):
         "actor_moral_conclusion_not_imposed": True,
         "grade": GRADE,
     }
+
+
+# The public account of an institution may be wrong, or be appropriated
+# wrongly. Keep this family in the existing actor-owned institutional
+# expectations, apart from the world's actual access rules.
+_NOTICE_SCOPE='FALLIBLE_LOCAL_PROCEDURE_EXPECTATION'
+_NOTICE_OPERATIONS=('EAT','WORK','REPAIR')
+
+def possible_notice_expectations(actor,experience,event_ref):
+    if (actor['id']!=experience.get('actor') or actor['body'].get('language',0)<.35
+            or experience.get('own_action')!='INSPECT' or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True):return []
+    out=[]
+    for n in actor.get('notice_exposures',[]):
+        if n.get('event_ref')!=event_ref or n.get('experience_ref')!=experience.get('ref'):continue
+        signs=[c for c in experience.get('perceived_cues',[])
+               if c.get('id')==n.get('received_cue_ref') and c.get('kind')=='performed_inspect'
+               and c.get('public_notice_ref')==n.get('public_notice_ref')
+               and c.get('source_actor')==actor['id']]
+        if len(signs)!=1:continue
+        words={t.casefold() for t in n.get('public_words_available',[]) if type(t) is str}
+        for op in _NOTICE_OPERATIONS:
+            if op.casefold() not in words:continue
+            if any(x.get('scope')==_NOTICE_SCOPE and x.get('notice_exposure_ref')==n['id']
+                   and x.get('operation')==op for x in actor.get('institutional_expectations',[])):continue
+            out.append({'actor':actor['id'],'notice_exposure_ref':n['id'],
+                        'public_notice_ref':n['public_notice_ref'],'received_cue_ref':signs[0]['id'],
+                        'origin_event_ref':event_ref,'experience_ref':experience['ref'],
+                        'location':experience['location'],'operation':op,'grade':GRADE})
+    return out[:8]
+
+def admit_notice_expectation(actor,experience,event_ref,proposal):
+    if (set(proposal)!={'kind','basis','anticipated_availability'}
+            or proposal['anticipated_availability'] not in ('AVAILABLE','UNAVAILABLE','UNRESOLVED')
+            or proposal['basis'] not in possible_notice_expectations(actor,experience,event_ref)):
+        raise ValueError('NOTICE_EXPECTATION_UNQUALIFIED_RECEIPT')
+    b=proposal['basis'];ident=stable_id('notice_expectation',b)
+    actor.setdefault('institutional_expectations',[]).append({
+        **copy(b),'id':ident,'scope':_NOTICE_SCOPE,'status':'PROVISIONAL',
+        'anticipated_availability':proposal['anticipated_availability'],
+        'not_world_permission_or_true_public_account':True,'revisions':[]})
+    return {'kind':proposal['kind'],'expectation_ref':ident,'grade':GRADE}
+
+def annotate_notice_expectations(constitution,access,options):
+    """Only annotate already situated possible operations; never grant one."""
+    refs=[];currents=[]
+    for option in options:
+        rows=[]
+        for x in constitution.institutional_expectations[-128:]:
+            if (x.get('scope')!=_NOTICE_SCOPE or x.get('actor')!=constitution.actor
+                    or x.get('status')!='PROVISIONAL' or x.get('location')!=access.location
+                    or x.get('operation')!=option['action']):continue
+            if not any(n.get('id')==x.get('notice_exposure_ref')
+                       and n.get('event_ref')==x.get('origin_event_ref')
+                       and n.get('received_cue_ref')==x.get('received_cue_ref')
+                       for n in constitution.notice_exposures):continue
+            rows.append({'expectation_ref':x['id'],'operation':x['operation'],
+                         'location':x['location'],'anticipated_availability':x['anticipated_availability'],
+                         'not_world_permission_or_current_fact':True,'grade':GRADE})
+            refs.append(x['id'])
+            currents.append({'kind':'FALLIBLE_INSTITUTIONAL_EXPECTATION','ref':x['id'],
+                             'operation':x['operation'],'not_objective_access':True})
+        if rows:option['fallible_notice_expectations']=rows
+    return {'readset':refs,'currents':currents}
+
+def possible_notice_revisions(actor,experience,event_ref):
+    sel=experience.get('own_practical_selection') or {}
+    choice=sel.get('notice_expectation')
+    if (not isinstance(choice,dict) or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or sel.get('actor')!=actor['id'] or experience.get('actor')!=actor['id']
+            or experience.get('participated') is not True
+            or experience.get('own_action')!=choice.get('operation')
+            or experience.get('location')!=choice.get('location')):return []
+    paths=[p for p in actor.get('evidence_paths',[])
+           if p.get('event')==event_ref and p.get('experience_ref')==experience.get('ref')
+           and p.get('notice_expectation')==choice]
+    if len(paths)!=1:return []
+    rows=[x for x in actor.get('institutional_expectations',[])
+          if x.get('id')==choice.get('expectation_ref') and x.get('actor')==actor['id']
+          and x.get('scope')==_NOTICE_SCOPE and x.get('status')=='PROVISIONAL'
+          and x.get('operation')==choice['operation'] and x.get('location')==choice['location']
+          and x.get('anticipated_availability')==choice['anticipated_availability']
+          and not any(v.get('event_ref')==event_ref for v in x.get('revisions',[]))]
+    if len(rows)!=1:return []
+    x=rows[0]
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('id') in paths[0].get('received_cue_refs',[])
+           and c.get('source_actor')==actor['id']
+           and c.get('kind')=='performed_'+choice['operation'].lower()]
+    if len(signs)!=1 or experience.get('status') not in ('PERFORMED','BLOCKED','PARTIAL'):return []
+    observed='COMPLETED' if experience['status']=='PERFORMED' else 'INCOMPLETE'
+    if observed=='INCOMPLETE' and signs[0].get('description')!='ATTEMPT_NOT_COMPLETED':return []
+    return [{'expectation_ref':x['id'],'event_ref':event_ref,'experience_ref':experience['ref'],
+             'received_sign_ref':signs[0]['id'],'anticipated_availability':choice['anticipated_availability'],
+             'own_course':observed,'actual_hidden_cause':'NOT_KNOWN','grade':GRADE}]
+
+def admit_notice_revision(actor,experience,event_ref,proposal):
+    if (set(proposal)!={'kind','basis','revision'}
+            or proposal['revision'] not in ('RETAIN','AVAILABLE','UNAVAILABLE','UNRESOLVED','SUSPEND')
+            or proposal['basis'] not in possible_notice_revisions(actor,experience,event_ref)):
+        raise ValueError('NOTICE_REVISION_UNQUALIFIED_LIVED_COURSE')
+    b=proposal['basis'];x=next(x for x in actor['institutional_expectations'] if x['id']==b['expectation_ref'])
+    r=proposal['revision']
+    x['revisions'].append({**copy(b),'revision':r,'not_objective_institutional_truth':True})
+    if r=='SUSPEND':x['status']='SUSPENDED'
+    elif r!='RETAIN':x['anticipated_availability']=r
+    return {'kind':proposal['kind'],'expectation_ref':x['id'],'grade':GRADE}

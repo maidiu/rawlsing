@@ -10,6 +10,7 @@ These operations are sourcefree bounded material approximations.
 import math
 from .types import stable_id, GRADE
 from .organism import eligible
+from .practical_powers import active_repair_technique
 
 
 def _material_right(site, actor):
@@ -84,7 +85,7 @@ def material_objects_present(world,location):
         key=lambda x:x['id'])
 
 
-def repair_artifact(world,actor_id,location,object_ref):
+def repair_artifact(world,actor_id,location,object_ref,*,actor_state=None):
     """The real same object's condition can change across distinct workers."""
     obj=world.get('material_objects',{}).get(object_ref)
     if type(obj) is not dict or obj.get('location')!=location:
@@ -100,19 +101,26 @@ def repair_artifact(world,actor_id,location,object_ref):
     if prior>=.98:
         return {'status':'PARTIAL','outcome':'ARTIFACT_ALREADY_IN_GOOD_CONDITION'}
     site['stock']=_stock(site)-1
-    updated=round(min(1,prior+.24),5)
+    technique=None
+    if actor_state is not None and actor_state.get('id')==actor_id:
+        technique=active_repair_technique(actor_state,location)
+    increment=technique['basis']['provisional_condition_increment'] if technique else .24
+    updated=round(min(1,prior+increment),5)
     obj['condition']=updated
     obj.setdefault('objective_labor_history',[]).append({
         'clock':world['clock']+1,'actor':actor_id,
         'operation':'REPAIR','material_stock_units':1,
         'condition_before':prior,'condition_after':updated,
         'owner_before':obj.get('owner'),
+        **({'acquired_component_technique_ref':technique['id']} if technique else {}),
         'ownership_not_transferred_by_repair':True,
         'grade':GRADE})
     return {'status':'PERFORMED','outcome':'MATERIAL_ARTIFACT_REPAIRED',
             'object_ref':object_ref,'condition_prior':prior,
             'condition_after':updated,'owner':obj.get('owner'),
-            'source_labor_event_clock':world['clock']+1,'grade':GRADE}
+            'source_labor_event_clock':world['clock']+1,
+            **({'acquired_component_technique_ref':technique['id']} if technique else {}),
+            'grade':GRADE}
 
 
 def object_bound_alternatives(constitution,access,action):

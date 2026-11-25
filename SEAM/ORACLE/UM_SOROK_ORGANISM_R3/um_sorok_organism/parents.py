@@ -10,7 +10,8 @@ from .organism import ACTIONS
 from .development import validate_activity_priority
 from .relational_metabolism import validate_motif, refuse_unissued_cross_context_history
 from .practical_difference import validate_expected_difference
-from .historical_parent_bridge import historically_conditioned_entrances, adult_conditioning_input
+from .historical_parent_bridge import (historically_conditioned_entrances, adult_conditioning_input,
+    situated_family_pathways, FAMILY_GRADE)
 from .mediated_efficacy import seed_fictional_adult_training
 
 
@@ -111,3 +112,24 @@ def interview_readout(person,instrument):
     return {'responses':responses,'evidence_quality':quality,
         'independent_whole_respondent_correspondence':'NOT_DEMONSTRATED',
         'grade':GRADE}
+
+
+def select_staged_counterpart(world,mother,source,semantic):
+    offers=situated_family_pathways(world,mother,source)
+    if not offers:raise ValueError('FAMILY_NO_SITUATED_PATHWAY')
+    selection=semantic.proposal('family_pathway_selection',{
+        'mother':copy(mother),'selection_clock':world['clock'],
+        'maternal_proposal_state_digest':source['maternal_proposal_state_digest'],
+        'eligible_pathways':copy(offers),
+        'analyst_candidate_selection_not_maternal_consent':True,
+        'other_candidate_private_sources_excluded':True,'grade':FAMILY_GRADE})
+    if selection.get('pathway_id') is None:return None
+    matches=[x for x in offers if x['id']==selection.get('pathway_id')]
+    if len(matches)!=1:raise ValueError('FAMILY_UNISSUED_PATHWAY_SELECTION')
+    x=next(x for x in source['candidates'] if x['id']==matches[0]['id'])
+    father=construct_parent(x['counterpart_id'],x['counterpart_name'],
+                            x['counterpart_packet'],semantic)
+    father['location']=x['intersection_site']
+    father['initialization']['conditional_genealogy_scope']=FAMILY_GRADE
+    father['initialization']['prior_shared_world_effects']='UNKNOWN_NOT_ADMITTED'
+    return x,father
