@@ -176,7 +176,7 @@ class CountryNativeEconomics(unittest.TestCase):
             descriptor=dict(source_edition=sha,native_item_ids=list(names),release_tag=projection.instrument_release_id,
                 routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":"A"},
                 weight_design_estimand={"measure":"RAW"},missing_and_occurrence_policy={"fixture":True},
-                target_conditioner_roles={"joint":["q0","q1"]})
+                target_conditioner_roles={"joint":["q0","q1","q2"] if resume_court else ["q0","q1"]})
             workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY",tag),
                 descriptor=canonical(descriptor),projection=projection,catalog=cat,requests=requests,discoveries=ds,
                 original_u_root=root,expected_frontier_root=frontier)
@@ -642,6 +642,11 @@ class CountryNativeEconomics(unittest.TestCase):
                 expected_release_ref=pub.release_identity.release_ref,**common,**kwargs)
         baseline=run(products)
         baseline_reader=open_product(baseline)
+        bounded_dir=root/"bounded";bounded_dir.mkdir()
+        bounded=run(bounded_dir,max_units=1)
+        self.assertFalse(bounded.complete)
+        self.assertEqual(bounded.batch_census["completed_count"],1)
+        self.assertFalse(open_product(bounded,allow_partial=True).complete)
         self.assertTrue(baseline.complete)
         campaign=root/"campaign"
         campaign.mkdir()
@@ -662,6 +667,11 @@ class CountryNativeEconomics(unittest.TestCase):
             open_product(partial)
         saved=open_product(partial,allow_partial=True)
         self.assertFalse(saved.complete)
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"COMPLETE_PUBLICATION_REQUIRED"):
+            delivery.read_country_s04_selected(partial.receipt.root_path,
+                expected_root=partial.receipt.root_identity,
+                expected_release_ref=partial.release_identity.release_ref,**common,
+                requests=((queries[0].ref,None),))
         self.assertEqual(saved._closure.release_identities[0],baseline.release_identity)
         for receipt0 in saved._receipts:
             self.assertEqual(receipt0.state,"COMPLETED")
@@ -780,6 +790,21 @@ class CountryNativeEconomics(unittest.TestCase):
             requests=plans)
         self.assertEqual(tuple(delivery._s04_refs(r) for r in select.reads),
                          tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)))
+        # Retained discovery roles (including valid empty fate) remain
+        # available to the actual S04 recipient without source or a new I03.
+        roles_read=0
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                side_effect=AssertionError("retained I05 reception executed I03")):
+            for discovery in restored._closure.discovery_results:
+                for candidate in discovery.receipts:
+                    for role,refs in candidate.support_uncertainty_state.get("query_role_fact_refs",{}).items():
+                        if len(refs)!=1:
+                            continue
+                        observed,role_receipt=restored.read_i05_role(candidate.ref,role)
+                        old_observed,old_receipt=baseline_reader.read_i05_role(candidate.ref,role)
+                        self.assertEqual((observed.ref,role_receipt.ref),(old_observed.ref,old_receipt.ref))
+                        roles_read+=1
+        self.assertGreater(roles_read,0)
         footprint=lambda path:sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
         print("COUNTRY_CAMPAIGN_CONTINUITY",json.dumps({
             "country_rows":receipt.country_rows,"units":len(manifest.units),
@@ -787,6 +812,7 @@ class CountryNativeEconomics(unittest.TestCase):
             "checkpoint_count":1+len(continued),"full_output_census_parity":True,
             "three_way_xor_rare_inverse_source_count_and_local_joint_reuse":True,
             "selected_after_source_and_country_deleted":len(select.reads),
+            "retained_i05_roles_read":roles_read,
             "baseline_retained_bytes":footprint(products),"campaign_retained_bytes":footprint(campaign),
             "interruption_seconds":interruption_s,"resume_seconds":resume_s,
             "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
