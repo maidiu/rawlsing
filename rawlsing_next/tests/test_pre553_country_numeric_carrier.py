@@ -66,6 +66,8 @@ class CountryNumeric(unittest.TestCase):
                     self.assertEqual(seq[i],oracle[i])
                 with self.assertRaises(IndexError):
                     _=seq[len(oracle)]
+                with self.assertRaises(TypeError):
+                    _=seq[0.5]
         target=("question","q","a"*64)
         other=("question","other","b"*64)
         selectors=tuple(_EventRead(("event",str(i),hashlib.sha256(str(i).encode()).hexdigest()),
