@@ -2124,8 +2124,11 @@ class AcquiredRepairFacilityR46(unittest.TestCase):
                     refs=[]
                     for _ in range(3):
                         phase='ordinary';rt.step('worker',requested_action='REST')
+                        before=set(rt.ledger.world()[1]['material_objects'])
                         self.assertEqual(rt.step('worker',requested_action='MAKE_OBJECT')['status'],'PERFORMED')
-                        refs.append(list(rt.ledger.world()[1]['material_objects'])[-1])
+                        created=set(rt.ledger.world()[1]['material_objects'])-before
+                        self.assertEqual(len(created),1)
+                        refs.append(created.pop())
                     for target in refs[:2]:
                         phase='ordinary';rt.step('worker',requested_action='REST')
                         phase='repair';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
