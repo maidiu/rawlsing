@@ -228,6 +228,70 @@ class CountryNumeric(unittest.TestCase):
             with self.assertRaises(CountryCarrierError):
                 compact_repo.resolve_object_exact(events[0].ref)
 
+    def test_native_preimage_packed_source_preserves_detached_replay(self):
+        from dataclasses import replace
+        from rawlsing_next.pre553_source_native_preimage_adapter import (
+            NativeSourceIdentity,NativeSourcePackage,NativeSourceRule,
+            NativePreimageRefusal,materialize_native_preimages,_PackedNativeRows,
+            GovernedRowOccurrencePlan,VariableOccurrencePlan,OccurrenceBinding)
+        from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
+        from rawlsing_next.pre553_country_numeric_carrier import _encode_cell
+        from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        fx=_fixture("packed-native-preimage")
+        inc=fx["incidence"]
+        package=NativeSourcePackage(NativeSourceIdentity(
+            "packed-source","TEST","1","source.sav",inc.source_sha256,"SYNTHETIC",3),
+            (NativeSourceRule("x","X"),NativeSourceRule("y","Y")),coordinate_variable="G")
+        cells=tuple(inc.iter_cells())
+        # Non-governed sparse cells, ordinal variation, noncanonical input
+        # order and detached metadata must survive, even if not used by I03.
+        cells=tuple(c for c in cells if not (c.row_ordinal==2 and c.variable_name=="W"))
+        cells=tuple(replace(c,variable_ordinal=99) if c.row_ordinal==3 and c.variable_name=="W" else c for c in cells)
+        cells=tuple(reversed(cells))
+        calls=[0]
+        def once():
+            calls[0]+=1
+            if calls[0]>1:
+                raise AssertionError("source reread")
+            return iter(cells)
+        direct=materialize_native_preimages(package=package,incidence=ExactPhysicalCellStream(
+            inc.source_sha256,3,lambda:iter(cells)))
+        compact=materialize_native_preimages(package=package,incidence=ExactPhysicalCellStream(
+            inc.source_sha256,3,once),compact_cells=True,compact_routing=True)
+        self.assertEqual(compact.bundle_hash,direct.bundle_hash)
+        self.assertEqual(compact.projection.cache_identity,direct.projection.cache_identity)
+        self.assertEqual(compact.release.replay_manifest.ref,direct.release.replay_manifest.ref)
+        self.assertEqual(compact.respondent_rows,direct.respondent_rows)
+        def material(stream):
+            return [(c.row_ordinal,c.variable_ordinal,c.variable_name,_encode_cell(c)) for c in stream.iter_cells()]
+        self.assertEqual(material(compact.physical_stream),material(direct.physical_stream))
+        self.assertEqual(material(compact.physical_stream),material(direct.physical_stream))
+        self.assertEqual(calls,[1])
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build(iter((*cells,cells[0])),3)
+        with self.assertRaises(NativePreimageRefusal):
+            _PackedNativeRows.build((c for c in cells if c.row_ordinal!=1),3)
+        # Repeated respondent/occasion: equal response values are distinct
+        # events, explicit ordering and source binding survive replay.
+        sha=inc.source_sha256
+        repeated=[]
+        for row,rid,occasion,value in ((1,"a","t1","1"),(2,"a","t2","1"),(3,"b","t1","0")):
+            for ordinal,name,raw in ((1,"X",value),(2,"G","A"),(3,"RID",rid),(4,"TIME",occasion)):
+                repeated.append(PhysicalCell(row,ordinal,name,raw,PhysicalMissingState.OBSERVED_STORAGE_VALUE,None))
+        plan=GovernedRowOccurrencePlan("RID","TIME",(VariableOccurrencePlan("X","REPEATED_MEASUREMENT",(
+            OccurrenceBinding("t1","t1",{"kind":"REPEATED_MEASUREMENT","index":0}),
+            OccurrenceBinding("t2","t2",{"kind":"REPEATED_MEASUREMENT","index":1}))),),{"a":"A","b":"B"})
+        package=replace(package,selected=(NativeSourceRule("x","X"),))
+        stream=ExactPhysicalCellStream(sha,3,lambda:iter(repeated))
+        a=materialize_native_preimages(package=package,incidence=stream,row_occurrence_plan=plan)
+        b=materialize_native_preimages(package=package,incidence=stream,row_occurrence_plan=plan,compact_cells=True,compact_routing=True)
+        self.assertEqual(a.bundle_hash,b.bundle_hash)
+        self.assertEqual(a.projection.cache_identity,b.projection.cache_identity)
+        self.assertEqual(a.occurrence_bindings,b.occurrence_bindings)
+        self.assertEqual(a.respondent_rows,b.respondent_rows)
+        self.assertEqual(material(a.physical_stream),material(b.physical_stream))
+
     def test_country_set_resume_and_missing_country_census(self):
         from rawlsing_next.pre553_country_numeric_carrier import country_census,build_country_set
         with tempfile.TemporaryDirectory() as d:
