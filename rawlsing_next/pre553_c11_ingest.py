@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+from itertools import chain
 from enum import Enum
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
@@ -277,7 +278,7 @@ def _candidate_projection(candidate: C11SourceReleaseCandidate) -> dict[str, Any
     }
 
 
-def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) -> str:
+def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> str:
     """Hash the canonical candidate projection without materializing ref dictionaries.
 
     This is byte-identical to semantic_hash(_candidate_projection(candidate)).
@@ -296,7 +297,12 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) ->
             return
         refs: list[ExactRef] = []
         for item in section:
-            if isinstance(item, CanonicalSemanticObject):
+            if _country_events is not None and section is _country_events:
+                from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+                if type(item) is not _CountryEventHeader:
+                    raise C11IntegrityError("invalid private country event header")
+                refs.append(item.ref)
+            elif isinstance(item, CanonicalSemanticObject):
                 refs.append(item.ref)
             elif isinstance(item, C11InternalRecord):
                 refs.append(item.ref)
@@ -351,7 +357,7 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) ->
     return h.hexdigest()
 
 
-def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRef, ...]:
+def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate, *, _country_events=None) -> tuple[ExactRef, ...]:
     refs: list[ExactRef] = [
         candidate.source_release_manifest.source_artifact_ref,
         candidate.source_release_manifest.source_snapshot_retention_ref,
@@ -373,7 +379,10 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRe
     ):
         if isinstance(section, TypedAbsence):
             continue
-        refs.extend(canonical_section_refs(section))
+        if _country_events is not None and section is _country_events:
+            refs.extend(item.ref for item in section)
+        else:
+            refs.extend(canonical_section_refs(section))
     return tuple(sorted(refs, key=lambda r: r.key))
 
 
@@ -384,6 +393,7 @@ def build_candidate_replay_manifest(
     deterministic_tie_order_rules_ref: ExactRef,
     replay_protocol_version: str,
     frontier_version: str = FRONTIER_VERSION,
+    _country_events=None,
 ) -> ReplayManifest:
     """Build the unique deterministic manifest for candidate content excluding itself."""
     return ReplayManifest(
@@ -391,11 +401,11 @@ def build_candidate_replay_manifest(
         authority_snapshot_set_hash=authority_snapshot_set_hash(candidate.authority_snapshots),
         source_substrate_content_refs=(candidate.source_release_manifest.source_artifact_ref,),
         semantic_projection_id=SEMANTIC_PROJECTION_ID,
-        semantic_projection_hash=_candidate_projection_semantic_hash(candidate),
+        semantic_projection_hash=_candidate_projection_semantic_hash(candidate,_country_events=_country_events),
         deterministic_tie_order_rules_ref=deterministic_tie_order_rules_ref,
         replay_protocol_version=replay_protocol_version,
         replay_protocol_authority_ref=replay_protocol_authority_ref,
-        closure_refs=_all_nonmanifest_refs(candidate),
+        closure_refs=_all_nonmanifest_refs(candidate,_country_events=_country_events),
     )
 
 
@@ -415,10 +425,10 @@ def _iter_internal_records(candidate: C11SourceReleaseCandidate) -> tuple[C11Int
     return tuple(records)
 
 
-def _iter_public_objects(candidate: C11SourceReleaseCandidate) -> tuple[CanonicalSemanticObject, ...]:
+def _iter_public_objects(candidate: C11SourceReleaseCandidate, *, include_events=True) -> tuple[CanonicalSemanticObject, ...]:
     objects: list[CanonicalSemanticObject] = [
         *candidate.empirical_universes,
-        *candidate.respondent_events,
+        *(candidate.respondent_events if include_events else ()),
         *candidate.routing_eligibility_facts_or_exact_rules,
         *candidate.empirical_coordinate_facts,
         *candidate.authority_snapshots,
@@ -550,12 +560,51 @@ def _validate_sections(candidate: C11SourceReleaseCandidate) -> None:
         )
 
 
-def _validate_authorities(candidate: C11SourceReleaseCandidate) -> AuthorityRegistry:
+class _CountryEventCollector:
+    """Private I02 construction transaction, not a caller-supplied seal.
+
+    Each actual event passes the incumbent I02 public-object and embedded
+    authority validators before being reduced. Detached authority snapshots
+    isolate construction from changes in the caller's source callbacks.
+    """
+    def __init__(self,snapshots):
+        from rawlsing_next.pre553_carrier_execution import materialize_public_object
+        from rawlsing_next._pre553_c11_execution_view import _CountryHeaderBuilder
+        self.registry=AuthorityRegistry(tuple(materialize_public_object(a.as_dict()) for a in snapshots))
+        self.builder=_CountryHeaderBuilder()
+        self.headers=[]
+        self.finished=None
+
+    def add(self,event):
+        if self.finished is not None or type(event) is not RespondentEvent:
+            raise C11IntegrityError("country event collector closed or wrong family")
+        validate_public_carrier_object(event,self.registry)
+        for ref in _walk_authority_refs(event.semantic_fields):
+            self.registry.resolve_exact(ref)
+        self.headers.append(self.builder.add(event))
+
+    def finish(self):
+        if self.finished is not None:
+            raise C11IntegrityError("country event collector already finalized")
+        self.finished=tuple(sorted(self.headers,key=lambda x:x.ref.key))
+        self.headers.clear()
+        self.builder=None
+        return self.finished
+
+
+def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_collector=None) -> AuthorityRegistry:
     try:
         for snapshot in candidate.authority_snapshots:
             validate_authority_snapshot(snapshot)
         registry = AuthorityRegistry(candidate.authority_snapshots)
-        for obj in _iter_public_objects(candidate):
+        if country_collector is not None:
+            if (candidate.respondent_events is not country_collector.finished
+                    or set(registry._by_key)!=set(country_collector.registry._by_key)):
+                raise C11IntegrityError("country construction authority/header scope changed")
+            # Both registries independently validate snapshot identities.
+            # The collector used detached exact snapshot preimages.
+        for obj in chain(_iter_public_objects(candidate,include_events=False),
+                         candidate.respondent_events if country_collector is None else ()):
             validate_public_carrier_object(obj, registry)
             for ref in _walk_authority_refs(obj.semantic_fields):
                 registry.resolve_exact(ref)
@@ -598,13 +647,11 @@ def _validate_universe_and_respondent_scope(candidate: C11SourceReleaseCandidate
         respondent_pair.add(pair)
         respondent_by_key[respondent.ref.key] = respondent
 
-    for obj in (
-        *candidate.respondent_events,
-        *candidate.routing_eligibility_facts_or_exact_rules,
-        *candidate.empirical_coordinate_facts,
-        *((candidate.weight_measure_facts_or_typed_absence)
-          if not isinstance(candidate.weight_measure_facts_or_typed_absence, TypedAbsence) else ()),
-    ):
+    for obj in chain(candidate.respondent_events,
+        candidate.routing_eligibility_facts_or_exact_rules,
+        candidate.empirical_coordinate_facts,
+        (candidate.weight_measure_facts_or_typed_absence
+          if not isinstance(candidate.weight_measure_facts_or_typed_absence, TypedAbsence) else ())):
         universe_ref = exact_ref(obj.empirical_universe_ref)
         respondent_ref = exact_ref(obj.scoped_respondent_ref)
         respondent = respondent_by_key.get(respondent_ref.key)
@@ -680,10 +727,10 @@ def _validate_source_relations(candidate: C11SourceReleaseCandidate) -> None:
             )
 
 
-def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRegistry) -> ReplayManifest:
+def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRegistry, *, _country_events=None) -> ReplayManifest:
     manifest = candidate.candidate_replay_manifest
     assert manifest is not None
-    expected_projection_hash = _candidate_projection_semantic_hash(candidate)
+    expected_projection_hash = _candidate_projection_semantic_hash(candidate,_country_events=_country_events)
     if manifest.frontier_version != FRONTIER_VERSION:
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM, "frontier version mismatch")
@@ -705,7 +752,7 @@ def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRe
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "source artifact identity/hash differs from replay manifest",
         )
-    if tuple(manifest.closure_refs) != _all_nonmanifest_refs(candidate):
+    if tuple(manifest.closure_refs) != _all_nonmanifest_refs(candidate,_country_events=_country_events):
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "replay manifest closure refs do not exactly cover candidate package",
@@ -741,16 +788,35 @@ def _classify_integrity_error(exc: Exception) -> IngestDisposition:
 
 
 def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11LogicalRelease:
+    return _validate_c11_source_release(candidate)
+
+
+def _validate_country_produced_release(*,produce,authority_snapshots,compact_builder):
+    """Same I02 seal from one private physical producer transaction.
+
+    Neither an externally supplied event summary nor a caller's claimed
+    validation can enter the public ingest API.
+    """
+    collector=_CountryEventCollector(authority_snapshots)
+    candidate=produce(collector)
+    if collector.finished is None or candidate.respondent_events is not collector.finished:
+        raise C11IntegrityError("country producer did not return its exact event census")
+    return _validate_c11_source_release(candidate,country_collector=collector,
+                                        compact_builder=compact_builder)
+
+
+def _validate_c11_source_release(candidate,*,country_collector=None,compact_builder=None):
     if not isinstance(candidate, C11SourceReleaseCandidate):
         raise C11IntegrityError("expected C11SourceReleaseCandidate")
     _validate_sections(candidate)
     _validate_declared_manifest(candidate)
-    registry = _validate_authorities(candidate)
+    registry = _validate_authorities(candidate,country_collector=country_collector)
     _validate_universe_and_respondent_scope(candidate)
     _validate_questions_and_events(candidate)
     _validate_question_authorities(candidate, registry)
     _validate_source_relations(candidate)
-    replay_manifest = _validate_replay(candidate, registry)
+    replay_manifest = _validate_replay(candidate, registry,
+        _country_events=country_collector.finished if country_collector is not None else None)
 
     coverage = make_m01_m18_coverage(
         universes=candidate.empirical_universes,
@@ -774,7 +840,12 @@ def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11Logi
         "replay_manifest_ref": replay_manifest.ref.as_dict(),
         "m01_m18": {k: list(v) for k, v in coverage.items()},
     })
-    public_objects = tuple(sorted(_iter_public_objects(candidate), key=lambda obj: obj.ref.key))
+    if country_collector is None:
+        public_objects=tuple(sorted(_iter_public_objects(candidate),key=lambda obj:obj.ref.key))
+    else:
+        non_events=tuple(sorted(_iter_public_objects(candidate,include_events=False),key=lambda obj:obj.ref.key))
+        release_ref=ExactRef("C11LogicalRelease",candidate.source_release_manifest.release_id,projection_hash)
+        public_objects=compact_builder(release_ref,replay_manifest.ref,non_events,country_collector.finished)
     internal_records = tuple(sorted(_iter_internal_records(candidate), key=lambda obj: obj.ref.key))
     return _make_validated_release(
         release_id=candidate.source_release_manifest.release_id,

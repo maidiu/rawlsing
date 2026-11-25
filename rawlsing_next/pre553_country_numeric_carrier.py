@@ -649,7 +649,7 @@ class CountryReader:
     def native_repository(self, projection, *, cache=None, current_authorities=()):
         """Use incumbent compact event selector and shared I03 repository.
 
-        Country logical projection is currently materialized once to certify it;
+        I02 validates actual events while emitting compact headers;
         existing compact selectors serve subsequent queries. This is not an
         independent grant to use a returned repository after source revocation.
         """
@@ -665,16 +665,27 @@ class _CountryPhysicalStream(ExactPhysicalCellStream):
     """Recognized only by the incumbent facade; no generic user-supplied body factory."""
     reader: CountryReader | None = None
 
-    def event_bodies(self, release, events, projection):
+    def _verify_binding(self):
         if type(self.reader) is not CountryReader or self.reader._closed:
             raise CountryCarrierError("country body resolver requires its live reader")
         self.reader._verify()
         if self.transport_identity != "COUNTRY_NUMERIC_PHYSICAL@1:"+self.reader.receipt.sha256:
             raise CountryCarrierError("country transport pin mismatch")
+    def compact_events(self,release_ref,replay_ref,non_events,headers,projection):
+        self._verify_binding()
+        from ._pre553_c11_execution_view import _compact_country_headers
+        bodies=_CountryEventBodies(self.reader,projection,headers)
+        return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies)
+
+    def certify_release(self,release):
+        self._verify_binding()
         from .pre553_durable_empirical_closure import ReleaseIdentity
         self.reader._certified_identity = ReleaseIdentity(
             release.release_ref,release.replay_manifest.ref,release.source_artifact_ref,
             release.source_release_manifest_hash,release.semantic_release_hash)
+
+    def event_bodies(self, release, events, projection):
+        self.certify_release(release)
         return _CountryEventBodies(self.reader, projection, events)
 
 class _BodyScalar:

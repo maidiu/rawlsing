@@ -17,7 +17,7 @@ from typing import Any, Callable, Iterable, Mapping
 from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
 from rawlsing_next.pre553_c11_ingest import (
     INGEST_CONTRACT_VERSION, C11SourceReleaseCandidate, SourceReleaseManifest,
-    build_candidate_replay_manifest, validate_c11_source_release,
+    build_candidate_replay_manifest, validate_c11_source_release, _validate_country_produced_release,
 )
 from rawlsing_next.pre553_c11_integrity import (
     C11InternalRecord, QuestionVariableBinding, RespondentIdentity, TypedAbsence,
@@ -586,7 +586,8 @@ def _counts(p, events, coords, weights):
 
 
 def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: int,
-                                               cells: Iterable[PhysicalCell], projection: GovernedC11Projection | None):
+                                               cells: Iterable[PhysicalCell], projection: GovernedC11Projection | None,
+                                               _event_collector=None):
     if not isinstance(projection, GovernedC11Projection):
         raise SourceBackedC11FacadeError("explicit governed projection required; no semantic inference permitted")
     _sha(source_sha256, "source_sha256")
@@ -635,8 +636,12 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
             if value is None:
                 raise SourceBackedC11FacadeError("unbound response value/state; no label/frequency/missingness inference")
             auths = owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner_set else ()
-            events.extend(_event(source_sha256, cell.row_ordinal, respondent, slot, cell, value, o, projection, auths)
-                          for o in value.occurrences)
+            for occurrence in value.occurrences:
+                event=_event(source_sha256,cell.row_ordinal,respondent,slot,cell,value,occurrence,projection,auths)
+                if _event_collector is None:
+                    events.append(event)
+                else:
+                    _event_collector.add(event)
         if key in cs:
             slot = cs[key]
             rule = coordinate_values[key].get(pv)
@@ -649,7 +654,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
             weights.append(_weight(source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths))
     if any(v!=row_count for v in counts.values()):
         raise SourceBackedC11FacadeError("projected slot incomplete; absent physical cell is not semantic absence")
-    events = tuple(sorted(events, key=lambda x: x.ref.key))
+    events = (tuple(sorted(events,key=lambda x:x.ref.key))
+              if _event_collector is None else _event_collector.finish())
     coords = tuple(sorted(coords, key=lambda x: x.ref.key))
     weight_section = tuple(sorted(weights, key=lambda x: x.ref.key)) if projection.weight_slots else TypedAbsence("NOT_APPLICABLE")
     manifest = SourceReleaseManifest(
@@ -667,7 +673,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
         comparator_replay_bindings_or_typed_deferred_state=projection.comparator_replay, discovery_branch_replay_bindings_or_typed_deferred_state=projection.discovery_replay,
         structural_admission_replay_bindings_or_typed_not_applicable_state=projection.structural_replay, candidate_replay_manifest=None)
     replay = build_candidate_replay_manifest(candidate, replay_protocol_authority_ref=projection.replay_authority_ref,
-                                             deterministic_tie_order_rules_ref=projection.tie_order_ref, replay_protocol_version=projection.replay_protocol_version)
+                                             deterministic_tie_order_rules_ref=projection.tie_order_ref, replay_protocol_version=projection.replay_protocol_version,
+                                             _country_events=events if _event_collector is not None else None)
     return replace(candidate, candidate_replay_manifest=replay)
 
 
@@ -816,6 +823,25 @@ def build_source_backed_c11_repository(
     if country and cache is not None:
         raise SourceBackedC11FacadeError("country repository has live reader; no detached session cache")
     key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
+    if country:
+        # The I02 owner validates each actual event as the physical producer
+        # emits it, then seals the same logical package from exact headers.
+        # No complete event-object graph or second body archive is retained.
+        def produce(collector):
+            candidate=project_c11_candidate_from_physical_cells(
+                source_sha256=source.source_sha256,row_count=source.row_count,
+                cells=source.iter_cells(),projection=projection,_event_collector=collector)
+            _verify(candidate,projection,source.source_sha256)
+            return candidate
+        release=_validate_country_produced_release(produce=produce,
+            authority_snapshots=projection.authority_snapshots,
+            compact_builder=lambda ref,replay,non_events,headers:
+                source.compact_events(ref,replay,non_events,headers,projection))
+        if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
+            raise SourceBackedC11FacadeError("cache input changed during C11 build")
+        repo=C11Repository((release,))
+        source.certify_release(release)
+        return repo,release
     release = cache.get(key) if cache else None
     if release is None:
         release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)

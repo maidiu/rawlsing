@@ -72,6 +72,84 @@ class _EventRead:
 
 
 @dataclass(frozen=True, slots=True)
+class _CountryEventHeader:
+    """Transient private I02 header, never a public semantic object.
+
+    Full source events are validated before this reduction. The exact ref,
+    occurrence/scope checks, selectors and reconstruction dependencies
+    survive; the canonical body does not remain resident.
+    """
+    selector: _EventRead
+    empirical_universe_ref: ExactRef
+    scoped_respondent_ref: ExactRef
+    dependency_refs: tuple[ExactRef, ...]
+    event_group_id: str
+
+    @property
+    def ref(self):
+        return self.selector.ref
+    @property
+    def content_hash(self):
+        return self.selector.ref.content_hash
+    @property
+    def native_question_ref(self):
+        return self.selector.native_question_ref
+    @property
+    def component_or_subitem_ref(self):
+        return self.selector.component_or_subitem_ref
+    @property
+    def response_event_id_or_deterministic_index(self):
+        return self.selector.response_event_id_or_deterministic_index
+
+
+class _CountryHeaderBuilder:
+    """Shared immutable field interning at true repeated information grain."""
+    def __init__(self):
+        self.dimensions={}
+        self.refs={}
+        self.values=({}, {}, {})
+        self.authorities={}
+
+    def ref(self,value):
+        ref=exact_ref(value)
+        key=_ref_identity(ref)
+        # Detach from the producer's ref instance, then share exact strings.
+        return self.refs.setdefault(key,ExactRef(*key))
+
+    def dimension(self,value):
+        if value is None:
+            return None
+        key=_ref_identity(exact_ref(value))
+        return self.dimensions.setdefault(key,key)
+
+    def value(self,value,pool):
+        if len(pool)>=8192:
+            return value
+        key=canonical_json(value)
+        if len(key)>2048:
+            return value
+        return pool.setdefault(key,value)
+
+    def add(self,obj):
+        auth=tuple((ref.authority_id,ref.authority_version,ref.authority_content_hash)
+                   for ref in obj.authority_snapshot_refs)
+        if len(self.authorities)<8192:
+            auth=self.authorities.setdefault(auth,auth)
+        selector=_EventRead(
+            _ref_identity(obj.ref),obj.typed_state,self.dimension(obj.native_question_ref),
+            self.dimension(obj.canonical_question_ref_if_authorized),
+            self.dimension(obj.component_or_subitem_ref),auth,
+            self.value(obj.raw_response_value,self.values[0]),
+            self.value(obj.canonical_response_value_if_authorized,self.values[1]),
+            self.value(obj.multiplicity_order_rank_fields,self.values[2]),
+            obj.response_event_id_or_deterministic_index,
+        )
+        return _CountryEventHeader(selector,self.ref(obj.empirical_universe_ref),
+            self.ref(obj.scoped_respondent_ref),tuple(self.ref(ref) for ref in obj.dependency_refs),
+            obj.event_group_id)
+
+
+@dataclass(frozen=True, slots=True)
 class _EventLane:
     bodies: Any  # Arrow immutable binary array or chunked array
     selectors: tuple[_EventRead, ...]
@@ -178,6 +256,36 @@ class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
     def exact_entries(self) -> Iterator[CanonicalSemanticObject | _EventLocator]:
         for entry in self.entries:
             yield _EventLocator(self.lane, entry) if isinstance(entry, int) else entry
+
+
+def _country_respondent_events(lane,rows):
+    original=tuple(rows)
+    if len(original)<32:
+        return _RespondentEvents(lane,original)
+    selectors=lane.selectors
+    tag="I" if len(selectors)<2**32 else "Q"
+    postings=[]
+    for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
+        selected=sorted((row for row in original if getattr(selectors[row],field) is not None),
+                        key=lambda row:getattr(selectors[row],field))
+        postings.append(memoryview(array(tag,selected).tobytes()).cast(tag))
+    return _RespondentEvents(lane,original,tuple(postings))
+
+
+def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies):
+    """Assemble the existing compact public view directly, with no event bodies."""
+    if not headers or len(bodies)!=len(headers):
+        raise ValueError("country compact event census mismatch")
+    selectors=tuple(header.selector for header in headers)
+    lane=_EventLane(bodies,selectors)
+    groups={}
+    for row,header in enumerate(headers):
+        groups.setdefault((header.empirical_universe_ref,header.scoped_respondent_ref.key),[]).append(row)
+    entries=tuple(sorted((*non_events,*range(len(headers))),
+        key=lambda entry:selectors[entry].ref.key if isinstance(entry,int) else entry.ref.key))
+    return _CompactPublicObjects(release_ref,replay_ref,lane,entries,tuple(non_events),
+        MappingProxyType({key:_country_respondent_events(lane,rows) for key,rows in groups.items()}),
+        frozenset(selector.typed_state for selector in selectors))
 
 
 def _cache_directory() -> Path | None:

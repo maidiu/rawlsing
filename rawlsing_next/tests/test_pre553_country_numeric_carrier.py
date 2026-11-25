@@ -103,7 +103,15 @@ class CountryNumeric(unittest.TestCase):
             with CountryReader(path,rec,require_current=lambda:None) as reader:
                 with self.assertRaises(CountryCarrierError):
                     reader.native_release(original)
-                compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                from unittest.mock import patch
+                # The new path may not first construct the old full public
+                # event graph and then call the old compactor.
+                with patch("rawlsing_next.pre553_source_backed_c11_facade._compact_public_objects",
+                           side_effect=AssertionError("eager event graph compactor")):
+                    compact_repo,compact=reader.native_repository(subset,current_authorities=fx['authorities'])
+                from rawlsing_next.pre553_empirical_objects import semantic_hash
+                self.assertEqual(compact.replay_manifest.content_hash,
+                                 semantic_hash(compact.replay_manifest.semantic_projection()))
                 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
                 self.assertIsInstance(compact.public_objects,_CompactPublicObjects)
                 from rawlsing_next.pre553_country_numeric_carrier import _CountryEventBodies

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, fields
 from functools import cached_property
+import hashlib
 from types import MappingProxyType
 from typing import Any, ClassVar, Iterable, Mapping, Sequence
 
@@ -314,6 +315,37 @@ class ReplayManifest(C11InternalRecord):
     replay_protocol_authority_ref: AuthorityRef
     closure_refs: tuple[ExactRef, ...]
 
+    @cached_property
+    def content_hash(self) -> str:
+        # Same canonical internal record preimage; the potentially millions
+        # of closure refs are emitted one at a time instead of expanded into
+        # a simultaneous graph of dictionaries and one giant JSON string.
+        if type(self.closure_refs) is not tuple:
+            return semantic_hash(self.semantic_projection())
+        h=hashlib.sha256()
+        def emit(value):
+            h.update(canonical_json(value).encode("utf-8"))
+        h.update(b'{"record_family":')
+        emit(self.RECORD_FAMILY)
+        h.update(b',"record_version":"1.0.0","semantic_fields":{')
+        for i,f in enumerate(sorted(fields(self),key=lambda f:f.name)):
+            if i:
+                h.update(b",")
+            emit(f.name)
+            h.update(b":")
+            value=getattr(self,f.name)
+            if f.name=="closure_refs":
+                h.update(b"[")
+                for j,ref in enumerate(value):
+                    if j:
+                        h.update(b",")
+                    emit(_internal_value(ref))
+                h.update(b"]")
+            else:
+                emit(_internal_value(value))
+        h.update(b"}}")
+        return h.hexdigest()
+
     def _validate(self) -> None:
         _require_text(self.frontier_version, "frontier_version")
         _require_text(self.semantic_projection_id, "semantic_projection_id")
@@ -485,7 +517,10 @@ def canonical_section_refs(records: Iterable[Any]) -> tuple[ExactRef, ...]:
 
 
 def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None:
-    seen: dict[str, str] = {}
+    # A digest collision can only conservatively refuse a package, never
+    # collapse two occurrences or admit a duplicate. Avoid retaining an
+    # expanded canonical occurrence JSON string for every source cell.
+    seen: set[bytes] = set()
     for event in events:
         universe = _field_ref(event, "empirical_universe_ref")
         respondent = _field_ref(event, "scoped_respondent_ref")
@@ -499,12 +534,11 @@ def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None
             "event_group_id": event.event_group_id,
             "event_id": event.response_event_id_or_deterministic_index,
         }
-        key = canonical_json(occurrence_material)
-        previous = seen.get(key)
-        if previous is not None:
+        key=hashlib.sha256(canonical_json(occurrence_material).encode("utf-8")).digest()
+        if key in seen:
             raise C11IntegrityError(
                 "duplicate response occurrence identity detected; storage duplication is not a new event")
-        seen[key] = event.content_hash
+        seen.add(key)
 
 
 def make_m01_m18_coverage(
