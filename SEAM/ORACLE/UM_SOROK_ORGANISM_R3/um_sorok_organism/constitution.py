@@ -4,7 +4,7 @@ No psychology state is minted by materialization. This module is deliberately re
 import math
 from .types import Constitution, Situated, AccessibleEncounter, copy, GRADE
 from .organism import eligible, ACTIONS
-from .activity import eligible_activities
+from .activity import eligible_activities, annotate_interactivity_relations
 from .psychodynamics import enact_currents
 from .relational_metabolism import derive_relational_metabolism
 from .plans import qualified_learned_compositions
@@ -687,6 +687,8 @@ def compose(constitution,access,limit=50):
     currents+=affective_afterlife['currents']
     notice_afterlife=annotate_notice_expectations(constitution,access,dynamics['candidate_actions'])
     currents+=notice_afterlife['currents']
+    interactivity=annotate_interactivity_relations(constitution,access,dynamics['candidate_actions'])
+    currents+=interactivity['currents']
     # The same historically noticed end can offer several ACTUAL eligible
     # operations without becoming an acquired project or being given an
     # automatic conscious object. This projection never grants capability.
@@ -715,7 +717,7 @@ def compose(constitution,access,limit=50):
                            inquiry['readset']+
                            functional['readset']+
                            expectation_afterlife['readset']+affective_afterlife['readset']+
-                           prospective['readset']+notice_afterlife['readset']+
+                           prospective['readset']+notice_afterlife['readset']+interactivity['readset']+
                            list(candidate_history_refs)+
                            [t['id'] for t in traces]+access.access_receipts)),
        unknowns=list(constitution.unknowns),antagonisms=dynamics['antagonisms'],
