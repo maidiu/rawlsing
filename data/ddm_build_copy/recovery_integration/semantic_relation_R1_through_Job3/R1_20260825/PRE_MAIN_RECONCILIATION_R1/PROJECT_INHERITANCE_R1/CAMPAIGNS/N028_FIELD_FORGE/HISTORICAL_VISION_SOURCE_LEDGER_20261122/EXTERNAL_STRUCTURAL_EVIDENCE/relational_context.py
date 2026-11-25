@@ -302,21 +302,11 @@ def inquire_repertoire_fracture(session, question, *, position_states, repertoir
                 recipient_state="POSSIBILITY_ONLY__C6_AND_WORLD_OWNER_RECEIVING_HELD")
 
 
-def inquire_social_field(session, question, *, position_axes, repertoire_axes,
-                         axis_meanings, active_ancestry, contrasts, propose, revise):
-    """R14: selected multidimensional correspondence over the incumbent S04 joint.
-
-    Caller roles/ancestry and advantage directions are provisional SOURCEFREE
-    declarations, not independently issued classifications. Each contrast is
-    (label, left_conditions, right_conditions) on identical position axes.
-    Preserve marginal and intersection contrasts, baseline and reverse
-    composition; no Cartesian expansion beyond the existing S04 joint.
-    No external pack, world assumption, new estimator or actor issuance.
-    """
+def _validate_social_roles(session, question, position_axes, repertoire_axes,
+                           axis_meanings, active_ancestry):
     from rawlsing_next.pre553_s04_dynamic_research import (
         S04DynamicQuestion, S04DynamicResearchSession,
     )
-    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
 
     if type(session) is not S04DynamicResearchSession or type(question) is not S04DynamicQuestion:
         raise TypeError("actual sourcefree dynamic research session/question required")
@@ -339,21 +329,10 @@ def inquire_social_field(session, question, *, position_axes, repertoire_axes,
     d_roots = {v for a in repertoire_axes for v in active_ancestry[a]}
     if p_roots & d_roots:
         raise ValueError("shared active position/disposition ancestry")
-    if not callable(propose) or not callable(revise):
-        raise TypeError("proposal and revision callbacks required")
-    contrasts = tuple(deepcopy(tuple(contrasts)))
-    if not contrasts:
-        raise ValueError("selected position contrasts required")
-    labels = set()
-    for label, left, right in contrasts:
-        if (not isinstance(label, str) or not label.strip() or label in labels
-                or type(left) is not dict or type(right) is not dict
-                or not left or set(left) != set(right) or not set(left) <= set(position_axes)
-                or _json(left) == _json(right)):
-            raise ValueError("distinct named same-axis position contrasts required")
-        labels.add(label)
+    return axes
 
-    result = session.ask(question)
+
+def _validate_social_result(result, question, axes, position_axes, repertoire_axes):
     original = result.original
     knowledge = original.knowledge.material()
     ff = original.ff01.semantic_projection()
@@ -370,6 +349,49 @@ def inquire_social_field(session, question, *, position_axes, repertoire_axes,
     if ({_json(targets[a]) for a in position_axes} &
             {_json(targets[a]) for a in repertoire_axes}):
         raise ValueError("shared actual target identity")
+
+    return original, knowledge, obs
+
+
+def inquire_social_field(session, question, *, position_axes, repertoire_axes,
+                         axis_meanings, active_ancestry, contrasts, propose, revise):
+    """Public R14 entry: one actual saved I03 question, selected contrasts."""
+    return _inquire_social_field(session, question, position_axes=position_axes,
+        repertoire_axes=repertoire_axes, axis_meanings=axis_meanings,
+        active_ancestry=active_ancestry, contrasts=contrasts, propose=propose, revise=revise)
+
+
+def _inquire_social_field(session, question, *, position_axes, repertoire_axes,
+                         axis_meanings, active_ancestry, contrasts, propose, revise, _result=None):
+    """R14: selected multidimensional correspondence over the incumbent S04 joint.
+
+    Caller roles/ancestry and advantage directions are provisional SOURCEFREE
+    declarations, not independently issued classifications. Each contrast is
+    (label, left_conditions, right_conditions) on identical position axes.
+    Preserve marginal and intersection contrasts, baseline and reverse
+    composition; no Cartesian expansion beyond the existing S04 joint.
+    No external pack, world assumption, new estimator or actor issuance.
+    """
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+    axes = _validate_social_roles(session, question, position_axes, repertoire_axes,
+                                  axis_meanings, active_ancestry)
+    if not callable(propose) or not callable(revise):
+        raise TypeError("proposal and revision callbacks required")
+    contrasts = tuple(deepcopy(tuple(contrasts)))
+    if not contrasts:
+        raise ValueError("selected position contrasts required")
+    labels = set()
+    for label, left, right in contrasts:
+        if (not isinstance(label, str) or not label.strip() or label in labels
+                or type(left) is not dict or type(right) is not dict
+                or not left or set(left) != set(right) or not set(left) <= set(position_axes)
+                or _json(left) == _json(right)):
+            raise ValueError("distinct named same-axis position contrasts required")
+        labels.add(label)
+
+    result = session.ask(question) if _result is None else _result
+    original, knowledge, obs = _validate_social_result(
+        result, question, axes, position_axes, repertoire_axes)
 
     def ask(output, conditions):
         answer = result.joint_workspace.query(S04Projection(output, conditions))
@@ -506,3 +528,245 @@ def inquire_social_field(session, question, *, position_axes, repertoire_axes,
         raise ValueError("source result changed during interpretation")
     return dict(packet, state="PROVISIONAL_SOCIAL_FIELD_REVISED_NOT_CERTIFIED",
                 revision=revision, recipient_state="DESCRIPTIVE_POSSIBILITIES_ONLY__RECEIVING_HELD")
+
+
+def discover_social_field(session, question, *, position_axes, repertoire_axes,
+                          axis_meanings, active_ancestry, discovery_authority,
+                          authority_registry, root_rule, child_rule, budget,
+                          max_position_order, min_position_n, interpret, revise):
+    """R15: productive discovery within one admitted sourcefree joint.
+
+    Existing I05 adaptive scheduler owns scheduling, budget and coverage.
+    Existing S04 DHIKR owns information/synergy diagnostics, not FF.
+    FF discovers exact joint motif contrasts on position subsets and feeds
+    positive findings back into the existing R14 inquiry and a semantic
+    callback. No caller-selected motif, contrast, or universal power rank.
+    This is an in-sample exploratory search, not source/science issuance.
+    """
+    from rawlsing_next.pre553_discovery_adaptive import (
+        AdaptiveExplorationUnit, AdaptiveUnitOutcome, execute_adaptive_exploration,
+    )
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+    from rawlsing_next.pre553_s04_dhikr_comparative import DHIKRComparisonRequest
+
+    axes = _validate_social_roles(session, question, position_axes, repertoire_axes,
+                                  axis_meanings, active_ancestry)
+    if (type(budget) is not int or budget < 1
+            or type(max_position_order) is not int
+            or not 1 <= max_position_order <= len(position_axes)
+            or type(min_position_n) is not int or min_position_n < 2
+            or not callable(interpret) or not callable(revise)):
+        raise ValueError("explicit positive search budget, position order, support and callbacks required")
+    result = session.ask(question)
+    original, knowledge, obs = _validate_social_result(
+        result, question, axes, position_axes, repertoire_axes)
+    workspace = result.joint_workspace
+
+    def project(output, conditions):
+        answer = workspace.query(S04Projection(output, conditions))
+        export = _projection(answer)
+        if export["material"]["knowledge_ref"] != original.knowledge.ref.as_dict():
+            raise ValueError("projection escaped retained source knowledge")
+        return answer, export
+
+    def seal(kind, payload):
+        digest = semantic_hash(payload)
+        return ExactRef(kind, "urn:rawlsing:ff:r15:" + kind.lower() + ":" + digest, digest)
+
+    def fraction(cell):
+        v = cell["raw_fraction_of_selected_full_cases"]
+        return None if v is None else Fraction(*v["$exact_fraction"])
+
+    def pair(v):
+        return [v.numerator, v.denominator]
+
+    def public_projection(export):
+        m = export["material"]
+        return {"state": m["state"], "selected_n": m["raw_selected_full_case_n"],
+                "cells": deepcopy(m["complete_output_cells"])}
+
+    _, baseline = project(repertoire_axes, {})
+    # Each target's existing DHIKR diagnostic can nominate interaction
+    # questions even when every single position association is zero.
+    # The incumbent has a documented 8-predictor bound; do not silently
+    # truncate or claim a diagnostic for a larger universe.
+    diagnostics = []
+    for target in repertoire_axes:
+        predictors = tuple(a for a in axes if a != target)
+        if len(predictors) > 8:
+            diagnostics.append({"target_axis": target,
+                "state": "DHIKR_PREDICTOR_BOUND__NO_DIAGNOSTIC"})
+            continue
+        receipt = workspace.compare_dhikr(DHIKRComparisonRequest(
+            target, predictors, min_branch_n=min_position_n,
+            max_depth=0, max_nodes=1, max_interaction_order=min(3,len(predictors))))
+        m = receipt.material()
+        if m["source_knowledge_ref"] != original.knowledge.ref.as_dict():
+            raise ValueError("DHIKR diagnostic escaped retained knowledge")
+        diagnostics.append({"target_axis": target, "ref": receipt.ref.as_dict(), "material": m})
+
+    determinant = seal("FF_SOCIAL_DISCOVERY_DETERMINANT", {
+        "knowledge_ref": original.knowledge.ref.as_dict(),
+        "observation_ref": result.observation_scope.ref.as_dict(),
+        "position_axes": list(position_axes), "repertoire_axes": list(repertoire_axes),
+        "axis_meanings": {str(k): v for k,v in axis_meanings.items()},
+        "active_ancestry": {str(k): list(v) for k,v in active_ancestry.items()},
+        "max_position_order": max_position_order, "min_position_n": min_position_n,
+        "diagnostics": diagnostics, "policy": "R15_SELECTED_POSITION_SUBSETS_V1"})
+    order = tuple(sorted(position_axes))
+    specs, records = {}, {}
+    priority_axes = set()
+    for d in diagnostics:
+        for node in d.get("material", {}).get("nodes", []):
+            priority_axes.update(node["priority_group"])
+    definition = discovery_authority.candidate_universe_definition
+    frontier_cap = definition["maximum_frontier_size"]
+    generation_cap = definition["maximum_generation"]
+
+    def make_unit(subset, parent=None, sealed=None, rank=0):
+        # Canonical increasing subsets have exactly one parent. The
+        # scheduler still verifies parent result, determinant and rule.
+        ref = seal("FF_SOCIAL_POSITION_UNIT", {
+            "determinant": determinant.as_dict(), "axes": list(subset)})
+        unit = AdaptiveExplorationUnit(
+            unit_ref=ref, proposal_rule_ref=root_rule if parent is None else child_rule,
+            generation=len(subset)-1, heuristic_rank=rank,
+            determinant_refs=(determinant,) if parent is None else (determinant,sealed),
+            parent_unit_ref=None if parent is None else parent.unit_ref)
+        specs[ref.key] = subset
+        return unit
+
+    roots = tuple(make_unit((a,), rank=int(a in priority_axes)) for a in order)
+
+    def evaluate(unit, history):
+        subset = specs[unit.unit_ref.key]
+        _, positions = project(subset, {})
+        contexts, excluded = [], []
+        for row in positions["material"]["complete_output_cells"]:
+            conditions = dict(zip(subset, row["output_states"]))
+            if row["raw_count"] < min_position_n:
+                excluded.append({"conditions": [[a,v] for a,v in conditions.items()],
+                    "raw_n": row["raw_count"], "state": "BELOW_SELECTED_SUPPORT__NOT_ABSENCE"})
+                continue
+            answer, export = project(repertoire_axes, conditions)
+            contexts.append((conditions, answer, export))
+
+        # Compare extrema of each actually observed joint motif, using
+        # exact fractions already issued by S04. Keep all searched motifs,
+        # including constant profiles and rare positive alternatives.
+        candidates = []
+        for b in baseline["material"]["complete_output_cells"]:
+            if b["raw_count"] <= 0 or len(contexts) < 2:
+                continue
+            key = _json(b["output_states"])
+            supported = []
+            for cond, answer, exp in contexts:
+                cell = next(c for c in exp["material"]["complete_output_cells"]
+                            if _json(c["output_states"]) == key)
+                supported.append((fraction(cell), cond, answer, exp))
+            supported.sort(key=lambda x: (x[0], _json(x[1])))
+            low, high = supported[0], supported[-1]
+            gap = high[0] - low[0]
+            candidates.append({"motif": deepcopy(b["output_states"]),
+                "baseline_n": b["raw_count"], "gap": pair(gap),
+                "low": [[a,v] for a,v in low[1].items()],
+                "high": [[a,v] for a,v in high[1].items()],
+                "low_prevalence": pair(low[0]), "high_prevalence": pair(high[0]),
+                "low_ref": low[3]["ref"], "high_ref": high[3]["ref"]})
+        candidates.sort(key=lambda x: (-Fraction(*x["gap"]), x["baseline_n"], _json(x["motif"])))
+        top = candidates[0] if candidates else None
+        view = {"grade": "SYNTHETIC_SOURCEFREE_SAMPLE_ONLY",
+                "position_axes": list(subset), "repertoire_axes": list(repertoire_axes),
+                "axis_meanings": {str(k): v for k,v in axis_meanings.items()},
+                "baseline": public_projection(baseline),
+                "contexts": [{"conditions": [[a,v] for a,v in cond.items()],
+                              "repertoire": public_projection(exp)} for cond,_,exp in contexts],
+                "excluded": excluded,
+                "candidates": [{k: deepcopy(v) for k,v in x.items() if not k.endswith("_ref")}
+                               for x in candidates],
+                "earlier_questions": [records[v.unit.unit_ref.key]["interpretation"]["question"]
+                                      for v in history],
+                "eligible_extension_axes": [a for a in order if a > subset[-1]
+                                             and len(subset) < max_position_order
+                                             and unit.generation < generation_cap]}
+        interpretation = deepcopy(interpret(deepcopy(view)))
+        if (type(interpretation) is not dict
+                or set(interpretation) != {"concept","rival","question","preferred_axis"}
+                or any(not isinstance(interpretation[k], str) or not interpretation[k].strip()
+                       for k in ("concept","rival","question"))
+                or (interpretation["preferred_axis"] is not None
+                    and (type(interpretation["preferred_axis"]) is not int
+                         or interpretation["preferred_axis"] not in view["eligible_extension_axes"]))):
+            raise ValueError("interpretation must nominate only an eligible next position axis")
+        followthrough = None
+        if top is not None and Fraction(*top["gap"]) > 0:
+            left, right = dict(top["low"]), dict(top["high"])
+            la, _ = project(repertoire_axes, left)
+            ra, _ = project(repertoire_axes, right)
+            delta = repertoire_contrast(la, ra)
+            # A rival is selected from actual opposite redistribution on
+            # these exact contexts, not invented by the callback.
+            rivals = [v for v in delta["cells"] if
+                      Fraction(*v["difference_right_minus_left"]) < 0]
+            rivals.sort(key=lambda v: (Fraction(*v["difference_right_minus_left"]),
+                                      _json(v["output_states"])))
+            if not rivals:
+                raise ValueError("positive redistribution without conserved counterweight")
+            motif_pair = [top["motif"], rivals[0]["output_states"]]
+            followthrough = _inquire_social_field(session, question,
+                position_axes=position_axes, repertoire_axes=repertoire_axes,
+                axis_meanings=axis_meanings, active_ancestry=active_ancestry,
+                contrasts=(("discovered:" + ",".join(map(str,subset)), left, right),),
+                propose=lambda _: {"concept": interpretation["concept"],
+                    "rival": interpretation["rival"], "question": interpretation["question"],
+                    "motifs": deepcopy(motif_pair)}, revise=revise, _result=result)
+        # Recheck CURRENT after semantic callbacks even if all marginal
+        # differences vanish. A null marginal must not prune intersections.
+        project((), {})
+        record = {"unit_ref": unit.unit_ref.as_dict(), "position_axes": list(subset),
+                  "positions": positions, "conditional_repertoires": [e for _,_,e in contexts],
+                  "excluded": excluded, "candidates": candidates,
+                  "interpretation": interpretation, "followthrough": followthrough,
+                  "not_proposed": []}
+        eligible = view["eligible_extension_axes"]
+        # Explicitly retain any known extension excluded by the finite
+        # authority frontier; an unscheduled axis is never a negative.
+        preference = interpretation["preferred_axis"]
+        chosen = sorted(eligible, key=lambda a: (a != preference, a not in priority_axes, a))
+        room = max(0, frontier_cap - len(specs))
+        for a in chosen[room:]:
+            record["not_proposed"].append({"axis": a, "state": "AUTHORITY_FRONTIER_LIMIT__UNKNOWN"})
+        if len(subset) >= max_position_order or unit.generation >= generation_cap:
+            record["not_proposed"].extend({"axis": a, "state": "POSITION_ORDER_OR_GENERATION_LIMIT__UNKNOWN"}
+                                         for a in order if a > subset[-1])
+        sealed = seal("FF_SOCIAL_DISCOVERY_UNIT_RESULT", record)
+        proposals = []
+        rank = int(1000 * Fraction(*top["gap"])) if top else 0
+        for a in chosen[:room]:
+            proposals.append(make_unit(subset+(a,), parent=unit, sealed=sealed,
+                rank=rank + (1001 if a == preference else 0) + int(a in priority_axes)))
+        records[unit.unit_ref.key] = record
+        return AdaptiveUnitOutcome(unit_ref=unit.unit_ref, sealed_result_ref=sealed,
+            proposal_basis_ref=seal("FF_SOCIAL_DISCOVERY_PROPOSAL_BASIS", {
+                "sealed": sealed.as_dict(), "proposal_axes": [specs[u.unit_ref.key] for u in proposals],
+                "heuristic_not_truth": True}),
+            unit_result_state="SEALED_SOURCEFREE_POSITION_SUBSET_INQUIRY",
+            proposal_units=tuple(proposals))
+
+    search = execute_adaptive_exploration(discovery_authority=discovery_authority,
+        authority_registry=authority_registry, determinant_state_ref=determinant,
+        initial_units=roots, evaluate_unit=evaluate, budget=budget)
+    project((), {})
+    return {"grade": "INTERNAL_SOURCEFREE_FF_DISCOVERY_NOT_SOURCE_SCIENCE_OR_WORLD_ISSUANCE",
+            "knowledge_ref": original.knowledge.ref.as_dict(),
+            "observation_ref": result.observation_scope.ref.as_dict(),
+            "diagnostics": diagnostics, "determinant_ref": determinant.as_dict(),
+            "baseline": baseline, "records": [records[v.unit.unit_ref.key]
+                                               for v in search.checkpoint.visits],
+            "search_ref": search.result_ref.as_dict(), "checkpoint": search.checkpoint.as_dict(),
+            "completeness_state": search.completeness_state,
+            "unvisited": [{"unit_ref": u.as_dict(), "axes": list(specs[u.key]),
+                           "state": "UNKNOWN_UNVISITED"} for u in search.unvisited_unit_refs],
+            "global_negative_claim": False, "semantic_truth_effect": False,
+            "actor_v3_effect": False}

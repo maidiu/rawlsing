@@ -244,3 +244,85 @@ def test_social_field_revoke_after_revision(tmp_path, monkeypatch):
         return _social_revise(*args)
     with session, pytest.raises(cold.DirectEstateError,match="(?i)current|revok|authoriz"):
         _social_run(session,q,revise=revoke)
+
+
+# R15: actual I05 adaptive scheduler + actual S04 DHIKR + R14 on the
+# same saved cold fixture. Test authority is the incumbent sourcefree
+# fixture authority, not a production discovery/source grant.
+def _discover_run(session,q,**kwargs):
+    from relational_context import discover_social_field
+    from rawlsing_next.tests import test_pre553_discovery_adaptive as adaptive
+    authority,registry,root,child=adaptive._authority("ff-r15")
+    def interpret(view):
+        assert "source_fact_ref" not in str(view)
+        first=view["candidates"][0] if view["candidates"] else None
+        return {"concept": "position-dependent selective entitlement" if first and first["gap"] != [0,1]
+                           else "apparently undifferentiated repertoire",
+                "rival":"hidden intersection", "question":"Follow the next position interaction",
+                "preferred_axis":next(iter(view["eligible_extension_axes"]),None)}
+    opts=dict(position_axes=(0,1),repertoire_axes=(2,3),
+        axis_meanings={0:"resource",1:"credential",2:"gender priority",3:"national priority"},
+        active_ancestry={i:(f"fixture-{i}",) for i in range(4)},
+        discovery_authority=authority,authority_registry=registry,root_rule=root,child_rule=child,
+        budget=3,max_position_order=2,min_position_n=2,interpret=interpret,revise=_social_revise)
+    opts.update(kwargs)
+    return discover_social_field(session,q,**opts)
+
+
+def test_discover_intersection_without_caller_motif_or_contrast(tmp_path,monkeypatch):
+    outcomes=[]
+    for parity in (0,1):
+        session,q=_social_session(tmp_path/str(parity),monkeypatch,_social_rows(parity))
+        with session:
+            out=_discover_run(session,q)
+            assert session.stats()["original_native_i03_queries_executed"] == 1
+        assert out["completeness_state"] == "EXPLORATORY_POLICY_FRONTIER_EXHAUSTED"
+        assert len(out["records"]) == 3 and not out["global_negative_claim"]
+        assert all(r["followthrough"] is None for r in out["records"] if len(r["position_axes"])==1)
+        joint=next(r for r in out["records"] if r["position_axes"]==[0,1])
+        assert joint["candidates"][0]["gap"] == [1,2]
+        assert joint["followthrough"]["state"] == "PROVISIONAL_SOCIAL_FIELD_REVISED_NOT_CERTIFIED"
+        assert len(joint["followthrough"]["motifs"])==2
+        assert all(d["material"]["nodes"] for d in out["diagnostics"])
+        outcomes.append(joint)
+    assert outcomes[0]["candidates"][0]["high"] != outcomes[1]["candidates"][0]["high"]
+    assert outcomes[0]["followthrough"]["revision"] != outcomes[1]["followthrough"]["revision"]
+
+
+def test_discover_budget_retains_unvisited_and_no_global_negative(tmp_path,monkeypatch):
+    session,q=_social_session(tmp_path,monkeypatch,_social_rows(0))
+    with session:
+        out=_discover_run(session,q,budget=1)
+        assert session.stats()["original_native_i03_queries_executed"] == 1
+    assert out["completeness_state"] == "PARTIAL_BUDGET_EXHAUSTED"
+    assert out["unvisited"] and all(x["state"]=="UNKNOWN_UNVISITED" for x in out["unvisited"])
+    assert out["global_negative_claim"] is False
+    assert len(out["records"]) == 1
+
+
+def test_discover_below_support_does_not_become_absence(tmp_path,monkeypatch):
+    session,q=_social_session(tmp_path,monkeypatch,_social_rows(0))
+    with session:
+        out=_discover_run(session,q,min_position_n=3)
+    joint=next(r for r in out["records"] if r["position_axes"]==[0,1])
+    assert not joint["candidates"] and joint["followthrough"] is None
+    assert len(joint["excluded"])==4
+    assert all(x["state"]=="BELOW_SELECTED_SUPPORT__NOT_ABSENCE" for x in joint["excluded"])
+
+
+def test_discover_rejects_illegal_semantic_extension(tmp_path,monkeypatch):
+    session,q=_social_session(tmp_path,monkeypatch,_social_rows(0))
+    def invalid(view):
+        return {"concept":"x","rival":"y","question":"z","preferred_axis":99}
+    with session,pytest.raises(ValueError,match="eligible next position"):
+        _discover_run(session,q,interpret=invalid)
+
+
+def test_discover_revocation_even_on_null_marginal(tmp_path,monkeypatch):
+    allowed={"current":True}
+    session,q=_social_session(tmp_path,monkeypatch,_social_rows(0),lambda _:allowed["current"])
+    def revoke(view):
+        allowed["current"]=False
+        return {"concept":"x","rival":"y","question":"z","preferred_axis":None}
+    with session,pytest.raises(cold.DirectEstateError,match="(?i)current|revok|authoriz"):
+        _discover_run(session,q,interpret=revoke)
