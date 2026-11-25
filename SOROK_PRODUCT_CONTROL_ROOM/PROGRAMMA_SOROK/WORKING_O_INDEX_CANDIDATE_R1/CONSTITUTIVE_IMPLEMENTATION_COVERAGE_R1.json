@@ -87,13 +87,13 @@
     },
     "o_index": {
       "commit": "571a0284222d9d291f427da89419e305128fe98c",
-      "ledger_blob": "95ff6540acb9d614f7c7a0b5e7e3858d8bda9d81",
+      "ledger_blob": "9ee6e7ac1d387bc2e8f2d75678ffc29a305c6d79",
       "registry_blob": "f530cf193cc0f8c3d93324b5e2b865a4efa3bd34",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/LIVE_RECEIVING_LEDGER.json",
       "original_functions": 144,
-      "relationships": 522,
+      "relationships": 525,
       "pr_observations": 164,
-      "ledger_intake_parent": "de01a905e2015228dfcfc5c0a8682c0ba48841c7"
+      "ledger_intake_parent": "24c0f183b5ed8fbeb86fc86aa218a8a3527fa82a"
     },
     "sorokuda": {
       "commit": "9b8fcc86e3614f90f4be560004d77a181ad99d1c",
@@ -498,7 +498,7 @@
   },
   "counts": {
     "obligations": 58,
-    "criteria": 166,
+    "criteria": 169,
     "CO": 34,
     "NEIGHBOR": 24,
     "active_source_blocks": {
@@ -507,17 +507,17 @@
     },
     "criterion_status_counts": {
       "HISTORICAL_OR_BOUNDED_EXECUTION_RELATED": 60,
-      "CRITERION_EQUIVALENCE_UNRECONCILED": 37,
+      "CRITERION_EQUIVALENCE_UNRECONCILED": 40,
       "DIRECT_SOURCE_RELATED_PARTIAL": 49,
       "DOCUMENTARY_RELATED_ONLY": 15,
       "RELATED_EXECUTION_AFFECTED_BY_REJECTED_DEPENDENCY": 5
     },
     "review_coverage": {
-      "criterion_count": 166,
-      "dimension_count": 1162,
+      "criterion_count": 169,
+      "dimension_count": 1183,
       "criterion_specific_review_evidenced": 0,
       "criterion_dimension_status_counts": {
-        "NOT_REVIEWED": 1162
+        "NOT_REVIEWED": 1183
       },
       "explicit_deferred_source_scopes": 16,
       "scope_note": "No claim historical reviews are absent; source-specific review debt count is initial named intake, not total review denominator."
@@ -12578,6 +12578,19 @@
                 "pr": 1272,
                 "original_id": "A0"
               }
+            },
+            {
+              "pr": 1360,
+              "original_id": "A0",
+              "observed_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "R46 inherited exact executed sourcefree adult entrance/target-withheld controls, not genealogy or whole-criterion proof",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1360,
+                "original_id": "A0"
+              }
             }
           ],
           "remaining_boundary": "Whole-survey correspondence and source authority not established",
@@ -12625,6 +12638,30 @@
                 },
                 "execution_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
                 "execution_grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "original_id": "A0"
+                },
+                "source_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED_BY_THIS_INTAKE",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No new independent criterion review; inherited scopes preserved",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "test"
+                },
+                "execution_sha": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -12700,6 +12737,16 @@
               }
             },
             "deferred_source_scopes": []
+          },
+          "genealogy_inheritance_20261125": {
+            "lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "scope": "R46 exact source read: adult_conditioning_input -> historically_conditioned_entrances -> construct_parent -> ConstitutiveRuntime.initialize -> ledger.initialize with source seals -> step / cold verify; historical bridge blob is byte-identical to pinned R36. Four inputs are accepted, including no survey; thin fallback may remain crude. actor_only_interview_packet omits direct asserted_answer and instrument-keyed forms; blind_operational_interview validates response value and actual roster refs with explicit abstention; neither proves semantic answer fidelity nor exhaustively prevents indirectly encoded targets. Source-only read of latter probe, not a new execution claim.",
+            "history": "ADP-015 authority explicitly separates encounter, reciprocity, relationship, household, parenthood, child-generation and child initialization; old V2 coupled demographic parent identities, parent-type inheritance and M36 hopeful/default midpoint are negative inheritance, not functionality to restore. M32 useful signed input gating survives in different explicit source-seal form at bounded fictional scope, not old V5 bridge nor full native authorization. Protected P2Owner fixes participants to existing root and admits source-bound events; RecursionCycle protects root/actor/branch and nonregressing clock; P3 sidecar stages PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE. Preserve their lawful causality/cold continuation; do not claim that co-initialization or fixed-root recursion executes backward genealogy.",
+            "source_execution": "R46 job 139360212546 at a04c805… explicitly ran test_same_runtime_without_survey_and_with_survey, test_independent_temporal_structure_changes_actual_course_not_initial_psyche, test_source_answer_change_does_not_change_blind_packet and test_parent_constitution_heterogeneous_and_abductive in both modes. R36 test itself opens same runtime, seals source, performs REST, cold reopens; structural contrast holds initial actor equal, changes actual EAT, expires. No new runtime test executed by G4; not live LLM or whole instrument."
           }
         },
         {
@@ -12841,6 +12888,16 @@
               }
             },
             "deferred_source_scopes": []
+          },
+          "genealogy_inheritance_20261125": {
+            "lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "scope": "initialize lines 129–153 begins blank_world, admits authored structure, constructs supplied adults, immediately creates newborn, assigns first adult hall_board membership, atomically seals. It does not execute the SEAM/20 maternal forward conception-path selection, backward independent father chronology and candidate overlap adjudication on this path. A source-grade label or valid seal is not a qualified whole survey, a parent relationship, a birth event or prior lived actor history. Other owners may already provide individual required operations; no estate-wide absence inference.",
+            "history": "ADP-015 authority explicitly separates encounter, reciprocity, relationship, household, parenthood, child-generation and child initialization; old V2 coupled demographic parent identities, parent-type inheritance and M36 hopeful/default midpoint are negative inheritance, not functionality to restore. M32 useful signed input gating survives in different explicit source-seal form at bounded fictional scope, not old V5 bridge nor full native authorization. Protected P2Owner fixes participants to existing root and admits source-bound events; RecursionCycle protects root/actor/branch and nonregressing clock; P3 sidecar stages PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE. Preserve their lawful causality/cold continuation; do not claim that co-initialization or fixed-root recursion executes backward genealogy.",
+            "source_execution": "R46 job 139360212546 at a04c805… explicitly ran test_same_runtime_without_survey_and_with_survey, test_independent_temporal_structure_changes_actual_course_not_initial_psyche, test_source_answer_change_does_not_change_blind_packet and test_parent_constitution_heterogeneous_and_abductive in both modes. R36 test itself opens same runtime, seals source, performs REST, cold reopens; structural contrast holds initial actor equal, changes actual EAT, expires. No new runtime test executed by G4; not live LLM or whole instrument."
           }
         },
         {
@@ -12859,6 +12916,19 @@
                 "file": "LIVE_RECEIVING_LEDGER.json",
                 "pr": 1272,
                 "original_id": "M31"
+              }
+            },
+            {
+              "pr": 1360,
+              "original_id": "A0",
+              "observed_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "R46 inherited exact executed sourcefree adult entrance/target-withheld controls, not genealogy or whole-criterion proof",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1360,
+                "original_id": "A0"
               }
             }
           ],
@@ -12907,6 +12977,30 @@
                 },
                 "execution_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
                 "execution_grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "original_id": "A0"
+                },
+                "source_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED_BY_THIS_INTAKE",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No new independent criterion review; inherited scopes preserved",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "test"
+                },
+                "execution_sha": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -12982,6 +13076,16 @@
               }
             },
             "deferred_source_scopes": []
+          },
+          "genealogy_inheritance_20261125": {
+            "lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "scope": "R46 exact source read: adult_conditioning_input -> historically_conditioned_entrances -> construct_parent -> ConstitutiveRuntime.initialize -> ledger.initialize with source seals -> step / cold verify; historical bridge blob is byte-identical to pinned R36. Four inputs are accepted, including no survey; thin fallback may remain crude. actor_only_interview_packet omits direct asserted_answer and instrument-keyed forms; blind_operational_interview validates response value and actual roster refs with explicit abstention; neither proves semantic answer fidelity nor exhaustively prevents indirectly encoded targets. Source-only read of latter probe, not a new execution claim.",
+            "history": "ADP-015 authority explicitly separates encounter, reciprocity, relationship, household, parenthood, child-generation and child initialization; old V2 coupled demographic parent identities, parent-type inheritance and M36 hopeful/default midpoint are negative inheritance, not functionality to restore. M32 useful signed input gating survives in different explicit source-seal form at bounded fictional scope, not old V5 bridge nor full native authorization. Protected P2Owner fixes participants to existing root and admits source-bound events; RecursionCycle protects root/actor/branch and nonregressing clock; P3 sidecar stages PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE. Preserve their lawful causality/cold continuation; do not claim that co-initialization or fixed-root recursion executes backward genealogy.",
+            "source_execution": "R46 job 139360212546 at a04c805… explicitly ran test_same_runtime_without_survey_and_with_survey, test_independent_temporal_structure_changes_actual_course_not_initial_psyche, test_source_answer_change_does_not_change_blind_packet and test_parent_constitution_heterogeneous_and_abductive in both modes. R36 test itself opens same runtime, seals source, performs REST, cold reopens; structural contrast holds initial actor equal, changes actual EAT, expires. No new runtime test executed by G4; not live LLM or whole instrument."
           }
         },
         {
@@ -13320,6 +13424,670 @@
               }
             },
             "deferred_source_scopes": []
+          },
+          "genealogy_inheritance_20261125": {
+            "lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "scope": "R46 exact source read: adult_conditioning_input -> historically_conditioned_entrances -> construct_parent -> ConstitutiveRuntime.initialize -> ledger.initialize with source seals -> step / cold verify; historical bridge blob is byte-identical to pinned R36. Four inputs are accepted, including no survey; thin fallback may remain crude. actor_only_interview_packet omits direct asserted_answer and instrument-keyed forms; blind_operational_interview validates response value and actual roster refs with explicit abstention; neither proves semantic answer fidelity nor exhaustively prevents indirectly encoded targets. Source-only read of latter probe, not a new execution claim.",
+            "history": "ADP-015 authority explicitly separates encounter, reciprocity, relationship, household, parenthood, child-generation and child initialization; old V2 coupled demographic parent identities, parent-type inheritance and M36 hopeful/default midpoint are negative inheritance, not functionality to restore. M32 useful signed input gating survives in different explicit source-seal form at bounded fictional scope, not old V5 bridge nor full native authorization. Protected P2Owner fixes participants to existing root and admits source-bound events; RecursionCycle protects root/actor/branch and nonregressing clock; P3 sidecar stages PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE. Preserve their lawful causality/cold continuation; do not claim that co-initialization or fixed-root recursion executes backward genealogy.",
+            "source_execution": "R46 job 139360212546 at a04c805… explicitly ran test_same_runtime_without_survey_and_with_survey, test_independent_temporal_structure_changes_actual_course_not_initial_psyche, test_source_answer_change_does_not_change_blind_packet and test_parent_constitution_heterogeneous_and_abductive in both modes. R36 test itself opens same runtime, seals source, performs REST, cold reopens; structural contrast holds initial actor equal, changes actual EAT, expires. No new runtime test executed by G4; not live LLM or whole instrument."
+          }
+        },
+        {
+          "id": "CO-CIC-023.06",
+          "acceptance_candidate": "A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Reject if actual joined producer/reader cannot distinguish: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Test the residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished. No proposal, schema, ancestor test or arbitrary exception suffices.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived criterion CO-CIC-023.06; no qualifying criterion-specific review established",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare intended distinction against full HOME passage and owner interpretation, including negative cases. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Inspect actual relevant producer/consumer code paths, invariants, admission, failure paths and scope of approximations. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine positive/negative tests and causal controls for this criterion; verify performed downstream difference or legitimate null, not just green tests. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine actual joined interfaces, ownership, independent producer/reader and relevant neighboring operations at same source. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine scaling assumptions, elapsed time/memory/storage/model cost and cold continuation at relevant representative scope; record justified nonapplicability only with evidence. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare earlier function, source, actual reader and negatives to current path; distinguish parity, partial succession, lost/residual and superseded with cause. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Obtain scoped distinct competent examination of relevant source, claims and residuals; no author inspection or execution substitute. Criterion: A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood. Residual: R46 actor-only packet and typed roster-referenced probe are genuine existing capital; controlled key-withholding test passes. Full-instrument semantic correspondence, indirect leakage controls and actual qualified instrument/source support remain unestablished."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-023.01",
+          "paragraph_anchors": [
+            "CO-L1089",
+            "CO-L1104",
+            "CO-L1106",
+            "CO-L1108",
+            "CO-L1118"
+          ],
+          "refinement_scope": "Whole-target correspondence without answer-key behavior",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "A jointly sampled, source-qualified adult answer configuration constrains a richly contradictory fictional constitution. Independently read the same eligible instrument through operative forms, practices, histories and world access with the target unavailable; retain supported alternatives, abstention and discrepancies. The target is an initial constraint, not permanent behavior or a recovered real childhood.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "Existing parents.construct_parent, historical_parent_bridge.actor_only_interview_packet, blind_parent_probes.blind_operational_interview; #1335/R46 execution; #1145 prior sourcefree exact joint→P3/P4 contrast; historical M32 useful gating and M36 defaults not to restore.",
+            "next_owner_work": "Use the existing constructor and blind probe; compare same target with multiple distinct plausible operative histories, different target with fixed operative state, and subsequent independently changed history. Measure joint correspondence/abstention without secretly selecting response keys. PYAT owns measurement/eligibility, CO owns fictional constitution.",
+            "evidence_limit": "Navigation only; exact consumer parity and criterion execution/review not established. Empty criterion evidence is not evidence of absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md",
+                "blob": "9830a2717a8e9ea6ad023a3b4d5cb6dcd84c1b04",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md",
+                "blob": "b6318e09163574e1223fe04c26309bb4417476be",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/06_GENEALOGY_AND_STRUCTURAL_WORLD_CORRECTION_R1.md",
+                "blob": "4f2bfad4ad2a0c88bb67440c8aeec8b9784bc9b9",
+                "line": 170,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+                "blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+                "line": 13,
+                "observed_at": "6a5c12f04323d74001f9632063ec907f4fc4468e"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+                "blob": "3160eb157675453c0bfee5f9bd4b400f9c999c17",
+                "line": 34,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+                "blob": "231cab97b4bc5e2f40de3c45d179a68ba58585c5",
+                "line": 179,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+                "blob": "233a89f2cf99c192717cb223a771af47efe3bbd2",
+                "line": 1,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "61be73fcd53f4c5a677a95db353624cc73c079d7",
+                "line": 11,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/parents.py",
+                "blob": "e138d7568c54fe3d8d5b3b1af91b119878131114",
+                "line": 17,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py",
+                "blob": "81d283c3e6d061316be6d1486dbf997e26ba23ac",
+                "line": 129,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/blind_parent_probes.py",
+                "blob": "c29fde5087adf9e61c90f6197affb7ed57d7f9a3",
+                "line": 50,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r11_soracle_integrated.py",
+                "blob": "754c840caf11de76e6642d0e3088f8643a2cedd6",
+                "line": 545,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_backlog_mulch_r2.py",
+                "blob": "ac78882407b88605aeeb0e33290321d761aa096d",
+                "line": 71,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_whole_organism.py",
+                "blob": "b33ece1ca6b43a4c0bca6cb40e1a3b9cd78f280c",
+                "line": 42,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              }
+            ]
+          }
+        },
+        {
+          "id": "CO-CIC-023.07",
+          "acceptance_candidate": "Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Reject if actual joined producer/reader cannot distinguish: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Test the residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission. No proposal, schema, ancestor test or arbitrary exception suffices.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived criterion CO-CIC-023.07; no qualifying criterion-specific review established",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare intended distinction against full HOME passage and owner interpretation, including negative cases. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Inspect actual relevant producer/consumer code paths, invariants, admission, failure paths and scope of approximations. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine positive/negative tests and causal controls for this criterion; verify performed downstream difference or legitimate null, not just green tests. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine actual joined interfaces, ownership, independent producer/reader and relevant neighboring operations at same source. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine scaling assumptions, elapsed time/memory/storage/model cost and cold continuation at relevant representative scope; record justified nonapplicability only with evidence. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare earlier function, source, actual reader and negatives to current path; distinguish parity, partial succession, lost/residual and superseded with cause. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Obtain scoped distinct competent examination of relevant source, claims and residuals; no author inspection or execution substitute. Criterion: Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key. Residual: The current R46 initializer co-initializes supplied parents/newborn, not this inverse historical join. Protected P2/RecursionCycle root/clock integrity is real but fixed-root in the inspected adapter; P3 staged world/psych commitment is relevant, not demonstrated father-backhistory admission."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-023.02",
+          "paragraph_anchors": [
+            "CO-L1067",
+            "CO-L1069",
+            "CO-L1078",
+            "CO-L1110"
+          ],
+          "refinement_scope": "Mother-forward, conception-conditioned father back-history",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "Mother's actual intermediate development conditions selected lawful conception trajectory. The independently constructed father's past must precede the required earlier encounter; reconcile overlapping established world claims with frozen maternal past while allowing genuinely unmodeled intervals. Reject incompatible candidate rather than overwrite prior commitments or make father a maternal answer key.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "PRE-A0/06, SEAM/20 and SC-03 exact source; ADP-015 chronology and ADP-020 named causal streams; #704 protected P2/RecursionCycle; #746 protected P3 transaction; R46 actual source seals and shared world.",
+            "next_owner_work": "Trace existing chronological world and actor state owners; evaluate candidate-stage reconciliation of earlier overlap, immutable maternal commitments, legitimate unknown, older siblings and actual forward household years. No new historical merge engine presumed.",
+            "evidence_limit": "Navigation only; exact consumer parity and criterion execution/review not established. Empty criterion evidence is not evidence of absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md",
+                "blob": "9830a2717a8e9ea6ad023a3b4d5cb6dcd84c1b04",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md",
+                "blob": "b6318e09163574e1223fe04c26309bb4417476be",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/06_GENEALOGY_AND_STRUCTURAL_WORLD_CORRECTION_R1.md",
+                "blob": "4f2bfad4ad2a0c88bb67440c8aeec8b9784bc9b9",
+                "line": 170,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+                "blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+                "line": 13,
+                "observed_at": "6a5c12f04323d74001f9632063ec907f4fc4468e"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+                "blob": "3160eb157675453c0bfee5f9bd4b400f9c999c17",
+                "line": 34,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+                "blob": "231cab97b4bc5e2f40de3c45d179a68ba58585c5",
+                "line": 179,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+                "blob": "233a89f2cf99c192717cb223a771af47efe3bbd2",
+                "line": 1,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "61be73fcd53f4c5a677a95db353624cc73c079d7",
+                "line": 11,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/parents.py",
+                "blob": "e138d7568c54fe3d8d5b3b1af91b119878131114",
+                "line": 17,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py",
+                "blob": "81d283c3e6d061316be6d1486dbf997e26ba23ac",
+                "line": 129,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/blind_parent_probes.py",
+                "blob": "c29fde5087adf9e61c90f6197affb7ed57d7f9a3",
+                "line": 50,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r11_soracle_integrated.py",
+                "blob": "754c840caf11de76e6642d0e3088f8643a2cedd6",
+                "line": 545,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_backlog_mulch_r2.py",
+                "blob": "ac78882407b88605aeeb0e33290321d761aa096d",
+                "line": 71,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_whole_organism.py",
+                "blob": "b33ece1ca6b43a4c0bca6cb40e1a3b9cd78f280c",
+                "line": 42,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              }
+            ]
+          }
+        },
+        {
+          "id": "CO-CIC-023.08",
+          "acceptance_candidate": "Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories.",
+          "criterion_status": "CRITERION_EQUIVALENCE_UNRECONCILED",
+          "evidence": [],
+          "remaining_boundary": "Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations.",
+          "dimensions": {
+            "theory_interpretation": "AUTHOR_PROPOSED_OWNER_VALIDATION_HELD",
+            "historical_inheritance": "REFERENCED_IN_O_INDEX_NOT_FULL_PARITY",
+            "current_implementation": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "actual_consumer": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "integrated": "NOT_ESTABLISHED_AT_CRITERION_SCOPE",
+            "demonstrated": "NO_NEW_CRITERION_EXECUTION",
+            "independent_review": "NOT_ISSUED_FOR_CIC_CRITERION",
+            "scientific_fidelity": "HELD_OR_UNASSESSED",
+            "source_authority": "NO_NEW_GRANT",
+            "actor_authority": "NO_NEW_GRANT",
+            "human_authority": "NO_NEW_GRANT",
+            "received": "NOT_RECEIVED_AS_CIC_CRITERION"
+          },
+          "falsifier": "Reject if actual joined producer/reader cannot distinguish: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Test the residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations. No proposal, schema, ancestor test or arbitrary exception suffices.",
+          "review_coverage": {
+            "status": "NOT_REVIEWED",
+            "scope": "Independent HOME-derived criterion CO-CIC-023.08; no qualifying criterion-specific review established",
+            "implementation_coverage": "UNRECONCILED_AT_CRITERION_SCOPE",
+            "execution_coverage": "NO_NEW_CRITERION_EXECUTION",
+            "related_evidence": [],
+            "dimensions": {
+              "architectural_fidelity": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare intended distinction against full HOME passage and owner interpretation, including negative cases. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "implementation_correctness": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Inspect actual relevant producer/consumer code paths, invariants, admission, failure paths and scope of approximations. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "causal_adequacy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine positive/negative tests and causal controls for this criterion; verify performed downstream difference or legitimate null, not just green tests. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "integration": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine actual joined interfaces, ownership, independent producer/reader and relevant neighboring operations at same source. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "computational_economy": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Examine scaling assumptions, elapsed time/memory/storage/model cost and cold continuation at relevant representative scope; record justified nonapplicability only with evidence. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "historical_inheritance": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Compare earlier function, source, actual reader and negatives to current path; distinguish parity, partial succession, lost/residual and superseded with cause. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              },
+              "independent_review": {
+                "status": "NOT_REVIEWED",
+                "reviewed_scope": [],
+                "outstanding_scope": [
+                  "Obtain scoped distinct competent examination of relevant source, claims and residuals; no author inspection or execution substitute. Criterion: Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories. Residual: Separate actor construction, independent care/participation and open newborn exist at bounded scope; R46 initialization does not establish a distinct child-generation event or actual earlier household formation. Adult source seals alone cannot settle any of those relations."
+                ],
+                "receipts": [],
+                "refinement_disposition": "OPEN_CONSERVED",
+                "owner": "SORACLE-CO (interpretation/psyche); original world/CAN/ADP/PYAT owners retain jurisdiction"
+              }
+            },
+            "deferred_source_scopes": []
+          },
+          "refines": "CO-CIC-023.02",
+          "paragraph_anchors": [
+            "CO-L1089",
+            "CO-L1097",
+            "CO-L1100",
+            "CO-L1102",
+            "CO-L1110",
+            "CO-L1112"
+          ],
+          "refinement_scope": "Actual genealogy, household and caregiver noncollapse",
+          "requirement_origin": {
+            "kind": "HOME_DERIVED_INDEPENDENT_OF_RETURN",
+            "lane": "CO",
+            "home_commit": "b0eb752897fa4cc1719a47caa27423ba8fe19f02",
+            "home_blob": "5cbdd6b8ecf95b76b053878bcd2c4c7673039fc3",
+            "home_path": "SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md",
+            "source_basis": "Distinct biological lineage, actual meeting/reciprocity, relationship, household formation/membership, child-generation event, child initialization and performed caregiving remain separately constituted; child may have different caregivers and parent's continued life changes through actual reciprocal reproduction. Newborn is not an average of adult types, and neither parental relation nor child's future follows from survey or gender categories.",
+            "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD"
+          },
+          "whole_organism_navigation": {
+            "existing_capital": "ADP-015 authority (source-only historical acceptance), SEAM/20 §§0–2 and SC-03; old V2 household demographic copying and V3 parent midpoint/type inference are negative inheritance. #1234 cold developmental organism; R44/R25 actual structurally conditioned care/absence; R46 initialize and parent constructor.",
+            "next_owner_work": "Find existing relation/world/birth admission and child initialization owners; preserve distinct identities, lawful kin/care variation and actual consequences across pre-birth and later lives. Distinguish absent caregiver from biological lineage and no invented co-residence.",
+            "evidence_limit": "Navigation only; exact consumer parity and criterion execution/review not established. Empty criterion evidence is not evidence of absence.",
+            "ledger_lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "historical_sources": [
+              {
+                "path": "SEAM/20_SEAM_GENERATIVE_PARENT_ICEBERG_COMPRESSED_ONTOGENESIS_R1.md",
+                "blob": "9830a2717a8e9ea6ad023a3b4d5cb6dcd84c1b04",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SEAM/24_SEVEN_CRACKS_CONCEPT_CODE_DEVELOPMENT_BANK_R1/03_BACKWARD_CONDITIONED_FATHER_CHRONOLOGICAL_WORLD_JOIN.md",
+                "blob": "b6318e09163574e1223fe04c26309bb4417476be",
+                "line": 1,
+                "observed_at": "4d1a6195daca54b4dd63491f55c1eff73907f534"
+              },
+              {
+                "path": "SOROK_PRODUCT_CONTROL_ROOM/PRE_A0_PSYCHIC_ARCHITECTURE_R1/06_GENEALOGY_AND_STRUCTURAL_WORLD_CORRECTION_R1.md",
+                "blob": "4f2bfad4ad2a0c88bb67440c8aeec8b9784bc9b9",
+                "line": 170,
+                "observed_at": "865b5b01e1a27e99020cf2bb389af8cd4c874b57"
+              },
+              {
+                "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/ADP_015_V3_RELATIONSHIP_GENEALOGY/AUTHORITY.md",
+                "blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+                "line": 13,
+                "observed_at": "6a5c12f04323d74001f9632063ec907f4fc4468e"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+                "blob": "3160eb157675453c0bfee5f9bd4b400f9c999c17",
+                "line": 34,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py",
+                "blob": "231cab97b4bc5e2f40de3c45d179a68ba58585c5",
+                "line": 179,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              },
+              {
+                "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py",
+                "blob": "233a89f2cf99c192717cb223a771af47efe3bbd2",
+                "line": 1,
+                "observed_at": "827714e83743056939894a39736d72ea16bdc6dd"
+              }
+            ],
+            "current_sources": [
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/historical_parent_bridge.py",
+                "blob": "61be73fcd53f4c5a677a95db353624cc73c079d7",
+                "line": 11,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/parents.py",
+                "blob": "e138d7568c54fe3d8d5b3b1af91b119878131114",
+                "line": 17,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/runtime.py",
+                "blob": "81d283c3e6d061316be6d1486dbf997e26ba23ac",
+                "line": 129,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/um_sorok_organism/blind_parent_probes.py",
+                "blob": "c29fde5087adf9e61c90f6197affb7ed57d7f9a3",
+                "line": 50,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_r11_soracle_integrated.py",
+                "blob": "754c840caf11de76e6642d0e3088f8643a2cedd6",
+                "line": 545,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_nadia_backlog_mulch_r2.py",
+                "blob": "ac78882407b88605aeeb0e33290321d761aa096d",
+                "line": 71,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              },
+              {
+                "path": "SEAM/ORACLE/UM_SOROK_ORGANISM_R3/tests/test_whole_organism.py",
+                "blob": "b33ece1ca6b43a4c0bca6cb40e1a3b9cd78f280c",
+                "line": 42,
+                "observed_at": "a04c8059845076267b89afca1de2df58e6090ae9"
+              }
+            ]
           }
         }
       ],
@@ -24802,6 +25570,19 @@
                 "pr": 1272,
                 "original_id": "A0"
               }
+            },
+            {
+              "pr": 1360,
+              "original_id": "A0",
+              "observed_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+              "relationship_grade": "DIRECT_TEST_OR_SELECTED_SOURCE_AND_SCOPED_EXECUTION_RECEIPT__INDEPENDENT_NATIVE_PROTECTED_HELD",
+              "disposition": "SOURCEFREE_EXECUTION_OBSERVED__INDEPENDENT_AND_PROTECTED_RECEIVING_HELD",
+              "test_scope": "R46 inherited exact executed sourcefree adult entrance/target-withheld controls, not genealogy or whole-criterion proof",
+              "lookup": {
+                "file": "LIVE_RECEIVING_LEDGER.json",
+                "pr": 1360,
+                "original_id": "A0"
+              }
             }
           ],
           "remaining_boundary": "Native whole-survey and child continuity held",
@@ -24849,6 +25630,30 @@
                 },
                 "execution_sha": "731f71b61fad5764eb021776ae937a376a54e8a8",
                 "execution_grade": "GITHUB_ACTIONS_SUCCESS_AT_SHA__COUNTS_AS_REPORTED"
+              },
+              {
+                "lookup": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "original_id": "A0"
+                },
+                "source_head": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "prior_review_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "review"
+                },
+                "prior_review_sha": null,
+                "prior_review_verdict": "INDEPENDENT_SCOPE_NOT_ESTABLISHED_BY_THIS_INTAKE",
+                "prior_review_applied_to_source_head": false,
+                "prior_review_scope": "No new independent criterion review; inherited scopes preserved",
+                "execution_ref": {
+                  "file": "LIVE_RECEIVING_LEDGER.json",
+                  "pr": 1360,
+                  "field": "test"
+                },
+                "execution_sha": "a04c8059845076267b89afca1de2df58e6090ae9",
+                "execution_grade": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
               }
             ],
             "dimensions": {
@@ -24924,6 +25729,16 @@
               }
             },
             "deferred_source_scopes": []
+          },
+          "genealogy_inheritance_20261125": {
+            "lookup": {
+              "file": "LIVE_RECEIVING_LEDGER.json",
+              "pr": 1360,
+              "field": "functional_inheritance_20261125_genealogy"
+            },
+            "scope": "initialize lines 129–153 begins blank_world, admits authored structure, constructs supplied adults, immediately creates newborn, assigns first adult hall_board membership, atomically seals. It does not execute the SEAM/20 maternal forward conception-path selection, backward independent father chronology and candidate overlap adjudication on this path. A source-grade label or valid seal is not a qualified whole survey, a parent relationship, a birth event or prior lived actor history. Other owners may already provide individual required operations; no estate-wide absence inference.",
+            "history": "ADP-015 authority explicitly separates encounter, reciprocity, relationship, household, parenthood, child-generation and child initialization; old V2 coupled demographic parent identities, parent-type inheritance and M36 hopeful/default midpoint are negative inheritance, not functionality to restore. M32 useful signed input gating survives in different explicit source-seal form at bounded fictional scope, not old V5 bridge nor full native authorization. Protected P2Owner fixes participants to existing root and admits source-bound events; RecursionCycle protects root/actor/branch and nonregressing clock; P3 sidecar stages PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE. Preserve their lawful causality/cold continuation; do not claim that co-initialization or fixed-root recursion executes backward genealogy.",
+            "source_execution": "R46 job 139360212546 at a04c805… explicitly ran test_same_runtime_without_survey_and_with_survey, test_independent_temporal_structure_changes_actual_course_not_initial_psyche, test_source_answer_change_does_not_change_blind_packet and test_parent_constitution_heterogeneous_and_abductive in both modes. R36 test itself opens same runtime, seals source, performs REST, cold reopens; structural contrast holds initial actor equal, changes actual EAT, expires. No new runtime test executed by G4; not live LLM or whole instrument."
           }
         }
       ],
@@ -41751,6 +42566,21 @@
       "new_prs": [],
       "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD",
       "cross_lineage_join": "No new runtime execution, independent review or receiving. Related inheritance and next owner work remain discoverable without a return receipt."
+    },
+    {
+      "id": "CIC-REFINE-20261125-GENEALOGY-1",
+      "predecessor_commit": "24c0f183b5ed8fbeb86fc86aa218a8a3527fa82a",
+      "predecessor_blob": "19aa2c76fd190eb74effa9ef0c2db4749076264e",
+      "prior_criterion_count": 166,
+      "added_criterion_ids": [
+        "CO-CIC-023.06",
+        "CO-CIC-023.07",
+        "CO-CIC-023.08"
+      ],
+      "source_blocks": "Exact pinned CO HOME §VIII; 719 active routes retained",
+      "new_prs": [],
+      "status": "PROVISIONAL_HOME_INTERPRETATION__OWNER_RECEIVING_HELD",
+      "cross_lineage_join": "No new runtime execution or protected receiving; exact inherited R46 controls and historic P2/P3 scopes retained."
     }
   ]
 }
