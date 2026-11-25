@@ -52,7 +52,7 @@ class PrivateReceptionR26(unittest.TestCase):
                             receipts.append(deepcopy(rec))
                             return {'task':task,'candidates':[{'kind':'MEMORY',
                                 'undertaking_attention_ref':rec['attention_id'],
-                                'cue_terms':['visitor_offer_undertaking'],
+                                'cue_terms':['future_offer'],
                                 'content':'The visitor undertook to offer food later.'}]}
                         rec=packet.get('actual_private_rehearsal_analyst_only')
                         if rec:
@@ -109,5 +109,89 @@ class PrivateReceptionR26(unittest.TestCase):
                 self.assertNotIn('rest without awaiting',str(surface))
                 self.assertTrue(cold.verify()['valid'])
         self.assertEqual(outcomes,{True:'REST',False:'WAIT'})
+
+
+    def test_acquired_physical_vocal_manner_not_private_meaning_on_human_surface(self):
+        # Same public act, same authored world, distinct actual expressive
+        # history. No directly seeded affect, cadence, or visitor perception.
+        for learn,audible in ((True,True),(False,True),(True,False)):
+            with self.subTest(learn=learn,audible=audible):
+                stage='start'; offered=[]
+                def setup(a):
+                    a['projects']=[{'id':'duty','object':'sustain availability',
+                        'means':['REST','SPEAK'],'status':'active','priority':.5,
+                        'expected_difference':{'feature':'availability','direction':'PRESERVE',
+                                               'sign_tags':['wait']}}]
+                name='voice'+str(learn)+str(audible)
+                rt,n,db=inherited.MaterialSupportR17.build(self,name,
+                    user_hearing=audible,actor_setup=setup)
+                def policy(task,p):
+                    if task=='expression':
+                        self.assertNotIn('selected_course_affects_analytic_only',
+                            p['actor_accessible'].get('own_practical_selection') or {})
+                        return {'task':task,'surface':'Ordinary speech.'}
+                    if task=='actor_attempt':
+                        if stage=='start':return {'task':task,'action':'REST','project_id':'duty'}
+                        if stage in ('speech','final'):
+                            rows=[x for x in p['practical_options']
+                                  if x.get('project_id')=='duty' and x['operation']=='SPEAK']
+                            self.assertEqual(len(rows),1)
+                            self.assertTrue(rows[0].get('course_affective_organizations'))
+                            return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if stage=='appraise':
+                            row=p['historically_possible_delayed_appraisals'][0]
+                            return {'task':task,'candidates':[{'kind':'APPRAISE_EXPECTED_DIFFERENCE',
+                                'expectation_ref':row['expectation_ref'],
+                                'perceived_cue_ref':row['source_perceived_cue_ref'],
+                                'appraisal':'ACTOR_INTERPRETS_DISAPPOINTED'}]}
+                        if stage=='affect':
+                            row=p['historically_possible_activity_affects'][0]
+                            return {'task':task,'candidates':[{'kind':'ACQUIRE_ACTIVITY_AFFECT',
+                                'basis':row,'affect_name':'private unease',
+                                'personal_sense':'quiet conflicts with duty',
+                                'course_orientation':'NO_DIRECT_TENDENCY'}]}
+                        if stage=='speech':
+                            rows=p['historically_possible_expressive_practices']
+                            if rows:
+                                offered.append(deepcopy(rows[0]))
+                                return {'task':task,'candidates':[{'kind':'ACQUIRE_EXPRESSIVE_PRACTICE',
+                                    'basis':rows[0]['basis'],'cadence':'HALTING'}] if learn else []}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                rt.semantic=service
+                n.independent_actor_beat('worker')
+                stage='appraise';n.independent_actor_beat('worker')
+                stage='affect';n.independent_actor_beat('worker')
+                for _ in range(2):
+                    stage='quiet';n.independent_actor_beat('worker')
+                    stage='speech';self.assertEqual(n.independent_actor_beat('worker')['status'],'PERFORMED')
+                self.assertEqual(len(offered),1)
+                rt.close()
+                cold=ConstitutiveRuntime(db,world_id=name,semantic=service)
+                self.addCleanup(cold.close)
+                nn=NeighborEncounter(cold,'visitor',mii_module=mii)
+                stage='quiet';nn.independent_actor_beat('worker')
+                stage='final';beat=nn.independent_actor_beat('worker')
+                self.assertEqual(beat['status'],'PERFORMED')
+                cue=cold.ledger.world(name)[1]['cues'][-1]
+                self.assertEqual(cue.get('vocal_cadence'),'HALTING' if learn else None)
+                profile=nn.new_private_profile()
+                view=nn.private_surface(profile)
+                signs=[s for s in view['mandatory'] if s['kind']=='CO_PUBLIC_OCCURRENCE'
+                       and s.get('modality')=='auditory']
+                self.assertEqual([s['text'] for s in signs],
+                    ['Speech with brief pauses.' if learn else 'Speech sounds nearby.'] if audible else [])
+                if signs:
+                    self.assertEqual(signs[0]['source_event_ref'],beat['receipt'])
+                    self.assertEqual(signs[0]['source_cue_ref'],cue['id'])
+                    self.assertEqual(signs[0]['speaker_identity'],'NOT_ESTABLISHED')
+                    self.assertEqual(signs[0]['lexical_content'],'NOT_CAPTURED_OR_RECONSTRUCTED')
+                self.assertNotIn('private unease',str(view))
+                self.assertNotIn('expressive_practice',str(view))
+                nn.contribute('leave','LEAVE')
+                self.assertTrue(cold.verify()['valid'])
 
 if __name__=='__main__':unittest.main()
