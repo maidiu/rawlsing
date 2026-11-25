@@ -156,7 +156,8 @@ class HeuristicSemanticProvider:
             # interruption and later received bodily benefit can propose a
             # novel possible end. This is NOT an immediate acquired motive.
             genetic=packet.get('historically_possible_genetic_ends',[])
-            if len(genetic)==1 and not genetic[0].get('dependency_loss_basis'):
+            if (len(genetic)==1 and not genetic[0].get('dependency_loss_basis')
+                    and not genetic[0].get('productive_vocal_basis')):
                 lived.append(copy(genetic[0]))
             joint=packet.get('historically_possible_joint_practices',[])
             if len(joint)==1:
@@ -216,6 +217,10 @@ class HeuristicSemanticProvider:
             current_trial=((packet.get('selected_purpose_analytic_only') or {})
                 .get('status')=='ACTOR_POLICY_PROVISIONAL_END_TRIAL_NOT_DURABLE_MOTIVE')
             for candidate in ([] if current_trial else packet.get('actor_possible_ends',[])):
+                if candidate.get('productive_vocal_basis') is not None:
+                    # A positive historical end is not automatically taken up.
+                    # Its exact later-course candidate is available to the semantic provider.
+                    continue
                 if candidate.get('incidental_object_end_basis') is not None:
                     qualified=[q for q in packet.get('historically_possible_incidental_takeup',[])
                                if q['possible_end_ref']==candidate['id']]
