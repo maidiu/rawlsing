@@ -300,3 +300,209 @@ def inquire_repertoire_fracture(session, question, *, position_states, repertoir
                 proposal=proposal, reverse=reverse, revision=revision,
                 revision_grade="ABDUCTIVE_PROPOSAL_NOT_EMPIRICAL_ADJUDICATION",
                 recipient_state="POSSIBILITY_ONLY__C6_AND_WORLD_OWNER_RECEIVING_HELD")
+
+
+def inquire_social_field(session, question, *, position_axes, repertoire_axes,
+                         axis_meanings, active_ancestry, contrasts, propose, revise):
+    """R14: selected multidimensional correspondence over the incumbent S04 joint.
+
+    Caller roles/ancestry and advantage directions are provisional SOURCEFREE
+    declarations, not independently issued classifications. Each contrast is
+    (label, left_conditions, right_conditions) on identical position axes.
+    Preserve marginal and intersection contrasts, baseline and reverse
+    composition; no Cartesian expansion beyond the existing S04 joint.
+    No external pack, world assumption, new estimator or actor issuance.
+    """
+    from rawlsing_next.pre553_s04_dynamic_research import (
+        S04DynamicQuestion, S04DynamicResearchSession,
+    )
+    from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+
+    if type(session) is not S04DynamicResearchSession or type(question) is not S04DynamicQuestion:
+        raise TypeError("actual sourcefree dynamic research session/question required")
+    if (type(position_axes) is not tuple or type(repertoire_axes) is not tuple
+            or len(position_axes) < 2 or len(repertoire_axes) < 2):
+        raise ValueError("two independent position and repertoire axes required")
+    axes = position_axes + repertoire_axes
+    if (any(type(a) is not int or a < 0 for a in axes)
+            or len(set(axes)) != len(axes) or question.conditioner_index not in position_axes):
+        raise ValueError("distinct ordered position/disposition axes and FF01 anchor required")
+    if (type(axis_meanings) is not dict or set(axis_meanings) != set(axes)
+            or any(not isinstance(v, str) or not v.strip() for v in axis_meanings.values())):
+        raise ValueError("explicit axis meanings required")
+    if (type(active_ancestry) is not dict or set(active_ancestry) != set(axes)
+            or any(type(v) is not tuple or not v or
+                   any(not isinstance(x, str) or not x.strip() for x in v)
+                   for v in active_ancestry.values())):
+        raise ValueError("explicit caller-declared active measurement ancestry required")
+    p_roots = {v for a in position_axes for v in active_ancestry[a]}
+    d_roots = {v for a in repertoire_axes for v in active_ancestry[a]}
+    if p_roots & d_roots:
+        raise ValueError("shared active position/disposition ancestry")
+    if not callable(propose) or not callable(revise):
+        raise TypeError("proposal and revision callbacks required")
+    contrasts = tuple(deepcopy(tuple(contrasts)))
+    if not contrasts:
+        raise ValueError("selected position contrasts required")
+    labels = set()
+    for label, left, right in contrasts:
+        if (not isinstance(label, str) or not label.strip() or label in labels
+                or type(left) is not dict or type(right) is not dict
+                or not left or set(left) != set(right) or not set(left) <= set(position_axes)
+                or _json(left) == _json(right)):
+            raise ValueError("distinct named same-axis position contrasts required")
+        labels.add(label)
+
+    result = session.ask(question)
+    original = result.original
+    knowledge = original.knowledge.material()
+    ff = original.ff01.semantic_projection()
+    obs = result.observation_scope.material()
+    if (ff["producer_fact_ref"] != knowledge["fact_ref"]
+            or ff["conditioner_index"] != question.conditioner_index
+            or obs["knowledge_ref"] != original.knowledge.ref.as_dict()
+            or obs["fact_ref"] != knowledge["fact_ref"]):
+        raise ValueError("inconsistent incumbent FF01/S04/observation identity")
+    if set(axes) != set(range(knowledge["target_arity"])):
+        raise ValueError("explicit roles required for every queried axis")
+    # Even different axis indices may reference the same native measurement.
+    targets = knowledge["target_refs"]
+    if ({_json(targets[a]) for a in position_axes} &
+            {_json(targets[a]) for a in repertoire_axes}):
+        raise ValueError("shared actual target identity")
+
+    def ask(output, conditions):
+        answer = result.joint_workspace.query(S04Projection(output, conditions))
+        export = _projection(answer)
+        if export["material"]["knowledge_ref"] != original.knowledge.ref.as_dict():
+            raise ValueError("projection escaped retained source knowledge")
+        return answer, export
+
+    def aggregate(export):
+        m = export["material"]
+        # No raw respondent IDs or authority references in interpretation view.
+        return {"state": m["state"],
+                "axes": [a["index"] for a in m["output_axes"]],
+                "conditions": [{"axis": c["index"], "value": deepcopy(c["value"])}
+                               for c in m["conditions"]],
+                "selected_n": m["raw_selected_full_case_n"],
+                "eligible_n": m["raw_source_eligible_n"],
+                "resolved_n": m["raw_original_full_joint_resolved_n"],
+                "cells": deepcopy(m["complete_output_cells"])}
+
+    def fraction(cell):
+        value = cell["raw_fraction_of_selected_full_cases"]
+        return None if value is None else Fraction(*value["$exact_fraction"])
+
+    def pair(v):
+        return None if v is None else [v.numerator, v.denominator]
+
+    def indexed(export):
+        return {_json(c["output_states"]): c for c in export["material"]["complete_output_cells"]}
+
+    _, base = ask(repertoire_axes, {})
+    _, positions = ask(position_axes, {})
+    # Full joint retains cross-position reach. Its cardinality is bounded by
+    # the original admitted joint, not a new dense global social field.
+    _, joint = ask(axes, {})
+    packet = {"grade": "INTERNAL_SOURCEFREE_FF_SOCIAL_FIELD_NOT_POWER_OR_WORLD_ISSUANCE",
+              "knowledge_ref": original.knowledge.ref.as_dict(),
+              "observation_ref": result.observation_scope.ref.as_dict(),
+              "role_grade": "CALLER_DECLARED_ANCESTRY_AND_MEANINGS_NOT_INDEPENDENT_ROLE_ISSUANCE",
+              "position_axes": list(position_axes), "repertoire_axes": list(repertoire_axes),
+              "axis_meanings": {str(k): v for k, v in axis_meanings.items()},
+              "active_ancestry": {str(k): list(v) for k, v in active_ancestry.items()},
+              "baseline": base, "positions": positions, "joint": joint,
+              "contrasts": [], "proposal": None, "motifs": [], "revision": None,
+              "observation_limits": {k: deepcopy(obs[k]) for k in (
+                  "state", "source_frame_population_n", "survey_design_weight_or_variance",
+                  "condition_membership_unknown_n", "observed_route_and_nonresponse_cause")},
+              "external_context": "NOT_REQUIRED_FOR_DESCRIPTIVE_CORRESPONDENCE"}
+    baseline = indexed(base)
+    for label, left, right in contrasts:
+        la, le = ask(repertoire_axes, left)
+        ra, re = ask(repertoire_axes, right)
+        delta = repertoire_contrast(la, ra)
+        _, lp = ask((), left)
+        _, rp = ask((), right)
+        # Compare each conditional to its own baseline. Zero denominator
+        # cannot be treated as zero prevalence or enrichment.
+        def enrich(export):
+            out = []
+            for key, cell in indexed(export).items():
+                p, b = fraction(cell), fraction(baseline[key])
+                out.append({"states": cell["output_states"],
+                            "enrichment": pair(p/b if p is not None and b else None)})
+            return out
+        packet["contrasts"].append({"label": label, "left": le, "right": re,
+                                    "left_position_support": lp, "right_position_support": rp,
+                                    "difference_state": delta["state"], "differences": delta["cells"],
+                                    "left_enrichment": enrich(le), "right_enrichment": enrich(re)})
+    if base["material"]["state"] != "OBSERVED_FULL_CASE_SUPPORT":
+        return dict(packet, state="UPSTREAM_NONPOSITIVE_RETAINED")
+
+    view = {"grade": "SYNTHETIC_SOURCEFREE_SAMPLE_ONLY",
+            "position_axes": list(position_axes), "repertoire_axes": list(repertoire_axes),
+            "axis_meanings": packet["axis_meanings"],
+            "baseline": aggregate(base), "positions": aggregate(positions),
+            "joint": aggregate(joint), "observation_limits": packet["observation_limits"],
+            "contrasts": [{"label": c["label"], "left": aggregate(c["left"]),
+                           "right": aggregate(c["right"]), "differences": c["differences"],
+                           "difference_state": c["difference_state"],
+                           "left_enrichment": c["left_enrichment"],
+                           "right_enrichment": c["right_enrichment"]}
+                          for c in packet["contrasts"]]}
+    proposal = deepcopy(propose(deepcopy(view)))
+    if (type(proposal) is not dict or set(proposal) != {"concept", "rival", "question", "motifs"}
+            or any(not isinstance(proposal[k], str) or not proposal[k].strip()
+                   for k in ("concept", "rival", "question"))
+            or type(proposal["motifs"]) is not list or len(proposal["motifs"]) < 2
+            or any(type(m) is not list or len(m) != len(repertoire_axes) for m in proposal["motifs"])
+            or len({_json(m) for m in proposal["motifs"]}) != len(proposal["motifs"])):
+        raise ValueError("concept, rival, question and distinct exact joint motifs required")
+    packet["proposal"] = proposal
+    for motif in proposal["motifs"]:
+        cond = dict(zip(repertoire_axes, motif))
+        _, reverse = ask(position_axes, cond)
+        key = _json(motif)
+        base_cell = baseline[key]  # S04 validates exact source-domain states.
+        # For each selected position, distinguish P(D|C), P(C|D), and
+        # P(D,C) using the original S04 support and full-case denominator.
+        motif_rows = []
+        for c in packet["contrasts"]:
+            for side in ("left", "right"):
+                e = c[side]
+                poscond = {v["index"]: v["value"] for v in e["material"]["conditions"]}
+                _, rev = ask((), {**cond, **poscond})
+                hit = indexed(e).get(key)
+                both = rev["material"]["raw_selected_full_case_n"]
+                total = base["material"]["raw_selected_full_case_n"]
+                motif_n = reverse["material"]["raw_selected_full_case_n"]
+                if hit is not None and hit["raw_count"] != both:
+                    raise ValueError("forward/reverse joint support mismatch")
+                motif_rows.append({"label": c["label"], "side": side,
+                                   "joint_support": rev,
+                                   "prevalence": pair(fraction(hit) if hit else None),
+                                   "composition": pair(Fraction(both, motif_n)
+                                                       if motif_n and both is not None else None),
+                                   "joint_mass": pair(Fraction(both, total)
+                                                     if total and both is not None else None)})
+        packet["motifs"].append({"motif": motif, "baseline_count": base_cell["raw_count"],
+                                 "reverse": reverse, "selected_positions": motif_rows})
+    public_motifs = [{"motif": m["motif"], "baseline_count": m["baseline_count"],
+                      "reverse": aggregate(m["reverse"]),
+                      "selected_positions": [{k: deepcopy(v) for k,v in r.items()
+                                              if k != "joint_support"}
+                                             for r in m["selected_positions"]]}
+                     for m in packet["motifs"]]
+    revision = deepcopy(revise(deepcopy(view), deepcopy(proposal), deepcopy(public_motifs)))
+    if (type(revision) is not dict
+            or set(revision) != {"interpretation", "remaining_question", "recipient_possibility"}
+            or any(not isinstance(v, str) or not v.strip() for v in revision.values())):
+        raise ValueError("explicit revised interpretation, question and recipient possibility required")
+    # Existing workspace guard rechecks source CURRENT after semantic work.
+    _, final_base = ask(repertoire_axes, {})
+    if final_base != base:
+        raise ValueError("source result changed during interpretation")
+    return dict(packet, state="PROVISIONAL_SOCIAL_FIELD_REVISED_NOT_CERTIFIED",
+                revision=revision, recipient_state="DESCRIPTIVE_POSSIBILITIES_ONLY__RECEIVING_HELD")
