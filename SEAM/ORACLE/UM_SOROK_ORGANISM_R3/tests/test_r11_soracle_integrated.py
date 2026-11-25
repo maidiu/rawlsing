@@ -2161,3 +2161,113 @@ class AcquiredRepairFacilityR46(unittest.TestCase):
                     self.assertTrue(rt.verify()['valid'])
                 finally:rt.close()
             self.assertEqual(results,{(True,True):.9,(True,False):.8,(False,True):.8})
+
+
+class AcquiredExpressiveBodyR47(unittest.TestCase):
+    def test_same_affect_different_acquired_vocal_manner_and_differential_receipt(self):
+        from um_sorok_organism.types import blank_world
+        outputs={}
+        with tempfile.TemporaryDirectory() as d:
+            for learn in (True,False):
+                stage='start'; offers=[]; final_receipts={}
+                def policy(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']!='worker':return {'task':task,'action':'WAIT'}
+                        if stage=='start':return {'task':task,'action':'REST','project_id':'duty'}
+                        if stage in ('speech','final'):
+                            rows=[x for x in packet['practical_options']
+                                  if x.get('project_id')=='duty' and x['operation']=='SPEAK']
+                            self.assertEqual(len(rows),1)
+                            self.assertTrue(rows[0].get('course_affective_organizations'))
+                            return {'task':task,'practical_option_id':rows[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='expression':
+                        self.assertNotIn('selected_course_affects_analytic_only',
+                            (packet['actor_accessible'].get('own_practical_selection') or {}))
+                        return {'task':task,'surface':'Ordinary speech.'}
+                    if task=='development':
+                        aid=packet['actor']['id'];exp=packet['experience']
+                        if stage=='final':
+                            final_receipts[aid]=copy.deepcopy(exp)
+                        if aid!='worker':return {'task':task,'candidates':[]}
+                        if stage=='appraise':
+                            row=packet['historically_possible_delayed_appraisals'][0]
+                            return {'task':task,'candidates':[{'kind':'APPRAISE_EXPECTED_DIFFERENCE',
+                                'expectation_ref':row['expectation_ref'],
+                                'perceived_cue_ref':row['source_perceived_cue_ref'],
+                                'appraisal':'ACTOR_INTERPRETS_DISAPPOINTED'}]}
+                        if stage=='affect':
+                            row=packet['historically_possible_activity_affects'][0]
+                            return {'task':task,'candidates':[{'kind':'ACQUIRE_ACTIVITY_AFFECT',
+                                'basis':row,'affect_name':'private unease',
+                                'personal_sense':'quiet conflicts with duty',
+                                'course_orientation':'NO_DIRECT_TENDENCY'}]}
+                        if stage=='speech':
+                            rows=packet['historically_possible_expressive_practices']
+                            if rows:
+                                candidate={'kind':'ACQUIRE_EXPRESSIVE_PRACTICE',
+                                           'basis':rows[0]['basis'],'cadence':'HALTING'}
+                                offers.append((copy.deepcopy(candidate),copy.deepcopy(exp),
+                                               packet['evidence_path']['event']))
+                                return {'task':task,'candidates':[candidate] if learn else []}
+                        if stage=='final' and learn:
+                            return {'task':task,'candidates':[{'kind':'MEMORY',
+                                'cue_terms':['vocal_cadence:halting'],
+                                'content':'I heard my own speech pause.'}]}
+                        return {'task':task,'candidates':[]}
+                    raise AssertionError(task)
+                service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                db=str(Path(d)/str(learn));rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':'duty','object':'sustain availability',
+                        'means':['REST','SPEAK'],'status':'active','priority':.5,
+                        'expected_difference':{'feature':'availability','direction':'PRESERVE',
+                                               'sign_tags':['wait']}}]
+                    rt.ledger.initialize(blank_world(),[a,adult('hearer','Hearer'),
+                        adult('blocked','Blocked')])
+                    rt.register_sourcefree_recursive_encounter_paths({
+                        'grade':'SOURCEFREE_TEST_ONLY','source_ref':'R47_SOUND',
+                        'paths':[{'observer':aid,'source_actor':'worker','location':'home',
+                            'from_clock':0,'through_clock':30,'hearing':audible,
+                            'sound_path':'audible' if audible else 'blocked',
+                            'visual':True,'light':'lit','sightline':'unobstructed','facing':'away'}
+                            for aid,audible in [('hearer',True),('blocked',False)]]})
+                    rt.step('worker')
+                    stage='appraise';rt.step('worker')
+                    stage='affect';rt.step('worker')
+                    for _ in range(2):
+                        stage='quiet';rt.step('worker')
+                        stage='speech';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                        self.assertNotIn('vocal_cadence',rt.ledger.world()[1]['cues'][-1])
+                    self.assertEqual(len(offers),1)
+                    actor=rt.ledger.actor('worker')[1]
+                    aff=actor['expectations'][0]['affective_organizations'][0]
+                    self.assertEqual(bool(aff.get('expressive_practice')),learn)
+                    if not learn:
+                        c,exp,event=offers[0];c['basis']['earlier_cue_ref']='invented'
+                        saved=copy.deepcopy(actor)
+                        with self.assertRaisesRegex(InvalidDevelopment,'EXPRESSIVE_PRACTICE_UNQUALIFIED'):
+                            admit(actor,exp,event,[c])
+                        self.assertEqual(actor,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='quiet';rt.step('worker')
+                    stage='final';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    cue=rt.ledger.world()[1]['cues'][-1]
+                    self.assertEqual(cue.get('vocal_cadence'),'HALTING' if learn else None)
+                    self.assertNotIn('private unease',str(cue))
+                    self.assertNotIn('sustain availability',str(cue))
+                    hear=next(c for c in final_receipts['hearer']['perceived_cues'] if c['id']==cue['id'])
+                    self.assertIsNone(hear['source_actor'])
+                    self.assertEqual(hear.get('vocal_cadence'),'HALTING' if learn else None)
+                    self.assertNotIn('blocked',final_receipts)
+                    own=rt.snapshot('worker')['evidence_paths'][-1]['own_vocal_reception']
+                    self.assertEqual(own['cadence_as_sensed'],'HALTING' if learn else 'NOT_DIFFERENTIATED')
+                    self.assertEqual(len(rt.snapshot('worker')['memories']),int(learn))
+                    self.assertTrue(rt.verify()['valid'])
+                    outputs[learn]=cue.get('vocal_cadence')
+                finally:rt.close()
+            self.assertEqual(outputs,{True:'HALTING',False:None})
