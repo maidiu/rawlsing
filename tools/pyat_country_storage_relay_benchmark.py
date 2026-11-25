@@ -27,6 +27,7 @@ from rawlsing_next.pre553_r5_codec import R5TypedValueCodec, canonical_json
 
 PARENT = "f5e9c9a03ccddb5bdfab2114c5f5f551002914f6"
 B = "9e8572463f731fb1c3c9da1501bec48c80ad6143"
+A = "d988a39f7741a839e89ac37bf13f5acfe1c2936a"
 
 
 def historical(sha, name):
@@ -77,8 +78,11 @@ def main():
     old_carrier=historical(PARENT,"pre553_country_numeric_carrier")
     b_carrier=historical(B,"pre553_country_numeric_carrier")
     codec=R5TypedValueCodec()
+    a_carrier=historical(A,"pre553_country_numeric_carrier")
+    # A and B-R3 use identical decoder source; keep the inherited comparator
+    # and compare A vs R3 for actual authenticated cold reading.
     ds={"parent":old_decoder,"B":b_decoder,"A":decoder}
-    cs={"parent":old_carrier,"B":b_carrier,"A":carrier}
+    cs={"parent":old_carrier,"B":b_carrier,"A":a_carrier,"B_R3":carrier}
     n,p=3072,193
     values=np.arange(n,dtype=np.float64)
     frame=pd.DataFrame({"v"+str(i): (values+i)%7 if i%2==0
@@ -118,7 +122,7 @@ def main():
             with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
                 # Same exact file, externally pinned receipt and selected query.
                 return (tuple(reader.matching_rows({"v0":0.})),len(reader._lane_auth))
-        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()})
+        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()},repetitions=4)
         with carrier.CountryReader(path,receipt,require_current=lambda:True) as read:
             lanes=len(read._lane_auth)
         print("RELAY_COLD_INVENTORY",json.dumps({"country_rows":receipt.country_rows,
@@ -130,7 +134,7 @@ def main():
     l=tuple((i,j,hashlib.sha256(f"{i}:{j}".encode()).digest())
             for i in range(256) for j in range(300))
     result=measure({name:lambda mod=mod:mod._manifest_root(v,b,l)
-                    for name,mod in cs.items()})
+                    for name,mod in cs.items()},repetitions=4)
     print("RELAY_MANIFEST_HASH",json.dumps({"lanes":len(l),"measurements":result}),flush=True)
 
 

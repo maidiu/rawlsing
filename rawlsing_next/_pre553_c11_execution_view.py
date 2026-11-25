@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 import json
 import os
+from operator import index as _sequence_index
 from pathlib import Path
 import stat
 import tempfile
@@ -227,7 +228,7 @@ class _EventLocator:
 @dataclass(frozen=True, slots=True)
 class _RespondentEvents(Sequence[RespondentEvent]):
     lane: _EventLane
-    rows: tuple[int, ...]
+    rows: Sequence[int]
     # Optional compact, immutable postings for wide country respondents.
     # Native, canonical and component identities retain separate semantics.
     question_rows: tuple[Any,Any,Any] | None = None
@@ -276,6 +277,38 @@ class _RespondentEvents(Sequence[RespondentEvent]):
 
 
 @dataclass(frozen=True,slots=True)
+class _CountryEventEntries(Sequence):
+    """Canonical contiguous event family, no allocated integer per event."""
+    base: tuple
+    start: int
+    count: int
+
+    def __len__(self):
+        return len(self.base)+self.count
+
+    def __getitem__(self,i):
+        if isinstance(i,slice):
+            return tuple(self[j] for j in range(*i.indices(len(self))))
+        i=_sequence_index(i)
+        if i<0:
+            i+=len(self)
+        if not 0<=i<len(self):
+            raise IndexError(i)
+        offset=i-self.start
+        if offset<0:
+            return self.base[i]
+        if offset<self.count:
+            return offset
+        return self.base[i-self.count]
+
+    def __iter__(self):
+        from itertools import islice
+        yield from islice(self.base,self.start)
+        yield from range(self.count)
+        yield from islice(self.base,self.start,None)
+
+
+@dataclass(frozen=True,slots=True)
 class _InsertedRoutingEntries(Sequence):
     """Insert one contiguous canonical-family lane without per-row objects."""
     base: tuple
@@ -289,6 +322,7 @@ class _InsertedRoutingEntries(Sequence):
     def __getitem__(self,i):
         if isinstance(i,slice):
             return tuple(self[j] for j in range(*i.indices(len(self))))
+        i=_sequence_index(i)
         if i<0:
             i+=len(self)
         if not 0<=i<len(self):
@@ -344,16 +378,20 @@ class _CompactPublicObjects(Sequence[CanonicalSemanticObject]):
 
 
 def _country_respondent_events(lane,rows):
-    original=tuple(rows)
-    if len(original)<32:
-        return _RespondentEvents(lane,original)
+    if len(rows)<32:
+        return _RespondentEvents(lane,tuple(rows))
     selectors=lane.selectors
     tag="I" if len(selectors)<2**32 else "Q"
+    original=memoryview(array(tag,rows).tobytes()).cast(tag)
     postings=[]
     for field in ("_native_question_identity","_canonical_question_identity","_component_identity"):
         selected=sorted((row for row in original if getattr(selectors[row],field) is not None),
                         key=lambda row:getattr(selectors[row],field))
-        postings.append(memoryview(array(tag,selected).tobytes()).cast(tag))
+        posting=memoryview(array(tag,selected).tobytes()).cast(tag) if selected else ()
+        # Share native/canonical postings only when the entire order agrees.
+        if postings and posting==postings[0]:
+            posting=postings[0]
+        postings.append(posting)
     return _RespondentEvents(lane,original,tuple(postings))
 
 
@@ -364,11 +402,21 @@ def _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,ro
     selectors=tuple(header.selector for header in headers)
     lane=_EventLane(bodies,selectors)
     groups={}
+    tag="I" if len(headers)<2**32 else "Q"
     for row,header in enumerate(headers):
-        groups.setdefault((header.empirical_universe_ref,header.scoped_respondent_ref.key),[]).append(row)
-    entries=tuple(sorted((*non_events,*range(len(headers))),
-        key=lambda entry:selectors[entry].ref.key if isinstance(entry,int) else entry.ref.key))
+        key=(header.empirical_universe_ref,header.scoped_respondent_ref.key)
+        group=groups.get(key)
+        if group is None:
+            group=groups[key]=array(tag)
+        group.append(row)
     non_events=tuple(non_events)
+    family=RespondentEvent.FAMILY+"|"
+    insertion=bisect_left(non_events,family,key=lambda e:e.ref.key)
+    # I02 sorts the events; _CountryEventBodies checks exact digest order.
+    # The complete event family is contiguous in canonical public order.
+    if any(e.ref.kind==RespondentEvent.FAMILY for e in non_events):
+        raise ValueError("country non-event partition contains an event")
+    entries=_CountryEventEntries(non_events,insertion,len(headers))
     nonrouting=None
     if routing is not None:
         family="RoutingEligibilityFact@1.0.0"
