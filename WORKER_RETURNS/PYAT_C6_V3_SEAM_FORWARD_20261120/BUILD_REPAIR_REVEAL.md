@@ -1,5 +1,10 @@
 # PYAT HQ — MULCH CONTINUES INTO V3–SEAM · C6 forward implementation
 
+## 2026-11-25 — Reciprocal PYAT G4 integration
+
+[Exact integrated G4 first consultation](https://github.com/maidiu/rawlsing/blob/26ac87ad3baa04a4ab448d0684fa9a82c0208b26/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md#first-consultation-what-pyat-already-has--what-actually-remains) | [live R24 #1342](https://github.com/maidiu/rawlsing/pull/1342). C6/SEAM should retain qualified rare and contrary alternatives and explicit specificity walkback where supplied, not construct an unsupported joint or modal person. Historical redistribution is not individual conversion; F6 bounded overlap is not observed co-travel. Preserve separate source, world and actor scopes. Existing C6 proof grade and PF-043 are unchanged; no additional conditional-family prerequisite. Working-document integration, not protected runtime or scientific adoption.
+
+
 **User priority / jurisdiction correction (2026-11-19 EST):** PYAT HQ builds, repairs, advances and connects the operating empirical→person possibility machine. REMONT is the independent defect ledger and regression custodian, *not* the meaning of MULCH. This build does not edit or replace REMONT PR #1162.
 
 **Canonical oath:** Read protected `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md` at `5d387a9a8c72c68e6ef87a671d6d486bfd1fc43e`. Authorship/branches do not grant original-data, science, user/actor, protected CAS, or independent review. Source cut: existing active #1164 `84f7eb795676f88bade23051707942ba2e9b353d`. This C6 branch descends directly from it. Work on the active #1164 and #1158 author branches and REMONT #1162 is untouched.
