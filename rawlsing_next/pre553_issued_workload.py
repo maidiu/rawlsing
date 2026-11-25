@@ -392,6 +392,109 @@ def _fast_ref_matches(row):
     return False
 
 
+@dataclass(frozen=True,slots=True)
+class _NonRoutingEnvelopePin:
+    """Bounded structural witness over the rest of the exact issued preimage.
+
+    Never replaces the independent current resolver, initial canonical SHA,
+    job/catalog checks, or packed routing storage pin. Reuse only known
+    incumbent representations; unsupported dynamic/custom inputs fall back
+    to full canonical serialization. No caller-mutable mapping is assumed
+    immutable: check every mapping entry, and every actual ref instance.
+    """
+    attrs: tuple
+    mappings: tuple
+    retained_bytes: int
+
+    @classmethod
+    def capture(cls,workload,max_bytes):
+        from rawlsing_next.pre553_empirical_objects import (
+            CanonicalSemanticObject,_FrozenSemanticList,PUBLIC_OBJECT_FAMILIES)
+        from rawlsing_next.pre553_c11_integrity import C11InternalRecord,TypedAbsence
+        seen=set()
+        attrs=[]
+        mappings=[]
+        used=256
+        known_dataclasses={
+            "rawlsing_next.pre553_source_backed_c11_facade",
+            "rawlsing_next.pre553_carrier_execution",
+            "rawlsing_next.pre553_route_b_production",
+            "rawlsing_next.pre553_issued_workload",
+            "rawlsing_next.pre553_c11_integrity",
+            "rawlsing_next.pre553_empirical_objects",
+        }
+        class Unsupported(Exception):
+            pass
+        def budget(n):
+            nonlocal used
+            used+=n
+            if used>max_bytes:
+                raise Unsupported
+        def attr(obj,names):
+            vals=tuple(getattr(obj,n) for n in names)
+            attrs.append((obj,type(obj),names,vals))
+            budget(128+16*len(names))
+            for v in vals:
+                visit(v)
+        def visit(obj):
+            typ=type(obj)
+            if obj is None or typ in (str,bool,int,float,bytes):
+                return
+            ident=id(obj)
+            if ident in seen:
+                return
+            seen.add(ident)
+            budget(72)
+            if typ in (tuple,_FrozenSemanticList):
+                for v in obj:
+                    visit(v)
+            elif typ in (dict,MappingProxyType):
+                items=tuple(obj.items())
+                if any(type(k) is not str for k,v in items):
+                    raise Unsupported
+                mappings.append((obj,items))
+                budget(128+80*len(items))
+                for k,v in items:
+                    visit(v)
+            elif typ is GovernedC11Projection:
+                attr(obj,tuple(f.name for f in fields(obj) if f.name!="routing"))
+            elif isinstance(obj,CanonicalSemanticObject):
+                if (typ.__module__!="rawlsing_next.pre553_empirical_objects"
+                        or obj.FAMILY not in PUBLIC_OBJECT_FAMILIES
+                        or typ.as_dict is not CanonicalSemanticObject.as_dict
+                        or obj._frozen is not True):
+                    raise Unsupported
+                attr(obj,("schema_id","schema_version","typed_state","object_id","content_hash",
+                          "authority_snapshot_refs","dependency_refs",
+                          "producer_replay_locator_or_reference_root","_semantic_fields","_frozen"))
+            elif isinstance(obj,C11InternalRecord):
+                if (typ.__module__!="rawlsing_next.pre553_c11_integrity"
+                        or typ.as_dict is not C11InternalRecord.as_dict):
+                    raise Unsupported
+                attr(obj,tuple(f.name for f in fields(obj))+("content_hash","object_id","ref"))
+            elif typ in (ExactRef,AuthorityRef,TypedAbsence,I03ExecutionRequest,NativeWorkload,RuntimeObjectCatalog):
+                attr(obj,tuple(f.name for f in fields(obj)))
+            elif (typ.__module__ in known_dataclasses and is_dataclass(obj)
+                  and not hasattr(obj,"as_dict")):
+                attr(obj,tuple(f.name for f in fields(obj)))
+            else:
+                raise Unsupported
+        try:
+            visit(workload)
+        except (Unsupported,TypeError,ValueError,AttributeError,RecursionError):
+            return None
+        return cls(tuple(attrs),tuple(mappings),used)
+
+    def matches(self):
+        for obj,typ,names,vals in self.attrs:
+            if type(obj) is not typ or any(getattr(obj,n,None) is not v for n,v in zip(names,vals)):
+                return False
+        for obj,items in self.mappings:
+            if len(obj)!=len(items) or any(k not in obj or obj[k] is not v for k,v in items):
+                return False
+        return True
+
+
 @dataclass(frozen=True)
 class _PreparedRoutingEnvelope:
     """Reuse an exact SHA continuation, not a second serialized routing graph.
@@ -415,6 +518,8 @@ class _PreparedRoutingEnvelope:
     fast_pins: tuple | None = None
     fast_ref_pins: tuple | None = None
     packed_storage: tuple | None = None
+    nonrouting_pin: _NonRoutingEnvelopePin | None = None
+    complete_digest: str | None = None
 
     @classmethod
     def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
@@ -430,6 +535,7 @@ class _PreparedRoutingEnvelope:
             # No caller-supplied digest or prepared hash is trusted. The
             # actual routing bytes are detached immutable builtin leaves.
             storage=routing.immutable_storage()
+            nonrouting=_NonRoutingEnvelopePin.capture(workload,min(max_bytes-512,8*1024*1024))
             digest=hashlib.sha256()
             pieces=_routing_envelope_parts(workload)
             for part in pieces:
@@ -455,8 +561,12 @@ class _PreparedRoutingEnvelope:
                 digest.update(part)
             if digest.hexdigest()!=expected_hash or routing._storage is not storage:
                 return None
+            if nonrouting is not None and not nonrouting.matches():
+                return None
             return cls(workload,routing,(),b"",prefix,after,encoded_bytes,
-                       sys.getsizeof(after)+256,packed_storage=storage)
+                       sys.getsizeof(after)+256+(nonrouting.retained_bytes if nonrouting else 0),
+                       packed_storage=storage,nonrouting_pin=nonrouting,
+                       complete_digest=expected_hash if nonrouting else None)
         if type(routing) is not tuple or len(routing)>max_records:
             return None
         # Bound the temporary list + retained tuple of mapping references,
@@ -534,6 +644,8 @@ class _PreparedRoutingEnvelope:
         if self.packed_storage is not None:
             if type(self.routing) is not _PackedRoutingFacts or self.routing._storage is not self.packed_storage:
                 return None
+            if self.nonrouting_pin is not None:
+                return self.complete_digest if self.nonrouting_pin.matches() else None
         elif len(self.mappings)!=len(self.routing):
             return None
         elif self.fast_pins is not None:

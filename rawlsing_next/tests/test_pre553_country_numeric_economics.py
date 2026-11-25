@@ -365,8 +365,30 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertIsNotNone(packed_prepared)
             self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
             self.assertLess(packed.payload_bytes,packed_prepared.encoded_routing_bytes//3)
-            with patch.object(_PackedRoutingFacts,"canonical_rows",side_effect=AssertionError("rescanned routing")):
+            self.assertIsNotNone(packed_prepared.nonrouting_pin)
+            with patch.object(_PackedRoutingFacts,"canonical_rows",side_effect=AssertionError("rescanned routing")), \
+                 patch.object(issued,"_routing_envelope_parts",side_effect=AssertionError("reserialized nonrouting")):
                 self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
+            # Every actual nested ref and semantic preimage remains pinned;
+            # equal nominal object identities are not an authorization shortcut.
+            for owner,field,changed in (
+                (workload,"descriptor",canonical({**json.loads(workload.descriptor),"routing_and_risk":{"fixture":False}})),
+                (workload.projection.respondents[0].empirical_universe_ref,"content_hash","0"*64),
+                (workload.catalog.queries[0],"typed_state","INVALID_UNRESOLVED"),
+                (workload.requests[0].query_ref,"content_hash","0"*64),
+                (workload.projection.response_slots[0].values[0],"physical_key","changed"),
+            ):
+                prior=getattr(owner,field)
+                try:
+                    object.__setattr__(owner,field,changed)
+                    self.assertIsNone(packed_prepared.digest(),field)
+                finally:
+                    object.__setattr__(owner,field,prior)
+            self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
+            bounded=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256,max_bytes=1024)
+            self.assertIsNone(bounded.nonrouting_pin)
+            self.assertEqual(bounded.digest(),record.envelope_sha256)
+            del bounded
             storage=packed._storage
             try:
                 object.__setattr__(packed,"_storage",((),()))
@@ -392,6 +414,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "records":len(packed),"payload_bytes":packed.payload_bytes,
                 "canonical_bytes":packed_prepared.encoded_routing_bytes,
                 "additional_pin_bytes_estimate":packed_prepared.retained_pin_bytes,
+                "nonrouting_pin_bytes_estimate":packed_prepared.nonrouting_pin.retained_bytes,
                 "exact_envelope_and_projection":True}),flush=True)
             del packed_prepared,routing,projection
             if not direct_pack:
