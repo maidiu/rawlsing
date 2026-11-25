@@ -72,6 +72,12 @@ def acquire_orientation(actor, experience, event_ref, proposal):
     mode = proposal.get('orientation_mode')
     if mode not in MODES:
         raise ValueError('HISTORICAL_INVALID_POLARITY')
+    dependency_ground = None
+    if 'dependency_ambivalence_basis' in proposal:
+        possible=possible_dependency_ambivalence(actor,experience,event_ref)
+        if proposal not in possible:
+            raise ValueError('DEPENDENCY_AMBIVALENCE_UNQUALIFIED')
+        dependency_ground=copy(proposal['dependency_ambivalence_basis'])
     work_ground = None
     if 'recurrent_work_practice' in proposal:
         # A model cannot promote an employer's accounting decision to an
@@ -109,6 +115,10 @@ def acquire_orientation(actor, experience, event_ref, proposal):
         record['source_specificity'] = (
             'THREE_ACTOR_LIVED_WORK_EPISODES_NOT_EMPLOYER_PSYCHOLOGY')
         record['no_inevitable_compliance_resistance_or_conscious_theory'] = True
+    if dependency_ground is not None:
+        record['acquisition']='LIVED_CONTRADICTORY_PROJECT_COURSE'
+        record['dependency_ambivalence_basis']=dependency_ground
+        record['not_a_named_emotion_or_relationship_verdict']=True
     prior.append(record)
     return {'kind': 'ACQUIRE_HISTORICAL_ORIENTATION', 'ref': ident,
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}
@@ -499,6 +509,10 @@ def pre_cue_pressures(constitution, access):
             continue
         if row.get('location') != access.location:
             continue
+        if row.get('acquisition')=='LIVED_CONTRADICTORY_PROJECT_COURSE':
+            # Specific practical alternatives, not every occurrence of the
+            # physical operation, consume this form of historical pressure.
+            continue
         if row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE':
             # R29: pre-symbolic source context, not a current motive cue.
             # Do not recruit an orientation learned amid one specific
@@ -536,3 +550,152 @@ def pre_cue_pressures(constitution, access):
                 'no_present_cue_required': True, 'grade': GRADE,
             })
     return {'currents': currents, 'readset': readset, 'grade': GRADE}
+
+
+def possible_dependency_ambivalence(actor,experience,event_ref):
+    """A renewed conditional means can remain practically available while
+    its actually lived history solicits opposed orientations to using it.
+
+    The historical evidence is actor-owned material/participatory history,
+    not a diagnosis of emotion, the Other's intention or a universal law.
+    """
+    aid=actor.get('id'); clock=experience.get('clock')
+    sel=experience.get('own_practical_selection') or {}
+    req=sel.get('world_request') or {}
+    other=req.get('addressed_party_ref')
+    refs=sel.get('selected_project_refs')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='SIGNAL'
+            or experience.get('status') not in ('PARTIAL','BLOCKED')
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid
+            or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or req.get('operation')!='SIGNAL' or type(other) is not str
+            or type(refs) is not list or len(refs)!=1
+            or type(sel.get('option_id')) is not str
+            or sel.get('possible_end_trial') is not None
+            or not eligible(actor['body'],'SIGNAL')[0]):return []
+    ps=[p for p in actor.get('projects',[]) if p.get('id')==refs[0]]
+    if len(ps)!=1:return []
+    p=ps[0]; bound=p.get('dependency_conditional_means',{}).get('SIGNAL')
+    if (not bound or p.get('status')!='active'
+            or bound.get('status','ACTIVE')!='ACTIVE'
+            or bound.get('counterpart_ref')!=other
+            or bound.get('location')!=experience.get('location')):return []
+    history=bound.get('revision_history',[])
+    if len(history)<2:return []
+    suspension,reopening=history[-2:]
+    if (suspension.get('new_status')!='SUSPENDED'
+            or reopening.get('new_status')!='ACTIVE'
+            or suspension.get('basis',{}).get('mode')!='SUSPEND'
+            or reopening.get('basis',{}).get('mode')!='REOPEN'
+            or reopening.get('basis',{}).get('previous_revision_event_ref')!=suspension.get('event_ref')):return []
+    episodes=actor.get('lived_genesis_episodes',[])
+    parts=actor.get('participation_history',[])
+    def one(eid,eref=None):
+        found=[e for e in episodes if e.get('actor')==aid
+               and e.get('location')==bound['location']
+               and e.get('actor_felt_attempt')=='SIGNAL'
+               and e.get('selected_addressed_party_ref')==other
+               and e.get('selection_source')=='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+               and (eid is None or e.get('id')==eid)
+               and (eref is None or e.get('event_ref')==eref)]
+        return found[0] if len(found)==1 else None
+    def witnessed(e,part_ref=None):
+        found=[x for x in parts if x.get('actor')==aid
+               and x.get('event_ref')==e['event_ref']
+               and x.get('experience_ref')==e['experience_ref']
+               and x.get('own_attempted_operation')=='SIGNAL'
+               and (part_ref is None or x.get('id')==part_ref)]
+        return found[0] if len(found)==1 else None
+    histories=[]
+    for revision,positive in ((suspension,False),(reopening,True)):
+        basis=revision['basis']; ers=basis.get('episode_refs',[])
+        prs=basis.get('participation_refs',[]); evs=basis.get('event_refs',[])
+        if (basis.get('practice_ref')!=bound.get('practice_ref')
+                or basis.get('counterpart_ref')!=other
+                or basis.get('location')!=bound['location']
+                or len(ers)!=2 or len(prs)!=2 or len(evs)!=2
+                or revision.get('event_ref')!=evs[-1]):return []
+        for er,pr,ev in zip(ers,prs,evs):
+            e=one(er,ev)
+            if e is None:return []
+            x=witnessed(e,pr)
+            if x is None:return []
+            if positive:
+                if (e.get('selected_project_refs')!=[]
+                        or e.get('unfinished_own_activity')
+                        or not e.get('received_relief',{}).get('nutrition')
+                        or not x.get('joint_participation_perceived')
+                        or x.get('reciprocated_partner_actor_visible')!=other
+                        or x.get('own_status')!='PERFORMED'):return []
+            else:
+                if (e.get('selected_project_refs')!=[p['id']]
+                        or not e.get('unfinished_own_activity')
+                        or e.get('received_relief',{}).get('nutrition')
+                        or x.get('joint_participation_perceived')
+                        or x.get('own_status') not in ('PARTIAL','BLOCKED')):return []
+            histories.append(e)
+    now=one(None,event_ref)
+    if (now is None or now.get('clock')!=clock
+            or now.get('experience_ref')!=experience.get('ref')
+            or now.get('selected_project_refs')!=refs
+            or now.get('selected_practical_option_ref')!=sel['option_id']
+            or not now.get('unfinished_own_activity')
+            or now.get('received_relief',{}).get('nutrition')):return []
+    part=witnessed(now)
+    if (part is None or part.get('joint_participation_perceived')
+            or part.get('own_status') not in ('PARTIAL','BLOCKED')):return []
+    all_rows=histories+[now]
+    if any(x['clock']>=y['clock'] for x,y in zip(all_rows,all_rows[1:])):return []
+    courses=[c for c in p.get('operational_history',[]) if c.get('event')==event_ref
+             and c.get('project')==p['id'] and c.get('operation')=='SIGNAL'
+             and c.get('selected_at_actor_attempt') is True
+             and c.get('performed_status') in ('PARTIAL','BLOCKED')]
+    if len(courses)!=1:return []
+    if any(o.get('dependency_ambivalence_basis',{}).get('project_ref')==p['id']
+           and o.get('dependency_ambivalence_basis',{}).get('reopening_event_ref')==reopening['event_ref']
+           for o in actor.get('historical_orientations',[])):return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('kind')=='performed_signal' and c.get('source_actor')==aid
+           and c.get('id') in now.get('received_sign_refs',[])]
+    if len(signs)!=1:return []
+    basis={'project_ref':p['id'],'practice_ref':bound['practice_ref'],
+           'counterpart_ref':other,'location':bound['location'],
+           'suspension_event_ref':suspension['event_ref'],
+           'reopening_event_ref':reopening['event_ref'],
+           'approach_episode_refs':[x['id'] for x in histories[2:]],
+           'withhold_episode_refs':[x['id'] for x in histories[:2]]+[now['id']],
+           'latest_participation_ref':part['id'],'latest_event_ref':event_ref,
+           'not_a_named_emotion_or_future_consent':True}
+    return [{'kind':'ACQUIRE_HISTORICAL_ORIENTATION','operation':'SIGNAL',
+             'orientation_mode':'AMBIVALENT','perceived_cue_ref':signs[0]['id'],
+             'dependency_ambivalence_basis':basis}]
+
+
+def project_dependency_course_currents(constitution,access,project,operation,binding):
+    """Project-specific historical tensions, not a global action veto."""
+    if not binding:return []
+    out=[]
+    for row in getattr(constitution,'historical_orientations',[]):
+        if (row.get('actor')!=constitution.actor
+                or row.get('acquisition')!='LIVED_CONTRADICTORY_PROJECT_COURSE'
+                or row.get('operation')!=operation
+                or row.get('location')!=access.location):continue
+        basis=row.get('dependency_ambivalence_basis',{})
+        if (basis.get('project_ref')!=project['id']
+                or basis.get('practice_ref')!=binding.get('practice_ref')
+                or basis.get('counterpart_ref')!=binding.get('counterpart_ref')
+                or not any(c.get('kind')=='coactor_present'
+                           and c.get('source_actor')==basis.get('counterpart_ref')
+                           for c in access.cues)):continue
+        for polarity in sorted(_polarities(row)):
+            out.append({'orientation_ref':row['id'],'polarity':polarity,
+                        'project_ref':project['id'],'operation':operation,
+                        'counterpart_ref':basis['counterpart_ref'],
+                        'origin_event_ref':row['origin_event'],
+                        'source_episode_refs':copy(basis[
+                            'approach_episode_refs' if polarity=='APPROACH'
+                            else 'withhold_episode_refs']),
+                        'not_actor_self_knowledge_or_world_outcome':True})
+    return out

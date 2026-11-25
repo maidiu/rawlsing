@@ -751,7 +751,8 @@ class NeighborEncounter:
         return arrival, departure, present
 
     def continue_absent_life_until(self, departure_ref: str, target_clock: int,
-                                   *, max_segments: int = 24):
+                                   *, max_segments: int = 24,
+                                   period_processes=None):
         """Owner-side bounded absence continuation, NOT a visitor action.
 
         The target is an absolute modeled-world clock, not real wall time or
@@ -768,6 +769,17 @@ class NeighborEncounter:
             raise EncounterRefusal('INVALID_ABSENCE_TARGET_CLOCK')
         if type(max_segments) is not int or not 1 <= max_segments <= 240:
             raise EncounterRefusal('INVALID_ABSENCE_SEGMENT_BUDGET')
+        # Owner-side only: these are already source-qualified routine
+        # premises, not visitor choices of what another person does.
+        # Existing CO allocation requalifies them at every actual interval.
+        if period_processes is not None:
+            from um_sorok_organism.historical_social_reproduction import KINDS
+            if (type(period_processes) is not list or len(period_processes)>512
+                    or any(type(p) is not dict or p.get('kind') not in KINDS
+                           for p in period_processes)):
+                raise EncounterRefusal('INVALID_ABSENCE_PERIOD_PROCESSES')
+        period_kw=({'processes':deepcopy(period_processes)}
+                   if period_processes is not None else {})
         _, world = self._world()
         _, departure, present = self._own_visit_transitions(world)
         if (present or departure is None
@@ -796,15 +808,15 @@ class NeighborEncounter:
                 # This owner may settle an actor event at the horizon itself,
                 # advancing one additional tick. Report actual clock, never
                 # backdate reentry to the requested cut.
-                self.runtime.advance_to_discontinuity(horizon=remaining)
+                self.runtime.advance_to_discontinuity(horizon=remaining,**period_kw)
             elif remaining > 1:
                 # Leave one tick for a real independently chosen activity,
                 # instead of narrating all ordinary life from elapsed time.
-                self.runtime.advance_to_discontinuity(horizon=remaining - 1)
+                self.runtime.advance_to_discontinuity(horizon=remaining - 1,**period_kw)
             elif actors:
                 self.runtime.continue_without_user(beats=1)
             else:
-                self.runtime.advance_to_discontinuity(horizon=1)
+                self.runtime.advance_to_discontinuity(horizon=1,**period_kw)
             _, world = self._world()
             segments += 1
             if world['clock'] <= previous:

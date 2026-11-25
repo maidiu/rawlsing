@@ -13,6 +13,7 @@ remain the first writer/reader. No new canonical P2/P6/SDTF or native rights.
 import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import verify_qualified_period_envelope
+from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
     PROVISION_KIND,qualify_feeding,settle_provisioning)
@@ -83,7 +84,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
         raise ValueError('HISTORICAL_TIME_INVALID_CLOCK')
     if type(processes) is not list or len(processes)>512:
         raise ValueError('HISTORICAL_TIME_INVALID_PROCESS_BUDGET')
-    normalized=[];fraction_by_actor={};support_downgrades=[]
+    normalized=[];fraction_by_actor={};support_downgrades=[];withheld=[]
     for i,raw in enumerate(processes):
         hours,fraction=_typecheck(raw)
         source_confirmation=verify_qualified_period_envelope(
@@ -116,6 +117,26 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
                        p.get('status','active')=='active'
                        for p in actors[a].get('projects',[])):
                 raise ValueError('HISTORICAL_TIME_NO_PRACTICED_WORK_COURSE')
+        operation=({'QUALIFIED_REPRODUCTIVE_CARE':'CARE',
+                    'QUALIFIED_WAGE_LABOR':'WORK',
+                    PROVISION_KIND:'FEED'}.get(raw['kind']))
+        if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
+            operation=raw.get('operation')
+        gate=qualify_aggregate_material_gate(world,a,site,operation,start_clock,days)
+        if gate is not None and gate['readset']:
+            if gate['decision'] in ('BLOCKED','UNRESOLVED'):
+                # The source qualifies a proposed modeled routine, not a
+                # magical right to undertake it. Do not award practice dose,
+                # wage, care, food or successful micro-scenes under denial.
+                withheld.append({'input_index':i,'source_ref':raw['source_ref'],
+                    'actor':a,'location':site,'operation':operation,
+                    'start_clock':start_clock,'end_clock':start_clock+days,
+                    'objective_rule_evaluation':copy(gate),
+                    'proposed_routine':copy(raw),
+                    'actual_time_lost_or_actor_experience':'NOT_INFERRED',
+                    'not_a_performed_or_experienced_event':True})
+                continue
+            raw={**raw,'aggregate_objective_gate':copy(gate)}
         if raw['kind']=='QUALIFIED_ROUTINE_PRACTICE':
             mode=raw.get('mode','ARRANGEMENT_UNRESOLVED')
             if mode=='ASSISTED_COMPONENT_PRACTICE':
@@ -146,6 +167,7 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
             sorted(over)))
     return {
         'qualified':normalized,
+        **({'structurally_withheld_processes':withheld} if withheld else {}),
         'actor_active_hour_claim_per_day':{
             a:round(h,5) for a,h in sorted(fraction_by_actor.items())},
         'unmodeled_free_hours_per_day':{
@@ -252,7 +274,9 @@ def apply_period_allocation(world,actors,allocation):
         raise ValueError('HISTORICAL_TIME_WORLD_ADVANCED_BEFORE_SETTLEMENT')
     ref=stable_id('historical_time_allocation',{
         'world':world['id'],'start':start,'days':days,
-        'processes':allocation['qualified']})
+        'processes':allocation['qualified'],
+        **({'structurally_withheld_processes':allocation['structurally_withheld_processes']}
+           if allocation.get('structurally_withheld_processes') else {})})
     if any(r.get('id')==ref for r in
            world.get('historical_time_allocations',[])):
         raise ValueError('HISTORICAL_TIME_DUPLICATE_SETTLEMENT')
@@ -279,6 +303,8 @@ def apply_period_allocation(world,actors,allocation):
             x['source_ref'] for x in allocation['qualified']],
         'support_downgraded_to_unresolved_indices':copy(
             allocation['support_downgraded_to_unresolved_indices']),
+        **({'structurally_withheld_processes':copy(allocation['structurally_withheld_processes'])}
+           if allocation.get('structurally_withheld_processes') else {}),
         'absent_high_resolution_scenes':'NOT_DEEMED_TO_HAVE_OCCURRED',
         'work_and_care_bearer_differentiation':True,
         'not_a_human_time_use_or_developmental_law':True,

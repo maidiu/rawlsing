@@ -20,11 +20,13 @@ def passage(world,actors,days,processes=None):
     allocation=qualify_period_allocation(
         world,actors,qualified,start,days)
     effective_iter=iter(allocation['qualified'])
-    effective_processes=[
-        next(effective_iter) if isinstance(p,dict)
-            and type(p.get('kind')) is str
-            and p['kind'].startswith('QUALIFIED_')
-        else p for p in processes]
+    held={p['input_index'] for p in allocation.get('structurally_withheld_processes',[])}
+    effective_processes=[];qindex=0
+    for p in processes:
+        if isinstance(p,dict) and type(p.get('kind')) is str and p['kind'].startswith('QUALIFIED_'):
+            if qindex not in held:effective_processes.append(next(effective_iter))
+            qindex+=1
+        else:effective_processes.append(p)
     practice_evidence=[]
     for a in actors.values():
         # Only a source-qualified ongoing routine can contribute compressed
@@ -48,10 +50,14 @@ def passage(world,actors,days,processes=None):
     material_wear=advance_material_wear(world,days,start)
     world['clock']+=days
     from .continuity_clock import settle_human_offer_deadlines
-    settle_human_offer_deadlines(world)
+    elapsed_human_windows=settle_human_offer_deadlines(world)
     period={'id':stable_id('period',{'world':world['id'],'start':start,'days':days,'processes':processes}),
        'start':start,'end':world['clock'],'resolution':'AGGREGATE_MODELED',
        'processes':effective_processes,
+       **({'structurally_withheld_processes':copy(allocation_receipt['structurally_withheld_processes'])}
+          if allocation_receipt.get('structurally_withheld_processes') else {}),
+       **({'elapsed_human_offer_commitment_refs':elapsed_human_windows}
+          if elapsed_human_windows else {}),
        'qualified_material_time_allocation_ref':allocation_receipt['id'],
        'care_period_refs':allocation_receipt['care_period_refs'],
        'wage_period_refs':allocation_receipt['wage_period_refs'],

@@ -10,6 +10,7 @@ This is an executable SOURCEFREE architectural hypothesis, not developmental
 science, a clinical account, or a new canonical SOROK psyche owner.
 """
 from .types import copy, stable_id, GRADE
+from .reflective_regulation import private_end_ground
 
 
 def _present_terms(access):
@@ -46,8 +47,12 @@ def project_trial_horizons(constitution, access, candidate_actions,
             continue
         if end.get('status') != 'POSSIBLE_NOT_ACQUIRED_MOTIVE':
             continue
+        private_ground=private_end_ground(constitution.memories,end,constitution.actor,
+                                           access.location,constitution.clock)
         if not (end.get('origin_event') and end.get('experience_ref')
-                and end.get('actor_perceived_cue_ref')):
+                and (end.get('actor_perceived_cue_ref') or private_ground)):
+            continue
+        if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL' and not private_ground:
             continue
         cues = end.get('cue_terms', [])
         original_match=({x.casefold() for x in cues if type(x) is str}
@@ -82,7 +87,7 @@ def project_trial_horizons(constitution, access, candidate_actions,
             # can bind a different actor-recognizable correspondence.
             if not object_continuity:
                 continue
-        elif not original_match and bridge is None and not other_continuity:
+        elif not original_match and bridge is None and not other_continuity and not private_ground:
             continue
         means = end.get('possible_means', [])
         if not isinstance(means, list):
@@ -166,6 +171,9 @@ def project_trial_horizons(constitution, access, candidate_actions,
                 'not_a_prediction_of_objective_success': True,
                 'grade': GRADE,
             }
+            if private_ground:
+                trial['private_rehearsal_ref']=private_ground['id']
+                trial['not_current_world_sign_or_recollected_fact']=True
             option.setdefault('possible_end_trials', []).append(trial)
             # An already licensed prospective SIGNAL trial can be enacted
             # through a PARTICULAR actual human food offer. Keep generic
@@ -270,6 +278,12 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
     if len(matches) != 1 or matches[0].get('status') != 'POSSIBLE_NOT_ACQUIRED_MOTIVE':
         raise ValueError('POSSIBLE_END_TRIAL_NO_LIVE_END')
     end = matches[0]
+    if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL':
+        ground=private_end_ground(actor.get('memories',[]),end,actor['id'],
+                                   experience.get('location'),experience.get('clock',-1))
+        if (not ground or trial.get('private_rehearsal_ref')!=ground['id']
+                or (experience.get('own_practical_selection') or {}).get('possible_end_trial')!=trial):
+            raise ValueError('PRIVATE_END_TRIAL_UNQUALIFIED_REHEARSAL')
     novel=trial['operation'] not in end.get('possible_means',[])
     if novel:
         matches=[b for b in actor.get('functional_bindings',[])
@@ -335,6 +349,8 @@ def record_possible_end_trial(actor, experience, event_ref, proposal):
         witness['selected_human_food_offer_ref']=trial['selected_human_food_offer_ref']
         witness['offered_by_ref']=trial['offered_by_ref']
         witness['selected_offer_option_ref']=trial['selected_offer_option_ref']
+    if end.get('genesis_family')=='ACTUAL_PRIVATE_REHEARSAL':
+        witness['private_rehearsal_ref']=end['private_rehearsal_ref']
     end.setdefault('trial_history', []).append(witness)
     return {'kind': 'RECORD_POSSIBLE_END_TRIAL',
             'trial_history_ref': trial_id, 'possible_end': end['id'],
