@@ -24,7 +24,7 @@ class _NoRedirect(HTTPRedirectHandler):
 
 
 _ALLOWED=("actor_attempt","development","adult_constructor",
-          "blind_adult_interview","expression")
+          "blind_adult_interview","expression","family_pathway_selection")
 
 
 class ExplicitJSONLLMProvider:
@@ -188,6 +188,10 @@ class ExplicitJSONLLMProvider:
             "is optional: an actual learned coordination, later failed addressed use, "
             "then distinct independently enacted relief. Nominate the exact basis or "
             "abstain. Do not infer abandonment, affection, or mastery. "
+            "For family_pathway_selection choose an exact eligible pathway_id or null "
+            "using the actually changed maternal state; this is analyst conditional "
+            "story selection, not proof of maternal reproductive consent, "
+            "empirical couple probability or a retroactive shared history. "
             "For adult_constructor all history is explicitly fictional. "
             "THIN_BIOGRAPHY or AUTHORED_WORLD_HISTORY may have no instrument. "
             "Construct operative historically plausible forms and projects "

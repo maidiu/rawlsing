@@ -64,10 +64,11 @@ from .functional_correspondence import (propose_actor_lived_correspondences,
                                         possible_functional_revisions)
 from .initiative import continue_life
 from .continuity_clock import continue_to_discontinuity, continue_pre_encounter, qualify_contingent_world_notice
-from .historical_parent_bridge import render_blind_interview
+from .historical_parent_bridge import (render_blind_interview, qualify_family_pathways,
+    family_encounter_evidence, FAMILY_SOURCE, FAMILY_GRADE)
 from .material_conjunction import admit_authored_structural_history
 from .operative_witness import freeze_operative_witness
-from .parents import construct_parent, interview_readout
+from .parents import construct_parent, interview_readout, select_staged_counterpart
 from .semantics import ValidatingSemanticService
 from .relational_metabolism import (
     possible_witnessed_third_party_relation,
@@ -154,6 +155,103 @@ class ConstitutiveRuntime:
                                  authored_structural_history))
         self.ledger.initialize(world,parents+[child],source_seals=source_seals)
         return {'world':self.world_id,'actors':[a['id'] for a in parents+[child]],'grade':GRADE}
+
+    def initialize_antecedent_adult(self,actor_id,name,packet,*,authored_structural_history=None):
+        """Alternative entrance: one actually continuing adult, no precreated child."""
+        world=blank_world(self.world_id)
+        if authored_structural_history is not None:
+            admit_authored_structural_history(world,{actor_id},authored_structural_history)
+        person=construct_parent(actor_id,name,packet,self.semantic)
+        seals=[('fictional_source:'+actor_id,'CONDITIONING_NOT_REAL_PERSON',packet)]
+        if authored_structural_history is not None:
+            seals.append(('authored_structural_history','FICTIONAL_WORLD_CONDITIONING',authored_structural_history))
+        self.ledger.initialize(world,[person],source_seals=seals)
+        return {'world':self.world_id,'actors':[actor_id],'grade':GRADE}
+
+    def register_family_pathways(self,mother_id,candidates):
+        version,world=self.ledger.world(self.world_id)
+        mother=self.ledger.actor(mother_id)[1]
+        source=qualify_family_pathways(world,mother,candidates)
+        sid='family_pathways:'+mother_id
+        self.ledger.seal_source(sid,FAMILY_SOURCE,source,expected_world=version)
+        return {'source_seal_id':sid,'proposal_clock':source['proposal_clock'],
+                'candidate_ids':[x['id'] for x in source['candidates']], 'grade':FAMILY_GRADE}
+
+    def _family_source(self,sid):
+        row=self.ledger.source(sid)
+        if not row or row['category']!=FAMILY_SOURCE:raise ValueError('FAMILY_SOURCE_NOT_SEALED')
+        return row['content'],digest(row)
+
+    def _admit_family_actor(self,version,world,actor,family,kind,sid,sha):
+        aid=actor['id']
+        if aid in world['positions']:raise ValueError('FAMILY_ACTOR_ALREADY_PRESENT')
+        world['positions'][aid]=actor['location']
+        world.setdefault('accounts',{})[aid]=0.0
+        world.setdefault('holdings',{})[aid]={'food':0}
+        world['family_genesis']=copy(family)
+        result=self.ledger.commit(self.world_id,version,world,{}, {},kind,aid,
+                {'admitted_actor':aid,'source_seal_id':sid,'source_digest':sha,
+                 'family_genesis':family,'no_automatic_actor_experience':True,'grade':FAMILY_GRADE},
+                _family_actor=actor)
+        return {'receipt':result['id'],'actor':aid,'stage':family['stage'],'grade':FAMILY_GRADE}
+
+    def select_family_intersection(self,source_seal_id):
+        version,world=self.ledger.world(self.world_id)
+        source,sha=self._family_source(source_seal_id)
+        mother=self.ledger.actor(source['mother'])[1]
+        selected=select_staged_counterpart(world,mother,source,self.semantic)
+        if selected is None:return {'status':'ABSTAINED','grade':FAMILY_GRADE}
+        path,father=selected
+        row={k:copy(path[k]) for k in ('id','source_ref','intersection_clock','intersection_site',
+                 'conception_clock','birth_clock','child_id','child_name')}
+        row.update({'mother':mother['id'],'counterpart':father['id'],'admitted_clock':world['clock'],
+                    'proposal_clock':source['proposal_clock'],
+                    'maternal_proposal_state_digest':source['maternal_proposal_state_digest'],
+                    'maternal_selection_state_digest':stable_id('maternal_selection',mother),
+                    'prior_shared_effects':'UNKNOWN_NOT_ADMITTED'})
+        family={'stage':'COUNTERPART_ADMITTED','source_seal_id':source_seal_id,
+                'source_digest':sha,'selected_pathway':row,
+                'not_relationship_household_consent_or_conception':True}
+        return self._admit_family_actor(version,world,father,family,'FAMILY_COUNTERPART_ADMITTED',
+                                        source_seal_id,sha)
+
+    def admit_family_conception(self):
+        """Explicit branch premise, not a deduction from social conduct."""
+        version,world=self.ledger.world(self.world_id)
+        family=world.get('family_genesis',{})
+        if family.get('stage')!='COUNTERPART_ADMITTED':raise ValueError('FAMILY_NO_SELECTED_COUNTERPART')
+        path=family['selected_pathway'];source,sha=self._family_source(family['source_seal_id'])
+        if sha!=family['source_digest'] or world['clock']!=path['conception_clock']:
+            raise ValueError('FAMILY_CONCEPTION_WRONG_SOURCE_OR_CLOCK')
+        if not all(world['positions'].get(a)==path['intersection_site'] for a in (path['mother'],path['counterpart'])):
+            raise ValueError('FAMILY_CONCEPTION_LOCATION_UNQUALIFIED')
+        encounters=family_encounter_evidence(world,path)
+        if not encounters:raise ValueError('FAMILY_NO_ACTUAL_DIRECTED_ENCOUNTER')
+        family['stage']='CONCEPTION_ADMITTED'
+        family['conception']={'id':stable_id('conditional_conception',path),
+             'clock':world['clock'],'encounter_evidence':encounters[-1],
+             'sourcefree_branch_premise_not_biological_or_consent_inference':True,
+             'no_child_actor_yet':True,'grade':FAMILY_GRADE}
+        result=self.ledger.commit(self.world_id,version,world,{}, {},
+                'FAMILY_CONCEPTION',None,{'family_genesis':copy(family),'grade':FAMILY_GRADE})
+        return {'receipt':result['id'],'stage':family['stage'],'grade':FAMILY_GRADE}
+
+    def realize_family_birth(self):
+        version,world=self.ledger.world(self.world_id)
+        family=world.get('family_genesis',{})
+        if family.get('stage')!='CONCEPTION_ADMITTED':raise ValueError('FAMILY_NO_ADMITTED_CONCEPTION')
+        path=family['selected_pathway'];source,sha=self._family_source(family['source_seal_id'])
+        if sha!=family['source_digest'] or world['clock']!=path['birth_clock']:
+            raise ValueError('FAMILY_BIRTH_WRONG_SOURCE_OR_CLOCK')
+        location=world['positions'][path['mother']]
+        child=newborn(path['child_id'],path['child_name'],location)
+        family['stage']='CHILD_BORN'
+        family['birth']={'id':stable_id('conditional_birth',path),'clock':world['clock'],
+            'child':child['id'],'biological_lineage_refs':[path['mother'],path['counterpart']],
+            'conception_ref':family['conception']['id'],'location':location,
+            'household_care_relationship_and_psyche_not_inferred':True,'grade':FAMILY_GRADE}
+        return self._admit_family_actor(version,world,child,family,'FAMILY_CHILD_BORN',
+                                        family['source_seal_id'],sha)
 
     def snapshot(self,actor_id):
         _,world=self.ledger.world(self.world_id)

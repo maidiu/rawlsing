@@ -225,7 +225,7 @@ class ResearchLedger:
     def actors(self):
         return {a:json.loads(b) for a,b in self.conn.execute('SELECT id,body FROM actors')}
 
-    def seal_source(self, sid, category, content):
+    def seal_source(self, sid, category, content, *, expected_world=None):
         """Optional late source seal: chain-anchor atomically, never an orphan row.
 
         A source insertion is a historical data act, not psychology formation.
@@ -238,6 +238,8 @@ class ResearchLedger:
             row=self.conn.execute('SELECT id,body FROM worlds ORDER BY id LIMIT 1').fetchone()
             if not row:raise Conflict('SOURCE_SEAL_REQUIRES_INITIALIZED_WORLD')
             wid,body=row
+            if expected_world is not None and self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()[0]!=expected_world:
+                raise Conflict('STALE_WORLD')
             self._require_valid_history_locked()
             self._verify_current_anchor_locked(wid)
             world=json.loads(body)
@@ -262,13 +264,15 @@ class ResearchLedger:
             x=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(sid,)).fetchone()
             return None if not x else {'category':x[0], 'content':json.loads(x[1])}
 
-    def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload):
+    def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload,*,_family_actor=None):
         """All research state is committed atomically with immutable objective receipt."""
         if world['id']!=wid: raise Conflict('wrong world')
         # Reserved source-identity events are issued only by seal_source()
         # alongside the actual source_seals table row in one transaction.
         if kind in ('INITIALIZATION','SOURCE_SEAL'):
             raise Conflict('RESERVED_SOURCE_EVENT_KIND')
+        family_entry=kind in ('FAMILY_COUNTERPART_ADMITTED','FAMILY_CHILD_BORN')
+        if family_entry!=(_family_actor is not None):raise Conflict('FAMILY_ROSTER_AUTHORITY_REQUIRED')
         with self.tx():
             v=self.conn.execute('SELECT version FROM worlds WHERE id=?',(wid,)).fetchone()
             if not v or v[0]!=expected_world: raise Conflict('STALE_WORLD')
@@ -282,6 +286,34 @@ class ResearchLedger:
             prev=prior[0] if prior else 'GENESIS'
             full_actors={aid:json.loads(blob) for aid,blob in self.conn.execute('SELECT id,body FROM actors')}
             full_actors.update(actors)
+            if family_entry:
+                prior_world=json.loads(self.conn.execute('SELECT body FROM worlds WHERE id=?',(wid,)).fetchone()[0])
+                aid=_family_actor.get('id');loc=_family_actor.get('location')
+                if (actors or actor_versions or aid!=actor_id or aid in full_actors
+                        or loc not in prior_world['sites'] or world['clock']!=prior_world['clock']
+                        or payload.get('admitted_actor')!=aid):raise Conflict('FAMILY_INVALID_ROSTER_ADMISSION')
+                source=self.conn.execute('SELECT type,content FROM source_seals WHERE id=?',(payload.get('source_seal_id'),)).fetchone()
+                if (not source or source[0]!='FICTIONAL_FAMILY_PATHWAY_CANDIDATES'
+                        or digest({'category':source[0],'content':json.loads(source[1])})!=payload.get('source_digest')):
+                    raise Conflict('FAMILY_UNSEALED_PATHWAY')
+                expected=copy(prior_world)
+                expected['positions'][aid]=loc
+                expected.setdefault('accounts',{})[aid]=0.0
+                expected.setdefault('holdings',{})[aid]={'food':0}
+                expected['family_genesis']=copy(payload['family_genesis'])
+                if world!=expected:raise Conflict('FAMILY_ADMISSION_REWRITES_WORLD')
+                if kind=='FAMILY_CHILD_BORN':
+                    from .types import newborn
+                    if (_family_actor!=newborn(aid,_family_actor.get('name'),loc)
+                            or prior_world.get('family_genesis',{}).get('stage')!='CONCEPTION_ADMITTED'):
+                        raise Conflict('FAMILY_CHILD_NOT_SPARSE_OR_NO_CONCEPTION')
+                elif (_family_actor.get('role')!='adult' or prior_world.get('family_genesis')):
+                    raise Conflict('FAMILY_COUNTERPART_NOT_INDEPENDENT_ADULT')
+                full_actors[aid]=_family_actor
+            prior_family=json.loads(self.conn.execute('SELECT body FROM worlds WHERE id=?',(wid,)).fetchone()[0]).get('family_genesis',{})
+            if (prior_family.get('stage')=='CONCEPTION_ADMITTED' and not family_entry
+                    and world['clock']>prior_family['selected_pathway']['birth_clock']):
+                raise Conflict('FAMILY_BIRTH_BOUNDARY_REQUIRES_REALIZATION')
             if actor_id is not None and actor_id not in full_actors:
                 raise Conflict('UNKNOWN_EVENT_ACTOR')
             # A fabricated position is a fabricated co-present Other. Actor IDs,
@@ -306,6 +338,8 @@ class ResearchLedger:
             for aid,a in actors.items():
                 self.conn.execute('UPDATE actors SET version=?,body=? WHERE id=?',
                                   (actor_versions[aid]+1,canonical(a),aid))
+            if family_entry:
+                self.conn.execute('INSERT INTO actors VALUES(?,?,?)',(_family_actor['id'],0,canonical(_family_actor)))
             self.conn.execute('INSERT INTO events(eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash) VALUES(?,?,?,?,?,?,?,?)',
                               (eid,wid,world['clock'],actor_id,kind,canonical(envelope),prev,chain))
             return {'id':eid,'chain_hash':chain,'envelope':envelope}
@@ -328,7 +362,7 @@ class ResearchLedger:
         conditioning; semantically identical whitespace is still a changed
         source seal. This is local integrity, not native cryptographic issuer.
         """
-        prior='GENESIS';count=0;anchored={}
+        prior='GENESIS';count=0;anchored={};previous_roster=None
         records=self.events()
         if not records:
             raise AssertionError('MISSING_OBJECTIVE_EVENT_HISTORY')
@@ -372,6 +406,16 @@ class ResearchLedger:
                         not sid or not sha or sid in anchored):
                     raise AssertionError('SOURCE_SEAL_DUPLICATE_OR_INVALID_ANCHOR')
                 anchored[sid]=sha
+            roster=set(envelope['actor_digests'])
+            if r['kind'] in ('FAMILY_COUNTERPART_ADMITTED','FAMILY_CHILD_BORN'):
+                detail=envelope['payload'];aid=detail.get('admitted_actor')
+                if (previous_roster is None or aid in previous_roster or aid!=r['actor_id']
+                        or roster!=previous_roster|{aid}
+                        or anchored.get(detail.get('source_seal_id'))!=detail.get('source_digest')):
+                    raise AssertionError('FAMILY_ADMISSION_ANCESTRY_INVALID')
+            elif previous_roster is not None and roster!=previous_roster:
+                raise AssertionError('UNAUTHORIZED_HISTORICAL_ROSTER_CHANGE')
+            previous_roster=roster
             prior=r['chain_hash'];count+=1
         if self.conn.execute('SELECT 1 FROM constraints LIMIT 1').fetchone():
             raise AssertionError('UNANCHORED_CONSTRAINTS_STATE')
