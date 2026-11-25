@@ -2491,3 +2491,103 @@ class StagedFamilyGenesisR49(unittest.TestCase):
                 self.assertEqual(set(rt.ledger.actors()),{'mother'})
                 self.assertTrue(rt.verify()['valid'])
             finally:rt.close()
+
+
+class InteractivityPressureR50(unittest.TestCase):
+    def test_joint_meaning_diverges_into_acquired_relation_between_distinct_courses(self):
+        from um_sorok_organism.types import blank_world
+        from um_sorok_organism.semantics import HeuristicSemanticProvider
+        outcomes={}
+        with tempfile.TemporaryDirectory() as d:
+            for learn in (True,False):
+                stage='joint';offered=[];fallback=HeuristicSemanticProvider()
+                def policy(task,packet):
+                    if task=='actor_attempt':
+                        if packet['actor']['id']!='worker':return {'task':task,'action':'WAIT'}
+                        if stage=='joint':
+                            return {'task':task,'action':'REST','project_ids':['restore','duty']}
+                        if stage=='defer':
+                            rows=packet['practical_options']
+                            left=next(x for x in rows if x.get('project_id')=='restore' and x['operation']=='REST')
+                            right=next(x for x in rows if x.get('project_id')=='duty' and x['operation']=='SPEAK')
+                            return {'task':task,'practical_option_id':left['option_id'],
+                                    'defer_course_option_id':right['option_id']}
+                        if stage=='later':
+                            rows=packet['practical_options']
+                            left=next(x for x in rows if x.get('project_id')=='restore' and x['operation']=='REST')
+                            right=next(x for x in rows if x.get('project_id')=='duty' and x['operation']=='SPEAK')
+                            currents=right.get('interactivity_currents',[])
+                            self.assertEqual(left.get('interactivity_currents',[]),currents)
+                            self.assertEqual(len(currents),int(learn))
+                            if currents:
+                                return {'task':task,'practical_option_id':right['option_id'],
+                                        'interactivity_relation_ref':currents[0]['relation_ref']}
+                            return {'task':task,'practical_option_id':left['option_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if task=='development':
+                        if packet['actor']['id']!='worker':return {'task':task,'candidates':[]}
+                        if stage=='appraise':
+                            projects={e['id']:e['project_id'] for e in packet['actor_expectations_analyst_only']}
+                            rows={}
+                            for x in packet['historically_possible_delayed_appraisals']:
+                                rows.setdefault(x['expectation_ref'],x)
+                            self.assertEqual({projects[x] for x in rows},{'restore','duty'})
+                            return {'task':task,'candidates':[
+                                {'kind':'APPRAISE_EXPECTED_DIFFERENCE','expectation_ref':x['expectation_ref'],
+                                 'perceived_cue_ref':x['source_perceived_cue_ref'],
+                                 'appraisal':('ACTOR_INTERPRETS_SUPPORTED' if projects[x['expectation_ref']]=='restore'
+                                              else 'ACTOR_INTERPRETS_DISAPPOINTED')}
+                                for x in rows.values()]}
+                        if stage=='defer':
+                            rows=packet['historically_possible_interactivity_relations']
+                            self.assertEqual(len(rows),1)
+                            c={'kind':'ACQUIRE_INTERACTIVITY_RELATION','basis':rows[0],
+                               'personal_sense':'Rest can sustain my life and still defer speaking about duty.'}
+                            offered.append((copy.deepcopy(c),copy.deepcopy(packet['experience']),
+                                            packet['evidence_path']['event']))
+                            return {'task':task,'candidates':[c] if learn else []}
+                        return {'task':task,'candidates':[]}
+                    if task=='expression':
+                        s=packet['actor_accessible'].get('own_practical_selection') or {}
+                        self.assertNotIn('interactivity_deferral',s)
+                        self.assertNotIn('interactivity_relation_analytic_only',s)
+                        return {'task':task,'surface':'An ordinary interval.'}
+                    return fallback.propose(task,packet)
+                service=ValidatingSemanticService(CallbackLLMProvider(policy))
+                db=str(Path(d)/str(learn));rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    a=adult('worker','Mara')
+                    a['projects']=[{'id':pid,'object':obj,'means':means,'priority':.5,'status':'active',
+                        'expected_difference':{'feature':obj,'direction':'PRESERVE','sign_tags':['wait']}}
+                        for pid,obj,means in [('restore','recover strength',['REST']),
+                                              ('duty','sustain availability',['REST','SPEAK'])]]
+                    rt.ledger.initialize(blank_world(),[a,adult('other','Other')])
+                    rt.step('worker')
+                    stage='appraise';rt.step('worker')
+                    stage='defer';self.assertEqual(rt.step('worker')['status'],'PERFORMED')
+                    a=rt.ledger.actor('worker')[1]
+                    self.assertEqual(len(offered),1)
+                    self.assertEqual(len(a['projects'][0].get('interactivity_relations',[])),int(learn))
+                    self.assertEqual(a['projects'][1]['status'],'active')
+                    self.assertEqual([x['operation'] for x in a['projects'][1]['operational_history']],['REST'])
+                    if not learn:
+                        c,exp,event=offered[0];c['basis']['received_own_sign_ref']='invented'
+                        saved=copy.deepcopy(a)
+                        with self.assertRaisesRegex(InvalidDevelopment,'INTERACTIVITY_RELATION_UNQUALIFIED'):
+                            admit(a,exp,event,[c])
+                        self.assertEqual(a,saved)
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+                rt=ConstitutiveRuntime(db,semantic=service)
+                try:
+                    stage='later';res=rt.step('worker')
+                    a=rt.ledger.actor('worker')[1]
+                    outcomes[learn]=res['attempt']
+                    self.assertTrue(all(p['status']=='active' for p in a['projects']))
+                    if learn:
+                        self.assertEqual(a['projects'][1]['operational_history'][-1]['operation'],'SPEAK')
+                    self.assertNotIn('Rest can sustain my life',str(rt.ledger.world()[1]))
+                    self.assertNotIn('Rest can sustain my life',str(rt.ledger.actor('other')[1]))
+                    self.assertTrue(rt.verify()['valid'])
+                finally:rt.close()
+            self.assertEqual(outcomes,{True:'SPEAK',False:'REST'})
