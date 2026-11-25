@@ -47,6 +47,8 @@ def passage(world,actors,days,processes=None):
     # microevents. Do not manufacture a daily series of fictitious repairs.
     material_wear=advance_material_wear(world,days,start)
     world['clock']+=days
+    from .continuity_clock import settle_human_offer_deadlines
+    settle_human_offer_deadlines(world)
     period={'id':stable_id('period',{'world':world['id'],'start':start,'days':days,'processes':processes}),
        'start':start,'end':world['clock'],'resolution':'AGGREGATE_MODELED',
        'processes':effective_processes,
