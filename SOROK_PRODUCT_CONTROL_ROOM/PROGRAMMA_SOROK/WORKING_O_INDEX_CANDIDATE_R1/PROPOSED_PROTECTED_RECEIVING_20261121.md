@@ -240,3 +240,8 @@ Apply only by competent protected receiver after current-head CAS and independen
   "human": false
 }
 ```
+
+
+## November 25 — R49 incremental paired CURRENT_PROGRESS proposal
+
+Existing R39+MII protected pair and MI correction remain unchanged; protected base 827714e83743056939894a39736d72ea16bdc6dd, paired blobs a565e6239ee730bf8aae796d1c5afb35207b1e93 / f2081d41452a5fb5d7061fcf340af725e4ee07af. Competent receiving only: add matching MD paragraph and JSON observation `sorok_g4_r49_operational_candidate` to previously proposed additive field, do not overwrite actual qualified revision. `{"pr":1363,"head":"75bfbfec42415a7b7803583f1f318e585b0f635d","executed_merge":"7d2b2e323ba99c115b7b154df9665994d0736d70","tree":"a4946153eb26b43175653ec6f7e63e57a979c063","job":139434088555,"normal":666,"optimized":666,"scope":"forward staged family genesis; backward overlap and generic promotion unestablished","neighbor":"R25/R44 joined; R45–49 separate","ledger_blob":"0070595b098937b4c5a51d7c1dd6c15fc41e523e","cic_blob":"b5afae101cf4ff55c03fc5c16fe1b99e2c54151e","protected_received":false,"independent_review":"HELD"}`. No new native science, actor or human grant. Prior documentary CI 45669251065 success. HOME intake comments above; no owner adoption inferred.
