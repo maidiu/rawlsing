@@ -41,7 +41,7 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest, execute_route_b_production
 from rawlsing_next.pre553_source_backed_c11_facade import (
-    GovernedC11Projection, build_source_backed_c11_repository,
+    GovernedC11Projection, _PackedRoutingFacts, build_source_backed_c11_repository,
 )
 
 
@@ -62,6 +62,8 @@ def material(value: Any) -> Any:
         return value
     if typ is dict:
         return {str(k): material(v) for k, v in value.items()}
+    if typ is _PackedRoutingFacts:
+        return [json.loads(row) for row in value.canonical_rows()]
     if typ is list or typ is tuple:
         return [material(v) for v in value]
     if hasattr(value, "as_dict"):
@@ -318,10 +320,13 @@ def _stream_workload_digest(workload):
             digest.update(part)
             continue
         digest.update(b"[")
-        for i,obj in enumerate(workload.projection.routing):
+        routing=workload.projection.routing
+        rows=(routing.canonical_rows() if type(routing) is _PackedRoutingFacts
+              else (canonical_json(material(obj)).encode("utf-8") for obj in routing))
+        for i,row in enumerate(rows):
             if i:
                 digest.update(b",")
-            digest.update(canonical_json(material(obj)).encode("utf-8"))
+            digest.update(row)
         digest.update(b"]")
     return digest.hexdigest()
 
@@ -409,6 +414,7 @@ class _PreparedRoutingEnvelope:
     retained_pin_bytes: int
     fast_pins: tuple | None = None
     fast_ref_pins: tuple | None = None
+    packed_storage: tuple | None = None
 
     @classmethod
     def prepare(cls, workload, expected_hash, *, max_bytes=32*1024*1024,
@@ -417,6 +423,40 @@ class _PreparedRoutingEnvelope:
                 or type(workload.projection) is not GovernedC11Projection):
             return None
         routing=workload.projection.routing
+        if type(routing) is _PackedRoutingFacts:
+            if max_bytes<1024:
+                return None
+            # Full exact envelope independently matched at initial admission.
+            # No caller-supplied digest or prepared hash is trusted. The
+            # actual routing bytes are detached immutable builtin leaves.
+            storage=routing.immutable_storage()
+            digest=hashlib.sha256()
+            pieces=_routing_envelope_parts(workload)
+            for part in pieces:
+                if part is None:
+                    break
+                digest.update(part)
+            else:
+                return None
+            prefix=digest.copy().digest()
+            digest.update(b"[")
+            encoded_bytes=2
+            for i,row in enumerate(routing.canonical_rows()):
+                if i:
+                    digest.update(b",")
+                    encoded_bytes+=1
+                digest.update(row)
+                encoded_bytes+=len(row)
+            digest.update(b"]")
+            after=digest.copy()
+            for part in pieces:
+                if part is None:
+                    return None
+                digest.update(part)
+            if digest.hexdigest()!=expected_hash or routing._storage is not storage:
+                return None
+            return cls(workload,routing,(),b"",prefix,after,encoded_bytes,
+                       sys.getsizeof(after)+256,packed_storage=storage)
         if type(routing) is not tuple or len(routing)>max_records:
             return None
         # Bound the temporary list + retained tuple of mapping references,
@@ -489,10 +529,14 @@ class _PreparedRoutingEnvelope:
     def digest(self):
         workload=self.workload
         if (type(workload.projection) is not GovernedC11Projection
-                or workload.projection.routing is not self.routing
-                or len(self.mappings)!=len(self.routing)):
+                or workload.projection.routing is not self.routing):
             return None
-        if self.fast_pins is not None:
+        if self.packed_storage is not None:
+            if type(self.routing) is not _PackedRoutingFacts or self.routing._storage is not self.packed_storage:
+                return None
+        elif len(self.mappings)!=len(self.routing):
+            return None
+        elif self.fast_pins is not None:
             if (self.fast_ref_pins is None
                     or len(self.fast_pins)!=len(self.routing)):
                 return None
@@ -618,7 +662,7 @@ def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host:
             if (record.scope=="TEST_ONLY_SOURCEFREE"
                     and type(workload) is NativeWorkload
                     and type(workload.projection) is GovernedC11Projection
-                    and type(workload.projection.routing) is tuple):
+                    and type(workload.projection.routing) in (tuple,_PackedRoutingFacts)):
                 envelope_sha256=_stream_workload_digest(workload)
             else:
                 envelope_sha256 = semantic_hash(workload.envelope())

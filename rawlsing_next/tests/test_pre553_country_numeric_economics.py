@@ -281,6 +281,43 @@ class CountryNativeEconomics(unittest.TestCase):
                 "fast_pin_tuples":prepared.fast_pins is not None,
                 "exact_hash_equal":True}),flush=True)
             del prepared
+            # Move to the producer's detached field-grain representation
+            # before actual country execution. Keep the old hostile court
+            # above; the new input must preserve its independently issued
+            # envelope and projection identities, not issue a new decision.
+            from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
+            old_identity=projection.cache_identity
+            packed=_PackedRoutingFacts(iter(routing))
+            self.assertEqual(len(packed),len(routing))
+            self.assertEqual(packed[0].as_dict(),routing[0].as_dict())
+            self.assertEqual(packed[-1].as_dict(),routing[-1].as_dict())
+            self.assertEqual(packed.row_ref(-1),routing[-1].ref)
+            self.assertTrue(all(a==issued.canonical_json(b.as_dict()).encode("utf-8")
+                                for a,b in zip(packed.canonical_rows(),routing)))
+            workload=replace(workload,projection=replace(projection,routing=packed))
+            self.assertEqual(workload.projection.cache_identity,old_identity)
+            self.assertEqual(issued._stream_workload_digest(workload),record.envelope_sha256)
+            packed_prepared=issued._PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+            self.assertIsNotNone(packed_prepared)
+            self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
+            self.assertLess(packed.payload_bytes,packed_prepared.encoded_routing_bytes//3)
+            with patch.object(_PackedRoutingFacts,"canonical_rows",side_effect=AssertionError("rescanned routing")):
+                self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
+            storage=packed._storage
+            try:
+                object.__setattr__(packed,"_storage",((),()))
+                self.assertIsNone(packed_prepared.digest())
+                with self.assertRaises(issued.WorkloadAdmissionError):
+                    issued._admit(workload,resolver,host=host,purpose=purpose,
+                                  allow_test_only=True,prepared=packed_prepared)
+            finally:
+                object.__setattr__(packed,"_storage",storage)
+            print("COUNTRY_PACKED_ROUTING",json.dumps({
+                "records":len(packed),"payload_bytes":packed.payload_bytes,
+                "canonical_bytes":packed_prepared.encoded_routing_bytes,
+                "additional_pin_bytes_estimate":packed_prepared.retained_pin_bytes,
+                "exact_envelope_and_projection":True}),flush=True)
+            del packed_prepared,routing,projection,prior_routing,ref,auth,obj
             from rawlsing_next import pre553_c11_ingest as c11_ingest
             timings=defaultdict(list)
             def time_call(owner,name,label):

@@ -12,6 +12,11 @@ from types import MappingProxyType
 from threading import RLock
 import hashlib
 import math
+import json
+import struct
+from array import array
+from bisect import bisect_right
+from collections.abc import Sequence
 from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
@@ -266,6 +271,191 @@ class ExactPhysicalCellStream:
         return self.cell_iter_factory()
 
 
+class _RoutingColumnBuilder:
+    """Bounded dictionary for genuinely repeated fields, direct bytes otherwise."""
+    __slots__=("dictionary","values","codes","blob","offsets")
+    def __init__(self):
+        self.dictionary={}
+        self.values=[]
+        self.codes=array("I")
+        self.blob=bytearray()
+        self.offsets=array("Q",[0])
+
+    def _direct(self,value):
+        self.blob.extend(value)
+        self.offsets.append(len(self.blob))
+
+    def add(self,value):
+        if self.dictionary is None:
+            self._direct(value)
+            return
+        code=self.dictionary.get(value)
+        if code is None:
+            if len(self.values)>=4096:
+                # Do not retain a high-cardinality hash table or duplicate
+                # dictionary in addition to its direct lane.
+                for old in self.codes:
+                    self._direct(self.values[old])
+                self.dictionary=self.values=self.codes=None
+                self._direct(value)
+                return
+            code=len(self.values)
+            self.dictionary[value]=code
+            self.values.append(value)
+        self.codes.append(code)
+
+    def finish(self):
+        if self.dictionary is None:
+            return (bytes(self.blob),_routing_le(self.offsets),b"")
+        direct_cost=sum(len(self.values[code])+8 for code in self.codes)
+        dict_cost=sum(len(v)+8 for v in self.values)+4*len(self.codes)
+        if dict_cost<direct_cost:
+            for value in self.values:
+                self._direct(value)
+            return (bytes(self.blob),_routing_le(self.offsets),_routing_le(self.codes))
+        for code in self.codes:
+            self._direct(self.values[code])
+        return (bytes(self.blob),_routing_le(self.offsets),b"")
+
+
+def _routing_le(values):
+    import sys
+    if sys.byteorder!="little":
+        values.byteswap()
+    return values.tobytes()
+
+
+def _routing_column_value(column,row):
+    blob,offsets,codes=column
+    if codes:
+        row=struct.unpack_from("<I",codes,4*row)[0]
+    lo,hi=struct.unpack_from("<QQ",offsets,8*row)
+    return blob[lo:hi]
+
+
+class _PackedRoutingFacts(Sequence):
+    """Detached, lossless private governed routing input at field grain.
+
+    Only exact immutable builtin tuples, bytes, ints and strings are held.
+    One digest per exact identity; repeated authority/risk/rule/respondent
+    fields have bounded dictionaries, unique fields have direct byte lanes.
+    The public semantic constructor and original ordered envelope are unchanged.
+    No inference of eligibility or compression of away any exception.
+    """
+    __slots__=("_storage",)
+    _top=("authority_snapshot_refs","dependency_refs",
+          "producer_replay_locator_or_reference_root","schema_id","schema_version","typed_state")
+    _prefix="urn:rawlsing:pre553:RoutingEligibilityFact:sha256:"
+
+    def __setattr__(self,name,value):
+        raise AttributeError("packed routing is immutable")
+
+    def __init__(self,records):
+        runs,ends=[],[]
+        keys=None
+        builders=[]
+        digests=bytearray()
+        count=0
+        def flush():
+            if keys is not None:
+                runs.append((keys,tuple(b.finish() for b in builders),bytes(digests)))
+                ends.append(count)
+                digests.clear()
+        for obj in records:
+            if type(obj) is not RoutingEligibilityFact:
+                raise SourceBackedC11FacadeError("packed routing requires exact routing facts")
+            doc=obj.as_dict()
+            h=obj.content_hash
+            digest=bytes.fromhex(h)
+            if len(digest)!=32 or digest.hex()!=h or obj.object_id!=self._prefix+h:
+                raise SourceBackedC11FacadeError("packed routing identity drift")
+            # Never silently repair a stale/forged supplied semantic preimage.
+            if semantic_hash(obj.semantic_projection())!=h:
+                raise SourceBackedC11FacadeError("packed routing semantic hash drift")
+            fields=doc["semantic_fields"]
+            shape=tuple(sorted(fields))
+            if shape!=keys:
+                flush()
+                keys=shape
+                builders=[_RoutingColumnBuilder() for _ in (*self._top,*keys)]
+            for builder,value in zip(builders,(
+                    *(doc[k] for k in self._top),*(fields[k] for k in keys))):
+                builder.add(canonical_json(value).encode("utf-8"))
+            digests.extend(digest)
+            count+=1
+        flush()
+        object.__setattr__(self,"_storage",(tuple(runs),tuple(ends)))
+
+    def immutable_storage(self):
+        # Recursively validate the pin's actual builtin storage once, not a
+        # caller assertion that a frozen wrapper is deeply immutable.
+        def immutable(value):
+            return type(value) in (bytes,int,str) or (
+                type(value) is tuple and all(immutable(v) for v in value))
+        if not immutable(self._storage):
+            raise SourceBackedC11FacadeError("packed routing has mutable storage")
+        return self._storage
+
+    def __len__(self):
+        ends=self._storage[1]
+        return ends[-1] if ends else 0
+
+    @classmethod
+    def _row_bytes(cls,run,row):
+        keys,columns,digests=run
+        h=digests[32*row:32*(row+1)].hex().encode("ascii")
+        def pair(k,v):
+            return canonical_json(k).encode("utf-8")+b":"+v
+        values={key:_routing_column_value(col,row) for key,col in zip(cls._top,columns)}
+        values["content_hash"]=b'"'+h+b'"'
+        values["object_id"]=b'"'+cls._prefix.encode("ascii")+h+b'"'
+        values["semantic_fields"]=b"{"+b",".join(pair(key,_routing_column_value(col,row))
+              for key,col in zip(keys,columns[len(cls._top):]))+b"}"
+        return b"{"+b",".join(pair(key,values[key]) for key in sorted(values))+b"}"
+
+    def canonical_rows(self):
+        runs,ends=self._storage
+        start=0
+        for run,end in zip(runs,ends):
+            for row in range(end-start):
+                yield self._row_bytes(run,row)
+            start=end
+
+    def row_ref(self,index):
+        runs,ends=self._storage
+        if index<0:
+            index+=len(self)
+        if not 0<=index<len(self):
+            raise IndexError(index)
+        run=bisect_right(ends,index)
+        row=index-(ends[run-1] if run else 0)
+        h=runs[run][2][32*row:32*(row+1)].hex()
+        return ExactRef(RoutingEligibilityFact.FAMILY,self._prefix+h,h)
+
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return tuple(self[i] for i in range(*index.indices(len(self))))
+        runs,ends=self._storage
+        if index<0:
+            index+=len(self)
+        if not 0<=index<len(self):
+            raise IndexError(index)
+        run=bisect_right(ends,index)
+        row=index-(ends[run-1] if run else 0)
+        from rawlsing_next.pre553_carrier_execution import materialize_public_object
+        return materialize_public_object(json.loads(self._row_bytes(runs[run],row)))
+
+    def __iter__(self):
+        from rawlsing_next.pre553_carrier_execution import materialize_public_object
+        for row in self.canonical_rows():
+            yield materialize_public_object(json.loads(row))
+
+    @property
+    def payload_bytes(self):
+        return sum(len(digests)+sum(sum(len(v) for v in col) for col in cols)
+                   for _,cols,digests in self._storage[0])
+
+
 def _freeze_governed_input(value: Any) -> Any:
     """Detach mutable rule data once, before any physical-stream callback.
 
@@ -276,6 +466,9 @@ def _freeze_governed_input(value: Any) -> Any:
     remain under their original validators, not a duplicated representation.
     This private snapshot does not issue scientific or source permission.
     """
+    if type(value) is _PackedRoutingFacts:
+        value.immutable_storage()
+        return value
     if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence,
                           CanonicalSemanticObject, C11InternalRecord)):
         return value
@@ -313,6 +506,8 @@ def _cache_projection_preimage(value: Any) -> Any:
     source/row/response/occurrence/routing/weight rule cannot alias its old
     value under the same nominal projection ref.
     """
+    if type(value) is _PackedRoutingFacts:
+        return [json.loads(row) for row in value.canonical_rows()]
     if isinstance(value, (ExactRef, AuthorityRef, TypedAbsence)):
         return value.as_dict()
     if is_dataclass(value):
@@ -345,7 +540,7 @@ class GovernedC11Projection:
     questions: tuple[QuestionVariableBinding, ...]
     response_slots: tuple[ResponseSlotRule, ...]
     coordinate_slots: tuple[CoordinateSlotRule, ...]
-    routing: tuple[RoutingEligibilityFact, ...]
+    routing: Sequence[RoutingEligibilityFact]
     weight_slots: tuple[WeightSlotRule, ...]
     authority_snapshots: tuple[AuthoritySnapshot, ...]
     source_relations: tuple[SourceUniverseRelation, ...] | TypedAbsence
@@ -452,7 +647,14 @@ class GovernedC11Projection:
             emit(f.name)
             h.update(b":")
             value=getattr(self,f.name)
-            if type(value) in (tuple,list):
+            if type(value) is _PackedRoutingFacts:
+                h.update(b"[")
+                for j,row in enumerate(value.canonical_rows()):
+                    if j:
+                        h.update(b",")
+                    h.update(row)
+                h.update(b"]")
+            elif type(value) in (tuple,list):
                 h.update(b"[")
                 for j,item in enumerate(value):
                     if j:

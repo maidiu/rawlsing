@@ -35,7 +35,7 @@ from rawlsing_next.pre553_physical_decoder import (
 from rawlsing_next.pre553_source_backed_c11_facade import (
     CoordinateSlotRule,
     ExactPhysicalCellStream,
-    GovernedC11Projection,
+    GovernedC11Projection, _PackedRoutingFacts,
     OccurrenceRule,
     PhysicalSlot,
     ResponseSlotRule,
@@ -550,6 +550,7 @@ def materialize_native_preimages(
     package: NativeSourcePackage,
     incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
     row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
+    compact_routing: bool = False,
 ) -> NativePreimageBundle:
     """Materialize a governed C11 release from exact source cells.
 
@@ -821,7 +822,9 @@ def materialize_native_preimages(
         copy_observed_raw=True,
     )
     risk_ref = _ref("RISK_SET", f"{source.source_id}-whole")
-    routing = tuple(
+    # Opt-in engineering representation; source administration/routing
+    # decisions remain exactly those of the existing producer.
+    routing = (_PackedRoutingFacts if compact_routing else tuple)(
         RoutingEligibilityFact(
             typed_state="ELIGIBLE_APPLICABLE",
             authority_snapshot_refs=(routing_auth.authority_ref,),
