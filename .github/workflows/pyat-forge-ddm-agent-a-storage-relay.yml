@@ -1,7 +1,7 @@
 name: PYAT storage relay matched courts
 on:
   push:
-    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4, agent/pyat-forge-ddm-agent-b-storage-relay-r5]
+    branches: [agent/pyat-forge-ddm-agent-a-storage-relay-r2, agent/pyat-forge-ddm-agent-b-storage-relay-r3, agent/pyat-forge-ddm-agent-a-storage-relay-r4, agent/pyat-forge-ddm-agent-b-storage-relay-r5, agent/pyat-forge-ddm-country-continuity-r6]
   workflow_dispatch:
 concurrency:
   group: pyat-storage-relay-${{ github.ref }}
@@ -9,7 +9,7 @@ concurrency:
 jobs:
   focused:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
