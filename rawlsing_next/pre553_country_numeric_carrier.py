@@ -871,6 +871,19 @@ class CountryExecution:
 
 def execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
                              require_country_current,allow_test_only=False,expected_wave=None):
+    """Public country entry: own the admission scope, never take one from a caller."""
+    from .pre553_issued_workload import _CountryAdmissionScope
+    scope=(_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,
+                                  allow_test_only=allow_test_only,expected_wave=expected_wave)
+           if allow_test_only else None)
+    return _execute_country_workload(workload,resolver,country_path=country_path,
+        country_receipt=country_receipt,host=host,purpose=purpose,
+        require_country_current=require_country_current,allow_test_only=allow_test_only,
+        expected_wave=expected_wave,_country_scope=scope)
+
+
+def _execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
+                             require_country_current,allow_test_only=False,expected_wave=None,_country_scope=None):
     """Execute an already issued workload from one retained numeric country.
 
     The separate country custody/currentness callback is mandatory; it is not
@@ -878,9 +891,10 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
     only through the incumbent independent resolver and actual country grant.
     This function does not publish original empirical outputs to S2-F.
     """
-    from .pre553_issued_workload import admit,execute_issued_workload
-    record=admit(workload,resolver,host=host,purpose=purpose,
-                 allow_test_only=allow_test_only,expected_wave=expected_wave)
+    from .pre553_issued_workload import admit,execute_issued_workload,_execute_issued_workload
+    record=(_country_scope.check() if _country_scope is not None else
+            admit(workload,resolver,host=host,purpose=purpose,
+                  allow_test_only=allow_test_only,expected_wave=expected_wave))
     if type(country_receipt) is not CountryReceipt or record.source_sha256!=country_receipt.source_sha256:
         raise CountryCarrierError("issued source and external country receipt differ")
     def current():
@@ -889,7 +903,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         # the incumbent U43 executor, and again after execution. Frequent
         # physical reads compare the independently returned exact decision,
         # rather than reserializing the entire projection per event.
-        if resolver.resolve_current(workload.decision_ref)!=record:
+        if _country_scope is not None:
+            _country_scope.current_only()
+        elif resolver.resolve_current(workload.decision_ref)!=record:
             raise CountryCarrierError("country workload decision changed")
     current()
     count=len(workload.requests)+len(workload.discoveries)
@@ -903,9 +919,14 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
             return reader._native_stream(workload.projection)
         # The original bounded path runs the declared units once, avoiding
         # the historical preliminary Route B/discovery pass. Require all units.
-        result=execute_issued_workload(workload,resolver,source_factory=factory,
-            host=host,purpose=purpose,allow_test_only=allow_test_only,
-            expected_wave=expected_wave,max_units=count)
+        if _country_scope is None:
+            result=execute_issued_workload(workload,resolver,source_factory=factory,
+                host=host,purpose=purpose,allow_test_only=allow_test_only,
+                expected_wave=expected_wave,max_units=count)
+        else:
+            result=_execute_issued_workload(workload,resolver,source_factory=factory,
+                host=host,purpose=purpose,allow_test_only=allow_test_only,
+                expected_wave=expected_wave,max_units=count,_country_scope=_country_scope)
         identity=reader._certified_identity
         if identity is None or not result.summary.full_coverage:
             # Retain typed failure codes without disclosing respondent data.
@@ -914,8 +935,9 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
         result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
         reader._verify()
         current()
-        if admit(workload,resolver,host=host,purpose=purpose,
-                 allow_test_only=allow_test_only,expected_wave=expected_wave)!=record:
+        if (_country_scope.check() if _country_scope is not None else
+                admit(workload,resolver,host=host,purpose=purpose,
+                      allow_test_only=allow_test_only,expected_wave=expected_wave))!=record:
             raise CountryCarrierError("country workload decision changed before serving")
         return CountryExecution(result,identity)
 

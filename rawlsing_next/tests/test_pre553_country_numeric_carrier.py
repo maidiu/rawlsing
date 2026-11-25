@@ -301,6 +301,17 @@ class CountryNumeric(unittest.TestCase):
                 open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                     expected_release_ref=direct.release_ref,country_receipt=replace(receipt,sha256="0"*64),
                     workload=workload,resolver=resolver,host=host,purpose=purpose)
+            # A resolver returning the same dataclass instance is not proof
+            # its issuing material is unchanged. Country scope pins it by
+            # detached value and rejects in-place mutation at the reader.
+            old=record.source_permission_ref
+            try:
+                object.__setattr__(record,"source_permission_ref",
+                                   _ref("TEST_ONLY_SOURCE_PERMISSION","changed-in-place"))
+                with self.assertRaises(ValueError):
+                    cold.read_s04(query.ref)
+            finally:
+                object.__setattr__(record,"source_permission_ref",old)
             # Bulk serving must not leak a successful prefix on mid-batch revocation.
             from unittest.mock import patch
             original_read=cold._read_s04_retained

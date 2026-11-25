@@ -541,7 +541,8 @@ def admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: 
 def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host: str,
            purpose: str, allow_test_only: bool = False,
            expected_wave: OriginalWaveIdentity | None = None,
-           prepared: _PreparedRoutingEnvelope | None = None) -> IssuedWorkloadRecord:
+           prepared: _PreparedRoutingEnvelope | None = None,
+           _capture_prepared: list | None = None) -> IssuedWorkloadRecord:
     """Refuse copied/rehash descriptors and no-drop violations before source open.
 
     ``resolver`` is an independent external reader, never the historical
@@ -600,10 +601,19 @@ def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host:
         raise WorkloadAdmissionError("EXPECTED_EXECUTED_OPERATION_IDENTITY_MULTISET_MISMATCH")
     if record.source_sha256 != workload.projection.expected_source_sha256:
         raise WorkloadAdmissionError("ISSUED_SOURCE_EDITION_MISMATCH")
+    new_prepared = None
     try:
         envelope_sha256 = None
         if type(prepared) is _PreparedRoutingEnvelope and prepared.workload is workload:
             envelope_sha256 = prepared.digest()
+        if (envelope_sha256 is None and _capture_prepared is not None
+                and record.scope=="TEST_ONLY_SOURCEFREE"):
+            # The initial full exact envelope pass can also prepare its
+            # reusable routing witness. Do not repeat that pass after source
+            # open. A preparation refusal retains the ordinary full path.
+            new_prepared = _PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
+            if new_prepared is not None:
+                envelope_sha256 = record.envelope_sha256
         if envelope_sha256 is None:
             if (record.scope=="TEST_ONLY_SOURCEFREE"
                     and type(workload) is NativeWorkload
@@ -640,7 +650,52 @@ def _admit(workload: NativeWorkload, resolver: CurrentDecisionResolver, *, host:
     for ref in workload.discoveries:
         if discovery_map is None or ref not in discovery_map:
             cat.resolve_discovery_authority_exact(ref)
+    if _capture_prepared is not None:
+        _capture_prepared.append(new_prepared)
     return record
+
+
+class _CountryAdmissionScope:
+    """One privately constructed proof for an existing country transaction.
+
+    Every former full admission still calls the independent resolver and
+    checks the exact descriptor, jobs, catalog and routing witness. The
+    canonical record pin is detached so in-place mutation of a returned
+    resolver object is not mistaken for the same issued record. No grant is
+    cached. Only sourcefree exact envelopes use the prepared optimization.
+    """
+    def __init__(self,workload,resolver,*,host,purpose,allow_test_only,expected_wave=None):
+        self.workload=workload
+        self.resolver=resolver
+        self.host=host
+        self.purpose=purpose
+        self.allow_test_only=allow_test_only
+        self.expected_wave=expected_wave
+        captured=[]
+        self.record=_admit(workload,resolver,host=host,purpose=purpose,
+                           allow_test_only=allow_test_only,expected_wave=expected_wave,
+                           _capture_prepared=captured)
+        self._prepared=captured[0]
+        self._record_pin=canonical(self.record)
+        r=self.record.decision_ref
+        self._decision=ExactRef(r.kind,r.object_id,r.content_hash)
+
+    def check(self):
+        current=_admit(self.workload,self.resolver,host=self.host,purpose=self.purpose,
+                       allow_test_only=self.allow_test_only,expected_wave=self.expected_wave,
+                       prepared=self._prepared)
+        if canonical(current)!=self._record_pin:
+            raise WorkloadAdmissionError("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
+        return current
+
+    def current_only(self):
+        # Physical lane access and retained-product item reads already have
+        # full content-admission brackets; retain their independent live
+        # record boundary and compare against detached exact material.
+        current=self.resolver.resolve_current(self._decision)
+        if type(current) is not IssuedWorkloadRecord or canonical(current)!=self._record_pin:
+            raise WorkloadAdmissionError("ISSUER_SNAPSHOT_CHANGED_DURING_EXECUTION")
+        return current
 
 
 @dataclass(frozen=True)
@@ -685,6 +740,27 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
                             reuse_prepared_saved_session: bool = False,
                             checkpoint_every: int | None = None,
                             checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None):
+    """Public issued execution: no caller-supplied admission witness."""
+    return _execute_issued_workload(
+        workload,resolver,source_factory=source_factory,
+        saved_admission_factory=saved_admission_factory,host=host,purpose=purpose,
+        allow_test_only=allow_test_only,prior_receipts=prior_receipts,
+        prior_outputs=prior_outputs,max_units=max_units,expected_wave=expected_wave,
+        group_scope=group_scope,reuse_prepared_saved_session=reuse_prepared_saved_session,
+        checkpoint_every=checkpoint_every,checkpoint_observer=checkpoint_observer)
+
+
+def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionResolver, *,
+                            source_factory: Callable[[ExactRef], Any] | None = None,
+                            saved_admission_factory: Callable[[], SavedC11Admission] | None = None,
+                            host: str, purpose: str,
+                            allow_test_only: bool = False, prior_receipts=(),
+                            prior_outputs=None, max_units=None,
+                            expected_wave: OriginalWaveIdentity | None = None,
+                            group_scope: I03GroupedExecutionScope | None = None,
+                            reuse_prepared_saved_session: bool = False,
+                            checkpoint_every: int | None = None,
+                            checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None, _country_scope=None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -711,8 +787,19 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         raise WorkloadAdmissionError("EXACT_PREPARED_SAVED_OPT_IN_REQUIRED")
     if reuse_prepared_saved_session and saved_admission_factory is None:
         raise WorkloadAdmissionError("PREPARED_SAVED_REQUIRES_SAVED_ADMISSION")
-    record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
-                   expected_wave=expected_wave)
+    if _country_scope is not None:
+        if (type(_country_scope) is not _CountryAdmissionScope
+                or _country_scope.workload is not workload
+                or _country_scope.resolver is not resolver
+                or (_country_scope.host,_country_scope.purpose,
+                    _country_scope.allow_test_only,_country_scope.expected_wave)
+                   != (host,purpose,allow_test_only,expected_wave)
+                or saved_admission_factory is not None):
+            raise WorkloadAdmissionError("COUNTRY_ADMISSION_SCOPE_MISMATCH")
+        record=_country_scope.check()
+    else:
+        record = admit(workload, resolver, host=host, purpose=purpose, allow_test_only=allow_test_only,
+                       expected_wave=expected_wave)
     # The native Batch owner verifies receipt structure, not external issuance.
     # Do not accept caller-rehashed historical receipts through this new ingress.
     # P4's separately authenticated fact/receipt custody is the proven cold path.
@@ -722,7 +809,9 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
     prepared = None
 
     def check_current():
-        if prepared is None:
+        if _country_scope is not None:
+            current=_country_scope.check()
+        elif prepared is None:
             current = admit(workload, resolver, host=host, purpose=purpose,
                             allow_test_only=allow_test_only,expected_wave=expected_wave)
         else:
@@ -772,7 +861,10 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         # Bounded sourcefree country opt-in only. Original sources and other
         # carriers retain the incumbent admission path until qualified.
         from rawlsing_next.pre553_country_numeric_carrier import _CountryPhysicalStream
-        if type(source) is _CountryPhysicalStream and record.scope=="TEST_ONLY_SOURCEFREE":
+        if _country_scope is not None and type(source) is not _CountryPhysicalStream:
+            raise WorkloadAdmissionError("COUNTRY_ADMISSION_REQUIRES_LIVE_COUNTRY_STREAM")
+        if (_country_scope is None and type(source) is _CountryPhysicalStream
+                and record.scope=="TEST_ONLY_SOURCEFREE"):
             prepared = _PreparedRoutingEnvelope.prepare(workload,record.envelope_sha256)
         # No invented empty DiscoveryAuthority: query-only scopes use actual C11/I03.
         routes_list = []

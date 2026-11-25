@@ -296,6 +296,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 for owner,name,label in (
                     (issued,"_admit","issued_full_admission"),
                     (issued._PreparedRoutingEnvelope,"digest","prepared_routing_digest"),
+                    (issued._PreparedRoutingEnvelope,"prepare","routing_preparation"),
                     (issued.NativeWorkload,"envelope","full_workload_envelope"),
                     (issued,"build_source_backed_c11_repository","cold_native_prepare"),
                     (delivery,"_record","delivery_full_admission"),
@@ -314,6 +315,7 @@ class CountryNativeEconomics(unittest.TestCase):
             print("COUNTRY_NATIVE_PHASES",json.dumps({k:{"calls":len(v),"total_s":sum(v),
                 "median_s":median(v),"max_s":max(v)} for k,v in timings.items()}),flush=True)
             self.assertTrue(pub.complete)
+            self.assertEqual(len(timings["routing_preparation"]),1)
             self.assertEqual(pub.batch_census["unit_count"],len(jobs))
             self.assertIsNotNone(pub.release_identity)
             db.unlink()
@@ -323,6 +325,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 for owner,name,label in (
                     (issued.NativeWorkload,"envelope","cold_full_envelope"),
                     (issued._PreparedRoutingEnvelope,"digest","cold_prepared_routing_digest"),
+                    (issued._PreparedRoutingEnvelope,"prepare","cold_routing_preparation"),
                     (delivery,"_record","cold_full_admission"),
                     (delivery,"open_empirical_closure","cold_closure_open"),
                     (delivery,"census_native_batch","cold_census"),
@@ -333,6 +336,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 cold=open_country_product(pub.receipt.root_path,expected_root=pub.receipt.root_identity,
                     expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,workload=workload,
                     resolver=resolver,host=host,purpose=purpose)
+                self.assertEqual(len(timings["cold_routing_preparation"]),1)
                 plans=tuple((q.ref,0 if q==joint else None) for q in queries)
                 t_bulk=time.monotonic()
                 reads=cold.read_s04_many(plans)
