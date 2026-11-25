@@ -449,6 +449,25 @@ class _PackedRoutingFacts(Sequence):
         keys,columns,_=run
         return _routing_column_value(columns[len(self._top)+keys.index(name)],row)
 
+    def _selector(self,index):
+        from rawlsing_next._pre553_c11_execution_view import _RoutingRead,_ref_identity
+        run,row=self._location(index)
+        keys,columns,_=run
+        def value(name):
+            return json.loads(_routing_column_value(columns[len(self._top)+keys.index(name)],row))
+        def top(name):
+            return json.loads(_routing_column_value(columns[self._top.index(name)],row))
+        routing,applicability=value("routing_state"),value("applicability_state")
+        if type(routing) is not str or type(applicability) is not str:
+            # Preserve incumbent behavior for unusual admissible preimages.
+            return self[index]
+        auths=tuple(authority_ref(a) for a in top("authority_snapshot_refs"))
+        return _RoutingRead(_ref_identity(self.row_ref(index)),top("typed_state"),routing,applicability,
+            _ref_identity(exact_ref(value("question_or_target_ref"))),
+            _ref_identity(exact_ref(value("risk_set_ref"))),
+            _ref_identity(exact_ref(value("member_set_replay_ref"))),
+            tuple((a.authority_id,a.authority_version,a.authority_content_hash) for a in auths))
+
     def __getitem__(self,index):
         if isinstance(index,slice):
             return tuple(self[i] for i in range(*index.indices(len(self))))
@@ -511,6 +530,9 @@ class _SortedPackedRoutingFacts(Sequence):
     def field_bytes(self,i,name):
         return self.source.field_bytes(self._ordinal(i),name)
 
+    def _selector(self,i):
+        return self.source._selector(self._ordinal(i))
+
     def find(self,ref):
         if ref.kind!=RoutingEligibilityFact.FAMILY:
             return None
@@ -567,6 +589,9 @@ class _PackedRoutingRows(Sequence):
         if isinstance(i,slice):
             return tuple(self[n] for n in range(*i.indices(len(self))))
         return self.lane[self._ordinal(i)]
+
+    def _selector(self,i):
+        return self.lane._selector(self._ordinal(i))
 
     def dimension_bytes(self,i):
         row=self._ordinal(i)

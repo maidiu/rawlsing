@@ -191,6 +191,17 @@ class CountryNumeric(unittest.TestCase):
                         risk=_ref_field(fact,"risk_set_ref")
                         want=tuple(x for x in facts if _question_matches(x,target) and _ref_field(x,"risk_set_ref")==risk)
                         self.assertEqual(idx.routing_lookup(respondent=respondent,target=target.key,risk_set=risk.key),want)
+                        from rawlsing_next._pre553_c11_execution_view import _RoutingRead
+                        selected=idx.routing_lookup.select(respondent=respondent,target=target.key,risk_set=risk.key)
+                        self.assertTrue(all(type(x) is _RoutingRead for x in selected))
+                        self.assertEqual(tuple(x.ref for x in selected),tuple(x.ref for x in want))
+                        for x,y in zip(selected,want):
+                            self.assertEqual((x.typed_state,x.routing_state,x.applicability_state,x.authority_snapshot_refs),
+                                             (y.typed_state,y.routing_state,y.applicability_state,y.authority_snapshot_refs))
+                            self.assertEqual(x.member_set_replay_ref,_ref_field(y,"member_set_replay_ref"))
+                        self.assertEqual(tuple(x.ref for x in idx.routing_lookup.select_target(
+                            respondent=respondent,target=target.key)),
+                            tuple(x.ref for x in facts if _question_matches(x,target)))
                     self.assertEqual(idx.routing_lookup(respondent=respondent,target="absent",risk_set="absent"),())
                 attestation=_i03_index_attestation(idx)
                 object.__setattr__(idx,"routing_lookup",None)

@@ -28,7 +28,7 @@ from rawlsing_next.pre553_c11_integrity import (
     RespondentIdentity,
     ReplayManifest,
 )
-from rawlsing_next._pre553_c11_execution_view import _EventRead
+from rawlsing_next._pre553_c11_execution_view import _EventRead, _RoutingRead
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
 from rawlsing_next.pre553_empirical_authority import (
     AuthorityRegistry,
@@ -167,7 +167,7 @@ class _ReleaseIndex:
     respondents: Mapping[str, RespondentIdentity]
     events_by_respondent: Mapping[str, Sequence[RespondentEvent]]
     coordinates_by_respondent: Mapping[str, tuple[EmpiricalCoordinateFact, ...]]
-    routing_by_respondent: Mapping[str, tuple[RoutingEligibilityFact, ...]]
+    routing_by_respondent: Mapping[str, Sequence[RoutingEligibilityFact]]
     weights_by_respondent: Mapping[str, tuple[WeightMeasureFact, ...]]
     source_relations: tuple[SourceUniverseRelation, ...]
     runtime_authorities: Any | None = None

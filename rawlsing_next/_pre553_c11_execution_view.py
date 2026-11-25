@@ -71,6 +71,45 @@ class _EventRead:
         return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
 
 
+@dataclass(frozen=True,slots=True)
+class _RoutingRead:
+    """Selected I03 fields from an already I02-validated exact routing body.
+
+    Like _EventRead, this is a private evaluator view, not a public fact or
+    a new authority. Full exact objects remain available via the repository.
+    All exported references are detached from immutable primitive backing.
+    """
+    schema_id: ClassVar[str] = "RoutingEligibilityFact"
+    _ref_identity: tuple[str,str,str]
+    typed_state: str
+    routing_state: str
+    applicability_state: str
+    _question_identity: tuple[str,str,str]
+    _risk_identity: tuple[str,str,str]
+    _member_identity: tuple[str,str,str]
+    _authority_identities: tuple[tuple[str,str,str],...]
+
+    @property
+    def ref(self):
+        return ExactRef(*self._ref_identity)
+
+    @property
+    def question_or_target_ref(self):
+        return ExactRef(*self._question_identity)
+
+    @property
+    def risk_set_ref(self):
+        return ExactRef(*self._risk_identity)
+
+    @property
+    def member_set_replay_ref(self):
+        return ExactRef(*self._member_identity)
+
+    @property
+    def authority_snapshot_refs(self):
+        return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
+
+
 @dataclass(frozen=True, slots=True)
 class _CountryEventHeader:
     """Transient private I02 header, never a public semantic object.
