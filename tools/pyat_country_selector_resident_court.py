@@ -13,6 +13,7 @@ from collections.abc import Mapping
 from unittest.mock import patch
 from rawlsing_next import _pre553_c11_execution_view as view
 from rawlsing_next.tests.test_pre553_country_numeric_economics import CountryNativeEconomics
+from tools.pyat_country_storage_relay_benchmark import historical, R4
 
 
 def reachable(*roots, exclude=()):
@@ -36,6 +37,7 @@ def reachable(*roots, exclude=()):
 
 def main():
     original=view._compact_country_headers
+    r4_view=historical(R4,"_pre553_c11_execution_view")
     seen=False
 
     def compare(release_ref,replay_ref,non_events,headers,bodies,routing=None):
@@ -59,18 +61,19 @@ def main():
                 versions[packed]=build(packed)
                 times[packed].append(time.perf_counter()-t)
         old,new=versions[False],versions[True]
+        r4=r4_view._compact_country_headers(*args)
         assert isinstance(new.lane.selectors,view._PackedCountrySelectors)
         assert tuple(old.lane.selectors)==tuple(new.lane.selectors)
         assert len(old)==len(new)
         # Real respondent postings, actual exact targets, all three access
         # lanes and state filter; no full-event wire reconstruction needed.
         targets=tuple(dict.fromkeys(s.native_question_ref for s in old.lane.selectors))[:8]
-        def select(public):
+        def select(public,states=None):
             h=hashlib.sha256()
             n=0
             for group in public.by_respondent.values():
                 for q in targets:
-                    for s in group.select(q,include_component=True):
+                    for s in group.select(q,include_component=True,states=states):
                         h.update(s.ref.key.encode())
                         h.update(s.response_event_id_or_deterministic_index.encode())
                         n+=1
@@ -82,6 +85,25 @@ def main():
                 out[packed]=select(versions[packed])
                 times2[packed].append(time.perf_counter()-t)
         assert out[False]==out[True]
+        # Match the actual immutable R4 implementation against R5, not an
+        # emulated baseline. Separate admitted and zero-match state filters.
+        r5_times={"R4":{},"R5":{}}
+        for label,states in (("all",None),("none",frozenset())):
+            timings={"R4":[],"R5":[]}
+            parity={}
+            for order in (("R4","R5"),("R5","R4"),("R4","R5"),("R5","R4")):
+                for version in order:
+                    start=time.perf_counter()
+                    result=select(r4 if version=="R4" else new,states)
+                    timings[version].append(time.perf_counter()-start)
+                    if version in parity:
+                        assert result==parity[version]
+                    parity[version]=result
+            assert parity["R4"]==parity["R5"]
+            for version in timings:
+                r5_times[version][label]={"median_s":statistics.median(timings[version]),
+                    "samples_s":timings[version],"selected":parity[version][0]}
+        print("RELAY_R5_SELECTOR_FILTER",json.dumps(r5_times),flush=True)
         exclude=(bodies.reader,)
         report={"events":len(headers),"selected":out[True][0],
             "header_graph_bytes":reachable(headers),
@@ -92,7 +114,7 @@ def main():
                 "view_plus_live_headers_graph_bytes":reachable(old,headers,exclude=exclude),
                 "view_build_median_s":statistics.median(times[False]),
                 "selection_median_s":statistics.median(times2[False])},
-            "R4_packed_view": {"selector_graph_bytes":reachable(new.lane.selectors),
+            "R5_packed_view": {"selector_graph_bytes":reachable(new.lane.selectors),
                 "public_view_graph_bytes":reachable(new,exclude=exclude),
                 "view_plus_live_headers_graph_bytes":reachable(new,headers,exclude=exclude),
                 "view_build_median_s":statistics.median(times[True]),
