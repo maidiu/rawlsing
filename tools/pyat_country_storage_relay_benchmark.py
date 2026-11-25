@@ -28,6 +28,7 @@ from rawlsing_next.pre553_r5_codec import R5TypedValueCodec, canonical_json
 PARENT = "f5e9c9a03ccddb5bdfab2114c5f5f551002914f6"
 B = "9e8572463f731fb1c3c9da1501bec48c80ad6143"
 A = "d988a39f7741a839e89ac37bf13f5acfe1c2936a"
+R3 = "45315663f3e0f20c39b8075acbd1e6e77bf8296f"
 
 
 def historical(sha, name):
@@ -82,7 +83,8 @@ def main():
     # A and B-R3 use identical decoder source; keep the inherited comparator
     # and compare A vs R3 for actual authenticated cold reading.
     ds={"parent":old_decoder,"B":b_decoder,"A":decoder}
-    cs={"parent":old_carrier,"B":b_carrier,"A":a_carrier,"B_R3":carrier}
+    r3_carrier=historical(R3,"pre553_country_numeric_carrier")
+    cs={"parent":old_carrier,"B":b_carrier,"A":a_carrier,"B_R3":r3_carrier,"A_R4":carrier}
     n,p=3072,193
     values=np.arange(n,dtype=np.float64)
     frame=pd.DataFrame({"v"+str(i): (values+i)%7 if i%2==0
@@ -122,11 +124,44 @@ def main():
             with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
                 # Same exact file, externally pinned receipt and selected query.
                 return (tuple(reader.matching_rows({"v0":0.})),len(reader._lane_auth))
-        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()},repetitions=4)
+        result=measure({name:lambda mod=mod:opening(mod) for name,mod in cs.items()},repetitions=5)
         with carrier.CountryReader(path,receipt,require_current=lambda:True) as read:
             lanes=len(read._lane_auth)
         print("RELAY_COLD_INVENTORY",json.dumps({"country_rows":receipt.country_rows,
               "width":p,"lanes":lanes,"bytes":receipt.bytes,"measurements":result}),flush=True)
+        # Same actual database, same selected columns, identical cell bytes.
+        # A second file uses realistic 512-row blocks so low-cardinality
+        # dictionary reuse and high-cardinality binary expansion are both tested.
+        path=root/"country-wide-blocks.sqlite"
+        with decoder.decode_sav(src,expected_source_sha256=sha) as inc:
+            receipt=carrier.build_country(inc,country_variable="country",country_value=1.,
+                       output=path,require_current=lambda:True,block_rows=512)
+        for names in (("v0","v2","v4","v6"),("v1","v3","v5","v7")):
+            def scan(mod):
+                rec=mod.CountryReceipt(**dataclasses.asdict(receipt))
+                with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
+                    h=hashlib.sha256()
+                    count=0
+                    for block in reader.iter_columns(*names):
+                        for name in names:
+                            ordinal=next(k for k,v in reader.variables.items() if v==name)
+                            for cell in block[name].cells(ordinal,name):
+                                h.update(mod._encode_cell(cell).encode("ascii"))
+                                count+=1
+                    assert count==receipt.country_rows*len(names)
+                    return h.hexdigest()
+            result=measure({"R3":lambda:scan(r3_carrier),"R4":lambda:scan(carrier)},repetitions=4)
+            print("RELAY_TYPED_SELECTED_SCAN",json.dumps({"names":names,"rows":receipt.country_rows,
+                    "block_rows":512,"bytes":receipt.bytes,"measurements":result}),flush=True)
+        # Separate selective code intersection (no output JSON hashing).
+        def query(mod):
+            rec=mod.CountryReceipt(**dataclasses.asdict(receipt))
+            with mod.CountryReader(path,rec,require_current=lambda:True) as reader:
+                return tuple(tuple(reader.matching_rows({"v0":float(i),"v2":float((i+2)%7)}))
+                             for i in range(7))
+        result=measure({"R3":lambda:query(r3_carrier),"R4":lambda:query(carrier)},repetitions=4)
+        print("RELAY_TYPED_INTERSECTIONS",json.dumps({"queries":7,"rows":receipt.country_rows,
+                    "measurements":result}),flush=True)
     # Inventory hash isolated from SQLite and caller allocations. The input is
     # shared identically before tracing begins; only temporary allocations count.
     v=tuple((j,"é"+str(j)) for j in range(300))
@@ -134,7 +169,7 @@ def main():
     l=tuple((i,j,hashlib.sha256(f"{i}:{j}".encode()).digest())
             for i in range(256) for j in range(300))
     result=measure({name:lambda mod=mod:mod._manifest_root(v,b,l)
-                    for name,mod in cs.items()},repetitions=4)
+                    for name,mod in cs.items()},repetitions=5)
     print("RELAY_MANIFEST_HASH",json.dumps({"lanes":len(l),"measurements":result}),flush=True)
 
 

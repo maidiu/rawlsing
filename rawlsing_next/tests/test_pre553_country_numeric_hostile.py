@@ -167,6 +167,61 @@ class HostileCountryCurrentness(unittest.TestCase):
         # No type conflation: float zero, integer zero, bool, string distinct.
         self.assertEqual(len(set(tokens[517:521])),4)
 
+    def test_typed_dictionary_exact_tokens_detached_mutation_and_real_reader(self):
+        from decimal import Decimal
+        from unittest import mock
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        from rawlsing_next.pre553_r5_codec import R5OpaqueValue
+        from rawlsing_next.pre553_physical_decoder import PhysicalCell,PhysicalMissingState
+        from rawlsing_next.pre553_country_numeric_carrier import NumericColumn
+        # Force the binary lane, plus legacy token lane, with nested metadata
+        # and exact exceptional raw values, including type distinctions.
+        values=[float(i)*1.000001 for i in range(512)]
+        values.extend([-0.0,0.0,float("nan"),float("inf"),float("-inf"),None,
+                       0,True,"0",2**100,-2**60,Decimal("-0.000"),
+                       R5OpaqueValue("test",b"\x00\xff"),"a\x00é",
+                       {"raw":[1,{"nested":2}]}])
+        cells=[PhysicalCell(i+1,1,"q",v,
+            PhysicalMissingState.SYSTEM_MISSING if v is None else PhysicalMissingState.OBSERVED_STORAGE_VALUE,
+            {"decl":{"nested":[7]}},["label",{"x":3}]) for i,v in enumerate(values)]
+        tokens=tuple(carrier._encode_cell(x) for x in cells)
+        binary=carrier._pack_dictionary(tokens)
+        self.assertTrue(binary.startswith(carrier._BINARY_DICTIONARY))
+        legacy=carrier.zlib.compress(carrier.canonical_json(tokens).encode("ascii"))
+        for payload in (binary,legacy):
+            typed=carrier._read_dictionary(payload,typed=True)
+            self.assertEqual(tuple(typed),tokens)
+            col=NumericColumn(tuple(range(1,len(tokens)+1)),tuple(range(len(tokens))),typed)
+            original=NumericColumn(col.row_ordinals,col.codes,tokens)
+            for v in (-0.0,0.0,0,True,"0",float("nan"),None,2**100):
+                self.assertEqual(col.observed_codes_for(v),original.observed_codes_for(v))
+            with mock.patch.object(carrier,"_decode_cell",side_effect=AssertionError("wire decode in typed reader")):
+                self.assertEqual(tuple(carrier._encode_cell(x) for x in col.cells(1,"q")),tokens)
+                cell=col.cell_at(0,1,"q")
+                cell.source_missing_declaration["decl"]["nested"].append(999)
+                cell.raw_value_label[1]["x"]=999
+                raw=col.cell_at(len(tokens)-1,1,"q")
+                raw.raw_value["raw"][1]["nested"]=999
+                self.assertEqual(carrier._encode_cell(col.cell_at(0,1,"q")),tokens[0])
+                self.assertEqual(carrier._encode_cell(col.cell_at(1,1,"q")),tokens[1])
+                self.assertEqual(carrier._encode_cell(col.cell_at(len(tokens)-1,1,"q")),tokens[-1])
+        # Actual repository consumer, including cached reconstruction, must
+        # not fall back to the former token parser.
+        with tempfile.TemporaryDirectory() as d:
+            reader,repo,release,_=_country_repository(d,lambda:True)
+            try:
+                from rawlsing_next.pre553_empirical_objects import RespondentEvent
+                bodies=release.public_objects.lane.bodies
+                with mock.patch.object(carrier,"_decode_cell",side_effect=AssertionError("wire decode in native reader")):
+                    for i in range(len(bodies)):
+                        event=bodies.materialize(i)
+                        self.assertIsInstance(event,RespondentEvent)
+                        self.assertEqual(repo.resolve_object_exact(event.ref),event)
+                    self.assertTrue(list(reader.iter_cells()))
+                self.assertLessEqual(bodies.cache_bytes,8*1024*1024)
+            finally:
+                reader.close()
+
     def test_selected_lane_pin_and_external_root_refuse_substitution(self):
         import sqlite3
         from unittest import mock
