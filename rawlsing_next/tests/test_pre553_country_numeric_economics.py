@@ -55,19 +55,31 @@ class CountryNativeEconomics(unittest.TestCase):
             self.skipTest("separate wide economics CI job")
         self._native_batch(wide=True)
 
-    def _native_batch(self,*,wide):
+    def test_interrupted_country_campaign_resumes_only_pending_exact_units(self):
+        self._native_batch(wide=False,resume_court=True)
+
+    def _native_batch(self,*,wide,resume_court=False):
         import os
         # Real operational wide path never owns an expanded routing tuple.
         # Keep the older full-object/hostile comparison executable on demand
         # (and default for the smaller test), without contaminating this
         # process's memory high-water with the historical representation.
-        direct_pack=wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1"
+        direct_pack=resume_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
         from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
         from rawlsing_next import pre553_issued_workload as issued
-        tag="country-native-wide" if wide else "country-native-economics"
-        n,governed,extras=(512,80,218) if wide else (800,16,23)
+        tag=("country-native-resume" if resume_court else
+             "country-native-wide" if wide else "country-native-economics")
+        n,governed,extras=(64,16,23) if resume_court else (512,80,218) if wide else (800,16,23)
         rng=np.random.default_rng(312)
         values=rng.integers(0,2,(n,governed))
+        if resume_court:
+            # Exactly balanced pairwise marginals but a genuine three-way XOR.
+            # A rare conjunction has one actual member, not a pruned branch.
+            for i in range(n):
+                values[i,0],values[i,1]=(i//2)%2,(i//4)%2
+            values[:,2]=values[:,0]^values[:,1]
+            values[:,3]=0
+            values[6,3]=1
         names=tuple("q"+str(i) for i in range(governed))
         data={q:values[:,i].astype(str) for i,q in enumerate(names)}
         for i in range(extras):
@@ -124,9 +136,9 @@ class CountryNativeEconomics(unittest.TestCase):
             qa=_query_authority(tag);da=_d_auth(tag+"-discovery")
             base=_branch_predicate(fx,qa,members=respondents,tag=tag+"-all")
             atom=_predicate(fx,qa,_response_leaf(fx,qa,"q0","1"),tag=tag+"-q0")
-            joint=_query(fx,qa,base,("q0","q1"),tag=tag+"-joint")
+            joint=_query(fx,qa,base,("q0","q1","q2") if resume_court else ("q0","q1"),tag=tag+"-joint")
             # Distinct actual predicates/targets, not repeated identical query.
-            atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide else None
+            atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide or resume_court else None
             conditional=tuple(_query(fx,qa,atom,(q,),tag=tag+"-"+q) for q in names[2:(52 if wide else 11)])
             alternate=tuple(_query(fx,qa,atom2,(q,),tag=tag+"-alt-"+q) for q in names[30:78]) if wide else ()
             unary=_query(fx,qa,base,("q1",),tag=tag+"-unary")
@@ -139,7 +151,22 @@ class CountryNativeEconomics(unittest.TestCase):
             queries=(joint,*conditional,*alternate,unary)
             preds=(base,atom,atom2) if wide else (base,atom)
             cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),preds,queries,(discovery,))
-            requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
+            if resume_court:
+                rare=_predicate(fx,qa,{"op":"AND","children":[
+                    {"op":"AND","children":[_response_leaf(fx,qa,"q0","1"),
+                                              _response_leaf(fx,qa,"q1","1")]},
+                    _response_leaf(fx,qa,"q3","1")]},tag=tag+"-rare")
+                forward=_query(fx,qa,atom,("q1",),tag=tag+"-forward")
+                inverse=_query(fx,qa,atom2,("q0",),tag=tag+"-inverse")
+                rare_query=_query(fx,qa,rare,("q4",),tag=tag+"-rare")
+                queries=(*queries,forward,inverse,rare_query)
+                preds=(base,atom,atom2,rare)
+                cat=RuntimeObjectCatalog((*fx["authorities"],qa,da),preds,queries,(discovery,))
+                from rawlsing_next.pre553_empirical_objects import exact_ref
+                requests=tuple(I03ExecutionRequest(q.ref,exact_ref(q.condition_predicate_ref))
+                               for q in queries)
+            else:
+                requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
             if wide:
                 self.assertEqual(len({q.ref.key for q in queries}),100)
                 self.assertEqual(len(routing),20480)
@@ -149,7 +176,7 @@ class CountryNativeEconomics(unittest.TestCase):
             descriptor=dict(source_edition=sha,native_item_ids=list(names),release_tag=projection.instrument_release_id,
                 routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":"A"},
                 weight_design_estimand={"measure":"RAW"},missing_and_occurrence_policy={"fixture":True},
-                target_conditioner_roles={"joint":["q0","q1"]})
+                target_conditioner_roles={"joint":["q0","q1","q2"] if resume_court else ["q0","q1"]})
             workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY",tag),
                 descriptor=canonical(descriptor),projection=projection,catalog=cat,requests=requests,discoveries=ds,
                 original_u_root=root,expected_frontier_root=frontier)
@@ -180,6 +207,9 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            if resume_court:
+                return self._country_continuity(p,db,receipt,products,workload,resolver,
+                                                record,queries,host,purpose,selected,qrefs)
             from rawlsing_next.pre553_source_backed_c11_facade import _cache_projection_preimage,CONTRACT_ID
             if direct_pack:
                 # Independent canonical projection hash, exact original
@@ -592,6 +622,201 @@ class CountryNativeEconomics(unittest.TestCase):
                 "direct_packed_producer":direct_pack,
                 "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
+
+    def _country_continuity(self,root,db,receipt,products,workload,resolver,record,
+                            queries,host,purpose,selected,qrefs):
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        import collections
+
+        common=dict(workload=workload,resolver=resolver,host=host,purpose=purpose,
+                    country_receipt=receipt)
+        def run(destination,**kwargs):
+            return delivery.execute_publish_country(**common,country_path=db,
+                                                     root_dir=destination,**kwargs)
+        def open_product(pub,**kwargs):
+            return delivery.open_country_product(pub.receipt.root_path,
+                expected_root=pub.receipt.root_identity,
+                expected_release_ref=pub.release_identity.release_ref,**common,**kwargs)
+        baseline=run(products)
+        baseline_reader=open_product(baseline)
+        bounded_dir=root/"bounded";bounded_dir.mkdir()
+        bounded=run(bounded_dir,max_units=1)
+        self.assertFalse(bounded.complete)
+        self.assertEqual(bounded.batch_census["completed_count"],1)
+        self.assertFalse(open_product(bounded,allow_partial=True).complete)
+        self.assertTrue(baseline.complete)
+        campaign=root/"campaign"
+        campaign.mkdir()
+        pins=[]
+        class Interrupted(RuntimeError): pass
+        def interrupt(pin,pub):
+            pins.append((pin,pub))
+            raise Interrupted("operator interrupted after retaining exact root")
+        start=time.monotonic()
+        with self.assertRaises(Interrupted):
+            run(campaign,checkpoint_every=3,checkpoint_observer=interrupt)
+        interruption_s=time.monotonic()-start
+        pin,partial=pins[0]
+        self.assertEqual(len(pins),1)
+        self.assertFalse(partial.complete)
+        self.assertEqual(partial.batch_census["completed_count"],3)
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"PARTIAL"):
+            open_product(partial)
+        saved=open_product(partial,allow_partial=True)
+        self.assertFalse(saved.complete)
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"COMPLETE_PUBLICATION_REQUIRED"):
+            delivery.read_country_s04_selected(partial.receipt.root_path,
+                expected_root=partial.receipt.root_identity,
+                expected_release_ref=partial.release_identity.release_ref,**common,
+                requests=((queries[0].ref,None),))
+        self.assertEqual(saved._closure.release_identities[0],baseline.release_identity)
+        for receipt0 in saved._receipts:
+            self.assertEqual(receipt0.state,"COMPLETED")
+        manifest=delivery._manifest(workload,baseline.release_identity.release_ref)
+        prior_by_ref={r.unit_ref.key:r for r in saved._receipts}
+        pending=tuple(u for u in manifest.units if u.unit_ref.key not in prior_by_ref)
+        # Wrong root and country pin fail before any native unit can be executed.
+        for bad,exception in ((replace(pin,expected_root="0"*64),durable.DurableEmpiricalClosureError),
+                              (replace(pin,expected_country_sha256="0"*64),delivery.SavedDeliveryError)):
+            with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                    side_effect=AssertionError("bad resume executed I03")), patch.object(
+                    CarrierNeutralResearchExecutor,"execute_i05",
+                    side_effect=AssertionError("bad resume executed I05")):
+                with self.assertRaises(exception):
+                    run(campaign,resume_from=bad)
+        resolver._record=replace(record,currentness="REVOKED")
+        try:
+            with self.assertRaises(issued.WorkloadAdmissionError):
+                run(campaign,resume_from=pin)
+        finally:
+            resolver._record=record
+        # A current semantic decision cannot excuse missing selected physical bytes.
+        missing=db.with_suffix(".missing")
+        db.rename(missing)
+        try:
+            with self.assertRaises((OSError,ValueError)):
+                run(campaign,resume_from=pin)
+        finally:
+            missing.rename(db)
+
+        actual=[]
+        old_i03=CarrierNeutralResearchExecutor.execute_i03
+        old_i05=CarrierNeutralResearchExecutor.execute_i05
+        def count_i03(self,**kwargs):
+            actual.append(("QUERY",kwargs["query_ref"].key))
+            return old_i03(self,**kwargs)
+        def count_i05(self,**kwargs):
+            actual.append(("DISCOVERY",kwargs["discovery_authority_ref"].key))
+            return old_i05(self,**kwargs)
+        continued=[]
+        def retain(pin,pub):
+            continued.append((pin,pub))
+        start=time.monotonic()
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",count_i03), patch.object(
+                CarrierNeutralResearchExecutor,"execute_i05",count_i05):
+            final=run(campaign,resume_from=pin,checkpoint_every=4,checkpoint_observer=retain)
+        resume_s=time.monotonic()-start
+        self.assertTrue(final.complete)
+        self.assertEqual(final,continued[-1][1])
+        self.assertEqual(collections.Counter(actual),
+            collections.Counter((u.job_kind,u.job_ref.key) for u in pending))
+        self.assertEqual(final.batch_census,baseline.batch_census)
+        restored=open_product(final)
+        self.assertEqual(restored._receipts,baseline_reader._receipts)
+        self.assertEqual(restored._closure.release_identities,baseline_reader._closure.release_identities)
+        self.assertEqual(restored._closure.i03_results,baseline_reader._closure.i03_results)
+        self.assertEqual(tuple(r.replay_ref for r in restored._closure.discovery_results),
+                         tuple(r.replay_ref for r in baseline_reader._closure.discovery_results))
+        # Cold higher-order products and rare/inverse conditioning are
+        # independently counted from source rows, not just compared to a
+        # second run of the same evaluator.
+        from rawlsing_next.tests.test_pre553_empirical_query import _cell_map
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from rawlsing_next.pre553_s04_general_joint_algebra import S04Projection
+        index_by_ref={r.key:i for i,r in enumerate(qrefs.values())}
+        joint=queries[0];forward,inverse,rare=queries[-3:]
+        for query,mask in ((joint,np.ones(len(selected),dtype=bool)),
+                (forward,selected[:,0]==1),(inverse,selected[:,1]==0),
+                (rare,(selected[:,0]==1)&(selected[:,1]==1)&(selected[:,3]==1))):
+            read=restored.read_s04(query.ref)
+            fact=read.first_consumer.execution.facts[0]
+            self.assertEqual(fact.raw_denominator_support,int(mask.sum()))
+            axes=tuple(index_by_ref[exact_ref(r).key] for r in query.target_refs)
+            cells=_cell_map(fact)
+            self.assertEqual(len(cells),2**len(axes))
+            for cell,row in cells.items():
+                vals=(cell,) if isinstance(cell,str) else cell
+                actual_mask=mask.copy()
+                for axis,val in zip(axes,vals):
+                    actual_mask &= selected[:,axis]==int(val)
+                self.assertEqual(row["raw_numerator_support"],int(actual_mask.sum()))
+        self.assertEqual(restored.read_s04(rare.ref).first_consumer.execution.facts[0].raw_denominator_support,1)
+        # FIELD FORGE's existing local joint algebra must use a stored fact
+        # without calling the native evaluator again.
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                side_effect=AssertionError("retained joint replay executed I03")):
+            workspace=restored.joint_workspace(joint.ref)
+            for request in (S04Projection((1,),{0:"1"}),
+                            S04Projection((0,),{1:"0"}),
+                            S04Projection((2,),{0:"1",1:"1"}),
+                            S04Projection((2,),{0:"1",1:"1"})):
+                result=workspace.query(request).material()
+                self.assertTrue(result["no_second_i03_or_source_query"])
+                query_mask=np.ones(len(selected),dtype=bool)
+                for axis,value in request.conditions.items():
+                    query_mask &= selected[:,axis]==int(value)
+                self.assertEqual(result["raw_selected_full_case_n"],int(query_mask.sum()))
+                for cell in result["complete_output_cells"]:
+                    mask=query_mask.copy()
+                    for axis,value in zip(request.output_axes,cell["output_states"]):
+                        mask &= selected[:,axis]==int(value)
+                    self.assertEqual(cell["raw_count"],int(mask.sum()))
+        plans=tuple((q.ref,None) for q in queries)
+        self.assertEqual(tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)),
+                         tuple(delivery._s04_refs(r) for r in baseline_reader.read_s04_many(plans)))
+        self.assertTrue(continued)
+        final_pin=continued[-1][0]
+        with self.assertRaisesRegex(delivery.SavedDeliveryError,"ALREADY_COMPLETE"):
+            run(campaign,resume_from=final_pin)
+        # Source and country may now disappear; complete retained product still
+        # supplies actual consumer reads through the selected and full paths.
+        db.unlink()
+        select=delivery.read_country_s04_selected(final.receipt.root_path,
+            expected_root=final.receipt.root_identity,
+            expected_release_ref=final.release_identity.release_ref,**common,
+            requests=plans)
+        self.assertEqual(tuple(delivery._s04_refs(r) for r in select.reads),
+                         tuple(delivery._s04_refs(r) for r in restored.read_s04_many(plans)))
+        # Retained discovery roles (including valid empty fate) remain
+        # available to the actual S04 recipient without source or a new I03.
+        roles_read=0
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                side_effect=AssertionError("retained I05 reception executed I03")):
+            for discovery in restored._closure.discovery_results:
+                for candidate in discovery.receipts:
+                    for role,refs in candidate.support_uncertainty_state.get("query_role_fact_refs",{}).items():
+                        if len(refs)!=1:
+                            continue
+                        observed,role_receipt=restored.read_i05_role(candidate.ref,role)
+                        old_observed,old_receipt=baseline_reader.read_i05_role(candidate.ref,role)
+                        self.assertEqual((observed.ref,role_receipt.ref),(old_observed.ref,old_receipt.ref))
+                        roles_read+=1
+        self.assertGreater(roles_read,0)
+        footprint=lambda path:sum(f.stat().st_size for f in path.rglob("*") if f.is_file())
+        print("COUNTRY_CAMPAIGN_CONTINUITY",json.dumps({
+            "country_rows":receipt.country_rows,"units":len(manifest.units),
+            "completed_before_interrupt":3,"resumed_actual_executions":len(actual),
+            "checkpoint_count":1+len(continued),"full_output_census_parity":True,
+            "three_way_xor_rare_inverse_source_count_and_local_joint_reuse":True,
+            "selected_after_source_and_country_deleted":len(select.reads),
+            "retained_i05_roles_read":roles_read,
+            "baseline_retained_bytes":footprint(products),"campaign_retained_bytes":footprint(campaign),
+            "interruption_seconds":interruption_s,"resume_seconds":resume_s,
+            "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
+        }),flush=True)
 
     def test_physical_layout_query_tradeoffs_same_cells(self):
         """One selected carrier, bounded block-size comparison; not native-I03 proxy."""

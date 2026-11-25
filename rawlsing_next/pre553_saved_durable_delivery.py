@@ -748,60 +748,156 @@ def _country_binding(record, workload, release, receipt):
             "projection_identity":workload.projection.cache_identity}
 
 
-def execute_publish_country(workload, resolver, *, host, purpose, country_path,
-                            country_receipt, root_dir, consumer_binding=None):
-    """Country compact carrier -> actual U43/I03/I05/Batch -> existing S2-F.
+@dataclass(frozen=True)
+class CountryResumePin:
+    """External S2-F root, exact certified release and country file pin.
 
-    The existing S2-F sourcefree retention ceiling is enforced BEFORE opening
-    the compact country. Existing native issuer, Batch and S04 owners do the
-    work. No new result format or scientific authorization.
+    No caller-supplied receipt list, result map, or inferred latest root.
     """
-    from rawlsing_next.pre553_country_numeric_carrier import _execute_country_workload
+    closure_path: str | Path
+    expected_root: str
+    expected_release_ref: ExactRef
+    expected_country_sha256: str
+
+
+def execute_publish_country(workload, resolver, *, host, purpose, country_path,
+                            country_receipt, root_dir, consumer_binding=None,
+                            max_units=None, resume_from=None,
+                            checkpoint_every=None, checkpoint_observer=None):
+    """Country numeric -> existing U43/I03/I05/Batch -> existing S2-F.
+
+    Partial publication and exact cold resume inherit the saved-product proof
+    path. Optional checkpoint observer retains external pins while the SAME
+    native country session runs. A full execution remains the default;
+    bounded/incomplete publication is explicit. No new result format, source
+    retention right or scientific authorization is minted.
+    """
+    from rawlsing_next.pre553_country_numeric_carrier import (
+        _execute_country_workload, CountryReader)
+    _require(max_units is None or (type(max_units) is int and max_units>0),
+             "POSITIVE_MAX_UNITS_REQUIRED")
+    _require((checkpoint_every is None)==(checkpoint_observer is None),
+             "CHECKPOINT_INTERVAL_AND_OBSERVER_REQUIRED_TOGETHER")
+    _require(checkpoint_every is None or (type(checkpoint_every) is int
+             and checkpoint_every>0 and callable(checkpoint_observer)),
+             "EXACT_COUNTRY_CHECKPOINT_OBSERVER_REQUIRED")
     scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
     record=scope.record
     _require(record.scope=="TEST_ONLY_SOURCEFREE","S2F_ORIGINAL_RETENTION_AND_SERVING_AUTHORITY_HELD")
-    _country_binding(record, workload, workload.projection.projection_identity_ref, country_receipt)
+    _country_binding(record,workload,workload.projection.projection_identity_ref,country_receipt)
+    from dataclasses import asdict
+    receipt_pin=canonical_json(asdict(country_receipt))
+    prior=None
+    if resume_from is not None:
+        _require(type(resume_from) is CountryResumePin,"EXACT_COUNTRY_RESUME_PIN_REQUIRED")
+        _require(resume_from.expected_country_sha256==country_receipt.sha256,
+                 "RESUME_COUNTRY_RECEIPT_DRIFT")
+        release=exact_ref(resume_from.expected_release_ref)
+        prior=_open_native_product(resume_from.closure_path,
+            expected_root=resume_from.expected_root,release=release,
+            binding=_country_binding(record,workload,release,country_receipt),
+            workload=workload,resolver=resolver,host=host,purpose=purpose,
+            record=record,allow_partial=True,country_scope=scope)
+        _require(not prior.complete,"WORKLOAD_ALREADY_COMPLETE_USE_COLD_PRODUCT")
+    first_reads=dict(prior._first_reads) if prior is not None else {}
+    last_root=None if prior is None else prior._closure.root_identity
+    last_publication=None
+    last_receipts=None
+    checkpoint_overhead=0.0
+    start=monotonic()
+
     def current():
         scope.current_only()
-    start=monotonic()
-    # S2-F remains TEST_ONLY. The real-source execution entry separately
-    # requires a competent independent country retention/currentness guard.
-    executed=_execute_country_workload(workload,resolver,country_path=country_path,
-        country_receipt=country_receipt,host=host,purpose=purpose,
-        require_country_current=current,allow_test_only=True,_country_scope=scope)
-    result,identity=executed.result,executed.release_identity
-    _require(result.manifest==_manifest(workload,identity.release_ref),
-             "COUNTRY_BATCH_MANIFEST_DRIFT")
-    census=result.exact_s2e_output_census(require_complete=True,runtime_catalog=workload.catalog)
-    _require(census.complete,"COUNTRY_BATCH_INCOMPLETE")
-    direct=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
-                 if u.job_kind=="QUERY")
-    discoveries=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
-                      if u.job_kind=="DISCOVERY")
-    output=NativeEmpiricalOutput(
-        source_identity=_country_binding(record,workload,identity.release_ref,country_receipt),
-        release_identities=(identity,),i03_results=direct,i05_result=None,
-        i05_results=discoveries,object_graph=_graph(workload,direct,discoveries),
-        typed_states={"saved_batch_manifest":result.manifest.semantic_projection(),
-            "saved_batch_receipts":[r.projection() for r in result.receipts],
-            "saved_batch_census":census.as_dict(),"saved_batch_complete":True,
-            "s04_first_reads":_s04_manifest(workload,direct)})
-    from rawlsing_next.pre553_country_numeric_carrier import CountryReader
-    # Recheck physical receipt and live decision at publication boundary.
-    with CountryReader(country_path,country_receipt,require_current=current) as reader:
+
+    def check_receipt():
+        _require(canonical_json(asdict(country_receipt))==receipt_pin,
+                 "COUNTRY_RECEIPT_CHANGED_DURING_DELIVERY")
+
+    def publish_result(executed,reader,*,elapsed,require_complete):
+        check_receipt()
+        result,identity=executed.result,executed.release_identity
+        _require(result.route_results==() and result.decision_ref==record.decision_ref
+            and result.envelope_sha256==record.envelope_sha256
+            and result.source_sha256==record.source_sha256 and result.scope==record.scope,
+            "COUNTRY_EXECUTION_ISSUER_DRIFT")
+        _require(result.manifest==_manifest(workload,identity.release_ref),
+                 "COUNTRY_BATCH_MANIFEST_DRIFT")
+        if prior is not None:
+            _require(identity==prior._closure.release_identities[0],
+                     "RESUME_COUNTRY_RELEASE_OR_REPLAY_DRIFT")
+        census=result.exact_s2e_output_census(require_complete=require_complete,
+                                               runtime_catalog=workload.catalog)
+        direct=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                     if u.job_kind=="QUERY" and u.unit_hash in result.outputs_by_unit)
+        discoveries=tuple(result.outputs_by_unit[u.unit_hash] for u in result.manifest.units
+                          if u.job_kind=="DISCOVERY" and u.unit_hash in result.outputs_by_unit)
+        first_reads.update(_s04_manifest(workload,tuple(
+            ex for ex in direct if ex.query_ref.key not in first_reads)))
+        output=NativeEmpiricalOutput(
+            source_identity=_country_binding(record,workload,identity.release_ref,country_receipt),
+            release_identities=(identity,),i03_results=direct,i05_result=None,
+            i05_results=discoveries,object_graph=_graph(workload,direct,discoveries),
+            typed_states={"saved_batch_manifest":result.manifest.semantic_projection(),
+                "saved_batch_receipts":[r.projection() for r in result.receipts],
+                "saved_batch_census":census.as_dict(),"saved_batch_complete":census.complete,
+                "s04_first_reads":dict(first_reads),
+                **({} if last_root is None else {"resumed_from_root":last_root})})
         reader._verify()
         current()
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
-        elapsed=monotonic()-start
         published=monotonic()
         receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding,
-                                         compact_manifest=True)
+                                            compact_manifest=True)
+        check_receipt()
         reader._verify()
         current()
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
-    return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict(),identity)
+        return SavedPublication(receipt,elapsed,monotonic()-published,census.as_dict(),identity)
+
+    def checkpoint(executed,reader):
+        nonlocal last_publication,last_receipts,last_root,checkpoint_overhead
+        entered=monotonic()
+        publication=publish_result(executed,reader,elapsed=entered-start-checkpoint_overhead,
+                                   require_complete=False)
+        pin=CountryResumePin(publication.receipt.root_path,publication.receipt.root_identity,
+                             executed.release_identity.release_ref,country_receipt.sha256)
+        # External observer owns pin custody. Failed observer stops the
+        # existing Batch run; the file is not a silently adopted checkpoint.
+        # Keep internal custody detached from the operator callback.
+        # The callback can retain or reject the pin; it cannot rewrite the
+        # next archive's parent or the returned cumulative census.
+        from copy import deepcopy
+        published_root=pin.expected_root
+        from dataclasses import replace
+        detached=replace(publication,
+            receipt=replace(publication.receipt,rows=dict(publication.receipt.rows)),
+            batch_census=deepcopy(publication.batch_census),
+            release_identity=ReleaseIdentity.from_dict(publication.release_identity.as_dict()))
+        checkpoint_observer(deepcopy(pin),detached)
+        check_receipt()
+        last_publication=publication
+        last_receipts=executed.result.receipts
+        last_root=published_root
+        checkpoint_overhead+=monotonic()-entered
+
+    executed=_execute_country_workload(workload,resolver,country_path=country_path,
+        country_receipt=country_receipt,host=host,purpose=purpose,
+        require_country_current=current,allow_test_only=True,_country_scope=scope,
+        _max_units=max_units,_prior_product=prior,_checkpoint_every=checkpoint_every,
+        _checkpoint_observer=checkpoint if checkpoint_observer is not None else None)
+    check_receipt()
+    if last_publication is not None:
+        _require(last_receipts==executed.result.receipts,"CHECKPOINT_FINAL_HISTORY_DRIFT")
+        _require(last_publication.complete==executed.result.summary.full_coverage,
+                 "CHECKPOINT_FINAL_COVERAGE_DRIFT")
+        return last_publication
+    # No open native session survives ordinary return. Preserve the
+    # incumbent full external receipt check at the publication boundary.
+    with CountryReader(country_path,country_receipt,require_current=current) as reader:
+        return publish_result(executed,reader,elapsed=monotonic()-start,
+                              require_complete=max_units is None)
 
 
 @dataclass(frozen=True)
@@ -903,12 +999,17 @@ def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
 
 
 def open_country_product(closure_path, *, expected_root, expected_release_ref,
-                         country_receipt,workload,resolver,host,purpose):
-    """Cold S04/FF01/learned consumer, no country file or source needed."""
+                         country_receipt,workload,resolver,host,purpose,allow_partial=False):
+    """Cold S04/FF01/learned consumer, no country file or source needed.
+
+    An incomplete historical checkpoint requires explicit opt-in; it may
+    never impersonate completed workload coverage.
+    """
     scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
     record=scope.record
     _require(record.scope=="TEST_ONLY_SOURCEFREE","S2F_ORIGINAL_RETENTION_AND_SERVING_AUTHORITY_HELD")
     release=exact_ref(expected_release_ref)
     return _open_native_product(closure_path,expected_root=expected_root,release=release,
         binding=_country_binding(record,workload,release,country_receipt),
-        workload=workload,resolver=resolver,host=host,purpose=purpose,record=record,country_scope=scope)
+        workload=workload,resolver=resolver,host=host,purpose=purpose,record=record,
+        country_scope=scope,allow_partial=allow_partial)
