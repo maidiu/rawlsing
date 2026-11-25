@@ -2433,6 +2433,12 @@ class StagedFamilyGenesisR49(unittest.TestCase):
                     self.assertEqual(rt.step(father,requested_action='CARE',target='mother')['status'],'PERFORMED')
                     rt.admit_family_conception()
                     self.assertNotIn('nadia',rt.ledger.actors())
+                    v,original=rt.ledger.world()
+                    forged=copy.deepcopy(original)
+                    forged['family_genesis']['stage']='CHILD_BORN'
+                    with self.assertRaisesRegex(Conflict,'FAMILY_TRANSITION_REQUIRES_QUALIFIED_EVENT'):
+                        rt.ledger.commit(rt.world_id,v,forged,{}, {},'ORDINARY_WORLD_EVENT',None,{})
+                    self.assertEqual(rt.ledger.world()[1],original)
                     w=rt.ledger.world()[1];actors=rt.ledger.actors();count=rt.verify()['events']
                     with self.assertRaisesRegex(Conflict,'FAMILY_BIRTH_BOUNDARY'):
                         rt.background(4)
