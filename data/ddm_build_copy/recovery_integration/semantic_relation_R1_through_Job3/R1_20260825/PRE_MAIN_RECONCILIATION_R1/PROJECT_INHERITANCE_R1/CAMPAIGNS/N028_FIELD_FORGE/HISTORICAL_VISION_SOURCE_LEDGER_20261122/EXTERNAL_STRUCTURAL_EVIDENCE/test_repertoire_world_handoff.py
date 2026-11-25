@@ -8,7 +8,7 @@ from copy import deepcopy
 
 import pytest
 
-from test_repertoire_inquiry import _session, run
+from test_repertoire_inquiry import _session, run, _concept_session, _develop_run
 from authored_world_handoff import prepare_repertoire_authored_history, verify_handoff, repertoire_source_seals
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.types import blank_world, adult
@@ -164,3 +164,86 @@ def test_existing_ledger_refuses_tampered_repertoire_sidecar(tmp_path, monkeypat
             rt.ledger.source(spec["source_ref"])
     finally:
         rt.close()
+
+
+def _formation_case(concept, access):
+    from authored_world_handoff import formation_repertoire_offers, prepare_formation_authored_history
+    offers=formation_repertoire_offers(concept)
+    # Two different positive repertoires from the same exact observed
+    # position slice, not two demographic identities.
+    sl=next(s for s in offers["slices"] if s["inquiry"]=="entitlement"
+            and len(s["position_axes"])==2 and len(s["offer_ids"])>=2)
+    first,second=sl["offer_ids"][:2]
+    def formation(id,oid,controller,renewal):
+        return {"id":id,"arena":"relief provision","carrier_roles":["worker","household"],
+                "offer_ids":[oid],"public_notice_ids":["food_notice"],
+                "interpretation":"fictional rival institutional practice",
+                "reproduction_channels":[{"resource":"food","provider_role":"provision group",
+                    "controller_role":controller,"beneficiary_role":"household",
+                    "cost_bearer_role":"worker","renewal_condition":renewal,"rule_id":"gate"}]}
+    return prepare_formation_authored_history(concept,scenario_id="formation-"+access,
+        rationale="Same source-local rival repertoire possibilities; independently authored provision.",
+        formation_choices=[formation("patron",first,"patron","employment continues"),
+                           formation("mutual-aid",second,"collective","reserve renewed")],
+        positions=[{"id":"position","actor":"worker","field":"relief_access",
+                    "value":access,"effective_from":0,"effective_until":1}],
+        rules=[{"id":"gate","operation":"EAT","location":"home","effective_from":0,
+                "effective_until":1,"all_of":[{"kind":"RECORDED_POSITION",
+                                              "field":"relief_access","equals":"admitted"}]}],
+        public_notices=[{"id":"food_notice","public":True,"location":"home",
+                         "public_terms":["eat","available"],"public_text":"Food is available here.",
+                         "effective_from":0,"effective_until":20}])
+
+
+def test_r17_actual_concept_to_overlapping_formations_and_world_course(tmp_path,monkeypatch):
+    session,inquiries=_concept_session(tmp_path/"survey",monkeypatch)
+    with session:
+        concept=_develop_run(session,inquiries)
+    admitted,excluded=[_formation_case(concept,a) for a in ("admitted","excluded")]
+    assert verify_handoff(admitted) and verify_handoff(excluded)
+    assert admitted["evidence"]==excluded["evidence"]
+    assert admitted["content_hash"]!=excluded["content_hash"]
+    r=admitted["evidence"]["relations"][0]
+    assert r["shared_possible_carrier_roles"]==["household","worker"]
+    assert len(r["distinct_supported_motif_pairs"])==1
+    assert not r["shared_resource_channels"][0]["same_controller"]
+    assert r["actual_membership_or_conflict"]=="NOT_INFERRED"
+    for f in admitted["evidence"]["formations"]:
+        assert len(f["retained_alternatives"])>=2
+        assert len(f["selected_offers"])==1
+    assert run_world(tmp_path/"allowed-formation.db",admitted)==("PERFORMED",-1,"AVAILABLE","EAT",-1)
+    assert run_world(tmp_path/"denied-formation.db",excluded)==("BLOCKED",0,"UNAVAILABLE","WAIT",0)
+
+
+def test_r17_altered_concept_or_unobserved_offer_refused(tmp_path,monkeypatch):
+    from authored_world_handoff import prepare_formation_authored_history, formation_repertoire_offers
+    session,inquiries=_concept_session(tmp_path/"survey",monkeypatch)
+    with session:
+        concept=_develop_run(session,inquiries)
+    packet=_formation_case(concept,"admitted")
+    broken=deepcopy(concept)
+    broken["records"][0]["local_discovery"]["records"][0]["candidates"][0]["baseline_n"]+=1
+    with pytest.raises(ValueError,match="sealed record"):
+        formation_repertoire_offers(broken)
+    choices=deepcopy(packet["evidence"]["formation_choices"])
+    choices[0]["offer_ids"]=["invented"]
+    with pytest.raises(ValueError,match="positive scoped offers"):
+        prepare_formation_authored_history(concept,formation_choices=choices,
+            public_notices=packet["evidence"]["public_notices"],**packet["fictional_choice"])
+    choices=deepcopy(packet["evidence"]["formation_choices"])
+    choices[0]["reproduction_channels"][0]["rule_id"]="invented"
+    with pytest.raises(ValueError,match="authored material rule"):
+        prepare_formation_authored_history(concept,formation_choices=choices,
+            public_notices=packet["evidence"]["public_notices"],**packet["fictional_choice"])
+
+
+def test_r17_distinct_cohorts_and_unselected_inquiries_remain_separate(tmp_path,monkeypatch):
+    from authored_world_handoff import formation_repertoire_offers
+    session,inquiries=_concept_session(tmp_path/"survey",monkeypatch)
+    with session:
+        concept=_develop_run(session,inquiries,query_budget=2)
+    out=formation_repertoire_offers(concept)
+    assert {s["inquiry"] for s in out["slices"]}=={"entitlement","property"}
+    assert len({s["knowledge_ref"]["content_hash"] for s in out["slices"]})==2
+    assert out["unexamined"]==[{"id":"authority","state":"UNKNOWN_SCHEDULED"}]
+    assert out["pooled_joint"] is None
