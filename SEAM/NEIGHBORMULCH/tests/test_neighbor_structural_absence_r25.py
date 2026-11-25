@@ -72,7 +72,7 @@ class StructuralAbsenceR25(unittest.TestCase):
         pledge=n.contribute('pledge','PLEDGE_OFFER',target_actor_ref='mother',due_clock=6)
         self.assertEqual(pledge['status'],'PERFORMED')
         dep=n.contribute('leave','LEAVE')
-        self.assertEqual(rt.ledger.world(name)[1]['clock'],3)
+        self.assertEqual(rt.ledger.world(name)[1]['clock'],4)
         return rt,n,db,rows,dep['event_ref'],pledge['human_offer_commitment_ref']
 
     def test_actual_structural_care_and_coincident_deadline_across_cold_absence(self):
@@ -83,6 +83,8 @@ class StructuralAbsenceR25(unittest.TestCase):
                 rt,n,db,rows,dep,pledge=self.build(name,blocked)
                 # At the very same boundary, both owners settle: care
                 # eligibility changes and the human window elapses.
+                departure_clock=rt.ledger.world(name)[1]['clock']
+                initial_age=rt.snapshot('nadia')['age_days']
                 first=n.continue_absent_life_until(dep,6,max_segments=12,period_processes=rows)
                 self.assertEqual(first['actual_modeled_clock'],6)
                 w=rt.ledger.world(name)[1]
@@ -90,7 +92,7 @@ class StructuralAbsenceR25(unittest.TestCase):
                 self.assertEqual(w['historical_periods'][-1]['elapsed_human_offer_commitment_refs'],[pledge])
                 child=rt.snapshot('nadia')
                 self.assertEqual(len(child['undergone_care_periods']),1)
-                self.assertEqual(child['age_days'],3)
+                self.assertEqual(child['age_days'],initial_age+6-departure_clock)
                 self.assertEqual(child['memories'],[])
                 saved=deepcopy(w['historical_periods'])
                 rt.close()
@@ -106,7 +108,7 @@ class StructuralAbsenceR25(unittest.TestCase):
                 if blocked:
                     self.assertEqual(held[0]['operation'],'CARE')
                     self.assertEqual(held[0]['objective_rule_evaluation']['decision'],'BLOCKED')
-                self.assertEqual(cold.snapshot('nadia')['age_days'],6)
+                self.assertEqual(cold.snapshot('nadia')['age_days'],initial_age+9-departure_clock)
                 self.assertEqual(len(cold.snapshot('nadia')['undergone_care_periods']),1 if blocked else 2)
                 self.assertEqual(len(cold.snapshot('mother')['practice_exposures']),2)
                 # Stop at 12 using the same owner; no retrospective filling.
