@@ -23,7 +23,7 @@ from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence)
 from .distributed_power import record_actor_participation
-from .practical_powers import retain_exercised_power
+from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
 from .material_investments import (
     retain_personal_object_encounter, possible_object_investments)
@@ -885,6 +885,8 @@ class ConstitutiveRuntime:
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
+                'historically_possible_repair_techniques':copy(
+                    possible_repair_technique(actors[aid],experience,objective_ref)),
                 'actor_historical_orientations_analyst_only':copy(
                     actors[aid].get('historical_orientations',[])),
                 'actor_self_model_analyst_only':copy(
