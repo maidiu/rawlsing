@@ -870,7 +870,12 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         # next archive's parent or the returned cumulative census.
         from copy import deepcopy
         published_root=pin.expected_root
-        checkpoint_observer(deepcopy(pin),deepcopy(publication))
+        from dataclasses import replace
+        detached=replace(publication,
+            receipt=replace(publication.receipt,rows=dict(publication.receipt.rows)),
+            batch_census=deepcopy(publication.batch_census),
+            release_identity=ReleaseIdentity.from_dict(publication.release_identity.as_dict()))
+        checkpoint_observer(deepcopy(pin),detached)
         check_receipt()
         last_publication=publication
         last_receipts=executed.result.receipts
