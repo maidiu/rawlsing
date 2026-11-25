@@ -177,3 +177,8 @@ The preceding eleven engineering observations have been incorporated in [LIVE_RE
 ## SOROK-G4 HQ — 2026-11-25 exact candidate intake
 
 Existing O-Index/CIC receives four current engineering candidates and the three exact additive HOME/PROGRAMMA source changes, with old source cuts conserved. Protected pair remains R39 plus MII at PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; competent owner receiving required. No new runtime/authority claim. See same current ledger and CIC reciprocal section rather than duplicating implementation details here.
+
+
+## Exact proposed MI factual paired-progress correction (competent receiver only)
+
+Protected progress revision remains 39. #791 is still open/unmerged, but MI sourcefree scoped #907 merged as `1f77f2036427a410429184780ef884ec4f253ad0`, ancestor of PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`. Reviewed implementation `0b0eb94c714049dadd3f82cc0af97c44ff4f74b4`, distinct reviewer `ef32358d31103ea56cc20819ea6d2105625f3299`, recorded ACCEPT_SCOPED_SOURCEFREE_ENGINEERING; source packet 31 at blob `704d0da420f61fee0faf72bade88143e82601683`; composite workflow runs 43093308195/43093307951/43093307957/43093308065 success metadata at PR #907 exact head `cb998b7d7752d8db972bce18471230d07f056939`. Add factual paragraph to existing Markdown and matching additive JSON field `protected_mi_sourcefree_after_r39_20261111` with these exact pins, historical reviewer scope, actual P4 S46/P4–P6 inspection consumers, native science/actor/human/shared-root/production held. Do not replace R39 or MII addendum; no protected writes here. Existing #1095 candidate already records MI as merged; reconcile with protected pair through competent receiver.
