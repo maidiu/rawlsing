@@ -22,7 +22,7 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import admit_contrast_end, possible_dependency_project_takeups
 from .activity import (possible_dependency_project_reorganizations,
-                       possible_dependency_means_revisions)
+                       possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
 from .cultural_mediation import (
@@ -56,7 +56,7 @@ ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','NOTICE_PRIVATE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
-         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_EXPRESSIVE_PRACTICE','ACQUIRE_PREPROJECT_ANTICIPATION',
+         'APPRAISE_EXPECTED_DIFFERENCE','ACQUIRE_ACTIVITY_AFFECT','ACQUIRE_INTERACTIVITY_RELATION','ACQUIRE_EXPRESSIVE_PRACTICE','ACQUIRE_PREPROJECT_ANTICIPATION',
          'REVISE_PREPROJECT_ANTICIPATION','ACQUIRE_REFLECTIVE_REGULATION',
          'RECORD_POSSIBLE_END_TRIAL','ACQUIRE_FUNCTIONAL_CORRESPONDENCE',
          'REVISE_FUNCTIONAL_CORRESPONDENCE',
@@ -706,6 +706,11 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 # psychodynamic owners, not by a parallel will controller.
                 validate_tendencies(actor['forms'][receipt['form']])
                 report.append(receipt)
+            except ValueError as error:
+                raise InvalidDevelopment(str(error)) from error
+        elif op=='ACQUIRE_INTERACTIVITY_RELATION':
+            try:
+                report.append(admit_interactivity_relation(actor,experience,event_ref,c))
             except ValueError as error:
                 raise InvalidDevelopment(str(error)) from error
         elif op=='ACQUIRE_ACTIVITY_AFFECT':
