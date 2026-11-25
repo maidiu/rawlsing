@@ -2,6 +2,13 @@
 
 ## R13 — operative cross-owner receiving proposal
 
+### R14 — exact proposed existing-G4 and paired receiving delta
+
+Code HEAD `9872d9c8dc227507782213ba0e93d501c0e413ee`; `relational_context.py` blob d0d361829783e6cfc047f52dcda184161069a56b; `test_repertoire_inquiry.py` blob 0761d9d2c30df03a4cfc8eaedb2ec1c2380d05c0; incumbent #1292 192b0e908476352690b1a7936d23ce296af18f9e, S04 joint algebra a691936cef6d375cd973e6ac1dec60c8b897beb5. R14 code is candidate; [push run 45685380282](https://github.com/maidiu/rawlsing/actions/runs/45685380282) and [PR run 45685389337](https://github.com/maidiu/rawlsing/actions/runs/45685389337) in progress at inspection; no new execution claim here. Prior exact R12 6 passed/1 skipped remains scoped to parent e499d500… .
+
+Reopen PP26-13/14/15/17–19 and S06.1 (PARTIAL), S04.5 (PARTIAL): R14 composes selected independent multi-coordinate position/disposition views, source-coherent joint, forward and reverse distribution, exact enrichment, competing motifs and concept revision on saved C11/I03/S04 candidate sourcefree path. Historical FFX A/C role/conditional function selectively connected; B not ported; caller-declared ancestry is not native role issuance. Existing source/strong structural issuer and first-world-reader obligations S06.2/.4, N5:N6, N9:N10W remain held. P0 #1097/#960 unaffected. Proposed paired rev23 MD/JSON addition at competent receiving: 'R14 selected multidimensional sourcefree FF correspondence candidate, exact implementation/test blobs and scoped execution grade, no native authority, actual N9/N10W/C6 or independent review.' Keep current IDs and statuses; no protected write. The R13 six owner notices remain controlling proposed routes. Next operation: actual source-qualified position/meaning and I05/HULCH iterative discovery/first receiver through existing owners, not duplicate estimator or geometry. 
+
+
 **User direction 2026-11-25:** visibility and coordinated operative development of the survey-internal social dialectic, not merely historical preservation. Prepared in existing #1327 HOME, not a protected write or a new agenda. Protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; OATH ba66785711893abf90f5b25b0a9643501edcfb27; G4 README acbbd74b21adb40753e4cd957895a711043046db; paired rev23 MD 5343b9e1469aa8ef16ce03d7318bd4ceebbeb0f7 / JSON 0b31618f256a685046332450d099d2141e8b365e; agenda 72908b794f849ab140303a337ac482777151c91a. #1226 closed/not received, #1290 d35339a91889deeb885fcdd2b072d2a6dadf7eef open/re-review held. P0 #1097/#960 unchanged.
 
 **Exact proposed insertion for the existing G4 README FIRST CONSULTATION, directly beside the IX–XI chapter mapping (competent receiving only):**
