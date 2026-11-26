@@ -1166,12 +1166,15 @@ class CountryWorkloadSession:
 
     The existing I02 facade and repository remain the only producers. One
     repository is retained, on the private reader that actually certified it.
-    No detached release, persistent proof, cached permission or cached answer.
+    No detached release, cached permission or cached answer. Optional R14
+    preparation retains only producer-qualified response headers, requiring
+    independent external pin custody and full fresh sourcefree admission.
     A new workload must be independently admitted, reauthenticate the full
     country file, and match the full producer key before reusing preparation.
     Single-threaded, explicit context lifetime; failed execution closes it.
     """
-    def __init__(self,path,receipt,*,require_current):
+    def __init__(self,path,receipt,*,require_current,preparation_path=None,
+                 preparation_pin=None):
         if type(receipt) is not CountryReceipt or not callable(require_current):
             raise CountryCarrierError("exact country receipt and current callback required")
         self._path=Path(path).resolve()
@@ -1182,6 +1185,11 @@ class CountryWorkloadSession:
         self._receipt_fields=tuple(f.name for f in fields(receipt))
         self._receipt_pin=self._receipt_material(receipt)
         self._require_current=require_current
+        from ._pre553_country_preparation import _CountryPreparation
+        if preparation_path is None and preparation_pin is not None:
+            raise CountryCarrierError("preparation path required with external pin")
+        self._preparation=(None if preparation_path is None else
+                           _CountryPreparation(preparation_path,preparation_pin))
         self._reader=None
         self._entry=None
         self._active=None
@@ -1189,6 +1197,11 @@ class CountryWorkloadSession:
         self._closed=False
         self._busy=False
         self._owner=None
+
+    @property
+    def preparation_pin(self):
+        """External custody pin; retain separately only after successful execution."""
+        return None if self._preparation is None else self._preparation.pin
 
     def _receipt_material(self,receipt):
         return tuple(getattr(receipt,name) for name in self._receipt_fields)
@@ -1297,7 +1310,8 @@ class CountryWorkloadSession:
         # Release the old prepared graph before constructing another one.
         self._entry=None
         repo,release=build_source_backed_c11_repository(source,projection,
-                                    current_authorities=authorities)
+                                    current_authorities=authorities,
+                                    _country_preparation=self._preparation)
         # Facade already computed and rechecked the complete producer key.
         # Do not repeat its projection hashing on this cold admission.
         key=self._reader._certified_facade_key

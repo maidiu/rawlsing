@@ -982,7 +982,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
             for i,x in enumerate(projection.row_bindings)}
     if len(rows) != row_count:
         raise SourceBackedC11FacadeError("row/respondent replay map cardinality differs from exact physical stream")
-    rs = {x.slot.key: x for x in projection.response_slots}
+    restored=(_event_collector is not None and _event_collector.finished is not None)
+    rs = {} if restored else {x.slot.key: x for x in projection.response_slots}
     cs = {x.slot.key: x for x in projection.coordinate_slots}
     ws = {x.slot.key: x for x in projection.weight_slots}
     owner_sets = {x.slot.key: x for x in projection.slot_owner_sets}
@@ -1039,7 +1040,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
     if any(v!=row_count for v in counts.values()):
         raise SourceBackedC11FacadeError("projected slot incomplete; absent physical cell is not semantic absence")
     events = (tuple(sorted(events,key=lambda x:x.ref.key))
-              if _event_collector is None else _event_collector.finish())
+              if _event_collector is None else
+              _event_collector.finished if restored else _event_collector.finish())
     coords = tuple(sorted(coords, key=lambda x: x.ref.key))
     weight_section = tuple(sorted(weights, key=lambda x: x.ref.key)) if projection.weight_slots else TypedAbsence("NOT_APPLICABLE")
     manifest = SourceReleaseManifest(
@@ -1199,6 +1201,7 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
+    _country_preparation=None,
 ):
     # One-shot iterables must not disappear between cache admission and the
     # compact physical-binding witness. Both must see identical authorities.
@@ -1209,6 +1212,8 @@ def build_source_backed_c11_repository(
     country = type(source) is _CountryPhysicalStream
     if country and cache is not None:
         raise SourceBackedC11FacadeError("country repository has live reader; no detached session cache")
+    if _country_preparation is not None and not country:
+        raise SourceBackedC11FacadeError("country preparation requires live country transport")
     key = source_backed_facade_key(source, projection, current_authorities=current_authorities)
     if country:
         # Rebind to the live reader's own selected decoder, not a caller's
@@ -1221,19 +1226,44 @@ def build_source_backed_c11_repository(
         # The I02 owner validates each actual event as the physical producer
         # emits it, then seals the same logical package from exact headers.
         # No complete event-object graph or second body archive is retained.
+        restored_headers=None
+        captured=None
+        if _country_preparation is not None:
+            from ._pre553_country_preparation import _CountryPreparation
+            if type(_country_preparation) is not _CountryPreparation:
+                raise SourceBackedC11FacadeError("private country preparation required")
+            source.reader.verify_full()
+            restored_headers=_country_preparation.load(key)
         def produce(collector):
+            nonlocal captured
+            if restored_headers is None:
+                cells=source.iter_cells()
+            else:
+                # Only coordinate/weight bodies need physical re-production.
+                # Response bodies remain in the authenticated numeric carrier.
+                selected={rule.slot.key for rules in
+                          (projection.coordinate_slots,projection.weight_slots)
+                          for rule in rules}
+                cells=source.reader._iter_slots(tuple(sorted(selected)))
             candidate=project_c11_candidate_from_physical_cells(
                 source_sha256=source.source_sha256,row_count=source.row_count,
-                cells=source.iter_cells(),projection=projection,_event_collector=collector)
+                cells=cells,projection=projection,_event_collector=collector)
             _verify(candidate,projection,source.source_sha256)
+            if _country_preparation is not None and restored_headers is None:
+                captured=collector.finished
             return candidate
         release=_validate_country_produced_release(produce=produce,
             authority_snapshots=projection.authority_snapshots,
             compact_builder=lambda ref,replay,non_events,headers,closure_refs,routing:
-                source.compact_events(ref,replay,non_events,headers,projection,closure_refs,routing))
+                source.compact_events(ref,replay,non_events,headers,projection,closure_refs,routing),
+            _restored_headers=restored_headers)
         if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))
+        if _country_preparation is not None:
+            source.reader.verify_full()
+            _country_preparation.finish(key,release,captured)
+            source.reader._verify()
         source.certify_release(release,facade_key=key)
         return repo,release
     release = cache.get(key) if cache else None
