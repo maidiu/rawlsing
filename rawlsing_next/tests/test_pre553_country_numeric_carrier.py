@@ -128,6 +128,26 @@ class CountryNumeric(unittest.TestCase):
         old=_PackedCountrySelectors.build((third,),SimpleNamespace(hashes=bytes.fromhex(h)))
         self.assertIs(type(old),tuple)
         self.assertEqual(old[0],third.selector)
+        # The exact same occurrence ID can legitimately recur in a different
+        # group, so the compact sufficient proof must fall back, not reject.
+        from dataclasses import replace
+        from unittest.mock import patch
+        from rawlsing_next import pre553_c11_integrity as integrity
+        different=replace(first,occurrence_identity=b"x"*32)
+        with patch.object(integrity,"canonical_json",
+                          side_effect=AssertionError("redundant full occurrence encoding")):
+            integrity.ensure_distinct_event_occurrences((first,different))
+        group2=replace(first,group_identity=b"y"*32)
+        self.assertFalse(integrity._country_occurrence_ids_distinct((first,group2)))
+        integrity.ensure_distinct_event_occurrences((first,group2))
+        with self.assertRaisesRegex(integrity.C11IntegrityError,"duplicate response occurrence"):
+            integrity.ensure_distinct_event_occurrences((first,second))
+        self.assertFalse(integrity._country_occurrence_ids_distinct((first,third)))
+        # Foreign string fallback spelling of a canonical ID must not evade
+        # the complete composite duplicate check.
+        alias=replace(first,occurrence_identity=(first.response_event_id_or_deterministic_index,))
+        with self.assertRaisesRegex(integrity.C11IntegrityError,"duplicate response occurrence"):
+            integrity.ensure_distinct_event_occurrences((first,alias))
 
     def test_packed_selector_filters_before_object_materialization(self):
         from array import array
