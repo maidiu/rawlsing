@@ -1,5 +1,7 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+**S05.2 R9 custody intake, not learned-family issuance:** Existing S2F durable empirical closure `pre553_durable_empirical_closure.py::_verify_existing_blob/_decode_verified_blob` at #1380 `782e923aa20979dc6d31403de73d889227eac425` blob `280b7db90fd38cd2cb5bec1d8ee9f9d0f16299fc` now shares typed read/publication verification; 60 warm existing blobs exact manifest/root and no new blob bytes, wrong extent/corrupted bytes refuse; generated-source selected/full cold discovery roles survive deleted A DB. Owner-reported retained products 21687717 B vs country files 741376 B; full cold grows 5.954→11.314s across the three different country workloads, not a controlled causal comparison. Reuse custody; S2E/S2F cumulative retained graph/manifest and cold read costs remain; no M1→M2 family issuance, original scientific grant or independent receiving. [R9 P0 return](https://github.com/maidiu/rawlsing/issues/1097#issuecomment-7185110386).
+
 ## 2026-11-25 — integrated cross-owner functional intelligence (user-directed)
 
 **Operational reading:** documentary integration of exact existing candidate evidence, not new code adoption or new science/actor rights. Protected PRE-MAIN remains 827714e83743056939894a39736d72ea16bdc6dd rev23; this R24 candidate preserves all current economics work and P0. No additional engineering queue. Read the relevant actual source before extending.
