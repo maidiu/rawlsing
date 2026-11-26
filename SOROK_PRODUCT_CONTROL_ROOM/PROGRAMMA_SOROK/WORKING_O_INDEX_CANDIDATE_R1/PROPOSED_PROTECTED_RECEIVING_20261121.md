@@ -288,3 +288,37 @@ Protected base 827714e83743056939894a39736d72ea16bdc6dd; MD `a565e6239ee730bf8aa
 ## 2026-11-26 — constitutive psychological compression matching additive pair (competent receiving only)
 
 Protected base 827714e83743056939894a39736d72ea16bdc6dd; MD `a565e6239ee730bf8aae796d1c5afb35207b1e93`; JSON `f2081d41452a5fb5d7061fcf340af725e4ee07af`. Preserve R39/MII, MI factual correction and prior proposals. Proposed MD: standing user mandate [7185639649](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7185639649) recorded in existing G4 and #1371 §0.12; R29–R32, R52–R53 and Economy R5 exact scoped returns, R31 join and R53/R32/R5 divergence; four new provisional criteria, no criterion-specific execution, independent review, owner incorporation, protected or native grants. Matching additive JSON field `sorok_g4_constitutive_compression_candidate`: `{"user_mandate":7185639649,"pr":[1378,1379,1381,1382,1383,1384,1385,1371],"heads":["98994b953f7bd124a4f200e0652119a71d943e96","36e978b625fe170d1252ca8c427da083586824f5","34086d075c38587898a86cddbd67ee0a5f1d2f26","a1f99809fb4283282334b8a6f3efeb422acb30bf","29af765eb2579af03305cc69e2c007be6dd6edd5","aeb9e95f72aa9f6fc3736e026588a49b40cede90","5870da029f904a0efe8c2df490c562ae70c6b01f","9b31610e8dd05e30b1d3a9d8e1a1d934c0ac15e7"],"jobs":[139769924234,139726197650,139749801907,139749910452,139761283058,139767941367,139769317813],"criteria":["CO-CIC-012.03","CO-CIC-013.03","CO-CIC-021.03","NEIGHBOR-CIC-024.03"],"scope":"R31 R30×R52, R32/R5 separate descendants, R53 separate R52 descendant and tree-equivalent CO execution; mock transport not human/provider cost; user mandate documentary","ledger_blob":"4243eaf74badd4e436e5ebe85128e509df1fa0dd","cic_blob":"d8d9898f1293b96e9062ff98506b673db3d5218b","review":"HELD","home_owner_incorporation":"HELD","protected_received":false}`. No protected write or revision promotion.
+
+## 2026-11-26 — point-of-use joined R16 receipt (matching pair proposal)
+
+MD: At protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd, preserve R39+MII and MI correction. Candidate-only documentary intake: R54 #1387 678 per mode zero-file-diff merge checkout; joined R16 #1378 90bdcf1099021e3ff59de0722d0f189d2220dd00 exact direct logs 839 invocations/mode; R33 #1389 b3e5de0cfc03d1e142afdb2cf691fc402306ac33 source inspected only COMMITTED_UNTESTED. Exact ledger 4d34330d3aba6e0cf16d8c94402e42037adf6bf8, CIC 9bdfc515beb007e9eb4bf96755b9250562436093; 182 observations, 625 links, 187 unchanged criteria count, 719 frozen routes. Owner-local receipts sent, incorporation and independent review not established. No protected/source/science/actor/human authority promotion.
+
+JSON: additive proposed field `sorok_g4_point_of_use_candidate` (do not apply without competent receiving).
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "ledger_blob": "4d34330d3aba6e0cf16d8c94402e42037adf6bf8",
+  "cic_blob": "9bdfc515beb007e9eb4bf96755b9250562436093",
+  "pr_observations": 182,
+  "relationships": 625,
+  "criteria": 187,
+  "home_routes": 719,
+  "joined": {
+    "pr": 1378,
+    "sha": "90bdcf1099021e3ff59de0722d0f189d2220dd00",
+    "run": 45893286883,
+    "job": 140160934220,
+    "invocations_per_mode": 839
+  },
+  "source_only": {
+    "pr": 1389,
+    "sha": "b3e5de0cfc03d1e142afdb2cf691fc402306ac33",
+    "status": "COMMITTED_UNTESTED"
+  },
+  "owner_incorporation": "NOT_VERIFIED",
+  "independent_review": "HELD",
+  "protected_receiving": "NOT_RECEIVED",
+  "new_authority": false
+}
+```
