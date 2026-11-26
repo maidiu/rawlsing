@@ -1599,7 +1599,7 @@ class NeighborEncounter:
     def new_private_profile(self):
         if self.mii is None:
             raise EncounterRefusal('MII_READER_NOT_INSTALLED')
-        root = self.runtime.ledger.events()[0]['id']
+        root = self.runtime.ledger.events(1)[0]['id']
         scope = {'root': root, 'branch': self.runtime.world_id, 'user': self.user_id}
         return self.mii.default_profile(scope)
     
@@ -1607,7 +1607,7 @@ class NeighborEncounter:
         """Only bridge protected MII's scope() read ABI; NOT a P6 world writer."""
         if self.mii is None:
             raise EncounterRefusal('MII_READER_NOT_INSTALLED')
-        root = self.runtime.ledger.events()[0]['id']
+        root = self.runtime.ledger.events(1)[0]['id']
         return SimpleNamespace(
             branch_id=self.runtime.world_id,
             meta={'user_actor': self.user_id},
