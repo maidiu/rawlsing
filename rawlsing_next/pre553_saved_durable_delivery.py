@@ -937,6 +937,53 @@ class SelectedCountryS04Reads:
     verification_scope: str = "SELECTED_I03_S04_ONLY__NOT_FULL_ARCHIVE_AUDIT"
 
 
+def _selected_country_binding(closure_path,*,expected_root,expected_release_ref,
+                              country_receipt,workload,resolver,host,purpose):
+    """One independently current country admission and authenticated manifest."""
+    scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
+    record=_record(workload,resolver,host,purpose,country_scope=scope)
+    release=exact_ref(expected_release_ref)
+    binding=_country_binding(record,workload,release,country_receipt)
+    archive=_SelectedI03Archive(closure_path,expected_root=expected_root)
+    _require(canonical_json(archive.native["source_identity"])==canonical_json(binding),
+             "ARCHIVE_WORKLOAD_OR_SAVED_SOURCE_BINDING_DRIFT")
+    _require(len(archive.release_identities)==1 and archive.release_identities[0].release_ref==release
+             and archive.release_identities[0].source_artifact_ref.content_hash==record.source_sha256,
+             "ARCHIVE_RELEASE_OR_SOURCE_DRIFT")
+    manifest=_manifest(workload,release)
+    states=archive.native["typed_states"]
+    _require(canonical_json(states["saved_batch_manifest"])==canonical_json(manifest.semantic_projection()),
+             "ARCHIVE_BATCH_MANIFEST_DRIFT")
+    _require(states.get("saved_batch_complete") is True,"SELECTED_COUNTRY_COMPLETE_PUBLICATION_REQUIRED")
+    return scope,record,archive,manifest,states
+
+
+def _selected_country_receipts(archive,states,selected_units,workload):
+    receipts=[]
+    for row in states["saved_batch_receipts"]:
+        if exact_ref(row["unit_ref"]).key in selected_units:
+            receipt=_restore_receipt(row)
+            _require(canonical_json(row)==canonical_json(receipt.projection()),"SELECTED_RECEIPT_PREIMAGE_DRIFT")
+            receipts.append(receipt)
+    authorities=archive.authorities()
+    _require({a.authority_ref.key:a.ref.key for a in authorities}==
+             {a.authority_ref.key:a.ref.key for a in workload.catalog.authorities},
+             "SELECTED_ARCHIVE_AUTHORITY_CATALOG_DRIFT")
+    return tuple(receipts),authorities
+
+
+def _verify_selected_country_units(manifest,receipts,outputs,states,workload):
+    # Reuse the incumbent S2-E full-preimage transcript for these exact
+    # units under the ORIGINAL manifest. Other units are unvisited here;
+    # their completed status is not synthesized or certified by this reader.
+    selected=census_native_batch(manifest,tuple(receipts),outputs,require_complete=False,
+                                 runtime_catalog=workload.catalog)
+    declared=states["saved_batch_census"]["per_unit_full_preimage_sha256"]
+    _require(selected.completed_count==len(outputs)
+             and set(selected.per_unit_full_preimage_sha256)==set(outputs)
+             and all(declared.get(k)==v for k,v in selected.per_unit_full_preimage_sha256.items()),
+             "SELECTED_S2E_FULL_PREIMAGE_DRIFT")
+
 def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
                               country_receipt,workload,resolver,host,purpose,requests):
     """Cold request-scoped reading from existing S2-F CAS without full hydration.
@@ -954,37 +1001,16 @@ def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
         index=item[1]
         _require(index is None or type(index) is int,"EXACT_CONDITIONER_INDEX_REQUIRED")
         plan.append((ExactRef(ref.kind,ref.object_id,ref.content_hash),index))
-    scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
-    record=_record(workload,resolver,host,purpose,country_scope=scope)
-    release=exact_ref(expected_release_ref)
-    binding=_country_binding(record,workload,release,country_receipt)
-    archive=_SelectedI03Archive(closure_path,expected_root=expected_root)
-    _require(canonical_json(archive.native["source_identity"])==canonical_json(binding),
-             "ARCHIVE_WORKLOAD_OR_SAVED_SOURCE_BINDING_DRIFT")
-    _require(len(archive.release_identities)==1 and archive.release_identities[0].release_ref==release
-             and archive.release_identities[0].source_artifact_ref.content_hash==record.source_sha256,
-             "ARCHIVE_RELEASE_OR_SOURCE_DRIFT")
-    manifest=_manifest(workload,release)
-    states=archive.native["typed_states"]
-    _require(canonical_json(states["saved_batch_manifest"])==canonical_json(manifest.semantic_projection()),
-             "ARCHIVE_BATCH_MANIFEST_DRIFT")
-    _require(states.get("saved_batch_complete") is True,"SELECTED_COUNTRY_COMPLETE_PUBLICATION_REQUIRED")
+    scope,record,archive,manifest,states=_selected_country_binding(
+        closure_path,expected_root=expected_root,expected_release_ref=expected_release_ref,
+        country_receipt=country_receipt,workload=workload,resolver=resolver,host=host,purpose=purpose)
     units={u.job_ref.key:u for u in manifest.units if u.job_kind=="QUERY"}
     _require(set(archive.direct)<=set(units) and set(states["s04_first_reads"])==set(archive.direct),
              "ARCHIVE_NATIVE_OUTPUT_CENSUS_DRIFT")
     _require(all(ref.key in units and ref.key in archive.direct for ref,_ in plan),
              "QUERY_NOT_IN_RETAINED_DIRECT_WORKLOAD")
     selected_units={units[ref.key].unit_ref.key:units[ref.key] for ref,_ in plan}
-    receipts=[]
-    for row in states["saved_batch_receipts"]:
-        if exact_ref(row["unit_ref"]).key in selected_units:
-            receipt=_restore_receipt(row)
-            _require(canonical_json(row)==canonical_json(receipt.projection()),"SELECTED_RECEIPT_PREIMAGE_DRIFT")
-            receipts.append(receipt)
-    authorities=archive.authorities()
-    _require({a.authority_ref.key:a.ref.key for a in authorities}==
-             {a.authority_ref.key:a.ref.key for a in workload.catalog.authorities},
-             "SELECTED_ARCHIVE_AUTHORITY_CATALOG_DRIFT")
+    receipts,authorities=_selected_country_receipts(archive,states,selected_units,workload)
     outputs={}
     queries={}
     for ref,_ in plan:
@@ -998,16 +1024,7 @@ def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
         outputs[units[ref.key].unit_hash]=execution
         queries[ref.key]=query
         scope.current_only()
-    # Reuse the incumbent S2-E full-preimage transcript for these exact
-    # units under the ORIGINAL manifest. Other units are unvisited here;
-    # their completed status is not synthesized or certified by this reader.
-    selected=census_native_batch(manifest,tuple(receipts),outputs,require_complete=False,
-                                 runtime_catalog=workload.catalog)
-    declared=states["saved_batch_census"]["per_unit_full_preimage_sha256"]
-    _require(selected.completed_count==len(outputs)
-             and set(selected.per_unit_full_preimage_sha256)==set(outputs)
-             and all(declared.get(k)==v for k,v in selected.per_unit_full_preimage_sha256.items()),
-             "SELECTED_S2E_FULL_PREIMAGE_DRIFT")
+    _verify_selected_country_units(manifest,receipts,outputs,states,workload)
     reads=[]
     for ref,index in plan:
         scope.current_only()
@@ -1023,6 +1040,65 @@ def read_country_s04_selected(closure_path,*,expected_root,expected_release_ref,
     _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
              "CURRENT_CHANGED_DURING_SELECTED_COLD_SERVING")
     return SelectedCountryS04Reads(archive.root,tuple(sorted(outputs)),tuple(reads),archive.blobs_read)
+
+
+@dataclass(frozen=True)
+class SelectedCountryI05RoleReads:
+    """One complete discovery unit verified; not a full archive audit."""
+    root_identity: str
+    selected_unit_hash: str
+    discovery_replay_ref: ExactRef
+    reads: tuple
+    blobs_read: int
+    verification_scope: str = "SELECTED_I05_FRONTIER_AND_ROLES__NOT_FULL_ARCHIVE_AUDIT"
+
+
+def read_country_i05_roles_selected(closure_path,*,expected_root,expected_release_ref,
+                                    country_receipt,workload,resolver,host,purpose,
+                                    discovery_authority_ref,requests):
+    """Cold receive selected roles of one issued I05 frontier without full open.
+
+    Authenticate the complete pinned manifest and the complete selected I05
+    unit (all candidates, facts, role queries and predicates, replay preimages,
+    authority and S2-E transcript). Other units' CAS bodies are unvisited.
+    Each invocation is independent: no retained permission or proof cache.
+    """
+    ref=exact_ref(discovery_authority_ref)
+    ref=ExactRef(ref.kind,ref.object_id,ref.content_hash)
+    _require(type(requests) in (tuple,list) and bool(requests),
+             "EXPLICIT_NONEMPTY_I05_ROLE_BATCH_REQUIRED")
+    plan=[]
+    for item in requests:
+        _require(type(item) in (tuple,list) and len(item)==2,
+                 "EXACT_I05_ROLE_REQUEST_REQUIRED")
+        candidate=exact_ref(item[0])
+        role=item[1]
+        _require(type(role) is str and bool(role.strip()),"EXACT_I05_ROLE_REQUIRED")
+        plan.append((ExactRef(candidate.kind,candidate.object_id,candidate.content_hash),role))
+    scope,record,archive,manifest,states=_selected_country_binding(
+        closure_path,expected_root=expected_root,expected_release_ref=expected_release_ref,
+        country_receipt=country_receipt,workload=workload,resolver=resolver,host=host,purpose=purpose)
+    units={u.job_ref.key:u for u in manifest.units if u.job_kind=="DISCOVERY"}
+    _require(ref.key in units,"DISCOVERY_NOT_IN_RETAINED_WORKLOAD")
+    unit=units[ref.key]
+    receipts,authorities=_selected_country_receipts(
+        archive,states,{unit.unit_ref.key:unit},workload)
+    scope.current_only()
+    authority,discovery=archive.discovery(ref,authorities)
+    _require(authority==workload.catalog.resolve_discovery_authority_exact(ref),
+             "SELECTED_ARCHIVE_DISCOVERY_CATALOG_DRIFT")
+    scope.current_only()
+    _verify_selected_country_units(manifest,receipts,{unit.unit_hash:discovery},states,workload)
+    reads=[]
+    for candidate,role in plan:
+        scope.current_only()
+        reads.append(receive_s04_i05_role(discovery=discovery,
+            candidate_receipt_ref=candidate,query_role=role))
+        scope.current_only()
+    _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
+             "CURRENT_CHANGED_DURING_SELECTED_COLD_SERVING")
+    return SelectedCountryI05RoleReads(archive.root,unit.unit_hash,
+        discovery.replay_ref,tuple(reads),archive.blobs_read)
 
 
 def open_country_product(closure_path, *, expected_root, expected_release_ref,
