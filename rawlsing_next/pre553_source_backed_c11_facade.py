@@ -1201,6 +1201,14 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
+):
+    """Public ingress never accepts a restored preparation or historical proof."""
+    return _build_source_backed_c11_repository(source,projection,cache=cache,
+        batch_size=batch_size,current_authorities=current_authorities)
+
+
+def _build_source_backed_c11_repository(
+    source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
     _country_preparation=None,
 ):
     # One-shot iterables must not disappear between cache admission and the

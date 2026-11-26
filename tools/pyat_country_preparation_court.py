@@ -136,15 +136,21 @@ def worker(root,mode,counts,report):
             with db.open("r+b") as file:file.seek(-1,2);file.write(byte)
         write(report,{"mode":mode,"negative_controls":7})
         return
-    calls=[]; original=facade.build_source_backed_c11_repository
+    calls=[]; original=facade._build_source_backed_c11_repository
     def counted(*args,**kw):
         start=time.monotonic()
-        with patch.object(facade,"_event",wraps=facade._event) as events:
+        count=0; original_event=facade._event
+        def event(*args,**kw):
+            nonlocal count
+            count+=1
+            return original_event(*args,**kw)
+        # Do not retain every event's call args in a Mock at survey scale.
+        with patch.object(facade,"_event",event):
             result=original(*args,**kw)
-        calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":events.call_count})
+        calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":count})
         return result
     result_rows=[]
-    with patch.object(facade,"build_source_backed_c11_repository",side_effect=counted):
+    with patch.object(facade,"_build_source_backed_c11_repository",counted):
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:
             for item,resolver,grant in cases:
                 start=time.monotonic()

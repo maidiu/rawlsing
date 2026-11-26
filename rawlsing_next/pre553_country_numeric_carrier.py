@@ -1310,9 +1310,14 @@ class CountryWorkloadSession:
             del repo,release,old_projection,old_authorities,identity
         # Release the old prepared graph before constructing another one.
         self._entry=None
-        repo,release=build_source_backed_c11_repository(source,projection,
-                                    current_authorities=authorities,
-                                    _country_preparation=self._preparation)
+        if self._preparation is None:
+            repo,release=build_source_backed_c11_repository(source,projection,
+                                        current_authorities=authorities)
+        else:
+            # Private, independently admitted TEST_ONLY session only.
+            from .pre553_source_backed_c11_facade import _build_source_backed_c11_repository
+            repo,release=_build_source_backed_c11_repository(source,projection,
+                current_authorities=authorities,_country_preparation=self._preparation)
         # Facade already computed and rechecked the complete producer key.
         # Do not repeat its projection hashing on this cold admission.
         key=self._reader._certified_facade_key
