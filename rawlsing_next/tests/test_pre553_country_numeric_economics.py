@@ -836,6 +836,7 @@ class CountryNativeEconomics(unittest.TestCase):
                   (delivery,"publish_empirical_closure","s2f_publication"),
                   (issued.NativeWorkloadResult,"exact_s2e_output_census","s2e_census"))
         archived={}
+        archived_roles={}
         def pub_metrics(pub):
             r=pub.receipt
             return {"completed":pub.batch_census["completed_count"],
@@ -915,15 +916,49 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertEqual(tuple(delivery._s04_refs(r) for r in direct.reads),
                              tuple(delivery._s04_refs(r) for r in read))
             roles=0
+            role_stats=[]
             with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
-                              side_effect=AssertionError("retained consumer reran I03")):
+                              side_effect=AssertionError("retained consumer reran I03")), patch.object(
+                    CarrierNeutralResearchExecutor,"execute_i05",
+                              side_effect=AssertionError("retained consumer reran I05")):
                 for discovery in cold._closure.discovery_results:
-                    for candidate in discovery.receipts:
-                        for role,refs in candidate.support_uncertainty_state.get("query_role_fact_refs",{}).items():
-                            if len(refs)==1:
-                                fact,role_receipt=cold.read_i05_role(candidate.ref,role)
-                                self.assertTrue(fact.ref and role_receipt.ref);roles+=1
+                    role_plan=tuple((candidate.ref,role) for candidate in discovery.receipts
+                        for role,refs in candidate.support_uncertainty_state.get("query_role_fact_refs",{}).items()
+                        if len(refs)==1)
+                    self.assertTrue(role_plan)
+                    args=common(item,resolver,pub,receipt,host,purpose)
+                    def full_role_read():
+                        opened=delivery.open_country_product(pub.receipt.root_path,**args)
+                        return tuple(opened.read_i05_role(candidate,role) for candidate,role in role_plan)
+                    def selected_role_read():
+                        return delivery.read_country_i05_roles_selected(pub.receipt.root_path,
+                            **args,discovery_authority_ref=discovery.discovery_authority_ref,
+                            requests=role_plan)
+                    times={"full":[],"selected":[]};blob_counts={"full":[],"selected":[]}
+                    expected=tuple((a.ref,b.ref) for a,b in
+                                   (cold.read_i05_role(candidate,role) for candidate,role in role_plan))
+                    for order in (("full","selected"),("selected","full")):
+                        for mode in order:
+                            with patch.object(durable,"_load_blob",wraps=durable._load_blob) as loads:
+                                result0,t0=elapsed(full_role_read if mode=="full" else selected_role_read)
+                            times[mode].append(t0["wall_s"]);blob_counts[mode].append(loads.call_count)
+                            if mode=="selected":
+                                self.assertEqual(result0.discovery_replay_ref,discovery.replay_ref)
+                                self.assertEqual(result0.blobs_read,loads.call_count)
+                                self.assertEqual(result0.verification_scope,
+                                    "SELECTED_I05_FRONTIER_AND_ROLES__NOT_FULL_ARCHIVE_AUDIT")
+                                result0=result0.reads
+                            self.assertEqual(tuple((a.ref,b.ref) for a,b in result0),expected)
+                    self.assertLess(max(blob_counts["selected"]),min(blob_counts["full"]))
+                    roles+=len(role_plan)
+                    role_stats.append({"roles":len(role_plan),"times":times,
+                        "median_seconds":{k:median(v) for k,v in times.items()},
+                        "actual_blob_reads":blob_counts,"exact_role_refs":True})
+                    archived_roles[country]=(discovery.discovery_authority_ref,role_plan,expected)
             self.assertGreater(roles,0)
+            print("R13_SELECTED_DISCOVERY",json.dumps({"country":country,"rows":len(selected),
+                  "risk_mode":risk_mode,"frontiers":role_stats,
+                  "grade":"SAME_PIN_MATCHED_COLD_FULL_VS_SELECTED_I05_FRONTIER_NOT_FULL_AUDIT"}),flush=True)
             # Same source SHA is insufficient: another country's physical
             # receipt cannot be used to authorize this archive.
             wrong=receipts["B" if country=="A" else "A"][1]
@@ -939,7 +974,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "selected_cold_blobs":direct.blobs_read,"retained_i05_roles":roles,
                 "independent_source_counts_and_wrong_country_refusal":True}),flush=True)
             # Do not retain three logical graphs or full cold products.
-            del cold,read,direct,result,runs,session,workload,record,queries,qrefs,item,resolver,pub,discovery,candidate,fact,role_receipt
+            del cold,read,direct,result,runs,session,workload,record,queries,qrefs,item,resolver,pub,discovery,result0,full_role_read,selected_role_read
             gc.collect()
 
         # A later return to A, after B and C, reissues a distinct workload.
