@@ -156,6 +156,11 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
                 if (path.get('correspondence_attention')!=receipt
                         or receipt.get('received_cue_ref') not in cues):continue
                 basis['correspondence_attention']=copy(receipt)
+            if m.get('focal_encounter'):
+                receipt=m['focal_encounter']
+                if (path.get('focal_encounter')!=receipt
+                        or receipt.get('cue_ref') not in cues):continue
+                basis['focal_encounter']=copy(receipt)
             out.append({**basis,'rehearsal_id':stable_id('private_rehearsal_option',basis),
                         'remembered_content_hypothesis':m['content'][:400],
                         'affective_object':copy(aff) if aff else None,
@@ -203,6 +208,8 @@ def perform_private_rehearsal(actor,experience,event_ref,selection,before):
         rec['undertaking_attention']=copy(opt['undertaking_attention'])
     if opt.get('correspondence_attention'):
         rec['correspondence_attention']=copy(opt['correspondence_attention'])
+    if opt.get('focal_encounter'):
+        rec['focal_encounter']=copy(opt['focal_encounter'])
     m.setdefault('private_rehearsals',[]).append(rec)
     return rec
 
@@ -239,6 +246,8 @@ def admit_private_possible_end(actor,experience,event_ref,proposal):
         end['private_undertaking_attention']=copy(rec['undertaking_attention'])
     if rec.get('correspondence_attention'):
         end['private_correspondence_attention']=copy(rec['correspondence_attention'])
+    if rec.get('focal_encounter'):
+        end['private_focal_encounter']=copy(rec['focal_encounter'])
     actor.setdefault('possible_ends',[]).append(end)
     return {'kind':'NOTICE_PRIVATE_POSSIBLE_END','possible_end':ident,'grade':GRADE}
 

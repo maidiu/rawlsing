@@ -223,7 +223,7 @@ def _semantic_packet_profile(task,packet):
                 group="operative_projection"
             elif key in ("options","practical_options","possible_end_trials",
                          "private_rehearsal_options","undertaking_attention_options",
-                         "correspondence_attention_options"):
+                         "correspondence_attention_options","focal_encounter_options"):
                 group="practical_offer_fields"
         elif task=="development":
             if key in ("actor","clock","experience","bodily_before_actor_analyst_only",
@@ -419,6 +419,15 @@ class ExplicitJSONLLMProvider:
             "analyst-only causal explanation into actor self-knowledge. "
             "For development emit candidates from the existing typed owner "
             "grammar; consider NO_CHANGE where source evidence is insufficient. "
+            "For focal_encounter_options select ORIENT with the exact focal_encounter_id, "
+            "or another offered course. Focal eligibility is not a received encounter. "
+            "Only an actual historically_possible_focal_encounter_memory may support "
+            "MEMORY with that focal_encounter_ref and actor-local fallible content. "
+            "For historically_possible_monitoring_changes nominate the exact offered "
+            "ACQUIRE_HISTORICAL_ORIENTATION or REVISE_HISTORICAL_ORIENTATION with its "
+            "entire monitoring_basis or monitoring_revision_basis, or abstain. "
+            "A locally released monitoring priority is not a new motive, universal "
+            "safety, recovered memory, or evidence of actual human attention. "
             "For historically_possible_counterhistory_release you may nominate the "
             "exact REVISE_HISTORICAL_ORIENTATION candidate, including its INHIBIT "
             "revision_mode and entire counterhistory_release_basis, or abstain. "

@@ -106,6 +106,27 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
         if entry['cue']['id'] not in {x['cue']['id'] for x in chosen}:
             chosen.append(entry)
     for v in rare[:reserve]: add(v)
+    # One existing focal position may be occupied by an acquired, specifically
+    # practiced orientation to a present Other. Keep the rarity reserve and
+    # total capacity unchanged. This is a bounded policy, not proof of
+    # compulsive attention or a universal conservation law.
+    monitoring = []
+    for row in getattr(constitution, 'historical_orientations', []):
+        if (row.get('actor') != constitution.actor
+                or row.get('acquisition') != 'LIVED_DIRECTED_MONITORING_PRACTICE'
+                or row.get('location') != access.location
+                or (row.get('revisions') and row['revisions'][-1]['mode'] == 'INHIBIT')):
+            continue
+        other = row.get('monitoring_basis', {}).get('counterpart_ref')
+        for entry in high:
+            if (entry['cue'].get('kind') == 'coactor_present'
+                    and entry['cue'].get('source_actor') == other):
+                monitoring.append((row['id'], entry))
+    monitoring_refs = []
+    if monitoring and len(chosen) < capacity:
+        ref, entry = sorted(monitoring, key=lambda pair: pair[0])[0]
+        add(entry)
+        monitoring_refs.append(ref)
     for v in high:
         if len(chosen)>=capacity: break
         add(v)
@@ -127,6 +148,9 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
             'historical_sensory_bias_is_provisional':bool(historical_modalities),
             'requires_independent_actor_learning_for_durable_bias':True,
             'budget_policy_not_a_human_attention_law':True,
+            **({'monitoring_orientation_refs': monitoring_refs,
+                'monitoring_focus_is_not_actual_attention': True}
+               if monitoring_refs else {}),
             'grade':GRADE,
         }
     }
@@ -297,3 +321,172 @@ def received_correspondence_attention(actor,selection,experience):
             'route_ref':chosen['route_ref'],'received_cue_ref':matches[0]['id'],
             'actor':actor['id'],'opened_clock':experience['clock'],
             'comprehension_not_established':True}
+
+
+def offer_focal_encounters(actor, access, focal_refs):
+    """A bounded existing ORIENT operation can deliberately receive a present
+    coactor sign. Only open this sourcefree family after personally received
+    directed imposition; do not infer vigilance from co-presence alone.
+    """
+    if access.actor != actor['id'] or not (
+            any(row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE'
+                for row in actor.get('historical_orientations', []))
+            or any(p.get('directed_encounter', {}).get('operation') == 'IMPOSE'
+                   for p in actor.get('evidence_paths', []))):
+        return []
+    out = []
+    for cue in access.cues:
+        if (cue.get('id') not in focal_refs or cue.get('kind') != 'coactor_present'
+                or type(cue.get('source_actor')) is not str
+                or cue.get('source_actor') == actor['id']
+                or cue.get('location') != access.location
+                or cue.get('clock') != access.world_clock):
+            continue
+        basis = {'actor':actor['id'], 'as_of_clock':access.world_clock,
+                 'location':access.location, 'cue_ref':cue['id'],
+                 'counterpart_ref':cue['source_actor']}
+        out.append({**basis, 'attention_id':stable_id('focal_encounter',basis),
+                    'operation':'ORIENT', 'outward_sign':copy(cue),
+                    'not_private_mind_or_actual_attention_yet':True})
+    return out
+
+
+def received_focal_encounter(actor, selection, experience):
+    chosen=(selection or {}).get('focal_encounter')
+    if not isinstance(chosen,dict):return None
+    if (selection.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or selection.get('actor')!=actor['id'] or chosen.get('actor')!=actor['id']
+            or experience.get('actor')!=actor['id']
+            or experience.get('own_action')!='ORIENT'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or experience.get('clock')!=chosen.get('as_of_clock',-2)+1
+            or experience.get('location')!=chosen.get('location')
+            or selection.get('selected_project_refs')!=[]
+            or selection.get('possible_end_trial') is not None):return None
+    cue=chosen.get('outward_sign')
+    if (not isinstance(cue,dict) or cue.get('id')!=chosen.get('cue_ref')
+            or cue.get('kind')!='coactor_present'
+            or cue.get('source_actor')!=chosen.get('counterpart_ref')
+            or sum(c==cue for c in experience.get('perceived_cues',[]))!=1):
+        return None
+    basis={k:copy(chosen[k]) for k in ('actor','as_of_clock','location','cue_ref','counterpart_ref')}
+    if chosen.get('attention_id')!=stable_id('focal_encounter',basis):return None
+    return {**basis,'attention_id':chosen['attention_id'],
+            'received_at_clock':experience['clock'],
+            'not_inference_of_other_mind_or_monitoring_motive':True}
+
+
+def personally_received_directed_act(experience):
+    """A target's actual sensed person-directed act, not another's intention."""
+    if experience.get('participated') is not True or experience.get('status')!='OBSERVED':
+        return None
+    if (experience.get('own_action')=='RECEIVED_CARE'
+            and experience.get('felt_effect')=='SOMATIC_CARE_CANDIDATE'):
+        operation='CARE'
+    elif (experience.get('own_action') is None
+            and experience.get('felt_effect')=='IMPOSED_EFFECT_UNINTERPRETED'):
+        operation='IMPOSE'
+    else:return None
+    signs=[c for c in experience.get('perceived_cues',[])
+           if c.get('kind')=='performed_'+operation.lower()
+           and c.get('actor_accessible_target_ref')==experience['actor']
+           and c.get('public_person_directed_act_not_private_intention') is True
+           and type(c.get('source_actor')) is str and c['source_actor']!=experience['actor']
+           and c.get('location')==experience.get('location')
+           and c.get('clock')==experience.get('clock')]
+    if len(signs)!=1:return None
+    return {'actor':experience['actor'],'counterpart_ref':signs[0]['source_actor'],
+            'cue_ref':signs[0]['id'],'operation':operation,
+            'location':experience['location'],'clock':experience['clock'],
+            'not_motive_safety_or_consent':True}
+
+
+def possible_monitoring_changes(actor, experience, event_ref):
+    """Existing historical-orientation owner consumes these qualified options.
+
+    Imposition, two subsequent selected focal encounters, and later two
+    actually received relieving care acts license distinct OPTIONAL changes.
+    A coactor's favorable act need not heal anyone. No recollection is created.
+    """
+    if experience.get('actor')!=actor.get('id'):return []
+    site=experience.get('location');clock=experience.get('clock')
+    if site!=actor.get('location') or type(clock) is not int:return []
+    paths=actor.get('evidence_paths',[])
+    current=[p for p in paths if p.get('event')==event_ref
+             and p.get('experience_ref')==experience.get('ref')]
+    if len(current)!=1:return []
+    now=current[0]
+    focal=now.get('focal_encounter');directed=now.get('directed_encounter')
+    if focal and focal!=received_focal_encounter(
+            actor,experience.get('own_practical_selection'),experience):return []
+    if directed and directed!=personally_received_directed_act(experience):return []
+    latest=focal or directed
+    if not latest:return []
+    other=latest['counterpart_ref']
+    def matching(path,key):
+        row=path.get(key,{})
+        return (row.get('actor')==actor['id'] and row.get('location')==site
+                and row.get('counterpart_ref')==other
+                and row.get('cue_ref') in path.get('received_cue_refs',[]))
+    existing=[r for r in actor.get('historical_orientations',[])
+              if r.get('actor')==actor['id'] and r.get('location')==site
+              and r.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE'
+              and r.get('monitoring_basis',{}).get('counterpart_ref')==other]
+    if len(existing)>1:return []
+    row=existing[0] if existing else None
+    active=bool(row and (not row['revisions'] or row['revisions'][-1]['mode']!='INHIBIT'))
+    cutoff=(row['revisions'][-1]['clock'] if row and row['revisions']
+            else row['origin_clock'] if row else -1)
+    if type(cutoff) is not int:return []
+    directed_paths=[p for p in paths if matching(p,'directed_encounter')
+                    and type(p['directed_encounter'].get('clock')) is int
+                    and cutoff<p['directed_encounter']['clock']<=clock]
+    directed_paths.sort(key=lambda p:p['directed_encounter']['clock'])
+    def path_ref(p,key):
+        return {'event_ref':p['event'],'experience_ref':p['experience_ref'],
+                'cue_ref':p[key]['cue_ref']}
+    common={'actor':actor['id'],'location':site,'counterpart_ref':other,
+            'not_diagnosis_or_necessary_adaptation':True}
+    if focal and not active:
+        adverse=[p for p in directed_paths if p['directed_encounter']['operation']=='IMPOSE']
+        if not adverse:return []
+        prior=adverse[-1];after=prior['directed_encounter']['clock']
+        received=[p for p in paths if matching(p,'focal_encounter')
+                  and type(p['focal_encounter'].get('received_at_clock')) is int
+                  and after<p['focal_encounter']['received_at_clock']<=clock]
+        received.sort(key=lambda p:p['focal_encounter']['received_at_clock'])
+        if (len(received)<2 or received[-1]!=now
+                or received[-2]['event']==event_ref
+                or received[-2]['focal_encounter']['received_at_clock']>=clock):
+            return []
+        basis={**common,'imposition':path_ref(prior,'directed_encounter'),
+               'selected_focal_courses':[path_ref(p,'focal_encounter') for p in received[-2:]]}
+        if row:
+            return [{'kind':'REVISE_HISTORICAL_ORIENTATION','orientation_ref':row['id'],
+                     'revision_mode':'REINSTATE','perceived_cue_ref':focal['cue_ref'],
+                     'monitoring_revision_basis':basis}]
+        return [{'kind':'ACQUIRE_HISTORICAL_ORIENTATION','operation':'ORIENT',
+                 'orientation_mode':'APPROACH','perceived_cue_ref':focal['cue_ref'],
+                 'monitoring_basis':basis}]
+    if directed and directed['operation']=='CARE' and active:
+        if len(directed_paths)<2 or directed_paths[-1]!=now:return []
+        pair=directed_paths[-2:]
+        if (any(p['directed_encounter']['operation']!='CARE' for p in pair)
+                or pair[0]['event']==event_ref
+                or pair[0]['directed_encounter']['clock']>=clock):return []
+        witnesses=actor.get('lived_genesis_episodes',[])
+        for p in pair:
+            lived=[w for w in witnesses if w.get('actor')==actor['id']
+                   and w.get('event_ref')==p['event']
+                   and w.get('experience_ref')==p['experience_ref']
+                   and p['directed_encounter']['cue_ref'] in w.get('received_sign_refs',[])
+                   and w.get('received_relief') and not w.get('personally_lived_adverse_course')]
+            if len(lived)!=1:return []
+        basis={**common,'orientation_ref':row['id'],
+               'received_care_courses':[path_ref(p,'directed_encounter') for p in pair],
+               'not_proof_safety_or_global_recovery':True}
+        return [{'kind':'REVISE_HISTORICAL_ORIENTATION','orientation_ref':row['id'],
+                 'revision_mode':'INHIBIT','perceived_cue_ref':directed['cue_ref'],
+                 'monitoring_revision_basis':basis}]
+    return []
