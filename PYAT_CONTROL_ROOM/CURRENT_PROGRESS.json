@@ -1892,6 +1892,34 @@
         "field": "g4_next_action",
         "value": "Real source-native manifest, persistent receipt reuse by existing custody"
       }
-    ]
+    ],
+    "reciprocal": [
+      {
+        "pr": 1302,
+        "commit": "7e3c4dc2d4eaaadbf32100d0f4db4a1e781edc79",
+        "exact_content_readback": true
+      },
+      {
+        "pr": 1173,
+        "commit": "3bfd45ab549fcc1bbb6fd281a636395e56354df0",
+        "exact_content_readback": true
+      },
+      {
+        "pr": 1331,
+        "commit": "e96a4e5fb66a918fa1977b1294a211c6f239f3cd",
+        "exact_content_readback": true
+      },
+      {
+        "pr": 1327,
+        "commit": "2065cf1825de199619625355e0751ad25aa8ad20",
+        "exact_content_readback": true
+      }
+    ],
+    "no_drop": {
+      "original_rows": 1076,
+      "corrected_live_fields": 12,
+      "prior_fields_recoverable": true,
+      "unaffected_row_bytes_preserved": true
+    }
   }
 }

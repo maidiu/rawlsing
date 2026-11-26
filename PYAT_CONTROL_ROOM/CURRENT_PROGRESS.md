@@ -10,6 +10,8 @@ Country lineage #1372 R4 executed 4 jobs; #1373 R5 header-at-emission/packed fil
 
 Exact evidence and prior live field values in paired JSON `g4_currentness_reconciliation_20261126`; protected rev23 and P0 unchanged.
 
+Point-of-use correction readbacks: [#1302](https://github.com/maidiu/rawlsing/commit/7e3c4dc2d4eaaadbf32100d0f4db4a1e781edc79); [#1173](https://github.com/maidiu/rawlsing/commit/3bfd45ab549fcc1bbb6fd281a636395e56354df0); [#1331](https://github.com/maidiu/rawlsing/commit/e96a4e5fb66a918fa1977b1294a211c6f239f3cd); [#1327](https://github.com/maidiu/rawlsing/commit/2065cf1825de199619625355e0751ad25aa8ad20). All 1,076 original register rows conserved; 12 superseded live fields preserved in paired JSON.
+
 
 [SOROK PROGRAMMA READ_FIRST / orchestration / spine reciprocal route #1333](https://github.com/maidiu/rawlsing/commit/e81fad104e11274e4971031253811606bc5b93b0) — working-document source integration, no changed runtime status.
 
