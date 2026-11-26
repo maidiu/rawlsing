@@ -28,6 +28,7 @@ import zlib
 from .pre553_physical_decoder import PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence
 from .pre553_r5_codec import R5OpaqueValue, R5TypedValueCodec, canonical_json
 from .pre553_source_backed_c11_facade import ExactPhysicalCellStream
+from ._pre553_country_preparation import CountryPreparationPin
 
 LEGACY_SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@1"
 SCHEMA = "PYAT_COUNTRY_NUMERIC_PHYSICAL@2"
