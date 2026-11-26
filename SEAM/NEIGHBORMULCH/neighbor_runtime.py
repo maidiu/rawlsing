@@ -1082,6 +1082,82 @@ class NeighborEncounter:
             'grade': 'SOURCEFREE_RESEARCH_PROVISIONAL',
         }
 
+    def _presented_recognition(self, world, history, profile, selected, offered,
+                               committed_look, close_granted):
+        """Bridge the existing P6 earned-recognition contract to CO LOOK
+        plus private MII close presentation. A LOOK alone is not inspection.
+        This only qualifies a sourcefree familiar marking currently visible,
+        not the real human's memory, expertise, or comprehension.
+        """
+        if selected not in offered:
+            return {}, None
+        obj=world.get('material_objects',{}).get(selected,{})
+        mark=obj.get('public_recognition')
+        if (obj.get('grade')!='SOURCEFREE_TEST_ONLY'
+                or obj.get('kind')=='WORKED_MATERIAL_ARTIFACT'
+                or type(mark) is not dict
+                or set(mark)!= {'identity','marking','evidence'}
+                or any(type(v) is not str or not v.strip() or len(v)>200
+                       for v in mark.values())
+                or type(obj.get('public_close')) is not str
+                or mark['evidence'] not in obj['public_close']
+                or mark['evidence'] not in offered[selected]):
+            return {}, None
+        # A changed marking/label cannot inherit an old inspection.
+        fingerprint=self.mii.digest({'object':selected, 'recognition':mark})
+        def actual_look(ref,clock,location):
+            rows=[e for e in world.get('neighbor_user_events',[])
+                  if e.get('event_ref')==ref and e.get('user')==self.user_id
+                  and e.get('clock')==clock and e.get('destination')==location
+                  and e.get('operation')=='LOOK' and e.get('status')=='PERFORMED'
+                  and e.get('target_object_ref')==selected]
+            if len(rows)!=1:return None
+            event=rows[0]
+            receipts=[e for e in history
+                      if e.get('kind')=='NEIGHBOR_USER_CONTRIBUTION'
+                      and e.get('clock')==clock
+                      and e.get('envelope',{}).get('world')==self.runtime.world_id
+                      and e.get('envelope',{}).get('payload',{}).get('user_event_ref')==ref
+                      and e['envelope']['payload'].get('user')==self.user_id
+                      and e['envelope']['payload'].get('payload_hash')==event.get('payload_hash')
+                      and e['envelope']['payload'].get('performed') is True]
+            return receipts[0]['id'] if len(receipts)==1 else None
+        receipt=None; exposure_ref=None; origin_clock=None
+        if close_granted and committed_look is not None:
+            origin_clock=committed_look['clock']
+            receipt=actual_look(committed_look['event_ref'],origin_clock,
+                                committed_look['destination'])
+        # Do not trust recognized/seen cache. MII cold normalization clears
+        # it; reconstruct only from an earlier actually offered close and
+        # its matching world LOOK. App-trusted sidecar, not authentication.
+        if receipt is None:
+            for entry in reversed(profile.get('exposures',[])):
+                if type(entry) is not dict:continue
+                context=entry.get('context',{})
+                previous=entry.get('offered',{})
+                if (entry.get('scope')!=profile['scope']
+                        or entry.get('selected')!=selected
+                        or context.get('world')!=self.runtime.world_id
+                        or context.get('recognition_source_fingerprint')!=fingerprint
+                        or context.get('user_close_granted_by_mii') is not True
+                        or type(entry.get('clock')) is not int
+                        or entry['clock']>=world['clock']
+                        or type(previous.get(selected)) is not str
+                        or mark['evidence'] not in previous[selected]
+                        or entry.get('entry_hash')!=self.mii.digest(
+                            {k:v for k,v in entry.items() if k!='entry_hash'})):
+                    continue
+                receipt=actual_look(entry.get('request_id'),entry['clock'],context.get('room'))
+                if receipt is not None:
+                    exposure_ref=entry['exposure_id'];origin_clock=entry['clock'];break
+        if receipt is None:return {},None
+        row={'object_id':selected,**deepcopy(mark),'event_id':receipt,
+             'turn':origin_clock,'recognition_source':'QUALIFIED_PRIVATE_CLOSE_PRESENTATION',
+             'human_recognition_not_established':True,
+             'present_marking_required':True}
+        if exposure_ref is not None:row['prior_exposure_ref']=exposure_ref
+        return {selected:row},fingerprint if close_granted else None
+
     def private_surface(self, profile: dict, *, command: str | None = None,
                         target: str | None = None):
         """Project the existing CO world into the *existing* protected MII reader.
@@ -1464,10 +1540,16 @@ class NeighborEncounter:
                 mandatory.append({'kind': 'PUBLIC_TIP', 'text': tip[:500],
                                   'source': 'EXISTING_ORGANISM_PUBLIC_EXPRESSION',
                                   'modality_grade': 'SOURCEFREE_VISUAL_ONLY_UNTYPED'})
+        close_granted=bool(committed_look and selected in offered
+                           and offered[selected]!=available[selected])
+        earned,recognition_fingerprint=self._presented_recognition(
+            world,history,profile,selected,offered,committed_look,close_granted)
+        self.mii.merge_recognition(profile,earned)
+        recognition={selected:self.mii.recognized_for(profile,selected)} if earned else {}
         view = self.mii.surface(room=loc, orientation='SOURCEFREE_UNKNOWN',
             exit_name='SOURCEFREE_UNQUALIFIED', available=available,
             candidates=available, offered=offered, selected=selected,
-            basis=basis, narration=mandatory, recognition={})
+            basis=basis, narration=mandatory, recognition=recognition)
         # On actual reentry expose only the visitor's own elapsed modeled
         # interval, not the intervening actor audit, motives or a retrospective
         # story. Subsequent LOOK can disclose currently accessible changes.
@@ -1502,9 +1584,9 @@ class NeighborEncounter:
             request_id=(committed_look.get('event_ref') if committed_look else None),
             context={'room': loc, 'world': self.runtime.world_id,
                      'command': command,
-                     'user_close_granted_by_mii': bool(
-                        committed_look and selected in offered
-                        and offered[selected] != available[selected])})
+                     'user_close_granted_by_mii': close_granted,
+                     **({'recognition_source_fingerprint':recognition_fingerprint}
+                        if recognition_fingerprint is not None else {})})
         # Reuse MII's existing private, optional acquired-attention mechanic.
         # It is never a world event or evidence that Nadia watched the gaze.
         if (len(profile.get('exposures', [])) > before
