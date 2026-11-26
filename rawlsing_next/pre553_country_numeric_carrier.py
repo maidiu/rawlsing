@@ -1174,17 +1174,28 @@ class CountryWorkloadSession:
             raise CountryCarrierError("exact country receipt and current callback required")
         self._path=Path(path).resolve()
         self._receipt=receipt
-        self._receipt_pin=canonical_json(asdict(receipt))
+        # All receipt fields are exact immutable primitive values. Keep a
+        # detached tuple rather than serializing it on every event read.
+        from dataclasses import fields
+        self._receipt_fields=tuple(f.name for f in fields(receipt))
+        self._receipt_pin=self._receipt_material(receipt)
         self._require_current=require_current
         self._reader=None
         self._entry=None
         self._active=None
         self._entered=False
         self._closed=False
+        self._busy=False
+        self._owner=None
+
+    def _receipt_material(self,receipt):
+        return tuple(getattr(receipt,name) for name in self._receipt_fields)
 
     def __enter__(self):
         if self._entered or self._closed:
             raise CountryCarrierError("country workload session cannot be reentered")
+        from threading import get_ident
+        self._owner=get_ident()
         self._entered=True
         return self
 
@@ -1199,10 +1210,11 @@ class CountryWorkloadSession:
         self.close()
 
     def _check_custody(self):
-        if not self._entered or self._closed:
-            raise CountryCarrierError("country workload session not open")
+        from threading import get_ident
+        if not self._entered or self._closed or self._owner!=get_ident():
+            raise CountryCarrierError("country workload session not open on owner thread")
         _live(self._require_current)
-        if canonical_json(asdict(self._receipt))!=self._receipt_pin:
+        if self._receipt_material(self._receipt)!=self._receipt_pin:
             raise CountryCarrierError("country workload session receipt changed")
 
     def _current(self):
@@ -1220,7 +1232,8 @@ class CountryWorkloadSession:
                 raise CountryCarrierError("country workload session already active")
             if (scope is None or scope.record.scope!="TEST_ONLY_SOURCEFREE"
                     or Path(path).resolve()!=self._path
-                    or canonical_json(asdict(receipt))!=self._receipt_pin):
+                    or type(receipt) is not CountryReceipt
+                    or self._receipt_material(receipt)!=self._receipt_pin):
                 raise CountryCarrierError("country workload session binding mismatch")
             self._active=current
             try:
@@ -1250,15 +1263,18 @@ class CountryWorkloadSession:
         authorities=tuple(authorities)
         key=source_backed_facade_key(source,projection,current_authorities=authorities)
         if self._entry is not None:
-            old_key,old_projection,old_authorities,repo,release,identity=self._entry
+            old_key,old_projection,old_authorities,repo,release,identity,identity_pin=self._entry
             # Strict object ownership avoids reusing a body resolver bound
             # to a different (even equal) projection or authority instance.
             if (key==old_key and projection is old_projection
                     and len(authorities)==len(old_authorities)
                     and all(a is b for a,b in zip(authorities,old_authorities))):
-                if (self._reader._certified_identity!=identity
+                if (canonical_json(identity.as_dict())!=identity_pin
+                        or self._reader._certified_identity!=identity
                         or repo.resolve_release_exact(identity.release_ref) is not release
-                        or release.replay_manifest.ref!=identity.replay_ref):
+                        or release.replay_manifest.ref!=identity.replay_ref
+                        or release.source_release_manifest_hash!=identity.source_release_manifest_hash
+                        or release.semantic_release_hash!=identity.semantic_release_hash):
                     raise CountryCarrierError("country prepared repository identity drift")
                 self._current()
                 return repo,release
@@ -1271,16 +1287,18 @@ class CountryWorkloadSession:
         identity=self._reader._certified_identity
         if identity is None:
             raise CountryCarrierError("country prepared release not certified")
-        self._entry=(key,projection,authorities,repo,release,identity)
+        self._entry=(key,projection,authorities,repo,release,identity,
+                     canonical_json(identity.as_dict()))
         self._current()
         return repo,release
 
     def execute(self,workload,resolver,*,host,purpose):
         from .pre553_issued_workload import _CountryAdmissionScope
-        self._check_custody()
-        if self._active is not None:
+        if self._busy:
             raise CountryCarrierError("country workload session already active")
+        self._busy=True
         try:
+            self._check_custody()
             scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
             return _execute_country_workload(workload,resolver,country_path=self._path,
                 country_receipt=self._receipt,host=host,purpose=purpose,
@@ -1289,19 +1307,24 @@ class CountryWorkloadSession:
         except BaseException:
             self.close()
             raise
+        finally:
+            self._busy=False
 
     def publish(self,workload,resolver,*,host,purpose,root_dir,**options):
         from .pre553_saved_durable_delivery import execute_publish_country
-        self._check_custody()
-        if self._active is not None:
+        if self._busy:
             raise CountryCarrierError("country workload session already active")
+        self._busy=True
         try:
+            self._check_custody()
             return execute_publish_country(workload,resolver,host=host,purpose=purpose,
                 country_path=self._path,country_receipt=self._receipt,root_dir=root_dir,
                 _country_session=self,**options)
         except BaseException:
             self.close()
             raise
+        finally:
+            self._busy=False
 
 
 def execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
