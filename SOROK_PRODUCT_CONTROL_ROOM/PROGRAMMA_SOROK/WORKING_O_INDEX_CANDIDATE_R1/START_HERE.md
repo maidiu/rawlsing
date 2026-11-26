@@ -7,9 +7,54 @@
 
 **Status:** `ISOLATED_RECEIVING_CANDIDATE__PROTECTED_NOT_RECEIVED__HQ_CURRENTNESS_HOLD` (21 November 2026). This is **the existing O-INDEX R3 extended with a living intake view**, not a competing authority database or a newly approved scientific index.
 
-**Read this first for actual return fate.** Then open [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json), the machine-readable current intake: 173 source-pinned PR snapshots (173 retained; #1371 theory head refreshed), with branch, exact HEAD, PR state, base lineage, evidence/report grade, review, first-consumer/authority ceiling, disposition, accountable owner and next action. For a readable row-by-row listing of all 173 encountered candidates use [READABLE_CANDIDATE_STATUS_20261121.md](READABLE_CANDIDATE_STATUS_20261121.md); its Git blob pin is checked against the JSON. Rows carrying `UNKNOWN` are unresolved, **not certified complete or executed**. The source scan was targeted; 164 is an inspected-set denominator, not a repository-wide exhaustion claim.
+**Read this first for actual return fate.** Then open [LIVE_RECEIVING_LEDGER.json](LIVE_RECEIVING_LEDGER.json), the machine-readable current intake: 180 source-pinned PR snapshots (173 prior retained, seven new; #1371 refreshed), with branch, exact HEAD, PR state, base lineage, evidence/report grade, review, first-consumer/authority ceiling, disposition, accountable owner and next action. For a readable row-by-row listing of all 180 encountered candidates use [READABLE_CANDIDATE_STATUS_20261121.md](READABLE_CANDIDATE_STATUS_20261121.md); its Git blob pin is checked against the JSON. Rows carrying `UNKNOWN` are unresolved, **not certified complete or executed**. The source scan was targeted; 164 is an inspected-set denominator, not a repository-wide exhaustion claim.
 
 **MANDATORY COMMON ESTATE FIRST CONTACT — user direction 2026-11-23:** Read [SOROKUDA's common consultation, jurisdiction and no-drop maintenance discipline](https://github.com/maidiu/rawlsing/blob/ccadf1f3029a5534870c7d2854ac7dfb29d70d01/SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/SOROKUDA.md#mandatory-sorok-estate-first-contact-and-no-drop-maintenance--user-direction-2026-11-23) alongside the canonical HQ OATH. Applies to SOROK, SORACLE, SORACLE-CO, SORACLE-CO-MULCHINEERING, NEIGHBOR-UX and NEIGHBOR-UX-MULCHINEERING successors. O-Index is the functional spine; SOROKUDA conserves ideas/code/evidence; PROGRAMMA governs; paired CURRENT_PROGRESS receives qualified changes; REMONT owns defect evidence; builders own theory and organism. At accession and every material change, consult and supply exact-source deltas to each affected existing record through its competent owner. No duplicate inventory, authority grant or universal adoption claim. Other owner/protected front-door pointers remain pending receiving.
+
+## Constitutive psychological compression — standing user mandate
+
+[Exact user intake](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7185639649). Existing CIC and SOROKUDA are the custody route, not a new implementation owner or gate.
+
+**Standing user mandate — MULCHING CONSTITUTIVE PSYCHOLOGICAL COMPRESSION (2026-11-26)**
+
+Continue constructing the Constitutive Organism through MULCHING-THE-LEAST-OF-THESE, but incorporate a standing concern of particular importance to our present collaboration with RAWLSING INFERENCE ECONOMY and NEIGHBOR-UX.
+
+Recover and actively use the existing intellectual and computational inheritance of PFF, ADP-016/017, PRE-A0, D001, SEAM/20, SEAM/24 SC-07 and the Constitutive Organism's own treatments of historical recruitment, memory, relational topology and compression.
+
+Do not rediscover these as though they were absent.
+
+**The past does not simply accumulate within the person. It changes its mode of existence.**
+
+Rawlsing's historical knowledge of the person, the historically constituted iceberg, the presently operative configuration and the phenomenology of the person are distinct.
+
+The originating experience may no longer be consciously accessible while continuing to organize activity through its historically acquired consequences. Later life can transform what those consequences do without rewriting their ancestry.
+
+Mulch toward executable psychological richness in:
+
+- Sedimentation of experience into operative organization.
+- Generalization and differentiation across materially distinct situations.
+- Proceduralization and the decreasing psychological labor required by acquired competence.
+- Defensive transformation, compartmentalization and partially inaccessible causation.
+- Reconstitution of earlier organizations through subsequent life.
+- Deactivation and contextually qualified reactivation.
+- Associative and fragmentary resurfacing, distinct from explicit episodic recollection.
+
+These are distinguishable developmental movements, not commissions for seven new modules.
+
+The LLM should participate in constructing historically novel psychological formations where needed. Rawlsing should conserve their admitted results as operative computational organization, capable of affecting future recruitment and activity without requiring their repeated semantic reconstruction.
+
+Build toward a mature organism that is not merely a larger accumulation of history, but a differently organized being.
+
+Preserve the possibility that positive development reduces defensive labor, releases attention, creates new practical capacities and enables desires that were previously difficult to sustain. Do not disproportionately associate psychological depth with trauma.
+
+Work reciprocally with INFERENCE ECONOMY to identify which transformations can reduce repeated inference while enriching psychological fidelity. Work reciprocally with NEIGHBOR-UX to distinguish operative causation from phenomenal accessibility and expression.
+
+Do not suspend construction to undertake another comprehensive theoretical reconstruction. Integrate this concern into ongoing substantive software development, recovering existing functionality before extending it.
+
+**The objective is psychological intelligence that increasingly belongs to the continuing organism itself.**
+
+
+[Current joined functional synthesis](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.md#2026-11-26--constitutive-psychological-compression-acquired-powers-accessibility-release).
 
 ## Mandatory construction selection — MULCHING-THE-LEAST-OF-THESE (user, 2026-11-24)
 
@@ -179,3 +224,25 @@ R51 exact branch built on NEIGHBOR R28 (contains R50/R27): actual experienced jo
 **Actual limits:** 24h model, fixed provisional 8h reserve, 16h active cap, hours × fraction, same-site assumption and unmodeled remainder; not actual sleep, free time chosen or diary. Separate child-only illustrative maturation, language ceiling rather than acquired language, coarse body decay/rest, adult aging, illness course/recovery, temporal costs of fresh private activity and relative order/cross-context consequences. A world step +1 and aggregate passage +days share an ordering clock, not an established physical duration conversion. REMONT P010/P039/P047 scoped first-fault passes do not certify biology or whole-life clock semantics. Preserve actual source-qualified effects without fabricating microevents, actor memory, human choices or a debt from app inactivity. No blanket absence finding. Exact source bodies and current consumer routes in #1371 historical_temporal_correspondence.
 
 **Independent provisional criteria:** CO-CIC-024.05 (bodily readiness/recovery/aging versus time and learned means), CO-CIC-024.06 (organization of use-time, recurrent cross-context powers, cost/transfer/order versus equal aggregate hours), NEIGHBOR-CIC-017.05 (world/embodied/Other/human time and actual material claims, no retrospective rewrite or human autopilot). CO §0.5 L641–653, §II bodily condition L199–226 and NEIGHBOR §X L329–360; lane-specific owner receiving held. 173 observations (one refreshed theory head), 583 scoped links, 183 criteria, 58 clusters, 719 original source routes, 144 original functions, 1063 bank slots. No protected, independent criterion, native or science grant. Next provisional whole-organism reassessment: differentiated affect, defensive and partially inaccessible organization across sustained contradictory activity; check actual existing R48/R50/R51, PRE-A0/PFF/D001 and updated HOME §0.4/0.6 before selecting; do not assume absence. User directs additive dated frontier checkpoints, never replacing earlier project-source snapshots; project attachment write unavailable, portable checkpoint only.
+
+## 2026-11-26 — constitutive psychological compression: acquired powers, accessibility, release
+
+**Standing user mandate:** [exact intake](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7185639649); [CO #1371 §0.12](https://github.com/maidiu/rawlsing/blob/9b31610e8dd05e30b1d3a9d8e1a1d934c0ac15e7/SEAM/30_THREE_AGENT_MULCH_20261119_R1/00_START_HERE_THE_CONSTITUTIVE_ORGANISM.md#L811-L936), blob `443eab11e5f9d5a79592fbc9618bd09a9809b94a`. Compare previous head: 126 additions, zero deletions; selected source inspected, no whole semantic receiving. **Past experience changes mode of existence.** Separate historical truth, acquired operative organization, present recruitment, personal experience, memory/claim accessibility, actual expression and visitor access. Psychological labor, computational transport, phenomenal availability are three distinct economies. Conserve positive development and costs captured by material power, not trauma-centric depth. R48 notice/enforcement, R50 acquired interactivity and R51 productive independent end are conserved predecessors.
+
+| PR | Exact observed head | Actual bounded function / execution |
+|---|---|---|
+| [#1379 R29](https://github.com/maidiu/rawlsing/pull/1379) | `36e978b625fe170d1252ca8c427da083586824f5` | Actual send/due delivery; selected ORIENT privately receives words vs WAIT; optional memory, no call or actor mutation on transport; 785 each mode, job 139726197650. |
+| [#1381 R30](https://github.com/maidiu/rawlsing/pull/1381) | `34086d075c38587898a86cddbd67ee0a5f1d2f26` | Actual surrender of own controlled-site admission, blocked MOVE, preserved prior practice/feeding and separate correspondence; optional new private end, 787 each mode, job 139749801907. Prior import failure conserved, author test-import correction. |
+| [#1382 R52](https://github.com/maidiu/rawlsing/pull/1382) | `a1f99809fb4283282334b8a6f3efeb422acb30bf` | Actual received former co-performer's solo act optionally adds receptive ORIENT to same project; cold operation, abstention/forgery; 673 CO each mode, job 139749910452. |
+| [#1383 R31](https://github.com/maidiu/rawlsing/pull/1383) | `29af765eb2579af03305cc69e2c007be6dd6edd5` | R30×R52 join; optional qualified ACCESS_DECREASE, memory retained but inaccessible; intact acquired technique produces same cold fourth .90 repair, 792 each mode, job 139761283058. |
+| [#1384 R53](https://github.com/maidiu/rawlsing/pull/1384) | `aeb9e95f72aa9f6fc3736e026588a49b40cede90` | Two qualifying later lived relieving courses allow optional local withholding suspension; old id and ancestry conserved; actual cold EAT candidate restored, fixture reinstatement. 676 CO each mode at merge `10473d04b7c1d1bf51122e21d0206530f98b9053`, verified identical tree `cb8ab167390594b2c9370ffa9d56340125d4c47b`, job 139767941367. |
+| [#1385 R32](https://github.com/maidiu/rawlsing/pull/1385) | `5870da029f904a0efe8c2df490c562ae70c6b01f` | Prior qualified close LOOK and actual current visible marking support recognition through existing P6/MII; fresh profile same mark no identity; cold read, no private close text or actor/world mutation, 794 each mode (121+673), job 139769317813. Earlier three spy failures conserved; author test-spy ABI correction. |
+| [#1378 Economy R5](https://github.com/maidiu/rawlsing/pull/1378) | `98994b953f7bd124a4f200e0652119a71d943e96` | Actual R31 join and same-call exact reversible alias projection; within each arm packet equality, 687 CO+economy each mode plus focused NEIGHBOR R29/R31/R5, job 139769924234. 24 calls in each matched arm; mock bytes not tokens or real cost. |
+
+All seven execution logs inspected; no submitted PR review observed, no protected adoption. R53 divergent R52 descendant; R32 and Economy R5 independently extend R31; no implied three-way join. Author no-drop tree counts and numerical mock byte measurements not independently recomputed; exact paths/blobs and receipt scope in same ledger. R31 **co-originated memory and facility**, not transformation of a memory into skill. R53 local orientation revision, not universal defense genesis, safety, approach, or measured reduced effort; actual bodily course is not all of affect. R29/R30 independently effective external conditions are not automatic actor knowledge or grief. R32 qualified presentation is not actual human cognition. R5 transport savings are not new psychological powers; SC07 R0/R1 equal history and actual relation consumer and K0/K1 equal information/budget remain distinct.
+
+**Historical inheritance:** PRE-A0 `983d4133838ad9783eda1e9439ea97f2e1a68b4f` L148–196; SEAM/06 PFF `6efa974ec9bcf3ee1f982a1fcc735bfe1177d4b1` L17–22; D001/02 `3d2a49e210e2389034a3e88efad8241eb2fa2d13` L63–84; SEAM/20 `9830a2717a8e9ea6ad023a3b4d5cb6dcd84c1b04` L173; SC-07 `c38450b309ac6eddc23edeb326e8c982408e33a8` L78–90; ADP-016 `0b7bbe29f6509e31ac7d842962a2bf3d636daa2c` L32,200,346–352 and ADP-017 `6b4162df27003bec413074178c46fea6360d71a0` L72–76,137–151. Distinguish immutable event, derived acquired organization, stable memory identity, accessibility and claim permission; no separate recruitment authority, no original native science grant. Original V3 code and cited scientific editions not independently reopened; SEAM20 used only for same-ontology inheritance, no new PYAT judgment. REMONT P002/P063/P066 scoped first-fault passes, P012 partial, P015/P019 open. No grade transfer.
+
+**Independent provisional refinements:** CO-CIC-012.03 (causal retention vs access and qualified resurfacing), CO-CIC-013.03 (compound significance, affect about affect, nonidentical bodily course and practical motives), CO-CIC-021.03 (defensive organization and actual dependency, local release/reinstatement, not mere inaccessibility), NEIGHBOR-CIC-024.03 (three economies and finite encounter, matched actor/visitor access and computation). Actual CO §0.4 L627–639, §0.6 L655–663, §0.12 L811–936, §8 L1043–1051, affect L1215–1254; NEIGHBOR #1332 L196–233 and L399–427. Original 719 frozen routes unchanged, new passage-local syntheses for competent owners; owner incorporation remains held. 180 observations, 617 scoped links, 187 criteria, 58 clusters, 144 original identities, 1063 bank slots. No new organism execution, independent criterion review, scientific or protected acceptance.
+
+Next reassess whole-organism neglected domains after this material advance: candidate ordinary-life play, desire/sexual and intimate relations as differentiated actual embodied and relational history (not universal libido or disclosure), or more consequential changed HOME/REMONT/runtime gap. Consult existing criterion, original source, consumer and protected scope first. No organism engineering by G4.
