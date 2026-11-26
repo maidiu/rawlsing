@@ -1234,7 +1234,7 @@ def build_source_backed_c11_repository(
         if source_backed_facade_key(source,projection,current_authorities=current_authorities)!=key:
             raise SourceBackedC11FacadeError("cache input changed during C11 build")
         repo=C11Repository((release,))
-        source.certify_release(release)
+        source.certify_release(release,facade_key=key)
         return repo,release
     release = cache.get(key) if cache else None
     if release is None:
