@@ -3,6 +3,10 @@ from copy import deepcopy
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+from collections import Counter
+from time import perf_counter_ns
+import json
 import test_neighbor_mii_cold_profile_r5 as inherited
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.types import adult,blank_world
@@ -72,6 +76,62 @@ class EarnedRecognitionR32(unittest.TestCase):
         self.assertEqual(cold.ledger.world(cold.world_id),before)
         self.assertEqual(cold.ledger.actors(),ac)
         self.assertTrue(cold.verify()['valid'])
+
+    def test_inference_economy_r12_bounded_scope_read_preserves_private_history(self):
+        rt,n,db,sidecar=self.build()
+        n.contribute('look','LOOK',target_object_ref='sandals')
+        n.private_surface_stored(sidecar,command='look',target='sandals')
+        original=rt.ledger._iter_events
+        results=[]
+        for waits in (4,24):
+            for i in range(waits-(0 if waits==4 else 4)):
+                n.contribute('wait-%d-%d'%(waits,i),'WAIT')
+            root=rt.ledger.events(1)[0]['id']
+            count=rt.verify()['events']
+            expected_world=rt.ledger.world(rt.world_id)
+            expected_actors=rt.ledger.actors()
+            expected_sidecar=sidecar.read_bytes()
+            observations=[]
+            for legacy in (True,False):
+                stats=Counter()
+                def counted(limit=None):
+                    stats['calls']+=1
+                    # Exact old consumer: read the full list even for scope.
+                    # Leave full history queries unchanged.
+                    for e in original(None if legacy else limit):
+                        stats['decoded_rows']+=1
+                        stats['decoded_envelope_bytes']+=len(e['envelope_bytes'].encode('utf-8'))
+                        yield e
+                t=perf_counter_ns()
+                with patch.object(rt.ledger,'_iter_events',counted):
+                    p=n.load_private_profile(sidecar)
+                    self.assertEqual(p['scope']['root'],root)
+                    scope_cost=dict(stats)
+                    view=n.private_surface(p)
+                    n.save_private_profile(sidecar,p)
+                    output=(view,p,sidecar.read_bytes())
+                elapsed=perf_counter_ns()-t
+                sidecar.write_bytes(expected_sidecar)
+                observations.append((output,scope_cost,dict(stats),elapsed))
+            self.assertEqual(observations[0][0],observations[1][0])
+            self.assertEqual(observations[0][1]['calls'],2)
+            self.assertEqual(observations[0][1]['decoded_rows'],count*2)
+            self.assertEqual(observations[1][1]['decoded_rows'],2)
+            self.assertEqual(observations[0][2]['calls'],observations[1][2]['calls'])
+            # The surface still reads the complete relevant ledger; only
+            # first-event scope requests are bounded.
+            self.assertEqual(observations[0][2]['decoded_rows']-
+                             observations[1][2]['decoded_rows'],4*(count-1))
+            self.assertEqual(observations[1][0][0]['recognition']['sandals']['identity'],LABEL)
+            self.assertNotIn('1937',str(observations[1][0][0]))
+            self.assertEqual(rt.ledger.world(rt.world_id),expected_world)
+            self.assertEqual(rt.ledger.actors(),expected_actors)
+            self.assertTrue(rt.verify()['valid'])
+            results.append({'waits':waits,'events':count,
+                'legacy_scope':observations[0][1],'bounded_scope':observations[1][1],
+                'legacy_total':observations[0][2],'bounded_total':observations[1][2],
+                'legacy_ns':observations[0][3],'bounded_ns':observations[1][3]})
+        print('INFERENCE_ECONOMY_R12_SCOPE '+json.dumps(results,sort_keys=True))
 
     def test_no_marking_at_glance_no_recognition_and_no_foreign_receipt(self):
         rt,n,db,sidecar=self.build(visible=False)
