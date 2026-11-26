@@ -123,7 +123,10 @@ class CountryNativeEconomics(unittest.TestCase):
             t=time.monotonic()
             fx=_fixture(tag);original=fx["projection"];universe=fx["universe"]
             if external_case is not None:
-                universe=replace(universe,country_geography=country,sampling_geography=country+"-NATIONAL")
+                material=universe.semantic_projection()
+                fields=material.pop("semantic_fields")
+                fields.update(country_geography=country,sampling_geography=country+"-NATIONAL")
+                universe=type(universe)(**material,**fields)
                 fx["universe"]=universe
             source_auth=fx["source_auth"];mapping_auth=fx["authorities"][1]
             respondents=tuple(RespondentIdentity(empirical_universe_ref=universe.ref,
@@ -919,7 +922,7 @@ class CountryNativeEconomics(unittest.TestCase):
                 "selected_cold_blobs":direct.blobs_read,"retained_i05_roles":roles,
                 "independent_source_counts_and_wrong_country_refusal":True}),flush=True)
             # Do not retain three logical graphs or full cold products.
-            del cold,read,direct,result,runs,session,workload,record,queries,qrefs,item,resolver,pub
+            del cold,read,direct,result,runs,session,workload,record,queries,qrefs,item,resolver,pub,discovery,candidate,fact,role_receipt
             gc.collect()
 
         # A later return to A, after B and C, reissues a distinct workload.
