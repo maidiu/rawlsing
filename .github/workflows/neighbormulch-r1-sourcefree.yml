@@ -35,6 +35,7 @@ on:
       - agent/neighbormulch-r31-constitutive-compression-20261126-r1
       - agent/neighbormulch-r32-earned-recognition-20261126-r1
       - agent/inference-economy-semantic-port-r1-20261126
+      - agent/neighbormulch-r33-resistant-evidence-20261126-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -204,6 +205,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_inference_economy_r5.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_inference_economy_r5.py' -q
+      - name: R33 different textual acquisition routes and actual independent afterlife
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_resistant_evidence_r33.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_resistant_evidence_r33.py' -q
       - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
