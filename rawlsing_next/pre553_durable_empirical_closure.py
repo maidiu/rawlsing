@@ -759,11 +759,20 @@ def _final_replay_material(i05: ExactBoundedDiscoveryResult) -> Mapping[str, Any
 def _pack_replay_material(
     material: Mapping[str, Any],
     fragments: dict[str, Any],
+    *,
+    factor_replay_risk_members: bool = False,
 ) -> Mapping[str, Any]:
-    """Deduplicate the large replay arrays against the same fragment map."""
+    """Deduplicate the large replay arrays against the same fragment map.
 
+    Native positive replay calls the fact's risk_set_member_refs field
+    risk_member_refs. Factor that exact array under the existing marker
+    contract when explicitly requested; retain the legacy root-producing
+    representation for callers holding an old publication pin.
+    """
     packed = dict(canonicalize(material))
-    for name in _LARGE_FRAGMENT_FIELDS:
+    fields = (_LARGE_FRAGMENT_FIELDS + ("risk_member_refs",)
+              if factor_replay_risk_members else _LARGE_FRAGMENT_FIELDS)
+    for name in fields:
         if name in packed:
             from rawlsing_next.pre553_durable_empirical_fragments import store_fragment
 
@@ -1331,6 +1340,8 @@ def _native_envelope(output: NativeEmpiricalOutput) -> Mapping[str, Any]:
 def _replay_documents(
     output: NativeEmpiricalOutput,
     fragments: dict[str, Any],
+    *,
+    factor_replay_risk_members: bool = False,
 ) -> tuple[Mapping[str, Any], dict[str, int]]:
     releases = output.release_by_ref()
     release_refs = tuple(item.release_ref for item in output.release_identities)
@@ -1346,7 +1357,8 @@ def _replay_documents(
             {
                 "fact_ref": fact.ref.as_dict(),
                 "material_hash": digest,
-                "material": _pack_replay_material(material, fragments),
+                "material": _pack_replay_material(material, fragments,
+                    factor_replay_risk_members=factor_replay_risk_members),
             }
         )
     receipt_materials = []
@@ -1511,6 +1523,7 @@ def publish_empirical_closure(
     expected_root: str | None = None,
     failpoint: Any | None = None,
     compact_manifest: bool = False,
+    factor_replay_risk_members: bool = False,
 ) -> PublishReceipt:
     """Publish one complete native output closure exactly once.
 
@@ -1520,6 +1533,8 @@ def publish_empirical_closure(
 
     if type(compact_manifest) is not bool:
         raise DurableEmpiricalClosureError("explicit compact manifest selection required")
+    if type(factor_replay_risk_members) is not bool:
+        raise DurableEmpiricalClosureError("explicit replay risk factoring selection required")
     started = time.monotonic()
     root = Path(root_dir)
     root.mkdir(parents=True, exist_ok=True)
@@ -1531,7 +1546,8 @@ def publish_empirical_closure(
 
     _verify_output_graph(output)
     fragments: dict[str, Any] = {}
-    replay_documents, _ = _replay_documents(output, fragments)
+    replay_documents, _ = _replay_documents(output, fragments,
+        factor_replay_risk_members=factor_replay_risk_members)
     object_entries, object_blobs = _object_entries(output, fragments)
     fragment_entries, fragment_blobs = _fragment_blobs(fragments)
     blobs = _blob_manifest(object_entries, fragment_entries)
