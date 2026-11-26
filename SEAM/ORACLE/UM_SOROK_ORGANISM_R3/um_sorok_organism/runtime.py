@@ -1157,6 +1157,10 @@ class ConstitutiveRuntime:
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
+                **({'historically_possible_focal_encounter_memory': {
+                        'kind':'MEMORY','focal_encounter_ref':focal_receipt['attention_id'],
+                        'content_requires_actor_local_semantic_proposal':True}}
+                   if focal_receipt else {}),
                 **({'actual_correspondence_attention_analyst_only':copy(correspondence_receipt)} if correspondence_receipt else {}),
                 'historically_possible_repair_techniques':copy(
                     possible_repair_technique(actors[aid],experience,objective_ref)),

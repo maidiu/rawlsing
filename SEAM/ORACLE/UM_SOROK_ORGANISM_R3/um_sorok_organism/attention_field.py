@@ -328,9 +328,11 @@ def offer_focal_encounters(actor, access, focal_refs):
     coactor sign. Only open this sourcefree family after personally received
     directed imposition; do not infer vigilance from co-presence alone.
     """
-    if access.actor != actor['id'] or not any(
-            p.get('directed_encounter', {}).get('operation') == 'IMPOSE'
-            for p in actor.get('evidence_paths', [])):
+    if access.actor != actor['id'] or not (
+            any(row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE'
+                for row in actor.get('historical_orientations', []))
+            or any(p.get('directed_encounter', {}).get('operation') == 'IMPOSE'
+                   for p in actor.get('evidence_paths', []))):
         return []
     out = []
     for cue in access.cues:

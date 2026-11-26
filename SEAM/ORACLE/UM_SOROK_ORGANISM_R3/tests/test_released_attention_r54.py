@@ -13,12 +13,30 @@ PARENT={'source_ref':'R54_FICTIONAL_PARENT','source_grade':'SOURCEFREE_TEST_FIXT
 
 class ReleasedAttentionR54(unittest.TestCase):
     def run_arm(self, path, release, forge=False):
-        controls={'focus':'zed','release':release,'forge':forge}
+        controls={'focus':'zed','release':release,'forge':forge,'stage':'monitor'}
         proposals=[]; attempts=[]; expressions=[]
         def callback(task,packet):
             if task=='adult_constructor':
                 return HeuristicSemanticProvider().propose(task,packet)
             if task=='development':
+                if packet['actor']['id']=='mother':
+                    if controls['stage']=='new_focus':
+                        memory=packet.get('historically_possible_focal_encounter_memory')
+                        if memory:
+                            return {'task':task,'candidates':[{'kind':'MEMORY',
+                                'focal_encounter_ref':memory['focal_encounter_ref'],
+                                'content':'I noticed someone else in the room.',
+                                'cue_terms':['coactor']}]}
+                    rec=packet.get('actual_private_rehearsal_analyst_only')
+                    if controls['stage']=='rehearse' and rec:
+                        return {'task':task,'candidates':[{'kind':'NOTICE_PRIVATE_POSSIBLE_END',
+                            'rehearsal_ref':rec['id'],'possible_object':'explore ordinary surroundings',
+                            'possible_means':['ORIENT']}]}
+                    if controls['stage']=='takeup':
+                        ends=[e for e in packet['actor_possible_ends'] if e.get('private_focal_encounter')]
+                        if ends:
+                            return {'task':task,'candidates':[{'kind':'TAKE_UP_POSSIBLE_END',
+                                'possible_end_ref':ends[0]['id'],'means':['ORIENT']}]}
                 offered=packet.get('historically_possible_monitoring_changes',[])
                 if packet['actor']['id']=='mother' and offered:
                     proposals.extend(deepcopy(offered))
@@ -32,6 +50,24 @@ class ReleasedAttentionR54(unittest.TestCase):
             if task=='actor_attempt':
                 if packet['actor']['id']=='mother':
                     attempts.append(deepcopy(packet))
+                    stage=controls['stage']
+                    if stage=='rehearse':
+                        opts=[o for o in packet['private_rehearsal_options'] if o.get('focal_encounter')]
+                        if opts:return {'task':task,'action':'WAIT','private_rehearsal_id':opts[0]['rehearsal_id'],
+                                        'private_rehearsal_content':'Perhaps I can look around without checking the same person.'}
+                        return {'task':task,'action':'WAIT'}
+                    if stage=='trial':
+                        opts=[o for o in packet['possible_end_trials'] if o.get('private_rehearsal_ref')]
+                        if opts:return {'task':task,'possible_end_trial_id':opts[0]['trial_id']}
+                        return {'task':task,'action':'WAIT'}
+                    if stage=='takeup':
+                        return {'task':task,'action':'ORIENT' if packet.get('actor',{}).get('id')=='mother'
+                                and release else 'WAIT'}
+                    if stage=='project':
+                        opts=[o for o in packet['practical_options'] if o.get('project_id')
+                              and o['operation']=='ORIENT']
+                        if opts:return {'task':task,'practical_option_id':opts[0]['option_id']}
+                        return {'task':task,'action':'WAIT'}
                     for opt in packet.get('focal_encounter_options',[]):
                         if opt['counterpart_ref']==controls['focus']:
                             return {'task':task,'action':'ORIENT','focal_encounter_id':opt['attention_id']}
@@ -94,12 +130,36 @@ class ReleasedAttentionR54(unittest.TestCase):
             # Real independently selected focal activity with a different
             # available Other, not a new interest or motive by fiat.
             controls['focus']='x5'
+            controls['stage']='new_focus'
             result=cold.step('mother')
             pathrow=cold.snapshot('mother')['evidence_paths'][-1]
             self.assertTrue(cold.verify()['valid'])
             self.assertNotIn('focal_encounter_receipt',expressions[-1]['actor_accessible'])
-            return {'focus':selected,'received':pathrow.get('focal_encounter'),
-                    'result':result,'options':attempts[-1].get('focal_encounter_options',[])}
+            first={'focus':selected,'received':pathrow.get('focal_encounter'),
+                   'result':result,'options':attempts[-1].get('focal_encounter_options',[])}
+            a=cold.snapshot('mother')
+            self.assertEqual(len(a['memories']),int(release))
+            if release:
+                self.assertEqual(a['memories'][0]['focal_encounter'],first['received'])
+            controls['stage']='rehearse';cold.step('mother')
+            a=cold.snapshot('mother')
+            self.assertEqual(len(a['possible_ends']),int(release))
+            if release:
+                end=a['possible_ends'][0]
+                self.assertEqual(end['private_focal_encounter'],first['received'])
+                self.assertEqual(end['status'],'POSSIBLE_NOT_ACQUIRED_MOTIVE')
+                self.assertEqual(len(a['projects']),0)
+            controls['stage']='trial';cold.step('mother')
+            a=cold.snapshot('mother')
+            if release:self.assertEqual(len(a['possible_ends'][0]['trial_history']),1)
+            controls['stage']='takeup';cold.step('mother')
+            self.assertEqual(len(cold.snapshot('mother')['projects']),int(release))
+            controls['stage']='project'
+            continuation=cold.step('mother')
+            self.assertEqual(continuation['attempt'],'ORIENT' if release else 'WAIT')
+            self.assertTrue(cold.verify()['valid'])
+            self.assertTrue(all('Perhaps I can look around' not in str(x) for x in expressions))
+            return first
         finally:cold.close()
 
     def test_actual_matched_release_changes_focal_selection_after_cold_reopen(self):
