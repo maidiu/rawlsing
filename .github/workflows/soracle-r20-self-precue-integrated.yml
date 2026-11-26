@@ -25,6 +25,7 @@ on:
       - agent/soracle-co-mulchineer-interactivity-pressure-20261125-r1
       - agent/soracle-co-mulchineer-productive-vocal-genesis-20261125-r1
       - agent/soracle-co-mulchineer-reciprocal-witness-20261126-r1
+      - agent/soracle-co-mulchineer-counterhistory-release-20261126-r1
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
       - '.github/workflows/soracle-r20-self-precue-integrated.yml'
@@ -59,6 +60,10 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-reciprocal-witness-20261126-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_productive_witness_r52.py' -v
+      - name: R53 counterhistory release
+        if: github.ref_name == 'agent/soracle-co-mulchineer-counterhistory-release-20261126-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_counterhistory_release_r53.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v

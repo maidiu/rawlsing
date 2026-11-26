@@ -24,7 +24,8 @@ from .activity import (record_activity_afterlife, register_lived_activity_attemp
 from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
-                                           possible_dependency_ambivalence)
+                                           possible_dependency_ambivalence,
+                                           possible_counterhistory_release)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
@@ -1211,6 +1212,8 @@ class ConstitutiveRuntime:
                     recurrent_work),
                 'historically_possible_lived_directional_orientation':copy(
                     lived_directional_orientation),
+                'historically_possible_counterhistory_release':copy(
+                    possible_counterhistory_release(actors[aid],experience,objective_ref)),
                 'historically_possible_lived_cross_context_revaluations':copy(
                     possible_lived_cross_context_revaluations(
                         actors[aid],experience,objective_ref)),

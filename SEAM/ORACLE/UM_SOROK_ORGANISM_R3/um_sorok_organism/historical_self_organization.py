@@ -362,6 +362,79 @@ def admit_lived_directional_orientation(actor, experience, event_ref, proposal):
             'grade': GRADE}
 
 
+def possible_counterhistory_release(actor, experience, event_ref):
+    """Optional refunctioning of one existing withholding current.
+    
+    Two later, uninterrupted, personally lived relieving courses of the SAME
+    operation and received social field can qualify suspension, not a compulsory
+    new positive motive. Body change is not proof of cause or interpersonal safety.
+    The original history remains; other contexts and currents remain independent.
+    """
+    if (experience.get('actor') != actor.get('id')
+            or experience.get('participated') is not True
+            or experience.get('status') != 'PERFORMED'):
+        return []
+    operation = experience.get('own_action')
+    site = experience.get('location')
+    if (operation not in ACTIONS or site != actor.get('location')
+            or not eligible(actor['body'], operation)[0]):
+        return []
+    rows = [r for r in actor.get('lived_genesis_episodes', [])
+            if r.get('actor') == actor['id'] and r.get('location') == site
+            and r.get('actor_felt_attempt') == operation
+            and type(r.get('clock')) is int]
+    current = [r for r in rows if r.get('event_ref') == event_ref
+               and r.get('experience_ref') == experience.get('ref')]
+    if len(current) != 1:
+        return []
+    now = current[0]
+    known, field = _lived_coexperience_field(now)
+    if not known or not now.get('received_relief') or now.get(
+            'personally_lived_adverse_course') or now.get('unfinished_own_activity'):
+        return []
+    earlier = [r for r in rows if r['clock'] < now['clock']
+               and _lived_coexperience_field(r) == (True, field)]
+    if not earlier:
+        return []
+    previous = max(earlier, key=lambda r: (r['clock'], r['id']))
+    if (not previous.get('received_relief') or previous.get(
+            'personally_lived_adverse_course') or previous.get('unfinished_own_activity')
+            or previous['event_ref'] == event_ref):
+        return []
+    out = []
+    for row in actor.get('historical_orientations', []):
+        if (row.get('actor') != actor['id'] or row.get('location') != site
+                or row.get('operation') != operation
+                or row.get('orientation_mode') != 'WITHHOLD'
+                or _polarities(row, field) != ['WITHHOLD']
+                or row.get('acquisition') not in (
+                    'REPEATED_LIVED_BODY_COURSE',
+                    'LIVED_SOURCEFREE_PRACTICAL_ORIENTATION')):
+            continue
+        origins = [r for r in rows if r.get('event_ref') == row.get('origin_event')
+                   and r.get('experience_ref') == row.get('origin_experience_ref')]
+        if len(origins) != 1 or _lived_coexperience_field(origins[0]) != (True, field):
+            continue
+        if (row['acquisition'] == 'REPEATED_LIVED_BODY_COURSE'
+                and row.get('coexperienced_other_refs') != list(field)):
+            continue
+        clocks = [origins[0]['clock']] + [x.get('clock') for x in row['revisions']]
+        if any(type(c) is not int for c in clocks) or previous['clock'] <= max(clocks):
+            continue
+        basis = {'orientation_ref': row['id'], 'operation': operation,
+                 'location': site, 'coexperienced_other_refs': list(field),
+                 'origin_event_ref': row['origin_event'],
+                 'source_event_refs': [previous['event_ref'], event_ref],
+                 'source_experience_refs': [previous['experience_ref'], now['experience_ref']],
+                 'source_episode_refs': [previous['id'], now['id']],
+                 'not_recollection_or_proof_of_safety': True,
+                 'not_a_new_approach_or_global_recovery': True}
+        out.append({'kind': 'REVISE_HISTORICAL_ORIENTATION',
+                    'orientation_ref': row['id'], 'revision_mode': 'INHIBIT',
+                    'counterhistory_release_basis': basis})
+    return out
+
+
 def revise_orientation(actor, experience, event_ref, proposal):
     _actor_event(actor, experience, event_ref)
     source = _received(experience, proposal)
@@ -380,6 +453,12 @@ def revise_orientation(actor, experience, event_ref, proposal):
                 'clock': experience.get('clock'),
                 'source': source, 'mode': mode,
                 'prior_history_retained': True, 'grade': GRADE}
+    if 'counterhistory_release_basis' in proposal:
+        possibilities = possible_counterhistory_release(actor, experience, event_ref)
+        if proposal not in possibilities:
+            raise ValueError('COUNTERHISTORY_RELEASE_UNQUALIFIED')
+        revision['counterhistory_release_basis'] = copy(
+            proposal['counterhistory_release_basis'])
     if 'lived_genesis_basis' in proposal or (
             mode == 'REINSTATE' and
             row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'):
@@ -472,12 +551,18 @@ def revise_operative_self(actor, experience, event_ref, proposal):
             'revision': mode, 'grade': GRADE}
 
 
-def _polarities(row):
+def _polarities(row, field=None):
     mode = row['orientation_mode']
     live = set(MODES - {'AMBIVALENT'}) if mode == 'AMBIVALENT' else {mode}
     for revision in row.get('revisions', []):
         if revision['mode'] == 'INHIBIT':
-            live = set()
+            basis = revision.get('counterhistory_release_basis')
+            # Repeated-course forms already recruit only in this field.
+            # Earlier R19 orientations may be site-wide; do not globalize
+            # counterhistory experienced in one particular social field.
+            if (basis is None or row.get('acquisition') == 'REPEATED_LIVED_BODY_COURSE'
+                    or (field is not None and list(field) == basis['coexperienced_other_refs'])):
+                live = set()
         elif revision['mode'] == 'REINSTATE':
             live = set(MODES - {'AMBIVALENT'}) if mode == 'AMBIVALENT' else {mode}
         elif revision['mode'] == 'OPPOSE':
@@ -536,7 +621,9 @@ def pre_cue_pressures(constitution, access):
             continue
         seen.add(source_id)
         readset.append(source_id)
-        for polarity in _polarities(row):
+        current_field = tuple(sorted({c.get('source_actor') for c in access.cues
+            if c.get('kind') == 'coactor_present' and type(c.get('source_actor')) is str}))
+        for polarity in _polarities(row, current_field):
             currents.append({
                 'kind': 'HISTORICALLY_RECRUITED_PRE_CUE_PRESSURE',
                 'source_family': family, 'ref': source_id,
