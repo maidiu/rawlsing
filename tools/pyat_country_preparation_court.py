@@ -99,9 +99,9 @@ def worker(root,mode,counts,report):
                       envelope_sha256=issued._stream_workload_digest(item))
         cases.append((item,TestOnlyDecisionResolver(grant),grant))
     kwargs=dict(require_current=lambda:True)
-    if mode in ("save","restore","negative"):
+    if mode in ("save","restore","negative","compare"):
         kwargs["preparation_path"]=prepared
-    if mode in ("restore","negative"):
+    if mode in ("restore","negative","compare"):
         kwargs["preparation_pin"]=carrier.CountryPreparationPin(**read(root/"external-producer-pin.json"))
     if mode=="negative":
         from rawlsing_next.pre553_issued_workload import WorkloadAdmissionError
@@ -134,8 +134,57 @@ def worker(root,mode,counts,report):
         try:refuses(kwargs)
         finally:
             with db.open("r+b") as file:file.seek(-1,2);file.write(byte)
-        write(report,{"mode":mode,"negative_controls":7})
+        # A new sidecar may be produced before a later execution failure,
+        # but no external successful producer pin may escape that call.
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        failed=carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True,
+                    preparation_path=root/"failed-headers.gz")
+        try:
+            with failed,patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                            side_effect=RuntimeError("post-preparation intentional failure")):
+                failed.execute(item,resolver,host=host,purpose=purpose)
+        except RuntimeError as exc:
+            assert str(exc)=="post-preparation intentional failure",str(exc)
+        else:raise AssertionError("intentional failure not reached")
+        assert (root/"failed-headers.gz").is_file()
+        assert failed.preparation_pin is None
+        (root/"failed-headers.gz").unlink()
+        write(report,{"mode":mode,"negative_controls":8})
         return
+    from contextlib import ExitStack
+    from rawlsing_next import pre553_c11_ingest as ingest
+    from rawlsing_next import pre553_c11_integrity as integrity
+    from rawlsing_next import _pre553_country_preparation as preparation
+    phases={}; occurrence_comparison=None
+    def instrument(owner,name,label):
+        fn=getattr(owner,name)
+        def timed(*args,**kw):
+            t=time.monotonic()
+            try:return fn(*args,**kw)
+            finally:
+                entry=phases.setdefault(label,{"calls":0,"wall_s":0.0})
+                entry["calls"]+=1
+                entry["wall_s"]+=time.monotonic()-t
+        return patch.object(owner,name,timed)
+    occurrence=ingest.ensure_distinct_event_occurrences
+    def compared(events):
+        nonlocal occurrence_comparison
+        # Measure on actual authenticated restored headers, separate from the
+        # primary preparation timing; the paired witness is optional.
+        if mode=="compare":
+            times={"incumbent":[],"direct":[]}
+            for order in (("incumbent","direct"),("direct","incumbent")):
+                for kind in order:
+                    t=time.monotonic()
+                    if kind=="incumbent":
+                        with patch.object(integrity,"_country_occurrence_ids_distinct",lambda _:False):
+                            occurrence(events)
+                    else:occurrence(events)
+                    times[kind].append(time.monotonic()-t)
+            occurrence_comparison={"events":len(events),"seconds":times,
+                "median_seconds":{k:median(v) for k,v in times.items()},
+                "both_accepted":True}
+        return occurrence(events)
     calls=[]; original=facade._build_source_backed_c11_repository
     def counted(*args,**kw):
         start=time.monotonic()
@@ -145,7 +194,22 @@ def worker(root,mode,counts,report):
             count+=1
             return original_event(*args,**kw)
         # Do not retain every event's call args in a Mock at survey scale.
-        with patch.object(facade,"_event",event):
+        with ExitStack() as stack:
+            stack.enter_context(patch.object(facade,"_event",event))
+            for owner,name,label in (
+                (ingest,"_validate_authorities","authorities"),
+                (ingest,"_validate_universe_and_respondent_scope","namespace"),
+                (ingest,"_validate_questions_and_events","question_occurrence"),
+                (ingest,"_validate_replay","replay_validation"),
+                (ingest,"_candidate_projection_semantic_hash","projection_hash"),
+                (ingest,"_all_nonmanifest_refs","closure_refs"),
+                (facade,"source_backed_facade_key","facade_key"),
+                (facade,"project_c11_candidate_from_physical_cells","candidate_projection"),
+                (preparation,"_decode_headers","header_decode"),
+                (preparation,"_encode_headers","header_encode"),
+                (carrier._CountryPhysicalStream,"compact_events","compact_view")):
+                stack.enter_context(instrument(owner,name,label))
+            stack.enter_context(patch.object(ingest,"ensure_distinct_event_occurrences",compared))
             result=original(*args,**kw)
         calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":count})
         return result
@@ -161,11 +225,12 @@ def worker(root,mode,counts,report):
                     "census":proof.as_dict(),"release":execution.release_identity.as_dict()})
             pin=session.preparation_pin
     assert len(calls)==1,calls
-    assert calls[0]["response_event_constructions"]==(0 if mode=="restore" else rows*governed),calls
+    assert calls[0]["response_event_constructions"]==(0 if mode in ("restore","compare") else rows*governed),calls
     if mode=="save":
         write(root/"external-producer-pin.json",asdict(pin))
     write(report,{"mode":mode,"pid":os.getpid(),"issuance_seconds":issuance_seconds,
-                  "preparation":calls[0],"investigations":result_rows})
+                  "preparation":calls[0],"investigations":result_rows,
+                  "inclusive_preparation_phases":phases,"occurrence_comparison":occurrence_comparison})
 
 def supervise(root,command):
     start=time.monotonic();peak={};samples=0
@@ -195,7 +260,7 @@ def court(root,rows,width,governed,counts):
     source=supervise(root,["--root",str(root),"--setup","--rows",str(rows),
                            "--width",str(width),"--governed",str(governed)])
     reports=[]
-    for i,mode in enumerate(("save","cold","restore","restore","cold","negative")):
+    for i,mode in enumerate(("save","cold","restore","restore","cold","compare","negative")):
         dest=root/("report-"+str(i)+".json")
         resource=supervise(root,["--root",str(root),"--worker",mode,
                    "--units",",".join(map(str,counts)),"--report",str(dest)])
@@ -204,7 +269,7 @@ def court(root,rows,width,governed,counts):
         return [(item["units"],item["census"],item["release"]) for item in report["investigations"]]
     reference=evidence(reports[0])
     assert all(evidence(report)==reference for report in reports[:-1])
-    assert len({report["pid"] for report in reports[:-1]})==5
+    assert len({report["pid"] for report in reports[:-1]})==6
     pin=read(root/"external-producer-pin.json")
     timing={mode:[r["preparation"]["wall_s"] for r in reports if r["mode"]==mode]
             for mode in ("save","cold","restore")}
@@ -212,7 +277,7 @@ def court(root,rows,width,governed,counts):
         "geometry":read(root/"fixture.json"),"source_resources":source,
         "sidecar_bytes":pin["artifact_bytes"],"preparation_times":timing,
         "median_preparation_s":{k:median(v) for k,v in timing.items()},
-        "exact_census_and_release_parity":True,"fresh_processes":5,
+        "exact_census_and_release_parity":True,"fresh_processes":6,
         "negative_controls":reports[-1]["negative_controls"],
         "workers":[{**r,"investigations":[{k:v for k,v in i.items() if k!="census"}
                 for i in r.get("investigations",[])]} for r in reports],
@@ -228,7 +293,7 @@ def main():
     p.add_argument("--units",default="1,10,100")
     p.add_argument("--root",type=Path)
     p.add_argument("--setup",action="store_true")
-    p.add_argument("--worker",choices=["save","cold","restore","negative"])
+    p.add_argument("--worker",choices=["save","cold","restore","negative","compare"])
     p.add_argument("--report",type=Path)
     args=p.parse_args()
     counts=tuple(int(x) for x in args.units.split(","))
