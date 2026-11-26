@@ -792,8 +792,7 @@ class ConstitutiveRuntime:
                     or research_plan_context.get('authority')!='EXTERNAL_RESEARCH_PLAN'):
                 raise ValueError('UNQUALIFIED_EXTERNAL_PLAN_CONTEXT')
         wv,world=self.ledger.world(self.world_id)
-        actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
-        actors=self.ledger.actors()
+        actor_versions,actors=self.ledger.actors_with_versions()
         # Preserve a private read of the operative psychological organization
         # BEFORE the independent world result. Even an externally injected
         # action cannot retroactively manufacture the actor's motives.
@@ -1495,8 +1494,7 @@ class ConstitutiveRuntime:
 
     def background(self,days,processes=None):
         v,w=self.ledger.world(self.world_id)
-        actor_versions={aid:self.ledger.actor(aid)[0] for aid in self.ledger.actors()}
-        actors=self.ledger.actors()
+        actor_versions,actors=self.ledger.actors_with_versions()
         period=passage(w,actors,days,processes)
         deltas={aid:recurring_provisional_growth(a,period['id'],period['processes']) for aid,a in actors.items()}
         commit=self.ledger.commit(self.world_id,v,w,actors,actor_versions,'COMPRESSED_ORDINARY_LIFE',None,

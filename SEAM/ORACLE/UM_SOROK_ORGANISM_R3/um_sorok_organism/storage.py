@@ -266,6 +266,19 @@ class ResearchLedger:
     def actors(self):
         return {a:json.loads(b) for a,b in self.conn.execute('SELECT id,body FROM actors')}
 
+    def actors_with_versions(self):
+        """One roster statement binds each decoded body to its own version.
+
+        No trusted cache or cross-statement roster claim. The existing world
+        version and per-actor CAS checks, full historical audit, and anchor
+        verification remain authoritative at commit.
+        """
+        versions={};actors={}
+        for aid,version,body in self.conn.execute('SELECT id,version,body FROM actors'):
+            versions[aid]=version
+            actors[aid]=json.loads(body)
+        return versions,actors
+
     def seal_source(self, sid, category, content, *, expected_world=None):
         """Optional late source seal: chain-anchor atomically, never an orphan row.
 
