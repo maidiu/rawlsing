@@ -929,7 +929,7 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
                             reuse_prepared_saved_session: bool = False,
                             checkpoint_every: int | None = None,
                             checkpoint_observer: Callable[[NativeWorkloadResult], None] | None = None, _country_scope=None,
-                            _expected_country_identity=None):
+                            _expected_country_identity=None,_country_session=None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -953,7 +953,7 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
         or (saved_admission_factory is None and _country_scope is None)
     ):
         raise WorkloadAdmissionError("EXACT_SAVED_CHECKPOINT_OBSERVER_REQUIRED")
-    if _expected_country_identity is not None and _country_scope is None:
+    if (_expected_country_identity is not None or _country_session is not None) and _country_scope is None:
         raise WorkloadAdmissionError("COUNTRY_RESUME_REQUIRES_PRIVATE_ADMISSION_SCOPE")
     if type(reuse_prepared_saved_session) is not bool:
         raise WorkloadAdmissionError("EXACT_PREPARED_SAVED_OPT_IN_REQUIRED")
@@ -1035,7 +1035,10 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
         check_current()
         # Bounded sourcefree country opt-in only. Original sources and other
         # carriers retain the incumbent admission path until qualified.
-        from rawlsing_next.pre553_country_numeric_carrier import _CountryPhysicalStream
+        from rawlsing_next.pre553_country_numeric_carrier import _CountryPhysicalStream,CountryWorkloadSession
+        if _country_session is not None and (type(_country_session) is not CountryWorkloadSession
+                or record.scope!="TEST_ONLY_SOURCEFREE"):
+            raise WorkloadAdmissionError("EXACT_SOURCEFREE_COUNTRY_SESSION_REQUIRED")
         if _country_scope is not None and type(source) is not _CountryPhysicalStream:
             raise WorkloadAdmissionError("COUNTRY_ADMISSION_REQUIRES_LIVE_COUNTRY_STREAM")
         if (_country_scope is None and type(source) is _CountryPhysicalStream
@@ -1053,9 +1056,12 @@ def _execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecision
                 check_current()
         routes = tuple(routes_list)
         check_current()
-        repo, release = build_source_backed_c11_repository(
-            source, workload.projection, current_authorities=workload.catalog.authorities,
-        )
+        if _country_session is None:
+            repo, release = build_source_backed_c11_repository(
+                source, workload.projection, current_authorities=workload.catalog.authorities,
+            )
+        else:
+            repo, release = _country_session._repository(source,workload.projection,workload.catalog.authorities)
         check_current()
         # The authenticated prior product binds the complete release, not
         # merely its source hash or a caller-supplied release id. Verify before
