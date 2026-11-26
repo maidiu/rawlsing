@@ -463,8 +463,8 @@ def _query(
         {
             "target_ref": source["qrefs"][target],
             "topology": "SCALAR_SINGULAR",
-            "domain": ["0", "1"],
-            "target_domain_replay_ref": _ref("TARGET_DOMAIN", f"{target}-01"),
+            "domain": list(source.get("target_domains",{}).get(target,("0","1"))),
+            "target_domain_replay_ref": _ref("TARGET_DOMAIN", f"{target}-"+",".join(source.get("target_domains",{}).get(target,("0","1")))) if target in source.get("target_domains",{}) else _ref("TARGET_DOMAIN", f"{target}-01"),
             "topology_authority_refs": list(target_authority_refs),
             "response_semantic_authority_refs": list(target_authority_refs),
             "included_states": ["SUBSTANTIVE_RESPONSE"],
