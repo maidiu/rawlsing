@@ -61,13 +61,13 @@ class CountryNativeEconomics(unittest.TestCase):
     def test_distinct_issued_workloads_reuse_only_live_exact_country_preparation(self):
         self._native_batch(wide=False,session_court=True)
 
-    def _native_batch(self,*,wide,resume_court=False,session_court=False):
+    def _native_batch(self,*,wide,resume_court=False,session_court=False,external_case=None):
         import os
         # Real operational wide path never owns an expanded routing tuple.
         # Keep the older full-object/hostile comparison executable on demand
         # (and default for the smaller test), without contaminating this
         # process's memory high-water with the historical representation.
-        direct_pack=resume_court or session_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
+        direct_pack=external_case is not None or resume_court or session_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
         from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
         from rawlsing_next import pre553_issued_workload as issued
         tag=("country-native-resume" if resume_court else
@@ -89,24 +89,45 @@ class CountryNativeEconomics(unittest.TestCase):
             data["v"+str(i)]=np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
         data["G"]=np.where(np.arange(n)%2==0,"A","B")
         data["W"]=1.+(np.arange(n)%3)
-        frame=pd.DataFrame(data)
-        chosen=tuple(range(1,n+1,2))
-        selected=values[::2,:]
-        with tempfile.TemporaryDirectory() as d:
-            p=Path(d);src=p/"generated.sav";db=p/"country.sqlite";products=p/"products";products.mkdir()
-            pyreadstat.write_sav(frame,str(src))
-            original_bytes=src.stat().st_size
-            sha=hashlib.sha256(src.read_bytes()).hexdigest()
-            t=time.monotonic()
-            with decode_sav(src,expected_source_sha256=sha) as inc:
-                ordinals={v.name:v.ordinal for v in inc.variables}
-                receipt=build_country(inc,country_variable="G",country_value="A",output=db,
-                                      require_current=lambda:True,block_rows=256)
-            build_seconds=time.monotonic()-t
+        from contextlib import nullcontext
+        if external_case is None:
+            frame=pd.DataFrame(data)
+            chosen=tuple(range(1,n+1,2))
+            selected=values[::2,:]
+            context=tempfile.TemporaryDirectory()
+        else:
+            # Reuse the SAME issuer/operation geometry for independently
+            # retained countries from one already-built physical source.
+            context=nullcontext(external_case["root"])
+        with context as d:
+            p=Path(d)
+            country="A"
+            if external_case is None:
+                src=p/"generated.sav";db=p/"country.sqlite";products=p/"products";products.mkdir()
+                pyreadstat.write_sav(frame,str(src))
+                original_bytes=src.stat().st_size
+                sha=hashlib.sha256(src.read_bytes()).hexdigest()
+                t=time.monotonic()
+                with decode_sav(src,expected_source_sha256=sha) as inc:
+                    ordinals={v.name:v.ordinal for v in inc.variables}
+                    receipt=build_country(inc,country_variable="G",country_value="A",output=db,
+                                          require_current=lambda:True,block_rows=256)
+                build_seconds=time.monotonic()-t
+                src.unlink()
+            else:
+                db,receipt,ordinals,selected,chosen,country=(
+                    external_case[k] for k in ("db","receipt","ordinals","selected","chosen","country"))
+                tag="country-campaign-"+country
+                sha=receipt.source_sha256
             self.assertEqual(receipt.country_rows,len(chosen))
-            src.unlink()
             t=time.monotonic()
             fx=_fixture(tag);original=fx["projection"];universe=fx["universe"]
+            if external_case is not None:
+                material=universe.semantic_projection()
+                fields=material.pop("semantic_fields")
+                fields.update(country_geography=country,sampling_geography=country+"-NATIONAL")
+                universe=type(universe)(**material,**fields)
+                fx["universe"]=universe
             source_auth=fx["source_auth"];mapping_auth=fx["authorities"][1]
             respondents=tuple(RespondentIdentity(empirical_universe_ref=universe.ref,
                 respondent_key=f"{tag}-{row}",source_native_respondent_key_ref_or_typed_absence=_ref("SOURCE_RESPONDENT",f"{tag}-{row}"),
@@ -131,7 +152,7 @@ class CountryNativeEconomics(unittest.TestCase):
             routing=(_PackedRoutingFacts if direct_pack else tuple)(original_routes())
             projection=replace(original,expected_source_sha256=sha,
                 source_snapshot_retention_ref=ExactRef("SOURCE_SNAPSHOT","urn:test:"+tag,sha),
-                respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
+                universes=(universe,),respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
                 questions=questions,response_slots=slots,routing=routing,
                 coordinate_slots=(replace(original.coordinate_slots[0],slot=PhysicalSlot(ordinals["G"],"G")),),
                 weight_slots=(replace(original.weight_slots[0],slot=PhysicalSlot(ordinals["W"],"W")),))
@@ -139,7 +160,7 @@ class CountryNativeEconomics(unittest.TestCase):
             qa=_query_authority(tag);da=_d_auth(tag+"-discovery")
             base=_branch_predicate(fx,qa,members=respondents,tag=tag+"-all")
             atom=_predicate(fx,qa,_response_leaf(fx,qa,"q0","1"),tag=tag+"-q0")
-            joint=_query(fx,qa,base,("q0","q1","q2") if resume_court else ("q0","q1"),tag=tag+"-joint")
+            joint=_query(fx,qa,base,("q0","q1","q2") if resume_court or external_case is not None else ("q0","q1"),tag=tag+"-joint")
             # Distinct actual predicates/targets, not repeated identical query.
             atom2=_predicate(fx,qa,_response_leaf(fx,qa,"q1","0"),tag=tag+"-q1-zero") if wide or resume_court else None
             conditional=tuple(_query(fx,qa,atom,(q,),tag=tag+"-"+q) for q in names[2:(52 if wide else 11)])
@@ -172,14 +193,14 @@ class CountryNativeEconomics(unittest.TestCase):
                 requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
             if wide:
                 self.assertEqual(len({q.ref.key for q in queries}),100)
-                self.assertEqual(len(routing),20480)
+                self.assertEqual(len(routing),len(chosen)*governed)
             ds=(discovery.ref,);jobs=operation_jobs(requests,ds)
             root=semantic_hash({"fixture":tag});frontier=semantic_hash({"jobs":jobs,"root":root})
             decision=_ref("TEST_ONLY_DECISION",tag);host,purpose="test-country","TEST_ONLY_COUNTRY_ECONOMICS"
             descriptor=dict(source_edition=sha,native_item_ids=list(names),release_tag=projection.instrument_release_id,
-                routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":"A"},
+                routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":country},
                 weight_design_estimand={"measure":"RAW"},missing_and_occurrence_policy={"fixture":True},
-                target_conditioner_roles={"joint":["q0","q1","q2"] if resume_court else ["q0","q1"]})
+                target_conditioner_roles={"joint":["q0","q1","q2"] if resume_court or external_case is not None else ["q0","q1"]})
             workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY",tag),
                 descriptor=canonical(descriptor),projection=projection,catalog=cat,requests=requests,discoveries=ds,
                 original_u_root=root,expected_frontier_root=frontier)
@@ -210,6 +231,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            if external_case is not None:
+                return workload,record,queries,host,purpose,qrefs
             if session_court:
                 return self._distinct_country_workloads(p,db,receipt,workload,record,host,purpose)
             if resume_court:
@@ -627,6 +650,312 @@ class CountryNativeEconomics(unittest.TestCase):
                 "direct_packed_producer":direct_pack,
                 "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
+
+    def test_grouped_country_campaign_economics(self):
+        """Real country/U43/Batch/S2F court; not #1001 terminal qualification."""
+        import os
+        location=os.environ.get("PYAT_R9_CAMPAIGN_ROOT")
+        if not location:
+            self.skipTest("run via tools.pyat_country_campaign_court")
+        import gc
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        from rawlsing_next import pre553_source_backed_c11_facade as facade
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        from rawlsing_next.tests.test_pre553_empirical_query import _cell_map
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from collections import Counter
+        from dataclasses import asdict
+
+        root=Path(location)
+        self.assertTrue(root.is_dir())
+        countries=root/"countries";countries.mkdir()
+        products=root/"products";products.mkdir()
+        sizes=tuple(int(x) for x in os.environ.get("PYAT_R9_COUNTRY_ROWS","128,192,256").split(","))
+        self.assertEqual(len(sizes),3)
+        self.assertTrue(all(n>=32 for n in sizes))
+        labels=np.array([c for i in range(max(sizes)) for c,n in zip("ABC",sizes) if i<n])
+        rng=np.random.default_rng(931)
+        n=len(labels);governed=80;extra=218
+        values=rng.integers(0,2,(n,governed))
+        # Real heterogeneity across independently qualified universes.
+        # Force all four X/Y configurations; A and B have opposing XORs.
+        for country in "ABC":
+            indices=np.flatnonzero(labels==country)
+            values[indices,0]=np.arange(len(indices))%2
+            values[indices,1]=(np.arange(len(indices))//2)%2
+            if country in "AB":
+                values[indices,2]=values[indices,0]^values[indices,1]^(country=="B")
+        data={"q"+str(i):values[:,i].astype(str) for i in range(governed)}
+        for i in range(extra):
+            data["v"+str(i)]=(np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
+                             if i%2 else (np.arange(n)+i)%7)
+        data["G"]=labels;data["W"]=1.+(np.arange(n)%3)
+        frame=pd.DataFrame(data)
+        phase_file=root/"phase.json"
+        def phase(name):
+            tmp=phase_file.with_suffix(".tmp")
+            tmp.write_text(json.dumps({"phase":name}),encoding="utf-8")
+            tmp.replace(phase_file)
+        def footprint(path):
+            seen=set();size=allocated=files=0
+            for f in path.rglob("*"):
+                if not f.is_file():continue
+                st=f.stat();key=(st.st_dev,st.st_ino)
+                if key in seen:continue
+                seen.add(key);size+=st.st_size
+                allocated+=getattr(st,"st_blocks",0)*512;files+=1
+            return {"logical_file_bytes":size,"allocated_bytes":allocated,"file_count":files}
+        def elapsed(fn):
+            wall=time.monotonic();cpu=time.process_time()
+            result=fn()
+            return result,{"wall_s":time.monotonic()-wall,"worker_cpu_s":time.process_time()-cpu}
+        phase("source_generation")
+        src=root/"survey.sav"
+        _,source_time=elapsed(lambda:pyreadstat.write_sav(frame,str(src)))
+        source_bytes=src.stat().st_size
+        sha=hashlib.sha256(src.read_bytes()).hexdigest()
+        del frame,data
+        progress=[]
+        def build():
+            with decode_sav(src,expected_source_sha256=sha) as inc:
+                ordinals={v.name:v.ordinal for v in inc.variables}
+                built=list(carrier.build_country_set(inc,country_variable="G",root=countries,
+                    require_current=lambda:True,max_open_countries=3,block_rows=256,
+                    on_progress=lambda state:progress.append(dict(state))))
+            return ordinals,built
+        phase("grouped_country_build")
+        (ordinals,built),build_time=elapsed(build)
+        self.assertEqual(len(built),3)
+        self.assertEqual(sum(r.country_rows for _,r in built),n)
+        self.assertEqual(sum(p["phase"]=="SOURCE_SCAN" for p in progress),1)
+        self.assertEqual(sum(p["phase"]=="CENSUS" for p in progress),1)
+        receipts={}
+        seen=set()
+        phase("physical_census")
+        for db,receipt in built:
+            country=json.loads(receipt.country_key)["v"]
+            self.assertIn(country,"ABC")
+            indices=np.flatnonzero(labels==country)
+            rows=tuple(int(i+1) for i in indices)
+            with CountryReader(db,receipt,require_current=lambda:True) as reader:
+                self.assertEqual(tuple(reader.row_ordinals()),rows)
+                self.assertEqual(len(reader.variables),300)
+                # Independent per-country high-cardinality physical scan.
+                self.assertEqual(tuple(reader.matching_rows({"q0":"1"})),
+                    tuple(int(i+1) for i in indices if values[i,0]==1))
+            self.assertFalse(seen.intersection(rows));seen.update(rows)
+            receipts[country]=(db,receipt)
+        self.assertEqual(seen,set(range(1,n+1)))
+        self.assertEqual(len({r.sha256 for _,r in built}),3)
+        country_footprint=footprint(countries)
+        # Original generated source not necessary to execute or serve.
+        src.unlink()
+        print("R9_COUNTRY_BUILD",json.dumps({"source_rows":n,"country_rows":sizes,
+            "physical_width":300,"governed_width":80,"source_bytes":source_bytes,
+            "source_generation":source_time,"grouped_build":build_time,
+            "source_scan_groups":1,"census_passes":1,"country_files":country_footprint,
+            "country_receipts":[asdict(r) for _,r in built]}),flush=True)
+
+        def issue(workload,record,tag,requests,discoveries):
+            decision=_ref("TEST_ONLY_DECISION",tag)
+            jobs=operation_jobs(requests,discoveries)
+            u=semantic_hash({"fixture":tag})
+            frontier=semantic_hash({"jobs":jobs,"root":u})
+            item=replace(workload,decision_ref=decision,requests=requests,
+                         discoveries=discoveries,original_u_root=u,expected_frontier_root=frontier)
+            grant=replace(record,decision_ref=decision,expected_jobs=jobs,
+                original_u_root=u,expected_frontier_root=frontier,
+                envelope_sha256=issued._stream_workload_digest(item))
+            return item,TestOnlyDecisionResolver(grant)
+        def fixture(country):
+            db,receipt=receipts[country]
+            indices=np.flatnonzero(labels==country)
+            selected=values[indices,:]
+            ext=dict(root=root,db=db,receipt=receipt,ordinals=ordinals,
+                     selected=selected,chosen=tuple(int(i+1) for i in indices),country=country)
+            return self._native_batch(wide=True,external_case=ext),selected
+        def common(item,resolver,pub,receipt,host,purpose):
+            return dict(expected_root=pub.receipt.root_identity,
+                expected_release_ref=pub.release_identity.release_ref,country_receipt=receipt,
+                workload=item,resolver=resolver,host=host,purpose=purpose)
+        def check_counts(read,query,mask,selected,qrefs):
+            fact=read.first_consumer.execution.facts[0]
+            self.assertEqual(fact.raw_denominator_support,int(mask.sum()))
+            axes=tuple({r.key:i for i,r in enumerate(qrefs.values())}[exact_ref(r).key]
+                       for r in query.target_refs)
+            cells=_cell_map(fact)
+            self.assertEqual(len(cells),2**len(axes))
+            for cell,row in cells.items():
+                vals=(cell,) if isinstance(cell,str) else cell
+                check=mask.copy()
+                for axis,val in zip(axes,vals):
+                    check &= selected[:,axis]==int(val)
+                self.assertEqual(row["raw_numerator_support"],int(check.sum()))
+
+        # These are inclusive call-boundary measurements, not additive
+        # categories. No mock substitutes for native execution/publication.
+        phase_stats=defaultdict(list)
+        actual=[]
+        def measured(owner,name,label):
+            original=getattr(owner,name)
+            @wraps(original)
+            def invoke(*args,**kwargs):
+                started=time.monotonic()
+                try:
+                    if label=="native_i03":actual.append(("QUERY",kwargs["query_ref"].key))
+                    if label=="native_i05":actual.append(("DISCOVERY",kwargs["discovery_authority_ref"].key))
+                    return original(*args,**kwargs)
+                finally:
+                    phase_stats[label].append(time.monotonic()-started)
+            return patch.object(owner,name,invoke)
+        def stats():
+            return {k:{"calls":len(v),"inclusive_wall_s":sum(v),
+                       "median_s":median(v),"max_s":max(v)} for k,v in phase_stats.items()}
+        monitors=((facade,"_validate_country_produced_release","logical_i02"),
+                  (issued,"_admit","issuer_admission"),
+                  (carrier.CountryReader,"verify_full","full_file_authentication"),
+                  (CarrierNeutralResearchExecutor,"execute_i03","native_i03"),
+                  (CarrierNeutralResearchExecutor,"execute_i05","native_i05"),
+                  (delivery,"_s04_manifest","s04_first_reads"),
+                  (delivery,"publish_empirical_closure","s2f_publication"),
+                  (issued.NativeWorkloadResult,"exact_s2e_output_census","s2e_census"))
+        archived={}
+        def pub_metrics(pub):
+            r=pub.receipt
+            return {"completed":pub.batch_census["completed_count"],
+                    "root":r.root_identity,"publication_s":pub.publication_seconds,
+                    "cas_new_bytes":r.cas_new_bytes,"manifest_bytes":r.manifest_bytes,
+                    "referenced_bytes":r.referenced_physical_bytes,
+                    "publisher_scratch_counter_bytes":r.peak_scratch_bytes,
+                    "archive_footprint":footprint(products)}
+        for country in "ABC":
+            db,receipt=receipts[country]
+            phase(country+"_issue")
+            ((workload,record,queries,host,purpose,qrefs),selected),issuance=elapsed(lambda:fixture(country))
+            phase_stats.clear();actual.clear()
+            histories=[];pins=[];runs=[]
+            phase(country+"_investigations")
+            with ExitStack() as stack:
+                for owner,name,label in monitors:stack.enter_context(measured(owner,name,label))
+                session=stack.enter_context(carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True))
+                # Intentionally overlapping investigations: 1, 10, then
+                # all 100 distinct I03 operations plus one I05. Different
+                # issuer decisions, not artificially cached answers.
+                for count in (1,10,100):
+                    ds=workload.discoveries if count==100 else ()
+                    item,resolver=issue(workload,record,country+"-"+str(count),workload.requests[:count],ds)
+                    checkpoints=[]
+                    def retain(pin,pub):
+                        pins.append(pin)
+                        checkpoints.append(pub_metrics(pub))
+                    args=dict(checkpoint_every=34,checkpoint_observer=retain) if count==100 else {}
+                    phase(country+"_investigation_"+str(count))
+                    before=len(actual)
+                    pub,timing=elapsed(lambda:session.publish(item,resolver,host=host,purpose=purpose,
+                                                             root_dir=products,**args))
+                    self.assertTrue(pub.complete)
+                    self.assertEqual(pub.batch_census["completed_count"],count+len(ds))
+                    expected=Counter(("QUERY",r.query_ref.key) for r in item.requests)
+                    expected.update(("DISCOVERY",r.key) for r in ds)
+                    self.assertEqual(Counter(actual[before:]),expected)
+                    histories.append({"i03":count,"i05":len(ds),"timing":timing,
+                                      "final":pub_metrics(pub),"checkpoints":checkpoints})
+                    runs.append((item,resolver,pub))
+                self.assertEqual(len(phase_stats["logical_i02"]),1)
+                self.assertEqual(len(actual),112)
+            self.assertIsNone(session._reader);self.assertIsNone(session._entry)
+            measured_stats=stats()
+            self.assertEqual([x["completed"] for x in histories[-1]["checkpoints"]],[34,68,101])
+            self.assertEqual(len(pins),3)
+            # All three independent publications are served through the
+            # selected cold reader; the final root also undergoes full open.
+            phase(country+"_cold_retrieval")
+            retrieval=[]
+            for item,resolver,pub in runs:
+                plan=((item.requests[0].query_ref,None),)
+                result,timing=elapsed(lambda:delivery.read_country_s04_selected(
+                    pub.receipt.root_path,**common(item,resolver,pub,receipt,host,purpose),requests=plan))
+                check_counts(result.reads[0],queries[0],np.ones(len(selected),dtype=bool),selected,qrefs)
+                retrieval.append({"units":1,"timing":timing,"blobs_read":result.blobs_read})
+            item,resolver,pub=runs[-1]
+            cold,full_open=elapsed(lambda:delivery.open_country_product(
+                pub.receipt.root_path,**common(item,resolver,pub,receipt,host,purpose)))
+            self.assertTrue(cold.complete)
+            # Sample representative condition directions and joint support
+            # against the original generated country rows, not another I03.
+            sample=(0,1,50,51,98,99)
+            plan=tuple((queries[i].ref,None) for i in sample)
+            read,timing=elapsed(lambda:cold.read_s04_many(plan))
+            for i,result in zip(sample,read):
+                mask=(np.ones(len(selected),dtype=bool) if i in (0,99) else
+                      selected[:,0]==1 if i<=50 else selected[:,1]==0)
+                check_counts(result,queries[i],mask,selected,qrefs)
+            direct,selected_time=elapsed(lambda:delivery.read_country_s04_selected(
+                pub.receipt.root_path,**common(item,resolver,pub,receipt,host,purpose),requests=plan))
+            self.assertEqual(tuple(delivery._s04_refs(r) for r in direct.reads),
+                             tuple(delivery._s04_refs(r) for r in read))
+            roles=0
+            with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                              side_effect=AssertionError("retained consumer reran I03")):
+                for discovery in cold._closure.discovery_results:
+                    for candidate in discovery.receipts:
+                        for role,refs in candidate.support_uncertainty_state.get("query_role_fact_refs",{}).items():
+                            if len(refs)==1:
+                                fact,role_receipt=cold.read_i05_role(candidate.ref,role)
+                                self.assertTrue(fact.ref and role_receipt.ref);roles+=1
+            self.assertGreater(roles,0)
+            # Same source SHA is insufficient: another country's physical
+            # receipt cannot be used to authorize this archive.
+            wrong=receipts["B" if country=="A" else "A"][1]
+            with self.assertRaisesRegex(delivery.SavedDeliveryError,"BINDING_DRIFT"):
+                delivery.read_country_s04_selected(pub.receipt.root_path,
+                    **common(item,resolver,pub,wrong,host,purpose),requests=plan)
+            archived[country]=(pub.receipt.root_path,pub.receipt.root_identity,
+                              pub.release_identity.release_ref)
+            print("R9_COUNTRY_CAMPAIGN",json.dumps({"country":country,"rows":len(selected),
+                "issuance":issuance,"investigations":histories,"inclusive_phases":measured_stats,
+                "selected_small_reads":retrieval,"full_cold_open":full_open,
+                "full_reader_selected_s04":timing,"selected_cold":selected_time,
+                "selected_cold_blobs":direct.blobs_read,"retained_i05_roles":roles,
+                "independent_source_counts_and_wrong_country_refusal":True}),flush=True)
+            # Do not retain three logical graphs or full cold products.
+            del cold,read,direct,result,runs,session,workload,record,queries,qrefs,item,resolver,pub,discovery,candidate,fact,role_receipt
+            gc.collect()
+
+        # A later return to A, after B and C, reissues a distinct workload.
+        # This intentionally pays a new preparation; no cross-country cache.
+        phase("return_to_A_issue")
+        (workload,record,queries,host,purpose,qrefs),selected=fixture("A")
+        db,receipt=receipts["A"]
+        item,resolver=issue(workload,record,"A-return",workload.requests[51:61],())
+        phase("return_to_A_execute")
+        with patch.object(facade,"_validate_country_produced_release",
+                          wraps=facade._validate_country_produced_release) as builds:
+            pub,timing=elapsed(lambda:delivery.execute_publish_country(item,resolver,
+                host=host,purpose=purpose,country_path=db,country_receipt=receipt,root_dir=products))
+            self.assertEqual(builds.call_count,1)
+        self.assertEqual(pub.batch_census["completed_count"],10)
+        self.assertEqual(pub.release_identity.release_ref,archived["A"][2])
+        # Source and country deletion: old empirical publication survives.
+        phase("return_to_A_retained_read")
+        old,old_resolver=issue(workload,record,"A-100",workload.requests,workload.discoveries)
+        path,root_pin,release=archived["A"]
+        db.unlink()
+        read,read_time=elapsed(lambda:delivery.read_country_s04_selected(path,
+            expected_root=root_pin,expected_release_ref=release,country_receipt=receipt,
+            workload=old,resolver=old_resolver,host=host,purpose=purpose,
+            requests=((queries[0].ref,None),)))
+        check_counts(read.reads[0],queries[0],np.ones(len(selected),dtype=bool),selected,qrefs)
+        print("R9_COUNTRY_CAMPAIGN_FINAL",json.dumps({"country_count":3,"distinct_source_rows":n,
+            "actual_issued_units":346,"distinct_initial_i03_per_country":100,
+            "return_to_A_10_units":timing,"return_to_A_after_country_deleted":read_time,
+            "country_files_before_deletion":country_footprint,"retained_products":footprint(products),
+            "full_workspace_after_deletion":footprint(root),
+            "grade":"SOURCEFREE_THREE_COUNTRY_300_PHYSICAL_80_GOVERNED__NOT_ORIGINAL_OR_100K_FULL_VERTICAL"}),
+            flush=True)
 
     def _distinct_country_workloads(self,root,db,receipt,workload,record,host,purpose):
         from rawlsing_next import pre553_country_numeric_carrier as carrier
