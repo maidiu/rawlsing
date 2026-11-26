@@ -39,6 +39,9 @@ def validate_expected_difference(value):
             raise ValueError('INVALID_EXPECTED_DIFFERENCE_TERMS')
     return copy(value)
 
+from .activity import productive_witness_signs, productive_witness_option
+
+
 def practical_alternatives(constitution,access,option):
     """A named option remains distinct beneath one executable operation.
 
@@ -55,6 +58,19 @@ def practical_alternatives(constitution,access,option):
         project=next((p for p in constitution.projects
                       if p['id']==course['project_id']),None)
         if project is None:continue
+        if act=='ORIENT' and project.get('productive_witness_means'):
+            for cue in productive_witness_signs(project,access):
+                attention=productive_witness_option(project,access,cue)
+                alts.append({'option_id':attention['attention_ref'],'actor':actor,
+                    'as_of_clock':clock,'operation':act,'project_id':project['id'],
+                    'grounds_status':'HISTORICALLY_REFUNCTIONED_RECEPTIVE_PROJECT_COURSE',
+                    'world_request':{'operation':act,'addressed_party_ref':None,'material_object_ref':None},
+                    'binding_status':'PARTICULAR_CURRENT_RECEIVABLE_SIGN',
+                    'anticipated_difference':None,'beneficiary_as_apprehended':None,
+                    'productive_witness_attention':attention,'source_grade':GRADE,
+                    'not_actor_self_account':True,'not_world_outcome':True,
+                    'priority':project.get('priority',.5)})
+            continue
         expected=validate_expected_difference(project.get('expected_difference'))
         object_ref=project.get('material_object_ref') if project.get('incidental_takeup_basis') is not None else None
         if project.get('incidental_takeup_basis') is not None and (
