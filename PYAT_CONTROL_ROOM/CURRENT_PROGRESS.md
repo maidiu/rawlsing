@@ -12,6 +12,8 @@ R5 #1373, R6 #1374 and R7 #1376 have executed four-job generated-source courts (
 
 Exact evidence and prior live field values in paired JSON `g4_currentness_reconciliation_20261126`; protected rev23 and P0 unchanged. R6/R7 successor exact receipts in paired JSON `g4_r7_source_recovery_20261126`.
 
+Reciprocal point-of-use readbacks: [REMONT REQ-013](https://github.com/maidiu/rawlsing/commit/5c36a1daa0ab6365280ec219714416da55a605ff); [FIELD-AUTHORITY preliminary entrance](https://github.com/maidiu/rawlsing/commit/89a83035637ad0d032cbcfc76e64d962118a3b5b). All 1,076 register identities and fields retained; 29 rows changed, 18 prior field values preserved in paired receipt; unaffected rows byte-identical.
+
 Point-of-use correction readbacks: [#1302](https://github.com/maidiu/rawlsing/commit/7e3c4dc2d4eaaadbf32100d0f4db4a1e781edc79); [#1173](https://github.com/maidiu/rawlsing/commit/3bfd45ab549fcc1bbb6fd281a636395e56354df0); [#1331](https://github.com/maidiu/rawlsing/commit/e96a4e5fb66a918fa1977b1294a211c6f239f3cd); [#1327](https://github.com/maidiu/rawlsing/commit/2065cf1825de199619625355e0751ad25aa8ad20). All 1,076 original register rows conserved; 12 superseded live fields preserved in paired JSON.
 
 
