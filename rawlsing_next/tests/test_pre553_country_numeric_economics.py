@@ -142,10 +142,12 @@ class CountryNativeEconomics(unittest.TestCase):
                 instrument_question_version="1",canonical_question_ref_or_typed_absence=TypedAbsence("NOT_AUTHORIZED"),
                 component_subitem_ref_or_typed_absence=TypedAbsence("NOT_APPLICABLE"),
                 semantic_authority_ref=source_auth.authority_ref,topology_authority_ref=source_auth.authority_ref) for q in names)
+            target_domains={} if external_case is None else external_case.get("target_domains",{})
+            fx["target_domains"]=target_domains
             slots=tuple(ResponseSlotRule(PhysicalSlot(ordinals[q],q),binding,tuple(
                 ResponseValueRule(physical_value_binding_key(v,"OBSERVED_STORAGE_VALUE"),"SUBSTANTIVE_RESPONSE",
                     (OccurrenceRule("0",_ref("TOPOLOGY",tag+"-"+q),{"kind":"SCALAR_SINGULAR","index":0}),),
-                    v,mapping_auth.authority_ref) for v in ("0","1"))) for q,binding in zip(names,questions))
+                    v,mapping_auth.authority_ref) for v in target_domains.get(q,("0","1")))) for q,binding in zip(names,questions))
             risk=fx["risk_refs"]["R"];state="ELIGIBLE_APPLICABLE"
             def original_routes():
                 return (RoutingEligibilityFact(typed_state=state,authority_snapshot_refs=(fx["routing_auth"].authority_ref,),

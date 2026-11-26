@@ -673,7 +673,38 @@ def canonical_section_refs(records: Iterable[Any]) -> tuple[ExactRef, ...]:
     return tuple(sorted(refs, key=lambda ref: ref.key))
 
 
+def _country_occurrence_ids_distinct(events):
+    """Sufficient exact proof for deterministic private country headers.
+
+    Distinct canonical occurrence identifiers imply distinct full occurrence
+    keys. A repeated identifier is NOT proof of a duplicate: the group,
+    respondent, universe, question or component could differ. Return to the
+    complete incumbent test on repeated, foreign or malformed identities.
+    """
+    from rawlsing_next._pre553_c11_execution_view import _CountryEventHeader
+    if type(events) is not tuple:
+        return False
+    seen=set()
+    for event in events:
+        if type(event) is not _CountryEventHeader:
+            return False
+        value=event.occurrence_identity
+        if (type(value) is not bytes or len(value)!=32 or value in seen
+                or type(event.group_identity) is not bytes or len(event.group_identity)!=32):
+            return False
+        # Validate the optional exact component just as the complete
+        # occurrence preimage would. No shortcut for foreign identity forms.
+        event.component_or_subitem_ref
+        _field_ref(event,"empirical_universe_ref")
+        _field_ref(event,"scoped_respondent_ref")
+        _field_ref(event,"native_question_ref")
+        seen.add(value)
+    return True
+
+
 def ensure_distinct_event_occurrences(events: Iterable[RespondentEvent]) -> None:
+    if _country_occurrence_ids_distinct(events):
+        return
     # A digest collision can only conservatively refuse a package, never
     # collapse two occurrences or admit a duplicate. Avoid retaining an
     # expanded canonical occurrence JSON string for every source cell.
