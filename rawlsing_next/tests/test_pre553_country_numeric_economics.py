@@ -800,8 +800,21 @@ class CountryNativeEconomics(unittest.TestCase):
             return delivery.open_country_product(pub.receipt.root_path,
                 expected_root=pub.receipt.root_identity,
                 expected_release_ref=pub.release_identity.release_ref,**common,**kwargs)
-        baseline=run(products)
+        captured=[]
+        original_publish=durable.publish_empirical_closure
+        def capture(output,*args,**kwargs):
+            captured.append(output)
+            return original_publish(output,*args,**kwargs)
+        with patch.object(delivery,"publish_empirical_closure",side_effect=capture):
+            baseline=run(products)
+        self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
+        self._cas_publication_court(root,products,captured.pop(),baseline)
+        # Actual process termination, not an exception which unwinds the
+        # native session. Keep the original controlled interruption court.
+        import os
+        if os.environ.get("PYAT_R8_PROCESS_LOSS")=="1":
+            self._process_loss_court(root,run,common,baseline,baseline_reader)
         bounded_dir=root/"bounded";bounded_dir.mkdir()
         bounded=run(bounded_dir,max_units=1)
         self.assertFalse(bounded.complete)
@@ -1001,6 +1014,203 @@ class CountryNativeEconomics(unittest.TestCase):
             "interruption_seconds":interruption_s,"resume_seconds":resume_s,
             "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
         }),flush=True)
+
+    def _process_loss_court(self,root,run,common,baseline,baseline_reader):
+        import os,signal,traceback
+        from collections import Counter
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        destination=root/"killed-campaign"
+        destination.mkdir()
+        external=root/"operator-checkpoint-pin.json"
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        def retain_first(pin,pub):
+            # The operator pin is independently retained outside the CAS.
+            # The worker will die during the NEXT publication, not here.
+            if external.exists():
+                raise AssertionError("second checkpoint became visible")
+            material=dict(closure_path=str(pin.closure_path),expected_root=pin.expected_root,
+                expected_release_ref=pin.expected_release_ref.as_dict(),
+                expected_country_sha256=pin.expected_country_sha256,
+                completed=pub.batch_census["completed_count"])
+            with external.open("w",encoding="utf-8") as handle:
+                json.dump(material,handle,sort_keys=True)
+                handle.flush()
+                os.fsync(handle.fileno())
+            fd=os.open(external.parent,os.O_RDONLY)
+            try:
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+        pid=os.fork()
+        if pid==0:
+            try:
+                original=delivery.publish_empirical_closure
+                def publish_then_die(output,*args,**kwargs):
+                    if external.exists():
+                        def failpoint(stage):
+                            if stage=="before_manifest_replace":
+                                os.kill(os.getpid(),signal.SIGKILL)
+                        kwargs["failpoint"]=failpoint
+                    return original(output,*args,**kwargs)
+                with patch.object(delivery,"publish_empirical_closure",side_effect=publish_then_die):
+                    run(destination,checkpoint_every=3,checkpoint_observer=retain_first)
+            except BaseException:
+                traceback.print_exc()
+            os._exit(1)
+        deadline=time.monotonic()+120
+        while True:
+            waited,status=os.waitpid(pid,os.WNOHANG)
+            if waited:
+                break
+            if time.monotonic()>deadline:
+                os.kill(pid,signal.SIGKILL)
+                os.waitpid(pid,0)
+                self.fail("checkpoint child timed out")
+            time.sleep(.025)
+        self.assertTrue(os.WIFSIGNALED(status))
+        self.assertEqual(os.WTERMSIG(status),signal.SIGKILL)
+        closures=destination/durable.CLOSURES_DIR
+        self.assertEqual(len(list(closures.glob("closure-*"))),1)
+        self.assertTrue(list(closures.glob(f"{durable.STAGING_PREFIX}{pid}-*")))
+        material=json.loads(external.read_text())
+        self.assertEqual(material.pop("completed"),3)
+        material["expected_release_ref"]=exact_ref(material["expected_release_ref"])
+        pin=delivery.CountryResumePin(**material)
+        partial=delivery.open_country_product(pin.closure_path,
+            expected_root=pin.expected_root,expected_release_ref=pin.expected_release_ref,
+            **common,allow_partial=True)
+        self.assertFalse(partial.complete)
+        manifest=delivery._manifest(common["workload"],baseline.release_identity.release_ref)
+        completed={r.unit_ref.key for r in partial._receipts}
+        expected=Counter((u.job_kind,u.job_ref.key) for u in manifest.units
+                         if u.unit_ref.key not in completed)
+        actual=[]
+        i03=CarrierNeutralResearchExecutor.execute_i03
+        i05=CarrierNeutralResearchExecutor.execute_i05
+        def record03(self,**kw):
+            actual.append(("QUERY",kw["query_ref"].key))
+            return i03(self,**kw)
+        def record05(self,**kw):
+            actual.append(("DISCOVERY",kw["discovery_authority_ref"].key))
+            return i05(self,**kw)
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",record03), patch.object(
+                CarrierNeutralResearchExecutor,"execute_i05",record05):
+            final=run(destination,resume_from=pin)
+        self.assertEqual(Counter(actual),expected)
+        self.assertEqual(final.batch_census,baseline.batch_census)
+        self.assertFalse(list(closures.glob(f"{durable.STAGING_PREFIX}{pid}-*")))
+        restored=delivery.open_country_product(final.receipt.root_path,
+            expected_root=final.receipt.root_identity,
+            expected_release_ref=final.release_identity.release_ref,**common)
+        self.assertEqual(restored._receipts,baseline_reader._receipts)
+        self.assertEqual(restored._closure.i03_results,baseline_reader._closure.i03_results)
+        self.assertEqual(tuple(x.replay_ref for x in restored._closure.discovery_results),
+                         tuple(x.replay_ref for x in baseline_reader._closure.discovery_results))
+        print("RELAY_R8_PROCESS_LOSS",json.dumps({"child_termination":"SIGKILL",
+            "completed_before_death":len(completed),"resumed_native_units":len(actual),
+            "exact_output_and_receipt_parity":True,
+            "unpublished_staging_reclaimed":True,
+            "grade":"SOURCEFREE_FORKED_WORKER_SIGKILL_BEFORE_SECOND_MANIFEST_REPLACE"
+        }),flush=True)
+
+    def _cas_publication_court(self,root,products,output,baseline):
+        """Same actual native output; independent publication into a warm CAS.
+
+        This is not a cache of scientific results. Each publication still
+        constructs and validates the complete output graph. Only existing
+        compressed bytes can discharge an exact-byte equality witness.
+        """
+        import shutil,zlib
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next.pre553_empirical_objects import canonical_json
+        blobs=products/durable.CAS_DIR/durable.BLOB_DIR
+        paths=sorted(blobs.glob("*"+durable.BLOB_SUFFIX))
+        self.assertTrue(paths)
+        expected_root=baseline.receipt.root_identity
+        def warm(name):
+            dest=root/name
+            shutil.copytree(products/durable.CAS_DIR,dest/durable.CAS_DIR)
+            return dest
+        def publish(mod,dest):
+            return mod.publish_empirical_closure(output,dest,
+                        compact_manifest=True,expected_root=expected_root)
+        same=warm("r8-cas-exact")
+        with patch.object(durable,"_decode_verified_blob",
+                          side_effect=AssertionError("identical CAS bytes decoded")):
+            receipt=publish(durable,same)
+        self.assertEqual(receipt.root_identity,expected_root)
+        self.assertEqual(receipt.cas_new_bytes,0)
+        durable.open_empirical_closure(receipt.root_path,expected_root=expected_root).require_trusted()
+        # Recompress actual retained canonical material without changing its
+        # content identity. The cold reader requires the original extent.
+        blob=paths[0]
+        raw=zlib.decompress(blob.read_bytes())
+        alternative=zlib.compress(raw,0)
+        self.assertNotEqual(len(alternative),blob.stat().st_size)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),blob.name[:-len(durable.BLOB_SUFFIX)])
+        poisoned=warm("r8-cas-wrong-extent")
+        changed=poisoned/durable.CAS_DIR/durable.BLOB_DIR/blob.name
+        changed.write_bytes(alternative)
+        with self.assertRaisesRegex(durable.DurableEmpiricalClosureError,"compressed size drift"):
+            publish(durable,poisoned)
+        self.assertFalse(list((poisoned/durable.CLOSURES_DIR).glob("closure-*")))
+        # Same-size wrong bytes must not pass equality or the fallback.
+        changed.write_bytes(b"\x00"*blob.stat().st_size)
+        with self.assertRaises(durable.DurableEmpiricalClosureError):
+            publish(durable,poisoned)
+        self.assertFalse(list((poisoned/durable.CLOSURES_DIR).glob("closure-*")))
+        changed.write_bytes(blob.read_bytes())
+        # The cold reader historically permits alternate compression bytes
+        # with the same content AND declared extents. Do not accidentally
+        # turn exact-byte acceleration into a new physical format restriction.
+        sample=canonical_json({"fixture":"a"*256}).encode("utf-8")
+        generated=zlib.compress(sample,9)
+        alternate=zlib.compress(sample,6)
+        self.assertNotEqual(alternate,generated)
+        self.assertEqual(len(alternate),len(generated))
+        standalone=root/"same-extent-alternate.json.z"
+        standalone.write_bytes(alternate)
+        durable._verify_existing_blob(standalone,generated,
+            hashlib.sha256(sample).hexdigest(),
+            {"compressed_bytes":len(generated),"uncompressed_bytes":len(sample)})
+        restored=publish(durable,poisoned)
+        self.assertEqual(restored.root_identity,expected_root)
+        durable.open_empirical_closure(restored.root_path,expected_root=expected_root).require_trusted()
+        # Compare exact R7, not an emulation, where the immutable parent is
+        # present. Local standalone tests need not fetch another Git object.
+        import os
+        if os.environ.get("PYAT_R8_MATCHED_PUBLICATION")=="1":
+            from tools.pyat_country_storage_relay_benchmark import historical
+            r7=historical("d8ae9a9324c4f923c2efe79e08ce8530bbf32cdc",
+                          "pre553_durable_empirical_closure")
+            old_bad=warm("r7-cas-wrong-extent")
+            (old_bad/durable.CAS_DIR/durable.BLOB_DIR/blob.name).write_bytes(alternative)
+            old_receipt=publish(r7,old_bad)
+            # The inherited writer publishes success; its own cold reader refuses.
+            with self.assertRaisesRegex(r7.DurableEmpiricalClosureError,"compressed size drift"):
+                r7.open_empirical_closure(old_receipt.root_path,expected_root=expected_root)
+            times={"R7":[],"R8":[]}
+            for i,order in enumerate((("R7","R8"),("R8","R7"),("R7","R8"),("R8","R7"))):
+                for version in order:
+                    dest=warm(f"matched-publication-{i}-{version}")
+                    started=time.monotonic()
+                    value=publish(r7 if version=="R7" else durable,dest)
+                    times[version].append(time.monotonic()-started)
+                    self.assertEqual(value.cas_new_bytes,0)
+                    self.assertEqual(value.root_identity,expected_root)
+                    self.assertEqual(durable._manifest_file(Path(value.root_path)).read_bytes(),
+                                     durable._manifest_file(Path(baseline.receipt.root_path)).read_bytes())
+                    durable.open_empirical_closure(value.root_path,
+                        expected_root=expected_root).require_trusted()
+            print("RELAY_R8_WARM_PUBLICATION",json.dumps({
+                "existing_blobs":len(paths),"exact_manifest_and_root":True,
+                "old_accepts_reader_refused_extent":True,
+                "R8_refuses_wrong_extent_and_bad_bytes":True,
+                "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()},
+                "grade":"MATCHED_NATIVE_OUTPUT_WARM_CAS_PUBLICATION_NOT_FULL_WORKLOAD"
+            }),flush=True)
 
     def test_physical_layout_query_tradeoffs_same_cells(self):
         """One selected carrier, bounded block-size comparison; not native-I03 proxy."""
