@@ -29,6 +29,26 @@ def _canonical_event_hashes(envelope, raw, prior, eid):
     return 'evt_'+identity[:20],chain
 
 
+def _canonical_object_hash(value, raw):
+    """Reuse bytes *after* the caller has proved canonical(value) == raw.
+
+    Retain parsed value for the exact original hashing comparator. Never use
+    this as a substitute for canonical byte or type/identity verification.
+    """
+    return hashlib.sha256(raw.encode('utf-8')).hexdigest()
+
+
+def _canonical_seal_hash(category, value, raw):
+    """Exact canonical source-seal wrapper; only validated content bytes."""
+    h=hashlib.sha256()
+    h.update(b'{"category":')
+    h.update(canonical(category).encode('utf-8'))
+    h.update(b',"content":')
+    h.update(raw.encode('utf-8'))
+    h.update(b'}')
+    return h.hexdigest()
+
+
 class ResearchLedger:
     def __init__(self, path):
         self.path = str(path)
@@ -78,9 +98,10 @@ class ResearchLedger:
             envelope=json.loads(payload)
             if (canonical(envelope)!=payload or event_world!=envelope['world'] or
                 event_clock!=envelope['clock'] or event_actor!=envelope['actor'] or
-                kind!=envelope['kind'] or
-                eid!='evt_'+digest({'prev':prior,'envelope':envelope})[:20] or
-                chain!=digest({'previous':prior,'eid':eid,'envelope':envelope})):
+                kind!=envelope['kind']):
+                raise Conflict('UNCOMMITTED_LEDGER_RECORD')
+            expected_id,expected_chain=_canonical_event_hashes(envelope,payload,prior,eid)
+            if eid!=expected_id or chain!=expected_chain:
                 raise Conflict('UNCOMMITTED_LEDGER_RECORD')
         except (ValueError,TypeError,KeyError) as exc:
             raise Conflict('UNCOMMITTED_LEDGER_RECORD') from exc
@@ -91,7 +112,7 @@ class ResearchLedger:
             raise Conflict('UNCOMMITTED_WORLD_ROSTER')
         try:
             world=json.loads(rows[0][1])
-            if canonical(world)!=rows[0][1] or digest(world)!=envelope['world_digest'] or world['clock']!=event_clock:
+            if canonical(world)!=rows[0][1] or _canonical_object_hash(world,rows[0][1])!=envelope['world_digest'] or world['clock']!=event_clock:
                 raise Conflict('UNCOMMITTED_WORLD_STATE')
         except (ValueError,TypeError,KeyError) as exc:
             raise Conflict('UNCOMMITTED_WORLD_STATE') from exc
@@ -102,7 +123,7 @@ class ResearchLedger:
             try:
                 person=json.loads(raw)
                 if (canonical(person)!=raw or person.get('id')!=aid or
-                    digest(person)!=envelope['actor_digests'][aid]):
+                    _canonical_object_hash(person,raw)!=envelope['actor_digests'][aid]):
                     raise Conflict('UNCOMMITTED_ACTOR_STATE')
             except (ValueError,TypeError,KeyError) as exc:
                 raise Conflict('UNCOMMITTED_ACTOR_STATE') from exc
@@ -153,7 +174,7 @@ class ResearchLedger:
                 content=json.loads(raw)
                 if canonical(content)!=raw:
                     raise ValueError('NONCANONICAL_SOURCE_BYTES')
-                actual[sid]=digest({'category':category,'content':content})
+                actual[sid]=_canonical_seal_hash(category,content,raw)
             except (ValueError,TypeError) as exc:
                 raise Conflict('SOURCE_SEAL_TABLE_NONCANONICAL') from exc
         if anchored!=actual:
@@ -504,7 +525,7 @@ class ResearchLedger:
             normalized=json.loads(content)
             if canonical(normalized)!=content:
                 raise AssertionError('SOURCE_SEAL_NONCANONICAL_BYTES:'+sid)
-            actual[sid]=digest({'category':cat,'content':normalized})
+            actual[sid]=_canonical_seal_hash(cat,normalized,content)
         if anchored!=actual:
             raise AssertionError('SOURCE_SEAL_ANCHOR_MISMATCH_OR_UNANCHORED_LEGACY')
         if last is not None:
@@ -522,7 +543,7 @@ class ResearchLedger:
                     raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES')
             except (ValueError,TypeError) as exc:
                 raise AssertionError('WORLD_SNAPSHOT_NONCANONICAL_BYTES') from exc
-            if digest(world_obj)!=last['world_digest']:
+            if _canonical_object_hash(world_obj,world_rows[0][1])!=last['world_digest']:
                 raise AssertionError('LAST_WORLD_STATE_CHANGED_OUTSIDE_LEDGER')
             actor_rows=self.conn.execute('SELECT id,body FROM actors').fetchall()
             if set(aid for aid,_ in actor_rows)!=set(last['actor_digests']):
@@ -536,7 +557,7 @@ class ResearchLedger:
                         raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid)
                 except (ValueError,TypeError) as exc:
                     raise AssertionError('ACTOR_SNAPSHOT_NONCANONICAL_BYTES:'+aid) from exc
-                if person.get('id')!=aid or digest(person)!=last['actor_digests'][aid]:
+                if person.get('id')!=aid or _canonical_object_hash(person,raw)!=last['actor_digests'][aid]:
                     raise AssertionError('LAST_ACTOR_STATE_CHANGED_OUTSIDE_LEDGER:'+aid)
         return {'grade':GRADE,'events':count,'valid':True,'last_hash':prior,
                 'source_seals_verified':len(anchored)}
