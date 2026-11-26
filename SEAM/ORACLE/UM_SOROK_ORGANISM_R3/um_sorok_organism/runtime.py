@@ -17,6 +17,7 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
     offer_correspondence_attention, settle_correspondence_attention, received_correspondence_attention)
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
+                        possible_productive_witness_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_interactivity_relations)
@@ -566,6 +567,13 @@ class ConstitutiveRuntime:
                     or selected_alternative['world_request'].get('addressed_party_ref')!=
                        conditional_courses[0]['dependency_conditional_means'][action]['counterpart_ref']):
                 raise ValueError('DEPENDENCY_PROJECT_EXACT_CONDITIONAL_MEANS_REQUIRED')
+            witness_courses=[p for p in actor.get('projects',[])
+                if p['id'] in selected_refs and action=='ORIENT' and p.get('productive_witness_means')]
+            if witness_courses and (len(selected_refs)!=1 or option_id is None
+                    or not selected_alternative or not selected_alternative.get('productive_witness_attention')
+                    or selected_alternative.get('project_id')!=witness_courses[0]['id']
+                    or private_choice is not None or undertaking_choice is not None):
+                raise ValueError('PRODUCTIVE_WITNESS_EXACT_RECEPTIVE_OPTION_REQUIRED')
             selected=[available[ref] for ref in selected_refs]
             selection_grade=proposed.get(
                 'purpose_selection_grade',
@@ -674,6 +682,8 @@ class ConstitutiveRuntime:
                     raise ValueError('INTERACTIVITY_CONFLICTING_SELECTION')
                 practical['interactivity_deferral']=qualify_interactivity_deferral(
                     flat_alternatives,selected_alternative,proposed['defer_course_option_id'],e.location)
+            if selected_alternative and selected_alternative.get('productive_witness_attention'):
+                practical['productive_witness_attention']=copy(selected_alternative['productive_witness_attention'])
             if 'interactivity_relation_ref' in proposed:
                 rows=[x for x in (selected_alternative or {}).get('interactivity_currents',[])
                       if x['relation_ref']==proposed['interactivity_relation_ref']]
@@ -778,6 +788,8 @@ class ConstitutiveRuntime:
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        if principal.practical_selection.get('productive_witness_attention') is not None and (target is not None or object_ref is not None):
+            raise ValueError('PRODUCTIVE_WITNESS_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('correspondence_attention') is not None and (target is not None or object_ref is not None):
             raise ValueError('CORRESPONDENCE_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('undertaking_attention') is not None and (target is not None or object_ref is not None):
@@ -858,6 +870,13 @@ class ConstitutiveRuntime:
             if (aid==actor_id and requested_action is None and personally_done
                     and personally_done['action']=='ORIENT' and personally_done['status']=='PERFORMED'):
                 chosen=principal.practical_selection.get('undertaking_attention')
+                if chosen is not None:
+                    cue=copy(chosen['outward_sign'])
+                    if not any(c['id']==cue['id'] for c in personal_cues):
+                        personal_cues.append(cue)
+            if (aid==actor_id and requested_action is None and personally_done
+                    and personally_done['action']=='ORIENT' and personally_done['status']=='PERFORMED'):
+                chosen=principal.practical_selection.get('productive_witness_attention')
                 if chosen is not None:
                     cue=copy(chosen['outward_sign'])
                     if not any(c['id']==cue['id'] for c in personal_cues):
@@ -1117,6 +1136,8 @@ class ConstitutiveRuntime:
                     possible_productive_vocal_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_takeups':copy(
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                'historically_possible_productive_witness_reorganizations':copy(
+                    possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
                     possible_dependency_project_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_means_revisions':copy(
@@ -1235,6 +1256,7 @@ class ConstitutiveRuntime:
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
+            expression_access['own_practical_selection'].pop('productive_witness_attention',None)
             expression_access['own_practical_selection'].pop('notice_expectation',None)
             expression_access['own_practical_selection'].pop('interactivity_deferral',None)
             expression_access['own_practical_selection'].pop('interactivity_relation_analytic_only',None)

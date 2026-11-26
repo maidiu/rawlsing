@@ -22,7 +22,8 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_dependency_project_reorganizations,
+from .activity import (possible_productive_witness_reorganizations,
+                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
@@ -768,7 +769,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             dependency_basis=c.get('dependency_reorganization_basis')
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
             revision_basis=c.get('dependency_means_revision_basis')
-            if revision_basis is not None:
+            witness_basis=c.get('productive_witness_basis')
+            if witness_basis is not None:
+                if c not in possible_productive_witness_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('PRODUCTIVE_WITNESS_REORGANIZATION_UNQUALIFIED')
+                project['productive_witness_means']=copy(witness_basis)
+                project.setdefault('productive_witness_history',[]).append({
+                    'event_ref':event_ref,'experience_ref':experience['ref'],
+                    'previous_means':copy(project['means']),'basis':copy(witness_basis),'grade':GRADE})
+            elif revision_basis is not None:
                 if c not in possible_dependency_means_revisions(actor,experience,event_ref):
                     raise InvalidDevelopment('DEPENDENCY_MEANS_REVISION_UNQUALIFIED')
                 bound=project['dependency_conditional_means']['SIGNAL']
@@ -790,6 +799,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     'location':dependency_basis['location'],
                     'practice_ref':dependency_basis['practice_ref'],
                     'origin_event_ref':event_ref}}
+            elif project.get('productive_witness_means') and any(k in c for k in
+                    ('means','object','motive','addressed_party_ref','productive_witness_means')):
+                raise InvalidDevelopment('PRODUCTIVE_WITNESS_MEANS_REQUIRE_LIVED_REORGANIZATION')
             elif dependency_project and any(k in c for k in
                     ('means','object','motive','addressed_party_ref','dependency_conditional_means')):
                 raise InvalidDevelopment('DEPENDENCY_PROJECT_MEANS_REQUIRE_LIVED_REORGANIZATION')
