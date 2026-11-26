@@ -65,7 +65,7 @@ class ReleasedAttentionR54(unittest.TestCase):
                                 and release else 'WAIT'}
                     if stage=='project':
                         opts=[o for o in packet['practical_options'] if o.get('project_id')
-                              and o['operation']=='ORIENT']
+                              not in (None,*controls['baseline_projects']) and o['operation']=='ORIENT']
                         if opts:return {'task':task,'practical_option_id':opts[0]['option_id']}
                         return {'task':task,'action':'WAIT'}
                     for opt in packet.get('focal_encounter_options',[]):
@@ -89,6 +89,7 @@ class ReleasedAttentionR54(unittest.TestCase):
                     if c['id'] in refs and c['kind']=='coactor_present'}
         try:
             rt.initialize([(a,a,PARENT) for a in ['mother','zed']+guests])
+            controls['baseline_projects']={p['id'] for p in rt.snapshot('mother')['projects']}
             for g in guests:
                 self.assertEqual(rt.step(g,requested_action='MOVE',object_ref='workshop')['status'],'PERFORMED')
             rt.step('zed',requested_action='IMPOSE',target='mother')
@@ -148,12 +149,16 @@ class ReleasedAttentionR54(unittest.TestCase):
                 end=a['possible_ends'][0]
                 self.assertEqual(end['private_focal_encounter'],first['received'])
                 self.assertEqual(end['status'],'POSSIBLE_NOT_ACQUIRED_MOTIVE')
-                self.assertEqual(len(a['projects']),0)
+                self.assertEqual({p['id'] for p in a['projects']},controls['baseline_projects'])
             controls['stage']='trial';cold.step('mother')
             a=cold.snapshot('mother')
             if release:self.assertEqual(len(a['possible_ends'][0]['trial_history']),1)
             controls['stage']='takeup';cold.step('mother')
-            self.assertEqual(len(cold.snapshot('mother')['projects']),int(release))
+            projects=cold.snapshot('mother')['projects']
+            new=[p for p in projects if p['id'] not in controls['baseline_projects']]
+            self.assertEqual(len(new),int(release))
+            if release:self.assertEqual(new[0]['takeup_evidence']['private_takeup_basis']['rehearsal_ref'],
+                                        end['private_rehearsal_ref'])
             controls['stage']='project'
             continuation=cold.step('mother')
             self.assertEqual(continuation['attempt'],'ORIENT' if release else 'WAIT')
