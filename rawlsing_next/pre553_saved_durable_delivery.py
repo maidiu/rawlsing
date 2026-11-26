@@ -819,7 +819,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         _require(canonical_json(asdict(country_receipt))==receipt_pin,
                  "COUNTRY_RECEIPT_CHANGED_DURING_DELIVERY")
 
-    def publish_result(executed,reader,*,elapsed,require_complete,final_census=None):
+    def publish_result(executed,reader,*,elapsed,require_complete):
         check_receipt()
         result,identity=executed.result,executed.release_identity
         _require(result.route_results==() and result.decision_ref==record.decision_ref
@@ -831,11 +831,10 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         if prior is not None:
             _require(identity==prior._closure.release_identities[0],
                      "RESUME_COUNTRY_RELEASE_OR_REPLAY_DRIFT")
-        census=(result.exact_s2e_output_census(require_complete=require_complete,
-                                               runtime_catalog=workload.catalog)
-                if final_census is None else final_census)
-        # This private final observer is synchronous and its proof is supplied
-        # by the very same native execution above. No public proof ingress.
+        # Fresh proof at the consuming owner, after the carrier's final
+        # currentness callbacks. No second census in the carrier on this path.
+        census=result.exact_s2e_output_census(require_complete=require_complete,
+                                              runtime_catalog=workload.catalog)
         _require(census.manifest_hash==result.manifest.manifest_hash
                  and (not require_complete or census.complete),
                  "COUNTRY_FINAL_CENSUS_SCOPE_DRIFT")
@@ -897,18 +896,20 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         checkpoint_overhead+=monotonic()-entered
 
     final_publication=None
-    def finalize(executed,reader,census):
+    def finalize(executed,reader):
         nonlocal final_publication
         if last_publication is None:
             final_publication=publish_result(executed,reader,elapsed=monotonic()-start,
-                                             require_complete=max_units is None,
-                                             final_census=census)
+                                             require_complete=max_units is None)
         else:
-            # The operator checkpoint callback is an external boundary.
-            # Keep the independent post-callback proof and compare the
-            # entire final transcript, not only receipt history/coverage.
+            # Independent proof after the checkpoint AND carrier callbacks.
+            # A prior proof or retained receipt is not present verification.
+            census=executed.result.exact_s2e_output_census(
+                require_complete=max_units is None,runtime_catalog=workload.catalog)
             _require(census.as_dict()==last_publication.batch_census,
                      "CHECKPOINT_FINAL_CENSUS_DRIFT")
+            _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
+                     "COUNTRY_CURRENT_DECISION_CHANGED")
 
     executed=_execute_country_workload(workload,resolver,country_path=country_path,
         country_receipt=country_receipt,host=host,purpose=purpose,

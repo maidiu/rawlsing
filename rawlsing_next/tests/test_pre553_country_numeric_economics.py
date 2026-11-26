@@ -1169,6 +1169,8 @@ class CountryNativeEconomics(unittest.TestCase):
             # representation. New country publication defaults to factoring.
             baseline=run(products,factor_replay_risk_members=False)
             self.assertEqual(proofs.call_count,1,"final S2E proof rebuilt before publication")
+            native_result=proofs.call_args.args[0]
+        self._r12_census_court(native_result,workload.catalog)
         self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
         native_output=captured.pop()
@@ -1480,6 +1482,79 @@ class CountryNativeEconomics(unittest.TestCase):
             "unpublished_staging_reclaimed":True,
             "grade":"SOURCEFREE_FORKED_WORKER_SIGKILL_BEFORE_SECOND_MANIFEST_REPLACE"
         }),flush=True)
+
+    def _r12_census_court(self,result,catalog):
+        """Same native completed and partial outputs, same exact R11 transcript."""
+        import os
+        from rawlsing_next import pre553_s2e_exact_conservation as conservation
+        from rawlsing_next.pre553_empirical_objects import CanonicalSemanticObject
+        from tools.pyat_country_storage_relay_benchmark import historical
+        if os.environ.get("PYAT_R12_MATCHED_CENSUS")!="1":
+            return
+        old=historical("4b49f092a9ea6938df944ec9ebb8641aba8e39ee",
+                       "pre553_s2e_exact_conservation")
+        manifest=result.manifest
+        n=len(manifest.units)
+        times={"R11":[],"R12":[]}
+        expected=None
+        def invoke(mod,count,**kwargs):
+            units=manifest.units[:count]
+            keys={u.unit_hash for u in units}
+            refs={u.unit_ref.key for u in units}
+            return mod.census_native_batch(manifest,
+                tuple(r for r in result.receipts if r.unit_ref.key in refs),
+                {k:v for k,v in result.outputs_by_unit.items() if k in keys},
+                runtime_catalog=catalog,require_complete=count==n,**kwargs)
+        prefixes=tuple(sorted({1,max(1,n//2),n}))
+        for count in prefixes:
+            a=invoke(old,count)
+            b=invoke(conservation,count)
+            self.assertEqual(a.as_dict(),b.as_dict())
+            cap=a.canonical_proof_transcript_bytes
+            self.assertEqual(invoke(conservation,count,
+                max_canonical_output_bytes=cap).as_dict(),a.as_dict())
+            with self.assertRaisesRegex(conservation.S2EOutputConservationError,
+                                        "S2E_EXACT_OUTPUT_BYTES_CAP_HOLD"):
+                invoke(conservation,count,max_canonical_output_bytes=cap-1)
+        for order in (("R11","R12"),("R12","R11"),("R11","R12"),("R12","R11")):
+            for name in order:
+                mod=old if name=="R11" else conservation
+                start=time.monotonic()
+                got=invoke(mod,n).as_dict()
+                times[name].append(time.monotonic()-start)
+                if expected is None:expected=got
+                self.assertEqual(got,expected)
+        fact=next(o.facts[0] for o in result.outputs_by_unit.values()
+                  if hasattr(o,"facts") and o.facts)
+        # The byte fast path must reject a changed body with an unchanged
+        # preimage identity, and make exactly one native projection.
+        old_projection=CanonicalSemanticObject.semantic_projection
+        calls=[]
+        def counted(obj):
+            calls.append(obj)
+            return old_projection(obj)
+        with patch.object(CanonicalSemanticObject,"semantic_projection",counted):
+            a=hashlib.sha256()
+            conservation._object(a,"I03_FACT",fact)
+            self.assertEqual(len(calls),1)
+        b=hashlib.sha256()
+        old._object(b,"I03_FACT",fact)
+        self.assertEqual(a.hexdigest(),b.hexdigest())
+        before=fact.typed_state
+        try:
+            object.__setattr__(fact,"typed_state","UNAVAILABLE" if before!="UNAVAILABLE" else "SUPPORTED")
+            with self.assertRaisesRegex(conservation.S2EOutputConservationError,
+                                        "S2E_OBJECT_IDENTITY_DRIFT"):
+                conservation._object(hashlib.sha256(),"I03_FACT",fact)
+        finally:
+            object.__setattr__(fact,"typed_state",before)
+        print("R12_CENSUS_BYTES",json.dumps({"units":n,"prefixes":prefixes,
+            "transcript_bytes":expected["canonical_proof_transcript_bytes"],
+            "full_output_sha256":expected["full_output_sha256"],
+            "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()},
+            "exact_prefix_and_full_census":True,"exact_cap":True,
+            "changed_object_refused":True,"single_native_projection":True,
+            "grade":"MATCHED_ACTUAL_NATIVE_CENSUS_NOT_PERSISTENT_PREPARATION"}),flush=True)
 
     def _fresh_proof_court(self,root,output,run,queries,baseline):
         """Compare actual native replay reconstruction, not a simulated digest."""

@@ -30,7 +30,10 @@ from rawlsing_next.pre553_discovery_exact import (
 )
 from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID
 from rawlsing_next.pre553_empirical_objects import (
+    CanonicalSemanticObject,
     EmpiricalFact,
+    EmpiricalPredicate,
+    EmpiricalQuerySpec,
     DiscoveryResultReceipt,
     ExactRef,
     Pre553IntegrityError,
@@ -84,12 +87,62 @@ def _feed(digest: Any, kind: str, material: Any) -> None:
     digest.update(blob)
 
 
-def _object(digest: Any, kind: str, obj: Any) -> None:
+def _legacy_object(digest: Any, kind: str, obj: Any) -> None:
+    """Preserve the generic object protocol outside the exact native families."""
     _require(hasattr(obj, "as_dict") and hasattr(obj, "ref"), "S2E_MISSING_OBJECT_PREIMAGE")
     _require(semantic_hash(obj.semantic_projection()) == obj.content_hash,
              "S2E_OBJECT_IDENTITY_DRIFT")
     _require(obj.ref.content_hash == obj.content_hash, "S2E_OBJECT_REF_DRIFT")
     _feed(digest, kind, obj.as_dict())
+
+
+def _mapping_parts(encoded: Mapping[str, bytes]):
+    """The incumbent sorted canonical JSON object, streamed in field chunks."""
+    yield b"{"
+    for index, key in enumerate(sorted(encoded)):
+        if index:
+            yield b","
+        yield encoded[key]
+    yield b"}"
+
+
+def _encoded_field(key: str, value: Any) -> bytes:
+    return (canonical_json(key) + ":" + canonical_json(value)).encode("utf-8")
+
+
+def _object(digest: Any, kind: str, obj: Any) -> None:
+    # Only the four concrete native families with the inherited as_dict
+    # implementation have the exact projection-plus-identity contract.
+    # No identity/object/cache-based proof reuse across calls or objects.
+    if (type(obj) not in (EmpiricalFact, DiscoveryResultReceipt,
+                          EmpiricalPredicate, EmpiricalQuerySpec)
+            or getattr(obj.as_dict, "__func__", None) is not CanonicalSemanticObject.as_dict
+            or getattr(obj.semantic_projection, "__func__", None)
+                is not CanonicalSemanticObject.semantic_projection):
+        _legacy_object(digest, kind, obj)
+        return
+    projection = obj.semantic_projection()
+    if (type(projection) is not dict or any(type(k) is not str for k in projection)
+            or "content_hash" in projection or "object_id" in projection):
+        _legacy_object(digest, kind, obj)
+        return
+    # Snapshot and canonicalize each actual field once. The same exact bytes
+    # enter the independent semantic hash and the length-framed full object
+    # transcript. The latter adds the existing object_id/content_hash fields
+    # in sorted key order; neither hash nor the retained evidence changes.
+    fields = {key: _encoded_field(key, value) for key, value in projection.items()}
+    identity = hashlib.sha256()
+    for part in _mapping_parts(fields):
+        identity.update(part)
+    _require(identity.hexdigest() == obj.content_hash, "S2E_OBJECT_IDENTITY_DRIFT")
+    _require(obj.ref.content_hash == obj.content_hash, "S2E_OBJECT_REF_DRIFT")
+    fields["content_hash"] = _encoded_field("content_hash", obj.content_hash)
+    fields["object_id"] = _encoded_field("object_id", obj.object_id)
+    prefix = b"{" + _encoded_field("kind", kind) + b',"material":'
+    parts = (prefix, *_mapping_parts(fields), b"}")
+    digest.update(sum(map(len, parts)).to_bytes(8, "big"))
+    for part in parts:
+        digest.update(part)
 
 
 def _check_fact(fact: EmpiricalFact, *, expected_query: ExactRef | None = None) -> None:
