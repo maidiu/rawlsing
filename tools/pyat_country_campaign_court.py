@@ -171,12 +171,22 @@ def compare_replay_risk(root,rows,interval,*,factored_first=False):
     old,new=reports["legacy"],reports["factored"]
     if (old["source_sha256"]!=new["source_sha256"]
             or old["proofs"]!=new["proofs"]
-            or old["country_files"]!=new["country_files"]):
+            or old["country_sha256"]!=new["country_sha256"]
+            or old["country_files"]["logical_file_bytes"]!=new["country_files"]["logical_file_bytes"]):
         raise AssertionError("matched campaign source/release/output census/physical estate drift")
+    # Compare actual CAS payloads outside the worker resource samples.
+    # Root manifests intentionally differ, but no evidence blob should.
+    import hashlib
+    def inventory(mode):
+        base=root/mode/"products"/"cas"
+        return {str(path.relative_to(base)):hashlib.sha256(path.read_bytes()).hexdigest()
+                for path in base.rglob("*") if path.is_file()}
+    if inventory("legacy")!=inventory("factored"):
+        raise AssertionError("matched campaign retained CAS bytes drift")
     if new["retained_products"]["logical_file_bytes"]>=old["retained_products"]["logical_file_bytes"]:
         raise AssertionError("factored campaign did not reduce retained product bytes")
     print("R10_MATCHED_CAMPAIGN",json.dumps({
-        "order":order,"source_sha256":old["source_sha256"],"exact_output_and_release_parity":True,
+        "order":order,"source_sha256":old["source_sha256"],"exact_output_and_release_parity":True,"exact_cas_file_parity":True,
         "legacy":old,"factored":new,
         "grade":"SAME_HOST_SAME_SOURCE_PAIRED_CAMPAIGNS__TIMING_ORDER_UNCONTROLLED__NOT_ORIGINAL"
     },sort_keys=True),flush=True)
