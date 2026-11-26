@@ -8,6 +8,116 @@ from .types import copy, stable_id, GRADE
 from .distributed_power import accessible_human_counterparts
 
 
+
+def _solo_vocal_sign(cue,other,location):
+    """The public sign of an exercise, never the performer's private purpose."""
+    return (type(cue) is dict and cue.get('kind')=='performed_sing'
+            and cue.get('source_actor')==other
+            and cue.get('modality')=='auditory'
+            and cue.get('location')==location
+            and 'solo_practice' in cue.get('tags',[])
+            and type(cue.get('id')) is str)
+
+
+def possible_productive_witness_reorganizations(actor,experience,event_ref):
+    """A former co-performer's own undertaking may acquire a receptive means.
+
+    A particular Other's personally heard solo vocal exercise can change what
+    *this actor* does in an existing project previously enacted with them.
+    No access to the Other's project, skill, initiative or private feeling.
+    One offered reorganization is neither celebration nor mandatory approval.
+    """
+    aid=actor['id'];clock=experience.get('clock');loc=experience.get('location')
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or type(loc) is not str or experience.get('status')!='OBSERVED'
+            or experience.get('participated') is not False):return []
+    signs=[c for c in experience.get('perceived_cues',[])
+           if type(c.get('source_actor')) is str and c['source_actor']!=aid
+           and _solo_vocal_sign(c,c['source_actor'],loc) and c.get('clock')==clock]
+    if len(signs)!=1:return []
+    sign=signs[0];other=sign['source_actor']
+    paths=[x for x in actor.get('evidence_paths',[])
+           if x.get('event')==event_ref and x.get('experience_ref')==experience.get('ref')
+           and sign['id'] in x.get('received_cue_refs',[])
+           and x.get('purpose_status')=='NO_ACTOR_AUTHORED_ATTEMPT']
+    if len(paths)!=1:return []
+    out=[]
+    for p in actor.get('projects',[])[-128:]:
+        if (p.get('status')!='active' or p.get('means')!=['SING']
+                or p.get('addressed_party_ref') is not None
+                or p.get('productive_witness_means') or p.get('dependency_conditional_means')
+                or p.get('incidental_takeup_basis')):continue
+        matches=[]
+        for h in p.get('operational_history',[]):
+            if (h.get('project')!=p['id'] or h.get('operation')!='SING'
+                    or h.get('performed_status')!='PERFORMED'
+                    or h.get('selected_at_actor_attempt') is not True
+                    or h.get('intent_attribution')!='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+                    or h.get('event')==event_ref):continue
+            parts=[x for x in actor.get('participation_history',[])
+                   if x.get('actor')==aid and x.get('event_ref')==h.get('event')
+                   and x.get('own_attempted_operation')=='SING'
+                   and x.get('own_status')=='PERFORMED'
+                   and x.get('joint_participation_perceived') is True
+                   and x.get('reciprocated_partner_actor_visible')==other
+                   and type(x.get('experienced_clock')) is int
+                   and x['experienced_clock']<clock]
+            if len(parts)!=1:continue
+            part=parts[0]
+            episodes=[x for x in actor.get('lived_genesis_episodes',[])
+                      if x.get('actor')==aid and x.get('event_ref')==h['event']
+                      and x.get('experience_ref')==part.get('experience_ref')
+                      and x.get('clock')==part['experienced_clock']
+                      and x.get('location')==loc and x.get('actor_felt_attempt')=='SING'
+                      and x.get('selected_project_refs')==[p['id']]
+                      and x.get('selected_possible_end_trial_ref') is None
+                      and not x.get('unfinished_own_activity')
+                      and any(z.get('kind')=='performed_sing'
+                              and z.get('source_actor') in (aid,other)
+                              and z.get('cue_ref') in part.get('received_cue_refs',[])
+                              for z in x.get('personally_perceived_sign_sources',[]))]
+            if len(episodes)!=1:continue
+            ep=episodes[0]
+            lived=[x for x in p.get('lived_attempt_history',[])
+                   if x.get('event')==h['event'] and x.get('project')==p['id']
+                   and x.get('attempted_operation')=='SING'
+                   and set(x.get('accessible_cue_refs',[]))&set(ep.get('received_sign_refs',[]))]
+            if len(lived)==1:matches.append((part,ep))
+        if not matches:continue
+        part,ep=max(matches,key=lambda x:(x[1]['clock'],x[1]['id']))
+        basis={'actor':aid,'project_ref':p['id'],'counterpart_ref':other,'location':loc,
+               'joint_event_ref':ep['event_ref'],'joint_episode_ref':ep['id'],
+               'joint_participation_ref':part['id'],'solo_event_ref':event_ref,
+               'solo_experience_ref':experience['ref'],'solo_sign_ref':sign['id'],
+               'no_other_motive_or_approval_inferred':True}
+        out.append({'kind':'REORGANIZE_PROJECT','project_id':p['id'],
+                    'means':['SING','ORIENT'],'productive_witness_basis':basis})
+    return out[:3]
+
+
+def productive_witness_signs(project,access):
+    """A receptive course is local and depends on a currently receivable act.
+
+    The older productive course stays available independently. Silence, loss
+    of access or an unrelated performer cannot be treated as fresh reception.
+    """
+    binding=project.get('productive_witness_means')
+    if not isinstance(binding,dict) or binding.get('actor')!=access.actor:return []
+    if binding.get('project_ref')!=project.get('id') or binding.get('location')!=access.location:return []
+    return [c for c in access.cues
+            if _solo_vocal_sign(c,binding.get('counterpart_ref'),access.location)
+            and c.get('clock')==access.world_clock]
+
+
+def productive_witness_option(project,access,cue):
+    binding=project['productive_witness_means']
+    basis={'actor':access.actor,'project_ref':project['id'],'clock':access.world_clock,
+           'origin_event_ref':binding['solo_event_ref'],'cue_ref':cue['id'],
+           'counterpart_ref':binding['counterpart_ref'],'location':access.location}
+    return {**basis,'outward_sign':copy(cue),'attention_ref':stable_id('productive_witness_attention',basis),
+            'not_other_conscious_purpose_or_approval':True,'grade':GRADE}
+
+
 def eligible_activities(constitution, recruited_form_ids, encounter):
     """A project can have its own cues or be recruited through an acquired form.
 
@@ -50,6 +160,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
                         and j.get('coactor_ref')==bindings[m].get('counterpart_ref')
                         and j.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY'
                         for j in getattr(constitution,'joint_practices',[])))]
+        if p.get('productive_witness_means') and not productive_witness_signs(p,encounter):
+            x['means']=[m for m in x.get('means',[]) if m!='ORIENT']
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
         x['recruitment_basis'] += ['FORM_LINK:'+r['source'] for r in recruiting]
         x['motive']=p.get('motive','UNSPECIFIED_ACQUIRED_MOTIVE')
