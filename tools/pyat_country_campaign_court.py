@@ -81,14 +81,18 @@ def kill_tree(proc):
         pass
 
 
-def supervise(root, rows, interval):
+def supervise(root, rows, interval, *, risk_mode="factored", shared_source=None):
     root = root.resolve()
     if not root.is_dir() or any(root.iterdir()):
         raise ValueError("campaign root must be an existing empty private directory")
     (root / "tmp").mkdir()
     env = dict(os.environ, PYAT_R9_CAMPAIGN_ROOT=str(root),
                PYAT_R9_COUNTRY_ROWS=rows, TMPDIR=str(root / "tmp"),
-               PYTHONUNBUFFERED="1")
+               PYTHONUNBUFFERED="1",PYAT_R10_REPLAY_RISK=risk_mode)
+    if shared_source is not None:
+        env["PYAT_R10_SHARED_SOURCE"]=str(shared_source)
+    else:
+        env.pop("PYAT_R10_SHARED_SOURCE",None)
     started = time.monotonic()
     before = resource.getrusage(resource.RUSAGE_CHILDREN)
     proc = subprocess.Popen([sys.executable, "-m", "unittest", TEST, "-v"],
@@ -140,10 +144,43 @@ def supervise(root, rows, interval):
               "final_disk": disk_snapshot(root), "rss_limit_bytes": LIMIT,
               "rss_sample_exceeded_limit": exceeded,
               "scope": "SAMPLED_WORKER_AND_DESCENDANTS_RSS__INODE_DEDUP_DISK__NOT_ABSOLUTE_PEAK",
-              "rows_requested": rows,
+              "rows_requested": rows,"replay_risk_mode":risk_mode,
               "grade": "SOURCEFREE_COUNTRY_CAMPAIGN__NOT_100K_FULL_VERTICAL_OR_ORIGINAL"}
     print("R9_CAMPAIGN_RESOURCE", json.dumps(report, sort_keys=True), flush=True)
     return 1 if exceeded or proc.returncode else 0
+
+
+def compare_replay_risk(root,rows,interval,*,factored_first=False):
+    """Same exact generated SAV, independently executed/certified campaigns.
+    Full-preimage output censuses and release identities must match. A
+    single sequential pair is not a statistically controlled timing result.
+    """
+    root=root.resolve()
+    if not root.is_dir() or any(root.iterdir()):
+        raise ValueError("matched campaign root must be empty")
+    source=root/"shared-generated.sav"
+    reports={}
+    order=("factored","legacy") if factored_first else ("legacy","factored")
+    for mode in order:
+        dest=root/mode;dest.mkdir()
+        started=time.monotonic()
+        if supervise(dest,rows,interval,risk_mode=mode,shared_source=source):
+            return 1
+        reports[mode]=json.loads((dest/"campaign-proof.json").read_text())
+        reports[mode]["outer_wall_seconds"]=time.monotonic()-started
+    old,new=reports["legacy"],reports["factored"]
+    if (old["source_sha256"]!=new["source_sha256"]
+            or old["proofs"]!=new["proofs"]
+            or old["country_files"]!=new["country_files"]):
+        raise AssertionError("matched campaign source/release/output census/physical estate drift")
+    if new["retained_products"]["logical_file_bytes"]>=old["retained_products"]["logical_file_bytes"]:
+        raise AssertionError("factored campaign did not reduce retained product bytes")
+    print("R10_MATCHED_CAMPAIGN",json.dumps({
+        "order":order,"source_sha256":old["source_sha256"],"exact_output_and_release_parity":True,
+        "legacy":old,"factored":new,
+        "grade":"SAME_HOST_SAME_SOURCE_PAIRED_CAMPAIGNS__TIMING_ORDER_UNCONTROLLED__NOT_ORIGINAL"
+    },sort_keys=True),flush=True)
+    return 0
 
 
 def main():
@@ -151,13 +188,21 @@ def main():
     parser.add_argument("--rows", default="128,192,256")
     parser.add_argument("--sample-seconds", type=float, default=.1)
     parser.add_argument("--root", type=Path)
+    parser.add_argument("--replay-risk", choices=("legacy","factored"),default="factored")
+    parser.add_argument("--compare-replay-risk",action="store_true")
+    parser.add_argument("--factored-first",action="store_true")
     args = parser.parse_args()
     if not .02 <= args.sample_seconds <= 1:
         parser.error("sample interval must be within 0.02..1 seconds")
+    def run(root):
+        if args.compare_replay_risk:
+            return compare_replay_risk(root,args.rows,args.sample_seconds,
+                                       factored_first=args.factored_first)
+        return supervise(root,args.rows,args.sample_seconds,risk_mode=args.replay_risk)
     if args.root is not None:
-        return supervise(args.root, args.rows, args.sample_seconds)
+        return run(args.root)
     with tempfile.TemporaryDirectory(prefix="pyat-country-campaign-") as directory:
-        return supervise(Path(directory), args.rows, args.sample_seconds)
+        return run(Path(directory))
 
 
 if __name__ == "__main__":
