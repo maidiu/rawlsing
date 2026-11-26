@@ -883,13 +883,22 @@ def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11Logi
     return _validate_c11_source_release(candidate)
 
 
-def _validate_country_produced_release(*,produce,authority_snapshots,compact_builder):
+def _validate_country_produced_release(*,produce,authority_snapshots,compact_builder,
+                                       _restored_headers=None):
     """Same I02 seal from one private physical producer transaction.
 
     Neither an externally supplied event summary nor a caller's claimed
     validation can enter the public ingest API.
     """
     collector=_CountryEventCollector(authority_snapshots)
+    if _restored_headers is not None:
+        # Private facade only: the independently retained preparation pin
+        # authenticates the producer's exact previously validated headers.
+        # All other I02 sections and the release/replay seal are rebuilt.
+        if type(_restored_headers) is not tuple or not _restored_headers:
+            raise C11IntegrityError("restored country headers required")
+        collector.finished=_restored_headers
+        collector.builder=None
     candidate=produce(collector)
     if collector.finished is None or candidate.respondent_events is not collector.finished:
         raise C11IntegrityError("country producer did not return its exact event census")

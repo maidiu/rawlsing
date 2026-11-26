@@ -73,6 +73,11 @@ class CountryNativeEconomics(unittest.TestCase):
         tag=("country-native-resume" if resume_court else
              "country-native-wide" if wide else "country-native-economics")
         n,governed,extras=(64,16,23) if resume_court else (512,80,218) if wide else (800,16,23)
+        if external_case is not None:
+            governed=external_case.get("governed",governed)
+            extras=external_case.get("physical_width",governed+extras+2)-governed-2
+            self.assertGreaterEqual(governed,80)
+            self.assertGreaterEqual(extras,0)
         rng=np.random.default_rng(312)
         values=rng.integers(0,2,(n,governed))
         if resume_court:
