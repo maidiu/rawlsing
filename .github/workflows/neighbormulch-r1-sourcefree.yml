@@ -30,6 +30,10 @@ on:
       - agent/neighbormulch-r26-reciprocal-private-reception-20261125-r1
       - agent/neighbormulch-r27-polycentric-presence-20261125-r1
       - agent/neighbormulch-r28-shared-material-practice-20261125-r1
+      - agent/neighbormulch-r29-correspondence-20261126-r1
+      - agent/neighbormulch-r30-rupture-20261126-r1
+      - agent/neighbormulch-r31-constitutive-compression-20261126-r1
+      - agent/inference-economy-semantic-port-r1-20261126
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -179,7 +183,23 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_material_practice_r28.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_material_practice_r28.py' -q
-      - name: Full inherited CO R50 organism court normal and optimized
+      - name: R29 actual correspondence and independently selected opening
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_correspondence_r29.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_correspondence_r29.py' -q
+      - name: R30 practical rupture and independently continuing private afterlife
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_rupture_r30.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_rupture_r30.py' -q
+      - name: R31 acquired competence without episodic accessibility
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_constitutive_compression_r31.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_constitutive_compression_r31.py' -q
+      - name: Inference economy R5 actual R31 and R29 joined transport court
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_inference_economy_r5.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_inference_economy_r5.py' -q
+      - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |

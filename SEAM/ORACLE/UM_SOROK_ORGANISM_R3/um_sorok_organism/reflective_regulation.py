@@ -151,6 +151,11 @@ def offer_private_rehearsals(actor,clock,location,available_operations,*,body=No
                 if (path.get('undertaking_attention')!=receipt
                         or receipt.get('cue_ref') not in cues):continue
                 basis['undertaking_attention']=copy(receipt)
+            if m.get('correspondence_attention'):
+                receipt=m['correspondence_attention']
+                if (path.get('correspondence_attention')!=receipt
+                        or receipt.get('received_cue_ref') not in cues):continue
+                basis['correspondence_attention']=copy(receipt)
             out.append({**basis,'rehearsal_id':stable_id('private_rehearsal_option',basis),
                         'remembered_content_hypothesis':m['content'][:400],
                         'affective_object':copy(aff) if aff else None,
@@ -196,6 +201,8 @@ def perform_private_rehearsal(actor,experience,event_ref,selection,before):
          'no_new_perception_skill_or_permission':True,'grade':GRADE}
     if opt.get('undertaking_attention'):
         rec['undertaking_attention']=copy(opt['undertaking_attention'])
+    if opt.get('correspondence_attention'):
+        rec['correspondence_attention']=copy(opt['correspondence_attention'])
     m.setdefault('private_rehearsals',[]).append(rec)
     return rec
 
@@ -230,6 +237,8 @@ def admit_private_possible_end(actor,experience,event_ref,proposal):
          'meaning_hypothesis_not_empirical_learning_law':True,'grade':GRADE}
     if rec.get('undertaking_attention'):
         end['private_undertaking_attention']=copy(rec['undertaking_attention'])
+    if rec.get('correspondence_attention'):
+        end['private_correspondence_attention']=copy(rec['correspondence_attention'])
     actor.setdefault('possible_ends',[]).append(end)
     return {'kind':'NOTICE_PRIVATE_POSSIBLE_END','possible_end':ident,'grade':GRADE}
 

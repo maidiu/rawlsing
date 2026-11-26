@@ -15,14 +15,15 @@ from .practical_difference import validate_expected_difference, appraise_expecte
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
-from .attention_field import received_undertaking_attention
-from .practical_powers import admit_repair_technique
+from .attention_field import received_undertaking_attention, received_correspondence_attention
+from .practical_powers import admit_repair_technique, active_repair_technique
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_dependency_project_reorganizations,
+from .activity import (possible_productive_witness_reorganizations,
+                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
 from .care_commitment_genesis import admit_care_commitment
@@ -53,7 +54,7 @@ def _text_list(value,error):
 
 ALLOWED={'ADD_FORM','LINK_FORMS','DIFFERENTIATE','CHANGE_RECRUITMENT_SCOPE',
          'CHANGE_STRENGTH','SET_DORMANT','REACTIVATE','REORGANIZE_PROJECT',
-         'TRACE','MEMORY','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
+         'TRACE','MEMORY','ACCESS_DECREASE','ACTOR_SELF_MODEL','ADD_PROJECT','CHANGE_OTHER_MODEL','LINK_ACTIVITY',
          'ACQUIRE_COMPOSITION_METHOD','ACQUIRE_RELATIONAL_MOTIF',
          'REVALUE_RELATION','REORGANIZE_RELATIONAL_MOTIF',
          'NOTICE_POSSIBLE_END','NOTICE_PRIVATE_POSSIBLE_END','TAKE_UP_POSSIBLE_END',
@@ -165,6 +166,50 @@ def admit(actor,experience,event_ref,candidates,*,issued_trial=None):
     actor.clear()
     actor.update(candidate_actor)
     return result
+
+
+def possible_practice_memory_access_decrease(actor,experience,event_ref):
+    """ADP-016-inspired bounded sourcefree proposal, not a forgetting law.
+
+    A later independently selected exercise of an already acquired technical
+    organization can occasion optional reduced episodic accessibility. The
+    retained memory and exact formation ancestry do not become the technique,
+    and the technique does not depend on recalling them. No age-based decay.
+    """
+    if (experience.get('actor')!=actor['id'] or not experience.get('participated')
+            or experience.get('own_action')!='REPAIR' or experience.get('status')!='PERFORMED'):
+        return []
+    selection=experience.get('own_practical_selection') or {}
+    if selection.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT':return []
+    loc=experience.get('location')
+    facility=active_repair_technique(actor,loc)
+    if not facility or experience.get('performed_repair_technique_ref_analytic_only')!=facility['id']:
+        return []
+    rows=[x for x in actor.get('power_exercises',[])
+          if x.get('event_ref')==event_ref and x.get('experience_ref')==experience.get('ref')
+          and x.get('actor')==actor['id'] and x.get('own_selected_repair_sign_ref')
+          and x.get('worked_object_ref') not in facility['basis']['distinct_worked_objects']]
+    if len(rows)!=1:return []
+    row=rows[0]
+    source=facility['basis']['event_refs'][-1]
+    origins=[x for x in actor.get('power_exercises',[])
+             if x.get('id')==facility['basis']['later_exercise_ref']
+             and x.get('event_ref')==source and x.get('actor')==actor['id']
+             and x.get('event_clock',0)<experience['clock']]
+    if len(origins)!=1:return []
+    candidates=[]
+    for m in actor.get('memories',[]):
+        if (m.get('status')!='ACTOR_ACCESSIBLE' or m.get('origin')!=[source]
+                or m.get('experience')!=origins[0]['experience_ref']
+                or not isinstance(m.get('content'),str) or not m['content'].strip()
+                or not isinstance(m.get('id'),str)):continue
+        basis={'actor':actor['id'],'memory_ref':m['id'],'technique_ref':facility['id'],
+               'formation_event_ref':source,'later_exercise_ref':row['id'],
+               'later_event_ref':event_ref,'received_sign_ref':row['own_selected_repair_sign_ref'],
+               'location':loc}
+        candidates.append({'kind':'ACCESS_DECREASE','basis':basis})
+        if len(candidates)>=8:break
+    return candidates
 
 
 def _admit_in_place(actor,experience,event_ref,candidates):
@@ -768,7 +813,15 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             dependency_basis=c.get('dependency_reorganization_basis')
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
             revision_basis=c.get('dependency_means_revision_basis')
-            if revision_basis is not None:
+            witness_basis=c.get('productive_witness_basis')
+            if witness_basis is not None:
+                if c not in possible_productive_witness_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('PRODUCTIVE_WITNESS_REORGANIZATION_UNQUALIFIED')
+                project['productive_witness_means']=copy(witness_basis)
+                project.setdefault('productive_witness_history',[]).append({
+                    'event_ref':event_ref,'experience_ref':experience['ref'],
+                    'previous_means':copy(project['means']),'basis':copy(witness_basis),'grade':GRADE})
+            elif revision_basis is not None:
                 if c not in possible_dependency_means_revisions(actor,experience,event_ref):
                     raise InvalidDevelopment('DEPENDENCY_MEANS_REVISION_UNQUALIFIED')
                 bound=project['dependency_conditional_means']['SIGNAL']
@@ -790,6 +843,9 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     'location':dependency_basis['location'],
                     'practice_ref':dependency_basis['practice_ref'],
                     'origin_event_ref':event_ref}}
+            elif project.get('productive_witness_means') and any(k in c for k in
+                    ('means','object','motive','addressed_party_ref','productive_witness_means')):
+                raise InvalidDevelopment('PRODUCTIVE_WITNESS_MEANS_REQUIRE_LIVED_REORGANIZATION')
             elif dependency_project and any(k in c for k in
                     ('means','object','motive','addressed_party_ref','dependency_conditional_means')):
                 raise InvalidDevelopment('DEPENDENCY_PROJECT_MEANS_REQUIRE_LIVED_REORGANIZATION')
@@ -808,6 +864,21 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 if field in c:project[field]=copy(c[field])
             project.setdefault('history',[]).append(evidence)
             report.append({'kind':op,'project':ident,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
+        elif op=='ACCESS_DECREASE':
+            if c not in possible_practice_memory_access_decrease(actor,experience,event_ref):
+                raise InvalidDevelopment('MEMORY_ACCESS_DECREASE_UNQUALIFIED_HISTORY')
+            basis=c['basis']
+            memory=next(m for m in actor['memories'] if m['id']==basis['memory_ref'])
+            # Preserve identity, content, original event and previous receipts.
+            # Retained content is not licensed for actor retrieval or speech.
+            memory.setdefault('accessibility_transitions',[]).append({
+                'kind':'ACCESS_DECREASE','from':'ACCESSIBLE','to':'INACCESSIBLE',
+                'basis':copy(basis),'experience_ref':experience['ref'],
+                'event_ref':event_ref,'grade':GRADE})
+            memory['status']='ACTOR_INACCESSIBLE'
+            memory['retention_state']='RETAINED'
+            memory['memory_accessibility_state']='INACCESSIBLE'
+            report.append({'kind':op,'ref':memory['id'],'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op in ('TRACE','MEMORY'):
             _text_list(c.get('cue_terms',[]),'INVALID_TRACE_CUES')
             ref=stable_id('trace' if op=='TRACE' else 'memory',{'actor':actor['id'],'event':event_ref,'index':idx})
@@ -830,6 +901,21 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('UNDERTAKING_MEMORY_UNQUALIFIED_ATTENTION')
                 entry['undertaking_attention']=copy(receipt)
                 entry['remembered_meaning_not_objective_future_truth']=True
+            if 'correspondence_attention_ref' in c:
+                receipt=received_correspondence_attention(actor,
+                    experience.get('own_practical_selection'),experience)
+                paths=[p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+                       and p.get('correspondence_attention')==receipt]
+                if (op!='MEMORY' or not receipt or receipt!=experience.get('correspondence_attention_receipt')
+                        or c['correspondence_attention_ref']!=receipt['attention_id'] or len(paths)!=1
+                        or type(entry['content']) is not str or not entry['content'].strip()
+                        or len(entry['content'])>512
+                        or any(m.get('correspondence_attention',{}).get('attention_id')==receipt['attention_id']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('CORRESPONDENCE_MEMORY_UNQUALIFIED_ATTENTION')
+                entry['correspondence_attention']=copy(receipt)
+                entry['remembered_meaning_not_message_truth']=True
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':

@@ -12,7 +12,7 @@ import unittest
 from um_sorok_organism import runtime
 from um_sorok_organism.types import canonical, digest
 from um_sorok_organism.semantics import ValidatingSemanticService
-from test_inference_economy_exact_packet_r3 import ExactPacketEconomyR3 as Court
+import test_inference_economy_exact_packet_r3 as r3
 
 
 class PhaseReuseR4(unittest.TestCase):
@@ -58,7 +58,7 @@ class PhaseReuseR4(unittest.TestCase):
              patch.object(runtime.ConstitutiveRuntime,"_actor_plan",plan), \
              patch.object(runtime.ConstitutiveRuntime,"step",step), \
              patch.object(ValidatingSemanticService,"proposal",proposal):
-            court=Court()
+            court=r3.ExactPacketEconomyR3()
             if forge:
                 result=court._r51(True,forge=True)
             else:

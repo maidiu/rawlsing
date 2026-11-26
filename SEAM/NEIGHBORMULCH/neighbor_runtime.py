@@ -282,6 +282,123 @@ class NeighborEncounter:
         return {'status': 'SOURCEFREE_BOUND', 'receipt': receipt['id'],
                 'source_hash': digest(conditions)}
 
+    def configure_sourcefree_correspondence(self, route_ref, recipient, site, *, delay_ticks=1):
+        """World-owner fixture only: not a visitor-granted access right or actor consent."""
+        route_ref=_text(route_ref,'CHANNEL_REF',100)
+        recipient=_text(recipient,'CHANNEL_RECIPIENT',100)
+        site=_text(site,'CHANNEL_DEVICE_SITE',100)
+        if type(delay_ticks) is not int or not 1<=delay_ticks<=24:
+            raise EncounterRefusal('INVALID_CHANNEL_DELAY')
+        v,world=self._world()
+        if recipient not in self.runtime.ledger.actors() or site not in world['sites']:
+            raise EncounterRefusal('UNQUALIFIED_CHANNEL_ENDPOINT')
+        row={'id':route_ref,'sender':self.user_id,'recipient':recipient,
+             'device_site':site,'delay_ticks':delay_ticks,'active':True,
+             'grade':'SOURCEFREE_TEST_ONLY','issued_at':world['clock']}
+        routes=world.setdefault('neighbor_correspondence_routes',{})
+        if route_ref in routes:
+            raise EncounterRefusal('CHANNEL_ALREADY_EXISTS')
+        routes[route_ref]=row
+        return self.runtime.ledger.commit(self.runtime.world_id,v,world,{}, {},
+            'NEIGHBOR_CHANNEL_SOURCEFREE_GRANT',None,{'route':deepcopy(row)})['id']
+
+    def revoke_sourcefree_correspondence(self, route_ref):
+        """Prospective reachability change, not deletion or relational judgment."""
+        v,world=self._world()
+        row=world.get('neighbor_correspondence_routes',{}).get(route_ref)
+        if not row or row['sender']!=self.user_id or not row['active']:
+            raise EncounterRefusal('CHANNEL_NOT_ACTIVE')
+        row['active']=False
+        row['revoked_at']=world['clock']
+        return self.runtime.ledger.commit(self.runtime.world_id,v,world,{}, {},
+            'NEIGHBOR_CHANNEL_SOURCEFREE_REVOKE',None,{'route_ref':route_ref})['id']
+
+    def send_correspondence(self, request_id, route_ref, text):
+        """Actual authored asynchronous text, even when the visitor is absent.
+        No model call, automatic delivery, reading, response or visitor psyche.
+        """
+        request_id=_text(request_id,'REQUEST_ID',120)
+        route_ref=_text(route_ref,'CHANNEL_REF',100)
+        text=_text(text,'MESSAGE_TEXT',500)
+        v,world=self._world()
+        key=stable_id('correspondence_send',{'sender':self.user_id,'request':request_id})
+        rows=world.setdefault('neighbor_correspondence',{})
+        old=rows.get(key)
+        if old:
+            if old['route_ref']!=route_ref or old['text']!=text or old['sender']!=self.user_id:
+                raise EncounterRefusal('MESSAGE_REPLAY_CHANGED_PAYLOAD')
+            return {'message_ref':key,'status':'SENT','idempotent_replay':True}
+        route=world.get('neighbor_correspondence_routes',{}).get(route_ref)
+        if not route or route['sender']!=self.user_id or not route['active']:
+            raise EncounterRefusal('CHANNEL_SEND_NOT_AUTHORIZED')
+        rows[key]={'id':key,'route_ref':route_ref,'sender':self.user_id,
+                   'recipient':route['recipient'],'text':text,
+                   'sent_clock':world['clock'],
+                   'deliver_not_before':world['clock']+route['delay_ticks'],
+                   'delivered_clock':None,'opened_clock':None}
+        self.runtime.ledger.commit(self.runtime.world_id,v,world,{}, {},
+            'NEIGHBOR_CORRESPONDENCE_SENT',None,{'message_ref':key,'route_ref':route_ref,
+             'sender':self.user_id,'text_hash':digest(text),'no_receipt_inferred':True})
+        return {'message_ref':key,'status':'SENT','idempotent_replay':False}
+
+    def settle_sourcefree_correspondence_delivery(self, message_ref):
+        """Explicit world transport tick; no actor call or fabricated reading.
+        Revocation prevents an in-flight delivery; previously delivered
+        correspondence remains on the recipient's modeled device.
+        """
+        v,world=self._world()
+        row=world.get('neighbor_correspondence',{}).get(message_ref)
+        if not row or row['sender']!=self.user_id:
+            raise EncounterRefusal('MESSAGE_NOT_IN_SCOPE')
+        if row['delivered_clock'] is not None:
+            return 'ALREADY_DELIVERED'
+        route=world.get('neighbor_correspondence_routes',{}).get(row['route_ref'])
+        if not route or not route['active']:
+            return 'TRANSPORT_ROUTE_REVOKED'
+        if world['clock']<row['deliver_not_before']:
+            return 'TRANSPORT_NOT_DUE'
+        row['delivered_clock']=world['clock']
+        self.runtime.ledger.commit(self.runtime.world_id,v,world,{}, {},
+            'NEIGHBOR_CORRESPONDENCE_DELIVERED',None,
+            {'message_ref':message_ref,'route_ref':row['route_ref'],
+             'recipient':row['recipient'],'no_reading_or_comprehension_inferred':True})
+        return 'DELIVERED'
+
+    def surrender_entry_permission(self, request_id, site_ref):
+        """Actual human relinquishment of their own controlled-site admission.
+
+        Not a grant, a public-right waiver, an eviction, or a relationship
+        verdict. Existing world site roster is the sole permission owner.
+        No inferred actor perception, notification, motive or account exit.
+        """
+        request_id=_text(request_id,'REQUEST_ID',120)
+        site_ref=_text(site_ref,'SITE_REF',100)
+        version,world=self._world()
+        key=stable_id('neighbor_entry_surrender',{'user':self.user_id,'request':request_id})
+        prior=world.get('neighbor_entry_surrenders',{}).get(key)
+        if prior:
+            if prior['site_ref']!=site_ref:
+                raise EncounterRefusal('ENTRY_SURRENDER_REPLAY_CHANGED_PAYLOAD')
+            return {'status':'SURRENDERED','surrender_ref':key,'idempotent_replay':True}
+        site=world['sites'].get(site_ref)
+        if not site or site.get('access')!='controlled':
+            raise EncounterRefusal('NO_CONTROLLED_ENTRY_PERMISSION')
+        admitted=site.get('admitted')
+        if (type(admitted) is not list or any(type(x) is not str for x in admitted)
+                or admitted.count(self.user_id)!=1):
+            raise EncounterRefusal('NO_OWN_ENTRY_PERMISSION')
+        person=world.get('neighbor_users',{}).get(self.user_id,{})
+        if person.get('present') is True and person.get('location')==site_ref:
+            raise EncounterRefusal('DEPART_BEFORE_SURRENDER')
+        site['admitted']=[x for x in admitted if x!=self.user_id]
+        row={'id':key,'user':self.user_id,'site_ref':site_ref,'clock':world['clock'],
+             'controller_ref':site.get('controller'),'no_actor_receipt_inferred':True}
+        world.setdefault('neighbor_entry_surrenders',{})[key]=row
+        receipt=self.runtime.ledger.commit(self.runtime.world_id,version,world,{}, {},
+            'NEIGHBOR_ENTRY_PERMISSION_SURRENDERED',None,deepcopy(row))
+        return {'status':'SURRENDERED','surrender_ref':key,'receipt':receipt['id'],
+                'idempotent_replay':False}
+
     def _destination_permitted(self, world, destination):
         """Consume the continuing world's actual site rule, not a notice.
 

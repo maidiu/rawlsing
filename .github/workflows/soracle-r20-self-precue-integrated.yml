@@ -24,6 +24,7 @@ on:
       - agent/soracle-co-mulchineer-staged-genealogy-20261125-r1
       - agent/soracle-co-mulchineer-interactivity-pressure-20261125-r1
       - agent/soracle-co-mulchineer-productive-vocal-genesis-20261125-r1
+      - agent/soracle-co-mulchineer-reciprocal-witness-20261126-r1
       - agent/inference-economy-semantic-port-r1-20261126
     paths:
       - 'SEAM/ORACLE/UM_SOROK_ORGANISM_R3/**'
@@ -55,6 +56,10 @@ jobs:
         if: github.ref_name == 'agent/soracle-co-mulchineer-productive-vocal-genesis-20261125-r1'
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_productive_vocal_genesis_r51.py' -v
+      - name: R52 reciprocal productive witnessing
+        if: github.ref_name == 'agent/soracle-co-mulchineer-reciprocal-witness-20261126-r1'
+        working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
+        run: python -m unittest discover -s tests -p 'test_productive_witness_r52.py' -v
       - name: R20 historical self and pre-cue focus
         working-directory: SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: python -m unittest discover -s tests -p 'test_historical_self_precue_r19.py' -v
