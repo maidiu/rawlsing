@@ -810,6 +810,11 @@ class CountryNativeEconomics(unittest.TestCase):
         self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
         self._cas_publication_court(root,products,captured.pop(),baseline)
+        # Actual process termination, not an exception which unwinds the
+        # native session. Keep the original controlled interruption court.
+        import os
+        if os.environ.get("PYAT_R8_PROCESS_LOSS")=="1":
+            self._process_loss_court(root,run,common,baseline,baseline_reader)
         bounded_dir=root/"bounded";bounded_dir.mkdir()
         bounded=run(bounded_dir,max_units=1)
         self.assertFalse(bounded.complete)
@@ -1008,6 +1013,91 @@ class CountryNativeEconomics(unittest.TestCase):
             "baseline_retained_bytes":footprint(products),"campaign_retained_bytes":footprint(campaign),
             "interruption_seconds":interruption_s,"resume_seconds":resume_s,
             "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
+        }),flush=True)
+
+    def _process_loss_court(self,root,run,common,baseline,baseline_reader):
+        import os,signal,traceback
+        from collections import Counter
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next.pre553_empirical_objects import exact_ref
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        destination=root/"killed-campaign"
+        destination.mkdir()
+        external=root/"operator-checkpoint-pin.json"
+        def pin_and_die(pin,pub):
+            # The operator pin is independently retained outside the CAS.
+            # Flush it and its directory before terminating without finally,
+            # context-manager exit, or SQLite connection cleanup.
+            material=dict(closure_path=str(pin.closure_path),expected_root=pin.expected_root,
+                expected_release_ref=pin.expected_release_ref.as_dict(),
+                expected_country_sha256=pin.expected_country_sha256,
+                completed=pub.batch_census["completed_count"])
+            with external.open("w",encoding="utf-8") as handle:
+                json.dump(material,handle,sort_keys=True)
+                handle.flush()
+                os.fsync(handle.fileno())
+            fd=os.open(external.parent,os.O_RDONLY)
+            try:
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+            os.kill(os.getpid(),signal.SIGKILL)
+        pid=os.fork()
+        if pid==0:
+            try:
+                run(destination,checkpoint_every=3,checkpoint_observer=pin_and_die)
+            except BaseException:
+                traceback.print_exc()
+            os._exit(1)
+        deadline=time.monotonic()+120
+        while True:
+            waited,status=os.waitpid(pid,os.WNOHANG)
+            if waited:
+                break
+            if time.monotonic()>deadline:
+                os.kill(pid,signal.SIGKILL)
+                os.waitpid(pid,0)
+                self.fail("checkpoint child timed out")
+            time.sleep(.025)
+        self.assertTrue(os.WIFSIGNALED(status))
+        self.assertEqual(os.WTERMSIG(status),signal.SIGKILL)
+        material=json.loads(external.read_text())
+        self.assertEqual(material.pop("completed"),3)
+        material["expected_release_ref"]=exact_ref(material["expected_release_ref"])
+        pin=delivery.CountryResumePin(**material)
+        partial=delivery.open_country_product(pin.closure_path,
+            expected_root=pin.expected_root,expected_release_ref=pin.expected_release_ref,
+            **common,allow_partial=True)
+        self.assertFalse(partial.complete)
+        manifest=delivery._manifest(common["workload"],baseline.release_identity.release_ref)
+        completed={r.unit_ref.key for r in partial._receipts}
+        expected=Counter((u.job_kind,u.job_ref.key) for u in manifest.units
+                         if u.unit_ref.key not in completed)
+        actual=[]
+        i03=CarrierNeutralResearchExecutor.execute_i03
+        i05=CarrierNeutralResearchExecutor.execute_i05
+        def record03(self,**kw):
+            actual.append(("QUERY",kw["query_ref"].key))
+            return i03(self,**kw)
+        def record05(self,**kw):
+            actual.append(("DISCOVERY",kw["discovery_authority_ref"].key))
+            return i05(self,**kw)
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",record03), patch.object(
+                CarrierNeutralResearchExecutor,"execute_i05",record05):
+            final=run(destination,resume_from=pin)
+        self.assertEqual(Counter(actual),expected)
+        self.assertEqual(final.batch_census,baseline.batch_census)
+        restored=delivery.open_country_product(final.receipt.root_path,
+            expected_root=final.receipt.root_identity,
+            expected_release_ref=final.release_identity.release_ref,**common)
+        self.assertEqual(restored._receipts,baseline_reader._receipts)
+        self.assertEqual(restored._closure.i03_results,baseline_reader._closure.i03_results)
+        self.assertEqual(tuple(x.replay_ref for x in restored._closure.discovery_results),
+                         tuple(x.replay_ref for x in baseline_reader._closure.discovery_results))
+        print("RELAY_R8_PROCESS_LOSS",json.dumps({"child_termination":"SIGKILL",
+            "completed_before_death":len(completed),"resumed_native_units":len(actual),
+            "exact_output_and_receipt_parity":True,
+            "grade":"SOURCEFREE_FORKED_WORKER_ACTUAL_PROCESS_DEATH_POST_DURABLE_PIN"
         }),flush=True)
 
     def _cas_publication_court(self,root,products,output,baseline):
