@@ -689,6 +689,7 @@ class CountryReader:
         self._block_auth,self._lane_auth=None,None
         self.db = sqlite3.connect(self.path.as_uri()+"?mode=ro"+("&immutable=1" if receipt.lane_root else ""),uri=True)
         self._certified_identity = None
+        self._certified_facade_key = None
         try:
             self.db.execute("PRAGMA query_only=ON")
             info = {k:json.loads(v) for k,v in self.db.execute("SELECT k,v FROM meta")}
@@ -893,12 +894,13 @@ class _CountryPhysicalStream(ExactPhysicalCellStream):
         bodies=_CountryEventBodies(self.reader,projection,headers,closure_refs=closure_refs)
         return _compact_country_headers(release_ref,replay_ref,non_events,headers,bodies,routing)
 
-    def certify_release(self,release):
+    def certify_release(self,release,*,facade_key=None):
         self._verify_binding()
         from .pre553_durable_empirical_closure import ReleaseIdentity
         self.reader._certified_identity = ReleaseIdentity(
             release.release_ref,release.replay_manifest.ref,release.source_artifact_ref,
             release.source_release_manifest_hash,release.semantic_release_hash)
+        self.reader._certified_facade_key=facade_key
 
     def event_bodies(self, release, events, projection):
         self.certify_release(release)
@@ -1200,6 +1202,9 @@ class CountryWorkloadSession:
         return self
 
     def close(self):
+        from threading import get_ident
+        if self._owner is not None and self._owner!=get_ident():
+            raise CountryCarrierError("country workload session owner thread required")
         self._closed=True
         self._entry=None
         if self._reader is not None:
@@ -1209,19 +1214,26 @@ class CountryWorkloadSession:
     def __exit__(self,*args):
         self.close()
 
-    def _check_custody(self):
+    def _require_owner(self):
         from threading import get_ident
         if not self._entered or self._closed or self._owner!=get_ident():
             raise CountryCarrierError("country workload session not open on owner thread")
+
+    def _check_custody(self):
+        self._require_owner()
         _live(self._require_current)
+        self._require_owner()
         if self._receipt_material(self._receipt)!=self._receipt_pin:
             raise CountryCarrierError("country workload session receipt changed")
 
     def _current(self):
-        self._check_custody()
+        self._require_owner()
         if self._active is None:
             raise CountryCarrierError("country workload session has no active issued decision")
+        # Active execution callback already checks country custody and its
+        # independently current issuer. Do not call the custody owner twice.
         self._active()
+        self._require_owner()
 
     def _bind(self,path,receipt,scope,current):
         from contextlib import contextmanager
@@ -1261,8 +1273,8 @@ class CountryWorkloadSession:
             raise CountryCarrierError("country session source reader mismatch")
         source._verify_binding()
         authorities=tuple(authorities)
-        key=source_backed_facade_key(source,projection,current_authorities=authorities)
         if self._entry is not None:
+            key=source_backed_facade_key(source,projection,current_authorities=authorities)
             old_key,old_projection,old_authorities,repo,release,identity,identity_pin=self._entry
             # Strict object ownership avoids reusing a body resolver bound
             # to a different (even equal) projection or authority instance.
@@ -1271,6 +1283,7 @@ class CountryWorkloadSession:
                     and all(a is b for a,b in zip(authorities,old_authorities))):
                 if (canonical_json(identity.as_dict())!=identity_pin
                         or self._reader._certified_identity!=identity
+                        or self._reader._certified_facade_key!=old_key
                         or repo.resolve_release_exact(identity.release_ref) is not release
                         or release.replay_manifest.ref!=identity.replay_ref
                         or release.source_release_manifest_hash!=identity.source_release_manifest_hash
@@ -1282,10 +1295,11 @@ class CountryWorkloadSession:
         self._entry=None
         repo,release=build_source_backed_c11_repository(source,projection,
                                     current_authorities=authorities)
-        if source_backed_facade_key(source,projection,current_authorities=authorities)!=key:
-            raise CountryCarrierError("country prepared input changed")
+        # Facade already computed and rechecked the complete producer key.
+        # Do not repeat its projection hashing on this cold admission.
+        key=self._reader._certified_facade_key
         identity=self._reader._certified_identity
-        if identity is None:
+        if identity is None or key is None:
             raise CountryCarrierError("country prepared release not certified")
         self._entry=(key,projection,authorities,repo,release,identity,
                      canonical_json(identity.as_dict()))
@@ -1294,6 +1308,7 @@ class CountryWorkloadSession:
 
     def execute(self,workload,resolver,*,host,purpose):
         from .pre553_issued_workload import _CountryAdmissionScope
+        self._require_owner()
         if self._busy:
             raise CountryCarrierError("country workload session already active")
         self._busy=True
@@ -1302,7 +1317,7 @@ class CountryWorkloadSession:
             scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
             return _execute_country_workload(workload,resolver,country_path=self._path,
                 country_receipt=self._receipt,host=host,purpose=purpose,
-                require_country_current=self._require_current,allow_test_only=True,
+                require_country_current=self._check_custody,allow_test_only=True,
                 _country_scope=scope,_session=self)
         except BaseException:
             self.close()
@@ -1312,6 +1327,7 @@ class CountryWorkloadSession:
 
     def publish(self,workload,resolver,*,host,purpose,root_dir,**options):
         from .pre553_saved_durable_delivery import execute_publish_country
+        self._require_owner()
         if self._busy:
             raise CountryCarrierError("country workload session already active")
         self._busy=True
@@ -1343,7 +1359,7 @@ def execute_country_workload(workload,resolver,*,country_path,country_receipt,ho
 def _execute_country_workload(workload,resolver,*,country_path,country_receipt,host,purpose,
                              require_country_current,allow_test_only=False,expected_wave=None,_country_scope=None,
                              _max_units=None,_prior_product=None,_checkpoint_every=None,
-                             _checkpoint_observer=None,_session=None):
+                             _checkpoint_observer=None,_session=None,_final_observer=None):
     """Execute an already issued workload from one retained numeric country.
 
     The separate country custody/currentness callback is mandatory; it is not
@@ -1365,7 +1381,10 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
     if _checkpoint_every is not None and (type(_checkpoint_every) is not int
             or _checkpoint_every<1 or not callable(_checkpoint_observer)):
         raise CountryCarrierError("exact country checkpoint observer required")
-    if (bounded or _prior_product is not None or _checkpoint_observer is not None):
+    if _final_observer is not None and not callable(_final_observer):
+        raise CountryCarrierError("exact final country observer required")
+    if (bounded or _prior_product is not None or _checkpoint_observer is not None
+            or _final_observer is not None):
         if _country_scope is None or record.scope!="TEST_ONLY_SOURCEFREE":
             raise CountryCarrierError("country continuation requires private sourcefree delivery scope")
     prior_receipts=()
@@ -1439,7 +1458,12 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
                 admit(workload,resolver,host=host,purpose=purpose,
                       allow_test_only=allow_test_only,expected_wave=expected_wave))!=record:
             raise CountryCarrierError("country workload decision changed before serving")
-        return CountryExecution(result,identity)
+        executed=CountryExecution(result,identity)
+        if _final_observer is not None:
+            _final_observer(executed,reader)
+            reader._verify()
+            current()
+        return executed
 
 def build_country_set(incidence,*,country_variable,root,require_current,
                       country_keys=None,retained_receipts=(),block_rows=1024,
