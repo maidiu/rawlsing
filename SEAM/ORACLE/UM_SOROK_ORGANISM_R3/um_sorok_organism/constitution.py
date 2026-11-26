@@ -226,6 +226,32 @@ def _form_in_scope(form,access):
         return False
     return True
 
+def _positive_reachability(positive,qualified):
+    """Existing positive link closure, with a composition-local adjacency.
+
+    The previous algorithm scanned every edge once per propagation round.
+    Only the reachable set is observed by its consumers. Visit each reached
+    source once; keep the original qualification and per-question veto.
+    No persistent index, new edge, modified relation or new authority.
+    """
+    adjacency={}
+    for link in positive:
+        target=link['target']
+        if target in qualified:
+            adjacency.setdefault(link['source'],set()).add(target)
+    def closure(start,blocked=frozenset()):
+        reached=(set(start)&qualified)-set(blocked)
+        pending=list(reached)
+        while pending:
+            source=pending.pop()
+            for target in adjacency.get(source,()):
+                if target not in reached and target not in blocked:
+                    reached.add(target)
+                    pending.append(target)
+        return reached
+    return closure
+
+
 def _same_composition_recruitment(recruit):
     """Reuse only identical closure questions within one immutable read.
 
@@ -287,16 +313,7 @@ def compose(constitution,access,limit=50):
     negative=[link for link in valid_links if link.get('relation') in
               ('INHIBITS','SUPPRESSES')]
 
-    def closure(start,blocked=frozenset()):
-        reached=(set(start)&qualified)-set(blocked)
-        while True:
-            added={link['target'] for link in positive
-                   if link['source'] in reached
-                   and link['target'] in qualified
-                   and link['target'] not in blocked}
-            newer=reached|added
-            if newer==reached:return reached
-            reached=newer
+    closure=_positive_reachability(positive,qualified)
 
     def joint_recruitment(start,blocked=frozenset()):
         """Qualified link/motif closure, with no hidden mutable actor state."""
