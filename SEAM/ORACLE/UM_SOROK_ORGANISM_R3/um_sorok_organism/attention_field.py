@@ -221,3 +221,79 @@ def received_undertaking_attention(actor, selection, experience):
     return {k:copy(chosen[k]) for k in ('attention_id','actor','cue_ref',
                 'source_event_ref','commitment_ref','source_kind','counterpart_ref',
                 'location','as_of_clock')}
+
+
+def offer_correspondence_attention(actor,world,access):
+    """Recipient-only opportunity to open delivered text on a qualified device.
+    Only metadata crosses the selection boundary, never unread body text.
+    Existing ORIENT selection/admission owns the consequential choice.
+    """
+    aid=actor['id']
+    if access.actor!=aid or access.world_clock!=world['clock']:return []
+    body=actor['body']
+    if body.get('language',0)<.35 or body.get('sensor',0)<.05:return []
+    geometry=world.get('neighbor_sensory_source',{})
+    view=geometry.get('actor_conditions',{}).get(aid,{})
+    if (geometry.get('grade')!='SOURCEFREE_TEST_ONLY' or view.get('visual') is not True
+            or view.get('light')!='lit' or view.get('sightline')!='unobstructed'):
+        return []
+    out=[]
+    routes=world.get('neighbor_correspondence_routes',{})
+    for key,row in sorted(world.get('neighbor_correspondence',{}).items()):
+        route=routes.get(row.get('route_ref'),{})
+        if (key!=row.get('id') or row.get('recipient')!=aid
+                or route.get('recipient')!=aid or route.get('sender')!=row.get('sender')
+                or route.get('device_site')!=access.location
+                or type(row.get('delivered_clock')) is not int
+                or row['delivered_clock']>world['clock']
+                or row.get('opened_clock') is not None):continue
+        basis={'actor':aid,'message_ref':key,'route_ref':route['id'],
+               'as_of_clock':world['clock'],'location':access.location,
+               'sender_label':row['sender'],'delivered_clock':row['delivered_clock']}
+        out.append({**basis,'attention_id':stable_id('correspondence_attention',basis),
+                    'operation':'ORIENT','unopened_body_not_available':True})
+        if len(out)>=8:break
+    return out
+
+
+def settle_correspondence_attention(world,actor,chosen,summary):
+    """Called only after the actual selected ORIENT settles. No inferred reading."""
+    from .world import add_cue
+    aid=actor['id']
+    row=world.get('neighbor_correspondence',{}).get(chosen['message_ref'])
+    if (not row or row['recipient']!=aid or row['opened_clock'] is not None
+            or row['route_ref']!=chosen['route_ref']
+            or row['delivered_clock']!=chosen['delivered_clock']
+            or world['clock']!=chosen['as_of_clock']+1
+            or summary.get('actor')!=aid or summary.get('action')!='ORIENT'
+            or summary.get('status')!='PERFORMED'
+            or world['positions'].get(aid)!=chosen['location']):
+        raise ValueError('CORRESPONDENCE_OPEN_NOT_QUALIFIED')
+    row['opened_clock']=world['clock']
+    cue=add_cue(world,'opened_correspondence',['correspondence','written_words'],
+                location=chosen['location'],description=row['text'],
+                modality='visual',private_to=aid,source_actor=aid)
+    cue.update(message_ref=row['id'],route_ref=row['route_ref'],
+               sender_label=row['sender'],comprehension='NOT_ESTABLISHED',
+               truth_or_reply_not_inferred=True)
+    return cue
+
+
+def received_correspondence_attention(actor,selection,experience):
+    chosen=(selection or {}).get('correspondence_attention')
+    if not isinstance(chosen,dict):return None
+    if (chosen.get('actor')!=actor['id'] or experience.get('actor')!=actor['id']
+            or experience.get('own_action')!='ORIENT' or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or experience.get('clock')!=chosen.get('as_of_clock',-2)+1
+            or selection.get('selected_project_refs')!=[]
+            or selection.get('possible_end_trial') is not None):return None
+    matches=[c for c in experience.get('perceived_cues',[])
+             if c.get('kind')=='opened_correspondence'
+             and c.get('message_ref')==chosen.get('message_ref')
+             and c.get('route_ref')==chosen.get('route_ref')]
+    if len(matches)!=1:return None
+    return {'attention_id':chosen['attention_id'],'message_ref':chosen['message_ref'],
+            'route_ref':chosen['route_ref'],'received_cue_ref':matches[0]['id'],
+            'actor':actor['id'],'opened_clock':experience['clock'],
+            'comprehension_not_established':True}
