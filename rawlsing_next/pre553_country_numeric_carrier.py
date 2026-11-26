@@ -1454,11 +1454,12 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
             # Retain typed failure codes without disclosing respondent data.
             codes=tuple((r.state,r.failure_code) for r in result.receipts if r.state!="COMPLETED")
             raise CountryCarrierError("country native workload not fully executed: "+repr(codes))
-        # Keep the incumbent post-proof currentness/admission boundary for
-        # ordinary execution as well as delivery. The final proof is owned by
-        # this execution, never supplied by a caller or saved from a prior run.
-        census=result.exact_s2e_output_census(require_complete=not bounded,
-                                             runtime_catalog=workload.catalog)
+        # Ordinary execution keeps its post-proof full admission. Delivery's
+        # synchronous observer owns the one final proof AFTER this carrier's
+        # external admission callbacks, not a census made before those calls.
+        if _final_observer is None:
+            result.exact_s2e_output_census(require_complete=not bounded,
+                                          runtime_catalog=workload.catalog)
         reader._verify()
         current()
         if (_country_scope.check() if _country_scope is not None else
@@ -1467,7 +1468,7 @@ def _execute_country_workload(workload,resolver,*,country_path,country_receipt,h
             raise CountryCarrierError("country workload decision changed before serving")
         executed=CountryExecution(result,identity)
         if _final_observer is not None:
-            _final_observer(executed,reader,census)
+            _final_observer(executed,reader)
             reader._verify()
             current()
         return executed
