@@ -16,6 +16,9 @@ from urllib.parse import urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 import json
 import math
+from collections import deque
+from threading import Lock
+from time import perf_counter_ns
 
 
 class _NoRedirect(HTTPRedirectHandler):
@@ -36,7 +39,8 @@ class ExplicitJSONLLMProvider:
     """
     grade="EXPLICIT_REMOTE_LLM_UNCALIBRATED_CONSTRUCTION"
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
-                 timeout_seconds=45,transport=None):
+                 timeout_seconds=45,transport=None,compact_task_prompt=False,
+                 metrics_capacity=0):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -53,6 +57,14 @@ class ExplicitJSONLLMProvider:
             raise ValueError("MODEL_TIMEOUT_INVALID")
         if transport is not None and not callable(transport):
             raise TypeError("MODEL_TEST_TRANSPORT_MUST_BE_CALLABLE")
+        if type(compact_task_prompt) is not bool:
+            raise TypeError("MODEL_COMPACT_PROMPT_FLAG_INVALID")
+        if type(metrics_capacity) is not int or not 0<=metrics_capacity<=100000:
+            raise ValueError("MODEL_METRICS_CAPACITY_INVALID")
+        self.compact_task_prompt=compact_task_prompt
+        self._metrics=deque(maxlen=metrics_capacity)
+        self._metrics_lock=Lock()
+        self._metrics_total=0
         self.endpoint=endpoint
         self.model=model
         self._api_key=api_key
@@ -79,13 +91,76 @@ class ExplicitJSONLLMProvider:
             raise ValueError("REMOTE_MODEL_REPLY_TOO_LARGE")
         return json.loads(data.decode("utf-8"))
 
+    def usage_snapshot(self):
+        """Opt-in bounded operational receipts, never prompt/history/secret logs."""
+        with self._metrics_lock:
+            return {"total":self._metrics_total,
+                    "evicted":self._metrics_total-len(self._metrics),
+                    "receipts":copy(list(self._metrics))}
+
+    @staticmethod
+    def _reported_usage(result):
+        # Chat-completion token counters are provider-reported, not estimates.
+        usage=result.get("usage") if type(result) is dict else None
+        usage=usage if type(usage) is dict else {}
+        def count(obj,key):
+            v=obj.get(key) if type(obj) is dict else None
+            return v if type(v) is int and v>=0 else None
+        return {"input_tokens":count(usage,"prompt_tokens"),
+                "output_tokens":count(usage,"completion_tokens"),
+                "total_tokens":count(usage,"total_tokens"),
+                "cached_input_tokens":count(usage.get("prompt_tokens_details"),"cached_tokens"),
+                "cache_write_tokens":count(usage.get("prompt_tokens_details"),"cache_write_tokens"),
+                "reasoning_tokens":count(usage.get("completion_tokens_details"),"reasoning_tokens")}
+
+    @staticmethod
+    def _task_prompt(task,instructions):
+        # Experimental projection only for isolated task clauses. Do not prune
+        # development or actor selection: their grammar crosses many families.
+        starts={"family_pathway_selection":"For family_pathway_selection ",
+                "adult_constructor":"For adult_constructor ",
+                "blind_adult_interview":"For blind_adult_interview ",
+                "expression":"For expression "}
+        if task not in starts:
+            return instructions
+        sequence=list(starts.values())
+        i=list(starts).index(task)
+        common_end=instructions.index("For development emit candidates ")
+        start=instructions.index(sequence[i])
+        tail=instructions.index("The engine will independently reject invalid effects.")
+        end=instructions.index(sequence[i+1]) if i+1<len(sequence) else tail
+        return instructions[:common_end]+instructions[start:end]+instructions[tail:]
+
     def propose(self,task,packet):
+        if not self._metrics.maxlen:
+            return self._propose(task,packet,None)
+        start=perf_counter_ns()
+        receipt={"task":task if task in _ALLOWED else "UNSUPPORTED",
+                 "transport":"MOCK" if self._transport is not None else "HTTPS",
+                 "attempts":0,"outcome":"REJECTED_OR_FAILED",
+                 "instruction_bytes":None,"packet_bytes":None,
+                 "request_bytes":None,"response_content_bytes":None,
+                 "prompt_variant":"FULL","usage":self._reported_usage(None)}
+        try:
+            value=self._propose(task,packet,receipt)
+            receipt["outcome"]="PROPOSAL_RETURNED"
+            return value
+        finally:
+            receipt["elapsed_ns"]=perf_counter_ns()-start
+            with self._metrics_lock:
+                self._metrics_total+=1
+                self._metrics.append(receipt)
+
+    def _propose(self,task,packet,receipt):
         if task not in _ALLOWED:
             raise ValueError("UNSUPPORTED_LIVE_PSYCHOLOGICAL_TASK")
         if type(packet) is not dict:
             raise TypeError("REMOTE_MODEL_PACKET_NOT_OBJECT")
         serialized=canonical(packet)
-        if len(serialized.encode("utf-8"))>128000:
+        packet_bytes=len(serialized.encode("utf-8"))
+        if receipt is not None:
+            receipt["packet_bytes"]=packet_bytes
+        if packet_bytes>128000:
             raise ValueError("REMOTE_MODEL_SOURCE_PACKET_TOO_LARGE")
         instructions=(
             "You are a sourcefree research hypothesis generator for one "
@@ -217,6 +292,11 @@ class ExplicitJSONLLMProvider:
             "Never describe these as proven real human-development laws. "
             "Return valid JSON and no Markdown."
         )
+        if self.compact_task_prompt:
+            compact=self._task_prompt(task,instructions)
+            if receipt is not None and compact!=instructions:
+                receipt["prompt_variant"]="TASK_ONLY_EXPERIMENT"
+            instructions=compact
         req={"model":self.model,
              "messages":[
                  {"role":"system","content":instructions},
@@ -225,8 +305,14 @@ class ExplicitJSONLLMProvider:
              "response_format":{"type":"json_object"}}
         # Injected transport permits local hermetic contract tests; production
         # uses the real HTTPS request, never a fake response behind the scenes.
+        if receipt is not None:
+            receipt["instruction_bytes"]=len(instructions.encode("utf-8"))
+            receipt["request_bytes"]=len(canonical(req).encode("utf-8"))
+            receipt["attempts"]=1
         result=(self._transport(copy(req)) if self._transport is not None
                 else self._request(req))
+        if receipt is not None:
+            receipt["usage"]=self._reported_usage(result)
         if type(result) is not dict or type(result.get("choices")) is not list:
             raise ValueError("REMOTE_MODEL_RESPONSE_SCHEMA_INVALID")
         choices=result["choices"]
@@ -235,7 +321,10 @@ class ExplicitJSONLLMProvider:
         message=choices[0].get("message")
         if type(message) is not dict or type(message.get("content")) is not str:
             raise ValueError("REMOTE_MODEL_NO_JSON_CONTENT")
-        if len(message["content"].encode("utf-8"))>256000:
+        content_bytes=len(message["content"].encode("utf-8"))
+        if receipt is not None:
+            receipt["response_content_bytes"]=content_bytes
+        if content_bytes>256000:
             raise ValueError("REMOTE_MODEL_RESPONSE_TOO_LARGE")
         data=json.loads(message["content"])
         if type(data) is not dict:
@@ -244,7 +333,14 @@ class ExplicitJSONLLMProvider:
             raise ValueError("REMOTE_MODEL_TASK_MISMATCH")
         if task=="development" and type(data.get("candidates")) is not list:
             raise ValueError("REMOTE_MODEL_BAD_DEVELOPMENT_CANDIDATES")
-        if task=="actor_attempt" and type(data.get("action")) is not str:
-            raise ValueError("REMOTE_MODEL_BAD_ACTION")
+        if task=="actor_attempt":
+            # The existing runtime owns exact issued-option matching, action
+            # agreement, conflict rejection and actual eligibility. It accepts
+            # action-only, practical-option-only and trial-only proposals.
+            has_id=any(type(data.get(k)) is str and bool(data[k].strip())
+                       for k in ("practical_option_id","possible_end_trial_id"))
+            if ("action" in data and type(data["action"]) is not str
+                    or "action" not in data and not has_id):
+                raise ValueError("REMOTE_MODEL_BAD_ACTION")
         # No underlying authoring authority is conferred by this transport.
         return copy(data)
