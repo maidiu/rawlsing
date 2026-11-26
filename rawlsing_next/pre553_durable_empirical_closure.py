@@ -1563,9 +1563,24 @@ def publish_empirical_closure(
     # retain (complete object documents plus the separate replay preimages).
     # Physical retention is only the compressed content-addressed blobs plus the
     # manifest; the same fact fragment is never stored twice.
+    replay_accounting_bytes = len(_canonical_bytes(replay_documents))
+    if factor_replay_risk_members:
+        # Preserve the incumbent logical-evidence accounting basis, which
+        # already factors the other replay fields. This new representation
+        # must not masquerade as a reduction in the evidence represented.
+        # Canonical JSON substitutes one value with one marker; the exact
+        # byte delta is available from the authenticated fragment extent.
+        fragment_lengths = {entry["fragment_hash"]: entry["uncompressed_bytes"]
+                            for entry in fragment_entries}
+        for entry in replay_documents["facts"]:
+            risk = entry["material"].get("risk_member_refs")
+            if isinstance(risk, Mapping) and set(risk) == {FRAGMENT_MARKER}:
+                replay_accounting_bytes += (
+                    fragment_lengths[risk[FRAGMENT_MARKER]] - len(_canonical_bytes(risk))
+                )
     logical_bytes = (
         sum(entry["logical_document_bytes"] for entry in object_entries)
-        + len(_canonical_bytes(replay_documents))
+        + replay_accounting_bytes
     )
     core: dict[str, Any] = {
         "schema": DURABLE_CLOSURE_SCHEMA,
