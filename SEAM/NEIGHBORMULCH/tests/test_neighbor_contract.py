@@ -142,6 +142,11 @@ class MIISpy:
         return {key:text for key,text in objects.items()
                 if house['objects'].get(key,{}).get('room')==room
                 and self.glance_available(house,user,key)}
+    def merge_recognition(self,profile,recognized):
+        # Contract spy only: the real MII owner is exercised by R32.
+        profile['recognized']=copy.deepcopy(recognized)
+    def recognized_for(self,profile,target):
+        return copy.deepcopy(profile.get('recognized',{}).get(target))
     def update_attention(self,profile,**kw):return False
     def surface(self,**kw):return {'schema':'SOROK_MII_SURFACE@1', **kw}
     def record_exposure(self,profile,**kw):
