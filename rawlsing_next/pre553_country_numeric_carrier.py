@@ -1291,6 +1291,9 @@ class CountryWorkloadSession:
                     raise CountryCarrierError("country prepared repository identity drift")
                 self._current()
                 return repo,release
+            # Do not keep the old graph alive in destructured local variables
+            # across a miss while building its replacement.
+            del repo,release,old_projection,old_authorities,identity
         # Release the old prepared graph before constructing another one.
         self._entry=None
         repo,release=build_source_backed_c11_repository(source,projection,
