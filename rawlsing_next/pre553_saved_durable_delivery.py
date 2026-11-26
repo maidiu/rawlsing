@@ -763,7 +763,8 @@ class CountryResumePin:
 def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                             country_receipt, root_dir, consumer_binding=None,
                             max_units=None, resume_from=None,
-                            checkpoint_every=None, checkpoint_observer=None,_country_session=None):
+                            checkpoint_every=None, checkpoint_observer=None,
+                            factor_replay_risk_members=True,_country_session=None):
     """Country numeric -> existing U43/I03/I05/Batch -> existing S2-F.
 
     Partial publication and exact cold resume inherit the saved-product proof
@@ -774,6 +775,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     """
     from rawlsing_next.pre553_country_numeric_carrier import (
         _execute_country_workload, CountryReader,CountryWorkloadSession)
+    _require(type(factor_replay_risk_members) is bool,"EXPLICIT_REPLAY_RISK_FACTORING_REQUIRED")
     _require(_country_session is None or type(_country_session) is CountryWorkloadSession,
              "EXACT_COUNTRY_SESSION_REQUIRED")
     _require(max_units is None or (type(max_units) is int and max_units>0),
@@ -854,7 +856,7 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
         published=monotonic()
         receipt=publish_empirical_closure(output,root_dir,consumer_binding=consumer_binding,
-                                            compact_manifest=True)
+            compact_manifest=True,factor_replay_risk_members=factor_replay_risk_members)
         check_receipt()
         reader._verify()
         current()
