@@ -800,8 +800,16 @@ class CountryNativeEconomics(unittest.TestCase):
             return delivery.open_country_product(pub.receipt.root_path,
                 expected_root=pub.receipt.root_identity,
                 expected_release_ref=pub.release_identity.release_ref,**common,**kwargs)
-        baseline=run(products)
+        captured=[]
+        original_publish=durable.publish_empirical_closure
+        def capture(output,*args,**kwargs):
+            captured.append(output)
+            return original_publish(output,*args,**kwargs)
+        with patch.object(delivery,"publish_empirical_closure",side_effect=capture):
+            baseline=run(products)
+        self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
+        self._cas_publication_court(root,products,captured.pop(),baseline)
         bounded_dir=root/"bounded";bounded_dir.mkdir()
         bounded=run(bounded_dir,max_units=1)
         self.assertFalse(bounded.complete)
@@ -1001,6 +1009,90 @@ class CountryNativeEconomics(unittest.TestCase):
             "interruption_seconds":interruption_s,"resume_seconds":resume_s,
             "grade":"SOURCEFREE_CONTROLLED_INTERRUPTION_FRESH_READER_NOT_PROCESS_KILL_OR_ORIGINAL"
         }),flush=True)
+
+    def _cas_publication_court(self,root,products,output,baseline):
+        """Same actual native output; independent publication into a warm CAS.
+
+        This is not a cache of scientific results. Each publication still
+        constructs and validates the complete output graph. Only existing
+        compressed bytes can discharge an exact-byte equality witness.
+        """
+        import shutil,zlib
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next.pre553_empirical_objects import canonical_json
+        blobs=products/durable.CAS_DIR/durable.BLOB_DIR
+        paths=sorted(blobs.glob("*"+durable.BLOB_SUFFIX))
+        self.assertTrue(paths)
+        expected_root=baseline.receipt.root_identity
+        def warm(name):
+            dest=root/name
+            shutil.copytree(products/durable.CAS_DIR,dest/durable.CAS_DIR)
+            return dest
+        def publish(mod,dest):
+            return mod.publish_empirical_closure(output,dest,
+                        compact_manifest=True,expected_root=expected_root)
+        same=warm("r8-cas-exact")
+        with patch.object(durable,"_decode_verified_blob",
+                          side_effect=AssertionError("identical CAS bytes decoded")):
+            receipt=publish(durable,same)
+        self.assertEqual(receipt.root_identity,expected_root)
+        self.assertEqual(receipt.cas_new_bytes,0)
+        durable.open_empirical_closure(receipt.root_path,expected_root=expected_root).require_trusted()
+        # Recompress actual retained canonical material without changing its
+        # content identity. The cold reader requires the original extent.
+        blob=paths[0]
+        raw=zlib.decompress(blob.read_bytes())
+        alternative=zlib.compress(raw,0)
+        self.assertNotEqual(len(alternative),blob.stat().st_size)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),blob.name[:-len(durable.BLOB_SUFFIX)])
+        poisoned=warm("r8-cas-wrong-extent")
+        changed=poisoned/durable.CAS_DIR/durable.BLOB_DIR/blob.name
+        changed.write_bytes(alternative)
+        with self.assertRaisesRegex(durable.DurableEmpiricalClosureError,"compressed size drift"):
+            publish(durable,poisoned)
+        self.assertFalse(list((poisoned/durable.CLOSURES_DIR).glob("closure-*")))
+        # Same-size wrong bytes must not pass equality or the fallback.
+        changed.write_bytes(b"\x00"*blob.stat().st_size)
+        with self.assertRaises(durable.DurableEmpiricalClosureError):
+            publish(durable,poisoned)
+        self.assertFalse(list((poisoned/durable.CLOSURES_DIR).glob("closure-*")))
+        changed.write_bytes(blob.read_bytes())
+        restored=publish(durable,poisoned)
+        self.assertEqual(restored.root_identity,expected_root)
+        durable.open_empirical_closure(restored.root_path,expected_root=expected_root).require_trusted()
+        # Compare exact R7, not an emulation, where the immutable parent is
+        # present. Local standalone tests need not fetch another Git object.
+        import os
+        if os.environ.get("PYAT_R8_MATCHED_PUBLICATION")=="1":
+            from tools.pyat_country_storage_relay_benchmark import historical
+            r7=historical("d8ae9a9324c4f923c2efe79e08ce8530bbf32cdc",
+                          "pre553_durable_empirical_closure")
+            old_bad=warm("r7-cas-wrong-extent")
+            (old_bad/durable.CAS_DIR/durable.BLOB_DIR/blob.name).write_bytes(alternative)
+            old_receipt=publish(r7,old_bad)
+            # The inherited writer publishes success; its own cold reader refuses.
+            with self.assertRaisesRegex(r7.DurableEmpiricalClosureError,"compressed size drift"):
+                r7.open_empirical_closure(old_receipt.root_path,expected_root=expected_root)
+            times={"R7":[],"R8":[]}
+            for i,order in enumerate((("R7","R8"),("R8","R7"),("R7","R8"),("R8","R7"))):
+                for version in order:
+                    dest=warm(f"matched-publication-{i}-{version}")
+                    started=time.monotonic()
+                    value=publish(r7 if version=="R7" else durable,dest)
+                    times[version].append(time.monotonic()-started)
+                    self.assertEqual(value.cas_new_bytes,0)
+                    self.assertEqual(value.root_identity,expected_root)
+                    self.assertEqual(durable._manifest_file(Path(value.root_path)).read_bytes(),
+                                     durable._manifest_file(Path(baseline.receipt.root_path)).read_bytes())
+                    durable.open_empirical_closure(value.root_path,
+                        expected_root=expected_root).require_trusted()
+            print("RELAY_R8_WARM_PUBLICATION",json.dumps({
+                "existing_blobs":len(paths),"exact_manifest_and_root":True,
+                "old_accepts_reader_refused_extent":True,
+                "R8_refuses_wrong_extent_and_bad_bytes":True,
+                "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()},
+                "grade":"MATCHED_NATIVE_OUTPUT_WARM_CAS_PUBLICATION_NOT_FULL_WORKLOAD"
+            }),flush=True)
 
     def test_physical_layout_query_tradeoffs_same_cells(self):
         """One selected carrier, bounded block-size comparison; not native-I03 proxy."""
