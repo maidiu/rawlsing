@@ -30,6 +30,7 @@ on:
       - agent/neighbormulch-r26-reciprocal-private-reception-20261125-r1
       - agent/neighbormulch-r27-polycentric-presence-20261125-r1
       - agent/neighbormulch-r28-shared-material-practice-20261125-r1
+      - agent/neighbormulch-r29-correspondence-20261126-r1
   pull_request:
     branches:
       - agent/neighbormulch-one-world-encounter-r1-20261121
@@ -179,7 +180,11 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_material_practice_r28.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_shared_material_practice_r28.py' -q
-      - name: Full inherited CO R50 organism court normal and optimized
+      - name: R29 actual correspondence and independently selected opening
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_correspondence_r29.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_correspondence_r29.py' -q
+      - name: Full inherited CO R51 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3
         run: |

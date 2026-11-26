@@ -221,6 +221,156 @@ def _dependency_contrast(actor, experience, event_ref, current):
             "actor_conscious_explanation_not_imputed":True,"grade":GRADE}
 
 
+
+PRODUCTIVE_VOCAL_FAMILY = "JOINT_VOCAL_PARTICIPATION_THEN_OWN_EXERCISE"
+
+
+def _own_vocal_episode(actor, experience, event_ref):
+    """A performed, self-selected, unaddressed, nontrial vocal exercise.
+    Its audible product is not a claim about joy, ability, or caregiver intent.
+    """
+    aid=actor["id"]
+    sel=experience.get("own_practical_selection") or {}
+    request=sel.get("world_request") or {}
+    if (experience.get("actor")!=aid or experience.get("own_action")!="SING"
+            or experience.get("status")!="PERFORMED"
+            or experience.get("participated") is not True
+            or experience.get("reciprocated_partner") is not None
+            or sel.get("actor")!=aid
+            or sel.get("status")!="ACTOR_POLICY_PRACTICAL_ATTEMPT"
+            or sel.get("selected_project_refs")!=[]
+            or sel.get("possible_end_trial") is not None
+            or type(sel.get("option_id")) is not str
+            or request.get("operation")!="SING"
+            or request.get("addressed_party_ref") is not None
+            or request.get("material_object_ref") is not None):
+        return None
+    rows=[x for x in actor.get("lived_genesis_episodes",[])
+          if x.get("actor")==aid and x.get("event_ref")==event_ref
+          and x.get("experience_ref")==experience.get("ref")
+          and type(x.get("clock")) is int and x["clock"]==experience.get("clock")
+          and x.get("actor_felt_attempt")=="SING"
+          and x.get("selected_practical_option_ref")==sel["option_id"]
+          and not x.get("unfinished_own_activity")]
+    if len(rows)!=1:return None
+    current=rows[0]
+    signs=[c for c in experience.get("perceived_cues",[])
+           if c.get("kind")=="performed_sing" and c.get("source_actor")==aid
+           and c.get("id") in current["received_sign_refs"]]
+    if len(signs)!=1 or "sing" not in signs[0].get("tags",[]):return None
+    return current,signs[0]
+
+
+def _productive_vocal_contrast(actor, experience, event_ref):
+    """Social production of a new possible object without prior privation.
+    Joint participation and later exercise are separate witnessed acts.
+    The Other need not disappear, fail or become a privately known motive.
+    """
+    own=_own_vocal_episode(actor,experience,event_ref)
+    if own is None:return None
+    cur,sign=own
+    aid=actor["id"]
+    qualified=[]
+    for row in actor.get("participation_history",[]):
+        other=row.get("reciprocated_partner_actor_visible")
+        if (row.get("actor")!=aid or row.get("own_attempted_operation")!="SING"
+                or row.get("own_status")!="PERFORMED"
+                or row.get("joint_participation_perceived") is not True
+                or type(other) is not str or other==aid
+                or type(row.get("experienced_clock")) is not int
+                or row["experienced_clock"]>=cur["clock"]
+                or row.get("event_ref")==event_ref):continue
+        prior=[x for x in actor.get("lived_genesis_episodes",[])
+               if x.get("actor")==aid and x.get("event_ref")==row.get("event_ref")
+               and x.get("experience_ref")==row.get("experience_ref")
+               and x.get("clock")==row["experienced_clock"]
+               and x.get("location")==cur.get("location")
+               and x.get("actor_felt_attempt")=="SING"
+               and not x.get("unfinished_own_activity")
+               and any(z.get("kind")=="performed_sing"
+                       and z.get("source_actor") in (aid,other)
+                       and z.get("cue_ref") in row.get("received_cue_refs",[])
+                       for z in x.get("personally_perceived_sign_sources",[]))]
+        if len(prior)==1:qualified.append((row,prior[0],other))
+    # Do not arbitrarily collapse competing social origins.
+    if len({x[2] for x in qualified})!=1:return None
+    row,earlier,other=max(qualified,key=lambda x:(x[1]["clock"],x[1]["id"]))
+    if any(e.get("productive_vocal_basis",{}).get("counterpart_ref")==other
+           and e.get("productive_vocal_basis",{}).get("location")==cur.get("location")
+           for e in actor.get("possible_ends",[])):return None
+    basis={"joint_participation_ref":row["id"],"joint_episode_ref":earlier["id"],
+           "own_episode_ref":cur["id"],"counterpart_ref":other,
+           "location":cur["location"],"own_selected_option_ref":cur["selected_practical_option_ref"],
+           "joint_event_ref":earlier["event_ref"],"own_event_ref":event_ref,
+           "no_prior_failure_required":True,"no_pleasure_or_mastery_inferred":True}
+    witness=stable_id("productive_vocal_contrast",{"actor":aid,"basis":basis})
+    reading={"mode":"EXPLORE_OWN_VOCAL_ACTIVITY_AFTER_SHARED_ACTIVITY",
+             "candidate_ref":stable_id("genetic_end_reading",{"witness":witness}),
+             "object":"explore making sound oneself after shared vocal activity",
+             "means":["SING"],"addressed_party_ref":None,
+             "source_received_sign_ref":sign["id"]}
+    return {"kind":"ACQUIRE_GENETIC_POSSIBLE_END","genesis_witness_ref":witness,
+            "prior_joint_episode_ref":earlier["id"],"later_independent_episode_ref":cur["id"],
+            "later_perceived_cue_ref":sign["id"],"possible_object":reading["object"],
+            "licensed_end_constructions":[reading],"chosen_end_mode":reading["mode"],
+            "chosen_end_candidate_ref":reading["candidate_ref"],"relieved_bodily_axis":None,
+            "genesis_family":PRODUCTIVE_VOCAL_FAMILY,"possible_means":["SING"],
+            "cue_terms":["sing"],"productive_vocal_basis":basis,
+            "sourcefree_genesis_not_an_empirical_motive_law":True,
+            "actor_conscious_explanation_not_imputed":True,"grade":GRADE}
+
+
+def possible_productive_vocal_takeups(actor,experience,event_ref):
+    """A distinct independent course after an actually performed issued trial."""
+    own=_own_vocal_episode(actor,experience,event_ref)
+    if own is None:return []
+    cur,sign=own
+    candidates=[]
+    for end in actor.get("possible_ends",[]):
+        if (end.get("genesis_family")!=PRODUCTIVE_VOCAL_FAMILY
+                or end.get("status")!="POSSIBLE_NOT_ACQUIRED_MOTIVE"
+                or end.get("possible_means")!=["SING"]):continue
+        basis=end.get("productive_vocal_basis",{})
+        if basis.get("location")!=cur.get("location"):continue
+        seeds=[x for x in actor.get("lived_genesis_episodes",[])
+               if x.get("id")==basis.get("own_episode_ref")
+               and x.get("event_ref")==end.get("origin_event")
+               and x.get("actor")==actor["id"]]
+        if len(seeds)!=1:continue
+        trials=[]
+        for t in end.get("trial_history",[]):
+            if (t.get("operation")!="SING" or t.get("actor_experienced_status")!="PERFORMED"
+                    or t.get("eliciting_possible_end_ref")!=end["id"]
+                    or t.get("event_ref")==event_ref):continue
+            lives=[x for x in actor.get("lived_genesis_episodes",[])
+                   if x.get("actor")==actor["id"] and x.get("event_ref")==t.get("event_ref")
+                   and x.get("experience_ref")==t.get("experience_ref")
+                   and x.get("selected_possible_end_trial_ref")==t.get("original_situated_trial_ref")
+                   and x.get("actor_felt_attempt")=="SING"
+                   and x.get("selected_addressed_party_ref") is None
+                   and x.get("location")==cur.get("location")
+                   and not x.get("unfinished_own_activity")
+                   and seeds[0]["clock"]<x["clock"]<cur["clock"]
+                   and any(z.get("kind")=="performed_sing"
+                           and z.get("source_actor")==actor["id"]
+                           and z.get("cue_ref") in t.get("received_sign_refs",[])
+                           for z in x.get("personally_perceived_sign_sources",[]))]
+            if len(lives)==1:trials.append((t,lives[0]))
+        if not trials:continue
+        trial,lived=max(trials,key=lambda x:(x[1]["clock"],x[1]["id"]))
+        takeup={"genesis_witness_ref":end["genesis_witness_ref"],
+                "trial_ref":trial["id"],"trial_episode_ref":lived["id"],
+                "later_own_episode_ref":cur["id"],
+                "later_selected_option_ref":cur["selected_practical_option_ref"],
+                "source_event_refs":[basis["joint_event_ref"],seeds[0]["event_ref"],
+                                     lived["event_ref"],event_ref],
+                "no_motive_fulfillment_or_mastery_inferred":True}
+        candidates.append({"kind":"TAKE_UP_POSSIBLE_END","possible_end_ref":end["id"],
+                           "later_perceived_cue_ref":sign["id"],"means":["SING"],
+                           "priority":.32,"productive_vocal_takeup_basis":takeup})
+    return candidates[:3]
+
+
 def possible_contrast_end(actor,experience,event_ref):
     """A fresh developmental candidate requiring different prior episodes.
 
@@ -233,9 +383,11 @@ def possible_contrast_end(actor,experience,event_ref):
     rows=actor.get("lived_genesis_episodes",[])
     current=[x for x in rows if x.get("event_ref")==event_ref
              and x.get("experience_ref")==experience.get("ref")]
-    if len(current)!=1 or not current[0].get("received_relief"):
-        return []
+    if len(current)!=1:return []
     cur=current[0]
+    productive=_productive_vocal_contrast(actor,experience,event_ref)
+    if productive is not None:return [productive]
+    if not cur.get("received_relief"):return []
     dependency=_dependency_contrast(actor,experience,event_ref,cur)
     if dependency is not None:return [dependency]
     prior=[x for x in rows if x.get("actor")==actor["id"]
@@ -336,8 +488,12 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
     if len(qualified)!=1:
         raise ValueError("GENESIS_NO_DISTINCT_LIVED_CONTRAST")
     expected=qualified[0]
-    for field in ("genesis_witness_ref","prior_unfinished_episode_ref",
-                  "later_relief_episode_ref"):
+    productive=expected.get("productive_vocal_basis")
+    first_field,second_field=(("prior_joint_episode_ref","later_independent_episode_ref")
+                               if productive else ("prior_unfinished_episode_ref","later_relief_episode_ref"))
+    if proposal.get("productive_vocal_basis")!=productive:
+        raise ValueError("GENESIS_PRODUCTIVE_VOCAL_HISTORY_FORGERY")
+    for field in ("genesis_witness_ref",first_field,second_field):
         if proposal.get(field)!=expected[field]:
             raise ValueError("GENESIS_HISTORICAL_SOURCE_FORGERY_"+field)
     if (proposal.get("genesis_family",expected["genesis_family"])!=expected["genesis_family"]
@@ -387,9 +543,9 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
     if any(p.get("id")==ident for p in actor.get("possible_ends",[])):
         raise ValueError("GENESIS_DUPLICATE_END")
     first=next(x for x in actor["lived_genesis_episodes"]
-               if x["id"]==expected["prior_unfinished_episode_ref"])
+               if x["id"]==expected[first_field])
     second=next(x for x in actor["lived_genesis_episodes"]
-                if x["id"]==expected["later_relief_episode_ref"])
+                if x["id"]==expected[second_field])
     end={
         "id":ident,"genesis_witness_ref":expected["genesis_witness_ref"],
         "possible_object":meaning,
@@ -421,6 +577,8 @@ def admit_contrast_end(actor,experience,event_ref,proposal):
         end["actual_contrasted_episode_refs"].insert(0,basis["supported_episode_ref"])
         end["source_event_refs"].insert(0,basis["supported_event_ref"])
         end["no_automatic_disaffection_or_independent_mastery"]=True
+    if productive:
+        end["productive_vocal_basis"]=copy(productive)
     actor.setdefault("possible_ends",[]).append(end)
     return {"kind":proposal["kind"],"possible_end":ident,
             "genesis_witness_ref":expected["genesis_witness_ref"],

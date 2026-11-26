@@ -15,12 +15,13 @@ from .practical_difference import validate_expected_difference, appraise_expecte
 from .expectation_afterlife import admit_activity_affect, admit_expressive_practice
 from .preproject_agency import admit_preproject_anticipation, revise_preproject_anticipation
 from .reflective_regulation import acquire_reflective_regulation, admit_private_possible_end, private_end_ground
-from .attention_field import received_undertaking_attention
+from .attention_field import received_undertaking_attention, received_correspondence_attention
 from .practical_powers import admit_repair_technique
 from .historical_self_organization import (
     acquire_orientation, revise_orientation, acquire_operative_self,
     revise_operative_self, admit_lived_directional_orientation)
-from .psychic_genesis import admit_contrast_end, possible_dependency_project_takeups
+from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
+                             PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
 from .activity import (possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
@@ -615,6 +616,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 dependency_takeup=copy(matches[0]['dependency_takeup_basis'])
             elif 'dependency_takeup_basis' in c:
                 raise InvalidDevelopment('DEPENDENCY_TAKEUP_WRONG_END_FAMILY')
+            productive_takeup=None
+            if end.get('genesis_family')==PRODUCTIVE_VOCAL_FAMILY:
+                matches=[p for p in possible_productive_vocal_takeups(actor,experience,event_ref)
+                         if p['possible_end_ref']==ref
+                         and p['productive_vocal_takeup_basis']==c.get('productive_vocal_takeup_basis')
+                         and p['later_perceived_cue_ref']==c.get('later_perceived_cue_ref')
+                         and p['means']==c.get('means')]
+                if len(matches)!=1:
+                    raise InvalidDevelopment('PRODUCTIVE_VOCAL_TAKEUP_NO_QUALIFIED_LATER_COURSE')
+                productive_takeup=copy(matches[0]['productive_vocal_takeup_basis'])
+            elif 'productive_vocal_takeup_basis' in c:
+                raise InvalidDevelopment('PRODUCTIVE_VOCAL_TAKEUP_WRONG_END_FAMILY')
             claimed_later_sign=c.get('later_perceived_cue_ref')
             if (claimed_later_sign is not None and
                     (type(claimed_later_sign) is not str or
@@ -648,6 +661,8 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                 takeup_evidence['dependency_takeup_basis']=dependency_takeup
             if private_takeup is not None:
                 takeup_evidence['private_takeup_basis']=private_takeup
+            if productive_takeup is not None:
+                takeup_evidence['productive_vocal_takeup_basis']=productive_takeup
             requested=c.get('means',end['possible_means'])
             if (type(requested) is not list or not requested or
                     any(type(x) is not str or x not in end['possible_means']
@@ -815,6 +830,21 @@ def _admit_in_place(actor,experience,event_ref,candidates):
                     raise InvalidDevelopment('UNDERTAKING_MEMORY_UNQUALIFIED_ATTENTION')
                 entry['undertaking_attention']=copy(receipt)
                 entry['remembered_meaning_not_objective_future_truth']=True
+            if 'correspondence_attention_ref' in c:
+                receipt=received_correspondence_attention(actor,
+                    experience.get('own_practical_selection'),experience)
+                paths=[p for p in actor.get('evidence_paths',[])
+                       if p.get('event')==event_ref and p.get('experience_ref')==experience['ref']
+                       and p.get('correspondence_attention')==receipt]
+                if (op!='MEMORY' or not receipt or receipt!=experience.get('correspondence_attention_receipt')
+                        or c['correspondence_attention_ref']!=receipt['attention_id'] or len(paths)!=1
+                        or type(entry['content']) is not str or not entry['content'].strip()
+                        or len(entry['content'])>512
+                        or any(m.get('correspondence_attention',{}).get('attention_id')==receipt['attention_id']
+                               for m in actor['memories'])):
+                    raise InvalidDevelopment('CORRESPONDENCE_MEMORY_UNQUALIFIED_ATTENTION')
+                entry['correspondence_attention']=copy(receipt)
+                entry['remembered_meaning_not_message_truth']=True
             actor['traces' if op=='TRACE' else 'memories'].append(entry)
             report.append({'kind':op,'ref':ref,'status':'ADMITTED_SOURCEFREE_FICTIONAL'})
         elif op=='CHANGE_OTHER_MODEL':
