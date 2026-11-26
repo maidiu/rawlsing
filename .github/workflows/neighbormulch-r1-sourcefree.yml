@@ -33,6 +33,7 @@ on:
       - agent/neighbormulch-r29-correspondence-20261126-r1
       - agent/neighbormulch-r30-rupture-20261126-r1
       - agent/neighbormulch-r31-constitutive-compression-20261126-r1
+      - agent/neighbormulch-r32-earned-recognition-20261126-r1
       - agent/inference-economy-semantic-port-r1-20261126
   pull_request:
     branches:
@@ -195,6 +196,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_constitutive_compression_r31.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_constitutive_compression_r31.py' -q
+      - name: R32 source-qualified familiar marking after actual private presentation
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_earned_recognition_r32.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_earned_recognition_r32.py' -q
       - name: Inference economy R5 actual R31 and R29 joined transport court
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_inference_economy_r5.py' -v

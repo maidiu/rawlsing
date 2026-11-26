@@ -310,7 +310,9 @@ def merge_recognition(profile, recognized):
             "turn": row.get("turn"),
             "evidence": row.get("evidence"),
             "marking": row.get("marking"),
-            "source": "COMMITTED_INSPECTION",
+            "source": ("QUALIFIED_PRIVATE_CLOSE_PRESENTATION"
+                       if row.get("recognition_source")=="QUALIFIED_PRIVATE_CLOSE_PRESENTATION"
+                       else "COMMITTED_INSPECTION"),
         }
     profile["recognition"]["seen"] = seen
     return profile["recognized"]
@@ -323,6 +325,10 @@ def recognized_for(profile, target):
     seen = profile.get("recognition", {}).get("seen", {}).get(target) or {}
     if (row is not None and row.get("event_id")
             and seen.get("event_id") == row.get("event_id")):
+        if (row.get("recognition_source")=="QUALIFIED_PRIVATE_CLOSE_PRESENTATION"
+                and seen.get("source")=="QUALIFIED_PRIVATE_CLOSE_PRESENTATION"):
+            return {**deepcopy(row), "confidence": "PRESENTATION_SUPPORTED",
+                    "human_recognition_not_established": True}
         return {**deepcopy(row), "confidence": "EARNED",
                 "recognition_source": "COMMITTED_INSPECTION"}
     label = profile.get("recognition", {}).get("labels", {}).get(target)
