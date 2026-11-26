@@ -202,6 +202,62 @@ def _expand_structured_fields(task,packet,descriptions):
     return restored
 
 
+def _semantic_packet_profile(task,packet):
+    """Bounded aggregate accounting, NOT a psychological demand estimator.
+
+    Categories describe existing packet functions. They grant no access or
+    admission and must not drive automatic semantic-call suppression.
+    No arbitrary field names, content, ids or hashes are retained.
+    """
+    groups={k:{"fields":0,"canonical_field_bytes":0} for k in (
+        "current_experience","operative_projection","retained_organization",
+        "historical_witnesses","qualified_offer_fields","practical_offer_fields",
+        "unclassified")}
+    offers={"family_fields":0,"nonempty_family_fields":0,"list_entries":0}
+    for key,value in packet.items():
+        group="unclassified"
+        if task=="actor_attempt":
+            if key in ("actor","accessible"):
+                group="current_experience"
+            elif key=="situated":
+                group="operative_projection"
+            elif key in ("options","practical_options","possible_end_trials",
+                         "private_rehearsal_options","undertaking_attention_options",
+                         "correspondence_attention_options"):
+                group="practical_offer_fields"
+        elif task=="development":
+            if key in ("actor","clock","experience","bodily_before_actor_analyst_only",
+                       "actual_private_rehearsal_analyst_only",
+                       "actual_undertaking_attention_analyst_only",
+                       "actual_correspondence_attention_analyst_only",
+                       "actual_lived_high_resolution_care_ref"):
+                group="current_experience"
+            elif key in ("selected_constitution","historical_psychodynamic_context",
+                         "selected_purpose_analytic_only"):
+                group="operative_projection"
+            elif key in ("actor_forms","actor_self_model_analyst_only",
+                         "actor_historical_orientations_analyst_only",
+                         "actor_possible_ends","actor_expectations_analyst_only",
+                         "actor_acquired_cultural_references_analyst_only"):
+                group="retained_organization"
+            elif key in ("actor_personally_practiced_vocal_turns_analyst_only",
+                         "actor_personally_heard_cultural_demonstrations_analyst_only",
+                         "recent_personally_lived_genesis_witnesses_analyst_only",
+                         "evidence_path"):
+                group="historical_witnesses"
+            elif key.startswith(("historically_possible_","historically_proposed_")):
+                group="qualified_offer_fields"
+                offers["family_fields"]+=1
+                if type(value) in (list,dict) and value:
+                    offers["nonempty_family_fields"]+=1
+                if type(value) is list:
+                    offers["list_entries"]+=len(value)
+        groups[group]["fields"]+=1
+        groups[group]["canonical_field_bytes"]+=len(canonical({key:value}).encode("utf-8"))-2
+    return {"groups":groups,"json_framing_bytes":2+max(0,len(packet)-1),
+            "development_offer_shape":offers if task=="development" else None}
+
+
 class ExplicitJSONLLMProvider:
     """Opt-in HTTP transport for an OpenAI-*compatible* chat JSON interface.
 
@@ -212,7 +268,8 @@ class ExplicitJSONLLMProvider:
     grade="EXPLICIT_REMOTE_LLM_UNCALIBRATED_CONSTRUCTION"
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
                  timeout_seconds=45,transport=None,compact_task_prompt=False,
-                 metrics_capacity=0,compact_exact_packet=False,compact_structured_packet=False):
+                 metrics_capacity=0,compact_exact_packet=False,compact_structured_packet=False,
+                 profile_semantic_demand=False):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -237,6 +294,11 @@ class ExplicitJSONLLMProvider:
             raise TypeError("MODEL_COMPACT_EXACT_PACKET_FLAG_INVALID")
         if type(compact_structured_packet) is not bool:
             raise TypeError("MODEL_COMPACT_STRUCTURED_PACKET_FLAG_INVALID")
+        if type(profile_semantic_demand) is not bool:
+            raise TypeError("MODEL_SEMANTIC_PROFILE_FLAG_INVALID")
+        if profile_semantic_demand and not metrics_capacity:
+            raise ValueError("MODEL_SEMANTIC_PROFILE_NEEDS_METRICS")
+        self.profile_semantic_demand=profile_semantic_demand
         self.compact_structured_packet=compact_structured_packet
         self.compact_exact_packet=compact_exact_packet
         self.compact_task_prompt=compact_task_prompt
@@ -342,6 +404,9 @@ class ExplicitJSONLLMProvider:
             receipt["packet_bytes"]=packet_bytes
         if packet_bytes>128000:
             raise ValueError("REMOTE_MODEL_SOURCE_PACKET_TOO_LARGE")
+        if receipt is not None and self.profile_semantic_demand:
+            receipt["semantic_packet_profile"]=_semantic_packet_profile(task,packet)
+            receipt["proposed_candidate_count"]=None
         instructions=(
             "You are a sourcefree research hypothesis generator for one "
             "historically situated fictional actor. Return ONLY one JSON "
@@ -571,5 +636,9 @@ class ExplicitJSONLLMProvider:
             if ("action" in data and type(data["action"]) is not str
                     or "action" not in data and not has_id):
                 raise ValueError("REMOTE_MODEL_BAD_ACTION")
+        # A proposal count is neither an admitted formation nor evidence
+        # that a no-change call was unnecessary.
+        if receipt is not None and self.profile_semantic_demand and task=="development":
+            receipt["proposed_candidate_count"]=len(data["candidates"])
         # No underlying authoring authority is conferred by this transport.
         return copy(data)
