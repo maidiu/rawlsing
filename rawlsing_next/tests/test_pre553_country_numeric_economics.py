@@ -787,6 +787,30 @@ class CountryNativeEconomics(unittest.TestCase):
         self.assertEqual(bounded.batch_census["completed_count"],1)
         self.assertFalse(open_product(bounded,allow_partial=True).complete)
         self.assertTrue(baseline.complete)
+        # R6 checkpoint publication must not weaken the original final
+        # full-file authentication boundary. Change unused physical bytes
+        # AFTER native calculation while defeating the stat mutation alarm.
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        original_bytes=db.read_bytes()
+        signature=carrier._stat_signature(db)
+        manifest0=delivery._s04_manifest
+        def changed_at_publication(*args,**kwargs):
+            value=manifest0(*args,**kwargs)
+            with db.open("r+b") as stream:
+                stream.seek(-1,2)
+                stream.write(bytes([original_bytes[-1]^1]))
+            return value
+        invalid=root/"invalid-publication";invalid.mkdir()
+        external_pins=[]
+        try:
+            with patch.object(delivery,"_s04_manifest",changed_at_publication), patch.object(
+                    carrier,"_stat_signature",return_value=signature):
+                with self.assertRaisesRegex(carrier.CountryCarrierError,"differs from held receipt"):
+                    run(invalid,max_units=1,checkpoint_every=1,
+                        checkpoint_observer=lambda pin,pub:external_pins.append(pin))
+            self.assertEqual(external_pins,[])
+        finally:
+            db.write_bytes(original_bytes)
         campaign=root/"campaign"
         campaign.mkdir()
         pins=[]
