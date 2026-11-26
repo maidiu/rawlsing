@@ -671,6 +671,10 @@ class CountryNativeEconomics(unittest.TestCase):
 
         root=Path(location)
         self.assertTrue(root.is_dir())
+        risk_mode=os.environ.get("PYAT_R10_REPLAY_RISK","factored")
+        self.assertIn(risk_mode,("legacy","factored"))
+        factor_risk=risk_mode=="factored"
+        campaign_proofs=[]
         countries=root/"countries";countries.mkdir()
         products=root/"products";products.mkdir()
         sizes=tuple(int(x) for x in os.environ.get("PYAT_R9_COUNTRY_ROWS","128,192,256").split(","))
@@ -714,7 +718,16 @@ class CountryNativeEconomics(unittest.TestCase):
             return result,{"wall_s":time.monotonic()-wall,"worker_cpu_s":time.process_time()-cpu}
         phase("source_generation")
         src=root/"survey.sav"
-        _,source_time=elapsed(lambda:pyreadstat.write_sav(frame,str(src)))
+        shared=os.environ.get("PYAT_R10_SHARED_SOURCE")
+        def create_source():
+            import shutil
+            if shared and Path(shared).is_file():
+                shutil.copyfile(shared,src)
+            else:
+                pyreadstat.write_sav(frame,str(src))
+                if shared:
+                    shutil.copyfile(src,shared)
+        _,source_time=elapsed(create_source)
         source_bytes=src.stat().st_size
         sha=hashlib.sha256(src.read_bytes()).hexdigest()
         del frame,data
@@ -855,9 +868,13 @@ class CountryNativeEconomics(unittest.TestCase):
                     phase(country+"_investigation_"+str(count))
                     before=len(actual)
                     pub,timing=elapsed(lambda:session.publish(item,resolver,host=host,purpose=purpose,
-                                                             root_dir=products,**args))
+                                                             root_dir=products,
+                                                             factor_replay_risk_members=factor_risk,**args))
                     self.assertTrue(pub.complete)
                     self.assertEqual(pub.batch_census["completed_count"],count+len(ds))
+                    campaign_proofs.append({"country":country,"count":count,
+                        "census":semantic_hash(pub.batch_census),
+                        "release":semantic_hash(pub.release_identity.as_dict())})
                     expected=Counter(("QUERY",r.query_ref.key) for r in item.requests)
                     expected.update(("DISCOVERY",r.key) for r in ds)
                     self.assertEqual(Counter(actual[before:]),expected)
@@ -935,10 +952,14 @@ class CountryNativeEconomics(unittest.TestCase):
         with patch.object(facade,"_validate_country_produced_release",
                           wraps=facade._validate_country_produced_release) as builds:
             pub,timing=elapsed(lambda:delivery.execute_publish_country(item,resolver,
-                host=host,purpose=purpose,country_path=db,country_receipt=receipt,root_dir=products))
+                host=host,purpose=purpose,country_path=db,country_receipt=receipt,root_dir=products,
+                factor_replay_risk_members=factor_risk))
             self.assertEqual(builds.call_count,1)
         self.assertEqual(pub.batch_census["completed_count"],10)
         self.assertEqual(pub.release_identity.release_ref,archived["A"][2])
+        campaign_proofs.append({"country":"A-return","count":10,
+            "census":semantic_hash(pub.batch_census),
+            "release":semantic_hash(pub.release_identity.as_dict())})
         # Source and country deletion: old empirical publication survives.
         phase("return_to_A_retained_read")
         old,old_resolver=issue(workload,record,"A-100",workload.requests,workload.discoveries)
@@ -949,7 +970,11 @@ class CountryNativeEconomics(unittest.TestCase):
             workload=old,resolver=old_resolver,host=host,purpose=purpose,
             requests=((queries[0].ref,None),)))
         check_counts(read.reads[0],queries[0],np.ones(len(selected),dtype=bool),selected,qrefs)
+        (root/"campaign-proof.json").write_text(json.dumps({"source_sha256":sha,
+            "mode":risk_mode,"proofs":campaign_proofs,"country_files":country_footprint,
+            "retained_products":footprint(products)},sort_keys=True),encoding="utf-8")
         print("R9_COUNTRY_CAMPAIGN_FINAL",json.dumps({"country_count":3,"distinct_source_rows":n,
+            "replay_risk_mode":risk_mode,
             "actual_issued_units":346,"distinct_initial_i03_per_country":100,
             "return_to_A_10_units":timing,"return_to_A_after_country_deleted":read_time,
             "country_files_before_deletion":country_footprint,"retained_products":footprint(products),
