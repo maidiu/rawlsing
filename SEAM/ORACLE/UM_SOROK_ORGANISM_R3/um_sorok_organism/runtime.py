@@ -342,9 +342,14 @@ class ConstitutiveRuntime:
                 'clock':world['clock'],'offer_id':proposal['offer_id'],
                 'no_material_consequence_inferred':True,'grade':GRADE}
 
-    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None):
+    def _actor_plan(self,actor_id,world,actors,requested_action=None,requesting_actor=None,requesting_action=None,*,_principal_projection=None):
         actor=actors[actor_id]
-        c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
+        # Internal same-stack, same-phase result from step's pre-event audit.
+        # Public plan and the independent coactor planner always read afresh.
+        if _principal_projection is None:
+            c=materialize(actor,world);e=actor_access(actor,world);situated=asdict(compose(c,e))
+        else:
+            e,situated=_principal_projection
         options=copy(situated['candidate_actions'])
         if requesting_actor is not None:
             valid=COOPERATIVE.get(requesting_action,set())
@@ -746,8 +751,15 @@ class ConstitutiveRuntime:
         # BEFORE the independent world result. Even an externally injected
         # action cannot retroactively manufacture the actor's motives.
         pre_event_psychodynamics={}
+        principal_projection=None
         for aid,person in actors.items():
-            prior=asdict(compose(materialize(person,world),actor_access(person,world)))
+            constitution=materialize(person,world)
+            encounter=actor_access(person,world)
+            prior=asdict(compose(constitution,encounter))
+            if aid==actor_id:
+                # All audit fields below are independently copied. No world
+                # or actor write, semantic call or phase transition intervenes.
+                principal_projection=(encounter,prior)
             pre_event_psychodynamics[aid]={
                 'readset':copy(prior['readset']),
                 'recruited_form_refs':[x['id'] for x in prior['recruited']],
@@ -760,7 +772,10 @@ class ConstitutiveRuntime:
         # Snapshot physical state before independently authorized world settlement;
         # later psychic inference cannot retcon what this body had undergone.
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
-        principal=self._actor_plan(actor_id,world,actors,requested_action)[0]
+        principal=self._actor_plan(actor_id,world,actors,requested_action,
+                                   _principal_projection=principal_projection)[0]
+        # No cross-phase, cross-beat or persisted projection cache.
+        del principal_projection
         if principal.practical_selection.get('undertaking_attention') is not None and (target is not None or object_ref is not None):
             raise ValueError('UNDERTAKING_ATTENTION_CANNOT_BE_EXTERNALLY_ADDRESSED')
         if principal.practical_selection.get('private_rehearsal') is not None and (target is not None or object_ref is not None):
