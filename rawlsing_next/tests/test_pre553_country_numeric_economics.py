@@ -659,8 +659,20 @@ class CountryNativeEconomics(unittest.TestCase):
         original=db.read_bytes()
         outputs={}
         counts={}
+        opens={}
+        full_hashes={}
         times={}
         source_build=facade._validate_country_produced_release
+        old_init=carrier.CountryReader.__init__
+        old_verify=carrier.CountryReader.verify_full
+        opened=[]
+        authenticated=[]
+        def count_open(self,*args,**kwargs):
+            opened.append(1)
+            return old_init(self,*args,**kwargs)
+        def count_verify(self,*args,**kwargs):
+            authenticated.append(1)
+            return old_verify(self,*args,**kwargs)
         old_i03=CarrierNeutralResearchExecutor.execute_i03
         old_i05=CarrierNeutralResearchExecutor.execute_i05
         actual=[]
@@ -680,9 +692,13 @@ class CountryNativeEconomics(unittest.TestCase):
                 destination=root/(mode+"-"+str(run_id));destination.mkdir()
                 gc.collect()
                 actual.clear()
+                opened.clear()
+                authenticated.clear()
                 with patch.object(facade,"_validate_country_produced_release",wraps=source_build) as builds, patch.object(
                         CarrierNeutralResearchExecutor,"execute_i03",count_i03), patch.object(
-                        CarrierNeutralResearchExecutor,"execute_i05",count_i05):
+                        CarrierNeutralResearchExecutor,"execute_i05",count_i05), patch.object(
+                        carrier.CountryReader,"__init__",count_open), patch.object(
+                        carrier.CountryReader,"verify_full",count_verify):
                     started=time.monotonic()
                     if mode=="cold":
                         pubs=[delivery.execute_publish_country(item,resolver,host=host,purpose=purpose,
@@ -698,6 +714,10 @@ class CountryNativeEconomics(unittest.TestCase):
                     self.assertEqual(builds.call_count,2 if mode=="cold" else 1)
                     self.assertEqual(Counter(actual),expected)
                     counts[mode]=builds.call_count
+                    self.assertEqual(len(opened),2 if mode=="cold" else 1)
+                    self.assertEqual(len(authenticated),4)
+                    opens[mode]=len(opened)
+                    full_hashes[mode]=len(authenticated)
                 times.setdefault(mode,[]).append(elapsed)
                 semantic=[]
                 for (item,resolver,_),pub in zip(cases,pubs):
@@ -756,7 +776,8 @@ class CountryNativeEconomics(unittest.TestCase):
         self.assertEqual(db.read_bytes(),original)
         print("COUNTRY_DISTINCT_WORKLOAD_REUSE",json.dumps({
             "country_rows":receipt.country_rows,"units":sum(len(x[0].requests)+len(x[0].discoveries) for x in cases),
-            "actual_preparations":counts,"seconds":times,
+            "actual_preparations":counts,"inventory_opens":opens,
+            "full_file_authentications":full_hashes,"seconds":times,
             "median_seconds":{k:median(v) for k,v in times.items()},
             "exact_outputs_and_receipts":True,"independent_issue_revoke_and_full_file_negative":True,
             "grade":"SAME_HOST_SOURCEFREE_LIVE_REUSE_NOT_COLD_PERSISTENT_OR_ORIGINAL"
