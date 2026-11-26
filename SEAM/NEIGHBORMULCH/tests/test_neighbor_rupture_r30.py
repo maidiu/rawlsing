@@ -4,11 +4,11 @@ from copy import deepcopy
 from pathlib import Path
 import tempfile
 import unittest
+import test_neighbor_material_support_r17 as support
 from um_sorok_organism.runtime import ConstitutiveRuntime
 from um_sorok_organism.types import adult,blank_world
 from um_sorok_organism.semantics import CallbackLLMProvider,ValidatingSemanticService
 from neighbor_runtime import NeighborEncounter,EncounterRefusal
-import test_neighbor_material_support_r17 as support
 import mii
 
 class RuptureR30(unittest.TestCase):
