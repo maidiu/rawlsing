@@ -23,11 +23,21 @@ def write(path,value):
 def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
-def geometry(rows,width,governed):
+def target_domains(governed,heterogeneous):
+    if not heterogeneous:return {}
+    sizes=(2,3,5,11,21)
+    return {"q"+str(i):tuple(str(j) for j in range(sizes[i%len(sizes)]))
+            for i in range(4,governed)}
+
+
+def geometry(rows,width,governed,heterogeneous=False):
     import numpy as np
     if rows<32 or governed<80 or width<governed+2:
         raise ValueError("invalid geometry")
-    values=np.random.default_rng(931).integers(0,2,(2*rows,governed))
+    rng=np.random.default_rng(931)
+    values=rng.integers(0,2,(2*rows,governed))
+    for name,domain in target_domains(governed,heterogeneous).items():
+        values[:,int(name[1:])]=rng.integers(0,len(domain),2*rows)
     for offset in (0,1):
         ids=np.arange(offset,2*rows,2)
         values[ids,0]=np.arange(rows)%2
@@ -37,13 +47,13 @@ def geometry(rows,width,governed):
         values[ids[6],3]=1
     return values
 
-def setup(root,rows,width,governed):
+def setup(root,rows,width,governed,heterogeneous=False):
     import numpy as np
     import pandas as pd
     import pyreadstat
     from rawlsing_next.pre553_physical_decoder import decode_sav
     from rawlsing_next.pre553_country_numeric_carrier import build_country
-    values=geometry(rows,width,governed);n=len(values)
+    values=geometry(rows,width,governed,heterogeneous);n=len(values)
     data={"q"+str(i):values[:,i].astype(str) for i in range(governed)}
     for i in range(width-governed-2):
         data["v"+str(i)]=(np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
@@ -60,7 +70,7 @@ def setup(root,rows,width,governed):
              output=root/"country.sqlite",require_current=lambda:True,block_rows=256)
     source.unlink()
     write(root/"fixture.json",{"receipt":asdict(receipt),"ordinals":ordinals,
-         "rows":rows,"width":width,"governed":governed,"source_bytes":source_bytes,
+         "rows":rows,"width":width,"governed":governed,"heterogeneous":heterogeneous,"source_bytes":source_bytes,
          "build_seconds":time.monotonic()-t})
 
 def worker(root,mode,counts,report):
@@ -74,14 +84,17 @@ def worker(root,mode,counts,report):
     cfg=read(root/"fixture.json")
     receipt=carrier.CountryReceipt(**cfg["receipt"])
     rows,width,governed=cfg["rows"],cfg["width"],cfg["governed"]
-    values=geometry(rows,width,governed)
+    heterogeneous=cfg.get("heterogeneous",False)
+    values=geometry(rows,width,governed,heterogeneous)
     db=root/"country.sqlite";prepared=root/"validated-headers.gz"
     t=time.monotonic()
     ext=dict(root=root,db=db,receipt=receipt,ordinals=cfg["ordinals"],
              selected=values[::2,:],chosen=tuple(range(1,2*rows+1,2)),
-             country="A",governed=governed,physical_width=width)
-    workload,record,queries,host,purpose,_=CountryNativeEconomics()._native_batch(
+             country="A",governed=governed,physical_width=width,
+             target_domains=target_domains(governed,heterogeneous))
+    workload,record,queries,host,purpose,qrefs=CountryNativeEconomics()._native_batch(
         wide=True,external_case=ext)
+    selected=values[::2,:].copy()
     del values,ext
     issuance_seconds=time.monotonic()-t
     cases=[]
@@ -136,17 +149,21 @@ def worker(root,mode,counts,report):
             with db.open("r+b") as file:file.seek(-1,2);file.write(byte)
         # A new sidecar may be produced before a later execution failure,
         # but no external successful producer pin may escape that call.
-        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
         failed=carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True,
                     preparation_path=root/"failed-headers.gz")
+        actual_execute=carrier._execute_country_workload
+        def fail_after(*args,**kw):
+            actual_execute(*args,**kw)
+            assert failed.preparation_pin is None
+            raise RuntimeError("post-preparation intentional failure")
         try:
-            with failed,patch.object(CarrierNeutralResearchExecutor,"execute_i03",
-                            side_effect=RuntimeError("post-preparation intentional failure")):
+            with failed,patch.object(carrier,"_execute_country_workload",fail_after):
                 failed.execute(item,resolver,host=host,purpose=purpose)
         except RuntimeError as exc:
             assert str(exc)=="post-preparation intentional failure",str(exc)
         else:raise AssertionError("intentional failure not reached")
         assert (root/"failed-headers.gz").is_file()
+        assert failed._preparation.pin is not None # old property would expose this
         assert failed.preparation_pin is None
         (root/"failed-headers.gz").unlink()
         write(report,{"mode":mode,"negative_controls":8})
@@ -213,6 +230,36 @@ def worker(root,mode,counts,report):
             result=original(*args,**kw)
         calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":count})
         return result
+    import numpy as np
+    from math import prod
+    from rawlsing_next.tests.test_pre553_empirical_query import _cell_map
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+    query_indices={q.ref.key:i for i,q in enumerate(queries)}
+    axes_by_ref={r.key:i for i,r in enumerate(qrefs.values())}
+    def verify_counts(execution):
+        checked=0
+        for unit in execution.result.manifest.units:
+            if unit.job_kind!="QUERY":continue
+            output=execution.result.outputs_by_unit[unit.unit_hash]
+            i=query_indices[unit.job_ref.key]
+            query=queries[i]
+            mask=(np.ones(rows,dtype=bool) if i in (0,99) else
+                  selected[:,0]==1 if i<=50 else selected[:,1]==0)
+            axes=tuple(axes_by_ref[exact_ref(r).key] for r in query.target_refs)
+            domains=target_domains(governed,heterogeneous)
+            expected_count=prod(len(domains.get("q"+str(axis),("0","1"))) for axis in axes)
+            assert len(output.facts)==1
+            fact=output.facts[0]
+            assert fact.raw_denominator_support==int(mask.sum())
+            cells=_cell_map(fact)
+            assert len(cells)==expected_count,(i,len(cells),expected_count)
+            for cell,data in cells.items():
+                vals=(cell,) if isinstance(cell,str) else cell
+                check=mask.copy()
+                for axis,val in zip(axes,vals):check &= selected[:,axis]==int(val)
+                assert data["raw_numerator_support"]==int(check.sum()),(i,cell)
+            checked+=1
+        return checked
     result_rows=[]
     with patch.object(facade,"_build_source_backed_c11_repository",counted):
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:
@@ -221,7 +268,9 @@ def worker(root,mode,counts,report):
                 execution=session.execute(item,resolver,host=host,purpose=purpose)
                 elapsed=time.monotonic()-start
                 proof=execution.result.exact_s2e_output_census(runtime_catalog=item.catalog)
+                checked=verify_counts(execution)
                 result_rows.append({"units":proof.completed_count,"wall_s":elapsed,
+                    "source_count_queries_checked":checked,
                     "census":proof.as_dict(),"release":execution.release_identity.as_dict()})
             pin=session.preparation_pin
     assert len(calls)==1,calls
@@ -254,11 +303,12 @@ def supervise(root,command):
     if proc.returncode:raise RuntimeError("worker failed: "+str(command))
     return {"outer_wall_s":time.monotonic()-start,"sampled_peak":peak,"samples":samples}
 
-def court(root,rows,width,governed,counts):
+def court(root,rows,width,governed,counts,heterogeneous=False):
     if any(root.iterdir()):raise ValueError("empty private root required")
     (root/"tmp").mkdir()
     source=supervise(root,["--root",str(root),"--setup","--rows",str(rows),
-                           "--width",str(width),"--governed",str(governed)])
+                           "--width",str(width),"--governed",str(governed)]+
+                           (["--heterogeneous"] if heterogeneous else []))
     reports=[]
     for i,mode in enumerate(("save","cold","restore","restore","cold","compare","negative")):
         dest=root/("report-"+str(i)+".json")
@@ -292,6 +342,7 @@ def main():
     p.add_argument("--governed",type=int,default=80)
     p.add_argument("--units",default="1,10,100")
     p.add_argument("--root",type=Path)
+    p.add_argument("--heterogeneous",action="store_true")
     p.add_argument("--setup",action="store_true")
     p.add_argument("--worker",choices=["save","cold","restore","negative","compare"])
     p.add_argument("--report",type=Path)
@@ -300,14 +351,14 @@ def main():
     if not counts or any(not 1<=x<=100 for x in counts) or len(set(counts))!=len(counts):
         p.error("distinct counts in [1,100] required")
     if args.setup:
-        setup(args.root,args.rows,args.width,args.governed)
+        setup(args.root,args.rows,args.width,args.governed,args.heterogeneous)
     elif args.worker:
         worker(args.root,args.worker,counts,args.report)
     elif args.root:
-        court(args.root.resolve(),args.rows,args.width,args.governed,counts)
+        court(args.root.resolve(),args.rows,args.width,args.governed,counts,args.heterogeneous)
     else:
         with tempfile.TemporaryDirectory(prefix="pyat-r14-") as root:
-            court(Path(root),args.rows,args.width,args.governed,counts)
+            court(Path(root),args.rows,args.width,args.governed,counts,args.heterogeneous)
 
 if __name__=="__main__":
     main()
