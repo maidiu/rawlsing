@@ -11,7 +11,7 @@ from .types import newborn, blank_world, Attempt, copy, GRADE, digest, stable_id
 from .storage import ResearchLedger
 from .constitution import materialize, actor_access, compose
 from .organism import eligible, apply_body
-from .development import admit, recurring_provisional_growth
+from .development import admit, recurring_provisional_growth, possible_practice_memory_access_decrease
 from .reflective_regulation import offer_private_rehearsals, perform_private_rehearsal
 from .attention_field import (offer_undertaking_attention, received_undertaking_attention,
     offer_correspondence_attention, settle_correspondence_attention, received_correspondence_attention)
@@ -936,6 +936,17 @@ class ConstitutiveRuntime:
                             and (aid!=actor_id or requested_action is None)
                             else None),
                         'actor_access_grade':GRADE}
+            # Read the actual material owner receipt, not the model's account
+            # of its own expertise. The actor need not know this causal source.
+            if own=='REPAIR' and experience['own_practical_selection'] is not None:
+                obj=summary.get('worked_material_object_ref')
+                history=world.get('material_objects',{}).get(obj,{}).get('objective_labor_history',[])
+                if history:
+                    labor=history[-1]
+                    if (labor.get('actor')==aid and labor.get('operation')=='REPAIR'
+                            and labor.get('clock')==world['clock']
+                            and labor.get('acquired_component_technique_ref')):
+                        experience['performed_repair_technique_ref_analytic_only']=labor['acquired_component_technique_ref']
             attention_receipt=received_undertaking_attention(
                 actors[aid],experience.get('own_practical_selection'),experience)
             if attention_receipt:
@@ -1122,6 +1133,9 @@ class ConstitutiveRuntime:
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
                 **({'actual_correspondence_attention_analyst_only':copy(correspondence_receipt)} if correspondence_receipt else {}),
+                **({'historically_possible_memory_access_decreases':memory_access_candidates}
+                   if (memory_access_candidates:=possible_practice_memory_access_decrease(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_repair_techniques':copy(
                     possible_repair_technique(actors[aid],experience,objective_ref)),
                 'actor_historical_orientations_analyst_only':copy(
@@ -1253,6 +1267,7 @@ class ConstitutiveRuntime:
         actual_tip={'action':principal.action,'outcome':public_sign,
                     'status':summary['status']}
         expression_access=copy(observed)
+        expression_access.pop('performed_repair_technique_ref_analytic_only',None)
         if expression_access.get('own_practical_selection'):
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
