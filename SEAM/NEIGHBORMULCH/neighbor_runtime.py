@@ -364,6 +364,41 @@ class NeighborEncounter:
              'recipient':row['recipient'],'no_reading_or_comprehension_inferred':True})
         return 'DELIVERED'
 
+    def surrender_entry_permission(self, request_id, site_ref):
+        """Actual human relinquishment of their own controlled-site admission.
+
+        Not a grant, a public-right waiver, an eviction, or a relationship
+        verdict. Existing world site roster is the sole permission owner.
+        No inferred actor perception, notification, motive or account exit.
+        """
+        request_id=_text(request_id,'REQUEST_ID',120)
+        site_ref=_text(site_ref,'SITE_REF',100)
+        version,world=self._world()
+        key=stable_id('neighbor_entry_surrender',{'user':self.user_id,'request':request_id})
+        prior=world.get('neighbor_entry_surrenders',{}).get(key)
+        if prior:
+            if prior['site_ref']!=site_ref:
+                raise EncounterRefusal('ENTRY_SURRENDER_REPLAY_CHANGED_PAYLOAD')
+            return {'status':'SURRENDERED','surrender_ref':key,'idempotent_replay':True}
+        site=world['sites'].get(site_ref)
+        if not site or site.get('access')!='controlled':
+            raise EncounterRefusal('NO_CONTROLLED_ENTRY_PERMISSION')
+        admitted=site.get('admitted')
+        if (type(admitted) is not list or any(type(x) is not str for x in admitted)
+                or admitted.count(self.user_id)!=1):
+            raise EncounterRefusal('NO_OWN_ENTRY_PERMISSION')
+        person=world.get('neighbor_users',{}).get(self.user_id,{})
+        if person.get('present') is True and person.get('location')==site_ref:
+            raise EncounterRefusal('DEPART_BEFORE_SURRENDER')
+        site['admitted']=[x for x in admitted if x!=self.user_id]
+        row={'id':key,'user':self.user_id,'site_ref':site_ref,'clock':world['clock'],
+             'controller_ref':site.get('controller'),'no_actor_receipt_inferred':True}
+        world.setdefault('neighbor_entry_surrenders',{})[key]=row
+        receipt=self.runtime.ledger.commit(self.runtime.world_id,version,world,{}, {},
+            'NEIGHBOR_ENTRY_PERMISSION_SURRENDERED',None,deepcopy(row))
+        return {'status':'SURRENDERED','surrender_ref':key,'receipt':receipt['id'],
+                'idempotent_replay':False}
+
     def _destination_permitted(self, world, destination):
         """Consume the continuing world's actual site rule, not a notice.
 
