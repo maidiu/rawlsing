@@ -1005,6 +1005,15 @@ class CountryNativeEconomics(unittest.TestCase):
             workload=old,resolver=old_resolver,host=host,purpose=purpose,
             requests=((queries[0].ref,None),)))
         check_counts(read.reads[0],queries[0],np.ones(len(selected),dtype=bool),selected,qrefs)
+        discovery_ref,role_plan,expected=archived_roles["A"]
+        role_read,role_time=elapsed(lambda:delivery.read_country_i05_roles_selected(path,
+            expected_root=root_pin,expected_release_ref=release,country_receipt=receipt,
+            workload=old,resolver=old_resolver,host=host,purpose=purpose,
+            discovery_authority_ref=discovery_ref,requests=role_plan))
+        self.assertEqual(tuple((a.ref,b.ref) for a,b in role_read.reads),expected)
+        print("R13_RETAINED_DISCOVERY_AFTER_COUNTRY_DELETION",json.dumps({
+            "timing":role_time,"blobs_read":role_read.blobs_read,"roles":len(role_plan),
+            "exact_role_refs":True}),flush=True)
         (root/"campaign-proof.json").write_text(json.dumps({"source_sha256":sha,
             "mode":risk_mode,"proofs":campaign_proofs,"country_files":country_footprint,
             "country_sha256":{key:rec.sha256 for key,(_,rec) in receipts.items()},
@@ -1736,6 +1745,7 @@ class CountryNativeEconomics(unittest.TestCase):
                          tuple(delivery._s04_refs(x) for x in baseline_reader.read_s04_many(plan)))
         with self.assertRaises(durable.DurableEmpiricalClosureError):
             durable.open_empirical_closure(new.root_path,expected_root=old.root_identity)
+        self._selected_discovery_adversarial_court(destination,new,product,common)
         # The added replay marker must still be backed by an authenticated
         # blob; no acceptance of a manifest-only risk-set assertion.
         risk=next(x["material"]["risk_member_refs"][FRAGMENT_MARKER]
@@ -1753,6 +1763,81 @@ class CountryNativeEconomics(unittest.TestCase):
             "legacy_manifest_bytes":old.manifest_bytes,"factored_manifest_bytes":new.manifest_bytes,
             "legacy_cas_bytes":old.cas_new_bytes,"factored_cas_bytes":new.cas_new_bytes,
             "exact_native_and_selected_parity":True,"wrong_root_and_corrupt_fragment_refused":True}),flush=True)
+
+    def _selected_discovery_adversarial_court(self,destination,pub,product,common):
+        """Corrupt selected and unselected actual retained bodies separately."""
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next.pre553_s04_i05_reception import S04I05ReceptionError
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        discovery=product._closure.discovery_results[0]
+        plan=tuple((c.ref,role) for c in discovery.receipts
+                   for role,refs in c.support_uncertainty_state["query_role_fact_refs"].items()
+                   if len(refs)==1)
+        self.assertTrue(plan)
+        expected=tuple((a.ref,b.ref) for a,b in
+                       (product.read_i05_role(candidate,role) for candidate,role in plan))
+        def read(**overrides):
+            args=dict(expected_root=pub.root_identity,
+                      expected_release_ref=product._closure.release_identities[0].release_ref,
+                      discovery_authority_ref=discovery.discovery_authority_ref,
+                      requests=plan,**common)
+            args.update(overrides)
+            return delivery.read_country_i05_roles_selected(pub.root_path,**args)
+        def check():
+            actual=read()
+            self.assertEqual(tuple((a.ref,b.ref) for a,b in actual.reads),expected)
+            self.assertEqual(actual.discovery_replay_ref,discovery.replay_ref)
+        core=product._closure.manifest["core"]
+        entries={x["ref"]["content_hash"]:x for x in core["objects"]}
+        selected_fact=discovery.empirical_facts[0]
+        selected_hash=entries[selected_fact.content_hash]["document_hash"]
+        discovery_keys={f.ref.key for f in discovery.empirical_facts}
+        unrelated=next(f for result in product._closure.i03_results for f in result.facts
+                       if f.ref.key not in discovery_keys)
+        unrelated_hash=entries[unrelated.content_hash]["document_hash"]
+        self.assertNotEqual(selected_hash,unrelated_hash)
+        def blob(digest):
+            return destination/durable.CAS_DIR/durable.BLOB_DIR/(digest+durable.BLOB_SUFFIX)
+        with patch.object(CarrierNeutralResearchExecutor,"execute_i03",
+                          side_effect=AssertionError("selected read reran I03")),patch.object(
+                CarrierNeutralResearchExecutor,"execute_i05",
+                          side_effect=AssertionError("selected read reran I05")):
+            check()
+            with self.assertRaises(durable.DurableEmpiricalClosureError):
+                read(expected_root="0"*64)
+            with self.assertRaisesRegex(delivery.SavedDeliveryError,"DISCOVERY_NOT_IN_RETAINED_WORKLOAD"):
+                read(discovery_authority_ref=common["workload"].requests[0].query_ref)
+            with self.assertRaises(S04I05ReceptionError):
+                read(requests=((plan[0][0],"NO_SUCH_ROLE"),))
+            with self.assertRaises(S04I05ReceptionError):
+                read(requests=((unrelated.ref,plan[0][1]),))
+            # Corruption outside the claimed selected proof is not reported
+            # as a healthy whole archive. Full audit must detect it.
+            for digest,is_selected in ((unrelated_hash,False),(selected_hash,True)):
+                path=blob(digest)
+                before=path.read_bytes()
+                try:
+                    path.write_bytes(b"invalid closure blob")
+                    with self.assertRaises(durable.DurableEmpiricalClosureError):
+                        durable.open_empirical_closure(pub.root_path,expected_root=pub.root_identity)
+                    if is_selected:
+                        with self.assertRaises(durable.DurableEmpiricalClosureError):read()
+                    else:check()
+                finally:path.write_bytes(before)
+            resolver=common["resolver"]
+            before=resolver._record
+            resolver._record=replace(before,currentness="REVOKED")
+            try:
+                with self.assertRaises(issued.WorkloadAdmissionError):read()
+            finally:resolver._record=before
+            check()
+        print("R13_SELECTED_DISCOVERY_NEGATIVES",json.dumps({
+            "roles":len(plan),"exact_role_refs":True,"selected_corruption_refused":True,
+            "unselected_corruption_full_audit_refused":True,"revocation_refused":True,
+            "wrong_root_discovery_candidate_role_refused":True,
+            "no_native_execution":True}),flush=True)
 
     def _compare_risk_factored_cores(self,old,new):
         """Exact persisted core comparison, allowing only the risk transport
