@@ -43,8 +43,19 @@ case "$COURT" in
            rawlsing_next/tests/test_preff_c3_dhikr_comparative.py
            rawlsing_next/tests/test_preff_c0_dhikr_first_consumer.py)
     ;;
+  C5_V3_CONTEXT)
+    tests=(rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py
+           rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py)
+    ;;
+  C6_V3_SEAM)
+    tests=(rawlsing_next/tests/test_preff_c6_seam_contextual_entrances.py
+           rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py
+           rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py)
+    ;;
   C0_ALL_SMALL)
-    tests=(rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py
+    tests=(rawlsing_next/tests/test_preff_c6_seam_contextual_entrances.py
+           rawlsing_next/tests/test_preff_c5_continuing_contextual_prev3.py
+           rawlsing_next/tests/test_preff_c4_ff_v3_empirical_handoff.py
            rawlsing_next/tests/test_preff_c3_dhikr_comparative.py
            rawlsing_next/tests/test_preff_c0_raw_preservation.py
            rawlsing_next/tests/test_preff_c0_physical_journal.py
