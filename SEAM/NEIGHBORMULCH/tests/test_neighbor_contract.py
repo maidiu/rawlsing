@@ -96,7 +96,7 @@ class LedgerSpy:
     def assert_world(self,wid):
         if wid!='w1':raise ValueError('wrong world')
     def actors(self):return copy.deepcopy(self._actors)
-    def events(self):return copy.deepcopy(self._events)
+    def events(self,limit=None):return copy.deepcopy(self._events if limit is None else self._events[:limit])
     def commit(self,wid,expected_world,world,actors,actor_versions,kind,actor_id,payload):
         self.assert_world(wid)
         if self._version!=expected_world:raise RuntimeError('STALE_WORLD')
