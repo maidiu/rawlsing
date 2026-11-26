@@ -5,6 +5,7 @@ cache. The comparator bypasses only the local closure memo, keeping the
 same owner, algorithm, state and independently qualified offers.
 """
 from dataclasses import asdict
+from copy import deepcopy
 from collections import Counter
 from time import perf_counter_ns
 from unittest.mock import patch
@@ -13,7 +14,7 @@ import unittest
 from um_sorok_organism import constitution as owner
 from um_sorok_organism import relational_metabolism as relations
 from um_sorok_organism.semantics import ValidatingSemanticService
-from um_sorok_organism.types import canonical, copy, digest
+from um_sorok_organism.types import canonical, digest
 import test_relational_metabolism_r4_integrated as prior
 import test_inference_economy_exact_packet_r3 as courses
 
@@ -92,7 +93,7 @@ class RelationalClosureEconomyR6(unittest.TestCase):
         # source can remain indirectly operative.
         for variant in ("acyclic","cyclic","bodily","foreign","revalued"):
             with self.subTest(variant=variant):
-                x=copy(c);e=prior.access()
+                x=deepcopy(c);e=prior.access()
                 if variant in ("acyclic","cyclic"):
                     x.links.append({"source":"authority","target":"care",
                         "relation":"INHIBITS","origin":["past"],"contexts":["home"]})
