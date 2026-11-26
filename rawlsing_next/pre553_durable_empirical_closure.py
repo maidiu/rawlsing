@@ -2437,7 +2437,7 @@ def _verify_existing_blob(path: Path, generated: bytes, digest: str, entry: Mapp
     actual = path.read_bytes()
     if actual == generated:
         return
-    _decode_verified_blob(actual, digest, entry)
+    _decode_verified_blob(actual, digest, entry, blob_name=path.name)
 
 
 def _load_blob(path: Path, expected_hash: str, entry: Mapping[str, Any]) -> Any:
@@ -2448,15 +2448,15 @@ def _load_blob(path: Path, expected_hash: str, entry: Mapping[str, Any]) -> Any:
         raise DurableEmpiricalClosureError(
             f"mandatory closure blob is missing: {path.name}"
         ) from exc
-    return _decode_verified_blob(data, expected_hash, entry)
+    return _decode_verified_blob(data, expected_hash, entry, blob_name=path.name)
 
 
-def _decode_verified_blob(data: bytes, expected_hash: str, entry: Mapping[str, Any]) -> Any:
+def _decode_verified_blob(data: bytes, expected_hash: str, entry: Mapping[str, Any], *, blob_name: str) -> Any:
     try:
         value = _decompress(data)
     except Exception as exc:
         raise DurableEmpiricalClosureError(
-            f"closure blob is not decodable: {path.name}"
+            f"closure blob is not decodable: {blob_name}"
         ) from exc
     from rawlsing_next.pre553_empirical_objects import canonical_json
 
