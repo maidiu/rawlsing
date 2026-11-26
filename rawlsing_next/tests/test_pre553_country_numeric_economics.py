@@ -1147,6 +1147,19 @@ class CountryNativeEconomics(unittest.TestCase):
             publish(durable,poisoned)
         self.assertFalse(list((poisoned/durable.CLOSURES_DIR).glob("closure-*")))
         changed.write_bytes(blob.read_bytes())
+        # The cold reader historically permits alternate compression bytes
+        # with the same content AND declared extents. Do not accidentally
+        # turn exact-byte acceleration into a new physical format restriction.
+        sample=canonical_json({"fixture":"a"*256}).encode("utf-8")
+        generated=zlib.compress(sample,9)
+        alternate=zlib.compress(sample,6)
+        self.assertNotEqual(alternate,generated)
+        self.assertEqual(len(alternate),len(generated))
+        standalone=root/"same-extent-alternate.json.z"
+        standalone.write_bytes(alternate)
+        durable._verify_existing_blob(standalone,generated,
+            hashlib.sha256(sample).hexdigest(),
+            {"compressed_bytes":len(generated),"uncompressed_bytes":len(sample)})
         restored=publish(durable,poisoned)
         self.assertEqual(restored.root_identity,expected_root)
         durable.open_empirical_closure(restored.root_path,expected_root=expected_root).require_trusted()
