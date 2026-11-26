@@ -1135,10 +1135,15 @@ class CountryNativeEconomics(unittest.TestCase):
             captured.append(output)
             return original_publish(output,*args,**kwargs)
         with patch.object(delivery,"publish_empirical_closure",side_effect=capture):
-            baseline=run(products)
+            # Keep the R7/R8 exact-root publication oracle on the original
+            # representation. New country publication defaults to factoring.
+            baseline=run(products,factor_replay_risk_members=False)
         self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
-        self._cas_publication_court(root,products,captured.pop(),baseline)
+        native_output=captured.pop()
+        self._cas_publication_court(root,products,native_output,baseline)
+        self._risk_replay_factoring_court(root,native_output,baseline,common,baseline_reader)
+        del native_output
         # Actual process termination, not an exception which unwinds the
         # native session. Keep the original controlled interruption court.
         import os
@@ -1443,6 +1448,86 @@ class CountryNativeEconomics(unittest.TestCase):
             "unpublished_staging_reclaimed":True,
             "grade":"SOURCEFREE_FORKED_WORKER_SIGKILL_BEFORE_SECOND_MANIFEST_REPLACE"
         }),flush=True)
+
+    def _risk_replay_factoring_court(self,root,output,baseline,common,baseline_reader):
+        """Actual native output, exact legacy root plus factored replay root."""
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next.pre553_durable_empirical_fragments import FRAGMENT_MARKER
+        destination=root/"r10-factored-risk"
+        new=durable.publish_empirical_closure(output,destination,compact_manifest=True,
+                                             factor_replay_risk_members=True)
+        old=baseline.receipt
+        self.assertNotEqual(new.root_identity,old.root_identity)
+        self.assertEqual(new.cas_new_bytes,old.cas_new_bytes)
+        old_core=baseline_reader._closure.manifest["core"]
+        product=delivery.open_country_product(new.root_path,
+            expected_root=new.root_identity,expected_release_ref=baseline.release_identity.release_ref,
+            **common)
+        self.assertEqual(product._receipts,baseline_reader._receipts)
+        self.assertEqual(product.batch_census,baseline_reader.batch_census)
+        self.assertEqual(product._closure.i03_results,baseline_reader._closure.i03_results)
+        self.assertEqual(tuple(x.replay_ref for x in product._closure.discovery_results),
+                         tuple(x.replay_ref for x in baseline_reader._closure.discovery_results))
+        new_core=product._closure.manifest["core"]
+        count=self._compare_risk_factored_cores(old_core,new_core)
+        self.assertGreater(count,0)
+        self.assertLess(new.manifest_bytes,old.manifest_bytes)
+        plan=((common["workload"].requests[0].query_ref,None),)
+        selected=delivery.read_country_s04_selected(new.root_path,
+            expected_root=new.root_identity,expected_release_ref=baseline.release_identity.release_ref,
+            **common,requests=plan)
+        self.assertEqual(tuple(delivery._s04_refs(x) for x in selected.reads),
+                         tuple(delivery._s04_refs(x) for x in baseline_reader.read_s04_many(plan)))
+        with self.assertRaises(durable.DurableEmpiricalClosureError):
+            durable.open_empirical_closure(new.root_path,expected_root=old.root_identity)
+        # The added replay marker must still be backed by an authenticated
+        # blob; no acceptance of a manifest-only risk-set assertion.
+        risk=next(x["material"]["risk_member_refs"][FRAGMENT_MARKER]
+                  for x in new_core["replays"]["facts"] if "risk_member_refs" in x["material"])
+        path=destination/durable.CAS_DIR/durable.BLOB_DIR/(risk+durable.BLOB_SUFFIX)
+        original=path.read_bytes()
+        try:
+            path.write_bytes(b"invalid risk fragment")
+            with self.assertRaises(durable.DurableEmpiricalClosureError):
+                durable.open_empirical_closure(new.root_path,expected_root=new.root_identity)
+        finally:
+            path.write_bytes(original)
+        durable.open_empirical_closure(new.root_path,expected_root=new.root_identity).require_trusted()
+        print("RELAY_R10_RISK_FACTORS",json.dumps({"factored_replays":count,
+            "legacy_manifest_bytes":old.manifest_bytes,"factored_manifest_bytes":new.manifest_bytes,
+            "legacy_cas_bytes":old.cas_new_bytes,"factored_cas_bytes":new.cas_new_bytes,
+            "exact_native_and_selected_parity":True,"wrong_root_and_corrupt_fragment_refused":True}),flush=True)
+
+    def _compare_risk_factored_cores(self,old,new):
+        """Exact persisted core comparison, allowing only risk representation
+        and its incumbent packed logical-size accounting to change."""
+        from rawlsing_next.pre553_durable_empirical_fragments import FRAGMENT_MARKER
+        from rawlsing_next.pre553_empirical_objects import semantic_hash
+        self.assertEqual(set(old),set(new))
+        for key in old:
+            if key not in ("replays","resource_shape"):
+                self.assertEqual(old[key],new[key],key)
+        self.assertEqual({k:v for k,v in old["resource_shape"].items() if k!="logical_evidence_bytes"},
+                         {k:v for k,v in new["resource_shape"].items() if k!="logical_evidence_bytes"})
+        self.assertEqual(set(old["replays"]),set(new["replays"]))
+        for key in old["replays"]:
+            if key!="facts":
+                self.assertEqual(old["replays"][key],new["replays"][key])
+        self.assertEqual(len(old["replays"]["facts"]),len(new["replays"]["facts"]))
+        objects={x["ref"]["content_hash"]:x for x in new["objects"] if x["family"]=="EmpiricalFact@1.0.0"}
+        count=0
+        for a,b in zip(old["replays"]["facts"],new["replays"]["facts"]):
+            material=dict(b["material"])
+            if "risk_member_refs" in a["material"]:
+                values=a["material"]["risk_member_refs"]
+                digest=semantic_hash(values)
+                self.assertEqual(material["risk_member_refs"],{FRAGMENT_MARKER:digest})
+                self.assertIn(digest,objects[b["fact_ref"]["content_hash"]]["fragment_refs"])
+                material["risk_member_refs"]=values
+                count+=1
+            self.assertEqual(a,{**b,"material":material})
+        return count
 
     def _cas_publication_court(self,root,products,output,baseline):
         """Same actual native output; independent publication into a warm CAS.
