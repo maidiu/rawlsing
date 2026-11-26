@@ -763,7 +763,7 @@ class CountryResumePin:
 def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                             country_receipt, root_dir, consumer_binding=None,
                             max_units=None, resume_from=None,
-                            checkpoint_every=None, checkpoint_observer=None):
+                            checkpoint_every=None, checkpoint_observer=None,_country_session=None):
     """Country numeric -> existing U43/I03/I05/Batch -> existing S2-F.
 
     Partial publication and exact cold resume inherit the saved-product proof
@@ -773,7 +773,9 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     retention right or scientific authorization is minted.
     """
     from rawlsing_next.pre553_country_numeric_carrier import (
-        _execute_country_workload, CountryReader)
+        _execute_country_workload, CountryReader,CountryWorkloadSession)
+    _require(_country_session is None or type(_country_session) is CountryWorkloadSession,
+             "EXACT_COUNTRY_SESSION_REQUIRED")
     _require(max_units is None or (type(max_units) is int and max_units>0),
              "POSITIVE_MAX_UNITS_REQUIRED")
     _require((checkpoint_every is None)==(checkpoint_observer is None),
@@ -807,6 +809,8 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     start=monotonic()
 
     def current():
+        if _country_session is not None:
+            _country_session._check_custody()
         scope.current_only()
 
     def check_receipt():
@@ -886,7 +890,8 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         country_receipt=country_receipt,host=host,purpose=purpose,
         require_country_current=current,allow_test_only=True,_country_scope=scope,
         _max_units=max_units,_prior_product=prior,_checkpoint_every=checkpoint_every,
-        _checkpoint_observer=checkpoint if checkpoint_observer is not None else None)
+        _checkpoint_observer=checkpoint if checkpoint_observer is not None else None,
+        _session=_country_session)
     check_receipt()
     if last_publication is not None:
         _require(last_receipts==executed.result.receipts,"CHECKPOINT_FINAL_HISTORY_DRIFT")
