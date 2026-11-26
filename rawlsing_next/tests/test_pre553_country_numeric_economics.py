@@ -1024,10 +1024,12 @@ class CountryNativeEconomics(unittest.TestCase):
         destination=root/"killed-campaign"
         destination.mkdir()
         external=root/"operator-checkpoint-pin.json"
-        def pin_and_die(pin,pub):
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        def retain_first(pin,pub):
             # The operator pin is independently retained outside the CAS.
-            # Flush it and its directory before terminating without finally,
-            # context-manager exit, or SQLite connection cleanup.
+            # The worker will die during the NEXT publication, not here.
+            if external.exists():
+                raise AssertionError("second checkpoint became visible")
             material=dict(closure_path=str(pin.closure_path),expected_root=pin.expected_root,
                 expected_release_ref=pin.expected_release_ref.as_dict(),
                 expected_country_sha256=pin.expected_country_sha256,
@@ -1041,11 +1043,19 @@ class CountryNativeEconomics(unittest.TestCase):
                 os.fsync(fd)
             finally:
                 os.close(fd)
-            os.kill(os.getpid(),signal.SIGKILL)
         pid=os.fork()
         if pid==0:
             try:
-                run(destination,checkpoint_every=3,checkpoint_observer=pin_and_die)
+                original=delivery.publish_empirical_closure
+                def publish_then_die(output,*args,**kwargs):
+                    if external.exists():
+                        def failpoint(stage):
+                            if stage=="before_manifest_replace":
+                                os.kill(os.getpid(),signal.SIGKILL)
+                        kwargs["failpoint"]=failpoint
+                    return original(output,*args,**kwargs)
+                with patch.object(delivery,"publish_empirical_closure",side_effect=publish_then_die):
+                    run(destination,checkpoint_every=3,checkpoint_observer=retain_first)
             except BaseException:
                 traceback.print_exc()
             os._exit(1)
@@ -1061,6 +1071,9 @@ class CountryNativeEconomics(unittest.TestCase):
             time.sleep(.025)
         self.assertTrue(os.WIFSIGNALED(status))
         self.assertEqual(os.WTERMSIG(status),signal.SIGKILL)
+        closures=destination/durable.CLOSURES_DIR
+        self.assertEqual(len(list(closures.glob("closure-*"))),1)
+        self.assertTrue(list(closures.glob(f"{durable.STAGING_PREFIX}{pid}-*")))
         material=json.loads(external.read_text())
         self.assertEqual(material.pop("completed"),3)
         material["expected_release_ref"]=exact_ref(material["expected_release_ref"])
@@ -1087,6 +1100,7 @@ class CountryNativeEconomics(unittest.TestCase):
             final=run(destination,resume_from=pin)
         self.assertEqual(Counter(actual),expected)
         self.assertEqual(final.batch_census,baseline.batch_census)
+        self.assertFalse(list(closures.glob(f"{durable.STAGING_PREFIX}{pid}-*")))
         restored=delivery.open_country_product(final.receipt.root_path,
             expected_root=final.receipt.root_identity,
             expected_release_ref=final.release_identity.release_ref,**common)
@@ -1097,7 +1111,8 @@ class CountryNativeEconomics(unittest.TestCase):
         print("RELAY_R8_PROCESS_LOSS",json.dumps({"child_termination":"SIGKILL",
             "completed_before_death":len(completed),"resumed_native_units":len(actual),
             "exact_output_and_receipt_parity":True,
-            "grade":"SOURCEFREE_FORKED_WORKER_ACTUAL_PROCESS_DEATH_POST_DURABLE_PIN"
+            "unpublished_staging_reclaimed":True,
+            "grade":"SOURCEFREE_FORKED_WORKER_SIGKILL_BEFORE_SECOND_MANIFEST_REPLACE"
         }),flush=True)
 
     def _cas_publication_court(self,root,products,output,baseline):
