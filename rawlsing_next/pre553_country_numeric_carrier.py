@@ -1191,6 +1191,7 @@ class CountryWorkloadSession:
             raise CountryCarrierError("preparation path required with external pin")
         self._preparation=(None if preparation_path is None else
                            _CountryPreparation(preparation_path,preparation_pin))
+        self._published_preparation_pin=None
         self._reader=None
         self._entry=None
         self._active=None
@@ -1202,7 +1203,7 @@ class CountryWorkloadSession:
     @property
     def preparation_pin(self):
         """External custody pin; retain separately only after successful execution."""
-        return None if self._preparation is None else self._preparation.pin
+        return self._published_preparation_pin
 
     def _receipt_material(self,receipt):
         return tuple(getattr(receipt,name) for name in self._receipt_fields)
@@ -1338,10 +1339,12 @@ class CountryWorkloadSession:
         try:
             self._check_custody()
             scope=_CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
-            return _execute_country_workload(workload,resolver,country_path=self._path,
+            result=_execute_country_workload(workload,resolver,country_path=self._path,
                 country_receipt=self._receipt,host=host,purpose=purpose,
                 require_country_current=self._check_custody,allow_test_only=True,
                 _country_scope=scope,_session=self)
+            self._published_preparation_pin=(None if self._preparation is None else self._preparation.pin)
+            return result
         except BaseException:
             self.close()
             raise
@@ -1356,9 +1359,11 @@ class CountryWorkloadSession:
         self._busy=True
         try:
             self._check_custody()
-            return execute_publish_country(workload,resolver,host=host,purpose=purpose,
+            result=execute_publish_country(workload,resolver,host=host,purpose=purpose,
                 country_path=self._path,country_receipt=self._receipt,root_dir=root_dir,
                 _country_session=self,**options)
+            self._published_preparation_pin=(None if self._preparation is None else self._preparation.pin)
+            return result
         except BaseException:
             self.close()
             raise
