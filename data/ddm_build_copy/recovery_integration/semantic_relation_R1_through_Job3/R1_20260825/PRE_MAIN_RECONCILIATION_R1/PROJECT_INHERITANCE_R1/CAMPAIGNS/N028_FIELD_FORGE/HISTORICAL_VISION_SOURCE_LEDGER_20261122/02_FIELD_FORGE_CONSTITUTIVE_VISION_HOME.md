@@ -1,5 +1,8 @@
 # FIELD FORGE — CONSTITUTIVE VISION HOME
 
+**FIELD-AUTHORITY — current phase correction (2026-11-26):** [Campaign HOME](FIELD-AUTHORITY/README.md) and [PRELIMINARIES](FIELD-AUTHORITY/PRELIMINARIES.md). User requires further development of the intellectual problem and successor competence *before* resource creation. Earlier A–E programme remains a prospective trajectory. The new preliminary space preserves verbatim user direction, source routes, actual distinctions, open questions and a method for advancing them. No new classifications, schema, estimator, implementation or native grant.
+
+
 **FIELD-AUTHORITY — user-directed campaign (2026-11-25):** [Campaign HOME](FIELD-AUTHORITY/README.md). The empirical substrate must distinguish literal measurement, reported position, framework-specific relational relevance, observed association and strong structural/person interpretation. Explicit relation-target links are not verdicts about persons. Existing E024/E116/E124 retained and operationalized through source-grounded adjudication. No fictional constitution.
 
 

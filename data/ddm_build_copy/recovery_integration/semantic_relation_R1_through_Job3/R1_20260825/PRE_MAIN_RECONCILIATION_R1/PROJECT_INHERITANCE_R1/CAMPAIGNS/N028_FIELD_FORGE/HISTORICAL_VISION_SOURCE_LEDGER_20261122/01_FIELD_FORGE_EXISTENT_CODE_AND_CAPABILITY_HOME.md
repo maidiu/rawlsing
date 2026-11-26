@@ -1,5 +1,8 @@
 # FIELD FORGE — EXISTENT COMPUTATIONAL ESTATE / CAPABILITY HOME
 
+**FIELD-AUTHORITY — current phase correction (2026-11-26):** [Campaign HOME](FIELD-AUTHORITY/README.md) and [PRELIMINARIES](FIELD-AUTHORITY/PRELIMINARIES.md). User requires further development of the intellectual problem and successor competence *before* resource creation. Earlier A–E programme remains a prospective trajectory. The new preliminary space preserves verbatim user direction, source routes, actual distinctions, open questions and a method for advancing them. No new classifications, schema, estimator, implementation or native grant.
+
+
 **FIELD-AUTHORITY — active campaign HOME (2026-11-25):** [Read the campaign](FIELD-AUTHORITY/README.md) before selecting role/semantic work. Recover and enrich existing QSM/V550/E024 authority; 48 derived codebooks/22,863 physical rows locally counted, not unique items. R14–16 caller roles need qualified consumption. No native issuance, new register or protected promotion.
 
 
