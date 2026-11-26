@@ -2,6 +2,9 @@
 
 **FIELD-AUTHORITY — proposed existing G4 / paired receiving (2026-11-25):** [Campaign HOME](../FIELD-AUTHORITY/README.md). User directed campaign location and epistemic discipline. G4 S01.2/.3, S06.1/.2; PP26-02/03/04/13/15/17–19/21. 48 codebook files, 22,863 physical rows locally counted; targeted actual labels inspected. Reuse existing QSM/V550/E024/E116/E124, no competing authority, no native issuance or new code/tests; R24 competent owner receive same scoped note in paired MD/JSON, no status change. P0 unchanged. Complete populated reconciliation, source rights, independent adjudication, native first consumer and protected pair held.
 
+**G4 working receipt now integrated:** R18 diagnostic and R17 retraction received, FIELD-AUTHORITY preliminary-only phase controls (no resource creation selected); S01/S06 point-of-use records corrected. #1316 original recorded-only data is not a full FF01 joint; use existing I03 on independently qualified scope. Protected R24 receiving remains separate. [Exact G4 reconciliation](https://github.com/maidiu/rawlsing/commit/2a75b1c65ad260fb012d8548b78e7406fcbe1b4a); [FF governing preliminaries](https://github.com/maidiu/rawlsing/blob/ae37805586301a647a7a4b70f3a82b57bf1bfd94/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N028_FIELD_FORGE/HISTORICAL_VISION_SOURCE_LEDGER_20261122/FIELD-AUTHORITY/PRELIMINARIES.md).
+
+
 
 ## R18 — return to the empirical substrate: native source-local diagnostic (2026-11-25)
 
