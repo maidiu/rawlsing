@@ -61,13 +61,13 @@ class CountryNativeEconomics(unittest.TestCase):
     def test_distinct_issued_workloads_reuse_only_live_exact_country_preparation(self):
         self._native_batch(wide=False,session_court=True)
 
-    def _native_batch(self,*,wide,resume_court=False,session_court=False):
+    def _native_batch(self,*,wide,resume_court=False,session_court=False,external_case=None):
         import os
         # Real operational wide path never owns an expanded routing tuple.
         # Keep the older full-object/hostile comparison executable on demand
         # (and default for the smaller test), without contaminating this
         # process's memory high-water with the historical representation.
-        direct_pack=resume_court or session_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
+        direct_pack=external_case is not None or resume_court or session_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
         from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
         from rawlsing_next import pre553_issued_workload as issued
         tag=("country-native-resume" if resume_court else
@@ -89,24 +89,42 @@ class CountryNativeEconomics(unittest.TestCase):
             data["v"+str(i)]=np.arange(n,dtype=np.float64)*(1.000001+i*.00001)+i*.001
         data["G"]=np.where(np.arange(n)%2==0,"A","B")
         data["W"]=1.+(np.arange(n)%3)
-        frame=pd.DataFrame(data)
-        chosen=tuple(range(1,n+1,2))
-        selected=values[::2,:]
-        with tempfile.TemporaryDirectory() as d:
-            p=Path(d);src=p/"generated.sav";db=p/"country.sqlite";products=p/"products";products.mkdir()
-            pyreadstat.write_sav(frame,str(src))
-            original_bytes=src.stat().st_size
-            sha=hashlib.sha256(src.read_bytes()).hexdigest()
-            t=time.monotonic()
-            with decode_sav(src,expected_source_sha256=sha) as inc:
-                ordinals={v.name:v.ordinal for v in inc.variables}
-                receipt=build_country(inc,country_variable="G",country_value="A",output=db,
-                                      require_current=lambda:True,block_rows=256)
-            build_seconds=time.monotonic()-t
+        from contextlib import nullcontext
+        if external_case is None:
+            frame=pd.DataFrame(data)
+            chosen=tuple(range(1,n+1,2))
+            selected=values[::2,:]
+            context=tempfile.TemporaryDirectory()
+        else:
+            # Reuse the SAME issuer/operation geometry for independently
+            # retained countries from one already-built physical source.
+            context=nullcontext(external_case["root"])
+        with context as d:
+            p=Path(d)
+            country="A"
+            if external_case is None:
+                src=p/"generated.sav";db=p/"country.sqlite";products=p/"products";products.mkdir()
+                pyreadstat.write_sav(frame,str(src))
+                original_bytes=src.stat().st_size
+                sha=hashlib.sha256(src.read_bytes()).hexdigest()
+                t=time.monotonic()
+                with decode_sav(src,expected_source_sha256=sha) as inc:
+                    ordinals={v.name:v.ordinal for v in inc.variables}
+                    receipt=build_country(inc,country_variable="G",country_value="A",output=db,
+                                          require_current=lambda:True,block_rows=256)
+                build_seconds=time.monotonic()-t
+                src.unlink()
+            else:
+                db,receipt,ordinals,selected,chosen,country=(
+                    external_case[k] for k in ("db","receipt","ordinals","selected","chosen","country"))
+                tag="country-campaign-"+country
+                sha=receipt.source_sha256
             self.assertEqual(receipt.country_rows,len(chosen))
-            src.unlink()
             t=time.monotonic()
             fx=_fixture(tag);original=fx["projection"];universe=fx["universe"]
+            if external_case is not None:
+                universe=replace(universe,country_geography=country,sampling_geography=country+"-NATIONAL")
+                fx["universe"]=universe
             source_auth=fx["source_auth"];mapping_auth=fx["authorities"][1]
             respondents=tuple(RespondentIdentity(empirical_universe_ref=universe.ref,
                 respondent_key=f"{tag}-{row}",source_native_respondent_key_ref_or_typed_absence=_ref("SOURCE_RESPONDENT",f"{tag}-{row}"),
@@ -131,7 +149,7 @@ class CountryNativeEconomics(unittest.TestCase):
             routing=(_PackedRoutingFacts if direct_pack else tuple)(original_routes())
             projection=replace(original,expected_source_sha256=sha,
                 source_snapshot_retention_ref=ExactRef("SOURCE_SNAPSHOT","urn:test:"+tag,sha),
-                respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
+                universes=(universe,),respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
                 questions=questions,response_slots=slots,routing=routing,
                 coordinate_slots=(replace(original.coordinate_slots[0],slot=PhysicalSlot(ordinals["G"],"G")),),
                 weight_slots=(replace(original.weight_slots[0],slot=PhysicalSlot(ordinals["W"],"W")),))
@@ -172,12 +190,12 @@ class CountryNativeEconomics(unittest.TestCase):
                 requests=tuple(I03ExecutionRequest(q.ref,base.ref if q in (joint,unary) else atom2.ref if q in alternate else atom.ref) for q in queries)
             if wide:
                 self.assertEqual(len({q.ref.key for q in queries}),100)
-                self.assertEqual(len(routing),20480)
+                self.assertEqual(len(routing),len(chosen)*governed)
             ds=(discovery.ref,);jobs=operation_jobs(requests,ds)
             root=semantic_hash({"fixture":tag});frontier=semantic_hash({"jobs":jobs,"root":root})
             decision=_ref("TEST_ONLY_DECISION",tag);host,purpose="test-country","TEST_ONLY_COUNTRY_ECONOMICS"
             descriptor=dict(source_edition=sha,native_item_ids=list(names),release_tag=projection.instrument_release_id,
-                routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":"A"},
+                routing_and_risk={"fixture":True},carrier={"kind":"COUNTRY_NUMERIC"},country_and_population={"fixture":country},
                 weight_design_estimand={"measure":"RAW"},missing_and_occurrence_policy={"fixture":True},
                 target_conditioner_roles={"joint":["q0","q1","q2"] if resume_court else ["q0","q1"]})
             workload=NativeWorkload(decision_ref=decision,source_factory_ref=_ref("TEST_ONLY_FACTORY",tag),
@@ -210,6 +228,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            if external_case is not None:
+                return workload,record,queries,host,purpose,qrefs
             if session_court:
                 return self._distinct_country_workloads(p,db,receipt,workload,record,host,purpose)
             if resume_court:
