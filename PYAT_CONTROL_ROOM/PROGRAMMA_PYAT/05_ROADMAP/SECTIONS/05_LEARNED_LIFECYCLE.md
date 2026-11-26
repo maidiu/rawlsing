@@ -122,6 +122,9 @@ Release empirically warranted learned products with signed family-specific autho
 Competent claims about empirical families, exact measured evidence and signed accepted/rejected/unknown; not all q facts require a learned-family product.
 
 ### S05.2 — M2 immutable empirical release
+
+**Existing delivery distinction:** [R6/R7 country S2-F execution](https://github.com/maidiu/rawlsing/actions/runs/45761390112) supplies cold selected S04/I05 outputs after retained source deletion, not M2 learned-release issuance or M1→M2 acceptance. Reuse actual S2-F custody; see S03 exact scope and paired progress. No new store or implied learned producer.
+
 Released source-indexed claim products and version identity, rejection/pending/alternative, source/authority and denominator preservation; do not alias with original V555 structural mediation M2.
 
 ### S05.3 — B5 selection and invalidation
