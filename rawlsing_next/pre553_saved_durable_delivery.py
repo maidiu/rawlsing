@@ -763,7 +763,7 @@ class CountryResumePin:
 def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                             country_receipt, root_dir, consumer_binding=None,
                             max_units=None, resume_from=None,
-                            checkpoint_every=None, checkpoint_observer=None):
+                            checkpoint_every=None, checkpoint_observer=None,_country_session=None):
     """Country numeric -> existing U43/I03/I05/Batch -> existing S2-F.
 
     Partial publication and exact cold resume inherit the saved-product proof
@@ -773,7 +773,9 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     retention right or scientific authorization is minted.
     """
     from rawlsing_next.pre553_country_numeric_carrier import (
-        _execute_country_workload, CountryReader)
+        _execute_country_workload, CountryReader,CountryWorkloadSession)
+    _require(_country_session is None or type(_country_session) is CountryWorkloadSession,
+             "EXACT_COUNTRY_SESSION_REQUIRED")
     _require(max_units is None or (type(max_units) is int and max_units>0),
              "POSITIVE_MAX_UNITS_REQUIRED")
     _require((checkpoint_every is None)==(checkpoint_observer is None),
@@ -807,6 +809,8 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
     start=monotonic()
 
     def current():
+        if _country_session is not None:
+            _country_session._check_custody()
         scope.current_only()
 
     def check_receipt():
@@ -842,7 +846,9 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
                 "saved_batch_census":census.as_dict(),"saved_batch_complete":census.complete,
                 "s04_first_reads":dict(first_reads),
                 **({} if last_root is None else {"resumed_from_root":last_root})})
-        reader._verify()
+        # Full held-file authentication at every actual publication, not
+        # merely the stat alarm. Reuse the live inventory rather than reopen.
+        reader.verify_full()
         current()
         _require(_record(workload,resolver,host,purpose,country_scope=scope)==record,
                  "COUNTRY_CURRENT_DECISION_CHANGED")
@@ -882,22 +888,27 @@ def execute_publish_country(workload, resolver, *, host, purpose, country_path,
         last_root=published_root
         checkpoint_overhead+=monotonic()-entered
 
+    final_publication=None
+    def finalize(executed,reader):
+        nonlocal final_publication
+        if last_publication is None:
+            final_publication=publish_result(executed,reader,elapsed=monotonic()-start,
+                                             require_complete=max_units is None)
+
     executed=_execute_country_workload(workload,resolver,country_path=country_path,
         country_receipt=country_receipt,host=host,purpose=purpose,
         require_country_current=current,allow_test_only=True,_country_scope=scope,
         _max_units=max_units,_prior_product=prior,_checkpoint_every=checkpoint_every,
-        _checkpoint_observer=checkpoint if checkpoint_observer is not None else None)
+        _checkpoint_observer=checkpoint if checkpoint_observer is not None else None,
+        _session=_country_session,_final_observer=finalize)
     check_receipt()
     if last_publication is not None:
         _require(last_receipts==executed.result.receipts,"CHECKPOINT_FINAL_HISTORY_DRIFT")
         _require(last_publication.complete==executed.result.summary.full_coverage,
                  "CHECKPOINT_FINAL_COVERAGE_DRIFT")
         return last_publication
-    # No open native session survives ordinary return. Preserve the
-    # incumbent full external receipt check at the publication boundary.
-    with CountryReader(country_path,country_receipt,require_current=current) as reader:
-        return publish_result(executed,reader,elapsed=monotonic()-start,
-                              require_complete=max_units is None)
+    _require(final_publication is not None,"COUNTRY_FINAL_PUBLICATION_MISSING")
+    return final_publication
 
 
 @dataclass(frozen=True)

@@ -58,13 +58,16 @@ class CountryNativeEconomics(unittest.TestCase):
     def test_interrupted_country_campaign_resumes_only_pending_exact_units(self):
         self._native_batch(wide=False,resume_court=True)
 
-    def _native_batch(self,*,wide,resume_court=False):
+    def test_distinct_issued_workloads_reuse_only_live_exact_country_preparation(self):
+        self._native_batch(wide=False,session_court=True)
+
+    def _native_batch(self,*,wide,resume_court=False,session_court=False):
         import os
         # Real operational wide path never owns an expanded routing tuple.
         # Keep the older full-object/hostile comparison executable on demand
         # (and default for the smaller test), without contaminating this
         # process's memory high-water with the historical representation.
-        direct_pack=resume_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
+        direct_pack=resume_court or session_court or (wide and os.environ.get("PYAT_WIDE_LEGACY_COMPARE")!="1")
         from rawlsing_next.pre553_source_backed_c11_facade import _PackedRoutingFacts
         from rawlsing_next import pre553_issued_workload as issued
         tag=("country-native-resume" if resume_court else
@@ -207,6 +210,8 @@ class CountryNativeEconomics(unittest.TestCase):
                 envelope_sha256=issued_hash,original_u_root=root,expected_frontier_root=frontier,
                 expected_jobs=jobs,currentness="CURRENT_GRANTED",scope="TEST_ONLY_SOURCEFREE",native_universe_refs=(universe.ref,))
             resolver=TestOnlyDecisionResolver(record)
+            if session_court:
+                return self._distinct_country_workloads(p,db,receipt,workload,record,host,purpose)
             if resume_court:
                 return self._country_continuity(p,db,receipt,products,workload,resolver,
                                                 record,queries,host,purpose,selected,qrefs)
@@ -623,6 +628,161 @@ class CountryNativeEconomics(unittest.TestCase):
                 "grade":"SOURCEFREE_256x300_80_GOVERNED_100_I03_NOT_ORIGINAL" if wide else "SOURCEFREE_400x41_16_GOVERNED_NOT_ORIGINAL"}),flush=True)
 
 
+    def _distinct_country_workloads(self,root,db,receipt,workload,record,host,purpose):
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        from rawlsing_next import pre553_source_backed_c11_facade as facade
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        from collections import Counter
+        import gc
+
+        # Two disjoint, separately issued workloads using one unchanged
+        # governed projection and authority catalog. Not cached query results.
+        def issue(tag,requests,discoveries):
+            decision=_ref("TEST_ONLY_DECISION",tag)
+            jobs=operation_jobs(requests,discoveries)
+            u=semantic_hash({"fixture":tag})
+            frontier=semantic_hash({"jobs":jobs,"root":u})
+            item=replace(workload,decision_ref=decision,requests=requests,
+                         discoveries=discoveries,original_u_root=u,expected_frontier_root=frontier)
+            grant=replace(record,decision_ref=decision,expected_jobs=jobs,
+                          original_u_root=u,expected_frontier_root=frontier,
+                          envelope_sha256=issued._stream_workload_digest(item))
+            return item,TestOnlyDecisionResolver(grant),grant
+
+        half=len(workload.requests)//2
+        cases=(issue("country-session-first",workload.requests[:half],()),
+               issue("country-session-second",workload.requests[half:],workload.discoveries))
+        self.assertFalse(set(q.query_ref for q in cases[0][0].requests)
+                         &set(q.query_ref for q in cases[1][0].requests))
+        original=db.read_bytes()
+        outputs={}
+        counts={}
+        opens={}
+        full_hashes={}
+        times={}
+        source_build=facade._validate_country_produced_release
+        old_init=carrier.CountryReader.__init__
+        old_verify=carrier.CountryReader.verify_full
+        opened=[]
+        authenticated=[]
+        def count_open(self,*args,**kwargs):
+            opened.append(1)
+            return old_init(self,*args,**kwargs)
+        def count_verify(self,*args,**kwargs):
+            authenticated.append(1)
+            return old_verify(self,*args,**kwargs)
+        old_i03=CarrierNeutralResearchExecutor.execute_i03
+        old_i05=CarrierNeutralResearchExecutor.execute_i05
+        actual=[]
+        def count_i03(self,**kw):
+            actual.append(("QUERY",kw["query_ref"].key))
+            return old_i03(self,**kw)
+        def count_i05(self,**kw):
+            actual.append(("DISCOVERY",kw["discovery_authority_ref"].key))
+            return old_i05(self,**kw)
+        expected=Counter(("QUERY",r.query_ref.key) for r in workload.requests)
+        expected.update(("DISCOVERY",r.key) for r in workload.discoveries)
+        # Two alternating matched series, same file, same issued inputs,
+        # same publication owners; no cross-host speedup claim.
+        for order in (("cold","live"),("live","cold")):
+            for mode in order:
+                run_id=len(times.get(mode,[]))
+                destination=root/(mode+"-"+str(run_id));destination.mkdir()
+                gc.collect()
+                actual.clear()
+                opened.clear()
+                authenticated.clear()
+                with patch.object(facade,"_validate_country_produced_release",wraps=source_build) as builds, patch.object(
+                        CarrierNeutralResearchExecutor,"execute_i03",count_i03), patch.object(
+                        CarrierNeutralResearchExecutor,"execute_i05",count_i05), patch.object(
+                        carrier.CountryReader,"__init__",count_open), patch.object(
+                        carrier.CountryReader,"verify_full",count_verify):
+                    started=time.monotonic()
+                    if mode=="cold":
+                        pubs=[delivery.execute_publish_country(item,resolver,host=host,purpose=purpose,
+                              country_path=db,country_receipt=receipt,root_dir=destination)
+                              for item,resolver,_ in cases]
+                    else:
+                        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True) as session:
+                            pubs=[session.publish(item,resolver,host=host,purpose=purpose,root_dir=destination)
+                                  for item,resolver,_ in cases]
+                        self.assertIsNone(session._reader)
+                        self.assertIsNone(session._entry)
+                    elapsed=time.monotonic()-started
+                    self.assertEqual(builds.call_count,2 if mode=="cold" else 1)
+                    self.assertEqual(Counter(actual),expected)
+                    counts[mode]=builds.call_count
+                    self.assertEqual(len(opened),2 if mode=="cold" else 1)
+                    self.assertEqual(len(authenticated),4)
+                    opens[mode]=len(opened)
+                    full_hashes[mode]=len(authenticated)
+                times.setdefault(mode,[]).append(elapsed)
+                semantic=[]
+                for (item,resolver,_),pub in zip(cases,pubs):
+                    product=delivery.open_country_product(pub.receipt.root_path,
+                        expected_root=pub.receipt.root_identity,
+                        expected_release_ref=pub.release_identity.release_ref,
+                        country_receipt=receipt,workload=item,resolver=resolver,host=host,purpose=purpose)
+                    semantic.append((pub.release_identity,pub.batch_census,
+                        product._closure.i03_results,tuple(r.replay_ref for r in product._closure.discovery_results),
+                        product._receipts))
+                if mode in outputs:
+                    self.assertEqual(semantic,outputs[mode])
+                outputs[mode]=semantic
+        self.assertEqual(outputs["cold"],outputs["live"])
+
+        first,first_resolver,_=cases[0]
+        second,second_resolver,second_grant=cases[1]
+        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True) as session:
+            session.execute(first,first_resolver,host=host,purpose=purpose)
+            # Equal content but a different owned projection instance is a
+            # miss, not a detached old body resolver silently rebound.
+            with patch.object(facade,"_validate_country_produced_release",wraps=source_build) as builds:
+                session.execute(replace(second,projection=replace(second.projection)),
+                                second_resolver,host=host,purpose=purpose)
+                self.assertEqual(builds.call_count,1)
+            second_resolver._record=replace(second_grant,currentness="REVOKED")
+            try:
+                with patch.object(facade,"_validate_country_produced_release",
+                        side_effect=AssertionError("revoked workload prepared")), patch.object(
+                        CarrierNeutralResearchExecutor,"execute_i03",
+                        side_effect=AssertionError("revoked workload queried")):
+                    with self.assertRaises(issued.WorkloadAdmissionError):
+                        session.execute(second,second_resolver,host=host,purpose=purpose)
+            finally:
+                second_resolver._record=second_grant
+            self.assertIsNone(session._reader)
+        with self.assertRaises(carrier.CountryCarrierError):
+            session.execute(first,first_resolver,host=host,purpose=purpose)
+        # Even if the stat mutation alarm is defeated, a NEW workload must
+        # authenticate the entire retained file before reusing preparation.
+        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True) as session:
+            session.execute(first,first_resolver,host=host,purpose=purpose)
+            signature=session._reader._signature
+            with db.open("r+b") as stream:
+                stream.seek(-1,2)
+                stream.write(bytes([original[-1]^1]))
+            try:
+                with patch.object(carrier,"_stat_signature",return_value=signature), patch.object(
+                        CarrierNeutralResearchExecutor,"execute_i03",
+                        side_effect=AssertionError("changed file queried")):
+                    with self.assertRaisesRegex(carrier.CountryCarrierError,"differs from held receipt"):
+                        session.execute(second,second_resolver,host=host,purpose=purpose)
+            finally:
+                db.write_bytes(original)
+            self.assertIsNone(session._reader)
+        self.assertEqual(db.read_bytes(),original)
+        print("COUNTRY_DISTINCT_WORKLOAD_REUSE",json.dumps({
+            "country_rows":receipt.country_rows,"units":sum(len(x[0].requests)+len(x[0].discoveries) for x in cases),
+            "actual_preparations":counts,"inventory_opens":opens,
+            "full_file_authentications":full_hashes,"seconds":times,
+            "median_seconds":{k:median(v) for k,v in times.items()},
+            "exact_outputs_and_receipts":True,"independent_issue_revoke_and_full_file_negative":True,
+            "grade":"SAME_HOST_SOURCEFREE_LIVE_REUSE_NOT_COLD_PERSISTENT_OR_ORIGINAL"
+        }),flush=True)
+
     def _country_continuity(self,root,db,receipt,products,workload,resolver,record,
                             queries,host,purpose,selected,qrefs):
         from rawlsing_next import pre553_saved_durable_delivery as delivery
@@ -648,6 +808,30 @@ class CountryNativeEconomics(unittest.TestCase):
         self.assertEqual(bounded.batch_census["completed_count"],1)
         self.assertFalse(open_product(bounded,allow_partial=True).complete)
         self.assertTrue(baseline.complete)
+        # R6 checkpoint publication must not weaken the original final
+        # full-file authentication boundary. Change unused physical bytes
+        # AFTER native calculation while defeating the stat mutation alarm.
+        from rawlsing_next import pre553_country_numeric_carrier as carrier
+        original_bytes=db.read_bytes()
+        signature=carrier._stat_signature(db)
+        manifest0=delivery._s04_manifest
+        def changed_at_publication(*args,**kwargs):
+            value=manifest0(*args,**kwargs)
+            with db.open("r+b") as stream:
+                stream.seek(-1,2)
+                stream.write(bytes([original_bytes[-1]^1]))
+            return value
+        invalid=root/"invalid-publication";invalid.mkdir()
+        external_pins=[]
+        try:
+            with patch.object(delivery,"_s04_manifest",changed_at_publication), patch.object(
+                    carrier,"_stat_signature",return_value=signature):
+                with self.assertRaisesRegex(carrier.CountryCarrierError,"differs from held receipt"):
+                    run(invalid,max_units=1,checkpoint_every=1,
+                        checkpoint_observer=lambda pin,pub:external_pins.append(pin))
+            self.assertEqual(external_pins,[])
+        finally:
+            db.write_bytes(original_bytes)
         campaign=root/"campaign"
         campaign.mkdir()
         pins=[]
