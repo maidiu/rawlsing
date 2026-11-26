@@ -111,6 +111,97 @@ def _expand_exact_aliases(task,packet,aliases):
     return restored
 
 
+# Only these existing runtime projections may use a structured same-call
+# reference. No retrieval, generic recursive deduplication or new ontology.
+_STRUCTURED_RULES=(
+    " Same-call structured fields: the listed reconstructed_fields are "
+    "exact values, not missing information. For practical_options concatenate "
+    "each options row's practical_alternatives list in options order; for "
+    "possible_end_trials concatenate its possible_end_trials lists likewise. "
+    "Missing child lists mean empty lists. For selected_constitution.recruited, "
+    "read recruited_form_ids in order and substitute the complete corresponding "
+    "actor_forms values. Do not add other forms or change recruitment, "
+    "time, available options, evidence or actor self-knowledge."
+)
+
+
+def _structured_value(task,packet,field,descriptor):
+    if task=="actor_attempt" and field in ("practical_options","possible_end_trials"):
+        if descriptor!="FROM_ORDERED_OPTIONS":
+            raise ValueError("INVALID_STRUCTURED_OPTION_DESCRIPTOR")
+        key="practical_alternatives" if field=="practical_options" else field
+        options=packet["options"]
+        if type(options) is not list:
+            raise ValueError("INVALID_STRUCTURED_OPTIONS")
+        result=[]
+        for row in options:
+            if type(row) is not dict or type(row.get(key,[])) is not list:
+                raise ValueError("INVALID_STRUCTURED_OPTION_ROW")
+            result.extend(row.get(key,[]))
+        return result
+    if task=="development" and field=="selected_constitution.recruited":
+        if type(descriptor) is not dict or set(descriptor)!={"recruited_form_ids"}:
+            raise ValueError("INVALID_STRUCTURED_FORM_DESCRIPTOR")
+        ids=descriptor["recruited_form_ids"]
+        forms=packet["actor_forms"]
+        if (type(ids) is not list or any(type(i) is not str for i in ids)
+                or type(forms) is not dict):
+            raise ValueError("INVALID_STRUCTURED_FORM_ROSTER")
+        result=[]
+        for i in ids:
+            if i not in forms or type(forms[i]) is not dict or forms[i].get("id")!=i:
+                raise ValueError("INVALID_STRUCTURED_FORM_ID")
+            result.append(forms[i])
+        return result
+    raise ValueError("INVALID_STRUCTURED_FIELD")
+
+
+def _compile_structured_fields(task,packet):
+    """Represent exact same-call ordered projections only if fully equal."""
+    fields={}
+    if task=="actor_attempt":
+        fields={k:"FROM_ORDERED_OPTIONS" for k in ("practical_options","possible_end_trials")}
+    elif task=="development":
+        try:
+            forms=_packet_field(packet,("selected_constitution","recruited"))
+            if type(forms) is list and all(type(f) is dict and type(f.get("id")) is str for f in forms):
+                fields={"selected_constitution.recruited":{
+                    "recruited_form_ids":[f["id"] for f in forms]}}
+        except KeyError:
+            pass
+    projected=copy(packet)
+    descriptions={}
+    for field,desc in fields.items():
+        path=tuple(field.split("."))
+        try:
+            actual=_packet_field(packet,path)
+            derived=_structured_value(task,packet,field,desc)
+        except (KeyError,ValueError,TypeError):
+            continue
+        if canonical(actual)!=canonical(derived):
+            continue
+        if len(canonical(actual).encode("utf-8"))<=len(canonical({field:desc}).encode("utf-8")):
+            continue
+        del _packet_field(projected,path[:-1])[path[-1]]
+        descriptions[field]=desc
+    return projected,descriptions
+
+
+def _expand_structured_fields(task,packet,descriptions):
+    """Strict inverse after the existing same-call alias expansion."""
+    if type(descriptions) is not dict:
+        raise ValueError("INVALID_STRUCTURED_MAP")
+    restored=copy(packet)
+    for field,desc in descriptions.items():
+        derived=_structured_value(task,restored,field,desc)
+        path=tuple(field.split("."))
+        parent=_packet_field(restored,path[:-1])
+        if type(parent) is not dict or path[-1] in parent:
+            raise ValueError("STRUCTURED_FIELD_DESTINATION_PRESENT")
+        parent[path[-1]]=copy(derived)
+    return restored
+
+
 class ExplicitJSONLLMProvider:
     """Opt-in HTTP transport for an OpenAI-*compatible* chat JSON interface.
 
@@ -121,7 +212,7 @@ class ExplicitJSONLLMProvider:
     grade="EXPLICIT_REMOTE_LLM_UNCALIBRATED_CONSTRUCTION"
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
                  timeout_seconds=45,transport=None,compact_task_prompt=False,
-                 metrics_capacity=0,compact_exact_packet=False):
+                 metrics_capacity=0,compact_exact_packet=False,compact_structured_packet=False):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -144,6 +235,9 @@ class ExplicitJSONLLMProvider:
             raise ValueError("MODEL_METRICS_CAPACITY_INVALID")
         if type(compact_exact_packet) is not bool:
             raise TypeError("MODEL_COMPACT_EXACT_PACKET_FLAG_INVALID")
+        if type(compact_structured_packet) is not bool:
+            raise TypeError("MODEL_COMPACT_STRUCTURED_PACKET_FLAG_INVALID")
+        self.compact_structured_packet=compact_structured_packet
         self.compact_exact_packet=compact_exact_packet
         self.compact_task_prompt=compact_task_prompt
         self._metrics=deque(maxlen=metrics_capacity)
@@ -225,7 +319,7 @@ class ExplicitJSONLLMProvider:
                  "instruction_bytes":None,"packet_bytes":None,
                  "request_bytes":None,"response_content_bytes":None,
                  "prompt_variant":"FULL","packet_variant":"FULL",
-                 "wire_packet_bytes":None,"alias_count":0,
+                 "wire_packet_bytes":None,"alias_count":0,"structured_field_count":0,
                  "usage":self._reported_usage(None)}
         try:
             value=self._propose(task,packet,receipt)
@@ -418,6 +512,24 @@ class ExplicitJSONLLMProvider:
                     if receipt is not None:
                         receipt["packet_variant"]="EXACT_ALIAS_EXPERIMENT"
                         receipt["alias_count"]=len(aliases)
+        if self.compact_structured_packet:
+            # Compile from the complete original packet: the ordered options
+            # may themselves be exact aliases of situated.candidate_actions.
+            _,descriptions=_compile_structured_fields(task,packet)
+            if descriptions:
+                trial_body=copy(body)
+                for field in descriptions:
+                    path=tuple(field.split("."))
+                    del _packet_field(trial_body["actor_source_packet"],path[:-1])[path[-1]]
+                trial_body["reconstructed_fields"]=descriptions
+                trial=request(instructions+_STRUCTURED_RULES,trial_body)
+                if len(canonical(trial).encode("utf-8"))<len(canonical(req).encode("utf-8")):
+                    req=trial
+                    body=trial_body
+                    instructions+=_STRUCTURED_RULES
+                    if receipt is not None:
+                        receipt["packet_variant"]="STRUCTURED_EXACT_EXPERIMENT"
+                        receipt["structured_field_count"]=len(descriptions)
         if receipt is not None:
             receipt["wire_packet_bytes"]=len(canonical(body["actor_source_packet"]).encode("utf-8"))
         # Injected transport permits local hermetic contract tests; production
