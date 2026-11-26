@@ -30,6 +30,87 @@ _ALLOWED=("actor_attempt","development","adult_constructor",
           "blind_adult_interview","expression","family_pathway_selection")
 
 
+# PFF §11 / PRE-A0 §§16–18: same-call context compilation, not a new
+# memory or psychological owner. Only named, exact equality aliases.
+# Never fold pre-event into post-event history, or expose new source data.
+_PACKET_ALIAS_PAIRS={
+    "actor_attempt":(
+        (("options",),("situated","candidate_actions")),
+        (("accessible","cues"),("situated","accessible_cues")),
+    ),
+    "development":tuple(
+        (("historical_psychodynamic_context","after_world_before_formation",k),
+         ("selected_constitution",v))
+        for k,v in (("readset","readset"),("currents","currents"),
+                    ("inhibited_refs","inhibited"),("antagonisms","antagonisms"))
+    ),
+}
+_ALIAS_RULES=(
+    " Same-call exact aliases: actor_source_packet omits only fields listed "
+    "in same_call_exact_aliases. Each dotted destination path equals the full "
+    "value at the indicated source path in this same actor_source_packet. "
+    "Read it as if copied there; preserve its original scope and time. "
+    "These are transport aliases, not memories, new evidence, actor access "
+    "or permission to retrieve any other data."
+)
+
+
+def _packet_field(packet,path):
+    value=packet
+    for key in path:
+        if type(value) is not dict or key not in value:
+            raise KeyError(path)
+        value=value[key]
+    return value
+
+
+def _compile_exact_aliases(task,packet):
+    """Return a nonmutating, exactly reversible same-call wire projection.
+
+    No generalized dictionary of psychological content, cross-actor cache,
+    history pruning, inferred equivalence or external retrieval. Only these
+    same-phase duplicates can be replaced; differing values stay distinct.
+    """
+    if task not in _PACKET_ALIAS_PAIRS:
+        return packet,{}
+    projected=copy(packet)
+    aliases={}
+    for dest,source in _PACKET_ALIAS_PAIRS[task]:
+        try:
+            left=_packet_field(packet,dest)
+            right=_packet_field(packet,source)
+        except KeyError:
+            continue
+        # Canonical equality, not Python bool/int or float/int equivalence.
+        if canonical(left)!=canonical(right):
+            continue
+        # A small value may cost more as a reference than as a literal.
+        d=".".join(dest);r=".".join(source)
+        if len(canonical(left).encode("utf-8"))<=len(canonical({d:r}).encode("utf-8")):
+            continue
+        del _packet_field(projected,dest[:-1])[dest[-1]]
+        aliases[d]=r
+    return projected,aliases
+
+
+def _expand_exact_aliases(task,packet,aliases):
+    """Strict inverse for the hermetic equality court; not actor recall."""
+    if type(aliases) is not dict:
+        raise ValueError("INVALID_SAME_CALL_ALIAS_MAP")
+    permitted={".".join(d):".".join(s)
+               for d,s in _PACKET_ALIAS_PAIRS.get(task,())}
+    restored=copy(packet)
+    for dest,source in aliases.items():
+        if permitted.get(dest)!=source:
+            raise ValueError("INVALID_SAME_CALL_ALIAS_PATH")
+        keys=dest.split(".")
+        parent=_packet_field(restored,keys[:-1])
+        if type(parent) is not dict or keys[-1] in parent:
+            raise ValueError("SAME_CALL_ALIAS_DESTINATION_PRESENT")
+        parent[keys[-1]]=copy(_packet_field(packet,source.split(".")))
+    return restored
+
+
 class ExplicitJSONLLMProvider:
     """Opt-in HTTP transport for an OpenAI-*compatible* chat JSON interface.
 
@@ -40,7 +121,7 @@ class ExplicitJSONLLMProvider:
     grade="EXPLICIT_REMOTE_LLM_UNCALIBRATED_CONSTRUCTION"
     def __init__(self,*,endpoint,model,api_key,allow_private_actor_data=False,
                  timeout_seconds=45,transport=None,compact_task_prompt=False,
-                 metrics_capacity=0):
+                 metrics_capacity=0,compact_exact_packet=False):
         u=urlparse(endpoint)
         if (u.scheme!="https" or not u.hostname or u.username or
                 u.password or u.fragment or u.query or
@@ -61,6 +142,9 @@ class ExplicitJSONLLMProvider:
             raise TypeError("MODEL_COMPACT_PROMPT_FLAG_INVALID")
         if type(metrics_capacity) is not int or not 0<=metrics_capacity<=100000:
             raise ValueError("MODEL_METRICS_CAPACITY_INVALID")
+        if type(compact_exact_packet) is not bool:
+            raise TypeError("MODEL_COMPACT_EXACT_PACKET_FLAG_INVALID")
+        self.compact_exact_packet=compact_exact_packet
         self.compact_task_prompt=compact_task_prompt
         self._metrics=deque(maxlen=metrics_capacity)
         self._metrics_lock=Lock()
@@ -140,7 +224,9 @@ class ExplicitJSONLLMProvider:
                  "attempts":0,"outcome":"REJECTED_OR_FAILED",
                  "instruction_bytes":None,"packet_bytes":None,
                  "request_bytes":None,"response_content_bytes":None,
-                 "prompt_variant":"FULL","usage":self._reported_usage(None)}
+                 "prompt_variant":"FULL","packet_variant":"FULL",
+                 "wire_packet_bytes":None,"alias_count":0,
+                 "usage":self._reported_usage(None)}
         try:
             value=self._propose(task,packet,receipt)
             receipt["outcome"]="PROPOSAL_RETURNED"
@@ -297,12 +383,30 @@ class ExplicitJSONLLMProvider:
             if receipt is not None and compact!=instructions:
                 receipt["prompt_variant"]="TASK_ONLY_EXPERIMENT"
             instructions=compact
-        req={"model":self.model,
-             "messages":[
-                 {"role":"system","content":instructions},
-                 {"role":"user","content":canonical({
-                     "task":task,"actor_source_packet":packet})}],
-             "response_format":{"type":"json_object"}}
+        def request(prompt,body):
+            return {"model":self.model,
+                 "messages":[{"role":"system","content":prompt},
+                             {"role":"user","content":canonical(body)}],
+                 "response_format":{"type":"json_object"}}
+        body={"task":task,"actor_source_packet":packet}
+        req=request(instructions,body)
+        if self.compact_exact_packet:
+            projected,aliases=_compile_exact_aliases(task,packet)
+            if aliases:
+                trial_body={"task":task,"actor_source_packet":projected,
+                            "same_call_exact_aliases":aliases}
+                trial=request(instructions+_ALIAS_RULES,trial_body)
+                # A byte reduction is only claimed after accounting for all
+                # extra system instructions, path names and JSON escaping.
+                if len(canonical(trial).encode("utf-8"))<len(canonical(req).encode("utf-8")):
+                    req=trial
+                    instructions+=_ALIAS_RULES
+                    body=trial_body
+                    if receipt is not None:
+                        receipt["packet_variant"]="EXACT_ALIAS_EXPERIMENT"
+                        receipt["alias_count"]=len(aliases)
+        if receipt is not None:
+            receipt["wire_packet_bytes"]=len(canonical(body["actor_source_packet"]).encode("utf-8"))
         # Injected transport permits local hermetic contract tests; production
         # uses the real HTTPS request, never a fake response behind the scenes.
         if receipt is not None:
