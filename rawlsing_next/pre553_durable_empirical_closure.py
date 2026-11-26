@@ -2126,6 +2126,76 @@ def _unique_archive_index(rows,key,description):
     return result
 
 
+def _parse_discovery_envelope(i05_entry, receipt_by_key, fact_by_key,
+                              predicate_by_key, query_by_key):
+    i05_entry = _mapping(i05_entry, "i05 envelope")
+    receipts = []
+    for raw in _sequence(i05_entry.get("receipt_refs"), "i05 receipt refs"):
+        ref = _exact(raw, "i05 receipt ref")
+        receipt = receipt_by_key.get(ref.key)
+        if receipt is None:
+            raise DurableEmpiricalClosureError("i05 receipt preimage is absent")
+        receipts.append(receipt)
+    i05_fact_refs = tuple(
+        _exact(raw, "i05 fact ref")
+        for raw in _sequence(i05_entry.get("empirical_fact_refs"), "i05 fact refs")
+    )
+    i05_facts = []
+    for ref in i05_fact_refs:
+        fact = fact_by_key.get(ref.key)
+        if fact is None:
+            raise DurableEmpiricalClosureError("i05 fact preimage is absent")
+        i05_facts.append(fact)
+    i05_predicates = []
+    for raw in _sequence(i05_entry.get("executed_predicate_refs"), "i05 predicate refs"):
+        ref = _exact(raw, "i05 predicate ref")
+        predicate = predicate_by_key.get(ref.key)
+        if predicate is None:
+            raise DurableEmpiricalClosureError("i05 predicate preimage is absent")
+        i05_predicates.append(predicate)
+    i05_queries = []
+    for raw in _sequence(i05_entry.get("executed_query_refs"), "i05 query refs"):
+        ref = _exact(raw, "i05 query ref")
+        query = query_by_key.get(ref.key)
+        if query is None:
+            raise DurableEmpiricalClosureError("i05 query preimage is absent")
+        i05_queries.append(query)
+    i05 = ExactBoundedDiscoveryResult(
+        contract_id=_text(i05_entry.get("contract_id"), "i05 contract"),
+        discovery_authority_ref=_exact(
+            i05_entry.get("discovery_authority_ref"), "i05 discovery authority"
+        ),
+        candidate_grammar_ref=_exact(
+            i05_entry.get("candidate_grammar_ref"), "i05 candidate grammar"
+        ),
+        evaluated_frontier_ref=_exact(
+            i05_entry.get("evaluated_frontier_ref"), "i05 frontier"
+        ),
+        coverage_claim=_text(i05_entry.get("coverage_claim"), "i05 coverage claim"),
+        candidate_count=int(i05_entry.get("candidate_count")),
+        covered_candidate_count=int(i05_entry.get("covered_candidate_count")),
+        receipts=tuple(sorted(receipts, key=lambda receipt: receipt.ref.key)),
+        empirical_fact_refs=tuple(sorted(i05_fact_refs, key=lambda ref: ref.key)),
+        empirical_facts=tuple(sorted(i05_facts, key=lambda fact: fact.ref.key)),
+        executed_predicates=tuple(sorted(i05_predicates, key=lambda obj: obj.ref.key)),
+        executed_queries=tuple(sorted(i05_queries, key=lambda obj: obj.ref.key)),
+        valid_empty=bool(i05_entry.get("valid_empty")),
+        replay_ref=_exact(i05_entry.get("replay_ref"), "i05 replay"),
+    )
+
+    if i05.candidate_count != len(i05.receipts) or i05.covered_candidate_count != len(i05.receipts):
+        raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
+    if i05.valid_empty != all(
+        receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
+    ):
+        raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
+    # Do not coerce an internally rehashed string count/bool, reorder
+    # a frontier, or silently discard undeclared fields on cold read.
+    if canonical_json(i05_entry) != canonical_json(_i05_envelope(i05)):
+        raise DurableEmpiricalClosureError("native I05 envelope is not exact")
+    return i05
+
+
 class _SelectedI03Archive:
     """Private root-pinned selected-unit reader, NOT a DurableEmpiricalClosure.
 
@@ -2229,6 +2299,72 @@ class _SelectedI03Archive:
             _verify_fact_replay_document(fact,replay,self.releases,fragments)
         return query,predicate,ex
 
+    def discovery(self, ref, authorities):
+        """Verify one complete native I05 frontier, not unrelated I03/I05 bodies.
+
+        The same parser, native graph checks, replay and row census owners used
+        by full open are reused. A selected frontier includes *all* its
+        candidates and constitutive facts; one role never stands for its proof.
+        """
+        ref=_exact(ref,"selected discovery ref")
+        if (self.native.get("discovery_envelope_schema")!=NATIVE_DISCOVERY_ENVELOPE_V2
+                or self.native.get("i05") is not None):
+            raise DurableEmpiricalClosureError("selected discovery requires plural native envelope")
+        roster=_unique_archive_index(_sequence(self.native.get("i05_results"),"plural native I05 envelopes"),
+            lambda x:_exact(x.get("discovery_authority_ref"),"discovery authority").key,"discovery authority")
+        entry=roster.get(ref.key)
+        if entry is None:
+            raise DurableEmpiricalClosureError("discovery not retained")
+        def family(field,typ):
+            refs=_sequence(entry.get(field),field)
+            return _unique_archive_index((self.object(v,typ) for v in refs),
+                                         lambda x:x.ref.key,field)
+        receipts=family("receipt_refs",DiscoveryResultReceipt)
+        facts=family("empirical_fact_refs",EmpiricalFact)
+        predicates=family("executed_predicate_refs",EmpiricalPredicate)
+        queries=family("executed_query_refs",EmpiricalQuerySpec)
+        discovery=_parse_discovery_envelope(entry,receipts,facts,predicates,queries)
+        authority=self.object(ref,DiscoveryAuthority)
+        graph=RouteBEmpiricalObjectGraph(authorities,discovery.executed_predicates,
+            discovery.executed_queries,discovery.empirical_facts,(authority,),discovery.receipts)
+        _verify_output_graph(NativeEmpiricalOutput(
+            source_identity=self.native["source_identity"],release_identities=self.release_identities,
+            i03_results=(),i05_result=None,i05_results=(discovery,),object_graph=graph))
+        # Fact rows can also be owned by a direct I03 unit. Determine this
+        # transport flag from the authenticated envelope, not a guessed False.
+        direct_facts={_exact(v,"direct fact ref").key for row in self.direct.values()
+                      for v in _sequence(row.get("fact_refs"),"direct fact refs")}
+        for fact in discovery.empirical_facts:
+            row=_fact_rows(fact,queries,predicates)
+            row["is_i03_result"]=fact.ref.key in direct_facts
+            if canonical_json(row)!=canonical_json(self.fact_rows.get(fact.ref.key)):
+                raise DurableEmpiricalClosureError("selected discovery fact census drift")
+        declared=_mapping(_mapping(self.core.get("census"),"census").get("declared"),"declared census")
+        receipt_rows=_unique_archive_index(_sequence(declared.get("receipt_rows"),"receipt rows"),
+            lambda x:_exact(x.get("ref"),"receipt census ref").key,"receipt census")
+        for receipt in discovery.receipts:
+            row=_receipt_rows(receipt,facts,predicates,queries,{ref.key:authority},
+                              tuple(x.release_ref for x in self.release_identities))
+            if canonical_json(row)!=canonical_json(receipt_rows.get(receipt.ref.key)):
+                raise DurableEmpiricalClosureError("selected discovery receipt census drift")
+        replays=_mapping(self.core.get("replays"),"replays")
+        if "frontier" in replays or "i05_final" in replays:
+            raise DurableEmpiricalClosureError("singular replay in plural archive")
+        receipt_docs=_unique_archive_index(_sequence(replays.get("receipts"),"receipt replays"),
+            lambda x:_exact(x.get("receipt_ref"),"receipt replay ref").key,"receipt replay")
+        discovery_docs=_unique_archive_index(_sequence(replays.get("discovery_replays"),"discovery replays"),
+            lambda x:_exact(x.get("discovery_authority_ref"),"discovery replay authority").key,"discovery replay")
+        if ref.key not in discovery_docs or not set(facts)<=set(self.fact_replays) or not set(receipts)<=set(receipt_docs):
+            raise DurableEmpiricalClosureError("mandatory selected discovery replay absent")
+        selected_facts=[self.fact_replays[k] for k in facts]
+        fragments={digest:self._fragment(digest) for row in selected_facts
+                   for digest in _markers(row.get("material"))}
+        _verify_replay_documents({"replays":{"facts":selected_facts,
+            "receipts":[receipt_docs[k] for k in receipts],
+            "discovery_replays":[discovery_docs[ref.key]]}},
+            graph,None,self.releases,fragments,i05_results=(discovery,))
+        return authority,discovery
+
 
 def open_empirical_closure(
     closure_path: str | Path,
@@ -2330,72 +2466,8 @@ def open_empirical_closure(
         )
 
     def parse_discovery(i05_entry):
-        i05_entry = _mapping(i05_entry, "i05 envelope")
-        receipts = []
-        for raw in _sequence(i05_entry.get("receipt_refs"), "i05 receipt refs"):
-            ref = _exact(raw, "i05 receipt ref")
-            receipt = receipt_by_key.get(ref.key)
-            if receipt is None:
-                raise DurableEmpiricalClosureError("i05 receipt preimage is absent")
-            receipts.append(receipt)
-        i05_fact_refs = tuple(
-            _exact(raw, "i05 fact ref")
-            for raw in _sequence(i05_entry.get("empirical_fact_refs"), "i05 fact refs")
-        )
-        i05_facts = []
-        for ref in i05_fact_refs:
-            fact = fact_by_key.get(ref.key)
-            if fact is None:
-                raise DurableEmpiricalClosureError("i05 fact preimage is absent")
-            i05_facts.append(fact)
-        i05_predicates = []
-        for raw in _sequence(i05_entry.get("executed_predicate_refs"), "i05 predicate refs"):
-            ref = _exact(raw, "i05 predicate ref")
-            predicate = predicate_by_key.get(ref.key)
-            if predicate is None:
-                raise DurableEmpiricalClosureError("i05 predicate preimage is absent")
-            i05_predicates.append(predicate)
-        i05_queries = []
-        for raw in _sequence(i05_entry.get("executed_query_refs"), "i05 query refs"):
-            ref = _exact(raw, "i05 query ref")
-            query = query_by_key.get(ref.key)
-            if query is None:
-                raise DurableEmpiricalClosureError("i05 query preimage is absent")
-            i05_queries.append(query)
-        i05 = ExactBoundedDiscoveryResult(
-            contract_id=_text(i05_entry.get("contract_id"), "i05 contract"),
-            discovery_authority_ref=_exact(
-                i05_entry.get("discovery_authority_ref"), "i05 discovery authority"
-            ),
-            candidate_grammar_ref=_exact(
-                i05_entry.get("candidate_grammar_ref"), "i05 candidate grammar"
-            ),
-            evaluated_frontier_ref=_exact(
-                i05_entry.get("evaluated_frontier_ref"), "i05 frontier"
-            ),
-            coverage_claim=_text(i05_entry.get("coverage_claim"), "i05 coverage claim"),
-            candidate_count=int(i05_entry.get("candidate_count")),
-            covered_candidate_count=int(i05_entry.get("covered_candidate_count")),
-            receipts=tuple(sorted(receipts, key=lambda receipt: receipt.ref.key)),
-            empirical_fact_refs=tuple(sorted(i05_fact_refs, key=lambda ref: ref.key)),
-            empirical_facts=tuple(sorted(i05_facts, key=lambda fact: fact.ref.key)),
-            executed_predicates=tuple(sorted(i05_predicates, key=lambda obj: obj.ref.key)),
-            executed_queries=tuple(sorted(i05_queries, key=lambda obj: obj.ref.key)),
-            valid_empty=bool(i05_entry.get("valid_empty")),
-            replay_ref=_exact(i05_entry.get("replay_ref"), "i05 replay"),
-        )
-
-        if i05.candidate_count != len(i05.receipts) or i05.covered_candidate_count != len(i05.receipts):
-            raise DurableEmpiricalClosureError("i05 candidate/receipt cardinality mismatch")
-        if i05.valid_empty != all(
-            receipt.typed_state == "VALID_EMPTY" for receipt in i05.receipts
-        ):
-            raise DurableEmpiricalClosureError("i05 valid_empty contradicts its receipt states")
-        # Do not coerce an internally rehashed string count/bool, reorder
-        # a frontier, or silently discard undeclared fields on cold read.
-        if canonical_json(i05_entry) != canonical_json(_i05_envelope(i05)):
-            raise DurableEmpiricalClosureError("native I05 envelope is not exact")
-        return i05
+        return _parse_discovery_envelope(i05_entry, receipt_by_key, fact_by_key,
+                                         predicate_by_key, query_by_key)
 
     if "discovery_envelope_schema" in native:
         if (native["discovery_envelope_schema"] != NATIVE_DISCOVERY_ENVELOPE_V2
