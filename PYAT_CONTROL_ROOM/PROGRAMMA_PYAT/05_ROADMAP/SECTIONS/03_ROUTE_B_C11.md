@@ -1,5 +1,8 @@
 # ROADMAP:S03 — Physical and logical source carrier: Route B, C11, I03, I05 and Batch
 
+**S03.3–.5 / PP26-08–10:** Two original saved-wave recorded-code I03 results SUPPORTED on MainMac (SRC04 Q103 and SRC16 racpres); #1316 private display adapter tested only on compatibility fixtures. Do not rerun original results solely for display; actual private display receipt, independent replay, asked/eligible, design/population and wider F1–F4/I05/FF reader remain outstanding. Country lineage #1372 R4 executed 4 jobs; #1373 R5 header-at-emission/packed filtering candidate; #1374 R6 actual code extends existing country/U43/Batch/S2F with external CountryResumePin, partial opt-in and reuse of completed units. New R6 path unexecuted as far as retrieved evidence; three inherited workflows green, not new path. Controlled same-interpreter interruption test authored, not process-loss proof. No replacement store or estimator; P0 unchanged. [R6 #1374](https://github.com/maidiu/rawlsing/pull/1374); [operating receipt](https://github.com/maidiu/rawlsing/issues/1097#issuecomment-7177579013).
+
+
 ## 2026-11-25 — #1354 remaining expansion points / whole-machine conservation (author candidate)
 
 User demands nonmyopic construction and no repeat historical work. OATH, G4 protected and candidate inventory 782/150/62/82, S03 historical economics, S04 consumers, #960/#1097 C01–C17 and #1006 reconsulted. No new architecture or authority.

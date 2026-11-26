@@ -1,5 +1,16 @@
 # PYAT CURRENT_PROGRESS REV24 — USER-GO PARALLEL PRE-FIELD-FORGE SELECTION / SOURCEFREE EVIDENCE (AUTHOR RECEIVING CANDIDATE, NOT PROTECTED)
 
+**2026-11-26 currentness corrections, R24 candidate:** Two original saved-wave recorded-code I03 results SUPPORTED on MainMac (SRC04 Q103 and SRC16 racpres); #1316 private display adapter tested only on compatibility fixtures. Do not rerun original results solely for display; actual private display receipt, independent replay, asked/eligible, design/population and wider F1–F4/I05/FF reader remain outstanding.
+
+Protected #896 materializer import repaired: publication and materializer blobs 7d2a5dbb3e0979c599632645867aa48a336a8e79 / 3c7527d3129387e8fd010b56dc981cf2e12542f7 at 827714e83743056939894a39736d72ea16bdc6dd; narrow J04 CONTEXT only. Do not repair the old import again. Remaining selected licensed N9 as-of dependencies and qualified N10W reader, not a new materializer.
+
+FF R17 is bounded authored transport: authored roles, renewal, gates, notices and selected expectations, not empirically constituted formation/power or evidence-driven world causation. R18 local LiTS IV diagnostic: q110b father/q111b mother education referents absent from derived labels; verify affected exact current issuer mapping before change. FIELD-AUTHORITY preliminary intellectual development only; reuse E024/E116/E124 and QSM/V550, no new resource creation selected. FF empirical substrate; SOROK owns hypothetical constitution.
+
+Country lineage #1372 R4 executed 4 jobs; #1373 R5 header-at-emission/packed filtering candidate; #1374 R6 actual code extends existing country/U43/Batch/S2F with external CountryResumePin, partial opt-in and reuse of completed units. New R6 path unexecuted as far as retrieved evidence; three inherited workflows green, not new path. Controlled same-interpreter interruption test authored, not process-loss proof. No replacement store or estimator; P0 unchanged.
+
+Exact evidence and prior live field values in paired JSON `g4_currentness_reconciliation_20261126`; protected rev23 and P0 unchanged.
+
+
 [SOROK PROGRAMMA READ_FIRST / orchestration / spine reciprocal route #1333](https://github.com/maidiu/rawlsing/commit/e81fad104e11274e4971031253811606bc5b93b0) — working-document source integration, no changed runtime status.
 
 
