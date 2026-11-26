@@ -226,6 +226,23 @@ def _form_in_scope(form,access):
         return False
     return True
 
+def _same_composition_recruitment(recruit):
+    """Reuse only identical closure questions within one immutable read.
+
+    compose makes at most three closure requests. The local table dies
+    with that call; no actor state, event history, admission, or persistent
+    index becomes trusted through it. Differing blocked sets are distinct.
+    The internal caller consumes the returned sets/routes read-only.
+    """
+    resolved={}
+    def read(start,blocked=frozenset()):
+        key=(frozenset(start),frozenset(blocked))
+        if key not in resolved:
+            resolved[key]=recruit(start,blocked)
+        return resolved[key]
+    return read
+
+
 def compose(constitution,access,limit=50):
     """Three streams: direct cue/ongoing project, acquired associative links, qualified traces.
     Does not select a motive, infer actor memory from objective facts, or claim transfer
@@ -303,6 +320,10 @@ def compose(constitution,access,limit=50):
             reached=following
         raise RuntimeError('RELATIONAL_RECRUITMENT_DID_NOT_CONVERGE')
 
+    # Same immutable constitution and access, same initial forms, same
+    # blocked set => identical closure and motif provenance. In particular
+    # no-inhibition contexts formerly evaluated this closure three times.
+    joint_recruitment=_same_composition_recruitment(joint_recruitment)
     potentially_active,_=joint_recruitment(seed)
     conservative_veto={link['target'] for link in negative
                        if link['source'] in potentially_active}
@@ -345,8 +366,11 @@ def compose(constitution,access,limit=50):
     actual,motif_routes=joint_recruitment(seed,vetoed)
     active={fid:copy(forms[fid]) for fid in sorted(actual)}
     relational=derive_relational_metabolism(constitution,access,active,vetoed)
+    # This is the same link-only comparison for every motif route.
+    # Do not conflate direct/linked recruitment with motif recruitment.
+    direct_link_closure=closure(seed,vetoed) if motif_routes else set()
     for fid,route in sorted(motif_routes.items()):
-        if fid in active and fid not in closure(seed,vetoed):
+        if fid in active and fid not in direct_link_closure:
             currents.append({'kind':'HISTORICALLY_RECRUITED_VIA_MOTIF',
                 'ref':fid,'motif_ref':route['motif_ref'],
                 'qualified_source_forms':route['source_form_refs'],
