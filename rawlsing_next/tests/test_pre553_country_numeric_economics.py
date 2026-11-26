@@ -1162,14 +1162,32 @@ class CountryNativeEconomics(unittest.TestCase):
         def capture(output,*args,**kwargs):
             captured.append(output)
             return original_publish(output,*args,**kwargs)
+        # The carrier calls an external currentness resolver after execution.
+        # R11's census preceded that last carrier check; R12 must never hand
+        # its already-made census across that boundary. This observes the
+        # actual native delivery call order, not a mocked evaluator.
+        from sys import _getframe
+        order=[]
+        original_check=issued._CountryAdmissionScope.check
+        original_proof=issued.NativeWorkloadResult.exact_s2e_output_census
+        def track_check(scope):
+            if _getframe(1).f_code.co_name=="_execute_country_workload":
+                order.append("carrier_admission")
+            return original_check(scope)
+        def track_proof(result,**kwargs):
+            order.append("census")
+            return original_proof(result,**kwargs)
         with patch.object(delivery,"publish_empirical_closure",side_effect=capture), patch.object(
+                issued._CountryAdmissionScope,"check",track_check), patch.object(
                 issued.NativeWorkloadResult,"exact_s2e_output_census",autospec=True,
-                side_effect=issued.NativeWorkloadResult.exact_s2e_output_census) as proofs:
+                side_effect=track_proof) as proofs:
             # Keep the R7/R8 exact-root publication oracle on the original
             # representation. New country publication defaults to factoring.
             baseline=run(products,factor_replay_risk_members=False)
             self.assertEqual(proofs.call_count,1,"final S2E proof rebuilt before publication")
             native_result=proofs.call_args.args[0]
+        self.assertGreaterEqual(order.count("carrier_admission"),2)
+        self.assertEqual(order[-1],"census",order)
         self._r12_census_court(native_result,workload.catalog)
         self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
