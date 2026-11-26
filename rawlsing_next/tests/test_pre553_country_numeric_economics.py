@@ -1162,15 +1162,19 @@ class CountryNativeEconomics(unittest.TestCase):
         def capture(output,*args,**kwargs):
             captured.append(output)
             return original_publish(output,*args,**kwargs)
-        with patch.object(delivery,"publish_empirical_closure",side_effect=capture):
+        with patch.object(delivery,"publish_empirical_closure",side_effect=capture), patch.object(
+                issued.NativeWorkloadResult,"exact_s2e_output_census",autospec=True,
+                side_effect=issued.NativeWorkloadResult.exact_s2e_output_census) as proofs:
             # Keep the R7/R8 exact-root publication oracle on the original
             # representation. New country publication defaults to factoring.
             baseline=run(products,factor_replay_risk_members=False)
+            self.assertEqual(proofs.call_count,1,"final S2E proof rebuilt before publication")
         self.assertEqual(len(captured),1)
         baseline_reader=open_product(baseline)
         native_output=captured.pop()
         self._cas_publication_court(root,products,native_output,baseline)
         self._risk_replay_factoring_court(root,native_output,baseline,common,baseline_reader)
+        self._fresh_proof_court(root,native_output,run,queries,baseline)
         del native_output
         # Actual process termination, not an exception which unwinds the
         # native session. Keep the original controlled interruption court.
@@ -1476,6 +1480,97 @@ class CountryNativeEconomics(unittest.TestCase):
             "unpublished_staging_reclaimed":True,
             "grade":"SOURCEFREE_FORKED_WORKER_SIGKILL_BEFORE_SECOND_MANIFEST_REPLACE"
         }),flush=True)
+
+    def _fresh_proof_court(self,root,output,run,queries,baseline):
+        """Compare actual native replay reconstruction, not a simulated digest."""
+        import os
+        from rawlsing_next import pre553_durable_empirical_closure as durable
+        from rawlsing_next import pre553_saved_durable_delivery as delivery
+        from rawlsing_next import pre553_issued_workload as issued
+        from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+        # An externally delivered checkpoint may not exempt the final native
+        # snapshot from independent proof; simulate internal envelope drift
+        # during the detached observer boundary without altering fact refs.
+        from rawlsing_next._pre553_query_common import SOURCE_SCOPE_MODES
+        seen=[]
+        original_i03=CarrierNeutralResearchExecutor.execute_i03
+        def capture03(executor,**kwargs):
+            result=original_i03(executor,**kwargs)
+            seen.append(result)
+            return result
+        changed=[]
+        def corrupt_after_publish(pin,pub):
+            result=seen[0]
+            before=result.source_scope_mode
+            alternative=next(x for x in sorted(SOURCE_SCOPE_MODES) if x!=before)
+            object.__setattr__(result,"source_scope_mode",alternative)
+            changed.append((result,before))
+        # One partial operation; no additional native work can obscure the
+        # discrepancy between its published and returned proof.
+        try:
+            with patch.object(CarrierNeutralResearchExecutor,"execute_i03",capture03):
+                with self.assertRaisesRegex(delivery.SavedDeliveryError,"CHECKPOINT_FINAL_CENSUS_DRIFT"):
+                    run(root/"r11-drift",max_units=1,checkpoint_every=1,
+                        checkpoint_observer=corrupt_after_publish)
+        finally:
+            for item,before in changed:object.__setattr__(item,"source_scope_mode",before)
+        self.assertEqual(len(changed),1)
+        # Public cold reader remains an independent full proof, not a
+        # consumer of the live result's census object.
+        self.assertTrue(baseline.complete)
+        facts=output.object_graph.empirical_facts
+        releases=output.release_by_ref()
+        for fact in facts:
+            material,raw,digest=durable._fact_replay_preimage(fact,releases)
+            self.assertEqual(raw,durable._canonical_bytes(material))
+            self.assertEqual(digest,hashlib.sha256(raw).hexdigest())
+        # Deliberately break the newly reconstructed native replay while
+        # retaining the original fact and exact replay ref. Must refuse.
+        original=durable._positive_fact_replay_material
+        def bad_replay(fact,releases):
+            material=original(fact,releases)
+            if material is not None:material["risk_member_refs"]=[]
+            return material
+        with patch.object(durable,"_positive_fact_replay_material",bad_replay):
+            with self.assertRaisesRegex(durable.DurableEmpiricalClosureError,"cannot be reconstructed"):
+                durable._replay_documents(output,{},factor_replay_risk_members=True)
+        if os.environ.get("PYAT_R11_MATCHED_PROOF")!="1":
+            return
+        from tools.pyat_country_storage_relay_benchmark import historical
+        r10=historical("5a8f05f134e950277798e8eb8580453f32ca8fab",
+                       "pre553_durable_empirical_closure")
+        times={"R10":[],"R11":[]}
+        proof=None
+        for order in (("R10","R11"),("R11","R10"),("R10","R11"),("R11","R10")):
+            for name in order:
+                mod=r10 if name=="R10" else durable
+                fragments={}
+                started=time.monotonic()
+                docs,_=mod._replay_documents(output,fragments,factor_replay_risk_members=True)
+                times[name].append(time.monotonic()-started)
+                material=(docs,fragments)
+                if proof is None:proof=material
+                self.assertEqual(material,proof)
+        # Exact manifest root and every CAS byte, not just replay hash.
+        pubs=[]
+        for name,mod in (("R10",r10),("R11",durable)):
+            dest=root/("r11-proof-"+name)
+            pubs.append(mod.publish_empirical_closure(output,dest,compact_manifest=True,
+                            factor_replay_risk_members=True))
+        self.assertEqual(pubs[0].root_identity,pubs[1].root_identity)
+        self.assertEqual(pubs[0].logical_evidence_bytes,pubs[1].logical_evidence_bytes)
+        def inventory(name):
+            base=root/("r11-proof-"+name)/durable.CAS_DIR
+            return {str(p.relative_to(base)):hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in base.rglob("*") if p.is_file()}
+        self.assertEqual(inventory("R10"),inventory("R11"))
+        self.assertEqual(durable._manifest_file(Path(pubs[0].root_path)).read_bytes(),
+                         durable._manifest_file(Path(pubs[1].root_path)).read_bytes())
+        print("R11_FRESH_PROOF",json.dumps({"facts":len(facts),
+            "replay_documents_seconds":times,"median_seconds":{k:median(v) for k,v in times.items()},
+            "exact_root_manifest_cas":True,"one_final_census":True,
+            "post_checkpoint_envelope_drift_refused":True,"replay_mutation_refused":True,
+            "grade":"MATCHED_NATIVE_OUTPUT_REPLAY_CONSTRUCTION_NOT_FULL_CAMPAIGN"}),flush=True)
 
     def _risk_replay_factoring_court(self,root,output,baseline,common,baseline_reader):
         """Actual native output, exact legacy root plus factored replay root."""
