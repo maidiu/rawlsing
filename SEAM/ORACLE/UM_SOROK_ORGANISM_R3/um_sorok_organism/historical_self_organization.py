@@ -7,6 +7,7 @@ No event, coactor consent, adult motive, cognition or material right is minted h
 from .types import copy, stable_id, GRADE
 from .organism import ACTIONS, eligible
 from .livelihood_history import qualify_recurrent_work_orientation
+from .attention_field import possible_monitoring_changes
 
 MODES = frozenset(('APPROACH', 'WITHHOLD', 'AMBIVALENT'))
 REVISIONS = frozenset(('INHIBIT', 'OPPOSE', 'REINSTATE'))
@@ -72,6 +73,11 @@ def acquire_orientation(actor, experience, event_ref, proposal):
     mode = proposal.get('orientation_mode')
     if mode not in MODES:
         raise ValueError('HISTORICAL_INVALID_POLARITY')
+    monitoring_ground = None
+    if 'monitoring_basis' in proposal:
+        if proposal not in possible_monitoring_changes(actor,experience,event_ref):
+            raise ValueError('MONITORING_FORMATION_UNQUALIFIED')
+        monitoring_ground=copy(proposal['monitoring_basis'])
     dependency_ground = None
     if 'dependency_ambivalence_basis' in proposal:
         possible=possible_dependency_ambivalence(actor,experience,event_ref)
@@ -119,6 +125,9 @@ def acquire_orientation(actor, experience, event_ref, proposal):
         record['acquisition']='LIVED_CONTRADICTORY_PROJECT_COURSE'
         record['dependency_ambivalence_basis']=dependency_ground
         record['not_a_named_emotion_or_relationship_verdict']=True
+    if monitoring_ground is not None:
+        record['acquisition']='LIVED_DIRECTED_MONITORING_PRACTICE'
+        record['monitoring_basis']=monitoring_ground
     prior.append(record)
     return {'kind': 'ACQUIRE_HISTORICAL_ORIENTATION', 'ref': ident,
             'status': 'PROVISIONAL_ACTOR_OWNED_NOT_MOTIVE', 'grade': GRADE}
@@ -453,6 +462,10 @@ def revise_orientation(actor, experience, event_ref, proposal):
                 'clock': experience.get('clock'),
                 'source': source, 'mode': mode,
                 'prior_history_retained': True, 'grade': GRADE}
+    if row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE' or 'monitoring_revision_basis' in proposal:
+        if proposal not in possible_monitoring_changes(actor,experience,event_ref):
+            raise ValueError('MONITORING_REVISION_UNQUALIFIED')
+        revision['monitoring_revision_basis']=copy(proposal['monitoring_revision_basis'])
     if 'counterhistory_release_basis' in proposal:
         possibilities = possible_counterhistory_release(actor, experience, event_ref)
         if proposal not in possibilities:
@@ -593,6 +606,10 @@ def pre_cue_pressures(constitution, access):
         if type(row) is not dict or row.get('actor') != constitution.actor:
             continue
         if row.get('location') != access.location:
+            continue
+        if row.get('acquisition')=='LIVED_DIRECTED_MONITORING_PRACTICE':
+            # Attention owner alone consumes this particular orientation.
+            # It is not a general motive to ORIENT.
             continue
         if row.get('acquisition')=='LIVED_CONTRADICTORY_PROJECT_COURSE':
             # Specific practical alternatives, not every occurrence of the

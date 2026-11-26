@@ -727,6 +727,7 @@ def compose(constitution,access,limit=50):
        accessible_cues=access.cues,candidate_actions=ordered,disagreements=disagreements,
        readset=sorted(set(list(active)+list(vetoed)+relational['readset']+
                            historical['readset']+preproject['readset']+exercised['readset']+
+                           attention['frame'].get('monitoring_orientation_refs',[])+
                            invested['recruitment']['readset']+
                            material['readset']+
                            historical_care['readset']+
