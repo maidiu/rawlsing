@@ -649,10 +649,10 @@ def _negative_fact_replay_material(
     }
 
 
-def _fact_replay_material(
+def _fact_replay_preimage(
     fact: EmpiricalFact,
     releases: Mapping[str, ReleaseIdentity],
-) -> Mapping[str, Any]:
+) -> tuple[Mapping[str, Any], bytes, str]:
     """Reconstruct the exact native replay preimage for either fact shape.
 
     Selection is by the native ``replay_ref`` identity, never by a guess.  If
@@ -674,14 +674,25 @@ def _fact_replay_material(
             candidate = None
         if candidate is not None:
             candidates.append(candidate)
-    matches = [
-        candidate for candidate in candidates if semantic_hash(candidate) == replay_hash
-    ]
+    matches = []
+    for candidate in candidates:
+        raw = _canonical_bytes(candidate)
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest == replay_hash:
+            matches.append((candidate, raw, digest))
     if len(matches) != 1:
         raise DurableEmpiricalClosureError(
             "fact replay preimage cannot be reconstructed exactly from its retained fields"
         )
     return matches[0]
+
+
+def _fact_replay_material(
+    fact: EmpiricalFact,
+    releases: Mapping[str, ReleaseIdentity],
+) -> Mapping[str, Any]:
+    """Compatibility reader of the independently reconstructed native preimage."""
+    return _fact_replay_preimage(fact, releases)[0]
 
 
 def _receipt_replay_material(
@@ -1350,12 +1361,9 @@ def _replay_documents(
     release_refs = tuple(item.release_ref for item in output.release_identities)
     fact_materials = []
     for fact in output.object_graph.empirical_facts:
-        material = _fact_replay_material(fact, releases)
-        digest = semantic_hash(material)
-        if digest != _exact(fact.replay_ref, "fact replay").content_hash:
-            raise DurableEmpiricalClosureError(
-                "fact replay preimage does not reproduce the native replay identity"
-            )
+        # The producer already hashed this exact reconstructed preimage.
+        # Do not walk and serialize the same membership arrays again.
+        material, _, digest = _fact_replay_preimage(fact, releases)
         fact_materials.append(
             {
                 "fact_ref": fact.ref.as_dict(),
@@ -2507,14 +2515,13 @@ def _decode_verified_blob(data: bytes, expected_hash: str, entry: Mapping[str, A
 
 
 def _verify_fact_replay_document(fact,item,releases,fragments):
-    material = _fact_replay_material(fact, releases)
-    digest = semantic_hash(material)
+    _, raw, digest = _fact_replay_preimage(fact, releases)
     if digest != _text(item.get("material_hash"), "fact material hash"):
         raise DurableEmpiricalClosureError("fact replay material hash drift")
-    if digest != _exact(fact.replay_ref, "fact replay").content_hash:
-        raise DurableEmpiricalClosureError("fact replay preimage does not match its exact ref")
+    # Independently hydrate and compare the actual stored preimage. Reuse
+    # only bytes freshly reconstructed and hashed in this very call.
     stored = hydrate_canonical_preimage(item.get("material"), fragments)
-    if canonical_json(stored) != canonical_json(material):
+    if _canonical_bytes(stored) != raw:
         raise DurableEmpiricalClosureError("fact replay stored preimage is not exact")
 
 
