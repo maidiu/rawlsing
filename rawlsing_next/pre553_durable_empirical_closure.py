@@ -769,7 +769,10 @@ def _pack_replay_material(
     contract when explicitly requested; retain the legacy root-producing
     representation for callers holding an old publication pin.
     """
-    packed = dict(canonicalize(material))
+    # The native builders supply a plain dict. Selected fragments perform
+    # their own canonicalization, and the finished document is canonicalized
+    # below. Avoid walking every large inline array once before factoring it.
+    packed = material.copy() if type(material) is dict else dict(canonicalize(material))
     fields = (_LARGE_FRAGMENT_FIELDS + ("risk_member_refs",)
               if factor_replay_risk_members else _LARGE_FRAGMENT_FIELDS)
     for name in fields:
