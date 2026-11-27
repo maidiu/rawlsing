@@ -20,7 +20,9 @@ def passage(world,actors,days,processes=None):
     allocation=qualify_period_allocation(
         world,actors,qualified,start,days)
     effective_iter=iter(allocation['qualified'])
-    held={p['input_index'] for p in allocation.get('structurally_withheld_processes',[])}
+    held={p['input_index'] for k in ('structurally_withheld_processes',
+                                     'bodily_withheld_processes')
+          for p in allocation.get(k,[])}
     effective_processes=[];qindex=0
     for p in processes:
         if isinstance(p,dict) and type(p.get('kind')) is str and p['kind'].startswith('QUALIFIED_'):
@@ -56,6 +58,8 @@ def passage(world,actors,days,processes=None):
        'processes':effective_processes,
        **({'structurally_withheld_processes':copy(allocation_receipt['structurally_withheld_processes'])}
           if allocation_receipt.get('structurally_withheld_processes') else {}),
+       **({'bodily_withheld_processes':copy(allocation_receipt['bodily_withheld_processes'])}
+          if allocation_receipt.get('bodily_withheld_processes') else {}),
        **({'elapsed_human_offer_commitment_refs':elapsed_human_windows}
           if elapsed_human_windows else {}),
        'qualified_material_time_allocation_ref':allocation_receipt['id'],
