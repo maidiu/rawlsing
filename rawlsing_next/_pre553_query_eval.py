@@ -520,6 +520,16 @@ class _ConditionMemo:
         return member
 
 
+@dataclass(frozen=True,slots=True)
+class _ConstituentEvidenceRef:
+    """Private provenance-only view; never a public fact or selector."""
+    identity: tuple[str,str,str]
+
+    @property
+    def ref(self):
+        return ExactRef(*self.identity)
+
+
 class _CountryConstituentMemo:
     """Bounded lazy exact constituent reuse, owned by one live country scope.
 
@@ -549,7 +559,7 @@ class _CountryConstituentMemo:
         token=(kind,key,respondent.ref.key)
         entry=self.rows.get(token)
         if entry is not None:
-            value,objects,authorities=entry
+            value,identities,authorities=entry
             refs=tuple(AuthorityRef(*a) for a in authorities)
             # No retained ALLOW verdict: independently resolve every
             # authority used by the original constituent.
@@ -561,7 +571,9 @@ class _CountryConstituentMemo:
                 routing_authority |= snapshot.authority_kind=="ROUTING_RISK_SET"
             if kind=="routing" and not routing_authority:
                 raise Pre553AuthorityError("constituent lacks routing authority")
-            used.extend(objects)
+            # A group core may retain the provenance views, but never
+            # shares a mutable wrapper with the underlying memo entry.
+            used.extend(_ConstituentEvidenceRef(i) for i in identities)
             used_auth.extend(refs)
             self.hits[kind]+=1
             return value
@@ -582,14 +594,16 @@ class _CountryConstituentMemo:
         if not scalar or not all(type(o) is expected for o in own):
             self.refusals+=1
             return value
-        objects=tuple(own)
+        identities=tuple(o._ref_identity for o in own)
         authorities=tuple((a.authority_id,a.authority_version,a.authority_content_hash) for a in auth)
-        # Conservative incremental estimate: include key/string, containers,
-        # selected row wrappers and authority triples. Underlying frozen
-        # selector payloads/strings are shared by the country view; not RSS.
-        cost=512+sys.getsizeof(token)+sys.getsizeof(token[2])+256*len(objects)+128*len(authorities)
+        # Retain only detached scalar values and exact evidence identities,
+        # not selected event/routing objects. Both consumers of used_objects
+        # (native proof and grouped-core fingerprint) use exact refs only.
+        cost=(512+sys.getsizeof(token)+sys.getsizeof(token[2])
+              +sum(128+sum(sys.getsizeof(x) for x in row) for row in (*identities,*authorities))
+              +sys.getsizeof(value)+(sys.getsizeof(value[1]) if kind=="target" else 0))
         if self.budget(cost):
-            self.rows[token]=(value,objects,authorities)
+            self.rows[token]=(value,identities,authorities)
             self.bytes+=cost
         else:self.refusals+=1
         return value
