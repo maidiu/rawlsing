@@ -37,6 +37,7 @@ on:
       - agent/inference-economy-semantic-port-r1-20261126
       - agent/neighbormulch-r34-acquired-life-economy-20261127-r1
       - agent/neighbormulch-r35-expressive-reentry-20261127-r1
+      - agent/neighbormulch-r36-withdrawal-20261127-r1
       - agent/neighbormulch-r33-resistant-evidence-20261126-r1
   pull_request:
     branches:
@@ -219,6 +220,10 @@ jobs:
         run: |
           python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_expressive_reentry_r35.py' -v
           python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_expressive_reentry_r35.py' -q
+      - name: R36 authored withdrawal, independent notification and continuing material life
+        run: |
+          python -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_withdrawal_r36.py' -v
+          python -O -m unittest discover -s SEAM/NEIGHBORMULCH/tests -p 'test_neighbor_withdrawal_r36.py' -q
       - name: Full inherited CO R52 organism court normal and optimized
         env:
           PYTHONPATH: ${{ github.workspace }}/SEAM/ORACLE/UM_SOROK_ORGANISM_R3

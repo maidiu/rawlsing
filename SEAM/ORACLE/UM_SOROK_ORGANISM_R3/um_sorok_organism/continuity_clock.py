@@ -52,6 +52,29 @@ def record_human_offer_commitment(world, user, recipient, location, due, event_r
     return row['id']
 
 
+def withdraw_human_offer_commitment(world,user,commitment_ref,event_ref):
+    """Prospective explicit withdrawal, never a recipient's knowledge.
+
+    This owner settles a previously authored pending OFFER undertaking, not
+    a mutually accepted appointment or a transfer. The actual exclusive
+    modeled deadline and any earlier performance remain binding history.
+    """
+    matches=[r for r in world.get('scheduled_obligations',[])
+        if r.get('id')==commitment_ref and r.get('kind')==HUMAN_OFFER_KIND
+        and r.get('responsible_actor')==user]
+    if len(matches)!=1:
+        raise ValueError('HUMAN_WITHDRAWAL_NO_OWN_COMMITMENT')
+    row=matches[0]
+    if (row.get('status')!='PENDING'
+            or not row['origin_clock']<world['clock']<row['due_clock']):
+        raise ValueError('HUMAN_WITHDRAWAL_WINDOW_NOT_PENDING')
+    row.update(status='WITHDRAWN_BY_AUTHORED_ACT',
+               settled_at_clock=world['clock'],
+               withdrawal_user_event_ref=event_ref,
+               no_recipient_notification_or_appraisal_inferred=True)
+    return row['id']
+
+
 def record_authored_food_offer(world,user,recipient,location,event_ref):
     """Fulfillment is the promised OFFER, not recipient assent or feeding."""
     matches=[r for r in world.get('scheduled_obligations',[])
