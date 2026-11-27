@@ -881,6 +881,9 @@ class CountryNumeric(unittest.TestCase):
             lane=col.finish()
             if layout is not None:self.assertTrue(lane[3].startswith(layout),lane[3:4])
             self.assertEqual([_routing_column_value(lane,i) for i in range(len(values))],values)
+            from rawlsing_next.pre553_source_backed_c11_facade import _routing_wire_column
+            self.assertEqual(list(_routing_wire_column(lane,len(values),b"field:")),
+                             [b"field:"+v for v in values])
         # Validate actual sealed geometry before a prepared digest can rely
         # on it; malformed tags/runs/codes cannot be hashed through one path
         # and randomly accessed through another.
@@ -888,9 +891,16 @@ class CountryNumeric(unittest.TestCase):
         fixture=_fixture("lifetime-routing-columns")
         packed=_PackedRoutingFacts(iter(fixture["projection"].routing))
         original=packed.immutable_storage()
-        rows=list(packed.canonical_rows())
+        from unittest.mock import patch
+        # Independent legacy random-access reconstruction and real full
+        # semantic objects agree with the new sequential wire.
+        with patch.object(_PackedRoutingFacts,"_row_bytes",
+                          side_effect=AssertionError("random row reconstruction")):
+            rows=list(packed.canonical_rows())
         self.assertEqual(rows,[canonical_json(x.as_dict()).encode()
                               for x in fixture["projection"].routing])
+        self.assertEqual(rows,[packed._row_bytes(run,i)
+                              for run in original[0] for i in range(len(run[2])//32)])
         runs,ends=original
         keys,cols,digests=runs[0]
         column=cols[0]
