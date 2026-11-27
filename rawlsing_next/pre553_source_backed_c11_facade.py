@@ -675,10 +675,9 @@ class _PackedRoutingFacts(Sequence):
             # Compile canonical field ordering once. Stream column values
             # in incidence order rather than doing a random binary search
             # for every shared rule field for every full-wire hash.
-            names=(*self._top,*keys)
             streams=[]
-            def field(name,lead):
-                return _routing_wire_column(columns[names.index(name)],rows,
+            def field(index,name,lead):
+                return _routing_wire_column(columns[index],rows,
                                             lead+_routing_field_key_bytes(name))
             from itertools import repeat
             def hashes(prefix,suffix=b'"'):
@@ -694,10 +693,10 @@ class _PackedRoutingFacts(Sequence):
                 elif name=="semantic_fields":
                     streams.append(repeat(lead+b'"semantic_fields":{',rows))
                     for j,k in enumerate(keys):
-                        streams.append(field(k,b"" if j==0 else b","))
+                        streams.append(field(len(self._top)+j,k,b"" if j==0 else b","))
                     streams.append(repeat(b"}",rows))
                 else:
-                    streams.append(field(name,lead))
+                    streams.append(field(self._top.index(name),name,lead))
             streams.append(repeat(b"}",rows))
             for parts in zip(*streams,strict=True):
                 yield b"".join(parts)
