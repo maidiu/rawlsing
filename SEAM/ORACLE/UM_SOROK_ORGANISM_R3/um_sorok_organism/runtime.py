@@ -706,6 +706,11 @@ class ConstitutiveRuntime:
                     raise ValueError('INTERACTIVITY_CONFLICTING_SELECTION')
                 practical['interactivity_deferral']=qualify_interactivity_deferral(
                     flat_alternatives,selected_alternative,proposed['defer_course_option_id'],e.location)
+            if (selected_alternative and proposed.get('practical_option_id')==
+                    selected_alternative['option_id'] and trial_choice is None
+                    and selected_alternative.get('cross_object_attention_analytic_only')):
+                practical['cross_object_attention_analytic_only']=copy(
+                    selected_alternative['cross_object_attention_analytic_only'])
             if selected_alternative and selected_alternative.get('productive_witness_attention'):
                 practical['productive_witness_attention']=copy(selected_alternative['productive_witness_attention'])
             if 'interactivity_relation_ref' in proposed:
@@ -1037,6 +1042,10 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('interactivity_deferral') else {}),
                 **({'undertaking_attention':copy(attention_receipt)} if attention_receipt else {}),
                 **({'correspondence_attention':copy(correspondence_receipt)} if correspondence_receipt else {}),
+                **({'selected_cross_object_attention_analytic_only':copy(
+                        experience['own_practical_selection']['cross_object_attention_analytic_only'])}
+                   if (experience.get('own_practical_selection') or {}).get(
+                       'cross_object_attention_analytic_only') else {}),
                 **({'focal_encounter':copy(focal_receipt)} if focal_receipt else {}),
                 **({'directed_encounter':copy(directed_receipt)} if directed_receipt else {}),
                 **({'notice_expectation':copy(experience['own_practical_selection']['notice_expectation'])}
@@ -1334,6 +1343,7 @@ class ConstitutiveRuntime:
             expression_access['own_practical_selection'].pop('private_rehearsal',None)
             expression_access['own_practical_selection'].pop('undertaking_attention',None)
             expression_access['own_practical_selection'].pop('focal_encounter',None)
+            expression_access['own_practical_selection'].pop('cross_object_attention_analytic_only',None)
             expression_access['own_practical_selection'].pop('productive_witness_attention',None)
             expression_access['own_practical_selection'].pop('notice_expectation',None)
             expression_access['own_practical_selection'].pop('interactivity_deferral',None)

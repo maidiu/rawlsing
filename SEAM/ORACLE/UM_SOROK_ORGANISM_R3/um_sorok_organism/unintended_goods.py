@@ -16,6 +16,7 @@ Nadia's preverbal mind.
 No deterministic human learning law is claimed.
 """
 from .types import GRADE, copy, stable_id
+from .cultural_mediation import qualified_exercised_cultural_sources
 
 
 def _source_received_signs(experience):
@@ -200,30 +201,15 @@ def possible_cross_object_significance(actor, experience, event_ref):
            e.get('origin_material_object_ref')) for e in actor.get('possible_ends',[])}
     out=[]
     demos=actor.get('cultural_demonstrations',[])
-    for practice in actor.get('cultural_reference_practices',[]):
-        old=practice.get('object_ref')
-        acquired=practice.get('origin_clock')
-        events=practice.get('source_event_refs',[])
-        if (practice.get('actor')!=aid or practice.get('status')!=
-                'ACQUIRED_SITUATED_PUBLIC_OBJECT_REFERENCE'
-                or type(old) is not str or old==obj
-                or type(acquired) is not int or acquired>=clock
-                or len(events)!=2 or len(set(events))!=2 or event_ref in events
-                or (practice['id'],obj) in seen):
+    for practice,source,exercised in qualified_exercised_cultural_sources(
+            aid,clock,actor.get('cultural_reference_practices',[]),demos,encounters):
+        old=practice['object_ref']
+        events=practice['source_event_refs']
+        if old==obj or event_ref in events or (practice['id'],obj) in seen:
             continue
-        source=[d for d in demos if d.get('id')==practice.get('source_demonstration_ref')
-                and d.get('actor')==aid and d.get('object_ref')==old
-                and d.get('event_ref')==events[0]
-                and type(d.get('clock')) is int and d['clock']<acquired]
-        exercised=[e for e in encounters if e.get('actor')==aid
-                   and e.get('event_ref')==events[1]
-                   and e.get('material_object_ref')==old
-                   and e.get('perceived_cue_ref')==practice.get('source_investigation_ref')
-                   and e.get('personally_attempted_operation')=='INSPECT']
-        if len(source)!=1 or len(exercised)!=1:continue
         basis={'source_practice_ref':practice['id'],
-               'source_demonstration_ref':source[0]['id'],
-               'source_exercised_encounter_ref':exercised[0]['id'],
+               'source_demonstration_ref':source['id'],
+               'source_exercised_encounter_ref':exercised['id'],
                'source_event_refs':copy(events),
                'earlier_material_object_ref':old,
                'world_material_object_ref':obj,
@@ -236,7 +222,7 @@ def possible_cross_object_significance(actor, experience, event_ref):
         basis['id']=stable_id('cross_object_significance',basis)
         out.append({'source_cue_ref':sign['id'],'world_material_object_ref':obj,
                     'incidental_object_end_basis':basis,
-                    'earlier_exercised_description':exercised[0].get('received_public_description'),
+                    'earlier_exercised_description':exercised.get('received_public_description'),
                     'current_received_description':current[0].get('received_public_description'),
                     'candidate_future_activities':['INSPECT','REPAIR'],
                     'meaning_not_preselected':True,

@@ -13,6 +13,7 @@ SOURCEFREE; no native CAN/ADP authority, no scientific learning law.
 from collections import Counter
 from dataclasses import replace
 from .types import copy, GRADE
+from .cultural_mediation import recruit_cross_object_attention
 
 
 def _bounded_unit(body, name, default):
@@ -127,6 +128,15 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
         ref, entry = sorted(monitoring, key=lambda pair: pair[0])[0]
         add(entry)
         monitoring_refs.append(ref)
+    cross_object=[]
+    for nomination in recruit_cross_object_attention(constitution,access):
+        # Prior reserve, monitoring and the hard capacity stay intact.
+        entry=next((x for x in high if x['cue']['id']==
+                    nomination['current_visible_object_cue_ref']),None)
+        if entry is not None and (len(chosen)<capacity or
+                any(x['cue']['id']==entry['cue']['id'] for x in chosen)):
+            add(entry)
+            cross_object.append(nomination)
     for v in high:
         if len(chosen)>=capacity: break
         add(v)
@@ -148,6 +158,8 @@ def situate_attention(constitution, access, *, ceiling=8, historical=None):
             'historical_sensory_bias_is_provisional':bool(historical_modalities),
             'requires_independent_actor_learning_for_durable_bias':True,
             'budget_policy_not_a_human_attention_law':True,
+            **({'cross_object_attention':cross_object}
+               if cross_object else {}),
             **({'monitoring_orientation_refs': monitoring_refs,
                 'monitoring_focus_is_not_actual_attention': True}
                if monitoring_refs else {}),
