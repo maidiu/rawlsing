@@ -297,6 +297,8 @@ class ConstitutiveRuntime:
                     modality=modality,private_to=private_to,source_actor=actor_id,
                     clock_offset=1,lasting_ticks=lasting_ticks)
         world['clock']+=1
+        from .continuity_clock import settle_meeting_deadlines
+        settle_meeting_deadlines(world)
         receipt=self.ledger.commit(self.world_id,wv,world,{}, {},'OBJECTIVE_CUE',actor_id,
             {'cue_ref':cue['id'],'issuer':'EXTERNAL_RESEARCH_FIXTURE','not_actor_memory':True})
         return {'receipt':receipt['id'],'cue':cue,'grade':GRADE}
@@ -334,6 +336,8 @@ class ConstitutiveRuntime:
         cue['contingent_offer_hash']=offer_hash
         cue['external_sign_only_not_verified_news_or_world_damage']=True
         world['clock']+=1
+        from .continuity_clock import settle_meeting_deadlines
+        settle_meeting_deadlines(world)
         committed=self.ledger.commit(self.world_id,v,world,{}, {},
              'SOURCEFREE_CONTINGENT_WORLD_NOTICE',None,{
                 'offer_id':proposal['offer_id'],

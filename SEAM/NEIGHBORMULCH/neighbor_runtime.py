@@ -681,9 +681,12 @@ class NeighborEncounter:
                 settle_human_offer_deadlines, record_human_offer_commitment,
                 record_authored_food_offer, withdraw_human_offer_commitment)
             settle_human_offer_deadlines(world)
-        from um_sorok_organism.continuity_clock import (
-            settle_meeting_deadlines, record_meeting_proposal, record_meeting_checkin, meeting_record)
-        settle_meeting_deadlines(world)
+        if (operation in ('PROPOSE_MEETING','CHECK_IN_MEETING')
+                or any(row.get('kind')=='HUMAN_ACTOR_MEETING_WINDOW'
+                       for row in world.get('scheduled_obligations',[]))):
+            from um_sorok_organism.continuity_clock import (
+                settle_meeting_deadlines, record_meeting_proposal, record_meeting_checkin, meeting_record)
+            settle_meeting_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
         commitment_ref=None
