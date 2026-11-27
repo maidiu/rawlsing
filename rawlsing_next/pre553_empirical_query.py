@@ -571,6 +571,8 @@ class I03GroupedExecutionScope:
             "open_groups": len(self._cache),
             "max_groups": self._max_groups,
             "max_cached_members": self._max_cached_members,
+            "rolling_groups":self._rolling_groups,
+            "retained_core_units":sum(self._retention_units(x) for x in self._cache.values()),
             "condition_cache_bytes_estimate":self._condition_bytes,
             "condition_cache_hits":sum(m.hits for m in self._condition_memos.values()),
             "condition_cache_misses":sum(m.misses for m in self._condition_memos.values()),
@@ -674,6 +676,17 @@ class I03GroupedExecutionScope:
         self._condition_memos[key]=memo
         return memo
 
+    def _retention_units(self,core):
+        # A zero-denominator core can still retain a full risk set and
+        # provenance. Continuing use is bounded by total retained entries,
+        # not just successful denominator members. Not a byte/RSS guarantee.
+        if not self._rolling_groups:
+            return len(core.denominator_members)
+        return (len(core.denominator_members)+len(core.risk_members)
+                +len(core.used_objects)+len(core.used_authority_refs)
+                +len(core.cell_by_respondent)+len(core.raw_cells)+len(core.cell_material)
+                +len(core.unresolved_condition_member_refs))
+
     def _miss_capacity_exhausted(self, cached_members: int) -> bool:
         """Return True only when no new core can fit the current bounds.
 
@@ -742,7 +755,7 @@ class I03GroupedExecutionScope:
             ] += 1
             return evaluation
         cached_members = sum(
-            len(existing.denominator_members) for existing in self._cache.values()
+            self._retention_units(existing) for existing in self._cache.values()
         )
         if not self._rolling_groups and self._miss_capacity_exhausted(cached_members):
             self._stats["capacity_fallbacks"] += 1
@@ -762,12 +775,12 @@ class I03GroupedExecutionScope:
         except Exception:
             self._stats["fallbacks"] += 1
             return None
-        size=len(core.denominator_members)
+        size=self._retention_units(core)
         if self._rolling_groups and size<=self._max_cached_members:
             while self._cache and (len(self._cache)>=self._max_groups
                    or cached_members+size>self._max_cached_members):
                 evicted=self._cache.pop(next(iter(self._cache)))
-                cached_members-=len(evicted.denominator_members)
+                cached_members-=self._retention_units(evicted)
                 self._stats["core_evictions"]+=1
         if (
             len(self._cache) >= self._max_groups
