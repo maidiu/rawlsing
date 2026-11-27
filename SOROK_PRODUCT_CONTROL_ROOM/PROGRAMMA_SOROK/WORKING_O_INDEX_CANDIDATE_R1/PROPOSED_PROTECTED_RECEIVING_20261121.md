@@ -452,3 +452,48 @@ JSON additive proposed field `sorok_g4_r55_r56_candidate`:
   "protected_receiving": "NOT_RECEIVED"
 }
 ```
+
+## 2026-11-27 — R34/R18 and bank execution matching pair proposal
+
+MD: Protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd, MD a565e6239ee730bf8aae796d1c5afb35207b1e93 and JSON f2081d41452a5fb5d7061fcf340af725e4ee07af unchanged. Candidate only: R34 5c8fc6fbb0d8c6f9697e474894d58d2f438fe3a4 849 invocations per mode and R18 7f2ece31f20d85a070abb67cbce0bdda9270cfb5 845 per mode, distinct lineages; mock scripted projection and callback-backed replay/scratch admission not live semantic sufficiency, causal isolation or authority. Bank d6ea8074ae7552a4abef9654188831f2b9e400c2 exact 9 pass/0 fail, 1063 slots; related evidence attached to seven existing criteria, prior receipt conserved; no criterion/independent/native/protected acceptance. Scoped old/new HOME comparison, owner incorporation held. Ledger b21be7eba56355ed0e7b8e1c82bc795fbbeaa8d4, CIC 10c6858d13631d8743250d4b34789e69e6158a7a.
+
+JSON additive proposed field `sorok_g4_r34_r18_bank_candidate`:
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "ledger_blob": "b21be7eba56355ed0e7b8e1c82bc795fbbeaa8d4",
+  "cic_blob": "10c6858d13631d8743250d4b34789e69e6158a7a",
+  "observations": 185,
+  "relationships": 639,
+  "criteria": 187,
+  "home_routes": 719,
+  "r34": {
+    "pr": 1398,
+    "head": "5c8fc6fbb0d8c6f9697e474894d58d2f438fe3a4",
+    "job": 140415173678,
+    "invocations_per_mode": 849,
+    "arm_dependent_fixture": true
+  },
+  "r18": {
+    "pr": 1378,
+    "head": "7f2ece31f20d85a070abb67cbce0bdda9270cfb5",
+    "job": 140418620843,
+    "invocations_per_mode": 845,
+    "callback_backed_replay": true,
+    "r34_joined": false
+  },
+  "bank": {
+    "head": "d6ea8074ae7552a4abef9654188831f2b9e400c2",
+    "job": 140347367297,
+    "pass": 9,
+    "fail": 0,
+    "slots": 1063
+  },
+  "owner_incorporation": "NOT_VERIFIED",
+  "home_semantic_conservation": "SCOPED_ONLY",
+  "independent_review": "HELD",
+  "protected_receiving": "NOT_RECEIVED",
+  "new_authority": false
+}
+```
