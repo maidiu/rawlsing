@@ -316,3 +316,40 @@ surface and actor-realization access differ; require owner-qualified
 current packets, not broadened whole-person private evidence. No fixed
 provider/effort assignment. R002 archive receipt identifies exact sources
 and prior reported results, with raw aggregate verification still held.
+
+
+## R23 — actual acquired expression and visitor surface intake
+
+Use original R35 ExpressiveReentryR35.course with unchanged positive,
+unheard, unacquired and unaddressed arms. Capture actual CO expression
+packets and responses at ValidatingSemanticService.proposal; count all
+semantic calls but keep only expression rows. Bind each to the actual
+committed actor step. Separately observe original MII.surface input and
+output inside NeighborEncounter.private_surface; verify actor/world and
+ledger unchanged, actual chain valid, no semantic call during visitor
+surface. This is local instrumentation, NOT a second surface owner.
+The private MII input/trace is not a prospective renderer packet and
+must not be sent to any provider. It can include candidate/unoffered
+information. The returned view is the owner-qualified presentation.
+The generic CO public_tip is not typed speech; the actual audible
+cadence sign is separately derived from committed world cue and access.
+No inference about visitor comprehension or truth of authored response.
+
+```sh
+python inference_lab_surface_r23.py --arm acquired \
+ --workload "$LAB/r35-expression.json" --witness "$LAB/r35-local.json" \
+ --report "$LAB/r35-report.json"
+python inference_lab_surface_r23.py --verify --workload "$LAB/r35-expression.json" \
+ --witness "$LAB/r35-local.json" --report "$LAB/r35-verified.json"
+```
+
+Use fresh filenames, private local directory. Original source blobs pinned.
+R23 compares exact F/E adapter wire on the actual expressive event's
+expression call; no external provider. It records callback and local
+surface timing separately (not provider latency), actual semantic call
+counts, accessible sign/no sign, and original course outcome including
+private later formation and trial. No live campaign allowed for this
+capture until owner-qualified input/consumption and exact replay path.
+RFA legacy typed-occurrence rubric informs a future comparative court;
+this is not the legacy typed prospective action renderer. R35 is an
+older executed owner course, not R38/R60 join or whole current UX.

@@ -122,6 +122,8 @@ def _wire(row,a,b):
 
 def build_plan(document,config,*,per_stratum=3,tasks=None,sequence_ids=None):
     p=verify_workload(document)
+    if p["fixture"].startswith("R35_SURFACE_"):
+        raise ValueError("LAB_SURFACE_OWNER_QUALIFICATION_REQUIRED")
     if any(r["task"] not in TASKS for r in p["rows"]):
         raise ValueError("LAB_CHECKPOINT_REQUIRES_SEPARATE_OWNER_QUALIFIED_TRANSPORT")
     cfg=normalize_config(config);b=cfg["budget"]
