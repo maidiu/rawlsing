@@ -235,7 +235,11 @@ def possible_activity_affects(actor, experience, event_ref):
 
 def admit_activity_affect(actor, experience, event_ref, proposal):
     allowed={'kind','basis','affect_name','personal_sense','course_orientation'}
-    if set(proposal)!=allowed or proposal['basis'] not in possible_activity_affects(actor,experience,event_ref):
+    if (set(proposal)!=allowed or proposal['basis'] not in
+            (possible_self_expression_affects(actor,experience,event_ref)
+             if isinstance(proposal.get('basis'),dict)
+             and proposal['basis'].get('formation_source')=='OWN_PERFORMED_EXPRESSION'
+             else possible_activity_affects(actor,experience,event_ref))):
         raise ValueError('ACTIVITY_AFFECT_UNQUALIFIED_HISTORY')
     for k,limit in (('affect_name',80),('personal_sense',400)):
         v=proposal[k]
@@ -282,6 +286,11 @@ def annotate_activity_affects(constitution, access, options):
         for alt in opt.get('practical_alternatives',[]):
             rows=by_project.get(alt.get('project_id'),[])
             if not rows or alt.get('binding_status')=='UNBOUND_PARTY_NOT_PRESENT':continue
+            # An affect about one's own expressive practice concerns the
+            # particular expressive course, not every means of its undertaking.
+            rows=[a for a in rows if a['basis'].get('formation_source')!='OWN_PERFORMED_EXPRESSION'
+                  or a['basis'].get('expressive_operation')==opt['action']]
+            if not rows:continue
             # Each relation is preserved, even if no action tendency follows.
             alt['course_affective_organizations']=[copy(a) for a in rows]
             orientations={a['course_orientation'] for a in rows}
@@ -407,3 +416,74 @@ def realized_vocal_cadence(actor,attempt,location):
             if rec.get('cadence') in CADENCES and rec.get('id')==stable_id('expressive_practice',{'basis':rec['basis'],'cadence':rec['cadence']}):
                 manners.add(rec['cadence'])
     return next(iter(manners)) if len(manners)==1 else None
+
+
+def possible_self_expression_affects(actor, experience, event_ref):
+    """A person's actual received expression can become a new affective object.
+
+    The earlier acquired affect and expressive practice are distinct from
+    actual later bodily performance and its personal reception. A semantic
+    proposal can form a higher-order orientation, including indifference or
+    opposed significance, without claiming conscious causal understanding.
+    This bounded first draft preserves parent affect, expressive practice,
+    and project; it does not compel insight, shame, pride, or repression.
+    """
+    aid=actor.get('id')
+    voice=own_vocal_reception(actor,experience)
+    if not voice or voice['cadence_as_sensed'] not in CADENCES:return []
+    paths=actor.get('evidence_paths',[])
+    current=[(i,p) for i,p in enumerate(paths)
+             if p.get('event')==event_ref and p.get('experience_ref')==experience.get('ref')]
+    if len(current)!=1:return []
+    i,path=current[0]
+    if (path.get('own_vocal_reception')!=voice
+            or path.get('own_action')!='SPEAK'
+            or path.get('purpose_status')!='ACTOR_POLICY_SELECTED_PROJECT_COURSE'
+            or len(path.get('selected_project_refs',[]))!=1
+            or voice['cue_ref'] not in path.get('received_cue_refs',[])):
+        return []
+    pid=path['selected_project_refs'][0]
+    if not any(p.get('id')==pid and p.get('status','active')=='active'
+               for p in actor.get('projects',[])):return []
+    # If distinct recruited practices could explain the same audible sign,
+    # do not attribute it to a particular parent organization here.
+    qualified=[]
+    for exp in actor.get('expectations',[])[-128:]:
+        if exp.get('actor')!=aid or exp.get('project_id')!=pid:continue
+        for aff in exp.get('affective_organizations',[])[-16:]:
+            rec=aff.get('expressive_practice')
+            if (not rec or aff.get('depth')!=1 or aff.get('actor')!=aid
+                    or aff.get('expectation_ref')!=exp['id']
+                    or aff.get('project_ref')!=pid
+                    or aff.get('id') not in voice['selected_affect_refs_analytic_only']
+                    or rec.get('cadence')!=voice['cadence_as_sensed']
+                    or aff.get('basis',{}).get('location')!=voice['location']
+                    or rec.get('basis',{}).get('location')!=voice['location']):
+                continue
+            prior=[p for p in paths[:i] if p.get('event')==rec['basis'].get('later_event_ref')]
+            if (len(prior)!=1 or _expressive_basis(actor,aff,prior[0])!=rec['basis']
+                    or rec.get('id')!=stable_id('expressive_practice',
+                         {'basis':rec['basis'],'cadence':rec['cadence']})
+                    or voice['cue_ref'] in (rec['basis'].get('earlier_cue_ref'),
+                                             rec['basis'].get('later_cue_ref'))):
+                continue
+            qualified.append((exp,aff,rec))
+    if len(qualified)!=1:return []
+    exp,aff,rec=qualified[0]
+    if any(a.get('basis',{}).get('source_expressive_practice_ref')==rec['id']
+           for e in actor.get('expectations',[]) for a in e.get('affective_organizations',[])):
+        return []
+    return [{'formation_source':'OWN_PERFORMED_EXPRESSION',
+             'expectation_ref':exp['id'],'project_ref':pid,
+             'origin_event_ref':exp['origin_event'],
+             'parent_affect_event_ref':aff['origin_event_ref'],
+             'object_affect_ref':aff['id'],
+             'source_expressive_practice_ref':rec['id'],
+             'practice_acquisition_event_ref':rec['basis']['later_event_ref'],
+             'current_event_ref':event_ref,'current_experience_ref':experience['ref'],
+             'current_cue_ref':voice['cue_ref'],
+             'cadence_as_sensed':voice['cadence_as_sensed'],
+             'location':voice['location'],
+             'cue_terms':copy(aff['basis']['cue_terms']),
+             'expressive_operation':'SPEAK',
+             'not_conscious_self_explanation_or_observer_interpretation':True}]
