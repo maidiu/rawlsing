@@ -2514,5 +2514,132 @@
       "wvs7_ledger_blob": "b246573d4aad7f458ccc108f8844b6ce5cc631e1",
       "held": "Original config bodies truncated; complete native coverage, current permission, rule-grain execution/economics and independent protected receiving."
     }
+  },
+  "g4_authority_consumption_20261127": {
+    "scope": "SOURCE_STATIC_EXACT_BLOB_INSPECTION_AND_PUBLISHED_OWNER_HANDOFF_READBACK__NOT_OWNER_ACCEPTANCE",
+    "parent": "f010cd2375bf3aaa9cb4f682705871e781ee65d5",
+    "protected_cut": "827714e83743056939894a39736d72ea16bdc6dd",
+    "r157_commit": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+    "configs": [
+      {
+        "source": "SRC04",
+        "blob": "6294410641bbd73ec616a99fbf1b3fd68af693c4",
+        "path": "rawlsing_next/source_configuration/data/SRC04/source.config.json",
+        "rows": 7337,
+        "physical_slots": 181,
+        "response_slots": 178,
+        "coordinates": 3,
+        "routing_templates": 178,
+        "potential_expansion": 1305986,
+        "authority_states": {
+          "ALLOW": 1,
+          "DEFER": 6
+        },
+        "response_code_entries": {
+          "SUBSTANTIVE_RESPONSE": 915,
+          "DK": 255,
+          "MISSING": 213,
+          "SOURCE_SPECIFIC_SPECIAL": 1
+        },
+        "native_identity": "physical row ordinal only",
+        "weight_slots": 0,
+        "explicit_parent_predicates": 0,
+        "positive_routes": 0,
+        "selector": "ALL",
+        "routing_state": "ROUTING_UNKNOWN",
+        "distinct_routing_authority_refs": 1,
+        "distinct_risk_and_member_replay_refs": 178
+      },
+      {
+        "source": "SRC16",
+        "blob": "84abd3f6e37718a757a4597768b97218cb29948b",
+        "path": "rawlsing_next/source_configuration/data/SRC16/SRC16.source.config.json",
+        "rows": 1613,
+        "physical_slots": 216,
+        "response_slots": 157,
+        "coordinates": 2,
+        "routing_templates": 157,
+        "potential_expansion": 253241,
+        "authority_states": {
+          "ALLOW": 1,
+          "DEFER": 4
+        },
+        "response_code_entries": {
+          "INAPPLICABLE": 154,
+          "MISSING": 311,
+          "DK": 154,
+          "NOT_ASKED": 462,
+          "SOURCE_SPECIFIC_SPECIAL": 462,
+          "INVALID_UNRESOLVED": 308,
+          "REFUSAL": 154,
+          "SUBSTANTIVE_RESPONSE": 5772
+        },
+        "native_identity": "id slot declared; decoded witness/identity-map authority absent",
+        "weight_slots": 0,
+        "explicit_parent_predicates": 0,
+        "positive_routes": 0,
+        "selector": "ALL",
+        "routing_state": "ROUTING_UNKNOWN",
+        "distinct_routing_authority_refs": 1,
+        "distinct_risk_and_member_replay_refs": 157
+      },
+      {
+        "source": "SRC35",
+        "blob": "6bd1cc470941969d060eaff98bedea4bcc6259fe",
+        "path": "rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json",
+        "rows": 97220,
+        "physical_slots": 613,
+        "response_slots": 390,
+        "coordinates": 3,
+        "routing_templates": 390,
+        "potential_expansion": 37915800,
+        "authority_states": {
+          "DEFER": 4,
+          "ALLOW": 1
+        },
+        "response_code_entries": {
+          "SUBSTANTIVE_RESPONSE": 12561,
+          "MISSING": 973,
+          "NOT_ASKED": 492,
+          "DK": 356,
+          "INAPPLICABLE": 34
+        },
+        "native_identity": "S007 slot declared; decoded witness/identity-map authority absent",
+        "weight_slots": 0,
+        "explicit_parent_predicates": 0,
+        "positive_routes": 0,
+        "selector": "ALL",
+        "routing_state": "ROUTING_UNKNOWN",
+        "distinct_routing_authority_refs": 1,
+        "distinct_risk_and_member_replay_refs": 390
+      }
+    ],
+    "config_read_method": "Contents endpoint empty/truncated; complete original JSON retrieved by exact Git blob and parsed.",
+    "potential_expansion_total": 39475027,
+    "not_measured": "No original respondent execution; cardinality from configured rows × templates; response counts are stored code-rule entries, not empirical observations.",
+    "runtime": {
+      "head": "85995ee71b0172632581b7e3a407984a8c04301f",
+      "adapter": "rawlsing_next/pre553_r157_projection_adapter.py#L1999-L2040 blob d4d84ef164feba6fb0de0851568738eb5f5e937d",
+      "projection": "same adapter #L2068 build_governed_c11_projection passes routing=_routing(...), constructs tuple",
+      "facade": "rawlsing_next/pre553_source_backed_c11_facade.py blob 07b17d85e75a577b00732156f24e6b146e3c93d6 #L1056-L1059 sorts packed routing only when projection already packed and country collector present; R157 tuple does not prove packed path",
+      "ingest": "rawlsing_next/pre553_c11_ingest.py blob a3735a3b0ae9eb7f565a5a648932aad13682e50f #L659-L705 constructs each packed fact and validates carrier/nested refs; independent registry validation remains",
+      "consumer": "existing I02 country routing and I03 saved readers; original factored path unproved",
+      "d03": "rawlsing_next/pre553_runtime_authority.py blob 896c7094124a4aaea23eec550178e4bf8e73ac68; exact runtime risk successor/narrowing not source issuer",
+      "selected_court": "existing #1006 and REMONT; R16 run 45917901290 all 8 jobs successful sourcefree, not authority-factorization proof"
+    },
+    "field_authority": {
+      "head": "109d7a31b27e1aab14f60a63210df6b91c59f4c7",
+      "resource": "R7 owner-reported private ZIP byte readback +14 structural tests; ArabBar1 181/181, 17 prior inquiries plus one new enrichment/inquiry; Afro IX 421 metadata, 29 author dispositions, 392 deferred, six candidate inquiries, five conceptual links zero equivalences; external provider/distinct critic NOT_RUN, cost unmeasured, no native analysis or issued authority",
+      "consumer": "existing S01 semantic/role/risk issuer -> I03/I05/S04/FF01 and conditional N10E; Q612 attributed reason, Q250 dependent referent, Q247 responsibility denial; not individual motive or independent material rule"
+    },
+    "handoffs": {
+      "remont": "https://github.com/maidiu/rawlsing/pull/1162#issuecomment-7211513543",
+      "r16": "https://github.com/maidiu/rawlsing/pull/1394#issuecomment-7211514090",
+      "economics": "https://github.com/maidiu/rawlsing/issues/1006#issuecomment-7211531452",
+      "field_authority": "https://github.com/maidiu/rawlsing/pull/1327#issuecomment-7211530987"
+    },
+    "owner_acknowledgment": "PUBLISHED_AND_READ_BACK__DISTINCT_OWNER_DISPOSITION_PENDING",
+    "lifetimes": "A scientific authority version; B executable compiled closure by exact version/context; C respondent-dependent incidence/exceptions/identity; D analytical query and learned products; E independent permission/currentness at actual use",
+    "held": "Scientific rule-family/country/form/parent/exception adjudication and precedence; original permissions, admitted weight/design/estimand, factorized path and exact parity/CPU/RSS/storage/I/O measurement, owner acknowledgment, independent G5 and protected receiving. No new task, code, queue or all35 prerequisite."
   }
 }
