@@ -22,7 +22,7 @@ from um_sorok_organism.inference_lab_admission import AdmissionCapture, evaluate
 from um_sorok_organism.live_psychological_llm import (
     ExplicitJSONLLMProvider, _expand_exact_aliases, _expand_structured_fields)
 from um_sorok_organism.runtime import ConstitutiveRuntime
-from um_sorok_organism.types import canonical, digest
+from um_sorok_organism.types import canonical, copy, digest
 
 
 def checkout_head():
@@ -87,7 +87,19 @@ def replay_course(document,head):
     original_grade=getattr(_owner().CallbackLLMProvider,"grade",
                           "UNSPECIFIED_SEMANTIC_ADAPTER_NO_PROVEN_GRADE")
     replay=ExactTapeProvider(document,source_head=head,original_grade=original_grade)
-    actual=owner_course(p["fixture"]=="R54_RELEASED",lambda cb:replay)
+    original=_owner().CallbackLLMProvider
+    def factory(cb):
+        def observe(task,packet):
+            recorded=replay.propose(task,packet)
+            # The owner fixture has assertion-observation lists populated by
+            # its hermetic callback. Preserve them without letting the callback
+            # substitute a different decision into the taped trajectory.
+            observed=cb(task,copy(packet))
+            if observed!=recorded:
+                raise ValueError("LAB_OWNER_FIXTURE_DECISION_MISMATCH")
+            return recorded
+        return original(observe)
+    actual=owner_course(p["fixture"]=="R54_RELEASED",factory)
     replay.finish()
     if p["owner_state_sha256"]!=digest(actual):
         raise ValueError("LAB_OWNER_STATE_REPLAY_MISMATCH")

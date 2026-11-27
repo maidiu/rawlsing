@@ -15,7 +15,10 @@ semantic decisions. Capture wraps its existing callback, rather than scripting
 a second life. The tape holds exact task, original input, actual returned
 proposal and digests; it is local and private. Exact replay refuses changed
 context, missing/extra decisions, wrong checkout identity and a mismatched
-complete owner-state digest. This is a decision
+complete owner-state digest. The R54 fixture's hermetic callback is also run
+for its existing observation lists and must agree exactly with the recorded
+proposal; this is not callback-free command replay. The tape supplies the
+returned decision. This is a decision
 replay control, not independent history-only inference or evidence of live
 semantic fidelity. Captured elapsed time is fixture callback wall time, not
 model token expenditure or full life cost.
