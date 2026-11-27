@@ -67,7 +67,7 @@ class R157RuleGrainBridge(unittest.TestCase):
                     packed_seconds=time.monotonic()-t
                     self.assertIs(type(packed.routing),facade._PackedRoutingFacts)
                     self.assertEqual(tuple(packed.routing),expanded.routing)
-                    self.assertEqual(packed.cache_identity(),expanded.cache_identity())
+                    self.assertEqual(packed.cache_identity,expanded.cache_identity)
                     adapter.verify_config_projection_binding(config,packed,**options)
                     # Exact current producer and release identity. The
                     # historical fixture release is not assumed current ABI.
