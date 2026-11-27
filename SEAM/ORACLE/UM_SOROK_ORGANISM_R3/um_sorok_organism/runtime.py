@@ -20,6 +20,7 @@ from .attention_field import (offer_undertaking_attention, received_undertaking_
 from .ordinary_life import passage
 from .activity import (record_activity_afterlife, register_lived_activity_attempt,
                         possible_productive_witness_reorganizations,
+                        own_provisioning_receipt, possible_provisioning_reorganizations,
                        possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, qualify_interactivity_deferral,
                        possible_interactivity_relations)
@@ -1052,6 +1053,8 @@ class ConstitutiveRuntime:
                    if (experience.get('own_practical_selection') or {}).get('notice_expectation') else {}),
                 **({'own_vocal_reception':own_vocal_reception(actors[aid],experience)}
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
+                **({'own_provisioning_receipt_analytic_only':receipt}
+                   if (receipt:=own_provisioning_receipt(actors[aid],experience,world)) else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1214,6 +1217,9 @@ class ConstitutiveRuntime:
                     possible_productive_vocal_takeups(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_takeups':copy(
                     possible_dependency_project_takeups(actors[aid],experience,objective_ref)),
+                **({'historically_possible_provisioning_reorganizations':copy(provisioning)}
+                   if (provisioning:=possible_provisioning_reorganizations(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_productive_witness_reorganizations':copy(
                     possible_productive_witness_reorganizations(actors[aid],experience,objective_ref)),
                 'historically_possible_dependency_project_reorganizations':copy(
