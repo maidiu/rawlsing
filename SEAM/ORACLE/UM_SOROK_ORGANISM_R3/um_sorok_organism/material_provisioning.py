@@ -243,9 +243,65 @@ def visitor_held_food_available(world, giver, location):
                 "food",0),"VISITOR_HELD_FOOD")>=1)
 
 
+def current_feeding_sources(world,giver,location):
+    """Existing eligible sources, not another person's private stock or a promise.
+
+    A sourcefree local practical power is not a claim of subjective
+    recognition of the controller, entitlement under native law, or future
+    availability. No stock amount is returned to semantic policy.
+    """
+    if world.get("positions",{}).get(giver)!=location:
+        return []
+    site=world.get("sites",{}).get(location)
+    if site is None:return []
+    out=[]
+    if _quantity(world.get("holdings",{}).get(giver,{}).get("food",0),
+                 "GIVER_HELD_FOOD")>=1:
+        out.append("GIVER_HELD_FOOD")
+    if _quantity(site.get("mutual_aid_food",0),"INDEPENDENT_COMMONS_FOOD")>=1:
+        out.append("MUTUAL_AID_FOOD")
+    if (site.get("shared_household_food") is True
+            and site.get("provisioning_rule")=="PROPORTIONAL_DECLARED_CLAIMS_R1"
+            and can_draw_shared_food(world,giver,location)
+            and _quantity(site.get("food",0),"HOUSEHOLD_FOOD")>=1):
+        out.append("SHARED_SITE_FOOD")
+    return out
+
+
+def offer_feeding_source_alternatives(world,access,option):
+    """Refine existing addressed FEED alternatives, never create a new end.
+
+    Keep legacy action-only and previously issued option IDs unchanged. A
+    selected source is a different materially consequential means, even when
+    the same FEED operation and recipient are held fixed.
+    """
+    if option.get("action")!="FEED" or "FEED" not in access.affordances:
+        return []
+    sources=current_feeding_sources(world,access.actor,access.location)
+    if len(sources)<2:return []
+    peers={c.get("source_actor") for c in access.cues
+           if c.get("kind")=="coactor_present"}
+    out=[]
+    for base in option.get("practical_alternatives",[]):
+        target=base.get("world_request",{}).get("addressed_party_ref")
+        if target not in peers or target==access.actor:continue
+        for source in sources:
+            row=copy(base)
+            row.update(option_id=stable_id("feeding_source_option",{
+                "base":base["option_id"],"actor":access.actor,
+                "clock":access.world_clock,"recipient":target,"source":source}),
+                grounds_status="PRESENT_FEEDING_SOURCE_ALTERNATIVE",
+                source_base_option_ref=base["option_id"],
+                source_base_grounds_status=base.get("grounds_status"),
+                selected_feeding_source=source,
+                no_future_availability_or_recipient_appraisal_inferred=True)
+            out.append(row)
+    return out
+
+
 def perform_one_actual_feeding(world,actors,giver,recipient,location,
                                actor_selection_source='UNKNOWN_NOT_ISSUED',
-                               *, qualified_human_offer_ref=None):
+                               *, qualified_human_offer_ref=None, selected_food_source=None):
     """One independently authored, actual FEED transfers a full food unit.
 
     No infant duty or assumed caregiver motive. This operation belongs to
@@ -268,7 +324,16 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
                 "material_feeding_ref":None}
     held=_quantity(world.get("holdings",{}).get(
         giver,{}).get("food",0),"GIVER_HELD_FOOD")
-    if held>=1:
+    if selected_food_source is not None:
+        if (human_offer or actor_selection_source!=
+                "ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE"
+                or selected_food_source not in ORIGINS
+                or selected_food_source not in current_feeding_sources(world,giver,location)):
+            return {"status":"BLOCKED","outcome":"SELECTED_FEEDING_SOURCE_UNAVAILABLE",
+                    "material_feeding_ref":None}
+        origin=selected_food_source
+        next_food=_available(world,origin,giver,location)-Decimal(1)
+    elif held>=1:
         origin="GIVER_HELD_FOOD"
         next_food=held-Decimal(1)
     elif human_offer:
@@ -335,6 +400,12 @@ def perform_one_actual_feeding(world,actors,giver,recipient,location,
         "caregiver_intent_or_love":"NOT_INFERRED",
         "not_compressed_fiction":True,
         "grade":GRADE}
+    if selected_food_source is not None:
+        receipt.update(explicit_actor_selected_food_source=selected_food_source,
+                       food_pool_holder=(giver if origin=="GIVER_HELD_FOOD" else location),
+                       food_pool_before=float(next_food+Decimal(1)),
+                       food_pool_after=float(next_food),
+                       no_counterfactual_lost_wage_or_motive_inferred=True)
     if human_offer:
         receipt.update(human_authored_offer_ref=qualified_human_offer_ref,
                        actor_independently_selected_this_attempt=False,

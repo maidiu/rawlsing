@@ -694,7 +694,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='FEED':
         resolved_food=perform_one_actual_feeding(
             world,actors,aid,target,loc,
-            attempt.intention)
+            attempt.intention,
+            selected_food_source=attempt.practical_selection.get('selected_feeding_source'))
         status=resolved_food['status']
         output=resolved_food['outcome']
         material_feeding_ref=resolved_food['material_feeding_ref']
@@ -788,7 +789,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 # decide what material assistance actually happened.
                 supported=perform_one_actual_feeding(
                     world,actors,partner_attempt.actor,aid,loc,
-                    partner_attempt.intention)
+                    partner_attempt.intention,
+                    selected_food_source=partner_attempt.practical_selection.get('selected_feeding_source'))
                 material_feeding_ref=supported['material_feeding_ref']
                 if supported['status']=='PERFORMED':
                     effects[aid]['received_assistance']=True
