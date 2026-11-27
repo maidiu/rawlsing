@@ -91,6 +91,181 @@ def record_authored_food_offer(world,user,recipient,location,event_ref):
     return row['id']
 
 
+MEETING_KIND='HUMAN_ACTOR_MEETING_WINDOW'
+MEETING_OPEN=frozenset(('PROPOSED','ACCEPTED','CHECKED_IN'))
+MEETING_ACTIONS={'ACCEPT_MEETING':'PROPOSE_MEETING','MEET_VISITOR':'CHECK_IN_MEETING'}
+MEETING_SIGNS={'ACCEPT_MEETING':'visitor_meeting_proposal','MEET_VISITOR':'visitor_meeting_checkin'}
+
+
+def meeting_record(world,ref):
+    rows=[r for r in world.get('scheduled_obligations',[])
+          if r.get('id')==ref and r.get('kind')==MEETING_KIND]
+    if len(rows)!=1:raise ValueError('MEETING_UNKNOWN_OR_AMBIGUOUS')
+    return rows[0]
+
+
+def record_meeting_proposal(world,user,recipient,location,due,event_ref):
+    # Two particular future modeled transitions, not hours or real-human
+    # calendar time. Assent requires an immediate actual proposal encounter.
+    if type(due) is not int or not world['clock']+3<due<=world['clock']+MAX_HORIZON:
+        raise ValueError('MEETING_INVALID_FUTURE_WINDOW')
+    if any(r.get('kind')==MEETING_KIND and r.get('status') in MEETING_OPEN
+           and r.get('responsible_actor')==user and r.get('recipient')==recipient
+           and r.get('due_clock')==due for r in world.get('scheduled_obligations',[])):
+        raise ValueError('MEETING_DUPLICATE_OPEN_WINDOW')
+    row={'id':stable_id('meeting_window',{'world':world['id'],'proposal':event_ref}),
+         'kind':MEETING_KIND,'responsible_actor':user,'recipient':recipient,
+         'location':location,'origin_clock':world['clock'],'due_clock':due,
+         'checkin_clock':due-2,'meeting_clock':due-1,
+         'source_user_event_ref':event_ref,'status':'PROPOSED',
+         'no_actor_assent_or_real_calendar_inferred':True,'grade':GRADE}
+    world.setdefault('scheduled_obligations',[]).append(row)
+    return row['id']
+
+
+def qualify_meeting_checkin(world,user,ref,location):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACCEPTED'
+            or world['clock']+1!=row['checkin_clock']):
+        raise ValueError('MEETING_CHECKIN_NOT_AUTHORIZED_AT_THIS_CLOCK')
+    return row
+
+
+def record_meeting_checkin(world,user,ref,location,event_ref):
+    row=meeting_record(world,ref)
+    if (row['responsible_actor']!=user or row['location']!=location
+            or row['status']!='ACCEPTED' or world['clock']!=row['checkin_clock']):
+        raise ValueError('MEETING_CHECKIN_NOT_AUTHORIZED_AT_THIS_CLOCK')
+    row.update(status='CHECKED_IN',checkin_user_event_ref=event_ref)
+    return row
+
+
+def settle_meeting_deadlines(world):
+    settled=[]
+    for row in world.get('scheduled_obligations',[]):
+        if (row.get('kind')!=MEETING_KIND or row.get('status') not in MEETING_OPEN
+                or world['clock']<row['meeting_clock']):continue
+        row.update(status={'PROPOSED':'ELAPSED_WITHOUT_ACTOR_ASSENT',
+                           'ACCEPTED':'ELAPSED_WITHOUT_ACTUAL_CHECK_IN',
+                           'CHECKED_IN':'ELAPSED_WITHOUT_ACTUAL_MEETING'}[row['status']],
+                   settled_at_clock=row['meeting_clock'],
+                   waiting_breach_or_actor_appraisal='NOT_ESTABLISHED')
+        settled.append(row['id'])
+    return settled
+
+
+def meeting_options(constitution,access,action):
+    """Only a current actor-local qualified sign can issue an exact choice."""
+    if action not in MEETING_ACTIONS:return []
+    out=[]
+    for cue in access.cues:
+        if (cue.get('kind')!=MEETING_SIGNS[action]
+                or cue.get('clock')!=access.world_clock
+                or cue.get('private_to')!=constitution.actor
+                or any(type(cue.get(k)) is not str for k in
+                       ('meeting_ref','visitor_ref','visitor_event_ref'))
+                or any(type(cue.get(k)) is not int for k in
+                       ('checkin_clock','meeting_clock'))):continue
+        out.append({'option_id':stable_id('meeting_choice',{
+            'actor':constitution.actor,'clock':access.world_clock,
+            'action':action,'cue':cue['id'],'meeting':cue['meeting_ref']}),
+            'actor':constitution.actor,'as_of_clock':access.world_clock,
+            'operation':action,'project_id':None,
+            'grounds_status':'ACTUAL_ADDRESSED_MEETING_SIGN',
+            'binding_status':'EXACT_CURRENT_HUMAN_MEETING_SIGN',
+            'world_request':{'operation':action,'addressed_party_ref':cue['visitor_ref'],
+                             'material_object_ref':None},
+            'anticipated_difference':None,'meeting_ref':cue['meeting_ref'],
+            'meeting_source_user_event_ref':cue['visitor_event_ref'],
+            'meeting_source_cue_ref':cue['id'],
+            'meeting_checkin_clock':cue['checkin_clock'],
+            'meeting_clock':cue['meeting_clock'],
+            'not_future_presence_or_shared_motive':True,'grade':GRADE})
+    return out
+
+
+def qualified_meeting_receipt(world,actor,attempt,ledger_event):
+    """Actual user authorship, exact current source, actor selection rechecked."""
+    from .types import digest
+    from .organism import eligible
+    op=MEETING_ACTIONS.get(attempt.action)
+    if op is None or attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE':
+        return None
+    selected=attempt.practical_selection.get('selected_meeting')
+    if type(selected) is not dict or type(ledger_event) is not dict:return None
+    env=ledger_event.get('envelope',{});payload=env.get('payload',{})
+    loc=world.get('positions',{}).get(actor['id'])
+    visitor=world.get('neighbor_users',{}).get(attempt.target,{})
+    if (ledger_event.get('kind')!='NEIGHBOR_USER_CONTRIBUTION'
+            or env.get('world')!=world['id'] or ledger_event.get('clock')!=world['clock']
+            or payload.get('performed') is not True or payload.get('user')!=attempt.target
+            or visitor.get('present') is not True or visitor.get('location')!=loc
+            or attempt.target in world['positions']
+            or selected.get('meeting_source_user_event_ref')!=payload.get('user_event_ref')
+            or not eligible(actor['body'],attempt.action)[0]):return None
+    events=[e for e in world.get('neighbor_user_events',[])
+            if e.get('event_ref')==payload.get('user_event_ref')]
+    if len(events)!=1:return None
+    e=events[0];ref=selected.get('meeting_ref')
+    try:row=meeting_record(world,ref)
+    except ValueError:return None
+    authored={'user':attempt.target,'operation':op,'text':None,'destination':None}
+    if op=='PROPOSE_MEETING':
+        authored.update(target_actor_ref=actor['id'],due_clock=row['due_clock'])
+        valid=(row['status']=='PROPOSED' and row['origin_clock']==world['clock']
+               and row['source_user_event_ref']==e.get('event_ref')
+               and world['clock']+1<row['checkin_clock'])
+    else:
+        authored.update(target_commitment_ref=ref)
+        valid=(row['status']=='CHECKED_IN' and row['checkin_clock']==world['clock']
+               and row['checkin_user_event_ref']==e.get('event_ref')
+               and row['meeting_clock']==world['clock']+1)
+    if (not valid or row['responsible_actor']!=attempt.target
+            or row['recipient']!=actor['id'] or row['location']!=loc
+            or e.get('operation')!=op or e.get('status')!='PERFORMED'
+            or e.get('user')!=attempt.target or e.get('destination')!=loc
+            or e.get('clock')!=world['clock'] or e.get('meeting_ref')!=ref
+            or payload.get('meeting_ref')!=ref
+            or e.get('payload_hash')!=digest(authored)
+            or payload.get('payload_hash')!=e['payload_hash']
+            or e.get('event_ref')!=stable_id('neighbor_user',{
+                'user':attempt.target,'request_id':e.get('request_id'),
+                'payload_hash':e['payload_hash']})):return None
+    signs=[q for q in world.get('cues',[])
+           if q.get('id')==selected.get('meeting_source_cue_ref')
+           and q.get('id') in payload.get('candidate_cue_refs',[])
+           and q.get('kind')==MEETING_SIGNS[attempt.action]
+           and q.get('private_to')==actor['id'] and q.get('location')==loc
+           and q.get('visitor_ref')==attempt.target
+           and q.get('visitor_event_ref')==e['event_ref']
+           and q.get('meeting_ref')==ref and q.get('clock')==world['clock']
+           and q.get('last_access_clock',-1)>=world['clock']
+           and q.get('checkin_clock')==row['checkin_clock']
+           and q.get('meeting_clock')==row['meeting_clock']
+           and actor['body']['sensor']>=q.get('threshold',.05)]
+    if len(signs)!=1:return None
+    return {'actor':actor['id'],'visitor_ref':attempt.target,'operation':op,
+            'meeting_ref':ref,'user_event_ref':e['event_ref'],
+            'ledger_ref':ledger_event['id'],'clock':world['clock'],
+            'cue':dict(signs[0]),'grade':GRADE}
+
+
+def perform_meeting_action(world,attempt,receipt):
+    if (receipt is None or receipt.get('actor')!=attempt.actor
+            or receipt.get('operation')!=MEETING_ACTIONS.get(attempt.action)):
+        return 'BLOCKED','NO_QUALIFIED_CURRENT_MEETING_OCCASION',None
+    row=meeting_record(world,receipt['meeting_ref'])
+    if attempt.action=='ACCEPT_MEETING':
+        row.update(status='ACCEPTED',accepted_at_clock=world['clock']+1,
+                   acceptance_source_user_event_ref=receipt['user_event_ref'])
+        return 'PERFORMED','PARTICULAR_MEETING_ACCEPTED',row['id']
+    row.update(status='MEETING_PERFORMED',settled_at_clock=world['clock']+1,
+               actual_actor_ref=attempt.actor,
+               no_future_consent_or_shared_motive_inferred=True)
+    return 'PERFORMED','PARTICULAR_MEETING_PERFORMED',row['id']
+
+
 def next_discontinuity(world, actors, horizon):
     if type(horizon) is not int or not 1<=horizon<=MAX_HORIZON:
         raise ValueError('CONTINUITY_UNSUPPORTED_HORIZON')
@@ -106,8 +281,16 @@ def next_discontinuity(world, actors, horizon):
             candidates.append({'at':birth,'kind':'CONDITIONAL_FAMILY_BIRTH','actor':None,
                 'source_ref':family['conception']['id'],'grade':GRADE})
     for obligation in world.get('scheduled_obligations',[]):
-        if not isinstance(obligation,dict) or obligation.get('status')!='PENDING':
+        if not isinstance(obligation,dict):continue
+        if obligation.get('kind')==MEETING_KIND:
+            if (obligation.get('status') in MEETING_OPEN
+                    and clock<obligation['meeting_clock']<=end):
+                candidates.append({'at':obligation['meeting_clock'],
+                    'kind':'MEETING_WINDOW_ELAPSES','actor':None,
+                    'source_ref':obligation['id'],
+                    'not_waiting_breach_or_actor_appraisal':True})
             continue
+        if obligation.get('status')!='PENDING':continue
         due=obligation.get('due_clock')
         actor=obligation.get('responsible_actor')
         if type(due) is not int or due < 0:
@@ -176,7 +359,7 @@ def continue_to_discontinuity(runtime, horizon=30, processes=None):
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
                 'high_resolution_actor_event':None,'family_birth_receipt':birth['receipt'],
                 'new_actor':birth['actor'],'unwritten_microevents_remain_unknown':True,'grade':GRADE}
-    if target['kind']=='HUMAN_OFFER_WINDOW_ELAPSES':
+    if target['kind'] in ('HUMAN_OFFER_WINDOW_ELAPSES','MEETING_WINDOW_ELAPSES'):
         return {'historical_discontinuity':target,
                 'ordinary_interval_receipt':ordinary['receipt'] if ordinary else None,
                 'high_resolution_actor_event':None,
