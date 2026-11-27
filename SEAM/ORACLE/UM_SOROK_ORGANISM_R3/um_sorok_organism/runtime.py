@@ -37,7 +37,7 @@ from .unintended_goods import (possible_unintended_goods, qualify_incidental_obj
                                possible_cross_object_significance)
 from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_activity_affects, own_vocal_reception,
-                                    possible_expressive_practices)
+                                    possible_expressive_practices, possible_self_expression_affects)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
 from .food_access_struggle import configure_food_power
@@ -1265,6 +1265,9 @@ class ConstitutiveRuntime:
                     possible_interactivity_relations(actors[aid],experience,objective_ref)),
                 'historically_possible_activity_affects':copy(
                     possible_activity_affects(actors[aid],experience,objective_ref)),
+                **({'historically_possible_self_expression_affects':copy(self_affects)}
+                   if (self_affects:=possible_self_expression_affects(
+                       actors[aid],experience,objective_ref)) else {}),
                 'historically_possible_co_regulation':copy(care_genesis),
                 'historically_possible_plural_care':copy(plural_care_genesis),
                 'historically_possible_reopened_care':copy(
