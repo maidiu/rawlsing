@@ -1,24 +1,23 @@
-# Current round — R001
+# Current round — R002
 
-State: **OPEN — inaugural deliberation briefs available; worker-authored returns not yet deposited.**
-User cue to workers: **New round is in (R001).**
-User cue to PM after work: **They're done.**
+**OPEN — three R001 worker returns received; CO HQ R001 not deposited at sampled cut.** No general construction pause. User cue: **New round is in (R002)**; on returns: **They're in.**
 
-| Lane | Deliberation | Worker return destination |
+| Lane | R002 deliberation | Worker-owned return destination |
 |---|---|---|
-| CO-HQ | [R001](./CO-HQ/deliberations/R001.md) | `CO-HQ/returns/R001.md` |
-| CO-MULCHINEER | [R001](./CO-MULCHINEER/deliberations/R001.md) | `CO-MULCHINEER/returns/R001.md` |
-| NEIGHBOR-UX-MULCHINEER | [R001](./NEIGHBOR-UX-MULCHINEER/deliberations/R001.md) | `NEIGHBOR-UX-MULCHINEER/returns/R001.md` |
-| INFERENCE-ECONOMY | [R001](./INFERENCE-ECONOMY/deliberations/R001.md) | `INFERENCE-ECONOMY/returns/R001.md` |
+| CO-HQ | [R002](./CO-HQ/deliberations/R002.md) | `CO-HQ/returns/R002.md` |
+| CO-MULCHINEER | [R002](./CO-MULCHINEER/deliberations/R002.md) | `CO-MULCHINEER/returns/R002.md` |
+| NEIGHBOR-UX-MULCHINEER | [R002](./NEIGHBOR-UX-MULCHINEER/deliberations/R002.md) | `NEIGHBOR-UX-MULCHINEER/returns/R002.md` |
+| INFERENCE-ECONOMY | [R002](./INFERENCE-ECONOMY/deliberations/R002.md) | `INFERENCE-ECONOMY/returns/R002.md` |
 
-## Bootstrap source cut (PM observation, not worker-authored return)
+## R001 close / exact continuity
 
-- Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, canonical OATH blob `3264d0a60ab61ca4e3f3fa9c85e66dc99c08fbcd`, paired progress MD `a565e6239ee730bf8aae796d1c5afb35207b1e93` / JSON `f2081d41452a5fb5d7061fcf340af725e4ee07af` at same protected cut. No protected edit or receiving.
-- [#1302](https://github.com/maidiu/rawlsing/pull/1302) `150a0e088deddda5bbb4156764e4977710b22ecb`, CIC blob `ec934bda3c40d61dbe6deeaa45e27d91c271e471`; documentary run [46032587625](https://github.com/maidiu/rawlsing/actions/runs/46032587625) success metadata. Six criterion judgments, five partial clusters; 181/53 unexamined on construction axis, not absent. 187 criteria/58 clusters/719 source routes preserved. [Existing continuation receipt](https://github.com/maidiu/rawlsing/pull/1302#issuecomment-7223122543). Full R57 ordinary O-Index intake pending.
-- SOROKUDA `015402b85bbb50aec437139f084b74d80406f501`; CO HOME #1371 `646f5745910a2196fad358c5f57b7320df52a394`; NEIGHBOR HOME #1332 `f1ed9d41ea8c5d004786b8218dfeec86a9afbf82`; PROGRAMMA #1333 `e81fad104e11274e4971031253811606bc5b93b0`; REMONT #1171 `85e7166aeee3af25e59ebbb3b48115a498bcdc4a`. Same heads as preceding accession.
-- CO R57 #1399 `87831a61c3b06786ad5bc0ae32282412ae03d9e0`, exact job 140614403169 verified prior turn; bounded own expression -> affective formation -> later WAIT/SPEAK attempt, parent criteria partial. No general semantic/independent/protected proof.
-- NEIGHBOR R34 #1398 `5c8fc6fbb0d8c6f9697e474894d58d2f438fe3a4` prior exact joined witness; R35 [#1400](https://github.com/maidiu/rawlsing/pull/1400) commit `c462ec138055bcca5bb70c5e5c4d28ff1b70c7bc` observed source/PR summary; exact execution and current joins require intake. R35 addresses actual SAY, actor ORIENT, receipt, rehearsal, later REST; not automatic visitor knowledge. Do not assume R57 or R19 integration.
-- Economy R19 [#1378](https://github.com/maidiu/rawlsing/pull/1378) `b40253a23e812a9d72c025737f7d1e333faec9bf` live PR author receipt claims 848 invocations per mode, preregistered exact-wire planning and fake-transport preflight; independent raw log/source reconciliation pending. No live spend, live semantic adequacy or automatic R35/R57 join.
-- PM has not written any worker return. Initial briefs are provisional synthesis, not mandates to construct a particular mechanism. HQ_CURRENTNESS_HOLD remains scoped to full current construction adjudication, R35/R19 exact receiving, protected receiving and HOME incorporation.
+- PM input head `1871a6e4233050db856e22542d87e914d13727f4`: CO return blob `b748352d0ba577e19c08d6394f9895cc097c77ba`, NEIGHBOR `f783335de6dd100c090928e08a52f70336ca86cb`, economy `fff0082977b19ac37073a2f062f367af661c9455`. CO HQ designated path 404 and no attributed R001 fallback found in sampled #1371 comments; late return welcome, not fabricated.
+- G4 [#1302](https://github.com/maidiu/rawlsing/pull/1302) published exact `16a11c0f07384da1c41514e556c27669b1cd80a3`, ledger `88201a2f2ff5db01d2aa21587b2efb76e1bf79a8`, CIC `2f84ef464faf241dd11f0501ec7d9dfd0a3d5744`; [documentary CI](https://github.com/maidiu/rawlsing/actions/runs/46060958818) in progress at last observation. 189 PR observations, 655 scoped function links; 187 criteria, 58 clusters, 719 frozen routes. 20 criterion construction judgments (17 partial, 2 historical first draft, 1 integrated first draft), 167 unexamined; 15 partial clusters, 43 unexamined. No percentage, no blanket currentness or authority. Previous criterion evidence/review grades conserved. R57/R35 ordinarily received in candidate ledger, R58/R36/R20 added/refreshed, R19 intermediate and R18 prior exact receipt conserved. Historical R29/R30 working access/correspondence correction received; not complete current equivalence.
+- R58 [#1407](https://github.com/maidiu/rawlsing/pull/1407) `8be51ece5456a13188e4ee6e42cf5ed7e8d624a3` job 140704431739 exact 724 CO tests each mode OK; R36 [#1408](https://github.com/maidiu/rawlsing/pull/1408) `d803ad894f60dfe0548c3a96fccbd2db58ea699b` job 140704300819 exact 726 CO each mode and additional NEIGHBOR courts OK; R20 [#1378](https://github.com/maidiu/rawlsing/pull/1378) `a4ac27ff02f1574d8aaba015ab7d7b7a63900e12` job 140704397368 exact 730 CO/economy each mode plus NEIGHBOR courts OK. R35 exact c462ec13 726 each mode plus NEIGHBOR courts, R57 87831a61 722 each mode. No independent review or live model/authority promotion. R58 and R36 separate; R20 uses R35 lineage, measures R34, no R36/R58 integration.
+- Protected PRE-MAIN `827714e83743056939894a39736d72ea16bdc6dd`, OATH blob `3264d0a60ab61ca4e3f3fa9c85e66dc99c08fbcd`, paired MD `a565e6239ee730bf8aae796d1c5afb35207b1e93` / JSON `f2081d41452a5fb5d7061fcf340af725e4ee07af` unchanged; matching proposed pair in G4 candidate only. Bank `015402b85bbb50aec437139f084b74d80406f501` unchanged, prior identities consulted through existing ledger. CO HOME #1371 646f5745, NEIGHBOR HOME #1332 f1ed9d41, PROGRAMMA #1333 e81fad10, REMONT #1171 85e7166a. No claimed new owner incorporation.
 
-Next PM turn: read actual returns and heads; complete ordinary R57/R35/R19 intake as appropriate, examine material power/maturation/relational-access deficits against actual operative capital and builder judgment; close the reciprocal cycle through existing estate and publish R002 only after verifying what is available. Missing return is a named hold, not a general pause.
+## Governing R002 concern
+
+Actual external material/relational change, distribution of cost, actor-specific receipt, acquisition/revaluation and subsequent activity are not one event. R58 demonstrates finite relief without ending dependence; R36 demonstrates prospective withdrawal without automatic knowledge, separately received notice with actual later stock change. The next consequential interconstitution is **independent third-party material/time consequences and differentiated actor histories**, not another single-person relief or cancellation variant. Compare that concern against other underdeveloped domains (especially maturation, independent use-time and ordinary embodied life) rather than letting it monopolize development. Do not require a blanket join or a shared psychological conclusion; competent owners choose construction. R20 affords reusable experiment instrument, not live semantic sufficiency.
+
+Next PM: verify latest documentary CI and any repair; receive R002 and late R001 CO HQ; check exact owner-local incorporation; distinguish current join from speculative complement, reconcile machine/readable estate and paired proposal. No general hold, no new authority.
