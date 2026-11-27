@@ -656,23 +656,104 @@ class _CountryEventCollector:
         return self.finished
 
 
-def _validate_packed_routing_authorities(routes,registry):
-    """Consume exact packed rows through their incumbent constructor.
+def _validate_packed_routing_expanded(routes,registry):
+    """R16 exact constructor path; also the unusual-shape reference court."""
+    for obj in routes:
+        _validate_routing_body(obj,registry)
 
-    Each row is independently materialized from its full supplied canonical
-    body, content hash and ID. The constructor checks those exact identities.
-    No external object, detached prior authority or cached verdict is used.
-    Keep the carrier-specific field and all nested authority checks.
+
+def _validate_routing_body(obj,registry):
+    if type(obj) is not RoutingEligibilityFact:
+        raise C11IntegrityError("packed routing materialized wrong family")
+    _validate_public_carrier_fields(obj,registry)
+    refs=tuple(_walk_authority_refs(obj.semantic_fields))
+    for ref in refs:
+        registry.resolve_exact(ref)
+    return (*obj.authority_snapshot_refs,*refs)
+
+
+def _validate_packed_routing_authorities(routes,registry):
+    """Shared rule closure at its actual grain, exact incidence at row grain.
+
+    For the incumbent exact routing schema only, the constructor's checks
+    decompose into a complete shared template and three varying fields:
+    respondent ref, dependency refs, replay root. Each distinct shared
+    template is validated by a REAL representative fact, never a synthetic
+    authority. Each row's full canonical projection digest is still checked.
+    Dynamic fields use the same constructor helpers and exact canonical
+    bytes. Unknown shapes and nonlocal authority resolution fall back to
+    the full constructor; no persistent/current permission verdict is saved.
     """
-    from rawlsing_next.pre553_source_backed_c11_facade import _SortedPackedRoutingFacts
+    import json
+    from rawlsing_next.pre553_source_backed_c11_facade import (
+        _SortedPackedRoutingFacts,_PackedRoutingFacts,_routing_column_value,
+    )
+    from rawlsing_next.pre553_empirical_objects import (
+        _canonical_ref_set,_refs,_replay_root,
+    )
     if type(routes) is not _SortedPackedRoutingFacts:
         raise C11IntegrityError("exact sorted packed routing owner required")
-    for obj in routes:
-        if type(obj) is not RoutingEligibilityFact:
-            raise C11IntegrityError("packed routing materialized wrong family")
-        _validate_public_carrier_fields(obj,registry)
-        for ref in _walk_authority_refs(obj.semantic_fields):
-            registry.resolve_exact(ref)
+    # Only the existing local immutable authority registry supports shared
+    # closure. Runtime authority fallbacks are resolved per full fact.
+    if type(registry) is not AuthorityRegistry:
+        _validate_packed_routing_expanded(routes,registry)
+        return {"rows":len(routes),"materialized":len(routes),"shared_templates":0}
+    registry_pin=registry._by_key
+    templates=set();template_bytes=0
+    dynamic=set();dynamic_bytes=0
+    materialized=0;rows=0
+    expected=tuple(sorted(RoutingEligibilityFact.REQUIRED_FIELDS))
+    for i in range(len(routes)):
+        ordinal=routes._ordinal(i)
+        run,row=routes.source._location(ordinal)
+        keys,columns,digests=run
+        rows+=1
+        if keys!=expected:
+            _validate_routing_body(routes[i],registry);materialized+=1
+            continue
+        names=(*_PackedRoutingFacts._top,*keys)
+        raw=tuple(_routing_column_value(col,row) for col in columns)
+        values=_PackedRoutingFacts._projection_values(keys,raw)
+        projection=_PackedRoutingFacts._projection_bytes(values)
+        if hashlib.sha256(projection).digest()!=digests[32*row:32*(row+1)]:
+            raise C11IntegrityError("packed routing incidence semantic hash mismatch")
+        varying=("dependency_refs","producer_replay_locator_or_reference_root","scoped_respondent_ref")
+        template=tuple(v for k,v in zip(names,raw) if k not in varying)
+        if template not in templates:
+            obj=routes[i];materialized+=1
+            refs=_validate_routing_body(obj,registry)
+            # Constructor normalization must agree with the actual exact
+            # byte lanes. No malformed/noncanonical raw value is generalized.
+            if canonical_json(obj.semantic_projection()).encode("utf-8")!=projection:
+                raise C11IntegrityError("packed routing template is not canonical")
+            size=sum(map(len,template))+len(template)*64
+            if (all(ref.key in registry_pin for ref in refs)
+                    and len(templates)<8192 and template_bytes+size<=8*1024**2):
+                templates.add(template);template_bytes+=size
+            continue
+        for name in varying:
+            data=raw[names.index(name)]
+            marker=(name,data)
+            if marker in dynamic:
+                continue
+            value=json.loads(data)
+            if name=="dependency_refs":
+                normalized=[ref.as_dict() for ref in _canonical_ref_set(_refs(value,name))]
+            elif name=="producer_replay_locator_or_reference_root":
+                normalized=canonicalize(_replay_root(value))
+            else:
+                normalized=exact_ref(value,name).as_dict()
+            if canonical_json(normalized).encode("utf-8")!=data:
+                raise C11IntegrityError("packed routing incidence is not canonical")
+            # These fields are exact refs or a replay string, never shared
+            # semantic authority claims. Keep high-cardinality memory bounded.
+            size=len(data)+128
+            if len(dynamic)<8192 and dynamic_bytes+size<=8*1024**2:
+                dynamic.add(marker);dynamic_bytes+=size
+    if registry._by_key is not registry_pin:
+        raise C11IntegrityError("routing authority registry changed during validation")
+    return {"rows":rows,"materialized":materialized,"shared_templates":len(templates),
+            "dynamic_values_retained":len(dynamic),"bounded_cache_bytes":template_bytes+dynamic_bytes}
 
 
 def _validate_authorities(candidate: C11SourceReleaseCandidate, *, country_collector=None) -> AuthorityRegistry:

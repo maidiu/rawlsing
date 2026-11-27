@@ -149,14 +149,40 @@ class CountryNativeEconomics(unittest.TestCase):
                     (OccurrenceRule("0",_ref("TOPOLOGY",tag+"-"+q),{"kind":"SCALAR_SINGULAR","index":0}),),
                     v,mapping_auth.authority_ref) for v in target_domains.get(q,("0","1")))) for q,binding in zip(names,questions))
             risk=fx["risk_refs"]["R"];state="ELIGIBLE_APPLICABLE"
-            def original_routes():
-                return (RoutingEligibilityFact(typed_state=state,authority_snapshot_refs=(fx["routing_auth"].authority_ref,),
+            def route(q,row,person):
+                return RoutingEligibilityFact(typed_state=state,authority_snapshot_refs=(fx["routing_auth"].authority_ref,),
                 dependency_refs=(),producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT",f"{tag}-{row}-{q}"),
                 empirical_universe_ref=universe.ref,scoped_respondent_ref=person.ref,question_or_target_ref=qrefs[q],
                 risk_set_ref=risk,routing_rule_ref=_ref("ROUTING_RULE",tag+"-"+q),applicability_state=state,routing_state=state,
                 parent_predicate_refs=(),member_set_replay_ref=_ref("MEMBER_SET",tag+"-"+q))
-                    for q in names for row,person in zip(chosen,respondents))
-            routing=(_PackedRoutingFacts if direct_pack else tuple)(original_routes())
+            def original_routes():
+                return (route(q,row,person) for q in names for row,person in zip(chosen,respondents))
+            def incidence(q):
+                return ((person.ref,(),_ref("REPLAY_ROOT",f"{tag}-{row}-{q}"))
+                        for row,person in zip(chosen,respondents))
+            def rule_runs():
+                for q in names:
+                    yield route(q,chosen[0],respondents[0]),incidence(q)
+            if direct_pack:
+                started=time.monotonic()
+                routing=_PackedRoutingFacts.from_rule_incidence(rule_runs())
+                grain_seconds=time.monotonic()-started
+                if external_case is not None and external_case.get("compare_rule_producer"):
+                    started=time.monotonic()
+                    expanded=_PackedRoutingFacts(original_routes())
+                    expanded_seconds=time.monotonic()-started
+                    assert len(routing)==len(expanded)
+                    assert all(a==b for a,b in zip(routing.canonical_rows(),expanded.canonical_rows()))
+                    print("R17_RULE_PRODUCER",json.dumps({
+                        "rule_representatives":len(names),"incidences":len(routing),
+                        "rule_grain_seconds":grain_seconds,"expanded_seconds":expanded_seconds,
+                        "exact_ordered_rows":True,"rule_grain_bytes":routing.payload_bytes,
+                        "expanded_bytes":expanded.payload_bytes,
+                        "grade":"SAME_RULES_PAIRED_SINGLE_BUILD_ORDER_CONFOUNDED"
+                    }),flush=True)
+                    del expanded
+            else:
+                routing=tuple(original_routes())
             projection=replace(original,expected_source_sha256=sha,
                 source_snapshot_retention_ref=ExactRef("SOURCE_SNAPSHOT","urn:test:"+tag,sha),
                 universes=(universe,),respondents=respondents,row_bindings=tuple(RowRespondentBinding(row,person.ref) for row,person in zip(chosen,respondents)),
