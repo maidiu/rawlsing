@@ -14,6 +14,7 @@ import math
 from .types import GRADE, copy, stable_id
 from .routine_sources import verify_qualified_period_envelope
 from .organism import eligible
+from .mediated_efficacy import COMPONENTS
 from .material_conjunction import qualify_aggregate_material_gate
 from .co_regulation_history import conserve_received_period_care
 from .material_provisioning import (
@@ -145,6 +146,14 @@ def qualify_period_allocation(world,actors,processes,start_clock,days):
             # claim that every day was physically impossible or that the
             # child experienced a refusal. Reconsider at a later checkpoint.
             if actors[a].get('role')=='child':
+                # Withheld coverage must not disguise an invalid practice
+                # contract that the existing learning owner would refuse.
+                if type(operation) is not str or operation not in COMPONENTS:
+                    raise ValueError('ROUTINE_UNKNOWN_COMPONENT_OR_SITE')
+                if raw.get('mode','ARRANGEMENT_UNRESOLVED') not in (
+                        'SOLO_COMPONENT_PRACTICE','ASSISTED_COMPONENT_PRACTICE',
+                        'ARRANGEMENT_UNRESOLVED'):
+                    raise ValueError('ROUTINE_UNQUALIFIED_SUPPORT')
                 ok,why=eligible(actors[a]['body'],operation)
                 if not ok:
                     bodily_withheld.append({'input_index':i,'source_ref':raw['source_ref'],

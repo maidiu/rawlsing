@@ -90,6 +90,15 @@ class EmbodiedHistoricalReadiness(unittest.TestCase):
                     'source_ref':source['source_ref'],'hours_per_active_day':1,
                     'provisional_exposure_fraction':1.,'operation':'SING',
                     'mode':'SOLO_COMPONENT_PRACTICE'}
+                before=rt.verify()['events']
+                state=rt.snapshot('nadia')
+                for bad,code in (
+                    (dict(process,operation='invented'),'ROUTINE_UNKNOWN_COMPONENT_OR_SITE'),
+                    (dict(process,mode='invented'),'ROUTINE_UNQUALIFIED_SUPPORT')):
+                    with self.assertRaisesRegex(ValueError,code):
+                        rt.background(160,processes=[bad])
+                    self.assertEqual(rt.verify()['events'],before)
+                    self.assertEqual(rt.snapshot('nadia'),state)
                 first=rt.background(160,processes=[process])['period']
                 self.assertEqual(first['bodily_withheld_processes'][0]['entry_body_reason'],'MOTOR_CAPABILITY')
                 self.assertEqual(first['processes'],[])
