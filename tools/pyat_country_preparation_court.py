@@ -172,7 +172,38 @@ def worker(root,mode,counts,report):
     from rawlsing_next import pre553_c11_ingest as ingest
     from rawlsing_next import pre553_c11_integrity as integrity
     from rawlsing_next import _pre553_country_preparation as preparation
-    phases={}; occurrence_comparison=None; wire_comparison=None
+    phases={}; occurrence_comparison=None; wire_comparison=None; routing_comparison=None
+    original_routes=ingest._validate_packed_routing_authorities
+    def compare_routes(routes,registry):
+        nonlocal routing_comparison
+        if mode!="compare":
+            return original_routes(routes,registry)
+        def incumbent():
+            for obj in routes:
+                ingest.validate_public_carrier_object(obj,registry)
+                for ref in ingest._walk_authority_refs(obj.semantic_fields):
+                    registry.resolve_exact(ref)
+        times={"incumbent":[],"fresh_constructor":[]}
+        for order in (("incumbent","fresh_constructor"),("fresh_constructor","incumbent")):
+            for kind in order:
+                t=time.monotonic()
+                if kind=="incumbent":incumbent()
+                else:original_routes(routes,registry)
+                times[kind].append(time.monotonic()-t)
+        routing_comparison={"rows":len(routes),"both_accepted":True,
+            "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()}}
+        # Same freshly materialized bodies still need authority resolution.
+        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+        from rawlsing_next.pre553_c11_integrity import C11IntegrityError
+        class Refuse:
+            def resolve_exact(self,ref):
+                raise Pre553AuthorityError("intentional unresolved routing authority")
+        for fn in (lambda:original_routes(routes,Refuse()),):
+            try:fn()
+            except (Pre553AuthorityError,C11IntegrityError):pass
+            else:raise AssertionError("routing authority refusal escaped")
+        routing_comparison["unresolved_authority_refused"]=True
+        return original_routes(routes,registry)
     def compare_wire(data,key):
         nonlocal wire_comparison
         headers=original_decode(data,key)
@@ -278,6 +309,7 @@ def worker(root,mode,counts,report):
             stack.enter_context(patch.object(ingest,"ensure_distinct_event_occurrences",compared))
             if mode=="compare":
                 stack.enter_context(patch.object(preparation,"_decode_headers",compare_wire))
+                stack.enter_context(patch.object(ingest,"_validate_packed_routing_authorities",compare_routes))
             result=original(*args,**kw)
         calls.append({"wall_s":time.monotonic()-start,"response_event_constructions":count})
         return result
@@ -331,7 +363,7 @@ def worker(root,mode,counts,report):
     write(report,{"mode":mode,"pid":os.getpid(),"issuance_seconds":issuance_seconds,
                   "preparation":calls[0],"investigations":result_rows,
                   "inclusive_preparation_phases":phases,"occurrence_comparison":occurrence_comparison,
-                  "wire_comparison":wire_comparison})
+                  "wire_comparison":wire_comparison,"routing_comparison":routing_comparison})
 
 def supervise(root,command):
     start=time.monotonic();peak={};samples=0

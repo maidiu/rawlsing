@@ -562,6 +562,16 @@ def validate_public_carrier_object(
 ) -> CanonicalSemanticObject:
     """Validate exact identity, authority closure and I02 carrier-specific noncollapse."""
     verify_public_object_integrity(obj)
+    return _validate_public_carrier_fields(obj,registry)
+
+
+def _validate_public_carrier_fields(obj,registry):
+    """Shared field/authority checks after exact identity validation.
+
+    Ordinary public ingress always verifies the full semantic identity.
+    Private packed routing materialization may use the constructor's
+    immediately preceding exact supplied hash/ID check instead.
+    """
     if isinstance(obj, AuthoritySnapshot):
         return obj
     try:
