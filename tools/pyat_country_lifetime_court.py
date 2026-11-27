@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="52723ef25c5b9bf757aa8daf1925b2a3591be6c3"
+BASE="c129e5cad7545bdd2c63a81e15959148b45c7bda"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -58,7 +58,7 @@ def worker(root,mode,report):
     if mode=="restore":
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
-    counts={k:0 for k in ("I02","I03","I05","admission","nonrouting_pin","projection_identity","full_file_auth")}
+    counts={k:0 for k in ("I02","I03","I05","admission","scope_check","scope_current","nonrouting_pin","projection_identity","full_file_auth")}
     phases={k:0. for k in counts}
     def monitor(owner,name,label):
         original=getattr(owner,name)
@@ -95,6 +95,8 @@ def worker(root,mode,report):
             (CarrierNeutralResearchExecutor,"execute_i03","I03"),
             (CarrierNeutralResearchExecutor,"execute_i05","I05"),
             (issued,"_admit","admission"),
+            (issued._CountryAdmissionScope,"check","scope_check"),
+            (issued._CountryAdmissionScope,"current_only","scope_current"),
             (issued._NonRoutingEnvelopePin,"matches","nonrouting_pin"),
             (facade._CountryProjectionPin,"matches","projection_identity"),
             (carrier.CountryReader,"verify_full","full_file_auth"),

@@ -392,6 +392,10 @@ def _fast_ref_matches(row):
     return False
 
 
+_PIN_SERIALIZER_FIELDS=frozenset(("as_dict","semantic_projection","envelope",
+                                  "_envelope","request_identity"))
+
+
 @dataclass(frozen=True,slots=True)
 class _NonRoutingEnvelopePin:
     """Bounded structural witness over the rest of the exact issued preimage.
@@ -492,13 +496,26 @@ class _NonRoutingEnvelopePin:
         # The pin covers known incumbent field representations, not
         # instance-overridden serialization behavior.
         own=getattr(obj,"__dict__",{})
-        return any(k in own for k in ("as_dict","semantic_projection","envelope",
-                                      "_envelope","request_identity"))
+        return not _PIN_SERIALIZER_FIELDS.isdisjoint(own)
 
     def matches(self):
         missing=object()
         for obj,typ,names,vals in self.attrs:
-            if (type(obj) is not typ or self._has_serialization_override(obj)
+            if type(obj) is not typ:return False
+            # ExactRefs and AuthorityRefs dominate large projection graphs.
+            # Their ordinary dataclass dict owns all three immutable leaves.
+            # Check every leaf by identity, including equal-valued replacements,
+            # and refuse serializer overrides. No hash/authority shortcut.
+            if typ is ExactRef or typ is AuthorityRef:
+                own=obj.__dict__
+                if (type(own) is not dict
+                        or (len(own)!=3 and not _PIN_SERIALIZER_FIELDS.isdisjoint(own))
+                        or own.get(names[0],missing) is not vals[0]
+                        or own.get(names[1],missing) is not vals[1]
+                        or own.get(names[2],missing) is not vals[2]):
+                    return False
+                continue
+            if (self._has_serialization_override(obj)
                     or any(getattr(obj,n,missing) is not v for n,v in zip(names,vals))):
                 return False
         for obj,items in self.mappings:
@@ -849,6 +866,25 @@ class _CountryAdmissionScope:
         self._decision=ExactRef(r.kind,r.object_id,r.content_hash)
 
     def check(self):
+        # The first admission already proved the complete envelope, exact
+        # job multiset and catalog joins. Fresh external currentness plus
+        # the complete unchanged structural preimage proves those same
+        # deterministic predicates; do not repeat catalog/job traversal at
+        # every unit boundary. No source or science permission is cached.
+        prepared=self._prepared
+        if (type(prepared) is _PreparedRoutingEnvelope
+                and prepared.workload is self.workload
+                and prepared.nonrouting_pin is not None
+                and prepared.packed_storage is not None
+                and self.expected_wave is None and self.allow_test_only is True
+                and type(self.record) is IssuedWorkloadRecord):
+            _require_current_resolver(self.resolver)
+            current=self.current_only()
+            if (current.scope=="TEST_ONLY_SOURCEFREE"
+                    and current.currentness=="CURRENT_GRANTED"
+                    and (current.host,current.purpose)==(self.host,self.purpose)
+                    and prepared.digest()==current.envelope_sha256):
+                return current
         current=_admit(self.workload,self.resolver,host=self.host,purpose=self.purpose,
                        allow_test_only=self.allow_test_only,expected_wave=self.expected_wave,
                        prepared=self._prepared)

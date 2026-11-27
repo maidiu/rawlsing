@@ -457,6 +457,30 @@ class CountryNativeEconomics(unittest.TestCase):
             self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
             self.assertLess(packed.payload_bytes,packed_prepared.encoded_routing_bytes//3)
             self.assertIsNotNone(packed_prepared.nonrouting_pin)
+            # Full initial admission already established jobs/catalog joins.
+            # Fresh resolver currentness and unchanged complete preimage
+            # suffice for this private sourcefree transaction only.
+            scope=issued._CountryAdmissionScope(workload,resolver,host=host,purpose=purpose,allow_test_only=True)
+            self.assertIsNotNone(scope._prepared.nonrouting_pin)
+            with patch.object(issued,"_admit",side_effect=AssertionError("redundant complete admission")):
+                self.assertEqual(scope.check(),record)
+            # Same canonical grant may not hide a changed nested ref or an
+            # injected serializer. The fast path must fall back/refuse.
+            target=workload.requests[0].query_ref
+            old=target.content_hash
+            try:
+                object.__setattr__(target,"content_hash","0"*64)
+                with self.assertRaises(issued.WorkloadAdmissionError):scope.check()
+            finally:object.__setattr__(target,"content_hash",old)
+            try:
+                object.__setattr__(target,"as_dict",lambda: {})
+                with self.assertRaises((issued.WorkloadAdmissionError,ValueError)):scope.check()
+            finally:object.__delattr__(target,"as_dict")
+            resolver._record=replace(record,currentness="REVOKED")
+            try:
+                with self.assertRaises(issued.WorkloadAdmissionError):scope.check()
+            finally:resolver._record=record
+            self.assertEqual(scope.check(),record)
             with patch.object(_PackedRoutingFacts,"canonical_rows",side_effect=AssertionError("rescanned routing")), \
                  patch.object(issued,"_routing_envelope_parts",side_effect=AssertionError("reserialized nonrouting")):
                 self.assertEqual(packed_prepared.digest(),record.envelope_sha256)
