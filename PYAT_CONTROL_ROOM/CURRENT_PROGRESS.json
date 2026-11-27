@@ -2655,5 +2655,121 @@
       ],
       "boundary": "Reviewer-reported private transport tests, not independently executed by G4; no qualified original/native issuance, actual provider cost, full semantic acceptance, engineering acknowledgment or protected adoption. Existing FIELD-AUTHORITY owner receives REVISE; retain positive authored distinctions; no new commission."
     }
+  },
+  "g4_routing_family_join_20261127": {
+    "scope": "SOURCE_STATIC_RULE_FAMILY_JOIN__NOT_NATIVE_ISSUANCE_OR_EXECUTION",
+    "parent": "93e53e3133efb2b31b95131f64b6655c693be16a",
+    "protected_cut": "827714e83743056939894a39736d72ea16bdc6dd",
+    "source_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+    "config_blobs": {
+      "SRC04": "6294410641bbd73ec616a99fbf1b3fd68af693c4",
+      "SRC16": "84abd3f6e37718a757a4597768b97218cb29948b",
+      "SRC35": "6bd1cc470941969d060eaff98bedea4bcc6259fe"
+    },
+    "verified": {
+      "SRC04": 178,
+      "SRC16": 157,
+      "SRC35": 390,
+      "states": "ALL+ROUTING_UNKNOWN; one DEFER authority per source; zero explicit parent predicates",
+      "original_route_states_changed": 0
+    },
+    "documents": {
+      "U02_ledger_blob": "b246573d4aad7f458ccc108f8844b6ce5cc631e1",
+      "WVS7_master_sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b",
+      "R14_index_sha256": "174de5af9c3bf0fc1929bac87fa8e62ace95b2aeab39c1ff6d718a14ad8194f2",
+      "R14_audit_sha256": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
+      "ABI_Questionnaire_ENG_sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118"
+    },
+    "WVS7": {
+      "online": {
+        "page": 15,
+        "targets": [
+          "Q217",
+          "Q218",
+          "Q219",
+          "Q220"
+        ],
+        "rule": "Internet/social-media non-users code -3 not applicable; R14 WVS-R14-W7-Q217-Q220 incorrectly says no skip attached; preserve accepted group topology and correct routing field against master",
+        "held": "Exact positive nonuser predicate/edition/row membership, not -3-derived membership."
+      },
+      "education": {
+        "page": 19,
+        "dependent_targets": [
+          "Q276",
+          "Q277",
+          "Q278",
+          "Q276A",
+          "Q277A",
+          "Q278A"
+        ],
+        "rule": "Absent spouse/mother/father applicability; separate self Q275/A; four R recodes require derivation lineage."
+      },
+      "employment": {
+        "page": 20,
+        "routed": [
+          "Q279",
+          "Q281",
+          "Q282",
+          "Q283"
+        ],
+        "position_only": [
+          "Q280",
+          "Q284"
+        ],
+        "rule": "Last-job and person/time referents, not current employment-only eligibility; no absence inference from POSITION role."
+      },
+      "political_trust": {
+        "pages": "23–24",
+        "targets": "Q291G/P/UN1–6; Q292A–O; Q293; Q294A/B",
+        "count": 36,
+        "rule": "Selected-country module; positive named countries not exhaustive; R14 no-local-skip notes do not override module scope.",
+        "nested_form": "Q294A/B one split family with 50/50 design, no actual individual assignment."
+      },
+      "middle_east": {
+        "page": 25,
+        "rule": "Iraq/Jordan/Lebanon/Egypt plus further planned surveys; no MN native question IDs in selected config; national edition/alternate mapping held."
+      },
+      "negative": "Master -3 semantics is not row membership; country deviations U02-04 remain; do not add counts across nested rules."
+    },
+    "ArabBar1": {
+      "palestine": {
+        "pages": "13–14",
+        "targets": [
+          "q248withoutpalestine",
+          "q248donlypalestine",
+          "q249withoutpalestine",
+          "q249onlypalestine"
+        ],
+        "rule": "Country-scoped response variants; country slot ordinal 2 Palestine code 2."
+      },
+      "morocco": {
+        "pages": "29–30",
+        "targets": [
+          "q715withoutmorocco",
+          "q716withoutmorocco",
+          "V715onlymorocco",
+          "V716onlymorocco"
+        ],
+        "rule": "Country-scoped income instrument variants; Morocco code 4; decile recodes separate; no fabricated raw or category equivalence."
+      },
+      "R14": "Four accepted group rows, 18/18 names present, audit routing/universe/applicability blank, runtime NONE. Preserve grouping not eligibility.",
+      "conflict": "Q711 master Lebanon-only sect options vs SAV metadata Sunni/Shiite Lebanon & Bahrain; edition-specific response-option scope, not routing.",
+      "candidate_dependencies": "Q226→Q227 wasta and Q248/249→Q2501/2 challenge referents; no explicit skip proven."
+    },
+    "GSS1972": {
+      "authority": "R157-SRC16-ROUTING-EVIDENCE DEFER; H48/O06 residual unresolved",
+      "negative": "No positive GSS routing family established in targeted sources; fileversion is release metadata not ballot; construction grant not eligibility science."
+    },
+    "disconnect": "Historical rule -> competent source/edition-specific issuance with exact predicate/form/role, exceptions and scope -> admitted membership plus member-set replay -> config routing[].authority_ref/typed_state/parent_predicate_refs/row_selector -> incumbent R16 adapter _routing. It copies declaration state, expands ALL/explicit rows and never evaluates questionnaire predicate; packed ingress independently reconstructs and validates facts. U02-03/04 + U02-05/C05-R2A and D03 risk narrowing are existing homes; do not rebuild.",
+    "runtime": {
+      "head": "85995ee71b0172632581b7e3a407984a8c04301f",
+      "adapter_blob": "d4d84ef164feba6fb0de0851568738eb5f5e937d",
+      "ingest_blob": "a3735a3b0ae9eb7f565a5a648932aad13682e50f"
+    },
+    "handoffs": {
+      "REMONT": "https://github.com/maidiu/rawlsing/pull/1162#issuecomment-7211870687",
+      "FIELD_AUTHORITY": "https://github.com/maidiu/rawlsing/pull/1327#issuecomment-7211871308"
+    },
+    "holds": "Owner acknowledgement, positive source edition rule issuance and member assignment, current permission, real first reader and measured economics, independent and protected receiving. No new code or tests."
   }
 }
