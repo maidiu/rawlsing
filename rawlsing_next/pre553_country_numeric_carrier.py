@@ -1175,7 +1175,8 @@ class CountryWorkloadSession:
     Single-threaded, explicit context lifetime; failed execution closes it.
     """
     def __init__(self,path,receipt,*,require_current,preparation_path=None,
-                 preparation_pin=None,reuse_query_preparation=False):
+                 preparation_pin=None,reuse_query_preparation=False,
+                 omit_preparation_group_plane=False):
         if type(reuse_query_preparation) is not bool:
             raise CountryCarrierError("explicit query preparation reuse selection required")
         self._reuse_query_preparation=reuse_query_preparation
@@ -1194,7 +1195,7 @@ class CountryWorkloadSession:
         if preparation_path is None and preparation_pin is not None:
             raise CountryCarrierError("preparation path required with external pin")
         self._preparation=(None if preparation_path is None else
-                           _CountryPreparation(preparation_path,preparation_pin))
+                           _CountryPreparation(preparation_path,preparation_pin,omit_groups=omit_preparation_group_plane))
         self._published_preparation_pin=None
         self._reader=None
         self._entry=None
