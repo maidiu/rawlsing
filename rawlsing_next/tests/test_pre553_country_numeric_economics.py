@@ -1212,9 +1212,38 @@ class CountryNativeEconomics(unittest.TestCase):
                 outputs[mode]=semantic
         self.assertEqual(outputs["cold"],outputs["live"])
 
+        # Same independently issued, disjoint queries, but shared q1
+        # constituent between a joint and a later unary. No full-answer hit.
+        proofs={}
+        for enabled in (False,True):
+            with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True,
+                        reuse_query_preparation=True,reuse_query_constituents=enabled) as session:
+                proofs[enabled]=[]
+                for item,resolver,_ in cases:
+                    execution=session.execute(item,resolver,host=host,purpose=purpose)
+                    proofs[enabled].append((execution.release_identity,
+                        execution.result.exact_s2e_output_census(runtime_catalog=item.catalog).as_dict()))
+                scope=session._query_scope
+                if enabled:
+                    receipt0=scope.receipt()
+                    self.assertGreater(receipt0["constituent_cache_hits"]["routing"],0)
+                    self.assertGreater(receipt0["constituent_cache_hits"]["target"],0)
+                    self.assertLessEqual(receipt0["constituent_cache_bytes_estimate"],32*1024*1024)
+                    # Foreign release projection must close old scope even
+                    # when equal in content; no cross-owner reuse.
+                    item,resolver,_=cases[1]
+                    session.execute(replace(item,projection=replace(item.projection)),
+                                    resolver,host=host,purpose=purpose)
+                    self.assertTrue(scope.receipt()["closed"])
+                    self.assertEqual(scope.receipt()["constituent_cache_bytes_estimate"],0)
+                    self.assertIsNot(scope,session._query_scope)
+            self.assertTrue(scope.receipt()["closed"])
+        self.assertEqual(proofs[False],proofs[True])
+
         first,first_resolver,_=cases[0]
         second,second_resolver,second_grant=cases[1]
-        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True) as session:
+        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True,
+                    reuse_query_preparation=True,reuse_query_constituents=True) as session:
             session.execute(first,first_resolver,host=host,purpose=purpose)
             # Equal content but a different owned projection instance is a
             # miss, not a detached old body resolver silently rebound.
@@ -1237,7 +1266,8 @@ class CountryNativeEconomics(unittest.TestCase):
             session.execute(first,first_resolver,host=host,purpose=purpose)
         # Even if the stat mutation alarm is defeated, a NEW workload must
         # authenticate the entire retained file before reusing preparation.
-        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True) as session:
+        with carrier.CountryWorkloadSession(db,receipt,require_current=lambda:True,
+                    reuse_query_preparation=True,reuse_query_constituents=True) as session:
             session.execute(first,first_resolver,host=host,purpose=purpose)
             signature=session._reader._signature
             with db.open("r+b") as stream:
