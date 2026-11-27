@@ -208,22 +208,36 @@ def selected_rows(document,*,per_task=1,tasks=None):
     return out
 
 
-def compare_frozen(document,arms,*,per_task=1,tasks=None):
+def compare_frozen(document,arms,*,per_task=1,tasks=None,sequence_ids=None,
+                   rotate_arms=False,on_observation=None):
     """Matched frozen proposal workloads, not owner admission or life equivalence.
 
     No choice of winner, auto escalation, retry, or psychological rating.
     A provider exception remains an observed failure. A budget stop retains
     all completed observations and prevents any subsequent provider call.
     """
-    rows=selected_rows(document,per_task=per_task,tasks=tasks)
+    if sequence_ids is None:
+        rows=selected_rows(document,per_task=per_task,tasks=tasks)
+    else:
+        all_rows=verify_workload(document)["rows"]
+        if (type(sequence_ids) is not list or not sequence_ids
+                or any(type(i) is not int or not 0<=i<len(all_rows) for i in sequence_ids)
+                or len(set(sequence_ids))!=len(sequence_ids)):
+            raise ValueError("LAB_SEQUENCE_SELECTION")
+        rows=[all_rows[i] for i in sequence_ids]
+    if type(rotate_arms) is not bool or (on_observation is not None and not callable(on_observation)):
+        raise ValueError("LAB_COMPARISON_OPTIONS")
     if type(arms) is not dict or not arms:raise ValueError("LAB_ARMS_REQUIRED")
     for name in arms:
         if type(name) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,80}",name):
             raise ValueError("LAB_ARM_ID_INVALID")
     observations=[];stopped=False
-    for row in rows:
+    order=list(arms)
+    for i,row in enumerate(rows):
         if stopped:break
-        for name,provider in arms.items():
+        shift=i%len(order) if rotate_arms else 0
+        for name in order[shift:]+order[:shift]:
+            provider=arms[name]
             prior=provider.usage_snapshot()["total"] if hasattr(provider,"usage_snapshot") else None
             start=perf_counter_ns()
             try:
@@ -246,6 +260,7 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None):
                   "proposal":copy(proposal),"proposal_digest":digest(proposal),
                   "equals_recorded_proposal":proposal==row["proposal"],
                   "elapsed_ns":perf_counter_ns()-start,"metric":metric})
+            if on_observation is not None:on_observation(copy(observations[-1]))
             if stopped:break
     return {"schema":"RAWLSING_FROZEN_PROPOSAL_COMPARISON_V1",
             "planned_observations":len(rows)*len(arms),
@@ -334,7 +349,7 @@ class LiveBudget:
             raise BudgetStop("LAB_LIVE_BUDGET_EXHAUSTED")
         self.calls+=1;self.wire_bytes+=n;self.reserved+=self.reserve;self.pending=True
         self._append({"event":"RESERVED_BEFORE_SEND","attempt":self.calls,
-                      "wire_bytes":n,"reserved_nanos":self.reserve,
+                      "wire_bytes":n,"request_sha256":digest(request),"reserved_nanos":self.reserve,
                       "cumulative_reserved_nanos":self.reserved})
 
     def settle(self,usage):

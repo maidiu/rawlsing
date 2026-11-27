@@ -83,62 +83,70 @@ owner refusal, scratch acceptance, evaluation error and no proposal.
 Retain the original issued-trial record assembly, refuse invalid candidate
 operations, preserve unknown spend and owner limitations.
 
-## Live comparison: only after explicit authorization
+## R19 — preregistered comparative campaign
 
-No model endpoint or expenditure is implicit. The existing HTTPS chat JSON
-adapter is reused; compatible endpoints must accept the selected output limit
-field. API keys are supplied through named environment variables, never in
-configuration, files, source or logs. Never use a real-person or respondent
-packet. The CLI replays the known sourcefree owner fixture before disclosure.
-This is not authentication against a malicious local caller.
+The original first-N fixture comparison is still available. The live pilot now
+requires a separate, reproducible preflight plan. It selects evenly spaced
+calls within each existing task, splitting developmental packets by the
+presence/absence of nonempty named historical offer fields. This is a coverage
+stratum, NOT a measure of developmental demand, psychic novelty, or the need
+for inference. The sample is not statistically representative of human life.
+The plan includes actual case sequence IDs, original packet digests, exact
+request hashes and bytes, arm order, declared price assumptions, and
+authorization limits. It alternates which arm goes first across cases to
+reduce systematic ordering bias; it does not control provider-side cache or
+service variation. No prompt text or API key is written into the plan.
 
-Config shape (illustrative placeholders, NOT a recommended budget or actual
-prices; obtain explicit authorization and set exact approved provider limits):
+Each exact request is produced with the existing adapter, using a hermetic
+transport and recorded response solely for preflight. No endpoint is contacted.
+Every live request must match its preregistered hash and byte count before
+the existing HTTPS transport can send it. A changed workload, code HEAD,
+configuration, or plan cannot silently become an authorized experiment.
+The local plan hash is integrity evidence, not a signature or proof of rights.
 
-```json
-{
-  "arms": [
-    {"name":"model-a-full","endpoint":"https://example.invalid/v1/chat/completions","model":"approved-model","key_env":"RAWLSING_LAB_KEY","compiled":false,"completion_limit_field":"max_completion_tokens"},
-    {"name":"model-a-exact","endpoint":"https://example.invalid/v1/chat/completions","model":"approved-model","key_env":"RAWLSING_LAB_KEY","compiled":true,"completion_limit_field":"max_completion_tokens"}
-  ],
-  "budget": {
-    "max_calls": 8,
-    "max_wire_bytes": 1000000,
-    "input_token_ceiling": 20000,
-    "completion_token_limit": 1000,
-    "input_nanos_per_token": 1000,
-    "output_nanos_per_token": 4000,
-    "max_budget_nanos": 192000000
-  }
-}
-```
+### Configuration (illustrative only)
 
-One USD per million tokens = 1000 nanodollars/token. Here the shared conservative
-declared reservation is 24,000,000 nanodollars per call (USD 0.024); eight
-reservations = USD 0.192. These numbers are arithmetic examples, not current
-market rates or an authorized expenditure. Use the maximum applicable rate
-across all selected arms. No cache discount or automatic retries. A provider's
-actual tokenization, cap compliance, extra fees or rates can invalidate the
-assumptions; this is not a guaranteed billing cap. If usage is missing or
-exceeds declared ceilings, stop immediately and retain the pre-send reservation.
-The CLI requires an explicit flag and fresh journal/output paths; no resume
-or implicit repeated spend. The planned call count must fit the reservation
-pool before any request. A stop returns completed observations plus the
-stopped case; the pre-send journal remains independently durable. Do not run
-without the user's source/provider/budget
-permission.
+Use the existing configuration shape above, with one approved endpoint/model
+per arm. The same completion cap applies to all arms. Optionally specify
+`input_nanos_per_token` and `output_nanos_per_token` per arm; both must be
+no greater than the shared conservative budget rates. These are user-supplied
+rates, not fetched prices or provider invoices. Cached token discounts,
+reasoning charges, and other fees are not inferred. Provider-reported usage
+is kept separately from declared-rate estimates; unknown usage remains unknown.
 
 ```sh
-# Only after explicit authorization, with reviewed local config and environment:
-python inference_lab_cli.py compare-live --workload "$LAB/r54-released.json" \
-  --config "$LAB/approved-local-config.json" --per-task 1 \
-  --budget-journal "$LAB/run-001-budget.json" --out "$LAB/run-001-report.json" \
-  --authorize-sourcefree-live
+python inference_lab_cli.py plan-live --workload "$LAB/r54-released.json" \
+  --config "$LAB/approved-local-config.json" --per-stratum 2 \
+  --out "$LAB/run-001-plan.json"
 ```
 
-All arms consume the same reservation pool. Raw input cap remains 128000 bytes;
-completion limit is opt-in on the existing provider. Actual usage is provider
-reported, unknown not zero. The lab makes no automatic model allocation or
-semantic-call suppression decisions. Frozen output similarity to a scripted
-answer is descriptive, not a model quality score. Owner adjudication must
-assess actual admitted formation and subsequent independent activity.
+Inspect the exact local plan, its sampled case coverage, request count,
+wire-byte total, and conservative reservation total. Use smaller coverage
+or revise explicitly authorized limits if it exceeds them. Never reinterpret
+the illustrative example as authorization.
+
+### Execute only after explicit source/provider/budget authorization
+
+```sh
+python inference_lab_cli.py compare-live --workload "$LAB/r54-released.json" \
+  --config "$LAB/approved-local-config.json" --plan "$LAB/run-001-plan.json" \
+  --budget-journal "$LAB/run-001-budget.json" \
+  --observation-log "$LAB/run-001-observations.jsonl" \
+  --out "$LAB/run-001-report.json" --authorize-sourcefree-live
+```
+
+The CLI verifies the same clean tracked checkout and exact owner fixture replay
+before disclosure. It independently regenerates the complete preflight plan.
+The shared allowance covers every planned call and exact request-byte count.
+No retries, automatic routing, or budget reset. Each returned observation is
+written to a private append-only local file before the next call. The budget
+journal separately records the exact request hash and durable pre-send
+reservation. A crash can still leave a partial result; neither file should be
+treated as an authenticated billing statement. No implicit resume. Unknown
+usage or transport failure stops the campaign and preserves observed results.
+Use fresh output/journal filenames, in a private directory outside the repo.
+
+No psychological adequacy claim follows from matching the recorded proposal,
+passing transport or local admission. The owner must judge formation and
+subsequent life. No real-person, survey, or production data is authorized.
+No paid call is made in the automated sourcefree regression.
