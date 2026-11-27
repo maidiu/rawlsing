@@ -39,7 +39,8 @@ _OWNERS=("_pre553_country_preparation.py","pre553_country_numeric_carrier.py",
          "pre553_source_backed_c11_facade.py","pre553_c11_ingest.py",
          "pre553_c11_integrity.py","pre553_empirical_authority.py",
          "pre553_empirical_objects.py","_pre553_c11_execution_view.py",
-         "pre553_r5_codec.py","pre553_physical_decoder.py","pre553_c11_repository.py")
+         "pre553_r5_codec.py","pre553_physical_decoder.py","pre553_c11_repository.py",
+         "pre553_carrier_execution.py")
 
 def _error(message):
     from .pre553_country_numeric_carrier import CountryCarrierError
@@ -174,7 +175,13 @@ def _decode_headers(data,key):
                 headers.append(_CountryEventHeader(event,occ,at(payloads,p),
                     at(refs,u),at(refs,respondent),deps,group,(r,s,o)))
                 continue
-            row=None if not lead else json.loads(lead+account(stream.readline(MAX_LINE)))
+            if lead:
+                tail=account(stream.readline(MAX_LINE))
+                if len(tail)+1>MAX_LINE:
+                    raise _error("expanded preparation line cap")
+                row=json.loads(lead+tail)
+            else:
+                row=None
             if type(row) is not list or not row:
                 raise _error("truncated preparation")
             if row[0]=="end":

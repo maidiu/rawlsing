@@ -249,8 +249,24 @@ def worker(root,mode,counts,report):
         try:original_decode(raw.getvalue(),key)
         except carrier.CountryCarrierError:pass
         else:raise AssertionError("truncated binary header accepted")
+        bad=BytesIO()
+        with gzip.GzipFile(fileobj=bad,mode="wb",mtime=0,filename="") as gz:
+            gz.write((canonical_json([preparation.SCHEMA,key,1])+"\n").encode())
+            gz.write(b"H"+preparation._BINARY_HEADER.pack(
+                b"a"*32,b"b"*32,b"c"*32,0,0,0,1,1,0,0))
+        try:original_decode(bad.getvalue(),key)
+        except carrier.CountryCarrierError:pass
+        else:raise AssertionError("unissued binary dictionary index accepted")
+        # Same producer's noncompact shape must stay available rather than
+        # truncating the locator into uint32 or inferring a digest spelling.
+        fallback=(replace(headers[0],source_coordinates=(2**32,1,0)),)
+        out=BytesIO()
+        with gzip.GzipFile(fileobj=out,mode="wb",mtime=0,filename="") as gz:
+            preparation._encode_headers(gz,fallback,key)
+        exact_headers(fallback,original_decode(out.getvalue(),key))
         wire_comparison={"events":len(headers),"same_exact_headers":True,
-            "truncated_binary_refused":True,"arms":timings}
+            "truncated_binary_refused":True,"invalid_dictionary_refused":True,
+            "wide_locator_fallback_exact":True,"arms":timings}
         return headers
     original_decode=preparation._decode_headers
     def instrument(owner,name,label):
