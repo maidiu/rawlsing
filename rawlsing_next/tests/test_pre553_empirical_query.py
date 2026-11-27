@@ -1423,3 +1423,38 @@ def test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive(auth
     _assert_no_supported(result)
     assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
 
+
+
+def test_rolling_group_scope_revisits_recent_exact_joint_and_eviction():
+    from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope
+    source=_build_source("rolling-groups",[
+        {"id":"R"+str(i),"responses":{"X":i%2,"Y":(i//2)%2,
+                                       "Z":(i%2)^((i//2)%2)}}
+        for i in range(12)])
+    qa=_query_authority("rolling-groups")
+    pred=_branch_predicate(source,qa)
+    empty=_branch_predicate(source,qa,members=(),tag="empty-rolling")
+    specs=[(pred,_query(source,qa,pred,targets,tag="rolling-"+str(i)))
+           for i,targets in enumerate((("X",),("Y",),("X","Y","Z")))]
+    specs.append((empty,_query(source,qa,empty,("X",),tag="empty")))
+    registry=_registry(source,qa)
+    def run(i,scope):
+        p,q=specs[i]
+        return execute_empirical_query(repository=source["repo"],query=q,predicate=p,
+            authority_registry=registry,release_refs=(source["release_ref"],),group_scope=scope)
+    expected=[run(i,None) for i in range(len(specs))]
+    with I03GroupedExecutionScope(max_groups=2,rolling_groups=True) as scope:
+        for i in (0,1,2,2,1,3,2):
+            assert run(i,scope)==expected[i]
+            assert scope.receipt()["open_groups"]<=2
+        receipt=scope.receipt()
+        assert receipt["core_hits"]==2
+        assert receipt["core_evictions"]==3
+        assert receipt["early_capacity_fallbacks"]==0
+    assert scope.receipt()["open_groups"]==0
+    # A zero denominator is not a free cached core: it contains exact risk
+    # and provenance evidence, which must count against rolling retention.
+    with I03GroupedExecutionScope(max_cached_members=1,rolling_groups=True) as scope:
+        assert run(3,scope)==expected[3]
+        assert scope.receipt()["open_groups"]==0
+        assert scope.receipt()["capacity_fallbacks"]==1
