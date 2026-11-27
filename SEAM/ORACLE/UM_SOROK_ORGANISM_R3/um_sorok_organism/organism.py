@@ -83,6 +83,29 @@ def apply_body(actor, action, status, elapsed=1):
         b[k]=round(max(0.0,min(1.0,b[k])),5)
     return actor
 
+def conserved_motor_exercise(actor):
+    """Bounded continuation of the EXISTING .008 performed PRACTICE effect.
+
+    Actual actor-owned exercise and its distinct personal event path are
+    required. Do not count a qualified aggregate day as a performed episode.
+    This is a provisional motor readiness floor, not a skill, medical growth
+    rate, recollection, project or proof of independent mastery.
+    """
+    paths={(x.get('event'),x.get('experience_ref'))
+           for x in actor.get('evidence_paths',[])
+           if x.get('own_action')=='PRACTICE'}
+    seen=set()
+    for row in reversed(actor.get('power_exercises',[])):
+        pair=(row.get('event_ref'),row.get('experience_ref'))
+        if (row.get('actor')==actor['id'] and row.get('operation')=='PRACTICE'
+                and row.get('attempt_status_analyst_receipt')=='PERFORMED'
+                and row.get('felt_attempt') is True
+                and all(type(x) is str for x in pair) and pair in paths):
+            seen.add(pair)
+            if len(seen)>=5:break
+    return round(.008*len(seen),5)
+
+
 def mature(actor,days):
     """Explicit functional illustrative approximation, not science of human maturation."""
     if days<0:raise ValueError('negative passage of time')
@@ -90,7 +113,12 @@ def mature(actor,days):
     if actor['role']=='child':
         years=actor['age_days']/365.0
         b=actor['body']
-        b['motor']=max(b['motor'],round(min(.9,.17+.18*years),5))
+        # Do not erase the bounded products of actually exercised bodily
+        # activity when the age-only floor catches up to the old motor value.
+        # max prevents charging the same exercise again on each period.
+        # An already higher motor state remains intact, as before.
+        baseline=min(.9,.17+.18*years)
+        b['motor']=max(b['motor'],round(min(.9,baseline+conserved_motor_exercise(actor)),5))
         b['sensor']=max(b['sensor'],round(min(.9,.4+.12*years),5))
         # Language readiness != culturally acquired language competence: ceiling only.
         b['language_ceiling']=round(min(.95,.1+.22*years),5)
