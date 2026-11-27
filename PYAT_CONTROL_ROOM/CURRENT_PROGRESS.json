@@ -3326,5 +3326,82 @@
         "https://github.com/maidiu/rawlsing/pull/1397#issuecomment-7223074219"
       ]
     }
+  },
+  "g4_c11_independent_authority_substitution_20261127": {
+    "grade": "SOURCE_STATIC__USER_QUESTION_ONLY__NO_NEW_WORK_ORDER",
+    "scope": "Test whether persistent independent authority input substitutes for R14-R17 work; not downstream DDM or scientific routing completion.",
+    "r17": "f4ba0e505a34c0baca271b8ab787b7032e56ed7e",
+    "verdict": "YES for stable instrument semantics and shared route declaration; NO as total replacement for data-dependent incidence, exact release/replay and current admission. R17 is generated TEST_ONLY fixture with already known rules, not blocked on missing original authority docs. R157 real machine-readable source config and adapter already exist; actual source config estate not joined to R17. R17 still expands exact incidence digests and full canonical projection/envelope; replacing expanded contract with reference to independently pinned rule/membership and exact qualified release would require owner integration and parity, not mere lookup or permission bypass. No evidence of completed externally pinned compiled shared authority artifact consumed by R17.",
+    "sources": [
+      {
+        "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+        "blob": "8efe6a0c2b21fffbdd3ba2767b9b64c8e4ab25ab",
+        "path": "rawlsing_next/source_configuration/README.md"
+      },
+      {
+        "blob": "d4d84ef164feba6fb0de0851568738eb5f5e937d",
+        "path": "rawlsing_next/pre553_r157_projection_adapter.py",
+        "symbols": "SourceConfig/load_source_config/canonical_config_hash L1297-1370; _respondents L1730; _response_slots/_coordinate_slots/_weight_slots L1904-1998; _routing L1999; build_governed_c11_projection L2068"
+      },
+      {
+        "blob": "6dae4922191f0ece9e11b84e3afca09a23367268",
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "symbols": "_PackedRoutingFacts.from_rule_incidence L396; GovernedC11Projection.cache_identity L884; _event L918; project_c11_candidate_from_physical_cells L1034; source_backed_facade_key L1241"
+      },
+      {
+        "blob": "16fd5c14bc4d977a685d74fad24b0917eb49e614",
+        "symbols": "_validate_packed_routing_authorities and _validate_authorities L683-790"
+      },
+      {
+        "blob": "c32999e86c1d56a291dad043aafdcc0e2d666648",
+        "symbols": "_PreparedRoutingEnvelope L511-700 exact issued envelope/live immutable storage pin, not persistent external authority"
+      },
+      {
+        "blob": "b7bf7debd56222ae2837056a721629b77205dfd0",
+        "path": "tools/pyat_country_preparation_court.py",
+        "symbols": "worker L81-120 reconstructs generated case and grants per process"
+      },
+      {
+        "blob": "0851297286a09309cc155b63012b409f8f5547c8",
+        "path": "rawlsing_next/tests/test_pre553_country_numeric_economics.py",
+        "symbols": "_native_batch L64, route and incidence L156-186, independent expanded reference L238+"
+      }
+    ],
+    "actual_configs": [
+      {
+        "source": "SRC04",
+        "blob": "6294410641bbd73ec616a99fbf1b3fd68af693c4",
+        "rows": 7337,
+        "questions": 178,
+        "response_slots": 178,
+        "value_rules": 1384,
+        "coordinates": 3,
+        "weights": 0,
+        "routes": 178
+      },
+      {
+        "source": "SRC16",
+        "blob": "84abd3f6e37718a757a4597768b97218cb29948b",
+        "rows": 1613,
+        "questions": 216,
+        "response_slots": 157,
+        "value_rules": 7777,
+        "coordinates": 2,
+        "weights": 0,
+        "routes": 157
+      },
+      {
+        "source": "SRC35",
+        "blob": "6bd1cc470941969d060eaff98bedea4bcc6259fe",
+        "rows": 97220,
+        "questions": 613,
+        "response_slots": 390,
+        "value_rules": 14416,
+        "coordinates": 3,
+        "weights": 0,
+        "routes": 390
+      }
+    ],
+    "limits": "All 725 routes ALL/ROUTING_UNKNOWN; all three SOURCE_PREPARATION, routing/projection/semantics DEFER, local replay ALLOW only, no canonical question adoption or weight slots. Counts are declared rules, not native acceptance. Current permission, actual typed value and membership, exact occurrence identity and source integrity not substituted. No source science resolution, no new implementation or benchmark. Prior cap repair remains withdrawn."
   }
 }
