@@ -411,6 +411,45 @@ def _routing_column_value(column,row):
     return value
 
 
+def _routing_wire_column(column,rows,prefix):
+    """Stream the original canonical field bytes at physical run grain.
+
+    No decoded semantic objects, authority verdicts, or expanded wire retained.
+    Random-access reconstruction remains an independent exact comparator.
+    """
+    from itertools import repeat
+    blob,offsets,codes=column[:3]
+    layout=column[3] if len(column)==4 else b""
+    def value(i):
+        lo,hi=struct.unpack_from("<QQ",offsets,8*i)
+        return prefix+blob[lo:hi]
+    if layout==b"C":
+        yield from repeat(value(0),rows)
+    elif layout==b"R":
+        prior=0
+        for end,code in struct.iter_unpack("<II",codes):
+            yield from repeat(value(code),end-prior)
+            prior=end
+    elif codes:
+        tag="<B" if layout==b"B" else "<H" if layout==b"S" else "<I"
+        # Dictionary builders are bounded, but an imported lane could be
+        # large. Only pool a bounded exact byte table.
+        entries=len(offsets)//8-1
+        if len(blob)+entries*(len(prefix)+64)<=4*1024*1024:
+            table=tuple(value(i) for i in range(entries))
+            for code, in struct.iter_unpack(tag,codes):yield table[code]
+        else:
+            for code, in struct.iter_unpack(tag,codes):yield value(code)
+    else:
+        prior=0
+        for end, in struct.iter_unpack("<Q",memoryview(offsets)[8:]):
+            raw=blob[prior:end]
+            prior=end
+            if layout.startswith(b"H"):
+                raw=_REF_WIRE_PREFIX+raw[:32].hex().encode("ascii")+layout[1:]+raw[32:]
+            yield prefix+raw
+
+
 @lru_cache(maxsize=1024)
 def _routing_selector_template(raw):
     """Pure canonical-byte decoding; not a cache of authority decisions."""
@@ -631,9 +670,37 @@ class _PackedRoutingFacts(Sequence):
     def canonical_rows(self):
         runs,ends=self._storage
         start=0
-        for run,end in zip(runs,ends):
-            for row in range(end-start):
-                yield self._row_bytes(run,row)
+        for (keys,columns,digests),end in zip(runs,ends):
+            rows=end-start
+            # Compile canonical field ordering once. Stream column values
+            # in incidence order rather than doing a random binary search
+            # for every shared rule field for every full-wire hash.
+            names=(*self._top,*keys)
+            streams=[]
+            def field(name,lead):
+                return _routing_wire_column(columns[names.index(name)],rows,
+                                            lead+_routing_field_key_bytes(name))
+            from itertools import repeat
+            def hashes(prefix,suffix=b'"'):
+                for i in range(0,len(digests),32):
+                    yield prefix+digests[i:i+32].hex().encode("ascii")+suffix
+            outer=sorted((*self._top,"content_hash","object_id","semantic_fields"))
+            for i,name in enumerate(outer):
+                lead=b"{" if i==0 else b","
+                if name=="content_hash":
+                    streams.append(hashes(lead+b'"content_hash":"'))
+                elif name=="object_id":
+                    streams.append(hashes(lead+b'"object_id":"'+self._prefix.encode("ascii")))
+                elif name=="semantic_fields":
+                    streams.append(repeat(lead+b'"semantic_fields":{',rows))
+                    for j,k in enumerate(keys):
+                        streams.append(field(k,b"" if j==0 else b","))
+                    streams.append(repeat(b"}",rows))
+                else:
+                    streams.append(field(name,lead))
+            streams.append(repeat(b"}",rows))
+            for parts in zip(*streams,strict=True):
+                yield b"".join(parts)
             start=end
 
     def _location(self,index):
