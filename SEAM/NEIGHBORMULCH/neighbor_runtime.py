@@ -1637,7 +1637,8 @@ class NeighborEncounter:
                                     ('utterance_cue_ref','utterance_text_hash','utterance_grade'))):
                         # Actual words, not a generated description or a
                         # claim that the visitor understood/trusted them.
-                        lexical={'spoken_text':cue['spoken_text'],
+                        lexical={'spoken_text':cue['spoken_text'],'text':cue['spoken_text'],
+                            'sound_description':text,
                             'lexical_content':'ACTUAL_REALIZED_WORDS',
                             'utterance_claim_truth':'NOT_ESTABLISHED',
                             'human_comprehension':'NOT_ESTABLISHED'}

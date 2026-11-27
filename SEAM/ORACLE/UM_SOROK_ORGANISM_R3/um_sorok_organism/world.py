@@ -165,6 +165,10 @@ def attach_actual_utterance(world,attempt,summary,text):
     binding={'utterance_cue_ref':cue['id'],'utterance_text_hash':digest(text),
              'utterance_grade':'SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'}
     cue.update(binding,spoken_text=text,utterance_claim_truth='NOT_ESTABLISHED')
+    # The earlier object-demonstration branch did not encode words; this
+    # opt-in lexical realization supersedes only those absence flags.
+    cue.pop('spoke_about_material_object_without_encoded_word',None)
+    cue.pop('unobserved_semantic_content',None)
     summary.update(binding)
     public.update(binding)
 
@@ -207,7 +211,18 @@ def project_recursive_actor_sign(world, actor, cue, location):
             result['vocal_cadence']=cue['vocal_cadence']
             result['description']=CADENCES[cue['vocal_cadence']]
             result['tags'].append('vocal_cadence:'+cue['vocal_cadence'].lower())
+        if visible and cue.get('actual_spoken_object_demonstration') is True:
+            # Preserve the inherited cultural-reference route for an actual
+            # visible object, not anonymous acoustic access to its identity.
+            for key in ('material_object_ref','actual_spoken_object_demonstration',
+                        'spoke_about_material_object_without_encoded_word',
+                        'unobserved_semantic_content'):
+                if key in cue:result[key]=copy(cue[key])
+            result['tags']+=['public_object_reference','object_present']
         if lexical:
+            # There now are words; do not falsely claim they were absent.
+            result.pop('spoke_about_material_object_without_encoded_word',None)
+            result.pop('unobserved_semantic_content',None)
             result['spoken_text']=text
             result['utterance_claim_truth']='NOT_ESTABLISHED'
         return result

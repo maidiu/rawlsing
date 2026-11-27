@@ -93,6 +93,7 @@ class LexicalOccurrenceR39(unittest.TestCase):
         view=n.private_surface(profile)
         signs=[x for x in view['mandatory'] if x.get('spoken_text')]
         self.assertEqual(len(signs),1);self.assertEqual(signs[0]['spoken_text'],WORDS)
+        self.assertEqual(signs[0]['text'],WORDS)
         self.assertEqual(signs[0]['speaker_identity'],'NOT_ESTABLISHED')
         self.assertEqual(signs[0]['source_event_ref'],out['receipt'])
         self.assertNotIn(PRIVATE,canonical(view))
