@@ -121,7 +121,10 @@ def _wire(row,a,b):
 
 
 def build_plan(document,config,*,per_stratum=3,tasks=None,sequence_ids=None):
-    p=verify_workload(document);cfg=normalize_config(config);b=cfg["budget"]
+    p=verify_workload(document)
+    if any(r["task"] not in TASKS for r in p["rows"]):
+        raise ValueError("LAB_CHECKPOINT_REQUIRES_SEPARATE_OWNER_QUALIFIED_TRANSPORT")
+    cfg=normalize_config(config);b=cfg["budget"]
     if sequence_ids is None:
         cases,coverage=select_cases(document,per_stratum=per_stratum,tasks=tasks)
         selection={"per_stratum":per_stratum,"tasks":sorted(TASKS if tasks is None else set(tasks)),

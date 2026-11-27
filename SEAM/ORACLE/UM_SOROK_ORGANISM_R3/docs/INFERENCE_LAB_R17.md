@@ -260,3 +260,59 @@ quality verdict; one observation per case/arm is a feasibility pilot,
 not a model ranking. Do not infer call suppression, SC07 R/K closure, or
 a production routing policy from the result. Escalate the competent
 owner's actual continuation needs rather than authoring new psychology.
+
+
+## R22 — inherited P2/P3 developmental checkpoint intake
+
+Do not substitute the R34 event-level workload for life-development V3.
+The existing protected #704 RecursionCycle and #746 P3Owner are invoked
+through their original two-batch sourcefree fixture. This uses the existing
+WorkloadCapture and exact tape verifier, but a distinct capture-only
+developmental_checkpoint task. No generic current-organism live campaign
+can submit this workload. No new scheduler, developmental owner, psychology
+or model-visible field is introduced.
+
+From the R3 directory on a clean tracked checkout:
+
+```sh
+umask 077
+python inference_lab_checkpoint_r22.py --workload "$LAB/p3-checkpoints.json" \
+  --witness "$LAB/p3-local-witness.json" --report "$LAB/p3-report.json"
+python inference_lab_checkpoint_r22.py --verify --workload "$LAB/p3-checkpoints.json" \
+  --witness "$LAB/p3-local-witness.json" --report "$LAB/p3-verified.json"
+```
+
+The original owner fixture runs bootstrap, ordinary (both halves), terminal,
+six sequential actual events in two batches. Original source blobs are
+checked; original actor-access-only previous records and exact ordered
+prospective commitments are conserved. Local witness binds actual owner
+chain/state, verified P3 store, cycle and separately persisted retrospective
+proposals. It is NOT a provider packet. The capture is private 0600 and the
+verification replays the exact provider tape against committed witness
+bindings; it does NOT rerun the entire owner course on another root.
+Use fresh filenames and `--control` for the inherited no-mediator history
+control. The existing owner measure_case resource instrumentation remains
+the source of computational accounting. Per-call packet bytes are canonical
+payload bytes, NOT external provider request bytes or tokens. Callback
+duration is not model latency. No actual network use.
+
+**Critical limitation:** P3's original prospective plans are prequalified
+fixture plans and its context is a tiny fixture marker. Its retrospective
+impressions are stored proposal-only, not a producer of psychic formation;
+P3's actual rule-computed records become operative in later events before
+the next LLM call. Captured ordinary packet is useful as a real inherited
+ABI and access/cadence witness, not an adequate owner-native generative
+prompt, validated multi-decade model, or a live two-half semantic task.
+No promotion to paid model use. The next actual owner interface must bind
+current permitted prospective constraints and operative iceberg context,
+ordered experienced consequences, provisional interpretation and qualified
+subsequent consumption. Current R3 event-level development and historical
+P2/P3 checkpoint are distinct; transfer needs explicit CO owner decision.
+
+Reuse prior RFA-06C2 (06e5cadac5519d5e86609a490c95157738d0fe10) native
+Anthropic transport, matched blind renderer design and adjudication, not
+repeat saturated surrogate model screen. Actual current user-visible
+surface and actor-realization access differ; require owner-qualified
+current packets, not broadened whole-person private evidence. No fixed
+provider/effort assignment. R002 archive receipt identifies exact sources
+and prior reported results, with raw aggregate verification still held.

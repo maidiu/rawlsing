@@ -17,6 +17,8 @@ SCHEMA="RAWLSING_SOURCEFREE_INFERENCE_WORKLOAD_V1"
 GRADE="SOURCEFREE_FIXTURE_ONLY_NOT_EMPIRICAL"
 TASKS=frozenset(("actor_attempt","development","expression","adult_constructor",
                  "blind_adult_interview","family_pathway_selection"))
+CHECKPOINT_TASK="developmental_checkpoint"
+CAPTURE_TASKS=TASKS|{CHECKPOINT_TASK}
 MAX_PACKET_BYTES=128000
 MAX_PROPOSAL_BYTES=256000
 MAX_TAPE_BYTES=128*1024*1024
@@ -77,7 +79,7 @@ class WorkloadCapture:
 
     def invoke(self,provider,task,packet):
         if self.failed:raise RuntimeError("LAB_CAPTURE_INCOMPLETE")
-        if task not in TASKS or type(packet) is not dict:
+        if task not in CAPTURE_TASKS or type(packet) is not dict:
             raise ValueError("LAB_INVALID_PACKET")
         frozen=copy(packet);n=size(frozen)
         if (n>MAX_PACKET_BYTES or len(self.rows)>=self.max_rows
@@ -150,7 +152,7 @@ def verify_workload(doc,*,source_head=None):
     for i,row in enumerate(rows):
         if (type(row) is not dict or set(row)!={"seq","task","packet","packet_digest",
                     "proposal","proposal_digest","elapsed_ns"} or type(row["seq"]) is not int
-                or row["seq"]!=i or row["task"] not in TASKS
+                or row["seq"]!=i or row["task"] not in CAPTURE_TASKS
                 or type(row["packet"]) is not dict or type(row["proposal"]) is not dict
                 or row["proposal"].get("task") not in (None,row["task"])
                 or digest(row["packet"])!=row["packet_digest"]
