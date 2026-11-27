@@ -497,3 +497,10 @@ JSON additive proposed field `sorok_g4_r34_r18_bank_candidate`:
   "new_authority": false
 }
 ```
+
+
+## 2026-11-27 — CO coordination exact-source addendum (matching proposed pair)
+
+MD: #1371 exact 646f5745910a2196fad358c5f57b7320df52a394 L937 owner-recorded user-confirmed coordination mandate, G4 existing functional accounting, CO HQ theoretical consequence/scope, no new engineering owner or universal gate. Protected PRE-MAIN unchanged; R34/R18 proposal remains candidate. Ledger de9c73fd1b388f8b1f6f96e47ee4d5d44b831426; CIC 98e6295e73f7b88018756e2a009b4f747165ebf7.
+
+JSON proposed additive field `sorok_g4_co_coordination_candidate`: `{"protected_parent":"827714e83743056939894a39736d72ea16bdc6dd","head":"646f5745910a2196fad358c5f57b7320df52a394","pr":1371,"line":937,"ledger_blob":"de9c73fd1b388f8b1f6f96e47ee4d5d44b831426","cic_blob":"98e6295e73f7b88018756e2a009b4f747165ebf7","status":"PROPOSED_ONLY_HQ_CURRENTNESS_HOLD","new_authority":false,"owner_incorporation":"NOT_VERIFIED","protected_receiving":"NOT_RECEIVED"}`.
