@@ -1175,7 +1175,11 @@ class CountryWorkloadSession:
     Single-threaded, explicit context lifetime; failed execution closes it.
     """
     def __init__(self,path,receipt,*,require_current,preparation_path=None,
-                 preparation_pin=None):
+                 preparation_pin=None,reuse_query_preparation=False):
+        if type(reuse_query_preparation) is not bool:
+            raise CountryCarrierError("explicit query preparation reuse selection required")
+        self._reuse_query_preparation=reuse_query_preparation
+        self._query_scope=None
         if type(receipt) is not CountryReceipt or not callable(require_current):
             raise CountryCarrierError("exact country receipt and current callback required")
         self._path=Path(path).resolve()
@@ -1221,6 +1225,7 @@ class CountryWorkloadSession:
         if self._owner is not None and self._owner!=get_ident():
             raise CountryCarrierError("country workload session owner thread required")
         self._closed=True
+        self._discard_query_scope()
         self._entry=None
         if self._reader is not None:
             self._reader.close()
@@ -1280,16 +1285,38 @@ class CountryWorkloadSession:
                 self._active=None
         return binding()
 
+    def _discard_query_scope(self):
+        if self._query_scope is not None:
+            self._query_scope.close()
+            self._query_scope=None
+
+    def _query_scope_for(self,repository):
+        # Existing grouping and condition owner, scoped to this exact live
+        # certified repository. Each separate workload is still admitted.
+        self._current()
+        if not self._reuse_query_preparation:
+            return None
+        if self._entry is None or self._entry[3] is not repository:
+            raise CountryCarrierError("query preparation repository drift")
+        if self._query_scope is None:
+            from .pre553_empirical_query import I03GroupedExecutionScope
+            self._query_scope=I03GroupedExecutionScope()
+        return self._query_scope
+
     def _repository(self,source,projection,authorities):
         from .pre553_source_backed_c11_facade import (
-            build_source_backed_c11_repository,source_backed_facade_key)
+            build_source_backed_c11_repository,source_backed_facade_key,_CountryProjectionPin)
         self._current()
         if type(source) is not _CountryPhysicalStream or source.reader is not self._reader:
             raise CountryCarrierError("country session source reader mismatch")
         source._verify_binding()
         authorities=tuple(authorities)
         if self._entry is not None:
-            key=source_backed_facade_key(source,projection,current_authorities=authorities)
+            pin=getattr(self._reader,"_certified_projection_pin",None)
+            if type(pin) is _CountryProjectionPin and pin.matches(projection,authorities):
+                key=pin.key(source,projection,authorities)
+            else:
+                key=source_backed_facade_key(source,projection,current_authorities=authorities)
             old_key,old_projection,old_authorities,repo,release,identity,identity_pin=self._entry
             # Strict object ownership avoids reusing a body resolver bound
             # to a different (even equal) projection or authority instance.
@@ -1309,7 +1336,9 @@ class CountryWorkloadSession:
             # Do not keep the old graph alive in destructured local variables
             # across a miss while building its replacement.
             del repo,release,old_projection,old_authorities,identity
-        # Release the old prepared graph before constructing another one.
+        # Release the old prepared graph and query derivatives before
+        # constructing another one. Neither crosses a release replacement.
+        self._discard_query_scope()
         self._entry=None
         if self._preparation is None:
             repo,release=build_source_backed_c11_repository(source,projection,
