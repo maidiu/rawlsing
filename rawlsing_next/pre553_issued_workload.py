@@ -411,14 +411,18 @@ class _NonRoutingEnvelopePin:
     retained_bytes: int
 
     @classmethod
-    def capture(cls,workload,max_bytes):
+    def capture(cls,workload,max_bytes,*,diagnostics=None):
         from rawlsing_next.pre553_empirical_objects import (
             CanonicalSemanticObject,_FrozenSemanticList,PUBLIC_OBJECT_FAMILIES)
         from rawlsing_next.pre553_c11_integrity import C11InternalRecord,TypedAbsence
+        # Group field layouts by exact class + names. Retain flat reference
+        # planes instead of three Python tuples per object, and flat mapping
+        # entries rather than one tuple per key/value. Every actual object
+        # and leaf is still held strongly and checked by identity.
         seen=set()
-        attrs=[]
+        groups={}
         mappings=[]
-        used=256
+        used=legacy_used=256
         known_dataclasses={
             "rawlsing_next.pre553_source_backed_c11_facade",
             "rawlsing_next.pre553_carrier_execution",
@@ -429,17 +433,25 @@ class _NonRoutingEnvelopePin:
         }
         class Unsupported(Exception):
             pass
-        def budget(n):
-            nonlocal used
-            used+=n
+        def budget(n,old):
+            nonlocal used,legacy_used
+            used+=n;legacy_used+=old
             if used>max_bytes:
-                raise Unsupported
+                raise Unsupported("BUDGET")
         def attr(obj,names):
             if cls._has_serialization_override(obj):
-                raise Unsupported
+                raise Unsupported("SERIALIZER_OVERRIDE")
             vals=tuple(getattr(obj,n) for n in names)
-            attrs.append((obj,type(obj),names,vals))
-            budget(128+16*len(names))
+            key=(type(obj),names)
+            group=groups.get(key)
+            if group is None:
+                budget(256+16*len(names),0)
+                group=groups[key]=[]
+            # Includes simultaneous list/tuple pointer allowance; the
+            # original 72B per seen identity remains in capture budget.
+            budget(24+24*len(vals),128+16*len(names))
+            group.append(obj)
+            group.extend(vals)
             for v in vals:
                 visit(v)
         def visit(obj):
@@ -450,17 +462,21 @@ class _NonRoutingEnvelopePin:
             if ident in seen:
                 return
             seen.add(ident)
-            budget(72)
+            budget(72,72)
             if typ in (tuple,_FrozenSemanticList):
                 for v in obj:
                     visit(v)
             elif typ in (dict,MappingProxyType):
-                items=tuple(obj.items())
-                if any(type(k) is not str for k,v in items):
-                    raise Unsupported
+                # Match R4's actual items() contract, not a possibly
+                # different key iterator or delegated MappingProxyType.get.
+                items=tuple(x for pair in obj.items() for x in pair)
+                it=iter(items)
+                if any(type(k) is not str for k,v in zip(it,it)):
+                    raise Unsupported("NONSTRING_MAPPING_KEY")
+                budget(128+24*len(items),128+40*len(items))
                 mappings.append((obj,items))
-                budget(128+80*len(items))
-                for k,v in items:
+                it=iter(items)
+                for k,v in zip(it,it):
                     visit(v)
             elif typ is GovernedC11Projection:
                 attr(obj,tuple(f.name for f in fields(obj) if f.name!="routing"))
@@ -469,14 +485,14 @@ class _NonRoutingEnvelopePin:
                         or obj.FAMILY not in PUBLIC_OBJECT_FAMILIES
                         or typ.as_dict is not CanonicalSemanticObject.as_dict
                         or obj._frozen is not True):
-                    raise Unsupported
+                    raise Unsupported("PUBLIC_OBJECT_SHAPE")
                 attr(obj,("schema_id","schema_version","typed_state","object_id","content_hash",
                           "authority_snapshot_refs","dependency_refs",
                           "producer_replay_locator_or_reference_root","_semantic_fields","_frozen"))
             elif isinstance(obj,C11InternalRecord):
                 if (typ.__module__!="rawlsing_next.pre553_c11_integrity"
                         or typ.as_dict is not C11InternalRecord.as_dict):
-                    raise Unsupported
+                    raise Unsupported("INTERNAL_OBJECT_SHAPE")
                 attr(obj,tuple(f.name for f in fields(obj))+("content_hash","object_id","ref"))
             elif typ in (ExactRef,AuthorityRef,TypedAbsence,I03ExecutionRequest,NativeWorkload,RuntimeObjectCatalog):
                 attr(obj,tuple(f.name for f in fields(obj)))
@@ -484,42 +500,55 @@ class _NonRoutingEnvelopePin:
                   and not hasattr(obj,"as_dict")):
                 attr(obj,tuple(f.name for f in fields(obj)))
             else:
-                raise Unsupported
+                raise Unsupported("UNSUPPORTED:"+typ.__module__+"."+typ.__name__)
+        def report(reason):
+            if diagnostics is not None:
+                diagnostics.update(reason=reason,estimated_capture_bytes=used,
+                    legacy_estimated_capture_bytes=legacy_used,budget_bytes=max_bytes,
+                    seen_nodes=len(seen),mapping_count=len(mappings),
+                    object_count=sum(len(values)//(1+len(names))
+                                     for (_,names),values in groups.items()),
+                    layouts={typ.__name__+":"+str(len(names)):len(values)//(1+len(names))
+                             for (typ,names),values in groups.items()})
         try:
             visit(workload)
-        except (Unsupported,TypeError,ValueError,AttributeError,RecursionError):
+        except (Unsupported,TypeError,ValueError,AttributeError,RecursionError) as exc:
+            report(str(exc) if isinstance(exc,Unsupported) else type(exc).__name__)
             return None
-        return cls(tuple(attrs),tuple(mappings),used)
+        report("CAPTURED")
+        return cls(tuple((typ,names,tuple(values)) for (typ,names),values in groups.items()),
+                   tuple(mappings),used)
 
     @staticmethod
     def _has_serialization_override(obj):
-        # The pin covers known incumbent field representations, not
-        # instance-overridden serialization behavior.
         own=getattr(obj,"__dict__",{})
         return not _PIN_SERIALIZER_FIELDS.isdisjoint(own)
 
     def matches(self):
         missing=object()
-        for obj,typ,names,vals in self.attrs:
-            if type(obj) is not typ:return False
-            # ExactRefs and AuthorityRefs dominate large projection graphs.
-            # Their ordinary dataclass dict owns all three immutable leaves.
-            # Check every leaf by identity, including equal-valued replacements,
-            # and refuse serializer overrides. No hash/authority shortcut.
+        for typ,names,values in self.attrs:
+            it=iter(values)
             if typ is ExactRef or typ is AuthorityRef:
-                own=obj.__dict__
-                if (type(own) is not dict
-                        or (len(own)!=3 and not _PIN_SERIALIZER_FIELDS.isdisjoint(own))
-                        or own.get(names[0],missing) is not vals[0]
-                        or own.get(names[1],missing) is not vals[1]
-                        or own.get(names[2],missing) is not vals[2]):
-                    return False
+                n0,n1,n2=names
+                for obj,a,b,c in zip(it,it,it,it):
+                    if type(obj) is not typ:return False
+                    own=obj.__dict__
+                    if (type(own) is not dict
+                            or (len(own)!=3 and not _PIN_SERIALIZER_FIELDS.isdisjoint(own))
+                            or own.get(n0,missing) is not a
+                            or own.get(n1,missing) is not b
+                            or own.get(n2,missing) is not c):
+                        return False
                 continue
-            if (self._has_serialization_override(obj)
-                    or any(getattr(obj,n,missing) is not v for n,v in zip(names,vals))):
-                return False
+            stride=1+len(names)
+            for row in zip(*([it]*stride)):
+                obj=row[0]
+                if (type(obj) is not typ or self._has_serialization_override(obj)
+                        or any(getattr(obj,n,missing) is not v for n,v in zip(names,row[1:]))):
+                    return False
         for obj,items in self.mappings:
-            if len(obj)!=len(items) or any(k not in obj or obj[k] is not v for k,v in items):
+            it=iter(items)
+            if len(obj)*2!=len(items) or any(k not in obj or obj[k] is not v for k,v in zip(it,it)):
                 return False
         return True
 
