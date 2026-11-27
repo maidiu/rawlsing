@@ -1,5 +1,7 @@
 # SOROK PROGRAMMA — O-INDEX LIVE RECEIVING START_HERE
 
+**Construction-first scope view (2026-11-27, candidate):** [CIC first-draft accounting](CONSTITUTIVE_IMPLEMENTATION_COVERAGE_R1.md#construction-first-draft-accounting--2026-11-27-author-proposed); run `python check_cic.py --construction-view`. Keep construction, review, authority and protected receiving separate.
+
 ## Latest point-of-use intake — 2026-11-27
 
 [R55/R56 acquired attention, novel objects and exact bank validation](#2026-11-27--r55r56-acquired-attention-novel-objects-and-exact-bank-validation). 184 observations; latest CO R56, separate NEIGHBOR R33. Bank-specific execution now established at 45e659c6.

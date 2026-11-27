@@ -32,6 +32,45 @@ def check_review_entry(entry):
         else:
             require(entry["refinement_disposition"] == "OPEN_CONSERVED", "DROPPED_DEFERRED_REVIEW")
 
+FIRST_DRAFT = "AUTHOR_PROPOSED_SCOPED_INTEGRATED_FIRST_DRAFT"
+
+def construction_view(c):
+    """Scope accounting, not an aggregate percentage or a new inventory."""
+    clusters = []
+    for o in c["obligations"]:
+        rows = []
+        for q in o["criteria"]:
+            draft = q.get("construction_first_draft")
+            rows.append({"id":q["id"], "acceptance_candidate":q["acceptance_candidate"],
+                         "construction_status":FIRST_DRAFT if draft else "NOT_YET_ADJUDICATED_FOR_FIRST_DRAFT",
+                         "prior_evidence_status":q["criterion_status"],
+                         "first_draft":draft,"remaining_boundary":q["remaining_boundary"]})
+        clusters.append({"id":o["id"],"title":o["title"],"criteria":rows,
+                         "scoped_first_drafts":sum(r["first_draft"] is not None for r in rows)})
+    n = sum(x["scoped_first_drafts"] for x in clusters)
+    return {"mode":"BOUNDED_CONSTRUCTION_ACCOUNTING_NOT_COMPLETION_PERCENTAGE",
+            "clusters":len(clusters),"criteria":sum(len(x["criteria"]) for x in clusters),
+            "scoped_first_draft_candidates":n,
+            "not_yet_adjudicated":sum(len(x["criteria"]) for x in clusters)-n,
+            "whole_clusters_closed":0,"obligations":clusters}
+
+def check_first_draft(q, obs):
+    d = q.get("construction_first_draft")
+    if d is None:
+        return
+    require(d["status"] == FIRST_DRAFT and d["authority"] ==
+            "NO_CRITERION_CLOSURE_NO_INDEPENDENT_REVIEW_NO_PROTECTED_RECEIVING", "FIRST_DRAFT_FALSE_PROMOTION")
+    require(q["criterion_status"] != "RELATED_EXECUTION_AFFECTED_BY_REJECTED_DEPENDENCY", "FIRST_DRAFT_REJECTED_DEPENDENCY")
+    require(bool(d["scope"]) and d["remaining_boundary"] == q["remaining_boundary"], "FIRST_DRAFT_BOUNDARY")
+    test = obs[d["joined_pr"]]["test"]
+    require(test["executed_sha"] == d["executed_sha"] == obs[d["joined_pr"]]["head_sha"] and
+            test["receipt"] == d["receipt"] and test["applied_to_head"] is True and
+            test["normal"] > 0 and test["optimized"] > 0, "FIRST_DRAFT_EXECUTION_DRIFT")
+    t = d["consumer_test"]
+    require(t["path"].startswith("SEAM/") and t["path"].endswith(".py") and
+            len(t["blob"]) == 40 and all(ch in "0123456789abcdef" for ch in t["blob"]) and
+            bool(t["positive"]) and bool(t["negative"]), "FIRST_DRAFT_CONSUMER_MISSING")
+
 def validate(c, ledger, registry, pinned=True):
     ids = {r["id"] for r in registry["rows"]}
     obs = {r["pr"]: r for r in ledger["records"]}
@@ -54,6 +93,7 @@ def validate(c, ledger, registry, pinned=True):
         for q in o["criteria"]:
             require(q["id"] not in criteria and q["id"].startswith(oid+"."), "CRITERION_ID")
             criteria[q["id"]] = q
+            check_first_draft(q, obs)
             require(set(q["dimensions"]) == dimensions, "EVIDENCE_DIMENSIONS")
             require(q["dimensions"]["received"] == "NOT_RECEIVED_AS_CIC_CRITERION", "FALSE_RECEIVING")
             require(q["dimensions"]["demonstrated"] == "NO_NEW_CRITERION_EXECUTION", "FALSE_EXECUTION")
@@ -197,16 +237,25 @@ def selftest(c,ledger,registry):
     check(lambda x:homechild(x).update(criterion_status="PASS"),"HOME_REFINEMENT_FALSE_PROMOTION")
     check(lambda x:homechild(x)["requirement_origin"].update(source_basis=""),"HOME_REFINEMENT_SOURCE_DRIFT")
     check(lambda x:homechild(x)["whole_organism_navigation"].pop("existing_capital"),"HOME_REFINEMENT_NAVIGATION_DROP")
+    def draft(x):
+        return next(q["construction_first_draft"] for o in x["obligations"] for q in o["criteria"] if "construction_first_draft" in q)
+    if construction_view(c)["scoped_first_draft_candidates"]:
+        check(lambda x:draft(x).update(executed_sha="0"*40),"FIRST_DRAFT_EXECUTION_DRIFT")
+        check(lambda x:draft(x).update(remaining_boundary=""),"FIRST_DRAFT_BOUNDARY")
+        check(lambda x:draft(x).update(authority="RECEIVED"),"FIRST_DRAFT_FALSE_PROMOTION")
+        return 33
     return 30
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")
     p.add_argument("--function")
+    p.add_argument("--construction-view",action="store_true")
     p.add_argument("--obligation")
     a=p.parse_args()
     c=load(CIC.name);l=load("LIVE_RECEIVING_LEDGER.json");r=load("01_SOURCE_OF_TRUTH_REGISTRY.json")
     result=validate(c,l,r)
     if a.self_test: result["adversaries_refused"]=selftest(c,l,r)
+    if a.construction_view: result["construction"]=construction_view(c)
     if a.function or a.obligation:
         result["obligations"]=[o for o in c["obligations"] if (not a.function or a.function in o["function_refs"]) and (not a.obligation or a.obligation==o["id"])]
     print(json.dumps(result,ensure_ascii=False,indent=2))

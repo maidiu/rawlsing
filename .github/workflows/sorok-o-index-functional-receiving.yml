@@ -63,3 +63,17 @@ jobs:
         run: |
           python check_cic.py --self-test
           python check_cic.py --function C3 > "$RUNNER_TEMP/cic-c3.json"
+
+      - name: Construction-first view preserves every existing criterion
+        run: |
+          python check_cic.py --construction-view > "$RUNNER_TEMP/cic-construction.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          d=json.loads((Path(os.environ['RUNNER_TEMP'])/'cic-construction.json').read_text())['construction']
+          assert d['criteria']==sum(len(o['criteria']) for o in d['obligations'])
+          assert d['clusters']==len(d['obligations'])
+          assert d['scoped_first_draft_candidates']+d['not_yet_adjudicated']==d['criteria']
+          assert d['whole_clusters_closed']==0
+          print({k:v for k,v in d.items() if k!='obligations'})
+          PY
