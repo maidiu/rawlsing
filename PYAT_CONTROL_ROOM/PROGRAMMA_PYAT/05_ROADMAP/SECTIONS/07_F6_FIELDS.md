@@ -1,5 +1,12 @@
 # ROADMAP:S07 — F6 lawful multi-field, independent-survey composition
 
+## 2026-11-25 — integrated cross-owner functional intelligence (user-directed)
+
+**Operational reading:** documentary integration of exact existing candidate evidence, not new code adoption or new science/actor rights. Protected PRE-MAIN remains 827714e83743056939894a39736d72ea16bdc6dd rev23; this R24 candidate preserves all current economics work and P0. No additional engineering queue. Read the relevant actual source before extending.
+
+Independent-source knowledge: Q018 exact common finite frame (blob 54b069d6), Q020 issued uncertainty intervals/common target (172643f6), both #1238 candidate 1b07ee8e, revoked from protected in rev17; F6M/P target-standardized partial mass (producer 2df811d7, adapter 8ab3fa7c, #1267 102b274e) distinct; necessity hold remains, not wholesale adoption. Keep unknown mass, no fabricated joint or point; existing I07 guard not estimator. #1310 4b6409e9 and #1311 3adc71a2 generated-source actual multi-frontier learned delivery/cold resume, 48 focused and 254 analytical/154 saved +2 skip author reported, Actions success checked; no F6 learned reader shown. #1316 original recorded-only priority unchanged. [Exact evidence](https://github.com/maidiu/rawlsing/pull/1342#issuecomment-7172670057).
+
+
 ## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S07 exact science-to-product work (candidate; not accepted)
 
 **Mandatory product question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? Source of complete obligations: [27-row PROGRAMMA agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). This section remains governed by its native existing ROADMAP/GAP/IF/AND identities and competent source/science/actor owner; alias visibility does not mint a new obligation grade. Future commission writing must freeze evidence, source IDs, first reader and negative checks under MCR-C.
