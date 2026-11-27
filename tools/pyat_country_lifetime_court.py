@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="6328195236f337d54ce996fcef1a36db5d2b8db3"
+BASE="30d014b5b8ea8d51526dfcc7acb51cd7e9ba9589"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -56,7 +56,8 @@ def worker(root,mode,report):
     if mode=="restore":
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
-    counts={"I02":0,"I03":0,"I05":0};phases={k:0. for k in counts}
+    counts={k:0 for k in ("I02","I03","I05","admission","nonrouting_pin","projection_identity","full_file_auth")}
+    phases={k:0. for k in counts}
     def monitor(owner,name,label):
         original=getattr(owner,name)
         def invoke(*a,**kw):
@@ -85,17 +86,30 @@ def worker(root,mode,report):
             checked+=1
         return checked
     evidence=[];times=[];group_receipt=None
-    with monitor(facade,"_validate_country_produced_release","I02"),monitor(
-          CarrierNeutralResearchExecutor,"execute_i03","I03"),monitor(
-          CarrierNeutralResearchExecutor,"execute_i05","I05"):
+    from contextlib import ExitStack
+    with ExitStack() as stack:
+        for owner,name,label in (
+            (facade,"_validate_country_produced_release","I02"),
+            (CarrierNeutralResearchExecutor,"execute_i03","I03"),
+            (CarrierNeutralResearchExecutor,"execute_i05","I05"),
+            (issued,"_admit","admission"),
+            (issued._NonRoutingEnvelopePin,"matches","nonrouting_pin"),
+            (facade._CountryProjectionPin,"matches","projection_identity"),
+            (carrier.CountryReader,"verify_full","full_file_auth"),
+        ):
+            stack.enter_context(monitor(owner,name,label))
         with carrier.CountryWorkloadSession(db,receipt,**kwargs) as session:
             for label,item,resolver in cases:
+                prior_phases=phases.copy()
+                prior_counts=counts.copy()
                 t=time.monotonic()
                 execution=session.execute(item,resolver,host=host,purpose=purpose)
                 elapsed=time.monotonic()-t
                 proof=execution.result.exact_s2e_output_census(runtime_catalog=item.catalog)
                 checked=source_counts(execution.result)
-                times.append({"label":label,"wall_s":elapsed,"source_counts":checked})
+                times.append({"label":label,"wall_s":elapsed,"source_counts":checked,
+                    "inclusive_s":{k:phases[k]-prior_phases[k] for k in phases},
+                    "phase_calls":{k:counts[k]-prior_counts[k] for k in counts}})
                 evidence.append((label,proof.as_dict(),execution.release_identity.as_dict()))
                 del execution,proof
             scope=getattr(session,"_query_scope",None)
