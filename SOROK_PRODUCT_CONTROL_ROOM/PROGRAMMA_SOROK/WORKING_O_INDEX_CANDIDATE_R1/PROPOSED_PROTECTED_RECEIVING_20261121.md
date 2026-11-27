@@ -322,3 +322,51 @@ JSON: additive proposed field `sorok_g4_point_of_use_candidate` (do not apply wi
   "new_authority": false
 }
 ```
+
+## 2026-11-26 — R33 direct push and developmental semantic sufficiency (matching pair proposal)
+
+MD: At protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd, paired blobs a565e6239ee730bf8aae796d1c5afb35207b1e93 / f2081d41452a5fb5d7061fcf340af725e4ee07af, preserve R39+MII and MI correction. Candidate-only: R33 #1389 exact b3e5de0cfc03d1e142afdb2cf691fc402306ac33 executed in direct push job 140175812344, 842 invocations/mode (127 NEIGHBOR, 715 CO/economy). This supersedes earlier source-only intake; no independent review or protected receiving. CO #1371 38675f8ea14d0ee715dd7d7c8f1c4b90597f9fb7 immediate predecessor line conservation only. Existing owner proposal for F/E/P/Lbad developmental semantic sufficiency attached to five existing CIC criteria; no policy implementation, semantic execution, new authority or criterion status promotion. Ledger 19f5358f4038c75ab299941a8cccaaeed5e9d591; CIC 30f8a5847b454e52d81e054107a583fd704a2ed1; 182 observations, 625 links, 187 criteria, 719 routes. HOME owner incorporation not verified. 
+
+JSON: proposed matching additive field `sorok_g4_developmental_semantic_sufficiency_candidate` (competent receiving only).
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "ledger_blob": "19f5358f4038c75ab299941a8cccaaeed5e9d591",
+  "cic_blob": "30f8a5847b454e52d81e054107a583fd704a2ed1",
+  "pr_observations": 182,
+  "relationships": 625,
+  "criteria": 187,
+  "home_routes": 719,
+  "r33": {
+    "pr": 1389,
+    "sha": "b3e5de0cfc03d1e142afdb2cf691fc402306ac33",
+    "run": 45897767639,
+    "job": 140175812344,
+    "invocations_per_mode": 842,
+    "status": "SOURCEFREE_EXACT_HEAD_EXECUTION_LOG_READBACK"
+  },
+  "co_home": {
+    "pr": 1371,
+    "head": "38675f8ea14d0ee715dd7d7c8f1c4b90597f9fb7",
+    "immediate_predecessor_lines_preserved": true,
+    "exhaustive_semantic_restoration": "NOT_ESTABLISHED"
+  },
+  "owner_proposal": {
+    "pr": 1378,
+    "comment": 7206583433,
+    "status": "PROPOSED_NOT_IMPLEMENTED_OR_SEMANTICALLY_TESTED",
+    "cic": [
+      "CO-CIC-032.01",
+      "CO-CIC-029.02",
+      "CO-CIC-018.06",
+      "NEIGHBOR-CIC-024.02",
+      "NEIGHBOR-CIC-016.02"
+    ]
+  },
+  "owner_incorporation": "NOT_VERIFIED",
+  "independent_review": "HELD",
+  "protected_receiving": "NOT_RECEIVED",
+  "new_authority": false
+}
+```
