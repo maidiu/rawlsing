@@ -409,3 +409,46 @@ JSON proposed additive field `sorok_g4_direct_r33_criterion_evidence_candidate`:
   "protected_receiving": "NOT_RECEIVED"
 }
 ```
+
+
+## 2026-11-27 — R55/R56 and bank-specific receipt (matching pair proposal)
+
+MD: protected PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; paired blobs a565e6239ee730bf8aae796d1c5afb35207b1e93 and f2081d41452a5fb5d7061fcf340af725e4ee07af. Candidate intake only: R55 #1395 exact d8a89cd610990d5aa0a0e3fdcb002d0e2a09bf4d direct job 140267724842 717 CO/economy suite invocations/mode; R56 #1396 exact 9bf2cda4115cf73899c0d5128c36bcbd192af809 direct job 140320427751 720/mode. R56 direct R55 descendant, R33 separate. Bank validation exact 45e659c6129ee6a23ef424af969baf536b454afb job 140253158390 9 pass/0 fail, 1063 slots. Five existing criteria receive related evidence only; scoped current HOME/predecessor comparison, not exhaustive no-drop. Ledger 284c1858357f17c54b5c8b7b20f8f30289b70626; CIC 8f35cd70a9cb49f6956bff2d5d851b3cde5d15a7. No new review, authority or protected receiving.
+
+JSON additive proposed field `sorok_g4_r55_r56_candidate`:
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "ledger_blob": "284c1858357f17c54b5c8b7b20f8f30289b70626",
+  "cic_blob": "8f35cd70a9cb49f6956bff2d5d851b3cde5d15a7",
+  "observations": 184,
+  "relationships": 632,
+  "criteria": 187,
+  "home_routes": 719,
+  "r55": {
+    "pr": 1395,
+    "head": "d8a89cd610990d5aa0a0e3fdcb002d0e2a09bf4d",
+    "job": 140267724842,
+    "suite_per_mode": 717
+  },
+  "r56": {
+    "pr": 1396,
+    "head": "9bf2cda4115cf73899c0d5128c36bcbd192af809",
+    "job": 140320427751,
+    "suite_per_mode": 720,
+    "r33_joined": false
+  },
+  "bank": {
+    "head": "45e659c6129ee6a23ef424af969baf536b454afb",
+    "job": 140253158390,
+    "pass": 9,
+    "fail": 0,
+    "slots": 1063
+  },
+  "home_semantic_conservation": "SCOPED_ONLY",
+  "owner_incorporation": "NOT_VERIFIED",
+  "independent_review": "HELD",
+  "protected_receiving": "NOT_RECEIVED"
+}
+```
