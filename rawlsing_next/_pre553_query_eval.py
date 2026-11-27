@@ -520,6 +520,95 @@ class _ConditionMemo:
         return member
 
 
+@dataclass(frozen=True,slots=True)
+class _ConstituentEvidenceRef:
+    """Private provenance-only view; never a public fact or selector."""
+    identity: tuple[str,str,str]
+
+    @property
+    def ref(self):
+        return ExactRef(*self.identity)
+
+
+class _CountryConstituentMemo:
+    """Bounded lazy exact constituent reuse, owned by one live country scope.
+
+    Only I02-certified private selector reads can be retained. Cache neither
+    whole answers nor permissions. Each query still applies its own risk
+    intersection, condition, target order, measures and native proof. Missing
+    values are unresolved, not negative; never evaluate later components
+    speculatively after the incumbent short circuit.
+    """
+    def __init__(self,index,registry,budget):
+        self.index=index
+        self.registry_map=registry._by_key
+        self.budget=budget
+        self.bytes=0
+        self.rows={}
+        self.hits={"routing":0,"target":0}
+        self.misses={"routing":0,"target":0}
+        self.refusals=0
+
+    def compatible(self,index,registry):
+        return (index is self.index and len(registry._by_key)==len(self.registry_map)
+                and all(registry._by_key.get(k) is v for k,v in self.registry_map.items()))
+
+    def evaluate(self,kind,key,respondent,registry,used,used_auth,compute):
+        # Plan identities are compiled once per core, not per respondent.
+        # Exact respondent keys are part of every retained observation.
+        token=(kind,key,respondent.ref.key)
+        entry=self.rows.get(token)
+        if entry is not None:
+            value,identities,authorities=entry
+            refs=tuple(AuthorityRef(*a) for a in authorities)
+            # No retained ALLOW verdict: independently resolve every
+            # authority used by the original constituent.
+            routing_authority=False
+            for ref in refs:
+                snapshot=registry.resolve_exact(ref).snapshot
+                if snapshot.typed_state!="ALLOW":
+                    raise Pre553AuthorityError("constituent authority is no longer positive")
+                routing_authority |= snapshot.authority_kind=="ROUTING_RISK_SET"
+            if kind=="routing" and not routing_authority:
+                raise Pre553AuthorityError("constituent lacks routing authority")
+            # A group core may retain the provenance views, but never
+            # shares a mutable wrapper with the underlying memo entry.
+            used.extend(_ConstituentEvidenceRef(i) for i in identities)
+            used_auth.extend(refs)
+            self.hits[kind]+=1
+            return value
+        self.misses[kind]+=1
+        own=_UsedObjectAccumulator()
+        auth=_UsedAuthorityAccumulator()
+        value=compute(own,auth)
+        used.extend(own);used_auth.extend(auth)
+        # Do not retain generic public objects, unusual target topologies
+        # or arbitrary mutable values. Exact private selector fields are
+        # backed by the sealed immutable country lanes. References export
+        # detached objects; authority triples here are detached primitives.
+        expected=_RoutingRead if kind=="routing" else _EventRead
+        scalar=(type(value) is str if kind=="routing" else
+                type(value) is tuple and len(value)==2
+                and type(value[0]) is bool
+                and type(value[1]) in (str,int,bool,float,type(None)))
+        if not scalar or not all(type(o) is expected for o in own):
+            self.refusals+=1
+            return value
+        identities=tuple(o._ref_identity for o in own)
+        authorities=tuple((a.authority_id,a.authority_version,a.authority_content_hash) for a in auth)
+        # Retain only detached scalar values and exact evidence identities,
+        # not selected event/routing objects. Both consumers of used_objects
+        # (native proof and grouped-core fingerprint) use exact refs only.
+        cost=(512+sys.getsizeof(token)+sys.getsizeof(token[2])
+              +sum(128+sum(sys.getsizeof(x) for x in row) for row in (*identities,*authorities))
+              +sys.getsizeof(value)+(sys.getsizeof(value[1]) if kind=="target" else 0))
+        if self.budget(cost):
+            self.rows[token]=(value,identities,authorities)
+            self.bytes+=cost
+        else:self.refusals+=1
+        return value
+
+
 def _condition_for(predicate,respondent,index,registry,used,used_auth,compiled,memo=None):
     if memo is not None:
         return memo.evaluate(respondent,registry,used,used_auth)
@@ -537,6 +626,7 @@ def _evaluate_index_group_core(
     profile: _ExecutionProfile,
     registry: AuthorityRegistry,
     condition_memo: _ConditionMemo | None = None,
+    constituent_memo: _CountryConstituentMemo | None = None,
 ) -> _GroupCore:
     """Compute the exact measure-independent I03 core for one release index."""
     try:
@@ -573,22 +663,22 @@ def _evaluate_index_group_core(
     derived_branch_memberships = (condition_memo.compiled if condition_memo is not None
                                   else _compile_derived_branch_memberships(predicate.predicate_ast))
 
+    component_keys=_target_plan_identity(plan)[2] if constituent_memo is not None else ()
+    route_keys=tuple((c.target_ref.key,risk_set_ref.key) for c in plan.components)
     used.extend([index.universe, index.release.replay_manifest])
     used_auth.extend(_validate_public_object_authorities(index.universe, registry))
     for respondent in _query_respondents(index):
         per_target_states: list[str] = []
         for i, component in enumerate(plan.components):
-            fact = _routing_fact_for(
-                respondent,
-                index,
-                target_ref=component.target_ref,
-                risk_set_ref=risk_set_ref,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
-            )
-            per_target_states.append(str(fact.routing_state))
-            if fact.routing_state in ELIGIBLE_ROUTING_STATES:
+            if constituent_memo is None:
+                state=str(_routing_fact_for(respondent,index,target_ref=component.target_ref,
+                    risk_set_ref=risk_set_ref,registry=registry,used=used,used_auth=used_auth).routing_state)
+            else:
+                state=constituent_memo.evaluate("routing",route_keys[i],respondent,registry,used,used_auth,
+                    lambda o,a:str(_routing_fact_for(respondent,index,target_ref=component.target_ref,
+                        risk_set_ref=risk_set_ref,registry=registry,used=o,used_auth=a).routing_state))
+            per_target_states.append(state)
+            if state in ELIGIBLE_ROUTING_STATES:
                 component_positive[i] = True
         member, explicitly_inapplicable = _risk_membership(
             per_target_states,
@@ -612,14 +702,18 @@ def _evaluate_index_group_core(
         denominator_members.append(respondent.ref)
         if not plan.full_domain:
             continue
-        resolved, cell = _target_configuration(
-            respondent,
-            index,
-            plan=plan,
-            registry=registry,
-            used=used,
-            used_auth=used_auth,
-        )
+        if constituent_memo is None:
+            resolved,cell=_target_configuration(respondent,index,plan=plan,registry=registry,
+                                                used=used,used_auth=used_auth)
+        else:
+            values=[]
+            resolved=True
+            for i,component in enumerate(plan.components):
+                resolved,value=constituent_memo.evaluate("target",component_keys[i],respondent,registry,
+                    used,used_auth,lambda o,a:_target_component_value(respondent,index,component,registry,o,a))
+                if not resolved:break
+                values.append(value)
+            cell=canonicalize(values[0] if plan.arity==1 else values) if resolved else None
         if not resolved:
             continue
         key = canonical_json(cell)

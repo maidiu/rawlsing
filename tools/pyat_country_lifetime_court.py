@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="724b1595187cab6f1074b6e1c2233ef954096e52"
+BASE="cf2d11360d665b2901d20188a2d8449d83c5d8cd"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -33,11 +33,46 @@ def worker(root,mode,report):
         external_case=dict(root=root,db=db,receipt=receipt,ordinals=cfg["ordinals"],
            selected=values[::2,:],chosen=tuple(range(1,2*rows+1,2)),country="A",
            governed=governed,physical_width=width,target_domains=target_domains(governed,True)))
+    novel=os.environ.get("PYAT_LIFETIME_NOVEL")=="1"
+    condition_indices={}
+    if novel:
+        # Every direct query is new. Reuse constituents, never a previous
+        # complete joint. One fixture, identical independently issued
+        # requests and exact count oracle for both historical checkouts.
+        from itertools import combinations
+        from rawlsing_next.tests.test_pre553_empirical_query import _query
+        from rawlsing_next.pre553_empirical_objects import authority_ref
+        from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
+        originals=queries
+        catalog=workload.catalog
+        def find_authority(ref):
+            return next(a for a in catalog.authorities if a.authority_ref==authority_ref(ref))
+        qa=find_authority(originals[0].authority_snapshot_refs[0])
+        sa=find_authority(originals[0].target_arity_and_topology["components"][0]["topology_authority_refs"][0])
+        preds=tuple(catalog.resolve_predicate_exact(exact_ref(originals[i].condition_predicate_ref))
+                    for i in (0,1,51))
+        source={"universe":workload.projection.universes[0],"source_auth":sa,
+                "qrefs":qrefs,"risk_refs":{"R":exact_ref(originals[0].risk_set_ref)},
+                "target_domains":target_domains(governed,True)}
+        plans=[]
+        for i,targets in enumerate(combinations(("q0","q1","q2","q3","q5","q6"),3)):
+            for j,predicate in enumerate(preds):
+                ordered=targets if j!=2 else tuple(reversed(targets))
+                q=_query(source,qa,predicate,ordered,tag=f"novel-{i}-{j}")
+                plans.append(q)
+                condition_indices[q.ref.key]=j
+        queries=tuple(plans)
+        assert len({q.ref.key for q in queries})==60
+        requests=tuple(I03ExecutionRequest(q.ref,exact_ref(q.condition_predicate_ref)) for q in queries)
+        workload=replace(workload,catalog=replace(catalog,queries=queries,discovery_authorities=()),
+                         requests=requests,discoveries=())
     issuance=time.monotonic()-start
     cases=[]
     # Real distinct issued decisions. Revisit overlapping targets/predicates
     # just as a progressive investigation does; never skip the native calls.
-    for label,count,lo in (("first",1,0),("ten",10,0),("hundred",100,0),("revisit",50,50)):
+    schedule=(tuple((f"novel-{i}",15,15*i) for i in range(4)) if novel else
+              (("first",1,0),("ten",10,0),("hundred",100,0),("revisit",50,50)))
+    for label,count,lo in schedule:
         req=workload.requests[lo:lo+count]
         ds=workload.discoveries if count==100 else ()
         jobs=issued.operation_jobs(req,ds);decision=_ref("TEST_ONLY_DECISION","lifetime-"+label)
@@ -55,6 +90,8 @@ def worker(root,mode,report):
         kwargs["reuse_query_preparation"]=True
     if "omit_preparation_group_plane" in inspect.signature(carrier.CountryWorkloadSession).parameters:
         kwargs["omit_preparation_group_plane"]=True
+    if novel and "reuse_query_constituents" in inspect.signature(carrier.CountryWorkloadSession).parameters:
+        kwargs["reuse_query_constituents"]=True
     if mode=="restore":
         from rawlsing_next._pre553_country_preparation import CountryPreparationPin
         kwargs["preparation_pin"]=CountryPreparationPin(**read(report.parent/"pin.json"))
@@ -76,8 +113,10 @@ def worker(root,mode,report):
             if unit.job_kind!="QUERY":continue
             i=qindices[unit.job_ref.key];query=queries[i]
             fact=result.outputs_by_unit[unit.unit_hash].facts[0]
-            mask=(np.ones(rows,dtype=bool) if i in (0,99) else
-                  selected[:,0]==1 if i<=50 else selected[:,1]==0)
+            condition=(condition_indices[query.ref.key] if novel else
+                       0 if i in (0,99) else 1 if i<=50 else 2)
+            mask=(np.ones(rows,dtype=bool) if condition==0 else
+                  selected[:,0]==1 if condition==1 else selected[:,1]==0)
             assert fact.raw_denominator_support==int(mask.sum()),i
             for cell,record0 in _cell_map(fact).items():
                 vals=(cell,) if isinstance(cell,str) else cell
@@ -130,7 +169,12 @@ def worker(root,mode,report):
             scope=getattr(session,"_query_scope",None)
             if scope is not None:group_receipt=dict(scope.receipt())
             pin=session.preparation_pin
-        assert counts["I02"]==1 and counts["I03"]>=161 and counts["I05"]==1,counts
+        assert counts["I02"]==1 and counts["I03"]>=(60 if novel else 161) and counts["I05"]==(0 if novel else 1),counts
+        if novel and "reuse_query_constituents" in kwargs:
+            assert group_receipt["core_hits"]==0,group_receipt
+            assert group_receipt["constituent_cache_hits"]["routing"]>rows*10,group_receipt
+            assert group_receipt["constituent_cache_hits"]["target"]>rows*5,group_receipt
+            assert group_receipt["constituent_cache_bytes_estimate"]<=32*1024*1024
         if capture_receipts:
             workloads=[x for x in capture_receipts if x["root_type"]=="NativeWorkload"]
             assert len(workloads)==4 and all(x["reason"]=="CAPTURED" for x in workloads),workloads
@@ -180,7 +224,7 @@ def court(rows):
                     reports[(variant,mode)]=value
             first=reports[("baseline","save")]["evidence"]
             assert all(x["evidence"]==first for x in reports.values()),"exact release/census drift"
-            print("LIFETIME_MATCHED",json.dumps({"rows":rows,"width":613,"governed":390,
+            print("LIFETIME_MATCHED",json.dumps({"novel":os.environ.get("PYAT_LIFETIME_NOVEL")=="1","rows":rows,"width":613,"governed":390,
                 "physical_setup":read(data/"fixture.json"),
                 "exact_census_and_release_parity":True,
                 "reports":[dict(variant=k[0],**{a:b for a,b in v.items() if a!="evidence"})

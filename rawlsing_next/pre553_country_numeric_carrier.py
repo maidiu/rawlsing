@@ -1176,7 +1176,13 @@ class CountryWorkloadSession:
     """
     def __init__(self,path,receipt,*,require_current,preparation_path=None,
                  preparation_pin=None,reuse_query_preparation=False,
-                 omit_preparation_group_plane=False):
+                 omit_preparation_group_plane=False,
+                 reuse_query_constituents=False):
+        if type(reuse_query_constituents) is not bool:
+            raise CountryCarrierError("explicit constituent reuse selection required")
+        if reuse_query_constituents and not reuse_query_preparation:
+            raise CountryCarrierError("constituent reuse requires live query preparation")
+        self._reuse_query_constituents=reuse_query_constituents
         if type(reuse_query_preparation) is not bool:
             raise CountryCarrierError("explicit query preparation reuse selection required")
         self._reuse_query_preparation=reuse_query_preparation
@@ -1301,7 +1307,8 @@ class CountryWorkloadSession:
             raise CountryCarrierError("query preparation repository drift")
         if self._query_scope is None:
             from .pre553_empirical_query import I03GroupedExecutionScope
-            self._query_scope=I03GroupedExecutionScope(rolling_groups=True)
+            self._query_scope=I03GroupedExecutionScope(rolling_groups=True,
+                max_constituent_bytes=32*1024*1024 if self._reuse_query_constituents else 0)
         return self._query_scope
 
     def _repository(self,source,projection,authorities):

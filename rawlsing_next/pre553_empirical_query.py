@@ -38,6 +38,7 @@ from rawlsing_next.pre553_empirical_authority import require_positive_authority
 from rawlsing_next._pre553_query_eval import (
     _build_fact,
     _ConditionMemo,
+    _CountryConstituentMemo,
     _build_negative_fact,
     _evaluate_index_group,
     _evaluate_index_group_core,
@@ -514,7 +515,13 @@ class I03GroupedExecutionScope:
         max_cached_members: int = 500_000,
         max_condition_bytes: int = 16*1024*1024,
         rolling_groups: bool = False,
+        max_constituent_bytes: int = 0,
     ) -> None:
+        if type(max_constituent_bytes) is not int or max_constituent_bytes<0:
+            raise ValueError("max_constituent_bytes must be a nonnegative integer")
+        self._max_constituent_bytes=max_constituent_bytes
+        self._constituent_bytes=0
+        self._constituent_memos={}
         if type(rolling_groups) is not bool:
             raise ValueError("explicit boolean rolling group selection required")
         self._rolling_groups=rolling_groups
@@ -560,6 +567,8 @@ class I03GroupedExecutionScope:
         self._cache.clear()
         self._condition_memos.clear()
         self._condition_bytes=0
+        self._constituent_memos.clear()
+        self._constituent_bytes=0
         self._index_identities.clear()
         self._registry_identities.clear()
         self._closed = True
@@ -573,6 +582,12 @@ class I03GroupedExecutionScope:
             "max_cached_members": self._max_cached_members,
             "rolling_groups":self._rolling_groups,
             "retained_core_units":sum(self._retention_units(x) for x in self._cache.values()),
+            "constituent_cache_bytes_estimate":self._constituent_bytes,
+            "constituent_cache_hits":{k:sum(m.hits[k] for m in self._constituent_memos.values())
+                                      for k in ("routing","target")},
+            "constituent_cache_misses":{k:sum(m.misses[k] for m in self._constituent_memos.values())
+                                        for k in ("routing","target")},
+            "constituent_cache_refusals":sum(m.refusals for m in self._constituent_memos.values()),
             "condition_cache_bytes_estimate":self._condition_bytes,
             "condition_cache_hits":sum(m.hits for m in self._condition_memos.values()),
             "condition_cache_misses":sum(m.misses for m in self._condition_memos.values()),
@@ -676,6 +691,29 @@ class I03GroupedExecutionScope:
         self._condition_memos[key]=memo
         return memo
 
+    def _constituent_memo_for(self,index,registry):
+        from rawlsing_next._pre553_query_predicate import _CountryRoutingLookup
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+        if (self._closed or not self._max_constituent_bytes
+                or current_runtime_binding() is not None
+                or type(index.routing_lookup) is not _CountryRoutingLookup
+                or index.runtime_authorities is not None
+                or index.runtime_repository is not None
+                or index.runtime_predicate_grammar_authority_ref is not None):
+            return None
+        key=(self._index_identity(index),self._registry_identity(registry))
+        memo=self._constituent_memos.get(key)
+        if memo is not None:
+            return memo if memo.compatible(index,registry) else None
+        if len(self._constituent_memos)>=self._max_groups:return None
+        def budget(cost):
+            if self._constituent_bytes+cost>self._max_constituent_bytes:return False
+            self._constituent_bytes+=cost
+            return True
+        memo=_CountryConstituentMemo(index,registry,budget)
+        self._constituent_memos[key]=memo
+        return memo
+
     def _retention_units(self,core):
         # A zero-denominator core can still retain a full risk set and
         # provenance. Continuing use is bounded by total retained entries,
@@ -771,6 +809,7 @@ class I03GroupedExecutionScope:
                 profile=profile,
                 registry=registry,
                 condition_memo=self._condition_memo_for(index,registry,predicate),
+                constituent_memo=self._constituent_memo_for(index,registry),
             )
         except Exception:
             self._stats["fallbacks"] += 1
