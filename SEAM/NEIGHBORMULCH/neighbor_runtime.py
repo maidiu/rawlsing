@@ -27,7 +27,7 @@ class EncounterRefusal(ValueError):
 
 
 _ALLOWED = frozenset({'SAY', 'MOVE', 'WAIT', 'LEAVE', 'LOOK', 'REPAIR', 'MAKE_OBJECT',
-                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'})
+                      'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER', 'WITHDRAW_PLEDGE'})
 
 
 def _text(value: Any, label: str, maximum: int = 500) -> str:
@@ -432,7 +432,8 @@ class NeighborEncounter:
                    destination: str | None = None, target_object_ref: str | None = None,
                    cover_text: str | None = None,
                    target_actor_ref: str | None = None,
-                   due_clock: int | None = None):
+                   due_clock: int | None = None,
+                   target_commitment_ref: str | None = None):
         """One user-authored world event with derived actor-eligible signs.
 
         Retries are idempotent *against the durable world request index*;
@@ -473,6 +474,10 @@ class NeighborEncounter:
                 raise EncounterRefusal('INVALID_HUMAN_OFFER_DEADLINE')
         elif due_clock is not None:
             raise EncounterRefusal('UNAUTHORED_DEADLINE')
+        if operation=='WITHDRAW_PLEDGE':
+            target_commitment_ref=_text(target_commitment_ref,'COMMITMENT_REF',100)
+        elif target_commitment_ref is not None:
+            raise EncounterRefusal('UNAUTHORED_COMMITMENT_TARGET')
         version, world = self._world()
         req_key = self.user_id + ':' + request_id
         request_payload = {'user': self.user_id, 'operation': operation,
@@ -489,6 +494,8 @@ class NeighborEncounter:
             request_payload['target_actor_ref'] = target_actor_ref
             if operation=='PLEDGE_OFFER':
                 request_payload['due_clock']=due_clock
+        if operation=='WITHDRAW_PLEDGE':
+            request_payload['target_commitment_ref']=target_commitment_ref
         payload_hash = digest(request_payload)
         prior = world.get('neighbor_user_requests', {}).get(req_key)
         if prior:
@@ -508,13 +515,24 @@ class NeighborEncounter:
         participants = world.setdefault('neighbor_users', {})
         person = deepcopy(participants.get(self.user_id, {'present': False, 'location': None}))
         origin = person['location']
-        if operation != 'MOVE' and operation != 'LEAVE' and not person['present']:
+        if operation not in ('MOVE','LEAVE','WITHDRAW_PLEDGE') and not person['present']:
             raise EncounterRefusal('USER_NOT_PRESENT')
         status = 'PERFORMED'
         material_outcome = None
         made_object_ref = None
         policy_ref = None
-        loc = origin
+        # An explicitly authored administrative withdrawal is possible
+        # during absence, but its historical occurrence is not a bodily
+        # visit, utterance, or recipient-directed communication.
+        loc = None if operation=='WITHDRAW_PLEDGE' else origin
+        if operation=='WITHDRAW_PLEDGE':
+            origin=None
+            owned=[r for r in self.own_food_commitments() if r['id']==target_commitment_ref]
+            if len(owned)!=1:
+                raise EncounterRefusal('HUMAN_WITHDRAWAL_NO_OWN_COMMITMENT')
+            if (owned[0]['status']!='PENDING'
+                    or world['clock']+1>=owned[0]['due_clock']):
+                raise EncounterRefusal('HUMAN_WITHDRAWAL_WINDOW_NOT_PENDING')
         # Reuse CO's objective, source-qualified conjunction reader. Thin
         # worlds need no upstream packet; richer worlds may actually alter
         # the same authored operation. Unresolved authorization is not an
@@ -641,7 +659,7 @@ class NeighborEncounter:
         if world.get('scheduled_obligations') or operation in ('PLEDGE_OFFER','OFFER_FEED'):
             from um_sorok_organism.continuity_clock import (
                 settle_human_offer_deadlines, record_human_offer_commitment,
-                record_authored_food_offer)
+                record_authored_food_offer, withdraw_human_offer_commitment)
             settle_human_offer_deadlines(world)
         ref = stable_id('neighbor_user', {'user': self.user_id,
             'request_id': request_id, 'payload_hash': payload_hash})
@@ -652,6 +670,9 @@ class NeighborEncounter:
         elif status=='PERFORMED' and operation=='OFFER_FEED':
             commitment_ref=record_authored_food_offer(
                 world,self.user_id,target_actor_ref,loc,ref)
+        elif status=='PERFORMED' and operation=='WITHDRAW_PLEDGE':
+            commitment_ref=withdraw_human_offer_commitment(
+                world,self.user_id,target_commitment_ref,ref)
         evidence = []
         if status == 'PERFORMED' and operation in ('MOVE', 'SAY', 'LOOK', 'REPAIR', 'MAKE_OBJECT', 'SIGN_HALL_PETITION', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             _bound_source(world)
@@ -737,6 +758,10 @@ class NeighborEncounter:
             event['target_actor_ref'] = target_actor_ref
         if operation=='PLEDGE_OFFER':
             event['due_clock']=due_clock
+        if operation=='WITHDRAW_PLEDGE':
+            event.update(target_commitment_ref=target_commitment_ref,
+                         administrative_act_not_presence=True,
+                         notification='NOT_PERFORMED_BY_WITHDRAWAL')
         if commitment_ref is not None:
             event['human_offer_commitment_ref']=commitment_ref
         if operation == 'SIGN_HALL_PETITION':
@@ -760,6 +785,8 @@ class NeighborEncounter:
              'user': self.user_id, 'payload_hash': payload_hash,
              'performed': status == 'PERFORMED',
              'candidate_cue_refs': [e['cue_ref'] for e in evidence],
+             **({'target_commitment_ref':target_commitment_ref}
+                if operation=='WITHDRAW_PLEDGE' else {}),
              **({'made_object_ref':made_object_ref} if made_object_ref is not None else {}),
              'no_actor_motive_or_consent_issued': True,
              'look_cannot_issue_actor_belief_or_visitor_reading': operation == 'LOOK'})
@@ -814,10 +841,24 @@ class NeighborEncounter:
                         or not row['origin_clock']<row['settled_at_clock']<row['due_clock']
                         or matching[0].get('payload_hash')!=f['envelope']['payload'].get('payload_hash')):
                     raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_FULFILLMENT')
+            if row['status']=='WITHDRAWN_BY_AUTHORED_ACT':
+                f=committed.get(row.get('withdrawal_user_event_ref'))
+                matching=[e for e in world.get('neighbor_user_events',[])
+                          if e.get('event_ref')==row.get('withdrawal_user_event_ref')]
+                if (f is None or len(matching)!=1
+                        or matching[0].get('operation')!='WITHDRAW_PLEDGE'
+                        or matching[0].get('target_commitment_ref')!=row['id']
+                        or matching[0].get('human_offer_commitment_ref')!=row['id']
+                        or matching[0].get('clock')!=row['settled_at_clock']
+                        or not row['origin_clock']<row['settled_at_clock']<row['due_clock']
+                        or matching[0].get('payload_hash')!=f['envelope']['payload'].get('payload_hash')
+                        or f['envelope']['payload'].get('target_commitment_ref')!=row['id']
+                        or matching[0].get('perceptual_candidates')!=[]):
+                    raise EncounterRefusal('UNQUALIFIED_HUMAN_OFFER_WITHDRAWAL')
             result.append({k:deepcopy(row[k]) for k in (
                 'id','recipient','location','origin_clock','due_clock','status',
                 'source_user_event_ref','settled_at_clock',
-                'fulfillment_user_event_ref') if k in row})
+                'fulfillment_user_event_ref','withdrawal_user_event_ref') if k in row})
         return result
 
     def independent_actor_beat(self, actor_id: str):
