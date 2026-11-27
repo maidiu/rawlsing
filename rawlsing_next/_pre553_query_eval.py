@@ -2,6 +2,7 @@
 from dataclasses import replace
 import sys
 
+from rawlsing_next.pre553_empirical_objects import URN_PREFIX
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
@@ -534,7 +535,6 @@ class _ConstituentEvidenceRef:
 # represents an identity ONLY after proving kind, full ID and hash agree.
 # Foreign/noncanonical identity triples remain explicit; no suffix inference.
 def _constituent_identity_pack(kind,identity):
-    from rawlsing_next.pre553_empirical_objects import URN_PREFIX
     family=RoutingEligibilityFact.FAMILY if kind=="routing" else RespondentEvent.FAMILY
     if (type(identity) is tuple and len(identity)==3
             and all(type(v) is str for v in identity)
@@ -553,7 +553,6 @@ def _constituent_identity_pack(kind,identity):
 def _constituent_identity_unpack(kind,value):
     if type(value) is not bytes:
         return value
-    from rawlsing_next.pre553_empirical_objects import URN_PREFIX
     family=RoutingEligibilityFact.FAMILY if kind=="routing" else RespondentEvent.FAMILY
     h=value.hex()
     return family,f"{URN_PREFIX}:{family}:sha256:{h}",h
