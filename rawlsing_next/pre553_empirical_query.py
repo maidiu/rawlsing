@@ -513,7 +513,11 @@ class I03GroupedExecutionScope:
         max_groups: int = 64,
         max_cached_members: int = 500_000,
         max_condition_bytes: int = 16*1024*1024,
+        rolling_groups: bool = False,
     ) -> None:
+        if type(rolling_groups) is not bool:
+            raise ValueError("explicit boolean rolling group selection required")
+        self._rolling_groups=rolling_groups
         if not isinstance(max_groups, int) or isinstance(max_groups, bool) or max_groups < 1:
             raise ValueError("max_groups must be a positive integer")
         if (
@@ -537,6 +541,7 @@ class I03GroupedExecutionScope:
             "core_build_attempts": 0,
             "core_builds": 0,
             "core_hits": 0,
+            "core_evictions": 0,
             "fingerprint_failures": 0,
             "capacity_fallbacks": 0,
             "early_capacity_fallbacks": 0,
@@ -566,6 +571,8 @@ class I03GroupedExecutionScope:
             "open_groups": len(self._cache),
             "max_groups": self._max_groups,
             "max_cached_members": self._max_cached_members,
+            "rolling_groups":self._rolling_groups,
+            "retained_core_units":sum(self._retention_units(x) for x in self._cache.values()),
             "condition_cache_bytes_estimate":self._condition_bytes,
             "condition_cache_hits":sum(m.hits for m in self._condition_memos.values()),
             "condition_cache_misses":sum(m.misses for m in self._condition_memos.values()),
@@ -669,6 +676,17 @@ class I03GroupedExecutionScope:
         self._condition_memos[key]=memo
         return memo
 
+    def _retention_units(self,core):
+        # A zero-denominator core can still retain a full risk set and
+        # provenance. Continuing use is bounded by total retained entries,
+        # not just successful denominator members. Not a byte/RSS guarantee.
+        if not self._rolling_groups:
+            return len(core.denominator_members)
+        return (len(core.denominator_members)+len(core.risk_members)
+                +len(core.used_objects)+len(core.used_authority_refs)
+                +len(core.cell_by_respondent)+len(core.raw_cells)+len(core.cell_material)
+                +len(core.unresolved_condition_member_refs))
+
     def _miss_capacity_exhausted(self, cached_members: int) -> bool:
         """Return True only when no new core can fit the current bounds.
 
@@ -718,6 +736,11 @@ class I03GroupedExecutionScope:
                 self._stats["fingerprint_failures"] += 1
                 return None
             self._stats["core_hits"] += 1
+            if self._rolling_groups:
+                # Dict insertion order is the bounded recency queue. No
+                # change to cache identity or per-hit proof.
+                self._cache.pop(key)
+                self._cache[key]=entry
             try:
                 evaluation = _materialize_grouped_evaluation(
                     entry, plan=plan, profile=profile, registry=registry,
@@ -732,9 +755,9 @@ class I03GroupedExecutionScope:
             ] += 1
             return evaluation
         cached_members = sum(
-            len(existing.denominator_members) for existing in self._cache.values()
+            self._retention_units(existing) for existing in self._cache.values()
         )
-        if self._miss_capacity_exhausted(cached_members):
+        if not self._rolling_groups and self._miss_capacity_exhausted(cached_members):
             self._stats["capacity_fallbacks"] += 1
             self._stats["early_capacity_fallbacks"] += 1
             return None
@@ -752,9 +775,16 @@ class I03GroupedExecutionScope:
         except Exception:
             self._stats["fallbacks"] += 1
             return None
+        size=self._retention_units(core)
+        if self._rolling_groups and size<=self._max_cached_members:
+            while self._cache and (len(self._cache)>=self._max_groups
+                   or cached_members+size>self._max_cached_members):
+                evicted=self._cache.pop(next(iter(self._cache)))
+                cached_members-=self._retention_units(evicted)
+                self._stats["core_evictions"]+=1
         if (
             len(self._cache) >= self._max_groups
-            or cached_members + len(core.denominator_members) > self._max_cached_members
+            or cached_members + size > self._max_cached_members
         ):
             self._stats["capacity_fallbacks"] += 1
             # Capacity limits govern retention, not truth. The complete
