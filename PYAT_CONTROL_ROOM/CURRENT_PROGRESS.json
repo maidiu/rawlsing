@@ -2771,5 +2771,157 @@
       "FIELD_AUTHORITY": "https://github.com/maidiu/rawlsing/pull/1327#issuecomment-7211871308"
     },
     "holds": "Owner acknowledgement, positive source edition rule issuance and member assignment, current permission, real first reader and measured economics, independent and protected receiving. No new code or tests."
+  },
+  "g4_src16_c02_w01_consumption_20261127": {
+    "scope": "SOURCE_STATIC_HISTORICAL_RULE_RECONCILIATION__NO_NATIVE_ISSUANCE_OR_EXECUTION",
+    "parent": "21084f1f1ecc400f699cfbdf1c9e5486321eb5fd",
+    "protected_cut": "827714e83743056939894a39736d72ea16bdc6dd",
+    "supersedes": "g4_routing_family_join_20261127.GSS1972.negative: no positive family established in earlier targeted inspection",
+    "config": {
+      "source": "SRC16",
+      "commit": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "blob": "84abd3f6e37718a757a4597768b97218cb29948b",
+      "all_identity_tuples": 216,
+      "matching_noncryptographic_FNV64": "be0611fd8ba8b02f",
+      "routing_templates": 157,
+      "all_unknown": true
+    },
+    "historical_authority": {
+      "authority45_commit": "16a212b7343206c81634b26f2546ad8b60a77475",
+      "authority45_blob": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+      "scope": "Historical source-native affirmative evidence reusable at exact IDs and scope; not blanket current product authority.",
+      "C02": {
+        "library_path": "/Rawlsing/C02_GSS_FULL_CURRENT_ROUTING_COURT_R1/C02_GSS_MACHINE_RETURN_R1_FINAL.tar.gz",
+        "archive_sha256": "a79a01cefc103b7d3a90001abdc1c1f60acd09f435ad2dd4c47a845ddba29ba8",
+        "manifest_verified": "28/28",
+        "ledger_sha256": "0197c20dc6d48106d6070d8b1ba390d43815cd36d92e2f03e70cad04a0a1be4d",
+        "predicates_sha256": "bf8b109137c4d6b512d94e559ba77f57e91192dead3903cdac9dac2a229dfe86",
+        "test_receipts_sha256": "1a785319ce35dd2b8add3931da1191ca06291980940b42d945ab6f71bb511789",
+        "sharded_standalone": "6021 exact IDs/waves/dispositions; 1214 exact predicate IDs/clause sets/waves; 1214 receipt IDs agree. PASS4 historical tests check supplied primitive clause-set, qid/wave and deterministic replay; not actual row truth evaluation."
+      },
+      "W01": {
+        "file_id": "file_00000000ae5c822fb3b4c39ca262132e",
+        "archive_sha256": "6809a1b4f39304ae779786e3b339420404ad4c57d27e8d26c7da1e9cd1c59533",
+        "routing_jsonl_sha256": "a1e141dda1f2e9b03d4ab1d6491117d3d11da7f148c7355b59dadd304592d96a",
+        "clause_jsonl_sha256": "8db138a4368d530f803d5a9a427f7f253b1af253e3eff5e9517a8193bcd8cc6c",
+        "joined_1972_ids": 216,
+        "source_state_clause_agreement": true,
+        "primary_pdf": "Historical W01 reports official 1972 questionnaire web verification but no PDF SHA256; source edition/permission separately held.",
+        "weight": "wtssall documented, use/default not authorized."
+      }
+    },
+    "results": {
+      "all_216": {
+        "positive_conditional": 75,
+        "unconditional": 2,
+        "administrative": 30,
+        "unresolved": 109
+      },
+      "r157_157": {
+        "positive_conditional": 31,
+        "unconditional": 2,
+        "administrative_role_conflict": 23,
+        "unresolved": 101
+      },
+      "outside_157": {
+        "positive_conditional": 44,
+        "administrative": 7,
+        "unresolved": 8
+      },
+      "families": {
+        "Q4_PARENT_AVAILABLE": [
+          "paind10",
+          "paind16",
+          "paisco08",
+          "paisco88",
+          "paocc10",
+          "pawrkslf"
+        ],
+        "Q8_EVER_MARRIED": [
+          "divorce"
+        ],
+        "Q10_WORK_HISTORY": [
+          "evwork",
+          "indus10",
+          "industry",
+          "isco08",
+          "isco88",
+          "occ10",
+          "wrkslf"
+        ],
+        "Q11_Q12_CURRENT_FULLTIME": [
+          "workdy",
+          "workhr"
+        ],
+        "Q13_MARRIED": [
+          "spwrksta"
+        ],
+        "Q14_SPOUSE_WORK_HISTORY": [
+          "spevwork",
+          "spind",
+          "spind10",
+          "spisco08",
+          "spisco88",
+          "spocc10",
+          "spwrkslf"
+        ],
+        "Q15_Q16_SPOUSE_FULLTIME": [
+          "spdays",
+          "sphour"
+        ],
+        "Q17_Q18_WORKER_OR_WORKING_SPOUSE": [
+          "wksub",
+          "wksubs",
+          "wksup",
+          "wksups"
+        ],
+        "Q82_CURRENTLY_EMPLOYED": [
+          "satjob"
+        ]
+      },
+      "Q83_unconditional": [
+        "finalter",
+        "satfin"
+      ],
+      "Q9_held": "wrkstat explicitly unresolved in W01 despite recovered Q9 EVERYONE clause; resolve at exact source row, not summary inference.",
+      "role_conflicts": [
+        "spaneng",
+        "maindtag",
+        "paoccstatus",
+        "spindtag",
+        "indstatus",
+        "maocctag",
+        "found",
+        "spindstatus",
+        "maoccindv",
+        "occindv",
+        "indtag",
+        "paindtag",
+        "spocctag",
+        "maoccstatus",
+        "spoccindv",
+        "comprend",
+        "paocctag",
+        "maindstatus",
+        "spoccstatus",
+        "paoccindv",
+        "paindstatus",
+        "occstatus",
+        "occtag"
+      ]
+    },
+    "runtime": {
+      "head": "85995ee71b0172632581b7e3a407984a8c04301f",
+      "adapter_blob": "d4d84ef164feba6fb0de0851568738eb5f5e937d",
+      "ingest_blob": "a3735a3b0ae9eb7f565a5a648932aad13682e50f",
+      "disconnect": "SRC16 correction: recovered C02/W01 R2 historical authority covers 31/157 conditional routing declarations in nine rule families, two Q83 unconditional, 23 administrative/nonrespondent role conflicts and 101 unresolved. 44 additional positive historical fields outside 157 are not automatically respondent-facing. Q9 rule exists but wrkstat exact row is unresolved. No route state changed. Reuse existing issued-rule/member-set replay and R157 adapter/packed ingress; exact operand, edition, referent, exception and membership proof remains held. C02 primitive-clause PASS4 is not respondent-specific execution. See paired receipt g4_src16_c02_w01_consumption_20261127.",
+      "first_consumer": "S01 issuer -> existing rule membership replay -> R157 projection adapter -> packed C11 ingest -> authorized I03/FF. Preserve narrower divorce status, respondent/spouse referent and skip/unknown distinctions, derived vs asked roles."
+    },
+    "handoffs": {
+      "REMONT": "https://github.com/maidiu/rawlsing/pull/1162#issuecomment-7213820153",
+      "FIELD_AUTHORITY": "https://github.com/maidiu/rawlsing/pull/1327#issuecomment-7213820690",
+      "R16": "https://github.com/maidiu/rawlsing/pull/1394#issuecomment-7213821245"
+    },
+    "holds": "Exact source-edition operand/form/referent/exception bindings, member-set replay/role adjudication, current permission, actual first-reader execution and measured economics, distinct independent review and authorized protected receiving. No new code or tests; no new inventory."
   }
 }
