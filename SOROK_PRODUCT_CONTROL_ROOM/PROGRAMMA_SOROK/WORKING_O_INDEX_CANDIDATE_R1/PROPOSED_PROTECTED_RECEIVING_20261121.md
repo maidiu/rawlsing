@@ -370,3 +370,42 @@ JSON: proposed matching additive field `sorok_g4_developmental_semantic_sufficie
   "new_authority": false
 }
 ```
+
+## 2026-11-26 — direct R33 criterion-evidence correspondence (matching pair proposal)
+
+MD: PRE-MAIN 827714e83743056939894a39736d72ea16bdc6dd; paired MD a565e6239ee730bf8aae796d1c5afb35207b1e93 / JSON f2081d41452a5fb5d7061fcf340af725e4ee07af. Candidate correction only: R33 #1389 exact execution b3e5de0cfc03d1e142afdb2cf691fc402306ac33, 842 invocations/mode; remove mixed source-only wording from current functional edges; attach bounded related execution to CO-CIC-029.02/E08 and NEIGHBOR-CIC-016.02/S7; preserve prior evidence, criterion acceptance/status and all review debts. Current HOME passage anchors added without remapping frozen routes. No new authority, criterion execution, review, owner incorporation or protected receiving. Ledger 24a8872849f534ca7dd2efaf7cc2923faf522fcf; CIC ee74b4c5d6a73cd69c8e95140efa06be9900b4dd.
+
+JSON proposed additive field `sorok_g4_direct_r33_criterion_evidence_candidate`:
+```json
+{
+  "protected_parent": "827714e83743056939894a39736d72ea16bdc6dd",
+  "status": "PROPOSED_ONLY_HQ_CURRENTNESS_HOLD",
+  "ledger_blob": "24a8872849f534ca7dd2efaf7cc2923faf522fcf",
+  "cic_blob": "ee74b4c5d6a73cd69c8e95140efa06be9900b4dd",
+  "prior_ledger": "19f5358f4038c75ab299941a8cccaaeed5e9d591",
+  "prior_cic": "30f8a5847b454e52d81e054107a583fd704a2ed1",
+  "pr": 1389,
+  "sha": "b3e5de0cfc03d1e142afdb2cf691fc402306ac33",
+  "job": 140175812344,
+  "related_criteria": [
+    [
+      "CO-CIC-029.02",
+      "E08"
+    ],
+    [
+      "NEIGHBOR-CIC-016.02",
+      "S7"
+    ]
+  ],
+  "counts": {
+    "observations": 182,
+    "relationships": 625,
+    "criteria": 187,
+    "home_routes": 719
+  },
+  "criterion_execution": false,
+  "independent_review": "HELD",
+  "owner_incorporation": "NOT_VERIFIED",
+  "protected_receiving": "NOT_RECEIVED"
+}
+```
