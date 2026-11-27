@@ -148,7 +148,7 @@ class _CountryEventHeader:
     empirical_universe_ref: ExactRef
     scoped_respondent_ref: ExactRef
     dependency_refs: tuple[ExactRef, ...]
-    group_identity: bytes | tuple
+    group_identity: bytes | tuple | None
     source_coordinates: tuple[int,int,int]
 
     @property
@@ -182,6 +182,11 @@ class _CountryEventHeader:
         return _expand_identity(self.occurrence_identity,_COUNTRY_OCCURRENCE_PREFIX)
     @property
     def event_group_id(self):
+        if self.group_identity is None:
+            # Only the authenticated, globally occurrence-distinct restored
+            # header format may omit this unused private plane. Exact public
+            # groups remain reconstructible from the country event body.
+            raise ValueError("restored header group is not retained; resolve exact event body")
         return _expand_identity(self.group_identity,_COUNTRY_GROUP_PREFIX)
 
 class _CountryHeaderBuilder:
