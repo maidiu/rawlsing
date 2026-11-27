@@ -120,9 +120,23 @@ def _wire(row,a,b):
     return {**requests[0],"packet_variant":metric["packet_variant"]}
 
 
-def build_plan(document,config,*,per_stratum=3,tasks=None):
+def build_plan(document,config,*,per_stratum=3,tasks=None,sequence_ids=None):
     p=verify_workload(document);cfg=normalize_config(config);b=cfg["budget"]
-    cases,coverage=select_cases(document,per_stratum=per_stratum,tasks=tasks)
+    if sequence_ids is None:
+        cases,coverage=select_cases(document,per_stratum=per_stratum,tasks=tasks)
+        selection={"per_stratum":per_stratum,"tasks":sorted(TASKS if tasks is None else set(tasks)),
+            "rule":"EVEN_SEQUENCE_COVERAGE_WITH_DEVELOPMENT_OFFER_SHAPE_NOT_DEMAND"}
+    else:
+        if (tasks is not None or type(sequence_ids) is not list or not sequence_ids
+                or any(type(i) is not int or not 0<=i<len(p["rows"]) for i in sequence_ids)
+                or sorted(set(sequence_ids))!=sequence_ids):
+            raise ValueError("LAB_CAMPAIGN_EXPLICIT_SEQUENCE")
+        cases=[];coverage={}
+        for i in sequence_ids:
+            r=p["rows"][i];name=stratum(r)
+            cases.append({"seq":i,"task":r["task"],"stratum":name,"packet_digest":r["packet_digest"]})
+            coverage[name]=coverage.get(name,0)+1
+        selection={"rule":"EXPLICIT_REVIEWED_CASE_IDS_NOT_RANDOM_SAMPLE","sequence_ids":sequence_ids}
     arms=cfg["arms"];schedule=[];totals={}
     if len(cases)*len(arms)>100000:raise ValueError("LAB_CAMPAIGN_PLAN_SIZE_CAP")
     for i,case in enumerate(cases):
@@ -141,8 +155,7 @@ def build_plan(document,config,*,per_stratum=3,tasks=None):
     if needed>b["max_budget_nanos"]:violations.append("DECLARED_RESERVATION_LIMIT")
     payload={"schema":SCHEMA,"source_head":p["source_head"],
         "workload_sha256":document["sha256"],"config_sha256":digest(cfg),
-        "selection":{"per_stratum":per_stratum,"tasks":sorted(TASKS if tasks is None else set(tasks)),
-            "rule":"EVEN_SEQUENCE_COVERAGE_WITH_DEVELOPMENT_OFFER_SHAPE_NOT_DEMAND"},
+        "selection":selection,
         "cases":cases,"coverage":coverage,"schedule":schedule,"arms":totals,
         "planned_calls":calls,"planned_wire_bytes":wire_bytes,
         "declared_reserve_nanos":needed,"budget":copy(b),
@@ -159,7 +172,10 @@ def verify_plan(document,config,plan):
     if type(p) is not dict or p.get("schema")!=SCHEMA or digest(p)!=plan["sha256"]:
         raise ValueError("LAB_PLAN_INTEGRITY")
     selection=p["selection"]
-    expected=build_plan(document,config,per_stratum=selection["per_stratum"],tasks=selection["tasks"])
+    if selection.get("rule")=="EXPLICIT_REVIEWED_CASE_IDS_NOT_RANDOM_SAMPLE":
+        expected=build_plan(document,config,sequence_ids=selection["sequence_ids"])
+    else:
+        expected=build_plan(document,config,per_stratum=selection["per_stratum"],tasks=selection["tasks"])
     if plan!=expected:raise ValueError("LAB_PLAN_RECONSTRUCTION_MISMATCH")
     if p["status"]!="FITS_DECLARED_LIMITS":raise ValueError("LAB_PLAN_EXCEEDS_DECLARED_LIMITS")
     return copy(p)
