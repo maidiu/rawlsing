@@ -10,7 +10,7 @@ from pathlib import Path
 from statistics import median
 from unittest.mock import patch
 
-BASE="cf2d11360d665b2901d20188a2d8449d83c5d8cd"
+BASE="68dd308a980c758e9be9ab01a0caeb01faa259ab"
 
 def worker(root,mode,report):
     from tools.pyat_country_preparation_court import read,write,geometry,target_domains
@@ -33,7 +33,9 @@ def worker(root,mode,report):
         external_case=dict(root=root,db=db,receipt=receipt,ordinals=cfg["ordinals"],
            selected=values[::2,:],chosen=tuple(range(1,2*rows+1,2)),country="A",
            governed=governed,physical_width=width,target_domains=target_domains(governed,True)))
-    novel=os.environ.get("PYAT_LIFETIME_NOVEL")=="1"
+    novel_mode=os.environ.get("PYAT_LIFETIME_NOVEL","0")
+    novel=novel_mode in ("1","2")
+    stress=novel_mode=="2"
     condition_indices={}
     if novel:
         # Every direct query is new. Reuse constituents, never a previous
@@ -55,7 +57,15 @@ def worker(root,mode,report):
                 "qrefs":qrefs,"risk_refs":{"R":exact_ref(originals[0].risk_set_ref)},
                 "target_domains":target_domains(governed,True)}
         plans=[]
-        for i,targets in enumerate(combinations(("q0","q1","q2","q3","q5","q6"),3)):
+        pool=("q0","q1","q2","q3","q5","q6","q10","q11","q15","q16","q20","q21")
+        # Same 60 operations and 3 conditions as the six-target court,
+        # but twelve low-cardinality targets with interleaved recurrence.
+        # This probes breadth/capacity without increasing joint domain arity.
+        triples=(tuple((pool[i%12],pool[(i+1)%12],pool[(i+4+i//12)%12])
+                       for i in range(20)) if stress else
+                 tuple(combinations(pool[:6],3)))
+        assert len({frozenset(t) for t in triples})==20
+        for i,targets in enumerate(triples):
             for j,predicate in enumerate(preds):
                 ordered=targets if j!=2 else tuple(reversed(targets))
                 q=_query(source,qa,predicate,ordered,tag=f"novel-{i}-{j}")
@@ -175,6 +185,11 @@ def worker(root,mode,report):
             assert group_receipt["constituent_cache_hits"]["routing"]>rows*10,group_receipt
             assert group_receipt["constituent_cache_hits"]["target"]>rows*5,group_receipt
             assert group_receipt["constituent_cache_bytes_estimate"]<=32*1024*1024
+            if "constituent_legacy_bytes_same_retained_rows" in group_receipt:
+                assert group_receipt["constituent_compact_identities"]>0
+                assert group_receipt["constituent_cache_bytes_estimate"]<group_receipt["constituent_legacy_bytes_same_retained_rows"]
+                if stress:
+                    assert group_receipt["constituent_cache_refusals"]==0,group_receipt
         if capture_receipts:
             workloads=[x for x in capture_receipts if x["root_type"]=="NativeWorkload"]
             assert len(workloads)==4 and all(x["reason"]=="CAPTURED" for x in workloads),workloads
@@ -224,7 +239,7 @@ def court(rows):
                     reports[(variant,mode)]=value
             first=reports[("baseline","save")]["evidence"]
             assert all(x["evidence"]==first for x in reports.values()),"exact release/census drift"
-            print("LIFETIME_MATCHED",json.dumps({"novel":os.environ.get("PYAT_LIFETIME_NOVEL")=="1","rows":rows,"width":613,"governed":390,
+            print("LIFETIME_MATCHED",json.dumps({"novel":os.environ.get("PYAT_LIFETIME_NOVEL") in ("1","2"),"novel_mode":os.environ.get("PYAT_LIFETIME_NOVEL","0"),"rows":rows,"width":613,"governed":390,
                 "physical_setup":read(data/"fixture.json"),
                 "exact_census_and_release_parity":True,
                 "reports":[dict(variant=k[0],**{a:b for a,b in v.items() if a!="evidence"})

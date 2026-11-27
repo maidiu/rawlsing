@@ -530,6 +530,42 @@ class _ConstituentEvidenceRef:
         return ExactRef(*self.identity)
 
 
+# Reuse the existing exact canonical public-ID spelling. A digest alone
+# represents an identity ONLY after proving kind, full ID and hash agree.
+# Foreign/noncanonical identity triples remain explicit; no suffix inference.
+def _constituent_identity_pack(kind,identity):
+    from rawlsing_next.pre553_empirical_objects import URN_PREFIX
+    family=RoutingEligibilityFact.FAMILY if kind=="routing" else RespondentEvent.FAMILY
+    if (type(identity) is tuple and len(identity)==3
+            and all(type(v) is str for v in identity)
+            and identity[0]==family
+            and identity[1]==f"{URN_PREFIX}:{family}:sha256:{identity[2]}"):
+        try:
+            digest=bytes.fromhex(identity[2])
+        except ValueError:
+            pass
+        else:
+            if len(digest)==32 and digest.hex()==identity[2]:
+                return digest
+    return identity
+
+
+def _constituent_identity_unpack(kind,value):
+    if type(value) is not bytes:
+        return value
+    from rawlsing_next.pre553_empirical_objects import URN_PREFIX
+    family=RoutingEligibilityFact.FAMILY if kind=="routing" else RespondentEvent.FAMILY
+    h=value.hex()
+    return family,f"{URN_PREFIX}:{family}:sha256:{h}",h
+
+
+def _constituent_extent(value):
+    # Conservative incremental charge for exact primitive tuple material.
+    # Shared planes/roster/authority sets are charged once on insertion.
+    return sys.getsizeof(value)+(sum(_constituent_extent(v) for v in value)
+                                 if type(value) is tuple else 0)
+
+
 class _CountryConstituentMemo:
     """Bounded lazy exact constituent reuse, owned by one live country scope.
 
@@ -544,7 +580,13 @@ class _CountryConstituentMemo:
         self.registry_map=registry._by_key
         self.budget=budget
         self.bytes=0
-        self.rows={}
+        self.planes={}
+        self.respondent_keys={}
+        self.authority_sets={}
+        self.retained_rows=0
+        self.legacy_bytes=0
+        self.compact_identities=0
+        self.explicit_identities=0
         self.hits={"routing":0,"target":0}
         self.misses={"routing":0,"target":0}
         self.refusals=0
@@ -556,8 +598,10 @@ class _CountryConstituentMemo:
     def evaluate(self,kind,key,respondent,registry,used,used_auth,compute):
         # Plan identities are compiled once per core, not per respondent.
         # Exact respondent keys are part of every retained observation.
-        token=(kind,key,respondent.ref.key)
-        entry=self.rows.get(token)
+        respondent_key=respondent.ref.key
+        plane_key=(kind,key)
+        plane=self.planes.get(plane_key)
+        entry=None if plane is None else plane.get(respondent_key)
         if entry is not None:
             value,identities,authorities=entry
             refs=tuple(AuthorityRef(*a) for a in authorities)
@@ -573,7 +617,8 @@ class _CountryConstituentMemo:
                 raise Pre553AuthorityError("constituent lacks routing authority")
             # A group core may retain the provenance views, but never
             # shares a mutable wrapper with the underlying memo entry.
-            used.extend(_ConstituentEvidenceRef(i) for i in identities)
+            used.extend(_ConstituentEvidenceRef(_constituent_identity_unpack(kind,i))
+                        for i in identities)
             used_auth.extend(refs)
             self.hits[kind]+=1
             return value
@@ -599,12 +644,37 @@ class _CountryConstituentMemo:
         # Retain only detached scalar values and exact evidence identities,
         # not selected event/routing objects. Both consumers of used_objects
         # (native proof and grouped-core fingerprint) use exact refs only.
-        cost=(512+sys.getsizeof(token)+sys.getsizeof(token[2])
+        legacy=(512+sys.getsizeof((kind,key,respondent_key))+sys.getsizeof(respondent_key)
               +sum(128+sum(sys.getsizeof(x) for x in row) for row in (*identities,*authorities))
               +sys.getsizeof(value)+(sys.getsizeof(value[1]) if kind=="target" else 0))
+        packed=tuple(_constituent_identity_pack(kind,i) for i in identities)
+        shared_respondent=self.respondent_keys.get(respondent_key)
+        shared_authorities=self.authority_sets.get(authorities)
+        # Charge dictionary entries, row tuple, complete scalar and all
+        # explicit/digest evidence. The intern tables share detached immutable
+        # primitive values, not mutable selector wrappers or permission.
+        cost=256+_constituent_extent(value)+_constituent_extent(packed)
+        if plane is None:
+            cost+=512+_constituent_extent(plane_key)
+        if shared_respondent is None:
+            cost+=128+sys.getsizeof(respondent_key)
+        if shared_authorities is None:
+            cost+=128+_constituent_extent(authorities)
+        # All inserts are contingent on one successful budget reservation.
+        # Refused rows cannot leave orphaned intern tables or a partial row.
         if self.budget(cost):
-            self.rows[token]=(value,identities,authorities)
+            if plane is None:
+                plane=self.planes[plane_key]={}
+            if shared_respondent is None:
+                shared_respondent=self.respondent_keys[respondent_key]=respondent_key
+            if shared_authorities is None:
+                shared_authorities=self.authority_sets[authorities]=authorities
+            plane[shared_respondent]=(value,packed,shared_authorities)
             self.bytes+=cost
+            self.legacy_bytes+=legacy
+            self.retained_rows+=1
+            self.compact_identities+=sum(type(i) is bytes for i in packed)
+            self.explicit_identities+=sum(type(i) is not bytes for i in packed)
         else:self.refusals+=1
         return value
 

@@ -583,6 +583,13 @@ class I03GroupedExecutionScope:
             "rolling_groups":self._rolling_groups,
             "retained_core_units":sum(self._retention_units(x) for x in self._cache.values()),
             "constituent_cache_bytes_estimate":self._constituent_bytes,
+            "constituent_legacy_bytes_same_retained_rows":sum(m.legacy_bytes for m in self._constituent_memos.values()),
+            "constituent_retained_rows":sum(m.retained_rows for m in self._constituent_memos.values()),
+            "constituent_planes":sum(len(m.planes) for m in self._constituent_memos.values()),
+            "constituent_shared_respondents":sum(len(m.respondent_keys) for m in self._constituent_memos.values()),
+            "constituent_shared_authority_sets":sum(len(m.authority_sets) for m in self._constituent_memos.values()),
+            "constituent_compact_identities":sum(m.compact_identities for m in self._constituent_memos.values()),
+            "constituent_explicit_identities":sum(m.explicit_identities for m in self._constituent_memos.values()),
             "constituent_cache_hits":{k:sum(m.hits[k] for m in self._constituent_memos.values())
                                       for k in ("routing","target")},
             "constituent_cache_misses":{k:sum(m.misses[k] for m in self._constituent_memos.values())

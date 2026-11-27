@@ -46,6 +46,24 @@ from rawlsing_next.tests.test_pre553_discovery_exact import (
 )
 
 class CountryNativeEconomics(unittest.TestCase):
+    def test_constituent_identity_codec_conserves_complete_exact_identity(self):
+        from rawlsing_next._pre553_query_eval import (
+            _constituent_identity_pack,_constituent_identity_unpack,
+        )
+        from rawlsing_next.pre553_empirical_objects import URN_PREFIX,RespondentEvent
+        digest="ab"*32
+        for kind,family in (("routing",RoutingEligibilityFact.FAMILY),
+                            ("target",RespondentEvent.FAMILY)):
+            canonical=(family,f"{URN_PREFIX}:{family}:sha256:{digest}",digest)
+            self.assertEqual(_constituent_identity_pack(kind,canonical),bytes.fromhex(digest))
+            for identity in (canonical,("foreign",canonical[1],digest),
+                             (family,"foreign:"+digest,digest),
+                             (family,canonical[1],"cd"*32),
+                             (family,canonical[1],digest.upper())):
+                encoded=_constituent_identity_pack(kind,identity)
+                self.assertEqual(_constituent_identity_unpack(kind,encoded),identity)
+                if identity!=canonical:self.assertIs(type(encoded),tuple)
+
     def test_mixed_cardinality_sav_distinct_native_batch_and_cold_product(self):
         self._native_batch(wide=False)
 
@@ -1229,6 +1247,9 @@ class CountryNativeEconomics(unittest.TestCase):
                     self.assertGreater(receipt0["constituent_cache_hits"]["routing"],0)
                     self.assertGreater(receipt0["constituent_cache_hits"]["target"],0)
                     self.assertLessEqual(receipt0["constituent_cache_bytes_estimate"],32*1024*1024)
+                    self.assertGreater(receipt0["constituent_compact_identities"],0)
+                    self.assertLess(receipt0["constituent_cache_bytes_estimate"],
+                                    receipt0["constituent_legacy_bytes_same_retained_rows"])
                     # Foreign release projection must close old scope even
                     # when equal in content; no cross-owner reuse.
                     item,resolver,_=cases[1]
