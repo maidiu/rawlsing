@@ -23,7 +23,7 @@ from .historical_self_organization import (
     revise_operative_self, admit_lived_directional_orientation)
 from .psychic_genesis import (admit_contrast_end, possible_dependency_project_takeups,
                              PRODUCTIVE_VOCAL_FAMILY, possible_productive_vocal_takeups)
-from .activity import (possible_productive_witness_reorganizations,
+from .activity import (possible_productive_witness_reorganizations, possible_provisioning_reorganizations,
                         possible_dependency_project_reorganizations,
                        possible_dependency_means_revisions, admit_interactivity_relation)
 from .joint_practice_genesis import admit_joint_practice
@@ -817,7 +817,18 @@ def _admit_in_place(actor,experience,event_ref,candidates):
             dependency_project=bool(project.get('takeup_evidence',{}).get('dependency_takeup_basis'))
             revision_basis=c.get('dependency_means_revision_basis')
             witness_basis=c.get('productive_witness_basis')
-            if witness_basis is not None:
+            provisioning_basis=c.get('provisioning_means_basis')
+            if provisioning_basis is not None:
+                if c not in possible_provisioning_reorganizations(actor,experience,event_ref):
+                    raise InvalidDevelopment('PROVISIONING_REORGANIZATION_UNQUALIFIED')
+                project['provisioning_means_basis']=copy(provisioning_basis)
+                project.setdefault('provisioning_means_history',[]).append({
+                    'event_ref':event_ref,'previous_means':copy(project['means']),
+                    'basis':copy(provisioning_basis),'grade':GRADE})
+            elif project.get('provisioning_means_basis') and any(k in c for k in
+                    ('means','addressed_party_ref','provisioning_means_basis')):
+                raise InvalidDevelopment('PROVISIONING_MEANS_REQUIRE_QUALIFIED_REVISION')
+            elif witness_basis is not None:
                 if c not in possible_productive_witness_reorganizations(actor,experience,event_ref):
                     raise InvalidDevelopment('PRODUCTIVE_WITNESS_REORGANIZATION_UNQUALIFIED')
                 project['productive_witness_means']=copy(witness_basis)

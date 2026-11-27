@@ -160,6 +160,8 @@ def eligible_activities(constitution, recruited_form_ids, encounter):
                         and j.get('coactor_ref')==bindings[m].get('counterpart_ref')
                         and j.get('status')=='ACQUIRED_CONDITIONAL_COORDINATION_NOT_DYAD_MASTERY'
                         for j in getattr(constitution,'joint_practices',[])))]
+        if p.get('provisioning_means_basis') and encounter.location!=p['provisioning_means_basis']['provisioning_site']:
+            x['means']=[m for m in x.get('means',[]) if m not in ('WORK','BUY_FOOD')]
         if p.get('productive_witness_means') and not productive_witness_signs(p,encounter):
             x['means']=[m for m in x.get('means',[]) if m!='ORIENT']
         x['recruitment_basis']=['ACTIVITY_CUE'] if cue_match else []
@@ -600,3 +602,86 @@ def annotate_interactivity_relations(constitution,access,options):
             currents.append({'kind':'INTERACTIVITY_HISTORICAL_CURRENT',**copy(row)})
             readset.add(rec['id'])
     return {'currents':currents,'readset':sorted(readset)}
+
+
+def own_provisioning_receipt(actor,experience,world):
+    """Analytic witness to actual own performed material conduct, not mind-reading.
+
+    World claims use the pre-transition clock; only the actor's own received
+    sign licenses this reference. No token genealogy of fungible money/food.
+    """
+    op=experience.get('own_action'); aid=actor['id']; clock=experience.get('clock')
+    if (experience.get('actor')!=aid or op not in ('WORK','BUY_FOOD')
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True or type(clock) is not int):
+        return None
+    cues=[c for c in experience.get('perceived_cues',[])
+          if c.get('kind')=='performed_'+op.lower() and c.get('source_actor')==aid]
+    if len(cues)!=1:return None
+    claims=[c for c in world.get('material_claims',[])
+            if c.get('clock')==clock-1 and c.get('site')==experience.get('location')
+            and ((op=='WORK' and c.get('worker')==aid and c.get('wage',0)>0
+                  and c.get('worker_control_of_output') is False)
+                 or (op=='BUY_FOOD' and c.get('buyer')==aid
+                     and c.get('kind')=='FOOD_PURCHASE' and c.get('price_paid',0)>0
+                     and c.get('goods_transferred')==1))]
+    if len(claims)!=1:return None
+    return {'operation':op,'actor':aid,'clock':clock,'site':experience['location'],
+            'cue_ref':cues[0]['id'],'material_claim_ref':stable_id('material_claim_witness',claims[0]),
+            'not_conscious_accounting_or_earmarked_income':True}
+
+
+def possible_provisioning_reorganizations(actor,experience,event_ref):
+    """Prior wage and purchase can become means of a particular care project.
+
+    Current personally enacted feeding must be independently selected for that
+    project and materially performed using held food. Prior actual receipts
+    qualify a semantic occasion, not proof these particular wages bought this
+    exact food or that work/care have no conflicting significance.
+    """
+    aid=actor['id']; sel=experience.get('own_practical_selection') or {}
+    refs=sel.get('selected_project_refs',[])
+    if (experience.get('actor')!=aid or experience.get('own_action')!='FEED'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('actor')!=aid or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or len(refs)!=1 or sel.get('possible_end_trial') is not None):
+        return []
+    target=(sel.get('world_request') or {}).get('addressed_party_ref')
+    feed=[x for x in actor.get('performed_feeding_events',[])
+          if x.get('event_ref')==event_ref and x.get('giver')==aid
+          and x.get('recipient')==target and x.get('material_food_source')=='GIVER_HELD_FOOD'
+          and x.get('original_action_was_actor_selected') is True
+          and x.get('applied_nutrition_change',0)>0]
+    if len(feed)!=1:return []
+    paths=actor.get('evidence_paths',[])
+    now=[x for x in paths if x.get('event')==event_ref and
+         x.get('experience_ref')==experience['ref'] and
+         feed[0].get('received_action_sign_ref') in x.get('received_cue_refs',[])]
+    if len(now)!=1:return []
+    prior=[]
+    for x in paths:
+        v=x.get('own_provisioning_receipt_analytic_only') or {}
+        if (v.get('actor')==aid and v.get('cue_ref') in x.get('received_cue_refs',[])
+                and type(v.get('clock')) is int and v['clock']<experience['clock']
+                and x.get('own_action')==v.get('operation')):
+            prior.append((x,v))
+    buys=[(x,v) for x,v in prior if v['operation']=='BUY_FOOD']
+    if not buys:return []
+    purchase,pv=max(buys,key=lambda x:x[1]['clock'])
+    works=[(x,v) for x,v in prior if v['operation']=='WORK'
+           and v['clock']<pv['clock'] and v['site']==pv['site']]
+    if not works:return []
+    work,wv=max(works,key=lambda x:x[1]['clock'])
+    projects=[x for x in actor.get('projects',[]) if x.get('id')==refs[0]
+              and x.get('status','active')=='active' and x.get('means')==['FEED']
+              and x.get('addressed_party_ref')==target
+              and not x.get('provisioning_means_basis')]
+    if len(projects)!=1:return []
+    basis={'actor':aid,'recipient_ref':target,'work_event_ref':work['event'],
+           'purchase_event_ref':purchase['event'],'feeding_event_ref':event_ref,
+           'feeding_receipt_ref':feed[0]['id'],'work_claim_ref':wv['material_claim_ref'],
+           'purchase_claim_ref':pv['material_claim_ref'],'provisioning_site':pv['site'],
+           'not_proof_of_earmarked_money_or_motive_fulfillment':True}
+    return [{'kind':'REORGANIZE_PROJECT','project_id':refs[0],
+             'means':['FEED','WORK','BUY_FOOD'],'provisioning_means_basis':basis}]

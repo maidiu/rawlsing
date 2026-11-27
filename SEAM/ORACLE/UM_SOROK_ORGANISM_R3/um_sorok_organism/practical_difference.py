@@ -79,6 +79,10 @@ def practical_alternatives(constitution,access,option):
                            and c.get('material_object_ref')==object_ref for c in access.cues)):
             continue
         target=project.get('addressed_party_ref')
+        if project.get('provisioning_means_basis') and act in ('WORK','BUY_FOOD'):
+            # Material acquisition serves a particular care undertaking but
+            # is not an addressed act or a claim on the recipient.
+            target=None
         conditional=project.get('dependency_conditional_means',{}).get(act)
         human_counterpart=False
         if conditional is not None:
