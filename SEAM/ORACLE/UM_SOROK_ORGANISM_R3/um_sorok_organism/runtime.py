@@ -714,6 +714,12 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if 'speech_intent' in proposed:
+                intent=proposed['speech_intent']
+                if (action!='SPEAK' or requesting_actor is not None
+                        or type(intent) is not str or not intent.strip() or len(intent)>500):
+                    raise ValueError('SPEECH_INTENT_NOT_QUALIFIED_PRINCIPAL_SPEAK')
+                practical['prospective_speech_intent']=intent
             if action in ('ACCEPT_MEETING','MEET_VISITOR'):
                 if (trial_choice is not None or not selected_alternative
                         or selected_alternative.get('binding_status')!='EXACT_CURRENT_HUMAN_MEETING_SIGN'
@@ -856,6 +862,14 @@ class ConstitutiveRuntime:
         bodily_before={aid:copy(person['body']) for aid,person in actors.items()}
         principal=self._actor_plan(actor_id,world,actors,requested_action,
                                    _principal_projection=principal_projection)[0]
+        # A selected lexical act may use the already available actor-local
+        # encounter. No new read of another psyche or visitor's private MII.
+        speech_intent=principal.practical_selection.get('prospective_speech_intent')
+        speech_access=None
+        if speech_intent is not None:
+            if target is not None or object_ref is not None:
+                raise ValueError('LEXICAL_ACT_CANNOT_BE_EXTERNALLY_REBOUND')
+            speech_access=principal_projection[0]
         # No cross-phase, cross-beat or persisted projection cache.
         del principal_projection
         if principal.practical_selection.get('productive_witness_attention') is not None and (target is not None or object_ref is not None):
@@ -890,6 +904,31 @@ class ConstitutiveRuntime:
         resolved=asdict(actual)
         summary=resolved['world_delta']['event']
         primary_cue_ref=world['cues'][-1]['id']
+        # Use the existing expression task ONCE, at the point where the
+        # actual SPEAK is locally settled but no event/experience committed.
+        # This is lexical realization, not post-hoc narration or a new act.
+        lexical_expression=None
+        if speech_intent is not None and summary['status']=='PERFORMED':
+            # Finite outward/access-qualified encounter only. Do not forward
+            # the selected constitution, private correspondence or analyst
+            # state. The actor's selected communicative aim is not fact.
+            selected_cues=[]
+            for cue in speech_access.cues:
+                if cue.get('kind')=='opened_correspondence':continue
+                selected_cues.append({k:copy(cue[k]) for k in
+                    ('kind','modality','description','spoken_text','lexical_comprehension')
+                    if k in cue})
+            lexical_expression=self.semantic.proposal('expression',{
+                'actor_id':actor_id,
+                'actual':{'action':'SPEAK','status':'PERFORMED',
+                          'outcome':'SPEECH_ACT_LOCALLY_SETTLED'},
+                'actor_accessible':{'location':speech_access.location,
+                    'perceived_cues':selected_cues},
+                'prospective_speech_intent':speech_intent,
+                'expression_phase':'LEXICAL_REALIZATION_BEFORE_EXPERIENCE',
+                'restriction':'ONLY_SPOKEN_WORDS_NO_NEW_ACTS_OR_WORLD_FACTS; CLAIMS_NOT_TRUTH'})
+            from .world import attach_actual_utterance
+            attach_actual_utterance(world,principal,summary,lexical_expression.get('speech'))
         correspondence_cue=None
         chosen_correspondence=principal.practical_selection.get('correspondence_attention')
         if chosen_correspondence is not None and summary['status']=='PERFORMED':
@@ -1016,6 +1055,10 @@ class ConstitutiveRuntime:
                             and (aid!=actor_id or requested_action is None)
                             else None),
                         'actor_access_grade':GRADE}
+            # A proposed utterance aim is not an experienced or spoken word.
+            # Actual lexical content arrives only through the settled cue.
+            if experience['own_practical_selection'] is not None:
+                experience['own_practical_selection'].pop('prospective_speech_intent',None)
             # Read the actual material owner receipt, not the model's account
             # of its own expertise. The actor need not know this causal source.
             if own=='REPAIR' and experience['own_practical_selection'] is not None:
@@ -1389,9 +1432,10 @@ class ConstitutiveRuntime:
             expression_access.get('own_practical_selection',{}).pop('correspondence_attention',None)
             expression_access['perceived_cues']=[c for c in expression_access.get('perceived_cues',[])
                 if c.get('kind')!='opened_correspondence']
-        expression=self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
+        expression=(lexical_expression if lexical_expression is not None else
+            self.semantic.proposal('expression',{'actor_id':actor_id,'actual':actual_tip,
                'actor_accessible':expression_access,
-               'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'})
+               'restriction':'NO_INNER_PSYCHIC_OMNISCIENCE'}))
         payload={'attempt':principal.document(),'actor_selection_grade':principal.intention,
                  'external_research_plan_context':copy(research_plan_context),
                  'external_plan_is_not_actor_chosen_undertaking':True,
@@ -1420,7 +1464,10 @@ class ConstitutiveRuntime:
         return {'receipt':committed['id'],'clock':world['clock'],'actor':actor_id,
             'attempt':principal.action,'selection_grade':principal.intention,
             'coactor':partner.action if partner else None,'status':resolved['status'],
-            'objective_outcome':resolved['objective_description'],'public_tip':expression.get('surface'),
+            'objective_outcome':resolved['objective_description'],
+            # An opted-in utterance (even if blocked) is never an untyped
+            # visual tip; only the actual finite acoustic projection applies.
+            'public_tip':None if speech_intent is not None else expression.get('surface'),
             'developmental_effect_count':{aid:len(e) for aid,e in developmental.items()},
             'grade':GRADE}
 

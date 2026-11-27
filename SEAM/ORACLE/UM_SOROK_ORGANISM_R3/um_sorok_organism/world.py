@@ -139,6 +139,40 @@ def recursive_encounter_channels(world, observer, source, location):
                 and p['sightline']=='unobstructed' and p['facing']=='source'}
 
 
+def attach_actual_utterance(world,attempt,summary,text):
+    """Attach exact lexical content to the existing uncommitted SPEAK sign.
+
+    Runtime is the sole caller in the same world transaction, before personal
+    receipts. No second writer, new action, new voice claim or semantic truth.
+    A malformed renderer reply aborts the entire transaction.
+    """
+    if type(text) is not str or not text.strip() or len(text)>500:
+        raise ValueError('LEXICAL_REALIZATION_INVALID_SPEECH')
+    cue=world['cues'][-1];public=world['public_history'][-1]
+    if (attempt.action!='SPEAK'
+            or attempt.intention!='ACTOR_SITUATED_CANDIDATE_SELECTED_SOURCEFREE'
+            or type(attempt.practical_selection.get('prospective_speech_intent')) is not str
+            or summary.get('action')!='SPEAK' or summary.get('actor')!=attempt.actor
+            or summary.get('status')!='PERFORMED'
+            or summary.get('clock')!=world['clock']
+            or any(public.get(k)!=summary.get(k) for k in ('actor','action','status','clock'))
+            or cue.get('kind')!='performed_speak' or cue.get('modality')!='auditory'
+            or cue.get('source_actor')!=attempt.actor or cue.get('private_to') is not None
+            or cue.get('clock')!=world['clock']
+            or cue.get('location')!=world['positions'].get(attempt.actor)
+            or 'spoken_text' in cue):
+        raise ValueError('LEXICAL_REALIZATION_NOT_ACTUAL_SPEAK')
+    binding={'utterance_cue_ref':cue['id'],'utterance_text_hash':digest(text),
+             'utterance_grade':'SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE'}
+    cue.update(binding,spoken_text=text,utterance_claim_truth='NOT_ESTABLISHED')
+    # The earlier object-demonstration branch did not encode words; this
+    # opt-in lexical realization supersedes only those absence flags.
+    cue.pop('spoke_about_material_object_without_encoded_word',None)
+    cue.pop('unobserved_semantic_content',None)
+    summary.update(binding)
+    public.update(binding)
+
+
 def project_recursive_actor_sign(world, actor, cue, location):
     """Adapt NEIGHBOR's auditory/visual distinction to CO's existing cue read.
 
@@ -147,6 +181,51 @@ def project_recursive_actor_sign(world, actor, cue, location):
     referent. This is not proof of actor attention or speaker recognition.
     """
     source=cue.get('source_actor')
+    if cue.get('utterance_grade')=='SOURCEFREE_REALIZED_LEXICAL_OCCURRENCE':
+        # Typed lexical realization uses the existing directional access
+        # owner. A sound without a qualified language/path is not words;
+        # audible words do not automatically identify a hidden speaker.
+        channels=recursive_encounter_channels(world,actor['id'],source,location)
+        own=source==actor['id']
+        if not own and channels is not None and not channels['audible']:return None
+        text=cue.get('spoken_text')
+        qualified=(type(text) is str and bool(text.strip()) and len(text)<=500
+            and cue.get('utterance_cue_ref')==cue.get('id')
+            and cue.get('utterance_text_hash')==digest(text))
+        language=actor.get('body',{}).get('language',0)
+        lexical=(qualified and (own or (channels is not None and channels['audible']))
+                 and type(language) in (int,float) and .35<=language<=1)
+        visible=own or (channels is not None and channels['visible'])
+        result={k:copy(cue[k]) for k in (
+            'id','clock','last_access_clock','location','modality','threshold','private_to')
+            if k in cue}
+        result.update(kind='performed_speak' if visible else 'heard_voice',
+            tags=['speech'] if lexical else ['voice','speech_sound'],
+            description='Speech sounds nearby.',
+            source_actor=source if visible else None,
+            lexical_comprehension=('SOURCEFREE_CAPACITY_ELIGIBLE' if lexical else 'NOT_ESTABLISHED'),
+            speaker_identity_visually_eligible_not_recognition=bool(visible),
+            not_actor_attention_or_understanding=True)
+        if channels is not None:result['encounter_path_ref']=channels['path_ref']
+        if cue.get('vocal_cadence') in CADENCES:
+            result['vocal_cadence']=cue['vocal_cadence']
+            result['description']=CADENCES[cue['vocal_cadence']]
+            result['tags'].append('vocal_cadence:'+cue['vocal_cadence'].lower())
+        if visible and cue.get('actual_spoken_object_demonstration') is True:
+            # Preserve the inherited cultural-reference route for an actual
+            # visible object, not anonymous acoustic access to its identity.
+            for key in ('material_object_ref','actual_spoken_object_demonstration',
+                        'spoke_about_material_object_without_encoded_word',
+                        'unobserved_semantic_content'):
+                if key in cue:result[key]=copy(cue[key])
+            result['tags']+=['public_object_reference','object_present']
+        if lexical:
+            # There now are words; do not falsely claim they were absent.
+            result.pop('spoke_about_material_object_without_encoded_word',None)
+            result.pop('unobserved_semantic_content',None)
+            result['spoken_text']=text
+            result['utterance_claim_truth']='NOT_ESTABLISHED'
+        return result
     if source==actor['id']:
         return copy(cue)
     channels=recursive_encounter_channels(world,actor['id'],source,location)
