@@ -91,7 +91,8 @@ def worker(root,mode,counts,report):
     ext=dict(root=root,db=db,receipt=receipt,ordinals=cfg["ordinals"],
              selected=values[::2,:],chosen=tuple(range(1,2*rows+1,2)),
              country="A",governed=governed,physical_width=width,
-             target_domains=target_domains(governed,heterogeneous))
+             target_domains=target_domains(governed,heterogeneous),
+             compare_rule_producer=mode=="compare")
     workload,record,queries,host,purpose,qrefs=CountryNativeEconomics()._native_batch(
         wide=True,external_case=ext)
     selected=values[::2,:].copy()

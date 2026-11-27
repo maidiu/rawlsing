@@ -392,6 +392,58 @@ class _PackedRoutingFacts(Sequence):
         flush()
         object.__setattr__(self,"_storage",(tuple(runs),tuple(ends)))
 
+    @classmethod
+    def from_rule_incidence(cls,rules):
+        """Producer seam for R157-style shared rules + explicit incidence.
+
+        Each input is (actual canonical rule representative, incidence
+        iterable of (respondent_ref, dependency_refs, replay_root)).
+        Incidence is supplied by the governed producer, never inferred.
+        The representative fixes every other semantic field, including
+        universe, exact risk/rule, typed states and parent predicates.
+        Emit the existing packed lanes and exact legacy per-row digest
+        without constructing a RoutingEligibilityFact for each incidence.
+        Unknown optional shapes belong to the incumbent object producer.
+        No source authority, eligibility or permission is created here.
+        """
+        from rawlsing_next.pre553_empirical_objects import (
+            _canonical_ref_set,_refs as object_refs,_replay_root,
+        )
+        keys=tuple(sorted(RoutingEligibilityFact.REQUIRED_FIELDS))
+        names=(*cls._top,*keys)
+        builders=[_RoutingColumnBuilder() for _ in names]
+        digests=bytearray()
+        count=0
+        respondent_index=names.index("scoped_respondent_ref")
+        deps_index=names.index("dependency_refs")
+        replay_index=names.index("producer_replay_locator_or_reference_root")
+        def encode(value):
+            return canonical_json(value).encode("utf-8")
+        for representative,incidences in rules:
+            if type(representative) is not RoutingEligibilityFact:
+                raise SourceBackedC11FacadeError("exact routing rule representative required")
+            doc=representative.as_dict()
+            if (tuple(sorted(doc["semantic_fields"]))!=keys
+                    or semantic_hash(representative.semantic_projection())!=representative.content_hash
+                    or representative.object_id!=cls._prefix+representative.content_hash):
+                raise SourceBackedC11FacadeError("unsupported or drifted routing rule representative")
+            raw=[encode(doc[k] if k in cls._top else doc["semantic_fields"][k])
+                 for k in names]
+            for respondent,deps,replay in incidences:
+                raw[respondent_index]=encode(exact_ref(respondent).as_dict())
+                raw[deps_index]=encode([ref.as_dict() for ref in
+                                      _canonical_ref_set(object_refs(deps,"dependency_refs"))])
+                raw[replay_index]=encode(_replay_root(replay))
+                projection=cls._projection_bytes(cls._projection_values(keys,raw))
+                digests.extend(hashlib.sha256(projection).digest())
+                for builder,value in zip(builders,raw):
+                    builder.add(value)
+                count+=1
+        out=object.__new__(cls)
+        storage=(((keys,tuple(b.finish() for b in builders),bytes(digests)),),(count,)) if count else ((),())
+        object.__setattr__(out,"_storage",storage)
+        return out
+
     def immutable_storage(self):
         # Validate the actual builtin storage and its complete row geometry.
         # Canonical iteration, random access and sorted replay must describe
