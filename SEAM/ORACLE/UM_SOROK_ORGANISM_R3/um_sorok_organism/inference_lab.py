@@ -105,9 +105,12 @@ class WorkloadCapture:
         self.rows.append(row);self.bytes+=row_bytes
         return copy(answer)
 
-    def document(self):
+    def document(self,*,owner_state_sha256=None):
         if self.failed or not self.rows:raise ValueError("LAB_CAPTURE_INCOMPLETE")
-        payload={**self.meta,"rows":copy(self.rows)}
+        if owner_state_sha256 is not None and (type(owner_state_sha256) is not str
+                or not re.fullmatch("[0-9a-f]{64}",owner_state_sha256)):
+            raise ValueError("LAB_OWNER_STATE_DIGEST_INVALID")
+        payload={**self.meta,"rows":copy(self.rows),"owner_state_sha256":owner_state_sha256}
         return {"payload":payload,"sha256":digest(payload)}
 
     def save(self,path):
@@ -128,12 +131,15 @@ def verify_workload(doc,*,source_head=None):
     if type(doc) is not dict or set(doc)!={"payload","sha256"}:
         raise ValueError("LAB_WORKLOAD_ENVELOPE")
     p=doc["payload"]
-    if type(p) is not dict or set(p)!={"schema","grade","source_head","fixture","rows"}:
+    if type(p) is not dict or set(p)!={"schema","grade","source_head","fixture","rows","owner_state_sha256"}:
         raise ValueError("LAB_WORKLOAD_SHAPE")
     if (p["schema"]!=SCHEMA or p["grade"]!=GRADE or digest(p)!=doc["sha256"]
             or size(doc)>MAX_TAPE_BYTES):
         raise ValueError("LAB_WORKLOAD_INTEGRITY")
     _head(p["source_head"])
+    state_sha=p["owner_state_sha256"]
+    if state_sha is not None and (type(state_sha) is not str or not re.fullmatch("[0-9a-f]{64}",state_sha)):
+        raise ValueError("LAB_OWNER_STATE_DIGEST_INVALID")
     if source_head is not None and p["source_head"]!=_head(source_head):
         raise ValueError("LAB_SOURCE_HEAD_MISMATCH")
     if type(p["fixture"]) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,100}",p["fixture"]):
@@ -206,16 +212,18 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None):
     """Matched frozen proposal workloads, not owner admission or life equivalence.
 
     No choice of winner, auto escalation, retry, or psychological rating.
-    A provider exception remains an observed failure. A live budget stop
-    propagates, so no further arm is attempted after an unknown spend.
+    A provider exception remains an observed failure. A budget stop retains
+    all completed observations and prevents any subsequent provider call.
     """
     rows=selected_rows(document,per_task=per_task,tasks=tasks)
     if type(arms) is not dict or not arms:raise ValueError("LAB_ARMS_REQUIRED")
-    observations=[]
+    for name in arms:
+        if type(name) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,80}",name):
+            raise ValueError("LAB_ARM_ID_INVALID")
+    observations=[];stopped=False
     for row in rows:
+        if stopped:break
         for name,provider in arms.items():
-            if type(name) is not str or not re.fullmatch("[A-Za-z0-9_.-]{1,80}",name):
-                raise ValueError("LAB_ARM_ID_INVALID")
             prior=provider.usage_snapshot()["total"] if hasattr(provider,"usage_snapshot") else None
             start=perf_counter_ns()
             try:
@@ -224,7 +232,7 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None):
                     raise ValueError("LAB_INVALID_PROPOSAL")
                 outcome="PROPOSAL_RETURNED"
             except BudgetStop:
-                raise
+                proposal=None;outcome="BUDGET_STOP";stopped=True
             except Exception:
                 proposal=None;outcome="REJECTED_OR_FAILED"
             metric=None
@@ -238,7 +246,10 @@ def compare_frozen(document,arms,*,per_task=1,tasks=None):
                   "proposal":copy(proposal),"proposal_digest":digest(proposal),
                   "equals_recorded_proposal":proposal==row["proposal"],
                   "elapsed_ns":perf_counter_ns()-start,"metric":metric})
+            if stopped:break
     return {"schema":"RAWLSING_FROZEN_PROPOSAL_COMPARISON_V1",
+            "planned_observations":len(rows)*len(arms),
+            "status":"STOPPED_BUDGET_OR_UNKNOWN_SPEND" if stopped else "COMPLETED",
             "workload_sha256":document["sha256"],
             "source_head":document["payload"]["source_head"],
             "scope":"PROPOSAL_ONLY_NOT_ADMITTED_DEVELOPMENT",

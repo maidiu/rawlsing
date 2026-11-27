@@ -42,6 +42,7 @@ class InferenceLab(unittest.TestCase):
         doc,actual=capture_course(True,HEAD)
         self.assertEqual(len(doc["payload"]["rows"]),225)
         self.assertTrue(actual["audit"]["valid"])
+        self.assertEqual(doc["payload"]["owner_state_sha256"],digest(actual))
         self.assertEqual(actual["first"]["received"]["counterpart_ref"],"x5")
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/"tape.json"
@@ -136,6 +137,23 @@ class InferenceLab(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,"AUTHORIZATION"):
                 budget(Path(tmp)/"denied",sourcefree_live_authorized=False)
             self.assertFalse((Path(tmp)/"denied").exists())
+
+    def test_partial_matched_report_conserves_completed_observations(self):
+        c=WorkloadCapture(source_head=HEAD,fixture="fixture",sourcefree_fixture_attested=True)
+        cp=CallbackLLMProvider(lambda t,p:{"task":t,"surface":"fixture"})
+        for i in range(2):c.invoke(cp,"expression",{"i":i})
+        with tempfile.TemporaryDirectory() as tmp:
+            b=budget(Path(tmp)/"budget",max_calls=1)
+            p=provider(b);seen=[]
+            def fake(_self,payload):
+                seen.append(payload);return response()
+            with patch.object(ExplicitJSONLLMProvider,"_request",fake):
+                r=compare_frozen(c.document(),{"one":p,"two":provider(b)},per_task=2)
+            self.assertEqual(r["planned_observations"],4)
+            self.assertEqual(r["status"],"STOPPED_BUDGET_OR_UNKNOWN_SPEND")
+            self.assertEqual(len(seen),1)
+            self.assertEqual([x["outcome"] for x in r["observations"]],
+                             ["PROPOSAL_RETURNED","BUDGET_STOP"])
 
     def test_completion_cap_is_opt_in_and_no_transport_override(self):
         seen=[]

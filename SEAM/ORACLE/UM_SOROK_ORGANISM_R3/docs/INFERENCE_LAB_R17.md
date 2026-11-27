@@ -14,7 +14,8 @@ trial, project and cold continuation. The owner fixture supplies all events and
 semantic decisions. Capture wraps its existing callback, rather than scripting
 a second life. The tape holds exact task, original input, actual returned
 proposal and digests; it is local and private. Exact replay refuses changed
-context, missing/extra decisions and wrong checkout identity. This is a decision
+context, missing/extra decisions, wrong checkout identity and a mismatched
+complete owner-state digest. This is a decision
 replay control, not independent history-only inference or evidence of live
 semantic fidelity. Captured elapsed time is fixture callback wall time, not
 model token expenditure or full life cost.
@@ -90,7 +91,10 @@ actual tokenization, cap compliance, extra fees or rates can invalidate the
 assumptions; this is not a guaranteed billing cap. If usage is missing or
 exceeds declared ceilings, stop immediately and retain the pre-send reservation.
 The CLI requires an explicit flag and fresh journal/output paths; no resume
-or implicit repeated spend. Do not run without the user's source/provider/budget
+or implicit repeated spend. The planned call count must fit the reservation
+pool before any request. A stop returns completed observations plus the
+stopped case; the pre-send journal remains independently durable. Do not run
+without the user's source/provider/budget
 permission.
 
 ```sh

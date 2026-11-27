@@ -61,7 +61,7 @@ def capture_course(release,head):
     cap=WorkloadCapture(source_head=head,fixture="R54_RELEASED" if release else "R54_RETAINED",
                         sourcefree_fixture_attested=True)
     actual=owner_course(release,lambda cb:CaptureProvider(original(cb),cap))
-    return cap.document(),actual
+    return cap.document(owner_state_sha256=digest(actual)),actual
 
 
 def replay_course(document,head):
@@ -75,6 +75,8 @@ def replay_course(document,head):
     replay=ExactTapeProvider(document,source_head=head,original_grade=original_grade)
     actual=owner_course(p["fixture"]=="R54_RELEASED",lambda cb:replay)
     replay.finish()
+    if p["owner_state_sha256"]!=digest(actual):
+        raise ValueError("LAB_OWNER_STATE_REPLAY_MISMATCH")
     return actual
 
 
@@ -168,14 +170,19 @@ def main(argv=None):
         budget=LiveBudget(journal=a.budget_journal,sourcefree_live_authorized=True,
                           **config["budget"])
         arms=live_arms(config["arms"],budget)
+        planned=len(selected_rows(doc,per_task=a.per_task,tasks=a.task))*len(arms)
+        if planned>budget.max_calls or planned*budget.reserve>budget.max_budget:
+            raise ValueError("LAB_PLAN_EXCEEDS_AUTHORIZED_RESERVATIONS")
         result=compare_frozen(doc,arms,per_task=a.per_task,tasks=a.task)
         result["mode"]="EXPLICIT_SOURCEFREE_LIVE_PROPOSAL_ONLY"
         result["budget"]=budget.snapshot()
         # Never save API key or arbitrary upstream response in the journal.
-        result["models"]={k:v.model for k,v in arms.items()}
+        result["models"]={k:{"model":v.model,"endpoint":v.endpoint,
+                  "compiled":v.compact_exact_packet,
+                  "completion_limit_field":v.completion_limit_field} for k,v in arms.items()}
     save_report(a.out,result)
     print(canonical({"scope":result["scope"],"mode":result["mode"],
-                     "observations":len(result["observations"]),
+                     "status":result["status"],"observations":len(result["observations"]),
                      "totals":result["totals"],"budget":result.get("budget")}))
 
 
