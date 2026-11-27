@@ -28,7 +28,8 @@ from .practical_difference import start_selected_expectations
 from .lived_genesis import proposals_from_bodily_history
 from .historical_self_organization import (possible_lived_directional_orientation,
                                            possible_dependency_ambivalence,
-                                           possible_counterhistory_release)
+                                           possible_counterhistory_release,
+                                           possible_retrospective_orientation_revisions)
 from .distributed_power import record_actor_participation
 from .practical_powers import retain_exercised_power, possible_repair_technique
 from .practical_inquiry import retain_personal_notice_exposure
@@ -1055,6 +1056,9 @@ class ConstitutiveRuntime:
                    if own_vocal_reception(actors[aid],experience) is not None else {}),
                 **({'own_provisioning_receipt_analytic_only':receipt}
                    if (receipt:=own_provisioning_receipt(actors[aid],experience,world)) else {}),
+                **({'performed_repair_technique_ref_analytic_only':
+                    experience['performed_repair_technique_ref_analytic_only']}
+                   if experience.get('performed_repair_technique_ref_analytic_only') else {}),
                 'received_cue_refs':[c['id'] for c in personal_cues],
                 'received_cue_tags':sorted({str(tag).lower()
                     for cue in personal_cues for tag in cue.get('tags',[])}),
@@ -1194,6 +1198,9 @@ class ConstitutiveRuntime:
                 'selected_constitution':selected,
                 'actor_forms':copy(actors[aid]['forms']),
                 'actual_private_rehearsal_analyst_only':copy(private_rehearsal),
+                **({'historically_possible_retrospective_orientation_revisions':copy(retrospective)}
+                   if (retrospective:=possible_retrospective_orientation_revisions(
+                       actors[aid],experience,objective_ref)) else {}),
                 'actual_undertaking_attention_analyst_only':copy(attention_receipt),
                 **({'historically_possible_focal_encounter_memory': {
                         'kind':'MEMORY','focal_encounter_ref':focal_receipt['attention_id'],

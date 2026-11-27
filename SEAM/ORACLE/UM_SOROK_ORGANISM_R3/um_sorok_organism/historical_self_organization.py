@@ -8,6 +8,7 @@ from .types import copy, stable_id, GRADE
 from .organism import ACTIONS, eligible
 from .livelihood_history import qualify_recurrent_work_orientation, possible_relief_reconstitution
 from .attention_field import possible_monitoring_changes
+from .practical_powers import active_repair_technique
 
 MODES = frozenset(('APPROACH', 'WITHHOLD', 'AMBIVALENT'))
 REVISIONS = frozenset(('INHIBIT', 'OPPOSE', 'REINSTATE'))
@@ -444,6 +445,123 @@ def possible_counterhistory_release(actor, experience, event_ref):
     return out
 
 
+def possible_retrospective_orientation_revisions(actor, experience, event_ref):
+    """First narrow checkpoint seam: formerly lived work, subsequently
+    acquired AND exercised means, presently selected recollective activity.
+
+    No retrospective proposal replays an old event or grants an old actor
+    later understanding. Private meaning can optionally suspend one prior
+    ordinary withholding current in the comparable field. This initial
+    witness uses the existing repair-technique owner, not a universal
+    mapping from technical capacity to release, or a new motive engine.
+    """
+    aid=actor.get('id');clock=experience.get('clock');site=experience.get('location')
+    sel=experience.get('own_practical_selection') or {}
+    private=sel.get('private_rehearsal') or {}
+    opt=private.get('option') or {}
+    if (experience.get('actor')!=aid or type(clock) is not int
+            or experience.get('own_action')!='WAIT'
+            or experience.get('status')!='PERFORMED'
+            or experience.get('participated') is not True
+            or sel.get('status')!='ACTOR_POLICY_PRACTICAL_ATTEMPT'
+            or site!=actor.get('location') or not opt):
+        return []
+    technique=active_repair_technique(actor,site)
+    if not technique:return []
+    paths=actor.get('evidence_paths',[])
+    episodes=actor.get('lived_genesis_episodes',[])
+    def episode(event, exp):
+        rows=[e for e in episodes if e.get('actor')==aid
+              and e.get('event_ref')==event and e.get('experience_ref')==exp
+              and e.get('location')==site and type(e.get('clock')) is int]
+        return rows[0] if len(rows)==1 else None
+    current=episode(event_ref,experience.get('ref'))
+    if not current or current.get('clock')!=clock:return []
+    field=_lived_coexperience_field(current)
+    if not field[0]:return []
+    out=[]
+    for m in actor.get('memories',[]):
+        if (m.get('id')!=opt.get('memory_ref') or
+                m.get('status')!='ACTOR_ACCESSIBLE' or
+                m.get('origin')!=[opt.get('memory_event_ref')]):continue
+        origin=m['origin'][0];origin_exp=m.get('experience')
+        early=episode(origin,origin_exp)
+        if (not early or early.get('actor_felt_attempt')!='REPAIR'
+                or _lived_coexperience_field(early)!=field):continue
+        old_paths=[p for p in paths if p.get('event')==origin
+                   and p.get('experience_ref')==origin_exp
+                   and p.get('own_action')=='REPAIR']
+        recs=[x for x in m.get('private_rehearsals',[])
+              if x.get('actor')==aid and x.get('event_ref')==event_ref
+              and x.get('experience_ref')==experience.get('ref')
+              and x.get('memory_event_ref')==origin and x.get('clock')==clock
+              and x.get('location')==site and x.get('affect_ref')==opt.get('affect_ref')
+              and x.get('historical_received_cue_refs')==opt.get('historical_received_cue_refs')
+              and x.get('imagined_content')==private.get('imagined_content','').strip()]
+        if len(old_paths)!=1 or len(recs)!=1:continue
+        rec=recs[0]
+        if (not rec['historical_received_cue_refs'] or
+                not set(rec['historical_received_cue_refs']).issubset(
+                    set(old_paths[0].get('received_cue_refs',[])) &
+                    set(early.get('received_sign_refs',[])))):continue
+        # This technique must actually have formed AFTER the earlier memory;
+        # later mere possession is insufficient. Require a subsequent actual
+        # selected repair whose material owner used that exact acquired means.
+        acquired=[x for x in actor.get('power_exercises',[])
+                  if x.get('id')==technique['basis']['later_exercise_ref']]
+        if len(acquired)!=1:continue
+        ac=acquired[0].get('event_clock')
+        if type(ac) is not int or not early['clock']<ac<clock:continue
+        exercised=[]
+        for ex in actor.get('power_exercises',[]):
+            if (ex.get('actor')!=aid or ex.get('operation')!='REPAIR'
+                    or ex.get('encounter_location')!=site
+                    or ex.get('attempt_status_analyst_receipt')!='PERFORMED'
+                    or type(ex.get('event_clock')) is not int
+                    or not ac<ex['event_clock']<clock
+                    or not ex.get('own_selected_option_ref')):continue
+            rows=[p for p in paths if p.get('event')==ex.get('event_ref')
+                  and p.get('experience_ref')==ex.get('experience_ref')
+                  and p.get('own_action')=='REPAIR'
+                  and p.get('practical_option_ref')==ex['own_selected_option_ref']
+                  and p.get('performed_repair_technique_ref_analytic_only')==technique['id']
+                  and ex.get('own_selected_repair_sign_ref') in p.get('received_cue_refs',[])]
+            later=episode(ex.get('event_ref'),ex.get('experience_ref'))
+            if (len(rows)==1 and later and later['clock']==ex['event_clock']
+                    and _lived_coexperience_field(later)==field):
+                exercised.append(ex)
+        if not exercised:continue
+        ex=max(exercised,key=lambda x:(x['event_clock'],x['id']))
+        for row in actor.get('historical_orientations',[]):
+            if (row.get('actor')!=aid or row.get('location')!=site
+                    or row.get('origin_event')!=origin
+                    or row.get('origin_experience_ref')!=origin_exp
+                    or row.get('acquisition')!='LIVED_SOURCEFREE_PRACTICAL_ORIENTATION'
+                    or row.get('recurrent_livelihood_ground')
+                    or row.get('operation') not in ('REST','EAT')
+                    or row.get('orientation_mode')!='WITHHOLD'
+                    or _polarities(row,field[1])!=['WITHHOLD']
+                    or any(type(x.get('clock')) is not int or
+                           x['clock']>=ex['event_clock'] for x in row.get('revisions',[]))):
+                continue
+            basis={'memory_ref':m['id'],'earlier_event_ref':origin,
+                   'earlier_experience_ref':origin_exp,'rehearsal_ref':rec['id'],
+                   'rehearsal_event_ref':event_ref,'rehearsal_experience_ref':experience['ref'],
+                   'acquired_technique_ref':technique['id'],
+                   'acquisition_event_ref':acquired[0]['event_ref'],
+                   'later_exercise_ref':ex['id'],'later_event_ref':ex['event_ref'],
+                   'later_experience_ref':ex['experience_ref'],
+                   'coexperienced_other_refs':list(field[1]),'location':site,
+                   'orientation_ref':row['id'],'operation':row['operation'],
+                   'earlier_awareness_not_rewritten':True,
+                   'later_skill_not_proof_of_earlier_motive':True}
+            out.append({'kind':'REVISE_HISTORICAL_ORIENTATION',
+                        'orientation_ref':row['id'],'revision_mode':'INHIBIT',
+                        'retrospective_repair_revaluation_basis':basis})
+            if len(out)>=12:return out
+    return out
+
+
 def revise_orientation(actor, experience, event_ref, proposal):
     _actor_event(actor, experience, event_ref)
     source = _received(experience, proposal)
@@ -466,6 +584,15 @@ def revise_orientation(actor, experience, event_ref, proposal):
         if proposal not in possible_monitoring_changes(actor,experience,event_ref):
             raise ValueError('MONITORING_REVISION_UNQUALIFIED')
         revision['monitoring_revision_basis']=copy(proposal['monitoring_revision_basis'])
+    if 'retrospective_repair_revaluation_basis' in proposal:
+        hypothesis=proposal.get('interpretive_hypothesis')
+        if (type(hypothesis) is not str or not hypothesis.strip() or len(hypothesis)>512
+                or {k:v for k,v in proposal.items() if k!='interpretive_hypothesis'}
+                    not in possible_retrospective_orientation_revisions(actor,experience,event_ref)):
+            raise ValueError('RETROSPECTIVE_REVALUATION_UNQUALIFIED')
+        revision['retrospective_repair_revaluation_basis']=copy(
+            proposal['retrospective_repair_revaluation_basis'])
+        revision['interpretive_hypothesis_not_causal_truth']=hypothesis.strip()
     if 'relief_reconstitution_basis' in proposal:
         if proposal not in possible_relief_reconstitution(actor,experience,event_ref):
             raise ValueError('RELIEF_RECONSTITUTION_UNQUALIFIED')
@@ -573,7 +700,8 @@ def _polarities(row, field=None):
     live = set(MODES - {'AMBIVALENT'}) if mode == 'AMBIVALENT' else {mode}
     for revision in row.get('revisions', []):
         if revision['mode'] == 'INHIBIT':
-            basis = revision.get('counterhistory_release_basis')
+            basis = (revision.get('counterhistory_release_basis') or
+                     revision.get('retrospective_repair_revaluation_basis'))
             # Repeated-course forms already recruit only in this field.
             # Earlier R19 orientations may be site-wide; do not globalize
             # counterhistory experienced in one particular social field.
