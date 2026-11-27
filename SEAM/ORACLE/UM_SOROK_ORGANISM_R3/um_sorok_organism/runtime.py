@@ -399,8 +399,13 @@ class ConstitutiveRuntime:
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             correspondence_options=(offer_correspondence_attention(actor,world,e)
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
+            # Query one committed tail row only for a potentially receivable
+            # directed human utterance; no whole-history hydration per beat.
             focal_options=(offer_focal_encounters(actor,e,
-                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]))
+                situated.get('attention_frame',{}).get('focally_eligible_cue_refs',[]),
+                world=world,ledger_event=(self.ledger.latest_event()
+                    if any(c.get('visitor_speech_addressed_to_recipient') is True
+                           for c in e.cues) else None))
                 if requesting_actor is None and any(o['action']=='ORIENT' for o in options) else [])
             proposed=self.semantic.proposal('actor_attempt',{'actor':{'id':actor_id,'role':actor['role'],
                 'body':copy(actor['body'])},

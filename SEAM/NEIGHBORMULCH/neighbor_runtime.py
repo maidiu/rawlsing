@@ -463,7 +463,7 @@ class NeighborEncounter:
         elif target_object_ref is not None or cover_text is not None:
             raise EncounterRefusal('UNAUTHORED_LOOK_OR_COVER')
         if target_actor_ref is not None:
-            if operation not in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+            if operation not in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
                 raise EncounterRefusal('UNAUTHORED_VOCAL_ADDRESSEE')
             target_actor_ref = _text(target_actor_ref, 'VOCAL_ADDRESSEE', 100)
         if operation in ('OFFER_FEED','PLEDGE_OFFER') and target_actor_ref is None:
@@ -483,6 +483,8 @@ class NeighborEncounter:
                                    cover_text=cover_text)
         elif operation == 'REPAIR':
             request_payload['target_object_ref'] = target_object_ref
+        elif operation == 'SAY' and target_actor_ref is not None:
+            request_payload['target_actor_ref'] = target_actor_ref
         elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
             request_payload['target_actor_ref'] = target_actor_ref
             if operation=='PLEDGE_OFFER':
@@ -562,7 +564,7 @@ class NeighborEncounter:
                 candidate.get('location') != loc or
                 type(candidate.get('public_glance')) is not str):
                 status = 'BLOCKED'
-        elif operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
+        elif operation in ('SAY', 'SING', 'OFFER_FEED', 'PLEDGE_OFFER') and target_actor_ref is not None:
             # Unaddressed singing is ordinary activity; only an explicitly
             # authored, presently accessible addressee can qualify a joint
             # occasion. The visitor cannot bind the addressee's response.
@@ -672,6 +674,22 @@ class NeighborEncounter:
                         location=loc, modality=sign['modality'],
                         description=sign['description'], source_actor=None,
                         private_to=actor_id)
+                    if operation == 'SAY' and target_actor_ref is not None:
+                        # The utterance is not the MII reader, and even a truthful
+                        # acknowledgement is not evidence that the speaker heard
+                        # the earlier sign. No private exposure/ref enters CO.
+                        cue['visitor_event_ref'] = ref
+                        sight = _bound_source(world)['actor_conditions'][actor_id]
+                        visible_speaker = (sight.get('visual') is True
+                            and sight.get('light') == 'lit'
+                            and sight.get('sightline') == 'unobstructed'
+                            and sight.get('facing') == 'entrance')
+                        if (visible_speaker and actor['body'].get('language',0)>=.35):
+                            cue['visitor_ref'] = self.user_id
+                            if actor_id == target_actor_ref:
+                                cue['visitor_speech_addressed_to_recipient'] = True
+                        cue['lexical_comprehension'] = sign['lexical_comprehension']
+                        cue['not_proof_of_speaker_recognition_or_claim_truth'] = True
                     if operation=='MAKE_OBJECT':
                         # Link the actual authored occurrence for audit;
                         # no inferred maker recognition or actor attention.
@@ -714,7 +732,8 @@ class NeighborEncounter:
             event.update(target_object_ref=target_object_ref,
                          material_outcome=material_outcome,
                          actor_meaning_not_established=True)
-        if operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER'):
+        if (operation in ('SING', 'OFFER_FEED', 'PLEDGE_OFFER')
+                or (operation=='SAY' and target_actor_ref is not None)):
             event['target_actor_ref'] = target_actor_ref
         if operation=='PLEDGE_OFFER':
             event['due_clock']=due_clock

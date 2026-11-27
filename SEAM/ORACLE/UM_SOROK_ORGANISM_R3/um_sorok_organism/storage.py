@@ -457,6 +457,21 @@ class ResearchLedger:
         # Retain the existing public materialized reader contract.
         return list(self._iter_events(limit))
 
+    def latest_event(self):
+        """Bounded read of the exact existing tail record, not a new cache.
+
+        Same event envelope as events()[-1], without hydrating earlier life.
+        The enclosing step still uses the existing CAS/chain verification.
+        """
+        row=self.conn.execute(
+            'SELECT eid,world_id,clock,actor_id,kind,payload,previous_hash,chain_hash '
+            'FROM events ORDER BY seq DESC LIMIT 1').fetchone()
+        if row is None:return None
+        e,wid,clock,aid,kind,p,prev,h=row
+        return {'id':e,'world_id':wid,'clock':clock,'actor_id':aid,'kind':kind,
+                'envelope':json.loads(p),'envelope_bytes':p,
+                'previous_hash':prev,'chain_hash':h}
+
     def verify_chain(self):
         """Fail closed in ordinary AND Python -O interpreters.
 
