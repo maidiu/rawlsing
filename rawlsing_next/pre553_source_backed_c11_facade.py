@@ -444,17 +444,27 @@ class _PackedRoutingFacts(Sequence):
         return ends[-1] if ends else 0
 
     @classmethod
+    def _projection_values(cls,keys,raw):
+        def pair(k,v):
+            return _routing_field_key_bytes(k)+v
+        values=dict(zip(cls._top,raw))
+        values["semantic_fields"]=b"{"+b",".join(pair(k,v)
+            for k,v in zip(keys,raw[len(cls._top):]))+b"}"
+        return values
+
+    @staticmethod
+    def _projection_bytes(values):
+        return b"{"+b",".join(_routing_field_key_bytes(k)+values[k]
+                             for k in sorted(values))+b"}"
+
+    @classmethod
     def _row_bytes(cls,run,row):
         keys,columns,digests=run
         h=digests[32*row:32*(row+1)].hex().encode("ascii")
-        def pair(k,v):
-            return _routing_field_key_bytes(k)+v
-        values={key:_routing_column_value(col,row) for key,col in zip(cls._top,columns)}
+        values=cls._projection_values(keys,tuple(_routing_column_value(col,row) for col in columns))
         values["content_hash"]=b'"'+h+b'"'
         values["object_id"]=b'"'+cls._prefix.encode("ascii")+h+b'"'
-        values["semantic_fields"]=b"{"+b",".join(pair(key,_routing_column_value(col,row))
-              for key,col in zip(keys,columns[len(cls._top):]))+b"}"
-        return b"{"+b",".join(pair(key,values[key]) for key in sorted(values))+b"}"
+        return cls._projection_bytes(values)
 
     def canonical_rows(self):
         runs,ends=self._storage

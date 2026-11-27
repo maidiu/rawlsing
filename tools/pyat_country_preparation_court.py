@@ -183,15 +183,20 @@ def worker(root,mode,counts,report):
                 ingest.validate_public_carrier_object(obj,registry)
                 for ref in ingest._walk_authority_refs(obj.semantic_fields):
                     registry.resolve_exact(ref)
-        times={"incumbent":[],"fresh_constructor":[]}
-        for order in (("incumbent","fresh_constructor"),("fresh_constructor","incumbent")):
+        times={"incumbent":[],"fresh_constructor":[],"shared_grain":[]}
+        stats=None
+        for order in (("incumbent","fresh_constructor","shared_grain"),
+                      ("shared_grain","fresh_constructor","incumbent")):
             for kind in order:
                 t=time.monotonic()
                 if kind=="incumbent":incumbent()
-                else:original_routes(routes,registry)
+                elif kind=="fresh_constructor":ingest._validate_packed_routing_expanded(routes,registry)
+                else:stats=original_routes(routes,registry)
                 times[kind].append(time.monotonic()-t)
+        assert stats["rows"]==len(routes) and stats["materialized"]<len(routes),stats
         routing_comparison={"rows":len(routes),"both_accepted":True,
-            "seconds":times,"median_seconds":{k:median(v) for k,v in times.items()}}
+            "shared_grain_stats":stats,"seconds":times,
+            "median_seconds":{k:median(v) for k,v in times.items()}}
         # Same freshly materialized bodies still need authority resolution.
         from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
         from rawlsing_next.pre553_c11_integrity import C11IntegrityError
@@ -203,6 +208,61 @@ def worker(root,mode,counts,report):
             except (Pre553AuthorityError,C11IntegrityError):pass
             else:raise AssertionError("routing authority refusal escaped")
         routing_comparison["unresolved_authority_refused"]=True
+        # Rehashed corruption must not bypass incidence checks; test exact
+        # current registry, real same-rule rows and the incumbent expanded path.
+        from rawlsing_next.pre553_source_backed_c11_facade import (
+            _PackedRoutingFacts,_SortedPackedRoutingFacts,_RoutingColumnBuilder,
+        )
+        from rawlsing_next.pre553_empirical_objects import canonical_json
+        import copy
+        first=routes[0].as_dict()
+        # Construct two exact same-template rows, the second with a changed
+        # incidence. Pack raw lanes without the public producer validation so
+        # the I02 boundary, not an upstream constructor, has to refuse it.
+        def lane(documents,stale=False):
+            keys=tuple(sorted(documents[0]["semantic_fields"]))
+            names=(*_PackedRoutingFacts._top,*keys)
+            builders=[_RoutingColumnBuilder() for _ in names]
+            digests=bytearray()
+            for j,doc in enumerate(documents):
+                projection={k:v for k,v in doc.items() if k not in ("content_hash","object_id")}
+                digest=hashlib.sha256(canonical_json(projection).encode()).digest()
+                digests.extend(b"\x00"*32 if stale and j==1 else digest)
+                for builder,k in zip(builders,names):
+                    builder.add(canonical_json(doc[k] if k in _PackedRoutingFacts._top
+                        else doc["semantic_fields"][k]).encode())
+            source=object.__new__(_PackedRoutingFacts)
+            object.__setattr__(source,"_storage",(((keys,tuple(b.finish() for b in builders),
+                bytes(digests)),),(len(documents),)))
+            return _SortedPackedRoutingFacts.build(source)
+        def refuses(candidate):
+            for fn in (ingest._validate_packed_routing_expanded,original_routes):
+                try:fn(candidate,registry)
+                except (ValueError,TypeError):pass
+                else:raise AssertionError("routing corruption accepted by "+fn.__name__)
+        # Both malformed and stale row cases must refuse in either sort order.
+        changed=copy.deepcopy(first)
+        changed["semantic_fields"]["scoped_respondent_ref"]={"kind":"wrong"}
+        malformed=lane([first,changed])
+        refuses(malformed)
+        refuses(lane([first,first],stale=True))
+        changed=copy.deepcopy(first)
+        changed["dependency_refs"]=[{"kind":"wrong"}]
+        refuses(lane([first,changed]))
+        changed=copy.deepcopy(first)
+        changed["producer_replay_locator_or_reference_root"]=""
+        refuses(lane([first,changed]))
+        changed=copy.deepcopy(first)
+        changed["semantic_fields"]["parent_predicate_refs"]=[{
+            "authority_id":"r17-unknown","authority_version":"1",
+            "authority_content_hash":"0"*64}]
+        refuses(lane([first,changed]))
+        # An unrecognized optional field must go to the full incumbent
+        # validator; no implicit interpretation or disappearance.
+        unusual=copy.deepcopy(first);unusual["semantic_fields"]["r17_extension"]="preserve"
+        assert original_routes(lane([unusual]),registry)["materialized"]==1
+        routing_comparison["incidence_and_nested_negative_controls"]=5
+        routing_comparison["unusual_shape_fallback"]=True
         return original_routes(routes,registry)
     def compare_wire(data,key):
         nonlocal wire_comparison
