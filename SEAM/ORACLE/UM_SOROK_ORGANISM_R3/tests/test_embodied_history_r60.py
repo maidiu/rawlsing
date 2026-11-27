@@ -50,7 +50,7 @@ class EmbodiedHistoricalReadiness(unittest.TestCase):
             rt.background(30)
             a=rt.snapshot('nadia')
             self.assertEqual(a['age_days'],130)
-            self.assertEqual(conserved_motor_exercise(a),.008 if practiced else 0)
+            self.assertEqual(conserved_motor_exercise(rt.ledger.actor('nadia')[1]),.008 if practiced else 0)
             self.assertEqual(a['vocal_coordination_practices'],[])
             self.assertEqual(a['body']['language'],0)
             self.assertEqual(a['memories'],[])
