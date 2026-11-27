@@ -40,6 +40,7 @@ from .expectation_afterlife import (source_qualified_appraisal_candidates,
                                     possible_expressive_practices)
 from .routine_sources import register_sourcefree_period_envelope
 from .caregiving_practice import retain_performed_material_feeding
+from .material_provisioning import offer_feeding_source_alternatives
 from .food_access_struggle import configure_food_power
 from .food_power_reproduction import register_concession
 from .institutional_procedure_learning import (
@@ -389,6 +390,14 @@ class ConstitutiveRuntime:
             # alternatives, not merely operation names. It also accepts the
             # older action-only policy with explicitly unresolved purposes.
             # A model policy is NOT a conscious iceberg manager.
+            for o in options:
+                if o.get('action')=='FEED':
+                    # Same actor-owned practical selector; no new semantic call.
+                    source_options=offer_feeding_source_alternatives(world,e,o)
+                    if requesting_actor is not None:
+                        source_options=[v for v in source_options
+                            if v['world_request']['addressed_party_ref']==requesting_actor]
+                    o.setdefault('practical_alternatives',[]).extend(source_options)
             flat_alternatives=[copy(alt) for o in options
                                for alt in o.get('practical_alternatives',[])]
             flat_trials=[copy(t) for o in options for t in o.get('possible_end_trials',[])]
@@ -701,6 +710,11 @@ class ConstitutiveRuntime:
                            selected_alternative.get('origin_orientation_ref')
                            if selected_alternative else None),
                        'material_object_not_automatically_owned_by_actor':True}
+            if (selected_alternative and selected_alternative.get('selected_feeding_source')
+                    and proposed.get('practical_option_id')==selected_alternative['option_id']
+                    and trial_choice is None):
+                practical['selected_feeding_source']=selected_alternative['selected_feeding_source']
+                practical['selected_feeding_source_option_ref']=selected_alternative['option_id']
             if (selected_alternative and selected_alternative.get('human_food_offer_ref')
                     and (proposed.get('practical_option_id')==selected_alternative['option_id']
                          or (trial_choice is not None and trial_choice.get('selected_offer_option_ref')==selected_alternative['option_id']))):

@@ -694,7 +694,8 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
     elif attempt.action=='FEED':
         resolved_food=perform_one_actual_feeding(
             world,actors,aid,target,loc,
-            attempt.intention)
+            attempt.intention,
+            selected_food_source=attempt.practical_selection.get('selected_feeding_source'))
         status=resolved_food['status']
         output=resolved_food['outcome']
         material_feeding_ref=resolved_food['material_feeding_ref']
@@ -786,9 +787,19 @@ def _resolve_untrusted_core(world,actors,attempt:Attempt,partner_attempt:Attempt
                 # The responder's autonomous FEED is not merely consent to
                 # a signal: objective food stock and bodily eligibility still
                 # decide what material assistance actually happened.
-                supported=perform_one_actual_feeding(
-                    world,actors,partner_attempt.actor,aid,loc,
-                    partner_attempt.intention)
+                selected_source=partner_attempt.practical_selection.get('selected_feeding_source')
+                # Explicit source-bound coactor means may not bypass the
+                # giver's own objective FEED gate because the principal
+                # operation happens to be SIGNAL.
+                partner_gate=(evaluate_material_conjunction(
+                    world,partner_attempt.actor,loc,'FEED') if selected_source is not None else None)
+                if partner_gate is not None and partner_gate['decision'] in ('BLOCKED','UNRESOLVED'):
+                    supported={'status':'BLOCKED','outcome':'COACTOR_FEED_GATE_NOT_ALLOWED',
+                               'material_feeding_ref':None}
+                else:
+                    supported=perform_one_actual_feeding(
+                        world,actors,partner_attempt.actor,aid,loc,
+                        partner_attempt.intention,selected_food_source=selected_source)
                 material_feeding_ref=supported['material_feeding_ref']
                 if supported['status']=='PERFORMED':
                     effects[aid]['received_assistance']=True
